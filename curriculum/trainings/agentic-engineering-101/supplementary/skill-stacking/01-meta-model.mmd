@@ -1,0 +1,61 @@
+flowchart LR
+
+    subgraph PLAN["PLAN — read-only analysis"]
+        direction TB
+        pmr["plan-mega-review<br/><i>one-shot critique</i>"]
+        wp["walk-plan<br/><i>collaborative Q&A</i>"]
+        gm["grill-me<br/><i>adversarial defense</i>"]
+        aca["access-control-analysis<br/><i>surface map</i>"]
+        st["stride<br/><i>threat model</i>"]
+        aca -->|hand-off| st
+    end
+
+    subgraph BUILD["BUILD — mutating"]
+        direction TB
+        nb["new-branch"]
+        tdd["tdd  ⚠[R]<br/><i>behavior change</i>"]
+        ui["ui  ⚠[R]<br/><i>dashboard file</i>"]
+        mts["multi-tenant-security  ⚠[R]<br/><i>shared creds</i>"]
+        dd["docker-dev"]
+    end
+
+    subgraph VERIFY["VERIFY"]
+        direction TB
+        testing["testing"]
+        qa["qa"]
+        cf["chrome-fast"]
+        qa -.->|"[C] chains"| cf
+    end
+
+    subgraph SHIP["SHIP — orchestrator"]
+        direction TB
+        ship(("/ship<br/>composes chain"))
+        cp["cp"]
+        rn["release-notes"]
+        mar["multi-agent-review<br/><i>fresh sub-agent</i>"]
+        ci["ci<br/><i>background</i>"]
+        ship -.->|"[O]"| cp
+        ship -.->|"[O]"| rn
+        ship -.->|"[O]"| mar
+        ship -.->|"[O]"| ci
+    end
+
+    subgraph OPS["OPS"]
+        direction TB
+        bt["bug-triage"]
+    end
+
+    PLAN ==> BUILD
+    BUILD ==> VERIFY
+    VERIFY ==> SHIP
+    SHIP ==> OPS
+    OPS -.->|new issue| BUILD
+
+    tdd -.->|"[C]"| testing
+    ship -.->|"[O]"| testing
+    ship -.->|"[O]"| qa
+
+    classDef mandatory fill:#fff3cd,stroke:#856404,color:#000
+    class tdd,ui,mts mandatory
+    classDef orchestrator fill:#cce5ff,stroke:#004085,color:#000
+    class ship orchestrator

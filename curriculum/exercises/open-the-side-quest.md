@@ -24,7 +24,7 @@ Start a second Claude Code session in another window, in the sibling worktree di
 
 {{prompt:ae101-m3-quality-side-orient}}
 
-Two windows live side by side from here. Each holds its own scrollback. Module 3's exercises name which window the work runs in. The move you're installing this module: when one window kicks off a long-running prompt, the other is where you work. The exercises name the switch points.
+Two windows, side by side on your screen from here, arrange them so both stay visible at once. Each holds its own scrollback. Module 3's exercises name which window the work runs in. The move you're installing this module: when one window kicks off a long-running prompt, the other is where you work. The exercises name the switch points.
 
 **What happened:**
 

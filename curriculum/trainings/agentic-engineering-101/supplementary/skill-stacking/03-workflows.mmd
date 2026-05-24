@@ -1,0 +1,65 @@
+flowchart LR
+
+    subgraph A["A · Standard feature"]
+        direction TB
+        a1["/new-branch"]
+        a2["write code<br/>tdd routed [R]"]
+        a1 --> a2
+    end
+
+    subgraph B["B · Dashboard edit"]
+        direction TB
+        b1["open dashboard file"]
+        b2["ui loads [R]"]
+        b1 --> b2
+    end
+
+    subgraph C["C · Multi-tenant integration"]
+        direction TB
+        c1["/new-branch"]
+        c2["multi-tenant-security<br/>routed [R]"]
+        c3["/access-control-analysis"]
+        c4["/stride"]
+        c1 --> c2 --> c3 --> c4
+    end
+
+    subgraph D["D · Browser QA standalone"]
+        direction TB
+        d1["/docker-dev start"]
+        d2["/qa<br/>chains chrome-fast [C]"]
+        d3["report"]
+        d1 --> d2 --> d3
+    end
+
+    subgraph E["E · Front-loaded design"]
+        direction TB
+        e1["/plan-mega-review"]
+        e2["/walk-plan"]
+        e3["/grill-me"]
+        e1 --> e2 --> e3
+    end
+
+    subgraph F["F · Ops triage"]
+        direction TB
+        f1["/bug-triage<br/>scans CloudWatch + Sentry"]
+        f2["prompt user<br/>which to file?"]
+        f3["ticket(s) created<br/>in Linear"]
+        f1 --> f2 --> f3
+    end
+
+    SHIP(("/ship<br/>orchestrator"))
+    PR(["PR open<br/>CI watching"])
+
+    a2 --> SHIP
+    b2 --> SHIP
+    c4 --> SHIP
+
+    e3 -.->|joins A| a1
+    f2 -.->|triggers A| a1
+
+    SHIP --> PR
+
+    classDef orchestrator fill:#cce5ff,stroke:#004085,color:#000
+    class SHIP orchestrator
+    classDef endpoint fill:#d4edda,stroke:#155724,color:#000
+    class PR endpoint

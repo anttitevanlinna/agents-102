@@ -58,7 +58,9 @@
                 { slug: 'what-is-agentic-engineering', title: 'What is agentic engineering' },
                 { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' },
                 { slug: 'the-agent-loop',             title: 'The agent loop' },
-                { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' }
+                { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' },
+                { slug: 'workflow-composition-lineages', title: 'Workflow composition lineages' },
+                { slug: 'skill-stacking',             title: 'Skill stacking system' }
             ],
             references: [
                 { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },

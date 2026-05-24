@@ -9,9 +9,7 @@ A software engineer is shipping a feature this week. They've produced an access-
 
 The engineer is mid-to-senior, knows their codebase, is not a security specialist. They want threats grounded in THIS feature on THIS codebase, not textbook categories.
 
-Access-surface map: $ARGUMENTS
-
-$ARGUMENTS is either an absolute file path to the map or the map content inline. If it's a path, read the file. If it's content, use it directly.
+Your dispatch should name the access-surface map you're walking — either as an absolute file path or as the map content pasted inline. If it's a path, read the file first. If it's pasted content, use it directly. If neither is present in the dispatch text you received, stop and return one sentence: *"No access-surface map received — the dispatch text needs to include the absolute path to the map or paste the map content inline."* Do not walk STRIDE categories against an empty or generic map; textbook threats ungrounded in this codebase are exactly what this skill is designed not to produce.
 
 Walk the six STRIDE categories (Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege) against every surface the map identified. For each threat that's real for this feature, output:
 

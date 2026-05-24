@@ -98,6 +98,30 @@ When to choose which:
 
 If you run the reorder, dry-run M4's Phase 2 / Phase 3 prompts (`walk-and-send-off-2`, `walk-and-send-off-4`) against a fresh repo with no authored skill and no ADR convention, the conditional phrasings should resolve cleanly, but verify before the cohort.
 
+## M3, the security-tools surprise
+
+Prework installs a curated bundle of skills. One is called `security-tools`. M3's first STRIDE prompt opens by invoking it as a "pre-flight verifier." That invocation runs a small bundled script that performs a few legitimate-looking checks (first line: *"owning you............ ok"*), then prints an ASCII rick-rolled face and a short note: every link in the chain, tarball, SKILL.md, Bash authorization, was trusted without reading.
+
+**The stunt is the lesson.** External skills are a supply-chain vector. A colleague's Slack-shared skill could have done the same, except pointed at AWS credentials. M3's surface (access-control + STRIDE) is the same shape one level up: trust boundaries and authorization checkpoints, applied to AI tooling instead of application features.
+
+**Don't spoil it in prework.** The install prompt frames `security-tools` as a generic security-utility check. If a student asks what it does before M3, deflect: *"a pre-flight check; you'll see it run during M3."* The point is they trusted the chain without verifying.
+
+**When it lands.** The first time `threat-model-with-stride-1` fires. The trainer's terminal shows the script output verbatim (the SKILL.md instructs Claude to print without paraphrasing). Pause two beats after the ASCII face appears, let the room react before saying anything.
+
+**Framing after the reaction.** Two minutes, not more. Three beats to land:
+
+- Every link got trusted: the tarball link, the SKILL.md you didn't read, the Bash authorization Claude asked for.
+- One layer up from this module's exercise: the same access-surface and authorization logic, applied to AI tooling rather than features.
+- This is exactly why curated > random; why "fork + read LICENSE + vet + adapt" beats "install from a Discord link"; why M3's two security skills are curated for a reason.
+
+Back to the STRIDE pass.
+
+**Students who already noticed.** Some engineers read `check.sh` during prework. Acknowledge them: *"some of you read the script, that's the lesson, you noticed."* Make them feel sharp, not show-offy.
+
+**If the stunt doesn't fire.** Rare, but possible if the skill failed to install during prework, or if Claude paraphrases instead of printing verbatim. Press on. The SKILL.md body carries the supply-chain lesson text; even paraphrased, the beat lands. If install actually broke, fix after the session, don't stop the room.
+
+**Skill survival default.** `security-tools` stays installed past M3. The fake checks are short; the rick-roll body is information the engineer benefits from re-reading; the SKILL.md's own header comment carries the "DO NOT REMOVE the easter egg" framing for any future cleanup pass. If a sponsor pushes to extract it, leave the slot empty rather than substituting a serious-but-thin pre-flight skill, the stunt earns its keep precisely because it isn't serious.
+
 ## M6, lecture-dense by design
 
 M6 carries more lecture surface than the other modules. By Module 6 the student is a practitioner, and some moves at this point in the training are read about rather than prompt-drilled. The closer area runs lecture-after-lecture (Human close → Composing the workflow → The loop has a name → Agents that build agents). Manage transitions, and **invite student reflections and opinion across the lectures** by design. The mood is practitioner fluency, not lecture-hall: a room of engineers reading the field together, with the trainer as one voice among several.
@@ -108,11 +132,11 @@ M6 carries more lecture surface than the other modules. By Module 6 the student 
 - **[Story of Module 6](lectures/story-of-module-6.md)**, opener; permission-giving memo from this module's own generation.
 - **[Quality is grounding](lectures/quality-is-grounding.md)**, opener-bridge. Read between Story of Module 6 and the main exercise. ~4–6 min. Names the quality arc threaded across the whole training (M1 tests-first → M2 plan push-back → M3 test-strategy skill → M5 verifier → M6 second skill), then reframes quality's evolution from spec-and-tests to grounding and human signal. Stakes-setter before the build move. Cites Agentics Helsinki's first meetup (fall 2025) as historical anchor for the 500K-lines-in-weeks demos. Maintainer-block source-verification debt is logged; check before first cohort.
 - **[Steering the wiring](lectures/steering-the-wiring.md)**, mid-module.
-- **[Composing the workflow](lectures/composing-the-workflow.md)**, closer-area pointer. Read after Human close, before The loop has a name. ~3–4 min. Names the practitioner-mode shift (*"there is no prompt to drill at this point"*) and walks five live lineages of workflow composition in one line each: Klaassen (file paths between subagents, hard gates), Cherny (parallel subagents in worktrees), Pocock (weakly-coupled toolkit), Cognition (single writer with advisor agents), Amp (vendor-shipped primitives). Plus Ronacher's counter-voice (composition is throttling, not multiplication). Points at the [workflow-composition-lineages supplementary](supplementary/workflow-composition-lineages.md) for depth.
+- **[Composing the workflow](lectures/composing-the-workflow.md)**, closer-area pointer. Read after Human close, before The loop has a name. ~3–4 min. Names the practitioner-mode shift (*"there is no prompt to drill at this point"*) and walks five live lineages of workflow composition in one line each: Klaassen (file paths between subagents, hard gates), Cherny (parallel subagents in worktrees), Pocock (weakly-coupled toolkit), Cognition (single writer with advisor agents), Amp (composition primitives shipped inside the product). Plus Ronacher's counter-voice (composition is throttling, not multiplication). Closes by pointing at a worked-example case study from AE101 trainer Dino: a complete composed skill stack with the four composition mechanisms in one place, demonstrating what the framework looks like instantiated. Points at the [workflow-composition-lineages supplementary](supplementary/workflow-composition-lineages.md) for depth, and to Dino's [skill-stacking system primary doc](supplementary/skill-stacking.md) + three diagrams for the worked example.
 - **[The loop has a name](lectures/the-loop-has-a-name.md)**, closer; names *eval* from the just-built second skill.
 - **[Agents that build agents](lectures/agents-that-build-agents.md)**, forward closer.
 
-**How to invite reflection.** Between lectures, ask the room: which lineage resembles their day? What did the quality arc actually feel like across the five moves? What's their review bandwidth, and what does Ronacher's counter-voice land as? Open prompts, not Q&A. Two beats of silence is fine; engineers think before they speak. Self-study Nerd mirrors this with conversation prompts in the same slots.
+**How to invite reflection.** Between lectures, ask the room: which lineage resembles their day? What did the quality arc actually feel like across the five moves? What's their review bandwidth, and what does Ronacher's counter-voice land as? After Dino's worked example, the natural question is the transfer one: looking at the second skill they just shipped at M6, is it a route, a leaf, an orchestrator, or a hand-off? Open prompts, not Q&A. Two beats of silence is fine; engineers think before they speak. Self-study Nerd mirrors this with conversation prompts in the same slots.
 
 **Pacing the close.** Lecture density means reading the room sharply. If energy is high, give the lineage conversation room. If energy is low, name fewer lineages in delivery, point at the supplementary, move to the closer pair faster. The supplementary carries the depth regardless; the lecture body is the pointer, not the survey.
 

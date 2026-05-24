@@ -1,0 +1,29 @@
+flowchart TD
+    start(["user invokes /ship"])
+    start --> pre["1 · preflight<br/>git status + diff vs main"]
+    pre --> test["2 · /testing"]
+    test -->|pass| ui_check{UI changed?}
+    test -->|fail| stop1(["STOP<br/>surface failing tests<br/>fix → re-run /ship = loop"])
+    ui_check -->|yes| qa["3 · /qa<br/>branch-targeted"]
+    ui_check -->|no| rn
+    qa -->|pass| rn["4 · /release-notes<br/>skip or add highlight"]
+    qa -->|fail| stop2(["STOP<br/>surface failing scenarios<br/>fix → re-run /ship = loop"])
+    rn --> cp["5 · /cp"]
+    cp --> pr["6 · open PR if missing"]
+    pr --> rev["7 · /multi-agent-review<br/>in fresh sub-agent"]
+    rev -->|pass| ci["8 · /ci background watch"]
+    rev -->|blocking| stop3(["STOP<br/>print issues<br/>fix → re-run /ship = loop"])
+    rev -->|nits only| comment["post nits as PR comment"]
+    comment --> ci
+    ci --> done(["9 · hand-off<br/>PR url + CI watching"])
+
+    stop1 -.->|re-invoke| start
+    stop2 -.->|re-invoke| start
+    stop3 -.->|re-invoke| start
+
+    classDef stopNode fill:#f8d7da,stroke:#721c24,color:#000
+    class stop1,stop2,stop3 stopNode
+    classDef startEnd fill:#d4edda,stroke:#155724,color:#000
+    class start,done startEnd
+    classDef agentStep fill:#cce5ff,stroke:#004085,color:#000
+    class rev agentStep

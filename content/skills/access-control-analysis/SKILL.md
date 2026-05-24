@@ -9,9 +9,7 @@ A software engineer is shipping a feature this week. A staff engineer and a CISO
 
 The engineer is mid-to-senior, comfortable with their codebase, not a security specialist. They want a structured read they couldn't produce in five minutes from memory.
 
-Feature described by the engineer: $ARGUMENTS
-
-Locate the feature in the repo first. Use Glob and Grep on the name, route, handler, or symbols. Do not ask the engineer for file paths; they shouldn't have to hand-hold the search. Once you've found the code, read it.
+Your dispatch will name the feature the engineer wants mapped — by name, route, handler, or a couple of symbols. Locate it in the repo first. Use Glob and Grep on what the dispatch named. Do not ask the engineer for file paths; they shouldn't have to hand-hold the search. Once you've found the code, read it.
 
 Then produce a map. You pick the shape that best serves the codebase you're looking at, but cover at least:
 

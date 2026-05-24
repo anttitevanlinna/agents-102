@@ -122,7 +122,7 @@ On to the Compound step. The Debrief writes the pattern into your personal `CLAU
 - **P3 exceeds 12 min:** compress P4's watch time; let Claude run while student reads. Note: this student reads plans seriously; M3 judge-building will go fast.
 - **P4 completes in under 15 min:** the task was too small for plan mode. Log for the Debrief: *"plan mode is overkill below ~30 min of agent work — know the floor."*
 - **Student asks about Ctrl+G plan-file editing:** it's a real practitioner move (opens the plan in $EDITOR for in-place edits) and fine to mention at Debrief as a next-tier tool — but not the exercise's forcing function. The chat-based push-back stays in conversation with the agent, which is the whole training's shape.
-- **P4 turn-time on real codebases.** A single Q-and-A turn can eat 10+ min when the codebase-read fallback fires (2026-05-15 dry-run: 13m15s + 37.7K tokens on one turn). Trainer move: if the slot is being eaten, trim the prompt for next cohort. Pre-cohort surgery options logged in `pre-cohort-todos.md`.
+- **P4 turn-time on real codebases.** A single Q-and-A turn can eat 10+ min when the codebase-read fallback fires (2026-05-15 dry-run: 13m15s + 37.7K tokens on one turn). Trainer move: if the slot is being eaten, trim the prompt for next cohort.
 
 **Plug points:**
 - Student's own repo (chosen in prework, carried from M1)

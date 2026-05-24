@@ -68,21 +68,7 @@ Built today in response to the now-closed cohort-run items on quality depth-bala
 
 Source: M1 + M2 + M3 + M4 driven end-to-end via tmux-runner (`curriculum/evals/mechanical/tmux-runner/`) against the lemmings SUT. M1 ran on `bdd0919` (initial commit, tally bug); M2 ran on `f771484` (M1 endpoint, with M1's CLAUDE.local.md in place). M3 ran twice (security-only + full main+quality parallel). M4 ran once with the blocker-deadlock task. M5+M6 entries below are scout-derived from an Explore-agent survey, not from actual runs; flagged as hypotheses to verify when those modules are mechanically run.
 
-### Confirmed from M1 run
-
-- **`fix-tests-first-3` is a save-gate.** Prompt body ends with *"Show me the diff before you commit."* In the 2026-05-24 mechanical run, Claude showed the diff and then asked *"Want them as one commit (the bug + its proper fix) or two? And then PR via gh, or hold?"*, without an approval literal-text line the commit never lands and the assertion *"new commit since baseline"* falsifies. Same family as the M3 ADR / M4 Huryn-additions silent-drops. Pre-cohort: either tighten the prompt to be more imperative (*"Show me the diff, then commit it as one commit, no PR."*) or accept that the interactive moment is the pedagogy and leave the dry-run guarded by a literal-line approval. The runner's `scenarios/m1.txt` already carries the approval line; this entry is the curriculum-side note.
-
-- **`compound-and-close-2` and `-3` need a connector to function.** Both prompts read or update an external tracker via MCP connector. Headless dry-runs without a configured tracker can't exercise them; scenarios/m1.txt scopes them out of the headless battery and treats `compound-and-close-4` as the closer. Pre-cohort: when a cohort tenant blocks MCP install, the `mcp-and-connectors.md` reference's fallback path becomes load-bearing, verify it still resolves at delivery date. (Not a curriculum-body fix; an operational pre-flight.)
-
-### Confirmed from M2 run
-
-- **`push-back-on-the-plan-1` calls `AskUserQuestion` when run without explicit plan-mode engagement.** The prompt's frontmatter declares `permission-mode: plan` but the headless tmux runner has no way to engage plan mode (no Shift+Tab in non-interactive sessions). In the 2026-05-24 mechanical run, Claude defaulted to the new structured-question UI (*"Skill budgets / Bash geometry / Submit"* checkboxes) for two scoped ambiguities. Without an explicit *"don't call AskUserQuestion"* tail the runner hangs forever. Pre-cohort: real cohorts do engage plan mode, so this is not a curriculum-body issue, the trainer's *"Shift+Tab until the status bar shows **plan**"* line at exercise body line 18 stays load-bearing. Mechanical-runner-only workaround in `scenarios/m2.txt`.
-
-- **`push-back-on-the-plan-2` is a save-gate.** Prompt body explicitly says *"Don't touch the plan file until I say 'lock it in.'"* This is by design (separates the second-pass walk-down from the plan edit). The `* lock it in` literal-text line on the next scenario line is required for the in-place plan edit to fire. Same shape as the M3 ADR approval.
-
-- **`extract-the-task-shaping-rule-2` save location is unconstrained.** Prompt invites Claude to pick a path (auto-load vs lazy-load tier). Mechanical-runner workaround: tail asks Claude to echo `SAVED-PATH: <abs path>` on its own line so the assertion can locate the file. In the 2026-05-24 run Claude picked `~/.claude/projects/<encoded-cwd>/memory/task-shaping.md` (cwd-scoped agent-memory dir, NOT auto-loaded, requires `@import` from an auto-loaded CLAUDE.md to fire in future sessions). The prompt body explicitly suggests the `@import` move at exercise line 27, but the dry-run skipped that follow-up. Pre-cohort: trainer push if a cohort student picks a non-auto-load path without wiring the `@import`.
-
-- **`ae101-m2-integrate-branch` fires the auto-load question prompt (`push-back-on-the-plan-4`) right before it.** Prompt `-4` is intentionally terse / lowercase / no end-punctuation (the maintainer block calls this register-by-design). Mechanical run handled it fine; flagged here as a known stylistic outlier so future audit-class judges treat it as accepted-by-design.
+**M1 + M2 closed via per-turn assertions in `918b90d` (`run-m1.sh` / `run-m2.sh` `assert_turn()` T1–T9 covers save-gates, file-existence, SAVED-PATH location). M3 runs surfaced no curriculum-side issues against the literal-line scenarios. Save-gate / register-by-design / unconstrained-save-location items from the original dry-run notes accepted as pedagogy and closed.**
 
 ### Confirmed from M4 run
 
@@ -91,8 +77,6 @@ Source: M1 + M2 + M3 + M4 driven end-to-end via tmux-runner (`curriculum/evals/m
 - **`walk-and-send-off-1` candidate format inconsistency.** Exercise body line 27: *"Drop the candidates after the colon, one per line."* Prompt body ends with bare `Candidates:`, no format hint. Mechanical run passed two candidates as a `(1)… (2)…` paragraph; Claude handled it fine but the body's *one per line* constraint wasn't followed. Either drop the body line (Claude does not need the format) or hint at it in the prompt. Minor.
 
 - **`.claude/memory/` gitignore step is a forcing function mechanical runs can skip silently.** Exercise body line 56: *"If `.claude/memory/` is new to your repo, ask Claude to add it to `.gitignore` before any writes."* The mechanical run's lazy-student tail for `-3` told Claude to persist directly without the AskUserQuestion loop; Claude ended up writing one fill to `CLAUDE.local.md` (already gitignored), so the gitignore question never arose. The trap is real for any flow that does write to `.claude/memory/`, `ae101-m4-commit-starting-point` runs `git add -A` and would track the writes. Pre-cohort: confirm interactive flow consistently triggers the gitignore step before any memory write.
-
-### Confirmed from M3 runs
 
 ### Hypotheses from M5/M6 scout (not from running)
 
@@ -104,7 +88,7 @@ Source: M1 + M2 + M3 + M4 driven end-to-end via tmux-runner (`curriculum/evals/m
 
 ### Cross-module / meta
 
-- **A passing sentinel ≠ a prompt's contract being met.** The tmux-runner today reports PASS when Claude finishes a turn, not when the turn's intended artifacts landed. Three confirmed silent-drops this week (M3 ADR ×2, M4 Huryn additions ×1) all PASSed sentinels. Per-turn assertions, *did `task.md` land, did the audit return 5 ranked items, did `-3` write at least 2 fills to the named destinations, did `-4` make the rearrangement*, would catch this class at the runner layer. Engineering item for `curriculum/evals/mechanical/tmux-runner/`, but surfaces curriculum unclarity that today fires silently. Compound candidate.
+- **M3 + M4 orchestrators still report sentinel-PASS without per-turn artifact assertions.** M1 + M2 closed in `918b90d` via `assert_turn()` T1–T9 in `run-m1.sh` / `run-m2.sh`. `run-m3.sh` and `run-m4.sh` are still parallel race-loop / sentinel-completion gated, no per-turn assertions. The M4 Huryn-additions silent-drop class is uncaught at the runner layer; M3 ADR drops would be too if they recurred. Engineering item for `curriculum/evals/mechanical/tmux-runner/`, port the M1/M2 assertion shape into M3 + M4.
 
 ## Embedded TODOs swept from M1-M3 files (2026-05-22)
 
@@ -117,8 +101,6 @@ Four-bucket sweep (modules + prework + onboarding / exercises / lectures + refer
 ## Cross-cutting ops
 
 - **Section-name canonicalisation across AE101 module files.** Audit (2026-05-22) found `## Next` / `## Bring to Module N` / `## Homework` used inconsistently across M1–M6; canonical name per `curriculum/CLAUDE.md` is `## Bridge`. Content quality is fine, forward-frame focus, no past-tense recap of what just shipped, "Bring to..." stakes-line shape consistent. Decision: canonicalise to `## Bridge` everywhere (per curriculum/CLAUDE.md) OR update curriculum/CLAUDE.md to allow `## Next` + `## Bring to Module N` as the AE101 shape. Compound-candidate rule for `check_pedagogy.md` flagged.
-
-- **`update-quality.sh` supports only one `cross_module` row per file (2026-05-15).** When a module is in multiple adjacent-pair audits, stamping the second pair overwrites the first row. Script enhancement, not a content TODO. Decision: pre-cohort hygiene only if M1 ever gets re-audited and the missing row matters; otherwise leave for the next eval-system maintenance window. Lives at `curriculum/evals/scripts/update-quality.sh`.
 
 - **Architecture integrity reference**, write `reference/architecture-under-agentic-velocity.md`: how teams preserve architectural intent while agents make local changes quickly. Survey practitioner patterns (Klaassen / Curran on review structure, Cherny on stop-hooks as architectural enforcement, Ramp's skill marketplace as crystallized convention). Candid about being a survey, not a settled answer. Source: Uncle Bob (Robert C. Martin) on architecture + agentic coding. Separate session.
 

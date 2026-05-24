@@ -45,7 +45,10 @@ mkdir -p "$sentinel_dir"
 session="runner-$run_id"
 launch_cmd="env CLAUDE_RUNNER_SENTINEL_DIR=$sentinel_dir ${CLAUDE_CMD:-claude}"
 warmup="${CLAUDE_RUNNER_WARMUP:-10}"
-standard_timeout="${CLAUDE_RUNNER_TIMEOUT:-600}"
+# CLAUDE_EFFORT=high (M1's prework default) + API retries can push a
+# single TDD turn past an hour. Default to 3600s; override via env for
+# medium-effort runs that finish faster.
+standard_timeout="${CLAUDE_RUNNER_TIMEOUT:-3600}"
 
 # Snapshot transcripts dir + git baseline before launch.
 encoded_cwd="$(echo "$sut_cwd" | sed 's|/|-|g')"
@@ -80,10 +83,15 @@ done < "$scenario"
 total=${#lines[@]}
 echo "[m1] turns=$total"
 
-# Working-tree porcelain snapshot at end of T4, used by T6 to detect
+# Working-tree content snapshot at end of T4, used by T6 to detect
 # that the deeper TDD pass actually added something beyond T4's diff
-# (rather than the prompt being a no-op).
-porcelain_after_t4=""
+# (rather than the prompt being a no-op). git stash create returns the
+# SHA of a stash commit object capturing the working tree + index WITHOUT
+# touching refs/working tree/index — equal SHAs mean bit-identical state.
+# We previously compared `git status --porcelain` (file-status markers
+# only); that was byte-shallow and fired false positives when T6 added
+# content to the same file set T4 already modified.
+tree_sha_after_t4=""
 
 # Assertion dispatch — one case per turn. See scenarios/m1.txt for
 # the prompt order. Each case must set FAIL=1 on miss.
@@ -103,7 +111,7 @@ assert_turn() {
         ;;
     4)  # fix-tests-first-1 — first-pass TDD diff: working tree must be dirty.
         if assert_git_dirty "T4 first-pass dirty" "$sut_cwd"; then
-          porcelain_after_t4="$(cd "$sut_cwd" && git status --porcelain)"
+          tree_sha_after_t4="$(cd "$sut_cwd" && git stash create 2>/dev/null || true)"
           return 0
         fi
         return 1
@@ -112,34 +120,31 @@ assert_turn() {
         # Soft observation only: scrollback names a deeper layer.
         assert_or_warn assert_scrollback_grep "T5 deeper-named" "$transcript" "root|deeper|layer|surface|still"
         ;;
-    6)  # fix-tests-first-3 — TDD properly. Save-gate: prompt says
-        # "Show me the diff before you commit"; Claude shows + asks for
-        # one-or-two-commits / PR-or-hold. Commit lands at T7 (literal
-        # approval), not here. Two checks: working tree dirty AND
-        # porcelain advanced past T4 (deeper pass added something —
-        # catches the "Claude did nothing new in T6" failure mode).
-        if ! assert_git_dirty "T6 second-pass dirty (commit pending approval)" "$sut_cwd"; then
+    6)  # fix-tests-first-3 — TDD deeper pass + commit at end (tail tells
+        # Claude not to wait for approval). Two checks: new commit lands
+        # since baseline, AND tree advanced past T4 (deeper pass added
+        # something — catches no-op T6). Tree compare is done on the
+        # COMMITTED state via HEAD's tree SHA, since the commit may have
+        # absorbed all working-tree changes.
+        if ! assert_new_commit "T6 commit after deeper pass" "$sut_cwd" "$baseline_sha"; then
           return 1
         fi
-        local porcelain_now
-        porcelain_now="$(cd "$sut_cwd" && git status --porcelain)"
-        if [[ "$porcelain_now" == "$porcelain_after_t4" ]]; then
-          echo "[assert] FAIL T6 porcelain unchanged from T4 — deeper TDD pass produced nothing new" >&2
+        local tree_sha_now
+        tree_sha_now="$(cd "$sut_cwd" && git rev-parse HEAD^{tree} 2>/dev/null || true)"
+        if [[ -z "$tree_sha_now" || "$tree_sha_now" == "$tree_sha_after_t4" ]]; then
+          echo "[assert] FAIL T6 tree content unchanged from T4 (sha=$tree_sha_now) — deeper TDD pass produced nothing new" >&2
           return 1
         fi
-        echo "[assert] PASS T6 porcelain advanced past T4"
+        echo "[assert] PASS T6 tree content advanced past T4 (T4=${tree_sha_after_t4:0:8} T6=${tree_sha_now:0:8})"
         ;;
-    7)  # literal "One commit, no PR" — save-gate approval. New commit.
-        assert_new_commit "T7 commit after approval" "$sut_cwd" "$baseline_sha"
+    7)  # compound-and-close-1 — ./CLAUDE.local.md exists.
+        assert_file_exists "T7 CLAUDE.local.md" "$claude_local_md"
         ;;
-    8)  # compound-and-close-1 — ./CLAUDE.local.md exists.
-        assert_file_exists "T8 CLAUDE.local.md" "$claude_local_md"
-        ;;
-    9)  # compound-and-close-4 — file mtime advanced OR "nothing new".
-        if assert_file_mtime_advanced "T9 second compound mtime" "$claude_local_md" "$claude_local_mtime_baseline" 2>/dev/null; then
+    8)  # compound-and-close-4 — file mtime advanced OR "nothing new".
+        if assert_file_mtime_advanced "T8 second compound mtime" "$claude_local_md" "$claude_local_mtime_baseline" 2>/dev/null; then
           return 0
         fi
-        assert_scrollback_grep "T9 nothing-new fallback" "$transcript" "nothing new|no new|did not add|nothing to add"
+        assert_scrollback_grep "T8 nothing-new fallback" "$transcript" "nothing new|no new|did not add|nothing to add"
         ;;
     *)
         echo "[m1] no assertion configured for turn $seq" >&2

@@ -34,8 +34,10 @@ if [[ -z "$main_cwd" || -z "$quality_cwd" ]]; then
   exit 2
 fi
 
-main_scenario="$HERE/scenarios/m3-main.txt"
-quality_scenario="$HERE/scenarios/m3-quality.txt"
+main_scenario="${SCENARIO_MAIN:-$HERE/scenarios/m3-main.txt}"
+quality_scenario="${SCENARIO_QUALITY:-$HERE/scenarios/m3-quality.txt}"
+[[ -f "$main_scenario" ]] || { echo "missing main scenario: $main_scenario" >&2; exit 2; }
+[[ -f "$quality_scenario" ]] || { echo "missing quality scenario: $quality_scenario" >&2; exit 2; }
 closer_key="ae101-m3-sharpen-skill"
 
 run_id="$(date +%Y%m%d-%H%M%S)-$$"

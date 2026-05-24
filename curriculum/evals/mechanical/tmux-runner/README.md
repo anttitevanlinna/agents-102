@@ -46,7 +46,7 @@ ls runner/out/<run-id>/
 
 - `PROMPT_REGISTRY` — path to prompts/ (default: `~/Projects/agents-102/curriculum/prompts`)
 - `CLAUDE_CMD` — launch command (default: `claude`). Use `CLAUDE_CMD="claude --permission-mode auto"` for headless runs (the auto-mode classifier allows tool calls without prompts). **Do NOT use `--permission-mode bypassPermissions`** — it shows a "Yes/No, exit" confirmation dialog at startup that hangs the runner forever (no Stop hook fires for the dialog).
-- `CLAUDE_RUNNER_TIMEOUT` — per-turn sentinel timeout in seconds (default: 600 for v0; 900 in run-m2.sh).
+- `CLAUDE_RUNNER_TIMEOUT` — per-turn sentinel timeout in seconds (default: 3600s = 1h). M1 + M2 default to this because `CLAUDE_EFFORT=high` (M1's prework default) plus API retries can push a single TDD turn past 60min. For faster medium-effort runs, set `CLAUDE_EFFORT=medium` AND override to ~1500s.
 - `CLAUDE_RUNNER_SLASH_SLEEP` — render-wait for slash-only turns (default: 3s).
 
 ## Per-turn artifact assertions

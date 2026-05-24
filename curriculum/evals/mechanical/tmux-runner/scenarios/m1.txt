@@ -14,10 +14,23 @@
 #
 # AskUserQuestion guards: orient-1/2 are non-interactive; orient-3 is
 # the /context slash command (no LLM call, no Stop hook — runner has a
-# special branch). fix-tests-first-3 is a SAVE-GATE: prompt ends with
-# "Show me the diff before you commit" and Claude typically asks
-# "one commit or two? PR via gh or hold?" — the literal line that
-# follows is the lazy-student approval.
+# special branch).
+#
+# Save-gate pair: BOTH fix-tests-first-1 AND fix-tests-first-3 end with
+# "Show me the diff before you commit." Claude sometimes interprets each
+# as a commit decision point (curriculum design allows committing at
+# either pass) and sometimes folds both into one end-of-flow commit. The
+# form of the ask also varies between runs: TEXT ("one commit or two?
+# PR via gh or hold?") in some, the AskUserQuestion CHOICE UI ("Commit
+# scope" with options) in others — the UI form hangs the runner because
+# no Stop hook fires while the UI is waiting for an arrow-key+Enter.
+#
+# Headless workaround: lazy-student tail on both fix-tests-first-1 and
+# fix-tests-first-3 says (a) don't call AskUserQuestion, (b) don't
+# commit yet on the first-pass, (c) do commit at end of the second-pass.
+# This collapses the commit shape to ONE commit at the end and keeps
+# the runner advancing. Real cohort students may legitimately commit
+# twice; the mechanical battery doesn't need to.
 
 orient-and-introspect-1
 
@@ -25,13 +38,11 @@ orient-and-introspect-2
 
 orient-and-introspect-3
 
-fix-tests-first-1 The HUD 'Out' counter reads the cumulative spawned count, not the currently-active count. After the round resolves with twelve lemmings saved+lost the HUD still reads 'Out: 12' even though zero lemmings are still on the playfield. Likely lives in how src/main.js's step() updates state and how src/ui.js reads it for the HUD.
+fix-tests-first-1 The HUD 'Out' counter reads the cumulative spawned count, not the currently-active count. After the round resolves with twelve lemmings saved+lost the HUD still reads 'Out: 12' even though zero lemmings are still on the playfield. Likely lives in how src/main.js's step() updates state and how src/ui.js reads it for the HUD. I'm doing a headless dry-run, please don't call AskUserQuestion. Show me the diff in chat but DO NOT commit yet — the next prompt may sharpen the fix, and we'll commit once at the end. Continue without waiting for approval.
 
 fix-tests-first-2
 
-fix-tests-first-3
-
-* One commit, no PR — just commit and move on.
+fix-tests-first-3 I'm doing a headless dry-run, please don't call AskUserQuestion. Show me the diff in chat. After showing it, go ahead and commit as one commit on the current branch, no PR. Don't wait for approval.
 
 compound-and-close-1
 

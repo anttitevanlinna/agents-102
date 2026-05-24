@@ -35,7 +35,7 @@ if [[ -z "$sut_cwd" || ! -d "$sut_cwd" ]]; then
   exit 2
 fi
 
-scenario="$HERE/scenarios/m2.txt"
+scenario="${SCENARIO:-$HERE/scenarios/m2.txt}"
 [[ -f "$scenario" ]] || { echo "missing scenario: $scenario" >&2; exit 2; }
 
 run_id="$(date +%Y%m%d-%H%M%S)-$$"
@@ -46,11 +46,11 @@ mkdir -p "$sentinel_dir"
 session="runner-$run_id"
 launch_cmd="env CLAUDE_RUNNER_SENTINEL_DIR=$sentinel_dir ${CLAUDE_CMD:-claude}"
 warmup="${CLAUDE_RUNNER_WARMUP:-10}"
-standard_timeout="${CLAUDE_RUNNER_TIMEOUT:-900}"
+standard_timeout="${CLAUDE_RUNNER_TIMEOUT:-3600}"
 # T2 (push-back-on-the-plan-2 walk-down) can run long on real codebases —
 # pre-cohort-todos notes a 13m15s walk-down on a real codebase. Give it
 # more headroom than the standard turn budget.
-walkdown_timeout="${CLAUDE_RUNNER_M2_WALKDOWN_TIMEOUT:-1500}"
+walkdown_timeout="${CLAUDE_RUNNER_M2_WALKDOWN_TIMEOUT:-3600}"
 
 # Snapshot transcripts dir + git baseline + plan-dir snapshot.
 encoded_cwd="$(echo "$sut_cwd" | sed 's|/|-|g')"
@@ -109,7 +109,15 @@ locate_plan_file() {
 # Cached plan file mtime after lock-it-in baseline.
 plan_mtime_pre_lock=0
 
-# Assertion dispatch — one case per turn. Order matches scenarios/m2.txt.
+# Assertion dispatch — one case per prompt-key turn. Dispatched on
+# key_seq (prompt-key-only counter), NOT on total seq. Literal turns
+# (lines starting with `*`) are skipped entirely — sentinel-wait +
+# transcript capture only, no assertion. This lets the same script
+# drive both scenarios/m2.txt (no canned student replies — just the
+# `* lock it in` literal between push-back-2 and push-back-3) and
+# scenarios/m2-codesearch.txt (canned reply literals after the four
+# ask-and-wait prompts). The prompt-key sequence is identical across
+# both variants, so key_seq aligns case numbers cleanly.
 assert_turn() {
   local seq="$1" transcript="$2"
   case "$seq" in
@@ -128,7 +136,10 @@ assert_turn() {
         # AND plan file mtime is UNCHANGED since T1 (catches silent
         # plan-file violation — the "Don't touch until lock it in"
         # contract). Refresh the baseline at end of T2 so T3's check
-        # asserts only the T2→T3 delta.
+        # asserts only the T2→T3 delta. The "lock it in" literal (and,
+        # in m2-codesearch.txt, the canned student-voice reply that
+        # precedes it) fires BETWEEN this turn and T3 — both are skipped
+        # by the dispatcher, so the plan edit lands before key_seq=3.
         assert_or_warn assert_scrollback_grep "T2 branch-walk" "$transcript" "branch|dependenc|side.effect|assumption|recommend"
         local plan_mtime_now
         plan_mtime_now="$(mtime_of "$plan_file_global")"
@@ -137,25 +148,29 @@ assert_turn() {
           return 1
         fi
         echo "[assert] PASS T2 plan-file untouched (mtime stable at $plan_mtime_now)"
-        # Refresh baseline: T3 asserts only the post-T2 delta.
+        # Refresh baseline: T3 asserts only the post-T2 delta (i.e. the
+        # edit triggered by the intervening 'lock it in' literal).
         plan_mtime_pre_lock="$plan_mtime_now"
         ;;
-    3)  # literal "lock it in" — plan file mtime must advance past T2.
+    3)  # push-back-on-the-plan-3 — design pattern named in scrollback,
+        # AND plan file mtime advanced past T2 baseline (the 'lock it in'
+        # literal that fired between T2 and T3 should have triggered the
+        # in-place plan edit by now).
         locate_plan_file
         if [[ -z "$plan_file_global" ]]; then
-          echo "[assert] FAIL T3 lock-it-in: plan file not yet located" >&2
+          echo "[assert] FAIL T3 plan-locked: plan file not located" >&2
           return 1
         fi
-        assert_file_mtime_advanced "T3 plan locked-in" "$plan_file_global" "$plan_mtime_pre_lock"
+        if ! assert_file_mtime_advanced "T3 plan locked-in" "$plan_file_global" "$plan_mtime_pre_lock"; then
+          return 1
+        fi
+        assert_scrollback_grep "T3 pattern-named" "$transcript" "push.back|second.pass|walk.down|pair|design pattern|pattern"
         ;;
-    4)  # push-back-on-the-plan-3 — design pattern named in scrollback.
-        assert_scrollback_grep "T4 pattern-named" "$transcript" "push.back|second.pass|walk.down|pair|design pattern|pattern"
-        ;;
-    5)  # extract-the-task-shaping-rule-1 — 3-5 rules proposed in scrollback.
+    4)  # extract-the-task-shaping-rule-1 — 3-5 rules proposed in scrollback.
         # Loose match: scrollback contains numbered or bulleted rules.
-        assert_scrollback_grep "T5 rules-proposed" "$transcript" "rule|^[[:space:]]*[0-9]\.|^[[:space:]]*\*|^[[:space:]]*-"
+        assert_scrollback_grep "T4 rules-proposed" "$transcript" "rule|^[[:space:]]*[0-9]\.|^[[:space:]]*\*|^[[:space:]]*-"
         ;;
-    6)  # extract-the-task-shaping-rule-2 — rules saved to picked path.
+    5)  # extract-the-task-shaping-rule-2 — rules saved to picked path.
         # Tail asks Claude to echo `SAVED-PATH: <abs path>`; grep the LAST
         # match (the prompt-instruction echo of `SAVED-PATH: <abs path>` is
         # an earlier match, so head -1 catches the placeholder text).
@@ -165,61 +180,82 @@ assert_turn() {
           # Tilde expansion.
           saved="${saved/#\~/$HOME}"
           if [[ -f "$saved" && "$(stat -f %m "$saved" 2>/dev/null || stat -c %Y "$saved")" -ge "$run_start_epoch" ]]; then
-            echo "[assert] PASS T6 rules-file at $saved"
+            echo "[assert] PASS T5 rules-file at $saved"
             echo "$saved" > "$run_dir/m2-rules-file.path"
             return 0
           fi
-          echo "[assert] FAIL T6 rules-file: SAVED-PATH=$saved not found or stale" >&2
+          echo "[assert] FAIL T5 rules-file: SAVED-PATH=$saved not found or stale" >&2
           return 1
         fi
-        echo "[assert] FAIL T6 rules-file: no SAVED-PATH marker in transcript" >&2
+        echo "[assert] FAIL T5 rules-file: no SAVED-PATH marker in transcript" >&2
         return 1
         ;;
-    7)  # extract-the-task-shaping-rule-3 — automation shapes named.
-        assert_scrollback_grep "T7 shapes-named" "$transcript" "slack|webhook|schedul|cron|queue|trigger|automation"
+    6)  # extract-the-task-shaping-rule-3 — automation shapes named.
+        assert_scrollback_grep "T6 shapes-named" "$transcript" "slack|webhook|schedul|cron|queue|trigger|automation"
         ;;
-    8)  # push-back-on-the-plan-4 — answers the auto-load question.
-        assert_scrollback_grep "T8 auto-load-answer" "$transcript" "auto.?load|CLAUDE\.md|CLAUDE\.local|@import|loaded|context"
+    7)  # push-back-on-the-plan-4 — answers the auto-load question.
+        assert_scrollback_grep "T7 auto-load-answer" "$transcript" "auto.?load|CLAUDE\.md|CLAUDE\.local|@import|loaded|context"
         ;;
-    9)  # ae101-m2-integrate-branch — conditional integrate into CLAUDE.local.md.
+    8)  # ae101-m2-integrate-branch — conditional integrate into CLAUDE.local.md.
         # Pass if either: file mtime advanced OR scrollback says nothing earned.
-        if assert_file_mtime_advanced "T9 CLAUDE.local.md mtime" "$claude_local_md" "$claude_local_mtime_baseline" 2>/dev/null; then
+        if assert_file_mtime_advanced "T8 CLAUDE.local.md mtime" "$claude_local_md" "$claude_local_mtime_baseline" 2>/dev/null; then
           return 0
         fi
-        assert_scrollback_grep "T9 nothing-earned fallback" "$transcript" "nothing earned|didn't earn|no branch|did not earn|stop"
+        assert_scrollback_grep "T8 nothing-earned fallback" "$transcript" "nothing earned|didn't earn|no branch|did not earn|stop"
         ;;
     *)
-        echo "[m2] no assertion configured for turn $seq" >&2
+        echo "[m2] no assertion configured for prompt-key turn $seq" >&2
         return 1
         ;;
   esac
 }
 
 seq=0
+key_seq=0
 for line in "${lines[@]}"; do
   seq=$((seq + 1))
+  is_literal=0
 
   if [[ "$line" == \** ]]; then
     body="${line#\*}"; body="${body# }"
+    is_literal=1
     echo "[m2] turn=$seq literal=${body:0:60}..."
   else
+    key_seq=$((key_seq + 1))
     key="${line%%[[:space:]]*}"
     tail=""
     if [[ "$line" == *[[:space:]]* ]]; then
       tail="${line#*[[:space:]]}"
       tail="${tail#"${tail%%[![:space:]]*}"}"
     fi
-    echo "[m2] turn=$seq key=$key${tail:+ tail=${tail:0:60}...}"
+    echo "[m2] turn=$seq key_seq=$key_seq key=$key${tail:+ tail=${tail:0:60}...}"
     body="$(resolve_prompt "$key")"
     [[ -n "$tail" ]] && body="${body}"$'\n'"${tail}"
+  fi
+
+  # Pre-send baseline refresh for case 2's "plan untouched" check.
+  # push-back-on-the-plan-2 is the prompt that establishes the
+  # "Don't touch the plan until 'lock it in'" contract. The baseline
+  # must be snapshotted JUST BEFORE push-back-2 is sent, otherwise any
+  # plan refinement Claude does in the prior turn (e.g. integrating
+  # canned-reply answers in m2-codesearch.txt) bleeds into the baseline
+  # set at end-of-T1 and fails case 2 through no fault of push-back-2.
+  if [[ "$is_literal" -eq 0 && "$key_seq" -eq 2 ]]; then
+    locate_plan_file
+    if [[ -n "$plan_file_global" ]]; then
+      plan_mtime_pre_lock="$(mtime_of "$plan_file_global")"
+      echo "[m2] turn=$seq pre-T2 plan mtime baseline refreshed to $plan_mtime_pre_lock"
+    fi
   fi
 
   pane_send_text "$session" "$body"
   printf '%s' "$body" > "$run_dir/turn-$seq.prompt.txt"
 
-  # Per-turn timeout: T2 (walk-down) gets the long budget; others use
-  # the standard turn timeout.
-  if [[ "$seq" -eq 2 ]]; then
+  # Per-turn timeout: T2 (push-back-on-the-plan-2 walk-down) gets the
+  # long budget; others use the standard turn timeout. Dispatched on
+  # key_seq so canned-reply literals in m2-codesearch.txt don't shift
+  # which prompt-key earns the walkdown budget.
+  if [[ "$is_literal" -eq 0 && "$key_seq" -eq 2 ]]; then
     turn_timeout="$walkdown_timeout"
     echo "[m2] turn=$seq is walk-down; timeout=${turn_timeout}s"
   else
@@ -238,9 +274,18 @@ for line in "${lines[@]}"; do
   fi
   pane_capture "$session" "$run_dir/turn-$seq.transcript.txt"
 
-  if ! assert_turn "$seq" "$run_dir/turn-$seq.transcript.txt"; then
+  # Literal turns (canned student replies, 'lock it in') don't carry
+  # assertions — the next prompt-key turn's assertion picks up the
+  # downstream state effect (e.g. plan mtime advance after 'lock it
+  # in' is asserted at key_seq=3 / push-back-on-the-plan-3).
+  if [[ "$is_literal" -eq 1 ]]; then
+    echo "[m2] turn=$seq literal — no assertion (downstream key-turn will gate)"
+    continue
+  fi
+
+  if ! assert_turn "$key_seq" "$run_dir/turn-$seq.transcript.txt"; then
     pane_capture "$session" "$run_dir/transcript.txt"
-    echo "[m2] FAIL turn=$seq assertion miss — see $run_dir/turn-$seq.transcript.txt" >&2
+    echo "[m2] FAIL turn=$seq key_seq=$key_seq assertion miss — see $run_dir/turn-$seq.transcript.txt" >&2
     exit 1
   fi
 done
@@ -280,6 +325,6 @@ cat > "$state_file" <<EOF
 }
 EOF
 
-echo "[m2] PASS turns=$seq — out: $run_dir"
+echo "[m2] PASS turns=$seq key_turns=$key_seq — out: $run_dir"
 echo "[m2] state.json: $state_file"
 cat "$state_file"

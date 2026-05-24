@@ -1,8 +1,10 @@
 # Pre-cohort punchlist, Agents 101
 
-Everything that needs to land before the first paying Agents 101 cohort. Grouped by kind of work, not by module.
+> **CLOSED = DELETE THE BULLET. Not "annotate done." Not "rewrite as smaller follow-up." Not "update with what landed." DELETE.**
+>
+> Git log is the history. This file is current state. A closed bullet rewritten as adjacent work is a NEW bullet pretending to be progress, surface the new work cleanly under a real section, or don't add it. If the new work isn't pre-cohort scope, it doesn't belong in this file at all.
 
-Delete items when done. Git is the history; this file is current state.
+Everything that needs to land before the first paying Agents 101 cohort. Grouped by kind of work, not by module.
 
 ## 1. Three-persona sim sweep
 

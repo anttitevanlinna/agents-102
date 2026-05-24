@@ -249,7 +249,7 @@ The most common AE101 failure is oversized task selection. Push early. "Not a ty
 
 After delivery, capture friction where editors will see it. Cohort-specific notes belong in the customer surface. Structural fixes belong in this file or the module files. Delete closed TODOs; git is the history.
 
-If a prompt, example, timing move, or fallback improved the session, feed it back into the content loop after class. Capture mechanism is being designed, see `pre-cohort-todos.md`. Until it lands, don't rely on memory.
+If a prompt, example, timing move, or fallback improved the session, feed it back into the content loop after class. Capture flows through the delivery partner (ArcticRex) and routes back as the run-summary + per-module raw files pattern (see existing punchlist entries under *"From 2026-05-19 cohort run"* in `pre-cohort-todos.md` for the shape). Don't rely on memory.
 
 <!-- maintainer -->
 

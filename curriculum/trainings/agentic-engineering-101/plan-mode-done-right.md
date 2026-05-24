@@ -68,7 +68,7 @@ At M3, the same move goes into durable infrastructure: the judges and gates you 
 
 Ask Claude where it wrote the plan file, note the path; M3 reads it. Close this session when the second read lands. M3 opens fresh and runs security skills against the M2 feature; if it doesn't have an external or user-facing surface, swap to something from your backlog that does.
 
-## Pre-reads for Module 3
+## Pre-reads before Module 3
 
 Optional. Lands the modern agentic-security frame before STRIDE and access-control.
 

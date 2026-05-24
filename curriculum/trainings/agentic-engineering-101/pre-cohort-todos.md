@@ -1,6 +1,10 @@
 # Pre-cohort punchlist, AE101 M1–M6
 
-Open decisions before the first paying cohort. Module files carry zero TODOs; this is the single tracking surface. Delete items when done, git is the history, this file is current state.
+> **CLOSED = DELETE THE BULLET. Not "annotate done." Not "rewrite as smaller follow-up." Not "update with what landed." DELETE.**
+>
+> Git log is the history. This file is current state. A closed bullet rewritten as adjacent work is a NEW bullet pretending to be progress, surface the new work cleanly under a real section, or don't add it. If the new work isn't pre-cohort scope (M1–M6 done-done), it doesn't belong in this file at all.
+
+Open decisions before the first paying cohort. Module files carry zero TODOs; this is the single tracking surface.
 
 Sim sweeps and platform-capability checks are not tracked here. The `curriculum-pre-ship-audit` skill auto-fires on touched files; `check_platform_and_boundaries.md` fires on platform claims at content-time. **Per-class verdicts (PASS / REVISE / grandfathered) live in each module's own `**Quality:**` block**, `update-quality.sh` stamps both PASS and REVISE with the instance-JSON path so a successor can grep Quality blocks for state without consulting this file.
 
@@ -12,7 +16,6 @@ Sim sweeps and platform-capability checks are not tracked here. The `curriculum-
 - **`the-loop-has-a-name.md`**, `/schedule` and `/loop` capability recheck via `claude-code-guide` within two weeks of any cohort date. Delivery-time exercise, not a content-time check.
 - **`arc-retrospective.md`**, confirm Agent-tool sub-task read of training-arc artefacts is reliable enough to ground the note. If flaky, route through main conversation with the same quote rule.
 - **Worked-example skill triplet** (sharpened-verifier / LLM-judge / gap-finder) for Nerd's M6 reference library, by engineer archetype. First cohort outputs may seed these; track explicitly so it doesn't fall through.
-- **Ramp three numbers re-verify** in `supplementary/how-the-best-do-ci-cd.md` (350+ shared skills / 99.5% AI-active / 84% coding agents weekly). Source swapped from paywalled X.com to Lenny Rachitsky write-up at `creatoreconomy.so/p/inside-ramp-...`; live re-verify + maintainer-block stamp before first cohort.
 
 ### From M5+M6 pre-ship audit 2026-05-15
 
@@ -100,11 +103,7 @@ Four-bucket sweep (modules + prework + onboarding / exercises / lectures + refer
 
 ## Cross-cutting ops
 
-- **Section-name canonicalisation across AE101 module files.** Audit (2026-05-22) found `## Next` / `## Bring to Module N` / `## Homework` used inconsistently across M1–M6; canonical name per `curriculum/CLAUDE.md` is `## Bridge`. Content quality is fine, forward-frame focus, no past-tense recap of what just shipped, "Bring to..." stakes-line shape consistent. Decision: canonicalise to `## Bridge` everywhere (per curriculum/CLAUDE.md) OR update curriculum/CLAUDE.md to allow `## Next` + `## Bring to Module N` as the AE101 shape. Compound-candidate rule for `check_pedagogy.md` flagged.
-
 - **Architecture integrity reference**, write `reference/architecture-under-agentic-velocity.md`: how teams preserve architectural intent while agents make local changes quickly. Survey practitioner patterns (Klaassen / Curran on review structure, Cherny on stop-hooks as architectural enforcement, Ramp's skill marketplace as crystallized convention). Candid about being a survey, not a settled answer. Source: Uncle Bob (Robert C. Martin) on architecture + agentic coding. Separate session.
-
-- **Trainer post-cohort feedback capture mechanism**, design how trainer's classroom observations route into module-file edits. `trainer-guide.md` § Feedback Loop currently points at this file (*"Capture mechanism is being designed, see pre-cohort-todos.md"*). Decision deferred 2026-05-14 to after first cohort runs; first cohort will reveal what shape is actually needed.
 
 ## Memory / compendium hygiene (out-of-AE101-scope; parked here for visibility)
 

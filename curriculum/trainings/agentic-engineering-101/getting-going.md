@@ -47,7 +47,7 @@ Everyone names a trick first; the training picks up from there.
 ## Next
 Module 2 is where plan mode earns its keep: multi-file work, a second pass that pressure-tests the plan, and the catches that come with approving more scope than you'd cold-authorize. `./CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `./CLAUDE.md` if this repo has one; both concatenate into context). Close this session when the ticket lands; Module 2 opens fresh in the same repo.
 
-## Homework after Module 1, between-module reading
+## Pre-reads before Module 2
 
 Optional. Skipping either piece does not break Module 2. Both sit in the gap between Module 1 and Module 2; engineers who do them arrive at Module 2 with practitioner voice and worktree-readiness as recognition rather than novelty.
 

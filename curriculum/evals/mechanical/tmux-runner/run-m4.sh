@@ -122,6 +122,8 @@ for line in "${lines[@]}"; do
     turn_timeout="$standard_timeout"
   fi
 
+  # TODO: if a scenario adds a pure slash command, wire `is_slash_only` +
+  # `fake_sentinel_after_render` from lib/sync.sh here. See run-m1.sh.
   if ! wait_for_turn "$sentinel_dir" "$seq" "$turn_timeout"; then
     pane_capture "$session" "$run_dir/transcript.txt"
     echo "[m4] FAIL turn=$seq (sentinel timeout after ${turn_timeout}s) — see $run_dir/transcript.txt" >&2

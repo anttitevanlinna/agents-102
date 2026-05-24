@@ -34,7 +34,7 @@ if [[ -z "$sut_cwd" || ! -d "$sut_cwd" ]]; then
   exit 2
 fi
 
-scenario="$HERE/scenarios/m1.txt"
+scenario="${SCENARIO:-$HERE/scenarios/m1.txt}"
 [[ -f "$scenario" ]] || { echo "missing scenario: $scenario" >&2; exit 2; }
 
 run_id="$(date +%Y%m%d-%H%M%S)-$$"
@@ -80,13 +80,20 @@ done < "$scenario"
 total=${#lines[@]}
 echo "[m1] turns=$total"
 
+# Working-tree porcelain snapshot at end of T4, used by T6 to detect
+# that the deeper TDD pass actually added something beyond T4's diff
+# (rather than the prompt being a no-op).
+porcelain_after_t4=""
+
 # Assertion dispatch — one case per turn. See scenarios/m1.txt for
 # the prompt order. Each case must set FAIL=1 on miss.
 assert_turn() {
   local seq="$1" transcript="$2"
   case "$seq" in
     1)  # orient-and-introspect-1 — repo shape narrative in scrollback.
-        assert_scrollback_grep "T1 orient" "$transcript" 'src/|package\.json|index\.html'
+        # SUT-agnostic: any file-shape signal (extension or path-with-slash).
+        # The bet: a real orientation names files; a bluff doesn't.
+        assert_scrollback_grep "T1 orient" "$transcript" '\.(go|js|ts|jsx|tsx|py|rs|java|rb|c|cpp|h|md|sh|toml|yaml|yml|json|html|css)\b|[a-z]+/[a-z]'
         ;;
     2)  # orient-and-introspect-2 — read-self-report names skipped files.
         assert_scrollback_grep "T2 introspect" "$transcript" "didn't|skipped|did not read|chose not"
@@ -95,7 +102,11 @@ assert_turn() {
         assert_scrollback_grep "T3 /context" "$transcript" "context|tokens|window|free space|used"
         ;;
     4)  # fix-tests-first-1 — first-pass TDD diff: working tree must be dirty.
-        assert_git_dirty "T4 first-pass dirty" "$sut_cwd"
+        if assert_git_dirty "T4 first-pass dirty" "$sut_cwd"; then
+          porcelain_after_t4="$(cd "$sut_cwd" && git status --porcelain)"
+          return 0
+        fi
+        return 1
         ;;
     5)  # fix-tests-first-2 — explicit "Don't change anything yet."
         # Soft observation only: scrollback names a deeper layer.
@@ -104,8 +115,19 @@ assert_turn() {
     6)  # fix-tests-first-3 — TDD properly. Save-gate: prompt says
         # "Show me the diff before you commit"; Claude shows + asks for
         # one-or-two-commits / PR-or-hold. Commit lands at T7 (literal
-        # approval), not here. Working tree must still be dirty.
-        assert_git_dirty "T6 second-pass dirty (commit pending approval)" "$sut_cwd"
+        # approval), not here. Two checks: working tree dirty AND
+        # porcelain advanced past T4 (deeper pass added something —
+        # catches the "Claude did nothing new in T6" failure mode).
+        if ! assert_git_dirty "T6 second-pass dirty (commit pending approval)" "$sut_cwd"; then
+          return 1
+        fi
+        local porcelain_now
+        porcelain_now="$(cd "$sut_cwd" && git status --porcelain)"
+        if [[ "$porcelain_now" == "$porcelain_after_t4" ]]; then
+          echo "[assert] FAIL T6 porcelain unchanged from T4 — deeper TDD pass produced nothing new" >&2
+          return 1
+        fi
+        echo "[assert] PASS T6 porcelain advanced past T4"
         ;;
     7)  # literal "One commit, no PR" — save-gate approval. New commit.
         assert_new_commit "T7 commit after approval" "$sut_cwd" "$baseline_sha"
@@ -150,12 +172,11 @@ for line in "${lines[@]}"; do
 
   # Slash commands (body is a pure slash command with no args) are
   # client-side renders — no LLM call, no Stop hook fires, no sentinel.
-  # Sleep for the render to complete, fabricate the sentinel so downstream
-  # counts stay consistent, then capture the pane as the turn transcript.
-  if [[ "$body" =~ ^/[a-zA-Z][a-zA-Z0-9-]*$ ]]; then
-    echo "[m1] turn=$seq slash-command (no sentinel) — sleeping ${CLAUDE_RUNNER_SLASH_SLEEP:-3}s for render"
-    sleep "${CLAUDE_RUNNER_SLASH_SLEEP:-3}"
-    touch "$sentinel_dir/turn-$seq.done"
+  # The lib helper sleeps for render then fabricates the sentinel so
+  # downstream counts stay consistent.
+  if is_slash_only "$body"; then
+    echo "[m1] turn=$seq slash-command (no sentinel) — bridging via lib"
+    fake_sentinel_after_render "$sentinel_dir" "$seq" "${CLAUDE_RUNNER_SLASH_SLEEP:-3}"
   elif ! wait_for_turn "$sentinel_dir" "$seq" "$standard_timeout"; then
     pane_capture "$session" "$run_dir/transcript.txt"
     echo "[m1] FAIL turn=$seq (sentinel timeout after ${standard_timeout}s) — see $run_dir/transcript.txt" >&2

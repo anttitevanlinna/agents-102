@@ -47,6 +47,10 @@ session="runner-$run_id"
 launch_cmd="env CLAUDE_RUNNER_SENTINEL_DIR=$sentinel_dir ${CLAUDE_CMD:-claude}"
 warmup="${CLAUDE_RUNNER_WARMUP:-10}"
 standard_timeout="${CLAUDE_RUNNER_TIMEOUT:-900}"
+# T2 (push-back-on-the-plan-2 walk-down) can run long on real codebases —
+# pre-cohort-todos notes a 13m15s walk-down on a real codebase. Give it
+# more headroom than the standard turn budget.
+walkdown_timeout="${CLAUDE_RUNNER_M2_WALKDOWN_TIMEOUT:-1500}"
 
 # Snapshot transcripts dir + git baseline + plan-dir snapshot.
 encoded_cwd="$(echo "$sut_cwd" | sed 's|/|-|g')"
@@ -120,10 +124,23 @@ assert_turn() {
         return 1
         ;;
     2)  # push-back-on-the-plan-2 — explicit "don't touch the plan yet".
-        # Soft check: scrollback contains branch-walk language.
+        # Two checks: scrollback contains branch-walk language (soft),
+        # AND plan file mtime is UNCHANGED since T1 (catches silent
+        # plan-file violation — the "Don't touch until lock it in"
+        # contract). Refresh the baseline at end of T2 so T3's check
+        # asserts only the T2→T3 delta.
         assert_or_warn assert_scrollback_grep "T2 branch-walk" "$transcript" "branch|dependenc|side.effect|assumption|recommend"
+        local plan_mtime_now
+        plan_mtime_now="$(mtime_of "$plan_file_global")"
+        if [[ "$plan_mtime_now" -gt "$plan_mtime_pre_lock" ]]; then
+          echo "[assert] FAIL T2 plan-file touched before 'lock it in' (mtime $plan_mtime_pre_lock -> $plan_mtime_now)" >&2
+          return 1
+        fi
+        echo "[assert] PASS T2 plan-file untouched (mtime stable at $plan_mtime_now)"
+        # Refresh baseline: T3 asserts only the post-T2 delta.
+        plan_mtime_pre_lock="$plan_mtime_now"
         ;;
-    3)  # literal "lock it in" — plan file mtime must advance.
+    3)  # literal "lock it in" — plan file mtime must advance past T2.
         locate_plan_file
         if [[ -z "$plan_file_global" ]]; then
           echo "[assert] FAIL T3 lock-it-in: plan file not yet located" >&2
@@ -200,15 +217,23 @@ for line in "${lines[@]}"; do
   pane_send_text "$session" "$body"
   printf '%s' "$body" > "$run_dir/turn-$seq.prompt.txt"
 
+  # Per-turn timeout: T2 (walk-down) gets the long budget; others use
+  # the standard turn timeout.
+  if [[ "$seq" -eq 2 ]]; then
+    turn_timeout="$walkdown_timeout"
+    echo "[m2] turn=$seq is walk-down; timeout=${turn_timeout}s"
+  else
+    turn_timeout="$standard_timeout"
+  fi
+
   # Slash commands (body is a pure slash command with no args) are
   # client-side renders — no LLM call, no Stop hook fires, no sentinel.
-  if [[ "$body" =~ ^/[a-zA-Z][a-zA-Z0-9-]*$ ]]; then
-    echo "[m2] turn=$seq slash-command (no sentinel) — sleeping ${CLAUDE_RUNNER_SLASH_SLEEP:-3}s for render"
-    sleep "${CLAUDE_RUNNER_SLASH_SLEEP:-3}"
-    touch "$sentinel_dir/turn-$seq.done"
-  elif ! wait_for_turn "$sentinel_dir" "$seq" "$standard_timeout"; then
+  if is_slash_only "$body"; then
+    echo "[m2] turn=$seq slash-command (no sentinel) — bridging via lib"
+    fake_sentinel_after_render "$sentinel_dir" "$seq" "${CLAUDE_RUNNER_SLASH_SLEEP:-3}"
+  elif ! wait_for_turn "$sentinel_dir" "$seq" "$turn_timeout"; then
     pane_capture "$session" "$run_dir/transcript.txt"
-    echo "[m2] FAIL turn=$seq (sentinel timeout after ${standard_timeout}s) — see $run_dir/transcript.txt" >&2
+    echo "[m2] FAIL turn=$seq (sentinel timeout after ${turn_timeout}s) — see $run_dir/transcript.txt" >&2
     exit 1
   fi
   pane_capture "$session" "$run_dir/turn-$seq.transcript.txt"

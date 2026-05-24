@@ -86,6 +86,10 @@ while IFS= read -r line || [[ -n "$line" ]]; do
   pane_send_text "$session" "$body"
   echo "$body" > "$run_dir/turn-$seq.prompt.txt"
 
+  # TODO: if a scenario adds a pure slash command (`/context`, `/clear`,
+  # `/memory`), wire `is_slash_only` + `fake_sentinel_after_render` from
+  # lib/sync.sh here — slash commands don't fire the Stop hook so the
+  # sentinel wait below will hang. See run-m1.sh for the pattern.
   if ! wait_for_turn "$sentinel_dir" "$seq" 600; then
     pane_capture "$session" "$run_dir/transcript.txt"
     echo "[runner] FAIL turn=$seq (sentinel timeout) — see $run_dir/transcript.txt" >&2

@@ -101,6 +101,12 @@ while IFS= read -r line; do main_lines+=("$line"); done < <(parse_scenario "$mai
 quality_lines=()
 while IFS= read -r line; do quality_lines+=("$line"); done < <(parse_scenario "$quality_scenario")
 
+# TODO: if a scenario adds a pure slash command (`/clear` etc), gate the
+# race-loop sentinel waits with `is_slash_only` from lib/sync.sh and
+# call `fake_sentinel_after_render` so the loop advances. Today's m3
+# scenarios contain no slash commands, so the race loop is safe; but
+# `ae101-m3-clear-session.md` would need this wiring if added.
+
 main_total=${#main_lines[@]}
 quality_total=${#quality_lines[@]}
 echo "[m3] main turns=$main_total quality turns=$quality_total"

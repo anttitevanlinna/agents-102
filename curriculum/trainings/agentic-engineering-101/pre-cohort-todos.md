@@ -19,6 +19,7 @@ Sim sweeps and platform-capability checks are not tracked here. The `curriculum-
 - **`arc-retrospective.md`**, confirm Agent-tool sub-task read of training-arc artefacts is reliable enough to ground the note. If flaky, route through main conversation with the same quote rule.
 - **Worked-example skill triplet** (sharpened-verifier / LLM-judge / gap-finder) for M6 reference library, by engineer archetype. First cohort outputs may seed these; track explicitly so it doesn't fall through.
 - **`[watch]` `extract-the-task-shaping-rule-2` save-path ambiguity (M2).** Prompt asks Claude to "propose two-three plausible paths" for the rules file and pick one. Codesearch M2 dry-run (2026-05-24) had the agent integrate the new rules INTO the existing `CLAUDE.local.md` (created at M1's compound), a legit "integrate, don't append" reading, but it means `m2_rules_file` and `m2_claude_local_md` in run-m2.sh's state.json point at the same path. Lemmings runs typically save to a distinct file. **Accepted as-is for first cohort.** Fires if any downstream module prompt (M3 sharpen-skill, M4 walk-and-send-off, M5 diagnose-and-resend, M6 spot-gaps) loads "the rules file" and `CLAUDE.local.md` as separate inputs and silently de-dupes or overwrites, observe whether any module behaves differently when the two paths collapse to one.
+- **`[watch]` `ae101-m4-commit-starting-point` run-coordinates land at bottom of task.md (M4).** Prompt says "*append* a protected block" → coordinates go to end-of-file. The frontmatter `note` names the purpose as "later session can recover this run without searching", but a reader doing `cat task.md | head` scrolls past the entire task body before finding the coordinates. Codesearch M4 dry-run (2026-05-24) confirmed the agent appends faithfully. **Accepted as-is for first cohort.** Fires if any downstream M5/M6 prompt (worktree-setup, diagnose-and-resend-1/2, spot-gaps-1, arc-retrospective-1, agents-that-build-agents-1) silently fails to locate the coordinates, OR if a cohort student takes more than a few seconds to find them. Fix would change "append" → "prepend" / "insert at top".
 
 ### From M5+M6 pre-ship audit 2026-05-15
 
@@ -44,10 +45,6 @@ Landed 2026-05-22: M5 plan.md disambiguation (`diagnose-and-resend.md:79` *"not 
 - **M5, `plan.md` disambiguation in Phase 4.** Landed 2026-05-22 as a one-sentence parenthetical at `exercises/diagnose-and-resend.md:79`. Pre-cohort: confirm the disambiguation reads clean on a live walk-through.
 
 - **M6, Phase 2 pacing.** Learner noted (M6 10:28Z) *"Phase 2 takes quite long."* No body change made, per the steer-don't-pre-empt rule (compounded 2026-05-22), a pre-emption-shaped "you'll be here a while" callout would rot the moment the underlying mechanics change. Decision: wait for first-cohort delivery; if pacing pressure still surfaces, add a *steering* callout (notice → ask Claude what's slow → relax the constraint) rather than the expectation-setting line. Source: [M6 raw, 10:28Z](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M6.md).
-
-### Site / renderer (not curriculum body)
-
-- **M6, italic font readability.** Learner reported (M6 10:05Z) *"italic font is hard to read at the moment. Needs size bump or other treatment."* CSS change in `site/layouts/curriculum.css`, bump italic size or restyle (heavier weight, different colour, underline). Touches all italic prose, not just M6. Source: [M6 raw, 10:05Z](https://github.com/ArcticRexOrg/ai-training-internal/blob/main/runs/2026-05-19-agentic-engineering-101-arcticrex/modules/M6.md).
 
 ### Structural design conversations (separate sessions, not patches)
 

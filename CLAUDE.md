@@ -1,82 +1,58 @@
 # Agents 102 — Continuous Research System
 
-Curated knowledge engine for the agentic transformation. Multi-user research system that answers the CTO question with evidence, not vendor stories. **Curate → Connect → Advise.**
+Curated knowledge engine for the agentic transformation. **Curate → Connect → Advise.**
 
-## Where to look next
+- **Research** (OODA, findings, KB, signals) → [`continuous-research/CLAUDE.md`](continuous-research/CLAUDE.md). Auto-loads under `continuous-research/`.
+- **Curriculum** → [`curriculum/CLAUDE.md`](curriculum/CLAUDE.md) + `/content-creation`.
+- **Strategy** (value prop, buyer, sequence, funnel, IP) → `bosser-strategy` skill.
+- **Research results** → `continuous-research/synthesis/index.md`. Don't hardcode findings here.
 
-- **Doing research (OODA cycles, writing findings, querying the KB, capturing user signals) → read [`continuous-research/CLAUDE.md`](continuous-research/CLAUDE.md).** File map, methodology, research quality rules, user-signal capture live there. Auto-loads when editing files under `continuous-research/`.
-- **Doing curriculum work → read [`curriculum/CLAUDE.md`](curriculum/CLAUDE.md)** + invoke `/content-creation`.
-- **Business model / strategy → `strategy/` directory.**
-- **Research results live in synthesis files, not here.** Read `continuous-research/synthesis/index.md` for current state. Do not hardcode findings in this CLAUDE.md — they go stale.
+## Permanent goals
 
-## Permanent Goals
+1. **Continuously monitor the landscape.** KB more current than any individual.
+2. **Find insights not on page-one Google.** Practitioner-grounded convergence + cross-domain meta + evidence-ladder-tested.
+3. **Serve any builder leader, not only Antti.** Output valuable to a CTO who's never heard of Bosser.
+4. **Respond to user signals.** Questions / corrections / validations = highest-priority research input.
 
-Standing objectives for every session, every agent, every cycle. Not milestones — these never complete.
+## Strategic frame (one-liners)
 
-1. **Continuously monitor the landscape.** Run the research loop. Track platforms, practitioners, deployments, failures. The knowledge base must be more current than any individual person can maintain. If the research system stops, the entire value proposition decays.
+- **Value prop:** competence makes the question askable. Without it, the CTO chooses between marketing stories.
+- **Buyer:** the builder leader (CEO / CTO / SVP HR) who wants to own the transformation. Psychographic. Target: large Nordic — software + traditional pursuing high digitalization.
+- **Sequence:** competence → discovery → context → platform. Tools commoditize; organisational learning rate is the ceiling.
+- **Coding agents = meta-platform.** Claude Code + Codex compound; other platforms can't extend themselves.
+- **80/20:** 80% frontier research (OODA) + 20% peer premium (user signals).
+- **Funnel:** Newsletter ↔ Survey → DM.
 
-2. **Find insights and answers not available with simple internet search.** Google returns vendor press releases, analyst predictions, and rewritten announcements. We produce practitioner-grounded convergence patterns, cross-domain meta-findings, and evidence-ladder-tested claims. If a finding could be assembled from the first page of Google results, it's not worth publishing.
+Full strategic context → `bosser-strategy` skill.
 
-3. **Serve agentic industry leaders — not only Antti.** The knowledge base, insights, and training serve any builder leader navigating the agentic transformation. Antti is the practitioner and curator, not the sole customer. Every output should be valuable to a CTO who has never heard of Bosser.
+## Multi-user hygiene
 
-4. **Respond to what users actually need.** User signals (questions, corrections, validations) are the highest-priority research input. The system gets smarter because users steer it — not because researchers guess what matters.
+- **Session start:** `git pull`.
+- **During:** commit + push signal files every 30–60 min.
+- **Session end:** commit + push uncommitted signals.
+- **Branching:** `main` = shared KB. OODA cycle can push directly (quality gates enforced). Users + experimental → branches; Antti merges.
+- **Never `git stash` unless Antti asks.** Trunk-based, multi-session. WIP is deliberate. `git pull` complains → `git fetch` or commit; don't manufacture clean state. No rebasing.
 
-## Strategic frame
+## Copyright
 
-**Value prop:** The hardest problem isn't choosing an agent platform — it's knowing what questions to ask. Without agent competence, a CTO is choosing between marketing stories, not between real capabilities. We build the competence that makes the question askable. Teach everyone to think. Scale for future. With your own structure.
-
-**Buyer:** The builder leader — CEO/CTO/SVP HR who wants to own the transformation, not outsource it. Psychographic, not a title. Target: large Nordic companies in two segments: (1) software companies, (2) traditional companies striving for high digitalization.
-
-**Core insight:** The agentic transformation is different from digital/agile/cloud. Without agent competence, there is no vision — just governance of an abstraction. We are the prerequisite, not the complement. The sequence matters: **Competence → discovery → context → platform.** Skip to platform selection and you're choosing between vendor narratives. Every company runs 200 processes — vendors will sell you automation for the one process they own. The other 199 are yours, and you need agent competence to even know which 5 to try first. **Tools and connectors commoditize — the real ceiling is organizational learning rate.** Training raises the ceiling. Everything else raises the floor.
-
-**Coding agents are the meta-platform.** Claude Code and Codex are structurally different from every other agent platform because they compound. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents build the MCP server, the agent that uses it, the eval that tests it, and the next agent. Each cycle makes the next cycle faster. They also destroy every alternative at information retrieval and context creation in real enterprise environments — reading repos, crawling docs, querying databases, analyzing APIs, synthesizing across sources, then outputting the structured artifacts that encode context for other agents. The human provides judgment; the coding agent provides speed. Together they raise the ceiling faster than any other combination.
-
-**80/20 curation model:** 80% frontier research (continuous OODA cycles) + 20% peer premium (user signals, patterns across engagements). The knowledge base compounds. Competitive moat is not any single finding, but the live, structured, practitioner-grounded system that stays current.
-
-**Marketing funnel:** Newsletter ("Deploying Agents") ↔ Survey (Agentic Readiness Check) → DM. Both entry points cross-feed each other. Full plan in the private `bosser-strategy` skill.
-
-## Multi-User Hygiene
-
-This is a shared, multi-user repository. Research runs continuously on remote branches.
-
-- **At session start:** `git pull` to get the latest research. Other users and research agents may have committed since last session.
-- **During session:** Commit and push user signal files every 30–60 minutes of active work, or whenever a meaningful signal is captured.
-- **At session end:** Always commit any uncommitted signal files and push. A user's questions and comments are lost to the research system if they stay local.
-- **Branching model:** `main` is the shared knowledge base — the source of truth. Research agents running the OODA cycle prompt can push directly to main (cycle prompt enforces quality gates). Users and experimental work should use branches; Antti reviews and merges those.
-- **Never `git stash` unless Antti explicitly asks.** This is a trunk-based, multi-session workflow — uncommitted changes are deliberate WIP carried across sessions. Stashing is invisible state the next session won't know to pop: silent work-loss risk. If `git pull` complains about unstaged changes, just `git fetch` (or commit the WIP if it's ready); don't manufacture clean-state for the pull's sake. No rebasing either — plain `git pull` (merge) is the default here.
-
-## Copyright — two-tier rule
-
-- **Proprietary scope:** `curriculum/`, `content/`, `site/`, `memory/`, `evals/`, `scripts/`, `.claude/`, and root docs (`content-style-guide.md`, `README.md`, `CLAUDE.md`, `PROMPT.md`) are **© 2026 Bosser Oy, all rights reserved.** Any new module, exercise, lecture, article, site asset, memory page, eval, script, or Claude Code skill under those paths is automatically covered. Do NOT reuse without written permission. Do NOT reproduce training content from external sources into those paths.
-- **Public scope:** `continuous-research/` is the open knowledge base. Read, quote, fork, and contribute under `continuous-research/LICENSE.md`. Contributions grant Bosser Oy and the community a perpetual, non-exclusive license.
-- **Per-folder notices:** Each proprietary top-level folder carries a short `COPYRIGHT.md` pointing back to the root `COPYRIGHT.md`. When creating a new proprietary folder, add one. Do NOT add one to `continuous-research/`.
-- **When in doubt, the root [`COPYRIGHT.md`](COPYRIGHT.md) is the source of truth.**
+Proprietary (`curriculum/`, `content/`, `site/`, `memory/`, `evals/`, `scripts/`, `.claude/`, root docs) → © 2026 Bosser Oy, all rights reserved. Each proprietary top-level folder carries `COPYRIGHT.md`. Public: `continuous-research/` under `continuous-research/LICENSE.md`. In doubt → root [`COPYRIGHT.md`](COPYRIGHT.md).
 
 ## Subagent rule injection
 
-**Canonical sources:** `.claude/rules/research-rules.md` (research subagents) and `.claude/rules/content-rules.md` (content subagents — routes to the matching `memory/check_*.md` compendium).
+Subagents don't read CLAUDE.md. Prepend the canonical rule file to every launch:
+- Research → `.claude/rules/research-rules.md`
+- Content → `.claude/rules/content-rules.md` (routes to `memory/check_*.md`)
 
-Every research and content subagent launch MUST read the relevant rule file and prepend its full contents verbatim to the subagent prompt. Subagents do not read CLAUDE.md. One edit to the rule file propagates to every future subagent; no copy-paste drift.
+## Orchestrator pattern
 
-## Orchestrator Pattern for Multi-File Work
+1. **Main thread = orchestrator only.** Delegate reading + analysis.
+2. **3–5 parallel subagents** by file group. Each writes structured output to disk.
+3. **Subagents write, not talk.** Main thread reads only summary files.
+4. **Synthesize from summaries** → one verdict for user.
+5. **One message, all agents.** `run_in_background: true`.
+6. **Validate sweep output at apply time** at the Edit's Read-first gate. → `memory/compounded/2026-05-18-platform-explore-sweep-validate-each-at-apply-time.md`
 
-When a task spans many files (audits, research runs, bulk edits), preserve main-thread context:
+## Self-review
 
-1. **Main thread = orchestrator only.** Do not read or process target files yourself. Delegate all file-reading and analysis to subagents.
-2. **Split work into 3–5 parallel subagents** by file group. Each agent reads its files, does the analysis, writes results to a dedicated output file (e.g., `analytics/audit-batch-{N}.md`).
-3. **Subagents write, not talk.** Structured output to disk. Main thread reads only summary files, not source files.
-4. **Synthesize from summaries.** After agents complete, main thread reads small structured output files and synthesizes a single verdict for the user.
-5. **Launch all agents in one message** to maximize parallelism. Use `run_in_background: true` so the main thread stays responsive.
-6. **Validate sweep output at apply time.** When the orchestrator pattern includes a sweep step that produces structured data for downstream bulk-apply (`requires:`/`produces:` frontmatter, source-type labels, file-renames, etc.), validate each item at the apply-time Read before the corresponding Edit. Explore agents infer from file paths, names, and selective body reads; they don't read every body. Catch the inference errors as you go, not after the bulk-apply lands. The Edit tool's "Read first" rule is the natural validation point — turn it into the validation step. Canonical source: `memory/compounded/2026-05-18-platform-explore-sweep-validate-each-at-apply-time.md`.
-
-## Self-Review Protocol
-
-At the **start of each session**, read `memory/self-review-protocol.md` § *Core heuristics* (top). Apply them before doing any work.
-
-At the **end of significant sessions**, run a self-review:
-1. Identify corrections Antti made (where my approach was redirected)
-2. Classify each correction (style, strategy, decision, process, persona)
-3. Update the correction log and heuristics in `memory/self-review-protocol.md`
-4. Recurring patterns — if the same correction appears 3+ times, escalate to a hard rule (Hard rules section) or a `check_*.md` compendium where it'll fire at generation time
-
-Goal: Antti's steering diminishes over time because I learn from each session. If I'm still making the same framing errors after 5 sessions, the protocol isn't working.
+- **Session start:** read `memory/self-review-protocol.md` § *Core heuristics*.
+- **End of significant sessions:** run self-review per `memory/self-review-protocol.md`. Recurrence 3+ → hard rule or `check_*.md`.

@@ -1,8 +1,6 @@
-# Prompt design rules
+# Prompt design
 
-Generation-time companion to `SKILL.md` for prompt-block work. Firing-moment authority is `memory/check_prompts.md` + compounded entries (`2026-04-25-prompts-*`, `2026-04-26-platform-bare-paths-renderer-rewrites.md`). This file holds only prompts.md-unique operational mechanics + pointers.
-
-For canonical shape (action lead-in, label with destination, fenced block, no `copy →`, no `*(end of prompt)*`), placeholder ban, back-reference chaining, multi-sample structural enforcement, markdown-shout ban inside fences, runtime-fork paired-divs, runtime-mechanical asymmetry, skill-by-name-not-path: see `memory/check_prompts.md`.
+`check_prompts.md` autoloads with the canonical shape (action lead-in, destination label, fenced block, placeholder ban, back-reference chaining, multi-sample enforcement, runtime-fork paired-divs, skill-by-name-not-path, etc.). Compounded sisters that don't autoload: `compounded/2026-04-25-prompts-*`, `compounded/2026-04-26-platform-bare-paths-renderer-rewrites.md`. This file holds prompts.md-unique operational mechanics.
 
 ## Agents 101-specific: prompt paths match Builder scope
 

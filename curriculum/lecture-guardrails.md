@@ -80,7 +80,7 @@ Every module follows Sharon Bowman's 4 Cs framework, adapted for hands-on-keyboa
 | Shorter trumps longer | 10-min chunks | Same — 10-min rule for facilitator talking |
 | Different trumps same | Vary activities | Alternate building → discussion → building |
 
-Canonical module file shape (Big Idea / Meta / Plug Points / Debrief / Bridge): see `curriculum/CLAUDE.md` § *Module File Shape*.
+Canonical module file shape (Big Idea / Meta / Plug Points / Debrief / Bridge): see `curriculum/module-shape.md`.
 
 ---
 

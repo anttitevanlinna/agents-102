@@ -1,259 +1,91 @@
 # Curriculum Production
 
-This CLAUDE.md governs curriculum work.
+- **Generation** (three-pass, PDCA, prompt + exercise design, simulation): `.claude/skills/content-creation/SKILL.md` via `/content-creation`.
+- **Pedagogy** (Bloom, 4 Cs, audience, throughlines): `curriculum/lecture-guardrails.md`.
+- **Long-running generation** (plan → walk away → return): `curriculum/module-design-long-running-strategy.md`.
 
-**Pointers:**
-- **For generation** (three-pass build, PDCA 8-step loop, content development rules, prompt design rules, exercise design rules, philosophy callout rules, plug point syntax, simulation protocol): see `.claude/skills/content-creation/SKILL.md` — invoked via the `/content-creation` skill. Subagents and anyone writing content must read it first.
-- **For pedagogy** (Bloom's taxonomy, 4 Cs, emergent knowledge/control/leadership, audience, throughlines, teaching principles): see `curriculum/lecture-guardrails.md`. Read before writing any module.
-- **For long-running generation sessions** (plan → walk away → return pattern, applied to generating lectures and exercises): see `curriculum/module-design-long-running-strategy.md`. Use when Antti wants to hand off a full lecture or exercise generation rather than iterate in small turns. The file compounds — every long-running session closes with a Compound step that rewrites its rules.
-
-Current state of what's built vs. what's next lives in `bosser-strategy:content-strategy.md` → "State of play" section (refreshed at the end of every significant session).
+State of play → `bosser-strategy:content-strategy.md` § *State of play*.
 
 ## Active focus
 
-**Agentic Engineering 101, M1–M3 to done-done first. Then M4–M6.**
+**AE101 M1–M3 to done-done first. Then M4–M6.**
 
-"Done-done" = Quality block at `cohort-tested` or `battle-tested`, six per-class judge SHAs pinned current, maintainer-reviewed, trainer-guide present, no open audit TODOs in `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md` scoped to that module. Anything short of that is not done — partial passes don't count.
+"Done-done" = Quality at `cohort-tested` / `battle-tested`, six per-class SHAs current, maintainer-reviewed, trainer-guide present, no open audit TODOs in `pre-cohort-todos.md` for that module.
 
-Sequence matters: don't start M4 substantive work while M1–M3 has open REVISE verdicts or grandfathered class pins. Cosmetic cross-module consistency edits on M4–M6 are fine; new exercises, new prompts, new lectures wait. When M1–M3 closes, this section flips to M4–M6.
+Don't start M4 substantive work while M1–M3 has open REVISE or grandfathered pins. Cosmetic cross-module edits on M4–M6 fine; new exercises / prompts / lectures wait.
 
-## Quality-state tagging
+## Quality
 
-Every student-facing artifact (module, exercise, lecture, prework) carries a Quality line in its maintainer block. The tag is the contract between sessions.
+Every student-facing artifact carries a Quality line. Ladder: `draft` → `compendium-audited` → `sim-passed` → `mechanical-tested` → `cohort-tested` → `battle-tested`. Orthogonal axis: `maintainer-reviewed`. Six per-class SHAs + cross_module row. Auto-degrade is touch-based, per-class.
 
-**LLM-checks ladder (cheap → expensive; each tier earns the right to spend the next):**
-`draft` → `compendium-audited` → `sim-passed` → `mechanical-tested` → `cohort-tested` → `battle-tested`.
-
-**Orthogonal axis:** `maintainer-reviewed` — Antti read end-to-end + ran prompts manually. Its own dimension-log row, never folded into LLM provenance.
-
-**Format** (top-state line + dimension log in maintainer block):
-```
-**Quality:** <top-state> <YYYY-MM-DD> (writing@<sha> story@<sha> technical@<sha> behavior@<sha> pedagogy@<sha> strategy@<sha>)
-- judges @<sha>: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
-- cross_module @<set-sha>: PASS — set=[<M(N)>, <M(N+1)>, ...]    # module-set scope; only when ≥2 modules audited together
-- maintainer-reviewed <YYYY-MM-DD> (<one-line note>)
-- sim-passed <YYYY-MM-DD> (<persona names + scores>)  # carry forward when storytelling or behavior judge regen + PASS
-- mechanical-tested <YYYY-MM-DD> (<judge-report-path> @ <short-sha> PASS)
-- cohorts: <none yet | cohort-name + date + post-cohort changes>
-```
-
-The `compendium-audited` row carries **six per-class git short-SHA pins** (refactored 2026-05-02 from a single SHA to four; expanded 2026-05-14 to six with the `pedagogy` and `strategy` judges + module-set-scoped `cross_module`). The six per-file classes mirror the compendium split:
-
-- `writing` (banned words / register / surface lints) — `check_writing.md`
-- `story` (mood / teaching moment / arc — Class A sim trace) — storytelling-class compendiums
-- `technical` (platform claims / citations / static prompt mechanics) — technical-class compendiums
-- `behavior` (per-prompt distribution-of-Claude-responses against the 15-pattern catalog — Class B sim trace) — `check_prompts.md` + behavior-class compendiums
-- `pedagogy` (module architecture + dynamics, static) — `check_pedagogy.md`
-- `strategy` (file × strategy-doc alignment, static) — `check_strategy_tie_in.md`
-
-Each class's SHA is the file's git short-SHA at the moment that class judge passed.
-
-**Cross_module** is a separate axis (its own dimension row), not a per-file pin — it fires at module-set scope (`/curriculum-pre-ship-audit` when ≥2 modules audited together) and stamps each module in the set with `- cross_module @<set-sha>: PASS — set=[...]`. Touching any module in the set degrades the row for every member; the row is restored when the set re-audits clean.
-
-**Key rules:**
-- **Auto-degrade is touch-based, not time-based.** File touched after audit date → that tier and higher degrade. Cosmetic edits below `<!-- maintainer -->` don't degrade.
-- **Per-class auto-degrade.** Touching a writing-only line invalidates only `writing@<sha>`; the other five carry forward. Touching a prompt block invalidates `behavior@<sha>` (and usually `technical@<sha>`). Touching `## Phase` / `## Plug Points` / `## Bridge` invalidates `pedagogy@<sha>`. Touching `## Big Idea` / `## Key Concepts` / `## What You'll Learn` invalidates `strategy@<sha>`. The `eval-class-router.sh` PostToolUse hook classifies each edit and writes to `/tmp/claude-eval-queue-<sid>` so the next `/wind-down` knows which class to re-audit per file.
-- **Grandfather rule for files audited before 2026-05-14.** A pre-expansion `compendium-audited <date> @ <sha>` row satisfies the four old classes (writing / story / technical / behavior) IF the file's mtime is unchanged since that audit. The two new classes (`pedagogy@`, `strategy@`) are `grandfathered` until next touch; first audit after touch establishes the pin. As soon as the file is touched, the per-class rule above kicks in for all six classes.
-- **SHA pin on `mechanical-tested`** is mandatory — instance reports overwrite on rerun, SHA is the only drift detector.
-- **Reference files (`curriculum/trainings/<training>/reference/`) are exempt** — flat lookup material, no mood contract or sim surface.
-
-Full ladder definitions, error-class rationale, audit-cost reasoning: `memory/compounded/2026-04-25-content_creation-quality-state-tagging.md` and the `maintainer-reviewed` orthogonality entry at `memory/compounded/2026-04-28-content_creation-maintainer-reviewed-orthogonal-dimension.md`.
+Format + key rules → `curriculum/quality-format.md`.
 
 ## Scope
 
-**A portfolio of 3-4 trainings.** Agents 101 is the first (for builder leaders making the chat-to-systems leap). Engineering Management is the second (for engineering managers leading agentic change; strategy in `bosser-strategy:content-strategy-engineering-management.md`). Agentic Engineering 101 is the third (for software engineer ICs, L0 → L3 path; strategy in `bosser-strategy:content-strategy-agentic-engineering-101.md`). Executive briefing and domain-specific variants will follow. The Engineering Management + Agentic Engineering 101 pair pincer the transformation — managers create conditions, engineers run at capacity. Lectures and exercises are **shareable building blocks** — a single canonical file per exercise or lecture, referenced from whichever trainings use it.
+- **Agents 101** — builder leaders.
+- **Engineering Management** — managers leading agentic change (`bosser-strategy:content-strategy-engineering-management.md`).
+- **Agentic Engineering 101** — software-engineer ICs L0 → L3 (`bosser-strategy:content-strategy-agentic-engineering-101.md`).
+- **Future:** executive briefing + domain variants.
 
-**Source of truth:** strategy files define each training's arc, storyline, and learning goals. `lecture-guardrails.md` defines pedagogical and design rules (universal across trainings). Module files are compositions that reference the shared library. Per-training delivery architecture: Agents 101 at `curriculum/trainings/agents-101/training-architecture.md`; Agentic Engineering 101 at `curriculum/trainings/agentic-engineering-101/training-architecture.md` (Claude Code today; Gemini CLI as planned alternate runtime under §Future TODO).
+Strategy files = each training's arc / storyline / LOs. `lecture-guardrails.md` = universal design rules. Module files compose the shared library. Per-training delivery: `curriculum/trainings/<training>/training-architecture.md`.
 
-See `## Copyright fence` below before importing anything from external training materials.
-
-## Directory Structure
+## Directory
 
 ```
 curriculum/
-  # content-strategy.md (PRIVATE — see `bosser-strategy` skill)
-  lecture-guardrails.md        # universal pedagogy rules
-  CLAUDE.md                    # this file
-
+  lecture-guardrails.md
+  CLAUDE.md
   trainings/
-    agents-101/                 # Builder-leader audience
-      getting-going.md         # slug-only filenames — sequence comes from the renderer, not the filename
-      building-agent-systems.md
-      ...
-      reference/                # training-specific lookup material
-      supplementary/            # training-specific progressive readings
-    agentic-engineering-101/   # Software-engineer IC audience
-      getting-going.md
-      ...
-      reference/
-      supplementary/
+    agents-101/
+    agentic-engineering-101/
     engineering-management/    # FUTURE
     executive-briefing/        # FUTURE
-
-  exercises/                   # Shared library — one file per exercise
-    raw-llm.md
-    add-guardrail.md
-    ...
-
-  lectures/                    # Shared library — one file per lecture
-    context-is-king.md
-    compounding.md
-    ...
+      <slug>.md                # one file per module, no module-N- prefix
+      reference/               # training-specific lookup
+      supplementary/           # training-specific progressive reading
+  exercises/                   # shared library, one file per exercise
+  lectures/                    # shared library, one file per lecture
 ```
 
-**Reference and supplementary live under each training**, not in a shared library. Audit and tarball builders read from `curriculum/trainings/<training>/{reference,supplementary}/`. Exercises and lectures stay shared — they're authored once and composed into modules by slug.
+**Four student-facing types:**
+- **Lectures** — one-sitting (15-min demo OR one prework reading). Inlined.
+- **Exercises** — one bounded activity per file. Inlined.
+- **Supplementaries** — multi-section, progressive across modules. Not inlined.
+- **Quick reference** — flat lookup. No progression.
 
-**Four student-facing content types** — lectures, exercises, supplementaries, and quick reference:
+Module files: flat, slug-only filenames, sequence from renderer's MODULES array. Thin: metadata + Bloom LOs + ordered refs + training framing.
 
-- **Lectures:** one-sitting events (15-min demo OR one prework reading). Included inline in module pages.
-- **Exercises:** one bounded activity per file. Included inline in module pages.
-- **Supplementaries:** multi-section documents that build up progressively across modules. Pedagogical. Too complex to absorb in one sitting. NOT inlined — referenced by modules as prework or homework, stand as reference after training. Live at `curriculum/trainings/<training>/supplementary/`.
-- **Quick reference:** flat lookup material (commands, connector setup, skill basics, troubleshooting). No progression. Curriculum content stays concept-focused; links here when a student needs an operational "how do I..." answer. Live at `curriculum/trainings/<training>/reference/`.
+## Module file shape
 
-**One file per module.** Flat — no per-module subdirectories. **Filenames are slugs only** (no `module-N-` prefix). Sequence comes from the renderer's MODULES array, not from filenames — so modules can be reordered by moving one array entry. A module file is thin: metadata + Bloom-tagged LOs + ordered references to exercises and lectures + training-specific framing (Connections, Conclusions, Bridge).
+Template + module include + bare-path cross-doc rules → `curriculum/module-shape.md`.
 
-**One file per exercise or lecture.** Canonical. Reused by slug across trainings.
+## Alignment
 
-## Module File Shape
-
-```markdown
-# [Title]
-
-## Big Idea
-[One sentence]
-
-## Meta
-- Primary Bloom's level: [level]
-- Prework: [list or "none"]
-- Homework: [list or "none"]
-- Materials (trainer): [list]
-- Plug points: [list]
-
-## What You'll Learn
-After this module, you will be able to:
-- **[verb]** [thing]
-
-## Connections
-[Training-specific opening question — audience-specific framing lives here]
-
-## Lectures
-
-[Lecture: Context is King](lectures/context-is-king.md)
-
-## Exercises
-
-[Exercise: Raw LLM](exercises/raw-llm.md)
-
-[Exercise: Add the guardrail](exercises/add-guardrail.md)
-
-## Key Concepts (Emergent)
-[What emerges from doing the exercises. Concepts don't precede exercises.]
-
-## Plug Points
-[Where the organization inserts its own context]
-
-## Debrief
-[The 4th C — Conclusions. Pattern: ~5-minute personal retro run WITH Claude via a pasted prompt. Produces an artifact the student carries forward. Student-facing, conversational-prompt style. Per-module adaptation: the debrief questions shift to the module's discipline.]
-
-## Bridge
-[One sentence to next module]
-```
-
-## How Modules Reference Exercises and Lectures
-
-A module includes an exercise or lecture with a **standalone markdown link** whose href matches `exercises/<slug>.md` or `lectures/<slug>.md`:
-
-```markdown
-[Exercise: Raw LLM](exercises/raw-llm.md)
-```
-
-Requirements for the renderer to inline it:
-- The link is the **entire paragraph** — on its own line, no surrounding prose
-- Href is exactly `exercises/<slug>.md` or `lectures/<slug>.md` (kebab-case slug, no subdirs)
-- The target file exists
-
-If the file is missing, the link renders as-is. This means Pass 1 module files can reference future Pass 2 exercise files without breaking.
-
-## Cross-doc links — bare paths in source
-
-Source `.md` files use **bare paths** for cross-doc inline links from any source-file depth:
-
-```markdown
-[Reading the return](lectures/reading-the-return.md)
-[MCP and connectors](trainings/agentic-engineering-101/reference/mcp-and-connectors.md)
-[Schedule your personal agent](exercises/personal-agent-homework.md)
-[The four CLAUDE.md layers](trainings/agentic-engineering-101/reference/claude-code-for-engineers.md)
-```
-
-Authors don't count `../` — write the slug-bearing path the same way from a module file (depth 2), an exercise (depth 1), or a lecture (depth 1). The renderer's `rewriteCrossDocLinks` (in `site/layouts/curriculum.js`) accepts both shapes with `(?:\.\.\/)*` (zero-or-more `../` prefixes) and rewrites:
-- `(exercises|lectures)/<slug>.md` → `curriculum.html?file=<kind>/<slug>` (shared library)
-- `trainings/<training>/(reference|supplementary)/<slug>.md` → `curriculum.html?file=trainings/<training>/<kind>/<slug>` (training-specific)
-
-Forbidden in source:
-- **Hardcoded `curriculum.html?file=...` URLs.** Renderer leak — ties content to one rendering pipeline.
-- **Depth-counted `../` and `../../` prefixes.** The renderer accepts them, but they read as bookkeeping the author shouldn't have to track.
-
-The standalone-include mechanism (link is the entire paragraph) catches a different shape — the renderer fetches and inlines the file's content. Bare-path inline links inside body sentences just get URL-rewritten without inlining. Maintainer-block bare-path text references (no markdown link) are exempt from rewrite.
-
-Canonical source: `memory/compounded/2026-04-26-platform-bare-paths-renderer-rewrites.md`.
-
-## Alignment Duties
-
-**Training strategy and module files stay aligned — always.** Each training's strategy file carries the training-level narrative, exercise sequence, lecture sequence, reflections, and bridges. Module files carry the canonical student-facing spine. The exercise named in a strategy-file module section must match the exercise in the corresponding module file: same name, same description. When one changes, the other changes in the same edit. Drift between the two is a process bug, not a matter of taste.
+Strategy and module file change in the same edit. Drift = process bug.
 
 ## Copyright fence
 
-**F-Secure delivers their own version of this training. Their materials are F-Secure IPR — off-limits for import, reconciliation, or paraphrase.** All exercises, examples, and instructional language must be original.
+**F-Secure delivers their own version. Their materials = F-Secure IPR — off-limits.** All exercises / examples / language original.
 
-## Working with Actual Claude Behavior
+## Platform claims
 
-Curriculum content describes a real tool that ships on a real cadence. Getting the tool's current behavior wrong is the fastest way to erode trust with a business audience — an SVP who follows the exercise word-for-word and hits a different UI than we described is done listening.
+`check_platform_and_boundaries.md` autoloads on platform-claim surface.
 
-**Generation-time rules** (verify before assert; silence isn't absence; practitioner observation beats docs; behavioral surprises update curriculum) live in `memory/check_*platform_and_boundaries.md` — load before any content pass that makes a platform claim. If you're about to write a sentence like "Claude Code doesn't have X" or "you'll need to use a different tool for Y," stop and run the capability check first.
+1. **Platform claims must be current.** Runtime contracts: `curriculum/trainings/agents-101/training-architecture.md` (CLI + Desktop + Cowork); `curriculum/trainings/agentic-engineering-101/training-architecture.md` (CLI + Desktop today; no Cowork; Gemini CLI planned, §Future TODO).
+2. **Skill invocation backed by shipped capability.** Otherwise inline the method.
+3. **Delivery architecture training-specific.** Don't encode one training's starter / working-dir / artifact rules here.
 
-**General architectural rules:**
+## Parallel subagents
 
-1. **Platform claims must be current.** If writing about Claude Code, Claude Desktop, Cowork, Gemini CLI, connectors, skills, scheduled work, or cloud/remote work, verify the behavior before asserting it. Per-training runtime contracts: `curriculum/trainings/agents-101/training-architecture.md` (CLI + Desktop + Cowork), `curriculum/trainings/agentic-engineering-101/training-architecture.md` (CLI + Desktop today; no Cowork; Gemini CLI planned, see §Future TODO).
+Each agent owns a **disjoint set of files**. Two on same file = race. Check overlap before second dispatch.
 
-2. **Skill invocation must be backed by shipped capability.** A curriculum artifact that invokes a skill by name requires that the skill be installed or shipped in the relevant training scaffold. Otherwise inline the method as a prompt move. Training-specific decisions about which skills ship belong in the training architecture or strategy file.
+## Classroom delivery — default
 
-3. **Delivery architecture is training-specific.** Do not encode one training's starter, working-directory, artifact, or module-folder rules here. Put those in that training's architecture or strategy file.
+- **No slides.** Curriculum site IS the slide; trainer projects it. Projection legibility = design constraint.
+- **Follow-along.** Trainer demos; room copy-pastes concurrently. Time budget = slower pace, not the sum.
+- **Body teaches; trainer manages room.** No authored conversations or trainer cues in body (hard-grep enforced).
 
-## Orchestrator pattern — disjoint file ownership
+## Content boundaries
 
-When dispatching parallel subagents for curriculum work (implementation, not research), follow the orchestrator pattern in the project CLAUDE.md with one addition: **each subagent owns a disjoint set of files.** Two agents editing the same file race and overwrite. Before the second dispatch, check what the first batch is still working on and what it has already completed — if overlap exists, either wait for completion or narrow the second batch's scope. Use `TaskStop` when you catch yourself dispatching duplicate work.
-
-The shape: each agent's spec names every file it will touch; no two specs overlap.
-
-## Classroom delivery — default mode
-
-Classroom (cohort + trainer) is the primary delivery mode. Self-study is bonus / beta. Author for classroom first.
-
-**The default classroom shape:**
-
-1. **Trainer projects the recap site.** No slides — the curriculum site IS the slide. Modules, exercises, lectures, prompts, all rendered as the student will later see them in their own browser. Prompt-block chrome (header chip + Copy button) is part of the projected surface; legibility at projection distance is a design constraint, not a polish step.
-2. **Every exercise is follow-along by default.** Trainer demos slowly on the projected screen — types or pastes the prompt, sends, narrates as the response streams. The room copy-pastes the same prompt into their own laptop session concurrently and watches their own agent execute. Per `check_pedagogy.md` #24, the time budget is the slower of the two paces (usually the trainer's), not their sum.
-
-**The body teaches the work; the trainer manages the room.** Curriculum body does NOT author conversations or trainer cues. Rule lives in `check_pedagogy.md` rule 27 (and `check_student_facing.md` rule 26 hard-grep enforces the phrase list).
-
-**What trainers actually do (and don't):**
-
-- **Trainer's screen is shared most of the session.** Whatever is on the trainer's screen is visible to the room. There is no private trainer-only pane during delivery. Anything the trainer needs to read in private has to happen before screen-share starts, or live on a separate physical surface (printed sheet, phone, second device) — never in a window the trainer would have to toggle.
-- **Trainers do NOT read maintainer blocks during the session.** Cognitive load of running the room + projecting + operating their own Claude Code is already maxed; there is no spare attention to context-switch to a maintainer-only document mid-flow. Pretending maintainer blocks are runtime scripts is a design mistake. **Pre-rehearsal trainer material is its own artifact.** Failure modes, why each phase teaches what it teaches, what to listen for in the room, when to compress vs. linger — these belong in a per-module trainer guide read once before delivery, not in a maintainer block pretending to be a script. Maintainer blocks stay narrow: source citations, eval logs, design history, customisation notes. (Format of the per-module trainer guide is TBD; the principle is "read in prep, not during.")
-
-**What this means for authors:**
-
-- **No megaprompts in classroom-target exercises.** A 30-line prompt the trainer types live is dead air for the room. Split into smaller prompts at natural pause points; if the prompt genuinely needs to be long, the trainer pastes it from the recap site (Copy button) and uses the wait their way.
-- **Long agent waits (multi-minute send-offs, multi-file audits) are the natural pause anchors.** While the agent runs, the trainer talks. Design those waits in deliberately rather than apologising for them — but no authored text cue around them.
-- **Trainer-only material lives in maintainer blocks** below `<!-- maintainer -->`. Per-phase: what to demo, what to skip, where the room usually gets stuck. The block is design context, not a runtime script.
-
-**What this DOESN'T mean:**
-
-- Self-study isn't second-class — it just inherits the same structure. The engaged student paces themselves; the optional host-skill (per `check_pedagogy.md` #25) is available for clarifying the work, not for substituting cohort dynamics. Designing for classroom-first usually produces self-study material that works without modification.
-
-## Content Boundaries
-
-- **Technical depth:** Enough to build, not enough to become an ML engineer. Understand WHY, not the math of HOW.
-- **No slides.** The markdown IS the material.
+- **Technical depth:** WHY, not the math of HOW.
 - **No vendor comparison.** We use Claude Code.
-- **COPYRIGHT:** All exercises, examples, and instructional language must be original. Never reproduce or adapt from external sources.

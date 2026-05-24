@@ -41,7 +41,7 @@ If the file has no `## Phase` headers (lecture, supplementary, prework), the who
 
 ### Trace generation protocol
 
-Follow the persona-reader protocol at `.claude/skills/content-creation/simulation.md` (Class A). Use the default `self-study` delivery mode for Agents 101 and AE101; use `in-room` for Claude Basics (live-classroom-first). For Agents 101 exercises, persona is "SVP of HR at a 500-person Nordic software company, used ChatGPT weekly for drafting, never built an agent, never used Claude Code before." For AE101, persona is "mid-level software engineer with 5 years experience, hands-on with Claude Code daily for 2 weeks, has shipped one agent to a non-critical workflow." For Claude Basics, persona is "IT-leaning rollout custodian at a 500-person Nordic company, used ChatGPT a handful of times, OneDrive-comfortable, never built an agent, never used Cowork before today; in the room because the company bought Claude licenses and asked their team to help roll it out." For lectures or supplementary, persona reads the file as prework and reports comprehension + lingering questions.
+Follow the persona-reader protocol at `.claude/skills/content-creation/simulation.md` (Class A). Default delivery mode = `in-room` (classroom-first) across all trainings. For Agents 101 exercises, persona is "SVP of HR at a 500-person Nordic software company, used ChatGPT weekly for drafting, never built an agent, never used Claude Code before." For AE101, persona is "mid-level software engineer with 5 years experience, hands-on with Claude Code daily for 2 weeks, has shipped one agent to a non-critical workflow." For Claude Basics, persona is "IT-leaning rollout custodian at a 500-person Nordic company, used ChatGPT a handful of times, OneDrive-comfortable, never built an agent, never used Cowork before today; in the room because the company bought Claude licenses and asked their team to help roll it out." For lectures or supplementary, persona reads the file as prework and reports comprehension + lingering questions.
 
 If the orchestrator passes `personas: N` (N > 1) via `/eval-fire story --personas N`, run the audience triangle: (a) mid-layer competent, (b) opinionated senior, (c) fast operator. Each persona produces its own trace stored at `{{trace_path}}` with persona-keyed records.
 
@@ -52,7 +52,7 @@ Output the trace as JSON to `{{trace_path}}`:
   "generated_at": "<ISO timestamp>",
   "training": "agents-101" | "ae101" | "claude-basics" | "shared",
   "persona": "<one-line persona descriptor>",
-  "delivery_mode": "self-study" | "in-room",
+  "delivery_mode": "in-room",
   "module_mood_contract": "<deliberate mood from strategy doc, e.g. 'unsettled competence — student wonders if this is right'>",
   "phases": [
     {
@@ -73,7 +73,7 @@ Output the trace as JSON to `{{trace_path}}`:
     "mood_note": "<one line>"
   },
   "ambiguous_instructions": ["<lines quoted verbatim that confused the persona>"],
-  "under_scaffolded_phases": ["<phase indexes where even Teacher Claude can't recover>"]
+  "under_scaffolded_phases": ["<phase indexes where even the trainer can't recover>"]
 }
 
 ## Evaluate

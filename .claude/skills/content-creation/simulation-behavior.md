@@ -1,16 +1,16 @@
-# Simulation protocol — Class B (prompt-behavior / risk)
+# Simulation — Class B (prompt-behavior / risk)
 
-Loaded by the prompt-behavior judge (`curriculum/evals/judges/prompt-behavior.md`). The agent's lens. Class A (`simulation.md`) is the reader's lens — persona walk-through for mood + confusion. The two run in parallel and don't overlap.
+Loaded by `curriculum/evals/judges/prompt-behavior.md`. Agent's lens. Class A (`simulation.md`) = reader's lens. Parallel, no overlap.
 
-**Scope:** for each `**Prompt**` fenced code block in a curriculum file, predict how Claude would respond *as a distribution* and flag which behavioral risks the prompt's shape invites. Per-prompt, not per-phase. The pattern catalog below is the primary input.
+**Scope:** per `**Prompt**` fenced block, predict Claude's response *as distribution* + flag risks the prompt's shape invites. Per-prompt, not per-phase. Pattern catalog below = primary input.
 
-**Why this exists alongside mechanical:** mechanical runs one path through one Actor (Haiku, sandboxed scratch repo, substitution table). It can't see the failure distribution, doesn't probe the long tail, doesn't run on most files (no runner). Class B reasons over the distribution: *if a hundred students pasted this prompt, how often does niceness tax fire? overwrite anxiety? question dump?*
+**Why alongside mechanical:** mechanical runs one path through one Actor (Haiku, sandboxed scratch, substitution). Can't see failure distribution, doesn't probe long tail, doesn't run on most files. Class B: if 100 students paste this, how often does niceness tax fire? overwrite anxiety? question dump?
 
-**When it runs:** the prompt-behavior judge invokes Class B automatically when its cached trace is missing or per-prompt SHA stale. Per-prompt cache means a single-prompt edit re-walks one prompt; the rest of the trace carries forward.
+**Auto-fire:** prompt-behavior judge invokes when cached trace missing or per-prompt SHA stale. Per-prompt cache → single-prompt edit re-walks one prompt; rest carries forward.
 
-## Cache layout
+## Cache
 
-`curriculum/evals/sim-cache/<file-slug>.behavior.json` — one file per slug. Inside, an array indexed by prompt position (1..N) with per-prompt content SHA. The judge re-generates only the entries whose SHA mismatches the file's current prompt blocks.
+`curriculum/evals/sim-cache/<file-slug>.behavior.json` — array indexed by prompt position (1..N) with per-prompt SHA.
 
 ```json
 {
@@ -33,11 +33,11 @@ Loaded by the prompt-behavior judge (`curriculum/evals/judges/prompt-behavior.md
 }
 ```
 
-`load_bearing: true` when the prompt is a teaching-moment trigger or a hand-off; `false` when it's a setup or housekeeping prompt. The judge weighs blocking severity by load-bearing-ness × confidence.
+`load_bearing: true` = teaching-moment trigger or hand-off. Judge weighs severity by load-bearing × confidence.
 
-## The pattern catalog
+## Pattern catalog
 
-Each pattern has a compounded entry that fires at generation time via `check_prompts.md` or `check_pedagogy.md`. The catalog here is the **evaluation-time** consumer — Class B grades whether the prompt's *shape* still invites the failure mode despite the rules.
+Each pattern has compounded entry firing at generation via `check_prompts.md` / `check_pedagogy.md`. Catalog here = eval-time consumer: Class B grades whether prompt's *shape* still invites the failure despite the rules.
 
 | `pattern_id` | What fires | Compounded source |
 |---|---|---|
@@ -57,28 +57,26 @@ Each pattern has a compounded entry that fires at generation time via `check_pro
 | `citation-cargo-cult` | Prompt asks for citations; Claude adds plausible-looking but unverified | `compounded/2026-04-27-prompts-citation-cargo-cult.md` |
 | `self-audit-charity` | Prompt asks Claude to self-critique; Claude is charitable to itself | `compounded/2026-04-27-pedagogy-self-audit-charity.md` |
 
-## How to score confidence
+## Confidence
 
-- **`high`** — the prompt's shape *forces* the risk; >70% of runs would exhibit it. (E.g., "Ask the student these five questions" with no "one at a time" → near-certain question dump.)
-- **`med`** — the prompt invites the risk but doesn't force it; 30–70%. (E.g., "Update the file with X" without preserve language → file-preservation-gap fires sometimes.)
-- **`low`** — the prompt allows the risk but the surrounding scaffold mitigates; <30%.
+- **`high`** — prompt's shape *forces* risk; >70% runs. ("Ask the student these five questions" without "one at a time" → near-certain question dump.)
+- **`med`** — invites without forcing; 30–70%. ("Update with X" without preserve language → file-preservation-gap sometimes.)
+- **`low`** — allows but scaffold mitigates; <30%.
 
-## Scope discipline
+## Scope
 
-- Class B reasons **per prompt**, not per phase. A phase's mood / confusion / arc are Class A's job.
-- Class B does NOT execute the prompt. Mechanical (`curriculum/evals/mechanical/`) does that. Class B reasons about distributions; mechanical samples one path.
-- Class B does NOT grade prompt-design mechanics that a static rule catches (action lead-in, no placeholders in fenced blocks, multi-sample structural enforcement). Those belong to the `technical` judge via `check_prompts.md`.
-- Class B owns the **probabilistic gap** between the static rule (the prompt is well-formed) and the deterministic execution (the prompt succeeded once on Haiku).
+- Per prompt, not per phase. Phase mood / confusion / arc = Class A.
+- No execution. Mechanical samples one path; Class B reasons over distribution.
+- No static-rule grading (action lead-in, placeholders, multi-sample). Those = technical judge via `check_prompts.md`.
+- Owns the probabilistic gap between static-rule (well-formed) and mechanical (succeeded once on Haiku).
 
-## Manual invocation
-
-The prompt-behavior judge handles cache + regen autonomously. To run Class B alone on a single file:
+## Manual
 
 ```
 /eval-fire behavior <file-path>
 ```
 
-To force regen of a single prompt without editing the file (e.g., catalog updated):
+Force single-prompt regen without editing file (e.g., catalog updated):
 
 ```
 rm curriculum/evals/sim-cache/<file-slug>.behavior.json

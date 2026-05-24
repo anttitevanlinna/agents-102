@@ -34,8 +34,7 @@ Specific judgments that pedagogy owns:
 - **Pre-action framing discipline** — names artifact / activity / constraint, never previews mechanism or felt-evidence (§53).
 - **Body callout discipline** — engineer-audience default is body callout, not forcing function (§56); cross-module rescue callouts at module open (§54); deliberate-antipattern carve-out (§51); convenience-bias callout (§50); heavy fan-out callout (§48).
 - **Auto-fire sim + eval after significant rewrite** (§15).
-- **Cohort vs self-study contract** (§24, §25): host-skill optional; default cohort is no host-skill.
-- **Classroom is default delivery; the body teaches the work, the trainer manages the room** (§27 — no conversations in body).
+- **Classroom is default delivery; the body teaches the work, the trainer manages the room** (§27 — no conversations in body). Host-skill optional (§24, §25).
 
 ## Scope boundaries
 

@@ -3,151 +3,106 @@ name: content-creation
 description: Create or revise curriculum content for Agents 102 (modules, exercises, lectures). Use when writing a new module/exercise/lecture, reshaping existing content, creating a new training variant, or reviewing whether content follows project rules. Enforces the three-pass build, the one-exercise-per-module principle, include-link conventions, and content-strategy ↔ module file alignment.
 ---
 
-# Content Creation — Agents 102 Curriculum
+# Content Creation — Agents 102
 
-Generation-time rules for curriculum work. For architecture (directory structure, include-links, material distribution, Claude Code behavior verification), see `curriculum/CLAUDE.md`. For pedagogy (Bloom, 4 Cs, emergent knowledge/control/leadership, audience, throughlines, module reusability), see `curriculum/lecture-guardrails.md`.
+Generation-time rules. Architecture → `curriculum/CLAUDE.md`. Pedagogy → `curriculum/lecture-guardrails.md`.
 
-Invoke when the user asks to write or revise curriculum content: a module, exercise, lecture, new training variant, or review pass.
+## Preflight
 
-## REQUIRED PRECONDITION — `bosser-strategy` skill must be installed
+1. **`bosser-strategy` skill installed?** If absent → STOP. Skill missing, generation requires private strategic context, contact maintainer. Cross-refs use `` `bosser-strategy:<filename>` `` — read on demand.
+2. **Pin delivery architecture** (Agents 101 vs AE101 vs other) before any student-facing file. Different models, different runtime contracts.
+3. **Identify today's surface.** Load matching `memory/check_*.md` compendium per `.claude/rules/content-rules.md`. Generation-time, not post-hoc.
 
-**This skill cannot generate curriculum content without the private `bosser-strategy` skill present in the user's environment.** Strategic context (module Big Ideas, mood contracts, per-training arc, buyer profiles, competitive positioning) lives outside this public repo. The `bosser-strategy` skill is a personal skill at `~/.claude/skills/bosser-strategy/SKILL.md` that resolves `bosser-strategy:<filename>` references to the private location.
+## Firing-moment router
 
-**Preflight at the top of every invocation** — before reading PDCA Step 1:
+SKILL.md = always-on (preflight + PDCA + mood arc). Compendiums (`check_*.md`) autoload via surface-detector hook. Load skill companions on firing moment:
 
-1. Check whether the `bosser-strategy` skill is in the available-skills list for this session.
-2. If not: **STOP**. Output: *"This generation system requires the `bosser-strategy` personal skill, which loads private strategic context. The skill is not installed in this environment. The public repo intentionally does not carry the strategic docs. Without them, generation cannot proceed — you'd be writing curriculum without the mood contract, Big Idea, or buyer profile that define what each piece is supposed to do. Contact the maintainer."*
-3. If yes: proceed with PDCA Step 1.
+- Prompt block → **`prompts.md`**
+- Body prose / student-facing → **`writing.md`**
+- PDCA step 6 (sim/test), parallel:
+  - **`simulation.md`** — Class A persona-reader (mood / confusion / arc)
+  - **`simulation-behavior.md`** — Class B per-prompt risk distribution
 
-This is by design. The public repo carries the curriculum-as-published-product. The strategic IPR (what makes each piece land for which buyer with which mood) is private. Anyone forking the repo gets the lectures and exercises; nobody but Antti gets the strategic spine. Any generation work that wants to extend the curriculum requires both halves.
+## Session shape default
 
-**Cross-references in this repo** to strategic docs use the form `` `bosser-strategy:<filename>` `` — read those via the bosser-strategy skill on demand (not pre-loaded). Examples: `` `bosser-strategy:content-strategy.md` ``, `` `bosser-strategy:content-strategy-agentic-engineering-101.md` ``.
+Apply the training's own pattern to producing the training. M5 → diagnose/package/re-send the session itself. M6 → run M6 prompts on session artefacts. SKILL.md update → run SKILL.md's PDCA on the update. Pin at session open.
 
-## Firing-moment router — load what you need
+## Strategy-first
 
-This SKILL.md is the always-loaded core (session orientation + PDCA cadence + mood arc). Load companion files when you hit their firing moment:
+Before drafting, answer:
 
-- Writing a prompt block the student copies → **`prompts.md`** (mirrored at ship time by `memory/check_prompts.md`)
-- Writing body prose / voice / structure for any student-facing file → **`writing.md`** (voice, jargon, debrief, sharing strategies, three-pass build, structural + pedagogical rules, variants, verification, red flags)
-- Running the simulate/test step of the PDCA loop → two sim classes, run in parallel:
-  - **`simulation.md`** (Class A — persona-reader): mood per phase, confusion flags, "this is me" close, arc flow. Story judge consumer.
-  - **`simulation-behavior.md`** (Class B — prompt-behavior / risk): per-prompt distribution of Claude responses, 15-pattern catalog (niceness tax, question dump, etc.), failure modes + recovery paths. Prompt-behavior judge consumer.
+1. **Which module** — Big Idea from `bosser-strategy:content-strategy.md`.
+2. **Which mood** — per-module `Mood (deliberate)` + mood arc below.
+3. **Where in the 8-module rhythm** — each mood feeds the next.
+4. **Which canonical structure** — when module names one (e.g., M7's four sharing strategies), use verbatim.
 
-Plus the matching `memory/check_*.md` compendium per `.claude/rules/content-rules.md` (surface-detector hook preloads these).
+Can't answer? Read content-strategy.md until you can.
 
-## Session shape default — apply the training's own pattern to producing the training
+## Pre-generation reads
 
-Default to the shape of the training's own pattern applied to the meta-task. If the training teaches a move, the work of producing the training content should be doing that move.
+1. `bosser-strategy:content-strategy.md`
+2. `curriculum/CLAUDE.md`
+3. `curriculum/lecture-guardrails.md`
+4. `bosser-strategy:philosophy.md`
+5. `.claude/rules/content-rules.md` → today's compendium(s)
+6. `continuous-research/insights.md` + domain findings as needed
 
-- Generating M5 content → run M5's *diagnose / package / re-send* on the session. The initial proposal is the un-packaged run; the reference-artefact + plan + verifier are the packaging; the subagent dispatch + loop is the re-send.
-- Generating M6 content → run M6's exercise prompts (diff two runs + name gaps + author encoding skill) on the session's own artefacts.
-- Updating this SKILL.md → run the SKILL.md's own PDCA loop on the SKILL.md update.
-- Generating a Agents 101 exercise → run the exercise's own forcing function on the design of the exercise.
+Verify: `python3 -m http.server 8000` at repo root → `http://localhost:8000/site/curriculum.html`.
 
-**The Rory test:** the filter for whether we understand a pattern is whether we can run it on ourselves. If the session can't apply the pattern to its own generation, we don't yet understand the pattern well enough to ship it. Apply the default at session-open so the first 3–5 turns aren't spent re-discovering the meta-move every cycle.
+## Two modes
 
-## Strategy-first generation — non-negotiable
+- **Strategy-session** — iterative, Antti steers per turn.
+- **Long-running** — plan pinned two turns + sign-off; Do/Test/Check run autonomous; handoff = draft + sim report + self-eval. Strategy: `curriculum/module-design-long-running-strategy.md`.
 
-**Every piece of content aligns to strategy before you touch words.** Strategy-first is the frame around every step. Before drafting a lecture, exercise, prework, or homework, you must already know:
+Same PDCA, different cadence.
 
-1. **Which module** this belongs to, and its *big idea* from `bosser-strategy:content-strategy.md`.
-2. **Which mood** this module is engineered to produce — see the "Mood (deliberate)" paragraph per module + the mood arc below. Mood is the contract; resolving a mood early steals the next module's teaching moment.
-3. **Where it sits in the 8-module rhythm.** Each module's mood feeds the next.
-4. **Which canonical strategic structures** it honours when the module has them. M7 ships the **four sharing strategies** (see `writing.md`). When a module's strategy section names a canonical structure, use it verbatim; don't reinvent.
-
-If you can't answer those four questions before writing, stop and read `bosser-strategy:content-strategy.md` until you can. Strategy isn't the frame you impose on content after drafting; it's the frame that decides what to draft.
-
-## Rule files to load before generating
-
-Before writing any student-facing surface, ALSO read:
-- `.claude/rules/content-rules.md` — routes you to the right compendium for today's surface (writing / sales_copy / student_facing / prompts / lectures / strategy_tie_in / pedagogy / research_claims / platform_and_boundaries)
-- The specific `memory/check_*.md` compendium(s) it names
-
-These are the rules that fire at generation time. Loading them after drafting catches half of what loading them before drafting would have prevented.
-
-**Compendium + SKILL.md growth rule.** When a rule-surface crosses ~15 items (compendium) or ~400 lines (SKILL.md), split by firing moment — the editing context that triggers loading it (writing a prompt block, placing a lecture, naming a Big Idea, running a PDCA cycle) — not by urgency tier or sub-topic. Firing-moment splits map to what the loader can observe; urgency tiers force a severity judgment the loader can't make. Reference: this SKILL.md itself was split from 534 lines into a 122-line core + three on-demand companions.
-
-**Pre-split rule-doc rule.** Files predating the 2026-04-24 firing-moment split (`lecture-guardrails.md`, `module-design-long-running-strategy.md`, the content-creation skill companions, eval templates, `content-style-guide.md`, etc.) are reference docs, not generation-time authority. New rule content goes to `memory/compounded/` + `memory/check_*.md`, never to these files. When opening one to edit, grep `memory/check_*.md` for the topic first; if the compendium owns it, edit there. The pre-split file shrinks or dies — never grows. Architecture-flavoured rules (training-platform definition, file shape, directory layout) stay in their architectural file (`curriculum/CLAUDE.md`) with a one-line cross-reference from compendium pointing back. Canonical source: `memory/compounded/2026-04-27-content_creation-pre-split-rule-docs-shrink-or-die.md`.
-
-## Session start — read this first
-
-Before touching anything, read in this order:
-
-1. **`bosser-strategy:content-strategy.md`** — Training-level arc + mood-arc synthesis + per-module "Big idea" and "Mood (deliberate)". The strategic contract everything else serves.
-2. **`curriculum/CLAUDE.md`** — architectural rules (directory structure, module file shape, include-links, F-Secure fence, material distribution, Claude Code behavior verification).
-3. **`curriculum/lecture-guardrails.md`** — pedagogical rules (Bloom, TBR 4 Cs, emergent knowledge/control/leadership, audience, throughlines).
-4. **`bosser-strategy:philosophy.md`** (repo root) — the 19 beliefs. Philosophy is the spine. Callouts are sparing.
-
-Then check `continuous-research/insights.md` and relevant domain findings.
-
-**Verify locally:** ask Claude to start `python3 -m http.server 8000` at repo root; open `http://localhost:8000/site/curriculum.html`.
-
-## Two generation modes
-
-Pick deliberately at session start.
-
-**Strategy-session mode** (iterative small turns): Antti types a design move, I capture, we iterate per-turn. Right for shaping strategy, making design decisions, reshaping structure. The PDCA loop below describes this mode's cadence.
-
-**Long-running generation mode** (plan → walk away → return): Antti pins a plan in two turns, I generate a full lecture or exercise end-to-end while he's elsewhere, he comes back to review a 70%-there draft + simulation report + my self-eval. Right for producing content when strategy is stable and the reference artifact is populated. Strategy lives in `curriculum/module-design-long-running-strategy.md` — read it before starting a long-running session.
-
-The PDCA loop covers both modes — same steps — but long-running mode compresses Plan into two turns with explicit sign-off, and Do/Test/Check run without Antti in the loop until handoff.
-
-## The canonical generation pattern (PDCA loop)
-
-Every piece of curriculum content goes through this loop. Skipping a step is how sessions drift.
+## PDCA
 
 **Plan:**
-1. **Antti's input** — what to build, why, any constraints or principles he's adding this turn.
-2. **Strategy alignment (mandatory first)** — read the relevant module's section in `bosser-strategy:content-strategy.md`, INCLUDING its *Big idea* and *Mood (deliberate)* paragraphs. If this piece changes the arc, update content-strategy in the same edit. **Mood check:** state in one sentence what emotional state the student should leave this piece in, and how it sets up the next piece. If you can't state it, you haven't read enough strategy yet. Sibling files (module spine, content-strategy, eval instance) update in the same edit, not later.
-3. **Check / agree on evals** — propose the eval judges (contributory ones inferred from patterns; primary "leap test" steered by Antti). Update the eval template (`curriculum/evals/lecture.md` or `exercise.md`) if a missing judge is discovered. Save the filled instance to `curriculum/evals/instances/<training>--<slug>.md`. **Mood-aware eval:** if the module's mood is unease or complexity, the eval's "leap test" should reward the unease, not punish it.
-4. **Check learning goals** — pull the Bloom-tagged LOs verbatim from the module file into the eval instance. LOs are the contract; the eval is the measure; the content must satisfy both.
+1. **Antti's input** — what + why + constraints.
+2. **Strategy alignment** — read module section + Big Idea + Mood. State the mood in one sentence (emotional state student leaves in + sets up next piece). Sibling files (module spine, content-strategy, eval instance) update same edit.
+3. **Evals** — propose judges. Update template if missing judge. Save instance to `curriculum/evals/instances/<training>--<slug>.md`. Mood = unease/complexity → leap-test rewards unease.
+4. **LOs** — pull Bloom-tagged verbatim from module file into eval instance.
 
 **Do:**
-5. **Generate / edit** — write, following `writing.md`. For prompts participants copy, follow `prompts.md`.
+5. **Write** per `writing.md` / `prompts.md`.
 
 **Test:**
-6. **Simulate / test** — run through the artifact as if you were a student. Full protocol in `simulation.md`. **Auto-fire rule: after any significant rewrite — phase structure changed, LOs changed, mood contract changed, new practitioner artifact/skill integrated, or forcing-function mechanic changed — invoke the `curriculum-pre-ship-audit` skill by name on the file list. The skill dispatches three-persona simulation + LLM-as-judge eval + source verification + Claude Code capability check + Quality-state tag check in parallel BEFORE handoff. No user ask required.** Polish within unchanged phases doesn't trigger. The auto-fire rule evaluates the CYCLE as a whole — if any turn in the cycle met the criteria, the skill fires at end of cycle even if the final turn was sentence-level polish. Cannot be deferred as a *"pre-first-cohort TODO"* by the reference artefact's Done-means criterion.
+6. **Simulate** per `simulation.md` + `simulation-behavior.md`. **Auto-fire `curriculum-pre-ship-audit`** when any cycle turn changed: phase structure / LOs / mood contract / forcing-function / practitioner artefact. Polish in unchanged phases doesn't trigger. Not deferrable as pre-cohort TODO.
 
 **Check:**
-7. **Eval** — run the LLM-as-judge on the draft. Antti does the taste review on top. Three verdicts: **APPROVE**, **APPROVE WITH TODOs** (essentials pass, contributory deferred — good enough, ship), **REVISE**. Subject to the same auto-fire rule as step 6.
+7. **Eval** — LLM-as-judge + Antti taste review. Verdicts: APPROVE / APPROVE WITH TODOs / REVISE. Same auto-fire rule.
 
 **Act:**
-8. **Learning + system improvement** — if simulation or eval missed something Antti caught, or a new principle emerged, update the system in the same turn: eval template, simulation protocol, this SKILL.md, `curriculum/CLAUDE.md`, `memory/self-review-protocol.md`, `memory/MEMORY.md`. **Then invoke `/compound`** for any correction that applies beyond this cycle. `/compound` writes a schema-validated entry in `memory/compounded/` and (for content/pedagogy/sales/prompts/lectures/strategy_tie_in surfaces) proposes a one-line amendment to the matching `check_*.md` compendium. Without step 8's `/compound`, corrections stay trapped in this cycle's artifact.
+8. **Compound** — update system in same turn (eval template, sim protocol, this file, `curriculum/CLAUDE.md`, `memory/`). Invoke `/compound` for cross-cycle corrections.
 
-   **If this cycle was triggered by a sim/eval verdict** (e.g., the author exited `/eval-fire` or `/curriculum-pre-ship-audit` with REVISE and entered this skill to act on the findings), CLOSE the cycle by re-firing the same skill against the same file list. The judge runs again with the new content; the verdict either lands at PASS (fixes resolved the flagged risks) or surfaces remaining issues. Only then is the cycle complete. Do NOT mark the work done based on the author's own assessment that the fixes look right — the eval is the only source of truth that the boundary held both ways.
+**Cycle-close:** if this cycle was triggered by sim/eval REVISE, re-fire same skill against same file list to confirm PASS. Author assessment ≠ verdict.
 
-   **The boundary direction:** sim/eval → /content-creation is the only legal path to edits flagged by the eval. The reverse (eval-skill writes the edit) is forbidden by the eval-skill's own hard boundary. Canonical source: `memory/compounded/2026-05-02-platform-sim-eval-verdicts-are-read-only.md`.
+**Edit-direction boundary** → `compounded/2026-05-02-platform-sim-eval-verdicts-are-read-only.md`
 
-   **Also update the Quality line** in each touched file's maintainer block per `curriculum/CLAUDE.md` § *Quality-state tagging*. If the cycle cleared the audit, write `**Quality:** compendium-audited <today>` with a dimension-log row naming the compendium versions and audits applied. If the cycle introduced a sim or mechanical pass, add the corresponding dimension-log row and update the top-state line to the highest valid tier. Mechanical-tested provenance MUST include a git short-SHA pin: `mechanical-tested <date> (<judge-report-path> @ <short-sha>) PASS`. The `curriculum-pre-ship-audit` skill blocks GO without these.
+**Quality line per touched file** → `curriculum/quality-format.md` (enforced by `curriculum-pre-ship-audit`; mechanical-tested requires `@ <short-sha>`).
 
-**This pattern generalizes beyond curriculum.** Articles, research findings, future trainings all follow the same shape: *input → plan → measure → contract → make → evaluate → improve*.
+**TODO discipline** → `compounded/2026-04-28-content_creation-remove-done-todos-not-strikethrough.md` + `-todo-vs-deferred-marker.md` + `-evaluate-dont-default-defer.md` + `2026-05-14-content_creation-todo-surface-open-decisions-only.md`.
 
-**TODO discipline — per-bullet and per-section, canonical bodies live in `memory/compounded/`:**
+**Splitting a SKILL.md or compendium** → `compounded/2026-04-27-content_creation-pre-split-rule-docs-shrink-or-die.md`.
 
-- **Closed TODOs get deleted.** Three reframes that pretend to be deletion are all forbidden: (1) strikethrough, (2) `Done <date>` annotation, (3) rewrite-as-adjacent-followup. The third is the most insidious — a new bullet about related work disguised as a status update on the closed one. If new work is real, add a clean bullet under its real section after asking the scope check: *"does this belong in THIS tracking surface at all?"* Provenance lives in git + Quality dimension-log. → `compounded/2026-04-28-content_creation-remove-done-todos-not-strikethrough.md`
-- **TODO vs DEFERRED.** TODO = active autonomous-sweepable; DEFERRED = explicitly held with evidence (Antti-held call, time-defer, upstream-infra). Sweep greps TODO only. → `compounded/2026-04-28-content_creation-todo-vs-deferred-marker.md`
-- **Autonomous sweep verb is EVALUATE, not DEFER.** Read close-condition, check artifact state, then close / keep TODO / relabel DEFERRED with evidence. >50% DEFERRED on first pass = the verb slipped. → `compounded/2026-04-28-content_creation-evaluate-dont-default-defer.md`
-- **TODO surfaces hold open decisions only.** A tracking surface declared as "canonical home for open decisions before X" (`pre-cohort-todos.md` and analogs) must not accrete: (a) carve-out / FP catalogs (route to `memory/compounded/`); (b) audit narrative or record sections (route to git log + per-file Quality blocks); (c) restatements of rules that live elsewhere (one-line pointer is fine; don't re-narrate). Diagnostic before adding a section: *"is this an OPEN DECISION the maintainer needs to make before X?"* If no, route to canonical home. When restructuring, sweep internal numerical references that stale after deletions. → `compounded/2026-05-14-content_creation-todo-surface-open-decisions-only.md`
+## Mood arc
 
-## The mood arc — load-bearing constraint
-
-The 8-module Agents 101 arc has an engineered emotional progression. Authors MUST honour it; resolving a mood early steals the next module's teaching moment.
-
-| Module | Mood | Quote | Failure mode (wrong edit) |
+| Module | Mood | Quote | Failure (wrong edit) |
 |---|---|---|---|
-| M1 | Joyful creation | *"I made this. It's me."* | Making it feel like a technical warm-up |
-| M2 | Satisfied compounding | *"It runs while I sleep."* | Making it feel like tool setup |
-| M3 | Unsettled competence | *"I wonder if this is right?"* | Resolving the doubt with verification or a clean artifact |
-| M4 | Deepened unease | *"Damn, this is complex stuff."* | Making security feel tidy or solved |
-| M5 | Mechanical rescue | *"Ahh, this is actually fixable."* | Premature rescue (M3/M4 haven't stewed long enough) |
-| M6 | Unleashed leverage | *"We can automate the loop."* | Making evals feel like compliance testing |
-| M7 | Generous impulse | *"This is starting to work. I wonder if others could benefit?"* | Making sharing feel like a governance chore |
-| M8 | Awe and curiosity | *"Oh shit. Where is this all going?"* | Making it feel like a tidy graduation ceremony |
+| M1 | Joyful creation | *"I made this. It's me."* | Tech warm-up |
+| M2 | Satisfied compounding | *"It runs while I sleep."* | Tool setup |
+| M3 | Unsettled competence | *"I wonder if this is right?"* | Resolving the doubt |
+| M4 | Deepened unease | *"Damn, this is complex stuff."* | Security tidy/solved |
+| M5 | Mechanical rescue | *"Ahh, this is actually fixable."* | Premature rescue |
+| M6 | Unleashed leverage | *"We can automate the loop."* | Eval = compliance |
+| M7 | Generous impulse | *"This is starting to work. I wonder if others could benefit?"* | Sharing = governance |
+| M8 | Awe and curiosity | *"Oh shit. Where is this all going?"* | Graduation ceremony |
 
-**One-line rhythm:** joy → compound → unease → deeper unease → rescue → leverage → generosity → awe. Build, doubt, fix, scale, wonder.
+Rhythm: joy → compound → unease → deeper unease → rescue → leverage → generosity → awe.
 
-**In practice:**
-- Before writing a Debrief, Close, or Bridge, check which mood this module must leave the student in, and which mood the next module picks up.
-- *"Does it feel right to be uncertain here?"* is a valid design question when the strategic mood is unease.
-- Do not add verification, check-this-URL, or fix-the-bug steps to a module whose mood is sustained doubt. Checking resolves doubt; doubt is the curriculum.
-- Do not front-load the rescue. M5 is the rescue module; M3/M4 are not.
+Operational:
+- Check current + next mood before Debrief / Close / Bridge.
+- *"Does it feel right to be uncertain here?"* valid when mood = unease.
+- No verification / check-URL / fix-bug steps in sustained-doubt modules. Checking resolves doubt; doubt is the curriculum.
+- Don't front-load M5's rescue into M3/M4.

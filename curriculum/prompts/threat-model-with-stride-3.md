@@ -27,4 +27,4 @@ Write an ADR for the hardening decision we just made. Use my repo's ADR conventi
 
 Ground each section in what we discussed: the plausible incident story is the Context; the threat we picked and the hardening we chose is the Decision; the Consequences section names what this costs (latency, complexity, operational burden) and what it protects; Alternatives considered names the 2–3 options we didn't pick and one line on why.
 
-Show me the ADR before saving.
+Save the ADR to that path, then show me the diff.

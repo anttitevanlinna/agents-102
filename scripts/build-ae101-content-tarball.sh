@@ -9,7 +9,7 @@
 #       (training files in curriculum/trainings/agentic-engineering-101/, excluding
 #        trainer-only artifacts; 2-hop walk catches lectures/exercises that
 #        reference each other.)
-#   - content/skills/ whitelisted per AE101 training-architecture: access-control-analysis + stride
+#   - content/skills/ whitelisted per AE101 training-architecture: access-control-analysis + stride + security-tools
 #       (agentic-nerd is the optional self-study host, ships only from a self-study target)
 #   - content/pre-engagement-contract.md (template-with-defaults; per-customer overlay at deploy time)
 #   - prompts/ (full registry; consuming files resolve {{prompt:<key>}} markers against this)
@@ -139,6 +139,14 @@ done
 # ---- Reference + supplementary (already training-specific on disk) -------
 copy_md_dir "$TRAINING_DIR/reference"     "$ROOT/reference"
 copy_md_dir "$TRAINING_DIR/supplementary" "$ROOT/supplementary"
+
+# Supplementary subfolders ship verbatim (e.g., skill-stacking/ with primary doc
+# + diagrams). copy_md_dir only globs *.md at top level; this picks up any
+# subfolder a supplementary section refers to as a multi-file artefact.
+for sub in "$TRAINING_DIR/supplementary"/*/; do
+  [ -d "$sub" ] || continue
+  cp -R "${sub%/}" "$ROOT/supplementary/"
+done
 
 # ---- Skills (whitelist, not blacklist) -----------------------------------
 # Skills ship verbatim; SKILL.md files don't carry maintainer blocks.

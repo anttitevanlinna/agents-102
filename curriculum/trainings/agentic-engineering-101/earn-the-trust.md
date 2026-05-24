@@ -1,6 +1,6 @@
 # Earn the trust
 
-> Thinking level: drop down to medium if progress starts to feel sluggish. And yes: there is a tradeoff between speed and depth here.
+> Run M3 on `high` thinking effort (the prework default).
 
 ## Big Idea
 Before the agent runs bigger work alone, earn your staff engineer's and CISO's trust on a small piece you're shipping this week. Two curated skills from the frontier do the security work, one skill you author through conversation with Claude does the quality work. Team kit accretion starts here: the skill you author this hour ships personal first, with a clear path to team promotion through a human conversation later.

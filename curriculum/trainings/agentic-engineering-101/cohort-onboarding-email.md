@@ -50,7 +50,7 @@ Looking forward to it.
 
 **Prework runtime:** about 30 minutes.
 
-**Pairing:** this email pairs with prework Step 0 (a safety-net verify list inline). Belt and braces.
+**Pairing:** this email pairs with prework Step 2 (open a Claude Code session — first beat where install failure surfaces, with a safety-net note in body). Belt and braces.
 
 **Customisation per cohort:**
 - Replace bracketed placeholders (`[Day 1 date and time]`, `[or admin name]`, `[X working days before Day 1]`, `[Trainer name]`).
@@ -59,4 +59,4 @@ Looking forward to it.
 
 **When to send:** 5 working days before Day 1. Earlier and the engineer forgets; later and IT can't help.
 
-**Why this email exists:** the JTBD-zero (install + auth + license + network) lives nowhere else in the curriculum. Prework Step 0 is the inline safety net for the student who skipped this email; this email is the proactive shot. Both fire because the silent-failure cliff (engineer arrives at prework with broken Claude Code, no trainer rescue path) is the single biggest first-cohort risk.
+**Why this email exists:** the JTBD-zero (install + auth + license + network) lives nowhere else in the curriculum. Prework Step 2 ("Open a Claude Code session in that repo") is the inline safety net for the student who skipped this email — its body line names install as the prerequisite to going further. This email is the proactive shot. Both fire because the silent-failure cliff (engineer arrives at prework with broken Claude Code, no trainer rescue path) is the single biggest first-cohort risk.

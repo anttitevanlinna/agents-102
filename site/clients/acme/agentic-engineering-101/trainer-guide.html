@@ -480,6 +480,39 @@ main::before {
     color: var(--fg-4);
 }
 
+/* Permission-mode chip — emitted by decoratePrompts() when a prompt's
+   frontmatter declares `permission-mode:`. Sits leftmost in the header so
+   a scanning reader hits "what mode do I need to be in" before reading
+   anything else. Canonical Claude Code tokens per
+   code.claude.com/docs/en/permission-modes: default | acceptEdits | plan
+   | auto | bypassPermissions. Mode-specific modifier classes carry the
+   colour so the chip reads at a glance. */
+.module .prompt-block__mode {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.55rem;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    background: var(--fg-2);
+    color: var(--bg);
+    white-space: nowrap;
+}
+
+.module .prompt-block__mode--plan {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+}
+
+.module .prompt-block__mode--acceptEdits {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+}
+
 .module .prompt-block .prompt-block__pre {
     margin: 0;
     border: 0;
@@ -2000,13 +2033,14 @@ body.workbook { padding-top: 3rem; }
 <p>You project the workbook page. There are no slides. You demo each exercise prompt slowly on your own Claude Code while the room copy-pastes into theirs. You honor the conversation pauses in the exercise body. When the agent runs, you fill the air with dry-run evidence, tool tips you actually use, or why this module is shaped the way it is.</p>
 <p>Your screen is shared most of the session. There is no private trainer pane. Read maintainer blocks during prep only, never while screen-sharing. If a cue is missing from student-visible prose, flag it after the session rather than toggling to a hidden source file.</p>
 <p>Every exercise is follow-along. The time budget is <code>max(trainer, student)</code>, not trainer time plus student time. You paste and narrate; students paste and run concurrently.</p>
-<p>In cohort delivery, you carry the push-backs by default. The Agentic Nerd can support self-study, but the room should not depend on a pre-installed host skill.</p>
+<p>In cohort delivery, you carry the push-backs.</p>
 <h2 id="delivery-architecture">Delivery Architecture</h2>
 <p>Canonical contract lives in <a href="training-architecture.md">training-architecture.md</a>, read it once before your first cohort. Summary for delivery prep:</p>
 <p>AE101 uses a content folder plus the student&#39;s real repo. The content folder is reference material. Durable work lands in the repo or in the student&#39;s runtime-owned agent materials. There is no training-directory state to preserve between modules. If a student asks where the module folder is, they are importing Agents 101 habits.</p>
 <p>AE101 ships today on Claude Code (CLI + Desktop). Cowork is not a supported runtime. Keep the vocabulary clean: <code>subagent</code>, CWD, slash commands, plan mode, connectors, skills. If a student uses another agentic coding tool and it works for the exercise, it works; do not turn that into tool policing. The supported delivery path is still Claude Code. Gemini CLI is the planned alternate runtime, see <a href="training-architecture.md">training-architecture.md §Future TODO</a>; not yet active for delivery.</p>
 <p>AE101 usually runs weekly. At the start of every non-first session, name last week&#39;s state and the artifact the module expects. The module and exercise files are the source of truth for exact handoffs. If state is messy, do not moralize. The artifact is whatever exists; missing state is data the training can read.</p>
 <p><strong>FYI: <code>.claude/memory/</code> is a convention, not a Claude Code primitive.</strong> AE101 has students author a three-block memory folder at <code>.claude/memory/</code> in their repo (introduced at M4). The path looks Claude-Code-shaped because of the <code>.claude/</code> parent and the word &quot;memory,&quot; but it is not auto-loaded. The agent reads it when a prompt names the path, the same way it reads ADRs. Claude Code&#39;s actual auto-memory lives at <code>~/.claude/projects/&lt;project&gt;/memory/</code>, written by the agent for its own recall and surfaced via <code>/memory</code>. AE101 deliberately leaves auto-memory out: the point of compounding is that the student steers what gets remembered, and an opaque system-written store works against that. Expect at least one student to ask why their <code>.claude/memory/</code> entries aren&#39;t showing in <code>/memory</code>. The answer is here.</p>
+<p><strong>When a student bashes &quot;memory.&quot;</strong> Some engineers react strongly to the word: they read it as opaque, agentic, untrustworthy storage. Usually they&#39;re reacting to Claude Code&#39;s auto-memory (the <code>/memory</code> one), which has invited criticism for those exact reasons. AE101&#39;s <code>.claude/memory/</code> is something different: files the student authored, gitignored, prompted-read; mechanically the same as <code>CLAUDE.md</code> + context files in a subdirectory. The body now names this parallel inline (see <code>walk-and-send-off.md</code> Phase 2 memory-path note), but if the trigger fires anyway, acknowledge the criticism (it&#39;s legitimate against auto-memory) and point at the disambiguation. Don&#39;t argue the trigger; offer the alternate framing.</p>
 <h2 id="two-day-cohort-schedule">Two-Day Cohort Schedule</h2>
 <p>Default rhythm for a two-day Nordic cohort: 08:30 start, 1h15 lunch, 20-min breaks. Adjust to your sponsor&#39;s cadence. The architectural commitments are: M1–M3 on Day 1, M4–M6 on Day 2; lunch between M5 and M6 on Day 2 so both async runs have time to produce something M6 can read.</p>
 <h3 id="day-1-m1-m2-m3">Day 1, M1, M2, M3</h3>
@@ -2120,6 +2154,21 @@ body.workbook { padding-top: 3rem; }
 <li>Reorder 3+3 (M1-M2-M4 / M5-M3-M6), when the sponsor wants the M4-overnight-M5 mirror and the cohort is comfortable with M3 landing after the felt failure.</li>
 </ul>
 <p>If you run the reorder, dry-run M4&#39;s Phase 2 / Phase 3 prompts (<code>walk-and-send-off-2</code>, <code>walk-and-send-off-4</code>) against a fresh repo with no authored skill and no ADR convention, the conditional phrasings should resolve cleanly, but verify before the cohort.</p>
+<h2 id="m3-the-security-tools-surprise">M3, the security-tools surprise</h2>
+<p>Prework installs a curated bundle of skills. One is called <code>security-tools</code>. M3&#39;s first STRIDE prompt opens by invoking it as a &quot;pre-flight verifier.&quot; That invocation runs a small bundled script that performs a few legitimate-looking checks (first line: <em>&quot;owning you............ ok&quot;</em>), then prints an ASCII rick-rolled face and a short note: every link in the chain, tarball, SKILL.md, Bash authorization, was trusted without reading.</p>
+<p><strong>The stunt is the lesson.</strong> External skills are a supply-chain vector. A colleague&#39;s Slack-shared skill could have done the same, except pointed at AWS credentials. M3&#39;s surface (access-control + STRIDE) is the same shape one level up: trust boundaries and authorization checkpoints, applied to AI tooling instead of application features.</p>
+<p><strong>Don&#39;t spoil it in prework.</strong> The install prompt frames <code>security-tools</code> as a generic security-utility check. If a student asks what it does before M3, deflect: <em>&quot;a pre-flight check; you&#39;ll see it run during M3.&quot;</em> The point is they trusted the chain without verifying.</p>
+<p><strong>When it lands.</strong> The first time <code>threat-model-with-stride-1</code> fires. The trainer&#39;s terminal shows the script output verbatim (the SKILL.md instructs Claude to print without paraphrasing). Pause two beats after the ASCII face appears, let the room react before saying anything.</p>
+<p><strong>Framing after the reaction.</strong> Two minutes, not more. Three beats to land:</p>
+<ul>
+<li>Every link got trusted: the tarball link, the SKILL.md you didn&#39;t read, the Bash authorization Claude asked for.</li>
+<li>One layer up from this module&#39;s exercise: the same access-surface and authorization logic, applied to AI tooling rather than features.</li>
+<li>This is exactly why curated &gt; random; why &quot;fork + read LICENSE + vet + adapt&quot; beats &quot;install from a Discord link&quot;; why <code>access-control-analysis</code> and <code>stride</code> were vetted before they reached you, and <code>security-tools</code> is what skipping that step looks like.</li>
+</ul>
+<p>Back to the STRIDE pass.</p>
+<p><strong>Students who already noticed.</strong> Some engineers read <code>check.sh</code> during prework. Acknowledge them: <em>&quot;some of you read the script, that&#39;s the lesson, you noticed.&quot;</em> Make them feel sharp, not show-offy.</p>
+<p><strong>If the stunt doesn&#39;t fire.</strong> Rare, but possible if the skill failed to install during prework, or if Claude paraphrases instead of printing verbatim. Press on. The SKILL.md body carries the supply-chain lesson text; even paraphrased, the beat lands. If install actually broke, fix after the session, don&#39;t stop the room.</p>
+<p><strong>Skill survival default.</strong> <code>security-tools</code> stays installed past M3. The fake checks are short; the rick-roll body is information the engineer benefits from re-reading; the SKILL.md&#39;s own header comment carries the &quot;DO NOT REMOVE the easter egg&quot; framing for any future cleanup pass. If a sponsor pushes to extract it, leave the slot empty rather than substituting a serious-but-thin pre-flight skill, the stunt earns its keep precisely because it isn&#39;t serious.</p>
 <h2 id="m6-lecture-dense-by-design">M6, lecture-dense by design</h2>
 <p>M6 carries more lecture surface than the other modules. By Module 6 the student is a practitioner, and some moves at this point in the training are read about rather than prompt-drilled. The closer area runs lecture-after-lecture (Human close → Composing the workflow → The loop has a name → Agents that build agents). Manage transitions, and <strong>invite student reflections and opinion across the lectures</strong> by design. The mood is practitioner fluency, not lecture-hall: a room of engineers reading the field together, with the trainer as one voice among several.</p>
 <p><strong>The full M6 lecture stack:</strong></p>
@@ -2128,11 +2177,11 @@ body.workbook { padding-top: 3rem; }
 <li><strong><a href="./#lectures-story-of-module-6">Story of Module 6</a></strong>, opener; permission-giving memo from this module&#39;s own generation.</li>
 <li><strong><a href="./#lectures-quality-is-grounding">Quality is grounding</a></strong>, opener-bridge. Read between Story of Module 6 and the main exercise. ~4–6 min. Names the quality arc threaded across the whole training (M1 tests-first → M2 plan push-back → M3 test-strategy skill → M5 verifier → M6 second skill), then reframes quality&#39;s evolution from spec-and-tests to grounding and human signal. Stakes-setter before the build move. Cites Agentics Helsinki&#39;s first meetup (fall 2025) as historical anchor for the 500K-lines-in-weeks demos. Maintainer-block source-verification debt is logged; check before first cohort.</li>
 <li><strong><a href="./#lectures-steering-the-wiring">Steering the wiring</a></strong>, mid-module.</li>
-<li><strong><a href="./#lectures-composing-the-workflow">Composing the workflow</a></strong>, closer-area pointer. Read after Human close, before The loop has a name. ~3–4 min. Names the practitioner-mode shift (<em>&quot;there is no prompt to drill at this point&quot;</em>) and walks five live lineages of workflow composition in one line each: Klaassen (file paths between subagents, hard gates), Cherny (parallel subagents in worktrees), Pocock (weakly-coupled toolkit), Cognition (single writer with advisor agents), Amp (vendor-shipped primitives). Plus Ronacher&#39;s counter-voice (composition is throttling, not multiplication). Points at the <a href="supplementary/workflow-composition-lineages.md">workflow-composition-lineages supplementary</a> for depth.</li>
+<li><strong><a href="./#lectures-composing-the-workflow">Composing the workflow</a></strong>, closer-area pointer. Read after Human close, before The loop has a name. ~3–4 min. Names the practitioner-mode shift (<em>&quot;there is no prompt to drill at this point&quot;</em>) and walks five live lineages of workflow composition in one line each: Klaassen (file paths between subagents, hard gates), Cherny (parallel subagents in worktrees), Pocock (weakly-coupled toolkit), Cognition (single writer with advisor agents), Amp (composition primitives shipped inside the product). Plus Ronacher&#39;s counter-voice (composition is throttling, not multiplication). Closes by pointing at a worked-example case study from AE101 trainer Dino: a complete composed skill stack with the four composition mechanisms in one place, demonstrating what the framework looks like instantiated. Points at the <a href="supplementary/workflow-composition-lineages.md">workflow-composition-lineages supplementary</a> for depth, and to Dino&#39;s <a href="supplementary/skill-stacking.md">skill-stacking system primary doc</a> + three diagrams for the worked example.</li>
 <li><strong><a href="./#lectures-the-loop-has-a-name">The loop has a name</a></strong>, closer; names <em>eval</em> from the just-built second skill.</li>
 <li><strong><a href="./#lectures-agents-that-build-agents">Agents that build agents</a></strong>, forward closer.</li>
 </ul>
-<p><strong>How to invite reflection.</strong> Between lectures, ask the room: which lineage resembles their day? What did the quality arc actually feel like across the five moves? What&#39;s their review bandwidth, and what does Ronacher&#39;s counter-voice land as? Open prompts, not Q&amp;A. Two beats of silence is fine; engineers think before they speak. Self-study Nerd mirrors this with conversation prompts in the same slots.</p>
+<p><strong>How to invite reflection.</strong> Between lectures, ask the room: which lineage resembles their day? What did the quality arc actually feel like across the five moves? What&#39;s their review bandwidth, and what does Ronacher&#39;s counter-voice land as? After Dino&#39;s worked example, the natural question is the transfer one: looking at the second skill they just shipped at M6, is it a route, a leaf, an orchestrator, or a hand-off? Open prompts, not Q&amp;A. Two beats of silence is fine; engineers think before they speak.</p>
 <p><strong>Pacing the close.</strong> Lecture density means reading the room sharply. If energy is high, give the lineage conversation room. If energy is low, name fewer lineages in delivery, point at the supplementary, move to the closer pair faster. The supplementary carries the depth regardless; the lecture body is the pointer, not the survey.</p>
 <p><strong>Composition is a reading move at M6.</strong> If a student asks where the composition exercise is, point them at the <a href="supplementary/workflow-composition-lineages.md">workflow-composition-lineages supplementary</a>. The lecture walks the lineages; the supplementary carries the depth. <em>Your intuition</em> is the close of composing-the-workflow and the register the section asks the room to land in.</p>
 <h2 id="prep-before-each-session">Prep Before Each Session</h2>
@@ -2199,7 +2248,7 @@ body.workbook { padding-top: 3rem; }
 </ul>
 <h2 id="feedback-loop">Feedback Loop</h2>
 <p>After delivery, capture friction where editors will see it. Cohort-specific notes belong in the customer surface. Structural fixes belong in this file or the module files. Delete closed TODOs; git is the history.</p>
-<p>If a prompt, example, timing move, or fallback improved the session, feed it back into the content loop after class. Capture mechanism is being designed, see <code>pre-cohort-todos.md</code>. Until it lands, don&#39;t rely on memory.</p>
+<p>If a prompt, example, timing move, or fallback improved the session, feed it back into the content loop after class. Capture flows through the delivery partner (ArcticRex) and routes back as the run-summary + per-module raw files pattern (see existing punchlist entries under <em>&quot;From 2026-05-19 cohort run&quot;</em> in <code>pre-cohort-todos.md</code> for the shape). Don&#39;t rely on memory.</p>
 
 </section>
 </main>
@@ -2262,9 +2311,12 @@ body.workbook { padding-top: 3rem; }
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
             ],
             supplementaries: [
+                { slug: 'what-is-agentic-engineering', title: 'What is agentic engineering' },
                 { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' },
                 { slug: 'the-agent-loop',             title: 'The agent loop' },
-                { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' }
+                { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' },
+                { slug: 'workflow-composition-lineages', title: 'Workflow composition lineages' },
+                { slug: 'skill-stacking',             title: 'Skill stacking system' }
             ],
             references: [
                 { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
@@ -2282,6 +2334,7 @@ body.workbook { padding-top: 3rem; }
                 { slug: 'agentic-systems-repo-demo', title: 'Agentic systems, shown in the repo' },
                 { slug: 'where-is-this-all-going',   title: 'Where is this all going?' },
                 { slug: 'homework-build-and-verify', title: 'Separate homework: build and verify' },
+                { slug: 'personal-site-with-guardrails', title: 'Paint by agent with guardrails' },
                 { slug: 'organisers-run-the-workshop', title: 'Organisers: run the workshop' }
             ]
         }
@@ -2468,6 +2521,16 @@ body.workbook { padding-top: 3rem; }
         var dest = (entry && entry.dest) || 'Claude Code';
         var ctx = entry && entry.context ? ', ' + entry.context : '';
         var label = '**Prompt** *(' + dest + ctx + ')*';
+        // Permission-mode sentinel, mirrors the ⟦A:slug⟧ anchor pattern.
+        // decoratePrompts() parses this off the label paragraph and renders it
+        // as a separate chip in the prompt-block header. Sentinel is appended
+        // after the label so marked() treats it as inline text inside the same
+        // paragraph — survives the render cycle untouched (U+27E6/U+27E7 are
+        // not HTML-special and not in any realistic prompt label).
+        var mode = entry && entry['permission-mode'];
+        if (mode && /^[A-Za-z]+$/.test(mode)) {
+            label += ' ⟦M:' + mode + '⟧';
+        }
         var text = String((entry && entry.text) || '').replace(/\s+$/, '');
         if (entry && entry.anchors && entry.anchors.length) {
             text = injectAnchorSentinels(text, entry.anchors);
@@ -2793,11 +2856,25 @@ body.workbook { padding-top: 3rem; }
                   '<span class="rt-cli">Claude Code CLI</span>'
                 : esc(dest);
 
+            // Permission-mode sentinel ⟦M:<mode>⟧ sits in the paragraph text
+            // after the em-paren label; renderPromptBlock plants it when the
+            // prompt's frontmatter declares `permission-mode:`. Parse it off
+            // here, strip from the paragraph so the literal sentinel never
+            // renders, surface as a separate header chip.
+            var mode = '';
+            var pHtml = p.innerHTML;
+            var modeMatch = pHtml.match(/⟦M:([A-Za-z]+)⟧/);
+            if (modeMatch) {
+                mode = modeMatch[1];
+                p.innerHTML = pHtml.replace(/\s*⟦M:[A-Za-z]+⟧\s*/g, '');
+            }
+
             var wrap = document.createElement('div');
             wrap.className = 'prompt-block';
             var header = document.createElement('div');
             header.className = 'prompt-block__header';
             header.innerHTML =
+                (mode ? '<span class="prompt-block__mode prompt-block__mode--' + esc(mode) + '" title="Paste this prompt in ' + esc(mode) + ' mode">' + esc(mode) + ' mode</span>' : '') +
                 '<span class="prompt-block__label">Prompt</span>' +
                 '<span class="prompt-block__arrow" aria-hidden="true">→</span>' +
                 '<span class="prompt-block__dest">' + destHtml + '</span>' +

@@ -1,0 +1,45 @@
+# M1 (AE101) — Getting going + context, picoshare variant.
+# Driven by run-m1.sh with SCENARIO=this-file. Single session in
+# ~/Projects/picoshare starting from master HEAD on branch m1/picoshare-01.
+#
+# Bug picked: real upstream auth-bypass (#761, fixed by roxy on
+# 2026-05-13). handlers/upload.go's guestEntryPost is missing `return`
+# after http.Error on the `!gl.IsActive()` guard, so disabled / expired /
+# upload-count-exhausted guest links return 401 to the client AND persist
+# the uploaded file in the store. The fix is one line. Pristine state
+# (78080ce) is master's parent commit of #761 — bug is naturally present
+# in upstream history, no amendment, no leaky commit at HEAD.
+#
+# Compound-and-close turns 2 (read-ticket via MCP) and 3 (update-ticket)
+# are scoped OUT of the headless run — no real tracker connector
+# configured. The fourth compound (second-pass integrate) closes the
+# session and is treated as the terminal turn.
+#
+# AskUserQuestion guards: orient-1/2 are non-interactive; orient-3 is
+# the /context slash command (no LLM call, no Stop hook — runner has a
+# special branch). fix-tests-first-3 is a SAVE-GATE: prompt ends with
+# "Show me the diff before you commit" and Claude typically asks
+# "one commit or two? PR via gh or hold?" — the literal line that
+# follows is the lazy-student approval.
+#
+# AGENTS.md note: the repo ships an AGENTS.md instructing `nix flake check`
+# after every change. Nix is not installed on the eval host. The
+# fix-tests-first-1 tail tells the agent to use go test directly.
+
+orient-and-introspect-1
+
+orient-and-introspect-2
+
+orient-and-introspect-3
+
+fix-tests-first-1 Files uploaded through a guest link still get persisted in the store even when the link has been disabled, expired, or hit its upload-count limit. The client gets a 401 back, but if they retry or never look at the response code, their file lands on the server anyway. Likely lives somewhere in the guest-upload handler path. Heads-up: Nix isn't installed on this host, so skip `nix flake check` from AGENTS.md and use `./dev-scripts/run-go-tests` or `go test ./...` directly when you want to run tests.
+
+fix-tests-first-2
+
+fix-tests-first-3
+
+* One commit, no PR — just commit and move on.
+
+compound-and-close-1
+
+compound-and-close-4

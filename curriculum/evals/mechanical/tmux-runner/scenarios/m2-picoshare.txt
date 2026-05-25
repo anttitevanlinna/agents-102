@@ -1,0 +1,61 @@
+# M2 (AE101) — Plan mode, done right. picoshare variant.
+# Driven by run-m2.sh with SCENARIO=this-file. Single session in
+# ~/Projects/picoshare on branch m1/picoshare-01 (carries M1's
+# missing-return fix + CLAUDE.local.md + the inactive-link and
+# concurrency tests).
+#
+# Multi-file task: surface guest-link status to the guest user via a new
+# public JSON endpoint and a status panel on the existing upload page.
+# New read-side surface deliberately introduced — sets up M3 to
+# threat-model the access surface, the response-shape enumeration
+# oracle, and the read/write audit asymmetry. Mirrors the codesearch
+# M2→M3 hand-off (csweb shared-instance → STRIDE on the network
+# surface) and the lemmings M2→M3 hand-off (Share-a-level feature →
+# STRIDE on the shareable URL).
+#
+# AskUserQuestion handling — ask-and-wait pattern (NOT suppression):
+#  The headless tmux runner can't respond to AskUserQuestion's UI, but
+#  suppressing questions outright masks the very class of prompt issues
+#  we're trying to surface. Instead, four prompts (push-back-1,
+#  push-back-2, extract-rule-1, extract-rule-2) carry tails that tell
+#  Claude to ask questions in CHAT (numbered list, plain text) and STOP.
+#  A literal-text turn directly after each prompt simulates a real
+#  student answering — short, decisional, defers where it doesn't
+#  matter. Run-m2.sh's assert dispatch skips literal turns (dispatches
+#  on key_seq, not total seq), so the same script drives both this
+#  variant and the lemmings m2.txt.
+#
+# Save-gate: push-back-on-the-plan-2 explicitly says "Don't touch the
+# plan file until I say 'lock it in.'" The literal "lock it in" line
+# after the student-voice reply is the approval that triggers the
+# in-place plan edit.
+#
+# AGENTS.md note: the repo ships an AGENTS.md instructing `nix flake
+# check` after every change. Nix is not installed on the eval host. The
+# push-back-on-the-plan-1 tail tells the agent to use go test directly.
+
+push-back-on-the-plan-1 Write the plan to ~/.claude/plans/m2-picoshare-public-guest-status-<adjective>-<animal>.md (mkdir -p the dir if needed; pick your own adjective/animal). The plan file landing is the load-bearing artifact — write it first. Don't call AskUserQuestion. If you have refinement questions, list them at the END of your reply (plain chat text, numbered) and I'll answer in a follow-up message before push-back-2; you can fold the answers into the plan then. My task: surface guest-link status to the guest user. Today a guest hitting /g/{id} sees just an upload form — no indication of how many uploads they have left, when the link expires, or how much byte budget remains. I want to add a public JSON endpoint GET /api/guest-links/{id}/public-status returning {uploads_remaining, expires_at, byte_budget_remaining, is_active}, and update the guest-upload page template to surface those values visually (small status panel above the upload form). Touches handlers/routes.go, a new handler in handlers/, the guest-upload HTML template, possibly handlers/static/js/, and a short README section. About 30-60 min agent work. Note: I'm deliberately NOT scoping rate limiting, IP-based abuse logging, CORS hardening, normalizing response codes across link states, or label/filename sanitization in the response into this task — those are follow-ups. Plan for what I asked, not what I should have asked. Heads-up: Nix isn't installed on this host, so skip `nix flake check` from AGENTS.md and use `./dev-scripts/run-go-tests` or `go test ./...` directly when you want to run tests.
+
+* answers: 1) field names — yes those four are the contract. uploads_remaining = nil if MaxFileUploads is unlimited; byte_budget_remaining = nil if MaxFileBytes is the unlimited sentinel. 2) expires_at format — same RFC3339 the rest of picoshare uses. 3) is_active just mirrors gl.IsActive() — single bool. 4) when the link is disabled or expired, return 200 with is_active=false and the remaining counters cleared — don't 401 here, this IS the public status endpoint. 5) error shape on unknown ID: 404 with a plain text body is fine. 6) test shape: a handler test using httptest.NewRecorder, table-test the variants (active, disabled, expired, exhausted, unknown). 7) README gets a short "Guest link status" subsection, your call on length. anything else, use your judgement.
+
+push-back-on-the-plan-2 Don't call AskUserQuestion and don't ask me three-at-a-time interactively. Walk down every unresolved branch in one pass (dependencies, decisions, side-effects). For each branch, state your recommended answer in prose. If you still have genuine questions after the walk-down, ask them as a numbered list in your reply (plain chat text) and STOP — don't touch the plan file yet. I'll answer in a follow-up message, then say 'lock it in' as a separate message to approve the edit.
+
+* on your questions: cache control — return Cache-Control: no-store, link state changes per upload. CORS — don't add a permissive header for v1, the consuming page is same-origin. JSON content type — application/json, obviously. response body shape on disabled/expired — same JSON envelope as active with is_active=false and the counters zeroed/nulled, do NOT add a "reason" field that distinguishes disabled vs expired (that distinction is exactly the info-disclosure follow-up I'm deferring; M3 may revisit). content of the status panel on the upload page — show "X uploads remaining" / "expires in Y" / "Z MB budget left" as plain text; if is_active is false, replace the whole panel with "This link is no longer active." and hide the upload form. status panel placement — above the upload form is fine. anything else you flagged, go with your recommended answer.
+
+* lock it in
+
+push-back-on-the-plan-3
+
+extract-the-task-shaping-rule-1 Don't call AskUserQuestion and don't pause for rewrite/reject in a tool UI. Propose the 3-5 rules in your reply (plain chat text) and STOP — don't proceed yet. I'll tell you in a follow-up message which ones to keep, rewrite, or drop.
+
+* keep all of them as proposed. they look clean. proceed.
+
+extract-the-task-shaping-rule-2 Don't call AskUserQuestion. Propose two-three plausible paths with their loading models (fires-anywhere-on-this-laptop vs fires-only-when-this-repo-is-open) and your recommendation in your reply (plain chat text) and STOP — don't write the file yet. I'll pick in a follow-up message. After I pick, write the rules to that path (integrate if a file already exists; don't overwrite). After saving, echo the saved path on its own line as `SAVED-PATH: <abs path>` so the run can capture it.
+
+* go with your recommended path. integrate if something's already there. save it.
+
+extract-the-task-shaping-rule-3
+
+push-back-on-the-plan-4
+
+ae101-m2-integrate-branch

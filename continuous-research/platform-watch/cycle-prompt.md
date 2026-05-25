@@ -174,6 +174,8 @@ Search queries should target business users AND integration reality:
 
 **Act:** Write findings.
 
+**Back-sweep on correction (mandatory whenever this cycle corrects a prior cycle).** If anything you write corrects a source-type label or an evidence level an *earlier* cycle asserted — e.g. you relabel a `[practitioner direct]` URL as a fan-digest `[practitioner analysis]`, or you downgrade an "L3 convergence" claim to L2 — do NOT let the fix live only in this cycle's file. `grep` every prior-cycle file in the same research thread for the same URL / claim / level and fix-or-flag each in the SAME edit. A correction confined to the catching file leaves the chain self-contradictory: downstream says L2 while upstream still says L3, and an upstream reader trusts the stale label. (Rule: `check_research_claims.md §1`, back-sweep sub-clause.)
+
 ### Step 4: Write cycle log
 
 Create file in the appropriate `runs/` directory: `YYYY-MM-DD-HHMM.md`

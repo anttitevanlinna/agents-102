@@ -2,10 +2,10 @@
 
 Research question: What does the actual wiring of composition look like?
 Date: 2026-05-20
-Cycle: 2A (drilling into the L3-converged shape from Cycle 1)
+Cycle: 2A (drilling into the early-convergence shape from Cycle 1)
 Freshness window: since 2025-11-20
 
-Cycle 1 found L3 convergence on a composition shape: **a kit of 3–5 small markdown subagents wired into a plan → work → verify → learn loop, with one step that writes back to persistent memory**. This cycle asks: *show me the wiring*. The answer turns out to be unusually concrete — the canonical practitioner kits are publicly checked-in markdown, and the shape is consistent enough across independent practitioners that a curriculum exercise can mimic it almost verbatim.
+Cycle 1 found an early convergence signal (N=3–6 practitioners per move — L2 supporting evidence, not yet L3, which needs 10–20) on a composition shape: **a kit of 3–5 small markdown subagents wired into a plan → work → verify → learn loop, with one step that writes back to persistent memory**. This cycle asks: *show me the wiring*. The answer turns out to be unusually concrete — the canonical practitioner kits are publicly checked-in markdown, and the shape is consistent enough across independent practitioners that a curriculum exercise can mimic it almost verbatim.
 
 ## Composite slash command — concrete shapes
 
@@ -44,7 +44,7 @@ Cycle 1 found L3 convergence on a composition shape: **a kit of 3–5 small mark
 
 **Memory close:** *"Each tip refines my CLAUDE.md."* No explicit slash command; the human writes the refinement after a successful loop. Lower formality than Klaassen.
 
-**Source:** https://howborisusesclaudecode.com/ [practitioner direct] (parts dated Jan–Apr 2026).
+**Source:** https://howborisusesclaudecode.com/ [practitioner analysis] — @CarolinaCherry fan-digest *of* Cherny, not Cherny's own byline; wiring claims here are secondary reporting, treat as paraphrase (parts dated Jan–Apr 2026).
 
 ### Matt Pocock — `to-prd` → `to-issues`
 
@@ -80,7 +80,7 @@ Cycle 1 found L3 convergence on a composition shape: **a kit of 3–5 small mark
 
 **Orchestrator integrates:** parallel fan-in via `asyncio.gather()` for research-shaped work — "Spawn subagents to research each facet in parallel. Lead agent synthesizes findings."
 
-**Source:** https://claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them [vendor direct].
+**Source:** https://claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them [practitioner direct, vendor venue] — architectural guidance treated as evidence; any metrics would be vendor-self-reported.
 
 ### Cognition — full context shared, but writes stay single-threaded
 
@@ -90,7 +90,7 @@ Cycle 1 found L3 convergence on a composition shape: **a kit of 3–5 small mark
 
 **Orchestrator integrates:** *single-threaded write, advisor agents around it*. Quote: "most multi-agent setups work best today when writes stay single-threaded and the additional agents contribute intelligence rather than actions." This is a real evolution from their 2024 "Don't Build Multi-Agents" post: parallel write agents created conflicting "implicit choices about style, edge cases"; parallel *reviewers/advisors* feeding a single writer do not.
 
-**Source:** https://cognition.ai/blog/multi-agents-working [practitioner direct] (2026).
+**Source:** https://cognition.ai/blog/multi-agents-working [practitioner direct, vendor venue] (2026).
 
 ### Klaassen — context = filesystem, not chat
 
@@ -100,7 +100,7 @@ The `lfg` skill is the cleanest practitioner exemplar of orchestration-by-filesy
 
 Three patterns surfaced; they map cleanly onto stack depth:
 
-**1. File-mediated (Klaassen, Cherny, Pocock).** Subagent writes to a path; orchestrator checks the path exists and passes it forward. The orchestrator does not read the contents into its own context. **This is the dominant pattern for engineering work** — it survives context-window limits because the artefact is the contract, not the conversation. Klaassen's gates ("verify plan file in `docs/plans/`", "verify files changed beyond the plan") are file-existence and git-status checks.
+**1. File-mediated (Klaassen, Cherny, Pocock).** Subagent writes to a path; orchestrator checks the path exists and passes it forward. The orchestrator does not read the contents into its own context. **This is the most consistently documented pattern across the practitioners sampled** — it survives context-window limits because the artefact is the contract, not the conversation. Klaassen's gates ("verify plan file in `docs/plans/`", "verify files changed beyond the plan") are file-existence and git-status checks.
 
 **2. Summary-fan-in (Anthropic guidance, Cognition review pattern).** Multiple subagents return short summaries (~50–100 tokens each); orchestrator reads all summaries serially and synthesizes. Works for research/review where the intermediate artefact is the judgement, not a file. The 51 review agents in Klaassen's plugin (`ce-correctness-reviewer`, `ce-security-sentinel`, `ce-performance-oracle`, `ce-scope-guardian-reviewer`, etc.) fan into `ce-code-review`, which produces a "Residual Actionable Work summary" — a structured fan-in result.
 
@@ -108,7 +108,7 @@ Three patterns surfaced; they map cleanly onto stack depth:
 
 ## Closure / memory step
 
-The single most consistent move across the L3-converged set:
+The single most consistent move across the curated practitioner sample (N=3–6 per move, L2):
 
 - **Klaassen `ce-compound`** — `docs/solutions/<slug>.md` with YAML frontmatter (validated against `references/schema.yaml`). Headless mode exists for skill-to-skill invocation. Discoverability check edits a discoverability surface (CLAUDE.md or equivalent) so the next session finds the doc.
 - **Cherny** — manual edit of `CLAUDE.md` after a successful loop. No skill; the human writes it.

@@ -12,7 +12,7 @@ Purpose: Inform AE101 Module 6 composition-move design (final module).
 **What they're composing:** A repeatable four-step loop — **Plan → Work → Assess → Compound** — packaged as a Claude Code plugin, where the output of each step is the input of the next, and the final step writes learnings back into CLAUDE.md so the next loop starts smarter.
 **Specific moves:**
 - **Compound Engineering loop (Plan/Work/Assess/Compound)** — Sub-agents research in parallel during Plan; review agents (security, architecture, quality) triage during Assess; Compound captures lessons into discoverable artifacts. — https://creatoreconomy.so/p/how-to-make-claude-code-better-every-time-kieran-klaassen [practitioner analysis] (2026-02-08)
-- **Compound Engineering Camp / plugin** — Distillation of the loop as installable slash commands; 7,000+ GitHub stars. — https://every.to/source-code/compound-engineering-camp-every-step-from-scratch [practitioner direct, vendor venue] (2026-03-13; Katie Parrott byline on Klaassen's system at Every — treat metrics as self-reported)
+- **Compound Engineering Camp / plugin** — Distillation of the loop as installable slash commands; 7,000+ GitHub stars. — https://every.to/source-code/compound-engineering-camp-every-step-from-scratch [practitioner analysis] — Katie Parrott on Klaassen's system, *Every* (2026-03-13); treat metrics as self-reported
 - **`/LFG` composite skill** — "One prompt to go from 0 to production" — explicit chain primitive that calls Plan + Work + Assess sub-skills.
 **Three-gates:** Agentic? Y · Independent evidence? Y (Larson externally validated; widely forked plugin) · Specific outcome? Partial — plugin stars + Every's "5 products with single-person teams" claim, but no independent throughput metric.
 **Representative quote:** "The core idea is a four-step loop: Plan, work, review, compound. Each step has a specific input and a specific output."
@@ -35,9 +35,9 @@ Purpose: Inform AE101 Module 6 composition-move design (final module).
 - **`/go` composite skill** — "Many of my prompts look like 'Claude do blah blah /go'" — one skill that chains verify + simplify + PR creation.
 - **Worktree-parallel execution** — 5 tabs, each its own git checkout, system notifications for input. Plus 5-10 web Claudes with `teleport` to hand off between web and local.
 - **Verifier-2-3x claim** — giving the agent a way to verify (browser automation, bash, test suite) improves output quality 2-3x.
-- — https://howborisusesclaudecode.com/ [practitioner direct] (parts dated Jan–Apr 2026)
+- — https://howborisusesclaudecode.com/ [practitioner analysis] — @CarolinaCherry fan-digest *of* Cherny, NOT Cherny's own byline; treat every Cherny quote drawn from it as paraphrase (parts dated Jan–Apr 2026). The clean [practitioner direct] Cherny source is the Threads post below.
 - — Original Threads post: https://www.threads.com/@boris_cherny/post/DTBVlMIkpcm [practitioner direct]
-**Three-gates:** Agentic? Y · Independent evidence? Y (widely forked at https://github.com/meleantonio/ChernyCode and as community skill packs) · Specific outcome? Partial — 2-3x quality claim is self-reported.
+**Three-gates:** Agentic? Y · Independent evidence? Y (widely forked at https://github.com/meleantonio/ChernyCode and as community skill packs) · Specific outcome? Partial — 2-3x quality claim is self-reported, no methodology or definition of "quality".
 **Representative quote:** "Coding becomes a pipeline of phases: spec, draft, simplify, verify. Each phase benefits from a different mind."
 **Notes:** This is the most explicit "primitive kit → composition" statement of any practitioner sampled. Cherny treats subagents as **the** composition primitive.
 
@@ -48,14 +48,14 @@ Purpose: Inform AE101 Module 6 composition-move design (final module).
 - **`/setup-matt-pocock-skills`** — per-repo config scaffolder (issue tracker, triage labels, domain doc layout); explicit dependency-injection point that other skills consume.
 - **"YOLO vs OH NO" framing** — "design your process, encode it as skills, let the agent ride the rails you laid" — composition as rail-laying, not orchestration.
 - **Cohort taught-stack** — Plan/Execute/Clear, AGENTS.md, custom skills, multi-phase planning, feedback loops, autonomous loops, Ralph Wiggum loop. — https://www.aihero.dev/cohorts/claude-code-for-real-engineers-2026-04 [practitioner direct, vendor venue] (cohort ran 2026-03-30 to 2026-04-13)
-**Three-gates:** Agentic? Y · Independent evidence? Y (54k stars; multiple independent reviews) · Specific outcome? Partial (token-reduction claims via `/caveman` ~75% self-reported).
+**Three-gates:** Agentic? Y · Independent evidence? Y (54k stars; multiple independent reviews) · Specific outcome? Partial (token-reduction claims via `/caveman` ~75% self-reported, no methodology or baseline).
 **Representative quote:** "These skills are designed to be small, easy to adapt, and composable. They work with any model."
 **Notes:** The composition philosophy is **explicit weak coupling** — no DSL, no orchestrator, plain English. Copy a skill into a different agent and it still works. This is the polar opposite of an orchestrator-heavy framework.
 
 ### Simon Willison
 **What they're composing:** **Parallel-agent + black-box-team** model — fires multiple Claude Codes simultaneously, treats them like external contractors, validates by empirical use rather than line-by-line review.
 **Specific moves:**
-- **Parallel agents** — "I can fire up four agents in parallel and have them work on four different problems... I feel the effects before noon" (Lenny's Podcast, 2026-04-03). [practitioner direct]
+- **Parallel agents** — "I can fire up four agents in parallel and have them work on four different problems... I feel the effects before noon" (Lenny's Podcast, 2026-04-03). [SOURCE NEEDED — supply episode URL; a podcast interview write-up is [practitioner analysis], not practitioner-direct]
 - **Agentic Engineering Patterns project** — Design-Patterns-style catalogue, 1–2 chapters/week. Published: "Writing code is cheap now", "Red/green TDD". — https://simonwillison.net/2026/Feb/23/agentic-engineering-patterns/ [practitioner direct] (2026-02-23)
 - **Use-test trumps review-test** — "I want somebody to have used the thing... a vibe-coded thing you've used every day for the past two weeks is much more valuable" — composition is validated by usage in production, not by inspection. — https://simonwillison.net/2026/May/6/vibe-coding-and-agentic-engineering/ [practitioner direct] (2026-05-06)
 - **LLM tool refactor** — https://simonwillison.net/2026/Apr/29/llm/ [practitioner direct] — supporting agent composition at the CLI tool layer.
@@ -81,10 +81,10 @@ Purpose: Inform AE101 Module 6 composition-move design (final module).
 - **Dojo skills marketplace (350+)** — Sales: Gong call analysis + battlecard generator. Support: Zendesk investigation. Finance: spend-anomaly detection. Engineering: PR-review + repo-specific debugging. — https://aicatchup.com/practices/internal-ai-workspaces-playbook [practitioner analysis] (2026, undated specific)
 - **Sensei recommendation system** — surfaces skills based on employee role, tool usage, recent activity.
 - **Version control as composition substrate** — "version-controlled, code-reviewed artifacts rather than closed prompts."
-- **99.5% AI adoption claim** — https://digitalstrategies.tuck.dartmouth.edu/what-ramps-99-5-ai-adoption-rate-means-for-educators/ [academic write-up] (2026)
+- **99.5% AI adoption claim** — https://digitalstrategies.tuck.dartmouth.edu/what-ramps-99-5-ai-adoption-rate-means-for-educators/ [academic/research] (2026; reports Ramp's self-reported figure — the 99.5% remains vendor-self-reported)
 **Three-gates:** Agentic? Partial (skills are mostly retrieve-and-summarise workflows, not multi-step autonomous) · Independent evidence? Y (Tuck case study, Charles' own talks) · Specific outcome? Partial (99.5% adoption metric is Ramp-self-reported).
 **Representative quote (not from Charles direct in this sweep):** "One person's breakthrough should become everyone's baseline." — Goddijn (Ramp), companion piece.
-**Notes:** Could not find a 6-month-fresh **Charles-byline** piece on Ramp's own site (most recent posts pre-window or product-newsletter). Conference talk evidence (https://www.youtube.com/watch?v=RBqT2PHWdBg) exists but not opened in this sweep. Mechanism is well-attested via third-party analysis.
+**Notes:** Could not find a 6-month-fresh **Charles-byline** piece on Ramp's own site (most recent posts pre-window or product-newsletter). Conference talk evidence (https://www.youtube.com/watch?v=RBqT2PHWdBg — [unlabeled; byline check owed before use]) exists but not opened in this sweep. Mechanism is well-attested via third-party analysis.
 
 ### Sourcegraph Amp team (Quinn Slack, Lewis Metcalf, Harry Charlesworth)
 **What they're composing:** **Context-preserving handoffs + feedback-loopable playgrounds + sub-agents** — composition primitives that solve specific named failure modes (lossy compaction, untestable agent output, single-agent context overflow).
@@ -99,7 +99,7 @@ Purpose: Inform AE101 Module 6 composition-move design (final module).
 
 ### Optional: Paweł Huryn
 **What they're composing:** Multi-agent orchestration in **n8n** (workflow-automation tool with MCP/A2A), aimed at PMs not engineers. Persistent knowledge system that learns from every session.
-- "Not a prompt library. Not a workflow. A persistent knowledge system that learns from every session." — substack note, 2026 [practitioner direct]
+- "Not a prompt library. Not a workflow. A persistent knowledge system that learns from every session." — substack note, 2026 [SOURCE NEEDED — supply Substack post URL]
 - Recommends: orchestration skills, ReAct vs Plan-and-Execute, evals from day one.
 **Three-gates:** Agentic? Y · Independent evidence? Partial · Specific outcome? Partial (5.2M X impressions self-reported).
 **Notes:** Different audience (PM, not eng). Useful as **non-engineer composition** reference but not a primary signal for AE101.
@@ -110,21 +110,21 @@ Purpose: Inform AE101 Module 6 composition-move design (final module).
 
 Named moves appearing across **3+ independent practitioners**:
 
-1. **Specialised-subagents-as-composition-primitive** (5 practitioners: Klaassen Plan-agents + Assess-agents; Cherny code-simplifier/verify-app/code-architect; Curran PR-review 5 sub-tasks; Pocock skills-as-subagents-in-spirit; Amp explicit subagents). **L3 convergence.** The unit of composition is a named, narrow, repeatable subagent — not a monolithic prompt.
+1. **Specialised-subagents-as-composition-primitive** (5 practitioners: Klaassen Plan-agents + Assess-agents; Cherny code-simplifier/verify-app/code-architect; Curran PR-review 5 sub-tasks; Pocock skills-as-subagents-in-spirit; Amp explicit subagents). **L2 — early convergence signal (N=5, two sources vendor-venue/partial-agentic; L3 needs 10–20).** The unit of composition is a named, narrow, repeatable subagent — not a monolithic prompt.
 
-2. **Verifier-embedded-in-loop** (6 practitioners: Klaassen Assess step; Cherny verify-app + 2-3x claim; Charlesworth/Amp "trust is a passing test suite"; Pocock `tdd` + `diagnose`; Curran AI-PR-review gates; Willison empirical-use-test). **L3 convergence.** Verification is composed in-line, not bolted on after.
+2. **Verifier-embedded-in-loop** (6 practitioners: Klaassen Assess step; Cherny verify-app + 2-3x claim; Charlesworth/Amp "trust is a passing test suite"; Pocock `tdd` + `diagnose`; Curran AI-PR-review gates; Willison empirical-use-test). **L2 — early convergence signal (N=6; L3 needs 10–20).** Verification is composed in-line, not bolted on after.
 
-3. **Plan→Work→Verify pipeline shape** (4 practitioners explicitly named: Klaassen Plan/Work/Assess/Compound; Cherny spec/draft/simplify/verify; Pocock Plan/Execute/Clear; Amp specification→reference→verification→iteration). **L3 convergence.** The phase sequence is near-identical across independent vocabularies.
+3. **Plan→Work→Verify pipeline shape** (4 practitioners explicitly named: Klaassen Plan/Work/Assess/Compound; Cherny spec/draft/simplify/verify; Pocock Plan/Execute/Clear; Amp specification→reference→verification→iteration). **L2 — early convergence signal (N=4; L3 needs 10–20).** The phase sequence is near-identical across independent vocabularies.
 
-4. **Skills-as-version-controlled-markdown** (4 practitioners: Pocock public repo; Ramp Dojo Git-backed; Intercom plugin marketplace; Klaassen plugin). **L3 convergence.** Composition primitives are markdown files in Git, not prompt-library SaaS.
+4. **Skills-as-version-controlled-markdown** (4 practitioners: Pocock public repo; Ramp Dojo Git-backed; Intercom plugin marketplace; Klaassen plugin). **L2 — early convergence signal (N=4, two of four vendor-venue; L3 needs 10–20).** Composition primitives are markdown files in Git, not prompt-library SaaS.
 
-5. **Parallel-agents-in-worktrees** (3 practitioners: Cherny 5 tabs/worktrees; Willison 4-agents-before-noon; Intercom 497 autonomous PRs in 4 weeks). **L3 convergence**, but operationally heavier than the others — requires accept-loss + recovery patterns.
+5. **Parallel-agents-in-worktrees** (3 practitioners: Cherny 5 tabs/worktrees; Willison 4-agents-before-noon; Intercom 497 autonomous PRs in 4 weeks). **L2 — early convergence signal (N=3; L3 needs 10–20)**, but operationally heavier than the others — requires accept-loss + recovery patterns.
 
-6. **Context-handoff as named primitive** (3 practitioners: Amp `/handoff`; Pocock `handoff` skill; Cherny `teleport` web-to-local). **L3 convergence.** Solving the cross-session context loss is a recognised, named composition seam.
+6. **Context-handoff as named primitive** (3 practitioners: Amp `/handoff`; Pocock `handoff` skill; Cherny `teleport` web-to-local). **L2 — early convergence signal (N=3; L3 needs 10–20).** Solving the cross-session context loss is a recognised, named composition seam.
 
-7. **Compound/learn-back into CLAUDE.md or equivalent** (3 practitioners: Klaassen Compound step; Cherny "Each tip refines my CLAUDE.md"; Pocock per-repo `/setup` scaffolder). **L3 convergence.** The loop closes on persistent memory; without this step, the system doesn't compound.
+7. **Compound/learn-back into CLAUDE.md or equivalent** (3 practitioners: Klaassen Compound step; Cherny "Each tip refines my CLAUDE.md"; Pocock per-repo `/setup` scaffolder). **L2 — early convergence signal (N=3; L3 needs 10–20).** The loop closes on persistent memory; without this step, the system doesn't compound.
 
-**The strongest 4-way overlap is moves 1 + 2 + 3 + 4: a kit of small markdown subagents that compose into a plan→work→verify→learn pipeline.** That's the composition shape the curriculum needs to teach.
+**The strongest 4-way overlap is moves 1 + 2 + 3 + 4: a kit of small markdown subagents that compose into a plan→work→verify→learn pipeline.** That's the strongest candidate composition shape from this curated sample (N=3–6 practitioners per move) — a hypothesis for the M6 design call to test, not a validated industry pattern.
 
 ## Counter-evidence flags
 
@@ -148,4 +148,4 @@ Named moves appearing across **3+ independent practitioners**:
 
 ## Curriculum implication (one paragraph for the M6 design call)
 
-The composition move worth teaching in M6 is **"compose a named kit of 3–5 small markdown subagents into a plan→work→verify→learn loop, version-controlled, with one step that writes a learning back into the project's persistent memory."** That's the L3-converged shape across Klaassen, Cherny, Pocock (implicitly), Intercom, Ramp, and Amp. Single-step authoring is already covered at M3/M6 first half; the missing move is the **wiring**: how the output of one subagent becomes the input of the next, and how the final step closes the loop on persistent memory so the next cycle starts smarter. Ronacher's counter-position (composition is throttling, not multiplication) and Willison's normalization-of-deviance warning belong as the failure-mode callouts inside the same module — otherwise the curriculum teaches the move and silently teaches its decay.
+The composition move worth teaching in M6 is **"compose a named kit of 3–5 small markdown subagents into a plan→work→verify→learn loop, version-controlled, with one step that writes a learning back into the project's persistent memory."** That's the strongest candidate shape (L2 supporting evidence, N=3–6 practitioners per move — not yet L3) across Klaassen, Cherny, Pocock (implicitly), Intercom, Ramp, and Amp. Single-step authoring is already covered at M3/M6 first half; the missing move is the **wiring**: how the output of one subagent becomes the input of the next, and how the final step closes the loop on persistent memory so the next cycle starts smarter. Ronacher's counter-position (composition is throttling, not multiplication) and Willison's normalization-of-deviance warning belong as the failure-mode callouts inside the same module — otherwise the curriculum teaches the move and silently teaches its decay.

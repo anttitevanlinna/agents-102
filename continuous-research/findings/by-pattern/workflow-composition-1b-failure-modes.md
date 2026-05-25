@@ -32,19 +32,19 @@ This is the counter-scan to the practitioner sweep. The picture that emerges is 
 ### 3. Lethal trifecta in chained tools (prompt-injection)
 **What goes wrong:** Composing primitives that together give an agent (a) private-data access, (b) untrusted-content exposure, and (c) external-communication ability creates an exploitable execution path even when no single primitive is dangerous on its own.
 **Practitioner evidence:**
-- Simon Willison, *The lethal trifecta for AI agents* — https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/ [practitioner direct] (2025-06-16; refreshed in talks through 2026-05)
+- Simon Willison, *The lethal trifecta for AI agents* — https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/ [practitioner direct] (2025-06-16 — origin/historical, outside 6-month window; current confirmation is the 2026-05-19 piece below)
 - Simon Willison, *The last six months in LLMs in five minutes* — https://simonwillison.net/2026/may/19/5-minute-llms/ [practitioner direct] (2026-05-19) — still naming the trifecta as the dominant security frame
 - Breached.Company, *The Lethal Trifecta Strikes: Four Major AI Agent Vulnerabilities in Five Days* — https://breached.company/the-lethal-trifecta-strikes-four-major-ai-agent-vulnerabilities-in-five-days/ [domain trade publication] (2026-01) — disclosure window 2026-01-07 → 2026-01-15 covering four productivity tools
 **Three-gates:** Agentic? Y · Independent evidence? Y (Willison + Rehberger + 4 disclosed exploits) · Specific outcome? Y (named tools, named CVE-window)
 **Notes:** Willison: "MCP's mix-and-match story" — composition is the attack surface. Curriculum implication: any composition exercise needs the trifecta as a named hazard, not a footnote.
 
 ### 4. Subagent telephone-game / context degradation at handoff
-**What goes wrong:** Inter-agent handoffs lose the "why" behind decisions. The parent encodes state into a prompt; the subagent reprocesses from scratch; downstream agents start reasoning from incomplete snapshots. Empirically: multi-agent implementations use 3–10× more tokens than single-agent for equivalent tasks.
+**What goes wrong:** Inter-agent handoffs lose the "why" behind decisions. The parent encodes state into a prompt; the subagent reprocesses from scratch; downstream agents start reasoning from incomplete snapshots. Empirically: multi-agent implementations use 3–10× more tokens than single-agent for equivalent tasks [single-source claim — Cognition + Anthropic own posts, no published methodology or sample size, not independently replicated; see "What I did not find"].
 **Practitioner evidence:**
-- Cognition, *Don't Build Multi-Agents* — https://cognition.ai/blog/dont-build-multi-agents [practitioner direct, vendor venue] (2025-06-12) — two principles: "Share context, and share full agent traces, not just individual messages" and "Actions carry implicit decisions, and conflicting decisions carry bad results"
+- Cognition, *Don't Build Multi-Agents* — https://cognition.ai/blog/dont-build-multi-agents [practitioner direct, vendor venue] (2025-06-12 — prior position, outside window; evolved 2026 stance in the next bullet) — two principles: "Share context, and share full agent traces, not just individual messages" and "Actions carry implicit decisions, and conflicting decisions carry bad results"
 - Cognition, *Multi-Agents: What's Actually Working* — https://cognition.ai/blog/multi-agents-working [practitioner direct, vendor venue] (2026) — evolved position: map-reduce-and-manage, not peer-to-peer
 - Anthropic, *When to use multi-agent systems (and when not to)* — https://claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them [practitioner direct, vendor venue] (2026) — sequential/shared-state work "not recommended" for multi-agent
-- Jason Liu, *Why Cognition does not use multi-agent systems* — https://jxnl.co/writing/2025/09/11/why-cognition-does-not-use-multi-agent-systems/ [practitioner analysis] (2025-09-11)
+- Jason Liu, *Why Cognition does not use multi-agent systems* — https://jxnl.co/writing/2025/09/11/why-cognition-does-not-use-multi-agent-systems/ [practitioner analysis] (2025-09-11 — outside 6-month window, historical context)
 **Three-gates:** Agentic? Y · Independent evidence? Y (two vendors converged, plus independent commentary) · Specific outcome? Y (Devin team's measured token overhead, Cognition's named architecture)
 **Notes:** This is now consensus, not contrarian. Anthropic and Cognition — who started opposed in mid-2025 — both ship "one orchestrator owns context, spawns ephemeral isolated children that return compressed summaries" by 2026. The "multi-agent peer-to-peer" composition camp has emptied.
 
@@ -74,10 +74,10 @@ This is the counter-scan to the practitioner sweep. The picture that emerges is 
 
 ## Explicit anti-composition camps
 
-- **Cognition (original 2025 stance, softened 2026):** single-threaded only. Subagents are ephemeral compute, not collaborators. The 2026 update keeps the spine — one context-owner, isolated children — but admits map-reduce-and-manage. https://cognition.ai/blog/dont-build-multi-agents
-- **Anthropic (when-and-when-not):** explicitly carves out "tightly coupled work, sequential tasks, shared-state work" as anti-patterns for multi-agent. https://claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them
-- **Armin Ronacher:** not anti-composition per se, but anti-unstructured-loop. Names Ralph-style harnesses as cache-forfeiting and dopamine-trapping. https://lucumr.pocoo.org/2026/1/18/agent-psychosis/
-- **Simon Willison (security frame):** composition increases the trifecta surface; metadata tagging (`reads_private_data` / `sees_untrusted_content` / `can_exfiltrate`) should gate any chained-tool path. https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/
+- **Cognition (original 2025 stance, softened 2026):** single-threaded only. Subagents are ephemeral compute, not collaborators. The 2026 update keeps the spine — one context-owner, isolated children — but admits map-reduce-and-manage. https://cognition.ai/blog/dont-build-multi-agents [practitioner direct, vendor venue]
+- **Anthropic (when-and-when-not):** explicitly carves out "tightly coupled work, sequential tasks, shared-state work" as anti-patterns for multi-agent. https://claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them [practitioner direct, vendor venue]
+- **Armin Ronacher:** not anti-composition per se, but anti-unstructured-loop. Names Ralph-style harnesses as cache-forfeiting and dopamine-trapping. https://lucumr.pocoo.org/2026/1/18/agent-psychosis/ [practitioner direct]
+- **Simon Willison (security frame):** composition increases the trifecta surface; metadata tagging (`reads_private_data` / `sees_untrusted_content` / `can_exfiltrate`) should gate any chained-tool path. https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/ [practitioner direct] (2025-06 origin)
 
 No practitioner found arguing "don't compose at all" in the last 6 months. The argument has shifted to *how* to compose — with constraint, not without it.
 

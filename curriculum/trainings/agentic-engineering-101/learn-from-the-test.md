@@ -31,7 +31,7 @@ If your Module 4 Claude Code session is still open, ask it. Otherwise open a fre
 
 **Claude will narrate before acting.** It usually opens with a plan summary listing the six sub-steps, then runs them. Skim past the opening; look for the shell-command output confirming the worktree path and which files copied across.
 
-**The grep may hit multiple branches.** A push leaves both `m4/<slug>` and `remotes/origin/m4/<slug>`; a replay can leave several `m4/`-prefixed branches. Pick the one whose log includes the "M4 starting point" commit (`git log <branch> --oneline | grep 'M4 starting point'`). If that commit message has been rewritten, fall back to the SHA Claude reported at Module 4 close. It is in the M4 session transcript at `~/.claude/projects/<encoded>/`.
+**The coordinates are the anchor.** Claude should read the protected `Run coordinates` block in `task.md`, use the exact `m4/<slug>` branch named there, and fork from that branch's "M4 starting point" commit. If the coordinates are missing or the commit message has been rewritten, stop and use the SHA Claude reported at Module 4 close rather than guessing from branch names.
 
 Open a new Claude Code session in the worktree. The rest of Module 5 runs there.
 
@@ -171,12 +171,12 @@ Optional. Skipping does not break Module 6. The piece lands in the Module 5 to M
 | Debrief — *"send the packaged version, step away"* | Debrief re-send anxiety — student hesitates at the second send-off | Trainer push: *"same task, packaged. Same step-away move. The point is to read the contrast at M6, not to nail it this run."* |
 | Closing lecture — *"name Ronacher's three-pattern only AFTER the felt evidence lands"* | Closing lecture pre-empt — trainer accidentally names the three-pattern before the closing lecture | Trainer: don't. The closing lecture earns the name from felt evidence. If the term gets used in Phases 1–4, the closing has nothing to add. |
 
-**Source verification — MUST DO before first cohort** (per `check_research_claims.md` § 11):
-- Armin Ronacher (M5 closing lecture, three-pattern) — verify URL on `lectures/what-packaging-is.md` source list resolves; freshness re-check before first cohort. [practitioner direct]
-- Boris Cherny (Phase 3 three stop-hook shapes; M5 closing lecture attribution) — verify URLs on `lectures/what-packaging-is.md`. [practitioner direct]
-- Darragh Curran / Intercom Tier 1/2/3 (M5 closing lecture, org-scale anchor) — [2x Nine Months Later](https://ideas.fin.ai/p/2x-nine-months-later) [practitioner direct, vendor venue]. Verify the 19.2% auto-approved + Tier 1/2/3 numbers against the original Curran post (numbers vendor-self-reported); freshness re-check.
-- Kieran Klaassen (Debrief Compound step + pre-reads at lines 10, 90) — three URLs on `every.to`: *Bread in the AI Sandwich* (Entis [practitioner analysis] on Klaassen), *Compound Engineering: The Definitive Guide* [practitioner direct, vendor venue], *My AI Had Already Fixed the Code Before I Saw It* [practitioner direct, vendor venue]. Verify all three resolve; freshness re-check before first cohort.
-- Pre-read verification log lives in `lectures/reading-the-return.md`, `lectures/learning-through-contrast.md`, and `lectures/what-packaging-is.md` maintainer blocks per the M5 strategy doc — confirm each lecture's source-verification list stays in sync with this module's references.
+**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
+
+- `[checked:2026-05-25 result:OK due:2026-11-25]` https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich — [practitioner analysis] Laura Entis on Klaassen, 2026-04-22. Byline correctly attributed in file. fallback: cite as Entis write-up of the Shipper–Klaassen interview.
+- `[checked:2026-05-25 result:OK due:2026-11-25]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct] Klaassen 2026-02-09, resolves, within window. fallback: cite as Klaassen's canonical compound-engineering writeup.
+- `[checked:2026-05-25 result:OK due:2026-11-25]` https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it — [practitioner direct, vendor venue] Klaassen 2025-08-18, 10-runs + parallel-feedback-agents verbatim. Dated origin; pre-read for recognition. fallback: paraphrase the reliability-as-measured idea, drop the date claim.
+- Ronacher / Cherny / Cur-Intercom cited via `lectures/what-packaging-is.md` and `lectures/the-loop-has-a-name.md` source lists — stamps live there; confirm each stays in sync with this module's references.
 
 **Frameworks riffed on (attributed in lecture):**
 - **Ronacher's three-pattern** — Armin Ronacher. Earns its name in the closing lecture, not before.

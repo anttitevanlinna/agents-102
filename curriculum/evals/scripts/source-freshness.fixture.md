@@ -1,0 +1,13 @@
+# Parser fixture
+- `[checked:2026-05-21 result:OK due:2026-11-21]` https://ideas.fin.ai/p/2x-nine-months-later — [practitioner direct, vendor venue] Curran 19.2% auto-approve. fallback: drop the %.
+- `[checked:2026-05-25 result:CAVEAT due:2026-11-25]` https://example.com/a — [practitioner direct, vendor venue] vendor self-reported number. fallback: soften.
+- `[checked:2026-04-25 result:CORRECT due:asap]` https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich — [practitioner analysis] byline is Entis not Klaassen. fallback: reattribute.
+- `[checked:2026-05-25 result:STALE due:asap]` https://lucumr.pocoo.org/2025/6/12/agentic-coding/ — [practitioner direct] 2025-06, past window. fallback: date as historical.
+- `[checked:never result:NEEDED due:asap]` convergent:80-20-ratio — [SOURCE NEEDED] Klaassen 80/20. fallback: "practitioners take from his posture".
+- `[checked:2026-05-15 result:OK due:cohort]` https://code.claude.com/docs/en/hooks — [capability] hooks fire on every event. fallback: inline list.
+- `[checked:2026-05-25 result:BLOCKED due:2026-11-25]` https://x.com/geoffintech/status/2042002590758572377 — [practitioner direct] paywall/403. fallback: paraphrase.
+- `[checked:2026-01-01 result:OK due:2026-07-01]` https://example.com/expiring — [practitioner direct] expires before a Sept cohort. fallback: x.
+- `[checked:2025-08-18 result:OK due:none]` https://example.com/dated-historical — [practitioner direct] dated-as-historical in body, does not expire. fallback: x.
+- `[checked:2025-09-02 result:ATTESTED due:none]` attested:Antti 2025-09-02 Agentics-Helsinki — [maintainer-attested] 500K lines in weeks demo. fallback: "hundreds of thousands".
+- doc example, must be IGNORED: the grammar is `[checked:… result:… due:…]` with an ellipsis placeholder.
+- `[checked:2026-05-25 result:BLOCKED due:asap]` https://x.com/example/status/123 — [practitioner direct] paywalled; due:asap must NOT escalate BLOCKED to a hard block. fallback: x.

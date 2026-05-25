@@ -62,19 +62,10 @@ That stance survives every model change. Practitioner fluency lives in the stanc
 
 **Delivery mode:** In-room close after Debrief.
 
-**Source verification — MUST DO before first cohort. Every URL and number below is currently sourced from internal OODA runs and observation files; each must be opened against the original and confirmed.**
+**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 
-URLs and numbers to verify:
-- **Ramp plugin marketplace — "hundreds of skills."** Current strategy doc names 350. Verify against `continuous-research/observations/ramp.md` or a primary Ramp engineering post before delivery. If a specific number holds up cleanly, restore it ("350-skill marketplace"). If no specific post surfaces, keep the generic "hundreds" phrasing used here. Do NOT assert the exact number without a primary source.
-- **Ramp "harness was the bottleneck" framing.** Verify the phrasing against a Ramp practitioner post (engineering blog, conference talk, X.com thread). If the exact framing is our synthesis and not theirs, reword as "their engineers' framing converges on: the kit matters more than the model."
-- `https://ideas.fin.ai/p/2x-nine-months-later` — Curran *"2x — nine months later."* Confirm: 19.2% auto-approved, 14.6 min vs 75.8 min, 86% ≤20 lines, 500-person R&D scale. Cross-check against `continuous-research/observations/intercom.md`. Freshness check at delivery — must be within six months of cohort date.
-- **Scheduled-agents primitives — `/schedule`, `/loop`.** Confirm current Claude Code desktop behaviour via the `claude-code-guide` agent before delivery. Do NOT assert from memory; features land mid-year and training-data recall goes stale. If either primitive has been renamed or the invocation path has changed, update the lecture and the reference page together.
-
-**Frameworks attributed:**
-- **Ramp plugin marketplace + "harness was the bottleneck" framing** — Ramp engineering [practitioner direct]. Pin a specific engineer post before delivery.
-- **Intercom 2x numbers** — Darragh Curran [practitioner direct, April 2026].
-- **Scheduled-agents primitives** — Claude Code platform facts; verify current behaviour.
-- **Ronacher's three-pattern (reference, plan, verifier)** — Armin Ronacher [practitioner direct]; named in M5 closer, re-invoked by shorthand here.
+- `[checked:2026-05-25 result:CAVEAT due:2026-11-25]` https://ideas.fin.ai/p/2x-nine-months-later — [practitioner direct, vendor venue] Curran 2026-04-16: 19.2%/14.6 vs 75.8/86% ≤20 lines, ~473 R&D in 1,305. "Runs engineering" phrasing avoids the title nit. fallback: keep numbers, attribute Intercom's published telemetry, flag self-report.
+- `[checked:2026-05-25 result:CAVEAT due:2026-11-25]` https://x.com/geoffintech/status/2042002590758572377 — [practitioner direct] Charles CPO; author + date (April 8 2026) verified via X oEmbed 2026-05-25, but that status is a link-only post — the "models were good enough, the harness wasn't" quote + 350+ Dojo live in the thread/linked piece, confirmed via observations/ramp.md. fallback: attribute the verbatim Charles line from the observation file; if number contested, use "hundreds of skills."
 
 **Watch-fors (delivery):**
 - Mood stays practitioner-fluency. If the Ramp and Intercom numbers land as vendor-plug ("here's what the big co does, aspire to that"), the mood slips into compliance-feel. They are anchors of the destination shape, not product placements. Pace accordingly.

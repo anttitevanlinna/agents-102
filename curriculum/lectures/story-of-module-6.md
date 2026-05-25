@@ -72,6 +72,7 @@ Antti
 **Quality:** compendium-audited 2026-05-15 (writing@1ff6f8a story@1ff6f8a technical@1ff6f8a behavior@1ff6f8a pedagogy@1ff6f8a strategy@1ff6f8a)
 - judges @1ff6f8a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
+- source-verified 2026-05-25: Geoff Charles quote confirmed verbatim against ramp.md (practitioner direct, 2026-04-09); public X primary paywalled — attribution disposition open for maintainer (see source-verification block below)
 **Time:** 7–9 min at presentation pace. ~1050 words body. **Voice timing:** L3 framing line is read by the trainer aloud as setup; the body is then read as the memo, signed at close.
 
 Section stays open-ended (no count locked) because the thesis is that surprises keep happening.
@@ -87,9 +88,9 @@ Section stays open-ended (no count locked) because the thesis is that surprises 
 **Known TODOs:**
 - Antti's rewrite pass in final voice (~15 min).
 
-**Source verification — MUST DO before first cohort:**
+**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 
-- Geoff Charles verbatim quote ("The models were good enough. The harness wasn't.") at L29 — verify at `https://x.com/geoffintech/status/2042002590758572377`. Cross-check against `continuous-research/observations/ramp.md` or the Lenny Rachitsky write-up at `creatoreconomy.so/p/inside-ramp-...` (the Ramp source swapped to Rachitsky after the X.com paywall blocked the original verification). Freshness re-check at delivery — past 6-month window. **Fallback framing if the quote can't be re-verified:** drop the verbatim attribution and reframe as "Ramp's engineers' framing converges on: the harness was the bottleneck, not the model." The lesson — paraphrase shipped as quote — stays; the named attribution drops.
+- `[checked:2026-05-25 result:OK due:2026-11-25]` https://x.com/geoffintech/status/2042002590758572377 — [practitioner direct] Charles CPO 2026-04-09 "The models were good enough. The harness wasn't." (L29). Verified via observations/ramp.md + oEmbed; x.com page 402s but the quote is confirmed. Within freshness window. fallback: fire the file's documented reframe — "Ramp's engineers' framing converges on: the harness was the bottleneck, not the model" — drop the named verbatim quote.
 
 **Frameworks attributed:**
 - Non-determinism framing — Antti's working position, reshaped from earlier *"we live what we teach"* credibility framing after the Claude-generated recommendation was cut at turn 7.

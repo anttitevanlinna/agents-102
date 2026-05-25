@@ -18,16 +18,14 @@ Some of the early agentic engineering demos were single devs shipping 500K lines
 
 **Delivery mode:** Read in-room early in M6, between Story of Module 6 and the main exercise. Sets the quality-arc stakes before the build move.
 
-**Source verification — MUST DO before first cohort. The event is pinned; the number is Antti's direct observation, no public anchor.**
+**Source verification — freshness stamps. `source-freshness.sh` reads these; format + result vocab in `curriculum/source-freshness-format.md`.**
 
-URLs and numbers to verify:
-- **Event — pinned.** The first Agentics Helsinki meetup, Sep 2, 2025, at Sitra (Helsinki). Documented in `continuous-research/CLAUDE.md` and `continuous-research/archive/agentic-coding-nordic-reference.md`. Meetup series URL `https://luma.com/bjg7smsc`. The body phrasing ("the first Agentics Helsinki meetup, fall 2025") is intentionally month-band rather than exact date — matches the recall mood the rest of the paragraph carries.
-- **500K lines in weeks, single dev.** Antti's direct observation at the Sep 2, 2025 meetup. No public talk recording, deck, or X.com post pinned yet. Pre-first-cohort: ping Mikko Alasaarela or the demoing practitioner if a public reference can be added; if not, this maintainer block remains the only verification trail. If the number drifted in memory (was it 500K? 300K? 1M?), correct the body before first cohort. If a softer hedge is preferred at ship time, swap "500K lines" → "hundreds of thousands of lines" — punchline survives, number-precision debt drops.
-- **Freshness** — fall 2025 is past the 6-month window at first-cohort dates after Mar 2026. Body frames it as historical context ("the early agentic engineering demos"), which is the allowed shape under `check_research_claims.md §2`. No freshness violation; do NOT auto-flag.
-- **Million-line close** — directional claim, not a single-source citation. Reads as the rhetorical question paired with the 500K opener; no URL needed. If a current named milestone (one engineer's documented million-line run) lands before first cohort, the body can swap to that anchor. Otherwise keep directional.
+- `[checked:2025-09-02 result:ATTESTED due:none]` attested:Antti 2025-09-02 Agentics-Helsinki-meetup — [maintainer-attested] single dev shipping ~500K lines in weeks, demoed at the first Agentics Helsinki meetup; spec-and-tests was the recurring discipline. The maintainer was in the room — primary evidence, the best on the ladder. The number stands on his word: no public URL required and none owed. A "hundreds of thousands" phrasing is available as a style option, not a sourcing fix. Correct the body figure only if his own recall was off, never to chase a citation.
+- `[checked:2026-05-25 result:OK due:none]` https://luma.com/bjg7smsc — [practitioner direct] first Agentics Helsinki meetup, Sep 2 2025 at Sitra. Event verified live. Body uses month-band phrasing ("fall 2025") on purpose, matching the recall mood. Dated-historical: body frames it as "the early agentic engineering demos" (allowed under `check_research_claims.md §2` — do NOT auto-flag freshness).
+- `[checked:2026-05-25 result:OK due:none]` (no URL — directional rhetorical close) — [convergent] the million-line close is paired with the 500K opener, not a single-source citation. fallback: keep directional; swap to a named documented million-line run only if one lands.
 
 **Frameworks attributed:**
-- **500K lines / spec-and-tests discipline** — Agentics Helsinki community observation [practitioner observation, summer 2025]. Antti as participant-observer. Pre-first-cohort: pin the demoing practitioner if public.
+- **500K lines / spec-and-tests discipline** — maintainer-attested, stamped above. [practitioner direct, maintainer first-hand].
 - **Grounding as the deeper quality move** — curriculum framing; no single-practitioner attribution. The phrase *"grounding to truth"* is Antti's. Push-back / correction / "no, like this" as signal traces back to recurring theme #5 in the AE101 strategy doc (*the agent is trying — hard — to capture your world*).
 
 **Watch-fors (delivery):**

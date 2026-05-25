@@ -65,10 +65,10 @@ Open your repo. Let's go.
 
 **Delivery mode:** In-room only.
 
-**Source verification — MUST DO before first cohort:**
-- The three failure modes are convergent practitioner vocabulary (sourced via the 2026-04-21 long-running OODA at `continuous-research/platform-watch/coding-agents/runs/2026-04-21-practitioner-long-running.md`). Confirm against pre-read attribution at delivery time; the lecture must NOT diverge from the pre-read on these terms.
-- The `/compact at ~60%` heuristic is sourced via `continuous-research/platform-watch/coding-agents/runs/2026-04-23-scaling-session-length-2-platform-mechanics.md` as a convergent practitioner pattern. Same attribution stance as the closer (no single name).
-- No external URLs cited. The lecture defers anchoring to the pre-read (Ronacher) and to the closing lecture (Cherny, Curran, Sourcegraph Amp).
+**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
+- `[checked:2026-05-25 result:OK due:2026-11-17]` https://github.com/sirmalloc/ccstatusline — [operational tool] Claude Code status-line w/ context-usage widgets; live, maintained. fallback: name the capability generically ("a status-line tool that shows live context %") if the repo moves.
+- Three failure modes: convergent practitioner vocabulary (no URL), sourced via the 2026-04-21 long-running OODA at `continuous-research/platform-watch/coding-agents/runs/2026-04-21-practitioner-long-running.md`. Convergence IS the citation; confirm against pre-read attribution at delivery, must NOT diverge.
+- `/compact at ~60%`: convergent practitioner pattern (no URL), sourced via `continuous-research/platform-watch/coding-agents/runs/2026-04-23-scaling-session-length-2-platform-mechanics.md`. No single name.
 
 **Frameworks attributed:**
 - **Three failure modes** — convergent practitioner vocabulary; pre-read carries the citation.

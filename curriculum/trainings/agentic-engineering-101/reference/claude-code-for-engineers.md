@@ -277,7 +277,7 @@ Apply to any long-running session, scheduled or not. M4's un-packaged same-sessi
 
 The un-packaged M4 send-off runs in the **same Claude Code session** (not `/loop`, not scheduled, not `/goal`). Laptop stays awake + plugged in (see module file for OS-specific power settings). Cancel mid-run is legitimate; traces are data. Scheduled agents and `/goal` are the generalisations M6 names as a callout, not authoring exercises.
 
-Docs: [Desktop scheduled tasks](https://code.claude.com/docs/en/desktop-scheduled-tasks), [`/loop`](https://code.claude.com/docs/en/scheduled-tasks), [Routines](https://code.claude.com/docs/en/routines). Ctrl+C corruption verified against [GitHub issues #3003, #17466, #18880](https://github.com/anthropics/claude-code/issues/3003) (2026-05-14 — all three closed with repros; #3003 documents `messages.N: tool_use ids were found without tool_result blocks` after mid-tool interrupt + `--resume`).
+Docs: [Desktop scheduled tasks](https://code.claude.com/docs/en/desktop-scheduled-tasks), [`/loop`](https://code.claude.com/docs/en/scheduled-tasks), [Routines](https://code.claude.com/docs/en/routines). Ctrl+C corruption is documented across [GitHub issues #3003, #17466, #18880](https://github.com/anthropics/claude-code/issues/3003) (checked 2026-05-25 — #3003 closed as duplicate, #17466/#18880 closed as not-planned; the corruption is documented, not resolved). #3003 documents `messages.N: tool_use ids were found without tool_result blocks` after mid-tool interrupt + `--resume`.
 
 ---
 

@@ -28,11 +28,8 @@ This is one level higher in abstraction and composition. Compound engineering al
 
 **Delivery mode:** Read aloud in-room at the closer area, or skipped if cohort is tight on time (the supplementary is the load-bearing piece; the lecture is the pointer).
 
-**Source verification — MUST DO before first cohort:**
-- All practitioner names + URLs verified in the OODA findings files at `continuous-research/findings/by-pattern/workflow-composition-{1a,1b,2a,2b,3-confirmation}.md` plus the 2026-05-21 direct-source verification batch (Cherny X thread, Pocock README, Yan/Cognition post, Metcalf/Amp post, Amp handoff post, Ronacher posts). Re-verify each link is live before first cohort.
-- "At least five approaches in active use among the practitioners this curriculum surveys" — sample-not-universe framing per the 2026-05-21 Antti correction. Do not retighten to "the field has five approaches"; the curation is partial by design and the supplementary intro flags this explicitly.
-- "There is no prompt to drill at this point" — deliberate pedagogical claim; not a research claim. No URL needed.
-- "Worked example from one of this training's own trainers" — Dino's `skill-stacking/skill-stacking.md` shipped 2026-05-24 with author permission. `[practitioner direct, AE101 trainer]`. Primary doc + three diagrams under `supplementary/skill-stacking/`.
+**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
+- `[checked:2026-05-25 result:OK due:2026-11-25]` <delegates to workflow-composition-lineages.md> — pointer lecture, evidence verified in supplementary (B6-B17). fallback: if lecture ever asserts the 80/20 directly, inherit B1's plugin-README fix; fix the broken Dino link per B18.
 
 **Frameworks attributed (by reference, not name in body):**
 - All five approaches + Ronacher counter-position attributed in the supplementary, not in the lecture body. Preserves the lecture as a pointer rather than a citation-laden read.

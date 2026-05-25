@@ -61,7 +61,7 @@ Browser opens; you sign in to your Atlassian org; scopes approve at user level. 
 
 **Note:** the older `https://mcp.atlassian.com/v1/sse` endpoint stops working 2026-06-30 per [Atlassian's support docs](https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/). The current canonical endpoint is `/v1/mcp/authv2`.
 
-**Sources:** [Atlassian Rovo MCP docs](https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/) · [Atlassian admin console](https://admin.atlassian.com/) · [Composio Jira MCP](https://composio.dev/content/jira-mcp-server)
+**Sources:** [Atlassian Rovo MCP docs](https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/) · [Atlassian admin console](https://admin.atlassian.com/) · [Composio (Jira MCP bridge)](https://composio.dev/)
 
 ## Linear — first-party MCP (official)
 
@@ -146,7 +146,7 @@ Bump the **Last verified** date at the top. Note what changed in the commit mess
 - Anthropic Directory: https://claude.ai/directory `[platform docs]` — replaces the older `modelcontextprotocol.io/servers` URL referenced before 2026-Q2; reviewed connector listings; same MCP infrastructure as Claude Code
 - Claude.ai connector panel: https://claude.ai/customize/connectors `[platform docs]` — install surface for connectors that inherit into Claude Code; Team/Enterprise admin-gated
 - `gh` CLI: https://cli.github.com `[platform docs]`
-- Composio Jira setup: https://composio.dev/content/jira-mcp-server `[third-party bridge docs]`
+- Composio Jira MCP bridge: https://composio.dev/ `[third-party bridge docs]` (the old `/content/jira-mcp-server` deep link 404s as of 2026-05-25)
 
 **Why a reference file and not inline in the exercise:**
 Claude Code's MCP surface moves. Atlassian deprecates endpoints. New connectors land monthly. If the exercise body carries install specifics, every cohort delivery ships against stale instructions within a quarter. The reference file is the single point of update; exercises point at it; students get current instructions without editorial churn.

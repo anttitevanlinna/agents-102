@@ -5,7 +5,7 @@ Two runs of the same task (un-packaged Module 4, packaged Module 5) are enough e
 
 ## Prework
 
-Walk in with the M5 worktree at `../<repo>-m5` carrying both runs: the un-packaged M4 send-off branch, the packaged M5 re-run (`reference.md`, `plan.md`, the verifier you built, `RUN-NOTES.md`), and the M5 session transcript under `~/.claude/projects/<encoded-cwd>/`. Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it).
+Walk in with the M5 worktree at `../<repo>-m5` carrying both runs: the un-packaged M4 send-off branch, the packaged M5 re-run (`reference.md`, `plan.md`, the verifier you built, `RUN-NOTES.md`), and the M5 session transcript under `~/.claude/projects/<encoded-cwd>/`. Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (Aug 2025).
 
 Optional lookup pages: [session transcripts in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for the two-run compare, and [long-running shapes](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#9-long-running-shapes--loop-scheduled-tasks-routines-goal) for when one task becomes a pattern, scheduled, looped, or condition-gated.
 
@@ -63,7 +63,7 @@ No compound prompt here. The encode step already happened when you shipped the s
 
 ## Next
 
-On Monday, pick a task your team is sitting on, send it off packaged, read the return through the lens you just built. The loop is yours now.
+The next task you start, package it and send it off, then read what comes back through the lens you built. The reading is the loop, not the sending. It's yours now.
 
 **Going deeper, when this loop has to scale past you:** [How the best do CI/CD at agent scale](trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md).
 
@@ -147,17 +147,18 @@ Antti
 **Frameworks riffed on (attributed in closer):**
 - **Ronacher's three-pattern** — Armin Ronacher `[practitioner direct]`. Re-named in the closing lecture as a scaffold the student is now ready to sharpen, not a fixed recipe.
 - **Cherny's three verifier shapes** — Boris Cherny `[practitioner direct]`. The second-skill authoring picks a shape from this menu.
-- **Ramp Dojo** — 350-skill marketplace `[practitioner direct]`, as the team kit's destination shape. Closing lecture attribution.
-- **Intercom Tier 1/2/3** — Darragh Curran, [2x Nine Months Later](https://ideas.fin.ai/p/2x-nine-months-later) `[practitioner direct, vendor venue]`. 19.2% auto-approved / 14.6 min vs 75.8 min org median / 86% ≤20 lines / 500-person R&D — all numbers vendor-self-reported, verify before citing live. Closing lecture org-scale anchor.
-- **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) `[practitioner direct, vendor venue]`. The review + compound step made explicit across two runs. Exercise Phase 2 authoring + closing lecture's team-kit-accretion line.
+- **Ramp Dojo** — 350-skill marketplace `[practitioner direct, Geoff Charles CPO, 2026-04-09]`, as the team kit's destination shape. Confirmed against ramp.md 2026-05-25 (public X primary paywalled). Closing lecture attribution.
+- **Intercom Tier 1/2/3** — Darragh Curran, [2x Nine Months Later](https://ideas.fin.ai/p/2x-nine-months-later) `[practitioner direct, vendor venue, 2026-04-16]`. 19.2% auto-approved / 14.6 min vs 75.8 min org median / 86% ≤20 lines / ~500-person R&D — four numbers confirmed verbatim 2026-05-25. Closing lecture org-scale anchor.
+- **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) `[practitioner direct, vendor venue, 2026-02-09]`. Live + accurate 2026-05-25. The review + compound step made explicit across two runs. Exercise Phase 2 authoring + closing lecture's team-kit-accretion line.
 
-**Source verification — MUST DO before first cohort:**
+**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 
-- **Ronacher's three-pattern** — verify `https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/`. Confirm reference / plan.md-equivalent / verifier are explicitly named or cleanly inferable; 10h, 2.2M tokens; Rust snapshot test reuse. Freshness re-check at delivery.
-- **Cherny's three verifier shapes** — verify `https://getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually` + `https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny`. Confirm Cherny frames three shapes (background-agent / shell-hook / Ralph re-feed) in the cited interview, NOT paraphrased into existence. If the three-shape framing is our synthesis, reframe as "three shapes practitioners use" without single attribution.
-- **Ramp Dojo 350-skill marketplace** — verify against `continuous-research/observations/ramp.md` or the Lenny Rachitsky interview at `creatoreconomy.so/p/inside-ramp-...` (source swapped from the original X.com thread after paywall). Three numbers carried in supplementary: 350+ shared skills / 99.5% AI-active / 84% coding agents weekly. Live re-verify + stamp before first cohort.
-- **Intercom Tier 1/2/3** — verified live against Curran 2026-05-21 (commit `69c8134`). Re-verify at delivery — must be within six-month window of cohort date.
-- **Klaassen compounding** — verify `https://every.to/source-code/compound-engineering-the-definitive-guide`. The four-step loop + 80/20 ratio (80% planning+review, 20% execution) carry the closing lecture; freshness re-check at delivery. Klaassen own-byline pieces drift fastest.
+- `[checked:2026-05-25 result:OK due:2026-07-14]` https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/ — [practitioner direct] Ronacher MiniJinja (2026-01-14): reference / plan.md-equivalent / verifier, 10h / 2.2M tokens. fallback: named-practitioner long-run with reused tests-as-verifier; drop the numbers.
+- `[checked:2026-05-25 result:OK due:2026-08-21]` https://getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually — [practitioner analysis] Kim on Cherny (2026-02-21): the three verifier shapes (background-agent / agent-stop hook / Ralph re-feed) are KIM'S synthesis, NOT Cherny's own taxonomy, and are ABSENT from the Orosz interview. fallback: present as a practitioner-convergent menu, no single attribution.
+- `[checked:2026-05-25 result:OK due:2026-10-08]` https://x.com/geoffintech/status/2042002590758572377 — [practitioner direct] Charles CPO: 350+ skill Dojo, 99.5% AI-active, 84% coding-agents weekly. Confirmed via observations/ramp.md; that X status is link-only (author + date oEmbed-verified April 8 2026). fallback: "hundreds of skills" if the number is contested.
+- `[checked:2026-05-25 result:CAVEAT due:2026-10-16]` https://ideas.fin.ai/p/2x-nine-months-later — [practitioner direct, vendor venue] Curran (2026-04-16): 19.2% / 14.6 vs 75.8 min / 86% ≤20 lines / ~473 R&D in 1,305 (body says ~500; the-loop-has-a-name uses the tighter ~470/1,300). Metrics vendor-self-reported. fallback: keep numbers, attribute Intercom telemetry, flag self-report.
+- `[checked:2026-05-25 result:OK due:2026-08-09]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen (2026-02-09): the four-step compound loop. fallback: cite as Klaassen's canonical compound-engineering writeup.
+- `[checked:2026-05-25 result:OK due:2026-07-30]` https://every.to/source-code/compound-engineering-how-every-codes-with-agents — [practitioner direct] Shipper & Klaassen (Jan 2026): the 80/20 ratio ("roughly 80 percent ... plan and review ... 20 percent ... work and compound") — NOT in the Definitive Guide. fallback: keep the posture hedge.
 
 **First-cohort observation questions:**
 - Two-run reading stamina — does Phase 1's diagnosis-across-two-runs hold, or does the second run fade?

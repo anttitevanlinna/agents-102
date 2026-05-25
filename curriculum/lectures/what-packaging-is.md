@@ -13,7 +13,7 @@ Practitioners running multi-hour coding agents over the last six months converge
 
 **Reference artefact.** A spec the agent reads and re-reads. Holds the success criteria, points at the relevant memory, names the constraints. The thing the agent diffs its work against. In Ronacher's MiniJinja port, the original Rust snapshot tests played this role. In your re-send, the reference you assembled at Phase 4 plays it.
 
-**plan.md the agent owns and mutates.** A working document that holds durable state across the run. The agent reads it at every session boot, updates it as it makes decisions, references it when the working window fills. Geoffrey Huntley's Ralph technique builds entire ticket-triage systems on this single primitive.
+**plan.md the agent owns and mutates.** A working document that holds durable state across the run. The agent reads it at every session boot, updates it as it makes decisions, references it when the working window fills. Geoffrey Huntley's Ralph technique bootstraps entire greenfield projects on this single primitive.
 
 **External verifier.** An automated check that decides whether a piece of agent-produced work meets a quality bar. Tests, lint, compile, a deterministic shell hook, or a separate background agent that reads the work and judges it. The verifier is the move that catches plausible-but-wrong before you trust it.
 
@@ -21,7 +21,7 @@ Each piece exists because of one of the failure modes you read at the start of M
 
 ## Three shapes the verifier takes
 
-Three shapes practitioners use. All three appear in Boris Cherny's stop-hook practice (Cherny built Claude Code); the menu form is the synthesis. You picked one at Phase 3 against your dominant failure. The other two are alongside the three-pattern for next time.
+Three shapes practitioners use. Boris Cherny (who built Claude Code) reaches for all three in his long-running practice; the menu form is the synthesis. You picked one at Phase 3 against your dominant failure. The other two are alongside the three-pattern for next time.
 
 **Background-agent verifier.** Separate Claude session reads the produced work and judges it. Right when failures are qualitative ("does this answer the question," "does this match house style").
 
@@ -85,6 +85,7 @@ That's M6. The laptop is closed now and the second run is going. Next you will m
 **Quality:** compendium-audited 2026-05-21 (writing@2b5ae1b story@2b5ae1b technical@2b5ae1b behavior@2b5ae1b pedagogy@2b5ae1b strategy@2b5ae1b)
 - judges @2b5ae1b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
+- source-freshness stamped 2026-05-25 (stamps in Source verification block; run `source-freshness.sh --target <cohort-date>`).
 **Lecture meta:** *10–15 min closing lecture for M5. Names Ronacher's three-pattern after you have built each piece. Earns the name from felt evidence, not from a slide. Bridges to M6's evals-as-team-infrastructure move.*
 **Word count:** ~770 words body.
 
@@ -92,29 +93,17 @@ That's M6. The laptop is closed now and the second run is going. Next you will m
 
 **Delivery mode:** In-room close after Debrief.
 
-**Source verification — MUST DO before first cohort. Every URL and number below is currently sourced from internal OODA runs and observation files; each must be opened against the original and confirmed.**
+**Source verification — freshness stamps. `source-freshness.sh --target <cohort-date>` reads these; grammar + result vocab in `curriculum/source-freshness-format.md`. due = re-open-by date (source ages out of the 6-month window, or `none` for dated-historical, `cohort` for capability, `asap` for open gaps).**
 
-URLs to verify:
-- `https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/` — Ronacher MiniJinja port. Confirm: the three pieces (reference / plan.md-equivalent / verifier) are explicitly named or cleanly inferable; 10h, 2.2M tokens; Rust snapshot test reuse. *(Source: 2026-04-21 long-running practitioner OODA, `continuous-research/platform-watch/coding-agents/runs/2026-04-21-practitioner-long-running.md` line 11.)*
-- Boris Cherny three stop-hook shapes — currently sourced via the same OODA citing `getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually` and `newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny`. Verify: Cherny actually frames three shapes (background agent / shell hook / Ralph re-feed) in the cited interview, NOT paraphrased into existence. If the three-shape framing is our synthesis rather than Cherny's, reframe as "three shapes practitioners use" without single attribution. Verify date is within 6-month window at delivery.
-- `https://ideas.fin.ai/p/2x-nine-months-later` — Curran "2x nine months later." Confirm: 19.2% auto-approved, 14.6 min vs 75.8 min, 86% ≤20 lines, 500-person R&D scale. *(Source: `continuous-research/observations/intercom.md`.)*
-- Geoffrey Huntley Ralph reference — verify the ticket-triage framing is accurate to his writing, not ours.
-- Sourcegraph Amp counter-philosophy — pinned to `https://ampcode.com/news/handoff` (Sourcegraph Amp official, 2025-10-23): *"What we want to encourage are focused threads, because we think that's how agents yield the best results."* [practitioner direct from a vendor — acceptable for naming a counter-camp]. Inline-dated "October 2025" in body 2026-05-22; past 6-month window — re-verify at delivery, escalate to find a fresher counter-camp source if Amp's public stance has shifted.
-- Klaassen "My AI Had Already Fixed the Code Before I Saw It" — pinned to `https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it` (Every.to, 2025-08-18). Inline-dated "August 2025" in body 2026-05-22; past 6-month window — re-verify at delivery, or swap to a fresher Klaassen TDD/compounding piece if one has surfaced.
-- Subagents-for-isolation + /compact-at-60% — convergent practitioner pattern from `2026-04-23-scaling-session-length-2-platform-mechanics.md`. "Three independent practitioners" claim must be backable when the OODA file is finalised. If the count drifts under post-fix review, reword.
-
-**Numbers to triple-check before delivery:** 10h MiniJinja, 2.2M tokens, 19.2% auto-approve, 14.6 min vs 75.8 min, 86% ≤20 lines, 500-person R&D org.
-
-**Frameworks attributed:**
-- **Ronacher's three-pattern** — Armin Ronacher [practitioner direct].
-- **Cherny's three stop-hook shapes** — Boris Cherny [practitioner direct]. Verify the shape-count is his framing.
-- **Intercom 2x numbers** — Darragh Curran [practitioner direct, April 2026].
-- **Ralph technique** — Geoffrey Huntley [practitioner direct].
-- **Subagents-for-isolation + /compact-at-60%** — convergent practitioner pattern; no single attribution.
-- **Sourcegraph Amp counter-philosophy** — Sourcegraph (vendor); pin a specific practitioner post before delivery.
-- **Hook-vs-prompt partition (must vs should)** — convergent practitioner pattern; no single attribution.
-
-**Source verification — Hooks always fire addition (2026-05-15):** Hook event names (SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, Stop) live-verified against this repo's own working `.claude/settings.json` configs + Claude Code 2.1.142. The "fires on every named event" property is the defining behavior of Claude Code's hook system; canonical docs at `https://code.claude.com/docs/en/hooks`. Re-audit writing / story / technical classes after this addition — Quality dimension-log will need new SHA pins.
+- `[checked:2026-05-25 result:OK due:2026-07-14]` https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/ — [practitioner direct] Ronacher MiniJinja Rust→Go port (2026-01-14): snapshot tests as verifier, 10h / 2.2M tokens, three pieces cleanly inferable. fallback: cite as named-practitioner long-run with reused test-suite-as-verifier, drop the exact numbers.
+- `[checked:2026-05-25 result:OK due:2026-08-21]` https://getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually — [practitioner analysis] Kim on Cherny (2026-02-21): Kim's "13 tips" writeup lists Cherny reaching for background-agent / agent-stop hook / Ralph re-feed. The three-shape taxonomy is KIM'S synthesis, NOT Cherny's own, and is ABSENT from the Orosz/Pragmatic Engineer interview. Body credits Cherny as a practitioner who uses all three, not as the taxonomy's author. fallback: present the three shapes as a practitioner-convergent menu, no single attribution.
+- `[checked:2026-05-25 result:OK due:2026-10-16]` https://ideas.fin.ai/p/2x-nine-months-later — [practitioner direct, vendor venue] Curran (2026-04-16): 19.2% auto-approved, 14.6 vs 75.8 min, 86% ≤20 lines, ~473 R&D / 1,305 total. Metrics vendor-self-reported. Body L56 says "CTO" — his title is VP Engineering; soften at delivery. fallback: keep the numbers, attribute "Intercom's published telemetry," flag self-report.
+- `[checked:2026-05-25 result:OK due:none]` https://ghuntley.com/ralph/ — [practitioner direct] Huntley (2025-07-14): Ralph is greenfield-only ("no way in heck would I use Ralph in an existing code base"), a Bash loop over durable markdown; NO ticket-triage. Dated-historical (body cites as technique-origin). Body L16 corrected to "greenfield projects." fallback: cite as origin of the loop-prompt-over-durable-state technique, drop any application claim.
+- `[checked:2026-05-25 result:OK due:none]` https://ampcode.com/news/handoff — [practitioner direct, vendor] Amp (2025-10-23): rejects auto-compaction, bets on focused threads + manual handoff. Dated-historical (body inline-dates Oct 2025). fallback: name the handoff camp generically, drop the product name; escalate to a fresher Amp post if the stance shifts.
+- `[checked:2026-05-25 result:OK due:none]` https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it — [practitioner direct, vendor venue] Klaassen (2025-08-18): TDD "the test fails—the natural first step in test-driven development (TDD)" verbatim; 10-consecutive-runs + parallel feedback agents confirmed. Dated-historical (body inline-dates Aug 2025). fallback: paraphrase the TDD-first move, drop the verbatim.
+- `[checked:2026-05-25 result:OK due:2026-07-30]` https://every.to/source-code/compound-engineering-how-every-codes-with-agents — [practitioner direct] Shipper & Klaassen (Jan 2026): "Roughly 80 percent of compound engineering is in the plan and review parts, while 20 percent is in the work and compound." THIS is the 80/20 primary — NOT the Definitive Guide, which lacks it. Body L62 hedges as "the ratio practitioners take from Klaassen's posture"; defensible, this URL backs it. fallback: keep the posture hedge.
+- `[checked:2026-05-25 result:OK due:cohort]` (no URL — convergent practitioner pattern; internal OODA `2026-04-23-scaling-session-length-2-platform-mechanics.md`) — [convergent] /compact-at-~60% + subagent isolation. Body L52 hedges "some practitioners" with no count claim — supportable. fallback: keep "some practitioners."
+- `[checked:2026-05-15 result:OK due:cohort]` https://code.claude.com/docs/en/hooks — [capability] hook events (SessionStart / UserPromptSubmit / PreToolUse / PostToolUse / Stop) fire on every named event; live-tested vs this repo's `.claude/settings.json` + Claude Code 2.1.142. fallback: inline the event list from a re-test.
 
 **Watch-fors (delivery):**
 - The opening pause is load-bearing. You just built each piece; this is the moment of recognition. Don't rush it.

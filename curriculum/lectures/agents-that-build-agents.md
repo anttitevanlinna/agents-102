@@ -73,7 +73,8 @@ The training closes. The flywheel does not.
 
 **Frameworks attributed:** Geoffrey Huntley, Ralph Loop, [practitioner direct], https://ghuntley.com/ralph/ (2025-07-14, historical foundational — outside 6-month freshness, cite as origin not current evidence). The flywheel framing builds on what Module 3 → Module 5 → Module 6 already named. Klaassen's compound-engineering move sits underneath without re-attribution (already credited in *The loop has a name*).
 
-**Source verification — Ralph → /goal addition (2026-05-15):** Huntley URL `https://ghuntley.com/ralph/` resolves, post live. `/goal` live-verified against Claude Code 2.1.142 — `claude -p "/goal"` returns `No goal set. Usage: /goal <condition>`, confirming the command ships and the syntax matches. Worker/judge model split (doc-claimed) NOT live-tested in this pass; body prose softened to observable behavior only (*"a check each turn"*, no claim about which model evaluates).
+**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
+- `[checked:2026-05-25 result:OK due:2026-11-25]` <https://ghuntley.com/ralph/> — [practitioner direct] Huntley 2025-07-14, bash loop + Simpsons origin verbatim. fallback: outside freshness window — origin/historical only, body flags it correctly.
 
 **Prompt block:** one new prompt added (NEW prompt — no prior version to diff against; flagged per check_prompts #22).
 

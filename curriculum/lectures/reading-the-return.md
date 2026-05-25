@@ -42,10 +42,9 @@ M5 opens with the artefact on screen and the three lenses in hand.
 
 **Delivery mode:** Pre-read. Lands at the close of M4 Debrief, after the send-off prompt has been pasted.
 
-**Source verification — MUST DO before first cohort:**
-- Open https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/ and confirm: 10h figure, 2.2M tokens, lexer→parser→runtime sequence, Rust snapshot test reuse. *(Currently sourced from the 2026-04-21 long-running practitioner OODA at `continuous-research/platform-watch/coding-agents/runs/2026-04-21-practitioner-long-running.md` line 11; verify against original.)*
-- Confirm freshness against the 6-month window at delivery time. Jan 2026 piece is in window through July 2026. If stale at delivery, swap for a newer Ronacher post or a peer practitioner with the same pattern.
-- The three failure modes (goal drift / context rot / plausible-but-wrong) are convergent practitioner vocabulary, not a single-author framework. The convergence is sourced in the same 2026-04-21 OODA; if any single name is contested at first-cohort review, drop the named-author tone and keep the practitioner-convergence framing.
+**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
+- `[checked:2026-05-25 result:OK due:2026-07-14]` https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/ — [practitioner direct] Ronacher MiniJinja Go port, 10h / 2.2M tokens / lexer→parser→runtime / Rust snapshot reuse. fallback: if stale at delivery, swap for a newer Ronacher post or peer practitioner with the same reference-artifact pattern.
+- Three failure modes (goal drift / context rot / plausible-but-wrong): convergent practitioner vocabulary (no URL), sourced in the 2026-04-21 OODA at `continuous-research/platform-watch/coding-agents/runs/2026-04-21-practitioner-long-running.md`. Convergence IS the citation; if a single name is contested at review, drop the named-author tone and keep the practitioner-convergence framing.
 
 **Frameworks attributed:**
 - **Three failure modes** — convergent practitioner vocabulary. No single attribution; the convergence IS the citation.

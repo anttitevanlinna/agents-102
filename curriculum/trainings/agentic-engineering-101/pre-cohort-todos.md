@@ -12,7 +12,7 @@ Sim sweeps and platform-capability checks are not tracked here. The `curriculum-
 
 **Harness / tmux-runner engineering is not tracked here either.** Runner bugs, scenario hardening, per-turn assertions, socket isolation, and state.json shape live in `curriculum/evals/mechanical/tmux-runner/IMPROVEMENTS.md`. This file tracks cohort-blocking *curriculum* decisions only; a finding that's fixed in runner code or a scenario file belongs there, not here.
 
-**Source-freshness is not narrated here either, it is stamped per-source and generated.** Each source carries a checked / result / due freshness stamp in its file's `Source verification` block (format: `curriculum/source-freshness-format.md`); `curriculum/evals/scripts/source-freshness.sh --target <cohort-date>` produces the punch list. The 2026-05-25 full-sweep findings (BLOCK fixes + per-group paste-ready stamps): `curriculum/evals/scratch/source-sweep-2026-05-25/FINDINGS.md`. **Any source item below is superseded by that sweep**, do not add new hand-narrated source-verification prose; stamp and run the script instead.
+**Source-freshness is not narrated here either, it is stamped per-source and generated.** Each source carries a checked / result / due freshness stamp in its file's `Source verification` block (format: `curriculum/source-freshness-format.md`); `curriculum/evals/scripts/source-freshness.sh --target <cohort-date>` produces the punch list. The 2026-05-25 full sweep cleared all source BLOCKs; per-source stamps now live in each file's `Source verification` block. **Any source item below is superseded by that sweep**, do not add new hand-narrated source-verification prose; stamp and run the script instead.
 
 ## Per-file specific concerns (not caught by auto-fire)
 

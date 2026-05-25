@@ -36,11 +36,8 @@ Working towards a system that can self-sense for real-life success and failure.
 
 **Voice:** AE101 quintet — Boris-flat on mechanism (P5 OODA, P6 compound ladder), Martin on strategic reframes (P1 inversion, P2 workflows-being-invented), Godin on peer warmth (P3 *"Ambition stays your job"*), Rory on counterintuitive bite (P3 *"10× tool / 10× faster,"* P4 *"discipline of noticing"*), Risto sparingly in P7 close (forward optimism on agency). Bolded key points are the scannable anchors; non-bold sentences are minimal scaffolding the teacher (cohort) or reader (self-study) fills in.
 
-**Source verification — MUST DO before first cohort:**
-- Klaassen compound loop — `[practitioner direct]` — primary URLs cited at M1 `getting-going.md` and `compound-and-close.md` maintainer blocks. Re-verify Every.to-hosted URLs at delivery.
-- Cherny parallel worktrees — `[practitioner direct]` — primary URL cited at M1 homework (Boris Cherny *Mastering Claude Code in 30 minutes*, YouTube, May 2025). Re-verify the YouTube URL.
-- Boyd OODA — `[cultural-vocab]` — military-strategy framework dating to the 1960s–1980s, widely known. No URL pinned per `check_research_claims.md §1` cultural-vocabulary carve-out.
-- No new practitioner URLs introduced.
+**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
+- `[checked:2026-05-25 result:OK due:2026-11-25]` (no URL) — [cultural-vocab + cross-ref] no new evidence URLs; forward-refs verified at source modules. fallback: none.
 
 **Watch-fors (delivery):**
 - Don't fold into M4 prework or M3 in-class flow — opt-in between-module piece. Pulling it into required reading loses the optional framing the supplementary depends on.

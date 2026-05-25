@@ -3,6 +3,17 @@ key: a101-prework-extract-tarball
 dest: Claude Code
 runtime: any
 origin: agents-101/prework
+requires:
+  - id: starter-tarball
+    source: external
+produces:
+  - id: working-tree-scaffold
+    location: working dir (prework/, memory/, sources/, agents/, .claude/, module-4/policies/)
+    consumed-by:
+      - module:getting-going
+      - module:building-agent-systems
+      - module:multi-agent-systems
+      - module:security
 ---
 Extract the starter tarball in the working folder. Use the shell:
 

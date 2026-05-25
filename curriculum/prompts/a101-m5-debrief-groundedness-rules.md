@@ -3,6 +3,18 @@ key: a101-m5-debrief-groundedness-rules
 dest: Claude Code
 runtime: any
 origin: agents-101/output-quality
+requires:
+  - id: root-claude-md
+    source: prompt:a101-m2-debrief-claude-md
+    conditional: m2-completed
+  - id: m5-evidence-artifacts
+    source: module:output-quality
+  - id: groundedness-judge
+    source: module:output-quality
+produces:
+  - id: root-claude-md
+    location: ./CLAUDE.md (Groundedness checks section)
+    note: adds/sharpens 1-4 groundedness rules in place
 ---
 Start by reading the files. No plan or preamble.
 

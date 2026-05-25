@@ -3,6 +3,16 @@ key: a101-m4-debrief-security-rules
 dest: Claude Code
 runtime: any
 origin: agents-101/security
+requires:
+  - id: root-claude-md
+    source: prompt:a101-m2-debrief-claude-md
+    conditional: m2-completed
+  - id: security-reports
+    source: module:security
+produces:
+  - id: root-claude-md
+    location: ./CLAUDE.md (Security operating rules section)
+    note: adds/sharpens 1-5 security rules in place
 ---
 Start by reading the files. No plan or preamble.
 

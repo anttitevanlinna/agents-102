@@ -3,6 +3,13 @@ key: a101-m8-debrief-flywheel-sharpen
 dest: Builder Claude
 runtime: any
 origin: agents-101/agents-building-agents
+requires:
+  - id: m8-deliberation
+    source: module:agents-building-agents
+produces:
+  - id: m8-heaviest-file
+    location: deliberation folder (synthesizer rules / kernel / agent-set — overwrite in place)
+    note: defaults to central synthesizer rules file when weight is ambiguous
 ---
 Start by identifying the file path. No plan or preamble.
 

@@ -3,6 +3,13 @@ key: a101-m7-debrief-sharing-artifact
 dest: Claude Code
 runtime: any
 origin: agents-101/personal-to-team
+requires:
+  - id: m7-artifacts
+    source: module:personal-to-team
+produces:
+  - id: m7-sharing-artifact
+    location: module-7/<chosen-file> (overwrite in place)
+    note: rewrites whichever module-7 file is the sharing artifact; Edit-on-pushback
 ---
 Start by identifying the file path. No plan or preamble.
 

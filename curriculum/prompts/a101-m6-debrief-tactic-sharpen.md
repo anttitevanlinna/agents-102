@@ -3,6 +3,17 @@ key: a101-m6-debrief-tactic-sharpen
 dest: Claude Code
 runtime: any
 origin: agents-101/evaluations
+requires:
+  - id: generation-tactic
+    source: module:evaluations
+  - id: m6-run-artifacts
+    source: module:evaluations
+  - id: groundedness-judge
+    source: module:output-quality
+produces:
+  - id: generation-tactic
+    location: ./generation-tactic.md (overwrite in place)
+    note: integrates the tactic rule the loop never reached; judge file untouched
 ---
 Start by reading the files. No plan or preamble.
 

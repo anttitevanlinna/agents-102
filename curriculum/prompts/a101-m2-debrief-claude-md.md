@@ -3,6 +3,19 @@ key: a101-m2-debrief-claude-md
 dest: Claude Code
 runtime: any
 origin: agents-101/building-agent-systems
+requires:
+  - id: challenge-md
+    source: module:building-agent-systems
+  - id: working-tree-scaffold
+    source: prompt:a101-prework-extract-tarball
+produces:
+  - id: root-claude-md
+    location: ./CLAUDE.md
+    consumed-by:
+      - prompt:a101-m3-debrief-handoff-rules
+      - prompt:a101-m4-debrief-security-rules
+      - prompt:a101-m5-debrief-groundedness-rules
+      - module:agents-building-agents
 ---
 Review this session and write the first version of CLAUDE.md at the training-directory root. The evidence: ./challenge.md, every file in sources/ (scan titles + first lines), every file in memory/, and our conversation.
 

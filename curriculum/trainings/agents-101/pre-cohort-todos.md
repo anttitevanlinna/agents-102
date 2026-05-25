@@ -105,6 +105,14 @@ Pattern promoted to `check_prompts.md § 35` after AE101 M2 push-back-on-the-pla
 
 - **`new-human-role-in-the-loop-1.md` (line 11):** *"Keep asking until the dimension is judgeable"* inside an 8–10 minute closing lecture. Could drift into an unbounded eval-design interview. Apply the cadence cap (three-at-a-time + recommend-an-answer) plus an explicit stop condition. Prompt-side and body-side fix both apply.
 
+## 12. Prompt-registry catch-up audit (2026-05-25)
+
+`requires`/`produces` dependency graph now wired across all 16 `a101-*` registry files (root `./CLAUDE.md` lineage explicit: prework scaffold → M2 writes it → M3/M4/M5 compound onto it; lint green). Body re-audit against `check_prompts.md` rules 33–42 (the rules postdating the 2026-05-08 extraction) came back clean: no hard violations, rule 37 already honored in M2/M4/M5, rule 39 correctly absent (a101 has no plan-mode prompts). Open items below.
+
+- **Lead-in consistency (rules 2 / 31).** M2, M3 (handoff), M4, M7, M8 fold the prompt's action into the `## Debrief` framing paragraph; M1, M5, M6 carry a dedicated *"Ask Claude to <verb>."* lead-in line above the marker. The framing sentences do mirror the prompt opening (rule 38 satisfied in substance), so this is skim-cue consistency, not correctness. Module-body prose, not maintainer-gated. Decide whether to normalize the five toward the M1/M5/M6 shape.
+- **`a101-m3-homework-memory-health` wide paragraph (rule 36).** Prompt body is one paragraph carrying ~5 moves (look / check health / name a drop / restructure / show-before-write). Split by move for scan-affordance. Prompt body, maintainer-approval-gated edit (BEFORE/AFTER card before applying).
+- **No mechanical (tmux-runner) coverage for a101.** The headless battery exists only for AE101 (m1–m6 across three playgrounds); a101's eight slug-named modules have zero scenarios. Until a101 has headless scenarios, `check_prompts.md` rule 42 (AUQ-suppression tail) is untested against these prompts. Sequence after the three-persona sim sweep. Note: the harness is headless-Code only, so it exercises the Code fork, not the Cowork experience.
+
 ---
 
 **Canonical home:** this file. New pre-cohort open items go here, not into module files, unless the item is a local maintainer note needed by the trainer while delivering that specific module.

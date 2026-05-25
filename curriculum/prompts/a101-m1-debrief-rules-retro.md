@@ -3,6 +3,13 @@ key: a101-m1-debrief-rules-retro
 dest: Claude Code
 runtime: any
 origin: agents-101/getting-going
+requires:
+  - id: m1-brand-rules
+    source: module:getting-going
+produces:
+  - id: m1-brand-rules
+    location: module-1/personal-brand-generation.md (overwrite in place)
+    note: retro applied in place; module-scoped, not read by later modules
 ---
 Start by reading the file. No plan or preamble.
 

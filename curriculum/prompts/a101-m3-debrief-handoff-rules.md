@@ -3,6 +3,15 @@ key: a101-m3-debrief-handoff-rules
 dest: Claude Code
 runtime: any
 origin: agents-101/multi-agent-systems
+requires:
+  - id: root-claude-md
+    source: prompt:a101-m2-debrief-claude-md
+  - id: m3-agent-work
+    source: module:multi-agent-systems
+produces:
+  - id: root-claude-md
+    location: ./CLAUDE.md (integrate in place)
+    note: sharpens division-of-work + handoff rules on the M2 file
 ---
 Start by reading the files. No plan or preamble.
 

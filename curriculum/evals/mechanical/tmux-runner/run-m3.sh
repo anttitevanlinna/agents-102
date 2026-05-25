@@ -114,8 +114,11 @@ quality_total=${#quality_lines[@]}
 echo "[m3] main turns=$main_total quality turns=$quality_total"
 
 cleanup() {
-  pane_capture "$main_session" "$main_dir/transcript.txt" 2>/dev/null || true
-  pane_capture "$quality_session" "$quality_dir/transcript.txt" 2>/dev/null || true
+  # Bounded-time captures so the trap can't be held hostage by an
+  # actively-rendering pane — claude at high effort can render past
+  # the runner's sentinel timeout. Two sessions doubles the hang risk.
+  pane_capture_safe "$main_session" "$main_dir/transcript.txt" 10
+  pane_capture_safe "$quality_session" "$quality_dir/transcript.txt" 10
   pane_kill "$main_session"
   pane_kill "$quality_session"
 }
@@ -188,7 +191,10 @@ main_acked=1     # turn-1 already acked in phase A
 quality_acked=0
 poll_interval=2
 elapsed=0
-timeout_s="${CLAUDE_RUNNER_M3_TIMEOUT:-3600}"
+# M3's race loop drives BOTH sessions through ~10 prompts total at
+# high effort. Wall-clock budget must accommodate the sum of two
+# parallel-but-not-fully-overlapping pipelines plus API retries.
+timeout_s="${CLAUDE_RUNNER_M3_TIMEOUT:-7200}"
 
 while true; do
   main_pending=$((main_seq - main_acked))
@@ -222,6 +228,19 @@ while true; do
     fi
   fi
 
+  # Liveness check — if either tmux session died externally (claude
+  # OOM, API kill, system reboot), polling for sentinels is futile.
+  # Earlier M3 runs polled for 90+ min after the session was gone
+  # before someone noticed. Fail fast on first dead-session detection.
+  if ! tmux has-session -t "$main_session" 2>/dev/null; then
+    echo "[m3] FAIL: main session $main_session died externally. main_acked=$main_acked/$main_total quality_acked=$quality_acked/$quality_total" >&2
+    exit 1
+  fi
+  if ! tmux has-session -t "$quality_session" 2>/dev/null; then
+    echo "[m3] FAIL: quality session $quality_session died externally. main_acked=$main_acked/$main_total quality_acked=$quality_acked/$quality_total" >&2
+    exit 1
+  fi
+
   sleep "$poll_interval"
   elapsed=$((elapsed + poll_interval))
   if [[ "$elapsed" -ge "$timeout_s" ]]; then
@@ -240,8 +259,9 @@ printf '%s' "$closer_body" > "$main_dir/turn-$main_seq.prompt.txt"
 echo "[m3] main turn=$main_seq key=$closer_key (closer)"
 pane_send_text "$main_session" "$closer_body"
 
-if ! wait_for_turn "$main_dir/sentinels" "$main_seq" 600; then
-  echo "[m3] FAIL: closer timeout" >&2
+closer_timeout="${CLAUDE_RUNNER_TIMEOUT:-3600}"
+if ! wait_for_turn "$main_dir/sentinels" "$main_seq" "$closer_timeout"; then
+  echo "[m3] FAIL: closer timeout after ${closer_timeout}s" >&2
   exit 1
 fi
 pane_capture "$main_session" "$main_dir/turn-$main_seq.transcript.txt"

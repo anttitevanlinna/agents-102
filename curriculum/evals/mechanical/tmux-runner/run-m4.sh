@@ -44,7 +44,7 @@ if [[ -z "$sut_cwd" || ! -d "$sut_cwd" ]]; then
   exit 2
 fi
 
-scenario="$HERE/scenarios/m4.txt"
+scenario="${SCENARIO:-$HERE/scenarios/m4.txt}"
 [[ -f "$scenario" ]] || { echo "missing scenario: $scenario" >&2; exit 2; }
 
 run_id="$(date +%Y%m%d-%H%M%S)-$$"
@@ -72,7 +72,9 @@ pane_start "$session" "$sut_cwd" "$launch_cmd"
 sleep "$warmup"
 
 cleanup() {
-  pane_capture "$session" "$run_dir/transcript.txt" 2>/dev/null || true
+  # Bounded-time capture so the trap can't be held hostage by an
+  # actively-rendering pane (see run-m1.sh for the high-effort case).
+  pane_capture_safe "$session" "$run_dir/transcript.txt" 10
   pane_kill "$session"
 }
 trap cleanup EXIT
@@ -87,10 +89,10 @@ done < "$scenario"
 total=${#lines[@]}
 echo "[m4] turns=$total"
 
-# Per-turn timeout: standard 600s, except the last turn (send-off) which
-# gets the long-run budget. Override either via env vars.
-standard_timeout="${CLAUDE_RUNNER_TIMEOUT:-600}"
-sendoff_timeout="${CLAUDE_RUNNER_M4_SENDOFF_TIMEOUT:-3600}"
+# Per-turn timeout: standard 3600s (high-effort claude takes long; see
+# run-m1.sh history). Last turn (send-off) gets the multi-hour budget.
+standard_timeout="${CLAUDE_RUNNER_TIMEOUT:-3600}"
+sendoff_timeout="${CLAUDE_RUNNER_M4_SENDOFF_TIMEOUT:-7200}"
 
 seq=0
 for line in "${lines[@]}"; do
@@ -125,7 +127,7 @@ for line in "${lines[@]}"; do
   # TODO: if a scenario adds a pure slash command, wire `is_slash_only` +
   # `fake_sentinel_after_render` from lib/sync.sh here. See run-m1.sh.
   if ! wait_for_turn "$sentinel_dir" "$seq" "$turn_timeout"; then
-    pane_capture "$session" "$run_dir/transcript.txt"
+    pane_capture_safe "$session" "$run_dir/transcript.txt" 10
     echo "[m4] FAIL turn=$seq (sentinel timeout after ${turn_timeout}s) — see $run_dir/transcript.txt" >&2
     exit 1
   fi
@@ -144,12 +146,17 @@ for f in $post_transcripts; do
   fi
 done
 
-# Grep the M4 starting-point SHA from the commit-turn transcript (turn 5).
-# Pattern: a 7+ hex-char short SHA. Find the most relevant one in turn-5.
+# Resolve the M4 starting-point SHA. Earlier versions greped the first
+# 7+hex from the commit-turn transcript — that catches the prior commit
+# reference (often the M1/M3 endpoint Claude cited while explaining
+# context) rather than the new commit. Authoritative source is git
+# itself: the "M4 starting point" commit is the most recent commit
+# matching that exact message on the current branch.
 commit_turn_transcript="$run_dir/turn-5.transcript.txt"
 m4_sha=""
-if [[ -f "$commit_turn_transcript" ]]; then
-  # Look for "short SHA" or any 7-12 hex sequence after "starting point" / commit
+m4_sha="$(cd "$sut_cwd" && git log --format='%h' --grep='^M4 starting point$' -1 2>/dev/null || true)"
+# Fallback to transcript grep only if the git lookup found nothing.
+if [[ -z "$m4_sha" && -f "$commit_turn_transcript" ]]; then
   m4_sha="$(grep -oE '[0-9a-f]{7,12}' "$commit_turn_transcript" | head -1)"
 fi
 

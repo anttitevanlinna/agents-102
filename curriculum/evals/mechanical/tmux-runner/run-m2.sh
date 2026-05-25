@@ -172,28 +172,40 @@ assert_turn() {
         # Loose match: scrollback contains numbered or bulleted rules.
         assert_scrollback_grep "T4 rules-proposed" "$transcript" "rule|^[[:space:]]*[0-9]\.|^[[:space:]]*\*|^[[:space:]]*-"
         ;;
-    5)  # extract-the-task-shaping-rule-2 — rules saved to picked path.
-        # Tail asks Claude to echo `SAVED-PATH: <abs path>`; grep the LAST
-        # match (the prompt-instruction echo of `SAVED-PATH: <abs path>` is
-        # an earlier match, so head -1 catches the placeholder text).
+    5)  # extract-the-task-shaping-rule-2 — paths proposed in scrollback.
+        # Under the ask-and-wait pattern, the agent proposes paths and STOPS.
+        # Actual file save + SAVED-PATH emission land in the next literal
+        # turn's response (the canned-reply turn). Lemmings runs (suppression
+        # pattern) emit SAVED-PATH in this same turn — the deferred check in
+        # case 6 handles both shapes (reads all transcripts so far).
+        assert_scrollback_grep "T5 paths-proposed" "$transcript" "path|/Users|~/|\.claude|\.local"
+        ;;
+    6)  # extract-the-task-shaping-rule-3 — automation shapes named AND
+        # deferred SAVED-PATH check from case 5. Reads all turn transcripts
+        # because under ask-and-wait the actual save lives in the literal
+        # turn between cases 5 and 6; under suppression it lives in case 5's
+        # own transcript. Reading all turns handles both.
+        if ! assert_scrollback_grep "T6 shapes-named" "$transcript" "slack|webhook|schedul|cron|queue|trigger|automation"; then
+          return 1
+        fi
         local saved
-        saved="$(grep -oE 'SAVED-PATH:[[:space:]]*[^[:space:]]+' "$transcript" | grep -vE 'SAVED-PATH:[[:space:]]*<' | tail -1 | sed -E 's/SAVED-PATH:[[:space:]]*//')"
+        saved="$(cat "$run_dir"/turn-*.transcript.txt 2>/dev/null \
+          | grep -oE 'SAVED-PATH:[[:space:]]*[^[:space:]]+' \
+          | sed -E 's/SAVED-PATH:[[:space:]]*//' \
+          | grep -E '^[/~]' \
+          | tail -1)"
         if [[ -n "$saved" ]]; then
-          # Tilde expansion.
           saved="${saved/#\~/$HOME}"
           if [[ -f "$saved" && "$(stat -f %m "$saved" 2>/dev/null || stat -c %Y "$saved")" -ge "$run_start_epoch" ]]; then
-            echo "[assert] PASS T5 rules-file at $saved"
+            echo "[assert] PASS T6 rules-file at $saved"
             echo "$saved" > "$run_dir/m2-rules-file.path"
             return 0
           fi
-          echo "[assert] FAIL T5 rules-file: SAVED-PATH=$saved not found or stale" >&2
+          echo "[assert] FAIL T6 rules-file: SAVED-PATH=$saved not found or stale" >&2
           return 1
         fi
-        echo "[assert] FAIL T5 rules-file: no SAVED-PATH marker in transcript" >&2
+        echo "[assert] FAIL T6 rules-file: no SAVED-PATH absolute-path marker in any transcript" >&2
         return 1
-        ;;
-    6)  # extract-the-task-shaping-rule-3 — automation shapes named.
-        assert_scrollback_grep "T6 shapes-named" "$transcript" "slack|webhook|schedul|cron|queue|trigger|automation"
         ;;
     7)  # push-back-on-the-plan-4 — answers the auto-load question.
         assert_scrollback_grep "T7 auto-load-answer" "$transcript" "auto.?load|CLAUDE\.md|CLAUDE\.local|@import|loaded|context"

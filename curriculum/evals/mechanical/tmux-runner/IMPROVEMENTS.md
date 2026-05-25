@@ -8,6 +8,26 @@ Captured 2026-05-24 after self-introspection on the M1+M2 dry-run sweep. Numbere
 - [x] Fix wait_for_turn cleanup hang — done 2026-05-24. Added `pane_capture_safe` in `lib/tmux.sh` that wraps `tmux capture-pane` in a hard wall-clock alarm (gtimeout → timeout → perl-alarm fallback for macOS). All FAIL-path captures + EXIT trap captures in run-m1.sh and run-m2.sh now use it. Previously a high-effort claude rendering past the runner's sentinel timeout could hold the bash trap hostage for an hour.
 - [x] Backport key_seq dispatch to run-m1.sh — done 2026-05-24. Lets the same runner drive both `scenarios/m1.txt` (no literals) and `scenarios/m1-codesearch.txt` (with `* One commit, no PR` literal). Cases 6+7 updated to handle commit-at-T6 (m1.txt tail) OR commit-at-literal (m1-codesearch.txt default).
 - [x] N=4 of M1 non-deterministic save-gate — collapsed via m1.txt tail rewrite (lazy-student "don't call AskUserQuestion + don't commit at T4" guard). m2-codesearch.txt by other agent uses the smarter ask-and-wait pattern (preserves Q&A in chat text + canned student-voice replies).
+- [x] **run-m4.sh `m4_sha` grep fixed 2026-05-25.** Was greping first 7+hex from turn-5 transcript (caught prior-commit references). Now uses `git log --format='%h' --grep='^M4 starting point$' -1` on the SUT cwd; falls back to transcript-grep only if git lookup is empty. Authoritative source is git itself.
+- [x] **run-m3.sh race loop liveness check landed 2026-05-25.** Race loop now calls `tmux has-session` on both main + quality sessions every poll cycle. Fails fast with named-session diagnostic if either pane dies externally (OOM, API kill, etc), instead of polling for the full 7200s phase-B timeout. Earlier M3 runs polled 90+ min after the session was actually gone.
+
+## Caught 2026-05-24 M4 run
+
+- [ ] **`walk-and-send-off-3` says `.claude/memory/` — Claude saves to USER-LEVEL `~/.claude/projects/<encoded-cwd>/memory/`, not project-level `~/Projects/lemmings/.claude/memory/`.** Confirmed in M4 run `20260524-210132-96482`: Claude wrote `project_blocker_deadlock_no_scan.md` to user-level. Real-cohort risk: students expect their `./.claude/memory/` files to live in the repo (gitignored or otherwise). Files invisibly land in `~/.claude/projects/<encoded>/memory/` — a different home dir entirely. **Curriculum fix:** the prompt body should say `./.claude/memory/` (with leading `./`) to force the project-level path, OR explicitly say "user-level agent memory" if that's the intent.
+
+- [ ] **`ae101-m4-commit-starting-point` says "stage everything" — over-commits residue.** In M4 run `20260524-210132-96482`, the M4 starting-point commit `104f4c7` captured `.residue-archive/` (4 files from prior M1+M2 dry-run failures) alongside the M3 ADR + task.md. For a real cohort student this is the intended behavior (committing whatever's in cwd). For the mechanical battery this means residue files end up in the dry-run history. **Runner-hygiene fix:** clean residue OUT of cwd between M3 and M4 runs, OR use a sibling outside cwd for residue archive.
+
+- [x] **run-m4.sh `m4_sha` grep is wrong** — fixed 2026-05-25 via `git log --grep='^M4 starting point$' -1`. See Done section.
+
+- [ ] **run-m4.sh has no per-turn artifact assertions.** Same gap as run-m3.sh. M4 PASSed all 6 turns with zero assertions — only sentinel-only completion. The M4 prompts produce real artifacts (task.md, M4-starting-point commit, fix commit, fix branch). All went unverified. If any silently dropped, M4 would PASS green. Worth backporting the per-turn pattern.
+
+## Caught 2026-05-24 M3 runs
+
+- [x] **run-m3.sh's race loop polls indefinitely if a tmux pane dies externally** — fixed 2026-05-25 via `tmux has-session` check in the poll loop. See Done section.
+
+- [ ] **run-m3.sh has no per-turn artifact assertions.** Unlike run-m1.sh and run-m2.sh which gate each turn on a contract (file exists, commit landed, mtime advanced), M3 is sentinel-only. The M3 retry PASSed green, but if the ADR save-gate at T8/T9 had silently dropped (the same failure mode the M1/M2 work caught at compound-and-close), M3 would also have PASSed green. The artifact contract for each M3 prompt is implicit: T1 fork-worktree → quality cwd exists; T8 ADR save → `docs/adr/<N>-*.md` lands; T11 closer → user-level skill authored. Worth backporting the per-turn assertion pattern. Quality side has its own contracts (the skill authoring at quality T2/T4).
+
+- [ ] **Skill-authoring lands at user-level by default, suffix-renamed on conflict.** In the M3 retry, `author-test-strategy-skill` produced `~/.claude/skills/test-strategy-lemmings/SKILL.md` (suffix `-lemmings` because the original `test-strategy` skill already exists at the user level — and the codesearch agent's earlier run added `test-strategy-codesearch`). Real-cohort risk: first-time M3 students would just get `test-strategy/SKILL.md` — clean. But returning students or students with the original test-strategy skill installed get the suffix-rename behavior, and the curriculum doesn't address what happens on conflict. Worth a one-line callout in the exercise: "if a `test-strategy` skill already exists, Claude will suffix-rename — that's fine, look at the saved path."
 
 ## Caught 2026-05-24 run #4 — RESOLVED
 

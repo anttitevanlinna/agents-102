@@ -60,7 +60,7 @@
                 { slug: 'the-agent-loop',             title: 'The agent loop' },
                 { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' },
                 { slug: 'workflow-composition-lineages', title: 'Workflow composition lineages' },
-                { slug: 'skill-stacking',             title: 'Skill stacking system' }
+                { slug: 'skill-stacking',             title: "Dino's skill stacking system" }
             ],
             references: [
                 { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
@@ -192,6 +192,80 @@
         return md
             .replace(CROSS_DOC_SHARED_RE,   '](curriculum.html?file=$1/$2$3)')
             .replace(CROSS_DOC_TRAINING_RE, '](curriculum.html?file=$1$2)');
+    }
+
+    // Markdown image whose target is relative (not http(s):, data:, or
+    // root-absolute). A doc that ships diagrams alongside itself writes the
+    // path relative to the doc; the target has to be resolved per-surface
+    // before it points anywhere real. rewriteImageTargets runs the matcher and
+    // hands each relative target to a per-surface transform: the SPA turns it
+    // into a URL relative to the page (it can't read files), the workbook
+    // build inlines the bytes as a data URI (so the single page stays
+    // self-contained). Shared so both surfaces match the same image syntax.
+    var MD_IMAGE_RE = /(!\[[^\]]*\]\()([^)\s]+)(\))/g;
+
+    function rewriteImageTargets(md, transform) {
+        return md.replace(MD_IMAGE_RE, function (full, open, target, close) {
+            if (/^(?:https?:|data:|\/)/.test(target)) return full;
+            return open + transform(target) + close;
+        });
+    }
+
+    // marked renders an image-on-its-own-line as <p><img ...></p>. Promote those
+    // to <figure class="diagram"> so the .diagram CSS can break the figure out of
+    // the prose column to full content width, and add an "open in new tab" link
+    // for lossless zoom. Image-with-text paragraphs are left untouched. Runs on
+    // parsed HTML in both renderers for parity.
+    //
+    // The href depends on what the src already resolved to. SPA images are a
+    // doc-relative file path → link straight to it (native open, middle-click,
+    // etc. all work). Workbook images are data: URIs → browsers BLOCK top-level
+    // navigation to data: URIs, and duplicating one into the href bloats the
+    // page, so the link points at "#" and decorateDiagramZoom opens a blob built
+    // from the image at click time instead.
+    function wrapImageFigures(html) {
+        return html.replace(/<p>(<img\b[^>]*\bsrc="([^"]*)"[^>]*>)<\/p>/g, function (m, img, src) {
+            var href = src.slice(0, 5) === 'data:' ? '#' : src;
+            return '<figure class="diagram">' + img +
+                '<a class="diagram__zoom" href="' + href + '" target="_blank" rel="noopener">Open in new tab ↗</a>' +
+                '</figure>';
+        });
+    }
+
+    // Click handler for the "open in new tab" link when the diagram is a data:
+    // URI (workbook). Top-level navigation to data: URIs is blocked, so rebuild
+    // the bytes into a Blob and open its object URL — that IS allowed. Links to a
+    // real path (SPA) fall through to the browser's native handling untouched.
+    function decorateDiagramZoom(root) {
+        var scope = root || document;
+        scope.querySelectorAll('a.diagram__zoom').forEach(function (a) {
+            if (a.getAttribute('data-zoom-wired')) return;
+            a.setAttribute('data-zoom-wired', '1');
+            a.addEventListener('click', function (e) {
+                var img = a.parentNode && a.parentNode.querySelector('img');
+                var src = (img && img.getAttribute('src')) || '';
+                if (src.slice(0, 5) !== 'data:') return; // real URL — let it open natively
+                e.preventDefault();
+                try {
+                    var comma = src.indexOf(',');
+                    var meta = src.slice(5, comma);
+                    var isB64 = /;base64$/.test(meta);
+                    var mime = meta.replace(/;base64$/, '') || 'application/octet-stream';
+                    var data = src.slice(comma + 1);
+                    var blob;
+                    if (isB64) {
+                        var bin = atob(data), arr = new Uint8Array(bin.length);
+                        for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+                        blob = new Blob([arr], { type: mime });
+                    } else {
+                        blob = new Blob([decodeURIComponent(data)], { type: mime });
+                    }
+                    var url = URL.createObjectURL(blob);
+                    window.open(url, '_blank', 'noopener');
+                    setTimeout(function () { URL.revokeObjectURL(url); }, 60000);
+                } catch (err) { /* inline diagram stays visible; nothing else to do */ }
+            });
+        });
     }
 
     // GitHub-style heading slugger. Used to generate stable `id="..."` attrs
@@ -864,6 +938,10 @@
         // Pure (Node-safe)
         esc: esc,
         rewriteCrossDocLinks: rewriteCrossDocLinks,
+        rewriteImageTargets: rewriteImageTargets,
+        wrapImageFigures: wrapImageFigures,
+        decorateDiagramZoom: decorateDiagramZoom,
+        MD_IMAGE_RE: MD_IMAGE_RE,
         slugifyHeading: slugifyHeading,
         configureMarked: configureMarked,
         stripMaintainerTail: stripMaintainerTail,

@@ -127,7 +127,7 @@ The dispatcher pattern **scales cross-repo**. Dino runs a pure-routing meta-laye
 What's specific to AE101: the two curated security skills from M3 (`/access-control-analysis` and `/stride`) sit inside the PLAN phase as upstream input to the mutating skills. The training's curated kit is part of Dino's shipped composition; the worked example IS a feedback loop.
 
 **Read:**
-- [Skill stacking system](trainings/agentic-engineering-101/supplementary/skill-stacking.md): Dino's primary doc. The three-layer model, four composition mechanisms, skill catalogue, six workflow archetypes, seven design principles, in his own words. Three diagrams ship alongside the doc as PNG files in `supplementary/skill-stacking/`: phase swimlane, `/ship` anatomy, workflow archetypes.
+- [Dino's skill stacking system](trainings/agentic-engineering-101/supplementary/skill-stacking.md): Dino's primary doc. The three-layer model, four composition mechanisms, skill catalogue, six workflow archetypes, seven design principles, in his own words. Three diagrams ship alongside the doc in `supplementary/skill-stacking/`: phase swimlane, `/ship` anatomy, workflow archetypes.
 
 ## How to pick what to study
 

@@ -300,6 +300,59 @@ main::before {
 
 .module p { margin: 0 0 1.15rem; text-wrap: pretty; }
 
+/* Rendered images (curriculum diagrams ship as .svg alongside the doc). Two
+   rules. (1) A responsive baseline — the stylesheet never had one because
+   content was text-only, so anything embedded rendered at natural size and the
+   page's overflow-x: clip swallowed the spillover with no scrollbar. (2) A
+   breakout for diagram figures: a wide diagram wants the page, not the 40em
+   prose measure, so .diagram steps out of the reading column to the full
+   content width and centres on it. Vector scales losslessly, so width is now a
+   pure layout choice. min(64rem, 92vw) keeps the figure inside the viewport, so
+   the breakout never creates spillover for overflow-x: clip to hide. */
+.module img { display: block; max-width: 100%; height: auto; }
+
+.module .diagram {
+    width: min(64rem, 92vw);
+    margin: 1.75rem 0 1.75rem 50%;
+    transform: translateX(-50%);
+}
+
+/* The image is bounded by BOTH the figure width and a max-height, sized to
+   whichever binds first (intrinsic aspect ratio is preserved from the SVG's
+   width/height). Landscape diagrams hit the width and fill the breakout;
+   a tall portrait diagram hits the height and is capped instead of running a
+   full page — full detail stays one click away via the zoom link. Centred
+   within the figure when narrower than the breakout. */
+.module .diagram img {
+    display: block;
+    margin-inline: auto;
+    max-width: 100%;
+    max-height: 40rem;
+    height: auto;
+    border: 1px solid var(--line-2);
+    border-radius: 6px;
+    background: #fff;
+}
+
+/* "Open in new tab" link under a diagram — lossless zoom for dense diagrams.
+   Subtle, right-aligned, no underline (overrides the .module a border-bottom). */
+.module .diagram__zoom {
+    display: block;
+    margin-top: .45rem;
+    font-size: .82rem;
+    text-align: right;
+    color: var(--fg-3);
+    border-bottom: none;
+}
+.module .diagram__zoom:hover { color: var(--accent); }
+
+/* Caption paragraph (italic line) sitting right under a diagram. */
+.module .diagram + p em {
+    display: block;
+    text-align: center;
+    color: var(--fg-3);
+}
+
 /* Drop cap on the opening paragraph after the module title */
 .module h1 + p::first-letter {
     font-family: var(--font-serif);

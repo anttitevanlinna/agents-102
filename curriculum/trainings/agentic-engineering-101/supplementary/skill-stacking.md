@@ -1,4 +1,4 @@
-# Skill stacking system
+# Dino's skill stacking system
 
 How Dino's Claude Code skills compose. Personal skills live in `~/.claude/skills/`, project skills in `./.claude/skills/`. The harness merges them at runtime; they're indistinguishable to the model.
 
@@ -128,7 +128,7 @@ These are the non-obvious rules the system enforces:
 
 ## Diagrams
 
-Three companion PNGs ship with this doc.
+Three companion diagrams ship with this doc.
 
 **Marker legend** (used across all three):
 
@@ -136,13 +136,17 @@ Three companion PNGs ship with this doc.
 - **`[C]`**: chains (this skill names another as a precondition or explicit load).
 - **`[O]`**: orchestrates (this skill, only `/ship` in Dino's stack, sequences and gates other skills).
 
-The diagrams:
+![Phase swimlane placing every skill in its lifecycle phase, with /ship's orchestration arrows.](skill-stacking/01-meta-model.svg)
 
-1. **`01-meta-model.png`**: phase swimlane with every skill placed by phase, mandatory routing skills highlighted, `/ship`'s `[O]` arrows showing what it sequences.
-2. **`02-ship-anatomy.png`**: `/ship`'s nine-step internal flow with all stop conditions and the re-invocation loop.
-3. **`03-workflows.png`**: six workflow archetypes converging on `/ship` (five funnel in; QA is the standalone).
+*Meta-model: every skill placed by phase, mandatory routing skills highlighted, `/ship`'s `[O]` arrows showing what it sequences.*
 
-Source `.mmd` files live alongside each PNG.
+![/ship's nine-step internal flow with every stop condition and the re-invocation loop.](skill-stacking/02-ship-anatomy.svg)
+
+*`/ship` anatomy: the nine-step internal flow, every stop condition, and the re-invocation loop.*
+
+![Six workflow archetypes, five funnelling into /ship and one standalone.](skill-stacking/03-workflows.svg)
+
+*Workflow archetypes: six shapes converging on `/ship` (five funnel in; QA is the standalone).*
 
 ---
 

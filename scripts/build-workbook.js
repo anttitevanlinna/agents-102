@@ -120,6 +120,34 @@ function rewriteCrossDocLinksToAnchors(md) {
 // escapeTildes lives in shared CR for SPA + workbook parity.
 const escapeTildes = CR.escapeTildes;
 
+// The workbook is a single self-contained HTML file (CSS + JS already inlined),
+// so diagrams that ship alongside a doc as PNGs can't be linked by relative
+// path — there's no sibling asset tree at the deploy target. Inline each
+// relative image target as a base64 data URI, reading it from the doc's own
+// directory. docDir is the absolute dir of the source .md.
+const IMG_MIME = {
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.gif': 'image/gif',
+  '.svg': 'image/svg+xml',
+  '.webp': 'image/webp',
+};
+
+function inlineImages(md, docDir) {
+  return CR.rewriteImageTargets(md, target => {
+    const ext = path.extname(target).toLowerCase();
+    const mime = IMG_MIME[ext];
+    const abs = path.join(docDir, target);
+    if (!mime || !fs.existsSync(abs)) {
+      console.warn(`  [warn] image not inlined (missing or unknown type): ${target}`);
+      return target;
+    }
+    const b64 = fs.readFileSync(abs).toString('base64');
+    return `data:${mime};base64,${b64}`;
+  });
+}
+
 function plainDisplayText(value) {
   return value.replace(/[*_`]/g, '');
 }
@@ -233,6 +261,7 @@ ${buildToc(trainingKey, t)}
       const md = renderModuleMd(trainingKey, m.slug, contentUrl);
       let html = marked.parse(md);
       html = postProcessIncludes(html);
+      html = CR.wrapImageFigures(html);
       return `<section class="module" id="${m.slug}">\n${html}\n</section>`;
     })
     .filter(Boolean)
@@ -249,9 +278,10 @@ ${buildToc(trainingKey, t)}
     md = md
       .replace(CR.CROSS_DOC_SHARED_RE,      (_, k, s, hash) => hash ? '](' + hash + ')' : '](#' + k + '-' + s + ')')
       .replace(CR.CROSS_DOC_TRAINING_KS_RE, (_, k, s, hash) => hash ? '](' + hash + ')' : '](#' + k + '-' + s + ')');
+    md = inlineImages(md, path.dirname(docPath));
     md = escapeTildes(md);
     const labelKind = kind === 'supplementary' ? 'Supplementary' : 'Reference';
-    return `<section class="module" id="${kind}-${slug}">\n<div class="phase-kicker">${labelKind}</div>\n${marked.parse(md)}\n</section>`;
+    return `<section class="module" id="${kind}-${slug}">\n<div class="phase-kicker">${labelKind}</div>\n${CR.wrapImageFigures(marked.parse(md))}\n</section>`;
   }
 
   const standaloneHtml = []
@@ -284,6 +314,7 @@ const WORKBOOK_INIT_JS = `
     });
     CurriculumRuntime.decorateSessions(document.body);
     CurriculumRuntime.decoratePrompts(document.body);
+    CurriculumRuntime.decorateDiagramZoom(document.body);
     CurriculumRuntime.installReadingProgress();
   }
 
@@ -351,6 +382,7 @@ const TRAINER_GUIDE_INIT_JS = `
   if (window.CurriculumRuntime) {
     CurriculumRuntime.decorateSessions(document.body);
     CurriculumRuntime.decoratePrompts(document.body);
+    CurriculumRuntime.decorateDiagramZoom(document.body);
     CurriculumRuntime.installReadingProgress();
   }
 })();

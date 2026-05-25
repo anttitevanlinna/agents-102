@@ -144,6 +144,12 @@
     // Core rendering: fetch markdown, expand includes, parse, inject
     // ============================================================
     function loadAndRender(path, fallbackTitle) {
+        // Images in a doc are written relative to that doc; the SPA fetches the
+        // doc from `../curriculum/<...>.md` but renders into a page at
+        // `site/curriculum.html`, so a bare `skill-stacking/01.png` would
+        // resolve against the page, not the doc. Re-root each relative target
+        // onto the doc's own directory.
+        var docDir = path.replace(/[^/]*$/, '');
         Promise.all([fetch(path), promptRegistryReady])
             .then(function (results) {
                 var res = results[0];
@@ -155,11 +161,15 @@
             .then(expandIncludes)
             .then(function (md) { return CurriculumRuntime.expandPrompts(md, PROMPT_REGISTRY); })
             .then(rewriteCrossDocLinks)
+            .then(function (md) {
+                return CurriculumRuntime.rewriteImageTargets(md, function (target) { return docDir + target; });
+            })
             .then(CurriculumRuntime.escapeTildes)
             .then(function (md) {
-                container.innerHTML = marked.parse(md);
+                container.innerHTML = CurriculumRuntime.wrapImageFigures(marked.parse(md));
                 CurriculumRuntime.decorateSessions(container);
                 CurriculumRuntime.decoratePrompts(container);
+                CurriculumRuntime.decorateDiagramZoom(container);
                 CurriculumRuntime.attachAnchorPopups(document.body);
                 var h1 = container.querySelector('h1');
                 document.title = (h1 ? h1.textContent : fallbackTitle) + ' — Agents 102';

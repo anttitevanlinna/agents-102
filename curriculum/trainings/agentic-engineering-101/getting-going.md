@@ -7,7 +7,7 @@ The first compound loop closes on a trivial bug from your own backlog. Orient, f
 
 ## Prework
 
-Complete the prework at the top of this workbook. You'll open the first session in the repo you picked there.
+Complete the prework at the top of this workbook. You'll open the first session in the repo you picked there. You'll stay in this one repo across all six modules. A later module commits your working tree as a fixed starting point, so keep unrelated work-in-progress committed or on its own branch as you go, and nothing stray rides into that snapshot.
 
 ## What You'll Learn
 After this module, you will be able to:

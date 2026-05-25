@@ -31,7 +31,7 @@ Read that as your verifier from M5, scaled. Same primitive. An automated check t
 
 One thing your skill can do that you did not try today: run on a schedule.
 
-Claude Code ships three scheduling primitives. Desktop local tasks (invoked from the Schedule sidebar) for standing work on your laptop. `/loop` for in-session repetition. `/schedule` for cloud-backed Routines. The choice depends on what you want watched. The pattern is the same: the skill you just wrote is the thing the scheduled agent invokes.
+Claude Code ships three scheduling primitives. Local routines (from the Routines sidebar) for standing work on your laptop. `/loop` for in-session repetition. `/schedule` for cloud-backed remote Routines. The choice depends on what you want watched. The pattern is the same: the skill you just wrote is the thing the scheduled agent invokes.
 
 Three places this fits naturally. A standing verifier run: the judge reads the most recent long-running send-off and has a summary waiting when you open the laptop. A scheduled codebase sweep: the gap-finder reads the repo for the drift shape you saw at M5 and opens an issue when it finds one. Rule-drift monitoring: a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
 

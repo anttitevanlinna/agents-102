@@ -24,7 +24,7 @@ Start a new Claude Code session in your repo. One or two candidate tasks come in
 
 **Not an epic. Not a typo-fix. A real slice you'd send off rather than nudge bit by bit, with a 'done' you can name in a sentence.**
 
-Ask Claude to screen the candidates you bring against the three long-run criteria and scope the winner. Drop the candidates after the colon, one per line.
+Ask Claude to screen the candidates you bring against the three long-run criteria and scope the winner. Drop the candidates after the colon.
 
 {{prompt:walk-and-send-off-1}}
 
@@ -86,7 +86,7 @@ Skim past the opening summary, look for the quoted-example-per-block payoff, tha
 
 Read the examples first. If they're from your own files, the frame should click. If it doesn't, ask Claude to quote different examples until one does.
 
-Once the frame is named through your own material, let Claude propose the actual rearrangement. Cap the proposal at one or two file moves or renames; larger reorganisation is a separate session, not a mid-module sweep (the send-off fires next, and you want the tree settled before it does).
+Once the frame is named through your own material, let Claude propose the actual rearrangement. Cap it at one or two file moves or renames; larger reorganisation is a separate session, not a mid-module sweep. When the proposal looks right, tell Claude to make the moves and show you the diff. The send-off fires next, so the tree wants to be settled on disk, not just planned in chat.
 
 **Framework**: Huryn's three-block memory. Not a template you fill; a frame that names what you've been building.
 

@@ -15,10 +15,10 @@ Enable plan mode.
 Read these artefacts end to end:
 
 - ./CLAUDE.local.md
-- .claude/memory/
+- ./.claude/memory/
 - the un-packaged run's commit history and modified files (its `m4/` branch is recorded in `task.md`)
 - the packaged run's commit history and modified files (its `m5/` branch is recorded in `plan.md`)
-- the SKILL.md of the skill you authored at Module 6, in `~/.claude/skills/`
+- the SKILL.md of the `session-shaper` skill you authored, in `~/.claude/skills/`
 
 Then design the next iteration of the kit. Three questions:
 

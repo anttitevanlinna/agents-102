@@ -35,16 +35,16 @@ requires:
     conditional: rule-earned-cutting
 produces:
   - id: arc-retrospective-note
-    location: student-picked (ADR, .claude/memory/ memo, or standalone file)
+    location: student-picked (ADR, ./.claude/memory/ memo, or standalone file)
     consumed-by: []
     note: terminal artefact — closes the M1-M6 arc
 ---
 Read my work across this repo. Specifically:
 
 - My team `CLAUDE.md` (if present) and my personal `CLAUDE.local.md`.
-- Everything at `.claude/memory/` (three-block memory: observations/hypotheses/rules, decisions, quality criteria).
+- Everything at `./.claude/memory/` (three-block memory: observations/hypotheses/rules, decisions, quality criteria).
 - The ADRs in this repo — wherever our convention puts them (`docs/adr/` or equivalent).
-- Both skills I authored at `~/.claude/skills/` (the test-strategy skill from earlier, and the skill I authored today).
+- Both skills I authored at `~/.claude/skills/` (the `test-strategy` skill from earlier, and the `session-shaper` skill).
 - The un-packaged run (commits, files, session transcript). Read `task.md` for its recorded `m4/` branch and transcript path, then use those exact coordinates. Do not reconstruct the transcript folder or pick a recent `.jsonl`.
 - The packaged re-run (commits, files, session transcript). Read `plan.md`'s protected `Run coordinates` block for its recorded `m5/` branch and transcript path, then use those exact coordinates. Do not reconstruct the transcript folder or pick a recent `.jsonl`.
 
@@ -52,4 +52,4 @@ Run this audit in a fresh sub-task via the Agent tool so you have the cold-read 
 
 Write a one-page note on what changed across this body of work. Not a changelog. What shape did my practice have at the start, what shape does it have now, what specific artefacts show the shift. Quote from my files. Name the pattern that you see recurring across modules if you see one. Don't invent a pattern to make the note tidy; if the arc is uneven, say so and show where.
 
-Propose where the note should live in my repo (ADR, memo in `.claude/memory/`, or a standalone file). Show me the note before you save it. I'll push back, then we save.
+Propose where the note should live in my repo (ADR, memo in `./.claude/memory/`, or a standalone file). Show me the note before you save it. I'll push back, then we save.

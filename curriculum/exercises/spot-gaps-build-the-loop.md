@@ -14,7 +14,7 @@ Open a new Claude Code session at the M5 worktree path (`../<repo>-m5`). M5's se
 
 ## Phase 1: Diff and name the gaps
 
-Two runs of the same task are accessible from the worktree: the un-packaged run on branch `m4/<slug>`, the packaged re-run on branch `m5/<slug>`, both visible via git refs since the worktree shares `.git` with the original repo. Both runs also left session transcripts under `~/.claude/projects/`. That's the auto-stored scrollback Claude Code keeps for every session. One folder per working directory the session ran in: M4 ran in the original repo, so its transcripts live under the encoded-original folder; M5 ran in this worktree, so its transcripts live under the encoded-worktree folder. The two folders sit side by side, not nested. Phase 1 reads from both.
+Two runs of the same task are accessible from the worktree: the un-packaged run on the `m4/<slug>` branch recorded in `task.md`, the packaged re-run on the `m5/<slug>` branch recorded in `plan.md`, both visible via git refs since the worktree shares `.git` with the original repo. Both runs also recorded their session transcript paths: M4 in `task.md`, M5 in the protected `Run coordinates` block at the top of `plan.md`. Phase 1 reads from those coordinates, not from branch or transcript search.
 
 Ask Claude to read both runs side by side and name where packaging caught, where it missed, and what new shapes of drift it introduced.
 
@@ -88,11 +88,11 @@ This prompt asks Claude to invoke a skill it just helped author AND grade the re
 
 If the output doesn't catch the dominant gap, sharpen the skill itself and invoke again. If the skill names its own limitation (*"I check drift but not context-rot re-derivations"*), that's a feature. Ship with a one-line TODO at the top. A skill that names its gap is more useful to a teammate than one that pretends it's finished.
 
-The skill ships personally. It lives at `~/.claude/skills/<skill-name>/SKILL.md` and auto-discovers in every future session you run, across every repo. That's the ship.
+The skill ships personally. It lives at `~/.claude/skills/session-shaper/SKILL.md` and auto-discovers in every future session you run, across every repo. That's the ship.
 
 **Team-kit candidate, via human conversation.** If the skill encodes something your whole team would benefit from, a codebase-specific judge, a verifier against a house style, a gap-finder tuned to the team's project shape, it's a strong PR candidate. But the PR starts with a conversation. Show it to a teammate over coffee. Post it in the channel. Ask: *"does this match how you'd check this kind of work?"* If they say yes, PR it. If they push back, you got the real review for free. Agents don't unilaterally change shared team infrastructure. You do.
 
-**What happened:** You ended with a one-screen gap map across memory / verifier / rules / skill, and one SKILL.md file at `~/.claude/skills/<skill-name>/SKILL.md`. Auto-discovered in every future session. The shape followed what the two runs demanded: a sharpened verifier, an LLM-judge, or a gap-finder. Team-kit candidates were flagged for a human conversation, not an auto-PR.
+**What happened:** You ended with a one-screen gap map across memory / verifier / rules / skill, and one SKILL.md file at `~/.claude/skills/session-shaper/SKILL.md`. Auto-discovered in every future session. The shape followed what the two runs demanded: a sharpened verifier, an LLM-judge, or a gap-finder. Team-kit candidates were flagged for a human conversation, not an auto-PR.
 
 <!-- maintainer -->
 

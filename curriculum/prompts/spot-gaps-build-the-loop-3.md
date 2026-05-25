@@ -14,7 +14,7 @@ requires:
     note: referenced as authoring-pattern template
 produces:
   - id: session-shaper-skill-draft
-    location: ~/.claude/skills/<student-named>/SKILL.md (personal, auto-discovered)
+    location: ~/.claude/skills/session-shaper/SKILL.md (personal, auto-discovered)
     consumed-by:
       - prompt:spot-gaps-build-the-loop-4
       - prompt:spot-gaps-build-the-loop-5
@@ -25,4 +25,4 @@ Interview me one question at a time. Cover: what the skill fires on (agent outpu
 
 Push back when my answer is generic. A judge that says "check if the output is good" is useless; a verifier that duplicates the existing test suite is noise. Codebase-specific and failure-specific.
 
-When you have enough, propose a skill name. Write `~/.claude/skills/<proposed-name>/SKILL.md`: frontmatter (name + description), then instructions. Show me before saving.
+When you have enough, write the skill to `~/.claude/skills/session-shaper/SKILL.md`: frontmatter (name `session-shaper` + description), then instructions. Show me before saving.

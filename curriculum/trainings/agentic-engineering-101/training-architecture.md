@@ -58,6 +58,8 @@ The **personal rules file** (`./CLAUDE.local.md`, gitignored) is the canonical w
 
 The **team rules file** (`./CLAUDE.md`, PR-reviewed) changes only when a rule is team-worthy enough to earn review. Rare by design. M1's compound exercise flags team-worthy rules separately so the engineer can open a PR against the team file outside the training.
 
+There is no company layer. Whether a company's shared conventions earn a file-backed home of their own, the way the personal and team layers already have, is an open question rather than a settled gap. The M4 closing lecture `will-company-memory-emerge.md` poses it and leaves it deliberately unresolved: this section stays the authority on what ships today, the lecture runs the debate, not the decision. The `memory` → `context` rename rides with the same question and is parked alongside it.
+
 ## Skills
 
 AE101 ships three curated skills in the content tarball (build whitelist `SKILLS=()` in `scripts/build-ae101-content-tarball.sh`):

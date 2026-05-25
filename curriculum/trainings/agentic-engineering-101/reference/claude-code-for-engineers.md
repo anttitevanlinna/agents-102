@@ -232,17 +232,17 @@ Docs: [Claude Code desktop → Connectors](https://code.claude.com/docs/en/deskt
 
 Four primitives. Pick by intent. Composes with any installed skill.
 
-**`/loop` — in-session recurring.** Two forms (live-verified 2026-05-14 against `code.claude.com/docs/en/scheduled-tasks`):
+**`/loop` — in-session recurring.** Two forms (re-verified 2026-05-25 against `code.claude.com/docs/en/scheduled-tasks`; the delivery-time scheduling-primitive recheck this date covers the Desktop and Routines blocks below too):
 - **Fixed interval:** `/loop 5m <prompt>` runs the prompt every 5 minutes while the session is open. Closes when you close the session.
 - **Self-paced:** `/loop <prompt>` (omit interval). Claude picks the cadence (1 min to 1 hour) based on activity — short waits while a build is finishing, longer waits when nothing is pending. Bare `/loop` (no prompt either) runs the built-in maintenance prompt at a dynamically chosen interval, or a `.claude/loop.md` if you've written one.
 
 Use for polling during a work block, watching a build, monitoring a long-running task's intermediate output, continuous polish on active work. *"Check the build every 5 minutes until it passes."* *"Re-run the verifier every 2 minutes on each new commit."* Ralph-style re-feed sits here.
 
-**Desktop scheduled tasks — local (the everyday choice).** Sidebar: **Schedule → New task → New local task.** Name, prompt, frequency. Runs on your laptop when the task fires; inherits your connectors automatically (no re-auth needed).
+**Desktop scheduled tasks — local (the everyday choice).** Sidebar: **Routines → New routine → choose Local.** Set the name, instructions, and schedule. Runs on your laptop when the task fires; uses your local config files and connectors.
 
 **Missed-run behavior:** if the laptop was asleep at scheduled time, Claude Code catches up **once** for the most recently missed slot (within a 7-day window). A daily task missed for three days runs once on wake, not three times. Encode time-awareness in the prompt if catch-up would misfire (*"only run if it's before 10:00am; otherwise report skipped"*).
 
-**Routines / `/schedule` — remote (Anthropic's cloud).** Run `/schedule daily PR review at 9am` in the CLI, or sidebar: **New task → New remote task.** Runs on Anthropic's infra regardless of your laptop. **Requires a cloud-based Git repo** as working directory — AE101's default assumption is a local repo, so Routines is out-of-scope for core modules. Flag for later if your org has cloud-Git workflows. CLI `/schedule` creates scheduled triggers only; API and GitHub triggers are web-only. No catch-up on wake (the cloud doesn't sleep).
+**Routines / `/schedule` — remote (Anthropic's cloud).** Run `/schedule daily PR review at 9am` in the CLI (a one-off like `/schedule tomorrow at 9am …` works too), or sidebar: **Routines → New routine → choose Remote.** Runs on Anthropic's infra regardless of your laptop, on Pro/Max/Team/Enterprise with Claude Code on the web enabled. **Requires a GitHub repo** as working directory (cloned fresh each run) — AE101's default assumption is a local repo, so Routines is out-of-scope for core modules. Flag for later if your org has cloud-Git workflows. CLI `/schedule` creates scheduled triggers only; API and GitHub-event triggers are web-only. No catch-up on wake (the cloud doesn't sleep).
 
 **`/goal <condition>` — condition-driven autonomy.** Set a verifiable completion condition. Claude keeps working turn after turn until the condition holds, then stops. Status with bare `/goal`, stop with `/goal clear`. The runtime evaluates the condition against what showed up in the transcript, so the condition has to be demonstrable in chat. *"All tests pass"* works. *"Code is optimised"* doesn't (too subjective). Different shape from the three above: not scheduled, not interval-driven, condition-driven. The runtime-shipped sibling of the verifier students author at Module 5. Verified live 2026-05-15 against Claude Code 2.1.142.
 

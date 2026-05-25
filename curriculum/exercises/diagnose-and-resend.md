@@ -18,9 +18,9 @@ Open a new Claude Code session in the M5 worktree at `../<repo>-m5` (set up at m
 
 ## Phase 1: Read the return
 
-Open a new Claude Code session in the M5 worktree (set up at module open). The M4 artefact lives in two places: the repo's git history (commits made by the M4 agent on the `m4/<slug>` branch, files modified, branch state, all visible from the worktree via git refs) and the M4 session transcript under `~/.claude/projects/`. Claude Code stores every session's scrollback there in a folder matching this repo. A fresh Claude can find and read it. File changes tell you *what* the agent did; the transcript tells you *how* it got there, including the drift and dead-ends.
+Open a new Claude Code session in the M5 worktree (set up at module open). The M4 artefact lives in two places: the repo's git history (commits made by the M4 agent on the `m4/<slug>` branch, files modified, branch state, all visible from the worktree via git refs) and the M4 session transcript whose path was recorded in `task.md` before the starting-point commit. File changes tell you *what* the agent did; the transcript tells you *how* it got there, including the drift and dead-ends.
 
-Ask Claude to find the previous session's transcript file.
+Ask Claude to read the recorded transcript path from `task.md`.
 
 {{prompt:diagnose-and-resend-1}}
 

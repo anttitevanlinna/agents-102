@@ -56,3 +56,7 @@ Subagents don't read CLAUDE.md. Prepend the canonical rule file to every launch:
 
 - **Session start:** read `memory/self-review-protocol.md` § *Core heuristics*.
 - **End of significant sessions:** run self-review per `memory/self-review-protocol.md`. Recurrence 3+ → hard rule or `check_*.md`.
+
+## Memory / compendium authoring
+
+**Sacrifice human readability for agent efficiency.** Applies to non-student-facing internal files: `memory/`, `memory/check_*.md`, `memory/compounded/`, `.claude/rules/`, SKILL.md bodies, internal CLAUDE.md tiers. Telegraphic shorthand, structural punctuation (→, =, ≥), drop "Pairs with #X" cross-references (all rules in context at generation time), drop "Originated from" anecdotes (live in compounded source files), drop "Canonical source:" trailers (date-slug in filename suffices). Every byte under these files is paid every session — earn it. Student-facing curriculum stays prose-shaped; that audience reads, not parses.

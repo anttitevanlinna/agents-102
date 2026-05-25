@@ -47,20 +47,20 @@
 ae101-m3-fork-quality-side Don't call AskUserQuestion. Do the worktree create and the CLAUDE.local.md copy as instructed. SKIP the .claude/memory/ copy — auto-memory actually lives at ~/.claude/projects/<encoded-cwd>/memory/ (home-keyed by absolute project path), so the in-repo copy is a no-op for this codebase. Report what you did in plain chat and stop. If you have observations about the memory location or other gaps, surface them in your reply (numbered) — I'll address them after the run if they're real, but don't block on me.
 
 # Phase B (security side): map → STRIDE → ADR (with approval) → auto-load Q.
-map-the-access-surface-2 The feature is described in the plan at /Users/anttitevanlinna/.claude/plans/m2-csweb-shared-instance-brisk-otter.md — read it first, then invoke the skill on what's described there. If a slightly different plan filename is present (same shape, different adjective-animal slug from a fresh M2 run), use that one and tell me which file you read.
+map-the-access-surface-2 Don't call AskUserQuestion. The feature is described in the plan at /Users/anttitevanlinna/.claude/plans/m2-csweb-shared-instance-brisk-otter.md — read it first, then invoke the skill on what's described there. If a slightly different plan filename is present (same shape, different adjective-animal slug from a fresh M2 run), use that one and tell me which file you read. Use your judgment; surface assumptions in chat.
 
-map-the-access-surface-3
+map-the-access-surface-3 Don't call AskUserQuestion. State your read in chat.
 
-map-the-access-surface-4 The existing show() handler in cmd/csweb/web.go reads raw file paths from request input — one of csweb's pre-existing TODOs. At localhost-only that was hand-wavy-safe; now that --bind 0.0.0.0 is on the table, the same handler is reachable from anywhere on the network with no auth. The skill called this out harder than I would have — I was modeling /api/search and the --bind flag as the new surface and missed that an existing handler with a known weakness becomes a fresh exposure the moment the trust boundary moves. The shared-instance deployment model elevates it because one teammate running `csweb --bind 0.0.0.0:2473` to share with the team now exposes every file the csweb process can read to anyone on the network.
+map-the-access-surface-4 Don't call AskUserQuestion. The existing show() handler in cmd/csweb/web.go reads raw file paths from request input — one of csweb's pre-existing TODOs. At localhost-only that was hand-wavy-safe; now that --bind 0.0.0.0 is on the table, the same handler is reachable from anywhere on the network with no auth. The skill called this out harder than I would have — I was modeling /api/search and the --bind flag as the new surface and missed that an existing handler with a known weakness becomes a fresh exposure the moment the trust boundary moves. The shared-instance deployment model elevates it because one teammate running `csweb --bind 0.0.0.0:2473` to share with the team now exposes every file the csweb process can read to anyone on the network.
 
-map-the-access-surface-5 The --bind flag itself reshapes the security model at runtime. The skill modeled the access surface as static (this binary, these endpoints, these handlers); it didn't model that the SAME binary serves two security regimes depending on the flag value — localhost-only is implicit trust, non-loopback is no auth + full filesystem read for anyone on the network. The map's findings are conditional on which mode is in effect. Codebase-specific because csweb is a Go binary with a flag-rebound listener, not a per-deployment-config web framework where the trust boundary is set by infra. The map should call out the flag's two modes as distinct surfaces, not collapse them.
+map-the-access-surface-5 Don't call AskUserQuestion. The --bind flag itself reshapes the security model at runtime. The skill modeled the access surface as static (this binary, these endpoints, these handlers); it didn't model that the SAME binary serves two security regimes depending on the flag value — localhost-only is implicit trust, non-loopback is no auth + full filesystem read for anyone on the network. The map's findings are conditional on which mode is in effect. Codebase-specific because csweb is a Go binary with a flag-rebound listener, not a per-deployment-config web framework where the trust boundary is set by infra. The map should call out the flag's two modes as distinct surfaces, not collapse them.
 
-threat-model-with-stride-1
+threat-model-with-stride-1 Don't call AskUserQuestion. State your STRIDE walk in chat.
 
-threat-model-with-stride-2
+threat-model-with-stride-2 Don't call AskUserQuestion. Use your judgment on the load-bearing pick; surface reasoning in chat.
 
-threat-model-with-stride-3
+threat-model-with-stride-3 Don't call AskUserQuestion. Show the ADR draft in chat; if you have shape questions (filename / numbering / scope) ask them as plain prose at the END of your reply and I'll answer in a follow-up before approval.
 
 * Yep. Just give it to me and save like you want it.
 
-threat-model-with-stride-4
+threat-model-with-stride-4 Don't call AskUserQuestion. Answer in chat as plain prose.

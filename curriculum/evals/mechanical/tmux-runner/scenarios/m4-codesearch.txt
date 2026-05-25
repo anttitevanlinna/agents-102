@@ -1,17 +1,24 @@
 # M4 (AE101) — Run the First Experiment. codesearch variant.
 # Driven by run-m4.sh with SCENARIO=this-file. Single session in
-# ~/Projects/codesearch on whatever branch M3 left HEAD (m1/codesearch-01).
+# ~/Projects/codesearch on whatever branch M3 left HEAD.
 # Carries forward M1's siftUp fix + CLAUDE.local.md, M2's plan, M3's
-# threat-model ADR (docs/adr/0001-gate-csweb-network-exposure-on-bind.md)
-# and the test-strategy skill at ~/.claude/skills/test-strategy/.
+# threat-model ADR (the agent picked the I-class headline today and
+# wrote docs/adr/0001-clamp-csweb-show-to-index-roots.md; the scenario
+# references the file by glob in T1's tail so future M3 runs that pick
+# a different ADR slug still resolve) and the namespaced
+# test-strategy-codesearch skill at ~/.claude/skills/.
 #
-# Task choice: implement the M3 ADR (--bind flag + --expose-without-auth
-# gate + show() path-clamping). Real, bounded, multi-file, several
-# subtle ambiguities (which address-classification predicate; symlink
-# handling on macOS; what the test-strategy skill carved out as
-# verify-by-hand vs unit-testable). Decoy is a /help page documenting
-# regex syntax — UX work, no live risk, obvious lower leverage after
-# the audit weighs the ADR exposure against a docs-page nice-to-have.
+# Task choice: implement the M3 ADR — clamp `/show` to ix.Roots() via
+# filepath.EvalSymlinks + separator-terminated prefix check (plus the
+# directory-listing path), with a failing traversal test as the first
+# csweb test in the repo. Real, bounded, multi-file, several subtle
+# ambiguities (symlink resolution on macOS case-insensitive FS; whether
+# to clamp at the read site or earlier; what counts as "outside the
+# roots" for an absolute Windows path; what the skill carved out as
+# verify-by-hand vs unit-testable). The ADR is explicit that auth is
+# OUT of scope (deferred next rung), so the M4 implementation is the
+# I-class filter only. Decoy is a /help page documenting regex syntax
+# — UX work, no live risk, obvious lower leverage after the audit.
 #
 # AUQ suppression discipline (per M3 run-1 post-mortem and the §27
 # sentinel-completion lesson): every prompt that could plausibly trigger
@@ -26,7 +33,7 @@
 # T1: scope + screen against two candidates. Tail provides both
 # candidates with file paths + scope estimate. Agent should pick the
 # security work after the leverage comparison.
-walk-and-send-off-1 Don't call AskUserQuestion — make the leverage call yourself and state your reasoning in chat. Candidates: (1) Implement the decision in docs/adr/0001-gate-csweb-network-exposure-on-bind.md — add a --bind host:port flag to csweb (today the listener is hard-coded to localhost:2473), and when the resolved bind is non-loopback, refuse to start unless the operator passes --expose-without-auth. Plus the amplifier the ADR names: clamp the show() handler's requested path to be inside one of ix.roots (the // TODO at cmd/csweb/web.go:179). Touches cmd/csweb/web.go, a new cmd/csweb/web_test.go (csweb has zero tests today — the test-strategy skill flags it as greenfield), README. About 30-60 min agent work. (2) Add a /help page to csweb that documents the supported RE2 regex syntax (anchors, character classes, (?i) flag, etc.), shows example queries, and lists the URL endpoints. Touches cmd/csweb/web.go (new handler + route), optionally cmd/csweb/_static/viewer.css for minor styling, README. UX improvement, ~30 min.
+walk-and-send-off-1 Don't call AskUserQuestion — make the leverage call yourself and state your reasoning in chat. Candidates: (1) Implement the decision in the most recent ADR under docs/adr/0001-*.md (the headline M3 wrote on this branch — it clamps the csweb `/show` handler to `ix.Roots()` via `filepath.EvalSymlinks` plus a separator-terminated prefix check, applied to both the file-read and the directory-listing paths; the `// TODO maybe trim file by ix.roots` at cmd/csweb/web.go:179 is exactly the spot). The ADR is the I-class filter only — auth is explicitly out of scope (deferred next rung), so don't build a gate or refuse non-loopback binds; build the clamp + the tests that defeat naive prefix matches (symlink escape, directory listing, separator-prefix collision). Touches cmd/csweb/web.go, a new cmd/csweb/web_test.go (csweb has zero tests today — the test-strategy skill flags it as greenfield), README. About 30-60 min agent work. (2) Add a /help page to csweb that documents the supported RE2 regex syntax (anchors, character classes, (?i) flag, etc.), shows example queries, and lists the URL endpoints. Touches cmd/csweb/web.go (new handler + route), optionally cmd/csweb/_static/viewer.css for minor styling, README. UX improvement, ~30 min.
 
 walk-and-send-off-2 Don't call AskUserQuestion — return the structured report in plain chat. The Agent-tool sub-task is fine to use as instructed; just keep the final report inline, not hidden behind a tool the runner can't answer.
 
@@ -61,4 +68,4 @@ ae101-m4-commit-starting-point Don't call AskUserQuestion. The task-slug for the
 # agent on the ADR + test-strategy carve-out so it doesn't drift into
 # building auth (out of scope per the ADR) or faking an httptest for
 # the non-loopback socket bind (the skill says verify-by-hand for that).
-ae101-m4-take-task-end-to-end I'm walking away. Don't call AskUserQuestion at any point during this run — the laptop is unattended and any question will hang for the full hour. When you hit an ambiguity, state your assumption in your working notes and proceed; surface anything genuinely unclear in your final summary at the end, not as an interactive question. Anchor points the test-strategy skill and the ADR already pin: the ADR (docs/adr/0001) is informed-consent, not authentication — don't build auth, build the gate. The skill's csweb section carves out `isExposed(bind) bool` as a pure function worth unit-testing while marking the non-loopback socket bind itself as verify-by-hand — follow that carve-out. Run `go test ./...` before declaring done. If you get stuck, write what you tried and why it didn't work in your final summary rather than inventing a way forward.
+ae101-m4-take-task-end-to-end I'm walking away. Don't call AskUserQuestion at any point during this run — the laptop is unattended and any question will hang for the full hour. When you hit an ambiguity, state your assumption in your working notes and proceed; surface anything genuinely unclear in your final summary at the end, not as an interactive question. Anchor points the test-strategy skill and the ADR already pin: the ADR (docs/adr/0001-*.md) is an I-class filter on /show, not authentication — don't build auth, build the clamp. The skill's csweb section carves out the path-clamp predicate as a pure function worth unit-testing (table-driven against ix.Roots()), while marking the socket bind itself as verify-by-hand — follow that carve-out. The cases that defeat a naive prefix clamp are symlink escape, directory listings (clamp the os.ReadDir path too, not only os.ReadFile), and separator-prefix collisions (e.g. `/srv/repo-evil` passing as a child of `/srv/repo`) — write tests for those first, then the fix. Run `go test ./...` before declaring done. If you get stuck, write what you tried and why it didn't work in your final summary rather than inventing a way forward.

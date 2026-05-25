@@ -240,9 +240,80 @@ The long send-off (`ae101-m4-take-task-end-to-end`, T6) runs autonomously up to 
 
 ---
 
-## M5 / M6 tasks (placeholder)
+## M5 task — review/iterate the M4 Filter+Lock send-off
 
-Design after M4 runs cleanly. M5 likely mirrors codesearch's shape: review M4's send-off through three failure-mode lenses (diagnose-and-resend), build a verifier shaped against the dominant failure, assemble reference.md + plan.md scoped to the same work, re-send packaged in a fresh session. M6 follows the same arc-retrospective + spot-gaps shape codesearch carries.
+Branch start: forks from M4's "M4 starting point" commit (`21cd099`) on `m4/implement-public-status`. The worktree lives at `../picoshare-m5` on branch `m5/implement-public-status`. M5 carries forward: CLAUDE.local.md compounded across M1–M4, `.claude/memory/` (the two M4 gap-fill files: `filter-lock-disclosure-test-active-link.md` + `guest-status-byte-budget-per-upload.md`), the test-strategy skill at `~/.claude/skills/test-strategy/`, `docs/adr/0001`, `task.md`.
+
+Scenarios: `tmux-runner/scenarios/m5.txt` (lemmings reference) + `tmux-runner/scenarios/m5-picoshare.txt`. Driven by `run-m5.sh` with `SCENARIO=` env override.
+
+**Why this task:** M4 sent off the M3 ADR's Filter+Lock implementation un-packaged. The work is uncommitted in `~/Projects/picoshare` at fork time (+531 lines across `handlers/guest_links.go`, `handlers/guest_links_test.go`, `handlers/routes.go`, `handlers/views.go`, `handlers/templates/pages/upload.html`, README). M5 reads that send-off through three failure-mode lenses, builds a verifier shaped against the dominant failure, assembles reference.md + plan.md scoped to the same Filter+Lock work, and re-sends packaged in a fresh session.
+
+The picoshare fork-from-starting-point is deliberate: the worktree does NOT carry M4's uncommitted implementation. M5 reviews what M4 *did* (read transcript + the uncommitted state via the original cwd) and produces packaging for a clean re-implementation. That re-run's artefacts are what M6 reads.
+
+**Phase A — worktree setup (`ae101-m5-worktree-setup`).** Runs in `~/Projects/picoshare`. Reads task.md's protected `Run coordinates` block (committed by M4 at `21cd099`), forks the worktree.
+
+**Phase B — diagnose-and-resend exercise.** Runs in the worktree. Six prompt-keys + canned reply literals + the `lock it in` literal. Likely failure-mode read for the M4 picoshare artefact:
+
+- **Goal drift** — usually weak in this send-off. The ADR's filter+lock distinction is sharp, and M4 anchored on it (the run-notes evidence + the in-scope memory files reinforce).
+- **Context rot** — possible if the agent re-derives the two-clock setup mid-run, drops the `mockClock`-and-far-future-`UrlExpires` discipline, and trips on `IsExpired()`'s real-clock reads.
+- **Plausible-but-wrong** — the highest-risk lens. `byte_budget_remaining` re-implemented as a draw-down pool (not per-upload cap); inactive precedence inverted (unlimited→null overrides cleared-to-0); Lock implemented as DTO-field-absence-only (no rendered-output negative assertion).
+
+**Phase B verifier shape (most likely):** shell-hook running `./dev-scripts/run-go-tests` plus a body-bytes grep on `/g/<id>` rendered HTML for forbidden tokens (a sentinel `Label` value + the field names `Label`, `Created`, `MaxFileLifetime`). Static check on `handlers/` for direct uses of `respondJSON(w, gl)` or template binds of raw `.GuestLinkMetadata.Label`. Verifier file location is student-picked — `.claude/hooks/`, a `verifier.sh` at worktree root, or a slash-command. The harness asserts tree-content advance during the save turn rather than a fixed path.
+
+**Phase B reference.md + plan.md.** Assembled in conversation, lock-in approval gates the writes. Reference scoped to the Filter+Lock work; plan.md is agent-mutable with tests-first phase, current-phase line, decisions log, and a what-didn't-work section. **Watch for:** reference rewriting `CLAUDE.local.md` content (the "reference-as-rewrite" failure mode), and reference accidentally relaxing the Lock requirement to DTO-field-absence-only.
+
+**Phase C — packaged re-send (`ae101-m5-rerun-packaged`).** Fresh session in the worktree. Up to 1h autonomous. Three-list final report (shipped / did NOT ship / verifier last-line).
+
+**AUQ risk surface in M5:**
+
+- Phase A (worktree-setup): if task.md's coordinates are missing or the "M4 starting point" commit message has been rewritten, the agent will want to ask. Tail tells it to surface the choice in chat and proceed.
+- Phase B turns 1–3: low risk; pure diagnosis reading.
+- Phase B turn 4 (verifier proposal): structurally interactive — body says *"Show me before saving."* Ask-and-wait pattern: tail forbids AUQ, canned reply approves the save.
+- Phase B turn 5 (smoke-test): may want to ask about edge-case inputs. Suppressed.
+- Phase B turn 6 (reference+plan grill): structurally interactive — body says *"grill me, three questions at a time."* Ask-and-wait pattern: tail forbids AUQ, canned reply answers the grill, `lock it in` literal triggers the file writes.
+- Phase C (re-send): highest AUQ risk — runs unattended up to 1h. Tail forbids AUQ across the run and tells the agent to record assumptions in plan.md's decisions-log section.
+
+---
+
+## M6 task — Spot gaps, build the loop + Arc retrospective (picoshare variant)
+
+**Runner.** `tmux-runner/run-m6.sh`. Single session in the M5 worktree (`--cwd ../picoshare-m5`). No fork. M6 reads, diagnoses, ships in place. Same structural template as `run-m4.sh` (single-session + state.json) plus `run-m1.sh`'s positional `key_seq` assertion dispatch.
+
+**Picoshare scenario.** `scenarios/m6-picoshare.txt`. Seven prompt-key turns + three literal turns (canned student-voice reply after T4 ask-and-wait + save-gate approval; save-approval literal after T7).
+
+Prompt sequence:
+1. `spot-gaps-build-the-loop-1` — diff M4 un-packaged vs M5 packaged across four dimensions (caught / missed / introduced / fix-home). Suppression-style AUQ tail; the reading is from disk.
+2. `spot-gaps-build-the-loop-2` — cut one stale rule from `./CLAUDE.local.md` (or stop if all hold).
+3. `spot-gaps-build-the-loop-primitives` — 5–10 atomic primitives + 2–3 ranked for dominant gap.
+4. `spot-gaps-build-the-loop-3` — author second skill through interview. Ask-and-wait (NOT suppression): Claude asks questions in chat as a numbered list and STOPs; canned student-voice reply turn follows; `* save it` literal is the SKILL.md write approval.
+5. `spot-gaps-build-the-loop-4` — critique before shipping.
+6. `spot-gaps-build-the-loop-5` — invoke skill by name on M5 packaged re-run, same-turn judgement.
+7. `arc-retrospective-1` — one-page arc note across M1–M6 artefacts; agent dispatches a fresh Agent-tool sub-task internally. `* looks good, save it where you proposed.` literal closes the save-gate.
+
+**Canned answers shape (T4 reply turn).** Picoshare-specific: the dominant gap is **Filter+Lock collapse** — during the M5 packaged re-run, the agent re-implementing from reference.md may treat the structural Filter (DTO projection) and behavioral Lock (negative-assertion test against rendered output) as redundant ("our DTO doesn't include Label — that IS the lock"). The skill picked: **judge** (qualitative — does the test actually assert against rendered bytes, or does it just rely on the DTO's structural absence?). Fires on the final summary + the test file diff; flags if no body-bytes grep is present, or if the test asserts only against the DTO's `json.Marshal` output rather than `httptest`-rendered `/g/<id>` body.
+
+The skill name: `filter-lock-judge` (or similar — agent's pick). It's a *different* skill from `verify-by-hand-judge` (which codesearch M6 already authored, and which is already at `~/.claude/skills/verify-by-hand-judge/`). The two coexist: `verify-by-hand-judge` audits whether the test-strategy skill's carve-outs were evidenced; `filter-lock-judge` audits whether the Filter+Lock pattern was both halves, not collapsed.
+
+**Per-turn assertions (key_seq):**
+1. Four-dim diff vocab + rank/dominant signal in scrollback.
+2. `CLAUDE.local.md` mtime advanced OR scrollback says "all rules hold / stop".
+3. Primitives menu vocab (`go test`, httptest, body-bytes grep, static grep, judge, verifier, ...).
+4. Interview/draft/save-gate vocab in scrollback. Hard file-existence check deferred to case 5.
+5. New skill exists at `~/.claude/skills/<name>/SKILL.md` since baseline AND scrollback has critique-shape vocab.
+6. Invoke + judgement vocab.
+7. Arc-note vocab + proposed destination.
+
+---
+
+## Next bugs (placeholder)
+
+When the M1 bug battery is established as repeatable, add candidates here. Possibilities the picoshare codebase offers:
+
+- `handlers/parse/*` edge cases (filename length, content-type mismatches).
+- `store/sqlite/file/writer.go` chunked-blob ring-buffer (the most subtle internal — `writer_test.go` is the deepest test today).
+- The garbage collector's 7-hour expiry tick — a real timing-shaped bug class.
+
+One bug per scenario. Resist the urge to chain.
 
 ---
 

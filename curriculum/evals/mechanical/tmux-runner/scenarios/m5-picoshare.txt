@@ -1,0 +1,87 @@
+# M5 (AE101) — Learn from the test, re-send packaged. picoshare variant.
+# Driven by run-m5.sh with SCENARIO=this-file. Same three-phase shape as
+# m5.txt (lemmings) and m5-codesearch.txt; picoshare-flavored tails.
+#
+# State when M5 starts:
+#   - main_cwd: ~/Projects/picoshare on branch m4/implement-public-status
+#     at HEAD 21cd099 ("M4 starting point" commit). Working tree DIRTY
+#     with M4's send-off implementation (handlers/guest_links.go +88,
+#     handlers/guest_links_test.go +345, handlers/routes.go +1,
+#     handlers/views.go +57, handlers/templates/pages/upload.html +21,
+#     README.md +19, plus RUN-NOTES.md untracked). go test ./... green.
+#   - task.md from M4 carries the M2 plan path + ADR path + the binding
+#     contract + the non-negotiable filter+lock requirement. The
+#     pre-cohort-todos [watch]: coordinates land at BOTTOM of task.md;
+#     this scenario doesn't paper over that — let it surface if it bites.
+#   - docs/adr/0001-scope-guest-link-public-status-response.md is the
+#     ADR M4's task was implementing; M5 reads/iterates the send-off.
+#   - ~/.claude/skills/test-strategy/ (picoshare-flavored) from M3.
+#
+# AUQ suppression: same discipline as m5.txt. Two ask-and-wait turns
+# (diagnose-and-resend-4 verifier approval, diagnose-and-resend-6 grill).
+# Tails on the long send-off (Phase C) anchor the agent on the ADR's
+# Filter+Lock + test-strategy carve-out same as m4-picoshare.txt did.
+
+# === PA: main-pane worktree setup ===
+# Phase A runs in ~/Projects/picoshare. The setup prompt reads task.md's
+# Run coordinates block, finds the m4/implement-public-status branch +
+# the "M4 starting point" commit on it (21cd099), forks the worktree at
+# ../picoshare-m5 on a new m5/implement-public-status branch.
+ae101-m5-worktree-setup Don't call AskUserQuestion. If task.md's Run coordinates block names a branch but the SHA fallback (an "M4 starting point" commit) is ambiguous, pick the commit whose message matches exactly and proceed; surface the choice in chat. Note: the worktree fork from M4's starting point will leave the M4 send-off's UNCOMMITTED implementation work behind in the original cwd — that's by design (M5 reviews and re-sends a packaged version, doesn't carry the un-packaged code forward). Don't try to be helpful by also copying uncommitted changes across.
+
+# === PB: exercise — diagnose, build, assemble ===
+
+# T1: read task.md run coordinates, print transcript path, confirm jsonl
+# exists.
+diagnose-and-resend-1 Don't call AskUserQuestion — if the coordinates block or jsonl is missing, say so in chat and stop; don't ask me which file you should read.
+
+# T2: read transcript + repo state on m4/implement-public-status, walk
+# three lenses with quoted moments. The send-off implementation is
+# uncommitted in the ORIGINAL repo, not the worktree — the worktree
+# forked from the M4 starting-point commit BEFORE the send-off ran. So
+# "repo state on the m4 branch" reads the branch's tip commit (= the
+# starting-point commit) plus the uncommitted send-off work that lives
+# back at ../picoshare. Suppress AUQ on this complication; agent should
+# read the transcript for the run's substance and surface the
+# dirty-original context as a finding.
+diagnose-and-resend-2 Don't call AskUserQuestion. The M4 send-off ran in the original cwd (../picoshare); its implementation work is uncommitted there, not on the m4/ branch tip. The transcript at the path in task.md's coordinates is the load-bearing artefact for the diagnosis — read it for drift, dead-ends, and what shipped vs what didn't. If the artefact looks thin under any lens, say so as a finding rather than asking me to point you elsewhere.
+
+# T3: validations walked backwards from each named failure.
+diagnose-and-resend-3 Don't call AskUserQuestion — pick your reading of the dominant failure and walk it; if you're torn between two readings, name both and pick one to proceed.
+
+# T4: verifier for dominant failure. Picoshare task = implement the
+# Filter+Lock per ADR-0001. Likely failure shapes are
+# plausible-but-wrong (Lock collapsed to DTO-field-absence-only; or
+# byte_budget_remaining treated as draw-down pool; or inactive
+# precedence inverted). Either way the verifier shape is likely a
+# shell-hook running `./dev-scripts/run-go-tests` + a body-bytes grep
+# on rendered `/g/<id>` HTML for a sentinel Label value + the field
+# names ("Label", "Created", "MaxFileLifetime"). Static grep on
+# handlers/ for `respondJSON(w, gl)` or `.GuestLinkMetadata.Label` is
+# the Filter half check. Ask-and-wait pattern.
+diagnose-and-resend-4 Don't call AskUserQuestion. Propose the verifier (script, prompt, or loop wrapper) in your reply (plain chat text). STOP before saving — don't write the file yet. I'll review and follow up with approval. After approval, save to the path you proposed. Pick the shape that matches YOUR diagnosed dominant failure, not the comfortable shape.
+
+* approved. save it to the path you proposed. proceed.
+
+# T5: smoke-test on PASS + FAIL synthetic inputs.
+diagnose-and-resend-5 Don't call AskUserQuestion — invent the two synthetic inputs yourself (one shaped to pass, one shaped to fail in the dominant-failure mode). Report what fired and what each input returned.
+
+# T6: reference.md + plan.md. Grill in chat (numbered, three at a time),
+# stop, canned reply answers, then 'lock it in' triggers writes.
+# Picoshare-specific answers: tests-first means writing the negative-
+# assertion test (body-bytes grep on rendered output for sentinel Label
+# value + field names) before any production code lands; the
+# test-strategy skill's carve-out (Playwright can't run on this host;
+# dev-build cross-targets linux/amd64) is the named gap, not a rule;
+# the two-clock setup (mockClock + far-future UrlExpires) is load-bearing.
+diagnose-and-resend-6 Don't call AskUserQuestion. Ask your three grill questions per round as a numbered list in your reply (plain chat text) and STOP — don't touch either file yet. I'll answer in a follow-up; ask the next three (or tell me ready) the same way. The 'lock it in' line will be a separate message when I'm ready to approve the writes.
+
+* answers: 1) reference.md and plan.md both at the worktree root, next to task.md and docs/adr/0001. 2) success criteria scoped to ADR-0001 Filter+Lock: GET /api/guest-links/{id}/public-status returns the four-field DTO (uploads_remaining, expires_at, byte_budget_remaining, is_active); the server-rendered status panel renders on /g/{id} for active links; the negative-assertion test asserts that a sentinel Label value AND the field names "Label"/"Created"/"MaxFileLifetime" appear in NEITHER the JSON body NOR the rendered panel HTML (body-bytes grep, NOT just DTO-field-absence); inactive precedence clears counters to pointer-to-0 over unlimited→null; byte_budget_remaining is the per-upload cap, not an aggregate pool; `./dev-scripts/run-go-tests` green. The ADR is filter+lock, not auth and not rate-limit — both were rejected in the ADR's alternatives section. 3) tests-first phase: failing negative-assertion test BEFORE the production handler/template land. test-strategy skill's carve-out (Playwright doesn't run on this host — dev build cross-targets linux/amd64 and omits osusergo on macOS) means browser-driven panel rendering is verify-by-hand, evidenced in RUN-NOTES.md via a real-binary smoke test (curl + browser inspection) — name that gap in the reference rather than pretending it's covered. 4) decisions log append-only one line per load-bearing choice (which sentinel Label value for the lock test; how to seed the two-clock setup; whether to extend handlers/guest_links.go or split a new file). 5) what-didn't-work empty at start; agent appends as it goes. anything else, use your judgement.
+
+* lock it in
+
+# === PC: packaged re-send (fresh session in worktree) ===
+# The long autonomous send-off. Same AUQ-and-anchor tail discipline as
+# the M4 picoshare send-off — runs up to 1h unattended, every ambiguity
+# would hang the runner.
+ae101-m5-rerun-packaged I'm walking away. Don't call AskUserQuestion at any point during this run — any question hangs the run for the full hour. When you hit an ambiguity, state your assumption in plan.md's decisions-log section and proceed; surface anything genuinely unclear in your final three-list report at the end. Anchor points the reference + plan.md should already pin: the ADR (docs/adr/0001) is Filter+Lock — explicit DTO projection PLUS a negative-assertion test against the rendered output, NOT auth and NOT rate-limit (both rejected in the ADR's alternatives). The Lock half asserts that the sentinel Label value AND the field names "Label"/"Created"/"MaxFileLifetime" appear in NEITHER the JSON body NOR the rendered panel HTML — body-bytes/HTML grep, not "field absent from DTO" (filter masquerading as lock is the easy mistake). The test-strategy skill's picoshare section carves out browser-driven panel rendering as verify-by-hand (Playwright dev-build doesn't compile on macOS); the panel-text assertions go in handlers_test via httptest. Two-clock setup is load-bearing — far-future UrlExpires AND a mockClock set a known interval before it. Run `./dev-scripts/run-go-tests` and the verifier per plan.md cadence before declaring done; Nix is not installed here so skip `nix flake check`. If you get stuck, write it into RUN-NOTES.md and try a different angle rather than asking.

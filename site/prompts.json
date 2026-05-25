@@ -5,7 +5,20 @@
     "context": "",
     "runtime": "any",
     "origin": "agents-101/getting-going",
-    "text": "Spawn a subagent to give an unbiased read on `module-1/site.html`. The subagent should read it cold, with no memory of building it.\n\nHave the subagent answer:\n1. Quote the one line that feels most uniquely this person (not the best line, the most UNIQUELY them).\n2. Quote the most generic line that could be copy-pasted from anyone's site."
+    "text": "Spawn a subagent to give an unbiased read on `module-1/site.html`. The subagent should read it cold, with no memory of building it.\n\nHave the subagent answer:\n1. Quote the one line that feels most uniquely this person (not the best line, the most UNIQUELY them).\n2. Quote the most generic line that could be copy-pasted from anyone's site.",
+    "requires": [
+      {
+        "id": "m1-site",
+        "source": "module:getting-going"
+      }
+    ],
+    "produces": [
+      {
+        "id": "m1-site-cold-read",
+        "location": "scrollback",
+        "note": "chat-only diagnostic (subagent cold read); not persisted"
+      }
+    ]
   },
   "a101-m1-debrief-rules-retro": {
     "key": "a101-m1-debrief-rules-retro",
@@ -13,7 +26,20 @@
     "context": "",
     "runtime": "any",
     "origin": "agents-101/getting-going",
-    "text": "Start by reading the file. No plan or preamble.\n\nRead `module-1/personal-brand-generation.md`. Then re-read what we did building the site. Run a retro: which moves landed, which fell flat, where context broke through, where the output stayed generic. Compare the rules file to the actual work. Sort each rule into keep, sharpen, or drop. What's missing the rules should have caught? Find what's still surface; don't defend the file as-is.\n\nAssume the rules file is at least 30% wrong or thin. Find that 30%. If fewer than two rules get dropped or substantially rewritten, say why before you proceed.\n\nThen overwrite `module-1/personal-brand-generation.md` with the retro applied. Sharpen what's weak. Add what's missing. Drop what's wrong. Rewrite the file in place; don't append a \"retro notes\" section.\n\nWhen you're done, list:\n- dropped: rule text + reason\n- sharpened: before -> after\n- added: rule text + why the session needed it\n- still uncertain: anything the rules should cover but you want me to weigh in on first"
+    "text": "Start by reading the file. No plan or preamble.\n\nRead `module-1/personal-brand-generation.md`. Then re-read what we did building the site. Run a retro: which moves landed, which fell flat, where context broke through, where the output stayed generic. Compare the rules file to the actual work. Sort each rule into keep, sharpen, or drop. What's missing the rules should have caught? Find what's still surface; don't defend the file as-is.\n\nAssume the rules file is at least 30% wrong or thin. Find that 30%. If fewer than two rules get dropped or substantially rewritten, say why before you proceed.\n\nThen overwrite `module-1/personal-brand-generation.md` with the retro applied. Sharpen what's weak. Add what's missing. Drop what's wrong. Rewrite the file in place; don't append a \"retro notes\" section.\n\nWhen you're done, list:\n- dropped: rule text + reason\n- sharpened: before -> after\n- added: rule text + why the session needed it\n- still uncertain: anything the rules should cover but you want me to weigh in on first",
+    "requires": [
+      {
+        "id": "m1-brand-rules",
+        "source": "module:getting-going"
+      }
+    ],
+    "produces": [
+      {
+        "id": "m1-brand-rules",
+        "location": "module-1/personal-brand-generation.md (overwrite in place)",
+        "note": "retro applied in place; module-scoped, not read by later modules"
+      }
+    ]
   },
   "a101-m2-debrief-claude-md": {
     "key": "a101-m2-debrief-claude-md",
@@ -21,7 +47,29 @@
     "context": "",
     "runtime": "any",
     "origin": "agents-101/building-agent-systems",
-    "text": "Review this session and write the first version of CLAUDE.md at the training-directory root. The evidence: ./challenge.md, every file in sources/ (scan titles + first lines), every file in memory/, and our conversation.\n\nThe rules file governs how agents behave in this directory from now on — how memory gets compiled, how sources are treated, what claims require citations, what counts as \"specific to my challenge\" vs. generic. Don't invent — extract. Every rule you write should be traceable to a specific moment in the session where the rule either helped or would have helped.\n\nStructure however makes sense for how we actually worked today — section headers, short paragraphs, bullets where a list is clearest. No retro-notes framing; write the rules as if they'd always been the rules. Cover at minimum: the memory (when and how pages get written, what grounds them), the sources (what they are, whether they're editable), the agents (how they relate to the memory), and whatever else earned its place.\n\nWhen you're done, tell me in 3–5 lines: the rules you wrote, which session moments grounded each one, and what you chose NOT to include and why. Be specific on the omissions: name at least one session moment where you considered a rule and skipped it, and the reason. I shouldn't have to open the file to know what's in it."
+    "text": "Review this session and write the first version of CLAUDE.md at the training-directory root. The evidence: ./challenge.md, every file in sources/ (scan titles + first lines), every file in memory/, and our conversation.\n\nThe rules file governs how agents behave in this directory from now on — how memory gets compiled, how sources are treated, what claims require citations, what counts as \"specific to my challenge\" vs. generic. Don't invent — extract. Every rule you write should be traceable to a specific moment in the session where the rule either helped or would have helped.\n\nStructure however makes sense for how we actually worked today — section headers, short paragraphs, bullets where a list is clearest. No retro-notes framing; write the rules as if they'd always been the rules. Cover at minimum: the memory (when and how pages get written, what grounds them), the sources (what they are, whether they're editable), the agents (how they relate to the memory), and whatever else earned its place.\n\nWhen you're done, tell me in 3–5 lines: the rules you wrote, which session moments grounded each one, and what you chose NOT to include and why. Be specific on the omissions: name at least one session moment where you considered a rule and skipped it, and the reason. I shouldn't have to open the file to know what's in it.",
+    "requires": [
+      {
+        "id": "challenge-md",
+        "source": "module:building-agent-systems"
+      },
+      {
+        "id": "working-tree-scaffold",
+        "source": "prompt:a101-prework-extract-tarball"
+      }
+    ],
+    "produces": [
+      {
+        "id": "root-claude-md",
+        "location": "./CLAUDE.md",
+        "consumed-by": [
+          "prompt:a101-m3-debrief-handoff-rules",
+          "prompt:a101-m4-debrief-security-rules",
+          "prompt:a101-m5-debrief-groundedness-rules",
+          "module:agents-building-agents"
+        ]
+      }
+    ]
   },
   "a101-m3-debrief-handoff-rules": {
     "key": "a101-m3-debrief-handoff-rules",
@@ -29,7 +77,24 @@
     "context": "",
     "runtime": "any",
     "origin": "agents-101/multi-agent-systems",
-    "text": "Start by reading the files. No plan or preamble.\n\nReview this session and update the rules. Read CLAUDE.md at the root, then scan what we just produced: agents/, sources/, module-3/. Audit harshly. Diplomatic summaries are a failing grade here. Look back over the session: where did agents step on each other, where did context get dropped at a handoff, where did one retriever's dialect leak into the synthesizer, where did the three stances collapse into a single voice, where did one agent need to be two (or two to be one)?\n\nThen rewrite CLAUDE.md. Integrate, don't append. Sharpen the rules that govern division of work and handoff shape: what each agent is for, what it writes to, what it does NOT do. Add what's missing, remove what turned out wrong. Don't add a \"retro notes\" section; rewrite the file as the better version.\n\nWhen you're done, tell me in 3-5 lines: what you added, what you sharpened, what you removed, and why. Name at least TWO handoff seams where the rules wobbled, with specific evidence: name the file, the pass, and what was lost. Name one thing you would have missed without the \"audit harshly\" instruction. A seam without evidence doesn't count."
+    "text": "Start by reading the files. No plan or preamble.\n\nReview this session and update the rules. Read CLAUDE.md at the root, then scan what we just produced: agents/, sources/, module-3/. Audit harshly. Diplomatic summaries are a failing grade here. Look back over the session: where did agents step on each other, where did context get dropped at a handoff, where did one retriever's dialect leak into the synthesizer, where did the three stances collapse into a single voice, where did one agent need to be two (or two to be one)?\n\nThen rewrite CLAUDE.md. Integrate, don't append. Sharpen the rules that govern division of work and handoff shape: what each agent is for, what it writes to, what it does NOT do. Add what's missing, remove what turned out wrong. Don't add a \"retro notes\" section; rewrite the file as the better version.\n\nWhen you're done, tell me in 3-5 lines: what you added, what you sharpened, what you removed, and why. Name at least TWO handoff seams where the rules wobbled, with specific evidence: name the file, the pass, and what was lost. Name one thing you would have missed without the \"audit harshly\" instruction. A seam without evidence doesn't count.",
+    "requires": [
+      {
+        "id": "root-claude-md",
+        "source": "prompt:a101-m2-debrief-claude-md"
+      },
+      {
+        "id": "m3-agent-work",
+        "source": "module:multi-agent-systems"
+      }
+    ],
+    "produces": [
+      {
+        "id": "root-claude-md",
+        "location": "./CLAUDE.md (integrate in place)",
+        "note": "sharpens division-of-work + handoff rules on the M2 file"
+      }
+    ]
   },
   "a101-m3-homework-memory-health": {
     "key": "a101-m3-homework-memory-health",
@@ -37,7 +102,20 @@
     "context": "",
     "runtime": "any",
     "origin": "agents-101/multi-agent-systems",
-    "text": "Look at memory/ and sources/ against this module's fresh retrievals. Check overall health: coverage gaps the retrievers exposed, pages now stale, structure still serving the challenge. Name at least one drop candidate; an all-green health check means you didn't look hard enough. Restructure if deemed needed (rename, merge, split, drop). Show me what you'd do before changing files."
+    "text": "Look at memory/ and sources/ against this module's fresh retrievals. Check overall health: coverage gaps the retrievers exposed, pages now stale, structure still serving the challenge. Name at least one drop candidate; an all-green health check means you didn't look hard enough. Restructure if deemed needed (rename, merge, split, drop). Show me what you'd do before changing files.",
+    "requires": [
+      {
+        "id": "m3-agent-work",
+        "source": "module:multi-agent-systems"
+      }
+    ],
+    "produces": [
+      {
+        "id": "memory-health-plan",
+        "location": "scrollback (shown before files change)",
+        "note": "restructures memory/ + sources/ after approval"
+      }
+    ]
   },
   "a101-m4-debrief-security-rules": {
     "key": "a101-m4-debrief-security-rules",
@@ -45,7 +123,25 @@
     "context": "",
     "runtime": "any",
     "origin": "agents-101/security",
-    "text": "Start by reading the files. No plan or preamble.\n\nReview this session and compound 1-5 security operating rules into the agent system. Read the root ./CLAUDE.md if it exists. Read outputs/policy-report-raw.md if it exists, outputs/policy-report.md, and outputs/security-report.md. Look back over the session: which rows should future sessions remember, which \"I can't tell\" rows need standing evidence checks, where did the mitigation reduce one risk but shift another, and what residuals should future sessions not forget?\n\nBe harsher than feels right. Security rules that sound generally wise but do not name a concrete trigger, file, report row, or residual do not count.\n\nThen update ./CLAUDE.md as the durable operating memory for this agent system. Add or sharpen 1-5 short security rules that future sessions should load before working with this system: what to check, what not to touch, when to run the reusable security check, or which residuals from outputs/security-report.md must stay visible. Integrate them into the right section if one exists; otherwise create a short section named \"Security operating rules\". Do not edit the skill files. Do not paste an audit summary. Do not add a retro section. Do not remove or restructure any existing sections outside Security operating rules. Each rule should be usable by a future agent that never saw this session.\n\nWhen you're done, read back the Security operating rules section and copy the exact rule text you changed or added. Then tell me in 1-5 lines: which report row or residual drove each rule, what future agents must do differently, and what risk remains even after the mitigation."
+    "text": "Start by reading the files. No plan or preamble.\n\nReview this session and compound 1-5 security operating rules into the agent system. Read the root ./CLAUDE.md if it exists. Read outputs/policy-report-raw.md if it exists, outputs/policy-report.md, and outputs/security-report.md. Look back over the session: which rows should future sessions remember, which \"I can't tell\" rows need standing evidence checks, where did the mitigation reduce one risk but shift another, and what residuals should future sessions not forget?\n\nBe harsher than feels right. Security rules that sound generally wise but do not name a concrete trigger, file, report row, or residual do not count.\n\nThen update ./CLAUDE.md as the durable operating memory for this agent system. Add or sharpen 1-5 short security rules that future sessions should load before working with this system: what to check, what not to touch, when to run the reusable security check, or which residuals from outputs/security-report.md must stay visible. Integrate them into the right section if one exists; otherwise create a short section named \"Security operating rules\". Do not edit the skill files. Do not paste an audit summary. Do not add a retro section. Do not remove or restructure any existing sections outside Security operating rules. Each rule should be usable by a future agent that never saw this session.\n\nWhen you're done, read back the Security operating rules section and copy the exact rule text you changed or added. Then tell me in 1-5 lines: which report row or residual drove each rule, what future agents must do differently, and what risk remains even after the mitigation.",
+    "requires": [
+      {
+        "id": "root-claude-md",
+        "source": "prompt:a101-m2-debrief-claude-md",
+        "conditional": "m2-completed"
+      },
+      {
+        "id": "security-reports",
+        "source": "module:security"
+      }
+    ],
+    "produces": [
+      {
+        "id": "root-claude-md",
+        "location": "./CLAUDE.md (Security operating rules section)",
+        "note": "adds/sharpens 1-5 security rules in place"
+      }
+    ]
   },
   "a101-m5-debrief-groundedness-rules": {
     "key": "a101-m5-debrief-groundedness-rules",
@@ -53,7 +149,29 @@
     "context": "",
     "runtime": "any",
     "origin": "agents-101/output-quality",
-    "text": "Start by reading the files. No plan or preamble.\n\nReview this session and update the root `./CLAUDE.md` with groundedness operating rules. Read `./CLAUDE.md` if it exists, then scan `module-5/evidence-roster.md`, `module-5/claim-pool.md`, `module-5/adjudicated-claims.md`, `module-5/detectors/` (the four detector outputs), `module-5/scoreboard.md`, and `judges/groundedness-judge.md`.\n\nLook back over the session: when did ungroundedness matter, which claim-shapes needed checking, where did citations look present but not load-bearing, and what should future agents know before they turn a briefing, memo, recommendation, or proposed action into something people rely on?\n\nThen update `./CLAUDE.md` as the durable operating memory for this agent system. Add or sharpen 1-4 short rules that tell future sessions when and how to run groundedness checks: what kinds of output need checking, which evidence surface to use, when to run `judges/groundedness-judge.md`, and when to say \"not enough evidence\" instead of smoothing over the gap. If a Groundedness checks section already exists, edit the rules in that section in place; do not add a new subheading or parallel list. Otherwise create a short section named \"Groundedness checks\". Touch ONLY that section; preserve every other section verbatim. Do not paste a benchmark summary. Do not add a retro section. Each rule should be usable by a future agent that never saw this session.\n\nWhen you're done, read back the Groundedness checks section you just wrote and confirm each rule is in the file. Copy the exact rule text, one line per rule. Then tell me in 1-5 lines: what changed in `./CLAUDE.md`, which scoreboard row or adjudicated claim drove it, what future agents must do differently, and which claim shape you are LEAST confident you caught correctly. Then name the two patterns this prompt enforced: one about which boundary you were allowed to touch, one about checking what landed after you wrote it."
+    "text": "Start by reading the files. No plan or preamble.\n\nReview this session and update the root `./CLAUDE.md` with groundedness operating rules. Read `./CLAUDE.md` if it exists, then scan `module-5/evidence-roster.md`, `module-5/claim-pool.md`, `module-5/adjudicated-claims.md`, `module-5/detectors/` (the four detector outputs), `module-5/scoreboard.md`, and `judges/groundedness-judge.md`.\n\nLook back over the session: when did ungroundedness matter, which claim-shapes needed checking, where did citations look present but not load-bearing, and what should future agents know before they turn a briefing, memo, recommendation, or proposed action into something people rely on?\n\nThen update `./CLAUDE.md` as the durable operating memory for this agent system. Add or sharpen 1-4 short rules that tell future sessions when and how to run groundedness checks: what kinds of output need checking, which evidence surface to use, when to run `judges/groundedness-judge.md`, and when to say \"not enough evidence\" instead of smoothing over the gap. If a Groundedness checks section already exists, edit the rules in that section in place; do not add a new subheading or parallel list. Otherwise create a short section named \"Groundedness checks\". Touch ONLY that section; preserve every other section verbatim. Do not paste a benchmark summary. Do not add a retro section. Each rule should be usable by a future agent that never saw this session.\n\nWhen you're done, read back the Groundedness checks section you just wrote and confirm each rule is in the file. Copy the exact rule text, one line per rule. Then tell me in 1-5 lines: what changed in `./CLAUDE.md`, which scoreboard row or adjudicated claim drove it, what future agents must do differently, and which claim shape you are LEAST confident you caught correctly. Then name the two patterns this prompt enforced: one about which boundary you were allowed to touch, one about checking what landed after you wrote it.",
+    "requires": [
+      {
+        "id": "root-claude-md",
+        "source": "prompt:a101-m2-debrief-claude-md",
+        "conditional": "m2-completed"
+      },
+      {
+        "id": "m5-evidence-artifacts",
+        "source": "module:output-quality"
+      },
+      {
+        "id": "groundedness-judge",
+        "source": "module:output-quality"
+      }
+    ],
+    "produces": [
+      {
+        "id": "root-claude-md",
+        "location": "./CLAUDE.md (Groundedness checks section)",
+        "note": "adds/sharpens 1-4 groundedness rules in place"
+      }
+    ]
   },
   "a101-m6-debrief-tactic-sharpen": {
     "key": "a101-m6-debrief-tactic-sharpen",
@@ -61,7 +179,28 @@
     "context": "",
     "runtime": "any",
     "origin": "agents-101/evaluations",
-    "text": "Start by reading the files. No plan or preamble.\n\nReview this session and sharpen the generator's tactic beyond what the loop reached. Read ./generation-tactic.md in its current state, then scan module-6/runs/ and module-6/eval-notes.md. The judge file at judges/groundedness-judge.md did not move; that is the integrity of the loop. Look back over the session: which tactic change helped, which one did not help and should be removed or rewritten, what specific boundary case did the loop never test, where did the generator keep missing the same thing across multiple rounds, and what did the judge flag that the tactic never absorbed?\n\nBe harsher than feels comfortable. If a rule is vague, say so by name. If a rule fired on the wrong thing, name what it fired on.\n\nThen overwrite ./generation-tactic.md in place. Do not create a new version. Integrate, don't append. Add the tactic rule the loop never reached, sharpen a rule that stayed too vague, remove a rule that fired on the wrong thing. A removal means the rule is gone from the file, not renamed or scoped; if you scoped it instead, say so and why. The tactic file is infrastructure now. Every rule should name the failure class it pre-empts. Don't add a \"retro notes\" section; rewrite the file as the better version.\n\nWhen you're done, tell me in 3-5 lines: what you added, what you sharpened, what you removed, and why, grounded in specific rounds. Name one boundary case the next run should test."
+    "text": "Start by reading the files. No plan or preamble.\n\nReview this session and sharpen the generator's tactic beyond what the loop reached. Read ./generation-tactic.md in its current state, then scan module-6/runs/ and module-6/eval-notes.md. The judge file at judges/groundedness-judge.md did not move; that is the integrity of the loop. Look back over the session: which tactic change helped, which one did not help and should be removed or rewritten, what specific boundary case did the loop never test, where did the generator keep missing the same thing across multiple rounds, and what did the judge flag that the tactic never absorbed?\n\nBe harsher than feels comfortable. If a rule is vague, say so by name. If a rule fired on the wrong thing, name what it fired on.\n\nThen overwrite ./generation-tactic.md in place. Do not create a new version. Integrate, don't append. Add the tactic rule the loop never reached, sharpen a rule that stayed too vague, remove a rule that fired on the wrong thing. A removal means the rule is gone from the file, not renamed or scoped; if you scoped it instead, say so and why. The tactic file is infrastructure now. Every rule should name the failure class it pre-empts. Don't add a \"retro notes\" section; rewrite the file as the better version.\n\nWhen you're done, tell me in 3-5 lines: what you added, what you sharpened, what you removed, and why, grounded in specific rounds. Name one boundary case the next run should test.",
+    "requires": [
+      {
+        "id": "generation-tactic",
+        "source": "module:evaluations"
+      },
+      {
+        "id": "m6-run-artifacts",
+        "source": "module:evaluations"
+      },
+      {
+        "id": "groundedness-judge",
+        "source": "module:output-quality"
+      }
+    ],
+    "produces": [
+      {
+        "id": "generation-tactic",
+        "location": "./generation-tactic.md (overwrite in place)",
+        "note": "integrates the tactic rule the loop never reached; judge file untouched"
+      }
+    ]
   },
   "a101-m7-debrief-sharing-artifact": {
     "key": "a101-m7-debrief-sharing-artifact",
@@ -69,7 +208,20 @@
     "context": "",
     "runtime": "any",
     "origin": "agents-101/personal-to-team",
-    "text": "Start by identifying the file path. No plan or preamble.\n\nReview this session and sharpen the sharing artifact. Read everything in module-7/ (jtbd, branch, absorption-bottleneck, technical-plan, people-plan, assumptions, failure-stories, monday) and identify which single file is the sharing artifact itself (the skill file, the interface spec, the output schedule, the context export, whichever pattern I picked produces the thing the teammate actually touches). Confirm the file path in one line before rewriting. Then look back over the session: where did the teammate's job-to-be-done stay unnamed or too abstract, where does the artifact leak more than the teammate needs (over-shared) or less than they can use (under-shared), where is the people plan thin (no name, no owner, no handoff), which assumption would have to be true for this to land and isn't? Be harsher than feels polite. If the people plan had no names, say so plainly.\n\nThen rewrite the sharing artifact. Overwrite the file in place at its current path in module-7/; do not create a separate version. Integrate, don't append. Name the teammate's job explicitly at the top, tighten the surface area so it fits the job (not your whole system), add the one line the people plan needed. Keep the edge in the critique; the gap between people plan and real ownership is the message, not something to soften. Don't add a \"retro notes\" section; rewrite the file as the better version.\n\nAfter the rewrite, when I push back on something specific, use Edit on the section I'm pushing back on, not Write on the whole file. Don't re-rewrite the whole artifact unless I say 'rewrite from scratch.'\n\nWhen you're done, tell me in 3-5 lines: which file you rewrote, what you added, what you sharpened, what you removed, and why. For each claimed change, quote the before-and-after line or section header so I can confirm it landed. If you cannot quote the before-line, do not claim the change. Name the one assumption the artifact still depends on."
+    "text": "Start by identifying the file path. No plan or preamble.\n\nReview this session and sharpen the sharing artifact. Read everything in module-7/ (jtbd, branch, absorption-bottleneck, technical-plan, people-plan, assumptions, failure-stories, monday) and identify which single file is the sharing artifact itself (the skill file, the interface spec, the output schedule, the context export, whichever pattern I picked produces the thing the teammate actually touches). Confirm the file path in one line before rewriting. Then look back over the session: where did the teammate's job-to-be-done stay unnamed or too abstract, where does the artifact leak more than the teammate needs (over-shared) or less than they can use (under-shared), where is the people plan thin (no name, no owner, no handoff), which assumption would have to be true for this to land and isn't? Be harsher than feels polite. If the people plan had no names, say so plainly.\n\nThen rewrite the sharing artifact. Overwrite the file in place at its current path in module-7/; do not create a separate version. Integrate, don't append. Name the teammate's job explicitly at the top, tighten the surface area so it fits the job (not your whole system), add the one line the people plan needed. Keep the edge in the critique; the gap between people plan and real ownership is the message, not something to soften. Don't add a \"retro notes\" section; rewrite the file as the better version.\n\nAfter the rewrite, when I push back on something specific, use Edit on the section I'm pushing back on, not Write on the whole file. Don't re-rewrite the whole artifact unless I say 'rewrite from scratch.'\n\nWhen you're done, tell me in 3-5 lines: which file you rewrote, what you added, what you sharpened, what you removed, and why. For each claimed change, quote the before-and-after line or section header so I can confirm it landed. If you cannot quote the before-line, do not claim the change. Name the one assumption the artifact still depends on.",
+    "requires": [
+      {
+        "id": "m7-artifacts",
+        "source": "module:personal-to-team"
+      }
+    ],
+    "produces": [
+      {
+        "id": "m7-sharing-artifact",
+        "location": "module-7/<chosen-file> (overwrite in place)",
+        "note": "rewrites whichever module-7 file is the sharing artifact; Edit-on-pushback"
+      }
+    ]
   },
   "a101-m8-debrief-flywheel-sharpen": {
     "key": "a101-m8-debrief-flywheel-sharpen",
@@ -77,7 +229,20 @@
     "context": "",
     "runtime": "any",
     "origin": "agents-101/agents-building-agents",
-    "text": "Start by identifying the file path. No plan or preamble.\n\nReview this session and sharpen the file that carried the most weight — most likely the strategy kernel, agent set, plan, or central synthesizer's rules, whichever governed how the agents argued and selected. Identify the file path and confirm in one line before rewriting; overwrite in place, do not create a parallel version. Then scan the shared deliberation folder: challenge, context manifests, stances, cross-checks, proposals, selection-board, midway-instructions, critiques, pushback, kernel, agent-set, plan. Identify which synthesizer-injected midpoint instructions actually changed later agent behavior.\n\nLook back over the session: surface at least two flywheel stalls (an agent waiting on another that never finished), at least one under-specified role (so two agents played it or none did), and at least one proposal the room converged on too fast — name which proposal and which agent could have pushed back but didn't. Where did a critique land and change a selection? Where did the plan invent a dependency that could actually run concurrently (capture that as a rule)? What did the session fail to decide, and why?\n\nThen rewrite the file. If you are uncertain which file carried the most weight, default to the central synthesizer rules file; do not pause. Integrate, don't append. Add the role that was underspec'd, sharpen the rule for how pushback forces a stance-update, remove a rule that made agents defer when they should have argued. Preserve any rule not directly contradicted by session evidence. Don't add a \"retro notes\" section; rewrite the file as the better version. Do not close every loop — some of what didn't resolve should stay open, named.\n\nAfter the rewrite, when I push back on something specific, use Edit on the section I'm pushing back on, not Write on the whole file. Don't re-rewrite the whole file unless I say 'rewrite from scratch.'\n\nWhen you're done, tell me in 3-5 lines: which file you rewrote, what you added, what you sharpened, what you removed, and why. For each claimed change, quote the before-and-after line or section header so I can confirm it landed. Name which critique was raised but not acted on, and which file's rules directly contradicted what happened. If you think every critique was acted on, quote the evidence. Name one thing the session genuinely didn't resolve."
+    "text": "Start by identifying the file path. No plan or preamble.\n\nReview this session and sharpen the file that carried the most weight — most likely the strategy kernel, agent set, plan, or central synthesizer's rules, whichever governed how the agents argued and selected. Identify the file path and confirm in one line before rewriting; overwrite in place, do not create a parallel version. Then scan the shared deliberation folder: challenge, context manifests, stances, cross-checks, proposals, selection-board, midway-instructions, critiques, pushback, kernel, agent-set, plan. Identify which synthesizer-injected midpoint instructions actually changed later agent behavior.\n\nLook back over the session: surface at least two flywheel stalls (an agent waiting on another that never finished), at least one under-specified role (so two agents played it or none did), and at least one proposal the room converged on too fast — name which proposal and which agent could have pushed back but didn't. Where did a critique land and change a selection? Where did the plan invent a dependency that could actually run concurrently (capture that as a rule)? What did the session fail to decide, and why?\n\nThen rewrite the file. If you are uncertain which file carried the most weight, default to the central synthesizer rules file; do not pause. Integrate, don't append. Add the role that was underspec'd, sharpen the rule for how pushback forces a stance-update, remove a rule that made agents defer when they should have argued. Preserve any rule not directly contradicted by session evidence. Don't add a \"retro notes\" section; rewrite the file as the better version. Do not close every loop — some of what didn't resolve should stay open, named.\n\nAfter the rewrite, when I push back on something specific, use Edit on the section I'm pushing back on, not Write on the whole file. Don't re-rewrite the whole file unless I say 'rewrite from scratch.'\n\nWhen you're done, tell me in 3-5 lines: which file you rewrote, what you added, what you sharpened, what you removed, and why. For each claimed change, quote the before-and-after line or section header so I can confirm it landed. Name which critique was raised but not acted on, and which file's rules directly contradicted what happened. If you think every critique was acted on, quote the evidence. Name one thing the session genuinely didn't resolve.",
+    "requires": [
+      {
+        "id": "m8-deliberation",
+        "source": "module:agents-building-agents"
+      }
+    ],
+    "produces": [
+      {
+        "id": "m8-heaviest-file",
+        "location": "deliberation folder (synthesizer rules / kernel / agent-set — overwrite in place)",
+        "note": "defaults to central synthesizer rules file when weight is ambiguous"
+      }
+    ]
   },
   "a101-prework-extract-tarball": {
     "key": "a101-prework-extract-tarball",
@@ -85,7 +250,25 @@
     "context": "",
     "runtime": "any",
     "origin": "agents-101/prework",
-    "text": "Extract the starter tarball in the working folder. Use the shell:\n\n  tar xzf agents-101-starter.tar.gz\n\n(Leave `agents-101-starter.tar.gz` behind; Cowork's sandbox can't always delete host-dropped files. Harmless.)\n\nThen list what's in the working directory and confirm these folders exist:\nprework/, memory/, sources/, agents/, .claude/, and module-4/policies/.\nIf tar is not available, tell me what error you got."
+    "text": "Extract the starter tarball in the working folder. Use the shell:\n\n  tar xzf agents-101-starter.tar.gz\n\n(Leave `agents-101-starter.tar.gz` behind; Cowork's sandbox can't always delete host-dropped files. Harmless.)\n\nThen list what's in the working directory and confirm these folders exist:\nprework/, memory/, sources/, agents/, .claude/, and module-4/policies/.\nIf tar is not available, tell me what error you got.",
+    "requires": [
+      {
+        "id": "starter-tarball",
+        "source": "external"
+      }
+    ],
+    "produces": [
+      {
+        "id": "working-tree-scaffold",
+        "location": "working dir (prework/, memory/, sources/, agents/, .claude/, module-4/policies/)",
+        "consumed-by": [
+          "module:getting-going",
+          "module:building-agent-systems",
+          "module:multi-agent-systems",
+          "module:security"
+        ]
+      }
+    ]
   },
   "a101-prework-meetings-connector": {
     "key": "a101-prework-meetings-connector",
@@ -93,7 +276,14 @@
     "context": "",
     "runtime": "any",
     "origin": "agents-101/prework",
-    "text": "List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`."
+    "text": "List my main meetings this week. Summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.",
+    "produces": [
+      {
+        "id": "meetings-summary",
+        "location": "prework/meetings.md",
+        "note": "runtime-fork sibling (connector variant); week-shape warm-up"
+      }
+    ]
   },
   "a101-prework-meetings-screenshot-cli": {
     "key": "a101-prework-meetings-screenshot-cli",
@@ -101,7 +291,14 @@
     "context": "",
     "runtime": "cli",
     "origin": "agents-101/prework",
-    "text": "I just took a screenshot of my calendar week view. Find the most recent screenshot on my machine (ask me where it saved if you can't locate it). Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`."
+    "text": "I just took a screenshot of my calendar week view. Find the most recent screenshot on my machine (ask me where it saved if you can't locate it). Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.",
+    "produces": [
+      {
+        "id": "meetings-summary",
+        "location": "prework/meetings.md",
+        "note": "runtime-fork sibling (CLI screenshot variant); week-shape warm-up"
+      }
+    ]
   },
   "a101-prework-meetings-screenshot-cowork": {
     "key": "a101-prework-meetings-screenshot-cowork",
@@ -109,7 +306,14 @@
     "context": "",
     "runtime": "cowork",
     "origin": "agents-101/prework",
-    "text": "I just attached a screenshot of my calendar week view to this message. Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`."
+    "text": "I just attached a screenshot of my calendar week view to this message. Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.",
+    "produces": [
+      {
+        "id": "meetings-summary",
+        "location": "prework/meetings.md",
+        "note": "runtime-fork sibling (Cowork screenshot variant); week-shape warm-up"
+      }
+    ]
   },
   "a101-prework-meetings-screenshot-desktop": {
     "key": "a101-prework-meetings-screenshot-desktop",
@@ -117,7 +321,14 @@
     "context": "",
     "runtime": "desktop",
     "origin": "agents-101/prework",
-    "text": "I just attached a screenshot of my calendar week view to this message. Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`."
+    "text": "I just attached a screenshot of my calendar week view to this message. Read it, list my main meetings this week, and summarize the shape of the week in 5 lines. Save the summary as `prework/meetings.md`.",
+    "produces": [
+      {
+        "id": "meetings-summary",
+        "location": "prework/meetings.md",
+        "note": "runtime-fork sibling (Desktop screenshot variant); week-shape warm-up"
+      }
+    ]
   },
   "a101-prework-snake-game": {
     "key": "a101-prework-snake-game",
@@ -125,7 +336,14 @@
     "context": "",
     "runtime": "any",
     "origin": "agents-101/prework",
-    "text": "Build me a snake game as a single HTML file. Save it as `prework/snake.html`."
+    "text": "Build me a snake game as a single HTML file. Save it as `prework/snake.html`.",
+    "produces": [
+      {
+        "id": "snake-html",
+        "location": "prework/snake.html",
+        "note": "first-contact warm-up; not consumed downstream"
+      }
+    ]
   },
   "ae101-agent-loop-ascii": {
     "key": "ae101-agent-loop-ascii",
@@ -393,7 +611,7 @@
     "context": "final move of the module",
     "runtime": "any",
     "origin": "agentic-engineering-101/run-the-first-experiment",
-    "text": "I want you to take the task we scoped earlier in this session end to end. Work from the rules I've set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the memory at `.claude/memory/`, the ADRs, and the skills available by name in this session. That's everything you have. Go.\n\nI'm leaving the laptop awake and walking away. Work through it. If you get stuck, write what you tried and why it didn't work rather than inventing a way forward. If you finish, tell me what you shipped and what you didn't.",
+    "text": "I want you to take the task we scoped earlier in this session end to end. Work from the rules I've set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the memory at `./.claude/memory/`, the ADRs, and the skills available by name in this session. That's everything you have. Go.\n\nI'm leaving the laptop awake and walking away. Work through it. If you get stuck, write what you tried and why it didn't work rather than inventing a way forward. If you finish, tell me what you shipped and what you didn't.",
     "requires": [
       {
         "id": "scoped-task",
@@ -711,7 +929,7 @@
     "context": "fresh session in the same repo",
     "runtime": "any",
     "origin": "lectures/agents-that-build-agents",
-    "text": "Enable plan mode.\n\nRead these artefacts end to end:\n\n- ./CLAUDE.local.md\n- .claude/memory/\n- the un-packaged run's commit history and modified files (its `m4/` branch is recorded in `task.md`)\n- the packaged run's commit history and modified files (its `m5/` branch is recorded in `plan.md`)\n- the SKILL.md of the skill you authored at Module 6, in `~/.claude/skills/`\n\nThen design the next iteration of the kit. Three questions:\n\n1. What gap in the kit would the next run want closed? Name it as a memory rule, a sharper verifier, or a third skill. Pick the home; do not split.\n2. What rule already in memory has gone stale across the two runs? Name one to subtract.\n3. What shape of skill is missing from the menu of verifier / judge / gap-finder? If none is missing, say so. Do not invent.\n\nReturn a plan with the three answers. No preamble.",
+    "text": "Enable plan mode.\n\nRead these artefacts end to end:\n\n- ./CLAUDE.local.md\n- ./.claude/memory/\n- the un-packaged run's commit history and modified files (its `m4/` branch is recorded in `task.md`)\n- the packaged run's commit history and modified files (its `m5/` branch is recorded in `plan.md`)\n- the SKILL.md of the `session-shaper` skill you authored, in `~/.claude/skills/`\n\nThen design the next iteration of the kit. Three questions:\n\n1. What gap in the kit would the next run want closed? Name it as a memory rule, a sharper verifier, or a third skill. Pick the home; do not split.\n2. What rule already in memory has gone stale across the two runs? Name one to subtract.\n3. What shape of skill is missing from the menu of verifier / judge / gap-finder? If none is missing, say so. Do not invent.\n\nReturn a plan with the three answers. No preamble.",
     "requires": [
       {
         "id": "m4-run-coordinates",
@@ -729,7 +947,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/arc-retrospective",
-    "text": "Read my work across this repo. Specifically:\n\n- My team `CLAUDE.md` (if present) and my personal `CLAUDE.local.md`.\n- Everything at `.claude/memory/` (three-block memory: observations/hypotheses/rules, decisions, quality criteria).\n- The ADRs in this repo — wherever our convention puts them (`docs/adr/` or equivalent).\n- Both skills I authored at `~/.claude/skills/` (the test-strategy skill from earlier, and the skill I authored today).\n- The un-packaged run (commits, files, session transcript). Read `task.md` for its recorded `m4/` branch and transcript path, then use those exact coordinates. Do not reconstruct the transcript folder or pick a recent `.jsonl`.\n- The packaged re-run (commits, files, session transcript). Read `plan.md`'s protected `Run coordinates` block for its recorded `m5/` branch and transcript path, then use those exact coordinates. Do not reconstruct the transcript folder or pick a recent `.jsonl`.\n\nRun this audit in a fresh sub-task via the Agent tool so you have the cold-read view, then combine those findings with insights you have from this session's scrollback. I want both viewpoints: the fresh read uncoloured by our conversation, and what you noticed while we worked together.\n\nWrite a one-page note on what changed across this body of work. Not a changelog. What shape did my practice have at the start, what shape does it have now, what specific artefacts show the shift. Quote from my files. Name the pattern that you see recurring across modules if you see one. Don't invent a pattern to make the note tidy; if the arc is uneven, say so and show where.\n\nPropose where the note should live in my repo (ADR, memo in `.claude/memory/`, or a standalone file). Show me the note before you save it. I'll push back, then we save.",
+    "text": "Read my work across this repo. Specifically:\n\n- My team `CLAUDE.md` (if present) and my personal `CLAUDE.local.md`.\n- Everything at `./.claude/memory/` (three-block memory: observations/hypotheses/rules, decisions, quality criteria).\n- The ADRs in this repo — wherever our convention puts them (`docs/adr/` or equivalent).\n- Both skills I authored at `~/.claude/skills/` (the `test-strategy` skill from earlier, and the `session-shaper` skill).\n- The un-packaged run (commits, files, session transcript). Read `task.md` for its recorded `m4/` branch and transcript path, then use those exact coordinates. Do not reconstruct the transcript folder or pick a recent `.jsonl`.\n- The packaged re-run (commits, files, session transcript). Read `plan.md`'s protected `Run coordinates` block for its recorded `m5/` branch and transcript path, then use those exact coordinates. Do not reconstruct the transcript folder or pick a recent `.jsonl`.\n\nRun this audit in a fresh sub-task via the Agent tool so you have the cold-read view, then combine those findings with insights you have from this session's scrollback. I want both viewpoints: the fresh read uncoloured by our conversation, and what you noticed while we worked together.\n\nWrite a one-page note on what changed across this body of work. Not a changelog. What shape did my practice have at the start, what shape does it have now, what specific artefacts show the shift. Quote from my files. Name the pattern that you see recurring across modules if you see one. Don't invent a pattern to make the note tidy; if the arc is uneven, say so and show where.\n\nPropose where the note should live in my repo (ADR, memo in `./.claude/memory/`, or a standalone file). Show me the note before you save it. I'll push back, then we save.",
     "requires": [
       {
         "id": "claude-local-md",
@@ -788,7 +1006,7 @@
     "produces": [
       {
         "id": "arc-retrospective-note",
-        "location": "student-picked (ADR, .claude/memory/ memo, or standalone file)",
+        "location": "student-picked (ADR, ./.claude/memory/ memo, or standalone file)",
         "consumed-by": [],
         "note": "terminal artefact — closes the M1-M6 arc"
       }
@@ -2204,7 +2422,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "Author a session-shaper as a personal skill. The skill's job is to shape future sessions on this kind of task so the dominant gap I diagnosed in Phase 1 doesn't recur. Shape: one of sharpened-verifier, LLM-judge, or gap-finder — I'll tell you which after you ask. Same authoring approach as the test-strategy skill at `~/.claude/skills/test-strategy/SKILL.md`.\n\nInterview me one question at a time. Cover: what the skill fires on (agent output, proposed plan, mid-run state), what the quality bar is in terms I can defend to a teammate, what to flag vs. what to let through, how it outputs (pass/fail, ranked findings, inline critique), and what the failure shape looks like when the skill itself is wrong.\n\nPush back when my answer is generic. A judge that says \"check if the output is good\" is useless; a verifier that duplicates the existing test suite is noise. Codebase-specific and failure-specific.\n\nWhen you have enough, propose a skill name. Write `~/.claude/skills/<proposed-name>/SKILL.md`: frontmatter (name + description), then instructions. Show me before saving.",
+    "text": "Author a session-shaper as a personal skill. The skill's job is to shape future sessions on this kind of task so the dominant gap I diagnosed in Phase 1 doesn't recur. Shape: one of sharpened-verifier, LLM-judge, or gap-finder — I'll tell you which after you ask. Same authoring approach as the test-strategy skill at `~/.claude/skills/test-strategy/SKILL.md`.\n\nInterview me one question at a time. Cover: what the skill fires on (agent output, proposed plan, mid-run state), what the quality bar is in terms I can defend to a teammate, what to flag vs. what to let through, how it outputs (pass/fail, ranked findings, inline critique), and what the failure shape looks like when the skill itself is wrong.\n\nPush back when my answer is generic. A judge that says \"check if the output is good\" is useless; a verifier that duplicates the existing test suite is noise. Codebase-specific and failure-specific.\n\nWhen you have enough, write the skill to `~/.claude/skills/session-shaper/SKILL.md`: frontmatter (name `session-shaper` + description), then instructions. Show me before saving.",
     "requires": [
       {
         "id": "two-run-gap-map",
@@ -2224,7 +2442,7 @@
     "produces": [
       {
         "id": "session-shaper-skill-draft",
-        "location": "~/.claude/skills/<student-named>/SKILL.md (personal, auto-discovered)",
+        "location": "~/.claude/skills/session-shaper/SKILL.md (personal, auto-discovered)",
         "consumed-by": [
           "prompt:spot-gaps-build-the-loop-4",
           "prompt:spot-gaps-build-the-loop-5"
@@ -2265,7 +2483,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "Invoke the skill we just authored — by its name — on the M5 packaged re-run. Not on a toy example. The actual artefacts: the commits, the files, the session transcript.\n\nProduce whatever output the skill asks you to produce (pass/fail, ranked findings, inline critique).\n\nThen, in the same response, answer: is the skill any good? Specifically: does the output catch the dominant gap we named in Phase 1? Does it miss things a staff engineer reviewing this run would catch? Would the M4 un-packaged run have come out better if this skill had fired on it retroactively?",
+    "text": "Invoke the `session-shaper` skill we just authored — by its name — on the M5 packaged re-run. Not on a toy example. The actual artefacts: the commits, the files, the session transcript.\n\nProduce whatever output the skill asks you to produce (pass/fail, ranked findings, inline critique).\n\nThen, in the same response, answer: is the skill any good? Specifically: does the output catch the dominant gap we named in Phase 1? Does it miss things a staff engineer reviewing this run would catch? Would the M4 un-packaged run have come out better if this skill had fired on it retroactively?",
     "requires": [
       {
         "id": "session-shaper-skill-draft",
@@ -2283,7 +2501,7 @@
     "produces": [
       {
         "id": "second-authored-skill",
-        "location": "~/.claude/skills/<name>/SKILL.md (sharpened after invocation on real artefacts)",
+        "location": "~/.claude/skills/session-shaper/SKILL.md (sharpened after invocation on real artefacts)",
         "consumed-by": [
           "prompt:arc-retrospective-1"
         ]
@@ -2533,7 +2751,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/walk-and-send-off",
-    "text": "Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything at `.claude/memory/` (the three-block memory home; if my team kit pins a different path, use that), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including any test-strategy or workflow skills already authored), and the connectors I've wired.\n\nRun this audit in a fresh context: spawn a sub-task via the Agent tool so you read my setup without this conversation colouring it. Keep this session's scrollback intact — we'll need it for later phases. Return a structured report.\n\nReturn a ranked top-5: thin spots, missing context, wrong assumptions, or unwired tools that will hurt the agent if it tries this task un-packaged. Rank by how much damage each will do during a send-off run.\n\nFor each item, say: (a) what's thin, (b) what a properly-prepared agent would need instead, (c) the cheapest way to close the gap today: add an observation, sharpen a rule, wire a connector, or name it as a business-rules gap.",
+    "text": "Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything at `./.claude/memory/` (the three-block memory home; if my team kit pins a different path, use that), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including any test-strategy or workflow skills already authored), and the connectors I've wired.\n\nRun this audit in a fresh context: spawn a sub-task via the Agent tool so you read my setup without this conversation colouring it. Keep this session's scrollback intact — we'll need it for later phases. Return a structured report.\n\nReturn a ranked top-5: thin spots, missing context, wrong assumptions, or unwired tools that will hurt the agent if it tries this task un-packaged. Rank by how much damage each will do during a send-off run.\n\nFor each item, say: (a) what's thin, (b) what a properly-prepared agent would need instead, (c) the cheapest way to close the gap today: add an observation, sharpen a rule, wire a connector, or name it as a business-rules gap.",
     "requires": [
       {
         "id": "scoped-task",
@@ -2572,7 +2790,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/walk-and-send-off",
-    "text": "Use the AskUserQuestion tool. One question per call. First ask which 2-3 audit gaps I want to focus on. For each picked gap, propose a resolution in the shape the audit named, hear my pushback, then persist it: `.claude/memory/` for observations and business-rules gaps, `./CLAUDE.local.md` for rule sharpening, connector setup for connector wiring.",
+    "text": "Use the AskUserQuestion tool. One question per call. First ask which 2-3 audit gaps I want to focus on. For each picked gap, propose a resolution in the shape the audit named, hear my pushback, then persist it: the `./.claude/memory/` folder in your repo for observations and business-rules gaps, `./CLAUDE.local.md` for rule sharpening, connector setup for connector wiring.",
     "requires": [
       {
         "id": "gap-audit-report",
@@ -2582,7 +2800,7 @@
     "produces": [
       {
         "id": "gap-fills",
-        "location": ".claude/memory/ (observations + business-rules gaps) + ./CLAUDE.local.md (sharpened rules) + connector setup (no file)",
+        "location": "./.claude/memory/ (observations + business-rules gaps) + ./CLAUDE.local.md (sharpened rules) + connector setup (no file)",
         "consumed-by": [
           "prompt:walk-and-send-off-4"
         ],
@@ -2596,7 +2814,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/walk-and-send-off",
-    "text": "Look at the observations and rules I just added to `.claude/memory/`, the hardening ADR in this repo if there is one, and the test-strategy skill if I've authored one. Don't scan beyond those. Rearrange what's there into Paweł Huryn's three-block memory frame:\n\n- Block 1: observations → hypotheses → rules (what I've noticed about this codebase, what I've started to suspect, what I've decided to treat as true)\n- Block 2: decisions with alternatives (architectural or design choices + what else was considered; ADRs live here if I have them)\n- Block 3: quality criteria (what I expect to be true of shipped code in this codebase; if I've authored a test-strategy skill it contributes here, otherwise pull from existing test conventions)\n\nDon't invent new material. Rearrange what's there.\n\nBefore you name the frame or propose a new structure, show me one concrete example from each block. Quote a specific observation from my memory (Block 1), a specific ADR or other recorded decision (Block 2), a specific check from an authored skill OR a quality criterion from existing tests (Block 3).\n\nIf you propose file moves or renames, cap the proposal at one or two; the send-off fires shortly after this phase and I want the tree settled before that.",
+    "text": "Look at the observations and rules I just added to `./.claude/memory/`, the hardening ADR in this repo if there is one, and the test-strategy skill if I've authored one. Don't scan beyond those. Rearrange what's there into Paweł Huryn's three-block memory frame:\n\n- Block 1: observations → hypotheses → rules (what I've noticed about this codebase, what I've started to suspect, what I've decided to treat as true)\n- Block 2: decisions with alternatives (architectural or design choices + what else was considered; ADRs live here if I have them)\n- Block 3: quality criteria (what I expect to be true of shipped code in this codebase; if I've authored a test-strategy skill it contributes here, otherwise pull from existing test conventions)\n\nDon't invent new material. Rearrange what's there.\n\nBefore you name the frame or propose a new structure, show me one concrete example from each block. Quote a specific observation from my memory (Block 1), a specific ADR or other recorded decision (Block 2), a specific check from an authored skill OR a quality criterion from existing tests (Block 3).\n\nIf you propose file moves or renames, cap the proposal at one or two; the send-off fires shortly after this phase and I want the tree settled before that.",
     "requires": [
       {
         "id": "gap-audit-report",

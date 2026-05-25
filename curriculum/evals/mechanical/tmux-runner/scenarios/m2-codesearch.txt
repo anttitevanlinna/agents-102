@@ -1,0 +1,53 @@
+# M2 (AE101) — Plan mode, done right. codesearch variant.
+# Driven by run-m2.sh with SCENARIO=this-file. Single session in
+# ~/Projects/codesearch on branch m1/codesearch-01 (carries M1's siftUp
+# fix + CLAUDE.local.md).
+#
+# Multi-file task: extend csweb so it can be exposed to a team as a
+# shared instance. New attack surface deliberately introduced (remote
+# bind, URL-hash shareable queries) — sets up M3 to threat-model the
+# same feature M2 plans. Same shape as the lemmings M2 → M3 hand-off
+# (Share-a-level feature → STRIDE on the shareable URL).
+#
+# AskUserQuestion handling — ask-and-wait pattern (NOT suppression):
+#  The headless tmux runner can't respond to AskUserQuestion's UI, but
+#  suppressing questions outright masks the very class of prompt issues
+#  we're trying to surface. Instead, four prompts (push-back-1,
+#  push-back-2, extract-rule-1, extract-rule-2) carry tails that tell
+#  Claude to ask questions in CHAT (numbered list, plain text) and STOP.
+#  A literal-text turn directly after each prompt simulates a real
+#  student answering — short, decisional, defers where it doesn't
+#  matter. Run-m2.sh's assert dispatch skips literal turns (dispatches
+#  on key_seq, not total seq), so the same script drives both this
+#  variant and the lemmings m2.txt.
+#
+# Save-gate: push-back-on-the-plan-2 explicitly says "Don't touch the
+# plan file until I say 'lock it in.'" The literal "lock it in" line
+# after the student-voice reply is the approval that triggers the
+# in-place plan edit.
+
+push-back-on-the-plan-1 Write the plan to ~/.claude/plans/m2-csweb-shared-instance-<adjective>-<animal>.md (mkdir -p the dir if needed; pick your own adjective/animal). The plan file landing is the load-bearing artifact — write it first. Don't call AskUserQuestion. If you have refinement questions, list them at the END of your reply (plain chat text, numbered) and I'll answer in a follow-up message before push-back-2; you can fold the answers into the plan then. My task: extend csweb so a team can run one shared instance and everyone searches through their browser. Today csweb binds to localhost:2473 only — I want it to ALSO accept a --bind 0.0.0.0:PORT flag so remote teammates can reach it. Add a JSON search endpoint /api/search?q=PATTERN that returns matches as structured JSON (today there's only the HTML /search and the /show file viewer). Persist the current query in the URL hash so links are shareable — when a teammate sends https://srv/?q=fooBar the page should pre-populate the search box and run the query automatically on load. Touches cmd/csweb/web.go, cmd/csweb/_static/viewer.js, cmd/csweb/_static/viewer.css, README. About 30-60 min agent work. Note: I'm deliberately NOT scoping auth or path clamping into this task — that's for a follow-up. Plan for what I asked, not what I should have asked.
+
+* answers: 1) yeah accept both 127.0.0.1 and 0.0.0.0 on --bind, default stays localhost when flag omitted. 2) JSON shape — keep it close to what /search already renders, just structured: path, line, snippet. don't invent fields. 3) URL hash format: just `#q=<urlencoded>`, no other params yet. 4) on auto-run, debounce isn't worth it for v1 — fire once on load if hash is non-empty. 5) skip tests for the static JS, but DO add a Go test for the /api/search handler. 6) README gets a short "Shared instance" section, your call on length. anything else, use your judgement.
+
+push-back-on-the-plan-2 Don't call AskUserQuestion and don't ask me three-at-a-time interactively. Walk down every unresolved branch in one pass (dependencies, decisions, side-effects). For each branch, state your recommended answer in prose. If you still have genuine questions after the walk-down, ask them as a numbered list in your reply (plain chat text) and STOP — don't touch the plan file yet. I'll answer in a follow-up message, then say 'lock it in' as a separate message to approve the edit.
+
+* on your questions: CORS — your call, skip it for v1 since I said auth is out of scope anyway. content-type on /api/search — application/json, obviously. error shape on bad regex — return 400 with a plain text error body is fine, don't over-engineer it. port collision on --bind — just let net.Listen fail and surface the error, no pre-check. logging the bind address at startup — yes, log it once on stderr so people know what the team sees. anything else you flagged, go with your recommended answer.
+
+* lock it in
+
+push-back-on-the-plan-3
+
+extract-the-task-shaping-rule-1 Don't call AskUserQuestion and don't pause for rewrite/reject in a tool UI. Propose the 3-5 rules in your reply (plain chat text) and STOP — don't proceed yet. I'll tell you in a follow-up message which ones to keep, rewrite, or drop.
+
+* keep all of them as proposed. they look clean. proceed.
+
+extract-the-task-shaping-rule-2 Don't call AskUserQuestion. Propose two-three plausible paths with their loading models (fires-anywhere-on-this-laptop vs fires-only-when-this-repo-is-open) and your recommendation in your reply (plain chat text) and STOP — don't write the file yet. I'll pick in a follow-up message. After I pick, write the rules to that path (integrate if a file already exists; don't overwrite). After saving, echo the saved path on its own line as `SAVED-PATH: <abs path>` so the run can capture it.
+
+* go with your recommended path. integrate if something's already there. save it.
+
+extract-the-task-shaping-rule-3
+
+push-back-on-the-plan-4
+
+ae101-m2-integrate-branch

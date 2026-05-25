@@ -1,0 +1,80 @@
+# M5 (AE101) — Learn from the test, re-send packaged. Lemmings reference.
+# Driven by run-m5.sh in three phases:
+#   A. Main pane (lemmings repo): ae101-m5-worktree-setup forks the
+#      worktree from M4's "M4 starting point" SHA, using the protected
+#      `Run coordinates` block in ./task.md as the source of truth.
+#   B. Worktree pane (../lemmings-m5): the diagnose-and-resend exercise
+#      (six prompts + canned replies + smoke-test + lock-it-in).
+#   C. Rerun pane (../lemmings-m5, FRESH session): ae101-m5-rerun-packaged
+#      runs the same blocker-deadlock task with reference + plan.md +
+#      verifier in play. Long send-off (up to 1h).
+#
+# Task carries forward from M4: the blocker-deadlock bug
+# (twelve blockers = game stuck forever, no resolution text).
+# task.md is frozen in the worktree fork — M5 reads it for run
+# coordinates and re-runs the same task packaged.
+#
+# AUQ suppression discipline (per M3 run-1 post-mortem and the §27
+# sentinel-completion lesson): every prompt that could plausibly
+# trigger AskUserQuestion on the agent's own ambiguity-driven reasoning
+# carries an explicit suppression tail. Two prompts in Phase B
+# structurally invite student answers (diagnose-and-resend-4 says
+# "Show me the verifier before you save anything; I'll push back, then
+# we save"; diagnose-and-resend-6 says "grill me on missing details,
+# three questions at a time, don't touch either file until I say lock
+# it in"). Both use the ask-and-wait pattern: tail tells Claude to put
+# any question in chat as a numbered list and STOP; a literal-text
+# canned reply turn simulates the student's answer.
+#
+# Phase ownership in the scenario:
+#   Block PA: phase A — single prompt fired into main pane.
+#   Block PB: phase B — exercise (worktree pane, exercise session).
+#   Block PC: phase C — re-send (worktree pane, FRESH session).
+# Block markers are comment lines; run-m5.sh splits on them.
+
+# === PA: main-pane worktree setup ===
+ae101-m5-worktree-setup
+
+# === PB: exercise — diagnose, build, assemble ===
+
+# T1: read task.md run coordinates, print transcript path, confirm jsonl
+# exists. Low AUQ risk — pure file read. Suppression tail kept for safety.
+diagnose-and-resend-1 Don't call AskUserQuestion — if you can't find a coordinates block or the jsonl is missing, say so in plain chat and stop; don't ask me which file you should read.
+
+# T2: read transcript + repo state, walk three lenses with quoted moments.
+# AUQ risk: agent may ask "which task should I diagnose against" if
+# task.md is ambiguous. Suppress.
+diagnose-and-resend-2 Don't call AskUserQuestion — the task is the one described in ./task.md. If the artefact looks thin under a lens, say so as your finding rather than asking me to point you at more material.
+
+# T3: walk failures backwards into validation categories. Pure reasoning
+# turn but agent may want to confirm interpretations of the dominant
+# failure. Suppress.
+diagnose-and-resend-3 Don't call AskUserQuestion — pick your reading of the dominant failure and walk it; if you're genuinely torn between two readings, say so in your reply and pick one to proceed.
+
+# T4: build the verifier for the dominant failure. Body says explicitly
+# "Show me the verifier before you save anything; I'll push back, then we
+# save." Ask-and-wait pattern: tail forbids AUQ, says propose in chat
+# and stop, canned reply approves the save.
+diagnose-and-resend-4 Don't call AskUserQuestion. Propose the verifier shape and contents in your reply (plain chat text — script, prompt, or loop wrapper as appropriate). STOP before saving — don't write the file yet. I'll review and follow up with approval or pushback. After I approve in a follow-up message, save the verifier to the path you proposed.
+
+* approved. save it to the path you proposed. proceed.
+
+# T5: smoke-test the verifier on PASS + FAIL synthetic inputs. May want
+# to ask about edge cases; suppress.
+diagnose-and-resend-5 Don't call AskUserQuestion — invent the two synthetic inputs yourself (one shaped to pass, one shaped to fail in the dominant-failure mode). Report what fired and what each input returned.
+
+# T6: assemble reference.md + plan.md. Body says: "Don't touch either
+# file until I say 'lock it in.' ... Before lock-in, grill me on missing
+# details that could ruin the smooth run. Ask three questions at a time."
+# This is the structural grill — agent will want to ask three questions
+# per round. Ask-and-wait pattern: tail forbids AUQ and tool-UI grills,
+# tells agent to ask three at a time in chat and STOP. Canned reply
+# answers, then "lock it in" literal triggers the file writes.
+diagnose-and-resend-6 Don't call AskUserQuestion. Ask your three grill questions per round as a numbered list in your reply (plain chat text) and STOP — don't touch either file yet. I'll answer in a follow-up message; ask the next three (or tell me you're ready) the same way. The 'lock it in' line will be a separate message from me when I'm ready to approve the writes.
+
+* answers: 1) reference.md and plan.md both at the worktree root, next to task.md. 2) keep success criteria tight to the blocker-deadlock fix: end-of-game check covers the all-blockers-remaining case, a status-text path for the player, regression test in tests/main.test.js. 3) tests-first phase: write the failing test for the all-blockers-remaining case before touching step()'s end-of-game logic. 4) decisions log: append-only, one line per load-bearing choice (which state-machine path to enumerate; what status text). 5) what-didn't-work section: empty at start, agent appends as it goes. anything else, use your judgement. ask the next three if you have them, or say ready.
+
+* lock it in
+
+# === PC: packaged re-send (fresh session in worktree) ===
+ae101-m5-rerun-packaged

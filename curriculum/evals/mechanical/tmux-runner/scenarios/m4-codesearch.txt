@@ -1,0 +1,64 @@
+# M4 (AE101) — Run the First Experiment. codesearch variant.
+# Driven by run-m4.sh with SCENARIO=this-file. Single session in
+# ~/Projects/codesearch on whatever branch M3 left HEAD (m1/codesearch-01).
+# Carries forward M1's siftUp fix + CLAUDE.local.md, M2's plan, M3's
+# threat-model ADR (docs/adr/0001-gate-csweb-network-exposure-on-bind.md)
+# and the test-strategy skill at ~/.claude/skills/test-strategy/.
+#
+# Task choice: implement the M3 ADR (--bind flag + --expose-without-auth
+# gate + show() path-clamping). Real, bounded, multi-file, several
+# subtle ambiguities (which address-classification predicate; symlink
+# handling on macOS; what the test-strategy skill carved out as
+# verify-by-hand vs unit-testable). Decoy is a /help page documenting
+# regex syntax — UX work, no live risk, obvious lower leverage after
+# the audit weighs the ADR exposure against a docs-page nice-to-have.
+#
+# AUQ suppression discipline (per M3 run-1 post-mortem and the §27
+# sentinel-completion lesson): every prompt that could plausibly trigger
+# AskUserQuestion on the agent's own ambiguity-driven reasoning carries
+# an explicit suppression tail. The 1h autonomous send-off is the
+# highest risk — the tail forbids AUQ AND tells the agent how to make
+# decisions without it. No canned-reply literals in this scenario
+# (matches lemmings m4.txt shape; run-m4.sh hardcodes
+# turn-5.transcript.txt for the commit-SHA grep, so literals before
+# turn 5 would shift the index).
+
+# T1: scope + screen against two candidates. Tail provides both
+# candidates with file paths + scope estimate. Agent should pick the
+# security work after the leverage comparison.
+walk-and-send-off-1 Don't call AskUserQuestion — make the leverage call yourself and state your reasoning in chat. Candidates: (1) Implement the decision in docs/adr/0001-gate-csweb-network-exposure-on-bind.md — add a --bind host:port flag to csweb (today the listener is hard-coded to localhost:2473), and when the resolved bind is non-loopback, refuse to start unless the operator passes --expose-without-auth. Plus the amplifier the ADR names: clamp the show() handler's requested path to be inside one of ix.roots (the // TODO at cmd/csweb/web.go:179). Touches cmd/csweb/web.go, a new cmd/csweb/web_test.go (csweb has zero tests today — the test-strategy skill flags it as greenfield), README. About 30-60 min agent work. (2) Add a /help page to csweb that documents the supported RE2 regex syntax (anchors, character classes, (?i) flag, etc.), shows example queries, and lists the URL endpoints. Touches cmd/csweb/web.go (new handler + route), optionally cmd/csweb/_static/viewer.css for minor styling, README. UX improvement, ~30 min.
+
+walk-and-send-off-2 Don't call AskUserQuestion — return the structured report in plain chat. The Agent-tool sub-task is fine to use as instructed; just keep the final report inline, not hidden behind a tool the runner can't answer.
+
+# T3: gap-fill. The lemmings version of this prompt body calls
+# AskUserQuestion explicitly ("Use the AskUserQuestion tool. One
+# question per call.") — that's structural, not an ambiguity-trigger.
+# Override the prompt's structural AUQ requirement with the same shape
+# the lemmings m4.txt scenario uses: suppress AUQ, tell the agent to
+# pick 2-3 itself from the audit's top-5, and proceed without
+# confirmation. Codebase-specific gap shapes: most likely picks are
+# "csweb is greenfield in tests" (business-rules gap or sharpened
+# rule), "--bind classification predicate is under-specified" (rule
+# sharpening), "path-clamp semantics under symlinks / case-insensitive
+# macOS" (observation), "test the gate decision, hand-verify the
+# socket" (already in the skill — surface it as an observation).
+walk-and-send-off-3 I'm doing a headless dry-run, please don't call AskUserQuestion — use your judgment. From the audit's top-5, pick the 2-3 gaps that most directly affect a send-off for the M3 ADR implementation and would hurt the run most if left thin. For each picked gap, propose the fill in the shape the audit named (observation / sharpened rule / business-rules gap / connector setup), write it in the destination the audit named (`.claude/memory/` for observations and business-rules gaps; `./CLAUDE.local.md` for rule sharpening), and proceed without confirmation. Don't over-fill — 2 or 3 picks is the target, not all five.
+
+walk-and-send-off-4 Don't call AskUserQuestion — show me the three blocks with their quoted examples in chat. If a file move or rename is genuinely warranted, propose at most one and stop short of executing it; the send-off is next and I want the tree stable.
+
+# T5: commit starting point. The prompt body requires reading
+# ae101-m4-locate-transcript output for the transcript path; the
+# lemmings m4.txt scenario doesn't run that prompt either, so the agent
+# is expected to locate the transcript itself from
+# CLAUDE_CODE_SESSION_ID + cwd encoding. Run-m4.sh greps a 7-12 hex SHA
+# from turn-5.transcript.txt — keep this as turn 5.
+ae101-m4-commit-starting-point Don't call AskUserQuestion. The task-slug for the branch should be `implement-bind-gate` or similar — pick one in that shape and proceed; locate the transcript path yourself from CLAUDE_CODE_SESSION_ID and the encoded cwd, then write it into the Run coordinates block as instructed.
+
+# T6: the long autonomous send-off. Highest AUQ risk — runs for up to
+# 1h, will hit many decisions. The tail forbids AUQ AND tells the
+# agent how to make decisions without it: state the assumption, proceed,
+# surface anything genuinely unclear in the final summary. Anchors the
+# agent on the ADR + test-strategy carve-out so it doesn't drift into
+# building auth (out of scope per the ADR) or faking an httptest for
+# the non-loopback socket bind (the skill says verify-by-hand for that).
+ae101-m4-take-task-end-to-end I'm walking away. Don't call AskUserQuestion at any point during this run — the laptop is unattended and any question will hang for the full hour. When you hit an ambiguity, state your assumption in your working notes and proceed; surface anything genuinely unclear in your final summary at the end, not as an interactive question. Anchor points the test-strategy skill and the ADR already pin: the ADR (docs/adr/0001) is informed-consent, not authentication — don't build auth, build the gate. The skill's csweb section carves out `isExposed(bind) bool` as a pure function worth unit-testing while marking the non-loopback socket bind itself as verify-by-hand — follow that carve-out. Run `go test ./...` before declaring done. If you get stuck, write what you tried and why it didn't work in your final summary rather than inventing a way forward.

@@ -1,0 +1,66 @@
+# M3 (AE101) — main lane, codesearch variant.
+# Driven by run-m3.sh with SCENARIO_MAIN=this-file. Sister of m3-main.txt
+# (lemmings); same prompt sequence, codesearch-flavored tails.
+#
+# The feature being threat-modeled is the csweb shared-instance work
+# M2 planned at ~/.claude/plans/m2-csweb-shared-instance-<adj>-<animal>.md
+# (the actual M2 dry-run wrote 'brisk-otter' — referenced below). New
+# attack surface deliberately introduced by M2: --bind 0.0.0.0 (no
+# auth), /api/search JSON endpoint, URL-hash auto-run on load. The
+# existing show() handler — which reads raw paths from request input
+# — is now reachable from anywhere when bound non-loopback.
+#
+# AskUserQuestion handling — ask-and-wait pattern (NOT suppression):
+#  The map-the-access-surface and threat-model-with-stride prompts
+#  don't structurally use AskUserQuestion, but the -4 / -5 tails carry
+#  the student's judgment-call deltas. Where the lemmings variant
+#  hard-coded "round-trip amplification" and "browser-history popstate"
+#  in the tail body, the codesearch variant picks two codesearch-real
+#  findings:
+#    -4: the show() handler reads raw paths from request input and is
+#        now reachable from anywhere when --bind != loopback. The skill
+#        caught this harder than I would because I was modeling
+#        /api/search and the --bind flag as the new surface, without
+#        noticing that an EXISTING handler with a known TODO becomes
+#        a fresh exposure the moment the trust boundary moves.
+#    -5: --bind itself is a runtime flag that reshapes the trust
+#        boundary. The skill modeled the access surface as static
+#        (this binary, these endpoints, these handlers); it didn't
+#        model that the SAME binary serves two security models
+#        depending on a flag value, and that the map's findings are
+#        conditional on which mode is in effect. Codebase-specific
+#        because csweb is Go-with-flag-rebound-listener, not a
+#        per-deployment-config web framework.
+#
+# Save-gate: the literal "yep give it to me and save like you want it"
+# after threat-model-with-stride-3 is the explicit ADR approval.
+
+# Phase A: create the worktree for the quality side.
+#
+# Headless-runner override: the fork prompt's `cp -r ./.claude/memory/`
+# step assumes auto-memory lives in-repo. On modern Claude Code projects
+# it lives at ~/.claude/projects/<encoded-cwd>/memory/ instead, so the
+# in-repo copy is a no-op. The agent has noticed this in past runs and
+# triggered AskUserQuestion asking whether to seed the home-keyed slot,
+# which hangs the runner. Tail suppresses the question and tells the
+# agent to skip the memory step for this dry-run.
+ae101-m3-fork-quality-side Don't call AskUserQuestion. Do the worktree create and the CLAUDE.local.md copy as instructed. SKIP the .claude/memory/ copy — auto-memory actually lives at ~/.claude/projects/<encoded-cwd>/memory/ (home-keyed by absolute project path), so the in-repo copy is a no-op for this codebase. Report what you did in plain chat and stop. If you have observations about the memory location or other gaps, surface them in your reply (numbered) — I'll address them after the run if they're real, but don't block on me.
+
+# Phase B (security side): map → STRIDE → ADR (with approval) → auto-load Q.
+map-the-access-surface-2 The feature is described in the plan at /Users/anttitevanlinna/.claude/plans/m2-csweb-shared-instance-brisk-otter.md — read it first, then invoke the skill on what's described there. If a slightly different plan filename is present (same shape, different adjective-animal slug from a fresh M2 run), use that one and tell me which file you read.
+
+map-the-access-surface-3
+
+map-the-access-surface-4 The existing show() handler in cmd/csweb/web.go reads raw file paths from request input — one of csweb's pre-existing TODOs. At localhost-only that was hand-wavy-safe; now that --bind 0.0.0.0 is on the table, the same handler is reachable from anywhere on the network with no auth. The skill called this out harder than I would have — I was modeling /api/search and the --bind flag as the new surface and missed that an existing handler with a known weakness becomes a fresh exposure the moment the trust boundary moves. The shared-instance deployment model elevates it because one teammate running `csweb --bind 0.0.0.0:2473` to share with the team now exposes every file the csweb process can read to anyone on the network.
+
+map-the-access-surface-5 The --bind flag itself reshapes the security model at runtime. The skill modeled the access surface as static (this binary, these endpoints, these handlers); it didn't model that the SAME binary serves two security regimes depending on the flag value — localhost-only is implicit trust, non-loopback is no auth + full filesystem read for anyone on the network. The map's findings are conditional on which mode is in effect. Codebase-specific because csweb is a Go binary with a flag-rebound listener, not a per-deployment-config web framework where the trust boundary is set by infra. The map should call out the flag's two modes as distinct surfaces, not collapse them.
+
+threat-model-with-stride-1
+
+threat-model-with-stride-2
+
+threat-model-with-stride-3
+
+* Yep. Just give it to me and save like you want it.
+
+threat-model-with-stride-4

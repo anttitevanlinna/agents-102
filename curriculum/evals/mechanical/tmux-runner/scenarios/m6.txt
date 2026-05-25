@@ -1,0 +1,65 @@
+# M6 (AE101) — Spot gaps, build the loop + Arc retrospective.
+# Driven by run-m6.sh. Single session in the M5 worktree
+# (`../lemmings-m5`). No fork — M6 reads, diagnoses, ships in place.
+#
+# Carries forward: M5's worktree state (un-packaged M4 send-off on m4/
+# branch; packaged M5 re-run with reference.md + plan.md + verifier +
+# RUN-NOTES.md on m5/ branch; both transcripts recorded in task.md and
+# plan.md's protected Run coordinates block). CLAUDE.local.md compounded
+# across M1-M5. First authored skill at ~/.claude/skills/test-strategy/.
+#
+# AUQ suppression discipline (per M3 run-1 post-mortem + §27 sentinel-
+# completion lesson): every M6 prompt that could plausibly trigger AUQ
+# on the agent's own ambiguity-driven reasoning carries an explicit
+# suppression tail. The reading turns (T1, T7) are large enough to
+# tempt AUQ-style clarification; the authoring turns (T4, T5, T6) are
+# decision-heavy. T4 (interview) is the highest structural AUQ risk —
+# the prompt body says "Interview me one question at a time" which is
+# exactly the AUQ shape. Lemmings variant dumps answers preemptively
+# (suppression). Codesearch variant (m6-codesearch.txt) uses the
+# ask-and-wait pattern. The save-gate literal after T4 is the explicit
+# SKILL.md write approval.
+
+# T1: diff two runs. Large reading task across both transcripts +
+# both branches. Suppress AUQ; the agent has enough to read.
+spot-gaps-build-the-loop-1 Don't call AskUserQuestion — read what's on disk (transcripts + branches) and produce the four-dimension diff inline. If something's genuinely unreadable (transcript path doesn't resolve), name the gap in your report rather than asking. Quote moments from both runs.
+
+# T2: cut one stale rule (or stop if all hold). May modify
+# CLAUDE.local.md. Save-gate not needed — the prompt body says "Cut it
+# from ./CLAUDE.local.md in place" so the edit is the artefact.
+spot-gaps-build-the-loop-2 Don't call AskUserQuestion. If your diagnosis killed exactly one rule, cut it in place — show the diff in chat afterward. If every rule still holds, say so and stop; no edit.
+
+# T3: atomic primitives menu + ranked picks against dominant gap.
+spot-gaps-build-the-loop-primitives Don't call AskUserQuestion — produce the list inline. The 5-10 primitives + 2-3 ranked picks all land in one chat reply.
+
+# T4: author the skill. Highest structural AUQ risk — body says
+# "Interview me one question at a time." Lemmings variant suppresses
+# AUQ and dumps answers preemptively (lazy student); body's "Show me
+# before saving" save-gate is satisfied by the literal `* save it`
+# after this turn. The shape choice + answers below assume the
+# dominant gap from T1 was packaging-mood-drift (the M5 verifier
+# checked output but not whether the agent stayed on the task it was
+# sent to do). Adjust if T1 surfaces a different dominant gap — the
+# answers carry shape (gap-finder), invocation timing (pre-run), and
+# output (ranked findings) regardless.
+spot-gaps-build-the-loop-3 I'm doing a headless dry-run, please don't call AskUserQuestion — use what you can read from the artefacts plus my answers below; for anything else, use your best judgment and note the gap inline. Answers preemptively: (1) Shape — gap-finder. The packaged M5 run drifted from the task it was sent to do (mid-run scope creep into adjacent code paths); a sharpened verifier wouldn't have caught that because the output technically passed. A gap-finder fires before the run starts, reads the proposed plan against the reference, and flags scope ambiguity. (2) Fires on — a proposed task plan + reference artefact, pre-run. Not on output. (3) Quality bar — would a teammate reading the plan understand what's IN and what's OUT of scope without asking? If no, the plan is too loose for a long-running send-off. (4) Flag vs let through — flag: scope words that admit multiple referents ("clean up the related X"), missing OUT-of-scope list, plan-reference mismatch on which files are touched. Let through: plan that names files + behaviors specifically + has a one-line OUT-of-scope clause. (5) Output — ranked findings, severity-ordered, each with a quoted plan line and a one-sentence fix. (6) Failure shape when the skill is wrong — false-positive flagging on plans that ARE precise enough (over-eager); diagnostic is the skill's own description mentioning "scope" without a teammate-test rubric. (7) Skill name — your call; something like `pre-run-gap-finder` or `plan-gap-check` if those fit the description. Anything else, use your judgment; I'm not micromanaging the SKILL.md phrasing.
+
+* save it
+
+# T5: critique before shipping. Same session — charitable by design,
+# the body acknowledges that and accepts it for pacing.
+spot-gaps-build-the-loop-4 Don't call AskUserQuestion. Name three weak parts in chat — be harsher than necessary, assume worse than it looks.
+
+# T6: invoke skill by name on M5 packaged run + same-turn judgement.
+spot-gaps-build-the-loop-5 Don't call AskUserQuestion. Invoke the skill we just authored by name, produce its output on the M5 re-run, and answer the three judgement questions in the same response.
+
+# T7: arc retrospective. Large reading task across M1-M6 artefacts +
+# dispatches a fresh Agent-tool sub-task. The sub-task is in-scope
+# (prompt body asks for it explicitly); suppress AUQ on the outer
+# conversation. The body says "Show me the note before you save it.
+# I'll push back, then we save." The lemmings variant collapses to a
+# single approval literal — the save lands inside the same turn after
+# the literal fires.
+arc-retrospective-1 Don't call AskUserQuestion in the outer conversation — the fresh sub-task may use its own judgment internally. Quote from my files. If artefacts are thin at any module, name the gap rather than inventing. Show me the note before you save it.
+
+* looks good, save it where you proposed.

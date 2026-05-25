@@ -1,0 +1,27 @@
+# M3 (AE101) — quality lane, codesearch variant. Runs in the worktree.
+# Driven by run-m3.sh with SCENARIO_QUALITY=this-file. Sister of
+# m3-quality.txt (lemmings); same prompt sequence, codesearch-flavored
+# tails.
+#
+# author-test-strategy-skill-1 normally calls AskUserQuestion to
+# interview the student about how testing actually works on the
+# codebase. In the lemmings variant the tail dumped all answers
+# preemptively. The codesearch variant uses the ask-and-wait pattern:
+# the tail tells Claude to ask in chat (numbered list) and STOP, then
+# a literal-text reply turn simulates a real student answering. The
+# answers describe Go testing reality (no DOM, no fetch, no third-party
+# test framework — Go's built-in testing package + net/http/httptest).
+#
+# Save-gate: the literal "yep give it to me and save like you want it"
+# after author-test-strategy-skill-1 is the explicit SKILL.md write
+# approval.
+
+ae101-m3-quality-side-orient
+
+author-test-strategy-skill-1 Don't call AskUserQuestion — ask your questions as a numbered list in your reply (plain chat text) and STOP, don't write the skill file yet. I'll answer in a follow-up message. Push back if my answers are generic; a test-strategy skill that says "write unit tests first" is useless. After I answer, ask follow-ups the same way (numbered, in chat) if the answers leave gaps. When you have enough, tell me you're ready to write the skill and wait for me to say save.
+
+* answers: 1) Framework is Go's `testing` package, `go test ./...`. No jest/vitest analog, no third-party test framework. 2) Mocked vs real: very little is mocked. Index tests build a real temp index via t.TempDir() + index.Create() + AddFile() + Flush(), then read it back — see index/write_test.go's buildFlushIndex helper. HTTP tests would use net/http/httptest (recorder for unit, NewServer for integration); csweb has zero tests today, so this is greenfield. No browser, no DOM, no fetch — the page-load JS in cmd/csweb/_static/viewer.js has no test harness in this repo. 3) Integration boundary: the filesystem (the index file at $CSEARCHINDEX) for the search core, and HTTP for csweb. No external service, no third-party SDK. 4) Flaky: rare. Geometry-shaped bugs surface as real bugs not flakiness — see M1's siftUp fix (TestPostHeapSiftUp catches wrong heap output deterministically, never intermittently). The mmap path on a missing/corrupt index calls log.Fatal which kills the test process — that's a real bug surfacing as a process exit, not flakiness. 5) Regression scope: full `go test ./...` runs in well under a second. Cheap to run on every change. 6) Load-bearing tests reviewers check first: index/write_test.go (TestTrivialWrite + the new TestPostHeapSiftUp / TestManyChunkMerge from M1's deeper pass), regexp/regexp_test.go (TestGrep), regexp/match_test.go. For csweb specifically there are no tests yet — the test-strategy skill should call that out as a gap, not pretend coverage exists. 7) Not worth testing here: real-network csearch index queries at scale, mmap behavior across OSes, actual HTTP rendering of the home page (we'd need a browser harness this repo doesn't have). For csweb's new --bind 0.0.0.0 mode specifically: httptest.NewServer always binds loopback regardless of the handler's intent, so the no-auth-on-non-loopback behavior CANNOT be tested by httptest — name that gap explicitly in the skill rather than pretending it's covered. The /api/search JSON endpoint and the show() handler ARE testable via httptest.NewRecorder. 8) Anything else, use your judgment — I'm not going to micromanage skill phrasing. ask follow-ups if the answers leave gaps.
+
+* yep give it to me and save like you want it.
+
+author-test-strategy-skill-2

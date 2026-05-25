@@ -1,0 +1,85 @@
+# M6 (AE101) — Spot gaps, build the loop + Arc retrospective. codesearch variant.
+# Driven by run-m6.sh with SCENARIO=this-file. Single session in the M5
+# worktree (`../codesearch-m5` or whatever M5 named it). M5 ended on the
+# m5/<task-slug> branch with the packaged re-run of the M3 ADR
+# (--bind gate + --expose-without-auth + show() path-clamp).
+#
+# Carries forward:
+#  - M1's siftUp fix on `m1/codesearch-01` (in the main repo; visible via
+#    .git share if worktree)
+#  - M2's plan at ~/.claude/plans/<slug>.md
+#  - M3's threat-model ADR at docs/adr/0001-gate-csweb-network-exposure-on-bind.md
+#  - M3's test-strategy skill at ~/.claude/skills/test-strategy/SKILL.md
+#    (codesearch-aware: flags csweb as greenfield, calls out httptest's
+#    loopback constraint, names which surfaces are unit-testable vs
+#    verify-by-hand)
+#  - M4's implementation: cmd/csweb/web.go (--bind + --expose-without-auth +
+#    isExposed()), cmd/csweb/web_test.go (csweb's first tests), README
+#  - M5's verifier + plan.md + reference.md + RUN-NOTES.md + packaged re-run
+#  - CLAUDE.local.md compounded across M1-M5
+#
+# AUQ suppression discipline — same as m6.txt. T4 uses the ask-and-wait
+# pattern (not suppression): the tail tells Claude to ask in chat
+# (numbered list) and STOP; a literal-text reply turn simulates a real
+# student answering. The answers describe codesearch Go reality + the
+# dominant gap as it shows up on this task (httptest can't reach the
+# bind socket; the skill's verify-by-hand carve-out exists but doesn't
+# enforce a pre-run check that the human actually ran the non-loopback
+# verification before declaring done). Save-gate literal after T4 is
+# the explicit SKILL.md write approval.
+
+# T1: diff two runs across four dimensions. Large reading task; suppress
+# AUQ. The M4 run produced cmd/csweb/web.go + web_test.go + isExposed()
+# + README; the M5 packaged re-run sharpened the verifier and re-ran.
+# Codesearch-specific gaps to expect in the diff: (a) httptest can't
+# verify the non-loopback bind socket — the test-strategy skill flagged
+# this in M3 but the packaged run still drifted on quality bar around
+# what "tested" meant for the gate; (b) symlink/case-insensitive
+# semantics on show() path-clamp under macOS; (c) over-fitted verifier
+# checked `go test ./...` green but didn't catch that the verify-by-hand
+# step (curl against the 0.0.0.0 bind) was skipped.
+spot-gaps-build-the-loop-1 Don't call AskUserQuestion — read what's on disk (transcripts at paths recorded in task.md and plan.md, branches m4/<slug> and m5/<slug>, the test-strategy skill at ~/.claude/skills/test-strategy/SKILL.md, the ADR at docs/adr/0001-gate-csweb-network-exposure-on-bind.md) and produce the four-dimension diff inline. Quote moments from both run transcripts and from specific commits / files. If something's genuinely unreadable, name the gap rather than asking.
+
+# T2: cut one stale rule (or stop). Rules in CLAUDE.local.md compounded
+# across M1-M5 on codesearch — M1's siftUp/heap rules, M2's plan/auth-
+# scope rules, M3's threat-model rules, M4/M5's run-discipline rules.
+# Some may have aged out by now (e.g. M2's "csweb has zero tests today"
+# is no longer true after M4 added web_test.go).
+spot-gaps-build-the-loop-2 Don't call AskUserQuestion. If your diagnosis killed exactly one rule, cut it from ./CLAUDE.local.md in place and show the diff in chat afterward. If every rule still holds, say so and stop.
+
+# T3: atomic primitives menu. Codesearch is Go — primitives will land
+# Go-shaped (go test, go vet, golangci-lint, gofmt, manual curl,
+# httptest, race detector, build, etc.). The ranked picks against the
+# dominant gap will likely surface httptest-loopback-only as the constraint
+# the next-iteration skill has to encode.
+spot-gaps-build-the-loop-primitives Don't call AskUserQuestion — produce the list inline. The 5-10 primitives + 2-3 ranked picks all land in one chat reply. Codesearch is Go; primitives like `go test ./...`, `go vet`, manual curl against the actual bound socket, httptest.NewServer for loopback handlers, race detector, gofmt are in scope. Generic "tests" doesn't make the cut; "run go test ./... against the changed package" does.
+
+# T4: author the skill. Ask-and-wait pattern (NOT suppression): tail
+# tells Claude to ask in chat (numbered list) and STOP. Literal-text
+# reply turn directly after carries the canned student-voice answers
+# (Go-shaped, codesearch-specific). The save-gate literal after the
+# reply approves the SKILL.md write.
+spot-gaps-build-the-loop-3 Don't call AskUserQuestion — ask your interview questions as a numbered list in your reply (plain chat text) and STOP, don't write the skill file yet. I'll answer in a follow-up message. Push back if my answers are generic. After I answer, ask follow-ups the same way (numbered, in chat) if my answers leave gaps. When you have enough, tell me you're ready to write the skill and wait for me to say save.
+
+* answers: 1) Shape — judge. The M5 verifier was deterministic (`go test ./...` green, build clean), but the gap that showed up was qualitative: the agent declared done after `go test ./...` passed even though the test-strategy skill explicitly carved out the non-loopback bind socket as verify-by-hand — and nobody actually ran the curl. The judge fires on the "I'm done" signal and asks: was the verify-by-hand step actually run? If unclear from the run notes, the judge flags it. 2) Fires on — final summary + RUN-NOTES.md at end of a long-running task. Reads the test-strategy skill's verify-by-hand carve-outs and checks whether each one is named with evidence (a quoted command output, a manual screenshot, an inline note "I ran `curl -i http://0.0.0.0:2473/api/search?q=foo` and got 200") in the run notes. If a verify-by-hand item is in the skill but not evidenced in the notes, flag. 3) Quality bar — every verify-by-hand item in the skill that's in scope for the task either (a) has evidence in RUN-NOTES.md or the final summary, or (b) is explicitly named as deferred with a one-line why. Hand-wavy "I tested it" doesn't pass. 4) Flag vs let through — flag: verify-by-hand items in scope but unmentioned, claims of "tested" without quoted evidence, evidence that's actually the wrong test (httptest output cited as proof the non-loopback bind works). Let through: explicit deferral with reason, evidence in the form of quoted command + output, or evidence of an actual manual run (timestamp + observed behavior). 5) Output — ranked findings, severity-ordered (BLOCKER for unmentioned verify-by-hand in scope; WARN for thin evidence; OK if the skill's carve-outs all have matching evidence), each with the skill's verify-by-hand line quoted + the run-notes section that should have addressed it. 6) Failure shape when the skill is wrong — false-positive flagging on tasks where the verify-by-hand carve-out isn't actually in scope for the change (a refactor that doesn't touch the gate doesn't need the curl evidence). Diagnostic: the judge should scope its check to the files the run touched, not the whole skill. 7) Skill name — your call; something like `verify-by-hand-judge` or `hand-verify-check`. anything else, use your judgment; I'm not micromanaging.
+
+* save it
+
+# T5: critique before shipping. Same session — charitable by design.
+spot-gaps-build-the-loop-4 Don't call AskUserQuestion. Name three weak parts in chat — be harsher than necessary, assume worse than it looks.
+
+# T6: invoke skill by name on M5 packaged re-run + same-turn judgement.
+# The "M5 packaged re-run" here = the m5/<slug> branch's commits + files
+# + RUN-NOTES.md + the M5 session transcript. The skill should fire on
+# the run's final summary / RUN-NOTES.md and check whether the
+# test-strategy skill's verify-by-hand carve-out for the non-loopback
+# bind was evidenced.
+spot-gaps-build-the-loop-5 Don't call AskUserQuestion. Invoke the skill we just authored by name on the M5 packaged re-run (read m5/<slug> branch commits, files touched, RUN-NOTES.md, M5 transcript at the path recorded in plan.md's Run coordinates block). Produce its ranked-findings output, then answer the three judgement questions in the same response.
+
+# T7: arc retrospective. Reads M1-M6 artefacts: CLAUDE.local.md +
+# .claude/memory/ + docs/adr/0001 + both skills (test-strategy from M3
+# + the new one from T4) + both run artefacts. Dispatches a fresh
+# Agent-tool sub-task; suppress AUQ on the outer conversation.
+arc-retrospective-1 Don't call AskUserQuestion in the outer conversation — the fresh sub-task may use its own judgment internally. Quote from my files. The codesearch arc has six modules of artefacts on disk (M1 siftUp/heap fix + tests, M2 plan, M3 ADR + test-strategy skill, M4 implementation + csweb tests, M5 packaged re-run, M6 second skill). If artefacts are thin at any module, name the gap rather than inventing a pattern to tidy the arc. Show me the note before you save it.
+
+* looks good, save it where you proposed.

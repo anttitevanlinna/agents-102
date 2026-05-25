@@ -1,0 +1,42 @@
+# M1 (AE101) — Getting going + context, codesearch variant.
+# Driven by run-m1.sh with SCENARIO=this-file. Single session in
+# ~/Projects/codesearch starting from master HEAD on branch m1/codesearch-01.
+#
+# Bug picked: real upstream regression (#47, fixed in 4109688) where
+# postHeap.siftUp is missing `j = i` at the end of its loop body. Without
+# it, the loop keeps comparing the same child against its new parent
+# instead of walking up, so the heap invariant breaks once there are
+# enough entries to require multiple swaps. The fix and its regression
+# test (TestHeap) have both been removed and amended into a benign-looking
+# refactor commit several SHAs back — no separate "minor cleanup" commit
+# at HEAD, no commit message to grep, no branch name to read the bug off.
+#
+# Compound-and-close turns 2 (read-ticket via MCP) and 3 (update-ticket)
+# are scoped OUT of the headless run — no real tracker connector
+# configured. The fourth compound (second-pass integrate) closes the
+# session and is treated as the terminal turn.
+#
+# AskUserQuestion guards: orient-1/2 are non-interactive; orient-3 is
+# the /context slash command (no LLM call, no Stop hook — runner has a
+# special branch). fix-tests-first-3 is a SAVE-GATE: prompt ends with
+# "Show me the diff before you commit" and Claude typically asks
+# "one commit or two? PR via gh or hold?" — the literal line that
+# follows is the lazy-student approval.
+
+orient-and-introspect-1
+
+orient-and-introspect-2
+
+orient-and-introspect-3
+
+fix-tests-first-1 After cindex builds a large index, csearch returns subtly wrong results — hits attributed to the wrong file, or hits missing entirely. Reproduces only on inputs big enough that indexing has to merge multiple internal posting chunks; small inputs index and search fine. Likely lives somewhere in the index-merge path.
+
+fix-tests-first-2
+
+fix-tests-first-3
+
+* One commit, no PR — just commit and move on.
+
+compound-and-close-1
+
+compound-and-close-4

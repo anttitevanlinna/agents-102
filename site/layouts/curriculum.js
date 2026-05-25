@@ -66,7 +66,6 @@
                 { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
                 { slug: 'mcp-and-connectors',        title: 'MCP and connectors' },
                 { slug: 'multi-session-git',         title: 'Multi-session and Git: survival guide' },
-                { slug: 'scheduled-agents',          title: 'Scheduled agents' },
                 { slug: 'prompt-anatomy',            title: 'Prompt anatomy: the named moves' }
             ]
         },

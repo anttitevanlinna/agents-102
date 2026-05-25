@@ -274,7 +274,16 @@ ${buildToc(trainingKey, t)}
   function renderStandalone(kind, slug) {
     const docPath = path.join(ROOT, 'curriculum/trainings', trainingKey, kind, slug + '.md');
     let md = readMd(docPath);
-    if (md === null) return '';
+    // A registry slug with no backing file is always a dead nav link: the index
+    // (built from the registry) links to #<kind>-<slug>, but no section renders.
+    // Abort instead of silently shipping N-1 sections (unlike modules, there is
+    // no TRAINER_ONLY carve-out for supplementaries/references).
+    if (md === null) {
+      throw new Error(
+        `${trainingKey} registry lists ${kind} "${slug}" but ${path.relative(ROOT, docPath)} does not exist. ` +
+        `Add the file or remove the entry from TRAININGS.${trainingKey}.${kind === 'supplementary' ? 'supplementaries' : 'references'} in site/layouts/curriculum.js.`
+      );
+    }
     md = md
       .replace(CR.CROSS_DOC_SHARED_RE,      (_, k, s, hash) => hash ? '](' + hash + ')' : '](#' + k + '-' + s + ')')
       .replace(CR.CROSS_DOC_TRAINING_KS_RE, (_, k, s, hash) => hash ? '](' + hash + ')' : '](#' + k + '-' + s + ')');

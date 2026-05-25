@@ -12,7 +12,7 @@ Sim sweeps and platform-capability checks are not tracked here. The `curriculum-
 
 **Harness / tmux-runner engineering is not tracked here either.** Runner bugs, scenario hardening, per-turn assertions, socket isolation, and state.json shape live in `curriculum/evals/mechanical/tmux-runner/IMPROVEMENTS.md`. This file tracks cohort-blocking *curriculum* decisions only; a finding that's fixed in runner code or a scenario file belongs there, not here.
 
-**Source-freshness is not narrated here either, it is stamped per-source and generated.** Each source carries a checked / result / due freshness stamp in its file's `Source verification` block (format: `curriculum/source-freshness-format.md`); `curriculum/evals/scripts/source-freshness.sh --target <cohort-date>` produces the punch list. The 2026-05-25 full sweep cleared all source BLOCKs; per-source stamps now live in each file's `Source verification` block. **Any source item below is superseded by that sweep**, do not add new hand-narrated source-verification prose; stamp and run the script instead.
+**Source-freshness is not narrated here either, it is stamped per-source and generated.** Each source carries a checked / result / due freshness stamp in its file's `Source verification` block (format: `curriculum/source-freshness-format.md`); `curriculum/evals/scripts/source-freshness.sh --target <cohort-date>` produces the punch list. The 2026-05-25 full sweep cleared all source BLOCKs; per-source stamps now live in each file's `Source verification` block. Do not add new hand-narrated source-verification prose; stamp and run the script instead. (The `/research-review` item below is a separate `continuous-research/` pass, not part of this curriculum sweep.)
 
 ## Per-file specific concerns (not caught by auto-fire)
 
@@ -28,7 +28,6 @@ Sim sweeps and platform-capability checks are not tracked here. The `curriculum-
 
 ### From M5+M6 pre-ship audit 2026-05-15
 
-- **`story-of-module-6.md` Geoff Charles quote.** Source-verification maintainer section added 2026-05-22 (URL + fallback framing + freshness re-check). Pre-cohort: actually open `x.com/geoffintech/status/2042002590758572377` (or paywall-fallback) and stamp.
 - **`agents-that-build-agents.md` Ralph→/goal sim re-fire.** Ralph→/goal section added 2026-05-15; three-persona sim (senior engineer / mid-training / CTO) deferred. Before first cohort, fire sim against the new section to verify the platform-arc beat lands without authority-transfer or vendor-plug risk.
 
 ### From 2026-05-21 fact-check on quality-arc + composition build

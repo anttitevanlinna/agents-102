@@ -28,6 +28,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$HERE/lib/resolve-prompt.sh"
 source "$HERE/lib/tmux.sh"
 source "$HERE/lib/sync.sh"
+source "$HERE/lib/assertions.sh"
 
 sut_cwd=""
 task_slug=""
@@ -63,6 +64,23 @@ encoded_cwd="$(echo "$sut_cwd" | sed 's|/|-|g')"
 transcripts_dir="$HOME/.claude/projects/$encoded_cwd"
 mkdir -p "$transcripts_dir"
 pre_transcripts="$(ls "$transcripts_dir" 2>/dev/null | sort | tr '\n' ' ')"
+
+# In-repo-memory assertion baselines (walk-and-send-off-3 memory-path fix,
+# 2026-05-25). The bug routed memory writes to the USER-LEVEL auto-memory
+# home; the fix sends them to the in-repo ./.claude/memory/ convention dir.
+# Snapshot the user-level memory dir before the run + stamp a marker so we
+# can tell, post-run, which home received the write. See classify_memory_write.
+user_mem_dir="$HOME/.claude/projects/$encoded_cwd/memory"
+# mkdir defensively — on a fresh SUT this dir doesn't exist yet, and the
+# ls-pipe-pipefail-set-e combo silently aborts the script at this assignment
+# (no output, no error message, just exit 1). Caught on the picoshare port
+# 2026-05-25: M1-M3 had populated $transcripts_dir but never created the
+# memory subdir, so M4 exited before launching claude.
+mkdir -p "$user_mem_dir"
+pre_user_mem="$(ls "$user_mem_dir" 2>/dev/null | sort | tr '\n' ' ')"
+proj_mem_dir="$sut_cwd/.claude/memory"
+run_start_marker="$run_dir/.run-start"
+touch "$run_start_marker"
 
 echo "[m4] cwd=$sut_cwd run=$run_id"
 echo "[m4] transcripts dir=$transcripts_dir"
@@ -135,6 +153,26 @@ for line in "${lines[@]}"; do
 done
 
 pane_capture "$session" "$run_dir/transcript.txt"
+
+# In-repo-memory assertion (walk-and-send-off-3 fix). Did the memory write
+# land in the in-repo ./.claude/memory/ (PASS) or leak to the user-level
+# auto-memory home (BUG)? NONE = the run only sharpened rules
+# (./CLAUDE.local.md), so the memory path wasn't exercised — not a failure.
+post_user_mem="$(ls "$user_mem_dir" 2>/dev/null | sort | tr '\n' ' ')"
+new_user_mem=""
+for f in $post_user_mem; do
+  echo " $pre_user_mem " | grep -qF " $f " || new_user_mem="$new_user_mem $f"
+done
+new_proj_mem="$(find "$proj_mem_dir" -type f -newer "$run_start_marker" 2>/dev/null | tr '\n' ' ')"
+case "$(classify_memory_write "$new_user_mem" "$new_proj_mem")" in
+  BUG)
+    echo "[assert] FAIL M4 in-repo-memory: write landed USER-LEVEL ($user_mem_dir:$new_user_mem) — the in-repo-path fix did not take; walk-and-send-off-3 still routes to the auto-memory home" >&2
+    exit 1 ;;
+  PASS)
+    echo "[assert] PASS M4 in-repo-memory: write landed in-repo ($proj_mem_dir):$new_proj_mem" ;;
+  NONE)
+    echo "[assert] WARN M4 in-repo-memory: no memory file written this run (gaps were rule-sharpening → ./CLAUDE.local.md); in-repo memory path not exercised" >&2 ;;
+esac
 
 # Post-run: identify new session UUID by diffing transcripts dir.
 post_transcripts="$(ls "$transcripts_dir" 2>/dev/null | sort | tr '\n' ' ')"

@@ -105,3 +105,75 @@ assert_or_warn() {
   echo "[assert] WARN downgraded" >&2
   return 0
 }
+
+# --- worktree tree-content detection -------------------------------------
+# Replaces `git stash create` for tree-advance checks. `git stash create`
+# returns EMPTY on a clean worktree (nothing to stash), so a save onto a
+# freshly-forked clean worktree produced no baseline and the tree-advance
+# assertion never fired (IMPROVEMENTS.md Fix 3, 2026-05-25). A content hash
+# of every non-ignored file changes whenever a file is added OR modified,
+# clean worktree or not.
+
+worktree_file_list() {
+  # Sorted list of non-ignored files (tracked + untracked), one per line,
+  # relative to the worktree root. Empty if cwd is not a git repo.
+  local cwd="$1"
+  ( cd "$cwd" 2>/dev/null && git ls-files --cached --others --exclude-standard 2>/dev/null | LC_ALL=C sort )
+}
+
+worktree_content_hash() {
+  # Single hash over the names AND contents of all non-ignored files.
+  # Changes on any add/modify/delete. Empty cwd / no files -> stable "0".
+  local cwd="$1" h
+  h="$( cd "$cwd" 2>/dev/null \
+    && git ls-files --cached --others --exclude-standard -z 2>/dev/null \
+       | LC_ALL=C sort -z \
+       | xargs -0 shasum -a 256 2>/dev/null \
+       | shasum -a 256 \
+       | awk '{print $1}' )"
+  [[ -n "$h" ]] && echo "$h" || echo "0"
+}
+
+pick_verifier_path() {
+  # Given newline-separated new-file paths (relative), pick the one most
+  # likely to be the verifier. Prefer a verifier-ish name; else the first
+  # script/doc-shaped file. Echoes empty if none. Replaces the old
+  # backtick-grabbing scrollback regex (IMPROVEMENTS.md Fix 2, 2026-05-25).
+  local new_files="$1" pick
+  pick="$(printf '%s\n' "$new_files" | grep -E -i 'verif|hook|judge|check|test|smoke|gate' | head -1 || true)"
+  [[ -z "$pick" ]] && pick="$(printf '%s\n' "$new_files" | grep -E '\.(sh|js|mjs|ts|py|md)$' | head -1 || true)"
+  printf '%s' "$pick"
+}
+
+classify_memory_write() {
+  # Decide where a memory write landed, for the walk-and-send-off-3
+  # in-repo-memory-path fix (IMPROVEMENTS.md / pre-cohort L91, 2026-05-25).
+  # The bug: the prompt said bare ".claude/memory/" and Claude routed to
+  # its USER-LEVEL auto-memory home (~/.claude/projects/<encoded>/memory/)
+  # instead of the in-repo ./.claude/memory/. The fix names the in-repo
+  # location explicitly (NOT "project memory" — that term denotes CLAUDE.md
+  # in Claude Code; .claude/memory/ is a user-authored convention, per
+  # check_platform_and_boundaries §6d). This classifier proves the fix took.
+  #   $1 = new files seen in the user-level memory dir (any non-space = bug)
+  #   $2 = new files seen in the project ./.claude/memory dir
+  # Echoes: BUG (landed user-level) | PASS (landed in-repo) | NONE (path
+  # not exercised this run — e.g. only CLAUDE.local.md rule-sharpening).
+  local user_new="$1" proj_new="$2"
+  if [[ -n "${user_new//[[:space:]]/}" ]]; then echo BUG
+  elif [[ -n "${proj_new//[[:space:]]/}" ]]; then echo PASS
+  else echo NONE; fi
+}
+
+find_recent_md() {
+  # Markdown files under $root modified after the reference file $ref,
+  # excluding known noise dirs. Replaces the fixed dir-whitelist that
+  # missed agent-chosen destinations like docs/notes/ (IMPROVEMENTS.md
+  # Fix 4, 2026-05-25). Uses `-newer <reffile>` (POSIX) not `-newermt
+  # "@epoch"` — BSD find on macOS can't parse the @epoch form and errored
+  # silently, so the old line never matched anything regardless of dir.
+  local root="$1" ref="$2"
+  [[ -f "$ref" ]] || { echo "[assert] WARN find_recent_md: missing ref marker $ref" >&2; return 0; }
+  find "$root" \
+    \( -name node_modules -o -name .git \) -prune -o \
+    -type f -name '*.md' -newer "$ref" -print 2>/dev/null
+}

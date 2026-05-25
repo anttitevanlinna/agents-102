@@ -88,6 +88,22 @@ if [[ -z "$worktree_cwd" ]]; then
   exit 2
 fi
 
+# PA pre-flight (IMPROVEMENTS.md Fix 1a, 2026-05-25): refuse to launch if
+# the worktree path already exists. ae101-m5-worktree-setup runs
+# `git worktree add ../<repo>-m5 <sha>`, which git refuses on a populated
+# path — but the post-PA assertion was `[[ ! -d "$worktree_cwd" ]]`, which
+# a pre-existing dir passes trivially even when the fork errored. A prior
+# unrelated run's leftover at this path would have silently broken the M5
+# contract. Fail loud, before warmup, with the recovery move.
+if [[ -e "$worktree_cwd" ]]; then
+  echo "[m5] FAIL pre-flight: worktree path already exists: $worktree_cwd" >&2
+  echo "[m5]   ae101-m5-worktree-setup must CREATE this path; a pre-existing one" >&2
+  echo "[m5]   means git worktree add will refuse and the M5 fork won't happen." >&2
+  echo "[m5]   Recover: 'git -C $main_cwd worktree move <name> <name>-prior' (if a" >&2
+  echo "[m5]   registered worktree) or move/remove the stray path, then re-run." >&2
+  exit 2
+fi
+
 scenario="${SCENARIO:-$HERE/scenarios/m5.txt}"
 [[ -f "$scenario" ]] || { echo "missing scenario: $scenario" >&2; exit 2; }
 
@@ -284,6 +300,28 @@ reference_baseline_mtime="$(mtime_of "$reference_md")"
 plan_baseline_mtime="$(mtime_of "$plan_md")"
 echo "[m5] worktree baseline: branch=$worktree_branch sha=$worktree_baseline_sha"
 
+# PA post-assertion (IMPROVEMENTS.md Fix 1b, 2026-05-25): verify the
+# worktree was forked from M4's "M4 starting point" commit — not just that
+# a dir exists. The setup prompt forks at that commit on the m4/<slug>
+# branch onto a new m5/<slug> branch, so at this point (no PB work yet)
+# the worktree HEAD must equal that commit. Derive the m4 branch from the
+# worktree's own branch name and look the SHA up on that named branch only
+# (main_cwd has multiple "M4 starting point" commits across dry-runs, so a
+# bare/`--all` grep is ambiguous — scope it to the branch). If the lookup
+# can't resolve (message rewritten, branch absent), WARN rather than FAIL:
+# the prompt's own fallback is "ask me for the SHA", and we can't verify
+# what we can't derive.
+m4_branch="m4/${worktree_branch#m5/}"
+m4_start_sha="$(cd "$main_cwd" && git log "$m4_branch" --format='%h' --grep='^M4 starting point$' -1 2>/dev/null || true)"
+if [[ -z "$m4_start_sha" ]]; then
+  echo "[assert] WARN PA: could not resolve 'M4 starting point' on $m4_branch from $main_cwd — skipping HEAD-match check (verify the fork SHA by hand)" >&2
+elif [[ "$worktree_baseline_sha" != "$m4_start_sha" ]]; then
+  echo "[assert] FAIL PA: worktree HEAD $worktree_baseline_sha != M4 starting point $m4_start_sha on $m4_branch — fork started from the wrong commit" >&2
+  exit 1
+else
+  echo "[assert] PASS PA: worktree forked at M4 starting point $m4_start_sha ($m4_branch)"
+fi
+
 # ============================================================
 # Phase B: exercise — diagnose-and-resend-1..6 in worktree.
 # Install Stop hook in worktree (git worktree add doesn't copy
@@ -300,16 +338,19 @@ sleep "$warmup"
 
 # Verifier file location is student-picked (diagnose-and-resend-4 says
 # "tell me where it lives"). We can't assert a fixed path; instead we
-# track the worktree-tree state via `git stash create` before and after
-# T4 (the verifier-save canned-reply turn) so the assertion fires on
-# tree-content advance — the same shape run-m1.sh uses for the T6
-# deeper-pass check. Verifier may also land under .claude/hooks/ or as
-# a slash-command file — both are tracked git paths only if the
-# worktree's gitignore lets them through, but `git stash create` sees
-# unstaged tracked changes + everything under non-ignored paths. Best
-# effort; if the verifier lands fully under a gitignored path we fall
-# back to scrollback-grep for "verifier" / "saved".
-tree_sha_before_verifier_save=""
+# track the worktree tree via a content hash of all non-ignored files
+# (worktree_content_hash) before and after T4 (the verifier-save
+# canned-reply turn), so the assertion fires on tree-content advance.
+# IMPROVEMENTS.md Fix 3 (2026-05-25): the old `git stash create` baseline
+# returned EMPTY on a freshly-forked clean worktree (nothing to stash), so
+# the case-5 tree-advance branch never fired and PB-T5 passed on the loose
+# scrollback grep instead. A content hash changes on any add/modify, clean
+# worktree or not. We also snapshot the file LIST so the post-phase
+# verifier-path discovery can set-diff the real new file (Fix 2) rather
+# than grep a backtick fragment out of the scrollback.
+content_hash_before_verifier_save=""
+files_before_verifier="$pb_dir/files-before-verifier.txt"
+files_after_verifier="$pb_dir/files-after-verifier.txt"
 
 assert_pb_turn() {
   local key_seq="$1" transcript="$2"
@@ -336,8 +377,9 @@ assert_pb_turn() {
         if ! assert_scrollback_grep "PB-T4 verifier-proposed" "$transcript" "verifier|hook|judge|background.agent|ralph|re.feed|shell.hook"; then
           return 1
         fi
-        tree_sha_before_verifier_save="$(cd "$worktree_cwd" && git stash create 2>/dev/null || true)"
-        echo "[m5] PB-T4 pre-save tree=${tree_sha_before_verifier_save:0:8}"
+        content_hash_before_verifier_save="$(worktree_content_hash "$worktree_cwd")"
+        worktree_file_list "$worktree_cwd" > "$files_before_verifier"
+        echo "[m5] PB-T4 pre-save content-hash=${content_hash_before_verifier_save:0:12} files=$(wc -l < "$files_before_verifier" | tr -d ' ')"
         ;;
     5)  # diagnose-and-resend-5 — smoke-test PASS + FAIL synthetic inputs.
         # Two assertions: (a) scrollback names PASS and FAIL outcomes;
@@ -347,13 +389,15 @@ assert_pb_turn() {
         if ! assert_scrollback_grep "PB-T5 smoke-test outcomes" "$transcript" "pass|fail|expected|fired|matched"; then
           return 1
         fi
-        local tree_now
-        tree_now="$(cd "$worktree_cwd" && git stash create 2>/dev/null || true)"
-        if [[ -n "$tree_now" && "$tree_now" != "$tree_sha_before_verifier_save" ]]; then
-          echo "[assert] PASS PB-T5 worktree tree advanced (${tree_sha_before_verifier_save:0:8} -> ${tree_now:0:8})"
+        local hash_now
+        hash_now="$(worktree_content_hash "$worktree_cwd")"
+        worktree_file_list "$worktree_cwd" > "$files_after_verifier"
+        if [[ -n "$content_hash_before_verifier_save" && "$hash_now" != "$content_hash_before_verifier_save" ]]; then
+          echo "[assert] PASS PB-T5 worktree content advanced (${content_hash_before_verifier_save:0:12} -> ${hash_now:0:12})"
         else
-          # Verifier may have landed under .gitignore'd path. Soft check:
-          # scrollback names a saved-to path.
+          # No in-worktree change — verifier may have landed user-level
+          # (~/.claude/hooks, ~/.claude/commands) or under a gitignored
+          # path. Soft check: scrollback names a saved-to path.
           assert_or_warn assert_scrollback_grep "PB-T5 verifier saved (path mentioned)" "$transcript" "saved|wrote|created|/Users/|~/|\.claude/"
         fi
         ;;
@@ -539,15 +583,24 @@ done
 worktree_ending_sha="$(cd "$worktree_cwd" && git rev-parse --short HEAD)"
 worktree_ending_branch="$(cd "$worktree_cwd" && git rev-parse --abbrev-ref HEAD)"
 
-# Best-effort verifier discovery: look for files mentioned as "saved" /
-# "verifier" path in PB transcripts. Heuristic, not load-bearing.
+# Verifier discovery (IMPROVEMENTS.md Fix 2, 2026-05-25). The old heuristic
+# greped paths out of the PB scrollback and grabbed a backtick code-fence
+# fragment (".claude/hooks/\`,") instead of the real saved path. Authoritative
+# source is the worktree itself: set-diff the file LIST snapshotted before
+# (T4) and after (T5) the verifier save; the new file IS the verifier. Fall
+# back to a tightened scrollback grep (absolute/home paths, backticks
+# excluded) only if the verifier landed outside the worktree's tracked tree.
 m5_verifier=""
-verifier_candidate="$(grep -hoE '(/Users/[^[:space:]]+|~/[^[:space:]]+|\.claude/hooks/[^[:space:]]+|verifier\.[a-z]+)' \
-  "$pb_dir"/turn-*.transcript.txt 2>/dev/null \
-  | grep -E '(verifier|hook|judge)' \
-  | head -1 || true)"
-if [[ -n "$verifier_candidate" ]]; then
-  m5_verifier="${verifier_candidate/#\~/$HOME}"
+if [[ -f "$files_before_verifier" && -f "$files_after_verifier" ]]; then
+  new_verifier_rel="$(pick_verifier_path "$(comm -13 "$files_before_verifier" "$files_after_verifier" 2>/dev/null)")"
+  [[ -n "$new_verifier_rel" ]] && m5_verifier="$worktree_cwd/$new_verifier_rel"
+fi
+if [[ -z "$m5_verifier" ]]; then
+  verifier_candidate="$(grep -hoE '(/Users/[^[:space:]`]+|~/[^[:space:]`]+)' \
+    "$pb_dir"/turn-*.transcript.txt 2>/dev/null \
+    | grep -E -i '(verifier|hook|judge|check|test)' \
+    | head -1 || true)"
+  [[ -n "$verifier_candidate" ]] && m5_verifier="${verifier_candidate/#\~/$HOME}"
 fi
 
 m5_run_notes=""

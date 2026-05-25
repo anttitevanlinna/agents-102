@@ -82,6 +82,12 @@ pre_skills="$(ls "$skills_dir" 2>/dev/null | sort | tr '\n' ' ')"
 claude_local_md="$sut_cwd/CLAUDE.local.md"
 claude_local_mtime_baseline="$(mtime_of "$claude_local_md")"
 run_start_epoch="$(date +%s)"
+# Reference marker for "files saved during this run". find_recent_md uses
+# `-newer <reffile>` (POSIX) — BSD find on macOS can't parse `-newermt
+# "@epoch"` and errored silently, so the old arc-note scan never matched
+# (IMPROVEMENTS.md Fix 4, 2026-05-25).
+run_start_marker="$run_dir/.run-start"
+touch "$run_start_marker"
 
 echo "[m6] cwd=$sut_cwd run=$run_id"
 echo "[m6] baseline sha=$baseline_sha branch=$baseline_branch"
@@ -277,23 +283,19 @@ if [[ ${#new_skills_list[@]} -gt 0 ]]; then
   new_skills_json="[$(printf '"%s",' "${new_skills_list[@]}" | sed 's/,$//')]"
 fi
 
-# Detect arc-retrospective save destinations. The note's destination is
-# student-picked (ADR / .claude/memory/ memo / standalone file), so we
-# can't pin a single path. Scan likely homes for files mtime'd after
-# run_start_epoch.
+# Detect arc-retrospective save destinations (IMPROVEMENTS.md Fix 4,
+# 2026-05-25). The note's destination is student-picked (ADR /
+# .claude/memory/ memo / standalone file), so we can't pin a single path.
+# The old code walked a fixed dir-whitelist (.claude/memory, docs/adr,
+# docs/adrs, root) at maxdepth 1 — it missed the 2026-05-25 run's
+# agent-chosen docs/notes/ and reported []. Walk the whole worktree for
+# .md files newer than the run-start marker, excluding known noise. False
+# positives (e.g. an edited CLAUDE.local.md) are recoverable by a human;
+# false negatives mean state.json lies.
 arc_paths_list=()
-for candidate_dir in \
-  "$sut_cwd/.claude/memory" \
-  "$sut_cwd/docs/adr" \
-  "$sut_cwd/docs/adrs" \
-  "$sut_cwd"; do
-  [[ -d "$candidate_dir" ]] || continue
-  # Only direct .md files (don't recurse — too noisy; if the student
-  # picked a nested path, the absence here is fine, state.json is best-effort).
-  while IFS= read -r path; do
-    [[ -n "$path" ]] && arc_paths_list+=("$path")
-  done < <(find "$candidate_dir" -maxdepth 1 -type f -name '*.md' -newermt "@$run_start_epoch" 2>/dev/null)
-done
+while IFS= read -r path; do
+  [[ -n "$path" ]] && arc_paths_list+=("$path")
+done < <(find_recent_md "$sut_cwd" "$run_start_marker")
 arc_paths_json="[]"
 if [[ ${#arc_paths_list[@]} -gt 0 ]]; then
   arc_paths_json="[$(printf '"%s",' "${arc_paths_list[@]}" | sed 's/,$//')]"

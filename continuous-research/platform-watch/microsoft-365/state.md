@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [microsoft, copilot, copilot-studio, azure-ai-foundry]
 nordic: true
-updated: 2026-05-24
-cycle: 114
+updated: 2026-05-26
+cycle: 115
 answers:
   - "what can business users do with Microsoft Copilot today?"
   - "is Copilot Studio a real agent builder?"
@@ -14,8 +14,12 @@ answers:
 
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-05-24 (cycle 114)
-OODA cycles: 21
+Last updated: 2026-05-26 (cycle 115)
+OODA cycles: 22
+
+**Cycle 115 updates (May 26, 2026):**
+- **Copilot Cowork GA (May 1) — 3.5 weeks post-GA, zero independent enterprise deployment reports.** GA'd May 1 at $99/user/month in E7 suite. All post-GA content is vendor marketing, Microsoft partner blogs, or advisory firm explainers. No IT admin "we deployed this" posts, Reddit threads, or LinkedIn practitioner posts. Best available practitioner-direct review remains Amanda Sterner (April 4, pre-GA Frontier): confirms M365-only automation (email, calendar, Teams, presentations), "shitty looking" outputs, EU data boundary manual activation required, Loop/file-upload limits. EU mandatory: Anthropic activation required (disabled by default in EU tenants); prompts may process outside EU data boundary. **IT admin key risk (IDECSI, April 28):** permission amplification — Cowork operates with full user permissions; stale sharing links and overpermissioned users become agent-scale risks; permissions audit required before deployment. **May 5 update:** iOS/Android support; third-party plugins added (LSEG, Miro, monday.com, S&P Global Energy; coming: Adobe, Atlassian, Box, Harvey.AI, Morningstar) — directly addresses prior Gartner "no third-party integrations" critique. Claude Opus 4.7 now selectable. **Year-one enterprise TCO (500 seats): $350K–$530K+** (licensing + governance + adoption waste) per multiple converging analyses. Sources: [Amanda Sterner](https://www.amandasterner.com/post/my-first-impressions-of-copilot-cowork-amandasterner) — [practitioner direct, Apr 4, 2026]; [IDECSI](https://blog.idecsi.com/copilot-cowork-microsoft-365) — [IT advisory, Apr 28, 2026]; [Microsoft 365 Blog](https://www.microsoft.com/en-us/microsoft-365/blog/2026/05/05/copilot-cowork-from-conversation-to-action-across-skills-integrations-and-devices/) — [vendor, May 5, 2026]. Evidence level: Level 1 (one practitioner review, pre-GA; all post-GA is Level 0).
+- **Microsoft Build 2026 pre-event signals (June 2-3, Fort Mason SF).** Primary theme: AI agents and agentic systems. Keynote: Satya Nadella + Scott Guthrie. Day 2 tracks: AI Production, Agentic Systems, Cost & Efficiency. Pre-announced: "AI Foundry for Windows" SDK (ONNX Runtime + DirectML + Copilot Runtime); identity-aware agent gateway mapping actions to Entra ID principals. 11-startup Build 2026 cohort on agent governance/observability (names unpublished). New certification live: "Microsoft Certified: AI Agent Builder Associate." No major feature leaks found. Rescan June 3 and June 10-12. Sources: [WindowsNews.ai](https://windowsnews.ai/article/microsoft-build-2026-in-san-francisco-ai-agents-trust-and-developer-platform-shift.418934) — [domain trade publication, May 24, 2026]. Evidence level: Level 1.
 
 **Cycle 114 updates (May 24, 2026):**
 - **Agent 365 GA confirmed (May 1, 2026).** Launched at $15/user/month standalone or included in M365 E7. Key GA capabilities: shadow AI discovery targeting Claude Code, GitHub Copilot CLI, and OpenAI Codex CLI inside enterprise networks; cloud agent registry sync with AWS Bedrock and Google Cloud (preview); asset context mapping showing agent-to-resource relationships (preview, June); policy-based runtime blocking of malicious agent behavior; Windows 365 for Agents (managed cloud environments for agent workloads). Named enterprise customer: **NTT DATA Group Corporation** — governance quote only, no quantified results. **SAMexpert pre-GA prediction confirmed:** Two-bill problem validated (M365 governance cost + separate Azure consumption cost); autonomous agent identities remain in preview at GA; threat detection features in public preview, not fully GA. Source: [Microsoft Security Blog](https://www.microsoft.com/en-us/security/blog/) — [vendor, May 1, 2026]. Evidence level: Level 1 for product facts; Level 0 for customer outcomes.

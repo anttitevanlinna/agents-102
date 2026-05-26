@@ -15,8 +15,8 @@ answers:
 
 # AI-Native Teams — Research Track
 
-**Last updated:** 2026-04-27 (cycle 112)
-**OODA cycles:** 6
+**Last updated:** 2026-05-26 (cycle 115)
+**OODA cycles:** 7
 **Focus:** How teams that deeply integrate AI into their daily work actually operate — their characteristics, practices, working style, tools, and structure.
 
 ## Why This Track Exists
@@ -103,6 +103,17 @@ Not every team using Copilot is AI-native. The distinction:
 - Track which platforms enable AI-native practices vs. which constrain them
 - Note when teams switch tools and why
 
+## Cycle 115 Updates (May 26, 2026)
+
+**AIG — Multi-Agent Company-Scale Deployment with Verified Financial Outcomes:**
+AIG is now the strongest cross-industry signal for multi-function AI-native company transformation. CEO Peter Zaffino directly linked multi-agent orchestration to Q1 2026 results in earnings call. Three agent types across front-, mid-, back-office: Knowledge assistants (real-time data), Adviser agents (historical patterns), Critic agents (challenge recommendations before human approval). Q1 2026: underwriting income $774M vs. $243M Q1 2025 (+219%), combined ratio 87.3% (-8.5 points), net premiums written +24% YoY, 55% reduction in quoting time, 30% improvement in quote submissions, Claude 88% agreement rate with human adjusters. Agents now run autonomously 30 hours (was <1 hour with Claude 2.0). Platform: Palantir Foundry + Claude. Source: [Actuary.info](https://actuary.info/insights/multi-agent-orchestration-carrier-ai-playbook-2026) — [domain trade publication synthesizing AIG Q1 2026 earnings + Palantir/Coverager], May 2026. Evidence level: Level 2-3 (earnings call = verified financial data; CEO made explicit AI attribution; financial results confounded by macro factors — underwriting cycle, catastrophe losses — but multi-function scope confirmed). **Add to Named Teams table below.**
+
+**Atlassian NORA — Non-Technical HR Team Builds Agent Without Code:**
+Atlassian's internal HR team built NORA (Newlassian Onboarding Rovo Agent) using Atlassian Rovo platform — no engineering involvement. 70% adoption rate among new hires. Agent answers questions "too embarrassing to ask supervisors," covers work expectations, local benefits, IT support, office norms. HR team freed to "build deeper connections with employees." Source: [Atlassian Community](https://community.atlassian.com/forums/Atlassian-AI-Rovo-articles/How-to-Create-a-High-Impact-Rovo-Agent-Lessons-from-NORA/ba-p/3157915) — [practitioner direct, Atlassian HR team], May 2026. Evidence level: Level 2 (single company, single function, specific metric; caveat: Atlassian is the platform vendor — partially product showcase). **Adds to Pattern D (non-engineering AI-nativeness) and Pattern F ("just enough technical background").**
+
+**Microsoft Frontier Firms 2026 — 67/32 Rule + Four Collaboration Modes:**
+Microsoft Work Trend Index (n=31,000, 31 countries, May 5, 2026) introduces "Frontier Firms" taxonomy. Key finding: organizational factors account for 67% of AI impact vs. 32% for individual behavior. Converges independently with BCG Nordic (organizational factors = root cause of Nordic underperformance) and Deloitte Nordic 2026 (strategic readiness declining despite awareness). Four human-agent collaboration modes: Author, Editor, Director, Orchestrator. "Frontier Firms" (~19% of knowledge workers) are 2x more likely to standardize workflows, share quality standards, compare prompt strategies. "Owned Intelligence" concept: firm-specific AI know-how that compounds. Source: [Microsoft Blog](https://blogs.microsoft.com/blog/2026/05/05/how-frontier-firms-are-rebuilding-the-operating-model-for-the-age-of-ai/) — [vendor analysis, n=31,000]. Evidence level: Level 3 for "organizational factors dominate" finding (converges independently with BCG, Deloitte, Tieto Nordic surveys); Level 1 for Frontier Firms framework (Microsoft construct, no independent validation).
+
 ## Findings
 
 ### Emerging Pattern A: Role Dissolution → "Product Engineer"
@@ -174,6 +185,8 @@ The Amplification Paradox has a specific operational mechanism: Little's Law. AI
 | **Cloudflare (iMARS team → Dev Productivity)** | ~6,100 company, 93% R&D | **Infrastructure/networking** | iMARS tiger team: 13 production MCP servers, 182 tools (GitLab, Jira, Sentry), governance baked into platform (default-deny write, audit logging), merge velocity ~doubled. AI code review: 7 specialized agents, median review 3m39s (was hours), human override 0.6% of MRs. | Level 2 | [Cloudflare blog Apr 21](https://blog.cloudflare.com/internal-ai-engineering-stack/) + [Cloudflare blog Apr 20](https://blog.cloudflare.com/ai-code-review/) — [practitioner direct] |
 | **Nordic software co. (finance, anonymized)** | 1 person | **Finance** | Non-coder with consulting background + just enough technical education. 9 months coding with Claude: bookkeeping automation → in-house tooling → AI features. Trajectory: automation → AI features → production tooling. | Level 2 | [direct observation, Mar 2026] — Nordic, first non-engineering coding-agent practitioner |
 | **Nordic software co. (tech director, anonymized)** | 1 person | **Technology/Management** | Non-coder with technical background. Was: slides and docs. Now: dashboards → hosting platform for AI apps. Trajectory: consumption → creation → infrastructure. | Level 2 | [direct observation, Mar 2026] — Nordic, second non-engineering coding-agent practitioner |
+| **AIG (Peter Zaffino, CEO)** | Large enterprise (~25K employees) | **Insurance (underwriting, operations)** | Multi-agent across front-office, mid-office, back-office: Knowledge/Adviser/Critic agents; 370K submissions processed in 2025; Q1 2026 underwriting income +219%; 55% quoting time reduction; 88% Claude/human adjuster agreement. Platform: Palantir Foundry + Claude. | Level 2-3 | [Actuary.info](https://actuary.info/insights/multi-agent-orchestration-carrier-ai-playbook-2026) — earnings call synthesis, May 2026 |
+| **Atlassian HR team (NORA)** | Small HR team | **HR/Onboarding** | Non-technical HR built NORA Rovo agent without code; 70% new-hire adoption; covers benefits, IT support, office norms; HR freed for relationship work. | Level 2 | [Atlassian Community](https://community.atlassian.com/forums/Atlassian-AI-Rovo-articles/How-to-Create-a-High-Impact-Rovo-Agent-Lessons-from-NORA/ba-p/3157915) — practitioner direct, May 2026 |
 | **Scania/TRATON AI-Enablement** | 4 | **Developer enablement** | MobAI: daily mob 09:00-12:00, rotating Driver/Navigator/Advisor, LLM as participant. Built DevEx Interview Agent deployed across TRATON Group. Inspired by Joe Justice workshop at Crisp. | Level 2 | [Crisp blog](https://blog.crisp.se/2025/06/02/michaelgothe/mob-programming-with-ai-inside-a-high-performing-teams-journey) + [Scania blog](https://www.scania.com/group/en/home/career/life-at-scania/software-developers-at-scania/blog-posts/blog-how-we-use-ai-to-build-a-developer-first-culture.html) — Nordic (Swedish) |
 | **Solita/ISS (Twin Project)** | Unknown | **Software development** | CollabAI: 15-min role rotation, one screen, AI generates prototypes/tests/models live. Controlled comparison vs. traditional agile. Vendor claims 100x prototyping, 500x decisions, 90% fewer meetings. | Level 0 (vendor case study) | [Solita case study](https://www.solita.fi/work/breaking-new-ground-in-software-development-with-ai-powered-collaboration/) — Nordic (Finnish), UNVERIFIED metrics |
 

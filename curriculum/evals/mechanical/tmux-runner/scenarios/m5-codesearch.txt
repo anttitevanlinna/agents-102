@@ -3,16 +3,20 @@
 # m5.txt (lemmings); codesearch-flavored tails.
 #
 # State when M5 starts:
-#   - main_cwd: ~/Projects/codesearch on branch m4/implement-bind-gate
-#     at HEAD bdf9492 ("M4 starting point" commit). Working tree DIRTY
-#     with M4's send-off implementation work (--bind + --expose-without-auth
-#     + isExposed() in cmd/csweb/web.go, new cmd/csweb/web_test.go,
-#     README updates). go test ./... green.
+#   - main_cwd: ~/Projects/codesearch on whatever m4/ branch M4 left HEAD
+#     ("M4 starting point" commit as the fork point, with M4's send-off
+#     implementation work committed on top — not uncommitted; the
+#     codesearch M4 run committed the clamp implementation rather than
+#     leaving it dirty). go test ./... green.
 #   - task.md from M4 carries a protected "Run coordinates" block at
 #     bottom with the branch + transcript path.
-#   - docs/adr/0001-gate-csweb-network-exposure-on-bind.md is the ADR
-#     M4's task was implementing; M5 reads/iterates the send-off work.
-#   - ~/.claude/skills/test-strategy/ from M3 is available.
+#   - docs/adr/0001-*.md is the ADR M4's task was implementing (today's
+#     codesearch run wrote 0001-clamp-csweb-show-to-index-roots.md — the
+#     I-class clamp on the /show handler via filepath.EvalSymlinks +
+#     separator-terminated ix.Roots() prefix). M5 reads/iterates the
+#     send-off work.
+#   - ~/.claude/skills/test-strategy-codesearch/ from M3 is available
+#     (namespaced per-SUT).
 #
 # AUQ suppression: same discipline as m5.txt. Two ask-and-wait turns
 # (diagnose-and-resend-4 verifier approval, diagnose-and-resend-6 grill).
@@ -47,11 +51,14 @@ diagnose-and-resend-2 Don't call AskUserQuestion. The M4 send-off ran in the ori
 diagnose-and-resend-3 Don't call AskUserQuestion — pick your reading of the dominant failure and walk it; if you're torn between two readings, name both and pick one to proceed.
 
 # T4: verifier for dominant failure. Codesearch task = implement-the-ADR
-# work; likely failure shapes are plausible-but-wrong (predicate
-# mis-classifies non-loopback addresses) or context rot (re-derives the
-# ADR's gate vs auth distinction). Either way the verifier shape is
-# likely a shell-hook running `go test ./...` + a custom invariant on
-# isExposed() or a Ralph re-feed reading the ADR. Ask-and-wait pattern.
+# work (today's I-class clamp); likely failure shapes are plausible-but-wrong
+# (clamp passes a naive prefix test but lets symlink escape or separator-
+# collision through) or context rot (re-derives the ADR's filter-not-gate
+# distinction and drifts into auth). Either way the verifier shape is
+# likely a shell-hook running `go test ./...` plus a custom invariant on
+# the clamp predicate (table over symlink-escape, dir-listing, separator-
+# prefix collision), or a Ralph re-feed reading the ADR. Ask-and-wait
+# pattern.
 diagnose-and-resend-4 Don't call AskUserQuestion. Propose the verifier (script, prompt, or loop wrapper) in your reply (plain chat text). STOP before saving — don't write the file yet. I'll review and follow up with approval. After approval, save to the path you proposed. Pick the shape that matches YOUR diagnosed dominant failure, not the comfortable shape.
 
 * approved. save it to the path you proposed. proceed.
@@ -62,12 +69,12 @@ diagnose-and-resend-5 Don't call AskUserQuestion — invent the two synthetic in
 # T6: reference.md + plan.md. Grill in chat (numbered, three at a time),
 # stop, canned reply answers, then 'lock it in' triggers writes.
 # Codesearch-specific answers: tests-first means writing failing tests
-# for isExposed() classification + show() path-clamp before code lands;
-# the test-strategy skill's carve-out (httptest can't bind non-loopback)
-# is the named question, not a rule.
+# for the /show clamp (symlink escape, dir listing, separator-prefix
+# collision) before the fix lands; the test-strategy skill's carve-out
+# (the actual socket bind is hand-verify only) is the named gap.
 diagnose-and-resend-6 Don't call AskUserQuestion. Ask your three grill questions per round as a numbered list in your reply (plain chat text) and STOP — don't touch either file yet. I'll answer in a follow-up; ask the next three (or tell me ready) the same way. The 'lock it in' line will be a separate message when I'm ready to approve the writes.
 
-* answers: 1) reference.md and plan.md both at the worktree root, next to task.md and docs/adr/0001. 2) success criteria scoped to the M3 ADR: --bind flag parses, isExposed() classifies loopback vs non-loopback, --expose-without-auth gate refuses non-loopback start without the flag, show() handler path-clamps to ix.roots, go test ./... green. The ADR is informed-consent, not authentication — don't build auth. 3) tests-first phase: failing tests for isExposed() table + show() path-clamp reject case BEFORE the production code lands. test-strategy skill's carve-out (httptest can't bind non-loopback) means the socket bind itself is verify-by-hand — name that gap in the reference rather than pretending it's covered. 4) decisions log append-only one line per load-bearing choice (which address-classification predicate; symlink handling on macOS). 5) what-didn't-work empty at start; agent appends as it goes. anything else, use your judgement.
+* answers: 1) reference.md and plan.md both at the worktree root, next to task.md and the most recent docs/adr/0001-*.md. 2) success criteria scoped to the M3 ADR (today's clamp): the /show handler clamps the resolved path to one of ix.Roots() via filepath.EvalSymlinks + separator-terminated prefix, applied to BOTH the file-read and directory-listing branches; symlink-escape, dir-listing, and separator-collision tests pass; go test ./... green. The ADR is a filter, not authentication — don't build auth, don't refuse a non-loopback bind. 3) tests-first phase: write the failing symlink-escape + dir-listing + separator-prefix-collision tests BEFORE the clamp lands; a green /etc/passwd test alone is NOT sufficient because naive prefix clamps still leak through the three real cases. The test-strategy skill's carve-out (the actual socket bind is hand-verify, not httptest-coverable) means RUN-NOTES.md needs the verify-by-hand evidence or an explicit deferral — name that gap in the reference. 4) decisions log append-only one line per load-bearing choice (where to resolve symlinks; how show() reaches ix.Roots() given it has no index handle today). 5) what-didn't-work empty at start; agent appends as it goes. anything else, use your judgement.
 
 * lock it in
 
@@ -75,4 +82,4 @@ diagnose-and-resend-6 Don't call AskUserQuestion. Ask your three grill questions
 # The long autonomous send-off. Same AUQ-and-anchor tail discipline as
 # the M4 codesearch send-off — runs up to 1h unattended, every ambiguity
 # would hang the runner.
-ae101-m5-rerun-packaged I'm walking away. Don't call AskUserQuestion at any point during this run — any question hangs the run for the full hour. When you hit an ambiguity, state your assumption in plan.md's decisions-log section and proceed; surface anything genuinely unclear in your final three-list report at the end. Anchor points the reference + plan.md should already pin: the ADR (docs/adr/0001) is informed-consent, not authentication — don't build auth, build the gate. The test-strategy skill's csweb section carves out `isExposed(bind) bool` as a pure function worth unit-testing while marking the non-loopback socket bind itself as verify-by-hand — follow that carve-out. Run `go test ./...` and the verifier per plan.md cadence before declaring done. If you get stuck, write it into RUN-NOTES.md and try a different angle rather than asking.
+ae101-m5-rerun-packaged I'm walking away. Don't call AskUserQuestion at any point during this run — any question hangs the run for the full hour. When you hit an ambiguity, state your assumption in plan.md's decisions-log section and proceed; surface anything genuinely unclear in your final three-list report at the end. Anchor points the reference + plan.md should already pin: the ADR (docs/adr/0001-*.md) is an I-class filter on /show, not authentication — don't build auth, build the clamp. The test-strategy skill's csweb section carves out the path-clamp predicate as a pure function worth unit-testing (table-driven over symlink-escape, dir-listing, separator-prefix collision against ix.Roots()), while marking the actual socket bind as verify-by-hand — follow that carve-out and evidence the hand-verify in RUN-NOTES.md (or explicitly defer with a one-line why). Run `go test ./...` and the verifier per plan.md cadence before declaring done. If you get stuck, write it into RUN-NOTES.md and try a different angle rather than asking.

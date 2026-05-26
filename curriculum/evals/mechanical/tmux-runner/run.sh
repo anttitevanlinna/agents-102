@@ -44,6 +44,7 @@ if [[ -z "$scenario" || ! -f "$scenario" ]]; then
 fi
 
 run_id="$(date +%Y%m%d-%H%M%S)-$$"
+export RUNNER_TMUX_SOCKET="runner-$run_id"
 run_dir="$HERE/out/$run_id"
 mkdir -p "$run_dir"
 sentinel_dir="$run_dir/sentinels"

@@ -59,6 +59,7 @@ scenario="$HERE/scenarios/prework.txt"
 CLAUDE_CMD="${CLAUDE_CMD:-claude --permission-mode auto}"
 
 run_id="$(date +%Y%m%d-%H%M%S)-$$"
+export RUNNER_TMUX_SOCKET="runner-$run_id"
 run_dir="$HERE/out/$run_id"
 sentinel_dir="$run_dir/sentinels"
 mkdir -p "$sentinel_dir"

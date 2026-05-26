@@ -73,7 +73,7 @@ AE101 delivery architecture (per `memory/project_ae101_delivery_architecture.md`
 - All compounding artefacts live in your real repo. No training-dir state, no `module-N/` folders, no `prework/` style scaffolds.
 - Skills ship to personal `~/.claude/skills/` first; team-PR via human conversation, not auto-promoted.
 - Rules file default: `CLAUDE.local.md` (gitignored, personal). Team-worthy rules flagged for separate PR — never auto-PR'd.
-- Three-block memory lands at `.claude/memory/` — gitignored-by-default.
+- Block-1 observations land at `observations/` — gitignored-by-default (decisions in ADRs, quality criteria in skills).
 - Paths in fenced prompt blocks: repo-relative, bare, no `module-N/` prefixes.
 
 ## Vocabulary discipline (AE101-wide; compound-candidate for rule)

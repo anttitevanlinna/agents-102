@@ -49,6 +49,7 @@ scenario="${SCENARIO:-$HERE/scenarios/m4.txt}"
 [[ -f "$scenario" ]] || { echo "missing scenario: $scenario" >&2; exit 2; }
 
 run_id="$(date +%Y%m%d-%H%M%S)-$$"
+export RUNNER_TMUX_SOCKET="runner-$run_id"
 run_dir="$HERE/out/$run_id"
 sentinel_dir="$run_dir/sentinels"
 mkdir -p "$sentinel_dir"
@@ -67,7 +68,7 @@ pre_transcripts="$(ls "$transcripts_dir" 2>/dev/null | sort | tr '\n' ' ')"
 
 # In-repo-memory assertion baselines (walk-and-send-off-3 memory-path fix,
 # 2026-05-25). The bug routed memory writes to the USER-LEVEL auto-memory
-# home; the fix sends them to the in-repo ./.claude/memory/ convention dir.
+# home; the fix sends them to the in-repo ./observations/ convention dir.
 # Snapshot the user-level memory dir before the run + stamp a marker so we
 # can tell, post-run, which home received the write. See classify_memory_write.
 user_mem_dir="$HOME/.claude/projects/$encoded_cwd/memory"
@@ -78,7 +79,7 @@ user_mem_dir="$HOME/.claude/projects/$encoded_cwd/memory"
 # memory subdir, so M4 exited before launching claude.
 mkdir -p "$user_mem_dir"
 pre_user_mem="$(ls "$user_mem_dir" 2>/dev/null | sort | tr '\n' ' ')"
-proj_mem_dir="$sut_cwd/.claude/memory"
+proj_mem_dir="$sut_cwd/observations"
 run_start_marker="$run_dir/.run-start"
 touch "$run_start_marker"
 
@@ -144,9 +145,9 @@ for line in "${lines[@]}"; do
 
   # TODO: if a scenario adds a pure slash command, wire `is_slash_only` +
   # `fake_sentinel_after_render` from lib/sync.sh here. See run-m1.sh.
-  if ! wait_for_turn "$sentinel_dir" "$seq" "$turn_timeout"; then
+  if ! wait_for_turn "$sentinel_dir" "$seq" "$turn_timeout" "$session"; then
     pane_capture_safe "$session" "$run_dir/transcript.txt" 10
-    echo "[m4] FAIL turn=$seq (sentinel timeout after ${turn_timeout}s) — see $run_dir/transcript.txt" >&2
+    echo "[m4] FAIL turn=$seq — see $run_dir/transcript.txt" >&2
     exit 1
   fi
   pane_capture "$session" "$run_dir/turn-$seq.transcript.txt"
@@ -155,7 +156,7 @@ done
 pane_capture "$session" "$run_dir/transcript.txt"
 
 # In-repo-memory assertion (walk-and-send-off-3 fix). Did the memory write
-# land in the in-repo ./.claude/memory/ (PASS) or leak to the user-level
+# land in the in-repo ./observations/ (PASS) or leak to the user-level
 # auto-memory home (BUG)? NONE = the run only sharpened rules
 # (./CLAUDE.local.md), so the memory path wasn't exercised — not a failure.
 post_user_mem="$(ls "$user_mem_dir" 2>/dev/null | sort | tr '\n' ' ')"
@@ -163,7 +164,12 @@ new_user_mem=""
 for f in $post_user_mem; do
   echo " $pre_user_mem " | grep -qF " $f " || new_user_mem="$new_user_mem $f"
 done
-new_proj_mem="$(find "$proj_mem_dir" -type f -newer "$run_start_marker" 2>/dev/null | tr '\n' ' ')"
+# `|| true`: when the agent sharpened rules (./CLAUDE.local.md) instead of
+# writing an observations file, ./observations/ never gets created — find then exits
+# non-zero and `set -euo pipefail` would kill the run AFTER the send-off already
+# committed (silent exit 1, no message). Absent dir = no in-repo memory = NONE.
+# Sibling of the user_mem_dir mkdir guard above.
+new_proj_mem="$(find "$proj_mem_dir" -type f -newer "$run_start_marker" 2>/dev/null | tr '\n' ' ' || true)"
 case "$(classify_memory_write "$new_user_mem" "$new_proj_mem")" in
   BUG)
     echo "[assert] FAIL M4 in-repo-memory: write landed USER-LEVEL ($user_mem_dir:$new_user_mem) — the in-repo-path fix did not take; walk-and-send-off-3 still routes to the auto-memory home" >&2

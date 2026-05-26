@@ -2,18 +2,18 @@
 # Driven by run-m4.sh. Single session in main lemmings repo. No worktree.
 # Force-function: un-packaged by design. Don't feed Claude a plan, ADR, or
 # verifier as preconditions beyond what's already on disk (CLAUDE.md,
-# CLAUDE.local.md, .claude/memory/ if any, repo ADRs, user-scope skills).
+# CLAUDE.local.md, observations/ if any, repo ADRs, user-scope skills).
 #
 # Task choice: the blocker-deadlock bug Antti flagged in CLAUDE.local.md
 # M1 rules ("twelve blockers = game stuck forever, no resolution text").
 # Real, bounded, subtle. Restart-button HUD feature is the decoy so
 # walk-and-send-off-1 actually screens rather than just scopes.
 
-walk-and-send-off-1 I'm doing a headless dry-run, please don't call AskUserQuestion — use your judgment: pick the candidate you'd send off, scope it, and save task.md. Candidates: (1) Fix the blocker-deadlock bug I named in CLAUDE.local.md M1 rules — when twelve lemmings become blockers the game has no resolution text and the player is stuck forever. The fix lives in step()'s end-of-game check in src/main.js; it's a derived-condition bug where the check doesn't enumerate all state-machine paths (active count goes to zero in two ways: lemmings exited the playfield, OR all remaining lemmings are blockers — only the first is treated as terminal). Touches src/main.js for the check, src/ui.js for the status text, and tests/main.test.js for coverage. (2) Add a "Restart" button to the HUD that re-runs the current level from scratch — preserves skill budget memory across attempts. Touches index.html, style.css, src/ui.js, src/main.js's loadLevel reset path.
+walk-and-send-off-1 I'm doing a headless dry-run, please don't call AskUserQuestion — use your judgment: pick the candidate you'd send off, scope it, and save task.md. Candidates: (1) Fix the blocker-deadlock bug I named in CLAUDE.local.md M1 rules — when twelve lemmings become blockers the game has no resolution text and the player is stuck forever. The fix lives in step()'s end-of-game check in src/main.js; it's a derived-condition bug where the check doesn't enumerate all state-machine paths (active count goes to zero in two ways: lemmings exited the playfield, OR all remaining lemmings are blockers — only the first is treated as terminal). Touches src/main.js for the check, src/ui.js for the status text, and a new test under `test/` for coverage (the suite lives in `test/`, run via `node --test` — don't split a `tests/` dir). (2) Add a "Restart" button to the HUD that re-runs the current level from scratch — preserves skill budget memory across attempts. Touches index.html, style.css, src/ui.js, src/main.js's loadLevel reset path.
 
 walk-and-send-off-2 I'm doing a headless dry-run, please don't call AskUserQuestion — state your assumptions and proceed.
 
-walk-and-send-off-3 I'm doing a headless dry-run, please don't call AskUserQuestion — use your judgment. From the audit's top-5, pick the 2-3 gaps that most directly affect a blocker-deadlock fix attempt and would hurt a send-off most if left thin. For each picked gap, propose the fill in the shape the audit named (observation / sharpened rule / business-rules gap / connector setup), write it in the destination the audit named (the `./.claude/memory/` folder in your repo for observations and business-rules gaps; `./CLAUDE.local.md` for rule sharpening), and proceed without confirmation. Don't over-fill — 2 or 3 picks is the target, not all five.
+walk-and-send-off-3 I'm doing a headless dry-run, please don't call AskUserQuestion — use your judgment. From the audit's top-5, pick the 2-3 gaps that most directly affect a blocker-deadlock fix attempt and would hurt a send-off most if left thin. For each picked gap, propose the fill in the shape the audit named (observation / sharpened rule / business-rules gap / connector setup), write it in the destination the audit named (the `./observations/` folder in your repo for observations and business-rules gaps; `./CLAUDE.local.md` for rule sharpening), and proceed without confirmation. Don't over-fill — 2 or 3 picks is the target, not all five.
 
 walk-and-send-off-4 I'm doing a headless dry-run, please don't call AskUserQuestion — use your judgment. Propose the one or two file moves or renames the tree needs and pause for my OK before touching anything.
 * OK for these. continue

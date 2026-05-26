@@ -20,14 +20,13 @@ opportunistic-copy:
     if-present-at: ../<repo-name>/CLAUDE.local.md
     rationale: born at M1's compound-and-close-1; copied so M5/M6 compounding has M1/M3 evidence
   - id: memory-folder
-    if-present-at: ../<repo-name>/.claude/memory/
+    if-present-at: ../<repo-name>/observations/
     rationale: born at M4's walk-and-send-off Phase 2; copied so M5/M6 inherits the three-block memory built during M4
 ---
 Read `./task.md` and use its recorded run coordinates for the M4 run. Those coordinates name the exact `m4/` branch; do not rediscover it with broad branch search. Verify that branch exists locally or as a remote-tracking branch, then find the "M4 starting point" commit on that named branch. If that commit message has been rewritten or is ambiguous, ask me for the SHA from the M4 session close. Spin up a git worktree at that commit. Put the worktree at `../<repo-name>-m5` on a new branch named `m5/` followed by the same task slug as the m4 branch.
 
 Then copy the gitignored personal files into the worktree so compounding has the previous sessions material to build on:
   cp ../<repo-name>/CLAUDE.local.md ../<repo-name>-m5/  (if it exists)
-  mkdir -p ../<repo-name>-m5/.claude/
-  cp -r ../<repo-name>/.claude/memory/ ../<repo-name>-m5/.claude/memory/  (if .claude/memory/ exists in the original repo)
+  cp -r ../<repo-name>/observations/ ../<repo-name>-m5/observations/  (if observations/ exists in the original repo)
 
 These won't sync back automatically — the worktree's copies are independent from this point. Tell me the worktree path and confirm which files copied across.

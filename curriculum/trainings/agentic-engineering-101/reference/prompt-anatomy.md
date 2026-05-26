@@ -38,7 +38,7 @@ The agent already has the whole internet in its head. Your job is to tell it whi
 
 **Names what Claude has to work with, then closes the door against fabrication.** *That's everything you have* tells the agent: missing context is a fact about the world, not a permission to invent. You also get one line you can audit against later: *did the agent stay inside the seal, or did something quietly leak in?* The seal is most valuable on long-running prompts where you won't be there to push back. The negative form (a hard blacklist naming files the agent must NOT read) is the same move from the other side: when the run has to stay independent of a prior artifact, blocking the read is the seal.
 
-*"Work from the rules I've set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the memory at `.claude/memory/`, the ADRs, and the skills available by name in this session. That's everything you have. Go."*
+*"Work from the rules I've set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the observations at `observations/`, the ADRs, and the skills available by name in this session. That's everything you have. Go."*
 
 *"The subagent must NOT read: `module-5/briefing.md`, `module-5/claim-pool.md`, `module-5/scoreboard.md`, anything in `module-5/detectors/`."*
 

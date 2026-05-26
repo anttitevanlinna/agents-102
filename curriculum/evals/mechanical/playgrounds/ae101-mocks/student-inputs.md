@@ -126,7 +126,7 @@ Stand-in for the back-and-forth between Claude and the student. Each block below
 
 ## § M4 audit gap-fill answers (paste in Phase 2 as Claude asks one at a time)
 
-> A1: For the missing CSV-encoding rule, add this to `.claude/memory/observations.md`: "When the export endpoint serialises `reason` or `category` strings, escape commas, quotes, and newlines per RFC 4180. The ADR 0001 covers the CSV-injection threat."
+> A1: For the missing CSV-encoding rule, add this to `observations/observations.md`: "When the export endpoint serialises `reason` or `category` strings, escape commas, quotes, and newlines per RFC 4180. The ADR 0001 covers the CSV-injection threat."
 
 > A2: For the missing CLI test convention, add to CLAUDE.local.md: "CLI surfaces test via subprocess invocation (`node src/cli.js ...`) with stdout/stderr captured. Use Node's `node:child_process` execFileSync."
 
@@ -148,7 +148,7 @@ Stand-in for the back-and-forth between Claude and the student. Each block below
 
 ## § M5 worktree confirmation (paste after ae101-m4-worktree-setup creates the worktree)
 
-> Confirmed worktree at the path you reported. CLAUDE.local.md and .claude/memory/ both copied. Ready to open M5 session there.
+> Confirmed worktree at the path you reported. CLAUDE.local.md and observations/ both copied. Ready to open M5 session there.
 
 ## § M5 three-failure diagnosis (paste after diagnose-and-resend-2 walks the three lenses)
 

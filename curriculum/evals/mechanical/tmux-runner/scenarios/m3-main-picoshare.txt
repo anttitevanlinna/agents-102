@@ -40,14 +40,13 @@
 
 # Phase A: create the worktree for the quality side.
 #
-# Headless-runner override: the fork prompt's `cp -r ./.claude/memory/`
-# step assumes auto-memory lives in-repo. On modern Claude Code projects
-# it lives at ~/.claude/projects/<encoded-cwd>/memory/ instead, so the
-# in-repo copy is a no-op. The agent has noticed this in past runs and
-# triggered AskUserQuestion asking whether to seed the home-keyed slot,
-# which hangs the runner. Tail suppresses the question and tells the
-# agent to skip the memory step for this dry-run.
-ae101-m3-fork-quality-side Don't call AskUserQuestion. Do the worktree create and the CLAUDE.local.md copy as instructed. SKIP the .claude/memory/ copy — auto-memory actually lives at ~/.claude/projects/<encoded-cwd>/memory/ (home-keyed by absolute project path), so the in-repo copy is a no-op for this codebase. Report what you did in plain chat and stop. If you have observations about the memory location or other gaps, surface them in your reply (numbered) — I'll address them after the run if they're real, but don't block on me.
+# Headless-runner override: the fork prompt's `cp -r ./observations/`
+# step is conditional ("if it exists"). observations/ is authored later
+# in the arc, so it doesn't exist yet on the fresh-baseline SUT and the
+# copy is correctly a no-op here. The agent has been seen to AUQ on the
+# absent dir, which hangs the runner. Tail suppresses the question and
+# tells the agent to skip the absent copy for this dry-run.
+ae101-m3-fork-quality-side Don't call AskUserQuestion. Do the worktree create and the CLAUDE.local.md copy as instructed. SKIP the observations/ copy — observations/ doesn't exist in this repo yet (it's authored later in the arc), so the conditional "if it exists" copy is correctly a no-op here. Report what you did in plain chat and stop. If you have observations about the setup or other gaps, surface them in your reply (numbered) — I'll address them after the run if they're real, but don't block on me.
 
 # Phase B (security side): map → STRIDE → ADR (with approval) → auto-load Q.
 map-the-access-surface-2 The feature is described in the plan at /Users/anttitevanlinna/.claude/plans/m2-picoshare-public-guest-status-vigilant-pangolin.md — read it first, then invoke the skill on what's described there. If a slightly different plan filename is present (same shape, different adjective-animal slug from a fresh M2 run), use that one and tell me which file you read.

@@ -30,10 +30,10 @@ The student's real repo is the working directory. Every module starts a fresh ag
 
 ```
 <student-repo>/
-├── .gitignore                     # student adds CLAUDE.local.md + .claude/memory/ here in M1/M4
+├── .gitignore                     # student adds CLAUDE.local.md + observations/ here in M1/M4
 ├── CLAUDE.md                      # team-shared, PR-reviewed; grows from M2 Debrief onward
 ├── CLAUDE.local.md                # personal, gitignored; created by M1 compound exercise
-├── .claude/memory/                # three-block memory; introduced at M4
+├── observations/                  # observations + business-rules notes (Block 1); introduced at M4
 └── ...                            # the real codebase
 ```
 
@@ -46,7 +46,7 @@ Two session verbs:
 - **`new`**, fresh session at the working directory. Default for module openings.
 - **`return`**, pick up a prior session by name at the same working directory; if it is not still open, start a fresh one at the same working directory. Use when the prior session's scrollback is load-bearing and the session window is still alive (e.g. an in-flight send-off resumed after a short break, a mid-module wait picked up later).
 
-Cross-working-directory boundaries always open `new`. M5 forks a worktree at `../<repo>-m5` and starts a fresh session there; M4's evidence travels by disk (the transcript at `~/.claude/projects/<encoded>/<uuid>.jsonl`, the starting-point branch and SHA in shared `.git`, the personal rules and `.claude/memory/` copied at fork time). The same-cwd `return` verb does not cross worktrees.
+Cross-working-directory boundaries always open `new`. M5 forks a worktree at `../<repo>-m5` and starts a fresh session there; M4's evidence travels by disk (the transcript at `~/.claude/projects/<encoded>/<uuid>.jsonl`, the starting-point branch and SHA in shared `.git`, the personal rules and `observations/` copied at fork time). The same-cwd `return` verb does not cross worktrees.
 
 Inside a module, keep the same session running by default. Exercises in the same module may rely on short-term scrollback from the previous exercise plus files written on disk.
 
@@ -58,7 +58,26 @@ The **personal rules file** (`./CLAUDE.local.md`, gitignored) is the canonical w
 
 The **team rules file** (`./CLAUDE.md`, PR-reviewed) changes only when a rule is team-worthy enough to earn review. Rare by design. M1's compound exercise flags team-worthy rules separately so the engineer can open a PR against the team file outside the training.
 
-There is no company layer. Whether a company's shared conventions earn a file-backed home of their own, the way the personal and team layers already have, is an open question rather than a settled gap. The M4 closing lecture `will-company-memory-emerge.md` poses it and leaves it deliberately unresolved: this section stays the authority on what ships today, the lecture runs the debate, not the decision. The `memory` → `context` rename rides with the same question and is parked alongside it.
+There is no company layer. Whether a company's shared conventions earn a file-backed home of their own, the way the personal and team layers already have, is an open question rather than a settled gap. The M4 closing lecture `will-company-memory-emerge.md` poses it and leaves it deliberately unresolved: this section stays the authority on what ships today, the lecture runs the debate, not the decision.
+
+The in-repo knowledge home needs a rename too, but for a separate, mechanical reason (a name/location collision, not the company-layer debate). That fix is now decided, `.claude/memory/` → repo-root `observations/`, and detailed in §Knowledge-home rename below. It is independent of the open company-layer question; un-parking the rename does not resolve the lecture.
+
+### Knowledge-home rename: `.claude/memory/` → `observations/` (applied 2026-05-26; runner + compendiums tail)
+
+**Problem, reproduced 2026-05-26.** The in-repo `.claude/memory/` convention fails two ways, both traced to its name and location, not to the model behind it:
+
+1. *Auto-memory name reflex.* "memory" is a reserved Claude Code term, the agent's own recall home at `~/.claude/projects/<encoded-cwd>/memory/`, surfaced via `/memory`. Told to "persist this to `.claude/memory/`," the agent sometimes treats it as a memory operation and routes to the user-level home instead of writing the in-repo file. Unpredictable: codesearch M4 routed user-level twice; an interactive write landed in-repo. The unpredictability is the defect.
+2. *Sensitive-path guard.* Writes under `.claude/` are gated as sensitive. In headless / acceptEdits runs, the mechanical runner, any unattended cohort run, the gate denies with no human to approve, and the file lands nowhere at all.
+
+**Decision.** Move the home out of `.claude/` and away from "memory": repo-root `observations/`. One move escapes both failure modes. The folder holds what the writer (`walk-and-send-off-3`) actually produces, observations plus business-rules gaps, i.e. the Huryn Block 1 of observations → hypotheses → rules. Decisions (Block 2) keep living in the ADR home; quality criteria (Block 3) keep living in authored skills. "Three-block memory" stays a reading frame across three homes; `observations/` is one block, not "the memory folder." This also retires a real drift: several prompts wrongly call `.claude/memory/` "the three-block memory home" when only Block 1 ever landed there.
+
+**Name choice.** `observations/` over the previously-parked `context/`: "context" is itself a reserved platform word (context window, `/context`), so it would re-introduce the same reserved-term collision the rename exists to kill. Side benefit: a plain repo dir is runtime-agnostic, so the Gemini per-runtime path table below collapses that row to a single path.
+
+**Gitignore stays.** Deliberate: students are not forced to commit work-in-progress during training. The cross-module hand-off never depended on git, gitignored knowledge crosses the M3/M5 worktree fork by explicit `cp -r` at fork time (`check_platform_and_boundaries.md §7b`), not by riding the M4 commit. Gitignore is therefore compatible with the fix; lifting it is possible but unnecessary, since `cp -r` ignores ignore-status.
+
+**Why not the platform's auto-memory.** Routing is unpredictable (above), and the feature is user-scoped and per-machine, the wrong scope for codebase knowledge that must travel with the repo and the worktree fork. Some engineers also disable it. The in-repo file model is the deliberate teaching model; the rename only stops it colliding with the platform feature.
+
+**Sweep surface** (own session): prompt registry (~8 keys touching `.claude/memory/`), exercise + module + lecture bodies (~25 files), mechanical runner (`run-m4.sh` `proj_mem_dir`, `classify_memory_write` in `lib/assertions.sh`, M4/M6 scenarios), compendiums (`check_platform_and_boundaries.md §6d`, the student-facing memory-disambiguation rule), the per-runtime path table below (row "Three-block memory"), and the `pre-cohort-todos.md` line-24 bullet. Touching student-facing files auto-degrades Quality per-class, so a `curriculum-pre-ship-audit` pass follows the sweep.
 
 ## Skills
 
@@ -149,7 +168,7 @@ Re-verify the matrix before each Gemini-cohort activation; pre-1.0 schema drift 
 | User-global rules | `~/.claude/CLAUDE.md` | `~/.gemini/GEMINI.md` |
 | Skills folder | `~/.claude/skills/<name>/SKILL.md` | `~/.gemini/skills/<name>/` |
 | Custom agent files | `.claude/agents/<name>.md` | `.gemini/agents/<name>.md` |
-| Three-block memory | `.claude/memory/` | `.gemini/memory/` |
+| Knowledge home (observations) | `observations/` | `observations/` |
 | Settings | `~/.claude/settings.json` | `~/.gemini/settings.json` |
 | Session transcripts on disk | `~/.claude/projects/<project>/` | `~/.gemini/tmp/<projectHash>/` |
 

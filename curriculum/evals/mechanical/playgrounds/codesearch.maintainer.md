@@ -195,7 +195,7 @@ Genuinely useful UX. But after an audit weighing leverage: the ADR was decided l
 The walk-and-send-off-2 audit should pull from a known set; the codesearch-flavoured ranking we expect:
 
 1. **csweb is greenfield in test coverage** — the test-strategy skill already names this. The fix shape is "name it as a business-rules gap" or a sharpened rule in CLAUDE.local.md ("any new csweb code path ships with at least one httptest"). Highest leverage for an autonomous run because without it, the agent's "done" criterion is shaky.
-2. **`--bind` parsing edge cases not specified.** Hostname vs literal IP vs `0.0.0.0` vs `[::]` vs unspecified-address are all "non-loopback by some definition." The ADR doesn't pin the predicate. Fix: a sharpened rule in `CLAUDE.local.md` or an observation in `.claude/memory/` naming the resolution algorithm (resolve, then check `IsLoopback()` on every resolved address; if *any* is non-loopback, gate).
+2. **`--bind` parsing edge cases not specified.** Hostname vs literal IP vs `0.0.0.0` vs `[::]` vs unspecified-address are all "non-loopback by some definition." The ADR doesn't pin the predicate. Fix: a sharpened rule in `CLAUDE.local.md` or an observation in `observations/` naming the resolution algorithm (resolve, then check `IsLoopback()` on every resolved address; if *any* is non-loopback, gate).
 3. **Path-clamp semantics under symlinks / case-sensitivity** — `ix.roots` are absolute paths the index was built against; on macOS, the filesystem is case-insensitive but path comparison isn't. The agent should surface this and decide (recommended: `filepath.EvalSymlinks` both sides, then prefix-match; reject on equal-or-not-prefix).
 4. **No live test harness for non-loopback bind** — test-strategy skill already names this; the carve-out (test the *decision*, hand-verify the *socket*) is the load-bearing memory beat the audit should re-surface so the agent doesn't try to fake an httptest for the bind itself.
 
@@ -209,7 +209,7 @@ The long send-off (`ae101-m4-take-task-end-to-end`, T6) runs autonomously up to 
 
 - ✅ Agent picks the security candidate in T1 with leverage-based reasoning (ADR risk live; Help page deferable).
 - ✅ Audit (T2) surfaces csweb-zero-tests as top-2 (test-strategy skill already names it).
-- ✅ Gap-fill (T3) persists 2-3 fills to `.claude/memory/` or `CLAUDE.local.md` — not all four, not zero.
+- ✅ Gap-fill (T3) persists 2-3 fills to `observations/` or `CLAUDE.local.md` — not all four, not zero.
 - ✅ Huryn frame (T4) cites the M3 ADR (Block 2) and a test-strategy check (Block 3) by name.
 - ✅ Commit (T5) creates `m4/<task-slug>` branch, "M4 starting point" message, short SHA echoed.
 - ✅ Send-off (T6) implements `--bind` parsing + `--expose-without-auth` gate + `show()` path-clamping, at least one httptest, README updated.
@@ -225,7 +225,7 @@ The long send-off (`ae101-m4-take-task-end-to-end`, T6) runs autonomously up to 
 
 ## M5 task — review/iterate the M4 ADR send-off
 
-Branch start: forks from M4's "M4 starting point" commit on `m4/implement-bind-gate` at `bdf9492`. The worktree lives at `../codesearch-m5` on branch `m5/implement-bind-gate`. M5 carries forward: CLAUDE.local.md, `.claude/memory/` (if present), the test-strategy skill at `~/.claude/skills/test-strategy/`, docs/adr/0001.
+Branch start: forks from M4's "M4 starting point" commit on `m4/implement-bind-gate` at `bdf9492`. The worktree lives at `../codesearch-m5` on branch `m5/implement-bind-gate`. M5 carries forward: CLAUDE.local.md, `observations/` (if present), the test-strategy skill at `~/.claude/skills/test-strategy/`, docs/adr/0001.
 
 Scenarios: `tmux-runner/scenarios/m5.txt` (lemmings reference) + `tmux-runner/scenarios/m5-codesearch.txt`. Driven by `run-m5.sh` with `SCENARIO=` env override.
 

@@ -94,10 +94,10 @@ Human push-back + agent second-pass. Approve only after both.
 EOF
   echo "CLAUDE.local.md" >> "$repo/.gitignore"
 
-  mkdir -p "$repo/.claude/memory" "$repo/.claude/skills" "$repo/docs/adr"
-  echo ".claude/memory/" >> "$repo/.gitignore"
+  mkdir -p "$repo/observations" "$repo/.claude/skills" "$repo/docs/adr"
+  echo "observations/" >> "$repo/.gitignore"
 
-  cat > "$repo/.claude/memory/observations.md" <<'EOF'
+  cat > "$repo/observations/observations.md" <<'EOF'
 # Observations and rules
 
 - `sum()` originally filtered negatives by mistake. Filter nulls instead. Earned at M1.
@@ -105,13 +105,13 @@ EOF
 - The team's tracker close-out path-3 (manual paste) is acceptable when no MCP connector exists.
 EOF
 
-  cat > "$repo/.claude/memory/decisions.md" <<'EOF'
+  cat > "$repo/observations/decisions.md" <<'EOF'
 # Decisions
 
 - ADR 0001: encode `reason` field at CSV serialisation boundary (M3 STRIDE outcome).
 EOF
 
-  cat > "$repo/.claude/memory/quality-criteria.md" <<'EOF'
+  cat > "$repo/observations/quality-criteria.md" <<'EOF'
 # Quality criteria
 
 - Tests cover negative inputs on all aggregations.
@@ -224,9 +224,9 @@ simulate_post_m5_state() {
 
   # Copy gitignored personal files into worktree
   cp "$repo/CLAUDE.local.md" "$worktree/CLAUDE.local.md" 2>/dev/null || true
-  if [[ -d "$repo/.claude/memory" ]]; then
-    mkdir -p "$worktree/.claude/memory"
-    cp -R "$repo/.claude/memory/." "$worktree/.claude/memory/"
+  if [[ -d "$repo/observations" ]]; then
+    mkdir -p "$worktree/observations"
+    cp -R "$repo/observations/." "$worktree/observations/"
   fi
 
   # Simulate packaged-run shipping the right thing in the worktree

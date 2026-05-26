@@ -1,6 +1,6 @@
 # Steering the wiring
 
-At M5 you forked the M4 starting SHA into a worktree. A real engineering call lived in that fork: gitignored files (`CLAUDE.local.md`, `.claude/memory/`) don't ride into a worktree because git doesn't see them. AE101's default chose `cp` at fork time, your M1/M3 evidence rode forward, M5/M6 compounding diverged in the worktree, and post-M6 you decide what to merge back.
+At M5 you forked the M4 starting SHA into a worktree. A real engineering call lived in that fork: gitignored files (`CLAUDE.local.md`, `observations/`) don't ride into a worktree because git doesn't see them. AE101's default chose `cp` at fork time, your M1/M3 evidence rode forward, M5/M6 compounding diverged in the worktree, and post-M6 you decide what to merge back.
 
 That's one wiring. It's not the only one.
 

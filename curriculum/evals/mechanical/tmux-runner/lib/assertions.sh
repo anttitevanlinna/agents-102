@@ -150,12 +150,12 @@ classify_memory_write() {
   # in-repo-memory-path fix (IMPROVEMENTS.md / pre-cohort L91, 2026-05-25).
   # The bug: the prompt said bare ".claude/memory/" and Claude routed to
   # its USER-LEVEL auto-memory home (~/.claude/projects/<encoded>/memory/)
-  # instead of the in-repo ./.claude/memory/. The fix names the in-repo
+  # instead of the in-repo observations/ (renamed from .claude/memory/ 2026-05-26). The fix names the in-repo
   # location explicitly (NOT "project memory" — that term denotes CLAUDE.md
-  # in Claude Code; .claude/memory/ is a user-authored convention, per
+  # in Claude Code; observations/ is a user-authored convention, per
   # check_platform_and_boundaries §6d). This classifier proves the fix took.
   #   $1 = new files seen in the user-level memory dir (any non-space = bug)
-  #   $2 = new files seen in the project ./.claude/memory dir
+  #   $2 = new files seen in the project observations/ dir
   # Echoes: BUG (landed user-level) | PASS (landed in-repo) | NONE (path
   # not exercised this run — e.g. only CLAUDE.local.md rule-sharpening).
   local user_new="$1" proj_new="$2"

@@ -212,7 +212,7 @@ Genuinely useful UX. But after an audit weighing leverage: the ADR was decided t
 The walk-and-send-off-2 audit should pull from a known set; the picoshare-flavoured ranking we expect:
 
 1. **The Lock half is easy to under-implement.** The ADR specifies a *negative-assertion* test against the rendered output, not just the absence of fields in the DTO. A naive read produces "the DTO doesn't include Label, so we're safe" — that's filter, not lock. The real assertion has to grep the JSON body bytes AND the rendered panel HTML for the literal "Label" / "Created" / "MaxFileLifetime" strings (or a label value that's not in the contracted fields). Highest leverage for an autonomous run because without it the ADR's load-bearing test is decorative.
-2. **Two-clock determinism in tests.** M2 plan §3b names this: `IsExpired()` reads real wall-clock; the panel's "expires in Y" reads injected clock. Tests need far-future `UrlExpires` (so real-clock `IsActive()` stays true) AND a `mockClock` set a known interval before `UrlExpires` (so "expires in 5 days" is deterministic). Fix shape: sharpened rule in CLAUDE.local.md or business-rules observation in `.claude/memory/` ("clock-dependent rendering needs both far-future absolutes AND injected-clock relatives").
+2. **Two-clock determinism in tests.** M2 plan §3b names this: `IsExpired()` reads real wall-clock; the panel's "expires in Y" reads injected clock. Tests need far-future `UrlExpires` (so real-clock `IsActive()` stays true) AND a `mockClock` set a known interval before `UrlExpires` (so "expires in 5 days" is deterministic). Fix shape: sharpened rule in CLAUDE.local.md or business-rules observation in `observations/` ("clock-dependent rendering needs both far-future absolutes AND injected-clock relatives").
 3. **Inactive-state precedence in the response.** M2 plan §3d: clearing counters to `0` when inactive takes precedence over unlimited→`null`. An inactive unlimited link returns `uploads_remaining: 0`, NOT `null`. Easy to miss when the code reuses the active-branch helpers without the override. Fix shape: a test row that explicitly pins "inactive + unlimited" → `0`, not `null`.
 4. **`byte_budget_remaining` semantics — per-upload, not aggregate.** M2 plan §3a calls this out; the README must reflect it ("maximum size of a single upload") so consuming clients don't infer a draw-down pool.
 
@@ -226,7 +226,7 @@ The long send-off (`ae101-m4-take-task-end-to-end`, T6) runs autonomously up to 
 
 - ✅ Agent picks the security candidate in T1 with leverage-based reasoning (ADR risk live; download counter deferable).
 - ✅ Audit (T2) surfaces the Lock-as-negative-assertion gap as top-2 (the ADR's strongest test is easy to under-implement).
-- ✅ Gap-fill (T3) persists 2-3 fills to `.claude/memory/` or `CLAUDE.local.md` — not all four, not zero.
+- ✅ Gap-fill (T3) persists 2-3 fills to `observations/` or `CLAUDE.local.md` — not all four, not zero.
 - ✅ Huryn frame (T4) cites the M3 ADR (Block 2) and the `test-strategy` skill (Block 3) by name.
 - ✅ Commit (T5) creates `m4/<task-slug>` branch, "M4 starting point" message, short SHA echoed.
 - ✅ Send-off (T6) implements: public-status endpoint with DTO projection, status panel rendering, `humanizeDurationUntil` helper, table-test for the JSON handler, render test for the panel, **negative-assertion test against literal `Label` / `Created` / `MaxFileLifetime` in both JSON body and rendered panel HTML**, README subsection.
@@ -242,7 +242,7 @@ The long send-off (`ae101-m4-take-task-end-to-end`, T6) runs autonomously up to 
 
 ## M5 task — review/iterate the M4 Filter+Lock send-off
 
-Branch start: forks from M4's "M4 starting point" commit (`21cd099`) on `m4/implement-public-status`. The worktree lives at `../picoshare-m5` on branch `m5/implement-public-status`. M5 carries forward: CLAUDE.local.md compounded across M1–M4, `.claude/memory/` (the two M4 gap-fill files: `filter-lock-disclosure-test-active-link.md` + `guest-status-byte-budget-per-upload.md`), the test-strategy skill at `~/.claude/skills/test-strategy/`, `docs/adr/0001`, `task.md`.
+Branch start: forks from M4's "M4 starting point" commit (`21cd099`) on `m4/implement-public-status`. The worktree lives at `../picoshare-m5` on branch `m5/implement-public-status`. M5 carries forward: CLAUDE.local.md compounded across M1–M4, `observations/` (the two M4 gap-fill files: `filter-lock-disclosure-test-active-link.md` + `guest-status-byte-budget-per-upload.md`), the test-strategy skill at `~/.claude/skills/test-strategy/`, `docs/adr/0001`, `task.md`.
 
 Scenarios: `tmux-runner/scenarios/m5.txt` (lemmings reference) + `tmux-runner/scenarios/m5-picoshare.txt`. Driven by `run-m5.sh` with `SCENARIO=` env override.
 

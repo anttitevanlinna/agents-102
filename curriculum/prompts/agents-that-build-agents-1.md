@@ -15,7 +15,7 @@ Enable plan mode.
 Read these artefacts end to end:
 
 - ./CLAUDE.local.md
-- ./.claude/memory/
+- ./observations/
 - the un-packaged run's commit history and modified files (its `m4/` branch is recorded in `task.md`)
 - the packaged run's commit history and modified files (its `m5/` branch is recorded in `plan.md`)
 - the SKILL.md of the `session-shaper` skill you authored, in `~/.claude/skills/`

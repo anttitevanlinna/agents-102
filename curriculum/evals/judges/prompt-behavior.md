@@ -66,7 +66,7 @@ Carve-outs (extend as compounded knowledge grows):
 
 - **`file-preservation-gap` and `overwrite-anxiety` — integrate-verb personal-scope carve-out** per `memory/compounded/2026-05-03-pedagogy-integrate-verb-personal-scope-carveout.md`. When a prompt uses *integrate* / *merge* / *reshape* verbs on a personal-scope file AND the surrounding body context establishes personal scope, full reshape is the design intent — do NOT fire these patterns as blocking. The student's evolving personal artifact earns the right to be reshaped; preserving every prior word defeats the iterative-evolution pedagogy.
 
-  **Personal-scope markers** (any one is sufficient): file path matches `./CLAUDE.local.md`, `.claude/memory/`, `./crux.md`, or `./<student-artifact>.md`; body says *"personal file, not team"*, *"gitignored"*, *"create + gitignore if missing"*, *"your own"*; the surrounding section describes a compounding / iterative move where the file is the student's evolving record.
+  **Personal-scope markers** (any one is sufficient): file path matches `./CLAUDE.local.md`, `observations/`, `./crux.md`, or `./<student-artifact>.md`; body says *"personal file, not team"*, *"gitignored"*, *"create + gitignore if missing"*, *"your own"*; the surrounding section describes a compounding / iterative move where the file is the student's evolving record.
 
   **Team-scope markers** (carve-out does NOT apply; rule fires as before): file path matches `./CLAUDE.md` without `.local.`; body says *"team file"*, *"open a separate PR"*, *"PR against"*, *"shared kit"*. Team scope is PR-gated and append-only is the right default — `file-preservation-gap` legitimately fires.
 

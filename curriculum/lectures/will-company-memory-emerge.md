@@ -6,7 +6,7 @@ The word is not settled. Some practitioners call it context. Others use neither 
 
 Pick whichever word you'll defend. The label matters less than the two questions it hides: where does this stuff live, and who is allowed to change it? Walk those across what you sent off, and three layers appear.
 
-**Personal.** `./CLAUDE.local.md` (gitignored), your `.claude/memory/`, the skills you authored. Written by you, for you. This is the layer you've watched compound since Module 1.
+**Personal.** `./CLAUDE.local.md` (gitignored), your `observations/`, the skills you authored. Written by you, for you. This is the layer you've watched compound since Module 1.
 
 **Team.** `./CLAUDE.md`, changed only through PR review. The rules the team agreed were worth sharing. It has a clear home and a clear gate.
 
@@ -18,7 +18,7 @@ Some teams are starting to act as if it will. They git-track their rules instead
 
 The hard part is not whether to build it. It is the shape. A company layer done wrong is a tax: memory loaded everywhere, owned by no one, the `CLAUDE.md` equivalent of the staff handbook nobody reads. The question that matters is the smallest shared layer that survives contact with a real org.
 
-Nobody has cracked the shape yet, and nobody has settled the word. The personal layer clearly compounds, and you have the evidence in your own `.claude/memory/`. The team layer has a home. The company layer is the one still being worked out, in the places betting on it.
+Nobody has cracked the shape yet, and nobody has settled the word. The personal layer clearly compounds, and you have the evidence in your own `observations/`. The team layer has a home. The company layer is the one still being worked out, in the places betting on it.
 
 You'll meet the answers in your own org before any framework hands them to you. The first time a rule you wrote for yourself turns out to be true for the whole company, you decide what to call it and where it goes. That is the open question.
 

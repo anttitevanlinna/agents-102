@@ -137,20 +137,20 @@ Optional. Skipping any of these does not break Module 5. They sit in the Module 
 **Plug points (trainer):**
 - Student's own task you'd send off rather than nudge bit by bit (Connections pick) — sponsor-stated example tasks by team type (web / back / data / ML) help calibration when the student stalls
 - Sponsor-stated rules-file home (Debrief rewrite lands here) — `./CLAUDE.local.md` is the repo-personal default; sponsor's actual convention overrides
-- Sponsor-stated memory / business-rules home (Phase 2 fill destination) — `.claude/memory/` is the cross-session default; sponsor's actual convention (e.g., `docs/business-rules/`, `wiki/policy/`) overrides
+- Sponsor-stated observations / business-rules home (Phase 2 fill destination) — `observations/` is the cross-session default; sponsor's actual convention (e.g., `docs/business-rules/`, `wiki/policy/`) overrides
 - Sponsor-stated tracker (Phase 1 task surfacing) — Linear / Jira / GitHub Issues; if MCP is wired, Claude can read the tracker for candidates given the criteria first
 
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
 1. **Pins a SHA on a fresh branch before dispatching any long-running agent task.** Falsifiable: git log shows a `<prefix>/<slug>` branch with a "starting point" commit message before the agent's first task-execution commit.
 2. **Stops a stalled agent run at ≤20 minutes and names the failure mode in writing** rather than waiting for completion. Falsifiable: scrollback of a long-running task shows a manual stop with a one-line note about what wobbled.
-3. **Walks `.claude/memory/` + ADRs + skills against a real task before sending it off**, picks the worst three gaps to fill, and writes them rather than filling all five. Falsifiable: pre-task memory diff shows two-or-three new observations or rules tied to the task at hand, not a comprehensive sweep.
+3. **Walks `observations/` + ADRs + skills against a real task before sending it off**, picks the worst three gaps to fill, and writes them rather than filling all five. Falsifiable: pre-task observations diff shows two-or-three new observations or rules tied to the task at hand, not a comprehensive sweep.
 
 **Artefact contracts** (per `check_pedagogy.md` rule 46 — every produced artefact with a stable identifier gets a contract row):
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
 | M4 starting-point branch + SHA | `m4/<task-slug>` branch at the short SHA Claude reports after the commit prompt; SHA noted in scrollback (or in `./CLAUDE.local.md` if the student writes it down) | "Commit the current state…" prompt in *Send the task off* (line 49) | M5 worktree fork (`../<repo>-m5` checked out from this branch + SHA, so the packaged re-run starts from the same code state as the un-packaged run) |
-| Filled gap entries in memory | `.claude/memory/` (cross-session default) or sponsor-stated business-rules home | Phase 2 walk-and-fill prompts — observation written, rule articulated, business-rules pointer wired | M5 packaged re-send (the agent loads the same memory + the new packaging on top); M6 second-skill authoring reads as part of the walked-system context |
+| Filled gap entries | `observations/` (cross-session default) or sponsor-stated business-rules home | Phase 2 walk-and-fill prompts — observation written, rule articulated, business-rules pointer wired | M5 packaged re-send (the agent loads the same observations + the new packaging on top); M6 second-skill authoring reads as part of the walked-system context |
 | M4 session transcript | `~/.claude/projects/<project-folder>/<session-id>.jsonl` (Claude Code's default storage) | The Claude Code session running the M4 walk + send-off; persisted by the runtime, not by an explicit prompt | M5 opening — the M5 session reads the M4 transcript directly to ground the *"what came back"* read |
 
 **Per-phase failure mode + escape hatch** (per `check_pedagogy.md` rule 47 — every phase shipping a forcing function names its dominant failure and one recovery move):

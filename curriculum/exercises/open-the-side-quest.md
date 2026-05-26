@@ -4,7 +4,7 @@
 
 Module 3 runs in two windows. Security is the main quest in your chosen repo. Quality is a side-quest in a sibling worktree.
 
-A sibling worktree is a second working directory on the same git history, opened next to your repo. Useful when two angles on the same code shouldn't share a scrollback. The [Multi-session and Git survival guide](../trainings/agentic-engineering-101/reference/multi-session-git.md) carries the longer read; one-line version: `git worktree add` makes a sibling folder on its own branch, you start a new Claude Code session in another window there, both sessions see the same git history but keep their own working state. Personal files (`CLAUDE.local.md`, `.claude/memory/`) don't sync between worktrees, they get copied across once at fork time, then evolve independently.
+A sibling worktree is a second working directory on the same git history, opened next to your repo. Useful when two angles on the same code shouldn't share a scrollback. The [Multi-session and Git survival guide](../trainings/agentic-engineering-101/reference/multi-session-git.md) carries the longer read; one-line version: `git worktree add` makes a sibling folder on its own branch, you start a new Claude Code session in another window there, both sessions see the same git history but keep their own working state. Personal files (`CLAUDE.local.md`, `observations/`) don't sync between worktrees, they get copied across once at fork time, then evolve independently.
 
 **Session** *(new, "m3-security")*
 
@@ -48,10 +48,10 @@ You forked a sibling worktree for the quality side, opened two Claude Code sessi
 **Push-back moves:**
 - Student opens both sessions in the same working directory. Trainer push: *"one window per worktree, not two windows on the same folder. The later write wins; the earlier session goes sideways."* Source: `multi-session-git.md` rule (one session per working directory).
 - Student opens a shell and runs `git worktree add` themselves. Redirect to conversation: the fork happens via Claude in the main lane; AE101's agentic-end-to-end rule holds.
-- Student forgets to copy `CLAUDE.local.md` and `.claude/memory/` into the sibling. The fork prompt names the copy step; if it gets skipped, the side-quest session has no personal rules loaded. Recovery: ask Claude in the side lane to copy them from the main repo.
+- Student forgets to copy `CLAUDE.local.md` and `observations/` into the sibling. The fork prompt names the copy step; if it gets skipped, the side-quest session has no personal rules loaded. Recovery: ask Claude in the side lane to copy them from the main repo.
 
 **Prompts:**
-- `ae101-m3-fork-quality-side` — main-lane prompt that forks the sibling worktree at `../<repo-name>-m3-quality` on a fresh `m3/quality` branch and copies `CLAUDE.local.md` + `.claude/memory/` into it.
+- `ae101-m3-fork-quality-side` — main-lane prompt that forks the sibling worktree at `../<repo-name>-m3-quality` on a fresh `m3/quality` branch and copies `CLAUDE.local.md` + `observations/` into it.
 - `ae101-m3-quality-side-orient` — side-lane orientation that confirms worktree directory, branch, loaded rules, codebase visibility — then waits.
 
 **Frameworks riffed on:**

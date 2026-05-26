@@ -18,7 +18,7 @@ For each: Read, quote verbatim in `> `-prefixed blockquote, respond, record.
 Working directory: `/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/mechanical/scratch/m6`. Inherited from M3 → M4 → M5:
 
 - ADR at `docs/adr/0001-strip-email-from-leaderboard.md`.
-- `.claude/memory/observations.md` with JWT observation + business-rules gap.
+- `observations/observations.md` with JWT observation + business-rules gap.
 - `CLAUDE.local.md` with testing rules.
 - `.gitignore` covering both.
 - M5 package step: `docs/tasks/auth-ux-wiring/reference.md`, `plan.md`, `.claude/verifier/done-means.md`, `scripts/run-verifier.sh`.
@@ -61,12 +61,12 @@ Log both substitutions. Do NOT walk `~/.claude/projects/`.
 
 - **Prompt 5:** `/tmp/prompts/arc-retrospective/prompt-001.txt` — read across the training, write a one-page arc note. Dispatch via Agent; if unavailable, run inline and note "Agent tool unavailable — inline substitution." Show before saving.
 - Substitute student approval (verbatim):
-  > Save to `.claude/memory/arc-note.md` — session-derived reflection, fits observations/hypotheses/rules block.
+  > Save to `observations/arc-note.md` — session-derived reflection, fits observations/hypotheses/rules block.
 
 ## Scratch output expectations
 
 - SKILL.md at `~/.claude/skills/<name>/SKILL.md` (personal; not committed).
-- Arc note at `<scratch>/.claude/memory/arc-note.md`.
+- Arc note at `<scratch>/observations/arc-note.md`.
 - No file moves beyond what prompts require.
 
 ## Reports
@@ -91,7 +91,7 @@ done | error
 - Path: ~/.claude/skills/<name>/SKILL.md
 
 ## Arc note
-Path: .claude/memory/arc-note.md
+Path: observations/arc-note.md
 
 ## Substitutions
 - M4 transcript walk → /tmp/m5-substitute-transcript.md

@@ -44,16 +44,16 @@ if grep -iqE 'harness substitution.*audit|audit.*inline|audit-as-subagent' "$SCR
 else record "A3" "FAIL" "no audit substitution"; fi
 
 read_paths=$(jq_tool_input Read file_path)
-if echo "$read_paths" | grep -q 'CLAUDE.local.md' && echo "$read_paths" | grep -q '\.claude/memory/'; then
-  record "A4" "PASS" "Read of CLAUDE.local.md + memory files in transcript"
-else record "A4" "FAIL" "missing Read of CLAUDE.local.md or memory/*.md"; fi
+if echo "$read_paths" | grep -q 'CLAUDE.local.md' && echo "$read_paths" | grep -q 'observations/'; then
+  record "A4" "PASS" "Read of CLAUDE.local.md + observations files in transcript"
+else record "A4" "FAIL" "missing Read of CLAUDE.local.md or observations/*.md"; fi
 
 # G-series
 qa_count=$(awk '/Phase 3/,/Phase 4/' "$SCROLL" 2>/dev/null | grep -oE '^\*\*Q[1-9]|^Q[1-9]:|^### Q[1-9]|^[1-9]\.' | grep -oE '[1-9]' | sort -u | wc -l | tr -d ' ')
 [[ "$qa_count" -ge 3 ]] && record "G1" "PASS" "$qa_count Q&A items in Phase 3" || record "G1" "FAIL" "only $qa_count Q&A items"
 
-if [[ -f "$REPO/.claude/memory/observations.md" ]]; then
-  size=$(wc -c < "$REPO/.claude/memory/observations.md" | tr -d ' ')
+if [[ -f "$REPO/observations/observations.md" ]]; then
+  size=$(wc -c < "$REPO/observations/observations.md" | tr -d ' ')
   [[ "$size" -ge 300 ]] && record "G2" "PASS" "observations.md appended ($size bytes)" || record "G2" "FAIL" "observations.md too small ($size bytes)"
 else record "G2" "FAIL" "observations.md missing"; fi
 

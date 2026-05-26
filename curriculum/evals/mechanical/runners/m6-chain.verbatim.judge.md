@@ -13,7 +13,7 @@ You are grading whether M6's chain (spot-gaps-build-the-loop + arc-retrospective
 - **Prompt files:** `/tmp/prompts/spot-gaps-build-the-loop/prompt-00{1,2,3,4}.txt`, `/tmp/prompts/arc-retrospective/prompt-001.txt`
 - **Substitute transcripts:** `/tmp/m5-substitute-transcript.md`, `/tmp/m6-m5-rerun-transcript.md`
 - **Authored skill path:** Actor reports it (under `~/.claude/skills/<name>/SKILL.md`).
-- **Arc note:** `<scratch>/.claude/memory/arc-note.md`
+- **Arc note:** `<scratch>/observations/arc-note.md`
 
 ## Tooling
 
@@ -48,8 +48,8 @@ For each of 5 prompt files: `verbatim-check.sh <prompt> <scrollback>`. Report ex
 
 ### Ex2 — arc-retrospective
 
-- **A17.** Actor Read across the arc — at minimum: 3+ of {`CLAUDE.local.md`, `.claude/memory/observations.md`, ADR, both skills, both run branches}. `jq` Read tool calls between Prompt 5 paste and end of scrollback.
-- **A20.** Arc note saved at `<scratch>/.claude/memory/arc-note.md`: `test -f`.
+- **A17.** Actor Read across the arc — at minimum: 3+ of {`CLAUDE.local.md`, `observations/observations.md`, ADR, both skills, both run branches}. `jq` Read tool calls between Prompt 5 paste and end of scrollback.
+- **A20.** Arc note saved at `<scratch>/observations/arc-note.md`: `test -f`.
 - **A21.** Arc note is roughly one page: `wc -w <arc-note>` between 200 and 1500 words.
 
 ### Prompt-chain integrity

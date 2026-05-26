@@ -22,7 +22,7 @@ After this module, you will be able to:
 
 You walk in holding two runs of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-run. The contrast across two runs is the material. One run gave you a failure mode to name. Two runs give you gaps the three-pattern itself didn't anticipate, and a shape for what to do about each one.
 
-> **Open M6 in a new Claude Code session inside the M5 worktree at `../<repo>-m5`, no fork.** The packaged re-run's evidence (`reference.md`, `plan.md`, the verifier, `RUN-NOTES.md`) is already on disk there, alongside `./CLAUDE.local.md` and `.claude/memory/`. M6 reads, diagnoses, and ships in place.
+> **Open M6 in a new Claude Code session inside the M5 worktree at `../<repo>-m5`, no fork.** The packaged re-run's evidence (`reference.md`, `plan.md`, the verifier, `RUN-NOTES.md`) is already on disk there, alongside `./CLAUDE.local.md` and `observations/`. M6 reads, diagnoses, and ships in place.
 
 > **Packaged run thin or missing?** You can still rescue it. If the M5 session is alive but stalled, nudge it once with the Continue prompt from M4. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while the room reads. M6 starts by reading; before it writes, decide whether to wait, stop M5, or accept the partial run as the artefact. Skip the opening lecture. Practice is core. Lectures can be read later.
 
@@ -93,10 +93,10 @@ Antti
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
-| Two-run gap map | Ranked gap list in M6 session scrollback; optionally copied to `.claude/memory/` if the student wants it durable | Exercise Phase 1 (diff un-packaged M4 vs packaged M5, quote both runs, rank dominant gap) | Phase 2 session-shaper authoring; arc-retrospective fresh read; future post-cohort team-kit conversation |
+| Two-run gap map | Ranked gap list in M6 session scrollback; optionally copied to `observations/` if the student wants it durable | Exercise Phase 1 (diff un-packaged M4 vs packaged M5, quote both runs, rank dominant gap) | Phase 2 session-shaper authoring; arc-retrospective fresh read; future post-cohort team-kit conversation |
 | Stale-rule deletion | `./CLAUDE.local.md` in the M5 worktree, with one rule cut in place if diagnosis killed it | Exercise Phase 1 compound-by-subtraction prompt | Every future session in the worktree; post-M6 merge-back decision into the original repo's personal rules |
 | Session-shaper / second skill | `~/.claude/skills/<skill-name>/SKILL.md` (personal, auto-discovered) | Exercise Phase 2 authoring conversation + self-critique + invocation on packaged run | Future long-running tasks of the same shape; `the-loop-has-a-name` lecture names it as verifier/judge/gate/eval; `agents-that-build-agents` prompt reads it as evidence |
-| Arc retrospective note | Student-picked repo location (ADR, `.claude/memory/` memo, or standalone file) | `arc-retrospective` exercise fresh sub-task read + one push-back | Future stalled sessions; post-cohort personal/team reflection; next-loop kit design in `agents-that-build-agents` |
+| Arc retrospective note | Student-picked repo location (ADR, `observations/` memo, or standalone file) | `arc-retrospective` exercise fresh sub-task read + one push-back | Future stalled sessions; post-cohort personal/team reflection; next-loop kit design in `agents-that-build-agents` |
 
 **Failure modes + escape hatches per phase** (per `check_pedagogy.md` rule 47; one row per forcing function shipping in the exercise):
 - **Phase 1 — Diff and name the gaps.** Failure: both-runs collapse — student treats the packaged run as the only material worth diagnosing, the un-packaged baseline fades. Escape: trainer asks for quoted moments from each run separately before any synthesis.

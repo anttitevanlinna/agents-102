@@ -74,7 +74,7 @@ rm -rf "$repo"
 echo "[test] classify_memory_write distinguishes the project-memory fix (L91)"
 # BUG: a file appeared in the user-level auto-memory home -> fix didn't take.
 check "user-level write classified BUG" "$(classify_memory_write 'project_x.md' '')" "BUG"
-# PASS: file landed in the in-repo ./.claude/memory -> fix took.
+# PASS: file landed in the in-repo ./observations -> fix took.
 check "in-repo write classified PASS" "$(classify_memory_write '' 'project_x.md')" "PASS"
 # NONE: path not exercised (only CLAUDE.local.md rule-sharpening this run).
 check "no memory write classified NONE" "$(classify_memory_write '' '')" "NONE"

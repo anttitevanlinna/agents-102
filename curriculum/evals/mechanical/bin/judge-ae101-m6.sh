@@ -86,7 +86,7 @@ qa_count=$(awk '/Phase 3/,/Phase 4/' "$SCROLL" 2>/dev/null | grep -oE '^\*\*Q[1-
 if [[ -f "$WORKTREE/docs/arc-retrospective.md" ]]; then
   record "A1" "PASS" "arc-retrospective.md exists"
   # Should have at least one quoted artefact reference
-  if grep -ciqE 'CLAUDE\.local\.md|\.claude/memory|ADR 0001|test-strategy|m4/|m5/' "$WORKTREE/docs/arc-retrospective.md"; then
+  if grep -ciqE 'CLAUDE\.local\.md|observations/|ADR 0001|test-strategy|m4/|m5/' "$WORKTREE/docs/arc-retrospective.md"; then
     record "A2" "PASS" "arc-retrospective references specific artefacts"
   else record "A2" "FAIL" "no artefact references"; fi
 else

@@ -33,7 +33,13 @@
 # Block markers are comment lines; run-m5.sh splits on them.
 
 # === PA: main-pane worktree setup ===
-ae101-m5-worktree-setup
+# AUQ guard (README §42 / IMPROVEMENTS): declarative-but-AUQ-risk prompt. On the
+# fresh-baseline chain ./observations/ doesn't exist (M4 sharpened rules to
+# CLAUDE.local.md instead of writing a memory file), and the agent — correctly
+# noticing the cp-step's intent-vs-reality gap — calls AskUserQuestion ("where
+# should I copy the memory?") and hangs PA forever. Creating the worktree is the
+# load-bearing artifact; suppress AUQ and tell it to skip the absent copy.
+ae101-m5-worktree-setup I'm doing a headless dry-run, please don't call AskUserQuestion. Creating the worktree at the M4 starting-point commit (named in ./task.md's Run coordinates) is the task — do that and proceed. The copy steps are conditional: if `./observations/` doesn't exist in the repo, just skip that copy and DON'T ask where else to put the observations — note the gap in chat and keep going; copy CLAUDE.local.md if it's present. State any assumption in chat and continue.
 
 # === PB: exercise — diagnose, build, assemble ===
 
@@ -72,7 +78,7 @@ diagnose-and-resend-5 Don't call AskUserQuestion — invent the two synthetic in
 # answers, then "lock it in" literal triggers the file writes.
 diagnose-and-resend-6 Don't call AskUserQuestion. Ask your three grill questions per round as a numbered list in your reply (plain chat text) and STOP — don't touch either file yet. I'll answer in a follow-up message; ask the next three (or tell me you're ready) the same way. The 'lock it in' line will be a separate message from me when I'm ready to approve the writes.
 
-* answers: 1) reference.md and plan.md both at the worktree root, next to task.md. 2) keep success criteria tight to the blocker-deadlock fix: end-of-game check covers the all-blockers-remaining case, a status-text path for the player, regression test in tests/main.test.js. 3) tests-first phase: write the failing test for the all-blockers-remaining case before touching step()'s end-of-game logic. 4) decisions log: append-only, one line per load-bearing choice (which state-machine path to enumerate; what status text). 5) what-didn't-work section: empty at start, agent appends as it goes. anything else, use your judgement. ask the next three if you have them, or say ready.
+* answers: 1) reference.md and plan.md both at the worktree root, next to task.md. 2) keep success criteria tight to the blocker-deadlock fix: end-of-game check covers the all-blockers-remaining case, a status-text path for the player, regression test under `test/` (the suite lives in `test/`, run via `node --test` — don't split a `tests/` dir). 3) tests-first phase: write the failing test for the all-blockers-remaining case before touching step()'s end-of-game logic. 4) decisions log: append-only, one line per load-bearing choice (which state-machine path to enumerate; what status text). 5) what-didn't-work section: empty at start, agent appends as it goes. anything else, use your judgement. ask the next three if you have them, or say ready.
 
 * lock it in
 

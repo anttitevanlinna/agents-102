@@ -55,6 +55,7 @@ scenario="${SCENARIO:-$HERE/scenarios/m6.txt}"
 [[ -f "$scenario" ]] || { echo "missing scenario: $scenario" >&2; exit 2; }
 
 run_id="$(date +%Y%m%d-%H%M%S)-$$"
+export RUNNER_TMUX_SOCKET="runner-$run_id"
 run_dir="$HERE/out/$run_id"
 sentinel_dir="$run_dir/sentinels"
 mkdir -p "$sentinel_dir"
@@ -191,7 +192,7 @@ assert_turn() {
         assert_scrollback_grep "T6 invoke+judge" "$transcript" "invoke|invoked|catch|caught|miss|missed|finding|pass|fail|fired|output|good|useful|sharper"
         ;;
     7)  # arc-retrospective-1 — one-page note, agent shows before saving,
-        # student-picked destination (ADR / .claude/memory/ / standalone
+        # student-picked destination (ADR / observations/ / standalone
         # file). The body says "Show me the note before you save it.
         # I'll push back, then we save." The codesearch variant adds an
         # explicit save-approval literal after this turn; the lemmings
@@ -236,9 +237,9 @@ for line in "${lines[@]}"; do
   if is_slash_only "$body"; then
     echo "[m6] turn=$seq slash-command (no sentinel) — bridging via lib"
     fake_sentinel_after_render "$sentinel_dir" "$seq" "${CLAUDE_RUNNER_SLASH_SLEEP:-3}"
-  elif ! wait_for_turn "$sentinel_dir" "$seq" "$standard_timeout"; then
+  elif ! wait_for_turn "$sentinel_dir" "$seq" "$standard_timeout" "$session"; then
     pane_capture_safe "$session" "$run_dir/transcript.txt" 10
-    echo "[m6] FAIL turn=$seq (sentinel timeout after ${standard_timeout}s) — see $run_dir/transcript.txt" >&2
+    echo "[m6] FAIL turn=$seq — see $run_dir/transcript.txt" >&2
     exit 1
   fi
   pane_capture "$session" "$run_dir/turn-$seq.transcript.txt"
@@ -285,7 +286,7 @@ fi
 
 # Detect arc-retrospective save destinations (IMPROVEMENTS.md Fix 4,
 # 2026-05-25). The note's destination is student-picked (ADR /
-# .claude/memory/ memo / standalone file), so we can't pin a single path.
+# observations/ memo / standalone file), so we can't pin a single path.
 # The old code walked a fixed dir-whitelist (.claude/memory, docs/adr,
 # docs/adrs, root) at maxdepth 1 — it missed the 2026-05-25 run's
 # agent-chosen docs/notes/ and reported []. Walk the whole worktree for

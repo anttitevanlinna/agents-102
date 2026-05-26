@@ -15,7 +15,7 @@ opportunistic-copy:
     if-present-at: ./CLAUDE.local.md
     rationale: born at M1's compound-and-close-1; copied if M1 ran
   - id: memory-folder
-    if-present-at: ./.claude/memory/
+    if-present-at: ./observations/
     rationale: born at M4's walk-and-send-off Phase 2; copied if M4 ran (reorder order) — prompt body's "(if exists)" handles absence gracefully
 ---
 Fork a sibling worktree. Default path `../<repo-name>-m3-quality`, default branch `m3/quality` off the current branch:
@@ -24,8 +24,7 @@ Fork a sibling worktree. Default path `../<repo-name>-m3-quality`, default branc
 
 Copy the gitignored personal files into the worktree so the new session inherits the same personal rules and memory:
   cp ./CLAUDE.local.md ../<repo-name>-m3-quality/  (if it exists)
-  mkdir -p ../<repo-name>-m3-quality/.claude/
-  cp -r ./.claude/memory/ ../<repo-name>-m3-quality/.claude/memory/  (if .claude/memory/ exists in this repo)
+  cp -r ./observations/ ../<repo-name>-m3-quality/observations/  (if observations/ exists in this repo)
 
 These won't sync back automatically. The worktree's copies are independent from this point.
 

@@ -8,7 +8,11 @@
 # threat-model-with-stride-3 acts as the "yes save the ADR" approval.
 
 # Phase A: create the worktree for the quality side.
-ae101-m3-fork-quality-side
+# AUQ guard (README §42 / IMPROVEMENTS §91): this prompt is declarative but
+# carries a `cp -r ./observations/` step; when that dir is absent (it is, on
+# the fresh-baseline SUT) the agent has been seen to ASK about the mismatch and
+# hang phase A. Suppress + tell it to skip the copy and proceed.
+ae101-m3-fork-quality-side I'm doing a headless dry-run, please don't call AskUserQuestion. The fork is the task — create the worktree and proceed. The body's copy steps are conditional: if `./observations/` doesn't exist in this repo, just skip that copy (the body says "if it exists") and don't ask about it; copy CLAUDE.local.md if it's there. State any assumption in chat and keep going.
 
 # Phase B (security side): map → STRIDE → ADR (with approval) → auto-load Q.
 map-the-access-surface-2 The feature was planned in M2 — look in ~/.claude/plans/ for the most recent file matching `m2-add-levels-2-3-<adjective>-<animal>.md` (M2's tail pinned that filename pattern). Read it first, then invoke the skill on what's described there. Tell me which file you read.

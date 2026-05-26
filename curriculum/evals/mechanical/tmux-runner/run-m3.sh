@@ -41,6 +41,7 @@ quality_scenario="${SCENARIO_QUALITY:-$HERE/scenarios/m3-quality.txt}"
 closer_key="ae101-m3-sharpen-skill"
 
 run_id="$(date +%Y%m%d-%H%M%S)-$$"
+export RUNNER_TMUX_SOCKET="runner-$run_id"
 run_dir="$HERE/out/$run_id"
 main_dir="$run_dir/main"
 quality_dir="$run_dir/quality"
@@ -145,7 +146,7 @@ send_main_turn() {
 
 send_main_turn  # phase A: fork
 echo "[m3] phase A: waiting for fork sentinel"
-wait_for_turn "$main_dir/sentinels" 1 300
+wait_for_turn "$main_dir/sentinels" 1 300 "$main_session"
 pane_capture "$main_session" "$main_dir/turn-1.transcript.txt"
 
 # Quality cwd should now exist. Verify.
@@ -232,11 +233,11 @@ while true; do
   # OOM, API kill, system reboot), polling for sentinels is futile.
   # Earlier M3 runs polled for 90+ min after the session was gone
   # before someone noticed. Fail fast on first dead-session detection.
-  if ! tmux has-session -t "$main_session" 2>/dev/null; then
+  if ! tmux -L "$RUNNER_TMUX_SOCKET" has-session -t "$main_session" 2>/dev/null; then
     echo "[m3] FAIL: main session $main_session died externally. main_acked=$main_acked/$main_total quality_acked=$quality_acked/$quality_total" >&2
     exit 1
   fi
-  if ! tmux has-session -t "$quality_session" 2>/dev/null; then
+  if ! tmux -L "$RUNNER_TMUX_SOCKET" has-session -t "$quality_session" 2>/dev/null; then
     echo "[m3] FAIL: quality session $quality_session died externally. main_acked=$main_acked/$main_total quality_acked=$quality_acked/$quality_total" >&2
     exit 1
   fi
@@ -260,8 +261,8 @@ echo "[m3] main turn=$main_seq key=$closer_key (closer)"
 pane_send_text "$main_session" "$closer_body"
 
 closer_timeout="${CLAUDE_RUNNER_TIMEOUT:-3600}"
-if ! wait_for_turn "$main_dir/sentinels" "$main_seq" "$closer_timeout"; then
-  echo "[m3] FAIL: closer timeout after ${closer_timeout}s" >&2
+if ! wait_for_turn "$main_dir/sentinels" "$main_seq" "$closer_timeout" "$main_session"; then
+  echo "[m3] FAIL: closer — see $main_dir/transcript.txt" >&2
   exit 1
 fi
 pane_capture "$main_session" "$main_dir/turn-$main_seq.transcript.txt"

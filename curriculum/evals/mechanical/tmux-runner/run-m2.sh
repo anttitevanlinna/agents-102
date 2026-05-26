@@ -39,6 +39,7 @@ scenario="${SCENARIO:-$HERE/scenarios/m2.txt}"
 [[ -f "$scenario" ]] || { echo "missing scenario: $scenario" >&2; exit 2; }
 
 run_id="$(date +%Y%m%d-%H%M%S)-$$"
+export RUNNER_TMUX_SOCKET="runner-$run_id"
 run_dir="$HERE/out/$run_id"
 sentinel_dir="$run_dir/sentinels"
 mkdir -p "$sentinel_dir"
@@ -62,6 +63,15 @@ baseline_branch="$(cd "$sut_cwd" && git rev-parse --abbrev-ref HEAD)"
 plans_dir="$HOME/.claude/plans"
 mkdir -p "$plans_dir"
 pre_plans="$(ls "$plans_dir" 2>/dev/null | sort | tr '\n' ' ')"
+# Plan-file prefix: extract the `~/.claude/plans/m2-<task-slug>-` path from
+# the first plan-mention in the scenario file so locate_plan_file can filter
+# out cross-runner contamination (parallel m2-* runs on different SUTs
+# landing in the same ~/.claude/plans/ dir). Falls back to a permissive
+# `m2-*` glob if extraction fails. The trailing `-` in the captured prefix
+# is preserved so `m2-foo-*` doesn't also match an unrelated `m2-foobar-*`.
+plan_prefix="$(grep -oE '~/\.claude/plans/m2-[a-z0-9-]+' "$scenario" | head -1 | sed 's|~/.claude/plans/||')"
+plan_glob_pattern="${plan_prefix:-m2-}*.md"
+echo "[m2] plan-file glob: $plan_glob_pattern"
 claude_local_md="$sut_cwd/CLAUDE.local.md"
 claude_local_mtime_baseline="$(mtime_of "$claude_local_md")"
 run_start_epoch="$(date +%s)"
@@ -96,7 +106,9 @@ plan_file_global=""
 locate_plan_file() {
   local f newest
   newest=""
-  for f in "$plans_dir"/*.md; do
+  # Match scenario-derived prefix only — guards against parallel m2-* runs
+  # on other SUTs landing concurrent plan files in $plans_dir.
+  for f in "$plans_dir"/$plan_glob_pattern; do
     [[ -f "$f" ]] || continue
     local base; base="$(basename "$f")"
     if ! echo " $pre_plans " | grep -qF " $base "; then
@@ -281,9 +293,9 @@ for line in "${lines[@]}"; do
   if is_slash_only "$body"; then
     echo "[m2] turn=$seq slash-command (no sentinel) — bridging via lib"
     fake_sentinel_after_render "$sentinel_dir" "$seq" "${CLAUDE_RUNNER_SLASH_SLEEP:-3}"
-  elif ! wait_for_turn "$sentinel_dir" "$seq" "$turn_timeout"; then
+  elif ! wait_for_turn "$sentinel_dir" "$seq" "$turn_timeout" "$session"; then
     pane_capture_safe "$session" "$run_dir/transcript.txt" 10
-    echo "[m2] FAIL turn=$seq (sentinel timeout after ${turn_timeout}s) — see $run_dir/transcript.txt" >&2
+    echo "[m2] FAIL turn=$seq — see $run_dir/transcript.txt" >&2
     exit 1
   fi
   pane_capture "$session" "$run_dir/turn-$seq.transcript.txt"

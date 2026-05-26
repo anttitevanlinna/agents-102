@@ -38,6 +38,7 @@ scenario="${SCENARIO:-$HERE/scenarios/m1.txt}"
 [[ -f "$scenario" ]] || { echo "missing scenario: $scenario" >&2; exit 2; }
 
 run_id="$(date +%Y%m%d-%H%M%S)-$$"
+export RUNNER_TMUX_SOCKET="runner-$run_id"
 run_dir="$HERE/out/$run_id"
 sentinel_dir="$run_dir/sentinels"
 mkdir -p "$sentinel_dir"
@@ -206,9 +207,9 @@ for line in "${lines[@]}"; do
   if is_slash_only "$body"; then
     echo "[m1] turn=$seq slash-command (no sentinel) — bridging via lib"
     fake_sentinel_after_render "$sentinel_dir" "$seq" "${CLAUDE_RUNNER_SLASH_SLEEP:-3}"
-  elif ! wait_for_turn "$sentinel_dir" "$seq" "$standard_timeout"; then
+  elif ! wait_for_turn "$sentinel_dir" "$seq" "$standard_timeout" "$session"; then
     pane_capture_safe "$session" "$run_dir/transcript.txt" 10
-    echo "[m1] FAIL turn=$seq (sentinel timeout after ${standard_timeout}s) — see $run_dir/transcript.txt" >&2
+    echo "[m1] FAIL turn=$seq — see $run_dir/transcript.txt" >&2
     exit 1
   fi
   pane_capture "$session" "$run_dir/turn-$seq.transcript.txt"

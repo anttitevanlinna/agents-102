@@ -108,6 +108,7 @@ scenario="${SCENARIO:-$HERE/scenarios/m5.txt}"
 [[ -f "$scenario" ]] || { echo "missing scenario: $scenario" >&2; exit 2; }
 
 run_id="$(date +%Y%m%d-%H%M%S)-$$"
+export RUNNER_TMUX_SOCKET="runner-$run_id"
 run_dir="$HERE/out/$run_id"
 pa_dir="$run_dir/pa"
 pb_dir="$run_dir/pb"
@@ -259,9 +260,9 @@ for line in "${pa_lines[@]}"; do
 
   if is_slash_only "$body"; then
     fake_sentinel_after_render "$pa_dir/sentinels" "$pa_seq" "${CLAUDE_RUNNER_SLASH_SLEEP:-3}"
-  elif ! wait_for_turn "$pa_dir/sentinels" "$pa_seq" "$standard_timeout"; then
+  elif ! wait_for_turn "$pa_dir/sentinels" "$pa_seq" "$standard_timeout" "$pa_session"; then
     pane_capture_safe "$pa_session" "$pa_dir/transcript.txt" 10
-    echo "[m5] FAIL PA turn=$pa_seq (sentinel timeout after ${standard_timeout}s) — see $pa_dir/transcript.txt" >&2
+    echo "[m5] FAIL PA turn=$pa_seq — see $pa_dir/transcript.txt" >&2
     exit 1
   fi
   pane_capture "$pa_session" "$pa_dir/turn-$pa_seq.transcript.txt"
@@ -453,9 +454,9 @@ for line in "${pb_lines[@]}"; do
   if is_slash_only "$body"; then
     echo "[m5] PB turn=$pb_seq slash-command — bridging via lib"
     fake_sentinel_after_render "$pb_dir/sentinels" "$pb_seq" "${CLAUDE_RUNNER_SLASH_SLEEP:-3}"
-  elif ! wait_for_turn "$pb_dir/sentinels" "$pb_seq" "$standard_timeout"; then
+  elif ! wait_for_turn "$pb_dir/sentinels" "$pb_seq" "$standard_timeout" "$pb_session"; then
     pane_capture_safe "$pb_session" "$pb_dir/transcript.txt" 10
-    echo "[m5] FAIL PB turn=$pb_seq (sentinel timeout after ${standard_timeout}s) — see $pb_dir/transcript.txt" >&2
+    echo "[m5] FAIL PB turn=$pb_seq — see $pb_dir/transcript.txt" >&2
     exit 1
   fi
   pane_capture "$pb_session" "$pb_dir/turn-$pb_seq.transcript.txt"
@@ -540,9 +541,9 @@ for line in "${pc_lines[@]}"; do
 
   if is_slash_only "$body"; then
     fake_sentinel_after_render "$pc_dir/sentinels" "$pc_seq" "${CLAUDE_RUNNER_SLASH_SLEEP:-3}"
-  elif ! wait_for_turn "$pc_dir/sentinels" "$pc_seq" "$sendoff_timeout"; then
+  elif ! wait_for_turn "$pc_dir/sentinels" "$pc_seq" "$sendoff_timeout" "$pc_session"; then
     pane_capture_safe "$pc_session" "$pc_dir/transcript.txt" 10
-    echo "[m5] FAIL PC turn=$pc_seq (sentinel timeout after ${sendoff_timeout}s) — see $pc_dir/transcript.txt" >&2
+    echo "[m5] FAIL PC turn=$pc_seq — see $pc_dir/transcript.txt" >&2
     exit 1
   fi
   pane_capture "$pc_session" "$pc_dir/turn-$pc_seq.transcript.txt"

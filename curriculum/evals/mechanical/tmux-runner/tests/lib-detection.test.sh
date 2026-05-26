@@ -71,6 +71,43 @@ check "finds the nested docs/notes/ arc note" "$hit_note" "1"
 check "excludes node_modules noise" "$hit_noise" "0"
 rm -rf "$repo"
 
+echo "[test] arc-note find also walks additional roots outside the worktree (Fix 5)"
+# The 2026-05-26 picoshare M6 run saved practice-arc-M1-M6.md to the
+# user-level home-keyed auto-memory (~/.claude/projects/<encoded-cwd>/memory/),
+# NOT the worktree — Claude reasoned about it as a personal cross-module
+# retrospective that doesn't fit the atomic-memo shape used by team
+# observations/. The whole-worktree walk Fix 4 introduced doesn't reach
+# that dir. find_recent_md now accepts additional roots after $ref so the
+# M6 runner can pass the user-level memory dir alongside $sut_cwd.
+repo="$(mk_repo)"
+user_mem="$(mktemp -d)"
+ref="$(mktemp)"; sleep 1
+echo "# arc" > "$user_mem/practice-arc-M1-M6.md"
+mkdir -p "$repo/observations"; echo "# obs" > "$repo/observations/note.md"  # worktree-side write too
+hit_arc=0; hit_obs=0
+while IFS= read -r p; do
+  [[ -z "$p" ]] && continue
+  [[ "$p" == *practice-arc-M1-M6.md ]] && hit_arc=1
+  [[ "$p" == *observations/note.md ]] && hit_obs=1
+done < <(find_recent_md "$repo" "$ref" "$user_mem")
+check "finds md in additional root (user-level memory)" "$hit_arc" "1"
+check "still finds md in primary worktree root (regression)" "$hit_obs" "1"
+# Missing additional root is silently skipped, not an error.
+hit_arc=0
+while IFS= read -r p; do
+  [[ -z "$p" ]] && continue
+  [[ "$p" == *practice-arc-M1-M6.md ]] && hit_arc=1
+done < <(find_recent_md "$repo" "$ref" "/nonexistent/path/$$")
+check "missing additional root is skipped, not fatal" "$hit_arc" "0"
+# Backwards-compatible: two-arg call still works.
+hit_obs=0
+while IFS= read -r p; do
+  [[ -z "$p" ]] && continue
+  [[ "$p" == *observations/note.md ]] && hit_obs=1
+done < <(find_recent_md "$repo" "$ref")
+check "two-arg call backwards-compatible" "$hit_obs" "1"
+rm -rf "$repo" "$user_mem" "$ref"
+
 echo "[test] classify_memory_write distinguishes the project-memory fix (L91)"
 # BUG: a file appeared in the user-level auto-memory home -> fix didn't take.
 check "user-level write classified BUG" "$(classify_memory_write 'project_x.md' '')" "BUG"

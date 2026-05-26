@@ -6,6 +6,16 @@
 # from the first M3 run (round-trip amplification it caught;
 # browser-history it missed). The literal-text line after
 # threat-model-with-stride-3 acts as the "yes save the ADR" approval.
+#
+# threat-model-with-stride-3 tail (ADR-location pin): the exercise body of
+# threat-model-with-stride.md (line ~50) explicitly anticipates the agent
+# drifting INTO the m3/quality worktree because "this is M3 work" framed
+# the scrollback; the cohort student is then expected to tell Claude to
+# move it back to main. The picoshare 2026-05-26 run drifted the OTHER
+# way (wrote to main, asked to move to m3/quality, "save like you want
+# it" approved). Pinning the location in the tail preempts either drift.
+# Real cohort students still hit the pedagogically load-bearing surprise;
+# the runner cuts to the cohort-correct outcome.
 
 # Phase A: create the worktree for the quality side.
 # AUQ guard (README §42 / IMPROVEMENTS §91): this prompt is declarative but
@@ -27,7 +37,7 @@ threat-model-with-stride-1
 
 threat-model-with-stride-2
 
-threat-model-with-stride-3
+threat-model-with-stride-3 Save the ADR to docs/adr/ in this working directory (the main repo, security lane). Don't copy or move it to the m3/quality worktree — that side-quest is for the test-strategy skill, not security ADRs. Show me the diff and tell me which path you wrote to.
 
 * Yep. Just give it to me and save like you want it.
 

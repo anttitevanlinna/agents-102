@@ -69,8 +69,17 @@ warmup="${CLAUDE_RUNNER_WARMUP:-10}"
 standard_timeout="${CLAUDE_RUNNER_TIMEOUT:-3600}"
 
 # Snapshot transcripts dir + git baseline + skills dir + CLAUDE.local.md mtime.
+# NOTE: encoded_cwd uses `/` → `-`; Claude Code also collapses `.` → `-` (latent
+# IMPROVEMENTS.md finding 2026-05-24). Current SUT paths (lemmings, picoshare,
+# codesearch) carry no dots, so this is correct today; fix at lib level when a
+# dotted SUT path lands.
 encoded_cwd="$(echo "$sut_cwd" | sed 's|/|-|g')"
 transcripts_dir="$HOME/.claude/projects/$encoded_cwd"
+# user_mem_dir = home-keyed auto-memory for THIS SUT cwd. M6 arc-retrospectives
+# may land here (the picoshare 2026-05-26 practice-arc-M1-M6.md case): the
+# agent reasons about cross-module retrospectives as personal-not-team and
+# picks the home-keyed slot over the in-repo observations/ memo shape.
+user_mem_dir="$transcripts_dir/memory"
 mkdir -p "$transcripts_dir"
 pre_transcripts="$(ls "$transcripts_dir" 2>/dev/null | sort | tr '\n' ' ')"
 baseline_sha="$(cd "$sut_cwd" && git rev-parse --short HEAD)"
@@ -285,18 +294,22 @@ if [[ ${#new_skills_list[@]} -gt 0 ]]; then
 fi
 
 # Detect arc-retrospective save destinations (IMPROVEMENTS.md Fix 4,
-# 2026-05-25). The note's destination is student-picked (ADR /
-# observations/ memo / standalone file), so we can't pin a single path.
-# The old code walked a fixed dir-whitelist (.claude/memory, docs/adr,
-# docs/adrs, root) at maxdepth 1 — it missed the 2026-05-25 run's
-# agent-chosen docs/notes/ and reported []. Walk the whole worktree for
-# .md files newer than the run-start marker, excluding known noise. False
-# positives (e.g. an edited CLAUDE.local.md) are recoverable by a human;
-# false negatives mean state.json lies.
+# 2026-05-25; Fix 5, 2026-05-26). The note's destination is student-picked
+# (ADR / observations/ memo / standalone file / home-keyed auto-memory),
+# so we can't pin a single path. The old code walked a fixed dir-whitelist
+# (.claude/memory, docs/adr, docs/adrs, root) at maxdepth 1 — it missed
+# the 2026-05-25 lemmings docs/notes/ pick and reported []. Walk the
+# whole worktree for .md files newer than the run-start marker, excluding
+# known noise. Also walk $user_mem_dir — the picoshare 2026-05-26 run
+# saved practice-arc-M1-M6.md to ~/.claude/projects/<encoded>/memory/
+# (reasoning: cross-module retrospective is personal, doesn't fit the
+# atomic-memo observations/ shape). False positives (e.g. an edited
+# CLAUDE.local.md) are recoverable by a human; false negatives mean
+# state.json lies.
 arc_paths_list=()
 while IFS= read -r path; do
   [[ -n "$path" ]] && arc_paths_list+=("$path")
-done < <(find_recent_md "$sut_cwd" "$run_start_marker")
+done < <(find_recent_md "$sut_cwd" "$run_start_marker" "$user_mem_dir")
 arc_paths_json="[]"
 if [[ ${#arc_paths_list[@]} -gt 0 ]]; then
   arc_paths_json="[$(printf '"%s",' "${arc_paths_list[@]}" | sed 's/,$//')]"

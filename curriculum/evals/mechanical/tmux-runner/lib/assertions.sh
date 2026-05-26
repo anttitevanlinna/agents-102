@@ -165,15 +165,25 @@ classify_memory_write() {
 }
 
 find_recent_md() {
-  # Markdown files under $root modified after the reference file $ref,
+  # Markdown files under one or more roots modified after the reference file $ref,
   # excluding known noise dirs. Replaces the fixed dir-whitelist that
   # missed agent-chosen destinations like docs/notes/ (IMPROVEMENTS.md
-  # Fix 4, 2026-05-25). Uses `-newer <reffile>` (POSIX) not `-newermt
-  # "@epoch"` — BSD find on macOS can't parse the @epoch form and errored
-  # silently, so the old line never matched anything regardless of dir.
+  # Fix 4, 2026-05-25). Accepts additional roots beyond the worktree —
+  # e.g. ~/.claude/projects/<encoded-cwd>/memory/ — so the M6 runner can
+  # catch arc-retrospectives that land outside the SUT cwd (Fix 5,
+  # 2026-05-26: the picoshare practice-arc-M1-M6.md case). Missing
+  # additional roots are silently skipped. Uses `-newer <reffile>`
+  # (POSIX) not `-newermt "@epoch"` — BSD find on macOS can't parse the
+  # @epoch form and errored silently, so the old line never matched
+  # anything regardless of dir.
   local root="$1" ref="$2"
+  shift 2
   [[ -f "$ref" ]] || { echo "[assert] WARN find_recent_md: missing ref marker $ref" >&2; return 0; }
-  find "$root" \
-    \( -name node_modules -o -name .git \) -prune -o \
-    -type f -name '*.md' -newer "$ref" -print 2>/dev/null
+  local r
+  for r in "$root" "$@"; do
+    [[ -d "$r" ]] || continue
+    find "$r" \
+      \( -name node_modules -o -name .git \) -prune -o \
+      -type f -name '*.md' -newer "$ref" -print 2>/dev/null
+  done
 }

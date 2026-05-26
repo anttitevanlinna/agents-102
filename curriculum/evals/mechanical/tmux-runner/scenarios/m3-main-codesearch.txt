@@ -34,6 +34,16 @@
 #
 # Save-gate: the literal "yep give it to me and save like you want it"
 # after threat-model-with-stride-3 is the explicit ADR approval.
+#
+# threat-model-with-stride-3 tail (ADR-location pin): the exercise body of
+# threat-model-with-stride.md (line ~50) explicitly anticipates the agent
+# drifting INTO the m3/quality worktree because "this is M3 work" framed
+# the scrollback; the cohort student is then expected to tell Claude to
+# move it back to main. The picoshare 2026-05-26 run drifted the OTHER
+# way (wrote to main, asked to move to m3/quality, "save like you want
+# it" approved). Pinning the location in the tail preempts either drift.
+# Real cohort students still hit the pedagogically load-bearing surprise;
+# the runner cuts to the cohort-correct outcome.
 
 # Phase A: create the worktree for the quality side.
 #
@@ -58,7 +68,7 @@ threat-model-with-stride-1 Don't call AskUserQuestion. State your STRIDE walk in
 
 threat-model-with-stride-2 Don't call AskUserQuestion. Use your judgment on the load-bearing pick; surface reasoning in chat.
 
-threat-model-with-stride-3 Don't call AskUserQuestion. Show the ADR draft in chat; if you have shape questions (filename / numbering / scope) ask them as plain prose at the END of your reply and I'll answer in a follow-up before approval.
+threat-model-with-stride-3 Don't call AskUserQuestion. Save the ADR to docs/adr/ in this working directory (the main repo, security lane). Don't copy or move it to the m3/quality worktree — that side-quest is for the test-strategy skill, not security ADRs. Show me the diff. Other shape questions (filename slug, numbering) ask as plain prose at the END of your reply and I'll answer in a follow-up before approval.
 
 * Yep. Just give it to me and save like you want it.
 

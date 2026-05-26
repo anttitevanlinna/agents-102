@@ -20,8 +20,8 @@ At the start of this training, you might have asked someone what the right wirin
 <!-- maintainer -->
 
 
-**Quality:** draft 2026-05-21 (writing@TOUCHED story@TOUCHED technical@1ff6f8a behavior@1ff6f8a pedagogy@TOUCHED strategy@1ff6f8a)
-- prior audit @1ff6f8a (2026-05-15): writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS — invalidated 2026-05-21 by section restructure (cut speculative-practitioner section after Antti flagged it as anti-practice: putting words in living practitioners' mouths who hadn't written this up).
+**Quality:** compendium-audited 2026-05-26 (writing@0ef2ca6 story@0ef2ca6 technical@0ef2ca6 behavior@1ff6f8a pedagogy@TOUCHED strategy@1ff6f8a)
+- judges @0ef2ca6: writing PASS, story PASS, technical PASS, behavior grandfathered, pedagogy grandfathered, strategy grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass), partial re-review 2026-05-21 (Antti flagged + approved restructure direction)
 
 **Meta:**

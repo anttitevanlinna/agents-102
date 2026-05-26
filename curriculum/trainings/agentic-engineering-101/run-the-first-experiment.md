@@ -100,9 +100,9 @@ Optional. Skipping any of these does not break Module 5. They sit in the Module 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-24 (writing@4c539ba story@4c539ba technical@0f32201 behavior@ab4b0bd pedagogy@4c539ba strategy@4c539ba)
-- judges @4c539ba: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
-- cross_module @689e7e0: PASS — set=[run-the-first-experiment, learn-from-the-test]
+**Quality:** compendium-audited 2026-05-26 (writing@0ef2ca6 story@4c539ba technical@0ef2ca6 behavior@ab4b0bd pedagogy@0ef2ca6 strategy@4c539ba)
+- judges @0ef2ca6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+- cross_module @0ef2ca6: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop,plan-mode-done-right]
 - mechanical @e840433: PASS — ae101-m4 via bin/judge.sh
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**

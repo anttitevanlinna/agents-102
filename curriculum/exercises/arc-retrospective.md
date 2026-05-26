@@ -27,8 +27,8 @@ If the note reads true, save it. You'll have your agent re-read it when the next
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-09 (writing@56f9332)
-- judges @56f9332: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
+**Quality:** compendium-audited 2026-05-26 (writing@0ef2ca6 technical@0ef2ca6 pedagogy@0ef2ca6)
+- judges @0ef2ca6: writing PASS, story grandfathered, technical PASS, behavior grandfathered, pedagogy PASS, strategy grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Word count:** ~320 words body.
 

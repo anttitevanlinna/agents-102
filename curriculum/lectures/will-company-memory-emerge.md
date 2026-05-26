@@ -24,8 +24,8 @@ You'll meet the answers in your own org before any framework hands them to you. 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-24 (writing@4c539ba story@4c539ba technical@4c539ba behavior@4c539ba pedagogy@4c539ba strategy@4c539ba)
-- judges @4c539ba: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-05-26 (writing@0ef2ca6 story@0ef2ca6 technical@0ef2ca6 behavior@4c539ba pedagogy@4c539ba strategy@4c539ba)
+- judges @0ef2ca6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 
 **Lecture meta:** *~3-4 min. Module 4 closing lecture. Fires AFTER the send-off, while the agent runs, the reflective coda over the launched run. Names the layering the student just walked (personal / team / company) and opens the company-layer question as a live debate. It does NOT resolve the question, and it does NOT touch how the run will go (that is `reading-the-return`'s M5-prep job, so the Module 4 to Module 5 cliffhanger holds). Meta-frame closer per `check_lectures.md` #1: recognition after the walk, not an abstract claim before it. Opens on the naming terrain (memory / context / rules), deliberately unsettled; the trainer lays out how the terms fit and runs the disagreement as a live discussion, landing nothing. Overlaps the send-off wait, so it adds little to the M4 critical path.*
 

@@ -72,6 +72,54 @@ position() {                            # $1=branch  $2=sha
   git -C "$SUT" checkout -B "$1" "$2"
 }
 
+# Pre-wipe a named ~/.claude/skills/<skill> slot so a leg that authors a
+# SUT-suffixed skill (test-strategy-lemmings, session-shaper-lemmings) lands
+# fresh — skills persist across sweeps with no sandbox; the M6 T5
+# new-skill-since-baseline assertion catches an unchanged slot, but M3
+# quality does not. Wipe per-leg before the leg fires. Ported from
+# chain-codesearch.sh; the parity-port note in
+# memory/compounded/2026-05-26-platform-sweep-idempotency-prewipe-authored-skills.md.
+wipe_skill() {                          # $1=skill name
+  local skill="$1"
+  local path="$HOME/.claude/skills/$skill"
+  if [[ -e "$path" ]]; then
+    echo "[chain] pre-wipe ~/.claude/skills/$skill (was $(stat -f '%Sm' "$path/SKILL.md" 2>/dev/null || echo unknown))"
+    rm -rf "$path"
+  fi
+}
+
+# Pre-wipe stale m{4,5}/* sibling branches under the SUT. The leg either
+# repositions its own branch fresh (M4 via position()) or reconciles via
+# `branch -f` (M5). Stale siblings from prior runs pollute the namespace
+# and — in chain-codesearch — caused a `branch -m` collision (2026-05-26,
+# M4/M5 retest); chain-lemmings uses `branch -f` so it doesn't collide,
+# but namespace hygiene still matters.
+wipe_leg_branches() {                   # $1=leg prefix (e.g. "m4", "m5")
+  local prefix="$1"
+  local b
+  while IFS= read -r b; do
+    [[ -z "$b" ]] && continue
+    [[ "$b" == "$(git -C "$SUT" rev-parse --abbrev-ref HEAD 2>/dev/null)" ]] && continue
+    echo "[chain] pre-wipe stale branch $b"
+    git -C "$SUT" branch -D "$b" 2>/dev/null || true
+  done < <(git -C "$SUT" for-each-ref --format='%(refname:short)' "refs/heads/${prefix}/" 2>/dev/null)
+}
+
+# Pre-wipe task.md / plan.md so the agent doesn't inherit a stale Run
+# coordinates block from a previous run. task.md is tracked + committed at
+# "M4 starting point", so positioning M4 from M3's HEAD restores the
+# PREVIOUS run's task.md (with its Run coordinates pointing at the old
+# branch + old transcript UUID). Caught 2026-05-26 in chain-codesearch; the
+# same shape exists here.
+wipe_run_artifacts() {                  # $1=path under $SUT
+  local rel="$1"
+  local path="$SUT/$rel"
+  if [[ -e "$path" ]]; then
+    echo "[chain] pre-wipe $rel (was $(stat -f '%Sm' "$path" 2>/dev/null || echo unknown))"
+    rm -f "$path"
+  fi
+}
+
 echo "[chain] range $FROM..$TO  effort=$EFFORT  sut=$SUT  timeout=${CLAUDE_RUNNER_TIMEOUT}s"
 
 # ---- arrange (M1 baseline) ----------------------------------------------
@@ -100,6 +148,10 @@ if in_range m3; then
   [[ -e "$QUALITY_CWD" ]] && rm -rf "$QUALITY_CWD"
   git -C "$SUT" branch -D m3/quality 2>/dev/null || true
   git -C "$SUT" worktree prune
+  # M3 quality authors test-strategy-lemmings.
+  wipe_skill test-strategy-lemmings
+  wipe_leg_branches m3
+  wipe_leg_branches m4
   run_module m3 "$HERE/run-m3.sh" --main-cwd "$SUT" --quality-cwd "$QUALITY_CWD"
 fi
 
@@ -107,6 +159,9 @@ fi
 #       commit (current HEAD). Branch m4/<slug> from there.
 if in_range m4; then
   position "m4/$CHAIN_SLUG" "$(git -C "$SUT" rev-parse --short HEAD)"
+  wipe_leg_branches m4
+  wipe_run_artifacts task.md
+  wipe_run_artifacts plan.md
   run_module m4 "$HERE/run-m4.sh" --cwd "$SUT" --task-slug "$CHAIN_SLUG"
 fi
 
@@ -124,7 +179,12 @@ if in_range m5; then
   # "M4 starting point" commit (authoritative via git log --grep, reachable from
   # HEAD where the agent left the work). `branch -f` creates-or-moves; guarded
   # so we never -f the checked-out branch (if it's already correct, skip).
-  m4_rec="$(grep 'Branch:' "$SUT/task.md" 2>/dev/null | grep -oE 'm4/[a-z0-9-]+' | head -1)"
+  # tail -1 — read the LATEST Branch: line. Defense-in-depth against the
+  # agent leaving a second Run coordinates block from a prior run (caught
+  # 2026-05-26 in chain-codesearch); wipe_run_artifacts above should make
+  # the file fresh, but if a prompt regression appends instead of replaces,
+  # the latest block is the one this run authored.
+  m4_rec="$(grep 'Branch:' "$SUT/task.md" 2>/dev/null | grep -oE 'm4/[a-z0-9-]+' | tail -1)"
   m4_sp="$(git -C "$SUT" log --format='%h' --grep='^M4 starting point$' -1 2>/dev/null)"
   cur="$(git -C "$SUT" rev-parse --abbrev-ref HEAD)"
   if [[ -n "$m4_rec" && -n "$m4_sp" && "$m4_rec" != "$cur" ]]; then
@@ -141,6 +201,8 @@ fi
 
 # ---- M6: spot gaps + retrospective, in the M5 worktree (no new branch). ---
 if in_range m6; then
+  # M6 authors session-shaper-lemmings.
+  wipe_skill session-shaper-lemmings
   run_module m6 "$HERE/run-m6.sh" --cwd "$M5_WORKTREE" --task-slug "$CHAIN_SLUG"
 fi
 

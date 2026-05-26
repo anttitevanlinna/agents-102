@@ -28,4 +28,4 @@ produces:
       - prompt:agents-that-build-agents-1
     note: replaces branch-grep + transcript marker-search in M5/M6 readers; the coordinates are recorded at creation rather than reconstructed by search
 ---
-Create a fresh feature branch named m4/<short-task-slug>. Before committing, append a protected block to `./task.md` headed `Run coordinates (do not rewrite or remove)` so a later session can recover this run without searching for it: the branch name, and the transcript path you just located. Then stage everything, commit with message "M4 starting point", and tell me the short SHA.
+Create a fresh feature branch named m4/<short-task-slug>. Before committing, append a protected block to `./task.md` headed `Run coordinates (do not rewrite or remove)` so a later session can recover this run without searching for it: the branch name exactly as `git branch --show-current` reports it (read it back from git — don't retype it from memory), and the transcript path you just located. Then stage everything, commit with message "M4 starting point", and tell me the short SHA.

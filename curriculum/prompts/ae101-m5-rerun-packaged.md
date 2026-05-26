@@ -46,7 +46,7 @@ produces:
     consumed-by:
       - prompt:spot-gaps-build-the-loop-1
 ---
-Before you start, write a protected block at the top of `plan.md` headed `Run coordinates (do not rewrite or remove)`, holding this run's `m5/` branch and this session's transcript path (under `~/.claude/projects/`, keyed by the `CLAUDE_CODE_SESSION_ID` environment variable). You'll mutate the rest of plan.md as you run; leave that block alone. Confirm the `.jsonl` exists before writing it; if you can't determine the path, stop and tell me rather than guessing.
+Before you start, write a protected block at the top of `plan.md` headed `Run coordinates (do not rewrite or remove)`, holding this run's `m5/` branch exactly as `git branch --show-current` reports it (read it back from git — don't retype it from memory) and this session's transcript path (under `~/.claude/projects/`, keyed by the `CLAUDE_CODE_SESSION_ID` environment variable). You'll mutate the rest of plan.md as you run; leave that block alone. Confirm the `.jsonl` exists before writing it; if you can't determine the path, stop and tell me rather than guessing.
 
 Then ask for or write anything else you want for the run.
 

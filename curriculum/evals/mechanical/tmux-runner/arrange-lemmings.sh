@@ -101,6 +101,21 @@ for wt in lemmings-m3-quality lemmings-m5; do
 done
 git -C "$SUT" worktree prune
 
+# 3b. clear a dirty SUT tree so the baseline checkout can't abort ----------
+#     A mid-killed sweep leaves uncommitted tracked changes (e.g. an M4 fix
+#     on src/*.js); `git checkout -B` then ABORTS ("local changes would be
+#     overwritten"). arrange's job IS to reset to baseline, so snapshot the
+#     dirty tree to the backup (reversible) then hard-reset + clean. `clean
+#     -fd` (no -x) respects .gitignore, so the Stop hook (gitignored
+#     .claude/settings.local.json) is preserved. See tests/arrange-dirty-tree.test.sh.
+if [[ -n "$(git -C "$SUT" status --porcelain)" ]]; then
+  git -C "$SUT" diff HEAD > "$backup/sut-dirty.patch" 2>/dev/null || true
+  git -C "$SUT" ls-files --others --exclude-standard > "$backup/sut-untracked.txt" 2>/dev/null || true
+  git -C "$SUT" reset --hard -q HEAD
+  git -C "$SUT" clean -fdq
+  echo "[arrange] dirty SUT tree reset (diff -> $backup/sut-dirty.patch; gitignored files kept)"
+fi
+
 # 4. reset code to the M1 baseline on a fresh branch -----------------------
 #    -B force-resets m1/<slug> if a prior run left it. Reversible via reflog
 #    (the prior tip is in branches-before.txt).
@@ -128,5 +143,6 @@ cat <<EOF
 [arrange] reverse this run:
 [arrange]   cp "$backup/CLAUDE.local.md" "$SUT/"            # if it was removed
 [arrange]   cp -R "$backup"/skills/* ~/.claude/skills/       # if skills were removed
+[arrange]   git -C "$SUT" apply "$backup/sut-dirty.patch"    # if a dirty tree was reset
 [arrange]   (prior branch tips: $backup/branches-before.txt)
 EOF

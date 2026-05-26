@@ -2726,7 +2726,7 @@ If nothing earned itself, say so and stop.
 <h1 id="open-the-side-quest">Open the side quest</h1>
 <p><strong>Time: ~5 min</strong></p>
 <p>Module 3 runs in two windows. Security is the main quest in your chosen repo. Quality is a side-quest in a sibling worktree.</p>
-<p>A sibling worktree is a second working directory on the same git history, opened next to your repo. Useful when two angles on the same code shouldn&#39;t share a scrollback. The <a href="#reference-multi-session-git">Multi-session and Git survival guide</a> carries the longer read; one-line version: <code>git worktree add</code> makes a sibling folder on its own branch, you start a new Claude Code session in another window there, both sessions see the same git history but keep their own working state. Personal files (<code>CLAUDE.local.md</code>, <code>.claude/memory/</code>) don&#39;t sync between worktrees, they get copied across once at fork time, then evolve independently.</p>
+<p>A sibling worktree is a second working directory on the same git history, opened next to your repo. Useful when two angles on the same code shouldn&#39;t share a scrollback. The <a href="#reference-multi-session-git">Multi-session and Git survival guide</a> carries the longer read; one-line version: <code>git worktree add</code> makes a sibling folder on its own branch, you start a new Claude Code session in another window there, both sessions see the same git history but keep their own working state. Personal files (<code>CLAUDE.local.md</code>, <code>observations/</code>) don&#39;t sync between worktrees, they get copied across once at fork time, then evolve independently.</p>
 <p><strong>Session</strong> <em>(new, &quot;m3-security&quot;)</em></p>
 <p>Start a new Claude Code session in your repo. This is your main lane for Module 3. Access mapping, STRIDE, and the ADR all live here.</p>
 <p>Before firing the fork, decide where to base the side-quest worktree from, it branches off your current local HEAD. Clean main is the safe default; pick another branch if you have a reason. Switch now if you need to.</p>
@@ -2738,8 +2738,7 @@ If nothing earned itself, say so and stop.
 
 Copy the gitignored personal files into the worktree so the new session inherits the same personal rules and memory:
   cp ./CLAUDE.local.md ../&lt;repo-name&gt;-m3-quality/  (if it exists)
-  mkdir -p ../&lt;repo-name&gt;-m3-quality/.claude/
-  cp -r ./.claude/memory/ ../&lt;repo-name&gt;-m3-quality/.claude/memory/  (if .claude/memory/ exists in this repo)
+  cp -r ./observations/ ../&lt;repo-name&gt;-m3-quality/observations/  (if observations/ exists in this repo)
 
 These won&#39;t sync back automatically. The worktree&#39;s copies are independent from this point.
 
@@ -3115,7 +3114,7 @@ Candidates:
 <h3 id="run-the-audit">Run the audit</h3>
 <p>Ask Claude to audit your system as a subagent and return a ranked top-5 of what will hurt the agent most on this task.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything at `./.claude/memory/` (the three-block memory home; if my team kit pins a different path, use that), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including any test-strategy or workflow skills already authored), and the connectors I&#39;ve wired.
+<pre><code>Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything at `./observations/` (your observations and business-rules notes; if my team kit pins a different path, use that), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including any test-strategy or workflow skills already authored), and the connectors I&#39;ve wired.
 
 Run this audit in a fresh context: spawn a sub-task via the Agent tool so you read my setup without this conversation colouring it. Keep this session&#39;s scrollback intact — we&#39;ll need it for later phases. Return a structured report.
 
@@ -3127,22 +3126,21 @@ For each item, say: (a) what&#39;s thin, (b) what a properly-prepared agent woul
 <p>Read the ranked list. Name which ones you already knew about, which surprised you. <strong>Framework</strong>: this is <em>gap analysis</em>, walk the system you have against the system the task needs. You&#39;ll use it forever for every agent hand-off.</p>
 <h3 id="fill-the-gaps">Fill the gaps</h3>
 <p>Pick the ones that will hurt the agent most (probably two or three, not all five). You&#39;ll see next module what the others were for.</p>
-<p>Memory-path note, first time through: the default home is <code>.claude/memory/</code> in your repo, gitignored. If your team kit pins a different path, stay consistent with it. Tell Claude which one and move on.</p>
-<p><strong>If <code>.claude/memory/</code> is new to your repo, ask Claude to add it to <code>.gitignore</code> before any writes.</strong> The fills below land there; you don&#39;t want them tracked.</p>
-<p>This is a convention you&#39;re authoring, not a Claude Code feature. The agent reads <code>.claude/memory/</code> when a prompt names the path, the same way it reads your ADRs. It is not auto-loaded the way <code>CLAUDE.md</code> and <code>CLAUDE.local.md</code> are. If you&#39;d rather think of this as <code>CLAUDE.md</code> + context files in a subdirectory, the mechanism is the same: files on disk, structured by convention, read when a prompt names them. The word <em>memory</em> is shorthand for the structure (Huryn&#39;s three blocks below), not a Claude Code feature.</p>
-<p>Claude Code&#39;s own auto-memory lives at <code>~/.claude/projects/&lt;project&gt;/memory/</code>, written by the agent for its own recall and surfaced via <code>/memory</code>. That one has invited criticism: opaque storage, agent-written, hard to audit. AE101 leaves it out by design and gives you a folder you steer instead. If the word <em>memory</em> rubs you wrong, it&#39;s likely auto-memory you&#39;re reacting to; what you&#39;re authoring here is something different.</p>
+<p>Observation-path note, first time through: the default home is <code>observations/</code> in your repo, gitignored. If your team kit pins a different path, stay consistent with it. Tell Claude which one and move on.</p>
+<p><strong>If <code>observations/</code> is new to your repo, ask Claude to add it to <code>.gitignore</code> before any writes.</strong> The fills below land there; you don&#39;t want them tracked.</p>
+<p>The agent reads <code>observations/</code> when a prompt names the path, the same way it reads your ADRs. It is not auto-loaded the way <code>CLAUDE.md</code> and <code>CLAUDE.local.md</code> are. The three blocks you&#39;ll arrange below live across this folder, your ADRs, and your skills; <code>observations/</code> holds the first.</p>
 <p>Ask Claude to walk you through the picked gaps one at a time, using the AskUserQuestion tool to scaffold the flow.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Use the AskUserQuestion tool. One question per call. First ask which 2-3 audit gaps I want to focus on. For each picked gap, propose a resolution in the shape the audit named, hear my pushback, then persist it: the `./.claude/memory/` folder in your repo for observations and business-rules gaps, `./CLAUDE.local.md` for rule sharpening, connector setup for connector wiring.
+<pre><code>Use the AskUserQuestion tool. One question per call. First ask which 2-3 audit gaps I want to focus on. For each picked gap, propose a resolution in the shape the audit named, hear my pushback, then persist it: the `./observations/` folder in your repo for observations and business-rules gaps, `./CLAUDE.local.md` for rule sharpening, connector setup for connector wiring.
 </code></pre>
 <p>A fill looks like one of these shapes (the audit at Phase 2 tags each gap with one):</p>
 <ul>
-<li><strong>Observation or rule:</strong> <em>&quot;Add this to memory: the payments service treats idempotency keys case-sensitively even though the docs don&#39;t say so.&quot;</em> Lands in <code>.claude/memory/</code>.</li>
+<li><strong>Observation or rule:</strong> <em>&quot;Add this to observations: the payments service treats idempotency keys case-sensitively even though the docs don&#39;t say so.&quot;</em> Lands in <code>observations/</code>.</li>
 <li><strong>Sharpen an existing rule:</strong> <em>&quot;In my <code>CLAUDE.local.md</code>, under &#39;testing&#39;, replace the current mocking rule with one that says: integration tests hit a real Postgres in Docker; unit tests mock at the service boundary, never at the repository.&quot;</em> Lands in <code>./CLAUDE.local.md</code>. (Team-worthy version would go in a PR against <code>CLAUDE.md</code> separately.)</li>
 <li><strong>Wire a connector:</strong> if the task needs something only a connector reaches (issue tracker, staging logs, internal API), wire it now while the task is on your mind, not mid-run. Claude Code action, not a file write.</li>
-<li><strong>Name a business-rules gap:</strong> if the task touches customer segments, regulatory scope, or team commitments and you don&#39;t have that written anywhere Claude can read, <em>the gap IS the finding</em>. Write one line in memory naming what&#39;s missing and where the real material lives (external wiki, team Notion, sponsor&#39;s head). Claude knows what it doesn&#39;t know. That&#39;s still context. Lands in <code>.claude/memory/</code>.</li>
+<li><strong>Name a business-rules gap:</strong> if the task touches customer segments, regulatory scope, or team commitments and you don&#39;t have that written anywhere Claude can read, <em>the gap IS the finding</em>. Write one line in observations naming what&#39;s missing and where the real material lives (external wiki, team Notion, sponsor&#39;s head). Claude knows what it doesn&#39;t know. That&#39;s still context. Lands in <code>observations/</code>.</li>
 </ul>
-<p>Push back when Claude writes something that doesn&#39;t match the codebase. The memory is what you just admitted is thin in spots; don&#39;t let it re-seed itself with drift.</p>
+<p>Push back when Claude writes something that doesn&#39;t match the codebase. Your observations are what you just admitted is thin in spots; don&#39;t let them re-seed with drift.</p>
 <hr>
 <blockquote>
 <p><strong>Time check.</strong> Different paces hit this beat at different times. The room doesn&#39;t wait for the slowest. Five to ten minutes to share what surfaced, where the audit missed, and why the agent sometimes goes lazy.</p>
@@ -3150,7 +3148,7 @@ For each item, say: (a) what&#39;s thin, (b) what a properly-prepared agent woul
 <h2 id="phase-3-see-the-frame">Phase 3: See the frame</h2>
 <p>Ask Claude to rearrange your memory, ADRs, and skill into Huryn&#39;s three blocks, quoting your own work for each block before naming the frame.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Look at the observations and rules I just added to `./.claude/memory/`, the hardening ADR in this repo if there is one, and the test-strategy skill if I&#39;ve authored one. Don&#39;t scan beyond those. Rearrange what&#39;s there into Paweł Huryn&#39;s three-block memory frame:
+<pre><code>Look at the observations and rules I just added to `./observations/`, the hardening ADR in this repo if there is one, and the test-strategy skill if I&#39;ve authored one. Don&#39;t scan beyond those. Rearrange what&#39;s there into Paweł Huryn&#39;s three-block memory frame:
 
 - Block 1: observations → hypotheses → rules (what I&#39;ve noticed about this codebase, what I&#39;ve started to suspect, what I&#39;ve decided to treat as true)
 - Block 2: decisions with alternatives (architectural or design choices + what else was considered; ADRs live here if I have them)
@@ -3198,11 +3196,11 @@ If you propose file moves or renames, cap the proposal at one or two; the send-o
 <p>Now pin the starting point. Whatever&#39;s in your working tree right now lands in this commit, so if you have unrelated WIP, stash or scope it out before pasting the prompt. The commit also writes the branch name and that transcript path into <code>task.md</code>, so a later session recovers this run from disk instead of hunting for it.</p>
 <p>Ask Claude to commit current state on a feature branch, record the coordinates, and tell you the short SHA.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Create a fresh feature branch named m4/&lt;short-task-slug&gt;. Before committing, append a protected block to `./task.md` headed `Run coordinates (do not rewrite or remove)` so a later session can recover this run without searching for it: the branch name, and the transcript path you just located. Then stage everything, commit with message &quot;M4 starting point&quot;, and tell me the short SHA.
+<pre><code>Create a fresh feature branch named m4/&lt;short-task-slug&gt;. Before committing, append a protected block to `./task.md` headed `Run coordinates (do not rewrite or remove)` so a later session can recover this run without searching for it: the branch name exactly as `git branch --show-current` reports it (read it back from git — don&#39;t retype it from memory), and the transcript path you just located. Then stage everything, commit with message &quot;M4 starting point&quot;, and tell me the short SHA.
 </code></pre>
 <p>Ask Claude to run the scoped task end-to-end in this same session, with your rules files, memory, ADRs, and skills loaded.</p>
 <p><strong>Prompt</strong> <em>(Claude Code, final move of the module)</em></p>
-<pre><code>I want you to take the task we scoped earlier in this session end to end. Work from the rules I&#39;ve set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the memory at `./.claude/memory/`, the ADRs, and the skills available by name in this session. That&#39;s everything you have. Go.
+<pre><code>I want you to take the task we scoped earlier in this session end to end. Work from the rules I&#39;ve set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the observations at `./observations/`, the ADRs, and the skills available by name in this session. That&#39;s everything you have. Go.
 
 I&#39;m leaving the laptop awake and walking away. Work through it. If you get stuck, write what you tried and why it didn&#39;t work rather than inventing a way forward. If you finish, tell me what you shipped and what you didn&#39;t.
 </code></pre>
@@ -3221,13 +3219,13 @@ I&#39;m leaving the laptop awake and walking away. Work through it. If you get s
 <p>You just walked your whole system against a real task and sent it off. The persistent part of what you walked, the rules and notes and skills that outlast the session, is what this training calls memory.</p>
 <p>The word is not settled. Some practitioners call it context. Others use neither and just say rules, or the files. The labels collide for a reason worth knowing: context already names something else, the live window the agent holds while it works, the part that empties when the session ends. Memory is what survives. Same thing, different camps, no winner yet.</p>
 <p>Pick whichever word you&#39;ll defend. The label matters less than the two questions it hides: where does this stuff live, and who is allowed to change it? Walk those across what you sent off, and three layers appear.</p>
-<p><strong>Personal.</strong> <code>./CLAUDE.local.md</code> (gitignored), your <code>.claude/memory/</code>, the skills you authored. Written by you, for you. This is the layer you&#39;ve watched compound since Module 1.</p>
+<p><strong>Personal.</strong> <code>./CLAUDE.local.md</code> (gitignored), your <code>observations/</code>, the skills you authored. Written by you, for you. This is the layer you&#39;ve watched compound since Module 1.</p>
 <p><strong>Team.</strong> <code>./CLAUDE.md</code>, changed only through PR review. The rules the team agreed were worth sharing. It has a clear home and a clear gate.</p>
 <p><strong>Company.</strong> No obvious file. The security convention every team re-learns on its own, the deployment pattern, the house style. Today it lives in wikis nobody opens and in the heads of whoever has been there longest.</p>
 <p>So the question underneath the walk: does the third layer get a real home, the way the first two already have?</p>
 <p>Some teams are starting to act as if it will. They git-track their rules instead of keeping them on one laptop. They symlink a shared skills folder so the same rules load wherever an engineer works. If a company&#39;s conventions live as memory that loads everywhere, every agent in the building starts from the same baseline instead of relearning it one session at a time.</p>
 <p>The hard part is not whether to build it. It is the shape. A company layer done wrong is a tax: memory loaded everywhere, owned by no one, the <code>CLAUDE.md</code> equivalent of the staff handbook nobody reads. The question that matters is the smallest shared layer that survives contact with a real org.</p>
-<p>Nobody has cracked the shape yet, and nobody has settled the word. The personal layer clearly compounds, and you have the evidence in your own <code>.claude/memory/</code>. The team layer has a home. The company layer is the one still being worked out, in the places betting on it.</p>
+<p>Nobody has cracked the shape yet, and nobody has settled the word. The personal layer clearly compounds, and you have the evidence in your own <code>observations/</code>. The team layer has a home. The company layer is the one still being worked out, in the places betting on it.</p>
 <p>You&#39;ll meet the answers in your own org before any framework hands them to you. The first time a rule you wrote for yourself turns out to be true for the whole company, you decide what to call it and where it goes. That is the open question.</p>
 </section>
 
@@ -3265,7 +3263,7 @@ I&#39;m leaving the laptop awake and walking away. Work through it. If you get s
 </ul>
 <h2 id="set-up-the-module-5-worktree">Set up the Module 5 worktree</h2>
 <p>Before opening the Module 5 session, fork the Module 4 starting SHA into a sibling worktree. Module 5&#39;s work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second run starts from the same code state as the first. Cherny&#39;s productivity unlock from the Module 2 pre-read lands here.</p>
-<p>A real engineering call lives in this fork: gitignored files (your <code>CLAUDE.local.md</code>, <code>.claude/memory/</code>) don&#39;t ride into a worktree because git doesn&#39;t see them. AE101&#39;s default is to copy them in once at fork time. Your Module 1 evidence rides forward (along with any Module 3 artefacts if you&#39;ve completed it); Module 5 and Module 6 compounding diverges in the worktree; you decide post-Module-6 what to merge back into the original. Other engineers wire it differently. The arc-retrospective at Module 6 close picks up the question.</p>
+<p>A real engineering call lives in this fork: gitignored files (your <code>CLAUDE.local.md</code>, <code>observations/</code>) don&#39;t ride into a worktree because git doesn&#39;t see them. AE101&#39;s default is to copy them in once at fork time. Your Module 1 evidence rides forward (along with any Module 3 artefacts if you&#39;ve completed it); Module 5 and Module 6 compounding diverges in the worktree; you decide post-Module-6 what to merge back into the original. Other engineers wire it differently. The arc-retrospective at Module 6 close picks up the question.</p>
 <p>If your Module 4 Claude Code session is still open, ask it. Otherwise open a fresh session in the original repo location and ask there.</p>
 <p><strong>Claude figures out <code>&lt;repo-name&gt;</code> from the working directory.</strong> Help it if it gets confused.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -3273,8 +3271,7 @@ I&#39;m leaving the laptop awake and walking away. Work through it. If you get s
 
 Then copy the gitignored personal files into the worktree so compounding has the previous sessions material to build on:
   cp ../&lt;repo-name&gt;/CLAUDE.local.md ../&lt;repo-name&gt;-m5/  (if it exists)
-  mkdir -p ../&lt;repo-name&gt;-m5/.claude/
-  cp -r ../&lt;repo-name&gt;/.claude/memory/ ../&lt;repo-name&gt;-m5/.claude/memory/  (if .claude/memory/ exists in the original repo)
+  cp -r ../&lt;repo-name&gt;/observations/ ../&lt;repo-name&gt;-m5/observations/  (if observations/ exists in the original repo)
 
 These won&#39;t sync back automatically — the worktree&#39;s copies are independent from this point. Tell me the worktree path and confirm which files copied across.
 </code></pre>
@@ -3490,7 +3487,7 @@ Before lock-in, grill me on missing details that could ruin the smooth run. Ask 
 <p>Either way, the re-send prompt below stands alone: Claude lists the worktree root and reads what it finds.</p>
 <p>Ask Claude to re-run the same Module 4 task using the reference, plan.md, and verifier you just built.</p>
 <p><strong>Prompt</strong> <em>(Claude Code, final move of the module)</em></p>
-<pre><code>Before you start, write a protected block at the top of `plan.md` headed `Run coordinates (do not rewrite or remove)`, holding this run&#39;s `m5/` branch and this session&#39;s transcript path (under `~/.claude/projects/`, keyed by the `CLAUDE_CODE_SESSION_ID` environment variable). You&#39;ll mutate the rest of plan.md as you run; leave that block alone. Confirm the `.jsonl` exists before writing it; if you can&#39;t determine the path, stop and tell me rather than guessing.
+<pre><code>Before you start, write a protected block at the top of `plan.md` headed `Run coordinates (do not rewrite or remove)`, holding this run&#39;s `m5/` branch exactly as `git branch --show-current` reports it (read it back from git — don&#39;t retype it from memory) and this session&#39;s transcript path (under `~/.claude/projects/`, keyed by the `CLAUDE_CODE_SESSION_ID` environment variable). You&#39;ll mutate the rest of plan.md as you run; leave that block alone. Confirm the `.jsonl` exists before writing it; if you can&#39;t determine the path, stop and tell me rather than guessing.
 
 Then ask for or write anything else you want for the run.
 
@@ -3590,7 +3587,7 @@ Skip suggestions any team could want. No preamble. List them.
 <h2 id="start-here">Start here</h2>
 <p>You walk in holding two runs of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-run. The contrast across two runs is the material. One run gave you a failure mode to name. Two runs give you gaps the three-pattern itself didn&#39;t anticipate, and a shape for what to do about each one.</p>
 <blockquote>
-<p><strong>Open M6 in a new Claude Code session inside the M5 worktree at <code>../&lt;repo&gt;-m5</code>, no fork.</strong> The packaged re-run&#39;s evidence (<code>reference.md</code>, <code>plan.md</code>, the verifier, <code>RUN-NOTES.md</code>) is already on disk there, alongside <code>./CLAUDE.local.md</code> and <code>.claude/memory/</code>. M6 reads, diagnoses, and ships in place.</p>
+<p><strong>Open M6 in a new Claude Code session inside the M5 worktree at <code>../&lt;repo&gt;-m5</code>, no fork.</strong> The packaged re-run&#39;s evidence (<code>reference.md</code>, <code>plan.md</code>, the verifier, <code>RUN-NOTES.md</code>) is already on disk there, alongside <code>./CLAUDE.local.md</code> and <code>observations/</code>. M6 reads, diagnoses, and ships in place.</p>
 </blockquote>
 <blockquote>
 <p><strong>Packaged run thin or missing?</strong> You can still rescue it. If the M5 session is alive but stalled, nudge it once with the Continue prompt from M4. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while the room reads. M6 starts by reading; before it writes, decide whether to wait, stop M5, or accept the partial run as the artefact. Skip the opening lecture. Practice is core. Lectures can be read later.</p>
@@ -3783,7 +3780,7 @@ Then, ⟦A:self-critique-register⟧in the same response, answer: is the skill a
 <div class="phase-kicker">Lecture</div>
 
 <h1 id="steering-the-wiring">Steering the wiring</h1>
-<p>At M5 you forked the M4 starting SHA into a worktree. A real engineering call lived in that fork: gitignored files (<code>CLAUDE.local.md</code>, <code>.claude/memory/</code>) don&#39;t ride into a worktree because git doesn&#39;t see them. AE101&#39;s default chose <code>cp</code> at fork time, your M1/M3 evidence rode forward, M5/M6 compounding diverged in the worktree, and post-M6 you decide what to merge back.</p>
+<p>At M5 you forked the M4 starting SHA into a worktree. A real engineering call lived in that fork: gitignored files (<code>CLAUDE.local.md</code>, <code>observations/</code>) don&#39;t ride into a worktree because git doesn&#39;t see them. AE101&#39;s default chose <code>cp</code> at fork time, your M1/M3 evidence rode forward, M5/M6 compounding diverged in the worktree, and post-M6 you decide what to merge back.</p>
 <p>That&#39;s one wiring. It&#39;s not the only one.</p>
 <h2 id="four-moves-in-the-space">Four moves in the space</h2>
 <ul>
@@ -3812,12 +3809,12 @@ Then, ⟦A:self-critique-register⟧in the same response, answer: is the skill a
 <p><strong>Quick timebox note.</strong> The read across Modules 1–6 artefacts is wide; the beat stays short. One arc-reading pass, one push-back, save or drop. If the agent&#39;s note reads true, save. If it reads thin after one re-draft, drop. Dropping is not the soft option; it is a signal your artefacts did not carry the density the read needed. Note that and move on. No perfect note to chase. The arc is yours; the note is just the agent helping you see it.</p>
 </blockquote>
 <hr>
-<p>Open a new Claude Code session in the Module 5 worktree (the same one Module 6 Phase 1 + 2 ran in). A fresh session, so there&#39;s no scrollback coloring the read. The artefacts across all six modules, <code>CLAUDE.local.md</code>, <code>.claude/memory/</code>, ADRs, both authored skills, both runs&#39; commits, are accessible via git refs and the worktree state. Both runs&#39; branch names and transcript paths are recorded on disk: M4 in <code>task.md</code>, M5 in <code>plan.md</code>&#39;s protected <code>Run coordinates</code> block. Ask the agent to walk them and write the arc from them.</p>
+<p>Open a new Claude Code session in the Module 5 worktree (the same one Module 6 Phase 1 + 2 ran in). A fresh session, so there&#39;s no scrollback coloring the read. The artefacts across all six modules, <code>CLAUDE.local.md</code>, <code>observations/</code>, ADRs, both authored skills, both runs&#39; commits, are accessible via git refs and the worktree state. Both runs&#39; branch names and transcript paths are recorded on disk: M4 in <code>task.md</code>, M5 in <code>plan.md</code>&#39;s protected <code>Run coordinates</code> block. Ask the agent to walk them and write the arc from them.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Read my work across this repo. Specifically:
 
 - My team `CLAUDE.md` (if present) and my personal `CLAUDE.local.md`.
-- Everything at `./.claude/memory/` (three-block memory: observations/hypotheses/rules, decisions, quality criteria).
+- Everything at `./observations/` (observations, hypotheses, rules).
 - The ADRs in this repo — wherever our convention puts them (`docs/adr/` or equivalent).
 - Both skills I authored at `~/.claude/skills/` (the `test-strategy` skill from earlier, and the `session-shaper` skill).
 - The un-packaged run (commits, files, session transcript). Read `task.md` for its recorded `m4/` branch and transcript path, then use those exact coordinates. Do not reconstruct the transcript folder or pick a recent `.jsonl`.
@@ -3827,7 +3824,7 @@ Run this audit in a fresh sub-task via the Agent tool so you have the cold-read 
 
 Write a one-page note on what changed across this body of work. Not a changelog. What shape did my practice have at the start, what shape does it have now, what specific artefacts show the shift. Quote from my files. Name the pattern that you see recurring across modules if you see one. Don&#39;t invent a pattern to make the note tidy; if the arc is uneven, say so and show where.
 
-Propose where the note should live in my repo (ADR, memo in `./.claude/memory/`, or a standalone file). Show me the note before you save it. I&#39;ll push back, then we save.
+Propose where the note should live in my repo (ADR, memo in `./observations/`, or a standalone file). Show me the note before you save it. I&#39;ll push back, then we save.
 </code></pre>
 <p>Claude will likely open with a plan-summary paragraph (<em>&quot;I&#39;ll dispatch the sub-task, then combine findings...&quot;</em>) before any read happens. Skim past the opening; the note is what you&#39;re reading for.</p>
 <p>If the read runs ten minutes plus, interrupt with <em>&quot;enough. just tell me now.&quot;</em>, you have what the agent has assembled so far, and that&#39;s the read.</p>
@@ -3925,7 +3922,7 @@ Propose where the note should live in my repo (ADR, memo in `./.claude/memory/`,
 Read these artefacts end to end:
 
 - ./CLAUDE.local.md
-- ./.claude/memory/
+- ./observations/
 - the un-packaged run&#39;s commit history and modified files (its `m4/` branch is recorded in `task.md`)
 - the packaged run&#39;s commit history and modified files (its `m5/` branch is recorded in `plan.md`)
 - the SKILL.md of the `session-shaper` skill you authored, in `~/.claude/skills/`
@@ -5193,7 +5190,7 @@ git stash pop
 <p><em>&quot;The surface the skill called out harder than I would have:&quot;</em></p>
 <h3 id="sealed-context">Sealed context</h3>
 <p><strong>Names what Claude has to work with, then closes the door against fabrication.</strong> <em>That&#39;s everything you have</em> tells the agent: missing context is a fact about the world, not a permission to invent. You also get one line you can audit against later: <em>did the agent stay inside the seal, or did something quietly leak in?</em> The seal is most valuable on long-running prompts where you won&#39;t be there to push back. The negative form (a hard blacklist naming files the agent must NOT read) is the same move from the other side: when the run has to stay independent of a prior artifact, blocking the read is the seal.</p>
-<p><em>&quot;Work from the rules I&#39;ve set up (<code>CLAUDE.md</code> team and <code>CLAUDE.local.md</code> personal both load automatically), plus the memory at <code>.claude/memory/</code>, the ADRs, and the skills available by name in this session. That&#39;s everything you have. Go.&quot;</em></p>
+<p><em>&quot;Work from the rules I&#39;ve set up (<code>CLAUDE.md</code> team and <code>CLAUDE.local.md</code> personal both load automatically), plus the observations at <code>observations/</code>, the ADRs, and the skills available by name in this session. That&#39;s everything you have. Go.&quot;</em></p>
 <p><em>&quot;The subagent must NOT read: <code>module-5/briefing.md</code>, <code>module-5/claim-pool.md</code>, <code>module-5/scoreboard.md</code>, anything in <code>module-5/detectors/</code>.&quot;</em></p>
 <hr>
 <h2 id="shape-the-target">Shape the target</h2>

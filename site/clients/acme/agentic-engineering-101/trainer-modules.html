@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trainer delivery guide — acme</title>
+<title>Per-module glance — acme</title>
 <style>/* Curriculum viewer — Editorial theme.
    Warm-ink dark header + cream paper body.
    Roboto Slab (display, light) + Inter (body) + EB Garamond (italic accents).
@@ -2070,242 +2070,256 @@ body.workbook { padding-top: 3rem; }
     .workbook-topnav__modules a { padding: 0.25rem 0.5rem; font-size: 0.75rem; }
 }
 
-.module { max-width: 56em; }</style>
+.module { max-width: 56em; }
+
+/* ── Per-module focused view ── Only one .module-glance is visible at a time,
+   selected by URL hash. A tiny JS shim sets the default hash on load and keeps
+   the active tab highlighted on hashchange. */
+.module-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 1.25rem 0 2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--line-2);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 5;
+    padding-top: 0.8rem;
+}
+.module-tabs a {
+    display: inline-block;
+    padding: 0.45rem 0.95rem;
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--fg-2);
+    font-size: 0.92rem;
+    font-weight: 500;
+    background: transparent;
+    transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.module-tabs a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+.module-tabs a.is-active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+}
+.module-glance { display: none; }
+.module-glance:target { display: block; }
+/* Default landing when no hash is set: show M1. Uses :has() to detect "no
+   .module-glance is currently targeted" and falls back to the M1 panel. Works
+   without JS. JS still replaces the URL hash to #m1-glance on load so the
+   URL is shareable, but the visual state is correct either way. */
+section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#m1-glance { display: block; }</style>
 </head>
 <body class="runtime-cli workbook">
 <main>
 
 <header class="workbook-cover" id="top">
   <p class="eyebrow">acme workbook</p>
-  <h1 class="cover-title">Trainer delivery guide</h1>
+  <h1 class="cover-title">Per-module glance</h1>
 </header>
 
-<section class="module" id="trainer-guide">
-<h1 id="ae101-trainer-guide">AE101 Trainer Guide</h1>
-<p><strong>What this file is.</strong> Delivery prep for Agentic Engineering 101. Read before your first cohort, then re-skim the relevant module before each session. This is for what happens in the room; authoring rules live in <code>memory/check_*.md</code> and <code>.claude/skills/content-creation/SKILL.md</code>.</p>
-<p>AE101 is for software engineer ICs who already use or have seen Claude Code. Do not teach Claude Code from zero. The job is to turn uneven self-taught usage into an engineering loop that compounds: run the work, read what happened, encode the lesson into repo memory, skills, verifiers, and team kit.</p>
-<p><strong>Per-module glance.</strong> Open the <a href="trainer-modules.html" target="_blank" rel="noopener">module-by-module one-pager ↗</a> in a separate tab — slot, flow, learning goals, exercise goals, and trainer cues for M1–M6. Keep it open alongside this file during delivery.</p>
-<h2 id="operating-contract">Operating Contract</h2>
-<p>You project the workbook page. There are no slides. You demo each exercise prompt slowly on your own Claude Code while the room copy-pastes into theirs. You honor the conversation pauses in the exercise body. When the agent runs, you fill the air with dry-run evidence, tool tips you actually use, or why this module is shaped the way it is.</p>
-<p>Your screen is shared most of the session. There is no private trainer pane. Read maintainer blocks during prep only, never while screen-sharing. If a cue is missing from student-visible prose, flag it after the session rather than toggling to a hidden source file.</p>
-<p>Every exercise is follow-along. The time budget is <code>max(trainer, student)</code>, not trainer time plus student time. You paste and narrate; students paste and run concurrently.</p>
-<p>In cohort delivery, you carry the push-backs.</p>
-<h2 id="delivery-architecture">Delivery Architecture</h2>
-<p>Canonical contract lives in <a href="training-architecture.md">training-architecture.md</a>, read it once before your first cohort. Summary for delivery prep:</p>
-<p>AE101 uses a content folder plus the student&#39;s real repo. The content folder is reference material. Durable work lands in the repo or in the student&#39;s runtime-owned agent materials. There is no training-directory state to preserve between modules. If a student asks where the module folder is, they are importing Agents 101 habits.</p>
-<p>AE101 ships today on Claude Code (CLI + Desktop). Cowork is not a supported runtime. Keep the vocabulary clean: <code>subagent</code>, CWD, slash commands, plan mode, connectors, skills. If a student uses another agentic coding tool and it works for the exercise, it works; do not turn that into tool policing. The supported delivery path is still Claude Code. Gemini CLI is the planned alternate runtime, see <a href="training-architecture.md">training-architecture.md §Future TODO</a>; not yet active for delivery.</p>
-<p>AE101 usually runs weekly. At the start of every non-first session, name last week&#39;s state and the artifact the module expects. The module and exercise files are the source of truth for exact handoffs. If state is messy, do not moralize. The artifact is whatever exists; missing state is data the training can read.</p>
-<p><strong>FYI: <code>observations/</code> is a convention, not a Claude Code primitive.</strong> Students author a three-block knowledge folder at <code>observations/</code> in their repo (introduced at M4). It is not auto-loaded; the agent reads it when a prompt names the path, the same way it reads ADRs. Distinct from Claude Code&#39;s auto-memory at <code>~/.claude/projects/&lt;project&gt;/memory/</code> (written by the agent for its own recall, surfaced via <code>/memory</code>), which AE101 deliberately leaves out: compounding means the student steers what gets remembered, not an opaque system-written store.</p>
-<p><strong>If the lecture&#39;s &quot;memory&quot; framing triggers a student.</strong> Some engineers react to the word: opaque, agentic, untrustworthy storage. Usually they&#39;re reacting to Claude Code&#39;s auto-memory (the <code>/memory</code> one), which has invited criticism for those exact reasons. What the student authored here is <code>observations/</code>: files they wrote, gitignored, prompted-read. Acknowledge the criticism (it&#39;s legitimate against auto-memory), point at the distinction, and don&#39;t argue the trigger; offer the alternate framing.</p>
-<h2 id="two-day-cohort-schedule">Two-Day Cohort Schedule</h2>
-<p>Default rhythm for a two-day Nordic cohort: 08:30 start, 1h15 lunch, 20-min breaks. Adjust to your sponsor&#39;s cadence. The architectural commitments are: M1–M3 on Day 1, M4–M6 on Day 2; lunch between M5 and M6 on Day 2 so both async runs have time to produce something M6 can read.</p>
-<h3 id="day-1-m1-m2-m3">Day 1, M1, M2, M3</h3>
-<p>Lunch at 12:00 sharp lands mid-M2, between Exercise Phase 4 (Second-pass read) and Phase 5 (Stop. See the design pattern). The pause IS Phase 5&#39;s &quot;stop.&quot; Post-lunch the room returns to name the pattern.</p>
-<table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Block</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>08:30 – 10:30</td>
-<td>M1 (2h)</td>
-</tr>
-<tr>
-<td>10:30 – 10:50</td>
-<td>Break (20 min)</td>
-</tr>
-<tr>
-<td>10:50 – 12:00</td>
-<td>M2 part 1: Connections + Lecture + Exercise Phases 1–4 (1h10)</td>
-</tr>
-<tr>
-<td>12:00 – 13:15</td>
-<td>Lunch (1h15)</td>
-</tr>
-<tr>
-<td>13:15 – 13:45</td>
-<td>M2 part 2: Exercise Phase 5 + Debrief + Bridge (30 min)</td>
-</tr>
-<tr>
-<td>13:45 – 14:05</td>
-<td>Break (20 min)</td>
-</tr>
-<tr>
-<td>14:05 – 15:55</td>
-<td>M3 (1h50)</td>
-</tr>
-<tr>
-<td>15:55 – 16:10</td>
-<td>Closing Day 1 (15 min)</td>
-</tr>
-</tbody></table>
-<p>Day total ~7h40.</p>
-<p><strong>M3 closes with the M4 task-pick homework.</strong> The &quot;Bring to Module 4&quot; section instructs students to scope the task overnight. M4 Phase 1 then becomes a 2-minute confirm instead of a 10-minute scope. That reclaimed time is what makes M4 fit in 90 minutes on Day 2.</p>
-<h3 id="day-2-m4-m5-m6">Day 2, M4, M5, M6</h3>
-<table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Block</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>08:30 – 10:00</td>
-<td>M4 (1h30, compressed from 1h45)</td>
-</tr>
-<tr>
-<td>10:00 – 10:20</td>
-<td>Break (20 min)</td>
-</tr>
-<tr>
-<td>10:20 – 12:20</td>
-<td>M5 (2h, 15-min cushion over budget)</td>
-</tr>
-<tr>
-<td>12:20 – 13:35</td>
-<td>Lunch (1h15)</td>
-</tr>
-<tr>
-<td>13:35 – 13:50</td>
-<td>Re-entry (15 min)</td>
-</tr>
-<tr>
-<td>13:50 – 15:35</td>
-<td>M6 (1h45)</td>
-</tr>
-<tr>
-<td>15:35 – 15:50</td>
-<td>Closing Day 2 (15 min)</td>
-</tr>
-</tbody></table>
-<p>Day total ~7h20.</p>
-<p><strong>M4 compression specifics.</strong> Drop Connections from 10 to 5 (cohort is warmed up from Day 1); cut Bridge (the 20-min break absorbs the transition); compress the Phase 2→3 time-check banter to ~5 minutes if the slot runs tight. Phase 1 task-pick is a 2-minute confirm because the task came in as homework.</p>
-<p><strong>M4 closing lecture, company memory (<a href="./#lectures-will-company-memory-emerge">Will company memory emerge?</a>).</strong> Fires after the send-off, while the agent runs, the reflective coda over the launched run. It does NOT resolve the run (that stays open for M5), so the M4 to M5 cliffhanger holds. It opens on the naming terrain (memory / context / rules) and then the company-layer question, both left unsettled. Your move: lay out how the terms fit together (context = the live window that empties at session end; memory = what persists; rules or files = what some practitioners call it instead) and run the disagreement, landing nothing. Expect the &quot;memory is overrated, we should have a company brain&quot; objection here; this is where it lands. The company layer is a real direction with the shape still unsolved. Run it as an open question, not a settled answer.</p>
-<p><strong>M5 cushion.</strong> The 15 min over budget goes to the worktree setup demo (real engineering call, students often fumble) and the closing lecture (Ronacher&#39;s three-pattern earned from felt evidence, the lecture IS the lesson; don&#39;t squeeze it).</p>
-<p><strong>Re-entry nudge.</strong> M5&#39;s packaged re-send fires at M5 close (~12:20) and runs through lunch (~75 min by re-entry). The 15-min re-entry window is for: nudging the agent if it stalled (the dark-humor &quot;Continue&quot; prompt from M4 still works), settling into email or scrollback reading, and letting the run proceed a few more minutes before M6 reads it. After the nudge, leave the M5 session running if that is the right call and open M6 in a fresh Claude Code session at the same worktree path. M6 starts by reading; before it writes, students choose whether to wait, stop M5, or accept the partial run as the artefact.</p>
-<p><strong>Why M6 is a fresh session.</strong> M5&#39;s session may still be autonomously running the packaged re-send. Joining that session interrupts the run. M6 opens fresh and begins by reading both runs from disk (git refs + on-disk transcripts under <code>~/.claude/projects/</code>). Same-worktree overlap is an intentional classroom handoff, not the general multi-session rule: read first, then make the engineering call before any M6 write.</p>
-<h3 id="why-not-split-m4-across-day-1-close-and-day-2-open">Why not split M4 across Day 1 close and Day 2 open?</h3>
+<section class="module" id="trainer-modules">
+<h2 id="per-module-at-a-glance">Per-Module At-a-Glance</h2>
+<p>One module at a time. Pick a tab; the URL hash holds the selection so you can share or bookmark a specific module. Trainer-guide deep-dives for M3 (security stunt) and M6 (lecture density) still live in <a href="trainer-guide.html" target="_blank" rel="noopener">trainer-guide.html ↗</a>.</p>
+<nav class="module-tabs" aria-label="Per-module glance">
+  <a href="#m1-glance">M1 · Getting going</a>
+  <a href="#m2-glance">M2 · Plan mode</a>
+  <a href="#m3-glance">M3 · Earn the trust</a>
+  <a href="#m4-glance">M4 · First experiment</a>
+  <a href="#m5-glance">M5 · Learn from the test</a>
+  <a href="#m6-glance">M6 · Spot gaps</a>
+</nav>
+
+<section class="module-glance" id="m1-glance">
+
+<h3 id="m1--getting-going--context--mcp">M1 — Getting going + context (+ MCP)</h3>
+<p><strong>Slot.</strong> Day 1, 08:30–10:30 (2h). Thinking effort <code>high</code> (prework default).</p>
+<p><strong>Big idea.</strong> The first compound loop closes on a trivial bug from the student&#39;s own backlog: orient, fix tests-first without plan mode, retro into a personal <code>./CLAUDE.local.md</code> born from the session, close the bug&#39;s ticket via one connector. The loop every module after this one rides on.</p>
+<p><strong>Flow.</strong></p>
 <ol>
-<li>M4&#39;s internal flow is one sequential beat: pick → walk → fill → see-frame → send-off. The send-off is the close. Splitting means the send-off either fires from a half-built setup at Day 1 close (thin evidence, M5 has nothing to diagnose) or fires Day 2 open after overnight re-orientation (loses the walk-then-send-off pedagogy).</li>
-<li>Day 1 + M4 ≈ 9-hour day. Too much for a Nordic cohort.</li>
-<li>The legitimate Day 1→Day 2 spillover already exists: the M3 close → M4 task-pick homework. Task is picked overnight; M4 Phase 1 confirms in 2 minutes. That spillover is the right shape; full M4 displacement is not.</li>
+<li>Connections — &quot;one trick you figured out with Claude Code that nobody taught you&quot;</li>
+<li>Lecture — Painting the picture with the LLM (the wizard is dead; context is what colors what comes after)</li>
+<li>Lecture — The wizard move (two-window dinner demo; &quot;context is what you tell it&quot;)</li>
+<li>Exercise — <a href="./#exercises-orient-and-introspect">Orient and introspect</a> (15–20 min)</li>
+<li>Exercise — <a href="./#exercises-fix-tests-first">Fix tests-first</a> (25 min)</li>
+<li>Exercise — <a href="./#exercises-compound-and-close">Compound and close</a> (30 min)</li>
+<li>Lecture — <a href="./#lectures-how-this-training-was-built">How this training was built</a> (closer; names compound engineering)</li>
 </ol>
-<h3 id="alternative-2-day-shape-m1-m2-m4--m5-m3-m6">Alternative 2-day shape: M1, M2, M4 / M5, M3, M6</h3>
-<p>The default 2-day above keeps M3 on Day 1 so its Q+S discipline is in hand before M4&#39;s send-off. A cohort can also run the reorder <strong>M1, M2, M4 / M5, M3, M6</strong> when it wants the M4-overnight-M5 hinge instead. Same 3+3 day shape; different pedagogical bet.</p>
-<p>What it buys you:</p>
+<p><strong>Learning goals.</strong> Student can:</p>
 <ul>
-<li>M4 ends Day 1; the un-packaged send-off runs overnight; M5 opens Day 2 morning with the return. The mirror moment lands when the room is fresh, not at the end of Day 2.</li>
-<li>M3&#39;s Q+S discipline lands AFTER students have just read the un-packaged failure. Earn-the-trust reads as response to felt-need rather than prophylactic. Engineers respond to diagnosis, not prescription, the reorder applies that frame to M3 itself.</li>
+<li>Run an orient → fix → compound → close loop end-to-end on a trivial bug in their own repo.</li>
+<li>Introspect the agent&#39;s read of the repo and dig until they find what it&#39;s misrepresenting.</li>
+<li>Fix the bug tests-first, root-cause-driven, no plan mode, ship the PR.</li>
+<li>Compound one rule from the session into <code>./CLAUDE.local.md</code> and close the bug&#39;s ticket via one connector — the first move outside the repo.</li>
 </ul>
-<p>What it costs:</p>
+<p><strong>Exercise goals.</strong></p>
 <ul>
-<li>M4 Phase 2 / Phase 3 reference the M3 test-strategy skill and ADRs as audit targets. Conditional phrasing (<code>any skills you&#39;ve authored</code>, <code>any ADRs</code>) covers the gap, but Block 3 of Huryn&#39;s three-block frame anchors on existing test conventions rather than an authored skill. Block 2 leans on whatever recorded decisions the repo already has.</li>
-<li>M4 task-pick homework moves from the M3 close to the M2 close (or prework). M4 Phase 1 still compresses to a 2-minute confirm, but the homework hand-off lives one module earlier.</li>
-<li>The &quot;discipline before you need it&quot; framing flips to &quot;discipline once you&#39;ve felt the failure.&quot; Defensible either way; pick the one that fits your cohort.</li>
+<li><em>Orient and introspect</em> — Claude reads the repo deliberately; student interrogates the self-report against <code>/context</code>. Output: a fresh read of what loaded vs. what didn&#39;t.</li>
+<li><em>Fix tests-first</em> — failing test lands before the fix; at least one diff-line push-back; root-cause interrogation between first and second TDD pass; a real PR shipped.</li>
+<li><em>Compound and close</em> — <code>./CLAUDE.local.md</code> written from session evidence (not a template); one MCP connector (or <code>gh</code>, or manual paste) wires a close-out note into the bug&#39;s tracker.</li>
 </ul>
-<p>When to choose which:</p>
+<p><strong>Trainer cues.</strong> The Connections trick-share calibrates the room — a quiet first beat is a Nordic norm, not no-signal. Bug pick is the single variable that breaks M1: too small (Claude crunches in 30s, no read worth dragging through introspection) or too large (no close in 90 min). The diff-line push-back IS the pedagogy of Fix tests-first; if students skip it the loop&#39;s third beat reads as theatre. Connector install can yak-shake; the timebox note exists for a reason — one connector firing on one ticket is the proof, the rest is homework.</p>
+</section>
+
+<section class="module-glance" id="m2-glance">
+
+<h3 id="m2--plan-mode-done-right">M2 — Plan mode, done right</h3>
+<p><strong>Slot.</strong> Day 1, 10:50–12:00 (Phases 1–4, 1h10) — lunch — 13:15–13:45 (Phase 5 + Debrief + Bridge, 30 min). Lunch at 12:00 sharp IS Phase 5&#39;s &quot;stop.&quot;</p>
+<p><strong>Big idea.</strong> Reading a plan is finite. The student&#39;s own read catches some of it; a second agent walking the decision tree catches the rest. Paired they give a complete read; neither alone does.</p>
+<p><strong>Flow.</strong></p>
+<ol>
+<li>Connections + Lecture — <a href="./#lectures-when-a-plan-is-good">When a plan is good</a></li>
+<li>Exercise — <a href="./#exercises-push-back-on-the-plan">Push back on the plan</a> (60 min; Phases 1–4 before lunch, Phase 5 after)</li>
+<li>Exercise — <a href="./#exercises-extract-the-task-shaping-rule">Extract the task-shaping rule</a> (12 min)</li>
+<li>Lecture — <a href="./#lectures-where-the-rule-could-live">Where the rule could live</a> (names Slack triage / issue webhook / scheduled read)</li>
+</ol>
+<p><strong>Learning goals.</strong> Student can:</p>
 <ul>
-<li>Default 3+3 (M1-M3 / M4-M6), broadest fit, no overnight gap, Q+S installed before any long-running send-off.</li>
-<li>Reorder 3+3 (M1-M2-M4 / M5-M3-M6), when the sponsor wants the M4-overnight-M5 mirror and the cohort is comfortable with M3 landing after the felt failure.</li>
+<li>Run plan mode on a real multi-file task and read the plan for its file list, verification steps, and named assumptions.</li>
+<li>Push back twice on the plan via &quot;keep planning with feedback,&quot; surfacing what the agent didn&#39;t see.</li>
+<li>Walk down unresolved branches one question at a time, with a recommended answer per branch.</li>
+<li>Pair human read with agent walk-down: read → push-back → walk-down → approve. Spot approval inflation in past plans.</li>
+<li>Extract task-shaping rules from the session into a <code>.md</code> file, sharpening at least one before saving.</li>
+<li>Name three shapes for turning a rules file into automation.</li>
 </ul>
-<p>If you run the reorder, dry-run M4&#39;s Phase 2 / Phase 3 prompts (<code>walk-and-send-off-2</code>, <code>walk-and-send-off-4</code>) against a fresh repo with no authored skill and no ADR convention, the conditional phrasings should resolve cleanly, but verify before the cohort.</p>
-<h2 id="m3-the-security-tools-surprise">M3, the security-tools surprise</h2>
-<p>Prework installs a curated bundle of skills. One is called <code>security-tools</code>. M3&#39;s first STRIDE prompt opens by invoking it as a &quot;pre-flight verifier.&quot; That invocation runs a small bundled script that performs a few legitimate-looking checks (first line: <em>&quot;owning you............ ok&quot;</em>), then prints an ASCII rick-rolled face and a short note: every link in the chain, tarball, SKILL.md, Bash authorization, was trusted without reading.</p>
-<p><strong>The stunt is the lesson.</strong> External skills are a supply-chain vector. A colleague&#39;s Slack-shared skill could have done the same, except pointed at AWS credentials. M3&#39;s surface (access-control + STRIDE) is the same shape one level up: trust boundaries and authorization checkpoints, applied to AI tooling instead of application features.</p>
-<p><strong>Don&#39;t spoil it in prework.</strong> The install prompt frames <code>security-tools</code> as a generic security-utility check. If a student asks what it does before M3, deflect: <em>&quot;a pre-flight check; you&#39;ll see it run during M3.&quot;</em> The point is they trusted the chain without verifying.</p>
-<p><strong>When it lands.</strong> The first time <code>threat-model-with-stride-1</code> fires. The trainer&#39;s terminal shows the script output verbatim (the SKILL.md instructs Claude to print without paraphrasing). Pause two beats after the ASCII face appears, let the room react before saying anything.</p>
-<p><strong>Framing after the reaction.</strong> Two minutes, not more. Three beats to land:</p>
+<p><strong>Exercise goals.</strong></p>
 <ul>
-<li>Every link got trusted: the tarball link, the SKILL.md you didn&#39;t read, the Bash authorization Claude asked for.</li>
-<li>One layer up from this module&#39;s exercise: the same access-surface and authorization logic, applied to AI tooling rather than features.</li>
-<li>This is exactly why curated &gt; random; why &quot;fork + read LICENSE + vet + adapt&quot; beats &quot;install from a Discord link&quot;; why <code>access-control-analysis</code> and <code>stride</code> were vetted before they reached you, and <code>security-tools</code> is what skipping that step looks like.</li>
+<li><em>Push back on the plan</em> — student takes a real multi-file task, runs plan mode, sends two push-backs, then second-pass walk-down with Claude asking one-at-a-time. Approve the plan. Don&#39;t execute. Compare what the read caught vs. what the walk-down caught — that gap is the skill the module builds.</li>
+<li><em>Extract the task-shaping rule</em> — three to five rules surfaced from the scrollback, at least one rewritten or rejected, saved as a <code>.md</code> file at a student-chosen path. Optional: reverse-engineer a real ticket for field-use rules.</li>
 </ul>
-<p>Back to the STRIDE pass.</p>
-<p><strong>Students who already noticed.</strong> Some engineers read <code>check.sh</code> during prework. Acknowledge them: <em>&quot;some of you read the script, that&#39;s the lesson, you noticed.&quot;</em> Make them feel sharp, not show-offy.</p>
-<p><strong>If the stunt doesn&#39;t fire.</strong> Rare, but possible if the skill failed to install during prework, or if Claude paraphrases instead of printing verbatim. Press on. The SKILL.md body carries the supply-chain lesson text; even paraphrased, the beat lands. If install actually broke, fix after the session, don&#39;t stop the room.</p>
-<p><strong>Skill survival default.</strong> <code>security-tools</code> stays installed past M3. The fake checks are short; the rick-roll body is information the engineer benefits from re-reading; the SKILL.md&#39;s own header comment carries the &quot;DO NOT REMOVE the easter egg&quot; framing for any future cleanup pass. If a sponsor pushes to extract it, leave the slot empty rather than substituting a serious-but-thin pre-flight skill, the stunt earns its keep precisely because it isn&#39;t serious.</p>
-<h2 id="m6-lecture-dense-by-design">M6, lecture-dense by design</h2>
-<p>M6 carries more lecture surface than the other modules. By Module 6 the student is a practitioner, and some moves at this point in the training are read about rather than prompt-drilled. The closer area runs lecture-after-lecture (Human close → Composing the workflow → The loop has a name → Agents that build agents). Manage transitions, and <strong>invite student reflections and opinion across the lectures</strong> by design. The mood is practitioner fluency, not lecture-hall: a room of engineers reading the field together, with the trainer as one voice among several.</p>
-<p><strong>The full M6 lecture stack:</strong></p>
+<p><strong>Trainer cues.</strong> Carry the push-backs in cohort delivery — the room won&#39;t always push hard the first time. The non-execution is the bet of the module (&quot;Making the plan good IS the work&quot;); if a student wants to run it, name the move and park it. Lunch lands at 12:00 inside the exercise by design — the pause IS Phase 5&#39;s &quot;stop.&quot; Post-lunch returns to name the design pattern.</p>
+</section>
+
+<section class="module-glance" id="m3-glance">
+
+<h3 id="m3--earn-the-trust">M3 — Earn the trust</h3>
+<p><strong>Slot.</strong> Day 1, 14:05–15:55 (1h50). Closes with the M4 task-pick homework — that homework is what makes M4 fit in 90 minutes on Day 2.</p>
+<p><strong>Big idea.</strong> Before the agent runs bigger work alone, earn your staff engineer&#39;s and CISO&#39;s trust on a small piece shipping this week. Two curated skills do the security work; one authored skill does the quality work. Team-kit accretion starts here, personal-first.</p>
+<p><strong>Flow.</strong></p>
+<ol>
+<li>Connections — &quot;what&#39;s the feature, and what surface are you most nervous about a teammate missing in review?&quot;</li>
+<li>Exercise — <a href="./#exercises-open-the-side-quest">Open the side quest</a> (~5 min; <code>git worktree add</code> for a parallel session — main quest is security in primary repo, side-quest is quality in sibling worktree)</li>
+<li>Lecture — <a href="./#lectures-skills-from-the-frontier-skills-of-your-own">Skills from the frontier, skills of your own</a></li>
+<li>Exercise — <a href="./#exercises-map-the-access-surface">Map the access surface</a> (20 min; curated <code>access-control-analysis</code> skill as subagent)</li>
+<li>Exercise — <a href="./#exercises-threat-model-with-stride">Threat-model with STRIDE</a> (20 min; curated <code>stride</code> skill; one ADR ships)</li>
+<li>Exercise — <a href="./#exercises-author-test-strategy-skill">Author your test-strategy skill</a> (18–22 min; authored through conversation, self-critique, invoke on real feature)</li>
+</ol>
+<p><strong>Learning goals.</strong> Student can:</p>
 <ul>
-<li><strong><a href="./#lectures-the-2-frontiers">The 2 frontiers</a></strong>, opener.</li>
-<li><strong><a href="./#lectures-story-of-module-6">Story of Module 6</a></strong>, opener; permission-giving memo from this module&#39;s own generation.</li>
-<li><strong><a href="./#lectures-quality-is-grounding">Quality is grounding</a></strong>, opener-bridge. Read between Story of Module 6 and the main exercise. ~4–6 min. Names the quality arc threaded across the whole training (M1 tests-first → M2 plan push-back → M3 test-strategy skill → M5 verifier → M6 second skill), then reframes quality&#39;s evolution from spec-and-tests to grounding and human signal. Stakes-setter before the build move. Cites Agentics Helsinki&#39;s first meetup (fall 2025) as historical anchor for the 500K-lines-in-weeks demos. The 500K figure is maintainer-attested (first-hand at the meetup); the lecture&#39;s source stamps live in its maintainer block.</li>
-<li><strong><a href="./#lectures-steering-the-wiring">Steering the wiring</a></strong>, mid-module.</li>
-<li><strong><a href="./#lectures-composing-the-workflow">Composing the workflow</a></strong>, closer-area pointer. Read after Human close, before The loop has a name. ~3–4 min. Names the practitioner-mode shift (<em>&quot;there is no prompt to drill at this point&quot;</em>) and walks five live lineages of workflow composition in one line each: Klaassen (file paths between subagents, hard gates), Cherny (parallel subagents in worktrees), Pocock (weakly-coupled toolkit), Cognition (single writer with advisor agents), Amp (composition primitives shipped inside the product). Plus Ronacher&#39;s counter-voice (composition is throttling, not multiplication). Closes by pointing at a worked-example case study from AE101 trainer Dino: a complete composed skill stack with the four composition mechanisms in one place, demonstrating what the framework looks like instantiated. Points at the <a href="supplementary/workflow-composition-lineages.md">workflow-composition-lineages supplementary</a> for depth, and to Dino&#39;s <a href="supplementary/skill-stacking.md">skill-stacking system primary doc</a> + three diagrams for the worked example.</li>
-<li><strong><a href="./#lectures-the-loop-has-a-name">The loop has a name</a></strong>, closer; names <em>eval</em> from the just-built second skill.</li>
-<li><strong><a href="./#lectures-agents-that-build-agents">Agents that build agents</a></strong>, forward closer.</li>
+<li>Invoke a curated access-control skill on a shipping feature (subagent, fresh context) and name what their first read missed.</li>
+<li>Apply curated STRIDE to the mapped surface, pick one threat worth hardening, write an ADR in the repo&#39;s convention.</li>
+<li>Split jobs subagent vs. main thread: breadth-first curated reads to subagent; one-question-at-a-time authoring stays main-thread.</li>
+<li>Author a test-strategy skill through conversation (one question at a time), tuned to the codebase&#39;s actual conventions.</li>
+<li>Test the skill by asking it to disclose its weakest part, push back on the critique, invoke on the security-tested feature.</li>
+<li>Ship one authored skill personal-first, and know when it&#39;s a team PR.</li>
 </ul>
-<p><strong>How to invite reflection.</strong> Between lectures, ask the room: which lineage resembles their day? What did the quality arc actually feel like across the five moves? What&#39;s their review bandwidth, and what does Ronacher&#39;s counter-voice land as? After Dino&#39;s worked example, the natural question is the transfer one: looking at the second skill they just shipped at M6, is it a route, a leaf, an orchestrator, or a hand-off? Open prompts, not Q&amp;A. Two beats of silence is fine; engineers think before they speak.</p>
-<p><strong>Pacing the close.</strong> Lecture density means reading the room sharply. If energy is high, give the lineage conversation room. If energy is low, name fewer lineages in delivery, point at the supplementary, move to the closer pair faster. The supplementary carries the depth regardless; the lecture body is the pointer, not the survey.</p>
-<p><strong>Composition is a reading move at M6.</strong> If a student asks where the composition exercise is, point them at the <a href="supplementary/workflow-composition-lineages.md">workflow-composition-lineages supplementary</a>. The lecture walks the lineages; the supplementary carries the depth. <em>Your intuition</em> is the close of composing-the-workflow and the register the section asks the room to land in.</p>
-<h2 id="prep-before-each-session">Prep Before Each Session</h2>
+<p><strong>Exercise goals.</strong></p>
 <ul>
-<li>Read the module page on the workbook site, including inlined exercises, lectures, Debrief, Bridge, and references.</li>
-<li>Check Quality tags in maintainer blocks during prep. <code>draft</code> means rehearse harder; <code>mechanical-tested</code> means the prompt chain has actually run.</li>
-<li>Dry-run every exercise end to end on your demo repo. Not skim. Run it.</li>
-<li>Rehearse the prompt progression, not just individual prompts. Know what each prompt depends on and what evidence it should leave for the next one.</li>
-<li>Know the lecture material well enough to deliver the point without reading it verbatim.</li>
-<li>Note two or three dry-run moments you can talk through during agent waits.</li>
-<li>Confirm sponsor-stated homes: ADRs, rules file, ticket tracker, team kit, memory.</li>
-<li>Keep your demo repo clean, on the right branch, with the expected starting state.</li>
+<li><em>Open the side quest</em> — worktree opened; both Claude Code sessions running on the same git history with isolated scrollback.</li>
+<li><em>Map the access surface</em> — short delta-note in the repo: surfaces the skill called out harder than the student would have, plus surfaces the student knew mattered that the skill missed. The delta IS the artifact, not the raw skill output.</li>
+<li><em>Threat-model with STRIDE</em> — one ADR in repo convention, one threat chosen for hardening, rest of STRIDE output stays as evidence (not a hardening backlog).</li>
+<li><em>Author your test-strategy skill</em> — one <code>SKILL.md</code> tuned to the codebase&#39;s actual testing conventions (framework, mocking policy, integration boundary, flakiness, regression scope) shipping to the student&#39;s personal skills folder. Strong team-PR candidate, but the PR starts with a human conversation.</li>
 </ul>
-<h2 id="patterns-to-call-out">Patterns To Call Out</h2>
-<p><strong>Quote before summary.</strong> This is the strongest AE101 trainer move. Many exercises fail the same way when Claude summarizes smoothly without evidence. Ask for the quoted file line, diff line, commit, transcript moment, or skill sentence. If it cannot quote, the claim does not carry.</p>
-<p><strong>Self-report is a hypothesis.</strong> Claude can tell you what it read, why it skipped files, what changed, and what is weakest. Useful, not authoritative. The student verifies against <code>/context</code>, the diff, the file, the ADR, the skill output, or the run trace.</p>
-<p><strong>Author through conversation, then invoke.</strong> Catch the editor drift every time: the student should not hand-craft skill files in a file tab. Claude interviews, drafts, self-critiques, revises, then invokes the skill on the real feature or real run. Authoring without invocation is theatre.</p>
-<p><strong>Personal first, team later.</strong> <code>CLAUDE.local.md</code> is personal. Authored skills ship personal first. Team-worthy findings get flagged, not auto-PRed. You can give examples for how a team might adopt a rule, skill, or verifier, but AE101 is not a training about team process. The team figures out its own sharing path.</p>
-<p><strong>Fresh context for breadth, main thread for steering.</strong> Use subagents or fresh sessions for audits, broad reads, and cold critiques. Keep one-question-at-a-time authoring, decisions, and push-back in the main session. If the room confuses the two, name the split.</p>
-<p><strong>Task size is pedagogy.</strong> Too small gives no signal. Too large gives mush. Protect the task size at Connections, because downstream prompts cannot rescue the wrong task.</p>
-<p><strong>Do not front-run the next move.</strong> The move may be correct in real life and still be wrong before the curriculum earns it. If a student wants to jump ahead, name the move and park it.</p>
-<p><strong>Absence is data.</strong> No tests on the bug path, no ADR convention, no team-kit home, no business-rules layer, missing transcript, thin memory: these are not side quests to solve live. Name the gap, write the smallest durable note, keep the room moving.</p>
-<h2 id="prompt-rules-to-notice-live">Prompt Rules To Notice Live</h2>
-<p><strong>Prompt blocks serve intent.</strong> Teach the shipped prompt by default so the room has a shared reference. If there is a better way to reach the same teaching point, show it and use it. Name what changed, why it better serves the exercise, and compare the result against the intended teaching point.</p>
-<p><strong>Read the lead-in.</strong> The sentence before the fenced prompt is part of the instruction. It tells the student what the prompt is about to do and gives you the clean narration beat before everyone pastes.</p>
-<p><strong>Open hooks mean student input.</strong> When a prompt ends with a colon, the student supplies the bug, task, feature, or concern. Do not turn every prompt into a fill-in-the-blank form; when Claude can infer the referent from scrollback, let the back-reference do the work.</p>
-<p><strong>Back-references beat aliases.</strong> Good AE101 prompts say &quot;the task we just scoped,&quot; &quot;the file you just created,&quot; or give a deterministic path. If Claude loses the chain, recover with the path and the relevant scrollback moment rather than inventing a new nickname.</p>
-<p><strong>Invoke skills by name.</strong> Students should use the installed skill name, not paste paths to the skill source. The path is authoring evidence; the skill name is the runtime interface.</p>
-<p><strong>Preserve scrollback inside a phase.</strong> Do not clear the session in the middle of a chain that depends on what just happened. Use a subagent or fresh context for breadth and critique, then bring the finding back to the parent thread.</p>
-<p><strong>Ask for critique, not defense.</strong> Wording matters. &quot;What is weakest?&quot; or &quot;what is still surface-level?&quot; usually produces usable evidence. &quot;Justify this&quot; often produces confident prose.</p>
-<p><strong>Minimal send-off is intentional.</strong> Some send-off prompts rely on the surrounding artifact trail. Do not over-engineer them live with every possible instruction; the contrast between un-packaged and packaged work is the point.</p>
-<p><strong>Push back on question dumps.</strong> If Claude asks five discovery questions after a one-question-at-a-time prompt, stop and correct it. That moment teaches steering better than explaining steering abstractly.</p>
-<p><strong>After a side effect, ask what changed.</strong> Prefer &quot;tell me what you wrote&quot; after saves, edits, or generated files. Add show-before-save only when the operation is hard to reverse or the exercise explicitly needs pre-approval.</p>
-<h2 id="live-triage">Live Triage</h2>
-<p>Protect the core live run. Each session has one main exercise, sometimes two medium ones before the midpoint. If time slips, compress framing, run the prompt, and move polish or extended comparison to homework. Do not try to &quot;cover&quot; the module at the cost of the exercise. AE101 teaches through artifacts and traces, not explanation.</p>
-<p>Do not script the cut order too tightly. The trainer is also an adult professional reading the room. The default bias is to preserve the live run and the trace it produces; after that, framing, debrief, comparison, and polish can flex.</p>
-<p>Vary the teaching move. Sometimes name the concept before the prompt, sometimes run first and name it afterward, sometimes explain from a student&#39;s output. Use whichever route suits the room and the moment. A forced pattern makes sessions dull.</p>
-<p>Bring your own examples, stories, and tooling tips. They give you credibility and make the room feel live. Keep them short, concrete, and tied to what students are about to run or just produced. A story earns its time when it helps students read the artifact in front of them.</p>
-<p>When students ask for an example, show one from your demo repo or prompt for a starting snippet live. It does not need to be a perfect sample artifact. One can prompt for anything; use the generated snippet to unblock the room and point back to the exercise.</p>
-<p>When a student asks for the &quot;right&quot; way, answer in context. Right means the move that gives the best result for this repo, team, risk, task, and review path. Teachers know the word is tricky; do not dodge it. Give your judgment, name the conditions behind it, and let the student map it to their situation.</p>
-<p>You are a practitioner, not an oracle. If a student has a plausible alternative, there is little value in arguing from authority. Compare the approaches against the module intent, and when it matters, test both.</p>
-<p>If a student shows a better workflow, steal with pride and celebrate it. The workbook is not threatened by useful practitioner knowledge in the room. Compare the move against the exercise intent, let others learn from it, and keep the session moving.</p>
-<p>You have authority to steer the room. If a question helps the room, answer briefly. If it would pull the cohort away from the protected exercise, park it with respect, name where it fits later, and keep moving.</p>
-<p>If one laptop breaks, triage for 30 seconds. Fix quick auth or network issues; defer corporate laptop problems to a buddy or the customer&#39;s escalation path. Do not stop the room for one machine.</p>
-<p>Assume the exercises are done. That is the mutual respect contract of AE101: the trainer prepares a real live run, and students spend the session actually running it. Still, students are adult professionals working in their own repos and choosing what to do with their time. Do not become the grader. Help them see what the artifact is based on: quoted evidence, run trace, diff, plan risk, or skill behavior. You can name risks and tradeoffs, then the student decides whether the artifact is good enough for their real team, repo, or review process.</p>
-<p>With ten-plus students working concurrently, you cannot inspect every run. Intervene to protect agency at room scale: when the agent is hiding evidence, flattening a decision, or pushing students into accidental approval, name the pattern to the room and hand the decision back to each student. Spot-assist one or two people only when the fix unblocks the protected exercise.</p>
-<p>If a student&#39;s output differs from yours, use it. Variation is expected. Ask what their version surfaced and compare the evidence, not the polish: which run quoted a file, found a real risk, preserved the student&#39;s decision, or exposed the teaching point. Do not normalize everyone toward your demo output.</p>
-<p>If an exercise produces a weak or failed result, use it. A weak run is useful when it produces evidence: what failed, what the agent assumed, and what artifact would change next time. Do not rescue too early when imperfect traces are part of the learning. Help students separate one-off bad luck from a system gap such as missing context, weak task shape, or an absent verifier.</p>
-<p>If a real repo is locked down, unsuitable, or too strange for the exercise, simulate the key behavior outside the repo. Any writable local folder is enough if it lets the student run the move, create evidence, and understand what would change in the real environment. Give tips for rewiring the lesson at the level of scope and loading behavior, then let the student figure out the right adaptation.</p>
-<p>Expect speed spread. Fast students will have time for side chat or deeper inspection; slow students will struggle; the middle will usually be fine. Keep the main discussion going so fast students stay engaged and slow students get catch-up time without stopping the cohort.</p>
-<p>In a Nordic room, do not mistake a quiet first beat for no signal. Use low-friction checks, quick hands, and your demo output as the comparison surface. In experience, people often do want to comment once the opening is easy and the question is concrete.</p>
-<p>Most AE101 runs are not long. In the few places where the agent may run for five minutes, use the wait to re-explain the concept and narrate what is actually happening: tool use, files touched, assumptions forming, or why the prompt is shaping the behavior you expect.</p>
-<p>If the room is slow, compress optional asides rather than sprinting. If the room is fast, do not pad. Spend the time on a deeper comparison or leave the room to its own rhythm.</p>
-<p>The most common AE101 failure is oversized task selection. Push early. &quot;Not a typo-fix, not an epic&quot; is the condition that lets the long-running loop produce evidence the next module can read.</p>
-<h2 id="what-not-to-do">What Not To Do</h2>
+<p><strong>Trainer cues.</strong> The <code>security-tools</code> easter egg fires the first time <code>threat-model-with-stride-1</code> runs; pause two beats after the ASCII face. <strong>See <a href="trainer-guide.html#m3-the-security-tools-surprise">M3, the security-tools surprise</a> in the trainer guide for framing and don&#39;t-spoil rules.</strong> Authoring without invocation is theatre — catch students hand-crafting <code>SKILL.md</code> in a file tab and steer them back to conversation. M3 closes with the M4 task-pick homework instruction; don&#39;t drop it.</p>
+</section>
+
+<section class="module-glance" id="m4-glance">
+
+<h3 id="m4--run-the-first-experiment">M4 — Run the first experiment</h3>
+<p><strong>Slot.</strong> Day 2, 08:30–10:00 (1h30, compressed from 1h45). Phase 1 is a 2-min confirm because the task came in as M3 homework.</p>
+<p><strong>Big idea.</strong> Walk what&#39;s been built across four modules against a real task; fill the worst gaps; send the task off un-packaged in the same session; learn from what the agent does with the system as it stands. The un-packaged send-off is intentional — it teaches M5 what packaging adds.</p>
+<p><strong>Flow.</strong></p>
+<ol>
+<li>Connections (compressed to 5 min — cohort is warmed up from Day 1)</li>
+<li>Lecture — <a href="./#lectures-test-and-learn">Test and learn</a></li>
+<li>Exercise — <a href="./#exercises-walk-and-send-off">Walk and send off</a> (55 min; pick 10 / walk-and-fill 35 / see-the-frame 10)</li>
+<li>Send-off (~5 min, single prompt paste — owned by the module file, not the exercise)</li>
+<li>Lecture — <a href="./#lectures-will-company-memory-emerge">Will company memory emerge?</a> (fires while the agent runs; reflective coda; leaves the run open for M5)</li>
+</ol>
+<p><strong>Learning goals.</strong> Student can:</p>
 <ul>
-<li>Do not read maintainer blocks during the session.</li>
-<li>Do not lecture from slides.</li>
-<li>Do not fix every install issue from the front of the room.</li>
-<li>Do not pre-summarize a lecture before its slot lands.</li>
-<li>Do not apologize for agent waits.</li>
-<li>Do not auto-promote personal learnings to team PRs.</li>
-<li>Do not let a contrast exercise collapse because the trainer rescued the first run too early.</li>
+<li>Scope a real send-off task in conversation with Claude — multi-file reasoning, sustained coherence, not step-by-step nudging.</li>
+<li>Walk what they&#39;ve built (<code>CLAUDE.md</code> + <code>CLAUDE.local.md</code> + <code>observations/</code> + ADRs + authored skills + connectors) against the task as a subagent audit; push back on the audit.</li>
+<li>Fill the worst gaps in conversation: observations written, rules sharpened, business-rules pointer wired (or named explicitly as a gap).</li>
+<li>Name Huryn&#39;s three blocks in their own material: Block 1 (observation → hypothesis → rule), Block 2 (decisions + alternatives), Block 3 (quality criteria).</li>
+<li>Send the task off un-packaged in the same Claude Code session and let it run.</li>
 </ul>
-<h2 id="feedback-loop">Feedback Loop</h2>
-<p>After delivery, capture friction where editors will see it. Cohort-specific notes belong in the customer surface. Structural fixes belong in this file or the module files. Delete closed TODOs; git is the history.</p>
-<p>If a prompt, example, timing move, or fallback improved the session, feed it back into the content loop after class. Capture flows through the delivery partner (ArcticRex) and routes back as the run-summary + per-module raw files pattern (see existing punchlist entries under <em>&quot;From 2026-05-19 cohort run&quot;</em> in <code>pre-cohort-todos.md</code> for the shape). Don&#39;t rely on memory.</p>
+<p><strong>Exercise goals.</strong></p>
+<ul>
+<li><em>Walk and send off</em> — system walked against the task; gaps filled; Huryn&#39;s three blocks named in the student&#39;s own material (the frame names what&#39;s already there, not a template to fill); tree settled before Debrief. The un-packaged send-off fires at close and runs into the M4→M5 break.</li>
+</ul>
+<p><strong>Trainer cues.</strong> Drop Connections from 10 to 5; cut Bridge (the 20-min break absorbs the transition); compress Phase 2→3 banter to ~5 min if tight. Expect the &quot;memory is overrated, we should have a company brain&quot; objection during the closing lecture — that&#39;s where it lands. Run the company-layer question as open, not settled. <strong>Memory-word allergy:</strong> some engineers react against the auto-memory framing; acknowledge it&#39;s legitimate against Claude Code&#39;s <code>/memory</code>, then point at the disambiguation in <code>walk-and-send-off.md</code> Phase 2.</p>
+</section>
+
+<section class="module-glance" id="m5-glance">
+
+<h3 id="m5--learn-from-the-test-re-send-packaged">M5 — Learn from the test, re-send packaged</h3>
+<p><strong>Slot.</strong> Day 2, 10:20–12:20 (2h, 15-min cushion over budget). Packaged re-send fires at close (~12:20) and runs through lunch.</p>
+<p><strong>Big idea.</strong> Read the un-packaged M4 run through three failure-mode lenses; build the validation that would have caught each; assemble the reference and <code>plan.md</code>; re-send the same task packaged in the same session. The contrast IS the lesson.</p>
+<p><strong>Flow.</strong></p>
+<ol>
+<li>Lecture — <a href="./#lectures-reading-the-return">Reading the return</a></li>
+<li>Lecture — <a href="./#lectures-learning-through-contrast">Learning through contrast</a></li>
+<li>Exercise — <a href="./#exercises-diagnose-and-resend">Diagnose and re-send</a> (65 min; Phases 1–4)</li>
+<li>Debrief + re-send (15–20 min; owned by the module file; worktree setup demo here)</li>
+<li>Lecture — <a href="./#lectures-what-packaging-is">What packaging is</a> (closer; Ronacher&#39;s three-pattern earned from felt evidence — don&#39;t squeeze it)</li>
+</ol>
+<p><strong>Learning goals.</strong> Student can:</p>
+<ul>
+<li>Diagnose the un-packaged M4 send-off through three named lenses — goal drift, context rot, plausible-but-wrong — with quoted moments per lens.</li>
+<li>Pair each failure mode with the packaging that catches it: drift ↔ reference artefact, rot ↔ <code>plan.md</code>, plausible-but-wrong ↔ external verifier.</li>
+<li>Build a verifier shaped against the dominant failure (background-agent / shell-hook / Ralph re-feed).</li>
+<li>Assemble reference + <code>plan.md</code> in conversation, scoped to the same M4 task.</li>
+<li>Re-send the packaged version of the same task in the same session and let it run a second time.</li>
+</ul>
+<p><strong>Exercise goals.</strong></p>
+<ul>
+<li><em>Diagnose and re-send</em> — student ends with: a diagnosis (named failures + quoted moments from their own artefact), a working verifier targeting one specific failure mode, and reference + <code>plan.md</code> scoped to the same M4 task. Each piece earns its place against a real failure, not a slide.</li>
+</ul>
+<p><strong>Trainer cues.</strong> The 15-min cushion goes to worktree setup (real engineering, students fumble) and the closing lecture — don&#39;t compress it; the lecture IS the lesson. At close, the packaged re-send fires and runs through lunch. After lunch, the re-entry window is for nudging a stalled agent (the dark-humor &quot;Continue&quot; prompt still works) and settling in; then M6 opens fresh at the same worktree path.</p>
+</section>
+
+<section class="module-glance" id="m6-glance">
+
+<h3 id="m6--spot-gaps-build-the-loop">M6 — Spot gaps, build the loop</h3>
+<p><strong>Slot.</strong> Day 2, 13:50–15:35 (1h45). Opens with M6 reading both runs from disk BEFORE writing anything. Lecture-dense by design — <strong>see <a href="trainer-guide.html#m6-lecture-dense-by-design">M6, lecture-dense by design</a> in the trainer guide for the full lecture stack and pacing notes.</strong></p>
+<p><strong>Big idea.</strong> Two runs of the same task (un-packaged M4, packaged M5) are enough evidence to name what the three-pattern didn&#39;t anticipate, route the gap to its home (memory / verifier / new skill), and author a session-shaper skill through conversation so future-you inherits the lesson.</p>
+<p><strong>Flow.</strong></p>
+<ol>
+<li>Re-entry (~15 min; nudge stalled M5 run, open M6 in fresh session at same worktree, read both runs before writing)</li>
+<li>Lecture — <a href="./#lectures-the-2-frontiers">The 2 frontiers</a> (opener)</li>
+<li>Lecture — <a href="./#lectures-story-of-module-6">Story of Module 6</a> (opener; permission-giving memo from this module&#39;s own generation)</li>
+<li>Lecture — <a href="./#lectures-quality-is-grounding">Quality is grounding</a> (opener-bridge, 4–6 min; names the quality arc M1→M6)</li>
+<li>Exercise — <a href="./#exercises-spot-gaps-build-the-loop">Spot gaps, build the loop</a> (40–50 min; diff two runs, route, author second skill)</li>
+<li>Lecture — <a href="./#lectures-steering-the-wiring">Steering the wiring</a> (mid-module)</li>
+<li>Exercise — <a href="./#exercises-arc-retrospective">Arc retrospective</a> (15–20 min; agent reads everything authored across training, writes one-page note)</li>
+<li>Lecture — <a href="./#lectures-composing-the-workflow">Composing the workflow</a> (closer-area pointer; 3–4 min)</li>
+<li>Lecture — <a href="./#lectures-the-loop-has-a-name">The loop has a name</a> (closer; names <em>eval</em> from the just-built second skill)</li>
+<li>Lecture — <a href="./#lectures-agents-that-build-agents">Agents that build agents</a> (forward closer)</li>
+</ol>
+<p><strong>Learning goals.</strong> Student can:</p>
+<ul>
+<li>Diagnose the gaps two runs of the same task surface.</li>
+<li>Route each gap to its home: memory (rules that would have prevented the mistake), sharper verifier, or new skill.</li>
+<li>Cut one rule from <code>./CLAUDE.local.md</code> the diagnosis killed.</li>
+<li>Author a session-shaper skill through conversation, ship to personal kit.</li>
+<li>Map evals across verifier (deterministic), judge (LLM-based), gate (in CI).</li>
+<li>Encode the lesson so the next loop inherits it.</li>
+</ul>
+<p><strong>Exercise goals.</strong></p>
+<ul>
+<li><em>Spot gaps, build the loop</em> — one-screen gap map across memory / verifier / rules / skill, plus one <code>SKILL.md</code> at <code>~/.claude/skills/session-shaper/SKILL.md</code> (auto-discovered in every future session). Team-kit candidates flagged for human conversation, not auto-PRed.</li>
+<li><em>Arc retrospective</em> — short note in the repo (ADR-shaped or loose memo, student&#39;s call) naming how the student&#39;s practice changed across the modules. Agent reads across all six modules&#39; artefacts and writes the arc from the student&#39;s own evidence, not a template.</li>
+</ul>
+<p><strong>Trainer cues.</strong> Practitioner-fluency register, not lecture-hall — invite student reflection between lectures. Two beats of silence is fine; Nordic engineers think before speaking. The composition lecture has no exercise on purpose (&quot;composition is a reading move at M6&quot;); if a student asks where the exercise is, point at the <a href="./#supplementary-workflow-composition-lineages">workflow-composition-lineages supplementary</a>. Dino&#39;s <a href="./#supplementary-skill-stacking">skill-stacking system</a> is the worked example. Pacing: if energy is high give the lineage conversation room; if low, name fewer lineages and move to the closer pair faster.</p>
+</section>
 
 </section>
 </main>
@@ -3295,6 +3309,24 @@ body.workbook { padding-top: 3rem; }
     CurriculumRuntime.decorateDiagramZoom(document.body);
     CurriculumRuntime.installReadingProgress();
   }
+})();
+</script>
+<script>
+// Per-module focused view: keep the URL shareable and the active tab highlighted.
+// The :target + :has() CSS handles show/hide; this script only writes #m1-glance
+// to the URL on first load and toggles the .is-active class on the tab strip.
+(function () {
+    var VALID = { '#m1-glance':1, '#m2-glance':1, '#m3-glance':1, '#m4-glance':1, '#m5-glance':1, '#m6-glance':1 };
+    function activeHash() { return VALID[location.hash] ? location.hash : '#m1-glance'; }
+    function syncTabs() {
+        var hash = activeHash();
+        document.querySelectorAll('.module-tabs a').forEach(function (a) {
+            a.classList.toggle('is-active', a.getAttribute('href') === hash);
+        });
+    }
+    if (!VALID[location.hash]) history.replaceState(null, '', '#m1-glance');
+    syncTabs();
+    window.addEventListener('hashchange', syncTabs);
 })();
 </script>
 </body>

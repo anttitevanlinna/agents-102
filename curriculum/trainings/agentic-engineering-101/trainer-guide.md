@@ -4,6 +4,8 @@
 
 AE101 is for software engineer ICs who already use or have seen Claude Code. Do not teach Claude Code from zero. The job is to turn uneven self-taught usage into an engineering loop that compounds: run the work, read what happened, encode the lesson into repo memory, skills, verifiers, and team kit.
 
+**Per-module glance.** Open the <a href="trainer-modules.html" target="_blank" rel="noopener">module-by-module one-pager ↗</a> in a separate tab — slot, flow, learning goals, exercise goals, and trainer cues for M1–M6. Keep it open alongside this file during delivery.
+
 ## Operating Contract
 
 You project the workbook page. There are no slides. You demo each exercise prompt slowly on your own Claude Code while the room copy-pastes into theirs. You honor the conversation pauses in the exercise body. When the agent runs, you fill the air with dry-run evidence, tool tips you actually use, or why this module is shaped the way it is.

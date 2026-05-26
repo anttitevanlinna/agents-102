@@ -397,6 +397,11 @@ const TRAINER_GUIDE_INIT_JS = `
 })();
 `;
 
+// Trainer pages run wider than the student workbook — the trainer reads dense
+// reference prose, not a projected module spine. Scoped to the trainer
+// templates so the workbook's .module keeps its narrower projected measure.
+const TRAINER_WIDTH_CSS = `.module { max-width: 56em; }`;
+
 function trainerGuideTemplate(customer, content) {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -404,12 +409,130 @@ function trainerGuideTemplate(customer, content) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trainer delivery guide — ${CR.esc(customer)}</title>
-<style>${SPA_CSS}</style>
+<style>${SPA_CSS}
+${TRAINER_WIDTH_CSS}</style>
 </head>
 <body class="runtime-cli workbook">
 ${content}
 <script>${SPA_JS}</script>
 <script>${TRAINER_GUIDE_INIT_JS}</script>
+</body>
+</html>
+`;
+}
+
+// Trainer modules: a per-module one-pager rendered beside the workbook +
+// trainer guide. Same chrome, but one module at a time — a sticky tab strip
+// + :target show/hide on .module-glance sections. Source:
+// curriculum/trainings/<t>/trainer-modules.md (markdown bodies inside raw-HTML
+// <nav>/<section> wrappers; marked parses markdown nested in blank-line-
+// separated block HTML). The outer <section class="module" id="trainer-modules">
+// wrapper is added here so the :has() default-panel fallback selector resolves.
+const TRAINER_MODULES_TABS_CSS = `
+/* ── Per-module focused view ── Only one .module-glance is visible at a time,
+   selected by URL hash. A tiny JS shim sets the default hash on load and keeps
+   the active tab highlighted on hashchange. */
+.module-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 1.25rem 0 2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--line-2);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 5;
+    padding-top: 0.8rem;
+}
+.module-tabs a {
+    display: inline-block;
+    padding: 0.45rem 0.95rem;
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--fg-2);
+    font-size: 0.92rem;
+    font-weight: 500;
+    background: transparent;
+    transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.module-tabs a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+.module-tabs a.is-active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+}
+.module-glance { display: none; }
+.module-glance:target { display: block; }
+/* Default landing when no hash is set: show M1. Uses :has() to detect "no
+   .module-glance is currently targeted" and falls back to the M1 panel. Works
+   without JS. JS still replaces the URL hash to #m1-glance on load so the
+   URL is shareable, but the visual state is correct either way. */
+section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#m1-glance { display: block; }`;
+
+const TRAINER_MODULES_TAB_JS = `
+// Per-module focused view: keep the URL shareable and the active tab highlighted.
+// The :target + :has() CSS handles show/hide; this script only writes #m1-glance
+// to the URL on first load and toggles the .is-active class on the tab strip.
+(function () {
+    var VALID = { '#m1-glance':1, '#m2-glance':1, '#m3-glance':1, '#m4-glance':1, '#m5-glance':1, '#m6-glance':1 };
+    function activeHash() { return VALID[location.hash] ? location.hash : '#m1-glance'; }
+    function syncTabs() {
+        var hash = activeHash();
+        document.querySelectorAll('.module-tabs a').forEach(function (a) {
+            a.classList.toggle('is-active', a.getAttribute('href') === hash);
+        });
+    }
+    if (!VALID[location.hash]) history.replaceState(null, '', '#m1-glance');
+    syncTabs();
+    window.addEventListener('hashchange', syncTabs);
+})();
+`;
+
+function buildTrainerModules(customer, trainingKey) {
+  const srcPath = path.join(ROOT, 'curriculum/trainings', trainingKey, 'trainer-modules.md');
+  let md = readMd(srcPath);
+  if (md === null) return null;
+  md = escapeTildes(md);
+  // Same cross-doc link rewrite as the trainer guide: a `.md` ref into the
+  // workbook becomes an absolute-to-this-dir anchor. The page's own
+  // `./#section` and same-page `#m1-glance` links already match no pattern and
+  // pass through untouched.
+  md = md
+    .replace(CR.CROSS_DOC_SHARED_RE,      (_, k, s, hash) => hash ? '](./' + hash + ')' : '](./#' + k + '-' + s + ')')
+    .replace(CR.CROSS_DOC_TRAINING_KS_RE, (_, k, s, hash) => hash ? '](./' + hash + ')' : '](./#' + k + '-' + s + ')');
+  const bodyHtml = marked.parse(md);
+
+  const cover = `
+<header class="workbook-cover" id="top">
+  <p class="eyebrow">${CR.esc(customer)} workbook</p>
+  <h1 class="cover-title">Per-module glance</h1>
+</header>
+`;
+  const main = '<main>\n' + cover + '\n<section class="module" id="trainer-modules">\n' + bodyHtml + '\n</section>\n</main>\n';
+  return main + CR.renderFooter() + '\n';
+}
+
+function trainerModulesTemplate(customer, content) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Per-module glance — ${CR.esc(customer)}</title>
+<style>${SPA_CSS}
+${TRAINER_WIDTH_CSS}
+${TRAINER_MODULES_TABS_CSS}</style>
+</head>
+<body class="runtime-cli workbook">
+${content}
+<script>${SPA_JS}</script>
+<script>${TRAINER_GUIDE_INIT_JS}</script>
+<script>${TRAINER_MODULES_TAB_JS}</script>
 </body>
 </html>
 `;
@@ -554,6 +677,17 @@ function buildTraining(customer, trainingKey) {
     fs.writeFileSync(guideFile, guideHtml);
     const guideKB = (fs.statSync(guideFile).size / 1024).toFixed(0);
     console.log(`Built ${path.relative(ROOT, guideFile)} (${guideKB} KB)`);
+  }
+
+  // Trainer modules one-pager: same gate, separate file. Cross-doc links
+  // resolve into this workbook the same way the trainer guide's do.
+  const modulesBody = buildTrainerModules(customer, trainingKey);
+  if (modulesBody !== null) {
+    const modulesHtml = trainerModulesTemplate(customer, modulesBody);
+    const modulesFile = path.join(outDir, 'trainer-modules.html');
+    fs.writeFileSync(modulesFile, modulesHtml);
+    const modulesKB = (fs.statSync(modulesFile).size / 1024).toFixed(0);
+    console.log(`Built ${path.relative(ROOT, modulesFile)} (${modulesKB} KB)`);
   }
 }
 

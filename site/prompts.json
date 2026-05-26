@@ -421,7 +421,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/open-the-side-quest",
-    "text": "Fork a sibling worktree. Default path `../<repo-name>-m3-quality`, default branch `m3/quality` off the current branch:\n\n  git worktree add ../<repo-name>-m3-quality -b m3/quality\n\nCopy the gitignored personal files into the worktree so the new session inherits the same personal rules and memory:\n  cp ./CLAUDE.local.md ../<repo-name>-m3-quality/  (if it exists)\n  mkdir -p ../<repo-name>-m3-quality/.claude/\n  cp -r ./.claude/memory/ ../<repo-name>-m3-quality/.claude/memory/  (if .claude/memory/ exists in this repo)\n\nThese won't sync back automatically. The worktree's copies are independent from this point.\n\nTell me the absolute path to the new worktree directory and which files copied across.",
+    "text": "Fork a sibling worktree. Default path `../<repo-name>-m3-quality`, default branch `m3/quality` off the current branch:\n\n  git worktree add ../<repo-name>-m3-quality -b m3/quality\n\nCopy the gitignored personal files into the worktree so the new session inherits the same personal rules and memory:\n  cp ./CLAUDE.local.md ../<repo-name>-m3-quality/  (if it exists)\n  cp -r ./observations/ ../<repo-name>-m3-quality/observations/  (if observations/ exists in this repo)\n\nThese won't sync back automatically. The worktree's copies are independent from this point.\n\nTell me the absolute path to the new worktree directory and which files copied across.",
     "requires": [],
     "produces": [
       {
@@ -441,7 +441,7 @@
       },
       {
         "id": "memory-folder",
-        "if-present-at": "./.claude/memory/",
+        "if-present-at": "./observations/",
         "rationale": "born at M4's walk-and-send-off Phase 2; copied if M4 ran (reorder order) — prompt body's \"(if exists)\" handles absence gracefully"
       }
     ]
@@ -531,7 +531,7 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/run-the-first-experiment",
-    "text": "Create a fresh feature branch named m4/<short-task-slug>. Before committing, append a protected block to `./task.md` headed `Run coordinates (do not rewrite or remove)` so a later session can recover this run without searching for it: the branch name, and the transcript path you just located. Then stage everything, commit with message \"M4 starting point\", and tell me the short SHA.",
+    "text": "Create a fresh feature branch named m4/<short-task-slug>. Before committing, append a protected block to `./task.md` headed `Run coordinates (do not rewrite or remove)` so a later session can recover this run without searching for it: the branch name exactly as `git branch --show-current` reports it (read it back from git — don't retype it from memory), and the transcript path you just located. Then stage everything, commit with message \"M4 starting point\", and tell me the short SHA.",
     "requires": [
       {
         "id": "scoped-task",
@@ -611,7 +611,7 @@
     "context": "final move of the module",
     "runtime": "any",
     "origin": "agentic-engineering-101/run-the-first-experiment",
-    "text": "I want you to take the task we scoped earlier in this session end to end. Work from the rules I've set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the memory at `./.claude/memory/`, the ADRs, and the skills available by name in this session. That's everything you have. Go.\n\nI'm leaving the laptop awake and walking away. Work through it. If you get stuck, write what you tried and why it didn't work rather than inventing a way forward. If you finish, tell me what you shipped and what you didn't.",
+    "text": "I want you to take the task we scoped earlier in this session end to end. Work from the rules I've set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the observations at `./observations/`, the ADRs, and the skills available by name in this session. That's everything you have. Go.\n\nI'm leaving the laptop awake and walking away. Work through it. If you get stuck, write what you tried and why it didn't work rather than inventing a way forward. If you finish, tell me what you shipped and what you didn't.",
     "requires": [
       {
         "id": "scoped-task",
@@ -680,7 +680,7 @@
     "context": "final move of the module",
     "runtime": "any",
     "origin": "agentic-engineering-101/learn-from-the-test",
-    "text": "Before you start, write a protected block at the top of `plan.md` headed `Run coordinates (do not rewrite or remove)`, holding this run's `m5/` branch and this session's transcript path (under `~/.claude/projects/`, keyed by the `CLAUDE_CODE_SESSION_ID` environment variable). You'll mutate the rest of plan.md as you run; leave that block alone. Confirm the `.jsonl` exists before writing it; if you can't determine the path, stop and tell me rather than guessing.\n\nThen ask for or write anything else you want for the run.\n\nRun the task at `./task.md` using the packaging in this worktree: reference, plan.md, and verifier all at the worktree root (find them by listing the directory).\n\nRules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.\n\nReport back as three lists, no narrative, no hedging:\n  shipped — each artefact + path\n  did NOT ship — each item, no \"partial\" / \"mostly\" / \"in progress\"\n  verifier — last output line of each run, pasted verbatim\nIf any list is empty, say \"none.\"",
+    "text": "Before you start, write a protected block at the top of `plan.md` headed `Run coordinates (do not rewrite or remove)`, holding this run's `m5/` branch exactly as `git branch --show-current` reports it (read it back from git — don't retype it from memory) and this session's transcript path (under `~/.claude/projects/`, keyed by the `CLAUDE_CODE_SESSION_ID` environment variable). You'll mutate the rest of plan.md as you run; leave that block alone. Confirm the `.jsonl` exists before writing it; if you can't determine the path, stop and tell me rather than guessing.\n\nThen ask for or write anything else you want for the run.\n\nRun the task at `./task.md` using the packaging in this worktree: reference, plan.md, and verifier all at the worktree root (find them by listing the directory).\n\nRules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.\n\nReport back as three lists, no narrative, no hedging:\n  shipped — each artefact + path\n  did NOT ship — each item, no \"partial\" / \"mostly\" / \"in progress\"\n  verifier — last output line of each run, pasted verbatim\nIf any list is empty, say \"none.\"",
     "requires": [
       {
         "id": "m5-worktree",
@@ -757,7 +757,7 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/learn-from-the-test",
-    "text": "Read `./task.md` and use its recorded run coordinates for the M4 run. Those coordinates name the exact `m4/` branch; do not rediscover it with broad branch search. Verify that branch exists locally or as a remote-tracking branch, then find the \"M4 starting point\" commit on that named branch. If that commit message has been rewritten or is ambiguous, ask me for the SHA from the M4 session close. Spin up a git worktree at that commit. Put the worktree at `../<repo-name>-m5` on a new branch named `m5/` followed by the same task slug as the m4 branch.\n\nThen copy the gitignored personal files into the worktree so compounding has the previous sessions material to build on:\n  cp ../<repo-name>/CLAUDE.local.md ../<repo-name>-m5/  (if it exists)\n  mkdir -p ../<repo-name>-m5/.claude/\n  cp -r ../<repo-name>/.claude/memory/ ../<repo-name>-m5/.claude/memory/  (if .claude/memory/ exists in the original repo)\n\nThese won't sync back automatically — the worktree's copies are independent from this point. Tell me the worktree path and confirm which files copied across.",
+    "text": "Read `./task.md` and use its recorded run coordinates for the M4 run. Those coordinates name the exact `m4/` branch; do not rediscover it with broad branch search. Verify that branch exists locally or as a remote-tracking branch, then find the \"M4 starting point\" commit on that named branch. If that commit message has been rewritten or is ambiguous, ask me for the SHA from the M4 session close. Spin up a git worktree at that commit. Put the worktree at `../<repo-name>-m5` on a new branch named `m5/` followed by the same task slug as the m4 branch.\n\nThen copy the gitignored personal files into the worktree so compounding has the previous sessions material to build on:\n  cp ../<repo-name>/CLAUDE.local.md ../<repo-name>-m5/  (if it exists)\n  cp -r ../<repo-name>/observations/ ../<repo-name>-m5/observations/  (if observations/ exists in the original repo)\n\nThese won't sync back automatically — the worktree's copies are independent from this point. Tell me the worktree path and confirm which files copied across.",
     "requires": [
       {
         "id": "m4-starting-point-sha",
@@ -787,7 +787,7 @@
       },
       {
         "id": "memory-folder",
-        "if-present-at": "../<repo-name>/.claude/memory/",
+        "if-present-at": "../<repo-name>/observations/",
         "rationale": "born at M4's walk-and-send-off Phase 2; copied so M5/M6 inherits the three-block memory built during M4"
       }
     ]
@@ -929,7 +929,7 @@
     "context": "fresh session in the same repo",
     "runtime": "any",
     "origin": "lectures/agents-that-build-agents",
-    "text": "Enable plan mode.\n\nRead these artefacts end to end:\n\n- ./CLAUDE.local.md\n- ./.claude/memory/\n- the un-packaged run's commit history and modified files (its `m4/` branch is recorded in `task.md`)\n- the packaged run's commit history and modified files (its `m5/` branch is recorded in `plan.md`)\n- the SKILL.md of the `session-shaper` skill you authored, in `~/.claude/skills/`\n\nThen design the next iteration of the kit. Three questions:\n\n1. What gap in the kit would the next run want closed? Name it as a memory rule, a sharper verifier, or a third skill. Pick the home; do not split.\n2. What rule already in memory has gone stale across the two runs? Name one to subtract.\n3. What shape of skill is missing from the menu of verifier / judge / gap-finder? If none is missing, say so. Do not invent.\n\nReturn a plan with the three answers. No preamble.",
+    "text": "Enable plan mode.\n\nRead these artefacts end to end:\n\n- ./CLAUDE.local.md\n- ./observations/\n- the un-packaged run's commit history and modified files (its `m4/` branch is recorded in `task.md`)\n- the packaged run's commit history and modified files (its `m5/` branch is recorded in `plan.md`)\n- the SKILL.md of the `session-shaper` skill you authored, in `~/.claude/skills/`\n\nThen design the next iteration of the kit. Three questions:\n\n1. What gap in the kit would the next run want closed? Name it as a memory rule, a sharper verifier, or a third skill. Pick the home; do not split.\n2. What rule already in memory has gone stale across the two runs? Name one to subtract.\n3. What shape of skill is missing from the menu of verifier / judge / gap-finder? If none is missing, say so. Do not invent.\n\nReturn a plan with the three answers. No preamble.",
     "requires": [
       {
         "id": "m4-run-coordinates",
@@ -947,7 +947,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/arc-retrospective",
-    "text": "Read my work across this repo. Specifically:\n\n- My team `CLAUDE.md` (if present) and my personal `CLAUDE.local.md`.\n- Everything at `./.claude/memory/` (three-block memory: observations/hypotheses/rules, decisions, quality criteria).\n- The ADRs in this repo — wherever our convention puts them (`docs/adr/` or equivalent).\n- Both skills I authored at `~/.claude/skills/` (the `test-strategy` skill from earlier, and the `session-shaper` skill).\n- The un-packaged run (commits, files, session transcript). Read `task.md` for its recorded `m4/` branch and transcript path, then use those exact coordinates. Do not reconstruct the transcript folder or pick a recent `.jsonl`.\n- The packaged re-run (commits, files, session transcript). Read `plan.md`'s protected `Run coordinates` block for its recorded `m5/` branch and transcript path, then use those exact coordinates. Do not reconstruct the transcript folder or pick a recent `.jsonl`.\n\nRun this audit in a fresh sub-task via the Agent tool so you have the cold-read view, then combine those findings with insights you have from this session's scrollback. I want both viewpoints: the fresh read uncoloured by our conversation, and what you noticed while we worked together.\n\nWrite a one-page note on what changed across this body of work. Not a changelog. What shape did my practice have at the start, what shape does it have now, what specific artefacts show the shift. Quote from my files. Name the pattern that you see recurring across modules if you see one. Don't invent a pattern to make the note tidy; if the arc is uneven, say so and show where.\n\nPropose where the note should live in my repo (ADR, memo in `./.claude/memory/`, or a standalone file). Show me the note before you save it. I'll push back, then we save.",
+    "text": "Read my work across this repo. Specifically:\n\n- My team `CLAUDE.md` (if present) and my personal `CLAUDE.local.md`.\n- Everything at `./observations/` (observations, hypotheses, rules).\n- The ADRs in this repo — wherever our convention puts them (`docs/adr/` or equivalent).\n- Both skills I authored at `~/.claude/skills/` (the `test-strategy` skill from earlier, and the `session-shaper` skill).\n- The un-packaged run (commits, files, session transcript). Read `task.md` for its recorded `m4/` branch and transcript path, then use those exact coordinates. Do not reconstruct the transcript folder or pick a recent `.jsonl`.\n- The packaged re-run (commits, files, session transcript). Read `plan.md`'s protected `Run coordinates` block for its recorded `m5/` branch and transcript path, then use those exact coordinates. Do not reconstruct the transcript folder or pick a recent `.jsonl`.\n\nRun this audit in a fresh sub-task via the Agent tool so you have the cold-read view, then combine those findings with insights you have from this session's scrollback. I want both viewpoints: the fresh read uncoloured by our conversation, and what you noticed while we worked together.\n\nWrite a one-page note on what changed across this body of work. Not a changelog. What shape did my practice have at the start, what shape does it have now, what specific artefacts show the shift. Quote from my files. Name the pattern that you see recurring across modules if you see one. Don't invent a pattern to make the note tidy; if the arc is uneven, say so and show where.\n\nPropose where the note should live in my repo (ADR, memo in `./observations/`, or a standalone file). Show me the note before you save it. I'll push back, then we save.",
     "requires": [
       {
         "id": "claude-local-md",
@@ -1006,7 +1006,7 @@
     "produces": [
       {
         "id": "arc-retrospective-note",
-        "location": "student-picked (ADR, ./.claude/memory/ memo, or standalone file)",
+        "location": "student-picked (ADR, ./observations/ memo, or standalone file)",
         "consumed-by": [],
         "note": "terminal artefact — closes the M1-M6 arc"
       }
@@ -2751,7 +2751,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/walk-and-send-off",
-    "text": "Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything at `./.claude/memory/` (the three-block memory home; if my team kit pins a different path, use that), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including any test-strategy or workflow skills already authored), and the connectors I've wired.\n\nRun this audit in a fresh context: spawn a sub-task via the Agent tool so you read my setup without this conversation colouring it. Keep this session's scrollback intact — we'll need it for later phases. Return a structured report.\n\nReturn a ranked top-5: thin spots, missing context, wrong assumptions, or unwired tools that will hurt the agent if it tries this task un-packaged. Rank by how much damage each will do during a send-off run.\n\nFor each item, say: (a) what's thin, (b) what a properly-prepared agent would need instead, (c) the cheapest way to close the gap today: add an observation, sharpen a rule, wire a connector, or name it as a business-rules gap.",
+    "text": "Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything at `./observations/` (your observations and business-rules notes; if my team kit pins a different path, use that), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including any test-strategy or workflow skills already authored), and the connectors I've wired.\n\nRun this audit in a fresh context: spawn a sub-task via the Agent tool so you read my setup without this conversation colouring it. Keep this session's scrollback intact — we'll need it for later phases. Return a structured report.\n\nReturn a ranked top-5: thin spots, missing context, wrong assumptions, or unwired tools that will hurt the agent if it tries this task un-packaged. Rank by how much damage each will do during a send-off run.\n\nFor each item, say: (a) what's thin, (b) what a properly-prepared agent would need instead, (c) the cheapest way to close the gap today: add an observation, sharpen a rule, wire a connector, or name it as a business-rules gap.",
     "requires": [
       {
         "id": "scoped-task",
@@ -2790,7 +2790,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/walk-and-send-off",
-    "text": "Use the AskUserQuestion tool. One question per call. First ask which 2-3 audit gaps I want to focus on. For each picked gap, propose a resolution in the shape the audit named, hear my pushback, then persist it: the `./.claude/memory/` folder in your repo for observations and business-rules gaps, `./CLAUDE.local.md` for rule sharpening, connector setup for connector wiring.",
+    "text": "Use the AskUserQuestion tool. One question per call. First ask which 2-3 audit gaps I want to focus on. For each picked gap, propose a resolution in the shape the audit named, hear my pushback, then persist it: the `./observations/` folder in your repo for observations and business-rules gaps, `./CLAUDE.local.md` for rule sharpening, connector setup for connector wiring.",
     "requires": [
       {
         "id": "gap-audit-report",
@@ -2800,7 +2800,7 @@
     "produces": [
       {
         "id": "gap-fills",
-        "location": "./.claude/memory/ (observations + business-rules gaps) + ./CLAUDE.local.md (sharpened rules) + connector setup (no file)",
+        "location": "./observations/ (observations + business-rules gaps) + ./CLAUDE.local.md (sharpened rules) + connector setup (no file)",
         "consumed-by": [
           "prompt:walk-and-send-off-4"
         ],
@@ -2814,7 +2814,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/walk-and-send-off",
-    "text": "Look at the observations and rules I just added to `./.claude/memory/`, the hardening ADR in this repo if there is one, and the test-strategy skill if I've authored one. Don't scan beyond those. Rearrange what's there into Paweł Huryn's three-block memory frame:\n\n- Block 1: observations → hypotheses → rules (what I've noticed about this codebase, what I've started to suspect, what I've decided to treat as true)\n- Block 2: decisions with alternatives (architectural or design choices + what else was considered; ADRs live here if I have them)\n- Block 3: quality criteria (what I expect to be true of shipped code in this codebase; if I've authored a test-strategy skill it contributes here, otherwise pull from existing test conventions)\n\nDon't invent new material. Rearrange what's there.\n\nBefore you name the frame or propose a new structure, show me one concrete example from each block. Quote a specific observation from my memory (Block 1), a specific ADR or other recorded decision (Block 2), a specific check from an authored skill OR a quality criterion from existing tests (Block 3).\n\nIf you propose file moves or renames, cap the proposal at one or two; the send-off fires shortly after this phase and I want the tree settled before that.",
+    "text": "Look at the observations and rules I just added to `./observations/`, the hardening ADR in this repo if there is one, and the test-strategy skill if I've authored one. Don't scan beyond those. Rearrange what's there into Paweł Huryn's three-block memory frame:\n\n- Block 1: observations → hypotheses → rules (what I've noticed about this codebase, what I've started to suspect, what I've decided to treat as true)\n- Block 2: decisions with alternatives (architectural or design choices + what else was considered; ADRs live here if I have them)\n- Block 3: quality criteria (what I expect to be true of shipped code in this codebase; if I've authored a test-strategy skill it contributes here, otherwise pull from existing test conventions)\n\nDon't invent new material. Rearrange what's there.\n\nBefore you name the frame or propose a new structure, show me one concrete example from each block. Quote a specific observation from my memory (Block 1), a specific ADR or other recorded decision (Block 2), a specific check from an authored skill OR a quality criterion from existing tests (Block 3).\n\nIf you propose file moves or renames, cap the proposal at one or two; the send-off fires shortly after this phase and I want the tree settled before that.",
     "requires": [
       {
         "id": "gap-audit-report",

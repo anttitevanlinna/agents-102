@@ -47,8 +47,6 @@ Then ask Claude to infer how the fields are being used.
 
 Read the output as a first pass, not a policy. One ticket can reverse-engineer basic rules: which fields matter, which labels carry meaning, which wording signals "too big," which status changes imply ownership. If backlog refinement is your first automation attempt, these field-use rules become the first add-on to the Phase 2 `.md` file, or a small companion file beside it. Iterate for depth. Three to five tickets from different work types will surface stronger rules than one ticket, and Claude should keep separating strong signals from guesses as the sample grows.
 
-When Claude finishes, the lecture is next.
-
 **What happened:** Claude read the scrollback and proposed the rules. You rewrote or rejected at least one. You named the file and the path. Claude wrote it. You asked one open question about where the file could go next. Claude proposed shapes. You read. Optionally: you pasted one real ticket, and Claude inferred how your team seems to use fields like status, labels, priority, component, estimate, owner, and epic.
 
 <!-- maintainer -->

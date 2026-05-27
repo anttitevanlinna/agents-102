@@ -2,7 +2,7 @@
 
 **Time:** 20 minutes.
 
-**Window:** *m3-security* (the main lane from *Open the side quest*; m3-quality stays parked).
+**Window:** the main quest window (*m3-security*).
 
 **What you do:** Invoke the curated access-control analysis skill on the small feature you brought to Module 3. Read what the skill surfaces. Decide, on the record in your repo, which surface it called out harder than you would have, and which surface you know matters that the skill didn't catch. Ship the delta as notes the STRIDE exercise will consume next.
 

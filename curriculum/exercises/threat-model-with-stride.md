@@ -2,7 +2,7 @@
 
 **Time:** 20 minutes.
 
-**Window:** *m3-security* (continuing the main lane; m3-quality stays parked).
+**Window:** the main quest window (*m3-security*).
 
 **What you do:** Invoke the curated STRIDE skill on the access-surface map you built in the previous exercise. You pick one threat worth hardening against, write the decision as an ADR in your repo's convention, and move on.
 
@@ -30,7 +30,7 @@ Ask Claude to propose the most plausible incident story and walk you through the
 {{prompt:threat-model-with-stride-2}}
 
 
-Read what Claude proposes. The "most plausible incident story" is the move that makes STRIDE useful rather than performative, push back if the story doesn't fit your codebase's reality.
+Read what Claude proposes. The "most plausible incident story" is the move that makes STRIDE useful rather than performative, push back if the story doesn't fit your codebase's reality. Work with Claude to land on the right mitigation. You'll save it next.
 
 ## Phase 3: write the ADR
 
@@ -57,13 +57,17 @@ Ask Claude whether this ADR rides into future sessions automatically.
 
 Claude's answer: no, ADRs don't auto-load like `CLAUDE.md` and `CLAUDE.local.md` do. They're on-disk and discoverable, but a future session loads them only when explicitly read. You can wire individual ADRs into team `CLAUDE.md` (one `@docs/adr/<file>.md` line per file, Claude Code's `@`-include is single-file, no glob), but most teams don't: ADRs accumulate, the window is finite, and rejected alternatives shouldn't sit in live context. Selective load is the practitioner default; Module 4 will tell Claude exactly which artifacts to read at the start of the long-running run, and that explicit list is the lesson.
 
-**What happened:** You made one call, wrote the ADR, and the decision shipped to the repo. The rest of the STRIDE output stayed as evidence; not a hardening backlog.
+Not everything survived to disk, though. The skills returned their work into this session: the full access-surface map from Exercise 1, and the complete STRIDE walk here, including the threats you considered and set aside. The ADR holds the one decision. The analysis around it is real security documentation, and it clears when the session does.
+
+> **Worth keeping?** Ask Claude to save the access-surface map and the STRIDE walk to your repo's `docs/` directory, next to the ADR, before you clear. Your CISO and the next engineer read what's on disk, not your scrollback.
+
+**What happened:** You made one call and wrote the ADR, and the decision shipped to the repo. The rest of the STRIDE output stayed in the session as evidence, not on disk and not a hardening backlog.
 
 ---
 
 ## What this sets up
 
-The next exercise authors a test-strategy skill and invokes it on this feature, which is now security-tested. The hardening decision becomes a test case in the test strategy. The ADR is in the repo. Rejected threats are documented. Your CISO has something to read.
+The next exercise authors a test-strategy skill and invokes it on this feature, which is now security-tested. The hardening decision becomes a test case in the test strategy. The ADR is in the repo. Your CISO has something to read.
 
 <!-- maintainer -->
 

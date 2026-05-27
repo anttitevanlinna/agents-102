@@ -421,7 +421,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/open-the-side-quest",
-    "text": "Fork a sibling worktree. Default path `../<repo-name>-m3-quality`, default branch `m3/quality` off the current branch:\n\n  git worktree add ../<repo-name>-m3-quality -b m3/quality\n\nCopy the gitignored personal files into the worktree so the new session inherits the same personal rules and memory:\n  cp ./CLAUDE.local.md ../<repo-name>-m3-quality/  (if it exists)\n  cp -r ./observations/ ../<repo-name>-m3-quality/observations/  (if observations/ exists in this repo)\n\nThese won't sync back automatically. The worktree's copies are independent from this point.\n\nTell me the absolute path to the new worktree directory and which files copied across.",
+    "text": "Fork a sibling worktree. Default path `../<repo-name>-m3-quality`, default branch `m3/quality` off the current branch:\n\n  git worktree add ../<repo-name>-m3-quality -b m3/quality\n\nCopy the gitignored personal rules into the worktree so the new session inherits the same personal rules:\n  cp ./CLAUDE.local.md ../<repo-name>-m3-quality/  (if it exists)\n\nThis won't sync back automatically. The worktree's copy is independent from this point.\n\nTell me the absolute path to the new worktree directory and which files copied across.",
     "requires": [],
     "produces": [
       {
@@ -438,11 +438,6 @@
         "id": "claude-local-md",
         "if-present-at": "./CLAUDE.local.md",
         "rationale": "born at M1's compound-and-close-1; copied if M1 ran"
-      },
-      {
-        "id": "memory-folder",
-        "if-present-at": "./observations/",
-        "rationale": "born at M4's walk-and-send-off Phase 2; copied if M4 ran (reorder order) — prompt body's \"(if exists)\" handles absence gracefully"
       }
     ]
   },
@@ -1122,20 +1117,11 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/author-test-strategy-skill",
-    "text": "Invoke the test-strategy skill we just wrote on the feature I'm shipping: the same feature from the previous two exercises, now including the hardening decision from the ADR.\n\nProduce the test strategy the skill asks you to produce.\n\nThen, in the same response, read the test strategy you just produced above and answer: is it good? Specifically: does the strategy cover the hardening decision we made in the STRIDE exercise? Does it reflect how testing actually works on this codebase, or does it read generic? Would a teammate opening the PR feel the test coverage is sufficient, or would they ask for more?",
+    "text": "Invoke the `test-strategy` skill on this codebase and repository, on the code as it stands in this worktree. Produce the test strategy the skill asks you to produce.\n\nThen, in the same response, read the strategy you just produced and answer: is it good? Does it reflect how testing actually works on this codebase, or does it read generic? Does it name the load-bearing tests and the real integration boundary, not a textbook pyramid? Would a teammate opening a PR on this codebase feel the strategy covers what matters, or would they ask for more?",
     "requires": [
       {
         "id": "test-strategy-skill",
         "source": "prompt:author-test-strategy-skill-1"
-      },
-      {
-        "id": "feature-being-shipped",
-        "source": "scrollback (same feature from M3 Connections)"
-      },
-      {
-        "id": "stride-adr",
-        "source": "prompt:threat-model-with-stride-3",
-        "conditional": "m3-stride-completed"
       }
     ],
     "produces": [

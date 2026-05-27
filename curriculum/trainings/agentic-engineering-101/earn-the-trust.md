@@ -1,6 +1,6 @@
 # Earn the trust
 
-> Run M3 on `high` thinking effort (the prework default).
+> Run M3 on `high` thinking effort (the training default).
 
 ## Big Idea
 Before the agent runs bigger work alone, earn your staff engineer's and CISO's trust on a small piece you're shipping this week. Two curated skills from the frontier do the security work, one skill you author through conversation with Claude does the quality work. Team kit accretion starts here: the skill you author this hour ships personal first, with a clear path to team promotion through a human conversation later.
@@ -17,6 +17,7 @@ If you want the primitives this module uses at a glance, [subagents in the refer
 
 ## What You'll Learn
 After this module, you will be able to:
+- **Fork** a sibling git worktree and run two Claude Code sessions on the same history side by side, one window per lane, working the idle window while the other runs a long prompt
 - **Invoke** a curated access-control analysis skill on a feature you're shipping (as a subagent, fresh context) and name what your first read missed
 - **Apply** a curated STRIDE skill to the mapped surface (again as a subagent), pick one threat worth hardening against, write the decision as an ADR in your repo's convention
 - **Split** jobs between subagent and main thread, breadth-first curated reads with long structured output go to a subagent; one-question-at-a-time authoring and interactive steering stay in the main thread

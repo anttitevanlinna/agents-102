@@ -49,7 +49,7 @@ If a branch from the second-pass read sharpened how plans get made in this codeb
 
 {{prompt:ae101-m2-integrate-branch}}
 
-> Watch the diff for accidental old-rule deletion. Integrating should add the new rule, not rewrite what's already in `./CLAUDE.local.md`.
+> Read the prompt closely. It's fair to read it as replacing the file with only this rule, which would nuke the old rules. Watch the diff: integrating should add the new rule, not overwrite `./CLAUDE.local.md`. Precise prompting is harder than it looks.
 
 > LLM self-charity may creep in. If the saved rule reads generic, ask for one specific to this session.
 

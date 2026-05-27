@@ -2166,7 +2166,7 @@ Report success on each step and tell me what you did.
 <section class="module" id="getting-going">
 <h1 id="getting-going--context--mcp">Getting going + context (+ MCP)</h1>
 <blockquote>
-<p>Run M1 on <code>high</code> thinking effort (the prework default).</p>
+<p>Run M1 on <code>high</code> thinking effort (the training default).</p>
 </blockquote>
 <h2 id="big-idea">Big Idea</h2>
 <p>The first compound loop closes on a trivial bug from your own backlog. Orient, fix tests-first without plan mode, retro into a personal <code>CLAUDE.local.md</code> born from the session, close the bug&#39;s ticket via one connector. The loop every module after this one rides on.</p>
@@ -2547,6 +2547,9 @@ Ask me three questions at a time. For each question, recommend an answer. If a q
 <p><strong>If it feels sluggish, ask why.</strong> Stop the turn, ask Claude what&#39;s making it slow, then relax the requirement that&#39;s making it crawl. The prompt is a starting recipe, not a contract, loosen what&#39;s costing you the slot.</p>
 </blockquote>
 <p>The second read asks one question at a time. Some will feel trivial (<em>&quot;which logger should step 2 use?&quot;</em>); answer and move on. Some will reach into something you hadn&#39;t considered (<em>&quot;step 4 touches the shared cache; what&#39;s the invalidation story?&quot;</em>); pause, think, answer. A few will surface decisions the plan was silently making for you; reject the recommended answer and give a different one.</p>
+<blockquote>
+<p><strong>Too many low-level questions? Steer up.</strong> If Claude keeps asking about implementation detail (which helper, a variable name, error-message wording), tell it: ask me about requirements, not low-level design. The branches worth the time change what &#39;done&#39; means; the rest you&#39;d settle in code review.</p>
+</blockquote>
 <p>Typical session: 5–12 questions. Stop when the second read starts reaching: a question about something genuinely out of scope, a branch that&#39;s already settled, a recommendation you&#39;d accept without thinking. The agent doesn&#39;t always know when to stop; you do. Claude incorporates your answers into a sharpened plan. Approve when it&#39;s yours. Not Claude&#39;s, not the second read&#39;s.</p>
 <blockquote>
 <p><strong>Timebox check.</strong> When the slot ends, stop. The second-pass walk-down can run deep on a real codebase. If it is still surfacing branches when time is up, take the most recent sharpened plan, approve it, and move to Phase 5. The branches that did not surface today are the ones you will catch when you actually ship the work. The exercise teaches the move. You take the move home.</p>
@@ -2620,7 +2623,6 @@ Then propose five basic rules a backlog-refinement agent could use on future tic
 Ticket:
 </code></pre>
 <p>Read the output as a first pass, not a policy. One ticket can reverse-engineer basic rules: which fields matter, which labels carry meaning, which wording signals &quot;too big,&quot; which status changes imply ownership. If backlog refinement is your first automation attempt, these field-use rules become the first add-on to the Phase 2 <code>.md</code> file, or a small companion file beside it. Iterate for depth. Three to five tickets from different work types will surface stronger rules than one ticket, and Claude should keep separating strong signals from guesses as the sample grows.</p>
-<p>When Claude finishes, the lecture is next.</p>
 <p><strong>What happened:</strong> Claude read the scrollback and proposed the rules. You rewrote or rejected at least one. You named the file and the path. Claude wrote it. You asked one open question about where the file could go next. Claude proposed shapes. You read. Optionally: you pasted one real ticket, and Claude inferred how your team seems to use fields like status, labels, priority, component, estimate, owner, and epic.</p>
 </section>
 
@@ -2666,6 +2668,9 @@ In chat, show me which branch you picked, the moment that earned it, and why. Fl
 If nothing earned itself, say so and stop.
 </code></pre>
 <blockquote>
+<p>Read the prompt closely. It&#39;s fair to read it as replacing the file with only this rule, which would nuke the old rules. Watch the diff: integrating should add the new rule, not overwrite <code>./CLAUDE.local.md</code>. Precise prompting is harder than it looks.</p>
+</blockquote>
+<blockquote>
 <p>LLM self-charity may creep in. If the saved rule reads generic, ask for one specific to this session.</p>
 </blockquote>
 <p>Feel free to jump direct at the diff in <code>./CLAUDE.local.md</code>; Claude&#39;s preamble is optional reading.</p>
@@ -2692,7 +2697,7 @@ If nothing earned itself, say so and stop.
 <section class="module" id="earn-the-trust">
 <h1 id="earn-the-trust">Earn the trust</h1>
 <blockquote>
-<p>Run M3 on <code>high</code> thinking effort (the prework default).</p>
+<p>Run M3 on <code>high</code> thinking effort (the training default).</p>
 </blockquote>
 <h2 id="big-idea">Big Idea</h2>
 <p>Before the agent runs bigger work alone, earn your staff engineer&#39;s and CISO&#39;s trust on a small piece you&#39;re shipping this week. Two curated skills from the frontier do the security work, one skill you author through conversation with Claude does the quality work. Team kit accretion starts here: the skill you author this hour ships personal first, with a clear path to team promotion through a human conversation later.</p>
@@ -2704,6 +2709,7 @@ If nothing earned itself, say so and stop.
 <h2 id="what-you39ll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
+<li><strong>Fork</strong> a sibling git worktree and run two Claude Code sessions on the same history side by side, one window per lane, working the idle window while the other runs a long prompt</li>
 <li><strong>Invoke</strong> a curated access-control analysis skill on a feature you&#39;re shipping (as a subagent, fresh context) and name what your first read missed</li>
 <li><strong>Apply</strong> a curated STRIDE skill to the mapped surface (again as a subagent), pick one threat worth hardening against, write the decision as an ADR in your repo&#39;s convention</li>
 <li><strong>Split</strong> jobs between subagent and main thread, breadth-first curated reads with long structured output go to a subagent; one-question-at-a-time authoring and interactive steering stay in the main thread</li>
@@ -2720,9 +2726,11 @@ If nothing earned itself, say so and stop.
 <h1 id="open-the-side-quest">Open the side quest</h1>
 <p><strong>Time: ~5 min</strong></p>
 <p>Module 3 runs in two windows. Security is the main quest in your chosen repo. Quality is a side-quest in a sibling worktree.</p>
-<p>A sibling worktree is a second working directory on the same git history, opened next to your repo. Useful when two angles on the same code shouldn&#39;t share a scrollback. The <a href="#reference-multi-session-git">Multi-session and Git survival guide</a> carries the longer read; one-line version: <code>git worktree add</code> makes a sibling folder on its own branch, you start a new Claude Code session in another window there, both sessions see the same git history but keep their own working state. Personal files (<code>CLAUDE.local.md</code>, <code>observations/</code>) don&#39;t sync between worktrees, they get copied across once at fork time, then evolve independently.</p>
+<p>A sibling worktree is a second working directory on the same git history, opened next to your repo. Useful when two unrelated changes need to run concurrently, each on its own branch and working state. The <a href="#reference-multi-session-git">Multi-session and Git survival guide</a> carries the longer read; one-line version: <code>git worktree add</code> makes a sibling folder on its own branch, you start a new Claude Code session in another window there, both sessions see the same git history but keep their own working state. Personal files like <code>CLAUDE.local.md</code> don&#39;t sync between worktrees, they get copied across once at fork time, then evolve independently.</p>
 <p><strong>Session</strong> <em>(new, &quot;m3-security&quot;)</em></p>
-<p>Start a new Claude Code session in your repo. This is your main lane for Module 3. Access mapping, STRIDE, and the ADR all live here.</p>
+<p>Start a new Claude Code session in your repo. This is your main lane for Module 3. Access mapping, STRIDE, and the ADR all live here. Optionally rename to <code>m3-security</code>.</p>
+<pre><code>/rename m3-security
+</code></pre>
 <p>Before firing the fork, decide where to base the side-quest worktree from, it branches off your current local HEAD. Clean main is the safe default; pick another branch if you have a reason. Switch now if you need to.</p>
 <p>Paste the prompt as-is. Claude reads <code>&lt;repo-name&gt;</code> as your repo&#39;s folder name from the working directory.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -2730,17 +2738,18 @@ If nothing earned itself, say so and stop.
 
   git worktree add ../&lt;repo-name&gt;-m3-quality -b m3/quality
 
-Copy the gitignored personal files into the worktree so the new session inherits the same personal rules and memory:
+Copy the gitignored personal rules into the worktree so the new session inherits the same personal rules:
   cp ./CLAUDE.local.md ../&lt;repo-name&gt;-m3-quality/  (if it exists)
-  cp -r ./observations/ ../&lt;repo-name&gt;-m3-quality/observations/  (if observations/ exists in this repo)
 
-These won&#39;t sync back automatically. The worktree&#39;s copies are independent from this point.
+This won&#39;t sync back automatically. The worktree&#39;s copy is independent from this point.
 
 Tell me the absolute path to the new worktree directory and which files copied across.
 </code></pre>
 <p>Claude reports the sibling worktree path.</p>
 <p><strong>Session</strong> <em>(new, &quot;m3-quality&quot;)</em></p>
-<p>Start a second Claude Code session in another window, in the sibling worktree directory Claude just named. This is your side-quest lane. You author the test-strategy skill here while the main lane does security. The skill installs to user scope, so Exercise 3 returns to the main lane to invoke on the security-tested feature.</p>
+<p>Start a second Claude Code session in another window, in the sibling worktree directory Claude just named. This is your side-quest lane. You author the test-strategy skill here while the main lane does security. The skill installs to user scope, so Exercise 3 returns to the main lane to invoke on the security-tested feature. Optionally rename to <code>m3-quality</code>.</p>
+<pre><code>/rename m3-quality
+</code></pre>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Confirm worktree state:
 
@@ -2806,7 +2815,7 @@ Report the four lines back. Then wait.
 
 <h1 id="exercise-map-the-access-surface">Exercise: Map the access surface</h1>
 <p><strong>Time:</strong> 20 minutes.</p>
-<p><strong>Window:</strong> <em>m3-security</em> (the main lane from <em>Open the side quest</em>; m3-quality stays parked).</p>
+<p><strong>Window:</strong> the main quest window (<em>m3-security</em>).</p>
 <p><strong>What you do:</strong> Invoke the curated access-control analysis skill on the small feature you brought to Module 3. Read what the skill surfaces. Decide, on the record in your repo, which surface it called out harder than you would have, and which surface you know matters that the skill didn&#39;t catch. Ship the delta as notes the STRIDE exercise will consume next.</p>
 <p><strong>The point:</strong> STRIDE without an access-surface map is pub-quiz threat modeling. Before you threat-model, you map what you&#39;re protecting. The curated skill does the breadth; you own the codebase-specific judgment that the skill can&#39;t have.</p>
 <hr>
@@ -2871,7 +2880,7 @@ The surface the skill missed that I know matters is:
 
 <h1 id="exercise-threat-model-with-stride">Exercise: Threat-model with STRIDE</h1>
 <p><strong>Time:</strong> 20 minutes.</p>
-<p><strong>Window:</strong> <em>m3-security</em> (continuing the main lane; m3-quality stays parked).</p>
+<p><strong>Window:</strong> the main quest window (<em>m3-security</em>).</p>
 <p><strong>What you do:</strong> Invoke the curated STRIDE skill on the access-surface map you built in the previous exercise. You pick one threat worth hardening against, write the decision as an ADR in your repo&#39;s convention, and move on.</p>
 <p><strong>The point:</strong> Threat modeling is only useful if it produces a decision. STRIDE&#39;s value is that it gives you a structured surface to reject most threats against (acceptable risk, out of scope, already mitigated) so the one you decide to harden is defensible. The ADR is the artifact your CISO would actually read.</p>
 <hr>
@@ -2890,7 +2899,7 @@ Find the access-surface map&#39;s path in this scrollback before dispatching. Wh
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Walk me through picking the load-bearing STRIDE category for this feature. Start by proposing the most plausible incident story (one or two sentences, from the access surface and threat list), then map that story to the STRIDE class it best fits (S/T/R/I/D/E), name what the threat actually is in one sentence, and propose the hardening shape (scope/split/filter/gate/review). I&#39;ll steer if the story or mapping misses.
 </code></pre>
-<p>Read what Claude proposes. The &quot;most plausible incident story&quot; is the move that makes STRIDE useful rather than performative, push back if the story doesn&#39;t fit your codebase&#39;s reality.</p>
+<p>Read what Claude proposes. The &quot;most plausible incident story&quot; is the move that makes STRIDE useful rather than performative, push back if the story doesn&#39;t fit your codebase&#39;s reality. Work with Claude to land on the right mitigation. You&#39;ll save it next.</p>
 <h2 id="phase-3-write-the-adr">Phase 3: write the ADR</h2>
 <p>Ask Claude to draft the ADR in your repo&#39;s convention and show it before saving.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -2911,10 +2920,14 @@ Save the ADR to that path, then show me the diff.
 <pre><code>Will ADRs auto-load to future sessions?
 </code></pre>
 <p>Claude&#39;s answer: no, ADRs don&#39;t auto-load like <code>CLAUDE.md</code> and <code>CLAUDE.local.md</code> do. They&#39;re on-disk and discoverable, but a future session loads them only when explicitly read. You can wire individual ADRs into team <code>CLAUDE.md</code> (one <code>@docs/adr/&lt;file&gt;.md</code> line per file, Claude Code&#39;s <code>@</code>-include is single-file, no glob), but most teams don&#39;t: ADRs accumulate, the window is finite, and rejected alternatives shouldn&#39;t sit in live context. Selective load is the practitioner default; Module 4 will tell Claude exactly which artifacts to read at the start of the long-running run, and that explicit list is the lesson.</p>
-<p><strong>What happened:</strong> You made one call, wrote the ADR, and the decision shipped to the repo. The rest of the STRIDE output stayed as evidence; not a hardening backlog.</p>
+<p>Not everything survived to disk, though. The skills returned their work into this session: the full access-surface map from Exercise 1, and the complete STRIDE walk here, including the threats you considered and set aside. The ADR holds the one decision. The analysis around it is real security documentation, and it clears when the session does.</p>
+<blockquote>
+<p><strong>Worth keeping?</strong> Ask Claude to save the access-surface map and the STRIDE walk to your repo&#39;s <code>docs/</code> directory, next to the ADR, before you clear. Your CISO and the next engineer read what&#39;s on disk, not your scrollback.</p>
+</blockquote>
+<p><strong>What happened:</strong> You made one call and wrote the ADR, and the decision shipped to the repo. The rest of the STRIDE output stayed in the session as evidence, not on disk and not a hardening backlog.</p>
 <hr>
 <h2 id="what-this-sets-up">What this sets up</h2>
-<p>The next exercise authors a test-strategy skill and invokes it on this feature, which is now security-tested. The hardening decision becomes a test case in the test strategy. The ADR is in the repo. Rejected threats are documented. Your CISO has something to read.</p>
+<p>The next exercise authors a test-strategy skill and invokes it on this feature, which is now security-tested. The hardening decision becomes a test case in the test strategy. The ADR is in the repo. Your CISO has something to read.</p>
 </section>
 
 
@@ -2926,8 +2939,8 @@ Save the ADR to that path, then show me the diff.
 
 <h1 id="exercise-author-your-test-strategy-skill">Exercise: Author your test-strategy skill</h1>
 <p><strong>Time:</strong> 18–22 minutes.</p>
-<p><strong>Window:</strong> <em>m3-quality</em> (the side-quest lane; switch from m3-security for Phases 1 and 2&#39;s authoring conversation). Phase 2&#39;s invocation switches back to m3-security; the callout fires there.</p>
-<p><strong>What you do:</strong> Author a test-strategy skill for your codebase, through conversation with Claude, not by typing markdown. Claude asks you what it needs to encode the skill; you push back on the defaults your codebase doesn&#39;t fit. Before you ship, ask the skill to disclose its own weakest part. Then invoke the skill on the feature you just security-tested, ask Claude if the test strategy is any good, sharpen if needed, and ship it personally first.</p>
+<p><strong>Window:</strong> the side quest window (<em>m3-quality</em>). Both phases run here.</p>
+<p><strong>What you do:</strong> Author a test-strategy skill for your codebase, through conversation with Claude, not by typing markdown. Claude asks you what it needs to encode the skill; you push back on the defaults your codebase doesn&#39;t fit. Before you ship, ask the skill to disclose its own weakest part. Then invoke the skill on this codebase, ask Claude if the test strategy is any good, sharpen if needed, and ship it personally first.</p>
 <p><strong>The point:</strong> Test strategy authored generically is a pyramid diagram. Test strategy authored on your codebase, through conversation, with one forced self-critique and one invocation on a real feature, is a piece of agentic infrastructure a teammate can adopt. The move you&#39;re learning isn&#39;t <em>&quot;write a SKILL.md file&quot;</em>; it&#39;s <em>author skills by prompting Claude, push back on defaults, verify by invoking</em>. That move you&#39;ll run again at Module 6 (M6).</p>
 <blockquote>
 <p><strong>Quick timebox note.</strong> This is the longest beat in Module 3 and the place where authoring conversations spiral. Keep it tight: one author pass, one self-critique, one invocation, ship. If the skill is weak after a single sharpen, ship it with a TODO at the top naming the gap. A skill that names its own gap is more useful to a teammate than a skill that pretends to be finished. The deeper sharpening loop is Module 6 (M6)&#39;s job.</p>
@@ -2947,18 +2960,16 @@ Use the AskUserQuestion tool to interview me: one question per tool call, wait f
 When you have enough, write `~/.claude/skills/test-strategy/SKILL.md` as a personal skill (frontmatter with `name` + `description`, then instructions). Show me before saving.
 </code></pre>
 <p>Answer each question. When Claude asks something like <em>&quot;is this codebase Jest?&quot;</em> and the answer is <em>&quot;Jest for units, Playwright for e2e, nothing for integration,&quot;</em> that&#39;s the shape of answer the skill needs. When Claude offers a default you don&#39;t like, push back: <em>&quot;no, we don&#39;t mock the database; integration tests run against a real Postgres in Docker.&quot;</em></p>
-<h2 id="phase-2-invoke-the-skill-on-the-security-tested-feature">Phase 2: invoke the skill on the security-tested feature</h2>
-<p><strong>Switch to:</strong> <em>m3-security window</em>. The skill at <code>~/.claude/skills/test-strategy/SKILL.md</code> is auto-discovered in every session, so the m3-security window picks it up. The access-surface notes and the hardening ADR live in the main lane&#39;s working tree, so invocation belongs there.</p>
-<p>Authoring without invocation is theatre. Run the skill on the feature you just access-mapped and threat-modeled.</p>
+<h2 id="phase-2-invoke-the-skill-on-this-codebase">Phase 2: invoke the skill on this codebase</h2>
+<p>Stay in the side quest window. The skill you just authored is at <code>~/.claude/skills/test-strategy/SKILL.md</code>, auto-discovered here, and this worktree holds the full codebase. Invoke the skill on the code as it stands in front of you.</p>
+<p>Authoring without invocation is theatre. Run the skill on this codebase and repository, and read what comes back.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Invoke the test-strategy skill we just wrote on the feature I&#39;m shipping: the same feature from the previous two exercises, now including the hardening decision from the ADR.
+<pre><code>Invoke the `test-strategy` skill on this codebase and repository, on the code as it stands in this worktree. Produce the test strategy the skill asks you to produce.
 
-Produce the test strategy the skill asks you to produce.
-
-Then, in the same response, read the test strategy you just produced above and answer: is it good? Specifically: does the strategy cover the hardening decision we made in the STRIDE exercise? Does it reflect how testing actually works on this codebase, or does it read generic? Would a teammate opening the PR feel the test coverage is sufficient, or would they ask for more?
+Then, in the same response, read the strategy you just produced and answer: is it good? Does it reflect how testing actually works on this codebase, or does it read generic? Does it name the load-bearing tests and the real integration boundary, not a textbook pyramid? Would a teammate opening a PR on this codebase feel the strategy covers what matters, or would they ask for more?
 </code></pre>
-<p>This prompt asks Claude to invoke the skill it just helped author AND grade the result in the same turn. That&#39;s biased by design, the same context window self-charity. The shape is one paste, one wait, one read, convenient over rigorous. If you want a harsher read, run it as two prompts: invoke first, read the output, then a second prompt that says <em>&quot;Read that output as if you&#39;d never seen the SKILL.md. Does the strategy cover the hardening decision? Or does it read generic?&quot;</em> Your call.</p>
-<p>Read the output. If the strategy doesn&#39;t cover the hardening decision, or if Claude&#39;s &quot;is it good?&quot; answer names a real weakness, sharpen the skill (not the output; the skill). Then decide: one re-invoke if the sharpen was substantive, or ship with a one-line TODO at the top naming what&#39;s unresolved. A skill that names its own gap is more useful to a teammate than a skill that pretends it&#39;s finished. The authoring muscle is what Module 3 is installing; perfection waits for M6.</p>
+<p>This prompt asks Claude to invoke the skill it just helped author AND grade the result in the same turn. That&#39;s biased by design, the same context window self-charity. The shape is one paste, one wait, one read, convenient over rigorous. If you want a harsher read, run it as two prompts: invoke first, read the output, then a second prompt that says <em>&quot;Read that output as if you&#39;d never seen the SKILL.md. Does it fit this codebase, or does it read generic?&quot;</em> Your call.</p>
+<p>Read the output. If the strategy reads generic, or if Claude&#39;s &quot;is it good?&quot; answer names a real weakness, sharpen the skill (not the output; the skill). Then decide: one re-invoke if the sharpen was substantive, or ship with a one-line TODO at the top naming what&#39;s unresolved. A skill that names its own gap is more useful to a teammate than a skill that pretends it&#39;s finished. The authoring muscle is what Module 3 is installing; perfection waits for M6.</p>
 <h2 id="phase-3-ship">Phase 3: ship</h2>
 <p>The skill is already at <code>~/.claude/skills/test-strategy/SKILL.md</code> (Claude wrote it there in Phase 1, sharpened by your push-back during Phase 2&#39;s invoke-and-critique). Auto-discovered in every session you run. That&#39;s the ship.</p>
 <p><strong>A strong candidate for a team PR, after you talk to the team.</strong></p>
@@ -3957,7 +3968,7 @@ Return a plan with the three answers. No preamble.
 <div class="phase-kicker">Supplementary</div>
 <h1 id="what-is-agentic-engineering">What is agentic engineering</h1>
 <p><strong>Agents engineering, engineers steering.</strong> The work relocated. Learning amplified.</p>
-<p><strong>Agents inventing and building the engineering sequence.</strong> Klaassen&#39;s compound loop, Cherny&#39;s parallel worktrees, your authored test-strategy skill. So can you.</p>
+<p><strong>Agents inventing and building the engineering sequence.</strong> Klaassen&#39;s compound loop, Cherny&#39;s parallel worktrees, your authored test-strategy skill.</p>
 <p><strong>Attempt the work you wouldn&#39;t have attempted.</strong> Not yesterday&#39;s work 10× faster. Ambition stays your job.</p>
 <p><strong>Agentic engineering is the discipline of noticing.</strong> The agent learns from your steering. You learn from its drift. The loop amplifies.</p>
 <p><strong>OODA at its sharpest.</strong> Agents collapse Act. Judgment is the ceiling, not your keystrokes.</p>

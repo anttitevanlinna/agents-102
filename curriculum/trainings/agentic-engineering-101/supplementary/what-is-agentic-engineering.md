@@ -2,7 +2,7 @@
 
 **Agents engineering, engineers steering.** The work relocated. Learning amplified.
 
-**Agents inventing and building the engineering sequence.** Klaassen's compound loop, Cherny's parallel worktrees, your authored test-strategy skill. So can you.
+**Agents inventing and building the engineering sequence.** Klaassen's compound loop, Cherny's parallel worktrees, your authored test-strategy skill.
 
 **Attempt the work you wouldn't have attempted.** Not yesterday's work 10× faster. Ambition stays your job.
 

@@ -18,7 +18,7 @@ Claude Code is open on your repo. You have a trivial bug picked from prework. No
 
 Ask Claude to read your repo deliberately and report shape, structure, what's load-bearing, what's stale.
 
-> **Big repo? The read can fan out.** If Claude starts naming dozens of files, interrupt with `Esc`, narrow to one feature or directory, and say `continue`.
+> **Big repo? The read can fan out.** If Claude starts reading dozens of files, interrupt with `Esc`, narrow to one feature or directory, and say `continue`.
 
 {{prompt:orient-and-introspect-1}}
 

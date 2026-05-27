@@ -49,6 +49,8 @@ If a branch from the second-pass read sharpened how plans get made in this codeb
 
 {{prompt:ae101-m2-integrate-branch}}
 
+> Watch the diff for accidental old-rule deletion. Integrating should add the new rule, not rewrite what's already in `./CLAUDE.local.md`.
+
 > LLM self-charity may creep in. If the saved rule reads generic, ask for one specific to this session.
 
 Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble is optional reading.

@@ -12,6 +12,8 @@ No plan mode here. Plan mode pays off at Module 2 on multi-file work; on a trivi
 
 Ask Claude to write the failing test, fix the root cause, and show the diff. Drop your bug after the colon.
 
+> **Small fix, small test.** A trivial bug wants one failing test and a tight fix, not a suite and a refactor. If Claude starts spinning up plenty of tests, or the change creeps past the bug, that's sprawl. Steer it back to one test that proves the bug and the smallest fix that passes it.
+
 {{prompt:fix-tests-first-1}}
 
 

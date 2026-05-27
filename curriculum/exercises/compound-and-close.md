@@ -17,6 +17,8 @@ The PR shipped. Now compound the session, then close the bug's ticket. That's th
 
 Read Claude's summary. Push back where it misreads. Quote the moment from your session back at Claude. That push-back is the reflection move. The rules file is yours, born from the session, extended by every module after this one.
 
+If `CLAUDE.local.md` wasn't already ignored, the compound step added it to your `.gitignore`. You'll use this personal rules file throughout the training. The `.gitignore` edit is an uncommitted change now. What you do with it is your call.
+
 ## MCP: why your agent needs to reach outside the repo
 
 Up to this point, your agent's reach stops at the repo. Real engineering work spans tickets, pull requests, CI, chat, documentation: the system around the code. **MCP** is the protocol Claude Code uses to connect to that system. Three words that land together: **connector** (the wire into a work app), **action** (a verb with effect in the world), **tool** (the umbrella for anything the model can call). Full primer in [MCP and connectors](../trainings/agentic-engineering-101/reference/mcp-and-connectors.md).

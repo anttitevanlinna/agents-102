@@ -4,7 +4,7 @@
 >
 > Run modules on `high` thinking effort by default. xhigh adds latency without commensurate value on the work. M2 calls out a medium override at the top of that module.
 
-Land at Module 1 with a Claude Code session started in the repo you're going to grow, the curated skills installed, and one trivial bug picked. (The framing lands live in Module 1; no pre-read.)
+Land at Module 1 with a Claude Code session started in the repo you're going to grow, the curated skills installed, and one trivial bug picked.
 
 ## What to bring
 
@@ -15,7 +15,7 @@ The training runs on YOUR real work, not exercises. Across six modules you'll wo
 - **A small feature** for Module 3: external or user-facing surface, shippable in a few hours.
 - **A real task you'd send off** for Module 4 onward: an epic-shaped or refactor-shaped piece you've been avoiding. The kind you'd hand to an agent rather than nudge bit by bit.
 
-Plus the repo itself (picked in Step 1 below), your team's tracker if you've got one (Linear / Jira / GitHub Issues), and `git worktree` available on your laptop. The curated security skills install in Step 4; no need to do it manually beforehand.
+Plus the repo itself (picked in Step 1 below), your team's tracker if you've got one (Linear / Jira / GitHub Issues), and `git worktree` available on your laptop. The curated security skills install in Step 4.
 
 ## 1. Pick THE repo
 

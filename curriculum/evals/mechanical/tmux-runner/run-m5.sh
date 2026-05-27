@@ -393,6 +393,15 @@ assert_pb_turn() {
         local hash_now
         hash_now="$(worktree_content_hash "$worktree_cwd")"
         worktree_file_list "$worktree_cwd" > "$files_after_verifier"
+        # Capture dirty-file list at T5 for the verifier-path discovery
+        # later (state.json m5_verifier). Catches the integration case
+        # where the verifier extended an existing test file rather than
+        # landing as a new file — picoshare M5 2026-05-26: the disclosure
+        # test extended handlers/guest_links_test.go (modified, not new).
+        (cd "$worktree_cwd" && {
+          git diff --name-only 2>/dev/null
+          git ls-files --others --exclude-standard 2>/dev/null
+        }) | sort -u > "$pb_dir/dirty-at-t5.txt"
         if [[ -n "$content_hash_before_verifier_save" && "$hash_now" != "$content_hash_before_verifier_save" ]]; then
           echo "[assert] PASS PB-T5 worktree content advanced (${content_hash_before_verifier_save:0:12} -> ${hash_now:0:12})"
         else
@@ -584,24 +593,42 @@ done
 worktree_ending_sha="$(cd "$worktree_cwd" && git rev-parse --short HEAD)"
 worktree_ending_branch="$(cd "$worktree_cwd" && git rev-parse --abbrev-ref HEAD)"
 
-# Verifier discovery (IMPROVEMENTS.md Fix 2, 2026-05-25). The old heuristic
-# greped paths out of the PB scrollback and grabbed a backtick code-fence
-# fragment (".claude/hooks/\`,") instead of the real saved path. Authoritative
-# source is the worktree itself: set-diff the file LIST snapshotted before
-# (T4) and after (T5) the verifier save; the new file IS the verifier. Fall
-# back to a tightened scrollback grep (absolute/home paths, backticks
-# excluded) only if the verifier landed outside the worktree's tracked tree.
+# Verifier discovery (IMPROVEMENTS.md Fix 2, 2026-05-25; refined 2026-05-27).
+# Three-layer detection in priority order:
+#   1. NEW files in the worktree between T4 and T5 (file-list set-diff) —
+#      catches hook scripts, slash commands, standalone judge files.
+#   2. MODIFIED + untracked files in the worktree at T5 (`git status` snapshot)
+#      — catches the integration case where the verifier extended an existing
+#      test file rather than landing as a new file (picoshare M5 2026-05-26:
+#      the disclosure-lock test extended handlers/guest_links_test.go).
+#   3. Scrollback path grep with worktree-prefix filter — last resort for
+#      verifiers that landed outside the worktree entirely. Strips trailing
+#      punctuation (Claude's prose often wraps paths in unbalanced parens
+#      "(`~/path/to/file`)" without backticks, leaving a trailing `)` on
+#      the captured path) AND requires the path is inside the worktree —
+#      scrollback often references the M4 file's main-repo path as context,
+#      and we'd rather leave m5_verifier empty than record a wrong path.
 m5_verifier=""
 if [[ -f "$files_before_verifier" && -f "$files_after_verifier" ]]; then
   new_verifier_rel="$(pick_verifier_path "$(comm -13 "$files_before_verifier" "$files_after_verifier" 2>/dev/null)")"
   [[ -n "$new_verifier_rel" ]] && m5_verifier="$worktree_cwd/$new_verifier_rel"
 fi
+if [[ -z "$m5_verifier" && -f "$pb_dir/dirty-at-t5.txt" ]]; then
+  dirty_verifier_rel="$(pick_verifier_path "$(cat "$pb_dir/dirty-at-t5.txt")")"
+  [[ -n "$dirty_verifier_rel" ]] && m5_verifier="$worktree_cwd/$dirty_verifier_rel"
+fi
 if [[ -z "$m5_verifier" ]]; then
   verifier_candidate="$(grep -hoE '(/Users/[^[:space:]`]+|~/[^[:space:]`]+)' \
     "$pb_dir"/turn-*.transcript.txt 2>/dev/null \
+    | sed 's/[)(,;:.]*$//' \
     | grep -E -i '(verifier|hook|judge|check|test)' \
     | head -1 || true)"
-  [[ -n "$verifier_candidate" ]] && m5_verifier="${verifier_candidate/#\~/$HOME}"
+  if [[ -n "$verifier_candidate" ]]; then
+    candidate_abs="${verifier_candidate/#\~/$HOME}"
+    if [[ "$candidate_abs" == "$worktree_cwd"/* && -e "$candidate_abs" ]]; then
+      m5_verifier="$candidate_abs"
+    fi
+  fi
 fi
 
 m5_run_notes=""

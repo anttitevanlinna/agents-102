@@ -6,10 +6,8 @@ origin: exercises/walk-and-send-off
 requires:
   - id: gap-audit-report
     source: prompt:walk-and-send-off-2
-  - id: gap-fills
-    source: prompt:walk-and-send-off-3
   - id: memory-folder
-    source: module:run-the-first-experiment
+    source: prompt:walk-and-send-off-3
   - id: stride-adr
     source: prompt:threat-model-with-stride-3
     conditional: m3-completed
@@ -30,6 +28,6 @@ Look at the observations and rules I just added to `./observations/`, the harden
 
 Don't invent new material. Rearrange what's there.
 
-Before you name the frame or propose a new structure, show me one concrete example from each block. Quote a specific observation from my memory (Block 1), a specific ADR or other recorded decision (Block 2), a specific check from an authored skill OR a quality criterion from existing tests (Block 3).
+Before you name the frame or propose a new structure, show me one concrete example from each block. Quote a specific observation from `./observations/` (Block 1), a specific ADR or other recorded decision (Block 2), a specific check from an authored skill OR a quality criterion from existing tests (Block 3).
 
-If you propose file moves or renames, cap the proposal at one or two; the send-off fires shortly after this phase and I want the tree settled before that.
+If you propose file moves or renames, keep them inside `./observations/` and cap the proposal at one or two; leave the ADRs and skills in their own homes. The send-off fires shortly after this phase and I want the tree settled before that.

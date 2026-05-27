@@ -2997,7 +2997,7 @@ Then, in the same response, read the strategy you just produced and answer: is i
 <li>One skill shipped beats three skills drafted; the team kit grows by accretion</li>
 </ul>
 <h2 id="sharpen-the-skill-from-evidence">Sharpen the skill from evidence</h2>
-<p><strong>Window:</strong> <em>m3-security</em>. Module 3&#39;s compound runs in the main lane. The test-strategy skill lives at user scope (<code>~/.claude/skills/test-strategy/SKILL.md</code>), readable from any session. The canonical <code>./CLAUDE.local.md</code> lives in the main repo, not the side-quest&#39;s worktree copy, so rule integration belongs here.</p>
+<p><strong>Window:</strong> the main quest window (<em>m3-security</em>). Switch back from the side quest now, the compound runs here. The test-strategy skill lives at user scope (<code>~/.claude/skills/test-strategy/SKILL.md</code>), readable from any session, so it crosses back with you. The canonical <code>./CLAUDE.local.md</code> lives in the main repo, not the side quest&#39;s worktree copy, so rule integration belongs here.</p>
 <p>Module 3&#39;s compound runs against two artifacts: the skill (its file content carries the conventions m3-quality encoded) and your <code>./CLAUDE.local.md</code> (where any rule about how you work with security skills, ADRs, or the access-map → STRIDE → test-strategy sequence earned itself). Skills carry the codebase convention; rules carry your working style. The skill sharpen is mandatory; the rules-file update is opportunistic.</p>
 <p>Ask Claude to sharpen the one weakest section of the skill from invocation evidence, then integrate a rule into <code>./CLAUDE.local.md</code> if one earned itself. If a moment from m3-quality&#39;s authoring scrollback matters that the skill didn&#39;t capture, the m3-quality window is still open at this point, switch over and grab quotes, paste them into m3-security&#39;s chat before firing the prompt.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -3009,7 +3009,7 @@ Then, separately: if one rule about how I worked with security skills, wrote ADR
 </code></pre>
 <p>Claude is reading the skill file fresh and your m3-security scrollback. Useful (file content survived the side-quest /clear and carries the encoded conventions) but charitable (same-context-window self-audit under-flags). Two other tells to watch for: Claude may open with a plan before showing the diff, and RLHF softening can dress up a cosmetic edit as a meaningful one. You can make the grill hotter: ask Claude to over-flag (<em>&quot;be harsher than necessary, find at least two sections that underdelivered, assume it&#39;s worse than it looks&quot;</em>), tell it to skip preamble and lead with the before/after diff, or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.</p>
 <h2 id="clear-the-session">Clear the session</h2>
-<p>In m3-security, signal the wrap-up. The agent converges what&#39;s still loose.</p>
+<p>Still in the main quest window (<em>m3-security</em>), signal the wrap-up. The agent converges what&#39;s still loose.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Ready to clear? All learnings in?
 </code></pre>
@@ -3119,7 +3119,7 @@ Candidates:
 <h3 id="run-the-audit">Run the audit</h3>
 <p>Ask Claude to audit your system as a subagent and return a ranked top-5 of what will hurt the agent most on this task.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), everything at `./observations/` (your observations and business-rules notes; if my team kit pins a different path, use that), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including any test-strategy or workflow skills already authored), and the connectors I&#39;ve wired.
+<pre><code>Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including any test-strategy or workflow skills already authored), and the connectors I&#39;ve wired.
 
 Run this audit in a fresh context: spawn a sub-task via the Agent tool so you read my setup without this conversation colouring it. Keep this session&#39;s scrollback intact — we&#39;ll need it for later phases. Return a structured report.
 
@@ -3151,7 +3151,7 @@ For each item, say: (a) what&#39;s thin, (b) what a properly-prepared agent woul
 <p><strong>Time check.</strong> Different paces hit this beat at different times. The room doesn&#39;t wait for the slowest. Five to ten minutes to share what surfaced, where the audit missed, and why the agent sometimes goes lazy.</p>
 </blockquote>
 <h2 id="phase-3-see-the-frame">Phase 3: See the frame</h2>
-<p>Ask Claude to rearrange your memory, ADRs, and skill into Huryn&#39;s three blocks, quoting your own work for each block before naming the frame.</p>
+<p>Ask Claude to rearrange your observations, ADRs, and skill into Huryn&#39;s three blocks, quoting your own work for each block before naming the frame.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Look at the observations and rules I just added to `./observations/`, the hardening ADR in this repo if there is one, and the test-strategy skill if I&#39;ve authored one. Don&#39;t scan beyond those. Rearrange what&#39;s there into Paweł Huryn&#39;s three-block memory frame:
 
@@ -3161,15 +3161,16 @@ For each item, say: (a) what&#39;s thin, (b) what a properly-prepared agent woul
 
 Don&#39;t invent new material. Rearrange what&#39;s there.
 
-Before you name the frame or propose a new structure, show me one concrete example from each block. Quote a specific observation from my memory (Block 1), a specific ADR or other recorded decision (Block 2), a specific check from an authored skill OR a quality criterion from existing tests (Block 3).
+Before you name the frame or propose a new structure, show me one concrete example from each block. Quote a specific observation from `./observations/` (Block 1), a specific ADR or other recorded decision (Block 2), a specific check from an authored skill OR a quality criterion from existing tests (Block 3).
 
-If you propose file moves or renames, cap the proposal at one or two; the send-off fires shortly after this phase and I want the tree settled before that.
+If you propose file moves or renames, keep them inside `./observations/` and cap the proposal at one or two; leave the ADRs and skills in their own homes. The send-off fires shortly after this phase and I want the tree settled before that.
 </code></pre>
 <p>Skim past the opening summary, look for the quoted-example-per-block payoff, that&#39;s where the three blocks earn their names.</p>
 <p>Read the examples first. If they&#39;re from your own files, the frame should click. If it doesn&#39;t, ask Claude to quote different examples until one does.</p>
-<p>Once the frame is named through your own material, let Claude propose the actual rearrangement. Cap it at one or two file moves or renames; larger reorganisation is a separate session, not a mid-module sweep. When the proposal looks right, tell Claude to make the moves and show you the diff. The send-off fires next, so the tree wants to be settled on disk, not just planned in chat.</p>
+<p>Once the frame is named through your own material, let Claude propose the actual rearrangement. Keep it inside <code>./observations/</code> and cap it at one or two file moves or renames; leave the ADRs and skills where they are, and larger reorganisation is a separate session, not a mid-module sweep. When the proposal looks right, tell Claude to make the moves and show you the diff. The send-off fires next, so the tree wants to be settled on disk, not just planned in chat.</p>
 <p><strong>Framework</strong>: Huryn&#39;s three-block memory. Not a template you fill; a frame that names what you&#39;ve been building.</p>
-<p><strong>What happened:</strong> You picked a real task you&#39;d send off rather than nudge bit by bit. You walked what you&#39;d built across four modules against it, filled the worst gaps, and let Claude rearrange memory and ADRs into Huryn&#39;s three blocks against your own material. The frame named what was already there. Phase 3 ended with the tree settled before the Debrief&#39;s send-off.</p>
+<p>The frame shows information progressing: an observation or hunch hardens into a rule, and a rule into a criterion you hold shipped code to. Consider how your own rules evolve along that arc, and whether each one is stored where it will fire.</p>
+<p><strong>What happened:</strong> You picked a real task you&#39;d send off rather than nudge bit by bit. You walked what you&#39;d built across four modules against it, filled the worst gaps, and let Claude rearrange observations and ADRs into Huryn&#39;s three blocks against your own material. The frame named what was already there. Phase 3 ended with the tree settled before the Debrief&#39;s send-off.</p>
 <hr>
 <h2 id="what-closes-the-module-owned-by-the-module39s-debrief-section">What closes the module (owned by the module&#39;s Debrief section)</h2>
 <p>Phase 3 is where the exercise ends. The module&#39;s Debrief takes over:</p>
@@ -3269,7 +3270,9 @@ I&#39;m leaving the laptop awake and walking away. Work through it. If you get s
 <h2 id="set-up-the-module-5-worktree">Set up the Module 5 worktree</h2>
 <p>Before opening the Module 5 session, fork the Module 4 starting SHA into a sibling worktree. Module 5&#39;s work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second run starts from the same code state as the first. Cherny&#39;s productivity unlock from the Module 2 pre-read lands here.</p>
 <p>A real engineering call lives in this fork: gitignored files (your <code>CLAUDE.local.md</code>, <code>observations/</code>) don&#39;t ride into a worktree because git doesn&#39;t see them. AE101&#39;s default is to copy them in once at fork time. Your Module 1 evidence rides forward (along with any Module 3 artefacts if you&#39;ve completed it); Module 5 and Module 6 compounding diverges in the worktree; you decide post-Module-6 what to merge back into the original. Other engineers wire it differently. The arc-retrospective at Module 6 close picks up the question.</p>
-<p>If your Module 4 Claude Code session is still open, ask it. Otherwise open a fresh session in the original repo location and ask there.</p>
+<blockquote>
+<p><strong>Run the fork from your original repo, not the worktree (it doesn&#39;t exist yet).</strong> If your Module 4 session is still open, ask it there, it&#39;s already in the right place. Otherwise open a fresh session in the original repo location and ask there.</p>
+</blockquote>
 <p><strong>Claude figures out <code>&lt;repo-name&gt;</code> from the working directory.</strong> Help it if it gets confused.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Read `./task.md`. Use the branch named in its `Run coordinates (do not rewrite or remove)` block — that block is authoritative; ignore any other `Branch:` line in the task body, which may name a different slug. Don&#39;t rediscover the branch with broad branch search. Verify that branch exists locally or as a remote-tracking branch, then find the &quot;M4 starting point&quot; commit on that named branch. If that commit message has been rewritten or is ambiguous, ask me for the SHA from the M4 session close. Spin up a git worktree at that commit. Put the worktree at `../&lt;repo-name&gt;-m5` on a new branch named `m5/` followed by the same task slug as the m4 branch.
@@ -3282,7 +3285,7 @@ These won&#39;t sync back automatically — the worktree&#39;s copies are indepe
 </code></pre>
 <p><strong>Claude will narrate before acting.</strong> It usually opens with a plan summary listing the six sub-steps, then runs them. Skim past the opening; look for the shell-command output confirming the worktree path and which files copied across.</p>
 <p><strong>The coordinates are the anchor.</strong> Claude should read the protected <code>Run coordinates</code> block in <code>task.md</code>, use the exact <code>m4/&lt;slug&gt;</code> branch named there, and fork from that branch&#39;s &quot;M4 starting point&quot; commit. If the coordinates are missing or the commit message has been rewritten, stop and use the SHA Claude reported at Module 4 close rather than guessing from branch names.</p>
-<p>Open a new Claude Code session in the worktree. The rest of Module 5 runs there.</p>
+<p>The worktree is forked and ready. You open the session in it at the first exercise.</p>
 <h2 id="start-here">Start here</h2>
 <p>You sent off an un-packaged run at the close of Module 4 and read the pre-read. You walk in with the artefact in front of you. The in-room lecture below opens the session.</p>
 <section class="phase phase--lecture" id="lectures-reading-the-return">

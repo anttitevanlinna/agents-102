@@ -7,10 +7,15 @@ requires:
   - id: gap-audit-report
     source: prompt:walk-and-send-off-2
 produces:
-  - id: gap-fills
+  - id: memory-folder
     location: ./observations/ (observations + business-rules gaps) + ./CLAUDE.local.md (sharpened rules) + connector setup (no file)
     consumed-by:
       - prompt:walk-and-send-off-4
-    note: 2-3 fills per audit run, one per picked gap; destination depends on the audit's per-gap shape label
+      - prompt:ae101-m4-take-task-end-to-end
+      - prompt:diagnose-and-resend-6
+      - prompt:arc-retrospective-1
+      - prompt:agents-that-build-agents-1
+      - prompt:ae101-m5-worktree-setup
+    note: 2-3 fills per audit run, one per picked gap; destination depends on the audit's per-gap shape label. The ./observations/ folder is the durable artefact M4-M6 read as 'memory-folder'; ae101-m5-worktree-setup copies it opportunistically into the M5 worktree.
 ---
 Use the AskUserQuestion tool. One question per call. First ask which 2-3 audit gaps I want to focus on. For each picked gap, propose a resolution in the shape the audit named, hear my pushback, then persist it: the `./observations/` folder in your repo for observations and business-rules gaps, `./CLAUDE.local.md` for rule sharpening, connector setup for connector wiring.

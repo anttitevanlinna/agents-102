@@ -76,7 +76,7 @@ Push back when Claude writes something that doesn't match the codebase. Your obs
 
 ## Phase 3: See the frame
 
-Ask Claude to rearrange your memory, ADRs, and skill into Huryn's three blocks, quoting your own work for each block before naming the frame.
+Ask Claude to rearrange your observations, ADRs, and skill into Huryn's three blocks, quoting your own work for each block before naming the frame.
 
 {{prompt:walk-and-send-off-4}}
 
@@ -84,11 +84,13 @@ Skim past the opening summary, look for the quoted-example-per-block payoff, tha
 
 Read the examples first. If they're from your own files, the frame should click. If it doesn't, ask Claude to quote different examples until one does.
 
-Once the frame is named through your own material, let Claude propose the actual rearrangement. Cap it at one or two file moves or renames; larger reorganisation is a separate session, not a mid-module sweep. When the proposal looks right, tell Claude to make the moves and show you the diff. The send-off fires next, so the tree wants to be settled on disk, not just planned in chat.
+Once the frame is named through your own material, let Claude propose the actual rearrangement. Keep it inside `./observations/` and cap it at one or two file moves or renames; leave the ADRs and skills where they are, and larger reorganisation is a separate session, not a mid-module sweep. When the proposal looks right, tell Claude to make the moves and show you the diff. The send-off fires next, so the tree wants to be settled on disk, not just planned in chat.
 
 **Framework**: Huryn's three-block memory. Not a template you fill; a frame that names what you've been building.
 
-**What happened:** You picked a real task you'd send off rather than nudge bit by bit. You walked what you'd built across four modules against it, filled the worst gaps, and let Claude rearrange memory and ADRs into Huryn's three blocks against your own material. The frame named what was already there. Phase 3 ended with the tree settled before the Debrief's send-off.
+The frame shows information progressing: an observation or hunch hardens into a rule, and a rule into a criterion you hold shipped code to. Consider how your own rules evolve along that arc, and whether each one is stored where it will fire.
+
+**What happened:** You picked a real task you'd send off rather than nudge bit by bit. You walked what you'd built across four modules against it, filled the worst gaps, and let Claude rearrange observations and ADRs into Huryn's three blocks against your own material. The frame named what was already there. Phase 3 ended with the tree settled before the Debrief's send-off.
 
 ---
 

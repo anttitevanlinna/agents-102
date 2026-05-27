@@ -5,7 +5,7 @@ runtime: any
 origin: exercises/fix-tests-first
 requires:
   - id: picked-bug
-    source: prompt:ae101-prework-extract-and-install
+    source: prompt:ae101-prework-screen-and-ready
 produces:
   - id: first-pass-tdd-diff
     location: git working tree (uncommitted changes from first-pass TDD)

@@ -23,7 +23,7 @@ Before opening the Module 5 session, fork the Module 4 starting SHA into a sibli
 
 A real engineering call lives in this fork: gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a worktree because git doesn't see them. AE101's default is to copy them in once at fork time. Your Module 1 evidence rides forward (along with any Module 3 artefacts if you've completed it); Module 5 and Module 6 compounding diverges in the worktree; you decide post-Module-6 what to merge back into the original. Other engineers wire it differently. The arc-retrospective at Module 6 close picks up the question.
 
-If your Module 4 Claude Code session is still open, ask it. Otherwise open a fresh session in the original repo location and ask there.
+> **Run the fork from your original repo, not the worktree (it doesn't exist yet).** If your Module 4 session is still open, ask it there, it's already in the right place. Otherwise open a fresh session in the original repo location and ask there.
 
 **Claude figures out `<repo-name>` from the working directory.** Help it if it gets confused.
 
@@ -33,7 +33,7 @@ If your Module 4 Claude Code session is still open, ask it. Otherwise open a fre
 
 **The coordinates are the anchor.** Claude should read the protected `Run coordinates` block in `task.md`, use the exact `m4/<slug>` branch named there, and fork from that branch's "M4 starting point" commit. If the coordinates are missing or the commit message has been rewritten, stop and use the SHA Claude reported at Module 4 close rather than guessing from branch names.
 
-Open a new Claude Code session in the worktree. The rest of Module 5 runs there.
+The worktree is forked and ready. You open the session in it at the first exercise.
 
 ## Start here
 

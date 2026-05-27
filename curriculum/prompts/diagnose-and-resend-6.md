@@ -18,7 +18,7 @@ requires:
     source: prompt:author-test-strategy-skill-1
     conditional: m3-completed
   - id: memory-folder
-    source: module:run-the-first-experiment
+    source: prompt:walk-and-send-off-3
     conditional: m4-completed
 produces:
   - id: reference-artefact

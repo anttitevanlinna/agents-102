@@ -8,7 +8,7 @@ requires:
     source: prompt:compound-and-close-1
     conditional: m1-completed
   - id: memory-folder
-    source: module:run-the-first-experiment
+    source: prompt:walk-and-send-off-3
     conditional: m4-completed
   - id: stride-adr
     source: prompt:threat-model-with-stride-3

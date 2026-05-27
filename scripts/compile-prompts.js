@@ -23,8 +23,12 @@
 //   produces:                   # optional; artefacts this prompt creates
 //     - id: <stable-id>
 //       location: <path or scrollback>
-//       consumed-by:            # optional, forward index
-//         - prompt:<key>
+//       consumed-by:            # optional, BEST-EFFORT forward index, NOT
+//         - prompt:<key>        # authoritative and NOT validated. The canonical
+//                               # dependency edge is the consumer's `requires:`
+//                               # — validate-prompt-graph.js checks that. This
+//                               # reverse list is a human reading aid that may
+//                               # drift; don't rely on it for resolution.
 //   opportunistic-copy:         # optional; uses-if-present, no-ops if absent
 //     - id: <stable-id>
 //       if-present-at: <path>
@@ -106,6 +110,24 @@ if (require.main === module) {
   const out = writeRegistry(registry);
   const count = Object.keys(registry).length;
   console.log(`Compiled ${count} prompts to ${path.relative(ROOT, out)}`);
+
+  // Gate the build on the prompt dependency graph. Compiling emits JSON but
+  // says nothing about artefact ordering; run the validator as a sibling so a
+  // premature-read / dangling-require can't pass the build. A child process
+  // keeps the two modules decoupled (no require cycle) and propagates the exit
+  // code. Scoped to AE101, the training whose graph is normalized; pass
+  // --training to validate-prompt-graph.js directly to check others.
+  const { execFileSync } = require('child_process');
+  try {
+    execFileSync(
+      process.execPath,
+      [path.join(__dirname, 'validate-prompt-graph.js'), '--training', 'agentic-engineering-101'],
+      { stdio: 'inherit' }
+    );
+  } catch (e) {
+    console.error('\nPrompt dependency-graph validation failed — see errors above. Build aborted.');
+    process.exit(1);
+  }
 }
 
 module.exports = { loadRegistry, writeRegistry, PROMPTS_DIR, OUT_FILE };

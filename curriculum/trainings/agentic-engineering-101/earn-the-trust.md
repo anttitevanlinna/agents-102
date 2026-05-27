@@ -51,7 +51,7 @@ The question, to you: what's the feature, and what's the surface you're most ner
 
 ## Sharpen the skill from evidence
 
-**Window:** *m3-security*. Module 3's compound runs in the main lane. The test-strategy skill lives at user scope (`~/.claude/skills/test-strategy/SKILL.md`), readable from any session. The canonical `./CLAUDE.local.md` lives in the main repo, not the side-quest's worktree copy, so rule integration belongs here.
+**Window:** the main quest window (*m3-security*). Switch back from the side quest now, the compound runs here. The test-strategy skill lives at user scope (`~/.claude/skills/test-strategy/SKILL.md`), readable from any session, so it crosses back with you. The canonical `./CLAUDE.local.md` lives in the main repo, not the side quest's worktree copy, so rule integration belongs here.
 
 Module 3's compound runs against two artifacts: the skill (its file content carries the conventions m3-quality encoded) and your `./CLAUDE.local.md` (where any rule about how you work with security skills, ADRs, or the access-map → STRIDE → test-strategy sequence earned itself). Skills carry the codebase convention; rules carry your working style. The skill sharpen is mandatory; the rules-file update is opportunistic.
 
@@ -63,7 +63,7 @@ Claude is reading the skill file fresh and your m3-security scrollback. Useful (
 
 ## Clear the session
 
-In m3-security, signal the wrap-up. The agent converges what's still loose.
+Still in the main quest window (*m3-security*), signal the wrap-up. The agent converges what's still loose.
 
 {{prompt:ae101-m3-ready-to-clear}}
 

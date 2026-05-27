@@ -5,8 +5,20 @@ context: fresh session in the same repo
 runtime: any
 origin: lectures/agents-that-build-agents
 requires:
+  - id: claude-local-md
+    source: prompt:compound-and-close-1
+    conditional: m1-completed
+  - id: memory-folder
+    source: prompt:walk-and-send-off-3
+    conditional: m4-completed
+  - id: second-authored-skill
+    source: prompt:spot-gaps-build-the-loop-5
+  - id: un-packaged-run-artefact
+    source: prompt:ae101-m4-take-task-end-to-end
   - id: m4-run-coordinates
     source: prompt:ae101-m4-commit-starting-point
+  - id: packaged-run-artefact
+    source: prompt:ae101-m5-rerun-packaged
   - id: m5-run-coordinates
     source: prompt:ae101-m5-rerun-packaged
 ---

@@ -1,17 +1,19 @@
 # AI-Native Startups — Platform State
 
-Last updated: 2026-04-17 (cycle 2)
-OODA cycles: 2
+Last updated: 2026-05-27 (cycle 3)
+OODA cycles: 3
 
 ## Focus
 
 AI-native startups building agent-first products that compete directly with traditional enterprise SaaS incumbents. Not horizontal AI platforms (OpenAI, Anthropic) — these are vertical AI companies attacking specific enterprise functions: legal, finance, customer service, HR, sales. Tracked because the "build vs. buy" question for CTOs now includes a third option: buy from an AI-native vendor that may outperform the legacy incumbent.
 
-## Key Verdict (as of 2026-04-17)
+## Key Verdict (as of 2026-05-27)
 
-**Sana is no longer an independent AI-native — acquired by Workday (Nov 2025, $1.1B). Harvey's Spectre agent is internal infrastructure, not a deployed law firm product. Sierra crossed $150M ARR. Pilot launched "fully autonomous" AI Accountant but evidence remains Level 1. The finance domain has products shipping but still zero independent outcome verification. Decagon's black-box problem and high contract minimums ($95K+) are real friction points now appearing in practitioner discussion. No new AI-native startup disruption signals have crossed the 11x threshold this cycle.**
+**Legal AI has bifurcated into a genuine two-horse race: Harvey ($11B, 100K lawyers) vs. Legora ($5.55B, >$100M ARR, Baker McKenzie + BCLP firmwide). Harvey launched LAB benchmark (May 2026) — a strategic move to own the evaluation standard before Legora can. First Harvey-commissioned-but-independent study (RSGI, Nov 2025) produced Level 2 productivity evidence (36.9 hrs/month for power users) but no outcome data. Sierra raised at $15B valuation. Salesforce Agentforce is scaling deals (29,000 closed, $800M ARR) but only 31% of deployments remain active after 6 months (Valoir — independent analyst). Intercom Fin verified resolution gap: claims 80%, customer cases run 42-70%. AI accounting (Basis, Pilot) remains zero independent evidence. Klarna CEO confirmed AI overreach and is rehiring humans. The 50-70% AI SDR churn pattern is approaching Level 3 convergence; Clay (enrichment-only) remains the anomaly with 0 enterprise churn and >200% NRR.**
 
-**Previous verdict (2026-04-02): Real disruption is happening in legal and customer service. Finance/accounting is hot but pre-proof. HR and sales are lagging or cautionary.** The strongest AI-native startups (Harvey, Sierra, Decagon) have crossed $100M ARR and serve Fortune 500 customers — this is not hype. But the 11x implosion shows that funding and ARR claims in this space need hard scrutiny. The answer to the CTO question: AI-native startups are eating the bottom of the stack (document processing, ticket resolution, bookkeeping) while incumbents retain the top (workflow orchestration, compliance, ecosystem integration). The question is whether the bottom eats upward before the top eats downward.
+**Previous verdict (2026-04-17): Sana acquired by Workday. Harvey Spectre is internal only. Sierra $150M ARR. Finance pre-proof. Decagon black-box friction.**
+
+**Previous verdict (2026-04-02): Real disruption in legal and CS. Finance/accounting hot but pre-proof. HR and sales lagging or cautionary.** The strongest AI-native startups (Harvey, Sierra, Decagon) have crossed $100M ARR and serve Fortune 500 customers — this is not hype. But the 11x implosion shows that funding and ARR claims in this space need hard scrutiny. The answer to the CTO question: AI-native startups are eating the bottom of the stack (document processing, ticket resolution, bookkeeping) while incumbents retain the top (workflow orchestration, compliance, ecosystem integration). The question is whether the bottom eats upward before the top eats downward.
 
 ---
 
@@ -42,9 +44,35 @@ AI-native startups building agent-first products that compete directly with trad
 - **Significance:** Clio represents the **incumbent response** pattern — existing SaaS adding AI, not AI-native disruption. Useful comparison point.
 - **Evidence level:** Level 1. Product announcements only, no independent outcome data.
 
+### Legora (Stockholm-born, now global)
+
+- **Valuation:** $5.55B (April 2026, $550M Series D) ([TechCrunch](https://techcrunch.com/2026/04/30/legal-ai-startup-legora-hits-5-6-valuation-and-its-battle-with-harvey-just-got-hotter/), Apr 2026 — [general press])
+- **ARR:** >$100M (vendor-disclosed, Apr 2026) ([Legora newsroom](https://legora.com/newsroom/legal-teams-adoption-of-ai-propels-legora-past-100-million-in-annual-recurring-revenue))
+- **Scale:** >1,000 law firm and in-house customers in 50 markets, 18 months post-general-launch. Firmwide deployments: Baker McKenzie (May 2026), BCLP (after 100+-lawyer multi-practice pilot), Deloitte Legal UK.
+- **BCLP pilot detail:** 100+ lawyers across multiple practice areas and jurisdictions tested document review, due diligence, drafting. User feedback "overwhelmingly positive." BCLP quotes: "no comparable tool capable of reading and analysing documents with that level of sophistication." ([Legora newsroom](https://legora.com/newsroom/legora-selected-by-bclp-as-firmwide-ai-platform-provider) — [vendor press release / firm announcement])
+- **Independent analysis:** Irys.ai independent legal research benchmark (April 2026) found Legora underperformed Irys on multi-step reasoning tasks requiring synthesis across multiple sources. ([Irys.ai](https://www.irys.ai/blog/real-decision-harvey-legora-claude-irys) — [practitioner analysis])
+- **Legora vs. Harvey differentiator:** Multi-model approach (vs. Harvey's custom model); European-origin with GDPR positioning; slightly younger (18 months) vs. Harvey's deeper Am Law 100 entrenchment.
+- **Nordic angle:** Swedish-origin but has explicitly pivoted US-first for expansion. Nvidia invested in the Series D. ([Mezha/Nvidia report](https://mezha.net/eng/bukvy/2ae8bc48_nvidia_invests_in/) — [general press])
+- **Evidence level:** Level 2. BCLP pilot is named with specific methodology, but all outcome language ("overwhelmingly positive," "significant improvements") is qualitative and vendor-sourced. No time savings metrics published.
+
+### Harvey LAB Benchmark (May 2026) — Strategic Platform Move
+
+- **What:** Harvey released LAB (Legal Agent Benchmark) — open-source evaluation framework, 1,200+ tasks, 24 practice areas, 75,000+ expert-written rubric criteria. ([Artificial Lawyer](https://www.artificiallawyer.com/2026/05/06/harvey-launches-legal-agent-bench/), May 2026 — [domain trade publication])
+- **Strategic significance:** Harvey is attempting to own the evaluation standard before competitors can define it. If law firms use LAB for procurement, Legora and Luminance must optimize to Harvey's rubric. Contributors include Anthropic, OpenAI, Google DeepMind, Nvidia, Stanford LIFTLab — credibility anchoring.
+- **Independent commentary:** LawNext (Bob Ambrogi — domain practitioner analyst) notes this is a standard-setting move, not just a product feature. Firms can now ask vendors to report LAB scores. ([LawNext](https://www.lawnext.com/2026/05/some-thoughts-on-harveys-launch-of-lab-an-open-source-long-horizon-benchmark-for-legal-ai-agents.html), May 2026 — [practitioner analysis])
+- **Evidence level:** Level 0 on outcomes — this is infrastructure/strategy news, not deployment data. High strategic weight.
+
+### RSGI/Harvey Independent Outcome Study (Nov 2025) — First Credible Level 2 Evidence
+
+- **What:** RSGI (FT Innovative Lawyers research firm) surveyed 40 Harvey customers — 29 law firms, 11 corporate legal teams — across 5 regions. Commissioned by Harvey but structured for editorial independence. ([Legal IT Insider](https://legaltechnology.com/2025/12/02/the-impact-of-legal-ai-a-deeper-dive-into-the-rsgi-harvey-adoption-report/), Dec 2025 — [domain trade publication])
+- **Findings:** Law firm power users save 36.9 hrs/month; standard users 15.7 hrs/month. In-house power users 28.3 hrs/month; standard users 11.8 hrs/month.
+- **Named participants:** A&O Shearman, Ashurst, Orrick, Paul Weiss, Mayer Brown, King & Wood Mallesons, Rajah & Tann, and others.
+- **Caveat:** "Commissioned by Harvey but entirely independent" is self-report, not verified independence. No billing data, client satisfaction metrics, or error rates. These are time-input productivity claims, not outcome claims.
+- **Evidence level:** Level 2. Best Harvey evidence available; still not Level 3 (no convergence across independent studies).
+
 ### Legal Domain Summary
 
-Legal is the most advanced AI-native vertical. Harvey's growth rate ($100M → $190M in 5 months) is the single strongest signal that AI-native can outgrow incumbents. But: law firms are famously sticky with vendors, and the real question is whether Harvey displaces Thomson Reuters/LexisNexis or supplements them.
+Legal is the most advanced AI-native vertical. Harvey's growth rate ($100M → $190M in 5 months) is the single strongest signal that AI-native can outgrow incumbents. **New this cycle:** Legora at $5.55B and >$100M ARR is a credible second horse — this is now a two-vendor race, not a Harvey monopoly. Harvey's LAB benchmark launch is a strategic attempt to lock the evaluation standard before Legora gains more ground. But: law firms are famously sticky with vendors, and the real question is whether Harvey displaces Thomson Reuters/LexisNexis or supplements them. First Level 2 outcome data exists (RSGI study) but is productivity-input only — no independent billing or client outcome evidence yet.
 
 ---
 
@@ -88,6 +116,8 @@ Legal is the most advanced AI-native vertical. Harvey's growth rate ($100M → $
 
 More money than proof. Five well-funded AI-native accounting startups launched or scaled in early 2026. The talent is real (McKellar at Pilot, top VCs backing all of them). But the "fully autonomous" claims are vendor-sourced and unverified. **This is the domain to watch for convergence** — if even two of these five report independent outcome data in H1 2026, it becomes Level 3. Until then, Level 1-2 across the board.
 
+**May 2026 update:** No independent outcome data found for either Basis or Pilot despite 3 months post-launch. The cycle-over-cycle null finding is itself informative — if 30% of top-25 accounting firms are using Basis, at least one accountant would be writing about it if outcomes were exceptional. Silence is a weak negative signal.
+
 ---
 
 ## Customer Service — Clear Winner Category
@@ -122,9 +152,32 @@ More money than proof. Five well-funded AI-native accounting startups launched o
 - **Innovation:** Agent Operating Procedures (AOPs) — natural language workflows that "compile into code." Spring 2026: outbound voice (proactive AI calls).
 - **Evidence level:** Level 1-2. Impressive customer list but metrics are vendor-sourced. The black box complaint and 7.9/10 G2 resolution score are the first independent friction signals visible in practitioner review aggregation. Decagon grew from stealth (June 2024) to $4.5B in 18 months — velocity is real, but production quality evidence is still thin.
 
+### Intercom Fin — Resolution Rate Gap Verified
+
+- **The headline vs. reality gap:** Intercom claims 67-80% resolution rates. Named customer case studies run 42-70% (Linktree 42%, Robin 50%, Anthropic-as-customer 50.8%, Sharesies 70%). Independent 500-ticket test found actual rates run 10-20 points below Intercom benchmarks. ([Builts AI](https://builts.ai/blog/intercom-fin-ai-review/), 2026 — [practitioner analysis])
+- **Practical calibration from independent testing:** Below 30% resolution → invest in KB cleanup before deploying. Above 40% with solid CSAT → clear ROI case. This is the honest operating range.
+- **Evidence level:** Level 2. The 500-ticket independent test is single-experiment but specific; named customer cases corroborate.
+
+### Salesforce Agentforce — Scaling Deals, 31% Six-Month Active Rate
+
+- **Scale:** 29,000 closed Agentforce deals, $800M ARR (+169% YoY), 12% penetration of 150,000-customer base (Stifel estimate). ([Salesforce Q4 FY2026 earnings](https://futurumgroup.com/insights/salesforce-q4-fy-2026-earnings-show-agentic-ai-scaling-guidance-steadies/), 2026 — [general press])
+- **The real number:** Only 31% of Agentforce deployments remain active after 6 months (Valoir Research — independent analyst). ([Salesforce Ben](https://www.salesforceben.com/salesforce-says-agentforce-is-booming-the-community-isnt-so-sure/) — [practitioner analysis])
+- **Community skepticism vs. official narrative:** Salesforce Ben (independent Salesforce analyst community) documents gap between CEO bullishness and practitioner experience. Deal counts and ARR are real; sustained production activation is the bottleneck.
+- **Evidence level:** Level 2. The 31% active rate is from a named independent analyst firm (Valoir), not vendor data. This is the most important incumbent data point this cycle.
+- **Implication for AI-native competition:** If the best-resourced incumbent (Salesforce) with existing CRM relationships and 150K customers can only sustain 31% active rates at 6 months, AI-native CS startups face the same or worse activation challenge with no ecosystem advantage.
+
+### Sierra — $15B Valuation (May 2026)
+
+- **Valuation:** $950M raise at $15B valuation announced May 2026. ([The AI Insider](https://theaiinsider.tech/2026/05/05/sierra-secures-950m-at-15b-valuation-to-become-global-standard-for-ai-customer-agents/), May 2026 — [general press])
+- **Resolution rate range (independent synthesis):** Published case studies cluster at 65-77%, with range 64-94% depending on knowledge base quality and conversation complexity. CSAT consistently 4.5-4.8/5. Not a single independent third-party study — all from review aggregator synthesis of vendor cases.
+- **Known gap (May 2026):** Sierra markets autonomous agents but lacks agent-assist (human-in-loop) capabilities. No workforce management integration. Pricing: per-conversation model with non-transparent channel/language expansion costs. ([Assembled.com analysis](https://www.assembled.com/page/sierra-ai) — [practitioner analysis])
+- **Evidence level:** Level 2. ARR from Sacra (independent financial analysis). Resolution rates remain vendor case study only — no practitioner-direct independent account found this cycle.
+
 ### Customer Service Domain Summary
 
 **This is where AI-native startups have the strongest case.** Sierra, Intercom Fin, and Decagon are all scaling with real enterprise customers. The pattern: AI handles 50-70% of ticket volume, humans handle complex cases, total cost drops 50-65%. The incumbents (Salesforce, Zendesk) are responding with their own AI, but the AI-natives moved first and moved faster. Convergence level: **Level 3** — multiple independent companies, multiple independent customers, same outcome pattern.
+
+**New this cycle:** The Salesforce Agentforce 31% six-month active rate (Valoir, independent) is the most important incumbent data point. It suggests the activation-not-adoption problem is category-wide, not AI-native-specific. Klarna's CEO admission of AI overreach (Level 2 — CEO primary source) adds a named enterprise cautionary case. The Intercom Fin resolution rate gap (42-70% actual vs. 80% claimed) gives practitioners a verified calibration range.
 
 ---
 
@@ -188,9 +241,26 @@ HR is the weakest domain for AI-native disruption right now. No company has cros
 - **Evidence level:** Level 3 — for failure. Multiple independent sources confirm the same pattern.
 - **Broader AI SDR market:** 50-70% of companies churn off their AI SDR platform before first renewal. The #1 reason: deploying AI before validating outbound with humans. ([ProductGrowth](https://www.productgrowth.blog/p/the-ai-sdr-playbook-what-actually-works), 2026 — [practitioner analysis])
 
+### Clay — $100M ARR, Zero Enterprise Churn
+
+- **Scale:** $100M ARR, 100,000+ users reached in ~2 years. ([Clay blog](https://www.clay.com/blog/100m-arr), 2026 — [vendor press release])
+- **Enterprise retention anomaly:** 0 enterprise customer churn, >200% net revenue retention (vendor-disclosed, specific and verifiable). ([OpenAI case study](https://openai.com/index/clay/) — [vendor press release])
+- **Why it survives:** Clay is enrichment + data (waterfall across 50+ sources), not autonomous outreach. The distinction is critical — enrichment creates proprietary data context the human then acts on. Autonomous outreach removes the human. The category churn data confirms: enrichment works, autonomous outreach doesn't at scale.
+- **2026 pricing shift:** Cut data costs up to 90% (split Credits into Data + Action Credits). Took expected 10% revenue hit deliberately — long-term strategy signal. ([MarketBetter review](https://marketbetter.ai/blog/clay-review-2026/) — [practitioner analysis])
+- **Evidence level:** Level 2. NRR and ARR are vendor-disclosed; the pattern is consistent with all other evidence.
+
+### AI SDR Churn Pattern — Approaching Level 3
+
+- **50-70% annual churn** documented across multiple independent sources. The SaaStr analysis (practitioner publication) identifies structural cause: buyers rationally refuse multi-year contracts because models improve quarterly, making today's state-of-the-art commodity in 6 months. ([SaaStr](https://www.saastr.com/the-wave-of-ai-agent-churn-to-come-prompts-are-portable/), 2026 — [practitioner analysis])
+- **"Only 2% survive past year 1"** — cited in one source but no traceable methodology found. [UNVERIFIED — NO URL] — excluded from findings, flagged here as zombie-stat candidate.
+- **Counter-evidence search result:** No named company found publicly reporting sustained AI SDR performance >12 months (other than Clay, which is enrichment not outreach). The absence of counter-evidence after active search strengthens the pattern.
+- **Evidence level:** Level 2-3 converging. Multiple independent sources, same pattern. Missing: a single named enterprise with >12-month AI SDR success.
+
 ### Sales Domain Summary
 
 **Sales is where the AI-native hype most outpaces reality.** 11x is the poster child, but the 50-70% churn across all AI SDR platforms suggests a structural problem: outbound sales requires nuance, relationship-building, and context that current agents can't reliably deliver. Clay is the bright spot — but Clay is a data tool, not an autonomous agent. Don't confuse the two.
+
+**May 2026 update:** The enrichment/outreach distinction is now the clearest pattern in the category. Clay (enrichment) → 0 churn, >200% NRR. All AI SDR (autonomous outreach) → 50-70% churn. This is a durable finding, not a temporary market condition.
 
 ---
 
@@ -243,7 +313,15 @@ The SaaS disruption narrative in 2026 is real but nuanced:
 - 50-70% churn across all AI SDR platforms, not just 11x
 - Suggests the problem is the use case, not the company
 - Outbound sales may be structurally resistant to full automation
-- Counter-evidence needed: Are ANY AI SDR companies achieving <30% churn?
+- SaaStr analysis adds structural explanation: buyers rationally refuse multi-year contracts because models improve quarterly — rational churn, not product failure
+- Counter-evidence search (May 2026): No company found with sustainable AI SDR retention >12 months. Pattern may be universal for autonomous outreach.
+
+### The "AI Wrapper" Risk — Google VP Warning + Observable Consolidation Pattern
+
+- Google VP publicly named two doomed models (Feb 2026): pure LLM wrappers and AI aggregators. ([TechCrunch](https://techcrunch.com/2026/02/21/google-vp-warns-that-two-types-of-ai-startups-may-not-survive/), Feb 2026 — [general press])
+- Observable pattern (May 2026): four AI lab acquisitions in five days. OpenAI closed six acquisitions. Consolidation structured as talent deals and technology licenses — most invisible in press. ([StartupHub.ai](https://www.startuphub.ai/ai-news/ai-news/2026/four-labs-four-acquisitions-ai-consolidation-may-2026), May 2026 — [general press])
+- Survival indicators (from pattern analysis): (a) proprietary training data, (b) deep workflow integration creating switching costs, (c) network effects. Harvey (legal-specific data + workflow depth), Clay (data moat), Decagon/Sierra (enterprise workflow depth) pass the test. Pure-prompt-layer players do not.
+- Sana ($1.1B acquisition by Workday) is the most prominent AI-native-to-incumbent consolidation example in this tracked set.
 
 ---
 
@@ -302,16 +380,17 @@ The sequence is: **document processing → ticket resolution → workflow automa
 
 ## What We Need To Learn
 
-- [ ] Harvey independent deployment outcomes — what results are Am Law 100 firms actually getting? (Revenue growth doesn't prove product quality)
-- [ ] Sierra resolution rates from independent source — Bret Taylor's claims are credible but still vendor-sourced
-- [ ] AI accounting outcome data — do ANY of the five funded startups have independently verified time/cost savings?
-- [ ] AI SDR churn counter-evidence — is ANY company in this space achieving sustainable retention?
-- [ ] Decagon vs. Sierra head-to-head — how do enterprises choose between them?
-- [ ] Incumbent response velocity — how fast are Salesforce Einstein, ServiceNow, SAP Joule closing the gap?
-- [ ] Nordic AI-native startups in business process verticals — Sana Labs trajectory, Legora in legal, any others?
-- [ ] Outcome-based pricing adoption — is Intercom's per-resolution model spreading to other categories?
-- [ ] Enterprise procurement friction — are Fortune 500 legal/compliance teams actually approving AI-native vendors?
-- [ ] The "AI wrapper" risk — which of these startups are defensible vs. thin wrappers over foundation models?
+- [ ] Harvey independent deployment outcomes — RSGI study is Level 2 productivity (hrs/month), not Level 3. Need billing impact, error rate, or client satisfaction data from non-vendor source.
+- [ ] Legora outcome data — Baker McKenzie and BCLP firmwide deployments are in progress. Will either publish practitioner-direct accounts of outcomes? Watch Artificial Lawyer + LawNext.
+- [ ] Harvey LAB adoption — do law firms actually use LAB for vendor procurement decisions? Or is it vendor theater? Signal: if Legora publishes LAB scores independently, the benchmark is real.
+- [ ] Sierra and Decagon practitioner-direct accounts — still zero. The activation question (31% Agentforce active rate) applies here too. What % of Sierra/Decagon deployments are actively used at 12 months?
+- [ ] Salesforce Agentforce 31% active rate — can this be triangulated? Valoir is credible but one study. If another analyst independently confirms, this becomes Level 3.
+- [ ] AI accounting outcome data — H1 2026 null finding means watch H2. If Basis or Pilot still show no independent data by October 2026, the silence becomes strong negative evidence.
+- [ ] AI SDR counter-evidence — the "only 2% survive year 1" claim needs a URL and methodology. Either verify or permanently flag as zombie stat.
+- [ ] Decagon vs. Sierra head-to-head enterprise evaluation — how do buyers choose? No comparative practitioner account found yet.
+- [ ] ServiceNow and SAP Joule incumbent catch-up — did not surface in this cycle. Deliberate search next cycle.
+- [ ] Nordic AI-native in business process verticals — Legora is the strongest Nordic-origin play in enterprise (legal). Any others in CS, finance, HR? Gap persists.
+- [ ] Klarna's blended model outcomes — the Uber-style flex human model is being piloted. Any data on whether it outperforms pure-AI or pure-human on cost+CSAT?
 
 ---
 

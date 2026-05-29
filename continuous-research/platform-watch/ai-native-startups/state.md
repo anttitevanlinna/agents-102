@@ -1,7 +1,7 @@
 # AI-Native Startups — Platform State
 
-Last updated: 2026-05-27 (cycle 3)
-OODA cycles: 3
+Last updated: 2026-05-29 (cycle 118)
+OODA cycles: 4
 
 ## Focus
 
@@ -9,7 +9,7 @@ AI-native startups building agent-first products that compete directly with trad
 
 ## Key Verdict (as of 2026-05-27)
 
-**Legal AI has bifurcated into a genuine two-horse race: Harvey ($11B, 100K lawyers) vs. Legora ($5.55B, >$100M ARR, Baker McKenzie + BCLP firmwide). Harvey launched LAB benchmark (May 2026) — a strategic move to own the evaluation standard before Legora can. First Harvey-commissioned-but-independent study (RSGI, Nov 2025) produced Level 2 productivity evidence (36.9 hrs/month for power users) but no outcome data. Sierra raised at $15B valuation. Salesforce Agentforce is scaling deals (29,000 closed, $800M ARR) but only 31% of deployments remain active after 6 months (Valoir — independent analyst). Intercom Fin verified resolution gap: claims 80%, customer cases run 42-70%. AI accounting (Basis, Pilot) remains zero independent evidence. Klarna CEO confirmed AI overreach and is rehiring humans. The 50-70% AI SDR churn pattern is approaching Level 3 convergence; Clay (enrichment-only) remains the anomaly with 0 enterprise churn and >200% NRR.**
+**Legal AI has bifurcated into a genuine two-horse race with a Nordic third player: Harvey ($11B, 100K lawyers) vs. Legora ($5.55B, >$100M ARR, Baker McKenzie + BCLP firmwide) + Newcode.ai (Norway, $6.5M seed, DLA Piper Nordic deployment). Harvey launched LAB benchmark (May 2026) — a strategic move to own the evaluation standard before Legora can. First Harvey-commissioned-but-independent study (RSGI, Nov 2025) produced Level 2 productivity evidence (36.9 hrs/month for power users) but no outcome data. Sierra raised at $15B valuation. Salesforce Agentforce is scaling deals (29,000 closed, $800M ARR) but only 31% of deployments remain active after 6 months (Valoir — independent analyst). Intercom Fin verified resolution gap: claims 80%, customer cases run 42-70%. AI accounting (Basis, Pilot) remains zero independent evidence. Klarna CEO confirmed AI overreach and is rehiring humans. The 50-70% AI SDR churn pattern is approaching Level 3 convergence; Clay (enrichment-only) remains the anomaly with 0 enterprise churn and >200% NRR.**
 
 **Previous verdict (2026-04-17): Sana acquired by Workday. Harvey Spectre is internal only. Sierra $150M ARR. Finance pre-proof. Decagon black-box friction.**
 
@@ -69,6 +69,15 @@ AI-native startups building agent-first products that compete directly with trad
 - **Named participants:** A&O Shearman, Ashurst, Orrick, Paul Weiss, Mayer Brown, King & Wood Mallesons, Rajah & Tann, and others.
 - **Caveat:** "Commissioned by Harvey but entirely independent" is self-report, not verified independence. No billing data, client satisfaction metrics, or error rates. These are time-input productivity claims, not outcome claims.
 - **Evidence level:** Level 2. Best Harvey evidence available; still not Level 3 (no convergence across independent studies).
+
+### Newcode.ai — Nordic-Origin Legal AI OS (cycle 118)
+
+- **What:** Norway-based startup building "AI operating system for legal work" — outcome delegation model: lawyers define the desired outcome; AI returns the complete deliverable. Not just document processing — auditable, context-aware multi-step workflows. Use cases: contract analysis, clause extraction, regulatory research, policy alignment. ([Artificial Lawyer](https://www.artificiallawyer.com/2026/03/17/newcode-raises-6-5m-maged-helmy-interview/) — [domain trade publication], Mar 17, 2026)
+- **Funding:** $6.5M seed, March 2026. Investors: The LegalTech Fund, Alliance VC, law firm investors. ([LegalTechTalk](https://www.legaltech-talk.com/newcode-ai-lands-6-5m-to-build-ai-operating-system-for-legal-work/) — [domain trade publication])
+- **Deployment:** DLA Piper partnership across Sweden, Norway, Finland (announced July 2025 — outside 6-month window, but embedded implementation is ongoing). DLA Piper Finland MD: "We've evaluated several AI tools and challenged ourselves to think beyond the obvious. This is a true partnership, technical, cultural and strategic."
+- **Nordic angle:** First Nordic-origin legal AI-native startup with named enterprise deployment + external funding. Harvey and Legora are both US/global-first. Newcode differentiates on: Nordic legal system familiarity, embedded implementation model, smaller-scale deep integration vs. broad rollout.
+- **Evidence level:** Level 2 (named enterprise client, funding round from law firm investors as adoption proxy, domain trade press)
+- **CTO relevance:** For Nordic CTOs — a third option beyond Harvey/Legora. For global CTOs — confirmation that legal AI-native is now multi-vendor, with regional players emerging.
 
 ### Legal Domain Summary
 

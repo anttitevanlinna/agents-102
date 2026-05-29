@@ -1,7 +1,7 @@
 ---
 type: synthesis
 domain: cross-domain
-updated: 2026-05-26
+updated: 2026-05-29
 nordic: true
 answers: ["Nordic agents", "Nordic enterprise AI", "Nordic readiness", "Nordic deployments"]
 ---
@@ -27,7 +27,8 @@ Only 4 Nordic enterprise signals found across 50+ cycles:
 
 - **RELEX Solutions (Helsinki)** -- multi-agent supply chain platform, vendor-sourced evidence
 - **Noru (Stockholm)** -- agentic compliance startup, ~20 pilot customers, MCP-based. Only Nordic-origin agent governance tooling found.
-- **Legora** -- legal AI
+- **Legora** -- legal AI (Swedish-origin, now US-first)
+- **Newcode.ai (Oslo)** -- legal AI OS, $6.5M seed (March 2026), DLA Piper Nordic deployment (Sweden/Norway/Finland). First Nordic-origin legal AI with named enterprise client + funding. ([Artificial Lawyer](https://www.artificiallawyer.com/2026/03/17/newcode-raises-6-5m-maged-helmy-interview/) — [domain trade publication], Mar 2026)
 - **Agaton (Stockholm)** -- EUR8.4M raised
 - **Pactum (Estonian-origin)** -- procurement negotiation, 50+ enterprises, Maersk customer. Strongest Nordic-adjacent agentic procurement.
 - **Cognite (Norway)** -- Aker BP using Atlas AI agents, $170M+ revenue. Strongest Nordic industrial signal (vendor-sourced).

@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [anthropic, claude-code, claude-cowork, antspace, agent-sdk]
 nordic: false
-updated: 2026-05-26
-cycle: 115
+updated: 2026-05-30
+cycle: 114
 answers:
   - "what is Anthropic's platform strategy?"
   - "what can business users do with Claude today?"
@@ -16,8 +16,8 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-05-26 (cycle 115)
-OODA cycles: 10
+Last updated: 2026-05-30 (cycle 114)
+OODA cycles: 11
 
 **Cycle 115 updates (May 26, 2026):**
 - **June 15, 2026 billing change: programmatic usage separated from subscription pool.** Announced May 14. Starting June 15, all programmatic/agentic usage (Agent SDK, `claude -p`, Claude Code GitHub Actions, third-party apps via API) moves off the subscription token pool onto a separate monthly dollar credit metered at full API list prices. Interactive usage (Claude Code terminal, Claude.ai chat, Claude Cowork) is unaffected. Credit amounts: Pro $20/mo, Max 5x $100/mo, Max 20x $200/mo, Team Standard $20/seat, Team Premium $100/seat. Credits do not roll over; overages bill at standard API rates if "extra usage" enabled; rejected if not. **Effective price increase vs. prior subscription agentic usage: ~12x for Pro + OpenClaw workloads; ~29–35x for Max 20x heavy-Opus; ~150–175x for Max 20x heavy-Sonnet** (MagnaCapax multiplier table, practitioner analysis). Community reception split: 1,700 quote-tweets vs. 8,900 likes. Policy reversal: April 2026 had banned third-party agent use on subscriptions outright; June 15 reintroduces it with metered billing. **Strategic context:** Anthropic flagged $30B ARR and Q2 profitability target — this closes the subsidy that had enabled below-cost agentic usage on subscriptions. Sources: [The Decoder](https://the-decoder.com/claude-subscriptions-get-separate-budgets-for-programmatic-use-billed-at-full-api-prices/) — [domain trade publication, May 14, 2026]; [MagnaCapax Gist](https://gist.github.com/MagnaCapax/d9177e35b355853f03c730dfcaa693ef) — [practitioner analysis, multiplier math]; [The Register](https://www.theregister.com/ai-ml/2026/05/14/anthropic-tosses-agents-into-the-api-billing-pool/5240748) — [domain trade publication]; [Zed blog](https://zed.dev/blog/anthropic-subscription-changes) — [practitioner direct, vendor team reaction]. Evidence level: Level 2 (multiple trade press + practitioner analysis).

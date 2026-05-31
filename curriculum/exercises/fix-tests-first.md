@@ -31,7 +31,7 @@ When Claude says done, push once on the depth. Ask whether the change is the roo
 
 {{prompt:fix-tests-first-3}}
 
-Dig into code quality and structure. Ask Claude: *did you make it better? Why yes. Why no.* The goal is to make a neat and clean fix. Might need a number of nudges. You steer.
+**Optional.** Once the fix is in, dig into code quality and structure. Ask Claude: *did you make it better? Why yes. Why no.* You steer; might take a few nudges.
 
 Ask Claude to commit, push a branch, and open the PR. How far you let Claude drive Git is your call.
 

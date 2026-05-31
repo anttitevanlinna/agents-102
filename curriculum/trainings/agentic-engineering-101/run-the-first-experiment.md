@@ -67,11 +67,11 @@ Ask Claude to run the scoped task end-to-end in this same session, with your rul
 {{prompt:ae101-m4-take-task-end-to-end}}
 
 
-The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). If watching surfaces a wobble that tells you what next module will diagnose, stopping the run is fine; the trace is the result.
+The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). If watching surfaces a wobble that tells you what next module will diagnose, stop the run; the trace is the result.
 
 Async runs are a face of the work you'll see more of from here on.
 
-Nudging by hand is fine if you're watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is the practice. Past ten and you've become the agent; call it and read what's there.
+Nudge by hand while you're watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is the practice. Past ten and you've become the agent; call it and read what's there.
 
 If Claude stalls and you want to see if it picks itself back up, dark-humour nudge, phrased as encouragement, lands as a taunt:
 
@@ -85,7 +85,7 @@ Before you close: read [Reading the return](lectures/reading-the-return.md). It 
 
 ## Next
 
-Module 5 opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this run lives, so when the next slot lands a fresh session reads it straight from `task.md`, no hunting through past sessions. Transcripts persist on disk regardless; see [Claude Code for engineers, session transcripts](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for what they hold. Close the session after the run is done if you want; the trace is on disk either way.
+Module 5 opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this run lives, so when the next slot lands a fresh session reads it straight from `task.md`, no hunting through past sessions. Transcripts persist on disk regardless; see [Claude Code for engineers, session transcripts](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for what they hold. Close the session once the run is done; the trace is on disk.
 
 ## Bring to Module 5
 
@@ -95,7 +95,7 @@ Come to Module 5 without a run and you'll be scrambling for material while the r
 
 ## Pre-reads before Module 5
 
-Optional. Skipping any of these does not break Module 5. They sit in the Module 4 to Module 5 gap while your un-packaged run is still going; they prime the 80/20 reframe Module 5 will name from your own felt evidence.
+Optional. They sit in the Module 4 to Module 5 gap while your un-packaged run is still going; they prime the 80/20 reframe Module 5 will name from your own felt evidence.
 
 **Read, [Clean Code Is Steering: Insights from Uncle Bob](../../trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md).** Uncle Bob's public learning journey with AI coding: early speed, quicksilver unpredictability, then tests, architecture visibility, and formal constraints as steering. Why for Module 5: primes the move from "the agent ran" to "what would have constrained the drift?"
 

@@ -49,7 +49,7 @@ Module 2 is where plan mode earns its keep: multi-file work, a second pass that 
 
 ## Pre-reads before Module 2
 
-Optional. Skipping either piece does not break Module 2. Both sit in the gap between Module 1 and Module 2; engineers who do them arrive at Module 2 with practitioner voice and worktree-readiness as recognition rather than novelty.
+Optional. Both sit in the gap between Module 1 and Module 2; engineers who do them arrive at Module 2 with practitioner voice and worktree-readiness as recognition rather than novelty.
 
 **Watch: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0).** Cherny walks through how he and the team actually use the tool: plan mode, verification loops, parallel worktrees, `CLAUDE.md` compounding, slash commands, subagent map-reduce, the finish-the-migration rule. Why for Module 2: frames the practitioner voice the rest of Agentic Engineering 101 (AE101 from here on) earns through exercises. The moves you will live in Module 2 through Module 6 show up here first as one person's working rhythm.
 

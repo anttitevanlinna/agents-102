@@ -1,7 +1,7 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-05-23 (cycle 112)
-OODA cycles: 5
+Last updated: 2026-05-31 (cycle 119)
+OODA cycles: 6
 
 ## Focus
 
@@ -154,6 +154,45 @@ AI-powered vulnerability scanning and patching for Claude Enterprise customers. 
 
 ---
 
+**May 23–31, 2026 — Claude Opus 4.8 + Dynamic Workflows (cycle 119, May 31):**
+
+**1. Claude Opus 4.8 (May 28, 2026 — GA):**
+- API identifier: `claude-opus-4-8`. New default in Claude Code.
+- 41 days after Opus 4.7 — fastest major model iteration in the platform's history.
+- Key capability improvement: "around four times less likely than Opus 4.7 to allow flaws in code it has written to pass unremarked" — honesty/self-correction enhancement directly relevant to agentic coding quality loops.
+- Fast mode now 3x cheaper than previous fast-mode pricing ($10/$50 per M tokens at speed vs. prior $30/$75 estimate).
+- Pricing unchanged from 4.7: $5/M input, $25/M output standard.
+- Available: Claude API, Bedrock, Vertex AI, Microsoft Foundry.
+- Effort controls (effort level selector) added to claude.ai for balancing quality vs. speed.
+- Messages API now accepts system entries mid-task.
+- [Anthropic blog, May 28, 2026 — vendor press release] (https://www.anthropic.com/news/claude-opus-4-8) — bare facts only
+
+**2. Dynamic Workflows (May 28, 2026 — research preview):**
+- Claude writes a JavaScript orchestration script that fans tasks across tens-to-hundreds of parallel subagents per session. Cap: 1,000 subagents per workflow.
+- Designed for: codebase-wide bug hunts, large migrations, security audits, work requiring independent verification.
+- Verification is built in: subagents check each other's work before results are folded into the final output.
+- Sessions resumable if interrupted (progress is saved).
+- Availability: Claude Code CLI, Desktop, VS Code extension, API, Bedrock, Vertex AI, Foundry. Max, Team, Enterprise (admin-enabled — disabled by default due to token cost).
+- **Primary demonstration:** Jarred Sumner (Bun creator) used Dynamic Workflows to port Bun from Zig to Rust — 750,000 lines of Rust, 11 days from first commit to merge, 99.8% test suite passing. One workflow mapped Rust lifetimes; hundreds of agents wrote parallel file ports with dual reviewers per file; a fix loop drove tests to clean. **Note:** Not yet in production (canary only as of May 31). This is the largest publicly documented single-workflow task in the category.
+- Named practitioner reactions (vendor-sourced, Level 0): Klarna/Alessio Vallero ("identifying dead code traditional static analysis missed"); CyberAgent/Ken Takao ("fill the gap between single subagent and a full agent team").
+- **Assessment:** Architecturally distinct from Dreaming/Outcomes (which are about session memory and quality loops) — Dynamic Workflows is a full orchestration runtime embedded in Claude Code. If the Bun migration scale becomes routine, this is the strongest meta-platform capability yet shipped. But research preview + no independent production accounts = Level 1 only. Watch: first independent practitioner reports of production workflow use.
+- [Anthropic blog, May 28, 2026 — vendor announcement] (https://claude.com/blog/introducing-dynamic-workflows-in-claude-code)
+- [TechCrunch, May 28, 2026 — general press] (https://techcrunch.com/2026/05/28/anthropic-releases-opus-4-8-with-new-dynamic-workflow-tool/)
+- [MarkTechPost, May 28, 2026 — general press] (https://www.marktechpost.com/2026/05/28/anthropic-ships-claude-opus-4-8-alongside-dynamic-workflows-and-cheaper-fast-mode-with-workflows-capped-at-1000-subagents/)
+
+**3. Anthropic 2026 Agentic Coding Trends Report (released May 2026):**
+Vendor report using Claude Code telemetry + customer interviews. Key data points:
+- 78% of Claude Code sessions in Q1 2026 involve multi-file edits (vs. 34% Q1 2025). Average session length: 23 minutes (vs. 4 minutes in autocomplete era). Average tool calls per session: 47.
+- "The delegation gap": developers use AI in ~60% of their work but fully delegate only 0–20% of tasks.
+- ~27% of AI-assisted work is net-new work — tasks that would not have been done at all without AI.
+- Context file quality: well-maintained context files → 40% fewer agent errors, 55% faster task completion. But stale/LLM-generated context files actively decrease success rates.
+- Case studies: Rakuten (12.5M-line codebase refactored in one 7-hour agent run), unnamed company at 89% org-wide AI adoption with hundreds of internal agents.
+- **Evidence caveat:** Telemetry statistics are vendor first-party data (plausible reliability). Customer case studies are vendor-selected (Level 0). Delegation gap stat is survey-based with undisclosed methodology. Read telemetry as directional signal; discard case study claims without independent verification.
+- [Anthropic / Hubspot, 2026 — vendor report] (https://resources.anthropic.com/2026-agentic-coding-trends-report)
+- Analysis: [Pathmode, practitioner analysis] (https://pathmode.io/blog/orchestration-era-needs-intent)
+
+---
+
 ### GitHub Copilot (Microsoft)
 
 **What it is:** IDE-integrated coding agent (VS Code, JetBrains). Agent Mode for multi-step autonomous coding. Coding Agent for async issue-to-PR. Agentic code review (March 2026).
@@ -188,6 +227,13 @@ AI-powered vulnerability scanning and patching for Claude Enterprise customers. 
 
 **Meta-platform assessment:** Excellent for individual developer productivity, strong enterprise traction. But: IDE-bound, no headless/CLI mode, no MCP server capability, limited composability. Strong for coding, weak for building systems of agents. Not a meta-platform — it's a productivity multiplier. The $50B fundraising target signals ambition to become more than an IDE.
 
+**May 2026 updates (cycle 119):**
+- **Composer 2.5** (May 18, 2026): New model for long-running tasks; stronger on complex instructions, new pricing with faster tier and double usage for first week.
+- **Jira integration** (May 19, 2026): Assign Jira work items to Cursor or mention @Cursor in comment to kick off a cloud agent — closes the issue-to-PR loop.
+- **Parallel agents + PR review experience** (Cursor 3): Faster plan execution with parallel agents; shared canvases for team-facing live snapshots of agent-created dashboards.
+- **Bugbot billing:** $40/seat/month subscription → usage-based for Teams and Individual plans.
+- [Cursor changelog — vendor documentation] (https://cursor.com/changelog)
+
 ---
 
 ### Windsurf (Cognition / formerly Codeium)
@@ -212,7 +258,15 @@ AI-powered vulnerability scanning and patching for Claude Enterprise customers. 
 
 **Enterprise push via GSI partners (April 21, 2026):** Cognizant and CGI announced as deployment partners for enterprise software shops. Named early adopters (all Level 0, vendor-sourced): Virgin Atlantic (test coverage + velocity), Ramp (code review), Notion (new features), Cisco (large repo reasoning), Rakuten (incident response). Pattern 28 confirmed: OpenAI requires implementation partners for enterprise, consistent across Frontier and Codex. ([The Next Web](https://thenextweb.com/news/openai-codex-enterprise-partners-cognizant-cgi) — [general press]; [Cognizant PR](https://news.cognizant.com/2026-04-21-Cognizant-and-OpenAI-Partner-to-Reshape-Enterprise-Software-Engineering-with-Codex) — [vendor press release Level 0])
 
-**Independent practitioner deployment evidence:** Zero. 3+ consecutive cycles with no independent practitioner accounts of Codex in enterprise production. All named adopters are vendor-selected.
+**Independent practitioner deployment evidence:** Zero. 4+ consecutive cycles with no independent practitioner accounts of Codex in enterprise production. All named adopters are vendor-selected.
+
+**May 2026 updates (cycle 119):**
+- **GPT-5.5** as new flagship model in Codex (May window); "52.5% fewer hallucinations on high-stakes prompts" (vendor claim — unverified, no independent benchmark cited).
+- **Codex CLI → persistent autonomous agent runtime:** Goal Mode by default, conversation search, richer MCP support. Four releases in the April 23 – May 28 window.
+- **Computer use extended to Windows** — Codex can now operate Windows desktop apps visually.
+- **90+ new plugins:** Atlassian Rovo, CircleCI, CodeRabbit, GitLab Issues, Microsoft Suite, Neon/Databricks, Render, Superpowers.
+- GPT-5.4 listed as current default in Codex API metadata as of late May (not GPT-5.5 yet for all).
+- [OpenAI changelog — vendor documentation] (https://releasebot.io/updates/openai/codex); [general press roundup] (https://codersera.com/blog/openai-may-2026-updates-roundup/amp/)
 
 **Meta-platform assessment:** Most explicitly pursuing the "coding agent as general-purpose business agent" thesis — now with computer use and memory to back it up. But: cloud-only (no local execution), ChatGPT-bound, limited composability compared to CLI tools. The April 16 expansion is the most concrete step toward validating the meta-platform thesis for non-technical users. Watch for practitioner-direct accounts post-May 6 (Workspace Agents credit expiry).
 
@@ -268,6 +322,29 @@ AI-powered vulnerability scanning and patching for Claude Enterprise customers. 
 **Continue:** Pivoted from IDE extension to CI-first code enforcement platform. Automated PR checks. IDE extension still works but core product is now automated review. ([Augment Code](https://www.augmentcode.com/tools/continue-vs-aider-vs-cline-private-ai-coding-assistants-for-regulated-teams) — [practitioner analysis])
 
 **Common traits:** Zero subscription, full model flexibility, maximum composability. These tools are the closest to "infrastructure" — they don't lock you into an ecosystem. For regulated teams needing data sovereignty, BYOK tools are often the only option.
+
+---
+
+## Practitioner Belief Layer — Cross-Cut (cycle 119, Level 3)
+
+**The "orchestrator not implementer" belief package is now Level 3 convergence** — 10+ independent practitioners arrived at the same pattern without coordinating:
+
+**Condition 1: Spec quality is the new bottleneck.** Code generation is cheap; problem definition is the constraint. Every serious practitioner converges here: Ronacher, Osmani, TechEmpower, Anthropic Trends Report, NxCode, Webfuse. The delegation gap (60% AI use, 0-20% full delegation) is the quantified version of this belief.
+
+**Condition 2: Test-first or bust.** Post-implementation testing by agents "makes the existing code the spec." Agents complete tasks as assigned; they validate rather than catch bugs when tests come after code. TechEmpower (May 15, 2026); Osmani (Jan 28, 2026).
+
+**Condition 3: Codebase cleanliness is a precondition.** Agents degrade in proportion to codebase disorganization. "Techniques that work on a side project fall over the moment you aim them at a 2,000-repository monorepo." Stale or LLM-generated CLAUDE.md/AGENTS.md files actively decrease success rates — they're worse than no context file. Human-maintained context is the differentiator.
+
+**Condition 4: Over-engineering is the characteristic failure mode.** Agents add defensive layers rather than enforce invariants. Ronacher (the definitive formulation): "the clanker will often add a tolerant reader. Then it will add a fallback, then maybe a migration." Osmani: "abstraction bloat — agents overcomplicate relentlessly." The correct fix is to make bad states impossible, not to handle them.
+
+**Condition 5: Human judgment concentrates, not disappears.** "Coding agents don't remove the need for senior engineering judgment — they concentrate it." The role shift is from implementer to orchestrator/reviewer. Only 48% of developers consistently review AI code before committing; 38% find reviewing AI code harder than reviewing human code. The comprehension debt risk is real. (Osmani, Jan 2026)
+
+**What this means for the meta-platform thesis:** These conditions are why the meta-platform only compounds for teams that already have engineering discipline. A team with unclear specs, no test culture, and a messy codebase will get faster versions of the same problems. The meta-platform amplifies whatever system it's applied to — the "AI amplifies the system" finding (Level 3, output-outcome gap research) is fully consistent with this belief layer.
+
+**Key sources (all practitioner-direct or practitioner analysis):**
+- Addy Osmani, "The 80% Problem in Agentic Coding," Jan 28, 2026 [practitioner direct] https://addyo.substack.com/p/the-80-problem-in-agentic-coding
+- TechEmpower, "Agentic Coding in Practice," May 15, 2026 [practitioner direct] https://www.techempower.com/blog/2026/05/15/agentic-coding-in-practice/
+- Armin Ronacher (@mitsuhiko), multiple posts 2025-2026 [practitioner direct] — see observations/ronacher-armin.md
 
 ---
 
@@ -368,6 +445,8 @@ For non-software companies, the practical path is:
 
 ## What We Need To Learn
 
+- [x] **Practitioner belief layer / cross-cut** — RESOLVED (cycle 119). The "orchestrator not implementer" belief package is now Level 3 convergence. See Practitioner Belief Layer section above and observations/ronacher-armin.md.
+- [x] **Ronacher observation file** — CREATED (cycle 119). See observations/ronacher-armin.md.
 - [~] **Enterprise meta-platform evidence:** PARTIALLY MET (cycle 109). Cloudflare (April 2026) documented using coding agents to build 13 MCP servers + 182 tools at 60% company adoption — the meta-platform loop at organizational scale. But: one company. Need 10-20 similar enterprise disclosures for Level 3. Watch for: other engineering-heavy companies publishing similar internal AI platform writeups.
 - [ ] **METR follow-up results:** The 2026 study redesign — when it produces reliable data, it will be the most important productivity evidence in the category.
 - [~] **Compound engineering adoption:** LEVEL 2 CONFIRMED (cycle 109). Every Inc. (origin) + Imprint/Will Larson (replication) = two named companies. Still needs 8-18 more for Level 3. Larson's prediction: will be absorbed into Claude Code/Cursor harnesses within months — if that happens, adoption tracking becomes indirect.
@@ -383,10 +462,13 @@ For non-software companies, the practical path is:
 - [ ] **Claude Design → Claude Code handoff:** Does the design-to-code pipeline actually get used by practitioners, or is it a marketing feature? No practitioner evidence yet.
 - [ ] **Opus 4.7 `xhigh` effort level in practice:** What do practitioners find when they push complex agentic tasks at xhigh vs. high? Any evidence of qualitatively different outputs on long-running tasks?
 - [ ] **Managed Agents fleet pricing at scale:** At $0.08/session-hour, what does a 100-agent fleet running 8hrs/day cost per month? (~$1,920/month runtime + tokens). Does this change the build-vs-buy calculus compared to self-hosted frameworks?
+- [ ] **Dynamic Workflows in production:** The Bun migration (750K lines, 11 days) is the proof-of-concept but not yet in production. First independent practitioner account of production Dynamic Workflow use will be Level 2 signal.
+- [ ] **Opus 4.8 self-correction in practice:** The "4x less likely to miss code flaws" improvement addresses a core practitioner complaint about agentic coding. Watch for independent practitioner accounts comparing 4.7 vs 4.8 on code quality specifically.
+- [ ] **Delegation gap shrinking?** Anthropic reports 60% use / 0-20% delegation. If Dynamic Workflows moves the delegation ceiling up, this ratio should change. Track in future Trends Reports or practitioner accounts.
 
 ## Sources
 
-Initial research conducted 2026-04-02. Cycle 101 update 2026-04-22. Cycle 109 update 2026-04-24. All URLs verified at time of writing. See source type labels inline throughout the document.
+Initial research conducted 2026-04-02. Cycle 101 update 2026-04-22. Cycle 109 update 2026-04-24. Cycle 119 update 2026-05-31. All URLs verified at time of writing. See source type labels inline throughout the document.
 
 **Key practitioner sources:**
 - Cloudflare internal AI engineering stack (cycle 109): https://blog.cloudflare.com/internal-ai-engineering-stack/
@@ -400,6 +482,18 @@ Initial research conducted 2026-04-02. Cycle 101 update 2026-04-22. Cycle 109 up
 - Roey Zalta on Managed Agents: https://medium.com/@roeyzalta/claude-managed-agents-deploy-your-first-production-agent-in-10-minutes-8af00f608209
 - unicodeveloper on Managed Agents (honest pros/cons): https://medium.com/@unicodeveloper/claude-managed-agents-what-it-actually-offers-the-honest-pros-and-cons-and-how-to-run-agents-52369e5cff14
 - AprilNEA Antspace reverse-engineering: https://aprilnea.me/en/blog/reverse-engineering-claude-code-antspace
+
+**Cycle 119 additions (May 2026):**
+- Anthropic 2026 Agentic Coding Trends Report: https://resources.anthropic.com/2026-agentic-coding-trends-report
+- Claude Opus 4.8: https://www.anthropic.com/news/claude-opus-4-8
+- Dynamic Workflows: https://claude.com/blog/introducing-dynamic-workflows-in-claude-code
+- Addy Osmani, 80% Problem: https://addyo.substack.com/p/the-80-problem-in-agentic-coding
+- TechEmpower Agentic Coding in Practice: https://www.techempower.com/blog/2026/05/15/agentic-coding-in-practice/
+- Ronacher "Clankers": https://lucumr.pocoo.org/2026/5/26/clankers/
+- Ronacher "Building Pi With Pi": https://lucumr.pocoo.org/2026/5/24/pi-oss/
+- Ronacher "Agentic Coding Recommendations": https://lucumr.pocoo.org/2025/6/12/agentic-coding/
+- Cursor May 2026 changelog: https://cursor.com/changelog
+- OpenAI Codex May 2026: https://releasebot.io/updates/openai/codex
 
 **Claude Code changelog (cycle 101):**
 - Releasebot April 2026: https://releasebot.io/updates/anthropic/claude-code

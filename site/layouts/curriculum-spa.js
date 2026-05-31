@@ -168,6 +168,8 @@
             .then(function (md) {
                 container.innerHTML = CurriculumRuntime.wrapImageFigures(marked.parse(md));
                 CurriculumRuntime.decorateSessions(container);
+                CurriculumRuntime.decorateHox(container);
+                CurriculumRuntime.decorateNote(container);
                 CurriculumRuntime.decoratePrompts(container);
                 CurriculumRuntime.decorateDiagramZoom(container);
                 CurriculumRuntime.attachAnchorPopups(document.body);

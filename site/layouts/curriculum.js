@@ -273,8 +273,17 @@
     // strip non-word/space/hyphen punctuation (em-dashes, periods, commas),
     // then per-character whitespace → "-" (preserves the double-hyphen at
     // stripped em-dash positions).
+    //
+    // github-slugger operates on a heading's *text content*. The marked heading
+    // renderer hands us the inline-RENDERED HTML instead, so a code span arrives
+    // as `<code>/loop</code>` and an apostrophe as `&#39;`. Strip tags and HTML
+    // entities first, or the surviving tag names / entity digits fuse into the
+    // slug — `/loop` → `codeloopcode`, `doesn't` → `doesn39t` — and the natural
+    // hand-written anchor never resolves.
     function slugifyHeading(text) {
         return String(text)
+            .replace(/<[^>]*>/g, '')        // drop tags (code/em/links) → slug visible text
+            .replace(/&[#0-9a-z]+;/gi, '')  // drop entities (&#39; &amp; &quot; …)
             .toLowerCase()
             .replace(/[^\w\s-]/g, '')
             .trim()
@@ -565,6 +574,81 @@
                 }
                 break;
             }
+        });
+    }
+
+    // Heads-up / attention widget. Source shape (single paragraph):
+    //   **HOX** <warning prose>
+    // Renders a loud hot-orange admonition with a fixed "HOX HOX" badge.
+    // Distinct from .session-block (amber) and .prompt-block (oxblood):
+    // HOX = "you are about to make a mistake right HERE." Used sparingly at
+    // high-consequence seams — e.g. confirming you actually switched git
+    // worktrees and aren't still typing on the old branch. A leading
+    // separator after the badge ("-", "—", ":") is chrome and is dropped.
+    // Run AFTER decorateSessions (so session bodies form first) and BEFORE
+    // decoratePrompts (so the **Prompt** stop-condition stays intact).
+    function decorateHox(root) {
+        Array.from(root.querySelectorAll('p')).forEach(function (p) {
+            var strong = p.querySelector(':scope > strong');
+            if (!strong || strong.textContent.trim() !== 'HOX') return;
+
+            var wrap = document.createElement('div');
+            wrap.className = 'hox-block';
+
+            var badge = document.createElement('span');
+            badge.className = 'hox-block__badge';
+            badge.textContent = 'HOX HOX';
+            wrap.appendChild(badge);
+
+            var body = document.createElement('div');
+            body.className = 'hox-block__body';
+            wrap.appendChild(body);
+
+            // Drop the label strong; the rest of the paragraph is the message.
+            strong.remove();
+            var msg = document.createElement('p');
+            msg.innerHTML = p.innerHTML.replace(/^\s*[-—:]\s*/, '').trim();
+            body.appendChild(msg);
+
+            p.parentNode.insertBefore(wrap, p);
+            p.remove();
+        });
+    }
+
+    // Generic guidance widget. Source shape (single paragraph):
+    //   **Note** <guidance prose>
+    // Same construction as .hox-block but calm teal, not alarm-orange: HOX is
+    // "you are about to make a mistake right HERE"; Note is "here is a thing
+    // worth not missing" — a window switch, a heads-up, a where-you-are cue.
+    // Loud enough to beat a buried sentence (the m3 Security→Quality flip the
+    // 2026-05-27 run read past), quiet enough not to cry wolf like HOX. Keyed on
+    // the literal "Note" marker, same boundary discipline as decorateHox. Run in
+    // the same pass: after decorateSessions, before decoratePrompts.
+    function decorateNote(root) {
+        Array.from(root.querySelectorAll('p')).forEach(function (p) {
+            var strong = p.querySelector(':scope > strong');
+            if (!strong || strong.textContent.trim() !== 'Note') return;
+
+            var wrap = document.createElement('div');
+            wrap.className = 'note-block';
+
+            var badge = document.createElement('span');
+            badge.className = 'note-block__badge';
+            badge.textContent = 'NOTE';
+            wrap.appendChild(badge);
+
+            var body = document.createElement('div');
+            body.className = 'note-block__body';
+            wrap.appendChild(body);
+
+            // Drop the label strong; the rest of the paragraph is the message.
+            strong.remove();
+            var msg = document.createElement('p');
+            msg.innerHTML = p.innerHTML.replace(/^\s*[-—:]\s*/, '').trim();
+            body.appendChild(msg);
+
+            p.parentNode.insertBefore(wrap, p);
+            p.remove();
         });
     }
 
@@ -955,6 +1039,8 @@
 
         // DOM (browser only)
         decorateSessions: decorateSessions,
+        decorateHox: decorateHox,
+        decorateNote: decorateNote,
         decoratePrompts: decoratePrompts,
         attachAnchorPopups: attachAnchorPopups,
         addCopyButton: addCopyButton,

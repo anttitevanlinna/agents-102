@@ -19,7 +19,7 @@ Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map fr
 
 Let it run. The output will have more entries than you want to deal with. That's expected.
 
-The STRIDE pass should take minutes. If it returns in seconds, Claude went shallow, push back and re-run. While it runs, switch to your m3-quality window and start the test-strategy skill authoring (next exercise's Phase 1). The wait IS the move M3 installs: kick off long work in one window, do active work in the other, come back when the first lands.
+The STRIDE pass should take minutes. If it returns in seconds, Claude went shallow, push back and re-run. Stay in this window while it works, and read what lands.
 
 ## Phase 2: pick the one
 

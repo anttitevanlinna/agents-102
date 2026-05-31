@@ -19,6 +19,8 @@
     --accent-2:    #a8473a;
     --accent-soft: rgba(138,58,42,.08);
     --warm:        #c97942;   /* amber — secondary accent (from ai-training) */
+    --hox:         #e8590c;   /* hot signal-orange — HOX heads-up widget */
+    --note:        #2f6b6b;   /* calm teal — NOTE guidance widget */
     --arctic:      #5e8ca8;   /* muted arctic blue — gradient tail */
     --ink:         #14110d;
     --ink-text:    #f4ecdb;
@@ -940,6 +942,127 @@ main::before {
     }
     .module .session-block__verb { background: #ddd !important; color: #000 !important; }
     .module .session-block__name { color: #000 !important; }
+}
+
+/* HOX — loud heads-up admonition. Source shape: **HOX** <warning prose>.
+   Hotter than the amber .session-block: reserved for the rare "you are about
+   to make a mistake right HERE" seam (wrong worktree, wrong branch, about to
+   overwrite). Hot signal-orange so it does not read as just another panel. */
+.module .hox-block {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin: 1.25rem 0 1.75rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--hox);
+    border-left: 5px solid var(--hox);
+    border-radius: 5px;
+    background: #fdecdf;
+}
+
+.module .hox-block__badge {
+    flex: none;
+    font-family: var(--font-body);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.72rem;
+    color: #fff;
+    background: var(--hox);
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.module .hox-block__body {
+    color: var(--fg);
+    font-weight: 600;
+}
+
+.module .hox-block__body > p {
+    margin: 0;
+}
+
+/* Dark exercise band (e.g. diagnose-and-resend) — keep the hot badge, tint
+   the panel so it still shouts against the ink background. */
+.phase--exercise .hox-block {
+    background: rgba(232, 89, 12, 0.12);
+    border-color: var(--hox);
+}
+
+.phase--exercise .hox-block__body {
+    color: var(--ink-text);
+}
+
+@media print {
+    .module .hox-block {
+        background: #fff !important;
+        border-color: #999 !important;
+    }
+    .module .hox-block__badge {
+        background: #000 !important;
+        color: #fff !important;
+    }
+}
+
+/* NOTE — calm guidance widget. Source shape: **Note** <guidance prose>.
+   Same construction as .hox-block, calm teal instead of alarm-orange: HOX
+   shouts "mistake right HERE," NOTE says "don't miss this" — a window switch,
+   a where-you-are cue. Louder than a buried sentence, quieter than HOX. */
+.module .note-block {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin: 1.25rem 0 1.75rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--note);
+    border-left: 5px solid var(--note);
+    border-radius: 5px;
+    background: #e4efee;
+}
+
+.module .note-block__badge {
+    flex: none;
+    font-family: var(--font-body);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.72rem;
+    color: #fff;
+    background: var(--note);
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.module .note-block__body {
+    color: var(--fg);
+    font-weight: 600;
+}
+
+.module .note-block__body > p {
+    margin: 0;
+}
+
+/* Dark exercise band — tint the panel so it still reads against the ink. */
+.phase--exercise .note-block {
+    background: rgba(47, 107, 107, 0.16);
+    border-color: var(--note);
+}
+
+.phase--exercise .note-block__body {
+    color: var(--ink-text);
+}
+
+@media print {
+    .module .note-block {
+        background: #fff !important;
+        border-color: #999 !important;
+    }
+    .module .note-block__badge {
+        background: #000 !important;
+        color: #fff !important;
+    }
 }
 
 .module blockquote {

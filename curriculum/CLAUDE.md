@@ -59,6 +59,10 @@ Module files: flat, slug-only filenames, sequence from renderer's MODULES array.
 
 Template + module include + bare-path cross-doc rules → `curriculum/module-shape.md`.
 
+## Widgets
+
+Author-typed widget palette (Session / HOX / Note / Prompt / runtime-fork) + when-to-use + add-a-widget procedure → `curriculum/widgets.md`. Generation-time check → `check_pedagogy.md` §52b.
+
 ## Alignment
 
 Strategy and module file change in the same edit. Drift = process bug.

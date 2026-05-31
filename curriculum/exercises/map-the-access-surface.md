@@ -33,9 +33,15 @@ Ask Claude to invoke the access-control-analysis skill on the feature you'll nam
 {{prompt:map-the-access-surface-2}}
 
 
-Paste a plan path, a ticket link, a design-doc path, or the feature description, Claude reads whatever you give it. Then send. Claude will narrate what the skill is doing before the map appears; skip past the opening and look for the saved path when it lands. The skill walks the surfaces and produces the map. You watch.
+Paste a plan path, a ticket link, a design-doc path, or the feature description, Claude reads whatever you give it. Then send. Claude will narrate what the skill is doing before the map appears; skip past the opening and look for the saved path when it lands. The skill walks the surfaces and produces the map.
+
+The access-control pass is a breadth walk over your feature's surfaces and takes a few minutes. That wait is the two-window move Module 3 installs: kick off a long run in one window, do active work in the other, come back when the first lands.
+
+**Note** Switch to your m3-quality window now. While the map builds in m3-security, start authoring the test-strategy skill there (Exercise 3, Phase 1). When the map lands back in m3-security, switch back to walk it and write the delta. Both windows are already open from *Open the side quest*; this is a focus switch, not a new session.
 
 ## Phase 2: walk the map in conversation
+
+**Note** Back in m3-security now, the map has landed here. The rest of this exercise runs in this window.
 
 Ask Claude to walk you through the surface map in chat (categories, key findings, ambiguous spots) so you've seen the structured read before deciding your deltas in Phase 3.
 

@@ -322,6 +322,8 @@ const WORKBOOK_INIT_JS = `
       CurriculumRuntime.buildModuleHero(mod, num);
     });
     CurriculumRuntime.decorateSessions(document.body);
+    CurriculumRuntime.decorateHox(document.body);
+    CurriculumRuntime.decorateNote(document.body);
     CurriculumRuntime.decoratePrompts(document.body);
     CurriculumRuntime.decorateDiagramZoom(document.body);
     CurriculumRuntime.installReadingProgress();
@@ -390,6 +392,8 @@ const TRAINER_GUIDE_INIT_JS = `
 (function () {
   if (window.CurriculumRuntime) {
     CurriculumRuntime.decorateSessions(document.body);
+    CurriculumRuntime.decorateHox(document.body);
+    CurriculumRuntime.decorateNote(document.body);
     CurriculumRuntime.decoratePrompts(document.body);
     CurriculumRuntime.decorateDiagramZoom(document.body);
     CurriculumRuntime.installReadingProgress();

@@ -82,7 +82,7 @@ Once you have a current trace, run the storytelling compendium rules against (fi
 
 For each rule, decide PASS / REVISE / N/A. Quote line numbers from the file or trace phase indexes for evidence.
 
-Specific judgments that storytelling owns:
+Specific judgments that storytelling owns (the Completeness contract below maps each to its single `check_strategy_tie_in` rule_index — read it before emitting):
 
 - **Mood lands** (per phase + close): mood_score from trace. Required: 8+/10 at every beat. 7 = facilitator-premium signature; flag what would take it from 7 to 8. Below 7 = REVISE. **Carve-out — mood-floor applies to TEACHING beats only.** Before scoring, classify each beat: TEACHING beat (engagement IS the pedagogical move; lands a teaching moment, sets up a forcing function, frames a discipline) → mood-floor 8+/10 applies. SETUP / LAUNCH / SEQUENCING-TRANSITION beat (mechanical, ordering, "open the X / fire up the Y / start the session / change directories") → mood-exempt; record `mood_score: null` and judge on clarity + brevity instead. Diagnostic: could the beat be compressed into a parenthetical without breaking the arc? If yes, it's setup, not teaching, and a 6/10 mood is correct register, not under-engagement. Canonical source: `memory/compounded/2026-05-03-pedagogy-mood-floor-applies-to-teaching-beats-only.md` + `check_strategy_tie_in.md` rule 1.
 - **Mood doesn't resolve early**: per the mood arc table (joy → compound → unease → deeper unease → rescue → leverage → generosity → awe), check that this module doesn't preempt the next module's teaching moment. M3 unease must not be resolved by a verification step. M4 must not feel tidy. M5 is the rescue.
@@ -97,7 +97,17 @@ Specific judgments that storytelling owns:
 
 `rules_evaluated` is the coverage ledger, not a highlights reel. This class is PRIMARY owner of `check_lectures`; it MUST carry exactly one entry for EACH of its numbered rules (`^\d+[a-z]?\. \*\*…\*\*`), no omission — `N/A` (with reason) for a rule that doesn't apply to this surface (e.g. a lecture-placement rule on an exercise), never a silent drop. For `check_pedagogy` and `check_strategy_tie_in`, evaluate only the storytelling rules listed under "Specific judgments storytelling owns" above; the pedagogy and strategy judges are primary owners of the rest and carry their verdicts.
 
-Before emitting: count `check_lectures`'s numbered rules; your entries for it MUST equal that count. Fewer = a silent skip. The mechanical auditor (`scripts/audit-eval-coverage.js`) treats any missing `check_lectures` rule_index as an unproven coverage hole.
+**One entry per owned rule_index — never cram.** Each storytelling judgment maps to exactly ONE `check_strategy_tie_in` rule_index, and you emit at most one `rules_evaluated` row per index:
+
+- §1 ← *mood lands / mood contract named*
+- §2 ← *epistemic mood, not punitive*
+- §3 ← *lead with discipline, not failure mode*
+- §4 ← *strategy-fidelity*, which CONSOLIDATES *front-run check*, *module-to-module arc*, *Big Idea fidelity*, and *mood doesn't resolve early* into one verdict — they are all facets of "is this faithful to the strategy doc's sequencing and Big Idea?" Cite every facet you checked in that single §4 entry's `evidence`.
+- §5/§6/§7 govern module-only sections (Key Concepts, What You'll Learn) — `N/A` on a lecture; the strategy judge owns them on modules.
+
+The *teaching moment lands* check has NO `check_strategy_tie_in` rule_index — record it in the top-level `verdict` reasoning or `mood_summary`, NEVER as a `rules_evaluated` row, and NEVER under an invented compendium (`"story.md owns"`, `"judge-owned"`, `"storytelling"`). Every `rules_evaluated` entry's `compendium` MUST be a real `check_*.md` file and every `rule_index` MUST be a number that exists in it.
+
+Before emitting: (a) count `check_lectures`'s numbered rules; your entries for it MUST equal that count — fewer = a silent skip; (b) confirm no two `rules_evaluated` entries share a `(compendium, rule_index)` pair, and every `compendium` is a real `check_*.md`. The mechanical auditor (`scripts/audit-eval-coverage.js`) treats any missing `check_lectures` rule_index as an unproven coverage hole, flags a repeated key as `duplicate-rule-index`, and flags an invented compendium as `unknown-compendium` — the last two both mean a real judgment got collapsed onto the wrong row instead of crediting the rule it actually evaluated.
 
 ## Output format
 

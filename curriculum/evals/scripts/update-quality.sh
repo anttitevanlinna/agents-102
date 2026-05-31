@@ -35,10 +35,14 @@
 # Other args:
 #   --sha <short-sha>   default: current HEAD
 #   --date <YYYY-MM-DD> default: today
+#   --stage <word>      set the top-line ladder stage explicitly (draft / compendium-audited /
+#                       sim-passed / mechanical-tested / cohort-tested / battle-tested).
+#                       DEFAULT: preserve the file's existing stage word. Re-stamping pins or
+#                       axes never advances the stage on its own — advancement is deliberate.
 
 set -eu
 
-usage() { sed -n '2,32p' "$0"; exit 2; }
+usage() { sed -n '2,41p' "$0"; exit 2; }
 
 [[ $# -lt 1 ]] && usage
 
@@ -47,6 +51,7 @@ FILE="$1"; shift
 
 SHA="$(git rev-parse --short HEAD 2>/dev/null || echo unknown)"
 DATE="$(date +%Y-%m-%d)"
+arg_stage=""
 
 # Per-judge-class state
 state_writing=keep
@@ -76,6 +81,7 @@ while [[ $# -gt 0 ]]; do
     --cohorts)             state_cohorts="$2"; shift 2 ;;
     --sha)                 SHA="$2"; shift 2 ;;
     --date)                DATE="$2"; shift 2 ;;
+    --stage)               arg_stage="$2"; shift 2 ;;
     -h|--help)             usage ;;
     *) echo "error: unknown arg $1" >&2; exit 1 ;;
   esac
@@ -117,9 +123,9 @@ while IFS= read -r line; do
     case "$line" in
       "- judges:"*|"- judges "*)                     keep_judges="$line" ;;
       "- cross_module:"*|"- cross_module "*)         keep_cross_module="$line" ;;
-      "- mechanical:"*|"- mechanical "*)             keep_mechanical="$line" ;;
+      "- mechanical:"*|"- mechanical "*|"- mechanical-tested:"*|"- mechanical-tested "*) keep_mechanical="$line" ;;
       "- maintainer-reviewed:"*|"- maintainer-reviewed "*) keep_maintainer="$line" ;;
-      "- cohorts:"*|"- cohorts "*)                   keep_cohorts="$line" ;;
+      "- cohorts:"*|"- cohorts "*|"- cohort-tested:"*|"- cohort-tested "*) keep_cohorts="$line" ;;
       ""|"**"*)                                       in_block=0 ;;
     esac
   fi
@@ -141,6 +147,12 @@ if [[ -n "$prior_top" ]]; then
       strategy)   prior_pin_strategy="$pin" ;;
     esac
   done
+fi
+
+# Prior ladder stage word: the token after **Quality:** and before the date.
+prior_stage=""
+if [[ -n "$prior_top" ]]; then
+  prior_stage=$(printf '%s\n' "$prior_top" | sed -nE 's/^\*\*Quality:\*\* ([a-z][a-z-]*) .*/\1/p')
 fi
 
 # Fallback: recover per-class pins from the `- judges @<sha>: <verdicts>` row
@@ -307,13 +319,44 @@ done
 
 # Top-line date: bump to DATE iff a judge-class state was actually set this run.
 # Otherwise preserve the prior date so a mechanical-only stamp doesn't lie about
-# when the compendium audit happened.
+# when the compendium audit happened. Stage-agnostic — matches any prior stage word,
+# not only compendium-audited (the old regex fabricated today's date for drafts).
 top_date="$DATE"
 if [[ $all_keep -eq 1 && -n "$prior_top" ]]; then
-  prior_date=$(printf '%s\n' "$prior_top" | sed -nE 's/.*compendium-audited ([0-9]{4}-[0-9]{2}-[0-9]{2}).*/\1/p')
+  prior_date=$(printf '%s\n' "$prior_top" | sed -nE 's/^\*\*Quality:\*\* [a-z][a-z-]* ([0-9]{4}-[0-9]{2}-[0-9]{2}).*/\1/p')
   [[ -n "$prior_date" ]] && top_date="$prior_date"
 fi
-NEW_TOP="**Quality:** compendium-audited $top_date${sha_pins:+ ($sha_pins)}"
+
+# Ladder stage word. Resolution order:
+#   1. --stage <word> set this run → use it (the only deliberate ladder advance).
+#   2. A prior stage word on the existing line → preserve it. Re-stamping pins or
+#      axes must NEVER promote/demote the tier. (The old code hardcoded
+#      compendium-audited, silently promoting drafts + maintainer-reviewed and
+#      demoting sim-passed / cohort-tested files on every stamp.)
+#   3. No prior block: a judge class set this run → compendium-audited (a compendium
+#      audit just happened); otherwise the ladder floor, draft.
+if [[ -n "$arg_stage" ]]; then
+  stage="$arg_stage"
+elif [[ -n "$prior_stage" ]]; then
+  stage="$prior_stage"
+elif [[ $all_keep -eq 0 ]]; then
+  stage="compendium-audited"
+else
+  stage="draft"
+fi
+
+# Narrative tail: free text the maintainer hand-wrote after stage+date (e.g.
+# "(post rule-#3 sweeps)", "— Pass 2, all 12 cites in place"). Preserve it. Strip
+# only the machine-owned pin tuple — a parenthetical that STARTS with `<class>@` —
+# so regenerated pins don't duplicate; a prose parenthetical (no leading class@) stays.
+narrative_tail=""
+if [[ -n "$prior_top" ]]; then
+  narrative_tail=$(printf '%s\n' "$prior_top" \
+    | sed -E 's/^\*\*Quality:\*\* [a-z][a-z-]* [0-9]{4}-[0-9]{2}-[0-9]{2}//' \
+    | sed -E 's/\([a-z]+@[^()]*\)//g; s/[[:space:]]+/ /g; s/[[:space:]]+$//')
+fi
+
+NEW_TOP="**Quality:** $stage $top_date${sha_pins:+ ($sha_pins)}${narrative_tail}"
 
 # ---- Splice into file --------------------------------------------------------
 TMP="$(mktemp)"
@@ -335,7 +378,19 @@ awk -v top="$NEW_TOP" \
     next
   }
   in_block == 1 {
-    if ($0 ~ /^- /) next
+    if ($0 ~ /^- /) {
+      # Drop only the rows we just reconstructed at the top of the block
+      # (judges / cross_module / mechanical[-tested] / maintainer-reviewed /
+      # cohorts[cohort-tested]); preserve every OTHER dash row verbatim in place
+      # — sim-passed, stage-history, provenance notes. The old splice deleted them all.
+      if ($0 ~ /^- judges[ :]/) next
+      if ($0 ~ /^- cross_module[ :]/) next
+      if ($0 ~ /^- mechanical(-tested)?[ :]/) next
+      if ($0 ~ /^- maintainer-reviewed[ :]/) next
+      if ($0 ~ /^- cohorts?[ :]/ || $0 ~ /^- cohort-tested[ :]/) next
+      print
+      next
+    }
     if ($0 == "") { in_block = 0; print; next }
     if ($0 ~ /^\*\*[A-Z]/) { in_block = 0; print; next }
     next

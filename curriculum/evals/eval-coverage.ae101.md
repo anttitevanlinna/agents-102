@@ -43,19 +43,33 @@ Phase 1 found *orphan rules* (no checker). Here the inverse: a standing judge sy
 
 `node scripts/audit-eval-coverage.js --surface all` (or `--gate`). Static sweep harness: the `eval-coverage-sweep-full` workflow. Story-class harness (sim-trace, not static): the `ae101-story-instances-phase3` workflow — one Sonnet judge per lecture, retarget via the `LECTURES` array. Per-class verdicts are meant to land in each file's `**Quality:**` block via `update-quality.sh` — NOT stamped this cycle, and deliberately deferred to Phase 4: the script hardcodes `compendium-audited` as the stage word, so stamping the 2 `draft` lectures (composing-the-workflow, quality-is-grounding) would falsely promote them off draft, and it rebuilds the top line, deleting composing-the-workflow's fact-check provenance parenthetical. Fix the script first, then stamp all 6 in one pass.
 
-## Phase 4 — eval-system fixes (queued)
+## Phase 4 — eval-system fixes
 
-With the full system in view, the next phase fixes its defects (scripts, judges, skills, schema). **Confirmed:**
+Survey done 2026-05-31: a 6-agent read-only fan-out (one per subsystem — auditor, Quality stamper, judge templates, eval-fire skill, schema/instances, sim-cache), evidence-tagged with file:line. ~30 distinct defects, many cross-confirmed across agents.
 
-1. **`update-quality.sh` hardcodes stage + clobbers narrative.** `NEW_TOP="**Quality:** compendium-audited ..."` ignores the file's real stage (promotes `draft` files) and rebuilds the top line, dropping any narrative parenthetical (e.g. composing-the-workflow's research-claims provenance). Fix: preserve the existing stage word + any narrative; only update SHA pins + the judges row. Test-first.
-2. **Auditor conflates `uncovered` with `N/A-by-surface`.** The 79 residual pairs are legitimately N/A (email pedagogy/strategy, lecture strategy_tie_in not mandated). The matrix should mark surface-N/A distinctly so the headline number reflects real holes.
+### Fixed (this pass)
 
-**Hypotheses (confirm before fixing — evidence-ladder discipline):**
+1. **`update-quality.sh` — stage/narrative/dimension-row preservation.** DONE. Test-first: `curriculum/evals/scripts/update-quality.test.sh` (22 assertions). The script hardcoded `compendium-audited` as the top-line stage word and rebuilt the whole line, so any stamp (a) silently promoted the 21 non-`compendium-audited` files — and worse, the mechanical auto-fire path `mechanical/bin/judge.sh:60` triggered it with no judge flags, promoting drafts automatically; (b) dropped narrative parentheticals; (c) deleted `sim-passed` / history / `mechanical-tested` dimension rows the awk never reconstructed; (d) fabricated today's date on non-audited stages. Fix: parse + preserve the prior stage word (new `--stage` flag is the only deliberate advance), preserve the prose tail (strip only the `<class>@` pin tuple), preserve unknown `- ` rows in place, stage-agnostic date recovery. Side-effect: the eval-fire Step 6.5 mandate to run this script for every verdict is **now safe** — it no longer demotes higher-tier files.
 
-- **Integer `rule_index` is lossy.** Sub-lettered rules (9b/21b/34b/52b) fold onto the integer parent, so their coverage is invisible. Either accept string indices or make the auditor sub-letter-aware.
-- **Quality-block ↔ instance drift.** will-company-memory-emerge claimed `story PASS` with no instance behind it; cross-check every per-class Quality row against instance existence.
-- **`eval-fire/SKILL.md` doc rot.** Stale "30-day megajudge window" / "Step 4 of the eval refactor"; trace path given as `<slug>.json` vs the real `<slug>.persona.json`.
-- **Orphan sim-caches.** Both `<slug>.persona.json` and `ae101--<slug>.persona.json` exist for some slugs; only the bare-slug one is read.
-- **Completeness-contract coverage.** Added to writing/pedagogy/story/strategy/technical; confirm prompt-behavior + cross-module judges aren't a parallel hole.
+### Auditor coverage-model cluster (direct code; interdependent — do as one pass once decisions land)
 
-Method: survey fan-out (one agent per subsystem, evidence-tagged defects) → triage → fix. Skill + `check_*.md` edits are approval-gated proposals; script / auditor / judge-template / data-model fixes applied directly. Test-first per repo CLAUDE.md.
+- **Sub-letter encoding is chaos, three ways.** Instances encode sub-rules as `"9b"` (string), `9.1` (float), AND a fabricated `91` (integer) — all for the same logical rule. `parseRules` folds `9b→9` and counts none of them. ~19 sub-rules (pedagogy 5, platform_and_boundaries 13, research_claims 1) are uncounted; pedagogy reports 57/57=100% while 5 real rules are invisible. DECISION: one canonical encoding (recommend the compendium's own `"9b"` string), then `parseRules` letter-aware + normalize instances. *Instance normalization waits — many are dirty parallel-WIP.*
+- **N/A-by-surface counted as uncovered.** The headline `79` is almost entirely `cohort-onboarding-email` (pedagogy/strategy N/A on an email) + meta-frame lectures (strategy_tie_in rules 4–7, no `.strategy` instance mandated). DECISION: bucket as `na_by_surface` using the existing per-file `mandatory` field; granularity recommend per-compendium-per-surface.
+- **Orphaned compendia never measured.** `check_platform_and_boundaries`, `check_research_claims`, `check_prompts` are owned (have `eval_classes`) but in no `SURFACE_COMPENDIA` row → their rules score zero coverage silently, though `.technical.json` ledgers exist on disk. DECISION: in or out of the matrix (recommend in, via a technical bucket).
+- **Gate blind to rule holes.** `--gate` fails only on structural bugs + missing instances, never on uncovered rules (it computes `total_holes` but never reads it). DECISION: once N/A is separable, fail on real holes (threshold).
+- **Cheap robustness guards** (ship with the above): flag a missing `class` field; non-gating warnings on unresolvable `rule_index`, non-enum verdict (one live: `"PASS (this file) / UNVERIFIED (cross-file)"`), `rule_lead` mismatch (painting-the-picture `.story` stamps 5 different leads all as `check_strategy_tie_in::1`), and a `- judges` PASS claim with no backing instance.
+
+### Approval-gated (judge templates / skill / compendium frontmatter — propose, don't apply)
+
+- **behavior + cross_module judges lack the completeness contract.** Confirmed parallel hole: cross_module's live `m1-m2` ledger already silently drops §9; behavior emits `prompts_findings[]` not `rules_evaluated[]` so contributes zero coverage keys, and no compendium's `eval_classes` even maps to `behavior`. DECISION: is behavior prompt-indexed-and-exempt (document it) or owed a pattern-coverage ledger? cross_module needs a contract + an auditor pair-level reader (its ledger nests under `module_pairs_evaluated[]`, invisible to `verdictedKeys`).
+- **eval-fire SKILL.md doc rot — one consolidated edit.** Trace path written three ways (`<slug>.persona.json` / `<slug>.json` / no `ae101--` prefix); dead "30-day megajudge window", "Step 4/7 of the eval refactor", "Real-world test" section (megajudge is archived); instance path bare-slug at :109. Same trace-path text also in `judges/story.md:147` + `prompt-behavior.md:170` (fix all sites in one pass).
+
+### Cache hygiene (direct data; downstream of the cache-key decision)
+
+- **Cross-training slug collision (most consequential new find).** `sim-cache/getting-going.persona.json` carries the **Agents-101 SVP-of-HR** persona, but `getting-going` is also an AE101 module; the bare-slug read path can feed an AE101 story-judge a wrong-training trace. Plus 4 dup persona caches + 7 dup behavior caches (bare vs `ae101--`). Root cause = bare-slug cache key. DECISION: canonical key (recommend `ae101--<slug>` to match instances + disambiguate), then delete orphan twins (gitignored, regenerate on next fire — safe after the decision).
+
+### Quality-block ↔ instance drift (approval-gated maintainer-block edits)
+
+- `will-company-memory-emerge` claims 6-class PASS, only writing+story instances exist (4 over-claims). `the-wizard-move` has 4 instances but no `- judges` row. `quality-is-grounding` + `composing-the-workflow` are `draft` yet have instances.
+
+Method: skill + `check_*.md` edits are approval-gated proposals; script / auditor / judge-template fixes applied directly; instance-data normalization waits on parallel-WIP settling. Test-first per repo CLAUDE.md.

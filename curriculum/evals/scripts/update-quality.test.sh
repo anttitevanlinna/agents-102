@@ -138,6 +138,23 @@ cp "$TMP/t8.md" "$TMP/t8.before"
 run "$TMP/t8.md" --date 2026-06-01 >/dev/null   # no state flags = all keep
 if diff -q "$TMP/t8.before" "$TMP/t8.md" >/dev/null; then pass=$((pass+1)); else fail=$((fail+1)); echo "FAIL: T8 all-keep no-op should be idempotent"; diff "$TMP/t8.before" "$TMP/t8.md" | sed 's/^/    /'; fi
 
+# ── T9 — cohort-tested rung removed: delivery `- cohorts:` log row survives ───
+#    The ladder no longer carries cohort-tested / battle-tested rungs (delivery
+#    reality is a NON-degrading log, not an LLM-check ladder stage). A stamp must
+#    preserve a hand-written cohorts log row and must never resurrect the dead
+#    cohort-tested stage word.
+mkfix t9.md '# Module
+<!-- maintainer -->
+**Quality:** compendium-audited 2026-05-15 (writing@1ff6f8a story@1ff6f8a)
+- judges @1ff6f8a: writing PASS, story PASS
+- cohorts: none yet
+
+body'
+run "$TMP/t9.md" --date 2026-06-01 >/dev/null   # all-keep stamp
+assert_grep    "$TMP/t9.md" '- cohorts: none yet'             'T9 delivery cohorts log row survives a stamp'
+assert_grep    "$TMP/t9.md" '**Quality:** compendium-audited' 'T9 stage preserved'
+assert_no_grep "$TMP/t9.md" 'cohort-tested'                   'T9 dead rung word never resurrected'
+
 echo "──────────────────────────────"
 echo "update-quality.test.sh: $pass passed, $fail failed"
 [[ $fail -eq 0 ]]

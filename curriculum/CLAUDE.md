@@ -10,13 +10,13 @@ State of play → `bosser-strategy:content-strategy.md` § *State of play*.
 
 **AE101 M1–M3 to done-done first. Then M4–M6.**
 
-"Done-done" = Quality at `cohort-tested` / `battle-tested`, six per-class SHAs current, maintainer-reviewed, trainer-guide present, no open audit TODOs in `pre-cohort-todos.md` for that module.
+"Done-done" = Quality at `mechanical-tested`, six per-class SHAs current, maintainer-reviewed, trainer-guide present, no open audit TODOs in `pre-cohort-todos.md` for that module. (Delivery reality logs on the `- cohorts:` row — it is not a ladder rung to reach.)
 
 Don't start M4 substantive work while M1–M3 has open REVISE or grandfathered pins. Cosmetic cross-module edits on M4–M6 fine; new exercises / prompts / lectures wait.
 
 ## Quality
 
-Every student-facing artifact carries a Quality line. Ladder: `draft` → `compendium-audited` → `sim-passed` → `mechanical-tested` → `cohort-tested` → `battle-tested`. Orthogonal axis: `maintainer-reviewed`. Six per-class SHAs + cross_module row. Auto-degrade is touch-based, per-class.
+Every student-facing artifact carries a Quality line. Ladder: `draft` → `compendium-audited` → `sim-passed` → `mechanical-tested`. Orthogonal axis: `maintainer-reviewed`. Delivery reality → `- cohorts:` log row (not a rung). Six per-class SHAs + cross_module row. Auto-degrade is touch-based, per-class.
 
 Format + key rules → `curriculum/quality-format.md`.
 

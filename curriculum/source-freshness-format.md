@@ -84,6 +84,6 @@ Touch-based, like Quality. Editing a body claim a stamp backs degrades that stam
 
 ## Trigger
 
-- At the Quality flip toward `cohort-tested`, run `source-freshness.sh --target <cohort-date>` over the module's files; no BLOCK = source-clean.
+- Before a cohort runs the module (the `- cohorts:` row gains an entry), run `source-freshness.sh --target <cohort-date>` over the module's files; no BLOCK = source-clean.
 - Within the 6-month window of any scheduled cohort, re-run against that date.
 - `/research-review` and the `freshness-checker` agent remain the deep workers that open URLs and propose the stamp; the script is the cheap index over what they recorded.

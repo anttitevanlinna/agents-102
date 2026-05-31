@@ -5,7 +5,9 @@ Canonical format spec. Loaded by `/curriculum-pre-ship-audit`, `/wind-down`, and
 Every student-facing artifact (module / exercise / lecture / prework) carries a Quality line in its maintainer block. The contract between sessions.
 
 **LLM-checks ladder** (cheap → expensive; each tier earns the next):
-`draft` → `compendium-audited` → `sim-passed` → `mechanical-tested` → `cohort-tested` → `battle-tested`.
+`draft` → `compendium-audited` → `sim-passed` → `mechanical-tested`.
+
+The ladder tops at the last thing an LLM/script can verify. Delivery reality (a cohort ran it; survived many) is NOT a rung — touch-degrade would forbid ever standing on one. It lives on the `- cohorts:` log row below: a factual record, not touch-degraded.
 
 **Orthogonal axis:** `maintainer-reviewed` — Antti read end-to-end + ran prompts manually. Own dimension-log row, never folded into LLM provenance.
 

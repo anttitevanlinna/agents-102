@@ -36,7 +36,8 @@
 #   --sha <short-sha>   default: current HEAD
 #   --date <YYYY-MM-DD> default: today
 #   --stage <word>      set the top-line ladder stage explicitly (draft / compendium-audited /
-#                       sim-passed / mechanical-tested / cohort-tested / battle-tested).
+#                       sim-passed / mechanical-tested). Delivery reality is NOT a ladder rung —
+#                       it lives on the `cohorts` log row, which never touch-degrades.
 #                       DEFAULT: preserve the file's existing stage word. Re-stamping pins or
 #                       axes never advances the stage on its own — advancement is deliberate.
 
@@ -125,7 +126,7 @@ while IFS= read -r line; do
       "- cross_module:"*|"- cross_module "*)         keep_cross_module="$line" ;;
       "- mechanical:"*|"- mechanical "*|"- mechanical-tested:"*|"- mechanical-tested "*) keep_mechanical="$line" ;;
       "- maintainer-reviewed:"*|"- maintainer-reviewed "*) keep_maintainer="$line" ;;
-      "- cohorts:"*|"- cohorts "*|"- cohort-tested:"*|"- cohort-tested "*) keep_cohorts="$line" ;;
+      "- cohorts:"*|"- cohorts "*) keep_cohorts="$line" ;;
       ""|"**"*)                                       in_block=0 ;;
     esac
   fi
@@ -332,7 +333,7 @@ fi
 #   2. A prior stage word on the existing line → preserve it. Re-stamping pins or
 #      axes must NEVER promote/demote the tier. (The old code hardcoded
 #      compendium-audited, silently promoting drafts + maintainer-reviewed and
-#      demoting sim-passed / cohort-tested files on every stamp.)
+#      demoting sim-passed / mechanical-tested files on every stamp.)
 #   3. No prior block: a judge class set this run → compendium-audited (a compendium
 #      audit just happened); otherwise the ladder floor, draft.
 if [[ -n "$arg_stage" ]]; then
@@ -381,13 +382,13 @@ awk -v top="$NEW_TOP" \
     if ($0 ~ /^- /) {
       # Drop only the rows we just reconstructed at the top of the block
       # (judges / cross_module / mechanical[-tested] / maintainer-reviewed /
-      # cohorts[cohort-tested]); preserve every OTHER dash row verbatim in place
+      # cohorts); preserve every OTHER dash row verbatim in place
       # — sim-passed, stage-history, provenance notes. The old splice deleted them all.
       if ($0 ~ /^- judges[ :]/) next
       if ($0 ~ /^- cross_module[ :]/) next
       if ($0 ~ /^- mechanical(-tested)?[ :]/) next
       if ($0 ~ /^- maintainer-reviewed[ :]/) next
-      if ($0 ~ /^- cohorts?[ :]/ || $0 ~ /^- cohort-tested[ :]/) next
+      if ($0 ~ /^- cohorts?[ :]/) next
       print
       next
     }

@@ -46,6 +46,11 @@ If the note reads true, save it. You'll have your agent re-read it when the next
 - **Scaling of learning** (content-strategy throughline) — the arc IS the same loop at successively wider scopes. The agent names it from the evidence; the student reads it back.
 - **Agent-as-mirror** — lets the artefacts do the talking, not the trainer. Extends the M4 audit-as-subagent move (fresh context, structured return) to a retrospective frame.
 
+**Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
+- reopens the saved arc note (and feeds it back to the agent) the next time a long agent run stalls, instead of re-deriving where their practice stands cold
+- spawns a fresh sub-task agent to read across their own real project artefacts and write the state-of-play from quoted files, not a template summary
+- corrects at least one sentence the agent got wrong about their own arc and has it revise from the correction, rather than saving the first draft
+
 **Failure modes + diagnostics:**
 - **Agent writes a template retrospective.** *"You learned X, then Y, then Z."* No quotes, no specificity. Diagnostic: zero file quotes in the note. Fix: re-run the prompt; insist on quotes from the student's actual files.
 - **Agent praises without evidence.** *"Your test-strategy skill shows strong thinking."* Diagnostic: an adjective without a quoted line underneath. Fix: trainer push *"quote the line in the skill that earns that sentence."*

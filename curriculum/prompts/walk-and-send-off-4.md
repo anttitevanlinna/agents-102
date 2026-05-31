@@ -6,7 +6,7 @@ origin: exercises/walk-and-send-off
 requires:
   - id: gap-audit-report
     source: prompt:walk-and-send-off-2
-  - id: memory-folder
+  - id: observations-folder
     source: prompt:walk-and-send-off-3
   - id: stride-adr
     source: prompt:threat-model-with-stride-3

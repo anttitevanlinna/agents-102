@@ -73,7 +73,7 @@ const EXTERNAL_SOURCE_RE = /^(scrollback|student-input|external)\b/;
 // Explicitly-read artefacts (the observations folder) fail on both unbacked
 // and premature.
 const BODY_PRIMITIVES = [
-  { id: 'memory-folder', label: '`./observations/` folder', regex: /(?:`|\b)\.?\/?observations\// },
+  { id: 'observations-folder', label: '`./observations/` folder', regex: /(?:`|\b)\.?\/?observations\// },
   { id: 'claude-local-md', label: '`CLAUDE.local.md`', regex: /CLAUDE\.local\.md/, autoLoaded: true },
 ];
 

@@ -19,7 +19,7 @@ opportunistic-copy:
   - id: claude-local-md
     if-present-at: ../<repo-name>/CLAUDE.local.md
     rationale: born at M1's compound-and-close-1; copied so M5/M6 compounding has M1/M3 evidence
-  - id: memory-folder
+  - id: observations-folder
     if-present-at: ../<repo-name>/observations/
     rationale: born at M4's walk-and-send-off Phase 2; copied so M5/M6 inherits the three-block memory built during M4
 ---

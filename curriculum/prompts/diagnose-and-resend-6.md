@@ -17,7 +17,7 @@ requires:
   - id: test-strategy-skill
     source: prompt:author-test-strategy-skill-1
     conditional: m3-completed
-  - id: memory-folder
+  - id: observations-folder
     source: prompt:walk-and-send-off-3
     conditional: m4-completed
 produces:

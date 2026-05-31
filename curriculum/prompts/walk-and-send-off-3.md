@@ -7,7 +7,7 @@ requires:
   - id: gap-audit-report
     source: prompt:walk-and-send-off-2
 produces:
-  - id: memory-folder
+  - id: observations-folder
     location: ./observations/ (observations + business-rules gaps) + ./CLAUDE.local.md (sharpened rules) + connector setup (no file)
     consumed-by:
       - prompt:walk-and-send-off-4
@@ -16,7 +16,7 @@ produces:
       - prompt:arc-retrospective-1
       - prompt:agents-that-build-agents-1
       - prompt:ae101-m5-worktree-setup
-    note: 2-3 fills per audit run, one per picked gap; destination depends on the audit's per-gap shape label. The ./observations/ folder is the durable artefact M4-M6 read as 'memory-folder'; ae101-m5-worktree-setup copies it opportunistically into the M5 worktree.
+    note: 2-3 fills per audit run, one per picked gap; destination depends on the audit's per-gap shape label. The ./observations/ folder is the durable artefact M4-M6 read as 'observations-folder'; ae101-m5-worktree-setup copies it opportunistically into the M5 worktree.
 ---
 Use the AskUserQuestion tool, at most four options per question, one question per call. First ask which 2-3 audit gaps I want to focus on; if the audit surfaced more than four, offer the four most material as options.
 

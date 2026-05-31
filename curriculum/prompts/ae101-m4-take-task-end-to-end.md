@@ -12,7 +12,7 @@ requires:
   - id: claude-local-md
     source: prompt:compound-and-close-1
     conditional: m1-completed
-  - id: memory-folder
+  - id: observations-folder
     source: prompt:walk-and-send-off-3
   - id: stride-adr
     source: prompt:threat-model-with-stride-3

@@ -63,6 +63,47 @@ const MANDATORY_CLASSES = {
   modules:   ['writing', 'pedagogy', 'strategy'],
 };
 
+// ── N/A-by-design ────────────────────────────────────────────────────────────
+// A rule counts as N/A-by-design ONLY when it targets a section/artifact the
+// surface type STRUCTURALLY cannot have — never a judgment call. Judgment-call
+// N/As stay the judge's to emit per-instance (an explicit N/A verdict), and a
+// MISSING judgment-call verdict must remain a visible hole. Declared explicitly
+// here so a real gap is never silently masked.
+//   • check_strategy_tie_in §§5/6/7 govern module-file sections — Key Concepts
+//     (§5/§6) and What You'll Learn (§7). Lectures and the onboarding email have
+//     no such sections, so those three rules cannot apply there.
+//   • cohort-onboarding-email is an email (SURFACES marks it mandatory:['writing']),
+//     not a module/exercise, so the module/exercise-architecture compendium
+//     check_pedagogy is wholesale N/A.
+// §4 (strategy-fidelity / front-run) DELIBERATELY stays applicable to lectures:
+// a lecture can front-run a downstream teaching moment, so a missing §4 verdict
+// is a real (soft) hole the story judge owes — NOT an N/A.
+const NA_BY_SURFACE = {
+  lectures: { check_strategy_tie_in: ['5', '6', '7'] },
+};
+const NA_BY_FILE = {
+  'cohort-onboarding-email': { check_pedagogy: 'all', check_strategy_tie_in: ['5', '6', '7'] },
+};
+
+// Resolve the N/A rule-set for a (surface, file, compendium). Returns a Set of
+// rule ids; may contain the sentinel 'all' (whole compendium N/A for this file).
+function naRuleSet(surface, slug, cname) {
+  const set = new Set();
+  for (const src of [(NA_BY_SURFACE[surface] || {})[cname], (NA_BY_FILE[slug] || {})[cname]]) {
+    if (src === 'all') set.add('all');
+    else if (Array.isArray(src)) for (const id of src) set.add(String(id));
+  }
+  return set;
+}
+
+// Split missing rule ids into real holes vs N/A-by-design, given an naSet.
+function splitMissing(missingIds, naSet) {
+  if (naSet.has('all')) return { real: [], na: missingIds.slice() };
+  const real = [], na = [];
+  for (const id of missingIds) (naSet.has(String(id)) ? na : real).push(id);
+  return { real, na };
+}
+
 // AE101 surface set, in module order. instanceSlug overrides where the instance
 // filename diverges from the source slug (spot-gaps module carries a -module suffix).
 const SURFACES = {
@@ -221,6 +262,7 @@ function main() {
 
   const report = { generated_for: 'ae101', surfaces: {}, bugs: [], warnings: [], gate_failures: [] };
   let totalHoles = 0;
+  let totalNaBySurface = 0;
 
   // Structural bug scan: class-field drift + parse errors. Training-agnostic —
   // scans ALL instances (a drifted class field breaks consumers regardless of training).
@@ -256,20 +298,25 @@ function main() {
       for (const cname of comps) {
         const C = comp[cname];
         const mappedClasses = C.evalClasses;
+        const naSet = naRuleSet(sk, sf.slug, cname);
         const instances = mappedClasses
           .map(cls => Object.keys(SUFFIX_TO_CLASS).find(s => SUFFIX_TO_CLASS[s] === cls))
           .map(suffix => suffix && loadInstance(sf.instanceSlug, suffix))
           .filter(Boolean);
         if (instances.length === 0) {
-          fileReport.compendia[cname] = { total: C.rules.length, covered: 0, missing: C.rules.map(r => r.id), missingClass: true };
-          fileReport.missingClasses.push({ compendium: cname, needsOneOf: mappedClasses });
-          totalHoles += C.rules.length;
+          const { real, na } = splitMissing(C.rules.map(r => r.id), naSet);
+          fileReport.compendia[cname] = { total: C.rules.length, covered: 0, missing: real, na, missingClass: real.length > 0 };
+          if (real.length > 0) fileReport.missingClasses.push({ compendium: cname, needsOneOf: mappedClasses });
+          totalHoles += real.length;
+          totalNaBySurface += na.length;
           continue;
         }
         const keys = verdictedKeys(instances);
-        const missing = C.rules.filter(r => !keys.has(`${cname}.md::${r.id}`)).map(r => r.id);
-        fileReport.compendia[cname] = { total: C.rules.length, covered: C.rules.length - missing.length, missing };
-        totalHoles += missing.length;
+        const allMissing = C.rules.filter(r => !keys.has(`${cname}.md::${r.id}`)).map(r => r.id);
+        const { real, na } = splitMissing(allMissing, naSet);
+        fileReport.compendia[cname] = { total: C.rules.length, covered: C.rules.length - allMissing.length, missing: real, na };
+        totalHoles += real.length;
+        totalNaBySurface += na.length;
       }
       surfaceReport.files.push(fileReport);
     }
@@ -277,6 +324,7 @@ function main() {
   }
 
   report.total_holes = totalHoles;
+  report.total_na_by_surface = totalNaBySurface;
 
   if (outPath) { fs.writeFileSync(outPath, JSON.stringify(report, null, 2)); }
   if (asJson) { process.stdout.write(JSON.stringify(report, null, 2) + '\n'); }
@@ -339,14 +387,18 @@ function printHuman(report, comp) {
       out.push(`  ${f.slug}`);
       out.push(`    classes: [${f.classesPresent.join(', ') || 'NONE'}]`);
       for (const [c, v] of Object.entries(f.compendia)) {
-        if (v.missingClass) { out.push(`    ${c}: NO INSTANCE of {${(f.missingClasses.find(m => m.compendium === c) || {}).needsOneOf?.join('/') || '?'}} → 0/${v.total}`); continue; }
-        const miss = v.missing.length ? `  missing: ${v.missing.join(',')}` : '';
-        out.push(`    ${c}: ${v.covered}/${v.total} ${pct(v.covered, v.total)}${miss}`);
+        const naN = (v.na || []).length;
+        if (v.missingClass) { out.push(`    ${c}: NO INSTANCE of {${(f.missingClasses.find(m => m.compendium === c) || {}).needsOneOf?.join('/') || '?'}} → 0/${v.total}${naN ? `  (na-by-design: ${naN})` : ''}`); continue; }
+        const applicable = v.total - naN;
+        const miss = v.missing.length ? `  HOLES: ${v.missing.join(',')}` : '';
+        const naStr = naN ? `  na-by-design: ${v.na.join(',')}` : '';
+        out.push(`    ${c}: ${v.covered}/${applicable} applicable ${pct(v.covered, applicable)}${miss}${naStr}`);
       }
     }
     out.push('');
   }
-  out.push(`TOTAL uncovered rule×file pairs: ${report.total_holes}`);
+  out.push(`TOTAL real holes (uncovered, applicable rule×file pairs): ${report.total_holes}`);
+  out.push(`N/A-by-design (structurally inapplicable — not holes): ${report.total_na_by_surface}`);
   process.stdout.write(out.join('\n') + '\n');
 }
 
@@ -358,6 +410,8 @@ module.exports = {
   verdictedKeys,
   loadCompendia,
   scanInstanceIntegrity,
+  naRuleSet,
+  splitMissing,
   VERDICT_ENUM,
   CANONICAL_FIELD,
 };

@@ -19,6 +19,8 @@ const assert = require('node:assert/strict');
 const {
   parseRules,
   scanInstanceIntegrity,
+  naRuleSet,
+  splitMissing,
 } = require('./audit-eval-coverage.js');
 
 // A tiny fake compendium set: check_pedagogy has integer rules 9 and 10 only.
@@ -85,4 +87,43 @@ test('behavior/cross_module shapes (no top-level rules_evaluated) → no rule wa
   const inst = { class: 'behavior', prompts_findings: [{ prompt_index: 1 }] };
   const { warnings } = scanInstanceIntegrity('ae101--x.behavior.json', 'behavior', inst, COMP);
   assert.deepEqual(warnings, []);
+});
+
+// ── N/A-by-design bucketing ──────────────────────────────────────────────────
+// splitMissing must keep judgment-call holes visible while routing only the
+// declared structural-impossibility rules into the na bucket. A wrong split
+// either hides a real hole (na too greedy) or inflates the headline (na too shy).
+
+test('splitMissing: partial naSet splits real holes from N/A-by-design', () => {
+  const { real, na } = splitMissing(['4', '5', '6', '7'], new Set(['5', '6', '7']));
+  assert.deepEqual(real, ['4']); // §4 stays a real hole
+  assert.deepEqual(na, ['5', '6', '7']);
+});
+
+test('splitMissing: "all" sentinel → everything N/A, zero holes', () => {
+  const { real, na } = splitMissing(['1', '2', '3'], new Set(['all']));
+  assert.deepEqual(real, []);
+  assert.deepEqual(na, ['1', '2', '3']);
+});
+
+test('splitMissing: empty naSet → every missing rule is a real hole', () => {
+  const { real, na } = splitMissing(['1', '2'], new Set());
+  assert.deepEqual(real, ['1', '2']);
+  assert.deepEqual(na, []);
+});
+
+test('naRuleSet: lectures strategy_tie_in §§5/6/7 N/A, §4 stays a hole', () => {
+  const s = naRuleSet('lectures', 'painting-the-picture-with-the-llm', 'check_strategy_tie_in');
+  assert.ok(s.has('5') && s.has('6') && s.has('7'));
+  assert.ok(!s.has('4')); // §4 (front-run) applies to lectures — not declared N/A
+});
+
+test('naRuleSet: cohort-onboarding-email pedagogy is wholesale N/A', () => {
+  const s = naRuleSet('modules', 'cohort-onboarding-email', 'check_pedagogy');
+  assert.ok(s.has('all'));
+});
+
+test('naRuleSet: a normal exercise carries no N/A declarations', () => {
+  const s = naRuleSet('exercises', 'fix-tests-first', 'check_pedagogy');
+  assert.equal(s.size, 0);
 });

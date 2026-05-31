@@ -128,6 +128,21 @@ if (require.main === module) {
     console.error('\nPrompt dependency-graph validation failed — see errors above. Build aborted.');
     process.exit(1);
   }
+
+  // Mechanical lint of prompt BODIES against the grep-decidable check_prompts
+  // rules (§1/§4/§9/§24/§28/§31/§32). Sibling child process, same decoupling as
+  // the graph validator. Gates the build on Sev-1 (cold-run / render breakers);
+  // Sev-2 quality findings print but don't abort. Whole registry, all trainings.
+  try {
+    execFileSync(
+      process.execPath,
+      [path.join(__dirname, 'lint-prompt-bodies.js')],
+      { stdio: 'inherit' }
+    );
+  } catch (e) {
+    console.error('\nPrompt-body lint found Sev-1 violations — see above. Build aborted.');
+    process.exit(1);
+  }
 }
 
 module.exports = { loadRegistry, writeRegistry, PROMPTS_DIR, OUT_FILE };

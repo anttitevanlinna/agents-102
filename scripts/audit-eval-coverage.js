@@ -166,6 +166,47 @@ function verdictedKeys(instances) {
   return set;
 }
 
+// Verdict values a rules_evaluated entry may carry. An explicit N/A IS coverage
+// (the rule was evaluated and ruled not-applicable), so it is valid here.
+const VERDICT_ENUM = new Set(['PASS', 'REVISE', 'N/A']);
+
+// Per-instance structural integrity. Returns gating `bugs` (class-field issues)
+// + non-gating `warnings` (rules_evaluated data hygiene). Pure given `comp`, so
+// it is unit-testable. Coverage used to be credited on (compendium, rule_index)
+// PRESENCE alone — a rule_index matching no real rule (the corpus encodes
+// sub-rules three ways: "9b" string, 9.1 float, fabricated 91 int) was silently
+// swallowed, and the verdict value was never checked. This surfaces both.
+// Behavior (prompts_findings) and cross_module (nested module_pairs_evaluated)
+// carry no top-level rules_evaluated, so they produce no rule warnings.
+function scanInstanceIntegrity(fname, suffix, inst, comp) {
+  const bugs = [];
+  const warnings = [];
+  const canonical = CANONICAL_FIELD[suffix];
+  if (canonical) {
+    if (inst.class == null) bugs.push({ kind: 'missing-class-field', file: fname, expected: canonical });
+    else if (inst.class !== canonical) bugs.push({ kind: 'class-field-drift', file: fname, expected: canonical, got: inst.class });
+  }
+  if (Array.isArray(inst.rules_evaluated)) {
+    for (const r of inst.rules_evaluated) {
+      if (!r) continue;
+      if (r.verdict != null && !VERDICT_ENUM.has(String(r.verdict).trim())) {
+        warnings.push({ kind: 'non-enum-verdict', file: fname, compendium: r.compendium, rule_index: r.rule_index, verdict: r.verdict });
+      }
+      if (r.compendium != null && r.rule_index != null) {
+        const cname = String(r.compendium).replace(/\.md$/, '');
+        const C = comp[cname];
+        if (C && Array.isArray(C.rules)) {
+          const ids = new Set(C.rules.map(x => x.id));
+          if (!ids.has(String(r.rule_index))) {
+            warnings.push({ kind: 'unresolvable-rule-index', file: fname, compendium: r.compendium, rule_index: r.rule_index });
+          }
+        }
+      }
+    }
+  }
+  return { bugs, warnings };
+}
+
 function main() {
   const args = process.argv.slice(2);
   const wantSurface = (args.includes('--surface') ? args[args.indexOf('--surface') + 1] : 'all');
@@ -178,7 +219,7 @@ function main() {
   const comp = loadCompendia();
   const surfaceKeys = wantSurface === 'all' ? Object.keys(SURFACES) : [wantSurface];
 
-  const report = { generated_for: 'ae101', surfaces: {}, bugs: [], gate_failures: [] };
+  const report = { generated_for: 'ae101', surfaces: {}, bugs: [], warnings: [], gate_failures: [] };
   let totalHoles = 0;
 
   // Structural bug scan: class-field drift + parse errors. Training-agnostic —
@@ -191,10 +232,9 @@ function main() {
     let inst;
     try { inst = JSON.parse(fs.readFileSync(path.join(INSTANCES, fname), 'utf8')); }
     catch (e) { report.bugs.push({ kind: 'parse-error', file: fname, detail: e.message }); continue; }
-    const canonical = CANONICAL_FIELD[suffix];
-    if (canonical && inst.class != null && inst.class !== canonical) {
-      report.bugs.push({ kind: 'class-field-drift', file: fname, expected: canonical, got: inst.class });
-    }
+    const integrity = scanInstanceIntegrity(fname, suffix, inst, comp);
+    report.bugs.push(...integrity.bugs);
+    report.warnings.push(...integrity.warnings);
   }
 
   for (const sk of surfaceKeys) {
@@ -243,6 +283,9 @@ function main() {
   else { printHuman(report, comp); }
 
   if (gate) {
+    if (report.warnings && report.warnings.length) {
+      process.stderr.write(`\n⚠ ${report.warnings.length} non-gating data-hygiene warning(s) — see report (does not fail the gate).\n`);
+    }
     const fails = report.bugs.length + report.gate_failures.length;
     if (fails > 0) {
       process.stderr.write(`\n✗ eval-coverage gate FAILED: ${report.bugs.length} structural bug(s), ${report.gate_failures.length} missing mandatory instance(s).\n`);
@@ -272,6 +315,20 @@ function printHuman(report, comp) {
     for (const g of report.gate_failures) out.push(`  • ${g.surface}/${g.file}: missing ${g.missingClass}`);
     out.push('');
   }
+  if (report.warnings && report.warnings.length) {
+    const W = report.warnings;
+    const byKind = {};
+    for (const w of W) byKind[w.kind] = (byKind[w.kind] || 0) + 1;
+    out.push(`⚠ data-hygiene warnings (${W.length}, non-gating): ${Object.entries(byKind).map(([k, n]) => `${k}×${n}`).join(', ')}`);
+    const SHOWN = 15;
+    for (const w of W.slice(0, SHOWN)) {
+      if (w.kind === 'unresolvable-rule-index') out.push(`  • unresolvable-rule-index  ${w.file}  ${w.compendium}::${w.rule_index}`);
+      else if (w.kind === 'non-enum-verdict') out.push(`  • non-enum-verdict  ${w.file}  ${w.compendium}::${w.rule_index} = "${w.verdict}"`);
+      else out.push(`  • ${w.kind}  ${w.file}`);
+    }
+    if (W.length > SHOWN) out.push(`  … and ${W.length - SHOWN} more (use --json for the full list)`);
+    out.push('');
+  }
   for (const [sk, sr] of Object.entries(report.surfaces)) {
     out.push(`── ${sk} (${sr.files.length} files) ──`);
     for (const f of sr.files) {
@@ -293,4 +350,14 @@ function printHuman(report, comp) {
   process.stdout.write(out.join('\n') + '\n');
 }
 
-main();
+if (require.main === module) main();
+
+module.exports = {
+  parseRules,
+  parseFrontmatterEvalClasses,
+  verdictedKeys,
+  loadCompendia,
+  scanInstanceIntegrity,
+  VERDICT_ENUM,
+  CANONICAL_FIELD,
+};

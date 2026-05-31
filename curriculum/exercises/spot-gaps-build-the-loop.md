@@ -46,7 +46,7 @@ Before you shape the skill, look wider than the two runs. The dominant gap came 
 
 Read your own history first. Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back.
 
-> **This scan runs long, and it is yours to steer.** Narrow it whenever you like, point it at the kind of work you care about. Any time, you can say *tell me what you've found so far*, then let it pick back up.
+> **This scan runs long, and it is yours to steer.** Narrow it whenever you like, point it at the kind of work you care about. Any time, you can say *tell me what you've found so far*, then let it pick back up. If it wraps up early, nudge it to keep going. There is more in there than a first pass admits.
 
 Ask Claude to scan your sessions across every project and group the kinds of work that recur.
 
@@ -57,6 +57,8 @@ What comes back is the work you do over and over, grouped and ranked. Read for t
 Ask Claude to draw your top few work-shapes as simple diagrams.
 
 {{prompt:spot-gaps-build-the-loop-shapes}}
+
+> **Want to see the shapes, not read them?** Mermaid comes back as text. Say *give me this in HTML* to open them in a browser.
 
 If one of the work-shapes you drew is the kind of work those two runs came from, that is the session-shaper you build now. If not, build it against the dominant gap directly. The rest are the kit you grow later.
 
@@ -112,8 +114,9 @@ The skill ships personally. It lives at `~/.claude/skills/session-shaper/SKILL.m
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-31 (writing@e011708 story@e011708 technical@d06b5b8 behavior@e011708 pedagogy@e011708)
+**Quality:** compendium-audited 2026-05-31 (writing@796293b story@e011708 technical@d06b5b8 behavior@e011708 pedagogy@796293b)
 - judges @e011708: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy N/A (strategy evaluated at module level)
+- re-audit @796293b 2026-05-31: writing PASS, pedagogy PASS — steer-callout gained a premature-completion recovery line (§48/§62) + a render-as-HTML affordance callout after the shapes prompt (§50/§53/§62 hold)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Word count:** ~830 words body.

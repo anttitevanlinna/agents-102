@@ -46,10 +46,6 @@ For the full reference, search *"<span class="rt-code">Claude Code subagents</sp
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-05-14 (writing@degraded story@56f9332 technical@degraded behavior@56f9332)
-- compendium-audited 2026-05-09 (behavior@56f9332) — judges @56f9332: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
-- 2026-05-14: OpenClaw hallucination removed from body + maintainer; writing + technical degraded; story + behavior carried forward (frame unchanged — still five practitioners on Claude Code workflows)
-
 **Frameworks riffed on:**
 - Practitioner-before-pattern — read five people doing the thing before hearing the name for the thing. Same move as Module 2's Karpathy-first sequencing.
 - Ceiling-before-addition — see what ONE agent does well before adding coordination, so the cost of coordination is visible.

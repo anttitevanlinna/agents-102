@@ -116,6 +116,3 @@ Phase 0 is next: a fresh briefing, then a 30-claim pool extracted from it. The c
 **Length:** ~950 words. Prework-reading band (800-1200) — above demo-script band (350-600). Delivered in-room (10-12 min). Four candidates need paragraph-each treatment but each paragraph stays tight because the exercise carries the depth.
 
 **Lecture meta:** *Closer beat is the lead-in to Phase 0 of the Hallucination benchmark exercise. Trainer pivots straight from the "Phase 0 is next" line into the exercise — no separate transition.*
-
-**Quality:** draft 2026-04-30 (opening PS/PPS added from four-detector pass + rerun on Mata pre-read — re-audit needed)
-- compendium-audited 2026-04-28 (check_writing, check_student_facing, check_lectures, check_pedagogy, check_prompts)

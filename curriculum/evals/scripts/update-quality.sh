@@ -7,7 +7,7 @@
 # FIVE axes (each renders as ≤1 row):
 #   judges               — six-class verdict (writing/story/technical/behavior/pedagogy/strategy)
 #   cross_module         — module-set verdict (fires at module-set scope only)
-#   mechanical           — mechanical battery (script-only judge run)
+#   mechanical           — mechanical battery (tmux-runner; bin/judge.sh decommissioned 2026-05-31)
 #   maintainer-reviewed  — Antti read end-to-end + ran prompts manually
 #   cohorts              — delivery state
 #
@@ -35,9 +35,9 @@
 # Other args:
 #   --sha <short-sha>   default: current HEAD
 #   --date <YYYY-MM-DD> default: today
-#   --stage <word>      set the top-line ladder stage explicitly (draft / compendium-audited /
-#                       sim-passed / mechanical-tested). Delivery reality is NOT a ladder rung —
-#                       it lives on the `cohorts` log row, which never touch-degrades.
+#   --stage <word>      set the top-line ladder stage explicitly (compendium-audited /
+#                       sim-passed / mechanical-tested — 'draft' removed 2026-05-31). Delivery
+#                       reality is NOT a ladder rung — it lives on the `cohorts` log row.
 #                       DEFAULT: preserve the file's existing stage word. Re-stamping pins or
 #                       axes never advances the stage on its own — advancement is deliberate.
 
@@ -332,10 +332,12 @@ fi
 #   1. --stage <word> set this run → use it (the only deliberate ladder advance).
 #   2. A prior stage word on the existing line → preserve it. Re-stamping pins or
 #      axes must NEVER promote/demote the tier. (The old code hardcoded
-#      compendium-audited, silently promoting drafts + maintainer-reviewed and
-#      demoting sim-passed / mechanical-tested files on every stamp.)
-#   3. No prior block: a judge class set this run → compendium-audited (a compendium
-#      audit just happened); otherwise the ladder floor, draft.
+#      compendium-audited, silently promoting + demoting sim-passed / mechanical-tested
+#      files on every stamp.)
+#   3. No prior block but a judge class set this run → compendium-audited (a real
+#      compendium audit just happened).
+#   4. Otherwise: REFUSE. 'draft' was the old floor default (removed 2026-05-31) — the
+#      script never fabricates a ladder stage it cannot justify.
 if [[ -n "$arg_stage" ]]; then
   stage="$arg_stage"
 elif [[ -n "$prior_stage" ]]; then
@@ -343,7 +345,20 @@ elif [[ -n "$prior_stage" ]]; then
 elif [[ $all_keep -eq 0 ]]; then
   stage="compendium-audited"
 else
-  stage="draft"
+  echo "error: cannot resolve a ladder stage — no prior Quality block, no judge class set." >&2
+  echo "       'draft' is no longer a stage (removed 2026-05-31). Pass --stage explicitly," >&2
+  echo "       or set a judge class (e.g. --writing PASS) to record a real compendium audit." >&2
+  exit 1
+fi
+
+# 'draft' is phased out: a file is audited (compendium-audited / sim-passed /
+# mechanical-tested) or carries no Quality line. Reject draft from --stage or a
+# legacy line so it can never re-enter the corpus through a stamp.
+if [[ "$stage" == "draft" ]]; then
+  echo "error: 'draft' is no longer a ladder stage (removed 2026-05-31)." >&2
+  echo "       Re-stamp with a real --stage (compendium-audited / sim-passed / mechanical-tested)," >&2
+  echo "       or remove the Quality line so the file reads as un-audited." >&2
+  exit 1
 fi
 
 # Narrative tail: free text the maintainer hand-wrote after stage+date (e.g.

@@ -120,9 +120,5 @@ You just ran **Recipe 1** end-to-end: baseline without context, colleague-as-buy
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-30
-- draft 2026-04-30 (renamed and reframed exercise around visible artifact → iterate → package agent behavior; prompts untouched; needs re-review)
-- maintainer-reviewed 2026-04-29 (Antti, M1 exercise manual run; all six phases tested under Cowork lens)
-
 **Deferred per student-facing-first rule:**
 - Facilitator notes: watch-fors (generic Phase 2 answers; Phase 3 strengths that don't serve anyone specific; Phase 4 hate-list that doesn't flip cleanly), decision points, per-phase timings (Phase 6 free iteration tends to run long), Claude Code setup prerequisites.

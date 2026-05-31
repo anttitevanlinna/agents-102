@@ -51,9 +51,6 @@ Three to five lines, plain language, the things you would not want a generic pol
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-29
-- compendium-audited 2026-04-25 (check_writing, check_student_facing)
-
 **Time:** 30-40 minutes total. 10 on personal skills, 15-20 on the security shift, 5 on the five-lines prep, 5 on the "borrowed expertise" note.
 
 **Frameworks riffed on:**

@@ -20,8 +20,4 @@ Now: five minutes with Claude. The debrief.
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-30
-- draft 2026-04-30 (renamed and reframed close around iterate-and-learn loop; needs re-review)
-- maintainer-reviewed 2026-04-29 (Antti, M1 closing lecture manual read)
-
 **Time:** 8 minutes.

@@ -108,8 +108,6 @@ You become the person who decides which details the system must never miss.
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-29
-
 **Time:** 10-12 minutes.
 
 **Placement:** Opening lecture for Agents 101 Module 6, after the Bitter Lesson / Garbage Can Connections question and before `eval-loop.md`.

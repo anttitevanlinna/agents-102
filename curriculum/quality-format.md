@@ -5,7 +5,11 @@ Canonical format spec. Loaded by `/curriculum-pre-ship-audit`, `/wind-down`, and
 Every student-facing artifact (module / exercise / lecture / prework) carries a Quality line in its maintainer block. The contract between sessions.
 
 **LLM-checks ladder** (cheap → expensive; each tier earns the next):
-`draft` → `compendium-audited` → `sim-passed` → `mechanical-tested`.
+`compendium-audited` → `sim-passed` → `mechanical-tested`.
+
+No `draft` rung (removed 2026-05-31). A file is either audited — `compendium-audited` or higher — or carries no Quality line at all. Un-audited is the absence of a state, not a state; the stamper refuses to fabricate one (`update-quality.sh` errors rather than mint a floor).
+
+`mechanical-tested` evidence comes from the **tmux-runner** battery. The old `curriculum/evals/mechanical/bin/judge.sh` runner is decommissioned (2026-05-31); its pins no longer count and degrade to "pending tmux-runner re-run."
 
 The ladder tops at the last thing an LLM/script can verify. Delivery reality (a cohort ran it; survived many) is NOT a rung — touch-degrade would forbid ever standing on one. It lives on the `- cohorts:` log row below: a factual record, not touch-degraded.
 
@@ -42,7 +46,7 @@ Each class's SHA = file's git short-SHA when that judge passed.
 - **Auto-degrade is touch-based, not time-based.** File touched after audit date → that tier and higher degrade. Cosmetic edits below `<!-- maintainer -->` don't degrade.
 - **Per-class auto-degrade.** Touching a writing-only line invalidates only `writing@<sha>`; others carry forward. Mappings: prompt block → `behavior@` (+ usually `technical@`); `## Phase` / `## Plug Points` / `## Bridge` → `pedagogy@`; `## Big Idea` / `## Key Concepts` / `## What You'll Learn` → `strategy@`. `eval-class-router.sh` PostToolUse hook classifies each edit, writes to `/tmp/claude-eval-queue-<sid>` for next `/wind-down`.
 - **Grandfather rule** for files audited pre-2026-05-14: existing `compendium-audited @ <sha>` satisfies the four old classes (writing / story / technical / behavior) IF mtime unchanged. The two new classes (`pedagogy@`, `strategy@`) = `grandfathered` until next touch.
-- **SHA pin on `mechanical-tested`** mandatory — instance reports overwrite on rerun; SHA is the only drift detector.
+- **SHA pin on `mechanical-tested`** mandatory — instance reports overwrite on rerun; SHA is the only drift detector. Evidence source: the **tmux-runner** battery (`bin/judge.sh` decommissioned 2026-05-31).
 - **Reference files** (`curriculum/trainings/<training>/reference/`) **exempt** — flat lookup, no mood / sim surface.
 
 Full rationale → `memory/compounded/2026-04-25-content_creation-quality-state-tagging.md` + `2026-04-28-content_creation-maintainer-reviewed-orthogonal-dimension.md`.

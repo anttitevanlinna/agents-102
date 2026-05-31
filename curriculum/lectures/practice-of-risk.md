@@ -56,10 +56,6 @@ That's the work.
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-29 (body touched after Pass 3 compendium audit; re-audit needed)
-- compendium-audited 2026-04-28 (Pass 3 cycle: check_writing, check_student_facing, check_lectures, check_strategy_tie_in — banned `practice` (noun) ban, em-dash ban, time-of-day anchors, mood-contract honour, full-form module names; all PASS)
-- compendium-audited 2026-04-25 (Pass 1 — initial draft) — superseded
-
 **Lecture meta:** *8 min in-room lecture. Placement: after Connections, before the two exercises. Primes the loop the exercises run. Mood contract: deepened unease — names the unease as the permanent condition, does not resolve it; Module 5 is the rescue.*
 
 **Time:** 8 minutes. The 1h45 module budget (lecture + two exercises + Connections + Debrief + transitions) only fits when the lecture stays at 8 and the author exercise's Phase 2 lands in two turns. If a tougher cohort takes Phase 2 to three turns, the budget eats this lecture's slack first. Hold to 8.

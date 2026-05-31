@@ -16,8 +16,6 @@ This is one level higher in abstraction and composition. Compound engineering al
 <!-- maintainer -->
 
 
-**Quality:** draft 2026-05-21 (rewritten 2026-05-21 after fact-check: five-approaches framing replaced earlier "five live lineages" claim; per-practitioner lines tightened against verified primary sources; supersedes 2026-05-20 draft. 2026-05-24: P3 gained one sentence pointing at Dino's worked-example case study in the supplementary; no re-balancing of the P2 practitioner list.)
-
 **Lecture meta:** *3–4 min M6 mini-lecture (≈350 words body), placed in the closer area between Human close and the closing lecture pair. Names the shift from cohort-pedagogy to practitioner-mode, walks the five composition approaches + Ronacher counter-position in one line each, points at a trainer's worked-example case study in the supplementary, and closes on a Risto-flavoured lead-out (one level higher in abstraction; Claude Code can build the kit; choice is approaching infinite; intuition and taste; *your* intuition). Points at the workflow-composition-lineages supplementary for depth. Lead-in is explicit ("there is no prompt to drill at this point") so the student knows the register has changed. Variety preserved in body: the approach-naming paragraph keeps the complexity visible at lecture-listening time, not deferred to the supplementary.*
 
 **Time:** 3–4 min at presentation pace, or a 4-min student read on their own.

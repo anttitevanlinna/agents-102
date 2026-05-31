@@ -258,6 +258,3 @@ If a prompt, example, timing move, or fallback improved the session, feed it bac
 <!-- maintainer -->
 
 **Delivery architecture canonical home:** training-architecture.md (§Platform, §Material distribution, §Working directory model, §Session boundaries, §Rule files, §Skills, §Prework, §Replay, §Local-only work). This guide's body restates the delivery contract for in-room prep by design; the architecture doc is the source of truth when the two diverge.
-
-**Quality:** draft 2026-04-30
-- draft 2026-04-30 (training-specific trainer guide; delivery material folded in, not yet compendium-audited or sim-passed)

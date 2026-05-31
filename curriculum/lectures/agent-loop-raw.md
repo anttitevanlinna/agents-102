@@ -20,8 +20,6 @@ You can try the same three prompts in your own session. The goal is not to memor
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-30
-
 **Time:** 4-6 minutes.
 
 **Role in Module 4:** Short Claude Code demo before the risk lecture. Shows raw agent mechanics: tools available, tool selection via descriptions and schemas, text becoming action through runtime mediation. Keep it live when possible. If runtime answers vary, treat the variance as the lesson: tools are environment-specific, the loop shape is stable.

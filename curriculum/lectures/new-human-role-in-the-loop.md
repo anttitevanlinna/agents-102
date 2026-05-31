@@ -98,8 +98,6 @@ Designing the conditions under which the system earns more autonomy, one loop at
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-29
-
 **Time:** 8-10 minutes.
 
 **Placement:** Closing lecture for Agents 101 Module 6, after `eval-loop.md` and before Debrief / Next. Designed to close the six-module arc when M7/M8 are not held.

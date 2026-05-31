@@ -144,8 +144,6 @@ Two or three practitioners is enough to track. Watch what they ship in their own
 <!-- maintainer -->
 
 
-**Quality:** draft 2026-05-21 (rewritten 2026-05-21 after Cycle 3 confirmation + Antti fact-check; supersedes the 2026-05-20 draft. Five practitioner-grounded shapes plus counter-position; field-totality claims dropped; quote attributions verified against direct sources where possible. 2026-05-24: added Dino's skill-stacking worked-example section + `skill-stacking/` primary doc + three diagrams.)
-
 **Supplementary meta:** *Reading material for AE101 M6 practitioner-mode beat. Pairs with `lectures/composing-the-workflow.md`. Seven sections: one named framework (Klaassen), four shapes (Pocock / Yan-Cognition / Metcalf-Amp / Cherny-moves), one counter-position (Ronacher), one worked-example case study (Dino, AE101 trainer). Closes with three filters for picking what to study first. Explicit scope note in intro: the walk is partial, the field has more named frameworks than this set surfaces, the curation reflects what AE101's OODA cycles caught.*
 
 **Time:** 15–25 min student read; not in-room.

@@ -132,6 +132,3 @@ After delivery, capture friction where editors will see it. Cohort-specific note
 If a prompt, example, timing move, or fallback improved the session, feed it back into the content loop after class. The exact capture mechanism is still TBD; do not rely on memory.
 
 <!-- maintainer -->
-
-**Quality:** draft 2026-04-30
-- draft 2026-04-30 (training-specific trainer guide; delivery material folded in, not yet compendium-audited or sim-passed)

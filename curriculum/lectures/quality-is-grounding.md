@@ -9,9 +9,6 @@ Some of the early agentic engineering demos were single devs shipping 500K lines
 
 <!-- maintainer -->
 
-
-**Quality:** draft 2026-05-20
-
 **Lecture meta:** *4–6 min stakes-setter for AE101 M6, placed early between `story-of-module-6.md` and the main exercise. Names the quality arc threaded across the whole training (M1 tests-first → M2 plan push-back → M3 skill → M5 verifier → M6 second skill) and the reframe under it (spec-and-tests → grounding). Pairs with [The loop has a name](the-loop-has-a-name.md) as M6's closer — quality-is-grounding sets the WHY going in, the-loop-has-a-name names the WHAT (eval) coming out.*
 
 **Time:** 4–6 min at presentation pace.

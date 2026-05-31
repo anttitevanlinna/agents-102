@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 # Top-level dispatcher for mechanical-test judges.
 #
+# DECOMMISSIONED 2026-05-31. Mechanical Quality evidence is re-homed on the
+# tmux-runner; this runner no longer stamps Quality blocks (its pins would write a
+# stale bin/judge.sh-sourced state). Kept runnable for reference until the harness
+# is removed. Do NOT treat its output as a `mechanical-tested` ladder source.
+#
 # Usage:
 #   judge.sh <runner-slug> [<extra-args>]
 #   judge.sh all               # fire every Agents 101 module judge in order
@@ -50,15 +55,14 @@ slug_to_file() {
   esac
 }
 
-# Call update-quality on PASS
+# Call update-quality on PASS — DISABLED 2026-05-31 (runner decommissioned).
+# Mechanical Quality evidence now comes from the tmux-runner. This runner no longer
+# writes the Quality block; a PASS here is informational only. The slug_to_file map
+# above is retained for reference. (Was: update-quality.sh --mechanical "PASS:… via bin/judge.sh".)
 post_pass() {
-  local slug="$1" rc="$2"
-  [[ "$rc" -eq 0 ]] || return 0
-  local file
-  file=$(slug_to_file "$slug")
-  [[ -n "$file" && -f "$REPO_ROOT/$file" ]] || return 0
-  bash "$UPDATE_QUALITY" "$REPO_ROOT/$file" \
-    --mechanical "PASS:$slug via bin/judge.sh" || true
+  # no-op: Quality stamping moved to the tmux-runner (2026-05-31). UPDATE_QUALITY +
+  # slug_to_file above are retained for reference only.
+  return 0
 }
 
 if [[ $# -lt 1 ]]; then

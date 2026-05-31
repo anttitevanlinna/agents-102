@@ -16,7 +16,7 @@ Don't start M4 substantive work while M1–M3 has open REVISE or grandfathered p
 
 ## Quality
 
-Every student-facing artifact carries a Quality line. Ladder: `draft` → `compendium-audited` → `sim-passed` → `mechanical-tested`. Orthogonal axis: `maintainer-reviewed`. Delivery reality → `- cohorts:` log row (not a rung). Six per-class SHAs + cross_module row. Auto-degrade is touch-based, per-class.
+Every student-facing artifact is either audited or carries no Quality line — there is no `draft` rung (removed 2026-05-31). Ladder: `compendium-audited` → `sim-passed` → `mechanical-tested` (tmux-runner-sourced; `bin/judge.sh` decommissioned). Orthogonal axis: `maintainer-reviewed`. Delivery reality → `- cohorts:` log row (not a rung). Six per-class SHAs + cross_module row. Auto-degrade is touch-based, per-class.
 
 Format + key rules → `curriculum/quality-format.md`.
 

@@ -13,7 +13,7 @@ Bring the feature you planned at M2, that's the default. The plan file Claude Co
 
 Optional pre-reads in the Module 2 to Module 3 gap: Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/); [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) for a deeper scan.
 
-If you want the primitives this module uses at a glance, [subagents in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#6-subagents--task-tool-fresh-context) and [skills in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#7-skills) cover what each is and when to reach for it. Optional.
+If you want the primitives this module uses at a glance, [subagents in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#6-subagents--agent-tool-fresh-context) and [skills in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#7-skills) cover what each is and when to reach for it. Optional.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -91,7 +91,7 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 **Quality:** compendium-audited 2026-05-22 (writing@1a9e10b story@1a9e10b technical@1a9e10b behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b)
 - judges @1a9e10b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - cross_module @1765c51: PASS — override-§3-student-noted-path-by-design-§5-contract-row-added-see-instances/ae101--prework-M1-M3.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust]
-- mechanical @6121abd: PASS — ae101-m3 via bin/judge.sh
+- mechanical: pending re-run on tmux-runner (ae101-m3; old bin/judge.sh runner decommissioned 2026-05-31, prior PASS @6121abd no longer counts — predates later edits)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

@@ -8,8 +8,6 @@ That is the first system boundary. Context tells the agent what world it is in. 
 
 <!-- maintainer -->
 
-**Quality:** draft 2026-04-30
-
 **Time:** 3-5 minutes.
 
 **Role in Module 2:** Short trainer demo before the main memory exercise. Shows context + guardrail + schedule as the smallest visible agent system. Keep proposal-only unless runtime support and cohort permissions are verified.

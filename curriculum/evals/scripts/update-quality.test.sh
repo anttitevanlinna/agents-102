@@ -9,6 +9,8 @@
 #   - an explicit --stage flag is the only thing that advances the ladder tier
 #   - REVISE-without-note still hard-errors
 #   - an all-keep no-op stamp is idempotent on a judged block
+#   - 'draft' is removed (2026-05-31): no floor default — the script REFUSES rather than
+#     fabricate a stage; --stage draft and any legacy draft line are rejected.
 #
 # Run: bash curriculum/evals/scripts/update-quality.test.sh
 # Exit 0 = all pass; 1 = at least one failure.
@@ -37,17 +39,17 @@ assert_rc() { # actual expected msg
 
 mkfix() { printf '%s\n' "$2" > "$TMP/$1"; }
 
-# ── T1 — draft stage + narrative preserved; new writing pin added ────────────
+# ── T1 — prior stage + narrative preserved; new writing pin added ────────────
 mkfix t1.md '# Lesson
 <!-- maintainer -->
-**Quality:** draft 2026-05-21 (rewritten after fact-check; supersedes 2026-05-20 draft)
+**Quality:** sim-passed 2026-05-21 (rewritten after fact-check; supersedes 2026-05-20 draft)
 - judges @old1234: writing PASS, story PASS
 
 body text'
 run "$TMP/t1.md" --writing PASS --sha new5678 --date 2026-06-01 >/dev/null
-assert_grep    "$TMP/t1.md" '**Quality:** draft' 'T1 stage stays draft'
-assert_no_grep "$TMP/t1.md" 'compendium-audited'  'T1 not falsely promoted'
-assert_grep    "$TMP/t1.md" 'rewritten after fact-check; supersedes 2026-05-20 draft' 'T1 narrative preserved'
+assert_grep    "$TMP/t1.md" '**Quality:** sim-passed' 'T1 stage stays sim-passed'
+assert_no_grep "$TMP/t1.md" 'compendium-audited'  'T1 stage not rewritten'
+assert_grep    "$TMP/t1.md" 'rewritten after fact-check; supersedes 2026-05-20 draft' 'T1 narrative preserved (incl. the word draft as prose)'
 assert_grep    "$TMP/t1.md" 'writing@new5678'     'T1 new writing pin'
 
 # ── T2 — compendium-audited: set pedagogy, keep the other five pins ──────────
@@ -63,18 +65,17 @@ assert_grep "$TMP/t2.md" 'pedagogy@new5678'  'T2 pedagogy re-pinned'
 assert_grep "$TMP/t2.md" 'writing@1ff6f8a'   'T2 untouched writing pin kept'
 assert_grep "$TMP/t2.md" '2026-06-01'        'T2 date bumped (a class was set)'
 
-# ── T3 — THE auto-fire regression: mechanical-only on a draft ────────────────
+# ── T3 — auto-fire regression: an axis-only stamp never bumps stage or date ──
 #    stage + date frozen, narrative + sim-passed row survive.
 mkfix t3.md '# Closing lecture
 <!-- maintainer -->
-**Quality:** draft 2026-04-28 (post rule-#3 sweeps)
+**Quality:** compendium-audited 2026-04-28 (post rule-#3 sweeps)
 - sim-passed 2026-04-27 — STALE since sweep touched the opener
 - mechanical-tested: N/A (lectures are trainer-narrated)
 
 body'
-run "$TMP/t3.md" --mechanical "PASS:lesson via bin/judge.sh" --sha new5678 --date 2026-06-01 >/dev/null
-assert_grep    "$TMP/t3.md" '**Quality:** draft 2026-04-28' 'T3 stage AND date frozen on all-keep'
-assert_no_grep "$TMP/t3.md" 'compendium-audited'  'T3 auto-fire did not promote'
+run "$TMP/t3.md" --mechanical "PASS:lesson via tmux-runner" --sha new5678 --date 2026-06-01 >/dev/null
+assert_grep    "$TMP/t3.md" '**Quality:** compendium-audited 2026-04-28' 'T3 stage AND date frozen on all-keep'
 assert_no_grep "$TMP/t3.md" '2026-06-01'          'T3 date not bumped by mechanical-only'
 assert_grep    "$TMP/t3.md" 'post rule-#3 sweeps' 'T3 narrative preserved'
 assert_grep    "$TMP/t3.md" 'sim-passed 2026-04-27' 'T3 sim-passed row not deleted'
@@ -98,15 +99,19 @@ run "$TMP/t5a.md" --writing PASS --sha new5678 --date 2026-06-01 >/dev/null
 assert_grep "$TMP/t5a.md" '**Quality:** compendium-audited' 'T5a new+judgeclass → compendium-audited'
 assert_grep "$TMP/t5a.md" 'writing@new5678' 'T5a writing pinned'
 
-# ── T5b — brand-new block, only a mechanical axis → ladder floor draft ───────
+# ── T5b — brand-new block, only an axis flag → REFUSED (no draft floor) ──────
+#    'draft' was the old floor default; it is removed. With no prior stage and no
+#    judge class set, the script must refuse rather than fabricate a stage.
 mkfix t5b.md '# New file
 <!-- maintainer -->
 body, no quality line yet'
-run "$TMP/t5b.md" --mechanical PASS --sha new5678 --date 2026-06-01 >/dev/null
-assert_grep    "$TMP/t5b.md" '**Quality:** draft' 'T5b new+axis-only → draft floor'
-assert_no_grep "$TMP/t5b.md" 'compendium-audited' 'T5b not auto-audited'
+rc=$(run "$TMP/t5b.md" --mechanical PASS --sha new5678 --date 2026-06-01)
+assert_rc      "$rc" "1" 'T5b new+axis-only refuses (no draft floor)'
+assert_no_grep "$TMP/t5b.md" '**Quality:**' 'T5b no Quality line fabricated'
 
-# ── T6 — explicit --stage is the only ladder advance ────────────────────────
+# ── T6 — explicit --stage is the only ladder advance (also migrates a legacy draft) ─
+#    A legacy `draft` line is fine to re-stamp ONLY with an explicit --stage that
+#    moves it onto the real ladder; the override wins before the draft-reject check.
 mkfix t6.md '# Lesson
 <!-- maintainer -->
 **Quality:** draft 2026-05-21 (notes)
@@ -114,7 +119,8 @@ mkfix t6.md '# Lesson
 
 body'
 run "$TMP/t6.md" --writing PASS --stage compendium-audited --sha new5678 --date 2026-06-01 >/dev/null
-assert_grep "$TMP/t6.md" '**Quality:** compendium-audited' 'T6 explicit --stage advances'
+assert_grep    "$TMP/t6.md" '**Quality:** compendium-audited' 'T6 explicit --stage advances + migrates draft'
+assert_no_grep "$TMP/t6.md" '**Quality:** draft' 'T6 legacy draft stage word gone'
 
 # ── T7 — REVISE without note hard-errors ────────────────────────────────────
 mkfix t7.md '# Lesson
@@ -154,6 +160,32 @@ run "$TMP/t9.md" --date 2026-06-01 >/dev/null   # all-keep stamp
 assert_grep    "$TMP/t9.md" '- cohorts: none yet'             'T9 delivery cohorts log row survives a stamp'
 assert_grep    "$TMP/t9.md" '**Quality:** compendium-audited' 'T9 stage preserved'
 assert_no_grep "$TMP/t9.md" 'cohort-tested'                   'T9 dead rung word never resurrected'
+
+# ── T10 — 'draft' is rejected as an explicit --stage word (concept removed) ──
+mkfix t10.md '# Module
+<!-- maintainer -->
+**Quality:** compendium-audited 2026-05-15 (writing@1ff6f8a)
+- judges @1ff6f8a: writing PASS
+
+body'
+cp "$TMP/t10.md" "$TMP/t10.before"
+rc=$(run "$TMP/t10.md" --stage draft --sha new5678)
+assert_rc "$rc" "1" 'T10 --stage draft is rejected'
+if diff -q "$TMP/t10.before" "$TMP/t10.md" >/dev/null; then pass=$((pass+1)); else fail=$((fail+1)); echo "FAIL: T10 file must be unchanged on rejection"; fi
+
+# ── T11 — a legacy `draft` line cannot be silently re-stamped (forces migration) ─
+#    Resolves to the prior draft stage → reject. The maintainer must --stage it onto
+#    the real ladder (T6) or remove the line.
+mkfix t11.md '# Lecture
+<!-- maintainer -->
+**Quality:** draft 2026-04-30
+- mechanical: keep
+
+body'
+cp "$TMP/t11.md" "$TMP/t11.before"
+rc=$(run "$TMP/t11.md" --mechanical PASS --sha new5678 --date 2026-06-01)
+assert_rc "$rc" "1" 'T11 axis stamp on a legacy draft line refuses'
+if diff -q "$TMP/t11.before" "$TMP/t11.md" >/dev/null; then pass=$((pass+1)); else fail=$((fail+1)); echo "FAIL: T11 legacy draft file must be unchanged"; fi
 
 echo "──────────────────────────────"
 echo "update-quality.test.sh: $pass passed, $fail failed"

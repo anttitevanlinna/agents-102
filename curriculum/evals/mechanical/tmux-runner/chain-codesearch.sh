@@ -89,7 +89,7 @@ echo "[chain-cs] range $FROM..$TO  effort=$EFFORT  sut=$SUT  timeout=${CLAUDE_RU
 # fires against a path an earlier sweep already populated, the agent does the
 # right thing — refuses to silently overwrite a working skill (caught
 # 2026-05-26 in M6, see out/_chain-m6-codesearch.log + IMPROVEMENTS.md).
-# M6 has a T5 new-skill-since-baseline assertion that catches this; M3 quality
+# M6 has a T7 new-skill-since-baseline assertion that catches this; M3 quality
 # does NOT (it silently overwrites). Wipe per-leg, before the leg fires, so
 # both legs land on a clean slot. Wipe the leg's OWN slot only — preserves
 # earlier-leg-authored skills referenced by later legs (M6 reads

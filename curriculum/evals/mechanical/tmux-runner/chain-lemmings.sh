@@ -74,7 +74,7 @@ position() {                            # $1=branch  $2=sha
 
 # Pre-wipe a named ~/.claude/skills/<skill> slot so a leg that authors a
 # SUT-suffixed skill (test-strategy-lemmings, session-shaper-lemmings) lands
-# fresh — skills persist across sweeps with no sandbox; the M6 T5
+# fresh — skills persist across sweeps with no sandbox; the M6 T7
 # new-skill-since-baseline assertion catches an unchanged slot, but M3
 # quality does not. Wipe per-leg before the leg fires. Ported from
 # chain-codesearch.sh; the parity-port note in

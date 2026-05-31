@@ -11,13 +11,13 @@
 # AUQ suppression discipline (per M3 run-1 post-mortem + §27 sentinel-
 # completion lesson): every M6 prompt that could plausibly trigger AUQ
 # on the agent's own ambiguity-driven reasoning carries an explicit
-# suppression tail. The reading turns (T1, T7) are large enough to
-# tempt AUQ-style clarification; the authoring turns (T4, T5, T6) are
-# decision-heavy. T4 (interview) is the highest structural AUQ risk —
+# suppression tail. The reading turns (T1, T3, T9) are large enough to
+# tempt AUQ-style clarification; the authoring turns (T6, T7, T8) are
+# decision-heavy. T6 (interview) is the highest structural AUQ risk —
 # the prompt body says "Interview me one question at a time" which is
 # exactly the AUQ shape. Lemmings variant dumps answers preemptively
 # (suppression). Codesearch variant (m6-codesearch.txt) uses the
-# ask-and-wait pattern. The save-gate literal after T4 is the explicit
+# ask-and-wait pattern. The save-gate literal after T6 is the explicit
 # SKILL.md write approval.
 
 # T1: diff two runs. Large reading task across both transcripts +
@@ -29,10 +29,22 @@ spot-gaps-build-the-loop-1 Don't call AskUserQuestion — read what's on disk (t
 # from ./CLAUDE.local.md in place" so the edit is the artefact.
 spot-gaps-build-the-loop-2 Don't call AskUserQuestion. If your diagnosis killed exactly one rule, cut it in place — show the diff in chat afterward. If every rule still holds, say so and stop; no edit.
 
-# T3: atomic primitives menu + ranked picks against dominant gap.
+# T3: wider look across the whole stack. Scans ~/.claude/projects/
+# across every repo — SUT-independent (the student's own session
+# history, not the SUT codebase), so this tail is identical across the
+# three variants. Reading-heavy like T1; suppress AUQ on the prompt's
+# "ask me where your other repos are" branch and bound the read.
+spot-gaps-build-the-loop-study Don't call AskUserQuestion — read across what's already under ~/.claude/projects/; don't ask me where other repos are, a representative pass over the sessions on disk is enough. Group the recurring kinds of work, name each group, quote an instance or two, rank the top six or so. If a folder won't read, name the gap rather than asking.
+
+# T4: draw the top recurring work-shapes as mermaid diagrams. Consumes
+# the T3 inventory; feeds T6 (author) and the lecture handoff. Tail
+# identical across the three variants.
+spot-gaps-build-the-loop-shapes Don't call AskUserQuestion — draw the top few groups from the inventory you just produced as mermaid diagrams (steps in order, branches, loop-backs), 30 nodes max each. Use your judgment on which few; you don't need my pick.
+
+# T5: atomic primitives menu + ranked picks against dominant gap.
 spot-gaps-build-the-loop-primitives Don't call AskUserQuestion — produce the list inline. The 5-10 primitives + 2-3 ranked picks all land in one chat reply.
 
-# T4: author the skill. Highest structural AUQ risk — body says
+# T6: author the skill. Highest structural AUQ risk — body says
 # "Interview me one question at a time." Lemmings variant suppresses
 # AUQ and dumps answers preemptively (lazy student); body's "Show me
 # before saving" save-gate is satisfied by the literal `* save it`
@@ -46,14 +58,14 @@ spot-gaps-build-the-loop-3 I'm doing a headless dry-run, please don't call AskUs
 
 * save it
 
-# T5: critique before shipping. Same session — charitable by design,
+# T7: critique before shipping. Same session — charitable by design,
 # the body acknowledges that and accepts it for pacing.
 spot-gaps-build-the-loop-4 Don't call AskUserQuestion. Name three weak parts in chat — be harsher than necessary, assume worse than it looks.
 
-# T6: invoke skill by name on M5 packaged run + same-turn judgement.
+# T8: invoke skill by name on M5 packaged run + same-turn judgement.
 spot-gaps-build-the-loop-5 Don't call AskUserQuestion. Invoke the skill we just authored by name, produce its output on the M5 re-run, and answer the three judgement questions in the same response.
 
-# T7: arc retrospective. Large reading task across M1-M6 artefacts +
+# T9: arc retrospective. Large reading task across M1-M6 artefacts +
 # dispatches a fresh Agent-tool sub-task. The sub-task is in-scope
 # (prompt body asks for it explicitly); suppress AUQ on the outer
 # conversation. The body says "Show me the note before you save it.

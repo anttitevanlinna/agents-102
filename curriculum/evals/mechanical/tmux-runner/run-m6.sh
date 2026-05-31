@@ -3,8 +3,9 @@
 # end-to-end.
 #
 # Single session in the M5 worktree (`../<repo>-m5`). Walks scenarios/m6.txt:
-# diff-two-runs → cut-stale-rule → primitives-menu → author-skill (interview
-# + save-gate) → critique → invoke-on-real-run → arc-retrospective.
+# diff-two-runs → cut-stale-rule → study-the-stack → draw-shapes →
+# primitives-menu → author-skill (interview + save-gate) → critique →
+# invoke-on-real-run → arc-retrospective.
 #
 # Why single-session, not race-based like M3: M6 is reflection + authoring +
 # retrospective, no parallel tracks. The arc-retrospective prompt body asks
@@ -67,6 +68,14 @@ warmup="${CLAUDE_RUNNER_WARMUP:-10}"
 # read across six modules). Authoring + invocation turns are shorter. Default
 # 1h matches M1/M2; override via env.
 standard_timeout="${CLAUDE_RUNNER_TIMEOUT:-3600}"
+# Soft cap for the -study turn ONLY (default 300s = 5 min). -study scans the
+# whole ~/.claude/projects/ tree — the one turn with unbounded read time. If it
+# runs past this it gets ESC-interrupted and nudged to wrap up ("Just give me
+# the results. We continue."), then the walk continues. Every OTHER turn keeps
+# the plain hard timeout (standard_timeout) — diff (T1) and arc-retro (T9) are
+# legitimately long at high effort and must not be clipped. Set
+# CLAUDE_RUNNER_SOFT_CAP=0 to disable the nudge entirely.
+soft_cap="${CLAUDE_RUNNER_SOFT_CAP:-300}"
 
 # Snapshot transcripts dir + git baseline + skills dir + CLAUDE.local.md mtime.
 # NOTE: encoded_cwd uses `/` → `-`; Claude Code also collapses `.` → `-` (latent
@@ -102,6 +111,7 @@ touch "$run_start_marker"
 echo "[m6] cwd=$sut_cwd run=$run_id"
 echo "[m6] baseline sha=$baseline_sha branch=$baseline_branch"
 echo "[m6] pre-skills=$pre_skills"
+echo "[m6] soft-cap=${soft_cap}s (ESC+nudge, -study turn only) hard-timeout=${standard_timeout}s"
 echo "[m6] launching: $launch_cmd"
 
 pane_start "$session" "$sut_cwd" "$launch_cmd"
@@ -164,43 +174,55 @@ assert_turn() {
         fi
         assert_scrollback_grep "T2 rules-held fallback" "$transcript" "all rules|still holds?|every rule|no rule|nothing to cut|hold under|stop"
         ;;
-    3)  # spot-gaps-build-the-loop-primitives — 5-10 atomic primitives
+    3)  # spot-gaps-build-the-loop-study — wider look across the whole
+        # stack: scans ~/.claude/projects/ and groups the kinds of work
+        # that recur (SUT-independent — the student's own session history,
+        # not the SUT codebase). Soft check: scrollback shows a grouped +
+        # ranked recurring-work inventory. Vocabulary is wide.
+        assert_scrollback_grep "T3 repeated-work inventory" "$transcript" "group|recur|repeat|pattern|kind of work|across|stack|rank|ranked|top|instance"
+        ;;
+    4)  # spot-gaps-build-the-loop-shapes — draw the top recurring
+        # work-shapes as mermaid diagrams. Soft check: scrollback shows a
+        # diagram (mermaid fence / graph syntax / flow words).
+        assert_scrollback_grep "T4 recurring-shape diagrams" "$transcript" "mermaid|graph |flowchart|-->|diagram|flow|branch|loop|node|step"
+        ;;
+    5)  # spot-gaps-build-the-loop-primitives — 5-10 atomic primitives
         # named with fire-timing, then 2-3 ranked for the dominant gap.
         # Primitives vocabulary is wide; match any 3+ to confirm a list
         # was produced (loose grep with several alternations).
-        assert_scrollback_grep "T3 primitives menu" "$transcript" "test|lint|format|typecheck|compile|build|browser|smoke|review|diff|judge|verifier|gate|schema|contract|eval"
+        assert_scrollback_grep "T5 primitives menu" "$transcript" "test|lint|format|typecheck|compile|build|browser|smoke|review|diff|judge|verifier|gate|schema|contract|eval"
         ;;
-    4)  # spot-gaps-build-the-loop-3 — author skill through interview.
+    6)  # spot-gaps-build-the-loop-3 — author skill through interview.
         # The prompt says "Show me before saving" — under the ask-and-wait
         # pattern the actual file write may land in the next literal
         # turn's response (codesearch variant) OR in this turn (lemmings
         # suppression variant). Defer the hard file-existence check to
-        # case 5; here, assert scrollback contains the interview shape
+        # case 7; here, assert scrollback contains the interview shape
         # (questions, draft, or save-gate language).
-        assert_scrollback_grep "T4 interview/draft" "$transcript" "question|interview|skill|name|description|frontmatter|fires|shape|save"
+        assert_scrollback_grep "T6 interview/draft" "$transcript" "question|interview|skill|name|description|frontmatter|fires|shape|save"
         ;;
-    5)  # spot-gaps-build-the-loop-4 — critique before shipping. By this
+    7)  # spot-gaps-build-the-loop-4 — critique before shipping. By this
         # turn the SKILL.md must exist somewhere under ~/.claude/skills/
         # (both ask-and-wait and suppression variants have had the
         # save-gate fire by now). Two checks: (a) a new skill dir with
         # SKILL.md exists since baseline; (b) scrollback contains
         # critique-shaped language (weakest, generic, missing).
         if ! locate_new_skill; then
-          echo "[assert] FAIL T5 new-skill: no new ~/.claude/skills/<name>/SKILL.md since baseline" >&2
+          echo "[assert] FAIL T7 new-skill: no new ~/.claude/skills/<name>/SKILL.md since baseline" >&2
           return 1
         fi
-        echo "[assert] PASS T5 new-skill: $new_skill_global"
-        assert_scrollback_grep "T5 critique-shape" "$transcript" "weak|weakest|generic|missing|assumption|push.back|wrong"
+        echo "[assert] PASS T7 new-skill: $new_skill_global"
+        assert_scrollback_grep "T7 critique-shape" "$transcript" "weak|weakest|generic|missing|assumption|push.back|wrong"
         ;;
-    6)  # spot-gaps-build-the-loop-5 — invoke skill on M5 packaged run,
+    8)  # spot-gaps-build-the-loop-5 — invoke skill on M5 packaged run,
         # produce output, judge it in the same turn. Match invocation +
         # judgement vocabulary. The skill's name SHOULD appear in
         # scrollback (the prompt says "by its name"); we don't hard-grep
         # for the exact name because the agent may abbreviate or quote
         # differently — fall back to the menu vocab + judgement words.
-        assert_scrollback_grep "T6 invoke+judge" "$transcript" "invoke|invoked|catch|caught|miss|missed|finding|pass|fail|fired|output|good|useful|sharper"
+        assert_scrollback_grep "T8 invoke+judge" "$transcript" "invoke|invoked|catch|caught|miss|missed|finding|pass|fail|fired|output|good|useful|sharper"
         ;;
-    7)  # arc-retrospective-1 — one-page note, agent shows before saving,
+    9)  # arc-retrospective-1 — one-page note, agent shows before saving,
         # student-picked destination (ADR / observations/ / standalone
         # file). The body says "Show me the note before you save it.
         # I'll push back, then we save." The codesearch variant adds an
@@ -208,7 +230,7 @@ assert_turn() {
         # variant leaves the save to a follow-up turn. Scrollback must
         # contain a note-shaped output (arc / changed / pattern words +
         # a proposed destination).
-        assert_scrollback_grep "T7 arc-note" "$transcript" "arc|changed|pattern|shape|practice|ADR|memo|memory|standalone|propose"
+        assert_scrollback_grep "T9 arc-note" "$transcript" "arc|changed|pattern|shape|practice|ADR|memo|memory|standalone|propose"
         ;;
     *)
         echo "[m6] no assertion configured for prompt-key turn $seq" >&2
@@ -222,6 +244,7 @@ key_seq=0
 for line in "${lines[@]}"; do
   seq=$((seq + 1))
   is_literal=0
+  turn_soft_cap=0   # only the -study turn opts in below; 0 = plain hard timeout
 
   if [[ "$line" == \** ]]; then
     body="${line#\*}"; body="${body# }"
@@ -230,6 +253,9 @@ for line in "${lines[@]}"; do
   else
     key_seq=$((key_seq + 1))
     key="${line%%[[:space:]]*}"
+    # The -study turn scans the whole ~/.claude/projects/ tree — the only turn
+    # with unbounded read time. Cap just it; the rest keep the hard timeout.
+    [[ "$key" == "spot-gaps-build-the-loop-study" ]] && turn_soft_cap="$soft_cap"
     tail=""
     if [[ "$line" == *[[:space:]]* ]]; then
       tail="${line#*[[:space:]]}"
@@ -246,7 +272,7 @@ for line in "${lines[@]}"; do
   if is_slash_only "$body"; then
     echo "[m6] turn=$seq slash-command (no sentinel) — bridging via lib"
     fake_sentinel_after_render "$sentinel_dir" "$seq" "${CLAUDE_RUNNER_SLASH_SLEEP:-3}"
-  elif ! wait_for_turn "$sentinel_dir" "$seq" "$standard_timeout" "$session"; then
+  elif ! wait_for_turn_guarded "$sentinel_dir" "$seq" "$standard_timeout" "$session" "$turn_soft_cap"; then
     pane_capture_safe "$session" "$run_dir/transcript.txt" 10
     echo "[m6] FAIL turn=$seq — see $run_dir/transcript.txt" >&2
     exit 1

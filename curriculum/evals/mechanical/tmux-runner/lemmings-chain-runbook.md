@@ -77,6 +77,14 @@ starting SHA.
 - `CLAUDE_RUNNER_TIMEOUT` — per-turn sentinel timeout; chain default `1800`s.
   **M5 is the long pole** — its packaged send-off turn can run long; if it gets
   clipped, raise this (`CLAUDE_RUNNER_TIMEOUT=3600 ./chain-lemmings.sh --from m5`).
+- `CLAUDE_RUNNER_SOFT_CAP` — **M6 `-study` turn only (run-m6.sh):** soft cap,
+  default `300`s. `-study` scans the whole `~/.claude/projects/` tree; if it runs
+  past this it gets ESC-interrupted and nudged (`CLAUDE_RUNNER_NUDGE_TEXT`,
+  default *"Just give me the results. We continue."*), then the walk continues.
+  Every other turn — M6's diff (T1) and arc-retro (T9) included — keeps the plain
+  `CLAUDE_RUNNER_TIMEOUT` hard ceiling, so deep high-effort turns aren't clipped.
+  Set `CLAUDE_RUNNER_SOFT_CAP=0` to disable. The other run-mN.sh legs are
+  unchanged (plain `wait_for_turn`).
 
 ## Validation status
 
@@ -92,6 +100,13 @@ Validated live, medium effort, one module at a time through the wrapper:
 - **M5** — 2026-05-26. PASS all phases (PA fork + PB diagnose + PC re-send).
 - **M6** — 2026-05-26. PASS 9/9; `session-shaper-lemmings` authored (the per-SUT
   suffix pin validated — `m6_new_skills: ["session-shaper-lemmings"]`), arc note saved.
+  **2026-05-31 — scenario grew, re-validation owed:** the exercise's Phase-2
+  `-study` + `-shapes` prompts (added upstream) were missing from the walk; inserted
+  into all three scenarios between `-2` and `-primitives`. Scenario is now 11 turns
+  (9 prompt-key + 2 literal); `assert_turn` renumbered to 9 cases (study=3, shapes=4,
+  primitives=5 … arc=9), two new soft scrollback checks (recurring-work inventory,
+  mermaid diagrams). `bash -n` + a parse dry-run pass; a live M6 re-run has NOT been
+  done since — the 9/9 above predates the two new turns.
 
 **Full M1→M6 validated through the wrapper at medium effort, 2026-05-26.** The
 deterministic per-SUT skill suffix (the improvement this run was built around) is

@@ -24,7 +24,7 @@
 #  - M5's verifier + plan.md + reference.md + RUN-NOTES.md + packaged re-run
 #  - CLAUDE.local.md compounded across M1-M5
 #
-# AUQ suppression discipline — same as m6.txt. T4 uses the ask-and-wait
+# AUQ suppression discipline — same as m6.txt. T6 uses the ask-and-wait
 # pattern (not suppression): the tail tells Claude to ask in chat
 # (numbered list) and STOP; a literal-text reply turn simulates a real
 # student answering. The answers describe codesearch Go reality + the
@@ -32,7 +32,7 @@
 # logic, but the actual socket/bind + real index build are verify-by-hand
 # — and the skill's verify-by-hand carve-out exists but doesn't enforce
 # a pre-run check that the human actually ran cindex + csweb + curl
-# /show/<path> before declaring done). Save-gate literal after T4 is
+# /show/<path> before declaring done). Save-gate literal after T6 is
 # the explicit SKILL.md write approval.
 
 # T1: diff two runs across four dimensions. Large reading task; suppress
@@ -58,7 +58,18 @@ spot-gaps-build-the-loop-1 Don't call AskUserQuestion — read what's on disk (t
 # is no longer true after M4 added web_test.go).
 spot-gaps-build-the-loop-2 Don't call AskUserQuestion. If your diagnosis killed exactly one rule, cut it from ./CLAUDE.local.md in place and show the diff in chat afterward. If every rule still holds, say so and stop.
 
-# T3: atomic primitives menu. Codesearch is Go — primitives will land
+# T3: wider look across the whole stack. Scans ~/.claude/projects/
+# across every repo — SUT-independent (the student's own session
+# history, not the codesearch tree), so this tail is identical to the
+# m6.txt / picoshare variants. Reading-heavy like T1; suppress AUQ on
+# the prompt's "ask me where your other repos are" branch, bound the read.
+spot-gaps-build-the-loop-study Don't call AskUserQuestion — read across what's already under ~/.claude/projects/; don't ask me where other repos are, a representative pass over the sessions on disk is enough. Group the recurring kinds of work, name each group, quote an instance or two, rank the top six or so. If a folder won't read, name the gap rather than asking.
+
+# T4: draw the top recurring work-shapes as mermaid diagrams. Consumes
+# the T3 inventory; feeds T6 (author). Tail identical across variants.
+spot-gaps-build-the-loop-shapes Don't call AskUserQuestion — draw the top few groups from the inventory you just produced as mermaid diagrams (steps in order, branches, loop-backs), 30 nodes max each. Use your judgment on which few; you don't need my pick.
+
+# T5: atomic primitives menu. Codesearch is Go — primitives will land
 # Go-shaped (go test, go vet, golangci-lint, gofmt, manual curl,
 # httptest, race detector, build, cindex + csweb against a real index,
 # etc.). The ranked picks against the dominant gap will likely surface
@@ -66,7 +77,7 @@ spot-gaps-build-the-loop-2 Don't call AskUserQuestion. If your diagnosis killed 
 # carve-out the next-iteration skill has to enforce evidence for.
 spot-gaps-build-the-loop-primitives Don't call AskUserQuestion — produce the list inline. The 5-10 primitives + 2-3 ranked picks all land in one chat reply. Codesearch is Go; primitives like `go test ./...`, `go vet`, manual `cindex` + `./csweb -verbose` + curl against /show/<path>, httptest.NewRecorder for handler-level tests, race detector, gofmt are in scope. Generic "tests" doesn't make the cut; "run go test ./... against the changed package" or "curl /show/<symlink-escape-path> against a real cindex-built index" does.
 
-# T4: author the skill. Ask-and-wait pattern (NOT suppression): tail
+# T6: author the skill. Ask-and-wait pattern (NOT suppression): tail
 # tells Claude to ask in chat (numbered list) and STOP. Literal-text
 # reply turn directly after carries the canned student-voice answers
 # (Go-shaped, codesearch-specific). The save-gate literal after the
@@ -77,10 +88,10 @@ spot-gaps-build-the-loop-3 Don't call AskUserQuestion — ask your interview que
 
 * save it
 
-# T5: critique before shipping. Same session — charitable by design.
+# T7: critique before shipping. Same session — charitable by design.
 spot-gaps-build-the-loop-4 Don't call AskUserQuestion. Name three weak parts in chat — be harsher than necessary, assume worse than it looks.
 
-# T6: invoke skill by name on M5 packaged re-run + same-turn judgement.
+# T8: invoke skill by name on M5 packaged re-run + same-turn judgement.
 # The "M5 packaged re-run" here = the m5/<slug> branch's commits + files
 # + RUN-NOTES.md + the M5 session transcript. The skill should fire on
 # the run's final summary / RUN-NOTES.md and check whether the
@@ -88,9 +99,9 @@ spot-gaps-build-the-loop-4 Don't call AskUserQuestion. Name three weak parts in 
 # real-index + curl /show/<path> evidence was actually present.
 spot-gaps-build-the-loop-5 Don't call AskUserQuestion. Invoke the skill we just authored by name on the M5 packaged re-run (read m5/<slug> branch commits, files touched, RUN-NOTES.md, M5 transcript at the path recorded in plan.md's Run coordinates block). Produce its ranked-findings output, then answer the three judgement questions in the same response.
 
-# T7: arc retrospective. Reads M1-M6 artefacts: CLAUDE.local.md +
+# T9: arc retrospective. Reads M1-M6 artefacts: CLAUDE.local.md +
 # observations/ + docs/adr/0001 + both skills (test-strategy from M3
-# + the new one from T4) + both run artefacts. Dispatches a fresh
+# + the new one from T6) + both run artefacts. Dispatches a fresh
 # Agent-tool sub-task; suppress AUQ on the outer conversation.
 arc-retrospective-1 Don't call AskUserQuestion in the outer conversation — the fresh sub-task may use its own judgment internally. Quote from my files. The codesearch arc has six modules of artefacts on disk (M1 siftUp/heap fix + tests, M2 plan, M3 I-class clamp ADR + test-strategy skill, M4 implementation — withinRoots() + clamp on both show() branches + first csweb tests, M5 packaged re-run, M6 second skill). If artefacts are thin at any module, name the gap rather than inventing a pattern to tidy the arc. Show me the note before you save it.
 

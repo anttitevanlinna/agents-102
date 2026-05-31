@@ -91,3 +91,108 @@ fake_sentinel_after_render() {
   sleep "$sleep_s"
   touch "$sentinel_dir/turn-$seq.done"
 }
+
+# --- soft-cap nudge safeguard ------------------------------------------------
+# A turn that runs past a SOFT cap (default 300s = 5 min) gets ESC-interrupted
+# and nudged to wrap up ("Just give me the results. We continue."), then the
+# walk continues. Bounds per-turn wall-clock on reading-heavy turns (e.g. M6's
+# -study scan of the whole ~/.claude/projects/ tree) without failing the run.
+# The HARD timeout still applies as the absolute ceiling if even the wrap-up
+# hangs.
+#
+# Counter hazard this has to defend against: the Stop hook
+# (hooks/stop-sentinel.sh) numbers sentinels by COUNTING existing turn-*.done
+# files. An ESC that still fires a Stop, PLUS the nudge's own Stop, can leave
+# MORE than $seq files — which would make the next turn's sentinel appear early
+# and desync every later turn. So the wrap-up wait below waits for the count to
+# SETTLE (not for one exact filename) and then trims any surplus back to
+# exactly $seq.
+CLAUDE_RUNNER_NUDGE_TEXT="${CLAUDE_RUNNER_NUDGE_TEXT:-Just give me the results. We continue.}"
+
+count_sentinels() {
+  local dir="$1"
+  find "$dir" -maxdepth 1 -name 'turn-*.done' 2>/dev/null | wc -l | tr -d ' '
+}
+
+reconcile_sentinels() {
+  # Keep exactly turn-1..turn-$seq.done; delete higher-numbered surplus the
+  # nudge produced so the count-based Stop hook stays aligned for later turns.
+  local dir="$1" seq="$2" f n
+  for f in "$dir"/turn-*.done; do
+    [[ -e "$f" ]] || continue
+    n="${f##*/turn-}"; n="${n%.done}"
+    [[ "$n" =~ ^[0-9]+$ ]] || continue
+    (( n > seq )) && rm -f "$f"
+  done
+  return 0   # the trailing `(( )) &&` short-circuits to 1 when nothing is
+             # trimmed; without this the function returns nonzero and aborts
+             # the caller under `set -e` on the common no-surplus path.
+}
+
+nudge_for_results() {
+  # ESC to interrupt the in-flight turn, then send the wrap-up prompt.
+  # (Single ESC: returns Claude Code to an empty input. A second ESC can open
+  # the message-history picker on some builds, which would swallow the nudge —
+  # so we send exactly one.)
+  local session="$1"
+  _tmux send-keys -t "$session" Escape 2>/dev/null || true
+  sleep 1.5
+  pane_send_text "$session" "$CLAUDE_RUNNER_NUDGE_TEXT"
+}
+
+wait_for_turn_guarded() {
+  # $1=sentinel dir, $2=seq, $3=hard timeout, $4=tmux session (required for the
+  # nudge), $5=optional soft cap (default $CLAUDE_RUNNER_SOFT_CAP or 300).
+  #
+  # Exit codes mirror wait_for_turn: 0 sentinel fired (with or without a
+  # nudge), 1 hard timeout (even after the nudge), 2 pane died.
+  local dir="$1" seq="$2" hard="$3" session="$4"
+  local soft="${5:-${CLAUDE_RUNNER_SOFT_CAP:-300}}"
+
+  # Disabled or nonsensical soft cap (no session to nudge, <=0, or >= hard):
+  # fall straight through to the plain wait, no nudge.
+  if [[ -z "$session" || -z "$soft" || "$soft" -le 0 || "$soft" -ge "$hard" ]]; then
+    wait_for_turn "$dir" "$seq" "$hard" "$session"
+    return $?
+  fi
+
+  # Phase 1 — wait up to the soft cap with the normal detectors.
+  wait_for_turn "$dir" "$seq" "$soft" "$session"
+  local rc=$?
+  (( rc != 1 )) && return "$rc"   # 0 = done early, 2 = pane died; nothing to nudge
+
+  # Phase 2 — soft cap hit. Interrupt + nudge, then wait the remaining budget
+  # for the sentinel count to settle, and trim any surplus the nudge created.
+  echo "wait_for_turn_guarded: turn $seq exceeded soft cap ${soft}s — ESC + nudge ('$CLAUDE_RUNNER_NUDGE_TEXT'); up to $((hard - soft))s for wrap-up." >&2
+  nudge_for_results "$session"
+
+  local remaining=$(( hard - soft ))
+  (( remaining < 60 )) && remaining=60
+  local waited=0 last=-1 stable=0 cur
+  local need_stable=3            # count unchanged this many polls = settled
+  while (( waited < remaining )); do
+    if ! pane_alive "$session"; then
+      echo "wait_for_turn_guarded: pane '$session' died during wrap-up at turn $seq" >&2
+      reconcile_sentinels "$dir" "$seq"
+      return 2
+    fi
+    cur="$(count_sentinels "$dir")"
+    if (( cur >= seq )) && [[ "$cur" == "$last" ]]; then
+      stable=$((stable + 1))
+      (( stable >= need_stable )) && break
+    else
+      stable=0
+    fi
+    last="$cur"
+    sleep 1
+    waited=$((waited + 1))
+  done
+
+  reconcile_sentinels "$dir" "$seq"
+  if (( $(count_sentinels "$dir") >= seq )); then
+    echo "wait_for_turn_guarded: wrap-up landed for turn $seq (nudged)." >&2
+    return 0
+  fi
+  echo "wait_for_turn_guarded: turn $seq still incomplete after nudge + ${remaining}s wrap-up budget" >&2
+  return 1
+}

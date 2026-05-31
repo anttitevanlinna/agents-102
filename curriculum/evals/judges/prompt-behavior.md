@@ -167,7 +167,7 @@ OUTPUT ONLY THE JSON. No prose preamble, no markdown fence.
 
 This file is loaded by `.claude/skills/eval-fire/SKILL.md` step 3 when the class is `behavior`. Substitute `{{file_path}}`, `{{compendium_paths}}`, `{{trace_path}}`, and `{{catalog_path}}` before dispatch.
 
-`{{trace_path}}` resolves to `curriculum/evals/sim-cache/<file-slug>.behavior.json`.
+`{{trace_path}}` resolves to `curriculum/evals/sim-cache/<training>--<file-slug>.behavior.json` (e.g. `ae101--getting-going.behavior.json`). `<training>` is the short training key (`ae101` / `agents-101` / `claude-basics`) that prefixes the instance filenames; a bare `<file-slug>` collides across trainings.
 
 `{{catalog_path}}` resolves to `.claude/skills/content-creation/simulation-behavior.md` — the catalog table is the primary input.
 

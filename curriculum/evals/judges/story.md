@@ -144,9 +144,9 @@ OUTPUT ONLY THE JSON. No markdown fence, no commentary, no preamble.
 
 This file is loaded by `.claude/skills/eval-fire/SKILL.md` step 3 when the class is `story`. Substitute `{{file_path}}`, `{{compendium_paths}}`, `{{trace_path}}`, `{{strategy_doc_paths}}` before dispatch.
 
-`{{trace_path}}` resolves to `curriculum/evals/sim-cache/<file-slug>.persona.json` (Class A; one file per slug, per-phase SHA-keyed inside). For multi-persona runs, persona-keyed records live in the same file. The cache directory is gitignored — traces are user-local because they're keyed by content hash and regenerate on edit.
+`{{trace_path}}` resolves to `curriculum/evals/sim-cache/<training>--<file-slug>.persona.json` (e.g. `ae101--getting-going.persona.json`; Class A; one file per slug, per-phase SHA-keyed inside). `<training>` is the short training key (`ae101` / `agents-101` / `claude-basics`) that prefixes the instance filenames — a bare `<file-slug>` collides across trainings (`getting-going.persona.json` is the Agents-101 persona, not the AE101 one). For multi-persona runs, persona-keyed records live in the same file. The cache directory is gitignored — traces are user-local because they're keyed by content hash and regenerate on edit.
 
-The behavior class (Class B) writes its own trace at `curriculum/evals/sim-cache/<file-slug>.behavior.json` per `judges/prompt-behavior.md`. The two caches don't overlap.
+The behavior class (Class B) writes its own trace at `curriculum/evals/sim-cache/<training>--<file-slug>.behavior.json` per `judges/prompt-behavior.md`. The two caches don't overlap.
 
 `{{strategy_doc_paths}}` is determined by the file's training: `bosser-strategy:content-strategy.md` for Agents 101 and shared; `bosser-strategy:content-strategy-agentic-engineering-101.md` for AE101; `bosser-strategy:content-strategy-claude-basics.md` for Claude Basics. The skill orchestrator passes the right one based on the file's path (`curriculum/trainings/<training>/...`) or, for shared exercise/lecture files, by slug-matching against each training's module list in `site/layouts/curriculum.js` TRAININGS registry.
 

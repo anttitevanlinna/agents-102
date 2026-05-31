@@ -4,7 +4,7 @@
 
 **Session** *(new, "Module 6 worktree session")*
 
-Open a new Claude Code session at the M5 worktree path (`../<repo>-m5`). M5's session may still be running the re-send. Leave it if that is the right call; M6 starts by reading both runs from disk. Before M6 edits files, cuts rules, or invokes the new skill, decide whether the M5 run is done enough, should be stopped, or should be treated as the partial artefact.
+Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no fork. M5's session may still be running the re-send. Leave it if that is the right call; M6 starts by reading both runs from disk. Before M6 edits files, cuts rules, or invokes the new skill, decide whether the M5 run is done enough, should be stopped, or should be treated as the partial artefact.
 
 **What you do:** Diff two runs of the same task, route the dominant gap to its home, author a second skill from the diagnosis.
 
@@ -40,23 +40,37 @@ Claude may pause before editing `./CLAUDE.local.md`, a named config file looks r
 
 Skills aren't hand-crafted. The move you practiced at M3 repeats here: author through conversation, push back on defaults, verify by invoking. The shape follows what the two runs demanded, not a template.
 
-Before you pick a shape, expand the menu. There is real way and real time to build exhaustive, well-grilled checkers on the fly, Claude names primitives in 30 seconds, evaluates fit in another 30, you grill the candidates, ship the one that fits.
+Before you shape the skill, look wider than the two runs. The dominant gap came from one task. The kinds of work you repeat run across everything you do, and most of them never get looked at directly. This is your stack. How wide you look, and what you choose to package, is yours.
 
-Ask Claude to list 5–10 atomic verification primitives and evaluate fit for your dominant gap.
+Read your own history first. Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back.
+
+> **Fast operator?** Lump the next three prompts into one go. Paste them one after another in the same conversation, study then shapes then primitives, and let the answers land together. The three moves don't change.
+
+Ask Claude to scan your sessions across every project and group the kinds of work that recur.
+
+{{prompt:spot-gaps-build-the-loop-study}}
+
+What comes back is the work you do over and over, grouped and ranked. Read for the few at the top you actually repeat. How far you take this is yours. Now make those few something you can see. A recurring kind of work has a shape: steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described.
+
+Ask Claude to draw your top few work-shapes as simple diagrams.
+
+{{prompt:spot-gaps-build-the-loop-shapes}}
+
+One of the work-shapes you drew holds the dominant gap from your two runs. That one becomes the session-shaper you build now. The rest are the kit you grow later.
+
+Before you commit to a shape, expand the menu. The menu lands in context right before you author, so the skill is built against what practitioners actually check, not just your own instinct.
+
+Ask Claude to name the checking primitives the field already runs and rank the ones that fit your gap.
 
 {{prompt:spot-gaps-build-the-loop-primitives}}
 
-Expect to see: test-writing, browser-testing, PR-building, lint / typecheck / format gates, compile / build, smoke-test on a real path, code-review, git-diff inspection, schema / contract validation, eval suites for agent outputs themselves. Your list won't be exact; the recognition is the point, the primitives Claude names are the ones your codebase already runs.
-
-**The shape wraps the primitive.** Test-writing usually fits a sharpened verifier (deterministic check); qualitative checks (does the tone match, does the answer fit) fit an LLM-judge; pre-run checks (is the context thin, is the plan stale) fit a gap-finder.
-
-> **Did the menu priming in the LLM context help Claude do a better job?** Unknowable. Only benchmarking would tell. Some of this is intuition, some heuristics. All of it is moving.
+Expect to see test-writing, browser-testing, PR-building, lint and typecheck gates, compile and build, smoke-test on a real path, code-review, git-diff inspection, schema validation, eval suites for agent outputs. Your list won't be exact. The recognition is the point. The primitives Claude names are the ones your codebase already runs.
 
 The three prompts below (author, critique, invoke) are decomposed for pacing.
 
 > **Solo or fluent in this move?** Collapse the three prompts: paste the first, ask the same conversation to critique before save and invoke after. The three moves don't change.
 
-Three common shapes from the convergence of practitioners running long tasks:
+The session-shaper takes one of three forms, from the convergence of practitioners running long tasks:
 
 - **Sharpened verifier.** The M5 verifier targeted one failure mode; the diff surfaced another. The skill encodes the second check so the next run inherits both.
 - **LLM-judge.** Qualitative fit the deterministic verifier can't see (did the output answer the task, does the tone match the codebase, does the commit message respect the team's convention). A judge is a verifier authored in prose.
@@ -96,8 +110,8 @@ The skill ships personally. It lives at `~/.claude/skills/session-shaper/SKILL.m
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
-- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-05-31 (writing@d06b5b8 story@d06b5b8 technical@d06b5b8 behavior@d06b5b8 pedagogy@d06b5b8)
+- judges @d06b5b8: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy N/A (strategy evaluated at module level)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Word count:** ~830 words body.
@@ -110,14 +124,20 @@ The skill ships personally. It lives at `~/.claude/skills/session-shaper/SKILL.m
 
 **Frameworks riffed on:**
 - **Diff across two runs** (Phase 1) — the pedagogy of the M4→M5 contrast extended; same artefact-quotation discipline from M5's *Diagnose and re-send*.
-- **Author through conversation** (Phase 2) — repeats the M3 *Author your test-strategy skill* move. Second rep; faster. Kieran Klaassen's compound-engineering Review + Compound step across two runs of the same task.
+- **Author through conversation** (Phase 2) — repeats the M3 *Author your test-strategy skill* move. Second rep; faster. Kieran Klaassen's compound-engineering Review + Compound step ([Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide), `[practitioner direct, vendor venue]`) across two runs of the same task.
 - **Three skill shapes** (Phase 2) — convergent practitioner vocabulary across Ramp Dojo, Intercom Tier 1/2/3, and solo builders running long tasks. Menu form; shape follows evidence.
 - **Personal-first, team-promotion-via-human-conversation** — AE101 delivery-architecture rule. Skills ship to `~/.claude/skills/` first; team PRs start with a human conversation.
+
+**Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
+- now owns a `session-shaper` skill at `~/.claude/skills/session-shaper/SKILL.md` that auto-discovers in every repo, and invokes it on a real run to catch the gap it was built for
+- cuts a stale rule from their own `CLAUDE.local.md` once a run's evidence shows it never fired or fired wrong, instead of letting the rules-file rot
+- authors that skill through conversation — pushing back on a default with a quoted moment from the run — rather than hand-editing SKILL.md in a tab
 
 **Failure modes + diagnostics:**
 - **Phase 1 generalised diff** — student says *"M5 was better"* without quoted moments. Diagnostic: prompt requires quoted moments from BOTH runs. If Claude returns only summaries, re-run with explicit quote enforcement. Echoes M5's Phase 1 diagnostic.
 - **Phase 1 packaging-over-credit** — student treats the packaged run as fully solved and skips the *"what packaging missed"* beat. Diagnostic: the M5 run did drift somewhere; if Phase 1 outputs zero misses, Claude is over-crediting. Trainer push: *"name one thing the verifier missed, concretely. Quote the scrollback."*
 - **Phase 2 skill-shape mismatch** — student picks the shape they're most comfortable building (usually verifier) regardless of what the diff pointed at. Diagnostic: does the skill fire on the gap you ranked dominant? If not, re-scope.
+- **Phase 2 wider-look sprawl** — the study scan reads the whole stack and can throw back a wall. The body steer (*read for the few at the top you actually repeat; how far you take this is yours*) is the agency affordance — depth is the student's, not a mandate to catalogue. M6's leeway spirit: study and shapes run, but how wide and what gets packaged is the student's. If a student drowns in the scan, point at the ranked head.
 - **Phase 2 default-acceptance** — student ships Claude's first draft of SKILL.md without the self-critique beat. Diagnostic: the skill reads like a blog-post template. Trainer enforces the critique prompt.
 - **Phase 2 markdown-editor drift** — student opens SKILL.md in an editor and hand-crafts it. The authoring move is conversation; redirect every time. Same load-bearing rule as M3.
 - **Phase 2 invocation-skip** — student ships without running the skill on the packaged run. Authoring without invocation is theatre; the invocation-as-test is the learning moment.
@@ -131,8 +151,9 @@ The skill ships personally. It lives at `~/.claude/skills/session-shaper/SKILL.m
 **Decision points (pacing):**
 - **Phase 1 >20 min** — over-diffing. The diff is data for Phase 2, not an essay. Force a rank and move on.
 - **Phase 1 <10 min** — under-engagement. Check if Claude returned only summaries; re-run the prompt with quote enforcement if so.
+- **Phase 2 study + shapes run long (>12 min)** — the wider look is a light pass, not a full inventory. Study reads the ranked head; shapes draws a few. The body carries the steer (*how far you take this is yours*). If it eats the clock the student is cataloguing; the authoring is where Phase 2's minutes belong.
 - **Phase 2 question loop >15 min** — Claude is asking too many questions or the student is answering generically. Trainer push: *"answer one with a quote from the diff instead."*
-- **Phase 2 >35 min** — gold-plating. The skill is good enough when it catches the dominant gap on invocation. Ship with a TODO; refine later.
+- **Phase 2 authoring >35 min** — gold-plating. The skill is good enough when it catches the dominant gap on invocation. Ship with a TODO; refine later.
 - **Whole-room mood below 7** — practitioner fluency isn't landing. Check Phase 2 invocation: did the skill fire on the packaged run? If not, the encode step didn't close — student doesn't feel *"I know how to encode"* because they didn't see the skill work.
 
 **Watch-fors (cross-phase):**

@@ -6,6 +6,8 @@ origin: exercises/spot-gaps-build-the-loop
 requires:
   - id: two-run-gap-map
     source: prompt:spot-gaps-build-the-loop-1
+  - id: recurring-shape-diagrams
+    source: prompt:spot-gaps-build-the-loop-shapes
 produces:
   - id: primitive-menu
     location: scrollback (5-10 atomic verification primitives with one-line check-description and fire-timing per primitive, plus 2-3 ranked by fit against dominant gap)

@@ -403,7 +403,8 @@
           "module:spot-gaps-build-the-loop"
         ]
       }
-    ]
+    ],
+    "note": "Deliberate imprecision — do NOT tighten. \"The file gets the rule alone\" is\nplausible-but-loaded on purpose: the M2 exercise (plan-mode-done-right.md — the\ncallout right below this marker + Key Concept \"precise prompting is harder than it\nlooks\") wants the student to read it, watch the diff, and catch that \"alone\" could\noverwrite ./CLAUDE.local.md and nuke M1's rules + the five task-shape rules.\nRewording to \"add at the end / leave existing untouched\" removes the lesson.\nHeadless-autonomous data-loss (no human at the diff) is a harness concern\n(tmux-runner/IMPROVEMENTS.md), not a curriculum fix.\n"
   },
   "ae101-m3-clear-session": {
     "key": "ae101-m3-clear-session",
@@ -600,6 +601,21 @@
     ],
     "produces": []
   },
+  "ae101-m4-push-starting-point": {
+    "key": "ae101-m4-push-starting-point",
+    "dest": "Claude Code",
+    "context": "optional",
+    "runtime": "any",
+    "origin": "agentic-engineering-101/run-the-first-experiment",
+    "text": "Push the current branch and set its upstream.",
+    "requires": [
+      {
+        "id": "m4-starting-point-sha",
+        "source": "prompt:ae101-m4-commit-starting-point"
+      }
+    ],
+    "produces": []
+  },
   "ae101-m4-take-task-end-to-end": {
     "key": "ae101-m4-take-task-end-to-end",
     "dest": "Claude Code",
@@ -622,7 +638,7 @@
         "conditional": "m1-completed"
       },
       {
-        "id": "memory-folder",
+        "id": "observations-folder",
         "source": "prompt:walk-and-send-off-3"
       },
       {
@@ -781,7 +797,7 @@
         "rationale": "born at M1's compound-and-close-1; copied so M5/M6 compounding has M1/M3 evidence"
       },
       {
-        "id": "memory-folder",
+        "id": "observations-folder",
         "if-present-at": "../<repo-name>/observations/",
         "rationale": "born at M4's walk-and-send-off Phase 2; copied so M5/M6 inherits the three-block memory built during M4"
       }
@@ -918,43 +934,27 @@
     "origin": "lectures/agent-loop-raw",
     "text": "You write text. How does that text become actions in other systems?"
   },
-  "agents-that-build-agents-1": {
-    "key": "agents-that-build-agents-1",
+  "agents-that-build-agents-handoff": {
+    "key": "agents-that-build-agents-handoff",
     "dest": "Claude Code",
-    "context": "fresh session in the same repo",
+    "context": "same session, just after shipping the skill",
     "runtime": "any",
     "origin": "lectures/agents-that-build-agents",
-    "text": "Enable plan mode.\n\nRead these artefacts end to end:\n\n- ./CLAUDE.local.md\n- ./observations/\n- the un-packaged run's commit history and modified files (its `m4/` branch is recorded in `task.md`)\n- the packaged run's commit history and modified files (its `m5/` branch is recorded in `plan.md`)\n- the SKILL.md of the `session-shaper` skill you authored, in `~/.claude/skills/`\n\nThen design the next iteration of the kit. Three questions:\n\n1. What gap in the kit would the next run want closed? Name it as a memory rule, a sharper verifier, or a third skill. Pick the home; do not split.\n2. What rule already in memory has gone stale across the two runs? Name one to subtract.\n3. What shape of skill is missing from the menu of verifier / judge / gap-finder? If none is missing, say so. Do not invent.\n\nReturn a plan with the three answers. No preamble.",
+    "text": "This session we drew the recurring shapes in my work and shipped one skill from one of them, the session-shaper. The shapes and the move are in your context right now.\n\nWrite me a handoff prompt I can save and run in a fresh session later to build the rest of the kit: one skill per recurring shape worth packaging, across my whole stack. Carry the shapes we just named into the prompt so it starts from them, not from scratch. Same move as the session-shaper, study the work, draw the shape, author through conversation, push back, invoke to verify.\n\nThe prompt runs later in a cold session, so bake in what that session won't have. Tell it to re-study my repos for these shapes, and name the shapes inside it. Put it in a code block so I can save it.",
     "requires": [
       {
-        "id": "claude-local-md",
-        "source": "prompt:compound-and-close-1",
-        "conditional": "m1-completed"
-      },
-      {
-        "id": "memory-folder",
-        "source": "prompt:walk-and-send-off-3",
-        "conditional": "m4-completed"
+        "id": "recurring-shape-diagrams",
+        "source": "prompt:spot-gaps-build-the-loop-shapes"
       },
       {
         "id": "second-authored-skill",
         "source": "prompt:spot-gaps-build-the-loop-5"
-      },
+      }
+    ],
+    "produces": [
       {
-        "id": "un-packaged-run-artefact",
-        "source": "prompt:ae101-m4-take-task-end-to-end"
-      },
-      {
-        "id": "m4-run-coordinates",
-        "source": "prompt:ae101-m4-commit-starting-point"
-      },
-      {
-        "id": "packaged-run-artefact",
-        "source": "prompt:ae101-m5-rerun-packaged"
-      },
-      {
-        "id": "m5-run-coordinates",
-        "source": "prompt:ae101-m5-rerun-packaged"
+        "id": "workflow-skills-handoff-prompt",
+        "location": "scrollback (standalone handoff prompt the student saves and runs later; drives study then diagram then author across their whole stack)"
       }
     ]
   },
@@ -972,7 +972,7 @@
         "conditional": "m1-completed"
       },
       {
-        "id": "memory-folder",
+        "id": "observations-folder",
         "source": "prompt:walk-and-send-off-3",
         "conditional": "m4-completed"
       },
@@ -1413,7 +1413,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/diagnose-and-resend",
-    "text": "I sent off a long-running task un-packaged — no plan.md, no verifier, no reference artefact. I want to read what came back through three failure-mode lenses.\n\nRead what the un-packaged agent did. The `m4/` branch is named in `./task.md`'s run coordinates. Start with the previous session's transcript at the path you just found — drift and dead-ends live there. Then check the repo state on that branch: commits since the \"M4 starting point\" commit, files modified, branch state.\n\nThen walk the work through three lenses:\n\n- **Goal drift** — moments where the agent solved an adjacent problem instead of the asked one. Buried instruction, redirected scope.\n- **Context rot** — moments where the agent rehashed an approach it had already considered and ruled out, or re-derived something already in the working window.\n- **Plausible-but-wrong** — outputs that look reasonable in isolation but don't match the original task spec.\n\nFor EACH lens, quote one specific moment from the artefact (commit message, file change, scrollback line). Don't generalise; quote. If a lens has no instance, say so — that's data too.\n\nEnd with: which of the three was the DOMINANT failure mode? You'll build the verifier against that one.",
+    "text": "I sent off a long-running task un-packaged — no plan.md, no verifier, no reference artefact. I want to read what came back through three failure-mode lenses.\n\nRead what the un-packaged agent did. The `m4/` branch is named in `./task.md`'s run coordinates. Start with the previous session's transcript at the path you just found — drift and dead-ends live there. Then check the repo state on that branch: commits since the \"M4 starting point\" commit, files modified, branch state.\n\nThen walk the work through three lenses:\n\n- Goal drift: moments where the agent solved an adjacent problem instead of the asked one. Buried instruction, redirected scope.\n- Context rot: moments where the agent rehashed an approach it had already considered and ruled out, or re-derived something already in the working window.\n- Plausible-but-wrong: outputs that look reasonable in isolation but don't match the original task spec.\n\nFor EACH lens, quote one specific moment from the artefact (commit message, file change, scrollback line). Don't generalise; quote. If a lens has no instance, say so — that's data too.\n\nEnd with: which of the three was the DOMINANT failure mode? You'll build the verifier against that one.",
     "requires": [
       {
         "id": "m4-transcript-path",
@@ -1449,7 +1449,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/diagnose-and-resend",
-    "text": "For each of the three failures we just named, walk it backwards: what specific validation would have caught it in minutes, not hours?\n\nPractitioners running multi-hour coding agents in the last six months converge on three validation categories. Use these as the answer shape:\n\n- **A re-readable spec.** Scope + success criteria + constraints the agent can diff its in-progress work against, mid-run. Holds the goal pinned down when the conversation grows.\n- **A working document the agent owns and updates.** Durable state the agent re-reads when its working window fills. Phase breakdown, current-phase marker, decisions log, what-didn't-work list. Survives compaction.\n- **An automated check on produced work.** Tests, lint, compile, a deterministic hook, or an LLM judge. Fires on agent output and decides pass/fail against a quality bar.\n\nFor each failure I diagnosed, map it to the validation category that would have caught it. Be specific: not \"a re-readable spec\" generically, but what THAT spec would have said to catch THIS particular goal-drift moment. Name when the validation would have fired (start of run, mid-run, end-of-task, on commit).\n\nDon't name frameworks or practitioners by label (\"Ronacher's three-pattern,\" \"Huntley's Ralph,\" etc.) — walk from the specific failure to the specific validation. The naming happens later.",
+    "text": "For each of the three failures we just named, walk it backwards: what specific validation would have caught it in minutes, not hours?\n\nPractitioners running multi-hour coding agents in the last six months converge on three validation categories. Use these as the answer shape:\n\n- A re-readable spec: scope + success criteria + constraints the agent can diff its in-progress work against, mid-run. Holds the goal pinned down when the conversation grows.\n- A working document the agent owns and updates: durable state the agent re-reads when its working window fills. Phase breakdown, current-phase marker, decisions log, what-didn't-work list. Survives compaction.\n- An automated check on produced work: tests, lint, compile, a deterministic hook, or an LLM judge. Fires on agent output and decides pass/fail against a quality bar.\n\nFor each failure I diagnosed, map it to the validation category that would have caught it. Be specific: not \"a re-readable spec\" generically, but what THAT spec would have said to catch THIS particular goal-drift moment. Name when the validation would have fired (start of run, mid-run, end-of-task, on commit).\n\nDon't name frameworks or practitioners by label (\"Ronacher's three-pattern,\" \"Huntley's Ralph,\" etc.) — walk from the specific failure to the specific validation. The naming happens later.",
     "requires": [
       {
         "id": "three-failure-lens-read",
@@ -1525,7 +1525,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/diagnose-and-resend",
-    "text": "Build me two task-scoped artefacts for re-running the un-packaged task packaged.\n\nFirst, the reference artefact. A task-local file (not my codebase rules — those already exist). Should hold:\n- The task scope and success criteria, in two or three sentences\n- Pointers to the memory pages, any ADRs, any authored skills, and connectors most relevant to THIS task\n- The constraints the verifier we just built will enforce (the verifier owns execution checks; the reference names WHAT good looks like, not how it's measured)\n- **The tests that name the bar** — scoped to this task's core paths, named before any code lands. Tests are a first-class part of the task spec for anything load-bearing; throwaway experiments can skip. Where a core requirement resists being named as a test, flag it as a question, not a rule.\n- A \"done means\" line — what the agent should produce that signals task completion (tests green + requirements met)\n\nSecond, plan.md. A working document the agent owns and mutates as it runs. Should start with:\n- The task broken into 3–7 phases the agent can re-anchor against\n- **Tests-first phase** — the first phase writes or updates the tests from the reference spec. Code phases come after. The plan makes this ordering explicit.\n- A \"current phase\" line the agent updates as it progresses\n- A \"decisions log\" section the agent appends to when it makes a load-bearing choice\n- A \"what I tried that didn't work\" section to prevent context-rot re-derivations\n\nPropose the file paths (next to each other; same task-scoped folder). Show me both files in prose.\n\nDon't touch either file until I say 'lock it in.' When you do edit either file, use Edit on the changed section, not Write on the whole file.\n\nBefore lock-in, grill me on missing details that could ruin the smooth run. Ask three questions at a time. For each, recommend an answer.",
+    "text": "Build me two task-scoped artefacts for re-running the un-packaged task packaged.\n\nFirst, the reference artefact. A task-local file (not my codebase rules — those already exist). Should hold:\n- The task scope and success criteria, in two or three sentences\n- Pointers to the memory pages, any ADRs, any authored skills, and connectors most relevant to THIS task\n- The constraints the verifier we just built will enforce (the verifier owns execution checks; the reference names WHAT good looks like, not how it's measured)\n- The tests that name the bar: scoped to this task's core paths, named before any code lands. Tests are a first-class part of the task spec for anything load-bearing; throwaway experiments can skip. Where a core requirement resists being named as a test, flag it as a question, not a rule.\n- A \"done means\" line — what the agent should produce that signals task completion (tests green + requirements met)\n\nSecond, plan.md. A working document the agent owns and mutates as it runs. Should start with:\n- The task broken into 3–7 phases the agent can re-anchor against\n- Tests-first phase: the first phase writes or updates the tests from the reference spec. Code phases come after. The plan makes this ordering explicit.\n- A \"current phase\" line the agent updates as it progresses\n- A \"decisions log\" section the agent appends to when it makes a load-bearing choice\n- A \"what I tried that didn't work\" section to prevent context-rot re-derivations\n\nPropose the file paths (next to each other; same task-scoped folder). Show me both files in prose.\n\nDon't touch either file until I say 'lock it in.' When you do edit either file, use Edit on the changed section, not Write on the whole file.\n\nBefore lock-in, grill me on missing details that could ruin the smooth run. Ask three questions at a time. For each, recommend an answer.",
     "requires": [
       {
         "id": "validation-mapping",
@@ -1551,7 +1551,7 @@
         "conditional": "m3-completed"
       },
       {
-        "id": "memory-folder",
+        "id": "observations-folder",
         "source": "prompt:walk-and-send-off-3",
         "conditional": "m4-completed"
       }
@@ -2196,6 +2196,15 @@
     ],
     "permission-mode": "plan"
   },
+  "push-back-on-the-plan-2-askuserquestion": {
+    "key": "push-back-on-the-plan-2-askuserquestion",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/push-back-on-the-plan",
+    "text": "Switch to AskUserQuestion for the rest of the walk-down. Keep going through the unresolved branches (dependencies, decisions, side-effects I haven't named), but ask through AskUserQuestion, one option set per branch, with your recommended answer marked.\n\nIf a branch can be settled by reading the codebase, read the codebase instead of asking. Don't touch the plan file until I say 'lock it in.' When you do edit the plan, use Edit on the changed section, not Write on the whole file.",
+    "permission-mode": "plan"
+  },
   "push-back-on-the-plan-2-original": {
     "key": "push-back-on-the-plan-2-original",
     "dest": "Claude Code",
@@ -2341,7 +2350,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "I have two runs of the same long-running task on disk, and both recorded their coordinates. The un-packaged run's are in `task.md` (its `m4/` branch and session transcript path); the packaged re-run's are in `plan.md`, in the protected `Run coordinates` block at the top (its `m5/` branch and session transcript path). The un-packaged run had no reference artefact, no plan.md, no verifier. The packaged re-run had all three in play: a reference, a plan.md, and a verifier wired to run on a cadence.\n\nRead both. Start with both session transcripts at the paths recorded in `task.md` and `plan.md`. Then check repo state: commits on the `m4/` branch after its starting point, commits on the `m5/` branch after the worktree fork, what each run touched. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.\n\nWalk the diff across four dimensions:\n\n- **What packaging caught.** Specific moments in the packaged run where the reference, the plan.md, or the verifier prevented a drift the un-packaged run actually experienced. Quote the un-packaged moment and the packaged moment both.\n- **What packaging missed.** Places the packaged run drifted even with packaging in play. Where the reference was too thin, where the plan.md carried the wrong state, where the verifier's quality bar sat beside the real failure.\n- **What packaging introduced.** New failure shapes that only exist because of the packaging itself — over-fitted verifier, plan.md staleness, reference-as-cage.\n- **Where the fix belongs.** For each named gap: memory (observation, hypothesis, rule), a sharper verifier, a rule in CLAUDE.local.md, or a new skill. Don't prescribe the skill's shape yet.\n\nFor every claim, quote a specific moment from the artefacts. Don't generalise.\n\nEnd with: which gap matters most? Rank by damage-to-a-future-run, not by how interesting it reads.",
+    "text": "I have two runs of the same long-running task on disk, and both recorded their coordinates. The un-packaged run's are in `task.md` (its `m4/` branch and session transcript path); the packaged re-run's are in `plan.md`, in the protected `Run coordinates` block at the top (its `m5/` branch and session transcript path). The un-packaged run had no reference artefact, no plan.md, no verifier. The packaged re-run had all three in play: a reference, a plan.md, and a verifier wired to run on a cadence.\n\nRead both. Start with both session transcripts at the paths recorded in `task.md` and `plan.md`. Then check repo state: commits on the `m4/` branch after its starting point, commits on the `m5/` branch after the worktree fork, what each run touched. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.\n\nWalk the diff across four dimensions:\n\n- What packaging caught: specific moments in the packaged run where the reference, the plan.md, or the verifier prevented a drift the un-packaged run actually experienced. Quote the un-packaged moment and the packaged moment both.\n- What packaging missed: places the packaged run drifted even with packaging in play. Where the reference was too thin, where the plan.md carried the wrong state, where the verifier's quality bar sat beside the real failure.\n- What packaging introduced: new failure shapes that only exist because of the packaging itself — over-fitted verifier, plan.md staleness, reference-as-cage.\n- Where the fix belongs: for each named gap — memory (observation, hypothesis, rule), a sharper verifier, a rule in CLAUDE.local.md, or a new skill. Don't prescribe the skill's shape yet.\n\nFor every claim, quote a specific moment from the artefacts. Don't generalise.\n\nEnd with: which gap matters most? Rank by damage-to-a-future-run, not by how interesting it reads.",
     "requires": [
       {
         "id": "un-packaged-run-artefact",
@@ -2430,11 +2439,15 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "Author a session-shaper as a personal skill. The skill's job is to shape future sessions on this kind of task so the dominant gap I diagnosed in Phase 1 doesn't recur. Shape: one of sharpened-verifier, LLM-judge, or gap-finder — I'll tell you which after you ask. Same authoring approach as the test-strategy skill at `~/.claude/skills/test-strategy/SKILL.md`.\n\nInterview me one question at a time. Cover: what the skill fires on (agent output, proposed plan, mid-run state), what the quality bar is in terms I can defend to a teammate, what to flag vs. what to let through, how it outputs (pass/fail, ranked findings, inline critique), and what the failure shape looks like when the skill itself is wrong.\n\nPush back when my answer is generic. A judge that says \"check if the output is good\" is useless; a verifier that duplicates the existing test suite is noise. Codebase-specific and failure-specific.\n\nWhen you have enough, write the skill to `~/.claude/skills/session-shaper/SKILL.md`: frontmatter (name `session-shaper` + description), then instructions. Show me before saving.",
+    "text": "Author a session-shaper as a personal skill. The skill's job is to shape future sessions on this kind of task so the dominant gap I diagnosed in Phase 1 doesn't recur. Shape: one of sharpened-verifier, LLM-judge, or gap-finder — I'll tell you which after you ask. Same authoring approach as the `test-strategy` skill you authored earlier — read its SKILL.md as a shape reference.\n\nInterview me one question at a time. Cover: what the skill fires on (agent output, proposed plan, mid-run state), what the quality bar is in terms I can defend to a teammate, what to flag vs. what to let through, how it outputs (pass/fail, ranked findings, inline critique), and what the failure shape looks like when the skill itself is wrong.\n\nPush back when my answer is generic. A judge that says \"check if the output is good\" is useless; a verifier that duplicates the existing test suite is noise. Codebase-specific and failure-specific.\n\nWhen you have enough, write the skill to `~/.claude/skills/session-shaper/SKILL.md`: frontmatter (name `session-shaper` + description), then instructions. Show me before saving.",
     "requires": [
       {
         "id": "two-run-gap-map",
         "source": "prompt:spot-gaps-build-the-loop-1"
+      },
+      {
+        "id": "recurring-shape-diagrams",
+        "source": "prompt:spot-gaps-build-the-loop-shapes"
       },
       {
         "id": "primitive-menu",
@@ -2541,6 +2554,10 @@
       {
         "id": "two-run-gap-map",
         "source": "prompt:spot-gaps-build-the-loop-1"
+      },
+      {
+        "id": "recurring-shape-diagrams",
+        "source": "prompt:spot-gaps-build-the-loop-shapes"
       }
     ],
     "produces": [
@@ -2549,6 +2566,53 @@
         "location": "scrollback (5-10 atomic verification primitives with one-line check-description and fire-timing per primitive, plus 2-3 ranked by fit against dominant gap)",
         "consumed-by": [
           "prompt:spot-gaps-build-the-loop-3"
+        ]
+      }
+    ]
+  },
+  "spot-gaps-build-the-loop-shapes": {
+    "key": "spot-gaps-build-the-loop-shapes",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/spot-gaps-build-the-loop",
+    "text": "Take the recurring groups you just named. For the top few, draw each one as a mermaid diagram of how that kind of work flows: the steps in order, where it branches, where it loops back, what hands off to what.\n\nKeep each diagram to 30 nodes at most. The point is to recognise the shape of the work, not to document every case. If a shape needs more than 30 nodes, it is really two shapes, split it.",
+    "requires": [
+      {
+        "id": "repeated-work-inventory",
+        "source": "prompt:spot-gaps-build-the-loop-study"
+      }
+    ],
+    "produces": [
+      {
+        "id": "recurring-shape-diagrams",
+        "location": "scrollback (the top recurring work patterns drawn as small mermaid diagrams)",
+        "consumed-by": [
+          "prompt:spot-gaps-build-the-loop-3",
+          "prompt:agents-that-build-agents-handoff"
+        ]
+      }
+    ]
+  },
+  "spot-gaps-build-the-loop-study": {
+    "key": "spot-gaps-build-the-loop-study",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/spot-gaps-build-the-loop",
+    "text": "Go through my work across everything I do, not just this repo. I want to see the kinds of work I do over and over.\n\nMy Claude Code sessions across every project live under `~/.claude/projects/`, one folder per repo I've worked in. Read across them. If there are other repos you should look at that aren't in there, ask me where they are.\n\nGroup what you find by the kind of work it is, the way of working that repeats, not the feature. For each group, give it a short name and quote an instance or two so I can see it's real. Don't filter to what looks important. Show me what actually recurs, including the dull stuff. Rank the groups by how often they show up and give me the top six or so, the ones I actually repeat, not the ones that look impressive.",
+    "requires": [
+      {
+        "id": "two-run-gap-map",
+        "source": "prompt:spot-gaps-build-the-loop-1"
+      }
+    ],
+    "produces": [
+      {
+        "id": "repeated-work-inventory",
+        "location": "scrollback (the kinds of work that recur across my stack, grouped, with a quoted instance or two per group)",
+        "consumed-by": [
+          "prompt:spot-gaps-build-the-loop-shapes"
         ]
       }
     ]
@@ -2751,7 +2815,8 @@
         ],
         "note": "disk persistence of scoped-task; recovery anchor if scrollback compacts mid-long-run; optional seed for M5 diagnose-and-resend-6 reference build and M6 spot-gaps original-spec lookup (downstream prompts work without it)"
       }
-    ]
+    ],
+    "note": "Deliberate: the saved task.md has no shape constraint on purpose. M4 is the\ndesigned-to-fail un-packaged run (see walk-and-send-off.md maintainer block,\n\"un-packaged is by design\"). The agent's task-card instinct may stamp a\nspeculative \"Branch:\" header that later mismatches the real run-coordinates\nbranch from ae101-m4-commit-starting-point — that rough recovery doc is part of\nthe M4 lesson. Do NOT constrain this to prose-only / no-metadata to \"fix\" it.\nThe M5 reader (ae101-m5-worktree-setup, df17bc0) already ignores the decoy so\nthe harness doesn't break on the deliberate roughness.\n"
   },
   "walk-and-send-off-2": {
     "key": "walk-and-send-off-2",
@@ -2798,7 +2863,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/walk-and-send-off",
-    "text": "Use the AskUserQuestion tool. One question per call. First ask which 2-3 audit gaps I want to focus on. For each picked gap, propose a resolution in the shape the audit named, hear my pushback, then persist it: the `./observations/` folder in your repo for observations and business-rules gaps, `./CLAUDE.local.md` for rule sharpening, connector setup for connector wiring.",
+    "text": "Use the AskUserQuestion tool, at most four options per question, one question per call. First ask which 2-3 audit gaps I want to focus on; if the audit surfaced more than four, offer the four most material as options.\n\nAfter I've picked, list the gaps you left off so I can see what didn't make the cut.\n\nFor each picked gap, propose a resolution in the shape the audit named, hear my pushback, then persist it: the `./observations/` folder in your repo for observations and business-rules gaps, `./CLAUDE.local.md` for rule sharpening, connector setup for connector wiring.",
     "requires": [
       {
         "id": "gap-audit-report",
@@ -2807,7 +2872,7 @@
     ],
     "produces": [
       {
-        "id": "memory-folder",
+        "id": "observations-folder",
         "location": "./observations/ (observations + business-rules gaps) + ./CLAUDE.local.md (sharpened rules) + connector setup (no file)",
         "consumed-by": [
           "prompt:walk-and-send-off-4",
@@ -2817,7 +2882,7 @@
           "prompt:agents-that-build-agents-1",
           "prompt:ae101-m5-worktree-setup"
         ],
-        "note": "2-3 fills per audit run, one per picked gap; destination depends on the audit's per-gap shape label. The ./observations/ folder is the durable artefact M4-M6 read as 'memory-folder'; ae101-m5-worktree-setup copies it opportunistically into the M5 worktree."
+        "note": "2-3 fills per audit run, one per picked gap; destination depends on the audit's per-gap shape label. The ./observations/ folder is the durable artefact M4-M6 read as 'observations-folder'; ae101-m5-worktree-setup copies it opportunistically into the M5 worktree."
       }
     ]
   },
@@ -2834,7 +2899,7 @@
         "source": "prompt:walk-and-send-off-2"
       },
       {
-        "id": "memory-folder",
+        "id": "observations-folder",
         "source": "prompt:walk-and-send-off-3"
       },
       {

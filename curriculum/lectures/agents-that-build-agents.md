@@ -4,17 +4,17 @@ The closer named the flywheel in one line. *Agents that build agents.* This lect
 
 You authored two skills in this training. The first one at Module 3 packaged a piece of judgement you had carried for years (how to write a good test). The second one at Module 6 packaged a piece of judgement you had earned over two runs of the same task. Different sources, same move. Each skill made the next run cheaper.
 
-The flywheel turns one more time when the agent itself starts proposing the skill.
+The flywheel turns one more time when the agent writes the prompt that builds the next skills.
 
 ## The move
 
-Open a fresh Claude Code session in the repo you have been running. Hand it the same evidence you handed yourself at Phase 1 (the un-packaged Module 4 artefacts, the packaged Module 5 artefacts, the second skill you just shipped). Ask it to enter plan mode and design the next iteration of the loop.
+You authored one skill from one task's evidence. The flywheel turns once more when you hand the agent the move itself and ask it to write you the prompt that builds the rest.
 
-Not "design a new skill." Not "improve my setup." Design the next iteration of the loop. What gap in the kit would the next run want closed? What rule would have prevented the subtler miss you have not yet seen? What shape of skill is missing from the menu of three you just chose from?
+Not "write me a skill." Not "improve my setup." Ask it for a handoff prompt: one you paste into a fresh session later, that studies your work across your repos for the shapes you repeat, draws the ones worth packaging, and authors a skill for each. The same move you just practiced, widened to everything you do.
 
-The plan that comes back is a candidate. You read it the way you read any plan from any agent. Judgement, push-back, taste. Some of it will be obvious. Some of it will be wrong. One or two items will be moves you would not have generated on your own.
+What comes back is a candidate. You read it the way you read any prompt the agent drafts. Judgement, push-back, taste. Some of it will be obvious. Some of it will be off. One or two lines will be moves you would not have written on your own.
 
-That is the flywheel. The agent reads the evidence the loop produced, proposes the next scaffolding, and you decide which proposals earn their place in the kit.
+That is the flywheel. The agent writes the prompt that builds the next skills, and you decide whether it earns a place in your kit before you ever run it.
 
 ## What this is not
 
@@ -26,13 +26,11 @@ Build a flywheel that lets the agent run as far as it can on its own evidence, a
 
 ## A prompt to try
 
-This one is for after the cohort, on a quiet half-hour. New prompt, no rehearsal.
+This one closes the module. The shapes you drew and the skill you shipped are still in the session. Ask the agent to turn them into a prompt that builds the rest of the kit.
 
-Ask Claude Code to enter plan mode, read the evidence from the two runs and the second skill, and propose the next iteration of the kit.
+{{prompt:agents-that-build-agents-handoff}}
 
-{{prompt:agents-that-build-agents-1}}
-
-Read what comes back the way you read any plan. Push back where the proposals miss the codebase situation Claude cannot see. Approve the one or two that earn their place. Author them.
+What comes back is a prompt, not a plan. Read it the way you read any prompt the agent drafts. Save it where you will find it. The kit you grow on your own is the one that counts.
 
 ## Ralph
 
@@ -46,7 +44,7 @@ He called it Ralph, after the Simpsons. One line, no scaffolding. Hacky, simple,
 
 Months later, Claude Code shipped `/goal`. The runtime version of the same move. A condition, a check each turn. The shell hack is now a slash command.
 
-Practitioners see levers first. The lever was sitting there in plain shell. Huntley reached for it. The platform watched, and shipped the move native.
+Practitioners see levers first. The lever was sitting there in plain shell. Huntley reached for it. The runtime caught up later.
 
 That's the M6 leap. The next Ralph is yours.
 
@@ -59,9 +57,10 @@ The training closes. The flywheel does not.
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-15 (writing@1ff6f8a story@1ff6f8a technical@1ff6f8a behavior@1ff6f8a pedagogy@1ff6f8a strategy@1ff6f8a)
-- judges @1ff6f8a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-05-31 (writing@182969a story@182969a technical@6ab470b behavior@6ab470b pedagogy@182969a strategy@182969a)
+- judges @182969a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
+- sim-passed 2026-05-31 (three-persona sim + handoff-generator live-test @182969a): generated handoff is cold-safe — named shapes carried, on-disk `session-shaper` referenced as the worked example, repos re-studied, no placeholders. Sim-grade (constructed M6 context); a real-cohort live-test on an actual M6 close is still owed — no cohort has run it yet. Per-class instances at `curriculum/evals/instances/ae101--agents-that-build-agents.<class>.json`.
 
 **Lecture meta:** *5–7 min reading, closer-shaped. Lands as the very last teaching beat in Module 6 — after the closing lecture* The loop has a name *names the flywheel and bridges to it. This lecture unfolds that bridge. Voice: Risto-leading (the optimistic-action-on-the-future register Module 6's mood arc warrants), Boris-grounding (the prompt is concrete and runnable), Martin-spare (the move + its alternative — collaboration, not autonomous-agent fantasy). Sutherland surfaces in the *what this is not* beat. Pedagogical bet: the flywheel survives the model; naming it as collaboration, not autonomy, is what keeps it survivable.*
 
@@ -76,10 +75,8 @@ The training closes. The flywheel does not.
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 - `[checked:2026-05-25 result:OK due:2026-11-25]` <https://ghuntley.com/ralph/> — [practitioner direct] Huntley 2025-07-14, bash loop + Simpsons origin verbatim. fallback: outside freshness window — origin/historical only, body flags it correctly.
 
-**Prompt block:** one new prompt added (NEW prompt — no prior version to diff against; flagged per check_prompts #22).
+**Prompt block:** `agents-that-build-agents-1` (design-the-next-kit plan, plan-mode) retired and replaced by `agents-that-build-agents-handoff` — the agent reads the shipped `session-shaper` and writes the student a standalone, cold-runnable prompt that builds workflow skills across their whole stack (study then diagram then author). NEW prompt — no prior version to diff against; flagged per check_prompts #22.
 
 **Open for next pass:**
-- Three-persona sim: senior engineer (does the *what this is not* beat read as a real carve-out or as hedging?), engineer mid-training (does the prompt feel runnable or aspirational?), CTO observer (does the lecture stay practitioner-shaped or drift into vendor pitch?).
-- Live-test the prompt on a real Module 6 close. Confirm Claude in plan mode actually returns the three-question plan rather than narrating a meta-summary.
-- Watch whether *the second skill you just shipped* in the prompt block needs a more concrete back-reference. The student named the skill in Module 6 Phase 2; the bracket-free wording assumes scrollback or kit memory carries the name. If sim flags ambiguity, switch to *the skill in `~/.claude/skills/` you authored at Module 6*.
-- **Re-audit writing / story / technical classes after Ralph→/goal addition (2026-05-15).** Quality dimension-log needs new SHA pins per touched class (writing, story, technical degraded; behavior carries). Re-fire three-persona sim with CTO attention on the *"the platform watched, and shipped the move native"* line — does it stay practitioner-shaped or tilt to vendor-warm? AE101 is Claude Code-canonical so naming the product is in-bounds, but the anthropomorphism (*platform watched*) is the specific risk.
+- [technical, non-blocking] Stamp the verified `/goal` capability (Claude Code 2.1.142, `/goal [condition|clear]`) into this lecture's own Source-verification block — currently evidenced only in a scratch sweep, not in-artifact.
+- Real-cohort gold standard: the handoff-generator live-test that cleared pedagogy was sim-grade — constructed M6 context (six named shapes, a stand-in `session-shaper`). A live-test on an actual student's M6 close (their real shapes, their just-shipped skill) is the real-cohort bar; owed until a cohort runs.

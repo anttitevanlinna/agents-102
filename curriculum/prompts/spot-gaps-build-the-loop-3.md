@@ -6,6 +6,8 @@ origin: exercises/spot-gaps-build-the-loop
 requires:
   - id: two-run-gap-map
     source: prompt:spot-gaps-build-the-loop-1
+  - id: recurring-shape-diagrams
+    source: prompt:spot-gaps-build-the-loop-shapes
   - id: primitive-menu
     source: prompt:spot-gaps-build-the-loop-primitives
   - id: test-strategy-skill
@@ -19,7 +21,7 @@ produces:
       - prompt:spot-gaps-build-the-loop-4
       - prompt:spot-gaps-build-the-loop-5
 ---
-Author a session-shaper as a personal skill. The skill's job is to shape future sessions on this kind of task so the dominant gap I diagnosed in Phase 1 doesn't recur. Shape: one of sharpened-verifier, LLM-judge, or gap-finder — I'll tell you which after you ask. Same authoring approach as the test-strategy skill at `~/.claude/skills/test-strategy/SKILL.md`.
+Author a session-shaper as a personal skill. The skill's job is to shape future sessions on this kind of task so the dominant gap I diagnosed in Phase 1 doesn't recur. Shape: one of sharpened-verifier, LLM-judge, or gap-finder — I'll tell you which after you ask. Same authoring approach as the `test-strategy` skill you authored earlier — read its SKILL.md as a shape reference.
 
 Interview me one question at a time. Cover: what the skill fires on (agent output, proposed plan, mid-run state), what the quality bar is in terms I can defend to a teammate, what to flag vs. what to let through, how it outputs (pass/fail, ranked findings, inline critique), and what the failure shape looks like when the skill itself is wrong.
 

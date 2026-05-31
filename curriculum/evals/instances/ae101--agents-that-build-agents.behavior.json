@@ -1,44 +1,54 @@
 {
   "class": "behavior",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/agents-that-build-agents.md",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/prompts/agents-that-build-agents-handoff.md",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "partial_regen",
+  "trace_status": "full_regen",
+  "judged_artifact": "agents-that-build-agents-handoff",
+  "note": "Lecture's prompt changed: old in-lecture plan-mode artefact-read prompt retired; lecture now points at the agents-that-build-agents-handoff registry prompt (M6 capstone close, fresh session). Re-judged against the new artifact. Two layers graded: (a) the generator prompt the student pastes, and (b) whether it adequately instructs the generated handoff prompt to be standalone / placeholder-free / non-leaky.",
   "prompts_evaluated": 1,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_lead": "Enable plan mode.  Read these artefacts end to end:  - ./CLAUDE.local.md  - .cla",
-      "verdict": "TODO",
+      "prompt_lead": "I authored a checking skill by conversation: I diagnosed a gap from real evidence, built a skill to",
+      "expected_response_shape": "Claude reads ~/.claude/skills/session-shaper/SKILL.md, then authors a single self-contained handoff prompt in one fenced code block that drives study-across-repos then diagram then author-a-skill-per-shape, conversational with push-back and invoke-to-verify; minimal preamble.",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
-          "pattern_id": "plan-mode-preamble-bloat",
+          "pattern_id": "placeholder-leak",
           "confidence": "med",
-          "evidence": "Plan-mode invocation with structured 3-question output; 'No preamble' suppressor in-fence partially mitigates but plan-mode openers carry inherent bloat risk.",
-          "fix_hint": "If live-test shows Claude opens with a contextual framing paragraph, add 'Answer each question directly — no framing, no contextual summary first' before the question list."
+          "evidence": "\"It should drive that same move, widened to my whole stack: study my work across my repos for the shapes I repeat\" — the generated handoff is itself a saved prompt, but the generator never specifies how the cold run learns WHICH repos, nor forbids placeholders in the emitted fence; a fraction of runs will write \"[your repos]\"/\"[repo paths]\" into the saved prompt or hard-code this machine's paths.",
+          "fix_hint": "Add one clause to the generator: \"In the handoff prompt, don't bracket anything — have it ask me for my repo list (or scan from where I run it), so it works on any machine.\" Names the cold-run input mechanism (open-hook vs runtime-ask) and bans placeholders in the generated fence. Non-blocking: \"stand on its own\" + \"run it cold\" already push Claude toward resolving repos at runtime rather than bracketing.",
+          "blocking": false
         },
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "'No preamble' explicit suppressor in fence reduces risk below blocking threshold.",
-          "fix_hint": "Carries forward; no action needed unless live-test shows violation."
+          "evidence": "Authoring request (\"Now write me a handoff prompt\"), not a 4+ sub-step or plan-mode prompt, so §17's structural suppressor trigger does not fire; the three asks (study/draw/author) are the OUTPUT's content, not sub-steps Claude walks. Some runs open with a sentence of framing before the fence.",
+          "fix_hint": "Carries forward; no in-fence suppressor required. Add only if live-test shows the opening framing pushes the saved code block below the fold.",
+          "blocking": false
         },
         {
-          "pattern_id": "default-acceptance",
+          "pattern_id": "save-gate-then-read-race",
           "confidence": "low",
-          "evidence": "Body callout carve-out applied: 'Read what comes back the way you read any plan. Push back where the proposals miss the codebase situation Claude cannot see' names failure mode + gives recovery move + grants student agency. Downgraded from med to low.",
-          "fix_hint": "Body callout is sufficient; no in-fence change needed."
-        },
-        {
-          "pattern_id": "self-audit-charity",
-          "confidence": "low",
-          "evidence": "Fresh-session destination (per parenthetical chip 'fresh session in the same repo') provides structural mitigation.",
-          "fix_hint": "No action needed."
+          "evidence": "\"Read it so you have the move in hand.\" precedes \"Now write me a handoff prompt\" — read is a clean prerequisite to authoring, not a gated save raced against a later read; no race.",
+          "fix_hint": "No action needed.",
+          "blocking": false
         }
+      ],
+      "passed_checks": [
+        "§40 cold-session self-containment (generator): carries absolute skill path ~/.claude/skills/session-shaper/SKILL.md and re-states the move (diagnose-from-evidence / build-to-catch / verify-by-invoking) rather than leaning on scrollback.",
+        "§40 for the generated output: \"The handoff prompt has to stand on its own. It can't lean on this session or this repo... run it cold.\" explicitly names both leak vectors (this session, this repo) and the cold-run requirement.",
+        "§32 no module-name leak: no M1-M6 tokens in prose.",
+        "§1 placeholder-free generator: no [BRACKETS] in the prompt the student pastes.",
+        "§41 artifact-vs-STOP tail ordering: last imperative is \"Put it in a code block...\" — the load-bearing artifact (the fenced handoff prompt) is the final move; no STOP grafted after the write.",
+        "§17 structural trigger absent: not plan-mode, not 4+ named sub-steps — no in-fence preamble suppressor owed.",
+        "question-dump / niceness-tax / overwrite-anxiety / append-vs-integrate: not invited — single authoring request, no multi-question interview, no file regeneration, no soften-the-edge regeneration."
       ]
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1
+  "todos_count": 1,
+  "summary": "PASS — the generator carries its own skill path + move and explicitly orders the generated handoff to stand alone and run cold (fenced); only non-blocking risk is the generator not naming the cold-run repo-input mechanism, which a fraction of runs could resolve as a placeholder/hard-coded path in the saved prompt."
 }

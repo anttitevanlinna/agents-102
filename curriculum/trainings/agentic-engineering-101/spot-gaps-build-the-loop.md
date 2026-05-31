@@ -5,24 +5,24 @@ Two runs of the same task (un-packaged Module 4, packaged Module 5) are enough e
 
 ## Prework
 
-Walk in with the M5 worktree at `../<repo>-m5` carrying both runs: the un-packaged M4 send-off branch, the packaged M5 re-run (`reference.md`, `plan.md`, the verifier you built, `RUN-NOTES.md`), and the M5 session transcript under `~/.claude/projects/<encoded-cwd>/`. Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (Aug 2025).
+Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (Aug 2025).
 
-Optional lookup pages: [session transcripts in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for the two-run compare, and [long-running shapes](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#9-long-running-shapes--loop-scheduled-tasks-routines-goal) for when one task becomes a pattern, scheduled, looped, or condition-gated.
+Optional lookup pages: [session transcripts in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for the two-run compare, and [long-running shapes](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#9-long-running-shapes--loop-scheduled-tasks-routines-goal) for when you turn a one-off into a pattern you run on a schedule, in a loop, or until a condition holds.
 
 ## What You'll Learn
 After this module, you will be able to:
 - **Diagnose** the gap two runs of the same task surface
 - **Route** each gap to its home: memory, sharper verifier, or new skill
 - **Cut** one rule from `./CLAUDE.local.md` the diagnosis killed
+- **Surface** the kinds of work you repeat across your stack, and draw their recurring shapes
 - **Author** a session-shaper skill through conversation, ship to your personal kit
 - **Map** evals across verifier, judge, and gate
 - **Encode** the lesson so the next loop inherits it
+- **Generalize** the encode-move into a handoff prompt that builds your workflow skills across your stack
 
 ## Start here
 
 You walk in holding two runs of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-run. The contrast across two runs is the material. One run gave you a failure mode to name. Two runs give you gaps the three-pattern itself didn't anticipate, and a shape for what to do about each one.
-
-> **Open M6 in a new Claude Code session inside the M5 worktree at `../<repo>-m5`, no fork.** The packaged re-run's evidence (`reference.md`, `plan.md`, the verifier, `RUN-NOTES.md`) is already on disk there, alongside `./CLAUDE.local.md` and `observations/`. M6 reads, diagnoses, and ships in place.
 
 > **Packaged run thin or missing?** You can still rescue it. If the M5 session is alive but stalled, nudge it once with the Continue prompt from M4. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while the room reads. M6 starts by reading; before it writes, decide whether to wait, stop M5, or accept the partial run as the artefact. Skip the opening lecture. Practice is core. Lectures can be read later.
 
@@ -78,25 +78,29 @@ Antti
 
 **M6 opener rescue + accept-loss callouts — deliberate exception to `check_student_facing.md` rule 5 (golden path only in body).** Two consecutive blockquotes in `## Start here` carry the rescue paths (nudge / re-send fresh / skip the opener) and the accept-the-loss floor ("you can still do the module's exercises"). Rule 5 normally bans recovery branches in body; here the structural risk (M5 run crashed during lunch in 2-day delivery) is named with scoped rescue, then a softer floor for the case where rescue fails entirely. The blockquote shape isolates both from the golden-path narrative for prepared students. Future judges should not re-flag.
 
-**Quality:** compendium-audited 2026-05-26 (writing@0ef2ca6 story@1ff6f8a technical@0ef2ca6 behavior@1ff6f8a pedagogy@0ef2ca6)
-- judges @0ef2ca6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy REVISE (1/0 see instances/ae101--spot-gaps-build-the-loop-module.strategy.json - WYL bullet reshape landed 2026-05-15)
+**Quality:** compendium-audited 2026-05-31 (writing@0ef2ca6 story@1ff6f8a technical@0ef2ca6 behavior@1ff6f8a pedagogy@0ef2ca6 strategy@d06b5b8)
+- judges @d06b5b8: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - cross_module @0ef2ca6: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop,plan-mode-done-right]
-- mechanical @e840433: PASS — ae101-m6 via bin/judge.sh
+- mechanical: REVISE — battery @e840433 predates the 2026-05-27 Phase-2 redesign; it scripts the old chain (missing the `-study`/`-shapes` turns), so it no longer validates current content. Re-fire after the harness update (tmux-runner/IMPROVEMENTS.md § M6 Phase-2).
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Leap test** (per `check_pedagogy.md` rule 45; M6 is an arc-mood exercise so the test names artefact + use, not activity):
+- The student has read their own Claude Code history back across the stack and holds a set of mermaid diagrams of the work they repeat. The dominant gap now sits inside a recognised work-shape, not floating alone.
 - The student now owns a second packaged skill in `~/.claude/skills/` shaped to one of three forms (sharpened-verifier / judge / gap-finder), built from the gap-diagnosis across two runs, and invokes it the next time a similar task ships.
 - The student's `./CLAUDE.local.md` shows at least one rule deleted (compound-by-subtraction), the deletion commit visible in git history, born from the two-run diagnosis.
 - The student now has a one-page arc retrospective written from M1–M6 artefacts (root rules, memory, ADRs, both authored skills, both run artefacts), not from training memory or marketing copy.
+- The student now holds a standalone handoff prompt, written by the agent from the shipped `session-shaper`, that studies their whole stack and authors a skill per recurring shape when run later. The encode-move generalised from one task to all their work.
 
 **Artefact contracts** (per `check_pedagogy.md` rule 46 — every produced artefact with a stable identifier gets a contract row):
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
 | Two-run gap map | Ranked gap list in M6 session scrollback; optionally copied to `observations/` if the student wants it durable | Exercise Phase 1 (diff un-packaged M4 vs packaged M5, quote both runs, rank dominant gap) | Phase 2 session-shaper authoring; arc-retrospective fresh read; future post-cohort team-kit conversation |
+| Recurring-work shapes | Repeated-work inventory + mermaid diagrams (≤30 nodes each) in M6 session scrollback | Exercise Phase 2 study prompt (scan `~/.claude/projects/` across the stack) + shapes prompt (draw the top recurring patterns) | The session-shaper authoring (which shape holds the dominant gap); the `agents-that-build-agents` close (the shapes carry into the handoff prompt) |
 | Stale-rule deletion | `./CLAUDE.local.md` in the M5 worktree, with one rule cut in place if diagnosis killed it | Exercise Phase 1 compound-by-subtraction prompt | Every future session in the worktree; post-M6 merge-back decision into the original repo's personal rules |
 | Session-shaper / second skill | `~/.claude/skills/<skill-name>/SKILL.md` (personal, auto-discovered) | Exercise Phase 2 authoring conversation + self-critique + invocation on packaged run | Future long-running tasks of the same shape; `the-loop-has-a-name` lecture names it as verifier/judge/gate/eval; `agents-that-build-agents` prompt reads it as evidence |
-| Arc retrospective note | Student-picked repo location (ADR, `observations/` memo, or standalone file) | `arc-retrospective` exercise fresh sub-task read + one push-back | Future stalled sessions; post-cohort personal/team reflection; next-loop kit design in `agents-that-build-agents` |
+| Arc retrospective note | Student-picked repo location (ADR, `observations/` memo, or standalone file) | `arc-retrospective` exercise fresh sub-task read + one push-back | Future stalled sessions; post-cohort personal/team reflection |
+| Workflow-skills handoff prompt | Standalone prompt in the close scrollback; student saves it where they choose (repo note or `~/.claude/`) | `agents-that-build-agents` close — the agent reads the shipped `session-shaper` and writes a cold-runnable prompt | The student's own later sessions: run cold to study their stack, diagram recurring shapes, author a skill per shape |
 
 **Failure modes + escape hatches per phase** (per `check_pedagogy.md` rule 47; one row per forcing function shipping in the exercise):
 - **Phase 1 — Diff and name the gaps.** Failure: both-runs collapse — student treats the packaged run as the only material worth diagnosing, the un-packaged baseline fades. Escape: trainer asks for quoted moments from each run separately before any synthesis.

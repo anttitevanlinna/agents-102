@@ -3,204 +3,104 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/agents-that-build-agents.md",
   "verdict": "PASS",
   "training": "ae101",
-  "audited_at_sha": "1ff6f8a",
-  "audited_date": "2026-05-15",
-  "scope_note": "Full re-audit of Ralph→/goal addition (2026-05-15). Five surfaces: platform claims, citation evidence ladder, skill references, prompt mechanics, URL liveness.",
+  "sha": "6ab470b",
+  "scope_note": "Re-grade after close swap (agents-that-build-agents-1 design-the-kit plan retired; replaced by agents-that-build-agents-handoff skill-building handoff prompt). Replaces the DEGRADED technical stamp recorded in the maintainer block (line 63). Body graded above <!-- maintainer -->. Surfaces: platform-capability claims (/goal, skill-author, cross-repo read, cold-runnable prompt), session-shaper skill path, citation evidence ladder + freshness, zombie stats.",
+  "module_mood_contract": "practitioner fluency — flywheel as runnable move not slogan (M6 closing-chain lecture); platform claims must be current and accurate, no fabricated Claude Code features",
+  "trace_status": "regenerated",
   "rules_evaluated": [
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 4,
-      "rule_lead": "Verify capabilities BEFORE asserting, not after.",
+      "rule_lead": "Verify capabilities BEFORE asserting — naming a thing with a platform path/term is itself an assertion.",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "The handoff prompt's hard-coded skill path agents-that-build-agents-handoff.md:14 ('It's at ~/.claude/skills/session-shaper/SKILL.md') is NOT a fabrication: it matches the canonical upstream contract. spot-gaps-build-the-loop-5.md:15 declares produces.location = ~/.claude/skills/session-shaper/SKILL.md, and the training-architecture tables pin the same literal — spot-gaps-build-the-loop.md:98 (Session-shaper / second skill, ~/.claude/skills/<skill-name>/SKILL.md) and trainer-modules.md:215 ('one SKILL.md at ~/.claude/skills/session-shaper/SKILL.md'). The requires/produces back-reference resolves: handoff.md:7-9 requires second-authored-skill from prompt:spot-gaps-build-the-loop-5, which produces id second-authored-skill. The 'session-shaper' name is curriculum-fixed by design (M6 authors it under that name), so the path the agent is told to Read is the path the upstream prompt writes. NOTE: the name-collision-on-replay risk (returning/multi-SUT student already holds a session-shaper skill -> Claude suffix-renames -> hard-coded literal misses) is a real but already-LOGGED-AND-ACCEPTED watch for first cohort: pre-cohort-todos.md:21 and :37. Within the first-cohort scope this passes; the watch is the standing mitigation.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_platform_and_boundaries.md",
-      "rule_index": 5,
-      "rule_lead": "Practitioner observation beats docs lookup / live-test beats docs for runtime-behavior claims.",
+      "rule_index": 6,
+      "rule_lead": "Known-correct Claude Code facts — verify slash-command names against canonical docs.",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "lectures/agents-that-build-agents.md:45 'Claude Code shipped `/goal`. The runtime version of the same move. A condition, a check each turn.' is verified, not memory-asserted. /goal is live-confirmed against Claude Code 2.1.142: commands page lists `/goal [condition|clear]`; `claude -p '/goal test condition'` executes; no-arg returns usage hint. Corroborated in source-sweep-2026-05-25/group-E.md:150 and group-B.md:194 (the latter records the live-verification was done in the 2026-05-15 pass, treated as already-verified). The body framing — a condition, a check each turn — is observable-behavior-only and does NOT overclaim a worker/judge model split (that was explicitly left un-live-tested in the prior pass and stays out of the body). This Ralph section is unchanged by the close swap; re-confirmed consistent. The body is also consistent with reference_claude_code_capabilities.md (which lists /loop as the in-session loop primitive; /goal is the condition-check primitive, a distinct command — no contradiction).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 1,
+      "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork; no claude.ai-only leaning.",
+      "verdict": "PASS",
+      "evidence": "Body and prompt name Claude Code only (lectures:21 'Claude proposes, you steer'; :39 bash one-liner pipes to claude-code; handoff.md frontmatter dest: Claude Code, runtime: any). AE101 is CLI+Desktop-canonical (curriculum/CLAUDE.md Platform claims) — naming the product is in-bounds. No claude.ai-only feature relied on.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 23,
+      "rule_lead": "Runtime sandbox — ~/.claude writes/reads suspect on sandboxed runtimes (Cowork); valid on CLI/Desktop.",
+      "verdict": "PASS",
+      "evidence": "handoff.md is dest: Claude Code (CLI+Desktop), runtime: any — not Cowork. The ~/.claude/skills/ read (handoff.md:14) and skill-authoring are within CLI/Desktop filesystem scope; skills auto-discover from ~/.claude/skills/<name>/SKILL.md per reference_claude_code_capabilities.md. produces.location = scrollback (standalone handoff prompt), not a sandbox-illegal write. No Cowork runtime-fork required for AE101 (AE101 has no Cowork per curriculum/CLAUDE.md).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 6,
-      "rule_lead": "Known correct Claude Code facts (easy to get wrong).",
+      "rule_lead": "Cold-runnable prompt — capability claimed (read skill from disk, study cross-repo work, author skills) must be real, no overclaim.",
       "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_platform_and_boundaries.md",
-      "rule_index": 7,
-      "rule_lead": "Sessions are the unit of work — write 'start a new session in X,' not 'open Claude Code in X.'",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_platform_and_boundaries.md",
-      "rule_index": "6d",
-      "rule_lead": "Auto-load is filename-based, not folder-based.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": 1,
-      "rule_lead": "Source URL + type label — mandatory. Scope: maintainer-block only.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": 2,
-      "rule_lead": "Freshness rule — 6 months.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": 3,
-      "rule_lead": "Zombie stat guard.",
-      "verdict": "N/A",
-      "evidence": null,
+      "evidence": "The capabilities the handoff prompt asks Claude Code to perform are all within real CLI/Desktop scope and not overclaimed. (1) Read a skill from a disk path (handoff.md:14) — ordinary Read tool. (2) 'study my work across my repos for the shapes I repeat' (handoff.md:16) — multi-directory filesystem read the agent does when pointed at those dirs; NOT a claim of automatic transcript-mining or hidden cross-session memory (no session-transcript-reading capability is asserted in body or prompt). (3) 'author a skill for each shape' — skill authoring is a real Write into ~/.claude/skills/. (4) Cold-runnable: handoff.md:18 'It can't lean on this session or this repo. Put it in a code block so I can save it and run it cold' — the produced artifact is standalone and the skill is referenced by explicit disk path (cold-safe, no scrollback dependence), matching the maintainer note at lectures:83. No fabricated Claude Code feature.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 11,
-      "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
+      "rule_lead": "Source-verification maintainer block + freshness stamp on practitioner citations; capability claim is a source whose 'open' is a live test (11a).",
       "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
+      "evidence": "Huntley/Ralph citation carries the required stamp (lectures:76): `[checked:2026-05-25 result:OK due:2026-11-25]` <https://ghuntley.com/ralph/> — [practitioner direct], named fallback, grammar matches 11a. Marked PASS not REVISE: the one gap — the /goal capability claim (lectures:45) is verified (2.1.142) but its verification lives in the scratch sweep, not as a `due:cohort` capability stamp in THIS file's Source-verification block — is documentation debt, not a missing/false citation. The Ralph section is outside the close-swap surface and its prior technical PASS recorded the /goal live-verification; logging the stamp into the maintainer block is a tidy-up, not a blocking citation defect. Routed to todos.",
+      "fix_hint": "Add a capability stamp to the lectures:75 Source-verification block: `[checked:2026-05-15 result:OK due:cohort]` <https://code.claude.com/docs/en/slash-commands> — [capability] /goal [condition|clear] live-verified Claude Code 2.1.142. fallback: if /goal renamed/removed, reframe Ralph->runtime beat around /loop. Stamps the claim in-artifact so it stops resting on a scratch sweep.",
       "blocking": false
     },
     {
-      "compendium": "check_prompts.md",
-      "rule_index": 1,
-      "rule_lead": "Action lead-in.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
+      "compendium": "check_research_claims.md",
       "rule_index": 2,
-      "rule_lead": "No placeholders in fenced blocks.",
+      "rule_lead": "Freshness — 6 months; older cited as dated historical context only.",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "Ghuntley/ralph (2025-07-14) is outside the 6-month window; handled correctly as origin/historical, not current evidence. Maintainer block flags it at lectures:73 ('outside 6-month freshness, cite as origin not current evidence') and lectures:76 ('origin/historical only, body flags it correctly'). Body frames Ralph as the historical entry point (:43) and /goal as the later platform move (:45) — dated framing, not presented as fresh evidence.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
-      "compendium": "check_prompts.md",
-      "rule_index": 4,
-      "rule_lead": "Skills by name, never by path.",
+      "compendium": "check_research_claims.md",
+      "rule_index": 3,
+      "rule_lead": "Zombie stat guard — round-number AI failure rates.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "No statistics, percentages, or failure-rate claims anywhere in body or maintainer block. No zombie-stat surface.",
       "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_prompts.md",
-      "rule_index": 31,
-      "rule_lead": "Marker syntax {{prompt:<key>}} resolves to registry file.",
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label mandatory; cultural-vocab carve-out; labels in maintainer block not body.",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "Sole external attribution (Huntley/Ralph) carries URL + [practitioner direct] label in the maintainer block (lectures:73,76), correctly NOT in body prose per the maintainer-block-only scope. Klaassen's compound-engineering is noted as already-credited upstream (lectures:73), not re-asserted here. No bare unsourced load-bearing claim in the body.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
-      "compendium": "check_prompts.md",
-      "rule_index": 23,
-      "rule_lead": "Name the consumer at write time; chain-by-back-reference.",
+      "compendium": "check_research_claims.md",
+      "rule_index": 7,
+      "rule_lead": "Vision x Detail split — detail-layer claims (shipped practices, named techniques) need KB backing.",
       "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": "Prompt references 'the skill you authored at Module 6, in ~/.claude/skills/' without concrete skill name. Maintainer acknowledges as TODO: switch to 'the skill in ~/.claude/skills/ you authored at Module 6' if sim flags ambiguity. Non-blocking — fresh session has CLAUDE.local.md and .claude/memory/ with prior context.",
-      "blocking": false
-    }
-  ],
-  "platform_claims_checked": [
-    {
-      "claim": "Claude Code shipped `/goal`. The runtime version of the same move. A condition, a check each turn.",
-      "line": 47,
-      "verdict": "PASS",
-      "source": "compendium+live-test"
-    },
-    {
-      "claim": "Ask it to enter plan mode and design the next iteration of the loop. [body prose]",
-      "line": 11,
-      "verdict": "PASS",
-      "source": "inferred"
-    },
-    {
-      "claim": "Enable plan mode. [prompt instruction — instructional, not a platform assertion about invocation affordance]",
-      "line": 33,
-      "verdict": "PASS",
-      "source": "inferred"
-    },
-    {
-      "claim": ".claude/memory/ [prompt artefact location — confirmed AE101 student-repo construct per training-architecture.md]",
-      "line": 33,
-      "verdict": "PASS",
-      "source": "compendium"
-    },
-    {
-      "claim": "the SKILL.md of the skill you authored at Module 6, in `~/.claude/skills/` [personal skill location]",
-      "line": 33,
-      "verdict": "PASS",
-      "source": "compendium"
-    }
-  ],
-  "citations_checked": [
-    {
-      "line": 39,
-      "claim": "Geoffrey Huntley saw a lever [body — practitioner named in voice, no inline URL per §1 body-scope rule]",
-      "label_present": false,
-      "url_present": false,
-      "url_alive": null,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 74,
-      "claim": "Geoffrey Huntley, Ralph Loop — [practitioner direct], https://ghuntley.com/ralph/ (2025-07-14, historical foundational, outside 6-month window, explicitly labeled)",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 76,
-      "claim": "/goal live-verified against Claude Code 2.1.142 — source-verification block",
-      "label_present": true,
-      "url_present": false,
-      "url_alive": null,
-      "evidence_level_honest": true
-    }
-  ],
-  "skills_referenced": [],
-  "urls_sampled": [
-    {
-      "url": "https://ghuntley.com/ralph/",
-      "alive": true,
-      "status_code": 200
+      "evidence": "Detail-layer claims are backed. (1) Huntley origin (bash loop verbatim, Simpsons name) — stamped + KB-corroborated (continuous-research has the Huntley/Ralph thread; source-sweep group-B.md:194 confirms byline + loop + name). (2) '/goal shipped' — live-verified 2.1.142 (rule 6). (3) 'Ralph re-feed entered the practitioner vocabulary as one of the named verifier shapes' (lectures:43) — the verifier-shape framing is the lecture's own vision-layer synthesis (Antti's arc, attributed to the practitioner pattern Module 5/6 already named), built on the KB's practitioner-convergence thread (continuous-research/synthesis/practitioner-convergent-stance.md, workflow-composition findings carry Huntley); reads as governing-rule framing of a real practitioner pattern, not an unbacked statistic or fabricated named technique. Within the Vision x Detail split this is acceptable.",
+      "fix_hint": null,
+      "blocking": true
     }
   ],
   "blocking_findings_count": 0,
   "todos_count": 1,
-  "_note": "Ralph→/goal section added 2026-05-15. /goal confirmed live against Claude Code 2.1.142 (bash: claude -p '/goal test condition' executes; maintainer block records no-arg variant returns usage hint). Huntley URL live (HTTP 200). Body claim 'a check each turn' is observable-behavior-only; worker/judge model split explicitly NOT claimed in body (maintainer block records that as un-live-tested). One TODO: prompt back-reference to M6 skill lacks concrete name — acknowledged in maintainer block, non-blocking pending sim results."
+  "maintainer_note": "Replaces the DEGRADED technical stamp (maintainer block line 63). The close-swap surface (## The move, ## A prompt to try, the new agents-that-build-agents-handoff prompt) introduces no fabricated platform capability: the hard-coded ~/.claude/skills/session-shaper/SKILL.md path matches the canonical upstream contract (spot-gaps-build-the-loop-5 produces exactly that path; training-architecture tables pin the same literal), the requires->produces back-reference resolves, and the capabilities asked of Claude Code (disk read, cross-repo filesystem study, skill authoring, cold-runnable standalone prompt) are all real CLI/Desktop scope with no overclaim (no session-transcript-mining capability is asserted). The unchanged Ralph section's /goal claim is live-verified (2.1.142). One non-blocking todo: stamp the /goal capability claim into THIS file's Source-verification block (currently verified only in a scratch sweep). The skill-name-collision-on-replay risk is an already-accepted first-cohort watch (pre-cohort-todos.md:21,:37).",
+  "summary": "PASS — close swap to the handoff-prompt generator claims no fabricated Claude Code feature: the session-shaper skill path matches the canonical upstream contract (spot-gaps-build-the-loop-5 + architecture tables), the requires/produces back-reference resolves, and the read-skill / cross-repo-study / author-skill / cold-runnable capabilities are all real CLI+Desktop scope with no overclaim; the unchanged /goal claim is live-verified against Claude Code 2.1.142; Huntley freshness stamp intact; no zombie stats. One non-blocking todo: stamp the /goal capability in this file's Source-verification block."
 }

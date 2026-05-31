@@ -42,11 +42,11 @@ Process learning (compounded): declaring the gate fixed on the case-4 unit-green
 
 1. **§5 mechanical harness + live battery → `mechanical-tested`** (THE binding rung). Watched session, not unattended. Scoped in `tmux-runner/IMPROVEMENTS.md § M6 Phase-2`: scenarios already run `-primitives`; add only `-study` + `-shapes` (two turns), renumber assert_turn cases `+2` from case 3, seed/scope the cross-project `-study` scan. Then a LIVE battery run (needs the M5-end-state worktree → full M1→M5 chain first). NOT blind-writable, the harness is tuned against live runs.
 2. **Maintainer re-review** of exercise + module + lecture after this session's edits (the `maintainer-reviewed` axis, inherently the maintainer's end-to-end read + manual prompt runs).
-3. **loop-5 prompt-polish edit** (behavior-8, low, optional): add "Don't reassure me about the skill" (mirrors -4). Needs a card + a genuine `APPROVED: spot-gaps-build-the-loop-5` user turn, OR a maintainer call to accept-and-close (it's a non-blocking instance-JSON todo, not a REVISE blocker).
+3. ✅ **loop-5 prompt-polish edit LANDED** 2026-05-31 (maintainer-approved). Appended "Don't reassure me about the skill. If it isn't earning its place, say so." (mirrors -4); propagated to `site/prompts.json`, graph ✓; behavior instance niceness-tax todo closed (verdict TODO→PASS, re-sim owed at next audit). Both gated prompt-polish edits (loop-3 + loop-5) now done.
 4. **Cohort run → logged on the `- cohorts:` row.** A delivery fact recorded in the log, not a ladder rung to reach (the `cohort-tested` rung was removed 2026-05-31). Not a ceiling on done-done.
 
 ## Non-blocking judge todos (live in instance JSONs, NOT in pre-cohort-todos.md)
-- behavior: loop-3 preamble (med; exercise L85 callout partially mitigates), note loop-3 fence reword now landed; loop-5 niceness (low).
+- behavior: loop-3 preamble (med; exercise L85 callout partially mitigates), still open; loop-3 fence reword + loop-5 niceness both RESOLVED 2026-05-31.
 - story: align the two pacing-callout registers ("Fast operator?" vs "Solo or fluent?"); "few engineers ever read them back" (L45) mildly over-general for senior (judge: keep).
 - Files: `curriculum/evals/instances/ae101--spot-gaps-build-the-loop.{behavior,story,technical}.json`.
 

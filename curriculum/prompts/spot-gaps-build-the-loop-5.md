@@ -28,3 +28,5 @@ Invoke the `session-shaper` skill we just authored — by its name — on the M5
 Produce whatever output the skill asks you to produce (pass/fail, ranked findings, inline critique).
 
 Then, in the same response, answer: is the skill any good? Specifically: does the output catch the dominant gap we named in Phase 1? Does it miss things a staff engineer reviewing this run would catch? Would the M4 un-packaged run have come out better if this skill had fired on it retroactively?
+
+Don't reassure me about the skill. If it isn't earning its place, say so.

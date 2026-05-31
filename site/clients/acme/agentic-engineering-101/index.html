@@ -25,6 +25,8 @@
     --accent-2:    #a8473a;
     --accent-soft: rgba(138,58,42,.08);
     --warm:        #c97942;   /* amber — secondary accent (from ai-training) */
+    --hox:         #e8590c;   /* hot signal-orange — HOX heads-up widget */
+    --note:        #2f6b6b;   /* calm teal — NOTE guidance widget */
     --arctic:      #5e8ca8;   /* muted arctic blue — gradient tail */
     --ink:         #14110d;
     --ink-text:    #f4ecdb;
@@ -946,6 +948,127 @@ main::before {
     }
     .module .session-block__verb { background: #ddd !important; color: #000 !important; }
     .module .session-block__name { color: #000 !important; }
+}
+
+/* HOX — loud heads-up admonition. Source shape: **HOX** <warning prose>.
+   Hotter than the amber .session-block: reserved for the rare "you are about
+   to make a mistake right HERE" seam (wrong worktree, wrong branch, about to
+   overwrite). Hot signal-orange so it does not read as just another panel. */
+.module .hox-block {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin: 1.25rem 0 1.75rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--hox);
+    border-left: 5px solid var(--hox);
+    border-radius: 5px;
+    background: #fdecdf;
+}
+
+.module .hox-block__badge {
+    flex: none;
+    font-family: var(--font-body);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.72rem;
+    color: #fff;
+    background: var(--hox);
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.module .hox-block__body {
+    color: var(--fg);
+    font-weight: 600;
+}
+
+.module .hox-block__body > p {
+    margin: 0;
+}
+
+/* Dark exercise band (e.g. diagnose-and-resend) — keep the hot badge, tint
+   the panel so it still shouts against the ink background. */
+.phase--exercise .hox-block {
+    background: rgba(232, 89, 12, 0.12);
+    border-color: var(--hox);
+}
+
+.phase--exercise .hox-block__body {
+    color: var(--ink-text);
+}
+
+@media print {
+    .module .hox-block {
+        background: #fff !important;
+        border-color: #999 !important;
+    }
+    .module .hox-block__badge {
+        background: #000 !important;
+        color: #fff !important;
+    }
+}
+
+/* NOTE — calm guidance widget. Source shape: **Note** <guidance prose>.
+   Same construction as .hox-block, calm teal instead of alarm-orange: HOX
+   shouts "mistake right HERE," NOTE says "don't miss this" — a window switch,
+   a where-you-are cue. Louder than a buried sentence, quieter than HOX. */
+.module .note-block {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin: 1.25rem 0 1.75rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--note);
+    border-left: 5px solid var(--note);
+    border-radius: 5px;
+    background: #e4efee;
+}
+
+.module .note-block__badge {
+    flex: none;
+    font-family: var(--font-body);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.72rem;
+    color: #fff;
+    background: var(--note);
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.module .note-block__body {
+    color: var(--fg);
+    font-weight: 600;
+}
+
+.module .note-block__body > p {
+    margin: 0;
+}
+
+/* Dark exercise band — tint the panel so it still reads against the ink. */
+.phase--exercise .note-block {
+    background: rgba(47, 107, 107, 0.16);
+    border-color: var(--note);
+}
+
+.phase--exercise .note-block__body {
+    color: var(--ink-text);
+}
+
+@media print {
+    .module .note-block {
+        background: #fff !important;
+        border-color: #999 !important;
+    }
+    .module .note-block__badge {
+        background: #000 !important;
+        color: #fff !important;
+    }
 }
 
 .module blockquote {
@@ -2172,7 +2295,7 @@ Report success on each step and tell me what you did.
 <p>The first compound loop closes on a trivial bug from your own backlog. Orient, fix tests-first without plan mode, retro into a personal <code>CLAUDE.local.md</code> born from the session, close the bug&#39;s ticket via one connector. The loop every module after this one rides on.</p>
 <h2 id="prework">Prework</h2>
 <p>Complete the prework at the top of this workbook. You&#39;ll open the first session in the repo you picked there. You&#39;ll stay in this one repo across all six modules. A later module commits your working tree as a fixed starting point, so keep unrelated work-in-progress committed or on its own branch as you go, and nothing stray rides into that snapshot.</p>
-<h2 id="what-you39ll-learn">What You&#39;ll Learn</h2>
+<h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
 <li><strong>Run</strong> an orient → fix → compound → close loop end-to-end on a trivial bug in your own repo</li>
@@ -2225,10 +2348,10 @@ Report success on each step and tell me what you did.
 <p>Context is whatever you tell it. A fact. A role. A preference. A constraint. All of it colors what comes next. You, in a way, compel the right output by having the right stuff in the context.</p>
 <p>That&#39;s the move. Not a clever prompt, not a slash command you didn&#39;t know. Loading the right context before the question. Everything else in this training is about how to earn the second window on any codebase, any Monday.</p>
 <p>You&#39;ll watch what&#39;s <em>possible</em>. Not what&#39;s missing. That&#39;s the posture of this training.</p>
-<h2 id="where-you39re-starting">Where you&#39;re starting</h2>
+<h2 id="where-youre-starting">Where you&#39;re starting</h2>
 <p>You found your way to Claude Code by yourself. Maybe a colleague pointed you at it. Maybe you watched a video. Mostly you just typed something, watched what came back, and kept the prompts that worked. You picked up tricks nobody taught you. The slash command that saves keystrokes. The <code>CLAUDE.md</code> shape that produced output you liked. The weird thing you tell Claude at the start of every session.</p>
 <p>Every engineer who sat down with this tool did some version of that. The trick you brought to Connections is your slice of partial; everyone else&#39;s slice is different. This training pools partial into a shared floor, then raises the ceiling. The people building this are partial too. Six months ahead of you on some moves, six months behind on others.</p>
-<h2 id="what-you39ll-do-today">What you&#39;ll do today</h2>
+<h2 id="what-youll-do-today">What you&#39;ll do today</h2>
 <p>Fix one trivial bug from your own backlog, end-to-end, with plan mode used deliberately. Log one decision. Seed a rules file your next session reads first. The bug is the vehicle; the loop is the cargo.</p>
 <p>You become the Claude wizard by running the loop on real work and letting the habit sharpen. Not by reading about it.</p>
 </section>
@@ -2303,7 +2426,7 @@ Let&#39;s work on this bug:
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Now do it properly, TDD-style. Write the failing test that names the deeper issue you just identified, run it, watch it fail. Fix the root cause. Run again, watch it pass. Show me the diff before you commit.
 </code></pre>
-<p>Dig into code quality and structure. Ask Claude: <em>did you make it better? Why yes. Why no.</em> The goal is to make a neat and clean fix. Might need a number of nudges. You steer.</p>
+<p><strong>Optional.</strong> Once the fix is in, dig into code quality and structure. Ask Claude: <em>did you make it better? Why yes. Why no.</em> You steer; might take a few nudges.</p>
 <p>Ask Claude to commit, push a branch, and open the PR. How far you let Claude drive Git is your call.</p>
 <p><strong>What happened:</strong> A real PR shipped. A failing test landed in the codebase before the fix did. You read the diff, pushed back on at least one line, and ran the root-cause interrogation before the second TDD pass.</p>
 <p>The PR is shipped. The move is warm. Hand off to the compound step.</p>
@@ -2430,7 +2553,7 @@ Ticket:
 <h2 id="next">Next</h2>
 <p>Module 2 is where plan mode earns its keep: multi-file work, a second pass that pressure-tests the plan, and the catches that come with approving more scope than you&#39;d cold-authorize. <code>./CLAUDE.local.md</code> sits at the top of the next session, waiting to be read (alongside team <code>./CLAUDE.md</code> if this repo has one; both concatenate into context). Close this session when the ticket lands; Module 2 opens fresh in the same repo.</p>
 <h2 id="pre-reads-before-module-2">Pre-reads before Module 2</h2>
-<p>Optional. Skipping either piece does not break Module 2. Both sit in the gap between Module 1 and Module 2; engineers who do them arrive at Module 2 with practitioner voice and worktree-readiness as recognition rather than novelty.</p>
+<p>Optional. Both sit in the gap between Module 1 and Module 2; engineers who do them arrive at Module 2 with practitioner voice and worktree-readiness as recognition rather than novelty.</p>
 <p><strong>Watch: Boris Cherny, <a href="https://www.youtube.com/watch?v=6eBSHbLKuN0">Mastering Claude Code in 30 minutes</a>.</strong> Cherny walks through how he and the team actually use the tool: plan mode, verification loops, parallel worktrees, <code>CLAUDE.md</code> compounding, slash commands, subagent map-reduce, the finish-the-migration rule. Why for Module 2: frames the practitioner voice the rest of Agentic Engineering 101 (AE101 from here on) earns through exercises. The moves you will live in Module 2 through Module 6 show up here first as one person&#39;s working rhythm.</p>
 <p><strong>Read: <a href="#reference-multi-session-git">Multi-session and Git: survival guide</a>.</strong> Short local reference page on worktrees versus branches versus clones, and how to open several Claude Code sessions on the same repo without wrecking each other&#39;s state. Cherny calls parallel worktrees his single biggest productivity unlock: one repo, several Claude Code sessions running at once, each on its own branch, no stashing and no clobbering. Reach for them when one session is waiting on a long run and another piece of work is ready to move, when you want to try two approaches to the same problem side by side, or when a review task can run alongside the build. The instinct earns itself in use.</p>
 
@@ -2448,7 +2571,7 @@ Ticket:
 <p><strong>Just a simple task that spans a few files. Not an epic.</strong></p>
 <p>Come to Module 2 without a surfaced task and you&#39;ll be scrambling to find one while the room is already in plan mode. Your call.</p>
 <p>Optional reading in the Module 1 to Module 2 gap: Boris Cherny, <a href="https://www.youtube.com/watch?v=6eBSHbLKuN0">Mastering Claude Code in 30 minutes</a>; <a href="#reference-multi-session-git">Multi-session and Git: survival guide</a>. If you like a lookup page nearby, <a href="#5-plan-mode-at-depth">plan mode at depth in the reference</a> has the approval paths in one table.</p>
-<h2 id="what-you39ll-learn">What You&#39;ll Learn</h2>
+<h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
 <li><strong>Run</strong> plan mode on a real multi-file task and read the plan for its file list, verification steps, and named assumptions</li>
@@ -2533,6 +2656,9 @@ My task:
 <p><strong>Committed changes:</strong> not just a flag; an alternative. Merge two steps that belong together. Reorder two steps whose sequence matters. Swap a file path for the right one.</p>
 <p>Two messages, your phrasing, specific to what you saw. Claude acknowledges each, regenerates the plan, re-presents it. <strong>Read the revised plan carefully. This is where Claude&#39;s niceness bites.</strong> Claude will sometimes verbally accept a push-back and re-soften the step anyway (RLHF doing its job). If you see the original vagueness survive the regeneration, push back again on that specific line. Softening-on-regeneration is a reliable tell; catching it is part of the read.</p>
 <p>Stuck on the soft item? Ask Claude which step it&#39;s least confident about. That answer IS one. Find is easier than judge.</p>
+<blockquote>
+<p><strong>Two messages, then move on.</strong> Two push-backs on two axes, plus one check that the regeneration held, is all Phase 3 asks. A third push-back may be forming. That is fine; it is the second-pass read&#39;s job to catch the rest. Send your two, check the revision once, and move to Phase 4.</p>
+</blockquote>
 <h2 id="phase-4-second-pass-read">Phase 4: Second-pass read</h2>
 <p>Now hand the plan to a second agent that reads differently than you do. Still in plan mode, the plan file is the artifact you&#39;re walking, and the lock-it-in convention only fires inside plan mode.</p>
 <p>Ask Claude to walk down every unresolved branch of the plan one question at a time, recommending an answer for each.</p>
@@ -2554,6 +2680,12 @@ Ask me three questions at a time. For each question, recommend an answer. If a q
 <blockquote>
 <p><strong>Timebox check.</strong> When the slot ends, stop. The second-pass walk-down can run deep on a real codebase. If it is still surfacing branches when time is up, take the most recent sharpened plan, approve it, and move to Phase 5. The branches that did not surface today are the ones you will catch when you actually ship the work. The exercise teaches the move. You take the move home.</p>
 </blockquote>
+<p>The three-at-a-time prose above is the starting point; that batching cuts round-trips on the branches that need real thought. If you prefer a structured picker, switch once the walk-down is rolling. Ask Claude to switch to AskUserQuestion, and add any steering of your own.</p>
+<p><strong>Prompt</strong> <em>(Claude Code)</em> ⟦M:plan⟧</p>
+<pre><code>Switch to AskUserQuestion for the rest of the walk-down. Keep going through the unresolved branches (dependencies, decisions, side-effects I haven&#39;t named), but ask through AskUserQuestion, one option set per branch, with your recommended answer marked.
+
+If a branch can be settled by reading the codebase, read the codebase instead of asking. Don&#39;t touch the plan file until I say &#39;lock it in.&#39; When you do edit the plan, use Edit on the changed section, not Write on the whole file.
+</code></pre>
 <p><em>Credit: Matt Pocock for the original <a href="https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md"><code>grill-me</code></a> skill. The version above is abbreviated to fit the 15-minute slot. The original is fully relentless and can run an hour. Optional:</em></p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em> ⟦M:plan⟧</p>
 <pre><code>Interview me relentlessly about every aspect of this plan until we reach a shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one. For each question, provide your recommended answer.
@@ -2575,7 +2707,7 @@ If a question can be answered by exploring the codebase, explore the codebase in
 <p>Claude answers. Read carefully. The pattern it names should be something like: <em>read the plan yourself → push back on what you can see → second-pass read for what you can&#39;t → approve.</em> Two reads, two kinds of scrutiny. You catch what a human catches (specificity, voice-of-experience, &quot;I&#39;d write that differently&quot;). The second read catches what an agent walking a decision tree catches: branches you didn&#39;t notice, dependencies you didn&#39;t name, side-effects you didn&#39;t price.</p>
 <p>Neither is complete. Paired, they usually are.</p>
 <p><strong>Plan-mode approval inflation</strong> is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions. One pass by you catches some of it. The second read catches the rest. That&#39;s the move.</p>
-<p>On to the Compound step. The Debrief writes the pattern into your personal <code>CLAUDE.local.md</code> in a shape you can re-run on your next plan-mode pass. Team-worthy patterns get flagged for a separate PR against team <code>CLAUDE.md</code>.</p>
+<p>On to the Compound step, and keep this session open for it. The next step reads this same scrollback to pull the task-shaping rules worth keeping. The Compound step then writes one into your personal <code>CLAUDE.local.md</code> in a shape you can re-run on your next plan-mode pass. Team-worthy patterns get flagged for a separate PR against team <code>CLAUDE.md</code>.</p>
 <p><strong>What happened:</strong> Claude wrote a plan. You picked <em>keep planning with feedback</em> and sent two push-backs: what YOU saw. Claude regenerated. Then you ran a second-pass read: Claude asked one question at a time, walking down branches you didn&#39;t think to check, suggesting answers. You confirmed or corrected. The plan sharpened. You approved. You did not run the code. You asked Claude what the second-pass read surfaced that your push-back didn&#39;t, and whether any of it would have mattered in execution.</p>
 </section>
 
@@ -2597,7 +2729,7 @@ If a question can be answered by exploring the codebase, explore the codebase in
 <pre><code>Read this session end-to-end. Propose three to five rules about what makes a multi-file task plan-mode-able on this codebase. Phrase each as a one-liner I could re-read tomorrow. Anchor each rule in a specific moment from the session: the task I picked, what the second-pass read surfaced, what my push-backs caught, where the plan factored cleanly and where it didn&#39;t. Rules about task shape, not about plan-reading craft. After proposing, stop and ask which one I want to rewrite and which one I want to reject. Wait for my answer before continuing.
 </code></pre>
 <p>When Claude pauses for the rewrite-and-reject pass, that is the engagement step. The rule that arrives generic is the one that needs your hand on it.</p>
-<h2 id="phase-2-save-it-where-you39ll-find-it-again">Phase 2: Save it where you&#39;ll find it again</h2>
+<h2 id="phase-2-save-it-where-youll-find-it-again">Phase 2: Save it where you&#39;ll find it again</h2>
 <p>Decide the location with Claude. The dimension that matters is when the rules fire, anywhere on this laptop (user-level), or only when this repo is open (repo-personal). Claude carries the path taxonomy; you carry the choice.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Let&#39;s decide together where we store this for optimal use in future. Propose two or three plausible paths with their loading models — fires-anywhere-on-this-laptop vs fires-only-when-this-repo-is-open — and tell me which one you&#39;d pick for these rules and why. I&#39;ll confirm or steer. Once we agree, write the rules in the wording I sharpened. After saving, show me the first three rules from the file so I can confirm the wording stuck. If a file already exists at the path we pick, ask before overwriting.
@@ -2634,7 +2766,7 @@ Ticket:
 <div class="phase-kicker">Lecture</div>
 
 <h1 id="where-the-rule-could-live">Where the rule could live</h1>
-<p>You have a <code>.md</code> file with three to five rules about how multi-file tasks want to be factored on your codebase. Three shapes for what happens to a file like this in practice. Each is real; each is downstream of where you are today.</p>
+<p>You have a <code>.md</code> file with three to five rules about how multi-file tasks want to be factored on your codebase. Three shapes for what happens to a file like this in real use. Each is real; each is downstream of where you are today.</p>
 <h2 id="slack-triage-shape">Slack-triage shape</h2>
 <p>A request lands in a Slack thread. Typically, either <code>@Claude</code> routes it into Claude Code on the web, or a Slack app listens for the message and passes it to an agent runtime. The agent reads the thread plus your <code>.md</code> file, then replies with the suggested slice or next question: <em>this is a one-liner, ship it from main; this is a feature slice, here&#39;s how it splits; this is an epic, here are the three shippable pieces.</em></p>
 <p>The <code>.md</code> file is the steady part. The agent is the moving part. The triage gets sharper because the file gets sharper, not because the agent gets bigger.</p>
@@ -2705,8 +2837,8 @@ If nothing earned itself, say so and stop.
 <p>M3 continues in the same repo as M1 and M2. The session opens at the first exercise.</p>
 <p>Bring the feature you planned at M2, that&#39;s the default. The plan file Claude Code wrote during plan mode is what M3 reads (you noted the path at M2 close). If your M2 task doesn&#39;t have an external or user-facing surface, swap to something from your backlog that does, code already in the repo, a Jira or Linear ticket, or a design doc all work. Not a typo-fix, not a quarter-long epic. Something you could ship in a few hours. Too small and the agent crunches it in thirty seconds with nothing interesting to surface. Too large and you don&#39;t get through it. Pick the size that fits.</p>
 <p>Optional pre-reads in the Module 2 to Module 3 gap: Simon Willison, <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/">The lethal trifecta for AI agents</a>; <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP Top 10 for LLM Applications</a> for a deeper scan.</p>
-<p>If you want the primitives this module uses at a glance, <a href="#6-subagents--task-tool-fresh-context">subagents in the reference</a> and <a href="#7-skills">skills in the reference</a> cover what each is and when to reach for it. Optional.</p>
-<h2 id="what-you39ll-learn">What You&#39;ll Learn</h2>
+<p>If you want the primitives this module uses at a glance, <a href="#6-subagents--agent-tool-fresh-context">subagents in the reference</a> and <a href="#7-skills">skills in the reference</a> cover what each is and when to reach for it. Optional.</p>
+<h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
 <li><strong>Fork</strong> a sibling git worktree and run two Claude Code sessions on the same history side by side, one window per lane, working the idle window while the other runs a long prompt</li>
@@ -2776,7 +2908,7 @@ Report the four lines back. Then wait.
 <hr>
 <p>Two moves today. You&#39;re going to INVOKE two curated skills this module: one for access-control analysis, one for STRIDE threat modeling. Then you&#39;re going to AUTHOR one skill yourself: a test-strategy skill tuned to your codebase. Not written for you. Written by you, in conversation with Claude.</p>
 <p>That split isn&#39;t accidental. It&#39;s a claim about what you can produce well on a Tuesday afternoon and what you can&#39;t.</p>
-<h2 id="what39s-a-skill-one-breath">What&#39;s a skill, one breath</h2>
+<h2 id="whats-a-skill-one-breath">What&#39;s a skill, one breath</h2>
 <p>A skill in Claude Code is a named, scoped capability the agent can invoke. A markdown file with a frontmatter header and a set of instructions, living in <code>.claude/skills/&lt;name&gt;/SKILL.md</code> (or equivalent team-kit home). The second-pass walk-down you ran in Module 2, where Claude asked you one question at a time about unresolved branches, was patterned on Matt Pocock&#39;s <code>grill-me</code> skill (Socratic requirement elicitation, MIT-licensed, on his GitHub). It landed as a plain prompt in M2 because skills hadn&#39;t been introduced yet as a primitive. Today you invoke two more curated ones and author one of your own.</p>
 <p>Skills are how agentic knowledge compounds across teammates. A Slack thread about &quot;how to threat-model our webhook paths&quot; dies in 48 hours. A STRIDE skill tuned to your stack lives as long as the repo.</p>
 <h2 id="the-three-voices-in-play-today">The three voices in play today</h2>
@@ -2787,7 +2919,7 @@ Report the four lines back. Then wait.
 <p><strong>Voice three: your skills folder, starting today.</strong> The skill you author at the end of this module ships to your personal <code>~/.claude/skills/test-strategy/</code>. Auto-discovered in every session you run. That&#39;s the ship. Personal-first is the through-line: M1 was <code>CLAUDE.local.md</code> (personal, gitignored), M3 is your first authored skill in your personal kit. Promotion to a team home is the next move, not this one: a conversation with teammates, then a PR (to your repo&#39;s <code>.claude/skills/</code>, to a shared Git repo, to whichever home your team picks now or later). Intercom&#39;s 267-skill plugin repo (153 contributors, 31% of R&amp;D, as of April 2026) was born that way: one engineer&#39;s personal skill, then a teammate&#39;s, then accretion. Not a platform-team design document.</p>
 <h2 id="why-this-proportion-matters">Why this proportion matters</h2>
 <p>Two curated, one authored. The ratio tracks a deliberate claim: <em>frontier practitioner moves are curated for you; you build what you know best, which is your own system.</em> Flipped the other way (three authored skills) and you&#39;d be reinventing STRIDE on a Tuesday. Flipped the other way again (three curated skills) and you&#39;d leave with no authored skills of your own, and the team kit wouldn&#39;t be born here. This proportion is deliberate.</p>
-<h2 id="what-quotearn-the-trustquot-means">What &quot;earn the trust&quot; means</h2>
+<h2 id="what-earn-the-trust-means">What &quot;earn the trust&quot; means</h2>
 <p>The module title isn&#39;t rhetorical. By the end of 1h45, you&#39;ll have three things your staff engineer and your CISO would actually read:</p>
 <ul>
 <li>A mapped access surface for the feature you&#39;re shipping (from access-control analysis skill)</li>
@@ -2836,8 +2968,11 @@ Report the four lines back. Then wait.
 
 The feature is:
 </code></pre>
-<p>Paste a plan path, a ticket link, a design-doc path, or the feature description, Claude reads whatever you give it. Then send. Claude will narrate what the skill is doing before the map appears; skip past the opening and look for the saved path when it lands. The skill walks the surfaces and produces the map. You watch.</p>
+<p>Paste a plan path, a ticket link, a design-doc path, or the feature description, Claude reads whatever you give it. Then send. Claude will narrate what the skill is doing before the map appears; skip past the opening and look for the saved path when it lands. The skill walks the surfaces and produces the map.</p>
+<p>The access-control pass is a breadth walk over your feature&#39;s surfaces and takes a few minutes. That wait is the two-window move Module 3 installs: kick off a long run in one window, do active work in the other, come back when the first lands.</p>
+<p><strong>Note</strong> Switch to your m3-quality window now. While the map builds in m3-security, start authoring the test-strategy skill there (Exercise 3, Phase 1). When the map lands back in m3-security, switch back to walk it and write the delta. Both windows are already open from <em>Open the side quest</em>; this is a focus switch, not a new session.</p>
 <h2 id="phase-2-walk-the-map-in-conversation">Phase 2: walk the map in conversation</h2>
+<p><strong>Note</strong> Back in m3-security now, the map has landed here. The rest of this exercise runs in this window.</p>
 <p>Ask Claude to walk you through the surface map in chat (categories, key findings, ambiguous spots) so you&#39;ve seen the structured read before deciding your deltas in Phase 3.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Read the surface map you wrote at the path you told me. Walk me through it in chat: what categories of surface you found, the two or three findings that stood out most, and any surface you flagged as ambiguous. Concise — this primes me for the deltas I&#39;ll tell you in the next phase.
@@ -2892,7 +3027,7 @@ The surface the skill missed that I know matters is:
 Find the access-surface map&#39;s path in this scrollback before dispatching. When the subagent returns, tell me which file it used and confirm the stride pass ran on that file.
 </code></pre>
 <p>Let it run. The output will have more entries than you want to deal with. That&#39;s expected.</p>
-<p>The STRIDE pass should take minutes. If it returns in seconds, Claude went shallow, push back and re-run. While it runs, switch to your m3-quality window and start the test-strategy skill authoring (next exercise&#39;s Phase 1). The wait IS the move M3 installs: kick off long work in one window, do active work in the other, come back when the first lands.</p>
+<p>The STRIDE pass should take minutes. If it returns in seconds, Claude went shallow, push back and re-run. Stay in this window while it works, and read what lands.</p>
 <h2 id="phase-2-pick-the-one">Phase 2: pick the one</h2>
 <p>You&#39;re going to pick one threat worth hardening against. Not five. One. The move is: name the worst realistic case, then the hardening decision is usually obvious.</p>
 <p>Ask Claude to propose the most plausible incident story and walk you through the STRIDE pick from there.</p>
@@ -3037,7 +3172,7 @@ Then, separately: if one rule about how I worked with security skills, wrote ADR
 <p>The scoped task you picked as homework.</p>
 <p><strong>Not an epic. Not a typo-fix. A real slice you&#39;d send off rather than nudge bit by bit, with a &#39;done&#39; you can name in a sentence.</strong></p>
 <p>Come to Module 4 without having picked the task and you&#39;ll be scrambling for one while the room is already running theirs. Your call.</p>
-<h2 id="what-you39ll-learn">What You&#39;ll Learn</h2>
+<h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
 <li><strong>Scope</strong> a real send-off task in conversation with Claude, multi-file reasoning, sustained coherence, not step-by-step nudging</li>
@@ -3066,7 +3201,7 @@ Then, separately: if one rule about how I worked with security skills, wrote ADR
 <p>Run one. Today, un-packaged. You&#39;ll walk what you&#39;ve built against the task, fill the worst gaps, and send it off with no plan.md, no verifier, no reference artifact. Just <em>&quot;here&#39;s my system, go do X.&quot;</em> The agent will work with what you&#39;ve given it.</p>
 <p>Run two. M5, packaged. You&#39;ll read what came back, find what went wrong, and learn what packaging adds by watching each piece of Ronacher&#39;s three-pattern close a specific gap you just saw. Then re-send the same task, packaged.</p>
 <p>The contrast is the lesson. No lecture on generic long-running-agent advice lands the way <em>you just watched this fail, here&#39;s what would have caught it</em> lands.</p>
-<h2 id="one-move-you39ll-use-today">One move you&#39;ll use today</h2>
+<h2 id="one-move-youll-use-today">One move you&#39;ll use today</h2>
 <p><strong>Gap analysis.</strong> Walk the system you have against the system the task needs. Claude audits your setup as a subagent, returns a ranked list of thin spots, and you fill the worst three. You&#39;ll use this move on every future agent hand-off, forever. Not a template. A question: <em>what&#39;s between what I&#39;ve got and what this task is asking for?</em></p>
 <h2 id="one-rule-about-running-the-experiment">One rule about running the experiment</h2>
 <p><strong>Cancel is legitimate. Traces are data.</strong></p>
@@ -3136,7 +3271,11 @@ For each item, say: (a) what&#39;s thin, (b) what a properly-prepared agent woul
 <p>The agent reads <code>observations/</code> when a prompt names the path, the same way it reads your ADRs. It is not auto-loaded the way <code>CLAUDE.md</code> and <code>CLAUDE.local.md</code> are. The three blocks you&#39;ll arrange below live across this folder, your ADRs, and your skills; <code>observations/</code> holds the first.</p>
 <p>Ask Claude to walk you through the picked gaps one at a time, using the AskUserQuestion tool to scaffold the flow.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Use the AskUserQuestion tool. One question per call. First ask which 2-3 audit gaps I want to focus on. For each picked gap, propose a resolution in the shape the audit named, hear my pushback, then persist it: the `./observations/` folder in your repo for observations and business-rules gaps, `./CLAUDE.local.md` for rule sharpening, connector setup for connector wiring.
+<pre><code>Use the AskUserQuestion tool, at most four options per question, one question per call. First ask which 2-3 audit gaps I want to focus on; if the audit surfaced more than four, offer the four most material as options.
+
+After I&#39;ve picked, list the gaps you left off so I can see what didn&#39;t make the cut.
+
+For each picked gap, propose a resolution in the shape the audit named, hear my pushback, then persist it: the `./observations/` folder in your repo for observations and business-rules gaps, `./CLAUDE.local.md` for rule sharpening, connector setup for connector wiring.
 </code></pre>
 <p>A fill looks like one of these shapes (the audit at Phase 2 tags each gap with one):</p>
 <ul>
@@ -3172,7 +3311,7 @@ If you propose file moves or renames, keep them inside `./observations/` and cap
 <p>The frame shows information progressing: an observation or hunch hardens into a rule, and a rule into a criterion you hold shipped code to. Consider how your own rules evolve along that arc, and whether each one is stored where it will fire.</p>
 <p><strong>What happened:</strong> You picked a real task you&#39;d send off rather than nudge bit by bit. You walked what you&#39;d built across four modules against it, filled the worst gaps, and let Claude rearrange observations and ADRs into Huryn&#39;s three blocks against your own material. The frame named what was already there. Phase 3 ended with the tree settled before the Debrief&#39;s send-off.</p>
 <hr>
-<h2 id="what-closes-the-module-owned-by-the-module39s-debrief-section">What closes the module (owned by the module&#39;s Debrief section)</h2>
+<h2 id="what-closes-the-module-owned-by-the-modules-debrief-section">What closes the module (owned by the module&#39;s Debrief section)</h2>
 <p>Phase 3 is where the exercise ends. The module&#39;s Debrief takes over:</p>
 <ol>
 <li>You nudge the compound step: Claude reads the session, rewrites your personal <code>CLAUDE.local.md</code> from evidence, integrates, sharpens, removes, and reports 3–5 lines. Team-worthy rules get flagged in the summary, not auto-PRed.</li>
@@ -3204,15 +3343,20 @@ If you propose file moves or renames, keep them inside `./observations/` and cap
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Create a fresh feature branch named m4/&lt;short-task-slug&gt;. Before committing, append a protected block to `./task.md` headed `Run coordinates (do not rewrite or remove)` so a later session can recover this run without searching for it: the branch name exactly as `git branch --show-current` reports it (read it back from git — don&#39;t retype it from memory), and the transcript path you just located. Then stage everything, commit with message &quot;M4 starting point&quot;, and tell me the short SHA.
 </code></pre>
+<p>The starting-point commit is local, and that&#39;s the default. This experiment is throwaway work you can reset away. Module 5 forks from the local commit, so nothing later needs a push.</p>
+<p>Optional: if you want the run to outlast your laptop or to hand it to someone, ask Claude to push the branch and set its upstream.</p>
+<p><strong>Prompt</strong> <em>(Claude Code, optional)</em></p>
+<pre><code>Push the current branch and set its upstream.
+</code></pre>
 <p>Ask Claude to run the scoped task end-to-end in this same session, with your rules files, memory, ADRs, and skills loaded.</p>
 <p><strong>Prompt</strong> <em>(Claude Code, final move of the module)</em></p>
 <pre><code>I want you to take the task we scoped earlier in this session end to end. Work from the rules I&#39;ve set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the observations at `./observations/`, the ADRs, and the skills available by name in this session. That&#39;s everything you have. Go.
 
 I&#39;m leaving the laptop awake and walking away. Work through it. If you get stuck, write what you tried and why it didn&#39;t work rather than inventing a way forward. If you finish, tell me what you shipped and what you didn&#39;t.
 </code></pre>
-<p>The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). If watching surfaces a wobble that tells you what next module will diagnose, stopping the run is fine; the trace is the result.</p>
+<p>The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). If watching surfaces a wobble that tells you what next module will diagnose, stop the run; the trace is the result.</p>
 <p>Async runs are a face of the work you&#39;ll see more of from here on.</p>
-<p>Nudging by hand is fine if you&#39;re watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is the practice. Past ten and you&#39;ve become the agent; call it and read what&#39;s there.</p>
+<p>Nudge by hand while you&#39;re watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is the practice. Past ten and you&#39;ve become the agent; call it and read what&#39;s there.</p>
 <p>If Claude stalls and you want to see if it picks itself back up, dark-humour nudge, phrased as encouragement, lands as a taunt:</p>
 <p><strong>Prompt</strong> <em>(Claude Code, optional)</em></p>
 <pre><code>Continue --- you can do it. Can&#39;t you?
@@ -3239,12 +3383,12 @@ I&#39;m leaving the laptop awake and walking away. Work through it. If you get s
 
 <p>Before you close: read <a href="#lectures-reading-the-return">Reading the return</a>. It plants the question and the three failure modes you&#39;ll use to read what comes back.</p>
 <h2 id="next">Next</h2>
-<p>Module 5 opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this run lives, so when the next slot lands a fresh session reads it straight from <code>task.md</code>, no hunting through past sessions. Transcripts persist on disk regardless; see <a href="#10-session-transcripts--read-what-actually-happened">Claude Code for engineers, session transcripts</a> for what they hold. Close the session after the run is done if you want; the trace is on disk either way.</p>
+<p>Module 5 opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this run lives, so when the next slot lands a fresh session reads it straight from <code>task.md</code>, no hunting through past sessions. Transcripts persist on disk regardless; see <a href="#10-session-transcripts--read-what-actually-happened">Claude Code for engineers, session transcripts</a> for what they hold. Close the session once the run is done; the trace is on disk.</p>
 <h2 id="bring-to-module-5">Bring to Module 5</h2>
 <p>A run that produced something. Read the agent&#39;s scrollback or commits from the send-off; check the agent didn&#39;t just stall in the first minute.</p>
 <p>Come to Module 5 without a run and you&#39;ll be scrambling for material while the room is already reading theirs. Your call.</p>
 <h2 id="pre-reads-before-module-5">Pre-reads before Module 5</h2>
-<p>Optional. Skipping any of these does not break Module 5. They sit in the Module 4 to Module 5 gap while your un-packaged run is still going; they prime the 80/20 reframe Module 5 will name from your own felt evidence.</p>
+<p>Optional. They sit in the Module 4 to Module 5 gap while your un-packaged run is still going; they prime the 80/20 reframe Module 5 will name from your own felt evidence.</p>
 <p><strong>Read, <a href="#supplementary-clean-code-is-steering">Clean Code Is Steering: Insights from Uncle Bob</a>.</strong> Uncle Bob&#39;s public learning journey with AI coding: early speed, quicksilver unpredictability, then tests, architecture visibility, and formal constraints as steering. Why for Module 5: primes the move from &quot;the agent ran&quot; to &quot;what would have constrained the drift?&quot;</p>
 <p><strong>Watch, Laura Entis on Kieran Klaassen, <a href="https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich">You&#39;re the Bread in the AI Sandwich</a>.</strong> Interview video and write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. Why for Module 5: primes the 80/20 reframe Module 5 will name from felt evidence rather than introduce as a slogan.</p>
 <p><strong>Read (longer), Kieran Klaassen, <a href="https://every.to/source-code/compound-engineering-the-definitive-guide">Compound Engineering: The Definitive Guide</a>.</strong> The four-step loop (plan, work, review, compound). Why for Module 5: primes the planning-and-review-heavy posture Module 5 will name from felt evidence.</p>
@@ -3258,7 +3402,7 @@ I&#39;m leaving the laptop awake and walking away. Work through it. If you get s
 <h2 id="prework">Prework</h2>
 <p>Walk in with the Module 4 send-off artefact. Stopped, finished, ran out of credit, doesn&#39;t matter.</p>
 <p>Optional prep in the Module 4 to Module 5 gap: read <a href="#supplementary-clean-code-is-steering">Clean Code Is Steering: Insights from Uncle Bob</a>; watch Laura Entis on Kieran Klaassen, <a href="https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich">You&#39;re the Bread in the AI Sandwich</a>; read Kieran Klaassen, <a href="https://every.to/source-code/compound-engineering-the-definitive-guide">Compound Engineering: The Definitive Guide</a>.</p>
-<h2 id="what-you39ll-learn">What You&#39;ll Learn</h2>
+<h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
 <li><strong>Diagnose</strong> your un-packaged Module 4 send-off through three named lenses, goal drift, context rot, plausible-but-wrong, with quoted moments per lens</li>
@@ -3270,9 +3414,8 @@ I&#39;m leaving the laptop awake and walking away. Work through it. If you get s
 <h2 id="set-up-the-module-5-worktree">Set up the Module 5 worktree</h2>
 <p>Before opening the Module 5 session, fork the Module 4 starting SHA into a sibling worktree. Module 5&#39;s work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second run starts from the same code state as the first. Cherny&#39;s productivity unlock from the Module 2 pre-read lands here.</p>
 <p>A real engineering call lives in this fork: gitignored files (your <code>CLAUDE.local.md</code>, <code>observations/</code>) don&#39;t ride into a worktree because git doesn&#39;t see them. AE101&#39;s default is to copy them in once at fork time. Your Module 1 evidence rides forward (along with any Module 3 artefacts if you&#39;ve completed it); Module 5 and Module 6 compounding diverges in the worktree; you decide post-Module-6 what to merge back into the original. Other engineers wire it differently. The arc-retrospective at Module 6 close picks up the question.</p>
-<blockquote>
-<p><strong>Run the fork from your original repo, not the worktree (it doesn&#39;t exist yet).</strong> If your Module 4 session is still open, ask it there, it&#39;s already in the right place. Otherwise open a fresh session in the original repo location and ask there.</p>
-</blockquote>
+<p><strong>Session</strong> <em>(continue or new, &quot;original repo&quot;)</em></p>
+<p>Run the fork from your original repo, not the worktree (it doesn&#39;t exist yet). If your Module 4 session is still open, ask it there, it&#39;s already in the right place. Otherwise open a fresh session in the original repo location and ask there.</p>
 <p><strong>Claude figures out <code>&lt;repo-name&gt;</code> from the working directory.</strong> Help it if it gets confused.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Read `./task.md`. Use the branch named in its `Run coordinates (do not rewrite or remove)` block — that block is authoritative; ignore any other `Branch:` line in the task body, which may name a different slug. Don&#39;t rediscover the branch with broad branch search. Verify that branch exists locally or as a remote-tracking branch, then find the &quot;M4 starting point&quot; commit on that named branch. If that commit message has been rewritten or is ambiguous, ask me for the SHA from the M4 session close. Spin up a git worktree at that commit. Put the worktree at `../&lt;repo-name&gt;-m5` on a new branch named `m5/` followed by the same task slug as the m4 branch.
@@ -3295,9 +3438,9 @@ These won&#39;t sync back automatically — the worktree&#39;s copies are indepe
 <p>You stepped away at the end of M4 with the agent working. By the time this lands, the run has either finished, hit its budget, or been stopped because enough was seen. Whatever came back is the artefact M5 starts from.</p>
 <p>Here is the question that drives M5.</p>
 <p><strong>What would have caught this earlier in the run?</strong></p>
-<p>Practitioners running these for hours sharpen it as <em>at hour 2, not hour 6.</em> At your scale, <em>at minute 10, not minute 25.</em> Same diagnostic question, different clock.</p>
+<p>Practitioners running these for hours sharpen it as <em>at hour 2, not hour 6.</em> On a short run it is <em>at minute 10, not minute 25.</em> Same diagnostic question, different clock.</p>
 <p>Not &quot;did the run succeed.&quot; Not &quot;should I have spec&#39;d it tighter.&quot; A diagnostic. You read the artefact, you find what went wrong, and for each thing you ask: what would have caught this earlier?</p>
-<h2 id="three-failure-modes-you39ll-use-to-read">Three failure modes you&#39;ll use to read</h2>
+<h2 id="three-failure-modes-youll-use-to-read">Three failure modes you&#39;ll use to read</h2>
 <p>Practitioners running multi-hour coding agents in the last six months name the same three failure modes, in roughly the same order. Use them as the lens for the M5 read.</p>
 <p><strong>Goal drift.</strong> The instructions get buried as the conversation grows. By hour one the agent is solving an adjacent problem with confidence. Starts early. Hard to spot until you compare what was asked against what was done.</p>
 <p><strong>Context rot.</strong> Signal-to-noise drops as the working window fills. The agent rehashes approaches it already ruled out two hours ago, because &quot;ruled out two hours ago&quot; no longer fits in the working window. Practitioners hit this around hour one to two.</p>
@@ -3331,7 +3474,7 @@ These won&#39;t sync back automatically — the worktree&#39;s copies are indepe
 <h2 id="one-operational-move">One operational move</h2>
 <p>The diagnosis session will fill its own working window. What works, per recent practitioner posts: trigger <code>/compact</code> manually at around 60% context. Don&#39;t wait for auto-compact. Auto fires when the model decides; manual at 60% means you choose what to keep (the diagnosis quotes, the failure-mode mapping, the validation shape you&#39;re sketching for Phase 3). Again: <code>/context</code> is oldskool. <a href="https://github.com/sirmalloc/ccstatusline">ccstatusline</a> wins on continuous context visibility in your status line.</p>
 <p>This is session-management, not packaging. Packaging is what the exercise builds for the re-send.</p>
-<h2 id="quotwhat-if-i39m-not-there-to-compactquot">&quot;What if I&#39;m not there to compact?&quot;</h2>
+<h2 id="what-if-im-not-there-to-compact">&quot;What if I&#39;m not there to compact?&quot;</h2>
 <p>Fair question. The diagnosis session you&#39;re about to run is bounded keyboard work, so manual <code>/compact</code> works. But the re-send at the end of M5 will run for hours while you&#39;re away. You won&#39;t be there.</p>
 <p>Two real options for hands-off runs.</p>
 <ol>
@@ -3360,6 +3503,7 @@ These won&#39;t sync back automatically — the worktree&#39;s copies are indepe
 <p>Open a new Claude Code session in the M5 worktree at <code>../&lt;repo&gt;-m5</code> (set up at module open).</p>
 <pre><code>/rename m5-diagnose-resend
 </code></pre>
+<p><strong>HOX</strong> You should be in the M5 worktree now. Make sure you are not continuing on the M4 repo or branch.</p>
 <p><strong>What you do:</strong> Read the un-packaged M4 artefact through three failure-mode lenses. For each named failure, ask what validation would have caught it in minutes, not hours. Build a verifier shaped against your dominant failure (one of three shapes). Assemble a task-scoped reference artefact + plan.md in conversation. At Debrief, the module re-sends the same task packaged.</p>
 <p><strong>The point:</strong> Ronacher&#39;s three-pattern earns its name in this exercise. You don&#39;t learn it from a slide; you build each piece against a failure you read in your own artefact. The closing lecture names what you built afterward.</p>
 <hr>
@@ -3378,9 +3522,9 @@ Read what the un-packaged agent did. The `m4/` branch is named in `./task.md`&#3
 
 Then walk the work through three lenses:
 
-- **Goal drift** — moments where the agent solved an adjacent problem instead of the asked one. Buried instruction, redirected scope.
-- **Context rot** — moments where the agent rehashed an approach it had already considered and ruled out, or re-derived something already in the working window.
-- **Plausible-but-wrong** — outputs that look reasonable in isolation but don&#39;t match the original task spec.
+- Goal drift: moments where the agent solved an adjacent problem instead of the asked one. Buried instruction, redirected scope.
+- Context rot: moments where the agent rehashed an approach it had already considered and ruled out, or re-derived something already in the working window.
+- Plausible-but-wrong: outputs that look reasonable in isolation but don&#39;t match the original task spec.
 
 For EACH lens, quote one specific moment from the artefact (commit message, file change, scrollback line). Don&#39;t generalise; quote. If a lens has no instance, say so — that&#39;s data too.
 
@@ -3397,9 +3541,9 @@ End with: which of the three was the DOMINANT failure mode? You&#39;ll build the
 
 Practitioners running multi-hour coding agents in the last six months converge on three validation categories. Use these as the answer shape:
 
-- **A re-readable spec.** Scope + success criteria + constraints the agent can diff its in-progress work against, mid-run. Holds the goal pinned down when the conversation grows.
-- **A working document the agent owns and updates.** Durable state the agent re-reads when its working window fills. Phase breakdown, current-phase marker, decisions log, what-didn&#39;t-work list. Survives compaction.
-- **An automated check on produced work.** Tests, lint, compile, a deterministic hook, or an LLM judge. Fires on agent output and decides pass/fail against a quality bar.
+- A re-readable spec: scope + success criteria + constraints the agent can diff its in-progress work against, mid-run. Holds the goal pinned down when the conversation grows.
+- A working document the agent owns and updates: durable state the agent re-reads when its working window fills. Phase breakdown, current-phase marker, decisions log, what-didn&#39;t-work list. Survives compaction.
+- An automated check on produced work: tests, lint, compile, a deterministic hook, or an LLM judge. Fires on agent output and decides pass/fail against a quality bar.
 
 For each failure I diagnosed, map it to the validation category that would have caught it. Be specific: not &quot;a re-readable spec&quot; generically, but what THAT spec would have said to catch THIS particular goal-drift moment. Name when the validation would have fired (start of run, mid-run, end-of-task, on commit).
 
@@ -3445,12 +3589,12 @@ First, the reference artefact. A task-local file (not my codebase rules — thos
 - The task scope and success criteria, in two or three sentences
 - Pointers to the memory pages, any ADRs, any authored skills, and connectors most relevant to THIS task
 - The constraints the verifier we just built will enforce (the verifier owns execution checks; the reference names WHAT good looks like, not how it&#39;s measured)
-- **The tests that name the bar** — scoped to this task&#39;s core paths, named before any code lands. Tests are a first-class part of the task spec for anything load-bearing; throwaway experiments can skip. Where a core requirement resists being named as a test, flag it as a question, not a rule.
+- The tests that name the bar: scoped to this task&#39;s core paths, named before any code lands. Tests are a first-class part of the task spec for anything load-bearing; throwaway experiments can skip. Where a core requirement resists being named as a test, flag it as a question, not a rule.
 - A &quot;done means&quot; line — what the agent should produce that signals task completion (tests green + requirements met)
 
 Second, plan.md. A working document the agent owns and mutates as it runs. Should start with:
 - The task broken into 3–7 phases the agent can re-anchor against
-- **Tests-first phase** — the first phase writes or updates the tests from the reference spec. Code phases come after. The plan makes this ordering explicit.
+- Tests-first phase: the first phase writes or updates the tests from the reference spec. Code phases come after. The plan makes this ordering explicit.
 - A &quot;current phase&quot; line the agent updates as it progresses
 - A &quot;decisions log&quot; section the agent appends to when it makes a load-bearing choice
 - A &quot;what I tried that didn&#39;t work&quot; section to prevent context-rot re-derivations
@@ -3518,7 +3662,7 @@ If any list is empty, say &quot;none.&quot;
 <hr>
 <p>Pause for a second. You walked into M5 with an un-packaged run that underdelivered. You read it through three lenses. You named the failures. For each failure, you built the thing that would have caught it. Then you re-sent the same task, packaged this time. The laptop is closed again.</p>
 <p>Now the names.</p>
-<h2 id="ronacher39s-three-pattern">Ronacher&#39;s three-pattern</h2>
+<h2 id="ronachers-three-pattern">Ronacher&#39;s three-pattern</h2>
 <p>Practitioners running multi-hour coding agents over the last six months converge on the same three pieces. Different posts, different vocabulary, same shape. Armin Ronacher names <em>reference</em> and <em>verifier</em> in his work; <em>plan.md</em> lands harder in Geoffrey Huntley&#39;s Ralph practice and Kieran Klaassen&#39;s plan-as-artifact. The three-pattern below is what the convergence looks like assembled.</p>
 <p><strong>Reference artefact.</strong> A spec the agent reads and re-reads. Holds the success criteria, points at the relevant memory, names the constraints. The thing the agent diffs its work against. In Ronacher&#39;s MiniJinja port, the original Rust snapshot tests played this role. In your re-send, the reference you assembled at Phase 4 plays it.</p>
 <p><strong>plan.md the agent owns and mutates.</strong> A working document that holds durable state across the run. The agent reads it at every session boot, updates it as it makes decisions, references it when the working window fills. Geoffrey Huntley&#39;s Ralph technique bootstraps entire greenfield projects on this single primitive.</p>
@@ -3543,10 +3687,10 @@ For each, name the Claude Code event it fires on, the specific thing in this rep
 Skip suggestions any team could want. No preamble. List them.
 </code></pre>
 <p>Read what comes back. The ones worth keeping are tied to a specific file, convention, or failure mode in this repo, not a generic team-could-want-this.</p>
-<h2 id="what-you-didn39t-build-today">What you didn&#39;t build today</h2>
+<h2 id="what-you-didnt-build-today">What you didn&#39;t build today</h2>
 <p><strong>Subagents for isolation.</strong> When a phase of a long task wants a sandbox, exploring a third-party API, reading untrusted code, doing a search you&#39;d rather not pollute the main session with, spin a subagent and let it return only what matters. The main session stays clean; the subagent&#39;s context is discarded after it reports. Adjacent move to the verifier; same instinct: keep the long-running thread coherent by routing the noisy work elsewhere.</p>
 <p><strong>Context for long runs is one of the murkier places.</strong> Some practitioners suggest manual <code>/compact</code> at around 60%. Some go the full subagent route to keep the main session clean. Some rely on the 1M context window and don&#39;t compact at all. The original Ralph reconstructs fresh sessions continuously, letting each one give up and rebuilding from the durable state. Some split plan-mode from execute-mode entirely, planning in one session and running a fresh one against the written plan. Different shapes for different jobs; the field hasn&#39;t converged.</p>
-<h2 id="at-org-scale-intercom39s-tier-123">At org scale: Intercom&#39;s Tier 1/2/3</h2>
+<h2 id="at-org-scale-intercoms-tier-123">At org scale: Intercom&#39;s Tier 1/2/3</h2>
 <p>Darragh Curran (CTO, Intercom) published a post in April 2026 called &quot;2x, nine months later.&quot; His R&amp;D org runs a tiered review structure with auto-approval at the lowest tier. The numbers are concrete. 19.2% of pull requests are auto-approved (no human reviewer). Auto-approved PRs merge in 14.6 minutes versus an org median of 75.8 minutes. 86% of auto-approved PRs are 20 lines or fewer.</p>
 <p>That is your verifier from Phase 3, scaled to a 500-person engineering org. Same shape, scaled.</p>
 <h2 id="the-8020-ratio">The 80/20 ratio</h2>
@@ -3580,23 +3724,22 @@ Skip suggestions any team could want. No preamble. List them.
 <h2 id="big-idea">Big Idea</h2>
 <p>Two runs of the same task (un-packaged Module 4, packaged Module 5) are enough evidence to name what the three-pattern didn&#39;t anticipate, pick where the gap belongs (memory, verifier, new skill), and author a session-shaper skill through conversation so future you inherits the lesson.</p>
 <h2 id="prework">Prework</h2>
-<p>Walk in with the M5 worktree at <code>../&lt;repo&gt;-m5</code> carrying both runs: the un-packaged M4 send-off branch, the packaged M5 re-run (<code>reference.md</code>, <code>plan.md</code>, the verifier you built, <code>RUN-NOTES.md</code>), and the M5 session transcript under <code>~/.claude/projects/&lt;encoded-cwd&gt;/</code>. Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, <a href="https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it">My AI Had Already Fixed the Code Before I Saw It</a> (Aug 2025).</p>
-<p>Optional lookup pages: <a href="#10-session-transcripts--read-what-actually-happened">session transcripts in the reference</a> for the two-run compare, and <a href="#9-long-running-shapes--loop-scheduled-tasks-routines-goal">long-running shapes</a> for when one task becomes a pattern, scheduled, looped, or condition-gated.</p>
-<h2 id="what-you39ll-learn">What You&#39;ll Learn</h2>
+<p>Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, <a href="https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it">My AI Had Already Fixed the Code Before I Saw It</a> (Aug 2025).</p>
+<p>Optional lookup pages: <a href="#10-session-transcripts--read-what-actually-happened">session transcripts in the reference</a> for the two-run compare, and <a href="#9-long-running-shapes--loop-scheduled-tasks-routines-goal">long-running shapes</a> for when you turn a one-off into a pattern you run on a schedule, in a loop, or until a condition holds.</p>
+<h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
 <li><strong>Diagnose</strong> the gap two runs of the same task surface</li>
 <li><strong>Route</strong> each gap to its home: memory, sharper verifier, or new skill</li>
 <li><strong>Cut</strong> one rule from <code>./CLAUDE.local.md</code> the diagnosis killed</li>
+<li><strong>Surface</strong> the kinds of work you repeat across your stack, and draw their recurring shapes</li>
 <li><strong>Author</strong> a session-shaper skill through conversation, ship to your personal kit</li>
 <li><strong>Map</strong> evals across verifier, judge, and gate</li>
 <li><strong>Encode</strong> the lesson so the next loop inherits it</li>
+<li><strong>Generalize</strong> the encode-move into a handoff prompt that builds your workflow skills across your stack</li>
 </ul>
 <h2 id="start-here">Start here</h2>
 <p>You walk in holding two runs of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-run. The contrast across two runs is the material. One run gave you a failure mode to name. Two runs give you gaps the three-pattern itself didn&#39;t anticipate, and a shape for what to do about each one.</p>
-<blockquote>
-<p><strong>Open M6 in a new Claude Code session inside the M5 worktree at <code>../&lt;repo&gt;-m5</code>, no fork.</strong> The packaged re-run&#39;s evidence (<code>reference.md</code>, <code>plan.md</code>, the verifier, <code>RUN-NOTES.md</code>) is already on disk there, alongside <code>./CLAUDE.local.md</code> and <code>observations/</code>. M6 reads, diagnoses, and ships in place.</p>
-</blockquote>
 <blockquote>
 <p><strong>Packaged run thin or missing?</strong> You can still rescue it. If the M5 session is alive but stalled, nudge it once with the Continue prompt from M4. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while the room reads. M6 starts by reading; before it writes, decide whether to wait, stop M5, or accept the partial run as the artefact. Skip the opening lecture. Practice is core. Lectures can be read later.</p>
 </blockquote>
@@ -3679,7 +3822,7 @@ Skip suggestions any team could want. No preamble. List them.
 <h1 id="spot-gaps-build-the-loop">Spot gaps, build the loop</h1>
 <p><strong>Time:</strong> 40–50 minutes inside a 2h module slot.</p>
 <p><strong>Session</strong> <em>(new, &quot;Module 6 worktree session&quot;)</em></p>
-<p>Open a new Claude Code session at the M5 worktree path (<code>../&lt;repo&gt;-m5</code>). M5&#39;s session may still be running the re-send. Leave it if that is the right call; M6 starts by reading both runs from disk. Before M6 edits files, cuts rules, or invokes the new skill, decide whether the M5 run is done enough, should be stopped, or should be treated as the partial artefact.</p>
+<p>Open a new Claude Code session in the existing M5 worktree (<code>../&lt;repo&gt;-m5</code>), no fork. M5&#39;s session may still be running the re-send. Leave it if that is the right call; M6 starts by reading both runs from disk. Before M6 edits files, cuts rules, or invokes the new skill, decide whether the M5 run is done enough, should be stopped, or should be treated as the partial artefact.</p>
 <p><strong>What you do:</strong> Diff two runs of the same task, route the dominant gap to its home, author a second skill from the diagnosis.</p>
 <p><strong>The point:</strong> The authoring move repeats. You ran it at M3 on a test-strategy skill; you run it again here with two runs&#39; evidence in hand. Same move, faster. The learning wheel turns. You tested at M4, learned at M5, and you encode at M6. The skill you ship here is how the next run inherits what these two runs cost you.</p>
 <hr>
@@ -3693,10 +3836,10 @@ Read both. Start with both session transcripts at the paths recorded in `task.md
 
 Walk the diff across four dimensions:
 
-- **What packaging caught.** Specific moments in the packaged run where the reference, the plan.md, or the verifier prevented a drift the un-packaged run actually experienced. Quote the un-packaged moment and the packaged moment both.
-- **What packaging missed.** Places the packaged run drifted even with packaging in play. Where the reference was too thin, where the plan.md carried the wrong state, where the verifier&#39;s quality bar sat beside the real failure.
-- **What packaging introduced.** New failure shapes that only exist because of the packaging itself — over-fitted verifier, plan.md staleness, reference-as-cage.
-- **Where the fix belongs.** For each named gap: memory (observation, hypothesis, rule), a sharper verifier, a rule in CLAUDE.local.md, or a new skill. Don&#39;t prescribe the skill&#39;s shape yet.
+- What packaging caught: specific moments in the packaged run where the reference, the plan.md, or the verifier prevented a drift the un-packaged run actually experienced. Quote the un-packaged moment and the packaged moment both.
+- What packaging missed: places the packaged run drifted even with packaging in play. Where the reference was too thin, where the plan.md carried the wrong state, where the verifier&#39;s quality bar sat beside the real failure.
+- What packaging introduced: new failure shapes that only exist because of the packaging itself — over-fitted verifier, plan.md staleness, reference-as-cage.
+- Where the fix belongs: for each named gap — memory (observation, hypothesis, rule), a sharper verifier, a rule in CLAUDE.local.md, or a new skill. Don&#39;t prescribe the skill&#39;s shape yet.
 
 For every claim, quote a specific moment from the artefacts. Don&#39;t generalise.
 
@@ -3714,8 +3857,28 @@ End with: which gap matters most? Rank by damage-to-a-future-run, not by how int
 <hr>
 <h2 id="phase-2-author-the-session-shaper">Phase 2: Author the session-shaper</h2>
 <p>Skills aren&#39;t hand-crafted. The move you practiced at M3 repeats here: author through conversation, push back on defaults, verify by invoking. The shape follows what the two runs demanded, not a template.</p>
-<p>Before you pick a shape, expand the menu. There is real way and real time to build exhaustive, well-grilled checkers on the fly, Claude names primitives in 30 seconds, evaluates fit in another 30, you grill the candidates, ship the one that fits.</p>
-<p>Ask Claude to list 5–10 atomic verification primitives and evaluate fit for your dominant gap.</p>
+<p>Before you shape the skill, look wider than the two runs. The dominant gap came from one task. The kinds of work you repeat run across everything you do, and most of them never get looked at directly. This is your stack. How wide you look, and what you choose to package, is yours.</p>
+<p>Read your own history first. Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back.</p>
+<blockquote>
+<p><strong>Fast operator?</strong> Lump the next three prompts into one go. Paste them one after another in the same conversation, study then shapes then primitives, and let the answers land together. The three moves don&#39;t change.</p>
+</blockquote>
+<p>Ask Claude to scan your sessions across every project and group the kinds of work that recur.</p>
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Go through my work across everything I do, not just this repo. I want to see the kinds of work I do over and over.
+
+My Claude Code sessions across every project live under `~/.claude/projects/`, one folder per repo I&#39;ve worked in. Read across them. If there are other repos you should look at that aren&#39;t in there, ask me where they are.
+
+Group what you find by the kind of work it is, the way of working that repeats, not the feature. For each group, give it a short name and quote an instance or two so I can see it&#39;s real. Don&#39;t filter to what looks important. Show me what actually recurs, including the dull stuff, and rank the groups by how often they show up.
+</code></pre>
+<p>What comes back is the work you do over and over, grouped and ranked. Read for the few at the top you actually repeat. How far you take this is yours. Now make those few something you can see. A recurring kind of work has a shape: steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described.</p>
+<p>Ask Claude to draw your top few work-shapes as simple diagrams.</p>
+<p><strong>Prompt</strong> <em>(Claude Code)</em></p>
+<pre><code>Take the recurring groups you just named. For the top few, draw each one as a mermaid diagram of how that kind of work flows: the steps in order, where it branches, where it loops back, what hands off to what.
+
+Keep each diagram to 30 nodes at most. The point is to recognise the shape of the work, not to document every case. If a shape needs more than 30 nodes, it is really two shapes, split it.
+</code></pre>
+<p>One of the work-shapes you drew holds the dominant gap from your two runs. That one becomes the session-shaper you build now. The rest are the kit you grow later.</p>
+<p>Before you commit to a shape, expand the menu. The menu lands in context right before you author, so the skill is built against what practitioners actually check, not just your own instinct. Ask Claude to name the checking primitives the field already runs and rank the ones that fit your gap.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>I&#39;m about to author a skill that wraps a checking primitive against my dominant gap. Before I commit to a shape, expand my menu.
 
@@ -3725,16 +3888,12 @@ Then evaluate fit for the dominant gap I named in Phase 1. Which 2–3 primitive
 
 Be concrete. Generic &quot;tests&quot; doesn&#39;t make the cut; &quot;unit test against the changed function&quot; does.
 </code></pre>
-<p>Expect to see: test-writing, browser-testing, PR-building, lint / typecheck / format gates, compile / build, smoke-test on a real path, code-review, git-diff inspection, schema / contract validation, eval suites for agent outputs themselves. Your list won&#39;t be exact; the recognition is the point, the primitives Claude names are the ones your codebase already runs.</p>
-<p><strong>The shape wraps the primitive.</strong> Test-writing usually fits a sharpened verifier (deterministic check); qualitative checks (does the tone match, does the answer fit) fit an LLM-judge; pre-run checks (is the context thin, is the plan stale) fit a gap-finder.</p>
-<blockquote>
-<p><strong>Did the menu priming in the LLM context help Claude do a better job?</strong> Unknowable. Only benchmarking would tell. Some of this is intuition, some heuristics. All of it is moving.</p>
-</blockquote>
+<p>Expect to see test-writing, browser-testing, PR-building, lint and typecheck gates, compile and build, smoke-test on a real path, code-review, git-diff inspection, schema validation, eval suites for agent outputs. Your list won&#39;t be exact. The recognition is the point. The primitives Claude names are the ones your codebase already runs.</p>
 <p>The three prompts below (author, critique, invoke) are decomposed for pacing.</p>
 <blockquote>
 <p><strong>Solo or fluent in this move?</strong> Collapse the three prompts: paste the first, ask the same conversation to critique before save and invoke after. The three moves don&#39;t change.</p>
 </blockquote>
-<p>Three common shapes from the convergence of practitioners running long tasks:</p>
+<p>The session-shaper takes one of three forms, from the convergence of practitioners running long tasks:</p>
 <ul>
 <li><strong>Sharpened verifier.</strong> The M5 verifier targeted one failure mode; the diff surfaced another. The skill encodes the second check so the next run inherits both.</li>
 <li><strong>LLM-judge.</strong> Qualitative fit the deterministic verifier can&#39;t see (did the output answer the task, does the tone match the codebase, does the commit message respect the team&#39;s convention). A judge is a verifier authored in prose.</li>
@@ -3817,7 +3976,8 @@ Then, ⟦A:self-critique-register⟧in the same response, answer: is the skill a
 <p><strong>Quick timebox note.</strong> The read across Modules 1–6 artefacts is wide; the beat stays short. One arc-reading pass, one push-back, save or drop. If the agent&#39;s note reads true, save. If it reads thin after one re-draft, drop. Dropping is not the soft option; it is a signal your artefacts did not carry the density the read needed. Note that and move on. No perfect note to chase. The arc is yours; the note is just the agent helping you see it.</p>
 </blockquote>
 <hr>
-<p>Open a new Claude Code session in the Module 5 worktree (the same one Module 6 Phase 1 + 2 ran in). A fresh session, so there&#39;s no scrollback coloring the read. The artefacts across all six modules, <code>CLAUDE.local.md</code>, <code>observations/</code>, ADRs, both authored skills, both runs&#39; commits, are accessible via git refs and the worktree state. Both runs&#39; branch names and transcript paths are recorded on disk: M4 in <code>task.md</code>, M5 in <code>plan.md</code>&#39;s protected <code>Run coordinates</code> block. Ask the agent to walk them and write the arc from them.</p>
+<p><strong>Note</strong> This continues in the same session that ran the Module 6 Phase 1 + 2 work, in the Module 5 worktree. No new session. The fresh, uncoloured view comes from the sub-task the prompt spawns.</p>
+<p>The artefacts across all six modules, <code>CLAUDE.local.md</code>, <code>observations/</code>, ADRs, both authored skills, both runs&#39; commits, are accessible via git refs and the worktree state. Both runs&#39; branch names and transcript paths are recorded on disk: M4 in <code>task.md</code>, M5 in <code>plan.md</code>&#39;s protected <code>Run coordinates</code> block. Ask the agent to walk them and write the arc from them.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Read my work across this repo. Specifically:
 
@@ -3911,39 +4071,26 @@ Propose where the note should live in my repo (ADR, memo in `./observations/`, o
 <h1 id="agents-that-build-agents">Agents that build agents</h1>
 <p>The closer named the flywheel in one line. <em>Agents that build agents.</em> This lecture is the unfolding of that line.</p>
 <p>You authored two skills in this training. The first one at Module 3 packaged a piece of judgement you had carried for years (how to write a good test). The second one at Module 6 packaged a piece of judgement you had earned over two runs of the same task. Different sources, same move. Each skill made the next run cheaper.</p>
-<p>The flywheel turns one more time when the agent itself starts proposing the skill.</p>
+<p>The flywheel turns one more time when the agent writes the prompt that builds the next skills.</p>
 <h2 id="the-move">The move</h2>
-<p>Open a fresh Claude Code session in the repo you have been running. Hand it the same evidence you handed yourself at Phase 1 (the un-packaged Module 4 artefacts, the packaged Module 5 artefacts, the second skill you just shipped). Ask it to enter plan mode and design the next iteration of the loop.</p>
-<p>Not &quot;design a new skill.&quot; Not &quot;improve my setup.&quot; Design the next iteration of the loop. What gap in the kit would the next run want closed? What rule would have prevented the subtler miss you have not yet seen? What shape of skill is missing from the menu of three you just chose from?</p>
-<p>The plan that comes back is a candidate. You read it the way you read any plan from any agent. Judgement, push-back, taste. Some of it will be obvious. Some of it will be wrong. One or two items will be moves you would not have generated on your own.</p>
-<p>That is the flywheel. The agent reads the evidence the loop produced, proposes the next scaffolding, and you decide which proposals earn their place in the kit.</p>
+<p>You authored one skill from one task&#39;s evidence. The flywheel turns once more when you hand the agent the move itself and ask it to write you the prompt that builds the rest.</p>
+<p>Not &quot;write me a skill.&quot; Not &quot;improve my setup.&quot; Ask it for a handoff prompt: one you paste into a fresh session later, that studies your work across your repos for the shapes you repeat, draws the ones worth packaging, and authors a skill for each. The same move you just practiced, widened to everything you do.</p>
+<p>What comes back is a candidate. You read it the way you read any prompt the agent drafts. Judgement, push-back, taste. Some of it will be obvious. Some of it will be off. One or two lines will be moves you would not have written on your own.</p>
+<p>That is the flywheel. The agent writes the prompt that builds the next skills, and you decide whether it earns a place in your kit before you ever run it.</p>
 <h2 id="what-this-is-not">What this is not</h2>
 <p>This is not the agent writing its own skills without you in the room. At the start of this training, you might have hoped that was the destination. At the close of Module 6, you know it is not. Agents that build agents is a collaboration in the same shape every other beat in this training has been a collaboration. Claude proposes, you steer.</p>
 <p>The reason is plain. Claude can read the artefacts the loop produced. It cannot read the codebase knowledge in your head, the political situation around the team kit, the next quarter&#39;s roadmap, the bug your tech lead lost three days to last sprint. The plan it generates is grounded in the evidence on disk. The decision about which proposals to act on is grounded in evidence the agent does not have.</p>
 <p>Build a flywheel that lets the agent run as far as it can on its own evidence, and stops at the moment your judgement is the input that matters. That is the practitioner shape. Anything further pretends the agent has access it does not have.</p>
 <h2 id="a-prompt-to-try">A prompt to try</h2>
-<p>This one is for after the cohort, on a quiet half-hour. New prompt, no rehearsal.</p>
-<p>Ask Claude Code to enter plan mode, read the evidence from the two runs and the second skill, and propose the next iteration of the kit.</p>
-<p><strong>Prompt</strong> <em>(Claude Code, fresh session in the same repo)</em></p>
-<pre><code>Enable plan mode.
+<p>This one closes the module. The shapes you drew and the skill you shipped are still in the session. Ask the agent to turn them into a prompt that builds the rest of the kit.</p>
+<p><strong>Prompt</strong> <em>(Claude Code, same session, just after shipping the skill)</em></p>
+<pre><code>This session we drew the recurring shapes in my work and shipped one skill from one of them, the session-shaper. The shapes and the move are in your context right now.
 
-Read these artefacts end to end:
+Write me a handoff prompt I can save and run in a fresh session later to build the rest of the kit: one skill per recurring shape worth packaging, across my whole stack. Carry the shapes we just named into the prompt so it starts from them, not from scratch. Same move as the session-shaper, study the work, draw the shape, author through conversation, push back, invoke to verify.
 
-- ./CLAUDE.local.md
-- ./observations/
-- the un-packaged run&#39;s commit history and modified files (its `m4/` branch is recorded in `task.md`)
-- the packaged run&#39;s commit history and modified files (its `m5/` branch is recorded in `plan.md`)
-- the SKILL.md of the `session-shaper` skill you authored, in `~/.claude/skills/`
-
-Then design the next iteration of the kit. Three questions:
-
-1. What gap in the kit would the next run want closed? Name it as a memory rule, a sharper verifier, or a third skill. Pick the home; do not split.
-2. What rule already in memory has gone stale across the two runs? Name one to subtract.
-3. What shape of skill is missing from the menu of verifier / judge / gap-finder? If none is missing, say so. Do not invent.
-
-Return a plan with the three answers. No preamble.
+The prompt runs later in a cold session, so bake in what that session won&#39;t have. Tell it to re-study my repos for these shapes, and name the shapes inside it. Put it in a code block so I can save it.
 </code></pre>
-<p>Read what comes back the way you read any plan. Push back where the proposals miss the codebase situation Claude cannot see. Approve the one or two that earn their place. Author them.</p>
+<p>What comes back is a prompt, not a plan. Read it the way you read any prompt the agent drafts. Save it where you will find it. The kit you grow on your own is the one that counts.</p>
 <h2 id="ralph">Ralph</h2>
 <p>Geoffrey Huntley saw a lever. An agent runs, drifts, needs nudging. The fix already existed in shell:</p>
 <pre><code class="language-bash">while :; do cat PROMPT.md | claude-code; done
@@ -4098,7 +4245,7 @@ Return a plan with the three answers. No preamble.
 <p><strong>Husain</strong> codifies the split as guardrails versus evaluators. Guardrails sit inline in the request/response path: fast, deterministic, milliseconds of latency budget, block the response. Evaluators run async or in batch: heavier compute, often LLM-as-judge, run after the agent has moved on. You almost never use a slow LLM-as-judge as a synchronous guardrail (<a href="https://hamel.dev/blog/posts/evals-faq/whats-the-difference-between-guardrails-evaluators.html">Evals FAQ — Guardrails vs Evaluators</a>, Aug 2025).</p>
 <p><strong>Cherny on Claude Code</strong> pairs a deterministic Stop hook with a background verifying agent — the fast check blocks the next move, the slow check runs after. He calls the verify-your-work move the one that 2-3x&#39;s the quality of the final result (<a href="https://www.anup.io/35-claude-code-tips-from-the-guy-who-built-it/">Anup Jadhav on Cherny, <em>35 Claude Code Tips From the Guy Who Built It</em></a>).</p>
 <p><strong>Try this Monday.</strong> Time your slowest CI step. If the agent has to wait on it before its next move, ask Claude <em>&quot;which 20% of these checks catches 80% of the regressions, and how do I run only those on PR-open?&quot;</em></p>
-<h2 id="5-skills-don39t-just-live-in-your-kit-promote-them-into-the-ci-surface">5. Skills don&#39;t just live in your kit. Promote them into the CI surface</h2>
+<h2 id="5-skills-dont-just-live-in-your-kit-promote-them-into-the-ci-surface">5. Skills don&#39;t just live in your kit. Promote them into the CI surface</h2>
 <p>The naive view of a skill: a helpful prompt you might invoke. The sharper view: a verifier-in-waiting. Each skill you author catches a pattern. That pattern is what your next PR&#39;s review (or your CI check, or your pre-commit hook, or the next plan agent reading rules) needs to see. The best engineers don&#39;t keep skills isolated in <code>~/.claude/skills/</code>. They promote them into AGENTS.md, into rules files committed back to the repo, into pre-commit hooks. Author once, fires on every next PR.</p>
 <p><strong>Shapira at Elementor</strong> runs a CI workflow that grabs human review comments, hands them to a Cursor CLI agent, extracts patterns, and commits the rules file back to master. Every merged PR sharpens the next review against the same rules (<a href="https://medium.com/elementor-engineers/the-self-learning-code-review-teaching-ai-cursor-to-learn-from-human-feedback-454df64c98cc">The Self-Learning Code Review</a>).</p>
 <p><strong>Larson at Imprint</strong> consults the same shape of artifact at plan time. The agent reads AGENTS.md and the skills wiki <em>&quot;by future iterations of the plan pattern&quot;</em> — the skill catalogue becomes the loop&#39;s working memory (<a href="https://lethain.com/everyinc-compound-engineering/">Learning from Every&#39;s Compound Engineering</a>).</p>
@@ -4136,7 +4283,7 @@ Return a plan with the three answers. No preamble.
 <div class="phase-kicker">Supplementary</div>
 <h1 id="workflow-composition-lineages">Workflow composition lineages</h1>
 <p>A walk through composition shapes surfaced from named practitioners&#39; own published work. One named framework, three architectural stances, one move-catalogue, one counter-position, plus a worked-example case study from an AE101 trainer. Seven entries; not a closed set. The field is moving and the curation is partial.</p>
-<h2 id="what-this-walk-covers-and-doesn39t">What this walk covers (and doesn&#39;t)</h2>
+<h2 id="what-this-walk-covers-and-doesnt">What this walk covers (and doesn&#39;t)</h2>
 <p>Three reading rules for this supplementary:</p>
 <ol>
 <li><p><strong>One published framework lives in this set: Klaassen&#39;s Compound Engineering.</strong> Plugin shipped, framework named, repo active. Other entries publish architectural stances, named methodologies, or scattered moves without putting a framework label on them. Each entry says directly which it is.</p>
@@ -4256,7 +4403,7 @@ Return a plan with the three answers. No preamble.
 
 <section class="module" id="supplementary-skill-stacking">
 <div class="phase-kicker">Supplementary</div>
-<h1 id="dino39s-skill-stacking-system">Dino&#39;s skill stacking system</h1>
+<h1 id="dinos-skill-stacking-system">Dino&#39;s skill stacking system</h1>
 <p>How Dino&#39;s Claude Code skills compose. Personal skills live in <code>~/.claude/skills/</code>, project skills in <code>./.claude/skills/</code>. The harness merges them at runtime; they&#39;re indistinguishable to the model.</p>
 <p><strong>Read for the patterns, not for copying.</strong> This is one engineer&#39;s stack on one codebase; your kit will look different. The four composition mechanisms below are the move. The specific skills (and the Dino-specific names — <code>Arctic Deep</code>, <code>bronto/MAP.md</code>, <code>src/analytics-dashboard/</code>) are how Dino instantiates the mechanisms against his own work. Read for the shape, then map your own.</p>
 <hr>
@@ -4435,7 +4582,7 @@ allowed-tools:                  ← optional, restricts what the skill can touch
 <figure class="diagram"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTY3NiIgaGVpZ2h0PSI1ODYiIGlkPSJnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii04IC04IDE2NzYuMTU2MjUgNTg1Ljc1IiByb2xlPSJncmFwaGljcy1kb2N1bWVudCBkb2N1bWVudCIgYXJpYS1yb2xlZGVzY3JpcHRpb249ImZsb3djaGFydC12MiI+PHN0eWxlPiNne2ZvbnQtZmFtaWx5OiJ0cmVidWNoZXQgbXMiLHZlcmRhbmEsYXJpYWwsc2Fucy1zZXJpZjtmb250LXNpemU6MTZweDtmaWxsOiMzMzM7fSNnIC5lcnJvci1pY29ue2ZpbGw6IzU1MjIyMjt9I2cgLmVycm9yLXRleHR7ZmlsbDojNTUyMjIyO3N0cm9rZTojNTUyMjIyO30jZyAuZWRnZS10aGlja25lc3Mtbm9ybWFse3N0cm9rZS13aWR0aDoycHg7fSNnIC5lZGdlLXRoaWNrbmVzcy10aGlja3tzdHJva2Utd2lkdGg6My41cHg7fSNnIC5lZGdlLXBhdHRlcm4tc29saWR7c3Ryb2tlLWRhc2hhcnJheTowO30jZyAuZWRnZS1wYXR0ZXJuLWRhc2hlZHtzdHJva2UtZGFzaGFycmF5OjM7fSNnIC5lZGdlLXBhdHRlcm4tZG90dGVke3N0cm9rZS1kYXNoYXJyYXk6Mjt9I2cgLm1hcmtlcntmaWxsOiMzMzMzMzM7c3Ryb2tlOiMzMzMzMzM7fSNnIC5tYXJrZXIuY3Jvc3N7c3Ryb2tlOiMzMzMzMzM7fSNnIHN2Z3tmb250LWZhbWlseToidHJlYnVjaGV0IG1zIix2ZXJkYW5hLGFyaWFsLHNhbnMtc2VyaWY7Zm9udC1zaXplOjE2cHg7fSNnIC5sYWJlbHtmb250LWZhbWlseToidHJlYnVjaGV0IG1zIix2ZXJkYW5hLGFyaWFsLHNhbnMtc2VyaWY7Y29sb3I6IzMzMzt9I2cgLmNsdXN0ZXItbGFiZWwgdGV4dHtmaWxsOiMzMzM7fSNnIC5jbHVzdGVyLWxhYmVsIHNwYW4sI2cgcHtjb2xvcjojMzMzO30jZyAubGFiZWwgdGV4dCwjZyBzcGFuLCNnIHB7ZmlsbDojMzMzO2NvbG9yOiMzMzM7fSNnIC5ub2RlIHJlY3QsI2cgLm5vZGUgY2lyY2xlLCNnIC5ub2RlIGVsbGlwc2UsI2cgLm5vZGUgcG9seWdvbiwjZyAubm9kZSBwYXRoe2ZpbGw6I0VDRUNGRjtzdHJva2U6IzkzNzBEQjtzdHJva2Utd2lkdGg6MXB4O30jZyAuZmxvd2NoYXJ0LWxhYmVsIHRleHR7dGV4dC1hbmNob3I6bWlkZGxlO30jZyAubm9kZSAua2F0ZXggcGF0aHtmaWxsOiMwMDA7c3Ryb2tlOiMwMDA7c3Ryb2tlLXdpZHRoOjFweDt9I2cgLm5vZGUgLmxhYmVse3RleHQtYWxpZ246Y2VudGVyO30jZyAubm9kZS5jbGlja2FibGV7Y3Vyc29yOnBvaW50ZXI7fSNnIC5hcnJvd2hlYWRQYXRoe2ZpbGw6IzMzMzMzMzt9I2cgLmVkZ2VQYXRoIC5wYXRoe3N0cm9rZTojMzMzMzMzO3N0cm9rZS13aWR0aDoyLjBweDt9I2cgLmZsb3djaGFydC1saW5re3N0cm9rZTojMzMzMzMzO2ZpbGw6bm9uZTt9I2cgLmVkZ2VMYWJlbHtiYWNrZ3JvdW5kLWNvbG9yOiNlOGU4ZTg7dGV4dC1hbGlnbjpjZW50ZXI7fSNnIC5lZGdlTGFiZWwgcmVjdHtvcGFjaXR5OjAuNTtiYWNrZ3JvdW5kLWNvbG9yOiNlOGU4ZTg7ZmlsbDojZThlOGU4O30jZyAubGFiZWxCa2d7YmFja2dyb3VuZC1jb2xvcjpyZ2JhKDIzMiwgMjMyLCAyMzIsIDAuNSk7fSNnIC5jbHVzdGVyIHJlY3R7ZmlsbDojZmZmZmRlO3N0cm9rZTojYWFhYTMzO3N0cm9rZS13aWR0aDoxcHg7fSNnIC5jbHVzdGVyIHRleHR7ZmlsbDojMzMzO30jZyAuY2x1c3RlciBzcGFuLCNnIHB7Y29sb3I6IzMzMzt9I2cgZGl2Lm1lcm1haWRUb29sdGlwe3Bvc2l0aW9uOmFic29sdXRlO3RleHQtYWxpZ246Y2VudGVyO21heC13aWR0aDoyMDBweDtwYWRkaW5nOjJweDtmb250LWZhbWlseToidHJlYnVjaGV0IG1zIix2ZXJkYW5hLGFyaWFsLHNhbnMtc2VyaWY7Zm9udC1zaXplOjEycHg7YmFja2dyb3VuZDpoc2woODAsIDEwMCUsIDk2LjI3NDUwOTgwMzklKTtib3JkZXI6MXB4IHNvbGlkICNhYWFhMzM7Ym9yZGVyLXJhZGl1czoycHg7cG9pbnRlci1ldmVudHM6bm9uZTt6LWluZGV4OjEwMDt9I2cgLmZsb3djaGFydFRpdGxlVGV4dHt0ZXh0LWFuY2hvcjptaWRkbGU7Zm9udC1zaXplOjE4cHg7ZmlsbDojMzMzO30jZyA6cm9vdHstLW1lcm1haWQtZm9udC1mYW1pbHk6InRyZWJ1Y2hldCBtcyIsdmVyZGFuYSxhcmlhbCxzYW5zLXNlcmlmO30jZyAub3JjaGVzdHJhdG9yIHJlY3R7ZmlsbDpyZ2IoMjA0LCAyMjksIDI1NSkhaW1wb3J0YW50O3N0cm9rZTpyZ2IoMCwgNjQsIDEzMykhaW1wb3J0YW50O2NvbG9yOnJnYigwLCAwLCAwKSFpbXBvcnRhbnQ7fSNnIC5vcmNoZXN0cmF0b3IgcG9seWdvbntmaWxsOnJnYigyMDQsIDIyOSwgMjU1KSFpbXBvcnRhbnQ7c3Ryb2tlOnJnYigwLCA2NCwgMTMzKSFpbXBvcnRhbnQ7Y29sb3I6cmdiKDAsIDAsIDApIWltcG9ydGFudDt9I2cgLm9yY2hlc3RyYXRvciBlbGxpcHNle2ZpbGw6cmdiKDIwNCwgMjI5LCAyNTUpIWltcG9ydGFudDtzdHJva2U6cmdiKDAsIDY0LCAxMzMpIWltcG9ydGFudDtjb2xvcjpyZ2IoMCwgMCwgMCkhaW1wb3J0YW50O30jZyAub3JjaGVzdHJhdG9yIGNpcmNsZXtmaWxsOnJnYigyMDQsIDIyOSwgMjU1KSFpbXBvcnRhbnQ7c3Ryb2tlOnJnYigwLCA2NCwgMTMzKSFpbXBvcnRhbnQ7Y29sb3I6cmdiKDAsIDAsIDApIWltcG9ydGFudDt9I2cgLm9yY2hlc3RyYXRvciBwYXRoe2ZpbGw6cmdiKDIwNCwgMjI5LCAyNTUpIWltcG9ydGFudDtzdHJva2U6cmdiKDAsIDY0LCAxMzMpIWltcG9ydGFudDtjb2xvcjpyZ2IoMCwgMCwgMCkhaW1wb3J0YW50O30jZyAub3JjaGVzdHJhdG9yIHRzcGFue2ZpbGw6cmdiKDAsIDAsIDApIWltcG9ydGFudDt9I2cgLmVuZHBvaW50IHJlY3R7ZmlsbDpyZ2IoMjEyLCAyMzcsIDIxOCkhaW1wb3J0YW50O3N0cm9rZTpyZ2IoMjEsIDg3LCAzNikhaW1wb3J0YW50O2NvbG9yOnJnYigwLCAwLCAwKSFpbXBvcnRhbnQ7fSNnIC5lbmRwb2ludCBwb2x5Z29ue2ZpbGw6cmdiKDIxMiwgMjM3LCAyMTgpIWltcG9ydGFudDtzdHJva2U6cmdiKDIxLCA4NywgMzYpIWltcG9ydGFudDtjb2xvcjpyZ2IoMCwgMCwgMCkhaW1wb3J0YW50O30jZyAuZW5kcG9pbnQgZWxsaXBzZXtmaWxsOnJnYigyMTIsIDIzNywgMjE4KSFpbXBvcnRhbnQ7c3Ryb2tlOnJnYigyMSwgODcsIDM2KSFpbXBvcnRhbnQ7Y29sb3I6cmdiKDAsIDAsIDApIWltcG9ydGFudDt9I2cgLmVuZHBvaW50IGNpcmNsZXtmaWxsOnJnYigyMTIsIDIzNywgMjE4KSFpbXBvcnRhbnQ7c3Ryb2tlOnJnYigyMSwgODcsIDM2KSFpbXBvcnRhbnQ7Y29sb3I6cmdiKDAsIDAsIDApIWltcG9ydGFudDt9I2cgLmVuZHBvaW50IHBhdGh7ZmlsbDpyZ2IoMjEyLCAyMzcsIDIxOCkhaW1wb3J0YW50O3N0cm9rZTpyZ2IoMjEsIDg3LCAzNikhaW1wb3J0YW50O2NvbG9yOnJnYigwLCAwLCAwKSFpbXBvcnRhbnQ7fSNnIC5lbmRwb2ludCB0c3BhbntmaWxsOnJnYigwLCAwLCAwKSFpbXBvcnRhbnQ7fTwvc3R5bGU+PGc+PG1hcmtlciBpZD0iZ19mbG93Y2hhcnQtcG9pbnRFbmQiIGNsYXNzPSJtYXJrZXIgZmxvd2NoYXJ0IiB2aWV3Qm94PSIwIDAgMTAgMTAiIHJlZlg9IjYiIHJlZlk9IjUiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgbWFya2VyV2lkdGg9IjEyIiBtYXJrZXJIZWlnaHQ9IjEyIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0gMCAwIEwgMTAgNSBMIDAgMTAgeiIgY2xhc3M9ImFycm93TWFya2VyUGF0aCIgc3R5bGU9InN0cm9rZS13aWR0aDogMTsgc3Ryb2tlLWRhc2hhcnJheTogMSwgMDsiPjwvcGF0aD48L21hcmtlcj48bWFya2VyIGlkPSJnX2Zsb3djaGFydC1wb2ludFN0YXJ0IiBjbGFzcz0ibWFya2VyIGZsb3djaGFydCIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI0LjUiIHJlZlk9IjUiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgbWFya2VyV2lkdGg9IjEyIiBtYXJrZXJIZWlnaHQ9IjEyIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0gMCA1IEwgMTAgMTAgTCAxMCAwIHoiIGNsYXNzPSJhcnJvd01hcmtlclBhdGgiIHN0eWxlPSJzdHJva2Utd2lkdGg6IDE7IHN0cm9rZS1kYXNoYXJyYXk6IDEsIDA7Ij48L3BhdGg+PC9tYXJrZXI+PG1hcmtlciBpZD0iZ19mbG93Y2hhcnQtY2lyY2xlRW5kIiBjbGFzcz0ibWFya2VyIGZsb3djaGFydCIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSIxMSIgcmVmWT0iNSIgbWFya2VyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBtYXJrZXJXaWR0aD0iMTEiIG1hcmtlckhlaWdodD0iMTEiIG9yaWVudD0iYXV0byI+PGNpcmNsZSBjeD0iNSIgY3k9IjUiIHI9IjUiIGNsYXNzPSJhcnJvd01hcmtlclBhdGgiIHN0eWxlPSJzdHJva2Utd2lkdGg6IDE7IHN0cm9rZS1kYXNoYXJyYXk6IDEsIDA7Ij48L2NpcmNsZT48L21hcmtlcj48bWFya2VyIGlkPSJnX2Zsb3djaGFydC1jaXJjbGVTdGFydCIgY2xhc3M9Im1hcmtlciBmbG93Y2hhcnQiIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iLTEiIHJlZlk9IjUiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgbWFya2VyV2lkdGg9IjExIiBtYXJrZXJIZWlnaHQ9IjExIiBvcmllbnQ9ImF1dG8iPjxjaXJjbGUgY3g9IjUiIGN5PSI1IiByPSI1IiBjbGFzcz0iYXJyb3dNYXJrZXJQYXRoIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOiAxOyBzdHJva2UtZGFzaGFycmF5OiAxLCAwOyI+PC9jaXJjbGU+PC9tYXJrZXI+PG1hcmtlciBpZD0iZ19mbG93Y2hhcnQtY3Jvc3NFbmQiIGNsYXNzPSJtYXJrZXIgY3Jvc3MgZmxvd2NoYXJ0IiB2aWV3Qm94PSIwIDAgMTEgMTEiIHJlZlg9IjEyIiByZWZZPSI1LjIiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgbWFya2VyV2lkdGg9IjExIiBtYXJrZXJIZWlnaHQ9IjExIiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0gMSwxIGwgOSw5IE0gMTAsMSBsIC05LDkiIGNsYXNzPSJhcnJvd01hcmtlclBhdGgiIHN0eWxlPSJzdHJva2Utd2lkdGg6IDI7IHN0cm9rZS1kYXNoYXJyYXk6IDEsIDA7Ij48L3BhdGg+PC9tYXJrZXI+PG1hcmtlciBpZD0iZ19mbG93Y2hhcnQtY3Jvc3NTdGFydCIgY2xhc3M9Im1hcmtlciBjcm9zcyBmbG93Y2hhcnQiIHZpZXdCb3g9IjAgMCAxMSAxMSIgcmVmWD0iLTEiIHJlZlk9IjUuMiIgbWFya2VyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBtYXJrZXJXaWR0aD0iMTEiIG1hcmtlckhlaWdodD0iMTEiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTSAxLDEgbCA5LDkgTSAxMCwxIGwgLTksOSIgY2xhc3M9ImFycm93TWFya2VyUGF0aCIgc3R5bGU9InN0cm9rZS13aWR0aDogMjsgc3Ryb2tlLWRhc2hhcnJheTogMSwgMDsiPjwvcGF0aD48L21hcmtlcj48ZyBjbGFzcz0icm9vdCI+PGcgY2xhc3M9ImNsdXN0ZXJzIj48ZyBjbGFzcz0iY2x1c3RlciBkZWZhdWx0IGZsb3djaGFydC1sYWJlbCIgaWQ9IkYiPjxyZWN0IHN0eWxlPSIiIHJ4PSIwIiByeT0iMCIgeD0iMzIyLjMxMjUiIHk9IjAiIHdpZHRoPSI4MzAuNjQwNjI1IiBoZWlnaHQ9IjEzNC43NSI+PC9yZWN0PjxnIGNsYXNzPSJjbHVzdGVyLWxhYmVsIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3MzcuNjMyODEyNSwgMCkiPjx0ZXh0IHN0eWxlPSIiPjx0c3BhbiB4bWw6c3BhY2U9InByZXNlcnZlIiBkeT0iMWVtIiB4PSIwIiBjbGFzcz0icm93Ij5GIMK3IE9wcyB0cmlhZ2U8L3RzcGFuPjwvdGV4dD48L2c+PC9nPjxnIGNsYXNzPSJjbHVzdGVyIGRlZmF1bHQgZmxvd2NoYXJ0LWxhYmVsIiBpZD0iRSI+PHJlY3Qgc3R5bGU9IiIgcng9IjAiIHJ5PSIwIiB4PSIwIiB5PSIxNjIuNzUiIHdpZHRoPSI3OTcuMDkzNzUiIGhlaWdodD0iMTA0Ij48L3JlY3Q+PGcgY2xhc3M9ImNsdXN0ZXItbGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM5OC41NDY4NzUsIDE2Mi43NSkiPjx0ZXh0IHN0eWxlPSIiPjx0c3BhbiB4bWw6c3BhY2U9InByZXNlcnZlIiBkeT0iMWVtIiB4PSIwIiBjbGFzcz0icm93Ij5FIMK3IEZyb250LWxvYWRlZCBkZXNpZ248L3RzcGFuPjwvdGV4dD48L2c+PC9nPjxnIGNsYXNzPSJjbHVzdGVyIGRlZmF1bHQgZmxvd2NoYXJ0LWxhYmVsIiBpZD0iQyI+PHJlY3Qgc3R5bGU9IiIgcng9IjAiIHJ5PSIwIiB4PSIzMjIuMzEyNSIgeT0iNDE4Ljc1IiB3aWR0aD0iMTAyMy4wNDY4NzUiIGhlaWdodD0iMTIwIj48L3JlY3Q+PGcgY2xhc3M9ImNsdXN0ZXItbGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDgzMy44MzU5Mzc1LCA0MTguNzUpIj48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+QyDCtyBNdWx0aS10ZW5hbnQgaW50ZWdyYXRpb248L3RzcGFuPjwvdGV4dD48L2c+PC9nPjxnIGNsYXNzPSJjbHVzdGVyIGRlZmF1bHQgZmxvd2NoYXJ0LWxhYmVsIiBpZD0iQiI+PHJlY3Qgc3R5bGU9IiIgcng9IjAiIHJ5PSIwIiB4PSI5MTUuMDc4MTI1IiB5PSIyOTQuNzUiIHdpZHRoPSI0MzAuMjgxMjUiIGhlaWdodD0iMTA0Ij48L3JlY3Q+PGcgY2xhc3M9ImNsdXN0ZXItbGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDExMzAuMjE4NzUsIDI5NC43NSkiPjx0ZXh0IHN0eWxlPSIiPjx0c3BhbiB4bWw6c3BhY2U9InByZXNlcnZlIiBkeT0iMWVtIiB4PSIwIiBjbGFzcz0icm93Ij5CIMK3IERhc2hib2FyZCBlZGl0PC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0iY2x1c3RlciBkZWZhdWx0IGZsb3djaGFydC1sYWJlbCIgaWQ9IkEiPjxyZWN0IHN0eWxlPSIiIHJ4PSIwIiByeT0iMCIgeD0iOTE1LjA3ODEyNSIgeT0iMTU0Ljc1IiB3aWR0aD0iNDMwLjI4MTI1IiBoZWlnaHQ9IjEyMCI+PC9yZWN0PjxnIGNsYXNzPSJjbHVzdGVyLWxhYmVsIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMTMwLjIxODc1LCAxNTQuNzUpIj48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+QSDCtyBTdGFuZGFyZCBmZWF0dXJlPC90c3Bhbj48L3RleHQ+PC9nPjwvZz48L2c+PGcgY2xhc3M9ImVkZ2VQYXRocyI+PHBhdGggZD0iTTEwODcuODEzLDIxNC43NUwxMDk4LjY2OSwyMTQuNzVDMTEwOS41MjYsMjE0Ljc1LDExMzEuMjQsMjE0Ljc1LDExNDYuMjYzLDIxNC43NUMxMTYxLjI4NiwyMTQuNzUsMTE2OS42MiwyMTQuNzUsMTE3Ny4wNywyMTQuNzVDMTE4NC41MiwyMTQuNzUsMTE5MS4wODYsMjE0Ljc1LDExOTQuMzcsMjE0Ljc1TDExOTcuNjUzLDIxNC43NSIgaWQ9IkwtYTEtYTItMCIgY2xhc3M9IiBlZGdlLXRoaWNrbmVzcy1ub3JtYWwgZWRnZS1wYXR0ZXJuLXNvbGlkIGZsb3djaGFydC1saW5rIExTLWExIExFLWEyIiBzdHlsZT0iZmlsbDpub25lOyIgbWFya2VyLWVuZD0idXJsKCNnX2Zsb3djaGFydC1wb2ludEVuZCkiPjwvcGF0aD48cGF0aCBkPSJNMTExMi41NywzNDYuNzVMMTExOS4zMDEsMzQ2Ljc1QzExMjYuMDMxLDM0Ni43NSwxMTM5LjQ5MiwzNDYuNzUsMTE1MC4zODksMzQ2Ljc1QzExNjEuMjg2LDM0Ni43NSwxMTY5LjYyLDM0Ni43NSwxMTc4Ljg0NSwzNDYuNzVDMTE4OC4wNjksMzQ2Ljc1LDExOTguMTg1LDM0Ni43NSwxMjAzLjI0MywzNDYuNzVMMTIwOC4zMDIsMzQ2Ljc1IiBpZD0iTC1iMS1iMi0wIiBjbGFzcz0iIGVkZ2UtdGhpY2tuZXNzLW5vcm1hbCBlZGdlLXBhdHRlcm4tc29saWQgZmxvd2NoYXJ0LWxpbmsgTFMtYjEgTEUtYjIiIHN0eWxlPSJmaWxsOm5vbmU7IiBtYXJrZXItZW5kPSJ1cmwoI2dfZmxvd2NoYXJ0LXBvaW50RW5kKSI+PC9wYXRoPjxwYXRoIGQ9Ik01MDQuMjAzLDQ3OC43NUw1MTYuNTg2LDQ3OC43NUM1MjguOTY5LDQ3OC43NSw1NTMuNzM0LDQ3OC43NSw1NjkuNDAxLDQ3OC43NUM1ODUuMDY3LDQ3OC43NSw1OTEuNjMzLDQ3OC43NSw1OTQuOTE3LDQ3OC43NUw1OTguMiw0NzguNzUiIGlkPSJMLWMxLWMyLTAiIGNsYXNzPSIgZWRnZS10aGlja25lc3Mtbm9ybWFsIGVkZ2UtcGF0dGVybi1zb2xpZCBmbG93Y2hhcnQtbGluayBMUy1jMSBMRS1jMiIgc3R5bGU9ImZpbGw6bm9uZTsiIG1hcmtlci1lbmQ9InVybCgjZ19mbG93Y2hhcnQtcG9pbnRFbmQpIj48L3BhdGg+PHBhdGggZD0iTTc3Mi4wOTQsNDc4Ljc1TDc3Ni4yNiw0NzguNzVDNzgwLjQyNyw0NzguNzUsNzg4Ljc2LDQ3OC43NSw4MDIuNzU5LDQ3OC43NUM4MTYuNzU4LDQ3OC43NSw4MzYuNDIyLDQ3OC43NSw4NTYuMDg2LDQ3OC43NUM4NzUuNzUsNDc4Ljc1LDg5NS40MTQsNDc4Ljc1LDkwOC41MjksNDc4Ljc1QzkyMS42NDUsNDc4Ljc1LDkyOC4yMTEsNDc4Ljc1LDkzMS40OTUsNDc4Ljc1TDkzNC43NzgsNDc4Ljc1IiBpZD0iTC1jMi1jMy0wIiBjbGFzcz0iIGVkZ2UtdGhpY2tuZXNzLW5vcm1hbCBlZGdlLXBhdHRlcm4tc29saWQgZmxvd2NoYXJ0LWxpbmsgTFMtYzIgTEUtYzMiIHN0eWxlPSJmaWxsOm5vbmU7IiBtYXJrZXItZW5kPSJ1cmwoI2dfZmxvd2NoYXJ0LXBvaW50RW5kKSI+PC9wYXRoPjxwYXRoIGQ9Ik0xMTI3Ljk1Myw0NzguNzVMMTEzMi4xMiw0NzguNzVDMTEzNi4yODYsNDc4Ljc1LDExNDQuNjIsNDc4Ljc1LDExNTIuOTUzLDQ3OC43NUMxMTYxLjI4Niw0NzguNzUsMTE2OS42Miw0NzguNzUsMTE4MS40NjcsNDc4Ljc1QzExOTMuMzE0LDQ3OC43NSwxMjA4LjY3NSw0NzguNzUsMTIxNi4zNTUsNDc4Ljc1TDEyMjQuMDM2LDQ3OC43NSIgaWQ9IkwtYzMtYzQtMCIgY2xhc3M9IiBlZGdlLXRoaWNrbmVzcy1ub3JtYWwgZWRnZS1wYXR0ZXJuLXNvbGlkIGZsb3djaGFydC1saW5rIExTLWMzIExFLWM0IiBzdHlsZT0iZmlsbDpub25lOyIgbWFya2VyLWVuZD0idXJsKCNnX2Zsb3djaGFydC1wb2ludEVuZCkiPjwvcGF0aD48cGF0aCBkPSJNMjI0LjgyOCwyMTQuNzVMMjM2LjkwOSwyMTQuNzVDMjQ4Ljk5LDIxNC43NSwyNzMuMTUxLDIxNC43NSwyODkuMzk4LDIxNC43NUMzMDUuNjQ2LDIxNC43NSwzMTMuOTc5LDIxNC43NSwzMzAuODQ4LDIxNC43NUMzNDcuNzE4LDIxNC43NSwzNzMuMTIzLDIxNC43NSwzODUuODI2LDIxNC43NUwzOTguNTI4LDIxNC43NSIgaWQ9IkwtZTEtZTItMCIgY2xhc3M9IiBlZGdlLXRoaWNrbmVzcy1ub3JtYWwgZWRnZS1wYXR0ZXJuLXNvbGlkIGZsb3djaGFydC1saW5rIExTLWUxIExFLWUyIiBzdHlsZT0iZmlsbDpub25lOyIgbWFya2VyLWVuZD0idXJsKCNnX2Zsb3djaGFydC1wb2ludEVuZCkiPjwvcGF0aD48cGF0aCBkPSJNNDk2Ljk4NCwyMTQuNzVMNTEwLjU3LDIxNC43NUM1MjQuMTU2LDIxNC43NSw1NTEuMzI4LDIxNC43NSw1NzUuNjE5LDIxNC43NUM1OTkuOTEsMjE0Ljc1LDYyMS4zMjEsMjE0Ljc1LDYzMi4wMjYsMjE0Ljc1TDY0Mi43MzEsMjE0Ljc1IiBpZD0iTC1lMi1lMy0wIiBjbGFzcz0iIGVkZ2UtdGhpY2tuZXNzLW5vcm1hbCBlZGdlLXBhdHRlcm4tc29saWQgZmxvd2NoYXJ0LWxpbmsgTFMtZTIgTEUtZTMiIHN0eWxlPSJmaWxsOm5vbmU7IiBtYXJrZXItZW5kPSJ1cmwoI2dfZmxvd2NoYXJ0LXBvaW50RW5kKSI+PC9wYXRoPjxwYXRoIGQ9Ik01NTMuNSw3NC43NUw1NTcuNjY3LDc0Ljc1QzU2MS44MzMsNzQuNzUsNTcwLjE2Nyw3NC43NSw1ODIuMzk1LDc0Ljc1QzU5NC42MjQsNzQuNzUsNjEwLjc0OCw3NC43NSw2MTguODEsNzQuNzVMNjI2Ljg3Miw3NC43NSIgaWQ9IkwtZjEtZjItMCIgY2xhc3M9IiBlZGdlLXRoaWNrbmVzcy1ub3JtYWwgZWRnZS1wYXR0ZXJuLXNvbGlkIGZsb3djaGFydC1saW5rIExTLWYxIExFLWYyIiBzdHlsZT0iZmlsbDpub25lOyIgbWFya2VyLWVuZD0idXJsKCNnX2Zsb3djaGFydC1wb2ludEVuZCkiPjwvcGF0aD48cGF0aCBkPSJNNzQzLjQyMiw2Ny4yNDNMNzUyLjM2Nyw2Ni4wMzZDNzYxLjMxMyw2NC44MjksNzc5LjIwMyw2Mi40MTQsNzk3Ljk4LDYxLjIwN0M4MTYuNzU4LDYwLDgzNi40MjIsNjAsODU2LjA4Niw2MEM4NzUuNzUsNjAsODk1LjQxNCw2MCw5MTIuOTEyLDYwQzkzMC40MSw2MCw5NDUuNzQzLDYwLDk1My40MDksNjBMOTYxLjA3NSw2MCIgaWQ9IkwtZjItZjMtMCIgY2xhc3M9IiBlZGdlLXRoaWNrbmVzcy1ub3JtYWwgZWRnZS1wYXR0ZXJuLXNvbGlkIGZsb3djaGFydC1saW5rIExTLWYyIExFLWYzIiBzdHlsZT0iZmlsbDpub25lOyIgbWFya2VyLWVuZD0idXJsKCNnX2Zsb3djaGFydC1wb2ludEVuZCkiPjwvcGF0aD48cGF0aCBkPSJNMTMyMC4zNTksMjE0Ljc1TDEzMjQuNTI2LDIxNC43NUMxMzI4LjY5MywyMTQuNzUsMTMzNy4wMjYsMjE0Ljc1LDEzNDUuMzU5LDIxNC43NUMxMzUzLjY5MywyMTQuNzUsMTM2Mi4wMjYsMjE0Ljc1LDEzNzQuMjEsMjI4LjUxM0MxMzg2LjM5NSwyNDIuMjc2LDE0MDIuNDMsMjY5LjgwMSwxNDEwLjQ0OCwyODMuNTY0TDE0MTguNDY2LDI5Ny4zMjciIGlkPSJMLWEyLVNISVAtMCIgY2xhc3M9IiBlZGdlLXRoaWNrbmVzcy1ub3JtYWwgZWRnZS1wYXR0ZXJuLXNvbGlkIGZsb3djaGFydC1saW5rIExTLWEyIExFLVNISVAiIHN0eWxlPSJmaWxsOm5vbmU7IiBtYXJrZXItZW5kPSJ1cmwoI2dfZmxvd2NoYXJ0LXBvaW50RW5kKSI+PC9wYXRoPjxwYXRoIGQ9Ik0xMzA5LjcxMSwzNDYuNzVMMTMxNS42NTIsMzQ2Ljc1QzEzMjEuNTk0LDM0Ni43NSwxMzMzLjQ3NywzNDYuNzUsMTM0My41ODUsMzQ2Ljc1QzEzNTMuNjkzLDM0Ni43NSwxMzYyLjAyNiwzNDYuNzUsMTM2OS40NzYsMzQ2Ljc1QzEzNzYuOTI2LDM0Ni43NSwxMzgzLjQ5MywzNDYuNzUsMTM4Ni43NzYsMzQ2Ljc1TDEzOTAuMDU5LDM0Ni43NSIgaWQ9IkwtYjItU0hJUC0wIiBjbGFzcz0iIGVkZ2UtdGhpY2tuZXNzLW5vcm1hbCBlZGdlLXBhdHRlcm4tc29saWQgZmxvd2NoYXJ0LWxpbmsgTFMtYjIgTEUtU0hJUCIgc3R5bGU9ImZpbGw6bm9uZTsiIG1hcmtlci1lbmQ9InVybCgjZ19mbG93Y2hhcnQtcG9pbnRFbmQpIj48L3BhdGg+PHBhdGggZD0iTTEyOTMuOTc3LDQ3OC43NUwxMzAyLjU0LDQ3OC43NUMxMzExLjEwNCw0NzguNzUsMTMyOC4yMzIsNDc4Ljc1LDEzNDAuOTYyLDQ3OC43NUMxMzUzLjY5Myw0NzguNzUsMTM2Mi4wMjYsNDc4Ljc1LDEzNzQuMjEsNDY0Ljk4N0MxMzg2LjM5NSw0NTEuMjI0LDE0MDIuNDMsNDIzLjY5OSwxNDEwLjQ0OCw0MDkuOTM2TDE0MTguNDY2LDM5Ni4xNzMiIGlkPSJMLWM0LVNISVAtMCIgY2xhc3M9IiBlZGdlLXRoaWNrbmVzcy1ub3JtYWwgZWRnZS1wYXR0ZXJuLXNvbGlkIGZsb3djaGFydC1saW5rIExTLWM0IExFLVNISVAiIHN0eWxlPSJmaWxsOm5vbmU7IiBtYXJrZXItZW5kPSJ1cmwoI2dfZmxvd2NoYXJ0LXBvaW50RW5kKSI+PC9wYXRoPjxwYXRoIGQ9Ik03MjcuNTYzLDIxNC43NUw3MzkuMTUxLDIxNC43NUM3NTAuNzQsMjE0Ljc1LDc3My45MTcsMjE0Ljc1LDc5NS4zMzcsMjE0Ljc1QzgxNi43NTgsMjE0Ljc1LDgzNi40MjIsMjE0Ljc1LDg1Ni4wODYsMjE0Ljc1Qzg3NS43NSwyMTQuNzUsODk1LjQxNCwyMTQuNzUsOTE1LjIyLDIxNC43NUM5MzUuMDI1LDIxNC43NSw5NTQuOTcyLDIxNC43NSw5NjQuOTQ1LDIxNC43NUw5NzQuOTE5LDIxNC43NSIgaWQ9IkwtZTMtYTEtMCIgY2xhc3M9IiBlZGdlLXRoaWNrbmVzcy1ub3JtYWwgZWRnZS1wYXR0ZXJuLWRvdHRlZCBmbG93Y2hhcnQtbGluayBMUy1lMyBMRS1hMSIgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2Utd2lkdGg6MnB4O3N0cm9rZS1kYXNoYXJyYXk6MzsiIG1hcmtlci1lbmQ9InVybCgjZ19mbG93Y2hhcnQtcG9pbnRFbmQpIj48L3BhdGg+PHBhdGggZD0iTTc0My40MjIsODIuNTExTDc1Mi4zNjcsODMuNzU5Qzc2MS4zMTMsODUuMDA4LDc3OS4yMDMsODcuNTA0LDc5Ny45OCw4OC43NTJDODE2Ljc1OCw5MCw4MzYuNDIyLDkwLDg1Ni4wODYsOTBDODc1Ljc1LDkwLDg5NS40MTQsOTAsOTIxLjc1OCwxMDcuMzE5Qzk0OC4xMDIsMTI0LjYzOCw5ODEuMTI2LDE1OS4yNzYsOTk3LjYzOCwxNzYuNTk1TDEwMTQuMTUsMTkzLjkxNCIgaWQ9IkwtZjItYTEtMCIgY2xhc3M9IiBlZGdlLXRoaWNrbmVzcy1ub3JtYWwgZWRnZS1wYXR0ZXJuLWRvdHRlZCBmbG93Y2hhcnQtbGluayBMUy1mMiBMRS1hMSIgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2Utd2lkdGg6MnB4O3N0cm9rZS1kYXNoYXJyYXk6MzsiIG1hcmtlci1lbmQ9InVybCgjZ19mbG93Y2hhcnQtcG9pbnRFbmQpIj48L3BhdGg+PHBhdGggZD0iTTE0OTkuMTU2LDM0Ni43NUwxNTAzLjMyMywzNDYuNzVDMTUwNy40OSwzNDYuNzUsMTUxNS44MjMsMzQ2Ljc1LDE1MjMuMjczLDM0Ni43NUMxNTMwLjcyMywzNDYuNzUsMTUzNy4yOSwzNDYuNzUsMTU0MC41NzMsMzQ2Ljc1TDE1NDMuODU2LDM0Ni43NSIgaWQ9IkwtU0hJUC1QUi0wIiBjbGFzcz0iIGVkZ2UtdGhpY2tuZXNzLW5vcm1hbCBlZGdlLXBhdHRlcm4tc29saWQgZmxvd2NoYXJ0LWxpbmsgTFMtU0hJUCBMRS1QUiIgc3R5bGU9ImZpbGw6bm9uZTsiIG1hcmtlci1lbmQ9InVybCgjZ19mbG93Y2hhcnQtcG9pbnRFbmQpIj48L3BhdGg+PC9nPjxnIGNsYXNzPSJlZGdlTGFiZWxzIj48ZyBjbGFzcz0iZWRnZUxhYmVsIj48ZyBjbGFzcz0ibGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIDApIj48cmVjdCByeD0iMCIgcnk9IjAiIHdpZHRoPSIwIiBoZWlnaHQ9IjAiPjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+PC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0iZWRnZUxhYmVsIj48ZyBjbGFzcz0ibGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIDApIj48cmVjdCByeD0iMCIgcnk9IjAiIHdpZHRoPSIwIiBoZWlnaHQ9IjAiPjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+PC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0iZWRnZUxhYmVsIj48ZyBjbGFzcz0ibGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIDApIj48cmVjdCByeD0iMCIgcnk9IjAiIHdpZHRoPSIwIiBoZWlnaHQ9IjAiPjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+PC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0iZWRnZUxhYmVsIj48ZyBjbGFzcz0ibGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIDApIj48cmVjdCByeD0iMCIgcnk9IjAiIHdpZHRoPSIwIiBoZWlnaHQ9IjAiPjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+PC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0iZWRnZUxhYmVsIj48ZyBjbGFzcz0ibGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIDApIj48cmVjdCByeD0iMCIgcnk9IjAiIHdpZHRoPSIwIiBoZWlnaHQ9IjAiPjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+PC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0iZWRnZUxhYmVsIj48ZyBjbGFzcz0ibGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIDApIj48cmVjdCByeD0iMCIgcnk9IjAiIHdpZHRoPSIwIiBoZWlnaHQ9IjAiPjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+PC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0iZWRnZUxhYmVsIj48ZyBjbGFzcz0ibGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIDApIj48cmVjdCByeD0iMCIgcnk9IjAiIHdpZHRoPSIwIiBoZWlnaHQ9IjAiPjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+PC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0iZWRnZUxhYmVsIj48ZyBjbGFzcz0ibGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIDApIj48cmVjdCByeD0iMCIgcnk9IjAiIHdpZHRoPSIwIiBoZWlnaHQ9IjAiPjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+PC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0iZWRnZUxhYmVsIj48ZyBjbGFzcz0ibGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIDApIj48cmVjdCByeD0iMCIgcnk9IjAiIHdpZHRoPSIwIiBoZWlnaHQ9IjAiPjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+PC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0iZWRnZUxhYmVsIj48ZyBjbGFzcz0ibGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIDApIj48cmVjdCByeD0iMCIgcnk9IjAiIHdpZHRoPSIwIiBoZWlnaHQ9IjAiPjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+PC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0iZWRnZUxhYmVsIj48ZyBjbGFzcz0ibGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIDApIj48cmVjdCByeD0iMCIgcnk9IjAiIHdpZHRoPSIwIiBoZWlnaHQ9IjAiPjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+PC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0iZWRnZUxhYmVsIj48ZyBjbGFzcz0ibGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIDApIj48cmVjdCByeD0iMCIgcnk9IjAiIHdpZHRoPSIwIiBoZWlnaHQ9IjAiPjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+PC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0iZWRnZUxhYmVsIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg4NTYuMDg1OTM3NSwgMjE0Ljc1KSI+PGcgY2xhc3M9ImxhYmVsIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjMuODA0Njg3NSwgLTkuNSkiPjxyZWN0IHJ4PSIwIiByeT0iMCIgd2lkdGg9IjQ3LjYwMzI0ODU5NjE5MTQwNiIgaGVpZ2h0PSIyMC4zODYyMjQ3NDY3MDQxIj48L3JlY3Q+PHRleHQgc3R5bGU9IiI+PHRzcGFuIHhtbDpzcGFjZT0icHJlc2VydmUiIGR5PSIxZW0iIHg9IjAiIGNsYXNzPSJyb3ciPmpvaW5zIEE8L3RzcGFuPjwvdGV4dD48L2c+PC9nPjxnIGNsYXNzPSJlZGdlTGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDg1Ni4wODU5Mzc1LCA5MCkiPjxnIGNsYXNzPSJsYWJlbCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTMzLjk5MjE4NzUsIC05LjUpIj48cmVjdCByeD0iMCIgcnk9IjAiIHdpZHRoPSI2Ny45NTQwNzg2NzQzMTY0IiBoZWlnaHQ9IjIwLjM4NjIyNDc0NjcwNDEiPjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+dHJpZ2dlcnMgQTwvdHNwYW4+PC90ZXh0PjwvZz48L2c+PGcgY2xhc3M9ImVkZ2VMYWJlbCI+PGcgY2xhc3M9ImxhYmVsIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLCAwKSI+PHJlY3Qgcng9IjAiIHJ5PSIwIiB3aWR0aD0iMCIgaGVpZ2h0PSIwIj48L3JlY3Q+PHRleHQgc3R5bGU9IiI+PHRzcGFuIHhtbDpzcGFjZT0icHJlc2VydmUiIGR5PSIxZW0iIHg9IjAiIGNsYXNzPSJyb3ciPjwvdHNwYW4+PC90ZXh0PjwvZz48L2c+PC9nPjxnIGNsYXNzPSJub2RlcyI+PGcgY2xhc3M9Im5vZGUgZGVmYXVsdCBkZWZhdWx0IGZsb3djaGFydC1sYWJlbCIgaWQ9ImZsb3djaGFydC1mMS0yOCIgZGF0YS1ub2RlPSJ0cnVlIiBkYXRhLWlkPSJmMSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDUwLjQwNjI1LCA3NC43NSkiPjxyZWN0IGNsYXNzPSJiYXNpYyBsYWJlbC1jb250YWluZXIiIHN0eWxlPSIiIHJ4PSIwIiByeT0iMCIgeD0iLTEwMy4wOTM3NSIgeT0iLTI1IiB3aWR0aD0iMjA2LjE4NzUiIGhlaWdodD0iNTAiPjwvcmVjdD48ZyBjbGFzcz0ibGFiZWwiIHN0eWxlPSIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIC0xNy41KSI+PHJlY3Q+PC9yZWN0Pjx0ZXh0IHN0eWxlPSIiPjx0c3BhbiB4bWw6c3BhY2U9InByZXNlcnZlIiBkeT0iMWVtIiB4PSIwIiBjbGFzcz0icm93Ij4vYnVnLXRyaWFnZTwvdHNwYW4+PHRzcGFuIHhtbDpzcGFjZT0icHJlc2VydmUiIGR5PSIxZW0iIHg9IjAiIGNsYXNzPSJyb3ciPnNjYW5zIENsb3VkV2F0Y2ggKyBTZW50cnk8L3RzcGFuPjwvdGV4dD48L2c+PC9nPjxnIGNsYXNzPSJub2RlIGRlZmF1bHQgZGVmYXVsdCBmbG93Y2hhcnQtbGFiZWwiIGlkPSJmbG93Y2hhcnQtZjItMjkiIGRhdGEtbm9kZT0idHJ1ZSIgZGF0YS1pZD0iZjIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDY4Ny43OTY4NzUsIDc0Ljc1KSI+PHJlY3QgY2xhc3M9ImJhc2ljIGxhYmVsLWNvbnRhaW5lciIgc3R5bGU9IiIgcng9IjAiIHJ5PSIwIiB4PSItNTUuNjI1IiB5PSItMjUiIHdpZHRoPSIxMTEuMjUiIGhlaWdodD0iNTAiPjwvcmVjdD48ZyBjbGFzcz0ibGFiZWwiIHN0eWxlPSIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIC0xNy41KSI+PHJlY3Q+PC9yZWN0Pjx0ZXh0IHN0eWxlPSIiPjx0c3BhbiB4bWw6c3BhY2U9InByZXNlcnZlIiBkeT0iMWVtIiB4PSIwIiBjbGFzcz0icm93Ij5wcm9tcHQgdXNlcjwvdHNwYW4+PHRzcGFuIHhtbDpzcGFjZT0icHJlc2VydmUiIGR5PSIxZW0iIHg9IjAiIGNsYXNzPSJyb3ciPndoaWNoIHRvIGZpbGU/PC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0ibm9kZSBkZWZhdWx0IGRlZmF1bHQgZmxvd2NoYXJ0LWxhYmVsIiBpZD0iZmxvd2NoYXJ0LWYzLTMwIiBkYXRhLW5vZGU9InRydWUiIGRhdGEtaWQ9ImYzIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDM0LjAxNTYyNSwgNjApIj48cmVjdCBjbGFzcz0iYmFzaWMgbGFiZWwtY29udGFpbmVyIiBzdHlsZT0iIiByeD0iMCIgcnk9IjAiIHg9Ii02Ny42NDA2MjUiIHk9Ii0yNSIgd2lkdGg9IjEzNS4yODEyNSIgaGVpZ2h0PSI1MCI+PC9yZWN0PjxnIGNsYXNzPSJsYWJlbCIgc3R5bGU9IiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwgLTE3LjUpIj48cmVjdD48L3JlY3Q+PHRleHQgc3R5bGU9IiI+PHRzcGFuIHhtbDpzcGFjZT0icHJlc2VydmUiIGR5PSIxZW0iIHg9IjAiIGNsYXNzPSJyb3ciPnRpY2tldChzKSBjcmVhdGVkPC90c3Bhbj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+aW4gTGluZWFyPC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0ibm9kZSBkZWZhdWx0IGRlZmF1bHQgZmxvd2NoYXJ0LWxhYmVsIiBpZD0iZmxvd2NoYXJ0LWUxLTIyIiBkYXRhLW5vZGU9InRydWUiIGRhdGEtaWQ9ImUxIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNDguNjU2MjUsIDIxNC43NSkiPjxyZWN0IGNsYXNzPSJiYXNpYyBsYWJlbC1jb250YWluZXIiIHN0eWxlPSIiIHJ4PSIwIiByeT0iMCIgeD0iLTc2LjE3MTg3NSIgeT0iLTE3IiB3aWR0aD0iMTUyLjM0Mzc1IiBoZWlnaHQ9IjM0Ij48L3JlY3Q+PGcgY2xhc3M9ImxhYmVsIiBzdHlsZT0iIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLCAtOS41KSI+PHJlY3Q+PC9yZWN0Pjx0ZXh0IHN0eWxlPSIiPjx0c3BhbiB4bWw6c3BhY2U9InByZXNlcnZlIiBkeT0iMWVtIiB4PSIwIiBjbGFzcz0icm93Ij4vcGxhbi1tZWdhLXJldmlldzwvdHNwYW4+PC90ZXh0PjwvZz48L2c+PGcgY2xhc3M9Im5vZGUgZGVmYXVsdCBkZWZhdWx0IGZsb3djaGFydC1sYWJlbCIgaWQ9ImZsb3djaGFydC1lMi0yMyIgZGF0YS1ub2RlPSJ0cnVlIiBkYXRhLWlkPSJlMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDUwLjQwNjI1LCAyMTQuNzUpIj48cmVjdCBjbGFzcz0iYmFzaWMgbGFiZWwtY29udGFpbmVyIiBzdHlsZT0iIiByeD0iMCIgcnk9IjAiIHg9Ii00Ni41NzgxMjUiIHk9Ii0xNyIgd2lkdGg9IjkzLjE1NjI1IiBoZWlnaHQ9IjM0Ij48L3JlY3Q+PGcgY2xhc3M9ImxhYmVsIiBzdHlsZT0iIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLCAtOS41KSI+PHJlY3Q+PC9yZWN0Pjx0ZXh0IHN0eWxlPSIiPjx0c3BhbiB4bWw6c3BhY2U9InByZXNlcnZlIiBkeT0iMWVtIiB4PSIwIiBjbGFzcz0icm93Ij4vd2Fsay1wbGFuPC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0ibm9kZSBkZWZhdWx0IGRlZmF1bHQgZmxvd2NoYXJ0LWxhYmVsIiBpZD0iZmxvd2NoYXJ0LWUzLTI0IiBkYXRhLW5vZGU9InRydWUiIGRhdGEtaWQ9ImUzIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2ODcuNzk2ODc1LCAyMTQuNzUpIj48cmVjdCBjbGFzcz0iYmFzaWMgbGFiZWwtY29udGFpbmVyIiBzdHlsZT0iIiByeD0iMCIgcnk9IjAiIHg9Ii0zOS43NjU2MjUiIHk9Ii0xNyIgd2lkdGg9Ijc5LjUzMTI1IiBoZWlnaHQ9IjM0Ij48L3JlY3Q+PGcgY2xhc3M9ImxhYmVsIiBzdHlsZT0iIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLCAtOS41KSI+PHJlY3Q+PC9yZWN0Pjx0ZXh0IHN0eWxlPSIiPjx0c3BhbiB4bWw6c3BhY2U9InByZXNlcnZlIiBkeT0iMWVtIiB4PSIwIiBjbGFzcz0icm93Ij4vZ3JpbGwtbWU8L3RzcGFuPjwvdGV4dD48L2c+PC9nPjxnIGNsYXNzPSJyb290IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNy41LCAyOTMuNzUpIj48ZyBjbGFzcz0iY2x1c3RlcnMiPjxnIGNsYXNzPSJjbHVzdGVyIGRlZmF1bHQgZmxvd2NoYXJ0LWxhYmVsIiBpZD0iRCI+PHJlY3Qgc3R5bGU9IiIgcng9IjAiIHJ5PSIwIiB4PSI4IiB5PSI4IiB3aWR0aD0iMjQ3LjMxMjUiIGhlaWdodD0iMjY4Ij48L3JlY3Q+PGcgY2xhc3M9ImNsdXN0ZXItbGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEzMS42NTYyNSwgOCkiPjx0ZXh0IHN0eWxlPSIiPjx0c3BhbiB4bWw6c3BhY2U9InByZXNlcnZlIiBkeT0iMWVtIiB4PSIwIiBjbGFzcz0icm93Ij5EIMK3IEJyb3dzZXIgUUEgc3RhbmRhbG9uZTwvdHNwYW4+PC90ZXh0PjwvZz48L2c+PC9nPjxnIGNsYXNzPSJlZGdlUGF0aHMiPjxwYXRoIGQ9Ik0xMzEuNjU2LDY3TDEzMS42NTYsNzEuMTY3QzEzMS42NTYsNzUuMzMzLDEzMS42NTYsODMuNjY3LDEzMS42NTYsOTEuMTE3QzEzMS42NTYsOTguNTY3LDEzMS42NTYsMTA1LjEzMywxMzEuNjU2LDEwOC40MTdMMTMxLjY1NiwxMTEuNyIgaWQ9IkwtZDEtZDItMCIgY2xhc3M9IiBlZGdlLXRoaWNrbmVzcy1ub3JtYWwgZWRnZS1wYXR0ZXJuLXNvbGlkIGZsb3djaGFydC1saW5rIExTLWQxIExFLWQyIiBzdHlsZT0iZmlsbDpub25lOyIgbWFya2VyLWVuZD0idXJsKCNnX2Zsb3djaGFydC1wb2ludEVuZCkiPjwvcGF0aD48cGF0aCBkPSJNMTMxLjY1NiwxNjdMMTMxLjY1NiwxNzEuMTY3QzEzMS42NTYsMTc1LjMzMywxMzEuNjU2LDE4My42NjcsMTMxLjY1NiwxOTEuMTE3QzEzMS42NTYsMTk4LjU2NywxMzEuNjU2LDIwNS4xMzMsMTMxLjY1NiwyMDguNDE3TDEzMS42NTYsMjExLjciIGlkPSJMLWQyLWQzLTAiIGNsYXNzPSIgZWRnZS10aGlja25lc3Mtbm9ybWFsIGVkZ2UtcGF0dGVybi1zb2xpZCBmbG93Y2hhcnQtbGluayBMUy1kMiBMRS1kMyIgc3R5bGU9ImZpbGw6bm9uZTsiIG1hcmtlci1lbmQ9InVybCgjZ19mbG93Y2hhcnQtcG9pbnRFbmQpIj48L3BhdGg+PC9nPjxnIGNsYXNzPSJlZGdlTGFiZWxzIj48ZyBjbGFzcz0iZWRnZUxhYmVsIj48ZyBjbGFzcz0ibGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIDApIj48cmVjdCByeD0iMCIgcnk9IjAiIHdpZHRoPSIwIiBoZWlnaHQ9IjAiPjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+PC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0iZWRnZUxhYmVsIj48ZyBjbGFzcz0ibGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIDApIj48cmVjdCByeD0iMCIgcnk9IjAiIHdpZHRoPSIwIiBoZWlnaHQ9IjAiPjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+PC90c3Bhbj48L3RleHQ+PC9nPjwvZz48L2c+PGcgY2xhc3M9Im5vZGVzIj48ZyBjbGFzcz0ibm9kZSBkZWZhdWx0IGRlZmF1bHQgZmxvd2NoYXJ0LWxhYmVsIiBpZD0iZmxvd2NoYXJ0LWQxLTE2IiBkYXRhLW5vZGU9InRydWUiIGRhdGEtaWQ9ImQxIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMzEuNjU2MjUsIDUwKSI+PHJlY3QgY2xhc3M9ImJhc2ljIGxhYmVsLWNvbnRhaW5lciIgc3R5bGU9IiIgcng9IjAiIHJ5PSIwIiB4PSItNzAuODk4NDM3NSIgeT0iLTE3IiB3aWR0aD0iMTQxLjc5Njg3NSIgaGVpZ2h0PSIzNCI+PC9yZWN0PjxnIGNsYXNzPSJsYWJlbCIgc3R5bGU9IiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwgLTkuNSkiPjxyZWN0PjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+L2RvY2tlci1kZXYgc3RhcnQ8L3RzcGFuPjwvdGV4dD48L2c+PC9nPjxnIGNsYXNzPSJub2RlIGRlZmF1bHQgZGVmYXVsdCBmbG93Y2hhcnQtbGFiZWwiIGlkPSJmbG93Y2hhcnQtZDItMTciIGRhdGEtbm9kZT0idHJ1ZSIgZGF0YS1pZD0iZDIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEzMS42NTYyNSwgMTQyKSI+PHJlY3QgY2xhc3M9ImJhc2ljIGxhYmVsLWNvbnRhaW5lciIgc3R5bGU9IiIgcng9IjAiIHJ5PSIwIiB4PSItODguNjU2MjUiIHk9Ii0yNSIgd2lkdGg9IjE3Ny4zMTI1IiBoZWlnaHQ9IjUwIj48L3JlY3Q+PGcgY2xhc3M9ImxhYmVsIiBzdHlsZT0iIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLCAtMTcuNSkiPjxyZWN0PjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+L3FhPC90c3Bhbj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+Y2hhaW5zIGNocm9tZS1mYXN0IFtDXTwvdHNwYW4+PC90ZXh0PjwvZz48L2c+PGcgY2xhc3M9Im5vZGUgZGVmYXVsdCBkZWZhdWx0IGZsb3djaGFydC1sYWJlbCIgaWQ9ImZsb3djaGFydC1kMy0xOCIgZGF0YS1ub2RlPSJ0cnVlIiBkYXRhLWlkPSJkMyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTMxLjY1NjI1LCAyMzQpIj48cmVjdCBjbGFzcz0iYmFzaWMgbGFiZWwtY29udGFpbmVyIiBzdHlsZT0iIiByeD0iMCIgcnk9IjAiIHg9Ii0zMC4wMDc4MTI1IiB5PSItMTciIHdpZHRoPSI2MC4wMTU2MjUiIGhlaWdodD0iMzQiPjwvcmVjdD48ZyBjbGFzcz0ibGFiZWwiIHN0eWxlPSIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIC05LjUpIj48cmVjdD48L3JlY3Q+PHRleHQgc3R5bGU9IiI+PHRzcGFuIHhtbDpzcGFjZT0icHJlc2VydmUiIGR5PSIxZW0iIHg9IjAiIGNsYXNzPSJyb3ciPnJlcG9ydDwvdHNwYW4+PC90ZXh0PjwvZz48L2c+PC9nPjwvZz48ZyBjbGFzcz0ibm9kZSBkZWZhdWx0IGRlZmF1bHQgZmxvd2NoYXJ0LWxhYmVsIiBpZD0iZmxvd2NoYXJ0LWMxLTgiIGRhdGEtbm9kZT0idHJ1ZSIgZGF0YS1pZD0iYzEiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ1MC40MDYyNSwgNDc4Ljc1KSI+PHJlY3QgY2xhc3M9ImJhc2ljIGxhYmVsLWNvbnRhaW5lciIgc3R5bGU9IiIgcng9IjAiIHJ5PSIwIiB4PSItNTMuNzk2ODc1IiB5PSItMTciIHdpZHRoPSIxMDcuNTkzNzUiIGhlaWdodD0iMzQiPjwvcmVjdD48ZyBjbGFzcz0ibGFiZWwiIHN0eWxlPSIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIC05LjUpIj48cmVjdD48L3JlY3Q+PHRleHQgc3R5bGU9IiI+PHRzcGFuIHhtbDpzcGFjZT0icHJlc2VydmUiIGR5PSIxZW0iIHg9IjAiIGNsYXNzPSJyb3ciPi9uZXctYnJhbmNoPC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0ibm9kZSBkZWZhdWx0IGRlZmF1bHQgZmxvd2NoYXJ0LWxhYmVsIiBpZD0iZmxvd2NoYXJ0LWMyLTkiIGRhdGEtbm9kZT0idHJ1ZSIgZGF0YS1pZD0iYzIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDY4Ny43OTY4NzUsIDQ3OC43NSkiPjxyZWN0IGNsYXNzPSJiYXNpYyBsYWJlbC1jb250YWluZXIiIHN0eWxlPSIiIHJ4PSIwIiByeT0iMCIgeD0iLTg0LjI5Njg3NSIgeT0iLTI1IiB3aWR0aD0iMTY4LjU5Mzc1IiBoZWlnaHQ9IjUwIj48L3JlY3Q+PGcgY2xhc3M9ImxhYmVsIiBzdHlsZT0iIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLCAtMTcuNSkiPjxyZWN0PjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+bXVsdGktdGVuYW50LXNlY3VyaXR5PC90c3Bhbj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+cm91dGVkIFtSXTwvdHNwYW4+PC90ZXh0PjwvZz48L2c+PGcgY2xhc3M9Im5vZGUgZGVmYXVsdCBkZWZhdWx0IGZsb3djaGFydC1sYWJlbCIgaWQ9ImZsb3djaGFydC1jMy0xMCIgZGF0YS1ub2RlPSJ0cnVlIiBkYXRhLWlkPSJjMyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAzNC4wMTU2MjUsIDQ3OC43NSkiPjxyZWN0IGNsYXNzPSJiYXNpYyBsYWJlbC1jb250YWluZXIiIHN0eWxlPSIiIHJ4PSIwIiByeT0iMCIgeD0iLTkzLjkzNzUiIHk9Ii0xNyIgd2lkdGg9IjE4Ny44NzUiIGhlaWdodD0iMzQiPjwvcmVjdD48ZyBjbGFzcz0ibGFiZWwiIHN0eWxlPSIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIC05LjUpIj48cmVjdD48L3JlY3Q+PHRleHQgc3R5bGU9IiI+PHRzcGFuIHhtbDpzcGFjZT0icHJlc2VydmUiIGR5PSIxZW0iIHg9IjAiIGNsYXNzPSJyb3ciPi9hY2Nlc3MtY29udHJvbC1hbmFseXNpczwvdHNwYW4+PC90ZXh0PjwvZz48L2c+PGcgY2xhc3M9Im5vZGUgZGVmYXVsdCBkZWZhdWx0IGZsb3djaGFydC1sYWJlbCIgaWQ9ImZsb3djaGFydC1jNC0xMSIgZGF0YS1ub2RlPSJ0cnVlIiBkYXRhLWlkPSJjNCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI2MS42NTYyNSwgNDc4Ljc1KSI+PHJlY3QgY2xhc3M9ImJhc2ljIGxhYmVsLWNvbnRhaW5lciIgc3R5bGU9IiIgcng9IjAiIHJ5PSIwIiB4PSItMzIuMzIwMzEyNSIgeT0iLTE3IiB3aWR0aD0iNjQuNjQwNjI1IiBoZWlnaHQ9IjM0Ij48L3JlY3Q+PGcgY2xhc3M9ImxhYmVsIiBzdHlsZT0iIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLCAtOS41KSI+PHJlY3Q+PC9yZWN0Pjx0ZXh0IHN0eWxlPSIiPjx0c3BhbiB4bWw6c3BhY2U9InByZXNlcnZlIiBkeT0iMWVtIiB4PSIwIiBjbGFzcz0icm93Ij4vc3RyaWRlPC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0ibm9kZSBkZWZhdWx0IGRlZmF1bHQgZmxvd2NoYXJ0LWxhYmVsIiBpZD0iZmxvd2NoYXJ0LWIxLTQiIGRhdGEtbm9kZT0idHJ1ZSIgZGF0YS1pZD0iYjEiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMzQuMDE1NjI1LCAzNDYuNzUpIj48cmVjdCBjbGFzcz0iYmFzaWMgbGFiZWwtY29udGFpbmVyIiBzdHlsZT0iIiByeD0iMCIgcnk9IjAiIHg9Ii03OC41NTQ2ODc1IiB5PSItMTciIHdpZHRoPSIxNTcuMTA5Mzc1IiBoZWlnaHQ9IjM0Ij48L3JlY3Q+PGcgY2xhc3M9ImxhYmVsIiBzdHlsZT0iIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLCAtOS41KSI+PHJlY3Q+PC9yZWN0Pjx0ZXh0IHN0eWxlPSIiPjx0c3BhbiB4bWw6c3BhY2U9InByZXNlcnZlIiBkeT0iMWVtIiB4PSIwIiBjbGFzcz0icm93Ij5vcGVuIGRhc2hib2FyZCBmaWxlPC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0ibm9kZSBkZWZhdWx0IGRlZmF1bHQgZmxvd2NoYXJ0LWxhYmVsIiBpZD0iZmxvd2NoYXJ0LWIyLTUiIGRhdGEtbm9kZT0idHJ1ZSIgZGF0YS1pZD0iYjIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEyNjEuNjU2MjUsIDM0Ni43NSkiPjxyZWN0IGNsYXNzPSJiYXNpYyBsYWJlbC1jb250YWluZXIiIHN0eWxlPSIiIHJ4PSIwIiByeT0iMCIgeD0iLTQ4LjA1NDY4NzUiIHk9Ii0xNyIgd2lkdGg9Ijk2LjEwOTM3NSIgaGVpZ2h0PSIzNCI+PC9yZWN0PjxnIGNsYXNzPSJsYWJlbCIgc3R5bGU9IiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwgLTkuNSkiPjxyZWN0PjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+dWkgbG9hZHMgW1JdPC90c3Bhbj48L3RleHQ+PC9nPjwvZz48ZyBjbGFzcz0ibm9kZSBkZWZhdWx0IGRlZmF1bHQgZmxvd2NoYXJ0LWxhYmVsIiBpZD0iZmxvd2NoYXJ0LWExLTAiIGRhdGEtbm9kZT0idHJ1ZSIgZGF0YS1pZD0iYTEiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMzQuMDE1NjI1LCAyMTQuNzUpIj48cmVjdCBjbGFzcz0iYmFzaWMgbGFiZWwtY29udGFpbmVyIiBzdHlsZT0iIiByeD0iMCIgcnk9IjAiIHg9Ii01My43OTY4NzUiIHk9Ii0xNyIgd2lkdGg9IjEwNy41OTM3NSIgaGVpZ2h0PSIzNCI+PC9yZWN0PjxnIGNsYXNzPSJsYWJlbCIgc3R5bGU9IiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwgLTkuNSkiPjxyZWN0PjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+L25ldy1icmFuY2g8L3RzcGFuPjwvdGV4dD48L2c+PC9nPjxnIGNsYXNzPSJub2RlIGRlZmF1bHQgZGVmYXVsdCBmbG93Y2hhcnQtbGFiZWwiIGlkPSJmbG93Y2hhcnQtYTItMSIgZGF0YS1ub2RlPSJ0cnVlIiBkYXRhLWlkPSJhMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI2MS42NTYyNSwgMjE0Ljc1KSI+PHJlY3QgY2xhc3M9ImJhc2ljIGxhYmVsLWNvbnRhaW5lciIgc3R5bGU9IiIgcng9IjAiIHJ5PSIwIiB4PSItNTguNzAzMTI1IiB5PSItMjUiIHdpZHRoPSIxMTcuNDA2MjUiIGhlaWdodD0iNTAiPjwvcmVjdD48ZyBjbGFzcz0ibGFiZWwiIHN0eWxlPSIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIC0xNy41KSI+PHJlY3Q+PC9yZWN0Pjx0ZXh0IHN0eWxlPSIiPjx0c3BhbiB4bWw6c3BhY2U9InByZXNlcnZlIiBkeT0iMWVtIiB4PSIwIiBjbGFzcz0icm93Ij53cml0ZSBjb2RlPC90c3Bhbj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+dGRkIHJvdXRlZCBbUl08L3RzcGFuPjwvdGV4dD48L2c+PC9nPjxnIGNsYXNzPSJub2RlIGRlZmF1bHQgb3JjaGVzdHJhdG9yIGZsb3djaGFydC1sYWJlbCIgaWQ9ImZsb3djaGFydC1TSElQLTM0IiBkYXRhLW5vZGU9InRydWUiIGRhdGEtaWQ9IlNISVAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE0NDcuMjU3ODEyNSwgMzQ2Ljc1KSI+PGNpcmNsZSBzdHlsZT0iIiByeD0iMCIgcnk9IjAiIHI9IjUxLjg5ODQzNzUiIHdpZHRoPSIxMDMuNzk2ODc1IiBoZWlnaHQ9IjUwIj48L2NpcmNsZT48ZyBjbGFzcz0ibGFiZWwiIHN0eWxlPSIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIC0xNy41KSI+PHJlY3Q+PC9yZWN0Pjx0ZXh0IHN0eWxlPSIiPjx0c3BhbiB4bWw6c3BhY2U9InByZXNlcnZlIiBkeT0iMWVtIiB4PSIwIiBjbGFzcz0icm93Ij4vc2hpcDwvdHNwYW4+PHRzcGFuIHhtbDpzcGFjZT0icHJlc2VydmUiIGR5PSIxZW0iIHg9IjAiIGNsYXNzPSJyb3ciPm9yY2hlc3RyYXRvcjwvdHNwYW4+PC90ZXh0PjwvZz48L2c+PGcgY2xhc3M9Im5vZGUgZGVmYXVsdCBlbmRwb2ludCBmbG93Y2hhcnQtbGFiZWwiIGlkPSJmbG93Y2hhcnQtUFItMzUiIGRhdGEtbm9kZT0idHJ1ZSIgZGF0YS1pZD0iUFIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE2MDQuNjU2MjUsIDM0Ni43NSkiPjxyZWN0IHN0eWxlPSIiIHJ4PSIyNSIgcnk9IjI1IiB4PSItNTUuNSIgeT0iLTI1IiB3aWR0aD0iMTExIiBoZWlnaHQ9IjUwIj48L3JlY3Q+PGcgY2xhc3M9ImxhYmVsIiBzdHlsZT0iIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLCAtMTcuNSkiPjxyZWN0PjwvcmVjdD48dGV4dCBzdHlsZT0iIj48dHNwYW4geG1sOnNwYWNlPSJwcmVzZXJ2ZSIgZHk9IjFlbSIgeD0iMCIgY2xhc3M9InJvdyI+UFIgb3BlbjwvdHNwYW4+PHRzcGFuIHhtbDpzcGFjZT0icHJlc2VydmUiIGR5PSIxZW0iIHg9IjAiIGNsYXNzPSJyb3ciPkNJIHdhdGNoaW5nPC90c3Bhbj48L3RleHQ+PC9nPjwvZz48L2c+PC9nPjwvZz48L3N2Zz4K" alt="Six workflow archetypes, five funnelling into /ship and one standalone."><a class="diagram__zoom" href="#" target="_blank" rel="noopener">Open in new tab ↗</a></figure>
 <p><em>Workflow archetypes: six shapes converging on <code>/ship</code> (five funnel in; QA is the standalone).</em></p>
 <hr>
-<h2 id="what39s-special-about-this-stack">What&#39;s special about this stack</h2>
+<h2 id="whats-special-about-this-stack">What&#39;s special about this stack</h2>
 <ul>
 <li><strong>Front-loaded read-only analysis.</strong> Five PLAN-phase skills whose only job is to inspect before mutating. Unusually high analysis-to-action ratio.</li>
 <li><strong><code>/ship</code> is the only orchestrator.</strong> Skills don&#39;t normally compose others; <code>/ship</code> is the deliberate exception, justified by absorbing four end-of-workflow commands into one verb.</li>
@@ -4570,7 +4717,7 @@ allowed-tools:                  ← optional, restricts what the skill can touch
 <p><strong>Relocate auto memory:</strong> <code>&quot;autoMemoryDirectory&quot;: &quot;~/my-custom-memory-dir&quot;</code> in user or local settings. Not accepted from project settings (security — prevents a shared project from redirecting your memory writes).</p>
 <p>Docs: <a href="https://code.claude.com/docs/en/memory.md#auto-memory">memory.md § Auto memory</a>.</p>
 <hr>
-<h2 id="3-codeclauderulescode--path-scoped-rules">3. <code>.claude/rules/</code> — path-scoped rules</h2>
+<h2 id="3-clauderules--path-scoped-rules">3. <code>.claude/rules/</code> — path-scoped rules</h2>
 <p>When rules only apply to certain files, don&#39;t put them in <code>CLAUDE.md</code>. Put them in <code>.claude/rules/</code> with a <code>paths:</code> frontmatter glob. They load only when Claude reads a matching file.</p>
 <p><strong>Layout:</strong></p>
 <pre><code>your-project/
@@ -4621,7 +4768,7 @@ ln -s ~/company-standards/security.md .claude/rules/security.md
 </tbody></table>
 <p>Docs: <a href="https://code.claude.com/docs/en/memory.md#organize-rules-with-claude/rules/">memory.md § Organize rules with <code>.claude/rules/</code></a>.</p>
 <hr>
-<h2 id="4-imports--codepathtofilecode">4. Imports — <code>@path/to/file</code></h2>
+<h2 id="4-imports--pathtofile">4. Imports — <code>@path/to/file</code></h2>
 <p><code>CLAUDE.md</code> (and <code>CLAUDE.local.md</code>) can import other files via <code>@path</code> syntax. Imported files load into context at launch alongside the parent.</p>
 <pre><code class="language-markdown">See @README for project overview and @package.json for available npm commands.
 
@@ -4718,7 +4865,7 @@ ln -s ~/company-standards/security.md .claude/rules/security.md
 <p>Short version: <code>+</code> button next to the prompt, or Settings → Connectors. OAuth flow. Tenant admin gate for M365 / Google Workspace. Screenshot fallback when IT hasn&#39;t green-lit yet.</p>
 <p>Docs: <a href="https://code.claude.com/docs/en/desktop">Claude Code desktop → Connectors</a>.</p>
 <hr>
-<h2 id="9-long-running-shapes--codeloopcode-scheduled-tasks-routines-codegoalcode">9. Long-running shapes — <code>/loop</code>, scheduled tasks, Routines, <code>/goal</code></h2>
+<h2 id="9-long-running-shapes--loop-scheduled-tasks-routines-goal">9. Long-running shapes — <code>/loop</code>, scheduled tasks, Routines, <code>/goal</code></h2>
 <p>Four primitives. Pick by intent. Composes with any installed skill.</p>
 <p><strong><code>/loop</code> — in-session recurring.</strong> Two forms (re-verified 2026-05-25 against <code>code.claude.com/docs/en/scheduled-tasks</code>; the delivery-time scheduling-primitive recheck this date covers the Desktop and Routines blocks below too):</p>
 <ul>
@@ -4805,7 +4952,7 @@ Report literal counts and quoted text: actual restart numbers, exact correction 
 <p><strong>Security note:</strong> transcripts can contain secrets, customer data, tickets, pasted logs, and failed attempts. Treat them as sensitive local artifacts. Do not commit them. Do not paste a whole transcript into another system. Point Claude at the file and ask for the narrow read you need.</p>
 <p><strong>AE101 cross-refs:</strong> M4 leaves an un-packaged run behind. M5 reads the transcript plus git state to diagnose what packaging changes. M6 compares two runs, so the transcript becomes evidence, not trivia.</p>
 <hr>
-<h2 id="11-session-hygiene-commands--codememorycode-codeinitcode-codecontextcode-codeclearcode-codecompactcode">11. Session-hygiene commands — <code>/memory</code>, <code>/init</code>, <code>/context</code>, <code>/clear</code>, <code>/compact</code></h2>
+<h2 id="11-session-hygiene-commands--memory-init-context-clear-compact">11. Session-hygiene commands — <code>/memory</code>, <code>/init</code>, <code>/context</code>, <code>/clear</code>, <code>/compact</code></h2>
 <p><strong><code>/memory</code></strong> — lists every <code>CLAUDE.md</code>, <code>CLAUDE.local.md</code>, and rules file loaded in the current session. Toggle auto memory on/off. Link to open the auto memory folder in your editor. <strong>First stop when Claude seems to be ignoring a rule</strong> — check it actually loaded.</p>
 <p><strong><code>/init</code></strong> — scans your codebase and drafts a starting <code>CLAUDE.md</code>. If one exists, <code>/init</code> suggests improvements rather than overwriting. Multi-phase interactive variant: <code>CLAUDE_CODE_NEW_INIT=1 claude</code> runs an interactive flow (asks which artifacts to set up — CLAUDE.md, skills, hooks — then explores with a subagent and proposes).</p>
 <p><strong><code>/context</code></strong> — visualises current context-window usage as a coloured grid. Per-item breakdown of what&#39;s loaded (CLAUDE.md, memory, rules, skills, MCP, tool results, conversation). Optimisation suggestions for context-heavy tools, memory bloat, capacity warnings. Pass <code>all</code> to expand the per-item view in fullscreen mode. <strong>Use when the conversation feels heavy</strong> — see where the tokens are going before you reach for <code>/compact</code> or <code>/clear</code>.</p>
@@ -4817,7 +4964,7 @@ Report literal counts and quoted text: actual restart numbers, exact correction 
 <p>If an instruction disappeared after <code>/compact</code>, it was either conversation-only or lives in a subdirectory CLAUDE.md that hasn&#39;t reloaded. Persistent instructions belong in a file, not just in scrollback.</p>
 <p>Docs: <a href="https://code.claude.com/docs/en/memory.md#view-and-edit-with-memory">memory.md § View and edit with <code>/memory</code></a>, <a href="https://code.claude.com/docs/en/commands">commands § <code>/context</code> / <code>/clear</code> / <code>/compact</code></a>, <a href="https://code.claude.com/docs/en/context-window#what-survives-compaction">context-window § What survives compaction</a>.</p>
 <hr>
-<h2 id="12-code--append-system-promptcode--system-prompt-level-instructions">12. <code>--append-system-prompt</code> — system-prompt-level instructions</h2>
+<h2 id="12---append-system-prompt--system-prompt-level-instructions">12. <code>--append-system-prompt</code> — system-prompt-level instructions</h2>
 <p><strong>CLAUDE.md is loaded as a user message, not the system prompt.</strong> Claude reads it and tries to follow, but there&#39;s no strict compliance guarantee.</p>
 <p>For instructions that need system-prompt-level treatment (stronger adherence, harder to override mid-conversation), use <code>--append-system-prompt</code>:</p>
 <pre><code class="language-bash">claude --append-system-prompt &quot;Never edit production config files.&quot;
@@ -4951,7 +5098,7 @@ Report literal counts and quoted text: actual restart numbers, exact correction 
 <p><strong>AE101 cross-refs:</strong> M5 closer lecture (<code>what-packaging-is.md</code>) names hooks as the runtime primitive behind Cherny&#39;s shell-hook verifier shape. M3 leans on hooks implicitly via the <code>eval-class-router</code> PostToolUse pattern (curriculum&#39;s own infrastructure; not student-authored at M3 but referenced as exemplar).</p>
 <p>Docs: <a href="https://code.claude.com/docs/en/hooks">hooks</a>.</p>
 <hr>
-<h2 id="14-monorepo-hygiene--codeclaudemdexcludescode">14. Monorepo hygiene — <code>claudeMdExcludes</code></h2>
+<h2 id="14-monorepo-hygiene--claudemdexcludes">14. Monorepo hygiene — <code>claudeMdExcludes</code></h2>
 <p>Ancestor CLAUDE.md files from <em>other</em> teams&#39; directories get picked up by the walk-up. In a monorepo, that&#39;s noise.</p>
 <p><code>.claude/settings.local.json</code>:</p>
 <pre><code class="language-json">{
@@ -5103,7 +5250,7 @@ gh auth login      # if not signed in
 <p><strong>Enterprise pre-registration.</strong> The managed settings file (<code>managed-settings.json</code> on supported OSes) can pre-register approved marketplaces via <code>extraKnownMarketplaces</code> (so users don&#39;t need to run <code>/plugin marketplace add</code> at all) and restrict additions via <code>strictKnownMarketplaces</code>. Pairs with <code>managed-mcp.json</code> as the second half of tenant-side plugin policy.</p>
 <p><strong>When to reach for plugin distribution over plain <code>claude mcp add</code>.</strong> When the same connector needs to land on a team of N (one marketplace registration, one install command, one update path); when the MCP comes with companion skills or agents you want shipped alongside; when you want versioned releases and <code>/plugin marketplace update</code> semantics rather than ad-hoc re-adds. For a one-off solo install on one machine, plain Path 1 or Path 2 stays simpler.</p>
 <p><strong>Sources:</strong> <a href="https://code.claude.com/docs/en/plugins">Claude Code plugins overview</a> · <a href="https://code.claude.com/docs/en/discover-plugins">Discover and install plugins</a> · <a href="https://code.claude.com/docs/en/plugin-marketplaces">Create and distribute a marketplace</a> · <a href="https://code.claude.com/docs/en/plugins-reference">Plugins reference (manifest + scope)</a> · <a href="https://github.com/anthropics/claude-plugins-official">Anthropic plugins on GitHub</a></p>
-<h2 id="what-claude-code-doesn39t-do-yet-as-of-2026-05-14">What Claude Code doesn&#39;t do yet (as of 2026-05-14)</h2>
+<h2 id="what-claude-code-doesnt-do-yet-as-of-2026-05-14">What Claude Code doesn&#39;t do yet (as of 2026-05-14)</h2>
 <p>Flagged for honesty, not complaint:</p>
 <ul>
 <li>No standalone GUI marketplace for arbitrary MCP server install. MCP servers ride inside plugins: the in-CLI <code>/plugin</code> Discover tab installs plugin-bundled MCPs (e.g. <code>atlassian</code>, <code>linear</code>, <code>github</code> from <code>claude-plugins-official</code>), and OAuth connectors install at <a href="https://claude.ai/customize/connectors">claude.ai/customize/connectors</a> and inherit into Claude Code (Team/Enterprise: admin-only). There is no in-CLI picker for adding a raw <code>claude mcp add --transport http &lt;url&gt;</code> server outside of a plugin. Claude Desktop&#39;s Settings → Connectors panel manages built-in OAuth connectors, not arbitrary MCP servers.</li>
@@ -5233,7 +5380,7 @@ git stash pop
 <h3 id="post-action-report">Post-action report</h3>
 <p><strong>Asks the agent to tell you what it did <em>after</em> doing it, rather than show you what it&#39;ll do before.</strong> Pre-confirm adds a round-trip. You steer hypotheticals. Post-action report fires your push-back after the action lands, against real evidence. It also surfaces what the agent <em>couldn&#39;t</em> do: <em>I updated the ticket but I don&#39;t have a PR link</em> arrives as candid accounting instead of fabrication. Carve-out: for irreversible actions (deploys, mass sends), keep the pre-confirm.</p>
 <p><em>&quot;Tell me in 3–5 lines: what you wrote and why, grounded in specific session moments. I shouldn&#39;t need to open the file to know.&quot;</em></p>
-<h3 id="don39t-smooth-disagreement">Don&#39;t smooth disagreement</h3>
+<h3 id="dont-smooth-disagreement">Don&#39;t smooth disagreement</h3>
 <p><strong>When synthesizing multiple sources or runs, name where they disagreed, and which one you sided with.</strong> Default agent behavior is to harmonize. Take three contradictory inputs and produce one diplomatic output that loses the information. <em>Don&#39;t smooth the disagreement</em> keeps the dissent visible. The agreement points are easy. The disagreement points are where the real strategic call lives. If a synthesis reads as if everyone agreed, the synthesis was a lie.</p>
 <p><em>&quot;Name where the three stances disagreed and which one you sided with and why; don&#39;t smooth the disagreement.&quot;</em></p>
 <h3 id="append-only-collaboration">Append-only collaboration</h3>
@@ -5614,8 +5761,17 @@ git stash pop
     // strip non-word/space/hyphen punctuation (em-dashes, periods, commas),
     // then per-character whitespace → "-" (preserves the double-hyphen at
     // stripped em-dash positions).
+    //
+    // github-slugger operates on a heading's *text content*. The marked heading
+    // renderer hands us the inline-RENDERED HTML instead, so a code span arrives
+    // as `<code>/loop</code>` and an apostrophe as `&#39;`. Strip tags and HTML
+    // entities first, or the surviving tag names / entity digits fuse into the
+    // slug — `/loop` → `codeloopcode`, `doesn't` → `doesn39t` — and the natural
+    // hand-written anchor never resolves.
     function slugifyHeading(text) {
         return String(text)
+            .replace(/<[^>]*>/g, '')        // drop tags (code/em/links) → slug visible text
+            .replace(/&[#0-9a-z]+;/gi, '')  // drop entities (&#39; &amp; &quot; …)
             .toLowerCase()
             .replace(/[^\w\s-]/g, '')
             .trim()
@@ -5906,6 +6062,81 @@ git stash pop
                 }
                 break;
             }
+        });
+    }
+
+    // Heads-up / attention widget. Source shape (single paragraph):
+    //   **HOX** <warning prose>
+    // Renders a loud hot-orange admonition with a fixed "HOX HOX" badge.
+    // Distinct from .session-block (amber) and .prompt-block (oxblood):
+    // HOX = "you are about to make a mistake right HERE." Used sparingly at
+    // high-consequence seams — e.g. confirming you actually switched git
+    // worktrees and aren't still typing on the old branch. A leading
+    // separator after the badge ("-", "—", ":") is chrome and is dropped.
+    // Run AFTER decorateSessions (so session bodies form first) and BEFORE
+    // decoratePrompts (so the **Prompt** stop-condition stays intact).
+    function decorateHox(root) {
+        Array.from(root.querySelectorAll('p')).forEach(function (p) {
+            var strong = p.querySelector(':scope > strong');
+            if (!strong || strong.textContent.trim() !== 'HOX') return;
+
+            var wrap = document.createElement('div');
+            wrap.className = 'hox-block';
+
+            var badge = document.createElement('span');
+            badge.className = 'hox-block__badge';
+            badge.textContent = 'HOX HOX';
+            wrap.appendChild(badge);
+
+            var body = document.createElement('div');
+            body.className = 'hox-block__body';
+            wrap.appendChild(body);
+
+            // Drop the label strong; the rest of the paragraph is the message.
+            strong.remove();
+            var msg = document.createElement('p');
+            msg.innerHTML = p.innerHTML.replace(/^\s*[-—:]\s*/, '').trim();
+            body.appendChild(msg);
+
+            p.parentNode.insertBefore(wrap, p);
+            p.remove();
+        });
+    }
+
+    // Generic guidance widget. Source shape (single paragraph):
+    //   **Note** <guidance prose>
+    // Same construction as .hox-block but calm teal, not alarm-orange: HOX is
+    // "you are about to make a mistake right HERE"; Note is "here is a thing
+    // worth not missing" — a window switch, a heads-up, a where-you-are cue.
+    // Loud enough to beat a buried sentence (the m3 Security→Quality flip the
+    // 2026-05-27 run read past), quiet enough not to cry wolf like HOX. Keyed on
+    // the literal "Note" marker, same boundary discipline as decorateHox. Run in
+    // the same pass: after decorateSessions, before decoratePrompts.
+    function decorateNote(root) {
+        Array.from(root.querySelectorAll('p')).forEach(function (p) {
+            var strong = p.querySelector(':scope > strong');
+            if (!strong || strong.textContent.trim() !== 'Note') return;
+
+            var wrap = document.createElement('div');
+            wrap.className = 'note-block';
+
+            var badge = document.createElement('span');
+            badge.className = 'note-block__badge';
+            badge.textContent = 'NOTE';
+            wrap.appendChild(badge);
+
+            var body = document.createElement('div');
+            body.className = 'note-block__body';
+            wrap.appendChild(body);
+
+            // Drop the label strong; the rest of the paragraph is the message.
+            strong.remove();
+            var msg = document.createElement('p');
+            msg.innerHTML = p.innerHTML.replace(/^\s*[-—:]\s*/, '').trim();
+            body.appendChild(msg);
+
+            p.parentNode.insertBefore(wrap, p);
+            p.remove();
         });
     }
 
@@ -6296,6 +6527,8 @@ git stash pop
 
         // DOM (browser only)
         decorateSessions: decorateSessions,
+        decorateHox: decorateHox,
+        decorateNote: decorateNote,
         decoratePrompts: decoratePrompts,
         attachAnchorPopups: attachAnchorPopups,
         addCopyButton: addCopyButton,
@@ -6325,6 +6558,8 @@ git stash pop
       CurriculumRuntime.buildModuleHero(mod, num);
     });
     CurriculumRuntime.decorateSessions(document.body);
+    CurriculumRuntime.decorateHox(document.body);
+    CurriculumRuntime.decorateNote(document.body);
     CurriculumRuntime.decoratePrompts(document.body);
     CurriculumRuntime.decorateDiagramZoom(document.body);
     CurriculumRuntime.installReadingProgress();

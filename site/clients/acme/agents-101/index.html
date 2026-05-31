@@ -25,6 +25,8 @@
     --accent-2:    #a8473a;
     --accent-soft: rgba(138,58,42,.08);
     --warm:        #c97942;   /* amber — secondary accent (from ai-training) */
+    --hox:         #e8590c;   /* hot signal-orange — HOX heads-up widget */
+    --note:        #2f6b6b;   /* calm teal — NOTE guidance widget */
     --arctic:      #5e8ca8;   /* muted arctic blue — gradient tail */
     --ink:         #14110d;
     --ink-text:    #f4ecdb;
@@ -946,6 +948,127 @@ main::before {
     }
     .module .session-block__verb { background: #ddd !important; color: #000 !important; }
     .module .session-block__name { color: #000 !important; }
+}
+
+/* HOX — loud heads-up admonition. Source shape: **HOX** <warning prose>.
+   Hotter than the amber .session-block: reserved for the rare "you are about
+   to make a mistake right HERE" seam (wrong worktree, wrong branch, about to
+   overwrite). Hot signal-orange so it does not read as just another panel. */
+.module .hox-block {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin: 1.25rem 0 1.75rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--hox);
+    border-left: 5px solid var(--hox);
+    border-radius: 5px;
+    background: #fdecdf;
+}
+
+.module .hox-block__badge {
+    flex: none;
+    font-family: var(--font-body);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.72rem;
+    color: #fff;
+    background: var(--hox);
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.module .hox-block__body {
+    color: var(--fg);
+    font-weight: 600;
+}
+
+.module .hox-block__body > p {
+    margin: 0;
+}
+
+/* Dark exercise band (e.g. diagnose-and-resend) — keep the hot badge, tint
+   the panel so it still shouts against the ink background. */
+.phase--exercise .hox-block {
+    background: rgba(232, 89, 12, 0.12);
+    border-color: var(--hox);
+}
+
+.phase--exercise .hox-block__body {
+    color: var(--ink-text);
+}
+
+@media print {
+    .module .hox-block {
+        background: #fff !important;
+        border-color: #999 !important;
+    }
+    .module .hox-block__badge {
+        background: #000 !important;
+        color: #fff !important;
+    }
+}
+
+/* NOTE — calm guidance widget. Source shape: **Note** <guidance prose>.
+   Same construction as .hox-block, calm teal instead of alarm-orange: HOX
+   shouts "mistake right HERE," NOTE says "don't miss this" — a window switch,
+   a where-you-are cue. Louder than a buried sentence, quieter than HOX. */
+.module .note-block {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin: 1.25rem 0 1.75rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--note);
+    border-left: 5px solid var(--note);
+    border-radius: 5px;
+    background: #e4efee;
+}
+
+.module .note-block__badge {
+    flex: none;
+    font-family: var(--font-body);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.72rem;
+    color: #fff;
+    background: var(--note);
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.module .note-block__body {
+    color: var(--fg);
+    font-weight: 600;
+}
+
+.module .note-block__body > p {
+    margin: 0;
+}
+
+/* Dark exercise band — tint the panel so it still reads against the ink. */
+.phase--exercise .note-block {
+    background: rgba(47, 107, 107, 0.16);
+    border-color: var(--note);
+}
+
+.phase--exercise .note-block__body {
+    color: var(--ink-text);
+}
+
+@media print {
+    .module .note-block {
+        background: #fff !important;
+        border-color: #999 !important;
+    }
+    .module .note-block__badge {
+        background: #000 !important;
+        color: #fff !important;
+    }
 }
 
 .module blockquote {
@@ -2090,7 +2213,7 @@ body.workbook { padding-top: 3rem; }
 <section class="module" id="prework">
 <h1 id="prework">Prework</h1>
 <p>Land at Module 1 with <span class="rt-code">Claude Code</span><span class="rt-cowork">Cowork</span> working, your work calendar connected or ready as a screenshot, a snake game, a meetings summary, and a 2-page read. About 50 minutes.</p>
-<h2 id="0-set-up-span-classrt-codeclaude-codespanspan-classrt-coworkcoworkspan-5-min">0. Set up <span class="rt-code">Claude Code</span><span class="rt-cowork">Cowork</span> (5 min)</h2>
+<h2 id="0-set-up-claude-codecowork-5-min">0. Set up <span class="rt-code">Claude Code</span><span class="rt-cowork">Cowork</span> (5 min)</h2>
 <p>You need a Claude account at claude.ai. Then create an empty folder at <code>~/Documents/agents-101/</code> (right-click in Finder or File Explorer → <em>New Folder</em>). This is your training directory; everything you produce over the eight modules lands here.</p>
 <p><strong>Session</strong> <em>(new, &quot;Prework&quot;)</em></p>
 <p><span class="rt-code">Install Claude Code (CLI or Desktop). Pick whichever fits your habits; all the exercises work in both. Start a new session at <code>~/Documents/agents-101/</code>.</span><span class="rt-cowork">Open the <em>Cowork</em> tab next to <em>Chat</em> in your Claude Desktop app. Click <em>New task</em> and select <code>~/Documents/agents-101/</code> as the working folder. No terminal required.</span></p>
@@ -2169,7 +2292,7 @@ If tar is not available, tell me what error you got.
 <p>With the right guardrails, you create output that&#39;s genuinely yours, not generic.</p>
 <h2 id="prework">Prework</h2>
 <p>Set up Claude Code or Cowork. Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week&#39;s meetings. Read <a href="supplementary/what-is-an-agent.md#llm-vs-chat">What is an Agent, LLM vs chat</a>.</p>
-<h2 id="what-you39ll-learn">What You&#39;ll Learn</h2>
+<h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
 <li><strong>Generate</strong> an HTML one-pager and read what the agent put in it</li>
@@ -2186,7 +2309,7 @@ If tar is not available, tell me what error you got.
 
 <h1 id="context-is-king">Context is King</h1>
 <p>The same question. Two answers. What makes the difference?</p>
-<h2 id="the-demo-you39re-about-to-see">The demo you&#39;re about to see</h2>
+<h2 id="the-demo-youre-about-to-see">The demo you&#39;re about to see</h2>
 <p>Two Claude chat windows.</p>
 <p>In one, the first prompt is <em>&quot;What is the capital of Italy?&quot;</em> Claude answers <em>Rome.</em> Then the second prompt: <em>&quot;What should we have for dinner?&quot;</em> Claude suggests something Italian — pasta, osso buco, risotto.</p>
 <p>In the other window, the first prompt is <em>&quot;What is the largest lake in Finland?&quot;</em> Claude answers <em>Saimaa.</em> Then the same second prompt as before. Claude suggests something Finnish — salmon, rye bread, meatballs.</p>
@@ -2196,12 +2319,12 @@ If tar is not available, tell me what error you got.
 <p>Claude isn&#39;t looking your question up in a database. It reads the whole conversation every time and generates the next response from all of it. Your first prompt and its answer are now <em>part of the input</em> to the second prompt. Change the front, change the back.</p>
 <p>That&#39;s context. Unglamorous, isn&#39;t it? And yet every useful thing in this training is built on this one idea.</p>
 <p>In the full agent picture, this is the first piece: context. Later you add tools, goals, checks, boundaries, and loops. None of them work unless the agent reads the right world first.</p>
-<h2 id="context-isn39t-only-about-countries">Context isn&#39;t only about countries</h2>
+<h2 id="context-isnt-only-about-countries">Context isn&#39;t only about countries</h2>
 <p>One more window. The first prompt: <em>&quot;I&#39;m a cardiologist preparing dinner for my patients.&quot;</em></p>
 <p>Then the same second prompt about dinner.</p>
 <p>The suggestion shifts again. Heart-healthy. Low-sodium. Vegetable-forward. Not because Claude knows medicine better than Italian cooking — because you told it who you are, and every answer after took that into account.</p>
 <p>Context is whatever you tell it. A fact. A role. A preference. A constraint. All of it colors what comes next.</p>
-<h2 id="the-move-you39re-about-to-make">The move you&#39;re about to make</h2>
+<h2 id="the-move-youre-about-to-make">The move you&#39;re about to make</h2>
 <p>So far the context has been one message you typed. Ephemeral. Gone when you close the chat window.</p>
 <p>What if the context was a file the agent reads at the start of every conversation? A file you wrote once, tuned carefully, that shaped every answer without you ever retyping it? Same mechanism. Different shelf life.</p>
 <p>That&#39;s a guardrail. That&#39;s your turn.</p>
@@ -2387,7 +2510,7 @@ Have the subagent answer:
 <p>A system remembers, grows, and compounds. Chat doesn&#39;t. Your next big challenge is the foundation.</p>
 <h2 id="prework">Prework</h2>
 <p><a href="#lectures-module-2-prework">Module 2 prework</a>. (1) Bring a live challenge on your mind. The challenge gets pinned down in class. (2) Verify your Confluence and OneDrive connectors. (3) <span class="rt-code">Plan-mode primer.</span><span class="rt-cowork">Plan-first primer.</span> (4) Karpathy&#39;s LLM Wiki post.</p>
-<h2 id="what-you39ll-learn">What You&#39;ll Learn</h2>
+<h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
 <li><strong>Build</strong> an LLM memory on your next big challenge, curated from internal wikis, recent work, and practitioner best practice</li>
@@ -2419,7 +2542,7 @@ Have the subagent answer:
 <section class="phase phase--exercise" id="exercises-name-your-challenge">
 <div class="phase-kicker">Exercise</div>
 
-<h1 id="exercise-name-your-next-big-emchallengeem">Exercise: Name your next big <em>challenge</em></h1>
+<h1 id="exercise-name-your-next-big-challenge">Exercise: Name your next big <em>challenge</em></h1>
 <p><strong>Time:</strong> 15 minutes.</p>
 <p><strong>Session</strong> <em>(new, &quot;Module 2 - Building agent systems&quot;)</em></p>
 <p><span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span></p>
@@ -2487,7 +2610,7 @@ Keep it short. I&#39;ll use this as a scavenger-hunt list in the next phase.
 <section class="phase phase--exercise" id="exercises-build-your-challenge-memory">
 <div class="phase-kicker">Exercise</div>
 
-<h1 id="exercise-build-your-challenge-emmemoryem">Exercise: Build your challenge <em>memory</em></h1>
+<h1 id="exercise-build-your-challenge-memory">Exercise: Build your challenge <em>memory</em></h1>
 <p><strong>Time:</strong> 45 minutes.</p>
 <p><strong>What you do:</strong></p>
 <p>A chat forgets. A memory remembers.</p>
@@ -2629,7 +2752,7 @@ New source:
 <p>When you added the second batch, Claude didn&#39;t start over. It read the existing topic pages first, as <em>context</em>, then read the new sources, then integrated. The existing memory was part of the prompt for updating the memory. That&#39;s why pages got sharper: the old claims and the new claims met each other, and the ones that couldn&#39;t survive the meeting got cut.</p>
 <p>This is the same mechanism from Module 1: context shapes output, run at system scale. The context for this work is what the previous work produced. The context for the next run will be what this work produced. The loop is the product.</p>
 <p>Pawel Huryn writes about this as <em>pragmatic instructions</em>: keep the rules small, keep them boring, let the compounding do the work. Not &quot;clever prompts.&quot; Plain rules, applied consistently across thousands of small updates. The discipline is in refusing to get fancy.</p>
-<h2 id="the-detail-that39s-easy-to-miss">The detail that&#39;s easy to miss</h2>
+<h2 id="the-detail-thats-easy-to-miss">The detail that&#39;s easy to miss</h2>
 <p>The memory is a folder of markdown files. That&#39;s it. No database. No special tool. No paid tier. No setup. And the agent you just built, the one sitting in <code>agents/</code>, is also a markdown file. Instructions the model reads at the start of every run. Same plain-text form for the knowledge, same plain-text form for the capability, same plain-text form as the guardrail you wrote in Module 1. One kind of object, three jobs. Which means it also travels, paste the agent file into any LLM tool and it still works.</p>
 <p>That might look like a limitation. It isn&#39;t. Language models are strongest at reading and writing text, that is what they do. When you store knowledge as text, reading it is reading, and updating it is writing. Nothing sits between the model and what it&#39;s best at. Every fancier setup that promised to &quot;fix&quot; this added a layer that the model had to work <em>around</em>.</p>
 <p>The point is simple: the simplest possible setup beats the fancy ones, because it respects what the model actually does well. Fundamentals outlast tools. Platforms will churn. But <em>text that an agent can read and write</em> isn&#39;t going anywhere.</p>
@@ -2674,7 +2797,7 @@ When you&#39;re done, tell me in 3–5 lines: the rules you wrote, which session
 <p>You have an agent doing real work on your challenge. But the job is getting too big for one agent. What do you split?</p>
 <p>Before the next module, try making a few more agents you actually need. Pick by pain, not ambition: the task you keep doing manually that would feel lighter if someone else did it. Meeting prep, calendar triage, competitive watching, and draft-reply triage are all fine starters. Keep the first version proposal-only: the agent drafts, ranks, or prepares; you decide what leaves the system. You only learn by doing. Go build.</p>
 <h2 id="homework-after-module-2-between-module-reading">Homework after Module 2, between-module reading</h2>
-<p><a href="#exercises-personal-agent-homework">Schedule your personal agent</a>. Schedule a daily agent that reads your challenge memory for one week of observation. Read <a href="supplementary/agent-trigger-list.md#after-module-2--start-noticing-trigger-moments">Agent Trigger List, After Module 2</a> and start noticing when real work should call the agent. Read selected sections from <a href="#supplementary-what-is-an-agent">What is an Agent</a> on tools, memory, and context. Then do <a href="#exercises-module-3-prework">Before Module 3</a>: pick three practitioner pieces, and read the plain-language primer on helper agents.</p>
+<p><a href="#exercises-personal-agent-homework">Schedule your personal agent</a>. Schedule a daily agent that reads your challenge memory for one week of observation. Read <a href="supplementary/agent-trigger-list.md#after-module-2-start-noticing-trigger-moments">Agent Trigger List, After Module 2</a> and start noticing when real work should call the agent. Read selected sections from <a href="#supplementary-what-is-an-agent">What is an Agent</a> on tools, memory, and context. Then do <a href="#exercises-module-3-prework">Before Module 3</a>: pick three practitioner pieces, and read the plain-language primer on helper agents.</p>
 
 </section>
 
@@ -2684,7 +2807,7 @@ When you&#39;re done, tell me in 3–5 lines: the rules you wrote, which session
 <p>Hire three agents to search. Three more to decide. The filesystem is the meeting room.</p>
 <h2 id="prework">Prework</h2>
 <p><a href="#exercises-personal-agent-homework">Schedule your personal agent</a>. The scheduled agent has been reading your challenge memory for one week of observation. Selected sections from <a href="#supplementary-what-is-an-agent">What is an Agent</a> covered tools, memory, and context. <a href="#exercises-module-3-prework">Before Module 3</a> added three practitioner pieces and a plain-language primer on helper agents: what they are, how to start one, what you&#39;ll see.</p>
-<h2 id="what-you39ll-learn">What You&#39;ll Learn</h2>
+<h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
 <li><strong>Design</strong> a multi-agent setup in two shapes: parallel sessions on shared files (retrieval) and subagents inside one session (synthesis)</li>
@@ -3035,7 +3158,7 @@ When you&#39;re done, tell me in 3-5 lines: what you added, what you sharpened, 
 <p>You just built something that works across three systems. Which means it just gained access to three systems. What&#39;s the worst thing it could do with that?</p>
 <p>Between now and Module 4, keep working on your real problem. You&#39;re close to an agent system that can actually crack your crux. Add an agent to solve a critical dependency? Add a visualisation of the plan? Prompt for what you need. Build.</p>
 <h2 id="homework-after-module-3">Homework after Module 3</h2>
-<p><strong>Reading.</strong> Read <a href="supplementary/agent-trigger-list.md#after-module-3--notice-when-one-agent-is-not-enough">Agent Trigger List, After Module 3</a>, then selected sections from <a href="#supplementary-what-is-an-agent">What is an Agent</a> on multi-agent coordination. Then read <a href="#lectures-module-4-prework">Before Module 4</a>: personal skills as the package format that carries expertise into your agent, and agent risk layered on top of normal security work.</p>
+<p><strong>Reading.</strong> Read <a href="supplementary/agent-trigger-list.md#after-module-3-notice-when-one-agent-is-not-enough">Agent Trigger List, After Module 3</a>, then selected sections from <a href="#supplementary-what-is-an-agent">What is an Agent</a> on multi-agent coordination. Then read <a href="#lectures-module-4-prework">Before Module 4</a>: personal skills as the package format that carries expertise into your agent, and agent risk layered on top of normal security work.</p>
 <p><strong>Optional move: pressure-test the memory.</strong> If you&#39;ve added much to <code>sources/</code> this module, run this between modules to let the new evidence pressure-test the memory&#39;s shape. Skip if memory&#39;s still serving you.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Look at memory/ and sources/ against this module&#39;s fresh retrievals. Check overall health: coverage gaps the retrievers exposed, pages now stale, structure still serving the challenge. Name at least one drop candidate; an all-green health check means you didn&#39;t look hard enough. Restructure if deemed needed (rename, merge, split, drop). Show me what you&#39;d do before changing files.
@@ -3050,7 +3173,7 @@ When you&#39;re done, tell me in 3-5 lines: what you added, what you sharpened, 
 <p>You can&#39;t tell if your agent is safe by looking at its output. You need a way to check. The discipline is running the check, not waiting for certainty.</p>
 <h2 id="prework">Prework</h2>
 <p><a href="#lectures-module-4-prework">Before Module 4</a>. Two reads: (1) personal skills as the package format that carries expertise into your agent, (2) agent risk layered on top of normal security work (company controls stay in place; agents add new ways for access, context, and instructions to go wrong).</p>
-<h2 id="what-you39ll-learn">What You&#39;ll Learn</h2>
+<h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
 <li><strong>Run</strong> distilled policy files directly, then package the useful check into your runtime</li>
@@ -3128,7 +3251,7 @@ When you&#39;re done, tell me in 3-5 lines: what you added, what you sharpened, 
 <section class="phase phase--exercise" id="exercises-author-security-skill">
 <div class="phase-kicker">Exercise</div>
 
-<h1 id="exercise-emrun-and-packageem-a-security-skill">Exercise: <em>Run and package</em> a security skill</h1>
+<h1 id="exercise-run-and-package-a-security-skill">Exercise: <em>Run and package</em> a security skill</h1>
 <p><strong>Time:</strong> 40 minutes. Phase 1 ~10, Phase 2 ~8, Phase 3 ~22.</p>
 <p><strong>Session</strong> <em>(new, &quot;Module 4 - Security skill&quot;)</em></p>
 <p><span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span></p>
@@ -3234,7 +3357,7 @@ After I answer, save the files. Keep the SKILL.md tight: when to use it, the two
 <section class="phase phase--exercise" id="exercises-audit-your-agent">
 <div class="phase-kicker">Exercise</div>
 
-<h1 id="exercise-emauditem-your-agent">Exercise: <em>Audit</em> your agent</h1>
+<h1 id="exercise-audit-your-agent">Exercise: <em>Audit</em> your agent</h1>
 <p><strong>Time:</strong> 35 minutes. Phase 1 ~3, Phase 2 ~12, Phase 3 ~10, Phase 4 ~10.</p>
 <p><strong>Session</strong> <em>(new, &quot;Module 4 - Security audit&quot;)</em></p>
 <p><span class="rt-code">Start a new Claude Code session at your training-directory root. The personal skill you saved in Exercise 1 autoloads.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder. The personal skill you saved in Exercise 1 autoloads.</span></p>
@@ -3367,7 +3490,7 @@ When you&#39;re done, read back the Security operating rules section and copy th
 <h2 id="prework">Prework</h2>
 <p>Agent-sprawl reading from Module 4 covered shadow agents and the 82%-think-protected / 24%-have-visibility pattern. Now read <a href="#lectures-module-5-prework">The Missing Check</a>: two public-record cases with documented organisational root causes.</p>
 <p>Walk in with one sentence per case: &quot;the missing organisational check was X.&quot;</p>
-<h2 id="what-you39ll-learn">What You&#39;ll Learn</h2>
+<h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
 <li><strong>Test</strong> detection methods on a 30-claim benchmark and pick the winner</li>
@@ -3738,7 +3861,7 @@ When you&#39;re done, read back the Groundedness checks section you just wrote a
 <p>The eval that ran once in Module 5 now runs on every output, and the work tightens under it. The judge stays fixed; that&#39;s the integrity of the loop. The generator sharpens against feedback the same judge keeps applying. You walk away. You come back to a sharper generator the same yardstick can&#39;t fault.</p>
 <h2 id="prework">Prework</h2>
 <p><a href="https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage">Ethan Mollick, <em>The Bitter Lesson versus The Garbage Can</em></a>. Walk in with the judge you saved at the close of Module 5. That&#39;s Module 6&#39;s starting point.</p>
-<h2 id="what-you39ll-learn">What You&#39;ll Learn</h2>
+<h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
 <li><strong>Build</strong> a self-improving eval loop: main session runs it, generation and judging happen in separate agents, the Module 5 judge scores each round unchanged</li>
@@ -4063,7 +4186,7 @@ When you&#39;re done, tell me in 3-5 lines: what you added, what you sharpened, 
 <p>You can&#39;t really share an agent. You can share context, a skill, the output, or an interface. The hard part is not access; it is absorption.</p>
 <h2 id="prework">Prework</h2>
 <p>Absorption bottleneck pre-read: your organisation cannot absorb capability faster than people can understand it, trust it, and fit it into existing work. Walk in with one example where access existed but real use did not follow.</p>
-<h2 id="what-you39ll-learn">What You&#39;ll Learn</h2>
+<h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
 <li><strong>Interview</strong> for your teammate&#39;s job-to-be-done using the agentic JTBD pattern, and write the outcome statement as the design contract</li>
@@ -4350,7 +4473,7 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
 <p>The tool that builds tools compounds.</p>
 <h2 id="prework">Prework</h2>
 <p>Run the Module 7 next-step artifact, test one assumption, ask for one name, and talk to one person. Then read Risto on acting on the future and building hypotheses, and Rumelt on crux / <em>Good Strategy Bad Strategy</em>.</p>
-<h2 id="what-you39ll-learn">What You&#39;ll Learn</h2>
+<h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
 <li><strong>Use</strong> Claude Code to generate a new agent that extends your system</li>
@@ -4689,7 +4812,7 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
 <p>If you add <strong>connectors, actions, and tools</strong>, the things the model can call to fetch data from your work apps, do things in them, write files, run code, or talk to other agents, it stops being a chatbot and starts being an agent. A chatbot has words. An agent has words and hands. That&#39;s the step-change.</p>
 <p>The three names cover roughly the same surface area, just from different angles. <strong>Connectors</strong> are the wires into your work apps (calendar, email, files). That&#39;s the word you&#39;ll see in Claude&#39;s settings. <strong>Actions</strong> are the verbs an agent can perform with effects in the world (send the email, create the ticket, file the document). That&#39;s the word Power Automate, Zapier, and most low-code platforms use. <strong>Tools</strong> is the umbrella term agent-builders use for <em>anything</em> the model can call. You don&#39;t need to memorise the distinction; you&#39;ll meet each as you go.</p>
 <p>If the agent runs on a schedule, chains to another agent, or decides what to do next based on what it finds, now it&#39;s operating without you sitting there. That&#39;s the leap this training is about. You already use email filters and calendar reminders. An agent is the same basic shape, just capable of a much wider set of tasks. And a much wider set of failure modes.</p>
-<h2 id="what-you39ll-meet-when">What you&#39;ll meet, when</h2>
+<h2 id="what-youll-meet-when">What you&#39;ll meet, when</h2>
 <p>Each module adds the next part of the answer:</p>
 <ul>
 <li><strong>Module 1:</strong> Context is the mechanism. You already have a taste from the prework. The snake game and the meetings summary both happened because Claude read your input and produced output shaped by it.</li>
@@ -5119,7 +5242,7 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
 <p>Skills are scoped capabilities — bundles of instructions and permissions that make Claude better at a specific task (e.g., <em>&quot;check this against our security policy&quot;</em>) without handing over the keys.</p>
 <p>You&#39;ll build skills in Module 4. For now, know that they exist, they&#39;re files, and they scope what Claude can do when the skill is active.</p>
 <p><em>Official docs: Claude Code Skills — file format, install location, permissions model, and examples.</em></p>
-<h2 id="subagents--when-one-claude-isn39t-enough">Subagents — when one Claude isn&#39;t enough</h2>
+<h2 id="subagents--when-one-claude-isnt-enough">Subagents — when one Claude isn&#39;t enough</h2>
 <p>For tasks that need specialized agents working on different parts of a problem, Claude can launch subagents. You tell Claude: <em>&quot;use three subagents — one for X, one for Y, one for Z — then synthesize.&quot;</em> Claude delegates to itself in parallel and returns the combined result.</p>
 <p>You&#39;ll use this in Module 3. For now, know that Claude can delegate.</p>
 <p><em>Official docs: Claude Code Subagents — invocation patterns, parallelism, and passing context.</em></p>
@@ -5414,8 +5537,17 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
     // strip non-word/space/hyphen punctuation (em-dashes, periods, commas),
     // then per-character whitespace → "-" (preserves the double-hyphen at
     // stripped em-dash positions).
+    //
+    // github-slugger operates on a heading's *text content*. The marked heading
+    // renderer hands us the inline-RENDERED HTML instead, so a code span arrives
+    // as `<code>/loop</code>` and an apostrophe as `&#39;`. Strip tags and HTML
+    // entities first, or the surviving tag names / entity digits fuse into the
+    // slug — `/loop` → `codeloopcode`, `doesn't` → `doesn39t` — and the natural
+    // hand-written anchor never resolves.
     function slugifyHeading(text) {
         return String(text)
+            .replace(/<[^>]*>/g, '')        // drop tags (code/em/links) → slug visible text
+            .replace(/&[#0-9a-z]+;/gi, '')  // drop entities (&#39; &amp; &quot; …)
             .toLowerCase()
             .replace(/[^\w\s-]/g, '')
             .trim()
@@ -5706,6 +5838,81 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
                 }
                 break;
             }
+        });
+    }
+
+    // Heads-up / attention widget. Source shape (single paragraph):
+    //   **HOX** <warning prose>
+    // Renders a loud hot-orange admonition with a fixed "HOX HOX" badge.
+    // Distinct from .session-block (amber) and .prompt-block (oxblood):
+    // HOX = "you are about to make a mistake right HERE." Used sparingly at
+    // high-consequence seams — e.g. confirming you actually switched git
+    // worktrees and aren't still typing on the old branch. A leading
+    // separator after the badge ("-", "—", ":") is chrome and is dropped.
+    // Run AFTER decorateSessions (so session bodies form first) and BEFORE
+    // decoratePrompts (so the **Prompt** stop-condition stays intact).
+    function decorateHox(root) {
+        Array.from(root.querySelectorAll('p')).forEach(function (p) {
+            var strong = p.querySelector(':scope > strong');
+            if (!strong || strong.textContent.trim() !== 'HOX') return;
+
+            var wrap = document.createElement('div');
+            wrap.className = 'hox-block';
+
+            var badge = document.createElement('span');
+            badge.className = 'hox-block__badge';
+            badge.textContent = 'HOX HOX';
+            wrap.appendChild(badge);
+
+            var body = document.createElement('div');
+            body.className = 'hox-block__body';
+            wrap.appendChild(body);
+
+            // Drop the label strong; the rest of the paragraph is the message.
+            strong.remove();
+            var msg = document.createElement('p');
+            msg.innerHTML = p.innerHTML.replace(/^\s*[-—:]\s*/, '').trim();
+            body.appendChild(msg);
+
+            p.parentNode.insertBefore(wrap, p);
+            p.remove();
+        });
+    }
+
+    // Generic guidance widget. Source shape (single paragraph):
+    //   **Note** <guidance prose>
+    // Same construction as .hox-block but calm teal, not alarm-orange: HOX is
+    // "you are about to make a mistake right HERE"; Note is "here is a thing
+    // worth not missing" — a window switch, a heads-up, a where-you-are cue.
+    // Loud enough to beat a buried sentence (the m3 Security→Quality flip the
+    // 2026-05-27 run read past), quiet enough not to cry wolf like HOX. Keyed on
+    // the literal "Note" marker, same boundary discipline as decorateHox. Run in
+    // the same pass: after decorateSessions, before decoratePrompts.
+    function decorateNote(root) {
+        Array.from(root.querySelectorAll('p')).forEach(function (p) {
+            var strong = p.querySelector(':scope > strong');
+            if (!strong || strong.textContent.trim() !== 'Note') return;
+
+            var wrap = document.createElement('div');
+            wrap.className = 'note-block';
+
+            var badge = document.createElement('span');
+            badge.className = 'note-block__badge';
+            badge.textContent = 'NOTE';
+            wrap.appendChild(badge);
+
+            var body = document.createElement('div');
+            body.className = 'note-block__body';
+            wrap.appendChild(body);
+
+            // Drop the label strong; the rest of the paragraph is the message.
+            strong.remove();
+            var msg = document.createElement('p');
+            msg.innerHTML = p.innerHTML.replace(/^\s*[-—:]\s*/, '').trim();
+            body.appendChild(msg);
+
+            p.parentNode.insertBefore(wrap, p);
+            p.remove();
         });
     }
 
@@ -6096,6 +6303,8 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
 
         // DOM (browser only)
         decorateSessions: decorateSessions,
+        decorateHox: decorateHox,
+        decorateNote: decorateNote,
         decoratePrompts: decoratePrompts,
         attachAnchorPopups: attachAnchorPopups,
         addCopyButton: addCopyButton,
@@ -6125,6 +6334,8 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
       CurriculumRuntime.buildModuleHero(mod, num);
     });
     CurriculumRuntime.decorateSessions(document.body);
+    CurriculumRuntime.decorateHox(document.body);
+    CurriculumRuntime.decorateNote(document.body);
     CurriculumRuntime.decoratePrompts(document.body);
     CurriculumRuntime.decorateDiagramZoom(document.body);
     CurriculumRuntime.installReadingProgress();

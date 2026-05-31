@@ -25,6 +25,8 @@
     --accent-2:    #a8473a;
     --accent-soft: rgba(138,58,42,.08);
     --warm:        #c97942;   /* amber — secondary accent (from ai-training) */
+    --hox:         #e8590c;   /* hot signal-orange — HOX heads-up widget */
+    --note:        #2f6b6b;   /* calm teal — NOTE guidance widget */
     --arctic:      #5e8ca8;   /* muted arctic blue — gradient tail */
     --ink:         #14110d;
     --ink-text:    #f4ecdb;
@@ -946,6 +948,127 @@ main::before {
     }
     .module .session-block__verb { background: #ddd !important; color: #000 !important; }
     .module .session-block__name { color: #000 !important; }
+}
+
+/* HOX — loud heads-up admonition. Source shape: **HOX** <warning prose>.
+   Hotter than the amber .session-block: reserved for the rare "you are about
+   to make a mistake right HERE" seam (wrong worktree, wrong branch, about to
+   overwrite). Hot signal-orange so it does not read as just another panel. */
+.module .hox-block {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin: 1.25rem 0 1.75rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--hox);
+    border-left: 5px solid var(--hox);
+    border-radius: 5px;
+    background: #fdecdf;
+}
+
+.module .hox-block__badge {
+    flex: none;
+    font-family: var(--font-body);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.72rem;
+    color: #fff;
+    background: var(--hox);
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.module .hox-block__body {
+    color: var(--fg);
+    font-weight: 600;
+}
+
+.module .hox-block__body > p {
+    margin: 0;
+}
+
+/* Dark exercise band (e.g. diagnose-and-resend) — keep the hot badge, tint
+   the panel so it still shouts against the ink background. */
+.phase--exercise .hox-block {
+    background: rgba(232, 89, 12, 0.12);
+    border-color: var(--hox);
+}
+
+.phase--exercise .hox-block__body {
+    color: var(--ink-text);
+}
+
+@media print {
+    .module .hox-block {
+        background: #fff !important;
+        border-color: #999 !important;
+    }
+    .module .hox-block__badge {
+        background: #000 !important;
+        color: #fff !important;
+    }
+}
+
+/* NOTE — calm guidance widget. Source shape: **Note** <guidance prose>.
+   Same construction as .hox-block, calm teal instead of alarm-orange: HOX
+   shouts "mistake right HERE," NOTE says "don't miss this" — a window switch,
+   a where-you-are cue. Louder than a buried sentence, quieter than HOX. */
+.module .note-block {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin: 1.25rem 0 1.75rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--note);
+    border-left: 5px solid var(--note);
+    border-radius: 5px;
+    background: #e4efee;
+}
+
+.module .note-block__badge {
+    flex: none;
+    font-family: var(--font-body);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.72rem;
+    color: #fff;
+    background: var(--note);
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.module .note-block__body {
+    color: var(--fg);
+    font-weight: 600;
+}
+
+.module .note-block__body > p {
+    margin: 0;
+}
+
+/* Dark exercise band — tint the panel so it still reads against the ink. */
+.phase--exercise .note-block {
+    background: rgba(47, 107, 107, 0.16);
+    border-color: var(--note);
+}
+
+.phase--exercise .note-block__body {
+    color: var(--ink-text);
+}
+
+@media print {
+    .module .note-block {
+        background: #fff !important;
+        border-color: #999 !important;
+    }
+    .module .note-block__badge {
+        background: #000 !important;
+        color: #fff !important;
+    }
 }
 
 .module blockquote {
@@ -2426,8 +2549,17 @@ body.workbook { padding-top: 3rem; }
     // strip non-word/space/hyphen punctuation (em-dashes, periods, commas),
     // then per-character whitespace → "-" (preserves the double-hyphen at
     // stripped em-dash positions).
+    //
+    // github-slugger operates on a heading's *text content*. The marked heading
+    // renderer hands us the inline-RENDERED HTML instead, so a code span arrives
+    // as `<code>/loop</code>` and an apostrophe as `&#39;`. Strip tags and HTML
+    // entities first, or the surviving tag names / entity digits fuse into the
+    // slug — `/loop` → `codeloopcode`, `doesn't` → `doesn39t` — and the natural
+    // hand-written anchor never resolves.
     function slugifyHeading(text) {
         return String(text)
+            .replace(/<[^>]*>/g, '')        // drop tags (code/em/links) → slug visible text
+            .replace(/&[#0-9a-z]+;/gi, '')  // drop entities (&#39; &amp; &quot; …)
             .toLowerCase()
             .replace(/[^\w\s-]/g, '')
             .trim()
@@ -2718,6 +2850,81 @@ body.workbook { padding-top: 3rem; }
                 }
                 break;
             }
+        });
+    }
+
+    // Heads-up / attention widget. Source shape (single paragraph):
+    //   **HOX** <warning prose>
+    // Renders a loud hot-orange admonition with a fixed "HOX HOX" badge.
+    // Distinct from .session-block (amber) and .prompt-block (oxblood):
+    // HOX = "you are about to make a mistake right HERE." Used sparingly at
+    // high-consequence seams — e.g. confirming you actually switched git
+    // worktrees and aren't still typing on the old branch. A leading
+    // separator after the badge ("-", "—", ":") is chrome and is dropped.
+    // Run AFTER decorateSessions (so session bodies form first) and BEFORE
+    // decoratePrompts (so the **Prompt** stop-condition stays intact).
+    function decorateHox(root) {
+        Array.from(root.querySelectorAll('p')).forEach(function (p) {
+            var strong = p.querySelector(':scope > strong');
+            if (!strong || strong.textContent.trim() !== 'HOX') return;
+
+            var wrap = document.createElement('div');
+            wrap.className = 'hox-block';
+
+            var badge = document.createElement('span');
+            badge.className = 'hox-block__badge';
+            badge.textContent = 'HOX HOX';
+            wrap.appendChild(badge);
+
+            var body = document.createElement('div');
+            body.className = 'hox-block__body';
+            wrap.appendChild(body);
+
+            // Drop the label strong; the rest of the paragraph is the message.
+            strong.remove();
+            var msg = document.createElement('p');
+            msg.innerHTML = p.innerHTML.replace(/^\s*[-—:]\s*/, '').trim();
+            body.appendChild(msg);
+
+            p.parentNode.insertBefore(wrap, p);
+            p.remove();
+        });
+    }
+
+    // Generic guidance widget. Source shape (single paragraph):
+    //   **Note** <guidance prose>
+    // Same construction as .hox-block but calm teal, not alarm-orange: HOX is
+    // "you are about to make a mistake right HERE"; Note is "here is a thing
+    // worth not missing" — a window switch, a heads-up, a where-you-are cue.
+    // Loud enough to beat a buried sentence (the m3 Security→Quality flip the
+    // 2026-05-27 run read past), quiet enough not to cry wolf like HOX. Keyed on
+    // the literal "Note" marker, same boundary discipline as decorateHox. Run in
+    // the same pass: after decorateSessions, before decoratePrompts.
+    function decorateNote(root) {
+        Array.from(root.querySelectorAll('p')).forEach(function (p) {
+            var strong = p.querySelector(':scope > strong');
+            if (!strong || strong.textContent.trim() !== 'Note') return;
+
+            var wrap = document.createElement('div');
+            wrap.className = 'note-block';
+
+            var badge = document.createElement('span');
+            badge.className = 'note-block__badge';
+            badge.textContent = 'NOTE';
+            wrap.appendChild(badge);
+
+            var body = document.createElement('div');
+            body.className = 'note-block__body';
+            wrap.appendChild(body);
+
+            // Drop the label strong; the rest of the paragraph is the message.
+            strong.remove();
+            var msg = document.createElement('p');
+            msg.innerHTML = p.innerHTML.replace(/^\s*[-—:]\s*/, '').trim();
+            body.appendChild(msg);
+
+            p.parentNode.insertBefore(wrap, p);
+            p.remove();
         });
     }
 
@@ -3108,6 +3315,8 @@ body.workbook { padding-top: 3rem; }
 
         // DOM (browser only)
         decorateSessions: decorateSessions,
+        decorateHox: decorateHox,
+        decorateNote: decorateNote,
         decoratePrompts: decoratePrompts,
         attachAnchorPopups: attachAnchorPopups,
         addCopyButton: addCopyButton,
@@ -3131,6 +3340,8 @@ body.workbook { padding-top: 3rem; }
 (function () {
   if (window.CurriculumRuntime) {
     CurriculumRuntime.decorateSessions(document.body);
+    CurriculumRuntime.decorateHox(document.body);
+    CurriculumRuntime.decorateNote(document.body);
     CurriculumRuntime.decoratePrompts(document.body);
     CurriculumRuntime.decorateDiagramZoom(document.body);
     CurriculumRuntime.installReadingProgress();

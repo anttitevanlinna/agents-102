@@ -115,14 +115,21 @@ function parseFrontmatterEvalClasses(md) {
   return m[1].split(',').map(s => s.trim()).filter(Boolean).map(normClass);
 }
 
-// Parse a compendium's top-level numbered rules: `N. **Lead.**` (incl. 9b/21b).
-// Italic "Moved to .." stubs use single * and are intentionally skipped.
+// Parse a compendium's top-level numbered rules: `N. **Lead.**`.
+// Instances store rule_index as an INTEGER, so sub-lettered rules (9b, 21b, 34b,
+// 52b) collapse onto their integer parent for coverage matching — they cannot be
+// expressed separately in the instance schema. Dedupe by integer id; the first
+// occurrence's lead wins. Italic "Moved to .." stubs use single * and are skipped.
 function parseRules(md) {
-  const re = /^(\d+[a-z]?)\.\s+\*\*(.+?)\*\*/gm;
+  const re = /^(\d+)[a-z]?\.\s+\*\*(.+?)\*\*/gm;
   const rules = [];
+  const seen = new Set();
   let m;
   while ((m = re.exec(md)) !== null) {
-    rules.push({ id: m[1], lead: m[2].replace(/\s+/g, ' ').trim() });
+    const id = m[1];
+    if (seen.has(id)) continue;
+    seen.add(id);
+    rules.push({ id, lead: m[2].replace(/\s+/g, ' ').trim() });
   }
   return rules;
 }

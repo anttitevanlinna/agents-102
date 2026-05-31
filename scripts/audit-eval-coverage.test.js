@@ -127,3 +127,52 @@ test('naRuleSet: a normal exercise carries no N/A declarations', () => {
   const s = naRuleSet('exercises', 'fix-tests-first', 'check_pedagogy');
   assert.equal(s.size, 0);
 });
+
+// ── rule-index cram + pseudo-compendium detectors ────────────────────────────
+// The story judge crams several distinct judgments onto ONE (compendium,
+// rule_index) — usually check_strategy_tie_in::1 — or files them under invented
+// pseudo-compendia ("story.md owns", "judge-owned"). verdictedKeys() dedupes by
+// (compendium::rule_index), so a crammed §4 (filed as ::1) reads as an uncovered
+// hole while ::1 looks "evaluated 5×". These two warnings make the cram visible.
+
+test('duplicate (compendium, rule_index) → duplicate-rule-index warning with count', () => {
+  const inst = { class: 'pedagogy', rules_evaluated: [
+    { compendium: 'check_pedagogy.md', rule_index: 9, verdict: 'PASS' },
+    { compendium: 'check_pedagogy.md', rule_index: 9, verdict: 'N/A' },
+  ] };
+  const { warnings } = scanInstanceIntegrity('ae101--x.pedagogy.json', 'pedagogy', inst, COMP);
+  const dup = warnings.filter(w => w.kind === 'duplicate-rule-index');
+  assert.equal(dup.length, 1);
+  assert.equal(dup[0].count, 2);
+  assert.equal(dup[0].compendium, 'check_pedagogy');
+});
+
+test('distinct rule_indexes → no duplicate-rule-index warning', () => {
+  const inst = { class: 'pedagogy', rules_evaluated: [
+    { compendium: 'check_pedagogy.md', rule_index: 9, verdict: 'PASS' },
+    { compendium: 'check_pedagogy.md', rule_index: 10, verdict: 'PASS' },
+  ] };
+  const { warnings } = scanInstanceIntegrity('ae101--x.pedagogy.json', 'pedagogy', inst, COMP);
+  assert.equal(warnings.filter(w => w.kind === 'duplicate-rule-index').length, 0);
+});
+
+test('invented pseudo-compendium → unknown-compendium warning (deduped per name)', () => {
+  const inst = { class: 'story', rules_evaluated: [
+    { compendium: 'story.md owns', rule_index: 0, verdict: 'PASS' },
+    { compendium: 'story.md owns', rule_index: 0, verdict: 'PASS' },
+  ] };
+  const { warnings } = scanInstanceIntegrity('ae101--x.story.json', 'story', inst, COMP);
+  const unk = warnings.filter(w => w.kind === 'unknown-compendium');
+  assert.equal(unk.length, 1); // deduped per compendium name, not per entry
+  assert.equal(unk[0].compendium, 'story.md owns');
+});
+
+test('known compendium absent from loaded set → NOT flagged unknown (keys off COMPENDIA constant)', () => {
+  // COMP fixture lacks check_strategy_tie_in, but it is a known compendium — a
+  // §4 entry must not be mis-flagged just because the test loaded a subset.
+  const inst = { class: 'pedagogy', rules_evaluated: [
+    { compendium: 'check_strategy_tie_in.md', rule_index: 4, verdict: 'PASS' },
+  ] };
+  const { warnings } = scanInstanceIntegrity('ae101--x.pedagogy.json', 'pedagogy', inst, COMP);
+  assert.equal(warnings.filter(w => w.kind === 'unknown-compendium').length, 0);
+});

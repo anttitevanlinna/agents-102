@@ -40,6 +40,11 @@ const COMPENDIA = [
   'check_lectures', 'check_strategy_tie_in', 'check_cross_module',
   'check_platform_and_boundaries', 'check_research_claims',
 ];
+// The known compendium namespace, for the unknown-compendium detector. A
+// rules_evaluated entry MUST cite one of these — judges that invent a home
+// ("story.md owns", "judge-owned", "storytelling") for an intrinsic judgment
+// file it outside the rule namespace, so it credits no real rule's coverage.
+const KNOWN_COMPENDIA = new Set(COMPENDIA);
 
 // Which compendiums must fire on each surface type (the "rule sets that must
 // fire" column of the phasing table). Coverage is reported for these.
@@ -228,6 +233,8 @@ function scanInstanceIntegrity(fname, suffix, inst, comp) {
     else if (inst.class !== canonical) bugs.push({ kind: 'class-field-drift', file: fname, expected: canonical, got: inst.class });
   }
   if (Array.isArray(inst.rules_evaluated)) {
+    const keyCounts = new Map();   // (compendium::rule_index) → count, for the cram detector
+    const unknownComps = new Set(); // pseudo-compendia, deduped per name
     for (const r of inst.rules_evaluated) {
       if (!r) continue;
       if (r.verdict != null && !VERDICT_ENUM.has(String(r.verdict).trim())) {
@@ -235,6 +242,8 @@ function scanInstanceIntegrity(fname, suffix, inst, comp) {
       }
       if (r.compendium != null && r.rule_index != null) {
         const cname = String(r.compendium).replace(/\.md$/, '');
+        keyCounts.set(`${cname}::${String(r.rule_index)}`, (keyCounts.get(`${cname}::${String(r.rule_index)}`) || 0) + 1);
+        if (!KNOWN_COMPENDIA.has(cname)) { unknownComps.add(cname); continue; } // can't resolve rule ids outside the namespace
         const C = comp[cname];
         if (C && Array.isArray(C.rules)) {
           const ids = new Set(C.rules.map(x => x.id));
@@ -244,6 +253,16 @@ function scanInstanceIntegrity(fname, suffix, inst, comp) {
         }
       }
     }
+    // Cram detector: same (compendium, rule_index) emitted more than once means
+    // several distinct judgments collapsed onto one key — the extras credit no
+    // rule of their own, and the rule they SHOULD carry reads as an uncovered hole.
+    for (const [key, n] of keyCounts) {
+      if (n > 1) {
+        const sep = key.lastIndexOf('::');
+        warnings.push({ kind: 'duplicate-rule-index', file: fname, compendium: key.slice(0, sep), rule_index: key.slice(sep + 2), count: n });
+      }
+    }
+    for (const cname of unknownComps) warnings.push({ kind: 'unknown-compendium', file: fname, compendium: cname });
   }
   return { bugs, warnings };
 }
@@ -372,6 +391,8 @@ function printHuman(report, comp) {
     for (const w of W.slice(0, SHOWN)) {
       if (w.kind === 'unresolvable-rule-index') out.push(`  • unresolvable-rule-index  ${w.file}  ${w.compendium}::${w.rule_index}`);
       else if (w.kind === 'non-enum-verdict') out.push(`  • non-enum-verdict  ${w.file}  ${w.compendium}::${w.rule_index} = "${w.verdict}"`);
+      else if (w.kind === 'duplicate-rule-index') out.push(`  • duplicate-rule-index  ${w.file}  ${w.compendium}::${w.rule_index} ×${w.count} (judgments crammed onto one index)`);
+      else if (w.kind === 'unknown-compendium') out.push(`  • unknown-compendium  ${w.file}  "${w.compendium}" (not in the rule namespace)`);
       else out.push(`  • ${w.kind}  ${w.file}`);
     }
     if (W.length > SHOWN) out.push(`  … and ${W.length - SHOWN} more (use --json for the full list)`);

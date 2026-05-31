@@ -82,7 +82,7 @@ Same PDCA, different cadence.
 
 **Quality line per touched file** → `curriculum/quality-format.md` (enforced by `curriculum-pre-ship-audit`; mechanical-tested requires `@ <short-sha>`).
 
-**TODO discipline** → `compounded/2026-04-28-content_creation-remove-done-todos-not-strikethrough.md` + `-todo-vs-deferred-marker.md` + `-evaluate-dont-default-defer.md` + `2026-05-14-content_creation-todo-surface-open-decisions-only.md` + `2026-05-25-content_creation-harness-findings-route-to-improvements-not-cohort-punchlist.md` (cohort punchlist = curriculum decisions only; harness → runner `IMPROVEMENTS.md`).
+**TODO discipline** → `compounded/2026-04-28-content_creation-remove-done-todos-not-strikethrough.md` + `-todo-vs-deferred-marker.md` + `-evaluate-dont-default-defer.md` + `2026-05-14-content_creation-todo-surface-open-decisions-only.md` + `2026-05-25-content_creation-harness-findings-route-to-improvements-not-cohort-punchlist.md` (cohort punchlist = curriculum decisions only; harness → runner `IMPROVEMENTS.md`). Open decisions only; CLOSED = DELETE the bullet — never a decision-record/history. A closed item that carries a design decision → move it to source (prompt frontmatter `note:` / exercise maintainer block) THEN delete the bullet.
 
 **Splitting a SKILL.md or compendium** → `compounded/2026-04-27-content_creation-pre-split-rule-docs-shrink-or-die.md`.
 

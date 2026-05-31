@@ -3,6 +3,8 @@
 > **CLOSED = DELETE THE BULLET. Not "annotate done." Not "rewrite as smaller follow-up." Not "update with what landed." DELETE.**
 >
 > Git log is the history. This file is current state. A closed bullet rewritten as adjacent work is a NEW bullet pretending to be progress, surface the new work cleanly under a real section, or don't add it. If the new work isn't pre-cohort scope (M1–M6 done-done), it doesn't belong in this file at all.
+>
+> **Editing this file? Load the rules that fire here.** A flagged item is a hypothesis, not a to-do: before "fixing" one, check it isn't deliberate pedagogy, a wrong-layer diagnosis, or a cosmetic non-issue (`check_pedagogy.md` §61/§61a). And a closed item that carries a design decision moves to its source first (the prompt's frontmatter `note:` or the exercise maintainer block, where the editor reads), THEN the bullet is deleted, this file never holds the rationale (`content-creation` skill § TODO discipline).
 
 Open decisions before the first paying cohort. Module files carry zero TODOs; this is the single tracking surface.
 

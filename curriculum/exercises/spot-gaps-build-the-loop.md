@@ -42,9 +42,11 @@ Skills aren't hand-crafted. The move you practiced at M3 repeats here: author th
 
 Before you shape the skill, look wider than the two runs. The dominant gap came from one task. The kinds of work you repeat run across everything you do, and most of them never get looked at directly. This is your stack. How wide you look, and what you choose to package, is yours.
 
+> **Fast operator?** Lump the next three prompts into one go. Paste them one after another in the same conversation, study then shapes then primitives, and let the answers land together. The three moves don't change.
+
 Read your own history first. Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back.
 
-> **Fast operator?** Lump the next three prompts into one go. Paste them one after another in the same conversation, study then shapes then primitives, and let the answers land together. The three moves don't change.
+> **This scan runs long, and it is yours to steer.** Narrow it whenever you like, point it at the kind of work you care about. Any time, you can say *tell me what you've found so far*, then let it pick back up.
 
 Ask Claude to scan your sessions across every project and group the kinds of work that recur.
 
@@ -56,7 +58,7 @@ Ask Claude to draw your top few work-shapes as simple diagrams.
 
 {{prompt:spot-gaps-build-the-loop-shapes}}
 
-One of the work-shapes you drew holds the dominant gap from your two runs. That one becomes the session-shaper you build now. The rest are the kit you grow later.
+If one of the work-shapes you drew is the kind of work those two runs came from, that is the session-shaper you build now. If not, build it against the dominant gap directly. The rest are the kit you grow later.
 
 Before you commit to a shape, expand the menu. The menu lands in context right before you author, so the skill is built against what practitioners actually check, not just your own instinct.
 
@@ -66,9 +68,9 @@ Ask Claude to name the checking primitives the field already runs and rank the o
 
 Expect to see test-writing, browser-testing, PR-building, lint and typecheck gates, compile and build, smoke-test on a real path, code-review, git-diff inspection, schema validation, eval suites for agent outputs. Your list won't be exact. The recognition is the point. The primitives Claude names are the ones your codebase already runs.
 
-The three prompts below (author, critique, invoke) are decomposed for pacing.
+The three prompts below (author, critique, invoke) are separate steps. You don't have to run all three.
 
-> **Solo or fluent in this move?** Collapse the three prompts: paste the first, ask the same conversation to critique before save and invoke after. The three moves don't change.
+> **Skip the critique and the testing, if you want.** You've done that pattern before. Not that you should, but you already know those moves.
 
 The session-shaper takes one of three forms, from the convergence of practitioners running long tasks:
 
@@ -110,8 +112,8 @@ The skill ships personally. It lives at `~/.claude/skills/session-shaper/SKILL.m
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-31 (writing@d06b5b8 story@d06b5b8 technical@d06b5b8 behavior@d06b5b8 pedagogy@d06b5b8)
-- judges @d06b5b8: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy N/A (strategy evaluated at module level)
+**Quality:** compendium-audited 2026-05-31 (writing@e011708 story@e011708 technical@d06b5b8 behavior@e011708 pedagogy@e011708)
+- judges @e011708: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy N/A (strategy evaluated at module level)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Word count:** ~830 words body.

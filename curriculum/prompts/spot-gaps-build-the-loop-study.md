@@ -16,4 +16,8 @@ Go through my work across everything I do, not just this repo. I want to see the
 
 My Claude Code sessions across every project live under `~/.claude/projects/`, one folder per repo I've worked in. Read across them. If there are other repos you should look at that aren't in there, ask me where they are.
 
+This is a big read and will run a while. As you go, keep me posted: every thirty seconds or so, drop a quick line on which repos you've covered, the groups starting to show, and anything that surprises you. Don't go quiet and hand me everything at the end.
+
+If I cut in to point you at one kind of work, or to ask what you've found so far, answer me and then pick up where you left off.
+
 Group what you find by the kind of work it is, the way of working that repeats, not the feature. For each group, give it a short name and quote an instance or two so I can see it's real. Don't filter to what looks important. Show me what actually recurs, including the dull stuff. Rank the groups by how often they show up and give me the top six or so, the ones I actually repeat, not the ones that look impressive.

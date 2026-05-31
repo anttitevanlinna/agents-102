@@ -26,7 +26,7 @@ Body prose is the student-facing surface above any `<!-- maintainer -->` cut, wi
 2. State both up front in your reasoning before any rule check, e.g.: *"MAINTAINER_CUT = line 80; FENCE_RANGES = [(50, 58), (122, 130)]; body region = lines 1–49, 59–79, 80 is out (cut), …"*
 3. For each candidate flag, do this two-step check before emitting:
    - **Verify the cited content actually appears at the cited line.** Open that line in the source. If the quoted substring is not on that line, the line number is wrong; either correct it or drop the flag entirely. Do NOT emit a flag whose evidence cites a line that doesn't contain the quoted text.
-   - **Verify the corrected line is in the body region.** If line ≥ MAINTAINER_CUT or line is inside any FENCE_RANGE, STOP. Drop the flag. Do not include it in `rules_evaluated`.
+   - **Verify the corrected line is in the body region.** If line ≥ MAINTAINER_CUT or line is inside any FENCE_RANGE, STOP. Withdraw the false REVISE — the rule's verdict becomes PASS (no real violation in the body region) or N/A (rule out of scope for this surface). Per the completeness contract below, the rule STILL appears in `rules_evaluated`; only the spurious flag is dropped, never the rule itself.
 
 The most common Pass 1a false positives were (a) dated lines inside maintainer blocks despite the explicit exemption, (b) Prompt-block content inside ``` fences flagged for memory-vs-context conflation despite the exemption, and (c) line-number hallucinations that happen to land in body when the actual content is in a fence. The procedural enforcement above kills all three deterministically.
 
@@ -58,6 +58,15 @@ Some rules require LLM judgment that regex cannot do:
 - **Value-prop / positioning leak into body** (rule 13): defensive-against-vendor / not-aspirational / not-marketing framing imported into a teaching beat.
 
 These need a careful read; not just keyword grep.
+
+## Completeness contract — one verdict per rule on the compendium you own
+
+`rules_evaluated` is the coverage ledger, not a highlights reel. This class is PRIMARY owner of `check_writing` + `check_student_facing`; for BOTH it MUST carry exactly one entry for EVERY numbered rule (`^\d+[a-z]?\. \*\*…\*\*`), no omission:
+- rule doesn't apply to this surface (e.g. an articles-only or reference-only rule on an exercise) → `verdict: "N/A"` + one-line reason;
+- a REVISE you withdrew on the line-number check → the rule still gets `PASS` or `N/A`; only the false flag is dropped, never the rule;
+- italic "Moved to <compendium>" stub redirects (single-asterisk, not bold) are the ONLY legitimate absences.
+
+Before emitting: for each of `check_writing` and `check_student_facing`, count its numbered rules minus moved-stubs; your entries for that compendium MUST equal that count. Fewer = a silent skip — add the missing rule_index entries before returning. The mechanical auditor (`scripts/audit-eval-coverage.js`) treats any missing rule_index as an unproven coverage hole.
 
 ## Output format
 

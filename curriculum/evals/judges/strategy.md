@@ -45,6 +45,12 @@ Specific judgments that strategy owns:
 - Cross-module artefact contracts and M(N-1)→M(N) walks belong to the cross_module judge.
 - Prose-lint rules belong to writing.
 
+## Completeness contract — one verdict per rule on the compendium you own
+
+`rules_evaluated` is the coverage ledger, not a highlights reel. This class is PRIMARY owner of `check_strategy_tie_in`; it MUST carry exactly one entry for EVERY numbered rule (`^\d+[a-z]?\. \*\*…\*\*`) in it, no omission — `N/A` (with one-line reason) for a rule that doesn't apply to this surface (e.g. Key-Concepts shape on a file with no `## Key Concepts`), never a silent drop.
+
+Before emitting: count `check_strategy_tie_in`'s numbered rules; your entries MUST equal that count. Fewer = a silent skip — add the missing rule_index entries before returning. The mechanical auditor (`scripts/audit-eval-coverage.js`) treats any missing rule_index as an unproven coverage hole.
+
 ## Output format
 
 Return ONE JSON object, exactly this shape:

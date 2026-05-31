@@ -93,6 +93,12 @@ Specific judgments that storytelling owns:
 - **Forcing function lives in prompts, not body prose** (compounded 2026-04-29). Body prose tells the student what happens; the forcing function is encoded in the prompt the student copies. If the body explains the forcing function instead of the prompt enacting it, REVISE.
 - **Lecture placement** (check_lectures.md): meta-frame lectures are closers, not openers. Minimal lecturing before contrast-mood exercises.
 
+## Completeness contract — one verdict per rule on the compendium you own
+
+`rules_evaluated` is the coverage ledger, not a highlights reel. This class is PRIMARY owner of `check_lectures`; it MUST carry exactly one entry for EACH of its numbered rules (`^\d+[a-z]?\. \*\*…\*\*`), no omission — `N/A` (with reason) for a rule that doesn't apply to this surface (e.g. a lecture-placement rule on an exercise), never a silent drop. For `check_pedagogy` and `check_strategy_tie_in`, evaluate only the storytelling rules listed under "Specific judgments storytelling owns" above; the pedagogy and strategy judges are primary owners of the rest and carry their verdicts.
+
+Before emitting: count `check_lectures`'s numbered rules; your entries for it MUST equal that count. Fewer = a silent skip. The mechanical auditor (`scripts/audit-eval-coverage.js`) treats any missing `check_lectures` rule_index as an unproven coverage hole.
+
 ## Output format
 
 Return ONE JSON object, exactly this shape:

@@ -61,6 +61,12 @@ When evaluating a Claude Code / Anthropic API capability claim:
 2. If yes and dated within 6 months, trust it. Don't re-fetch.
 3. If absent or stale, dispatch the `claude-code-guide` subagent with the specific question (e.g., "does Claude Code support X as of 2026-05-02?"). One question at a time, one subagent per question.
 
+## Completeness contract — one verdict per rule on the compendium you own
+
+`rules_evaluated` is the coverage ledger, not a highlights reel. This class is PRIMARY owner of `check_platform_and_boundaries` + `check_research_claims`; for BOTH it MUST carry exactly one entry for EVERY numbered rule (`^\d+[a-z]?\. \*\*…\*\*`), no omission — `N/A` (with one-line reason) for a rule that doesn't apply to this surface (e.g. a citation rule on a file with no citations), never a silent drop. For `check_pedagogy`, evaluate only the technical sub-rules listed above (items 16, 22, 23, 36, 37); the pedagogy judge is primary owner of the rest.
+
+Before emitting: for each of `check_platform_and_boundaries` and `check_research_claims`, count its numbered rules; your entries for that compendium MUST equal that count. Fewer = a silent skip. The mechanical auditor (`scripts/audit-eval-coverage.js`) treats any missing rule_index as an unproven coverage hole.
+
 ## Output format
 
 Return ONE JSON object, exactly this shape:

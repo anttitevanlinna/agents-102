@@ -3851,16 +3851,23 @@ End with: which gap matters most? Rank by damage-to-a-future-run, not by how int
 <p>Two runs of the same task were the first real stress-test of <code>./CLAUDE.local.md</code>. Diagnosis surfaced rules that turned out wrong, never fired when they should have, or fired and made the run worse. Cleaning is the compound move that keeps the loop fast; rules-files have a half-life.</p>
 <p>Ask Claude to cut one rule the two-run diagnosis killed, or to say so and stop if all rules held.</p>
 <p><strong>Prompt</strong> <em>(Claude Code, only if a rule earned cutting)</em></p>
-<pre><code>Read ./CLAUDE.local.md. Read this session&#39;s scrollback: the gap list I just ranked, the un-packaged-vs-packaged contrast moments, the dominant gap. Find the one rule the two-run diagnosis showed is wrong, stale, or never fires when it should. Cut it from ./CLAUDE.local.md in place. Show me the line you cut, in two sentences why diagnosis killed it. If every rule still holds under diagnosis, say so and stop.
+<pre><code>Read ./CLAUDE.local.md and this session&#39;s scrollback: the gap list I just ranked, the un-packaged-vs-packaged contrast moments, the dominant gap.
+
+Find the one rule the two-run diagnosis showed is wrong, stale, or never fires when it should. Cut it from ./CLAUDE.local.md in place.
+
+Show me the line you cut, in two sentences why diagnosis killed it. If every rule still holds under diagnosis, say so and stop.
 </code></pre>
 <p>Claude may pause before editing <code>./CLAUDE.local.md</code>, a named config file looks risky to modify, or it may rewrite more than the one stale rule (<em>&quot;in place&quot;</em> is loose wording). If it asks, just say go. If the diff touches more than the one rule you flagged, push back.</p>
 <hr>
 <h2 id="phase-2-author-the-session-shaper">Phase 2: Author the session-shaper</h2>
 <p>Skills aren&#39;t hand-crafted. The move you practiced at M3 repeats here: author through conversation, push back on defaults, verify by invoking. The shape follows what the two runs demanded, not a template.</p>
 <p>Before you shape the skill, look wider than the two runs. The dominant gap came from one task. The kinds of work you repeat run across everything you do, and most of them never get looked at directly. This is your stack. How wide you look, and what you choose to package, is yours.</p>
-<p>Read your own history first. Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back.</p>
 <blockquote>
 <p><strong>Fast operator?</strong> Lump the next three prompts into one go. Paste them one after another in the same conversation, study then shapes then primitives, and let the answers land together. The three moves don&#39;t change.</p>
+</blockquote>
+<p>Read your own history first. Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back.</p>
+<blockquote>
+<p><strong>This scan runs long, and it is yours to steer.</strong> Narrow it whenever you like, point it at the kind of work you care about. Any time, you can say <em>tell me what you&#39;ve found so far</em>, then let it pick back up. If it wraps up early, nudge it to keep going. There is more in there than a first pass admits.</p>
 </blockquote>
 <p>Ask Claude to scan your sessions across every project and group the kinds of work that recur.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -3868,7 +3875,11 @@ End with: which gap matters most? Rank by damage-to-a-future-run, not by how int
 
 My Claude Code sessions across every project live under `~/.claude/projects/`, one folder per repo I&#39;ve worked in. Read across them. If there are other repos you should look at that aren&#39;t in there, ask me where they are.
 
-Group what you find by the kind of work it is, the way of working that repeats, not the feature. For each group, give it a short name and quote an instance or two so I can see it&#39;s real. Don&#39;t filter to what looks important. Show me what actually recurs, including the dull stuff, and rank the groups by how often they show up.
+This is a big read and will run a while. As you go, keep me posted: every thirty seconds or so, drop a quick line on which repos you&#39;ve covered, the groups starting to show, and anything that surprises you. Don&#39;t go quiet and hand me everything at the end.
+
+If I cut in to point you at one kind of work, or to ask what you&#39;ve found so far, answer me and then pick up where you left off.
+
+Group what you find by the kind of work it is, the way of working that repeats, not the feature. For each group, give it a short name and quote an instance or two so I can see it&#39;s real. Don&#39;t filter to what looks important. Show me what actually recurs, including the dull stuff. Rank the groups by how often they show up and give me the top six or so, the ones I actually repeat, not the ones that look impressive.
 </code></pre>
 <p>What comes back is the work you do over and over, grouped and ranked. Read for the few at the top you actually repeat. How far you take this is yours. Now make those few something you can see. A recurring kind of work has a shape: steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described.</p>
 <p>Ask Claude to draw your top few work-shapes as simple diagrams.</p>
@@ -3877,8 +3888,12 @@ Group what you find by the kind of work it is, the way of working that repeats, 
 
 Keep each diagram to 30 nodes at most. The point is to recognise the shape of the work, not to document every case. If a shape needs more than 30 nodes, it is really two shapes, split it.
 </code></pre>
-<p>One of the work-shapes you drew holds the dominant gap from your two runs. That one becomes the session-shaper you build now. The rest are the kit you grow later.</p>
-<p>Before you commit to a shape, expand the menu. The menu lands in context right before you author, so the skill is built against what practitioners actually check, not just your own instinct. Ask Claude to name the checking primitives the field already runs and rank the ones that fit your gap.</p>
+<blockquote>
+<p><strong>Want to see the shapes, not read them?</strong> Mermaid comes back as text. Say <em>give me this in HTML</em> to open them in a browser.</p>
+</blockquote>
+<p>If one of the work-shapes you drew is the kind of work those two runs came from, that is the session-shaper you build now. If not, build it against the dominant gap directly. The rest are the kit you grow later.</p>
+<p>Before you commit to a shape, expand the menu. The menu lands in context right before you author, so the skill is built against what practitioners actually check, not just your own instinct.</p>
+<p>Ask Claude to name the checking primitives the field already runs and rank the ones that fit your gap.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>I&#39;m about to author a skill that wraps a checking primitive against my dominant gap. Before I commit to a shape, expand my menu.
 
@@ -3889,9 +3904,9 @@ Then evaluate fit for the dominant gap I named in Phase 1. Which 2–3 primitive
 Be concrete. Generic &quot;tests&quot; doesn&#39;t make the cut; &quot;unit test against the changed function&quot; does.
 </code></pre>
 <p>Expect to see test-writing, browser-testing, PR-building, lint and typecheck gates, compile and build, smoke-test on a real path, code-review, git-diff inspection, schema validation, eval suites for agent outputs. Your list won&#39;t be exact. The recognition is the point. The primitives Claude names are the ones your codebase already runs.</p>
-<p>The three prompts below (author, critique, invoke) are decomposed for pacing.</p>
+<p>The three prompts below (author, critique, invoke) are separate steps. You don&#39;t have to run all three.</p>
 <blockquote>
-<p><strong>Solo or fluent in this move?</strong> Collapse the three prompts: paste the first, ask the same conversation to critique before save and invoke after. The three moves don&#39;t change.</p>
+<p><strong>Skip the critique and the testing, if you want.</strong> You&#39;ve done that pattern before. Not that you should, but you already know those moves.</p>
 </blockquote>
 <p>The session-shaper takes one of three forms, from the convergence of practitioners running long tasks:</p>
 <ul>
@@ -3902,7 +3917,7 @@ Be concrete. Generic &quot;tests&quot; doesn&#39;t make the cut; &quot;unit test
 <p>Pick the one the diff points at. If the dominant gap is &quot;verifier missed drift at hour 4,&quot; you&#39;re building a sharpened verifier. If it&#39;s &quot;output technically passed but read off,&quot; you&#39;re building a judge. If it&#39;s &quot;the run shouldn&#39;t have started with this context,&quot; you&#39;re building a gap-finder.</p>
 <p>Author through conversation. No markdown editor, no hand-crafting SKILL.md in a file tab.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Author a session-shaper as a personal skill. The skill&#39;s job is to shape future sessions on this kind of task so the dominant gap I diagnosed in Phase 1 doesn&#39;t recur. Shape: one of sharpened-verifier, LLM-judge, or gap-finder — I&#39;ll tell you which after you ask. Same authoring approach as the test-strategy skill at `~/.claude/skills/test-strategy/SKILL.md`.
+<pre><code>Author a session-shaper as a personal skill. The skill&#39;s job is to shape future sessions on this kind of task so the dominant gap I diagnosed in Phase 1 doesn&#39;t recur. Shape: one of sharpened-verifier, LLM-judge, or gap-finder — I&#39;ll tell you which after you ask. Same authoring approach as the `test-strategy` skill you authored earlier — read its SKILL.md as a shape reference.
 
 Interview me one question at a time. Cover: what the skill fires on (agent output, proposed plan, mid-run state), what the quality bar is in terms I can defend to a teammate, what to flag vs. what to let through, how it outputs (pass/fail, ranked findings, inline critique), and what the failure shape looks like when the skill itself is wrong.
 
@@ -3931,6 +3946,8 @@ Don&#39;t reassure me. Name weak parts.
 Produce whatever output the skill asks you to produce (pass/fail, ranked findings, inline critique).
 
 Then, ⟦A:self-critique-register⟧in the same response, answer: is the skill any good?⟦/A⟧ ⟦A:disambiguation-criteria⟧Specifically: does the output catch the dominant gap we named in Phase 1? Does it miss things a staff engineer reviewing this run would catch? Would the M4 un-packaged run have come out better if this skill had fired on it retroactively?⟦/A⟧
+
+Don&#39;t reassure me about the skill. If it isn&#39;t earning its place, say so.
 </code></pre>
 <p>This prompt asks Claude to invoke a skill it just helped author AND grade the result in the same turn. That&#39;s biased by design, the same context window self-charity is well-documented. The shape is one paste, one wait, one read, convenient over rigorous. If you want a harsher read, run it as two prompts: invoke first, read the output, then a second prompt that says <em>&quot;Read that output as if you&#39;d never seen the SKILL.md. What did the skill miss?&quot;</em> Your call.</p>
 <p>If the output doesn&#39;t catch the dominant gap, sharpen the skill itself and invoke again. If the skill names its own limitation (<em>&quot;I check drift but not context-rot re-derivations&quot;</em>), that&#39;s a feature. Ship with a one-line TODO at the top. A skill that names its gap is more useful to a teammate than one that pretends it&#39;s finished.</p>
@@ -4097,7 +4114,7 @@ The prompt runs later in a cold session, so bake in what that session won&#39;t 
 </code></pre>
 <p>He called it Ralph, after the Simpsons. One line, no scaffolding. Hacky, simple, powerful. Ralph re-feed entered the practitioner vocabulary as one of the named verifier shapes when a multi-hour task wants a stop-and-check.</p>
 <p>Months later, Claude Code shipped <code>/goal</code>. The runtime version of the same move. A condition, a check each turn. The shell hack is now a slash command.</p>
-<p>Practitioners see levers first. The lever was sitting there in plain shell. Huntley reached for it. The platform watched, and shipped the move native.</p>
+<p>Practitioners see levers first. The lever was sitting there in plain shell. Huntley reached for it. The runtime caught up later.</p>
 <p>That&#39;s the M6 leap. The next Ralph is yours.</p>
 <h2 id="where-the-loop-ends">Where the loop ends</h2>
 <p>There is no last turn. Each run surfaces the next gap. Each gap proposes the next move. Each move makes the next run cheaper. The kit grows, the rules sharpen, the skills accumulate, and the model underneath gets replaced every few months without changing the move.</p>

@@ -23,7 +23,9 @@ Before opening the Module 5 session, fork the Module 4 starting SHA into a sibli
 
 A real engineering call lives in this fork: gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a worktree because git doesn't see them. AE101's default is to copy them in once at fork time. Your Module 1 evidence rides forward (along with any Module 3 artefacts if you've completed it); Module 5 and Module 6 compounding diverges in the worktree; you decide post-Module-6 what to merge back into the original. Other engineers wire it differently. The arc-retrospective at Module 6 close picks up the question.
 
-> **Run the fork from your original repo, not the worktree (it doesn't exist yet).** If your Module 4 session is still open, ask it there, it's already in the right place. Otherwise open a fresh session in the original repo location and ask there.
+**Session** *(continue or new, "original repo")*
+
+Run the fork from your original repo, not the worktree (it doesn't exist yet). If your Module 4 session is still open, ask it there, it's already in the right place. Otherwise open a fresh session in the original repo location and ask there.
 
 **Claude figures out `<repo-name>` from the working directory.** Help it if it gets confused.
 

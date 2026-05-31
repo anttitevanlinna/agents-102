@@ -38,6 +38,8 @@ Two messages, your phrasing, specific to what you saw. Claude acknowledges each,
 
 Stuck on the soft item? Ask Claude which step it's least confident about. That answer IS one. Find is easier than judge.
 
+> **Two messages, then move on.** Two push-backs on two axes, plus one check that the regeneration held, is all Phase 3 asks. A third push-back may be forming. That is fine; it is the second-pass read's job to catch the rest. Send your two, check the revision once, and move to Phase 4.
+
 ## Phase 4: Second-pass read
 
 Now hand the plan to a second agent that reads differently than you do. Still in plan mode, the plan file is the artifact you're walking, and the lock-it-in convention only fires inside plan mode.
@@ -55,6 +57,10 @@ The second read asks one question at a time. Some will feel trivial (*"which log
 Typical session: 5–12 questions. Stop when the second read starts reaching: a question about something genuinely out of scope, a branch that's already settled, a recommendation you'd accept without thinking. The agent doesn't always know when to stop; you do. Claude incorporates your answers into a sharpened plan. Approve when it's yours. Not Claude's, not the second read's.
 
 > **Timebox check.** When the slot ends, stop. The second-pass walk-down can run deep on a real codebase. If it is still surfacing branches when time is up, take the most recent sharpened plan, approve it, and move to Phase 5. The branches that did not surface today are the ones you will catch when you actually ship the work. The exercise teaches the move. You take the move home.
+
+The three-at-a-time prose above is the starting point; that batching cuts round-trips on the branches that need real thought. If you prefer a structured picker, switch once the walk-down is rolling. Ask Claude to switch to AskUserQuestion, and add any steering of your own.
+
+{{prompt:push-back-on-the-plan-2-askuserquestion}}
 
 *Credit: Matt Pocock for the original [`grill-me`](https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md) skill. The version above is abbreviated to fit the 15-minute slot. The original is fully relentless and can run an hour. Optional:*
 
@@ -83,7 +89,7 @@ Neither is complete. Paired, they usually are.
 
 **Plan-mode approval inflation** is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions. One pass by you catches some of it. The second read catches the rest. That's the move.
 
-On to the Compound step. The Debrief writes the pattern into your personal `CLAUDE.local.md` in a shape you can re-run on your next plan-mode pass. Team-worthy patterns get flagged for a separate PR against team `CLAUDE.md`.
+On to the Compound step, and keep this session open for it. The next step reads this same scrollback to pull the task-shaping rules worth keeping. The Compound step then writes one into your personal `CLAUDE.local.md` in a shape you can re-run on your next plan-mode pass. Team-worthy patterns get flagged for a separate PR against team `CLAUDE.md`.
 
 **What happened:** Claude wrote a plan. You picked *keep planning with feedback* and sent two push-backs: what YOU saw. Claude regenerated. Then you ran a second-pass read: Claude asked one question at a time, walking down branches you didn't think to check, suggesting answers. You confirmed or corrected. The plan sharpened. You approved. You did not run the code. You asked Claude what the second-pass read surfaced that your push-back didn't, and whether any of it would have mattered in execution.
 

@@ -56,6 +56,12 @@ Ask Claude to commit current state on a feature branch, record the coordinates, 
 
 {{prompt:ae101-m4-commit-starting-point}}
 
+The starting-point commit is local, and that's the default. This experiment is throwaway work you can reset away. Module 5 forks from the local commit, so nothing later needs a push.
+
+Optional: if you want the run to outlast your laptop or to hand it to someone, ask Claude to push the branch and set its upstream.
+
+{{prompt:ae101-m4-push-starting-point}}
+
 Ask Claude to run the scoped task end-to-end in this same session, with your rules files, memory, ADRs, and skills loaded.
 
 {{prompt:ae101-m4-take-task-end-to-end}}

@@ -10,6 +10,8 @@ Open a new Claude Code session in the M5 worktree at `../<repo>-m5` (set up at m
 /rename m5-diagnose-resend
 ```
 
+**HOX** You should be in the M5 worktree now. Make sure you are not continuing on the M4 repo or branch.
+
 **What you do:** Read the un-packaged M4 artefact through three failure-mode lenses. For each named failure, ask what validation would have caught it in minutes, not hours. Build a verifier shaped against your dominant failure (one of three shapes). Assemble a task-scoped reference artefact + plan.md in conversation. At Debrief, the module re-sends the same task packaged.
 
 **The point:** Ronacher's three-pattern earns its name in this exercise. You don't learn it from a slide; you build each piece against a failure you read in your own artefact. The closing lecture names what you built afterward.

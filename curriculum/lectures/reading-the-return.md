@@ -6,7 +6,7 @@ Here is the question that drives M5.
 
 **What would have caught this earlier in the run?**
 
-Practitioners running these for hours sharpen it as *at hour 2, not hour 6.* At your scale, *at minute 10, not minute 25.* Same diagnostic question, different clock.
+Practitioners running these for hours sharpen it as *at hour 2, not hour 6.* On a short run it is *at minute 10, not minute 25.* Same diagnostic question, different clock.
 
 Not "did the run succeed." Not "should I have spec'd it tighter." A diagnostic. You read the artefact, you find what went wrong, and for each thing you ask: what would have caught this earlier?
 

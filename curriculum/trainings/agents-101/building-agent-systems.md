@@ -65,7 +65,7 @@ Before the next module, try making a few more agents you actually need. Pick by 
 
 ## Homework after Module 2, between-module reading
 
-[Schedule your personal agent](exercises/personal-agent-homework.md). Schedule a daily agent that reads your challenge memory for one week of observation. Read [Agent Trigger List, After Module 2](supplementary/agent-trigger-list.md#after-module-2--start-noticing-trigger-moments) and start noticing when real work should call the agent. Read selected sections from [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) on tools, memory, and context. Then do [Before Module 3](exercises/module-3-prework.md): pick three practitioner pieces, and read the plain-language primer on helper agents.
+[Schedule your personal agent](exercises/personal-agent-homework.md). Schedule a daily agent that reads your challenge memory for one week of observation. Read [Agent Trigger List, After Module 2](supplementary/agent-trigger-list.md#after-module-2-start-noticing-trigger-moments) and start noticing when real work should call the agent. Read selected sections from [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) on tools, memory, and context. Then do [Before Module 3](exercises/module-3-prework.md): pick three practitioner pieces, and read the plain-language primer on helper agents.
 
 <!-- maintainer -->
 

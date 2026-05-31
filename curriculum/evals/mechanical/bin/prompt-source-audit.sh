@@ -112,17 +112,15 @@ else
       note_sev2 "P3 markdown shout in $name: $(echo "$p3_hits" | head -1)"
     fi
 
-    # P4: curriculum-vocab leak. Carve-out per check_prompts.md rule 32 —
-    # M-references are exempt when they're load-bearing identifiers (branch
-    # names, literal commit messages, worktree paths, transcript-path slugs).
-    # Strip those before checking:
-    #   - backtick code spans (paths, branch names like `m4/<slug>`)
-    #   - double-quoted strings (literal commit messages like "M4 starting point")
-    #   - paths containing m[1-9]/ or -m[1-9] (worktree dirs, branch refs)
-    p4_clean=$(sed -E -e 's/`[^`]*`//g' -e 's/"[^"]*"//g' -e 's|[^ ]*[-/]m[1-9][^ ]*||g' "$prompt")
-    p4_hits=$(echo "$p4_clean" | grep -nwE 'M[1-9]|the training|the send-off|compounding|the kit|requirement-weaving|the M-arc' || true)
+    # P4: curriculum-coined-label leak (§40b). Module numbers are NO LONGER
+    # checked here — §32 was inverted 2026-05-31 (module numbers in prompt prose
+    # ground the session). What still leaks is a curriculum-coined event/exercise
+    # label with no in-session referent ("the send-off", "the kit"). Strip code
+    # spans + double-quotes first so a token inside a path/literal doesn't fire.
+    p4_clean=$(sed -E -e 's/`[^`]*`//g' -e 's/"[^"]*"//g' "$prompt")
+    p4_hits=$(echo "$p4_clean" | grep -nwE 'the training|the send-off|compounding|the kit|requirement-weaving|the M-arc' || true)
     if [[ -n "$p4_hits" ]]; then
-      note_sev1 "P4 curriculum vocab in $name: $(echo "$p4_hits" | head -1)"
+      note_sev1 "P4 curriculum-coined label in $name: $(echo "$p4_hits" | head -1)"
     fi
 
     # P5: open-hook (last non-whitespace char is colon). FLAG only.

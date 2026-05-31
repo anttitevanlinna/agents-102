@@ -4,6 +4,15 @@ dest: Claude Code
 context: only if something earned itself
 runtime: any
 origin: agentic-engineering-101/plan-mode-done-right
+note: |
+  Deliberate imprecision — do NOT tighten. "The file gets the rule alone" is
+  plausible-but-loaded on purpose: the M2 exercise (plan-mode-done-right.md — the
+  callout right below this marker + Key Concept "precise prompting is harder than it
+  looks") wants the student to read it, watch the diff, and catch that "alone" could
+  overwrite ./CLAUDE.local.md and nuke M1's rules + the five task-shape rules.
+  Rewording to "add at the end / leave existing untouched" removes the lesson.
+  Headless-autonomous data-loss (no human at the diff) is a harness concern
+  (tmux-runner/IMPROVEMENTS.md), not a curriculum fix.
 requires:
   - id: design-pattern-named
     source: prompt:push-back-on-the-plan-3

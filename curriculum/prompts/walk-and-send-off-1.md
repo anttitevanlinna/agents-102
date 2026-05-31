@@ -3,6 +3,15 @@ key: walk-and-send-off-1
 dest: Claude Code
 runtime: any
 origin: exercises/walk-and-send-off
+note: |
+  Deliberate: the saved task.md has no shape constraint on purpose. M4 is the
+  designed-to-fail un-packaged run (see walk-and-send-off.md maintainer block,
+  "un-packaged is by design"). The agent's task-card instinct may stamp a
+  speculative "Branch:" header that later mismatches the real run-coordinates
+  branch from ae101-m4-commit-starting-point — that rough recovery doc is part of
+  the M4 lesson. Do NOT constrain this to prose-only / no-metadata to "fix" it.
+  The M5 reader (ae101-m5-worktree-setup, df17bc0) already ignores the decoy so
+  the harness doesn't break on the deliberate roughness.
 requires:
   - id: candidate-tasks
     source: scrollback (student arrives with 1-2 candidate tasks per M4 Connections)

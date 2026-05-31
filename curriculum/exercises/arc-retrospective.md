@@ -10,7 +10,9 @@
 
 ---
 
-Open a new Claude Code session in the Module 5 worktree (the same one Module 6 Phase 1 + 2 ran in). A fresh session, so there's no scrollback coloring the read. The artefacts across all six modules, `CLAUDE.local.md`, `observations/`, ADRs, both authored skills, both runs' commits, are accessible via git refs and the worktree state. Both runs' branch names and transcript paths are recorded on disk: M4 in `task.md`, M5 in `plan.md`'s protected `Run coordinates` block. Ask the agent to walk them and write the arc from them.
+**Note** This continues in the same session that ran the Module 6 Phase 1 + 2 work, in the Module 5 worktree. No new session. The fresh, uncoloured view comes from the sub-task the prompt spawns.
+
+The artefacts across all six modules, `CLAUDE.local.md`, `observations/`, ADRs, both authored skills, both runs' commits, are accessible via git refs and the worktree state. Both runs' branch names and transcript paths are recorded on disk: M4 in `task.md`, M5 in `plan.md`'s protected `Run coordinates` block. Ask the agent to walk them and write the arc from them.
 
 {{prompt:arc-retrospective-1}}
 

@@ -38,12 +38,12 @@ First, the reference artefact. A task-local file (not my codebase rules — thos
 - The task scope and success criteria, in two or three sentences
 - Pointers to the memory pages, any ADRs, any authored skills, and connectors most relevant to THIS task
 - The constraints the verifier we just built will enforce (the verifier owns execution checks; the reference names WHAT good looks like, not how it's measured)
-- **The tests that name the bar** — scoped to this task's core paths, named before any code lands. Tests are a first-class part of the task spec for anything load-bearing; throwaway experiments can skip. Where a core requirement resists being named as a test, flag it as a question, not a rule.
+- The tests that name the bar: scoped to this task's core paths, named before any code lands. Tests are a first-class part of the task spec for anything load-bearing; throwaway experiments can skip. Where a core requirement resists being named as a test, flag it as a question, not a rule.
 - A "done means" line — what the agent should produce that signals task completion (tests green + requirements met)
 
 Second, plan.md. A working document the agent owns and mutates as it runs. Should start with:
 - The task broken into 3–7 phases the agent can re-anchor against
-- **Tests-first phase** — the first phase writes or updates the tests from the reference spec. Code phases come after. The plan makes this ordering explicit.
+- Tests-first phase: the first phase writes or updates the tests from the reference spec. Code phases come after. The plan makes this ordering explicit.
 - A "current phase" line the agent updates as it progresses
 - A "decisions log" section the agent appends to when it makes a load-bearing choice
 - A "what I tried that didn't work" section to prevent context-rot re-derivations

@@ -25,9 +25,9 @@ Read what the un-packaged agent did. The `m4/` branch is named in `./task.md`'s 
 
 Then walk the work through three lenses:
 
-- **Goal drift** — moments where the agent solved an adjacent problem instead of the asked one. Buried instruction, redirected scope.
-- **Context rot** — moments where the agent rehashed an approach it had already considered and ruled out, or re-derived something already in the working window.
-- **Plausible-but-wrong** — outputs that look reasonable in isolation but don't match the original task spec.
+- Goal drift: moments where the agent solved an adjacent problem instead of the asked one. Buried instruction, redirected scope.
+- Context rot: moments where the agent rehashed an approach it had already considered and ruled out, or re-derived something already in the working window.
+- Plausible-but-wrong: outputs that look reasonable in isolation but don't match the original task spec.
 
 For EACH lens, quote one specific moment from the artefact (commit message, file change, scrollback line). Don't generalise; quote. If a lens has no instance, say so — that's data too.
 

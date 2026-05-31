@@ -10,7 +10,7 @@
  *   - THIS                     check_prompts body rules that are grep-decidable,
  *                              on the registry source itself, all prompts, gated.
  *
- * It extends the P-checks in prompt-source-audit.sh (which cover §1/§4/§9/§32)
+ * It extends the P-checks in prompt-source-audit.sh (which cover §1/§4/§9)
  * onto the registry and adds the grep-decidable ORPHAN rules that no standing
  * checker fired: §28 (label leak), §31 (nested fence / marker-in-body), §24
  * (machine-absolute path). The judgment rules stay with the LLM judges.
@@ -22,7 +22,7 @@
  *   §24 machine-absolute path        Sev-2  /Users/… leaks one machine into the paste
  *   §28 prompt label leak            Sev-1  body contains **Prompt (expander reconstructs it)
  *   §31 nested fence / marker        Sev-1  ``` or {{prompt:}} inside a registry body
- *   §32 module-number in prose       Sev-2  bare M-number / "Module N" (carve-outs: backtick/quote/path)
+ *   (§32 retired 2026-05-31 — module numbers in prompt prose ground, don't leak)
  *
  * Severity: Sev-1 breaks a cold paste or the render → exit 1. Sev-2 degrades → exit 0, reported.
  *
@@ -53,16 +53,6 @@ function stripLinks(s) {
 // Strip `inline code` spans — paths, globs, branch names live here and are exempt.
 function stripBackticks(s) {
   return s.replace(/`[^`]*`/g, '');
-}
-
-// §32 carve-out (ported from prompt-source-audit.sh P4): M-tokens are exempt when
-// they are load-bearing identifiers — backtick code spans (paths, `m4/<slug>`),
-// double-quoted literals ("M4 starting point"), and m[1-9]/ -m[1-9] path fragments.
-function stripModuleExempt(s) {
-  return s
-    .replace(/`[^`]*`/g, '')
-    .replace(/"[^"]*"/g, '')
-    .replace(/\S*[-/]m[1-9]\S*/g, '');
 }
 
 // firstHit: returns {line, lineNo} of the first matching line, or null.
@@ -126,15 +116,11 @@ function lintBody(key, body) {
   const nestedMarker = firstHit(body, /\{\{prompt:[a-z0-9-]+\}\}/);
   if (nestedMarker) add('Sev-1', '§31', `{{prompt:}} marker inside a registry body: line ${nestedMarker.lineNo}`);
 
-  // §32 — bare module-number in prose. Scoped to the rule's actual subject —
-  // module identifiers (M1-M9 / "Module N") — NOT the fuzzier "the training" /
-  // "the send-off" net P4 uses, which false-fires on legitimate domain language
-  // ("beyond the training directory", "the send-off commit"). A bare M-number
-  // doesn't break the paste — it reads inside-baseball — so Sev-2, not gating.
-  // Carve-outs (backtick / double-quote / m[1-9] path) stripped first.
-  const clean = stripModuleExempt(body);
-  const moduleRef = firstHit(clean, /\b(M[1-9]|Module [1-9])\b/);
-  if (moduleRef) add('Sev-2', '§32', `module-number in prose: ${moduleRef.line} (line ${moduleRef.lineNo})`);
+  // §32 — RETIRED 2026-05-31. The rule was inverted: module numbers in prompt
+  // prose ground the session (artifacts are module-numbered by design), they
+  // don't leak. The live concern is curriculum-coined event/exercise labels
+  // with no in-session referent (§40b) — handled by prompt-source-audit.sh P4,
+  // not lint-able by a bare-token regex without false-firing on domain language.
 
   return findings;
 }

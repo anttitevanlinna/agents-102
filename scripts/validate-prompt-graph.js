@@ -27,6 +27,10 @@
  *      - BODY-PREMATURE  a body-referenced artefact's producer is later.
  *      - OPP-NOT-OPTIONAL an opportunistic-copy artefact is read in the body
  *                        with no optionality signal (masquerades as a hard read).
+ *      - CONFIG-STALE    a hardcoded BODY_PRIMITIVES id matches no frontmatter id
+ *                        (the one graph reference requires/produces can't check —
+ *                        it lives in this file; a rename that missed it would
+ *                        silently mis-flag every body that reads the artefact).
  *
  * Usage:
  *   node scripts/validate-prompt-graph.js                       # AE101
@@ -150,6 +154,18 @@ function optionalitySignalled(body) {
   return /\bif\s+(?:it\s+)?(?:exists|present)\b|\bif\s+present\b|\(if\b|\bif\s+absent\b|\bno-?op\b|\bwhen\s+present\b/i.test(body);
 }
 
+// Self-check on the validator's OWN config. Each BODY_PRIMITIVES entry keys a
+// body-regex to a frontmatter artefact id. That id is the one graph reference
+// the requires/produces machinery can't validate — it lives in this file, not
+// in a prompt — so a rename that touches every prompt but misses this list (or
+// the reverse) would silently mis-flag. Guard: every primitive id must appear
+// as a real frontmatter id somewhere in the graph. `knownIds` is the set of all
+// produces/requires/opportunistic-copy ids; returns the primitives that match
+// none of them.
+function findStalePrimitives(primitives, knownIds) {
+  return primitives.filter((p) => !knownIds.has(p.id));
+}
+
 function validate(trainingKey) {
   const registry = loadRegistry();
   const ordered = orderedKeys(trainingKey);
@@ -161,16 +177,22 @@ function validate(trainingKey) {
   });
 
   // Producer index: artefact id → sorted list of {key, pos}.
+  // Also collect every frontmatter id (produces / requires / opportunistic-copy)
+  // so the validator can self-check its hardcoded BODY_PRIMITIVES config below.
   const producersById = new Map();
+  const knownIds = new Set();
   for (const { key } of ordered) {
     const prompt = registry[key];
     if (!prompt) continue;
     const pos = posByKey.get(key);
     for (const p of asArray(prompt.produces)) {
       if (!p || !p.id) continue;
+      knownIds.add(p.id);
       if (!producersById.has(p.id)) producersById.set(p.id, []);
       producersById.get(p.id).push({ key, pos });
     }
+    for (const r of asArray(prompt.requires)) if (r && r.id) knownIds.add(r.id);
+    for (const o of asArray(prompt['opportunistic-copy'])) if (o && o.id) knownIds.add(o.id);
   }
   for (const list of producersById.values()) list.sort((a, b) => a.pos - b.pos);
 
@@ -182,6 +204,14 @@ function validate(trainingKey) {
   const findings = [];
   const add = (severity, code, key, message) =>
     findings.push({ severity, code, key, message });
+
+  // Validator config self-check (see findStalePrimitives): a hardcoded
+  // body-primitive id that matches no frontmatter id means the config drifted
+  // out from under a rename — the one reference the graph can't otherwise catch.
+  for (const prim of findStalePrimitives(BODY_PRIMITIVES, knownIds)) {
+    add('error', 'CONFIG-STALE', '(config)',
+      `BODY_PRIMITIVES id '${prim.id}' (${prim.label}) matches no produces/requires/opportunistic-copy id in ${trainingKey} — validator config is stale (renamed without updating BODY_PRIMITIVES, or vice-versa)`);
+  }
 
   const seenKeys = new Set();
   for (const { key } of ordered) {
@@ -307,4 +337,4 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { validate, orderedKeys };
+module.exports = { validate, orderedKeys, findStalePrimitives, BODY_PRIMITIVES };

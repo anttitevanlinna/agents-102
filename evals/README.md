@@ -32,13 +32,12 @@ Launch a Claude subagent with the judge prompt from the relevant `judges/*.md` f
 | C | `087dc020-fb3e-478f-9bac-f7d250fed506` |
 | D | `1481fb79-6d72-4a71-8f51-1903ad0c6cd4` |
 
-## Four Themes
+## Themes
 
 ### Theme A: "CTOs can find what they need by prompting"
 
 Tests whether the research content produces useful answers to realistic CTO questions.
 
-**Scorable judge:** `6d829329-df54-4bf4-b2d7-6b16eec9753e`
 **Evaluators:** Relevance, Specificity, Actionability, Evidence Grounding
 
 **Subagent flow:**
@@ -49,7 +48,6 @@ Tests whether the research content produces useful answers to realistic CTO ques
 
 Tests whether individual findings meet editorial standards.
 
-**Scorable judge:** `b1d1b71a-97ae-49c9-aa8f-8ab410085934`
 **Evaluators:** Source Verifiability, Agentic Gate, Vendor Bias, Specificity, Nordic Label
 
 **Subagent flow:** Launch 3-4 **judge agents** in parallel (split by file group). Each reads findings files + judge prompts, scores each finding on 5 dimensions, writes `results/theme-b-batch-{N}.json`
@@ -58,7 +56,6 @@ Tests whether individual findings meet editorial standards.
 
 Tests whether user-facing text makes claims it can't support. Catches epistemic overreach: temporal predictions, false certainty, stale time anchors, dismissive framing, unfalsifiable claims, ungrounded analogies.
 
-**Scorable judge:** `087dc020-fb3e-478f-9bac-f7d250fed506`
 **Evaluators:** Predictive Integrity, Framing/Anchoring, Substantive Grounding
 
 **Subagent flow:** Launch **1 agent** per file group. Agent reads target files + judge prompt, extracts user-facing strings, applies 6 tests, writes `results/copy-eval.md`.
@@ -67,19 +64,12 @@ Tests whether user-facing text makes claims it can't support. Catches epistemic 
 
 Tests whether training modules follow the pedagogical guardrails: Bloom's taxonomy, TBR 4Cs, builder voice, audience calibration, plug points, strategic throughline.
 
-**Scorable judge:** `1481fb79-6d72-4a71-8f51-1903ad0c6cd4`
 **Evaluators:** Pedagogical Alignment, Exercise-Led Design, Builder Voice, Plug Points
 
 **Subagent flow:** Launch **1 agent** per module. Agent reads module + `curriculum/lecture-guardrails.md`, scores against all guardrails, writes `results/theme-d-module-{N}.json`.
 
 ## Scoring
 
-### Scorable (automated)
-- Each evaluator scores **0-1** with justification
-- **Pass threshold:** Average >= 0.7 across all evaluators
-- **Auto-flag:** Any evaluator score below 0.3 triggers review
-
-### Subagent (manual)
 - Each judge scores **1-5** with reasoning
 - **Pass threshold:** Average >= 3.5 across all judges
 - **Auto-flag:** Any individual score of 1 triggers review

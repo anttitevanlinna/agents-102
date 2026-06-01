@@ -14,8 +14,8 @@ Two reasons:
 
 1. **Edit protection.** Prompts are the load-bearing instructional content.
    They must change only with maintainer review. Centralising them creates one
-   audit surface for `PostToolUse` enforcement (see
-   `.claude/hooks/prompt-approval-gate.sh`).
+   audit surface for hook enforcement (see
+   `.claude/hooks/prompt-edit-gate.sh`).
 2. **Cross-prompt audit.** Path conventions, lead-in shape, back-reference
    discipline, banned-phrase scans — all easier to run against one directory
    than across every module file in every training.

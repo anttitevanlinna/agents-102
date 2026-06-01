@@ -6,9 +6,10 @@
 # The feature being threat-modeled is the public guest-link status
 # endpoint M2 planned at
 # ~/.claude/plans/m2-picoshare-public-guest-status-<adj>-<animal>.md
-# (slug from a fresh M2 dry-run — line 50 below has the first dry-run's
-# actual slug; the -4 tail's "different slug" fallback handles
-# variation across cohort runs). New attack surface deliberately
+# (slug from this run's M2; map-the-access-surface-2 tail globs the
+# directory rather than hardcoding the slug, so cohort-to-cohort
+# variation is absorbed at the tail rather than the runner). New
+# attack surface deliberately
 # introduced by M2: a public read-side endpoint that hits the DB on
 # every call, with a response shape that distinguishes 4-way link state
 # (active / disabled / expired / unknown). The endpoint's lack of
@@ -61,7 +62,7 @@
 ae101-m3-fork-quality-side Don't call AskUserQuestion. Do the worktree create and the CLAUDE.local.md copy as instructed. SKIP the observations/ copy — observations/ doesn't exist in this repo yet (it's authored later in the arc), so the conditional "if it exists" copy is correctly a no-op here. Report what you did in plain chat and stop. If you have observations about the setup or other gaps, surface them in your reply (numbered) — I'll address them after the run if they're real, but don't block on me.
 
 # Phase B (security side): map → STRIDE → ADR (with approval) → auto-load Q.
-map-the-access-surface-2 The feature is described in the plan at /Users/anttitevanlinna/.claude/plans/m2-picoshare-public-guest-status-vigilant-pangolin.md — read it first, then invoke the skill on what's described there. If a slightly different plan filename is present (same shape, different adjective-animal slug from a fresh M2 run), use that one and tell me which file you read.
+map-the-access-surface-2 Don't call AskUserQuestion. The feature is described in the plan written by M2 — find it under ~/.claude/plans/ matching m2-picoshare-public-guest-status-*.md (it'll be `<adjective>-<animal>` slugged from this run's M2). Read it first, then invoke the skill on what's described there. Tell me which file you read.
 
 map-the-access-surface-3
 

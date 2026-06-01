@@ -49,7 +49,7 @@ Pedagogy compendium technical sub-rules (items the plan-pressure-test identified
 
 ## Out of scope (do NOT do)
 
-- Real Claude runs against prompts. The mechanical harness at `curriculum/evals/mechanical/runners/` owns that. If you suspect a prompt would mis-execute, mark a TODO referencing the runner; do not run it yourself.
+- Real Claude runs against prompts. That's the pre-ship `tmux-runner` system test (`curriculum/evals/mechanical/tmux-runner/`), not this judge. If you suspect a prompt would mis-execute, mark a TODO; do not run it yourself.
 - **Editing ANY part of the target file, including the maintainer block.** Verdicts only. Do NOT update the `**Quality:**` line. Do NOT advance `technical@<sha>` pins. Do NOT touch dimension-log rows. Quality stamping is the orchestrator's job via `update-quality.sh`, called AFTER you return the verdict — see `memory/compounded/2026-05-02-platform-sim-eval-verdicts-are-read-only.md`. The mention of "Quality stamping" elsewhere in this template refers to what the orchestrator does with your verdict, not what you do yourself.
 - Deep webfetch of every URL. Sample 3–5; if all are alive, mark URL-liveness PASS with note "<N>/<N> sampled alive."
 
@@ -116,7 +116,7 @@ OUTPUT ONLY THE JSON. No prose preamble.
 
 This file is loaded by `.claude/skills/eval-fire/SKILL.md` step 3 when the class is `technical`. Substitute `{{file_path}}` and `{{compendium_paths}}` before dispatch.
 
-When the parallel work-stream's mechanical harness gates on prompt-text-changed, this judge will gain a sixth surface: dispatch matching `mechanical/runners/<slug>.actor.md` + `<slug>.judge.md` pairs and aggregate their verdicts. Until then, the judge stays static-only.
+Prompt execution against real Claude is owned by the pre-ship `tmux-runner` system test (`curriculum/evals/mechanical/tmux-runner/`), a separate run-and-fix gate — not a surface this judge dispatches. This judge stays static-only. (The old actor/judge `mechanical/runners/` pairs that this once anticipated were removed 2026-06-01.)
 
 When a new technical-class rule lands in any compendium, this template doesn't change. Update only when:
 

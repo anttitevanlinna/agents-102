@@ -119,7 +119,7 @@ curriculum/evals/scripts/update-quality.sh <file_path> --<class> PASS
 curriculum/evals/scripts/update-quality.sh <file_path> --<class> REVISE:<NB>/<NT>-see-instances/ae101--<slug>.<class>.json
 ```
 
-The script is deterministic, touches ONLY the maintainer-block Quality state, and is the only sanctioned writer of that block. Free-form Quality edits drift; the script keeps the format consistent. This is the **script-ratchet endpoint** for the four-class judges — same shape as `bin/judge.sh` calling it on mechanical PASS.
+The script is deterministic, touches ONLY the maintainer-block Quality state, and is the only sanctioned writer of that block. Free-form Quality edits drift; the script keeps the format consistent. This is the **script-ratchet endpoint** for the judge classes — a verdict in, a consistent Quality row out.
 
 REVISE-stamped files still route through `/content-creation` per Step 7 for the actual fixes. The cycle-close re-fire of `/eval-fire` overwrites the REVISE row with PASS once the cycle closes (or with a tighter REVISE if blockers remain). Canonical source: `memory/compounded/2026-05-03-platform-todos-route-to-training-tracking-surface-not-maintainer-blocks.md` (related — the Quality block is the per-class state surface; `pre-cohort-todos.md` is the cross-file TODO surface; the two are not redundant).
 

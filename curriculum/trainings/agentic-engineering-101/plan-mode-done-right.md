@@ -84,7 +84,6 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 **Quality:** compendium-audited 2026-05-26 (writing@0ef2ca6 story@1a9e10b technical@0ef2ca6 behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b)
 - judges @0ef2ca6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - cross_module @0ef2ca6: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop,plan-mode-done-right]
-- mechanical: pending re-run on tmux-runner (ae101-m2-pushback; old bin/judge.sh runner decommissioned 2026-05-31, prior PASS @6121abd no longer counts — predates later edits)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

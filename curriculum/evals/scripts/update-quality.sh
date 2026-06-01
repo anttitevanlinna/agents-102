@@ -4,12 +4,15 @@
 # Quality is current state, not history. Git carries the chain. The script
 # replaces the **Quality:** line + the immediately-following `- ` rows.
 #
-# FIVE axes (each renders as ≤1 row):
+# FOUR axes (each renders as ≤1 row):
 #   judges               — six-class verdict (writing/story/technical/behavior/pedagogy/strategy)
 #   cross_module         — module-set verdict (fires at module-set scope only)
-#   mechanical           — mechanical battery (tmux-runner; bin/judge.sh decommissioned 2026-05-31)
 #   maintainer-reviewed  — Antti read end-to-end + ran prompts manually
 #   cohorts              — delivery state
+#
+# (mechanical axis removed 2026-06-01 — the tmux-runner battery is a pre-ship
+#  system test, run-and-fix, not a recorded Quality row. The stamper strips any
+#  stray `- mechanical` row it encounters on re-stamp.)
 #
 # Per-judge-class flags (these roll up into ONE judges row):
 #   --writing    <state>[:<note>]
@@ -21,7 +24,6 @@
 #
 # Other axis flags:
 #   --cross-module        <state>[:<note>]   # module-set scope; note typically `set=[...]`
-#   --mechanical          <state>[:<note>]
 #   --maintainer-reviewed <state>[:<note>]
 #   --cohorts             <state>[:<note>]
 #
@@ -36,14 +38,15 @@
 #   --sha <short-sha>   default: current HEAD
 #   --date <YYYY-MM-DD> default: today
 #   --stage <word>      set the top-line ladder stage explicitly (compendium-audited /
-#                       sim-passed / mechanical-tested — 'draft' removed 2026-05-31). Delivery
-#                       reality is NOT a ladder rung — it lives on the `cohorts` log row.
+#                       sim-passed — 'draft' removed 2026-05-31, 'mechanical-tested' removed
+#                       2026-06-01). Delivery reality is NOT a ladder rung — it lives on the
+#                       `cohorts` log row; the tmux-runner system test is an unrecorded pre-ship gate.
 #                       DEFAULT: preserve the file's existing stage word. Re-stamping pins or
 #                       axes never advances the stage on its own — advancement is deliberate.
 
 set -eu
 
-usage() { sed -n '2,41p' "$0"; exit 2; }
+usage() { sed -n '2,45p' "$0"; exit 2; }
 
 [[ $# -lt 1 ]] && usage
 
@@ -64,7 +67,6 @@ state_strategy=keep
 
 # Axis state
 state_cross_module=keep
-state_mechanical=keep
 state_maintainer_reviewed=keep
 state_cohorts=keep
 
@@ -77,7 +79,6 @@ while [[ $# -gt 0 ]]; do
     --pedagogy)            state_pedagogy="$2"; shift 2 ;;
     --strategy)            state_strategy="$2"; shift 2 ;;
     --cross-module)        state_cross_module="$2"; shift 2 ;;
-    --mechanical)          state_mechanical="$2"; shift 2 ;;
     --maintainer-reviewed) state_maintainer_reviewed="$2"; shift 2 ;;
     --cohorts)             state_cohorts="$2"; shift 2 ;;
     --sha)                 SHA="$2"; shift 2 ;;
@@ -91,7 +92,7 @@ done
 # REVISE without note is a hard error
 for v in "$state_writing" "$state_story" "$state_technical" "$state_behavior" \
          "$state_pedagogy" "$state_strategy" "$state_cross_module" \
-         "$state_mechanical" "$state_maintainer_reviewed" "$state_cohorts"; do
+         "$state_maintainer_reviewed" "$state_cohorts"; do
   if [[ "$v" == "REVISE" ]]; then
     echo "error: REVISE state requires :<note> (cause or accept-reason)" >&2
     exit 1
@@ -101,7 +102,6 @@ done
 # ---- Read existing Quality block to support --keep ---------------------------
 keep_judges=""
 keep_cross_module=""
-keep_mechanical=""
 keep_maintainer=""
 keep_cohorts=""
 prior_top=""
@@ -124,7 +124,6 @@ while IFS= read -r line; do
     case "$line" in
       "- judges:"*|"- judges "*)                     keep_judges="$line" ;;
       "- cross_module:"*|"- cross_module "*)         keep_cross_module="$line" ;;
-      "- mechanical:"*|"- mechanical "*|"- mechanical-tested:"*|"- mechanical-tested "*) keep_mechanical="$line" ;;
       "- maintainer-reviewed:"*|"- maintainer-reviewed "*) keep_maintainer="$line" ;;
       "- cohorts:"*|"- cohorts "*) keep_cohorts="$line" ;;
       ""|"**"*)                                       in_block=0 ;;
@@ -288,7 +287,6 @@ render_axis_row() {
 }
 
 cross_module_row=$(render_axis_row cross_module "$state_cross_module" "$keep_cross_module")
-mechanical_row=$(render_axis_row mechanical "$state_mechanical" "$keep_mechanical")
 maintainer_row=$(render_axis_row maintainer-reviewed "$state_maintainer_reviewed" "$keep_maintainer")
 cohorts_row=$(render_axis_row cohorts "$state_cohorts" "$keep_cohorts")
 
@@ -319,9 +317,9 @@ for pair in "writing $state_writing" "story $state_story" \
 done
 
 # Top-line date: bump to DATE iff a judge-class state was actually set this run.
-# Otherwise preserve the prior date so a mechanical-only stamp doesn't lie about
-# when the compendium audit happened. Stage-agnostic — matches any prior stage word,
-# not only compendium-audited (the old regex fabricated today's date for drafts).
+# Otherwise preserve the prior date so an axis-only stamp (cohorts / maintainer-reviewed)
+# doesn't lie about when the compendium audit happened. Stage-agnostic — matches any prior
+# stage word, not only compendium-audited (the old regex fabricated today's date for drafts).
 top_date="$DATE"
 if [[ $all_keep -eq 1 && -n "$prior_top" ]]; then
   prior_date=$(printf '%s\n' "$prior_top" | sed -nE 's/^\*\*Quality:\*\* [a-z][a-z-]* ([0-9]{4}-[0-9]{2}-[0-9]{2}).*/\1/p')
@@ -332,8 +330,7 @@ fi
 #   1. --stage <word> set this run → use it (the only deliberate ladder advance).
 #   2. A prior stage word on the existing line → preserve it. Re-stamping pins or
 #      axes must NEVER promote/demote the tier. (The old code hardcoded
-#      compendium-audited, silently promoting + demoting sim-passed / mechanical-tested
-#      files on every stamp.)
+#      compendium-audited, silently promoting + demoting sim-passed files on every stamp.)
 #   3. No prior block but a judge class set this run → compendium-audited (a real
 #      compendium audit just happened).
 #   4. Otherwise: REFUSE. 'draft' was the old floor default (removed 2026-05-31) — the
@@ -351,12 +348,14 @@ else
   exit 1
 fi
 
-# 'draft' is phased out: a file is audited (compendium-audited / sim-passed /
-# mechanical-tested) or carries no Quality line. Reject draft from --stage or a
-# legacy line so it can never re-enter the corpus through a stamp.
-if [[ "$stage" == "draft" ]]; then
-  echo "error: 'draft' is no longer a ladder stage (removed 2026-05-31)." >&2
-  echo "       Re-stamp with a real --stage (compendium-audited / sim-passed / mechanical-tested)," >&2
+# 'draft' is phased out: a file is audited (compendium-audited / sim-passed) or
+# carries no Quality line. Reject draft from --stage or a legacy line so it can
+# never re-enter the corpus through a stamp. ('mechanical-tested' is likewise no
+# longer a stage — removed 2026-06-01 — but it was never a --stage default, so the
+# draft guard is the only legacy floor worth rejecting explicitly.)
+if [[ "$stage" == "draft" || "$stage" == "mechanical-tested" ]]; then
+  echo "error: '$stage' is no longer a ladder stage (draft removed 2026-05-31; mechanical-tested removed 2026-06-01)." >&2
+  echo "       Re-stamp with a real --stage (compendium-audited / sim-passed)," >&2
   echo "       or remove the Quality line so the file reads as un-audited." >&2
   exit 1
 fi
@@ -379,7 +378,6 @@ TMP="$(mktemp)"
 awk -v top="$NEW_TOP" \
     -v rj="$judges_row" \
     -v rxm="$cross_module_row" \
-    -v rm="$mechanical_row" \
     -v rmr="$maintainer_row" \
     -v rc="$cohorts_row" '
   BEGIN { in_block = 0; written = 0 }
@@ -387,7 +385,6 @@ awk -v top="$NEW_TOP" \
     print top
     if (rj  != "") print rj
     if (rxm != "") print rxm
-    if (rm  != "") print rm
     if (rmr != "") print rmr
     if (rc  != "") print rc
     in_block = 1; written = 1
@@ -395,10 +392,12 @@ awk -v top="$NEW_TOP" \
   }
   in_block == 1 {
     if ($0 ~ /^- /) {
-      # Drop only the rows we just reconstructed at the top of the block
-      # (judges / cross_module / mechanical[-tested] / maintainer-reviewed /
-      # cohorts); preserve every OTHER dash row verbatim in place
-      # — sim-passed, stage-history, provenance notes. The old splice deleted them all.
+      # Drop the rows we just reconstructed at the top of the block
+      # (judges / cross_module / maintainer-reviewed / cohorts); preserve every
+      # OTHER dash row verbatim in place — sim-passed, stage-history, provenance
+      # notes. The old splice deleted them all. The `- mechanical` drop has no
+      # matching reconstruct line: mechanical was removed as an axis 2026-06-01,
+      # so this purges any stray legacy row on re-stamp (GC, not round-trip).
       if ($0 ~ /^- judges[ :]/) next
       if ($0 ~ /^- cross_module[ :]/) next
       if ($0 ~ /^- mechanical(-tested)?[ :]/) next
@@ -418,7 +417,6 @@ awk -v top="$NEW_TOP" \
       print top
       if (rj  != "") print rj
       if (rxm != "") print rxm
-      if (rm  != "") print rm
       if (rmr != "") print rmr
       if (rc  != "") print rc
     }

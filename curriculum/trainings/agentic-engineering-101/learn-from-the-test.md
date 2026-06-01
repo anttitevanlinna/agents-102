@@ -105,7 +105,6 @@ Optional. Skipping does not break Module 6. The piece lands in the Module 5 to M
 **Quality:** compendium-audited 2026-05-26 (writing@0ef2ca6 story@1ff6f8a technical@0ef2ca6 behavior@1ff6f8a pedagogy@0ef2ca6 strategy@1ff6f8a)
 - judges @0ef2ca6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - cross_module @0ef2ca6: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop,plan-mode-done-right]
-- mechanical: pending re-run on tmux-runner (ae101-m5; old bin/judge.sh runner decommissioned 2026-05-31, prior PASS @e840433 no longer counts — predates later edits)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create

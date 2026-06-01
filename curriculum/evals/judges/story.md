@@ -27,7 +27,7 @@ SIM TRACE CACHE: {{trace_path}}
 
 The sim trace is structured JSON describing how a typical persona walked through this artefact phase by phase. You evaluate against the trace, not against your own re-simulation, unless the trace is missing or per-phase SHA is stale.
 
-**This is Class A only.** Claude-behavior prediction and behavioral-risk flags moved to Class B (`prompt-behavior` judge, `simulation-behavior.md`). Class A's trace is now narrower: persona action, confusion, artifact state, mood. No `predicted_claude_output`, no `teacher_claude_nudge`. If a `mechanical-tested @ <sha>` line is present in the file's Quality block AND the SHA matches HEAD, prefer reading the mechanical Actor scrollback (`curriculum/evals/mechanical/instances/<runner>-actor-scrollback.md`) for ground-truth `artifact_state` instead of guessing.
+**This is Class A only.** Claude-behavior prediction and behavioral-risk flags moved to Class B (`prompt-behavior` judge, `simulation-behavior.md`). Class A's trace is now narrower: persona action, confusion, artifact state, mood. No `predicted_claude_output`, no `teacher_claude_nudge`.
 
 ### Per-phase cache lookup
 

@@ -27,7 +27,7 @@ The sponsor is a participant, not an observer. Their opening presence gives the 
 ## Prep Before Each Session
 
 - Read the module page on the workbook site, including inlined exercises, lectures, Debrief, Bridge, and references.
-- Check Quality tags in maintainer blocks during prep. `draft` means rehearse harder; `mechanical-tested` means the prompt chain has actually run.
+- Check Quality tags in maintainer blocks during prep. No Quality line means un-audited — rehearse harder; `sim-passed` is the top recorded rung. Whether the prompt chain actually runs is no longer a tag (mechanical is a pre-ship system test, not recorded) — so dry-run it yourself (next bullet).
 - Dry-run every exercise end to end in the runtime the cohort uses.
 - Rehearse the prompt progression, not just individual prompts. Know what each prompt depends on, which folder it assumes, and what evidence it should leave for the next one.
 - Know the lecture material well enough to deliver the point without reading it verbatim.

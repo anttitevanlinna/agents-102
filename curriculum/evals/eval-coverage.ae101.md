@@ -1,6 +1,6 @@
 # AE101 eval-coverage audit — exercises, lectures, modules
 
-Phase 2/3 of the rule-coverage work (Phase 1 = prompts, see `prompt-rule-coverage.ae101.md`). Built 2026-05-31. Proves every prose-rule fired against every AE101 student-facing surface, the same way Phase 1 proved it for prompts.
+Prose-rule coverage audit for AE101 — proves every prose-rule fired against every AE101 student-facing surface. Built 2026-05-31, harness-backed (`scripts/audit-eval-coverage.js`, wired as `npm run audit:eval-coverage`). (The companion one-off prompt-rule report, `prompt-rule-coverage.ae101.md`, was retired 2026-06-01 as unmaintained write-once; this prose-rule audit is the maintained one.)
 
 ## The hole (different from Phase 1)
 

@@ -131,7 +131,6 @@ Read Ethan Mollick, "Garbage Can and Bitter Lesson."
 
 **Quality:** compendium-audited 2026-05-04 (writing@92b7e79 story@92b7e79 technical@92b7e79 behavior@92b7e79)
 - judges @92b7e79: writing PASS, story PASS, technical PASS, behavior PASS
-- mechanical @3d7e76c: PASS — agents-101-m5 30/30 via bin/judge-m5.sh
 
 **Artefact contracts**
 | Artefact | Stable identifier | Produced by | Consumed by |

@@ -70,7 +70,6 @@ You just made great output AND packaged what you learned into a file the agent c
 
 **Quality:** compendium-audited 2026-05-04
 - judges: writing PASS, story PASS, behavior PASS (see instances/getting-going.*.json); technical grandfathered
-- mechanical @3d7e76c: PASS — agents-101-m1 via bin/judge.sh
 - maintainer-reviewed 2026-04-29 (Antti, M1 manual cohort-prep run; read end-to-end, prompts run manually under Cowork lens)
 
 **Meta (trainer):**

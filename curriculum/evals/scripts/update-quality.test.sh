@@ -3,7 +3,7 @@
 #
 # Locks down the Phase-4 fixes:
 #   - stage word is PRESERVED, never hardcoded to compendium-audited (no false promotion)
-#   - the mechanical/cohorts auto-fire path (all-keep) never touches stage word or date
+#   - the axis-only auto-fire path (all-keep) never touches stage word or date
 #   - narrative parentheticals survive a stamp
 #   - sim-passed / history dimension rows survive a stamp (not deleted by the awk splice)
 #   - an explicit --stage flag is the only thing that advances the ladder tier
@@ -11,6 +11,8 @@
 #   - an all-keep no-op stamp is idempotent on a judged block
 #   - 'draft' is removed (2026-05-31): no floor default — the script REFUSES rather than
 #     fabricate a stage; --stage draft and any legacy draft line are rejected.
+#   - the 'mechanical' axis is removed (2026-06-01): no --mechanical flag; a stray legacy
+#     `- mechanical` row is purged (GC) on re-stamp, never reconstructed.
 #
 # Run: bash curriculum/evals/scripts/update-quality.test.sh
 # Exit 0 = all pass; 1 = at least one failure.
@@ -66,7 +68,9 @@ assert_grep "$TMP/t2.md" 'writing@1ff6f8a'   'T2 untouched writing pin kept'
 assert_grep "$TMP/t2.md" '2026-06-01'        'T2 date bumped (a class was set)'
 
 # ── T3 — auto-fire regression: an axis-only stamp never bumps stage or date ──
-#    stage + date frozen, narrative + sim-passed row survive.
+#    stage + date frozen, narrative + sim-passed row survive. Doubles as the
+#    mechanical-axis GC test: the legacy `- mechanical-tested` row is purged on
+#    re-stamp (axis removed 2026-06-01), never reconstructed.
 mkfix t3.md '# Closing lecture
 <!-- maintainer -->
 **Quality:** compendium-audited 2026-04-28 (post rule-#3 sweeps)
@@ -74,11 +78,12 @@ mkfix t3.md '# Closing lecture
 - mechanical-tested: N/A (lectures are trainer-narrated)
 
 body'
-run "$TMP/t3.md" --mechanical "PASS:lesson via tmux-runner" --sha new5678 --date 2026-06-01 >/dev/null
+run "$TMP/t3.md" --maintainer-reviewed PASS --sha new5678 --date 2026-06-01 >/dev/null
 assert_grep    "$TMP/t3.md" '**Quality:** compendium-audited 2026-04-28' 'T3 stage AND date frozen on all-keep'
-assert_no_grep "$TMP/t3.md" '2026-06-01'          'T3 date not bumped by mechanical-only'
+assert_no_grep "$TMP/t3.md" '2026-06-01'          'T3 date not bumped by axis-only stamp'
 assert_grep    "$TMP/t3.md" 'post rule-#3 sweeps' 'T3 narrative preserved'
 assert_grep    "$TMP/t3.md" 'sim-passed 2026-04-27' 'T3 sim-passed row not deleted'
+assert_no_grep "$TMP/t3.md" 'mechanical-tested'   'T3 legacy mechanical row purged (axis removed 2026-06-01)'
 
 # ── T4 — maintainer-reviewed top-state preserved on an axis-only stamp ───────
 mkfix t4.md '# Lecture
@@ -105,7 +110,7 @@ assert_grep "$TMP/t5a.md" 'writing@new5678' 'T5a writing pinned'
 mkfix t5b.md '# New file
 <!-- maintainer -->
 body, no quality line yet'
-rc=$(run "$TMP/t5b.md" --mechanical PASS --sha new5678 --date 2026-06-01)
+rc=$(run "$TMP/t5b.md" --maintainer-reviewed PASS --sha new5678 --date 2026-06-01)
 assert_rc      "$rc" "1" 'T5b new+axis-only refuses (no draft floor)'
 assert_no_grep "$TMP/t5b.md" '**Quality:**' 'T5b no Quality line fabricated'
 
@@ -179,11 +184,11 @@ if diff -q "$TMP/t10.before" "$TMP/t10.md" >/dev/null; then pass=$((pass+1)); el
 mkfix t11.md '# Lecture
 <!-- maintainer -->
 **Quality:** draft 2026-04-30
-- mechanical: keep
+- cohorts: none yet
 
 body'
 cp "$TMP/t11.md" "$TMP/t11.before"
-rc=$(run "$TMP/t11.md" --mechanical PASS --sha new5678 --date 2026-06-01)
+rc=$(run "$TMP/t11.md" --maintainer-reviewed PASS --sha new5678 --date 2026-06-01)
 assert_rc "$rc" "1" 'T11 axis stamp on a legacy draft line refuses'
 if diff -q "$TMP/t11.before" "$TMP/t11.md" >/dev/null; then pass=$((pass+1)); else fail=$((fail+1)); echo "FAIL: T11 legacy draft file must be unchanged"; fi
 

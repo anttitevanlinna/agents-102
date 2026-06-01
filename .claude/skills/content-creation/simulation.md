@@ -35,7 +35,7 @@ FOR EACH PHASE:
 3. Record the state after the phase — what artifact you now have (`artifact_state`)
 4. **Mood score 1–10** at phase-end + one-line note on what the student is feeling (match against the module mood contract; flag drift) (`mood_score`, `mood_note`)
 
-DO NOT predict what Claude would return. DO NOT flag Claude-behavior mismatches. Both moved to Class B (`simulation-behavior.md`) and are owned by the prompt-behavior judge. If a mechanical-tested transcript exists for this file (named in the file's Quality line as `mechanical-tested @ <sha>`), read it for ground-truth `artifact_state` instead of guessing.
+DO NOT predict what Claude would return. DO NOT flag Claude-behavior mismatches. Both moved to Class B (`simulation-behavior.md`) and are owned by the prompt-behavior judge.
 
 AT THE END, report:
 - **Top 3 ambiguous instructions** (quote them) — confusion the prompt creates by being unclear, not Claude misbehaving

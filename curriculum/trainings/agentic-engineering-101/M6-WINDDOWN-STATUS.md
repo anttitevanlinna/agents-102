@@ -2,6 +2,8 @@
 
 _Updated 2026-05-31 (session "m6 full done-done"). For pickup on another terminal or post-compaction. Delete once the §Remaining items close._
 
+> **SUPERSEDED 2026-06-01:** `mechanical-tested` was removed as a ladder rung. Done-done now tops at `sim-passed`; the `tmux-runner` battery is an unrecorded pre-ship system test (run-and-fix), not a binding rung. So the §5 "binding finish line" / "one ladder rung remains" framing below is **no longer a done-done blocker**, M6 is at the top recorded rung. The §5 live battery is still worth running pre-cohort as the system test (it catches real issues), but it is no longer a Quality stamp to reach. The deleted `- mechanical` row is correct (axis gone), not an under-claim.
+
 ## TL;DR
 
 M6 content is **done at `sim-passed`**, all six per-class judges PASS across exercise + module + lecture (0 open REVISE). Under the done-done definition set in `curriculum/CLAUDE.md` (done-done = quality at `mechanical-tested`, six SHAs current, maintainer-reviewed, trainer-guide present, no open audit TODOs), exactly **one ladder rung remains: `mechanical-tested`**, the §5 live battery, which is a watched-session job, not headless. The prompt-edit-gate is **fully fixed** (real cause was parser non-determinism, not the earlier "interrupt-blindness" theory, see §Gate); suite 9/9; the gated loop-3 edit landed end-to-end as proof. What's left for done-done: the §5 mechanical harness + live battery (watched), maintainer re-review, and one optional prompt-polish edit (loop-5).

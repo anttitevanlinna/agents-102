@@ -81,7 +81,6 @@ Antti
 **Quality:** compendium-audited 2026-05-31 (writing@0ef2ca6 story@1ff6f8a technical@0ef2ca6 behavior@1ff6f8a pedagogy@0ef2ca6 strategy@d06b5b8)
 - judges @d06b5b8: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - cross_module @0ef2ca6: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop,plan-mode-done-right]
-- mechanical: REVISE — battery @e840433 predates the 2026-05-27 Phase-2 redesign; it scripts the old chain (missing the `-study`/`-shapes` turns), so it no longer validates current content. Re-fire after the harness update (tmux-runner/IMPROVEMENTS.md § M6 Phase-2).
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Leap test** (per `check_pedagogy.md` rule 45; M6 is an arc-mood exercise so the test names artefact + use, not activity):

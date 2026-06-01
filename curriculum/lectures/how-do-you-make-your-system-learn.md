@@ -45,7 +45,6 @@ That's where the next module lives. Verification is what the team does when the 
 **Quality:** compendium-audited 2026-04-28 (post rule-#3 + post never-abbreviate-modules sweeps)
 - compendium-audited 2026-04-28 (check_writing v2026-04-27, check_student_facing v2026-04-28 incl. rule #3 + § 2(b) never-abbreviate-modules, check_lectures v2026-04-27)
 - sim-passed 2026-04-27 — STALE since rule-#3 sweep touched opener + close prose; re-sim recommended before next cohort
-- mechanical-tested: N/A (lectures are trainer-narrated, no prompt-chain to execute)
 
 **Lecture meta:** *7-minute closing lecture for M1. Trainer leads. Optional 2-output-merge demo from real cohort participants for the compounding metaphor.*
 

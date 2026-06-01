@@ -76,7 +76,6 @@ Connections question at the opening: *what's one trick you figured out with Clau
 **Quality:** compendium-audited 2026-05-24 (writing@1fd0f66 story@1fd0f66 technical@1fd0f66 behavior@1fd0f66 pedagogy@1fd0f66 strategy@1fd0f66)
 - judges @1fd0f66: writing PASS, story PASS, technical PASS, behavior PASS (override-fresh-install-context-no-collision-norm-see-instances/ae101--prework.behavior.json), pedagogy PASS, strategy PASS
 - cross_module @1765c51: PASS — override-§3-student-noted-path-by-design-§5-contract-row-added-see-instances/ae101--prework-M1-M3.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust]
-- mechanical: pending re-run on tmux-runner `run-prework.sh` (supersedes `bin/judge.sh`); prior PASS @6121abd 2026-05-14, pre-reshape
 - maintainer-reviewed 2026-05-24 (Antti — Windows-claim correction: deleted student-facing Git-Bash sentence; Transport bullet re-verified live against `code.claude.com/docs/en/setup`, OS floor 1809 not 1803, conditional Git Bash. Supersedes judge re-fire for this edit.)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass — pre-reshape)
 

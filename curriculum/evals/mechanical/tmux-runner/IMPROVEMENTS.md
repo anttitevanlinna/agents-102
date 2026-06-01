@@ -17,6 +17,38 @@ End-to-end PASS, single-shot, unattended, ~2h wall. `chain-lemmings.sh` under `c
 
 - [x] **M6 T4 mermaid assertion too permissive** — regex was `mermaid|graph |flowchart|-->|diagram|flow|branch|loop|node|step`; half those tokens are English ("flow"/"branch"/"loop"/"step") and would match the prose around the diagrams even if none were drawn. This run happened to fire for the right reason (agent drew four real `flowchart TD` blocks) but the assertion would silently pass a regression. Tightened to mermaid-syntax tokens only: `mermaid|flowchart|graph TD|graph LR|-->`. `run-m6.sh:187`.
 
+## Caught 2026-06-01 codesearch M1→M6 RE-RUN (second pass, verified runner fixes in production)
+
+End-to-end PASS all 6 modules, single-shot. M1 `20260601-171305-241` (`9979c2a → ccf378e` on `fix/posting-merge-heap`); M2 `20260601-172717-12955` (plan `m2-csweb-shared-instance-tidal-otter.md`); M3 `20260601-175720-31895` (ADR `0001-clamp-show-handler-to-index-roots.md`, skill `test-strategy-codesearch`); M4 `20260601-181021-39764` (`6b6045f → f9d2798` on `m4/implement-show-clamp`); M5 `20260601-182435-47808` (`43e18bd → cad9750` — three commits: replay-gate → packaging → clamp impl; worktree `codesearch-m5`); M6 `20260601-200737-77326` (skill `session-shaper-codesearch`, arc `docs/notes/2026-06-01-show-clamp-practice-arc.md`).
+
+### Closures verified from the prior session's checklist
+
+- [x] **M1 finds the bug** — siftUp regression named, fix committed past `9979c2a`.
+- [x] **M4 commits the implementation, tree CLEAN** — commit-shape pre-auth fix #1 LANDED. `m4_starting_sha=6b6045f → m4_sha=f9d2798`. No `M cmd/csweb/web.go` dirt.
+- [x] **M5 PC commits packaged work, tree CLEAN** — commit-shape pre-auth fix #2 LANDED. Three clean commits, exactly the shape the scenario tail named.
+- [x] **M5 worktree forks at the right M4 starting point on the agent's chosen branch.** Run-coordinates block resolved `m4/implement-show-clamp` (agent's slug, not wrapper's `m4/clamp-show-to-roots`).
+
+### Runner-fix shipped pre-rerun and validated live
+
+- [x] **`stall_pattern_in_recent_window` validated in production.** M5 PB-T4 hit a real API socket-closed mid-tool-call (mid `git show f9d2798:cmd/csweb/web_test.go`). The runner fired ONE WARN (matches=3, recent-window match — the live error WAS in the last 20 lines of the pane). Operator paste-buffered T4 → agent recovered in 12s. The API Error stayed in scrollback through the rest of the turn but **the WARN did NOT keep firing every 5 minutes** — agent's recovery output pushed the error line off the 20-line recent window and the match counter reset. Without this fix the old code would have logged WARN every 5 min through the rest of the turn (matches would have hit ~30). Closes the open finding.
+
+### Runner-mechanic findings — STATE
+
+- [x] **API-drop auto-resend now has its second documented incident.** M5 PB-T4 stall + paste-buffer recovery worked again, identical recipe to the M6 T9 incident the prior session. The "one more incident before codifying" runway is now spent. Next runner-mechanic session: implement auto-resend in `lib/sync.sh:wait_for_turn` after N stall matches with no sentinel progress — read `out/$run_id/<phase>/turn-<seq>.prompt.txt`, `tmux send-keys Escape`, `load-buffer` + `paste-buffer` + `send-keys Enter`. Recipe verified working twice across two distinct turns (M6 T9 first run, M5 PB-T4 this run).
+
+- [ ] **Slug-mismatch orphan branch fired AGAIN — same shape.** Wrapper positioned `m4/clamp-show-to-roots @ ccf378e`; agent created `m4/implement-show-clamp` and put commits there. The wrapper's M5 reconcile correctly read the agent's branch from task.md Run-coordinates and forked from the right SHA, so M5 was unaffected. State.json's `m4_branch="m4/implement-show-clamp"` is correct; `task_slug="clamp-show-to-roots"` reflects the wrapper's positioning slug, NOT the agent's choice — a `git branch -D` of the originally-positioned slug-branch if still at the M2 SHA would close it. Sibling of the 2026-05-26 + 2026-06-01-first-run findings. Three occurrences = consistent latent.
+
+- [ ] **`observations/observations/` byte-identical nested-dir junk in M5 worktree.** Untracked `?? observations/observations/` left in `codesearch-m5` post-chain — three files duplicated from top-level `observations/`. The agent's own arc note named it: *"observations/observations/ is byte-identical junk, untracked — accidental copy, not a second corpus."* Likely accidental `mkdir -p observations/observations` somewhere in the M4 send-off or the M5 PB. Cosmetic — untracked, no git impact, agent caught it. If it recurs across runs, root-cause the create site (M4 send-off's `observations/` writes, or the M5 PA worktree fork's copy-on-fork). Otherwise leave.
+
+- [ ] **M6 `m6_claude_local_md_mtime_advanced: false`** — the M6 closer turn did not update CLAUDE.local.md this run. Last codesearch M6 (2026-06-01 first run) DID update it ("M6 arc-note plus CLAUDE.local.md update"). The arc note this run was placed at `docs/notes/2026-06-01-show-clamp-practice-arc.md` (agent's free-form choice), with no rule pruning recorded in CLAUDE.local.md. Latent — the M6 prompts don't REQUIRE a CLAUDE.local.md update if no rule earned cutting. But worth flagging in case the assertion silently considers this a regression.
+
+### Watches — what fired this run
+
+- 🔴 **M6 second-skill deferral-loophole fired a FOURTH consecutive time.** Arc note Dent #2 reads: *"M6 fixed only half the gap. The skill is a done-signal judge — it catches the drift after the cost is sunk, and only when the agent confesses it in writing. The shape that would have prevented it (a pre-run check diffing `reference.md`'s claims against the skill) was named and not built. The arc ends with a smoke detector, not a sprinkler."* Cleanest fourth-strike quote yet — promotes the watch's runway to fully spent. See `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md` for the curriculum-side action item this triggers.
+
+- 🟢 **M2 plan-portability watch held** — plan still at `~/.claude/plans/m2-csweb-shared-instance-tidal-otter.md`.
+- ⚪ **Harness `.claude/settings.local.json` Stop-hook leak NOT surfaced in M1 orient this run.** The leak is still there (visible in the file), but the agent's orient turn didn't read it as the odd-one-out. Inconsistent firing across runs.
+
 ## Caught 2026-06-01 codesearch M1→M6 full-chain re-run (after bug-planted-master recovery)
 
 End-to-end PASS on the second M1 attempt (the first collapsed on the no-bug origin/master — see the "WRONG DIAGNOSIS" entry below). M1 run `20260601-075410-62119` (siftUp regression fix `1ce6ffe`, branch master); M2 `20260601-084044-76608` (plan `~/.claude/plans/m2-csweb-shared-instance-brisk-badger.md`, integrated CLAUDE.local.md); M3 `20260601-093431-91126` (ADR `docs/adr/0001-clamp-csweb-show-to-index-roots.md`, `test-strategy-codesearch` skill); M4 `20260601-094525-98723` (branch `m4/implement-show-clamp`, starting point `ccfce19`, observations `01-reuse-haspathprefix-for-root-clamp.md` + `02-roots-drain-v1-numpath-trap.md`); M5 `20260601-105615-7411` (worktree forked at `ccfce19`, packaged work UNCOMMITTED — see finding below); M6 `20260601-113146-21346` (`session-shaper-codesearch` skill, arc `observations/03-the-silent-green-ratchet.md` plus CLAUDE.local.md update).

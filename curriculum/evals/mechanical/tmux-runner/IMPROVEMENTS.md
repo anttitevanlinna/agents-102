@@ -43,6 +43,34 @@ End-to-end PASS on the second M1 attempt (the first collapsed on the no-bug orig
 
 - [x] **`bug-planted-master` tag created on the codesearch repo** at SHA `9979c2a` (the bug-planted master state). Reflog-expiry insurance. Today's M1 collapse recovered cleanly via `git reset --hard 9979c2a` — exact recipe a future codesearch arrange-helper should bake in (NOT `git reset --hard origin/master`, which wipes the planted bug).
 
+### Re-run verification checklist (every issue from this session → expected behavior next chain)
+
+The 2026-06-01 codesearch chain is scheduled to re-run after compact against the prepped baseline (master @ `9979c2a`, worktrees gone, skills + auto-memory wiped, `cmd/csweb/web.go` siftUp missing `j = i`, `CLAUDE.local.md` / `RUN-NOTES.md` / dirty test files cleared). Each item below names what the post-compact agent should look for to confirm the fix closed, the watch held, or the latent issue is still latent. Items marked **(closes)** are scenario/runner fixes this session shipped; items marked **(watch)** are accepted-as-is with named firing conditions; **(latent)** is no impact today but documented for future surfacing.
+
+**Closes (must verify in re-run):**
+- [ ] **M1 finds the bug.** Agent's T4 transcript should name `siftUp` (`index/write.go:580`-ish) as the regression site and the missing `j = i` line as the fix. T6 commit assertion PASSes (HEAD advances past `9979c2a`). If T4 again concludes "the index is correct," the baseline restoration failed — re-check `grep -c "j = i" ~/Projects/codesearch/index/write.go` returned 0 before launch.
+- [ ] **M4 commits the implementation.** State.json shows `m4_sha` advancing past `M4 starting point`; working tree clean after M4 finish (NOT dirty with `M cmd/csweb/web.go ?? cmd/csweb/web_test.go`). This is the scenario-tail commit-shape pre-auth landing.
+- [ ] **M5 PC commits the packaged work.** State.json shows `m5_ending_sha != m5_starting_sha`. Worktree clean after M5 finish. Same fix as M4.
+- [ ] **M5 worktree fork inherits the M4 implementation in tree** (since M4 now commits it). PA-T5 reads non-empty cmd/csweb/web.go containing the clamp.
+
+**Watches (named firing conditions to look for):**
+- [ ] **M6 second skill (`session-shaper-codesearch`) — does the arc note flag the deferral loophole a fourth consecutive time?** Three strikes already; pre-cohort-todos.md watch promotion runway is thin. Look for the agent's M6 arc note quoting (a) "the anchor is a constructed negative," (b) "wave through the exact M4 dodge it was built to catch," or (c) similar self-flag. A fourth strike means promote to action item.
+- [ ] **Harness `.claude/settings.local.json` visibility** — does M1's T4 orient again surface the Stop hook leak? Mechanical-only; cohort-irrelevant but a recurring agent observation.
+- [ ] **M2 plan portability watch** — agent still writes to `~/.claude/plans/`? Confirms the M2 prompt body unchanged. New pre-cohort-todos.md `[watch]` entry from this session.
+- [ ] **The first session's M2 + M6 (now part of CLAUDE.local.md / observations/) being rewritten** — re-run is fresh, no carryover expected; flag if it shows up.
+
+**Latent (still latent unless evidence shifts):**
+- [ ] **`task_slug: ""` empty in M1+M2 state.json.** Confirm unchanged; if downstream M3+ consumer starts to read it, escalate.
+- [ ] **M3 state.json layout: `main/` + `quality/` subdirs, no top-level file.** Confirm unchanged.
+- [ ] **Chain wrapper positioning slug ≠ agent's chosen slug, orphan branch left.** Confirm same shape (wrapper positions one slug, agent picks another, orphan stays).
+
+**Deferred runner-code fixes (not in this re-run; surface if they bite):**
+- [ ] **Stalled-TUI WARN scrollback noise.** If M6 T9 (or any other turn) hits an API socket drop, the WARN should ideally stop firing once sentinel-progress observed. Today's code doesn't yet; if the re-run hits a stall, document whether the noise still accumulates.
+- [ ] **No API-drop auto-resend.** If a stall happens, the operator (post-compact agent) will need the paste-buffer recipe documented above. If it works again, codify next session.
+
+**Multi-agent commit hygiene reminder (caught the runner-side agent, not the curriculum):**
+- `git add <file> && git commit` is unsafe in this multi-session repo — it can pull in another agent's pre-staged WIP. Use `git commit --only -m "..." -- <pathspec>` (note: all `-m` flags BEFORE `--`, all paths AFTER). Captured in commit `8f886dc`'s body.
+
 ## Caught 2026-05-27 picoshare M1–M6 full-chain audit (medium effort)
 
 - [x] **M4 picoshare T1 plan-slug stale `vigilant-pangolin` reference — fallback hint added.** `scenarios/m4-picoshare.txt` `walk-and-send-off-1` tail named the prior dry-run's M2 plan filename literally; on a fresh M2 the slug is different (this run: `prudent-pangolin`), and the agent's task.md wrote *"M2 plan is lost from disk"* instead of finding the actual file. Mirrors the existing affordance in `scenarios/m3-main-picoshare.txt` `map-the-access-surface-2`'s `-2` tail; replicated the same *"if a slightly different plan filename is present, same shape with a different adjective-animal slug, use that one"* hint in M4's tail.

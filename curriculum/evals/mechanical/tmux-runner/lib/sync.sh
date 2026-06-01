@@ -10,6 +10,25 @@
 #     matching .done file with a timeout.
 set -euo pipefail
 
+stall_pattern_in_recent_window() {
+  # $1=snap (multi-line string), $2=ERE pattern, $3=recent_window (lines).
+  # Returns 0 iff $pattern's LAST match is within the last $recent_window
+  # lines of $snap; 1 otherwise. "Recent" = the API error has not been
+  # scrolled off by subsequent agent output, i.e. the agent has produced
+  # fewer than $recent_window lines below it. Boundary: strict '<', so a
+  # match with exactly $recent_window lines below it is NOT recent.
+  local snap="$1" pattern="$2" recent_window="${3:-20}"
+  [[ -z "$snap" ]] && return 1
+  local match_lineno
+  match_lineno="$(printf '%s\n' "$snap" | grep -nE "$pattern" | tail -1 | cut -d: -f1)"
+  [[ -z "$match_lineno" ]] && return 1
+  local total
+  total="$(printf '%s\n' "$snap" | wc -l | tr -d ' ')"
+  local below=$(( total - match_lineno ))
+  (( below < recent_window )) && return 0
+  return 1
+}
+
 wait_for_turn() {
   # $1=sentinel dir, $2=turn seq (1-based), $3=timeout seconds,
   # $4=optional tmux session name (enables pane-death fast-fail + stalled-TUI
@@ -37,6 +56,13 @@ wait_for_turn() {
   # interval, grep for API-error signatures, and if matched persistently
   # log a WARN to stderr every 5 minutes so an operator watching the chain
   # can intervene. Do NOT auto-nudge; that's a separate validation cycle.
+  #
+  # Recent-window refinement (codesearch 2026-06-01 M6 T9): once the
+  # operator paste-buffer'd a re-fire and the agent recovered, the API
+  # Error text stayed in scrollback and the simple grep kept matching it
+  # turn-long (matches=26 by sentinel). Now we only count a match if its
+  # last occurrence is within $stall_recent_window lines of the bottom —
+  # i.e. the error hasn't been scrolled off by subsequent agent output.
   local dir="$1" seq="$2" timeout="${3:-300}" session="${4:-}"
   local marker="$dir/turn-$seq.done"
   local waited=0 last_pane_check=0 last_stall_check=0 last_stall_warn=0
@@ -45,6 +71,7 @@ wait_for_turn() {
   local stall_warn_interval=300          # WARN every 5 min after match
   local stall_match_count=0
   local stall_match_threshold=2          # 2 consecutive matches = persistent
+  local stall_recent_window=20           # match must be within last N lines
   local stall_pattern='API Error|socket closed unexpectedly|Connection.*refused|rate.?limit'
   while [[ ! -f "$marker" ]]; do
     sleep 1
@@ -60,7 +87,7 @@ wait_for_turn() {
       last_stall_check=$waited
       local snap
       snap="$(_tmux capture-pane -t "$session" -p -S -200 -E - 2>/dev/null || true)"
-      if [[ -n "$snap" ]] && echo "$snap" | grep -qE "$stall_pattern"; then
+      if stall_pattern_in_recent_window "$snap" "$stall_pattern" "$stall_recent_window"; then
         stall_match_count=$((stall_match_count + 1))
         if (( stall_match_count >= stall_match_threshold )) && (( waited - last_stall_warn >= stall_warn_interval )); then
           last_stall_warn=$waited

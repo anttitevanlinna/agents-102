@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [microsoft, copilot, copilot-studio, azure-ai-foundry]
 nordic: true
-updated: 2026-05-28
-cycle: 117
+updated: 2026-06-01
+cycle: 120
 answers:
   - "what can business users do with Microsoft Copilot today?"
   - "is Copilot Studio a real agent builder?"
@@ -14,8 +14,19 @@ answers:
 
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-05-28 (cycle 117)
-OODA cycles: 24
+Last updated: 2026-06-01 (cycle 120)
+OODA cycles: 27
+
+**Cycle 120 updates (June 1, 2026):**
+- **Microsoft Build 2026 pre-event baseline set — NDA discipline near-Google-level.** Event: June 2-3, Fort Mason SF, Satya Nadella keynote 9:30 AM PT. Seven confirmed session tracks (Agents & Apps; Azure AI Platform; GitHub; Microsoft Fabric; Responsible AI; Windows; Working with Models). Named sessions in catalog: "Building agentic experiences for Windows" (Pavan Davuluri), "GitHub Copilot meets Windows Agents," "Securing the agent mesh," "AI-driven hardware acceleration," "Agent Studio: Build once, run on any Windows device." No keynote-content leaks despite 7+ preview articles — Microsoft maintained NDA discipline. Explicitly NOT on agenda: Windows 12. Sources: [news.microsoft.com/build-2026](https://news.microsoft.com/build-2026/) — [vendor]; [Notebookcheck, May 31, 2026](https://www.notebookcheck.net/Microsoft-Build-2026-What-to-expect-from-the-June-2-keynote.1311546.0.html) — [domain trade publication]; [WindowsNews.ai](https://windowsnews.ai/article/microsoft-build-2026-windows-becomes-the-platform-for-ai-agents.420503) — [domain trade publication]. Evidence: Level 1.
+- **Windows Agent Framework v1.0 confirmed live on GitHub (pre-Build, April 2, 2026).** MIT license. Components: Agent Registration Service, Declarative Agent Manifest (agent.json schema), Cross-Agent Communication Bus (gRPC-based), encrypted Memory Service. Python 1.7.0 (May 28); .NET 1.6.1 (May 14). Sources: [github.com/microsoft/agent-framework/releases](https://github.com/microsoft/agent-framework/releases) — [practitioner verifiable]. Evidence: Level 2 (code is live).
+- **Azure AI Foundry May 2026 updates shipped** (dev blog May 30, 2026): GPT-5 Reinforcement Fine-Tuning gated GA, Managed VNET GA, Trace-Based Evaluation for external agents (public preview), model catalog at 3,000+ models (Grok 4.3, DeepSeek V4, Kimi 2.6 added), Foundry Local 1.1/1.2 (live audio transcription, Linux ARM64). Source: [devblogs.microsoft.com/foundry/whats-new-in-microsoft-foundry-may-2026/](https://devblogs.microsoft.com/foundry/whats-new-in-microsoft-foundry-may-2026/) — [vendor dev blog, May 30, 2026]. Evidence: Level 1.
+- **Agent 365 / E7 deployment reality at 31 days post-GA: 12th consecutive zero.** Zero named organizations with independent published accounts of Agent 365/E7 production deployment. Reddit zero (literally — site:reddit.com query returned no results). All positive signals remain vendor-authored. Vendor-reported metrics (May 31): "tens of millions of agents" in registry, 500K+ agents in Microsoft's own environment, 65K+ daily employee responses — unaudited, self-assessed. Source: [TechTimes, May 31, 2026](https://www.techtimes.com/articles/317458/20260531/microsoft-copilot-shifts-agent-governance-claude-checks-gpt-work-screen-agents-go-live.htm) — [general press]. Evidence: Level 3 absence for deployment; Level 0 for vendor metrics.
+- **Copilot Cowork active bug documented.** Persistent "Not delivered. Retry?" error after every Cowork search; custom instructions don't auto-load at session start. Source: [aiqnahub.com/microsoft-copilot-cowork/](https://www.aiqnahub.com/microsoft-copilot-cowork/) — [practitioner Q&A forum]. Evidence: Level 2.
+- **Copilot outage May 29, 2026 — confirmed.** Service outage the day before this cycle. Source: [windowsforum.com, May 29, 2026](https://windowsforum.com/threads/copilot-may-29-2026-issues-was-it-down-how-ai-reliability-impacts-workflows.420812/) — [practitioner community]. Evidence: Level 2.
+- **CUA GA confirmed May 13, 2026** — but Electron, Java, Citrix, Unity, sovereign cloud exclusions unchanged. Source: TechTimes May 31. Evidence: Level 1.
+- **May 2026 M365 Copilot shipped 53 updates** (per aguidetocloud.com, May 29): GPT-5.5 Instant in Copilot Chat; Federated MCP Connectors GA (Canva, HubSpot, Linear, LSEG, Moody's, Notion, Google Calendar/Contacts); Excel Plan mode + Python; Purview DLP on prompts; Agent Store submission workflow. Source: [aguidetocloud.com, May 29, 2026](https://www.aguidetocloud.com/blog/microsoft-365-copilot-may-2026-updates/) — [domain trade publication]. Evidence: Level 1.
+- **Anthropic $965B valuation + Claude Opus 4.8 (May 28-29) — Build context.** Anthropic ARR: $47B annualized. Opus 4.8: $5/M input, $25/M output, improved agentic coding, mixed independent reception. Mythos model: "coming weeks," restricted to security research. Sources: [fortune.com, May 29, 2026](https://fortune.com/2026/05/29/anthropic-raises-65-billion-at-record-965-billion-valuation-promises-mythos-ai-model-in-wide-release-in-coming-weeks-releases-claude-opus-4-8/) — [general press]; [9to5mac.com, May 28, 2026](https://9to5mac.com/2026/05/28/anthropic-upgrades-claude-with-new-opus-4-8-model-heres-whats-new/) — [general press]. Evidence: Level 1.
 
 **Cycle 117 updates (May 28, 2026):**
 - **Agent 365 post-GA reality (27 days): autonomous agents NOT covered at GA; OBO-only scope.** At GA (May 1), Agent 365 covers only On-Behalf-Of (OBO) agents — agents acting in the context of a specific human user. Autonomous agents (Agent-to-Agent, Agent-to-Tool — the core use case for unattended operations/finance workflows) remain "Frontier Preview only" with undefined licensing. Additional GA gaps: shadow agent discovery requires manual one-by-one onboarding (no automated conversion); pre-GA Studio agents cannot auto-inherit Entra Agent IDs (rebuild/republish required); third-party agents (ChatGPT Enterprise, AWS Bedrock) require separate SDK integration and licensing; Agent 365 license does NOT grant E5-level Purview or Defender. Source: [Ragnar Heil MVP](https://ragnarheil.de/microsoft-agent-365-what-it-cant-do-yet-limitations-you-need-to-know/) — [practitioner analysis, May 8, 2026]. Evidence level: Level 2.

@@ -2,6 +2,21 @@
 
 Captured 2026-05-24 after self-introspection on the M1+M2 dry-run sweep. Numbered roughly by yield-per-hour: high yield + low effort first.
 
+## Caught 2026-06-01 lemmings M1→M6 full-chain re-run (post-codesearch, expanded-M6-validation)
+
+End-to-end PASS, single-shot, unattended, ~2h wall. `chain-lemmings.sh` under `caffeinate -is` (defends against the 2026-05-26 machine-sleep API-socket stall, no recurrence). Runs: M1 `20260601-131314-31595` (`bdd0919 → e008b0d`), M2 `20260601-132116-37446` (plan `m2-add-levels-2-3-nimble-marten.md`), M3 `20260601-134740-51002` (`test-strategy-lemmings`, ADR), M4 `20260601-140036-57810` (branch `m4/blocker-deadlock-terminal`), M5 `20260601-141930-66509` (worktree forked at `90b2805`, PA+PB+PC all green), M6 `20260601-144437-75908` (`session-shaper-lemmings`, arc `docs/notes/2026-06-01-practice-arc.md` + CLAUDE.local.md update).
+
+### Validated this run
+
+- **M6 expanded scenario, first live re-run** — the new `-study` (T3) + `-shapes` (T4) turns from commit `e011708` ran clean. T4 produced four real `flowchart TD` mermaid diagrams (send-off/verify-by-hand, content-gen edit pass, eval-fire judge dispatch, M1-M6 test battery — agent drew the very thing it was running) plus the "shapes rhyme" synthesis the prompt is probing for. Closes the runbook's "scenario grew, re-validation owed" watch (2026-05-31).
+- **M4→M5 branch-coordinate hand-off** — clean. M4 chose `m4/blocker-deadlock-terminal` (matching task slug), recorded it in task.md Run-coordinates; M5 PA forked `m5/blocker-deadlock-fix` off M4's starting SHA `90b2805` without asking. Wrapper's branch reconcile also held (chose the task-body branch line as expected). The 2026-05-26-closed watch stayed closed.
+- **Deterministic per-SUT skill names** — `test-strategy-lemmings` + `session-shaper-lemmings` both authored without collision against the codesearch/picoshare counterparts (just present in M6 `pre-skills` list).
+- **Transcript-finding under worktree split** — M5's two sessions in the same worktree dir (`-Users-anttitevanlinna-Projects-lemmings-m5/`) got separated cleanly: PB exercise UUID `008e8c9e…` vs PC re-run UUID `e0408b80…`, both captured at launch via the Stop-hook UUID payload (not filename-mtime racing). M5 PB-T1 self-location assertion PASSed — agent reasoned on its own transcript.
+
+### Fixed this session
+
+- [x] **M6 T4 mermaid assertion too permissive** — regex was `mermaid|graph |flowchart|-->|diagram|flow|branch|loop|node|step`; half those tokens are English ("flow"/"branch"/"loop"/"step") and would match the prose around the diagrams even if none were drawn. This run happened to fire for the right reason (agent drew four real `flowchart TD` blocks) but the assertion would silently pass a regression. Tightened to mermaid-syntax tokens only: `mermaid|flowchart|graph TD|graph LR|-->`. `run-m6.sh:187`.
+
 ## Caught 2026-06-01 codesearch M1→M6 full-chain re-run (after bug-planted-master recovery)
 
 End-to-end PASS on the second M1 attempt (the first collapsed on the no-bug origin/master — see the "WRONG DIAGNOSIS" entry below). M1 run `20260601-075410-62119` (siftUp regression fix `1ce6ffe`, branch master); M2 `20260601-084044-76608` (plan `~/.claude/plans/m2-csweb-shared-instance-brisk-badger.md`, integrated CLAUDE.local.md); M3 `20260601-093431-91126` (ADR `docs/adr/0001-clamp-csweb-show-to-index-roots.md`, `test-strategy-codesearch` skill); M4 `20260601-094525-98723` (branch `m4/implement-show-clamp`, starting point `ccfce19`, observations `01-reuse-haspathprefix-for-root-clamp.md` + `02-roots-drain-v1-numpath-trap.md`); M5 `20260601-105615-7411` (worktree forked at `ccfce19`, packaged work UNCOMMITTED — see finding below); M6 `20260601-113146-21346` (`session-shaper-codesearch` skill, arc `observations/03-the-silent-green-ratchet.md` plus CLAUDE.local.md update).

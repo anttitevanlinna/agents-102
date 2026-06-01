@@ -182,9 +182,11 @@ assert_turn() {
         assert_scrollback_grep "T3 repeated-work inventory" "$transcript" "group|recur|repeat|pattern|kind of work|across|stack|rank|ranked|top|instance"
         ;;
     4)  # spot-gaps-build-the-loop-shapes — draw the top recurring
-        # work-shapes as mermaid diagrams. Soft check: scrollback shows a
-        # diagram (mermaid fence / graph syntax / flow words).
-        assert_scrollback_grep "T4 recurring-shape diagrams" "$transcript" "mermaid|graph |flowchart|-->|diagram|flow|branch|loop|node|step"
+        # work-shapes as mermaid diagrams. Require mermaid-syntax tokens,
+        # not English words — "flow"/"branch"/"loop"/"step" passed even
+        # without any diagram drawn (2026-06-01 audit; happened to fire
+        # for the right reason this run, hole closed for next).
+        assert_scrollback_grep "T4 recurring-shape diagrams" "$transcript" "mermaid|flowchart|graph TD|graph LR|-->"
         ;;
     5)  # spot-gaps-build-the-loop-primitives — 5-10 atomic primitives
         # named with fire-timing, then 2-3 ranked for the dominant gap.

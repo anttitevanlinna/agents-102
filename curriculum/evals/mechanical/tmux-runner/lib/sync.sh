@@ -10,6 +10,41 @@
 #     matching .done file with a timeout.
 set -euo pipefail
 
+should_auto_resend() {
+  # Pure predicate — no I/O, no tmux. Decides whether wait_for_turn should
+  # auto-fire a paste-buffer recovery of the same prompt against the pane.
+  # $1=stall_match_count, $2=stall_match_threshold,
+  # $3=resends_done, $4=max_resends,
+  # $5=waited_now (seconds since wait started),
+  # $6=last_resend_at (seconds; init to a very negative sentinel),
+  # $7=cooldown_s, $8=prompt_file path (may be empty)
+  local match="$1" threshold="$2" resends="$3" max="$4"
+  local now="$5" last="$6" cool="$7" pf="$8"
+  (( match >= threshold )) || return 1
+  [[ -n "$pf" && -f "$pf" ]] || return 1
+  (( resends < max )) || return 1
+  (( now - last >= cool )) || return 1
+  return 0
+}
+
+auto_resend_turn() {
+  # The thin action wrapper around the manually-verified recipe (codesearch
+  # 2026-06-01 M6 T9, M5 PB-T4):
+  #   tmux send-keys Escape → load-buffer prompt → paste-buffer -d → Enter.
+  # $1=tmux session, $2=prompt_file path.
+  # Returns 0 on apparent success, nonzero if any tmux call rejected
+  # (caller should treat failure as "couldn't resend, keep WARNing").
+  local session="$1" pf="$2"
+  local buf="autoresend-$$-$RANDOM"
+  _tmux send-keys -t "$session" Escape 2>/dev/null || true
+  sleep 1.5
+  _tmux load-buffer -b "$buf" "$pf" 2>/dev/null || return 1
+  _tmux paste-buffer -t "$session" -b "$buf" -d 2>/dev/null || return 1
+  sleep 0.5
+  _tmux send-keys -t "$session" Enter 2>/dev/null || return 1
+  return 0
+}
+
 stall_pattern_in_recent_window() {
   # $1=snap (multi-line string), $2=ERE pattern, $3=recent_window (lines).
   # Returns 0 iff $pattern's LAST match is within the last $recent_window
@@ -32,7 +67,12 @@ stall_pattern_in_recent_window() {
 wait_for_turn() {
   # $1=sentinel dir, $2=turn seq (1-based), $3=timeout seconds,
   # $4=optional tmux session name (enables pane-death fast-fail + stalled-TUI
-  #    report).
+  #    report + auto-resend),
+  # $5=optional prompt-file path for auto-resend. If absent, the function
+  #    derives "$(dirname $dir)/turn-$seq.prompt.txt" from the standard
+  #    runner layout (sibling of $dir=<phase>/sentinels). If neither exists,
+  #    auto-resend is silently disabled and the runner falls back to the
+  #    detect-and-WARN behavior.
   #
   # Exit codes:
   #   0  sentinel fired
@@ -55,7 +95,7 @@ wait_for_turn() {
   # full quota. Detect-and-report only — capture-pane every STALL_CHECK
   # interval, grep for API-error signatures, and if matched persistently
   # log a WARN to stderr every 5 minutes so an operator watching the chain
-  # can intervene. Do NOT auto-nudge; that's a separate validation cycle.
+  # can intervene.
   #
   # Recent-window refinement (codesearch 2026-06-01 M6 T9): once the
   # operator paste-buffer'd a re-fire and the agent recovered, the API
@@ -63,7 +103,16 @@ wait_for_turn() {
   # turn-long (matches=26 by sentinel). Now we only count a match if its
   # last occurrence is within $stall_recent_window lines of the bottom —
   # i.e. the error hasn't been scrolled off by subsequent agent output.
-  local dir="$1" seq="$2" timeout="${3:-300}" session="${4:-}"
+  #
+  # Auto-resend (codified 2026-06-01 after N=2 incidents: M6 T9 first run,
+  # M5 PB-T4 re-run). On persistent stall AND a prompt-file present, fire
+  # the manually-verified recipe: tmux send-keys Escape → load-buffer →
+  # paste-buffer -d → Enter. Bounded by $max_auto_resends and
+  # $resend_cooldown so a sustained API outage degrades gracefully back to
+  # WARN-only after the budget is spent. Successful agent recovery zeros
+  # stall_match_count via the recent-window check, so a healed turn just
+  # rolls on.
+  local dir="$1" seq="$2" timeout="${3:-300}" session="${4:-}" prompt_file="${5:-}"
   local marker="$dir/turn-$seq.done"
   local waited=0 last_pane_check=0 last_stall_check=0 last_stall_warn=0
   local pane_check_interval=5
@@ -73,6 +122,13 @@ wait_for_turn() {
   local stall_match_threshold=2          # 2 consecutive matches = persistent
   local stall_recent_window=20           # match must be within last N lines
   local stall_pattern='API Error|socket closed unexpectedly|Connection.*refused|rate.?limit'
+  local auto_resends=0
+  local last_resend_at=-1000000          # sentinel: cooldown trivially satisfied on first match
+  local max_auto_resends=3
+  local resend_cooldown=90               # seconds between resends
+  if [[ -z "$prompt_file" ]]; then
+    prompt_file="$(dirname "$dir")/turn-$seq.prompt.txt"
+  fi
   while [[ ! -f "$marker" ]]; do
     sleep 1
     waited=$((waited + 1))
@@ -89,9 +145,20 @@ wait_for_turn() {
       snap="$(_tmux capture-pane -t "$session" -p -S -200 -E - 2>/dev/null || true)"
       if stall_pattern_in_recent_window "$snap" "$stall_pattern" "$stall_recent_window"; then
         stall_match_count=$((stall_match_count + 1))
-        if (( stall_match_count >= stall_match_threshold )) && (( waited - last_stall_warn >= stall_warn_interval )); then
+        if should_auto_resend "$stall_match_count" "$stall_match_threshold" \
+             "$auto_resends" "$max_auto_resends" "$waited" "$last_resend_at" \
+             "$resend_cooldown" "$prompt_file"; then
+          echo "wait_for_turn: auto-resend #$((auto_resends + 1))/$max_auto_resends of turn $seq via paste-buffer of $prompt_file (waited=${waited}s, matches=$stall_match_count)" >&2
+          if auto_resend_turn "$session" "$prompt_file"; then
+            auto_resends=$((auto_resends + 1))
+            last_resend_at=$waited
+            stall_match_count=0
+          else
+            echo "wait_for_turn: WARN auto-resend dispatch failed (tmux rejected paste); falling back to WARN-only" >&2
+          fi
+        elif (( stall_match_count >= stall_match_threshold )) && (( waited - last_stall_warn >= stall_warn_interval )); then
           last_stall_warn=$waited
-          echo "wait_for_turn: WARN stalled-TUI pattern matched in pane '$session' at turn $seq (waited=${waited}s of ${timeout}s; matches=$stall_match_count). API error visible. Continuing to wait for sentinel." >&2
+          echo "wait_for_turn: WARN stalled-TUI pattern matched in pane '$session' at turn $seq (waited=${waited}s of ${timeout}s; matches=$stall_match_count; auto_resends=$auto_resends/$max_auto_resends). API error visible. Continuing to wait for sentinel." >&2
         fi
       else
         stall_match_count=0

@@ -11,4 +11,6 @@ produces:
 ---
 Download the AE101 content tarball to `~/Downloads/ae101-content.tar.gz` using curl. Report the file's size.
 
+The URL may sit behind a basic-auth password wall. If curl comes back with a 401, ask me for the username and password and retry — otherwise just download it.
+
 URL: <CONTENT_URL>

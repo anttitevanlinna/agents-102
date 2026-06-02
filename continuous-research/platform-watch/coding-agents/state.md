@@ -1,15 +1,15 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-05-31 (cycle 119)
-OODA cycles: 6
+Last updated: 2026-06-02 (cycle 121)
+OODA cycles: 8
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
 
-## Key Verdict (as of 2026-05-23)
+## Key Verdict (as of 2026-06-02)
 
-**The competitive frame has shifted from model capability to agent runtime infrastructure.** At Code with Claude 2026 (May 6), Anthropic made the strategic choice to ship orchestration features (Dreaming, Outcomes, multi-agent fleet coordination) rather than a new model — signaling that the next competitive axis is runtime quality, not benchmark scores. Three platforms now exceed $2B ARR (Cursor $2B, Claude Code $2.5B, GitHub Copilot estimated $2B+). Mercado Libre (23K engineers) is targeting 90% autonomous coding by Q3 2026 — the most ambitious named enterprise commitment to date (vendor-event, Level 1). Rate limits doubled across all paid Claude Code plans. Claude Security (Opus 4.7-powered vulnerability scanning and patching) reached public beta for all Enterprise customers May 1. The remaining gap: zero independent Fortune 1000 company has published Cloudflare-comparable MCP-at-scale deployment evidence (Cloudflare remains the lone named example after 5 cycles).
+**The competitive frame has shifted from model capability to agent runtime infrastructure.** At Code with Claude 2026 (May 6), Anthropic made the strategic choice to ship orchestration features (Dreaming, Outcomes, multi-agent fleet coordination) rather than a new model — signaling that the next competitive axis is runtime quality, not benchmark scores. Three platforms now exceed $2B ARR (Cursor $2B ARR Feb 2026 → $6B+ forecast end 2026, Claude Code $2.5B, GitHub Copilot estimated $2B+). Mercado Libre (23K engineers) is targeting 90% autonomous coding by Q3 2026 — the most ambitious named enterprise commitment to date (vendor-event, Level 1). Dynamic Workflows shipped May 28 (1,000-subagent cap, research preview) — first independent practitioner reactions document three practical blockers: rate limits terminate runs, permission prompts break parallelism, planning stage is opaque. Evidence at Level 1-2 boundary as of June 2. **New: Cursor remains independent but xAI and SpaceX both hold acquisition options at ~$60B (April 2026) — if exercised, reshapes the competitive landscape.** The remaining gap: zero independent Fortune 1000 company has published Cloudflare-comparable MCP-at-scale deployment evidence (Cloudflare remains the lone named example after 6 cycles).
 
 ---
 
@@ -180,6 +180,9 @@ AI-powered vulnerability scanning and patching for Claude Enterprise customers. 
 - [TechCrunch, May 28, 2026 — general press] (https://techcrunch.com/2026/05/28/anthropic-releases-opus-4-8-with-new-dynamic-workflow-tool/)
 - [MarkTechPost, May 28, 2026 — general press] (https://www.marktechpost.com/2026/05/28/anthropic-ships-claude-opus-4-8-alongside-dynamic-workflows-and-cheaper-fast-mode-with-workflows-capped-at-1000-subagents/)
 
+**Bun migration independent verification (The Register, May 14, 2026):**
+The Register confirmed the Bun Zig→Rust migration merged May 14 (11 days after first commit ~May 3). Total PR size: 1M+ lines (750K lines of Rust code + test files — the 750K figure from state.md refers to Rust code only). Binary size reduced 3-8MB; performance neutral or faster; 99.8% test suite on Linux confirmed. Key practitioner-direct quote from Sumner: "haven't been typing code ourselves for many months now." Community counter-signal: "What a nice reviewable little commit" (HN commenter, sarcastic — flags code review as the unsolved problem for AI-generated large PRs). Sumner acknowledged Rust doesn't catch all memory leaks across JavaScript boundaries. [The Register, May 14, 2026 — domain trade publication] (https://www.theregister.com/devops/2026/05/14/anthropics-bun-rust-rewrite-merged-at-speed-of-ai/5240381)
+
 **3. Anthropic 2026 Agentic Coding Trends Report (released May 2026):**
 Vendor report using Claude Code telemetry + customer interviews. Key data points:
 - 78% of Claude Code sessions in Q1 2026 involve multi-file edits (vs. 34% Q1 2025). Average session length: 23 minutes (vs. 4 minutes in autocomplete era). Average tool calls per session: 47.
@@ -190,6 +193,32 @@ Vendor report using Claude Code telemetry + customer interviews. Key data points
 - **Evidence caveat:** Telemetry statistics are vendor first-party data (plausible reliability). Customer case studies are vendor-selected (Level 0). Delegation gap stat is survey-based with undisclosed methodology. Read telemetry as directional signal; discard case study claims without independent verification.
 - [Anthropic / Hubspot, 2026 — vendor report] (https://resources.anthropic.com/2026-agentic-coding-trends-report)
 - Analysis: [Pathmode, practitioner analysis] (https://pathmode.io/blog/orchestration-era-needs-intent)
+
+---
+
+**June 2, 2026 — Dynamic Workflows first practitioner reactions + Opus 4.8 limits (cycle 121):**
+
+**Dynamic Workflows — evidence upgrade to Level 1-2 boundary:**
+
+Five independent practitioners published reactions in the 4 days after the May 28 launch:
+
+1. **Simon Willison (May 28, simonwillison.net):** Did NOT evaluate Dynamic Workflows specifically. His Opus 4.8 post focused on the honesty improvements. Called it "a modest but tangible improvement" and praised Anthropic's candor in not overstating the release. The absence of a Dynamic Workflows evaluation post after 5 days is calibration data: Willison tests every major Claude Code feature publicly, so no DW post yet = either hasn't tested at scale yet, or insufficient production occasion. Separately (May 27): "I think Anthropic and OpenAI have found product-market fit" — notes surprising LLM bills from his own accounts as evidence. [practitioner direct] (https://simonwillison.net/2026/May/28/claude-opus-4-8/) / (https://simonwillison.net/2026/May/27/product-market-fit/)
+
+2. **Karo Zieminski (May 28, Substack):** Identified two Opus 4.8 limitations: (a) temperature/sampling parameters no longer function — breaking change for users relying on these controls; (b) Terminal-Bench 2.1 performance lags GPT-5.5. On Dynamic Workflows: "not production-ready at announcement." Plans to test on bounded problems only (module migration, dependency auditing) — explicitly warns against pointing DW at entire codebases without scope boundaries. Describes Opus 4.8 as "a bridge to Claude Mythos." [practitioner direct] (https://karozieminski.substack.com/p/claude-opus-4-8)
+
+3. **azukiazusa (May 29, azukiazusa.dev):** First practitioner to actually run DW within 24h of launch. Ran /deep-research built-in workflow and generated a custom Oxlint migration workflow. Primary result: **hit rate limit mid-run — could not confirm final report output.** Rate limits are the primary first-day practical blocker. No cost/token figures reported. [practitioner direct] (https://azukiazusa.dev/en/blog/claude-code-dynamic-workflow/)
+
+4. **HN community (thread #48311705):** Two key practitioner observations — "A workflow that runs hundreds of subagents and stops on every permission prompt isn't actually parallel — you'd spend the whole run clicking approve." And: "I need more mechanisms for controlling long-running sessions and dynamically injecting thoughts, corrections, and nudges rather than faster ways to burn through tokens without knowing if results are correct." Both point to the same gap: the permission + control interface doesn't scale to the DW use case. [practitioner direct, community]
+
+5. **Ken Huang (May 29) + QUASA/Vasipenok (May 31):** Technical analysts who converged on the same architectural insight: DW implements a generator-validator loop ("the closest thing we've seen to a GAN for software engineering"). Both independently identified **planning opacity** as the primary limitation: users cannot see or steer the plan before agents start burning tokens and touching files. Both explicit: DO NOT use DW for well-defined tasks with predictable token budgets — custom subagents are more efficient. [practitioner analysis] (https://kenhuangus.substack.com/p/claude-code-orchestration-dynamic) / (https://quasa.io/media/dynamic-workflows-in-claude-code-anthropic-s-first-real-agent-swarm-that-actually-ships)
+
+**DW evidence level as of June 2:** Still Level 1 (practitioner opinions + one incomplete test run). Three structural blockers documented by independent practitioners: (1) rate limits terminate runs before completion, (2) permission prompts break parallelism in practice, (3) planning stage is opaque — no pre-run visibility. These are interface/policy issues, not architectural limits — addressable during research preview. **The upgrade to Level 2 requires the first practitioner to document a complete production workflow run with measured results.** No such report exists as of June 2.
+
+**Opus 4.8 limitations (from practitioner-direct testing, Zieminski, May 28):**
+- Temperature/sampling parameters no longer function — breaking change
+- Terminal-Bench 2.1: lags GPT-5.5 on terminal-native tasks
+- Fast mode still research preview (not available to all Max subscribers despite announcement)
+- Knowledge cutoff remains January 2026; context window/pricing unchanged from 4.7
 
 ---
 
@@ -215,7 +244,15 @@ Vendor report using Claude Code telemetry + customer interviews. Key data points
 
 **What it is:** AI-first IDE built on VS Code. Strongest practitioner adoption among individual developers.
 
-**Market position (April 2026 update):** $2B ARR confirmed February 2026, targeting $50B valuation in new $2B raise (April 20, 2026). Revenue doubled in 3 months. 70% of Fortune 1000 customers. Enterprise now 60% of revenue — up from ~25% in late 2024. JetBrains January 2026 survey: 18% at-work adoption (tied with Claude Code, below GitHub Copilot at 29%). ([TechCrunch](https://techcrunch.com/2026/03/02/cursor-has-reportedly-surpassed-2b-in-annualized-revenue/) — [general press]; [startupwired.com](https://startupwired.com/2026/04/20/cursor-targets-2b-raise-at-50b-in-ai-coding-boom-surge/) — [general press]; [Sacra](https://sacra.com/c/cursor/) — [domain trade publication])
+**Market position (June 2026 update):** $2B ARR confirmed February 2026. Revenue forecast: $6B+ ARR by end of 2026 (fastest-scaling B2B software company on record, ahead of Slack/Zoom/Snowflake at equivalent stages). 70% of Fortune 1000 customers. Enterprise now 60% of revenue. JetBrains January 2026 survey: 18% at-work adoption (tied with Claude Code, below GitHub Copilot at 29%). ([TechCrunch](https://techcrunch.com/2026/03/02/cursor-has-reportedly-surpassed-2b-in-annualized-revenue/) — [general press]; [Sacra](https://sacra.com/c/cursor/) — [domain trade publication])
+
+**STRATEGIC DEVELOPMENT — xAI/SpaceX acquisition option (April 21–28, 2026):**
+- xAI struck a deal giving it the right to acquire Cursor for $60B OR pay $10B for joint work (Wikipedia citing TechCrunch, April 21, 2026)
+- SpaceX (separate Musk entity) also has an acquisition option at ~$60B, with Colossus supercomputer integration as strategic rationale (PM Insights, April 28, citing TechCrunch April 21)
+- **Company remains independent as of June 1, 2026.** The $2B fundraise at $50B may have been paused or superseded.
+- Source conflict: Wikipedia attributes the deal to "xAI"; PM Insights attributes it to "SpaceX" — both are Musk-affiliated entities. May be two facets of one deal, or two parallel discussions.
+- **CTO implication:** If either option is exercised, the coding agent competitive landscape fundamentally shifts — Cursor's 70% Fortune 1000 footprint would become a Musk-entity asset, with implications for enterprise data privacy and vendor neutrality decisions.
+- [Wikipedia/Anysphere, June 1, 2026] / [PM Insights, April 28, 2026, citing TechCrunch — domain trade publication] (https://www.pminsights.com/insights/cursor-momentum-builds-with-spacex-60b-deal-interest-and-advance-2b-funding-talks)
 
 **Enterprise deployments (Level 2 — single-company each):**
 - Salesforce: 90% of 20,000 developers using Cursor

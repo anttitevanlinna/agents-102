@@ -2,6 +2,48 @@
 
 Captured 2026-05-24 after self-introspection on the M1+M2 dry-run sweep. Numbered roughly by yield-per-hour: high yield + low effort first.
 
+## Caught 2026-06-02 codesearch M1→M6 FULL RE-RUN (post-auto-resend-codification)
+
+End-to-end PASS all 6 modules, single-shot, unattended. Goal: retest the auto-resend codification + recent-window-stall fix landed 2026-06-01 in `6e4280a`, plus re-verify the M4/M5 commit-shape pre-auth + the M6 mermaid-tightening + the M6 `claude_local_md_mtime_advanced` latent.
+
+Runs: M1 `20260602-070557-18650` (`9979c2a → 2323b06` on master — siftUp regression named + fix committed); M2 `20260602-071700-26146` (plan `m2-csweb-shared-instance-brisk-heron.md`); M3 `20260602-075534-39349` (ADR + `test-strategy-codesearch` skill); M4 `20260602-080656-47375` (`57f60f2 → 4d27229` on `m4/implement-show-clamp`, observations 3 files, tree clean); M5 `20260602-082035-53843` (`e0465ca` packaging → `cc2b799` clamp, worktree `codesearch-m5` forked at `57f60f2`, tree clean); M6 `20260602-084553-65241` (`session-shaper-codesearch` skill + arc `observations/arc-prose-to-executable-bar.md` + CLAUDE.local.md updated, `m6_claude_local_md_mtime_advanced: true`).
+
+### Closures verified in this re-run
+
+- [x] **M1 finds the bug.** T6 commit assertion green; siftUp regression named + fixed; `9979c2a → 2323b06`. The replanted `bug-planted-master` baseline held — `grep -c "j = i" index/write.go == 0` pre-launch (planted state), then green post-fix.
+- [x] **M4 commits implementation, tree CLEAN** — second consecutive PASS of the commit-shape pre-auth fix.
+- [x] **M5 PC commits packaged work, tree CLEAN** — second consecutive PASS of the same fix shape. Three clean commits exactly as the scenario tail names.
+- [x] **M5 worktree forks at the right M4 starting point on agent's chosen branch.** `m5_starting_sha=57f60f2` matches `m4_sha=57f60f2`; the M5 PA agent walked past the "ask for SHA" fallback the same way it did 2026-05-26.
+- [x] **M6 `m6_claude_local_md_mtime_advanced: true`** — the 2026-06-01 second-pass latent flipped GREEN this run. M6 closer updated `CLAUDE.local.md` (arc note plus rule pruning). The 2026-06-01 finding was the false-`false`, not a regression; latent closes.
+- [x] **M6 T4 mermaid tightening (2026-06-01 fix)** — green. Cannot distinguish "PASS because tightened" from "PASS because agent drew real diagrams" on a single run, but the tighter regex won't silently swallow regressions if the agent stops drawing them.
+
+### Runner-fix shipped 2026-06-01, NOT exercised this run
+
+- [ ] **Auto-resend in `wait_for_turn` + recent-window stall detection.** No API stall occurred this run. Both helpers are unit-tested (`tests/auto-resend.test.sh` 8 cases, `tests/stall-detection.test.sh` 5 cases) and the integration is wired (`lib/sync.sh`). First *live* validation deferred to the next stall incident.
+
+### Runner-mechanic findings — STATE
+
+- 🔴 **Slug-mismatch orphan branch fired a FOURTH time.** Wrapper positioned `m4/clamp-show-to-roots @ 2323b06`; agent created `m4/implement-show-clamp` and committed there. Sibling of 2026-05-26 + 2026-06-01-first-run + 2026-06-01-second-run. Four consecutive occurrences = consistent latent, runway spent. Fix: post-leg `git branch -D` in the chain wrapper if the wrapper-positioned slug is still at the M2 SHA (i.e. agent never used it). Next runner-mechanic session.
+
+- ⚪ **`observations/observations/` byte-identical nested-dir junk** — did NOT recur this run. The M5 worktree's `observations/` only contains the three M4 obs files + M6's arc note. Watch held; if it recurs once more, root-cause the create site.
+
+- 🟢 **M6 `m6_claude_local_md_mtime_advanced: false` latent** — flipped to `true` this run. Latent closes (single false-`false` from 2026-06-01 second pass; assertion is correct).
+
+### Watches — what fired this run
+
+- 🔴 **M6 second-skill deferral-loophole fired a FIFTH consecutive time.** Arc note: *"The newest artefact regressed toward prose. M6's `session-shaper-codesearch` is meant to be the culmination — the bar made reusable. But run against the real artefacts it would have **passed** M4: its bar (b) accepts 'explicitly deferred — one line naming what wasn't run and why,' and M4's 'pre-existing... out of scope' is exactly that one line. The arc whose whole movement is prose → executable bar ends on an artefact that put the bar back into prose, against the one gap that needed an executable check. The maturation is real; the last step slipped. (Fix: bar (b) must reject a deferral whose named failure mode is reachable from code the diff introduced — or back the judge with the subprocess-smoke primitive so the case is run, not attested.)"* Already promoted from `[watch]` to `[action]` in `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md` last session (2026-06-01). This run is the 5th-strike confirmation: the promotion was correct, and the agent itself proposes the exact fix shape we'd implement (reject deferral when failure mode reachable from diff, or back judge with subprocess-smoke primitive).
+
+### Student-facing prompt audit (secondary goal)
+
+Audit lens: `memory/check_student_facing.md` (peer-flat, no AUQ, plausibly-failable gates, terms earned, CLAUDE.md layer pinned). Scanned: all 6 module transcripts (M1, M2, M3-main, M3-quality, M4, M5-PA, M5-PB, M5-PC, M6).
+
+- **Zero AUQ calls across all 6 sessions.** `AskUserQuestion` count = 0/0/0/0/0/0. Agent never triggered the banned pattern — students wouldn't get stuck mid-prompt for the same reason.
+- **Zero agent-flagged prompt ambiguities.** Two "ambiguous"/"two readings" hits in transcripts both false positives: (a) M2 walk-down's *"the envelope shape is ambiguous"* refers to the codesearch `/api/search` JSON schema the agent is *designing* (the task content), not to prompt text; (b) M5 PB-T2's *"two readings, name both and pick one"* is the prompt's own escape-valve text, not the agent flagging confusion.
+- **Zero in-prompt confusions surfaced as decisions.** No "I'll interpret this as", "I'll assume", "the prompt isn't clear", etc.
+- **M6 agent self-critique IS the prompt working as designed.** The session-shaper-codesearch arc note's "this judge would have passed the M4 dodge" is the M6 prompt body asking the agent to find weaknesses in its own skill — and the agent finds the same one five times running, which is curriculum *signal*, not prompt failure. Already action-tracked.
+
+**Conclusion: no new student-facing prompt issues this run.** The prompts (M1-M6 registry + scenario tails) hold up against an autonomous agent without producing any moment a student would get stuck on the prompt body itself.
+
 ## Caught 2026-06-01 lemmings M1→M6 full-chain re-run (post-codesearch, expanded-M6-validation)
 
 End-to-end PASS, single-shot, unattended, ~2h wall. `chain-lemmings.sh` under `caffeinate -is` (defends against the 2026-05-26 machine-sleep API-socket stall, no recurrence). Runs: M1 `20260601-131314-31595` (`bdd0919 → e008b0d`), M2 `20260601-132116-37446` (plan `m2-add-levels-2-3-nimble-marten.md`), M3 `20260601-134740-51002` (`test-strategy-lemmings`, ADR), M4 `20260601-140036-57810` (branch `m4/blocker-deadlock-terminal`), M5 `20260601-141930-66509` (worktree forked at `90b2805`, PA+PB+PC all green), M6 `20260601-144437-75908` (`session-shaper-lemmings`, arc `docs/notes/2026-06-01-practice-arc.md` + CLAUDE.local.md update).

@@ -77,7 +77,7 @@ If the agent names something missed, decide whether to compound it now or accept
 
 Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. Module 4 turns the discipline inward: memory that reads your system, not just a feature. The quality criteria, the access-surface facts, and the hardening decision all feed into what M4 builds.
 
-Optional forward-look before M4: [What is agentic engineering](trainings/agentic-engineering-101/supplementary/what-is-agentic-engineering.md).
+Optional forward-look before M4: [What is agentic engineering](trainings/agentic-engineering-101/supplementary/what-is-agentic-engineering.md). And when your sessions start running heavy, [Token efficiency](trainings/agentic-engineering-101/supplementary/token-efficiency.md) on keeping the context window lean.
 
 ## Bring to Module 4
 

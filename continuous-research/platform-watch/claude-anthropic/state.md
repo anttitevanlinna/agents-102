@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [anthropic, claude-code, claude-cowork, antspace, agent-sdk]
 nordic: false
-updated: 2026-05-30
-cycle: 114-final
+updated: 2026-06-03
+cycle: 122
 answers:
   - "what is Anthropic's platform strategy?"
   - "what can business users do with Claude today?"
@@ -16,8 +16,15 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-05-30 (cycle 114)
-OODA cycles: 11
+Last updated: 2026-06-03 (cycle 122)
+OODA cycles: 12
+
+**Cycle 122 updates (June 3, 2026) — $65B Series H + Microsoft Build Claude integration:**
+- **$65B Series H closed at $965B post-money valuation — Anthropic now most valuable private AI lab.** Surpasses OpenAI ($852B) by ~$113B. Co-led by Altimeter Capital, Dragoneer, Greenoaks, Sequoia, Capital Group, Coatue, D1 Capital Partners. Institutional participants: Baillie Gifford, Blackstone, Brookfield, D.E. Shaw, Fidelity. Infrastructure partners: Samsung, SK Hynix, Micron. $15B of the round is previously committed hyperscaler investment (Amazon's $5B included). Revenue run rate: $47B annualized as of May 2026, up from $30B (April) and $14B (February). Simon Willison's credibility defense: figures appear in formal fundraising materials where securities law applies — investor deception would be fraud. Full verification deferred until S-1. Use of funds: safety research, compute expansion, customer products/partnerships. ([TechCrunch](https://techcrunch.com/2026/05/28/anthropic-raises-65-billion-nears-1t-valuation-ahead-of-ipo/) — general press, May 28, 2026; [Anthropic newsroom](https://www.anthropic.com/news/series-h) — vendor; [simonwillison.net](https://simonwillison.net/2026/May/29/anthropic/) — practitioner direct)
+- **Claude Code enterprise metrics (from fundraising disclosures, Level 2):** $2.5B ARR as of February 2026 (Sacra/CNBC). 1,000+ customers spending $1M+/year as of April 2026. Enterprise = ~80% of total revenue. 300,000+ business customers (October 2025). 100,000+ running Claude on Amazon Bedrock (April 2026). Customers spending $100K+/year grew 7x in the past year. ([CNBC](https://www.cnbc.com/2026/05/28/anthropic-open-ai-startup-value.html) — general press; [Sacra](https://sacra.com/c/anthropic/) — domain trade publication)
+- **IPO trajectory: 12-18 months from May 2026.** Series H syndicate structure (institutional + strategic infrastructure partners) is standard pre-IPO round. Forge Global cited October 2026 as anticipated filing date. S-1 filing will provide first independent verification of the revenue run rate figures.
+- **Claude officially first-party in Microsoft Azure Foundry and M365 Copilot (announced June 2 at Microsoft Build 2026).** Claude Opus 4.8 in Azure AI Foundry 12,000+ model catalog. Claude available in M365 Copilot mainline (Frontier program), Copilot Studio, Excel Agent Mode, Copilot Researcher. This is architectural expansion of the existing Anthropic-Microsoft partnership. ([Anthropic newsroom](https://www.anthropic.com/news/claude-in-microsoft-foundry) — vendor; [aiweekly.co](https://aiweekly.co/alerts/microsoft-targets-claude-code-with-project-polaris) — practitioner analysis). Note: Microsoft simultaneously announced Project Polaris (own model replacing OpenAI in GitHub Copilot) — the multi-model approach benefits Claude while reducing OpenAI dependency in the partner ecosystem.
+- **Strategic position update:** Anthropic leads on valuation, Claude Code on enterprise revenue per customer, and the Microsoft partnership now gives Claude first-party access to the dominant enterprise collaboration surface. Key remaining vulnerability: infrastructure reliability (109 incidents in 90 days as of cycle 113) and Antspace still staging. The June 15 billing change (metered agentic usage) closes the below-cost subscription subsidy — a structural industry forcing function, not unique to Anthropic.
 
 **Cycle 114 updates (May 30, 2026) — June 15 billing change: enterprise/developer community reaction:**
 - **OpenAI directly exploited billing change with timed counteroffer.** Sam Altman announced same day (May 14): two months of free Codex access for enterprise users switching from Claude within 30 days, plus one-click migration tool transferring prompts, skills, and MCP configurations. Anthropic countered by raising Claude Code weekly limits by 50% across Pro/Max/Team/Enterprise through July 13 — almost exactly matching OpenAI's trial window. This is now a documented pricing war. Neither company has named enterprises that have completed the switch. Sources: [4sAPI Blog](https://blog.4sapi.com/blog/anthropic-openai-ai-pricing-war) — [practitioner analysis]; [KuCoin](https://www.kucoin.com/news/flash/openai-and-anthropic-launch-pricing-war-for-ai-coding-tools) — [general press]. Evidence level: Level 2 (multiple independent sources confirming both offers).

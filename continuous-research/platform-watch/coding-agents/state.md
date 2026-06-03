@@ -214,6 +214,8 @@ Five independent practitioners published reactions in the 4 days after the May 2
 
 **DW evidence level as of June 2:** Still Level 1 (practitioner opinions + one incomplete test run). Three structural blockers documented by independent practitioners: (1) rate limits terminate runs before completion, (2) permission prompts break parallelism in practice, (3) planning stage is opaque — no pre-run visibility. These are interface/policy issues, not architectural limits — addressable during research preview. **The upgrade to Level 2 requires the first practitioner to document a complete production workflow run with measured results.** No such report exists as of June 2.
 
+**Cycle 122 source classification correction (June 3, 2026):** The Klarna (Alessio Vallero, Senior Engineering Manager) and CyberAgent (Ken Takao, Lead Systems Engineer) quotes appearing in search results were confirmed to originate from the Anthropic vendor launch blog (https://claude.com/blog/introducing-dynamic-workflows-in-claude-code), not from the practitioners' own publications. Classification: Level 0 (vendor-extracted testimonials). They do not upgrade the DW evidence level. The Level 1-2 boundary assessment from cycle 121 stands unchanged. Back-sweep complete — no prior cycle file incorrectly labeled these as practitioner-direct.
+
 **Opus 4.8 limitations (from practitioner-direct testing, Zieminski, May 28):**
 - Temperature/sampling parameters no longer function — breaking change
 - Terminal-Bench 2.1: lags GPT-5.5 on terminal-native tasks

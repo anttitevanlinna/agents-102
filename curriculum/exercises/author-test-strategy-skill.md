@@ -61,6 +61,8 @@ Shipped. Debrief will integrate the session.
 
 Module 4 (memory that reads your system) consumes the test-strategy skill as a Block 3 quality-criterion anchor. M6 (long-running return) will author a verifier skill the same way you authored this one; the move repeats, gets faster. Your personal skills folder now has one file you authored from session evidence. Promotion to a team home is the conversation you'll start over coffee, not the move you make today.
 
+**Note** The side-quest worktree may still hold changes the agent made here: code, tests, scratch files. Its copy of `CLAUDE.local.md` came over at the fork and may have drifted from the one in your main repo. The skill crossed back on its own (it lives at user scope); everything else stays in the worktree. Those changes are yours to handle later: keep them, carry the useful parts to your main repo, or delete the worktree.
+
 <!-- maintainer -->
 
 

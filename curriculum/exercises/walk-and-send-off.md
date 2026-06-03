@@ -1,4 +1,4 @@
-# Walk and send off
+# Walk and *send off*
 
 **Time:** 55 minutes inside a 1h45 module slot (Phases 1–3, breakdown: pick 10 / walk-and-fill 35 / see-the-frame 10). The send-off (~5 min, single prompt paste) is owned by the module file, not this exercise; the two together close Module 4.
 

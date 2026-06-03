@@ -1,4 +1,4 @@
-# Open the side quest
+# Open the *side quest*
 
 **Time: ~5 min**
 

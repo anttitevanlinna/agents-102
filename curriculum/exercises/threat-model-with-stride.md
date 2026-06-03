@@ -1,4 +1,4 @@
-# Exercise: Threat-model with STRIDE
+# Exercise: Threat-model with *STRIDE*
 
 **Time:** 20 minutes.
 

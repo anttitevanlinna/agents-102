@@ -1,4 +1,4 @@
-# Diagnose and re-send
+# Diagnose and *re-send*
 
 **Time:** 65 minutes inside a 2h module slot (Phases 1–4). Debrief + re-send (~15–20 min) is owned by the module file.
 

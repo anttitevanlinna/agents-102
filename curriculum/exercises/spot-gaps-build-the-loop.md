@@ -1,4 +1,4 @@
-# Spot gaps, build the loop
+# Spot gaps, build the *loop*
 
 **Time:** 40–50 minutes inside a 2h module slot.
 

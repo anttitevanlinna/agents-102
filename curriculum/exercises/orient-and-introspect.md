@@ -1,4 +1,4 @@
-# Orient and introspect
+# Orient and *introspect*
 
 **Time:** 15–20 minutes.
 

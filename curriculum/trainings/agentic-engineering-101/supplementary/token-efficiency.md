@@ -120,8 +120,8 @@ Token efficiency is one lever with two payoffs: a cleaner window thinks better a
 - Still owed before first cohort: a module-side entry point. No module links to it yet. Candidate home: an "if time allows" callout in an M2/M3 module where context discipline first bites.
 - Carries additive calc/exploration prompts (the "price the bloat" cost calc), not primitive demonstrations. `/context` is treated as already-known (it lands in M1 and recurs through the exercises); the page reads it as the instrument the engineer holds, not a move to teach. Do not reintroduce "run `/context`" demonstrations here. Prompts are inline `**Prompt**` blocks (draft form); migrate to registry prompts (`curriculum/prompts/<key>.md`) on wiring, the way `the-agent-loop.md` uses `{{prompt:...}}` includes. Approved-prompt key so far: `ae101-token-efficiency-bloat-cost`.
 
-**Quality:** compendium-audited 2026-06-03 (writing@a821067 story@a821067 technical@a821067 behavior@a821067)
-- judges @a821067: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy N/A (supplementary reference — no module architecture), strategy N/A (supplementary reference — strategy_tie_in N/A per story judge)
+**Quality:** compendium-audited 2026-06-03 (writing@f2abbf6 story@f2abbf6 technical@a821067 behavior@a821067)
+- judges @f2abbf6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy N/A (supplementary reference — no module architecture), strategy N/A (supplementary reference — strategy_tie_in N/A per story judge)
 
 **Visible "Sources" list is deliberate.** Linked titles + venue + year (no source-type labels, no ladder vocabulary) = student-facing end-matter, not a "What research says" callout; the no-callout rule bans audit framing inside the prose, not a reading list. Curated to verified URLs only — every entry opened against its byline. Keep the list and the maintainer stamps in sync.
 

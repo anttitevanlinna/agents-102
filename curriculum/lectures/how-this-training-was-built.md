@@ -30,7 +30,7 @@ The rules compounded. Learning compounded to make better rules. More rules, more
 
 ## Then the agents started checking the agents
 
-Somewhere along the way, the sessions got longer. What used to be one person in a thirty-minute turn became plan mode for an hour, then a subagent running in the background for two, then four agents in parallel auditing a file against four compendiums while a fifth checked the neighbours. The work-per-session went up. The care-per-line went up. Sweeping changes that would have taken a week got made in an afternoon because the rules were tight enough to hand off.
+Somewhere along the way, the changes got bigger. What used to be one person fixing one line became plan mode reshaping a whole file, then a subagent auditing that file against a compendium in the background, then four agents in parallel auditing a file against four compendiums while a fifth checked the neighbours. The work-per-session went up. The care-per-line went up. Sweeping changes that would have taken a week got made in an afternoon because the rules were tight enough to hand off.
 
 Every session got better. Every session reached for better scale. The next session inherited what the last one figured out.
 

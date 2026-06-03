@@ -1,0 +1,33 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/token-efficiency.md",
+  "verdict": "PASS",
+  "training": "ae101",
+  "trace_status": "generated_first_time",
+  "prompts_evaluated": 1,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Use current Opus pricing from the Anthropic pricing page. In an agent session the",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Three sequential calculation tasks may prompt a brief narration before the math.",
+          "fix_hint": "Optional body primer after the fence; not blocking."
+        }
+      ],
+      "risks_overturned": [
+        {
+          "pattern_id": "citation-cargo-cult",
+          "original_confidence": "med",
+          "why_overturned": "Premise false. Claude Code has WebFetch. The pricing page was fetched live 2026-06-03 and returns current Opus rates (4.5-4.8 all $5 input / $0.50 cache read / $6.25 5m write / $25 output). 'Use current Opus pricing from the Anthropic pricing page' is a valid, fulfillable instruction, not a phantom fetch. No compendium asserts no-internet access; the no-browser claim was a judge hallucination. See check_platform_and_boundaries.md S4 (trust-but-verify the capability-check agent: WebFetch the URL yourself when the assertion is load-bearing)."
+        }
+      ]
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 0
+}

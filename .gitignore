@@ -20,3 +20,9 @@ tmp/
 ae101-content.tar.gz
 agents-101-starter.tar.gz
 !site/clients/**/*.tar.gz
+
+# Internal-only customer staging — built locally for the gated (ai-training-internal)
+# deploy, must NEVER be committed to this public repo. Excluding the directory also
+# overrides the tar.gz re-include above (git can't re-include a file under an
+# excluded parent), so `git add -A` can't leak gated content.
+site/clients/goats/

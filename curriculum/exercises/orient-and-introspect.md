@@ -36,6 +36,8 @@ Now look at your context budget, the slash command that shows how full your cont
 
 {{prompt:orient-and-introspect-3}}
 
+(`/context` is oldskool; [ccstatusline](https://github.com/sirmalloc/ccstatusline) shows the same thing continuously in your status line.)
+
 Look at the percentage. The window has a ceiling; the more it fills, the less room for new work. The slice of the repo Claude didn't load is the bounded-window reality. Your job going forward is to steer what lands in those bytes.
 
 You've seen what's loaded and what isn't. Hand off to the fix.

@@ -2,22 +2,33 @@
 type: state
 domain: platform
 evidence_level: 3
-platforms: [microsoft, copilot, copilot-studio, azure-ai-foundry]
+platforms: [microsoft, copilot, copilot-studio, azure-ai-foundry, mai-models, windows-agent-framework]
 nordic: true
-updated: 2026-06-01
-cycle: 120
+updated: 2026-06-04
+cycle: 123
 answers:
   - "what can business users do with Microsoft Copilot today?"
   - "is Copilot Studio a real agent builder?"
   - "why is Copilot adoption declining?"
+  - "what did Microsoft Build 2026 actually ship vs announce?"
 ---
 
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-06-01 (cycle 120)
-OODA cycles: 27
+Last updated: 2026-06-04 (cycle 123)
+OODA cycles: 30
 
-**Cycle 120 updates (June 1, 2026):**
+**Cycle 123 updates (June 4, 2026) — Microsoft Build 2026 post-event:**
+- **Project Polaris (August 2026): Microsoft's in-house model replaces GPT-4 Turbo in GitHub Copilot.** MoE architecture, trained without OpenAI data or distillation. Microsoft claims it outperforms GPT-4 Turbo on coding benchmarks (particularly Rust/Haskell). Forced migration August 2026 with 3-month fallback. Code Content Guarantee (IP indemnification). **Benchmarks NOT independently verified** — private preview only. Counter-evidence from HN MAI-Code-1-Flash thread: developers found smaller open-source alternatives (Qwen3.6-35B, DeepSeek V4 Flash) cheaper and competitive. chatforest.com practitioner note: "Evaluate the three-month fallback option now, not after forced migration" — implied transition risk. Sources: [TechTimes, June 2](https://www.techtimes.com/articles/317596/20260602/github-copilot-replaces-gpt-4-project-polaris-ships-multi-agent-vs-code-build.htm) — [domain trade publication]; [HN item 48374466](https://news.ycombinator.com/item?id=48374466) — [practitioner direct]. Evidence: Level 1 (benchmark claims unverified externally).
+- **MAI-Thinking-1: Microsoft's first reasoning model — 35B active (1T total, MoE), private preview only.** Claims: 97% AIME 2025, 53% SWE-Bench Pro, 256K context. Trained without distillation. latent.space analysis: compared to Sonnet 4.6 (not Opus 4.8) — "claims require careful interpretation." Simon Willison self-correction: training data is standard web crawl (1.2T proprietary pages + Common Crawl), not "clean commercially licensed data" as initially implied. Majorana 2 quantum chip announced simultaneously — multiple physicists say "it doesn't even work and never has" (Scientific American, Science.org). Credibility pattern for Microsoft benchmark claims: needs external reproduction before treating as competitive fact. Sources: [latent.space](https://www.latent.space/p/ainews-microsoft-build-mai-thinking) — [practitioner analysis]; [simonwillison.net](https://simonwillison.net/2026/Jun/2/microsofts-new-models/) — [practitioner direct]; [Scientific American, June 3](https://www.scientificamerican.com/article/microsofts-upgraded-majorana-quantum-computing-chip-fizzles-with-physicists/) — [domain trade publication]. Evidence: Level 1 for model; Level 2 for Majorana dispute.
+- **Windows Agent Runtime enters Windows Insider preview — text-only agents at launch.** Critical gap: multi-modal agents (screen-seeing, GUI-interacting) are future release, NOT at launch. WAF SDK (MIT-licensed, YAML-defined, April 2 release) has been available 63 days — zero named practitioner deployments found. Windows Agent Store (85% rev share, Adobe/Zoom as launch partners) announced. Azure Agent Mesh: GA target Q4 2026. Copilot Super App ("Chat + Cowork + Code unified"): announced verbally, **no demo shown** — roadmap not deliverable. Sources: [aitoolsrecap.com](https://aitoolsrecap.com/Blog/microsoft-build-2026-windows-agent-framework-wsl3-azure-mesh) — [domain trade publication]; [letsdatascience.com](https://letsdatascience.com/news/microsoft-teases-copilot-super-app-but-no-demo-1659bca7) — [domain trade publication]. Evidence: Level 1.
+- **Microsoft Scout ("always-on autonomous work agent"): Frontier preview only, no GA date.** Operates across Teams, Outlook, OneDrive, SharePoint with Entra identity. Requires GitHub Copilot subscription. "Policy conformance system" with audit trails — explicitly built to address prior autonomous agent failure modes (OpenClaw erratic behavior). No deployment evidence. Source: [TechCrunch, June 2](https://techcrunch.com/2026/06/02/microsoft-launches-scout-an-openclaw-inspired-personal-assistant/) — [general press]. Evidence: Level 0.
+- **Build 2026 practitioner verdict (aguidetocloud.com — most substantive independent analysis, 48-hour window):** Top signal: Copilot Credits metering shift ("If you only read one section, read this") — per-user licensing shifting to consumption. Agent 365 SDK now free and framework-agnostic (governs Claude Code CLI, GitHub Copilot CLI, any agent running locally). Microsoft IQ grounding architecture separates data access from intelligence. Project Solara hardware: "Don't budget for badge/desk devices yet." Framework-agnostic positioning (ACS, MXC, Agent 365 SDK work across LangChain, OpenAI Agents SDK) signals Microsoft betting on governance/intelligence orchestration, not framework monopoly. Source: [aguidetocloud.com, June 3](https://www.aguidetocloud.com/blog/microsoft-build-2026-recap/) — [domain trade publication/practitioner]. Evidence: Level 1.
+- **GitHub Copilot App: technical preview, not GA.** New standalone desktop app for background agent work (My Work dashboard, isolated Git worktrees, parallel agent operations). Requires paid subscription. Free-tier rollout future with waitlist. Source: [Thurrott.com, June 2](https://www.thurrott.com/dev/336962/build-2026-microsoft-announces-github-copilot-app) — [domain trade publication]. Evidence: Level 0.
+- **Deployment gap: STRUCTURAL (33 builds, all pattern holds).** WAF SDK available 63 days — zero deployments. All new Build 2026 features (Scout, Copilot App, Windows Agent Runtime) are Frontier preview or future-dated. Azure Agent Mesh Q4 2026. Copilot Super App no demo. Pattern matches all prior cycles: Microsoft ships governance/identity/infrastructure first; production deployments lag 60-120 days minimum.
+- **Nordic update: twelfth consecutive zero for M365 business agent deployments.** Sweden named in Anthropic's Project Glasswing expansion (Mythos access for critical infrastructure security) — but this is security research use, not business process automation. Not a deployment signal for our primary question.
+
+**Cycle 122 updates (June 3, 2026):**
 - **Microsoft Build 2026 pre-event baseline set — NDA discipline near-Google-level.** Event: June 2-3, Fort Mason SF, Satya Nadella keynote 9:30 AM PT. Seven confirmed session tracks (Agents & Apps; Azure AI Platform; GitHub; Microsoft Fabric; Responsible AI; Windows; Working with Models). Named sessions in catalog: "Building agentic experiences for Windows" (Pavan Davuluri), "GitHub Copilot meets Windows Agents," "Securing the agent mesh," "AI-driven hardware acceleration," "Agent Studio: Build once, run on any Windows device." No keynote-content leaks despite 7+ preview articles — Microsoft maintained NDA discipline. Explicitly NOT on agenda: Windows 12. Sources: [news.microsoft.com/build-2026](https://news.microsoft.com/build-2026/) — [vendor]; [Notebookcheck, May 31, 2026](https://www.notebookcheck.net/Microsoft-Build-2026-What-to-expect-from-the-June-2-keynote.1311546.0.html) — [domain trade publication]; [WindowsNews.ai](https://windowsnews.ai/article/microsoft-build-2026-windows-becomes-the-platform-for-ai-agents.420503) — [domain trade publication]. Evidence: Level 1.
 - **Windows Agent Framework v1.0 confirmed live on GitHub (pre-Build, April 2, 2026).** MIT license. Components: Agent Registration Service, Declarative Agent Manifest (agent.json schema), Cross-Agent Communication Bus (gRPC-based), encrypted Memory Service. Python 1.7.0 (May 28); .NET 1.6.1 (May 14). Sources: [github.com/microsoft/agent-framework/releases](https://github.com/microsoft/agent-framework/releases) — [practitioner verifiable]. Evidence: Level 2 (code is live).
 - **Azure AI Foundry May 2026 updates shipped** (dev blog May 30, 2026): GPT-5 Reinforcement Fine-Tuning gated GA, Managed VNET GA, Trace-Based Evaluation for external agents (public preview), model catalog at 3,000+ models (Grok 4.3, DeepSeek V4, Kimi 2.6 added), Foundry Local 1.1/1.2 (live audio transcription, Linux ARM64). Source: [devblogs.microsoft.com/foundry/whats-new-in-microsoft-foundry-may-2026/](https://devblogs.microsoft.com/foundry/whats-new-in-microsoft-foundry-may-2026/) — [vendor dev blog, May 30, 2026]. Evidence: Level 1.
@@ -398,26 +409,30 @@ March 2026 reorg: Copilot split into 4 divisions. Suleyman shifted to frontier m
 - **Nordic update:** No Nordic signal in Build 2026 coverage. Eleventh consecutive zero for independent Nordic M365 business agent deployments.
 
 ### Open questions for next cycles:
-- [ ] Hosted Agents: when do they get private networking? This blocks production enterprise use.
+- [ ] Hosted Agents: when do they get private networking? This blocks production enterprise use. **Update (cycle 123): Hosted Agents GA by end of June per aguidetocloud. Private networking status unclear.**
 - [x] Workflow Agents: any practitioner building multi-step business workflows? **Answer: No independent evidence across 6 cycles.**
 - [x] A2A in practice: has anyone connected a Copilot Studio agent to a Foundry agent via A2A? **Answer: No. Preview works, zero real-world connections.**
 - [x] Claude in Copilot Studio: expanding beyond Computer Use beta? **Answer: YES — Claude Sonnet 4 and Opus 4.1 now available for ALL Copilot Studio agent types. Per-agent model selection. Also in M365 Copilot, Word, Excel, PowerPoint. EU/EFTA requires admin opt-in.** ([MS Copilot Blog](https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/anthropic-joins-the-multi-model-lineup-in-microsoft-copilot-studio/), vendor press release)
 - [x] Copilot Cowork Frontier rollout: early user reports? **Answer: No. 21+ days past "late March" broader access promise. Zero reviews.**
 - [x] E7 launch (May 2026): adoption signals? **Answer: No adoption signals. Convergent pricing skepticism from practitioners.**
-- [x] Nordic companies: any M365 agent adoption? **Answer: No. Complete absence across 6 cycles.**
+- [x] Nordic companies: any M365 agent adoption? **Answer: No. Complete absence across 12 cycles (twelfth consecutive zero, cycle 123).**
 - [x] Copilot Cowork independent reviews — **Answer: First review found April 6 (cycle 91, Day 27 post-Frontier access). Partner ecosystem reviewer (HubSite365), not internal enterprise practitioner. Verdict: M365-native tasks work; exceptions need human review; standalone Claude Cowork more capable. Access still restricted — partner access ≠ general enterprise access.**
 - [x] Copilot Cowork — did March end without broader Frontier access? **Answer: YES. March ended without broader access (Frontier preview only March 30). Microsoft missed its stated "late March" broader access timeline. Access is still Frontier-tier restricted as of April 6.**
-- [x] E7 early adoption data — public preview April, GA May 1. **Answer (cycle 122): No independent adoption signals through June 3. E7 is 33 days old. Pricing skepticism from practitioners persists.**
+- [x] E7 early adoption data — public preview April, GA May 1. **Answer (cycle 123): No independent adoption signals through June 4. E7 is 34 days old. Pricing skepticism from practitioners persists. Copilot Credits metering shift (announced Build 2026) will intensify the cost debate.**
 - [ ] Rob Quickenden, Office365itpros, Cloudpartner.fi — track as independent M365 agent analysts. No new agent content since cycle 18.
 - [x] Foundry Agent Service production deployments — **Answer: one week post-GA, still only Corvus Energy (no metrics). Zero new independently verified deployments. Named partners still partnership quotes only.**
-- [x] Microsoft Build 2026 — **Answer (cycle 122, June 3): Project Polaris (own model replacing GPT-4 Turbo in Copilot, Aug 2026), Windows Agent Framework v1.0, Azure Agent Mesh (Q4 GA), MAI-Thinking-1, Claude first-party in Foundry + M365 Copilot, Microsoft Scout, MDASH. All announcements at Level 1 — customer evidence is Level 0. Independent practitioner reactions expected June 9-12.**
+- [x] Microsoft Build 2026 — **Answer (cycle 123, June 4 post-event): Project Polaris (Aug 2026), Windows Agent Runtime (Insider preview, text-only), Azure Agent Mesh (Q4 2026 GA), MAI-Thinking-1 (private preview, benchmarks unverified), Claude first-party in Foundry, Microsoft Scout (Frontier preview only), GitHub Copilot App (technical preview), Copilot Super App (no demo, summer target). ALL new features are preview/future-dated. Deployment gap structural. Key practitioner verdict: Copilot Credits metering shift is the real enterprise story, not the model announcements.**
 - [x] Foundry reliability: do intermittent failures persist? **Answer: YES. All pre-GA bugs remain open post-GA. JSON parsing, Code Interpreter, agent identity, private networking/Workflow. Some practitioners evaluating Claude as fallback.**
-- [ ] Foundry Agent Service — watch 30-90 day window (mid-April to mid-June) for first independent deployment reports.
+- [ ] Foundry Agent Service — 30-90 day window (mid-April to mid-June) for first independent deployment reports. **Update cycle 123: Window at 79 days. Still zero. Transitioning to structural absence designation.**
 - [ ] CUA enterprise adoption — zero practitioner reviews after multi-model + Windows 365 for Agents shipped.
-- [ ] Agent 365 external enterprise reports — zero external evidence. Watch post-May 1 GA.
+- [ ] Agent 365 external enterprise reports — zero external evidence. 34 days post-GA.
 - [ ] Copilot market share: next data point expected from analyst surveys in Q2 2026. 11.5% → where?
 - [ ] Voice Live API — Preview, no GA date, zero deployments.
-- [ ] **INFLECTION POINT: May 1, 2026** — E7 + Agent 365 GA. If the deployment gap persists through May, it transitions from "early" to "structural."
+- [x] **INFLECTION POINT: May 1, 2026** — E7 + Agent 365 GA. **Answer: Deployment gap persisted through May and June 4. STRUCTURAL designation confirmed.**
+- [ ] **NEW (cycle 123): Will Project Polaris August 2026 migration generate practitioner pushback?** Watch for: benchmark independent verification, developer sentiment on forced migration, IP indemnification claims tested.
+- [ ] **NEW (cycle 123): WAF SDK deployment reports** — 63 days available, zero reports. First deployment accounts expected July-August 2026 window.
+- [ ] **NEW (cycle 123): Dynamic Workflows enterprise adoption** — Research preview. Zero enterprise production deployments at 7 days. Watch next 30-60 days for first reports.
+- [ ] **NEW (cycle 123): Anthropic IPO S-1 public filing** — Confidential filing June 1. Public S-1 will reveal financials. Watch for: ARR breakdown, customer concentration, API vs subscription split. High-value intelligence for strategy when published.
 
 ## Sources
 

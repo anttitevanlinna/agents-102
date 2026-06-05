@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [openai, chatgpt, codex, frontier]
 nordic: true
-updated: 2026-05-24
-cycle: 114
+updated: 2026-06-05
+cycle: 124
 answers:
   - "what can business users do with ChatGPT today?"
   - "is OpenAI's enterprise platform real or vapor?"
@@ -16,6 +16,12 @@ answers:
 
 Last updated: 2026-05-24 (cycle 114)
 OODA cycles: 18
+
+**Cycle 124 updates (June 5, 2026):**
+- **Workspace Agents free preview extended to July 6.** Credit-based pricing not yet live as of June 5. Extension not explained publicly — most likely signal is adoption friction or onboarding delays. No named practitioner at a named company has published Workspace Agents workflow results with verifiable outcomes. 19th consecutive cycle of Level 3 absence. Source: [OpenAI help center](https://help.openai.com/en/articles/11391654-chatgpt-business-release-notes) — [vendor release notes, June 2026].
+- **EKM exclusion unresolved.** Enterprise accounts with Enterprise Key Management enabled cannot use Workspace Agents. No resolution timeline announced. Blocks most regulated-industry enterprise deployments. Source: [aiautomationglobal.com](https://aiautomationglobal.com/blog/openai-workspace-agents-chatgpt-enterprise-automation-2026) — [domain trade publication, April 2026].
+- **Codex June updates:** (1) June 4: enterprise admin controls with monthly credit limits; (2) June 2: six new role-specific plugin categories (Sales, Data Analytics, Product Design, Creative Production, Investment Banking, Public Equity Investing) + 66 single-app plugins; (3) June 1: Codex GA on Amazon Bedrock including GovCloud. Computer Use on Windows unavailable in EEA/UK/Switzerland. Source: [releasebot.io/updates/openai](https://releasebot.io/updates/openai) — [vendor documentation aggregator].
+- **Best available Workspace Agents outcome claim:** unnamed "sales representatives" achieving "five to six hours a week" saved via opportunity research delegation. No company, no methodology, no baseline. Weakest named-ish outcome in 19 cycles. Source: [aiautomationglobal.com](https://aiautomationglobal.com/blog/openai-workspace-agents-chatgpt-enterprise-automation-2026) — [domain trade publication, April 2026]. Evidence: Level 1.
 
 **Cycle 114 updates (May 24, 2026):**
 - **OpenAI Deployment Company + Tomoro acquisition (May 12, 2026).** OpenAI launched the OpenAI Deployment Company backed by $4B+ (TPG/Advent/Bain Capital/Brookfield + 19 global firms). Simultaneously acquired Tomoro, a London-based applied AI consulting firm (~150 engineers). Regulatory approval pending. Purpose: embed Forward Deployed Engineers directly into enterprise organizations. **Structural interpretation:** This is an implicit admission that Frontier cannot self-serve enterprises. Deploying AI in production requires human expertise, not just API access. OpenAI is standing up a consulting arm to close the gap between "we have an API" and "your business runs on agents." Sources: [Bloomberg](https://www.bloomberg.com/news/articles/2026-05-11/openai-to-buy-consulting-firm-for-private-equity-joint-venture) — [general press]; [OpenAI newsroom](https://openai.com/index/openai-launches-the-deployment-company/) — [vendor]; [Tomoro.ai](https://tomoro.ai/insights/tomoro-acquired-by-openai-deployment-company) — [vendor]. Evidence level: Level 1 (announced, regulatory close pending).

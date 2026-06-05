@@ -216,6 +216,22 @@ Five independent practitioners published reactions in the 4 days after the May 2
 
 **Cycle 122 source classification correction (June 3, 2026):** The Klarna (Alessio Vallero, Senior Engineering Manager) and CyberAgent (Ken Takao, Lead Systems Engineer) quotes appearing in search results were confirmed to originate from the Anthropic vendor launch blog (https://claude.com/blog/introducing-dynamic-workflows-in-claude-code), not from the practitioners' own publications. Classification: Level 0 (vendor-extracted testimonials). They do not upgrade the DW evidence level. The Level 1-2 boundary assessment from cycle 121 stands unchanged. Back-sweep complete — no prior cycle file incorrectly labeled these as practitioner-direct.
 
+**Cycle 124 update (June 5, 2026) — DW blocker status + Cursor acquisition timeline:**
+
+- **Blocker 1 (rate limits): Partially addressed — but NOT the DW-specific issue.** Anthropic's June 1 fix resolved an Opus 4.8 parallel-spawn bug causing sessions to burn tokens faster than expected (unrelated to Dynamic Workflows specifically). DW-specific rate-limit termination (azukiazusa's run terminated mid-flow, May 29) remains undocumented as fixed. Source: [pasqualepillitteri.it](https://pasqualepillitteri.it/en/news/3995/claude-code-resets-usage-limits-opus-4-8-not-dynamic-workflows) — [domain trade publication, June 1].
+
+- **Blocker 2 (permission prompts): Acknowledged, no fix date.** Anthropic confirmed permission management "is being investigated" as a blocker for scaling. First non-practitioner source to name the issue. Source: [sitepoint.com](https://www.sitepoint.com/claude-code-rate-limits-explained/) — [domain trade publication, 2026].
+
+- **Blocker 3 (planning opacity): No fix announced.** Independent confirmation from QUASA/Vasipenok that users "cannot see or steer the plan before agents start burning tokens and touching files." No Anthropic response found. Remains the most fundamental UX gap for production use. Source: [quasa.io](https://quasa.io/media/dynamic-workflows-in-claude-code-anthropic-s-first-real-agent-swarm-that-actually-ships) — [practitioner analysis].
+
+- **Level 2 upgrade trigger not reached.** Sumner's promised post-mortem of the Bun migration not published as of June 5. No independent practitioner has published a complete DW production run with measured results. Next check: June 12-15 (two weeks post-launch). Bun migration result (750K lines, 99.8% test pass, 11 days) remains sole Level 2 data point, but explicitly characterized by Anthropic as "not yet in production."
+
+**Cursor/SpaceX acquisition timeline update (cycle 124, June 5):**
+- SpaceX IPO on Nasdaq (ticker: SPCX) priced June 11, listed June 12 at $1.75T valuation — 7 days from this cycle.
+- Acquisition option ($60B) expected to close ~30 days post-IPO = mid-July 2026. Deal not yet closed as of June 5.
+- Neither SpaceX nor Cursor has publicly confirmed. Sources: [TechCrunch Apr 21](https://techcrunch.com/2026/04/21/spacex-is-working-with-cursor-and-has-an-option-to-buy-the-startup-for-60-billion/) — [general press]; [thenextweb.com May 20](https://thenextweb.com/news/spacex-plans-to-buy-cursor-for-60-billion-once-its-record-ipo-wraps) — [general press].
+- **CTO watch item:** If option exercised mid-July, 70%+ Fortune 1000 primary coding environment becomes Musk-entity asset. Enterprise data privacy and vendor neutrality decisions become live from July 2026.
+
 **Opus 4.8 limitations (from practitioner-direct testing, Zieminski, May 28):**
 - Temperature/sampling parameters no longer function — breaking change
 - Terminal-Bench 2.1: lags GPT-5.5 on terminal-native tasks

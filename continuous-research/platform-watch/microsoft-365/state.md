@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [microsoft, copilot, copilot-studio, azure-ai-foundry, mai-models, windows-agent-framework]
 nordic: true
-updated: 2026-06-04
-cycle: 123
+updated: 2026-06-05
+cycle: 124
 answers:
   - "what can business users do with Microsoft Copilot today?"
   - "is Copilot Studio a real agent builder?"
@@ -15,8 +15,15 @@ answers:
 
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-06-04 (cycle 123)
-OODA cycles: 30
+Last updated: 2026-06-05 (cycle 124)
+OODA cycles: 31
+
+**Cycle 124 updates (June 5, 2026) — Build 2026 Day 3-4 practitioner reactions:**
+- **The Register (Tim Anderson, June 3) — only critical independent Build 2026 journalism found in Day 3-4.** Covers Surface RTX Spark Dev Box, Microsoft Execution Containers (agent sandboxing), Coreutils for Windows, GitHub Enterprise Local (air-gapped sovereign option), Azure Linux 4.0. Skeptical tone: Windows Developer Config failed during testing (error -2146233079), "ongoing developer frustration with GitHub outages and security issues." Source: [theregister.com](https://www.theregister.com/os-platforms/2026/06/03/microsoft-build-surface-rtx-spark-dev-box-coreutils-for-windows-air-gapped-github-and-more/5250501) — [domain trade publication, June 3]. Evidence: Level 2.
+- **HN front page June 4: zero Build 2026 posts.** Developer community did not engage with Build 2026 announcements by Day 4. Top AI stories were unrelated (Berkeley CS failing grades from AI; Anthropic RSI research). Ars Technica Build 2026 review: not found. Build 2026 did not generate the developer community salience of a "developer moment." Source: [news.ycombinator.com/front](https://news.ycombinator.com/front), June 4 — [community forum, direct check]. Evidence: Level 2 confirmed absence.
+- **MAI training data clarification: web crawl, not "clean licensed data."** Simon Willison's self-correction (June 2): Microsoft's technical paper (page 80+) reveals MAI models trained on ~794B web-crawled pages + 24.2B Common Crawl pages — same approach as other major LLMs, contradicting the "commercially licensed, clean data" marketing impression. This weakens Project Polaris's IP indemnification story for enterprise buyers. Source: [simonwillison.net](https://simonwillison.net/2026/Jun/2/microsofts-new-models/) — [practitioner direct, June 2]. Evidence: Level 2.
+- **Copilot token billing $750 spike incident.** One user's Copilot bill jumped to $750 following token-based billing activation June 1. This is the risk signal for agentic multi-call cost amplification noted by aguidetocloud as the "real story" of Build 2026. Source: [abhs.in](https://www.abhs.in/blog/github-copilot-token-billing-ai-credits-june-2026-developer-reaction) — [practitioner analysis, 403 at fetch; sourced via search snippet]. Evidence: Level 1 [UNVERIFIED — source inaccessible].
+- **Nordic signal:** Zero. No Nordic organizations named in Build 2026 coverage.
 
 **Cycle 123 updates (June 4, 2026) — Microsoft Build 2026 post-event:**
 - **Project Polaris (August 2026): Microsoft's in-house model replaces GPT-4 Turbo in GitHub Copilot.** MoE architecture, trained without OpenAI data or distillation. Microsoft claims it outperforms GPT-4 Turbo on coding benchmarks (particularly Rust/Haskell). Forced migration August 2026 with 3-month fallback. Code Content Guarantee (IP indemnification). **Benchmarks NOT independently verified** — private preview only. Counter-evidence from HN MAI-Code-1-Flash thread: developers found smaller open-source alternatives (Qwen3.6-35B, DeepSeek V4 Flash) cheaper and competitive. chatforest.com practitioner note: "Evaluate the three-month fallback option now, not after forced migration" — implied transition risk. Sources: [TechTimes, June 2](https://www.techtimes.com/articles/317596/20260602/github-copilot-replaces-gpt-4-project-polaris-ships-multi-agent-vs-code-build.htm) — [domain trade publication]; [HN item 48374466](https://news.ycombinator.com/item?id=48374466) — [practitioner direct]. Evidence: Level 1 (benchmark claims unverified externally).

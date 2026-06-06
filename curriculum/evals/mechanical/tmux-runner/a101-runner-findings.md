@@ -104,12 +104,14 @@ teaching mechanism fails) · **SHARP** (jarring or misleading but recoverable) �
   good behavior cleanly** — every planted seam fired again (M2 survivorship
   synthesis seam load-bearing into T11; M3 Halvorsen retrieval + design-vs-segment
   synthesis; M4 all three plants + the mitigation no-op refusal; C9 self-blame
-  verbatim). **Headline new finding: M5's crowning step is non-deterministic** —
-  this run crowned Entailment (not source-triangulation), which flips C10 from a
-  one-branch "M6 floors at 0" finding into a two-branch one (see C12). Also found
-  C13–C18 below. C4/C6 did NOT reproduce this run (improved behavior — no quota
-  padding, T8≠T11). Net: clean reproduction + one genuinely load-bearing new
-  finding the green assertions could never see — exactly the runner's purpose.
+  verbatim). The mine surfaced that M5's crowning step is non-deterministic (this
+  run crowned Entailment, not source-triangulation, so M6 moved instead of
+  flooring) — **closed as NOT-A-FINDING (C12): the variability is intended, not
+  knowing the winner a priori is part of the exercise.** Its only residual is the
+  C10 facilitator heads-up (M6 has two valid shapes). Also found C13–C18 below.
+  C4/C6 did NOT reproduce this run (improved behavior — no quota padding, T8≠T11).
+  Net: clean reproduction; the runner did its job (caught intended variability the
+  green assertions can't see — and the maintainer call confirmed it's a feature).
 
 ## Curriculum findings (the deliverable)
 
@@ -131,13 +133,16 @@ teaching mechanism fails) · **SHARP** (jarring or misleading but recoverable) �
   two-method ensemble when the corpus M6 will use is grounded; or have eval-loop-2
   surface an explicit "uncounted residual" track so the trajectory isn't read as
   "nothing improved." (Surfaced by the M6 runner slice; raw audit C10 + H6.)
-  **UPDATE 2026-06-06 retest — C10 has TWO branches, not one (see C12).** A second
-  live run crowned a *different* M5 detector (Entailment, 100% recall — the
-  overreach lens), and the M6 trajectory then MOVED (`2→0→1→1`) instead of
-  flooring at `0→1→0→0`. The crowning step is non-deterministic and nothing in the
-  prompts pins it, so the facilitator gets a structurally different demo depending
-  on a coin-flip. Re-read C10 as "the M5 winner is non-deterministic; each winner
-  gives M6 a different, both-valid lesson," not "M6 always floors."
+  **UPDATE 2026-06-06 retest — C10 has TWO branches, not one, and that is BY
+  DESIGN (see C12).** A second live run crowned a *different* M5 detector
+  (Entailment, 100% recall — the overreach lens), and the M6 trajectory then MOVED
+  (`2→0→1→1`) instead of flooring at `0→1→0→0`. The crowning is non-deterministic
+  and that is intentional — **not knowing a priori which detector wins is part of
+  the exercise** (maintainer call, 2026-06-06). So the only durable residual of C10
+  is the *facilitator heads-up*: depending on the run, the M6 score may visibly fall
+  or may stay flat while improvement happens in an uncounted dimension. Both are
+  legitimate teaching shapes; do NOT try to pin the winner. Re-read C10 as "the M5
+  winner varies by design; brief the facilitator that M6 has two valid shapes."
 
 - **C11 · `a101-m6-debrief-tactic-sharpen` vs the eval-loop exercise ·
   naming seam (was the SPECS "blocker").** Every loop turn writes
@@ -232,16 +237,15 @@ PROPOSE-not-applied, pending Antti.
 
 ### SHARP
 
-- **C12 · M5 `hallucination-bakeoff` crowning · non-determinism (the C10 root).**
-  M5 forces a single winning detector; which one wins is non-deterministic across
-  runs (run A: source-triangulation, overreach-blind → M6 floors `0→1→0→0`; run B:
-  Entailment, 100% recall → M6 moves `2→0→1→1`). Nothing in the prompts pins the
-  crowning, so two facilitators running the identical exercise get structurally
-  different M6 demos. This is the *mechanism* behind C10's two branches. → Decide
-  whether the M5→M6 lesson should be deterministic (e.g. brief the bakeoff so one
-  detector reliably wins, or have M5 hand M6 a known-mode judge) or explicitly
-  taught as "your winner depends on your corpus — here are both shapes." Either is
-  fine; silent coin-flip is the finding. (m5 t4 / m6 t2–4, retest mine.)
+- **C12 · M5 `hallucination-bakeoff` crowning · NOT A FINDING (accepted by
+  design, 2026-06-06).** The mine flagged that which detector M5 crowns is
+  non-deterministic across runs (run A: source-triangulation → M6 floors
+  `0→1→0→0`; run B: Entailment → M6 moves `2→0→1→1`) and proposed pinning it.
+  **Maintainer call: it does not matter which method wins — not knowing a priori
+  is part of the fun.** The variability is intended exercise behavior, not a defect.
+  The only thing worth carrying forward is the C10 facilitator heads-up (M6 has two
+  valid shapes). Left here as a tombstone so a future audit doesn't re-flag the
+  same intended variability as a bug. (m5 t4 / m6 t2–4, retest mine.)
 
 - **C13 · `eval-loop-2` (m6 t2) · stop-rule leaves "significant improvement" to
   the model.** On the live-count Entailment judge the loop does not converge — it
@@ -424,9 +428,11 @@ awaiting Antti's review.
 
 **RETEST 2026-06-06 (post-fix-phase):** full prework→m6 chain re-run green +
 transcript-mined. prework/M1–M4 reproduce documented good behavior; M5/M6 surfaced
-that the M5 crowning step is non-deterministic (C12 → C10 now two-branch). New
-findings C12–C18 logged above (all PROPOSE-not-applied: content-pedagogy judgments
-or cosmetic; none a clean runner fix). The SHA "mismatch" the mine raised is a
-non-bug — the runner's immutability check is self-consistent (SHA-1 vs the loop's
-SHA-256, two artifacts, both correct). Next maintainer pass: route C12–C18 to
-`pre-cohort-todos.md` and decide the C12 (M5 determinism) + C14 (path drift) calls.
+that the M5 crowning step is non-deterministic — closed as NOT-A-FINDING (C12,
+accepted by design: not knowing the winner a priori is part of the exercise; C10
+re-read as a two-shape facilitator heads-up). New findings C13–C18 logged above
+(all PROPOSE-not-applied: content-pedagogy judgments or cosmetic; none a clean
+runner fix). The SHA "mismatch" the mine raised is a non-bug — the runner's
+immutability check is self-consistent (SHA-1 vs the loop's SHA-256, two artifacts,
+both correct). Next maintainer pass: route C13–C18 to `pre-cohort-todos.md` and
+decide the C14 (path drift) call.

@@ -1,11 +1,15 @@
 # AI-Native Startups — Platform State
 
-Last updated: 2026-05-29 (cycle 118)
-OODA cycles: 4
+Last updated: 2026-06-06 (cycle 125)
+OODA cycles: 5
 
 ## Focus
 
 AI-native startups building agent-first products that compete directly with traditional enterprise SaaS incumbents. Not horizontal AI platforms (OpenAI, Anthropic) — these are vertical AI companies attacking specific enterprise functions: legal, finance, customer service, HR, sales. Tracked because the "build vs. buy" question for CTOs now includes a third option: buy from an AI-native vendor that may outperform the legacy incumbent.
+
+## Key Verdict (as of 2026-06-06)
+
+**Legal AI quantified hard ceiling: Harvey LAB results show frontier models complete 7.1% of legal tasks end-to-end (Claude Opus 4.7), with GPT-5.5 at 2.1% and Gemini 3.5 Flash at 0.8% under strict all-pass criteria (May 2026).** The $190M ARR and 100K lawyers coexist with this ceiling — lawyers use legal AI for task portions where partial completion + review delivers time savings. The "jagged intelligence" ceiling is now quantified, not speculated. **Enterprise AI rollback rate: 74% of enterprises that deploy customer-facing AI agents roll them back post-launch (Sinch, N=2,527, 10 countries, May 2026) — governance maturity paradox: organizations with most mature governance frameworks roll back at 81%.** Governance detects failures faster, not prevents them. **Intercom Fin floor extended:** independent 60-day test (500 tickets) found 38% average resolution rate — pushed by KB quality, not model quality. Documentation pre-work delivers 12pp lift. Decagon ARR confirmed at ~$35M ($4.5B valuation = 128x multiple, Sacra April 2026).
 
 ## Key Verdict (as of 2026-05-27)
 
@@ -55,12 +59,14 @@ AI-native startups building agent-first products that compete directly with trad
 - **Nordic angle:** Swedish-origin but has explicitly pivoted US-first for expansion. Nvidia invested in the Series D. ([Mezha/Nvidia report](https://mezha.net/eng/bukvy/2ae8bc48_nvidia_invests_in/) — [general press])
 - **Evidence level:** Level 2. BCLP pilot is named with specific methodology, but all outcome language ("overwhelmingly positive," "significant improvements") is qualitative and vendor-sourced. No time savings metrics published.
 
-### Harvey LAB Benchmark (May 2026) — Strategic Platform Move
+### Harvey LAB Benchmark (May 2026) — Strategic Move + Damaging Results
 
 - **What:** Harvey released LAB (Legal Agent Benchmark) — open-source evaluation framework, 1,200+ tasks, 24 practice areas, 75,000+ expert-written rubric criteria. ([Artificial Lawyer](https://www.artificiallawyer.com/2026/05/06/harvey-launches-legal-agent-bench/), May 2026 — [domain trade publication])
 - **Strategic significance:** Harvey is attempting to own the evaluation standard before competitors can define it. If law firms use LAB for procurement, Legora and Luminance must optimize to Harvey's rubric. Contributors include Anthropic, OpenAI, Google DeepMind, Nvidia, Stanford LIFTLab — credibility anchoring.
-- **Independent commentary:** LawNext (Bob Ambrogi — domain practitioner analyst) notes this is a standard-setting move, not just a product feature. Firms can now ask vendors to report LAB scores. ([LawNext](https://www.lawnext.com/2026/05/some-thoughts-on-harveys-launch-of-lab-an-open-source-long-horizon-benchmark-for-legal-ai-agents.html), May 2026 — [practitioner analysis])
-- **Evidence level:** Level 0 on outcomes — this is infrastructure/strategy news, not deployment data. High strategic weight.
+- **Independent commentary:** LawNext (Bob Ambrogi) notes this is a standard-setting move. ([LawNext](https://www.lawnext.com/2026/05/some-thoughts-on-harveys-launch-of-lab-an-open-source-long-horizon-benchmark-for-legal-ai-agents.html), May 2026 — [practitioner analysis])
+- **CYCLE 125 UPDATE — Actual LAB results (May 2026): <10% end-to-end completion.** Best performer: Claude Opus 4.7 at **7.1%** end-to-end completion under strict all-pass criteria. GPT-5.5: 2.1%. Gemini 3.5 Flash: 0.8%. Cost at top performer: $50.90/task, 22 minutes. Harvey explicitly states: "no single model is a silver bullet for legal work today." Source: ([Harvey blog](https://www.harvey.ai/blog/legal-agent-benchmark-initial-results) — [vendor press release, methodology open-source and verifiable via https://github.com/harveyai/harvey-labs]); ([LawNext](https://www.lawnext.com/2026/05/some-thoughts-on-harveys-launch-of-lab-an-open-source-long-horizon-benchmark-for-legal-ai-agents.html) — [domain trade publication])
+- **Evidence level:** Level 2 — single-company methodology, open-source but not independently replicated yet. Harvey's $190M ARR and 100K+ lawyers coexist with 7.1% autonomous completion — they are not contradictory. Lawyers use Harvey for portions of tasks, not full autonomous completion. "Jagged intelligence" confirmed across 24 practice areas.
+- **CTO implication:** The hard ceiling is now quantified. Use Harvey/legal AI for task-portions where even partial completion + human review delivers time savings. Do not expect autonomous end-to-end legal work from any current model.
 
 ### RSGI/Harvey Independent Outcome Study (Nov 2025) — First Credible Level 2 Evidence
 
@@ -154,7 +160,9 @@ More money than proof. Five well-funded AI-native accounting startups launched o
 ### Decagon
 
 - **Valuation:** $4.5B (January 2026, first tender offer completed March 4, 2026) ([TechCrunch](https://techcrunch.com/2026/03/04/decagon-completes-first-tender-offer-at-4-5b-valuation/), Mar 2026 — [general press])
+- **ARR (CYCLE 125 UPDATE):** ~$35M annualized as of late 2025 = **~128x revenue multiple** (Sacra independent equity research, April 13, 2026 — [practitioner analysis]). This is among the highest revenue multiples in the category. ([Sacra](https://sacra-pdfs.s3.us-east-2.amazonaws.com/decagon.pdf), Apr 2026)
 - **Funding:** ~$481M across five rounds. 300+ employees.
+- **Named customer metrics (vendor-sourced, Level 0):** Chime 70% resolution (chat + voice), Duolingo 80% deflection, Substack 90% resolution, Hunter Douglas $1M revenue from fully AI-handled conversations. Dual pricing: per-conversation + per-resolution. Substack 90% needs independent verification.
 - **Customers:** Notion, Rippling, Duolingo, Chime, Hertz, Eventbrite, Substack, Riot Games, Avis Budget Group, Oura Health. 100+ large customers.
 - **Known limitations (April 2026):** (1) Black box problem — users cannot see why the AI did what it did; difficult to diagnose errors during live customer interactions. (2) Contract minimums $95K–$590K+/year — prohibitive for non-enterprise. (3) 6-week minimum onboarding — not a self-serve product; requires Agent Engineers. (4) G2 Ticket Resolution score 7.9/10 — lowest of its category metrics — suggests real-world resolution quality below marketing claims. (5) Heavy data quality dependency — poor internal documentation degrades performance significantly. ([Decagon review aggregation](https://www.g2.com/products/decagon/reviews), [pagergpt.ai](https://pagergpt.ai/alternative/decagon-reviews), Apr 2026 — [practitioner analysis])
 - **Vendor ROI claim:** $800K savings per $250K spent ([vendor claim — unverified])
@@ -164,8 +172,9 @@ More money than proof. Five well-funded AI-native accounting startups launched o
 ### Intercom Fin — Resolution Rate Gap Verified
 
 - **The headline vs. reality gap:** Intercom claims 67-80% resolution rates. Named customer case studies run 42-70% (Linktree 42%, Robin 50%, Anthropic-as-customer 50.8%, Sharesies 70%). Independent 500-ticket test found actual rates run 10-20 points below Intercom benchmarks. ([Builts AI](https://builts.ai/blog/intercom-fin-ai-review/), 2026 — [practitioner analysis])
+- **CYCLE 125 UPDATE — floor lower than KB had:** Updated Builts.ai test (60-day, 4 small-business clients, 500 tickets) found **38% average resolution** — below Intercom's marketed 67% and below even their conservative "up to 50%" framing. Clients with comprehensive documentation: 47–52%. Sparse-FAQ clients: 28–31%. 12-percentage-point lift from 2–4 weeks of documentation pre-work. **Key driver: knowledge base quality, not model quality.** Source: ([Builts.ai](https://builts.ai/blog/intercom-fin-ai-review/), updated April 10, 2026 — [practitioner analysis])
 - **Practical calibration from independent testing:** Below 30% resolution → invest in KB cleanup before deploying. Above 40% with solid CSAT → clear ROI case. This is the honest operating range.
-- **Evidence level:** Level 2. The 500-ticket independent test is single-experiment but specific; named customer cases corroborate.
+- **Evidence level:** Level 2. 500-ticket independent test with disclosed methodology; named customer cases corroborate. KB quality driver is new finding — actionable for deployers.
 
 ### Salesforce Agentforce — Scaling Deals, 31% Six-Month Active Rate
 
@@ -182,11 +191,19 @@ More money than proof. Five well-funded AI-native accounting startups launched o
 - **Known gap (May 2026):** Sierra markets autonomous agents but lacks agent-assist (human-in-loop) capabilities. No workforce management integration. Pricing: per-conversation model with non-transparent channel/language expansion costs. ([Assembled.com analysis](https://www.assembled.com/page/sierra-ai) — [practitioner analysis])
 - **Evidence level:** Level 2. ARR from Sacra (independent financial analysis). Resolution rates remain vendor case study only — no practitioner-direct independent account found this cycle.
 
+### 74% Enterprise AI Rollback Rate — Governance Maturity Paradox (Cycle 125, May 2026)
+
+- **Finding:** Sinch "AI Production Paradox" survey — 2,527 AI decision-makers, 10 countries. 74% of enterprises that deploy customer-facing AI agents roll them back or shut them down after going live. Governance maturity paradox: organizations with the most mature governance frameworks had an **81% rollback rate** — higher discipline = more failures detected, not fewer. ([The Register](https://www.theregister.com/ai-ml/2026/05/13/ai-customer-service-bots-get-rolled-back-at-74-of-firms/5239800), May 13, 2026 — [domain trade publication])
+- **Definition:** "Shutting down or significantly reversing a deployed, customer-facing AI agent after going live" — Sinch's definition.
+- **Zombie stat guard:** 74% passes — N=2,527 disclosed, methodology is named survey, multi-country, independent vendor (Sinch is not a CX agent competitor).
+- **Evidence level:** Level 2 — large N, named methodology, independent vendor. "Rollback" definition is Sinch's own; comparison across organizations depends on consistent application.
+- **CTO implication:** Governance doesn't prevent deployment failures — it surfaces them faster. Organizations with weak governance show lower rollback rates because they never measure whether their deployment works. The "governance maturity paradox" should change how organizations interpret their own rollback data.
+
 ### Customer Service Domain Summary
 
 **This is where AI-native startups have the strongest case.** Sierra, Intercom Fin, and Decagon are all scaling with real enterprise customers. The pattern: AI handles 50-70% of ticket volume, humans handle complex cases, total cost drops 50-65%. The incumbents (Salesforce, Zendesk) are responding with their own AI, but the AI-natives moved first and moved faster. Convergence level: **Level 3** — multiple independent companies, multiple independent customers, same outcome pattern.
 
-**New this cycle:** The Salesforce Agentforce 31% six-month active rate (Valoir, independent) is the most important incumbent data point. It suggests the activation-not-adoption problem is category-wide, not AI-native-specific. Klarna's CEO admission of AI overreach (Level 2 — CEO primary source) adds a named enterprise cautionary case. The Intercom Fin resolution rate gap (42-70% actual vs. 80% claimed) gives practitioners a verified calibration range.
+**Cycle 125 updates:** 74% rollback rate (Sinch, N=2,527) is the largest-N failure dataset in this research program — it sits alongside the deployment evidence as necessary counter-context. The governance maturity paradox (81% rollback for most mature orgs) means the "get governance right first" advice doesn't prevent failure; it changes what you learn from it. The Salesforce Agentforce 31% six-month active rate (Valoir, independent) is the most important incumbent data point. Klarna CEO admission of AI overreach adds a named enterprise cautionary case. The Intercom Fin floor extended to 38% in independent testing — KB quality, not model quality, is the driver.
 
 ---
 

@@ -1,15 +1,17 @@
 ---
 type: synthesis
 domain: cross-domain
-updated: 2026-04-28
-answers: ["cross-platform patterns", "what research established", "evidence patterns", "compound error problem", "agent reliability math", "agent security gap", "governance as enterprise buying criterion"]
+updated: 2026-06-06
+answers: ["cross-platform patterns", "what research established", "evidence patterns", "compound error problem", "agent reliability math", "agent security gap", "governance as enterprise buying criterion", "enterprise token economics", "transformation methods", "rollback rate", "secret cyborg", "last mile problem"]
 ---
 
-# Cross-Platform Patterns (April 2026)
+# Cross-Platform Patterns (June 2026)
 
-51 patterns established across 113 OODA cycles. Organized by evidence level.
+54 patterns established across 125 OODA cycles. Organized by evidence level.
 
 ## Level 4: Cross-Domain Meta-Patterns
+
+**Pattern 48: Enterprise Token Economics Crisis — Level 3 (June 2026).** Consumption-based pricing structurally fails at enterprise scale: Microsoft canceled most internal Claude Code licenses (E+D division, $500–$2,000/month per-engineer, effective June 30); Uber burned entire 2026 AI coding budget in 4 months on Claude Code + Cursor, imposed $1,500/month cap; unnamed company spent $500M/month. The structural mechanism: the better the tool, the faster budgets deplete — high engagement = high cost, creating a perverse disincentive. Convergence across 3+ named enterprises + 8 independent outlets. Counter-evidence: Microsoft's redirect to Copilot CLI has competitive motive (own product) partially confounding the economic signal. **CTO implication:** Adoption is not constrained only by capability or trust but by a third axis — sustained economic viability. Pricing pressure will drive either seat-based bundling (Anthropic Team/Enterprise path) or rationing. Both paths reduce the "agents everywhere" vision. Sources: ([Windows Central, May 2026](https://www.windowscentral.com/microsoft/microsoft-cancels-claude-code-licenses-shifting-developers-to-github-copilot-cli-a-move-likely-driven-by-financial-motives)); ([Fortune/Uber, May 2026](https://fortune.com/2026/05/26/uber-coo-ai-spending-tokens-claude-code/))
 
 **Pattern 47: The Access-Trust Gap.** Five independent data sources across legal, finance, cross-industry, and security all show the same structure: access/experimentation is widespread (54-95%), but trust/governance/production readiness is rare (5-22%), gaps always >35 points. The bottleneck is organizational trust-building, not technology access. **This is the strongest finding in the research program.** See [domain-convergence.md](domain-convergence.md) for detail.
 
@@ -42,6 +44,12 @@ answers: ["cross-platform patterns", "what research established", "evidence patt
 **Pattern 45: Global regulatory convergence on agent governance.** Singapore (Jan 2026), Colorado (June 30), EU AI Act (Aug 2). Common themes: risk-based, human oversight, least-privilege, audit trails. EU gap: Commission admits considerations are "only preliminary."
 
 ## Level 2-3: Strong Evidence, Approaching Convergence
+
+**Pattern 49: "Secret Cyborg" — organizational incentives suppress post-training adoption (Level 2-3, June 2026).** Mollick (Wharton): employees hide AI usage due to fear of job loss/punishment; organizations report modest gains while workers privately claim 3x productivity. The gap is incentive-driven suppression, not capability gap. This explains why Pattern 12 (competence creates pull) can be suppressed even after training succeeds — training works at individual level, organizational incentives kill the pull. IBM evidence: HR/Design functions (not IT) should lead AI transformation. Counter-evidence: single researcher's observation across multiple orgs, no named company. ([Mollick/oneusefulthing.org](https://www.oneusefulthing.org/p/making-ai-work-leadership-lab-and); [Wharton/Mollick 2026 podcast](https://knowledge.wharton.upenn.edu/podcast/this-week-in-business/where-artificial-intelligence-stands-heading-into-2026/), 2025-2026)
+
+**Pattern 50: "The Last Mile Problem" — post-deployment behavioral change stall (Level 2, June 2026).** After tools are approved and deployed, organizations stall at the final behavioral change step. This is distinct from access (tools exist) and trust (tools approved) — it's the last mile between "tool available" and "work actually changes." Lakhani (Harvard) + Spataro (Microsoft) + Stave: fundamental changes to operating models haven't materialized despite extensive tool deployment. Deloitte corroborates: <60% of employees with approved AI tools use them regularly. The Last Mile Problem explains why Pattern 47 (Access-Trust Gap) persists even in mature deployments. Stanford AI Playbook evidence (Level 3, N=51): 77% of hardest implementation challenges are organizational (change management, data quality, process redesign), not technical. 4-factor success sequence: (1) workflow mapping before technology selection (6–8 weeks); (2) governance from day one; (3) observability before production; (4) executive sponsor continuity through 18 months. ([HBR, March 9, 2026](https://hbr.org/2026/03/the-last-mile-problem-slowing-ai-transformation)); ([Stanford Digital Economy Lab](https://digitaleconomy.stanford.edu/publication/enterprise-ai-playbook/), April 2, 2026)
+
+**Pattern 51: Governance Maturity Paradox — higher governance = higher rollback rate (Level 2, June 2026).** Sinch survey (N=2,527, 10 countries): 74% enterprise AI agents rolled back post-launch; organizations with most mature governance frameworks roll back at 81%. Governance detects failures faster, not prevents them. Organizations with weak governance show lower rollback rates because they never measure whether their deployment works. Counter-evidence: "rollback" is Sinch's definition; comparison across orgs depends on consistent application. CTO implication: governance is a diagnostic system, not a deployment safety system. ([The Register, May 13, 2026](https://www.theregister.com/ai-ml/2026/05/13/ai-customer-service-bots-get-rolled-back-at-74-of-firms/5239800))
 
 **Pattern 2: Promotion path doesn't exist.** Every platform has tiers but they're different products. Exception: Antspace + BYOC (staging). See [platform-trajectories.md](platform-trajectories.md).
 

@@ -97,6 +97,20 @@ teaching mechanism fails) · **SHARP** (jarring or misleading but recoverable) �
 
 ---
 
+- **2026-06-06 (retest + transcript mine)** — full prework→m6 chain re-run after
+  the 14-finding fix phase (`out/a101-*-20260606-19*/`, `-20*/`); all assertions
+  green, then 4 parallel agents mined every turn transcript for NEW prompt/
+  progression problems beyond green. **prework/M1/M2/M3/M4 reproduced documented
+  good behavior cleanly** — every planted seam fired again (M2 survivorship
+  synthesis seam load-bearing into T11; M3 Halvorsen retrieval + design-vs-segment
+  synthesis; M4 all three plants + the mitigation no-op refusal; C9 self-blame
+  verbatim). **Headline new finding: M5's crowning step is non-deterministic** —
+  this run crowned Entailment (not source-triangulation), which flips C10 from a
+  one-branch "M6 floors at 0" finding into a two-branch one (see C12). Also found
+  C13–C18 below. C4/C6 did NOT reproduce this run (improved behavior — no quota
+  padding, T8≠T11). Net: clean reproduction + one genuinely load-bearing new
+  finding the green assertions could never see — exactly the runner's purpose.
+
 ## Curriculum findings (the deliverable)
 
 ### SHARP
@@ -117,6 +131,13 @@ teaching mechanism fails) · **SHARP** (jarring or misleading but recoverable) �
   two-method ensemble when the corpus M6 will use is grounded; or have eval-loop-2
   surface an explicit "uncounted residual" track so the trajectory isn't read as
   "nothing improved." (Surfaced by the M6 runner slice; raw audit C10 + H6.)
+  **UPDATE 2026-06-06 retest — C10 has TWO branches, not one (see C12).** A second
+  live run crowned a *different* M5 detector (Entailment, 100% recall — the
+  overreach lens), and the M6 trajectory then MOVED (`2→0→1→1`) instead of
+  flooring at `0→1→0→0`. The crowning step is non-deterministic and nothing in the
+  prompts pins it, so the facilitator gets a structurally different demo depending
+  on a coin-flip. Re-read C10 as "the M5 winner is non-deterministic; each winner
+  gives M6 a different, both-valid lesson," not "M6 always floors."
 
 - **C11 · `a101-m6-debrief-tactic-sharpen` vs the eval-loop exercise ·
   naming seam (was the SPECS "blocker").** Every loop turn writes
@@ -201,6 +222,89 @@ teaching mechanism fails) · **SHARP** (jarring or misleading but recoverable) �
   unrequested dirs ("patterns/, prompts/ … came along for the ride") without
   orienting the student. Combined with P1 below, day-one clutter. → Name them as
   expected, or explain what they're for at first sight.
+
+## Retest findings (2026-06-06 transcript mine — second pass)
+
+These surfaced on the post-fix retest chain, distinct from C1–C11 (verified not
+duplicates against the closed list). Routing: all are content/curriculum-pedagogy
+judgments or cosmetic — **none is a clean unilateral runner fix**, so all are
+PROPOSE-not-applied, pending Antti.
+
+### SHARP
+
+- **C12 · M5 `hallucination-bakeoff` crowning · non-determinism (the C10 root).**
+  M5 forces a single winning detector; which one wins is non-deterministic across
+  runs (run A: source-triangulation, overreach-blind → M6 floors `0→1→0→0`; run B:
+  Entailment, 100% recall → M6 moves `2→0→1→1`). Nothing in the prompts pins the
+  crowning, so two facilitators running the identical exercise get structurally
+  different M6 demos. This is the *mechanism* behind C10's two branches. → Decide
+  whether the M5→M6 lesson should be deterministic (e.g. brief the bakeoff so one
+  detector reliably wins, or have M5 hand M6 a known-mode judge) or explicitly
+  taught as "your winner depends on your corpus — here are both shapes." Either is
+  fine; silent coin-flip is the finding. (m5 t4 / m6 t2–4, retest mine.)
+
+- **C13 · `eval-loop-2` (m6 t2) · stop-rule leaves "significant improvement" to
+  the model.** On the live-count Entailment judge the loop does not converge — it
+  oscillates at a one-flag noise floor (`2→0→1→1`, a *different* class each round).
+  The stop rule ("fewer flagged claims, a new failure class resolved, or a clearly
+  sharper tactic") technically fires every round, so only the 4-round cap
+  guarantees termination. The model coped (named class-rotation as a noise floor),
+  but a literal-minded student could read "a new class resolved" as improvement and
+  loop forever. → Add a stop clause for the oscillating case: "a *rotating* one-flag
+  floor where each round trades one class for another is a stop, not an
+  improvement." (m6 t2, retest mine.)
+
+- **C14 · M4b mitigation answer (`m4-chosen-risk.txt`) · fixture premise wrong vs
+  runtime — partly bug, partly the lesson.** The canned risk names
+  `sources/wiki/pilot-cohort-notes.md`; runtime staging flattens that to
+  `sources/pilot-cohort-notes.md` (no `wiki/` subdir in the working dir), so the
+  model correctly reported "the path … doesn't exist." It also asserts names "bled
+  into memory/" (memory is `#N`-only) and calls it "a clear R-DU-1 violation" when
+  the packaged lens this *same session* ran two turns earlier scored R-DU-1
+  **compliant**. The model caught all three and refused the no-op — arguably the
+  gold-standard verify-the-premise moment. **But the wrong path is an unambiguous
+  fixture-vs-runtime drift bug** (answer written against the pre-flatten repo
+  layout), independent of teaching intent. → Maintainer call: if the flawed premise
+  is the deliberate honesty test, keep the false claims but FIX the path to
+  `sources/pilot-cohort-notes.md` (so the model's rebuttal targets the real layout,
+  not a typo). If unintended, correct all three. (m4b t3, retest mine.)
+
+### NIT
+
+- **C15 · M2 integrate turn (t9) · counter-case source gets no provenance header.**
+  The turn-4 ingest prompt drilled a strict method-per-provenance rubric
+  (fetch / connector / local-reference / not-reachable); the turn-9 "integrate this
+  source" prompt carries no provenance instruction, so the model labeled the
+  counter-case's origin literally as the word "counter-case" with a `staged_path:`.
+  The memory's single strongest claim (the segment side) becomes the one source a
+  spot-check can't trace — the exact thing the turn-5 "I'll spot-check citations"
+  rule is built to prevent. → Give t9 a one-line provenance instruction matching
+  the t4 rubric. (m2 t9, retest mine.)
+
+- **C16 · M2 dry-run override (t10) defeats the approve/reject teaching beat.** The
+  real prompt asks the student to approve or reject each audit issue; the headless
+  override says "I approve them all," so the model's own *least-sure* item (#5,
+  which it flagged as probably-not-a-real-contradiction) gets baked into the memory
+  as a permanent reconciliation clause with no gate. The headless path can't model
+  the rejection the turn explicitly invites. → Harness/fixture note: the all-approve
+  override silently converts a flagged-for-scrutiny item into an applied edit; a
+  live student rejecting #5 would get a different artifact. (m2 t10, retest mine.)
+
+- **C17 · M4 policy lens · the persona's own name scores a 4th (unplanted) PII
+  violation.** Every M4 run flags `owner: Ingrid Solberg` / `Author: Marit
+  Halvorsen` as R-DU-5 / GDPR-2 — arguably correct data-minimisation reasoning, but
+  it means the synthetic persona's own name (seeded throughout the fixture by
+  design) reliably manufactures a violation beyond the three planted ones. → If
+  unintended noise, minimise the persona to a role reference in the fixture; if
+  intended, document it as a designed seam. (m4a t1 / m4b, retest mine.)
+
+- **C18 · M4a t2 "propose then wait to steer" vs the headless "don't wait"
+  override.** T2's body says "wait for me to steer" and closes by asking the
+  operator four steering questions; the headless override says don't wait. Continuity
+  held only because T3's pre-canned grill answers loosely overlap the four questions
+  — but they're a different list, so a live student taking T2 literally would stall,
+  or answer four questions T3 then ignores. → Wire T2's close to T3's actual inputs,
+  or drop the four-question close on the headless path. (m4a t2, retest mine.)
 
 ## Packaging findings
 
@@ -317,3 +421,12 @@ found + fixed test-first: H1, H3, H4, H5, H6. Content findings logged + routed t
 `pre-cohort-todos.md §13`: C1–C11, P1, H2-content. Full test suite 11/11 green.
 Open (non-blocking): H2 isolated $HOME; P1 tarball subset. Nothing committed —
 awaiting Antti's review.
+
+**RETEST 2026-06-06 (post-fix-phase):** full prework→m6 chain re-run green +
+transcript-mined. prework/M1–M4 reproduce documented good behavior; M5/M6 surfaced
+that the M5 crowning step is non-deterministic (C12 → C10 now two-branch). New
+findings C12–C18 logged above (all PROPOSE-not-applied: content-pedagogy judgments
+or cosmetic; none a clean runner fix). The SHA "mismatch" the mine raised is a
+non-bug — the runner's immutability check is self-consistent (SHA-1 vs the loop's
+SHA-256, two artifacts, both correct). Next maintainer pass: route C12–C18 to
+`pre-cohort-todos.md` and decide the C12 (M5 determinism) + C14 (path drift) calls.

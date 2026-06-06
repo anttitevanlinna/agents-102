@@ -1,0 +1,57 @@
+# Agents 101 Module 3 — Multi-agent systems: three retrievers, one curator;
+# three minds, one synthesis (+ debrief + memory-health homework).
+# Driven by run-a101.sh --module m3. Fresh session in the training dir, on the
+# post-M2 state (root CLAUDE.md, memory/, sources/, agents/ all present).
+#
+# SINGLE-PANE FLATTENING: the cohort runs 4 concurrent sessions (3 retrievers +
+# synthesizer). The headless runner has one pane, so retrievers run as
+# sequential turns 3-5, then the synthesizer (turn 6) integrates from sources/.
+# This loses the felt concurrency (pedagogy, not mechanics) but exercises every
+# artifact contract and every handoff seam — which is what the runner is for.
+#
+# THE M3 SEAM: a fresh practitioner postmortem (<NEW_SOURCE_M3>, author Halvorsen)
+# is staged into <MATERIAL_DIR>/new-m3/ and held OUT of M2 ingest, so it is
+# genuinely new in M3. Its claim (graduated cap fixes SMB churn = pricing-design
+# problem) contradicts the standing "structurally wrong for volatile SMB" reading.
+# The synthesizer (turn 6) must integrate it and name the contradiction; the
+# three-minds Answer (turn 7) must adjudicate it. Sentinel "Halvorsen" proves the
+# seam fired (absent from memory before turn 6, present after).
+#
+# No live connectors in headless: retriever answers redirect each agent at the
+# staged local export. Every turn carries an AUQ/plan-mode suppression tail
+# (--permission-mode auto does NOT suppress AskUserQuestion; the retriever and
+# synthesizer prompts all ask to confirm/plan, which would hang the runner).
+
+# Turn 1 — name the crux. Prompt ends "show me before saving" → suppress + steer
+# toward a mechanism, not a restatement.
+name-your-crux-1 Headless dry-run: do NOT call AskUserQuestion and do NOT wait for my approval — write the ## Crux section to ./crux.md directly (show it in chat). <M3_CRUX_STEER>
+
+# Turn 2 — name the decision the crux blocks. Append, don't overwrite.
+name-your-crux-2 Headless dry-run: do NOT call AskUserQuestion and do NOT wait for my approval — append the ## Question section to ./crux.md directly (keep ## Crux above it).
+
+# Turn 3 — wiki retriever → sources/wiki-retrieval.md (staged local wiki).
+three-retrievers-one-curator-1 Headless dry-run: do NOT call AskUserQuestion and do NOT enter plan mode — proceed with what I give you. <M3_WIKI_ANSWER>
+
+# Turn 4 — docs retriever → sources/docs-retrieval.md (staged local docs).
+three-retrievers-one-curator-2 Headless dry-run: do NOT call AskUserQuestion and do NOT enter plan mode — proceed with what I give you. <M3_DOCS_ANSWER>
+
+# Turn 5 — internet retriever → sources/internet-retrieval.md (staged web + the
+# fresh Halvorsen roundup). This is where the new seam material enters sources/.
+three-retrievers-one-curator-3 Headless dry-run: do NOT call AskUserQuestion and do NOT enter plan mode — proceed with what I give you. <M3_NET_ANSWER>
+
+# Turn 6 — synthesizer: integrate the three retrievals into memory/, write
+# memory/_synthesis-m3.md naming what changed and the contradiction. Prompt opens
+# "enter the loop now"; the streaming loop waits forever headless, so tell it the
+# retrievers are already done and to integrate what's on disk in one pass.
+three-retrievers-one-curator-5 Headless dry-run: do NOT call AskUserQuestion and do NOT enter plan mode. The three retrievers have already finished — their files are on disk in sources/ now (wiki-retrieval.md, docs-retrieval.md, internet-retrieval.md). Do not wait for new content; read all three now, integrate them into memory/ in one pass, then write memory/_synthesis-m3.md.
+
+# Turn 7 — three minds: spawn 3 stance subagents, apply Rumelt, append ## Answer.
+three-minds-one-synthesis-1 Headless dry-run: do NOT call AskUserQuestion and do NOT wait for my approval. Spawn the three subagents, synthesize, and append the ## Answer section to ./crux.md directly — writing the Answer section is the load-bearing artifact, so write it.
+
+# Turn 8 — debrief: harsh audit, rewrite root ./CLAUDE.md in place, name >=2
+# handoff seams with file+pass+what-was-lost.
+a101-m3-debrief-handoff-rules Headless dry-run: do NOT call AskUserQuestion and do NOT enter plan mode — state assumptions and rewrite ./CLAUDE.md in place.
+
+# Turn 9 — homework: memory-health audit. Prompt ends "show me before changing
+# files" → suppress + approve the restructure inline.
+a101-m3-homework-memory-health Headless dry-run: do NOT call AskUserQuestion. Show the plan, then apply it directly — yes, do all of it (drop/merge/split as proposed) and tell me what changed.

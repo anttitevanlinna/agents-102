@@ -14,6 +14,8 @@
 #   sources/.keep
 #   agents/.keep
 #   .claude/skills/self-study/SKILL.md
+#   prompts/<key>.md          # only the Agents 101 marker closure, not the
+#                             # whole registry — see the prompts block below
 #
 # No top-level wrapper directory — the tarball extracts in-place into the
 # student's connected/working folder. Both runtimes use the same prompt:
@@ -75,17 +77,65 @@ done
 mkdir -p "$ROOT/.claude/skills/self-study"
 strip_maintainer "$SELF_STUDY_SKILL" "$ROOT/.claude/skills/self-study/SKILL.md"
 
-# Ship the prompt registry alongside curriculum. Self-study and any other agent
-# reading tarball-shipped .md files resolves `{{prompt:<key>}}` markers by
-# reading prompts/<key>.md from this directory — the same registry the build
-# script and SPA expand from at render time.
+# Ship the prompts the student resolves locally via `{{prompt:<key>}}` markers.
+# Ship ONLY the Agents 101 closure, not the whole ~166-file registry (finding P1):
+# the wholesale copy dragged AE101 / security-IC / eval-loop prompts — the wrong
+# product — into a builder-leader's day-one folder, contradicting prework's "two
+# visible steps, no magic." The set is DERIVED, not hardcoded, so it can't rot:
+# scan the A101 student module files, the exercises/lectures they link, and the
+# files this tarball itself ships (scaffold + self-study skill) for markers, then
+# ship exactly that closure. Fail-closed if a referenced prompt is missing or
+# nests a marker deeper than this depth-1 walk follows.
 PROMPTS_SRC="curriculum/prompts"
+A101_MODULES_DIR="curriculum/trainings/agents-101"
 if [ -d "$PROMPTS_SRC" ]; then
   mkdir -p "$ROOT/prompts"
-  for f in "$PROMPTS_SRC"/*.md; do
-    [ -f "$f" ] || continue
-    cp "$f" "$ROOT/prompts/$(basename "$f")"
-  done
+
+  # 1. Surface to scan = student A101 module files (not trainer/arch/todos) +
+  #    their linked exercises/lectures/supplementary + everything this tarball
+  #    ships (scaffold .md + the self-study skill), since any shipped marker must
+  #    resolve locally.
+  scan_list="$(mktemp)"
+  ls "$A101_MODULES_DIR"/*.md \
+    | grep -vE 'training-architecture|pre-cohort-todos|trainer-guide' > "$scan_list"
+  # Resolve linked exercises/lectures into a separate temp, then append — never
+  # read and append the same file in one pipeline. `if` (not `&&`) so a missing
+  # link can't make the loop exit nonzero under set -e/pipefail.
+  links_tmp="$(mktemp)"
+  while IFS= read -r m; do
+    grep -hoE '\]\((exercises|lectures|supplementary)/[a-z0-9-]+\.md\)' "$m" 2>/dev/null \
+      | sed -E 's/^\]\(//; s/\)$//' || true   # a module with no links: grep exits 1, not a failure
+  done < "$scan_list" | sort -u | while IFS= read -r rel; do
+    if [ -f "curriculum/$rel" ]; then echo "curriculum/$rel"; fi
+  done > "$links_tmp"
+  cat "$links_tmp" >> "$scan_list"
+  rm -f "$links_tmp"
+  find "$SRC" -type f -name '*.md' >> "$scan_list"
+  echo "$SELF_STUDY_SKILL" >> "$scan_list"
+
+  # 2. Extract the marker closure (depth-1; step 3 verifies no deeper nesting).
+  keys="$(sort -u "$scan_list" | while IFS= read -r f; do [ -f "$f" ] && cat "$f"; done \
+    | grep -oE '\{\{prompt:[a-z0-9-]+\}\}' | sed -E 's/\{\{prompt:(.*)\}\}/\1/' | sort -u)"
+  rm -f "$scan_list"
+
+  # 3. Ship exactly those — fail-closed on a missing registry file or a nested
+  #    marker the depth-1 walk wouldn't have followed (either means the closure
+  #    shipped is incomplete).
+  shipped=0
+  while IFS= read -r k; do
+    [ -n "$k" ] || continue
+    pf="$PROMPTS_SRC/$k.md"
+    if [ ! -f "$pf" ]; then
+      echo "ERROR — A101 references {{prompt:$k}} but $pf does not exist" >&2; exit 1
+    fi
+    if grep -qE '\{\{prompt:[a-z0-9-]+\}\}' "$pf"; then
+      echo "ERROR — $pf nests a {{prompt:}} marker; closure is deeper than depth-1 — extend the build walk" >&2; exit 1
+    fi
+    cp "$pf" "$ROOT/prompts/$(basename "$pf")"
+    shipped=$((shipped + 1))
+  done <<< "$keys"
+  total=$(ls "$PROMPTS_SRC"/*.md | wc -l | tr -d ' ')
+  echo "Shipped $shipped of $total registry prompts (Agents 101 closure)."
 fi
 
 # Build tarball from inside ROOT so the archive has prework/, module-4/policies/,

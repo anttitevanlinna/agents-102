@@ -1,0 +1,57 @@
+# Agents 101 Module 2 — Name your challenge + build your challenge memory (+ debrief).
+# Driven by run-a101.sh --module m2. Fresh session in the training dir.
+#
+# Mixed provenance (finding C3): the synthetic corpus is staged locally under
+# <MATERIAL_DIR>, but Beat 2 assigns each source its real provenance so the
+# prompt's three-list report (fetched / linked-by-path / not reachable) actually
+# fires all three branches instead of collapsing to all-local. wiki/ simulates a
+# Confluence connector, docs/ a OneDrive connector, local/ a genuine local file
+# (linked by path). The open-web source is a REAL live crawl of a16z. A bucket-3
+# O365 email is named but unreachable (never staged). The churn counter-case
+# (new/) is held back for the Phase 3 compound turn so it stays genuinely new;
+# new-m3/ is held for the M3 seam. Interview + plan-mode turns carry suppression
+# tails (AUQ and the plan-mode proceed dialog both hang the headless runner).
+
+# Opener — pin the challenge. 3 questions one-at-a-time → suppress, inline all.
+name-your-challenge-1 Headless dry-run: do NOT call AskUserQuestion and do NOT ask one at a time. Take all three answers below and write ./challenge.md directly (show it in chat; no need to wait for my approval). <M2_CHALLENGE>
+
+# Source scouting (chat only).
+name-your-challenge-2
+
+# Beat 1 — curate. "Ask one question at a time" → suppress. Sources span mixed
+# provenance (Confluence, OneDrive, open web, a local file, an unreachable
+# O365 email) so the plan, and Beat 2's report, are not all-local (finding C3).
+build-your-challenge-memory-1 Headless dry-run: do NOT call AskUserQuestion and do NOT ask one question at a time. Don't actually probe my connectors in this dry-run; take the sources I name below as ground truth and propose the curation plan. <M2_CURATION>
+
+# Beat 2 — ingest into sources/ by provenance. The corpus is staged locally for
+# the headless run, but the turn assigns each source its real provenance so all
+# three branches of the prompt's report fire (fetched / linked-by-path / not
+# reachable), not just the local-file branch (finding C3). The open-web source
+# is a REAL live crawl of a16z. The held-back churn counter-case (new/) and the
+# M3 seam (new-m3/) stay unnamed so they are not swept in.
+build-your-challenge-memory-2 Ingest exactly these, by provenance, and nothing else. (1) From my Confluence "Pricing" space: the 2026 pricing strategy page and the pilot cohort notes — their content is staged for this dry-run at <MATERIAL_DIR>/wiki/. Read each and save its content into sources/<slug>.md with a header naming Confluence as the source. (2) From my OneDrive: the Q2 revenue review — staged at <MATERIAL_DIR>/docs/. Save its content with a header naming OneDrive. (3) One open-web practitioner source: actually fetch https://a16z.com/pricing-packaging/ live and save its content into sources/<slug>.md with the URL in the header. (4) One local file on my laptop: <MATERIAL_DIR>/local/board-paper-draft.md — save it as a reference only (absolute path + title + why-relevant, no copied content); you'll read it directly when a later beat needs it. (5) An email thread in my work O365 ("Q3 pilot pricing — sales objections") that you cannot reach in this session — save a reference stub marking it NOT REACHABLE, waiting for me to attach. Do not read or save anything from any other folder under <MATERIAL_DIR>; if you see folders I didn't name, list them and ask, don't sweep them in. When done, tell me what landed where, skipping any empty bucket. Don't ask me to paste anything; don't call AskUserQuestion.
+
+# Beat 3 — build memory/. The exercise wraps this in plan mode; the proceed
+# dialog hangs the headless runner, so explicitly stay out of plan mode.
+build-your-challenge-memory-3 Headless dry-run: do NOT enter plan mode and do NOT call AskUserQuestion — write the memory files directly.
+
+# Beat 3 audit — self-check generic vs specific.
+build-your-challenge-memory-4
+
+# Phase 2 — first custom agent. 2 questions one-at-a-time → suppress, inline.
+build-your-challenge-memory-5 Headless dry-run: do NOT call AskUserQuestion and do NOT ask one at a time. Take both answers below and save the agent file directly. <M2_AGENT_SPEC>
+
+# Phase 2 — run the agent on a real task.
+build-your-challenge-memory-6 <M2_TASK>
+
+# Phase 3 — compound: integrate the held-back counter-case source.
+build-your-challenge-memory-7 <NEW_SOURCE>
+
+# Phase 4 — self-maintain. "Ask to approve each" → suppress; approve all.
+build-your-challenge-memory-8 Headless dry-run: do NOT call AskUserQuestion. List your six proposals with severities, then apply all of them (I approve them all) and tell me what changed.
+
+# Close — put it to work.
+build-your-challenge-memory-9 <M2_FINAL_Q>
+
+# Debrief — write the first root ./CLAUDE.md.
+a101-m2-debrief-claude-md

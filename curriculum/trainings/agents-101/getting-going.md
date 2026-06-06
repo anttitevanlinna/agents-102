@@ -57,7 +57,7 @@ Ask Claude to spawn <span class="rt-code">a subagent</span><span class="rt-cowor
 
 One pattern to watch. Asked the most-uniquely-you line first, the LLM warms into appreciation. The praise carries forward into the generic-line call. Both picks come back softer than they probably should. Your own gut on what's uniquely you and what's generic carries more weight than Claude's.
 
-Compare Claude's picks to what you expected. Where cold-Claude sees generic, your context is still thin; add one more sharp detail there and regenerate. Where Claude's pick of *"uniquely you"* matches your own gut: solid ground.
+Compare Claude's picks to what you expected. Where cold-Claude sees generic, your context is still thin; add one more sharp detail there. Then ask Claude to regenerate the site. Where Claude's pick of *"uniquely you"* matches your own gut: solid ground.
 
 ## Next
 You just made great output AND packaged what you learned into a file the agent can re-read next time. That's the move that compounds. Module 2 takes the same idea and systematises it (the memory, the agents, the room rules) so every future module's work builds on every previous one.

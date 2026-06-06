@@ -32,6 +32,8 @@ The question shifts at Module 6. What if the work kept getting sharper, not beca
 
 [Exercise: The eval loop runs itself](exercises/eval-loop.md)
 
+[Lecture: When the score stops moving](lectures/when-the-score-stops-moving.md)
+
 [Closing: The new human role in the loop](lectures/new-human-role-in-the-loop.md)
 
 ## Key Concepts
@@ -67,8 +69,8 @@ Use [Agent Trigger List](../../trainings/agents-101/supplementary/agent-trigger-
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-04
-- judges: writing PASS, story PASS, technical PASS, behavior PASS (see instances/evaluations.*.json)
+**Quality:** compendium-audited 2026-06-06 (writing@ade2ec9)
+- judges @ade2ec9: writing PASS, story PASS, technical PASS, behavior PASS (see instances/evaluations.*.json), pedagogy grandfathered, strategy grandfathered
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Create

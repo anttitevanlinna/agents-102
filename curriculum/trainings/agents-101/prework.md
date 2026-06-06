@@ -26,7 +26,7 @@ If your IT admin has not approved the connector yet, keep going. The calendar sc
 
 ## 2. Install the training folder (3 min)
 
-Get the starter file set into your training directory. The starter file set ships the folders and reference material used later in the training: `memory/`, `sources/`, `agents/`, Module 4 policy files, and a self-study companion you can use while doing self-study of the modules.
+Get the starter file set into your training directory. The starter file set ships the folders and reference material used later in the training: `memory/`, `sources/`, `agents/`, the Module 4 policy files, a library of the prompts the training uses, the personal-to-team patterns for a later module, and a self-study companion you can use while doing self-study of the modules.
 
 [Download the starter file set](<CONTENT_URL>) and save it directly into `~/Documents/agents-101/`. You should see `agents-101-starter.tar.gz` land there in Finder or File Explorer. Then ask Claude to unpack it.
 

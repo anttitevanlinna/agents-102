@@ -12,7 +12,7 @@ The empty `sources/`, `memory/`, and `agents/` folders are already in place from
 
 **Phase 1. Curate, ingest, build.**
 
-A memory is only as good as what goes into it. Most people sabotage this step by shovelling in whatever's nearest. Don't. Three beats: Claude helps you curate a plan, then Claude pulls the actual content into `sources/`, then Claude builds `memory/` from what's on disk.
+A memory is only as good as what goes into it. Most people sabotage this step by shovelling in whatever's nearest. Don't. Three beats: Claude helps you curate a plan, then Claude pulls in (or points at) the content for `sources/`, then Claude builds `memory/` from what's on disk.
 
 **Always comply with your company's AI policy.** Whatever rules your org has about what can and can't go through an LLM (enterprise agreement, data classification, regulated-data carve-outs) those hold here. If in doubt, check before uploading.
 
@@ -29,7 +29,7 @@ Heavy reads ahead. Several phases re-read all of `sources/` or `memory/` and rew
 
 Push back, sharpen, add what's missing. The plan is the list. Nothing's in `sources/` yet.
 
-**Beat 2. Ingest.** Now Claude pulls the content into `sources/`. Agent does the heavy lifting; you don't copy-paste.
+**Beat 2. Ingest.** Now Claude pulls in (or points at) the content for `sources/`. Agent does the heavy lifting; you don't copy-paste.
 
 **A note on what Claude reads.** <span class="rt-cli">Claude Code CLI reads any path you name. For sources outside the training folder, give Claude the absolute path; it reads the file directly.</span><span class="rt-desktop">Claude Code Desktop reads files you attach via the **+** button at the prompt. For sources outside the training folder, attach them with **+** before sending the prompt.</span><span class="rt-cowork">Cowork reads files in the working folders you've selected for this task. Add another folder (your downloads, a notes directory) via the **+** button. To attach a single file for one message, also **+**.</span>
 
@@ -101,7 +101,7 @@ Read Claude's report. Push back if a claim "got sharper" but the top didn't actu
 {{prompt:build-your-challenge-memory-8}}
 
 
-Go through Claude's six proposals. Some will be right. Some will miss. Reject those. The ones you approve, Claude applies. The memory's now the version you steered, not the version Claude landed alone.
+Go through Claude's proposals. Some will be right. Some will miss. Reject those. The ones you approve, Claude applies. The memory's now the version you steered, not the version Claude landed alone.
 
 **Close. Put it to work.**
 

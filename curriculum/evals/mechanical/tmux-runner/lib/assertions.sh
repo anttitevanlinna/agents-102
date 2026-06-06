@@ -187,3 +187,25 @@ find_recent_md() {
       -type f -name '*.md' -newer "$ref" -print 2>/dev/null
   done
 }
+
+eval_trajectory_verdict() {
+  # Pure classifier for an m6 eval-loop's flagged-count trajectory. Counts +
+  # real-work flag in, verdict out — so it's unit-testable and the m6:2 case
+  # stays thin. Distinguishes a THEATER loop (did nothing useful) from a
+  # legitimately-low one: a narrow judge (e.g. M5's source-triangulation winner,
+  # blind to overreach by its own documented limit) meeting an already-grounded
+  # corpus starts at 0 countable flags while real improvement lands in the
+  # uncounted dimension. round-1==0 is NOT theater on its own.
+  # Args: <round1_count> <last_count> <real_work:0|1>
+  # Echo: IMPROVED <r1->last> | FLOOR-UNCOUNTED | THEATER <why> | UNPARSED
+  # Exit: 1 only for THEATER (hard fail); 0 otherwise.
+  local r1="$1" last="$2" work="$3"
+  if ! [[ "$r1" =~ ^[0-9]+$ && "$last" =~ ^[0-9]+$ ]]; then echo "UNPARSED"; return 0; fi
+  if [[ "$r1" -gt 0 ]]; then
+    if [[ "$last" -lt "$r1" ]]; then echo "IMPROVED $r1->$last"; return 0; fi
+    echo "THEATER flat/worse counted trajectory ($r1->$last) with flags left to fix"; return 1
+  fi
+  # round-1 countable flags == 0
+  if [[ "$work" -eq 1 ]]; then echo "FLOOR-UNCOUNTED"; return 0; fi
+  echo "THEATER round-1 flagged 0 and loop did no real work (no prompt evolution)"; return 1
+}

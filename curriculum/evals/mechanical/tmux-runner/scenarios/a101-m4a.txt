@@ -1,0 +1,25 @@
+# Agents 101 Module 4a — Author + package + install the security skill.
+# Driven by run-a101.sh --module m4a. Fresh session in the training dir, run
+# AFTER m3 (audits the m2/m3 system that's now on disk).
+#
+# Three planted vulnerabilities live in the corpus by now (see
+# tests/test-a101-m4-plants.sh): named PII in sources/ (pilot-cohort-notes),
+# an indirect injection in sources/ (q2-revenue-review docs), and over-broad
+# reach in agents/pricing-memo-agent.md (the m2 agent built from a spec that
+# asked for send-to-CEO). Policies ship in module-4/policies/ (prework extract).
+#
+# Interview/grill turns carry AUQ + plan-mode suppression tails (both hang the
+# headless runner). Answer tokens are inlined from answers/m4-*.txt.
+
+# Phase 1 — run the policies raw. No skill yet. Big audit read.
+author-security-skill-1 Headless dry-run: do NOT enter plan mode and do NOT call AskUserQuestion — read the files and write outputs/policy-report-raw.md directly.
+
+# Phase 2 — dictate what matters, then propose the package shape.
+author-security-skill-2 Headless dry-run: do NOT call AskUserQuestion. Here are my 3-5 lines — take them, then read outputs/policy-report-raw.md and everything in module-4/policies/ and propose the package shape; don't wait for further approval. <M4_WHAT_MATTERS>
+
+# Phase 3 — author both lenses; Claude grills, I answer the whole grill at once,
+# it saves. SKILL.md must carry both lenses + all four named risk patterns.
+author-security-skill-3 Headless dry-run: do NOT call AskUserQuestion and do NOT ask one at a time. Here are my answers to your whole grill — take them and SAVE the files now (do not wait for more steering). <M4_GRILL_ANSWERS>
+
+# Install the authored skill as a personal Claude skill (CLI flavor -4).
+author-security-skill-4 Confirm the installed path so I can verify with ls.

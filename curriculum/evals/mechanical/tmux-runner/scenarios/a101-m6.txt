@@ -1,0 +1,27 @@
+# Agents 101 Module 6 — Eval loop (the fixed-judge generation loop).
+# Driven by run-a101.sh --module m6. FRESH session, run AFTER m5 (consumes
+# ./crux.md, memory/, and the M5-authored judges/groundedness-judge.md — none
+# seeded). No persona answer tokens: the loop is self-contained.
+#
+# Gating turns = 4: eval-loop-1 (calibrate) → eval-loop-2 (the loop) →
+# eval-loop-5 (readout) → debrief. Skip -3 ("can we scale?" chat), -4 (analogy,
+# one-at-a-time chat), -6 (generic take-home twin of -2).
+#
+# NAMING SEAM (C11 — CLOSED 2026-06-06): the loop and the debrief now converge on
+# ./generation-tactic.md (the exercise migrated off ./generation-prompt.md to match
+# the module/lecture/debrief). The runner asserts the debrief re-sharpens the SAME
+# file the loop wrote (mtime advanced) and warns if an orphan generation-prompt.md
+# reappears. Judge immutability is checked two ways: a runner SHA stash (m6:1 vs
+# m6:2/m6:4) and the loop's own byte-identical report.
+
+# T1 — calibrate: write generation-tactic.md, run it once, run the judge in chat.
+eval-loop-1 Headless dry-run: do NOT enter plan mode and do NOT call AskUserQuestion — write the files and show the per-claim judge readout directly.
+
+# T2 — the loop: >=3 rounds, fixed judge, rewrite the tactic each round.
+eval-loop-2 Headless dry-run: do NOT enter plan mode and do NOT call AskUserQuestion. Run the rounds and write the files directly; do not stop for confirmation between rounds. Bound it: cap at 4 rounds even if you would otherwise continue, and record that the cap (not convergence) stopped it if so.
+
+# T3 (prompt -5) — readout (chat, 5 bullets).
+eval-loop-5 Headless dry-run: do NOT call AskUserQuestion — show the five bullets directly.
+
+# T4 — debrief: sharpen the tactic (overwrites ./generation-tactic.md).
+a101-m6-debrief-tactic-sharpen

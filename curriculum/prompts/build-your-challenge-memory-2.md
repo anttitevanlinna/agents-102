@@ -11,4 +11,6 @@ For every source in the curation plan we just agreed, create one file in sources
 - Local file on my laptop at a path I named? Save sources/<slug>.md as a reference — absolute path + title + why-it's-relevant, no copied content. You'll read the actual file directly when Beat 3 needs it.
 - Behind a connector you can't reach, or in a tool you don't have? Save sources/<slug>.md as a reference too — URL or path + title + why-it's-relevant + "NOT REACHABLE — share with me when you want this included." Don't ask me to paste anything; if I want it included, I'll share the file.
 
+Create files only for the sources in the plan we agreed. If you come across other material while you work — files I didn't name, a folder you weren't pointed at — don't add it; note what you saw and I'll decide whether it belongs.
+
 When done, tell me the three lists: (1) fetched and saved as content, (2) linked by local path, (3) not reachable — waiting for me to attach. I'll attach whatever I want to include before we build the memory.

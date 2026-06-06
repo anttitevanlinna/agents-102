@@ -1,0 +1,32 @@
+# Agents 101 Module 1 — Paint by agent with guardrails (+ debrief).
+# Driven by run-a101.sh --module m1. Fresh session in the (now populated)
+# training dir. Persona: Ingrid Solberg (synthetic). Inputs come from the
+# persona kit via tokens; interview turns carry AUQ-suppression + inlined
+# answers so the headless runner never waits on a dialog.
+
+# Phase 1 — boring baseline from the LinkedIn wall-of-text.
+personal-site-with-guardrails-1 <LINKEDIN>
+
+# Phase 2 — tuned StoryBrand. The prompt walks 5 beats one-at-a-time; in a
+# headless dry-run that hangs, so suppress it and hand over all five at once.
+personal-site-with-guardrails-2 Headless dry-run: do NOT call AskUserQuestion and do NOT ask the beats one at a time. Take all five of my answers below in one message and regenerate. <M1_PHASE2>
+
+# Phase 3 — strengths.
+personal-site-with-guardrails-3 <M1_STRENGTHS>
+
+# Phase 4 — anti-branding mirror.
+personal-site-with-guardrails-4 <M1_HATELIST>
+
+# Phase 5 — observation only (name three generic claims). No regeneration.
+personal-site-with-guardrails-5
+
+# Phase 6 — free iteration (no registry prompt; student drives). One restyle.
+* <M1_ITERATE>
+
+# Close — package the generation rules file.
+personal-site-with-guardrails-6
+
+# Debrief — second pass (retro) then cold critic.
+a101-m1-debrief-rules-retro
+
+a101-m1-debrief-cold-critic Headless dry-run: don't call AskUserQuestion; just spawn the subagent and report its two quoted lines in plain text.

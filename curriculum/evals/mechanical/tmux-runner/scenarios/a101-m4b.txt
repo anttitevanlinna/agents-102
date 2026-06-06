@@ -1,0 +1,19 @@
+# Agents 101 Module 4b — Load + run the security skill against the system.
+# Driven by run-a101.sh --module m4b. FRESH session (the skill installed in m4a
+# at ~/.claude/skills/security-audit/ autoloads here). Audits the same on-disk
+# agent system; the three plants must surface or the audit is theater.
+#
+# audit-your-agent-3 ends on a bare "The risk:" — the inline <M4_CHOSEN_RISK> is
+# MANDATORY (it names the PII as the risk to mitigate with the filter shape).
+
+# Phase 1 — packaged POLICY lens → outputs/policy-report.md + reflections.
+audit-your-agent-1 Headless dry-run: do NOT enter plan mode and do NOT call AskUserQuestion — write outputs/policy-report.md directly, then give me the three reflection points.
+
+# Phase 2 — AGENT-SECURITY lens on agents/ → outputs/security-report.md.
+audit-your-agent-2 Headless dry-run: do NOT enter plan mode and do NOT call AskUserQuestion — write outputs/security-report.md directly with the ranked mitigation suggestions.
+
+# Phase 3 — mitigate the named risk, re-run the lens, append residual.
+audit-your-agent-3 Headless dry-run: do NOT call AskUserQuestion — apply the mitigation, re-run the relevant lens, and append the "Mitigation applied and residual" section directly. <M4_CHOSEN_RISK>
+
+# Debrief — compound 1-5 security operating rules into ./CLAUDE.md.
+a101-m4-debrief-security-rules

@@ -1,0 +1,30 @@
+# Agents 101 Module 5 — Hallucination bakeoff (groundedness).
+# Driven by run-a101.sh --module m5. FRESH session, run AFTER m3 (the briefing is
+# built from crux.md ## Question + module-3/stances/ + curated memory/sources).
+#
+# CLI fork only: bakeoff-3 (subagent detectors) is the path; bakeoff-4 is its
+# Cowork twin (skipped), bakeoff-6/-7 are chat-only (skipped). Gating turns =
+# 1 (briefing) → 2 (claims) → 3 (detectors) → 5 (scorer) → 8 (judge) → debrief.
+#
+# SEAM: the briefing is fabricated non-deterministically by design, so we inject
+# THREE deterministic ungrounded claims via <M5_BRIEFING_SEED> (one per detector:
+# invented 30% number / "pilot proves it" overreach / broken 18% citation). The
+# assertions prove the pipeline caught a KNOWN plant, not just that it ran.
+
+# T1 — spawn the briefing subagent; build evidence-roster.md + briefing.md.
+hallucination-bakeoff-1 Headless dry-run: do NOT enter plan mode and do NOT call AskUserQuestion. Spawn the subagent and write the files directly. <M5_BRIEFING_SEED>
+
+# T2 — extract exactly 30 claims into claim-pool.md.
+hallucination-bakeoff-2 Headless dry-run: do NOT call AskUserQuestion — extract the 30 claims and save claim-pool.md directly.
+
+# T3 — four detectors in parallel (CLI subagent fork).
+hallucination-bakeoff-3 Headless dry-run: do NOT enter plan mode and do NOT call AskUserQuestion — spawn the four detectors and write the four files directly.
+
+# T4 (prompt -5) — scorer: adjudicate, score, name a winner.
+hallucination-bakeoff-5 Headless dry-run: do NOT enter plan mode and do NOT call AskUserQuestion — adjudicate, write adjudicated-claims.md + scoreboard.md, then show me the scoreboard.
+
+# T5 (prompt -8) — package the winner as a portable judge.
+hallucination-bakeoff-8 Headless dry-run: do NOT call AskUserQuestion — write judges/groundedness-judge.md directly.
+
+# T6 — debrief: compound groundedness rules into ./CLAUDE.md.
+a101-m5-debrief-groundedness-rules

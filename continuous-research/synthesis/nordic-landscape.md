@@ -25,9 +25,10 @@ Only 4 Nordic enterprise signals found across 50+ cycles:
 
 ## Nordic Product Companies (building agents, not deploying them)
 
+- **Solita (Helsinki, ~1,550 staff)** -- Finnish consultancy now Anthropic's first authorized European reseller via Amazon Bedrock (June 3, 2026) + launched RoadCrewAO multi-agent dev orchestrator (March 31, 2026). Positioning as the Nordic "Claude access point" with EU data residency. 700 software developers + 850 data/AI specialists. Significance: enterprise clients requiring EU data residency can now access Claude via Solita without US data transit. ([BusinessWire](https://www.businesswire.com/news/home/20260603013999/en/Solita-Becomes-One-of-Anthropic%27s-First-Authorised-Resellers-in-Europe-via-Amazon-Bedrock) — [vendor press release], Jun 2026; [Solita](https://www.solita.fi/news/solita-launches-ai-agent-orchestrator-for-enterprise-software-development-solita-roadcrewao/) — [vendor press release], Mar 2026)
 - **RELEX Solutions (Helsinki)** -- multi-agent supply chain platform, vendor-sourced evidence
 - **Noru (Stockholm)** -- agentic compliance startup, ~20 pilot customers, MCP-based. Only Nordic-origin agent governance tooling found.
-- **Legora** -- legal AI (Swedish-origin, now US-first)
+- **Legora** -- legal AI (Swedish-origin, now US-first, $100M ARR Apr 2026, Baker McKenzie global rollout May 2026). Harvey LAB civil-law caveat: LAB covers common-law jurisdictions only — Nordic civil-law tradition means LAB scores (Opus 4.7 at 7.1%) have uncertain direct applicability to Finnish/Swedish/Norwegian/Danish legal practice.
 - **Newcode.ai (Oslo)** -- legal AI OS, $6.5M seed (March 2026), DLA Piper Nordic deployment (Sweden/Norway/Finland). First Nordic-origin legal AI with named enterprise client + funding. ([Artificial Lawyer](https://www.artificiallawyer.com/2026/03/17/newcode-raises-6-5m-maged-helmy-interview/) — [domain trade publication], Mar 2026)
 - **Agaton (Stockholm)** -- EUR8.4M raised
 - **Pactum (Estonian-origin)** -- procurement negotiation, 50+ enterprises, Maersk customer. Strongest Nordic-adjacent agentic procurement.
@@ -91,6 +92,7 @@ Three independent research houses now converge on the same Nordic diagnosis: org
 - Nordic company with specific agent transformation method + practitioner-level detail
 - Nordic company with agent-specific governance implementation
 - Nordea build-vs-buy details (chose AWS Bedrock, 10K employees on internal multi-model platform -- the "why" is uninvestigated)
+- Named Nordic law firm deploying Harvey or Legora — zero evidence. Legora is Swedish-origin but deploying into Anglo-American BigLaw first. Baker McKenzie global rollout (3,500 lawyers, 74 offices) does not name Nordic offices specifically. (Cycle 126, June 2026)
 
 ## Implication for Advisory
 

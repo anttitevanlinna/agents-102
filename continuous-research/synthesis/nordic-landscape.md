@@ -1,12 +1,12 @@
 ---
 type: synthesis
 domain: cross-domain
-updated: 2026-05-29
+updated: 2026-06-08
 nordic: true
 answers: ["Nordic agents", "Nordic enterprise AI", "Nordic readiness", "Nordic deployments"]
 ---
 
-# Nordic Agent Landscape (May 2026)
+# Nordic Agent Landscape (June 2026)
 
 ## The Core Finding: Nordic is Pre-Adoption
 
@@ -14,12 +14,17 @@ Across 65+ OODA cycles and 5 platforms, the Nordic market is pre-adoption for en
 
 ## Named Nordic Signals (exhaustive list)
 
-Only 4 Nordic enterprise signals found across 50+ cycles:
+6 Nordic enterprise signals found across 127 cycles (4 business-domain + 2 IT operations):
 
+**Business-domain agents:**
 1. **Finnair** -- Salesforce Agentforce, 80% chat resolution. **Independently verified.** The only Nordic deployment with non-vendor evidence.
 2. **Berner/Joona Honka (Finland)** -- Sana/Workday, 90% adoption in 40 days. Vendor-sourced but named practitioner with measurable results.
 3. **Corvus Energy (Norway)** -- Microsoft Foundry partner. Vendor-sourced, no metrics.
 4. **reMarkable** -- Agentforce. Vendor-sourced.
+
+**IT operations agents (NOT business-domain):**
+5. **If Skadeförsäkring (Finland/Sweden/Denmark/Baltics)** — DXC OASIS agentic IT orchestration: proactive monitoring, incident response, automated IT operations. Deployed June 2026 across all four Nordic markets + Baltics (includes Topdanmark/Denmark). Largest Nordic geography spanning for any AI deployment. Source: [DXC press release via StockTitan](https://www.stocktitan.net/news/DXC/dxc-to-simplify-and-strengthen-if-s-technology-estate-across-the-hztnaw24ezrw.html) — [vendor press release, June 4, 2026]. Evidence level: Level 0-1 (vendor announcement, no independent metrics). Domain: IT operations, NOT business agents.
+6. **Elisa (Finland)** -- Google Cloud autonomous networks, shadow mode → closed-loop 2026 (see full entry below).
 
 **Cycle 50: Equinor confirmed as Nordic's largest AI deployment ($130M/year, $330M since 2020) -- but ALL use cases are predictive ML/optimization, NOT agentic.** Even Norway's most advanced AI user hasn't crossed into agentic business agents.
 

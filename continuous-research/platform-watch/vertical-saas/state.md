@@ -14,8 +14,16 @@ answers:
 
 # Vertical SaaS Agent Platforms — Platform State
 
-Last updated: 2026-06-10 (cycle 129)
-OODA cycles: 21
+Last updated: 2026-06-11 (cycle 130)
+OODA cycles: 22
+
+**Cycle 130 updates (June 11, 2026) — ServiceNow June GA still unconfirmed / Agentforce Multi-agent June 15 confirmed / SAP Joule API regression:**
+
+**ServiceNow IT Specialists June batch — GA unconfirmed as of June 11 (Day 11 post-Knowledge-2026-window).** No GA announcement found as of June 11. All references to the AIOps, SRE, Asset Lifecycle, Portfolio Planning, and IT Operations Specialists remain forward-looking ("expected June 2026") from the May 5 Knowledge 2026 press release. No separate GA confirmation press release has been published. Watch: ServiceNow release notes for actual shipment confirmation. ([ServiceNow newsroom May 5 2026](https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-brings-Autonomous-Workforce-to-every-major-business-function/default.aspx) — vendor press release)
+
+**Agentforce Multi-Agent Orchestration — Confirmed GA June 15 (Atlas 3.0 + Gemini 3.5 Flash).** Salesforce Summer '26 release graduates multi-agent orchestration from beta to GA on June 15, 2026. Atlas Reasoning Engine 3.0 acts as the coordinator agent, routing tasks to specialist subagents with shared context. Google Gemini 3.5 Flash added natively alongside Claude. Slack-first workflows included. Zero production customer results exist pre-launch. **Note:** This GA is for the orchestration capability only — Agentforce Operations (GA April 29) still has zero named independent production customers 6+ weeks in. ([TechTimes Jun 9 2026](https://www.techtimes.com/articles/318085/20260609/salesforce-puts-google-gemini-35-flash-inside-agentforce-june-15-release.htm) — domain trade publication)
+
+**SAP Joule — API Policy v4 blocks external agents; evidence desert holds (eighth consecutive cycle).** erp.today (June 2026) confirms SAP API Policy v4/2026 Section 2.2.2 explicitly prohibits external AI systems (Salesforce, ServiceNow, Claude, etc.) from independently scheduling or executing SAP API calls. All agentic use cases must route through Joule via A2A communication — mandatory double inference with increased latency and cost. This is a regression: Salesforce (60+ MCP tools) and ServiceNow (Action Fabric MCP) both explicitly open their APIs to external agents; SAP is moving in the opposite direction. Only 3% of SAP customers use Joule in production (analyst estimate; no methodology URL). Pfiester's "process standardization as ceiling" statement confirmed. **Evidence desert holds for eighth consecutive cycle** — LC Waikiki remains the only named case (competition award submission, Level 0). ([erp.today Jun 2026](https://erp.today/sap-joule-enterprise-execution-ai-readiness/) — domain trade publication)
 
 **Cycle 129 updates (June 10, 2026) — ServiceNow IT Specialists GA check + Agentforce non-CS sweep + SAP Joule + Nordic:**
 

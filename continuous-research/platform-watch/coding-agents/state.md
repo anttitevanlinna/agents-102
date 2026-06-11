@@ -1,7 +1,7 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-06-10 (cycle 129)
-OODA cycles: 13
+Last updated: 2026-06-11 (cycle 130)
+OODA cycles: 14
 
 ## Focus
 
@@ -14,6 +14,12 @@ Coding agents as the **meta-platform** for the agentic transformation. This is N
 **CYCLE 129 UPDATE — Anthropic ends flat-rate for agentic workloads (June 15 effective): Enterprise Standard gets $0 agent credit.** Effective June 15, 2026: Agent SDK, `claude -p`, Claude Code GitHub Actions, third-party Agent SDK apps move from flat-rate subscription to separate monthly credit pools billed at API rates. Boris Cherny (Head of Claude Code): subscriptions "weren't built for the usage patterns of these third-party tools." Credit pools: Pro $20/mo; Max 5x $100/mo; Max 20x $200/mo; Team Standard $20/seat; Team Premium $100/seat; Enterprise Premium $200/seat; **Enterprise Standard $0 agent credit** (must use direct API keys). Opt-in required; silent failure when depleted. Anthropic is now fully consumption-based for enterprise agentic workloads — no flat-rate option remains. **Competitive impact:** Cursor holding flat pricing through Q3 2026 is now explicitly named as a competitive differentiator in practitioner decision frameworks. ([TechTimes](https://www.techtimes.com/articles/317625/20260602/anthropic-ends-subscription-subsidy-agents-june-15-credit-pool-replaces-flat-rate-access.htm), Jun 2026)
 
 **CYCLE 129 UPDATE — Model routing reaches Level 3 as primary Pattern 48 tactical fix.** Five independent practitioner sources cite 60-80% cost reduction from tiered model routing (frontier for complex reasoning, smaller models for routine). Top AI gateway tools named independently across sources: Bifrost, LiteLLM, Kong AI Gateway, Cloudflare AI Gateway, TensorZero. Four enterprise controls emerging as standard: per-user token limits, per-team monthly budgets, model access policies by team, automated alerts at 50/80/100%. Counter-evidence to counter-evidence: Cloudflare's 81% token reduction claim has no methodology URL — treat as [UNVERIFIED]. AT&T scaled 8B → 27B tokens/day after multi-agent deployment (Pattern 48 confirms for broad agentic, not narrow). ([getmaxim.ai](https://www.getmaxim.ai/articles/llm-token-optimization-with-top-enterprise-ai-gateways/); [finops.org](https://www.finops.org/insights/token-economics-the-atomic-unit-of-ai-value/), Jun 2026)
+
+**CYCLE 130 UPDATE — Dynamic Workflows Day 15: Willison silence continues; research preview status unchanged.** June 11 post from Willison covered Anthropic's policy reversal on hidden Claude safeguards degrading performance for frontier LLM researchers — zero mention of Dynamic Workflows. DW silence now extends to Day 15 (15 days, 11+ posts). HN 48311705 remains inaccessible (403); adjacent thread 48350661 confirms the correctness ceiling blocker is still live in community discussion. No Fortune 1000 production deployment found in any channel through Day 15. Feature remains "research preview." ([simonwillison.net, June 11, 2026](https://simonwillison.net/2026/Jun/11/) — practitioner direct)
+
+**CYCLE 130 UPDATE — Kiro = AWS Agentic IDE (Level 2): spec-driven development, spec-check, hooks.** Amazon Web Services' coding agent replacement for Amazon Q Developer. Built on Code OSS (VS Code fork). Core differentiator: spec-driven development — prompt converts to three markdown files (requirements.md, design.md, tasks.md with EARS notation) for developer review before code generation. Explicitly positioned against "vibe coding." Model routing: Claude Sonnet 4.6 (reasoning) + Amazon Nova (high-throughput code generation) + open-weight options (Qwen3, DeepSeek v3.2). Hooks: event-driven automation on file save, tool use, task completion. May 2026 additions (Level 0 — vendor claims only): parallel task execution (4x claimed speedup for 4+ tasks) and spec-check (mathematical proof requirements are contradiction-free) per GeekWire. Pricing: Free (50 credits/mo) / Pro $20/mo / Pro+ $40/mo / Power $200/mo. International launch May 7, 2026. Two independent practitioners (Peter McCaree Dec 2025, fikuri Sep 2025) ran multi-week production tests. Consensus strengths: spec methodology improves planning discipline, Claude Sonnet 4.6 handles long context well. Consensus weaknesses: pricing opaque/punishing for small tasks, spec workflow overhead for minor changes, terminal hangs, hooks limited to explicit IDE saves. Evidence level: Level 2 (two independent experiments; May 2026 parallel/spec-check features remain Level 0). ([kiro.dev](https://kiro.dev/) — vendor; [petermcaree.com Dec 2025](https://petermcaree.com/posts/kiro-agentic-ide-hype-hope-and-hard-truths/) — practitioner direct; [dev.to/fikuri Sep 2025](https://dev.to/fikuri/kiro-the-good-bad-and-ugly-part-in-my-personal-experience-1neh) — practitioner direct; [GeekWire 2026](https://www.geekwire.com/2026/aws-targets-ai-slop-with-new-spec-check-in-kiro-coding-tool-amid-scrutiny-of-agent-reliability/) — general press)
+
+**CYCLE 130 UPDATE — Tokenomics Foundation FinOps X capstone: Tokenomicon 2027 announced; FOCUS 1.5 not scoped.** FinOps X Days 1–3 (June 8–11) concluded with the Linux Foundation announcing Tokenomicon — a dedicated AI economics conference with flagship event San Diego June 7–10, 2027. This pushes near-term token standards delivery to a 12+ month horizon. FOCUS 1.5 (per-token-type breakdown) faces an architectural blocker: the working group is choosing between a new observability dataset and OpenTelemetry integration; collecting per-token data is itself expensive at scale. No timeline given. New Pattern 48 depth from Google Cloud VP (Day 2): agentic systems spin up VMs, KV cache storage, RAG pipelines — all outside the token line item. The cost visibility problem is broader than billing transparency. ([Linux Foundation press release Jun 2026](https://www.linuxfoundation.org/press/linux-foundation-announces-tokenomicon-a-new-conference-for-the-economics-of-ai) — vendor press release; [SiliconAngle Jun 10 2026](https://siliconangle.com/2026/06/10/finops-ai-goes-beyond-token-economics-agentic-costs-emerge-finopsx/) — domain trade publication)
 
 **CYCLE 129 WATCH — "Kiro" appears as new coding agent entrant in June 2026 comparisons.** Named alongside Claude Code, Cursor, Copilot, Windsurf, Codex in a June 2026 comparison article. No prior KB entry; provenance unknown. Investigate cycle 130. ([lushbinary.com, Jun 2026](https://lushbinary.com/blog/ai-coding-agents-comparison-cursor-windsurf-claude-copilot-kiro-2026/))
 
@@ -363,9 +369,36 @@ Five independent practitioners published reactions in the 4 days after the May 2
 
 ---
 
+### Kiro (Amazon Web Services)
+
+**What it is:** AWS agentic IDE — official replacement for Amazon Q Developer. Built on Code OSS (VS Code fork). Public preview summer 2025; international launch May 7, 2026.
+
+**Core differentiator — spec-driven development:** Kiro's identity bet is that freeform prompt-to-code ("vibe coding") creates unmaintainable software. Instead: (1) developer describes what they want, (2) Kiro generates requirements.md + design.md + tasks.md in EARS notation, (3) developer reviews and approves the spec, (4) code is generated from the approved spec. Explicitly anti-vibe-coding positioning.
+
+**Key capabilities:**
+- Hooks: event-driven automation on file save, tool use, task completion — claimed unique in the category
+- Model routing: Claude Sonnet 4.6 (reasoning), Amazon Nova (high-throughput code generation), open-weight options (Qwen3, DeepSeek v3.2)
+- Steering files: project-level context files (stronger than static rules) — practitioners noted this as a strength
+- May 2026 additions (Level 0 — vendor claims only): parallel task execution (up to 4x speedup for 4+ independent tasks); spec-check (mathematical proof that requirements are contradiction-free before code generation) ([GeekWire](https://www.geekwire.com/2026/aws-targets-ai-slop-with-new-spec-check-in-kiro-coding-tool-amid-scrutiny-of-agent-reliability/) — [general press])
+- AWS ecosystem integration: Aurora DSQL, Amazon Connect, AWS Transform agents (April 2026) ([AWS announcements](https://aws.amazon.com/about-aws/whats-new/2026/04/aws-transform-developer-tools/) — [vendor press release])
+
+**Pricing:** Free (50 credits/mo) / Pro $20/mo / Pro+ $40/mo / Power $200/mo; overage $0.04/credit. **Practitioner flag:** pricing is opaque and punishing for small tasks — credits consumed unevenly by task type, difficult to predict costs before running.
+
+**Independent practitioner evidence (Level 2 — two independent hands-on tests):**
+1. **Peter McCaree (Dec 18, 2025, petermcaree.com)** — "hype, hope, and hard truths" framing. Multi-week production test. Strengths: spec methodology genuinely improves planning discipline; Claude Sonnet 4.6 context handling strong. Weaknesses: spec workflow is overkill for minor changes; terminal hangs on long-running tasks. [practitioner direct] (https://petermcaree.com/posts/kiro-agentic-ide-hype-hope-and-hard-truths/)
+2. **fikuri (Sep 13, 2025, dev.to)** — "the good, bad, and ugly" framing. 3+ weeks testing. Same consensus: spec workflow improves code quality; hooks limited to explicit IDE saves. [practitioner direct] (https://dev.to/fikuri/kiro-the-good-bad-and-ugly-part-in-my-personal-experience-1neh)
+
+**Note:** Both practitioner accounts are from Q3–Q4 2025 builds. The May 2026 parallel execution and spec-check features have zero practitioner evidence — treat as Level 0 until confirmed.
+
+**Meta-platform assessment:** Not a meta-platform in the Claude Code sense — Kiro doesn't build or deploy other agents. It's an AWS-backed Cursor competitor with a differentiated workflow (spec-first vs. prompt-first). For AWS-native enterprises, the ecosystem integration (Transform agents, Aurora DSQL) is a genuine differentiator. For non-AWS shops, it competes on the spec-driven workflow alone. Watch: hooks capability (if exposed to external automation) could become a meta-platform angle, but no evidence of this yet.
+
+**Relationship to Amazon Q Developer:** Kiro is the replacement, not an extension. Q Developer was IDE-integrated and compliance-focused (SOC, HIPAA, VPC). Kiro is a product-line rethink. Whether Kiro inherits Q Developer's enterprise compliance certifications is not yet documented in practitioner evidence.
+
+---
+
 ### Amazon Q Developer
 
-**What it is:** AWS's coding agent. IDE integration (VS Code, JetBrains, CLI). Strong enterprise compliance features.
+**What it is:** AWS's coding agent. IDE integration (VS Code, JetBrains, CLI). Strong enterprise compliance features. **NOTE (cycle 130):** Amazon Q Developer is being superseded by Kiro — see Kiro section above. Q Developer entries below reflect pre-Kiro state and should be treated as legacy context.
 
 **Productivity claims:** AWS reports 4,500 developer-years and $260M saved internally in 2024. Netsmart accepted ~35% of proposed changes. Audible raised test coverage from 10% to 100% on legacy package. ([AWS blog](https://aws.amazon.com/blogs/devops/adopting-amazon-q-developer-in-enterprise-environments/) — [vendor press release]; [Caylent](https://caylent.com/blog/amazon-q-developer-for-ai-driven-application-modernization) — [practitioner analysis]) **Note:** AWS internal savings are vendor-claimed. Netsmart and Audible are Level 2 single-company evidence.
 

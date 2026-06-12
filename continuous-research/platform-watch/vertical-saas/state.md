@@ -14,8 +14,18 @@ answers:
 
 # Vertical SaaS Agent Platforms — Platform State
 
-Last updated: 2026-06-11 (cycle 130)
-OODA cycles: 22
+Last updated: 2026-06-12 (cycle 131)
+OODA cycles: 23
+
+**Cycle 131 updates (June 12, 2026) — Agentforce seam problem documented pre-GA / ServiceNow partially closes Pattern 31 gap / ServiceNow IT Specialists still unconfirmed:**
+
+**Agentforce multi-agent orchestration (GA June 15) — "seam problem" is the documented failure mode.** Pre-GA technical analyses from consulting practitioners (Atrium, Digital Applied) document the N² failure surface: every agent-to-agent handoff is a potential context failure, and failure surface grows non-linearly with agent count. Hard limits confirmed: 20 active agents per org maximum; 15 topics and 15 actions per topic hard cap; 60-second action timeout; BYOM (bring your own model into Atlas reasoning loop) unsupported. Real-world data quality failure documented: 23% inaccuracy in automated inventory orders (unnamed healthcare client, Atrium). Routing quality depends entirely on agent description quality — semantic overlap between agents causes misroutes. Cross-platform A2A (external agents outside Salesforce clouds) remains beta; intra-Salesforce orchestration only is GA. Digital Applied (June 8) explicitly warns: deploying multi-agent orchestration on Day 1 "makes reliability worse, not better" if agent descriptions are not already clean. **Zero pre-GA production customer results.** ([atrium.ai May 20 2026](https://atrium.ai/resources/agentforce-limitations-developer-workarounds/) — practitioner analysis; [digitalapplied.com Jun 8 2026](https://www.digitalapplied.com/blog/salesforce-summer-26-agentforce-first-90-days-plan) — practitioner analysis)
+
+**Agentforce Operations non-CS evidence desert continues at 6+ weeks.** IRS deployment (Office of Chief Counsel, Taxpayer Advocate Services, Office of Appeals) remains the only named non-CS production Agentforce deployment with independent confirmation. Scope: document search and case summarization only; humans review every flagged return. 12% enforcement revenue increase in FY2026 H1 is confounded — simultaneous 25% workforce cuts prevent Agentforce attribution. RBC Wealth Management (meeting prep >1hr→<1min for 4,500 advisors): Level 1, vendor-hosted only, no independent corroboration. No named non-CS Agentforce customer found in ITSM, HR, finance, or manufacturing in June 2026 searches. ([foxbusiness.com Nov 23 2025](https://www.foxbusiness.com/technology/irs-roll-out-salesforce-ai-agents-following-workforce-reduction-report) — general press)
+
+**ServiceNow partially closes Pattern 31 gap: named independent customers confirmed in non-CS domains.** City of Raleigh (98% ticket deflection — vendor-attributed, specificity and named customer qualifies as Level 1+); Honeywell (named with attributed quotes); DocuSign (named, IT ops use case, attributed quotes). These are the strongest named non-CS vertical SaaS deployments found this cycle across any platform. Note: evidence quality is vendor-event attributions with named customers, not fully independent trade press verification — Level 1 with specificity rather than clean Level 2. ServiceNow remains the vertical SaaS platform with the highest evidence density for non-CS agentic deployments. ([aihr-institute.com](https://www.aihr-institute.com/servicenows-autonomous-workforce-what-role-scoped-hr-agents-mean-for-your-hris-strategy) — practitioner analysis)
+
+**ServiceNow IT Specialists June GA still unconfirmed June 12 (Day 12 post-Knowledge-window).** AIOps, SRE, Asset Lifecycle, Portfolio Planning, IT Ops Specialists: "expected June 2026" per May 5 Knowledge 2026 announcement. No GA press release, release notes, or trade publication confirmation found as of June 12. Six days remain in June.
 
 **Cycle 130 updates (June 11, 2026) — ServiceNow June GA still unconfirmed / Agentforce Multi-agent June 15 confirmed / SAP Joule API regression:**
 

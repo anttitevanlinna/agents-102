@@ -1,11 +1,15 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-06-12 (cycle 131)
-OODA cycles: 15
+Last updated: 2026-06-13 (cycle 132)
+OODA cycles: 16
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-06-13)
+
+**CYCLE 132 UPDATE — BREAKING: Fable 5 + Mythos 5 suspended globally by US government export control directive (June 12). SpaceX SPCX closed +19% on IPO Day 1 — Cursor acquisition clock now running (~July 12).** Commerce Secretary Howard Lutnick issued a directive June 12 ordering Anthropic to suspend all access to Fable 5 and Mythos 5 for all users globally — the first time a US government order has pulled a publicly-deployed frontier AI model offline. Alleged jailbreak: "asking the model to read a specific codebase and fix software flaws" (Anthropic's characterization; only verbal evidence provided). Fable 5 was available for 3 days (June 9–12) before suspension. API now returns Opus 4.8 for all users. Anthropic disagrees with the directive but is complying. Mythos 5 was suspended before any independent benchmark or practitioner evaluation was published. Willison documented exact cutoff at 6:59pm Pacific June 12. The Fable 5 "relentlessly proactive" behavior (autonomous system access: PyObjC, custom CORS servers, DOM injection — documented by Willison June 11, $12.11/session) appears to be the surface that triggered the security concern. Anthropic reversed hidden sabotage safeguards for Fable 5 June 11 (cycle 131); the fully-capable model then triggered export control action within 24 hours. Dynamic Workflows: first analyst-run with real metrics published (Faik, June 2026): 27 agents, 807K tokens, 463 tool calls, 25 min, ~$5 — not a Fortune 1000 production run but first documented completion without rate-limit failure. Level 1–2 boundary holds. Nested sub-agents (5 levels, v2.1.172, June 10): analyst characterization only; ~7x token cost per official docs; Boris Cherny soliciting community feedback on ceiling limit — no practitioner hands-on report published. SpaceX SPCX closed $160.95 (+19%) June 12 — IPO confirmed. 30-day Cursor acquisition option clock starts June 12; closing expected ~July 12 at $60B or $10B breakup fee. ServiceNow June-batch IT Specialists (AIOps, SRE, Asset Lifecycle, Portfolio Planning): still "expected June 2026" per May announcement; 17 days remain; no GA confirmation found as of June 13. ([Anthropic official statement Jun 13 2026](https://www.anthropic.com/news/fable-mythos-access) — vendor compliance record; [simonwillison.net Jun 13 2026](https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/) — practitioner direct; [CNBC Jun 12 2026](https://www.cnbc.com/2026/06/12/anthropic-disables-access-to-fable-5-and-mythos-5-to-comply-with-government-directive.html) — general press; [Axios Jun 12 2026](https://www.axios.com/2026/06/12/anthropic-trump-mythos-fable-national-security) — general press; [CNBC SpaceX IPO Jun 12 2026](https://www.cnbc.com/2026/06/12/spacex-ipo-spcx-live-updates.html) — general press)
 
 ## Key Verdict (as of 2026-06-12)
 

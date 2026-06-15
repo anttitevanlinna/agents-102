@@ -18,7 +18,7 @@ answers:
 
 **Evidence level:** Level 3 (convergence) | **Last updated:** 2026-03-28
 
-**Thesis:** Without agent competence, there is no vision — just governance of an abstraction. The sequence matters: Competence → Discovery → Context → Platform. Skip to platform selection and you're choosing between vendor narratives.
+**Thesis:** Without agent competence, there is no vision — just governance of an abstraction. The sequence matters: Competence → Discovery → Context → Compounding capability. Platform, if it ever comes, is a reversible mid-sequence node, not the destination — the $20 coding agent is the meta-platform that builds the rest. Skip to platform selection and you're choosing between vendor narratives.
 
 ## The Competence Gap Is Quantified
 

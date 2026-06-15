@@ -13,11 +13,11 @@ answers: ["which platform", "what to do", "CTO advice", "platform recommendation
 
 **The hardest problem isn't choosing a platform -- it's knowing what questions to ask.** A CTO facing 4 horizontal platforms, 5+ vertical SaaS vendors, open-source frameworks, and 200 internal processes can't even formulate the right question without agent competence. Every evaluation is shaped by whichever vendor presented last.
 
-**The sequence that works: Competence -> discovery -> context -> platform.**
+**The sequence that works: Competence -> discovery -> context -> compounding capability.**
 - Build competence (people who can build agents)
 - Discovery happens organically (people find their own high-value processes)
 - Three infrastructure enablers emerge predictably (data access, runtime, discoverability)
-- Platform questions become lightweight, reversible, two-way-door decisions
+- Platform questions, if they arise at all, are lightweight, reversible, two-way-door decisions -- the coding agent is the meta-platform, so most never need a purchase
 
 **Field evidence (F-Secure, March 2026):** After 2 modules of agent training, pretty much everyone started building unprompted. They then hit three walls: (1) data access, (2) where do apps run, (3) how do others find and use what was built. These are the real questions -- scoped, practical, answerable.
 
@@ -45,7 +45,7 @@ answers: ["which platform", "what to do", "CTO advice", "platform recommendation
 2. **Start with coding agents** -- Claude Code or Codex. $20/mo, low risk. The meta-platform that builds everything else.
 3. **Let the coding agent solve your 199 processes** -- vertical SaaS handles #1 (customer service). The coding agent builds agents for #2 through #200. Each builds on the last.
 4. **Identify YOUR 5 high-value candidates** -- bounded scope, clear success criteria, escalation tolerance, data mostly in one system.
-5. **Then evaluate platforms against YOUR use cases** -- not against vendor marketing. Infrastructure matters: AWS shop != Azure shop.
+5. **Then, only if a use case beats what you can already build** -- evaluate platforms against YOUR use cases, not vendor marketing. The default is build; a purchase has to out-perform the meta-platform you already have. Infrastructure matters: AWS shop != Azure shop.
 6. **Plan for custom development** -- multi-system orchestration requires engineering on every platform. Build on standards (MCP, Agent Skills), not lock-in.
 
 **The sequence matters:** Coding agent competence -> agents build your tools -> agents build your agents -> agents build your evals -> compounding. Skip to platform selection and you're choosing between marketing stories.

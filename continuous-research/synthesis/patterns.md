@@ -37,7 +37,7 @@ answers: ["cross-platform patterns", "what research established", "evidence patt
 
 **Pattern 43: "Training > Tooling" -- competence-first at Level 3.** Moderna (HBS): trained first, 1,000s of GPTs built organically. F-Secure: competence creates pull. SaaStr: "Training more important than vendor." Quintero: "CEO's AI skills correlate with org adoption." Klarna reversal. Mollick. Zero platform-first success stories across 58+ cycles.
 
-**Pattern 44: "Clarity is the ceiling, not capability."** Mollick's "Leadership, Lab, Crowd" + MIT 95% pilot failure + Quintero "clarity problem" + shadow AI (50% unsanctioned). The transformation sequence: competence -> clarity -> platform.
+**Pattern 44: "Clarity is the ceiling, not capability."** Mollick's "Leadership, Lab, Crowd" + MIT 95% pilot failure + Quintero "clarity problem" + shadow AI (50% unsanctioned). The transformation sequence: competence -> clarity -> compounding capability (platform, if ever, is a reversible mid-sequence node, not the destination).
 
 **Pattern 45: Global regulatory convergence on agent governance.** Singapore (Jan 2026), Colorado (June 30), EU AI Act (Aug 2). Common themes: risk-based, human oversight, least-privilege, audit trails. EU gap: Commission admits considerations are "only preliminary."
 

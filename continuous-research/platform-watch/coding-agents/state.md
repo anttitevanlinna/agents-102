@@ -1,11 +1,15 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-06-15 (cycle 134)
-OODA cycles: 18
+Last updated: 2026-06-16 (cycle 135)
+OODA cycles: 19
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-06-16)
+
+**CYCLE 135 UPDATE — DW Day 19: Willison June 16 silent on DW (two other posts: CAPTCHA/MCP, wildlife); The Atlantic "expected security behavior" framing adds third expert voice against suspension; SWE-Bench 88.6% vendor claim noted (not audited); billing Day 1+1 disruption lag.** Simon Willison published two posts June 16 (CAPTCHA/Cloudflare/MCP and Pacific Harbor Seal sighting) — zero Dynamic Workflows content. Day 19 silence now confirmed: Willison has written 19+ posts in June covering Fable 5 impressions, MCP, CAPTCHA, wildlife — and nothing on DW. The comparison is the signal: the most prolific AI tool commentator finds 19 consecutive days of non-engagement with Dynamic Workflows. The Atlantic (June 16) adds the third expert voice characterizing the Fable 5 jailbreak as expected cybersecurity behavior, not an exploit: Fable refused "review the code for security issues" but complied with "fix this code" when given deliberately insecure code — standard defensive security assistant behavior. Willison cited this framing on June 16. **SWE-Bench claim (Level 0 — vendor only):** Opus 4.8 + Dynamic Workflows claimed 88.6% on SWE-Bench Verified and 69.2% on SWE-Bench Pro (Business Analytics Substack, June 12, citing Anthropic). No independent benchmark audit or third-party reproduction found. Do not propagate as established fact. Billing Day 1+1: no enterprise disruption reports; publication lag holds (24–48h window; check June 17–18). Fable 5 negotiations: Tom Brown + Heck in Washington with Commerce/Cyber officials; "unusually fast" negotiations but no deal as of June 16; Polymarket 78% restored by July 1. ([simonwillison.net Jun 16 2026](https://simonwillison.net/2026/Jun/16/) — practitioner direct; [businessanalytics.substack.com Jun 12 2026](https://businessanalytics.substack.com/p/anthropic-hits-886with-dynamic-workflows) — practitioner analysis citing vendor benchmark)
 
 ## Key Verdict (as of 2026-06-15)
 

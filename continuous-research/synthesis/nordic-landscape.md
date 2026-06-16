@@ -1,7 +1,7 @@
 ---
 type: synthesis
 domain: cross-domain
-updated: 2026-06-08
+updated: 2026-06-16
 nordic: true
 answers: ["Nordic agents", "Nordic enterprise AI", "Nordic readiness", "Nordic deployments"]
 ---
@@ -74,6 +74,12 @@ Three independent research houses now converge on the same Nordic diagnosis: org
 - **Elisa (Finland, telecom):** Expanding Google Cloud/Gemini partnership for autonomous network operations. Shadow mode → closed-loop 2026 (contingent on KPIs). Hiring ~100 AI/software experts in Finland/Estonia. New role type: "network prompt engineer." Single function only (network ops), no multi-function transformation. Source: [PRNewswire](https://www.prnewswire.com/news-releases/elisa-oyj-and-google-cloud-expand-collaboration-to-deliver-ai-driven-autonomous-networks-302484183.html) — [vendor press release]. Evidence level: Level 0-1 (intent, no measured outcomes).
 - **Nordea (Finland/pan-Nordic banking):** Built model-agnostic platform on AWS Bedrock with governance scaffolding as reusable compliance layer. Scaled from POC to 10,000 internal users. Chose multi-LLM approach to avoid single-vendor lock-in. Strategy: governance as competitive advantage, not compliance tax. Source: [Hyperight](https://hyperight.com/banking-on-ai-nordea-poc-to-10000-users/) — [domain trade publication, Feb 2026] (403; data via search synthesis). Evidence level: Level 2 (specific metric, domain trade press; source blocked — treat with caveat).
 - **EY Finland (unnamed Nordic insurer, anonymized case):** 70% of claims documents auto-extracted and interpreted without human touch. Near real-time processing. Single function (claims). Company and country not confirmed. Source: [EY Finland](https://www.ey.com/en_fi/insights/financial-services/emeia/how-a-nordic-insurance-company-automated-claims-processing) — [consulting case study]. Evidence level: Level 2 (specific metric; anonymized).
+
+**New Nordic Signals (Cycle 135, June 16, 2026) — Level 0-1 only:**
+- **Tryg (Denmark, large Nordic insurer):** Launching "Nordic AI hub" focused on "accelerating AI services across operations" across DK/FI/NO/SE. No agent-specific metrics, no named practitioners, no measurable outcomes. Level 0 (company statement). Source: [Computer Weekly Jun 2026](https://www.computerweekly.com/news/366641192/AI-driving-changes-in-Nordic-financial-services) — domain trade publication.
+- **Lunar Bank CEO Ken Klausen (Copenhagen):** "Believe in an agentic future, where platforms and functions that users have today are agents." Zero deployment details, no timeline, no metrics. Level 1 (CEO opinion). Source: [Computer Weekly Jun 2026](https://www.computerweekly.com/news/366641192/AI-driving-changes-in-Nordic-financial-services) — domain trade publication.
+- **Eniro + Sana (Sweden/Nordic):** Partnership targeting "first AI agents in Q2 2026" as part of three-year AI transformation. Q2 2026 has passed; no confirmation of delivery found. Level 0 (vendor announcement, target date passed unconfirmed). Source: [TipRanks Jun 2026](https://www.tipranks.com/news/company-announcements/eniro-launches-largest-ai-investment-yet-with-sana-to-drive-nordic-growth) — general press.
+- **Cycle 135 assessment:** Nordic financial services article (Computer Weekly) produced zero three-gate-qualified agentic deployments. Tryg, Lunar Bank, Danske Bank, If Forsikring, ATP all cited AI investment — all Level 0-1, none cross the autonomy/multi-step threshold. The 31% Nordic AI production deployment figure (Tieto 2026, N=623) is confirmed existing finding — reflects broad AI use, not business agents.
 
 **Previous maturity data (retained):**
 - **Vivicta survey (n=340):** AI maturity at levels 1-2 out of 5. Only 31% have an AI strategy. Sweden leads (87% CxO integration, 77% upskilling).

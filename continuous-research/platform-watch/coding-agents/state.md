@@ -1,11 +1,15 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-06-16 (cycle 135)
-OODA cycles: 19
+Last updated: 2026-06-17 (cycle 136)
+OODA cycles: 20
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-06-17)
+
+**CYCLE 136 UPDATE — DW Day 20: InfoQ confirms research preview; billing pause confirmed (subsidy extended indefinitely); Fable 5 Day 5 at G7 France.** Dynamic Workflows confirmed research preview by InfoQ June 2026 — this resolves the cycle 131 ambiguity when docs dropped "research preview" label; the feature remains in research preview despite the label change. No Fortune 1000 production deployments through Day 20. Willison: Day 20 silence holds. **MAJOR: Billing change paused before June 15 go-live.** Anthropic told subscribers "Nothing changes for now." All cost projections for subscription-tier users are reset — the 15–30x subsidy continues for an indefinite period. Direct API users are unaffected (Pattern 48 still valid for them). Real billing pause drivers: OpenAI mulling steep API price cuts (WSJ June 11); both companies pre-IPO S-1 filed; developer backlash pre-IPO optics. **Fable 5 Day 5:** Amodei + Lutnick at G7 Evian-les-Bains; no deal; Polymarket 78% by July 1. ([infoq.com 2026](https://www.infoq.com/news/2026/06/dynamic-workflows-claude-code/) — domain trade publication; [the-decoder.com Jun 17 2026](https://the-decoder.com/anthropic-backs-off-unpopular-billing-overhaul-as-price-war-with-openai-looms/) — domain trade publication; [Globe and Mail Jun 2026](https://www.theglobeandmail.com/business/article-anthropic-trump-officials-deal-restore-fable-5-mythos-5/) — general press)
 
 ## Key Verdict (as of 2026-06-16)
 

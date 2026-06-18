@@ -15,8 +15,8 @@ answers:
 
 # AI-Native Teams — Research Track
 
-**Last updated:** 2026-05-29 (cycle 118)
-**OODA cycles:** 8
+**Last updated:** 2026-06-18 (cycle 137)
+**OODA cycles:** 9
 **Focus:** How teams that deeply integrate AI into their daily work actually operate — their characteristics, practices, working style, tools, and structure.
 
 ## Why This Track Exists
@@ -102,6 +102,26 @@ Not every team using Copilot is AI-native. The distinction:
 - People mention tools when describing how they work — capture every tool mention
 - Track which platforms enable AI-native practices vs. which constrain them
 - Note when teams switch tools and why
+
+## Cycle 137 Updates (June 18, 2026)
+
+**Fiona Fung / Claude Code Team — Engineering Org Restructuring (Level 2, Practitioner-Direct):**
+Anthropic Director of Engineering for Claude Code + Claude Cowork Fiona Fung published "Running an AI-native engineering org" (claude.com/blog, June 4, 2026) — the first engineering director-level account of how an AI-native engineering team at scale restructured its processes when agentic coding became the default. Four process rewrites confirmed:
+
+1. **Planning:** 6-month roadmaps abandoned; original roadmap "was out of date by month three" due to increased engineering velocity. Replaced with JIT (just-in-time) planning: prototype, rapid internal feedback, then iterate.
+2. **Context gathering:** Norm shifted from "ask the code author" to "ask Claude first, then determine whether the inquiry could be automated entirely." Human SMEs reserved for edge cases, not routine context.
+3. **Code review:** Universal human oversight replaced by targeted expertise review. "Claude handles all the style and linting... Where we still definitely want a human is expertise." Legal, security, and product-sense reviews remain human-gated.
+4. **Team composition:** Role boundaries blurred — PMs now prototype code, engineers now do design work. Hiring shifted toward "creative builders with product sense" and "engineers with deep systems expertise" over raw throughput.
+
+Measurable threshold: zero non-Claude commits in four months. Onboarding ramp time decreased (engineers ship real code in week one).
+
+**Evidence level:** Level 2 (single team — strong practitioner-direct account; caveat: Anthropic is the vendor, internal team, incentive to publish positive account). **Converges with Patterns A, B, and the "bottleneck shift" framing already documented.** New contribution: JIT planning as a structural response to accelerated velocity (previously only AMPECO had documented ritual elimination; this is the planning-process equivalent). Source: [claude.com/blog/running-an-ai-native-engineering-org, Jun 4 2026](https://claude.com/blog/running-an-ai-native-engineering-org) — practitioner direct.
+
+**AI as Critical Infrastructure — Thoughtworks / Claude Outage June 2:**
+Thoughtworks published analysis of June 2, 2026 Claude outage (elevated error rates across Opus 4.6, Claude API, Claude Code CLI). Impact: development velocity dropped, customer support systems failed, data pipelines froze. Ken Mugrase (Thoughtworks): "AI tools should amplify engineers' capabilities. It shouldn't act as a structural crutch." Frames a new failure mode for AI-native teams: **infrastructure dependency without infrastructure resilience planning.** Three recommended safeguards: graceful degradation, dependency auditing, AI-specific observability. This is the absorption bottleneck's counterpart — not WIP overflow but **availability risk** from the other direction. Source: [thoughtworks.com/en-us/insights/blog/generative-ai/claude-outage-june-2026, Jun 2026](https://www.thoughtworks.com/en-us/insights/blog/generative-ai/claude-outage-june-2026) — domain trade publication. Evidence level: Level 2 (single outage, single analyst; Thoughtworks independent of Anthropic).
+
+**Compound Engineering Plugin — 21K Stars (Level 3 Adoption):**
+Compound Engineering Plugin (Every) reached 21,000+ GitHub stars + 1,500+ forks as of June 2026, up from ~9,300 stars in February 2026. GitHub stars/forks are non-gameable adoption signals. Third camp held June 5: "the work phase has become boring" — the /goal unification collapses the four-step manual loop into a single entry point. Will Larson (Irrational Exuberance, first high-credibility outside-ecosystem analysis, June 2026) reviewed the methodology independently. Source: [rywalker.com/research Jun 2026](https://rywalker.com/research/compound-engineering-plugin) — practitioner analysis. Evidence level: Level 3 for adoption (GitHub stars are behavioral, not self-reported).
 
 ## Cycle 115 Updates (May 26, 2026)
 

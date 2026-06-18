@@ -4,7 +4,7 @@ domain: cross-domain
 evidence_level: null
 platforms: []
 nordic: true
-updated: 2026-03-25
+updated: 2026-06-18
 answers:
   - "how to research effectively?"
   - "what has the system learned about researching?"
@@ -359,3 +359,7 @@ Simultaneous triple-event cycles require a triage heuristic: vendor GA announcem
 ### Cycle 135 — 2026-06-16
 
 For government-vendor negotiations, trade publications (TechTimes, BeinCrypto) surface the named attendees and negotiation details faster than general press — specific names (Tom Brown, Sarah Heck, Lutnick, Cairncross) appeared in trade publications within 12-24 hours of the meetings, ahead of any major outlet coverage. For practitioner silence as evidence, context matters: Willison publishing two other posts on the same day while skipping DW is stronger evidence of non-engagement than a day with zero posts — the comparison to what else he chose to write is the signal. Nordic regional scans produce lower signal density when the query is "Nordic AI agents" via general articles — domain trade publications (Computer Weekly in this case) conflate broad AI investment and agentic deployment, requiring three-gate verification that reduces the yield to zero. Nordic landscape research is now better served by targeted named-company searches (e.g., "Tryg agent deployment," "Eniro Sana agent results") than by broad "Nordic AI 2026" topic scans, which produce conflation noise.
+
+### Cycle 137 — 2026-06-18
+
+Vendor-internal engineering blogs are highest-signal for AI-native team research when the author is a named director with operational accountability (not a marketing or DevRel author) — Fiona Fung's Anthropic blog post produced Level 2 AI-native team evidence because she owns the team whose practices she's documenting, not because she's "telling a brand story." Distinguishing these requires checking the author's title and actual operational role before classifying the source. For multi-item platform tracking cycles (Fable 5 + Cursor/SpaceX + ServiceNow + Polaris), running 4 parallel searches against distinct named events is more efficient than a single broad scan — each query can be scoped narrowly ("ServiceNow AIOps SRE specialists general availability June 2026") and returns definitive signals quickly. Formal M&A announcements (SpaceX/Cursor confirmed June 16) shift the tracking question: from "will they close?" to "when do regulators approve?" — updating the synthesis watch item from a specific date (July 12) to a range (Q3 2026) is the correct adjustment when a regulatory approval timeline is unknown.

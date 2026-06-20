@@ -14,8 +14,14 @@ answers:
 
 # Vertical SaaS Agent Platforms — Platform State
 
-Last updated: 2026-06-12 (cycle 131)
-OODA cycles: 23
+Last updated: 2026-06-20 (cycle 139)
+OODA cycles: 24
+
+**Cycle 139 updates (June 20, 2026) — Agentforce multi-agent zero named customers Day 5 post-GA / ServiceNow IT Specialists 22nd absence (10 days to June 30):**
+
+**Agentforce multi-agent orchestration (GA June 15) — zero named reference customers at Day 5 post-GA.** ChatForest independent review (June 2026) explicitly documents: "Salesforce launched a generally available product without naming a single reference customer." Claimed metrics (70% cycle-time reduction, 80% manual task reduction) flagged as "vendor assertions rather than field data — no independent validation, no disclosed methodology, no named customer." All post-GA practitioner content (Digital Applied 90-day plan, ChatForest builders log, Salesforce admin guides) is planning and architecture guidance, not deployment evidence. Atlas 3.0 routing quality depends on agent description clarity — the make-or-break production risk identified by practitioners. Same pattern as Agentforce Operations (GA April 29) — 7+ weeks in, still zero named independent production customers. ([ChatForest review Jun 2026](https://chatforest.com/reviews/salesforce-agentforce-operations-back-office-automation-regrello-ga-review/) — practitioner analysis; [Digital Applied Jun 8 2026](https://www.digitalapplied.com/blog/salesforce-summer-26-agentforce-first-90-days-plan) — practitioner analysis)
+
+**ServiceNow IT Specialists — 22nd consecutive absence, June 30 deadline in 10 days.** AIOps, SRE, Asset Lifecycle, Portfolio Planning, IT Operations Specialists: all remain unconfirmed GA as of June 20. Australia release notes page (servicenow.com/docs) last updated March 12, 2026 — no IT Specialist GA entry. Search across trade publications, partner blogs, ServiceNow community forums: zero configuration reports, zero GA announcements, zero practitioner posts for any June-batch specialist. June 30 = 10 days away. If no GA by June 30, this is confirmed Pattern 31 deadline miss for four simultaneous specialist commitments announced at Knowledge 2026 (May 5). ([ServiceNow docs Jun 2026](https://www.servicenow.com/docs/r/release-notes/new-features-changes.html) — vendor docs; [ServiceNow newsroom May 5 2026](https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-brings-Autonomous-Workforce-to-every-major-business-function/default.aspx) — vendor press release)
 
 **Cycle 131 updates (June 12, 2026) — Agentforce seam problem documented pre-GA / ServiceNow partially closes Pattern 31 gap / ServiceNow IT Specialists still unconfirmed:**
 

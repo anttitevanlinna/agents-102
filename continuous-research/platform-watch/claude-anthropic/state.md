@@ -16,8 +16,14 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-06-20 (cycle 139)
-OODA cycles: 26
+Last updated: 2026-06-21 (cycle 140)
+OODA cycles: 27
+
+**Cycle 140 updates (June 21, 2026) — Fable 5 Day 9: "coming days" window elapsed, Kalshi 57% by July 1, no restoration:**
+
+**Fable 5 Day 9 (June 21): still offline. Ciauri's "coming days" window has passed without reinstatement.** Chris Ciauri stated June 18 (Seoul press conference): "coming days" = implied 48-72h window. That window expired June 20-21 with no Commerce Dept announcement found. Kalshi prediction market (as of June 17): **57% restored by July 1** (10 days remain), 67% by July 10, 75% by July 17 — NOTE: these are lower than the Polymarket 75%-by-July-1 figure cited in cycle 139; markets have diverged or repriced post-G7. Trump "eased national security concerns" at G7 per search results, but no formal reinstatement mechanism or criteria published. SK Telecom denied alleged China ties (cycle 139) — dispute unresolved. Subscriber refund deadline passed Day 8 (June 20). **No new Anthropic newsroom posts found June 20-21.** ([Korea JoongAng Daily June 18 2026](https://www.koreajoongangdaily.com/business/anthropic-confident-of-reenabling-mythos-fable-5-access-in-coming-days-executive/12727522) — general press; [Kalshi June 17 2026](https://news.kalshi.com/p/fable-5-odds-anthropic-access-restored-july-57-percent) — prediction market)
+
+**CTO implication update (cycle 140):** The gap between executive confidence language ("coming days") and actual reinstatement is itself a signal. Fable 5 restoration depends on Commerce Dept action, not Anthropic's own timeline. Enterprise procurement teams now have direct evidence that model availability risk is not fully under the vendor's control — and that public executive statements may not reflect actual resolution timelines. Watch for: formal Commerce Dept announcement, Polymarket/Kalshi convergence above 85% as lead indicator, Anthropic newsroom post.
 
 **Cycle 139 updates (June 20, 2026) — SK Telecom trigger confirmed / Seoul office opened during ban / Ciauri "coming days" reinstatement confidence / Day 8 no deal:**
 

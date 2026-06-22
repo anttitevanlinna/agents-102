@@ -16,8 +16,14 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-06-21 (cycle 140)
-OODA cycles: 27
+Last updated: 2026-06-22 (cycle 141)
+OODA cycles: 28
+
+**Cycle 141 updates (June 22, 2026) — Fable 5 Day 10: ID verification path revealed (July 8, Persona KYC), market repriced to 38% by June 30:**
+
+**Fable 5 Day 10 (June 22): still offline. Critical new development — Anthropic's identity verification path via Persona.** Anthropic's updated privacy policy introduces mandatory identity verification (government ID + live selfie + facial geometry templates, via Persona Identities) effective **July 8, 2026**, for consumer accounts only (Free, Pro, Max — NOT Enterprise, Team, or API). Mechanism: by restricting high-capability model access to verified US persons, Anthropic may satisfy Commerce Dept export control concerns without requiring formal lifting of the directive. This creates a **second restoration track** independent of the political negotiation track. Android app showed Fable 5 in model picker June 21 — confirmed UI artifact, model not live. TechTimes (June 21) headline: "NSA Breach Testimony Reshapes Ban" — suggests Congressional testimony may add political complexity (full article paywalled, content not retrieved). Manifold prediction market (June 22): **38% by June 30** — significantly down from Kalshi 57% (June 17) and Polymarket 75% (cycle 139). Market has repriced downward post-G7 non-deal. ([explainx.ai June 2026](https://www.explainx.ai/blog/anthropic-claude-id-verification-persona-fable-5-2026) — domain trade publication; [Manifold June 22 2026](https://manifold.markets/predyx_markets/fable-reenabled-for-americans-by-ju) — prediction market; [pasqualepillitteri.it June 21 2026](https://pasqualepillitteri.it/en/news/5180/claude-fable-5-when-will-it-return) — domain trade publication)
+
+**CTO implication update (cycle 141):** Two restoration tracks now exist: (1) Political track — formal Commerce Dept action (declining probability, Manifold 38% by June 30); (2) Technical track — July 8 Persona ID verification for consumer accounts (independent of political deal). Enterprise/API restoration still requires political track or a separate mechanism. The consumer ID verification creates a precedent: facial biometric gating for top-tier model access — privacy and inclusivity implications for enterprise procurement (employees without government-issued IDs, non-US citizens working for US enterprises, etc.). **Watch for: July 8 Persona system launch; any Anthropic newsroom post clarifying Enterprise/API restoration path; whether Commerce Dept treats consumer ID verification as satisfying the directive.**
 
 **Cycle 140 updates (June 21, 2026) — Fable 5 Day 9: "coming days" window elapsed, Kalshi 57% by July 1, no restoration:**
 

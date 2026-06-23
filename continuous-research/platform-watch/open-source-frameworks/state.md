@@ -2,7 +2,7 @@
 type: state
 domain: platform
 evidence_level: 2
-platforms: [langgraph, crewai, mastra, microsoft-agent-framework, google-adk, ruflo]
+platforms: [langgraph, crewai, mastra, microsoft-agent-framework, google-adk, ruflo, glm-zhipu]
 nordic: false
 updated: 2026-05-24
 cycle: 4
@@ -14,8 +14,12 @@ answers:
 
 # Open-Source Agent Frameworks -- Platform State
 
-Last updated: 2026-05-24 (cycle 4 — Google ADK 2.0 at Google I/O, Mastra Fortune-500 production evidence, MCP security gap, governance tooling regulatory pressure)
-OODA cycles: 4
+Last updated: 2026-06-23 (cycle 5 — GLM-5.2 open-source Chinese model as Fable 5 ban consequence, enterprise resilience thesis validated)
+OODA cycles: 5
+
+**Cycle 5 updates (June 23, 2026):**
+
+- **GLM-5.2 (Z.ai / Zhipu AI) — Fable 5 ban accelerates open-source adoption.** Zhipu AI (rebranded Z.ai) released GLM-5.2 on June 13, 2026 — one day after the US export control directive suspended Fable 5 globally. The timing created a narrative that CNBC (June 16) and Fortune (June 16) independently confirmed: the Fable 5 ban is "a big moment for open-source AI" and "leaves the door open for open-source AI, particularly cheaper models from China." Technical specs: 744B total / 40B active parameters mixture-of-experts; 1M token context window (4x predecessor); MIT open-source license; available on Hugging Face and 20+ coding environments. **Performance:** tops BridgeBench Reasoning at 42.8; beats GPT-5.5 on multiple long-horizon coding benchmarks (VentureBeat); matches or beats Opus 4.8 on most production workloads (The Decoder). **Cost:** ~$1.40/M input, $4.40/M output via OpenRouter — approximately 1/6th the cost of US frontier models (GPT-5.5 at $5/$30, Claude Opus at $5/$25). Enterprise tiers from $12.60/month on Z.ai API. **Strategic implication now externally confirmed:** "access can be cut off without warning — companies look for models they can download, run on their own infrastructure and customize around their own data" (CNBC June 16). An export control on open weights "is a different problem entirely — the weights exist on servers across many jurisdictions, and can be redistributed without Zhipu AI's involvement" (CNBC). No independent enterprise production deployment evidence yet (too soon — June 13 launch). Enterprise adoption signal = Level 1 (expert opinion + benchmark evidence); the strategic narrative = Level 2 (CNBC + Fortune independent coverage of the ban → open-source thesis). ([VentureBeat June 2026](https://venturebeat.com/technology/z-ais-open-weights-glm-5-2-beats-gpt-5-5-on-multiple-long-horizon-coding-benchmarks-for-1-6th-the-cost/) — domain trade publication; [The Decoder June 2026](https://the-decoder.com/zhipu-ais-glm-5-2-closes-in-on-closed-source-leaders-in-coding-marathons/) — domain trade publication; [CNBC June 16 2026](https://www.cnbc.com/2026/06/16/anthropics-fable-shutdown-is-a-big-moment-for-open-source-ai.html) — general press; [Fortune June 16 2026](https://fortune.com/2026/06/16/us-anthropic-ban-open-source-ai-deepseek-zai/) — general press; [Pandaily June 2026](https://pandaily.com/zhipu-ai-glm-5-dot-2-open-source-mit-jun2026) — domain trade publication)
 
 **Cycle 4 updates (May 24, 2026):**
 - **Google ADK 2.0 at Google I/O (May 19, 2026).** Major framework revision. Unified graph-based engine with a "slider" between dynamic model-led reasoning and deterministic workflows — directly targeting LangGraph's architectural advantage. Three subagent coordination modes (chat / task / single-turn). Kotlin support enabling Android on-device agents. New alongside ADK 2.0: **Managed Agents API** (Google-hosted runtime, analogous to Anthropic Managed Agents and AWS AgentCore), **Agent Studio** (low-code entry point), and **A2A (Agent-to-Agent) protocol integration** for composing across heterogeneous agent systems. The A2A integration is the enterprise interoperability play — ADK agents can call non-ADK agents. Still GCP-native: no named enterprise customer at launch. Source: [Google Cloud Blog, May 19, 2026] — [vendor]; [Virtualization Review, May 19, 2026] — [independent trade press]. Evidence level: Level 1 (announcement confirmed by independent press); Level 0 for enterprise deployment outcomes.

@@ -1,11 +1,17 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-06-18 (cycle 137)
-OODA cycles: 21
+Last updated: 2026-06-24 (cycle 143)
+OODA cycles: 22
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-06-24)
+
+**CYCLE 143 UPDATE — Fable 5 Day 12 still offline; Polymarket June 26 at 10% (collapse from 41%), July 31 at 73% — market has abandoned near-term restoration thesis; Legion filed first legal challenge to ban; Ronacher "The Coming Loop" (June 23) crystallizes practitioner belief shift; Osmani (June 15) — review is now the leveraged engineering skill; ServiceNow IT Specialists 26th absence (6 days to June 30 deadline); Cursor/SpaceX date correction: Q3 2026, not July 12.** No Fable 5 restoration as of June 24. Trump verbally softened post-G7 Amodei meeting but Commerce Dept directive unchanged. Legion (legal-tech startup) filed suit against US government — first formal legal challenge. **Critical practitioner belief convergence:** Ronacher published "The Coming Loop" (June 23) — the clearest practitioner belief statement yet: "I don't prompt Claude anymore. I have loops running... My job is to write loops." Honest ambivalence expressed: "I resent it but accept it." Defensive code failure mode named: models are "mortally terrified of exceptions" (citing Karpathy), generating fallbacks rather than enforcing invariants. Osmani (June 15): "The hard part of engineering moved from writing code to deciding whether to trust it" — review is now the leveraged skill. Empirical: 4 AI reviewers on same PRs, 93.4% of issues caught by exactly one tool — heterogeneous review beats single-tool. 4x code output → ~10% delivered value; gap is hidden review work. Both Ronacher and Osmani converge independently: expertise concentrates at architecture/judgment level, not generation. Cursor/SpaceX Q3 2026 close (not July 12 — prior cycle inference, not confirmed deal term; Bloomberg + SEC 8-K say "Q3 2026"). ([lucumr.pocoo.org/2026/6/23/the-coming-loop/ Jun 23 2026](https://lucumr.pocoo.org/2026/6/23/the-coming-loop/) — practitioner direct; [addyosmani.com/blog/agentic-code-review/ Jun 15 2026](https://addyosmani.com/blog/agentic-code-review/) — practitioner direct; [letsdatascience.com Jun 2026](https://letsdatascience.com/news/legion-sues-us-over-lost-access-to-anthropic-models-2e697bd4) — domain trade publication; [Bloomberg Jun 16 2026](https://www.bloomberg.com/news/articles/2026-06-16/spacex-cements-60-billion-deal-to-take-over-ai-startup-cursor) — general press; [Polymarket](https://polymarket.com/event/claude-fable-5-restored-for-us-customers-by-20260613193753196) — prediction market)
+
+**Watch: June 30 (ServiceNow IT Specialists — 6 days, Pattern 31 miss is base case), July 1 (Fable 5 Polymarket 73% threshold now July 31), July 8 (Persona ID verification → potential US consumer restoration path), Q3 2026 (Cursor/SpaceX close), August 2026 (Polaris default).**
 
 ## Key Verdict (as of 2026-06-18)
 

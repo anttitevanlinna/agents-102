@@ -84,12 +84,33 @@ He self-describes as a builder who takes responsibility for AI outputs: "I opene
 
 [practitioner direct] https://x.com/mitsuhiko/status/1954643774203924832
 
+## "The Coming Loop" (June 23, 2026) — Identity shift crystallized
+
+**Most direct belief statement yet.** Ronacher published "The Coming Loop" on June 23, 2026 — a post that moves from *how he works* to *what he believes about what's happening*.
+
+Core claim: "I don't prompt Claude anymore. I have loops running that prompt Claude and figuring out what to do. My job is to write loops."
+
+This is an identity statement, not a workflow description. The engineering identity has shifted from code-writer to loop-architect.
+
+Additional belief claims from the post:
+- Models are "mortally terrified of exceptions" (citing Karpathy) — they generate defensive, fallback-heavy code that avoids strong invariants. Expert intervention must counteract this at architecture level.
+- Comprehension erosion: "we may no longer understand the whole system in the same way" — honest acknowledgment of a systemic quality that pre-agentic development didn't have.
+- Loops excel in bounded domains: code porting, performance exploration, security scanning — temporary artifacts, not lasting systems.
+- Teams are merging code they cannot fully explain; people converse through LLM indirection rather than directly.
+- **Honest ambivalence:** "I have no doubts that this looping future is going to be our future despite the fact that I presently resent it." — practitioners who crossed the threshold are not evangelists, they're pragmatists with reservations.
+
+This ambivalence framing is significant: it separates the experienced practitioner voice from the hype layer. Ronacher is not saying "this is great" — he is saying "this is real and I have mixed feelings about it." That's the most credible practitioner signal.
+
+Convergence note: Osmani (June 15, addyosmani.com) independently reached the same belief about expertise concentration: "The hard part of engineering moved from writing code to deciding whether to trust it." Two named practitioners, writing independently, same week, same belief.
+
+[practitioner direct] https://lucumr.pocoo.org/2026/6/23/the-coming-loop/ — June 23, 2026
+
 ## Evidence status
 
-All claims above are from Ronacher's own blog (lucumr.pocoo.org) and X.com — primary source only. Level 2: single practitioner, consistent body of work over 12+ months. Not convergence-level, but individually specific and production-grounded. Useful as: (1) leading-indicator voice, (2) counter to vendor narratives about AI autonomy, (3) concrete technical conditions for successful agentic coding deployments.
+All claims are from Ronacher's own blog (lucumr.pocoo.org) and X.com — primary source only. Level 2: single practitioner, consistent body of work over 12+ months. Not convergence-level individually, but the June 23 post combined with Osmani (June 15) creates L3 directional convergence on the belief that expertise concentrates at architecture/judgment layer. Useful as: (1) leading-indicator voice, (2) counter to vendor narratives about AI autonomy, (3) concrete technical conditions for successful agentic coding deployments, (4) honest ambivalence framing that distinguishes experienced practitioners from enthusiasts.
 
 ## What to watch
 
-- Whether his Pi agent gets broader adoption — it would be evidence of practitioners building minimal agents rather than using managed platforms
-- His reaction to Claude's Dynamic Workflows (May 28, 2026) — he has opinions on orchestration architecture that would make his assessment of JS-based workflow scripts informative
-- Whether his "90% AI-written Go service" eventually gets a detailed write-up with metrics
+- Whether "The Coming Loop" framing ("I write loops") gets cited by other practitioners — it's a crystallized statement that tends to propagate
+- Whether his Pi agent gets broader adoption — evidence of practitioners building minimal agents over managed platforms
+- His assessment of Dynamic Workflows (shipped May 28, 2026) — given his opinions on orchestration architecture, his verdict would be high-signal

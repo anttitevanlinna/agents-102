@@ -2,10 +2,10 @@
 type: state
 domain: platform
 evidence_level: 2
-platforms: [google, gemini, workspace-studio, agent-builder]
+platforms: [google, gemini, workspace-studio, agent-builder, gemini-spark, antigravity, managed-agents-api]
 nordic: true
-updated: 2026-04-25
-cycle: 110
+updated: 2026-06-05
+cycle: 124
 answers:
   - "what can business users do with Gemini today?"
   - "is Workspace Studio a real agent builder?"
@@ -14,8 +14,8 @@ answers:
 
 # Google Workspace / Gemini Enterprise — Platform State
 
-Last updated: 2026-04-28 (cycle 113)
-OODA cycles: 19
+Last updated: 2026-06-05 (cycle 124)
+OODA cycles: 20
 
 ## Focus
 
@@ -74,6 +74,20 @@ Google's agent ecosystem as it serves **business users** in the Workspace world.
   - **Google's 89% adoption stat — ZOMBIE STAT, do not cite.** "89% of business teams already using AI agents" from Google's own commissioned survey of Google-selected respondents. Sample methodology not disclosed. Circulates widely through Cloud Next coverage as if external research. Label as [GOOGLE-COMMISSIONED SURVEY — NOT INDEPENDENT EVIDENCE] whenever referenced. Source: [Google Cloud AI Agent Trends 2026](https://cloud.google.com/resources/content/ai-agent-trends-2026) — [vendor-commissioned research]
   - **Practitioner-direct window still open.** Day 5-6 confirmed too early for personal attendee accounts. Cycle 114 window (April 29–May 1) is the predicted Day 7-10 window per meta-learning. Schedule a follow-up cycle.
   - **What shipped GA at Cloud Next (confirmed by multiple trade sources):** ADK v1.0 (Python, Go, Java, TypeScript); A2A v1.2; Workspace Studio; Agent Engine Sessions and Memory Bank; Agent Garden prebuilt solutions; Gemma 4 open models (Apache 2.0); Managed MCP servers for Google Maps, BigQuery, Compute Engine, Kubernetes Engine. **Still in Preview/Roadmap:** Gemini 3.1 Pro (no GA date); Agent Designer visual canvas (Preview); Workspace MCP Server (Preview); Project Mariner Studio (Q2 2026); cross-device Project Mariner sync (Q3 2026); Agent marketplace (Q4 2026). Source: [DEV.to structural analysis](https://dev.to/s3atoshi_leading_ai/google-cloud-next-2026-a-structural-analysis-of-all-3-days-the-axis-of-ai-competition-has-bj3) — [practitioner analysis]
+
+- **Cycle 124 update (June 5, 2026) — GOOGLE I/O 2026 AFTERMATH:**
+
+  - **Gemini Spark — useful but fragmented, US-only beta, prompt injection risk flagged.** TechCrunch consumer test (May 30): partially completed tasks across 6 use cases (shopping, packing, event discovery, newsletter summaries, price tracking); gaps include no Google Keep export, no third-party integrations (Resy, flight deals), no SMS, requires re-prompting. US AI Ultra subscribers only ($99.99/month) — no enterprise/business tier rollout timeline confirmed. Simon Willison (May 20): Spark routes sensitive personal data through ephemeral VMs and is "a serious candidate for a major agent security failure" from prompt injection. Most I/O announcements labeled by Willison as "previews, not shipped products." Sources: [TechCrunch](https://techcrunch.com/2026/05/30/i-put-googles-24-7-ai-assistant-gemini-spark-to-work-and-its-actually-pretty-useful/) — [general press]; [simonwillison.net](https://simonwillison.net/2026/May/20/google-io/) — [practitioner analysis].
+
+  - **Antigravity 2.0 — rocky launch, 27-day forced CLI migration with no installable replacement.** Launched May 19. Day-one automatic update broke existing developer environments: removed built-in code editor, wiped stored configurations, required post-launch patch after agents began reverting human edits. Replacement CLI (`agy`, Go-based) was announced but unavailable on any package manager as of May 21. Google simultaneously announced end-of-life for open-source Gemini CLI (Apache 2.0, TypeScript) effective June 18 — 27-day forced migration with no alternative available. Developer community reaction: "Why Google's Antigravity 2.0 AI Update Has Developers Furious." Positive signals: native A2A protocol support, `antigravity-awesome-skills` community repo at 38,000+ stars, built-in browser agent differentiating from Cursor/Claude Code. Reviewer consensus: 3/5, revisit 60–90 days. Sources: [ChatForest](https://chatforest.com/reviews/google-antigravity-2-agent-first-dev-platform-review/) — [practitioner analysis, June 2026].
+
+  - **Managed Agents API — public preview, zero independent deployment evidence.** Single API call provisions stateful agent in ephemeral Linux sandbox (code execution, file management, web browsing). Powered by Antigravity on Gemini 3.5 Flash. Enterprise tier via Gemini Enterprise Agent Platform. Docs actively updated June 3, 2026. Directly competes with Claude Managed Agents ($0.08/session-hour) and AWS Bedrock AgentCore. Zero independent practitioner accounts of latency, reliability, or cost at scale. Sources: [blog.google](https://blog.google/innovation-and-ai/technology/developers-tools/managed-agents-gemini-api/) — [vendor press release].
+
+  - **Gemini 3.5 Flash — leads on MCP tool use and cost at 34% of Opus 4.8 price.** Three-way benchmark (lushbinary.com, May 29): MCP Atlas score 83.6% vs Opus 4.8 79.1% vs GPT-5.5 75.4%. MMMU-Pro multimodal: 84% (SOTA). SWE-bench Pro: not published. Cost: $1.50/$9.00 per 1M in/out vs Opus 4.8's $5/$25 — 34% of cost, 2.4× value per dollar. At 10M daily tokens: Gemini 3.5 Flash = $37.50/day vs Opus 4.8 = $110/day. Speed: ~4× faster. **CTO routing signal:** Gemini 3.5 Flash is the credible cost-performance option for MCP-heavy multi-tool pipelines where intelligence index and SWE-Bench coding quality matter less than throughput and tool reliability. Sources: [lushbinary.com](https://lushbinary.com/blog/claude-opus-4-8-vs-gpt-5-5-vs-gemini-3-5-flash-cost-performance/) — [practitioner analysis, May 29, 2026]. Evidence: Level 1 (single analyst; MCP Atlas methodology unvalidated).
+
+  - **WebMCP — browser session dependency blocks enterprise headless agents.** Core structural limitation: WebMCP depends on active browser sessions with human login state — cannot run headless or server-side. Enterprise agentic workflows requiring persistence are blocked. Authentication inherits browser cookies, incompatible with centralized enterprise governance (logging, identity, audit). Strategic read: may be defensive (Chrome preserving relevance as agents bypass browsers). W3C proposal submitted; Microsoft co-developed; Firefox Q3 2026, Safari Q4 2026. Committed launch partners: Booking.com, Shopify, Instacart, Intuit. Sources: [hyperframeresearch.com](https://hyperframeresearch.com/2026/05/29/googles-webmcp-bet-exposes-the-browsers-agentic-ai-problem/) — [practitioner analysis]; [developer.chrome.com](https://developer.chrome.com/blog/chrome-at-io26) — [vendor press release].
+
+  - **Nordic signal:** Zero. No Nordic practitioner reactions to any I/O 2026 product found. No Nordic enterprise pilot reports.
 
 - **Cycle 110 update (April 25, 2026) — POST-EVENT DAY 1: Studio growth claims, Gemini 3.1 Pro still preview, Shopify Sidekick evidence, Day 3 wrap-up confirmed:**
   - **Workspace Studio vendor growth claims (Level 0 — unverified):** Google claimed 3.5M monthly active users, 170M tasks/month, 700% growth in 3 months at Cloud Next. No methodology, no independent verification. These figures are structurally inconsistent with the 400 runs/month cap for most tiers (unless the majority of users are on free trial or below the cap). [Source: Cloud Next vendor announcements — vendor claim, Level 0]

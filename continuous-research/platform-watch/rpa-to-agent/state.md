@@ -1,11 +1,21 @@
 # RPA-to-Agent Platforms — Platform State
 
-Last updated: 2026-04-02 (cycle 1)
-OODA cycles: 1
+Last updated: 2026-05-27 (cycle 2)
+OODA cycles: 2
 
 ## Focus
 
 The RPA-to-agent transition: can enterprises extend existing RPA investments into agentic automation, or is the architectural gap too wide? Tracks UiPath, Automation Anywhere, Power Automate, and workflow automation tools (Zapier, Make). Critical for Nordic enterprises — most large Nordic companies have significant UiPath or Automation Anywhere investments. This is the "should we upgrade or start over?" question.
+
+## Key Verdict (as of 2026-05-27)
+
+**EU AI Act August 2026 high-risk deadline formally postponed to December 2027 (standalone) / August 2028 (embedded) — "Digital Omnibus" deal May 7, 2026. Non-retroactivity clause means systems already in production before Dec 2027 may never face compliance. Nordic compliance urgency removed for current deployments.**
+
+**First Level 2 evidence in category: Valley National Bank (UiPath Maestro, sanctions screening) — 61% automation of 14,000 monthly alerts, 20 min → under 2 min per alert, named contact Onni Chan. Still sourced via vendor press release channel, not practitioner-direct.**
+
+**UiPath strategic pivot (May 12): coding agents (Claude Code, Codex, Cursor) can now create/test/deploy UiPath automations natively. Signals UiPath repositioning from "RPA team's tool" to "coding agent's orchestration target."**
+
+**Hybrid architecture consensus emerging: RPA for deterministic execution, agents for reasoning/exceptions. No practitioner reports wholesale replacement. Gartner predicts 40%+ agentic AI project cancellations by 2027 (data quality, edge case ownership — not model capability). Category evidence desert persists: zero independent practitioner-direct production deployment accounts across UiPath Maestro, AA AI Agent Studio, Power Automate.**
 
 ## Key Verdict (as of 2026-04-02)
 

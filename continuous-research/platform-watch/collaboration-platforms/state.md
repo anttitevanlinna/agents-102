@@ -1,11 +1,15 @@
 # Collaboration Platforms Adding Agents — Platform State
 
-Last updated: 2026-04-14 (cycle 96)
-OODA cycles: 2
+Last updated: 2026-06-22 (cycle 141)
+OODA cycles: 3
 
 ## Focus
 
 Agents arriving inside collaboration tools enterprises already use — Atlassian, Slack, Notion, Zoom. The "Trojan horse" scenario: if agents ship embedded in Jira, Slack, and Confluence, does the CTO's platform choice become irrelevant? Tracked because this is how most business users will first encounter agents — not through a platform selection process, but through a feature toggle in a tool they already have open.
+
+## Key Verdict (as of 2026-06-22 — Cycle 141 update)
+
+**Atlassian restructures 10% of workforce citing AI-first strategy — first named collaboration-platform company to link agent scale (Rovo 5M MAU) to workforce reduction.** On March 11, 2026, Atlassian cut 1,600 employees (10%), with 900+ in software R&D. CTO role split into two "next generation AI talent" roles. CEO: "AI changes the mix of skills we need or the number of roles required in certain areas." Counter-evidence: Sam Altman warned about "AI washing" at AI Impact Summit (Feb 2026); HR Digest raised the concern specifically about Atlassian. Causal attribution remains Level 2 (named company, named CEO statement, independent confirmation, but AI-washing counter-evidence weakens direct causation). This IS the strongest named-company evidence in the collaboration-platforms category for AI-driven organizational change. ([Atlassian blog March 11 2026](https://www.atlassian.com/blog/company-news/atlassian-team-update-march-2026); [CNBC March 11 2026](https://www.cnbc.com/2026/03/11/atlassian-slashes-10percent-of-workforce-to-self-fund-investments-in-ai.html); [The Next Web March 2026](https://thenextweb.com/news/atlassian-is-cutting-1600-jobs-and-replacing-its-cto))
 
 ## Key Verdict (as of 2026-04-14 — Cycle 96 update)
 
@@ -34,7 +38,23 @@ Rovo is Atlassian's AI layer across Jira, Confluence, and Compass. Three compone
 - **Rovo Agents GA** — configurable agents accessible across Jira, Confluence, Chat, automation rules, and Studio app ([Atlassian Support: Agents](https://support.atlassian.com/rovo/docs/agents/))
 - **Rovo MCP Server GA** — cloud-hosted gateway exposing Jira, Confluence, and Compass data to external AI clients (Claude, Cursor, VS Code, GitHub, AWS, ChatGPT, Docker, Figma, and 15+ others). Read AND write operations via natural language. Migrating from SSE to MCP endpoint before June 30, 2026. ([Atlassian blog: Rovo MCP GA](https://www.atlassian.com/blog/announcements/atlassian-rovo-mcp-ga)) [vendor press release]
 - **Rovo Dev** — coding agents in CLI for software teams ([Atlassian: Rovo Dev](https://www.atlassian.com/software/rovo-dev)) [vendor press release]
-- **5M+ monthly active users** claimed ([Deviniti: 38 Atlassian AI Statistics](https://deviniti.com/blog/enterprise-software/38-atlassian-ai-statistics-for-2026-rovo-atlassian-intelligence-adoption/)) [domain trade publication] — but this is Rovo overall, not specifically Agents
+- **5M+ monthly active users** as of February 2026 ([Deviniti: 38 Atlassian AI Statistics](https://deviniti.com/blog/enterprise-software/38-atlassian-ai-statistics-for-2026-rovo-atlassian-intelligence-adoption/)) [domain trade publication] — Rovo overall, not specifically Agents; independently corroborated in March 2026 workforce restructuring announcement
+
+### Workforce Restructuring — March 2026 (Cycle 141)
+
+**Atlassian cut 1,600 employees (10% of workforce) on March 11, 2026, citing AI-first strategy and self-funding AI investment.** Key details:
+
+- **Scale:** 1,600 jobs (10%), with **900+ in software R&D specifically**
+- **Geography:** North America 40% (~640), Australia 30% (~480), India 16% (~250), remainder EMEA/Japan/Philippines
+- **Restructuring cost:** $225–236M + $62M+ office space reduction
+- **CTO transition:** Rajeev Rajan departed March 31. Role split into two "next generation AI talent" executives: Taroon Mandhana (CTO Teamwork, former AI/products engineering head) + Vikram Rao (CTO Enterprise + Chief Trust Officer)
+- **CEO framing:** Mike Cannon-Brookes: *"It would be disingenuous to pretend AI doesn't change the mix of skills we need or the number of roles required in certain areas."* Also: *"We fundamentally believe people AND AI create the best outcomes. Our approach is not 'AI replaces people.'"*
+- **Financial context:** Cloud revenue +26% YoY, $3.814B forward obligations — cuts framed as self-funding, not distress
+- **Counter-evidence:** Sam Altman (AI Impact Summit, Feb 2026) warned companies "unfairly blaming AI for planned workforce cuts" calling it "AI washing" — HR Digest raised specifically about Atlassian. The AI→cuts causal chain is CEO-asserted, not independently verified as direct cause
+
+**Evidence level: Level 2** — CEO statement + two independent sources (CNBC, The Next Web) + Atlassian's own blog post. AI-washing critique weakens direct causal attribution but does not invalidate the structural finding that a collaboration platform company is explicitly linking AI capability investment to workforce restructuring at 5M MAU scale.
+
+Sources: [Atlassian blog March 11 2026](https://www.atlassian.com/blog/company-news/atlassian-team-update-march-2026) [vendor — CEO statement]; [CNBC March 11 2026](https://www.cnbc.com/2026/03/11/atlassian-slashes-10percent-of-workforce-to-self-fund-investments-in-ai.html) [general press]; [The Next Web March 2026](https://thenextweb.com/news/atlassian-is-cutting-1600-jobs-and-replacing-its-cto) [domain trade publication]
 
 ### Practitioner Evidence
 

@@ -55,8 +55,13 @@ Quietly building the full stack. Three layers becoming four: standards → engin
 - **Standards adopted by everyone:** MCP (97M monthly SDK downloads, 10K+ servers) + Agent Skills.
 - **Antspace (hidden PaaS):** General-purpose managed agent runtime, not just web app host. BYOC on K8s = first designed promotion path (personal → company). Still staging.
 - **Claude Cowork feature velocity:** Persistent threads, scheduled tasks, M365 MCP, 11 plugins, marketplace + admin controls — all shipped March 2026.
-- **Enterprise momentum:** 73% of new enterprise buyers (Ramp, March 2026). $1B ARR run-rate (Claude Code) in 6 months.
-- **Risk:** Infrastructure fragility Level 3 (109 incidents/90d, 99.34% uptime = ~6 hours downtime/month).
+- **Enterprise momentum:** 73% of new enterprise buyers (Ramp, March 2026). $1B ARR run-rate (Claude Code) in 6 months. $65B Series H at $965B post-money (May 2026). Revenue run rate $47B annualized (May 2026).
+- **NEW (June 2026) — Two independent enterprise risk vectors confirmed simultaneously:**
+  - **Model availability risk:** Fable 5 + Mythos 5 suspended June 12 by US government export control directive. Root trigger: Amazon CEO Jassy (Anthropic's largest investor + direct competitor) briefed Treasury/Sacks about Amazon researchers testing Fable 5 for cyberattack capability. First time US government has pulled a publicly deployed frontier AI model offline. No reinstatement timeline as of June 14. Anthropic's 24-hour communication promise unfulfilled. CTO implication: enterprise procurement must now factor government-action precedent into vendor risk assessment.
+  - **Pricing risk materialized:** June 15 credit billing change removes 15–30x hidden subsidy on agentic workloads. Enterprise Standard seats: $0 agent credit (most-missed enterprise detail). Opt-in mandatory, non-poolable per user. GitHub Copilot offered bridge credits ($30/$70/user/month) in direct competitive response. Bimodal spend data (Ramp AI Index, June 12): top 1% enterprises at $7,500/employee/month (+14% MoM); median $11 — Pattern 48 crisis is concentrated in the CTO-reader cohort.
+- **Risk:** Infrastructure fragility Level 3 (109 incidents/90d). Government action precedent (new, June 2026). Consumption pricing exposure now unsubsidized. Amazon investor-competitor conflict confirmed active.
+
+See `../platform-watch/claude-anthropic/state.md` for full evidence.
 
 See `../platform-watch/claude-anthropic/state.md` for full evidence.
 

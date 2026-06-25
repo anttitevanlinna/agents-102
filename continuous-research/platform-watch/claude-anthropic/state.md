@@ -16,8 +16,19 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-06-23 (cycle 142)
-OODA cycles: 29
+Last updated: 2026-06-25 (cycle 144)
+OODA cycles: 31
+
+**Cycle 144 updates (June 25, 2026) — Fable 5 Day 13: false restoration claim debunked; Legion LegalTech first court challenge filed June 24:**
+
+**Fable 5 Day 13 (June 25): still suspended. The "restoration around June 18-19 with nationality controls" is a false report — debunked by TechJacks Solutions (the originating source corrected and removed the claim). As of June 22, Anthropic's status page shows both Fable 5 and Mythos 5 suspended with no restoration date.** The false restoration narrative propagated widely across aggregators before correction — evidence that the information environment around the ban has degraded: plausible claims get amplified without verification. Prediction markets: Polymarket ~59% by July 1 (6 days away); June 26 threshold at ~10% (Polymarket moved from 41% to 10% on this date in 4 days — cycle 143 meta-learning: velocity > snapshot). No Commerce Dept announcement, no Anthropic newsroom post as of June 25. ([TechJacks Solutions correction](https://techjacksolutions.com/ai-brief/fable-5-identity-nationality-controls-unconfirmed/) — domain trade publication; [Anthropic status page](https://status.anthropic.com) — vendor)
+
+**Legion LegalTech lawsuit (June 24, 2026) — first court challenge to the Fable 5/Mythos 5 directive.** San Jose-based Legion LegalTech Corp filed suit in Washington D.C. federal court seeking to vacate the Commerce Department Bureau of Industry and Security directive and issue a preliminary injunction blocking enforcement. Legion builds AI-powered litigation drafting software (pleadings, discovery, court documents) on Anthropic's models. Their Canadian remote-working development team lost access when the directive went live. Core argument: no existing export control statute or regulation covers hosted AI models or their outputs — BIS order exceeds statutory authority. Harm characterization: "immediate, irreparable, and existential" (litigation drafting software cannot function without frontier models; competitive disadvantage cannot be remedied retroactively in fast-moving AI market). This is the **first-of-kind case** — no prior court ruling on whether export control authority reaches cloud-hosted AI inference. A preliminary injunction ruling (if granted) would have immediate precedential effect on the entire enterprise AI stack that depends on Anthropic models. ([The Next Web June 24](https://thenextweb.com/news/legion-legaltech-sues-us-anthropic-access) — domain trade publication; [TechSpot June 24](https://www.techspot.com/news/112880-startup-sues-us-government-blocking-access-anthropic-fable.html) — domain trade publication; [Medianama June 24](https://www.medianama.com/2026/06/223-legion-legaltech-sues-us-over-anthropic-ai-export-controls/) — domain trade publication)
+
+**CTO implication update (cycle 144):** Three tracks now exist for Fable 5 resolution: (1) Political/negotiation track — Commerce Dept formal action (market: ~59% by July 1); (2) Technical track — Persona ID verification July 8 for consumer accounts (limited to US persons, consumer plans only); (3) Legal track — Legion injunction (precedent-setting but slow; preliminary injunction hearing timeline unknown). Enterprise teams should monitor the legal track specifically: if a court vacates the directive or grants an injunction, that's the cleanest path to restoration across all platforms and use cases. **Watch: Legion preliminary injunction hearing date; July 8 Persona launch; Polymarket movement as leading indicator of political track probability.**
+
+**Cycle 143 updates (June 24, 2026) — Fable 5 Day 12: Polymarket June 26 at ~10%, Ronacher "The Coming Loop" crystallization, Legion lawsuit filed:**
+(Legion lawsuit filed June 24 — see cycle 144 update above for full detail.)
 
 **Cycle 142 updates (June 23, 2026) — Fable 5 Day 11: markets diverge (Polymarket ~59% by July 1, Manifold ~50% by end of June), Persona ID system running since April 14, no restoration:**
 

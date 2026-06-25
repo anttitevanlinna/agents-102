@@ -14,8 +14,14 @@ answers:
 
 # Vertical SaaS Agent Platforms — Platform State
 
-Last updated: 2026-06-20 (cycle 139)
-OODA cycles: 24
+Last updated: 2026-06-25 (cycle 144)
+OODA cycles: 29
+
+**Cycle 144 updates (June 25, 2026) — ServiceNow IT Specialists 26th absence (5 days to June 30 deadline) / Agentforce multi-agent 10 days post-GA, evidence desert continues:**
+
+**ServiceNow IT Specialists — 26th consecutive absence. 5 days remain before June 30 deadline.** No GA announcement found for AIOps Specialist, SRE Specialist, Asset Lifecycle Specialist, or Portfolio Planning Specialist as of June 25. All June 2026 searches return only the May 5 Knowledge 2026 announcement language ("expected June 2026"). No release notes, no trade publication GA coverage, no practitioner posts on any of the four IT Specialist categories. June 30 = 5 days away — if no GA by end of month, this is confirmed Pattern 31 deadline miss across four simultaneous IT Specialist commitments. Meta-learning note: the security/risk specialists were explicitly given "preview June / GA September" timeline — a longer disclosure precisely because the release is further away. The IT Specialists have no specific date, which per cycle 141 heuristic (vendors less precise about imminent releases) signals high slip probability. ([ServiceNow newsroom May 5 2026](https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-brings-Autonomous-Workforce-to-every-major-business-function/default.aspx) — vendor press release; search results June 25, 2026)
+
+**Agentforce multi-agent orchestration — 10 days post-GA, evidence desert pattern holding.** No named independent practitioner has published a multi-agent orchestration deployment as of June 25. Vendor metrics available: $800M ARR (cumulative Agentforce, not multi-agent specific), 29,000 Agentforce deals closed (50% QoQ growth in Q4), 2.4B "agentic work units" (undefined denominator). All post-GA content remains planning guides, architecture analysis, and building blogs — no deployment results. AstraZeneca (named June 4 as "pre-GA selection") used future tense; not confirmed as post-GA production. The seam problem (N² failure surface at handoffs, 20-agent org max, 60s timeout, context saturation at 4+ agents) remains the structural constraint. Evidence desert mirrors Operations GA (April 29, 7+ weeks at time of writing) — same pattern, different product launch. ([EnterpriseDNA June 2026](https://enterprisedna.co/resources/news/salesforce-summer-26-agentforce-800m-arr-multi-agent-2026/) — vendor-adjacent; [Salesforce Summer '26 release](https://www.salesforce.com/news/stories/summer-2026-product-release-announcement/) — vendor press release)
 
 **Cycle 139 updates (June 20, 2026) — Agentforce multi-agent zero named customers Day 5 post-GA / ServiceNow IT Specialists 22nd absence (10 days to June 30):**
 

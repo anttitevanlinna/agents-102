@@ -16,8 +16,20 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-06-25 (cycle 144)
-OODA cycles: 31
+Last updated: 2026-06-27 (cycle 146)
+OODA cycles: 33
+
+**Cycle 146 updates (June 27, 2026) — Fable 5 Day 15: Lutnick response deadline passed (no response); Garbarino demo congressional signal; August 1 EO structural backstop:**
+
+**Fable 5 Day 15 (June 27): still suspended, Anthropic newsroom silent for 15 consecutive days.** No Commerce Department public response to the bipartisan House letter demanding legal and technical basis for the BIS directive — June 27 was the deadline set in the letter. Congressional pressure is building: Rep. Andrew Garbarino (R-NY, House Homeland Security subcommittee) referenced a demonstration of Fable 5's capabilities on June 27 per the explainx.ai Day 15 update — exact nature unclear, independent corroboration not found, marked Level 1 pending confirmation. No new Anthropic newsroom post, no Commerce Dept announcement. ([explainx.ai June 27 2026](https://explainx.ai/blog/is-fable-5-back-2026) — domain trade publication)
+
+**August 1, 2026 = 60-day Executive Order deadline for "covered frontier model" framework** — the structural policy backstop for enterprise/API restoration. The administration's EO (issued in early June) directed NSA, Treasury, and CISA to complete a negotiated access control framework within 60 days. If completed by August 1, this framework becomes the formal mechanism for restoring enterprise and API access — independent of both the Legion LegalTech litigation and the consumer-only July 8 Persona ID path. If the August 1 deadline slips, it creates new political pressure. Three resolution tracks now track to three distinct clocks: (1) political/negotiation — Commerce Dept action, no hard deadline; (2) technical — July 8 Persona ID (consumer-only, physical docs, biometrics via Persona); (3) legal — Legion LegalTech injunction (D.C. federal, no hearing date); (4) policy framework — August 1 EO deadline (NSA/Treasury/CISA). ([explainx.ai June 27 2026](https://explainx.ai/blog/when-will-fable-5-be-available-again-2026) — domain trade publication)
+
+**Prediction markets unchanged from cycle 145.** Kalshi: July 10 at 47%, July 17 at 58%, July 24 at 61%. No sharp upward movement (80%+ threshold) detected on June 27 — political track remains uncertain, consistent with Lutnick not responding publicly to House letter. Next structural milestones: July 1 (Polymarket threshold, ~57-73%), July 8 (Persona ID consumer expansion), August 1 (EO framework deadline).
+
+**Legion LegalTech: no hearing date as of June 27.** Preliminary injunction motion filed June 23-24; D.C. federal court has not published a hearing date. Government response to the injunction request is the next procedural signal — typically 14 days for emergency injunction motions. No additional companies have filed parallel suits; Legion remains the first-of-kind challenge. ([The Next Web June 24 2026](https://thenextweb.com/news/legion-legaltech-sues-us-anthropic-access) — domain trade publication)
+
+**CTO implication update (cycle 146):** Enterprise procurement teams now have four parallel tracks to monitor. The August 1 EO framework deadline is the most structurally significant: if NSA/Treasury/CISA complete the "covered frontier model" access control framework on time, it creates the mechanism for ALL enterprise and API restoration simultaneously — not just consumer accounts. The Persona July 8 path is consumer-only and physically-gated (no digital IDs), so enterprise teams should not plan around it. The congressional pressure track (House letter deadline missed, Garbarino demo) adds political urgency but no concrete mechanism. **Watch: any Commerce Dept statement June 28–July 10; Legion LegalTech government response filing; Kalshi market movement above 75% as lead indicator.**
 
 **Cycle 144 updates (June 25, 2026) — Fable 5 Day 13: false restoration claim debunked; Legion LegalTech first court challenge filed June 24:**
 

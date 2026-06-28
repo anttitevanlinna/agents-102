@@ -14,8 +14,18 @@ answers:
 
 # Vertical SaaS Agent Platforms — Platform State
 
-Last updated: 2026-06-27 (cycle 146)
-OODA cycles: 31
+Last updated: 2026-06-28 (cycle 147)
+OODA cycles: 32
+
+**Cycle 147 updates (June 28, 2026) — ServiceNow IT Specialists 29th absence (2 days to June 30 deadline, Pattern 31 confirmed unless announcement by June 30 EOD) / Agentforce multi-agent Day 13 evidence desert / Fable 5 Mythos partial restoration context:**
+
+**ServiceNow IT Specialists — 29th consecutive absence. June 30 deadline in 2 days. Pattern 31 confirmed absent June 30 EOD announcement.** AIOps Specialist (autonomous anomaly detection, event correlation, remediation) and SRE Specialist (end-to-end incident triage + postmortem authoring) still not confirmed GA as of June 28. All sources return only Knowledge 2026 (May 5) "expected June 2026" language. ServiceNow Australia release (GA May 5) shipped the L1 IT Service Desk Specialist; the June-wave AIOps/SRE Specialists were announced as a SEPARATE June delivery — they were not bundled into the Australia release. Craig Talbert's Australia release practitioner analysis confirms the L1 Service Desk Specialist as GA while noting the June-wave as forthcoming. No release notes, no trade publication GA coverage, no community forum practitioner posts for AIOps or SRE Specialist. Tomorrow (June 30) is the final day for "June 2026" GA targets. Pattern 31 is the expected outcome. ([ServiceNow newsroom May 5 2026](https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-brings-Autonomous-Workforce-to-every-major-business-function/default.aspx) — vendor press release; [Craig Talbert Medium](https://craigtalbert.medium.com/the-servicenow-australia-release-availability-timeline-and-major-changes-7ab99389672a) — practitioner analysis)
+
+**Agentforce multi-agent orchestration — Day 13 post-GA, evidence desert holds.** Zero independent practitioners have published multi-agent orchestration production deployment results. All post-GA content: architecture planning guides, "first 90 days" preparation posts, vendor-hosted metrics. $800M ARR = cumulative Agentforce FY2026, not multi-agent specific. Pattern mirrors Operations GA (April 29, 8+ weeks, zero independent customers). ([TechTimes June 16 2026](https://www.techtimes.com/articles/318456/20260616/salesforce-agentforce-multi-agent-orchestration-hits-ga-agent-descriptions-now-drive-reliability.htm) — domain trade publication)
+
+**Fable 5 context for vertical SaaS:** Mythos 5 partial restoration (100+ Annex A US orgs, June 26–27) does not directly affect Salesforce, ServiceNow, or SAP Joule deployments. No evidence found of vertical SaaS customers using Anthropic models shifting to competitors during Fable 5 ban. The multi-provider gateway narrative (TrueFoundry, The New Stack June 2026) is relevant to ServiceNow's AI Control Tower multi-model strategy and SAP Joule's open-model routing.
+
+**Watch: June 30 EOD (ServiceNow IT Specialists — Pattern 31 confirmed if no announcement); Agentforce multi-agent first independent deployment report (now Day 13 post-GA, pattern = 7-14 days before first reports).**
 
 **Cycle 146 updates (June 27, 2026) — ServiceNow IT Specialists 28th absence (3 days to June 30 deadline, Pattern 31 near-certain) / Agentforce multi-agent Day 12 evidence desert holds / Microsoft Polaris August 2026 confirmed:**
 

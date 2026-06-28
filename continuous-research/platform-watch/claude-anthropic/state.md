@@ -16,8 +16,20 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-06-27 (cycle 146)
-OODA cycles: 33
+Last updated: 2026-06-28 (cycle 147)
+OODA cycles: 34
+
+**Cycle 147 updates (June 28, 2026) — Fable 5 Day 16: MYTHOS 5 PARTIAL RESTORATION (100+ Annex A US orgs, June 26–27); Fable 5 still offline; Polymarket July 1 at 35%; EO 14409 August 1 voluntary framework confirmed:**
+
+**Mythos 5 partially restored for 100+ "Annex A" US organizations — first confirmed government-authorized restoration in 16 days.** Commerce Secretary Lutnick's letter (June 26) to Tom Brown authorized Mythos 5 access for critical infrastructure operators, federal agencies, national labs, Fortune 500 companies, and Anthropic's own foreign-national employees. Semafor (exclusive): Lutnick wrote "I have determined that appropriate safeguards are in place to permit certain trusted partners to access the Claude Mythos 5 Model," citing "significant progress" from 15 days of daily talks. The Annex A list is not public. Non-American employees at approved organizations are now covered — reversing a key aspect of the June 12 BIS order. Fable 5 remains offline for all general users, API, AWS Bedrock, and Claude Code. Sources close to talks told Semafor restoration is being worked for Fable, but "timeline is unclear." ([Semafor exclusive June 27](https://www.semafor.com/article/06/27/2026/us-releases-powerful-anthropic-model-mythos-to-some-us-companies); [Axios June 27](https://www.axios.com/2026/06/27/commerce-anthropic-mythos-restrictions-lift); [Fortune June 27](https://fortune.com/2026/06/27/anthropic-mythos-5-ai-model-us-commerce-department-clearance-fable/); [NBC News](https://www.nbcnews.com/tech/tech-news/us-government-gives-anthropic-green-light-limited-re-release-mythos-5-rcna352018) — Level 3, 6+ independent outlets)
+
+**Fable 5 still offline Day 16 (June 28); Polymarket July 1 at 35%.** isfableback.org tracker confirms Fable 5 offline for general users as of June 28. Polymarket's official X account posted June 28: "35% chance Fable 5 is restored by July 1." Market structure: July 31 at 90%, August 31 at ~95%, December 31 at 97% — traders expect eventual restoration but not this week. Total volume: $2.9M+. ([Polymarket X June 28](https://x.com/Polymarket/status/2070950260873007196); [isfableback.org](https://isfableback.org/))
+
+**EO 14409 August 1 framework confirmed as voluntary, not mandatory licensing.** Executive Order 14409 "Promoting Advanced AI Innovation and Security" (signed June 2, 2026 — 10 days before the ban) directed NSA, Treasury, and CISA to deliver within 60 days: (a) classified benchmarking process for frontier AI cyber capabilities, and (b) a voluntary pre-release engagement channel. The NSA director holds "covered frontier model" designation authority. The framework is explicitly voluntary — developers may opt in, provide 30-day pre-release access, collaborate on trusted-partner selection. The Annex A letter is an interim mechanism; August 1 is the formal structural deadline. Regulatory risk for the broader AI industry is lower than the worst-case mandatory-licensing scenario. ([White House EO 14409](https://www.whitehouse.gov/presidential-actions/2026/06/promoting-advanced-artificial-intelligence-innovation-and-security/); [Latham & Watkins analysis](https://www.lw.com/en/insights/president-trump-signs-executive-order-establishing-ai-cybersecurity-and-frontier-model-framework))
+
+**No strategic enterprise platform migrations to OpenAI documented.** 16 days of Fable 5 absence has produced zero documented cases of enterprises switching their primary AI vendor to OpenAI. Observed pattern: Opus 4.8 operational fallback (same endpoint, model-ID change); open-weight models (Kimi K2.7-Code, GLM-5.2) adopted by developer teams; multi-provider gateway narrative gaining momentum as architectural lesson. ([TrueFoundry June 2026](https://www.truefoundry.com/blog/fable-mythos-ban); [The New Stack June 2026](https://thenewstack.io/fable-ban-open-weights/))
+
+**Watch: July 1 (Polymarket threshold, 35%); July 8 (Persona ID consumer expansion, consumer-only path); August 1 (EO 14409 formal framework delivery); Legion LegalTech government response (D.C. federal court, no hearing date yet).**
 
 **Cycle 146 updates (June 27, 2026) — Fable 5 Day 15: Lutnick response deadline passed (no response); Garbarino demo congressional signal; August 1 EO structural backstop:**
 

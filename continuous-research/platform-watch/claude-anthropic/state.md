@@ -16,8 +16,18 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-06-25 (cycle 144)
-OODA cycles: 31
+Last updated: 2026-06-29 (cycle 145)
+OODA cycles: 32
+
+**Cycle 145 updates (June 29, 2026) — Fable 5 Day 17: Mythos 5 Annex A partial restoration June 27; Fable 5 still offline; Legion lawsuit status; Loop engineering Level 3 crystallization:**
+
+**Fable 5 Day 17 (June 29): Mythos 5 partially restored June 27 for critical infrastructure orgs; Fable 5 still offline globally.** Anthropic's June 27 X post: "Today, the government notified us that Mythos 5, our strongest cybersecurity model, can be redeployed to a set of US organizations that operate and defend critical infrastructure." Scope: Annex A US critical-infrastructure organizations, their foreign-national employees, Anthropic's own foreign staff, and US government civilian agencies and labs. Everyone outside = export license required. Fable 5 remains suspended for general users as of June 29 (Day 17). June 26 Congressional deadline for Commerce Secretary Lutnick to explain ban's legal basis passed without public response. Prediction markets: ~68-71% odds of Fable 5 restoration before July 1 (48 hours remain on June 29). Three resolution tracks remain open: (1) Political — Commerce Dept formal action (Polymarket ~68-71% by July 1); (2) Technical — July 8 Persona KYC consumer-only path; (3) Legal — Legion LegalTech injunction (no hearing date). August 1 is now the hard backstop: EO deadline for covered frontier model framework. ([Anthropic X post June 27 2026](https://x.com/AnthropicAI/status/2070665903440871779) — vendor; [explainx.ai June 29 2026](https://explainx.ai/blog/is-fable-5-back-2026) — domain trade publication; [cryptobriefing.com June 26 2026](https://cryptobriefing.com/anthropic-works-to-restore-access-to-claude-fable-5-mythos-5-after-us-directive/) — general press)
+
+**Legion LegalTech lawsuit status (as of June 29):** Filed June 24 in D.C. federal court. Core argument: no existing export control statute covers hosted AI model outputs — BIS order exceeds statutory authority. Seeking vacatur + preliminary injunction. No ruling, no hearing date confirmed as of June 29. Case remains first-of-kind; if preliminary injunction is granted, would have immediate precedential effect on the entire enterprise stack dependent on Anthropic. ([Export Compliance Daily June 25 2026](https://exportcompliancedaily.com/article/2026/06/25/lawsuit-us-cant-block-anthropic-models-with-export-controls-that-dont-exist-2606240029) — domain trade publication)
+
+**Loop engineering crystallization — Level 3 (cycle 145):** Boris Cherny (Head of Claude Code, Anthropic), confirmed via third-party reporting: "I don't prompt Claude anymore. I have loops running that prompt Claude and figure out what to do. My job is to write loops." This independently confirms Ronacher's "The Coming Loop" framing (June 23, cycle 143). Two named practitioners at different positions (internal Anthropic head + external OSS contributor) arrived at the identical identity shift: the practitioner's job has moved from prompt engineering to loop design. Compound Engineering Plugin: 21K+ GitHub stars as of June 2026 (Level 3 adoption velocity — up from 9.3K February 2026). ([TechTimes June 22 2026](https://www.techtimes.com/articles/318828/20260622/claude-code-loop-engineering-stop-prompting-start-designing-autonomous-agent-workflows.htm) — domain trade publication)
+
+**Watch: July 1 (Fable 5 Polymarket ~68-71% threshold), July 8 (Persona ID verification consumer accounts — US-first restoration path), August 1 (EO deadline for covered frontier model framework — hard backstop), Legion preliminary injunction hearing date (unknown).**
 
 **Cycle 144 updates (June 25, 2026) — Fable 5 Day 13: false restoration claim debunked; Legion LegalTech first court challenge filed June 24:**
 

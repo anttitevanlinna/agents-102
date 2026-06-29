@@ -1,7 +1,13 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-06-24 (cycle 143)
-OODA cycles: 22
+Last updated: 2026-06-29 (cycle 145)
+OODA cycles: 23
+
+## Key Verdict (as of 2026-06-29)
+
+**CYCLE 145 UPDATE — Fable 5 Day 17: Mythos 5 Annex A partial restoration June 27, Fable 5 still offline; Loop engineering reaches Level 3 convergence; ServiceNow IT Specialists 28th absence (Pattern 31 miss confirmed June 30); Cursor/SpaceX Q3 2026 regulatory close pending; Polaris August default confirmed.** Mythos 5 partially restored June 27 for Annex A US critical infrastructure orgs only — Fable 5 remains offline for general users. Prediction markets ~68-71% for July 1 restoration. **Loop engineering crystallizes at Level 3:** Boris Cherny (Head of Claude Code) independently confirmed Ronacher's "The Coming Loop" framing — "I don't prompt Claude anymore. I have loops running that prompt Claude. My job is to write loops." Two independent named practitioners (Anthropic internal + external OSS) at identical identity shift. This is the methodology successor to prompt engineering: designing autonomous agent workflows rather than writing prompts. Compound Engineering Plugin 21K+ stars (Level 3 adoption). ServiceNow IT Specialists 28th consecutive absence — Pattern 31 miss confirmed tomorrow (June 30 deadline). Microsoft Polaris August default (MoE, Maia silicon) confirmed; enterprise 3-month GPT-4 Turbo fallback through November. OpenAI GPT-5.6 in limited preview; contemplating API price cuts ahead of fall IPO ($852B valuation). ([TechTimes June 22 2026](https://www.techtimes.com/articles/318828/20260622/claude-code-loop-engineering-stop-prompting-start-designing-autonomous-agent-workflows.htm) — domain trade publication; [Anthropic X June 27 2026](https://x.com/AnthropicAI/status/2070665903440871779) — vendor; [AI Weekly June 2026](https://aiweekly.co/alerts/microsoft-drops-gpt-4-turbo-for-polaris-in-github-copilot) — domain trade publication)
+
+**Watch: July 1 (Fable 5 Polymarket ~68-71% threshold), July 8 (Persona ID verification consumer accounts), Q3 2026 (Cursor/SpaceX regulatory close), August 2026 (Polaris default), August 1 (EO deadline for covered frontier model framework).**
 
 ## Focus
 

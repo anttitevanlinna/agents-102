@@ -15,8 +15,8 @@ answers:
 
 # AI-Native Teams — Research Track
 
-**Last updated:** 2026-06-18 (cycle 137)
-**OODA cycles:** 9
+**Last updated:** 2026-06-27 (cycle 146)
+**OODA cycles:** 10
 **Focus:** How teams that deeply integrate AI into their daily work actually operate — their characteristics, practices, working style, tools, and structure.
 
 ## Why This Track Exists
@@ -102,6 +102,14 @@ Not every team using Copilot is AI-native. The distinction:
 - People mention tools when describing how they work — capture every tool mention
 - Track which platforms enable AI-native practices vs. which constrain them
 - Note when teams switch tools and why
+
+## Cycle 146 Updates (June 27, 2026)
+
+**Compound Engineering — Inverted Workflow Pattern Approaching Level 3:**
+June 27 sweep confirms compound engineering methodology has spread beyond Every into independent cross-platform documentation. agentic-patterns.com has formally catalogued it as the "Compounding Engineering Pattern." Independent documentation at velvetshark.com (practitioner analysis) and bitsby.me (practitioner, March 2026). The workflow has expanded to 8 steps (up from 4 as of May 29, 2026 definitive guide). GitHub stars: 21,000+ as of June (carried from cycle 137 — no new delta found this cycle). Gap: still zero independently measured productivity outcomes (cycle time, PR throughput, defect rate) from adopters beyond Every itself. The methodology has strong propagation evidence but weak outcome evidence — the next research target for this track. See [run file 2026-06-27-cycle146.md] for full finding details.
+
+**AI-Native Team Inverted Workflow — Multi-Source Convergence (Level 2):**
+Multiple independent sources converge on an inverted workflow pattern this cycle: agents write first-draft code; humans build the verification system. New role emerging: "AI Reliability Engineer" (ARE) — manages integrity of AI output, writes detailed technical specifications. Requirements meetings now include AI participants drafting user stories in real time. Independent sources: Coderio, FutureProofing.dev, MLTechSoft, OpenAI Codex guide — all describing the same structural shift. No Nordic company named. No enterprise (>500 employees) named as having formally adopted compound engineering. ([coderio.com 2026](https://www.coderio.com/blog/biz-tech/ai-native-engineering-teams-10-practices/) — practitioner analysis)
 
 ## Cycle 137 Updates (June 18, 2026)
 

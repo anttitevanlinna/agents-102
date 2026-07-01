@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [anthropic, claude-code, claude-cowork, antspace, agent-sdk]
 nordic: false
-updated: 2026-06-14
-cycle: 133
+updated: 2026-07-01
+cycle: 150
 answers:
   - "what is Anthropic's platform strategy?"
   - "what can business users do with Claude today?"
@@ -16,8 +16,22 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-06-29 (cycle 148)
-OODA cycles: 35
+Last updated: 2026-07-01 (cycle 150)
+OODA cycles: 37
+
+**Cycle 150 updates (July 1, 2026) — FABLE 5 RESTORED; Sonnet 5 GA; Claude Code 2.1.197; Claude Science; IPO S-1 filed:**
+
+**FABLE 5 RESTORED — July 1, 2026. Export controls lifted June 30. 18-day suspension (June 12–30) ends.** Anthropic newsroom (June 30): global access to Fable 5 restores July 1 across Claude Platform, Claude.ai, Claude Code, and Claude Cowork. Pro/Max/Team/select Enterprise: up to 50% of weekly usage limits through July 7, then via usage credits. AWS/Google Cloud/Microsoft Foundry restoring "as quickly as possible." Root cause: Amazon researchers identified a jailbreak prompting Fable 5 to identify software vulnerabilities; Anthropic testing showed "every model we tested could produce the same demonstration" — non-unique to Fable 5. Safety fix: enhanced classifier blocking technique in "over 99% of cases" plus additional safety margin. Structural commitment: Anthropic agreed to "pre-release government access and evaluation," protocol collaboration for future releases, and malicious-activity reporting — a standing governance channel that did not exist before June 12. New HackerOne program for cyber jailbreak submissions launched. Commerce Secretary Lutnick: "worked closely with Anthropic to analyze and approve Fable 5 to ensure alignment across the US Government and strengthen America's leadership in AI." isfable5back.com still showing "Not available" as of July 1 check — API propagation lag, not policy contradiction. status.claude.com showing suspension as "Monitoring" — display lag confirmed. Polymarket July 1 threshold (was at ~35% June 28) resolves YES — political track resolved 3 weeks faster than the 91.4%-priced July 31 threshold. ([Anthropic newsroom June 30 2026](https://www.anthropic.com/news/redeploying-fable-5) — vendor; [9to5Mac June 30 2026](https://9to5mac.com/2026/06/30/claude-fable-5-cleared-to-return-as-us-lifts-anthropics-export-control-restriction/) — domain trade publication; [Gizmodo June 30 2026](https://gizmodo.com/claude-fable-5-will-be-back-online-wednesday-anthropic-says-2000779882) — general press)
+
+**Sonnet 5 GA (June 30) — most agentic Sonnet, approaches Opus 4.8 at lower cost.** Agentic coding: 63.2% vs Opus 4.8's 69.2% (Sonnet 4.6 was 58.1%). Default for Free/Pro plans. Introductory pricing $2/$10 per million in/out tokens through August 31; standard $3/$15 after. "Zero success rate developing complete software exploits" (Firefox vulnerability testing). API identifier: `claude-sonnet-5`. ([Anthropic newsroom](https://www.anthropic.com/news/claude-sonnet-5) — vendor; [TechCrunch June 30](https://techcrunch.com/2026/06/30/anthropic-launches-claude-sonnet-5-as-a-cheaper-way-to-run-agents/) — general press)
+
+**Claude Code 2.1.197 (July 1) — Sonnet 5 as default model; native 1M-token context.** Promotional pricing $2/$10 per million tokens through August 31. ([releasebot.io](https://releasebot.io/updates/anthropic/claude-code) — aggregator; [ClaudeCodeLog X post](https://x.com/ClaudeCodeLog/status/2072020210949689510) — practitioner direct)
+
+**Claude Science (June 30) — AI workbench for life sciences.** 60+ curated skills and specialist agents; connects to UniProt, PDB, Ensembl, ChEMBL; manages HPC cluster job submissions and on-demand GPU services; auditable artifacts with preserved code/environment/history. Applications open through July 15. One anonymous researcher claim: "reduced analysis time to roughly one-tenth" — single case, Level 2. ([Anthropic newsroom June 30 2026](https://www.anthropic.com/news/claude-science-ai-workbench) — vendor)
+
+**Anthropic IPO — confidential S-1 filed June 1, 2026.** Prior $65B Series H at $965B post-money. Goldman + Morgan Stanley. No timeline confirmed; market conditions dependent. ([CNBC June 1 2026](https://www.cnbc.com/2026/06/01/anthropic-ipo-s1-prospectus.html) — general press)
+
+**Watch: Legion LegalTech lawsuit (export controls vs. cloud inference — now a legal test, not a restoration mechanism); August 1 EO 14409 formal framework delivery (NSA/Treasury/CISA); API propagation of Fable 5 restoration on cloud platforms (AWS, Google Cloud, Microsoft Foundry); Sonnet 5 independent benchmarks.**
 
 **Cycle 148 updates (June 29, 2026) — Fable 5 Day 17: Mythos 5 Annex A restoration confirmed; Fable 5 still offline; Polymarket July 1 at ~35% (1 day); Legion LegalTech status; loop engineering Level 3:**
 

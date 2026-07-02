@@ -94,6 +94,11 @@ Each entry: cycle number, date, what the researcher learned about researching.
 
 ---
 
+### Cycle 151 — 2026-07-02
+Cost research requires two layers: (1) list price change and (2) tokenizer-driven effective cost change. Sonnet 5 tokenizer inflation (+42% English tokens) is invisible in any price-per-token comparison — you only see it in per-task benchmarks. Lesson: always query for per-task or per-job cost, not per-token cost, when evaluating a new model. The Decoder's Opus 4.7 precedent (37.4% tokenizer jump) confirms this is a recurring Anthropic pattern across model generations — valuable context to have loaded when evaluating any new Anthropic release. Artificial Analysis is the right source for per-task cost; per-token comparisons at launch are structurally misleading for new-tokenizer models.
+
+Second observation: GA announcement scope drift is a significant research error risk in this cycle. Agentforce's June 15 "GA" was specifically for within-org Atlas 3.0 orchestration; cross-cloud/external A2A remained beta. Most trade press summaries missed this distinction. Lesson: always fetch the vendor release notes directly and isolate what is GA vs. what is still preview/beta — press coverage reliably overstates GA scope for complex platform launches with multiple simultaneous tracks.
+
 ### Cycle 38 — 2026-03-22
 Business-domain practitioner discovery is far more productive when searching for specific people + their deployment stories than searching for "AI agent [domain] 2026." The SaaStr/Lemkin finding came from person-specific searches. Lenny's Newsletter and Every.to are better sources for business-domain agent practitioners than X.com — business people publish on Substack/newsletters, not Twitter. EU AI Act agent governance research revealed that the *absence* of guidance (15 months, zero AI Office documents on agents) is a stronger finding than any guidance document would be — absence at regulatory level is a positioning signal for our advisory.
 

@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [anthropic, claude-code, claude-cowork, antspace, agent-sdk]
 nordic: false
-updated: 2026-07-01
-cycle: 150
+updated: 2026-07-02
+cycle: 151
 answers:
   - "what is Anthropic's platform strategy?"
   - "what can business users do with Claude today?"
@@ -16,8 +16,18 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-07-01 (cycle 150)
-OODA cycles: 37
+Last updated: 2026-07-02 (cycle 151)
+OODA cycles: 38
+
+**Cycle 151 updates (July 2, 2026) — Fable 5 geographic confirmation; Sonnet 5 per-task cost doubles (exceeds Opus 4.8); Persona KYC July 8 scope clarified:**
+
+**Fable 5 geographic restoration confirmed worldwide — not US-only.** Cycle 150's geographic uncertainty ("Anthropic newsroom said global, but isfable5back.com showed Not available, API propagation lag unconfirmed") is resolved. Multiple independent sources (9to5Mac, TheHackerNews, AI-News) confirm global access as of July 1-2, including non-US markets. AWS/Google Cloud/Microsoft Foundry remain on delayed staged track — no confirmed date. Mythos 5 remains restricted: US organizations only (Annex A critical infrastructure + Glasswing program), no general international access. Five structural conditions now govern Anthropic's relationship with US government: pre-release government evaluation access (standing condition), protocol collaboration on jailbreak standards, malicious-activity reporting channel, HackerOne program for Fable 5 jailbreak submissions, industry jailbreak severity scoring framework with Amazon/Microsoft/Google/Glasswing. This is a durable regulatory infrastructure change — not a one-time incident resolution. ([9to5Mac July 1 2026](https://9to5mac.com/2026/07/01/claude-fable-5-cleared-to-return-as-us-lifts-anthropics-export-control-restriction/) — domain trade publication; [TheHackerNews July 2026](https://thehackernews.com/2026/07/anthropic-restores-claude-fable-5-after.html) — domain trade publication; [AI-News July 2026](https://www.artificialintelligence-news.com/news/anthropic-deploys-claude-sonnet-5-fable-and-mythos-restored/) — domain trade publication)
+
+**Sonnet 5 per-task cost reality: 2× Sonnet 4.6, exceeds Opus 4.8 (Artificial Analysis benchmarks).** Artificial Analysis per-task cost benchmarks (published July 2026): Sonnet 5 $2.29/task vs. Sonnet 4.6 $1.14/task — a 2× increase. Critically: Sonnet 5 at $2.29/task is ~16% MORE expensive per task than Opus 4.8 at $1.97/task. The "mid-tier" model now costs more per task than the flagship — cost hierarchy inversion. The Decoder identified the structural mechanism: Anthropic ran the same tokenizer playbook with Opus 4.7 (37.4% jump in community benchmark token counts) — Sonnet 5's English +42% inflation is a repeating architectural pattern for new-generation releases, not a one-off. Combined cost pressure: (1) tokenizer inflation 27-42% for English workloads NOW; (2) list price step-up from $2/$10 to $3/$15 after August 31. Organizations expecting Sonnet 5 as a drop-in "similar cost" replacement for Sonnet 4.6 face an immediate 2× shock. ([Artificial Analysis July 2026](https://artificialanalysis.ai/models/claude-sonnet-5) — practitioner analysis; [The Decoder June 30 2026](https://the-decoder.com/claude-sonnet-5-has-a-hidden-cost-the-new-tokenizer/) — domain trade publication; [simonwillison.net June 30 2026](https://simonwillison.net/2026/Jun/30/claude-sonnet-5/) — practitioner direct)
+
+**Persona KYC July 8 scope clarified: consumer-only, enterprise/API exempt.** Persona ID verification for Fable 5 access on July 8 applies to Free/Pro/Max consumer accounts only. API customers, Enterprise plans, and Team plans are explicitly exempt. Enterprise/API Fable 5 access depends on the staged AWS/Google Cloud/Microsoft Foundry rollout — no confirmed date as of July 2. Physical government-issued ID required; digital IDs not accepted. Verification processed on Persona's servers (not Anthropic-side). Enterprise planners should NOT plan around July 8 as their restoration date. ([Anthropic newsroom June 2026](https://www.anthropic.com/news/persona-id-verification) — vendor; [TechCrunch June 30 2026](https://techcrunch.com/2026/06/30/anthropic-launches-claude-sonnet-5-as-a-cheaper-way-to-run-agents/) — general press)
+
+**Watch: July 7 (Fable 5 50% weekly limit promo ends → usage credits begin); July 8 (Persona KYC launch for consumers); August 31 (Sonnet 5 introductory pricing ends, $2/$10 → $3/$15); staged AWS/Google Cloud/Microsoft Foundry Fable 5 restoration (no confirmed date); Sonnet 5 independent task-level benchmark validation.**
 
 **Cycle 150 updates (July 1, 2026) — FABLE 5 RESTORED; Sonnet 5 GA; Claude Code 2.1.197; Claude Science; IPO S-1 filed:**
 

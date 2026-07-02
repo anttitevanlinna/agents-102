@@ -1,7 +1,13 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-07-01 (cycle 150)
-OODA cycles: 24
+Last updated: 2026-07-02 (cycle 151)
+OODA cycles: 25
+
+## Key Verdict (as of 2026-07-02)
+
+**CYCLE 151 UPDATE — FABLE 5 GLOBAL RESTORATION CONFIRMED LIVE (July 1); WILLISON: SONNET 5 TOKENIZER INFLATION IS 42% FOR ENGLISH (not 30%); AGENTFORCE MULTI-AGENT DAY 17 STILL ZERO; MYTHOS 5 REMAINS US-RESTRICTED.** Fable 5 global access confirmed live July 1 across Claude.ai, Claude Platform, Claude Code, Claude Cowork — geographic uncertainty from cycle 150 resolved. Access terms: Pro/Max/Team/select Enterprise at 50% of weekly usage limits (free) through July 7; usage credits after. AWS/Google Cloud/Microsoft Foundry: staged restoration "as quickly as possible" — enterprise cloud providers on delayed track. Mythos 5: still restricted to US Annex A critical-infrastructure orgs + Glasswing program only — no general international access. Five structural conditions now permanent: pre-release government evaluation, protocol collaboration, malicious activity reporting, HackerOne Fable 5 program, industry jailbreak severity scoring framework (with Amazon, Microsoft, Google, Glasswing). **WILLISON TOKENIZER FINDING (June 30, practitioner direct):** English text 1.42x more tokens (+42%), Spanish 1.33x, Python code 1.27x, Simplified Mandarin ~1.0x. Effective cost increase for English-heavy workloads: 27–42% — higher than the "30%" in API docs. Willison: the new tokenizer "creates a substantial hidden price increase that undermines the value proposition." Vision regression also documented: Sonnet 5 misidentified a pelican as a goose — potential quality decline in image tasks. Caylent independent analysis confirms 1.0–1.35x range (Willison at 1.42x is near upper bound). **Nordic (Deloitte 2026):** 55% infrastructure-ready / 14% talent-ready = 41-point gap; 5% high agentic AI expertise; 49% expect transformation >3 years. ([9to5Mac Jul 1 2026](https://9to5mac.com/2026/07/01/claude-fable-5-cleared-to-return-as-us-lifts-anthropics-export-control-restriction/) — domain trade publication; [TheHackerNews Jul 2026](https://thehackernews.com/2026/07/anthropic-restores-claude-fable-5-after.html) — domain trade publication; [simonwillison.net Jun 30 2026](https://simonwillison.net/2026/Jun/30/claude-sonnet-5/) — practitioner direct; [Willison X Jul 1 2026](https://x.com/simonw/status/2072068898648949184) — practitioner direct; [Caylent Jun 30 2026](https://caylent.com/blog/claude-sonnet-5-launch-analysis-what-changed-what-matters-and-what-to-validate) — practitioner analysis; [Deloitte 2026](https://www.deloitte.com/fi/fi/Industries/technology/research/state-of-ai-in-the-nordics.html) — domain trade publication)
+
+**Watch: July 7 (Fable 5 credit transition for Pro/Max/Team — "50% free" window ends), July 8 (Persona ID consumer accounts — KYC for some Fable 5 use cases), Q3 2026 (Cursor/SpaceX regulatory close), August 1 (EO 14409 formal framework deadline), August 2026 (Polaris default + Copilot Autonomous Agent Mode Enterprise), August 31 (Sonnet 5 intro pricing ends → $3/$15).**
 
 ## Key Verdict (as of 2026-07-01)
 

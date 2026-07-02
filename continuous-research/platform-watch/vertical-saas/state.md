@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [salesforce, zendesk, servicenow, sap, workday]
 nordic: true
-updated: 2026-05-28
-cycle: 117
+updated: 2026-07-02
+cycle: 151
 answers:
   - "which vertical SaaS platforms have real agent deployments?"
   - "is customer service crossing the chasm?"
@@ -14,8 +14,18 @@ answers:
 
 # Vertical SaaS Agent Platforms — Platform State
 
-Last updated: 2026-06-29 (cycle 148)
-OODA cycles: 33
+Last updated: 2026-07-02 (cycle 151)
+OODA cycles: 36
+
+**Cycle 151 updates (July 2, 2026) — Agentforce A2A advanced capabilities confirmed BETA; pay-per-resolution pricing launched; Pattern 31 Day 18 evidence desert holds:**
+
+**Agentforce advanced A2A confirmed BETA as of July 2 — GA scope was intra-Salesforce only.** The June 15 GA announcement was specifically for Atlas 3.0 within-org orchestration (Salesforce-to-Salesforce within the same org). Cross-cloud and external-agent A2A orchestration remains beta. Many trade press summaries missed this scope distinction. The 20-agent cap, 60s timeout, BYOM unsupported, and context saturation at 4+ agents remain unchanged. Pattern 31 Day 18: zero independent named practitioners have published multi-agent production deployment results as of July 2. All search results remain vendor guides, Salesforce documentation, consultancy prep content, and introductory explainers. First independent named customer window: July 1–August 10 (4-8 week historical pattern from GA). ([Salesforce Summer '26 Release Notes](https://www.salesforce.com/news/stories/summer-2026-product-release-announcement/) — vendor; [Atrium July 2026](https://atrium.ai/resources/agentforce-a2a-beta-external-agent-orchestration/) — practitioner analysis; search sweep July 2, 2026 — confirmed absence)
+
+**Agentforce Help Agent: pay-per-resolution pricing launched (July 2026) — adoption friction response.** Salesforce launched "Agentforce Help Agent" with pay-per-resolution pricing: customers pay only when the agent autonomously resolves a service issue without human escalation. This is structurally significant — it directly addresses the enterprise adoption friction documented in prior cycles (perceived risk of paying for non-performant automation). Pay-per-resolution removes the upfront cost commitment barrier that has contributed to the evidence desert for non-CS Agentforce deployments. No independent confirmation of actual resolution-rate performance under this model yet; the pricing structure alone does not resolve the capability floor documented in Pattern 31. ([Salesforce Agentforce Help Agent announcement July 2026](https://www.salesforce.com/news/stories/agentforce-help-agent/) — vendor)
+
+**Nordic vertical SaaS: Tieto Microsoft Copilot Specialization (July 1) + BCG off-the-shelf spend pattern.** Tieto (Finnish-Swedish SI, ~24,000 employees) earned Microsoft 365 Copilot Specialization July 1 — first major Nordic SI with formal Microsoft certification for Copilot enterprise deployments. BCG March 2026 survey: 40-50% of Nordic enterprise AI spend goes to off-the-shelf tools (M365 Copilot, ChatGPT Enterprise) versus 8-11% globally. This 4-6× gap explains why Nordic custom/agentic vertical SaaS deployments are absent: Nordic AI spend is concentrated in consumption, not construction. Tieto positioning confirms the channel is off-the-shelf delivery, not custom agentic deployment. ([Tieto press release July 1 2026](https://www.tieto.com/en/news/2026/07/tieto-earns-microsoft-copilot-specialization/) — vendor; [BCG Nordic AI Spend Survey March 2026](https://www.bcg.com/publications/2026/nordic-enterprise-ai-spending-patterns) — domain trade publication)
+
+**Watch: July 15 (Agentforce multi-agent first independent deployment — 4-week post-GA mark, inner edge of historical emergence window); August 10 (outer edge of 4-8 week pattern); any Agentforce Help Agent resolution-rate performance data; Agentforce A2A cross-cloud GA timeline.**
 
 **Cycle 148 updates (June 29, 2026) — ServiceNow IT Specialists 30th absence (1 day to June 30 EOD — Pattern 31 near-certain) / Agentforce multi-agent Day 14 evidence desert / OpenAI GPT-5.6 preview + price cuts contemplated:**
 

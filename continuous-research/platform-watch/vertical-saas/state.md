@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [salesforce, zendesk, servicenow, sap, workday]
 nordic: true
-updated: 2026-07-02
-cycle: 151
+updated: 2026-07-03
+cycle: 152
 answers:
   - "which vertical SaaS platforms have real agent deployments?"
   - "is customer service crossing the chasm?"
@@ -14,8 +14,14 @@ answers:
 
 # Vertical SaaS Agent Platforms — Platform State
 
-Last updated: 2026-07-02 (cycle 151)
-OODA cycles: 36
+Last updated: 2026-07-03 (cycle 152)
+OODA cycles: 37
+
+**Cycle 152 updates (July 3, 2026) — ServiceNow IT Specialists Pattern 31 miss confirmed (29th absence; June 30 deadline passed); Australia release wave in progress:**
+
+**ServiceNow IT Specialists (AIOps, SRE, Asset Lifecycle, Portfolio Planning) — Pattern 31 miss confirmed; 29th consecutive absence.** June 30 GA deadline passed. No announcement found in any channel as of July 3. All search results still reference Knowledge 2026 (May 2026) language: "expected June 2026." ServiceNow release notes now reference the "Australia" release wave (current platform wave) — ITOM AIOps, Enterprise Asset Management, and Strategic Portfolio Management are listed in the Australia release index, but specific IT Specialist GA status is not confirmed from the overview page. Security and Risk AI Specialists: planned GA remains September 2026 (unchanged). Only confirmed GA IT-category agent: L1 IT Service Desk AI Specialist (launched earlier in the Autonomous Workforce program). Pattern 31 (announcement-to-deployment gap) universally active for non-CS ServiceNow Autonomous Workforce. ([servicenow.com release notes July 2026](https://www.servicenow.com/docs/r/release-notes/new-features-changes.html) — vendor docs; [businesswire.com May 2026](https://www.businesswire.com/news/home/20260505237676/en/ServiceNow-brings-Autonomous-Workforce-to-every-major-business-function) — vendor)
+
+**Watch: ServiceNow Australia release wave for any AIOps/SRE/Asset Lifecycle GA; September 2026 for Security and Risk AI Specialists; Agentforce multi-agent independent customer emergence (window: July 1–August 10, 4-8 week pattern).**
 
 **Cycle 151 updates (July 2, 2026) — Agentforce A2A advanced capabilities confirmed BETA; pay-per-resolution pricing launched; Pattern 31 Day 18 evidence desert holds:**
 

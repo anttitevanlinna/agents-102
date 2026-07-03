@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [anthropic, claude-code, claude-cowork, antspace, agent-sdk]
 nordic: false
-updated: 2026-07-02
-cycle: 151
+updated: 2026-07-03
+cycle: 152
 answers:
   - "what is Anthropic's platform strategy?"
   - "what can business users do with Claude today?"
@@ -16,8 +16,20 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-07-02 (cycle 151)
-OODA cycles: 38
+Last updated: 2026-07-03 (cycle 152)
+OODA cycles: 39
+
+**Cycle 152 updates (July 3, 2026) — Sonnet 5 cost L3 confirmed; Claude Foundry GA procurement barrier eliminated; Fable 5 AWS confirmed; enterprise "conditional infrastructure" lesson:**
+
+**Sonnet 5 per-task cost reaches Level 3 convergence — four independent sources.** Artificial Analysis: $2.29/task (Sonnet 5) vs $1.15 (Sonnet 4.6) = 2× per-task increase; Sonnet 5 exceeds Opus 4.8 ($1.99/task) by 15%. Finout detailed workload analysis: identical prompts cost 20–35% more after September 1 than Sonnet 4.6 baseline. Tokenizer inflation: Finout confirms 1.0–1.35x range; Willison upper bound 1.42x for English; converging on a 30–42% English token inflation range. The promotional window (through Aug 31 at $2/$10) masks the structural cost increase that arrives September 1 at $3/$15. Genuine ROI case: demoting Opus 4.8 traffic to Sonnet 5 delivers 40% cost reduction at standard rates — the real migration value. Enterprise decision: Sonnet 5 as Sonnet 4.6 replacement = cost increase; Sonnet 5 as Opus 4.8 replacement = cost saving. ([artificialanalysis.ai Jun 30 2026](https://artificialanalysis.ai/articles/claude-sonnet-5-agentic-cost) — practitioner analysis; [finout.io Jul 2026](https://www.finout.io/blog/claude-sonnet-5-pricing-2026-the-hidden-costs-and-real-savings-behind-the-cost-neutral-launch) — practitioner analysis; [simonwillison.net Jun 30 2026](https://simonwillison.net/2026/Jun/30/claude-sonnet-5/) — practitioner direct; [the-decoder.com Jun 30 2026](https://the-decoder.com/claude-sonnet-5-has-a-hidden-cost-the-new-tokenizer/) — domain trade publication)
+
+**Claude Sonnet 5 GA in Microsoft Foundry (July 1, 2026) — enterprise procurement barrier eliminated.** Claude Sonnet 5 became GA in Microsoft Foundry July 1; Opus 4.8 + Haiku 4.5 on June 29. Three procurement barriers now eliminated for organizations with Azure relationships: (1) no separate Anthropic commercial contract required, (2) billed through Azure MACC (existing pre-committed spend), (3) governed by existing Entra ID policies. This removes "the last major institutional barrier to enterprise Claude deployment" (TechTimes, July 2). Fable 5 on Microsoft Foundry confirmed restored. Combined with Fable 5 AWS Bedrock restoration (confirmed live via aboutamazon.com + techbuzz.ai July 2026), enterprise cloud provider restoration is now confirmed for 2/3 platforms (AWS + Microsoft Foundry); Google Cloud Vertex AI likely but not independently confirmed this cycle. ([techcommunity.microsoft.com Jul 1 2026](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/claude-sonnet-5-is-now-generally-available-in-microsoft-foundry/4530737) — vendor; [windowsnews.ai Jul 2026](https://windowsnews.ai/article/claude-sonnet-5-goes-ga-on-microsoft-foundry-unlocking-enterprise-ai-with-azure-billing-and-entra-id.433426) — domain trade publication; [aboutamazon.com Jul 2026](https://www.aboutamazon.com/news/aws/claude-fable-5-anthropic-amazon-bedrock) — vendor; [techbuzz.ai Jul 2026](https://www.techbuzz.ai/articles/claude-fable-5-returns-to-aws-bedrock-after-export-ban-lift) — domain trade publication)
+
+**"Conditional infrastructure" — the Fable 5 ban's permanent enterprise lesson.** MarketScale + CIO Magazine (July 1) document the consolidated lesson: "Frontier access has become conditional infrastructure." Multi-cloud diversification does NOT hedge against model-level regulatory suspension — all three cloud providers (AWS, Google, Microsoft) lost access simultaneously during the 19-day ban. The permanent policy architecture: US government has established a standing governance channel with Anthropic on frontier model releases. Enterprises that treat any single frontier AI provider as critical infrastructure without fallback design are assuming away a risk that has now materialized and will recur. During the ban, OpenAI gained enterprise market share and Chinese AI competitors advanced. "The models are back. The policy architecture that pulled them is permanent." ([marketscale.com Jul 2026](https://www.marketscale.com/industries/software-and-technology/fable-5-and-mythos-5-are-back-what-the-19-day-shutdown-taught-every-enterprise-about-ai-as-infrastructure) — domain trade publication)
+
+**Sycophancy signals: conflicting (vendor vs. Caylent); Claude Code over-refusal confirmed.** Anthropic system card (June 30): Sonnet 5 strongest on MASK sycophancy measure, lower hallucination. Caylent independent: "greater tendency towards sycophancy" than Sonnet 4.6 — methodology pending. Treat both as provisional. Confirmed finding: Claude Code's malicious request refusal rate improved (76.6% → 92.4%), but over-refusal on legitimate dual-use/benign security tasks also increased — engineering teams in security-adjacent work face more friction. ([Anthropic system card Jun 30 2026](https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf) — vendor; [caylent.com Jul 2026](https://caylent.com/blog/claude-sonnet-5-launch-analysis-what-changed-what-matters-and-what-to-validate) — practitioner analysis)
+
+**Watch: July 7 (Fable 5 50% weekly limit promo ends → usage credits begin); July 8 (Persona KYC launch for consumers only); August 31 (Sonnet 5 intro pricing ends → effective 20–35% workload cost increase vs Sonnet 4.6); Q3 2026 (Cursor/SpaceX close); August 2026 (Polaris default); Google Cloud Vertex AI Fable 5 restoration (unconfirmed).**
 
 **Cycle 151 updates (July 2, 2026) — Fable 5 geographic confirmation; Sonnet 5 per-task cost doubles (exceeds Opus 4.8); Persona KYC July 8 scope clarified:**
 

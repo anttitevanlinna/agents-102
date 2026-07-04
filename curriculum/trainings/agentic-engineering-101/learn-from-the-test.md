@@ -39,7 +39,7 @@ The worktree is forked and ready. You open the session in it at the first exerci
 
 ## Start here
 
-You sent off an un-packaged run at the close of Module 4 and read the pre-read. You walk in with the artefact in front of you. The in-room lecture below opens the session.
+You sent off an un-packaged run at the close of Module 4 and read the pre-read. You walk in with the artefact in front of you and the three failure-mode lenses in hand. The in-room lecture below opens the session.
 
 [Lecture: Reading the return](lectures/reading-the-return.md)
 
@@ -83,9 +83,11 @@ The laptop stays awake and plugged in while it runs (power settings → prevent 
 
 [Lecture: What packaging is](lectures/what-packaging-is.md)
 
+[Lecture: The gate is a claim too](lectures/the-gate-is-a-claim.md)
+
 ## Next
 
-Module 6 reads the packaged run. Subtler misses, subtler drift. Your verifier gets its full name as an eval, and the team kit takes its first inherited skill.
+Module 6 reads the packaged run. Subtler misses, subtler drift. Your verifier gets its full name as an eval, and the team kit takes its first inherited skill. The question changes scale too: Module 5 asked *did my run pass?* Module 6 starts asking *do all our runs pass, and who reviewed what?*
 
 ## Bring to Module 6
 
@@ -95,9 +97,11 @@ Come to Module 6 without the packaged run and you'll be reading one run while th
 
 ## Pre-reads before Module 6
 
-Optional. Skipping does not break Module 6. The piece lands in the Module 5 to Module 6 gap and primes two moves the module will name from your own two-run evidence.
+Optional. Skipping does not break Module 6. The pieces land in the Module 5 to Module 6 gap and prime moves the module will name from your own two-run evidence.
 
 **Read, Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it).** Klaassen runs the verifier 10 consecutive times before trusting it, and uses per-feedback specialised agents in parallel to triage review. Why for Module 6: reliability is a number you measure, not a vibe you sense, and one verifier can become a panel. Both ideas land as recognition when the module names them from your own artefacts.
+
+**Read, [Checks that push back](trainings/agentic-engineering-101/supplementary/backpressure.md).** The verifier from this module is the first gate in a bigger story: checks that push back inside the loop are what let a run reach farther than you can watch. Why for Module 6: the loop assembled next is this story, with your own artefacts in it.
 
 <!-- maintainer -->
 
@@ -113,6 +117,7 @@ Optional. Skipping does not break Module 6. The piece lands in the Module 5 to M
 - **Mood target:** learning through contrast — *"I can feel what packaging adds now; I couldn't have read it as a lecture."* Watch for: mood drift toward correction-feeling (*"my un-packaged run was bad and now I'm fixing it"*) or compliance-feeling (*"the three-pattern is the answer; I should adopt it"*). Diagnostic: student at Phase 3 picks the safest verifier shape regardless of their dominant failure. Fix: trainer reframes — *"the verifier matches the failure, not the comfort. Which one was your dominant?"*
 - **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries. Not restated here. Module-specific: M5 forks a worktree at `../<repo>-m5` and the packaged re-send runs in a fresh session there (cross-cwd boundary, so `new`, not the same session as diagnose + build + assemble). No scheduled agent, no cloud runner — the second run is still a synchronous laptop run.
 - **Pre-read placement:** `lectures/reading-the-return.md` is shared at the close of M4's Debrief, after the un-packaged send-off prompt is pasted. In-room cohorts get the same link in the day-1 wrap-up Slack/Teams thread.
+- **Banned-word carve-out (URL only):** the § Pre-reads pointer to `supplementary/backpressure.md` carries the word solely as the target's filename in the link URL; link text is the paraphrase "Checks that push back". The word stays supplementary-only vocabulary — do not promote it into this module's body prose or link text.
 
 **Push-back moves** (trainer delivers):
 - **Connections blocker** — student walks in without the M4 artefact accessible (closed laptop, ran out of credit, repo state unclear). Trainer push: *"the artefact is whatever's there. Repo commits since M4. Files modified. Scrollback at `~/.claude/projects/<project>/` if you closed the session. Open a fresh Claude Code session in the repo and ask it to read what the M4 run touched."* See [Claude Code for engineers — session transcripts](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened).

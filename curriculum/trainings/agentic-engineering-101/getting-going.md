@@ -32,9 +32,9 @@ Everyone names a trick first; the training picks up from there.
 
 [Compound and close](exercises/compound-and-close.md)
 
-[How this training was built](lectures/how-this-training-was-built.md)
+[The machine you just met](lectures/the-machine-you-just-met.md)
 
-> **If time allows.** Try the harness introspection on your live session: [The agent loop](../../trainings/agentic-engineering-101/supplementary/the-agent-loop.md).
+[How this training was built](lectures/how-this-training-was-built.md)
 
 ## Key Concepts
 - The loop is orient → fix → compound → close

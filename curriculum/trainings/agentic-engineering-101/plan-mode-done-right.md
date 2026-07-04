@@ -29,7 +29,11 @@ After this module, you will be able to:
 
 **The question, to you:** when was the last time Claude wrote a plan you approved without really reading? We all do it. What made you approve? Was it that the plan looked right, or that you were in a hurry, or that pushing back felt like work?
 
-Everyone names a moment first; the lecture names the pattern.
+Before the plan-reading move, one orientation. Here is the whole territory this training covers, and where the first three modules sit in it.
+
+[Lecture: The whole map](lectures/the-whole-map.md)
+
+Everyone names a moment first; *When a plan is good* names the pattern.
 
 [Lecture: When a plan is good](lectures/when-a-plan-is-good.md)
 

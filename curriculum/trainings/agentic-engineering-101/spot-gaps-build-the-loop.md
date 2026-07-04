@@ -59,6 +59,10 @@ No compound prompt here. The encode step already happened when you shipped the s
 
 [The loop has a name](lectures/the-loop-has-a-name.md)
 
+[The map, filled in](lectures/the-map-filled-in.md)
+
+One move is left, and it runs past the edge of this room.
+
 [Agents that build agents](lectures/agents-that-build-agents.md)
 
 ## Next
@@ -66,6 +70,8 @@ No compound prompt here. The encode step already happened when you shipped the s
 The next task you start, package it and send it off, then read what comes back through the lens you built. The reading is the loop, not the sending. It's yours now.
 
 **Going deeper, when this loop has to scale past you:** [How the best do CI/CD at agent scale](trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md).
+
+**Why the loop reaches farther than you can watch:** [Checks that hold the line](trainings/agentic-engineering-101/supplementary/backpressure.md). The gates you built are the reach you get.
 
 Keep on learning and sharing.
 
@@ -76,9 +82,11 @@ Antti
 
 **Capstone-close sign-off — deliberate exception to `check_writing.md` rule 6** (creator-name ban). The `## Next` section closes with a personal sign-off from the curriculum author (the bare-name line after *"Keep on learning and sharing."*). M6 is the AE101 core arc's final module; the close earns the human voice that the practitioner-fluency mood warrants. Per the rule's second exception (added 2026-05-03), the signature is in-scope-by-design for capstone-module closes. Future judges should not re-flag.
 
+**Banned-word carve-out (URL only):** the `## Next` going-deeper pointer to `supplementary/backpressure.md` carries the word solely as the target's filename in the link URL; link text is the paraphrase "Checks that hold the line" — deliberately non-identical to the sibling paraphrase "Checks that push back" at `learn-from-the-test.md` § Pre-reads, so each surface phrases the concept in its own sentence. The word stays supplementary-only vocabulary — do not promote it into this module's body prose or link text. Same carve-out as `learn-from-the-test.md` § Pre-reads.
+
 **M6 opener rescue + accept-loss callouts — deliberate exception to `check_student_facing.md` rule 5 (golden path only in body).** Two consecutive blockquotes in `## Start here` carry the rescue paths (nudge / re-send fresh / skip the opener) and the accept-the-loss floor ("you can still do the module's exercises"). Rule 5 normally bans recovery branches in body; here the structural risk (M5 run crashed during lunch in 2-day delivery) is named with scoped rescue, then a softer floor for the case where rescue fails entirely. The blockquote shape isolates both from the golden-path narrative for prepared students. Future judges should not re-flag.
 
-**Quality:** compendium-audited 2026-05-31 (writing@0ef2ca6 story@1ff6f8a technical@0ef2ca6 behavior@1ff6f8a pedagogy@0ef2ca6 strategy@d06b5b8)
+**Quality:** compendium-audited 2026-05-31 (writing@0ef2ca6 story@1ff6f8a technical@0ef2ca6 behavior@1ff6f8a pedagogy@0ef2ca6 strategy@d06b5b8) — predates the 2026-07-02 close rework (the-map-filled-in added to the Human close, going-deeper pointers added to `## Next`) and the 2026-07-03 room re-sequence (agents-that-build-agents moved to the training's last beat); re-audit before ship.
 - judges @d06b5b8: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - cross_module @0ef2ca6: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop,plan-mode-done-right]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
@@ -112,7 +120,7 @@ Antti
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
-- **Session runtime:** 1h45 (Story opener 5 / Exercise 45 / Arc-retrospective 20 / Debrief 12 / Closer 15 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Arc-retrospective is the read-and-synthesise of M1–M6 artefacts (root rules file, memory, ADRs, both authored skills, both run artefacts).
+- **Session runtime:** 1h45 nominal (Story opener 5 / Exercise 45 / Arc-retrospective 20 / Debrief 12 / Human close / Bridge 3). The Human close runs four beats — the story beats, *the-loop-has-a-name* 12–15 (per its maintainer Time line), *the-map-filled-in* 8–10 (per its maintainer Time line), and *agents-that-build-agents* now as the training's closing beat — 20+ min against the 15 the nominal budget gave the old single closer slot, so the close overshoots 1h45. Trainer demos slowly, room copy-pastes concurrently. Arc-retrospective is the read-and-synthesise of M1–M6 artefacts (root rules file, memory, ADRs, both authored skills, both run artefacts).
 - **Prep / bridge timing:** optional Klaassen verifier article 10 min; human close / team-kit accretion slot 10–15 min.
 - **Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know how to encode."* Not confidence-as-performance; competence-as-posture. Failure shapes that steal the mood: compliance-feel (*"build the eval, pass the gate"*), paperwork-feel, credibility-performance (*"we live what we teach"*), trainer-monologue retrospective. If any beat reads like one of those, revise.
 - **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries / §Material distribution (no training-dir state, no `module-N/` folders). Not restated here. Module-specific: M6 opens a fresh session in the M5 worktree at `../<repo>-m5` where both runs already live, then reads + authors + ships in-place. The second skill ships to personal `~/.claude/skills/`; team-PR is a strong follow-up, mediated by human conversation with teammates — not auto-promoted.
@@ -156,12 +164,12 @@ Antti
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 
-- `[checked:2026-05-25 result:OK due:2026-07-14]` https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/ — [practitioner direct] Ronacher MiniJinja (2026-01-14): reference / plan.md-equivalent / verifier, 10h / 2.2M tokens. fallback: named-practitioner long-run with reused tests-as-verifier; drop the numbers.
-- `[checked:2026-05-25 result:OK due:2026-08-21]` https://getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually — [practitioner analysis] Kim on Cherny (2026-02-21): the three verifier shapes (background-agent / agent-stop hook / Ralph re-feed) are KIM'S synthesis, NOT Cherny's own taxonomy, and are ABSENT from the Orosz interview. fallback: present as a practitioner-convergent menu, no single attribution.
+- `[checked:2026-07-02 result:CAVEAT due:cohort]` https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/ — [practitioner direct] Ronacher MiniJinja (2026-01-14): reference / plan.md-equivalent / verifier, 10h / 2.2M tokens. Post 2026-01-14, exits the 6-mo window 2026-07-14 — cite dated or apply the fallback at a Sep-2026 cohort. fallback: named-practitioner long-run with reused tests-as-verifier; drop the numbers.
+- `[checked:2026-07-02 result:OK due:2026-08-21]` https://getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually — [practitioner analysis] Kim on Cherny (2026-02-21): the three verifier shapes (background agent / agent-stop hook / Ralph Wiggin plugin, verbatim) are KIM'S synthesis, NOT Cherny's own taxonomy, and are ABSENT from the Orosz interview. fallback: present as a practitioner-convergent menu, no single attribution.
 - `[checked:2026-05-25 result:OK due:2026-10-08]` https://x.com/geoffintech/status/2042002590758572377 — [practitioner direct] Charles CPO: 350+ skill Dojo, 99.5% AI-active, 84% coding-agents weekly. Confirmed via observations/ramp.md; that X status is link-only (author + date oEmbed-verified April 8 2026). fallback: "hundreds of skills" if the number is contested.
 - `[checked:2026-05-25 result:CAVEAT due:2026-10-16]` https://ideas.fin.ai/p/2x-nine-months-later — [practitioner direct, vendor venue] Curran (2026-04-16): 19.2% / 14.6 vs 75.8 min / 86% ≤20 lines / ~473 R&D in 1,305 (body says ~500; the-loop-has-a-name uses the tighter ~470/1,300). Metrics vendor-self-reported. fallback: keep numbers, attribute Intercom telemetry, flag self-report.
-- `[checked:2026-05-25 result:OK due:2026-08-09]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen (2026-02-09): the four-step compound loop. fallback: cite as Klaassen's canonical compound-engineering writeup.
-- `[checked:2026-05-25 result:OK due:2026-07-30]` https://every.to/source-code/compound-engineering-how-every-codes-with-agents — [practitioner direct] Shipper & Klaassen (Jan 2026): the 80/20 ratio ("roughly 80 percent ... plan and review ... 20 percent ... work and compound") — NOT in the Definitive Guide. fallback: keep the posture hedge.
+- `[checked:2026-07-02 result:CAVEAT due:2026-08-09]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen (2026-02-09): the four-step compound loop; the explicit plan/work/review/compound naming is convergent-across-appearances, not verbatim-on-page (matches the same-source CAVEAT stamps in `run-the-first-experiment.md` and `test-and-learn.md`). fallback: cite as Klaassen's canonical compound-engineering writeup.
+- `[checked:2026-07-02 result:CAVEAT due:2027-01-02]` https://every.to/source-code/compound-engineering-how-every-codes-with-agents — [practitioner direct] Shipper & Klaassen (Jan 2026): the 80/20 ratio ("roughly 80 percent ... plan and review ... 20 percent ... work and compound") — NOT in the Definitive Guide. Dec-2025 origin framing, so the ratio reads as the historical anchor it is. fallback: keep the posture hedge.
 
 **First-cohort observation questions:**
 - Two-run reading stamina — does Phase 1's diagnosis-across-two-runs hold, or does the second run fade?
@@ -170,3 +178,9 @@ Antti
 - Debrief round form — which works best with this mood (pair / whole-room / silent write-then-share)?
 
 Pre-cohort open items for M6: see `pre-cohort-todos.md`.
+
+**M6 close overbooked (2026-07-03) — Antti's eyeball.** The Human close now carries four lecture beats plus the human round against the 15-min nominal closer slot, and the close overshoots 1h45. Which beats stay in-room versus move to the M5-to-M6 gap as prework is a delivery call, not a content one — flagged for Antti to trim; no content changed here.
+
+**2026-07-03 (re-sequence pass)** — Human close re-sequenced to agents-last per Antti: *the-map-filled-in* now the penultimate consolidation beat, *agents-that-build-agents* the training's closing beat, one-line forward-launch transition added before it. Tasks 2–4 were already applied in the same-day close rework and left in place: four source stamps re-verified to `checked:2026-07-02` (MiniJinja → CAVEAT + 6-mo-window note; Kim-on-Cherny shapes at the verbatim "background agent / agent-stop hook / Ralph Wiggin plugin"; Klaassen Definitive Guide → CAVEAT to match the same-source sibling stamps; how-Every-codes → CAVEAT, Dec-2025 origin framing); four-beat runtime line; Quality-predates re-audit note; overbooked-close eyeball flag. This pass only reordered the runtime beat list to agents-last and named the re-sequence in the Quality parenthetical.
+
+**2026-07-03 (supplementary-promotion wiring cleanup)** — Removed the `## Next` going-deeper pointer that linked `supplementary/the-gate-is-a-claim.md` and `supplementary/ironies-of-automation.md`. Both were promoted to in-room lectures earlier this run (the-gate-is-a-claim → M5 lecture, ironies-of-automation → M4 lecture), so a M6 back-pointer to them as further-reading supplementaries is stale (students now meet both taught in-room before M6). The two remaining going-deeper pointers (how-the-best-do-ci-cd, backpressure) still reference genuine supplementaries and are untouched.

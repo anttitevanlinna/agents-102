@@ -27,6 +27,18 @@ Short loops sit behind you so far: a bug fix, a plan read. This is the first lon
 
 *The agent can read your tracker if you've wired one up. Give it your criteria first (sustained coherence, requirement-weaving, multi-file reasoning) or the hunt returns noise. Task-surfacing is still your judgement about what's been sitting. At Phase 1, come with one or two candidates and the agent screens them for fit.*
 
+The map has a far side. Before the first long run, see the country you are entering.
+
+[Lecture: The far half of the map](lectures/the-far-half.md)
+
+The country has a trap built into it. See its shape before you send the run off.
+
+[Lecture: The ironies of automation](lectures/ironies-of-automation.md)
+
+Next, the thing you are sending: an LLM in a loop, calling tools.
+
+[Lecture: The agent loop](lectures/the-agent-loop.md)
+
 [Lecture: Test and learn](lectures/test-and-learn.md)
 
 [Exercise: Walk and send off](exercises/walk-and-send-off.md)
@@ -62,6 +74,8 @@ Optional: if you want the run to outlast your laptop or to hand it to someone, a
 
 {{prompt:ae101-m4-push-starting-point}}
 
+One more check before the send, the same three questions from Module 3's close, now pointed at this run: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening prompt injection needs, and a run this long reads far more than you'll watch. All three present here, cut one leg before you paste: read-only where write isn't needed, hold the push until you've read the return, an allowlist where the run needs the web. The frame is [The lethal trifecta](trainings/agentic-engineering-101/supplementary/the-lethal-trifecta.md): three legs, cut one.
+
 Ask Claude to run the scoped task end-to-end in this same session, with your rules files, memory, ADRs, and skills loaded.
 
 {{prompt:ae101-m4-take-task-end-to-end}}
@@ -71,7 +85,7 @@ The laptop stays awake and plugged in while it runs (power settings → prevent 
 
 Async runs are a face of the work you'll see more of from here on.
 
-Nudge by hand while you're watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is the practice. Past ten and you've become the agent; call it and read what's there.
+Nudge by hand while you're watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is the move. Past ten and you've become the agent; call it and read what's there.
 
 If Claude stalls and you want to see if it picks itself back up, dark-humour nudge, phrased as encouragement, lands as a taunt:
 
@@ -89,7 +103,7 @@ Module 5 opens with what came back, or what you caught before it went further. Y
 
 ## Bring to Module 5
 
-A run that produced something. Read the agent's scrollback or commits from the send-off; check the agent didn't just stall in the first minute.
+A run that produced something. Read the agent's scrollback or commits from the send-off; check the agent didn't just stall in the first minute. A stopped run counts; the trace is the artefact. Bring the three failure modes from [Reading the return](lectures/reading-the-return.md) as your reading lens.
 
 Come to Module 5 without a run and you'll be scrambling for material while the room is already reading theirs. Your call.
 
@@ -97,9 +111,11 @@ Come to Module 5 without a run and you'll be scrambling for material while the r
 
 Optional. They sit in the Module 4 to Module 5 gap while your un-packaged run is still going; they prime the 80/20 reframe Module 5 will name from your own felt evidence.
 
-**Read, [Clean Code Is Steering: Insights from Uncle Bob](../../trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md).** Uncle Bob's public learning journey with AI coding: early speed, quicksilver unpredictability, then tests, architecture visibility, and formal constraints as steering. Why for Module 5: primes the move from "the agent ran" to "what would have constrained the drift?"
+**Read, [Clean Code Is Steering: Insights from Uncle Bob](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md).** Uncle Bob's public learning journey with AI coding: early speed, quicksilver unpredictability, then tests, architecture visibility, and formal constraints as steering. Why for Module 5: primes the move from "the agent ran" to "what would have constrained the drift?"
 
 **Watch, Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich).** Interview video and write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. Why for Module 5: primes the 80/20 reframe Module 5 will name from felt evidence rather than introduce as a slogan.
+
+**Read, [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md).** Some tasks are far cheaper to check than to do, and delegation pays exactly there. Why for Module 5: the verifier built next is often worth more than the run it checks.
 
 **Read (longer), Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).** The four-step loop (plan, work, review, compound). Why for Module 5: primes the planning-and-review-heavy posture Module 5 will name from felt evidence.
 
@@ -115,6 +131,7 @@ Optional. They sit in the Module 4 to Module 5 gap while your un-packaged run is
 - **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercise 55 / Debrief 12 / Send-off 5 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Send-off is a single prompt paste, not a wait. Exercise breakdown: Phase 1 pick 10 / Phase 2 walk-and-fill 35 / Phase 3 see-the-frame 10.
 - **Prep / bridge timing:** `reading-the-return.md` 5 min at M4 close; Uncle Bob supplementary 7 min; Entis/Klaassen interview 30 min; Klaassen compound-engineering guide 15–20 min.
 - **Mood target:** curious readiness — *"I've built enough to try; let's see what the agent does."* Watch for: mood drift toward compliance-feeling (*"did I prepare the right way?"*) or performance-anxiety (*"what if it fails?"*). Diagnostic: student at Phase 2 keeps asking *"is this enough?"* Fix: trainer reframes — *"enough is a question for M5. The experiment is the point."*
+- **Lecture wiring (2026-07-02):** `lectures/the-agent-loop.md` promoted from M1 supplementary (Antti-directed), inlined between the far-half opener and Test and learn. Beat rationale: the far half names the country, this names the machine about to walk it; its three introspection prompts run on the live session that will carry the send-off, so the tool list that comes back is the one the long run rides. Adds ~5 min to the Lecture beat (budget above says 12 — eyeball). Promotion record + eyeball questions in the lecture's maintainer block.
 - **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries. Not restated here. Module-specific: the send-off happens IN the same session the student used for walk + fill + frame + retro — no new session, no scheduled agent, no cloud runner. 15-30 minutes is enough for the clues the M5 read needs; engineers run these for hours at work, ambition grows with practice.
 
 **Push-back moves** (trainer delivers):
@@ -171,11 +188,17 @@ Optional. They sit in the Module 4 to Module 5 gap while your un-packaged run is
 | Send-off — *"stop the run when you've seen enough; the trace is the result"* | Send-off anxiety — student hesitates at the final prompt or feels they owe the experiment a completed artifact | Trainer push: *"stop it when you've seen enough. Traces are data. You don't owe the experiment a completed artifact — you owe it a result you can read."* |
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
-- `[checked:2026-05-25 result:CAVEAT due:2026-08-09]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen Definitive Guide (Feb 9 2026); core "each unit makes the next easier" thesis verified, explicit plan/work/review/compound naming is convergent-across-appearances not verbatim-on-page. fallback: phrase as "the four-step loop that runs through his work"; treat any Every.to outcome metric as vendor-self-reported.
-- `[checked:2026-05-25 result:OK due:2026-08-22]` https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich — [practitioner analysis] Laura Entis (staff writer, Every) on Klaassen's AI&I appearance, Apr 22 2026; "bread in the sandwich" metaphor. fallback: keep "Laura Entis on Klaassen" attribution; if removed, cite the underlying AI&I episode as the practitioner source.
+- `[checked:2026-07-02 result:CAVEAT due:2026-08-09]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen Definitive Guide (Feb 9 2026); core "each unit makes the next easier" thesis verified, explicit plan/work/review/compound naming is convergent-across-appearances not verbatim-on-page. fallback: phrase as "the four-step loop that runs through his work"; treat any Every.to outcome metric as vendor-self-reported.
+- `[checked:2026-07-02 result:OK due:2026-10-22]` https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich — [practitioner analysis] Laura Entis (staff writer, Every) on Klaassen's AI&I appearance, Apr 22 2026; "bread in the sandwich" metaphor. due recomputed from the Apr 22 2026 byline + 6-month window; the prior due:2026-08-22 did not match the byline (byline re-confirmed 2026-07-03). fallback: keep "Laura Entis on Klaassen" attribution; if removed, cite the underlying AI&I episode as the practitioner source.
 - Uncle Bob via `supplementary/clean-code-is-steering.md` — internal supplementary, not a URL in scope; its own source references are that file's audit surface. No stamp here.
 
 **Frameworks riffed on (attributed in lecture):**
 - **Huryn's three-block memory** — Paweł Huryn. Frame earns its name at Phase 3 through recognition in the student's own material.
 - **Gap analysis** — generic business-analysis framework; no single attribution needed. Named in Phase 2 as *"walk the system you have against the system the task needs."*
 - **Compound engineering** — Kieran Klaassen. Debrief self-compound pattern is Klaassen's Review + Compound step, now in its fourth rep for the student.
+
+**2026-07-02** — trifecta send-off check added to `## Send the task off` (three-question check + "prompt injection" named once + supplementary pointer, last mandatory beat before the send-off prompt), wired per completeness review finding #2; second firing of the M3 pre-leash beat. Same pass: *"is the practice"* → *"is the move"* in the nudge paragraph (practice-as-noun; the M4 carve-out covers only the opener's engineered sentence at line 24).
+
+**2026-07-03** — source-freshness stamps re-verified live 2026-07-02 and applied verbatim from the stamp queue: Klaassen Definitive Guide `checked` advanced to 2026-07-02 (still `result:CAVEAT` — thesis holds, plan/work/review/compound naming still convergent-across-appearances, not verbatim-on-page); Entis "bread in the sandwich" advanced to 2026-07-02 with `due` recomputed to 2026-10-22 from the Apr 22 2026 byline + 6-month window (byline re-confirmed via WebFetch 2026-07-03; the prior `due:2026-08-22` did not match the byline — a miscompute, not a real earlier expiry). Same pass, per refuter cross-doc-link finding: the `## Send the task off` trifecta-beat link dropped its depth-counted `../../` prefix for the bare `trainings/agentic-engineering-101/supplementary/…` form `module-shape.md` requires in source (lint-level — the renderer rewrites either prefix, so no rendered-behaviour change). Not swept: the `../../` links under `## Next`, `## Bring to Module 5`, and `## Pre-reads before Module 5` carry the same banned prefix — identical one-line fix, left for a link-hygiene sweep to avoid scope-creeping this batch.
+
+**2026-07-03** — link-hygiene sweep (eyeball-queue #14): dropped the depth-counted `../../` prefix from the two `## Pre-reads before Module 5` supplementary links (`clean-code-is-steering.md`, `verification-asymmetry.md`) for the bare `trainings/agentic-engineering-101/supplementary/…` form `module-shape.md` requires; renderer rewrites either prefix, so zero rendered change. `## Next` / `## Bring to Module 5` carry no `../../` supplementary link (the `## Next` `../../` link is a `/reference/` path, outside this supplementary-scoped sweep — left as-is).

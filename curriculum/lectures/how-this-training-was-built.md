@@ -1,57 +1,46 @@
 # How this training was built
 
-At start, this training was bulletpoints. A strategy doc. Seven headings, thirty bullets, the sort of list that makes you feel like you understand something and then realise you don't.
-
-The bullets became module prototypes. Little drafts of what the training might be. Storylines. First lectures. All of them wrong.
-
-Not wrong in the way a bad draft is wrong, where someone missed the point. Wrong in the way any first version is wrong. Plausible, coherent, reading fine until you hold it next to what the training was actually for. Then the gap showed up. Every time.
-
-That gap turned out to be the valuable part.
+At start, this training was bulletpoints. A strategy doc, seven headings, thirty bullets: the sort of list that makes you feel like you understand something and then realise you don't.
 
 ## Wrong is how steering gets in
 
-If the first draft had been right, there would have been nothing to push on. The drafts were wrong in specific, namable ways. A phrase that smuggled consultancy-voice into an engineering lecture. An exercise that asked a real engineer to do something insulting. A module that wanted to feel tidy where the feeling should have been unease.
-
-Each wrongness was a thing to point at. And each thing pointed at turned into a rule.
-
-"Don't end a module with three scripted questions."
-"Every prompt block gets a one-sentence lead-in with a command verb."
-"Every claim about Claude Code must have been verified within the last month."
-
-The rules were not right the first time either. Some were overscoped. Some fired on the wrong surface. Some only held for one kind of content and broke for another. They got sharpened the same way the drafts did: used, corrected, rewritten.
+- **The bullets became module prototypes, and all of them were wrong.** Not wrong the way a bad draft is wrong, where someone missed the point. Wrong the way any first version is wrong: plausible, coherent, reading fine until you hold it next to what the training was actually for. Then the gap showed up. Every time.
+- **The gap turned out to be the valuable part.** If the first draft had been right, there would have been nothing to push on.
+- **Each wrongness was specific and namable.** A phrase that smuggled consultancy-voice into an engineering lecture. An exercise that asked a real engineer to do something insulting. A module that wanted to feel tidy where the feeling should have been unease.
+- **Each thing pointed at turned into a rule.** *"Don't end a module with three scripted questions."* *"Every prompt block gets a one-sentence lead-in with a command verb."* *"Every claim about Claude Code must have been verified within the last month."*
+- **The rules were not right the first time either.** Some were overscoped. Some fired on the wrong surface. Some held for one kind of content and broke for another. They got sharpened the same way the drafts did: used, corrected, rewritten.
 
 ## The rules started doing the work
 
-Once the rules lived in a file Claude Code could read, they stopped being reminders and started being load-bearing. Claude Code opens a session, loads the rules, plans inside them. A subagent dispatched to check a draft is handed them in its brief by the session that dispatched it. The rules cross the boundary between the person writing them and the agents using them.
-
-This is the move. A rule written down is a thing one person knows. A rule in `./CLAUDE.md` is a thing every session inherits. A rule in a shared checklist is a thing every dispatched subagent is handed before it writes a word.
-
-The rules compounded. Learning compounded to make better rules. More rules, more pointed. The strategy doc that started as bulletpoints now has a companion checklist for every writing surface: student-facing, sales copy, pedagogy, writing, research claims, platform claims. Each fires at the moment it matters and no other moment.
+- **Rules in a file Claude Code could read stopped being reminders and became load-bearing.** Claude Code opens a session, loads the rules, plans inside them. A subagent dispatched to check a draft is handed them in its brief by the session that dispatched it. Load-bearing, not leak-proof: a loaded rule still slips out of the output sometimes, and the checking that follows exists because it does.
+- **This is the move.** A rule written down is a thing one person knows. A rule in `./CLAUDE.md` is a thing every session inherits. A rule in a shared checklist is a thing every dispatched subagent is handed before it writes a word.
+- **The rules compounded.** Learning compounded to make better rules. More rules, more pointed. The strategy doc that started as bulletpoints grew a companion checklist for every writing surface, each firing at the moment it matters and no other moment.
 
 ## Then the agents started checking the agents
 
-Somewhere along the way, the changes got bigger. What used to be one person fixing one line became plan mode reshaping a whole file, then a subagent auditing that file against a compendium in the background, then four agents in parallel auditing a file against four compendiums while a fifth checked the neighbours. The work-per-session went up. The care-per-line went up. Sweeping changes that would have taken a week got made in an afternoon because the rules were tight enough to hand off.
+- **The changes got bigger.** One person fixing one line became plan mode reshaping a whole file, then a subagent auditing that file against a compendium in the background, then four agents in parallel auditing a file against four compendiums while a fifth checked the neighbours.
+- **Work-per-session went up, and care-per-line went up with it.** Sweeping changes that would have taken a week got made in an afternoon, because the rules were tight enough to hand off.
+- **Every session inherited what the last one figured out.** Every session got better. Every session reached for better scale.
 
-Every session got better. Every session reached for better scale. The next session inherited what the last one figured out.
+## You just ran the compound loop
 
-## What you just did
-
-That shape you just heard, told as a story over five minutes, is the shape you just ran on your own repo. Over ninety minutes, not a year. On a trivial bug, not a whole training.
-
-You let Claude read your repo. The first read was partly wrong. You saw the wrongness, named it, corrected it. That correction turned into a rule. The rule sits in a file called `./CLAUDE.local.md`, which is yours, gitignored, alongside you. The next module will extend it. The module after that will extend it again.
-
-By the end of the training, you will have a rules file shaped by how you actually worked. Not a rules file written from a blank page. Not a template the trainer handed you. Yours, grown from evidence.
-
-The pattern has a name. Kieran Klaassen at Every calls it *compound engineering*. The retro you just ran was step four of his loop: plan, work, review, compound.
-
-**Mental models only come from doing.** You just did. Compound engineering an hour ago was a name. Now it's a loop you ran on your own repo.
+- **That story is the shape you just ran on your own repo.** Over ninety minutes, not a year. On a trivial bug, not a whole training.
+- **The first read was partly wrong, and the wrongness was the way in.** You let Claude read your repo, saw the wrongness, named it, corrected it. That correction turned into a rule.
+- **The rule sits in `./CLAUDE.local.md`, which is yours.** Gitignored, alongside you, read by every future session in this repo. By the end of the training it grows into a rules file shaped by how you actually worked. Not written from a blank page. Not a template the trainer handed you. Yours, grown from evidence.
+- **The pattern has a name.** Kieran Klaassen at Every calls it *compound engineering*. The retro you just ran was step four of his loop: plan, work, review, compound. That is the orient, fix, compound, close loop cut at different joints; the names differ, the loop doesn't.
+- **Mental models only come from doing.** You just did. Compound engineering an hour ago was a name. Now it's a loop you ran on your own repo.
 
 The loop is the shape. The bug today was the excuse.
 
 <!-- maintainer -->
 
+**Equation clause (2026-07-02):** theory completeness review Minor #3 — the middle loop wore four step-decompositions unequated; one clause added to the Klaassen bullet equating plan/work/review/compound with M1's orient → fix → compound → close (the sharpest collision: same module, same session). M3's orient/act/verify/compound sits in the locked `the-loop-half-filled.md`; the agent's act-observe-correct is a different altitude by design there.
 
-**Quality:** compendium-audited 2026-05-15 (writing@3605eee)
+**Reconciliation clause (2026-07-02):** theory completeness review Minor #4 — M1 "became load-bearing" vs M6 memo "a rule in context is not a rule in the output" were unreconciled; one clause added to the load-bearing bullet (load-bearing AND leaky; checking exists because of the leak). M6 memo line untouched per its no-polish note.
+
+**Slides-only pass (2026-07-02, unaudited):** RE-CHUNK, not cull. Per-passage verdicts: opening paragraph KEPT as setup lede (closer carve-out), compressed to two sentences with content intact · intro paragraphs 2–4 FOLDED into slide-1 bullets · three rule-quotes KEPT inside one bullet (load-bearing per watch-for below) · *The rules started doing the work* / *agents checking agents* / *What you just did* CONVERTED one-to-one · **"The next module will extend it. The module after that will extend it again." CUT per `check_lectures §3`** (module sequencing; the module file's `## Next` already carries the CLAUDE.local.md-waiting bridge) and replaced with the mechanism it implied ("read by every future session in this repo" — CLAUDE.local.md auto-load, platform-true) · "By the end of the training..." KEPT (arc-range claim on a closer whose subject is the training's own arc; §3 carve-out) · Klaassen attribution KEPT (single student-side mention, cap respected) · kicker "The loop is the shape. The bug today was the excuse." KEPT. No new theory, zero map references (M1 protected). File is now lede + four slides + kicker.
+
+**Quality:** compendium-audited 2026-05-15 (writing@3605eee) — predates the slide rework; re-audit before ship.
 - judges @3605eee: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
@@ -61,6 +50,10 @@ The loop is the shape. The bug today was the excuse.
 
 **Frameworks riffed on:**
 - **Compound engineering** — Kieran Klaassen (Every Inc.) `[practitioner direct]`. Plan → Work → Review → Compound. Named at this lecture's close as the deterministic seam to Ex3's retro citation. The lecture tells the story experientially first; the practitioner lands at the end so the four-step term arrives after the student has run all four steps. Removes the prior gamble where Klaassen's name lived only in the retro prompt and depended on Claude reliably citing him.
+
+**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
+- `[checked:2026-07-02 result:CAVEAT due:2026-08-09]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen Definitive Guide (Feb 9 2026); "each unit of engineering work should make subsequent units easier" verified on page 2026-07-02. CAVEAT: the explicit plan/work/review/compound four-step naming is NOT verbatim on this page (see next stamp); source exits 6-mo window 2026-08-09. fallback: keep the compounding thesis + "Kieran Klaassen at Every calls it compound engineering"; source the step names from the how-Every-codes piece or phrase as "the four-step loop that runs through his work".
+- `[checked:2026-07-02 result:CAVEAT due:2027-01-02]` https://every.to/source-code/compound-engineering-how-every-codes-with-agents — [practitioner direct, vendor venue] Shipper + Klaassen (Dec 11 2025); carries the four step names verbatim ("80 percent of compound engineering is in the plan and review parts, while 20 percent is in the work and compound") — this is the pin for the body's "plan, work, review, compound" line. CAVEAT: dated Dec 2025, already outside the 6-mo window — cite as the framework's origin, not fresh evidence; treat any Every.to outcome metric as vendor-self-reported. fallback: drop the verbatim step names, keep "the retro you just ran was the review-and-compound half of his loop".
 
 **Themes planted** (content-strategy § "Recurring themes"):
 - **Theme 2 (compounding builds the system)** — the lecture IS the theme, told as a first-person story about the training itself.

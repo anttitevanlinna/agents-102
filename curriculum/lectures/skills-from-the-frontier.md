@@ -1,59 +1,44 @@
 # Skills from the frontier, skills of your own
 
+## What a skill is
 
----
+- **A skill is a named, scoped capability the agent can invoke.** A markdown file with a frontmatter header and a set of instructions, living in `.claude/skills/<name>/SKILL.md` or an equivalent team-kit home. Claude Code discovers it by name and pulls the body in when the work calls for it.
+- **One already reached you as a plain prompt.** The second-pass walk-down against your plan, where Claude asked you one question at a time about unresolved branches, was patterned on Matt Pocock's `grill-me` skill (Socratic requirement elicitation, MIT-licensed, on his GitHub). It arrived unpackaged because skills hadn't yet been introduced as a primitive. Today the packaging arrives: you invoke two curated skills and author one of your own.
+- **Skills are how agentic knowledge compounds across teammates.** A Slack thread about "how to threat-model our webhook paths" dies in 48 hours. A STRIDE skill tuned to your stack lives as long as the repo.
 
-Two moves today. You're going to INVOKE two curated skills this module: one for access-control analysis, one for STRIDE threat modeling. Then you're going to AUTHOR one skill yourself: a test-strategy skill tuned to your codebase. Not written for you. Written by you, in conversation with Claude.
+## Three voices behind today's skills
 
-That split isn't accidental. It's a claim about what you can produce well on a Tuesday afternoon and what you can't.
+- **Security practitioners.** The two curated skills compress decades of judgement. STRIDE is Loren Kohnfelder and Praerit Garg's 1999 Microsoft memo, sharpened into a discipline by Adam Shostack's *Threat Modeling: Designing for Security* (2014). Access-control analysis threads back to Saltzer and Schroeder's 1975 least-privilege paper, still the most-cited piece of computer security writing. The judgement these skills carry doesn't have to be in your head to be in your hands.
+- **You, right now.** The test-strategy skill you author has no curated version, and can't: a good test strategy depends on which framework you use, where the flaky tests actually fail, what "unit test" means in a system that talks to five external services. Nobody outside your team can write that skill well. Curating it would be theatre. So you author it in conversation: Claude asks what it needs to encode, and you push back where your codebase doesn't fit the default.
+- **Your skills folder, starting today.** The skill you author ships to your personal `~/.claude/skills/test-strategy/`, auto-discovered in every session you run. Personal-first is the pattern your kit already follows: the rules file is personal and gitignored, and the first authored skill lands the same way. Promotion to a team home is a human conversation and then a PR, later. Intercom's 267-skill plugin repo (153 contributors, 31% of R&D by Intercom's own count, as of April 2026) was born exactly that way: one engineer's personal skill, then a teammate's, then accretion.
 
-## What's a skill, one breath
+## Two curated, one authored
 
-A skill in Claude Code is a named, scoped capability the agent can invoke. A markdown file with a frontmatter header and a set of instructions, living in `.claude/skills/<name>/SKILL.md` (or equivalent team-kit home). The second-pass walk-down you ran in Module 2, where Claude asked you one question at a time about unresolved branches, was patterned on Matt Pocock's `grill-me` skill (Socratic requirement elicitation, MIT-licensed, on his GitHub). It landed as a plain prompt in M2 because skills hadn't been introduced yet as a primitive. Today you invoke two more curated ones and author one of your own.
+- **The proportion is a claim about what you can produce well on a Tuesday afternoon.** Frontier practitioner moves are curated for you; you build what you know best, which is your own system.
+- **Three authored skills, and you'd be reinventing STRIDE on a Tuesday.** Decades of threat-modeling judgement don't get re-derived in twenty minutes; they get invoked.
+- **Three curated skills, and the team kit is never born here.** You'd leave with nothing authored, and the skill only your team can write would still not exist.
+- **Don't make general what you don't practice yourself.** That's the principle underneath the split. The curated skills come from people who did the work; the one you author covers what only you do.
 
-Skills are how agentic knowledge compounds across teammates. A Slack thread about "how to threat-model our webhook paths" dies in 48 hours. A STRIDE skill tuned to your stack lives as long as the repo.
+## Three trust artifacts the next engineer checks
 
-## The three voices in play today
+- **The module title isn't rhetorical.** By the module's end, three things exist that your staff engineer and your CISO would actually read: a mapped access surface for the feature you're shipping, an ADR naming one hardening decision under STRIDE pressure, and a test-strategy skill codifying how testing actually works on your system.
+- **None of them are compliance artifacts.** Each is the thinking, written down: what was considered, what was decided, and under which constraint.
+- **The test for trust is the next engineer.** Not "we followed a checklist" but: whoever touches this feature next can see the reasoning and check it against the code.
 
-**Voice one: security practitioners.** The two security skills you'll invoke didn't spring from nowhere. STRIDE is Loren Kohnfelder and Praerit Garg's 1999 Microsoft memo (yes, that old; threat modeling predates most web frameworks you use). Adam Shostack sharpened it into a discipline in *Threat Modeling: Designing for Security* (2014); if you buy one security book this year, it's that. Access-control analysis threads back further. Saltzer & Schroeder's 1975 paper on the least-privilege principle is still the most-cited piece of computer security writing for a reason.
+## The tool flags; you make the call
 
-You invoke both on a feature you're shipping today. The judgement these skills compress doesn't have to be in your head for it to be in your hands.
-
-**Voice two: you, right now.** The test-strategy skill you'll author has no curated version. Here's why: a good test strategy on your codebase depends on what you already know: which framework you use, where the flaky tests actually fail, what a "unit test" means in a system that talks to five external services, which regressions have historically slipped through review. Nobody outside your team can write that skill well. Curating it would be theatre.
-
-You can. Because you'll author it the way the training authors everything: through conversation with Claude, not by hand-crafting markdown. Claude asks you what it needs to encode the skill. You push back where your codebase doesn't fit the default. The skill comes out tuned to your system because YOU fed it your system.
-
-**Voice three: your skills folder, starting today.** The skill you author at the end of this module ships to your personal `~/.claude/skills/test-strategy/`. Auto-discovered in every session you run. That's the ship. Personal-first is the through-line: M1 was `CLAUDE.local.md` (personal, gitignored), M3 is your first authored skill in your personal kit. Promotion to a team home is the next move, not this one: a conversation with teammates, then a PR (to your repo's `.claude/skills/`, to a shared Git repo, to whichever home your team picks now or later). Intercom's 267-skill plugin repo (153 contributors, 31% of R&D, as of April 2026) was born that way: one engineer's personal skill, then a teammate's, then accretion. Not a platform-team design document.
-
-## Why this proportion matters
-
-Two curated, one authored. The ratio tracks a deliberate claim: *frontier practitioner moves are curated for you; you build what you know best, which is your own system.* Flipped the other way (three authored skills) and you'd be reinventing STRIDE on a Tuesday. Flipped the other way again (three curated skills) and you'd leave with no authored skills of your own, and the team kit wouldn't be born here. This proportion is deliberate.
-
-## What "earn the trust" means
-
-The module title isn't rhetorical. By the end of 1h45, you'll have three things your staff engineer and your CISO would actually read:
-
-- A mapped access surface for the feature you're shipping (from access-control analysis skill)
-- An ADR naming one hardening decision under STRIDE pressure (from STRIDE skill)
-- A test-strategy skill that codifies how testing actually works on your system, shipped to the team kit
-
-None of those are compliance artifacts. They're the thinking, written down. The word "trust" here doesn't mean "we followed a checklist." It means "the next engineer who touches this feature can see the thinking."
-
-## What to watch for while you work
-
-- **Exercise 1:** the access-control skill will flag surfaces. Your job isn't to agree; your job is to decide what it got right, what it underweighted, what it missed that you know matters.
-- **Exercise 2:** STRIDE does the breadth, you make one call. Resist the urge to harden against everything. Pick one. Write the ADR.
-- **Exercise 3:** when you author the test-strategy skill, Claude will offer you a generic test-pyramid default. Your codebase is not a pyramid. Push back until the skill reflects how your tests actually work.
-- **Across all three:** skills live in specific places. The curated ones were installed as personal skills at prework, so Claude Code auto-discovers them by name. You don't point at a path. The one you author lands at the team-kit path your sponsor named. Don't invent new homes.
-
-**Don't make general what you don't practice yourself.** That's the principle underneath the curate-vs-author split. The curated skills come from people who did the work; the one you author covers what only you do.
+- **The access-control skill flags surfaces; deciding is your job.** What it got right, what it underweighted, what it missed that you know matters. Agreement is not the job; the delta is.
+- **STRIDE does the breadth; you make one call.** Resist the urge to harden against everything. Pick one threat worth the work and write the decision down as an ADR.
+- **The authoring conversation will offer a generic test-pyramid default.** Your codebase is not a pyramid. Push back until the skill reflects how your tests actually work.
+- **Skills live in specific places.** The curated ones were installed as personal skills at prework, so Claude Code auto-discovers them by name; you don't point at a path. The one you author lands in your personal kit at `~/.claude/skills/test-strategy/`. Don't invent new homes.
 
 Go.
 
 <!-- maintainer -->
 
+**Slides-only pass (2026-07-02, unaudited):** covered regions DELETED (Path A — prose superseded by the slides; git carries it). Per-passage verdicts: opening "Two moves today" agenda CUT (slide titles carry the agenda; the Tuesday-afternoon claim FOLDED into *Two curated, one authored*) · "What's a skill, one breath" CONVERTED to slide 1 — §3 fix: "in Module 2" / "landed as a plain prompt in M2" de-sequenced to content phrasing ("the second-pass walk-down against your plan … arrived unpackaged"); Pocock credit preserved inline · three-voices prose CONVERTED to one slide, one bullet per voice — §3 fix: "M1 was `CLAUDE.local.md` … M3 is your first authored skill" de-sequenced to kit-pattern phrasing (rules file personal + gitignored; first authored skill lands the same way) · "Why this proportion matters" CONVERTED (the two flips became two bullets) · "What earn the trust means" CONVERTED; "end of 1h45" → "by the module's end" (runtime stays in maintainer Meta) · "What to watch for" CONVERTED to the arming slide; Ex1/Ex2/Ex3 labels dropped (bullets name the move — keeps the lecture re-placeable) · STALE FIX: "The one you author lands at the team-kit path your sponsor named" contradicted the personal-first contract (voice three + module maintainer watch-for); now names `~/.claude/skills/test-strategy/` · "Don't make general …" KEPT as slide-3 bullet · "Go." KEPT as closing kicker. §3 grep above the fence: clean.
 
-**Quality:** compendium-audited 2026-05-15 (writing@689e7e0 story@689e7e0 technical@689e7e0 behavior@689e7e0 pedagogy@689e7e0 strategy@689e7e0)
+**Quality:** compendium-audited 2026-05-15 (writing@689e7e0 story@689e7e0 technical@689e7e0 behavior@689e7e0 pedagogy@689e7e0 strategy@689e7e0) — predates the slide rework; re-audit before ship.
 - judges @689e7e0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Lecture meta:** *10–12 minutes. Lecture primes Exercises 1–3 of Module 3 (Earn the trust).*
@@ -74,3 +59,6 @@ Go.
 - Test strategy as discipline — Kent Beck `[practitioner direct]` + Google Testing Blog's test-pyramid framing `[practitioner analysis]`. Named but not leaned on — the student's authored skill is theirs.
 
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
+
+- vendor-self-report hedge 2026-07-02: theory-completeness-review minor #6 (Intercom caveat maintainer-side only) — body now flags "31% of R&D by Intercom's own count" inline; matches the "<org>'s own numbers" flag shape.
+- section-3 sweep 2026-07-02: 5 refs judged, 0 fixed, 5 compliant — grill-me walk-down recall (voice slide) and personal-first kit recall already de-sequenced to content phrasing in the slides pass; "the module title / by the module's end" = within-module scoping, not cross-module sequencing; "installed at prework" = provenance that precedes any placement, survives re-placement; "the next engineer" = false positive (engineer, not module). Body grep `M[0-9]` + module-name refs: clean.

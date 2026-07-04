@@ -8,23 +8,20 @@ Start a new Claude Code session at your repo root.
 /rename m2-plan-mode
 ```
 
-Three things a good plan has. Three pressures that quietly make bad plans look good. That's the lecture. Then you go and push back on one.
+## Plan mode is a read-only permission state
 
-## What plan mode actually is
+- **Plan mode is a permission state, not a feature.** You press Shift+Tab until the status bar reads **plan**. The agent is now read-only: it reads files, runs shell commands to explore, and writes a plan file, but it can't edit or execute until you approve.
+- **The read-only part is load-bearing.** Plan mode isn't "Claude thinks before doing." It's "Claude writes a thing you can read, edit, and push back on before anything changes." The plan is an artifact, not a mood.
+- **The plan file has an identity.** A descriptive name (`migrate-auth-hash-calm-otter.md`, not random words) you can come back to. Small quality-of-life thing that matters more than it sounds: the plan is a thing on disk, not a moment in a chat.
+- **You will notice the wait.** While Claude plans, other sessions could be making progress elsewhere. Not today, but soon.
 
-Plan mode in Claude Code is a permission state, not a feature. You press Shift+Tab until the status bar reads **plan**. The agent is now read-only. It reads files, runs shell commands to explore, writes a plan file, but it can't edit or execute until you approve. The plan file has a descriptive name now (`migrate-auth-hash-calm-otter.md`, not random words). That's a small quality-of-life thing that matters more than it sounds: the plan has an identity you can come back to.
-
-The read-only part is load-bearing. Plan mode isn't "Claude thinks before doing." It's "Claude writes a thing you can read, edit, and push back on before anything changes."
-
-You will notice the wait while Claude thinks. Other sessions could be making progress elsewhere. Not today, but soon.
-
-### Optional: ask plan mode directly
+## Optional: ask plan mode directly
 
 A 30-second move before the three things get named. Enter plan mode in your own session right now and ask Claude what shifted from its side.
 
 Ask Claude to describe what changed in its behaviour when plan mode turned on.
 
-{{prompt:when-a-plan-is-good-1}}
+{{cut:when-a-plan-is-good-1|meta-retrospective}}
 
 
 Watch what comes back. Sometimes Claude names the read-only state directly, sometimes the specific instructions it is following. Skip if you trust the framing. The exercise will show you either way.
@@ -43,30 +40,45 @@ Three things. That's the read.
 - **Reasonableness passes for rightness.** Each step sounds reasonable, so the plan sounds right. But three reasonable steps in the wrong order still ship a bug. Read the sequence, not the steps.
 - **You already agree with it.** The plan matches what you'd have written, which feels like alignment. But Claude wrote it from a partial read of the codebase and your instinct isn't a substitute for the read. Agreement is cheap; the read is what matters.
 
-## What you do with this
+## Two reads, paired
 
-In the exercise, you push back twice with what you can see (one soft item, then either an assumption check or a committed change) via *keep planning with feedback* at the approval prompt. Claude regenerates. Then you ask Claude for a second-pass read that walks down every unresolved branch of the decision tree, one question at a time, suggesting answers. You confirm or correct each. The plan sharpens again. You approve.
+- **Your read and the agent's walk-down catch different misses.** You bring the voice of experience: the soft item, the step that contradicts how this codebase actually works. The agent brings breadth: it can walk every unresolved branch of the decision tree without getting bored or skipping the dull ones.
+- **Paired, they give a complete read; neither alone does.** Order matters: your push-back first, so your read stays in the driver's seat, then the walk-down for the branches you can't see.
+- **Check the revision, not the acknowledgement.** The agent agrees easily. A flagged step can come back softened rather than sharpened. A push-back is finished when the regenerated plan is sharper, not when Claude says it heard you.
 
-Then you stop. No execution this time.
+After you've done it once, you'll feel when a plan needs the second read and when your own read was enough.
 
-The discipline isn't the mode. It's two reads, paired: yours, then the agent's walk-down. One kind of scrutiny catches one kind of miss. Paired, they usually give the complete read.
+## Find is easier than judge
 
-After you've done it once, you'll feel when a plan needs the second read and when your own read was enough. That's the whole thing.
+- **Generating candidates is cheap for the agent; judging them is where you're needed.** Stuck naming a soft item? Ask Claude which step it's least confident about. That answer is a candidate. Whether it matters on this codebase is your call, and only yours.
+- **The split runs through the whole discipline.** The agent finds, you judge, and everything from here sharpens one side or the other. The far half of the map runs on this asymmetry.
+
+## The cheapest gate you will ever run
+
+- **A plan is a check that runs before anything exists.** Reading intent costs minutes. Reading the finished diff costs hours. Un-shipping the wrong system costs weeks. Same mistake, three prices; the plan is where catching it is cheapest.
+- **Aim the read at the unknown that teaches you the most.** The branches worth walking are the ones that change what done means. The rest you'd settle in code review anyway.
+- **Making the plan good IS the work.** You don't have to execute a plan to know it's good. Recognizing a good plan is the skill; the execution can wait for the day the task is real.
 
 <!-- maintainer -->
 
+**Slide-page standardization (2026-07-02, Antti-directed):** `### Optional: ask plan mode directly` promoted to `##` — every slide page = line + `##` headline (the "Wrong is how steering gets in" pattern); no h3/hr page divisions in theory lectures. Layout-only; the section still dies or lives with the prompt-cull decision.
 
-**Quality:** compendium-audited 2026-05-22 (writing@1a9e10b story@1a9e10b technical@1a9e10b behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b)
+**Slides-only pass (2026-07-02, unaudited):** covered regions DELETED (Path A — prose was verbatim-redundant with the slides; git carries it). Per-passage verdicts: intro agenda line CUT (slide titles carry it) · "you will notice the wait" FOLDED into slide 1 as fourth bullet (plants M3's two-window move) · "What you do with this" section CUT (the exercise body carries the flow; "then you stop" is the exercise's own beat) · feel-line KEPT as slide-4 kicker (fluency forecast, future-tense informing) · "Three things. That's the read." KEPT as slide-2 kicker · *Optional: ask plan mode directly* section KEPT UNCHANGED — its prompt is a `{{cut:}}` candidate; the section dies or lives with the prompt-cull decision, not this pass. File is now Session widget + six slides + kickers + one cut-flagged optional move.
+
+**Deck notes:** does NOT name "plan-mode approval inflation" — that label lands retroactively at exercise P5. *The cheapest gate you will ever run* delivers the name-the-uncertainty governor as a pre-action question (doctrine-legal). *Find is easier than judge* seeds the M5 verification-asymmetry naming.
+
+**Quality:** compendium-audited 2026-05-22 (writing@1a9e10b story@1a9e10b technical@1a9e10b behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b) — predates the slide rework; re-audit before ship.
 - judges @1a9e10b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta:**
-- **Time:** 10–12 min, inside M2's 1h45 slot (Connections 10 / Lecture 10–12 / Exercise 55–70 / Debrief 15 / Bridge 5).
-- **Pedagogy:** primer-before-exercise. Names the three moves (merges / soft items / assumptions) that Phase 3 forces. Does NOT name "plan-mode approval inflation" — that label lands retroactively at exercise P5.
+- **Time:** 10–12 min (deck-only trimmed it back from the 12–15 of the deck+prose draft), inside M2's 1h45 slot (Connections 10 / Lecture 10–12 / Exercise 55–70 / Debrief 15 / Bridge 5). If tight, the three-pressures slide compresses to 60 seconds; the exercise teaches them.
+- **Pedagogy:** primer-before-exercise. Names the three moves (merges / soft items / assumptions) that Phase 3 forces.
 - **Mood target:** anticipation toward grounded competence. Student leaves the lecture with "I know what to look for" — the payoff of *actually feeling it* lands in the exercise.
-- **Voice check:** no banned words (`honest`, `delve`, `landscape`-verb, `importantly`, `crucial`, `ritual`, `ceremony`, `practice` as noun).
+- **Voice check:** no banned words (`honest`, `delve`, `landscape`-verb, `importantly`, `crucial`, `ritual`, `ceremony`, `practice` as noun). No em-dashes in body.
 - **Frameworks riffed on:**
   - Plan mode (Anthropic Claude Code) — capability reference, current as of 2026-04-22. Source: https://code.claude.com/docs/en/permission-modes.md `[practitioner direct]`.
   - The three-things / three-pressures shape is exercise-scaffold, not a cited framework.
+  - Gate-cost escalation (intent → diff → shipped) is plain cost logic in body, un-attributed by design; the Boehm lineage (defect cost grows with discovery distance) is noted in `theory-audit.md` § canon (plan-as-cheapest-gate), cite only if a number ever enters the body.
 - **Philosophy callout budget:** zero. The lecture is short and operational. The philosophy beat (*memory is my edge, not my keystrokes*; *mastery is structural practice*) lands naturally in the M2 Debrief when `CLAUDE.md` grows.
 
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

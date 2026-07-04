@@ -61,11 +61,15 @@ Ask Claude to sharpen the one weakest section of the skill from invocation evide
 
 Claude is reading the skill file fresh and your m3-security scrollback. Useful (file content survived the side-quest /clear and carries the encoded conventions) but charitable (same-context-window self-audit under-flags). Two other tells to watch for: Claude may open with a plan before showing the diff, and RLHF softening can dress up a cosmetic edit as a meaningful one. You can make the grill hotter: ask Claude to over-flag (*"be harsher than necessary, find at least two sections that underdelivered, assume it's worse than it looks"*), tell it to skip preamble and lead with the before/after diff, or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.
 
+Three modules of loop work sit behind you. Before you clear the session, the near half of the map, seen whole with its parts named.
+
+[Lecture: The loop half, filled in](lectures/the-loop-half-filled.md)
+
 ## Clear the session
 
 Still in the main quest window (*m3-security*), signal the wrap-up. The agent converges what's still loose.
 
-{{prompt:ae101-m3-ready-to-clear}}
+{{cut:ae101-m3-ready-to-clear|low-yield}}
 
 > Might be slightly leaky. But this time simple gets mostly right.
 
@@ -76,6 +80,14 @@ If the agent names something missed, decide whether to compound it now or accept
 ## Next
 
 Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. Module 4 turns the discipline inward: memory that reads your system, not just a feature. The quality criteria, the access-surface facts, and the hardening decision all feed into what M4 builds.
+
+Module 4 also hands the agent a longer leash. Before granting it, one more check, the audit you just ran on the feature, now pointed at the agent itself. Three questions:
+
+- **Does the agent hold private data?** Your repo, your credentials, whatever a connector reaches.
+- **Does untrusted content reach its context window?** Web pages, issue comments, dependencies: anything the agent reads can carry someone else's instructions.
+- **Is there a channel out?** A git push or an HTTP request is enough to move what the agent holds.
+
+All three at once is the opening that prompt injection needs: one sentence, planted where the agent will read it, becomes an instruction. Cut one leg before the run. The frame is [The lethal trifecta](trainings/agentic-engineering-101/supplementary/the-lethal-trifecta.md): three legs, cut one.
 
 Optional forward-look before M4: [What is agentic engineering](trainings/agentic-engineering-101/supplementary/what-is-agentic-engineering.md). And when your sessions start running heavy, [Token efficiency](trainings/agentic-engineering-101/supplementary/token-efficiency.md) on keeping the context window lean.
 
@@ -95,7 +107,7 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate + Create
-- **Session runtime:** 1h50 (Connections 10 / Open the side quest 5 / Lecture 12 / Exercises 20+20+28 / Debrief 12 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h50 in-class. Self-study follow-along runs comparably.
+- **Session runtime:** 2h00 (Connections 10 / Open the side quest 5 / Lecture 12 / Exercises 20+20+28 / Debrief 12 / closer *The loop half, filled in* 8–10 / Bridge 3). Sums 118–120 — no buffer left; the closer's 8-min floor is the only slack. Closer minutes per `lectures/the-loop-half-filled.md` maintainer Time line. Trainer demos slowly, room copy-pastes concurrently — fits 2h00 in-class. Self-study follow-along runs comparably.
 - **Prep timing:** Willison lethal-trifecta pre-read 10–15 min; optional OWASP deeper scan 20 min.
 - **Mood target:** earned trust — *"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big."* Watch for: mood drift toward compliance-feeling. Diagnostic: student at Ex2 frames STRIDE as checkbox. Fix: trainer surfaces the ADR — *"you just made a real architectural call under named pressure; that's not compliance, that's design."*
 - **Delivery architecture** (content folder, compounding-artifact split, skills install, no training-dir state): canonical in `training-architecture.md` §Material distribution / §Working directory model / §Rule files / §Skills. Not restated here. M3-specific: the content folder holds three curated skills (`access-control-analysis` + `stride` + `security-tools`); the authored test-strategy skill ships personal-first to `~/.claude/skills/test-strategy/SKILL.md`, with a sponsor-stated team-kit home as the eventual destination via human conversation (not an auto-PR). The four-layer rule-file hierarchy is in `reference/claude-code-for-engineers.md § 1`.
@@ -162,3 +174,5 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 - **Compound engineering** — Kieran Klaassen. M3's Compound step is *ship to team kit*; the fourth step of the loop is visible here, as in M1.
 - **Skills as first-class Claude Code primitive** — the authoring move uses conversation, not manual markdown — matches M1's `CLAUDE.local.md` pattern (Claude writes from session evidence; student pushes back).
 - **Hooks as deterministic-fire primitive** — sibling to skills (which Claude invokes on judgment). Hooks fire on named runtime events regardless of agent judgment. Not authored at M3, but the partition (skill = recommended invocation, hook = always-fires) lands at the M5 closer lecture. Hook system reference: `claude-code-for-engineers.md` § 13.
+
+**2026-07-02** — trifecta pre-leash beat added to `## Next` (three-question check + prompt injection named once + supplementary pointer), wired per completeness review finding #2; the trifecta link moved out of the optional forward-look into the unavoidable close.

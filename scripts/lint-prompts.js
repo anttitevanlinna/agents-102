@@ -16,7 +16,10 @@ const ROOT = path.resolve(__dirname, '..');
 const CURRICULUM = path.join(ROOT, 'curriculum');
 const REGISTRY_DIR = path.join(CURRICULUM, 'prompts');
 
-const REFERENCE_RE = /\{\{prompt:([a-z0-9-]+)\}\}/g;
+// Both {{prompt:key}} and its cut-candidate sibling {{cut:key|reason}} count as
+// a reference to `key` — a cut candidate is still "used", so it must not trip the
+// orphan warning. Group 1 is the key; the optional cut `|reason` slug is ignored.
+const REFERENCE_RE = /\{\{(?:prompt|cut):([a-z0-9-]+)(?:\|[a-z0-9-]+)?\}\}/g;
 
 function walkMarkdown(dir, files) {
   files = files || [];

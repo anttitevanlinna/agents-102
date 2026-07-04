@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proto C3 · The map, read as a loop</title>
+<style>
+  body{margin:0;background:#f4eee0;font-family:ui-monospace,Menlo,Consolas,monospace;}
+  .wrap{max-width:1240px;margin:0 auto;padding:18px 20px 40px;}
+  .hd{background:#1f1a13;color:#efe6d2;font-size:11px;letter-spacing:1px;padding:9px 14px;border-radius:4px;margin-bottom:14px;display:flex;gap:16px;align-items:baseline;flex-wrap:wrap;}
+  .hd .id{color:#c97942;letter-spacing:3px;white-space:nowrap;}
+  .hd .nm{white-space:nowrap;}
+  .hd .st{color:#a99d85;font-family:Inter,-apple-system,sans-serif;letter-spacing:0;font-size:11.5px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hd">
+  <span class="id">PROTO C3</span>
+  <span class="nm">THE MAP, READ AS A LOOP</span>
+  <span class="st">The six-phase spine (Intent to Outcome) re-read as one control loop: the near half is feedforward (shape before it moves), the far half is feedback (read, correct, encode), and the seam you drew on instinct is exactly the feedforward/feedback boundary.</span>
+</div>
+<svg viewBox="0 0 1200 560" role="img" aria-label="The student's six-phase spine annotated as a control loop. Across the top, six numbered columns: Intent, Context, Work, then a dashed vertical seam, then Verification, Absorption, and an ochre Outcome. Under each name sits a small teal node, joined left to right by a teal forward path with arrowheads. A large teal feedback arc sweeps up and over from Outcome, curls back down and returns into Intent, labelled encode and the next run starts better, the gap fed back. The dashed seam between Work and Verification is tagged the near far seam, where shaping ends and correcting begins. A bracket under the first three phases reads feedforward, shape before it moves; a bracket under the last three reads feedback, read correct encode. An ochre ring around the Verification node marks the sensor that reads what came back." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
+
+  <!-- canvas + neatline -->
+  <rect x="0.5" y="0.5" width="1199" height="559" rx="7" fill="#efe6d2"/>
+  <rect x="12" y="12" width="1176" height="536" fill="none" stroke="#d6c8a3" stroke-width="1" opacity="0.9"/>
+
+  <!-- ================= PHASE-COLUMN GRID ================= -->
+  <line x1="70" y1="126" x2="1062" y2="126" stroke="#d6c8a3" stroke-width="1"/>
+  <g stroke="#d6c8a3" stroke-width="0.8" stroke-dasharray="1 5" opacity="0.7">
+    <line x1="100" y1="128" x2="100" y2="219"/>
+    <line x1="280" y1="128" x2="280" y2="219"/>
+    <line x1="460" y1="128" x2="460" y2="219"/>
+    <line x1="660" y1="128" x2="660" y2="219"/>
+    <line x1="850" y1="128" x2="850" y2="219"/>
+    <line x1="1030" y1="128" x2="1030" y2="219"/>
+  </g>
+
+  <!-- column numbers -->
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" letter-spacing="2.5" fill="#786c56" text-anchor="middle">
+    <text x="100" y="88">01</text>
+    <text x="280" y="88">02</text>
+    <text x="460" y="88">03</text>
+    <text x="660" y="88">04</text>
+    <text x="850" y="88">05</text>
+    <text x="1030" y="88">06</text>
+  </g>
+  <!-- phase names -->
+  <g font-family="Roboto Slab, Georgia, serif" font-size="15.5" text-anchor="middle">
+    <text x="100" y="110" fill="#1f1a13">Intent</text>
+    <text x="280" y="110" fill="#1f1a13">Context</text>
+    <text x="460" y="110" fill="#1f1a13">Work</text>
+    <text x="660" y="110" fill="#1f1a13">Verification</text>
+    <text x="850" y="110" fill="#1f1a13">Absorption</text>
+    <text x="1030" y="110" fill="#a05a2c">Outcome</text>
+  </g>
+
+  <!-- ================= SEAM (near / far boundary) ================= -->
+  <line x1="560" y1="150" x2="560" y2="430" stroke="#a05a2c" stroke-width="1.6" stroke-dasharray="6 5"/>
+  <text x="560" y="446" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2.5" fill="#a05a2c" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE NEAR / FAR SEAM</text>
+  <text x="560" y="461" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">where shaping ends and correcting begins</text>
+
+  <!-- ================= BIG FEEDBACK ARC (Outcome back into Intent) ================= -->
+  <path d="M 1030 210 C 1005 80 850 42 640 42 C 470 42 405 70 388 150 C 360 200 150 195 100 220"
+        fill="none" stroke="#2f6b6b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="100,220 112,219 108,211" fill="#2f6b6b"/>
+  <text x="740" y="30" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" letter-spacing="2.5" fill="#2f6b6b" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">ENCODE, AND THE NEXT RUN STARTS BETTER</text>
+  <text x="250" y="170" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="14" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">the gap, fed back</text>
+
+  <!-- ================= FORWARD PATH ================= -->
+  <g stroke="#2f6b6b" stroke-width="2.2" stroke-linecap="round">
+    <line x1="111" y1="230" x2="259" y2="230"/>
+    <line x1="291" y1="230" x2="439" y2="230"/>
+    <line x1="471" y1="230" x2="639" y2="230"/>
+    <line x1="671" y1="230" x2="829" y2="230"/>
+    <line x1="861" y1="230" x2="1009" y2="230"/>
+  </g>
+  <g fill="#2f6b6b">
+    <polygon points="268,230 259,225.5 259,234.5"/>
+    <polygon points="448,230 439,225.5 439,234.5"/>
+    <polygon points="648,230 639,225.5 639,234.5"/>
+    <polygon points="838,230 829,225.5 829,234.5"/>
+    <polygon points="1018,230 1009,225.5 1009,234.5"/>
+  </g>
+
+  <!-- ================= PHASE NODES ================= -->
+  <circle cx="100" cy="230" r="9" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2.2"/>
+  <circle cx="280" cy="230" r="9" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2.2"/>
+  <circle cx="460" cy="230" r="9" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2.2"/>
+  <!-- verification node + sensor ring -->
+  <circle cx="660" cy="230" r="15" fill="none" stroke="#a05a2c" stroke-width="1.8"/>
+  <circle cx="660" cy="230" r="9" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2.2"/>
+  <circle cx="850" cy="230" r="9" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2.2"/>
+  <!-- outcome node : the target -->
+  <circle cx="1030" cy="230" r="9" fill="#efe6d2" stroke="#a05a2c" stroke-width="2.2"/>
+  <circle cx="1030" cy="230" r="3" fill="#a05a2c"/>
+
+  <!-- ================= SENSOR CALLOUT ================= -->
+  <line x1="660" y1="197" x2="660" y2="214" stroke="#a05a2c" stroke-width="1.2"/>
+  <text x="660" y="176" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2.5" fill="#a05a2c" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE SENSOR</text>
+  <text x="660" y="191" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="10.5" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">reads what came back</text>
+
+  <!-- ================= NEAR / FAR BRACKETS ================= -->
+  <path d="M 100 294 L 100 300 L 274 300 L 280 306 L 286 300 L 460 300 L 460 294" fill="none" stroke="#786c56" stroke-width="1.4"/>
+  <text x="280" y="324" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" letter-spacing="2.5" fill="#2f6b6b" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">FEEDFORWARD</text>
+  <text x="280" y="341" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">shape before it moves</text>
+
+  <path d="M 660 294 L 660 300 L 839 300 L 845 306 L 851 300 L 1030 300 L 1030 294" fill="none" stroke="#786c56" stroke-width="1.4"/>
+  <text x="845" y="324" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" letter-spacing="2.5" fill="#2f6b6b" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">FEEDBACK</text>
+  <text x="845" y="341" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">read · correct · encode</text>
+
+  <!-- ================= CARTOUCHE ================= -->
+  <rect x="42" y="404" width="286" height="74" fill="#efe6d2" stroke="#cbbd98" stroke-width="1"/>
+  <rect x="46" y="408" width="278" height="66" fill="none" stroke="#d6c8a3" stroke-width="1"/>
+  <text x="58" y="428" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" letter-spacing="3" fill="#8a3a2a">THE SAME MAP, ONE READING</text>
+  <text x="58" y="450" font-family="Roboto Slab, Georgia, serif" font-size="15.5" fill="#1f1a13">Your loop is a control loop</text>
+  <text x="58" y="469" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234">near shapes · far corrects</text>
+
+  <!-- ================= CAPTION + MICRO ================= -->
+  <text x="600" y="522" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="15" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">The seam you drew on instinct is the line control theory would have drawn.</text>
+  <text x="1170" y="540" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" letter-spacing="2" fill="#8a3a2a" opacity="0.75">PROTO C3 · THE MAP IS THE LOOP</text>
+</svg>
+</div>
+</body>
+</html>

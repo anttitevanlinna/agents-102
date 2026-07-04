@@ -570,6 +570,74 @@ main::before {
     background: var(--bg-2);
 }
 
+/* Cut-candidate — a prompt flagged for review by a `{{cut:key|reason}}` marker
+   (sibling of `{{prompt:key}}`). The material is fully retained; the block is
+   dimmed + grayed and wears the ribbon below so the maintainer can eyeball
+   removal candidates before committing a real cut. Reversible: swap the marker
+   back to `{{prompt:key}}` on one line. Hover lifts the veil so the prompt stays
+   readable while judging. */
+.module .prompt-block.cut-candidate {
+    opacity: 0.5;
+    filter: grayscale(0.9);
+    border-style: dashed;
+}
+
+.module .prompt-block.cut-candidate:hover {
+    opacity: 1;
+    filter: none;
+}
+
+/* Muted-danger chip bar, same typographic key as the header chips (uppercase,
+   tracked, small). No --danger token in the palette, so a restrained oxblood-
+   adjacent red that reads as "flagged" without shouting. */
+.module .cut-candidate__ribbon {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.95rem;
+    background: #a3443b;
+    color: var(--bg);
+    border-bottom: 1px solid var(--line-2);
+}
+
+/* Covered-region — a prose span wrapped by `{{covered:slug#anchor}}` …
+   `{{/covered}}` markers (sibling of the cut-candidate treatment, but for
+   passages whose content a new slide-format section now carries). Neutral
+   semantic: dimmed + ribboned so the maintainer can eyeball the redundancy;
+   the passage either gets deleted once the covering slides are perfected, or
+   stays as the depth layer beneath them. Hover lifts the veil. Unscoped —
+   covered regions appear in lectures rendered both inside .module and as
+   standalone sections. */
+.covered-region {
+    opacity: 0.5;
+    filter: grayscale(0.9);
+    border: 1px dashed var(--line-2);
+    padding: 0 1rem 0.25rem;
+    margin: 1rem 0;
+}
+
+.covered-region:hover {
+    opacity: 1;
+    filter: none;
+}
+
+/* Neutral steel chip bar — same typographic key as the cut ribbon, cooler
+   hue: "has a new home", not "flagged for danger". */
+.covered-region__ribbon {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.95rem;
+    margin: 0 -1rem;
+    background: #4a6274;
+    color: var(--bg);
+    border-bottom: 1px solid var(--line-2);
+}
+
 /* Anchored clauses inside a prompt body — planted by injectAnchorSentinels
    in curriculum.js when an entry declares `anchors:` in its frontmatter, then
    wrapped at DOM time by convertAnchorSentinels(). Dotted underline in the

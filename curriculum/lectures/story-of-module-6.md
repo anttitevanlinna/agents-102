@@ -2,8 +2,6 @@
 
 *The engineer who built this module ran the M5/M6 loop on its own creation. What follows is the memo from that session: a record of one engineer's struggle with the same loop you're about to run.*
 
----
-
 I am going to tell you how this module got made. Not the pedagogy of it. The actual session. What I tried, what drifted, what the rules caught, what the rules missed.
 
 Then I am going to ask you to hold something uncomfortable about LLMs, based on the evidence of that session.

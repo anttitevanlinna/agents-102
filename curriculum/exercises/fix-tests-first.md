@@ -1,27 +1,34 @@
-# Fix tests-first
+# Prove the bug, then ship the fix
 
 **Time:** 25 minutes.
 
 **What you do:** fix the bug you brought from prework, tests-first. Ship the PR.
 
+**What you build:** three things that make a fix trustworthy: a failing test that proves the bug exists, the smallest fix that passes it, and a PR you read line by line before it ships.
+
 **The point:** tests-first and root-cause-driven is one discipline. Running it with an agent is a second discipline: reading the diff, pushing back when a line is not what you would have written. Both get practised here. The compound move (writing down what you learned) lives in the next exercise.
 
-You know what's loaded and what isn't. Now fix the bug.
+---
 
-No plan mode here. Plan mode pays off at Module 2 on multi-file work; on a trivial bug, it's overhead. The move is tests-first, root-cause-driven.
+## Write the failing test and fix the root cause
 
-Ask Claude to write the failing test, fix the root cause, and show the diff. Drop your bug after the colon.
+- **Tests-first, root-cause-driven is the move.** The failing test is the only proof the bug exists. Without it, the fix is a guess that happens to compile. Write the test first, watch it fail, then fix the cause, not the symptom.
+- **No plan mode here.** You are not on the hook for scoping this one. Plan mode earns its keep at Module 2 on multi-file work; on a trivial bug it is overhead.
 
 > **Small fix, small test.** A trivial bug wants one failing test and a tight fix, not a suite and a refactor. If Claude starts spinning up plenty of tests, or the change creeps past the bug, that's sprawl. Steer it back to one test that proves the bug and the smallest fix that passes it.
 
+Ask Claude to write the failing test, fix the root cause, and show the diff. Drop your bug after the colon.
+
 {{prompt:fix-tests-first-1}}
 
+## Read the diff and push back on a line
 
-Claude writes the failing test, watches it fail, fixes the code, watches it pass. Read the diff. If a line isn't what you'd have written, push back. Quote the line and say why. Whoever has the better argument wins.
+- **The agent runs the loop; you read the result.** The agent writes the failing test, watches it fail, fixes the code, watches it pass. Read the diff. If a line isn't what you'd have written, push back. Quote the line and say why. Whoever has the better argument wins.
+- **Your own wording matters.** No pre-made prompt for the pushback. You return to this exact move at the compound step, so the words you reach for are yours.
 
-Your own wording and viewpoint is important here. Hence no pre-made prompt. You'll return to this at the compound step.
+## Interrogate the fix for a deeper layer
 
-When Claude says done, push once on the depth. Ask whether the change is the root cause or a layer above it. The first cut usually fixes what makes the test pass; the deeper cut asks whether the test was pointing at the right thing. Name what a deeper edit would touch and see what Claude defends. The exchange is where root-cause discipline shows up, not in the fix itself.
+- **Push once on the depth.** When the agent says done, ask whether the change is the root cause or a layer above it. The first cut usually fixes what makes the test pass; the deeper cut asks whether the test was pointing at the right thing. Name what a deeper edit would touch and see what Claude defends. The exchange is where root-cause discipline shows up, not in the fix itself.
 
 **Optional.** Skip if the test you wrote already names the contract and the fix is the contract, no deeper layer to interrogate. Otherwise, ask Claude to interrogate the fix and name what's still surface.
 
@@ -33,9 +40,11 @@ When Claude says done, push once on the depth. Ask whether the change is the roo
 
 **Optional.** Once the fix is in, dig into code quality and structure. Ask Claude: *did you make it better? Why yes. Why no.* You steer; might take a few nudges.
 
-Ask Claude to commit, push a branch, and open the PR. How far you let Claude drive Git is your call.
+## Ship the PR
 
-**What happened:** A real PR shipped. A failing test landed in the codebase before the fix did. You read the diff, pushed back on at least one line, and ran the root-cause interrogation before the second TDD pass.
+- **How far you let Claude drive Git is your call.** Ask Claude to commit, push a branch, and open the PR.
+
+**What happened:** A real PR shipped. A failing test landed in the codebase before the fix did. The diff got read, at least one line got pushback, and the root-cause interrogation ran before the second TDD pass.
 
 The PR is shipped. The move is warm. Hand off to the compound step.
 

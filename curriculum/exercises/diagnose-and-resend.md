@@ -1,4 +1,4 @@
-# Diagnose and *re-send*
+# Diagnose and *package*
 
 **Time:** 65 minutes inside a 2h module slot (Phases 1–4). Debrief + re-send (~15–20 min) is owned by the module file.
 
@@ -14,48 +14,48 @@ Open a new Claude Code session in the M5 worktree at `../<repo>-m5` (set up at m
 
 **What you do:** Read the un-packaged M4 artefact through three failure-mode lenses. For each named failure, ask what validation would have caught it in minutes, not hours. Build a verifier shaped against your dominant failure (one of three shapes). Assemble a task-scoped reference artefact + plan.md in conversation. At Debrief, the module re-sends the same task packaged.
 
+**What you build:** three pieces that make a failed run come back trustworthy: a verifier, a reference, and a plan.md. Each one is built against a specific failure you read in the M4 run.
+
 **The point:** Ronacher's three-pattern earns its name in this exercise. You don't learn it from a slide; you build each piece against a failure you read in your own artefact. The closing lecture names what you built afterward.
 
 ---
 
-## Phase 1: Read the return
+## Phase 1: Read what the failed run did
 
-Open a new Claude Code session in the M5 worktree (set up at module open). The M4 artefact lives in two places: the repo's git history (commits made by the M4 agent on the `m4/<slug>` branch, files modified, branch state, all visible from the worktree via git refs) and the M4 session transcript whose path was recorded in `task.md` before the starting-point commit. File changes tell you *what* the agent did; the transcript tells you *how* it got there, including the drift and dead-ends.
+- **You're diagnosing, not fixing.** The un-packaged M4 run was supposed to underdeliver. What came back is data, not blame.
+- **Two places hold the story.** The repo's git history (commits on the `m4/<slug>` branch, files modified, branch state, all visible from the worktree) tells you *what* the agent did. The M4 session transcript, at the path recorded in `task.md`, tells you *how* it got there, drift and dead-ends included.
+- **You hold the three lenses. You are not holding the codebase.** The agent reads that for you.
 
 Ask Claude to read the recorded transcript path from `task.md`.
 
 {{prompt:diagnose-and-resend-1}}
 
 
-Confirm the path is right. Then read it through three lenses.
-
-Ask Claude to read the repo state on the previous-run branch and the transcript at the path you just found, then walk the work through three failure-mode lenses with quoted moments.
+Confirm the path is right. Then ask Claude to read the repo state on the previous-run branch and the transcript, and walk the work through three failure-mode lenses with quoted moments.
 
 {{prompt:diagnose-and-resend-2}}
 
 
-Push back where Claude generalises. Insist on quoted moments. The diagnosis is data, not blame; the un-packaged run was supposed to underdeliver. The move you just ran is *diagnosis through named failure modes*, the vocabulary is the lens, the artefact is the substance.
+## Pin each failure to a quoted moment
 
----
+- **Push back where Claude generalises.** One quoted line per lens beats a paragraph of summary. The diagnosis is data, not blame; the un-packaged run was supposed to underdeliver.
+- The move you just ran is *diagnosis through named failure modes*. The vocabulary is the lens; the artefact is the substance.
 
-## Phase 2: Align-then-run, in reverse
+## Phase 2: Match each failure to the check that catches it
 
-For each named failure, ask the question that earns the three-pattern: *what validation would have caught this in minutes, not hours?*
-
-Not every failure supports minute-cadence. Drift and context rot fire mid-run, on every spec re-read or window fill; minute cadence is real there. Plausible-but-wrong fires on output: the work compiles, passes lint, looks right, but is wrong. Match the verifier shape to the failure shape, not the slogan.
+- **Ask the question that earns the three-pattern.** For each named failure: *what validation would have caught this in minutes, not hours?*
+- **Match the verifier shape to the failure, not the slogan.** Drift and context rot fire mid-run, on every spec re-read or window fill, so minute cadence is real there. Plausible-but-wrong fires on output: the work compiles, passes lint, looks right, and is wrong.
 
 Ask Claude to walk each diagnosed failure backwards into the validation that would have caught it.
 
 {{prompt:diagnose-and-resend-3}}
 
 
-Read the three answers. You should now have a working description of three pieces, each tied to a specific failure you diagnosed. Phase 3 builds one of them; Phase 4 assembles the other two.
+Read the three answers back. You now have three pieces, each tied to a specific failure you diagnosed. Phase 3 builds one of them; Phase 4 assembles the other two.
 
----
+## Phase 3: Build the verifier for your worst failure
 
-## Phase 3: Build the verifier
-
-Three shapes the verifier takes. Pick the one matching your dominant failure. The comfortable shape is rarely the right one; match the failure, not your familiarity.
+- **Pick the shape that matches your dominant failure.** The comfortable shape is rarely the right one. Match the failure, not your familiarity.
 
 - **Background-agent verifier.** Separate Claude session reads the produced work and judges it. Right when the failure was qualitative (style, fit, "did the answer the question").
 - **Deterministic shell-hook.** Tests, lint, type-check, compile, custom invariant. Right when the failure has a true-false answer (broke the build, touched the wrong directory). The shell-hook shape IS a Claude Code stop-hook; you will meet the word again if you extend the verifier to fire automatically between runs.
@@ -66,19 +66,18 @@ Ask Claude to build the verifier shape that matches your dominant failure, scope
 {{prompt:diagnose-and-resend-4}}
 
 
-Read what Claude proposes. Push back if the verifier covers the wrong shape (a generic test suite when you needed a judge, or vice versa). The fit between failure shape and verifier shape is the teaching moment.
+Read what Claude proposes. Push back if the verifier covers the wrong shape (a generic test suite when you needed a judge, or the reverse). The fit between failure shape and verifier shape is the teaching moment. The verifier IS your first eval; the closing lecture names it.
 
-The verifier IS your first eval. The closing lecture names this; for now, build it.
+## Prove the verifier actually fires
 
-Before Phase 4, smoke-test that the verifier actually fires. A built-but-untested verifier is no verifier, the wiring (hook config, file paths, slash-command registration, loop trigger) is fragile and silent failures cost the next phase.
+- **A built-but-untested verifier is no verifier.** The wiring (hook config, file paths, slash-command registration, loop trigger) is fragile, and silent failures cost the next phase. Fire it once before Phase 4.
 
 {{prompt:diagnose-and-resend-5}}
 
----
+## Phase 4: Write the reference and plan.md
 
-## Phase 4: Assemble reference + plan.md
-
-Reference artefact pins the task's success criteria and points at the relevant memory, skills, and connectors. `plan.md` is the durable working document the agent re-reads when its window fills. Not the plan-mode plan; this is the agent's mutable working document during the run.
+- **The reference pins the task.** Its success criteria, and pointers to the memory, skills, and connectors that matter.
+- **plan.md is the agent's mutable working document.** Not the plan-mode plan. This is what the agent re-reads when its window fills.
 
 Ask Claude to assemble both, scoped to the same M4 task, in conversation.
 
@@ -86,7 +85,10 @@ Ask Claude to assemble both, scoped to the same M4 task, in conversation.
 
 > **Watch for slowness.** Two files rewritten between every grill turn is the slowness pattern. The prompt above locks both files until you say *lock it in.* If the agent touches either file mid-grill anyway, push back.
 
-Read both files in prose. Push back if the reference reads like generic long-running advice instead of THIS task's substance. Push back if plan.md reads like a project plan instead of an agent-mutable working document. The artefacts are for the agent to consume mid-run, not for you to admire.
+## Check both files are for the agent, not you
+
+- **Read them in prose.** Push back if the reference reads like generic long-running advice instead of THIS task's substance. Push back if plan.md reads like a project plan instead of an agent-mutable working document.
+- The artefacts are for the agent to consume mid-run, not for you to admire.
 
 ## Approve
 

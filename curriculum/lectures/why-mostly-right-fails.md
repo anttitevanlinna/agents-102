@@ -14,9 +14,7 @@ The problem is not that the whole answer is bad. The problem is that the bad par
 
 Now stretch the same idea across a workflow.
 
-If a single step is 85 percent reliable, it sounds acceptable. But ten steps at 85 percent each is about 20 percent end-to-end reliability:
-
-`0.85^10 ≈ 0.20`
+If a single step were 85 percent reliable, that would sound acceptable. But ten unverified steps in a row at 85 percent each would land near 20 percent end-to-end. The numbers are an illustration, not a measurement; the compounding is what holds.
 
 Retrieval, summary, synthesis, rewrite, citation, policy interpretation, recommendation, formatting, handoff, user action. Ten steps is not exotic. It is a normal day once agents start doing real work.
 
@@ -49,5 +47,7 @@ The team is not trying to prove Claude safe or unsafe. The team is learning whic
 <!-- maintainer -->
 
 **Lecture meta:** *6-minute mini-lecture for Claude Basics Module 2. Short concept beat before the M2 exercise. Borrowed from Agents 101 M5's groundedness lecture, compressed for Claude Basics. Do not expand into the full four-detector benchmark frame.*
+
+**Family-A alignment (2026-07-02):** the compounding passage is a worded subjunctive illustration labeled "an illustration, not a measurement"; the `0.85^10 ≈ 0.20` notation line was dropped (`theory-audit.md` § Family A). Zombie-stat guard: do not re-promote the constant to a measured figure or re-add notation.
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Homework: build and verify*

@@ -1,51 +1,68 @@
-# Extract the task-shaping rule
+# Name the rules, place the file
 
 **Time:** 12 minutes.
 
 **What you do:** read back over the plan-mode session you just ran. Ask Claude to surface three to five rules about what made *this* task plan-mode-able, what kind of multi-file work wants this treatment, what a good factoring looks like before plan mode runs on it. Save those rules to a `.md` file at a location you choose. Then ask Claude how the file could drive automated task-splitting in the future. If time remains, reverse-engineer one ticket from your task manager and see what basic field-use rules Claude can infer.
 
+**What you build:** a rules file that carries how you factored this task on this codebase. Three to five task-shaping rules, surfaced from your own session and sharpened in your own words, saved at a location you chose so it fires when you want it. The automation read stays a read: you name the shapes, you don't build them today.
+
 **The point:** the file is the artifact. You captured how *you* factored *this* task on *this* codebase. Templates stay generic; this file carries your rules. The next small lecture names three places this kind of file ends up.
 
-## Phase 1: Surface the rules from this session
+---
 
-You just ran a plan, two push-backs, a second-pass walk-down, and an approval. The decisions you made along the way carried task-shaping rules. Time to name them.
+## Phase 1: Name the rules from this session
+
+- **You already did the work; now name the rules inside it.** You ran a plan, two push-backs, a second-pass walk-down, and an approval. Each decision along the way carried a task-shaping rule about what made this task plan-mode-able.
+- **You are not on the hook for remembering it.** The agent reads the scrollback; you react to what it proposes.
 
 Ask Claude to read the scrollback, propose rules, and pause for your push-back before going further.
 
 {{prompt:extract-the-task-shaping-rule-1}}
 
 
-When Claude pauses for the rewrite-and-reject pass, that is the engagement step. The rule that arrives generic is the one that needs your hand on it.
+## Reject or rewrite the generic rule
 
-## Phase 2: Save it where you'll find it again
+- **The pause is the engagement step.** When Claude pauses for the rewrite-and-reject pass, that is where your hand goes on the work.
+- **The generic rule is the tell.** The rule that arrives generic, like "pick tasks that span multiple files," is the one that needs rewriting into your words, or rejecting.
 
-Decide the location with Claude. The dimension that matters is when the rules fire, anywhere on this laptop (user-level), or only when this repo is open (repo-personal). Claude carries the path taxonomy; you carry the choice.
+## Phase 2: Pick where the file fires
+
+- **The choice is when the rules fire, not where the bytes sit.** Anywhere on this laptop (user-level), or only when this repo is open (repo-personal).
+- **Claude carries the path taxonomy; you carry the choice.**
+
+Decide the location with Claude.
 
 {{prompt:extract-the-task-shaping-rule-2}}
 
 
-If the agent proposes a path other than `./CLAUDE.local.md`, `./CLAUDE.md`, or `~/.claude/CLAUDE.md`, ask Claude to also propose the `@import` line that wires the file in. A rule at `~/.claude/memory/task-shaping.md` (or any notes folder) sits silently on disk until something reads it; adding `@~/.claude/memory/task-shaping.md` to `~/.claude/CLAUDE.md` is what makes "fires anywhere on this laptop" actually fire.
+## Wire the file in, check the wording
 
-Read the three rules Claude shows back. If any drifted from your wording, push back and have Claude rewrite.
+- **A rule off the auto-load path needs a wire.** If the agent proposes a path other than `./CLAUDE.local.md`, `./CLAUDE.md`, or `~/.claude/CLAUDE.md`, ask Claude to also propose the `@import` line that wires the file in. A rule at `~/.claude/memory/task-shaping.md` (or any notes folder) sits silently on disk until something reads it; adding `@~/.claude/memory/task-shaping.md` to `~/.claude/CLAUDE.md` is what makes "fires anywhere on this laptop" actually fire.
+- **Read the three rules back.** If any drifted from your wording, push back and have Claude rewrite.
 
-## Phase 3: Automating refinement
+## Phase 3: Name the automation shapes, don't build them
 
-Refinement is the backlog-grooming loop: sizing, splitting, and sharpening tickets before they're worked. The prompt asks for shapes, not code. "This rules file" means the `.md` file you saved in Phase 2. The first automation attempt starts by pointing an agent at that file and one input stream: a Slack channel, an issue queue, or a backlog export.
+- **Refinement is the backlog-grooming loop.** Sizing, splitting, and sharpening tickets before they're worked.
+- **The prompt asks for shapes, not code.** "This rules file" means the `.md` file you saved in Phase 2. The first automation attempt points an agent at that file and one input stream: a Slack channel, an issue queue, or a backlog export.
 
-{{prompt:extract-the-task-shaping-rule-3}}
+{{cut:extract-the-task-shaping-rule-3|low-yield}}
 
 
-Read the answer. The next small lecture walks the same shapes with the trigger and runtime for each.
+## Read the shapes, hold the build
 
-## Optional: Reverse-engineer your task manager
+- **Read the answer as a map, not a mandate.** The next small lecture walks the same shapes with the trigger and runtime for each.
 
-If there is time left, open one real ticket from Jira, Linear, GitHub Issues, Azure Boards, or whatever your team uses. Copy the ticket into Claude with the visible fields, title, description, comments, and links. One ticket is enough for a first read.
+## Optional: Read the rules hiding in one real ticket
+
+- **One ticket is enough for a first read.** If there is time left, open one real ticket from Jira, Linear, GitHub Issues, Azure Boards, or whatever your team uses. Copy the ticket into Claude with the visible fields: title, description, comments, and links.
 
 Then ask Claude to infer how the fields are being used.
 
-{{prompt:extract-the-task-shaping-rule-4}}
+{{cut:extract-the-task-shaping-rule-4|project-admin}}
 
-Read the output as a first pass, not a policy. One ticket can reverse-engineer basic rules: which fields matter, which labels carry meaning, which wording signals "too big," which status changes imply ownership. If backlog refinement is your first automation attempt, these field-use rules become the first add-on to the Phase 2 `.md` file, or a small companion file beside it. Iterate for depth. Three to five tickets from different work types will surface stronger rules than one ticket, and Claude should keep separating strong signals from guesses as the sample grows.
+- **One ticket gives basic rules, not policy.** Which fields matter, which labels carry meaning, which wording signals "too big," which status changes imply ownership.
+- **The rules fold back into the file.** If backlog refinement is your first automation attempt, these field-use rules become the first add-on to the Phase 2 `.md` file, or a small companion file beside it.
+- **Depth comes from more tickets.** Three to five tickets from different work types surface stronger rules than one ticket, and Claude should keep separating strong signals from guesses as the sample grows.
 
 **What happened:** Claude read the scrollback and proposed the rules. You rewrote or rejected at least one. You named the file and the path. Claude wrote it. You asked one open question about where the file could go next. Claude proposed shapes. You read. Optionally: you pasted one real ticket, and Claude inferred how your team seems to use fields like status, labels, priority, component, estimate, owner, and epic.
 

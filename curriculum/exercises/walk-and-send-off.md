@@ -12,95 +12,95 @@ Start a new Claude Code session at your repo root.
 
 **Start clean.** M4 picks up a bigger task than M1–M3. Before the new session, check your working tree and branch. You ride that state into Phase 4's `m4/<slug>` commit and M5's fork.
 
-**What you do:** Pick a task you've been avoiding, the kind you'd send off rather than nudge bit by bit. Walk what you've built across four modules against it. Fill the worst gaps. See Huryn's three-block frame in your own material. At Debrief, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
+**What you do:** Pick a task you've been avoiding, the kind you'd send off rather than nudge bit by bit. Walk what you've built across four modules against it. Fill the worst gaps. See Huryn's three-block frame in your own material. At the close, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
+
+**What you build:** three things a long run can ride: a scoped task with a 'done' you can name in a sentence, the worst gaps filled in `observations/` and your rules file, and your own material sorted into three blocks (observation, decision, criterion) with the tree settled. Then it goes off un-packaged.
 
 **The point:** This is the first experiment of a two-run arc. The un-packaged send-off here teaches Module 5 what packaging adds, a lesson no lecture can land. Every send-off is a test, not a production run; you are testing and you are learning.
 
 ---
 
-## Phase 1: Pick the task
+## Phase 1: Pick the task you'll send off
 
-Start a new Claude Code session in your repo. One or two candidate tasks come in with you (Connections). Claude screens them: it can't scan your roadmap or Jira, and that stays your call. The picking work is your judgement about what's been sitting; Claude's job is to check fit.
-
-**Not an epic. Not a typo-fix. A real slice you'd send off rather than nudge bit by bit, with a 'done' you can name in a sentence.**
+- **Not an epic. Not a typo-fix.** A real slice you'd send off rather than nudge bit by bit, with a 'done' you can name in a sentence.
+- **The pick is yours; the fit-check is the agent's.** You are not on the hook for scanning your roadmap or Jira; that stays your call. Bring one or two candidates; the agent screens them for fit against the three long-run criteria.
 
 Ask Claude to screen the candidates you bring against the three long-run criteria and scope the winner. Drop the candidates after the colon.
 
 {{prompt:walk-and-send-off-1}}
 
+## Push back until the task is one end-to-end slice
 
-Push back when the read misses something about the codebase. Claude is reading the shape, not the substance. If you catch yourself imagining a finished demo for a candidate, you've scoped too big; slice it down to one end-to-end thing the agent can chew on.
+- **Push back when the read misses the codebase.** The agent is reading the shape, not the substance.
+- **Imagining a finished demo means you scoped too big.** Slice it down to one end-to-end thing the agent can chew on.
+- **Pick one task well.** You'll use it again next module.
 
-**The point:** pick one task well. You'll use it again next module.
+## Phase 2: Build the ranked list of what will hurt the agent
 
----
+- **The audit walks your whole system so you don't.** The agent reads `CLAUDE.md`, `CLAUDE.local.md`, memory, ADRs, and any skills you've authored as a subagent, then ranks the five thin spots that will hurt the agent most on this task.
 
-## Phase 2: Walk and fill
-
-### Run the audit
-
-Ask Claude to audit your system as a subagent and return a ranked top-5 of what will hurt the agent most on this task.
+Ask Claude to run the audit as a subagent and return a ranked top-five.
 
 {{prompt:walk-and-send-off-2}}
 
-Heavy run expected. Skim past the opening summary, look for the ranked thin-spots list, that's the payoff.
+## Read the ranked thin-spots
 
-Read the ranked list. Name which ones you already knew about, which surprised you. **Framework**: this is *gap analysis*, walk the system you have against the system the task needs. You'll use it forever for every agent hand-off.
+- **Heavy run expected.** Skim past the opening summary; the ranked thin-spots list is the payoff.
+- **Name which ones you already knew, which surprised you.** This move is *gap analysis*: walk the system you have against the system the task needs. You'll use it for every agent hand-off.
 
-### Fill the gaps
+## Fill the worst two or three gaps
 
-Pick the ones that will hurt the agent most (probably two or three, not all five). You'll see next module what the others were for.
-
-Observation-path note, first time through: the default home is `observations/` in your repo, gitignored. If your team kit pins a different path, stay consistent with it. Tell Claude which one and move on.
-
-**If `observations/` is new to your repo, ask Claude to add it to `.gitignore` before any writes.** The fills below land there; you don't want them tracked.
-
-The agent reads `observations/` when a prompt names the path, the same way it reads your ADRs. It is not auto-loaded the way `CLAUDE.md` and `CLAUDE.local.md` are. The three blocks you'll arrange below live across this folder, your ADRs, and your skills; `observations/` holds the first.
+- **Pick the ones that will hurt the agent most, probably two or three, not all five.** You'll see next module what the others were for.
+- **New observations land in `observations/`, gitignored.** That's the default home. If your team kit pins a different path, tell Claude which one and stay consistent with it. If `observations/` is new to your repo, ask Claude to add it to `.gitignore` before any writes; the fills below land there and you don't want them tracked.
+- **The agent reads `observations/` when a prompt names the path**, the same way it reads your ADRs. It is not auto-loaded the way `CLAUDE.md` and `CLAUDE.local.md` are. It holds the first of the three blocks you'll arrange in Phase 3.
 
 Ask Claude to walk you through the picked gaps one at a time, using the AskUserQuestion tool to scaffold the flow.
 
 {{prompt:walk-and-send-off-3}}
 
-A fill looks like one of these shapes (the audit at Phase 2 tags each gap with one):
+A fill looks like one of these shapes (the audit tags each gap with one):
 
 - **Observation or rule:** *"Add this to observations: the payments service treats idempotency keys case-sensitively even though the docs don't say so."* Lands in `observations/`.
 - **Sharpen an existing rule:** *"In my `CLAUDE.local.md`, under 'testing', replace the current mocking rule with one that says: integration tests hit a real Postgres in Docker; unit tests mock at the service boundary, never at the repository."* Lands in `./CLAUDE.local.md`. (Team-worthy version would go in a PR against `CLAUDE.md` separately.)
 - **Wire a connector:** if the task needs something only a connector reaches (issue tracker, staging logs, internal API), wire it now while the task is on your mind, not mid-run. Claude Code action, not a file write.
 - **Name a business-rules gap:** if the task touches customer segments, regulatory scope, or team commitments and you don't have that written anywhere Claude can read, *the gap IS the finding*. Write one line in observations naming what's missing and where the real material lives (external wiki, team Notion, sponsor's head). Claude knows what it doesn't know. That's still context. Lands in `observations/`.
 
-Push back when Claude writes something that doesn't match the codebase. Your observations are what you just admitted is thin in spots; don't let them re-seed with drift.
+## Push back when a fill drifts from the codebase
 
----
+- **Your observations are what you just admitted is thin in spots.** Don't let them re-seed with drift. Push back when Claude writes something that doesn't match the codebase.
 
 > **Time check.** Different paces hit this beat at different times. The room doesn't wait for the slowest. Five to ten minutes to share what surfaced, where the audit missed, and why the agent sometimes goes lazy.
 
-## Phase 3: See the frame
+## Phase 3: Name your own work as observation, decision, and criterion
 
-Ask Claude to rearrange your observations, ADRs, and skill into Huryn's three blocks, quoting your own work for each block before naming the frame.
+- **The frame names what you've been building; it's not a template you fill.** This is *Huryn's three-block memory*. The agent rearranges your observations, ADRs, and skill into the three blocks, quoting your own work for each block before it names the frame.
 
-{{prompt:walk-and-send-off-4}}
+Ask Claude to rearrange your observations, ADRs, and skill into the three blocks, quoting your own work for each block before naming the frame.
 
-Skim past the opening summary, look for the quoted-example-per-block payoff, that's where the three blocks earn their names.
+{{cut:walk-and-send-off-4|meta-retrospective}}
 
-Read the examples first. If they're from your own files, the frame should click. If it doesn't, ask Claude to quote different examples until one does.
+## Read the quoted examples first
 
-Once the frame is named through your own material, let Claude propose the actual rearrangement. Keep it inside `./observations/` and cap it at one or two file moves or renames; leave the ADRs and skills where they are, and larger reorganisation is a separate session, not a mid-module sweep. When the proposal looks right, tell Claude to make the moves and show you the diff. The send-off fires next, so the tree wants to be settled on disk, not just planned in chat.
+- **Skim past the opening summary to the quoted-example-per-block payoff.** That's where the three blocks earn their names.
+- **If the examples are from your own files, the frame should click.** If it doesn't, ask Claude to quote different examples until one does.
 
-**Framework**: Huryn's three-block memory. Not a template you fill; a frame that names what you've been building.
+## Settle the tree before the send-off
 
-The frame shows information progressing: an observation or hunch hardens into a rule, and a rule into a criterion you hold shipped code to. Consider how your own rules evolve along that arc, and whether each one is stored where it will fire.
+- **Let Claude propose the rearrangement once the frame is named through your own material.** Keep it inside `./observations/` and cap it at one or two file moves or renames. Leave the ADRs and skills where they are; larger reorganisation is a separate session, not a mid-module sweep.
+- **Ask to see the diff before it lands.** The send-off fires next, so the tree wants to be settled on disk, not just planned in chat.
+- **The frame shows information hardening:** an observation or hunch becomes a rule, and a rule becomes a criterion you hold shipped code to. Consider whether each rule is stored where it will fire.
 
-**What happened:** You picked a real task you'd send off rather than nudge bit by bit. You walked what you'd built across four modules against it, filled the worst gaps, and let Claude rearrange observations and ADRs into Huryn's three blocks against your own material. The frame named what was already there. Phase 3 ended with the tree settled before the Debrief's send-off.
+**What happened:** You picked a real task you'd send off rather than nudge bit by bit. You walked what you'd built across four modules against it, filled the worst gaps, and let Claude rearrange observations and ADRs into three blocks against your own material. The frame named what was already there. Phase 3 ended with the tree settled before the send-off.
 
----
+## What closes the module (owned by the module file's send-off)
 
-## What closes the module (owned by the module's Debrief section)
-
-Phase 3 is where the exercise ends. The module's Debrief takes over:
+Phase 3 is where the exercise ends. The module file's send-off takes over:
 
 1. You nudge the compound step: Claude reads the session, rewrites your personal `CLAUDE.local.md` from evidence, integrates, sharpens, removes, and reports 3–5 lines. Team-worthy rules get flagged in the summary, not auto-PRed.
 2. You push back on the 3–5 line summary.
-3. You paste the send-off prompt to the same session. Keep the laptop awake and plugged in. Don't close the lid; sleep freezes the session and it won't resume on wake. If you want to stop the run early, wait for a tool call to finish; clean interrupts between tool calls are fine. Traces are data either way.
+3. You set the two return markers: ask Claude where this session's transcript lives, then ask it to commit the current state on a feature branch and report the short SHA. Push the branch if you want the run to outlast your laptop. Module 5 forks from that commit and reads the transcript.
+4. You run the trifecta check: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening prompt injection needs. All three present here, cut one leg before you send.
+5. You paste the send-off prompt to the same session. Keep the laptop awake and plugged in. Don't close the lid; sleep freezes the session and it won't resume on wake. If you want to stop the run early, wait for a tool call to finish; clean interrupts between tool calls are fine. Traces are data either way.
 
 <!-- maintainer -->
 
@@ -160,3 +160,5 @@ Phase 3 is where the exercise ends. The module's Debrief takes over:
 - Package-pre-empt at Debrief — the highest-probability module-specific failure.
 
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
+
+**2026-07-03** — `## What closes the module` re-aligned to the module file's `## Send the task off` flow, per refuter close-out-drift finding. Two fixes: (1) relabeled off "Debrief" — `run-the-first-experiment.md` says "No Debrief; the send-off is the close of the work", so the close heading + intro, the `**What you do:**` overview, and the `**What happened:**` recap now name the module file's send-off / "the close", not a Debrief section (same mislabel in three body spots); (2) the two beats the module file carries at close but this list omitted were added in true order — the transcript/commit return markers (new step 3) and the trifecta cut-one-leg check (new step 4, before the send-off paste). The existing compound and push-back beats were kept and the list shape preserved; the finding was missing-beats + mislabel, not the step set. Prose-only; no `{{prompt}}` markers touched (the send-off, transcript, and commit prompts live in the module file, not here). Reconcile-in-sweep: this maintainer block, `**Time budget total:**`, and `**Send-off mechanism (Debrief step 3)**` still say "Debrief", and the last now maps to step 5 after the renumber — left for a maintainer-label sweep to avoid touching trainer metadata in a prose-fix batch.

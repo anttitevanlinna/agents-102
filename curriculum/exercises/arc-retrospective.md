@@ -1,30 +1,36 @@
-# Arc retrospective
+# Name the arc
 
 **Time:** 15–20 minutes.
 
-**What you do:** Ask an agent to read everything you've authored across the training and write a one-page note on what changed. The agent names the arc from your own evidence, not a template.
+**What you do:** Ask Claude to read everything you've authored across the training and write a one-page note on what changed. The agent names the arc from your own evidence, not a template.
 
-**The point:** The throughline of the training is that everything is scaling of learning. Each module's loop is the same loop at a wider scope. That's only visible retrospectively, and only from your own artefacts. The agent's job here is to name the arc so you see it too.
+**What you build:** one piece: a one-page note that names how your way of working changed across the six modules. It is written from your own artefacts and quoted back to you, not assembled from a template.
+
+**The point:** The throughline of the training is that everything is scaling of learning. Each module's loop is the same loop at a wider scope. That is only visible retrospectively, and only from your own artefacts. The agent's job here is to name the arc so you see it too.
 
 > **Quick timebox note.** The read across Modules 1–6 artefacts is wide; the beat stays short. One arc-reading pass, one push-back, save or drop. If the agent's note reads true, save. If it reads thin after one re-draft, drop. Dropping is not the soft option; it is a signal your artefacts did not carry the density the read needed. Note that and move on. No perfect note to chase. The arc is yours; the note is just the agent helping you see it.
 
 ---
 
-**Note** This continues in the same session that ran the Module 6 Phase 1 + 2 work, in the Module 5 worktree. No new session. The fresh, uncoloured view comes from the sub-task the prompt spawns.
+## Point the agent at all six modules' artefacts
 
-The artefacts across all six modules, `CLAUDE.local.md`, `observations/`, ADRs, both authored skills, both runs' commits, are accessible via git refs and the worktree state. Both runs' branch names and transcript paths are recorded on disk: M4 in `task.md`, M5 in `plan.md`'s protected `Run coordinates` block. Ask the agent to walk them and write the arc from them.
+- **You stay in the same session, in the M5 worktree.** This continues the session that ran the Module 6 work. No new session. The fresh, uncoloured view comes from a sub-task the prompt spawns: a separate read the agent runs with clean context, so the arc is not coloured by this conversation.
+- **Everything you authored is on disk.** The artefacts across all six modules live in the worktree: `CLAUDE.local.md`, `observations/`, ADRs, both authored skills, both runs' commits, all reachable via git refs and the worktree state.
+- **The run coordinates are recorded too.** Both runs' branch names and transcript paths sit on disk: M4 in `task.md`, M5 in `plan.md`'s protected `Run coordinates` block.
+- **You hold the arc; the agent walks the files.** You are not re-reading six modules of code. The agent walks the artefacts and writes the read.
 
-{{prompt:arc-retrospective-1}}
+Ask Claude to spawn a fresh sub-task, walk every artefact, and write the arc from your own evidence.
 
-Claude will likely open with a plan-summary paragraph (*"I'll dispatch the sub-task, then combine findings..."*) before any read happens. Skim past the opening; the note is what you're reading for.
+{{cut:arc-retrospective-1|meta-retrospective}}
 
-If the read runs ten minutes plus, interrupt with *"enough. just tell me now."*, you have what the agent has assembled so far, and that's the read.
+## Read the note, push back, keep it if it's true
 
-Read the note. That's the read of your six modules from outside the work.
+- **Skim past the opening.** Claude will likely open with a plan-summary paragraph (*"I'll dispatch the sub-task, then combine findings..."*) before any read happens. The note is what you are reading for.
+- **Cap the read; do not chase it.** If the read runs ten minutes plus, interrupt with *"enough. just tell me now."* What the agent has assembled so far is the read of your six modules from outside the work.
+- **Push back on one line.** Find one sentence in the note that is not true to your experience, and have the agent revise from the correction. One re-draft, not five.
+- **Keep it if it reads true; drop it if it reads thin.** If the note reads true, save it; you will have your agent re-read it the next time a long task stalls. If it still reads thin after the re-draft, drop it and move on.
 
-If the note reads true, save it. You'll have your agent re-read it when the next long task stalls.
-
-**What happened:** You ended with a short written note in your repo (ADR-shaped or a loose memo, your call) that named how your practice changed across the modules. The agent read across all six modules' artefacts and wrote the arc from your own evidence, not a template.
+**What happened:** A short note now sits in your repo, ADR-shaped or a loose memo, your call. It names how your way of working changed across the modules, read from your own artefacts and quoted back to you, not from a template.
 
 <!-- maintainer -->
 
@@ -47,7 +53,7 @@ If the note reads true, save it. You'll have your agent re-read it when the next
 - **Agent-as-mirror** — lets the artefacts do the talking, not the trainer. Extends the M4 audit-as-subagent move (fresh context, structured return) to a retrospective frame.
 
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
-- reopens the saved arc note (and feeds it back to the agent) the next time a long agent run stalls, instead of re-deriving where their practice stands cold
+- reopens the saved arc note (and feeds it back to the agent) the next time a long agent run stalls, instead of re-deriving where their approach stands cold
 - spawns a fresh sub-task agent to read across their own real project artefacts and write the state-of-play from quoted files, not a template summary
 - corrects at least one sentence the agent got wrong about their own arc and has it revise from the correction, rather than saving the first draft
 

@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proto 03 · Orienteering course</title>
+<style>
+  body { margin: 0; background: #faf6ec; font-family: Inter, -apple-system, "Segoe UI", sans-serif; color: #1f1a13; }
+  .wrap { max-width: 1240px; margin: 24px auto 48px; padding: 0 20px; }
+  header.proto { display: flex; align-items: baseline; gap: 14px; padding: 8px 2px 10px; border-bottom: 1px solid #c5b68d; margin-bottom: 14px; }
+  header.proto .id { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 10px; letter-spacing: 3px; color: #a05a2c; }
+  header.proto .name { font-family: "Roboto Slab", Georgia, serif; font-size: 15px; color: #1f1a13; white-space: nowrap; }
+  header.proto .line { font-size: 11.5px; color: #4a4234; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="proto">
+  <span class="id">PROTO 03 · ORIENTEERING COURSE</span>
+  <span class="name">Control points</span>
+  <span class="line">One run drawn as a pre-set course: numbered controls collapse the drift that grows between them; fences sit only on the cliff and the fast water; the runner who skips the controls ends in the ravine.</span>
+</header>
+
+<svg viewBox="0 0 1200 560" role="img" aria-label="One agent run drawn as an orienteering course: a start triangle, numbered controls that collapse the growing drift, rust fences along the cliff and the fast water, and an unchecked ghost run drifting through the fence gap into the ravine." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:6px;">
+<defs>
+  <pattern id="oc-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(0)">
+    <path d="M0,8 L8,0" stroke="#8a3a2a" stroke-width="0.7" stroke-opacity="0.3"/>
+  </pattern>
+</defs>
+<rect x="0.5" y="0.5" width="1199" height="559" rx="7" fill="#efe6d2"/>
+
+<!-- ── terrain: contours + vegetation ─────────────────────────── -->
+<g fill="none" stroke="#d6c8a3" stroke-width="1" opacity="0.55">
+  <path d="M20,152 C160,122 300,162 420,142"/>
+  <path d="M700,92 C820,112 960,82 1180,112"/>
+  <path d="M60,472 C160,462 260,472 360,464"/>
+  <path d="M850,122 C880,98 960,98 990,122 C960,144 880,144 850,122 Z"/>
+</g>
+<g stroke="#cbbd98" stroke-width="1" opacity="0.9" stroke-linecap="round">
+  <g transform="translate(80,205)"><path d="M-4,4 L-2,-4 M0,5 L0,-5 M4,4 L2,-4"/></g>
+  <g transform="translate(185,425)"><path d="M-4,4 L-2,-4 M0,5 L0,-5 M4,4 L2,-4"/></g>
+  <g transform="translate(335,118)"><path d="M-4,4 L-2,-4 M0,5 L0,-5 M4,4 L2,-4"/></g>
+  <g transform="translate(645,148)"><path d="M-4,4 L-2,-4 M0,5 L0,-5 M4,4 L2,-4"/></g>
+  <g transform="translate(1138,258)"><path d="M-4,4 L-2,-4 M0,5 L0,-5 M4,4 L2,-4"/></g>
+  <g transform="translate(1030,90)"><path d="M-4,4 L-2,-4 M0,5 L0,-5 M4,4 L2,-4"/></g>
+</g>
+
+<!-- ── the stream (fast water) + bridge ───────────────────────── -->
+<path d="M592,60 C576,140 612,200 580,268 C562,308 540,370 516,478" fill="none" stroke="#2f6b6b" stroke-width="10" opacity="0.10" stroke-linecap="round"/>
+<path d="M592,60 C576,140 612,200 580,268 C562,308 540,370 516,478" fill="none" stroke="#2f6b6b" stroke-width="1.2" opacity="0.3"/>
+<!-- bridge marks -->
+<g stroke="#4a4234" stroke-width="1.6" opacity="0.85">
+  <path d="M548,302 L580,296"/>
+  <path d="M551,316 L583,310"/>
+</g>
+<text x="536" y="340" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" letter-spacing="2" fill="#786c56">BRIDGE</text>
+
+<!-- ── the ravine (irreversible ground) ───────────────────────── -->
+<path d="M885,478 C980,432 1080,400 1184,368 L1184,478 Z" fill="url(#oc-hatch)"/>
+<path d="M885,478 C980,432 1080,400 1184,368 L1184,478 Z" fill="#a05a2c" opacity="0.05"/>
+<path d="M885,478 C980,432 1080,400 1184,368" fill="none" stroke="#a05a2c" stroke-width="1.1" opacity="0.5"/>
+<text x="940" y="466" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" letter-spacing="2" fill="#786c56">THE RAVINE</text>
+
+<!-- ── rails: ticked fences at the two irreversible edges ─────── -->
+<!-- fence west of the fast water, gap at the bridge -->
+<g fill="none" stroke="#a05a2c">
+  <path d="M574,140 C562,180 596,208 566,262 C560,278 556,290 552,298" stroke-width="1.6" opacity="0.8" stroke-linecap="round"/>
+  <path d="M574,140 C562,180 596,208 566,262 C560,278 556,290 552,298" stroke-width="9" opacity="0.55" stroke-dasharray="1.6 13" stroke-linecap="butt"/>
+  <path d="M548,320 C540,342 534,360 528,382" stroke-width="1.6" opacity="0.8" stroke-linecap="round"/>
+  <path d="M548,320 C540,342 534,360 528,382" stroke-width="9" opacity="0.55" stroke-dasharray="1.6 13" stroke-linecap="butt"/>
+</g>
+<!-- fence above the cliff edge, one gap -->
+<g fill="none" stroke="#a05a2c">
+  <path d="M876,464 C940,432 990,410 1022,400" stroke-width="1.6" opacity="0.8" stroke-linecap="round"/>
+  <path d="M876,464 C940,432 990,410 1022,400" stroke-width="9" opacity="0.55" stroke-dasharray="1.6 13" stroke-linecap="butt"/>
+  <path d="M1058,392 C1090,384 1120,376 1150,366" stroke-width="1.6" opacity="0.8" stroke-linecap="round"/>
+  <path d="M1058,392 C1090,384 1120,376 1150,366" stroke-width="9" opacity="0.55" stroke-dasharray="1.6 13" stroke-linecap="butt"/>
+</g>
+<text x="1040" y="380" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" letter-spacing="2" fill="#786c56">THE GAP</text>
+
+<!-- ── ghost run: no controls punched, spread never resets ────── -->
+<path d="M100,352 C250,360 400,368 540,372 C680,376 800,372 900,362 C980,354 1030,356 1075,368"
+      fill="none" stroke="#786c56" stroke-width="0.9" opacity="0.35" stroke-dasharray="2 6"/>
+<path d="M100,352 C245,388 390,418 530,432 C670,446 790,452 890,450 C970,448 1040,446 1110,462"
+      fill="none" stroke="#786c56" stroke-width="0.9" opacity="0.35" stroke-dasharray="2 6"/>
+<path d="M100,352 C250,360 400,368 540,372 C680,376 800,372 900,362 C980,354 1030,356 1075,368 L1110,462 C1040,446 970,448 890,450 C790,452 670,446 530,432 C390,418 245,388 100,352 Z"
+      fill="#786c56" opacity="0.05"/>
+<path d="M100,352 C250,374 390,394 520,402 C660,412 760,414 850,410 C930,407 990,402 1038,398 C1062,404 1086,416 1102,430"
+      fill="none" stroke="#786c56" stroke-width="2" opacity="0.55" stroke-dasharray="6 5" stroke-linecap="round"/>
+<polygon points="552,409 566,403 552,397" fill="#786c56" opacity="0.6"/>
+<polygon points="856,417 870,410 856,404" fill="#786c56" opacity="0.6"/>
+<!-- wrong-spot X -->
+<g stroke="#8a3a2a" stroke-width="2.6" opacity="0.8" stroke-linecap="round">
+  <path d="M1094,422 L1110,438"/>
+  <path d="M1110,422 L1094,438"/>
+</g>
+
+<!-- ── the run: drift envelopes (spread grows, collapses) ─────── -->
+<g fill="#2f6b6b" opacity="0.07">
+  <path d="M100,352 Q190,275 298,226 Q208,302 100,352 Z"/>
+  <path d="M298,226 Q396,271 470,350 Q371,305 298,226 Z"/>
+  <path d="M470,350 Q511,316 563,308 Q680,228 820,250 Q703,330 563,308 Q522,342 470,350 Z"/>
+  <path d="M820,250 Q894,275 950,330 Q876,305 820,250 Z"/>
+  <path d="M950,330 Q995,245 1060,175 Q1015,259 950,330 Z"/>
+</g>
+<!-- flank strands: the loose braid -->
+<g fill="none" stroke="#2f6b6b" stroke-width="1.1" opacity="0.5" stroke-linecap="round">
+  <path d="M100,352 Q190,275 298,226"/>
+  <path d="M100,352 Q208,302 298,226"/>
+  <path d="M298,226 Q396,271 470,350"/>
+  <path d="M298,226 Q371,305 470,350"/>
+  <path d="M470,350 Q511,316 563,308 Q680,228 820,250"/>
+  <path d="M470,350 Q522,342 563,308 Q703,330 820,250"/>
+  <path d="M820,250 Q894,275 950,330"/>
+  <path d="M820,250 Q876,305 950,330"/>
+  <path d="M950,330 Q995,245 1060,175"/>
+  <path d="M950,330 Q1015,259 1060,175"/>
+</g>
+<!-- hero path: the corrected run -->
+<path d="M100,352 C150,322 180,300 222,268 C250,246 274,240 298,226
+         C340,260 350,296 396,314 C424,326 448,338 470,350
+         C502,342 534,326 563,308 C648,288 700,302 750,284 C782,272 802,262 820,250
+         C860,270 880,296 912,306 C928,312 940,320 950,330
+         C975,290 990,262 1012,234 C1030,212 1046,192 1060,175"
+      fill="none" stroke="#2f6b6b" stroke-width="2.6" opacity="0.92" stroke-linecap="round" stroke-linejoin="round"/>
+<g fill="#2f6b6b" opacity="0.92">
+  <polygon points="206,287 218,276 203,273"/>
+  <polygon points="652,301 668,295 653,288"/>
+  <polygon points="1016,229 1000,238 1010,248"/>
+</g>
+
+<!-- drift measurement bracket at widest spread -->
+<g stroke="#786c56" stroke-width="0.9" opacity="0.8" fill="none">
+  <path d="M695,256 L695,302"/>
+  <path d="M691,256 L699,256"/>
+  <path d="M691,302 L699,302"/>
+</g>
+
+<!-- ── controls: punched in order ─────────────────────────────── -->
+<g fill="none" stroke="#a05a2c" stroke-width="1.8">
+  <circle cx="298" cy="226" r="10"/>
+  <circle cx="470" cy="350" r="10"/>
+  <circle cx="820" cy="250" r="10"/>
+  <circle cx="950" cy="330" r="10"/>
+</g>
+<g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="1" fill="#8a3a2a" text-anchor="middle">
+  <text x="281" y="212">1</text>
+  <text x="450" y="370">2</text>
+  <text x="838" y="238">3</text>
+  <text x="930" y="352">4</text>
+</g>
+
+<!-- start triangle -->
+<polygon points="110.1,345.6 100.5,364 89.4,346.5" fill="none" stroke="#a05a2c" stroke-width="1.8"/>
+<!-- finish double circle -->
+<g fill="none" stroke="#a05a2c">
+  <circle cx="1060" cy="175" r="13" stroke-width="1.6"/>
+  <circle cx="1060" cy="175" r="8" stroke-width="1.8"/>
+</g>
+
+<!-- ── labels ─────────────────────────────────────────────────── -->
+<text x="30" y="90" font-family="Roboto Slab, Georgia, serif" font-size="15.5" fill="#1f1a13">The course</text>
+<text x="30" y="107" font-family="Inter, sans-serif" font-size="11" fill="#4a4234">checks placed before the run, punched in order</text>
+
+<g text-anchor="middle">
+  <text x="100" y="388" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" letter-spacing="2.5" fill="#1f1a13">START</text>
+  <text x="100" y="403" font-family="Inter, sans-serif" font-size="11" fill="#4a4234">course set before the run</text>
+
+  <text x="1060" y="132" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="17" fill="#1f1a13">Done, defined.</text>
+  <text x="1060" y="150" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" letter-spacing="2.5" fill="#a05a2c">THE SPOT</text>
+
+  <text x="298" y="176" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" letter-spacing="2.5" fill="#2f6b6b">CHECK</text>
+  <text x="298" y="191" font-family="Inter, sans-serif" font-size="11" fill="#4a4234">the spread collapses to a point</text>
+
+  <text x="695" y="332" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" letter-spacing="2.5" fill="#2f6b6b">DRIFT</text>
+  <text x="695" y="347" font-family="Inter, sans-serif" font-size="11" fill="#4a4234">spread grows with distance since last check</text>
+
+  <text x="478" y="118" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" letter-spacing="2.5" fill="#a05a2c">RAILS</text>
+  <text x="478" y="133" font-family="Inter, sans-serif" font-size="11" fill="#4a4234">fast water: cross at the bridge only</text>
+
+  <text x="872" y="376" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" letter-spacing="2.5" fill="#a05a2c">RAILS</text>
+  <text x="872" y="391" font-family="Inter, sans-serif" font-size="11" fill="#4a4234">the cliff: no undo below</text>
+
+  <text x="245" y="438" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" letter-spacing="2.5" fill="#786c56">OPEN GROUND</text>
+  <text x="245" y="453" font-family="Inter, sans-serif" font-size="11" fill="#786c56">cheap to wander: no fence</text>
+
+  <text x="690" y="456" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" letter-spacing="2.5" fill="#786c56">THE UNCHECKED RUN</text>
+  <text x="690" y="470" font-family="Inter, sans-serif" font-size="11" fill="#786c56">same start, no controls punched</text>
+
+  <text x="1102" y="454" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" letter-spacing="2.5" fill="#8a3a2a">WRONG SPOT</text>
+  <text x="1102" y="468" font-family="Inter, sans-serif" font-size="11" fill="#4a4234">arrived sure of it</text>
+</g>
+
+<!-- ── course card strip ──────────────────────────────────────── -->
+<rect x="16" y="490" width="1168" height="54" rx="4" fill="#e9ddc0" opacity="0.55" stroke="#c5b68d" stroke-width="1"/>
+<text x="32" y="508" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" letter-spacing="2.5" fill="#a05a2c">COURSE CARD</text>
+<text x="146" y="508" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" letter-spacing="2" fill="#786c56">· SET BEFORE THE RUN</text>
+<text x="1168" y="508" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" letter-spacing="2" fill="#a05a2c">PUNCHED IN ORDER · NONE SKIPPED</text>
+<g>
+  <g fill="none" stroke="#4a4234" stroke-width="1.1">
+    <rect x="32" y="521" width="10" height="10" rx="1.5"/>
+    <rect x="200" y="521" width="10" height="10" rx="1.5"/>
+    <rect x="396" y="521" width="10" height="10" rx="1.5"/>
+    <rect x="590" y="521" width="10" height="10" rx="1.5"/>
+  </g>
+  <g fill="none" stroke="#2f6b6b" stroke-width="1.6" stroke-linecap="round">
+    <path d="M34,526 L37,529.5 L41,522.5"/>
+    <path d="M202,526 L205,529.5 L209,522.5"/>
+    <path d="M398,526 L401,529.5 L405,522.5"/>
+    <path d="M592,526 L595,529.5 L599,522.5"/>
+  </g>
+  <g fill="none" stroke="#a05a2c">
+    <circle cx="808" cy="526" r="7.5" stroke-width="1.2"/>
+    <circle cx="808" cy="526" r="4.5" stroke-width="1.3"/>
+  </g>
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" letter-spacing="1.5" fill="#1f1a13">
+    <text x="48" y="530">1 · TESTS GREEN</text>
+    <text x="216" y="530">2 · SPEC STILL TRUE</text>
+    <text x="412" y="530">3 · NOTHING LEAKED</text>
+    <text x="606" y="530">4 · DIFF READS CLEAN</text>
+    <text x="822" y="530">THE SPOT · DONE, DEFINED</text>
+  </g>
+</g>
+</svg>
+</div>
+</body>
+</html>

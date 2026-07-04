@@ -1,70 +1,78 @@
-# *Push back* on the plan
+# Sharpen the plan with *two reads*
 
 **Time:** 60 minutes.
 
 **What you do:** take a real multi-file task from your backlog, run it through plan mode, push back twice with what you can see, then hand the plan to a second agent for a deeper read. Approve the plan. **Stop.** Don't execute. Compare what your read caught to what the second-pass read caught. That gap is the skill this module is building.
 
+**What you build:** two reads paired on one plan. Your own two push-backs, in your voice, catch what a human catches. A second-pass walk-down, one question at a time, catches the branches you can't see. Together they make a plan you can approve without rubber-stamping it.
+
 **The point:** two reads, paired. **Making the plan good is the work.**
+
+---
 
 ## Phase 1: Bring a real task
 
-Pick a task from your backlog that needs multi-file work and enough execution depth to make plan mode worth using. Not a one-line fix (plan mode is overkill); not a refactor so big you can't hold the outcome in your head. A feature slice, a small migration, a targeted refactor: something where touching the wrong file matters.
+- **Bring a task that spans a few files, with enough execution depth to make plan mode worth using.** Not a one-line fix; plan mode is overkill there. Not a refactor so big you can't hold the outcome in your head. A feature slice, a small migration, a targeted refactor: something where touching the wrong file matters.
+- **Just a simple task that spans a few files. Not an epic.**
+- If nothing fits, ask Claude to surface three candidates from recent issues, PRs, or TODO comments. Pick the one you'd ship today if you had an hour.
 
-**Just a simple task that spans a few files. Not an epic.**
+## Phase 2: Enter plan mode and ask for the plan
 
-If nothing fits, ask Claude to surface three candidates from recent issues, PRs, or TODO comments. Pick the one you'd ship today if you had an hour.
-
-## Phase 2: Enter plan mode, read what arrives
-
-Shift+Tab until the status bar shows **plan**. Ask Claude to plan the task you'll drop after the colon, what, why, the one constraint you care about most.
+- **Shift+Tab until the status bar shows plan.** Ask Claude to plan the task you'll drop after the colon: what, why, the one constraint you care about most.
+- **You ask; the agent drafts.** You are not writing the plan. Plan mode explores the codebase and drafts the steps; your job starts when it pauses for approval.
 
 {{prompt:push-back-on-the-plan-1}}
 
-Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. While Claude works, take in the side material that fits the wait: the [Multi-session and Git: survival guide](trainings/agentic-engineering-101/reference/multi-session-git.md) if you skipped it in the gap, or the plan-mode-at-depth section of [Claude Code for engineers](trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#5-plan-mode-at-depth) for the approval-paths table. The pattern repeats every module: when Claude is on a long-running prompt, that's when you take in selected side reading or watch a demo. Wait isn't dead time.
+**Plan mode takes minutes on real codebases.** Eight to twelve isn't unusual. While Claude works, take in the side material that fits the wait: the [Multi-session and Git: survival guide](trainings/agentic-engineering-101/reference/multi-session-git.md) if you skipped it in the gap, or the plan-mode-at-depth section of [Claude Code for engineers](trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#5-plan-mode-at-depth) for the approval-paths table. When Claude is on a long-running prompt, that's when you take in selected side reading or watch a demo. Wait isn't dead time.
 
-Claude explores, writes a plan file with a descriptive name (e.g., `migrate-auth-hash-calm-otter.md`), and pauses for approval. Open the plan file; the chat summary is secondary, the file is the artifact. **Read the plan all the way through before pushing back.** Notice which steps name files and which say "the relevant files." Notice which verification steps could actually fail and which are cosmetic. Notice which assumptions the plan is carrying silently. **Read the tests section carefully.** A good plan names the tests before any code; the tests are part of what "done" means, not something you bolt on after. If the tests section is thin or missing, that's a push-back. When you have two push-backs forming in your head, move on. Don't wait for the clock.
+## Read the plan before you push back
+
+- **Open the plan file; the chat summary is secondary, the file is the artifact.** The agent explores, writes a plan file with a descriptive name (e.g. `migrate-auth-hash-calm-otter.md`), and pauses for approval.
+- **Read the whole plan before pushing back.** Notice which steps name files and which say "the relevant files." Notice which verification steps could actually fail and which are cosmetic. Notice which assumptions the plan is carrying silently.
+- **Read the tests section carefully.** A good plan names the tests before any code; the tests are part of what "done" means, not something you bolt on after. If the tests section is thin or missing, that's a push-back.
+- When you have two push-backs forming in your head, move on. Don't wait for the clock.
 
 ## Phase 3: Push back twice
 
-**Don't approve yet.** At the approval prompt, pick **keep planning with feedback**. Send two push-backs on two different axes: one soft item, and one of (assumption · committed change). Your own words, your own concerns.
+- **Don't approve yet.** At the approval prompt, pick **keep planning with feedback**. Send two push-backs on two different axes: one soft item, and one of (assumption · committed change). Your own words, your own concerns.
+- **Soft items:** the step that reads clean but skips over something. *"Update the config"* without which keys. *"Handle migration errors"* without what happens to rows mid-flight. The vagueness isn't a drafting slip; it's where the agent hasn't decided yet.
+- **Assumptions:** something the plan is carrying silently that it shouldn't. A library version, a schema shape, a teammate's recent change the agent hasn't seen.
+- **Committed changes:** not just a flag; an alternative. Merge two steps that belong together. Reorder two steps whose sequence matters. Swap a file path for the right one.
 
-**Soft items:** the step that reads clean but skips over something. *"Update the config"* without which keys. *"Handle migration errors"* without what happens to rows mid-flight. The vagueness isn't a drafting slip; it's where the agent hasn't decided yet.
+## Catch the re-softening in the revised plan
 
-**Assumptions:** something the plan is carrying silently that it shouldn't. A library version, a schema shape, a teammate's recent change the agent hasn't seen.
-
-**Committed changes:** not just a flag; an alternative. Merge two steps that belong together. Reorder two steps whose sequence matters. Swap a file path for the right one.
-
-Two messages, your phrasing, specific to what you saw. Claude acknowledges each, regenerates the plan, re-presents it. **Read the revised plan carefully. This is where Claude's niceness bites.** Claude will sometimes verbally accept a push-back and re-soften the step anyway (RLHF doing its job). If you see the original vagueness survive the regeneration, push back again on that specific line. Softening-on-regeneration is a reliable tell; catching it is part of the read.
-
-Stuck on the soft item? Ask Claude which step it's least confident about. That answer IS one. Find is easier than judge.
+- **Two messages, your phrasing, specific to what you saw.** The agent acknowledges each, regenerates the plan, re-presents it.
+- **Read the revised plan carefully. This is where Claude's niceness bites.** Claude will sometimes verbally accept a push-back and re-soften the step anyway (RLHF doing its job). If you see the original vagueness survive the regeneration, push back again on that specific line. Softening-on-regeneration is a reliable tell; catching it is part of the read.
+- Stuck on the soft item? Ask Claude which step it's least confident about. That answer IS one. Find is easier than judge.
 
 > **Two messages, then move on.** Two push-backs on two axes, plus one check that the regeneration held, is all Phase 3 asks. A third push-back may be forming. That is fine; it is the second-pass read's job to catch the rest. Send your two, check the revision once, and move to Phase 4.
 
-## Phase 4: Second-pass read
+## Phase 4: Walk down every unresolved branch
 
-Now hand the plan to a second agent that reads differently than you do. Still in plan mode, the plan file is the artifact you're walking, and the lock-it-in convention only fires inside plan mode.
-
-Ask Claude to walk down every unresolved branch of the plan one question at a time, recommending an answer for each.
+- **Hand the plan to a second agent that reads differently than you do.** Still in plan mode: the plan file is the artifact you're walking, and the lock-it-in convention only fires inside plan mode.
+- Ask Claude to walk down every unresolved branch of the plan one question at a time, recommending an answer for each.
 
 {{prompt:push-back-on-the-plan-2}}
 
 > **If it feels sluggish, ask why.** Stop the turn, ask Claude what's making it slow, then relax the requirement that's making it crawl. The prompt is a starting recipe, not a contract, loosen what's costing you the slot.
 
-The second read asks one question at a time. Some will feel trivial (*"which logger should step 2 use?"*); answer and move on. Some will reach into something you hadn't considered (*"step 4 touches the shared cache; what's the invalidation story?"*); pause, think, answer. A few will surface decisions the plan was silently making for you; reject the recommended answer and give a different one.
+## Answer the branches that change what "done" means
+
+- **The second read asks one question at a time.** Some will feel trivial (*"which logger should step 2 use?"*); answer and move on. Some will reach into something you hadn't considered (*"step 4 touches the shared cache; what's the invalidation story?"*); pause, think, answer. A few will surface decisions the plan was silently making for you; reject the recommended answer and give a different one.
 
 > **Too many low-level questions? Steer up.** If Claude keeps asking about implementation detail (which helper, a variable name, error-message wording), tell it: ask me about requirements, not low-level design. The branches worth the time change what 'done' means; the rest you'd settle in code review.
 
-Typical session: 5–12 questions. Stop when the second read starts reaching: a question about something genuinely out of scope, a branch that's already settled, a recommendation you'd accept without thinking. The agent doesn't always know when to stop; you do. Claude incorporates your answers into a sharpened plan. Approve when it's yours. Not Claude's, not the second read's.
+- **Typical session: 5 to 12 questions.** Stop when the second read starts reaching: a question about something genuinely out of scope, a branch that's already settled, a recommendation you'd accept without thinking. The agent doesn't always know when to stop; you do. The agent incorporates your answers into a sharpened plan. Approve when it's yours. Not Claude's, not the second read's.
 
 > **Timebox check.** When the slot ends, stop. The second-pass walk-down can run deep on a real codebase. If it is still surfacing branches when time is up, take the most recent sharpened plan, approve it, and move to Phase 5. The branches that did not surface today are the ones you will catch when you actually ship the work. The exercise teaches the move. You take the move home.
 
-The three-at-a-time prose above is the starting point; that batching cuts round-trips on the branches that need real thought. If you prefer a structured picker, switch once the walk-down is rolling. Ask Claude to switch to AskUserQuestion, and add any steering of your own.
+- **The three-at-a-time prose above is the starting point.** That batching cuts round-trips on the branches that need real thought. If you prefer a structured picker, switch once the walk-down is rolling. Ask Claude to switch to AskUserQuestion, and add any steering of your own.
 
-{{prompt:push-back-on-the-plan-2-askuserquestion}}
+{{cut:push-back-on-the-plan-2-askuserquestion|redundant-slot}}
 
 *Credit: Matt Pocock for the original [`grill-me`](https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md) skill. The version above is abbreviated to fit the 15-minute slot. The original is fully relentless and can run an hour. Optional:*
 
-{{prompt:push-back-on-the-plan-2-original}}
+{{cut:push-back-on-the-plan-2-original|redundant-slot}}
 
 ## Approve
 
@@ -72,26 +80,22 @@ Say *lock it in.* The agent writes the sharpened plan. Approve at the prompt.
 
 Then just hit stop.
 
-## Phase 5: Stop. See the design pattern
+## Phase 5: Stop, then name the pattern you ran
 
-**Don't execute the plan.** The work of making it good is the exercise. Execution is next module's concern.
-
-Out of plan mode now, you approved and stopped, so Claude Code is back to default mode for this last beat.
-
-Ask Claude to name the design pattern you just ran and compare what the second-pass read surfaced against what your two push-backs caught.
+- **Don't execute the plan.** The work of making it good is the exercise. Execution is next module's concern.
+- Out of plan mode now: you approved and stopped, so Claude Code is back to default mode for this last beat.
+- Ask Claude to name the design pattern you just ran and compare what the second-pass read surfaced against what your two push-backs caught.
 
 {{prompt:push-back-on-the-plan-3}}
 
+## Compare what each read caught
 
-Claude answers. Read carefully. The pattern it names should be something like: *read the plan yourself → push back on what you can see → second-pass read for what you can't → approve.* Two reads, two kinds of scrutiny. You catch what a human catches (specificity, voice-of-experience, "I'd write that differently"). The second read catches what an agent walking a decision tree catches: branches you didn't notice, dependencies you didn't name, side-effects you didn't price.
+- The agent answers. The pattern it names should be something like: read the plan yourself, push back on what you can see, second-pass read for what you can't, approve. Two reads, two kinds of scrutiny. You catch what a human catches (specificity, voice-of-experience, "I'd write that differently"). The second read catches what an agent walking a decision tree catches: branches you didn't notice, dependencies you didn't name, side-effects you didn't price.
+- **Neither is complete. Paired, they usually are.**
+- **Plan-mode approval inflation is the thing this pairing defeats:** structured plans get rubber-stamped because they look like decisions. One pass by you catches some of it. The second read catches the rest. That's the move.
+- On to the Compound step, and keep this session open for it. The next step reads this same scrollback to pull the task-shaping rules worth keeping. The Compound step then writes one into your personal `CLAUDE.local.md` in a shape you can re-run on your next plan-mode pass. Team-worthy patterns get flagged for a separate PR against team `CLAUDE.md`.
 
-Neither is complete. Paired, they usually are.
-
-**Plan-mode approval inflation** is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions. One pass by you catches some of it. The second read catches the rest. That's the move.
-
-On to the Compound step, and keep this session open for it. The next step reads this same scrollback to pull the task-shaping rules worth keeping. The Compound step then writes one into your personal `CLAUDE.local.md` in a shape you can re-run on your next plan-mode pass. Team-worthy patterns get flagged for a separate PR against team `CLAUDE.md`.
-
-**What happened:** Claude wrote a plan. You picked *keep planning with feedback* and sent two push-backs: what YOU saw. Claude regenerated. Then you ran a second-pass read: Claude asked one question at a time, walking down branches you didn't think to check, suggesting answers. You confirmed or corrected. The plan sharpened. You approved. You did not run the code. You asked Claude what the second-pass read surfaced that your push-back didn't, and whether any of it would have mattered in execution.
+**What happened:** The agent wrote a plan. You picked *keep planning with feedback* and sent two push-backs: what YOU saw. The agent regenerated. Then you ran a second-pass read: the agent asked one question at a time, walking down branches you didn't think to check, suggesting answers. You confirmed or corrected. The plan sharpened. You approved. You did not run the code. You asked Claude what the second-pass read surfaced that your push-back didn't, and whether any of it would have mattered in execution.
 
 <!-- maintainer -->
 

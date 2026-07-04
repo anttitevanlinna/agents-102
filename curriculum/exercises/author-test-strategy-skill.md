@@ -1,65 +1,69 @@
-# Exercise: Author your test-strategy skill
+# Author your test-strategy skill
 
 **Time:** 18–22 minutes.
 
-**Window:** the side quest window (*m3-quality*). Both phases run here.
+**Window:** the side quest window (*m3-quality*). All phases run here.
 
 **What you do:** Author a test-strategy skill for your codebase, through conversation with Claude, not by typing markdown. Claude asks you what it needs to encode the skill; you push back on the defaults your codebase doesn't fit. Before you ship, ask the skill to disclose its own weakest part. Then invoke the skill on this codebase, ask Claude if the test strategy is any good, sharpen if needed, and ship it personally first.
 
-**The point:** Test strategy authored generically is a pyramid diagram. Test strategy authored on your codebase, through conversation, with one forced self-critique and one invocation on a real feature, is a piece of agentic infrastructure a teammate can adopt. The move you're learning isn't *"write a SKILL.md file"*; it's *author skills by prompting Claude, push back on defaults, verify by invoking*. That move you'll run again at Module 6 (M6).
+**What you build:** one SKILL.md tuned to how your codebase actually tests, hardened by one forced self-critique and one real invocation, living in your personal skills folder, ready for a teammate to adopt.
 
-> **Quick timebox note.** This is the longest beat in Module 3 and the place where authoring conversations spiral. Keep it tight: one author pass, one self-critique, one invocation, ship. If the skill is weak after a single sharpen, ship it with a TODO at the top naming the gap. A skill that names its own gap is more useful to a teammate than a skill that pretends to be finished. The deeper sharpening loop is Module 6 (M6)'s job.
+**The point:** Test strategy authored generically is a pyramid diagram. Test strategy authored on your codebase, through conversation, with one forced self-critique and one invocation on a real feature, is a skill a teammate can adopt. The move you're learning isn't *"write a SKILL.md file"*; it's *author skills by prompting Claude, push back on defaults, verify by invoking*. That move you'll run again at Module 6 (M6).
+
+> **Quick timebox note.** This is the longest beat in Module 3 and the place where authoring conversations spiral. Keep it tight: one author pass, one self-critique, one invocation, ship. If the skill is weak after a single sharpen, ship it with a TODO at the top naming the gap. The deeper sharpening loop is Module 6 (M6)'s job.
 
 ---
 
-## Phase 1: ask Claude to author the skill
+## Phase 1: Author the skill through conversation
 
-Skills aren't hand-crafted. They're authored through conversation.
+- **Skills aren't hand-crafted; they're authored through conversation.** You describe your codebase; the agent drafts the SKILL.md. You are not typing markdown into an editor.
+- **The ship destination is your personal skills folder.** `~/.claude/skills/test-strategy/SKILL.md`, auto-discovered in every session you run, across every repo.
+- **A test-strategy skill is team-shaped by nature, but it ships personal first.** It encodes codebase conventions teammates share. The reasons for personal-first land in Phase 3; the team PR is a follow-up move that starts with a human conversation, not an agent commit.
 
-The ship destination is your personal skills folder: `~/.claude/skills/test-strategy/SKILL.md`. Auto-discovered in every session you run, across every repo.
-
-This skill encodes codebase conventions, so it's team-shaped by nature. But it ships personally first, for reasons named in Phase 3. The team PR is a great candidate for a follow-up move; that move starts with a human conversation, not an agent commit.
+Ask Claude to author the skill, asking one question at a time.
 
 {{prompt:author-test-strategy-skill-1}}
 
+## Answer from how your codebase really tests
 
-Answer each question. When Claude asks something like *"is this codebase Jest?"* and the answer is *"Jest for units, Playwright for e2e, nothing for integration,"* that's the shape of answer the skill needs. When Claude offers a default you don't like, push back: *"no, we don't mock the database; integration tests run against a real Postgres in Docker."*
+- **Answer each question from how your codebase actually tests, not how a diagram says it should.** *"Jest for units, Playwright for e2e, nothing for integration"* is the shape of answer the skill needs. Pyramid-shaped answers (*"unit first, then integration, then e2e"*) encode a wish, not your codebase.
+- **Push back when Claude offers a default you don't like.** *"No, we don't mock the database; integration tests run against a real Postgres in Docker."* The push-back is where the skill gets its codebase truth.
 
-## Phase 2: invoke the skill on this codebase
+## Phase 2: Invoke the skill on this codebase
 
-Stay in the side quest window. The skill you just authored is at `~/.claude/skills/test-strategy/SKILL.md`, auto-discovered here, and this worktree holds the full codebase. Invoke the skill on the code as it stands in front of you.
+- **Authoring without invocation is theatre.** The skill only earns its place when it runs on real code.
+- **The skill is auto-discovered right here.** It sits at `~/.claude/skills/test-strategy/SKILL.md`, and this worktree holds the full codebase. Invoke it on the code as it stands in front of you.
+- **The agent reads the codebase; you read what comes back.**
 
-Authoring without invocation is theatre. Run the skill on this codebase and repository, and read what comes back.
+Ask Claude to invoke the skill on this codebase and grade what it produced in the same turn.
 
 {{prompt:author-test-strategy-skill-2}}
 
-This prompt asks Claude to invoke the skill it just helped author AND grade the result in the same turn. That's biased by design, the same context window self-charity. The shape is one paste, one wait, one read, convenient over rigorous. If you want a harsher read, run it as two prompts: invoke first, read the output, then a second prompt that says *"Read that output as if you'd never seen the SKILL.md. Does it fit this codebase, or does it read generic?"* Your call.
+## Sharpen the skill from what came back
 
-Read the output. If the strategy reads generic, or if Claude's "is it good?" answer names a real weakness, sharpen the skill (not the output; the skill). Then decide: one re-invoke if the sharpen was substantive, or ship with a one-line TODO at the top naming what's unresolved. A skill that names its own gap is more useful to a teammate than a skill that pretends it's finished. The authoring muscle is what Module 3 is installing; perfection waits for M6.
+- **The grade is biased by design.** Claude invoked the skill it just helped author, then graded the result in the same context window: same-window self-charity. One paste, one wait, one read, convenient over rigorous.
+- **Want a harsher read? Run it as two prompts.** Invoke first, read the output, then a second prompt: *"Read that output as if you'd never seen the SKILL.md. Does it fit this codebase, or does it read generic?"* Your call.
+- **If the strategy reads generic, sharpen the skill, not the output.** A weak output is usually a weak skill. Sharpen the SKILL.md, then re-invoke.
+- **Then decide: one re-invoke, or ship with a TODO.** Re-invoke if the sharpen was substantive. Otherwise ship with a one-line TODO at the top naming what's unresolved. A skill that names its own gap is more useful to a teammate than one that pretends it's finished. The authoring muscle is what Module 3 installs; perfection waits for M6.
 
-## Phase 3: ship
+## Phase 3: Ship the skill personal-first
 
-The skill is already at `~/.claude/skills/test-strategy/SKILL.md` (Claude wrote it there in Phase 1, sharpened by your push-back during Phase 2's invoke-and-critique). Auto-discovered in every session you run. That's the ship.
+- **The skill is already shipped.** It sits at `~/.claude/skills/test-strategy/SKILL.md`. The agent wrote it there in Phase 1, sharpened by your push-back during Phase 2's invoke-and-critique. Auto-discovered in every session you run. That's the ship.
 
-**A strong candidate for a team PR, after you talk to the team.**
+## Decide if it graduates to the team
 
-A test-strategy skill encodes codebase conventions teammates share: framework, mocking policy, integration boundary, flakiness patterns. If it's accurate for you, it's accurate for them.
+- **A strong candidate for a team PR, after you talk to the team.** A test-strategy skill encodes conventions teammates share: framework, mocking policy, integration boundary, flakiness patterns. Accurate for you, accurate for them.
+- **The team PR starts with a conversation, not a commit.** Show it to your staff engineer over coffee. Send it to the channel. Ask two teammates who'd use it whether it matches how they actually write tests on this codebase. Say yes, and you PR it. Push back, and you got the real review for free; sharpen the skill, ship it sharper.
+- **Agents don't unilaterally change shared team infrastructure. You do.** The conversation is the move; the PR is the artifact of the conversation.
+- **Personal stays a fine final home.** Not every skill graduates to a shared kit. The test: would teammates use it as-written, and does the skill carry enough codebase truth to survive their review.
 
-So: show it to your staff engineer over coffee. Send it to the channel. Ask two teammates who'd use it: *"does this match how you actually write tests on this codebase?"* If they say yes, PR it. If they push back, you just got the real review for free. Sharpen the skill, ship it sharper.
-
-Agents don't unilaterally change shared team infrastructure. You do. The conversation is the move; the PR is the artifact of the conversation.
-
-Personal stays a fine final home. Not every skill needs to graduate to a shared kit; the test you'll apply is whether teammates would use it as-written, and whether the skill carries enough codebase truth to survive their review.
-
-**What happened:** You ended with one SKILL.md file tuned to your codebase's actual testing conventions (framework, mocking policy, integration boundary, flakiness patterns, regression scope) living in your personal skills folder. A strong candidate for a team PR, but the PR starts with a human conversation, not an agent commit.
-
-Shipped. Debrief will integrate the session.
-
----
+**What happened:** One SKILL.md tuned to your codebase's actual testing conventions (framework, mocking policy, integration boundary, flakiness patterns, regression scope), living in your personal skills folder. Shipped. The Debrief integrates the session.
 
 ## What this sets up
 
-Module 4 (memory that reads your system) consumes the test-strategy skill as a Block 3 quality-criterion anchor. M6 (long-running return) will author a verifier skill the same way you authored this one; the move repeats, gets faster. Your personal skills folder now has one file you authored from session evidence. Promotion to a team home is the conversation you'll start over coffee, not the move you make today.
+- **Module 4 reads this skill as part of the system you have.** M4 (memory that reads your system) consumes the test-strategy skill as a Block 3 quality-criterion anchor.
+- **M6 authors a verifier skill the same way you authored this one.** The move repeats and gets faster.
+- **Your personal skills folder now holds one file you authored from session evidence.** Promotion to a team home is the conversation you start over coffee, not the move you make here.
 
 **Note** The side-quest worktree may still hold changes the agent made here: code, tests, scratch files. Its copy of `CLAUDE.local.md` came over at the fork and may have drifted from the one in your main repo. The skill crossed back on its own (it lives at user scope); everything else stays in the worktree. Those changes are yours to handle later: keep them, carry the useful parts to your main repo, or delete the worktree.
 

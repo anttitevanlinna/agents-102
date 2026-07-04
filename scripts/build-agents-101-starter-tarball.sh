@@ -114,8 +114,10 @@ if [ -d "$PROMPTS_SRC" ]; then
   echo "$SELF_STUDY_SKILL" >> "$scan_list"
 
   # 2. Extract the marker closure (depth-1; step 3 verifies no deeper nesting).
+  # {{cut:key|reason}} is a cut-candidate sibling of {{prompt:key}} — still a
+  # reference to `key`, so include it in the closure. Strip the optional reason.
   keys="$(sort -u "$scan_list" | while IFS= read -r f; do [ -f "$f" ] && cat "$f"; done \
-    | grep -oE '\{\{prompt:[a-z0-9-]+\}\}' | sed -E 's/\{\{prompt:(.*)\}\}/\1/' | sort -u)"
+    | grep -oE '\{\{(prompt|cut):[a-z0-9-]+(\|[a-z0-9-]+)?\}\}' | sed -E 's/\{\{(prompt|cut):([a-z0-9-]+)(\|[a-z0-9-]+)?\}\}/\2/' | sort -u)"
   rm -f "$scan_list"
 
   # 3. Ship exactly those — fail-closed on a missing registry file or a nested
@@ -128,8 +130,8 @@ if [ -d "$PROMPTS_SRC" ]; then
     if [ ! -f "$pf" ]; then
       echo "ERROR — A101 references {{prompt:$k}} but $pf does not exist" >&2; exit 1
     fi
-    if grep -qE '\{\{prompt:[a-z0-9-]+\}\}' "$pf"; then
-      echo "ERROR — $pf nests a {{prompt:}} marker; closure is deeper than depth-1 — extend the build walk" >&2; exit 1
+    if grep -qE '\{\{(prompt|cut):[a-z0-9-]+(\|[a-z0-9-]+)?\}\}' "$pf"; then
+      echo "ERROR — $pf nests a {{prompt:}}/{{cut:}} marker; closure is deeper than depth-1 — extend the build walk" >&2; exit 1
     fi
     cp "$pf" "$ROOT/prompts/$(basename "$pf")"
     shipped=$((shipped + 1))

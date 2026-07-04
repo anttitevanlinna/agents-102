@@ -1,4 +1,4 @@
-# Spot gaps, build the *loop*
+# Map the gaps, author the *skill*
 
 **Time:** 40–50 minutes inside a 2h module slot.
 
@@ -8,43 +8,49 @@ Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no 
 
 **What you do:** Diff two runs of the same task, route the dominant gap to its home, author a second skill from the diagnosis.
 
+**What you build:** three things from two runs of the same task: a ranked gap map, one stale rule cut from your rules-file, and a session-shaper skill that carries the lesson into every future run.
+
 **The point:** The authoring move repeats. You ran it at M3 on a test-strategy skill; you run it again here with two runs' evidence in hand. Same move, faster. The learning wheel turns. You tested at M4, learned at M5, and you encode at M6. The skill you ship here is how the next run inherits what these two runs cost you.
 
 ---
 
-## Phase 1: Diff and name the gaps
+## Phase 1: Diff the two runs, rank the gaps
 
-Two runs of the same task are accessible from the worktree: the un-packaged run on the `m4/<slug>` branch recorded in `task.md`, the packaged re-run on the `m5/<slug>` branch recorded in `plan.md`, both visible via git refs since the worktree shares `.git` with the original repo. Both runs also recorded their session transcript paths: M4 in `task.md`, M5 in the protected `Run coordinates` block at the top of `plan.md`. Phase 1 reads from those coordinates, not from branch or transcript search.
+- **You hold two runs of the same task.** The un-packaged run sits on the `m4/<slug>` branch recorded in `task.md`; the packaged re-run sits on the `m5/<slug>` branch recorded in `plan.md`. Both are visible via git refs, since the worktree shares `.git` with the original repo.
+- **Read from the recorded coordinates, not a branch or transcript search.** Both runs recorded their session transcript paths: M4 in `task.md`, M5 in the protected `Run coordinates` block at the top of `plan.md`.
+- **You hold the contrast; the agent reads both runs off disk.** You are not tracing git refs by hand. Point it at the coordinates and let it pull both runs side by side.
 
 Ask Claude to read both runs side by side and name where packaging caught, where it missed, and what new shapes of drift it introduced.
 
 {{prompt:spot-gaps-build-the-loop-1}}
 
-Claude will likely open with a four-dimension plan summary (*"I'll start with repo state across the m4/ branch, then..."*) before any quoted evidence lands. Skim past the opening; the contrast moments are what you're reading for.
+## Read the contrast, push back where it generalises
 
-Push back where Claude generalises. Two runs means two bodies of evidence, and the teaching is in the contrast. If Claude writes *"the agent drifted on goal"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted. Expect Claude to over-credit the packaging on first pass. A fair push-back is *"name one thing the verifier missed, concretely."*
+- **Skim past the opening plan.** Claude will likely open with a four-dimension plan summary (*"I'll start with repo state across the m4/ branch, then..."*) before any quoted evidence lands. The contrast moments are what you're reading for.
+- **Push back where Claude generalises.** Two runs means two bodies of evidence, and the teaching is in the contrast. If Claude writes *"the agent drifted on goal"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted.
+- **Expect over-credit on the packaging.** A fair push-back is *"name one thing the verifier missed, concretely."* Close with a ranked gap list of three to five items and a dominant gap that will shape Phase 2.
 
-You should close Phase 1 with a ranked gap list (three to five items) and a dominant gap that will shape Phase 2.
+## Cut one stale rule the diagnosis killed
 
-Two runs of the same task were the first real stress-test of `./CLAUDE.local.md`. Diagnosis surfaced rules that turned out wrong, never fired when they should have, or fired and made the run worse. Cleaning is the compound move that keeps the loop fast; rules-files have a half-life.
+- **Two runs of the same task were the first real stress-test of `./CLAUDE.local.md`.** Diagnosis surfaced rules that turned out wrong, never fired when they should have, or fired and made the run worse.
+- **Cleaning is the compound move that keeps the loop fast.** Rules-files have a half-life. Adding rules is only half of it; subtracting the dead ones is the other half.
 
 Ask Claude to cut one rule the two-run diagnosis killed, or to say so and stop if all rules held.
 
 {{prompt:spot-gaps-build-the-loop-2}}
 
-Claude may pause before editing `./CLAUDE.local.md`, a named config file looks risky to modify, or it may rewrite more than the one stale rule (*"in place"* is loose wording). If it asks, just say go. If the diff touches more than the one rule you flagged, push back.
+## Say go, unless the cut spreads past the one rule
 
----
+- **Claude may pause before editing `./CLAUDE.local.md`.** A named config file looks risky to modify. If it asks, just say go.
+- **Push back if the diff touches more than the one rule you flagged.** *"In place"* is loose wording, and Claude may rewrite more than the one stale rule. One rule cut, no more.
 
-## Phase 2: Author the session-shaper
+## Phase 2: Find the work you repeat across your stack
 
-Skills aren't hand-crafted. The move you practiced at M3 repeats here: author through conversation, push back on defaults, verify by invoking. The shape follows what the two runs demanded, not a template.
-
-Before you shape the skill, look wider than the two runs. The dominant gap came from one task. The kinds of work you repeat run across everything you do, and most of them never get looked at directly. This is your stack. How wide you look, and what you choose to package, is yours.
+- **Skills aren't hand-crafted.** The move you practiced at M3 repeats here: author through conversation, push back on defaults, verify by invoking. The shape follows what the two runs demanded, not a template.
+- **Look wider than the two runs before you shape the skill.** The dominant gap came from one task. The kinds of work you repeat run across everything you do, and most of them never get looked at directly. This is your stack. How wide you look, and what you choose to package, is yours.
+- **Read your own history first.** Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back.
 
 > **Fast operator?** Lump the next three prompts into one go. Paste them one after another in the same conversation, study then shapes then primitives, and let the answers land together. The three moves don't change.
-
-Read your own history first. Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back.
 
 > **This scan runs long, and it is yours to steer.** Narrow it whenever you like, point it at the kind of work you care about. Any time, you can say *tell me what you've found so far*, then let it pick back up. If it wraps up early, nudge it to keep going. There is more in there than a first pass admits.
 
@@ -52,7 +58,10 @@ Ask Claude to scan your sessions across every project and group the kinds of wor
 
 {{prompt:spot-gaps-build-the-loop-study}}
 
-What comes back is the work you do over and over, grouped and ranked. Read for the few at the top you actually repeat. How far you take this is yours. Now make those few something you can see. A recurring kind of work has a shape: steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described.
+## Draw your top work-shapes as diagrams
+
+- **What comes back is the work you do over and over, grouped and ranked.** Read for the few at the top you actually repeat. How far you take this is yours.
+- **A recurring kind of work has a shape.** Steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described.
 
 Ask Claude to draw your top few work-shapes as simple diagrams.
 
@@ -60,29 +69,28 @@ Ask Claude to draw your top few work-shapes as simple diagrams.
 
 > **Want to see the shapes, not read them?** Mermaid comes back as text. Say *give me this in HTML* to open them in a browser.
 
-If one of the work-shapes you drew is the kind of work those two runs came from, that is the session-shaper you build now. If not, build it against the dominant gap directly. The rest are the kit you grow later.
+## List the checks the field runs, rank the ones that fit your gap
 
-Before you commit to a shape, expand the menu. The menu lands in context right before you author, so the skill is built against what practitioners actually check, not just your own instinct.
+- **If one of the work-shapes you drew is the kind of work those two runs came from, that is the session-shaper you build now.** If not, build it against the dominant gap directly. The rest are the kit you grow later.
+- **Expand the menu before you commit to a shape.** The menu lands in context right before you author, so the skill is built against what practitioners actually check, not just your own instinct.
 
 Ask Claude to name the checking primitives the field already runs and rank the ones that fit your gap.
 
 {{prompt:spot-gaps-build-the-loop-primitives}}
 
-Expect to see test-writing, browser-testing, PR-building, lint and typecheck gates, compile and build, smoke-test on a real path, code-review, git-diff inspection, schema validation, eval suites for agent outputs. Your list won't be exact. The recognition is the point. The primitives Claude names are the ones your codebase already runs.
+Expect the list to look familiar: test-writing, browser-testing, PR-building, lint and typecheck gates, compile and build, smoke-test on a real path, code-review, git-diff inspection, schema validation, eval suites for agent outputs. Your list won't be exact. The recognition is the point. The primitives Claude names are the ones your codebase already runs.
 
-The three prompts below (author, critique, invoke) are separate steps. You don't have to run all three.
+## Author the skill the diff points at
+
+- **The session-shaper takes one of three forms**, from the convergence of practitioners running long tasks:
+  - **Sharpened verifier.** The M5 verifier targeted one failure mode; the diff surfaced another. The skill encodes the second check so the next run inherits both.
+  - **LLM-judge.** Qualitative fit the deterministic verifier can't see (did the output answer the task, does the tone match the codebase, does the commit message respect the team's convention). A judge is a verifier authored in prose.
+  - **Gap-finder.** A skill that reads a proposed task plan and flags thin memory, missing connectors, or stale rules before the long-running run starts. The verifier fires on output; the gap-finder fires before.
+- **Pick the one the diff points at.** If the dominant gap is "verifier missed drift at hour 4," you're building a sharpened verifier. If it's "output technically passed but read off," you're building a judge. If it's "the run shouldn't have started with this context," you're building a gap-finder.
+- **Author through conversation.** No markdown editor, no hand-crafting SKILL.md in a file tab.
+- **The next three prompts (author, critique, invoke) are separate steps.** You don't have to run all three.
 
 > **Skip the critique and the testing, if you want.** You've done that pattern before. Not that you should, but you already know those moves.
-
-The session-shaper takes one of three forms, from the convergence of practitioners running long tasks:
-
-- **Sharpened verifier.** The M5 verifier targeted one failure mode; the diff surfaced another. The skill encodes the second check so the next run inherits both.
-- **LLM-judge.** Qualitative fit the deterministic verifier can't see (did the output answer the task, does the tone match the codebase, does the commit message respect the team's convention). A judge is a verifier authored in prose.
-- **Gap-finder.** A skill that reads a proposed task plan and flags thin memory, missing connectors, or stale rules before the long-running run starts. The verifier fires on output; the gap-finder fires before.
-
-Pick the one the diff points at. If the dominant gap is "verifier missed drift at hour 4," you're building a sharpened verifier. If it's "output technically passed but read off," you're building a judge. If it's "the run shouldn't have started with this context," you're building a gap-finder.
-
-Author through conversation. No markdown editor, no hand-crafting SKILL.md in a file tab.
 
 {{prompt:spot-gaps-build-the-loop-3}}
 
@@ -90,25 +98,28 @@ If Claude narrates a plan or shows you the full question list before asking one 
 
 Answer each question. When Claude offers a default that doesn't fit the two runs' evidence, push back with a quoted moment: *"no, the M5 verifier missed THIS moment. The skill has to catch that shape specifically."*
 
-Once Claude shows you SKILL.md, self-critique before shipping. Default-acceptance is the failure mode here too.
+## Critique the draft before you ship it
+
+- **Once Claude shows you SKILL.md, self-critique before shipping.** Default-acceptance is the failure mode here too.
 
 {{prompt:spot-gaps-build-the-loop-4}}
 
-This critique runs in the same session that authored the SKILL.md, convenient (the authoring context is right there) but charitable (same-context-window self-audit under-flags by design). You can make the critique sharper: ask Claude to over-flag (*"flag at least three things, be harsher than necessary, assume worse than it looks"*), or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.
+- **The self-audit is convenient but charitable.** It runs in the same session that authored the SKILL.md: the authoring context is right there, but a same-context-window self-audit under-flags by design. Sharpen it if the read matters. Ask Claude to over-flag (*"flag at least three things, be harsher than necessary, assume worse than it looks"*), or fresh-session it by dispatching a subagent with the SKILL.md pasted cold, no scrollback.
+- **Read the critique. Push back where Claude is wrong; accept where Claude is right.** Claude revises SKILL.md from your push-back.
 
-Read the critique. Push back where Claude is wrong; accept where Claude is right. Claude revises SKILL.md from your push-back.
+## Invoke the skill on the run you just diffed
 
-Now invoke the skill on the packaged run you just diffed. Authoring without invocation is theatre.
+- **Authoring without invocation is theatre.** The prompt below runs the skill on the packaged run you just diffed.
 
 {{prompt:spot-gaps-build-the-loop-5}}
 
-This prompt asks Claude to invoke a skill it just helped author AND grade the result in the same turn. That's biased by design, the same context window self-charity is well-documented. The shape is one paste, one wait, one read, convenient over rigorous. If you want a harsher read, run it as two prompts: invoke first, read the output, then a second prompt that says *"Read that output as if you'd never seen the SKILL.md. What did the skill miss?"* Your call.
+- **The invocation grades itself, biased by design.** Claude invokes a skill it just helped author and grades the result in the same turn; the same-context self-charity is well-documented. The shape is one paste, one wait, one read: convenient over rigorous. For a harsher read, run it as two prompts. Invoke first, read the output, then a second prompt: *"Read that output as if you'd never seen the SKILL.md. What did the skill miss?"* Your call.
+- **If the output doesn't catch the dominant gap, sharpen the skill and invoke again.** If the skill names its own limitation (*"I check drift but not context-rot re-derivations"*), that's a feature. Ship with a one-line TODO at the top. A skill that names its gap is more useful to a teammate than one that pretends it's finished.
 
-If the output doesn't catch the dominant gap, sharpen the skill itself and invoke again. If the skill names its own limitation (*"I check drift but not context-rot re-derivations"*), that's a feature. Ship with a one-line TODO at the top. A skill that names its gap is more useful to a teammate than one that pretends it's finished.
+## Ship it to your personal kit
 
-The skill ships personally. It lives at `~/.claude/skills/session-shaper/SKILL.md` and auto-discovers in every future session you run, across every repo. That's the ship.
-
-**Team-kit candidate, via human conversation.** If the skill encodes something your whole team would benefit from, a codebase-specific judge, a verifier against a house style, a gap-finder tuned to the team's project shape, it's a strong PR candidate. But the PR starts with a conversation. Show it to a teammate over coffee. Post it in the channel. Ask: *"does this match how you'd check this kind of work?"* If they say yes, PR it. If they push back, you got the real review for free. Agents don't unilaterally change shared team infrastructure. You do.
+- **The skill ships personally.** It lives at `~/.claude/skills/session-shaper/SKILL.md` and auto-discovers in every future session you run, across every repo. That's the ship.
+- **Team-kit candidate, via human conversation.** If the skill encodes something your whole team would benefit from (a codebase-specific judge, a verifier against a house style, a gap-finder tuned to the team's project shape), it's a strong PR candidate. But the PR starts with a conversation. Show it to a teammate over coffee. Post it in the channel. Ask: *"does this match how you'd check this kind of work?"* If they say yes, PR it. If they push back, you got the real review for free. Agents don't unilaterally change shared team infrastructure. You do.
 
 **What happened:** You ended with a one-screen gap map across memory / verifier / rules / skill, and one SKILL.md file at `~/.claude/skills/session-shaper/SKILL.md`. Auto-discovered in every future session. The shape followed what the two runs demanded: a sharpened verifier, an LLM-judge, or a gap-finder. Team-kit candidates were flagged for a human conversation, not an auto-PR.
 

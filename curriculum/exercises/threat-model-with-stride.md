@@ -1,73 +1,83 @@
-# Exercise: Threat-model with *STRIDE*
+# Pick one threat, record the decision
 
 **Time:** 20 minutes.
 
 **Window:** the main quest window (*m3-security*).
 
-**What you do:** Invoke the curated STRIDE skill on the access-surface map you built in the previous exercise. You pick one threat worth hardening against, write the decision as an ADR in your repo's convention, and move on.
+**What you do:** Invoke the curated STRIDE skill on the access-surface map you built in the previous exercise. You pick one threat worth hardening against, write the decision as an ADR (an Architecture Decision Record) in your repo's convention, and move on.
+
+**What you build:** one recorded hardening decision. Three moves get you there: a STRIDE walk across the surface you mapped, one threat picked from that walk, and an ADR that captures the call with the rejected threats named as its reasoning.
 
 **The point:** Threat modeling is only useful if it produces a decision. STRIDE's value is that it gives you a structured surface to reject most threats against (acceptable risk, out of scope, already mitigated) so the one you decide to harden is defensible. The ADR is the artifact your CISO would actually read.
 
 ---
 
-## Phase 1: invoke the skill on the mapped surface
+## Phase 1: Run the threat scan across your mapped surface
+
+- **STRIDE is a six-category checklist for threats.** Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege. The curated skill walks your surface against all six, so you don't hold the taxonomy in your head.
+- **The subagent does the walk; you read the result.** It runs in fresh context against the map, not the raw code, so you are not on the hook for re-deriving the surface. You read what lands.
 
 Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map from Exercise 1.
 
 {{prompt:threat-model-with-stride-1}}
 
 
-Let it run. The output will have more entries than you want to deal with. That's expected.
+## Read the threat list, expect more than you'll use
 
-The STRIDE pass should take minutes. If it returns in seconds, Claude went shallow, push back and re-run. Stay in this window while it works, and read what lands.
+- **The output over-produces on purpose.** It will have more entries than you want to deal with. You reject most of them in the next phase; that rejection is the point, not a failure of the scan.
+- **A scan that returns in seconds went shallow.** The pass should take minutes. If it comes back instant, push back and re-run. Stay in this window while it works, and read what lands.
 
-## Phase 2: pick the one
+## Phase 2: Pick the one threat worth hardening against
 
-You're going to pick one threat worth hardening against. Not five. One. The move is: name the worst realistic case, then the hardening decision is usually obvious.
+- **One threat, not five.** You are picking a single threat worth hardening against. The move: name the worst realistic case first, and the hardening decision is usually obvious from there.
+- **The agent proposes the incident story; you judge whether it fits.** You are not inventing the worst case from scratch. Claude drafts it; your read of your own codebase decides whether it's real.
 
 Ask Claude to propose the most plausible incident story and walk you through the STRIDE pick from there.
 
 {{prompt:threat-model-with-stride-2}}
 
 
-Read what Claude proposes. The "most plausible incident story" is the move that makes STRIDE useful rather than performative, push back if the story doesn't fit your codebase's reality. Work with Claude to land on the right mitigation. You'll save it next.
+## Push back on the incident story, land the mitigation
 
-## Phase 3: write the ADR
+- **The incident story is what makes STRIDE useful rather than performative.** Read what Claude proposes. Push back if the story doesn't fit your codebase's reality.
+- **Work with Claude to land on the right mitigation.** You save it as the ADR next.
+
+## Phase 3: Write the decision as an ADR
+
+- **The ADR states the call, its alternatives, and the constraint that picked the winner.** You write it in your repo's convention. It reads like one engineer explaining a call to another, not a compliance checkbox.
+- **Have the agent draft it and show it before saving.** You read the call before it lands on disk.
 
 Ask Claude to draft the ADR in your repo's convention and show it before saving.
 
 {{prompt:threat-model-with-stride-3}}
 
 
-Read it. If the Decision section reads like it was written for a compliance reviewer rather than a future engineer, push back. The ADR should read like one engineer explaining a call to another. Ship & Save.
+## Read the ADR, check the voice and the lens
 
-If STRIDE's six categories feel like the wrong lens for your feature (some features are really abuse-case or insider-threat shaped, where Elevation-of-Privilege + Repudiation carry everything and Spoofing + Tampering don't fit), say so in the Alternatives considered section. *"STRIDE surfaced X; the more accurate lens here was Y; decision reasoned in Y's terms"* is a legitimate ADR move. The skill is a tool; the call is yours.
+- **The Decision section should read like one engineer explaining a call to another.** Read it. If it reads like it was written for a compliance reviewer rather than a future engineer, push back. Ship & Save.
+- **STRIDE is a tool, not the only lens.** If its six categories feel wrong for your feature (some features are really abuse-case or insider-threat shaped, where Elevation of privilege and Repudiation carry everything and Spoofing and Tampering don't fit), say so in the Alternatives considered section. *"STRIDE surfaced X; the more accurate lens here was Y; decision reasoned in Y's terms"* is a legitimate ADR move. The call is yours.
 
-**Where did the ADR actually land?** Check the path Claude proposed. Is it in your main session's repo, or in the M3 worktree?
+## Check where the ADR landed
 
-If it's in the main repo, skip ahead.
+- **Check the path Claude proposed.** Is the ADR in your main session's repo, or in the M3 worktree? If it's in the main repo, skip ahead.
+- **If it landed in the worktree, the agent reasoned itself there.** M3 forked a worktree at turn 1, and "this is M3 work" has been the scrollback's framing since. From the agent's vantage, the worktree was created specifically *for M3*, so M3's artifacts look like they belong there. The fork prompt called it "the side-quest"; the agent inferred "M3 = side-quest = worktree" and skipped the architectural detail that only the *quality* side belongs there. `pwd` would have answered differently. The agent reasoned forward from the conversation, not from the filesystem.
+- **Just tell Claude to move it over.**
 
-If it's in the worktree, the agent reasoned itself there. M3 forked a worktree at turn 1, and "this is M3 work" has been the scrollback's framing since. From the agent's vantage, the worktree was created specifically *for M3*, so M3's artifacts look like they belong there. The fork prompt called it "the side-quest"; the agent inferred "M3 = side-quest = worktree" and skipped the architectural detail that only the *quality* side belongs there. `pwd` would have answered differently. The agent reasoned forward from the conversation, not from the filesystem.
-
-Just tell Claude to move it over.
+## Ask whether the ADR loads into future sessions
 
 Ask Claude whether this ADR rides into future sessions automatically.
 
-{{prompt:threat-model-with-stride-4}}
+{{cut:threat-model-with-stride-4|low-yield}}
 
-Claude's answer: no, ADRs don't auto-load like `CLAUDE.md` and `CLAUDE.local.md` do. They're on-disk and discoverable, but a future session loads them only when explicitly read. You can wire individual ADRs into team `CLAUDE.md` (one `@docs/adr/<file>.md` line per file, Claude Code's `@`-include is single-file, no glob), but most teams don't: ADRs accumulate, the window is finite, and rejected alternatives shouldn't sit in live context. Selective load is the practitioner default; Module 4 will tell Claude exactly which artifacts to read at the start of the long-running run, and that explicit list is the lesson.
-
-Not everything survived to disk, though. The skills returned their work into this session: the full access-surface map from Exercise 1, and the complete STRIDE walk here, including the threats you considered and set aside. The ADR holds the one decision. The analysis around it is real security documentation, and it clears when the session does.
+- **Claude's answer: no.** ADRs don't auto-load like `CLAUDE.md` and `CLAUDE.local.md` do. They're on-disk and discoverable, but a future session loads them only when explicitly read. You can wire individual ADRs into team `CLAUDE.md` (one `@docs/adr/<file>.md` line per file; Claude Code's `@`-include is single-file, no glob), but most teams don't: ADRs accumulate, the window is finite, and rejected alternatives shouldn't sit in live context.
+- **Selective load is the practitioner default.** Module 4 will tell Claude exactly which artifacts to read at the start of the long-running run, and that explicit list is the lesson.
+- **Not everything survived to disk.** The skills returned their work into this session: the full access-surface map from Exercise 1, and the complete STRIDE walk here, including the threats you considered and set aside. The ADR holds the one decision. The analysis around it is real security documentation, and it clears when the session does.
 
 > **Worth keeping?** Ask Claude to save the access-surface map and the STRIDE walk to your repo's `docs/` directory, next to the ADR, before you clear. Your CISO and the next engineer read what's on disk, not your scrollback.
 
 **What happened:** You made one call and wrote the ADR, and the decision shipped to the repo. The rest of the STRIDE output stayed in the session as evidence, not on disk and not a hardening backlog.
 
----
-
-## What this sets up
-
-The next exercise authors a test-strategy skill and invokes it on this feature, which is now security-tested. The hardening decision becomes a test case in the test strategy. The ADR is in the repo. Your CISO has something to read.
+**What this sets up:** The next exercise authors a test-strategy skill and invokes it on this feature, which is now security-tested. The hardening decision becomes a test case in the test strategy. The ADR is in the repo. Your CISO has something to read.
 
 <!-- maintainer -->
 

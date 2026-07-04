@@ -113,8 +113,8 @@ function lintBody(key, body) {
     const f = firstHit(body, /```/);
     add('Sev-1', '§31', `nested triple-backtick fence (breaks expand): line ${f.lineNo}`);
   }
-  const nestedMarker = firstHit(body, /\{\{prompt:[a-z0-9-]+\}\}/);
-  if (nestedMarker) add('Sev-1', '§31', `{{prompt:}} marker inside a registry body: line ${nestedMarker.lineNo}`);
+  const nestedMarker = firstHit(body, /\{\{(?:prompt|cut):[a-z0-9-]+(?:\|[a-z0-9-]+)?\}\}/);
+  if (nestedMarker) add('Sev-1', '§31', `{{prompt:}}/{{cut:}} marker inside a registry body: line ${nestedMarker.lineNo}`);
 
   // §32 — RETIRED 2026-05-31. The rule was inverted: module numbers in prompt
   // prose ground the session (artifacts are module-numbered by design), they

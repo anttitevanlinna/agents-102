@@ -16,11 +16,11 @@ This isn't a bug that gets patched in the next release. It's the shape of the te
 
 **The compound reliability math.**
 
-If an agent is 85% correct on a single step (an illustrative number, picked because it sounds forgivable), that's not bad. Eighty-five out of a hundred. You'd forgive that in an intern.
+If an agent were 85% correct on a single step (an illustrative number, picked because it sounds forgivable), that would not sound bad. Eighty-five out of a hundred. You'd forgive that in an intern.
 
-Now run ten steps. Retrieval, synthesis, formatting, writing, checking, rewriting, summarising, publishing. Ten is not a lot. 85% per step, ten steps: 0.85^10 = about **20%.** One in five runs is end-to-end correct. Four in five have a defect somewhere, usually somewhere you won't see.
+Now run ten steps. Retrieval, synthesis, formatting, writing, checking, rewriting, summarising, publishing. Ten is not a lot. Ten unverified steps in a row at 85% each would land near 20% end-to-end: one run in five correct, four in five with a defect somewhere, usually somewhere you won't see. The arithmetic is an illustration, not a measurement; the compounding is what holds.
 
-This is why agentic customer service works (2–3 steps: look up the order, check the policy, draft the reply, at 95% each = 86% end-to-end). This is why "let the agent handle the full workflow" doesn't (10 steps, 85% each = 20%). The math is the difference between a demo that delights and a production system that leaks.
+This is why agentic customer service behaves (a short chain: look up the order, check the policy, draft the reply, with nothing stacking unverified for long). This is why "let the agent handle the full workflow" doesn't (a long chain, no check anywhere in it). The compounding is the difference between a demo that delights and a production system that leaks.
 
 The number doesn't tell you *what* will go wrong. It tells you that something will. Your job is to design for that, not against it.
 
@@ -34,7 +34,7 @@ Round 3: 0.1% → 0.01%.
 
 The same compounding that destroys single-pass reliability *builds* loop-based reliability. One generation pass is a trap; a test-and-fix loop is the escape. Three rounds and you're at parts-per-ten-thousand, a place single-pass generation cannot reach, no matter how good the model gets.
 
-This is the shape of the rest of the training. Now you'll run the test side: a benchmark to find the detector that works on *your* output. Module 6 puts that detector in a loop that runs the full test-fix-test cycle without you. That's evals. The 85%-to-20% math is the problem; the 10%-to-0.01% math is the answer.
+This is the shape of the rest of the training. Now you'll run the test side: a benchmark to find the detector that works on *your* output. Module 6 puts that detector in a loop that runs the full test-fix-test cycle without you. That's evals. The compounding-error math is the problem; the compounding-check math is the answer.
 
 **The word is grounded.**
 
@@ -83,6 +83,8 @@ Phase 0 is next: a fresh briefing, then a 30-claim pool extracted from it. The c
 **Time:** 10–12 minutes.
 
 **Placement in module:** After Connections, before the exercise. Primes the empirical-method-selection frame; the exercise runs the benchmark on the student's own M3 material. All four detectors are practised in the exercise. Lecture and exercise are tightly coupled now.
+
+**Family-A alignment (2026-07-02):** the compound-reliability passage is a worded subjunctive illustration labeled "an illustration, not a measurement" in body; the `0.85^10` notation and the derived customer-service percentages (95% each = 86%) were dropped, and the closing shorthand no longer names the constants (`theory-audit.md` § Family A). Zombie-stat guard: do not re-promote the constant to a measured figure or re-add notation. The flip-the-math passage keeps its "Say your briefing has..." illustrative framing.
 
 **Frameworks riffed on:**
 - **Compound reliability math — both directions.** Single-pass: 85%^10 = 20% (the trap). Loop-based: 10% → 1% → 0.1% → 0.01% with 90%-catch detector + fix (the escape). Naming both halves is what converts the math from despair to design. The second half is the strategic bridge to M6 — evals aren't a quality gate, they're the mechanism that collapses the error rate.

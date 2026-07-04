@@ -109,6 +109,35 @@ function splitMissing(missingIds, naSet) {
   return { real, na };
 }
 
+// Lecture surface derives from build-workbook.js THEORY_HANDBOOK_MANIFEST —
+// the single source of truth for module-wired lectures. build-workbook.js is a
+// top-to-bottom script (require = run the build), so parse its source instead
+// of requiring it. Throws on parse failure so a moved/renamed manifest can
+// never silently shrink the audit surface. Guard test:
+// curriculum.test.js "eval-coverage lecture surface …" (independent extraction).
+// Pure, quote-agnostic extractor for `lectures/<slug>` entries out of a manifest
+// block. Single OR double quotes — a double-quoted entry must NOT be invisible
+// (it once was: both this side and the drift-guard test shared a single-quote
+// regex, so a double-quoted entry slipped past BOTH with no mismatch to catch).
+// Dedupes, preserving first-seen order.
+function extractManifestLectureSlugs(manifestBlockSrc) {
+  const slugs = [];
+  const seen = new Set();
+  for (const m of manifestBlockSrc.matchAll(/['"]lectures\/([a-z0-9-]+)['"]/g)) {
+    if (!seen.has(m[1])) { seen.add(m[1]); slugs.push(m[1]); }
+  }
+  return slugs;
+}
+
+function theoryManifestLectures() {
+  const src = fs.readFileSync(path.join(REPO, 'scripts/build-workbook.js'), 'utf8');
+  const block = src.match(/const THEORY_HANDBOOK_MANIFEST = \{[\s\S]*?\n\};/);
+  if (!block) throw new Error('THEORY_HANDBOOK_MANIFEST not found in scripts/build-workbook.js');
+  const slugs = extractManifestLectureSlugs(block[0]);
+  if (slugs.length === 0) throw new Error('THEORY_HANDBOOK_MANIFEST parse yielded no lectures');
+  return slugs;
+}
+
 // AE101 surface set, in module order. instanceSlug overrides where the instance
 // filename diverges from the source slug (spot-gaps module carries a -module suffix).
 const SURFACES = {
@@ -119,14 +148,8 @@ const SURFACES = {
     'author-test-strategy-skill', 'walk-and-send-off', 'diagnose-and-resend',
     'spot-gaps-build-the-loop', 'arc-retrospective',
   ].map(slug => ({ slug, file: `curriculum/exercises/${slug}.md`, instanceSlug: `ae101--${slug}` })),
-  lectures: [
-    'painting-the-picture-with-the-llm', 'the-wizard-move', 'how-this-training-was-built',
-    'when-a-plan-is-good', 'where-the-rule-could-live', 'skills-from-the-frontier',
-    'test-and-learn', 'will-company-memory-emerge', 'reading-the-return',
-    'learning-through-contrast', 'what-packaging-is', 'the-2-frontiers',
-    'story-of-module-6', 'quality-is-grounding', 'steering-the-wiring',
-    'composing-the-workflow', 'the-loop-has-a-name', 'agents-that-build-agents',
-  ].map(slug => ({ slug, file: `curriculum/lectures/${slug}.md`, instanceSlug: `ae101--${slug}` })),
+  lectures: theoryManifestLectures()
+    .map(slug => ({ slug, file: `curriculum/lectures/${slug}.md`, instanceSlug: `ae101--${slug}` })),
   modules: [
     { slug: 'prework', file: 'curriculum/trainings/agentic-engineering-101/prework.md', instanceSlug: 'ae101--prework' },
     { slug: 'getting-going', file: 'curriculum/trainings/agentic-engineering-101/getting-going.md', instanceSlug: 'ae101--getting-going' },
@@ -155,10 +178,23 @@ const normClass = c => CLASS_ALIASES[c] || c;
 // Any .story.json carrying class:"story" is drift to flag (not alias away).
 const CANONICAL_FIELD = { writing: 'writing', pedagogy: 'pedagogy', story: 'storytelling', strategy: 'strategy', technical: 'technical', behavior: 'behavior', cross_module: 'cross_module' };
 
+// eval_classes appears in two frontmatter shapes across the compendia:
+//   inline bracket   → `eval_classes: [strategy, writing, storytelling]`
+//   multi-line list  → `eval_classes:` then one `  - item` line per class
+// Accept both. [ \t] (not \s) on the inline lead so a bare `eval_classes:` that
+// begins a multi-line list can never skip across newlines to a distant `[`.
 function parseFrontmatterEvalClasses(md) {
-  const m = md.match(/eval_classes:\s*\[([^\]]*)\]/);
-  if (!m) return [];
-  return m[1].split(',').map(s => s.trim()).filter(Boolean).map(normClass);
+  const inline = md.match(/eval_classes:[ \t]*\[([^\]]*)\]/);
+  if (inline) {
+    return inline[1].split(',').map(s => s.trim()).filter(Boolean).map(normClass);
+  }
+  const list = md.match(/eval_classes:[ \t]*\r?\n((?:[ \t]*-[ \t]*[^\r\n]+\r?\n?)+)/);
+  if (list) {
+    return list[1].split(/\r?\n/)
+      .map(l => (l.match(/^[ \t]*-[ \t]*(.+?)[ \t]*$/) || [])[1])
+      .filter(Boolean).map(normClass);
+  }
+  return [];
 }
 
 // Parse a compendium's top-level numbered rules: `N. **Lead.**`.
@@ -426,8 +462,10 @@ function printHuman(report, comp) {
 if (require.main === module) main();
 
 module.exports = {
+  SURFACES,
   parseRules,
   parseFrontmatterEvalClasses,
+  extractManifestLectureSlugs,
   verdictedKeys,
   loadCompendia,
   scanInstanceIntegrity,

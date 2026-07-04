@@ -1,47 +1,38 @@
 # The wizard move
 
-You've already done the hard part. You found this training because you use Claude Code regularly and you want to get further with it. That's who this training is for. Nobody here needs the "agents can write code" setup.
+## Who this is for
 
-So this training won't.
+- **You've already done the hard part.** You found this training because you use Claude Code regularly and you want to get further with it. That's who this training is for.
+- **Nobody here needs the "agents can write code" setup.** So this training won't run one.
+- **You'll watch what's possible, not what's missing.** That's the posture of the whole training.
 
 ## Context is King
 
-The same question. Two answers. What makes the difference?
+- **The same question, two answers.** Two Claude chat windows. In one, the first prompt is *"What is the capital of Italy?"* Claude answers *Rome.* Then the second prompt: *"What should we have for dinner?"* Claude suggests something Italian: pasta, osso buco, risotto.
+- **Same words, different dinner.** In the other window, the first prompt is *"What is the largest lake in Finland?"* Claude answers *Saimaa.* Then the same second prompt as before. Claude suggests something Finnish: salmon, rye bread, meatballs. But not as reliably. The first exchange became context, and the context colored everything after.
+- **Take a guess before you watch the second session run.** What will it suggest? Your guess reveals what you already know about how this works, and what you're about to learn.
+- **A role colors answers the same way a fact does.** One more window. The first prompt: *"I'm a cardiologist preparing dinner for my patients."* Then the same second prompt about dinner. The suggestion shifts again: heart-healthy, low-sodium, vegetable-forward. Not because Claude knows medicine better than Italian cooking. You told it who you are, and every answer after took that into account.
+- **Context is whatever you tell it.** A fact. A role. A preference. A constraint. All of it colors what comes next. You, in a way, compel the right output by having the right stuff in the context.
+- **That's the move.** Not a clever prompt, not a slash command you didn't know. Loading the right context before the question. Everything else in this training is about how to earn the second window on any codebase, any Monday.
 
-Two Claude chat windows.
+## Everyone arrives partial, trainers included
 
-In one, the first prompt is *"What is the capital of Italy?"* Claude answers *Rome.* Then the second prompt: *"What should we have for dinner?"* Claude suggests something Italian: pasta, osso buco, risotto.
+- **You found your way to Claude Code by yourself.** Maybe a colleague pointed you at it. Maybe you watched a video. Mostly you just typed something, watched what came back, and kept the prompts that worked.
+- **You picked up tricks nobody taught you.** The slash command that saves keystrokes. The `CLAUDE.md` shape that produced output you liked. The weird thing you tell Claude at the start of every session.
+- **Every engineer who sat down with this tool did some version of that.** The trick you brought to Connections is your slice of partial; everyone else's slice is different.
+- **This training pools partial into a shared floor, then raises the ceiling.** The people building this are partial too. Six months ahead of you on some moves, six months behind on others.
 
-In the other window, the first prompt is *"What is the largest lake in Finland?"* Claude answers *Saimaa.* Then the same second prompt as before. Claude suggests something Finnish: salmon, rye bread, meatballs. But not as reliably.
+## The loop is the cargo, not the fix
 
-Same words. Different answer. The first exchange became context, and the context colored everything after.
-
-Before you watch the second session run, take a guess. What will it suggest? Your guess reveals what you already know about how this works, and what you're about to learn.
-
-One more window. The first prompt: *"I'm a cardiologist preparing dinner for my patients."* Then the same second prompt about dinner. The suggestion shifts again. Heart-healthy. Low-sodium. Vegetable-forward. Not because Claude knows medicine better than Italian cooking. You told it who you are, and every answer after took that into account.
-
-Context is whatever you tell it. A fact. A role. A preference. A constraint. All of it colors what comes next. You, in a way, compel the right output by having the right stuff in the context.
-
-That's the move. Not a clever prompt, not a slash command you didn't know. Loading the right context before the question. Everything else in this training is about how to earn the second window on any codebase, any Monday.
-
-You'll watch what's *possible*. Not what's missing. That's the posture of this training.
-
-## Where you're starting
-
-You found your way to Claude Code by yourself. Maybe a colleague pointed you at it. Maybe you watched a video. Mostly you just typed something, watched what came back, and kept the prompts that worked. You picked up tricks nobody taught you. The slash command that saves keystrokes. The `CLAUDE.md` shape that produced output you liked. The weird thing you tell Claude at the start of every session.
-
-Every engineer who sat down with this tool did some version of that. The trick you brought to Connections is your slice of partial; everyone else's slice is different. This training pools partial into a shared floor, then raises the ceiling. The people building this are partial too. Six months ahead of you on some moves, six months behind on others.
-
-## What you'll do today
-
-Fix one trivial bug from your own backlog, end-to-end, with plan mode used deliberately. Log one decision. Seed a rules file your next session reads first. The bug is the vehicle; the loop is the cargo.
-
-You become the Claude wizard by running the loop on real work and letting the habit sharpen. Not by reading about it.
+- **Fix one trivial bug from your own backlog, end-to-end.** Log one decision. Seed a rules file your next session reads first.
+- **The bug is the vehicle; the loop is the cargo.** What you walk away with is a way of working, not one fix.
+- **You become the Claude wizard by running the loop on real work and letting the habit sharpen.** Not by reading about it.
 
 <!-- maintainer -->
 
+**Slides-only pass (2026-07-02, unaudited):** RE-CHUNK, not cull. Per-passage verdicts: unheaded intro CONVERTED to slide *Who this is for* (new heading; openers carry no setup lede) · posture line ("what's possible, not what's missing") MOVED from the demo section's close into the intro slide as a posture bullet · *Context is King* CONVERTED to one six-bullet slide, demo narration near-verbatim, guess-beat kept in original position (after both windows are narrated, before the live run) · *Where you're starting* CONVERTED one-to-one · *What you'll do today* CONVERTED; **"with plan mode used deliberately" DELETED as drift** — module Big Idea + LO say the M1 fix runs tests-first with NO plan mode (plan mode earns its keep at M2); maintainer eyeball requested · "The bug is the vehicle; the loop is the cargo" gained one mechanism sentence ("a way of working, not one fix") to pass bullet durability; the closer lecture's "loop is the shape / bug was the excuse" kicker NOT stolen. No cuts beyond the drift clause, no new theory, zero map references (M1 protected). File is now four slides.
 
-**Quality:** compendium-audited 2026-04-26
+**Quality:** compendium-audited 2026-04-26 — predates the slide rework; re-audit before ship.
 - compendium-audited 2026-04-26 (check_writing voice-quartet Seth-Rory-Risto, check_student_facing #14, check_lectures opener, check_strategy_tie_in)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta:**

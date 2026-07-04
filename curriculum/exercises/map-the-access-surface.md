@@ -1,60 +1,56 @@
-# Exercise: Map the access surface
+# Map the access surface, own the *delta*
 
 **Time:** 20 minutes.
 
 **Window:** the main quest window (*m3-security*).
 
-**What you do:** Invoke the curated access-control analysis skill on the small feature you brought to Module 3. Read what the skill surfaces. Decide, on the record in your repo, which surface it called out harder than you would have, and which surface you know matters that the skill didn't catch. Ship the delta as notes the STRIDE exercise will consume next.
+**What you do:** Invoke the curated access-control analysis skill on the small feature you brought to Module 3. Read what it surfaces. Decide, on the record in your repo, which surface it called out harder than you would have, and which surface you know matters that the skill didn't catch. Ship the delta as notes the STRIDE exercise consumes next.
 
-**The point:** STRIDE without an access-surface map is pub-quiz threat modeling. Before you threat-model, you map what you're protecting. The curated skill does the breadth; you own the codebase-specific judgment that the skill can't have.
+**What you build:** an access-surface map, plus the delta only you can add. Two surfaces: the one the curated skill called out harder than you would have, and the one you know matters that the skill missed. The delta is the artifact STRIDE chews on next, not the raw skill output.
+
+**The point:** STRIDE without an access-surface map is pub-quiz threat modeling. Before you threat-model, you map what you're protecting. The curated skill does the breadth; you own the codebase-specific judgment the skill can't have.
 
 ---
 
-## Phase 1: invoke the skill
+## Phase 1: Run the curated skill on your feature and save the map
 
-The `access-control-analysis` skill was installed as a personal skill during prework, so Claude Code auto-discovers it by name in the m3-security session.
-
-First, see what skills your Claude has loaded. In the Claude Code chat, type:
+- **You invoke; the skill does the breadth walk.** The `access-control-analysis` skill was installed as a personal skill during prework, so Claude Code auto-discovers it by name in the m3-security session. You aren't on the hook for walking every surface. The skill and its subagent do that; you own the codebase-specific judgment the skill can't have.
+- **See what skills your Claude has loaded first.** In the Claude Code chat, type:
 
 ```
 /skills
 ```
 
-You should see `access-control-analysis` and `stride` listed under **User**. (If they're missing, check prework Step 4.) The Project list is whatever this repo ships; User is your personal skills. Skills you author later in Module 3 will land in User too.
+- You should see `access-control-analysis` and `stride` listed under **User**. (If they're missing, check prework Step 4.) The Project list is whatever this repo ships; User is your personal skills. Skills you author later in Module 3 land in User too.
 
-Then ask Claude to fill in what `/skills` doesn't show.
+{{cut:map-the-access-surface-1|low-yield}}
 
-{{prompt:map-the-access-surface-1}}
+Worth a moment of looking. These are the moves Claude has on hand for the rest of this module, and the load-on-invoke behavior matters for context economy later.
 
-Worth a moment of looking, these are the moves Claude has on hand for the rest of this module, and the load-on-invoke behavior matters for context economy later.
-
-Ask Claude to invoke the access-control-analysis skill on the feature you'll name after the colon, and save the surface map to a temp directory.
+Name the feature and let the skill run. Ask Claude to invoke the access-control-analysis skill on the feature you name after the colon, and save the surface map to a temp directory.
 
 {{prompt:map-the-access-surface-2}}
 
+Paste a plan path, a ticket link, a design-doc path, or the feature description; Claude reads whatever you give it. Then send. Claude narrates what the skill is doing before the map appears; skip past the opening and look for the saved path when it lands. The skill walks the surfaces and produces the map.
 
-Paste a plan path, a ticket link, a design-doc path, or the feature description, Claude reads whatever you give it. Then send. Claude will narrate what the skill is doing before the map appears; skip past the opening and look for the saved path when it lands. The skill walks the surfaces and produces the map.
+## Kick off the run, then work the other window
 
-The access-control pass is a breadth walk over your feature's surfaces and takes a few minutes. That wait is the two-window move Module 3 installs: kick off a long run in one window, do active work in the other, come back when the first lands.
+- **The access-control pass is a breadth walk and takes a few minutes.** That wait is the two-window move Module 3 installs: kick off a long run in one window, do active work in the other, come back when the first lands.
+- **Switch to your m3-quality window now.** While the map builds in m3-security, start authoring the test-strategy skill there (Exercise 3, Phase 1). When the map lands back in m3-security, switch back to walk it and write the delta. Both windows are already open from *Open the side quest*; this is a focus switch, not a new session.
 
-**Note** Switch to your m3-quality window now. While the map builds in m3-security, start authoring the test-strategy skill there (Exercise 3, Phase 1). When the map lands back in m3-security, switch back to walk it and write the delta. Both windows are already open from *Open the side quest*; this is a focus switch, not a new session.
+## Phase 2: Read the map back before you decide the delta
 
-## Phase 2: walk the map in conversation
+- **You're back in m3-security now; the map landed here.** The rest of this exercise runs in this window.
+- **See the structured read before you decide.** Ask Claude to walk you through the surface map in chat: categories, key findings, ambiguous spots. You want the structured read in front of you before you name your deltas in Phase 3.
 
-**Note** Back in m3-security now, the map has landed here. The rest of this exercise runs in this window.
+{{cut:map-the-access-surface-3|redundant-slot}}
 
-Ask Claude to walk you through the surface map in chat (categories, key findings, ambiguous spots) so you've seen the structured read before deciding your deltas in Phase 3.
+## Phase 3: Add the surface the skill over-called, and the one it missed
 
-{{prompt:map-the-access-surface-3}}
-
-## Phase 3: write the delta
-
-Now you decide which surface goes on each side of the delta. Two reads:
-
-- Where did the map flag something you'd have under-weighted? Lower-risk in your read, higher-risk in the skill's.
-- What's missing that you know matters? Often the "weird bit" of your feature, the part you'd describe as not-quite-standard.
-
-If neither is obvious from a quick scan, ask Claude in chat to propose two or three candidates per side with a one-line reason each. Pick from those, push back if the reasons read generic.
+- **You decide which surface goes on each side of the delta.** Two reads.
+- **The over-call.** Where did the map flag something you'd have under-weighted? Lower-risk in your read, higher-risk in the skill's.
+- **The miss.** What's missing that you know matters? Often the "weird bit" of your feature, the part you'd describe as not-quite-standard.
+- **If neither is obvious from a quick scan,** ask Claude in chat to propose two or three candidates per side with a one-line reason each. Pick from those; push back if the reasons read generic.
 
 Ask Claude to integrate the surface the skill called out harder than you would have into the map.
 
@@ -64,22 +60,20 @@ Then ask Claude to add the surface the skill missed but you know matters.
 
 {{prompt:map-the-access-surface-5}}
 
+## Push back until the reason names your codebase
 
-Answer. Push back on the sharpening question until the reason names something specific to your codebase. *"The billing webhook re-hits the queue on retry, so the same event gets reprocessed"* beats *"webhooks need auth."*
+- **Answer, then sharpen.** Push back on the sharpening question until the reason names something specific to your codebase. *"The billing webhook re-hits the queue on retry, so the same event gets reprocessed"* beats *"webhooks need auth."*
 
-## Phase 4: handoff check
+## Phase 4: Add the context header a cold reader needs
 
-You're about to hand this map to the STRIDE skill. Glance at it. If a teammate landing on this file cold would miss something the map assumes you know, add a one-line context header. If it reads, close.
-
-Most people skip this. Some want the pause. Your call.
-
----
+- **You're about to hand this map to the STRIDE skill.** Glance at it. If a teammate landing on this file cold would miss something the map assumes you know, add a one-line context header. If it reads, close.
+- **Most people skip this; some want the pause. Your call.**
 
 **What happened:** You ended with a short delta-note in your repo: the surfaces the skill called out harder than you would have, and the surfaces you knew mattered that the skill didn't catch. The delta is the artifact, not the raw skill output.
 
 ## What this sets up
 
-The STRIDE exercise invokes the curated STRIDE skill on the map you just built. The surface map IS the input. If you rushed Phase 2, STRIDE will threat-model a thin map; if you sat with it, STRIDE has something real to chew on.
+The STRIDE exercise invokes the curated STRIDE skill on the map you just built. The surface map IS the input. If you rushed Phase 2, STRIDE threat-models a thin map; if you sat with it, STRIDE has something real to chew on.
 
 <!-- maintainer -->
 

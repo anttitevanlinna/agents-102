@@ -53,7 +53,11 @@ const { loadRegistry } = require('./compile-prompts.js');
 const ROOT = path.resolve(__dirname, '..');
 const DEFAULT_TRAINING = 'agentic-engineering-101';
 const INCLUDE_RE = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md\)[ \t]*$/gm;
-const PROMPT_MARKER_RE = /^\{\{prompt:([a-z0-9-]+)\}\}[ \t]*$/gm;
+// {{prompt:key}} and its cut-candidate sibling {{cut:key|reason}} are both
+// references to `key` for graph purposes — a cut candidate is still on the
+// student path and still consumes/produces its artefacts. Group 1 is the key;
+// the optional `|reason` slug on a cut marker is captured-and-ignored here.
+const PROMPT_MARKER_RE = /^\{\{(?:prompt|cut):([a-z0-9-]+)(?:\|[a-z0-9-]+)?\}\}[ \t]*$/gm;
 const MAINTAINER_MARKER = '<!-- maintainer -->';
 
 // A `requires.source` that points at one of these origins owes no producer —

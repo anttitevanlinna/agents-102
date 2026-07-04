@@ -39,7 +39,7 @@ produces:
     consumed-by:
       - prompt:spot-gaps-build-the-loop-1
       - prompt:arc-retrospective-1
-      - prompt:agents-that-build-agents-1
+      - prompt:agents-that-build-agents-handoff
     note: M6 readers get the m5 branch + transcript path from plan.md instead of branch-grep + mtime transcript search
   - id: run-notes
     location: RUN-NOTES.md (at worktree root)

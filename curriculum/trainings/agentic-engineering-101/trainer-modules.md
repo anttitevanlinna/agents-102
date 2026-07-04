@@ -27,7 +27,8 @@ One module at a time. Pick a tab; the URL hash holds the selection so you can sh
 4. Exercise — [Orient and introspect](./#exercises-orient-and-introspect) (15–20 min)
 5. Exercise — [Fix tests-first](./#exercises-fix-tests-first) (25 min)
 6. Exercise — [Compound and close](./#exercises-compound-and-close) (30 min)
-7. Lecture — [How this training was built](./#lectures-how-this-training-was-built) (closer; names compound engineering)
+7. Lecture — [The machine you just met](./#lectures-the-machine-you-just-met) (recognition closer, ~5 min; names the two behaviors the exercises surfaced across Ex1–Ex3)
+8. Lecture — [How this training was built](./#lectures-how-this-training-was-built) (arc closer; names compound engineering)
 
 **Learning goals.** Student can:
 
@@ -56,10 +57,12 @@ One module at a time. Pick a tab; the URL hash holds the selection so you can sh
 
 **Flow.**
 
-1. Connections + Lecture — [When a plan is good](./#lectures-when-a-plan-is-good)
-2. Exercise — [Push back on the plan](./#exercises-push-back-on-the-plan) (60 min; Phases 1–4 before lunch, Phase 5 after)
-3. Exercise — [Extract the task-shaping rule](./#exercises-extract-the-task-shaping-rule) (12 min)
-4. Lecture — [Where the rule could live](./#lectures-where-the-rule-could-live) (names Slack triage / issue webhook / scheduled read)
+1. Connections — "when did you last approve a plan you didn't really read, and what made you approve?"
+2. Lecture — [The whole map](./#lectures-the-whole-map) (opener, 4–6 min; first map reveal — the whole territory, and where the first three modules sit in it)
+3. Lecture — [When a plan is good](./#lectures-when-a-plan-is-good)
+4. Exercise — [Push back on the plan](./#exercises-push-back-on-the-plan) (60 min; Phases 1–4 before lunch, Phase 5 after)
+5. Exercise — [Extract the task-shaping rule](./#exercises-extract-the-task-shaping-rule) (12 min)
+6. Lecture — [Where the rule could live](./#lectures-where-the-rule-could-live) (names Slack triage / issue webhook / scheduled read)
 
 **Learning goals.** Student can:
 
@@ -95,6 +98,7 @@ One module at a time. Pick a tab; the URL hash holds the selection so you can sh
 4. Exercise — [Map the access surface](./#exercises-map-the-access-surface) (20 min; curated `access-control-analysis` skill as subagent)
 5. Exercise — [Threat-model with STRIDE](./#exercises-threat-model-with-stride) (20 min; curated `stride` skill; one ADR ships)
 6. Exercise — [Author your test-strategy skill](./#exercises-author-test-strategy-skill) (18–22 min; authored through conversation, self-critique, invoke on real feature)
+7. Lecture — [The loop half, filled in](./#lectures-the-loop-half-filled) (consolidation closer, 8–10 min; names the near half of the map whole after three modules of loop work; fires after the skill-sharpen, before the session clear)
 
 **Learning goals.** Student can:
 
@@ -127,10 +131,13 @@ One module at a time. Pick a tab; the URL hash holds the selection so you can sh
 **Flow.**
 
 1. Connections (compressed to 5 min — cohort is warmed up from Day 1)
-2. Lecture — [Test and learn](./#lectures-test-and-learn)
-3. Exercise — [Walk and send off](./#exercises-walk-and-send-off) (55 min; pick 10 / walk-and-fill 35 / see-the-frame 10)
-4. Send-off (~5 min, single prompt paste — owned by the module file, not the exercise)
-5. Lecture — [Will company memory emerge?](./#lectures-will-company-memory-emerge) (fires while the agent runs; reflective coda; leaves the run open for M5)
+2. Lecture — [The far half of the map](./#lectures-the-far-half) (opener, 3–5 min; the far-half map reveal — quick feedback goes quiet, the result arrives all at once)
+3. Lecture — [The ironies of automation](./#lectures-ironies-of-automation) (framing opener, ~2–3 min; names the trap built into the far half — vigilance erodes exactly as you earn trust in the long run; promoted from supplementary 2026-07-03, sits after the far-half and before the agent loop. Framing only — arms the lens, doesn't teach the fixes; the lecture's own Time line caps it at 2–3, "past 3 it has started teaching the fixes")
+4. Lecture — [The agent loop](./#lectures-the-agent-loop) (~5 min; names the machine that keeps stepping; three prompts run on the live session that carries the send-off)
+5. Lecture — [Test and learn](./#lectures-test-and-learn)
+6. Exercise — [Walk and send off](./#exercises-walk-and-send-off) (55 min; pick 10 / walk-and-fill 35 / see-the-frame 10)
+7. Send-off (~5 min, single prompt paste — owned by the module file, not the exercise)
+8. Lecture — [Will company memory emerge?](./#lectures-will-company-memory-emerge) (fires while the agent runs; reflective coda; leaves the run open for M5)
 
 **Learning goals.** Student can:
 
@@ -163,6 +170,7 @@ One module at a time. Pick a tab; the URL hash holds the selection so you can sh
 3. Exercise — [Diagnose and re-send](./#exercises-diagnose-and-resend) (65 min; Phases 1–4)
 4. Debrief + re-send (15–20 min; owned by the module file; worktree setup demo here)
 5. Lecture — [What packaging is](./#lectures-what-packaging-is) (closer; Ronacher's three-pattern earned from felt evidence — don't squeeze it)
+6. Lecture — [The gate is a claim too](./#lectures-the-gate-is-a-claim) (final closer, 6–8 min; names the fallibility of the verifier the student just built — the gate is a claim, not proof. Promoted from supplementary 2026-07-03, lands after What packaging is. Two back-to-back closers: budget packaging ~12–15 + gate 6–8 against the 1h45 runtime)
 
 **Learning goals.** Student can:
 
@@ -176,7 +184,7 @@ One module at a time. Pick a tab; the URL hash holds the selection so you can sh
 
 - *Diagnose and re-send* — student ends with: a diagnosis (named failures + quoted moments from their own artefact), a working verifier targeting one specific failure mode, and reference + `plan.md` scoped to the same M4 task. Each piece earns its place against a real failure, not a slide.
 
-**Trainer cues.** The 15-min cushion goes to worktree setup (real engineering, students fumble) and the closing lecture — don't compress it; the lecture IS the lesson. At close, the packaged re-send fires and runs through lunch. After lunch, the re-entry window is for nudging a stalled agent (the dark-humor "Continue" prompt still works) and settling in; then M6 opens fresh at the same worktree path.
+**Trainer cues.** The 15-min cushion goes to worktree setup (real engineering, students fumble) and the two closing lectures (What packaging is → The gate is a claim too) — don't compress them; the pair IS the lesson. At close, the packaged re-send fires and runs through lunch. After lunch, the re-entry window is for nudging a stalled agent (the dark-humor "Continue" prompt still works) and settling in; then M6 opens fresh at the same worktree path.
 
 </section>
 
@@ -199,7 +207,8 @@ One module at a time. Pick a tab; the URL hash holds the selection so you can sh
 7. Exercise — [Arc retrospective](./#exercises-arc-retrospective) (15–20 min; agent reads everything authored across training, writes one-page note)
 8. Lecture — [Composing the workflow](./#lectures-composing-the-workflow) (closer-area pointer; 3–4 min)
 9. Lecture — [The loop has a name](./#lectures-the-loop-has-a-name) (closer; names *eval* from the just-built second skill)
-10. Lecture — [Agents that build agents](./#lectures-agents-that-build-agents) (forward closer)
+10. Lecture — [The map, filled in](./#lectures-the-map-filled-in) (final theory closer, 8–10 min; the whole map drawn solid across M1–M6)
+11. Lecture — [Agents that build agents](./#lectures-agents-that-build-agents) (forward closer; the training's closing beat, dead-last per the 2026-07-03 re-sequence)
 
 **Learning goals.** Student can:
 
@@ -218,3 +227,6 @@ One module at a time. Pick a tab; the URL hash holds the selection so you can sh
 **Trainer cues.** Practitioner-fluency register, not lecture-hall — invite student reflection between lectures. Two beats of silence is fine; Nordic engineers think before speaking. The composition lecture has no exercise on purpose ("composition is a reading move at M6"); if a student asks where the exercise is, point at the [workflow-composition-lineages supplementary](./#supplementary-workflow-composition-lineages). Dino's [skill-stacking system](./#supplementary-skill-stacking) is the worked example. Pacing: if energy is high give the lineage conversation room; if low, name fewer lineages and move to the closer pair faster.
 
 </section>
+
+<!-- maintainer — 2026-07-03: theory-spine lecture beats reconciled against the 2026-07-02 module rework. Added the-machine-you-just-met (M1 closer), the-whole-map (M2 opener), the-loop-half-filled (M3 consolidation closer), the-far-half + the-agent-loop (M4 openers), the-map-filled-in (M6 final closer). Flow beats renumbered per module. Anchors follow the built #lectures-<slug> convention; they resolve once the integration build inlines the new lectures. -->
+<!-- maintainer — 2026-07-03 (eyeball-queue #14): reconciled trainer-modules against the same-day 2026-07-03 close rework in the module .md files. (1) M4 open — added the-ironies-of-automation beat between the-far-half and the-agent-loop (newly promoted supplementary→lecture per run-the-first-experiment.md § Start here); ~2–3 min framing opener, matching the lecture's own Time-line cap (NOT the 5–7 the eyeball note guessed — the lecture author explicitly caps at 2–3, "past 3 it has started teaching the fixes"). M4 flow renumbered 2→8. (2) M5 close — added the-gate-is-a-claim-too as final closer after What-packaging-is (newly promoted supplementary→lecture per learn-from-the-test.md), 6–8 min matching its lecture Time line; M5 trainer cue updated to name two closers. (3) M6 close — swapped so the-map-filled-in is penultimate and agents-that-build-agents is dead-last, per the 2026-07-03 re-sequence recorded in spot-gaps-build-the-loop.md; dropped the stale "training's last beat" tag from map-filled-in. M1/M2/M3 beat lists cross-checked against their module files, already current. Anchors follow the built #lectures-<slug> convention (ironies → #lectures-ironies-of-automation, gate → #lectures-the-gate-is-a-claim). -->

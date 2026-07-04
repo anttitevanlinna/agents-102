@@ -1,42 +1,55 @@
-# Open the *side quest*
+# Two windows on one codebase
 
-**Time: ~5 min**
+**Time:** ~5 min
 
 Module 3 runs in two windows. Security is the main quest in your chosen repo. Quality is a side-quest in a sibling worktree.
 
-A sibling worktree is a second working directory on the same git history, opened next to your repo. Useful when two unrelated changes need to run concurrently, each on its own branch and working state. The [Multi-session and Git survival guide](../trainings/agentic-engineering-101/reference/multi-session-git.md) carries the longer read; one-line version: `git worktree add` makes a sibling folder on its own branch, you start a new Claude Code session in another window there, both sessions see the same git history but keep their own working state. Personal files like `CLAUDE.local.md` don't sync between worktrees, they get copied across once at fork time, then evolve independently.
+**What you do:** Start a Claude Code session in your repo for security. Fork a sibling worktree for quality, open a second session there, and confirm both sessions read the same codebase from their own working directories.
+
+**What you build:** two Claude Code sessions running side by side on one git history. A security main lane in your repo, and a quality side lane in a sibling worktree that waits until Exercise 3. When one lane runs a long prompt, the other is where you work.
+
+## Fork the side worktree from your security lane
+
+- **Security is the main quest. Start it in your repo.** This is your main lane for Module 3. Access mapping, STRIDE, and the ADR all live here.
 
 **Session** *(new, "m3-security")*
-
-Start a new Claude Code session in your repo. This is your main lane for Module 3. Access mapping, STRIDE, and the ADR all live here. Optionally rename to `m3-security`.
 
 ```
 /rename m3-security
 ```
 
-Before firing the fork, decide where to base the side-quest worktree from, it branches off your current local HEAD. Clean main is the safe default; pick another branch if you have a reason. Switch now if you need to.
+- **A sibling worktree is a second working directory on the same git history.** It opens next to your repo, useful when two unrelated changes run concurrently, each on its own branch and working state. `git worktree add` makes the sibling folder on its own branch; a new Claude Code session in another window works there; both sessions see the same git history but keep their own working state. The [Multi-session and Git survival guide](../trainings/agentic-engineering-101/reference/multi-session-git.md) carries the longer read.
+- **Personal files like `CLAUDE.local.md` don't sync between worktrees.** They get copied across once at fork time, then evolve independently.
+- **Decide where to base the side worktree.** It branches off your current local HEAD. Clean main is the safe default. If you want another base, switch to it before you fork.
 
-Paste the prompt as-is. Claude reads `<repo-name>` as your repo's folder name from the working directory.
+The fork prompt reads your repo's folder name from the working directory. Paste it as-is; Claude fills in `<repo-name>` itself.
 
 {{prompt:ae101-m3-fork-quality-side}}
 
-Claude reports the sibling worktree path.
+## Read back the worktree path
+
+- **Claude reports the sibling worktree path.** That path is where the second session opens.
+
+## Open the quality lane in the new worktree
+
+- **This is your side-quest lane.** Start a second Claude Code session in another window, in the sibling worktree directory Claude just named.
 
 **Session** *(new, "m3-quality")*
-
-Start a second Claude Code session in another window, in the sibling worktree directory Claude just named. This is your side-quest lane. You author the test-strategy skill here while the main lane does security. The skill installs to user scope, so Exercise 3 returns to the main lane to invoke on the security-tested feature. Optionally rename to `m3-quality`.
 
 ```
 /rename m3-quality
 ```
 
+- **You author the test-strategy skill here while the main lane runs security.** The skill installs to user scope, so Exercise 3 returns to the main lane to invoke it on the security-tested feature. You are not carrying the skill back by hand; it crosses worktrees on its own.
+
 {{prompt:ae101-m3-quality-side-orient}}
 
-Two windows, side by side on your screen from here, arrange them so both stay visible at once. Each holds its own scrollback. Module 3's exercises name which window the work runs in. The move you're installing this module: when one window kicks off a long-running prompt, the other is where you work. The exercises name the switch points.
+## Set the two windows side by side
 
-**What happened:**
+- **Two windows, side by side, both visible at once.** Each holds its own scrollback. Arrange them so neither disappears behind the other.
+- **The move this module installs: when one window kicks off a long-running prompt, the other is where you work.** Module 3's exercises name which window the work runs in, and where the switch points are.
 
-You forked a sibling worktree for the quality side, opened two Claude Code sessions (one in your repo, one in the sibling), and confirmed each reads the same codebase from a different working directory. Security picks up in the main window at the next exercise. The quality side waits.
+**What happened:** You forked a sibling worktree for the quality side, opened two Claude Code sessions (one in your repo, one in the sibling), and confirmed each reads the same codebase from a different working directory. Security picks up in the main window at the next exercise. The quality side waits.
 
 <!-- maintainer -->
 

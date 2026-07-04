@@ -1,4 +1,4 @@
-# Orient and *introspect*
+# Orient and *map the window*
 
 **Time:** 15–20 minutes.
 
@@ -12,35 +12,54 @@ Start a new Claude Code session at your repo root. Optionally rename to `m1-orie
 
 **What you do:** have Claude read your repo, then interrogate what it read.
 
+**What you build:** a picture of what landed in the context window and what didn't: a deliberate read of your repo, the agent's own account of what it skipped, and the context budget that shows the unread slice. Together they map the window you steer for the rest of the training.
+
 **The point:** you can't steer what you can't see. This is the first move of every session after this one. Load deliberately, watch the budget, dig the self-report.
 
-Claude Code is open on your repo. You have a trivial bug picked from prework. Now: deliberate orientation, then introspection on what Claude says it read, then a look at your context budget.
+---
 
-Ask Claude to read your repo deliberately and report shape, structure, what's load-bearing, what's stale.
+## Read your repo deliberately
+
+- **A deliberate read beats a blind one.** You decide what Claude loads: the repo's shape, its structure, what's load-bearing, what's gone stale. A cold agent reads whatever it stumbles into; you point it.
+- **You are not on the hook for reading the repo.** The agent does that. Your job is to steer what it loads and keep half an eye on the budget.
 
 > **Big repo? The read can fan out.** If Claude starts reading dozens of files, interrupt with `Esc`, narrow to one feature or directory, and say `continue`.
 
+Ask Claude to read your repo deliberately and report what it finds.
+
 {{prompt:orient-and-introspect-1}}
 
+## Read the shape the agent reported
 
-Claude reads and reports. Let it finish.
+- **The agent reports back a map of the repo:** shape, structure, what's load-bearing, what's stale. Let the read finish before you interrogate it.
+
+## Ask what Claude skipped, and why
+
+- **Every read has a shadow: the files Claude didn't load.** The skipped slice is where the surprises hide.
+- **This is one of the most useful moves in the training.** Claude can introspect on what it did and why, including what it chose not to read.
 
 Ask Claude to introspect on what it read, what it skipped, and the call it made on each.
 
 {{prompt:orient-and-introspect-2}}
 
+## Read the self-report, then spot-check it
 
-Read Claude's own account. This is one of the most useful moves in the training: Claude can introspect on what it did and why, including what it chose to skip. The caveat is load-bearing. The self-report is a reconstruction, not ground truth. Claude confabulates reasons sometimes. Assume 10% of what Claude says or does is misrepresentation. Could be more, could be less. Spot-check by quoting back a specific file or function and asking Claude to confirm it.
+- **The account is a reconstruction, not ground truth.** The LLM confabulates reasons sometimes. Assume about 10% of what it says or does is misrepresentation. Could be more, could be less.
+- **You can spot-check it.** Quote a specific file or function back and ask Claude to confirm it read what it claims.
 
-Now look at your context budget, the slash command that shows how full your context window is, total used and breakdown by category (system prompt, messages, memory, skills).
+## Check how full the window is
+
+- **The context window has a ceiling.** `/context` is the slash command that shows how full it is: total used, and the breakdown by category (system prompt, messages, memory, skills).
 
 {{prompt:orient-and-introspect-3}}
 
 (`/context` is oldskool; [ccstatusline](https://github.com/sirmalloc/ccstatusline) shows the same thing continuously in your status line.)
 
-Look at the percentage. The window has a ceiling; the more it fills, the less room for new work. The slice of the repo Claude didn't load is the bounded-window reality. Your job going forward is to steer what lands in those bytes.
+## Read the unread slice
 
-You've seen what's loaded and what isn't. Hand off to the fix.
+- **The percentage is the number that matters.** The more the window fills, the less room for new work.
+- **The slice Claude didn't load is the bounded-window reality.** Going forward, your job is to steer what lands in those bytes.
+- **You now have a map of the window:** what loaded, what Claude skipped, and how much room is left. The next exercise fixes the bug inside the window you just mapped.
 
 <!-- maintainer -->
 

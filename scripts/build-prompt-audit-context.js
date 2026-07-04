@@ -39,7 +39,10 @@ const { loadRegistry } = require('./compile-prompts.js');
 const ROOT = path.resolve(__dirname, '..');
 const DEFAULT_TRAINING = 'agentic-engineering-101';
 const INCLUDE_RE = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md\)[ \t]*$/gm;
-const PROMPT_MARKER_RE = /^\{\{prompt:([a-z0-9-]+)\}\}[ \t]*$/gm;
+// {{prompt:key}} and its cut-candidate sibling {{cut:key|reason}} are both
+// references to `key` — a cut candidate stays on the student path and is still
+// audited. Group 1 is the key; the optional cut `|reason` slug is ignored.
+const PROMPT_MARKER_RE = /^\{\{(?:prompt|cut):([a-z0-9-]+)(?:\|[a-z0-9-]+)?\}\}[ \t]*$/gm;
 const MAINTAINER_MARKER = '<!-- maintainer -->';
 const WINDOW_BEFORE = 900;
 const WINDOW_AFTER = 500;

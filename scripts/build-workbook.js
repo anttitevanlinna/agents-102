@@ -85,6 +85,64 @@ const KNOWN_RUNTIMES = new Set(['any', 'cli', 'desktop', 'cowork']);
 // Files in curriculum/trainings/<key>/ that don't ship in workbook output.
 const TRAINER_ONLY = new Set(['cohort-onboarding-email.md', 'pre-cohort-todos.md']);
 
+// ── Theory handbook manifest ────────────────────────────────────────────────
+// `node scripts/build-workbook.js <customer> <training> --theory` assembles
+// ONLY these docs — student bodies, no exercises, no module chrome — into
+// site/clients/<customer>/<training>/theory-handbook.html. A maintainer
+// reading/checking artifact: the full theory in one continuous read.
+//
+// Grouped by module beat. One entry per line — strike or add a line to trim.
+//   'lectures/<slug>'      → curriculum/lectures/<slug>.md
+//   'supplementary/<slug>' → curriculum/trainings/<training>/supplementary/<slug>.md
+// Dual-wired lectures appear once, at their owning module. Duplicates and
+// missing files fail the build.
+// story-of-module-6 stays in the M6 module as the opener memo but is not
+// theory — deliberately excluded from this manifest.
+const THEORY_HANDBOOK_MANIFEST = {
+  'agentic-engineering-101': [
+    ['M1', [
+      'lectures/painting-the-picture-with-the-llm',
+      'lectures/the-wizard-move',
+      'lectures/the-machine-you-just-met',
+      'lectures/how-this-training-was-built',
+    ]],
+    ['M2', [
+      'lectures/the-whole-map',
+      'lectures/when-a-plan-is-good',
+      'lectures/where-the-rule-could-live',
+    ]],
+    ['M3', [
+      'lectures/skills-from-the-frontier',
+      'lectures/the-loop-half-filled',
+      'supplementary/the-lethal-trifecta',
+    ]],
+    ['M4', [
+      'lectures/the-far-half',
+      'lectures/ironies-of-automation',
+      'lectures/the-agent-loop',
+      'lectures/test-and-learn',
+      'lectures/will-company-memory-emerge',
+      'lectures/reading-the-return',
+      'supplementary/verification-asymmetry',
+    ]],
+    ['M5', [
+      'lectures/learning-through-contrast',
+      'lectures/what-packaging-is',
+      'lectures/the-gate-is-a-claim',
+      'supplementary/backpressure',
+    ]],
+    ['M6', [
+      'lectures/the-2-frontiers',
+      'lectures/quality-is-grounding',
+      'lectures/steering-the-wiring',
+      'lectures/composing-the-workflow',
+      'lectures/the-loop-has-a-name',
+      'lectures/the-map-filled-in',
+      'lectures/agents-that-build-agents',
+    ]],
+  ],
+};
+
 function readMd(absPath) {
   if (!fs.existsSync(absPath)) return null;
   const raw = fs.readFileSync(absPath, 'utf8');
@@ -542,6 +600,203 @@ ${content}
 `;
 }
 
+// ── Theory handbook ─────────────────────────────────────────────────────────
+// Maintainer reading/checking artifact: every theory doc from
+// THEORY_HANDBOOK_MANIFEST in one self-contained page, rendered by the SAME
+// pipeline as the workbook. Lectures ride the module include path (synthetic
+// standalone include-link → inlineIncludes → readMd/expandPrompts → marked →
+// postProcessIncludes), so {{prompt:}}/{{cut:}}/{{covered:}} markers, heading
+// ids, and the phase--lecture section wrapper come out byte-equivalent to the
+// workbook's. Supplementary docs follow the workbook's renderStandalone
+// transform sequence (link rewrite → inlineImages → escapeTildes → marked →
+// wrapImageFigures). Module-number section headers are assembly chrome — they
+// live here, never in the lecture bodies.
+function renderTheoryEntry(trainingKey, entry) {
+  const [kind, slug] = entry.split('/');
+
+  if (kind === 'lectures') {
+    const srcPath = path.join(ROOT, 'curriculum/lectures', slug + '.md');
+    if (!fs.existsSync(srcPath)) {
+      throw new Error(`Theory manifest entry missing: ${path.relative(ROOT, srcPath)}`);
+    }
+    let md = inlineIncludes(`[${slug}](lectures/${slug}.md)`);
+    if (md.indexOf('<!--INC:') === -1) {
+      throw new Error(`Theory manifest entry did not expand as an include: ${entry}`);
+    }
+    md = rewriteCrossDocLinksToAnchors(md);
+    md = escapeTildes(md);
+    let html = marked.parse(md);
+    html = postProcessIncludes(html);
+    return CR.wrapImageFigures(html);
+  }
+
+  if (kind === 'supplementary') {
+    const docPath = path.join(ROOT, 'curriculum/trainings', trainingKey, 'supplementary', slug + '.md');
+    let md = readMd(docPath);
+    if (md === null) {
+      throw new Error(`Theory manifest entry missing: ${path.relative(ROOT, docPath)}`);
+    }
+    md = rewriteCrossDocLinksToAnchors(md);
+    md = inlineImages(md, path.dirname(docPath));
+    md = escapeTildes(md);
+    return `<section class="phase phase--lecture" id="supplementary-${slug}">\n<div class="phase-kicker">Supplementary</div>\n${CR.wrapImageFigures(marked.parse(md))}\n</section>`;
+  }
+
+  throw new Error(`Theory manifest entry has unknown kind "${kind}": ${entry} (expected lectures/ or supplementary/)`);
+}
+
+function buildTheoryBody(trainingKey) {
+  const t = CR.TRAININGS[trainingKey];
+  const manifest = THEORY_HANDBOOK_MANIFEST[trainingKey];
+  if (!manifest) {
+    throw new Error(`No theory handbook manifest for training: ${trainingKey}. Add one to THEORY_HANDBOOK_MANIFEST in scripts/build-workbook.js.`);
+  }
+
+  // Each doc exactly once — dual-wired lectures live at their owning module.
+  const seen = new Set();
+  for (const [beat, entries] of manifest) {
+    for (const entry of entries) {
+      if (seen.has(entry)) throw new Error(`Theory manifest lists ${entry} twice (second time under ${beat})`);
+      seen.add(entry);
+    }
+  }
+
+  const sections = manifest.map(([beat, entries]) => {
+    const m = beat.match(/^M(\d+)$/);
+    const modTitle = m && t.modules[Number(m[1]) - 1] ? t.modules[Number(m[1]) - 1].title : '';
+    const label = modTitle ? `${beat} — ${modTitle}` : beat;
+    const inner = entries.map(e => renderTheoryEntry(trainingKey, e)).join('\n\n');
+    return `<section class="module" id="theory-${beat.toLowerCase()}">\n<h1>${CR.esc(label)}</h1>\n${inner}\n</section>`;
+  }).join('\n\n');
+
+  const cover = `
+<header class="workbook-cover" id="top">
+  <p class="eyebrow">${CR.esc(t.label)}</p>
+  <h1 class="cover-title">Theory handbook</h1>
+</header>
+`;
+  return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + CR.renderFooter() + '\n';
+}
+
+function theoryHandbookTemplate(trainingKey, content) {
+  const t = CR.TRAININGS[trainingKey];
+  const runtime = t.runtime || 'cli';
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${CR.esc(t.label)} · Theory handbook</title>
+<style>${SPA_CSS}</style>
+</head>
+<body class="runtime-${CR.esc(runtime)} workbook" data-training="${trainingKey}">
+${content}
+<script>${SPA_JS}</script>
+<script>${TRAINER_GUIDE_INIT_JS}</script>
+</body>
+</html>
+`;
+}
+
+function buildTheoryHandbook(customer, trainingKey) {
+  const outDir = path.join(ROOT, 'site/clients', customer, trainingKey);
+  fs.mkdirSync(outDir, { recursive: true });
+  const html = theoryHandbookTemplate(trainingKey, buildTheoryBody(trainingKey));
+  const outFile = path.join(outDir, 'theory-handbook.html');
+  fs.writeFileSync(outFile, html);
+  const sizeKB = (fs.statSync(outFile).size / 1024).toFixed(0);
+  console.log(`Built ${path.relative(ROOT, outFile)} (${sizeKB} KB)`);
+}
+
+// ── Exercises workbook ──────────────────────────────────────────────────────
+// Sibling of the theory handbook: every AE101 exercise in one self-contained
+// page, prompts inlined, rendered by the SAME include pipeline as the workbook.
+// Source of truth is the module files themselves — the exercise set + order are
+// derived from each module's `exercises/<slug>` include links (no separate
+// manifest to drift). Eyeball surface for the slide-chunking refactor + a
+// student handout.
+function exerciseSlugsForModule(trainingKey, moduleSlug) {
+  const modPath = path.join(ROOT, 'curriculum/trainings', trainingKey, moduleSlug + '.md');
+  if (!fs.existsSync(modPath)) return [];
+  const body = CR.stripMaintainerTail(fs.readFileSync(modPath, 'utf8'));
+  const re = /\[[^\]]+\]\(exercises\/([a-z0-9-]+)\.md\)/g;
+  const slugs = [];
+  let m;
+  while ((m = re.exec(body)) !== null) slugs.push(m[1]);
+  return slugs;
+}
+
+function renderExerciseEntry(slug) {
+  const srcPath = path.join(ROOT, 'curriculum/exercises', slug + '.md');
+  if (!fs.existsSync(srcPath)) {
+    throw new Error(`Exercise missing: ${path.relative(ROOT, srcPath)}`);
+  }
+  let md = inlineIncludes(`[${slug}](exercises/${slug}.md)`);
+  if (md.indexOf('<!--INC:') === -1) {
+    throw new Error(`Exercise did not expand as an include: ${slug}`);
+  }
+  md = rewriteCrossDocLinksToAnchors(md);
+  md = escapeTildes(md);
+  let html = marked.parse(md);
+  html = postProcessIncludes(html);
+  return CR.wrapImageFigures(html);
+}
+
+function buildExercisesBody(trainingKey) {
+  const t = CR.TRAININGS[trainingKey];
+  if (!t) throw new Error(`Unknown training: ${trainingKey}`);
+  const seen = new Set();
+  const sections = t.modules.map((mod, i) => {
+    const slugs = exerciseSlugsForModule(trainingKey, mod.slug).filter(s => {
+      if (seen.has(s)) return false;
+      seen.add(s);
+      return true;
+    });
+    if (slugs.length === 0) return '';
+    const inner = slugs.map(renderExerciseEntry).join('\n\n');
+    const label = `M${i + 1} — ${mod.title}`;
+    return `<section class="module" id="exercises-m${i + 1}">\n<h1>${CR.esc(label)}</h1>\n${inner}\n</section>`;
+  }).filter(Boolean).join('\n\n');
+
+  const cover = `
+<header class="workbook-cover" id="top">
+  <p class="eyebrow">${CR.esc(t.label)}</p>
+  <h1 class="cover-title">Exercises workbook</h1>
+</header>
+`;
+  return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + CR.renderFooter() + '\n';
+}
+
+function exercisesWorkbookTemplate(trainingKey, content) {
+  const t = CR.TRAININGS[trainingKey];
+  const runtime = t.runtime || 'cli';
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${CR.esc(t.label)} · Exercises workbook</title>
+<style>${SPA_CSS}</style>
+</head>
+<body class="runtime-${CR.esc(runtime)} workbook" data-training="${trainingKey}">
+${content}
+<script>${SPA_JS}</script>
+<script>${TRAINER_GUIDE_INIT_JS}</script>
+</body>
+</html>
+`;
+}
+
+function buildExercisesWorkbook(customer, trainingKey) {
+  const outDir = path.join(ROOT, 'site/clients', customer, trainingKey);
+  fs.mkdirSync(outDir, { recursive: true });
+  const html = exercisesWorkbookTemplate(trainingKey, buildExercisesBody(trainingKey));
+  const outFile = path.join(outDir, 'exercises-workbook.html');
+  fs.writeFileSync(outFile, html);
+  const sizeKB = (fs.statSync(outFile).size / 1024).toFixed(0);
+  console.log(`Built ${path.relative(ROOT, outFile)} (${sizeKB} KB)`);
+}
+
 function template(title, content, trainingKey) {
   const training = CR.TRAININGS[trainingKey] || {};
   const runtime = training.runtime || 'cli';
@@ -566,6 +821,8 @@ function usage() {
   console.error('Usage: node scripts/build-workbook.js <customer-slug> <training-key|training-key,...|all>');
   console.error('   or: node scripts/build-workbook.js <customer-slug> <training-key> <training-key> ...');
   console.error('Legacy single-training form still works: node scripts/build-workbook.js <training-key> <customer-slug>');
+  console.error('Theory handbook (lectures only, no exercises): append --theory');
+  console.error('Exercises workbook (exercises only, prompts inlined): append --exercises');
   console.error('  training-key: ' + Object.keys(CR.TRAININGS).join(' | '));
 }
 
@@ -763,13 +1020,24 @@ function buildCustomerIndex(customer) {
   console.log(`Built ${path.relative(ROOT, indexFile)} (${sizeKB} KB)`);
 }
 
-const { customer, trainings, legacy } = parseCli(process.argv.slice(2));
+// `--theory` switches the build to the theory handbook (additive sibling page;
+// the normal workbook path is untouched when the flag is absent).
+const rawArgs = process.argv.slice(2);
+const theoryMode = rawArgs.includes('--theory');
+const exercisesMode = rawArgs.includes('--exercises');
+const { customer, trainings, legacy } = parseCli(rawArgs.filter(a => a !== '--theory' && a !== '--exercises'));
 if (legacy) {
   console.log('Legacy argument order detected; prefer: node scripts/build-workbook.js ' + customer + ' ' + trainings[0]);
 }
 
-trainings.forEach(trainingKey => buildTraining(customer, trainingKey));
-buildCustomerIndex(customer);
+if (theoryMode) {
+  trainings.forEach(trainingKey => buildTheoryHandbook(customer, trainingKey));
+} else if (exercisesMode) {
+  trainings.forEach(trainingKey => buildExercisesWorkbook(customer, trainingKey));
+} else {
+  trainings.forEach(trainingKey => buildTraining(customer, trainingKey));
+  buildCustomerIndex(customer);
+}
 
 // Post-render audit: scan every emitted .html for leftover `{{prompt:` markers.
 // Strict expandPrompts already throws at expand time; this is the second-line
@@ -793,7 +1061,10 @@ buildCustomerIndex(customer);
         const body = raw
           .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
           .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '');
-        const matches = body.match(/\{\{prompt:[a-z0-9-]+\}\}/g);
+        // Catch leftover {{prompt:key}}, its cut-candidate sibling
+        // {{cut:key|reason}}, AND the covered-region pair {{covered:slug#anchor}}
+        // … {{/covered}} — all should have been resolved by the expander.
+        const matches = body.match(/\{\{(?:prompt|cut):[a-z0-9-]+(?:\|[a-z0-9-]+)?\}\}|\{\{covered:[a-z0-9-]+(?:#[a-z0-9-]+)?\}\}|\{\{\/covered\}\}/g);
         if (matches) offenders.push({ file: path.relative(ROOT, abs), markers: matches });
       }
     }

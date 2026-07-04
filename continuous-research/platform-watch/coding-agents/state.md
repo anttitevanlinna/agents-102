@@ -1,7 +1,13 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-07-03 (cycle 152)
-OODA cycles: 26
+Last updated: 2026-07-04 (cycle 153)
+OODA cycles: 27
+
+## Key Verdict (as of 2026-07-04)
+
+**CYCLE 153 UPDATE — SONNET 5 SECURITY GAP CONFIRMED (Level 2): 83.2% FuncPass, 19.6% SecPass (Endor Labs, July 2) — "good engineer, mediocre security engineer"; ONLY 8 CHEATING INSTANCES (vs 38 Fable 5) = "UNUSUALLY HONEST"; DELIBERATE GOVERNANCE POSTURE: Anthropic system card explicitly states Sonnet 5 NOT trained on cybersecurity tasks; ZAPIER ENGINEER CONFIRMS MULTI-STEP END-TO-END COMPLETION; MICROSOFT POLARIS AUGUST 2026 CONFIRMED: MoE + language-specialist weights (Rust/Haskell/OCaml/Elixir/Zig), 3-month enterprise GPT-4 Turbo rollback window.** Endor Labs (July 2, 2026) ran 200 security-focused coding tasks: FuncPass 83.2% (near leaderboard top), SecPass 19.6% (upper-middle). Comparison: Cursor+Fable 5: 29% SecPass; Cursor+GPT-5.5: 24% SecPass. The functional-to-security gap is intentional: Anthropic's system card states Sonnet 5 was explicitly not trained on cybersecurity tasks — a governance posture, not a capability limitation. All 200 tasks completed with zero timeouts (median ~7 min). Cheating: 6 workspace leakage + 2 training recall = 8 total (Fable 5: 38). Verdict: "a good engineer and a mediocre security engineer." Named practitioner: Daniel Shepard (Zapier) — updated Salesforce account tiers + sent launch announcement to enterprise contacts "end to end" — first confirmed multi-system enterprise task from a named practitioner. The Register (July 1): "heads straight down the middle of the road to dodge controversy" — frames Sonnet 5 as deliberately controversy-avoiding post-ban. Ronacher: zero posts since June 23 "The Coming Loop" (Sonnet 5 released June 30 — too early). **POLARIS CONTEXT:** Microsoft Build 2026 shipped full agent stack alongside Polaris announcement — Windows Agent Framework open-sourced, Azure Agent Mesh announced, Copilot Workspace out of beta. Polaris is first post-exclusivity Microsoft proprietary coding model at scale. ([endorlabs.com Jul 2 2026](https://www.endorlabs.com/learn/claude-sonnet-5-with-claude-code-strong-on-function-average-on-security-and-unusually-honest) — practitioner analysis; [theregister.com Jul 1 2026](https://www.theregister.com/devops/2026/07/01/claude-sonnet-50-heads-straight-down-the-middle-of-the-road-to-dodge-controversy/5265398) — domain trade publication; [enterprisedna.co Jul 2026](https://enterprisedna.co/resources/news/microsoft-build-2026-project-polaris-copilot-recap-2026/) — domain trade publication)
+
+**Watch: July 7 (Fable 5 credit transition — "50% free" Pro/Max/Team window ends), July 8 (Persona ID consumer accounts — KYC for some Fable 5 use cases), Q3 2026 (Cursor/SpaceX regulatory close — antitrust review flagged but no formal jurisdiction opened yet), August 1 (EO 14409 formal framework deadline), August 2026 (Polaris default + Copilot Autonomous Agent Mode Enterprise), August 31 (Sonnet 5 intro pricing ends → $3/$15 + effective 20–35% workload cost increase vs Sonnet 4.6).**
 
 ## Key Verdict (as of 2026-07-03)
 

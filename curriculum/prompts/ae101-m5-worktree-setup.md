@@ -14,7 +14,7 @@ produces:
     consumed-by:
       - prompt:diagnose-and-resend-1
       - prompt:ae101-m5-rerun-packaged
-    note: also serves as cwd for diagnose-and-resend-2..6, spot-gaps-build-the-loop-*, arc-retrospective-1 (environmental, not formally required)
+    note: also serves as cwd for diagnose-and-resend-2..6, spot-gaps-build-the-loop-* (environmental, not formally required)
 opportunistic-copy:
   - id: claude-local-md
     if-present-at: ../<repo-name>/CLAUDE.local.md

@@ -26,14 +26,12 @@ produces:
     consumed-by:
       - prompt:diagnose-and-resend-2
       - prompt:spot-gaps-build-the-loop-1
-      - prompt:arc-retrospective-1
   - id: m4-session-transcript
     location: ~/.claude/projects/<encoded-original-cwd>/<uuid>.jsonl
     consumed-by:
       - prompt:diagnose-and-resend-1
       - prompt:diagnose-and-resend-2
       - prompt:spot-gaps-build-the-loop-1
-      - prompt:arc-retrospective-1
 ---
 I want you to take the task we scoped earlier in this session end to end. Work from the rules I've set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the observations at `./observations/`, the ADRs, and the skills available by name in this session. That's everything you have. Go.
 

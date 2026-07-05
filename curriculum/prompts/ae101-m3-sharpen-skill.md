@@ -30,7 +30,6 @@ produces:
       - prompt:walk-and-send-off-2
       - prompt:diagnose-and-resend-6
       - prompt:spot-gaps-build-the-loop-2
-      - prompt:arc-retrospective-1
 ---
 Read the test-strategy skill file at `~/.claude/skills/test-strategy/SKILL.md`. Read this scrollback: the access-control output, the STRIDE decision and ADR, the moment the skill was invoked on the security-tested feature, the critique exchange.
 

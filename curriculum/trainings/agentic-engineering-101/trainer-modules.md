@@ -203,12 +203,10 @@ One module at a time. Pick a tab; the URL hash holds the selection so you can sh
 3. Lecture — [Story of Module 6](./#lectures-story-of-module-6) (opener; permission-giving memo from this module's own generation)
 4. Lecture — [Quality is grounding](./#lectures-quality-is-grounding) (opener-bridge, 4–6 min; names the quality arc M1→M6)
 5. Exercise — [Spot gaps, build the loop](./#exercises-spot-gaps-build-the-loop) (40–50 min; diff two runs, route, author second skill)
-6. Lecture — [Steering the wiring](./#lectures-steering-the-wiring) (mid-module)
-7. Exercise — [Arc retrospective](./#exercises-arc-retrospective) (15–20 min; agent reads everything authored across training, writes one-page note)
-8. Lecture — [Composing the workflow](./#lectures-composing-the-workflow) (closer-area pointer; 3–4 min)
-9. Lecture — [The loop has a name](./#lectures-the-loop-has-a-name) (closer; names *eval* from the just-built second skill)
-10. Lecture — [The map, filled in](./#lectures-the-map-filled-in) (final theory closer, 8–10 min; the whole map drawn solid across M1–M6)
-11. Lecture — [Agents that build agents](./#lectures-agents-that-build-agents) (forward closer; the training's closing beat, dead-last per the 2026-07-03 re-sequence)
+6. Lecture — [Composing the workflow](./#lectures-composing-the-workflow) (closer-area teacher; 3–4 min; the passage chart re-labelled with the student's kit + the four composition mechanisms)
+7. Lecture — [The loop has a name](./#lectures-the-loop-has-a-name) (closer; names *eval* from the just-built second skill)
+8. Lecture — [The map, filled in](./#lectures-the-map-filled-in) (final theory closer, 8–10 min; the whole map drawn solid across M1–M6)
+9. Lecture — [Agents that build agents](./#lectures-agents-that-build-agents) (forward closer; the training's closing beat, dead-last per the 2026-07-03 re-sequence)
 
 **Learning goals.** Student can:
 
@@ -222,9 +220,8 @@ One module at a time. Pick a tab; the URL hash holds the selection so you can sh
 **Exercise goals.**
 
 - *Spot gaps, build the loop* — one-screen gap map across memory / verifier / rules / skill, plus one `SKILL.md` at `~/.claude/skills/session-shaper/SKILL.md` (auto-discovered in every future session). Team-kit candidates flagged for human conversation, not auto-PRed.
-- *Arc retrospective* — short note in the repo (ADR-shaped or loose memo, student's call) naming how the student's practice changed across the modules. Agent reads across all six modules' artefacts and writes the arc from the student's own evidence, not a template.
 
-**Trainer cues.** Practitioner-fluency register, not lecture-hall — invite student reflection between lectures. Two beats of silence is fine; Nordic engineers think before speaking. The composition lecture has no exercise on purpose ("composition is a reading move at M6"); if a student asks where the exercise is, point at the [workflow-composition-lineages supplementary](./#supplementary-workflow-composition-lineages). Dino's [skill-stacking system](./#supplementary-skill-stacking) is the worked example. Pacing: if energy is high give the lineage conversation room; if low, name fewer lineages and move to the closer pair faster.
+**Trainer cues.** Practitioner-fluency register, not lecture-hall — invite student reflection between lectures. Two beats of silence is fine; Nordic engineers think before speaking. The composition lecture has no separate drill; Phase 2 of *Spot gaps, build the loop* (the work-shape / primitive scan) is the lived entry to composing. If a student asks where the composition exercise is, point them at that Phase 2 first, then the [workflow-composition-lineages supplementary](./#supplementary-workflow-composition-lineages) for the field survey. Dino's [skill-stacking system](./#supplementary-skill-stacking) is the worked example. Pacing: if energy is high give the lineage conversation room; if low, name fewer lineages and move to the closer pair faster.
 
 </section>
 

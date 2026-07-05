@@ -83,9 +83,9 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 ## Author the skill the diff points at
 
 - **The session-shaper takes one of three forms**, from the convergence of practitioners running long tasks:
-  - **Sharpened verifier.** The M5 verifier targeted one failure mode; the diff surfaced another. The skill encodes the second check so the next run inherits both.
-  - **LLM-judge.** Qualitative fit the deterministic verifier can't see (did the output answer the task, does the tone match the codebase, does the commit message respect the team's convention). A judge is a verifier authored in prose.
-  - **Gap-finder.** A skill that reads a proposed task plan and flags thin memory, missing connectors, or stale rules before the long-running run starts. The verifier fires on output; the gap-finder fires before.
+ - **Sharpened verifier.** The M5 verifier targeted one failure mode; the diff surfaced another. The skill encodes the second check so the next run inherits both.
+ - **LLM-judge.** Qualitative fit the deterministic verifier can't see (did the output answer the task, does the tone match the codebase, does the commit message respect the team's convention). A judge is a verifier authored in prose.
+ - **Gap-finder.** A skill that reads a proposed task plan and flags thin memory, missing connectors, or stale rules before the long-running run starts. The verifier fires on output; the gap-finder fires before.
 - **Pick the one the diff points at.** If the dominant gap is "verifier missed drift at hour 4," you're building a sharpened verifier. If it's "output technically passed but read off," you're building a judge. If it's "the run shouldn't have started with this context," you're building a gap-finder.
 - **Author through conversation.** No markdown editor, no hand-crafting SKILL.md in a file tab.
 - **The next three prompts (author, critique, invoke) are separate steps.** You don't have to run all three.
@@ -134,7 +134,7 @@ Answer each question. When Claude offers a default that doesn't fit the two runs
 
 **Primary Bloom's level:** Analyze (Phase 1 diff) + Create (Phase 2 authoring) + Evaluate (Phase 2 self-critique + invocation-as-test).
 
-**Time budget total:** 40–50 min. Phase 1 compressed (diff + name-gaps share one phase); Phase 2 carries the module's weight. Forward-looking arc-retrospective beat (separate exercise file) follows.
+**Time budget total:** 40–50 min. Phase 1 compressed (diff + name-gaps share one phase); Phase 2 carries the module's weight.
 
 **Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know how to encode."* You've now authored two skills the same way. The move is yours. Watch-for: compliance-feel (student treats the skill as paperwork) or credibility-performance (*"we ship skills like the pros do"*). Both steal the mood.
 

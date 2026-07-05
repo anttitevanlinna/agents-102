@@ -13,7 +13,6 @@ produces:
       - prompt:walk-and-send-off-4
       - prompt:ae101-m4-take-task-end-to-end
       - prompt:diagnose-and-resend-6
-      - prompt:arc-retrospective-1
       - prompt:agents-that-build-agents-handoff
       - prompt:ae101-m5-worktree-setup
     note: 2-3 fills per audit run, one per picked gap; destination depends on the audit's per-gap shape label. The ./observations/ folder is the durable artefact M4-M6 read as 'observations-folder'; ae101-m5-worktree-setup copies it opportunistically into the M5 worktree.

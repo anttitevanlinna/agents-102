@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [microsoft, copilot, copilot-studio, azure-ai-foundry, mai-models, windows-agent-framework]
 nordic: true
-updated: 2026-06-05
-cycle: 124
+updated: 2026-07-05
+cycle: 154
 answers:
   - "what can business users do with Microsoft Copilot today?"
   - "is Copilot Studio a real agent builder?"
@@ -15,8 +15,16 @@ answers:
 
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-06-05 (cycle 124)
-OODA cycles: 31
+Last updated: 2026-07-05 (cycle 154)
+OODA cycles: 32
+
+**Cycle 154 updates (July 5, 2026) — Cowork worldwide GA gap documented; Scout frontier preview:**
+
+- **CRITICAL GAP: Copilot Cowork worldwide GA (June 16, 2026) was entirely untracked during cycles 136-153.** Microsoft expanded Cowork from E7-only (May 1 initial GA) to ALL Microsoft 365 Copilot tenants worldwide on June 16. Architecture: metered billing via Copilot Credits (separate from subscription, cost varies by model use, context retrieval, tool calls, runtime), off by default (admin must enable + set spending caps), executes complex long-running multi-tool tasks end-to-end. Security/compliance at worldwide GA: audit logging, eDiscovery, Communication Compliance, DLP. Grace period for Frontier preview users: metered billing started July 1. **At 18 days post worldwide GA: zero named independent practitioners have published production deployment accounts.** This is the longest GA-to-practitioner-silence gap tracked in this research system (surpasses the prior Cowork silence record from pre-GA periods). The silence is now a finding: Cowork is architecturally available to tens of millions of M365 users, yet zero have published a deployment account. Sources: [microsoft.com Jun 16 2026](https://www.microsoft.com/en-us/microsoft-365/blog/2026/06/16/copilot-cowork-is-now-generally-available/) — [vendor announcement]; [redmondmag.com Jun 16 2026](https://redmondmag.com/articles/2026/06/16/microsoft-makes-copilot-cowork-generally-available-worldwide.aspx) — [domain trade publication]. Evidence: Level 1 (vendor confirmed worldwide GA; zero independent practitioner deployment reports).
+- **Key Cowork worldwide GA facts:** All M365 Copilot tenants now eligible (not E7 required). Copilot Credits pricing is consumption-based (not flat per-user). Off-by-default = adoption requires explicit admin action + spending cap configuration. Pitch: "A completed result, not a suggestion, summary, or first pass." EU data boundary status unchanged (Cowork still excluded from EU Data Boundary — Anthropic models disabled by default in EU/UK/EFTA tenants; admin opt-in required for Nordic regulated industries).
+- **Microsoft Scout ("always-on personal agent") — Frontier preview only, June 2, 2026.** Operates across macOS/Windows, connects to Teams/Outlook/OneDrive/SharePoint. Proactively schedules meetings, drafts documents, flags action items without being asked. Requires two separate Copilot licenses (~$50/user combined on top of existing M365 Copilot). Frontier enrollment + Intune policy configuration + opt-in attestation required. TechCrunch: "OpenClaw-inspired" — explicitly built to avoid OpenClaw failure modes. Practitioner assessment (intelligink.com): "arrived with enough capability to be genuinely interesting and enough friction to be genuinely frustrating." **Zero independent enterprise production deployments at 33 days post-announcement.** Sources: [techcrunch.com Jun 2 2026](https://techcrunch.com/2026/06/02/microsoft-launches-scout-an-openclaw-inspired-personal-assistant/) — [general press]; [intelligink.com Jun 2026](https://intelligink.com/blog/microsoft-scout-desktop-agent-review/) — [practitioner analysis]. Evidence: Level 1.
+- **Copilot Autonomous Agent Mode Enterprise — August 2026 launch (unchanged).** No new details beyond cycle 128/140 records.
+- **Nordic update (cycle 154):** Zero new M365 business agent deployments. The worldwide Cowork GA does not change the EU data boundary situation — Claude/Anthropic models remain disabled by default in EU/Nordic tenants. Tieto earned Microsoft 365 Copilot Specialization July 1 (see vertical-saas/state.md) — confirms the Nordic M365 channel is delivery-of-existing-features, not custom agentic deployment.
 
 **Cycle 124 updates (June 5, 2026) — Build 2026 Day 3-4 practitioner reactions:**
 - **The Register (Tim Anderson, June 3) — only critical independent Build 2026 journalism found in Day 3-4.** Covers Surface RTX Spark Dev Box, Microsoft Execution Containers (agent sandboxing), Coreutils for Windows, GitHub Enterprise Local (air-gapped sovereign option), Azure Linux 4.0. Skeptical tone: Windows Developer Config failed during testing (error -2146233079), "ongoing developer frustration with GitHub outages and security issues." Source: [theregister.com](https://www.theregister.com/os-platforms/2026/06/03/microsoft-build-surface-rtx-spark-dev-box-coreutils-for-windows-air-gapped-github-and-more/5250501) — [domain trade publication, June 3]. Evidence: Level 2.

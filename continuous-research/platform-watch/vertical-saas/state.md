@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [salesforce, zendesk, servicenow, sap, workday]
 nordic: true
-updated: 2026-07-03
-cycle: 152
+updated: 2026-07-05
+cycle: 154
 answers:
   - "which vertical SaaS platforms have real agent deployments?"
   - "is customer service crossing the chasm?"
@@ -14,8 +14,22 @@ answers:
 
 # Vertical SaaS Agent Platforms — Platform State
 
-Last updated: 2026-07-03 (cycle 152)
-OODA cycles: 37
+Last updated: 2026-07-05 (cycle 154)
+OODA cycles: 38
+
+**Cycle 154 updates (July 5, 2026) — Agentforce $1.2B ARR Q1 FY27 + PenFed 76 multi-department agents (L2); Agentforce multi-agent Pattern 31 Day 20; Agentforce Help Agent pay-per-resolution:**
+
+**Agentforce Q1 FY27 results: $1.2B ARR (up 205% YoY) — vendor-disclosed earnings metrics.** Salesforce Q1 FY27 (ending April 30, 2026, announced May 27, 2026): Agentforce ARR crossed $1.2B (up 205% YoY from $800M FY2026 full year). Combined AI + Data 360 ARR: $3.4B. 3.8B Agentic Work Units delivered (111% QoQ growth). 50%+ of Agentforce bookings from existing customers. These are vendor-reported metrics from official public company earnings (auditable). Work unit definition not independently audited — denominator unclear. Source: [investor.salesforce.com May 27 2026](https://investor.salesforce.com/news/news-details/2026/Salesforce-Delivers-Record-First-Quarter-Fiscal-2027-Results/default.aspx) — [general press/earnings release]. Evidence: Level 2 for ARR figure (public company earnings, auditable); Level 1 for growth metrics (vendor-reported, work unit definition unaudited).
+
+**PenFed Credit Union — 76 multi-department Agentforce agents (L2): strongest Agentforce-beyond-CS evidence found to date.** PenFed Credit Union (5M+ members, US credit union) has 76 AI agents running across operations, mortgages, IT, and HR — NOT customer service only. Contact center results: $1.6M annual savings, 10% call handle time reduction, 50% after-call work reduction, 40% reduction in held calls. Named agent: "Agent Wingman" for contact center + agents for member-facing money movement, product information, loan status, wealth management. PenFed consolidated from ~400 platforms to 12 strategic partners. Goal: absorb volume without headcount growth.
+**CRITICAL CAVEAT:** "76 agents" = number of independently deployed Agentforce agents per function, NOT Summer '26 multi-agent orchestration (A2A). The agents operate independently per function, not as an orchestrated multi-agent system. This is individual Agentforce agents deployed broadly across departments — the strongest evidence for "Agentforce beyond CS" but NOT evidence for the Summer '26 multi-agent feature.
+Counter-evidence: under 10% of Salesforce customers scaled Agentforce past pilot (myaskai.com, July 2026); CRMArena-Pro benchmark: 35% out-of-box accuracy before customization. Source: [cxtoday.com Jun 2026](https://www.cxtoday.com/contact-center/inside-penfeds-salesforce-agentforce-deployment-1-6m-saved-and-faster-calls/) — [domain trade publication]. Evidence: Level 2 (named company, specific metrics, domain trade press, sourced from Q1 FY27 earnings call spotlight, confirmed by multiple outlets).
+
+**Agentforce multi-agent orchestration (Summer '26 A2A) — Pattern 31 Day 20, evidence desert holds.** Zero independent named practitioners have published multi-agent orchestration production deployment results as of July 5 (Day 20 post-GA June 15). The cross-cloud/external-agent A2A remains beta (only within-org Salesforce-to-Salesforce orchestration GA'd June 15). Hard limits unchanged: 20-agent cap, 60s timeout, BYOM unsupported, context saturation at 4+ agents. Pattern mirrors Agentforce Operations GA (April 29, 67+ days, still zero independent production customers). Watch: July 15 (inner edge of historical 4-8 week emergence window for first independent reports).
+
+**Agentforce Help Agent — pay-per-resolution pricing (July 2026).** Salesforce launched pay-only-when-resolved pricing: pay only when agent autonomously resolves issue without human escalation. Structurally significant: removes upfront cost commitment that created adoption friction. No independent resolution-rate performance data yet. Source: [salesforce.com Jul 2026](https://www.salesforce.com/news/stories/agentforce-help-agent-announcement/) — [vendor]. Evidence: Level 0 for outcomes, Level 2 for pricing structure (independently confirmable).
+
+**Watch: July 15 (Agentforce multi-agent first independent deployment — inner edge of 4-8 week window); any Agentforce Help Agent resolution-rate performance data; Agentforce A2A cross-cloud GA timeline; ServiceNow Australia release wave for AIOps/SRE/Asset Lifecycle GA.**
 
 **Cycle 152 updates (July 3, 2026) — ServiceNow IT Specialists Pattern 31 miss confirmed (29th absence; June 30 deadline passed); Australia release wave in progress:**
 

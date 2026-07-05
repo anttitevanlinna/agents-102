@@ -15,7 +15,6 @@ produces:
       - prompt:diagnose-and-resend-6
       - prompt:ae101-m5-rerun-packaged
       - prompt:spot-gaps-build-the-loop-2
-      - prompt:arc-retrospective-1
     opportunistic-copy-by:
       - prompt:ae101-m3-fork-quality-side
       - prompt:ae101-m5-worktree-setup

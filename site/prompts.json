@@ -515,8 +515,7 @@
         "consumed-by": [
           "prompt:walk-and-send-off-2",
           "prompt:diagnose-and-resend-6",
-          "prompt:spot-gaps-build-the-loop-2",
-          "prompt:arc-retrospective-1"
+          "prompt:spot-gaps-build-the-loop-2"
         ]
       }
     ]
@@ -560,7 +559,6 @@
           "prompt:diagnose-and-resend-1",
           "prompt:diagnose-and-resend-2",
           "prompt:spot-gaps-build-the-loop-1",
-          "prompt:arc-retrospective-1",
           "prompt:agents-that-build-agents-handoff"
         ],
         "note": "replaces branch-grep + transcript marker-search in M5/M6 readers; the coordinates are recorded at creation rather than reconstructed by search"
@@ -658,8 +656,7 @@
         "location": "m4/<task-slug> branch (commits + changed files)",
         "consumed-by": [
           "prompt:diagnose-and-resend-2",
-          "prompt:spot-gaps-build-the-loop-1",
-          "prompt:arc-retrospective-1"
+          "prompt:spot-gaps-build-the-loop-1"
         ]
       },
       {
@@ -668,8 +665,7 @@
         "consumed-by": [
           "prompt:diagnose-and-resend-1",
           "prompt:diagnose-and-resend-2",
-          "prompt:spot-gaps-build-the-loop-1",
-          "prompt:arc-retrospective-1"
+          "prompt:spot-gaps-build-the-loop-1"
         ]
       }
     ]
@@ -731,16 +727,14 @@
         "location": "m5/<task-slug> branch (commits, changed files, RUN-NOTES.md)",
         "consumed-by": [
           "prompt:spot-gaps-build-the-loop-1",
-          "prompt:spot-gaps-build-the-loop-5",
-          "prompt:arc-retrospective-1"
+          "prompt:spot-gaps-build-the-loop-5"
         ]
       },
       {
         "id": "m5-session-transcript",
         "location": "~/.claude/projects/<encoded-worktree-cwd>/<uuid>.jsonl",
         "consumed-by": [
-          "prompt:spot-gaps-build-the-loop-1",
-          "prompt:arc-retrospective-1"
+          "prompt:spot-gaps-build-the-loop-1"
         ]
       },
       {
@@ -748,7 +742,6 @@
         "location": "plan.md (worktree root; protected top block \"Run coordinates\"; m5/ branch + transcript path, recorded at run start)",
         "consumed-by": [
           "prompt:spot-gaps-build-the-loop-1",
-          "prompt:arc-retrospective-1",
           "prompt:agents-that-build-agents-handoff"
         ],
         "note": "M6 readers get the m5 branch + transcript path from plan.md instead of branch-grep + mtime transcript search"
@@ -787,7 +780,7 @@
           "prompt:diagnose-and-resend-1",
           "prompt:ae101-m5-rerun-packaged"
         ],
-        "note": "also serves as cwd for diagnose-and-resend-2..6, spot-gaps-build-the-loop-*, arc-retrospective-1 (environmental, not formally required)"
+        "note": "also serves as cwd for diagnose-and-resend-2..6, spot-gaps-build-the-loop-* (environmental, not formally required)"
       }
     ],
     "opportunistic-copy": [
@@ -955,77 +948,6 @@
       {
         "id": "workflow-skills-handoff-prompt",
         "location": "scrollback (standalone handoff prompt the student saves and runs later; drives study then diagram then author across their whole stack)"
-      }
-    ]
-  },
-  "arc-retrospective-1": {
-    "key": "arc-retrospective-1",
-    "dest": "Claude Code",
-    "context": "",
-    "runtime": "any",
-    "origin": "exercises/arc-retrospective",
-    "text": "Read my work across this repo. Specifically:\n\n- My team `CLAUDE.md` (if present) and my personal `CLAUDE.local.md`.\n- Everything at `./observations/` (observations, hypotheses, rules).\n- The ADRs in this repo — wherever our convention puts them (`docs/adr/` or equivalent).\n- Both skills I authored at `~/.claude/skills/` (the `test-strategy` skill from earlier, and the `session-shaper` skill).\n- The un-packaged run (commits, files, session transcript). Read `task.md` for its recorded `m4/` branch and transcript path, then use those exact coordinates. Do not reconstruct the transcript folder or pick a recent `.jsonl`.\n- The packaged re-run (commits, files, session transcript). Read `plan.md`'s protected `Run coordinates` block for its recorded `m5/` branch and transcript path, then use those exact coordinates. Do not reconstruct the transcript folder or pick a recent `.jsonl`.\n\nRun this audit in a fresh sub-task via the Agent tool so you have the cold-read view, then combine those findings with insights you have from this session's scrollback. I want both viewpoints: the fresh read uncoloured by our conversation, and what you noticed while we worked together.\n\nWrite a one-page note on what changed across this body of work. Not a changelog. What shape did my practice have at the start, what shape does it have now, what specific artefacts show the shift. Quote from my files. Name the pattern that you see recurring across modules if you see one. Don't invent a pattern to make the note tidy; if the arc is uneven, say so and show where.\n\nPropose where the note should live in my repo (ADR, memo in `./observations/`, or a standalone file). Show me the note before you save it. I'll push back, then we save.",
-    "requires": [
-      {
-        "id": "claude-local-md",
-        "source": "prompt:compound-and-close-1",
-        "conditional": "m1-completed"
-      },
-      {
-        "id": "observations-folder",
-        "source": "prompt:walk-and-send-off-3",
-        "conditional": "m4-completed"
-      },
-      {
-        "id": "stride-adr",
-        "source": "prompt:threat-model-with-stride-3",
-        "conditional": "m3-completed"
-      },
-      {
-        "id": "test-strategy-skill",
-        "source": "prompt:author-test-strategy-skill-1",
-        "conditional": "m3-completed"
-      },
-      {
-        "id": "second-authored-skill",
-        "source": "prompt:spot-gaps-build-the-loop-5"
-      },
-      {
-        "id": "un-packaged-run-artefact",
-        "source": "prompt:ae101-m4-take-task-end-to-end"
-      },
-      {
-        "id": "m4-session-transcript",
-        "source": "prompt:ae101-m4-take-task-end-to-end"
-      },
-      {
-        "id": "m4-run-coordinates",
-        "source": "prompt:ae101-m4-commit-starting-point"
-      },
-      {
-        "id": "packaged-run-artefact",
-        "source": "prompt:ae101-m5-rerun-packaged"
-      },
-      {
-        "id": "m5-session-transcript",
-        "source": "prompt:ae101-m5-rerun-packaged"
-      },
-      {
-        "id": "m5-run-coordinates",
-        "source": "prompt:ae101-m5-rerun-packaged"
-      },
-      {
-        "id": "stale-rule-cut",
-        "source": "prompt:spot-gaps-build-the-loop-2",
-        "conditional": "rule-earned-cutting"
-      }
-    ],
-    "produces": [
-      {
-        "id": "arc-retrospective-note",
-        "location": "student-picked (ADR, ./observations/ memo, or standalone file)",
-        "consumed-by": [],
-        "note": "terminal artefact — closes the M1-M6 arc"
       }
     ]
   },
@@ -1267,8 +1189,7 @@
           "prompt:walk-and-send-off-2",
           "prompt:diagnose-and-resend-6",
           "prompt:ae101-m5-rerun-packaged",
-          "prompt:spot-gaps-build-the-loop-2",
-          "prompt:arc-retrospective-1"
+          "prompt:spot-gaps-build-the-loop-2"
         ],
         "opportunistic-copy-by": [
           "prompt:ae101-m3-fork-quality-side",
@@ -1353,8 +1274,7 @@
           "prompt:walk-and-send-off-2",
           "prompt:diagnose-and-resend-6",
           "prompt:ae101-m5-rerun-packaged",
-          "prompt:spot-gaps-build-the-loop-2",
-          "prompt:arc-retrospective-1"
+          "prompt:spot-gaps-build-the-loop-2"
         ],
         "opportunistic-copy-by": [
           "prompt:ae101-m3-fork-quality-side",
@@ -2426,10 +2346,7 @@
       {
         "id": "stale-rule-cut",
         "location": "./CLAUDE.local.md (in-place; one rule removed)",
-        "conditional": "rule-earned-cutting",
-        "consumed-by": [
-          "prompt:arc-retrospective-1"
-        ]
+        "conditional": "rule-earned-cutting"
       }
     ]
   },
@@ -2522,10 +2439,7 @@
     "produces": [
       {
         "id": "second-authored-skill",
-        "location": "~/.claude/skills/session-shaper/SKILL.md (sharpened after invocation on real artefacts)",
-        "consumed-by": [
-          "prompt:arc-retrospective-1"
-        ]
+        "location": "~/.claude/skills/session-shaper/SKILL.md (sharpened after invocation on real artefacts)"
       }
     ],
     "anchors": [
@@ -2878,7 +2792,6 @@
           "prompt:walk-and-send-off-4",
           "prompt:ae101-m4-take-task-end-to-end",
           "prompt:diagnose-and-resend-6",
-          "prompt:arc-retrospective-1",
           "prompt:agents-that-build-agents-handoff",
           "prompt:ae101-m5-worktree-setup"
         ],

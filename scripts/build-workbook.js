@@ -134,7 +134,6 @@ const THEORY_HANDBOOK_MANIFEST = {
     ['M6', [
       'lectures/the-2-frontiers',
       'lectures/quality-is-grounding',
-      'lectures/steering-the-wiring',
       'lectures/composing-the-workflow',
       'lectures/the-loop-has-a-name',
       'lectures/the-map-filled-in',

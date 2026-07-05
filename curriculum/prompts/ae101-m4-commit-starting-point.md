@@ -24,7 +24,6 @@ produces:
       - prompt:diagnose-and-resend-1
       - prompt:diagnose-and-resend-2
       - prompt:spot-gaps-build-the-loop-1
-      - prompt:arc-retrospective-1
       - prompt:agents-that-build-agents-handoff
     note: replaces branch-grep + transcript marker-search in M5/M6 readers; the coordinates are recorded at creation rather than reconstructed by search
 ---

@@ -13,8 +13,6 @@ requires:
 produces:
   - id: second-authored-skill
     location: ~/.claude/skills/session-shaper/SKILL.md (sharpened after invocation on real artefacts)
-    consumed-by:
-      - prompt:arc-retrospective-1
 anchors:
   - move: skill-by-name
     span: "by its name"

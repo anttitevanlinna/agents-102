@@ -14,8 +14,6 @@ produces:
   - id: stale-rule-cut
     location: ./CLAUDE.local.md (in-place; one rule removed)
     conditional: rule-earned-cutting
-    consumed-by:
-      - prompt:arc-retrospective-1
 ---
 Read ./CLAUDE.local.md and this session's scrollback: the gap list I just ranked, the un-packaged-vs-packaged contrast moments, the dominant gap.
 

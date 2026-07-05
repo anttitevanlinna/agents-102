@@ -28,17 +28,14 @@ produces:
     consumed-by:
       - prompt:spot-gaps-build-the-loop-1
       - prompt:spot-gaps-build-the-loop-5
-      - prompt:arc-retrospective-1
   - id: m5-session-transcript
     location: ~/.claude/projects/<encoded-worktree-cwd>/<uuid>.jsonl
     consumed-by:
       - prompt:spot-gaps-build-the-loop-1
-      - prompt:arc-retrospective-1
   - id: m5-run-coordinates
     location: plan.md (worktree root; protected top block "Run coordinates"; m5/ branch + transcript path, recorded at run start)
     consumed-by:
       - prompt:spot-gaps-build-the-loop-1
-      - prompt:arc-retrospective-1
       - prompt:agents-that-build-agents-handoff
     note: M6 readers get the m5 branch + transcript path from plan.md instead of branch-grep + mtime transcript search
   - id: run-notes

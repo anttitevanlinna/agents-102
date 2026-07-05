@@ -287,13 +287,6 @@ const DETECTORS = [
     requiresContract: true,
     trainings: ['agentic-engineering-101'],
   },
-  {
-    id: 'arc-retrospective',
-    label: 'Arc retrospective note',
-    regex: /arc retrospective|one-page note|arc note|one-page arc retrospective/gi,
-    requiresContract: true,
-    trainings: ['agentic-engineering-101'],
-  },
 ];
 
 function argValue(name, fallback) {

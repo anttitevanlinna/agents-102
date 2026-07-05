@@ -21,16 +21,16 @@ Phase 1 found *orphan rules* (no checker). Here the inverse: a standing judge sy
 ## Findings (hypotheses, verify before fixing per pre-cohort-todos discipline)
 
 **Confirmed real:**
-- **§45 leap test missing** — `arc-retrospective`, `spot-gaps-build-the-loop` exercises. No 3-observable-Monday-outcomes block (grep-confirmed). M6 arc-mood carve-out names the artifact owned, not the activity. Not gated (maintainer-block edit).
+- **§45 leap test missing** — `spot-gaps-build-the-loop` exercise. No 3-observable-Monday-outcomes block (grep-confirmed). M6 arc-mood carve-out names the artifact owned, not the activity. Not gated (maintainer-block edit). *(`arc-retrospective` also listed here originally — cut 2026-07-05.)*
 - **§16 forcing-function-in-body** — `fix-tests-first` (L34): the mandatory code-quality interrogation lives in body prose, not a fence; a prompt-only speed-runner misses it.
 - **§53 pre-action framing previews payoff** — `orient-and-introspect` (L33): prose before the introspection prompt pre-announces that Claude can account for what it skipped, collapsing in-session discovery.
 
 **Watch (verify against §50/§51/§62 carve-outs first):**
 - **§62 pre-emptive callouts** — `fix-tests-first`, `push-back-on-the-plan`, `diagnose-and-resend`, `spot-gaps-build-the-loop`: callouts name one specific failure the prompt already prevents; prefer the generalising steer. Some may be accepted-by-design.
-- **§27 / §44 / §64** — `fix-tests-first` (classroom/body-teaches), `push-back-on-the-plan` (plug-points UX), `arc-retrospective` + `spot-gaps` (maintainer-block restate-not-point).
+- **§27 / §44 / §64** — `fix-tests-first` (classroom/body-teaches), `push-back-on-the-plan` (plug-points UX), `spot-gaps` (maintainer-block restate-not-point). *(`arc-retrospective` dropped — cut 2026-07-05.)*
 
 **Writing nuances (mostly non-blocking):**
-- **§9 over-hedge x5** — `arc-retrospective`, `author-test-strategy-skill`, `getting-going`, `map-the-access-surface`, `run-the-first-experiment`. A real cross-curriculum reassurance-prose pattern worth a batch pass.
+- **§9 over-hedge x4** — `author-test-strategy-skill`, `getting-going`, `map-the-access-surface`, `run-the-first-experiment`. A real cross-curriculum reassurance-prose pattern worth a batch pass. *(`arc-retrospective` was the 5th — cut 2026-07-05.)*
 - **§11 attribution-cap x2** — `getting-going`, `walk-and-send-off`. **§2** earn-term — `prework`. **§17** command-verb headers / **§22** time-of-day — `cohort-onboarding-email`. **§21** LLM/agent/Claude vocab — `orient-and-introspect`. **§23** reflection-beats-invisible x2 — `map-the-access-surface`, `what-packaging-is`. **§28** forward-callout subject — `getting-going`.
 
 **Already fixed (parallel agent, 33b2e6f):** §2 "in practice" to "in real use" in `where-the-rule-could-live`.

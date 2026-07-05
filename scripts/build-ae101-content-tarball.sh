@@ -92,8 +92,12 @@ done < <(find "$TRAINING_DIR" "${TRAINING_FIND_ARGS[@]}")
 # 1-hop: links from training files into shared exercises/lectures.
 extract_slugs() {
   local kind="$1"; shift
+  # grep exits 1 when a hop finds no links of this kind; that is a legitimate
+  # empty result, not an error. Under `set -euo pipefail` an unguarded no-match
+  # aborts the whole build (exposed 2026-07-05 when the M6 arc-retrospective cut
+  # left the second hop with zero exercise links). Tolerate empty.
   grep -hoE "${kind}/[a-z0-9-]+\.md" "$@" 2>/dev/null \
-    | sed -E "s|${kind}/||;s|\.md$||" | sort -u
+    | sed -E "s|${kind}/||;s|\.md$||" | sort -u || true
 }
 
 LECTURES=$(extract_slugs lectures "${TRAINING_SOURCES[@]}")

@@ -1,0 +1,207 @@
+/* slides.css — the curriculum slide viewer (the "Slides" layout).
+ *
+ * A progressive-enhancement overlay: given a rendered curriculum container
+ * (one doc, a module, or a whole handbook), slides.js splits it on <h2> into a
+ * paged deck with a hover-expand left rail. Loaded alongside curriculum.css in
+ * both the SPA and the workbook; inert until CurriculumSlides.open() mounts a
+ * `.deck`.
+ *
+ * Theme is PER SLIDE, not per page: exercise-derived slides carry `.theme-dark`
+ * (warm-black + amber, the hands-on mood), lecture slides stay cream. So a mixed
+ * module deck flips mood as you page from lecture into exercise. The deck chrome
+ * (rail, bar, progress) is always ink and reads on both.
+ */
+
+/* ── per-slide dark theme (exercise mood) ───────────────────────────────────
+   Re-points the curriculum.css palette vars on the slide subtree; custom
+   properties inherit, so prose, code, prompt blocks and grammar recolour. */
+.deck .slide.theme-dark {
+  --bg:          #1a160f;
+  --bg-2:        #221d14;
+  --bg-3:        #2c251a;
+  --fg:          #f2ead9;
+  --fg-2:        #d6cbb4;
+  --fg-3:        #a99a80;
+  --fg-4:        #7c6f5a;
+  --line:        #362e20;
+  --line-2:      #493d2b;
+  --accent:      #d98a55;
+  --accent-2:    #e7a866;
+  --accent-soft: rgba(217,138,85,.12);
+  --code-bg:     #100d09;
+}
+.deck .slide.theme-dark .session-block { background: var(--bg-2); }
+.deck .slide.theme-dark .session-block__body { color: var(--fg-2); }
+.deck .slide.theme-dark pre code { color: var(--fg); }
+.deck .slide.theme-dark .hox-block__body,
+.deck .slide.theme-dark .note-block__body { color: var(--fg); }
+
+/* ── deck shell ─────────────────────────────────────────────────────────── */
+body.slides-active { overflow: hidden; }
+.deck { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column;
+  background: var(--ink); font-family: var(--font-body); }
+
+.deck__progress { flex: 0 0 auto; height: 3px; background: var(--ink-line); }
+.deck__progress > i { display: block; height: 100%; width: 0; background: var(--accent-2);
+  transition: width .3s cubic-bezier(.4,0,.2,1); }
+
+.deck__viewport { position: relative; flex: 1 1 auto; overflow: hidden; background: var(--bg-3); }
+
+.deck .slide {
+  position: absolute; inset: 0; background: var(--bg); color: var(--fg);
+  display: flex; align-items: safe center; justify-content: center;
+  overflow-y: auto;
+  padding: clamp(1.5rem, 5vh, 4rem) clamp(1.5rem, 7vw, 7rem) clamp(1.5rem, 5vh, 4rem) clamp(3.6rem, 7vw, 7rem);
+  opacity: 0; visibility: hidden; transform: translateY(10px);
+  transition: opacity .32s ease, transform .32s ease;
+}
+.deck .slide.is-active { opacity: 1; visibility: visible; transform: none; }
+.deck .slide.is-past { transform: translateY(-10px); }
+
+.deck .slide__body { width: 100%; max-width: 52rem; }
+.deck .slide--wide .slide__body, .deck .slide--cover .slide__body { max-width: 66rem; }
+.deck .slide--diagram .slide__body { max-width: 72rem; }
+.deck .slide pre { max-width: 100%; overflow-x: auto; }
+
+.deck .slide:not(.slide--cover) .slide__body > h2:first-child {
+  margin: 0 0 1.6rem; padding-top: 0;
+  font-size: clamp(1.9rem, 3.6vw, 2.9rem); line-height: 1.12;
+}
+.deck .slide:not(.slide--cover) .slide__body > h2:first-child::before { top: -1.1rem; width: 3rem; }
+.deck .slide__body > h2 + p { font-size: clamp(1.15rem, 1.9vw, 1.45rem); }
+.deck .slide__body li { font-size: clamp(1rem, 1.35vw, 1.12rem); margin: .55rem 0; }
+.deck .slide__body p { font-size: clamp(1rem, 1.35vw, 1.1rem); }
+.deck .slide .diagram { width: 100%; max-width: 60rem; margin: 1.2rem auto; transform: none; }
+
+/* ── phase / section divider ────────────────────────────────────────────── */
+.slide-divider { width: 100%; }
+.slide-divider__eyebrow { display: block; font-family: var(--font-body); font-weight: 600;
+  letter-spacing: .26em; text-transform: uppercase; font-size: clamp(.8rem, 1.4vw, 1rem);
+  color: var(--accent); margin: 0 0 1.1rem; }
+.slide-divider__eyebrow::before { content: ""; display: inline-block; width: 2.4rem; height: 2px;
+  background: var(--accent); vertical-align: middle; margin-right: .85rem; }
+.slide-divider__title { display: block; font-family: var(--font-display); font-weight: 200;
+  font-size: clamp(2.2rem, 5.5vw, 4.4rem); line-height: 1.03; letter-spacing: -.02em; color: var(--fg); }
+.deck .slide--divider { background: var(--bg);
+  background-image: radial-gradient(120% 80% at 15% 20%, var(--accent-soft), transparent 60%); }
+.deck .slide--divider .slide-divider { max-width: 58rem; }
+.slide-divider__sub { display: block; margin-top: 1.5rem; max-width: 42rem;
+  font-family: var(--font-serif); font-style: italic; font-size: clamp(1.05rem, 1.9vw, 1.45rem);
+  line-height: 1.5; color: var(--fg-2); }
+.slide-divider__sub code { font-style: normal; }
+/* training cover slide (whole-handbook deck, slide 1) */
+.deck .slide--traincover .traincover__eyebrow { font-family: var(--font-body); font-size: .82rem;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin: 0 0 1rem; }
+
+/* ── edge click zones ───────────────────────────────────────────────────── */
+.deck__edge { position: absolute; top: 0; bottom: 0; width: 12%; border: 0; cursor: pointer;
+  background: transparent; color: var(--ink-text-2); display: flex; align-items: center;
+  opacity: 0; transition: opacity .15s; z-index: 5; }
+.deck__edge:hover { opacity: .6; }
+.deck__edge--prev { left: 0; justify-content: flex-start; padding-left: 2.8rem; }
+.deck__edge--next { right: 0; justify-content: flex-end; padding-right: 1.2rem; }
+.deck__edge svg { width: 2rem; height: 2rem; }
+.deck__edge:disabled { display: none; }
+
+/* ── left hover-rail ────────────────────────────────────────────────────── */
+.deck__rail { position: absolute; top: 3px; bottom: 3.1rem; left: 0; z-index: 20;
+  width: 2.4rem; overflow: hidden; background: var(--ink); border-right: 1px solid var(--ink-line);
+  display: flex; flex-direction: column;
+  transition: width .22s cubic-bezier(.4,0,.2,1), box-shadow .22s; }
+.deck.is-railopen .deck__rail { width: 17rem; box-shadow: 6px 0 26px rgba(0,0,0,.28); }
+.deck__rail-handle { position: absolute; top: 0; left: 0; width: 2.4rem;
+  display: flex; flex-direction: column; align-items: center; gap: .8rem; padding: .7rem 0; color: var(--ink-muted); }
+.deck__rail-handle svg { width: 1.15rem; height: 1.15rem; }
+.deck__rail-handle span { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: .22em;
+  text-transform: uppercase; font-size: .62rem; }
+.deck.is-railopen .deck__rail-handle { opacity: 0; pointer-events: none; }
+.deck__rail-head { flex: 0 0 auto; width: 17rem; padding: 1.2rem 1.2rem .9rem;
+  border-bottom: 1px solid var(--ink-line); opacity: 0; transition: opacity .18s; }
+.deck.is-railopen .deck__rail-head { opacity: 1; transition-delay: .06s; }
+.deck__rail-title { font-family: var(--font-display); font-weight: 300; color: var(--ink-text); font-size: 1rem; line-height: 1.25; }
+.deck__rail-meta { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); margin-top: .35rem; }
+.deck__rail-list { flex: 1 1 auto; overflow-y: auto; overflow-x: hidden; list-style: none; margin: 0;
+  padding: .4rem 0 1rem; opacity: 0; transition: opacity .18s; }
+.deck.is-railopen .deck__rail-list { opacity: 1; transition-delay: .06s; }
+.deck__rail-item { display: grid; grid-template-columns: 2.4rem 1fr; align-items: baseline; gap: .5rem;
+  width: 17rem; text-align: left; background: transparent; border: 0; cursor: pointer;
+  padding: .5rem 1.2rem .5rem 0; color: var(--ink-text-2); font: inherit; position: relative; white-space: nowrap; }
+.deck__rail-item::before { content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  width: 3px; height: 0; background: var(--accent-2); transition: height .18s; }
+.deck__rail-item:hover, .deck__rail-item.is-active { color: var(--ink-text); }
+.deck__rail-item.is-active::before { height: 62%; }
+.deck__rail-num { text-align: center; font-variant-numeric: tabular-nums; font-size: .78rem; color: var(--ink-muted); }
+.deck__rail-item.is-active .deck__rail-num { color: var(--accent-2); }
+.deck__rail-label { font-size: .86rem; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; }
+.deck__rail-item--divider { margin-top: .5rem; padding-top: .65rem; border-top: 1px solid var(--ink-line); }
+.deck__rail-item--divider .deck__rail-num { color: var(--accent-2); }
+.deck__rail-item--divider .deck__rail-label { font-family: var(--font-display); letter-spacing: .12em;
+  text-transform: uppercase; font-size: .74rem; color: var(--accent-2); }
+.deck__rail-item--divider::before { display: none; }
+.deck__rail-item--module .deck__rail-label { color: var(--ink-text); font-weight: 500; }
+
+/* ── control bar ────────────────────────────────────────────────────────── */
+.deck__bar { flex: 0 0 auto; display: flex; align-items: center; gap: 1rem;
+  padding: .5rem clamp(.8rem, 3vw, 2rem) .5rem 3.4rem; background: var(--ink); color: var(--ink-text-2);
+  font-size: .82rem; position: relative; z-index: 25; }
+.deck__title { font-family: var(--font-display); font-weight: 300; color: var(--ink-text); font-size: .95rem;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 0 1 auto; }
+.deck__spacer { flex: 1 1 auto; }
+.deck__nav { display: flex; align-items: center; gap: .35rem; flex: 0 0 auto; }
+.deck__btn { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem;
+  background: transparent; border: 1px solid var(--ink-line); color: var(--ink-text-2); border-radius: 6px;
+  cursor: pointer; transition: all .15s; }
+.deck__btn:hover { border-color: var(--accent-2); color: var(--ink-text); }
+.deck__btn svg { width: 1.05rem; height: 1.05rem; }
+.deck.is-railpinned .deck__rail-btn { color: var(--accent-2); border-color: var(--accent-2); }
+.deck__count { min-width: 4.2rem; text-align: center; font-variant-numeric: tabular-nums; color: var(--ink-text); }
+.deck__exit { display: inline-flex; align-items: center; gap: .4rem; background: transparent;
+  border: 1px solid var(--ink-line); color: var(--ink-text-2); border-radius: 6px; padding: .3rem .7rem;
+  cursor: pointer; font: inherit; font-size: .78rem; }
+.deck__exit:hover { border-color: var(--accent-2); color: var(--ink-text); }
+.deck__exit svg { width: .95rem; height: .95rem; }
+
+@media (max-width: 620px) {
+  .deck .slide { padding: 1.2rem 1.1rem 2rem 3.2rem; align-items: flex-start; }
+  .deck__title { display: none; }
+  .deck.is-railopen .deck__rail { width: min(17rem, 86vw); }
+}
+
+/* ── exercise grammar (shared with long-read via curriculum.css? no — deck only) ── */
+.slide__body .ex-contract { margin: 1.5rem 0; border: 1px solid var(--line-2); border-radius: 9px;
+  overflow: hidden; background: var(--bg-2); }
+.ex-contract__row { display: grid; grid-template-columns: 5rem 1fr; gap: 1.1rem; align-items: start;
+  padding: .95rem 1.2rem; border-top: 1px solid var(--line); }
+.ex-contract__row:first-child { border-top: 0; }
+.ex-contract__label { font-family: var(--font-body); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .11em; font-size: .7rem; color: var(--accent); padding-top: .25rem; }
+.ex-contract__val { font-size: 1rem; line-height: 1.55; color: var(--fg); }
+.ex-contract__val strong:first-child { color: var(--fg); }
+.slide__body p.ex-time { display: inline-flex; align-items: center; gap: .45rem; font-style: normal;
+  font-size: .8rem; letter-spacing: .03em; color: var(--fg-2); background: var(--bg-3);
+  border: 1px solid var(--line); border-radius: 999px; padding: .28rem .9rem; margin: 0 0 1.1rem; min-height: 0; }
+.slide__body p.ex-time strong, .slide__body p.ex-time strong:first-child { color: var(--fg); font-weight: 600; }
+.slide__body p.ex-time::before { content: "◷"; font-size: 1rem; line-height: 1; color: var(--accent); }
+.slide__body blockquote.steer { border: 0; border-left: 3px solid var(--accent); background: var(--accent-soft);
+  border-radius: 0 8px 8px 0; padding: .9rem 1.15rem .9rem 1.2rem; margin: 1.3rem 0; color: var(--fg-2); }
+.slide__body blockquote.steer p, .slide__body blockquote.steer p:last-child { font-style: italic; color: var(--fg-2); }
+.slide__body blockquote.steer .steer__label { font-family: var(--font-body); font-style: normal; font-weight: 700;
+  font-size: .68rem; letter-spacing: .11em; text-transform: uppercase; color: var(--accent); margin-right: .5rem; }
+.slide__body p.prompt-leadin { margin-bottom: .5rem; color: var(--fg-2); font-style: italic;
+  padding-left: .95rem; border-left: 2px solid var(--line-2); }
+.slide__body p.prompt-leadin > strong:first-child { color: var(--accent); font-style: normal; }
+.slide__body .ex-outcome { border: 1px solid var(--accent); border-radius: 9px; padding: 1.15rem 1.35rem;
+  margin: 1.5rem 0; background: var(--accent-soft); }
+.slide__body .ex-outcome__label { display: block; font-family: var(--font-body); font-weight: 700;
+  font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; color: var(--accent); margin: 0 0 .5rem; }
+.slide__body .ex-outcome p { margin: 0; font-size: 1.02rem; line-height: 1.55; color: var(--fg); }
+
+/* ── the Long-read ⇄ Slides toggle (lives in the page header) ───────────── */
+.layout-toggle { display: inline-flex; align-items: center; gap: .15rem; padding: .18rem;
+  background: rgba(0,0,0,.25); border: 1px solid var(--ink-line); border-radius: 999px; }
+.layout-toggle__btn { display: inline-flex; align-items: center; gap: .35rem; border: 0; cursor: pointer;
+  background: transparent; color: var(--ink-text-2); font: inherit; font-size: .78rem;
+  padding: .3rem .8rem; border-radius: 999px; transition: all .15s; }
+.layout-toggle__btn svg { width: .95rem; height: .95rem; }
+.layout-toggle__btn.is-on { background: var(--accent-2); color: var(--ink); font-weight: 600; }
+.layout-toggle__btn:not(.is-on):hover { color: var(--ink-text); }

@@ -103,6 +103,47 @@
 
     applyRuntime(getRuntime());
 
+    // ============================================================
+    // Layout mode: Long-read (scroll) ⇄ Slides (deck).
+    // Default is long-read; the choice is remembered across pages (localStorage).
+    // The header toggle switches it; the deck's own "Long-read" button / Esc
+    // switches back. Each SPA page is a full load, so this is per-load state
+    // seeded from the stored preference — no router bookkeeping.
+    // ============================================================
+    var LAYOUT_KEY = 'curriculumLayout';
+    var layoutMode = localStorage.getItem(LAYOUT_KEY) === 'slides' ? 'slides' : 'read';
+    var deckCtl = null;
+    var layoutToggle = null;
+    var canSlide = !!(moduleSlug || directFile); // doc/module pages only, never the index
+
+    function setLayout(mode) {
+        layoutMode = mode;
+        try { localStorage.setItem(LAYOUT_KEY, mode); } catch (e) {}
+        if (layoutToggle && layoutToggle._paint) layoutToggle._paint(mode);
+        applyLayout();
+    }
+    function applyLayout() {
+        if (!window.CurriculumSlides || !canSlide) return;
+        if (layoutMode === 'slides') {
+            if (!deckCtl) {
+                deckCtl = CurriculumSlides.open(container, {
+                    title: (document.title || '').replace(/\s+—\s+Agents 102$/, ''),
+                    onExit: function () { setLayout('read'); }
+                });
+            }
+        } else if (deckCtl) {
+            deckCtl.close();
+            deckCtl = null;
+        }
+    }
+    (function mountLayoutToggle() {
+        if (!canSlide || !window.CurriculumSlides) return;
+        var header = document.querySelector('.curriculum-header');
+        if (!header) return;
+        layoutToggle = CurriculumSlides.buildToggle(layoutMode, setLayout);
+        header.appendChild(layoutToggle);
+    })();
+
     // Standalone exercise or lecture view: ?file=exercises/raw-llm  or  ?file=lectures/context-is-king
     if (directFile && !moduleSlug) {
         loadAndRender('../curriculum/' + directFile + '.md', directFile);
@@ -180,6 +221,7 @@
                 prependTopNav();
                 appendNav();
                 CurriculumRuntime.installReadingProgress();
+                applyLayout(); // mount the deck if the reader is in Slides mode
             })
             .catch(function (err) {
                 container.innerHTML = '<h1>Could not load</h1><p>' + esc(err.message) + '</p><p><a href="curriculum.html">Back to index</a>.</p>';

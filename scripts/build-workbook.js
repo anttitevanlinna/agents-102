@@ -365,6 +365,10 @@ ${buildToc(trainingKey, t)}
 // ── Inline assets ───────────────────────────────────────────────────────────
 const SPA_CSS = fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.css'), 'utf8');
 const SPA_JS = fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.js'), 'utf8');
+// The slide viewer (Long-read ⇄ Slides). Inlined so the handbook keeps working
+// offline; inert until the reader toggles Slides.
+const SLIDES_CSS = fs.readFileSync(path.join(ROOT, 'site/layouts/slides.css'), 'utf8');
+const SLIDES_JS = fs.readFileSync(path.join(ROOT, 'site/layouts/slides.js'), 'utf8');
 
 // Workbook-only init — runs the shared CurriculumRuntime against document.body
 // and adds the active-section IntersectionObserver. The SPA runs the runtime
@@ -385,6 +389,28 @@ const WORKBOOK_INIT_JS = `
     CurriculumRuntime.decorateDiagramZoom(document.body);
     CurriculumRuntime.installReadingProgress();
   }
+
+  // Layout mode: Long-read (scroll) ⇄ Slides (whole training as one deck).
+  // Default long-read; choice remembered (localStorage, shared key with the SPA).
+  (function () {
+    if (!window.CurriculumSlides) return;
+    var main = document.querySelector('main');
+    if (!main) return;
+    var KEY = 'curriculumLayout';
+    var mode = (function () { try { return localStorage.getItem(KEY) === 'slides' ? 'slides' : 'read'; } catch (e) { return 'read'; } })();
+    var ctl = null, toggle = null;
+    function apply() {
+      if (mode === 'slides') {
+        if (!ctl) ctl = CurriculumSlides.open(main, { title: (document.title || '').replace(/\\s+—\\s+.*$/, ''), onExit: function () { set('read'); } });
+      } else if (ctl) { ctl.close(); ctl = null; }
+    }
+    function set(m) { mode = m; try { localStorage.setItem(KEY, m); } catch (e) {} if (toggle && toggle._paint) toggle._paint(m); apply(); }
+    var host = document.querySelector('.workbook-topnav') || document.body;
+    toggle = CurriculumSlides.buildToggle(mode, set);
+    toggle.classList.add('workbook-layout-toggle');
+    host.appendChild(toggle);
+    apply();
+  })();
 
   var chips = document.querySelectorAll('.workbook-topnav__modules a[data-target]');
   if (!chips.length || !('IntersectionObserver' in window)) return;
@@ -806,10 +832,12 @@ function template(title, content, trainingKey) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${CR.esc(title)}</title>
 <style>${SPA_CSS}</style>
+<style>${SLIDES_CSS}</style>
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook" data-training="${trainingKey}">
 ${content}
 <script>${SPA_JS}</script>
+<script>${SLIDES_JS}</script>
 <script>${WORKBOOK_INIT_JS}</script>
 </body>
 </html>

@@ -27,6 +27,8 @@
 
 Worth a moment of looking. These are the moves Claude has on hand for the rest of this module, and the load-on-invoke behavior matters for context economy later.
 
+## Point the skill at your feature
+
 Name the feature and let the skill run. Ask Claude to invoke the access-control-analysis skill on the feature you name after the colon, and save the surface map to a temp directory.
 
 {{prompt:map-the-access-surface-2}}

@@ -164,6 +164,8 @@ You have a kit now: a test-strategy skill, a verifier, the session-shaper you ju
 - **Some workflows have a pilot; many do not.** The pilot is one move whose whole job is running the others, stopping on a bad check, re-invoked until the run lands. A move that does one job and calls nothing is a leaf. Your kit today is a few leaves and no pilot, and that is the right size for it.
 - **The value is the order, not the count.** Three moves in the right sequence beat ten in a heap.
 
+## Composition is a live argument, so you read
+
 How the field composes kits like this is a live argument with no settled answer, so there is no prompt to drill here. The move is to read. Two reads take it further: one engineer's whole worked stack, then the wider field.
 
 [Dino's skill stacking system](trainings/agentic-engineering-101/supplementary/skill-stacking.md)

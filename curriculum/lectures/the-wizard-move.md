@@ -11,6 +11,9 @@
 - **The same question, two answers.** Two Claude chat windows. In one, the first prompt is *"What is the capital of Italy?"* Claude answers *Rome.* Then the second prompt: *"What should we have for dinner?"* Claude suggests something Italian: pasta, osso buco, risotto.
 - **Same words, different dinner.** In the other window, the first prompt is *"What is the largest lake in Finland?"* Claude answers *Saimaa.* Then the same second prompt as before. Claude suggests something Finnish: salmon, rye bread, meatballs. But not as reliably. The first exchange became context, and the context colored everything after.
 - **Take a guess before you watch the second session run.** What will it suggest? Your guess reveals what you already know about how this works, and what you're about to learn.
+
+## You steer the answer by loading context
+
 - **A role colors answers the same way a fact does.** One more window. The first prompt: *"I'm a cardiologist preparing dinner for my patients."* Then the same second prompt about dinner. The suggestion shifts again: heart-healthy, low-sodium, vegetable-forward. Not because Claude knows medicine better than Italian cooking. You told it who you are, and every answer after took that into account.
 - **Context is whatever you tell it.** A fact. A role. A preference. A constraint. All of it colors what comes next. You, in a way, compel the right output by having the right stuff in the context.
 - **That's the move.** Not a clever prompt, not a slash command you didn't know. Loading the right context before the question. Everything else in this training is about how to earn the second window on any codebase, any Monday.

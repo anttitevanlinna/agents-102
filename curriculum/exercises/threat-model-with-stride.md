@@ -71,6 +71,9 @@ Ask Claude whether this ADR rides into future sessions automatically.
 
 - **Claude's answer: no.** ADRs don't auto-load like `CLAUDE.md` and `CLAUDE.local.md` do. They're on-disk and discoverable, but a future session loads them only when explicitly read. You can wire individual ADRs into team `CLAUDE.md` (one `@docs/adr/<file>.md` line per file; Claude Code's `@`-include is single-file, no glob), but most teams don't: ADRs accumulate, the window is finite, and rejected alternatives shouldn't sit in live context.
 - **Selective load is the practitioner default.** Module 4 will tell Claude exactly which artifacts to read at the start of the long-running run, and that explicit list is the lesson.
+
+## Save the map and the STRIDE walk before you clear
+
 - **Not everything survived to disk.** The skills returned their work into this session: the full access-surface map from Exercise 1, and the complete STRIDE walk here, including the threats you considered and set aside. The ADR holds the one decision. The analysis around it is real security documentation, and it clears when the session does.
 
 > **Worth keeping?** Ask Claude to save the access-surface map and the STRIDE walk to your repo's `docs/` directory, next to the ADR, before you clear. Your CISO and the next engineer read what's on disk, not your scrollback.

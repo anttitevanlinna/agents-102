@@ -10,10 +10,13 @@ You just walked your whole system against a real task and sent it off. The persi
 - **Team.** `./CLAUDE.md`, changed only through PR review. The rules the team agreed were worth sharing. A clear home and a clear gate.
 - **Company.** No obvious file. The security convention every team re-learns on its own, the deployment pattern, the house style. Today it lives in wikis nobody opens and in the heads of whoever has been there longest.
 
-## The company layer's open question is its shape
+## The third layer is still finding its home
 
 - **Does the third layer get a real home, the way the first two already have?** The personal layer clearly compounds; the evidence sits in your own `observations/`. The team layer has a home and a gate. The company layer is the one still being worked out, in the places betting on it.
 - **Some teams are starting to act as if it will.** They git-track their rules instead of keeping them on one laptop; they symlink a shared skills folder so the same rules load wherever an engineer works. If a company's conventions live as memory that loads everywhere, every agent in the building starts from the same baseline instead of relearning it one session at a time.
+
+## The hard part is the shape
+
 - **The hard part is not whether to build it. It is the shape.** A company layer done wrong is a tax: memory loaded everywhere, owned by no one, the `CLAUDE.md` equivalent of the staff handbook nobody reads. The question that matters is the smallest shared layer that survives contact with a real org.
 - **You'll meet the answers in your own org before any framework hands them to you.** The first time a rule you wrote for yourself turns out to be true for the whole company, you decide what to call it and where it goes. That is the open question.
 

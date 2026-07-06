@@ -50,6 +50,8 @@ Ask Claude to cut one rule the two-run diagnosis killed, or to say so and stop i
 - **Look wider than the two runs before you shape the skill.** The dominant gap came from one task. The kinds of work you repeat run across everything you do, and most of them never get looked at directly. This is your stack. How wide you look, and what you choose to package, is yours.
 - **Read your own history first.** Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back.
 
+## Scan your history for the work that recurs
+
 > **Fast operator?** Lump the next three prompts into one go. Paste them one after another in the same conversation, study then shapes then primitives, and let the answers land together. The three moves don't change.
 
 > **This scan runs long, and it is yours to steer.** Narrow it whenever you like, point it at the kind of work you care about. Any time, you can say *tell me what you've found so far*, then let it pick back up. If it wraps up early, nudge it to keep going. There is more in there than a first pass admits.
@@ -80,13 +82,15 @@ Ask Claude to name the checking primitives the field already runs and rank the o
 
 Expect the list to look familiar: test-writing, browser-testing, PR-building, lint and typecheck gates, compile and build, smoke-test on a real path, code-review, git-diff inspection, schema validation, eval suites for agent outputs. Your list won't be exact. The recognition is the point. The primitives Claude names are the ones your codebase already runs.
 
-## Author the skill the diff points at
+## Pick the skill shape the diff points at
 
 - **The session-shaper takes one of three forms**, from the convergence of practitioners running long tasks:
  - **Sharpened verifier.** The M5 verifier targeted one failure mode; the diff surfaced another. The skill encodes the second check so the next run inherits both.
  - **LLM-judge.** Qualitative fit the deterministic verifier can't see (did the output answer the task, does the tone match the codebase, does the commit message respect the team's convention). A judge is a verifier authored in prose.
  - **Gap-finder.** A skill that reads a proposed task plan and flags thin memory, missing connectors, or stale rules before the long-running run starts. The verifier fires on output; the gap-finder fires before.
 - **Pick the one the diff points at.** If the dominant gap is "verifier missed drift at hour 4," you're building a sharpened verifier. If it's "output technically passed but read off," you're building a judge. If it's "the run shouldn't have started with this context," you're building a gap-finder.
+## Author the skill in conversation
+
 - **Author through conversation.** No markdown editor, no hand-crafting SKILL.md in a file tab.
 - **The next three prompts (author, critique, invoke) are separate steps.** You don't have to run all three.
 

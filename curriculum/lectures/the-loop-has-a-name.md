@@ -4,10 +4,13 @@ Look at what you just shipped.
 
 ## Eval
 
-- **The thing you built reads an agent's work and decides whether it meets a bar.** The session-shaper's shape was decided by what two runs of the same task actually taught, not by a template. For most of you it came out as a sharpened verifier, for some as a fresh judge, for a few as a gap-finder that reads the next agent-produced artefact for the failure shape you saw at M5. Different shapes, same move.
+- **The thing you built reads an agent's work and decides whether it meets a bar.** For most of you it came out as a sharpened verifier, for some as a fresh judge, for a few as a gap-finder that reads the next agent-produced artefact for the failure shape you saw at M5. Different shapes, same move.
 - **That thing has a name: eval.** Your verifier is an eval. Your judge is an eval. Your gate is an eval.
 - **Three names, one thing.** Practitioners say *judge* when the check is itself an LLM reading the work. *Verifier* when the check is deterministic: tests, lint, compile, a shell hook that returns true or false. *Gate* when the same check is placed in CI and a pull request can't merge without it.
 - **An eval is the automated check that says *this agent-produced thing meets our bar*.** That's it. In practice it's the verifier you built at M5 and the skill you just shipped at M6. You have been doing evals for two modules, and on the map they are the checking loop the M2 drawing left dashed, now drawn solid.
+
+## One primitive, placed wherever there's a bar
+
 - **The shape fires on any workflow with a quality bar, not only agent runs.** A code-review checklist, a deployment gate, an internal-doc rubric. Anywhere you can describe *meets the bar*, you can write the check.
 - **Naming it is what lets you reuse it.** Once you see the verifier, the judge, the gate, and the skill as the same primitive, you can place that primitive in more places. On a pull request. On a nightly run. On the next agent that does the same class of work. On the team's shared kit.
 

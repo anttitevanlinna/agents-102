@@ -62,6 +62,8 @@
 
 > **Too many low-level questions? Steer up.** If Claude keeps asking about implementation detail (which helper, a variable name, error-message wording), tell it: ask me about requirements, not low-level design. The branches worth the time change what 'done' means; the rest you'd settle in code review.
 
+## Stop when the read starts reaching
+
 - **Typical session: 5 to 12 questions.** Stop when the second read starts reaching: a question about something genuinely out of scope, a branch that's already settled, a recommendation you'd accept without thinking. The agent doesn't always know when to stop; you do. The agent incorporates your answers into a sharpened plan. Approve when it's yours. Not Claude's, not the second read's.
 
 > **Timebox check.** When the slot ends, stop. The second-pass walk-down can run deep on a real codebase. If it is still surfacing branches when time is up, take the most recent sharpened plan, approve it, and move to Phase 5. The branches that did not surface today are the ones you will catch when you actually ship the work. The exercise teaches the move. You take the move home.
@@ -93,6 +95,9 @@ Then just hit stop.
 - The agent answers. The pattern it names should be something like: read the plan yourself, push back on what you can see, second-pass read for what you can't, approve. Two reads, two kinds of scrutiny. You catch what a human catches (specificity, voice-of-experience, "I'd write that differently"). The second read catches what an agent walking a decision tree catches: branches you didn't notice, dependencies you didn't name, side-effects you didn't price.
 - **Neither is complete. Paired, they usually are.**
 - **Plan-mode approval inflation is the thing this pairing defeats:** structured plans get rubber-stamped because they look like decisions. One pass by you catches some of it. The second read catches the rest. That's the move.
+
+## Keep the session open for the Compound step
+
 - On to the Compound step, and keep this session open for it. The next step reads this same scrollback to pull the task-shaping rules worth keeping. The Compound step then writes one into your personal `CLAUDE.local.md` in a shape you can re-run on your next plan-mode pass. Team-worthy patterns get flagged for a separate PR against team `CLAUDE.md`.
 
 **What happened:** The agent wrote a plan. You picked *keep planning with feedback* and sent two push-backs: what YOU saw. The agent regenerated. Then you ran a second-pass read: the agent asked one question at a time, walking down branches you didn't think to check, suggesting answers. You confirmed or corrected. The plan sharpened. You approved. You did not run the code. You asked Claude what the second-pass read surfaced that your push-back didn't, and whether any of it would have mattered in execution.

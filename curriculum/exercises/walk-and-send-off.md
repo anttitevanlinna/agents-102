@@ -58,6 +58,8 @@ Ask Claude to walk you through the picked gaps one at a time, using the AskUserQ
 
 {{prompt:walk-and-send-off-3}}
 
+## Match each fill to its shape and home
+
 A fill looks like one of these shapes (the audit tags each gap with one):
 
 - **Observation or rule:** *"Add this to observations: the payments service treats idempotency keys case-sensitively even though the docs don't say so."* Lands in `observations/`.

@@ -79,7 +79,7 @@ Each agent owns a **disjoint set of files**. Two on same file = race. Check over
 
 ## Classroom delivery — default
 
-- **No slides.** Curriculum site IS the slide; trainer projects it. Projection legibility = design constraint.
+- **Two layouts.** Curriculum renders long-read (scroll) OR Slides (deck) — reader's toggle; one `##` = one slide. Trainer projects either. Projection legibility = design constraint. → `site/layouts/slides.js`
 - **Follow-along.** Trainer demos; room copy-pastes concurrently. Time budget = slower pace, not the sum.
 - **Body teaches; trainer manages room.** No authored conversations or trainer cues in body (hard-grep enforced).
 

@@ -16,8 +16,23 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-07-03 (cycle 152)
-OODA cycles: 39
+Last updated: 2026-07-06 (cycle 155)
+OODA cycles: 40
+
+**Cycle 155 updates (July 6, 2026) — Fable 5 July 7 deadline confirmed (no extension); three-gate CORRECTION to synthesis Watch list; Sonnet 5 first business-domain named deployments (Eve + Pace, L2 vendor-sourced); Pattern 48 microcosm:**
+
+**Fable 5 July 7 deadline firm — no extension found as of July 6.** No Anthropic announcement of extension, enterprise accommodation, or last-minute pricing adjustment. Subscriber access structure: Pro/Max/Team/Premium Enterprise at 50% of weekly usage limits through July 7, then usage credits at $10/$50 per M input/output tokens (double Opus 4.8 pricing). Claude Code lead engineer: "While it will come off subscriptions after July 7th, we aim to restore Fable as a standard part of our subscriptions as soon as capacity allows." Rationale: capacity constraints, not permanent repositioning. ([anthropic.com Jun 30 2026](https://www.anthropic.com/news/redeploying-fable-5) — vendor; [bleepingcomputer.com Jul 2 2026](https://www.bleepingcomputer.com/news/artificial-intelligence/claude-subscribers-are-furious-over-fables-new-restrictions.html) — general press)
+
+**CORRECTION TO SYNTHESIS WATCH LIST — Three-gate architecture, not "July 8 Standard Enterprise blackout."** Standard Enterprise seats have been on credits-only since July 1 (day of Fable 5 relaunch). The July 7 cliff affects Pro/Max/Team/Premium Enterprise subscriber tiers. July 8 is Persona KYC identity verification for consumer plans (Free/Pro/Max) ONLY — API and enterprise plans explicitly unaffected by July 8. Three distinct events commonly conflated: (1) July 7 = credits gate for subscriber tiers; (2) Standard Enterprise on credits since July 1; (3) July 8 = Persona KYC consumer-only. The prior synthesis Watch entry "July 8 (Fable 5 credits end, Standard Enterprise blackout if no credits)" is INCORRECT. ([chatforest.com Jul 3 2026](https://chatforest.com/builders-log/anthropic-fable-5-july-7-credits-july-8-persona-gate-builder-action-guide/) — practitioner analysis)
+
+**Sonnet 5 Day 6 — first business-domain named deployments (L2 vendor-sourced, zero independent confirmation).** Two new business-domain deployments named in Anthropic's Sonnet 5 launch post:
+- **Eve** (legal tech/plaintiff law): Mauricio Wulfovich (Staff ML Engineer) — "sits on the Pareto frontier for Eve's plaintiff-law tasks at attractive price-to-performance ratio." First named legal-tech Sonnet 5 business user.
+- **Pace** (insurance/computer-use): Eric He (MTS) — computer-use agents for submission intake, FNOL (first notice of loss), loss runs: "consistently takes the right action and does it quickly, which is what real insurance work demands." First named insurance deployment.
+Both appear exclusively in Anthropic's launch post — no independent practitioner blog posts, LinkedIn articles, or trade press interviews found from either company. Evidence level: L2 (named company + named contact + specific use case — vendor-sourced testimonials). ([anthropic.com Jun 30 2026](https://www.anthropic.com/news/claude-sonnet-5) — vendor)
+
+**Fable 5 Pattern 48 microcosm documented at individual subscriber level.** PCWorld (July 1): subscriber anger documents promise-vs-delivery gap. Original promise: 14 full days access. Actual: 3 days (June 9-12 pre-ban) + 7 days at 50% limit (July 1-7 post-restoration) = ~10 days at half usage. Direct subscriber quote: "Not a good look to bring Fable back and then both half the usage and take away days." No named enterprise has published a business impact statement — anger is US-dominated consumer communities. ([pcworld.com Jul 2026](https://www.pcworld.com/article/3181897/claude-subscribers-are-furious-over-fables-new-restrictions.html) — general press)
+
+**Watch: July 8 (Persona KYC consumer plans only — Free/Pro/Max; API/Enterprise unaffected); July 14-21 (Sonnet 5 Day 14-21 — next meaningful business-domain deployment evidence window); August 31 (Sonnet 5 intro pricing ends → $3/$15; effective 20-35% workload cost increase vs Sonnet 4.6); Q3 2026 (Cursor/SpaceX regulatory close); Google Cloud Vertex AI Fable 5 restoration (unconfirmed).**
 
 **Cycle 152 updates (July 3, 2026) — Sonnet 5 cost L3 confirmed; Claude Foundry GA procurement barrier eliminated; Fable 5 AWS confirmed; enterprise "conditional infrastructure" lesson:**
 

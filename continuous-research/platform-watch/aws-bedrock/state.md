@@ -1,15 +1,25 @@
 # AWS Bedrock AgentCore — Platform State
 
-Last updated: 2026-04-17 (cycle 24)
-OODA cycles: 2
+Last updated: 2026-07-06 (cycle 155)
+OODA cycles: 3
+
+**Cycle 155 updates (July 6, 2026) — AWS AgentCore GA confirmed June 18 at AWS Summit NYC — MISSED during 18-cycle Fable 5 ban tracking period:**
+
+**AWS AgentCore hit GA at AWS Summit NYC June 18, 2026 — entirely missed during cycles 136-153.** Janakiram MSV (Forbes Tech, independent cloud infrastructure analyst) published June 21: classified as "a big deal for enterprise adoption" due to two-API abstraction lowering infrastructure complexity. AWS claims 15x agent task volume growth in 6 months — vendor claim, unverified. Named customers in production context at Summit: Nasdaq, Visa, Experian — all AWS-sourced, not independently confirmed. No independent practitioner blog posts or trade press interviews from these companies found. Evidence level: Level 1 (analyst assessment + vendor-sourced named customers). Two-API model (deploy / invoke) is a significant developer experience improvement over the multi-step pre-GA setup. Hosted agents with sandboxed sessions confirmed at GA. ([forbes.com Jun 21 2026](https://www.forbes.com/sites/janakirammsv/2026/06/21/why-aws-agentcore-harness-is-a-big-deal-for-enterprise-agents/) — domain trade publication [Janakiram MSV = cloud infrastructure specialist at Forbes Tech])
+
+**Status update: GA confirmed June 18, 2026.** Previously tracked in cycle 24 (April 2026) as "partially pre-adoption with IaC gap closure." The April 2026 vendor-claimed deployments (Epsilon, Ericsson, Southwest, PwC) were Level 0 vendor-sourced. The June 18 GA event adds Nasdaq/Visa/Experian as AWS Summit context customers (Level 1 — independent analyst reporting on vendor claims). The deployment evidence gap pattern documented in April continues: no named company has published an independent practitioner account of running production workloads on AgentCore.
+
+**Watch: Independent post-GA practitioner posts from non-AWS sources; Nasdaq/Visa/Experian posts confirming Summit-cited deployments; Nordic AgentCore signal (still absent after 3 cycles).**
 
 ## Focus
 
 AWS Bedrock AgentCore as an enterprise agent runtime. Not a business user surface — this is pure infrastructure for developers building business agents. Tracked because AgentCore is the first managed runtime supporting all three emerging protocols (MCP + A2A + AG-UI).
 
-## Key Verdict (as of 2026-04-17)
+## Key Verdict (as of 2026-07-06)
 
-**Pre-adoption status partially updated — but the "independent deployment evidence" gap persists.** April 2026 brings: CloudFormation IaC support (closes a key gap), Agent Registry (preview, 5 regions), Spring AI SDK GA, and vendor-sourced claims of enterprise deployments (Epsilon, Ericsson, Southwest Airlines). But the Epsilon/Ericsson deployment data comes exclusively from AWS blog posts and AWS partner materials — all Level 0. Independent practitioner confirmation has not been found. CVE-2026-4269 is fixed in v0.1.13. SailPoint integration remains an announced partnership, not a shipping product. Lock-in risk is now explicitly flagged by independent analyst (Kai Waehner) who places AgentCore in "Risky and Captured" quadrant.
+**GA confirmed June 18, 2026 (AWS Summit NYC) — independent deployment evidence gap persists.** Janakiram MSV (Forbes Tech) classified the GA as "a big deal" due to two-API abstraction. AWS-claimed production customers: Nasdaq, Visa, Experian (AWS Summit context, Level 1). Prior April 2026 vendor-claimed customers (Epsilon, Ericsson, PwC) remain Level 0. No independent practitioner has published a production deployment account. The pattern from pre-GA tracking continues at GA: vendor-sourced customer names without independent confirmation. Lock-in risk (Kai Waehner "Risky and Captured" quadrant, April 2026) is now a GA-context finding.
+
+**Previous verdict (2026-04-17):** Pre-adoption status partially updated — CloudFormation IaC support, Agent Registry (preview), Spring AI SDK GA, vendor-sourced claims (Epsilon, Ericsson, Southwest Airlines — all Level 0). CVE-2026-4269 fixed in v0.1.13.
 
 **Previous verdict (2026-03-21):** Most architecturally complete managed agent runtime — but pre-adoption. Zero independent deployment evidence, Python-only SDK, no IaC support, runtime reliability issues, and a high-severity CVE in the starter toolkit.
 
@@ -121,3 +131,4 @@ Kai Waehner (independent enterprise AI/data architect, April 6, 2026) places Age
 See `runs/` for detailed research:
 - `runs/2026-03-21-cycle23.md` — Initial research: practitioner reports, AG-UI correction, Cedar analysis, reliability issues
 - `runs/2026-04-17-cycle24.md` — April update: Agent Registry, IaC gap closure, SailPoint marketplace, CVE fix confirmation, lock-in risk assessment, claimed enterprise deployments (Level 0)
+- `../cross-platform/runs/2026-07-06-cycle155.md` — AgentCore GA June 18 at AWS Summit NYC confirmed (Finding 5); Nasdaq/Visa/Experian named customers (vendor-sourced L1); missed during 18-cycle Fable 5 tracking period

@@ -60,6 +60,8 @@ Then ask Claude to infer how the fields are being used.
 
 {{cut:extract-the-task-shaping-rule-4|project-admin}}
 
+## Fold the field-use rules into your file
+
 - **One ticket gives basic rules, not policy.** Which fields matter, which labels carry meaning, which wording signals "too big," which status changes imply ownership.
 - **The rules fold back into the file.** If backlog refinement is your first automation attempt, these field-use rules become the first add-on to the Phase 2 `.md` file, or a small companion file beside it.
 - **Depth comes from more tickets.** Three to five tickets from different work types surface stronger rules than one ticket, and Claude should keep separating strong signals from guesses as the sample grows.

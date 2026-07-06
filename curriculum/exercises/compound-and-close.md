@@ -26,14 +26,17 @@ The PR shipped. Now compound the session, then close the bug's ticket. That's th
 - **The rules file is yours now.** Born from the session, extended by every module after this one.
 - **The `.gitignore` edit is your call.** If `CLAUDE.local.md` wasn't already ignored, the compound step added it to your `.gitignore`. That is an uncommitted change now. What you do with it is your call.
 
-## Wire one connector into your tracker
+## Reach past the repo with a connector
 
 - **Your agent's reach stops at the repo.** Real engineering work spans tickets, pull requests, CI, chat, documentation: the system around the code. **MCP** is the protocol Claude Code uses to connect to that system. Three words land together: **connector** (the wire into a work app), **action** (a verb with effect in the world), **tool** (the umbrella for anything the model can call). Full primer in [MCP and connectors](../trainings/agentic-engineering-101/reference/mcp-and-connectors.md).
 - **One connector, two actions (read + update), closes the loop** you just ran on the bug, in the tracker your team actually lives in.
+
+## Wire one connector into your tracker
+
 - **Pick the cleanest path for your tracker.** Three work:
-  1. **GitHub Issues:** check `gh auth status` in your session. Claude runs `gh` for you via Bash, no MCP install needed.
-  2. **MCP connector to your tracker** (Linear, Jira, other): follow the install line in [MCP and connectors](../trainings/agentic-engineering-101/reference/mcp-and-connectors.md) for your tracker. If tenant admin approval is required, it's worth asking, not today.
-  3. **Manual paste:** Claude writes the close-out; you paste it into the tracker UI yourself. Five seconds, no tool setup.
+ 1. **GitHub Issues:** check `gh auth status` in your session. Claude runs `gh` for you via Bash, no MCP install needed.
+ 2. **MCP connector to your tracker** (Linear, Jira, other): follow the install line in [MCP and connectors](../trainings/agentic-engineering-101/reference/mcp-and-connectors.md) for your tracker. If tenant admin approval is required, it's worth asking, not today.
+ 3. **Manual paste:** Claude writes the close-out; you paste it into the tracker UI yourself. Five seconds, no tool setup.
 - **The teaching moment is the agent reaching across a tool boundary with a real engineering note**, not the install choreography. For paths 1 or 2, get your connector up and running.
 
 > **Connector added after this session started?** Check MCP status and authenticate with `/mcp`. If the new connector still isn't there, exit the session and resume it with `claude --resume <session-id>`.

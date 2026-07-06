@@ -11,11 +11,14 @@
   named this run:  Intent · Context · Work + how a loop compounds
 ```
 
-## The near-half laws
+## The loop and the model it runs on
 
 - **The agent loop is a closed-loop controller.** (Work) It acts, observes the result, and corrects. Cut the feedback signal (a test, a check, a read) and it drifts. Signal quality is part of the law: a flaky test is a closed loop that still drifts. Everything you did in plan mode was feeding that signal early.
 - **Local success, global drift.** (Work) The agent can win the function and lose the system. The drift lives in what nothing is watching: the dimensions your tests and reads don't cover. That is why the second read exists; one kind of scrutiny catches one kind of miss.
 - **Your context files are the agent's model of the system.** (Context) `CLAUDE.md` and `CLAUDE.local.md` steer because the agent conditions every move on what they hold. What the files don't carry, the agent must rediscover or guess each session. Thin model, thin steering; the craft of shaping what the agent sees is called context engineering.
+
+## How the loop compounds
+
 - **The compound ladder: fix → memory → skill → system.** (spans the loop) One cycle is a fix. A rule is memory. A skill is reuse. Enough of them is a system that learns faster than the field moves. Your kit is already two rungs up: rules on the memory rung, the test-strategy skill on the reuse rung.
 - **Double-loop learning.** (spans the loop) Single-loop fixes the failing test. Double-loop changes the rule that let the bug recur. Every time a rule gets sharpened from session evidence rather than rewritten from taste, that is the double loop running.
 

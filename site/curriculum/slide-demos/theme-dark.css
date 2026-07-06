@@ -1,0 +1,42 @@
+/* theme-dark.css — the "hands-on" mood.
+   Lectures stay cream + oxblood (reading / theory). Exercises flip to a warm
+   near-black with amber accents (doing / terminal). Everything downstream uses
+   the palette vars from curriculum.css, so re-pointing the vars recolours prose,
+   code, prompt blocks and viewer chrome in one move. Applied by the generator
+   as :root[data-theme="dark"] on exercise pages only. */
+
+:root[data-theme="dark"] {
+  --bg:          #1a160f;   /* warm near-black paper */
+  --bg-2:        #221d14;
+  --bg-3:        #2c251a;
+  --fg:          #f2ead9;   /* warm off-white ink */
+  --fg-2:        #d6cbb4;
+  --fg-3:        #a99a80;
+  --fg-4:        #7c6f5a;
+  --line:        #362e20;
+  --line-2:      #493d2b;
+  --accent:      #d98a55;   /* amber — oxblood goes muddy on dark */
+  --accent-2:    #e7a866;
+  --accent-soft: rgba(217,138,85,.12);
+  --code-bg:     #100d09;   /* terminal panel */
+
+  /* chrome sits a shade DARKER than the paper so bars/rails still separate */
+  --ink:         #0e0c08;
+  --ink-line:    #2b2418;
+  --ink-text:    #f4ecdb;
+  --ink-text-2:  #cabda4;
+  --ink-muted:   #8a7c65;
+}
+
+/* Session widget hardcodes a cream body (#faf1e3); repaint it as a dark panel. */
+:root[data-theme="dark"] .module .session-block { background: var(--bg-2); }
+:root[data-theme="dark"] .module .session-block__body { color: var(--fg-2); }
+:root[data-theme="dark"] .module .session-block__name::before { filter: none; }
+
+/* inline code + fenced code read as amber-on-terminal */
+:root[data-theme="dark"] .module pre code { color: var(--fg); }
+
+/* HOX / NOTE alert bodies force ink-text (light) already; keep their tinted
+   fills readable on the dark paper. */
+:root[data-theme="dark"] .module .hox-block__body,
+:root[data-theme="dark"] .module .note-block__body { color: var(--fg); }

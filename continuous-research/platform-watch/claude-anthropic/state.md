@@ -16,8 +16,18 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-07-06 (cycle 155)
-OODA cycles: 40
+Last updated: 2026-07-07 (cycle 156)
+OODA cycles: 41
+
+**Cycle 156 updates (July 7, 2026) — Fable 5 transition EXECUTED (event closes); Sonnet 5 Day 7 Harvey legal deployment (L0 vendor-to-vendor); Willison tool-call regression (L2); business-domain practitioner silence holds:**
+
+**Fable 5 July 7 transition executed — event closes.** Pro/Max/Team/Premium Enterprise complimentary access (July 1–7 at 50% limits) ended today; all moved to credits at $10/M input, $50/M output. Standard Enterprise credits-only since July 1 — no July 7 change. July 8 Persona KYC confirmed consumer-only (Free/Pro/Max); API/enterprise unaffected as previously corrected. No Anthropic extension or accommodation announcement found. Three-gate architecture is now historical record. The durable lesson: "frontier model access is conditional infrastructure, revocable on 19 days' notice." Fable 5 tracking is closed — watch list items below updated. ([anthropic.com Jun 30 2026](https://www.anthropic.com/news/redeploying-fable-5) — vendor; [bleepingcomputer.com Jul 2 2026](https://www.bleepingcomputer.com/news/artificial-intelligence/claude-subscribers-are-furious-over-fables-new-restrictions.html) — general press)
+
+**Sonnet 5 Day 7 — Harvey legal deployment (L0 vendor-to-vendor, not a law firm testimonial).** Harvey (legal AI vendor) deployed Sonnet 5 on launch day and published benchmarks on their own blog. Legal Agent Benchmark (LAB): 5.8% all-pass rate; BigLaw Bench: 91.3% (Harvey-sourced). Strongest: energy/natural resources, real estate, capital markets, drafting. Weaknesses: dense analytical tasks (tax, structured finance), strict agentic multi-step completion. IMPORTANT: this is Harvey (a vendor) deploying Claude in their product — NOT a law firm or enterprise deploying Harvey. Evidence level: Level 0 (vendor-to-vendor announcement). Zero independent law firms, insurance companies, finance teams, or HR functions published first-hand Sonnet 5 accounts at Day 7. ([harvey.ai Jun 30 2026](https://www.harvey.ai/blog/sonnet-5-in-harvey) — vendor press release)
+
+**Sonnet 5 tool-call regression — Willison documents invented extra fields (L2).** Simon Willison (July 4): Sonnet 5 and Opus 4.8 both produce malformed tool calls — inventing extra fields not in the schema — when using custom tool definitions. Older Claude models do not show this behavior. Root cause hypothesis: training for Claude Code's internal edit tools creates schema incompatibility with third-party definitions. Business implication: platforms integrating Claude via custom tool schemas may need model-specific adjustments. This is the most operationally significant independent Sonnet 5 finding at Day 7. ([simonwillison.net Jul 4 2026](https://simonwillison.net/2026/Jul/4/better-models-worse-tools/) — practitioner direct)
+
+**Watch: July 14–21 (Sonnet 5 next business-domain deployment evidence window); August 31 (Sonnet 5 intro pricing $2/$10 → $3/$15; effective 20–35% cost increase vs Sonnet 4.6); Q3 2026 (Cursor/SpaceX regulatory close); August 2026 (Polaris default for GitHub Copilot); Google Cloud Vertex AI Fable 5 restoration (still unconfirmed); Sonnet 5 tool-call regression — community confirmation sought (currently single-source L2).**
 
 **Cycle 155 updates (July 6, 2026) — Fable 5 July 7 deadline confirmed (no extension); three-gate CORRECTION to synthesis Watch list; Sonnet 5 first business-domain named deployments (Eve + Pace, L2 vendor-sourced); Pattern 48 microcosm:**
 

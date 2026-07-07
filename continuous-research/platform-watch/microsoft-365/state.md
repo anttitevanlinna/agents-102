@@ -15,8 +15,14 @@ answers:
 
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-07-05 (cycle 154)
-OODA cycles: 32
+Last updated: 2026-07-07 (cycle 156)
+OODA cycles: 33
+
+**Cycle 156 updates (July 7, 2026) — Cowork Day 21 silence + nine partner plugins GA + billing deadline passed:**
+
+**Copilot Cowork Day 21 — nine partner plugins GA, billing deadline passed, zero enterprise production deployments (Level 3 absence).** IT partner admin guidance confirms nine partner plugins now GA at worldwide launch: Harvey (legal AI), LSEG, Moodys, Morningstar, S&P Global Energy, Miro, monday.com, Enosix, TeamsMaestro. Fabric and Dynamics 365 Sales/Customer Service/ERP integrations also GA. July 1 billing deadline: tenants without Copilot Credits configured (usage-based billing) lost Cowork access — confirming billing-first adoption friction. Admin guidance from partner firms (DSG Tech, TMC, HBS, IDECSI, SoftwareOne) covers billing setup, permission audits, recommended 30-day rollout with spending caps — process guidance, not deployment evidence. Named Microsoft preview customers (Accenture, Capital Group, Koch Industries, Zurich Insurance) have published nothing independently as of Day 21. This is now confirmed Level 3 absence: 21 consecutive days of systematic search yielding zero named production deployment accounts. Interpretation: plugin ecosystem is real and growing, but enterprise adoption is gated by admin friction (billing setup, spending caps, compliance sign-off) rather than technical readiness. ([dsolutionsgroup.com Jul 1 2026](https://www.dsolutionsgroup.com/blog/microsoft-just-rebuilt-copilot-heres-what-cowork-credits-and-the-new-pricing-mean-for-your-business/) — domain trade publication; [abouttmc.com Jul 2026](https://abouttmc.com/blog/copilot-cowork-pricing/) — domain trade publication)
+
+**Watch: Day 30 (July 16) — first named production deployment or continued silence; Copilot Autonomous Agent Mode Enterprise August 2026 launch; Scout production deployment evidence.**
 
 **Cycle 154 updates (July 5, 2026) — Cowork worldwide GA gap documented; Scout frontier preview:**
 

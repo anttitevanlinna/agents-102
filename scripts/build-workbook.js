@@ -8,6 +8,11 @@
 // Legacy usage still works for a single training:
 //   node scripts/build-workbook.js <training-key> <customer-slug>
 //
+// Preview cut (beta):
+//   node scripts/build-workbook.js <customer-slug> <training-key> --part=<N>
+//   builds only the first N modules, reframed as "part one", and skips the
+//   trainer docs. See applyPartCut near the CLI entry.
+//
 // Output:
 //   site/clients/<customer-slug>/index.html                    customer index
 //   site/clients/<customer-slug>/<training-key>/index.html     workbook
@@ -942,7 +947,7 @@ function buildPayload(trainingKey, customer, outDir) {
   return null;
 }
 
-function buildTraining(customer, trainingKey) {
+function buildTraining(customer, trainingKey, opts = {}) {
   const outDir = path.join(ROOT, 'site/clients', customer, trainingKey);
   fs.mkdirSync(outDir, { recursive: true });
 
@@ -954,6 +959,16 @@ function buildTraining(customer, trainingKey) {
 
   const sizeKB = (fs.statSync(outFile).size / 1024).toFixed(0);
   console.log(`Built ${path.relative(ROOT, outFile)} (${sizeKB} KB)`);
+
+  // Preview cut (--part): a student-facing beta of the first N modules. The
+  // trainer guide + trainer modules describe the WHOLE arc (all six modules)
+  // and carry the M3 security-surprise spoiler mechanics, so they must not land
+  // in a dir handed to beta readers. The student TOC never links them (direct
+  // URL only), so skipping generation leaves no dead link.
+  if (opts.previewCut) {
+    console.log(`  (preview cut: skipping trainer-guide.html + trainer-modules.html)`);
+    return;
+  }
 
   // Trainer guide: same gate (per-training customer dir), separate file.
   // Training-specific source rendered beside each workbook so cross-doc links
@@ -1047,22 +1062,51 @@ function buildCustomerIndex(customer) {
   console.log(`Built ${path.relative(ROOT, indexFile)} (${sizeKB} KB)`);
 }
 
+// `--part=<N>` cuts a preview/beta workbook: keep only the first N modules and
+// reframe the cover as part one of the full training. This is a one-shot,
+// in-memory mutation of the registry object — curriculum.js on disk is untouched,
+// so the next normal build is unaffected. Supplementaries and references stay
+// whole so no surviving module's cross-doc anchor dies. Used to ship the
+// 3-module AE101 preview without a separate registry entry or content dir.
+function applyPartCut(trainingKey, n) {
+  const t = CR.TRAININGS[trainingKey];
+  if (!t) throw new Error(`--part: unknown training ${trainingKey}`);
+  const total = t.modules.length;
+  if (n >= total) {
+    console.log(`--part=${n} >= ${trainingKey}'s ${total} modules; building the full training.`);
+    return;
+  }
+  t.modules = t.modules.slice(0, n);
+  t.label = `${t.label} (Part One)`;
+  t.lede = `The first ${n} modules of ${total}. Modules ${n + 1} to ${total} take it further.`;
+  console.log(`--part=${n}: ${trainingKey} cut to the first ${n} of ${total} modules.`);
+}
+
 // `--theory` switches the build to the theory handbook (additive sibling page;
 // the normal workbook path is untouched when the flag is absent).
 const rawArgs = process.argv.slice(2);
 const theoryMode = rawArgs.includes('--theory');
 const exercisesMode = rawArgs.includes('--exercises');
-const { customer, trainings, legacy } = parseCli(rawArgs.filter(a => a !== '--theory' && a !== '--exercises'));
+const partArg = rawArgs.find(a => a.startsWith('--part='));
+const partN = partArg ? Number(partArg.slice('--part='.length)) : null;
+if (partArg && (!Number.isInteger(partN) || partN < 1)) {
+  console.error(`--part expects a positive integer (e.g. --part=3), got "${partArg}".`);
+  process.exit(1);
+}
+const { customer, trainings, legacy } = parseCli(
+  rawArgs.filter(a => a !== '--theory' && a !== '--exercises' && !a.startsWith('--part='))
+);
 if (legacy) {
   console.log('Legacy argument order detected; prefer: node scripts/build-workbook.js ' + customer + ' ' + trainings[0]);
 }
+if (partN != null) trainings.forEach(trainingKey => applyPartCut(trainingKey, partN));
 
 if (theoryMode) {
   trainings.forEach(trainingKey => buildTheoryHandbook(customer, trainingKey));
 } else if (exercisesMode) {
   trainings.forEach(trainingKey => buildExercisesWorkbook(customer, trainingKey));
 } else {
-  trainings.forEach(trainingKey => buildTraining(customer, trainingKey));
+  trainings.forEach(trainingKey => buildTraining(customer, trainingKey, { previewCut: partN != null }));
   buildCustomerIndex(customer);
 }
 

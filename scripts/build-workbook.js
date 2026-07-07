@@ -8,10 +8,11 @@
 // Legacy usage still works for a single training:
 //   node scripts/build-workbook.js <training-key> <customer-slug>
 //
-// Preview cut (beta):
-//   node scripts/build-workbook.js <customer-slug> <training-key> --part=<N>
-//   builds only the first N modules, reframed as "part one", and skips the
-//   trainer docs. See applyPartCut near the CLI entry.
+// Student-facing build (no trainer docs):
+//   node scripts/build-workbook.js <customer-slug> <training-key> --no-trainer-docs
+//   skips trainer-guide.html + trainer-modules.html. A short/preview cut is its
+//   own TRAININGS entry with a `contentKey` alias (e.g. agentic-engineering-101-preview
+//   → agentic-engineering-101), not a build flag.
 //
 // Output:
 //   site/clients/<customer-slug>/index.html                    customer index
@@ -252,20 +253,22 @@ function renderModuleMd(trainingKey, slug, contentUrl) {
   return md;
 }
 
-function buildToc(trainingKey, t) {
+function buildToc(contentKey, t) {
   // Single source: CR.buildTocSections. Workbook URL strategy is in-page anchors;
   // Big Ideas pre-filled sync at build time (no async hydration like the SPA).
   // Memoize per-slug Big Idea reads since the same module file gets opened
-  // for both TOC and module body.
+  // for both TOC and module body. contentKey is where the module FILES live
+  // (a variant training reads them from its parent's dir); TOC anchors are
+  // slug-only, so the moduleHref callback below ignores the key entirely.
   const bigIdeaCache = {};
   function bigIdeaFor(slug) {
     if (slug in bigIdeaCache) return bigIdeaCache[slug];
-    const modPath = path.join(ROOT, 'curriculum/trainings', trainingKey, slug + '.md');
+    const modPath = path.join(ROOT, 'curriculum/trainings', contentKey, slug + '.md');
     const md = readMd(modPath) || '';
     return (bigIdeaCache[slug] = CR.extractBigIdea(md));
   }
   return CR.buildTocSections(t, {
-    trainingKey: trainingKey,
+    trainingKey: contentKey,
     moduleHref: (k, s) => '#' + s,
     fileHref: (kind, s) => '#' + kind + '-' + s,
     trainerGuideHref: './trainer-guide.html',
@@ -293,8 +296,14 @@ ${chips.join('\n')}
 }
 
 function buildBody(trainingKey, customer, contentUrl) {
-  const t = CR.TRAININGS[trainingKey];
-  if (!t) throw new Error(`Unknown training: ${trainingKey}`);
+  const raw = CR.TRAININGS[trainingKey];
+  if (!raw) throw new Error(`Unknown training: ${trainingKey}`);
+  // A variant training (contentKey set) reads its FILES from another training's
+  // content dir and inherits that parent's prework + supplementaries + references
+  // unless it overrides them; its own (cut) modules list and label/lede win.
+  // Non-variant trainings resolve contentKey to themselves and are unchanged.
+  const contentKey = raw.contentKey || trainingKey;
+  const t = raw.contentKey ? Object.assign({}, CR.TRAININGS[contentKey], raw) : raw;
 
   const topNav = buildTopNav(t, customer);
 
@@ -307,7 +316,7 @@ function buildBody(trainingKey, customer, contentUrl) {
 
 <nav class="workbook-toc">
   <h2>Contents</h2>
-${buildToc(trainingKey, t)}
+${buildToc(contentKey, t)}
 </nav>
 `;
 
@@ -320,7 +329,7 @@ ${buildToc(trainingKey, t)}
   const modulesHtml = allModules
     .map(m => {
       if (TRAINER_ONLY.has(m.slug + '.md')) return '';
-      const md = renderModuleMd(trainingKey, m.slug, contentUrl);
+      const md = renderModuleMd(contentKey, m.slug, contentUrl);
       let html = marked.parse(md);
       html = postProcessIncludes(html);
       html = CR.wrapImageFigures(html);
@@ -334,7 +343,7 @@ ${buildToc(trainingKey, t)}
   // module bodies don't die. Same chrome as modules; no Big Idea hero.
   // Files live under curriculum/trainings/<training>/<kind>/<slug>.md.
   function renderStandalone(kind, slug) {
-    const docPath = path.join(ROOT, 'curriculum/trainings', trainingKey, kind, slug + '.md');
+    const docPath = path.join(ROOT, 'curriculum/trainings', contentKey, kind, slug + '.md');
     let md = readMd(docPath);
     // A registry slug with no backing file is always a dead nav link: the index
     // (built from the registry) links to #<kind>-<slug>, but no section renders.
@@ -342,8 +351,8 @@ ${buildToc(trainingKey, t)}
     // no TRAINER_ONLY carve-out for supplementaries/references).
     if (md === null) {
       throw new Error(
-        `${trainingKey} registry lists ${kind} "${slug}" but ${path.relative(ROOT, docPath)} does not exist. ` +
-        `Add the file or remove the entry from TRAININGS.${trainingKey}.${kind === 'supplementary' ? 'supplementaries' : 'references'} in site/layouts/curriculum.js.`
+        `${contentKey} registry lists ${kind} "${slug}" but ${path.relative(ROOT, docPath)} does not exist. ` +
+        `Add the file or remove the entry from TRAININGS.${contentKey}.${kind === 'supplementary' ? 'supplementaries' : 'references'} in site/layouts/curriculum.js.`
       );
     }
     md = md
@@ -903,18 +912,20 @@ const TARBALLS = {
   'agents-101': 'agents-101-starter.tar.gz',
 };
 
-function buildPayload(trainingKey, customer, outDir) {
+function buildPayload(contentKey, customer, urlKey, outDir) {
   // AE101 + Agents 101 each ship a tarball alongside that training's workbook.
   // The payload URL is training-scoped so one customer can host multiple
-  // trainings without the two tarballs overwriting each other.
+  // trainings without the two tarballs overwriting each other. contentKey
+  // selects which tarball to build (a variant reuses its parent's content);
+  // urlKey is the output-path segment (the variant's own dir under the customer).
   //
   // AE101      — content tarball (lectures/exercises/reference/supplementary/skills;
   //                               extracted at ~/Documents/ae101-content/)
   // Agents 101 — starter tarball  (empty working-folder skeleton; extracts in-place
   //                                into the student's connected/working folder at
   //                                ~/Documents/agents-101/)
-  if (trainingKey === 'agentic-engineering-101') {
-    const tarName = TARBALLS[trainingKey];
+  if (contentKey === 'agentic-engineering-101') {
+    const tarName = TARBALLS[contentKey];
     console.log('Building content tarball...');
     execSync('scripts/build-ae101-content-tarball.sh', { cwd: ROOT, stdio: 'inherit' });
     const tarSrc = path.join(ROOT, tarName);
@@ -922,11 +933,11 @@ function buildPayload(trainingKey, customer, outDir) {
     fs.copyFileSync(tarSrc, tarDst);
     const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
     console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
-    return `https://agents102.bosser.consulting/clients/${customer}/${trainingKey}/${tarName}`;
+    return `https://agents102.bosser.consulting/clients/${customer}/${urlKey}/${tarName}`;
   }
 
-  if (trainingKey === 'agents-101') {
-    const tarName = TARBALLS[trainingKey];
+  if (contentKey === 'agents-101') {
+    const tarName = TARBALLS[contentKey];
     console.log('Building Agents 101 starter tarball...');
     execSync('scripts/build-agents-101-starter-tarball.sh', { cwd: ROOT, stdio: 'inherit' });
     const tarSrc = path.join(ROOT, tarName);
@@ -941,7 +952,7 @@ function buildPayload(trainingKey, customer, outDir) {
     // extract-only prompt. Same URL, different transport.
     const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
     console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
-    return `https://agents102.bosser.consulting/clients/${customer}/${trainingKey}/${tarName}`;
+    return `https://agents102.bosser.consulting/clients/${customer}/${urlKey}/${tarName}`;
   }
 
   return null;
@@ -951,7 +962,10 @@ function buildTraining(customer, trainingKey, opts = {}) {
   const outDir = path.join(ROOT, 'site/clients', customer, trainingKey);
   fs.mkdirSync(outDir, { recursive: true });
 
-  const contentUrl = buildPayload(trainingKey, customer, outDir);
+  // A variant training builds its parent's tarball but hosts it under its own
+  // path (urlKey = trainingKey). Non-variant trainings resolve to themselves.
+  const contentKey = (CR.TRAININGS[trainingKey] || {}).contentKey || trainingKey;
+  const contentUrl = buildPayload(contentKey, customer, trainingKey, outDir);
   const body = buildBody(trainingKey, customer, contentUrl);
   const html = template(`${CR.TRAININGS[trainingKey].label} — ${customer}`, body, trainingKey);
   const outFile = path.join(outDir, 'index.html');
@@ -960,13 +974,13 @@ function buildTraining(customer, trainingKey, opts = {}) {
   const sizeKB = (fs.statSync(outFile).size / 1024).toFixed(0);
   console.log(`Built ${path.relative(ROOT, outFile)} (${sizeKB} KB)`);
 
-  // Preview cut (--part): a student-facing beta of the first N modules. The
-  // trainer guide + trainer modules describe the WHOLE arc (all six modules)
-  // and carry the M3 security-surprise spoiler mechanics, so they must not land
-  // in a dir handed to beta readers. The student TOC never links them (direct
-  // URL only), so skipping generation leaves no dead link.
-  if (opts.previewCut) {
-    console.log(`  (preview cut: skipping trainer-guide.html + trainer-modules.html)`);
+  // --no-trainer-docs: a student-facing build (e.g. a self-serve beta). The
+  // trainer guide + trainer modules carry delivery mechanics and the M3
+  // security-surprise spoiler, so they must not land in a dir handed to
+  // students. The student TOC never links them (direct URL only), so skipping
+  // generation leaves no dead link.
+  if (opts.noTrainerDocs) {
+    console.log(`  (student build: skipping trainer-guide.html + trainer-modules.html)`);
     return;
   }
 
@@ -1062,51 +1076,27 @@ function buildCustomerIndex(customer) {
   console.log(`Built ${path.relative(ROOT, indexFile)} (${sizeKB} KB)`);
 }
 
-// `--part=<N>` cuts a preview/beta workbook: keep only the first N modules and
-// reframe the cover as part one of the full training. This is a one-shot,
-// in-memory mutation of the registry object — curriculum.js on disk is untouched,
-// so the next normal build is unaffected. Supplementaries and references stay
-// whole so no surviving module's cross-doc anchor dies. Used to ship the
-// 3-module AE101 preview without a separate registry entry or content dir.
-function applyPartCut(trainingKey, n) {
-  const t = CR.TRAININGS[trainingKey];
-  if (!t) throw new Error(`--part: unknown training ${trainingKey}`);
-  const total = t.modules.length;
-  if (n >= total) {
-    console.log(`--part=${n} >= ${trainingKey}'s ${total} modules; building the full training.`);
-    return;
-  }
-  t.modules = t.modules.slice(0, n);
-  t.label = `${t.label} (Part One)`;
-  t.lede = `The first ${n} modules of ${total}. Modules ${n + 1} to ${total} take it further.`;
-  console.log(`--part=${n}: ${trainingKey} cut to the first ${n} of ${total} modules.`);
-}
-
 // `--theory` switches the build to the theory handbook (additive sibling page;
 // the normal workbook path is untouched when the flag is absent).
+// `--no-trainer-docs` suppresses the trainer guide + trainer modules for a
+// student-facing build (see buildTraining).
 const rawArgs = process.argv.slice(2);
 const theoryMode = rawArgs.includes('--theory');
 const exercisesMode = rawArgs.includes('--exercises');
-const partArg = rawArgs.find(a => a.startsWith('--part='));
-const partN = partArg ? Number(partArg.slice('--part='.length)) : null;
-if (partArg && (!Number.isInteger(partN) || partN < 1)) {
-  console.error(`--part expects a positive integer (e.g. --part=3), got "${partArg}".`);
-  process.exit(1);
-}
+const noTrainerDocs = rawArgs.includes('--no-trainer-docs');
 const { customer, trainings, legacy } = parseCli(
-  rawArgs.filter(a => a !== '--theory' && a !== '--exercises' && !a.startsWith('--part='))
+  rawArgs.filter(a => a !== '--theory' && a !== '--exercises' && a !== '--no-trainer-docs')
 );
 if (legacy) {
   console.log('Legacy argument order detected; prefer: node scripts/build-workbook.js ' + customer + ' ' + trainings[0]);
 }
-if (partN != null) trainings.forEach(trainingKey => applyPartCut(trainingKey, partN));
 
 if (theoryMode) {
   trainings.forEach(trainingKey => buildTheoryHandbook(customer, trainingKey));
 } else if (exercisesMode) {
   trainings.forEach(trainingKey => buildExercisesWorkbook(customer, trainingKey));
 } else {
-  trainings.forEach(trainingKey => buildTraining(customer, trainingKey, { previewCut: partN != null }));
+  trainings.forEach(trainingKey => buildTraining(customer, trainingKey, { noTrainerDocs }));
   buildCustomerIndex(customer);
 }
 

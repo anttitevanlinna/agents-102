@@ -72,6 +72,22 @@
                 { slug: 'prompt-anatomy',            title: 'Prompt anatomy: the named moves' }
             ]
         },
+        // Preview / beta cut of Agentic Engineering 101: the first three modules,
+        // reframed as "part one". `contentKey` points file resolution at the real
+        // AE101 content dir; the workbook builder inherits that parent's prework +
+        // supplementaries + references, so this stays a thin variant. Its own
+        // (cut) modules list and label/lede win. Build student-facing:
+        // node scripts/build-workbook.js acme agentic-engineering-101-preview --no-trainer-docs
+        'agentic-engineering-101-preview': {
+            contentKey: 'agentic-engineering-101',
+            label: 'Agentic Engineering 101 (Part One)',
+            lede: 'The first 3 modules of 6. Modules 4 to 6 take it further.',
+            modules: [
+                { slug: 'getting-going',             title: 'Getting going + context' },
+                { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
+                { slug: 'earn-the-trust',            title: 'Earn the trust' }
+            ]
+        },
         'claude-basics': {
             label: 'Claude Basics',
             lede: 'A 3-hour live workshop for people helping their organisation roll out Claude. See the system, find the crux, then build and verify in your own folder.',

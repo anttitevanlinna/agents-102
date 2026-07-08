@@ -53,8 +53,8 @@ The PR is shipped. The move is warm. Hand off to the compound step.
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-15 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4 pedagogy@3605eee)
-- judges @3605eee: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy grandfathered
+**Quality:** compendium-audited 2026-07-08 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4 pedagogy@3605eee slides@47f3357)
+- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy grandfathered, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (tests-first fix) + Analyze (read the diff against what you'd write).

@@ -12,7 +12,7 @@
 
 ## Phase 1: Bring a real task
 
-- **Bring a task that spans a few files, with enough execution depth to make plan mode worth using.** Not a one-line fix; plan mode is overkill there. Not a refactor so big you can't hold the outcome in your head. A feature slice, a small migration, a targeted refactor: something where touching the wrong file matters.
+- **Bring a task that spans a few files, with enough execution depth to make plan mode worth using.** A feature slice, a small migration, a targeted refactor: something where touching the wrong file matters. A one-line fix is too small for plan mode; a refactor whose outcome you can't hold in your head is too big.
 - **Just a simple task that spans a few files. Not an epic.**
 - If nothing fits, ask Claude to surface three candidates from recent issues, PRs, or TODO comments. Pick the one you'd ship today if you had an hour.
 
@@ -68,7 +68,7 @@
 
 > **Timebox check.** When the slot ends, stop. The second-pass walk-down can run deep on a real codebase. If it is still surfacing branches when time is up, take the most recent sharpened plan, approve it, and move to Phase 5. The branches that did not surface today are the ones you will catch when you actually ship the work. The exercise teaches the move. You take the move home.
 
-- **The three-at-a-time prose above is the starting point.** That batching cuts round-trips on the branches that need real thought. If you prefer a structured picker, switch once the walk-down is rolling. Ask Claude to switch to AskUserQuestion, and add any steering of your own.
+- **The walk-down prompt's three-at-a-time prose is the starting point.** That batching cuts round-trips on the branches that need real thought. If you prefer a structured picker, switch once the walk-down is rolling. Ask Claude to switch to AskUserQuestion, and add any steering of your own.
 
 {{cut:push-back-on-the-plan-2-askuserquestion|redundant-slot}}
 
@@ -85,7 +85,7 @@ Then just hit stop.
 ## Phase 5: Stop, then name the pattern you ran
 
 - **Don't execute the plan.** The work of making it good is the exercise. Execution is next module's concern.
-- Out of plan mode now: you approved and stopped, so Claude Code is back to default mode for this last beat.
+- Out of plan mode now: you approved and stopped, so Claude Code is back to default mode for this last step.
 - Ask Claude to name the design pattern you just ran and compare what the second-pass read surfaced against what your two push-backs caught.
 
 {{prompt:push-back-on-the-plan-3}}
@@ -105,8 +105,8 @@ Then just hit stop.
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-22 (writing@1a9e10b story@1a9e10b technical@1a9e10b behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b)
-- judges @1a9e10b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-07-08 (writing@1a9e10b story@1a9e10b technical@1a9e10b behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b slides@47f3357)
+- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat at P5 is the Evaluate beat)

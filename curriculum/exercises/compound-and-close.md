@@ -58,29 +58,29 @@ Claude reads the ticket (or confirms there isn't one). Then ask Claude to write 
 ## Read the close-out and ship it
 
 - **Read the close-out; push back if it's stiff or wrong.** Tell Claude how your team actually writes ticket comments. It'll adjust.
-- **Ship the update** (or paste it into the tracker yourself on path 3). The bug fix is now visible where it should be: in the tracker your team reads, not only in the repo.
+- **Ship the update** (or paste it into the tracker yourself on path 3, manual paste). The bug fix is now visible where it should be: in the tracker your team reads, not only in the repo.
 
 ## Sweep the session into your rules file one more time
 
-- **One more pass before close.** Anything earned since the first compound (the ticket beat, the push-backs, the catch on the missing PR) that didn't land yet?
+- **One more pass before close.** Anything earned since the first compound pass at the top of this exercise (the ticket close-out, the push-backs, the connector path you picked) that didn't land yet?
 
 Ask Claude to sweep the session for anything earned since the first compound and integrate.
 
 {{prompt:compound-and-close-4}}
 
-## Clear the session, the loop is closed
+## Close the session, the loop is closed
 
 **What happened:** Your rules file was born from how you actually worked, not from a template. The first move outside the repo happened on a real job: the ticket for the bug you just shipped. Claude reviewed the session, you pushed back where it misread, and the close-out landed in the tracker where your team reads it.
 
 The loop ran. The PR is open, the rules file was born from session evidence, the ticket is updated where your team reads it. Setup in place.
 
-You can now clear. What you stored may or may not help you in future sessions. Let's find out then.
+You can close this session now. `./CLAUDE.local.md` stays behind; whether it earns its keep shows up the next time a session reads it.
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-15 (writing@3605eee story@88a1dd4 technical@88a1dd4 behavior@88a1dd4 pedagogy@3605eee)
-- judges @3605eee: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy grandfathered
+**Quality:** compendium-audited 2026-07-08 (writing@3605eee story@88a1dd4 technical@88a1dd4 behavior@88a1dd4 pedagogy@3605eee slides@47f3357)
+- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy grandfathered, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (wire the connector, close the ticket) + Analyze (read the retro summary against session moments).

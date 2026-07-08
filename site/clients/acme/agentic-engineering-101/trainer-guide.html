@@ -1,0 +1,3679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trainer delivery guide — acme</title>
+<style>/* Curriculum viewer — Editorial theme.
+   Warm-ink dark header + cream paper body.
+   Roboto Slab (display, light) + Inter (body) + EB Garamond (italic accents).
+   Scoped to curriculum.html — does not affect the rest of the site. */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Slab:wght@200;300;400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+:root {
+    --bg:          #efe6d2;   /* cream paper */
+    --bg-2:        #e6dcc4;
+    --bg-3:        #ddd2b6;
+    --fg:          #1f1a13;
+    --fg-2:        #4a4234;
+    --fg-3:        #786c56;
+    --fg-4:        #a89a7f;
+    --line:        #d6c8a3;
+    --line-2:      #c5b68d;
+    --accent:      #8a3a2a;   /* oxblood */
+    --accent-2:    #a8473a;
+    --accent-soft: rgba(138,58,42,.08);
+    --warm:        #c97942;   /* amber — secondary accent (from ai-training) */
+    --hox:         #e8590c;   /* hot signal-orange — HOX heads-up widget */
+    --note:        #2f6b6b;   /* calm teal — NOTE guidance widget */
+    --arctic:      #5e8ca8;   /* muted arctic blue — gradient tail */
+    --ink:         #14110d;
+    --ink-text:    #f4ecdb;
+    --ink-text-2:  #c2b8a4;
+    --ink-muted:   #8a7e6c;
+    --ink-line:    #38301f;
+    --code-bg:     #e6dcc4;
+
+    --font-display: 'Roboto Slab', Georgia, serif;
+    --font-body:    'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-serif:   'EB Garamond', Georgia, serif;
+    --font-mono:    ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    overflow-x: clip;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Flex column so the footer hugs content instead of leaving a tract of cream
+       below short pages (training picker, error states, single-screen modules). */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main { flex: 1 0 auto; }
+
+::selection { background: var(--accent); color: var(--ink-text); }
+
+/* ── Header: dark ink bar, primary contrast moment ── */
+
+.curriculum-header {
+    background: var(--ink);
+    border-bottom: 1px solid var(--ink-line);
+    padding: 1.1rem 2rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.curriculum-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 60% 120% at 20% 50%, rgba(201,121,66,.08), transparent 70%),
+        radial-gradient(ellipse 40% 120% at 85% 50%, rgba(201,121,66,.05), transparent 70%);
+    pointer-events: none;
+}
+
+.curriculum-header > * { position: relative; }
+
+.curriculum-home {
+    color: var(--ink-text);
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.05rem;
+    letter-spacing: -.005em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.curriculum-home::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--accent-2);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.curriculum-home:hover { color: var(--accent-2); }
+
+/* ── Runtime switcher (Agents 101 only) ──
+   Agents 101 is dual-runtime: Claude Code or Cowork. The toggle is hidden on AE101
+   pages (controlled by JS via the [hidden] attribute). Pages wrap runtime-specific
+   phrasing in <span class="rt-code">…</span> and <span class="rt-cowork">…</span>;
+   the body.runtime-* class hides the inactive variant.
+
+   Verified facts driving the design — see curriculum/reference/claude-code-for-engineers.md
+   § Claude Cowork — same engine, different surface. */
+
+.runtime-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    color: var(--ink-text);
+}
+
+.runtime-switcher[hidden] { display: none; }
+
+.runtime-switcher-label {
+    opacity: 0.65;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.runtime-switcher-btn {
+    background: transparent;
+    color: var(--ink-text);
+    border: 1px solid var(--ink-line);
+    border-radius: 999px;
+    padding: 0.28rem 0.75rem;
+    font: inherit;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity .15s ease, background .15s ease, border-color .15s ease;
+}
+
+.runtime-switcher-btn:hover { opacity: 1; }
+
+.runtime-switcher-btn.is-active {
+    background: var(--accent-2);
+    border-color: var(--accent-2);
+    color: var(--ink);
+    opacity: 1;
+}
+
+/* Hide the inactive runtime's prose. Three modes, four classes:
+     .rt-cli      visible only when runtime is cli
+     .rt-desktop  visible only when runtime is desktop
+     .rt-cowork   visible only when runtime is cowork
+     .rt-code     visible when runtime is cli OR desktop (any Claude Code surface)
+   Authors use the broad .rt-code for the common Code-vs-Cowork fork (plan mode,
+   subagent terminology, four-session pattern). Use the narrow .rt-cli / .rt-desktop
+   only where install affordances actually differ (M4, M7).
+
+   Both inline (<span>) and block (<div>) wrappers respond to the same classes —
+   wrap whole prompt blocks in <div class="rt-…"> when the prompt body itself
+   forks (fenced-code can't carry inline spans inside, so the wrap goes around). */
+
+body.runtime-cli     .rt-desktop,
+body.runtime-cli     .rt-cowork  { display: none; }
+
+body.runtime-desktop .rt-cli,
+body.runtime-desktop .rt-cowork  { display: none; }
+
+body.runtime-cowork  .rt-cli,
+body.runtime-cowork  .rt-desktop,
+body.runtime-cowork  .rt-code    { display: none; }
+
+/* ── Footer: license notice, visible on every module page ── */
+
+.curriculum-footer {
+    background: var(--ink);
+    border-top: 1px solid var(--ink-line);
+    color: var(--ink-text);
+    padding: 1.4rem 2rem;
+    font-size: 0.82rem;
+    line-height: 1.55;
+}
+
+.curriculum-footer p {
+    max-width: 62rem;
+    margin: 0 auto;
+    opacity: 0.78;
+}
+
+.curriculum-footer strong {
+    color: var(--ink-text);
+    opacity: 1;
+    font-weight: 500;
+}
+
+.curriculum-footer a {
+    color: var(--accent-2);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+.curriculum-footer a:hover {
+    border-bottom-color: var(--accent-2);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 5rem 1.5rem 7rem;
+    position: relative;
+}
+
+main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 420px;
+    background:
+        radial-gradient(ellipse 60% 70% at 25% 25%, rgba(138,58,42,.045), transparent 70%),
+        radial-gradient(ellipse 50% 60% at 80% 20%, rgba(201,121,66,.035), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.module {
+    width: 100%;
+    max-width: 40em;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Module body typography ── */
+
+.module h1 {
+    font-family: var(--font-display);
+    font-weight: 200;
+    font-size: clamp(2.4rem, 6.5vw, 4.5rem);
+    line-height: .95;
+    letter-spacing: -.025em;
+    margin: 0 0 2rem;
+    color: var(--fg);
+    text-wrap: balance;
+    position: relative;
+}
+
+.module h1::after {
+    content: "";
+    display: block;
+    width: 3rem;
+    height: 1px;
+    background: var(--accent);
+    margin-top: 1.75rem;
+}
+
+.module h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    letter-spacing: -.015em;
+    margin: 4rem 0 1.25rem;
+    padding-top: 2rem;
+    color: var(--fg);
+    position: relative;
+}
+
+/* Editorial section mark — small italic amber mark above each h2 */
+.module h2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2.5rem;
+    height: 2px;
+    background: var(--accent);
+}
+
+.module h3 {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 1.35;
+    margin: 2.5rem 0 0.75rem;
+    color: var(--accent);
+    letter-spacing: .005em;
+}
+
+.module p { margin: 0 0 1.15rem; text-wrap: pretty; }
+
+/* Rendered images (curriculum diagrams ship as .svg alongside the doc). Two
+   rules. (1) A responsive baseline — the stylesheet never had one because
+   content was text-only, so anything embedded rendered at natural size and the
+   page's overflow-x: clip swallowed the spillover with no scrollbar. (2) A
+   breakout for diagram figures: a wide diagram wants the page, not the 40em
+   prose measure, so .diagram steps out of the reading column to the full
+   content width and centres on it. Vector scales losslessly, so width is now a
+   pure layout choice. min(64rem, 92vw) keeps the figure inside the viewport, so
+   the breakout never creates spillover for overflow-x: clip to hide. */
+.module img { display: block; max-width: 100%; height: auto; }
+
+.module .diagram {
+    width: min(64rem, 92vw);
+    margin: 1.75rem 0 1.75rem 50%;
+    transform: translateX(-50%);
+}
+
+/* The image is bounded by BOTH the figure width and a max-height, sized to
+   whichever binds first (intrinsic aspect ratio is preserved from the SVG's
+   width/height). Landscape diagrams hit the width and fill the breakout;
+   a tall portrait diagram hits the height and is capped instead of running a
+   full page — full detail stays one click away via the zoom link. Centred
+   within the figure when narrower than the breakout. */
+.module .diagram img {
+    display: block;
+    margin-inline: auto;
+    max-width: 100%;
+    max-height: 40rem;
+    height: auto;
+    border: 1px solid var(--line-2);
+    border-radius: 6px;
+    background: #fff;
+}
+
+/* "Open in new tab" link under a diagram — lossless zoom for dense diagrams.
+   Subtle, right-aligned, no underline (overrides the .module a border-bottom). */
+.module .diagram__zoom {
+    display: block;
+    margin-top: .45rem;
+    font-size: .82rem;
+    text-align: right;
+    color: var(--fg-3);
+    border-bottom: none;
+}
+.module .diagram__zoom:hover { color: var(--accent); }
+
+/* Caption paragraph (italic line) sitting right under a diagram. */
+.module .diagram + p em {
+    display: block;
+    text-align: center;
+    color: var(--fg-3);
+}
+
+/* Drop cap on the opening paragraph after the module title */
+.module h1 + p::first-letter {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 3.8rem;
+    line-height: .8;
+    float: left;
+    padding: 0.3rem 0.55rem 0 0;
+    margin-top: 0.1rem;
+}
+
+/* Opening paragraph sets a lede tone */
+.module h1 + p {
+    font-size: 1.08rem;
+    line-height: 1.7;
+    color: var(--fg-2);
+    min-height: 3.5rem;
+}
+
+/* First paragraph after an h2 gets the italic serif lede treatment —
+   creates a visible tempo shift at every section start */
+.module h2 + p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--fg);
+    margin-bottom: 1.5rem;
+    max-width: 36em;
+}
+
+/* A bold opener at the start of a paragraph reads as a lead-in label */
+.module p > strong:first-child {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* …except when the bolded text is the whole paragraph (list-style key:value).
+   Leave those alone — otherwise Meta-style bullet definitions go all oxblood. */
+.module li > strong:first-child {
+    color: var(--fg);
+}
+
+.module ul, .module ol {
+    margin: 0 0 1.25rem;
+    padding-left: 1.5rem;
+}
+
+.module li { margin: 0.4rem 0; }
+.module li > ul, .module li > ol { margin: 0.4rem 0; }
+.module ul li::marker { color: var(--accent); }
+
+.module a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-soft);
+    transition: border-color 0.15s;
+}
+
+.module a:hover { border-bottom-color: var(--accent); }
+
+/* Headings that are links (included exercises/lectures). */
+.module h1 a, .module h2 a, .module h3 a {
+    color: inherit;
+    border-bottom: 2px solid transparent;
+}
+.module h1 a:hover, .module h2 a:hover, .module h3 a:hover {
+    border-bottom-color: var(--accent);
+}
+
+.module strong { font-weight: 600; color: var(--fg); }
+.module em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.05em;
+    color: var(--accent);
+}
+
+.module code {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--code-bg);
+    color: var(--accent);
+    padding: 0.12em 0.4em;
+    border-radius: 3px;
+}
+
+.module pre {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1.1rem 1.25rem;
+    overflow-x: auto;
+    font-size: 0.88em;
+    line-height: 1.55;
+    margin: 0 0 1.25rem;
+}
+
+.module pre code {
+    background: none;
+    color: var(--fg);
+    padding: 0;
+    border-radius: 0;
+    font-size: 1em;
+}
+
+/* ----------------------------------------------------------------
+   Prompt blocks + copy buttons
+   ----------------------------------------------------------------
+   Author markup:
+     **Prompt** *(Claude Code)*
+
+     ```
+     <prompt content>
+     ```
+   The renderer wraps the label paragraph + the following <pre> in
+   .prompt-block, surfaces destination + optional context as a header
+   chip, and adds a Copy button to the <pre>. Every other <pre> in
+   the document also gets a Copy button (universal affordance). */
+
+.module .prompt-block {
+    margin: 0 0 1.5rem;
+    border: 1px solid var(--line-2);
+    border-radius: 5px;
+    background: var(--bg-2);
+    overflow: hidden;
+}
+
+.module .prompt-block__header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    padding: 0.4rem 0.55rem 0.4rem 0.95rem;
+    background: var(--bg-3);
+    border-bottom: 1px solid var(--line-2);
+    font-size: 0.78rem;
+    line-height: 1.3;
+}
+
+.module .prompt-block__label {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.module .prompt-block__arrow {
+    color: var(--fg-3);
+}
+
+.module .prompt-block__dest {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--fg);
+}
+
+.module .prompt-block__context {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--fg-2);
+    font-size: 0.92em;
+}
+
+.module .prompt-block__context::before {
+    content: "·";
+    margin-right: 0.5rem;
+    color: var(--fg-4);
+}
+
+/* Permission-mode chip — emitted by decoratePrompts() when a prompt's
+   frontmatter declares `permission-mode:`. Sits leftmost in the header so
+   a scanning reader hits "what mode do I need to be in" before reading
+   anything else. Canonical Claude Code tokens per
+   code.claude.com/docs/en/permission-modes: default | acceptEdits | plan
+   | auto | bypassPermissions. Mode-specific modifier classes carry the
+   colour so the chip reads at a glance. */
+.module .prompt-block__mode {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.55rem;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    background: var(--fg-2);
+    color: var(--bg);
+    white-space: nowrap;
+}
+
+.module .prompt-block__mode--plan {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+}
+
+.module .prompt-block__mode--acceptEdits {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+}
+
+.module .prompt-block .prompt-block__pre {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: var(--bg-2);
+}
+
+/* Cut-candidate — a prompt flagged for review by a `{{cut:key|reason}}` marker
+   (sibling of `{{prompt:key}}`). The material is fully retained; the block is
+   dimmed + grayed and wears the ribbon below so the maintainer can eyeball
+   removal candidates before committing a real cut. Reversible: swap the marker
+   back to `{{prompt:key}}` on one line. Hover lifts the veil so the prompt stays
+   readable while judging. */
+.module .prompt-block.cut-candidate {
+    opacity: 0.5;
+    filter: grayscale(0.9);
+    border-style: dashed;
+}
+
+.module .prompt-block.cut-candidate:hover {
+    opacity: 1;
+    filter: none;
+}
+
+/* Muted-danger chip bar, same typographic key as the header chips (uppercase,
+   tracked, small). No --danger token in the palette, so a restrained oxblood-
+   adjacent red that reads as "flagged" without shouting. */
+.module .cut-candidate__ribbon {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.95rem;
+    background: #a3443b;
+    color: var(--bg);
+    border-bottom: 1px solid var(--line-2);
+}
+
+/* Covered-region — a prose span wrapped by `{{covered:slug#anchor}}` …
+   `{{/covered}}` markers (sibling of the cut-candidate treatment, but for
+   passages whose content a new slide-format section now carries). Neutral
+   semantic: dimmed + ribboned so the maintainer can eyeball the redundancy;
+   the passage either gets deleted once the covering slides are perfected, or
+   stays as the depth layer beneath them. Hover lifts the veil. Unscoped —
+   covered regions appear in lectures rendered both inside .module and as
+   standalone sections. */
+.covered-region {
+    opacity: 0.5;
+    filter: grayscale(0.9);
+    border: 1px dashed var(--line-2);
+    padding: 0 1rem 0.25rem;
+    margin: 1rem 0;
+}
+
+.covered-region:hover {
+    opacity: 1;
+    filter: none;
+}
+
+/* Neutral steel chip bar — same typographic key as the cut ribbon, cooler
+   hue: "has a new home", not "flagged for danger". */
+.covered-region__ribbon {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.95rem;
+    margin: 0 -1rem;
+    background: #4a6274;
+    color: var(--bg);
+    border-bottom: 1px solid var(--line-2);
+}
+
+/* Anchored clauses inside a prompt body — planted by injectAnchorSentinels
+   in curriculum.js when an entry declares `anchors:` in its frontmatter, then
+   wrapped at DOM time by convertAnchorSentinels(). Dotted underline in the
+   accent colour so a scanning reader notices the affordance without it
+   pulling focus. Hover raises contrast; the Tufte sidenote panel (Step 3,
+   follow-up) reads the data-move attribute and surfaces the matching
+   prompt-anatomy entry. */
+.module .prompt-block .prompt-anchor {
+    border-bottom: 1.5px dotted var(--accent);
+    cursor: help;
+    transition: border-bottom-color 0.15s ease, background-color 0.15s ease;
+}
+
+.module .prompt-block .prompt-anchor:hover {
+    border-bottom-style: solid;
+    background-color: var(--accent-soft);
+}
+
+/* Anatomy popup card — surfaces the prompt-anatomy.md entry when a student
+   clicks a .prompt-anchor span. Absolute-positioned by attachAnchorPopups()
+   relative to the document, anchored to the clicked span. One popup at a
+   time; click outside or press Esc to close. Body comes from compile-anatomy
+   pre-rendered HTML (window.__ANATOMY[slug].html). */
+.prompt-anatomy-popup {
+    position: absolute;
+    z-index: 1000;
+    width: 380px;
+    max-width: calc(100vw - 40px);
+    background: var(--bg);
+    color: var(--fg);
+    border: 1px solid var(--fg-3);
+    border-radius: 4px;
+    padding: 1rem 1.2rem 1.1rem;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.prompt-anatomy-popup__kicker {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.2rem;
+}
+
+.prompt-anatomy-popup__title {
+    margin: 0 0 0.6rem;
+    font-size: 1.05rem;
+    line-height: 1.3;
+    color: var(--fg);
+}
+
+.prompt-anatomy-popup__body p {
+    margin: 0.5rem 0;
+}
+
+.prompt-anatomy-popup__body p:first-child {
+    margin-top: 0;
+}
+
+.prompt-anatomy-popup__body p:last-child {
+    margin-bottom: 0;
+}
+
+.prompt-anatomy-popup__body code {
+    background: var(--bg-2);
+    padding: 0 0.3em;
+    border-radius: 2px;
+    font-size: 0.88em;
+}
+
+.prompt-anatomy-popup__body em {
+    color: var(--fg-2);
+}
+
+.prompt-anatomy-popup__close {
+    position: absolute;
+    top: 0.35rem;
+    right: 0.55rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    color: var(--fg-3);
+    border-radius: 3px;
+    transition: color 0.12s ease, background 0.12s ease;
+}
+
+.prompt-anatomy-popup__close:hover {
+    color: var(--fg);
+    background: var(--bg-2);
+}
+
+/* Copy button — two flavours.
+   1. In-header (.copy-btn--in-header): mounted into the prompt-block header,
+      pushed to the right edge. Always visible, no overlay. This is the prompt
+      case (the canonical copy affordance for the training).
+   2. Overlay (.copy-btn, default): absolute-positioned in the top-right of a
+      bare <pre>. Used only for standalone code snippets that have no header
+      bar. Hover-emerges so it doesn't compete with code reading. */
+
+.module pre {
+    position: relative;
+}
+
+.module .copy-btn {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--fg-2);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 0.28rem 0.6rem;
+    cursor: pointer;
+    transition: opacity 0.15s ease, color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.module .copy-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.module .copy-btn--copied,
+.module .copy-btn--copied:hover {
+    opacity: 1;
+    color: #fff;
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+/* Overlay flavour on standalone <pre>. */
+.module pre > .copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    opacity: 0.55;
+    z-index: 2;
+}
+
+.module pre:hover > .copy-btn,
+.module pre > .copy-btn:focus-visible {
+    opacity: 1;
+}
+
+/* In-header flavour — pushed to the right edge of the header row. */
+.module .prompt-block__header .copy-btn--in-header {
+    margin-left: auto;
+}
+
+/* Inside warm-paper lecture phases — the lecture bg is var(--bg-3),
+   identical to the default prompt-block header bg. Without an override
+   the header melts into the lecture paper and the top row reads broken.
+   Re-tone three steps: body lightest (--bg), header mid (--bg-2), lecture
+   warmest (--bg-3). Header stays distinct as the darker chip on a lighter
+   prompt card, which itself reads as a card on the lecture warmth. */
+.phase--lecture .prompt-block {
+    background: var(--bg);
+    border-color: var(--line-2);
+}
+
+.phase--lecture .prompt-block__header {
+    background: var(--bg-2);
+}
+
+.phase--lecture .prompt-block .prompt-block__pre {
+    background: var(--bg);
+}
+
+/* Inside ink-dark exercise phases — invert chrome to read on dark bg.
+   Header sits visibly above body (~9% vs ~3% cream tint) so the destination
+   chip and copy button read as a separate row. Border lifted to ink-text
+   alpha so the widget has a real frame, not a 1px shadow. */
+.phase--exercise .prompt-block {
+    background: rgba(244,236,219,.03);
+    border-color: rgba(244,236,219,.18);
+}
+
+.phase--exercise .prompt-block__header {
+    background: rgba(244,236,219,.09);
+    border-bottom-color: rgba(244,236,219,.14);
+}
+
+/* Label drops slightly so the destination ("Claude Code", "Builder Claude")
+   wins the header. Student needs to glance and know where this paste goes. */
+.phase--exercise .prompt-block__label {
+    color: var(--warm);
+    font-size: 0.72rem;
+}
+.phase--exercise .prompt-block__arrow { color: var(--ink-muted); }
+.phase--exercise .prompt-block__dest {
+    color: var(--ink-text);
+    font-size: 0.84rem;
+}
+.phase--exercise .prompt-block__context { color: var(--ink-text-2); }
+.phase--exercise .prompt-block__context::before { color: var(--ink-muted); }
+.phase--exercise .prompt-block .prompt-block__pre {
+    background: rgba(244,236,219,.03);
+}
+
+/* Copy button reads as a button on dark — bright enough plate, real text
+   colour, real border. Was three near-blacks stacked; now it sits forward. */
+.phase--exercise .copy-btn {
+    background: rgba(244,236,219,.10);
+    border-color: rgba(244,236,219,.22);
+    color: var(--ink-text);
+}
+
+.phase--exercise .copy-btn:hover {
+    color: var(--warm);
+    border-color: var(--warm);
+    background: rgba(201,121,66,.12);
+}
+
+.phase--exercise .copy-btn--copied,
+.phase--exercise .copy-btn--copied:hover {
+    background: var(--warm);
+    border-color: var(--warm);
+    color: var(--ink);
+}
+
+@media print {
+    .module .copy-btn { display: none; }
+}
+
+/* ----------------------------------------------------------------
+   Session-boundary widget — the cousin of prompt-block, but louder.
+   ----------------------------------------------------------------
+   Author markup:
+     **Session** *(new, "Module 5 - Hallucination benchmark")*
+
+     Prose body (optionally runtime-forked).
+
+     ```
+     /rename m5-hallucination-benchmark
+     ```
+
+   Renderer (decorateSessions) wraps these three elements into one
+   .session-block. Orange chrome separates it from prompt-block
+   (oxblood) so the visual difference matches the semantic one:
+   prompt = "paste this into Claude," session = "you are now changing
+   which Claude you're talking to." Stand-out colour, full panel,
+   non-skippable. */
+
+.module .session-block {
+    margin: 1.75rem 0 2rem;
+    border: 1px solid var(--warm);
+    border-radius: 5px;
+    background: #faf1e3;
+    overflow: hidden;
+}
+
+.module .session-block__header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    padding: 0.5rem 0.95rem;
+    background: var(--warm);
+    color: #fff;
+    font-size: 0.82rem;
+    line-height: 1.3;
+}
+
+.module .session-block__label {
+    font-family: var(--font-body);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.74rem;
+}
+
+.module .session-block__verb {
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: lowercase;
+    background: rgba(255, 255, 255, 0.18);
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    font-size: 0.74rem;
+    letter-spacing: 0.02em;
+}
+
+.module .session-block__name {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+.module .session-block__name::before {
+    content: "·";
+    margin-right: 0.55rem;
+    opacity: 0.65;
+}
+
+.module .session-block__body {
+    padding: 1.1rem 1.25rem 0.4rem;
+    color: var(--fg);
+}
+
+.module .session-block__body > p:first-child {
+    margin-top: 0;
+}
+
+.module .session-block__body > pre {
+    background: #fff;
+    border-color: #e8d2b1;
+    margin-bottom: 1rem;
+}
+
+.module .session-block__body > pre code {
+    color: var(--fg);
+}
+
+/* Inside the ink-dark exercise phase, invert the session widget too —
+   the amber head still leads, but the panel adapts to the dark band. */
+.phase--exercise .session-block {
+    background: rgba(201, 121, 66, 0.08);
+    border-color: var(--warm);
+    box-shadow: none;
+}
+
+.phase--exercise .session-block__header {
+    background: var(--warm);
+    color: var(--ink);
+}
+
+.phase--exercise .session-block__verb {
+    background: rgba(20, 17, 13, 0.18);
+    color: var(--ink);
+}
+
+.phase--exercise .session-block__name {
+    color: var(--ink);
+}
+
+.phase--exercise .session-block__body {
+    color: var(--ink-text);
+}
+
+.phase--exercise .session-block__body > pre {
+    background: rgba(244, 236, 219, 0.06);
+    border-color: rgba(255, 125, 73, 0.35);
+}
+
+.phase--exercise .session-block__body > pre code {
+    color: var(--ink-text);
+}
+
+@media print {
+    .module .session-block {
+        border-color: #999 !important;
+        box-shadow: none !important;
+        background: #fff !important;
+    }
+    .module .session-block__header {
+        background: #eee !important;
+        color: #000 !important;
+    }
+    .module .session-block__verb { background: #ddd !important; color: #000 !important; }
+    .module .session-block__name { color: #000 !important; }
+}
+
+/* HOX — loud heads-up admonition. Source shape: **HOX** <warning prose>.
+   Hotter than the amber .session-block: reserved for the rare "you are about
+   to make a mistake right HERE" seam (wrong worktree, wrong branch, about to
+   overwrite). Hot signal-orange so it does not read as just another panel. */
+.module .hox-block {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin: 1.25rem 0 1.75rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--hox);
+    border-left: 5px solid var(--hox);
+    border-radius: 5px;
+    background: #fdecdf;
+}
+
+.module .hox-block__badge {
+    flex: none;
+    font-family: var(--font-body);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.72rem;
+    color: #fff;
+    background: var(--hox);
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.module .hox-block__body {
+    color: var(--fg);
+    font-weight: 600;
+}
+
+.module .hox-block__body > p {
+    margin: 0;
+}
+
+/* Dark exercise band (e.g. diagnose-and-resend) — keep the hot badge, tint
+   the panel so it still shouts against the ink background. */
+.phase--exercise .hox-block {
+    background: rgba(232, 89, 12, 0.12);
+    border-color: var(--hox);
+}
+
+.phase--exercise .hox-block__body {
+    color: var(--ink-text);
+}
+
+@media print {
+    .module .hox-block {
+        background: #fff !important;
+        border-color: #999 !important;
+    }
+    .module .hox-block__badge {
+        background: #000 !important;
+        color: #fff !important;
+    }
+}
+
+/* NOTE — calm guidance widget. Source shape: **Note** <guidance prose>.
+   Same construction as .hox-block, calm teal instead of alarm-orange: HOX
+   shouts "mistake right HERE," NOTE says "don't miss this" — a window switch,
+   a where-you-are cue. Louder than a buried sentence, quieter than HOX. */
+.module .note-block {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin: 1.25rem 0 1.75rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--note);
+    border-left: 5px solid var(--note);
+    border-radius: 5px;
+    background: #e4efee;
+}
+
+.module .note-block__badge {
+    flex: none;
+    font-family: var(--font-body);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.72rem;
+    color: #fff;
+    background: var(--note);
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.module .note-block__body {
+    color: var(--fg);
+    font-weight: 600;
+}
+
+.module .note-block__body > p {
+    margin: 0;
+}
+
+/* Dark exercise band — tint the panel so it still reads against the ink. */
+.phase--exercise .note-block {
+    background: rgba(47, 107, 107, 0.16);
+    border-color: var(--note);
+}
+
+.phase--exercise .note-block__body {
+    color: var(--ink-text);
+}
+
+@media print {
+    .module .note-block {
+        background: #fff !important;
+        border-color: #999 !important;
+    }
+    .module .note-block__badge {
+        background: #000 !important;
+        color: #fff !important;
+    }
+}
+
+.module blockquote {
+    border-left: 3px solid var(--accent);
+    margin: 2.5rem 0;
+    padding: 0.5rem 0 0.5rem 1.75rem;
+    color: var(--fg);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.35rem;
+    line-height: 1.55;
+}
+
+.module blockquote p { margin: 0 0 0.5rem 0; }
+.module blockquote p:last-child { margin-bottom: 0; }
+
+/* Attribution (last paragraph with em dash convention) */
+.module blockquote p + p:last-child {
+    margin-top: 0.75rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-style: normal;
+    color: var(--fg-3);
+}
+
+/* Markdown `---` rules become pure whitespace inside the module body —
+   the section-mark above each h2 already does the visual separation work,
+   and a hairline rule on top of that reads as ceremony. */
+.module hr {
+    border: none;
+    margin: 2.5rem 0;
+    height: 0;
+}
+
+.module table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 0 1.25rem;
+    font-size: 0.95em;
+}
+
+.module th, .module td {
+    border: 1px solid var(--line);
+    padding: 0.55rem 0.8rem;
+    text-align: left;
+    vertical-align: top;
+}
+
+.module th {
+    background: var(--bg-2);
+    font-weight: 600;
+    color: var(--fg);
+}
+
+/* ── Index page ── */
+
+.module .lede {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: var(--fg-2);
+    margin: 0 0 3.5rem;
+    text-wrap: pretty;
+    max-width: 34em;
+}
+
+.index-heading {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.05rem;
+    letter-spacing: .01em;
+    text-transform: none;
+    color: var(--accent);
+    margin: 3.5rem 0 1rem;
+    padding: 0;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.index-heading::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: var(--warm);
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.index-heading::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+
+.module-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ── Training hero (index page only) ── */
+
+.training-hero {
+    margin-bottom: 4rem;
+}
+
+.training-eyebrow {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.training-eyebrow::before {
+    content: "";
+    width: 2.25rem;
+    height: 1px;
+    background: var(--warm);
+}
+
+.training-hero .lede .accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--warm) 50%, var(--arctic) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    padding-right: 0.08em;
+    margin-right: -0.08em;
+}
+
+.training-hero h1 {
+    font-size: clamp(3rem, 10vw, 6.5rem);
+    line-height: .9;
+    margin: 0 0 1.75rem;
+    letter-spacing: -.035em;
+}
+
+.training-hero h1::after { display: none; }
+
+.training-hero h1 .sep {
+    color: var(--accent);
+    font-weight: 400;
+    font-family: var(--font-serif);
+    font-style: italic;
+}
+
+.training-hero .lede {
+    margin: 0;
+    max-width: 32em;
+}
+
+/* ── Module cards (index — primary modules + prework) ── */
+
+.module-list.index-modules,
+.module-list.index-prework {
+    display: grid;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+/* Single-column editorial rows — each row gets the big-idea italic line
+   as the main scan target, not a 2-up grid where titles dominate. */
+.module-list.index-modules { grid-template-columns: 1fr; }
+
+.module-list.index-modules > li,
+.module-list.index-prework > li {
+    margin: 0;
+    border: none;
+    background: var(--bg-2);
+    position: relative;
+    transition: background .2s;
+}
+
+.module-list.index-modules > li:hover,
+.module-list.index-prework > li:hover {
+    background: #e0d5b8;
+}
+
+.module-list.index-modules > li::before,
+.module-list.index-prework > li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s cubic-bezier(.2,.7,.2,1);
+}
+
+.module-list.index-modules > li:hover::before,
+.module-list.index-prework > li:hover::before {
+    transform: scaleX(1);
+}
+
+.module-list.index-modules > li > a,
+.module-list.index-prework > li > a {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    column-gap: 1.75rem;
+    align-items: start;
+    padding: 1.85rem 2rem;
+    color: var(--fg);
+    text-decoration: none;
+    border-bottom: none;
+}
+
+.module-list.index-modules .module-n,
+.module-list.index-prework .module-n {
+    font-variant-numeric: tabular-nums;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 3rem;
+    letter-spacing: -.02em;
+    line-height: .85;
+    align-self: start;
+    margin-top: 4px;
+}
+
+.module-list.index-modules .module-body,
+.module-list.index-prework .module-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    min-width: 0;
+}
+
+.module-list.index-modules .module-title,
+.module-list.index-prework .module-title {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 1.45rem;
+    letter-spacing: -.015em;
+    line-height: 1.15;
+    color: var(--fg);
+    text-wrap: balance;
+}
+
+.module-list.index-modules .module-big,
+.module-list.index-prework .module-big {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: var(--fg-2);
+    text-wrap: pretty;
+    max-width: 38em;
+}
+
+.module-list.index-modules .module-big:empty,
+.module-list.index-prework .module-big:empty {
+    min-height: 1em;
+}
+
+.module-list.index-modules .module-arrow,
+.module-list.index-prework .module-arrow {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--fg-4);
+    font-size: 1.2rem;
+    align-self: start;
+    margin-top: 6px;
+    transition: color .2s, transform .25s cubic-bezier(.2,.7,.2,1);
+}
+
+.module-list.index-modules > li:hover .module-arrow,
+.module-list.index-prework > li:hover .module-arrow {
+    color: var(--accent);
+    transform: translateX(4px);
+}
+
+/* ── Supplementary & reference rows (quieter) ── */
+
+.index-supplementaries,
+.index-references {
+    display: grid;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+}
+
+.index-supplementaries > li,
+.index-references > li {
+    margin: 0;
+    border: none;
+    background: var(--bg-2);
+    transition: background .2s;
+}
+
+.index-supplementaries > li:hover,
+.index-references > li:hover { background: #e0d5b8; }
+
+.index-supplementaries > li > a,
+.index-references > li > a {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.25rem 1.75rem;
+    color: var(--fg);
+    text-decoration: none;
+    border-bottom: none;
+}
+
+.supp-kind {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 0.9rem;
+    letter-spacing: 0;
+    flex: 0 0 6rem;
+}
+
+.supp-title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.05rem;
+    letter-spacing: -.005em;
+    color: var(--fg);
+    flex: 1;
+}
+
+.index-supplementaries .module-arrow,
+.index-references .module-arrow {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--fg-4);
+    font-size: 1.1rem;
+    margin-left: auto;
+    transition: color .2s, transform .25s cubic-bezier(.2,.7,.2,1);
+}
+
+.index-supplementaries > li:hover .module-arrow,
+.index-references > li:hover .module-arrow {
+    color: var(--accent);
+    transform: translateX(4px);
+}
+
+/* ============================================================================
+   Phase blocks — lecture vs. exercise get distinct backgrounds.
+   Creates scroll rhythm inside a module without touching markdown content.
+   ============================================================================ */
+
+.phase {
+    /* Full-bleed: escape the 40em reading column, extend to the viewport edges.
+       Reading width inside is preserved via padding that centers to a 40em column. */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 4.5rem max(1.5rem, calc((100vw - 40em) / 2));
+    margin-top: 4.5rem;
+    margin-bottom: 4.5rem;
+    position: relative;
+    border: none;
+    border-radius: 0;
+}
+
+.phase-kicker {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.15rem;
+    letter-spacing: .02em;
+    text-transform: lowercase;
+    margin: 0 0 2.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.phase-kicker::before {
+    content: "";
+    width: 2.75rem;
+    height: 2px;
+    background: currentColor;
+    display: inline-block;
+}
+
+/* ── Lecture: warmer paper tone, subtle shift ── */
+.phase--lecture {
+    background: var(--bg-3);
+    border-top: 1px solid var(--line-2);
+    border-bottom: 1px solid var(--line-2);
+}
+.phase--lecture .phase-kicker { color: var(--warm); }
+
+/* Lecture h1 (the linkified title) sits tighter inside the panel */
+.phase--lecture > h1:first-of-type,
+.phase--lecture > h1 { margin-top: 0.5rem; }
+
+/* ── Exercise: black ink inset — primary rhythm break ── */
+.phase--exercise {
+    background: var(--ink);
+    color: var(--ink-text-2);
+    border-top: 1px solid var(--ink-line);
+    border-bottom: 1px solid var(--ink-line);
+}
+
+.phase--exercise .phase-kicker { color: var(--warm); }
+
+.phase--exercise h1,
+.phase--exercise h2,
+.phase--exercise h3 { color: var(--ink-text); }
+
+.phase--exercise h3 {
+    color: var(--warm);
+}
+
+.phase--exercise h2 {
+    border-top: none;
+}
+
+.phase--exercise h2::before { background: var(--warm); }
+
+.phase--exercise h2 + p { color: var(--ink-text); }
+
+/* Inside a phase block (embedded OR standalone), the H1 is a section title,
+   not a page lede. Strip the drop-cap and lede sizing that .module h1 + p
+   would otherwise apply — the phase-kicker already announces the section. */
+.phase h1 + p::first-letter { all: unset; }
+.phase h1 + p {
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    min-height: 0;
+}
+.phase--exercise h1 + p { color: var(--ink-text-2); }
+
+.phase--exercise p,
+.phase--exercise li { color: var(--ink-text-2); }
+
+.phase--exercise strong { color: var(--ink-text); }
+
+/* Lead-in bold openers ("What you do:", "What happens:", "Time:") use the
+   oxblood accent on cream. On ink that reads as near-black — invisible.
+   Swap to the warm amber, the dark-mode accent equivalent. */
+.phase--exercise p > strong:first-child { color: var(--warm); }
+
+/* List-item lead-ins ("Sharpened verifier.", "Meta:") follow the cream rule
+   that keeps them as neutral text colour rather than amber — otherwise
+   key:value bullets all pop. On ink, neutral text is --ink-text. */
+.phase--exercise li > strong:first-child { color: var(--ink-text); }
+
+/* Body em on dark stays light cream — italic + serif is the emphasis cue;
+   amber-on-ink reads as link/highlight and floods paragraphs. Heading ems
+   keep their gradient via the more-specific h1/h2 em rules below. */
+.phase--exercise em { color: var(--ink-text); }
+
+/* Gradient-accented em inside the black-ink exercise headings.
+   Picks up the Bosser orange → Arctic blue shift from the ai-training hero. */
+.phase--exercise h1 em,
+.phase--exercise h2 em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    background: linear-gradient(90deg, #ff6b35 0%, #f4ecdb 50%, #18BFFF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    padding-right: 0.08em;
+    margin-right: -0.08em;
+}
+
+.phase--exercise a {
+    color: var(--warm);
+    border-bottom-color: rgba(201,121,66,.25);
+}
+.phase--exercise a:hover { border-bottom-color: var(--warm); }
+.phase--exercise h1 a,
+.phase--exercise h2 a,
+.phase--exercise h3 a { color: inherit; }
+.phase--exercise h1 a:hover,
+.phase--exercise h2 a:hover,
+.phase--exercise h3 a:hover { border-bottom-color: var(--warm); }
+
+.phase--exercise blockquote {
+    border-left-color: var(--warm);
+    color: var(--ink-text);
+}
+.phase--exercise blockquote p + p:last-child { color: var(--ink-muted); }
+
+.phase--exercise code {
+    background: rgba(244,236,219,.08);
+    color: var(--warm);
+}
+
+.phase--exercise pre {
+    background: rgba(244,236,219,.04);
+    border-color: var(--ink-line);
+}
+.phase--exercise pre code { background: none; color: var(--ink-text); }
+
+.phase--exercise hr { border-top-color: var(--ink-line); }
+
+.phase--exercise ul li::marker { color: var(--warm); }
+
+.phase--exercise th {
+    background: rgba(244,236,219,.06);
+    color: var(--ink-text);
+    border-color: var(--ink-line);
+}
+.phase--exercise td { border-color: var(--ink-line); color: var(--ink-text-2); }
+
+@media (max-width: 640px) {
+    main { padding: 3rem 1.25rem 4rem; }
+
+    /* Hero compresses hard on mobile */
+    .training-hero { margin-bottom: 2.5rem; }
+    .training-hero h1 { font-size: clamp(2.5rem, 13vw, 4rem); line-height: .92; margin-bottom: 1.25rem; }
+    .training-hero .lede { font-size: 1.15rem; }
+
+    /* Module body headings */
+    .module h1 { font-size: clamp(2rem, 9vw, 3rem); margin-bottom: 1.5rem; }
+    .module h1::after { margin-top: 1.25rem; }
+    .module h2 { font-size: 1.45rem; margin-top: 3rem; padding-top: 1.5rem; }
+    .module h1 + p::first-letter { font-size: 2.8rem; padding-right: 0.4rem; }
+    .module h2 + p { font-size: 1.1rem; }
+
+    /* Phase bands */
+    .phase {
+        padding-top: 2.75rem;
+        padding-bottom: 2.75rem;
+        margin-top: 2.75rem;
+        margin-bottom: 2.75rem;
+    }
+    .phase-kicker { font-size: 0.85rem; }
+
+    /* Index cards */
+    .module-list.index-modules { grid-template-columns: 1fr; }
+    .module-list.index-modules > li > a,
+    .module-list.index-prework > li > a {
+        padding: 1.5rem;
+        min-height: auto;
+    }
+    .module-list.index-modules .module-n,
+    .module-list.index-prework .module-n { font-size: 2.5rem; }
+
+    /* Supplementary / reference rows: stack kind above title on tiny screens */
+    .index-supplementaries > li > a,
+    .index-references > li > a {
+        padding: 1rem 1.25rem;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    .supp-kind { flex: 0 0 auto; }
+    .supp-title { flex: 1 1 100%; font-size: 1rem; }
+
+    /* Header */
+    .curriculum-header { padding: 1rem 1.25rem; }
+    .curriculum-home { font-size: 1rem; }
+
+    /* Bottom page nav — stack vertically on very narrow screens */
+    .page-nav { grid-template-columns: 1fr; gap: 0.5rem; text-align: left; }
+    .page-nav .nav-prev,
+    .page-nav .nav-next,
+    .page-nav .nav-home { justify-self: start; text-align: left; }
+}
+
+/* ── Page nav (bottom of module pages) ── */
+
+.page-nav {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.95rem;
+}
+
+.page-nav a {
+    color: var(--fg-3);
+    text-decoration: none;
+    border-bottom: none;
+    padding: 0.5rem 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    transition: color .15s;
+}
+
+.page-nav a:hover { color: var(--accent); }
+
+.page-nav .nav-prev,
+.page-nav .nav-next {
+    display: inline-grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    column-gap: 0.7rem;
+    max-width: 24em;
+}
+.page-nav .nav-next { grid-template-columns: 1fr auto; }
+.page-nav .nav-prev { justify-self: start; }
+.page-nav .nav-next { justify-self: end; text-align: right; }
+.page-nav .nav-arrow {
+    font-style: normal;
+    color: var(--fg-4);
+    font-size: 1.2rem;
+    line-height: 1.3;
+    transition: color .15s, transform .25s cubic-bezier(.2,.7,.2,1);
+}
+.page-nav .nav-prev:hover .nav-arrow { color: var(--accent); transform: translateX(-3px); }
+.page-nav .nav-next:hover .nav-arrow { color: var(--accent); transform: translateX(3px); }
+.page-nav .nav-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+}
+.page-nav .nav-title {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-weight: 500;
+    color: var(--fg);
+    font-size: 0.98rem;
+    line-height: 1.3;
+}
+.page-nav .nav-prev:hover .nav-title,
+.page-nav .nav-next:hover .nav-title { color: var(--accent); }
+.page-nav .nav-big {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--fg-3);
+    font-size: 0.92rem;
+    line-height: 1.4;
+    text-wrap: pretty;
+}
+.page-nav .nav-home {
+    justify-self: center;
+    font-family: var(--font-body);
+    font-style: normal;
+    font-weight: 500;
+    color: var(--fg);
+    letter-spacing: .01em;
+}
+.page-nav .nav-empty { /* keeps the grid slot */ }
+
+/* ============================================================================
+   Reading progress — thin oxblood hairline at very top of viewport, fills
+   left-to-right as the student scrolls. Cheap depth signal, sits over the
+   sticky breadcrumb without competing with it.
+   ============================================================================ */
+
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: var(--accent);
+    z-index: 100;
+    pointer-events: none;
+    transition: width .08s linear;
+}
+@media print { .reading-progress { display: none !important; } }
+
+/* ============================================================================
+   Top breadcrumb — appears on every interior page (training index, module,
+   standalone exercise/lecture). Lets the student pop up one level without
+   scrolling to the bottom-of-page nav.
+   ============================================================================ */
+
+.top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    /* Breaks out of the 40em column to span the reading band edge-to-edge —
+       the cream backdrop covers content scrolling under it instead of leaving
+       a strip on either side. */
+    margin: -3rem -2rem 2.5rem;
+    padding: 0.85rem 2rem;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    background: rgba(239,230,210,0.92);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+}
+
+.top-nav-back {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--fg-3);
+    text-decoration: none;
+    border-bottom: none;
+    transition: color .15s, transform .25s cubic-bezier(.2,.7,.2,1);
+    display: inline-block;
+}
+
+.top-nav-back:hover {
+    color: var(--accent);
+    transform: translateX(-3px);
+}
+
+/* ============================================================================
+   Module hero — promotes the H1 + "## Big Idea" paragraph into a single
+   editorial unit at the top of every module page. Module number sits to the
+   left like a chapter number; title sets weight; italic big-idea line frames
+   what the student is about to do.
+   ============================================================================ */
+
+.module-hero {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1.75rem;
+    align-items: baseline;
+    margin: 0 0 3rem;
+}
+
+.module-hero-num {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 2.4rem;
+    letter-spacing: -.02em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    align-self: start;
+    padding-top: 0.75rem;
+}
+
+.module .module-hero-title {
+    grid-column: 2;
+    margin: 0;
+}
+
+.module .module-hero-title::after { display: none; }
+
+.module-hero-big {
+    grid-column: 2;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.45;
+    color: var(--fg-2);
+    margin: 1.25rem 0 0;
+    max-width: 32em;
+    text-wrap: pretty;
+}
+
+.module-hero-big em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+/* When the hero owns the title, the drop-cap on the next paragraph would
+   collide with the italic big-idea line. Suppress it — the hero is the lede. */
+.module-hero + p::first-letter { all: unset; }
+.module-hero + p {
+    font-size: 1.05rem;
+    color: var(--fg-2);
+}
+
+@media (max-width: 640px) {
+    .module-hero { grid-template-columns: 1fr; column-gap: 0; row-gap: 0.5rem; margin-bottom: 2.25rem; }
+    .module-hero-num { padding-top: 0; font-size: 1.85rem; }
+    .module .module-hero-title { grid-column: 1; }
+    .module-hero-big { grid-column: 1; font-size: 1.2rem; margin-top: 0.75rem; }
+}
+
+/* ============================================================================
+   Print styles — unchanged spirit, adapted to the editorial palette.
+   ============================================================================ */
+
+@page { margin: 1in 0.75in; }
+
+@media print {
+    body {
+        font-size: 11pt;
+        line-height: 1.55;
+        background: #fff;
+        color: #000;
+    }
+
+    .curriculum-header { display: none !important; }
+    .curriculum-footer { display: none !important; }
+    .page-nav { display: none !important; }
+    .top-nav { display: none !important; }
+
+    /* Module hero collapses to a clean chapter header on paper. */
+    .module-hero { display: block; margin-bottom: 1rem; }
+    .module-hero-num {
+        font-size: 11pt; color: #555; margin-bottom: 0.25rem; padding-top: 0;
+    }
+    .module-hero-big { font-size: 12pt; color: #333; margin-top: 0.5rem; max-width: none; }
+
+    main { padding: 0; display: block; }
+    .module { max-width: none; }
+
+    p { orphans: 3; widows: 3; }
+    h1, h2, h3 { page-break-after: avoid; color: #000; }
+    .module h1 { page-break-before: always; margin-top: 0; }
+    .module h1:first-of-type { page-break-before: avoid; }
+
+    li, blockquote, pre, table, tr { page-break-inside: avoid; }
+    h2 { page-break-before: auto; }
+
+    .module em { color: #000; font-family: Georgia, serif; }
+
+    /* Reset full-bleed phase bands for print — viewport units misbehave on paper.
+       Keep phase hierarchy via a subtle rule + italic kicker instead of a tint band. */
+    html, body { overflow-x: visible; }
+    .phase {
+        width: auto !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding: 1rem 0;
+        background: #fff !important;
+        color: #000 !important;
+        border: none !important;
+        border-top: 1px solid #bbb !important;
+        border-bottom: 1px solid #bbb !important;
+    }
+    .phase--exercise *,
+    .phase--lecture * { color: #000 !important; }
+    .phase--exercise h1 em,
+    .phase--exercise h2 em {
+        background: none !important;
+        -webkit-text-fill-color: #000 !important;
+        color: #000 !important;
+        font-family: Georgia, serif;
+    }
+    .phase-kicker { color: #555 !important; border: none; }
+    .phase--exercise pre,
+    .phase--exercise code { background: #f4f1ec !important; color: #000 !important; }
+
+    a { text-decoration: none; color: #000; border-bottom: none; }
+    .module a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.85em;
+        color: #555;
+        word-break: break-all;
+    }
+
+    .module::after {
+        content: "bosser.consulting — Agents 101";
+        display: block;
+        text-align: center;
+        margin-top: 3rem;
+        font-size: 0.8em;
+        color: #999;
+    }
+
+    pre { white-space: pre-wrap; word-wrap: break-word; background: #f4f1ec; border: 1px solid #ddd; }
+    a, a:visited { color: #000; }
+}
+
+/* ---------------------------------------------------------------------------
+   Workbook (single-page printable build) — used by scripts/build-workbook.js.
+   Adds cover + TOC chrome and print-specific page breaks. SPA pages don't
+   render these classes so nothing here affects the live site.
+--------------------------------------------------------------------------- */
+
+/* SPA's main is flex-row with justify-center (one .module per page).
+   Workbook stacks N modules vertically; flip the layout. */
+body.workbook main {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 4rem 1.5rem 6rem;
+}
+body.workbook .workbook-cover,
+body.workbook .workbook-toc {
+    max-width: 40em;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.workbook-cover {
+    text-align: center;
+    padding: 5rem 0 3rem;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 3rem;
+}
+.workbook-cover .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    margin: 0 0 0.5rem;
+}
+.workbook-cover h1.cover-title {
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-weight: 200;
+    font-size: 3.5rem;
+    margin: 0.5rem 0 1rem;
+    letter-spacing: -0.02em;
+}
+.workbook-cover .lede {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--ink-muted);
+    margin: 0;
+}
+
+.workbook-toc {
+    margin: 0 0 4rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+}
+.workbook-toc h2 {
+    margin: 0 0 1rem;
+    border: none;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+}
+.workbook-toc ol {
+    list-style: decimal;
+    padding-left: 2em;
+    margin: 0;
+}
+.workbook-toc li {
+    margin: 0.4em 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body.workbook main > section.module {
+    margin-top: 9.25rem;
+    padding-top: 0;
+}
+
+body.workbook main > section.module + section.module::before {
+    content: "";
+    display: block;
+    width: 100vw;
+    height: 8rem;
+    margin: 0 calc(50% - 50vw) 5rem;
+    background:
+        linear-gradient(90deg, rgba(148,63,47,.2), transparent 38%, rgba(201,121,66,.16)),
+        var(--ink);
+    border-top: 1px solid var(--ink-line);
+    border-bottom: 1px solid var(--ink-line);
+}
+
+body.workbook main > section.module > .module-hero {
+    width: min(100%, 52rem);
+    margin: 0 auto 4.75rem;
+    padding: 5.25rem 1.5rem 4.25rem;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    background:
+        linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.18)),
+        var(--paper);
+}
+
+body.workbook main > section.module > .module-hero .module-hero-num {
+    padding-top: 0.5rem;
+}
+
+body.workbook main > section.module > .module-hero .module-hero-big {
+    max-width: 34em;
+}
+
+body.workbook .phase {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+    padding-top: 5.5rem;
+    padding-bottom: 5.5rem;
+}
+
+@media print {
+    .workbook-cover { page-break-after: always; }
+    .workbook-toc { page-break-after: always; }
+    .workbook-topnav { display: none !important; }
+    .reading-progress { display: none !important; }
+    body.workbook main { gap: 0; padding: 0; }
+    body.workbook main > section.module {
+        margin-top: 0;
+        padding-top: 0;
+    }
+    body.workbook main > section.module + section.module {
+        break-before: page;
+        page-break-before: always;
+    }
+    body.workbook main > section.module + section.module::before {
+        display: none;
+    }
+    body.workbook main > section.module > .module-hero {
+        width: auto;
+        margin: 0 0 1rem;
+        padding: 0 0 0.5rem;
+        border-top: 0;
+        border-bottom: 1px solid #ddd;
+        background: transparent;
+        break-after: avoid;
+        page-break-after: avoid;
+    }
+    body.workbook .phase {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+}
+
+/* Sticky top nav: training name on the left, module chips scrollable on the right.
+   Active module gets accent fill via JS-set .is-active. */
+.workbook-topnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.6rem 1.5rem;
+    background: rgba(31, 26, 19, 0.96); /* matches --fg ink, slight opacity */
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    color: var(--ink-text);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.workbook-topnav__home {
+    color: var(--ink-text);
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    border: none;
+}
+.workbook-topnav__home:hover { color: var(--warm); }
+.workbook-topnav__modules {
+    display: flex;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex: 1 1 auto;
+}
+.workbook-topnav__modules::-webkit-scrollbar { display: none; }
+.workbook-topnav__modules li { margin: 0; }
+.workbook-topnav__modules a {
+    display: inline-block;
+    padding: 0.35rem 0.7rem;
+    border-radius: 4px;
+    color: rgba(244, 236, 219, 0.7);
+    text-decoration: none;
+    border: none;
+    white-space: nowrap;
+    font-size: 0.8rem;
+    transition: background 0.15s, color 0.15s;
+}
+.workbook-topnav__modules a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--ink-text);
+}
+.workbook-topnav__modules a.is-active {
+    background: var(--accent);
+    color: var(--ink-text);
+}
+
+/* Body padding-top to clear the fixed nav */
+body.workbook { padding-top: 3rem; }
+
+/* Mobile: stack the nav modules below the home, smaller chips */
+@media (max-width: 720px) {
+    .workbook-topnav { padding: 0.5rem 1rem; gap: 0.8rem; flex-wrap: wrap; }
+    .workbook-topnav__home { font-size: 0.8rem; }
+    .workbook-topnav__modules a { padding: 0.25rem 0.5rem; font-size: 0.75rem; }
+}
+
+.module { max-width: 56em; }</style>
+</head>
+<body class="runtime-cli workbook">
+<main>
+
+<header class="workbook-cover" id="top">
+  <p class="eyebrow">acme workbook</p>
+  <h1 class="cover-title">Trainer delivery guide</h1>
+</header>
+
+<section class="module" id="trainer-guide">
+<h1 id="ae101-trainer-guide">AE101 Trainer Guide</h1>
+<p><strong>What this file is.</strong> Delivery prep for Agentic Engineering 101. Read before your first cohort, then re-skim the relevant module before each session. This is for what happens in the room; authoring rules live in <code>memory/check_*.md</code> and <code>.claude/skills/content-creation/SKILL.md</code>.</p>
+<p>AE101 is for software engineer ICs who already use or have seen Claude Code. Do not teach Claude Code from zero. The job is to turn uneven self-taught usage into an engineering loop that compounds: run the work, read what happened, encode the lesson into repo memory, skills, verifiers, and team kit.</p>
+<p><strong>Per-module glance.</strong> Open the <a href="trainer-modules.html" target="_blank" rel="noopener">module-by-module one-pager ↗</a> in a separate tab — slot, flow, learning goals, exercise goals, and trainer cues for M1–M6. Keep it open alongside this file during delivery.</p>
+<h2 id="operating-contract">Operating Contract</h2>
+<p>You project the workbook page. There are no slides. You demo each exercise prompt slowly on your own Claude Code while the room copy-pastes into theirs. You honor the conversation pauses in the exercise body. When the agent runs, you fill the air with dry-run evidence, tool tips you actually use, or why this module is shaped the way it is.</p>
+<p>Your screen is shared most of the session. There is no private trainer pane. Read maintainer blocks during prep only, never while screen-sharing. If a cue is missing from student-visible prose, flag it after the session rather than toggling to a hidden source file.</p>
+<p>Every exercise is follow-along. The time budget is <code>max(trainer, student)</code>, not trainer time plus student time. You paste and narrate; students paste and run concurrently.</p>
+<p>In cohort delivery, you carry the push-backs.</p>
+<h2 id="delivery-architecture">Delivery Architecture</h2>
+<p>Canonical contract lives in <a href="training-architecture.md">training-architecture.md</a>, read it once before your first cohort. Summary for delivery prep:</p>
+<p>AE101 uses a content folder plus the student&#39;s real repo. The content folder is reference material. Durable work lands in the repo or in the student&#39;s runtime-owned agent materials. There is no training-directory state to preserve between modules. If a student asks where the module folder is, they are importing Agents 101 habits.</p>
+<p>AE101 ships today on Claude Code (CLI + Desktop). Cowork is not a supported runtime. Keep the vocabulary clean: <code>subagent</code>, CWD, slash commands, plan mode, connectors, skills. If a student uses another agentic coding tool and it works for the exercise, it works; do not turn that into tool policing. The supported delivery path is still Claude Code. Gemini CLI is the planned alternate runtime, see <a href="training-architecture.md">training-architecture.md §Future TODO</a>; not yet active for delivery.</p>
+<p>AE101 usually runs weekly. At the start of every non-first session, name last week&#39;s state and the artifact the module expects. The module and exercise files are the source of truth for exact handoffs. If state is messy, do not moralize. The artifact is whatever exists; missing state is data the training can read.</p>
+<p><strong>FYI: <code>observations/</code> is a convention, not a Claude Code primitive.</strong> Students author a three-block knowledge folder at <code>observations/</code> in their repo (introduced at M4). It is not auto-loaded; the agent reads it when a prompt names the path, the same way it reads ADRs. Distinct from Claude Code&#39;s auto-memory at <code>~/.claude/projects/&lt;project&gt;/memory/</code> (written by the agent for its own recall, surfaced via <code>/memory</code>), which AE101 deliberately leaves out: compounding means the student steers what gets remembered, not an opaque system-written store.</p>
+<p><strong>If the lecture&#39;s &quot;memory&quot; framing triggers a student.</strong> Some engineers react to the word: opaque, agentic, untrustworthy storage. Usually they&#39;re reacting to Claude Code&#39;s auto-memory (the <code>/memory</code> one), which has invited criticism for those exact reasons. What the student authored here is <code>observations/</code>: files they wrote, gitignored, prompted-read. Acknowledge the criticism (it&#39;s legitimate against auto-memory), point at the distinction, and don&#39;t argue the trigger; offer the alternate framing.</p>
+<h2 id="two-day-cohort-schedule">Two-Day Cohort Schedule</h2>
+<p>Default rhythm for a two-day Nordic cohort: 08:30 start, 1h15 lunch, 20-min breaks. Adjust to your sponsor&#39;s cadence. The architectural commitments are: M1–M3 on Day 1, M4–M6 on Day 2; lunch between M5 and M6 on Day 2 so both async runs have time to produce something M6 can read.</p>
+<h3 id="day-1-m1-m2-m3">Day 1, M1, M2, M3</h3>
+<p>Lunch at 12:00 sharp lands mid-M2, between Exercise Phase 4 (Second-pass read) and Phase 5 (Stop. See the design pattern). The pause IS Phase 5&#39;s &quot;stop.&quot; Post-lunch the room returns to name the pattern.</p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Block</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>08:30 – 10:30</td>
+<td>M1 (2h)</td>
+</tr>
+<tr>
+<td>10:30 – 10:50</td>
+<td>Break (20 min)</td>
+</tr>
+<tr>
+<td>10:50 – 12:00</td>
+<td>M2 part 1: Connections + Lecture + Exercise Phases 1–4 (1h10)</td>
+</tr>
+<tr>
+<td>12:00 – 13:15</td>
+<td>Lunch (1h15)</td>
+</tr>
+<tr>
+<td>13:15 – 13:45</td>
+<td>M2 part 2: Exercise Phase 5 + Debrief + Bridge (30 min)</td>
+</tr>
+<tr>
+<td>13:45 – 14:05</td>
+<td>Break (20 min)</td>
+</tr>
+<tr>
+<td>14:05 – 15:55</td>
+<td>M3 (1h50)</td>
+</tr>
+<tr>
+<td>15:55 – 16:10</td>
+<td>Closing Day 1 (15 min)</td>
+</tr>
+</tbody></table>
+<p>Day total ~7h40.</p>
+<p><strong>M3 closes with the M4 task-pick homework.</strong> The &quot;Bring to Module 4&quot; section instructs students to scope the task overnight. M4 Phase 1 then becomes a 2-minute confirm instead of a 10-minute scope. That reclaimed time is what makes M4 fit in 90 minutes on Day 2.</p>
+<h3 id="day-2-m4-m5-m6">Day 2, M4, M5, M6</h3>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Block</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>08:30 – 10:00</td>
+<td>M4 (1h30, compressed from 1h45)</td>
+</tr>
+<tr>
+<td>10:00 – 10:20</td>
+<td>Break (20 min)</td>
+</tr>
+<tr>
+<td>10:20 – 12:20</td>
+<td>M5 (2h, 15-min cushion over budget)</td>
+</tr>
+<tr>
+<td>12:20 – 13:35</td>
+<td>Lunch (1h15)</td>
+</tr>
+<tr>
+<td>13:35 – 13:50</td>
+<td>Re-entry (15 min)</td>
+</tr>
+<tr>
+<td>13:50 – 15:35</td>
+<td>M6 (1h45)</td>
+</tr>
+<tr>
+<td>15:35 – 15:50</td>
+<td>Closing Day 2 (15 min)</td>
+</tr>
+</tbody></table>
+<p>Day total ~7h20.</p>
+<p><strong>M4 compression specifics.</strong> Drop Connections from 10 to 5 (cohort is warmed up from Day 1); cut Bridge (the 20-min break absorbs the transition); compress the Phase 2→3 time-check banter to ~5 minutes if the slot runs tight. Phase 1 task-pick is a 2-minute confirm because the task came in as homework.</p>
+<p><strong>M4 closing lecture, company memory (<a href="./#lectures-will-company-memory-emerge">Will company memory emerge?</a>).</strong> Fires after the send-off, while the agent runs, the reflective coda over the launched run. It does NOT resolve the run (that stays open for M5), so the M4 to M5 cliffhanger holds. It opens on the naming terrain (memory / context / rules) and then the company-layer question, both left unsettled. Your move: lay out how the terms fit together (context = the live window that empties at session end; memory = what persists; rules or files = what some practitioners call it instead) and run the disagreement, landing nothing. Expect the &quot;memory is overrated, we should have a company brain&quot; objection here; this is where it lands. The company layer is a real direction with the shape still unsolved. Run it as an open question, not a settled answer.</p>
+<p><strong>M5 cushion.</strong> The 15 min over budget goes to the worktree setup demo (real engineering call, students often fumble) and the closing lecture (Ronacher&#39;s three-pattern earned from felt evidence, the lecture IS the lesson; don&#39;t squeeze it).</p>
+<p><strong>Re-entry nudge.</strong> M5&#39;s packaged re-send fires at M5 close (~12:20) and runs through lunch (~75 min by re-entry). The 15-min re-entry window is for: nudging the agent if it stalled (the dark-humor &quot;Continue&quot; prompt from M4 still works), settling into email or scrollback reading, and letting the run proceed a few more minutes before M6 reads it. After the nudge, leave the M5 session running if that is the right call and open M6 in a fresh Claude Code session at the same worktree path. M6 starts by reading; before it writes, students choose whether to wait, stop M5, or accept the partial run as the artefact.</p>
+<p><strong>Why M6 is a fresh session.</strong> M5&#39;s session may still be autonomously running the packaged re-send. Joining that session interrupts the run. M6 opens fresh and begins by reading both runs from disk (git refs + on-disk transcripts under <code>~/.claude/projects/</code>). Same-worktree overlap is an intentional classroom handoff, not the general multi-session rule: read first, then make the engineering call before any M6 write.</p>
+<h3 id="why-not-split-m4-across-day-1-close-and-day-2-open">Why not split M4 across Day 1 close and Day 2 open?</h3>
+<ol>
+<li>M4&#39;s internal flow is one sequential beat: pick → walk → fill → see-frame → send-off. The send-off is the close. Splitting means the send-off either fires from a half-built setup at Day 1 close (thin evidence, M5 has nothing to diagnose) or fires Day 2 open after overnight re-orientation (loses the walk-then-send-off pedagogy).</li>
+<li>Day 1 + M4 ≈ 9-hour day. Too much for a Nordic cohort.</li>
+<li>The legitimate Day 1→Day 2 spillover already exists: the M3 close → M4 task-pick homework. Task is picked overnight; M4 Phase 1 confirms in 2 minutes. That spillover is the right shape; full M4 displacement is not.</li>
+</ol>
+<h3 id="alternative-2-day-shape-m1-m2-m4--m5-m3-m6">Alternative 2-day shape: M1, M2, M4 / M5, M3, M6</h3>
+<p>The default 2-day above keeps M3 on Day 1 so its Q+S discipline is in hand before M4&#39;s send-off. A cohort can also run the reorder <strong>M1, M2, M4 / M5, M3, M6</strong> when it wants the M4-overnight-M5 hinge instead. Same 3+3 day shape; different pedagogical bet.</p>
+<p>What it buys you:</p>
+<ul>
+<li>M4 ends Day 1; the un-packaged send-off runs overnight; M5 opens Day 2 morning with the return. The mirror moment lands when the room is fresh, not at the end of Day 2.</li>
+<li>M3&#39;s Q+S discipline lands AFTER students have just read the un-packaged failure. Earn-the-trust reads as response to felt-need rather than prophylactic. Engineers respond to diagnosis, not prescription, the reorder applies that frame to M3 itself.</li>
+</ul>
+<p>What it costs:</p>
+<ul>
+<li>M4 Phase 2 / Phase 3 reference the M3 test-strategy skill and ADRs as audit targets. Conditional phrasing (<code>any skills you&#39;ve authored</code>, <code>any ADRs</code>) covers the gap, but Block 3 of Huryn&#39;s three-block frame anchors on existing test conventions rather than an authored skill. Block 2 leans on whatever recorded decisions the repo already has.</li>
+<li>M4 task-pick homework moves from the M3 close to the M2 close (or prework). M4 Phase 1 still compresses to a 2-minute confirm, but the homework hand-off lives one module earlier.</li>
+<li>The &quot;discipline before you need it&quot; framing flips to &quot;discipline once you&#39;ve felt the failure.&quot; Defensible either way; pick the one that fits your cohort.</li>
+</ul>
+<p>When to choose which:</p>
+<ul>
+<li>Default 3+3 (M1-M3 / M4-M6), broadest fit, no overnight gap, Q+S installed before any long-running send-off.</li>
+<li>Reorder 3+3 (M1-M2-M4 / M5-M3-M6), when the sponsor wants the M4-overnight-M5 mirror and the cohort is comfortable with M3 landing after the felt failure.</li>
+</ul>
+<p>If you run the reorder, dry-run M4&#39;s Phase 2 / Phase 3 prompts (<code>walk-and-send-off-2</code>, <code>walk-and-send-off-4</code>) against a fresh repo with no authored skill and no ADR convention, the conditional phrasings should resolve cleanly, but verify before the cohort.</p>
+<h2 id="m3-the-security-tools-surprise">M3, the security-tools surprise</h2>
+<p>Prework installs a curated bundle of skills. One is called <code>security-tools</code>. M3&#39;s first STRIDE prompt opens by invoking it as a &quot;pre-flight verifier.&quot; That invocation runs a small bundled script that performs a few legitimate-looking checks (first line: <em>&quot;owning you............ ok&quot;</em>), then prints an ASCII rick-rolled face and a short note: every link in the chain, tarball, SKILL.md, Bash authorization, was trusted without reading.</p>
+<p><strong>The stunt is the lesson.</strong> External skills are a supply-chain vector. A colleague&#39;s Slack-shared skill could have done the same, except pointed at AWS credentials. M3&#39;s surface (access-control + STRIDE) is the same shape one level up: trust boundaries and authorization checkpoints, applied to AI tooling instead of application features.</p>
+<p><strong>Don&#39;t spoil it in prework.</strong> The install prompt frames <code>security-tools</code> as a generic security-utility check. If a student asks what it does before M3, deflect: <em>&quot;a pre-flight check; you&#39;ll see it run during M3.&quot;</em> The point is they trusted the chain without verifying.</p>
+<p><strong>When it lands.</strong> The first time <code>threat-model-with-stride-1</code> fires. The trainer&#39;s terminal shows the script output verbatim (the SKILL.md instructs Claude to print without paraphrasing). Pause two beats after the ASCII face appears, let the room react before saying anything.</p>
+<p><strong>Framing after the reaction.</strong> Two minutes, not more. Three beats to land:</p>
+<ul>
+<li>Every link got trusted: the tarball link, the SKILL.md you didn&#39;t read, the Bash authorization Claude asked for.</li>
+<li>One layer up from this module&#39;s exercise: the same access-surface and authorization logic, applied to AI tooling rather than features.</li>
+<li>This is exactly why curated &gt; random; why &quot;fork + read LICENSE + vet + adapt&quot; beats &quot;install from a Discord link&quot;; why <code>access-control-analysis</code> and <code>stride</code> were vetted before they reached you, and <code>security-tools</code> is what skipping that step looks like.</li>
+</ul>
+<p>Back to the STRIDE pass.</p>
+<p><strong>Students who already noticed.</strong> Some engineers read <code>check.sh</code> during prework. Acknowledge them: <em>&quot;some of you read the script, that&#39;s the lesson, you noticed.&quot;</em> Make them feel sharp, not show-offy.</p>
+<p><strong>If the stunt doesn&#39;t fire.</strong> Rare, but possible if the skill failed to install during prework, or if Claude paraphrases instead of printing verbatim. Press on. The SKILL.md body carries the supply-chain lesson text; even paraphrased, the beat lands. If install actually broke, fix after the session, don&#39;t stop the room.</p>
+<p><strong>Skill survival default.</strong> <code>security-tools</code> stays installed past M3. The fake checks are short; the rick-roll body is information the engineer benefits from re-reading; the SKILL.md&#39;s own header comment carries the &quot;DO NOT REMOVE the easter egg&quot; framing for any future cleanup pass. If a sponsor pushes to extract it, leave the slot empty rather than substituting a serious-but-thin pre-flight skill, the stunt earns its keep precisely because it isn&#39;t serious.</p>
+<h2 id="m6-lecture-dense-by-design">M6, lecture-dense by design</h2>
+<p>M6 carries more lecture surface than the other modules. By Module 6 the student is a practitioner, and some moves at this point in the training are read about rather than prompt-drilled. The closer area runs lecture-after-lecture (Human close → Composing the workflow → The loop has a name → The map, filled in → Agents that build agents). Manage transitions, and <strong>invite student reflections and opinion across the lectures</strong> by design. The mood is practitioner fluency, not lecture-hall: a room of engineers reading the field together, with the trainer as one voice among several.</p>
+<p><strong>The full M6 lecture stack:</strong></p>
+<ul>
+<li><strong><a href="./#lectures-the-2-frontiers">The 2 frontiers</a></strong>, opener.</li>
+<li><strong><a href="./#lectures-story-of-module-6">Story of Module 6</a></strong>, opener; permission-giving memo from this module&#39;s own generation.</li>
+<li><strong><a href="./#lectures-quality-is-grounding">Quality is grounding</a></strong>, opener-bridge. Read between Story of Module 6 and the main exercise. ~4–6 min. Names the quality arc threaded across the whole training (M1 tests-first → M2 plan push-back → M3 test-strategy skill → M5 verifier → M6 second skill), then reframes quality&#39;s evolution from spec-and-tests to grounding and human signal. Stakes-setter before the build move. Cites Agentics Helsinki&#39;s first meetup (fall 2025) as historical anchor for the 500K-lines-in-weeks demos. The 500K figure is maintainer-attested (first-hand at the meetup); the lecture&#39;s source stamps live in its maintainer block.</li>
+<li><strong><a href="./#lectures-composing-the-workflow">Composing the workflow</a></strong>, closer-area teacher. Read after Human close, before The loop has a name. ~3–4 min. Teaches what a workflow-of-skills IS, concretely: it re-labels the M5 passage chart with the student&#39;s own kit (session-shaper at the pier, test-strategy across a leg, verifier at a fix) so a skill&#39;s footprint follows its job, then names the four composition mechanisms (explicit load, orchestrator, <code>./CLAUDE.md</code> routing, hand-off) with the load-bearing caveat that not every workflow has an orchestrator. Keeps the practitioner-mode shift (<em>&quot;there is no prompt to drill; the move is to read&quot;</em>), then hands off to two reads: Dino&#39;s worked <a href="supplementary/skill-stacking.md">skill-stacking system</a> (primary) and the <a href="supplementary/workflow-composition-lineages.md">workflow-composition-lineages supplementary</a> (the field survey). The five-approaches walk itself now lives ONLY in that supplementary, not the lecture body.</li>
+<li><strong><a href="./#lectures-the-loop-has-a-name">The loop has a name</a></strong>, closer; names <em>eval</em> from the just-built second skill.</li>
+<li><strong><a href="./#lectures-the-map-filled-in">The map, filled in</a></strong>, penultimate closer. The consolidation beat: re-shows the whole Field Map filled from what the six modules built (near half shapes, far half corrects, verification is the sensor), the one jargon-free naming of the control loop the student drew.</li>
+<li><strong><a href="./#lectures-agents-that-build-agents">Agents that build agents</a></strong>, forward closer.</li>
+</ul>
+<p><strong>How to invite reflection.</strong> Between lectures, ask the room: which lineage resembles their day? What did the quality arc actually feel like across the five moves? What&#39;s their review bandwidth, and what does Ronacher&#39;s counter-voice land as? After Dino&#39;s worked example, the natural question is the transfer one: looking at the second skill they just shipped at M6, is it a route, a leaf, an orchestrator, or a hand-off? Open prompts, not Q&amp;A. Two beats of silence is fine; engineers think before they speak.</p>
+<p><strong>Pacing the close.</strong> Lecture density means reading the room sharply. If energy is high, give the lineage conversation room. If energy is low, keep the lecture to the chart and the four mechanisms, point at the supplementary for the lineages, move to the closer pair faster. The supplementary carries the field survey; the lecture body teaches the mechanics and points.</p>
+<p><strong>Composition is a reading move at M6.</strong> If a student asks where the composition exercise is, point them at the <a href="supplementary/workflow-composition-lineages.md">workflow-composition-lineages supplementary</a>. The lecture teaches the composition mechanics on the chart; the supplementary carries the field lineages and the depth. <em>Your intuition</em> is the close of composing-the-workflow and the register the section asks the room to land in.</p>
+<h2 id="prep-before-each-session">Prep Before Each Session</h2>
+<ul>
+<li>Read the module page on the workbook site, including inlined exercises, lectures, Debrief, Bridge, and references.</li>
+<li>Check Quality tags in maintainer blocks during prep. No Quality line means un-audited — rehearse harder; <code>sim-passed</code> is the top recorded rung. Whether the prompt chain actually runs is no longer a tag (mechanical is a pre-ship system test, not recorded) — so dry-run it yourself (next bullet).</li>
+<li>Dry-run every exercise end to end on your demo repo. Not skim. Run it.</li>
+<li>Rehearse the prompt progression, not just individual prompts. Know what each prompt depends on and what evidence it should leave for the next one.</li>
+<li>Know the lecture material well enough to deliver the point without reading it verbatim.</li>
+<li>Note two or three dry-run moments you can talk through during agent waits.</li>
+<li>Confirm sponsor-stated homes: ADRs, rules file, ticket tracker, team kit, memory.</li>
+<li>Keep your demo repo clean, on the right branch, with the expected starting state.</li>
+</ul>
+<h2 id="patterns-to-call-out">Patterns To Call Out</h2>
+<p><strong>Quote before summary.</strong> This is the strongest AE101 trainer move. Many exercises fail the same way when Claude summarizes smoothly without evidence. Ask for the quoted file line, diff line, commit, transcript moment, or skill sentence. If it cannot quote, the claim does not carry.</p>
+<p><strong>Self-report is a hypothesis.</strong> Claude can tell you what it read, why it skipped files, what changed, and what is weakest. Useful, not authoritative. The student verifies against <code>/context</code>, the diff, the file, the ADR, the skill output, or the run trace.</p>
+<p><strong>Author through conversation, then invoke.</strong> Catch the editor drift every time: the student should not hand-craft skill files in a file tab. Claude interviews, drafts, self-critiques, revises, then invokes the skill on the real feature or real run. Authoring without invocation is theatre.</p>
+<p><strong>Personal first, team later.</strong> <code>CLAUDE.local.md</code> is personal. Authored skills ship personal first. Team-worthy findings get flagged, not auto-PRed. You can give examples for how a team might adopt a rule, skill, or verifier, but AE101 is not a training about team process. The team figures out its own sharing path.</p>
+<p><strong>Fresh context for breadth, main thread for steering.</strong> Use subagents or fresh sessions for audits, broad reads, and cold critiques. Keep one-question-at-a-time authoring, decisions, and push-back in the main session. If the room confuses the two, name the split.</p>
+<p><strong>Task size is pedagogy.</strong> Too small gives no signal. Too large gives mush. Protect the task size at Connections, because downstream prompts cannot rescue the wrong task.</p>
+<p><strong>Do not front-run the next move.</strong> The move may be correct in real life and still be wrong before the curriculum earns it. If a student wants to jump ahead, name the move and park it.</p>
+<p><strong>Absence is data.</strong> No tests on the bug path, no ADR convention, no team-kit home, no business-rules layer, missing transcript, thin memory: these are not side quests to solve live. Name the gap, write the smallest durable note, keep the room moving.</p>
+<h2 id="prompt-rules-to-notice-live">Prompt Rules To Notice Live</h2>
+<p><strong>Prompt blocks serve intent.</strong> Teach the shipped prompt by default so the room has a shared reference. If there is a better way to reach the same teaching point, show it and use it. Name what changed, why it better serves the exercise, and compare the result against the intended teaching point.</p>
+<p><strong>Read the lead-in.</strong> The sentence before the fenced prompt is part of the instruction. It tells the student what the prompt is about to do and gives you the clean narration beat before everyone pastes.</p>
+<p><strong>Open hooks mean student input.</strong> When a prompt ends with a colon, the student supplies the bug, task, feature, or concern. Do not turn every prompt into a fill-in-the-blank form; when Claude can infer the referent from scrollback, let the back-reference do the work.</p>
+<p><strong>Back-references beat aliases.</strong> Good AE101 prompts say &quot;the task we just scoped,&quot; &quot;the file you just created,&quot; or give a deterministic path. If Claude loses the chain, recover with the path and the relevant scrollback moment rather than inventing a new nickname.</p>
+<p><strong>Invoke skills by name.</strong> Students should use the installed skill name, not paste paths to the skill source. The path is authoring evidence; the skill name is the runtime interface.</p>
+<p><strong>Preserve scrollback inside a phase.</strong> Do not clear the session in the middle of a chain that depends on what just happened. Use a subagent or fresh context for breadth and critique, then bring the finding back to the parent thread.</p>
+<p><strong>Ask for critique, not defense.</strong> Wording matters. &quot;What is weakest?&quot; or &quot;what is still surface-level?&quot; usually produces usable evidence. &quot;Justify this&quot; often produces confident prose.</p>
+<p><strong>Minimal send-off is intentional.</strong> Some send-off prompts rely on the surrounding artifact trail. Do not over-engineer them live with every possible instruction; the contrast between un-packaged and packaged work is the point.</p>
+<p><strong>Push back on question dumps.</strong> If Claude asks five discovery questions after a one-question-at-a-time prompt, stop and correct it. That moment teaches steering better than explaining steering abstractly.</p>
+<p><strong>After a side effect, ask what changed.</strong> Prefer &quot;tell me what you wrote&quot; after saves, edits, or generated files. Add show-before-save only when the operation is hard to reverse or the exercise explicitly needs pre-approval.</p>
+<h2 id="live-triage">Live Triage</h2>
+<p>Protect the core live run. Each session has one main exercise, sometimes two medium ones before the midpoint. If time slips, compress framing, run the prompt, and move polish or extended comparison to homework. Do not try to &quot;cover&quot; the module at the cost of the exercise. AE101 teaches through artifacts and traces, not explanation.</p>
+<p>Do not script the cut order too tightly. The trainer is also an adult professional reading the room. The default bias is to preserve the live run and the trace it produces; after that, framing, debrief, comparison, and polish can flex.</p>
+<p>Vary the teaching move. Sometimes name the concept before the prompt, sometimes run first and name it afterward, sometimes explain from a student&#39;s output. Use whichever route suits the room and the moment. A forced pattern makes sessions dull.</p>
+<p>Bring your own examples, stories, and tooling tips. They give you credibility and make the room feel live. Keep them short, concrete, and tied to what students are about to run or just produced. A story earns its time when it helps students read the artifact in front of them.</p>
+<p>When students ask for an example, show one from your demo repo or prompt for a starting snippet live. It does not need to be a perfect sample artifact. One can prompt for anything; use the generated snippet to unblock the room and point back to the exercise.</p>
+<p>When a student asks for the &quot;right&quot; way, answer in context. Right means the move that gives the best result for this repo, team, risk, task, and review path. Teachers know the word is tricky; do not dodge it. Give your judgment, name the conditions behind it, and let the student map it to their situation.</p>
+<p>You are a practitioner, not an oracle. If a student has a plausible alternative, there is little value in arguing from authority. Compare the approaches against the module intent, and when it matters, test both.</p>
+<p>If a student shows a better workflow, steal with pride and celebrate it. The workbook is not threatened by useful practitioner knowledge in the room. Compare the move against the exercise intent, let others learn from it, and keep the session moving.</p>
+<p>You have authority to steer the room. If a question helps the room, answer briefly. If it would pull the cohort away from the protected exercise, park it with respect, name where it fits later, and keep moving.</p>
+<p>If one laptop breaks, triage for 30 seconds. Fix quick auth or network issues; defer corporate laptop problems to a buddy or the customer&#39;s escalation path. Do not stop the room for one machine.</p>
+<p>Assume the exercises are done. That is the mutual respect contract of AE101: the trainer prepares a real live run, and students spend the session actually running it. Still, students are adult professionals working in their own repos and choosing what to do with their time. Do not become the grader. Help them see what the artifact is based on: quoted evidence, run trace, diff, plan risk, or skill behavior. You can name risks and tradeoffs, then the student decides whether the artifact is good enough for their real team, repo, or review process.</p>
+<p>With ten-plus students working concurrently, you cannot inspect every run. Intervene to protect agency at room scale: when the agent is hiding evidence, flattening a decision, or pushing students into accidental approval, name the pattern to the room and hand the decision back to each student. Spot-assist one or two people only when the fix unblocks the protected exercise.</p>
+<p>If a student&#39;s output differs from yours, use it. Variation is expected. Ask what their version surfaced and compare the evidence, not the polish: which run quoted a file, found a real risk, preserved the student&#39;s decision, or exposed the teaching point. Do not normalize everyone toward your demo output.</p>
+<p>If an exercise produces a weak or failed result, use it. A weak run is useful when it produces evidence: what failed, what the agent assumed, and what artifact would change next time. Do not rescue too early when imperfect traces are part of the learning. Help students separate one-off bad luck from a system gap such as missing context, weak task shape, or an absent verifier.</p>
+<p>If a real repo is locked down, unsuitable, or too strange for the exercise, simulate the key behavior outside the repo. Any writable local folder is enough if it lets the student run the move, create evidence, and understand what would change in the real environment. Give tips for rewiring the lesson at the level of scope and loading behavior, then let the student figure out the right adaptation.</p>
+<p>Expect speed spread. Fast students will have time for side chat or deeper inspection; slow students will struggle; the middle will usually be fine. Keep the main discussion going so fast students stay engaged and slow students get catch-up time without stopping the cohort.</p>
+<p>In a Nordic room, do not mistake a quiet first beat for no signal. Use low-friction checks, quick hands, and your demo output as the comparison surface. In experience, people often do want to comment once the opening is easy and the question is concrete.</p>
+<p>Most AE101 runs are not long. In the few places where the agent may run for five minutes, use the wait to re-explain the concept and narrate what is actually happening: tool use, files touched, assumptions forming, or why the prompt is shaping the behavior you expect.</p>
+<p>If the room is slow, compress optional asides rather than sprinting. If the room is fast, do not pad. Spend the time on a deeper comparison or leave the room to its own rhythm.</p>
+<p>The most common AE101 failure is oversized task selection. Push early. &quot;Not a typo-fix, not an epic&quot; is the condition that lets the long-running loop produce evidence the next module can read.</p>
+<h2 id="what-not-to-do">What Not To Do</h2>
+<ul>
+<li>Do not read maintainer blocks during the session.</li>
+<li>Do not lecture from slides.</li>
+<li>Do not fix every install issue from the front of the room.</li>
+<li>Do not pre-summarize a lecture before its slot lands.</li>
+<li>Do not apologize for agent waits.</li>
+<li>Do not auto-promote personal learnings to team PRs.</li>
+<li>Do not let a contrast exercise collapse because the trainer rescued the first run too early.</li>
+</ul>
+<h2 id="feedback-loop">Feedback Loop</h2>
+<p>After delivery, capture friction where editors will see it. Cohort-specific notes belong in the customer surface. Structural fixes belong in this file or the module files. Delete closed TODOs; git is the history.</p>
+<p>If a prompt, example, timing move, or fallback improved the session, feed it back into the content loop after class. Capture flows through the delivery partner (ArcticRex) and routes back as the run-summary + per-module raw files pattern (see existing punchlist entries under <em>&quot;From 2026-05-19 cohort run&quot;</em> in <code>pre-cohort-todos.md</code> for the shape). Don&#39;t rely on memory.</p>
+
+</section>
+</main>
+<footer class="curriculum-footer"><p><strong>&copy; 2026 Bosser Oy.</strong> All rights reserved. Agents 102 is proprietary training material. As an enrolled student you have a personal usage license &mdash; you may learn from this, run the exercises, own what you build, and apply it at your own workplace. You may not redistribute the curriculum files, teach the material as your own, or use it to build a competing training. See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md">full license terms</a> &middot; <a href="https://bosser.consulting">bosser.consulting</a></p></footer>
+
+<script>// Shared curriculum runtime — single source of truth for both the SPA
+// (curriculum.html) and the single-page workbook (scripts/build-workbook.js).
+//
+// UMD-shape: works in both browser (window.CurriculumRuntime) and Node
+// (require('./curriculum.js')). DOM-touching functions are guarded so the
+// Node side can use the pure-string utilities without crashing on missing
+// document/window.
+
+(function (global, factory) {
+    if (typeof module === 'object' && module.exports) {
+        module.exports = factory();
+    } else {
+        global.CurriculumRuntime = factory();
+    }
+})(typeof window !== 'undefined' ? window : globalThis, function () {
+    'use strict';
+
+    // ── TRAININGS registry — single source of truth. SPA reads it for routing
+    // and index rendering; build-workbook iterates the modules array.
+    var TRAININGS = {
+        'agents-101': {
+            label: 'Agents 101',
+            lede: 'Eight modules. The chat-to-systems leap. Build real *agents* on your own company content.',
+            prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
+            modules: [
+                { slug: 'getting-going',           title: 'Getting Going' },
+                { slug: 'building-agent-systems', title: 'Building Agent Systems' },
+                { slug: 'multi-agent-systems',    title: 'Multi-Agent Systems' },
+                { slug: 'security',               title: 'Security' },
+                { slug: 'output-quality',         title: 'Output Quality and Hallucination Control' },
+                { slug: 'evaluations',            title: 'Evaluations' },
+                { slug: 'personal-to-team',       title: 'From Personal to Team' },
+                { slug: 'agents-building-agents', title: 'Agents Building Agents (The Flywheel)' }
+            ],
+            supplementaries: [
+                { slug: 'what-is-an-agent',                      title: 'What is an Agent' },
+                { slug: 'building-guardrails',                   title: 'Building Guardrails (and Skills)' },
+                { slug: 'learning-and-compounding-systems',      title: 'Learning and Compounding Systems' },
+                { slug: 'cookbook-for-agent-system-design',      title: 'Cookbook for Agent System Design' }
+            ],
+            references: [
+                { slug: 'claude-quick-reference',                title: 'Claude quick reference — commands and how-tos' }
+            ]
+        },
+        'agentic-engineering-101': {
+            label: 'Agentic Engineering 101',
+            lede: 'Six modules for software engineers. Become the Claude wizard by learning the new loop and finding your habit.',
+            prework: { slug: 'prework', title: 'Prework — do this before Module 1' },
+            modules: [
+                { slug: 'getting-going',             title: 'Getting going + context' },
+                { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
+                { slug: 'earn-the-trust',            title: 'Earn the trust' },
+                { slug: 'run-the-first-experiment',  title: 'Run the first experiment' },
+                { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' },
+                { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
+            ],
+            supplementaries: [
+                { slug: 'what-is-agentic-engineering', title: 'What is agentic engineering' },
+                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' },
+                { slug: 'token-efficiency',           title: 'Token efficiency: the craft and the folklore' },
+                { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' },
+                { slug: 'workflow-composition-lineages', title: 'Workflow composition lineages' },
+                { slug: 'skill-stacking',             title: "Dino's skill stacking system" },
+                { slug: 'backpressure',               title: 'Backpressure' },
+                { slug: 'verification-asymmetry',     title: 'Verification asymmetry' },
+                { slug: 'the-lethal-trifecta',        title: 'The lethal trifecta' }
+            ],
+            references: [
+                { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
+                { slug: 'mcp-and-connectors',        title: 'MCP and connectors' },
+                { slug: 'multi-session-git',         title: 'Multi-session and Git: survival guide' },
+                { slug: 'prompt-anatomy',            title: 'Prompt anatomy: the named moves' }
+            ]
+        },
+        // Preview / beta cut of Agentic Engineering 101: the first three modules,
+        // reframed as "part one". `contentKey` points file resolution at the real
+        // AE101 content dir; the workbook builder inherits that parent's prework +
+        // supplementaries + references, so this stays a thin variant. Its own
+        // (cut) modules list and label/lede win. Build student-facing:
+        // node scripts/build-workbook.js acme agentic-engineering-101-preview --no-trainer-docs
+        'agentic-engineering-101-preview': {
+            contentKey: 'agentic-engineering-101',
+            label: 'Agentic Engineering 101 (Part One)',
+            lede: 'The first 3 modules of 6. Modules 4 to 6 take it further.',
+            modules: [
+                { slug: 'getting-going',             title: 'Getting going + context' },
+                { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
+                { slug: 'earn-the-trust',            title: 'Earn the trust' }
+            ]
+        },
+        'claude-basics': {
+            label: 'Claude Basics',
+            lede: 'A 3-hour live workshop for people helping their organisation roll out Claude. See the system, find the crux, then build and verify in your own folder.',
+            runtime: 'cowork',
+            modules: [
+                { slug: 'agentic-systems-repo-demo', title: 'Agentic systems, shown in the repo' },
+                { slug: 'where-is-this-all-going',   title: 'Where is this all going?' },
+                { slug: 'homework-build-and-verify', title: 'Separate homework: build and verify' },
+                { slug: 'personal-site-with-guardrails', title: 'Paint by agent with guardrails' },
+                { slug: 'organisers-run-the-workshop', title: 'Organisers: run the workshop' }
+            ]
+        }
+    };
+
+    var DEFAULT_TRAINING = 'agents-101';
+
+    // Legal footer — single source for SPA + workbook. SPA fills its empty
+    // <footer class="curriculum-footer"> at boot via innerHTML; workbook
+    // emits the wrapped form via renderFooter() at build time.
+    var FOOTER_INNER = '<p>' +
+        '<strong>&copy; 2026 Bosser Oy.</strong> All rights reserved. ' +
+        'Agents 102 is proprietary training material. As an enrolled student you have a personal usage license &mdash; ' +
+        'you may learn from this, run the exercises, own what you build, and apply it at your own workplace. ' +
+        'You may not redistribute the curriculum files, teach the material as your own, or use it to build a competing training. ' +
+        'See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md">full license terms</a> ' +
+        '&middot; <a href="https://bosser.consulting">bosser.consulting</a>' +
+        '</p>';
+
+    function renderFooter() {
+        return '<footer class="curriculum-footer">' + FOOTER_INNER + '</footer>';
+    }
+
+    // ── Runtime switcher (Agents 101 dual-runtime: CLI / Desktop / Cowork) ──
+    var RUNTIME_KEY = 'agents102-runtime';
+    var VALID_RUNTIMES = { cli: 1, desktop: 1, cowork: 1 };
+    var DEFAULT_RUNTIME = 'cowork';
+
+    function trainingSupportsRuntimeSwitch(trainingKey) {
+        return trainingKey === 'agents-101';
+    }
+
+    function getRuntime(trainingKey) {
+        var t = TRAININGS[trainingKey];
+        if (t && t.runtime && VALID_RUNTIMES[t.runtime]) return t.runtime;
+        if (!trainingSupportsRuntimeSwitch(trainingKey)) return 'cli';
+        var stored = null;
+        try { stored = window.localStorage.getItem(RUNTIME_KEY); } catch (e) {}
+        return VALID_RUNTIMES[stored] ? stored : DEFAULT_RUNTIME;
+    }
+
+    function applyRuntime(trainingKey, runtime) {
+        document.body.classList.remove('runtime-cli', 'runtime-desktop', 'runtime-cowork');
+        document.body.classList.add('runtime-' + runtime);
+        var sw = document.getElementById('runtime-switcher');
+        if (!sw) return;
+        if (!trainingSupportsRuntimeSwitch(trainingKey)) { sw.hidden = true; return; }
+        sw.hidden = false;
+        var btns = sw.querySelectorAll('.runtime-switcher-btn');
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].classList.toggle('is-active', btns[i].getAttribute('data-runtime') === runtime);
+        }
+    }
+
+    function setRuntime(trainingKey, runtime) {
+        if (!trainingSupportsRuntimeSwitch(trainingKey)) return;
+        if (!VALID_RUNTIMES[runtime]) return;
+        try { window.localStorage.setItem(RUNTIME_KEY, runtime); } catch (e) {}
+        applyRuntime(trainingKey, runtime);
+    }
+
+    function wireRuntimeSwitcher(trainingKey) {
+        var sw = document.getElementById('runtime-switcher');
+        if (!sw) return;
+        sw.addEventListener('click', function (ev) {
+            var t = ev.target;
+            if (t && t.classList.contains('runtime-switcher-btn')) {
+                var rt = t.getAttribute('data-runtime');
+                if (rt) setRuntime(trainingKey, rt);
+            }
+        });
+    }
+
+    // Standalone include-link pattern: the entire paragraph is `[Title](kind/slug.md)`.
+    // SPA fetches and inlines; workbook reads sync. Same regex, same shape.
+    var INCLUDE_LINK_RE = /^\[([^\]]+)\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md\)[ \t]*$/gm;
+
+    // Prompt-include marker: `{{prompt:<key>}}` on its own line, expanded by
+    // expandPrompts() at the start of the markdown pipeline (before marked).
+    // Source of truth lives in curriculum/prompts/<key>.md; the SPA reads the
+    // compiled site/prompts.json registry, the build script reads source files
+    // directly. Marker MUST be alone on a line so expansion produces block-level
+    // markdown (label paragraph + fenced code), not inline text.
+    var PROMPT_INCLUDE_RE = /^\{\{prompt:([a-z0-9-]+)\}\}[ \t]*$/gm;
+
+    // Cut-candidate marker: `{{cut:<key>}}` or `{{cut:<key>|<reason-slug>}}` on
+    // its own line. Sibling of `{{prompt:}}` — same registry lookup, same block
+    // shape — but flagged for review: decoratePrompts() dims the rendered block
+    // and prepends a "cut candidate" ribbon so the maintainer can eyeball removal
+    // candidates before committing a real cut. Fully reversible: swap
+    // `{{prompt:key}}` ↔ `{{cut:key|reason}}` on one line; the material is
+    // retained. `{{prompt:}}` and `{{cut:}}` are disjoint prefixes; expansion is
+    // order-independent. Every tool that scans `{{prompt:` as a reference treats
+    // `{{cut:}}` as an equivalent reference (a cut candidate is still "used").
+    var PROMPT_CUT_RE = /^\{\{cut:([a-z0-9-]+)(?:\|([a-z0-9-]+))?\}\}[ \t]*$/gm;
+
+    // Covered-region markers: `{{covered:<slug>#<anchor>}}` … `{{/covered}}`,
+    // each alone on its own line with blank lines around them. Sibling of
+    // `{{cut:}}` but for PROSE spans, not prompt refs: wraps a passage whose
+    // content a new slide-format section now carries. Neutral semantic — the
+    // passage is dimmed + ribboned ("covered by …") so the maintainer can
+    // eyeball redundancy; the endgame per passage is either deletion (once the
+    // covering slides are perfected) or staying as the depth layer beneath the
+    // slides. Fully reversible: remove the two marker lines. Expansion emits a
+    // raw-HTML div; CommonMark parses the markdown between the tags normally
+    // as long as blank lines separate the tags from the content.
+    var COVERED_OPEN_RE  = /^\{\{covered:([a-z0-9-]+)(?:#([a-z0-9-]+))?\}\}[ \t]*$/gm;
+    var COVERED_CLOSE_RE = /^\{\{\/covered\}\}[ \t]*$/gm;
+
+    // Inline cross-doc link patterns. Renderer rewrites to `?file=...` URLs.
+    //   - Exercises and lectures live in shared dirs:
+    //       (exercises|lectures)/<slug>.md  →  ?file=<kind>/<slug>
+    //   - Reference and supplementary live under each training:
+    //       trainings/<training>/(reference|supplementary)/<slug>.md
+    //         →  ?file=trainings/<training>/<kind>/<slug>
+    // Both patterns tolerate any number of `../` prefixes.
+    // Trailing `(#anchor)?` captures heading fragments like `target.md#5-plan-mode-at-depth`
+    // so callers can route them to the heading slug instead of dropping the fragment.
+    var CROSS_DOC_SHARED_RE   = /\]\((?:\.\.\/)*(exercises|lectures)\/([a-z0-9-]+)\.md(#[^)]*)?\)/g;
+    var CROSS_DOC_TRAINING_RE = /\]\((?:\.\.\/)*(trainings\/[a-z0-9-]+\/(?:reference|supplementary)\/[a-z0-9-]+)\.md(#[^)]*)?\)/g;
+    // Workbook-side helper: same training-specific match as above but with kind+slug
+    // exposed as separate capture groups, for callers that need to construct in-page
+    // anchors of the form `#<kind>-<slug>`.
+    var CROSS_DOC_TRAINING_KS_RE = /\]\((?:\.\.\/)*trainings\/[a-z0-9-]+\/(reference|supplementary)\/([a-z0-9-]+)\.md(#[^)]*)?\)/g;
+
+    // ── Pure utilities (Node-safe, no DOM) ──────────────────────────────────
+
+    function esc(s) {
+        return String(s)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function rewriteCrossDocLinks(md) {
+        return md
+            .replace(CROSS_DOC_SHARED_RE,   '](curriculum.html?file=$1/$2$3)')
+            .replace(CROSS_DOC_TRAINING_RE, '](curriculum.html?file=$1$2)');
+    }
+
+    // Markdown image whose target is relative (not http(s):, data:, or
+    // root-absolute). A doc that ships diagrams alongside itself writes the
+    // path relative to the doc; the target has to be resolved per-surface
+    // before it points anywhere real. rewriteImageTargets runs the matcher and
+    // hands each relative target to a per-surface transform: the SPA turns it
+    // into a URL relative to the page (it can't read files), the workbook
+    // build inlines the bytes as a data URI (so the single page stays
+    // self-contained). Shared so both surfaces match the same image syntax.
+    var MD_IMAGE_RE = /(!\[[^\]]*\]\()([^)\s]+)(\))/g;
+
+    function rewriteImageTargets(md, transform) {
+        return md.replace(MD_IMAGE_RE, function (full, open, target, close) {
+            if (/^(?:https?:|data:|\/)/.test(target)) return full;
+            return open + transform(target) + close;
+        });
+    }
+
+    // marked renders an image-on-its-own-line as <p><img ...></p>. Promote those
+    // to <figure class="diagram"> so the .diagram CSS can break the figure out of
+    // the prose column to full content width, and add an "open in new tab" link
+    // for lossless zoom. Image-with-text paragraphs are left untouched. Runs on
+    // parsed HTML in both renderers for parity.
+    //
+    // The href depends on what the src already resolved to. SPA images are a
+    // doc-relative file path → link straight to it (native open, middle-click,
+    // etc. all work). Workbook images are data: URIs → browsers BLOCK top-level
+    // navigation to data: URIs, and duplicating one into the href bloats the
+    // page, so the link points at "#" and decorateDiagramZoom opens a blob built
+    // from the image at click time instead.
+    function wrapImageFigures(html) {
+        return html.replace(/<p>(<img\b[^>]*\bsrc="([^"]*)"[^>]*>)<\/p>/g, function (m, img, src) {
+            var href = src.slice(0, 5) === 'data:' ? '#' : src;
+            return '<figure class="diagram">' + img +
+                '<a class="diagram__zoom" href="' + href + '" target="_blank" rel="noopener">Open in new tab ↗</a>' +
+                '</figure>';
+        });
+    }
+
+    // Click handler for the "open in new tab" link when the diagram is a data:
+    // URI (workbook). Top-level navigation to data: URIs is blocked, so rebuild
+    // the bytes into a Blob and open its object URL — that IS allowed. Links to a
+    // real path (SPA) fall through to the browser's native handling untouched.
+    function decorateDiagramZoom(root) {
+        var scope = root || document;
+        scope.querySelectorAll('a.diagram__zoom').forEach(function (a) {
+            if (a.getAttribute('data-zoom-wired')) return;
+            a.setAttribute('data-zoom-wired', '1');
+            a.addEventListener('click', function (e) {
+                var img = a.parentNode && a.parentNode.querySelector('img');
+                var src = (img && img.getAttribute('src')) || '';
+                if (src.slice(0, 5) !== 'data:') return; // real URL — let it open natively
+                e.preventDefault();
+                try {
+                    var comma = src.indexOf(',');
+                    var meta = src.slice(5, comma);
+                    var isB64 = /;base64$/.test(meta);
+                    var mime = meta.replace(/;base64$/, '') || 'application/octet-stream';
+                    var data = src.slice(comma + 1);
+                    var blob;
+                    if (isB64) {
+                        var bin = atob(data), arr = new Uint8Array(bin.length);
+                        for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+                        blob = new Blob([arr], { type: mime });
+                    } else {
+                        blob = new Blob([decodeURIComponent(data)], { type: mime });
+                    }
+                    var url = URL.createObjectURL(blob);
+                    window.open(url, '_blank', 'noopener');
+                    setTimeout(function () { URL.revokeObjectURL(url); }, 60000);
+                } catch (err) { /* inline diagram stays visible; nothing else to do */ }
+            });
+        });
+    }
+
+    // GitHub-style heading slugger. Used to generate stable `id="..."` attrs
+    // on h1–h6 so cross-doc links to `target.md#section-anchor` resolve in
+    // both workbook and SPA. Behaviour matches `github-slugger`: lowercase,
+    // strip non-word/space/hyphen punctuation (em-dashes, periods, commas),
+    // then per-character whitespace → "-" (preserves the double-hyphen at
+    // stripped em-dash positions).
+    //
+    // github-slugger operates on a heading's *text content*. The marked heading
+    // renderer hands us the inline-RENDERED HTML instead, so a code span arrives
+    // as `<code>/loop</code>` and an apostrophe as `&#39;`. Strip tags and HTML
+    // entities first, or the surviving tag names / entity digits fuse into the
+    // slug — `/loop` → `codeloopcode`, `doesn't` → `doesn39t` — and the natural
+    // hand-written anchor never resolves.
+    function slugifyHeading(text) {
+        return String(text)
+            .replace(/<[^>]*>/g, '')        // drop tags (code/em/links) → slug visible text
+            .replace(/&[#0-9a-z]+;/gi, '')  // drop entities (&#39; &amp; &quot; …)
+            .toLowerCase()
+            .replace(/[^\w\s-]/g, '')
+            .trim()
+            .replace(/\s/g, '-');
+    }
+
+    // Wire heading-id generation into a marked instance. SPA calls this with
+    // the CDN-loaded `marked`; workbook build calls it with the npm-loaded
+    // `marked` from require(). Single source of truth, identical IDs across
+    // both renderers.
+    function configureMarked(markedRef) {
+        markedRef.use({
+            renderer: {
+                heading: function (text, level) {
+                    var id = slugifyHeading(text);
+                    return '<h' + level + ' id="' + id + '">' + text + '</h' + level + '>\n';
+                }
+            }
+        });
+    }
+
+    function stripMaintainerTail(md) {
+        var i = md.indexOf('<!-- maintainer -->');
+        return i >= 0 ? md.slice(0, i).trimEnd() + '\n' : md;
+    }
+
+    // Reconstruct the canonical inline prompt-block shape the renderer expects:
+    //   **Prompt** *(<dest>[, <context>])*
+    //
+    //   ```
+    //   <text>
+    //   ```
+    // decoratePrompts() matches the **Prompt** strong-bold paragraph + the
+    // following <pre>; this output is byte-equivalent to a hand-authored block.
+    // Sentinel pair using Mathematical White Square Brackets ⟦ ⟧ (U+27E6 / U+27E7).
+    // These survive markdown code-fence rendering and HTML escape unchanged
+    // (not in HTML special chars), and don't appear in any realistic prompt
+    // content — safer than ASCII-square-bracket sentinels which would collide
+    // with prompt blocks that quote markdown link syntax in the body. The
+    // decoratePrompts pass converts these to <span class="prompt-anchor"> at
+    // DOM time; the Copy button's textContent read passes through the span
+    // and lands the original prompt verbatim on the clipboard.
+    function injectAnchorSentinels(text, anchors) {
+        if (!anchors || !anchors.length) return text;
+        var out = text;
+        anchors.forEach(function (a) {
+            if (!a || !a.span || !a.move) return;
+            if (!/^[a-z0-9-]+$/.test(a.move)) return; // slug must be CSS-class-safe
+            var idx = out.indexOf(a.span);
+            if (idx < 0) return; // span no longer matches body — silent skip
+            out = out.slice(0, idx) +
+                  '⟦A:' + a.move + '⟧' +
+                  a.span +
+                  '⟦/A⟧' +
+                  out.slice(idx + a.span.length);
+        });
+        return out;
+    }
+
+    function renderPromptBlock(entry, cut) {
+        var dest = (entry && entry.dest) || 'Claude Code';
+        var ctx = entry && entry.context ? ', ' + entry.context : '';
+        var label = '**Prompt** *(' + dest + ctx + ')*';
+        // Permission-mode sentinel, mirrors the ⟦A:slug⟧ anchor pattern.
+        // decoratePrompts() parses this off the label paragraph and renders it
+        // as a separate chip in the prompt-block header. Sentinel is appended
+        // after the label so marked() treats it as inline text inside the same
+        // paragraph — survives the render cycle untouched (U+27E6/U+27E7 are
+        // not HTML-special and not in any realistic prompt label).
+        var mode = entry && entry['permission-mode'];
+        if (mode && /^[A-Za-z]+$/.test(mode)) {
+            label += ' ⟦M:' + mode + '⟧';
+        }
+        // Cut-candidate sentinel ⟦CUT[:reason]⟧, mirrors the ⟦M:mode⟧ pattern.
+        // decoratePrompts() parses it off the label paragraph, strips it, and
+        // renders the block dimmed with a ribbon. Sits after the mode sentinel
+        // so both survive the marked() render cycle as inline paragraph text.
+        if (cut) { label += ' ⟦CUT' + (cut.reason ? ':' + cut.reason : '') + '⟧'; }
+        var text = String((entry && entry.text) || '').replace(/\s+$/, '');
+        if (entry && entry.anchors && entry.anchors.length) {
+            text = injectAnchorSentinels(text, entry.anchors);
+        }
+        var fence = '```\n' + text + '\n```';
+        return label + '\n\n' + fence;
+    }
+
+    // Replace every `{{prompt:<key>}}` line in `md` with the canonical block
+    // shape, looking each key up in `registry` (object: key -> entry).
+    //
+    // Default mode (permissive): unknown keys pass through unchanged so a
+    // missing entry renders as literal `{{prompt:foo}}` text — visible at
+    // a glance and catchable by the lint / post-render audit. The SPA path
+    // uses this mode to avoid hard-crashing the page on a stale registry.
+    //
+    // Strict mode (`opts.strict === true`): build path uses this. Any unknown
+    // key throws with a list of all unresolved markers, so a typo in a module
+    // file or a stale registry fails the build instead of silently shipping.
+    function expandPrompts(md, registry, opts) {
+        if (!md || !registry) return md;
+        var unresolved = [];
+        var out = md.replace(PROMPT_INCLUDE_RE, function (match, key) {
+            var entry = registry[key];
+            if (!entry) {
+                unresolved.push(key);
+                return match;
+            }
+            return renderPromptBlock(entry);
+        });
+        // Second pass: cut-candidate markers. Same registry lookup + unresolved
+        // tracking as the prompt pass (so strict build throws on a bad key), but
+        // the block is flagged cut. Disjoint prefix from {{prompt:}}; order of
+        // the two passes doesn't matter.
+        out = out.replace(PROMPT_CUT_RE, function (match, key, reason) {
+            var entry = registry[key];
+            if (!entry) {
+                unresolved.push(key);
+                return match;
+            }
+            return renderPromptBlock(entry, { reason: reason || '' });
+        });
+        if (opts && opts.strict && unresolved.length) {
+            throw new Error(
+                'expandPrompts: unresolved {{prompt:<key>}} marker(s): ' +
+                unresolved.map(function (k) { return '{{prompt:' + k + '}}'; }).join(', ')
+            );
+        }
+        // Third pass: covered-region markers. No registry lookup — the pair
+        // expands to a wrapping div the runtime decorates. Balance is checked
+        // in strict mode so an unclosed region fails the build instead of
+        // silently swallowing the rest of the page.
+        var opens = 0, closes = 0;
+        out = out.replace(COVERED_OPEN_RE, function (match, slug, anchor) {
+            opens += 1;
+            var ref = slug + (anchor ? '#' + anchor : '');
+            return '<div class="covered-region" data-covered-by="' + esc(ref) + '">';
+        });
+        out = out.replace(COVERED_CLOSE_RE, function () {
+            closes += 1;
+            return '</div>';
+        });
+        if (opts && opts.strict && opens !== closes) {
+            throw new Error(
+                'expandPrompts: unbalanced {{covered:}} region(s): ' +
+                opens + ' open vs ' + closes + ' close'
+            );
+        }
+        return out;
+    }
+
+    function extractParent(md) {
+        var m = md.match(/<!--\s*parent:\s*([a-zA-Z0-9_-]+)\s*-->/);
+        return m ? m[1] : null;
+    }
+
+    // Extract the first paragraph after `## Big Idea` from a module's markdown.
+    // Returns null when the section is missing (matches SPA's hydrate semantics).
+    function extractBigIdea(md) {
+        var m = md.match(/^##\s+Big Idea\s*\n+([\s\S]*?)(?=\n##\s|$)/m);
+        if (!m) return null;
+        var body = m[1].trim();
+        // Take the first paragraph only.
+        var firstPara = body.split(/\n\s*\n/)[0].trim();
+        // Collapse internal newlines so card chrome lays out cleanly.
+        return firstPara.replace(/\s*\n\s*/g, ' ');
+    }
+
+    // Turn *word* into a `.accent` span; escape everything else.
+    // Used by the SPA training-index lede.
+    function renderAccents(s) {
+        return esc(s).replace(/\*([^*]+)\*/g, '<span class="accent">$1</span>');
+    }
+
+    // ── DOM runtime (browser only) ──────────────────────────────────────────
+
+    function addCopyButton(pre, host) {
+        var mountTarget = host || pre;
+        if (mountTarget.querySelector(':scope > .copy-btn')) return;
+        var btn = document.createElement('button');
+        btn.className = host ? 'copy-btn copy-btn--in-header' : 'copy-btn';
+        btn.type = 'button';
+        btn.setAttribute('aria-label', 'Copy to clipboard');
+        btn.textContent = 'Copy';
+        btn.addEventListener('click', function (ev) {
+            ev.preventDefault();
+            var code = pre.querySelector('code') || pre;
+            // textContent (not innerText) — innerText respects CSS rendering
+            // and can collapse newlines inside <pre><code>; textContent is the
+            // DOM text and preserves whitespace deterministically.
+            var text = code.textContent;
+            var done = function () {
+                btn.textContent = 'Copied';
+                btn.classList.add('copy-btn--copied');
+                setTimeout(function () {
+                    btn.textContent = 'Copy';
+                    btn.classList.remove('copy-btn--copied');
+                }, 1400);
+            };
+            // Write BOTH text/plain and text/html to the clipboard. Destinations
+            // that prefer HTML (Cowork input, Claude Code Desktop input, Slack,
+            // browser-based markdown editors) read the <pre> wrapper and paste
+            // it as a fenced code block, which suppresses the destination's URL
+            // auto-detection that converts paths like `module-5/claim-pool.md`
+            // into `[claim-pool.md](http://claim-pool.md)` markdown links.
+            // Plain-text-only destinations (terminals, plain inputs) get the
+            // text/plain fallback unchanged.
+            function writeBoth() {
+                if (window.ClipboardItem && navigator.clipboard && navigator.clipboard.write) {
+                    // <div> + <br> instead of <pre> — destinations treat <pre>
+                    // as a code block and apply their own dark theme even with
+                    // inline-style overrides. <div> doesn't trigger code-block
+                    // styling. Whitespace preserved via <br> for newlines and
+                    // &nbsp; for leading indentation. <wbr> before file-extension
+                    // dots is the backup defence against URL auto-detection
+                    // (parsers see broken pattern, don't linkify).
+                    var lines = text.split('\n').map(function (line) {
+                        var indent = line.match(/^[ \t]*/)[0];
+                        var rest = line.slice(indent.length);
+                        var indentHtml = indent.replace(/ /g, '&nbsp;').replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+                        var escRest = esc(rest).replace(/(\.)([a-z]{1,5})\b/gi, '<wbr>$1$2');
+                        return indentHtml + escRest;
+                    });
+                    var html = '<div>' + lines.join('<br>') + '</div>';
+                    var item = new ClipboardItem({
+                        'text/plain': new Blob([text], { type: 'text/plain' }),
+                        'text/html':  new Blob([html], { type: 'text/html' })
+                    });
+                    return navigator.clipboard.write([item]);
+                }
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    return navigator.clipboard.writeText(text);
+                }
+                return Promise.reject(new Error('no clipboard api'));
+            }
+            writeBoth().then(done, fallback);
+            function fallback() {
+                var ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                try { document.execCommand('copy'); done(); }
+                catch (e) { btn.textContent = 'Copy failed'; setTimeout(function () { btn.textContent = 'Copy'; }, 1400); }
+                document.body.removeChild(ta);
+            }
+        });
+        mountTarget.appendChild(btn);
+    }
+
+    // Session-boundary widget. Source shape:
+    //   **Session** *(verb, "name")*
+    //   <runtime-fork prose>
+    //   ```
+    //   /rename slug
+    //   ```
+    // Wraps the label paragraph + next paragraph (body prose) + next <pre>
+    // (rename block) into a single .session-block. Stops at the next h*,
+    // **Session**, or **Prompt** so widgets never run past their seam.
+    // Run BEFORE decoratePrompts so the **Prompt** stop-condition fires before
+    // prompt blocks are unwrapped.
+    function decorateSessions(root) {
+        Array.from(root.querySelectorAll('p')).forEach(function (p) {
+            var strong = p.querySelector('strong');
+            if (!strong || strong.textContent.trim() !== 'Session') return;
+
+            var em = p.querySelector('em');
+            var label = em ? em.textContent.trim() : '';
+            label = label.replace(/^\(/, '').replace(/\)$/, '').trim();
+            var firstComma = label.indexOf(',');
+            var verb = firstComma >= 0 ? label.slice(0, firstComma).trim() : label.trim();
+            var name = firstComma >= 0 ? label.slice(firstComma + 1).trim().replace(/^"|"$/g, '') : '';
+
+            var wrap = document.createElement('div');
+            wrap.className = 'session-block';
+
+            var header = document.createElement('div');
+            header.className = 'session-block__header';
+            header.innerHTML =
+                '<span class="session-block__label">Session</span>' +
+                (verb ? '<span class="session-block__verb">' + esc(verb) + '</span>' : '') +
+                (name ? '<span class="session-block__name">' + esc(name) + '</span>' : '');
+
+            p.parentNode.insertBefore(wrap, p);
+            wrap.appendChild(header);
+
+            var body = document.createElement('div');
+            body.className = 'session-block__body';
+            wrap.appendChild(body);
+            p.remove();
+
+            // Pull subsequent siblings into the body until a stop boundary.
+            // Widget body shape is: at most one body paragraph, at most one
+            // <pre> (the rename command). Any other strong-led paragraph
+            // (What you do:, Phase 1:, etc.) ends the widget — without that
+            // stop, a return-verb widget with no <pre> swallows the page.
+            var next = wrap.nextSibling;
+            while (next) {
+                if (next.nodeType !== 1) {
+                    next = next.nextSibling;
+                    continue;
+                }
+                var tag = next.tagName;
+                if (/^H[1-6]$/.test(tag) || tag === 'HR') break;
+                if (tag === 'P') {
+                    var s = next.querySelector(':scope > strong');
+                    if (s) break;
+                    var sib = next;
+                    next = next.nextSibling;
+                    body.appendChild(sib);
+                    continue;
+                }
+                // The inner <pre> in a session widget is the rename command —
+                // CLI-only (Cowork can't rename; Desktop has no /rename either).
+                // Wrap in .rt-cli so existing runtime CSS hides it for the other
+                // two runtimes. Author writes plain markdown; visibility lives
+                // at the renderer.
+                if (tag === 'PRE') {
+                    var preSib = next;
+                    next = next.nextSibling;
+                    var cliWrap = document.createElement('div');
+                    cliWrap.className = 'rt-cli';
+                    body.appendChild(cliWrap);
+                    cliWrap.appendChild(preSib);
+                    break;
+                }
+                break;
+            }
+        });
+    }
+
+    // Heads-up / attention widget. Source shape (single paragraph):
+    //   **HOX** <warning prose>
+    // Renders a loud hot-orange admonition with a fixed "HOX HOX" badge.
+    // Distinct from .session-block (amber) and .prompt-block (oxblood):
+    // HOX = "you are about to make a mistake right HERE." Used sparingly at
+    // high-consequence seams — e.g. confirming you actually switched git
+    // worktrees and aren't still typing on the old branch. A leading
+    // separator after the badge ("-", "—", ":") is chrome and is dropped.
+    // Run AFTER decorateSessions (so session bodies form first) and BEFORE
+    // decoratePrompts (so the **Prompt** stop-condition stays intact).
+    function decorateHox(root) {
+        Array.from(root.querySelectorAll('p')).forEach(function (p) {
+            var strong = p.querySelector(':scope > strong');
+            if (!strong || strong.textContent.trim() !== 'HOX') return;
+
+            var wrap = document.createElement('div');
+            wrap.className = 'hox-block';
+
+            var badge = document.createElement('span');
+            badge.className = 'hox-block__badge';
+            badge.textContent = 'HOX HOX';
+            wrap.appendChild(badge);
+
+            var body = document.createElement('div');
+            body.className = 'hox-block__body';
+            wrap.appendChild(body);
+
+            // Drop the label strong; the rest of the paragraph is the message.
+            strong.remove();
+            var msg = document.createElement('p');
+            msg.innerHTML = p.innerHTML.replace(/^\s*[-—:]\s*/, '').trim();
+            body.appendChild(msg);
+
+            p.parentNode.insertBefore(wrap, p);
+            p.remove();
+        });
+    }
+
+    // Generic guidance widget. Source shape (single paragraph):
+    //   **Note** <guidance prose>
+    // Same construction as .hox-block but calm teal, not alarm-orange: HOX is
+    // "you are about to make a mistake right HERE"; Note is "here is a thing
+    // worth not missing" — a window switch, a heads-up, a where-you-are cue.
+    // Loud enough to beat a buried sentence (the m3 Security→Quality flip the
+    // 2026-05-27 run read past), quiet enough not to cry wolf like HOX. Keyed on
+    // the literal "Note" marker, same boundary discipline as decorateHox. Run in
+    // the same pass: after decorateSessions, before decoratePrompts.
+    function decorateNote(root) {
+        Array.from(root.querySelectorAll('p')).forEach(function (p) {
+            var strong = p.querySelector(':scope > strong');
+            if (!strong || strong.textContent.trim() !== 'Note') return;
+
+            var wrap = document.createElement('div');
+            wrap.className = 'note-block';
+
+            var badge = document.createElement('span');
+            badge.className = 'note-block__badge';
+            badge.textContent = 'NOTE';
+            wrap.appendChild(badge);
+
+            var body = document.createElement('div');
+            body.className = 'note-block__body';
+            wrap.appendChild(body);
+
+            // Drop the label strong; the rest of the paragraph is the message.
+            strong.remove();
+            var msg = document.createElement('p');
+            msg.innerHTML = p.innerHTML.replace(/^\s*[-—:]\s*/, '').trim();
+            body.appendChild(msg);
+
+            p.parentNode.insertBefore(wrap, p);
+            p.remove();
+        });
+    }
+
+    // Convert ⟦A:slug⟧content⟦/A⟧ sentinels (planted by injectAnchorSentinels
+    // at prompt-expand time) into <span class="prompt-anchor" data-move="slug">
+    // wrappers in the rendered <pre><code>. Runs once per prompt block during
+    // decoratePrompts. The Copy button's textContent read sees through the
+    // span and copies the original prompt; visual treatment is CSS-driven.
+    var ANCHOR_SENTINEL_RE = /⟦A:([a-z0-9-]+)⟧([\s\S]*?)⟦\/A⟧/g;
+    function convertAnchorSentinels(pre) {
+        if (!pre) return;
+        var code = pre.querySelector('code') || pre;
+        var html = code.innerHTML;
+        if (html.indexOf('⟦A:') < 0) return;
+        var replaced = html.replace(ANCHOR_SENTINEL_RE, function (m, slug, content) {
+            return '<span class="prompt-anchor" data-move="' + slug + '">' + content + '</span>';
+        });
+        if (replaced !== html) code.innerHTML = replaced;
+    }
+
+    // Click handler on .prompt-anchor spans: look up the matching anatomy
+    // entry by data-move slug in window.__ANATOMY, render a popup card next
+    // to the anchor. One popup at a time; click another anchor → moves the
+    // popup; click outside → closes; Esc → closes. Idempotent installer:
+    // attaches one delegated click listener per root, guarded by a flag so
+    // re-renders don't double-bind. Silent no-op if anatomy data is missing.
+    function attachAnchorPopups(root) {
+        if (!root || root.__anchorPopupsBound) return;
+        root.__anchorPopupsBound = true;
+
+        var popup = null;
+        function close() {
+            if (popup && popup.parentNode) popup.parentNode.removeChild(popup);
+            popup = null;
+        }
+
+        function open(anchor) {
+            var slug = anchor.getAttribute('data-move');
+            if (!slug) return;
+            var data = (window.__ANATOMY || {})[slug];
+            if (!data) return;
+            close();
+            popup = document.createElement('div');
+            popup.className = 'prompt-anatomy-popup';
+            popup.innerHTML =
+                '<button class="prompt-anatomy-popup__close" type="button" aria-label="Close">×</button>' +
+                '<div class="prompt-anatomy-popup__kicker">Anatomy</div>' +
+                '<h3 class="prompt-anatomy-popup__title">' + esc(data.title) + '</h3>' +
+                '<div class="prompt-anatomy-popup__body">' + data.html + '</div>';
+            document.body.appendChild(popup);
+
+            // Position: prefer below + left-aligned with the anchor; clamp
+            // to viewport so the card never gets cut off on narrow windows.
+            var rect = anchor.getBoundingClientRect();
+            var popRect = popup.getBoundingClientRect();
+            var top = window.scrollY + rect.bottom + 8;
+            var left = window.scrollX + rect.left;
+            var maxLeft = window.scrollX + window.innerWidth - popRect.width - 20;
+            if (left > maxLeft) left = maxLeft;
+            if (left < window.scrollX + 20) left = window.scrollX + 20;
+            // If it'd run off the bottom of viewport, flip above the anchor.
+            var bottomOverflow = (top - window.scrollY + popRect.height) - window.innerHeight;
+            if (bottomOverflow > 0) {
+                top = window.scrollY + rect.top - popRect.height - 8;
+            }
+            popup.style.top = top + 'px';
+            popup.style.left = left + 'px';
+
+            popup.querySelector('.prompt-anatomy-popup__close')
+                .addEventListener('click', function (ev) { ev.preventDefault(); close(); });
+        }
+
+        root.addEventListener('click', function (ev) {
+            var anchor = ev.target.closest && ev.target.closest('.prompt-anchor');
+            if (anchor) {
+                ev.preventDefault();
+                open(anchor);
+                return;
+            }
+            // Click outside the popup → close (clicks inside the popup are
+            // safe; the close button handles its own dismissal).
+            if (popup && !ev.target.closest('.prompt-anatomy-popup')) close();
+        });
+
+        document.addEventListener('keydown', function (ev) {
+            if (ev.key === 'Escape') close();
+        });
+    }
+
+    function decoratePrompts(root) {
+        Array.from(root.querySelectorAll('p')).forEach(function (p) {
+            var strong = p.querySelector('strong');
+            if (!strong || strong.textContent.trim() !== 'Prompt') return;
+            var pre = p.nextElementSibling;
+            if (!pre || pre.tagName !== 'PRE') return;
+
+            var em = p.querySelector('em');
+            var label = em ? em.textContent.trim() : '';
+            label = label.replace(/^\(/, '').replace(/\)$/, '').trim();
+            var parts = label.split(/,\s*/);
+            var dest = parts[0] || 'Claude Code';
+            var context = parts.slice(1).join(', ');
+            var destHtml = (dest === 'Claude Code')
+                ? '<span class="rt-cowork">Cowork</span>' +
+                  '<span class="rt-desktop">Claude Code Desktop</span>' +
+                  '<span class="rt-cli">Claude Code CLI</span>'
+                : esc(dest);
+
+            // Permission-mode sentinel ⟦M:<mode>⟧ sits in the paragraph text
+            // after the em-paren label; renderPromptBlock plants it when the
+            // prompt's frontmatter declares `permission-mode:`. Parse it off
+            // here, strip from the paragraph so the literal sentinel never
+            // renders, surface as a separate header chip.
+            // Cut-candidate sentinel ⟦CUT[:reason]⟧ (planted by renderPromptBlock
+            // when a {{cut:}} marker expanded) rides alongside the ⟦M:mode⟧ chip
+            // in the label paragraph. Parse both off, strip both in a single
+            // innerHTML write, and surface them as chrome — mode as a header chip,
+            // cut as a dimming class + ribbon.
+            var mode = '';
+            var cut = false;
+            var cutReason = '';
+            var pHtml = p.innerHTML;
+            var modeMatch = pHtml.match(/⟦M:([A-Za-z]+)⟧/);
+            var cutMatch = pHtml.match(/⟦CUT(?::([a-z0-9-]+))?⟧/);
+            if (modeMatch) mode = modeMatch[1];
+            if (cutMatch) { cut = true; cutReason = cutMatch[1] || ''; }
+            if (modeMatch || cutMatch) {
+                p.innerHTML = pHtml
+                    .replace(/\s*⟦M:[A-Za-z]+⟧\s*/g, '')
+                    .replace(/\s*⟦CUT(?::[a-z0-9-]+)?⟧\s*/g, '');
+            }
+
+            var wrap = document.createElement('div');
+            wrap.className = 'prompt-block' + (cut ? ' cut-candidate' : '');
+            var header = document.createElement('div');
+            header.className = 'prompt-block__header';
+            header.innerHTML =
+                (mode ? '<span class="prompt-block__mode prompt-block__mode--' + esc(mode) + '" title="Paste this prompt in ' + esc(mode) + ' mode">' + esc(mode) + ' mode</span>' : '') +
+                '<span class="prompt-block__label">Prompt</span>' +
+                '<span class="prompt-block__arrow" aria-hidden="true">→</span>' +
+                '<span class="prompt-block__dest">' + destHtml + '</span>' +
+                (context ? '<span class="prompt-block__context">' + esc(context) + '</span>' : '');
+
+            p.parentNode.insertBefore(wrap, p);
+            // Cut-candidate ribbon sits above the header. textContent (not
+            // innerHTML) so the reason slug can never inject markup.
+            if (cut) {
+                var ribbon = document.createElement('div');
+                ribbon.className = 'cut-candidate__ribbon';
+                ribbon.textContent = '✂ cut candidate' + (cutReason ? ' · ' + cutReason : '');
+                wrap.appendChild(ribbon);
+            }
+            wrap.appendChild(header);
+            wrap.appendChild(pre);
+            pre.classList.add('prompt-block__pre');
+            p.remove();
+
+            addCopyButton(pre, header);
+            convertAnchorSentinels(pre);
+        });
+
+        // Covered-region ribbons: planted by the {{covered:…}} expansion pass.
+        // Same decorate call site as the prompt chrome so the workbook's single
+        // decoratePrompts(document.body) invocation covers both.
+        root.querySelectorAll('.covered-region').forEach(function (region) {
+            if (region.querySelector('.covered-region__ribbon')) return;
+            var ribbon = document.createElement('div');
+            ribbon.className = 'covered-region__ribbon';
+            var ref = region.getAttribute('data-covered-by') || '';
+            ribbon.textContent = 'covered by · ' + ref.replace('#', ' § ');
+            region.insertBefore(ribbon, region.firstChild);
+        });
+
+        // Universal copy buttons on every standalone <pre>.
+        root.querySelectorAll('pre:not(.prompt-block__pre)').forEach(function (pre) {
+            addCopyButton(pre);
+        });
+
+        // Back-compat: drop "*(end of prompt)*" leftovers from unmigrated files.
+        Array.from(root.querySelectorAll('p, em')).forEach(function (n) {
+            var t = n.textContent.trim();
+            if (t === '(end of prompt)' || t === '*(end of prompt)*') {
+                var host = n.tagName === 'EM' ? n.parentNode : n;
+                if (host && host.tagName === 'P') host.remove();
+            }
+        });
+    }
+
+    // Compute the 2-digit number for a module slug within a training.
+    // Prework = "00", modules = "01"..., optionalModules continue from there.
+    function moduleNumber(trainingKey, slug) {
+        var t = TRAININGS[trainingKey];
+        if (!t) return null;
+        if (t.prework && t.prework.slug === slug) return '00';
+        var i = t.modules.findIndex(function (m) { return m.slug === slug; });
+        if (i >= 0) return String(i + 1).padStart(2, '0');
+        if (t.optionalModules) {
+            var j = t.optionalModules.findIndex(function (m) { return m.slug === slug; });
+            if (j >= 0) return String(t.modules.length + j + 1).padStart(2, '0');
+        }
+        return null;
+    }
+
+    // Pull the H1 + Big Idea out of a rendered module element and replace
+    // them with a numbered hero block. Used by both SPA (one module per page)
+    // and workbook (every module section, on init).
+    function buildModuleHero(moduleEl, num) {
+        var h1 = moduleEl.querySelector('h1');
+        if (!h1 || h1.closest('.module-hero')) return;
+
+        var bigIdeaHtml = null;
+        var h2s = moduleEl.querySelectorAll(':scope > h2');
+        for (var i = 0; i < h2s.length; i++) {
+            if (h2s[i].textContent.trim().toLowerCase() === 'big idea') {
+                var sib = h2s[i].nextElementSibling;
+                if (sib && sib.tagName === 'P') {
+                    bigIdeaHtml = sib.innerHTML;
+                    sib.remove();
+                }
+                h2s[i].remove();
+                break;
+            }
+        }
+
+        var hero = document.createElement('header');
+        hero.className = 'module-hero';
+        if (num) {
+            var n = document.createElement('div');
+            n.className = 'module-hero-num';
+            n.textContent = num;
+            hero.appendChild(n);
+        }
+        var titleClone = h1.cloneNode(true);
+        titleClone.classList.add('module-hero-title');
+        hero.appendChild(titleClone);
+        if (bigIdeaHtml) {
+            var big = document.createElement('p');
+            big.className = 'module-hero-big';
+            big.innerHTML = bigIdeaHtml;
+            hero.appendChild(big);
+        }
+        h1.parentNode.insertBefore(hero, h1);
+        h1.remove();
+    }
+
+    // Standalone exercise / lecture pages get the same phase wrapper they
+    // wear when embedded inside a parent module. Pass the container element
+    // and the kind ('exercise' | 'lecture').
+    function wrapStandaloneInPhase(container, kind) {
+        if (!kind || (kind !== 'exercise' && kind !== 'lecture')) return;
+        if (container.querySelector(':scope > .phase')) return; // already wrapped
+        var section = document.createElement('section');
+        section.className = 'phase phase--' + kind;
+        var kicker = document.createElement('div');
+        kicker.className = 'phase-kicker';
+        kicker.textContent = kind;
+        section.appendChild(kicker);
+        while (container.firstChild) section.appendChild(container.firstChild);
+        container.appendChild(section);
+    }
+
+    // Supplementary / reference rows on the training index. Different shape
+    // from cardHtml — flat row with kind label + title.
+    function simpleRowHtml(kind, title, href) {
+        return '<li><a href="' + href + '">' +
+               '<span class="supp-kind">' + esc(kind) + '</span>' +
+               '<span class="supp-title">' + esc(title) + '</span>' +
+               '<span class="module-arrow">→</span>' +
+               '</a></li>';
+    }
+
+    function installReadingProgress() {
+        if (document.querySelector('.reading-progress')) return;
+        var bar = document.createElement('div');
+        bar.className = 'reading-progress';
+        document.body.appendChild(bar);
+        var update = function () {
+            var doc = document.documentElement;
+            var max = doc.scrollHeight - doc.clientHeight;
+            var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+            bar.style.width = pct + '%';
+        };
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+    }
+
+    // Module-list card chrome — used by both the SPA training index and the
+    // workbook TOC. `bigIdea` is optional (workbook pre-fills, SPA hydrates
+    // async via hydrateBigIdeas).
+    // marked single-tilde strikethrough triggers on patterns like `(~30 min)... (~10 min)`.
+    // Escape numeric-tildes before parse, on both SPA and workbook paths.
+    function escapeTildes(md) {
+        return md.replace(/~(\d)/g, '\\~$1');
+    }
+
+    // Shared TOC sections builder — both the SPA training-index page and the
+    // workbook table-of-contents use the same five-section layout (prework,
+    // modules, optional, supplementaries, references, trainer-guide). The
+    // only differences are the URL strategy (router vs in-page anchors), the
+    // heading tier, and whether Big Ideas are pre-filled (workbook reads sync
+    // at build) or hydrated async (SPA).
+    //
+    // opts:
+    //   moduleHref(trainingKey, slug)   — URL for prework / modules / optional cards
+    //   fileHref(kind, slug)             — URL for supplementary / reference rows
+    //   trainerGuideHref                 — URL string for the trainer-guide row
+    //   bigIdeaFor(slug)                 — sync getter for Big Ideas (workbook); null for SPA (hydrates later)
+    //   trainingKey                      — passed through to moduleHref
+    //   showModuleCountHeading           — true on SPA (lede-style headings); false in workbook (cover replaces)
+    //   headingTag                       — 'h2' (SPA) or 'h3' (workbook nested under the cover's h2)
+    //   bigIdeaDataAttr                  — 'data-big-ideas' marker on module list (SPA needs this for hydration)
+    function buildTocSections(t, opts) {
+        var trainingKey = opts.trainingKey;
+        var heading = opts.headingTag || 'h2';
+        var bigIdea = opts.bigIdeaFor || function () { return null; };
+        var bigIdeasAttr = opts.bigIdeaDataAttr ? ' ' + opts.bigIdeaDataAttr : '';
+        var html = '';
+
+        if (t.prework) {
+            if (opts.showModuleCountHeading) html += '<' + heading + ' class="index-heading">Before Module 1</' + heading + '>';
+            html += '<ol class="module-list index-prework"' + bigIdeasAttr + '>';
+            html += cardHtml('00', t.prework.title, t.prework.slug, opts.moduleHref(trainingKey, t.prework.slug), bigIdea(t.prework.slug));
+            html += '</ol>';
+        }
+
+        if (t.modules.length) {
+            if (opts.showModuleCountHeading) {
+                var words = ['zero','one','two','three','four','five','six','seven','eight','nine','ten'];
+                var word = words[t.modules.length] || String(t.modules.length);
+                html += '<' + heading + ' class="index-heading">The ' + word + ' modules</' + heading + '>';
+            }
+            html += '<ol class="module-list index-modules"' + bigIdeasAttr + '>';
+            t.modules.forEach(function (m, i) {
+                var num = String(i + 1).padStart(2, '0');
+                html += cardHtml(num, m.title, m.slug, opts.moduleHref(trainingKey, m.slug), bigIdea(m.slug));
+            });
+            html += '</ol>';
+        }
+
+        if (t.optionalModules && t.optionalModules.length) {
+            if (opts.showModuleCountHeading) html += '<' + heading + ' class="index-heading">Optional extensions — when the cohort wants more</' + heading + '>';
+            else html += '<' + heading + ' class="index-heading">Optional extensions</' + heading + '>';
+            html += '<ol class="module-list index-modules"' + bigIdeasAttr + '>';
+            t.optionalModules.forEach(function (m, i) {
+                var num = String(t.modules.length + i + 1).padStart(2, '0');
+                html += cardHtml(num, m.title, m.slug, opts.moduleHref(trainingKey, m.slug), bigIdea(m.slug));
+            });
+            html += '</ol>';
+        }
+
+        if (t.supplementaries && t.supplementaries.length) {
+            html += '<' + heading + ' class="index-heading">Supplementary</' + heading + '>';
+            html += '<ol class="module-list index-supplementaries">';
+            t.supplementaries.forEach(function (s) {
+                html += simpleRowHtml('Reference', s.title, opts.fileHref('supplementary', s.slug));
+            });
+            html += '</ol>';
+        }
+
+        if (t.references && t.references.length) {
+            html += '<' + heading + ' class="index-heading">Quick reference</' + heading + '>';
+            html += '<ol class="module-list index-references">';
+            t.references.forEach(function (r) {
+                html += simpleRowHtml('Lookup', r.title, opts.fileHref('reference', r.slug));
+            });
+            html += '</ol>';
+        }
+
+        // Trainer guide is built and reachable by direct URL (SPA route
+        // ?file=trainer-guide; workbook sibling trainer-guide.html). Not
+        // surfaced from the student-facing index — trainers know the URL.
+
+        return html;
+    }
+
+    function cardHtml(num, title, slug, href, bigIdea) {
+        var bigHtml = bigIdea ? esc(bigIdea) : '&nbsp;';
+        return '<li data-slug="' + esc(slug) + '">' +
+            '<a href="' + href + '">' +
+            '<span class="module-n">' + esc(num) + '</span>' +
+            '<span class="module-body">' +
+            '<span class="module-title">' + esc(title) + '</span>' +
+            '<span class="module-big"' + (bigIdea ? '' : ' data-big-idea') + '>' + bigHtml + '</span>' +
+            '</span>' +
+            '<span class="module-arrow">→</span>' +
+            '</a></li>';
+    }
+
+    return {
+        // Data
+        TRAININGS: TRAININGS,
+        DEFAULT_TRAINING: DEFAULT_TRAINING,
+        INCLUDE_LINK_RE: INCLUDE_LINK_RE,
+        CROSS_DOC_SHARED_RE: CROSS_DOC_SHARED_RE,
+        CROSS_DOC_TRAINING_RE: CROSS_DOC_TRAINING_RE,
+        CROSS_DOC_TRAINING_KS_RE: CROSS_DOC_TRAINING_KS_RE,
+        FOOTER_INNER: FOOTER_INNER,
+        renderFooter: renderFooter,
+
+        // Pure (Node-safe)
+        esc: esc,
+        rewriteCrossDocLinks: rewriteCrossDocLinks,
+        rewriteImageTargets: rewriteImageTargets,
+        wrapImageFigures: wrapImageFigures,
+        decorateDiagramZoom: decorateDiagramZoom,
+        MD_IMAGE_RE: MD_IMAGE_RE,
+        slugifyHeading: slugifyHeading,
+        configureMarked: configureMarked,
+        stripMaintainerTail: stripMaintainerTail,
+        renderPromptBlock: renderPromptBlock,
+        expandPrompts: expandPrompts,
+        PROMPT_INCLUDE_RE: PROMPT_INCLUDE_RE,
+        extractParent: extractParent,
+        extractBigIdea: extractBigIdea,
+        escapeTildes: escapeTildes,
+        cardHtml: cardHtml,
+        buildTocSections: buildTocSections,
+
+        // DOM (browser only)
+        decorateSessions: decorateSessions,
+        decorateHox: decorateHox,
+        decorateNote: decorateNote,
+        decoratePrompts: decoratePrompts,
+        attachAnchorPopups: attachAnchorPopups,
+        addCopyButton: addCopyButton,
+        installReadingProgress: installReadingProgress,
+        buildModuleHero: buildModuleHero,
+        moduleNumber: moduleNumber,
+        wrapStandaloneInPhase: wrapStandaloneInPhase,
+        simpleRowHtml: simpleRowHtml,
+        renderAccents: renderAccents,
+
+        // Runtime switcher
+        getRuntime: getRuntime,
+        applyRuntime: applyRuntime,
+        setRuntime: setRuntime,
+        wireRuntimeSwitcher: wireRuntimeSwitcher,
+        trainingSupportsRuntimeSwitch: trainingSupportsRuntimeSwitch
+    };
+});
+</script>
+<script>
+(function () {
+  if (window.CurriculumRuntime) {
+    CurriculumRuntime.decorateSessions(document.body);
+    CurriculumRuntime.decorateHox(document.body);
+    CurriculumRuntime.decorateNote(document.body);
+    CurriculumRuntime.decoratePrompts(document.body);
+    CurriculumRuntime.decorateDiagramZoom(document.body);
+    CurriculumRuntime.installReadingProgress();
+  }
+})();
+</script>
+</body>
+</html>

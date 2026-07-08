@@ -41,8 +41,8 @@ Surface where the tool list comes from, then how MCP-connector tools land in the
 5. The three prompts' registry `origin:` frontmatter still reads `agentic-engineering-101/supplementary/the-agent-loop` (documentation-only field per `compile-prompts.js`; left alone to avoid a registry edit). Update on the next prompt-registry pass?
 6. `scripts/audit-eval-coverage.js` SURFACES.lectures doesn't list `the-agent-loop`, and the four `ae101--the-agent-loop.*.json` instances point at the old supplementary path. Add the slug on the next coverage run.
 
-**Quality:** compendium-audited 2026-05-14 (writing@0f32201 story@0f32201 technical@0f32201 behavior@0f32201) — predates the promotion + slide rework; re-audit before ship.
-- judges @0f32201: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-07-08 (writing@0f32201 story@0f32201 technical@0f32201 behavior@0f32201 slides@47f3357) — predates the promotion + slide rework; re-audit before ship.
+- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy grandfathered, strategy grandfathered, slides PASS (override-r8-surface-is-verb-not-dialect-see-instances/ae101--the-agent-loop.slides.json)
 
 **Meta:** *M4 teaching lecture, ~5 minutes projected. Audience: the engineer about to send a multi-hour task off in this same session. The three prompts demonstrate the loop on the student's live session; that's the teaching move — the anatomy slide is scaffolding for the prompts, not the lesson.*
 

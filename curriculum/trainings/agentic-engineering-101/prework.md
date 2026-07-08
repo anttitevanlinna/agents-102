@@ -51,7 +51,7 @@ Mechanical setup. Claude needs to write outside the repo (`~/Documents/ae101-con
 
 ## 5. Pick a trivial bug and confirm M1 readiness
 
-Now the interactive beat. Claude walks three trivial bug candidates from your repo's backlog, helps you pick one, then confirms the repo can test, branch, commit, and open a PR.
+Now the interactive step. Claude walks three trivial bug candidates from your repo's backlog, helps you pick one, then confirms the repo can test, branch, commit, and open a PR.
 
 When Claude gets to the bug screen, push back if it dumps all four criteria at once. One bug at a time, then the next. Trivial means a few lines here and there, not a multi-file refactor.
 
@@ -69,14 +69,13 @@ Close the prework session when Claude confirms readiness. Module 1 opens fresh i
 
 A picked bug from Step 5. Write it down, file/line, or a one-sentence summary in a note. The prework session closes; the bug needs to survive into M1. Come to Module 1 without one and you'll be scrambling for one while the room is already fixing theirs. Your call.
 
-Connections question at the opening: *what's one trick you figured out with Claude Code that nobody taught you?* Bring one. Doesn't have to be big. No trick? Bring a moment Claude Code frustrated you.
+The opening question at Module 1: *what's one trick you figured out with Claude Code that nobody taught you?* Bring one. Doesn't have to be big. No trick? Bring a moment Claude Code frustrated you.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-24 (writing@1fd0f66 story@1fd0f66 technical@1fd0f66 behavior@1fd0f66 pedagogy@1fd0f66 strategy@1fd0f66)
-- judges @1fd0f66: writing PASS, story PASS, technical PASS, behavior PASS (override-fresh-install-context-no-collision-norm-see-instances/ae101--prework.behavior.json), pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-07-08 (writing@1fd0f66 story@1fd0f66 technical@1fd0f66 behavior@1fd0f66 pedagogy@1fd0f66 strategy@1fd0f66 slides@47f3357)
+- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS (override-fresh-install-context-no-collision-norm-see-instances/ae101--prework.behavior.json), pedagogy PASS, strategy PASS, slides PASS
 - cross_module @1765c51: PASS — override-§3-student-noted-path-by-design-§5-contract-row-added-see-instances/ae101--prework-M1-M3.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust]
-- maintainer-reviewed 2026-05-24 (Antti — Windows-claim correction: deleted student-facing Git-Bash sentence; Transport bullet re-verified live against `code.claude.com/docs/en/setup`, OS floor 1809 not 1803, conditional Git Bash. Supersedes judge re-fire for this edit.)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass — pre-reshape)
 
 **Meta:**

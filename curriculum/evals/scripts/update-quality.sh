@@ -21,6 +21,7 @@
 #   --behavior   <state>[:<note>]
 #   --pedagogy   <state>[:<note>]
 #   --strategy   <state>[:<note>]
+#   --slides     <state>[:<note>]
 #
 # Other axis flags:
 #   --cross-module        <state>[:<note>]   # module-set scope; note typically `set=[...]`
@@ -64,6 +65,7 @@ state_technical=keep
 state_behavior=keep
 state_pedagogy=keep
 state_strategy=keep
+state_slides=keep
 
 # Axis state
 state_cross_module=keep
@@ -78,6 +80,7 @@ while [[ $# -gt 0 ]]; do
     --behavior)            state_behavior="$2"; shift 2 ;;
     --pedagogy)            state_pedagogy="$2"; shift 2 ;;
     --strategy)            state_strategy="$2"; shift 2 ;;
+    --slides)              state_slides="$2"; shift 2 ;;
     --cross-module)        state_cross_module="$2"; shift 2 ;;
     --maintainer-reviewed) state_maintainer_reviewed="$2"; shift 2 ;;
     --cohorts)             state_cohorts="$2"; shift 2 ;;
@@ -91,7 +94,7 @@ done
 
 # REVISE without note is a hard error
 for v in "$state_writing" "$state_story" "$state_technical" "$state_behavior" \
-         "$state_pedagogy" "$state_strategy" "$state_cross_module" \
+         "$state_pedagogy" "$state_strategy" "$state_slides" "$state_cross_module" \
          "$state_maintainer_reviewed" "$state_cohorts"; do
   if [[ "$v" == "REVISE" ]]; then
     echo "error: REVISE state requires :<note> (cause or accept-reason)" >&2
@@ -113,6 +116,7 @@ prior_pin_technical=""
 prior_pin_behavior=""
 prior_pin_pedagogy=""
 prior_pin_strategy=""
+prior_pin_slides=""
 in_block=0
 while IFS= read -r line; do
   if [[ "$line" == "**Quality:**"* ]]; then
@@ -136,7 +140,7 @@ done < "$FILE"
 #          pedagogy@mno7890 strategy@pqr1234.
 # Tolerates extra spaces and any subset of the six classes.
 if [[ -n "$prior_top" ]]; then
-  for cls in writing story technical behavior pedagogy strategy; do
+  for cls in writing story technical behavior pedagogy strategy slides; do
     pin=$(printf '%s\n' "$prior_top" | sed -nE "s/.*[^a-z]($cls@[a-zA-Z0-9_-]+).*/\1/p")
     case "$cls" in
       writing)    prior_pin_writing="$pin" ;;
@@ -145,6 +149,7 @@ if [[ -n "$prior_top" ]]; then
       behavior)   prior_pin_behavior="$pin" ;;
       pedagogy)   prior_pin_pedagogy="$pin" ;;
       strategy)   prior_pin_strategy="$pin" ;;
+      slides)     prior_pin_slides="$pin" ;;
     esac
   done
 fi
@@ -162,12 +167,12 @@ fi
 # in REVISE / grandfathered / N/A get no pin (correct — they're not in PASS
 # state). This restores spec-conformant top-lines on files whose tuples were
 # previously clobbered.
-if [[ -z "$prior_pin_writing$prior_pin_story$prior_pin_technical$prior_pin_behavior$prior_pin_pedagogy$prior_pin_strategy" \
+if [[ -z "$prior_pin_writing$prior_pin_story$prior_pin_technical$prior_pin_behavior$prior_pin_pedagogy$prior_pin_strategy$prior_pin_slides" \
       && -n "$keep_judges" ]]; then
   row_sha=$(printf '%s\n' "$keep_judges" | sed -nE 's/^- judges @([a-zA-Z0-9_-]+):.*/\1/p')
   if [[ -n "$row_sha" ]]; then
     judges_body="${keep_judges#*: }"
-    for cls in writing story technical behavior pedagogy strategy; do
+    for cls in writing story technical behavior pedagogy strategy slides; do
       if printf '%s\n' "$judges_body" | grep -qE "(^|, )$cls PASS(\b|,|$)"; then
         case "$cls" in
           writing)   prior_pin_writing="$cls@$row_sha"   ;;
@@ -176,6 +181,7 @@ if [[ -z "$prior_pin_writing$prior_pin_story$prior_pin_technical$prior_pin_behav
           behavior)  prior_pin_behavior="$cls@$row_sha"  ;;
           pedagogy)  prior_pin_pedagogy="$cls@$row_sha"  ;;
           strategy)  prior_pin_strategy="$cls@$row_sha"  ;;
+          slides)    prior_pin_slides="$cls@$row_sha"    ;;
         esac
       fi
     done
@@ -197,10 +203,10 @@ render_class_inline() {
   esac
 }
 
-# Build judges row only if at least one of the six classes is non-keep
+# Build judges row only if at least one of the judge classes is non-keep
 all_keep=1
 for v in "$state_writing" "$state_story" "$state_technical" "$state_behavior" \
-         "$state_pedagogy" "$state_strategy"; do
+         "$state_pedagogy" "$state_strategy" "$state_slides"; do
   [[ "$v" != "keep" ]] && all_keep=0
 done
 
@@ -212,6 +218,7 @@ prior_judges_technical=""
 prior_judges_behavior=""
 prior_judges_pedagogy=""
 prior_judges_strategy=""
+prior_judges_slides=""
 if [[ -n "$keep_judges" ]]; then
   judges_body_prior="${keep_judges#*: }"
   IFS=',' read -r -a verdict_arr <<< "$judges_body_prior"
@@ -224,6 +231,7 @@ if [[ -n "$keep_judges" ]]; then
       behavior\ *)  prior_judges_behavior="$entry"  ;;
       pedagogy\ *)  prior_judges_pedagogy="$entry"  ;;
       strategy\ *)  prior_judges_strategy="$entry"  ;;
+      slides\ *)    prior_judges_slides="$entry"    ;;
     esac
   done
 fi
@@ -251,7 +259,8 @@ else
   parts=""
   for pair in "writing $state_writing" "story $state_story" \
               "technical $state_technical" "behavior $state_behavior" \
-              "pedagogy $state_pedagogy" "strategy $state_strategy"; do
+              "pedagogy $state_pedagogy" "strategy $state_strategy" \
+              "slides $state_slides"; do
     cls="${pair%% *}"
     raw="${pair#* }"
     if [[ "$raw" == "keep" ]]; then
@@ -262,7 +271,11 @@ else
         behavior)   raw=$(prior_state_for behavior  "$prior_judges_behavior")  ;;
         pedagogy)   raw=$(prior_state_for pedagogy  "$prior_judges_pedagogy")  ;;
         strategy)   raw=$(prior_state_for strategy  "$prior_judges_strategy")  ;;
+        slides)     raw=$(prior_state_for slides    "$prior_judges_slides")    ;;
       esac
+      # slides postdates the judge refactor (class added 2026-07-08): keep with
+      # no prior entry means never-judged — omit rather than stamp grandfathered.
+      if [[ -z "$raw" && "$cls" == "slides" ]]; then continue; fi
       [[ -z "$raw" ]] && raw=grandfathered  # no prior judges row at all
     fi
     rendered=$(render_class_inline "$cls" "$raw")
@@ -299,7 +312,8 @@ cohorts_row=$(render_axis_row cohorts "$state_cohorts" "$keep_cohorts")
 sha_pins=""
 for pair in "writing $state_writing" "story $state_story" \
             "technical $state_technical" "behavior $state_behavior" \
-            "pedagogy $state_pedagogy" "strategy $state_strategy"; do
+            "pedagogy $state_pedagogy" "strategy $state_strategy" \
+            "slides $state_slides"; do
   cls="${pair%% *}"
   raw="${pair#* }"
   if [[ "$raw" == "PASS" || "$raw" == PASS:* ]]; then
@@ -312,6 +326,7 @@ for pair in "writing $state_writing" "story $state_story" \
       behavior)  [[ -n "$prior_pin_behavior"  ]] && sha_pins+="${sha_pins:+ }$prior_pin_behavior"  ;;
       pedagogy)  [[ -n "$prior_pin_pedagogy"  ]] && sha_pins+="${sha_pins:+ }$prior_pin_pedagogy"  ;;
       strategy)  [[ -n "$prior_pin_strategy"  ]] && sha_pins+="${sha_pins:+ }$prior_pin_strategy"  ;;
+      slides)    [[ -n "$prior_pin_slides"    ]] && sha_pins+="${sha_pins:+ }$prior_pin_slides"    ;;
     esac
   fi
 done

@@ -28,7 +28,8 @@
 3. **Slide budget.** +2 slides onto M4's already-flagged raw count (the-agent-loop's eyeball #3 put M4 at ~15 vs the ~6 budget; these two are re-chunked supplementary content, no new teaching load). Cut to one slide (fold the paradox and the complacency half together), or accept two?
 4. **Mood contract.** The paradox is meant to land as a live tension to watch for, not a prediction of failure. If in rehearsal it reads as *"you will miss the bad run,"* it has tipped the module's curious-readiness mood toward doom — pull it to the close or thin it to one slide.
 
-**Quality:** no Quality line by design (new lecture, unaudited — the promotion re-shaped placement and dropped a section; re-audit before ship). The two sources below were verified live on the supplementary and carry over verbatim.
+**Quality:** no 2026-07-08 (slides@47f3357)**Quality:** no Quality line by design (new lecture, unaudited — the promotion re-shaped placement and dropped a section; re-audit before ship). The two sources below were verified live on the supplementary and carry over verbatim.
+- judges @47f3357: writing grandfathered, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered, slides PASS
 
 **Mood target:** curious readiness held (the module's target), with the earned-trust paradox as a named tension. Primes rather than consolidates.
 

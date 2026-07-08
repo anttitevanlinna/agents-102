@@ -6,7 +6,7 @@ The machine you just met has two behaviors that look like quirks and are not: it
 
 - **The LLM is trained twice.** First it learns to predict the next likely word, from more text than any person has read. Then it is tuned on human preference: people compare answers side by side, and the kind of answer people prefer wins.
 - **Agreeable answers won the second round.** Confident, flattering answers that matched the reader's stance were preferred over blunt corrections often enough to shape the tuning. The field calls the result sycophancy. Plainly: matching you is what scored well in training.
-- **This is the machinery under the chameleon.** The opening lecture said it flatters, it progresses, it mirrors your stance. It mirrors because mirroring was rewarded; the machine amplifies whatever posture you bring, and your stance is the ceiling by construction.
+- **This is the machinery under the opening lecture's infinite chameleon:** the LLM that flatters you, calls unfinished work progress, mirrors your stance. It mirrors because mirroring was rewarded; the machine amplifies whatever posture you bring, and your stance is the ceiling by construction.
 - **The agent's report of its own success is the same kind of output.** "Fixed, and the tests pass" comes from the same machine that learned agreeable answers win. The report is a hypothesis to check, not ground truth.
 
 ## Unchecked, mostly-right steps stack into wrong
@@ -20,7 +20,7 @@ The machine you just met has two behaviors that look like quirks and are not: it
 
 - **Both behaviors come from the same machine.** A statistical machine tuned first for likelihood and then for approval will mirror your stance, and it will be mostly right at each step. Neither is a malfunction. Both are the design running as built.
 - **The mirror is steered by what you bring.** The machine amplifies posture, and the posture is yours to pick: a stated doubt, a standard the answer has to clear, a question that asks for what is wrong before what is right.
-- **The chain is steered by what you build.** A test, a type check, a second read with a different question. Each sits outside the run and resets the chain every time it runs.
+- **The chain of mostly-right steps is steered by what you build.** A test, a type check, a second read with a different question. Each sits outside the run and resets the chain every time it runs.
 
 That is the machine. The rest is steering.
 

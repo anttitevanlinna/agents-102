@@ -29,14 +29,12 @@ Ask Claude to read your repo deliberately and report what it finds.
 
 {{prompt:orient-and-introspect-1}}
 
-## Read the shape the agent reported
-
-- **The agent reports back a map of the repo:** shape, structure, what's load-bearing, what's stale. Let the read finish before you interrogate it.
+The agent reports back a map of the repo: shape, structure, what's load-bearing, what's stale. Let the read finish before you interrogate the map.
 
 ## Ask what Claude skipped, and why
 
 - **Every read has a shadow: the files Claude didn't load.** The skipped slice is where the surprises hide.
-- **This is one of the most useful moves in the training.** Claude can introspect on what it did and why, including what it chose not to read.
+- **Claude can introspect on what it did and why**, including what it chose not to read.
 
 Ask Claude to introspect on what it read, what it skipped, and the call it made on each.
 
@@ -57,15 +55,15 @@ Ask Claude to introspect on what it read, what it skipped, and the call it made 
 
 ## Read the unread slice
 
-- **The percentage is the number that matters.** The more the window fills, the less room for new work.
-- **The slice Claude didn't load is the bounded-window reality.** Going forward, your job is to steer what lands in those bytes.
-- **You now have a map of the window:** what loaded, what Claude skipped, and how much room is left. The next exercise fixes the bug inside the window you just mapped.
+- **The unread percentage from `/context` is the number that matters.** The more the window fills, the less room for new work.
+- **The slice Claude didn't load stays real.** The window holds only so much; going forward, you choose what fills it.
+- **You now have a map of the window:** what loaded, what Claude skipped, and how much room is left. The next exercise fixes the bug you brought from prework, inside the window you just mapped.
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-15 (writing@3605eee story@88a1dd4 technical@3605eee behavior@3605eee pedagogy@3605eee)
-- judges @3605eee: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy grandfathered
+**Quality:** compendium-audited 2026-07-08 (writing@3605eee story@88a1dd4 technical@3605eee behavior@3605eee pedagogy@3605eee slides@47f3357)
+- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy grandfathered, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read Claude's self-report against `/context`).
@@ -75,6 +73,8 @@ Ask Claude to introspect on what it read, what it skipped, and the call it made 
 - **Theme 3 (mirror)** — Claude's read reflects the student's prompt back at them.
 - **Theme 4 (self-aware, grain of salt)** — the introspection prompt and the `/context` verification.
 - **Theme 1 (90% correct)** — `/context` makes the unread slice visible.
+
+**Deliberate phrasing (maintainer-attested, do not edit):** the *"Assume about 10%… Could be more, could be less."* line is intentional in exactly that format — the round number plus the open retraction is the teaching shape (a working prior the student holds loosely, not a measured constant). `check_slides.md` rule 7's number-plus-retraction sub-item does NOT fire here; judges flag it → accept-with-note, no edit.
 
 **Watch-fors:**
 - **Introspection skipped.** Student reads Claude's repo summary and moves to the bug fix without the second prompt. Trainer push: *"before we move on — what did Claude choose not to read, and does that match what you'd have expected?"*

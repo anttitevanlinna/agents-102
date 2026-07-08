@@ -10,7 +10,7 @@ Start a new Claude Code session at your repo root.
 /rename m4-walk-send
 ```
 
-**Start clean.** M4 picks up a bigger task than M1–M3. Before the new session, check your working tree and branch. You ride that state into Phase 4's `m4/<slug>` commit and M5's fork.
+**Start clean.** M4 picks up a bigger task than M1–M3. Before the new session, check your working tree and branch. You ride that state into the closing `m4/<slug>` commit and M5's fork.
 
 **What you do:** Pick a task you've been avoiding, the kind you'd send off rather than nudge bit by bit. Walk what you've built across four modules against it. Fill the worst gaps. See Huryn's three-block frame in your own material. At the close, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
 
@@ -22,7 +22,7 @@ Start a new Claude Code session at your repo root.
 
 ## Phase 1: Pick the task you'll send off
 
-- **Not an epic. Not a typo-fix.** A real slice you'd send off rather than nudge bit by bit, with a 'done' you can name in a sentence.
+- **A real slice you'd send off rather than nudge bit by bit**, with a 'done' you can name in a sentence. Bigger than a typo-fix, smaller than an epic.
 - **The pick is yours; the fit-check is the agent's.** You are not on the hook for scanning your roadmap or Jira; that stays your call. Bring one or two candidates; the agent screens them for fit against the three long-run criteria.
 
 Ask Claude to screen the candidates you bring against the three long-run criteria and scope the winner. Drop the candidates after the colon.
@@ -71,7 +71,7 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 
 - **Your observations are what you just admitted is thin in spots.** Don't let them re-seed with drift. Push back when Claude writes something that doesn't match the codebase.
 
-> **Time check.** Different paces hit this beat at different times. The room doesn't wait for the slowest. Five to ten minutes to share what surfaced, where the audit missed, and why the agent sometimes goes lazy.
+> **Time check.** Different paces hit this point at different times. The room doesn't wait for the slowest. Five to ten minutes to share what surfaced, where the audit missed, and why the agent sometimes goes lazy.
 
 ## Phase 3: Name your own work as observation, decision, and criterion
 
@@ -101,7 +101,7 @@ Phase 3 is where the exercise ends. The module file's send-off takes over:
 1. You nudge the compound step: Claude reads the session, rewrites your personal `CLAUDE.local.md` from evidence, integrates, sharpens, removes, and reports 3–5 lines. Team-worthy rules get flagged in the summary, not auto-PRed.
 2. You push back on the 3–5 line summary.
 3. You set the two return markers: ask Claude where this session's transcript lives, then ask it to commit the current state on a feature branch and report the short SHA. Push the branch if you want the run to outlast your laptop. Module 5 forks from that commit and reads the transcript.
-4. You run the trifecta check: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening prompt injection needs. All three present here, cut one leg before you send.
+4. You run the trifecta check: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening that prompt injection needs. All three present here, cut one leg before you send.
 5. You paste the send-off prompt to the same session. Keep the laptop awake and plugged in. Don't close the lid; sleep freezes the session and it won't resume on wake. If you want to stop the run early, wait for a tool call to finish; clean interrupts between tool calls are fine. Traces are data either way.
 
 <!-- maintainer -->
@@ -110,8 +110,8 @@ Phase 3 is where the exercise ends. The module file's send-off takes over:
 
 **Prompt register — `walk-and-send-off-3` rewritten 2026-05-21.** Earlier "deliberately short" speed-up shape (*"You propose solutions and ask questions. Use the ask-questions tool to speed up my work."*) was the cohort's single biggest individual failure mode (M4 12:36Z + 12:37Z: outright-skipped exercise). Rewritten to scaffold the gap-fill structurally with `AskUserQuestion` by name + pick-then-walk loop + per-shape destination mapping (`observations/` for observations and business-rules gaps; `./CLAUDE.local.md` for rule sharpening; connector setup for connector wiring). Pairs with `author-test-strategy-skill-1`'s 2026-05-21 close — same family fix (replace push-back-by-convention with tool-by-name). Body restructured so the prompt is the default flow, not an opt-in speed-up; conversational-example bullets demoted to "what a fill looks like" reference after the prompt fence, each bullet now naming the matching destination.
 
-**Quality:** compendium-audited 2026-05-26 (writing@0ef2ca6 story@0ef2ca6 technical@0ef2ca6 behavior@689e7e0 pedagogy@0ef2ca6 strategy@689e7e0)
-- judges @0ef2ca6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-07-08 (writing@0ef2ca6 story@0ef2ca6 technical@0ef2ca6 behavior@689e7e0 pedagogy@0ef2ca6 strategy@689e7e0 slides@47f3357)
+- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Word count:** ~750 words body.

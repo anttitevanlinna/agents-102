@@ -45,7 +45,7 @@ You walk in holding two runs of the same task. The un-packaged Module 4 send-off
 
 ## Human close
 
-No compound prompt here. The encode step already happened when you shipped the second skill in the exercise; the team-kit accretion is the Module 6 compound. This slot is the human round the practitioner-fluency mood warrants.
+No compound prompt here. The encode step already happened when you shipped the second skill in the exercise; the skills that landed in the team kit are the Module 6 compound. This slot is a human round: talk, compare, no prompts.
 
 *Three runs of the loop on your own work. The kit, yours.*
 
@@ -82,8 +82,8 @@ Antti
 
 **M6 opener rescue + accept-loss callouts — deliberate exception to `check_student_facing.md` rule 5 (golden path only in body).** Two consecutive blockquotes in `## Start here` carry the rescue paths (nudge / re-send fresh / skip the opener) and the accept-the-loss floor ("you can still do the module's exercises"). Rule 5 normally bans recovery branches in body; here the structural risk (M5 run crashed during lunch in 2-day delivery) is named with scoped rescue, then a softer floor for the case where rescue fails entirely. The blockquote shape isolates both from the golden-path narrative for prepared students. Future judges should not re-flag.
 
-**Quality:** compendium-audited 2026-05-31 (writing@0ef2ca6 story@1ff6f8a technical@0ef2ca6 behavior@1ff6f8a pedagogy@0ef2ca6 strategy@d06b5b8) — predates the 2026-07-02 close rework (the-map-filled-in added to the Human close, going-deeper pointers added to `## Next`) and the 2026-07-03 room re-sequence (agents-that-build-agents moved to the training's last beat); re-audit before ship.
-- judges @d06b5b8: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-07-08 (writing@0ef2ca6 story@1ff6f8a technical@0ef2ca6 behavior@1ff6f8a pedagogy@0ef2ca6 strategy@d06b5b8 slides@47f3357) — predates the 2026-07-02 close rework (the-map-filled-in added to the Human close, going-deeper pointers added to `## Next`) and the 2026-07-03 room re-sequence (agents-that-build-agents moved to the training's last beat); re-audit before ship.
+- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (override-r8-surface-verb-not-dialect-see-instances/ae101--spot-gaps-build-the-loop.slides.json)
 - cross_module @0ef2ca6: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop,plan-mode-done-right]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

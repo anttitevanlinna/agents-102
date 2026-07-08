@@ -14,7 +14,17 @@ answers:
 
 # Google Workspace / Gemini Enterprise — Platform State
 
-Last updated: 2026-06-05 (cycle 124)
+Last updated: 2026-07-08 (cycle 157)
+OODA cycles: 21
+
+**Cycle 157 updates (July 8, 2026) — Gemini 3.5 Pro missed June GA; $225B market cap hit; 4 DeepMind researchers to Anthropic; ADK 2.0 GA (no production evidence):**
+
+**Gemini 3.5 Pro delay — missed June GA, still in limited enterprise preview July 8.** Announced at I/O May 19 with June GA target. Three documented failure modes from early testers: token-efficiency shortfalls, coding performance below I/O bar, long-horizon multi-step reasoning gaps. Market response: Alphabet shed ~$225B market cap on delay news. Four senior DeepMind researchers departed to Anthropic during this period. July 17 floated as candidate GA date (unconfirmed by Google). Competitive implication: the primary model advantage Google expected to have in Q2 2026 did not materialize — every week Gemini 3.5 Pro is in preview is a week competitors maintain their model position. ([blog.getbind.co](https://blog.getbind.co/gemini-3-5-pro-slips-to-july-and-four-senior-google-researchers-left-for-anthropic/) — [domain trade publication]; [the-agent-report.com](https://the-agent-report.com/2026/07/google-gemini-3-5-pro-delayed-july-2026/) — [domain trade publication]; [finance.biggo.com](https://finance.biggo.com/news/6f0c6bb2-795f-4c57-9d09-6db691d7638a) — [general press], June–July 2026)
+
+**ADK 2.0 GA — five languages, graph workflows, HITL, Agent Runtime deployment; zero independent production evidence.** ADK 2.0 GA'd: graph workflows, multi-agent collaboration, CLI scaffolding-to-deployment. Python, TypeScript/JavaScript, Go, Java, Kotlin. ADK Go 2.0 (June 30): graph engine + HITL specifically for Go. Deploys to Agent Runtime, Cloud Run, or GKE. Zero independent practitioner "we deployed this to production" posts found in this scan. All June–July content is tutorial/launch material. ([adk.dev](https://adk.dev/) — [vendor docs]; [developers.googleblog.com ADK Go](https://developers.googleblog.com/announcing-adk-go-20/) — [vendor], June 30, 2026)
+
+**Watch: July 17 (Gemini 3.5 Pro candidate GA date — unconfirmed); ADK 2.0 practitioner production evidence (Day 14–21 window from June GA).**
+
 OODA cycles: 20
 
 ## Focus

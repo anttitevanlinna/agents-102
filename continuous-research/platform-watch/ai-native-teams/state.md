@@ -15,7 +15,26 @@ answers:
 
 # AI-Native Teams — Research Track
 
-**Last updated:** 2026-06-27 (cycle 146)
+**Last updated:** 2026-07-08 (cycle 157)
+**OODA cycles:** 11
+
+**Cycle 157 updates (July 8, 2026) — Cognitive debt named as #1 failure mode (Willison + BVP convergence); RevenueCat 1-3 engineer team model (L2); Shopify quality-parity validation; Gartner smaller-team prediction (L0):**
+
+**Cognitive debt — AI-native team failure mode named with practitioner convergence.** Simon Willison (July 2, 2026): "Understand to participate" — core argument: you must maintain deep code understanding to remain an active participant in AI-generated codebases. *Cognitive debt* = understanding drifting from how code actually works as AI builds increasingly large changes. "If you're lacking that fluency, your ability to participate in the project is meaningfully limited." ([simonwillison.net/2026/jul/2/understand-to-participate/](https://simonwillison.net/2026/jul/2/understand-to-participate/) — [practitioner direct], July 2, 2026) BVP Bessemer (June 10, Shopify + Ramp practices) independently: "Abdicate the toil. Never abdicate the thinking." Practice: weekly demos (not velocity metrics) to test real comprehension. These two sources arrive independently from different angles — Willison from solo practitioner experience, BVP from portfolio company observation. **Level 2 convergence; moving toward Level 3 when third practitioner names the same failure mode.** ([bvp.com/atlas/inside-ai-pilled-engineering-teams](https://www.bvp.com/atlas/inside-ai-pilled-engineering-teams-five-lessons-for-scaling-without-losing-the-plot) — [practitioner analysis], June 10, 2026)
+
+**Shopify quality-parity validation — AI reversion rates at baseline.** BVP (June 10, Shopify data): AI-generated code reversion rates are at baseline parity with pre-AI code. This is the first independent validation of production quality parity in AI-native engineering — critical for enterprise trust-building. Named practice: 10 parallel agents running simultaneously on different codebase parts; engineers review and merge. Ramp: Inspect agent reviews 30% of all merged PRs. LLM proxy gateway routes all AI requests centrally. Tool stack: Claude Code, Copilot, Cursor, Codex + MCP servers to Salesforce/Slack/GitHub. ([bvp.com/atlas/inside-ai-pilled-engineering-teams](https://www.bvp.com/atlas/inside-ai-pilled-engineering-teams-five-lessons-for-scaling-without-losing-the-plot) — [practitioner analysis], June 10, 2026)
+
+**Simon Willison — delegation of workflow decisions to model (July 3).** Specific technique: instruct agent to decide when testing is warranted and which subagent tier suits each subtask. Applied to sqlite-utils 4.0 (mostly written by Claude Fable for $149.25). Tips from Cat Wu and Thariq Shihipar (Claude Code team). "Tell the model to decide when testing is appropriate" outperforms dictating testing rules. Token cost reduced by matching task complexity to subagent tier. ([simonwillison.net/2026/Jul/3/judgement/](https://simonwillison.net/2026/Jul/3/judgement/) — [practitioner direct], July 3, 2026)
+
+**RevenueCat — doubled team count with 1–3 engineer units (Level 2).** More than doubled product team count by splitting into 1–3 engineer teams. Each team: one Tech Lead (DRI) + shared design/product support. Manager role shifted from sprint oversight to hiring, coaching, rebalancing. AI moves work unit from code production → decision-making, enabling smaller autonomous units. Named risk: losing one person from a 2-person team = 50% capacity loss. Evidence level: Level 2 (single named company, specific structural change, named practitioner account). ([miguelcarranza.es/small-teams](https://miguelcarranza.es/small-teams) — [practitioner analysis], June 27, 2026)
+
+**Gartner prediction (Level 0, directional only): 60% of organizations will adopt smaller engineering teams by 2029.** Up from 15% in 2026. This is an analyst prediction (Level 0 — not evidence), but the direction aligns with practitioner evidence. The RevenueCat + Shopify patterns are being noticed at the analyst level. ([gartner.com Jul 7 2026](https://www.gartner.com/en/newsroom/press-releases/2026-07-07-gartner-predicts-60-percent-of-organizations-will-adopt-smaller-software-engineering-teams-by-2029) — [analyst prediction, Level 0], July 7, 2026)
+
+**What did not surface in the July 2026 window:**
+- No new named non-engineering AI-native teams (no marketing, finance, HR, operations teams with documented AI-native practices found)
+- No Intercom, Ramp, or Every blog post on AI-native team structure in the July 1–8 window
+- No "compound engineering" new posts in the 10-day window
+
 **OODA cycles:** 10
 **Focus:** How teams that deeply integrate AI into their daily work actually operate — their characteristics, practices, working style, tools, and structure.
 

@@ -16,7 +16,7 @@ Open a new Claude Code session in the M5 worktree at `../<repo>-m5` (set up at m
 
 **What you build:** three pieces that make a failed run come back trustworthy: a verifier, a reference, and a plan.md. Each one is built against a specific failure you read in the M4 run.
 
-**The point:** Ronacher's three-pattern earns its name in this exercise. You don't learn it from a slide; you build each piece against a failure you read in your own artefact. The closing lecture names what you built afterward.
+**The point:** a practitioner's pattern earns its name in this exercise. You don't learn it from a slide; you build each piece against a failure you read in your own artefact. The closing lecture names what you built afterward.
 
 ---
 
@@ -43,7 +43,7 @@ Confirm the path is right. Then ask Claude to read the repo state on the previou
 
 ## Phase 2: Match each failure to the check that catches it
 
-- **Ask the question that earns the three-pattern.** For each named failure: *what validation would have caught this in minutes, not hours?*
+- **Ask the question that earns the pattern.** For each named failure: *what validation would have caught this in minutes, not hours?*
 - **Match the verifier shape to the failure, not the slogan.** Drift and context rot fire mid-run, on every spec re-read or window fill, so minute cadence is real there. Plausible-but-wrong fires on output: the work compiles, passes lint, looks right, and is wrong.
 
 Ask Claude to walk each diagnosed failure backwards into the validation that would have caught it.
@@ -100,8 +100,8 @@ Say *lock it in.* The agent writes both files. Read the diffs.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-09 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4)
-- judges @88a1dd4: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-07-08 (writing@88a1dd4 story@88a1dd4 technical@88a1dd4 behavior@88a1dd4 slides@47f3357)
+- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy grandfathered, strategy grandfathered, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Word count:** ~810 words body.

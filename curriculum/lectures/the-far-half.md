@@ -40,3 +40,6 @@
 **Edit (2026-07-02):** Verification bullet gains one map-vocabulary clause (the ghost checking loop, named by its M2 map tag, still a ghost here) — completeness-review minor "map strand vocabulary shown once, never revisited". Revisit, not un-ghosting: no law named, no by-hand/gate phrasing (M5's beat). Near-half strand revisit queued for `the-loop-half-filled` (file locked this pass).
 
 - Family B judged 2026-07-03: B-star durability PASS — container reads whole voice-absent; spine-anchoring exemplary (every far-half phase names its map slot + governor-verb) and worldview-fit textbook recognition-before-naming ("you feel where it bites first"; laws named M5/M6).
+
+**Quality:** compendium-audited 2026-07-08 (slides@47f3357)
+- judges @47f3357: writing grandfathered, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered, slides PASS

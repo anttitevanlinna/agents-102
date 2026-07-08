@@ -1,6 +1,6 @@
 # Plan mode, done right
 
-> You might want to run this exercise with medium thinking effort. High and xhigh may feel sluggish on a tight slot like this one.
+> Run this module on medium thinking effort. High and xhigh may feel sluggish on a tight slot like this one.
 
 ## Big Idea
 Reading a plan is finite. Your own read catches some of it, a second agent walking the decision tree catches the rest. Push back with what you see; run a second-pass read for what you can't. Paired, they give a complete read; neither alone does.
@@ -85,8 +85,8 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-26 (writing@0ef2ca6 story@1a9e10b technical@0ef2ca6 behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b)
-- judges @0ef2ca6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-07-08 (writing@0ef2ca6 story@1a9e10b technical@0ef2ca6 behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b slides@47f3357)
+- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @0ef2ca6: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop,plan-mode-done-right]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

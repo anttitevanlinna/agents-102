@@ -139,3 +139,6 @@ The phases are places, not stages. A run usually stands in more than one at once
 7. Inner-loop label: `THE AGENT'S OWN LOOP` / `act · read the result · correct`. Does it show the nesting descriptively without pre-naming the M3 close?
 
 - Family B judged 2026-07-03: B-star durability PASS — map re-readable voice-gone (six phases named + placed, near/far legible); spine holds (the map *is* the spine); worldview container holds at phase level, the nine loop labels ride as furniture (no governor/principle stated → no derivation spent), which is the maintainer's open EYEBALL Q2/Q4/Q5, not a block.
+
+**Quality:** compendium-audited 2026-07-08 (slides@47f3357)
+- judges @47f3357: writing grandfathered, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered, slides PASS

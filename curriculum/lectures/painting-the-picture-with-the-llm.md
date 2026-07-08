@@ -3,7 +3,7 @@
 ## The LLM mirrors your stance
 
 - **The wizard typing in neat Perl syntax is dead.** Auto-complete was a thing. Auto-complete is no longer a thing. A part of high-end engineering skill has been taken on by the LLM.
-- **The LLM is an infinite chameleon.** It can do good work and bad work. It will be what fits the session. It flatters. It progresses. It mirrors your stance.
+- **The LLM is an infinite chameleon.** It can do good work and bad work. It will be what fits the session. It flatters you; it calls unfinished work progress. It mirrors your stance.
 - **The tool is not the thing; the taste behind the tool is the thing.** Seth Godin has been making that argument about tools for decades. The LLM is the infinite version of it: your stance as input to the session is mirrored in the output.
 - **That is the design, not a flaw.** It was trained to match you. Your stance is the ceiling.
 
@@ -11,13 +11,13 @@
 
 - **Stance and approach matter more now, not less.** The session bends to what sits in the context window. You prime it. The LLM scales it.
 - **Whatever you put in front of the LLM is what the LLM scales.** The rules file. The prompt. What sits on disk for the agent to read.
-- **If you want a shotgun, you have a shotgun.** If you want a cannon, you have that too. The smart ones stay smart. So the bet goes.
+- **If you want a shotgun, you have a shotgun.** If you want a cannon, you have that too. The sharp engineers stay sharp. So the bet goes.
 
 ## Two frontiers: how fast, and the right things
 
 - **Two questions out in front.** Neither has a settled answer.
-- **How fast can it learn?** How can a system like this learn faster than a human practitioner can write things down?
-- **Can it learn the right things?** Once it can learn fast, how does it learn the right things, and not just any things?
+- **How fast can your setup learn?** The rules and context you put in front of the LLM: can that stack learn faster than a human practitioner can write things down?
+- **Can it learn the right things?** Once the setup can learn fast, how does it learn the right things, and not just any things?
 
 Let's go.
 
@@ -29,8 +29,8 @@ Let's go.
 
 **Minor-fix (2026-07-02, theory-completeness-review minor #5 "design, not a flaw unearned"):** added a five-word whisper ("It was trained to match you.") to the slide-1 closing bullet — earns "design" as training without teaching the mechanism; `the-machine-you-just-met.md` (M1 closer) owns the full preference-tuning payoff and already calls this bullet back.
 
-**Quality:** compendium-audited 2026-05-15 (writing@3605eee technical@3605eee) — predates the slide rework; re-audit before ship.
-- judges @3605eee: writing PASS, story grandfathered, technical PASS, behavior grandfathered, pedagogy grandfathered, strategy grandfathered
+**Quality:** compendium-audited 2026-07-08 (writing@3605eee technical@3605eee slides@47f3357) — predates the slide rework; re-audit before ship.
+- judges @47f3357: writing PASS, story grandfathered, technical PASS, behavior grandfathered, pedagogy grandfathered, strategy grandfathered, slides PASS
 
 **Lecture meta:** *~3 min opener for Module 1, before the wizard-move demo. Sets the two open questions the training answers by accretion through M1–M6.*
 

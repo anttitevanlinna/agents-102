@@ -30,8 +30,8 @@ The run shows you what no benchmark can.
 **§3 judgment (cross-module refs in body):** carve-out HOLDS, partially — the lecture's subject IS the contrast arc (M4 baseline → this module's learn → the encode; the lecture is named for it), so the backward anchor "close of M4" and the backward arc legs "M4 was the test. This is the learn." are constitutive, not incidental sequencing; they stay. The forward leg ("M6 will be the encode") was incidental sequencing — the module file's `## Next` owns that bridge — rewritten to name what the encode IS without the module number. Incidental self-refs dispositioned in the same pass: "the move M5 asks of you" / "M5 holds that reflex off" → "this module"; "the re-send at the end of M5" → "the end of this module". No other M-refs above the fence.
 - section-3 sweep 2026-07-02: 3 cross-module refs judged, 1 fixed (forward "M6 will be the encode" → "The encode turns what the read finds into durable checks"; the M6 bridge lives in `learn-from-the-test.md` `## Next`, confirmed present), 2 carve-out ("close of M4" + "M4 was the test" — arc-subject lecture, backward anchors). Self-refs ("this module" ×2) OK.
 
-**Quality:** compendium-audited 2026-05-15 (writing@1ff6f8a story@1ff6f8a behavior@1ff6f8a pedagogy@1ff6f8a strategy@1ff6f8a) — predates the slides-only rework; re-audit before ship.
-- judges @1ff6f8a: writing PASS, story PASS, technical REVISE (1/0 see instances/ae101--learning-through-contrast.technical.json - /context replaces UI-location claim 2026-05-15), behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-07-08 (writing@1ff6f8a story@1ff6f8a behavior@1ff6f8a pedagogy@1ff6f8a strategy@1ff6f8a slides@47f3357) — predates the slides-only rework; re-audit before ship.
+- judges @47f3357: writing PASS, story PASS, technical REVISE (1/0 see instances/ae101--learning-through-contrast.technical.json - /context replaces UI-location claim 2026-05-15), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Word count:** ~330 words body (post-rework).
 

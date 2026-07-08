@@ -9,7 +9,7 @@ Before the agent runs bigger work alone, earn your staff engineer's and CISO's t
 
 M3 continues in the same repo as M1 and M2. The session opens at the first exercise.
 
-Bring the feature you planned at M2, that's the default. The plan file Claude Code wrote during plan mode is what M3 reads (you noted the path at M2 close). If your M2 task doesn't have an external or user-facing surface, swap to something from your backlog that does, code already in the repo, a Jira or Linear ticket, or a design doc all work. Not a typo-fix, not a quarter-long epic. Something you could ship in a few hours. Too small and the agent crunches it in thirty seconds with nothing interesting to surface. Too large and you don't get through it. Pick the size that fits.
+Bring the feature you planned at M2, that's the default. The plan file Claude Code wrote during plan mode is what M3 reads (you noted the path at M2 close). If your M2 task doesn't have an external or user-facing surface, swap to something from your backlog that does, code already in the repo, a Jira or Linear ticket, or a design doc all work. Bigger than a typo-fix, smaller than a quarter-long epic: something you could ship in a few hours. Too small and the agent crunches it in thirty seconds with nothing interesting to surface. Too large and you don't get through it. Pick the size that fits.
 
 Optional pre-reads in the Module 2 to Module 3 gap: Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/); [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) for a deeper scan.
 
@@ -53,7 +53,7 @@ The question, to you: what's the feature, and what's the surface you're most ner
 
 **Window:** the main quest window (*m3-security*). Switch back from the side quest now, the compound runs here. The test-strategy skill lives at user scope (`~/.claude/skills/test-strategy/SKILL.md`), readable from any session, so it crosses back with you. The canonical `./CLAUDE.local.md` lives in the main repo, not the side quest's worktree copy, so rule integration belongs here.
 
-Module 3's compound runs against two artifacts: the skill (its file content carries the conventions m3-quality encoded) and your `./CLAUDE.local.md` (where any rule about how you work with security skills, ADRs, or the access-map → STRIDE → test-strategy sequence earned itself). Skills carry the codebase convention; rules carry your working style. The skill sharpen is mandatory; the rules-file update is opportunistic.
+Module 3's compound runs against two artifacts: the skill (its file content carries the conventions the side-quest window *m3-quality* encoded) and your `./CLAUDE.local.md` (where any rule about how you work with security skills, ADRs, or the access-map → STRIDE → test-strategy sequence earned itself). Skills carry the codebase convention; rules carry your working style. The skill sharpen is mandatory; the rules-file update is opportunistic.
 
 Ask Claude to sharpen the one weakest section of the skill from invocation evidence, then integrate a rule into `./CLAUDE.local.md` if one earned itself. If a moment from m3-quality's authoring scrollback matters that the skill didn't capture, the m3-quality window is still open at this point, switch over and grab quotes, paste them into m3-security's chat before firing the prompt.
 
@@ -93,15 +93,15 @@ Optional forward-look before M4: [What is agentic engineering](trainings/agentic
 
 ## Bring to Module 4
 
-**One scoped task you'd send off rather than nudge bit by bit. Not an epic. Not a typo-fix. A real slice with a 'done' you can name in a sentence.**
+**One scoped task you'd send off rather than nudge bit by bit: a real slice with a 'done' you can name in a sentence. Bigger than a typo-fix, smaller than an epic.**
 
 Come to Module 4 without having picked the task and you'll be scrambling for one while the room is already running theirs. Your call.
 
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-22 (writing@1a9e10b story@1a9e10b technical@1a9e10b behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b)
-- judges @1a9e10b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-07-08 (writing@1a9e10b story@1a9e10b technical@1a9e10b behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b slides@47f3357)
+- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (override-r8-evidence-unverified-no-CUT-tag-in-file-see-instances/ae101--earn-the-trust.slides.json)
 - cross_module @1765c51: PASS — override-§3-student-noted-path-by-design-§5-contract-row-added-see-instances/ae101--prework-M1-M3.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

@@ -1,6 +1,6 @@
 # Agents that build agents
 
-The map you just drew ended on a dashed loop, yours to draw solid. This is the move that draws it. *Agents that build agents.* The flywheel was named a few beats back; this is that line, unfolded.
+The map you just drew ended on a dashed loop, yours to draw solid. This is the move that draws it. *Agents that build agents.* The flywheel, each session leaving the next one sharper: this is that line, unfolded.
 
 ## The move widens to everything you do
 
@@ -48,8 +48,8 @@ The training closes. The flywheel does not.
 
 **Lede re-anchor (2026-07-03):** M6 closing sequence re-sequenced — *The map filled in* now sits between *The loop has a name* and this lecture, which is DEAD-LAST (training's final beat). Old lede opened *"The closer named the flywheel in one line"* — a back-reference to *The loop has a name* as the immediately-preceding lecture, now stale. Re-anchored to pick up from the map lecture's *"the next dashed loop is yours to draw solid"* hand-off; flywheel kept as theme (*"named a few beats back"*, not an adjacency claim). *Where the loop ends* beat unchanged. Placement block below still describes the pre-re-sequence chain — re-verify against the module file before ship.
 
-**Quality:** compendium-audited 2026-05-31 (writing@182969a story@182969a technical@6ab470b behavior@6ab470b pedagogy@182969a strategy@182969a) — predates the slide rework; re-audit before ship.
-- judges @182969a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-07-08 (writing@182969a story@182969a technical@6ab470b behavior@6ab470b pedagogy@182969a strategy@182969a slides@47f3357) — predates the slide rework; re-audit before ship.
+- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - sim-passed 2026-05-31 (three-persona sim + handoff-generator live-test @182969a): generated handoff is cold-safe — named shapes carried, on-disk `session-shaper` referenced as the worked example, repos re-studied, no placeholders. Sim-grade (constructed M6 context); a real-cohort live-test on an actual M6 close is still owed — no cohort has run it yet. Per-class instances at `curriculum/evals/instances/ae101--agents-that-build-agents.<class>.json`. Predates the slide rework.
 

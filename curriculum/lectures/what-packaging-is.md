@@ -4,7 +4,7 @@ The packaged re-send is running and the laptop is closed again. What you assembl
 
 ## One run, plotted
 
-Before the pieces get names, the shape they serve: one long run, drawn as a sea passage.
+First the shape, then the names: one long run, drawn as a sea passage.
 
 <figure class="diagram">
 <svg viewBox="0 0 1200 560" role="img" aria-label="One agent run plotted as a sea passage: drift cones widen between position fixes and collapse at each fix; rails fence the reef; an unchecked twin run drifts across the no-go line into the rocks and arrives at the wrong harbor." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
@@ -262,8 +262,8 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 
 **§3 disposition (was 4×M5 + 5×M6 above the fence; now zero):** "walked into M5" → lede recast without ref · "start of M5" (failure modes) → folded into slide-1 mapping bullets · "M5 teaches the extend camp" → "the extend camp is the one you just ran" · "Bridge to M6" (all 5×M6 + "M5 asks") → module file `## Next` per §3; no refs remain above the fence.
 
-**Quality:** compendium-audited 2026-05-21 (writing@2b5ae1b story@2b5ae1b technical@2b5ae1b behavior@2b5ae1b pedagogy@2b5ae1b strategy@2b5ae1b) — predates the slides-only rework; re-audit before ship.
-- judges @2b5ae1b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-07-08 (writing@2b5ae1b story@2b5ae1b technical@2b5ae1b behavior@2b5ae1b pedagogy@2b5ae1b strategy@2b5ae1b slides@47f3357) — predates the slides-only rework; re-audit before ship.
+- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - source-freshness stamped 2026-05-25; MiniJinja / getpushtoprod / how-Every-codes stamps re-verified 2026-07-02 (stamps in Source verification block; run `source-freshness.sh --target <cohort-date>`).
 **Lecture meta:** *10–15 min closing lecture for M5, deck-shaped. Names the three-pattern after you have built each piece. Earns the name from felt evidence, not from a slide deck delivered cold. The M6 bridge lives in the module file's `## Next`, not here.*

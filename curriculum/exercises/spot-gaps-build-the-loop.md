@@ -129,10 +129,10 @@ Answer each question. When Claude offers a default that doesn't fit the two runs
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-31 (writing@796293b story@e011708 technical@d06b5b8 behavior@e011708 pedagogy@796293b)
-- judges @e011708: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy N/A (strategy evaluated at module level)
-- re-audit @796293b 2026-05-31: writing PASS, pedagogy PASS — steer-callout gained a premature-completion recovery line (§48/§62) + a render-as-HTML affordance callout after the shapes prompt (§50/§53/§62 hold)
+**Quality:** compendium-audited 2026-07-08 (writing@796293b story@e011708 technical@d06b5b8 behavior@e011708 pedagogy@796293b slides@47f3357)
+- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy N/A (strategy evaluated at module level), slides PASS (instance=ae101--spot-gaps-build-the-loop.exercise.slides.json)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
+- re-audit @796293b 2026-05-31: writing PASS, pedagogy PASS — steer-callout gained a premature-completion recovery line (§48/§62) + a render-as-HTML affordance callout after the shapes prompt (§50/§53/§62 hold)
 
 **Word count:** ~830 words body.
 

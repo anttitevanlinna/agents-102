@@ -17,7 +17,7 @@ Start a new Claude Code session at your repo root.
 
 ## Optional: ask plan mode directly
 
-A 30-second move before the three things get named. Enter plan mode in your own session right now and ask Claude what shifted from its side.
+A 30-second move first. Enter plan mode in your own session right now and ask Claude what shifted from its side.
 
 Ask Claude to describe what changed in its behaviour when plan mode turned on.
 
@@ -51,7 +51,7 @@ After you've done it once, you'll feel when a plan needs the second read and whe
 ## Find is easier than judge
 
 - **Generating candidates is cheap for the agent; judging them is where you're needed.** Stuck naming a soft item? Ask Claude which step it's least confident about. That answer is a candidate. Whether it matters on this codebase is your call, and only yours.
-- **The split runs through the whole discipline.** The agent finds, you judge, and everything from here sharpens one side or the other. The far half of the map runs on this asymmetry.
+- **The split runs through the whole discipline.** The agent finds, you judge, and everything from here sharpens one side or the other.
 
 ## The cheapest gate you will ever run
 
@@ -67,8 +67,8 @@ After you've done it once, you'll feel when a plan needs the second read and whe
 
 **Deck notes:** does NOT name "plan-mode approval inflation" — that label lands retroactively at exercise P5. *The cheapest gate you will ever run* delivers the name-the-uncertainty governor as a pre-action question (doctrine-legal). *Find is easier than judge* seeds the M5 verification-asymmetry naming.
 
-**Quality:** compendium-audited 2026-05-22 (writing@1a9e10b story@1a9e10b technical@1a9e10b behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b) — predates the slide rework; re-audit before ship.
-- judges @1a9e10b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-07-08 (writing@1a9e10b story@1a9e10b technical@1a9e10b behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b slides@47f3357) — predates the slide rework; re-audit before ship.
+- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta:**
 - **Time:** 10–12 min (deck-only trimmed it back from the 12–15 of the deck+prose draft), inside M2's 1h45 slot (Connections 10 / Lecture 10–12 / Exercise 55–70 / Debrief 15 / Bridge 5). If tight, the three-pressures slide compresses to 60 seconds; the exercise teaches them.

@@ -61,7 +61,7 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 
 ## What this sets up
 
-- **Module 4 reads this skill as part of the system you have.** M4 (memory that reads your system) consumes the test-strategy skill as a Block 3 quality-criterion anchor.
+- **Module 4 reads this skill as part of the system you have.** M4 (memory that reads your system) consumes the test-strategy skill as a quality-criterion anchor.
 - **M6 authors a verifier skill the same way you authored this one.** The move repeats and gets faster.
 - **Your personal skills folder now holds one file you authored from session evidence.** Promotion to a team home is the conversation you start over coffee, not the move you make here.
 
@@ -70,8 +70,8 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-05-15 (writing@e840433 story@e840433 technical@e840433 behavior@e840433 pedagogy@689e7e0 strategy@689e7e0)
-- judges @689e7e0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-07-08 (writing@e840433 story@e840433 technical@e840433 behavior@e840433 pedagogy@689e7e0 strategy@689e7e0 slides@47f3357)
+- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

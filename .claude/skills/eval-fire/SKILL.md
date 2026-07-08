@@ -1,6 +1,6 @@
 ---
 name: eval-fire
-description: Run a single eval class (writing | story | technical | behavior | pedagogy | strategy | cross_module) against one or more curriculum files. Dispatches a class-judge subagent with the relevant compendiums (filtered by `eval_classes:` frontmatter) and the matching judge prompt template. Returns a structured per-rule verdict. Mirrors `/research-review`'s parallel-launch pattern but scoped to one class per invocation. The full per-file audit lives in `/curriculum-pre-ship-audit` (six per-file classes + cross_module at module-set scope); this skill is the single-class on-demand fire.
+description: Run a single eval class (writing | story | technical | behavior | pedagogy | strategy | cross_module | slides) against one or more curriculum files. Dispatches a class-judge subagent with the relevant compendiums (filtered by `eval_classes:` frontmatter) and the matching judge prompt template. Returns a structured per-rule verdict. Mirrors `/research-review`'s parallel-launch pattern but scoped to one class per invocation. The full per-file audit lives in `/curriculum-pre-ship-audit` (six per-file classes + cross_module at module-set scope); this skill is the single-class on-demand fire.
 argument-hint: <class:writing|story|technical|behavior|pedagogy|strategy|cross_module> [--personas N] <file-path> [<file-path> ...]
 ---
 
@@ -32,6 +32,7 @@ Fires one eval class against one or more curriculum files. The class determines 
 | `pedagogy` | `sonnet` | `curriculum/evals/judges/pedagogy.md` | none | every `memory/check_*.md` with `eval_classes:` containing `pedagogy` (primarily `check_pedagogy.md`) |
 | `strategy` | `sonnet` | `curriculum/evals/judges/strategy.md` | none | every `memory/check_*.md` with `eval_classes:` containing `strategy` (primarily `check_strategy_tie_in.md`); strategy doc per training |
 | `cross_module` | `sonnet` | `curriculum/evals/judges/cross-module.md` | none | `check_cross_module.md`; supplied module-set paths (≥2) |
+| `slides` | `sonnet` | `curriculum/evals/judges/slides.md` | none | every `memory/check_*.md` with `eval_classes:` containing `slides` (primarily `check_slides.md`) |
 
 The orchestrator (you) does NOT inline compendium content into the prompt — the judge subagent reads them on demand. This keeps the orchestrator's context clean and lets the subagent quote line numbers accurately.
 
@@ -39,7 +40,9 @@ The orchestrator (you) does NOT inline compendium content into the prompt — th
 
 ### Step 1 — Parse arguments
 
-`$ARGUMENTS[0]` is the class. Validate it's one of `writing`, `story`, `technical`, `behavior`, `pedagogy`, `strategy`, `cross_module`. If invalid or missing, stop and ask.
+`$ARGUMENTS[0]` is the class. Validate it's one of `writing`, `story`, `technical`, `behavior`, `pedagogy`, `strategy`, `cross_module`, `slides`. If invalid or missing, stop and ask.
+
+**Slides class fires per-chunk.** The judge splits the body at `##` headings (one slide per chunk, matching `site/layouts/slides.js`) and evaluates every rule against every chunk in isolation. Any slide-rendered file is a valid target: lectures, exercises, module files.
 
 **Cross_module class is module-set-scoped.** It requires ≥2 file paths and ALL must be module files (`curriculum/trainings/<training>/<slug>.md` shape) from the SAME training. Passing 1 file or files from different trainings: stop and ask.
 

@@ -45,3 +45,6 @@
 **Vision vs. detail:**
 - Vision layer: the five-move-one-arc framing, the spec-and-tests → grounding reframe, the closing question.
 - Detail layer: the 500K number, the Agentics Helsinki venue, the *"no, like this"* phrasing.
+
+**Quality:** compendium-audited 2026-07-08 (slides@47f3357)
+- judges @47f3357: writing grandfathered, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered, slides PASS

@@ -176,7 +176,8 @@ Pick the shape that resembles your day. The choice is yours.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-07-05 — writing PASS, story PASS (mood 8/8), strategy PASS, technical PASS (source-verification stamp-format TODO applied 2026-07-05); behavior N/A (no prompt blocks). Pedagogy REVISE was cross-file only (trainer-guide + trainer-modules described the pre-rework five-approaches walk); resolved by the 2026-07-05 trainer-page rewrite, one pedagogy re-confirm owed. Per-class git-SHA pins deferred to next commit.
+**Quality:** compendium-audited 2026-07-08 (slides@47f3357) — writing PASS, story PASS (mood 8/8), strategy PASS, technical PASS (source-verification stamp-format TODO applied 2026-07-05); behavior N/A (no prompt blocks). Pedagogy REVISE was cross-file only (trainer-guide + trainer-modules described the pre-rework five-approaches walk); resolved by the 2026-07-05 trainer-page rewrite, one pedagogy re-confirm owed. Per-class git-SHA pins deferred to next commit.
+- judges @47f3357: writing grandfathered, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered, slides PASS
 
 **Redesign (2026-07-04).** Rebuilt from a weak field-survey pointer (lede + five-approaches slide + how-to-read slide + link) into a concrete teacher + pointer: lede + one figure slide (the passage, your kit placed) + one mechanics slide (four composition mechanisms) + two reads. Antti flagged the prior version weak: it name-dropped five practitioners one bullet each and taught nothing about what a workflow-of-skills *is*. The five-approaches walk now lives ONLY in `workflow-composition-lineages.md` (which already carries those attributions); `skill-stacking.md` (Dino's worked example) is promoted to the primary deepening read. Net: two survey slides out, one figure + one mechanics slide in.
 

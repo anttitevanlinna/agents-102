@@ -16,7 +16,7 @@ After this module, you will be able to:
 - **Scope** a real send-off task in conversation with Claude, multi-file reasoning, sustained coherence, not step-by-step nudging
 - **Walk** what you've built (`CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + any skills you've authored + connectors) against the task as a subagent audit, then push back on the audit
 - **Fill** the worst gaps in conversation: new observations written, rules sharpened, business-rules pointer wired wherever your team keeps shared rules (or the gap named explicitly)
-- **Name** the three blocks in your own material: Block 1 (observation → hypothesis → rule), Block 2 (decisions + alternatives), Block 3 (quality criteria)
+- **Sort** your own material into the three kinds it already contains: observations turned rules, recorded decisions, quality criteria, and meet the frame that arranges them
 - **Send off** the task un-packaged in the same Claude Code session, no plan.md, no verifier, no reference artifact, and let it run
 
 ## Start here
@@ -31,10 +31,6 @@ The map has a far side. Before the first long run, see the country you are enter
 
 [Lecture: The far half of the map](lectures/the-far-half.md)
 
-The country has a trap built into it. See its shape before you send the run off.
-
-[Lecture: The ironies of automation](lectures/ironies-of-automation.md)
-
 Next, the thing you are sending: an LLM in a loop, calling tools.
 
 [Lecture: The agent loop](lectures/the-agent-loop.md)
@@ -45,12 +41,16 @@ Next, the thing you are sending: an LLM in a loop, calling tools.
 
 ## Key Concepts
 - Gap analysis is *walk the system you have against the system the task needs*. The system you have is what gets tested.
-- Huryn's three blocks aren't a template you fill; they're a frame that names what you've already built
+- The three-block frame isn't a template you fill; it names what you've already built
 - Un-packaged is by design. The packaging move only lands once you've seen what un-packaged gets wrong
 - Traces are data. Stop the run when you've seen what you needed to see. Stopping is reading, not failing.
 - Every send-off is an experiment, not a production run you need to get right first time
 
 ## Send the task off
+
+The run is about to leave your hands. Before it does, the trap that earned trust sets for the watcher:
+
+[Lecture: The ironies of automation](lectures/ironies-of-automation.md)
 
 No compound pass at the close. The send-off is the close of the work. Your rules files, memory, ADRs, and skills are what they are; the agent runs against them as they stand. Whatever needs sharpening will surface on the return at Module 5, when you can see what the system actually produced. Compound on evidence, not anticipation.
 
@@ -85,7 +85,7 @@ The laptop stays awake and plugged in while it runs (power settings → prevent 
 
 You'll run more work async from here on.
 
-Nudge by hand while you're watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is the move. Past ten and you've become the agent; call it and read what's there.
+Nudge by hand while you're watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is the right dose. Past ten and you've become the agent; call it and read what's there.
 
 If Claude stalls and you want to see whether it picks itself back up, this nudge is phrased as encouragement and lands as a taunt:
 

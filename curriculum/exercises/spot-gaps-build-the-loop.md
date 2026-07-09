@@ -46,7 +46,7 @@ Ask Claude to cut one rule the two-run diagnosis killed, or to say so and stop i
 
 ## Phase 2: Find the work you repeat across your stack
 
-- Skills aren't hand-crafted. The move you practiced at M3 repeats here: author through conversation, push back on defaults, verify by invoking. The shape follows what the two runs demanded, not a template.
+- Skills aren't hand-crafted. What you practiced at M3 repeats here: author through conversation, push back on defaults, verify by invoking. The shape follows what the two runs demanded, not a template.
 - Look wider than the two runs before you shape the skill. The dominant gap came from one task. The kinds of work you repeat run across everything you do, and most of them never get looked at directly. This is your stack. How wide you look, and what you choose to package, is yours.
 - Read your own history first. Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back.
 
@@ -98,7 +98,7 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 
 {{prompt:spot-gaps-build-the-loop-3}}
 
-If Claude narrates a plan or shows you the full question list before asking one at a time, ask it to skip the preamble and use the AskUserQuestion tool. Your call.
+If Claude narrates a plan or shows you the full question list before asking one at a time, ask it to skip the preamble and use the AskUserQuestion tool. Or let it narrate; both work.
 
 Answer each question. When Claude offers a default that doesn't fit the two runs' evidence, push back with a quoted moment: *"no, the M5 verifier missed THIS moment. The skill has to catch that shape specifically."*
 
@@ -108,16 +108,16 @@ Answer each question. When Claude offers a default that doesn't fit the two runs
 
 {{prompt:spot-gaps-build-the-loop-4}}
 
-- The self-audit is convenient but charitable. It runs in the same session that authored the SKILL.md: the authoring context is right there, but a same-context-window self-audit under-flags by design. Sharpen it if the read matters. Ask Claude to over-flag (*"flag at least three things, be harsher than necessary, assume worse than it looks"*), or fresh-session it by dispatching a subagent with the SKILL.md pasted cold, no scrollback.
+- Same bias as M3: a same-context self-audit under-flags by design. Same two escalations, ask Claude to over-flag, or fresh-session it with a subagent reading the SKILL.md cold.
 - Read the critique. Push back where Claude is wrong; accept where Claude is right. Claude revises SKILL.md from your push-back.
 
 ## Invoke the skill on the run you just diffed
 
-- Authoring without invocation is theatre. The prompt below runs the skill on the packaged run you just diffed.
+- No invocation, no ship, the law your first skill earned at M3. The prompt below runs the skill on the packaged run you just diffed.
 
 {{prompt:spot-gaps-build-the-loop-5}}
 
-- The invocation grades itself, biased by design. Claude invokes a skill it just helped author and grades the result in the same turn; the same-context self-charity is well-documented. The shape is one paste, one wait, one read: convenient over rigorous. For a harsher read, run it as two prompts. Invoke first, read the output, then a second prompt: *"Read that output as if you'd never seen the SKILL.md. What did the skill miss?"* Your call.
+- The invocation grades itself, the same bias, one session both authoring and judging. For a harsher read, split it: invoke, read the output, then ask Claude to read it as if it had never seen the SKILL.md.
 - If the output doesn't catch the dominant gap, sharpen the skill and invoke again. If the skill names its own limitation (*"I check drift but not context-rot re-derivations"*), that's a feature. Ship with a one-line TODO at the top. A skill that names its gap is more useful to a teammate than one that pretends it's finished.
 
 ## Ship it to your personal kit

@@ -17,6 +17,14 @@ After this module, you will be able to:
 - **Assemble** the reference artefact + plan.md in conversation, scoped to the same task Module 4 sent off
 - **Re-send** the packaged version of the same task in the session your diagnosis ran in, and let it run a second time
 
+## Start here
+
+You sent off an un-packaged run at the close of Module 4 and read the pre-read. You walk in with the artefact in front of you and the three failure-mode lenses in hand. The in-room lecture below opens the session.
+
+[Lecture: Reading the return](lectures/reading-the-return.md)
+
+[Lecture: Learning through contrast](lectures/learning-through-contrast.md)
+
 ## Set up the Module 5 worktree
 
 Before opening the Module 5 session, fork the Module 4 starting SHA into a sibling worktree. Module 5's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second run starts from the same code state as the first. Cherny calls parallel worktrees his biggest productivity unlock; the Module 2 pre-read lands here.
@@ -36,14 +44,6 @@ Run the fork from your original repo, not the worktree (it doesn't exist yet). I
 **The coordinates are the anchor.** Claude should read the protected `Run coordinates` block in `task.md`, use the exact `m4/<slug>` branch named there, and fork from that branch's "M4 starting point" commit. If the coordinates are missing or the commit message has been rewritten, stop and use the SHA Claude reported at Module 4 close rather than guessing from branch names.
 
 The worktree is forked and ready. You open the session in it at the first exercise.
-
-## Start here
-
-You sent off an un-packaged run at the close of Module 4 and read the pre-read. You walk in with the artefact in front of you and the three failure-mode lenses in hand. The in-room lecture below opens the session.
-
-[Lecture: Reading the return](lectures/reading-the-return.md)
-
-[Lecture: Learning through contrast](lectures/learning-through-contrast.md)
 
 [Exercise: Diagnose and re-send](exercises/diagnose-and-resend.md)
 
@@ -77,7 +77,7 @@ Ask Claude to re-run the same Module 4 task using the reference, plan.md, and ve
 
 {{prompt:ae101-m5-rerun-packaged}}
 
-The walk-away report at the close is what Module 6 opens on. RLHF will frame partial failures as partial successes, *"shipped most of it, hit a snag on X."* The contrast with the un-packaged M4 run depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. Your call on whether to push.
+The walk-away report at the close is what Module 6 opens on. RLHF will frame partial failures as partial successes, *"shipped most of it, hit a snag on X."* The contrast with the un-packaged M4 run depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. You decide whether to push.
 
 The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). Same cancel-is-legit rule from Module 4: stopping when the trace is enough is the result. Manual nudges are part of the run; when nudging turns into typing every step, the agent isn't the agent any more, that's a result worth reading.
 
@@ -87,7 +87,7 @@ The laptop stays awake and plugged in while it runs (power settings → prevent 
 
 ## Next
 
-Module 6 reads the packaged run. Subtler misses, subtler drift. Your verifier gets its full name as an eval, and the team kit takes its first inherited skill. The question changes scale too: Module 5 asked *did my run pass?* Module 6 starts asking *do all our runs pass, and who reviewed what?*
+Module 6 reads the packaged run. Subtler misses, subtler drift. Your verifier turns out to be one of three eval shapes, and the team kit takes its first inherited skill. The question changes scale too: Module 5 asked *did my run pass?* Module 6 starts asking *do all our runs pass, and who reviewed what?*
 
 ## Bring to Module 6
 

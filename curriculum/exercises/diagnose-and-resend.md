@@ -94,7 +94,7 @@ Ask Claude to assemble both, scoped to the same M4 task, in conversation.
 
 Say *lock it in.* The agent writes both files. Read the diffs.
 
-**What happened:** You ended the exercise with a diagnosis (named failures + quoted moments from your own artefact), a working verifier targeting one specific failure mode, and a reference artefact + plan.md scoped to the same M4 task. Each piece earned its place against a failure you read in your own artefact, not a slide.
+**What happened:** You ended the exercise with a diagnosis (named failures + quoted moments from your own artefact), a working verifier targeting one specific failure mode, and a reference artefact + plan.md scoped to the same M4 task. Each piece proved its place against a failure you read in your own artefact, not a slide.
 
 The exercise ends here. The module's re-send is next: same task, with reference + plan.md + verifier all in play. The personal rules from M1 (and M3 if completed) carry forward via the worktree fork; M6 will cut one stale rule once the contrast lands.
 

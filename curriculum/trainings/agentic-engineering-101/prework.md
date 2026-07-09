@@ -1,8 +1,8 @@
 # Prework: before Module 1
 
-> Pick your model when you open a session. `/model` swaps between Sonnet and Opus. Sonnet runs every exercise in this training. Opus is the heavier option if you want it. Your call.
+> Pick your model when you open a session. `/model` swaps between Sonnet and Opus. Sonnet runs every exercise in this training. Opus is there if you want the heavier option.
 >
-> Run modules on `high` thinking effort by default. xhigh adds latency without commensurate value on the work. M2 calls out a medium override at the top of that module.
+> Run modules on `high` thinking effort by default. xhigh adds latency without commensurate value on the work. Module 2 calls out a medium override at the top of that module.
 
 Land at Module 1 with a Claude Code session started in the repo you're going to grow, the curated skills installed, and one trivial bug picked.
 
@@ -33,7 +33,7 @@ Pick one. Every module of this training starts from a Claude Code session in thi
 
 **Session** *(new, "prework")*
 
-Open a new Claude Code session at the repo you just picked. CLI or desktop, your call. If Claude Code doesn't start cleanly here, sort the install before you go further, the rest of prework rides on a working session.
+Open a new Claude Code session at the repo you just picked. CLI or desktop both work. If Claude Code doesn't start cleanly here, sort the install before you go further, the rest of prework rides on a working session.
 
 ## 3. Get the content folder onto your laptop
 
@@ -57,7 +57,7 @@ When Claude gets to the bug screen, push back if it dumps all four criteria at o
 
 {{prompt:ae101-prework-screen-and-ready}}
 
-If Claude's screening feels like everything-at-once, ask Claude to use the AskUserQuestion tool, or to give you the candidate-bug screen one bug at a time. Your call.
+If Claude's screening feels like everything-at-once, ask Claude to use the AskUserQuestion tool, or to give you the candidate-bug screen one bug at a time. Whichever reads better.
 
 {{prompt:ae101-prework-one-at-a-time}}
 
@@ -67,7 +67,7 @@ If Claude's screening feels like everything-at-once, ask Claude to use the AskUs
 
 Close the prework session when Claude confirms readiness. Module 1 opens fresh in the same repo.
 
-A picked bug from Step 5. Write it down, file/line, or a one-sentence summary in a note. The prework session closes; the bug needs to survive into M1. Come to Module 1 without one and you'll be scrambling for one while the room is already fixing theirs. Your call.
+A picked bug from Step 5. Write it down, file/line, or a one-sentence summary in a note. The prework session closes; the bug needs to survive into Module 1. Come to Module 1 without one and you'll be scrambling for one while the room is already fixing theirs. Your call.
 
 The opening question at Module 1: *what's one trick you figured out with Claude Code that nobody taught you?* Bring one. Doesn't have to be big. No trick? Bring a moment Claude Code frustrated you.
 

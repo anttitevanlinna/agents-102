@@ -12,7 +12,7 @@ Start a new Claude Code session at your repo root.
 
 Start clean. M4 picks up a bigger task than M1–M3. Before the new session, check your working tree and branch. You ride that state into the closing `m4/<slug>` commit and M5's fork.
 
-**What you do:** Pick a task you've been avoiding, the kind you'd send off rather than nudge bit by bit. Walk what you've built across four modules against it. Fill the worst gaps. See Huryn's three-block frame in your own material. At the close, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
+**What you do:** Pick a task you've been avoiding, the kind you'd send off rather than nudge bit by bit. Walk what you've built across four modules against it. Fill the worst gaps. Sort your material into the three kinds it already contains, and watch a frame you've never been taught name what you built. At the close, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
 
 **What you build:** three things a long run can ride: a scoped task with a 'done' you can name in a sentence, the worst gaps filled in `observations/` and your rules file, and your own material sorted into three blocks (observation, decision, criterion) with the tree settled. Then it goes off un-packaged.
 
@@ -23,7 +23,7 @@ Start clean. M4 picks up a bigger task than M1–M3. Before the new session, che
 ## Phase 1: Pick the task you'll send off
 
 - A real slice you'd send off rather than nudge bit by bit, with a 'done' you can name in a sentence. Bigger than a typo-fix, smaller than an epic.
-- The pick is yours; the fit-check is the agent's. You are not on the hook for scanning your roadmap or Jira; that stays your call. Bring one or two candidates; the agent screens them for fit against the three long-run criteria.
+- The pick is yours; the fit-check is the agent's. You are not on the hook for scanning your roadmap or Jira; that stays with you. Bring one or two candidates; the agent screens them for fit against the three long-run criteria.
 
 Ask Claude to screen the candidates you bring against the three long-run criteria and scope the winner. Drop the candidates after the colon.
 
@@ -32,7 +32,7 @@ Ask Claude to screen the candidates you bring against the three long-run criteri
 ## Push back until the task is one end-to-end slice
 
 - Push back when the read misses the codebase. The agent is reading the shape, not the substance.
-- Imagining a finished demo means you scoped too big. Slice it down to one end-to-end thing the agent can chew on.
+- Imagining a finished demo means you scoped too big. Slice it down to one end-to-end thing that gives the agent something real to work with.
 - Pick one task well. You'll use it again next module.
 
 ## Phase 2: Build the ranked list of what will hurt the agent

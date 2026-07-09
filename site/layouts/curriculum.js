@@ -55,6 +55,7 @@
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
             ],
             supplementaries: [
+                { slug: 'build-a-project-from-zero',  title: 'No repo to bring? Build one' },
                 { slug: 'what-is-agentic-engineering', title: 'What is agentic engineering' },
                 { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' },
                 { slug: 'token-efficiency',           title: 'Token efficiency: the craft and the folklore' },

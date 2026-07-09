@@ -73,8 +73,8 @@ The opening question at Module 1: *what's one trick you figured out with Claude 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-07-08 (writing@1fd0f66 story@1fd0f66 technical@1fd0f66 behavior@1fd0f66 pedagogy@1fd0f66 strategy@1fd0f66 slides@47f3357)
-- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS (override-fresh-install-context-no-collision-norm-see-instances/ae101--prework.behavior.json), pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-07-09 (writing@906aa09 story@1fd0f66 technical@1fd0f66 behavior@1fd0f66 pedagogy@1fd0f66 strategy@1fd0f66 slides@47f3357)
+- judges @906aa09: writing PASS, story PASS, technical PASS, behavior PASS (override-fresh-install-context-no-collision-norm-see-instances/ae101--prework.behavior.json), pedagogy PASS, strategy PASS, slides PASS
 - cross_module @1765c51: PASS — override-§3-student-noted-path-by-design-§5-contract-row-added-see-instances/ae101--prework-M1-M3.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass — pre-reshape)
 

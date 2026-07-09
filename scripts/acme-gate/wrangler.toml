@@ -2,8 +2,8 @@
 # beta workbook served from GitHub Pages via agents102.bosser.consulting.
 #
 #   Deploy:  wrangler deploy                  (from this directory)
-#   Set pw:  wrangler secret put ACME_PASSWORD
-#   Rotate:  re-run `wrangler secret put ACME_PASSWORD`
+#   Login:   acme / agentic   (baked-in default — a public speed bump, not a secret)
+#   Real pw: wrangler secret put ACME_PASSWORD   (optional; overrides the default)
 #   Remove:  wrangler delete                  (drops the Worker + route)
 #
 # The route pattern below IS the entire "only for acme" scoping — nothing else
@@ -22,6 +22,7 @@ routes = [
   { pattern = "agents102.bosser.consulting/clients/acme/*", zone_name = "bosser.consulting" }
 ]
 
-# ACME_PASSWORD is NOT set here — it is an encrypted Worker secret, set via
-# `wrangler secret put ACME_PASSWORD`. Optionally override the login name with
-# an ACME_USERNAME var/secret (defaults to "acme").
+# The login password defaults to "agentic" (baked into worker.js — a public
+# speed bump, not a secret). To use a real password, set an ACME_PASSWORD Worker
+# secret; it overrides the default with no code change. The login name defaults
+# to "acme" (override with an ACME_USERNAME var/secret).

@@ -2,23 +2,25 @@
 
 ## Checking can cost far less than doing
 
-- **Some tasks are far cheaper to check than to do.** Reviewing a diff against a failing test versus writing the feature. Checking a sudoku versus solving it. The gap between doing-cost and checking-cost is the asymmetry.
-- **Some are the reverse.** A fact-dense report reads clean whether it is true or not; checking it costs as much as writing it. No asymmetry, no discount.
-- **Jason Wei named the pattern: "some tasks are much easier to verify than to solve."** His corollary, the verifier's law: the ease of training AI to solve a task is proportional to how verifiable the task is, because a cheap check is exactly the feedback signal training and eval loops run on. His own example is code: tedious to read for correctness, fast to check when the test coverage is there.
+- Some tasks are far cheaper to check than to do. Reviewing a diff against a failing test versus writing the feature. Checking a sudoku versus solving it. The gap between doing-cost and checking-cost is the asymmetry.
+- Some are the reverse. A fact-dense report reads clean whether it is true or not; checking it costs as much as writing it. No asymmetry, no discount.
+- Jason Wei named the pattern: "some tasks are much easier to verify than to solve." His corollary, **the verifier's law**: the ease of training AI to solve a task is proportional to how verifiable the task is, because a cheap check is exactly the feedback signal training and eval loops run on. His own example is code: tedious to read for correctness, fast to check when the test coverage is there.
 
 ## Why this decides what to delegate
 
-- **Delegation pays where the check is cheap.** You hand over the making, keep the cheap checking, and the loop runs fast. The agent generates; you gate.
-- **Where the check is expensive, delegation is a trap.** You saved the writing and bought a harder review. The full cost comes back to you at read time.
-- **M2 used this without naming it: find is easier than judge.** The agent finds candidates; you judge them. That was the asymmetry in its smallest form, and it runs through the whole far half of the map.
+- Delegation pays where the check is cheap. You hand over the making, keep the cheap checking, and the loop runs fast. The agent generates; you gate.
+- Where the check is expensive, delegation is a trap. You saved the writing and bought a harder review. The full cost comes back to you at read time.
+- M2 used this without naming it: **find is easier than judge**. The agent finds candidates; you judge them. That was the asymmetry in its smallest form, and it runs through the whole far half of the map.
 
 ## Every send-off needs a named cheap verifier
 
-- **Before a send-off, ask: what is my cheap verifier here?** A failing test, a compiler, a diffable reference, a checklist a fresh session can run. If you can name one, the task is a delegation candidate.
-- **No cheap verifier? Two options.** Keep the task, or build the verifier first and then delegate. Building the verifier is often the more valuable half of the work: it outlives the run it checks.
-- **Every verifier you write converts one more task family from delegation-trap to delegation-win.** That is why gates are worth authoring at all.
+- Before a send-off, ask: what is my cheap verifier here? A failing test, a compiler, a diffable reference, a checklist a fresh session can run. If you can name one, the task is a delegation candidate.
+- No cheap verifier? Two options. Keep the task, or build the verifier first and then delegate. Building the verifier is often the more valuable half of the work: it outlives the run it checks.
+- Every verifier you write converts one more task family from delegation-trap to delegation-win. That is why gates are worth authoring at all.
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** handles kept bold: **the verifier's law** (Wei's coinage at its naming) and **find is easier than judge** (the named M2 law at its recall); all other bullet leads de-bolded, Wei quote plain, governor question plain, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Re-audit before ship.
 
 **STATUS:** slide-format draft (proper-length bullets per `theory-plan.md` § Slide format, grown from the 2026-07-02 skeleton same day), UNWIRED as in-room slot; linked as optional pre-read from `run-the-first-experiment.md § Pre-reads before Module 5`. No Quality line by design (unaudited). Tier-1 canon adoption per `theory-audit.md` (practitioner + syllabus lenses convergent; already enacted in M2 body as "find is easier than judge", `exercises/push-back-on-the-plan.md:39` — the body's M2 back-reference is deliberate lineage-naming, kept per the audit's cheap-groundedness call; supplementary surface, not a lecture body, so `check_lectures §3` sequencing ban doesn't bind, and the ref is backward-naming of a lived moment, not sequencing).
 

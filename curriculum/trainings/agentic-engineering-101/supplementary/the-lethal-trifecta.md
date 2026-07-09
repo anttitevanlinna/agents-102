@@ -2,32 +2,34 @@
 
 ## Three capabilities that must not meet
 
-- **Simon Willison's frame.** An agent that holds all three of these at once can be made to leak what it knows: access to private data, exposure to untrusted content, and a channel that communicates out. Each leg is useful on its own; together they are a leak an attacker can operate remotely.
-- **Not risky. Structural.** Anyone who can write where the agent reads can steer what the agent does with what it holds. No amount of model quality makes the combination safe, because the flaw is in how the model reads, not in how well it behaves.
-- **The legs hide in ordinary wiring.** Private data is your codebase, your credentials, your customer records. Untrusted content is any web page, issue comment, or dependency the agent reads. The outbound channel is anything that leaves the machine, from an HTTP request to a git push. Most agent setups assemble all three without anyone deciding to.
+- Simon Willison's frame. An agent that holds all three of these at once can be made to leak what it knows: access to private data, exposure to untrusted content, and a channel that communicates out. Each leg is useful on its own; together they are a leak an attacker can operate remotely.
+- Not risky. Structural. Anyone who can write where the agent reads can steer what the agent does with what it holds. No amount of model quality makes the combination safe, because the flaw is in how the model reads, not in how well it behaves.
+- The legs hide in ordinary wiring. Private data is your codebase, your credentials, your customer records. Untrusted content is any web page, issue comment, or dependency the agent reads. The outbound channel is anything that leaves the machine, from an HTTP request to a git push. Most agent setups assemble all three without anyone deciding to.
 
 ## An LLM can't reliably tell instructions from data
 
-- **An LLM cannot reliably tell instructions from data.** Everything in the context window is one stream of tokens; no privileged channel marks which part came from you. Whatever the agent reads can shape what the agent does next.
-- **So every source the agent reads is a potential instruction channel.** A web page, an issue comment, a README inside a dependency, a pasted log. Reading it and obeying it are not cleanly separable operations.
-- **The attacker needs no account and no CVE.** They need a sentence, placed where the agent will read it. That sentence is the whole exploit chain. The field calls this move prompt injection: instructions that arrive through content the agent reads, not from the person steering it.
+- An LLM cannot reliably tell instructions from data. Everything in the context window is one stream of tokens; no privileged channel marks which part came from you. Whatever the agent reads can shape what the agent does next.
+- So every source the agent reads is a potential instruction channel. A web page, an issue comment, a README inside a dependency, a pasted log. Reading it and obeying it are not cleanly separable operations.
+- The attacker needs no account and no CVE. They need a sentence, placed where the agent will read it. That sentence is the whole exploit chain. The field calls this move **prompt injection**: instructions that arrive through content the agent reads, not from the person steering it.
 
 ## The attacker targets the agent, not the system
 
-- **Classic threat modeling asks who attacks the system you are building.** This asks who attacks the agent building it. The target moves from your feature's endpoints to the context window of the agent that ships them.
-- **The two audits compose.** The access-surface map and the STRIDE pass you ran on the feature still hold; the trifecta adds the row the classic frame doesn't have. STRIDE models attacks on the system; the trifecta models attacks through the agent.
-- **An accident model is not an adversary model.** Sandboxes and permission prompts bound what the agent can break by mistake; the trifecta bounds what an attacker can make it do on purpose. A deployment needs both bounds, and they are set by different levers.
+- Classic threat modeling asks who attacks the system you are building. This asks who attacks the agent building it. The target moves from your feature's endpoints to the context window of the agent that ships them.
+- The two audits compose. The access-surface map and the STRIDE pass you ran on the feature still hold; the trifecta adds the row the classic frame doesn't have. STRIDE models attacks on the system; the trifecta models attacks through the agent.
+- An accident model is not an adversary model. Sandboxes and permission prompts bound what the agent can break by mistake; the trifecta bounds what an attacker can make it do on purpose. A deployment needs both bounds, and they are set by different levers.
 
 ## Removing any one leg breaks the trifecta
 
-- **Audit any agent deployment for the three legs. Then cut one.** The check takes a minute: what private data can it read, what untrusted content reaches it, what channels leave the machine. All three present means one goes.
-- **Cutting a leg is ordinary engineering.** Read-only where write is not needed. No network where network is not needed. Allowlisted domains where the web is needed. A human gate on outbound actions wherever private data is in play.
-- **After untrusted input is read, constrain what can follow.** Willison's rule: "once an LLM agent has ingested untrusted input, it must be constrained so that it is impossible for that input to trigger any consequential actions."
-- **A filter that mostly works is a gate that sometimes opens.** Detection lowers the odds; only removing a leg changes the structure. In security, cut a leg instead of trusting a filter.
+- Audit any agent deployment for the three legs. Then cut one. The check takes a minute: what private data can it read, what untrusted content reaches it, what channels leave the machine. All three present means one goes.
+- Cutting a leg is ordinary engineering. Read-only where write is not needed. No network where network is not needed. Allowlisted domains where the web is needed. A human gate on outbound actions wherever private data is in play.
+- After untrusted input is read, constrain what can follow. Willison's rule: "once an LLM agent has ingested untrusted input, it must be constrained so that it is impossible for that input to trigger any consequential actions."
+- A filter that mostly works is a gate that sometimes opens. Detection lowers the odds; only removing a leg changes the structure. In security, cut a leg instead of trusting a filter.
 
 Three legs. Cut one.
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** one handle kept bold: **prompt injection** (searchable field handle at its naming in the mechanism slide); all other bullet leads de-bolded, three-leg enumeration stays plain inline, Willison constraint quote plain, kicker untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Re-audit before ship.
 
 **STATUS:** slide-format reference page (proper-length bullets per `theory-plan.md` § Slide format, 2026-07-02). No Quality line by design (unaudited). WIRED twice: `earn-the-trust.md ## Next` (unavoidable pre-leash beat — three-question check, prompt injection named, pointer here) + `run-the-first-experiment.md ## Send the task off` (second firing, same shape, at the moment of the send itself).
 

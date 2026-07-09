@@ -12,8 +12,8 @@
 
 ## Phase 1: Name the rules from this session
 
-- **You already did the work; now name the rules inside it.** You ran a plan, two push-backs, a second-pass walk-down, and an approval. Each decision along the way carried a task-shaping rule about what made this task plan-mode-able.
-- **You are not on the hook for remembering it.** The agent reads the scrollback; you react to what it proposes.
+- You already did the work; now name the rules inside it. You ran a plan, two push-backs, a second-pass walk-down, and an approval. Each decision along the way carried a task-shaping rule about what made this task plan-mode-able.
+- You are not on the hook for remembering it. The agent reads the scrollback; you react to what it proposes.
 
 Ask Claude to read the scrollback, propose rules, and pause for your push-back before going further.
 
@@ -22,13 +22,13 @@ Ask Claude to read the scrollback, propose rules, and pause for your push-back b
 
 ## Reject or rewrite the generic rule
 
-- **The pause is the engagement step.** When Claude pauses for the rewrite-and-reject pass, that is where your hand goes on the work.
-- **The generic rule is the tell.** The rule that arrives generic, like "pick tasks that span multiple files," is the one that needs rewriting into your words, or rejecting.
+- The pause is the engagement step. When Claude pauses for the rewrite-and-reject pass, that is where your hand goes on the work.
+- The generic rule is the tell. The rule that arrives generic, like "pick tasks that span multiple files," is the one that needs rewriting into your words, or rejecting.
 
 ## Phase 2: Pick where the file fires
 
-- **The choice is when the rules fire, not where the bytes sit.** Anywhere on this laptop (user-level), or only when this repo is open (repo-personal).
-- **Claude carries the path taxonomy; you carry the choice.**
+- The choice is when the rules fire, not where the bytes sit. Anywhere on this laptop (user-level), or only when this repo is open (repo-personal).
+- Claude carries the path taxonomy; you carry the choice.
 
 Decide the location with Claude.
 
@@ -37,24 +37,24 @@ Decide the location with Claude.
 
 ## Wire the file in, check the wording
 
-- **A rule off the auto-load path needs a wire.** If the agent proposes a path other than `./CLAUDE.local.md`, `./CLAUDE.md`, or `~/.claude/CLAUDE.md`, ask Claude to also propose the `@import` line that wires the file in. A rule at `~/.claude/memory/task-shaping.md` (or any notes folder) sits silently on disk until something reads it; adding `@~/.claude/memory/task-shaping.md` to `~/.claude/CLAUDE.md` is what makes "fires anywhere on this laptop" actually fire.
-- **Read the three rules back.** If any drifted from your wording, push back and have Claude rewrite.
+- A rule off the auto-load path needs a wire. If the agent proposes a path other than `./CLAUDE.local.md`, `./CLAUDE.md`, or `~/.claude/CLAUDE.md`, ask Claude to also propose the `@import` line that wires the file in. A rule at `~/.claude/memory/task-shaping.md` (or any notes folder) sits silently on disk until something reads it; adding `@~/.claude/memory/task-shaping.md` to `~/.claude/CLAUDE.md` is what makes "fires anywhere on this laptop" actually fire.
+- Read the three rules back. If any drifted from your wording, push back and have Claude rewrite.
 
 ## Phase 3: Name the automation shapes, don't build them
 
-- **Refinement is the backlog-grooming loop.** Sizing, splitting, and sharpening tickets before they're worked.
-- **The prompt asks for shapes, not code.** "This rules file" means the `.md` file you saved in Phase 2. The first automation attempt points an agent at that file and one input stream: a Slack channel, an issue queue, or a backlog export.
+- **Refinement** is the backlog-grooming loop. Sizing, splitting, and sharpening tickets before they're worked.
+- The prompt asks for shapes, not code. "This rules file" means the `.md` file you saved in Phase 2. The first automation attempt points an agent at that file and one input stream: a Slack channel, an issue queue, or a backlog export.
 
 {{cut:extract-the-task-shaping-rule-3|low-yield}}
 
 
 ## Read the shapes, hold the build
 
-- **Read the answer as a map, not a mandate.** The next small lecture walks the same shapes with the trigger and runtime for each.
+- Read the answer as a map, not a mandate. The next small lecture walks the same shapes with the trigger and runtime for each.
 
 ## Optional: Read the rules hiding in one real ticket
 
-- **One ticket is enough for a first read.** If there is time left, open one real ticket from Jira, Linear, GitHub Issues, Azure Boards, or whatever your team uses. Copy the ticket into Claude with the visible fields: title, description, comments, and links.
+- One ticket is enough for a first read. If there is time left, open one real ticket from Jira, Linear, GitHub Issues, Azure Boards, or whatever your team uses. Copy the ticket into Claude with the visible fields: title, description, comments, and links.
 
 Then ask Claude to infer how the fields are being used.
 
@@ -62,14 +62,15 @@ Then ask Claude to infer how the fields are being used.
 
 ## Fold the field-use rules into your file
 
-- **One ticket gives basic rules, not policy.** Which fields matter, which labels carry meaning, which wording signals "too big," which status changes imply ownership.
-- **The rules fold back into the file.** If backlog refinement is your first automation attempt, these field-use rules become the first add-on to the Phase 2 `.md` file, or a small companion file beside it.
-- **Depth comes from more tickets.** Three to five tickets from different work types surface stronger rules than one ticket, and Claude should keep separating strong signals from guesses as the sample grows.
+- One ticket gives basic rules, not policy. Which fields matter, which labels carry meaning, which wording signals "too big," which status changes imply ownership.
+- The rules fold back into the file. If backlog refinement is your first automation attempt, these field-use rules become the first add-on to the Phase 2 `.md` file, or a small companion file beside it.
+- Depth comes from more tickets. Three to five tickets from different work types surface stronger rules than one ticket, and Claude should keep separating strong signals from guesses as the sample grows.
 
 **What happened:** Claude read the scrollback and proposed the rules. You rewrote or rejected at least one. You named the file and the path. Claude wrote it. You asked one open question about where the file could go next. Claude proposed shapes. You read. Optionally: you pasted one real ticket, and Claude inferred how your team seems to use fields like status, labels, priority, component, estimate, owner, and epic.
 
 <!-- maintainer -->
 
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** One handle kept bold: **Refinement** at its term-earning moment (bold narrowed from the full lead sentence to the word); all other bullet leads de-bolded. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Quality:** compendium-audited 2026-07-08 (writing@88a1dd4 story@0fafbbe technical@0fafbbe behavior@0fafbbe pedagogy@0fafbbe strategy@0fafbbe slides@47f3357)
 - judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

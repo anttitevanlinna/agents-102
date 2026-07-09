@@ -1,6 +1,6 @@
 # Walk and *send off*
 
-**Time:** 55 minutes inside a 1h45 module slot (Phases 1–3, breakdown: pick 10 / walk-and-fill 35 / see-the-frame 10). The send-off (~5 min, single prompt paste) is owned by the module file, not this exercise; the two together close Module 4.
+**Time:** 55 minutes inside a 1h45 module slot (Phases 1–3, breakdown: pick 10 / walk-and-fill 35 / see-the-frame 10). The send-off (~5 min, single prompt paste) closes Module 4 after this exercise.
 
 **Session** *(new, "Module 4 - Run the first experiment")*
 
@@ -94,9 +94,9 @@ Ask Claude to rearrange your observations, ADRs, and skill into the three blocks
 
 **What happened:** You picked a real task you'd send off rather than nudge bit by bit. You walked what you'd built across four modules against it, filled the worst gaps, and let Claude rearrange observations and ADRs into three blocks against your own material. The frame named what was already there. Phase 3 ended with the tree settled before the send-off.
 
-## What closes the module (owned by the module file's send-off)
+## What closes Module 4
 
-Phase 3 is where the exercise ends. The module file's send-off takes over:
+Phase 3 is where the exercise ends. Module 4's send-off takes over:
 
 1. You nudge the compound step: Claude reads the session, rewrites your personal `CLAUDE.local.md` from evidence, integrates, sharpens, removes, and reports 3–5 lines. Team-worthy rules get flagged in the summary, not auto-PRed.
 2. You push back on the 3–5 line summary.

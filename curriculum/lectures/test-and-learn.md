@@ -2,7 +2,7 @@
 
 ## Every send-off is an experiment
 
-You are testing, and you are learning. Every send-off from here on is an experiment. The agent is the apparatus, your rules and context are the setup, the task is the assay, and the result is data.
+You are testing, and you are learning. Every send-off from here on is an experiment. The agent is the apparatus, your rules and context are the setup, and the result is data.
 
 You don't need to get it right first time. You need to read the result and know what to change for the next run. That is the whole obligation.
 

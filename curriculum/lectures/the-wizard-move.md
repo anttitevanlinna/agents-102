@@ -32,11 +32,11 @@ Every engineer who sat down with this tool did some version of that. The trick y
 
 This training pools partial into a shared floor, then raises the ceiling. The people building this are partial too. Six months ahead of you on some moves, six months behind on others.
 
-## The loop is the cargo, not the fix
+## The loop is what you repeat, not the fix
 
 Fix one trivial bug from your own backlog, end-to-end. Log one decision. Seed a rules file your next session reads first.
 
-The bug is the vehicle; the loop is the cargo. What you walk away with is a way of working, not one fix. You become the Claude wizard by running the loop on real work and letting the habit sharpen. Not by reading about it.
+The fix happens once. The loop is what you repeat: a way of working, not one bug closed. You become the Claude wizard by running the loop on real work and letting the habit sharpen. Not by reading about it.
 
 <!-- maintainer -->
 

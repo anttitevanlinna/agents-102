@@ -172,7 +172,7 @@ How the field composes kits like this is a live argument with no settled answer,
 
 [Workflow composition lineages](trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md)
 
-Pick the shape that resembles your day. The choice is yours.
+Pick the shape that resembles your day.
 
 <!-- maintainer -->
 

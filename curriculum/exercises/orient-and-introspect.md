@@ -14,7 +14,7 @@ Start a new Claude Code session at your repo root. Optionally rename to `m1-orie
 
 **What you build:** a picture of what landed in the context window and what didn't: a deliberate read of your repo, the agent's own account of what it skipped, and the context budget that shows the unread slice. Together they map the window you steer for the rest of the training.
 
-**The point:** you can't steer what you can't see. This is the first move of every session after this one. Load deliberately, watch the budget, dig the self-report.
+**The point:** you can't steer what you can't see. This is the first move of every session after this one. Load deliberately, watch the budget, dig into the self-report.
 
 ---
 

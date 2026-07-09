@@ -12,8 +12,6 @@ Git is what makes this safe. Every session works against a commit graph that rem
 
 Worktrees are the Git feature that makes multi-session fast. Instead of one working directory per repo, you get one per branch, each in its own folder, all sharing the same underlying Git history. Open N folders, open N sessions, run N tasks.
 
-The permission beat, once: you will want to run multiple sessions. Find your way to do it over time. There's no rush.
-
 ## Worktrees vs. branches vs. clones
 
 Three ways to have "another copy of this code to work on." They behave differently.
@@ -89,7 +87,7 @@ Three situations where one session beats three.
 
 ## Close
 
-Two sessions is a milestone. Five is a habit. Ten is something you grow into. Find your way at your pace.
+Two sessions is a milestone. Five is a habit. Ten is something you grow into.
 
 <!-- maintainer -->
 

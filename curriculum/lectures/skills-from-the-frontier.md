@@ -18,7 +18,7 @@
 
 ## Two curated, one authored
 
-- The proportion is a claim about what you can produce well on a Tuesday afternoon. Frontier practitioner moves are curated for you; you build what you know best, which is your own system.
+- The proportion is a claim about what you can produce well on a Tuesday afternoon. You build what you know best, which is your own system.
 - Three authored skills, and you'd be reinventing STRIDE on a Tuesday. Decades of threat-modeling judgement don't get re-derived in twenty minutes; they get invoked.
 - Three curated skills, and the team kit is never born here. You'd leave with nothing authored, and the skill only your team can write would still not exist.
 - **Don't make general what you don't practice yourself.** That's the principle underneath the split. The curated skills come from people who did the work; the one you author covers what only you do.

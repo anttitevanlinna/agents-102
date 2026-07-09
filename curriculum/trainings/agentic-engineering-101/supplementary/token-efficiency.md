@@ -6,7 +6,7 @@ The real story is about quality. An agent works inside a context window: the run
 
 So token efficiency is not thrift. It is signal-to-noise. The goal is the smallest set of high-signal tokens that gets the work done. Anthropic calls the skill context engineering. The cost savings are real, but they are a side effect. A cleaner window is cheaper and smarter at the same time, which is why this is one lever, not two.
 
-Hold onto the counterintuitive part: a fuller window can produce a worse answer, not just a slower or pricier one. A 2026 study trimmed an agent's context by 23 to 54 percent on a coding benchmark, and its success rate went up.
+The counterintuitive part: a fuller window can produce a worse answer, not just a slower or pricier one. A 2026 study trimmed an agent's context by 23 to 54 percent on a coding benchmark, and its success rate went up.
 
 ## What "efficient" actually measures
 

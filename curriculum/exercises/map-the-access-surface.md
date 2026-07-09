@@ -25,7 +25,7 @@
 
 {{cut:map-the-access-surface-1|low-yield}}
 
-Worth a moment of looking. These are the moves Claude has on hand for the rest of this module, and the load-on-invoke behavior matters for context economy later.
+These are the moves Claude has on hand for the rest of this module, and the load-on-invoke behavior matters for context economy later.
 
 ## Point the skill at your feature
 
@@ -75,7 +75,7 @@ Then ask Claude to add the surface the skill missed but you know matters.
 
 ## What this sets up
 
-The STRIDE exercise invokes the curated STRIDE skill on the map you just built. The surface map IS the input. If you rushed Phase 2, STRIDE threat-models a thin map; if you sat with it, STRIDE has something real to chew on.
+The STRIDE exercise invokes the curated STRIDE skill on the map you just built. The surface map IS the input. If you rushed Phase 2, STRIDE threat-models a thin map; if you worked the delta, STRIDE has something real to chew on.
 
 <!-- maintainer -->
 

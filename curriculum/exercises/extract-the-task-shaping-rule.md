@@ -2,7 +2,7 @@
 
 **Time:** 12 minutes.
 
-**What you do:** read back over the plan-mode session you just ran. Ask Claude to surface three to five rules about what made *this* task plan-mode-able, what kind of multi-file work wants this treatment, what a good factoring looks like before plan mode runs on it. Save those rules to a `.md` file at a location you choose. Then ask Claude how the file could drive automated task-splitting in the future. If time remains, reverse-engineer one ticket from your task manager and see what basic field-use rules Claude can infer.
+**What you do:** read back over the plan-mode session you just ran. Ask Claude to surface three to five rules about what made *this* task plan-mode-able, what kind of multi-file work wants this treatment, what a good factoring looks like before plan mode runs on it. Save those rules to a `.md` file at a location you choose. Then ask Claude how the file could drive automated task-splitting in the future.
 
 **What you build:** a rules file that carries how you factored this task on this codebase. Three to five task-shaping rules, surfaced from your own session and sharpened in your own words, saved at a location you chose so it fires when you want it. The automation read stays a read: you name the shapes, you don't build them today.
 
@@ -22,7 +22,7 @@ Ask Claude to read the scrollback, propose rules, and pause for your push-back b
 
 ## Reject or rewrite the generic rule
 
-- The pause is the engagement step. When Claude pauses for the rewrite-and-reject pass, that is where your hand goes on the work.
+- When Claude pauses for the rewrite-and-reject pass, that is where your hand goes on the work.
 - The generic rule is the tell. The rule that arrives generic, like "pick tasks that span multiple files," is the one that needs rewriting into your words, or rejecting.
 
 ## Phase 2: Pick where the file fires
@@ -52,23 +52,13 @@ Decide the location with Claude.
 
 - Read the answer as a map, not a mandate. The next small lecture walks the same shapes with the trigger and runtime for each.
 
-## Optional: Read the rules hiding in one real ticket
+## What happened
 
-- One ticket is enough for a first read. If there is time left, open one real ticket from Jira, Linear, GitHub Issues, Azure Boards, or whatever your team uses. Copy the ticket into Claude with the visible fields: title, description, comments, and links.
-
-Then ask Claude to infer how the fields are being used.
-
-{{cut:extract-the-task-shaping-rule-4|project-admin}}
-
-## Fold the field-use rules into your file
-
-- One ticket gives basic rules, not policy. Which fields matter, which labels carry meaning, which wording signals "too big," which status changes imply ownership.
-- The rules fold back into the file. If backlog refinement is your first automation attempt, these field-use rules become the first add-on to the Phase 2 `.md` file, or a small companion file beside it.
-- Depth comes from more tickets. Three to five tickets from different work types surface stronger rules than one ticket, and Claude should keep separating strong signals from guesses as the sample grows.
-
-**What happened:** Claude read the scrollback and proposed the rules. You rewrote or rejected at least one. You named the file and the path. Claude wrote it. You asked one open question about where the file could go next. Claude proposed shapes. You read. Optionally: you pasted one real ticket, and Claude inferred how your team seems to use fields like status, labels, priority, component, estimate, owner, and epic.
+Claude read the scrollback and proposed the rules. You rewrote or rejected at least one. You named the file and the path. Claude wrote it. You asked one open question about where the file could go next. Claude proposed shapes. You read.
 
 <!-- maintainer -->
+
+**Ticket phase split out:** the optional "read one real ticket" phase (`extract-the-task-shaping-rule-4`) moved to the `read-the-ticket-rules.md` homework exercise; this file now ends at the automation-shapes read. Body trimmed since the SHAs below, so re-audit before ship.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** One handle kept bold: **Refinement** at its term-earning moment (bold narrowed from the full lead sentence to the word); all other bullet leads de-bolded. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
@@ -79,7 +69,7 @@ Then ask Claude to infer how the fields are being used.
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (P1 surface) + Evaluate (P1 reject/rewrite) + Understand (P3 read shapes)
-- **Exercise time band:** 12 min inside the wider M2 slot (Connections 10 / Lecture A 8 / Exercise A 50 / Exercise B 12 / optional task-manager reverse-engineer 5 if time remains / Lecture B 5 / soft-compound 3 / Debrief 7 / Bridge 5 + buffer to 1h45). Sits AFTER `push-back-on-the-plan` and BEFORE the optional plan-reading-rule soft-compound. Two compound moves now close M2 with different scopes: this exercise captures task-shaping rules to a free-choice `.md`; the soft-compound integrates one plan-reading branch into `CLAUDE.local.md` if one earned itself.
+- **Exercise time band:** 12 min inside the wider M2 slot (Connections 10 / Lecture A 8 / Exercise A 50 / Exercise B 12 / Lecture B 5 / soft-compound 3 / Debrief 7 / Bridge 5 + buffer to 1h45). Sits AFTER `push-back-on-the-plan` and BEFORE the optional plan-reading-rule soft-compound. Two compound moves now close M2 with different scopes: this exercise captures task-shaping rules to a free-choice `.md`; the soft-compound integrates one plan-reading branch into `CLAUDE.local.md` if one earned itself.
 - **Mood target:** extension of grounded competence into capture-and-name. Student leaves: *"the rule sits in MY file at MY location; I see how this could automate; I'm not building it today — and that's the move."*
 - **Strategic beat:** *capture-your-world* (theme #5) made concrete via free-choice location; *non-agentic-default* (theme #6) made concrete via deferred application. The M2 discipline ("approve, don't execute") applied one layer up ("save, don't automate").
 - **Non-front-running checks:**
@@ -98,17 +88,14 @@ Then ask Claude to infer how the fields are being used.
 - **P1 default-acceptance** — student saves all five rules verbatim without rewriting any. Trainer push: *"pick one. Read it aloud. Rewrite it so it sounds like you, or reject it."*
 - **P2 location-paralysis** — student stalls choosing the path. Trainer push: *"the location is reversible. `./CLAUDE.local.md` and `~/.claude/CLAUDE.md` auto-load; anywhere else fires only when a prompt names the path or an `@import` line wires it in. Pick by the mechanism you want; you can move it later."*
 - **P3 building-instinct** — student starts asking Claude to write the Slack bot. Trainer push: *"the lecture is next. Today is capture; application is downstream."*
-- **Optional task-manager overreach** — student treats one-ticket inference as policy. Trainer push: *"one ticket gives basic rules. Mark guesses, then test them on more tickets later."*
 
 **Watch-fors:**
 - **P1 too long** — student over-reads, won't accept any rule as good enough. Decision: send the timer; the rule that ships imperfect rides into M3 and sharpens there.
 - **P2 student saves to a Agents 101-style training-dir path** — they may have prework muscle memory. Trainer push: *"AE101 has no training-dir; the rule lives in your tooling, not the training's."*
 - **P3 Claude proposes one shape only** — push for two more; the lecture grounds three.
-- **Optional step consumes lecture time** — skip it. The required artifact is the task-shaping `.md`; task-manager reverse-engineering is a time-left demo or homework move.
 
 **Plug points:**
 - Student's own session scrollback (the M2 plan-mode work)
-- One real ticket from the student's task manager (optional reverse-engineering step)
 - Sponsor-stated rules home for students who pick the team-shareable path
 
 **Frameworks riffed on (attributed at the lecture, not in this exercise's body):**
@@ -116,4 +103,4 @@ Then ask Claude to infer how the fields are being used.
 
 **Arc:**
 - Picks up from: `push-back-on-the-plan` Phase 5 — the design pattern Claude named is the raw material for Phase 1 here.
-- Hands off to: `lectures/where-the-rule-could-live.md` — closes the module on the leverage horizon without forcing a build.
+- Hands off to: `lectures/where-the-rule-could-live.md` — closes the module on the leverage horizon without forcing a build. The optional ticket-inference beat is now the `read-the-ticket-rules` homework (M2).

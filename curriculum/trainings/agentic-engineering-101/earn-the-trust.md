@@ -41,10 +41,10 @@ The question, to you: what's the feature, and what's the surface you're most ner
 [Exercise: Author your test-strategy skill](exercises/author-test-strategy-skill.md)
 
 ## Key Concepts
-- A curated skill is upstream work packaged for you to invoke. You don't re-derive it. **Remember: invoke, don't re-derive.**
+- A curated skill is upstream work packaged for you to invoke. You don't re-derive it. Invoke, don't re-derive.
 - The access surface is what STRIDE chews on. STRIDE before access-mapping is threat-modeling pub-quiz
 - One hardening decision is enough; the team kit's breadth grows across many features
-- A test-strategy skill authored on your codebase is worth more than a perfect generic one. **Remember: your codebase teaches the skill, not the manual.**
+- A test-strategy skill authored on your codebase is worth more than a perfect generic one. Your codebase teaches the skill, not the manual.
 - Ask the agent what's weakest about its own output; the mirror reflects what your own read would miss
 - Invoke the skill on the thing you just built. Authoring without invocation is theatre
 - One skill shipped beats three skills drafted; the team kit grows by accretion
@@ -71,7 +71,7 @@ Still in the main quest window (*m3-security*), signal the wrap-up. The agent co
 
 {{cut:ae101-m3-ready-to-clear|low-yield}}
 
-> Might be slightly leaky. But this time simple gets mostly right.
+> Might be slightly leaky. Here, the simple ask is good enough.
 
 If the agent names something missed, decide whether to compound it now or accept the loss. Then clear the session. Module 4 opens a new one.
 

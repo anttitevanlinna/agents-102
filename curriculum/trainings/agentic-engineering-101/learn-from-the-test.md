@@ -19,7 +19,7 @@ After this module, you will be able to:
 
 ## Set up the Module 5 worktree
 
-Before opening the Module 5 session, fork the Module 4 starting SHA into a sibling worktree. Module 5's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second run starts from the same code state as the first. Cherny's parallel-worktrees unlock from the Module 2 pre-read lands here.
+Before opening the Module 5 session, fork the Module 4 starting SHA into a sibling worktree. Module 5's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second run starts from the same code state as the first. Cherny calls parallel worktrees his biggest productivity unlock; the Module 2 pre-read lands here.
 
 A real engineering call lives in this fork: gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a worktree because git doesn't see them. AE101's default is to copy them in once at fork time. Your Module 1 evidence rides forward (along with any Module 3 artefacts if you've completed it); Module 5 and Module 6 compounding diverges in the worktree; you decide post-Module-6 what to merge back into the original. Other engineers wire it differently.
 
@@ -52,7 +52,7 @@ You sent off an un-packaged run at the close of Module 4 and read the pre-read. 
 - One move per failure mode, not three to memorise. Reference catches drift; plan.md catches rot; verifier catches plausible-but-wrong
 - You pick the verifier shape against the failure shape. Same eval, different mechanism
 - Same task run twice with packaging as the only changed variable IS the lesson
-- No benchmark told you what went wrong; the artefact did. **Remember: the artefact rules, self-reports don't.**
+- No benchmark told you what went wrong; the artefact did. The artefact rules, self-reports don't.
 - Your verifier is your first eval. The team kit's evals grow from here
 
 Now the re-send. Same task as Module 4, packaged this time. The prompt can be short because the packaging carries the context: the reference pins the goal, plan.md carries the state, the verifier carries the quality gate. The packaging does the explaining; the prompt invokes it.
@@ -97,11 +97,11 @@ Come to Module 6 without the packaged run and you'll be reading one run while th
 
 ## Pre-reads before Module 6
 
-Optional. Skipping does not break Module 6. The pieces land in the Module 5 to Module 6 gap and prime moves the module will name from your own two-run evidence.
+Optional. Skipping does not break Module 6. Both fit the Module 5 to Module 6 gap.
 
-**Read, Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it).** Klaassen runs the verifier 10 consecutive times before trusting it, and uses per-feedback specialised agents in parallel to triage review. Why for Module 6: reliability is a number you measure, not a vibe you sense, and one verifier can become a panel. Both ideas land as recognition when the module names them from your own artefacts.
+**Read, Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it).** Klaassen runs the verifier 10 consecutive times before trusting it, and uses per-feedback specialised agents in parallel to triage review. Reliability is a number you measure, not a vibe you sense, and one verifier can become a panel. You'll recognise both in your own artefacts when Module 6 gets there.
 
-**Read, [Checks that push back](trainings/agentic-engineering-101/supplementary/backpressure.md).** The verifier from this module is the first gate in a bigger story: checks that push back inside the loop are what let a run reach farther than you can watch. Why for Module 6: the loop assembled next is this story, with your own artefacts in it.
+**Read, [Checks that push back](trainings/agentic-engineering-101/supplementary/backpressure.md).** The verifier from this module is the first gate in a bigger story: checks that push back inside the loop are what let a run reach farther than you can watch. The loop assembled next is this story, with your own artefacts in it.
 
 <!-- maintainer -->
 

@@ -36,7 +36,7 @@ This bonus module is self-study. The build-and-verify homework gave you a small 
 - **Guardrails as structured context.** Not a checklist; a stance the agent reads at the start of the task.
 - **Domain expertise IS the eval.** You are the world's best evaluator of your own profile. Your gut on what's uniquely you and what's generic carries more weight than Claude's.
 - **Context is the control, not clever prompting.** Average output becomes great because of what's loaded ahead of the task, not because the prompt got smarter.
-- **Do → capture → reflect → sharpen.** Compound interest on an agent file. Every round of doing the work and reflecting makes the next round start sharper. **Remember: every round of doing sharpens the next.**
+- **Do → capture → reflect → sharpen.** Compound interest on an agent file. Every round of doing the work and reflecting makes the next round start sharper.
 
 ## Debrief
 

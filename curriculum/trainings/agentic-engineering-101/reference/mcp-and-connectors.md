@@ -111,7 +111,7 @@ The first argument to `marketplace add` accepts a GitHub `owner/repo`, a full gi
 
 ## What Claude Code doesn't do yet (as of 2026-05-14)
 
-Flagged for honesty, not complaint:
+Current gaps:
 
 - No standalone GUI marketplace for arbitrary MCP server install. MCP servers ride inside plugins: the in-CLI `/plugin` Discover tab installs plugin-bundled MCPs (e.g. `atlassian`, `linear`, `github` from `claude-plugins-official`), and OAuth connectors install at [claude.ai/customize/connectors](https://claude.ai/customize/connectors) and inherit into Claude Code (Team/Enterprise: admin-only). There is no in-CLI picker for adding a raw `claude mcp add --transport http <url>` server outside of a plugin. Claude Desktop's Settings → Connectors panel manages built-in OAuth connectors, not arbitrary MCP servers.
 - No single-click OAuth across every MCP connector (Rovo, Linear, and Anthropic Directory connectors support it; most others don't).

@@ -2652,8 +2652,8 @@ Report success on each step and tell me what you did.
 <hr>
 <h2 id="read-your-repo-deliberately">Read your repo deliberately</h2>
 <ul>
-<li><strong>A deliberate read beats a blind one.</strong> You decide what Claude loads: the repo&#39;s shape, its structure, what&#39;s load-bearing, what&#39;s gone stale. A cold agent reads whatever it stumbles into; you point it.</li>
-<li><strong>You are not on the hook for reading the repo.</strong> The agent does that. Your job is to steer what it loads and keep half an eye on the budget.</li>
+<li>A deliberate read beats a blind one. You decide what Claude loads: the repo&#39;s shape, its structure, what&#39;s load-bearing, what&#39;s gone stale. A cold agent reads whatever it stumbles into; you point it.</li>
+<li>You are not on the hook for reading the repo. The agent does that. Your job is to steer what it loads and keep half an eye on the budget.</li>
 </ul>
 <blockquote>
 <p><strong>Big repo? The read can fan out.</strong> If Claude starts reading dozens of files, interrupt with <code>Esc</code>, narrow to one feature or directory, and say <code>continue</code>.</p>
@@ -2665,8 +2665,8 @@ Report success on each step and tell me what you did.
 <p>The agent reports back a map of the repo: shape, structure, what&#39;s load-bearing, what&#39;s stale. Let the read finish before you interrogate the map.</p>
 <h2 id="ask-what-claude-skipped-and-why">Ask what Claude skipped, and why</h2>
 <ul>
-<li><strong>Every read has a shadow: the files Claude didn&#39;t load.</strong> The skipped slice is where the surprises hide.</li>
-<li><strong>Claude can introspect on what it did and why</strong>, including what it chose not to read.</li>
+<li>Every read has a shadow: the files Claude didn&#39;t load. The skipped slice is where the surprises hide.</li>
+<li>Claude can introspect on what it did and why, including what it chose not to read.</li>
 </ul>
 <p>Ask Claude to introspect on what it read, what it skipped, and the call it made on each.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -2674,12 +2674,12 @@ Report success on each step and tell me what you did.
 </code></pre>
 <h2 id="read-the-self-report-then-spot-check-it">Read the self-report, then spot-check it</h2>
 <ul>
-<li><strong>The account is a reconstruction, not ground truth.</strong> The LLM confabulates reasons sometimes. Assume about 10% of what it says or does is misrepresentation. Could be more, could be less.</li>
-<li><strong>You can spot-check it.</strong> Quote a specific file or function back and ask Claude to confirm it read what it claims.</li>
+<li>The account is a reconstruction, not ground truth. The LLM confabulates reasons sometimes. Assume about 10% of what it says or does is misrepresentation. Could be more, could be less.</li>
+<li>You can spot-check it. Quote a specific file or function back and ask Claude to confirm it read what it claims.</li>
 </ul>
 <h2 id="check-how-full-the-window-is">Check how full the window is</h2>
 <ul>
-<li><strong>The context window has a ceiling.</strong> <code>/context</code> is the slash command that shows how full it is: total used, and the breakdown by category (system prompt, messages, memory, skills).</li>
+<li>The context window has a ceiling. <code>/context</code> is the slash command that shows how full it is: total used, and the breakdown by category (system prompt, messages, memory, skills).</li>
 </ul>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>/context
@@ -2687,9 +2687,9 @@ Report success on each step and tell me what you did.
 <p>(<code>/context</code> is oldskool; <a href="https://github.com/sirmalloc/ccstatusline">ccstatusline</a> shows the same thing continuously in your status line.)</p>
 <h2 id="read-the-unread-slice">Read the unread slice</h2>
 <ul>
-<li><strong>The unread percentage from <code>/context</code> is the number that matters.</strong> The more the window fills, the less room for new work.</li>
-<li><strong>The slice Claude didn&#39;t load stays real.</strong> The window holds only so much; going forward, you choose what fills it.</li>
-<li><strong>You now have a map of the window:</strong> what loaded, what Claude skipped, and how much room is left. The next exercise fixes the bug you brought from prework, inside the window you just mapped.</li>
+<li>The unread percentage from <code>/context</code> is the number that matters. The more the window fills, the less room for new work.</li>
+<li>The slice Claude didn&#39;t load stays real. The window holds only so much; going forward, you choose what fills it.</li>
+<li>You now have a map of the window: what loaded, what Claude skipped, and how much room is left. The next exercise fixes the bug you brought from prework, inside the window you just mapped.</li>
 </ul>
 </section>
 
@@ -2708,8 +2708,8 @@ Report success on each step and tell me what you did.
 <hr>
 <h2 id="write-the-failing-test-and-fix-the-root-cause">Write the failing test and fix the root cause</h2>
 <ul>
-<li><strong>Tests-first, root-cause-driven is the move.</strong> The failing test is the only proof the bug exists. Without it, the fix is a guess that happens to compile. Write the test first, watch it fail, then fix the cause, not the symptom.</li>
-<li><strong>No plan mode here.</strong> You are not on the hook for scoping this one. Plan mode earns its keep at Module 2 on multi-file work; on a trivial bug it is overhead.</li>
+<li><strong>Tests-first, root-cause-driven</strong> is the move. The failing test is the only proof the bug exists. Without it, the fix is a guess that happens to compile. Write the test first, watch it fail, then fix the cause, not the symptom.</li>
+<li>No plan mode here. You are not on the hook for scoping this one. Plan mode earns its keep at Module 2 on multi-file work; on a trivial bug it is overhead.</li>
 </ul>
 <blockquote>
 <p><strong>Small fix, small test.</strong> A trivial bug wants one failing test and a tight fix, not a suite and a refactor. If Claude starts spinning up plenty of tests, or the change creeps past the bug, that&#39;s sprawl. Steer it back to one test that proves the bug and the smallest fix that passes it.</p>
@@ -2722,12 +2722,12 @@ Let&#39;s work on this bug:
 </code></pre>
 <h2 id="read-the-diff-and-push-back-on-a-line">Read the diff and push back on a line</h2>
 <ul>
-<li><strong>The agent runs the loop; you read the result.</strong> The agent writes the failing test, watches it fail, fixes the code, watches it pass. Read the diff. If a line isn&#39;t what you&#39;d have written, push back. Quote the line and say why. Whoever has the better argument wins.</li>
-<li><strong>Your own wording matters.</strong> No pre-made prompt for the pushback. You return to this exact move at the compound step, so the words you reach for are yours.</li>
+<li>The agent runs the loop; you read the result. The agent writes the failing test, watches it fail, fixes the code, watches it pass. Read the diff. If a line isn&#39;t what you&#39;d have written, push back. Quote the line and say why. Whoever has the better argument wins.</li>
+<li>Your own wording matters. No pre-made prompt for the pushback. You return to this exact move at the compound step, so the words you reach for are yours.</li>
 </ul>
 <h2 id="interrogate-the-fix-for-a-deeper-layer">Interrogate the fix for a deeper layer</h2>
 <ul>
-<li><strong>Push once on the depth.</strong> When the agent says done, ask whether the change is the root cause or a layer above it. The first cut usually fixes what makes the test pass; the deeper cut asks whether the test was pointing at the right thing. Name what a deeper edit would touch and see what Claude defends. The exchange is where root-cause discipline shows up, not in the fix itself.</li>
+<li>Push once on the depth. When the agent says done, ask whether the change is the root cause or a layer above it. The first cut usually fixes what makes the test pass; the deeper cut asks whether the test was pointing at the right thing. Name what a deeper edit would touch and see what Claude defends. The exchange is where root-cause discipline shows up, not in the fix itself.</li>
 </ul>
 <p><strong>Optional.</strong> Skip if the test you wrote already names the contract and the fix is the contract, no deeper layer to interrogate. Otherwise, ask Claude to interrogate the fix and name what&#39;s still surface.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -2740,7 +2740,7 @@ Let&#39;s work on this bug:
 <p><strong>Optional.</strong> Once the fix is in, dig into code quality and structure. Ask Claude: <em>did you make it better? Why yes. Why no.</em> You steer; might take a few nudges.</p>
 <h2 id="ship-the-pr">Ship the PR</h2>
 <ul>
-<li><strong>How far you let Claude drive Git is your call.</strong> Ask Claude to commit, push a branch, and open the PR.</li>
+<li>How far you let Claude drive Git is your call. Ask Claude to commit, push a branch, and open the PR.</li>
 </ul>
 <p><strong>What happened:</strong> A real PR shipped. A failing test landed in the codebase before the fix did. The diff got read, at least one line got pushback, and the root-cause interrogation ran before the second TDD pass.</p>
 <p>The PR is shipped. The move is warm. Hand off to the compound step.</p>
@@ -2762,8 +2762,8 @@ Let&#39;s work on this bug:
 <p>The PR shipped. Now compound the session, then close the bug&#39;s ticket. That&#39;s the first move outside the repo.</p>
 <h2 id="write-your-rules-file-from-the-session">Write your rules file from the session</h2>
 <ul>
-<li><strong>The session is the evidence.</strong> Claude reviews the whole scrollback in one shot and drafts your rules from how you actually worked. No three-question retro; the compound step reads what happened and writes.</li>
-<li><strong>You are not drafting from a blank page.</strong> The agent reads the session for you. Your job is to push back where it misreads.</li>
+<li>The session is the evidence. Claude reviews the whole scrollback in one shot and drafts your rules from how you actually worked. No three-question retro; the compound step reads what happened and writes.</li>
+<li>You are not drafting from a blank page. The agent reads the session for you. Your job is to push back where it misreads.</li>
 </ul>
 <blockquote>
 <p><strong>Long session, long read.</strong> Claude reviews the whole scrollback in one shot. If the review stalls or runs past a couple of minutes, interrupt with <code>Esc</code>, narrow to the orient and introspect phases first, and say <code>continue</code>.</p>
@@ -2779,18 +2779,18 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 </code></pre>
 <h2 id="push-back-where-the-summary-misreads">Push back where the summary misreads</h2>
 <ul>
-<li><strong>Quote the moment back at Claude.</strong> Read Claude&#39;s summary. Push back where it misreads. Quote the specific session moment back at Claude. That push-back is the reflection move.</li>
-<li><strong>The rules file is yours now.</strong> Born from the session, extended by every module after this one.</li>
-<li><strong>The <code>.gitignore</code> edit is your call.</strong> If <code>CLAUDE.local.md</code> wasn&#39;t already ignored, the compound step added it to your <code>.gitignore</code>. That is an uncommitted change now. What you do with it is your call.</li>
+<li>Quote the moment back at Claude. Read Claude&#39;s summary. Push back where it misreads. Quote the specific session moment back at Claude. That push-back is the reflection move.</li>
+<li>The rules file is yours now. Born from the session, extended by every module after this one.</li>
+<li>The <code>.gitignore</code> edit is your call. If <code>CLAUDE.local.md</code> wasn&#39;t already ignored, the compound step added it to your <code>.gitignore</code>. That is an uncommitted change now. What you do with it is your call.</li>
 </ul>
 <h2 id="reach-past-the-repo-with-a-connector">Reach past the repo with a connector</h2>
 <ul>
-<li><strong>Your agent&#39;s reach stops at the repo.</strong> Real engineering work spans tickets, pull requests, CI, chat, documentation: the system around the code. <strong>MCP</strong> is the protocol Claude Code uses to connect to that system. Three words land together: <strong>connector</strong> (the wire into a work app), <strong>action</strong> (a verb with effect in the world), <strong>tool</strong> (the umbrella for anything the model can call). Full primer in <a href="#reference-mcp-and-connectors">MCP and connectors</a>.</li>
-<li><strong>One connector, two actions (read + update), closes the loop</strong> you just ran on the bug, in the tracker your team actually lives in.</li>
+<li>Your agent&#39;s reach stops at the repo. Real engineering work spans tickets, pull requests, CI, chat, documentation: the system around the code. <strong>MCP</strong> is the protocol Claude Code uses to connect to that system. Three words land together: <strong>connector</strong> (the wire into a work app), <strong>action</strong> (a verb with effect in the world), <strong>tool</strong> (the umbrella for anything the model can call). Full primer in <a href="#reference-mcp-and-connectors">MCP and connectors</a>.</li>
+<li>One connector, two actions (read + update), closes the loop you just ran on the bug, in the tracker your team actually lives in.</li>
 </ul>
 <h2 id="wire-one-connector-into-your-tracker">Wire one connector into your tracker</h2>
 <ul>
-<li><strong>Pick the cleanest path for your tracker.</strong> Three work:</li>
+<li>Pick the cleanest path for your tracker. Three work:</li>
 </ul>
 <ol>
 <li><strong>GitHub Issues:</strong> check <code>gh auth status</code> in your session. Claude runs <code>gh</code> for you via Bash, no MCP install needed.</li>
@@ -2798,7 +2798,7 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 <li><strong>Manual paste:</strong> Claude writes the close-out; you paste it into the tracker UI yourself. Five seconds, no tool setup.</li>
 </ol>
 <ul>
-<li><strong>The teaching moment is the agent reaching across a tool boundary with a real engineering note</strong>, not the install choreography. For paths 1 or 2, get your connector up and running.</li>
+<li>The teaching moment is the agent reaching across a tool boundary with a real engineering note, not the install choreography. For paths 1 or 2, get your connector up and running.</li>
 </ul>
 <blockquote>
 <p><strong>Connector added after this session started?</strong> Check MCP status and authenticate with <code>/mcp</code>. If the new connector still isn&#39;t there, exit the session and resume it with <code>claude --resume &lt;session-id&gt;</code>.</p>
@@ -2819,12 +2819,12 @@ Ticket:
 </code></pre>
 <h2 id="read-the-close-out-and-ship-it">Read the close-out and ship it</h2>
 <ul>
-<li><strong>Read the close-out; push back if it&#39;s stiff or wrong.</strong> Tell Claude how your team actually writes ticket comments. It&#39;ll adjust.</li>
-<li><strong>Ship the update</strong> (or paste it into the tracker yourself on path 3, manual paste). The bug fix is now visible where it should be: in the tracker your team reads, not only in the repo.</li>
+<li>Read the close-out; push back if it&#39;s stiff or wrong. Tell Claude how your team actually writes ticket comments. It&#39;ll adjust.</li>
+<li>Ship the update (or paste it into the tracker yourself on path 3, manual paste). The bug fix is now visible where it should be: in the tracker your team reads, not only in the repo.</li>
 </ul>
 <h2 id="sweep-the-session-into-your-rules-file-one-more-time">Sweep the session into your rules file one more time</h2>
 <ul>
-<li><strong>One more pass before close.</strong> Anything earned since the first compound pass at the top of this exercise (the ticket close-out, the push-backs, the connector path you picked) that didn&#39;t land yet?</li>
+<li>One more pass before close. Anything earned since the first compound pass at the top of this exercise (the ticket close-out, the push-backs, the connector path you picked) that didn&#39;t land yet?</li>
 </ul>
 <p>Ask Claude to sweep the session for anything earned since the first compound and integrate.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -3125,51 +3125,51 @@ Ticket:
 <p><strong>Time:</strong> 60 minutes.</p>
 <p><strong>What you do:</strong> take a real multi-file task from your backlog, run it through plan mode, push back twice with what you can see, then hand the plan to a second agent for a deeper read. Approve the plan. <strong>Stop.</strong> Don&#39;t execute. Compare what your read caught to what the second-pass read caught. That gap is the skill this module is building.</p>
 <p><strong>What you build:</strong> two reads paired on one plan. Your own two push-backs, in your voice, catch what a human catches. A second-pass walk-down, one question at a time, catches the branches you can&#39;t see. Together they make a plan you can approve without rubber-stamping it.</p>
-<p><strong>The point:</strong> two reads, paired. <strong>Making the plan good is the work.</strong></p>
+<p><strong>The point:</strong> two reads, paired. Making the plan good is the work.</p>
 <hr>
 <h2 id="phase-1-bring-a-real-task">Phase 1: Bring a real task</h2>
 <ul>
-<li><strong>Bring a task that spans a few files, with enough execution depth to make plan mode worth using.</strong> A feature slice, a small migration, a targeted refactor: something where touching the wrong file matters. A one-line fix is too small for plan mode; a refactor whose outcome you can&#39;t hold in your head is too big.</li>
-<li><strong>Just a simple task that spans a few files. Not an epic.</strong></li>
+<li>Bring a task that spans a few files, with enough execution depth to make plan mode worth using. A feature slice, a small migration, a targeted refactor: something where touching the wrong file matters. A one-line fix is too small for plan mode; a refactor whose outcome you can&#39;t hold in your head is too big.</li>
+<li>Just a simple task that spans a few files. Not an epic.</li>
 <li>If nothing fits, ask Claude to surface three candidates from recent issues, PRs, or TODO comments. Pick the one you&#39;d ship today if you had an hour.</li>
 </ul>
 <h2 id="phase-2-enter-plan-mode-and-ask-for-the-plan">Phase 2: Enter plan mode and ask for the plan</h2>
 <ul>
-<li><strong>Shift+Tab until the status bar shows plan.</strong> Ask Claude to plan the task you&#39;ll drop after the colon: what, why, the one constraint you care about most.</li>
-<li><strong>You ask; the agent drafts.</strong> You are not writing the plan. Plan mode explores the codebase and drafts the steps; your job starts when it pauses for approval.</li>
+<li>Shift+Tab until the status bar shows plan. Ask Claude to plan the task you&#39;ll drop after the colon: what, why, the one constraint you care about most.</li>
+<li>You ask; the agent drafts. You are not writing the plan. Plan mode explores the codebase and drafts the steps; your job starts when it pauses for approval.</li>
 </ul>
 <p><strong>Prompt</strong> <em>(Claude Code)</em> ⟦M:plan⟧</p>
 <pre><code>Plan the task I describe below. Explore the files you need to understand the scope. Write the plan to a plan file. Each step names files touched, shape of the change, tests you&#39;d write or update before any code lands, and what you&#39;d check before declaring it done. Detail over brevity.
 
 My task:
 </code></pre>
-<p><strong>Plan mode takes minutes on real codebases.</strong> Eight to twelve isn&#39;t unusual. While Claude works, take in the side material that fits the wait: the <a href="#reference-multi-session-git">Multi-session and Git: survival guide</a> if you skipped it in the gap, or the plan-mode-at-depth section of <a href="#5-plan-mode-at-depth">Claude Code for engineers</a> for the approval-paths table. When Claude is on a long-running prompt, that&#39;s when you take in selected side reading or watch a demo. Wait isn&#39;t dead time.</p>
+<p>Plan mode takes minutes on real codebases. Eight to twelve isn&#39;t unusual. While Claude works, take in the side material that fits the wait: the <a href="#reference-multi-session-git">Multi-session and Git: survival guide</a> if you skipped it in the gap, or the plan-mode-at-depth section of <a href="#5-plan-mode-at-depth">Claude Code for engineers</a> for the approval-paths table. When Claude is on a long-running prompt, that&#39;s when you take in selected side reading or watch a demo. Wait isn&#39;t dead time.</p>
 <h2 id="read-the-plan-before-you-push-back">Read the plan before you push back</h2>
 <ul>
-<li><strong>Open the plan file; the chat summary is secondary, the file is the artifact.</strong> The agent explores, writes a plan file with a descriptive name (e.g. <code>migrate-auth-hash-calm-otter.md</code>), and pauses for approval.</li>
-<li><strong>Read the whole plan before pushing back.</strong> Notice which steps name files and which say &quot;the relevant files.&quot; Notice which verification steps could actually fail and which are cosmetic. Notice which assumptions the plan is carrying silently.</li>
-<li><strong>Read the tests section carefully.</strong> A good plan names the tests before any code; the tests are part of what &quot;done&quot; means, not something you bolt on after. If the tests section is thin or missing, that&#39;s a push-back.</li>
+<li>Open the plan file; the chat summary is secondary, the file is the artifact. The agent explores, writes a plan file with a descriptive name (e.g. <code>migrate-auth-hash-calm-otter.md</code>), and pauses for approval.</li>
+<li>Read the whole plan before pushing back. Notice which steps name files and which say &quot;the relevant files.&quot; Notice which verification steps could actually fail and which are cosmetic. Notice which assumptions the plan is carrying silently.</li>
+<li>Read the tests section carefully. A good plan names the tests before any code; the tests are part of what &quot;done&quot; means, not something you bolt on after. If the tests section is thin or missing, that&#39;s a push-back.</li>
 <li>When you have two push-backs forming in your head, move on. Don&#39;t wait for the clock.</li>
 </ul>
 <h2 id="phase-3-push-back-twice">Phase 3: Push back twice</h2>
 <ul>
-<li><strong>Don&#39;t approve yet.</strong> At the approval prompt, pick <strong>keep planning with feedback</strong>. Send two push-backs on two different axes: one soft item, and one of (assumption · committed change). Your own words, your own concerns.</li>
+<li>Don&#39;t approve yet. At the approval prompt, pick <strong>keep planning with feedback</strong>. Send two push-backs on two different axes: one soft item, and one of (assumption · committed change). Your own words, your own concerns.</li>
 <li><strong>Soft items:</strong> the step that reads clean but skips over something. <em>&quot;Update the config&quot;</em> without which keys. <em>&quot;Handle migration errors&quot;</em> without what happens to rows mid-flight. The vagueness isn&#39;t a drafting slip; it&#39;s where the agent hasn&#39;t decided yet.</li>
 <li><strong>Assumptions:</strong> something the plan is carrying silently that it shouldn&#39;t. A library version, a schema shape, a teammate&#39;s recent change the agent hasn&#39;t seen.</li>
 <li><strong>Committed changes:</strong> not just a flag; an alternative. Merge two steps that belong together. Reorder two steps whose sequence matters. Swap a file path for the right one.</li>
 </ul>
 <h2 id="catch-the-re-softening-in-the-revised-plan">Catch the re-softening in the revised plan</h2>
 <ul>
-<li><strong>Two messages, your phrasing, specific to what you saw.</strong> The agent acknowledges each, regenerates the plan, re-presents it.</li>
-<li><strong>Read the revised plan carefully. This is where Claude&#39;s niceness bites.</strong> Claude will sometimes verbally accept a push-back and re-soften the step anyway (RLHF doing its job). If you see the original vagueness survive the regeneration, push back again on that specific line. Softening-on-regeneration is a reliable tell; catching it is part of the read.</li>
-<li>Stuck on the soft item? Ask Claude which step it&#39;s least confident about. That answer IS one. Find is easier than judge.</li>
+<li>Two messages, your phrasing, specific to what you saw. The agent acknowledges each, regenerates the plan, re-presents it.</li>
+<li>Read the revised plan carefully. This is where Claude&#39;s niceness bites. Claude will sometimes verbally accept a push-back and re-soften the step anyway (RLHF doing its job). If you see the original vagueness survive the regeneration, push back again on that specific line. Softening-on-regeneration is a reliable tell; catching it is part of the read.</li>
+<li>Stuck on the soft item? Ask Claude which step it&#39;s least confident about. That answer IS one. <strong>Find is easier than judge.</strong></li>
 </ul>
 <blockquote>
 <p><strong>Two messages, then move on.</strong> Two push-backs on two axes, plus one check that the regeneration held, is all Phase 3 asks. A third push-back may be forming. That is fine; it is the second-pass read&#39;s job to catch the rest. Send your two, check the revision once, and move to Phase 4.</p>
 </blockquote>
 <h2 id="phase-4-walk-down-every-unresolved-branch">Phase 4: Walk down every unresolved branch</h2>
 <ul>
-<li><strong>Hand the plan to a second agent that reads differently than you do.</strong> Still in plan mode: the plan file is the artifact you&#39;re walking, and the lock-it-in convention only fires inside plan mode.</li>
+<li>Hand the plan to a second agent that reads differently than you do. Still in plan mode: the plan file is the artifact you&#39;re walking, and the lock-it-in convention only fires inside plan mode.</li>
 <li>Ask Claude to walk down every unresolved branch of the plan one question at a time, recommending an answer for each.</li>
 </ul>
 <p><strong>Prompt</strong> <em>(Claude Code)</em> ⟦M:plan⟧</p>
@@ -3184,20 +3184,20 @@ Ask me three questions at a time. For each question, recommend an answer. If a q
 </blockquote>
 <h2 id="answer-the-branches-that-change-what-done-means">Answer the branches that change what &quot;done&quot; means</h2>
 <ul>
-<li><strong>The second read asks one question at a time.</strong> Some will feel trivial (<em>&quot;which logger should step 2 use?&quot;</em>); answer and move on. Some will reach into something you hadn&#39;t considered (<em>&quot;step 4 touches the shared cache; what&#39;s the invalidation story?&quot;</em>); pause, think, answer. A few will surface decisions the plan was silently making for you; reject the recommended answer and give a different one.</li>
+<li>The second read asks one question at a time. Some will feel trivial (<em>&quot;which logger should step 2 use?&quot;</em>); answer and move on. Some will reach into something you hadn&#39;t considered (<em>&quot;step 4 touches the shared cache; what&#39;s the invalidation story?&quot;</em>); pause, think, answer. A few will surface decisions the plan was silently making for you; reject the recommended answer and give a different one.</li>
 </ul>
 <blockquote>
 <p><strong>Too many low-level questions? Steer up.</strong> If Claude keeps asking about implementation detail (which helper, a variable name, error-message wording), tell it: ask me about requirements, not low-level design. The branches worth the time change what &#39;done&#39; means; the rest you&#39;d settle in code review.</p>
 </blockquote>
 <h2 id="stop-when-the-read-starts-reaching">Stop when the read starts reaching</h2>
 <ul>
-<li><strong>Typical session: 5 to 12 questions.</strong> Stop when the second read starts reaching: a question about something genuinely out of scope, a branch that&#39;s already settled, a recommendation you&#39;d accept without thinking. The agent doesn&#39;t always know when to stop; you do. The agent incorporates your answers into a sharpened plan. Approve when it&#39;s yours. Not Claude&#39;s, not the second read&#39;s.</li>
+<li>Typical session: 5 to 12 questions. Stop when the second read starts reaching: a question about something genuinely out of scope, a branch that&#39;s already settled, a recommendation you&#39;d accept without thinking. The agent doesn&#39;t always know when to stop; you do. The agent incorporates your answers into a sharpened plan. Approve when it&#39;s yours. Not Claude&#39;s, not the second read&#39;s.</li>
 </ul>
 <blockquote>
 <p><strong>Timebox check.</strong> When the slot ends, stop. The second-pass walk-down can run deep on a real codebase. If it is still surfacing branches when time is up, take the most recent sharpened plan, approve it, and move to Phase 5. The branches that did not surface today are the ones you will catch when you actually ship the work. The exercise teaches the move. You take the move home.</p>
 </blockquote>
 <ul>
-<li><strong>The walk-down prompt&#39;s three-at-a-time prose is the starting point.</strong> That batching cuts round-trips on the branches that need real thought. If you prefer a structured picker, switch once the walk-down is rolling. Ask Claude to switch to AskUserQuestion, and add any steering of your own.</li>
+<li>The walk-down prompt&#39;s three-at-a-time prose is the starting point. That batching cuts round-trips on the branches that need real thought. If you prefer a structured picker, switch once the walk-down is rolling. Ask Claude to switch to AskUserQuestion, and add any steering of your own.</li>
 </ul>
 <p><strong>Prompt</strong> <em>(Claude Code)</em> ⟦M:plan⟧ ⟦CUT:redundant-slot⟧</p>
 <pre><code>Switch to AskUserQuestion for the rest of the walk-down. Keep going through the unresolved branches (dependencies, decisions, side-effects I haven&#39;t named), but ask through AskUserQuestion, one option set per branch, with your recommended answer marked.
@@ -3217,7 +3217,7 @@ If a question can be answered by exploring the codebase, explore the codebase in
 <p>Then just hit stop.</p>
 <h2 id="phase-5-stop-then-name-the-pattern-you-ran">Phase 5: Stop, then name the pattern you ran</h2>
 <ul>
-<li><strong>Don&#39;t execute the plan.</strong> The work of making it good is the exercise. Execution is next module&#39;s concern.</li>
+<li>Don&#39;t execute the plan. The work of making it good is the exercise. Execution is next module&#39;s concern.</li>
 <li>Out of plan mode now: you approved and stopped, so Claude Code is back to default mode for this last step.</li>
 <li>Ask Claude to name the design pattern you just ran and compare what the second-pass read surfaced against what your two push-backs caught.</li>
 </ul>
@@ -3227,8 +3227,8 @@ If a question can be answered by exploring the codebase, explore the codebase in
 <h2 id="compare-what-each-read-caught">Compare what each read caught</h2>
 <ul>
 <li>The agent answers. The pattern it names should be something like: read the plan yourself, push back on what you can see, second-pass read for what you can&#39;t, approve. Two reads, two kinds of scrutiny. You catch what a human catches (specificity, voice-of-experience, &quot;I&#39;d write that differently&quot;). The second read catches what an agent walking a decision tree catches: branches you didn&#39;t notice, dependencies you didn&#39;t name, side-effects you didn&#39;t price.</li>
-<li><strong>Neither is complete. Paired, they usually are.</strong></li>
-<li><strong>Plan-mode approval inflation is the thing this pairing defeats:</strong> structured plans get rubber-stamped because they look like decisions. One pass by you catches some of it. The second read catches the rest. That&#39;s the move.</li>
+<li>Neither is complete. Paired, they usually are.</li>
+<li><strong>Plan-mode approval inflation</strong> is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions. One pass by you catches some of it. The second read catches the rest. That&#39;s the move.</li>
 </ul>
 <h2 id="keep-the-session-open-for-the-compound-step">Keep the session open for the Compound step</h2>
 <ul>
@@ -3252,8 +3252,8 @@ If a question can be answered by exploring the codebase, explore the codebase in
 <hr>
 <h2 id="phase-1-name-the-rules-from-this-session">Phase 1: Name the rules from this session</h2>
 <ul>
-<li><strong>You already did the work; now name the rules inside it.</strong> You ran a plan, two push-backs, a second-pass walk-down, and an approval. Each decision along the way carried a task-shaping rule about what made this task plan-mode-able.</li>
-<li><strong>You are not on the hook for remembering it.</strong> The agent reads the scrollback; you react to what it proposes.</li>
+<li>You already did the work; now name the rules inside it. You ran a plan, two push-backs, a second-pass walk-down, and an approval. Each decision along the way carried a task-shaping rule about what made this task plan-mode-able.</li>
+<li>You are not on the hook for remembering it. The agent reads the scrollback; you react to what it proposes.</li>
 </ul>
 <p>Ask Claude to read the scrollback, propose rules, and pause for your push-back before going further.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -3261,13 +3261,13 @@ If a question can be answered by exploring the codebase, explore the codebase in
 </code></pre>
 <h2 id="reject-or-rewrite-the-generic-rule">Reject or rewrite the generic rule</h2>
 <ul>
-<li><strong>The pause is the engagement step.</strong> When Claude pauses for the rewrite-and-reject pass, that is where your hand goes on the work.</li>
-<li><strong>The generic rule is the tell.</strong> The rule that arrives generic, like &quot;pick tasks that span multiple files,&quot; is the one that needs rewriting into your words, or rejecting.</li>
+<li>The pause is the engagement step. When Claude pauses for the rewrite-and-reject pass, that is where your hand goes on the work.</li>
+<li>The generic rule is the tell. The rule that arrives generic, like &quot;pick tasks that span multiple files,&quot; is the one that needs rewriting into your words, or rejecting.</li>
 </ul>
 <h2 id="phase-2-pick-where-the-file-fires">Phase 2: Pick where the file fires</h2>
 <ul>
-<li><strong>The choice is when the rules fire, not where the bytes sit.</strong> Anywhere on this laptop (user-level), or only when this repo is open (repo-personal).</li>
-<li><strong>Claude carries the path taxonomy; you carry the choice.</strong></li>
+<li>The choice is when the rules fire, not where the bytes sit. Anywhere on this laptop (user-level), or only when this repo is open (repo-personal).</li>
+<li>Claude carries the path taxonomy; you carry the choice.</li>
 </ul>
 <p>Decide the location with Claude.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -3275,24 +3275,24 @@ If a question can be answered by exploring the codebase, explore the codebase in
 </code></pre>
 <h2 id="wire-the-file-in-check-the-wording">Wire the file in, check the wording</h2>
 <ul>
-<li><strong>A rule off the auto-load path needs a wire.</strong> If the agent proposes a path other than <code>./CLAUDE.local.md</code>, <code>./CLAUDE.md</code>, or <code>~/.claude/CLAUDE.md</code>, ask Claude to also propose the <code>@import</code> line that wires the file in. A rule at <code>~/.claude/memory/task-shaping.md</code> (or any notes folder) sits silently on disk until something reads it; adding <code>@~/.claude/memory/task-shaping.md</code> to <code>~/.claude/CLAUDE.md</code> is what makes &quot;fires anywhere on this laptop&quot; actually fire.</li>
-<li><strong>Read the three rules back.</strong> If any drifted from your wording, push back and have Claude rewrite.</li>
+<li>A rule off the auto-load path needs a wire. If the agent proposes a path other than <code>./CLAUDE.local.md</code>, <code>./CLAUDE.md</code>, or <code>~/.claude/CLAUDE.md</code>, ask Claude to also propose the <code>@import</code> line that wires the file in. A rule at <code>~/.claude/memory/task-shaping.md</code> (or any notes folder) sits silently on disk until something reads it; adding <code>@~/.claude/memory/task-shaping.md</code> to <code>~/.claude/CLAUDE.md</code> is what makes &quot;fires anywhere on this laptop&quot; actually fire.</li>
+<li>Read the three rules back. If any drifted from your wording, push back and have Claude rewrite.</li>
 </ul>
 <h2 id="phase-3-name-the-automation-shapes-dont-build-them">Phase 3: Name the automation shapes, don&#39;t build them</h2>
 <ul>
-<li><strong>Refinement is the backlog-grooming loop.</strong> Sizing, splitting, and sharpening tickets before they&#39;re worked.</li>
-<li><strong>The prompt asks for shapes, not code.</strong> &quot;This rules file&quot; means the <code>.md</code> file you saved in Phase 2. The first automation attempt points an agent at that file and one input stream: a Slack channel, an issue queue, or a backlog export.</li>
+<li><strong>Refinement</strong> is the backlog-grooming loop. Sizing, splitting, and sharpening tickets before they&#39;re worked.</li>
+<li>The prompt asks for shapes, not code. &quot;This rules file&quot; means the <code>.md</code> file you saved in Phase 2. The first automation attempt points an agent at that file and one input stream: a Slack channel, an issue queue, or a backlog export.</li>
 </ul>
 <p><strong>Prompt</strong> <em>(Claude Code)</em> ⟦CUT:low-yield⟧</p>
 <pre><code>Suppose I wanted this rules file to drive automated task-splitting in the future — running over a backlog, an issue queue, or a stream of incoming requests, splitting epics into shippable slices using these rules as the guardrail. What two or three shapes does that automation typically take? Name each shape, what would invoke it, and where the rules file would sit in the loop. Don&#39;t propose code today.
 </code></pre>
 <h2 id="read-the-shapes-hold-the-build">Read the shapes, hold the build</h2>
 <ul>
-<li><strong>Read the answer as a map, not a mandate.</strong> The next small lecture walks the same shapes with the trigger and runtime for each.</li>
+<li>Read the answer as a map, not a mandate. The next small lecture walks the same shapes with the trigger and runtime for each.</li>
 </ul>
 <h2 id="optional-read-the-rules-hiding-in-one-real-ticket">Optional: Read the rules hiding in one real ticket</h2>
 <ul>
-<li><strong>One ticket is enough for a first read.</strong> If there is time left, open one real ticket from Jira, Linear, GitHub Issues, Azure Boards, or whatever your team uses. Copy the ticket into Claude with the visible fields: title, description, comments, and links.</li>
+<li>One ticket is enough for a first read. If there is time left, open one real ticket from Jira, Linear, GitHub Issues, Azure Boards, or whatever your team uses. Copy the ticket into Claude with the visible fields: title, description, comments, and links.</li>
 </ul>
 <p>Then ask Claude to infer how the fields are being used.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em> ⟦CUT:project-admin⟧</p>
@@ -3306,9 +3306,9 @@ Ticket:
 </code></pre>
 <h2 id="fold-the-field-use-rules-into-your-file">Fold the field-use rules into your file</h2>
 <ul>
-<li><strong>One ticket gives basic rules, not policy.</strong> Which fields matter, which labels carry meaning, which wording signals &quot;too big,&quot; which status changes imply ownership.</li>
-<li><strong>The rules fold back into the file.</strong> If backlog refinement is your first automation attempt, these field-use rules become the first add-on to the Phase 2 <code>.md</code> file, or a small companion file beside it.</li>
-<li><strong>Depth comes from more tickets.</strong> Three to five tickets from different work types surface stronger rules than one ticket, and Claude should keep separating strong signals from guesses as the sample grows.</li>
+<li>One ticket gives basic rules, not policy. Which fields matter, which labels carry meaning, which wording signals &quot;too big,&quot; which status changes imply ownership.</li>
+<li>The rules fold back into the file. If backlog refinement is your first automation attempt, these field-use rules become the first add-on to the Phase 2 <code>.md</code> file, or a small companion file beside it.</li>
+<li>Depth comes from more tickets. Three to five tickets from different work types surface stronger rules than one ticket, and Claude should keep separating strong signals from guesses as the sample grows.</li>
 </ul>
 <p><strong>What happened:</strong> Claude read the scrollback and proposed the rules. You rewrote or rejected at least one. You named the file and the path. Claude wrote it. You asked one open question about where the file could go next. Claude proposed shapes. You read. Optionally: you pasted one real ticket, and Claude inferred how your team seems to use fields like status, labels, priority, component, estimate, owner, and epic.</p>
 </section>
@@ -3414,15 +3414,15 @@ If nothing earned itself, say so and stop.
 <p><strong>What you build:</strong> two Claude Code sessions running side by side on one git history. A security main lane in your repo, and a quality side lane in a sibling worktree that waits until Exercise 3. When one lane runs a long prompt, the other is where you work.</p>
 <h2 id="fork-the-side-worktree-from-your-security-lane">Fork the side worktree from your security lane</h2>
 <ul>
-<li><strong>Security is the main quest. Start it in your repo.</strong> This is your main lane for Module 3. Access mapping, STRIDE, and the ADR all live here.</li>
+<li>Security is the main quest. Start it in your repo. This is your main lane for Module 3. Access mapping, STRIDE, and the ADR all live here.</li>
 </ul>
 <p><strong>Session</strong> <em>(new, &quot;m3-security&quot;)</em></p>
 <pre><code>/rename m3-security
 </code></pre>
 <ul>
-<li><strong>A sibling worktree is a second working directory on the same git history.</strong> It opens next to your repo, useful when two unrelated changes run concurrently, each on its own branch and working state. <code>git worktree add</code> makes the sibling folder on its own branch; a new Claude Code session in another window works there; both sessions see the same git history but keep their own working state. The <a href="#reference-multi-session-git">Multi-session and Git survival guide</a> carries the longer read.</li>
-<li><strong>Personal files like <code>CLAUDE.local.md</code> don&#39;t sync between worktrees.</strong> They get copied across once at fork time, then evolve independently.</li>
-<li><strong>Decide where to base the side worktree.</strong> It branches off your current local HEAD. Clean main is the safe default. If you want another base, switch to it before you fork.</li>
+<li>A sibling worktree is a second working directory on the same git history. It opens next to your repo, useful when two unrelated changes run concurrently, each on its own branch and working state. <code>git worktree add</code> makes the sibling folder on its own branch; a new Claude Code session in another window works there; both sessions see the same git history but keep their own working state. The <a href="#reference-multi-session-git">Multi-session and Git survival guide</a> carries the longer read.</li>
+<li>Personal files like <code>CLAUDE.local.md</code> don&#39;t sync between worktrees. They get copied across once at fork time, then evolve independently.</li>
+<li>Decide where to base the side worktree. It branches off your current local HEAD. Clean main is the safe default. If you want another base, switch to it before you fork.</li>
 </ul>
 <p>The fork prompt reads your repo&#39;s folder name from the working directory. Paste it as-is; Claude fills in <code>&lt;repo-name&gt;</code> itself.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -3439,17 +3439,17 @@ Tell me the absolute path to the new worktree directory and which files copied a
 </code></pre>
 <h2 id="read-back-the-worktree-path">Read back the worktree path</h2>
 <ul>
-<li><strong>Claude reports the sibling worktree path.</strong> That path is where the second session opens.</li>
+<li>Claude reports the sibling worktree path. That path is where the second session opens.</li>
 </ul>
 <h2 id="open-the-quality-lane-in-the-new-worktree">Open the quality lane in the new worktree</h2>
 <ul>
-<li><strong>This is your side-quest lane.</strong> Start a second Claude Code session in another window, in the sibling worktree directory Claude just named.</li>
+<li>This is your side-quest lane. Start a second Claude Code session in another window, in the sibling worktree directory Claude just named.</li>
 </ul>
 <p><strong>Session</strong> <em>(new, &quot;m3-quality&quot;)</em></p>
 <pre><code>/rename m3-quality
 </code></pre>
 <ul>
-<li><strong>You author the test-strategy skill here while the main lane runs security.</strong> The skill installs to user scope, so Exercise 3 returns to the main lane to invoke it on the security-tested feature. You are not carrying the skill back by hand; it crosses worktrees on its own.</li>
+<li>You author the test-strategy skill here while the main lane runs security. The skill installs to user scope, so Exercise 3 returns to the main lane to invoke it on the security-tested feature. You are not carrying the skill back by hand; it crosses worktrees on its own.</li>
 </ul>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Confirm worktree state:
@@ -3463,8 +3463,8 @@ Report the four lines back. Then wait.
 </code></pre>
 <h2 id="set-the-two-windows-side-by-side">Set the two windows side by side</h2>
 <ul>
-<li><strong>Two windows, side by side, both visible at once.</strong> Each holds its own scrollback. Arrange them so neither disappears behind the other.</li>
-<li><strong>The move this module installs: when one window kicks off a long-running prompt, the other is where you work.</strong> Module 3&#39;s exercises name which window the work runs in, and where the switch points are.</li>
+<li>Two windows, side by side, both visible at once. Each holds its own scrollback. Arrange them so neither disappears behind the other.</li>
+<li>The move this module installs: when one window kicks off a long-running prompt, the other is where you work. Module 3&#39;s exercises name which window the work runs in, and where the switch points are.</li>
 </ul>
 <p><strong>What happened:</strong> You forked a sibling worktree for the quality side, opened two Claude Code sessions (one in your repo, one in the sibling), and confirmed each reads the same codebase from a different working directory. Security picks up in the main window at the next exercise. The quality side waits.</p>
 </section>
@@ -3532,8 +3532,8 @@ Report the four lines back. Then wait.
 <hr>
 <h2 id="phase-1-run-the-curated-skill-on-your-feature-and-save-the-map">Phase 1: Run the curated skill on your feature and save the map</h2>
 <ul>
-<li><strong>You invoke; the skill does the breadth walk.</strong> The <code>access-control-analysis</code> skill was installed as a personal skill during prework, so Claude Code auto-discovers it by name in the m3-security session. You aren&#39;t on the hook for walking every surface. The skill and its subagent do that; you own the codebase-specific judgment the skill can&#39;t have.</li>
-<li><strong>See what skills your Claude has loaded first.</strong> In the Claude Code chat, type:</li>
+<li>You invoke; the skill does the breadth walk. The <code>access-control-analysis</code> skill was installed as a personal skill during prework, so Claude Code auto-discovers it by name in the m3-security session. You aren&#39;t on the hook for walking every surface. The skill and its subagent do that; you own the codebase-specific judgment the skill can&#39;t have.</li>
+<li>See what skills your Claude has loaded first. In the Claude Code chat, type:</li>
 </ul>
 <pre><code>/skills
 </code></pre>
@@ -3554,23 +3554,23 @@ The feature is:
 <p>Paste a plan path, a ticket link, a design-doc path, or the feature description; Claude reads whatever you give it. Then send. Claude narrates what the skill is doing before the map appears; skip past the opening and look for the saved path when it lands. The skill walks the surfaces and produces the map.</p>
 <h2 id="kick-off-the-run-then-work-the-other-window">Kick off the run, then work the other window</h2>
 <ul>
-<li><strong>The access-control pass is a breadth walk and takes a few minutes.</strong> That wait is the two-window move Module 3 installs: kick off a long run in one window, do active work in the other, come back when the first lands.</li>
-<li><strong>Switch to your m3-quality window now.</strong> While the map builds in m3-security, start authoring the test-strategy skill there (Exercise 3, Phase 1). When the map lands back in m3-security, switch back to walk it and write the delta. Both windows are already open from <em>Open the side quest</em>; this is a focus switch, not a new session.</li>
+<li>The access-control pass is a breadth walk and takes a few minutes. That wait is the two-window move Module 3 installs: kick off a long run in one window, do active work in the other, come back when the first lands.</li>
+<li>Switch to your m3-quality window now. While the map builds in m3-security, start authoring the test-strategy skill there (Exercise 3, Phase 1). When the map lands back in m3-security, switch back to walk it and write the delta. Both windows are already open from <em>Open the side quest</em>; this is a focus switch, not a new session.</li>
 </ul>
 <h2 id="phase-2-read-the-map-back-before-you-decide-the-delta">Phase 2: Read the map back before you decide the delta</h2>
 <ul>
-<li><strong>You&#39;re back in m3-security now; the map landed here.</strong> The rest of this exercise runs in this window.</li>
-<li><strong>See the structured read before you decide.</strong> Ask Claude to walk you through the surface map in chat: categories, key findings, ambiguous spots. You want the structured read in front of you before you name your deltas in Phase 3.</li>
+<li>You&#39;re back in m3-security now; the map landed here. The rest of this exercise runs in this window.</li>
+<li>See the structured read before you decide. Ask Claude to walk you through the surface map in chat: categories, key findings, ambiguous spots. You want the structured read in front of you before you name your deltas in Phase 3.</li>
 </ul>
 <p><strong>Prompt</strong> <em>(Claude Code)</em> ⟦CUT:redundant-slot⟧</p>
 <pre><code>Read the surface map you wrote at the path you told me. Walk me through it in chat: what categories of surface you found, the two or three findings that stood out most, and any surface you flagged as ambiguous. Concise — this primes me for the deltas I&#39;ll tell you in the next phase.
 </code></pre>
 <h2 id="phase-3-add-the-surface-the-skill-over-called-and-the-one-it-missed">Phase 3: Add the surface the skill over-called, and the one it missed</h2>
 <ul>
-<li><strong>You decide which surface goes on each side of the delta.</strong> Two reads.</li>
+<li>You decide which surface goes on each side of the delta. Two reads.</li>
 <li><strong>The over-call.</strong> Where did the map flag something you&#39;d have under-weighted? Lower-risk in your read, higher-risk in the skill&#39;s.</li>
 <li><strong>The miss.</strong> What&#39;s missing that you know matters? Often the &quot;weird bit&quot; of your feature, the part you&#39;d describe as not-quite-standard.</li>
-<li><strong>If neither is obvious from a quick scan,</strong> ask Claude in chat to propose two or three candidates per side with a one-line reason each. Pick from those; push back if the reasons read generic.</li>
+<li>If neither is obvious from a quick scan, ask Claude in chat to propose two or three candidates per side with a one-line reason each. Pick from those; push back if the reasons read generic.</li>
 </ul>
 <p>Ask Claude to integrate the surface the skill called out harder than you would have into the map.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -3586,12 +3586,12 @@ The surface the skill missed that I know matters is:
 </code></pre>
 <h2 id="push-back-until-the-reason-names-your-codebase">Push back until the reason names your codebase</h2>
 <ul>
-<li><strong>Answer, then sharpen.</strong> Push back on the sharpening question until the reason names something specific to your codebase. <em>&quot;The billing webhook re-hits the queue on retry, so the same event gets reprocessed&quot;</em> beats <em>&quot;webhooks need auth.&quot;</em></li>
+<li>Answer, then sharpen. Push back on the sharpening question until the reason names something specific to your codebase. <em>&quot;The billing webhook re-hits the queue on retry, so the same event gets reprocessed&quot;</em> beats <em>&quot;webhooks need auth.&quot;</em></li>
 </ul>
 <h2 id="phase-4-add-the-context-header-a-cold-reader-needs">Phase 4: Add the context header a cold reader needs</h2>
 <ul>
-<li><strong>You&#39;re about to hand this map to the STRIDE skill.</strong> Glance at it. If a teammate landing on this file cold would miss something the map assumes you know, add a one-line context header. If it reads, close.</li>
-<li><strong>Most people skip this; some want the pause. Your call.</strong></li>
+<li>You&#39;re about to hand this map to the STRIDE skill. Glance at it. If a teammate landing on this file cold would miss something the map assumes you know, add a one-line context header. If it reads, close.</li>
+<li>Most people skip this; some want the pause. Your call.</li>
 </ul>
 <p><strong>What happened:</strong> You ended with a short delta-note in your repo: the surfaces the skill called out harder than you would have, and the surfaces you knew mattered that the skill didn&#39;t catch. The delta is the artifact, not the raw skill output.</p>
 <h2 id="what-this-sets-up">What this sets up</h2>
@@ -3614,8 +3614,8 @@ The surface the skill missed that I know matters is:
 <hr>
 <h2 id="phase-1-run-the-threat-scan-across-your-mapped-surface">Phase 1: Run the threat scan across your mapped surface</h2>
 <ul>
-<li><strong>STRIDE is a six-category checklist for threats.</strong> Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege. The curated skill walks your surface against all six, so you don&#39;t hold the taxonomy in your head.</li>
-<li><strong>The subagent does the walk; you read the result.</strong> It runs in fresh context against the map, not the raw code, so you are not on the hook for re-deriving the surface. You read what lands.</li>
+<li>STRIDE is a six-category checklist for threats. Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege. The curated skill walks your surface against all six, so you don&#39;t hold the taxonomy in your head.</li>
+<li>The subagent does the walk; you read the result. It runs in fresh context against the map, not the raw code, so you are not on the hook for re-deriving the surface. You read what lands.</li>
 </ul>
 <p>Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map from Exercise 1.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -3625,13 +3625,13 @@ Find the access-surface map&#39;s path in this scrollback before dispatching. Wh
 </code></pre>
 <h2 id="read-the-threat-list-expect-more-than-youll-use">Read the threat list, expect more than you&#39;ll use</h2>
 <ul>
-<li><strong>The output over-produces on purpose.</strong> It will have more entries than you want to deal with. You reject most of them in the next phase; that rejection is the point, not a failure of the scan.</li>
-<li><strong>A scan that returns in seconds went shallow.</strong> The pass should take minutes. If it comes back instant, push back and re-run. Stay in this window while it works, and read what lands.</li>
+<li>The output over-produces on purpose. It will have more entries than you want to deal with. You reject most of them in the next phase; that rejection is the point, not a failure of the scan.</li>
+<li>A scan that returns in seconds went shallow. The pass should take minutes. If it comes back instant, push back and re-run. Stay in this window while it works, and read what lands.</li>
 </ul>
 <h2 id="phase-2-pick-the-one-threat-worth-hardening-against">Phase 2: Pick the one threat worth hardening against</h2>
 <ul>
-<li><strong>One threat, not five.</strong> You are picking a single threat worth hardening against. The move: name the worst realistic case first, and the hardening decision is usually obvious from there.</li>
-<li><strong>The agent proposes the incident story; you judge whether it fits.</strong> You are not inventing the worst case from scratch. Claude drafts it; your read of your own codebase decides whether it&#39;s real.</li>
+<li>One threat, not five. You are picking a single threat worth hardening against. The move: name the worst realistic case first, and the hardening decision is usually obvious from there.</li>
+<li>The agent proposes the incident story; you judge whether it fits. You are not inventing the worst case from scratch. Claude drafts it; your read of your own codebase decides whether it&#39;s real.</li>
 </ul>
 <p>Ask Claude to propose the most plausible incident story and walk you through the STRIDE pick from there.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -3639,13 +3639,13 @@ Find the access-surface map&#39;s path in this scrollback before dispatching. Wh
 </code></pre>
 <h2 id="push-back-on-the-incident-story-land-the-mitigation">Push back on the incident story, land the mitigation</h2>
 <ul>
-<li><strong>The incident story is what makes STRIDE useful rather than performative.</strong> Read what Claude proposes. Push back if the story doesn&#39;t fit your codebase&#39;s reality.</li>
-<li><strong>Work with Claude to land on the right mitigation.</strong> You save it as the ADR next.</li>
+<li>The incident story is what makes STRIDE useful rather than performative. Read what Claude proposes. Push back if the story doesn&#39;t fit your codebase&#39;s reality.</li>
+<li>Work with Claude to land on the right mitigation. You save it as the ADR next.</li>
 </ul>
 <h2 id="phase-3-write-the-decision-as-an-adr">Phase 3: Write the decision as an ADR</h2>
 <ul>
-<li><strong>The ADR states the call, its alternatives, and the constraint that picked the winner.</strong> You write it in your repo&#39;s convention. It reads like one engineer explaining a call to another, not a compliance checkbox.</li>
-<li><strong>Have the agent draft it and show it before saving.</strong> You read the call before it lands on disk.</li>
+<li>The ADR states the call, its alternatives, and the constraint that picked the winner. You write it in your repo&#39;s convention. It reads like one engineer explaining a call to another, not a compliance checkbox.</li>
+<li>Have the agent draft it and show it before saving. You read the call before it lands on disk.</li>
 </ul>
 <p>Ask Claude to draft the ADR in your repo&#39;s convention and show it before saving.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -3657,14 +3657,14 @@ Save the ADR to that path, then show me the diff.
 </code></pre>
 <h2 id="read-the-adr-check-the-voice-and-the-lens">Read the ADR, check the voice and the lens</h2>
 <ul>
-<li><strong>The Decision section should read like one engineer explaining a call to another.</strong> Read it. If it reads like it was written for a compliance reviewer rather than a future engineer, push back. Ship &amp; Save.</li>
-<li><strong>STRIDE is a tool, not the only lens.</strong> If its six categories feel wrong for your feature (some features are really abuse-case or insider-threat shaped, where Elevation of privilege and Repudiation carry everything and Spoofing and Tampering don&#39;t fit), say so in the Alternatives considered section. <em>&quot;STRIDE surfaced X; the more accurate lens here was Y; decision reasoned in Y&#39;s terms&quot;</em> is a legitimate ADR move. The call is yours.</li>
+<li>The Decision section should read like one engineer explaining a call to another. Read it. If it reads like it was written for a compliance reviewer rather than a future engineer, push back. Ship &amp; Save.</li>
+<li>STRIDE is a tool, not the only lens. If its six categories feel wrong for your feature (some features are really abuse-case or insider-threat shaped, where Elevation of privilege and Repudiation carry everything and Spoofing and Tampering don&#39;t fit), say so in the Alternatives considered section. <em>&quot;STRIDE surfaced X; the more accurate lens here was Y; decision reasoned in Y&#39;s terms&quot;</em> is a legitimate ADR move. The call is yours.</li>
 </ul>
 <h2 id="check-where-the-adr-landed">Check where the ADR landed</h2>
 <ul>
-<li><strong>Check the path Claude proposed.</strong> Is the ADR in your main session&#39;s repo, or in the M3 worktree? If it&#39;s in the main repo, skip ahead.</li>
-<li><strong>If it landed in the worktree, the agent reasoned itself there.</strong> M3 forked a worktree at turn 1, and &quot;this is M3 work&quot; has been the scrollback&#39;s framing since. From the agent&#39;s vantage, the worktree was created specifically <em>for M3</em>, so M3&#39;s artifacts look like they belong there. The fork prompt called it &quot;the side-quest&quot;; the agent inferred &quot;M3 = side-quest = worktree&quot; and skipped the architectural detail that only the <em>quality</em> side belongs there. <code>pwd</code> would have answered differently. The agent reasoned forward from the conversation, not from the filesystem.</li>
-<li><strong>Just tell Claude to move it over.</strong></li>
+<li>Check the path Claude proposed. Is the ADR in your main session&#39;s repo, or in the M3 worktree? If it&#39;s in the main repo, skip ahead.</li>
+<li>If it landed in the worktree, the agent reasoned itself there. M3 forked a worktree at turn 1, and &quot;this is M3 work&quot; has been the scrollback&#39;s framing since. From the agent&#39;s vantage, the worktree was created specifically <em>for M3</em>, so M3&#39;s artifacts look like they belong there. The fork prompt called it &quot;the side-quest&quot;; the agent inferred &quot;M3 = side-quest = worktree&quot; and skipped the architectural detail that only the <em>quality</em> side belongs there. <code>pwd</code> would have answered differently. The agent reasoned forward from the conversation, not from the filesystem.</li>
+<li>Just tell Claude to move it over.</li>
 </ul>
 <h2 id="ask-whether-the-adr-loads-into-future-sessions">Ask whether the ADR loads into future sessions</h2>
 <p>Ask Claude whether this ADR rides into future sessions automatically.</p>
@@ -3672,12 +3672,12 @@ Save the ADR to that path, then show me the diff.
 <pre><code>Will ADRs auto-load to future sessions?
 </code></pre>
 <ul>
-<li><strong>Claude&#39;s answer: no.</strong> ADRs don&#39;t auto-load like <code>CLAUDE.md</code> and <code>CLAUDE.local.md</code> do. They&#39;re on-disk and discoverable, but a future session loads them only when explicitly read. You can wire individual ADRs into team <code>CLAUDE.md</code> (one <code>@docs/adr/&lt;file&gt;.md</code> line per file; Claude Code&#39;s <code>@</code>-include is single-file, no glob), but most teams don&#39;t: ADRs accumulate, the window is finite, and rejected alternatives shouldn&#39;t sit in live context.</li>
-<li><strong>Selective load is the practitioner default.</strong> Module 4 will tell Claude exactly which artifacts to read at the start of the long-running run, and that explicit list is the lesson.</li>
+<li>Claude&#39;s answer: no. ADRs don&#39;t auto-load like <code>CLAUDE.md</code> and <code>CLAUDE.local.md</code> do. They&#39;re on-disk and discoverable, but a future session loads them only when explicitly read. You can wire individual ADRs into team <code>CLAUDE.md</code> (one <code>@docs/adr/&lt;file&gt;.md</code> line per file; Claude Code&#39;s <code>@</code>-include is single-file, no glob), but most teams don&#39;t: ADRs accumulate, the window is finite, and rejected alternatives shouldn&#39;t sit in live context.</li>
+<li>Selective load is the practitioner default. Module 4 will tell Claude exactly which artifacts to read at the start of the long-running run, and that explicit list is the lesson.</li>
 </ul>
 <h2 id="save-the-map-and-the-stride-walk-before-you-clear">Save the map and the STRIDE walk before you clear</h2>
 <ul>
-<li><strong>Not everything survived to disk.</strong> The skills returned their work into this session: the full access-surface map from Exercise 1, and the complete STRIDE walk here, including the threats you considered and set aside. The ADR holds the one decision. The analysis around it is real security documentation, and it clears when the session does.</li>
+<li>Not everything survived to disk. The skills returned their work into this session: the full access-surface map from Exercise 1, and the complete STRIDE walk here, including the threats you considered and set aside. The ADR holds the one decision. The analysis around it is real security documentation, and it clears when the session does.</li>
 </ul>
 <blockquote>
 <p><strong>Worth keeping?</strong> Ask Claude to save the access-surface map and the STRIDE walk to your repo&#39;s <code>docs/</code> directory, next to the ADR, before you clear. Your CISO and the next engineer read what&#39;s on disk, not your scrollback.</p>
@@ -3705,9 +3705,9 @@ Save the ADR to that path, then show me the diff.
 <hr>
 <h2 id="phase-1-author-the-skill-through-conversation">Phase 1: Author the skill through conversation</h2>
 <ul>
-<li><strong>Skills aren&#39;t hand-crafted; they&#39;re authored through conversation.</strong> You describe your codebase; the agent drafts the SKILL.md. You are not typing markdown into an editor.</li>
-<li><strong>The ship destination is your personal skills folder.</strong> <code>~/.claude/skills/test-strategy/SKILL.md</code>, auto-discovered in every session you run, across every repo.</li>
-<li><strong>A test-strategy skill is team-shaped by nature, but it ships personal first.</strong> It encodes codebase conventions teammates share. The reasons for personal-first land in Phase 3; the team PR is a follow-up move that starts with a human conversation, not an agent commit.</li>
+<li>Skills aren&#39;t hand-crafted; they&#39;re authored through conversation. You describe your codebase; the agent drafts the SKILL.md. You are not typing markdown into an editor.</li>
+<li>The ship destination is your personal skills folder. <code>~/.claude/skills/test-strategy/SKILL.md</code>, auto-discovered in every session you run, across every repo.</li>
+<li>A test-strategy skill is team-shaped by nature, but it ships personal first. It encodes codebase conventions teammates share. The reasons for personal-first land in Phase 3; the team PR is a follow-up move that starts with a human conversation, not an agent commit.</li>
 </ul>
 <p>Ask Claude to author the skill, asking one question at a time.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -3721,14 +3721,14 @@ When you have enough, write `~/.claude/skills/test-strategy/SKILL.md` as a perso
 </code></pre>
 <h2 id="answer-from-how-your-codebase-really-tests">Answer from how your codebase really tests</h2>
 <ul>
-<li><strong>Answer each question from how your codebase actually tests, not how a diagram says it should.</strong> <em>&quot;Jest for units, Playwright for e2e, nothing for integration&quot;</em> is the shape of answer the skill needs. Pyramid-shaped answers (<em>&quot;unit first, then integration, then e2e&quot;</em>) encode a wish, not your codebase.</li>
-<li><strong>Push back when Claude offers a default you don&#39;t like.</strong> <em>&quot;No, we don&#39;t mock the database; integration tests run against a real Postgres in Docker.&quot;</em> The push-back is where the skill gets its codebase truth.</li>
+<li>Answer each question from how your codebase actually tests, not how a diagram says it should. <em>&quot;Jest for units, Playwright for e2e, nothing for integration&quot;</em> is the shape of answer the skill needs. Pyramid-shaped answers (<em>&quot;unit first, then integration, then e2e&quot;</em>) encode a wish, not your codebase.</li>
+<li>Push back when Claude offers a default you don&#39;t like. <em>&quot;No, we don&#39;t mock the database; integration tests run against a real Postgres in Docker.&quot;</em> The push-back is where the skill gets its codebase truth.</li>
 </ul>
 <h2 id="phase-2-invoke-the-skill-on-this-codebase">Phase 2: Invoke the skill on this codebase</h2>
 <ul>
-<li><strong>Authoring without invocation is theatre.</strong> The skill only earns its place when it runs on real code.</li>
-<li><strong>The skill is auto-discovered right here.</strong> It sits at <code>~/.claude/skills/test-strategy/SKILL.md</code>, and this worktree holds the full codebase. Invoke it on the code as it stands in front of you.</li>
-<li><strong>The agent reads the codebase; you read what comes back.</strong></li>
+<li>Authoring without invocation is theatre. The skill only earns its place when it runs on real code.</li>
+<li>The skill is auto-discovered right here. It sits at <code>~/.claude/skills/test-strategy/SKILL.md</code>, and this worktree holds the full codebase. Invoke it on the code as it stands in front of you.</li>
+<li>The agent reads the codebase; you read what comes back.</li>
 </ul>
 <p>Ask Claude to invoke the skill on this codebase and grade what it produced in the same turn.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -3738,28 +3738,28 @@ Then, in the same response, read the strategy you just produced and answer: is i
 </code></pre>
 <h2 id="sharpen-the-skill-from-what-came-back">Sharpen the skill from what came back</h2>
 <ul>
-<li><strong>The grade is biased by design.</strong> Claude invoked the skill it just helped author, then graded the result in the same context window: same-window self-charity. One paste, one wait, one read, convenient over rigorous.</li>
-<li><strong>Want a harsher read? Run it as two prompts.</strong> Invoke first, read the output, then a second prompt: <em>&quot;Read that output as if you&#39;d never seen the SKILL.md. Does it fit this codebase, or does it read generic?&quot;</em> Your call.</li>
-<li><strong>If the strategy reads generic, sharpen the skill, not the output.</strong> A weak output is usually a weak skill. Sharpen the SKILL.md, then re-invoke.</li>
-<li><strong>Then decide: one re-invoke, or ship with a TODO.</strong> Re-invoke if the sharpen was substantive. Otherwise ship with a one-line TODO at the top naming what&#39;s unresolved. A skill that names its own gap is more useful to a teammate than one that pretends it&#39;s finished. The authoring muscle is what Module 3 installs; perfection waits for M6.</li>
+<li>The grade is biased by design. Claude invoked the skill it just helped author, then graded the result in the same context window: same-window self-charity. One paste, one wait, one read, convenient over rigorous.</li>
+<li>Want a harsher read? Run it as two prompts. Invoke first, read the output, then a second prompt: <em>&quot;Read that output as if you&#39;d never seen the SKILL.md. Does it fit this codebase, or does it read generic?&quot;</em> Your call.</li>
+<li>If the strategy reads generic, sharpen the skill, not the output. A weak output is usually a weak skill. Sharpen the SKILL.md, then re-invoke.</li>
+<li>Then decide: one re-invoke, or ship with a TODO. Re-invoke if the sharpen was substantive. Otherwise ship with a one-line TODO at the top naming what&#39;s unresolved. A skill that names its own gap is more useful to a teammate than one that pretends it&#39;s finished. The authoring muscle is what Module 3 installs; perfection waits for M6.</li>
 </ul>
 <h2 id="phase-3-ship-the-skill-personal-first">Phase 3: Ship the skill personal-first</h2>
 <ul>
-<li><strong>The skill is already shipped.</strong> It sits at <code>~/.claude/skills/test-strategy/SKILL.md</code>. The agent wrote it there in Phase 1, sharpened by your push-back during Phase 2&#39;s invoke-and-critique. Auto-discovered in every session you run. That&#39;s the ship.</li>
+<li>The skill is already shipped. It sits at <code>~/.claude/skills/test-strategy/SKILL.md</code>. The agent wrote it there in Phase 1, sharpened by your push-back during Phase 2&#39;s invoke-and-critique. Auto-discovered in every session you run. That&#39;s the ship.</li>
 </ul>
 <h2 id="decide-if-it-graduates-to-the-team">Decide if it graduates to the team</h2>
 <ul>
-<li><strong>A strong candidate for a team PR, after you talk to the team.</strong> A test-strategy skill encodes conventions teammates share: framework, mocking policy, integration boundary, flakiness patterns. Accurate for you, accurate for them.</li>
-<li><strong>The team PR starts with a conversation, not a commit.</strong> Show it to your staff engineer over coffee. Send it to the channel. Ask two teammates who&#39;d use it whether it matches how they actually write tests on this codebase. Say yes, and you PR it. Push back, and you got the real review for free; sharpen the skill, ship it sharper.</li>
-<li><strong>Agents don&#39;t unilaterally change shared team infrastructure. You do.</strong> The conversation is the move; the PR is the artifact of the conversation.</li>
-<li><strong>Personal stays a fine final home.</strong> Not every skill graduates to a shared kit. The test: would teammates use it as-written, and does the skill carry enough codebase truth to survive their review.</li>
+<li>A strong candidate for a team PR, after you talk to the team. A test-strategy skill encodes conventions teammates share: framework, mocking policy, integration boundary, flakiness patterns. Accurate for you, accurate for them.</li>
+<li>The team PR starts with a conversation, not a commit. Show it to your staff engineer over coffee. Send it to the channel. Ask two teammates who&#39;d use it whether it matches how they actually write tests on this codebase. Say yes, and you PR it. Push back, and you got the real review for free; sharpen the skill, ship it sharper.</li>
+<li>Agents don&#39;t unilaterally change shared team infrastructure. You do. The conversation is the move; the PR is the artifact of the conversation.</li>
+<li>Personal stays a fine final home. Not every skill graduates to a shared kit. The test: would teammates use it as-written, and does the skill carry enough codebase truth to survive their review.</li>
 </ul>
 <p><strong>What happened:</strong> One SKILL.md tuned to your codebase&#39;s actual testing conventions (framework, mocking policy, integration boundary, flakiness patterns, regression scope), living in your personal skills folder. Shipped. The Debrief integrates the session.</p>
 <h2 id="what-this-sets-up">What this sets up</h2>
 <ul>
-<li><strong>Module 4 reads this skill as part of the system you have.</strong> M4 (memory that reads your system) consumes the test-strategy skill as a quality-criterion anchor.</li>
-<li><strong>M6 authors a verifier skill the same way you authored this one.</strong> The move repeats and gets faster.</li>
-<li><strong>Your personal skills folder now holds one file you authored from session evidence.</strong> Promotion to a team home is the conversation you start over coffee, not the move you make here.</li>
+<li>Module 4 reads this skill as part of the system you have. M4 (memory that reads your system) consumes the test-strategy skill as a quality-criterion anchor.</li>
+<li>M6 authors a verifier skill the same way you authored this one. The move repeats and gets faster.</li>
+<li>Your personal skills folder now holds one file you authored from session evidence. Promotion to a team home is the conversation you start over coffee, not the move you make here.</li>
 </ul>
 <p><strong>Note</strong> The side-quest worktree may still hold changes the agent made here: code, tests, scratch files. Its copy of <code>CLAUDE.local.md</code> came over at the fork and may have drifted from the one in your main repo. The skill crossed back on its own (it lives at user scope); everything else stays in the worktree. Those changes are yours to handle later: keep them, carry the useful parts to your main repo, or delete the worktree.</p>
 </section>
@@ -4006,15 +4006,15 @@ Then, separately: if one rule about how I worked with security skills, wrote ADR
 <p>Start a new Claude Code session at your repo root.</p>
 <pre><code>/rename m4-walk-send
 </code></pre>
-<p><strong>Start clean.</strong> M4 picks up a bigger task than M1–M3. Before the new session, check your working tree and branch. You ride that state into the closing <code>m4/&lt;slug&gt;</code> commit and M5&#39;s fork.</p>
+<p>Start clean. M4 picks up a bigger task than M1–M3. Before the new session, check your working tree and branch. You ride that state into the closing <code>m4/&lt;slug&gt;</code> commit and M5&#39;s fork.</p>
 <p><strong>What you do:</strong> Pick a task you&#39;ve been avoiding, the kind you&#39;d send off rather than nudge bit by bit. Walk what you&#39;ve built across four modules against it. Fill the worst gaps. See Huryn&#39;s three-block frame in your own material. At the close, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you&#39;ve seen enough.</p>
 <p><strong>What you build:</strong> three things a long run can ride: a scoped task with a &#39;done&#39; you can name in a sentence, the worst gaps filled in <code>observations/</code> and your rules file, and your own material sorted into three blocks (observation, decision, criterion) with the tree settled. Then it goes off un-packaged.</p>
 <p><strong>The point:</strong> This is the first experiment of a two-run arc. The un-packaged send-off here teaches Module 5 what packaging adds, a lesson no lecture can land. Every send-off is a test, not a production run; you are testing and you are learning.</p>
 <hr>
 <h2 id="phase-1-pick-the-task-youll-send-off">Phase 1: Pick the task you&#39;ll send off</h2>
 <ul>
-<li><strong>A real slice you&#39;d send off rather than nudge bit by bit</strong>, with a &#39;done&#39; you can name in a sentence. Bigger than a typo-fix, smaller than an epic.</li>
-<li><strong>The pick is yours; the fit-check is the agent&#39;s.</strong> You are not on the hook for scanning your roadmap or Jira; that stays your call. Bring one or two candidates; the agent screens them for fit against the three long-run criteria.</li>
+<li>A real slice you&#39;d send off rather than nudge bit by bit, with a &#39;done&#39; you can name in a sentence. Bigger than a typo-fix, smaller than an epic.</li>
+<li>The pick is yours; the fit-check is the agent&#39;s. You are not on the hook for scanning your roadmap or Jira; that stays your call. Bring one or two candidates; the agent screens them for fit against the three long-run criteria.</li>
 </ul>
 <p>Ask Claude to screen the candidates you bring against the three long-run criteria and scope the winner. Drop the candidates after the colon.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -4032,13 +4032,13 @@ Candidates:
 </code></pre>
 <h2 id="push-back-until-the-task-is-one-end-to-end-slice">Push back until the task is one end-to-end slice</h2>
 <ul>
-<li><strong>Push back when the read misses the codebase.</strong> The agent is reading the shape, not the substance.</li>
-<li><strong>Imagining a finished demo means you scoped too big.</strong> Slice it down to one end-to-end thing the agent can chew on.</li>
-<li><strong>Pick one task well.</strong> You&#39;ll use it again next module.</li>
+<li>Push back when the read misses the codebase. The agent is reading the shape, not the substance.</li>
+<li>Imagining a finished demo means you scoped too big. Slice it down to one end-to-end thing the agent can chew on.</li>
+<li>Pick one task well. You&#39;ll use it again next module.</li>
 </ul>
 <h2 id="phase-2-build-the-ranked-list-of-what-will-hurt-the-agent">Phase 2: Build the ranked list of what will hurt the agent</h2>
 <ul>
-<li><strong>The audit walks your whole system so you don&#39;t.</strong> The agent reads <code>CLAUDE.md</code>, <code>CLAUDE.local.md</code>, memory, ADRs, and any skills you&#39;ve authored as a subagent, then ranks the five thin spots that will hurt the agent most on this task.</li>
+<li>The audit walks your whole system so you don&#39;t. The agent reads <code>CLAUDE.md</code>, <code>CLAUDE.local.md</code>, memory, ADRs, and any skills you&#39;ve authored as a subagent, then ranks the five thin spots that will hurt the agent most on this task.</li>
 </ul>
 <p>Ask Claude to run the audit as a subagent and return a ranked top-five.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -4052,14 +4052,14 @@ For each item, say: (a) what&#39;s thin, (b) what a properly-prepared agent woul
 </code></pre>
 <h2 id="read-the-ranked-thin-spots">Read the ranked thin-spots</h2>
 <ul>
-<li><strong>Heavy run expected.</strong> Skim past the opening summary; the ranked thin-spots list is the payoff.</li>
-<li><strong>Name which ones you already knew, which surprised you.</strong> This move is <em>gap analysis</em>: walk the system you have against the system the task needs. You&#39;ll use it for every agent hand-off.</li>
+<li>Heavy run expected. Skim past the opening summary; the ranked thin-spots list is the payoff.</li>
+<li>Name which ones you already knew, which surprised you. This move is <em>gap analysis</em>: walk the system you have against the system the task needs. You&#39;ll use it for every agent hand-off.</li>
 </ul>
 <h2 id="fill-the-worst-two-or-three-gaps">Fill the worst two or three gaps</h2>
 <ul>
-<li><strong>Pick the ones that will hurt the agent most, probably two or three, not all five.</strong> You&#39;ll see next module what the others were for.</li>
-<li><strong>New observations land in <code>observations/</code>, gitignored.</strong> That&#39;s the default home. If your team kit pins a different path, tell Claude which one and stay consistent with it. If <code>observations/</code> is new to your repo, ask Claude to add it to <code>.gitignore</code> before any writes; the fills below land there and you don&#39;t want them tracked.</li>
-<li><strong>The agent reads <code>observations/</code> when a prompt names the path</strong>, the same way it reads your ADRs. It is not auto-loaded the way <code>CLAUDE.md</code> and <code>CLAUDE.local.md</code> are. It holds the first of the three blocks you&#39;ll arrange in Phase 3.</li>
+<li>Pick the ones that will hurt the agent most, probably two or three, not all five. You&#39;ll see next module what the others were for.</li>
+<li>New observations land in <code>observations/</code>, gitignored. That&#39;s the default home. If your team kit pins a different path, tell Claude which one and stay consistent with it. If <code>observations/</code> is new to your repo, ask Claude to add it to <code>.gitignore</code> before any writes; the fills below land there and you don&#39;t want them tracked.</li>
+<li>The agent reads <code>observations/</code> when a prompt names the path, the same way it reads your ADRs. It is not auto-loaded the way <code>CLAUDE.md</code> and <code>CLAUDE.local.md</code> are. It holds the first of the three blocks you&#39;ll arrange in Phase 3.</li>
 </ul>
 <p>Ask Claude to walk you through the picked gaps one at a time, using the AskUserQuestion tool to scaffold the flow.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -4079,14 +4079,14 @@ For each picked gap, propose a resolution in the shape the audit named, hear my 
 </ul>
 <h2 id="push-back-when-a-fill-drifts-from-the-codebase">Push back when a fill drifts from the codebase</h2>
 <ul>
-<li><strong>Your observations are what you just admitted is thin in spots.</strong> Don&#39;t let them re-seed with drift. Push back when Claude writes something that doesn&#39;t match the codebase.</li>
+<li>Your observations are what you just admitted is thin in spots. Don&#39;t let them re-seed with drift. Push back when Claude writes something that doesn&#39;t match the codebase.</li>
 </ul>
 <blockquote>
 <p><strong>Time check.</strong> Different paces hit this point at different times. The room doesn&#39;t wait for the slowest. Five to ten minutes to share what surfaced, where the audit missed, and why the agent sometimes goes lazy.</p>
 </blockquote>
 <h2 id="phase-3-name-your-own-work-as-observation-decision-and-criterion">Phase 3: Name your own work as observation, decision, and criterion</h2>
 <ul>
-<li><strong>The frame names what you&#39;ve been building; it&#39;s not a template you fill.</strong> This is <em>Huryn&#39;s three-block memory</em>. The agent rearranges your observations, ADRs, and skill into the three blocks, quoting your own work for each block before it names the frame.</li>
+<li>The frame names what you&#39;ve been building; it&#39;s not a template you fill. This is <em>Huryn&#39;s three-block memory</em>. The agent rearranges your observations, ADRs, and skill into the three blocks, quoting your own work for each block before it names the frame.</li>
 </ul>
 <p>Ask Claude to rearrange your observations, ADRs, and skill into the three blocks, quoting your own work for each block before naming the frame.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em> ⟦CUT:meta-retrospective⟧</p>
@@ -4104,14 +4104,14 @@ If you propose file moves or renames, keep them inside `./observations/` and cap
 </code></pre>
 <h2 id="read-the-quoted-examples-first">Read the quoted examples first</h2>
 <ul>
-<li><strong>Skim past the opening summary to the quoted-example-per-block payoff.</strong> That&#39;s where the three blocks earn their names.</li>
-<li><strong>If the examples are from your own files, the frame should click.</strong> If it doesn&#39;t, ask Claude to quote different examples until one does.</li>
+<li>Skim past the opening summary to the quoted-example-per-block payoff. That&#39;s where the three blocks earn their names.</li>
+<li>If the examples are from your own files, the frame should click. If it doesn&#39;t, ask Claude to quote different examples until one does.</li>
 </ul>
 <h2 id="settle-the-tree-before-the-send-off">Settle the tree before the send-off</h2>
 <ul>
-<li><strong>Let Claude propose the rearrangement once the frame is named through your own material.</strong> Keep it inside <code>./observations/</code> and cap it at one or two file moves or renames. Leave the ADRs and skills where they are; larger reorganisation is a separate session, not a mid-module sweep.</li>
-<li><strong>Ask to see the diff before it lands.</strong> The send-off fires next, so the tree wants to be settled on disk, not just planned in chat.</li>
-<li><strong>The frame shows information hardening:</strong> an observation or hunch becomes a rule, and a rule becomes a criterion you hold shipped code to. Consider whether each rule is stored where it will fire.</li>
+<li>Let Claude propose the rearrangement once the frame is named through your own material. Keep it inside <code>./observations/</code> and cap it at one or two file moves or renames. Leave the ADRs and skills where they are; larger reorganisation is a separate session, not a mid-module sweep.</li>
+<li>Ask to see the diff before it lands. The send-off fires next, so the tree wants to be settled on disk, not just planned in chat.</li>
+<li>The frame shows information hardening: an observation or hunch becomes a rule, and a rule becomes a criterion you hold shipped code to. Consider whether each rule is stored where it will fire.</li>
 </ul>
 <p><strong>What happened:</strong> You picked a real task you&#39;d send off rather than nudge bit by bit. You walked what you&#39;d built across four modules against it, filled the worst gaps, and let Claude rearrange observations and ADRs into three blocks against your own material. The frame named what was already there. Phase 3 ended with the tree settled before the send-off.</p>
 <h2 id="what-closes-the-module-owned-by-the-module-files-send-off">What closes the module (owned by the module file&#39;s send-off)</h2>
@@ -4330,9 +4330,9 @@ These won&#39;t sync back automatically — the worktree&#39;s copies are indepe
 <hr>
 <h2 id="phase-1-read-what-the-failed-run-did">Phase 1: Read what the failed run did</h2>
 <ul>
-<li><strong>You&#39;re diagnosing, not fixing.</strong> The un-packaged M4 run was supposed to underdeliver. What came back is data, not blame.</li>
-<li><strong>Two places hold the story.</strong> The repo&#39;s git history (commits on the <code>m4/&lt;slug&gt;</code> branch, files modified, branch state, all visible from the worktree) tells you <em>what</em> the agent did. The M4 session transcript, at the path recorded in <code>task.md</code>, tells you <em>how</em> it got there, drift and dead-ends included.</li>
-<li><strong>You hold the three lenses. You are not holding the codebase.</strong> The agent reads that for you.</li>
+<li>You&#39;re diagnosing, not fixing. The un-packaged M4 run was supposed to underdeliver. What came back is data, not blame.</li>
+<li>Two places hold the story. The repo&#39;s git history (commits on the <code>m4/&lt;slug&gt;</code> branch, files modified, branch state, all visible from the worktree) tells you <em>what</em> the agent did. The M4 session transcript, at the path recorded in <code>task.md</code>, tells you <em>how</em> it got there, drift and dead-ends included.</li>
+<li>You hold the three lenses. You are not holding the codebase. The agent reads that for you.</li>
 </ul>
 <p>Ask Claude to read the recorded transcript path from <code>task.md</code>.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -4356,13 +4356,13 @@ End with: which of the three was the DOMINANT failure mode? You&#39;ll build the
 </code></pre>
 <h2 id="pin-each-failure-to-a-quoted-moment">Pin each failure to a quoted moment</h2>
 <ul>
-<li><strong>Push back where Claude generalises.</strong> One quoted line per lens beats a paragraph of summary. The diagnosis is data, not blame; the un-packaged run was supposed to underdeliver.</li>
+<li>Push back where Claude generalises. One quoted line per lens beats a paragraph of summary. The diagnosis is data, not blame; the un-packaged run was supposed to underdeliver.</li>
 <li>The move you just ran is <em>diagnosis through named failure modes</em>. The vocabulary is the lens; the artefact is the substance.</li>
 </ul>
 <h2 id="phase-2-match-each-failure-to-the-check-that-catches-it">Phase 2: Match each failure to the check that catches it</h2>
 <ul>
-<li><strong>Ask the question that earns the pattern.</strong> For each named failure: <em>what validation would have caught this in minutes, not hours?</em></li>
-<li><strong>Match the verifier shape to the failure, not the slogan.</strong> Drift and context rot fire mid-run, on every spec re-read or window fill, so minute cadence is real there. Plausible-but-wrong fires on output: the work compiles, passes lint, looks right, and is wrong.</li>
+<li>Ask the question that earns the pattern. For each named failure: <em>what validation would have caught this in minutes, not hours?</em></li>
+<li>Match the verifier shape to the failure, not the slogan. Drift and context rot fire mid-run, on every spec re-read or window fill, so minute cadence is real there. Plausible-but-wrong fires on output: the work compiles, passes lint, looks right, and is wrong.</li>
 </ul>
 <p>Ask Claude to walk each diagnosed failure backwards into the validation that would have caught it.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -4381,7 +4381,7 @@ Don&#39;t name frameworks or practitioners by label (&quot;Ronacher&#39;s three-
 <p>Read the three answers back. You now have three pieces, each tied to a specific failure you diagnosed. Phase 3 builds one of them; Phase 4 assembles the other two.</p>
 <h2 id="phase-3-build-the-verifier-for-your-worst-failure">Phase 3: Build the verifier for your worst failure</h2>
 <ul>
-<li><p><strong>Pick the shape that matches your dominant failure.</strong> The comfortable shape is rarely the right one. Match the failure, not your familiarity.</p>
+<li><p>Pick the shape that matches your dominant failure. The comfortable shape is rarely the right one. Match the failure, not your familiarity.</p>
 </li>
 <li><p><strong>Background-agent verifier.</strong> Separate Claude session reads the produced work and judges it. Right when the failure was qualitative (style, fit, &quot;did the answer the question&quot;).</p>
 </li>
@@ -4407,15 +4407,15 @@ Shape:
 <p>Read what Claude proposes. Push back if the verifier covers the wrong shape (a generic test suite when you needed a judge, or the reverse). The fit between failure shape and verifier shape is the teaching moment. The verifier IS your first eval; the closing lecture names it.</p>
 <h2 id="prove-the-verifier-actually-fires">Prove the verifier actually fires</h2>
 <ul>
-<li><strong>A built-but-untested verifier is no verifier.</strong> The wiring (hook config, file paths, slash-command registration, loop trigger) is fragile, and silent failures cost the next phase. Fire it once before Phase 4.</li>
+<li>A built-but-untested verifier is no verifier. The wiring (hook config, file paths, slash-command registration, loop trigger) is fragile, and silent failures cost the next phase. Fire it once before Phase 4.</li>
 </ul>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Smoke-test the verifier you just built. Fire it on two synthetic inputs: one designed to PASS (matches the quality bar) and one designed to FAIL (the failure shape we diagnosed). Show me what fired, what each input returned, and what would have to change for the verifier to actually be in play during the packaged re-send. If a wiring step (hook install, slash-command registration, file path) is missing, name it and fix it before we move on.
 </code></pre>
 <h2 id="phase-4-write-the-reference-and-planmd">Phase 4: Write the reference and plan.md</h2>
 <ul>
-<li><strong>The reference pins the task.</strong> Its success criteria, and pointers to the memory, skills, and connectors that matter.</li>
-<li><strong>plan.md is the agent&#39;s mutable working document.</strong> Not the plan-mode plan. This is what the agent re-reads when its window fills.</li>
+<li>The reference pins the task. Its success criteria, and pointers to the memory, skills, and connectors that matter.</li>
+<li>plan.md is the agent&#39;s mutable working document. Not the plan-mode plan. This is what the agent re-reads when its window fills.</li>
 </ul>
 <p>Ask Claude to assemble both, scoped to the same M4 task, in conversation.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -4446,13 +4446,13 @@ Before lock-in, grill me on missing details that could ruin the smooth run. Ask 
 </blockquote>
 <h2 id="check-both-files-are-for-the-agent-not-you">Check both files are for the agent, not you</h2>
 <ul>
-<li><strong>Read them in prose.</strong> Push back if the reference reads like generic long-running advice instead of THIS task&#39;s substance. Push back if plan.md reads like a project plan instead of an agent-mutable working document.</li>
+<li>Read them in prose. Push back if the reference reads like generic long-running advice instead of THIS task&#39;s substance. Push back if plan.md reads like a project plan instead of an agent-mutable working document.</li>
 <li>The artefacts are for the agent to consume mid-run, not for you to admire.</li>
 </ul>
 <h2 id="approve">Approve</h2>
 <p>Say <em>lock it in.</em> The agent writes both files. Read the diffs.</p>
 <p><strong>What happened:</strong> You ended the exercise with a diagnosis (named failures + quoted moments from your own artefact), a working verifier targeting one specific failure mode, and a reference artefact + plan.md scoped to the same M4 task. Each piece earned its place against a failure you read in your own artefact, not a slide.</p>
-<p><strong>The exercise ends here.</strong> The module&#39;s re-send is next: same task, with reference + plan.md + verifier all in play. The personal rules from M1 (and M3 if completed) carry forward via the worktree fork; M6 will cut one stale rule once the contrast lands.</p>
+<p>The exercise ends here. The module&#39;s re-send is next: same task, with reference + plan.md + verifier all in play. The personal rules from M1 (and M3 if completed) carry forward via the worktree fork; M6 will cut one stale rule once the contrast lands.</p>
 </section>
 
 
@@ -4927,9 +4927,9 @@ Skip suggestions any team could want. No preamble. List them.
 <hr>
 <h2 id="phase-1-diff-the-two-runs-rank-the-gaps">Phase 1: Diff the two runs, rank the gaps</h2>
 <ul>
-<li><strong>You hold two runs of the same task.</strong> The un-packaged run sits on the <code>m4/&lt;slug&gt;</code> branch recorded in <code>task.md</code>; the packaged re-run sits on the <code>m5/&lt;slug&gt;</code> branch recorded in <code>plan.md</code>. Both are visible via git refs, since the worktree shares <code>.git</code> with the original repo.</li>
-<li><strong>Read from the recorded coordinates, not a branch or transcript search.</strong> Both runs recorded their session transcript paths: M4 in <code>task.md</code>, M5 in the protected <code>Run coordinates</code> block at the top of <code>plan.md</code>.</li>
-<li><strong>You hold the contrast; the agent reads both runs off disk.</strong> You are not tracing git refs by hand. Point it at the coordinates and let it pull both runs side by side.</li>
+<li>You hold two runs of the same task. The un-packaged run sits on the <code>m4/&lt;slug&gt;</code> branch recorded in <code>task.md</code>; the packaged re-run sits on the <code>m5/&lt;slug&gt;</code> branch recorded in <code>plan.md</code>. Both are visible via git refs, since the worktree shares <code>.git</code> with the original repo.</li>
+<li>Read from the recorded coordinates, not a branch or transcript search. Both runs recorded their session transcript paths: M4 in <code>task.md</code>, M5 in the protected <code>Run coordinates</code> block at the top of <code>plan.md</code>.</li>
+<li>You hold the contrast; the agent reads both runs off disk. You are not tracing git refs by hand. Point it at the coordinates and let it pull both runs side by side.</li>
 </ul>
 <p>Ask Claude to read both runs side by side and name where packaging caught, where it missed, and what new shapes of drift it introduced.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -4950,14 +4950,14 @@ End with: which gap matters most? Rank by damage-to-a-future-run, not by how int
 </code></pre>
 <h2 id="read-the-contrast-push-back-where-it-generalises">Read the contrast, push back where it generalises</h2>
 <ul>
-<li><strong>Skim past the opening plan.</strong> Claude will likely open with a four-dimension plan summary (<em>&quot;I&#39;ll start with repo state across the m4/ branch, then...&quot;</em>) before any quoted evidence lands. The contrast moments are what you&#39;re reading for.</li>
-<li><strong>Push back where Claude generalises.</strong> Two runs means two bodies of evidence, and the teaching is in the contrast. If Claude writes <em>&quot;the agent drifted on goal&quot;</em> without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted.</li>
-<li><strong>Expect over-credit on the packaging.</strong> A fair push-back is <em>&quot;name one thing the verifier missed, concretely.&quot;</em> Close with a ranked gap list of three to five items and a dominant gap that will shape Phase 2.</li>
+<li>Skim past the opening plan. Claude will likely open with a four-dimension plan summary (<em>&quot;I&#39;ll start with repo state across the m4/ branch, then...&quot;</em>) before any quoted evidence lands. The contrast moments are what you&#39;re reading for.</li>
+<li>Push back where Claude generalises. Two runs means two bodies of evidence, and the teaching is in the contrast. If Claude writes <em>&quot;the agent drifted on goal&quot;</em> without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted.</li>
+<li>Expect over-credit on the packaging. A fair push-back is <em>&quot;name one thing the verifier missed, concretely.&quot;</em> Close with a ranked gap list of three to five items and a dominant gap that will shape Phase 2.</li>
 </ul>
 <h2 id="cut-one-stale-rule-the-diagnosis-killed">Cut one stale rule the diagnosis killed</h2>
 <ul>
-<li><strong>Two runs of the same task were the first real stress-test of <code>./CLAUDE.local.md</code>.</strong> Diagnosis surfaced rules that turned out wrong, never fired when they should have, or fired and made the run worse.</li>
-<li><strong>Cleaning is the compound move that keeps the loop fast.</strong> Rules-files have a half-life. Adding rules is only half of it; subtracting the dead ones is the other half.</li>
+<li>Two runs of the same task were the first real stress-test of <code>./CLAUDE.local.md</code>. Diagnosis surfaced rules that turned out wrong, never fired when they should have, or fired and made the run worse.</li>
+<li>Cleaning is the compound move that keeps the loop fast. Rules-files have a half-life. Adding rules is only half of it; subtracting the dead ones is the other half.</li>
 </ul>
 <p>Ask Claude to cut one rule the two-run diagnosis killed, or to say so and stop if all rules held.</p>
 <p><strong>Prompt</strong> <em>(Claude Code, only if a rule earned cutting)</em></p>
@@ -4969,14 +4969,14 @@ Show me the line you cut, in two sentences why diagnosis killed it. If every rul
 </code></pre>
 <h2 id="say-go-unless-the-cut-spreads-past-the-one-rule">Say go, unless the cut spreads past the one rule</h2>
 <ul>
-<li><strong>Claude may pause before editing <code>./CLAUDE.local.md</code>.</strong> A named config file looks risky to modify. If it asks, just say go.</li>
-<li><strong>Push back if the diff touches more than the one rule you flagged.</strong> <em>&quot;In place&quot;</em> is loose wording, and Claude may rewrite more than the one stale rule. One rule cut, no more.</li>
+<li>Claude may pause before editing <code>./CLAUDE.local.md</code>. A named config file looks risky to modify. If it asks, just say go.</li>
+<li>Push back if the diff touches more than the one rule you flagged. <em>&quot;In place&quot;</em> is loose wording, and Claude may rewrite more than the one stale rule. One rule cut, no more.</li>
 </ul>
 <h2 id="phase-2-find-the-work-you-repeat-across-your-stack">Phase 2: Find the work you repeat across your stack</h2>
 <ul>
-<li><strong>Skills aren&#39;t hand-crafted.</strong> The move you practiced at M3 repeats here: author through conversation, push back on defaults, verify by invoking. The shape follows what the two runs demanded, not a template.</li>
-<li><strong>Look wider than the two runs before you shape the skill.</strong> The dominant gap came from one task. The kinds of work you repeat run across everything you do, and most of them never get looked at directly. This is your stack. How wide you look, and what you choose to package, is yours.</li>
-<li><strong>Read your own history first.</strong> Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back.</li>
+<li>Skills aren&#39;t hand-crafted. The move you practiced at M3 repeats here: author through conversation, push back on defaults, verify by invoking. The shape follows what the two runs demanded, not a template.</li>
+<li>Look wider than the two runs before you shape the skill. The dominant gap came from one task. The kinds of work you repeat run across everything you do, and most of them never get looked at directly. This is your stack. How wide you look, and what you choose to package, is yours.</li>
+<li>Read your own history first. Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back.</li>
 </ul>
 <h2 id="scan-your-history-for-the-work-that-recurs">Scan your history for the work that recurs</h2>
 <blockquote>
@@ -4999,8 +4999,8 @@ Group what you find by the kind of work it is, the way of working that repeats, 
 </code></pre>
 <h2 id="draw-your-top-work-shapes-as-diagrams">Draw your top work-shapes as diagrams</h2>
 <ul>
-<li><strong>What comes back is the work you do over and over, grouped and ranked.</strong> Read for the few at the top you actually repeat. How far you take this is yours.</li>
-<li><strong>A recurring kind of work has a shape.</strong> Steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described.</li>
+<li>What comes back is the work you do over and over, grouped and ranked. Read for the few at the top you actually repeat. How far you take this is yours.</li>
+<li>A recurring kind of work has a shape. Steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described.</li>
 </ul>
 <p>Ask Claude to draw your top few work-shapes as simple diagrams.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -5013,8 +5013,8 @@ Keep each diagram to 30 nodes at most. The point is to recognise the shape of th
 </blockquote>
 <h2 id="list-the-checks-the-field-runs-rank-the-ones-that-fit-your-gap">List the checks the field runs, rank the ones that fit your gap</h2>
 <ul>
-<li><strong>If one of the work-shapes you drew is the kind of work those two runs came from, that is the session-shaper you build now.</strong> If not, build it against the dominant gap directly. The rest are the kit you grow later.</li>
-<li><strong>Expand the menu before you commit to a shape.</strong> The menu lands in context right before you author, so the skill is built against what practitioners actually check, not just your own instinct.</li>
+<li>If one of the work-shapes you drew is the kind of work those two runs came from, that is the session-shaper you build now. If not, build it against the dominant gap directly. The rest are the kit you grow later.</li>
+<li>Expand the menu before you commit to a shape. The menu lands in context right before you author, so the skill is built against what practitioners actually check, not just your own instinct.</li>
 </ul>
 <p>Ask Claude to name the checking primitives the field already runs and rank the ones that fit your gap.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -5029,16 +5029,16 @@ Be concrete. Generic &quot;tests&quot; doesn&#39;t make the cut; &quot;unit test
 <p>Expect the list to look familiar: test-writing, browser-testing, PR-building, lint and typecheck gates, compile and build, smoke-test on a real path, code-review, git-diff inspection, schema validation, eval suites for agent outputs. Your list won&#39;t be exact. The recognition is the point. The primitives Claude names are the ones your codebase already runs.</p>
 <h2 id="pick-the-skill-shape-the-diff-points-at">Pick the skill shape the diff points at</h2>
 <ul>
-<li><strong>The session-shaper takes one of three forms</strong>, from the convergence of practitioners running long tasks:</li>
+<li>The session-shaper takes one of three forms, from the convergence of practitioners running long tasks:</li>
 <li><strong>Sharpened verifier.</strong> The M5 verifier targeted one failure mode; the diff surfaced another. The skill encodes the second check so the next run inherits both.</li>
 <li><strong>LLM-judge.</strong> Qualitative fit the deterministic verifier can&#39;t see (did the output answer the task, does the tone match the codebase, does the commit message respect the team&#39;s convention). A judge is a verifier authored in prose.</li>
 <li><strong>Gap-finder.</strong> A skill that reads a proposed task plan and flags thin memory, missing connectors, or stale rules before the long-running run starts. The verifier fires on output; the gap-finder fires before.</li>
-<li><strong>Pick the one the diff points at.</strong> If the dominant gap is &quot;verifier missed drift at hour 4,&quot; you&#39;re building a sharpened verifier. If it&#39;s &quot;output technically passed but read off,&quot; you&#39;re building a judge. If it&#39;s &quot;the run shouldn&#39;t have started with this context,&quot; you&#39;re building a gap-finder.</li>
+<li>Pick the one the diff points at. If the dominant gap is &quot;verifier missed drift at hour 4,&quot; you&#39;re building a sharpened verifier. If it&#39;s &quot;output technically passed but read off,&quot; you&#39;re building a judge. If it&#39;s &quot;the run shouldn&#39;t have started with this context,&quot; you&#39;re building a gap-finder.</li>
 </ul>
 <h2 id="author-the-skill-in-conversation">Author the skill in conversation</h2>
 <ul>
-<li><strong>Author through conversation.</strong> No markdown editor, no hand-crafting SKILL.md in a file tab.</li>
-<li><strong>The next three prompts (author, critique, invoke) are separate steps.</strong> You don&#39;t have to run all three.</li>
+<li>Author through conversation. No markdown editor, no hand-crafting SKILL.md in a file tab.</li>
+<li>The next three prompts (author, critique, invoke) are separate steps. You don&#39;t have to run all three.</li>
 </ul>
 <blockquote>
 <p><strong>Skip the critique and the testing, if you want.</strong> You&#39;ve done that pattern before. Not that you should, but you already know those moves.</p>
@@ -5056,7 +5056,7 @@ When you have enough, write the skill to `~/.claude/skills/session-shaper/SKILL.
 <p>Answer each question. When Claude offers a default that doesn&#39;t fit the two runs&#39; evidence, push back with a quoted moment: <em>&quot;no, the M5 verifier missed THIS moment. The skill has to catch that shape specifically.&quot;</em></p>
 <h2 id="critique-the-draft-before-you-ship-it">Critique the draft before you ship it</h2>
 <ul>
-<li><strong>Once Claude shows you SKILL.md, self-critique before shipping.</strong> Default-acceptance is the failure mode here too.</li>
+<li>Once Claude shows you SKILL.md, self-critique before shipping. Default-acceptance is the failure mode here too.</li>
 </ul>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Before I ship this skill, critique it. Read the SKILL.md you just wrote. Tell me:
@@ -5068,12 +5068,12 @@ When you have enough, write the skill to `~/.claude/skills/session-shaper/SKILL.
 Don&#39;t reassure me. Name weak parts.
 </code></pre>
 <ul>
-<li><strong>The self-audit is convenient but charitable.</strong> It runs in the same session that authored the SKILL.md: the authoring context is right there, but a same-context-window self-audit under-flags by design. Sharpen it if the read matters. Ask Claude to over-flag (<em>&quot;flag at least three things, be harsher than necessary, assume worse than it looks&quot;</em>), or fresh-session it by dispatching a subagent with the SKILL.md pasted cold, no scrollback.</li>
-<li><strong>Read the critique. Push back where Claude is wrong; accept where Claude is right.</strong> Claude revises SKILL.md from your push-back.</li>
+<li>The self-audit is convenient but charitable. It runs in the same session that authored the SKILL.md: the authoring context is right there, but a same-context-window self-audit under-flags by design. Sharpen it if the read matters. Ask Claude to over-flag (<em>&quot;flag at least three things, be harsher than necessary, assume worse than it looks&quot;</em>), or fresh-session it by dispatching a subagent with the SKILL.md pasted cold, no scrollback.</li>
+<li>Read the critique. Push back where Claude is wrong; accept where Claude is right. Claude revises SKILL.md from your push-back.</li>
 </ul>
 <h2 id="invoke-the-skill-on-the-run-you-just-diffed">Invoke the skill on the run you just diffed</h2>
 <ul>
-<li><strong>Authoring without invocation is theatre.</strong> The prompt below runs the skill on the packaged run you just diffed.</li>
+<li>Authoring without invocation is theatre. The prompt below runs the skill on the packaged run you just diffed.</li>
 </ul>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Invoke the `session-shaper` skill we just authored — ⟦A:skill-by-name⟧by its name⟦/A⟧ — on the M5 packaged re-run. Not on a toy example. The actual artefacts: the commits, the files, the session transcript.
@@ -5085,13 +5085,13 @@ Then, ⟦A:self-critique-register⟧in the same response, answer: is the skill a
 Don&#39;t reassure me about the skill. If it isn&#39;t earning its place, say so.
 </code></pre>
 <ul>
-<li><strong>The invocation grades itself, biased by design.</strong> Claude invokes a skill it just helped author and grades the result in the same turn; the same-context self-charity is well-documented. The shape is one paste, one wait, one read: convenient over rigorous. For a harsher read, run it as two prompts. Invoke first, read the output, then a second prompt: <em>&quot;Read that output as if you&#39;d never seen the SKILL.md. What did the skill miss?&quot;</em> Your call.</li>
-<li><strong>If the output doesn&#39;t catch the dominant gap, sharpen the skill and invoke again.</strong> If the skill names its own limitation (<em>&quot;I check drift but not context-rot re-derivations&quot;</em>), that&#39;s a feature. Ship with a one-line TODO at the top. A skill that names its gap is more useful to a teammate than one that pretends it&#39;s finished.</li>
+<li>The invocation grades itself, biased by design. Claude invokes a skill it just helped author and grades the result in the same turn; the same-context self-charity is well-documented. The shape is one paste, one wait, one read: convenient over rigorous. For a harsher read, run it as two prompts. Invoke first, read the output, then a second prompt: <em>&quot;Read that output as if you&#39;d never seen the SKILL.md. What did the skill miss?&quot;</em> Your call.</li>
+<li>If the output doesn&#39;t catch the dominant gap, sharpen the skill and invoke again. If the skill names its own limitation (<em>&quot;I check drift but not context-rot re-derivations&quot;</em>), that&#39;s a feature. Ship with a one-line TODO at the top. A skill that names its gap is more useful to a teammate than one that pretends it&#39;s finished.</li>
 </ul>
 <h2 id="ship-it-to-your-personal-kit">Ship it to your personal kit</h2>
 <ul>
-<li><strong>The skill ships personally.</strong> It lives at <code>~/.claude/skills/session-shaper/SKILL.md</code> and auto-discovers in every future session you run, across every repo. That&#39;s the ship.</li>
-<li><strong>Team-kit candidate, via human conversation.</strong> If the skill encodes something your whole team would benefit from (a codebase-specific judge, a verifier against a house style, a gap-finder tuned to the team&#39;s project shape), it&#39;s a strong PR candidate. But the PR starts with a conversation. Show it to a teammate over coffee. Post it in the channel. Ask: <em>&quot;does this match how you&#39;d check this kind of work?&quot;</em> If they say yes, PR it. If they push back, you got the real review for free. Agents don&#39;t unilaterally change shared team infrastructure. You do.</li>
+<li>The skill ships personally. It lives at <code>~/.claude/skills/session-shaper/SKILL.md</code> and auto-discovers in every future session you run, across every repo. That&#39;s the ship.</li>
+<li>Team-kit candidate, via human conversation. If the skill encodes something your whole team would benefit from (a codebase-specific judge, a verifier against a house style, a gap-finder tuned to the team&#39;s project shape), it&#39;s a strong PR candidate. But the PR starts with a conversation. Show it to a teammate over coffee. Post it in the channel. Ask: <em>&quot;does this match how you&#39;d check this kind of work?&quot;</em> If they say yes, PR it. If they push back, you got the real review for free. Agents don&#39;t unilaterally change shared team infrastructure. You do.</li>
 </ul>
 <p><strong>What happened:</strong> You ended with a one-screen gap map across memory / verifier / rules / skill, and one SKILL.md file at <code>~/.claude/skills/session-shaper/SKILL.md</code>. Auto-discovered in every future session. The shape followed what the two runs demanded: a sharpened verifier, an LLM-judge, or a gap-finder. Team-kit candidates were flagged for a human conversation, not an auto-PR.</p>
 </section>
@@ -6124,35 +6124,35 @@ allowed-tools:                  ← optional, restricts what the skill can touch
 <h1 id="backpressure">Backpressure</h1>
 <h2 id="the-run-outproduces-your-review">The run outproduces your review</h2>
 <ul>
-<li><strong>A longer run produces more than you can inspect.</strong> The agent generates faster than any human reads, and every extra hour of run time widens the gap between what was produced and what has been judged.</li>
-<li><strong>Flow engineering has a name for the fix.</strong> Backpressure: the downstream stage signals upstream that it cannot take more, and the producer slows down, buffers, or sheds load. TCP does it. Message queues do it.</li>
-<li><strong>In the agent loop today, the backpressure is you.</strong> Every unread diff is a queue backing up in your review pile. &quot;Any system that relies on a human to catch the machine&#39;s mistakes will be limited by the human, not the machine&quot; (Lucas F. da Costa).</li>
+<li>A longer run produces more than you can inspect. The agent generates faster than any human reads, and every extra hour of run time widens the gap between what was produced and what has been judged.</li>
+<li>Flow engineering has a name for the fix. <strong>Backpressure</strong>: the downstream stage signals upstream that it cannot take more, and the producer slows down, buffers, or sheds load. TCP does it. Message queues do it.</li>
+<li>In the agent loop today, the backpressure is you. Every unread diff is a queue backing up in your review pile. &quot;Any system that relies on a human to catch the machine&#39;s mistakes will be limited by the human, not the machine&quot; (Lucas F. da Costa).</li>
 </ul>
 <h2 id="checks-compound-the-other-way">Checks compound the other way</h2>
 <ul>
-<li><strong>Errors compound over unverified chain length.</strong> Enough mostly-right steps in a row and the end of the chain is mostly wrong. If one step were 85 percent reliable, ten unverified steps in a row would land near 20. The arithmetic is an illustration, not a measurement; the mechanism is what holds.</li>
+<li>Errors compound over unverified chain length. Enough mostly-right steps in a row and the end of the chain is mostly wrong. If one step were 85 percent reliable, ten unverified steps in a row would land near 20. The arithmetic is an illustration, not a measurement; the mechanism is what holds.</li>
 <li><strong>A gate resets the chain.</strong> A check inside the loop catches the bad step before the next step builds on it, so everything after the check builds on verified ground. The same compounding that ruins unchecked runs works for checked ones.</li>
-<li><strong>So the gates go inside the loop, at every iteration.</strong> One big review at the end reads a chain that has already compounded. A check per step keeps every chain short.</li>
-<li><strong>A gate is anything that pushes back without you.</strong> A failing test, a type error, a lint rule, a judge agent reading the diff, a plan review before code, a monitor watching the merged PR.</li>
-<li><strong>Tests and types were backpressure for humans long before agents.</strong> The work is not inventing checks from nothing; it is pointing the existing ones at the agent, and adding the gates that are still missing.</li>
+<li>So the gates go inside the loop, at every iteration. One big review at the end reads a chain that has already compounded. A check per step keeps every chain short.</li>
+<li>A gate is anything that pushes back without you. A failing test, a type error, a lint rule, a judge agent reading the diff, a plan review before code, a monitor watching the merged PR.</li>
+<li>Tests and types were backpressure for humans long before agents. The work is not inventing checks from nothing; it is pointing the existing ones at the agent, and adding the gates that are still missing.</li>
 </ul>
 <h2 id="session-reach">Session reach</h2>
 <ul>
-<li><strong>Session reach: how far a run gets before it must stop and wait for you.</strong> The useful distance between a send-off and the first moment where your judgment is the only thing that can move the work forward.</li>
-<li><strong>The model sets one ceiling; your gates set the other. Reach is the lower of the two.</strong> A frontier model behind thin gates still has short reach: every step past the last check is unverified chain, and the compounding above takes over.</li>
-<li><strong>The two ceilings move differently.</strong> The model ceiling moves on its own, every few months, whether you do anything or not. The gate ceiling moves only when you build. Waiting for a better model raises one ceiling and leaves the other exactly where it is.</li>
+<li><strong>Session reach</strong>: how far a run gets before it must stop and wait for you. The useful distance between a send-off and the first moment where your judgment is the only thing that can move the work forward.</li>
+<li>The model sets one ceiling; your gates set the other. Reach is the lower of the two. A frontier model behind thin gates still has short reach: every step past the last check is unverified chain, and the compounding above takes over.</li>
+<li>The two ceilings move differently. The model ceiling moves on its own, every few months, whether you do anything or not. The gate ceiling moves only when you build. Waiting for a better model raises one ceiling and leaves the other exactly where it is.</li>
 </ul>
 <h2 id="from-inline-inspector-to-gate-designer">From inline inspector to gate designer</h2>
 <ul>
-<li><strong>With gates in place, the job moves.</strong> Less inline inspector, more gate designer. You read the exceptions the gates raise, not the stream of everything produced.</li>
-<li><strong>On the near half of the map, you were the feedback.</strong> Plans pushed back on, diffs read, tests watched: your judgment sat inline, in the loop&#39;s hot path. On the far half, you engineer your replacement in that path and keep the judgment.</li>
-<li><strong>You never leave the loop.</strong> You move to the one place in it where human judgment is the only thing that belongs: deciding what the gates hold, and what happens when one fires.</li>
+<li>With gates in place, the job moves. Less inline inspector, more gate designer. You read the exceptions the gates raise, not the stream of everything produced.</li>
+<li>On the near half of the map, you were the feedback. Plans pushed back on, diffs read, tests watched: your judgment sat inline, in the loop&#39;s hot path. On the far half, you engineer your replacement in that path and keep the judgment.</li>
+<li>You never leave the loop. You move to the one place in it where human judgment is the only thing that belongs: deciding what the gates hold, and what happens when one fires.</li>
 </ul>
 <h2 id="the-first-check-that-isnt-you">The first check that isn&#39;t you</h2>
 <ul>
-<li><strong>Before a send-off: what is the first check this run will hit that is not me?</strong> If the answer is nothing, you are the gate infrastructure, and the run reaches exactly as far as you can watch.</li>
-<li><strong>The answer sets the reach you grant.</strong> A run that hits a real gate within its first few steps can be sent far. A run whose first check is your read at the end stays short, no matter how good the model is.</li>
-<li><strong>The same answer twice is a gate worth building.</strong> When one class of work keeps arriving with nothing but you in its path, the question has found a missing gate. Build it once, and every later run of that shape reaches further.</li>
+<li>Before a send-off: <em>what is the first check this run will hit that is not me?</em> If the answer is nothing, you are the gate infrastructure, and the run reaches exactly as far as you can watch.</li>
+<li>The answer sets the reach you grant. A run that hits a real gate within its first few steps can be sent far. A run whose first check is your read at the end stays short, no matter how good the model is.</li>
+<li>The same answer twice is a gate worth building. When one class of work keeps arriving with nothing but you in its path, the question has found a missing gate. Build it once, and every later run of that shape reaches further.</li>
 </ul>
 
 </section>
@@ -6162,21 +6162,21 @@ allowed-tools:                  ← optional, restricts what the skill can touch
 <h1 id="verification-asymmetry">Verification asymmetry</h1>
 <h2 id="checking-can-cost-far-less-than-doing">Checking can cost far less than doing</h2>
 <ul>
-<li><strong>Some tasks are far cheaper to check than to do.</strong> Reviewing a diff against a failing test versus writing the feature. Checking a sudoku versus solving it. The gap between doing-cost and checking-cost is the asymmetry.</li>
-<li><strong>Some are the reverse.</strong> A fact-dense report reads clean whether it is true or not; checking it costs as much as writing it. No asymmetry, no discount.</li>
-<li><strong>Jason Wei named the pattern: &quot;some tasks are much easier to verify than to solve.&quot;</strong> His corollary, the verifier&#39;s law: the ease of training AI to solve a task is proportional to how verifiable the task is, because a cheap check is exactly the feedback signal training and eval loops run on. His own example is code: tedious to read for correctness, fast to check when the test coverage is there.</li>
+<li>Some tasks are far cheaper to check than to do. Reviewing a diff against a failing test versus writing the feature. Checking a sudoku versus solving it. The gap between doing-cost and checking-cost is the asymmetry.</li>
+<li>Some are the reverse. A fact-dense report reads clean whether it is true or not; checking it costs as much as writing it. No asymmetry, no discount.</li>
+<li>Jason Wei named the pattern: &quot;some tasks are much easier to verify than to solve.&quot; His corollary, <strong>the verifier&#39;s law</strong>: the ease of training AI to solve a task is proportional to how verifiable the task is, because a cheap check is exactly the feedback signal training and eval loops run on. His own example is code: tedious to read for correctness, fast to check when the test coverage is there.</li>
 </ul>
 <h2 id="why-this-decides-what-to-delegate">Why this decides what to delegate</h2>
 <ul>
-<li><strong>Delegation pays where the check is cheap.</strong> You hand over the making, keep the cheap checking, and the loop runs fast. The agent generates; you gate.</li>
-<li><strong>Where the check is expensive, delegation is a trap.</strong> You saved the writing and bought a harder review. The full cost comes back to you at read time.</li>
-<li><strong>M2 used this without naming it: find is easier than judge.</strong> The agent finds candidates; you judge them. That was the asymmetry in its smallest form, and it runs through the whole far half of the map.</li>
+<li>Delegation pays where the check is cheap. You hand over the making, keep the cheap checking, and the loop runs fast. The agent generates; you gate.</li>
+<li>Where the check is expensive, delegation is a trap. You saved the writing and bought a harder review. The full cost comes back to you at read time.</li>
+<li>M2 used this without naming it: <strong>find is easier than judge</strong>. The agent finds candidates; you judge them. That was the asymmetry in its smallest form, and it runs through the whole far half of the map.</li>
 </ul>
 <h2 id="every-send-off-needs-a-named-cheap-verifier">Every send-off needs a named cheap verifier</h2>
 <ul>
-<li><strong>Before a send-off, ask: what is my cheap verifier here?</strong> A failing test, a compiler, a diffable reference, a checklist a fresh session can run. If you can name one, the task is a delegation candidate.</li>
-<li><strong>No cheap verifier? Two options.</strong> Keep the task, or build the verifier first and then delegate. Building the verifier is often the more valuable half of the work: it outlives the run it checks.</li>
-<li><strong>Every verifier you write converts one more task family from delegation-trap to delegation-win.</strong> That is why gates are worth authoring at all.</li>
+<li>Before a send-off, ask: what is my cheap verifier here? A failing test, a compiler, a diffable reference, a checklist a fresh session can run. If you can name one, the task is a delegation candidate.</li>
+<li>No cheap verifier? Two options. Keep the task, or build the verifier first and then delegate. Building the verifier is often the more valuable half of the work: it outlives the run it checks.</li>
+<li>Every verifier you write converts one more task family from delegation-trap to delegation-win. That is why gates are worth authoring at all.</li>
 </ul>
 
 </section>
@@ -6186,28 +6186,28 @@ allowed-tools:                  ← optional, restricts what the skill can touch
 <h1 id="the-lethal-trifecta">The lethal trifecta</h1>
 <h2 id="three-capabilities-that-must-not-meet">Three capabilities that must not meet</h2>
 <ul>
-<li><strong>Simon Willison&#39;s frame.</strong> An agent that holds all three of these at once can be made to leak what it knows: access to private data, exposure to untrusted content, and a channel that communicates out. Each leg is useful on its own; together they are a leak an attacker can operate remotely.</li>
-<li><strong>Not risky. Structural.</strong> Anyone who can write where the agent reads can steer what the agent does with what it holds. No amount of model quality makes the combination safe, because the flaw is in how the model reads, not in how well it behaves.</li>
-<li><strong>The legs hide in ordinary wiring.</strong> Private data is your codebase, your credentials, your customer records. Untrusted content is any web page, issue comment, or dependency the agent reads. The outbound channel is anything that leaves the machine, from an HTTP request to a git push. Most agent setups assemble all three without anyone deciding to.</li>
+<li>Simon Willison&#39;s frame. An agent that holds all three of these at once can be made to leak what it knows: access to private data, exposure to untrusted content, and a channel that communicates out. Each leg is useful on its own; together they are a leak an attacker can operate remotely.</li>
+<li>Not risky. Structural. Anyone who can write where the agent reads can steer what the agent does with what it holds. No amount of model quality makes the combination safe, because the flaw is in how the model reads, not in how well it behaves.</li>
+<li>The legs hide in ordinary wiring. Private data is your codebase, your credentials, your customer records. Untrusted content is any web page, issue comment, or dependency the agent reads. The outbound channel is anything that leaves the machine, from an HTTP request to a git push. Most agent setups assemble all three without anyone deciding to.</li>
 </ul>
 <h2 id="an-llm-cant-reliably-tell-instructions-from-data">An LLM can&#39;t reliably tell instructions from data</h2>
 <ul>
-<li><strong>An LLM cannot reliably tell instructions from data.</strong> Everything in the context window is one stream of tokens; no privileged channel marks which part came from you. Whatever the agent reads can shape what the agent does next.</li>
-<li><strong>So every source the agent reads is a potential instruction channel.</strong> A web page, an issue comment, a README inside a dependency, a pasted log. Reading it and obeying it are not cleanly separable operations.</li>
-<li><strong>The attacker needs no account and no CVE.</strong> They need a sentence, placed where the agent will read it. That sentence is the whole exploit chain. The field calls this move prompt injection: instructions that arrive through content the agent reads, not from the person steering it.</li>
+<li>An LLM cannot reliably tell instructions from data. Everything in the context window is one stream of tokens; no privileged channel marks which part came from you. Whatever the agent reads can shape what the agent does next.</li>
+<li>So every source the agent reads is a potential instruction channel. A web page, an issue comment, a README inside a dependency, a pasted log. Reading it and obeying it are not cleanly separable operations.</li>
+<li>The attacker needs no account and no CVE. They need a sentence, placed where the agent will read it. That sentence is the whole exploit chain. The field calls this move <strong>prompt injection</strong>: instructions that arrive through content the agent reads, not from the person steering it.</li>
 </ul>
 <h2 id="the-attacker-targets-the-agent-not-the-system">The attacker targets the agent, not the system</h2>
 <ul>
-<li><strong>Classic threat modeling asks who attacks the system you are building.</strong> This asks who attacks the agent building it. The target moves from your feature&#39;s endpoints to the context window of the agent that ships them.</li>
-<li><strong>The two audits compose.</strong> The access-surface map and the STRIDE pass you ran on the feature still hold; the trifecta adds the row the classic frame doesn&#39;t have. STRIDE models attacks on the system; the trifecta models attacks through the agent.</li>
-<li><strong>An accident model is not an adversary model.</strong> Sandboxes and permission prompts bound what the agent can break by mistake; the trifecta bounds what an attacker can make it do on purpose. A deployment needs both bounds, and they are set by different levers.</li>
+<li>Classic threat modeling asks who attacks the system you are building. This asks who attacks the agent building it. The target moves from your feature&#39;s endpoints to the context window of the agent that ships them.</li>
+<li>The two audits compose. The access-surface map and the STRIDE pass you ran on the feature still hold; the trifecta adds the row the classic frame doesn&#39;t have. STRIDE models attacks on the system; the trifecta models attacks through the agent.</li>
+<li>An accident model is not an adversary model. Sandboxes and permission prompts bound what the agent can break by mistake; the trifecta bounds what an attacker can make it do on purpose. A deployment needs both bounds, and they are set by different levers.</li>
 </ul>
 <h2 id="removing-any-one-leg-breaks-the-trifecta">Removing any one leg breaks the trifecta</h2>
 <ul>
-<li><strong>Audit any agent deployment for the three legs. Then cut one.</strong> The check takes a minute: what private data can it read, what untrusted content reaches it, what channels leave the machine. All three present means one goes.</li>
-<li><strong>Cutting a leg is ordinary engineering.</strong> Read-only where write is not needed. No network where network is not needed. Allowlisted domains where the web is needed. A human gate on outbound actions wherever private data is in play.</li>
-<li><strong>After untrusted input is read, constrain what can follow.</strong> Willison&#39;s rule: &quot;once an LLM agent has ingested untrusted input, it must be constrained so that it is impossible for that input to trigger any consequential actions.&quot;</li>
-<li><strong>A filter that mostly works is a gate that sometimes opens.</strong> Detection lowers the odds; only removing a leg changes the structure. In security, cut a leg instead of trusting a filter.</li>
+<li>Audit any agent deployment for the three legs. Then cut one. The check takes a minute: what private data can it read, what untrusted content reaches it, what channels leave the machine. All three present means one goes.</li>
+<li>Cutting a leg is ordinary engineering. Read-only where write is not needed. No network where network is not needed. Allowlisted domains where the web is needed. A human gate on outbound actions wherever private data is in play.</li>
+<li>After untrusted input is read, constrain what can follow. Willison&#39;s rule: &quot;once an LLM agent has ingested untrusted input, it must be constrained so that it is impossible for that input to trigger any consequential actions.&quot;</li>
+<li>A filter that mostly works is a gate that sometimes opens. Detection lowers the odds; only removing a leg changes the structure. In security, cut a leg instead of trusting a filter.</li>
 </ul>
 <p>Three legs. Cut one.</p>
 
@@ -8455,6 +8455,17 @@ git stash pop
     return (moduleEl.id || 'Module').replace(/^module-/, '').replace(/-/g, ' ');
   }
 
+  // Divider eyebrow for a prose section (one with no lecture/exercise phases),
+  // inferred from its id, falling back to its phase-kicker label.
+  function proseEyebrowOf(moduleEl) {
+    var id = moduleEl.id || '';
+    if (id === 'prework') return 'Prework';
+    if (id.indexOf('supplementary-') === 0) return 'Supplementary';
+    if (id.indexOf('reference-') === 0) return 'Reference';
+    var k = moduleEl.querySelector('.phase-kicker');
+    return (k && textOf(k)) || 'Section';
+  }
+
   // Decide the deck model from whatever container we're handed.
   function buildDeckModel(root, opts) {
     opts = opts || {};
@@ -8466,23 +8477,31 @@ git stash pop
       var one = buildSingleDoc(root, { dark: !!opts.dark, title: opts.title });
       slides = one.slides; title = title || one.title;
     } else {
-      // composed: module/lecture/exercise sections in document order
+      // composed: EVERY top-level section in document order, so the deck matches
+      // the long-read. A module carrying lecture/exercise phases becomes a
+      // divider (hero + Big Idea) followed by its phase slides. A prose section
+      // with no phases — prework, supplementary, reference — is slide-ified in
+      // place under a kind-labelled divider. Walking only `.phase--*` (the old
+      // behaviour) silently dropped prework and the supplements from the default
+      // view and stranded every in-deck link into them.
       slides = [];
-      var lastModule = null;
       // whole-handbook deck opens on the training cover, not mid-thought on M1
       var coverEl = root.querySelector('.workbook-cover');
       if (coverEl) slides.push(buildTrainingCover(coverEl));
-      Array.prototype.forEach.call(phases, function (phase) {
-        var moduleEl = phase.closest && phase.closest('.module');
-        if (moduleEl === root) moduleEl = null; // the cloned container itself carries .module chrome; not a real module section
-        if (moduleEl && moduleEl !== lastModule) {
-          lastModule = moduleEl;
+      var sections = root.querySelectorAll(':scope > section.module');
+      Array.prototype.forEach.call(sections, function (moduleEl) {
+        var innerPhases = moduleEl.querySelectorAll('.phase--lecture, .phase--exercise');
+        if (innerPhases.length) {
           slides.push(makeDivider('Module', moduleTitleOf(moduleEl), 'slide--module', false, moduleBigIdeaOf(moduleEl)));
+          Array.prototype.forEach.call(innerPhases, function (phase) {
+            var isEx = phase.classList.contains('phase--exercise');
+            // the first (cover) slide of each doc reads as a section title in the rail
+            buildSingleDoc(phase, { dark: isEx }).slides.forEach(function (s) { slides.push(s); });
+          });
+        } else {
+          slides.push(makeDivider(proseEyebrowOf(moduleEl), moduleTitleOf(moduleEl), 'slide--module', false, moduleBigIdeaOf(moduleEl)));
+          buildSingleDoc(moduleEl, { dark: false }).slides.forEach(function (s) { slides.push(s); });
         }
-        var isEx = phase.classList.contains('phase--exercise');
-        var docSlides = buildSingleDoc(phase, { dark: isEx });
-        // the first (cover) slide of each doc reads as a section title in the rail
-        docSlides.slides.forEach(function (s) { slides.push(s); });
       });
       title = title || 'Handbook';
     }

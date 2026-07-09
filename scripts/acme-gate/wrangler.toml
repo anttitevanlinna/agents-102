@@ -1,0 +1,27 @@
+# acme-gate — Cloudflare Worker that puts HTTP Basic Auth in front of the acme
+# beta workbook served from GitHub Pages via agents102.bosser.consulting.
+#
+#   Deploy:  wrangler deploy                  (from this directory)
+#   Set pw:  wrangler secret put ACME_PASSWORD
+#   Rotate:  re-run `wrangler secret put ACME_PASSWORD`
+#   Remove:  wrangler delete                  (drops the Worker + route)
+#
+# The route pattern below IS the entire "only for acme" scoping — nothing else
+# on the bosser.consulting zone is touched. The gate covers the customer hub,
+# both AE101 trainings (preview + full), and the ae101-content.tar.gz payload
+# under /clients/acme/.
+
+name = "acme-gate"
+main = "worker.js"
+compatibility_date = "2026-07-01"
+
+# Bind to the Pages host path. `/clients/acme/*` matches the hub, both trainings
+# and the tarball. A bare `/clients/acme` (no slash) 301s to `/clients/acme/`
+# at the origin and is then gated, so no content leaks.
+routes = [
+  { pattern = "agents102.bosser.consulting/clients/acme/*", zone_name = "bosser.consulting" }
+]
+
+# ACME_PASSWORD is NOT set here — it is an encrypted Worker secret, set via
+# `wrangler secret put ACME_PASSWORD`. Optionally override the login name with
+# an ACME_USERNAME var/secret (defaults to "acme").

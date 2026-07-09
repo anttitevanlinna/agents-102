@@ -2,8 +2,10 @@
 'use strict';
 // check-slide-size.js — flag any lecture/exercise slide (## section) too big to project.
 //
-// "Slide-sized" is the theory-layer contract: one `##` = one slide, 3–6 bullets,
-// each a bolded claim + 1–3 sentences, glance-legible cold (check_lectures.md §4).
+// "Slide-sized" is the theory-layer contract: one `##` = one slide, 3–6 bullets
+// or 2–4 short prose paragraphs, each claim + 1–3 sentences of mechanism, bold
+// reserved for handles (theory-plan.md § Slide format — emphasis budget, 2026-07-09),
+// glance-legible cold (check_lectures.md §4).
 // This lints the SHAPE only — it measures how much a viewer must read on one slide,
 // it does not judge the writing.
 //

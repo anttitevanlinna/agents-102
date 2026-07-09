@@ -2,17 +2,23 @@
 
 ## Five moves, one quality discipline
 
-- **The quality arc ran the whole training.** M1 opened with tests-first. M2 added plan push-back: quality applied to the agent's intent before any code runs. M3 authored the test-strategy skill from this codebase's conventions. M5 built the verifier, shaped against the failures the un-packaged run actually showed.
-- **Today adds the fifth move.** A second skill, packaged from what two runs taught, in the shape the dominant gap calls for.
-- **Five moves, one discipline.** Tests-first, plan push-back, skill, verifier, loop. That's the quality kit you walk out with. Not one move learned in one module; the discipline, threaded through the whole training.
+The quality arc ran the whole training. M1 opened with tests-first. M2 added plan push-back: quality applied to the agent's intent before any code runs. M3 authored the test-strategy skill from this codebase's conventions. M5 built the verifier, shaped against the failures the un-packaged run actually showed.
+
+Today adds the fifth move: a second skill, packaged from what two runs taught, in the shape the dominant gap calls for.
+
+Five moves, one discipline. Tests-first, plan push-back, skill, verifier, loop. That's the quality kit you walk out with. Not one move learned in one module; the discipline, threaded through the whole training.
 
 ## From spec-and-tests to grounding
 
-- **Nobody reviews 500K lines by hand.** Some of the early agentic engineering demos were single devs shipping 500K lines of code in weeks; the first Agentics Helsinki meetup, fall 2025, had a few of them. The recurring theme: every generated line had to correspond to a spec, every feature had to be tested. Without that, no way to know the system works.
-- **The discipline has gone deeper since: grounding.** Beyond spec-and-tests, toward human signal. Every push-back, every correction, every *"no, like this"* is signal of something: what's true, what's valuable, what works, what's broken.
-- **The agentic engineer maxes that signal out.** You ship a million lines of new stuff. How do you know it's right?
+Nobody reviews 500K lines by hand. Some of the early agentic engineering demos were single devs shipping 500K lines of code in weeks; the first Agentics Helsinki meetup, fall 2025, had a few of them. The recurring theme: every generated line had to correspond to a spec, every feature had to be tested. Without that, no way to know the system works.
+
+The discipline has gone deeper since: **grounding**. Beyond spec-and-tests, toward human signal. Every push-back, every correction, every *"no, like this"* is signal of something: what's true, what's valuable, what works, what's broken.
+
+The agentic engineer maxes that signal out. You ship a million lines of new stuff. How do you know it's right?
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** both slides recast from bolded-claim bullets to prose paragraphs (narrative stakes-setter; bullets already read as consecutive sentences) per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. One bold survives: **grounding** at its naming beat; the closing question stays plain. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Slides-only pass (2026-07-02, unaudited):** two prose paragraphs CONVERTED to two slides, near-verbatim. Paragraph 1 (quality arc) → slide 1, module-as-subject phrasing kept (Sutherland-flip off the student, per `check_student_facing` rule 3); paragraph 2 (500K → grounding) → slide 2 with the closing question as the final bullet (don't answer it, per watch-fors). Stray post-H1 `---` divider CUT (formatting residue). M1/M2/M3/M5 refs KEPT under the `check_lectures §3` consolidation carve-out — the quality ARC is this lecture's subject, the refs are its material, not sequencing. No Quality line predates this pass (file was unaudited).
 

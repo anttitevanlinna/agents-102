@@ -153,16 +153,16 @@ You have a kit now: a test-strategy skill, a verifier, the session-shaper you ju
 </svg>
 </figure>
 
-- **A skill is a named move you reach for.** Single purpose, reusable, invoked by name. Your test-strategy, your verifier, your session-shaper are moves you already own. You reach for one where the passage needs it, not rebuild it each run.
-- **Its footprint is wherever the job lands.** One move takes a single fix at a turning point. Another carries a whole leg. A third runs at the pier, before the first leg. You never size a skill in advance. The job sizes it.
-- **Nothing here is new except the placing.** Same passage, same drift, same fixes and rails. A move now stands at each point you used to steer by hand. Where no move stands, you sail that stretch yourself.
+- A **skill** is a named move you reach for. Single purpose, reusable, invoked by name. Your test-strategy, your verifier, your session-shaper are moves you already own. You reach for one where the passage needs it, not rebuild it each run.
+- Its **footprint** is wherever the job lands. One move takes a single fix at a turning point. Another carries a whole leg. A third runs at the pier, before the first leg. You never size a skill in advance. The job sizes it.
+- Nothing here is new except the placing. Same passage, same drift, same fixes and rails. A move now stands at each point you used to steer by hand. Where no move stands, you sail that stretch yourself.
 
 ## A workflow is skills in the right order
 
-- **A run moves through phases, and a move sits where its job sits.** Context, plan, build, verify, ship: a run passes through them in order. A move can live inside one phase or span several. Its footprint is set by the job, not by the phase line.
-- **Four ways moves wire into a workflow.** One move names another as a precondition: an explicit load. One move sequences a chain and gates each step: an orchestrator, the pilot on the chart. A rule in `./CLAUDE.md` fires a move when a matching file or phrase appears: routing. Or one move hands its output straight to the next, with no orchestrator: a hand-off.
-- **Some workflows have a pilot; many do not.** The pilot is one move whose whole job is running the others, stopping on a bad check, re-invoked until the run lands. A move that does one job and calls nothing is a leaf. Your kit today is a few leaves and no pilot, and that is the right size for it.
-- **The value is the order, not the count.** Three moves in the right sequence beat ten in a heap.
+- A run moves through phases, and a move sits where its job sits. Context, plan, build, verify, ship: a run passes through them in order. A move can live inside one phase or span several. Its footprint is set by the job, not by the phase line.
+- Four ways moves wire into a workflow. One move names another as a precondition: **an explicit load**. One move sequences a chain and gates each step: **an orchestrator**, the pilot on the chart. A rule in `./CLAUDE.md` fires a move when a matching file or phrase appears: **routing**. Or one move hands its output straight to the next, with no orchestrator: **a hand-off**.
+- Some workflows have a pilot; many do not. The **pilot** is one move whose whole job is running the others, stopping on a bad check, re-invoked until the run lands. A move that does one job and calls nothing is a **leaf**. Your kit today is a few leaves and no pilot, and that is the right size for it.
+- The value is the order, not the count. Three moves in the right sequence beat ten in a heap.
 
 ## Composition is a live argument, so you read
 
@@ -175,6 +175,8 @@ How the field composes kits like this is a live argument with no settled answer,
 Pick the shape that resembles your day. The choice is yours.
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** both slides keep bullets; bold reduced to definition/mechanism handles only — slide 1: **skill** + **footprint** sub-spans (third bullet plain); slide 2: the four wiring mechanisms (**an explicit load** / **an orchestrator** / **routing** / **a hand-off**) plus **pilot** and **leaf** at their definitions; first and fourth bullets plain (the chart caption already carries "the value is the order, not the count") — per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Lede, SVG, and the two supplementary links untouched. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Quality:** compendium-audited 2026-07-08 (slides@47f3357) — writing PASS, story PASS (mood 8/8), strategy PASS, technical PASS (source-verification stamp-format TODO applied 2026-07-05); behavior N/A (no prompt blocks). Pedagogy REVISE was cross-file only (trainer-guide + trainer-modules described the pre-rework five-approaches walk); resolved by the 2026-07-05 trainer-page rewrite, one pedagogy re-confirm owed. Per-class git-SHA pins deferred to next commit.
 - judges @47f3357: writing grandfathered, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered, slides PASS

@@ -2,17 +2,19 @@
 
 ## The better the automation, the worse the operator
 
-- **This is a 1983 result, not an AI take.** Lisanne Bainbridge, studying industrial automation: automate the reliable middle of a task, and the human keeps exactly two jobs. Monitor for the rare failure. Take over when it happens.
-- **Both jobs demand hands-on fluency.** Monitoring only works if you can tell wrong from right at a glance. Takeover only works if the manual skill is still there. Both ride on the reps of doing the task yourself.
-- **The irony: daily automation quietly removes those reps.** Skills deteriorate when they are not used. The better the automation, the less you do the task by hand, and the worse you are at the moment you are needed most. Bainbridge's phrasing: a formerly experienced operator who has been monitoring an automated process "may now be an inexperienced one."
+- This is a 1983 result, not an AI take. Lisanne Bainbridge, studying industrial automation: automate the reliable middle of a task, and the human keeps exactly two jobs. Monitor for the rare failure. Take over when it happens.
+- Both jobs demand hands-on fluency. Monitoring only works if you can tell wrong from right at a glance. Takeover only works if the manual skill is still there. Both ride on the reps of doing the task yourself.
+- The irony: daily automation quietly removes those reps. Skills deteriorate when they are not used. The better the automation, the less you do the task by hand, and the worse you are at the moment you are needed most. Bainbridge's phrasing: a formerly experienced operator who has been monitoring an automated process "may now be an inexperienced one."
 
 ## Earned trust breeds the miss
 
-- **Earned trust is exactly what breeds the miss.** Watch a system that is highly but imperfectly reliable, and your own detection performance degrades. The automation-studies literature named this overreliance: trusting the machine past the point where you still catch its errors (Parasuraman and Riley's use, misuse, disuse).
-- **The more runs the agent lands cleanly, the worse you get at catching the one that doesn't.** Each clean run is real evidence of competence and real erosion of your vigilance, at the same time. A longer leash quietly makes a worse watcher.
-- **Trust and vigilance move in opposite directions.** The same observed competence that earns the agent a longer leash degrades the attention you bring to the next run. The trust is deserved. The watching still has to be engineered. So when the next run lands clean, ask the plain question first: when did you last do this kind of work by hand?
+- Earned trust is exactly what breeds the miss. Watch a system that is highly but imperfectly reliable, and your own detection performance degrades. The automation-studies literature named this **overreliance**: trusting the machine past the point where you still catch its errors (Parasuraman and Riley's use, misuse, disuse).
+- The more runs the agent lands cleanly, the worse you get at catching the one that doesn't. Each clean run is real evidence of competence and real erosion of your vigilance, at the same time. A longer leash quietly makes a worse watcher.
+- Trust and vigilance move in opposite directions. The same observed competence that earns the agent a longer leash degrades the attention you bring to the next run. The trust is deserved. The watching still has to be engineered. So when the next run lands clean, ask the plain question first: when did you last do this kind of work by hand?
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** both slides are narrative; bullets kept, all leads de-bolded. One handle survives: **overreliance**, at the Parasuraman-and-Riley naming beat on slide 2. Bainbridge quote and all wording intact. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. No claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Promotion (2026-07-03, Antti-directed):** supplementary → M4 lecture, wired into `run-the-first-experiment.md § Start here` after `[Lecture: The far half of the map]` and before `[Lecture: The agent loop]`. Same operation that promoted `the-agent-loop` and `the-gate-is-a-claim` earlier this run. Slide-format pass per `theory-plan.md` § Slide format + dosage: two slides (the Bainbridge paradox · the complacency half). Bullets carried from the supplementary body, which was already slide-shaped.
 

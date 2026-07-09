@@ -10,10 +10,10 @@ Start a new Claude Code session at your repo root.
 
 ## Plan mode is a read-only permission state
 
-- **Plan mode is a permission state, not a feature.** You press Shift+Tab until the status bar reads **plan**. The agent is now read-only: it reads files, runs shell commands to explore, and writes a plan file, but it can't edit or execute until you approve.
-- **The read-only part is load-bearing.** Plan mode isn't "Claude thinks before doing." It's "Claude writes a thing you can read, edit, and push back on before anything changes." The plan is an artifact, not a mood.
-- **The plan file has an identity.** A descriptive name (`migrate-auth-hash-calm-otter.md`, not random words) you can come back to. Small quality-of-life thing that matters more than it sounds: the plan is a thing on disk, not a moment in a chat.
-- **You will notice the wait.** While Claude plans, other sessions could be making progress elsewhere. Not today, but soon.
+- Plan mode is a permission state, not a feature. You press Shift+Tab until the status bar reads `plan`. The agent is now read-only: it reads files, runs shell commands to explore, and writes a plan file, but it can't edit or execute until you approve.
+- The read-only part is load-bearing. Plan mode isn't "Claude thinks before doing." It's "Claude writes a thing you can read, edit, and push back on before anything changes." The plan is an artifact, not a mood.
+- The plan file has an identity. A descriptive name (`migrate-auth-hash-calm-otter.md`, not random words) you can come back to. Small quality-of-life thing that matters more than it sounds: the plan is a thing on disk, not a moment in a chat.
+- You will notice the wait. While Claude plans, other sessions could be making progress elsewhere. Not today, but soon.
 
 ## Optional: ask plan mode directly
 
@@ -29,7 +29,7 @@ Watch what comes back. Sometimes Claude names the read-only state directly, some
 ## Three things a good plan has
 
 - **A specific file list.** Not "update the config." *Which* config, *which* keys. A plan that names three files has made three decisions. A plan that says "the relevant files" has made zero.
-- **A verification step that could actually fail.** *"Run the tests"* is cosmetic; *"run `pytest tests/auth/ -k hash` and expect 14 passing, 0 failing"* is a gate. The test is whether, reading the step alone, you could tell Claude it failed and Claude would know what to fix.
+- **A verification step** that could actually fail. *"Run the tests"* is cosmetic; *"run `pytest tests/auth/ -k hash` and expect 14 passing, 0 failing"* is a gate. The test is whether, reading the step alone, you could tell Claude it failed and Claude would know what to fix.
 - **Named assumptions.** Good plans flag what they're assuming (library versions, schema shapes, whether a teammate's migration ran last week). A plan without assumptions isn't assumption-free; it's just assumption-silent.
 
 Three things. That's the read.
@@ -42,24 +42,26 @@ Three things. That's the read.
 
 ## Two reads, paired
 
-- **Your read and the agent's walk-down catch different misses.** You bring the voice of experience: the soft item, the step that contradicts how this codebase actually works. The agent brings breadth: it can walk every unresolved branch of the decision tree without getting bored or skipping the dull ones.
-- **Paired, they give a complete read; neither alone does.** Order matters: your push-back first, so your read stays in the driver's seat, then the walk-down for the branches you can't see.
-- **Check the revision, not the acknowledgement.** The agent agrees easily. A flagged step can come back softened rather than sharpened. A push-back is finished when the regenerated plan is sharper, not when Claude says it heard you.
+- Your read and the agent's walk-down catch different misses. You bring the voice of experience: the soft item, the step that contradicts how this codebase actually works. The agent brings breadth: it can walk every unresolved branch of the decision tree without getting bored or skipping the dull ones.
+- Paired, they give a complete read; neither alone does. Order matters: your push-back first, so your read stays in the driver's seat, then the walk-down for the branches you can't see.
+- Check the revision, not the acknowledgement. The agent agrees easily. A flagged step can come back softened rather than sharpened. A push-back is finished when the regenerated plan is sharper, not when Claude says it heard you.
 
 After you've done it once, you'll feel when a plan needs the second read and when your own read was enough.
 
 ## Find is easier than judge
 
-- **Generating candidates is cheap for the agent; judging them is where you're needed.** Stuck naming a soft item? Ask Claude which step it's least confident about. That answer is a candidate. Whether it matters on this codebase is your call, and only yours.
-- **The split runs through the whole discipline.** The agent finds, you judge, and everything from here sharpens one side or the other.
+- Generating candidates is cheap for the agent; judging them is where you're needed. Stuck naming a soft item? Ask Claude which step it's least confident about. That answer is a candidate. Whether it matters on this codebase is your call, and only yours.
+- The split runs through the whole discipline. The agent finds, you judge, and everything from here sharpens one side or the other.
 
 ## The cheapest gate you will ever run
 
-- **A plan is a check that runs before anything exists.** Reading intent costs minutes. Reading the finished diff costs hours. Un-shipping the wrong system costs weeks. Same mistake, three prices; the plan is where catching it is cheapest.
-- **Aim the read at the unknown that teaches you the most.** The branches worth walking are the ones that change what done means. The rest you'd settle in code review anyway.
-- **Making the plan good IS the work.** You don't have to execute a plan to know it's good. Recognizing a good plan is the skill; the execution can wait for the day the task is real.
+- A plan is a check that runs before anything exists. Reading intent costs minutes. Reading the finished diff costs hours. Un-shipping the wrong system costs weeks. Same mistake, three prices; the plan is where catching it is cheapest.
+- Aim the read at the unknown that teaches you the most. The branches worth walking are the ones that change what done means. The rest you'd settle in code review anyway.
+- Making the plan good IS the work. You don't have to execute a plan to know it's good. Recognizing a good plan is the skill; the execution can wait for the day the task is real.
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** the two checklist slides keep bullets with per-item handles (**A specific file list** / **A verification step** (trimmed to sub-span) / **Named assumptions**; **Structure is persuasive** / **Reasonableness passes for rightness** / **You already agree with it**); all other slides de-bolded fully, bullets kept (status-bar `plan` flipped bold → code span), per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Session widget + both kickers untouched. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Slide-page standardization (2026-07-02, Antti-directed):** `### Optional: ask plan mode directly` promoted to `##` — every slide page = line + `##` headline (the "Wrong is how steering gets in" pattern); no h3/hr page divisions in theory lectures. Layout-only; the section still dies or lives with the prompt-cull decision.
 

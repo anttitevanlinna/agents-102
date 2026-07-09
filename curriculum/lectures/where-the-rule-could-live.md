@@ -10,11 +10,13 @@ You have a `.md` file with three to five rules about how multi-file tasks want t
 
 ## The file is steady; the agent moves
 
-- **The `.md` file is the steady part; the agent is the moving part.** In all three shapes, the triage gets sharper because the file gets sharper, not because the agent gets bigger. Improvement invested in the durable artifact carries; the agent under it can be swapped without losing a thing.
-- **The file travels.** Slack thread, issue event, sprint cadence; Claude Code on the web, GitHub Actions, a scheduled agent. Trigger and runtime are wiring choices; the file rides along unchanged. Once it exists, you have the guardrail, and every shape above is a deployment decision, not a rewrite.
+- The `.md` file is the steady part; the agent is the moving part. In all three shapes, the triage gets sharper because the file gets sharper, not because the agent gets bigger. Improvement invested in the durable artifact carries; the agent under it can be swapped without losing a thing.
+- The file travels. Slack thread, issue event, sprint cadence; Claude Code on the web, GitHub Actions, a scheduled agent. Trigger and runtime are wiring choices; the file rides along unchanged. Once it exists, you have the guardrail, and every shape above is a deployment decision, not a rewrite.
 - **Agents build agents.** The agent that reads your `.md` file and splits a backlog can itself be built by another agent reading a different `.md` file: yours about how *you* author skills, how *you* test them, how *you* ship them. Today the file exists.
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** slide 1 keeps bullets with the three shape-name handles (**Slack triage** / **Issue webhook** / **Scheduled read**); slide 2 de-bolded except **Agents build agents** (recurring arc handle, becomes an M6 lecture title), per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Lede untouched. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Slides-only pass (2026-07-02, unaudited):** covered region DELETED (Path A). Per-passage verdicts: three-shapes prose sections CONVERTED to one slide, one bullet per shape (capability-grounded wording preserved: Slack app / `@Claude`-to-web routing, GitHub Actions `issues` events, scheduled agent — do not imply Claude Code runs inside Slack) · per-shape tail lines (steady part / policy / spec triplet) SUBSUMED by slide 2's first bullet · "Each is real; each is downstream" softener CUT · ticket-pair paragraph CUT (it depended on `extract-the-task-shaping-rule-4`, itself a `{{cut:}}` candidate; if the cull reverses, the exercise carries the connection) · "M3 starts with a feature you're shipping" bridge CUT (module `## Next` owns the bridge) · intro line KEPT as the closer's setup lede. File is now lede + two slides.
 

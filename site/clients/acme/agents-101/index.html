@@ -576,6 +576,74 @@ main::before {
     background: var(--bg-2);
 }
 
+/* Cut-candidate — a prompt flagged for review by a `{{cut:key|reason}}` marker
+   (sibling of `{{prompt:key}}`). The material is fully retained; the block is
+   dimmed + grayed and wears the ribbon below so the maintainer can eyeball
+   removal candidates before committing a real cut. Reversible: swap the marker
+   back to `{{prompt:key}}` on one line. Hover lifts the veil so the prompt stays
+   readable while judging. */
+.module .prompt-block.cut-candidate {
+    opacity: 0.5;
+    filter: grayscale(0.9);
+    border-style: dashed;
+}
+
+.module .prompt-block.cut-candidate:hover {
+    opacity: 1;
+    filter: none;
+}
+
+/* Muted-danger chip bar, same typographic key as the header chips (uppercase,
+   tracked, small). No --danger token in the palette, so a restrained oxblood-
+   adjacent red that reads as "flagged" without shouting. */
+.module .cut-candidate__ribbon {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.95rem;
+    background: #a3443b;
+    color: var(--bg);
+    border-bottom: 1px solid var(--line-2);
+}
+
+/* Covered-region — a prose span wrapped by `{{covered:slug#anchor}}` …
+   `{{/covered}}` markers (sibling of the cut-candidate treatment, but for
+   passages whose content a new slide-format section now carries). Neutral
+   semantic: dimmed + ribboned so the maintainer can eyeball the redundancy;
+   the passage either gets deleted once the covering slides are perfected, or
+   stays as the depth layer beneath them. Hover lifts the veil. Unscoped —
+   covered regions appear in lectures rendered both inside .module and as
+   standalone sections. */
+.covered-region {
+    opacity: 0.5;
+    filter: grayscale(0.9);
+    border: 1px dashed var(--line-2);
+    padding: 0 1rem 0.25rem;
+    margin: 1rem 0;
+}
+
+.covered-region:hover {
+    opacity: 1;
+    filter: none;
+}
+
+/* Neutral steel chip bar — same typographic key as the cut ribbon, cooler
+   hue: "has a new home", not "flagged for danger". */
+.covered-region__ribbon {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.95rem;
+    margin: 0 -1rem;
+    background: #4a6274;
+    color: var(--bg);
+    border-bottom: 1px solid var(--line-2);
+}
+
 /* Anchored clauses inside a prompt body — planted by injectAnchorSentinels
    in curriculum.js when an entry declares `anchors:` in its frontmatter, then
    wrapped at DOM time by convertAnchorSentinels(). Dotted underline in the
@@ -2181,6 +2249,214 @@ body.workbook { padding-top: 3rem; }
     .workbook-topnav__modules a { padding: 0.25rem 0.5rem; font-size: 0.75rem; }
 }
 </style>
+<style>/* slides.css — the curriculum slide viewer (the "Slides" layout).
+ *
+ * A progressive-enhancement overlay: given a rendered curriculum container
+ * (one doc, a module, or a whole handbook), slides.js splits it on <h2> into a
+ * paged deck with a hover-expand left rail. Loaded alongside curriculum.css in
+ * both the SPA and the workbook; inert until CurriculumSlides.open() mounts a
+ * `.deck`.
+ *
+ * Theme is PER SLIDE, not per page: exercise-derived slides carry `.theme-dark`
+ * (warm-black + amber, the hands-on mood), lecture slides stay cream. So a mixed
+ * module deck flips mood as you page from lecture into exercise. The deck chrome
+ * (rail, bar, progress) is always ink and reads on both.
+ */
+
+/* ── per-slide dark theme (exercise mood) ───────────────────────────────────
+   Re-points the curriculum.css palette vars on the slide subtree; custom
+   properties inherit, so prose, code, prompt blocks and grammar recolour. */
+.deck .slide.theme-dark {
+  --bg:          #1a160f;
+  --bg-2:        #221d14;
+  --bg-3:        #2c251a;
+  --fg:          #f2ead9;
+  --fg-2:        #d6cbb4;
+  --fg-3:        #a99a80;
+  --fg-4:        #7c6f5a;
+  --line:        #362e20;
+  --line-2:      #493d2b;
+  --accent:      #d98a55;
+  --accent-2:    #e7a866;
+  --accent-soft: rgba(217,138,85,.12);
+  --code-bg:     #100d09;
+}
+.deck .slide.theme-dark .session-block { background: var(--bg-2); }
+.deck .slide.theme-dark .session-block__body { color: var(--fg-2); }
+.deck .slide.theme-dark pre code { color: var(--fg); }
+.deck .slide.theme-dark .hox-block__body,
+.deck .slide.theme-dark .note-block__body { color: var(--fg); }
+
+/* ── deck shell ─────────────────────────────────────────────────────────── */
+body.slides-active { overflow: hidden; }
+.deck { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column;
+  background: var(--ink); font-family: var(--font-body); }
+
+.deck__progress { flex: 0 0 auto; height: 3px; background: var(--ink-line); }
+.deck__progress > i { display: block; height: 100%; width: 0; background: var(--accent-2);
+  transition: width .3s cubic-bezier(.4,0,.2,1); }
+
+.deck__viewport { position: relative; flex: 1 1 auto; overflow: hidden; background: var(--bg-3); }
+
+.deck .slide {
+  position: absolute; inset: 0; background: var(--bg); color: var(--fg);
+  display: flex; align-items: safe center; justify-content: center;
+  overflow-y: auto;
+  padding: clamp(1.5rem, 5vh, 4rem) clamp(1.5rem, 7vw, 7rem) clamp(1.5rem, 5vh, 4rem) clamp(3.6rem, 7vw, 7rem);
+  opacity: 0; visibility: hidden; transform: translateY(10px);
+  transition: opacity .32s ease, transform .32s ease;
+}
+.deck .slide.is-active { opacity: 1; visibility: visible; transform: none; }
+.deck .slide.is-past { transform: translateY(-10px); }
+
+.deck .slide__body { width: 100%; max-width: 52rem; }
+.deck .slide--wide .slide__body, .deck .slide--cover .slide__body { max-width: 66rem; }
+.deck .slide--diagram .slide__body { max-width: 72rem; }
+.deck .slide pre { max-width: 100%; overflow-x: auto; }
+
+.deck .slide:not(.slide--cover) .slide__body > h2:first-child {
+  margin: 0 0 1.6rem; padding-top: 0;
+  font-size: clamp(1.9rem, 3.6vw, 2.9rem); line-height: 1.12;
+}
+.deck .slide:not(.slide--cover) .slide__body > h2:first-child::before { top: -1.1rem; width: 3rem; }
+.deck .slide__body > h2 + p { font-size: clamp(1.15rem, 1.9vw, 1.45rem); }
+.deck .slide__body li { font-size: clamp(1rem, 1.35vw, 1.12rem); margin: .55rem 0; }
+.deck .slide__body p { font-size: clamp(1rem, 1.35vw, 1.1rem); }
+.deck .slide .diagram { width: 100%; max-width: 60rem; margin: 1.2rem auto; transform: none; }
+
+/* ── phase / section divider ────────────────────────────────────────────── */
+.slide-divider { width: 100%; }
+.slide-divider__eyebrow { display: block; font-family: var(--font-body); font-weight: 600;
+  letter-spacing: .26em; text-transform: uppercase; font-size: clamp(.8rem, 1.4vw, 1rem);
+  color: var(--accent); margin: 0 0 1.1rem; }
+.slide-divider__eyebrow::before { content: ""; display: inline-block; width: 2.4rem; height: 2px;
+  background: var(--accent); vertical-align: middle; margin-right: .85rem; }
+.slide-divider__title { display: block; font-family: var(--font-display); font-weight: 200;
+  font-size: clamp(2.2rem, 5.5vw, 4.4rem); line-height: 1.03; letter-spacing: -.02em; color: var(--fg); }
+.deck .slide--divider { background: var(--bg);
+  background-image: radial-gradient(120% 80% at 15% 20%, var(--accent-soft), transparent 60%); }
+.deck .slide--divider .slide-divider { max-width: 58rem; }
+.slide-divider__sub { display: block; margin-top: 1.5rem; max-width: 42rem;
+  font-family: var(--font-serif); font-style: italic; font-size: clamp(1.05rem, 1.9vw, 1.45rem);
+  line-height: 1.5; color: var(--fg-2); }
+.slide-divider__sub code { font-style: normal; }
+/* training cover slide (whole-handbook deck, slide 1) */
+.deck .slide--traincover .traincover__eyebrow { font-family: var(--font-body); font-size: .82rem;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin: 0 0 1rem; }
+
+/* ── edge click zones ───────────────────────────────────────────────────── */
+.deck__edge { position: absolute; top: 0; bottom: 0; width: 12%; border: 0; cursor: pointer;
+  background: transparent; color: var(--ink-text-2); display: flex; align-items: center;
+  opacity: 0; transition: opacity .15s; z-index: 5; }
+.deck__edge:hover { opacity: .6; }
+.deck__edge--prev { left: 0; justify-content: flex-start; padding-left: 2.8rem; }
+.deck__edge--next { right: 0; justify-content: flex-end; padding-right: 1.2rem; }
+.deck__edge svg { width: 2rem; height: 2rem; }
+.deck__edge:disabled { display: none; }
+
+/* ── left hover-rail ────────────────────────────────────────────────────── */
+.deck__rail { position: absolute; top: 3px; bottom: 3.1rem; left: 0; z-index: 20;
+  width: 2.4rem; overflow: hidden; background: var(--ink); border-right: 1px solid var(--ink-line);
+  display: flex; flex-direction: column;
+  transition: width .22s cubic-bezier(.4,0,.2,1), box-shadow .22s; }
+.deck.is-railopen .deck__rail { width: 17rem; box-shadow: 6px 0 26px rgba(0,0,0,.28); }
+.deck__rail-handle { position: absolute; top: 0; left: 0; width: 2.4rem;
+  display: flex; flex-direction: column; align-items: center; gap: .8rem; padding: .7rem 0; color: var(--ink-muted); }
+.deck__rail-handle svg { width: 1.15rem; height: 1.15rem; }
+.deck__rail-handle span { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: .22em;
+  text-transform: uppercase; font-size: .62rem; }
+.deck.is-railopen .deck__rail-handle { opacity: 0; pointer-events: none; }
+.deck__rail-head { flex: 0 0 auto; width: 17rem; padding: 1.2rem 1.2rem .9rem;
+  border-bottom: 1px solid var(--ink-line); opacity: 0; transition: opacity .18s; }
+.deck.is-railopen .deck__rail-head { opacity: 1; transition-delay: .06s; }
+.deck__rail-title { font-family: var(--font-display); font-weight: 300; color: var(--ink-text); font-size: 1rem; line-height: 1.25; }
+.deck__rail-meta { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-muted); margin-top: .35rem; }
+.deck__rail-list { flex: 1 1 auto; overflow-y: auto; overflow-x: hidden; list-style: none; margin: 0;
+  padding: .4rem 0 1rem; opacity: 0; transition: opacity .18s; }
+.deck.is-railopen .deck__rail-list { opacity: 1; transition-delay: .06s; }
+.deck__rail-item { display: grid; grid-template-columns: 2.4rem 1fr; align-items: baseline; gap: .5rem;
+  width: 17rem; text-align: left; background: transparent; border: 0; cursor: pointer;
+  padding: .5rem 1.2rem .5rem 0; color: var(--ink-text-2); font: inherit; position: relative; white-space: nowrap; }
+.deck__rail-item::before { content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  width: 3px; height: 0; background: var(--accent-2); transition: height .18s; }
+.deck__rail-item:hover, .deck__rail-item.is-active { color: var(--ink-text); }
+.deck__rail-item.is-active::before { height: 62%; }
+.deck__rail-num { text-align: center; font-variant-numeric: tabular-nums; font-size: .78rem; color: var(--ink-muted); }
+.deck__rail-item.is-active .deck__rail-num { color: var(--accent-2); }
+.deck__rail-label { font-size: .86rem; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; }
+.deck__rail-item--divider { margin-top: .5rem; padding-top: .65rem; border-top: 1px solid var(--ink-line); }
+.deck__rail-item--divider .deck__rail-num { color: var(--accent-2); }
+.deck__rail-item--divider .deck__rail-label { font-family: var(--font-display); letter-spacing: .12em;
+  text-transform: uppercase; font-size: .74rem; color: var(--accent-2); }
+.deck__rail-item--divider::before { display: none; }
+.deck__rail-item--module .deck__rail-label { color: var(--ink-text); font-weight: 500; }
+
+/* ── control bar ────────────────────────────────────────────────────────── */
+.deck__bar { flex: 0 0 auto; display: flex; align-items: center; gap: 1rem;
+  padding: .5rem clamp(.8rem, 3vw, 2rem) .5rem 3.4rem; background: var(--ink); color: var(--ink-text-2);
+  font-size: .82rem; position: relative; z-index: 25; }
+.deck__title { font-family: var(--font-display); font-weight: 300; color: var(--ink-text); font-size: .95rem;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 0 1 auto; }
+.deck__spacer { flex: 1 1 auto; }
+.deck__nav { display: flex; align-items: center; gap: .35rem; flex: 0 0 auto; }
+.deck__btn { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem;
+  background: transparent; border: 1px solid var(--ink-line); color: var(--ink-text-2); border-radius: 6px;
+  cursor: pointer; transition: all .15s; }
+.deck__btn:hover { border-color: var(--accent-2); color: var(--ink-text); }
+.deck__btn svg { width: 1.05rem; height: 1.05rem; }
+.deck.is-railpinned .deck__rail-btn { color: var(--accent-2); border-color: var(--accent-2); }
+.deck__count { min-width: 4.2rem; text-align: center; font-variant-numeric: tabular-nums; color: var(--ink-text); }
+.deck__exit { display: inline-flex; align-items: center; gap: .4rem; background: transparent;
+  border: 1px solid var(--ink-line); color: var(--ink-text-2); border-radius: 6px; padding: .3rem .7rem;
+  cursor: pointer; font: inherit; font-size: .78rem; }
+.deck__exit:hover { border-color: var(--accent-2); color: var(--ink-text); }
+.deck__exit svg { width: .95rem; height: .95rem; }
+
+@media (max-width: 620px) {
+  .deck .slide { padding: 1.2rem 1.1rem 2rem 3.2rem; align-items: flex-start; }
+  .deck__title { display: none; }
+  .deck.is-railopen .deck__rail { width: min(17rem, 86vw); }
+}
+
+/* ── exercise grammar (shared with long-read via curriculum.css? no — deck only) ── */
+.slide__body .ex-contract { margin: 1.5rem 0; border: 1px solid var(--line-2); border-radius: 9px;
+  overflow: hidden; background: var(--bg-2); }
+.ex-contract__row { display: grid; grid-template-columns: 5rem 1fr; gap: 1.1rem; align-items: start;
+  padding: .95rem 1.2rem; border-top: 1px solid var(--line); }
+.ex-contract__row:first-child { border-top: 0; }
+.ex-contract__label { font-family: var(--font-body); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .11em; font-size: .7rem; color: var(--accent); padding-top: .25rem; }
+.ex-contract__val { font-size: 1rem; line-height: 1.55; color: var(--fg); }
+.ex-contract__val strong:first-child { color: var(--fg); }
+.slide__body p.ex-time { display: inline-flex; align-items: center; gap: .45rem; font-style: normal;
+  font-size: .8rem; letter-spacing: .03em; color: var(--fg-2); background: var(--bg-3);
+  border: 1px solid var(--line); border-radius: 999px; padding: .28rem .9rem; margin: 0 0 1.1rem; min-height: 0; }
+.slide__body p.ex-time strong, .slide__body p.ex-time strong:first-child { color: var(--fg); font-weight: 600; }
+.slide__body p.ex-time::before { content: "◷"; font-size: 1rem; line-height: 1; color: var(--accent); }
+.slide__body blockquote.steer { border: 0; border-left: 3px solid var(--accent); background: var(--accent-soft);
+  border-radius: 0 8px 8px 0; padding: .9rem 1.15rem .9rem 1.2rem; margin: 1.3rem 0; color: var(--fg-2); }
+.slide__body blockquote.steer p, .slide__body blockquote.steer p:last-child { font-style: italic; color: var(--fg-2); }
+.slide__body blockquote.steer .steer__label { font-family: var(--font-body); font-style: normal; font-weight: 700;
+  font-size: .68rem; letter-spacing: .11em; text-transform: uppercase; color: var(--accent); margin-right: .5rem; }
+.slide__body p.prompt-leadin { margin-bottom: .5rem; color: var(--fg-2); font-style: italic;
+  padding-left: .95rem; border-left: 2px solid var(--line-2); }
+.slide__body p.prompt-leadin > strong:first-child { color: var(--accent); font-style: normal; }
+.slide__body .ex-outcome { border: 1px solid var(--accent); border-radius: 9px; padding: 1.15rem 1.35rem;
+  margin: 1.5rem 0; background: var(--accent-soft); }
+.slide__body .ex-outcome__label { display: block; font-family: var(--font-body); font-weight: 700;
+  font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; color: var(--accent); margin: 0 0 .5rem; }
+.slide__body .ex-outcome p { margin: 0; font-size: 1.02rem; line-height: 1.55; color: var(--fg); }
+
+/* ── the Long-read ⇄ Slides toggle (lives in the page header) ───────────── */
+.layout-toggle { display: inline-flex; align-items: center; gap: .15rem; padding: .18rem;
+  background: rgba(0,0,0,.25); border: 1px solid var(--ink-line); border-radius: 999px; }
+.layout-toggle__btn { display: inline-flex; align-items: center; gap: .35rem; border: 0; cursor: pointer;
+  background: transparent; color: var(--ink-text-2); font: inherit; font-size: .78rem;
+  padding: .3rem .8rem; border-radius: 999px; transition: all .15s; }
+.layout-toggle__btn svg { width: .95rem; height: .95rem; }
+.layout-toggle__btn.is-on { background: var(--accent-2); color: var(--ink); font-weight: 600; }
+.layout-toggle__btn:not(.is-on):hover { color: var(--ink-text); }
+</style>
 </head>
 <body class="runtime-cli workbook" data-training="agents-101">
 <nav class="workbook-topnav" aria-label="Workbook navigation">
@@ -2225,7 +2501,7 @@ body.workbook { padding-top: 3rem; }
 <p><span class="rt-code">In Claude Code, click the <strong>+</strong> button next to the prompt, then <strong>Settings → Connectors</strong>.</span><span class="rt-cowork">In Claude Desktop, open <strong>Customize → Connectors</strong>. The connector list is shared across Claude Desktop and Cowork.</span> Sign in with your work account and enable Microsoft 365 or Google Workspace if it appears.</p>
 <p>If your IT admin has not approved the connector yet, keep going. The calendar screenshot path in Task 4 gives you the same teaching moment with less automation. For click-paths and troubleshooting, see <a href="#reference-claude-quick-reference">Claude quick reference</a>.</p>
 <h2 id="2-install-the-training-folder-3-min">2. Install the training folder (3 min)</h2>
-<p>Get the starter file set into your training directory. The starter file set ships the folders and reference material used later in the training: <code>memory/</code>, <code>sources/</code>, <code>agents/</code>, Module 4 policy files, and a self-study companion you can use while doing self-study of the modules.</p>
+<p>Get the starter file set into your training directory. The starter file set ships the folders and reference material used later in the training: <code>memory/</code>, <code>sources/</code>, <code>agents/</code>, the Module 4 policy files, a library of the prompts the training uses, the personal-to-team patterns for a later module, and a self-study companion you can use while doing self-study of the modules.</p>
 <p><a href="https://agents102.bosser.consulting/clients/acme/agents-101/agents-101-starter.tar.gz">Download the starter file set</a> and save it directly into <code>~/Documents/agents-101/</code>. You should see <code>agents-101-starter.tar.gz</code> land there in Finder or File Explorer. Then ask Claude to unpack it.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Extract the starter tarball in the working folder. Use the shell:
@@ -2496,7 +2772,7 @@ Have the subagent answer:
 2. Quote the most generic line that could be copy-pasted from anyone&#39;s site.
 </code></pre>
 <p>One pattern to watch. Asked the most-uniquely-you line first, the LLM warms into appreciation. The praise carries forward into the generic-line call. Both picks come back softer than they probably should. Your own gut on what&#39;s uniquely you and what&#39;s generic carries more weight than Claude&#39;s.</p>
-<p>Compare Claude&#39;s picks to what you expected. Where cold-Claude sees generic, your context is still thin; add one more sharp detail there and regenerate. Where Claude&#39;s pick of <em>&quot;uniquely you&quot;</em> matches your own gut: solid ground.</p>
+<p>Compare Claude&#39;s picks to what you expected. Where cold-Claude sees generic, your context is still thin; add one more sharp detail there. Then ask Claude to regenerate the site. Where Claude&#39;s pick of <em>&quot;uniquely you&quot;</em> matches your own gut: solid ground.</p>
 <h2 id="next">Next</h2>
 <p>You just made great output AND packaged what you learned into a file the agent can re-read next time. That&#39;s the move that compounds. Module 2 takes the same idea and systematises it (the memory, the agents, the room rules) so every future module&#39;s work builds on every previous one.</p>
 <h2 id="homework-after-module-1-before-module-2">Homework after Module 1, before Module 2</h2>
@@ -2617,7 +2893,7 @@ Keep it short. I&#39;ll use this as a scavenger-hunt list in the next phase.
 <p>You&#39;ve just pinned your challenge in <code>./challenge.md</code> (the opener). Now you build a memory around it, scoped to the <strong>next big challenge</strong> you&#39;re wrestling with at work. The board paper due in three weeks. The re-org you&#39;re shaping. The vendor decision on your desk. Narrow enough that 5–8 topic pages cover it.</p>
 <p>The empty <code>sources/</code>, <code>memory/</code>, and <code>agents/</code> folders are already in place from prework. Keep the same <span class="rt-code">session (the chat window you opened in the opener)</span><span class="rt-cowork">task (the workspace you opened in the opener)</span> running. Claude already has your challenge in scrollback, and <code>./challenge.md</code> is on disk. Four phases: curate, put to work, compound, self-maintain.</p>
 <p><strong>Phase 1. Curate, ingest, build.</strong></p>
-<p>A memory is only as good as what goes into it. Most people sabotage this step by shovelling in whatever&#39;s nearest. Don&#39;t. Three beats: Claude helps you curate a plan, then Claude pulls the actual content into <code>sources/</code>, then Claude builds <code>memory/</code> from what&#39;s on disk.</p>
+<p>A memory is only as good as what goes into it. Most people sabotage this step by shovelling in whatever&#39;s nearest. Don&#39;t. Three beats: Claude helps you curate a plan, then Claude pulls in (or points at) the content for <code>sources/</code>, then Claude builds <code>memory/</code> from what&#39;s on disk.</p>
 <p><strong>Always comply with your company&#39;s AI policy.</strong> Whatever rules your org has about what can and can&#39;t go through an LLM (enterprise agreement, data classification, regulated-data carve-outs) those hold here. If in doubt, check before uploading.</p>
 <p><strong>Ease yourself in.</strong> Even inside what policy allows, bring only what you feel comfortable sharing with an LLM today. If an email thread, a deck, or a doc feels sensitive, skip it. Module 4 is the proper conversation about classification, data boundaries, and what an agent should never see. Right now, curate with the material you&#39;d share with a smart assistant without a second thought.</p>
 <p>Heavy reads ahead. Several phases re-read all of <code>sources/</code> or <code>memory/</code> and rewrite multiple files at once. Plan mode (named in Beat 3) is your primary control. If a non-plan-mode prompt starts reading the world, stop it, steer narrower (what to skip, where to focus), then say <em>&quot;continue&quot;</em>. If you want something simple, give a hard cap: <em>&quot;10 sources max, or even fewer&quot;</em>.</p>
@@ -2633,10 +2909,10 @@ Keep it short. I&#39;ll use this as a scavenger-hunt list in the next phase.
 
 3. Then propose a curation plan covering three kinds of material: (a) internal knowledge — which searches in which tools, (b) recent work — which threads, folders, decks, (c) outside-in — 2–3 working practitioners or specific articles worth reading (not vendor blogs).
 
-One rule for the plan: only recommend sources I would feel comfortable sharing with an LLM today. If something is likely to be sensitive — board material, personal emails, customer data, HR records — flag it as &quot;skip for now, revisit after Module 4&quot; rather than putting it in the plan. I&#39;ll push back where the plan is off.
+Two rules for the plan. First: only recommend sources I would feel comfortable sharing with an LLM today. If something is likely to be sensitive — board material, personal emails, customer data, HR records — flag it as &quot;skip for now, revisit after Module 4&quot; rather than putting it in the plan. Second: curate only the paths and spaces I actually name. If you spot nearby material I didn&#39;t name — a sibling folder, other files in the same drive — list what you see and ask before including any of it. Never pull it in on your own. I&#39;ll push back where the plan is off.
 </code></pre>
 <p>Push back, sharpen, add what&#39;s missing. The plan is the list. Nothing&#39;s in <code>sources/</code> yet.</p>
-<p><strong>Beat 2. Ingest.</strong> Now Claude pulls the content into <code>sources/</code>. Agent does the heavy lifting; you don&#39;t copy-paste.</p>
+<p><strong>Beat 2. Ingest.</strong> Now Claude pulls in (or points at) the content for <code>sources/</code>. Agent does the heavy lifting; you don&#39;t copy-paste.</p>
 <p><strong>A note on what Claude reads.</strong> <span class="rt-cli">Claude Code CLI reads any path you name. For sources outside the training folder, give Claude the absolute path; it reads the file directly.</span><span class="rt-desktop">Claude Code Desktop reads files you attach via the <strong>+</strong> button at the prompt. For sources outside the training folder, attach them with <strong>+</strong> before sending the prompt.</span><span class="rt-cowork">Cowork reads files in the working folders you&#39;ve selected for this task. Add another folder (your downloads, a notes directory) via the <strong>+</strong> button. To attach a single file for one message, also <strong>+</strong>.</span></p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>For every source in the curation plan we just agreed, create one file in sources/. Use the best method per source:
@@ -2645,6 +2921,8 @@ One rule for the plan: only recommend sources I would feel comfortable sharing w
 - Reachable via a connector you have (wiki, docs, drive)? Pull the content through and save the same way.
 - Local file on my laptop at a path I named? Save sources/&lt;slug&gt;.md as a reference — absolute path + title + why-it&#39;s-relevant, no copied content. You&#39;ll read the actual file directly when Beat 3 needs it.
 - Behind a connector you can&#39;t reach, or in a tool you don&#39;t have? Save sources/&lt;slug&gt;.md as a reference too — URL or path + title + why-it&#39;s-relevant + &quot;NOT REACHABLE — share with me when you want this included.&quot; Don&#39;t ask me to paste anything; if I want it included, I&#39;ll share the file.
+
+Create files only for the sources in the plan we agreed. If you come across other material while you work — files I didn&#39;t name, a folder you weren&#39;t pointed at — don&#39;t add it; note what you saw and I&#39;ll decide whether it belongs.
 
 When done, tell me the three lists: (1) fetched and saved as content, (2) linked by local path, (3) not reachable — waiting for me to attach. I&#39;ll attach whatever I want to include before we build the memory.
 </code></pre>
@@ -2711,9 +2989,15 @@ New source:
 <p>Read Claude&#39;s report. Push back if a claim &quot;got sharper&quot; but the top didn&#39;t actually change. Second batch made the first batch better. Chat literally cannot do this.</p>
 <p><strong>Phase 4. Let it maintain itself.</strong></p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Review the memory. Find: two contradictions between topic pages; two claims that need a source pointer but don&#39;t have one; two places where older pages likely went stale given what&#39;s in the newer sources. For each, propose a specific fix and rate severity: HIGH (would mislead a decision), MED (missing signal), LOW (cosmetic). After listing your six proposals, name the one you are LEAST confident about and say why you included it rather than a more serious gap. Don&#39;t apply them yet — ask me to approve or reject each one.
+<pre><code>Review the memory for real problems of three kinds: contradictions between topic pages; claims that need a source pointer but don&#39;t have one; older pages that likely went stale given what&#39;s in the newer sources. Also check that index.md links every page in memory/.
+
+Report up to six, real issues only. If a category is clean, say so and move on — an empty category is a valid finding, not a quota to fill. For each, propose a specific fix and rate severity: HIGH (would mislead a decision), MED (missing signal), LOW (cosmetic).
+
+Of the issues you found, name the one you&#39;re least sure is real and say why — that&#39;s the one I should scrutinize first.
+
+Don&#39;t apply anything yet. Ask me to approve or reject each one.
 </code></pre>
-<p>Go through Claude&#39;s six proposals. Some will be right. Some will miss. Reject those. The ones you approve, Claude applies. The memory&#39;s now the version you steered, not the version Claude landed alone.</p>
+<p>Go through Claude&#39;s proposals. Some will be right. Some will miss. Reject those. The ones you approve, Claude applies. The memory&#39;s now the version you steered, not the version Claude landed alone.</p>
 <p><strong>Close. Put it to work.</strong></p>
 <p>Ask your memory the hardest open question on your challenge right now. Not <em>&quot;summarize the sources.&quot;</em> A real working question, the kind you&#39;d stay late at the office to answer. <em>&quot;What&#39;s the strongest argument for option A over option B?&quot;</em> <em>&quot;Where does our current plan break if the market shifts?&quot;</em> <em>&quot;Which of these three risks is actually load-bearing and which are decoration?&quot;</em></p>
 <p>Run it through the agent you built in Phase 2. That&#39;s the one that reads the memory and cites sources.</p>
@@ -3514,9 +3798,9 @@ When you&#39;re done, read back the Security operating rules section and copy th
 <p>Large language models generate the next likely word. Not the next true word; the next likely one. They&#39;re trained on text where people spoke confidently, cited specifically, wrote fluently, and the models learned to produce language that looks like all of that, whether the underlying material supports it or not. Fluency is not evidence. Confidence is not correctness. The model has no way to tell you which parts of its output are grounded and which are plausible-sounding fill.</p>
 <p>This isn&#39;t a bug that gets patched in the next release. It&#39;s the shape of the technology. Later models will fabricate less; they won&#39;t stop.</p>
 <p><strong>The compound reliability math.</strong></p>
-<p>If an agent is 85% correct on a single step (an illustrative number, picked because it sounds forgivable), that&#39;s not bad. Eighty-five out of a hundred. You&#39;d forgive that in an intern.</p>
-<p>Now run ten steps. Retrieval, synthesis, formatting, writing, checking, rewriting, summarising, publishing. Ten is not a lot. 85% per step, ten steps: 0.85^10 = about <strong>20%.</strong> One in five runs is end-to-end correct. Four in five have a defect somewhere, usually somewhere you won&#39;t see.</p>
-<p>This is why agentic customer service works (2–3 steps: look up the order, check the policy, draft the reply, at 95% each = 86% end-to-end). This is why &quot;let the agent handle the full workflow&quot; doesn&#39;t (10 steps, 85% each = 20%). The math is the difference between a demo that delights and a production system that leaks.</p>
+<p>If an agent were 85% correct on a single step (an illustrative number, picked because it sounds forgivable), that would not sound bad. Eighty-five out of a hundred. You&#39;d forgive that in an intern.</p>
+<p>Now run ten steps. Retrieval, synthesis, formatting, writing, checking, rewriting, summarising, publishing. Ten is not a lot. Ten unverified steps in a row at 85% each would land near 20% end-to-end: one run in five correct, four in five with a defect somewhere, usually somewhere you won&#39;t see. The arithmetic is an illustration, not a measurement; the compounding is what holds.</p>
+<p>This is why agentic customer service behaves (a short chain: look up the order, check the policy, draft the reply, with nothing stacking unverified for long). This is why &quot;let the agent handle the full workflow&quot; doesn&#39;t (a long chain, no check anywhere in it). The compounding is the difference between a demo that delights and a production system that leaks.</p>
 <p>The number doesn&#39;t tell you <em>what</em> will go wrong. It tells you that something will. Your job is to design for that, not against it.</p>
 <p><strong>Now flip the math.</strong></p>
 <p>Say your briefing has a 10% fabrication rate: ten ungrounded claims in every hundred. You test. A decent detector catches 90% of them; it&#39;s that easy, because fabrication leaves fingerprints. You fix what the detector flagged. Test again. The detector catches 90% of what&#39;s left. Fix again.</p>
@@ -3524,7 +3808,7 @@ When you&#39;re done, read back the Security operating rules section and copy th
 Round 2: 1% → 0.1% after fix.
 Round 3: 0.1% → 0.01%.</p>
 <p>The same compounding that destroys single-pass reliability <em>builds</em> loop-based reliability. One generation pass is a trap; a test-and-fix loop is the escape. Three rounds and you&#39;re at parts-per-ten-thousand, a place single-pass generation cannot reach, no matter how good the model gets.</p>
-<p>This is the shape of the rest of the training. Now you&#39;ll run the test side: a benchmark to find the detector that works on <em>your</em> output. Module 6 puts that detector in a loop that runs the full test-fix-test cycle without you. That&#39;s evals. The 85%-to-20% math is the problem; the 10%-to-0.01% math is the answer.</p>
+<p>This is the shape of the rest of the training. Now you&#39;ll run the test side: a benchmark to find the detector that works on <em>your</em> output. Module 6 puts that detector in a loop that runs the full test-fix-test cycle without you. That&#39;s evals. The compounding-error math is the problem; the compounding-check math is the answer.</p>
 <p><strong>The word is grounded.</strong></p>
 <p>Every output your agent produces is either connected to truth (to specific files, specific numbers, specific quotes in specific sources) or it isn&#39;t. Connected to truth is grounded. Approximating truth without being tied to it is ungrounded.</p>
 <p>The positive discipline is grounding. The failure mode is fabrication. The failure mode is what makes headlines: the lawyer citing invented case law, the medical chatbot inventing medications, the finance memo with confident numbers nobody can source. But the discipline is what keeps you out of those headlines, and the discipline is grounded.</p>
@@ -3951,34 +4235,34 @@ When you&#39;re done, read back the Groundedness checks section you just wrote a
 <p><strong>What you do:</strong></p>
 <p>In Module 5 you ran a benchmark on four detectors and picked the one that caught the most fabrication. The winner got saved as <code>judges/groundedness-judge.md</code>. That judge is now yours. It works. You watched it work.</p>
 <p>Now you stop running it by hand.</p>
-<p><strong>Eval as infrastructure:</strong> the judge is a fixed yardstick. It doesn&#39;t move. What moves is the thing being measured. You set up a loop where a generator prompt produces a briefing, the judge scores it and writes per-claim feedback, and the main session rewrites the prompt for the next round. Run at least three rounds under the same judge, then continue until the next round no longer improves meaningfully. The score goes up because the generation prompt learns what the yardstick punishes. The measuring stick never shifts. A yardstick you rewrite is not a yardstick.</p>
+<p><strong>Eval as infrastructure:</strong> the judge is a fixed yardstick. It doesn&#39;t move. What moves is the thing being measured. You set up a loop where a generator produces a briefing from its tactic, the judge scores it and writes per-claim feedback, and the main session rewrites the tactic for the next round. Run at least three rounds under the same judge, then continue until the next round no longer improves meaningfully. The score goes up because the generation tactic learns what the yardstick punishes. The measuring stick never shifts. A yardstick you rewrite is not a yardstick.</p>
 <p><strong>Subagents</strong> are isolated Claude sessions that run inside the same project, each gets fresh context for its own job, no cross-contamination.</p>
-<p>First, write the generation prompt and run the judge once by hand on its first briefing. See what it catches. Then ask Claude to run the loop: generation and judging happen in separate subagents; the main session owns the prompt rewrite between rounds.</p>
-<p>You will come back to a short run note: <em>round 1 flagged 11 claims, round 2 flagged 6 after the generation prompt tightened numeric sourcing, round 3 flagged 3 after probability-plus-timeline claims got banned.</em> The generator prompt you left with is sharper than the one you started with, under the exact same judge you started with.</p>
+<p>First, write the generation tactic and run the judge once by hand on its first briefing. See what it catches. Then ask Claude to run the loop: generation and judging happen in separate subagents; the main session owns the tactic rewrite between rounds.</p>
+<p>You will come back to a short run note: <em>round 1 flagged 11 claims, round 2 flagged 6 after the generation tactic tightened numeric sourcing, round 3 flagged 3 after probability-plus-timeline claims got banned.</em> The generation tactic you left with is sharper than the one you started with, under the exact same judge you started with.</p>
 <p><strong>Phase 0: Run the judge once (~5 min).</strong></p>
 <p>One move before you automate. See what your judge does on a fresh output, end to end, with no loop in the middle.</p>
 <p>Ask Claude to generate one briefing and score it with the judge from Module 5.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Three things, in sequence:
 
-1. Write ./generation-prompt.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.
+1. Write ./generation-tactic.md as the generator instruction: produce a fresh one-page briefing on the question in ./crux.md, use ./crux.md and memory/ as the ground, and mark anything that relies on anything outside those files. Keep it short enough that a generator will follow it.
 
-2. Run ./generation-prompt.md once and save the briefing to module-6/fresh-briefing.md.
+2. Run ./generation-tactic.md once and save the briefing to module-6/fresh-briefing.md.
 
 3. Run the judge at judges/groundedness-judge.md against module-6/fresh-briefing.md, using ./crux.md and memory/ as the evidence input. In chat, for every factual claim, show:
 - the claim
 - the judge&#39;s verdict
 - one sentence naming the grounding problem, if any
-- one generation-prompt rule that would prevent this kind of miss in the next briefing
+- one generation-tactic rule that would prevent this kind of miss in the next briefing
 
-Then summarize in three lines: what the judge caught, the one generation-prompt rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.
+Then summarize in three lines: what the judge caught, the one generation-tactic rule the judgment most clearly surfaces, and one claim or question the judge could not verify from ./crux.md or memory/.
 
-Do not update ./generation-prompt.md from this feedback yet. Phase 0 is calibration; the loop rewrites the prompt later.
+Do not update ./generation-tactic.md from this feedback yet. Phase 0 is calibration; the loop rewrites the tactic later.
 </code></pre>
-<p>That&#39;s the manual version. Your judge ran once. You saw what it catches and what the generation prompt will need to learn.</p>
+<p>That&#39;s the manual version. Your judge ran once. You saw what it catches and what the generation tactic will need to learn.</p>
 <p>Now make that happen three times without you feeding the output back by hand.</p>
 <p><strong>Phase 1: Start the loop (~3 min).</strong></p>
-<p>Ask Claude to run the loop. Generation and judging should happen in separate subagents; the main session reads the judgment and rewrites <code>./generation-prompt.md</code> between rounds.</p>
+<p>Ask Claude to run the loop. Generation and judging should happen in separate subagents; the main session reads the judgment and rewrites <code>./generation-tactic.md</code> between rounds.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Run an eval loop using my fixed judge.
 
@@ -3987,23 +4271,23 @@ Fixed judge:
 - Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.
 - When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.
 
-Starting generation prompt:
-- Read ./generation-prompt.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.
+Starting generation tactic:
+- Read ./generation-tactic.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.
 - Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.
 
 Run at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.
 
 For each round:
-1. Dispatch a generator subagent. It must read ./generation-prompt.md, ./crux.md, and memory/. It writes the briefing for that round:
+1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:
    - briefing.md in that round&#39;s folder
 2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round. It writes the judgment for that round:
    - judgment.md in that round&#39;s folder
-   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-prompt rule for each flagged failure class, plus a top-line count of flagged claims.
-3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-prompt.md for the next round. Integrate the lesson; do not append retro notes.
-4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation prompt. When there is no longer significant improvement, stop the loop.
+   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.
+3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.
+4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.
 
 When the loop stops:
-- Write module-6/eval-notes.md with the score trajectory, the generation-prompt change after each round, why the loop stopped, the judge SHA check, one thing the judge still cannot see, and one human decision still needed.
+- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, one thing the judge still cannot see, and one human decision still needed.
 - In chat, show me the same summary in under 12 lines.
 
 Do not stop for confirmation between rounds.
@@ -4019,26 +4303,26 @@ Do not stop for confirmation between rounds.
 <pre><code>Claude: what is the similarity to model training here? Tell me in 5 snippets, one at a time. After each snippet, wait for me to say &quot;next.&quot;
 </code></pre>
 <p><strong>Phase 2: Come back to the notes (~10 min).</strong></p>
-<p>Ask Claude to show the loop result and the final generation prompt.</p>
+<p>Ask Claude to show the loop result and the final generation tactic.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Show me module-6/eval-notes.md and ./generation-prompt.md.
+<pre><code>Show me module-6/eval-notes.md and ./generation-tactic.md.
 
 Then answer in five bullets:
 - Did the judge file stay byte-identical?
 - What was the score trajectory?
-- Which generation-prompt change most clearly improved the next round?
-- Which failure did the generation prompt still not absorb?
+- Which generation-tactic change most clearly improved the next round?
+- Which failure did the generation tactic still not absorb?
 - What would you test in the next run?
 </code></pre>
-<p>Read the answer. Push back where it is too neat. If round 3 still failed on numbers, the generation prompt does not yet know how to handle numbers. If the judge marked weak claims as grounded, the judge has a blind spot. If the score got worse, that is data: the prompt absorbed the wrong lesson or the generator ignored it.</p>
-<p><strong>Integrity check.</strong> The score trajectory only means something if the yardstick stayed still. A SHA match in <code>module-6/eval-notes.md</code> is the run&#39;s proof claim. If the judge file moved, the exercise failed. If only <code>./generation-prompt.md</code> moved, the loop worked.</p>
+<p>Read the answer. Push back where it is too neat. If round 3 still failed on numbers, the generation tactic does not yet know how to handle numbers. If the judge marked weak claims as grounded, the judge has a blind spot. If the score got worse, that is data: the prompt absorbed the wrong lesson or the generator ignored it.</p>
+<p><strong>Integrity check.</strong> The score trajectory only means something if the yardstick stayed still. A SHA match in <code>module-6/eval-notes.md</code> is the run&#39;s proof claim. If the judge file moved, the exercise failed. If only <code>./generation-tactic.md</code> moved, the loop worked.</p>
 <p><strong>What happened:</strong></p>
-<p>Round 1 is the floor. Your generator runs with the prompt you wrote in Phase 0 and the judge catches whatever it catches. Round 2 is where the mechanism kicks in. The main session read round 1&#39;s per-claim feedback, absorbed it into <code>./generation-prompt.md</code>, and the next generator read the tighter prompt. Round 3 runs on the even tighter prompt.</p>
-<p>The transcript is the proof. You can point at every prompt change and name the feedback that produced it. No black box. No &quot;it got better.&quot; You watched, from the outside, a generator learn to pass a fixed test.</p>
+<p>Round 1 is the floor. Your generator runs with the tactic you wrote in Phase 0 and the judge catches whatever it catches. Round 2 is where the mechanism kicks in. The main session read round 1&#39;s per-claim feedback, absorbed it into <code>./generation-tactic.md</code>, and the next generator read the tighter tactic. Round 3 runs on the even tighter tactic.</p>
+<p>The transcript is the proof. You can point at every tactic change and name the feedback that produced it. No black box. No &quot;it got better.&quot; You watched, from the outside, a generator learn to pass a fixed test.</p>
 <p>And you weren&#39;t there.</p>
 <p><strong>The point:</strong></p>
 <p>In Module 5 you were the eval. In Module 6 the eval is fixed infrastructure, and the thing being evaluated learns to pass it. The judge has moved from object to yardstick. You do not inspect every output; you define the pressure that shapes the next output.</p>
-<p>This is what &quot;we can automate the loop&quot; actually means. Not a scheduled script. A PDCA loop at the eval layer: Plan (generation prompt), Do (generate), Check (judge), Act (rewrite prompt). Each round, the Plan gets sharper under Check pressure. The next run on a different topic starts from the tighter prompt; the learning stuck on disk.</p>
+<p>This is what &quot;we can automate the loop&quot; actually means. Not a scheduled script. A PDCA loop at the eval layer: Plan (generation tactic), Do (generate), Check (judge), Act (rewrite tactic). Each round, the Plan gets sharper under Check pressure. The next run on a different topic starts from the tighter tactic; the learning stuck on disk.</p>
 <p><strong>Take-home: put any judge in a loop that improves the thing it scores.</strong></p>
 <p>Any judge you own becomes infrastructure the moment you stop editing it and start improving what it scores.</p>
 <p>Ask Claude to set up the loop around a different judge:</p>
@@ -4046,18 +4330,35 @@ Then answer in five bullets:
 <pre><code>Set up a fixed-judge loop for one of my outputs.
 
 Run the loop end to end:
-1. Write a generation prompt file that a generator subagent can read.
-2. Dispatch a generator subagent to produce the output from that prompt.
+1. Write a generation tactic file that a generator subagent can read.
+2. Dispatch a generator subagent to produce the output from that tactic.
 3. Dispatch a separate judge subagent to run the fixed judge and write per-claim or per-item feedback alongside the score.
-4. The main session reads the judgment and rewrites the generation prompt file before the next round.
+4. The main session reads the judgment and rewrites the generation tactic file before the next round.
 
 Run at least three rounds. After round 3, keep going until improvement is no longer significant.
 
-Never edit the judge file. At the end, write notes with the score trajectory, the generation-prompt changes, the judge-integrity check, why the loop stopped, and the next boundary case to test.
+Never edit the judge file. At the end, write notes with the score trajectory, the generation-tactic changes, the judge-integrity check, why the loop stopped, and the next boundary case to test.
 
 Use these inputs:
 </code></pre>
 <p>Convergence was the floor in Module 5. Eval-as-yardstick is the ceiling here. The next natural question (<em>who else on my team would want this?</em>) is Module 7&#39;s problem.</p>
+</section>
+
+
+
+
+
+<section class="phase phase--lecture" id="lectures-when-the-score-stops-moving">
+<div class="phase-kicker">Lecture</div>
+
+<h1 id="when-the-score-stops-moving">When the score stops moving</h1>
+<p>By the last round, the count probably went quiet. Flagged claims dropped toward zero and stayed there. Round four looked like round three. The judge had stopped finding things.</p>
+<p>It is tempting to read that as &quot;the work is done.&quot; That is not what happened.</p>
+<p>The judge measures one thing. You built it in Module 5 to catch claims that float free of the evidence. It is very good at that one job and blind to everything else. Once the generator stopped floating claims, the judge ran out of things to say. The score went flat because the judge had nothing left to flag, not because the work had nothing left to improve.</p>
+<p>The work kept getting better in a direction the judge was never built to see. Sharper framing. A recommendation that actually commits. A briefing someone would read to the end. None of that is groundedness, so none of it moves the score. A grounded claim can still be vague, obvious, or useless, and this judge will pass it every time.</p>
+<p>This is the thing to carry out of the module. A flat score is real information, but only about the frame the judge can see. The moment the number stops moving is not the moment to walk away. It is the moment the easy signal runs out and your judgment comes back in.</p>
+<p>The judge told you what it could. The rest is yours to name.</p>
+<p>That is the question the next lecture opens.</p>
 </section>
 
 
@@ -5319,19 +5620,38 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
             ],
             supplementaries: [
+                { slug: 'build-a-project-from-zero',  title: 'No repo to bring? Build one' },
                 { slug: 'what-is-agentic-engineering', title: 'What is agentic engineering' },
                 { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' },
-                { slug: 'the-agent-loop',             title: 'The agent loop' },
                 { slug: 'token-efficiency',           title: 'Token efficiency: the craft and the folklore' },
                 { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' },
                 { slug: 'workflow-composition-lineages', title: 'Workflow composition lineages' },
-                { slug: 'skill-stacking',             title: "Dino's skill stacking system" }
+                { slug: 'skill-stacking',             title: "Dino's skill stacking system" },
+                { slug: 'backpressure',               title: 'Backpressure' },
+                { slug: 'verification-asymmetry',     title: 'Verification asymmetry' },
+                { slug: 'the-lethal-trifecta',        title: 'The lethal trifecta' }
             ],
             references: [
                 { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },
                 { slug: 'mcp-and-connectors',        title: 'MCP and connectors' },
                 { slug: 'multi-session-git',         title: 'Multi-session and Git: survival guide' },
                 { slug: 'prompt-anatomy',            title: 'Prompt anatomy: the named moves' }
+            ]
+        },
+        // Preview / beta cut of Agentic Engineering 101: the first three modules,
+        // reframed as "part one". `contentKey` points file resolution at the real
+        // AE101 content dir; the workbook builder inherits that parent's prework +
+        // supplementaries + references, so this stays a thin variant. Its own
+        // (cut) modules list and label/lede win. Build student-facing:
+        // node scripts/build-workbook.js acme agentic-engineering-101-preview --no-trainer-docs
+        'agentic-engineering-101-preview': {
+            contentKey: 'agentic-engineering-101',
+            label: 'Agentic Engineering 101 (Part One)',
+            lede: 'The first 3 modules of 6. Modules 4 to 6 take it further.',
+            modules: [
+                { slug: 'getting-going',             title: 'Getting going + context' },
+                { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
+                { slug: 'earn-the-trust',            title: 'Earn the trust' }
             ]
         },
         'claude-basics': {
@@ -5427,6 +5747,30 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
     // directly. Marker MUST be alone on a line so expansion produces block-level
     // markdown (label paragraph + fenced code), not inline text.
     var PROMPT_INCLUDE_RE = /^\{\{prompt:([a-z0-9-]+)\}\}[ \t]*$/gm;
+
+    // Cut-candidate marker: `{{cut:<key>}}` or `{{cut:<key>|<reason-slug>}}` on
+    // its own line. Sibling of `{{prompt:}}` — same registry lookup, same block
+    // shape — but flagged for review: decoratePrompts() dims the rendered block
+    // and prepends a "cut candidate" ribbon so the maintainer can eyeball removal
+    // candidates before committing a real cut. Fully reversible: swap
+    // `{{prompt:key}}` ↔ `{{cut:key|reason}}` on one line; the material is
+    // retained. `{{prompt:}}` and `{{cut:}}` are disjoint prefixes; expansion is
+    // order-independent. Every tool that scans `{{prompt:` as a reference treats
+    // `{{cut:}}` as an equivalent reference (a cut candidate is still "used").
+    var PROMPT_CUT_RE = /^\{\{cut:([a-z0-9-]+)(?:\|([a-z0-9-]+))?\}\}[ \t]*$/gm;
+
+    // Covered-region markers: `{{covered:<slug>#<anchor>}}` … `{{/covered}}`,
+    // each alone on its own line with blank lines around them. Sibling of
+    // `{{cut:}}` but for PROSE spans, not prompt refs: wraps a passage whose
+    // content a new slide-format section now carries. Neutral semantic — the
+    // passage is dimmed + ribboned ("covered by …") so the maintainer can
+    // eyeball redundancy; the endgame per passage is either deletion (once the
+    // covering slides are perfected) or staying as the depth layer beneath the
+    // slides. Fully reversible: remove the two marker lines. Expansion emits a
+    // raw-HTML div; CommonMark parses the markdown between the tags normally
+    // as long as blank lines separate the tags from the content.
+    var COVERED_OPEN_RE  = /^\{\{covered:([a-z0-9-]+)(?:#([a-z0-9-]+))?\}\}[ \t]*$/gm;
+    var COVERED_CLOSE_RE = /^\{\{\/covered\}\}[ \t]*$/gm;
 
     // Inline cross-doc link patterns. Renderer rewrites to `?file=...` URLs.
     //   - Exercises and lectures live in shared dirs:
@@ -5608,7 +5952,7 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
         return out;
     }
 
-    function renderPromptBlock(entry) {
+    function renderPromptBlock(entry, cut) {
         var dest = (entry && entry.dest) || 'Claude Code';
         var ctx = entry && entry.context ? ', ' + entry.context : '';
         var label = '**Prompt** *(' + dest + ctx + ')*';
@@ -5622,6 +5966,11 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
         if (mode && /^[A-Za-z]+$/.test(mode)) {
             label += ' ⟦M:' + mode + '⟧';
         }
+        // Cut-candidate sentinel ⟦CUT[:reason]⟧, mirrors the ⟦M:mode⟧ pattern.
+        // decoratePrompts() parses it off the label paragraph, strips it, and
+        // renders the block dimmed with a ribbon. Sits after the mode sentinel
+        // so both survive the marked() render cycle as inline paragraph text.
+        if (cut) { label += ' ⟦CUT' + (cut.reason ? ':' + cut.reason : '') + '⟧'; }
         var text = String((entry && entry.text) || '').replace(/\s+$/, '');
         if (entry && entry.anchors && entry.anchors.length) {
             text = injectAnchorSentinels(text, entry.anchors);
@@ -5652,10 +6001,42 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
             }
             return renderPromptBlock(entry);
         });
+        // Second pass: cut-candidate markers. Same registry lookup + unresolved
+        // tracking as the prompt pass (so strict build throws on a bad key), but
+        // the block is flagged cut. Disjoint prefix from {{prompt:}}; order of
+        // the two passes doesn't matter.
+        out = out.replace(PROMPT_CUT_RE, function (match, key, reason) {
+            var entry = registry[key];
+            if (!entry) {
+                unresolved.push(key);
+                return match;
+            }
+            return renderPromptBlock(entry, { reason: reason || '' });
+        });
         if (opts && opts.strict && unresolved.length) {
             throw new Error(
                 'expandPrompts: unresolved {{prompt:<key>}} marker(s): ' +
                 unresolved.map(function (k) { return '{{prompt:' + k + '}}'; }).join(', ')
+            );
+        }
+        // Third pass: covered-region markers. No registry lookup — the pair
+        // expands to a wrapping div the runtime decorates. Balance is checked
+        // in strict mode so an unclosed region fails the build instead of
+        // silently swallowing the rest of the page.
+        var opens = 0, closes = 0;
+        out = out.replace(COVERED_OPEN_RE, function (match, slug, anchor) {
+            opens += 1;
+            var ref = slug + (anchor ? '#' + anchor : '');
+            return '<div class="covered-region" data-covered-by="' + esc(ref) + '">';
+        });
+        out = out.replace(COVERED_CLOSE_RE, function () {
+            closes += 1;
+            return '</div>';
+        });
+        if (opts && opts.strict && opens !== closes) {
+            throw new Error(
+                'expandPrompts: unbalanced {{covered:}} region(s): ' +
+                opens + ' open vs ' + closes + ' close'
             );
         }
         return out;
@@ -6027,16 +6408,27 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
             // prompt's frontmatter declares `permission-mode:`. Parse it off
             // here, strip from the paragraph so the literal sentinel never
             // renders, surface as a separate header chip.
+            // Cut-candidate sentinel ⟦CUT[:reason]⟧ (planted by renderPromptBlock
+            // when a {{cut:}} marker expanded) rides alongside the ⟦M:mode⟧ chip
+            // in the label paragraph. Parse both off, strip both in a single
+            // innerHTML write, and surface them as chrome — mode as a header chip,
+            // cut as a dimming class + ribbon.
             var mode = '';
+            var cut = false;
+            var cutReason = '';
             var pHtml = p.innerHTML;
             var modeMatch = pHtml.match(/⟦M:([A-Za-z]+)⟧/);
-            if (modeMatch) {
-                mode = modeMatch[1];
-                p.innerHTML = pHtml.replace(/\s*⟦M:[A-Za-z]+⟧\s*/g, '');
+            var cutMatch = pHtml.match(/⟦CUT(?::([a-z0-9-]+))?⟧/);
+            if (modeMatch) mode = modeMatch[1];
+            if (cutMatch) { cut = true; cutReason = cutMatch[1] || ''; }
+            if (modeMatch || cutMatch) {
+                p.innerHTML = pHtml
+                    .replace(/\s*⟦M:[A-Za-z]+⟧\s*/g, '')
+                    .replace(/\s*⟦CUT(?::[a-z0-9-]+)?⟧\s*/g, '');
             }
 
             var wrap = document.createElement('div');
-            wrap.className = 'prompt-block';
+            wrap.className = 'prompt-block' + (cut ? ' cut-candidate' : '');
             var header = document.createElement('div');
             header.className = 'prompt-block__header';
             header.innerHTML =
@@ -6047,6 +6439,14 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
                 (context ? '<span class="prompt-block__context">' + esc(context) + '</span>' : '');
 
             p.parentNode.insertBefore(wrap, p);
+            // Cut-candidate ribbon sits above the header. textContent (not
+            // innerHTML) so the reason slug can never inject markup.
+            if (cut) {
+                var ribbon = document.createElement('div');
+                ribbon.className = 'cut-candidate__ribbon';
+                ribbon.textContent = '✂ cut candidate' + (cutReason ? ' · ' + cutReason : '');
+                wrap.appendChild(ribbon);
+            }
             wrap.appendChild(header);
             wrap.appendChild(pre);
             pre.classList.add('prompt-block__pre');
@@ -6054,6 +6454,18 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
 
             addCopyButton(pre, header);
             convertAnchorSentinels(pre);
+        });
+
+        // Covered-region ribbons: planted by the {{covered:…}} expansion pass.
+        // Same decorate call site as the prompt chrome so the workbook's single
+        // decoratePrompts(document.body) invocation covers both.
+        root.querySelectorAll('.covered-region').forEach(function (region) {
+            if (region.querySelector('.covered-region__ribbon')) return;
+            var ribbon = document.createElement('div');
+            ribbon.className = 'covered-region__ribbon';
+            var ref = region.getAttribute('data-covered-by') || '';
+            ribbon.textContent = 'covered by · ' + ref.replace('#', ' § ');
+            region.insertBefore(ribbon, region.firstChild);
         });
 
         // Universal copy buttons on every standalone <pre>.
@@ -6325,6 +6737,413 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
     };
 });
 </script>
+<script>/* slides.js — the curriculum slide viewer.
+ *
+ * CurriculumSlides.open(sourceEl, opts) turns a rendered curriculum container
+ * into a paged deck (overlay, position:fixed) with a hover-expand left rail,
+ * and returns a controller with .close(). It works from a CLONE of sourceEl, so
+ * the long-read DOM underneath stays intact and toggling back is lossless.
+ *
+ * Two shapes of input, one model:
+ *   - single doc   — a standalone lecture/exercise (one <h1> + <h2> sections)
+ *   - composed     — a module page or the whole handbook (many `.phase--*`
+ *                    sections, optionally inside `.module` sections). Each phase
+ *                    becomes its own run of slides; module/lecture/exercise
+ *                    boundaries become dividers; exercise slides carry
+ *                    `.theme-dark` (the hands-on mood).
+ *
+ * Depends on window.CurriculumRuntime (curriculum.js) only for re-wiring copy
+ * buttons on the clone. Pure DOM otherwise. Loaded in both the SPA and workbook.
+ */
+(function (global) {
+  'use strict';
+
+  function el(tag, cls, attrs) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (attrs) Object.keys(attrs).forEach(function (k) { e.setAttribute(k, attrs[k]); });
+    return e;
+  }
+  function textOf(x) { return (x && x.textContent || '').replace(/\s+/g, ' ').trim(); }
+
+  var PHASE_RE = /^\s*Phase\s+(\d+)\s*[:.—–-]\s*(.+)$/i;
+  var CONTRACT = [
+    { re: /^what you do\b/i, label: 'Do' },
+    { re: /^what you build\b/i, label: 'Build' },
+    { re: /^the point\b/i, label: 'Why' }
+  ];
+
+  // ── exercise grammar (see the slide-demos prototype notes) ────────────────
+  function leadStrong(p) {
+    return (p.tagName === 'P' && p.firstElementChild && p.firstElementChild.tagName === 'STRONG') ? p.firstElementChild : null;
+  }
+  function valueAfterStrong(p) {
+    return p.innerHTML.replace(/^\s*<strong[^>]*>[\s\S]*?<\/strong>\s*[:—–-]?\s*/i, '');
+  }
+  function matchLabel(text) {
+    text = (text || '').trim();
+    for (var i = 0; i < CONTRACT.length; i++) if (CONTRACT[i].re.test(text)) return CONTRACT[i].label;
+    return null;
+  }
+  function decoratePatterns(root) {
+    var kids = Array.prototype.slice.call(root.children);
+    for (var i = 0; i < kids.length; i++) {
+      var s = leadStrong(kids[i]);
+      if (!(s && matchLabel(s.textContent))) continue;
+      var panel = el('div', 'ex-contract');
+      root.insertBefore(panel, kids[i]);
+      while (i < kids.length) {
+        var p = kids[i], ps = leadStrong(p), pl = ps && matchLabel(ps.textContent);
+        if (!pl) break;
+        var row = el('div', 'ex-contract__row');
+        var l = el('span', 'ex-contract__label'); l.textContent = pl;
+        var v = el('span', 'ex-contract__val'); v.innerHTML = valueAfterStrong(p);
+        row.appendChild(l); row.appendChild(v); panel.appendChild(row);
+        p.parentNode.removeChild(p); i++;
+      }
+      i--;
+    }
+    Array.prototype.forEach.call(root.querySelectorAll('p'), function (p) {
+      var s = leadStrong(p);
+      if (s && /^time\b/i.test(s.textContent)) p.classList.add('ex-time');
+    });
+    Array.prototype.forEach.call(root.querySelectorAll('blockquote'), function (bq) {
+      bq.classList.add('steer');
+      var fp = bq.querySelector('p'), fs = fp && leadStrong(fp);
+      if (fs) fs.classList.add('steer__label');
+    });
+    Array.prototype.forEach.call(root.querySelectorAll('.prompt-block'), function (pb) {
+      var prev = pb.previousElementSibling;
+      if (prev && prev.tagName === 'P' && !prev.classList.contains('ex-time')) prev.classList.add('prompt-leadin');
+    });
+    Array.prototype.forEach.call(root.querySelectorAll('p'), function (p) {
+      var s = leadStrong(p);
+      if (!s || !/^what happened\b/i.test(s.textContent)) return;
+      var box = el('div', 'ex-outcome');
+      var lab = el('span', 'ex-outcome__label'); lab.textContent = 'What you walk away with';
+      p.parentNode.insertBefore(box, p);
+      box.appendChild(lab);
+      var body = el('p'); body.innerHTML = valueAfterStrong(p); box.appendChild(body);
+      p.parentNode.removeChild(p);
+    });
+  }
+
+  // ── slide construction ────────────────────────────────────────────────────
+  function slideSection(cls, dark) {
+    var sec = el('section', 'slide' + (cls ? ' ' + cls : '') + (dark ? ' theme-dark' : ''));
+    return sec;
+  }
+  function makeDivider(eyebrow, title, extraCls, dark, subHtml) {
+    var sec = slideSection('slide--divider' + (extraCls ? ' ' + extraCls : ''), dark);
+    var inner = el('div', 'slide-divider');
+    var e = el('span', 'slide-divider__eyebrow'); e.textContent = eyebrow;
+    var t = el('span', 'slide-divider__title'); t.textContent = title;
+    inner.appendChild(e); inner.appendChild(t);
+    if (subHtml) { var s = el('div', 'slide-divider__sub'); s.innerHTML = subHtml; inner.appendChild(s); }
+    sec.appendChild(inner);
+    return { el: sec, title: eyebrow, navLabel: title, isDivider: true };
+  }
+
+  function moduleBigIdeaOf(moduleEl) {
+    var big = moduleEl.querySelector('.module-hero-big');
+    return big ? big.innerHTML : null;
+  }
+
+  // The training cover (whole-handbook deck only) — a proper title slide from
+  // the workbook's <header class="workbook-cover">.
+  function buildTrainingCover(coverEl) {
+    var sec = slideSection('slide--cover slide--traincover', false);
+    var body = el('div', 'module slide__body');
+    var eyebrow = coverEl.querySelector('.eyebrow');
+    var h1 = coverEl.querySelector('.cover-title, h1');
+    var lede = coverEl.querySelector('.lede');
+    if (eyebrow) { var ey = el('p', 'traincover__eyebrow'); ey.textContent = textOf(eyebrow); body.appendChild(ey); }
+    if (h1) { var t = el('h1'); t.textContent = textOf(h1); body.appendChild(t); }
+    if (lede) { var l = el('p'); l.innerHTML = lede.innerHTML; body.appendChild(l); }
+    sec.appendChild(body);
+    return { el: sec, title: h1 ? textOf(h1) : 'Cover', navLabel: 'Cover', isCover: true };
+  }
+
+  // Split one doc container (a whole doc, or one `.phase` section) into slides.
+  // Runs decoratePatterns first. Returns an array of slide descriptors.
+  function buildSingleDoc(container, o) {
+    o = o || {};
+    decoratePatterns(container);
+    var kids = Array.prototype.slice.call(container.childNodes).filter(function (n) {
+      return !(n.nodeType === 1 && n.classList && n.classList.contains('phase-kicker'));
+    });
+
+    var groups = [], cur = null;
+    function open(isCover) { cur = { isCover: !!isCover, nodes: [] }; groups.push(cur); }
+    open(true);
+    kids.forEach(function (n) {
+      if (n.nodeType === 1 && n.tagName === 'H2') open(false);
+      cur.nodes.push(n);
+    });
+    var docTitle = '';
+    if (groups.length) {
+      var coverEls = groups[0].nodes.filter(function (n) { return n.nodeType === 1; });
+      if (!coverEls.length) groups.shift();
+      else { var h1 = coverEls.filter(function (n) { return n.tagName === 'H1'; })[0]; if (h1) docTitle = textOf(h1); }
+    }
+
+    var out = [];
+    groups.forEach(function (g) {
+      var body = el('div', 'module slide__body');
+      g.nodes.forEach(function (n) { body.appendChild(n); });
+      if (!g.isCover) {
+        var h2 = body.querySelector('h2');
+        var m = h2 && PHASE_RE.exec(textOf(h2));
+        if (m) {
+          out.push(makeDivider('Phase ' + m[1], m[2].trim(), null, o.dark));
+          h2.textContent = m[2].trim();
+        }
+      }
+      var sec = slideSection(g.isCover ? 'slide--cover' : '', o.dark);
+      sec.appendChild(body);
+      if (body.querySelector('.diagram, svg, img')) sec.classList.add('slide--diagram');
+      if (body.querySelector('.diagram, svg, table, pre')) sec.classList.add('slide--wide');
+      var title;
+      if (g.isCover) title = docTitle || o.title || 'Cover';
+      else { var hh = body.querySelector('h2'); title = hh ? textOf(hh) : 'Slide'; }
+      out.push({ el: sec, title: title, navLabel: title, isCover: g.isCover, isDivider: false });
+    });
+    return { slides: out, title: docTitle };
+  }
+
+  function moduleTitleOf(moduleEl) {
+    // The module title lives in its hero (buildModuleHero lifts H1 + Big Idea).
+    // Fall back to the first heading that is NOT inside an included phase, then id.
+    var hero = moduleEl.querySelector('.module-hero__title, .module-hero h1, .module-hero h2');
+    if (hero) return textOf(hero);
+    var heads = moduleEl.querySelectorAll('h1, h2');
+    for (var i = 0; i < heads.length; i++) {
+      if (!heads[i].closest('.phase--lecture, .phase--exercise')) return textOf(heads[i]);
+    }
+    return (moduleEl.id || 'Module').replace(/^module-/, '').replace(/-/g, ' ');
+  }
+
+  // Divider eyebrow for a prose section (one with no lecture/exercise phases),
+  // inferred from its id, falling back to its phase-kicker label.
+  function proseEyebrowOf(moduleEl) {
+    var id = moduleEl.id || '';
+    if (id === 'prework') return 'Prework';
+    if (id.indexOf('supplementary-') === 0) return 'Supplementary';
+    if (id.indexOf('reference-') === 0) return 'Reference';
+    var k = moduleEl.querySelector('.phase-kicker');
+    return (k && textOf(k)) || 'Section';
+  }
+
+  // Decide the deck model from whatever container we're handed.
+  function buildDeckModel(root, opts) {
+    opts = opts || {};
+    var phases = root.querySelectorAll('.phase--lecture, .phase--exercise');
+    var slides, title = opts.title || '';
+
+    if (!phases.length) {
+      // single doc
+      var one = buildSingleDoc(root, { dark: !!opts.dark, title: opts.title });
+      slides = one.slides; title = title || one.title;
+    } else {
+      // composed: EVERY top-level section in document order, so the deck matches
+      // the long-read. A module carrying lecture/exercise phases becomes a
+      // divider (hero + Big Idea) followed by its phase slides. A prose section
+      // with no phases — prework, supplementary, reference — is slide-ified in
+      // place under a kind-labelled divider. Walking only `.phase--*` (the old
+      // behaviour) silently dropped prework and the supplements from the default
+      // view and stranded every in-deck link into them.
+      slides = [];
+      // whole-handbook deck opens on the training cover, not mid-thought on M1
+      var coverEl = root.querySelector('.workbook-cover');
+      if (coverEl) slides.push(buildTrainingCover(coverEl));
+      var sections = root.querySelectorAll(':scope > section.module');
+      Array.prototype.forEach.call(sections, function (moduleEl) {
+        var innerPhases = moduleEl.querySelectorAll('.phase--lecture, .phase--exercise');
+        if (innerPhases.length) {
+          slides.push(makeDivider('Module', moduleTitleOf(moduleEl), 'slide--module', false, moduleBigIdeaOf(moduleEl)));
+          Array.prototype.forEach.call(innerPhases, function (phase) {
+            var isEx = phase.classList.contains('phase--exercise');
+            // the first (cover) slide of each doc reads as a section title in the rail
+            buildSingleDoc(phase, { dark: isEx }).slides.forEach(function (s) { slides.push(s); });
+          });
+        } else {
+          slides.push(makeDivider(proseEyebrowOf(moduleEl), moduleTitleOf(moduleEl), 'slide--module', false, moduleBigIdeaOf(moduleEl)));
+          buildSingleDoc(moduleEl, { dark: false }).slides.forEach(function (s) { slides.push(s); });
+        }
+      });
+      title = title || 'Handbook';
+    }
+
+    slides.forEach(function (s, k) { s.index = k; s.el.setAttribute('data-index', String(k)); });
+    return { slides: slides, title: title };
+  }
+
+  // Re-attach copy handlers on the cloned deck (listeners don't survive cloneNode).
+  function rewireCopy(deckRoot) {
+    Array.prototype.forEach.call(deckRoot.querySelectorAll('pre .copy-btn, .prompt-block .copy-btn'), function (btn) {
+      var pre = btn.closest('pre') || (btn.closest('.prompt-block') && btn.closest('.prompt-block').querySelector('pre'));
+      if (!pre) return;
+      btn.addEventListener('click', function (ev) {
+        ev.stopPropagation();
+        var text = pre.innerText.replace(/\n?Copy(\s*failed)?$/,'').replace(/^Copy\n?/,'');
+        text = pre.querySelector('code') ? pre.querySelector('code').innerText : pre.innerText;
+        try {
+          navigator.clipboard.writeText(text);
+          var old = btn.textContent; btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = old; }, 1200);
+        } catch (e) {}
+      });
+    });
+  }
+
+  // ── the deck controller ────────────────────────────────────────────────────
+  function chevron(dir) {
+    var d = dir === 'prev' ? 'M15 5l-7 7 7 7' : 'M9 5l7 7-7 7';
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="' + d + '"/></svg>';
+  }
+  function listIcon() { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>'; }
+  function readIcon() { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 9h16M4 13h10M4 17h10"/></svg>'; }
+
+  function open(sourceEl, opts) {
+    opts = opts || {};
+    // work on a detached clone so the long-read DOM underneath is untouched
+    var clone = sourceEl.cloneNode(true);
+    clone.removeAttribute('id');
+    var model = buildDeckModel(clone, opts);
+    var slides = model.slides;
+    if (!slides.length) return null;
+
+    var i = -1, pinned = false, keyHandler;
+    var deck = el('div', 'deck');
+
+    var progress = el('div', 'deck__progress'); var progressFill = el('i'); progress.appendChild(progressFill);
+
+    var viewport = el('div', 'deck__viewport');
+    slides.forEach(function (s) { viewport.appendChild(s.el); });
+    var edgePrev = edge('prev'), edgeNext = edge('next');
+    viewport.append(edgePrev, edgeNext);
+    rewireCopy(viewport);
+
+    // left hover-rail
+    var rail = el('nav', 'deck__rail');
+    var handle = el('div', 'deck__rail-handle'); handle.innerHTML = listIcon() + '<span>Contents</span>';
+    var railHead = el('div', 'deck__rail-head');
+    var railTitle = el('div', 'deck__rail-title'); railTitle.textContent = model.title || 'Contents';
+    var railMeta = el('div', 'deck__rail-meta'); railMeta.textContent = slides.length + ' slides';
+    railHead.append(railTitle, railMeta);
+    var railList = el('ul', 'deck__rail-list');
+    var railItems = slides.map(function (s, k) {
+      var li = el('li');
+      var cls = 'deck__rail-item'
+        + (s.isDivider ? ' deck__rail-item--divider' : '')
+        + (s.el.classList.contains('slide--module') ? ' deck__rail-item--module' : '')
+        + (s.isCover ? ' deck__rail-item--cover' : '');
+      var btn = el('button', cls, { 'data-index': k });
+      var num = el('span', 'deck__rail-num');
+      num.textContent = s.isCover ? '•' : (s.isDivider ? '§' : String(k + 1));
+      var label = el('span', 'deck__rail-label'); label.textContent = s.navLabel || s.title;
+      btn.append(num, label);
+      btn.addEventListener('click', function () { go(k); collapseRail(); });
+      li.appendChild(btn); railList.appendChild(li); return btn;
+    });
+    rail.append(handle, railHead, railList);
+    rail.addEventListener('mouseenter', openRail);
+    rail.addEventListener('mouseleave', collapseRail);
+
+    // bar
+    var bar = el('div', 'deck__bar');
+    var title = el('div', 'deck__title'); title.textContent = model.title || '';
+    var spacer = el('div', 'deck__spacer');
+    var exit = el('button', 'deck__exit'); exit.innerHTML = readIcon() + '<span>Long-read</span>';
+    var nav = el('div', 'deck__nav');
+    var btnRail = deckBtn(listIcon(), 'Contents (O)'); btnRail.classList.add('deck__rail-btn');
+    var btnPrev = deckBtn(chevron('prev'), 'Previous (←)');
+    var count = el('div', 'deck__count');
+    var btnNext = deckBtn(chevron('next'), 'Next (→)');
+    btnRail.addEventListener('click', togglePin);
+    btnPrev.addEventListener('click', function () { go(i - 1); });
+    btnNext.addEventListener('click', function () { go(i + 1); });
+    exit.addEventListener('click', function () { if (opts.onExit) opts.onExit(); });
+    nav.append(btnRail, btnPrev, count, btnNext);
+    bar.append(title, spacer, exit, nav);
+
+    deck.append(progress, rail, viewport, bar);
+    document.body.appendChild(deck);
+    document.body.classList.add('slides-active');
+    sourceEl.style.display = 'none';
+
+    function openRail() { deck.classList.add('is-railopen'); }
+    function collapseRail() { if (!pinned) deck.classList.remove('is-railopen'); }
+    function togglePin() { pinned = !pinned; deck.classList.toggle('is-railpinned', pinned); if (pinned) openRail(); else deck.classList.remove('is-railopen'); }
+
+    function go(n) {
+      n = Math.max(0, Math.min(slides.length - 1, n));
+      i = n;
+      slides.forEach(function (s, k) {
+        s.el.classList.toggle('is-active', k === n);
+        s.el.classList.toggle('is-past', k < n);
+        if (k === n) s.el.scrollTop = 0;
+      });
+      railItems.forEach(function (b, k) { b.classList.toggle('is-active', k === n); });
+      if (railItems[n]) railItems[n].scrollIntoView({ block: 'nearest' });
+      progressFill.style.width = ((n + 1) / slides.length * 100) + '%';
+      count.textContent = (n + 1) + ' / ' + slides.length;
+      edgePrev.disabled = n === 0; edgeNext.disabled = n === slides.length - 1;
+    }
+
+    keyHandler = function (e) {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      switch (e.key) {
+        case 'ArrowRight': case 'PageDown': case ' ': case 'l': case 'j': e.preventDefault(); go(i + 1); break;
+        case 'ArrowLeft': case 'PageUp': case 'h': case 'k': e.preventDefault(); go(i - 1); break;
+        case 'Home': e.preventDefault(); go(0); break;
+        case 'End': e.preventDefault(); go(slides.length - 1); break;
+        case 'o': case 'O': e.preventDefault(); togglePin(); break;
+        case 'Escape': if (deck.classList.contains('is-railpinned') || deck.classList.contains('is-railopen')) { pinned = false; deck.classList.remove('is-railpinned', 'is-railopen'); } else if (opts.onExit) opts.onExit(); break;
+        case 'f': case 'F': if (!document.fullscreenElement) { (document.documentElement.requestFullscreen || function () {}).call(document.documentElement); } else document.exitFullscreen(); break;
+        default: if (/^[0-9]$/.test(e.key)) { var t = e.key === '0' ? 9 : (+e.key - 1); if (t < slides.length) go(t); }
+      }
+    };
+    document.addEventListener('keydown', keyHandler);
+    go(typeof opts.start === 'number' ? opts.start : 0);
+
+    function edge(dir) {
+      var b = el('button', 'deck__edge deck__edge--' + dir, { 'aria-label': dir === 'prev' ? 'Previous' : 'Next' });
+      b.innerHTML = chevron(dir);
+      b.addEventListener('click', function () { go(dir === 'prev' ? i - 1 : i + 1); });
+      return b;
+    }
+    function deckBtn(svg, label) { var b = el('button', 'deck__btn', { title: label, 'aria-label': label }); b.innerHTML = svg; return b; }
+
+    return {
+      close: function () {
+        document.removeEventListener('keydown', keyHandler);
+        if (deck.parentNode) deck.parentNode.removeChild(deck);
+        document.body.classList.remove('slides-active');
+        sourceEl.style.display = '';
+      },
+      go: go
+    };
+  }
+
+  // Build the Long-read ⇄ Slides toggle control (caller wires onChange + placement).
+  function buildToggle(mode, onChange) {
+    var wrap = el('div', 'layout-toggle');
+    var read = el('button', 'layout-toggle__btn', { 'data-mode': 'read', type: 'button' });
+    read.innerHTML = readIcon() + '<span>Long-read</span>';
+    var slides = el('button', 'layout-toggle__btn', { 'data-mode': 'slides', type: 'button' });
+    slides.innerHTML = listIcon() + '<span>Slides</span>';
+    wrap.append(read, slides);
+    function paint(m) { read.classList.toggle('is-on', m === 'read'); slides.classList.toggle('is-on', m === 'slides'); }
+    read.addEventListener('click', function () { onChange('read'); });
+    slides.addEventListener('click', function () { onChange('slides'); });
+    paint(mode);
+    wrap._paint = paint;
+    return wrap;
+  }
+
+  global.CurriculumSlides = { open: open, buildToggle: buildToggle, buildDeckModel: buildDeckModel };
+})(typeof window !== 'undefined' ? window : this);
+</script>
 <script>
 (function () {
   if (window.CurriculumRuntime) {
@@ -6341,6 +7160,28 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
     CurriculumRuntime.decorateDiagramZoom(document.body);
     CurriculumRuntime.installReadingProgress();
   }
+
+  // Layout mode: Long-read (scroll) ⇄ Slides (whole training as one deck).
+  // Default long-read; choice remembered (localStorage, shared key with the SPA).
+  (function () {
+    if (!window.CurriculumSlides) return;
+    var main = document.querySelector('main');
+    if (!main) return;
+    var KEY = 'curriculumLayout';
+    var mode = (function () { try { return localStorage.getItem(KEY) === 'slides' ? 'slides' : 'read'; } catch (e) { return 'read'; } })();
+    var ctl = null, toggle = null;
+    function apply() {
+      if (mode === 'slides') {
+        if (!ctl) ctl = CurriculumSlides.open(main, { title: (document.title || '').replace(/\s+—\s+.*$/, ''), onExit: function () { set('read'); } });
+      } else if (ctl) { ctl.close(); ctl = null; }
+    }
+    function set(m) { mode = m; try { localStorage.setItem(KEY, m); } catch (e) {} if (toggle && toggle._paint) toggle._paint(m); apply(); }
+    var host = document.querySelector('.workbook-topnav') || document.body;
+    toggle = CurriculumSlides.buildToggle(mode, set);
+    toggle.classList.add('workbook-layout-toggle');
+    host.appendChild(toggle);
+    apply();
+  })();
 
   var chips = document.querySelectorAll('.workbook-topnav__modules a[data-target]');
   if (!chips.length || !('IntersectionObserver' in window)) return;

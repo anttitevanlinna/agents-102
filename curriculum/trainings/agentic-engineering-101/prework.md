@@ -27,7 +27,7 @@ One decision, and you probably have a strong candidate already: which repo are y
 
 Pick one. Every module of this training starts from a Claude Code session in this repo. Every rule, every memory, every skill you build during the training lands here.
 
-*Really stuck for a repo that fits? Ask your trainer. There's a fallback repo you can use for the training.*
+*Really stuck for a repo that fits? Ask your trainer for the fallback repo, or [build one from zero](trainings/agentic-engineering-101/supplementary/build-a-project-from-zero.md) and grow it across the six modules.*
 
 ## 2. Open a Claude Code session in that repo
 

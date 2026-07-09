@@ -75,7 +75,7 @@ Strategy and module file change in the same edit. Drift = process bug.
 
 ## Parallel subagents
 
-Each agent owns a **disjoint set of files**. Two on same file = race. Check overlap before second dispatch.
+Each agent owns a **disjoint set of files**. Two on same file = race. Check overlap before second dispatch. Read-race too: don't Edit a file while a dispatched judge/reader subagent has it in scope — quoted evidence + line numbers bind to the snapshot. Sequence: collect verdicts → edit → re-fire.
 
 ## Classroom delivery — default
 

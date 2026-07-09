@@ -184,6 +184,17 @@
     return (moduleEl.id || 'Module').replace(/^module-/, '').replace(/-/g, ' ');
   }
 
+  // Divider eyebrow for a prose section (one with no lecture/exercise phases),
+  // inferred from its id, falling back to its phase-kicker label.
+  function proseEyebrowOf(moduleEl) {
+    var id = moduleEl.id || '';
+    if (id === 'prework') return 'Prework';
+    if (id.indexOf('supplementary-') === 0) return 'Supplementary';
+    if (id.indexOf('reference-') === 0) return 'Reference';
+    var k = moduleEl.querySelector('.phase-kicker');
+    return (k && textOf(k)) || 'Section';
+  }
+
   // Decide the deck model from whatever container we're handed.
   function buildDeckModel(root, opts) {
     opts = opts || {};
@@ -195,23 +206,31 @@
       var one = buildSingleDoc(root, { dark: !!opts.dark, title: opts.title });
       slides = one.slides; title = title || one.title;
     } else {
-      // composed: module/lecture/exercise sections in document order
+      // composed: EVERY top-level section in document order, so the deck matches
+      // the long-read. A module carrying lecture/exercise phases becomes a
+      // divider (hero + Big Idea) followed by its phase slides. A prose section
+      // with no phases — prework, supplementary, reference — is slide-ified in
+      // place under a kind-labelled divider. Walking only `.phase--*` (the old
+      // behaviour) silently dropped prework and the supplements from the default
+      // view and stranded every in-deck link into them.
       slides = [];
-      var lastModule = null;
       // whole-handbook deck opens on the training cover, not mid-thought on M1
       var coverEl = root.querySelector('.workbook-cover');
       if (coverEl) slides.push(buildTrainingCover(coverEl));
-      Array.prototype.forEach.call(phases, function (phase) {
-        var moduleEl = phase.closest && phase.closest('.module');
-        if (moduleEl === root) moduleEl = null; // the cloned container itself carries .module chrome; not a real module section
-        if (moduleEl && moduleEl !== lastModule) {
-          lastModule = moduleEl;
+      var sections = root.querySelectorAll(':scope > section.module');
+      Array.prototype.forEach.call(sections, function (moduleEl) {
+        var innerPhases = moduleEl.querySelectorAll('.phase--lecture, .phase--exercise');
+        if (innerPhases.length) {
           slides.push(makeDivider('Module', moduleTitleOf(moduleEl), 'slide--module', false, moduleBigIdeaOf(moduleEl)));
+          Array.prototype.forEach.call(innerPhases, function (phase) {
+            var isEx = phase.classList.contains('phase--exercise');
+            // the first (cover) slide of each doc reads as a section title in the rail
+            buildSingleDoc(phase, { dark: isEx }).slides.forEach(function (s) { slides.push(s); });
+          });
+        } else {
+          slides.push(makeDivider(proseEyebrowOf(moduleEl), moduleTitleOf(moduleEl), 'slide--module', false, moduleBigIdeaOf(moduleEl)));
+          buildSingleDoc(moduleEl, { dark: false }).slides.forEach(function (s) { slides.push(s); });
         }
-        var isEx = phase.classList.contains('phase--exercise');
-        var docSlides = buildSingleDoc(phase, { dark: isEx });
-        // the first (cover) slide of each doc reads as a section title in the rail
-        docSlides.slides.forEach(function (s) { slides.push(s); });
       });
       title = title || 'Handbook';
     }

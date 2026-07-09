@@ -9,26 +9,24 @@
  * origin), so this Worker plays the same role at the edge: one shared password,
  * username = customer slug ("acme"), scoped by route to /clients/acme/* only.
  *
- * Password is a Worker secret (ACME_PASSWORD), set out of band with
- * `wrangler secret put`. Never commit it. Fail closed: no secret => 503, all
- * locked — so the Worker is safe to deploy before the password exists.
+ * The password is a deliberately public speed bump ("agentic", username
+ * "acme") — enough that a forwarded link isn't one-click, not a real secret.
+ * It's baked in as a default so `wrangler deploy` alone gates the path, with no
+ * separate secret step and no fail-closed window. To upgrade to a real password
+ * later, set an ACME_PASSWORD Worker secret (`wrangler secret put
+ * ACME_PASSWORD`) — it overrides the default with no code change.
  */
 
 const REALM = 'acme';
 
+// Deliberately public — a speed bump, not a secret (see header comment).
+// Override with an ACME_PASSWORD Worker secret for a real password.
+const DEFAULT_PASSWORD = 'agentic';
+
 export default {
   async fetch(request, env) {
     const expectedUser = env.ACME_USERNAME || 'acme';
-    const expectedPass = env.ACME_PASSWORD;
-
-    // Fail closed: an unconfigured gate denies everything rather than silently
-    // passing content through unprotected.
-    if (!expectedPass) {
-      return new Response('acme gate is not configured.', {
-        status: 503,
-        headers: { 'Cache-Control': 'no-store' },
-      });
-    }
+    const expectedPass = env.ACME_PASSWORD || DEFAULT_PASSWORD;
 
     const header = request.headers.get('Authorization') || '';
     if (header.startsWith('Basic ') &&

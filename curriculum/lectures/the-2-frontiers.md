@@ -2,11 +2,13 @@
 
 ## Two frontiers still open: speed and direction
 
-- **We have come a long way.** The agent is building the agentic loop now. Agents building agents.
-- **Frontier one: speed of learning.** How can a system like this learn faster than a human practitioner can write things down?
-- **Frontier two: direction of learning.** Once it can learn fast, how does it learn the right things, and not just any things?
+- We have come a long way. The agent is building the agentic loop now. Agents building agents.
+- Frontier one: speed of learning. How can a system like this learn faster than a human practitioner can write things down?
+- Frontier two: direction of learning. Once it can learn fast, how does it learn the right things, and not just any things?
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** single slide de-bolded fully, bullets kept; the header carries the summary and no handle is coined per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. No kicker added (deliberate, per the watch-for). Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Slides-only pass (2026-07-02, unaudited):** four prose paragraphs CONVERTED to one slide, near-verbatim (the two frontier questions ride as bullets two and three; the arc line as bullet one). Nothing cut; no covered regions needed. Deliberately no kicker: the maintainer watch-for says don't answer the frontiers, and any kicker would start to.
 

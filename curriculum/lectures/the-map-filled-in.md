@@ -84,9 +84,9 @@ The map is back, one last time.
 </svg>
 </figure>
 
-- **This is the M2 map, one loop changed.** The checking loop ran dashed across Verification and Absorption for four modules: read, judge, gate what ships, by hand for now. Dashed meant not built yet.
-- **What fills it is what got built.** The verifier from the M5 packaging, the judge or gap-finder shipped at M6, the hooks that fire whether the model remembers them or not. Each is a check that stands without you, and a loop made of checks that stand without you gets drawn solid.
-- **Nothing else moved.** Same six phases, same loops, same wall at the team's edge. The far half kept its shape and gained its names, the way the near half did at the M3 close.
+- This is the M2 map, one loop changed. The checking loop ran dashed across Verification and Absorption for four modules: read, judge, gate what ships, by hand for now. Dashed meant not built yet.
+- What fills it is what got built. The verifier from the M5 packaging, the judge or gap-finder shipped at M6, the hooks that fire whether the model remembers them or not. Each is a check that stands without you, and a loop made of checks that stand without you gets drawn solid.
+- Nothing else moved. Same six phases, same loops, same wall at the team's edge. The far half kept its shape and gained its names, the way the near half did at the M3 close.
 
 ## You drew a control loop
 
@@ -160,20 +160,20 @@ The map is back, one last time.
 </svg>
 </figure>
 
-- **You drew a control loop.** Shape the run before it moves, watch what comes back, correct, encode. That is feedback control around a non-deterministic agent, and it is the shape the whole map has had from the start.
-- **The near half shapes; the far half corrects.** Intent, context, and the plan set the target before the run starts. The far half reads what came back, takes up what passed, and encodes what the run taught. That is why the map has two halves: the near half aims the work before it moves, the far half responds to the result and changes the system so the next run starts better.
-- **Verification is the sensor.** A loop with no way to read its own result runs open: send the work off and hope. The checks you built are how this loop reads what came back. That is why they were never paperwork. They are the part that lets the system catch its own error before it ships.
+- You drew a control loop. Shape the run before it moves, watch what comes back, correct, encode. That is **feedback control** around a non-deterministic agent, and it is the shape the whole map has had from the start.
+- The near half shapes; the far half corrects. Intent, context, and the plan set the target before the run starts. The far half reads what came back, takes up what passed, and encodes what the run taught. That is why the map has two halves: the near half aims the work before it moves, the far half responds to the result and changes the system so the next run starts better.
+- Verification is the sensor. A loop with no way to read its own result runs open: send the work off and hope. The checks you built are how this loop reads what came back. That is why they were never paperwork. They are the part that lets the system catch its own error before it ships.
 
 ## Verification, named
 
 - **Find is easier than judge.** (Verification) The agent finds; you judge. The split was named at M2 over a plan, and out here it becomes a whole phase: on a long run the finding happened without you, so the judging is the cost that is left.
-- **The three-pattern stands in for you at Verification.** (Verification) Reference against goal drift, plan.md against context rot, verifier against plausible-but-wrong. The first two hold the run on course while it moves; the verifier is the piece that does your judging when the result comes back.
+- **The three-pattern** stands in for you at Verification. (Verification) Reference against goal drift, plan.md against context rot, verifier against plausible-but-wrong. The first two hold the run on course while it moves; the verifier is the piece that does your judging when the result comes back.
 - **Verifier, judge, gate: every one an eval.** (Verification) A deterministic check, an LLM reading the work, the same check placed in CI. One automated thing that says this meets our bar, and it is what the checking loop now runs on.
 
 ## Absorption, named
 
 - **Generation is fast; reading, judging, and merging are not.** (Absorption) The gap between those two speeds decides real throughput. The M5 re-send ran with the laptop closed; what was left when it came back was all reading.
-- **Review bandwidth is the constraint composition cannot relax.** (Absorption) Chain workflows end to end and every output still lands on the same reading budget. Each eval that stands without you buys a piece of that budget back.
+- **Review bandwidth is the constraint** composition cannot relax. (Absorption) Chain workflows end to end and every output still lands on the same reading budget. Each eval that stands without you buys a piece of that budget back.
 - **The ratio runs near 80/20.** (Absorption) Roughly 80 percent planning and review, 20 percent execution: the posture the M5 packaging taught by hand. The run is the cheap part; the reading and shaping around it are where the hours live.
 
 ## Outcome, named
@@ -184,19 +184,21 @@ The map is back, one last time.
 
 ## The governor you carry out
 
-- **The far half has one governor, and it arrived at the M4 send-off.** When the agent takes a hundred steps alone, what makes you trust the result at the end? It fires before the run, costs one sentence, and decides what gets packaged.
-- **Its answer turned into a build list.** At M4 the answer was nothing yet, watch. By M6 the answer names checks: which verifier, which hook, which judge stands at the end of this run. A run the question has no answer for is a run not ready to send.
-- **It travels.** It prices the next send-off and picks which check to author first, and it pairs with the near half's governor: name the uncertainty before you move, then name what earns your trust at the end. Two questions, one sentence each, before any work moves.
+- The far half has one governor, and it arrived at the M4 send-off. *When the agent takes a hundred steps alone, what makes you trust the result at the end?* It fires before the run, costs one sentence, and decides what gets packaged.
+- Its answer turned into a build list. At M4 the answer was nothing yet, watch. By M6 the answer names checks: which verifier, which hook, which judge stands at the end of this run. A run the question has no answer for is a run not ready to send.
+- It travels. It prices the next send-off and picks which check to author first, and it pairs with the near half's governor: name the uncertainty before you move, then name what earns your trust at the end. Two questions, one sentence each, before any work moves.
 
 ## The map, filled in
 
-- **Six modules, six phases, one loop.** The first fix landed in Work, the plan push-back in Intent and Context, the send-off and the packaged re-send across Verification and Absorption, the encoded skill in Outcome. Every move in this training has a place on this map, and a move with a place is a move you can find again.
-- **The moves came first; the names came after.** Nothing on this map arrived as theory to apply later. Each law got its name at the moment the move was already yours, and a name is a handle: findable on Tuesday, transferable to a teammate, checkable when it stops working.
-- **Dashed is a state, not a place.** The checking loop spent four modules marked by hand for now. Whatever runs by hand for now in your own work is the same kind of line: a loop waiting for a check that stands without you.
+- Six modules, six phases, one loop. The first fix landed in Work, the plan push-back in Intent and Context, the send-off and the packaged re-send across Verification and Absorption, the encoded skill in Outcome. Every move in this training has a place on this map, and a move with a place is a move you can find again.
+- The moves came first; the names came after. Nothing on this map arrived as theory to apply later. Each law got its name at the moment the move was already yours, and a name is a handle: findable on Tuesday, transferable to a teammate, checkable when it stops working.
+- Dashed is a state, not a place. The checking loop spent four modules marked by hand for now. Whatever runs by hand for now in your own work is the same kind of line: a loop waiting for a check that stands without you.
 
 *The next dashed loop is yours to draw solid.*
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** law-consolidation file, keeps the most bold — one handle per law: Verification slide **Find is easier than judge** / **The three-pattern** (trimmed to sub-span) / **Verifier, judge, gate: every one an eval**; Absorption slide **Generation is fast; reading, judging, and merging are not** / **Review bandwidth is the constraint** (trimmed) / **The ratio runs near 80/20**; Outcome slide keeps its three law handles; control-loop slide bolds **feedback control** at its naming. Checking-loop re-show, governor, and closing slides de-bolded fully (governor question set italic, never bold); kicker + map-position tags + both SVGs untouched — per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **STATUS:** slide-format (proper-length bullets per `theory-plan.md` § Slide format, 2026-07-02). No Quality line by design (unaudited). Family B landing eval pending.
 

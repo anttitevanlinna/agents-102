@@ -2,10 +2,10 @@
 
 ## The agent, the harness, the loop
 
-- **An agent is an LLM that runs in a loop, calling tools to take action.** Each iteration the LLM receives context (system prompt, conversation, tool results), decides on the next step, and either responds to you or calls a tool.
-- **The agent harness is the surrounding code that runs the loop.** It exposes tool definitions to the LLM, executes the tool calls, and feeds results back in. Claude Code is one harness; Cursor, Cline, Gemini CLI are others.
-- **The agent loop is that iteration itself.** Prompt → reason → tool call → result → reason again, until the agent decides to stop.
-- **A long run is this same loop, iterated.** Nothing new takes over when the run gets long; the loop keeps choosing the next step from context and tool results, hour after hour.
+- An **agent** is an LLM that runs in a loop, calling tools to take action. Each iteration the LLM receives context (system prompt, conversation, tool results), decides on the next step, and either responds to you or calls a tool.
+- The **agent harness** is the surrounding code that runs the loop. It exposes tool definitions to the LLM, executes the tool calls, and feeds results back in. Claude Code is one harness; Cursor, Cline, Gemini CLI are others.
+- The **agent loop** is that iteration itself. Prompt → reason → tool call → result → reason again, until the agent decides to stop.
+- A long run is this same loop, iterated. Nothing new takes over when the run gets long; the loop keeps choosing the next step from context and tool results, hour after hour.
 
 ## See the loop in your live session
 
@@ -26,6 +26,8 @@ Surface where the tool list comes from, then how MCP-connector tools land in the
 > Feel free to dive deeper on any aspect.
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** definitional slide keeps bullets; bold reduced to the three defined terms as sub-spans — **agent** · **agent harness** · **agent loop** — and the fourth bullet de-bolded. Slide 2 (live-session prompts) carried no bold and is untouched; blockquote and `{{prompt:}}` refs byte-intact. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Promotion (2026-07-02, Antti-directed):** M1 supplementary → M4 lecture, wired into `run-the-first-experiment.md § Start here`. Slide-format pass per `theory-plan.md` § Slide format + dosage: two slides (anatomy + live introspection). Body changes beyond re-chunking: the defining paragraph became slide-1 bullets (wording preserved); the fourth anatomy bullet (*a long run is this same loop, iterated*) is the ONLY new content — the M4-fit line. The three `{{prompt:ae101-agent-loop-*}}` refs are byte-intact. No packaging laws (0.85ⁿ / triad / principal–agent stay out until M5), no "one loop, three sizes" naming (M3's beat), no cross-module sequencing in body (`check_lectures §3`).
 

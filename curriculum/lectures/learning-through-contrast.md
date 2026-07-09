@@ -2,9 +2,9 @@
 
 ## Diagnose first, fix later
 
-- **The artefact is data, whatever came back.** You sent off an un-packaged run at the close of M4. Stopped, finished, ran out of credit: there is something to read now, and reading it is the work.
+- The artefact is data, whatever came back. You sent off an un-packaged run at the close of M4. Stopped, finished, ran out of credit: there is something to read now, and reading it is the work.
 - **Diagnose first. Fix later.** The move cuts against most engineering instinct. When an agent gets something wrong, the reflex is to fix it immediately: edit the prompt, add a constraint, reach for the next tool. This module holds that reflex off. The failures earn the validation that catches them.
-- **The arc is *test → learn → encode*.** M4 was the test. This is the learn. The encode turns what the read finds into durable checks.
+- The arc is *test → learn → encode*. M4 was the test. This is the learn. The encode turns what the read finds into durable checks.
 
 The run shows you what no benchmark can.
 
@@ -13,17 +13,19 @@ The run shows you what no benchmark can.
 - **Goal drift.** The agent solved an adjacent problem with confidence: the instruction got buried or the scope got redirected, and the run kept going.
 - **Context rot.** Signal-to-noise dropped as the working window filled; the agent rehashed approaches it had already ruled out an hour ago.
 - **Plausible-but-wrong.** Outputs look reasonable in isolation and don't match the spec. The most expensive failure to find, because nothing about it looks broken.
-- **Every artefact gets read through all three.** One lens usually dominates; the read still walks each one, because the lens you skip is the failure you can't name.
+- Every artefact gets read through all three. One lens usually dominates; the read still walks each one, because the lens you skip is the failure you can't name.
 
 ## Managing the window
 
-- **Trigger `/compact` manually at around 60% context.** The diagnosis session will fill its own working window. Auto-compact fires when the model decides; manual at 60% means you choose what survives: the diagnosis quotes, the failure-mode mapping, the validation shape you're sketching. `/context` shows the number on demand; [ccstatusline](https://github.com/sirmalloc/ccstatusline) keeps it live in your status line.
-- **Manual compaction works because you're at the keyboard.** The diagnosis is bounded keyboard work. The re-send at the end of this module runs for hours while you're away, and a run nobody is watching can't be manually compacted.
-- **Hands-off option one: trust auto-compact.** The model decides what to keep when its window fills. Sometimes useful, sometimes wrong; better than dropping context entirely.
-- **Hands-off option two: give the agent something durable to re-read.** A working document the agent owns and updates. A reference it diffs its output against. An automated check that fires on produced work. Once those exist, auto-compact can fire and the agent re-anchors from what survives.
-- **Option two is what the exercise builds.** `/compact` is session management, not packaging. The whole point of packaging is that you can leave the room.
+- Trigger **`/compact` manually at around 60%** context. The diagnosis session will fill its own working window. Auto-compact fires when the model decides; manual at 60% means you choose what survives: the diagnosis quotes, the failure-mode mapping, the validation shape you're sketching. `/context` shows the number on demand; [ccstatusline](https://github.com/sirmalloc/ccstatusline) keeps it live in your status line.
+- Manual compaction works because you're at the keyboard. The diagnosis is bounded keyboard work. The re-send at the end of this module runs for hours while you're away, and a run nobody is watching can't be manually compacted.
+- Hands-off option one: trust auto-compact. The model decides what to keep when its window fills. Sometimes useful, sometimes wrong; better than dropping context entirely.
+- Hands-off option two: give the agent something durable to re-read. A working document the agent owns and updates. A reference it diffs its output against. An automated check that fires on produced work. Once those exist, auto-compact can fire and the agent re-anchors from what survives.
+- Option two is what the exercise builds. `/compact` is session management, not packaging. The whole point of packaging is that you can leave the room.
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all three slides kept bullets; bold reduced to slide 1's named stance (**Diagnose first. Fix later.**), slide 2's three failure-lens handles (**Goal drift** / **Context rot** / **Plausible-but-wrong**), and slide 3's operational rule trimmed to the sub-span **`/compact` manually at around 60%**; all other leads de-bolded, kicker untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Slides-only pass (2026-07-02, unaudited):** three slides + one kicker. Per-passage verdicts: opening artefact-anchor + "the move M5 asks of you" lede CONVERTED into slide 1 (first two bullets) · arc line (*test → learn → encode*) KEPT as slide-1 bullet under the §3 arc-subject carve-out (judgment below) · "The pre-read introduced these" connective CUT · three one-sentence lenses CONVERTED to slide 2, "read through all three" tail folded in as fourth bullet · "One operational move" + the hands-off FAQ MERGED into slide 3 (*Managing the window*); "`/context` is oldskool" phrasing dropped, `/context` and ccstatusline both kept (preserves the 2026-05-15 technical fix) · "What is about to happen" phase preview CUT (the exercise body carries the flow) · "Practice beats external proof" pair TRIMMED to the slide-1 kicker · "Open your repo. Let's go." CUT (room beat; trainer carries the exercise start).
 

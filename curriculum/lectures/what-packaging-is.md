@@ -196,22 +196,22 @@ First the shape, then the names: one long run, drawn as a sea passage.
 </svg>
 </figure>
 
-- **Drift grows with distance since the last check.** The agent steers each step from its own previous step, so small errors compound silently until something outside the run measures position. On the chart that is the wedge: everywhere the run might be.
-- **A check is a position fix.** At a fix the wedge of possible states collapses to a point, and the next leg starts from a known position instead of an assumption. The diagnose-and-re-send you just ran was exactly this move: measure where the run actually is, then aim the next leg from there.
-- **Rails belong where damage cannot be undone.** Fence the reef, not the open water. At an irreversible edge a standing check stays lit whether anyone remembers to look or not; where redo is cheap, let the run sail.
-- **An unchecked run arrives confident, and wrong.** Same start, no fixes, one wedge widening the whole way. The success report comes from the wrong harbor.
+- Drift grows with distance since the last check. The agent steers each step from its own previous step, so small errors compound silently until something outside the run measures position. On the chart that is the wedge: everywhere the run might be.
+- **A check is a position fix**. At a fix the wedge of possible states collapses to a point, and the next leg starts from a known position instead of an assumption. The diagnose-and-re-send you just ran was exactly this move: measure where the run actually is, then aim the next leg from there.
+- Rails belong where damage cannot be undone. Fence the reef, not the open water. At an irreversible edge a standing check stays lit whether anyone remembers to look or not; where redo is cheap, let the run sail.
+- An unchecked run arrives confident, and wrong. Same start, no fixes, one wedge widening the whole way. The success report comes from the wrong harbor.
 
 Packaging is choosing which of these fixes stand without you.
 
 ## The three-pattern
 
-- **Practitioners running multi-hour coding agents converge on the same three pieces.** Different posts, different vocabulary, same shape over the last six months. Armin Ronacher names *reference* and *verifier* in his work; *plan.md* lands harder in Geoffrey Huntley's Ralph practice and Kieran Klaassen's plan-as-artifact. The three-pattern is what the convergence looks like assembled, and on the map it is what stands in for you at Verification.
-- **Reference artefact, against goal drift.** A spec the agent reads and re-reads: success criteria, pointers at the relevant memory, named constraints. The spec on disk stays readable mid-run when the buried instructions in the conversation no longer are. In Ronacher's MiniJinja port, the original Rust snapshot tests played this role; in your re-send, the reference you assembled at Phase 4 plays it.
-- **plan.md the agent owns and mutates, against context rot.** A working document that holds durable state across the run: the agent reads it at every session boot, updates it as decisions land, re-reads it when the working window fills. What got ruled out an hour ago is written down, not remembered. Geoffrey Huntley's Ralph technique bootstraps entire greenfield projects on this single primitive.
+- Practitioners running multi-hour coding agents converge on the same three pieces. Different posts, different vocabulary, same shape over the last six months. Armin Ronacher names *reference* and *verifier* in his work; *plan.md* lands harder in Geoffrey Huntley's Ralph practice and Kieran Klaassen's plan-as-artifact. The three-pattern is what the convergence looks like assembled, and on the map it is what stands in for you at Verification.
+- **Reference artefact**, against goal drift. A spec the agent reads and re-reads: success criteria, pointers at the relevant memory, named constraints. The spec on disk stays readable mid-run when the buried instructions in the conversation no longer are. In Ronacher's MiniJinja port, the original Rust snapshot tests played this role; in your re-send, the reference you assembled at Phase 4 plays it.
+- **plan.md** the agent owns and mutates, against context rot. A working document that holds durable state across the run: the agent reads it at every session boot, updates it as decisions land, re-reads it when the working window fills. What got ruled out an hour ago is written down, not remembered. Geoffrey Huntley's Ralph technique bootstraps entire greenfield projects on this single primitive.
 
 ## The verifier decides pass without you
 
-- **External verifier, against plausible-but-wrong.** An automated check that decides whether a piece of agent-produced work meets a quality bar: tests, lint, compile, a deterministic shell hook, or a separate background agent that reads the work and judges it. You don't have to be the one to spot it.
+- **External verifier**, against plausible-but-wrong. An automated check that decides whether a piece of agent-produced work meets a quality bar: tests, lint, compile, a deterministic shell hook, or a separate background agent that reads the work and judges it. You don't have to be the one to spot it.
 
 Three failures you named, three pieces, one each.
 
@@ -220,17 +220,17 @@ Three failures you named, three pieces, one each.
 - **Background-agent verifier.** A separate Claude session reads the produced work and judges it. Right when failures are qualitative: does this answer the question, does this match house style.
 - **Deterministic shell hook.** Tests, lint, type-check, compile, a custom invariant. Right when the failure has a true-false answer: did it break the build, did it touch the wrong directory.
 - **Ralph re-feed.** Loop the prompt with a check baked in; the agent re-runs against its own output until the check passes. Right when drift is the dominant failure and re-anchoring catches it.
-- **The menu is practitioner-lived.** Boris Cherny (who built Claude Code) reaches for all three in his long-running practice; the menu form is the synthesis. You picked one at Phase 3 against your dominant failure. The other two sit alongside the three-pattern for next time.
+- The menu is practitioner-lived. Boris Cherny (who built Claude Code) reaches for all three in his long-running practice; the menu form is the synthesis. You picked one at Phase 3 against your dominant failure. The other two sit alongside the three-pattern for next time.
 
 ## Hooks always fire
 
-- **A hook fires on a named event, and the agent has no say in whether it runs.** Session start, prompt submit, before each tool call, after each tool call, on stop, plus a few more. The runtime fires the script whether or not the model remembers it exists.
-- **Hooks exist because the LLM is forgetful.** Drift, half-remembered rules: the longer the session runs, the less you can trust the agent to hit a step that "should" happen every time. Hooks don't forget.
+- A **hook** fires on a named event, and the agent has no say in whether it runs. Session start, prompt submit, before each tool call, after each tool call, on stop, plus a few more. The runtime fires the script whether or not the model remembers it exists.
+- Hooks exist because the LLM is forgetful. Drift, half-remembered rules: the longer the session runs, the less you can trust the agent to hit a step that "should" happen every time. Hooks don't forget.
 
 ## Hooks for must-happen, prompts for taste
 
-- **Must happen goes in a hook; recommended stays in a prompt or rule.** Anything that breaks the work if it skips belongs in a hook: the verifier you just wrote, a pre-commit guard, a session-start context loader. Anything taste-shaped or context-dependent stays in a prompt where the LLM weighs it. Hooks are the runtime's "I will not forget," bought at the cost of flexibility.
-- **Your repo has demands that don't show up in someone else's article.** The verifier you built was one hook against one failure; the same primitive maps to more. In the session where you built the verifier, ask Claude to propose five hooks tied to this repo and the work you just did, beyond formatting and linting.
+- **Must happen goes in a hook**; recommended stays in a prompt or rule. Anything that breaks the work if it skips belongs in a hook: the verifier you just wrote, a pre-commit guard, a session-start context loader. Anything taste-shaped or context-dependent stays in a prompt where the LLM weighs it. Hooks are the runtime's "I will not forget," bought at the cost of flexibility.
+- Your repo has demands that don't show up in someone else's article. The verifier you built was one hook against one failure; the same primitive maps to more. In the session where you built the verifier, ask Claude to propose five hooks tied to this repo and the work you just did, beyond formatting and linting.
 
 {{prompt:what-packaging-is-1}}
 
@@ -239,22 +239,24 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 ## What you didn't build today
 
 - **Subagents for isolation.** When a phase of a long task wants a sandbox (exploring a third-party API, reading untrusted code, a search you'd rather not pollute the main session with), spin a subagent and let it return only what matters. The main session stays clean; the subagent's context is discarded after it reports. Same instinct as the verifier: keep the long-running thread coherent by routing the noisy work elsewhere.
-- **Context for long runs is one of the murkier places.** Manual `/compact` at around 60%. The full subagent route. The 1M context window with no compaction at all. The original Ralph, rebuilding fresh sessions continuously from durable state. Plan-mode in one session, execution in a fresh one. Different shapes for different jobs; the field hasn't converged.
-- **Not everyone extends the session.** Sourcegraph's Amp (their coding-agent product, October 2025) explicitly rejects auto-compaction and bets on short focused sessions plus manual handoff: the cleanest context is a fresh one, and the engineer's job is to package the handoff, not to keep one session running. Two camps, both real. The extend camp is the one you just ran, because your task wanted it; the handoff camp is a serious answer too.
+- Context for long runs is one of the murkier places. Manual `/compact` at around 60%. The full subagent route. The 1M context window with no compaction at all. The original Ralph, rebuilding fresh sessions continuously from durable state. Plan-mode in one session, execution in a fresh one. Different shapes for different jobs; the field hasn't converged.
+- Not everyone extends the session. Sourcegraph's Amp (their coding-agent product, October 2025) explicitly rejects auto-compaction and bets on short focused sessions plus manual handoff: the cleanest context is a fresh one, and the engineer's job is to package the handoff, not to keep one session running. Two camps, both real. The extend camp is the one you just ran, because your task wanted it; the handoff camp is a serious answer too.
 
 ## The 80/20 ratio
 
-- **Most of the work that made the re-send land happened before you pressed send.** Diagnosing failure modes, mapping validations, building the verifier, assembling reference and plan.md. The run itself was short. The ratio practitioners take from Kieran Klaassen's compound-engineering posture: roughly 80% planning and review, 20% execution.
-- **The TDD shape carries it.** Klaassen (August 2025): *"Claude writes the test. The test fails, the natural first step in test-driven development (TDD)"* ([My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it)). The packaging you just built IS the 80% side. The re-send was the 20%.
-- **Agent hours are org cost.** The re-send consumed hours of Opus time, and those hours are real money on the org's bill, the same way engineer hours are. Packaging converts that spend into reliable output instead of reliably wrong output: without it you paid for a run that missed the goal, with it you paid for a run that landed. The ROI calculation is the one you just ran on yourself.
+- Most of the work that made the re-send land happened before you pressed send. Diagnosing failure modes, mapping validations, building the verifier, assembling reference and plan.md. The run itself was short. The ratio practitioners take from Kieran Klaassen's compound-engineering posture: roughly 80% planning and review, 20% execution.
+- The TDD shape carries it. Klaassen (August 2025): *"Claude writes the test. The test fails, the natural first step in test-driven development (TDD)"* ([My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it)). The packaging you just built IS the 80% side. The re-send was the 20%.
+- Agent hours are org cost. The re-send consumed hours of Opus time, and those hours are real money on the org's bill, the same way engineer hours are. Packaging converts that spend into reliable output instead of reliably wrong output: without it you paid for a run that missed the goal, with it you paid for a run that landed. The ROI calculation is the one you just ran on yourself.
 
 ## At org scale: Intercom's tiers
 
-- **Intercom published its own numbers.** Darragh Curran (Intercom engineering) wrote "2x, nine months later" in April 2026. His R&D org runs a tiered review structure with auto-approval at the lowest tier: 19.2% of pull requests auto-approved with no human reviewer, merging in 14.6 minutes against an org median of 75.8, and 86% of the auto-approved PRs at 20 lines or fewer.
-- **That is your verifier from Phase 3, scaled to an R&D org of roughly 500.** Same shape: a check trusted enough that the work passing it ships without a human read. The tiers are an org deciding where a check's word is enough.
-- **Review infrastructure grows by accretion.** One engineer's trusted check becomes a team's, one engineer at a time, until what the team runs on has Intercom's shape. It starts at the size of the one you built.
+- Intercom published its own numbers. Darragh Curran (Intercom engineering) wrote "2x, nine months later" in April 2026. His R&D org runs a tiered review structure with auto-approval at the lowest tier: 19.2% of pull requests auto-approved with no human reviewer, merging in 14.6 minutes against an org median of 75.8, and 86% of the auto-approved PRs at 20 lines or fewer.
+- That is your verifier from Phase 3, scaled to an R&D org of roughly 500. Same shape: a check trusted enough that the work passing it ships without a human read. The tiers are an org deciding where a check's word is enough.
+- Review infrastructure grows by accretion. One engineer's trusted check becomes a team's, one engineer at a time, until what the team runs on has Intercom's shape. It starts at the size of the one you built.
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all slides kept bullets; SVG chart byte-untouched. Handles kept bold: **A check is a position fix** (chart slide), **Reference artefact** / **plan.md** (three-pattern slide), **External verifier** (verifier slide), the three verifier-shape names (**Background-agent verifier** / **Deterministic shell hook** / **Ralph re-feed**), **hook** at its definition, **Must happen goes in a hook** (governor), **Subagents for isolation**; all other leads de-bolded, 80/20 + Intercom slides fully plain, kickers plain, prompt marker + lead-in untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 - Family B judged 2026-07-03: B-star durability PASS — keystone three-pattern (slide 2) recovers NAMED·PLACED·MECHANISM·GOVERNOR cold, placed at Verification; closer honors recognition-before-naming ("what you assembled… has names").
 

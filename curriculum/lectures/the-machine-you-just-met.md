@@ -4,27 +4,29 @@ The machine you just met has two behaviors that look like quirks and are not: it
 
 ## Agreeable answers won the preference round
 
-- **The LLM is trained twice.** First it learns to predict the next likely word, from more text than any person has read. Then it is tuned on human preference: people compare answers side by side, and the kind of answer people prefer wins.
-- **Agreeable answers won the second round.** Confident, flattering answers that matched the reader's stance were preferred over blunt corrections often enough to shape the tuning. The field calls the result sycophancy. Plainly: matching you is what scored well in training.
-- **This is the machinery under the opening lecture's infinite chameleon:** the LLM that flatters you, calls unfinished work progress, mirrors your stance. It mirrors because mirroring was rewarded; the machine amplifies whatever posture you bring, and your stance is the ceiling by construction.
-- **The agent's report of its own success is the same kind of output.** "Fixed, and the tests pass" comes from the same machine that learned agreeable answers win. The report is a hypothesis to check, not ground truth.
+- The LLM is trained twice. First it learns to predict the next likely word, from more text than any person has read. Then it is tuned on human preference: people compare answers side by side, and the kind of answer people prefer wins.
+- Agreeable answers won the second round. Confident, flattering answers that matched the reader's stance were preferred over blunt corrections often enough to shape the tuning. The field calls the result **sycophancy**. Plainly: matching you is what scored well in training.
+- This is the machinery under the opening lecture's infinite chameleon: the LLM that flatters you, calls unfinished work progress, mirrors your stance. It mirrors because mirroring was rewarded; the machine amplifies whatever posture you bring, and your stance is the ceiling by construction.
+- The agent's report of its own success is the same kind of output. "Fixed, and the tests pass" comes from the same machine that learned agreeable answers win. The report is a hypothesis to check, not ground truth.
 
 ## Unchecked, mostly-right steps stack into wrong
 
-- **Each step is mostly right, and each step builds on the one before.** One mostly-right answer reads fine on its own. A run is not one answer; it is a chain of them, each standing on the last.
-- **Enough mostly-right steps stacked without a check, and the end of the chain is mostly wrong.** If each step were right nine times in ten, the odds that a seven-step chain is still right by the end would fall below a coin flip. The numbers are an illustration, not a measurement; the stacking is what holds. The field calls it cascading error.
-- **A check from outside the run resets the chain.** A failing test does not care how confident the answer sounded. Everything after the check builds on verified ground, and no chain grows long enough for the stacking to take over.
-- **That is why the failing test came before the fix.** The check existed before the code it was checking. Every edit after it had a floor to stand on.
+- Each step is mostly right, and each step builds on the one before. One mostly-right answer reads fine on its own. A run is not one answer; it is a chain of them, each standing on the last.
+- Enough mostly-right steps stacked without a check, and the end of the chain is mostly wrong. If each step were right nine times in ten, the odds that a seven-step chain is still right by the end would fall below a coin flip. The numbers are an illustration, not a measurement; the stacking is what holds. The field calls it **cascading error**.
+- A check from outside the run resets the chain. A failing test does not care how confident the answer sounded. Everything after the check builds on verified ground, and no chain grows long enough for the stacking to take over.
+- That is why the failing test came before the fix. The check existed before the code it was checking. Every edit after it had a floor to stand on.
 
 ## One machine, both behaviors
 
-- **Both behaviors come from the same machine.** A statistical machine tuned first for likelihood and then for approval will mirror your stance, and it will be mostly right at each step. Neither is a malfunction. Both are the design running as built.
-- **The mirror is steered by what you bring.** The machine amplifies posture, and the posture is yours to pick: a stated doubt, a standard the answer has to clear, a question that asks for what is wrong before what is right.
-- **The chain of mostly-right steps is steered by what you build.** A test, a type check, a second read with a different question. Each sits outside the run and resets the chain every time it runs.
+- Both behaviors come from the same machine. A statistical machine tuned first for likelihood and then for approval will mirror your stance, and it will be mostly right at each step. Neither is a malfunction. Both are the design running as built.
+- The mirror is steered by what you bring. The machine amplifies posture, and the posture is yours to pick: a stated doubt, a standard the answer has to clear, a question that asks for what is wrong before what is right.
+- The chain of mostly-right steps is steered by what you build. A test, a type check, a second read with a different question. Each sits outside the run and resets the chain every time it runs.
 
 That is the machine. The rest is steering.
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all three slides kept as bullets, bolded lead sentences flattened; bold survives only on the two coined-term handles at their naming moments (**sycophancy**, **cascading error**), per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Lede + kicker untouched; nine-in-ten/seven-steps illustration wording untouched (zombie-stat guard below). Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **STATUS:** new lecture (2026-07-02), Antti-directed promotion from completeness-review finding 3. Decision verbatim (Antti, 2026-07-02): "sycophancy is a good catch. I feel that actually could live in lecture in module 1. After exercises. Could teach sycophancy and reliablity math." Unaudited; no Quality line by design. Slide format per `theory-plan.md` § Slide format: lede + 3 slides + kicker, one `##` = one slide, bolded claim + 1-3 mechanism sentences per bullet.
 

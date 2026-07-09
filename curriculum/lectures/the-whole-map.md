@@ -103,17 +103,19 @@ The phases are places, not stages. A run usually stands in more than one at once
 
 ## You are here
 
-- **M1 was the first step into this territory, taken without the map on purpose.** You feel a country before you see it drawn. The first fix, the first rule, the first read of the context window: all of it already sits somewhere on this map.
-- **The near half is Intent, Context, Work.** How to aim the work, what the agent needs to know, and how a single loop runs and compounds. M1 to M3 live here.
-- **The far half is Verification, Absorption, Outcome.** What happens when runs get long and the quick feedback goes quiet. Different ground, different rules. M4 to M6 go there. Not yet.
+- M1 was the first step into this territory, taken without the map on purpose. You feel a country before you see it drawn. The first fix, the first rule, the first read of the context window: all of it already sits somewhere on this map.
+- The near half is Intent, Context, Work. How to aim the work, what the agent needs to know, and how a single loop runs and compounds. M1 to M3 live here.
+- The far half is Verification, Absorption, Outcome. What happens when runs get long and the quick feedback goes quiet. Different ground, different rules. M4 to M6 go there. Not yet.
 
 ## Every move hangs on a location
 
-- **One place for every move to hang.** Each technique in this training has a location on this cycle, not just a slot in the schedule. Material with a location is material you can find again later.
-- **You do the moves first and name them after.** The map is a container, not a lecture. No law gets taught here; each one gets named at the moment you have already used it and can recognize it as yours.
-- **Every module points back to this map.** The question is always the same: which phase is this move in, and what does that phase govern?
+- One place for every move to hang. Each technique in this training has a location on this cycle, not just a slot in the schedule. Material with a location is material you can find again later.
+- You do the moves first and name them after. The map is a container, not a lecture. No law gets taught here; each one gets named at the moment you have already used it and can recognize it as yours.
+- Every module points back to this map. The question is always the same: which phase is this move in, and what does that phase govern?
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** the six phase-definition bullets keep their bold (**Intent.** through **Outcome.** — the map's handles); the *You are here* and *Every move hangs on a location* slides de-bolded fully, bullets kept, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. SVG figure + ASCII map untouched. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **STATUS:** slide-format draft (proper-length bullets per `theory-plan.md` § Slide format, 2026-07-02), WIRED into `plan-mode-done-right.md § Start here`. No Quality line by design (unaudited). Three slides (one `##` = one slide). Container discipline held: phases described by what they govern, no law named.
 

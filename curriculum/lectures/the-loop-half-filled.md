@@ -2,9 +2,9 @@
 
 ## Back to the map: near half filled
 
-- **Three modules in, the near half is lived ground.** M1 stepped into the territory without the map, on purpose. The map arrived at M2, and everything since has landed on its near half: Intent, Context, Work, and how a loop compounds. This close puts names on the ground covered.
+- Three modules in, the near half is lived ground. M1 stepped into the territory without the map, on purpose. The map arrived at M2, and everything since has landed on its near half: Intent, Context, Work, and how a loop compounds. This close puts names on the ground covered.
 - **One loop, three sizes.** The agent's act-observe-correct inside a run; your orient, act, verify, compound around each run (M1's orient, fix, compound, close cut at different joints); and the slow loop that carries a win from you to the team. Same shape at three altitudes; the strands the map draws (context, plan, build, checking) are the same shape again, each wearing different work.
-- **A name is a handle, not a lesson.** Every law below is a move already made. Naming it makes the move findable on Tuesday, transferable to a teammate, and checkable when it stops working.
+- A name is a handle, not a lesson. Every law below is a move already made. Naming it makes the move findable on Tuesday, transferable to a teammate, and checkable when it stops working.
 
 ```
   INTENT ─▶ CONTEXT ─▶ WORK   →  (far half: M4–M6)
@@ -13,28 +13,30 @@
 
 ## The loop and the model it runs on
 
-- **The agent loop is a closed-loop controller.** (Work) It acts, observes the result, and corrects. Cut the feedback signal (a test, a check, a read) and it drifts. Signal quality is part of the law: a flaky test is a closed loop that still drifts. Everything you did in plan mode was feeding that signal early.
+- The agent loop is a **closed-loop controller**. (Work) It acts, observes the result, and corrects. Cut the feedback signal (a test, a check, a read) and it drifts. Signal quality is part of the law: a flaky test is a closed loop that still drifts. Everything you did in plan mode was feeding that signal early.
 - **Local success, global drift.** (Work) The agent can win the function and lose the system. The drift lives in what nothing is watching: the dimensions your tests and reads don't cover. That is why the second read exists; one kind of scrutiny catches one kind of miss.
-- **Your context files are the agent's model of the system.** (Context) `CLAUDE.md` and `CLAUDE.local.md` steer because the agent conditions every move on what they hold. What the files don't carry, the agent must rediscover or guess each session. Thin model, thin steering; the craft of shaping what the agent sees is called context engineering.
+- Your context files are the agent's model of the system. (Context) `CLAUDE.md` and `CLAUDE.local.md` steer because the agent conditions every move on what they hold. What the files don't carry, the agent must rediscover or guess each session. Thin model, thin steering; the craft of shaping what the agent sees is called **context engineering**.
 
 ## How the loop compounds
 
-- **The compound ladder: fix → memory → skill → system.** (spans the loop) One cycle is a fix. A rule is memory. A skill is reuse. Enough of them is a system that learns faster than the field moves. Your kit is already two rungs up: rules on the memory rung, the test-strategy skill on the reuse rung.
+- **The compound ladder**: fix → memory → skill → system. (spans the loop) One cycle is a fix. A rule is memory. A skill is reuse. Enough of them is a system that learns faster than the field moves. Your kit is already two rungs up: rules on the memory rung, the test-strategy skill on the reuse rung.
 - **Double-loop learning.** (spans the loop) Single-loop fixes the failing test. Double-loop changes the rule that let the bug recur. Every time a rule gets sharpened from session evidence rather than rewritten from taste, that is the double loop running.
 
 ## The governor you carry forward
 
 - **A governor is a pre-action question.** The smallest usable form of theory: it fires before the run, costs one sentence, and steers everything after. Laws explain what happened; a governor decides what happens next.
 - **Name the uncertainty before you move.** (Intent) Aim the work at the unknown that will teach you the most. It is the question that opens every good plan, and it is the near half's one governor.
-- **It travels.** It prices a plan read, picks the feature worth agent time, and tells you when a skill is worth authoring. A run that can't answer "what does this settle?" isn't aimed yet.
+- It travels. It prices a plan read, picks the feature worth agent time, and tells you when a skill is worth authoring. A run that can't answer "what does this settle?" isn't aimed yet.
 
 ## The far half goes quiet
 
-- **The near half ran on quick feedback.** Every move so far returned a result you could read within minutes: a diff, a plan, a test run. You were the feedback signal, and you were never far from the loop.
-- **The far half is what happens when that goes quiet.** Verification, Absorption, Outcome: the phases that govern work that runs long and alone. Different country, different rules. M4 opens it.
-- **Nothing from the near half retires.** The loop, the model in the files, the ladder, and the governor keep running underneath. The far half adds the question the near half never made you ask: how do you trust work you didn't watch?
+- The near half ran on quick feedback. Every move so far returned a result you could read within minutes: a diff, a plan, a test run. You were the feedback signal, and you were never far from the loop.
+- The far half is what happens when that goes quiet. Verification, Absorption, Outcome: the phases that govern work that runs long and alone. Different country, different rules. M4 opens it.
+- Nothing from the near half retires. The loop, the model in the files, the ladder, and the governor keep running underneath. The far half adds the question the near half never made you ask: how do you trust work you didn't watch?
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** law-consolidation file, bullets kept throughout; one handle per law survives — **One loop, three sizes** · **closed-loop controller** (sub-span) · **Local success, global drift** · **context engineering** (searchability handle; the context-files lead de-bolded) · **The compound ladder** (sub-span; the fix → memory → skill → system chain now plain) · **Double-loop learning** · governor slide keeps **A governor is a pre-action question** + **Name the uncertainty before you move**. All other leads de-bolded (back-to-map, "A name is a handle", the whole far-half forward slide). Map-position tags and ASCII fence untouched per the file's locked-by-design contract. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **STATUS:** slide-format (proper-length bullets per `theory-plan.md` § Slide format, 2026-07-02). No Quality line by design (unaudited). Family B landing eval still pending.
 

@@ -2,31 +2,35 @@
 
 ## Every send-off is an experiment
 
-- **You are testing, and you are learning.** Every send-off from here on is an experiment. The agent is the apparatus, your rules and context are the setup, the task is the assay, and the result is data.
-- **You don't need to get it right first time.** You need to read the result and know what to change for the next run. That is the whole obligation.
-- **A tourist runs an agent and hopes; a practitioner runs a test and reads the data.** The difference is not the outcome of the run. It is what you can say afterwards about why.
+You are testing, and you are learning. Every send-off from here on is an experiment. The agent is the apparatus, your rules and context are the setup, the task is the assay, and the result is data.
+
+You don't need to get it right first time. You need to read the result and know what to change for the next run. That is the whole obligation.
+
+A tourist runs an agent and hopes; a practitioner runs a test and reads the data. The difference is not the outcome of the run. It is what you can say afterwards about why.
 
 ## The two-run arc
 
-- **Same task, two runs.** Run one goes now, un-packaged: no plan.md, no verifier, no reference artifact. Just *"here's my system, go do X."* The agent works with exactly what you've given it.
-- **Run two goes packaged, after you've read the return.** You find what went wrong, watch each packaging piece close a specific gap you just saw, and send the same task again.
-- **The contrast is the lesson.** No generic long-running-agent advice lands the way *you just watched this fail, here's what would have caught it* lands. Un-packaged first is by design.
+- Same task, two runs. Run one goes now, un-packaged: no plan.md, no verifier, no reference artifact. Just *"here's my system, go do X."* The agent works with exactly what you've given it.
+- Run two goes packaged, after you've read the return. You find what went wrong, watch each packaging piece close a specific gap you just saw, and send the same task again.
+- The contrast is the lesson. No generic long-running-agent advice lands the way *you just watched this fail, here's what would have caught it* lands. Un-packaged first is by design.
 
 ## Gap analysis: walk your system against the task
 
-- **Gap analysis: walk the system you have against the system the task needs.** Claude audits your setup as a subagent and returns a ranked list of thin spots.
-- **Not a template. A question.** *What's between what I've got and what this task is asking for?* You'll use it on every future agent hand-off.
-- **The agent finds the thin spots; you judge which ones matter.** A ranked list is candidates, not verdicts. Which gaps will hurt on this task is your call, and filling the worst few beats closing them all.
+- **Gap analysis**: walk the system you have against the system the task needs. Claude audits your setup as a subagent and returns a ranked list of thin spots.
+- Not a template. A question. *What's between what I've got and what this task is asking for?* You'll use it on every future agent hand-off.
+- The agent finds the thin spots; you judge which ones matter. A ranked list is candidates, not verdicts. Which gaps will hurt on this task is your call, and filling the worst few beats closing them all.
 
 ## Cancel is legitimate; traces are data
 
-- **Cancel is legitimate; traces are data.** If twenty minutes in you can see Claude hallucinating file paths, arguing with itself, or missing a requirement that wasn't in the prompt, stop it. You have the data you came for.
-- **You owe the experiment a result you can read, not a completed artifact.** Letting it run another hour teaches you less than stopping at twenty minutes with an observation. Any trace counts.
-- **Fifteen to thirty minutes buys the clues the read needs.** Engineers run these for hours at work when the task warrants it; ambition and length grow run by run.
+- Cancel is legitimate; traces are data. If twenty minutes in you can see Claude hallucinating file paths, arguing with itself, or missing a requirement that wasn't in the prompt, stop it. You have the data you came for.
+- You owe the experiment a result you can read, not a completed artifact. Letting it run another hour teaches you less than stopping at twenty minutes with an observation. Any trace counts.
+- Fifteen to thirty minutes buys the clues the read needs. Engineers run these for hours at work when the task warrants it; ambition and length grow run by run.
 
 Walk your system. Fill the gaps. Send it off. Read what comes back.
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** slide 1 (spirit opener) joined into three prose paragraphs, sentences near-verbatim; the tourist/practitioner koan stays plain. Slides 2 and 4 keep bullets with zero bold. Slide 3 keeps one handle: **Gap analysis** at its naming, rest of the lead plain. Closing march kicker untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. No claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Slides-only pass (2026-07-02, unaudited):** prose deleted outright where a slide supersedes it (Path A; git carries it). Per-passage verdicts: stray leading `---` CUT · intro recap paragraph ("Three modules in... M1 closed a bug, M2 read one plan, M3 shipped a feature") SUBSUMED (the module file's `## Start here` already carries the short-loops-behind-you contrast; module numbering dies per §3) · "Today is structurally different / step away / come back whenever the next M5 slot lands" paragraph SUBSUMED into the module opener + `## Next` (sequencing lives there); its unique operational line (15–30 min is enough) CONVERTED into the last slide's third bullet · spirit section CONVERTED (slide 1; tourist/practitioner line kept as a bullet, load-bearing per delivery watch-for) · two-run arc CONVERTED (slide 2) with "M4 → M5" and "Run two. M5, packaged" module refs dead; "Ronacher's three-pattern" name DROPPED from body (attribution-cap fix, `check_writing §11`: Ronacher's M4 student-side mention lives in `reading-the-return.md`; M5 owns the naming — absence-enumeration "no plan.md, no verifier, no reference artifact" kept, deliberate) · gap-analysis section CONVERTED (slide 3) + find-vs-judge bullet added (arms the Phase-2 pick-the-worst-three move) · cancel-is-legitimate CONVERTED (slide 4) · "What happens after" section CUT ("M5 opens with the return" sequencing = module `## Next`'s job; "Rehearse, apply, fail, try again" dropped as redundant with slide 1) · closing march KEPT as kicker. §3 disposition: M1/M2/M3/M4 + 5×M5 refs all dead or subsumed; zero `M[0-9]` above the fence.
 

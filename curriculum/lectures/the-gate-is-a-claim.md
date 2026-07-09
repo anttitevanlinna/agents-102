@@ -4,37 +4,39 @@ The re-send came back green. The verifier you built read the work and passed it.
 
 ## Passing is not proof
 
-- **A gate only means what the gate can see.** Green is a claim about the check, not a fact about the work. A result passes for three different reasons that look identical from outside: the judge is miscalibrated, the gate got gamed, or the run was a lucky sample.
-- **The check you built is itself a claim that wants verifying.** The same scrutiny you point at the agent's work points at the thing that judges the work. A gate nobody has verified is a gate trusted on vibes.
-- **Each way a gate lies has its own countermove, and each is cheap.** Hand-labels for the miscalibrated judge, a hold-out for the gamed gate, repeated runs for the lucky sample. All three cost less than the failure they hide.
+- A gate only means what the gate can see. Green is a claim about the check, not a fact about the work. A result passes for three different reasons that look identical from outside: the judge is miscalibrated, the gate got gamed, or the run was a lucky sample.
+- The check you built is itself a claim that wants verifying. The same scrutiny you point at the agent's work points at the thing that judges the work. A gate nobody has verified is a gate trusted on vibes.
+- Each way a gate lies has its own countermove, and each is cheap. Hand-labels for the miscalibrated judge, a hold-out for the gamed gate, repeated runs for the lucky sample. All three cost less than the failure they hide.
 
 ## The judge needs calibrating against your labels
 
-- **A judge has an unknown floor until you measure it.** A judge is a claim that its bar and your bar agree. Until that is checked against your own labels, a judge-gated pipeline passes work at an agreement rate no one has ever seen.
-- **The move is hand-label a sample, measure agreement, sharpen, repeat.** Thirty outputs is enough to start. Grade them yourself, compare against the judge's verdicts, sharpen the judge prompt until the two converge, and re-check when the model or the task shifts. Hamel Husain reports better than 90% agreement after three iterations of exactly this loop.
-- **A good gate starts from real traces, not imagined failures.** Read runs that actually happened, sort the real failures into buckets, and write the first check for the biggest bucket. A gate built from the armchair catches the failures you pictured and misses the ones you have.
+- A judge has an unknown floor until you measure it. A judge is a claim that its bar and your bar agree. Until that is checked against your own labels, a judge-gated pipeline passes work at an agreement rate no one has ever seen.
+- The move is hand-label a sample, measure agreement, sharpen, repeat. Thirty outputs is enough to start. Grade them yourself, compare against the judge's verdicts, sharpen the judge prompt until the two converge, and re-check when the model or the task shifts. Hamel Husain reports better than 90% agreement after three iterations of exactly this loop.
+- A good gate starts from real traces, not imagined failures. Read runs that actually happened, sort the real failures into buckets, and write the first check for the biggest bucket. A gate built from the armchair catches the failures you pictured and misses the ones you have.
 
 ## Gates decay
 
-- **A measure that becomes a target stops measuring.** Goodhart's law, and the agent is an optimizer aimed straight at your gate. Tests get special-cased, judge prompts get keyword-stuffed, asserts get edited into agreement. No malice needed: optimization pressure finds the cheapest path to green.
-- **Passing while missing the intent is a signature, not bad luck.** When work clears the gate and still is not what you meant, the gate has decayed into a target. That is a reason to refresh the gate, not to shrug.
-- **The countermoves are a hold-out and an integrity check.** Keep a check the agent never sees, so nothing can optimize against it. After a suspicious pass, inspect the gate itself (the test file, the judge prompt, the asserts), not only its verdict.
+- A measure that becomes a target stops measuring. **Goodhart's law**, and the agent is an optimizer aimed straight at your gate. Tests get special-cased, judge prompts get keyword-stuffed, asserts get edited into agreement. No malice needed: optimization pressure finds the cheapest path to green.
+- Passing while missing the intent is a signature, not bad luck. When work clears the gate and still is not what you meant, the gate has decayed into a target. That is a reason to refresh the gate, not to shrug.
+- The countermoves are a hold-out and an integrity check. Keep a check the agent never sees, so nothing can optimize against it. After a suspicious pass, inspect the gate itself (the test file, the judge prompt, the asserts), not only its verdict.
 
 ## One run is a sample
 
-- **The agent's behavior is a distribution, not a property.** One green run is an anecdote with survivorship bias. Reachable and dependable are different claims: passing once shows the task is reachable, passing again and again shows it is dependable. The second collapses far faster than the first.
-- **Before crediting an improvement, run it repeatedly.** A new rule, a new prompt, a new gate: judge it on pass rates across several runs, not on the one run that followed the change. On a single run you cannot separate the change from ordinary run-to-run variance.
-- **A demo is pass-once evidence.** An impressive run someone shows you proves the task is reachable, not that it is dependable. File it there.
+- The agent's behavior is a distribution, not a property. One green run is an anecdote with survivorship bias. Reachable and dependable are different claims: passing once shows the task is reachable, passing again and again shows it is dependable. The second collapses far faster than the first.
+- Before crediting an improvement, run it repeatedly. A new rule, a new prompt, a new gate: judge it on pass rates across several runs, not on the one run that followed the change. On a single run you cannot separate the change from ordinary run-to-run variance.
+- A demo is pass-once evidence. An impressive run someone shows you proves the task is reachable, not that it is dependable. File it there.
 
 ## Change on recurrence, not on noise
 
-- **One stochastic miss is not a process failure.** A system with run-to-run variance produces the odd miss even when nothing is wrong. Rewriting a rule after every single miss does not tighten the process, it churns it. W. Edwards Deming called this tampering: chasing ordinary variance case by case adds noise of its own.
-- **React on recurrence.** The same failure shape returning is signal. That is when the rule changes, the gate refreshes, or the skill ships.
-- **Watch the regression-to-the-mean trap.** After a bad run, the next run is usually better with no change at all. A tweak made right after a failure looks effective even when it did nothing.
+- One stochastic miss is not a process failure. A system with run-to-run variance produces the odd miss even when nothing is wrong. Rewriting a rule after every single miss does not tighten the process, it churns it. W. Edwards Deming called this **tampering**: chasing ordinary variance case by case adds noise of its own.
+- React on recurrence. The same failure shape returning is signal. That is when the rule changes, the gate refreshes, or the skill ships.
+- Watch the regression-to-the-mean trap. After a bad run, the next run is usually better with no change at all. A tweak made right after a failure looks effective even when it did nothing.
 
 A gate is one more claim in the system. Build it, then hold it to the same bar it holds the work to.
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all five law slides kept bullets; every bolded lead de-bolded. Two handles kept, at their naming sub-spans: **Goodhart's law** (Gates decay slide) and **tampering** (Deming, Change-on-recurrence slide); slides 1, 2, and 4 carry zero bold (headers carry the laws). Lede + closing line untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Mood:** gate-skepticism after the build. The verifier just landed the packaged re-send; this names why a green gate can still lie. Register is Boris-precise plus a Rory reframe (green is a claim, not proof), NOT reassurance and NOT resolved optimism. The closer opens doubt about the gate; it does not close it.
 

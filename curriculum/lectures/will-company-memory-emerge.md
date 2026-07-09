@@ -4,23 +4,25 @@ You just walked your whole system against a real task and sent it off. The persi
 
 ## Personal, team, company: memory's three layers
 
-- **The word is not settled.** Some practitioners say memory, some say context, some just say rules, or the files. The labels collide for a reason worth knowing: *context* already names the live window the agent holds while it works, the part that empties when the session ends. Memory is what survives. Pick whichever word you'll defend.
-- **The two questions the label hides: where does this stuff live, and who is allowed to change it?** Walk them across what you just sent off, and three layers appear.
+- The word is not settled. Some practitioners say memory, some say context, some just say rules, or the files. The labels collide for a reason worth knowing: *context* already names the live window the agent holds while it works, the part that empties when the session ends. Memory is what survives. Pick whichever word you'll defend.
+- The two questions the label hides: where does this stuff live, and who is allowed to change it? Walk them across what you just sent off, and three layers appear.
 - **Personal.** `./CLAUDE.local.md` (gitignored), your `observations/`, the skills you authored. Written by you, for you. The layer you've watched compound since your first rule.
 - **Team.** `./CLAUDE.md`, changed only through PR review. The rules the team agreed were worth sharing. A clear home and a clear gate.
 - **Company.** No obvious file. The security convention every team re-learns on its own, the deployment pattern, the house style. Today it lives in wikis nobody opens and in the heads of whoever has been there longest.
 
 ## The third layer is still finding its home
 
-- **Does the third layer get a real home, the way the first two already have?** The personal layer clearly compounds; the evidence sits in your own `observations/`. The team layer has a home and a gate. The company layer is the one still being worked out, in the places betting on it.
-- **Some teams are starting to act as if it will.** They git-track their rules instead of keeping them on one laptop; they symlink a shared skills folder so the same rules load wherever an engineer works. If a company's conventions live as memory that loads everywhere, every agent in the building starts from the same baseline instead of relearning it one session at a time.
+- Does the third layer get a real home, the way the first two already have? The personal layer clearly compounds; the evidence sits in your own `observations/`. The team layer has a home and a gate. The company layer is the one still being worked out, in the places betting on it.
+- Some teams are starting to act as if it will. They git-track their rules instead of keeping them on one laptop; they symlink a shared skills folder so the same rules load wherever an engineer works. If a company's conventions live as memory that loads everywhere, every agent in the building starts from the same baseline instead of relearning it one session at a time.
 
 ## The hard part is the shape
 
-- **The hard part is not whether to build it. It is the shape.** A company layer done wrong is a tax: memory loaded everywhere, owned by no one, the `CLAUDE.md` equivalent of the staff handbook nobody reads. The question that matters is the smallest shared layer that survives contact with a real org.
-- **You'll meet the answers in your own org before any framework hands them to you.** The first time a rule you wrote for yourself turns out to be true for the whole company, you decide what to call it and where it goes. That is the open question.
+- The hard part is not whether to build it. It is the shape. A company layer done wrong is a tax: memory loaded everywhere, owned by no one, the `CLAUDE.md` equivalent of the staff handbook nobody reads. The question that matters is the smallest shared layer that survives contact with a real org.
+- You'll meet the answers in your own org before any framework hands them to you. The first time a rule you wrote for yourself turns out to be true for the whole company, you decide what to call it and where it goes. That is the open question.
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullets kept on all three slides; bold reduced to the three layer handles **Personal.** / **Team.** / **Company.** on slide 1. All other leads de-bolded (slide 1 bullets 1–2, slide 2 and slide 3 fully plain); lede untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Slides-only pass (2026-07-02, unaudited):** prose deleted outright where a slide supersedes it (Path A; git carries it). Per-passage verdicts: opening walked-and-sent paragraph KEPT as the closer's setup lede (two sentences; earns "memory" in one breath before the slides use it) · naming-terrain paragraphs CONVERTED (slide-1 bullets 1–2; "no winner yet" folded into "pick whichever word you'll defend") · three-layer list CONVERTED near-verbatim (slide-1 bullets 3–5); "since Module 1" → "since your first rule" (§3 fix: the lived moment, not the module number) · third-layer question + teams-acting + tax paragraphs CONVERTED (slide 2) · "Nobody has cracked the shape yet, and nobody has settled the word" summary line SUBSUMED (both halves already live in their bullets) · closing you'll-meet-the-answers paragraph CONVERTED as slide-2 final bullet. §3 disposition: 1×"Module 1" ref dead; zero `M[0-9]` above the fence.
 

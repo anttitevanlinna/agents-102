@@ -4,37 +4,39 @@ Look at what you just shipped.
 
 ## Eval
 
-- **The thing you built reads an agent's work and decides whether it meets a bar.** For most of you it came out as a sharpened verifier, for some as a fresh judge, for a few as a gap-finder that reads the next agent-produced artefact for the failure shape you saw at M5. Different shapes, same move.
-- **That thing has a name: eval.** Your verifier is an eval. Your judge is an eval. Your gate is an eval.
-- **Three names, one thing.** Practitioners say *judge* when the check is itself an LLM reading the work. *Verifier* when the check is deterministic: tests, lint, compile, a shell hook that returns true or false. *Gate* when the same check is placed in CI and a pull request can't merge without it.
-- **An eval is the automated check that says *this agent-produced thing meets our bar*.** That's it. In practice it's the verifier you built at M5 and the skill you just shipped at M6. You have been doing evals for two modules, and on the map they are the checking loop the M2 drawing left dashed, now drawn solid.
+- The thing you built reads an agent's work and decides whether it meets a bar. For most of you it came out as a sharpened verifier, for some as a fresh judge, for a few as a gap-finder that reads the next agent-produced artefact for the failure shape you saw at M5. Different shapes, same move.
+- That thing has a name: **eval**. Your verifier is an eval. Your judge is an eval. Your gate is an eval.
+- Three names, one thing. Practitioners say *judge* when the check is itself an LLM reading the work. *Verifier* when the check is deterministic: tests, lint, compile, a shell hook that returns true or false. *Gate* when the same check is placed in CI and a pull request can't merge without it.
+- An eval is the automated check that says *this agent-produced thing meets our bar*. That's it. In practice it's the verifier you built at M5 and the skill you just shipped at M6. You have been doing evals for two modules, and on the map they are the checking loop the M2 drawing left dashed, now drawn solid.
 
 ## One primitive, placed wherever there's a bar
 
-- **The shape fires on any workflow with a quality bar, not only agent runs.** A code-review checklist, a deployment gate, an internal-doc rubric. Anywhere you can describe *meets the bar*, you can write the check.
-- **Naming it is what lets you reuse it.** Once you see the verifier, the judge, the gate, and the skill as the same primitive, you can place that primitive in more places. On a pull request. On a nightly run. On the next agent that does the same class of work. On the team's shared kit.
+- The shape fires on any workflow with a quality bar, not only agent runs. A code-review checklist, a deployment gate, an internal-doc rubric. Anywhere you can describe *meets the bar*, you can write the check.
+- Naming it is what lets you reuse it. Once you see the verifier, the judge, the gate, and the skill as the same primitive, you can place that primitive in more places. On a pull request. On a nightly run. On the next agent that does the same class of work. On the team's shared kit.
 
 ## The eval primitive scales unchanged
 
-- **19.2% of Intercom's pull requests merge with no human reviewer.** Darragh Curran runs engineering there; the numbers are Intercom's own, published in his April post *"2x, nine months later"*. Auto-approved PRs merge in 14.6 minutes versus an org median of 75.8 minutes. 86% of them are 20 lines or fewer. The R&D org is around 470 people inside a 1,300-person company.
-- **Read that as your verifier from M5, scaled.** Same primitive: an automated check that says *this meets the bar*, placed in CI, fed by convention, trusted by a human team that set the thresholds.
-- **The shape doesn't change when the org gets big.** Only the number of evals, the number of places they sit, and the number of engineers contributing to the kit.
+- 19.2% of Intercom's pull requests merge with no human reviewer. Darragh Curran runs engineering there; the numbers are Intercom's own, published in his April post *"2x, nine months later"*. Auto-approved PRs merge in 14.6 minutes versus an org median of 75.8 minutes. 86% of them are 20 lines or fewer. The R&D org is around 470 people inside a 1,300-person company.
+- Read that as your verifier from M5, scaled. Same primitive: an automated check that says *this meets the bar*, placed in CI, fed by convention, trusted by a human team that set the thresholds.
+- The shape doesn't change when the org gets big. Only the number of evals, the number of places they sit, and the number of engineers contributing to the kit.
 
 ## The primitive that runs on cadence
 
-- **One thing your skill can do that you did not try today: run on a schedule.** Claude Code ships three scheduling primitives: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines. The pattern is the same across all three: the skill you just wrote is the thing the scheduled agent invokes.
-- **Three places this fits naturally.** A standing verifier run: the judge reads the most recent long-running send-off and has a summary waiting when you open the laptop. A scheduled codebase sweep: the gap-finder reads the repo for the drift shape you saw at M5 and opens an issue when it finds one. Rule-drift monitoring: a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
-- **You do not have to wire it today.** You do need to know it exists, because the second you stop thinking of the eval as a one-shot check and start thinking of it as a thing that runs on cadence, your options change. The [Long-running shapes section in Claude Code for engineers](../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md) walks through the four primitives, when each fits, and how a skill plugs into each.
+- One thing your skill can do that you did not try today: run on a schedule. Claude Code ships three scheduling primitives: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines. The pattern is the same across all three: the skill you just wrote is the thing the scheduled agent invokes.
+- Three places this fits naturally. A standing verifier run: the judge reads the most recent long-running send-off and has a summary waiting when you open the laptop. A scheduled codebase sweep: the gap-finder reads the repo for the drift shape you saw at M5 and opens an issue when it finds one. Rule-drift monitoring: a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
+- You do not have to wire it today. You do need to know it exists, because the second you stop thinking of the eval as a one-shot check and start thinking of it as a thing that runs on cadence, your options change. The [Long-running shapes section in Claude Code for engineers](../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md) walks through the four primitives, when each fits, and how a skill plugs into each.
 
 ## Why the loop survives the model
 
-- **The specific Claude you used today will be replaced, probably within months.** Opus 4.7 will be Opus 4.8, then something with a different name. Every one of those models will be better at the work than the current one. None of that changes the move.
-- **The three pieces practitioners converge on (reference, plan, verifier) are not model features.** Neither is the encode loop you ran at M6 (diff, name the gaps, package the learning). They are a stance toward a thing that does not behave deterministically. Reference because the agent forgets. Plan because the window fills. Verifier because plausible-but-wrong is the default failure mode of a statistical machine. Encode because a lesson learned once and not written down gets learned again next week.
-- **Practitioner fluency lives in the stance, not in the tooling.** When the next model ships, you will open the same kit, point it at the same three pieces, and run the same loop. The work gets faster. The method does not.
+- The specific Claude you used today will be replaced, probably within months. Opus 4.7 will be Opus 4.8, then something with a different name. Every one of those models will be better at the work than the current one. None of that changes the move.
+- The three pieces practitioners converge on (reference, plan, verifier) are not model features. Neither is the encode loop you ran at M6 (diff, name the gaps, package the learning). They are a stance toward a thing that does not behave deterministically. Reference because the agent forgets. Plan because the window fills. Verifier because plausible-but-wrong is the default failure mode of a statistical machine. Encode because a lesson learned once and not written down gets learned again next week.
+- Practitioner fluency lives in the stance, not in the tooling. When the next model ships, you will open the same kit, point it at the same three pieces, and run the same loop. The work gets faster. The method does not.
 
 The loop feeds itself. That is the flywheel, and it starts with what you encoded today.
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all five slides keep bullets; bold reduced to one handle — **eval** at the naming beat on slide 1 (existing *judge*/*verifier*/*gate* italics kept); every other bolded lead across all slides de-bolded (map-placement, Intercom, cadence, loop-survives-the-model slides now carry zero bold) — per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Lede + kicker untouched. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 - Family B judged 2026-07-03: B-star durability PASS — spine + worldview both noteworthy (slide 1 names its map slot, M2-dashed-to-solid; pure recognition-before-naming closer, "Look at what you just shipped" → "That thing has a name").
 

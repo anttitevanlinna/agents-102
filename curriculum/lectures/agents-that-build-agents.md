@@ -4,15 +4,19 @@ The map you just drew ended on a dashed loop, yours to draw solid. This is the m
 
 ## The move widens to everything you do
 
-- **Two skills, two sources, same move.** The first, at M3, packaged a piece of judgement you had carried for years (how to write a good test). The second, at M6, packaged a piece of judgement you had earned over two runs of the same task. Each skill made the next run cheaper.
-- **The flywheel turns once more when you hand the agent the move itself.** Not "write me a skill." Not "improve my setup." Ask it for a handoff prompt: one you paste into a fresh session later, that studies your work across your repos for the shapes you repeat, draws the ones worth packaging, and authors a skill for each. The same move you just practiced, widened to everything you do.
-- **What comes back is a candidate.** You read it the way you read any prompt the agent drafts: judgement, push-back, taste. Some of it will be obvious. Some of it will be off. One or two lines will be moves you would not have written on your own.
+Two skills, two sources, same move. The first, at M3, packaged a piece of judgement you had carried for years (how to write a good test). The second, at M6, packaged a piece of judgement you had earned over two runs of the same task. Each skill made the next run cheaper.
+
+The flywheel turns once more when you hand the agent the move itself. Not "write me a skill." Not "improve my setup." Ask it for a handoff prompt: one you paste into a fresh session later, that studies your work across your repos for the shapes you repeat, draws the ones worth packaging, and authors a skill for each. The same move you just practiced, widened to everything you do.
+
+What comes back is a candidate. You read it the way you read any prompt the agent drafts: judgement, push-back, taste. Some of it will be obvious. Some of it will be off. One or two lines will be moves you would not have written on your own.
 
 ## The agent stops where your judgement begins
 
-- **Not the agent writing its own skills without you in the room.** At the start of this training, you might have hoped that was the destination. At the close of M6, you know it is not. Agents that build agents is a collaboration in the same shape every other beat in this training has been a collaboration. Claude proposes, you steer.
-- **The agent's evidence stops at the disk.** It can read the artefacts the loop produced. It cannot read the codebase knowledge in your head, the political situation around the team kit, the next quarter's roadmap, the bug your tech lead lost three days to last sprint. The plan it generates is grounded in the evidence on disk; the decision about which proposals to act on is grounded in evidence the agent does not have.
-- **Build the flywheel to run exactly that far.** Let the agent run as far as it can on its own evidence, and stop at the moment your judgement is the input that matters. That is the practitioner shape. Anything further pretends the agent has access it does not have.
+Not the agent writing its own skills without you in the room. At the start of this training, you might have hoped that was the destination. At the close of M6, you know it is not. Agents that build agents is a collaboration in the same shape every other beat in this training has been a collaboration. Claude proposes, you steer.
+
+The agent's evidence stops at the disk. It can read the artefacts the loop produced. It cannot read the codebase knowledge in your head, the political situation around the team kit, the next quarter's roadmap, the bug your tech lead lost three days to last sprint. The plan it generates is grounded in the evidence on disk; the decision about which proposals to act on is grounded in evidence the agent does not have.
+
+Build the flywheel to run exactly that far. Let the agent run as far as it can on its own evidence, and stop at the moment your judgement is the input that matters. That is the practitioner shape. Anything further pretends the agent has access it does not have.
 
 ## The handoff prompt that builds your kit
 
@@ -28,21 +32,23 @@ What comes back is a prompt, not a plan. Save it where you will find it. The kit
 while :; do cat PROMPT.md | claude-code; done
 ```
 
-- **Geoffrey Huntley saw a lever.** An agent runs, drifts, needs nudging. The fix already existed in shell: one line, no scaffolding.
-- **He called it Ralph, after the Simpsons.** Hacky, simple, powerful. Ralph re-feed entered the practitioner vocabulary as one of the named verifier shapes, for when a multi-hour task wants a stop-and-check.
-- **Months later, Claude Code shipped `/goal`.** The runtime version of the same move: a condition, a check each turn. The shell hack is now a slash command.
-- **Practitioners see levers first.** The lever was sitting there in plain shell. Huntley reached for it. The runtime caught up later.
+- Geoffrey Huntley saw a lever. An agent runs, drifts, needs nudging. The fix already existed in shell: one line, no scaffolding.
+- He called it Ralph, after the Simpsons. Hacky, simple, powerful. Ralph re-feed entered the practitioner vocabulary as one of the named verifier shapes, for when a multi-hour task wants a stop-and-check.
+- Months later, Claude Code shipped `/goal`. The runtime version of the same move: a condition, a check each turn. The shell hack is now a slash command.
+- Practitioners see levers first. The lever was sitting there in plain shell. Huntley reached for it. The runtime caught up later.
 
 That's the M6 leap. The next Ralph is yours.
 
 ## There is no last turn
 
-- **There is no last turn.** Each run surfaces the next gap. Each gap proposes the next move. Each move makes the next run cheaper.
-- **The kit compounds; the model rotates.** The kit grows, the rules sharpen, the skills accumulate, and the model underneath gets replaced every few months without changing the move.
+- There is no last turn. Each run surfaces the next gap. Each gap proposes the next move. Each move makes the next run cheaper.
+- The kit compounds; the model rotates. The kit grows, the rules sharpen, the skills accumulate, and the model underneath gets replaced every few months without changing the move.
 
 The training closes. The flywheel does not.
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** narrative closer — slides 1–2 recast from bolded-claim bullets to prose paragraphs; Ralph and closing slides keep bullets, de-bolded fully; zero bold survives in the body (the practitioner story carries itself) — per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Lede, kickers, bash block, and `{{prompt:agents-that-build-agents-handoff}}` section untouched. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Slides-only pass (2026-07-02, unaudited):** prose body CONVERTED to lede + four slides + one prompt section. Opening two paragraphs → lede (one line, near-verbatim) + slide 1 bullet 1 (two-skills recognition; "Module 3/Module 6" compressed to M3/M6, legal at M6 per `check_student_facing §2b`); the one-line flywheel paragraph SUBSUMED by slide 1 bullet 2. *The move* + *What this is not* CONVERTED to slides, near-verbatim. *A prompt to try* KEPT prose-shaped — prompt chrome the flow needs; `{{prompt:agents-that-build-agents-handoff}}` untouched; "Read it the way you read any prompt the agent drafts" de-duplicated (now lives only in slide 1 bullet 3). *Ralph* CONVERTED to a slide with the bash one-liner as the slide's diagram element, kicker kept verbatim. *Where the loop ends* CONVERTED to a two-bullet closing slide + kicker; below the 3-bullet floor by design (the arc-final beat is two claims; padding would be restatement). M-refs KEPT under the `check_lectures §3` consolidation carve-out (arc-closer; two-skills recognition + graduation beat, not sequencing).
 

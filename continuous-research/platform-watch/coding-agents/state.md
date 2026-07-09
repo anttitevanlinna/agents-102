@@ -1,7 +1,13 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-07-04 (cycle 153)
-OODA cycles: 27
+Last updated: 2026-07-09 (cycle 158)
+OODA cycles: 28
+
+## Key Verdict (as of 2026-07-09)
+
+**CYCLE 158 UPDATE — CLAUDE CODE v2.1.200 DEFAULTS TO MANUAL (autonomy now explicit opt-in); COWORK WEB+MOBILE LAUNCH (July 7, Max subscribers); COWORK USAGE MIX: 33.4% business ops / 16.4% content / 8.7% dev; FABLE 5 CREDIT GATE EXTENDED TO JULY 12; SONNET 5 DAY 9 — no independent deployment posts, agentic latency is dominant concern; GEMINI 3.5 PRO STILL NOT GA.** Claude Code v2.1.200 (Jul 3): default permission mode changed Auto→Manual — autonomous action requires explicit opt-in. This is the most significant governance posture shift in Claude Code since launch; pairs with v2.1.205 tampering protection on Auto mode. Six releases in 5 days (v2.1.200–2.1.205): /doctor diagnostic tool, dynamic workflow sizing, OpenTelemetry attributes, headless hook event streaming fix. Cowork web+mobile launched July 7 for Max subscribers (background execution continues offline); Claude Tag for Team/Enterprise Slack launched simultaneously. **Cowork usage data from 1.2M sessions / 600K+ orgs (late May): 33.4% business process ops, 16.4% content/copywriting, 8.7% software dev** — first quantified evidence that Cowork's majority use is non-developer, supporting the non-coding meta-platform thesis. FedRAMP High government beta launched July 7. Fable 5 credit gate (end of 50% free window) fired July 7 but deadline extended to July 12 due to user backlash; Persona ID biometric verification fired July 7 (API key users exempt). Sonnet 5 Day 9: CodeRabbit evaluation — "slower than Sonnet 4.6 due to extra thinking, second-guesses plans mid-execution"; Caylent — comparable results with fewer iterations but sycophancy concern flagged. No independent workflow deployment post found Jul 1–9. ([techcrunch.com Jul 7 2026](https://techcrunch.com/2026/07/07/the-coding-agent-wars-are-spilling-into-the-rest-of-the-office-claude-cowork/) — domain trade publication; [github.com/anthropics/claude-code/releases Jul 2026](https://github.com/anthropics/claude-code/releases) — vendor changelog; [androidauthority.com Jul 6–7 2026](https://www.androidauthority.com/anthropic-claude-fable-5-credits-usage-july-3684840/) — domain trade publication)
+
+**Watch: July 12 (Fable 5 credit gate hard deadline); July 13 (Zed+ClickHouse Sonnet 5 webinar — first practitioner live deployment demos); July 14–21 (Sonnet 5 first independent workflow deployment posts — historical emergence window); August 1 (EO 14409 formal framework deadline); August 2026 (Polaris default + Copilot Autonomous Agent Mode Enterprise); August 31 (Sonnet 5 intro pricing ends → $3/$15 + 20–35% effective cost increase).**
 
 ## Key Verdict (as of 2026-07-04)
 

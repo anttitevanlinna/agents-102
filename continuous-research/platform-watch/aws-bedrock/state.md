@@ -1,7 +1,17 @@
 # AWS Bedrock AgentCore — Platform State
 
-Last updated: 2026-07-07 (cycle 156)
-OODA cycles: 4
+Last updated: 2026-07-09 (cycle 158)
+OODA cycles: 5
+
+**Cycle 158 updates (July 9, 2026) — Clearwater Analytics L2 deployment confirmed (public company, 800+ agents, $10T AUM); practitioner failure class taxonomy; Day 21 independent write-up gap persists:**
+
+**Clearwater Analytics (NASDAQ: CWAN) — Level 2 AgentCore deployment (investor-grade metrics).** 800+ AI agents + 500 tools deployed on AgentCore, covering $10T in client assets. Results: manual reconciliations down 90%, regulatory reporting 80% faster, financial close cycles 50% shorter. Announced at AWS re:Invent November 2025; referenced in 2026 AWS context. Evidence level: Level 2 — CWAN is NASDAQ-listed; 800 agent count and $10T AUM are investor-grade disclosures, verifiable against CIR filings. This is the most credible AgentCore production evidence in the knowledge base. Beachhead confirmed: financial services compliance + reconciliation (high-structure, auditability-mandatory). Note: pre-GA deployment; cited at Summit context in AWS materials. ([cwan.com Nov 2025](https://cwan.com/press-releases/cwan-reports-800-ai-agents-now-available-for-deployment-across-10-trillion-in-client-assets/) — [vendor press release, public company])
+
+**Seven production failure classes — practitioner taxonomy.** Pre-GA practitioner guide (konishi.com, Apr 28, 2026): model throttling, content-filter rejection, tool timeouts, runtime cold starts, memory extraction lag, identity failures, network partitions. Four-signal observability model required: operational metrics + logs + traces + quality evaluations. "Skipping the fourth [quality evaluations] is the most common mistake when porting traditional APM mental models onto agentic systems." Model routing achieves 30–60% cost reductions vs single-large-model baseline. ([hidekazu-konishi.com Apr 2026](https://hidekazu-konishi.com/entry/amazon_bedrock_agentcore_production_guide.html) — [practitioner direct])
+
+**Day 21 post-GA: independent write-up gap persists.** Zero named companies have published independent practitioner accounts of post-GA (June 18+) AgentCore deployments. Druva (68% autonomous resolution, 3,000+ users) and CloudZero (5x faster TTFT, 50x growth) are AWS-curated vendor press releases (L0). The pattern from pre-GA continues: vendor-sourced names without independent confirmation.
+
+**Watch: First post-GA independent practitioner account; CWAN Q2 FY2026 earnings for any AgentCore metric update; Nordic AgentCore signal (still absent).**
 
 **Cycle 156 updates (July 7, 2026) — AgentCore 5x quota increase (July 2); deployment evidence gap persists at Day 19:**
 

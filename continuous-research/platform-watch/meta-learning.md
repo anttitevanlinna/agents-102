@@ -94,6 +94,11 @@ Each entry: cycle number, date, what the researcher learned about researching.
 
 ---
 
+### Cycle 158 — 2026-07-09
+Convergence audits across time are worth running periodically even without new sources — this cycle's L3 upgrade for cognitive debt came from assembling sources already in the knowledge base (Osmani Mar, Shopify Apr) with new sources (Litt Jul 2, RevenueCat Jun) and recognizing the threshold had been crossed. The evidence was available in cycle 157 but framed as "moving toward L3." Lesson: when a finding is labeled "moving toward L3," allocate one cycle to explicitly audit whether the threshold has already been crossed, rather than waiting for a new cycle to surface a new source organically.
+
+Official changelog checks are underused as an evidence source for "did X ship?" questions. Fetching the actual Gemini API changelog and Vertex AI release notes resolved the July 17 GA question in seconds — the secondary press (biggo → geeky gadgets) was claiming GA while the official changelog had nothing. Lesson: for binary "did it ship?" questions, always start with official changelogs before secondary press. Secondary press reliably republishes prediction-market speculation as fact for high-anticipation model releases.
+
 ### Cycle 151 — 2026-07-02
 Cost research requires two layers: (1) list price change and (2) tokenizer-driven effective cost change. Sonnet 5 tokenizer inflation (+42% English tokens) is invisible in any price-per-token comparison — you only see it in per-task benchmarks. Lesson: always query for per-task or per-job cost, not per-token cost, when evaluating a new model. The Decoder's Opus 4.7 precedent (37.4% tokenizer jump) confirms this is a recurring Anthropic pattern across model generations — valuable context to have loaded when evaluating any new Anthropic release. Artificial Analysis is the right source for per-task cost; per-token comparisons at launch are structurally misleading for new-tokenizer models.
 

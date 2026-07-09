@@ -46,7 +46,7 @@ Ask Claude to write the failing test, fix the root cause, and show the diff. Dro
 
 **What happened:** A real PR shipped. A failing test landed in the codebase before the fix did. The diff got read, at least one line got pushback, and the root-cause interrogation ran before the second TDD pass.
 
-The PR is shipped. The move is warm. Hand off to the compound step.
+The PR is shipped. Hand off to the compound step.
 
 *For those finishing early: chatter about making sure the LLM doesn't fake tests or write tests that just pass. How do you catch that efficiently?*
 

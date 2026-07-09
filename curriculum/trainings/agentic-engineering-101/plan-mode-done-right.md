@@ -60,13 +60,16 @@ If a branch from the second-pass read sharpened how plans get made in this codeb
 Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble is optional reading.
 
 ## Key Concepts
-- Structure is persuasive. A 7-item plan with headers looks like a decision even when it's a draft. **Remember: at least 10% wrong.**
+- Structure is persuasive. A 7-item plan with headers looks like a decision even when it's a draft. At least 10% wrong.
 - One kind of scrutiny catches one kind of miss; a human read and an agent's walk-down of unresolved branches catch different things, and the gap between them is where the plan-reading skill lives
-- Assumption-silent isn't assumption-free. Every plan assumes something, and the good ones say what. **Remember: push-backs ship into memory.**
+- Assumption-silent isn't assumption-free. Every plan assumes something, and the good ones say what. Push-backs ship into memory.
 - A plan with a specific file list has made decisions; a plan without one hasn't
 - Verification steps that could actually fail are gates; verification steps that always pass are decoration
 - You don't have to execute a plan to know it's good. Making it good IS the work.
 - Plan mode makes the read possible; it isn't the read
+
+## Homework
+Read the conventions your tracker already encodes: [Read the rules hiding in a ticket](exercises/read-the-ticket-rules.md). Paste one real ticket, let Claude infer how your team uses the fields, and fold a few of those rules into the task-shaping file you saved here.
 
 ## Next
 
@@ -78,12 +81,14 @@ Ask Claude where it wrote the plan file, note the path; M3 reads it. Close this 
 
 Optional. Lands the modern agentic-security frame before STRIDE and access-control.
 
-**Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (foundational framing from June 2025, canonical naming of the threat class, used as reference not as fresh evidence). Names the modern threat class that combines private data, untrusted content, and external communication into a compromise surface. Why for Module 3: gives you the modern agentic-security frame before you run the STRIDE and access-control exercises, so classic AppSec sits inside a wider picture rather than standing alone.
+**Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (June 2025, the piece that named the threat class). Names the modern threat class that combines private data, untrusted content, and external communication into a compromise surface.
 
-**Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface. Why for Module 3: the full menu beyond the trifecta, for engineers who want the wider picture before the exercise lands.
+**Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface. The full menu beyond the trifecta, for engineers who want the wider picture before the exercise lands.
 
 <!-- maintainer -->
 
+
+**Ticketing → homework (this pass):** the optional ticket-inference step split from `extract-the-task-shaping-rule` into the `read-the-ticket-rules` homework exercise; this module gained a `## Homework` link to it. Per-class Quality SHAs below predate the addition — re-audit before ship.
 
 **Quality:** compendium-audited 2026-07-08 (writing@0ef2ca6 story@1a9e10b technical@0ef2ca6 behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b slides@47f3357)
 - judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

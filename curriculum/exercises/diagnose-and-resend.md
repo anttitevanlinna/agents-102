@@ -1,6 +1,6 @@
 # Diagnose and *package*
 
-**Time:** 65 minutes inside a 2h module slot (Phases 1–4). Debrief + re-send (~15–20 min) is owned by the module file.
+**Time:** 65 minutes inside a 2h module slot (Phases 1–4). Debrief + re-send (~15–20 min) closes the module after this exercise.
 
 **Session** *(new, "Module 5 worktree session")*
 

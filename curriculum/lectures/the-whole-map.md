@@ -110,7 +110,7 @@ The phases are places, not stages. A run usually stands in more than one at once
 ## Every move hangs on a location
 
 - One place for every move to hang. Each technique in this training has a location on this cycle, not just a slot in the schedule. Material with a location is material you can find again later.
-- You do the moves first and name them after. The map is a container, not a lecture. No law gets taught here; each one gets named at the moment you have already used it and can recognize it as yours.
+- You do the moves first and name them after. The map is a place to hang moves, not a lecture. No law gets taught here; each one gets named at the moment you have already used it and can recognize it as yours.
 - Every module points back to this map. The question is always the same: which phase is this move in, and what does that phase govern?
 
 <!-- maintainer -->

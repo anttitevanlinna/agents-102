@@ -10,7 +10,7 @@ Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no 
 
 **What you build:** three things from two runs of the same task: a ranked gap map, one stale rule cut from your rules-file, and a session-shaper skill that carries the lesson into every future run.
 
-**The point:** The authoring move repeats. You ran it at M3 on a test-strategy skill; you run it again here with two runs' evidence in hand. Same move, faster. The learning wheel turns. You tested at M4, learned at M5, and you encode at M6. The skill you ship here is how the next run inherits what these two runs cost you.
+**The point:** The authoring move repeats. You ran it at M3 on a test-strategy skill; you run it again here with two runs' evidence in hand. Same move, faster. You tested at M4, you learned at M5, you encode at M6. The skill you ship here is how the next run inherits what these two runs cost you.
 
 ---
 
@@ -94,7 +94,7 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 - Author through conversation. No markdown editor, no hand-crafting SKILL.md in a file tab.
 - The next three prompts (author, critique, invoke) are separate steps. You don't have to run all three.
 
-> **Skip the critique and the testing, if you want.** You've done that pattern before. Not that you should, but you already know those moves.
+> **Skip the critique and the testing if you want.** You know those moves from M3.
 
 {{prompt:spot-gaps-build-the-loop-3}}
 

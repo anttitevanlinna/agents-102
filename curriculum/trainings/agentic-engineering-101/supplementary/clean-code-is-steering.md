@@ -2,8 +2,6 @@
 
 *Referenced from: Module 5 (learn from the test, re-send packaged).*
 
-Research note: original X pages may require login or be intermittently inaccessible. The X messages are linked in context below. The research pass also used public mirrors, a Security Now transcript, Uncle Bob's `arch-view` repository, and adjacent practitioner writing from Simon Willison and Armin Ronacher.
-
 AI coding does not make Clean Code irrelevant. It changes what Clean Code is for.
 
 That is the small trick in this shift. The old discipline looks less exciting at exactly the moment it becomes more valuable.
@@ -22,7 +20,7 @@ Then the story gets more interesting.
 
 As his Empire game grows, the AI's raw power begins to show a second face. It can make progress quickly, but the progress is not always stable. Add one feature, and another feature quietly changes. Fix one failing test, and the agent may soften a different assertion. Ask it to preserve old behavior, and it may agree, apologize, and still drift.
 
-This is the quicksilver moment. The code feels compliant, but the system is not yet trustworthy. Push it in one place, and behavior slips out somewhere else.
+This is the mercury problem: the code feels compliant, but the system is not yet trustworthy. Push it in one place, and behavior slips out somewhere else.
 
 That is the core agentic failure mode: local success, global drift.
 
@@ -48,7 +46,7 @@ Not steering as vibes. Not steering as "write a better prompt." Steering as exec
 
 **Unit Tests.** Unit tests make small behaviors hard to casually break. They also make the agent's search space smaller. Instead of asking the model to infer every invariant from the whole codebase, the engineer gives it many small, local tripwires. When a unit test fails, the agent has a concrete signal. When the tests are absent, vague, or too broad, the agent has more room to improvise.
 
-**TDD.** Test-driven development becomes a steering protocol for agentic work. The red test forces the desired behavior to be stated before implementation. The green step gives the agent a tight target. The refactor step lets the human and agent improve structure while keeping behavior pinned. This is not nostalgia for an exercise. It is a way to keep intent ahead of code generation.
+**TDD.** Test-driven development becomes a steering protocol for agentic work. The red test forces the desired behavior to be stated before implementation. The green step gives the agent a tight target. The refactor step lets the human and agent improve structure while keeping behavior pinned. This is not TDD nostalgia. It is a way to keep intent ahead of code generation.
 
 **Mutation Testing.** Mutation testing asks whether the tests actually defend the behavior they claim to defend. That becomes important when agents can generate large test suites that look reassuring but do not catch meaningful changes. A mutation tester breaks the code in small ways and checks whether the tests notice. In an agentic workflow, that makes it harder for a model to satisfy the appearance of testing while leaving the system weak.
 
@@ -84,7 +82,7 @@ That is the deeper pattern in Bob's journey. Natural language is not enough. A p
 
 > "I completely agree with Dijkstra. Human language is the worst possible language to program a computer in. Some kind of formalism is absolutely necessary. But the formalism does not have to be in the syntax of a particular computer language.", Uncle Bob, [X](https://x.com/unclebobmartin/status/2049453605237715058)
 
-The lesson is not "Clean Code was right all along" in some tired culture-war sense. The better lesson is more practical, and more useful:
+The lesson is not "Clean Code was right all along." The better lesson is more practical, and more useful:
 
 Clean Code used to be about maintainability under human change.
 
@@ -93,6 +91,8 @@ Agentic Clean Code is about stability under machine-speed change.
 The more powerful the coding agent, the more important the steering system.
 
 <!-- maintainer -->
+
+**Source-access note:** original X pages may require login or be intermittently inaccessible; the X messages are linked in context in the body. Research pass also used public mirrors, a Security Now transcript, Uncle Bob's `arch-view` repository, and adjacent practitioner writing from Simon Willison and Armin Ronacher.
 
 **Quality:** compendium-audited 2026-05-03 (writing@bb9c1d5 story@bb9c1d5 technical@bb9c1d5)
 - judges @bb9c1d5: writing PASS, story PASS, technical PASS, behavior N/A (no-student-prompt-blocks)

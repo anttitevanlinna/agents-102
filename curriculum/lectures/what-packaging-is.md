@@ -246,7 +246,7 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 
 - Most of the work that made the re-send land happened before you pressed send. Diagnosing failure modes, mapping validations, building the verifier, assembling reference and plan.md. The run itself was short. The ratio practitioners take from Kieran Klaassen's compound-engineering posture: roughly 80% planning and review, 20% execution.
 - The TDD shape carries it. Klaassen (August 2025): *"Claude writes the test. The test fails, the natural first step in test-driven development (TDD)"* ([My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it)). The packaging you just built IS the 80% side. The re-send was the 20%.
-- Agent hours are org cost. The re-send consumed hours of Opus time, and those hours are real money on the org's bill, the same way engineer hours are. Packaging converts that spend into reliable output instead of reliably wrong output: without it you paid for a run that missed the goal, with it you paid for a run that landed. The ROI calculation is the one you just ran on yourself.
+- Agent hours are org cost. The re-send consumed hours of Opus time, and those hours are real money on the org's bill, the same way engineer hours are. Packaging converts that spend into reliable output instead of reliably wrong output: without it you paid for a run that missed the goal, with it you paid for a run that landed.
 
 ## At org scale: Intercom's tiers
 

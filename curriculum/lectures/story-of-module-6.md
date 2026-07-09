@@ -42,7 +42,7 @@ The rules were loaded every time. The writing compendium was loaded. The mood co
 
 A rule in context is not a rule in the output. Taste closes the gap. Nothing else does.
 
-## Then I continued to make the compounding from the run
+## Then I compounded the run
 
 I ran the M6 exercise on the M6 generation. The diff found rules that lived in memory but never fired. I moved them into skills that block "done" until the check runs. A rule in memory that does not force is worse than no rule.
 

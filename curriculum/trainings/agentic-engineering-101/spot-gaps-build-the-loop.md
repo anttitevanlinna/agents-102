@@ -41,7 +41,7 @@ You walk in holding two runs of the same task. The un-packaged Module 4 send-off
 - Gaps sort into three homes: memory (rules that would have prevented the mistake upstream), sharper verifier (a check that would have fired mid-run), or new skill (a move packaged for future tasks)
 - An eval is the automated check that says *this agent-produced thing meets our bar*. Verifier when deterministic, judge when LLM-based, gate when placed in CI. All three are evals
 - The second authored skill IS the loop. It packages the diagnosis into a move the next run inherits.
-- Encoding is the third phase of test → learn → encode. Two runs tested; the diagnosis learned; the skill encodes. **Remember: the loop closes when the lesson ships.**
+- Encoding is the third phase of test → learn → encode. Two runs tested; the diagnosis learned; the skill encodes. The loop closes when the lesson ships.
 
 ## Human close
 

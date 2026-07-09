@@ -9,8 +9,8 @@
 ## Earned trust breeds the miss
 
 - Earned trust is exactly what breeds the miss. Watch a system that is highly but imperfectly reliable, and your own detection performance degrades. The automation-studies literature named this **overreliance**: trusting the machine past the point where you still catch its errors (Parasuraman and Riley's use, misuse, disuse).
-- The more runs the agent lands cleanly, the worse you get at catching the one that doesn't. Each clean run is real evidence of competence and real erosion of your vigilance, at the same time. A longer leash quietly makes a worse watcher.
-- Trust and vigilance move in opposite directions. The same observed competence that earns the agent a longer leash degrades the attention you bring to the next run. The trust is deserved. The watching still has to be engineered. So when the next run lands clean, ask the plain question first: when did you last do this kind of work by hand?
+- The more runs the agent lands cleanly, the worse you get at catching the one that doesn't. Each clean run is real evidence of competence and real erosion of your vigilance, at the same time. The more autonomy the agent earns, the worse a watcher you quietly become.
+- Trust and vigilance move in opposite directions. The same observed competence that earns the agent more autonomy degrades the attention you bring to the next run. The trust is deserved. The watching still has to be engineered. So when the next run lands clean, ask the plain question first: when did you last do this kind of work by hand?
 
 <!-- maintainer -->
 

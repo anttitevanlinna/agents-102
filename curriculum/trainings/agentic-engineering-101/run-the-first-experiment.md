@@ -44,10 +44,10 @@ Next, the thing you are sending: an LLM in a loop, calling tools.
 [Exercise: Walk and send off](exercises/walk-and-send-off.md)
 
 ## Key Concepts
-- Gap analysis is *walk the system you have against the system the task needs*. **Remember: the system you have is what gets tested.**
+- Gap analysis is *walk the system you have against the system the task needs*. The system you have is what gets tested.
 - Huryn's three blocks aren't a template you fill; they're a frame that names what you've already built
 - Un-packaged is by design. The packaging move only lands once you've seen what un-packaged gets wrong
-- Traces are data. Stop the run when you've seen what you needed to see. **Remember: stopping is reading, not failing.**
+- Traces are data. Stop the run when you've seen what you needed to see. Stopping is reading, not failing.
 - Every send-off is an experiment, not a production run you need to get right first time
 
 ## Send the task off
@@ -83,11 +83,11 @@ Ask Claude to run the scoped task end-to-end in this same session, with your rul
 
 The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). If watching surfaces a wobble that tells you what next module will diagnose, stop the run; the trace is the result.
 
-Async runs are a face of the work you'll see more of from here on.
+You'll run more work async from here on.
 
 Nudge by hand while you're watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is the move. Past ten and you've become the agent; call it and read what's there.
 
-If Claude stalls and you want to see if it picks itself back up, dark-humour nudge, phrased as encouragement, lands as a taunt:
+If Claude stalls and you want to see whether it picks itself back up, this nudge is phrased as encouragement and lands as a taunt:
 
 {{prompt:ae101-m4-nudge-continue}}
 
@@ -109,15 +109,15 @@ Come to Module 5 without a run and you'll be scrambling for material while the r
 
 ## Pre-reads before Module 5
 
-Optional. They sit in the Module 4 to Module 5 gap while your un-packaged run is still going; they prime a reframe about where the effort in agent work actually goes; Module 5 names it from your own felt evidence.
+Optional. They sit in the Module 4 to Module 5 gap while your un-packaged run is still going. All four point at the same surprise: the effort in agent work sits in the framing and the checking, not the typing. Module 5 picks this up from your own run.
 
-**Read, [Clean Code Is Steering: Insights from Uncle Bob](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md).** Uncle Bob's public learning journey with AI coding: early speed, quicksilver unpredictability, then tests, architecture visibility, and formal constraints as steering. Why for Module 5: primes the move from "the agent ran" to "what would have constrained the drift?"
+**Read, [Clean Code Is Steering: Insights from Uncle Bob](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md).** Uncle Bob's public learning journey with AI coding: early speed, mercury-like unpredictability, then tests, architecture visibility, and formal constraints as steering. It moves the question from "the agent ran" to "what would have constrained the drift?", the question Module 5 asks of your run.
 
-**Watch, Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich).** Interview video and write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. Why for Module 5: primes a reframe about where the effort in agent work actually goes, which Module 5 names from felt evidence rather than introducing as a slogan.
+**Watch, Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich).** Interview video and write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. Module 5 shows you the same split in your own run.
 
-**Read, [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md).** Some tasks are far cheaper to check than to do, and delegation pays exactly there. Why for Module 5: the verifier built next is often worth more than the run it checks.
+**Read, [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md).** Some tasks are far cheaper to check than to do, and delegation pays exactly there. The verifier built next is often worth more than the run it checks.
 
-**Read (longer), Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).** The four-step loop (plan, work, review, compound). Why for Module 5: primes the planning-and-review-heavy posture Module 5 will name from felt evidence.
+**Read (longer), Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).** The four-step loop (plan, work, review, compound). The weight sits on planning and review, and that is where Module 5 spends its hour.
 
 <!-- maintainer -->
 

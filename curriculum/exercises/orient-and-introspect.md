@@ -20,8 +20,8 @@ Start a new Claude Code session at your repo root. Optionally rename to `m1-orie
 
 ## Read your repo deliberately
 
-- **A deliberate read beats a blind one.** You decide what Claude loads: the repo's shape, its structure, what's load-bearing, what's gone stale. A cold agent reads whatever it stumbles into; you point it.
-- **You are not on the hook for reading the repo.** The agent does that. Your job is to steer what it loads and keep half an eye on the budget.
+- A deliberate read beats a blind one. You decide what Claude loads: the repo's shape, its structure, what's load-bearing, what's gone stale. A cold agent reads whatever it stumbles into; you point it.
+- You are not on the hook for reading the repo. The agent does that. Your job is to steer what it loads and keep half an eye on the budget.
 
 > **Big repo? The read can fan out.** If Claude starts reading dozens of files, interrupt with `Esc`, narrow to one feature or directory, and say `continue`.
 
@@ -33,8 +33,8 @@ The agent reports back a map of the repo: shape, structure, what's load-bearing,
 
 ## Ask what Claude skipped, and why
 
-- **Every read has a shadow: the files Claude didn't load.** The skipped slice is where the surprises hide.
-- **Claude can introspect on what it did and why**, including what it chose not to read.
+- Every read has a shadow: the files Claude didn't load. The skipped slice is where the surprises hide.
+- Claude can introspect on what it did and why, including what it chose not to read.
 
 Ask Claude to introspect on what it read, what it skipped, and the call it made on each.
 
@@ -42,12 +42,12 @@ Ask Claude to introspect on what it read, what it skipped, and the call it made 
 
 ## Read the self-report, then spot-check it
 
-- **The account is a reconstruction, not ground truth.** The LLM confabulates reasons sometimes. Assume about 10% of what it says or does is misrepresentation. Could be more, could be less.
-- **You can spot-check it.** Quote a specific file or function back and ask Claude to confirm it read what it claims.
+- The account is a reconstruction, not ground truth. The LLM confabulates reasons sometimes. Assume about 10% of what it says or does is misrepresentation. Could be more, could be less.
+- You can spot-check it. Quote a specific file or function back and ask Claude to confirm it read what it claims.
 
 ## Check how full the window is
 
-- **The context window has a ceiling.** `/context` is the slash command that shows how full it is: total used, and the breakdown by category (system prompt, messages, memory, skills).
+- The context window has a ceiling. `/context` is the slash command that shows how full it is: total used, and the breakdown by category (system prompt, messages, memory, skills).
 
 {{prompt:orient-and-introspect-3}}
 
@@ -55,12 +55,13 @@ Ask Claude to introspect on what it read, what it skipped, and the call it made 
 
 ## Read the unread slice
 
-- **The unread percentage from `/context` is the number that matters.** The more the window fills, the less room for new work.
-- **The slice Claude didn't load stays real.** The window holds only so much; going forward, you choose what fills it.
-- **You now have a map of the window:** what loaded, what Claude skipped, and how much room is left. The next exercise fixes the bug you brought from prework, inside the window you just mapped.
+- The unread percentage from `/context` is the number that matters. The more the window fills, the less room for new work.
+- The slice Claude didn't load stays real. The window holds only so much; going forward, you choose what fills it.
+- You now have a map of the window: what loaded, what Claude skipped, and how much room is left. The next exercise fixes the bug you brought from prework, inside the window you just mapped.
 
 <!-- maintainer -->
 
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** All bullet leads de-bolded to plain bullets; no named laws or coined terms in this body, so no handles kept. Widget chrome (`**Time:**`, `**Session**`, `**What you do:**`, `**What you build:**`, `**The point:**`) and the blockquote callout untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Quality:** compendium-audited 2026-07-08 (writing@3605eee story@88a1dd4 technical@3605eee behavior@3605eee pedagogy@3605eee slides@47f3357)
 - judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy grandfathered, slides PASS

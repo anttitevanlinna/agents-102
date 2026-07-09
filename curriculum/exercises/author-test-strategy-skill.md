@@ -16,9 +16,9 @@
 
 ## Phase 1: Author the skill through conversation
 
-- **Skills aren't hand-crafted; they're authored through conversation.** You describe your codebase; the agent drafts the SKILL.md. You are not typing markdown into an editor.
-- **The ship destination is your personal skills folder.** `~/.claude/skills/test-strategy/SKILL.md`, auto-discovered in every session you run, across every repo.
-- **A test-strategy skill is team-shaped by nature, but it ships personal first.** It encodes codebase conventions teammates share. The reasons for personal-first land in Phase 3; the team PR is a follow-up move that starts with a human conversation, not an agent commit.
+- Skills aren't hand-crafted; they're authored through conversation. You describe your codebase; the agent drafts the SKILL.md. You are not typing markdown into an editor.
+- The ship destination is your personal skills folder. `~/.claude/skills/test-strategy/SKILL.md`, auto-discovered in every session you run, across every repo.
+- A test-strategy skill is team-shaped by nature, but it ships personal first. It encodes codebase conventions teammates share. The reasons for personal-first land in Phase 3; the team PR is a follow-up move that starts with a human conversation, not an agent commit.
 
 Ask Claude to author the skill, asking one question at a time.
 
@@ -26,14 +26,14 @@ Ask Claude to author the skill, asking one question at a time.
 
 ## Answer from how your codebase really tests
 
-- **Answer each question from how your codebase actually tests, not how a diagram says it should.** *"Jest for units, Playwright for e2e, nothing for integration"* is the shape of answer the skill needs. Pyramid-shaped answers (*"unit first, then integration, then e2e"*) encode a wish, not your codebase.
-- **Push back when Claude offers a default you don't like.** *"No, we don't mock the database; integration tests run against a real Postgres in Docker."* The push-back is where the skill gets its codebase truth.
+- Answer each question from how your codebase actually tests, not how a diagram says it should. *"Jest for units, Playwright for e2e, nothing for integration"* is the shape of answer the skill needs. Pyramid-shaped answers (*"unit first, then integration, then e2e"*) encode a wish, not your codebase.
+- Push back when Claude offers a default you don't like. *"No, we don't mock the database; integration tests run against a real Postgres in Docker."* The push-back is where the skill gets its codebase truth.
 
 ## Phase 2: Invoke the skill on this codebase
 
-- **Authoring without invocation is theatre.** The skill only earns its place when it runs on real code.
-- **The skill is auto-discovered right here.** It sits at `~/.claude/skills/test-strategy/SKILL.md`, and this worktree holds the full codebase. Invoke it on the code as it stands in front of you.
-- **The agent reads the codebase; you read what comes back.**
+- Authoring without invocation is theatre. The skill only earns its place when it runs on real code.
+- The skill is auto-discovered right here. It sits at `~/.claude/skills/test-strategy/SKILL.md`, and this worktree holds the full codebase. Invoke it on the code as it stands in front of you.
+- The agent reads the codebase; you read what comes back.
 
 Ask Claude to invoke the skill on this codebase and grade what it produced in the same turn.
 
@@ -41,34 +41,35 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 
 ## Sharpen the skill from what came back
 
-- **The grade is biased by design.** Claude invoked the skill it just helped author, then graded the result in the same context window: same-window self-charity. One paste, one wait, one read, convenient over rigorous.
-- **Want a harsher read? Run it as two prompts.** Invoke first, read the output, then a second prompt: *"Read that output as if you'd never seen the SKILL.md. Does it fit this codebase, or does it read generic?"* Your call.
-- **If the strategy reads generic, sharpen the skill, not the output.** A weak output is usually a weak skill. Sharpen the SKILL.md, then re-invoke.
-- **Then decide: one re-invoke, or ship with a TODO.** Re-invoke if the sharpen was substantive. Otherwise ship with a one-line TODO at the top naming what's unresolved. A skill that names its own gap is more useful to a teammate than one that pretends it's finished. The authoring muscle is what Module 3 installs; perfection waits for M6.
+- The grade is biased by design. Claude invoked the skill it just helped author, then graded the result in the same context window: same-window self-charity. One paste, one wait, one read, convenient over rigorous.
+- Want a harsher read? Run it as two prompts. Invoke first, read the output, then a second prompt: *"Read that output as if you'd never seen the SKILL.md. Does it fit this codebase, or does it read generic?"* Your call.
+- If the strategy reads generic, sharpen the skill, not the output. A weak output is usually a weak skill. Sharpen the SKILL.md, then re-invoke.
+- Then decide: one re-invoke, or ship with a TODO. Re-invoke if the sharpen was substantive. Otherwise ship with a one-line TODO at the top naming what's unresolved. A skill that names its own gap is more useful to a teammate than one that pretends it's finished. The authoring muscle is what Module 3 installs; perfection waits for M6.
 
 ## Phase 3: Ship the skill personal-first
 
-- **The skill is already shipped.** It sits at `~/.claude/skills/test-strategy/SKILL.md`. The agent wrote it there in Phase 1, sharpened by your push-back during Phase 2's invoke-and-critique. Auto-discovered in every session you run. That's the ship.
+- The skill is already shipped. It sits at `~/.claude/skills/test-strategy/SKILL.md`. The agent wrote it there in Phase 1, sharpened by your push-back during Phase 2's invoke-and-critique. Auto-discovered in every session you run. That's the ship.
 
 ## Decide if it graduates to the team
 
-- **A strong candidate for a team PR, after you talk to the team.** A test-strategy skill encodes conventions teammates share: framework, mocking policy, integration boundary, flakiness patterns. Accurate for you, accurate for them.
-- **The team PR starts with a conversation, not a commit.** Show it to your staff engineer over coffee. Send it to the channel. Ask two teammates who'd use it whether it matches how they actually write tests on this codebase. Say yes, and you PR it. Push back, and you got the real review for free; sharpen the skill, ship it sharper.
-- **Agents don't unilaterally change shared team infrastructure. You do.** The conversation is the move; the PR is the artifact of the conversation.
-- **Personal stays a fine final home.** Not every skill graduates to a shared kit. The test: would teammates use it as-written, and does the skill carry enough codebase truth to survive their review.
+- A strong candidate for a team PR, after you talk to the team. A test-strategy skill encodes conventions teammates share: framework, mocking policy, integration boundary, flakiness patterns. Accurate for you, accurate for them.
+- The team PR starts with a conversation, not a commit. Show it to your staff engineer over coffee. Send it to the channel. Ask two teammates who'd use it whether it matches how they actually write tests on this codebase. Say yes, and you PR it. Push back, and you got the real review for free; sharpen the skill, ship it sharper.
+- Agents don't unilaterally change shared team infrastructure. You do. The conversation is the move; the PR is the artifact of the conversation.
+- Personal stays a fine final home. Not every skill graduates to a shared kit. The test: would teammates use it as-written, and does the skill carry enough codebase truth to survive their review.
 
 **What happened:** One SKILL.md tuned to your codebase's actual testing conventions (framework, mocking policy, integration boundary, flakiness patterns, regression scope), living in your personal skills folder. Shipped. The Debrief integrates the session.
 
 ## What this sets up
 
-- **Module 4 reads this skill as part of the system you have.** M4 (memory that reads your system) consumes the test-strategy skill as a quality-criterion anchor.
-- **M6 authors a verifier skill the same way you authored this one.** The move repeats and gets faster.
-- **Your personal skills folder now holds one file you authored from session evidence.** Promotion to a team home is the conversation you start over coffee, not the move you make here.
+- Module 4 reads this skill as part of the system you have. M4 (memory that reads your system) consumes the test-strategy skill as a quality-criterion anchor.
+- M6 authors a verifier skill the same way you authored this one. The move repeats and gets faster.
+- Your personal skills folder now holds one file you authored from session evidence. Promotion to a team home is the conversation you start over coffee, not the move you make here.
 
 **Note** The side-quest worktree may still hold changes the agent made here: code, tests, scratch files. Its copy of `CLAUDE.local.md` came over at the fork and may have drifted from the one in your main repo. The skill crossed back on its own (it lives at user scope); everything else stays in the worktree. Those changes are yours to handle later: keep them, carry the useful parts to your main repo, or delete the worktree.
 
 <!-- maintainer -->
 
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain across all slides; kept bold: none (no named-move or menu handles in body); widget/label chrome (**Time:**/**Window:**/**What you do:**/**What you build:**/**The point:**/**What happened:**/**Note**) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Quality:** compendium-audited 2026-07-08 (writing@e840433 story@e840433 technical@e840433 behavior@e840433 pedagogy@689e7e0 strategy@689e7e0 slides@47f3357)
 - judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

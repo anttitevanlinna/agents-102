@@ -10,7 +10,7 @@ Module 3 runs in two windows. Security is the main quest in your chosen repo. Qu
 
 ## Fork the side worktree from your security lane
 
-- **Security is the main quest. Start it in your repo.** This is your main lane for Module 3. Access mapping, STRIDE, and the ADR all live here.
+- Security is the main quest. Start it in your repo. This is your main lane for Module 3. Access mapping, STRIDE, and the ADR all live here.
 
 **Session** *(new, "m3-security")*
 
@@ -18,9 +18,9 @@ Module 3 runs in two windows. Security is the main quest in your chosen repo. Qu
 /rename m3-security
 ```
 
-- **A sibling worktree is a second working directory on the same git history.** It opens next to your repo, useful when two unrelated changes run concurrently, each on its own branch and working state. `git worktree add` makes the sibling folder on its own branch; a new Claude Code session in another window works there; both sessions see the same git history but keep their own working state. The [Multi-session and Git survival guide](../trainings/agentic-engineering-101/reference/multi-session-git.md) carries the longer read.
-- **Personal files like `CLAUDE.local.md` don't sync between worktrees.** They get copied across once at fork time, then evolve independently.
-- **Decide where to base the side worktree.** It branches off your current local HEAD. Clean main is the safe default. If you want another base, switch to it before you fork.
+- A sibling worktree is a second working directory on the same git history. It opens next to your repo, useful when two unrelated changes run concurrently, each on its own branch and working state. `git worktree add` makes the sibling folder on its own branch; a new Claude Code session in another window works there; both sessions see the same git history but keep their own working state. The [Multi-session and Git survival guide](../trainings/agentic-engineering-101/reference/multi-session-git.md) carries the longer read.
+- Personal files like `CLAUDE.local.md` don't sync between worktrees. They get copied across once at fork time, then evolve independently.
+- Decide where to base the side worktree. It branches off your current local HEAD. Clean main is the safe default. If you want another base, switch to it before you fork.
 
 The fork prompt reads your repo's folder name from the working directory. Paste it as-is; Claude fills in `<repo-name>` itself.
 
@@ -28,11 +28,11 @@ The fork prompt reads your repo's folder name from the working directory. Paste 
 
 ## Read back the worktree path
 
-- **Claude reports the sibling worktree path.** That path is where the second session opens.
+- Claude reports the sibling worktree path. That path is where the second session opens.
 
 ## Open the quality lane in the new worktree
 
-- **This is your side-quest lane.** Start a second Claude Code session in another window, in the sibling worktree directory Claude just named.
+- This is your side-quest lane. Start a second Claude Code session in another window, in the sibling worktree directory Claude just named.
 
 **Session** *(new, "m3-quality")*
 
@@ -40,18 +40,20 @@ The fork prompt reads your repo's folder name from the working directory. Paste 
 /rename m3-quality
 ```
 
-- **You author the test-strategy skill here while the main lane runs security.** The skill installs to user scope, so Exercise 3 returns to the main lane to invoke it on the security-tested feature. You are not carrying the skill back by hand; it crosses worktrees on its own.
+- You author the test-strategy skill here while the main lane runs security. The skill installs to user scope, so Exercise 3 returns to the main lane to invoke it on the security-tested feature. You are not carrying the skill back by hand; it crosses worktrees on its own.
 
 {{prompt:ae101-m3-quality-side-orient}}
 
 ## Set the two windows side by side
 
-- **Two windows, side by side, both visible at once.** Each holds its own scrollback. Arrange them so neither disappears behind the other.
-- **The move this module installs: when one window kicks off a long-running prompt, the other is where you work.** Module 3's exercises name which window the work runs in, and where the switch points are.
+- Two windows, side by side, both visible at once. Each holds its own scrollback. Arrange them so neither disappears behind the other.
+- The move this module installs: when one window kicks off a long-running prompt, the other is where you work. Module 3's exercises name which window the work runs in, and where the switch points are.
 
 **What happened:** You forked a sibling worktree for the quality side, opened two Claude Code sessions (one in your repo, one in the sibling), and confirmed each reads the same codebase from a different working directory. Security picks up in the main window at the next exercise. The quality side waits.
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain across all slides; kept bold: none (no named-move or menu handles in body); Session widgets and **Time:**/**What you do:**/**What you build:**/**What happened:** chrome untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Quality:** compendium-audited 2026-07-08 (writing@0ef2ca6 story@1a9e10b technical@0ef2ca6 behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b slides@47f3357)
 - judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (override-r1-module-signposting-carve-out-see-instances/ae101--open-the-side-quest.slides.json)

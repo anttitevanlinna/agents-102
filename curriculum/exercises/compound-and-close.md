@@ -12,8 +12,8 @@ The PR shipped. Now compound the session, then close the bug's ticket. That's th
 
 ## Write your rules file from the session
 
-- **The session is the evidence.** Claude reviews the whole scrollback in one shot and drafts your rules from how you actually worked. No three-question retro; the compound step reads what happened and writes.
-- **You are not drafting from a blank page.** The agent reads the session for you. Your job is to push back where it misreads.
+- The session is the evidence. Claude reviews the whole scrollback in one shot and drafts your rules from how you actually worked. No three-question retro; the compound step reads what happened and writes.
+- You are not drafting from a blank page. The agent reads the session for you. Your job is to push back where it misreads.
 
 > **Long session, long read.** Claude reviews the whole scrollback in one shot. If the review stalls or runs past a couple of minutes, interrupt with `Esc`, narrow to the orient and introspect phases first, and say `continue`.
 
@@ -22,22 +22,22 @@ The PR shipped. Now compound the session, then close the bug's ticket. That's th
 
 ## Push back where the summary misreads
 
-- **Quote the moment back at Claude.** Read Claude's summary. Push back where it misreads. Quote the specific session moment back at Claude. That push-back is the reflection move.
-- **The rules file is yours now.** Born from the session, extended by every module after this one.
-- **The `.gitignore` edit is your call.** If `CLAUDE.local.md` wasn't already ignored, the compound step added it to your `.gitignore`. That is an uncommitted change now. What you do with it is your call.
+- Quote the moment back at Claude. Read Claude's summary. Push back where it misreads. Quote the specific session moment back at Claude. That push-back is the reflection move.
+- The rules file is yours now. Born from the session, extended by every module after this one.
+- The `.gitignore` edit is your call. If `CLAUDE.local.md` wasn't already ignored, the compound step added it to your `.gitignore`. That is an uncommitted change now. What you do with it is your call.
 
 ## Reach past the repo with a connector
 
-- **Your agent's reach stops at the repo.** Real engineering work spans tickets, pull requests, CI, chat, documentation: the system around the code. **MCP** is the protocol Claude Code uses to connect to that system. Three words land together: **connector** (the wire into a work app), **action** (a verb with effect in the world), **tool** (the umbrella for anything the model can call). Full primer in [MCP and connectors](../trainings/agentic-engineering-101/reference/mcp-and-connectors.md).
-- **One connector, two actions (read + update), closes the loop** you just ran on the bug, in the tracker your team actually lives in.
+- Your agent's reach stops at the repo. Real engineering work spans tickets, pull requests, CI, chat, documentation: the system around the code. **MCP** is the protocol Claude Code uses to connect to that system. Three words land together: **connector** (the wire into a work app), **action** (a verb with effect in the world), **tool** (the umbrella for anything the model can call). Full primer in [MCP and connectors](../trainings/agentic-engineering-101/reference/mcp-and-connectors.md).
+- One connector, two actions (read + update), closes the loop you just ran on the bug, in the tracker your team actually lives in.
 
 ## Wire one connector into your tracker
 
-- **Pick the cleanest path for your tracker.** Three work:
+- Pick the cleanest path for your tracker. Three work:
  1. **GitHub Issues:** check `gh auth status` in your session. Claude runs `gh` for you via Bash, no MCP install needed.
  2. **MCP connector to your tracker** (Linear, Jira, other): follow the install line in [MCP and connectors](../trainings/agentic-engineering-101/reference/mcp-and-connectors.md) for your tracker. If tenant admin approval is required, it's worth asking, not today.
  3. **Manual paste:** Claude writes the close-out; you paste it into the tracker UI yourself. Five seconds, no tool setup.
-- **The teaching moment is the agent reaching across a tool boundary with a real engineering note**, not the install choreography. For paths 1 or 2, get your connector up and running.
+- The teaching moment is the agent reaching across a tool boundary with a real engineering note, not the install choreography. For paths 1 or 2, get your connector up and running.
 
 > **Connector added after this session started?** Check MCP status and authenticate with `/mcp`. If the new connector still isn't there, exit the session and resume it with `claude --resume <session-id>`.
 
@@ -57,12 +57,12 @@ Claude reads the ticket (or confirms there isn't one). Then ask Claude to write 
 
 ## Read the close-out and ship it
 
-- **Read the close-out; push back if it's stiff or wrong.** Tell Claude how your team actually writes ticket comments. It'll adjust.
-- **Ship the update** (or paste it into the tracker yourself on path 3, manual paste). The bug fix is now visible where it should be: in the tracker your team reads, not only in the repo.
+- Read the close-out; push back if it's stiff or wrong. Tell Claude how your team actually writes ticket comments. It'll adjust.
+- Ship the update (or paste it into the tracker yourself on path 3, manual paste). The bug fix is now visible where it should be: in the tracker your team reads, not only in the repo.
 
 ## Sweep the session into your rules file one more time
 
-- **One more pass before close.** Anything earned since the first compound pass at the top of this exercise (the ticket close-out, the push-backs, the connector path you picked) that didn't land yet?
+- One more pass before close. Anything earned since the first compound pass at the top of this exercise (the ticket close-out, the push-backs, the connector path you picked) that didn't land yet?
 
 Ask Claude to sweep the session for anything earned since the first compound and integrate.
 
@@ -78,6 +78,7 @@ You can close this session now. `./CLAUDE.local.md` stays behind; whether it ear
 
 <!-- maintainer -->
 
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** Handles kept bold: the naming moments **MCP** / **connector** / **action** / **tool** (one handle per named term) and the three tracker-path menu items (**GitHub Issues** / **MCP connector to your tracker** / **Manual paste**); all other bullet leads de-bolded. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Quality:** compendium-audited 2026-07-08 (writing@3605eee story@88a1dd4 technical@88a1dd4 behavior@88a1dd4 pedagogy@3605eee slides@47f3357)
 - judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy grandfathered, slides PASS

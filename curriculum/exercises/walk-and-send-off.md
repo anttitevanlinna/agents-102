@@ -10,7 +10,7 @@ Start a new Claude Code session at your repo root.
 /rename m4-walk-send
 ```
 
-**Start clean.** M4 picks up a bigger task than M1–M3. Before the new session, check your working tree and branch. You ride that state into the closing `m4/<slug>` commit and M5's fork.
+Start clean. M4 picks up a bigger task than M1–M3. Before the new session, check your working tree and branch. You ride that state into the closing `m4/<slug>` commit and M5's fork.
 
 **What you do:** Pick a task you've been avoiding, the kind you'd send off rather than nudge bit by bit. Walk what you've built across four modules against it. Fill the worst gaps. See Huryn's three-block frame in your own material. At the close, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
 
@@ -22,8 +22,8 @@ Start a new Claude Code session at your repo root.
 
 ## Phase 1: Pick the task you'll send off
 
-- **A real slice you'd send off rather than nudge bit by bit**, with a 'done' you can name in a sentence. Bigger than a typo-fix, smaller than an epic.
-- **The pick is yours; the fit-check is the agent's.** You are not on the hook for scanning your roadmap or Jira; that stays your call. Bring one or two candidates; the agent screens them for fit against the three long-run criteria.
+- A real slice you'd send off rather than nudge bit by bit, with a 'done' you can name in a sentence. Bigger than a typo-fix, smaller than an epic.
+- The pick is yours; the fit-check is the agent's. You are not on the hook for scanning your roadmap or Jira; that stays your call. Bring one or two candidates; the agent screens them for fit against the three long-run criteria.
 
 Ask Claude to screen the candidates you bring against the three long-run criteria and scope the winner. Drop the candidates after the colon.
 
@@ -31,13 +31,13 @@ Ask Claude to screen the candidates you bring against the three long-run criteri
 
 ## Push back until the task is one end-to-end slice
 
-- **Push back when the read misses the codebase.** The agent is reading the shape, not the substance.
-- **Imagining a finished demo means you scoped too big.** Slice it down to one end-to-end thing the agent can chew on.
-- **Pick one task well.** You'll use it again next module.
+- Push back when the read misses the codebase. The agent is reading the shape, not the substance.
+- Imagining a finished demo means you scoped too big. Slice it down to one end-to-end thing the agent can chew on.
+- Pick one task well. You'll use it again next module.
 
 ## Phase 2: Build the ranked list of what will hurt the agent
 
-- **The audit walks your whole system so you don't.** The agent reads `CLAUDE.md`, `CLAUDE.local.md`, memory, ADRs, and any skills you've authored as a subagent, then ranks the five thin spots that will hurt the agent most on this task.
+- The audit walks your whole system so you don't. The agent reads `CLAUDE.md`, `CLAUDE.local.md`, memory, ADRs, and any skills you've authored as a subagent, then ranks the five thin spots that will hurt the agent most on this task.
 
 Ask Claude to run the audit as a subagent and return a ranked top-five.
 
@@ -45,14 +45,14 @@ Ask Claude to run the audit as a subagent and return a ranked top-five.
 
 ## Read the ranked thin-spots
 
-- **Heavy run expected.** Skim past the opening summary; the ranked thin-spots list is the payoff.
-- **Name which ones you already knew, which surprised you.** This move is *gap analysis*: walk the system you have against the system the task needs. You'll use it for every agent hand-off.
+- Heavy run expected. Skim past the opening summary; the ranked thin-spots list is the payoff.
+- Name which ones you already knew, which surprised you. This move is *gap analysis*: walk the system you have against the system the task needs. You'll use it for every agent hand-off.
 
 ## Fill the worst two or three gaps
 
-- **Pick the ones that will hurt the agent most, probably two or three, not all five.** You'll see next module what the others were for.
-- **New observations land in `observations/`, gitignored.** That's the default home. If your team kit pins a different path, tell Claude which one and stay consistent with it. If `observations/` is new to your repo, ask Claude to add it to `.gitignore` before any writes; the fills below land there and you don't want them tracked.
-- **The agent reads `observations/` when a prompt names the path**, the same way it reads your ADRs. It is not auto-loaded the way `CLAUDE.md` and `CLAUDE.local.md` are. It holds the first of the three blocks you'll arrange in Phase 3.
+- Pick the ones that will hurt the agent most, probably two or three, not all five. You'll see next module what the others were for.
+- New observations land in `observations/`, gitignored. That's the default home. If your team kit pins a different path, tell Claude which one and stay consistent with it. If `observations/` is new to your repo, ask Claude to add it to `.gitignore` before any writes; the fills below land there and you don't want them tracked.
+- The agent reads `observations/` when a prompt names the path, the same way it reads your ADRs. It is not auto-loaded the way `CLAUDE.md` and `CLAUDE.local.md` are. It holds the first of the three blocks you'll arrange in Phase 3.
 
 Ask Claude to walk you through the picked gaps one at a time, using the AskUserQuestion tool to scaffold the flow.
 
@@ -69,13 +69,13 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 
 ## Push back when a fill drifts from the codebase
 
-- **Your observations are what you just admitted is thin in spots.** Don't let them re-seed with drift. Push back when Claude writes something that doesn't match the codebase.
+- Your observations are what you just admitted is thin in spots. Don't let them re-seed with drift. Push back when Claude writes something that doesn't match the codebase.
 
 > **Time check.** Different paces hit this point at different times. The room doesn't wait for the slowest. Five to ten minutes to share what surfaced, where the audit missed, and why the agent sometimes goes lazy.
 
 ## Phase 3: Name your own work as observation, decision, and criterion
 
-- **The frame names what you've been building; it's not a template you fill.** This is *Huryn's three-block memory*. The agent rearranges your observations, ADRs, and skill into the three blocks, quoting your own work for each block before it names the frame.
+- The frame names what you've been building; it's not a template you fill. This is *Huryn's three-block memory*. The agent rearranges your observations, ADRs, and skill into the three blocks, quoting your own work for each block before it names the frame.
 
 Ask Claude to rearrange your observations, ADRs, and skill into the three blocks, quoting your own work for each block before naming the frame.
 
@@ -83,14 +83,14 @@ Ask Claude to rearrange your observations, ADRs, and skill into the three blocks
 
 ## Read the quoted examples first
 
-- **Skim past the opening summary to the quoted-example-per-block payoff.** That's where the three blocks earn their names.
-- **If the examples are from your own files, the frame should click.** If it doesn't, ask Claude to quote different examples until one does.
+- Skim past the opening summary to the quoted-example-per-block payoff. That's where the three blocks earn their names.
+- If the examples are from your own files, the frame should click. If it doesn't, ask Claude to quote different examples until one does.
 
 ## Settle the tree before the send-off
 
-- **Let Claude propose the rearrangement once the frame is named through your own material.** Keep it inside `./observations/` and cap it at one or two file moves or renames. Leave the ADRs and skills where they are; larger reorganisation is a separate session, not a mid-module sweep.
-- **Ask to see the diff before it lands.** The send-off fires next, so the tree wants to be settled on disk, not just planned in chat.
-- **The frame shows information hardening:** an observation or hunch becomes a rule, and a rule becomes a criterion you hold shipped code to. Consider whether each rule is stored where it will fire.
+- Let Claude propose the rearrangement once the frame is named through your own material. Keep it inside `./observations/` and cap it at one or two file moves or renames. Leave the ADRs and skills where they are; larger reorganisation is a separate session, not a mid-module sweep.
+- Ask to see the diff before it lands. The send-off fires next, so the tree wants to be settled on disk, not just planned in chat.
+- The frame shows information hardening: an observation or hunch becomes a rule, and a rule becomes a criterion you hold shipped code to. Consider whether each rule is stored where it will fire.
 
 **What happened:** You picked a real task you'd send off rather than nudge bit by bit. You walked what you'd built across four modules against it, filled the worst gaps, and let Claude rearrange observations and ADRs into three blocks against your own material. The frame named what was already there. Phase 3 ended with the tree settled before the send-off.
 
@@ -105,6 +105,8 @@ Phase 3 is where the exercise ends. The module file's send-off takes over:
 5. You paste the send-off prompt to the same session. Keep the laptop awake and plugged in. Don't close the lid; sleep freezes the session and it won't resume on wake. If you want to stop the run early, wait for a tool call to finish; clean interrupts between tool calls are fine. Traces are data either way.
 
 <!-- maintainer -->
+
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads and the "Start clean." paragraph lead de-bolded; kept bold only on the four fill-shape menu handles (**Observation or rule** / **Sharpen an existing rule** / **Wire a connector** / **Name a business-rules gap**); widget/label chrome untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Time-check callout — deliberate exception to `check_student_facing.md` preamble (room-share commands).** The Phase 2→Phase 3 callout uses *"to share what surfaced, where the audit missed, and why the agent sometimes goes lazy."* The preamble bans room-share commands (`share with your neighbor`, `tell the room`, `say X out loud`); *to share* without an addressee reads as invitational room-energy, not a student-action mandate. The blockquote shape + named 5–10 min window is a trainer cue (catch-up window for slower paces + banter beat on agent laziness). Future judges should not re-flag.
 

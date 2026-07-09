@@ -14,8 +14,8 @@
 
 ## Phase 1: Run the curated skill on your feature and save the map
 
-- **You invoke; the skill does the breadth walk.** The `access-control-analysis` skill was installed as a personal skill during prework, so Claude Code auto-discovers it by name in the m3-security session. You aren't on the hook for walking every surface. The skill and its subagent do that; you own the codebase-specific judgment the skill can't have.
-- **See what skills your Claude has loaded first.** In the Claude Code chat, type:
+- You invoke; the skill does the breadth walk. The `access-control-analysis` skill was installed as a personal skill during prework, so Claude Code auto-discovers it by name in the m3-security session. You aren't on the hook for walking every surface. The skill and its subagent do that; you own the codebase-specific judgment the skill can't have.
+- See what skills your Claude has loaded first. In the Claude Code chat, type:
 
 ```
 /skills
@@ -37,22 +37,22 @@ Paste a plan path, a ticket link, a design-doc path, or the feature description;
 
 ## Kick off the run, then work the other window
 
-- **The access-control pass is a breadth walk and takes a few minutes.** That wait is the two-window move Module 3 installs: kick off a long run in one window, do active work in the other, come back when the first lands.
-- **Switch to your m3-quality window now.** While the map builds in m3-security, start authoring the test-strategy skill there (Exercise 3, Phase 1). When the map lands back in m3-security, switch back to walk it and write the delta. Both windows are already open from *Open the side quest*; this is a focus switch, not a new session.
+- The access-control pass is a breadth walk and takes a few minutes. That wait is the two-window move Module 3 installs: kick off a long run in one window, do active work in the other, come back when the first lands.
+- Switch to your m3-quality window now. While the map builds in m3-security, start authoring the test-strategy skill there (Exercise 3, Phase 1). When the map lands back in m3-security, switch back to walk it and write the delta. Both windows are already open from *Open the side quest*; this is a focus switch, not a new session.
 
 ## Phase 2: Read the map back before you decide the delta
 
-- **You're back in m3-security now; the map landed here.** The rest of this exercise runs in this window.
-- **See the structured read before you decide.** Ask Claude to walk you through the surface map in chat: categories, key findings, ambiguous spots. You want the structured read in front of you before you name your deltas in Phase 3.
+- You're back in m3-security now; the map landed here. The rest of this exercise runs in this window.
+- See the structured read before you decide. Ask Claude to walk you through the surface map in chat: categories, key findings, ambiguous spots. You want the structured read in front of you before you name your deltas in Phase 3.
 
 {{cut:map-the-access-surface-3|redundant-slot}}
 
 ## Phase 3: Add the surface the skill over-called, and the one it missed
 
-- **You decide which surface goes on each side of the delta.** Two reads.
+- You decide which surface goes on each side of the delta. Two reads.
 - **The over-call.** Where did the map flag something you'd have under-weighted? Lower-risk in your read, higher-risk in the skill's.
 - **The miss.** What's missing that you know matters? Often the "weird bit" of your feature, the part you'd describe as not-quite-standard.
-- **If neither is obvious from a quick scan,** ask Claude in chat to propose two or three candidates per side with a one-line reason each. Pick from those; push back if the reasons read generic.
+- If neither is obvious from a quick scan, ask Claude in chat to propose two or three candidates per side with a one-line reason each. Pick from those; push back if the reasons read generic.
 
 Ask Claude to integrate the surface the skill called out harder than you would have into the map.
 
@@ -64,12 +64,12 @@ Then ask Claude to add the surface the skill missed but you know matters.
 
 ## Push back until the reason names your codebase
 
-- **Answer, then sharpen.** Push back on the sharpening question until the reason names something specific to your codebase. *"The billing webhook re-hits the queue on retry, so the same event gets reprocessed"* beats *"webhooks need auth."*
+- Answer, then sharpen. Push back on the sharpening question until the reason names something specific to your codebase. *"The billing webhook re-hits the queue on retry, so the same event gets reprocessed"* beats *"webhooks need auth."*
 
 ## Phase 4: Add the context header a cold reader needs
 
-- **You're about to hand this map to the STRIDE skill.** Glance at it. If a teammate landing on this file cold would miss something the map assumes you know, add a one-line context header. If it reads, close.
-- **Most people skip this; some want the pause. Your call.**
+- You're about to hand this map to the STRIDE skill. Glance at it. If a teammate landing on this file cold would miss something the map assumes you know, add a one-line context header. If it reads, close.
+- Most people skip this; some want the pause. Your call.
 
 **What happened:** You ended with a short delta-note in your repo: the surfaces the skill called out harder than you would have, and the surfaces you knew mattered that the skill didn't catch. The delta is the artifact, not the raw skill output.
 
@@ -79,6 +79,7 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 
 <!-- maintainer -->
 
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** Handles kept bold: the delta menu pair **The over-call.** / **The miss.** (one handle per item on the Phase 3 menu slide) and the on-screen **User** skills-list label; all other bullet leads de-bolded. Widget chrome (`**Time:**`, `**Window:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Quality:** compendium-audited 2026-07-08 (writing@0ef2ca6 story@1a9e10b technical@0ef2ca6 behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b slides@47f3357)
 - judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

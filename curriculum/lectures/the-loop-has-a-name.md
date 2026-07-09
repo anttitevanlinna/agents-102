@@ -5,7 +5,7 @@ Look at what you just shipped.
 ## Eval
 
 - The thing you built reads an agent's work and decides whether it meets a bar. For most of you it came out as a sharpened verifier, for some as a fresh judge, for a few as a gap-finder that reads the next agent-produced artefact for the failure shape you saw at M5. Different shapes, same move.
-- That thing has a name: **eval**. Your verifier is an eval. Your judge is an eval. Your gate is an eval.
+- The name you met at M5 covers all of it: **eval**. Your verifier is an eval. Your judge is an eval. Your gate is an eval.
 - Three names, one thing. Practitioners say *judge* when the check is itself an LLM reading the work. *Verifier* when the check is deterministic: tests, lint, compile, a shell hook that returns true or false. *Gate* when the same check is placed in CI and a pull request can't merge without it.
 - An eval is the automated check that says *this agent-produced thing meets our bar*. That's it. In practice it's the verifier you built at M5 and the skill you just shipped at M6. You have been doing evals for two modules, and on the map they are the checking loop the M2 drawing left dashed, now drawn solid.
 
@@ -58,7 +58,7 @@ The loop feeds itself. That is the flywheel, and it starts with what you encoded
 
 **Watch-fors (delivery):**
 - Mood stays practitioner-fluency. If the Intercom numbers land as vendor-plug ("here's what the big co does, aspire to that"), the mood slips into compliance-feel. They are anchors of the destination shape, not product placements. Pace accordingly.
-- Slide 1 is the earning moment for *eval*. Don't rush it. The student has just built the thing; the word lands because the thing is already in hand.
+- Slide 1 consolidates *eval*, it doesn't reveal it — M5 already named the verifier one. The beat is three-names-one-thing; the word lands because the thing is in hand, not because it's new.
 - Scheduled-agents stays one slide, not a mini-lecture. Three places it fits, one reference-page pointer, move on. If the slide grows past 90 seconds in rehearsal, cut.
 - Monday-morning vs. M7 bridge — both are shipped in the lecture. The trainer or the room picks which lands.
 - Risto voice on "the specific Claude will be replaced." Flat epistemic honesty, no sales varnish. This is the beat that carries the lecture past the current model's expiry date.

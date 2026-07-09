@@ -12,8 +12,8 @@
 
 ## Write the failing test and fix the root cause
 
-- **Tests-first, root-cause-driven** is the move. The failing test is the only proof the bug exists. Without it, the fix is a guess that happens to compile. Write the test first, watch it fail, then fix the cause, not the symptom.
-- No plan mode here. You are not on the hook for scoping this one. Plan mode earns its keep at Module 2 on multi-file work; on a trivial bug it is overhead.
+- **Tests-first, root-cause-driven.** The failing test is the only proof the bug exists. Without it, the fix is a guess that happens to compile. Write the test first, watch it fail, then fix the cause, not the symptom.
+- No plan mode here. You are not on the hook for scoping this one; on a trivial bug, plan mode is overhead.
 
 > **Small fix, small test.** A trivial bug wants one failing test and a tight fix, not a suite and a refactor. If Claude starts spinning up plenty of tests, or the change creeps past the bug, that's sprawl. Steer it back to one test that proves the bug and the smallest fix that passes it.
 
@@ -42,7 +42,7 @@ Ask Claude to write the failing test, fix the root cause, and show the diff. Dro
 
 ## Ship the PR
 
-- How far you let Claude drive Git is your call. Ask Claude to commit, push a branch, and open the PR.
+- How far you let Claude drive Git is your choice. Ask Claude to commit, push a branch, and open the PR.
 
 **What happened:** A real PR shipped. A failing test landed in the codebase before the fix did. The diff got read, at least one line got pushback, and the root-cause interrogation ran before the second TDD pass.
 

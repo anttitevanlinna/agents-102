@@ -6,7 +6,7 @@ You are testing, and you are learning. Every send-off from here on is an experim
 
 You don't need to get it right first time. You need to read the result and know what to change for the next run. That is the whole obligation.
 
-A tourist runs an agent and hopes; a practitioner runs a test and reads the data. The difference is not the outcome of the run. It is what you can say afterwards about why.
+You're new to this country; don't travel it like a tourist. A tourist runs an agent and hopes; a practitioner runs a test and reads the data. The difference is not the outcome of the run. It is what you can say afterwards about why.
 
 ## The two-run arc
 
@@ -18,15 +18,13 @@ A tourist runs an agent and hopes; a practitioner runs a test and reads the data
 
 - **Gap analysis**: walk the system you have against the system the task needs. Claude audits your setup as a subagent and returns a ranked list of thin spots.
 - Not a template. A question. *What's between what I've got and what this task is asking for?* You'll use it on every future agent hand-off.
-- The agent finds the thin spots; you judge which ones matter. A ranked list is candidates, not verdicts. Which gaps will hurt on this task is your call, and filling the worst few beats closing them all.
+- The agent finds the thin spots; you judge which ones matter. A ranked list is candidates, not verdicts. Which gaps will hurt on this task is yours to judge, and filling the worst few beats closing them all.
 
 ## Cancel is legitimate; traces are data
 
 - Cancel is legitimate; traces are data. If twenty minutes in you can see Claude hallucinating file paths, arguing with itself, or missing a requirement that wasn't in the prompt, stop it. You have the data you came for.
 - You owe the experiment a result you can read, not a completed artifact. Letting it run another hour teaches you less than stopping at twenty minutes with an observation. Any trace counts.
 - Fifteen to thirty minutes buys the clues the read needs. Engineers run these for hours at work when the task warrants it; ambition and length grow run by run.
-
-Walk your system. Fill the gaps. Send it off. Read what comes back.
 
 <!-- maintainer -->
 

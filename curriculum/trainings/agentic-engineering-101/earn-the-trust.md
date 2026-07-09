@@ -53,7 +53,7 @@ The question, to you: what's the feature, and what's the surface you're most ner
 
 **Window:** the main quest window (*m3-security*). Switch back from the side quest now, the compound runs here. The test-strategy skill lives at user scope (`~/.claude/skills/test-strategy/SKILL.md`), readable from any session, so it crosses back with you. The canonical `./CLAUDE.local.md` lives in the main repo, not the side quest's worktree copy, so rule integration belongs here.
 
-Module 3's compound runs against two artifacts: the skill (its file content carries the conventions the side-quest window *m3-quality* encoded) and your `./CLAUDE.local.md` (where any rule about how you work with security skills, ADRs, or the access-map → STRIDE → test-strategy sequence earned itself). Skills carry the codebase convention; rules carry your working style. The skill sharpen is mandatory; the rules-file update is opportunistic.
+Module 3's compound runs against two artifacts: the skill (its file content carries the conventions the side-quest window *m3-quality* encoded) and your `./CLAUDE.local.md` (where any rule about how you work with security skills, ADRs, or the access-map → STRIDE → test-strategy sequence proved worth keeping). Skills carry the codebase convention; rules carry your working style. The skill sharpen is mandatory; the rules-file update is opportunistic.
 
 Ask Claude to sharpen the one weakest section of the skill from invocation evidence, then integrate a rule into `./CLAUDE.local.md` if one earned itself. If a moment from m3-quality's authoring scrollback matters that the skill didn't capture, the m3-quality window is still open at this point, switch over and grab quotes, paste them into m3-security's chat before firing the prompt.
 
@@ -81,7 +81,7 @@ If the agent names something missed, decide whether to compound it now or accept
 
 Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. Module 4 turns the discipline inward: memory that reads your system, not just a feature. The quality criteria, the access-surface facts, and the hardening decision all feed into what M4 builds.
 
-Module 4 also hands the agent a longer leash. Before granting it, one more check, the audit you just ran on the feature, now pointed at the agent itself. Three questions:
+Module 4 also hands the agent more autonomy. Before granting it, one more check, the audit you just ran on the feature, now pointed at the agent itself. Three questions:
 
 - **Does the agent hold private data?** Your repo, your credentials, whatever a connector reaches.
 - **Does untrusted content reach its context window?** Web pages, issue comments, dependencies: anything the agent reads can carry someone else's instructions.

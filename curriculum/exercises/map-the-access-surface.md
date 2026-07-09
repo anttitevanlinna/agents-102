@@ -33,7 +33,7 @@ Name the feature and let the skill run. Ask Claude to invoke the access-control-
 
 {{prompt:map-the-access-surface-2}}
 
-Paste a plan path, a ticket link, a design-doc path, or the feature description; Claude reads whatever you give it. Then send. Claude narrates what the skill is doing before the map appears; skip past the opening and look for the saved path when it lands. The skill walks the surfaces and produces the map.
+The plan path you noted at Module 2's close is the best input here: it names the files, the flows, and the scope the feature actually touches. Paste it, or a ticket link, a design-doc path, or the feature description; Claude reads whatever you give it. Then send. Claude narrates what the skill is doing before the map appears; skip past the opening and look for the saved path when it lands. The skill walks the surfaces and produces the map.
 
 ## Kick off the run, then work the other window
 

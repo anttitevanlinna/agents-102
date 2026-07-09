@@ -14,7 +14,7 @@ The rules were not right the first time either. Some were overscoped. Some fired
 
 Rules in a file Claude Code could read stopped being reminders and became load-bearing. Claude Code opens a session, loads the rules, plans inside them. A subagent dispatched to check a draft is handed them in its brief by the session that dispatched it. Load-bearing, not leak-proof: a loaded rule still slips out of the output sometimes, and the checking that follows exists because it does.
 
-This is the move. A rule written down is a thing one person knows. A rule in `./CLAUDE.md` is a thing every session inherits. A rule in a shared checklist is a thing every dispatched subagent is handed before it writes a word.
+The difference is reach. A rule written down is a thing one person knows. A rule in `./CLAUDE.md` is a thing every session inherits. A rule in a shared checklist is a thing every dispatched subagent is handed before it writes a word.
 
 The rules compounded. Learning compounded to make better rules. More rules, more pointed. The strategy doc that started as bulletpoints grew a companion checklist for every kind of writing it produced (lectures, exercises, sales pages), each loaded at the moment it matters and no other moment.
 

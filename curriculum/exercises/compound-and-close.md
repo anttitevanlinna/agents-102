@@ -24,7 +24,7 @@ The PR shipped. Now compound the session. Claude reviews what happened and write
 
 - Quote the moment back at Claude. Read Claude's summary. Push back where it misreads. Quote the specific session moment back at Claude. That push-back is the reflection move.
 - The rules file is yours now. Born from the session, extended by every module after this one.
-- The `.gitignore` edit is your call. If `CLAUDE.local.md` wasn't already ignored, the compound step added it to your `.gitignore`. That is an uncommitted change now. What you do with it is your call.
+- The `.gitignore` edit is yours to keep or revert. If `CLAUDE.local.md` wasn't already ignored, the compound step added it to your `.gitignore`. That is an uncommitted change now; commit it, or drop it.
 
 ## Sweep the session into your rules file one more time
 

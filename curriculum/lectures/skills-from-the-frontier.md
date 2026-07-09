@@ -36,8 +36,6 @@
 - The authoring conversation will offer a generic test-pyramid default. Your codebase is not a pyramid. Push back until the skill reflects how your tests actually work.
 - Skills live in specific places. The curated ones were installed as personal skills at prework, so Claude Code auto-discovers them by name; you don't point at a path. The one you author lands in your personal kit at `~/.claude/skills/test-strategy/`. Don't invent new homes.
 
-Go.
-
 <!-- maintainer -->
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all slides kept bullets; bold reduced to two handles — the term **skill** at its slide-1 definition and the principle line **Don't make general what you don't practice yourself** on *Two curated, one authored*. All other leads de-bolded (Borrowed judgement, personal-then-compounds, trust artifacts, and arming slides now carry zero bold); "Go." kicker untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.

@@ -49,7 +49,7 @@ The full compound move ran at M1. M2's is opportunistic. Before saving, ask Clau
 
 {{prompt:push-back-on-the-plan-4}}
 
-If a branch from the second-pass read sharpened how plans get made in this codebase, ask Claude to integrate that one branch into your personal `./CLAUDE.local.md`. If nothing earned itself, ask Claude to say so and stop.
+If a branch from the second-pass read sharpened how plans get made in this codebase, ask Claude to integrate that one branch into your personal `./CLAUDE.local.md`. If no branch changed how you'd read the next plan, ask Claude to say so and stop.
 
 {{prompt:ae101-m2-integrate-branch}}
 

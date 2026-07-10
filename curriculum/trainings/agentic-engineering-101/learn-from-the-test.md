@@ -21,15 +21,27 @@ After this module, you will be able to:
 
 You sent off an un-packaged run at the close of Module 4 and read the pre-read. You walk in with the artefact in front of you and the three failure-mode lenses in hand. The in-room lecture below opens the session.
 
+> **Long runs, short reads.** The M1 countermove rides along: never let the agent say everything. Ranked findings first, detail on request, the full record on disk. Chat is for what changed and what needs you.
+
 [Lecture: Reading the return](lectures/reading-the-return.md)
 
 [Lecture: Learning through contrast](lectures/learning-through-contrast.md)
+
+## The nag writes the verifier
+
+Somewhere during the M4 send-off a worry surfaced: did it touch the migration, did the tests really cover the edge. There was no way to check mid-run, and it nagged.
+
+The nag is a spec, arriving one worry at a time. Each one names a check the run should have carried with it. This module turns the list into machinery: the reference pins the goal, plan.md carries the state, the verifier runs the checks you wished you could run mid-flight.
+
+Acting without full control is the job from here on. The feeling of what is missing points at what to build next. Build it, send again.
 
 ## Set up the Module 5 worktree
 
 Before opening the Module 5 session, fork the Module 4 starting SHA into a sibling worktree. Module 5's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second run starts from the same code state as the first. Cherny calls parallel worktrees his biggest productivity unlock; the Module 2 pre-read lands here.
 
 A real engineering call lives in this fork: gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a worktree because git doesn't see them. AE101's default is to copy them in once at fork time. Your Module 1 evidence rides forward (along with any Module 3 artefacts if you've completed it); Module 5 and Module 6 compounding diverges in the worktree; you decide post-Module-6 what to merge back into the original. Other engineers wire it differently.
+
+## Run the fork from the original repo
 
 **Session** *(continue or new, "original repo")*
 
@@ -55,6 +67,8 @@ The worktree is forked and ready. You open the session in it at the first exerci
 - No benchmark told you what went wrong; the artefact did. The artefact rules, self-reports don't.
 - Your verifier is your first eval. The team kit's evals grow from here
 
+## Re-send the same task, packaged
+
 Now the re-send. Same task as Module 4, packaged this time. The prompt can be short because the packaging carries the context: the reference pins the goal, plan.md carries the state, the verifier carries the quality gate. The packaging does the explaining; the prompt invokes it.
 
 **Session** *(new, "M5 long-run")*
@@ -70,6 +84,8 @@ Fresh context matters here. The exercise session built heavy scrollback (verifie
 Prefer to stay in the exercise session? Paste this to drop scrollback in-place:
 
 {{prompt:ae101-m5-clear-before-rerun}}
+
+## Send it off and read the report cold
 
 Either way, the re-send prompt below stands alone: Claude lists the worktree root and reads what it finds.
 
@@ -105,6 +121,9 @@ Optional. Skipping does not break Module 6. Both fit the Module 5 to Module 6 ga
 
 <!-- maintainer -->
 
+**Slide-size splits (2026-07-10, hand slides-audit):** two pre-existing oversized chunks split at conceptual seams, zero wording changes — `## Re-send the same task, packaged` + `## Send it off and read the report cold` carve the re-send narrative out of `## Key Concepts` (was 430w); `## Run the fork from the original repo` carves execution out of the worktree rationale (was 309w). Headers are command-verb, build-squint checked. Key Concepts now ends at its sixth bullet as the section name promises.
+
+**Nag beat + reading reminder added (2026-07-10, Antti-directed cognitive-load arc):** (1) *Long runs, short reads* blockquote in Start here — the M5 reminder leg of the selective-reading arc (M1 teach → M2 exception → M3 take-into-use → M5 remind), per `check_student_facing.md` §29 operational-reminder-at-moment-of-use. (2) New section *The nag writes the verifier* after Start here — reframes the M4 mid-run worry as the verifier's spec ("the feeling of what is missing points at what to build", Antti's frame near-verbatim); names the reference/plan.md/verifier trio in the same role-language the re-send section already uses. Opener-dosage check: arming beat (spirit + one move), does not name Ronacher's three-pattern or the failure-mode↔packaging pairing — closer's beats intact. First para names a plausible mid-run worry: resonant-copy carve-out, don't flatten at re-audit. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Quality:** compendium-audited 2026-07-08 (writing@0ef2ca6 story@1ff6f8a technical@0ef2ca6 behavior@1ff6f8a pedagogy@0ef2ca6 strategy@1ff6f8a slides@47f3357)
 - judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (override-r1-Debrief-canonical-section-vocab-per-carve-out-see-instances/ae101--learn-from-the-test.slides.json)

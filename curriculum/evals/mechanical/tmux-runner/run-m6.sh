@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
-# run-m6.sh — drive AE101 M6 (Spot gaps, build the loop + Arc retrospective)
-# end-to-end.
+# run-m6.sh — drive AE101 M6 (Spot gaps, build the loop) end-to-end.
 #
 # Single session in the M5 worktree (`../<repo>-m5`). Walks scenarios/m6.txt:
 # diff-two-runs → cut-stale-rule → study-the-stack → draw-shapes →
 # primitives-menu → author-skill (interview + save-gate) → critique →
-# invoke-on-real-run → arc-retrospective.
+# invoke-on-real-run.
 #
-# Why single-session, not race-based like M3: M6 is reflection + authoring +
-# retrospective, no parallel tracks. The arc-retrospective prompt body asks
-# the agent to dispatch a fresh Agent-tool sub-task internally; the runner
-# stays one pane.
+# Why single-session, not race-based like M3: M6 is reflection + authoring,
+# no parallel tracks.
+#
+# arc-retrospective-1 (formerly T9) was cut from the exercise 2026-07-05
+# (commit 9c954ca, "cut two M6 beats" — arc-recognition carried by the
+# Human close + the-map-filled-in instead). Removed from the scenarios
+# and this runner 2026-07-10.
 #
 # Per-turn artifact assertions (check_platform_and_boundaries.md § 16a):
 # sentinel completion proves the turn finished, not that the prompt's
@@ -26,8 +28,7 @@
 #     "m6_session_uuid": "<uuid>",
 #     "m6_transcript_path": "<path>",
 #     "m6_new_skills": ["skill-name-1", ...],
-#     "m6_claude_local_md_mtime_advanced": true|false,
-#     "m6_arc_note_paths": ["<saved-path>", ...]
+#     "m6_claude_local_md_mtime_advanced": true|false
 #   }
 set -euo pipefail
 
@@ -64,16 +65,15 @@ mkdir -p "$sentinel_dir"
 session="runner-$run_id"
 launch_cmd="env CLAUDE_RUNNER_SENTINEL_DIR=$sentinel_dir ${CLAUDE_CMD:-claude}"
 warmup="${CLAUDE_RUNNER_WARMUP:-10}"
-# M6 turns are reading-heavy (Phase 1 diff across two runs, arc-retrospective
-# read across six modules). Authoring + invocation turns are shorter. Default
-# 1h matches M1/M2; override via env.
+# M6 turns are reading-heavy (Phase 1 diff across two runs). Authoring +
+# invocation turns are shorter. Default 1h matches M1/M2; override via env.
 standard_timeout="${CLAUDE_RUNNER_TIMEOUT:-3600}"
 # Soft cap for the -study turn ONLY (default 300s = 5 min). -study scans the
 # whole ~/.claude/projects/ tree — the one turn with unbounded read time. If it
 # runs past this it gets ESC-interrupted and nudged to wrap up ("Just give me
 # the results. We continue."), then the walk continues. Every OTHER turn keeps
-# the plain hard timeout (standard_timeout) — diff (T1) and arc-retro (T9) are
-# legitimately long at high effort and must not be clipped. Set
+# the plain hard timeout (standard_timeout) — diff (T1) is legitimately long
+# at high effort and must not be clipped. Set
 # CLAUDE_RUNNER_SOFT_CAP=0 to disable the nudge entirely.
 soft_cap="${CLAUDE_RUNNER_SOFT_CAP:-300}"
 
@@ -84,11 +84,6 @@ soft_cap="${CLAUDE_RUNNER_SOFT_CAP:-300}"
 # dotted SUT path lands.
 encoded_cwd="$(echo "$sut_cwd" | sed 's|/|-|g')"
 transcripts_dir="$HOME/.claude/projects/$encoded_cwd"
-# user_mem_dir = home-keyed auto-memory for THIS SUT cwd. M6 arc-retrospectives
-# may land here (the picoshare 2026-05-26 practice-arc-M1-M6.md case): the
-# agent reasons about cross-module retrospectives as personal-not-team and
-# picks the home-keyed slot over the in-repo observations/ memo shape.
-user_mem_dir="$transcripts_dir/memory"
 mkdir -p "$transcripts_dir"
 pre_transcripts="$(ls "$transcripts_dir" 2>/dev/null | sort | tr '\n' ' ')"
 baseline_sha="$(cd "$sut_cwd" && git rev-parse --short HEAD)"
@@ -100,13 +95,6 @@ pre_skills="$(ls "$skills_dir" 2>/dev/null | sort | tr '\n' ' ')"
 
 claude_local_md="$sut_cwd/CLAUDE.local.md"
 claude_local_mtime_baseline="$(mtime_of "$claude_local_md")"
-run_start_epoch="$(date +%s)"
-# Reference marker for "files saved during this run". find_recent_md uses
-# `-newer <reffile>` (POSIX) — BSD find on macOS can't parse `-newermt
-# "@epoch"` and errored silently, so the old arc-note scan never matched
-# (IMPROVEMENTS.md Fix 4, 2026-05-25).
-run_start_marker="$run_dir/.run-start"
-touch "$run_start_marker"
 
 echo "[m6] cwd=$sut_cwd run=$run_id"
 echo "[m6] baseline sha=$baseline_sha branch=$baseline_branch"
@@ -224,16 +212,6 @@ assert_turn() {
         # differently — fall back to the menu vocab + judgement words.
         assert_scrollback_grep "T8 invoke+judge" "$transcript" "invoke|invoked|catch|caught|miss|missed|finding|pass|fail|fired|output|good|useful|sharper"
         ;;
-    9)  # arc-retrospective-1 — one-page note, agent shows before saving,
-        # student-picked destination (ADR / observations/ / standalone
-        # file). The body says "Show me the note before you save it.
-        # I'll push back, then we save." The codesearch variant adds an
-        # explicit save-approval literal after this turn; the lemmings
-        # variant leaves the save to a follow-up turn. Scrollback must
-        # contain a note-shaped output (arc / changed / pattern words +
-        # a proposed destination).
-        assert_scrollback_grep "T9 arc-note" "$transcript" "arc|changed|pattern|shape|practice|ADR|memo|memory|standalone|propose"
-        ;;
     *)
         echo "[m6] no assertion configured for prompt-key turn $seq" >&2
         return 1
@@ -321,28 +299,6 @@ if [[ ${#new_skills_list[@]} -gt 0 ]]; then
   new_skills_json="[$(printf '"%s",' "${new_skills_list[@]}" | sed 's/,$//')]"
 fi
 
-# Detect arc-retrospective save destinations (IMPROVEMENTS.md Fix 4,
-# 2026-05-25; Fix 5, 2026-05-26). The note's destination is student-picked
-# (ADR / observations/ memo / standalone file / home-keyed auto-memory),
-# so we can't pin a single path. The old code walked a fixed dir-whitelist
-# (.claude/memory, docs/adr, docs/adrs, root) at maxdepth 1 — it missed
-# the 2026-05-25 lemmings docs/notes/ pick and reported []. Walk the
-# whole worktree for .md files newer than the run-start marker, excluding
-# known noise. Also walk $user_mem_dir — the picoshare 2026-05-26 run
-# saved practice-arc-M1-M6.md to ~/.claude/projects/<encoded>/memory/
-# (reasoning: cross-module retrospective is personal, doesn't fit the
-# atomic-memo observations/ shape). False positives (e.g. an edited
-# CLAUDE.local.md) are recoverable by a human; false negatives mean
-# state.json lies.
-arc_paths_list=()
-while IFS= read -r path; do
-  [[ -n "$path" ]] && arc_paths_list+=("$path")
-done < <(find_recent_md "$sut_cwd" "$run_start_marker" "$user_mem_dir")
-arc_paths_json="[]"
-if [[ ${#arc_paths_list[@]} -gt 0 ]]; then
-  arc_paths_json="[$(printf '"%s",' "${arc_paths_list[@]}" | sed 's/,$//')]"
-fi
-
 # CLAUDE.local.md mtime delta — observation only, not gating.
 claude_local_mtime_now="$(mtime_of "$claude_local_md")"
 claude_local_advanced="false"
@@ -364,7 +320,6 @@ cat > "$state_file" <<EOF
   "m6_new_skills": $new_skills_json,
   "m6_claude_local_md": "$claude_local_md",
   "m6_claude_local_md_mtime_advanced": $claude_local_advanced,
-  "m6_arc_note_paths": $arc_paths_json,
   "task_slug": "$task_slug"
 }
 EOF

@@ -27,7 +27,7 @@ One module at a time. Pick a tab; the URL hash holds the selection so you can sh
 4. Exercise — [Orient and introspect](./#exercises-orient-and-introspect) (15–20 min)
 5. Exercise — [Fix tests-first](./#exercises-fix-tests-first) (25 min)
 6. Exercise — [Compound and close](./#exercises-compound-and-close) (30 min)
-7. Lecture — [The machine you just met](./#lectures-the-machine-you-just-met) (recognition closer, ~5 min; names the two behaviors the exercises surfaced across Ex1–Ex3)
+7. Lecture — [The machine you just met](./#lectures-the-machine-you-just-met) (recognition closer, ~5 min; names the three behaviors the exercises surfaced across Ex1–Ex3)
 8. Lecture — [How this training was built](./#lectures-how-this-training-was-built) (arc closer; names compound engineering)
 
 **Learning goals.** Student can:

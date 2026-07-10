@@ -91,6 +91,20 @@ All three install to `~/.claude/skills/<name>/SKILL.md` during prework. M3 invok
 
 The `agentic-nerd` skill at `content/skills/agentic-nerd/` is an optional self-study facilitator the engaged self-study student can install. Cohort delivery does not install or depend on it; it is not part of the curated three above.
 
+## Reading contract
+
+First-cohort overload response (root diagnosis: big outputs + unfamiliar ground + pressure to proceed; root feeling = lost control → `theory-plan.md` § Why this exists; strategic rule + test-on-draft → `bosser-strategy:content-strategy-agentic-engineering-101.md` § Woven design rules #3). Doctrine: the student never reads agent output whole. Control = interrogation (ranked read, probe the known, forced self-critique) + the merge gate, not coverage.
+
+Arc, five beats, each anchored in a shipped surface:
+
+1. **M1 teach**, `lectures/the-machine-you-just-met.md`, third behavior *It answers in essays*; handle **Never let the agent say everything**.
+2. **M2 exception**, `exercises/push-back-on-the-plan.md` § *The plan is the one you read whole*; plans are the deliberate full read (`push-back-on-the-plan-1` asks "detail over brevity" by design).
+3. **M3 take-into-use**, `exercises/map-the-access-surface.md` opener *Take the ranked ten, leave the rest on disk*; closer pair in `lectures/the-loop-half-filled.md` (*Reading was never the control* · *The branch is the permission*).
+4. **M4 silent model**, `walk-and-send-off-2` enforces ranked-top-five; exercise body carries skim-to-payoff cues.
+5. **M5 remind + convert**, `learn-from-the-test.md` § *Long runs, short reads* blockquote + § *The nag writes the verifier*.
+
+Prompt mechanics carrying the contract: `map-the-access-surface-2` (map to disk, path back), `map-the-access-surface-3` (ranked, ten lines, expand on ask), `threat-model-with-stride-1` (STRIDE in subagent, list to file, high-severity flags only in chat), `ae101-m5-rerun-packaged` (three lists, no narrative). New heavy-output prompts follow the same shape: bound the chat read, full record to disk, detail on ask. A full-read ask is a deliberate exception and says so, M2-style.
+
 ## Prework
 
 Prework is agentic end-to-end. The student unzips the content folder, points the agent at it, and asks the agent to walk through prework. The agent runs the repo-choice conversation, the bug-finding conversation, the install check. No "create this file, paste this content, commit these lines."

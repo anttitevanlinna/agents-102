@@ -25,6 +25,12 @@
 
 Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. While Claude works, take in the side material that fits the wait: the [Multi-session and Git: survival guide](trainings/agentic-engineering-101/reference/multi-session-git.md) if you skipped it in the gap, or the plan-mode-at-depth section of [Claude Code for engineers](trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#5-plan-mode-at-depth) for the approval-paths table. When Claude is on a long-running prompt, that's when you take in selected side reading or watch a demo. Wait isn't dead time.
 
+## The plan is the one you read whole
+
+- M1 named the countermove: never let the agent say everything, take the ranked list first.
+- A plan is the exception. Approval hands it to execution as the whole contract, and a summary of a contract is not a contract.
+- So this read is complete: every step, every file name, every verification. The countermove comes back the moment you approve.
+
 ## Read the plan before you push back
 
 - Open the plan file; the chat summary is secondary, the file is the artifact. The agent explores, writes a plan file with a descriptive name (e.g. `migrate-auth-hash-calm-otter.md`), and pauses for approval.
@@ -103,6 +109,8 @@ Then just hit stop.
 **What happened:** The agent wrote a plan. You picked *keep planning with feedback* and sent two push-backs: what YOU saw. The agent regenerated. Then you ran a second-pass read: the agent asked one question at a time, walking down branches you didn't think to check, suggesting answers. You confirmed or corrected. The plan sharpened. You approved. You did not run the code. You asked Claude what the second-pass read surfaced that your push-back didn't, and whether any of it would have mattered in execution.
 
 <!-- maintainer -->
+
+**Read-whole exception slide added (2026-07-10, Antti-directed cognitive-load arc):** new chunk *The plan is the one you read whole* before *Read the plan before you push back*. Names M1's never-let-the-agent-say-everything countermove and frames the full plan read as its deliberate exception — protects this module's complete-read pedagogy from the selective-reading arc (M1 teach → M3 take-into-use → M5 remind) instead of colliding with it. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** Handles kept bold: the **Stop.** governor in the What-you-do line, the **keep planning with feedback** approval path, the three push-back axis menu items (**Soft items** / **Assumptions** / **Committed changes**), the coined term **Plan-mode approval inflation** at its naming moment (bold narrowed to the handle), and the law **Find is easier than judge** newly bolded at its naming moment; all other bullet/paragraph leads de-bolded. Widget chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 

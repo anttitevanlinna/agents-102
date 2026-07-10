@@ -1,6 +1,6 @@
 # The machine you just met
 
-The machine you just met has two behaviors that look like quirks and are not: it agrees with you, and it is mostly right.
+The machine you just met has three behaviors that look like quirks and are not: it agrees with you, it is mostly right, and it answers in essays.
 
 ## Agreeable answers won the preference round
 
@@ -16,15 +16,24 @@ The machine you just met has two behaviors that look like quirks and are not: it
 - A check from outside the run resets the chain. A failing test does not care how confident the answer sounded. Everything after the check builds on verified ground, and no chain grows long enough for the stacking to take over.
 - That is why the failing test came before the fix. The check existed before the code it was checking. Every edit after it had a floor to stand on.
 
-## One machine, both behaviors
+## It answers in essays
 
-- Both behaviors come from the same machine. A statistical machine tuned first for likelihood and then for approval will mirror your stance, and it will be mostly right at each step. Neither is a malfunction. Both are the design running as built.
+- The fix was three lines; the answers around it were pages. Complete, not prioritized, is the machine's default: an answer that covers everything is never wrong by omission.
+- This time the reading was cheap because the bug was trivial. On real work the reading becomes the bottleneck, not the generating, and a chain of two-page answers is how a session gets away from you.
+- The countermove costs one clause: lead with the ranked list, hold the detail until asked. **Never let the agent say everything.** The shape of the answer is part of the prompt.
+
+## One machine, three behaviors
+
+- All three behaviors come from the same machine. A statistical machine tuned first for likelihood and then for approval will mirror your stance, answer in full, and be mostly right at each step. None is a malfunction. All three are the design running as built.
 - The mirror is steered by what you bring. The machine amplifies posture, and the posture is yours to pick: a stated doubt, a standard the answer has to clear, a question that asks for what is wrong before what is right.
 - The chain of mostly-right steps is steered by what you build. A test, a type check, a second read with a different question. Each sits outside the run and resets the chain every time it runs.
+- The essay is steered by what you ask. A ranked list first, detail on request. The answer's shape is a prompt choice, not a property you live with.
 
 That is the machine. The rest is steering.
 
 <!-- maintainer -->
+
+**Third behavior added (2026-07-10, Antti-directed cognitive-load arc):** new slide *It answers in essays* between the cascading-error slide and the closer; lede + closer retitled two→three behaviors; closer gains the ask-steering bullet (bring / build / ask triple). Carries the M1 anchor of the selective-reading arc (M2 exception → M3 take-into-use → M5 remind). Handle **Never let the agent say everything** bolded at naming moment per emphasis budget. Mechanism kept observation-grade (no training-cause claim for verbosity; no citation owed — deliberate, don't strengthen to a tuning claim without a source). Ripple applied: `trainer-modules.md` M1 flow line two→three. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all three slides kept as bullets, bolded lead sentences flattened; bold survives only on the two coined-term handles at their naming moments (**sycophancy**, **cascading error**), per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Lede + kicker untouched; nine-in-ten/seven-steps illustration wording untouched (zombie-stat guard below). Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 

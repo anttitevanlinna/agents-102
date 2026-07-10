@@ -12,6 +12,13 @@
 
 ---
 
+## Take the ranked ten, leave the rest on disk
+
+- From here on, outputs get big. The access map runs pages, the STRIDE walk after it runs longer, and soon two windows produce at once.
+- The countermove from M1 goes to work: never let the agent say everything. The prompts here route the heavy output to disk and keep the chat read short, the saved map first, then a walk-through of what stood out.
+- Your read is the short list, plus the two or three entries your own knowledge of the codebase flags. The file holds the rest until a decision needs it.
+- When an answer balloons into an essay anyway, say so: ranked list first, ten lines. One sentence buys the slot back.
+
 ## Phase 1: Run the curated skill on your feature and save the map
 
 - You invoke; the skill does the breadth walk. The `access-control-analysis` skill was installed as a personal skill during prework, so Claude Code auto-discovers it by name in the m3-security session. You aren't on the hook for walking every surface. The skill and its subagent do that; you own the codebase-specific judgment the skill can't have.
@@ -78,6 +85,8 @@ Then ask Claude to add the surface the skill missed but you know matters.
 The STRIDE exercise invokes the curated STRIDE skill on the map you just built. The surface map IS the input. If you rushed Phase 2, STRIDE threat-models a thin map; if you worked the delta, STRIDE has something real to chew on.
 
 <!-- maintainer -->
+
+**Selective-reading opener slide added (2026-07-10, Antti-directed cognitive-load arc):** new chunk *Take the ranked ten, leave the rest on disk* between the header block and Phase 1 — M3 is where the M1 countermove (never let the agent say everything) becomes load-bearing: first heavy curated-skill output, two windows. Slide's claim "prompts route heavy output to disk, chat read short" verified against `map-the-access-surface-2` (saves to temp, reports path) and `-3` ("Concise") at add time; if those prompt bodies change shape, re-check the claim. Companion prompt-sharpen card (ranked bound on `-3`) pending maintainer approval. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** Handles kept bold: the delta menu pair **The over-call.** / **The miss.** (one handle per item on the Phase 3 menu slide) and the on-screen **User** skills-list label; all other bullet leads de-bolded. Widget chrome (`**Time:**`, `**Window:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 

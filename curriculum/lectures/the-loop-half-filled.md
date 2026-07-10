@@ -118,6 +118,19 @@
 - **Name the uncertainty before you move.** (Intent) Aim the work at the unknown that will teach you the most. It is the question that opens every good plan, and it is the near half's one governor.
 - It travels. It prices a plan read, picks the feature worth agent time, and tells you when a skill is worth authoring. A run that can't answer "what does this settle?" isn't aimed yet.
 
+## Reading was never the control
+
+- The outputs in this module were the biggest yet, and control never came from reading them whole. It came from three moves you already made.
+- The delta note held the map against what you already knew of the codebase, in both directions. A probe, not a read. The one-threat pick rejected most of the STRIDE walk with a named reason. The skill critique made the artifact name its own weakest part before it earned trust.
+- **Control is interrogation.** Ranked list first, probe where you know most, make the output name its weak spot. The full record stays on disk. You can always read more; you can never read all.
+
+## The branch is the permission
+
+- The side quest ran on its own branch all module and never merged. That is the shape, not an accident.
+- On a branch, acting without full control is safe: the blast radius is the branch. Let the agent run, read what your judgment flags, and leave the rest on disk.
+- Control is exercised at the merge. The ranked findings, the delta against what you know, the weak spot named: the interrogation happens there, and the merge waits until the work survives it.
+- An un-merged branch is not unfinished work. Holding the merge until control is earned is the control working.
+
 ## The far half goes quiet
 
 - The near half ran on quick feedback. Every move so far returned a result you could read within minutes: a diff, a plan, a test run. You were the feedback signal, and you were never far from the loop.
@@ -125,6 +138,8 @@
 - Nothing from the near half retires. The loop, the model in the files, the ladder, and the governor keep running underneath. The far half adds the question the near half never made you ask: how do you trust work you didn't watch?
 
 <!-- maintainer -->
+
+**Control pair added (2026-07-10, Antti-directed cognitive-load arc, unreviewed):** two recognition chunks before *The far half goes quiet* — *Reading was never the control* (control = interrogation; consolidates the delta note / one-threat pick / skill critique as three lived instances) and *The branch is the permission* (act-without-control is safe on a branch; control is exercised at the merge gate; un-merged ≠ unfinished). Direct response to first-cohort lost-control diagnosis (`theory-plan.md` § the cohort feedback). NOT map-slot laws — no map-position tags by design; recognition slides, so they don't disturb the kept-5+1 dose verdict, but they DO add ~2–3 min to the 8–10 min closer inside M3's zero-slack budget — trainer pacing flag, trim candidate is the branch slide's bullet 3 if the slot squeezes. Bullets 1–2 of the first chunk name what the student just did: earned exception (naming what they have IS the lesson), don't flatten at re-audit. Deliberately placed before the far-half forward slide: interrogation + merge-gate are the answer-shape to its closing question ("how do you trust work you didn't watch?"). Re-audit before ship.
 
 **Map figure woven in (2026-07-10, Antti-directed "complete the text→pictures replacement", unreviewed):** the ASCII banner (INTENT ─▶ CONTEXT ─▶ WORK → far half) replaced by the engine-map SVG, derived from `the-whole-map.md`'s canvas per the `the-map-filled-in.md` recipe. Edits vs the parent: ids re-prefixed `wm-` → `lh-` (theory handbook renders multiple copies on one page; duplicate ids break defs); a cream veil rect (opacity 0.55) hazes the far half (x≥600, below the phase-header row — all six phase names stay legible); the compounding loop tag + sub re-emitted above the veil (named this run per the ASCII it replaces); the three seam-straddling Work labels (build loop, agent's own loop, prototyping ghost — tags + subs) re-emitted lit above the veil with a cream erase-stroke (`paint-order="stroke"`), else the veil edge cuts each label in half (caught on Chrome render 2026-07-10); two caption strips added at y=522: `NAMED THIS RUN: INTENT · CONTEXT · WORK` (near) and `THE FAR HALF · M4–M6` (veiled side) — carrying the deleted ASCII's two text payloads. Figure block is blank-line-free ON PURPOSE (marked terminates raw-HTML on an interior blank line). Straddling strands (build loop's right lobe, agent's own loop) sit partly under the veil — accepted wash, not a phase claim. If the M2 parent canvas changes, re-derive this copy. This also discharges the "near-half strand revisit queued for `the-loop-half-filled`" note in `the-far-half.md`. Re-audit before ship.
 

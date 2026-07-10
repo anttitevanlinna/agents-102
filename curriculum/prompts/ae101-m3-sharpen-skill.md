@@ -20,7 +20,6 @@ produces:
     location: ~/.claude/skills/test-strategy/SKILL.md (in-place sharpening update)
     consumed-by:
       - prompt:walk-and-send-off-2
-      - prompt:walk-and-send-off-4
       - prompt:diagnose-and-resend-6
       - module:spot-gaps-build-the-loop
   - id: claude-local-md

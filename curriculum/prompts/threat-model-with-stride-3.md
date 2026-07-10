@@ -16,7 +16,6 @@ produces:
       - prompt:author-test-strategy-skill-2
       - prompt:ae101-m3-sharpen-skill
       - prompt:walk-and-send-off-2
-      - prompt:walk-and-send-off-4
       - prompt:diagnose-and-resend-6
       - prompt:ae101-m5-rerun-packaged
       - module:run-the-first-experiment

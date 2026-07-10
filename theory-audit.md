@@ -45,7 +45,6 @@ Status legend: **named** = law + mechanism in student body (recoverable from pag
 | access-trust-gap | Outcome | **absent** | a·a·a·a·a·a | confirmed-gap|
 | trust-observed-competence | Outcome | **named** | m·e·n·e·n·e | |
 | value-cycle | Spine | **named** | e·n·m·m·a·a | |
-| three-block-memory | Context | **named** | e·a·m·n·e·m | |
 | l0-l3-ladder | Spine | **enacted** | e·a·a·a·a·a | confirmed-gap|
 | pattern-layer-ontology | Spine | **absent** | a·a·a·a·a·a | confirmed-gap|
 | coding-agents-meta-platform | Outcome | **named** | e·n·e·e·e·n | |
@@ -124,7 +123,6 @@ Status legend: **named** = law + mechanism in student body (recoverable from pag
 - **feedback-latency-dominates** (control): DORA = self-report survey correlation, weakest leg; stronger ground = delay bounds achievable autonomy (control theory).
 - **comparative-advantage** (econ): see delegation-boundary adoption.
 - **the-wall** (econ): phenomenon without mechanism; add J-curve.
-- **three-block-memory** (practitioner): label house-convention, not field theory.
 
 
 ## Home-grown theory the bank never recorded (64 pieces, per module)
@@ -504,8 +502,6 @@ The course's own laws — named generalizations in student body that are NOT in 
 - **good-regulator**: Analogy-theatre risk. Conant–Ashby is a theorem about regulators homomorphic to the plant under specific formal conditions; CLAUDE.md works for the mundane reason that task-relevant tokens condition attention (plain context-engineering mechanics). The theorem does not transfer as proof — keep it as an intuition pump, but don't let students believe cybernetics has certified their context files.
 
 - **requisite-variety**: Endorses fan-out as variety-splitting without the canon's boundary condition: Anthropic's own multi-agent system won only on read-heavy parallelizable research (and they flag coding as poorly parallelizable), while Cognition's 'Don't Build Multi-Agents' argues dispersed context produces conflicting implicit decisions on write-heavy work. As banked, the piece teaches students to fan out exactly where the field says not to.
-
-- **three-block-memory**: House typology not in the field's shared vocabulary, with short-to-medium half-life risk: the canon converged on hierarchical context files + progressive-disclosure skills + compaction, and harness-dependent block schemes rot as harnesses change. Fine as a teaching scaffold if labeled house-convention; a problem if presented as field theory alongside Boyd and Deming.
 
 - **coding-agents-meta-platform**: 'Vendor platforms cannot extend themselves' is an impossibility claim doing marketing work — house-thesis confirmation risk. The defensible canon form is Bitter-Lesson economics: a general tool riding the model curve beats bespoke platform scaffolding. State it as an economic tendency with a mechanism, not a law about what competitors can't do.
 

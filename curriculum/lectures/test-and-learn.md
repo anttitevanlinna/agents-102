@@ -37,14 +37,13 @@ You're new to this country; don't travel it like a tourist. A tourist runs an ag
 **Quality:** compendium-audited 2026-07-08 (writing@689e7e0 story@689e7e0 technical@689e7e0 behavior@689e7e0 pedagogy@689e7e0 strategy@689e7e0 slides@47f3357) — predates the slide rework; re-audit before ship.
 - judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
-**Lecture meta:** *10–12 min lecture, now deck-shaped (4 slides + kicker). Sets up M4's walk-and-send-off exercise. Names the spirit of the two-run arc and the one move the exercise opens with — gap analysis. Huryn's three-block memory is seeded in body language (walk-your-memory shape, no attribution) and lands by name at the exercise's Phase 3 when materials get rearranged. See strategy doc § Huryn.*
+**Lecture meta:** *10–12 min lecture, now deck-shaped (4 slides + kicker). Sets up M4's walk-and-send-off exercise. Names the spirit of the two-run arc and the one move the exercise opens with — gap analysis.*
 **Word count:** ~380 words body (post slide rework).
 
 **Time:** 10–12 min at presentation pace. Don't rush; don't pad. The "spirit" slide is load-bearing — it's where the experimental stance lands.
 
 **Frameworks attributed:**
 - **Gap analysis** — generic business-analysis framework; no single attribution. Named as *walk the system you have against the system the task needs.*
-- **Huryn's three-block memory** — Paweł Huryn `[practitioner direct]`. NOT named in this lecture body — attribution lives at the M4 exercise Phase 3 (`walk-and-send-off.md`) when materials get rearranged. Freshness re-check required before first cohort delivery.
 - **Ronacher's three-pattern** — Armin Ronacher `[practitioner direct]`. No longer named in this body (2026-07-02 slides-only pass; attribution-cap + M5-owns-the-naming). The pieces appear only by deliberate absence ("no plan.md, no verifier, no reference artifact"). M5 owns the teaching and the name.
 - **Compound engineering** — Kieran Klaassen `[practitioner direct]`. Implicit in the *test → learn → encode* framing; not name-attributed in this lecture (Klaassen attribution lives at Debrief in M1 and here-onwards is experienced, not recited).
 
@@ -52,16 +51,13 @@ You're new to this country; don't travel it like a tourist. A tourist runs an ag
 
 **Vision vs. detail:**
 - Vision layer: the test-and-learn spirit, two-run arc framing, cancel-is-legit rule, experimental-stance positioning.
-- Detail layer: Huryn three-block memory (needs URL + within-6-months source), Ronacher three-pattern (same).
+- Detail layer: Ronacher three-pattern (needs URL + within-6-months source).
 
 **Watch-fors (delivery):**
 - Don't slide past "a tourist runs an agent and hopes; a practitioner runs a test and reads the data" — that's the sentence that gives the module its mood. Land it.
 - Don't pre-teach Ronacher's three-pattern. M5 does it through diagnosis; naming the pieces here steals M5's contrast.
 - Don't turn "cancel is legit" into a disclaimer. It's a practitioner rule, not a safety net. Frame it as *what real operators do*, not *what nervous students can fall back on*.
 
-**Source freshness:** Huryn `productcompass.pm/p/claude-md-snippets` verified at 2026-03-31 — within 6 months.
-
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
-- `[checked:2026-05-25 result:OK due:2026-09-30]` https://www.productcompass.pm/p/claude-md-snippets — [practitioner direct] Huryn three-block CLAUDE.md memory (Knowledge Architecture / Decision Journal / Quality Gate), Mar 31 2026. fallback: if removed, paraphrase as observation-rule / decision-with-alternatives / quality-criterion, no name attribution; M4 Phase 3 carries the naming.
 - `[checked:2026-07-02 result:CAVEAT due:2027-01-02]` https://lucumr.pocoo.org/2025/6/12/agentic-coding/ — [practitioner direct, historical Jun-2025] Ronacher agentic-coding principles; re-verified live 2026-07-02 (byline + Jun 12 2025 date hold); does NOT carry verbatim reference/plan/verifier triad + out of freshness window. fallback: anchor the three-pattern to the in-window MiniJinja port (C-2); keep this post as dated principles only.
 - `[checked:2026-07-02 result:CAVEAT due:2026-08-09]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen Definitive Guide (Feb 9 2026); re-verified live 2026-07-02; core "each unit makes the next easier" thesis verified, source exits 6-mo window 2026-08-09 (before a Sep-2026 cohort — apply fallback or date it then), explicit plan/work/review/compound naming is convergent-across-appearances not verbatim-on-page. fallback: phrase as "the four-step loop that runs through his work"; treat any Every.to outcome metric as vendor-self-reported.

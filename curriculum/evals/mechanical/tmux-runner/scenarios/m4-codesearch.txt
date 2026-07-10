@@ -27,8 +27,8 @@
 # highest risk — the tail forbids AUQ AND tells the agent how to make
 # decisions without it. No canned-reply literals in this scenario
 # (matches lemmings m4.txt shape; run-m4.sh hardcodes
-# turn-5.transcript.txt for the commit-SHA grep, so literals before
-# turn 5 would shift the index).
+# turn-4.transcript.txt for the commit-SHA grep, so literals before
+# turn 4 would shift the index).
 
 # T1: scope + screen against two candidates. Tail provides both
 # candidates with file paths + scope estimate. Agent should pick the
@@ -51,14 +51,12 @@ walk-and-send-off-2 Don't call AskUserQuestion — return the structured report 
 # socket" (already in the skill — surface it as an observation).
 walk-and-send-off-3 I'm doing a headless dry-run, please don't call AskUserQuestion — use your judgment. From the audit's top-5, pick the 2-3 gaps that most directly affect a send-off for the M3 ADR implementation and would hurt the run most if left thin. For each picked gap, propose the fill in the shape the audit named (observation / sharpened rule / business-rules gap / connector setup), write it in the destination the audit named (`observations/` for observations and business-rules gaps; `./CLAUDE.local.md` for rule sharpening), and proceed without confirmation. Don't over-fill — 2 or 3 picks is the target, not all five.
 
-walk-and-send-off-4 Don't call AskUserQuestion — show me the three blocks with their quoted examples in chat. If a file move or rename is genuinely warranted, propose at most one and stop short of executing it; the send-off is next and I want the tree stable.
-
-# T5: commit starting point. The prompt body requires reading
+# T4: commit starting point. The prompt body requires reading
 # ae101-m4-locate-transcript output for the transcript path; the
 # lemmings m4.txt scenario doesn't run that prompt either, so the agent
 # is expected to locate the transcript itself from
 # CLAUDE_CODE_SESSION_ID + cwd encoding. Run-m4.sh greps a 7-12 hex SHA
-# from turn-5.transcript.txt — keep this as turn 5.
+# from turn-4.transcript.txt — keep this as turn 4.
 ae101-m4-commit-starting-point Don't call AskUserQuestion. The task-slug for the branch should match what you're actually implementing (e.g. `implement-show-clamp` for the I-class /show clamp the M3 ADR specifies) — pick one in that shape and proceed; locate the transcript path yourself from CLAUDE_CODE_SESSION_ID and the encoded cwd, then write it into the Run coordinates block as instructed.
 
 # T6: the long autonomous send-off. Highest AUQ risk — runs for up to

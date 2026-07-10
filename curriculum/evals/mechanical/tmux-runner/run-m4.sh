@@ -2,7 +2,7 @@
 # run-m4.sh — drive AE101 M4 (Run the First Experiment) end-to-end.
 #
 # Single session in the main repo. Walks scenarios/m4.txt: scope → audit →
-# gap-fill → Huryn frame → commit starting point → send-off (walk away).
+# gap-fill → commit starting point → send-off (walk away).
 #
 # What's different from run.sh:
 #   - Per-turn timeout: last turn (send-off) gets a long timeout (default 1h);
@@ -196,7 +196,7 @@ done
 # context) rather than the new commit. Authoritative source is git
 # itself: the "M4 starting point" commit is the most recent commit
 # matching that exact message on the current branch.
-commit_turn_transcript="$run_dir/turn-5.transcript.txt"
+commit_turn_transcript="$run_dir/turn-4.transcript.txt"
 m4_sha=""
 m4_sha="$(cd "$sut_cwd" && git log --format='%h' --grep='^M4 starting point$' -1 2>/dev/null || true)"
 # Fallback to transcript grep only if the git lookup found nothing.

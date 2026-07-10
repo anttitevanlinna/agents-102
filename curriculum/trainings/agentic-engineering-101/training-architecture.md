@@ -33,7 +33,7 @@ The student's real repo is the working directory. Every module starts a fresh ag
 ├── .gitignore                     # student adds CLAUDE.local.md + observations/ here in M1/M4
 ├── CLAUDE.md                      # team-shared, PR-reviewed; grows from M2 Debrief onward
 ├── CLAUDE.local.md                # personal, gitignored; created by M1 compound exercise
-├── observations/                  # observations + business-rules notes (Block 1); introduced at M4
+├── observations/                  # observations + business-rules notes; introduced at M4
 └── ...                            # the real codebase
 ```
 
@@ -69,7 +69,7 @@ The in-repo knowledge home needs a rename too, but for a separate, mechanical re
 1. *Auto-memory name reflex.* "memory" is a reserved Claude Code term, the agent's own recall home at `~/.claude/projects/<encoded-cwd>/memory/`, surfaced via `/memory`. Told to "persist this to `.claude/memory/`," the agent sometimes treats it as a memory operation and routes to the user-level home instead of writing the in-repo file. Unpredictable: codesearch M4 routed user-level twice; an interactive write landed in-repo. The unpredictability is the defect.
 2. *Sensitive-path guard.* Writes under `.claude/` are gated as sensitive. In headless / acceptEdits runs, the mechanical runner, any unattended cohort run, the gate denies with no human to approve, and the file lands nowhere at all.
 
-**Decision.** Move the home out of `.claude/` and away from "memory": repo-root `observations/`. One move escapes both failure modes. The folder holds what the writer (`walk-and-send-off-3`) actually produces, observations plus business-rules gaps, i.e. the Huryn Block 1 of observations → hypotheses → rules. Decisions (Block 2) keep living in the ADR home; quality criteria (Block 3) keep living in authored skills. "Three-block memory" stays a reading frame across three homes; `observations/` is one block, not "the memory folder." This also retires a real drift: several prompts wrongly call `.claude/memory/` "the three-block memory home" when only Block 1 ever landed there.
+**Decision.** Move the home out of `.claude/` and away from "memory": repo-root `observations/`. One move escapes both failure modes. The folder holds what the writer (`walk-and-send-off-3`) actually produces: observations plus business-rules gaps. Decisions keep living in the ADR home; quality criteria keep living in authored skills, three separate homes, one per kind of artifact. `observations/` holds observations only, not decisions or quality criteria, so it is one home among three, not "the memory folder." This also retires a real drift: several prompts wrongly called `.claude/memory/` the whole knowledge home when only the observations ever landed there.
 
 **Name choice.** `observations/` over the previously-parked `context/`: "context" is itself a reserved platform word (context window, `/context`), so it would re-introduce the same reserved-term collision the rename exists to kill. Side benefit: a plain repo dir is runtime-agnostic, so the Gemini per-runtime path table below collapses that row to a single path.
 
@@ -77,7 +77,7 @@ The in-repo knowledge home needs a rename too, but for a separate, mechanical re
 
 **Why not the platform's auto-memory.** Routing is unpredictable (above), and the feature is user-scoped and per-machine, the wrong scope for codebase knowledge that must travel with the repo and the worktree fork. Some engineers also disable it. The in-repo file model is the deliberate teaching model; the rename only stops it colliding with the platform feature.
 
-**Sweep surface** (own session): prompt registry (~8 keys touching `.claude/memory/`), exercise + module + lecture bodies (~25 files), mechanical runner (`run-m4.sh` `proj_mem_dir`, `classify_memory_write` in `lib/assertions.sh`, M4/M6 scenarios), compendiums (`check_platform_and_boundaries.md §6d`, the student-facing memory-disambiguation rule), the per-runtime path table below (row "Three-block memory"), and the `pre-cohort-todos.md` line-24 bullet. Touching student-facing files auto-degrades Quality per-class, so a `curriculum-pre-ship-audit` pass follows the sweep.
+**Sweep surface** (own session): prompt registry (~8 keys touching `.claude/memory/`), exercise + module + lecture bodies (~25 files), mechanical runner (`run-m4.sh` `proj_mem_dir`, `classify_memory_write` in `lib/assertions.sh`, M4/M6 scenarios), compendiums (`check_platform_and_boundaries.md §6d`, the student-facing memory-disambiguation rule), the per-runtime path table below (the knowledge-home row), and the `pre-cohort-todos.md` line-24 bullet. Touching student-facing files auto-degrades Quality per-class, so a `curriculum-pre-ship-audit` pass follows the sweep.
 
 ## Skills
 

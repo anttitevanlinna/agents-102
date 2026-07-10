@@ -26,7 +26,7 @@ AE101 ships today on Claude Code (CLI + Desktop). Cowork is not a supported runt
 
 AE101 usually runs weekly. At the start of every non-first session, name last week's state and the artifact the module expects. The module and exercise files are the source of truth for exact handoffs. If state is messy, do not moralize. The artifact is whatever exists; missing state is data the training can read.
 
-**FYI: `observations/` is a convention, not a Claude Code primitive.** Students author a three-block knowledge folder at `observations/` in their repo (introduced at M4). It is not auto-loaded; the agent reads it when a prompt names the path, the same way it reads ADRs. Distinct from Claude Code's auto-memory at `~/.claude/projects/<project>/memory/` (written by the agent for its own recall, surfaced via `/memory`), which AE101 deliberately leaves out: compounding means the student steers what gets remembered, not an opaque system-written store.
+**FYI: `observations/` is a convention, not a Claude Code primitive.** Students author a knowledge folder at `observations/` in their repo (introduced at M4). It is not auto-loaded; the agent reads it when a prompt names the path, the same way it reads ADRs. Distinct from Claude Code's auto-memory at `~/.claude/projects/<project>/memory/` (written by the agent for its own recall, surfaced via `/memory`), which AE101 deliberately leaves out: compounding means the student steers what gets remembered, not an opaque system-written store.
 
 **If the lecture's "memory" framing triggers a student.** Some engineers react to the word: opaque, agentic, untrustworthy storage. Usually they're reacting to Claude Code's auto-memory (the `/memory` one), which has invited criticism for those exact reasons. What the student authored here is `observations/`: files they wrote, gitignored, prompted-read. Acknowledge the criticism (it's legitimate against auto-memory), point at the distinction, and don't argue the trigger; offer the alternate framing.
 
@@ -92,7 +92,7 @@ What it buys you:
 - M3's Q+S discipline lands AFTER students have just read the un-packaged failure. Earn-the-trust reads as response to felt-need rather than prophylactic. Engineers respond to diagnosis, not prescription, the reorder applies that frame to M3 itself.
 
 What it costs:
-- M4 Phase 2 / Phase 3 reference the M3 test-strategy skill and ADRs as audit targets. Conditional phrasing (`any skills you've authored`, `any ADRs`) covers the gap, but Block 3 of Huryn's three-block frame anchors on existing test conventions rather than an authored skill. Block 2 leans on whatever recorded decisions the repo already has.
+- M4 Phase 2 / Phase 3 reference the M3 test-strategy skill and ADRs as audit targets. Conditional phrasing (`any skills you've authored`, `any ADRs`) covers the gap, but the quality-criteria audit then anchors on the repo's existing test conventions rather than an authored skill, and the decisions audit leans on whatever recorded decisions the repo already has.
 - M4 task-pick homework moves from the M3 close to the M2 close (or prework). M4 Phase 1 still compresses to a 2-minute confirm, but the homework hand-off lives one module earlier.
 - The "discipline before you need it" framing flips to "discipline once you've felt the failure." Defensible either way; pick the one that fits your cohort.
 
@@ -100,7 +100,7 @@ When to choose which:
 - Default 3+3 (M1-M3 / M4-M6), broadest fit, no overnight gap, Q+S installed before any long-running send-off.
 - Reorder 3+3 (M1-M2-M4 / M5-M3-M6), when the sponsor wants the M4-overnight-M5 mirror and the cohort is comfortable with M3 landing after the felt failure.
 
-If you run the reorder, dry-run M4's Phase 2 / Phase 3 prompts (`walk-and-send-off-2`, `walk-and-send-off-4`) against a fresh repo with no authored skill and no ADR convention, the conditional phrasings should resolve cleanly, but verify before the cohort.
+If you run the reorder, dry-run M4's Phase 2 / Phase 3 prompts (`walk-and-send-off-2`) against a fresh repo with no authored skill and no ADR convention, the conditional phrasings should resolve cleanly, but verify before the cohort.
 
 ## M3, the security-tools surprise
 

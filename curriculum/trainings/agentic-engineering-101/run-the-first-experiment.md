@@ -16,7 +16,6 @@ After this module, you will be able to:
 - **Scope** a real send-off task in conversation with Claude, multi-file reasoning, sustained coherence, not step-by-step nudging
 - **Walk** what you've built (`CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + any skills you've authored + connectors) against the task as a subagent audit, then push back on the audit
 - **Fill** the worst gaps in conversation: new observations written, rules sharpened, business-rules pointer wired wherever your team keeps shared rules (or the gap named explicitly)
-- **Sort** your own material into the three kinds it already contains: observations turned rules, recorded decisions, quality criteria, and meet the frame that arranges them
 - **Send off** the task un-packaged in the same Claude Code session, no plan.md, no verifier, no reference artifact, and let it run
 
 ## Start here
@@ -41,7 +40,6 @@ Next, the thing you are sending: an LLM in a loop, calling tools.
 
 ## Key Concepts
 - Gap analysis is *walk the system you have against the system the task needs*. The system you have is what gets tested.
-- The three-block frame isn't a template you fill; it names what you've already built
 - Un-packaged is by design. The packaging move only lands once you've seen what un-packaged gets wrong
 - Traces are data. Stop the run when you've seen what you needed to see. Stopping is reading, not failing.
 - Every send-off is an experiment, not a production run you need to get right first time
@@ -128,7 +126,7 @@ Optional. They sit in the Module 4 to Module 5 gap while your un-packaged run is
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create
-- **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercise 55 / Debrief 12 / Send-off 5 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Send-off is a single prompt paste, not a wait. Exercise breakdown: Phase 1 pick 10 / Phase 2 walk-and-fill 35 / Phase 3 see-the-frame 10.
+- **Session runtime:** 1h45 (Connections 10 / Lecture 12 / Exercise 55 / Debrief 12 / Send-off 5 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Send-off is a single prompt paste, not a wait. Exercise breakdown: Phase 1 pick 10 / Phase 2 walk-and-fill 40 / Phase 3 settle 5.
 - **Prep / bridge timing:** `reading-the-return.md` 5 min at M4 close; Uncle Bob supplementary 7 min; Entis/Klaassen interview 30 min; Klaassen compound-engineering guide 15–20 min.
 - **Mood target:** curious readiness — *"I've built enough to try; let's see what the agent does."* Watch for: mood drift toward compliance-feeling (*"did I prepare the right way?"*) or performance-anxiety (*"what if it fails?"*). Diagnostic: student at Phase 2 keeps asking *"is this enough?"* Fix: trainer reframes — *"enough is a question for M5. The experiment is the point."*
 - **Lecture wiring (2026-07-02):** `lectures/the-agent-loop.md` promoted from M1 supplementary (Antti-directed), inlined between the far-half opener and Test and learn. Beat rationale: the far half names the country, this names the machine about to walk it; its three introspection prompts run on the live session that will carry the send-off, so the tool list that comes back is the one the long run rides. Adds ~5 min to the Lecture beat (budget above says 12 — eyeball). Promotion record + eyeball questions in the lecture's maintainer block.
@@ -139,7 +137,6 @@ Optional. They sit in the Module 4 to Module 5 gap while your un-packaged run is
 - **Phase 2 audit passivity** — student reads the ranked gap list and moves on without picking three. Trainer push: *"which of these will hurt the agent most given the task? fill those."*
 - **Phase 2 over-fill** — student tries to close all five gaps instead of the worst three. Trainer push: *"Three is the budget. Skip the other two — you'll see next module why."*
 - **Phase 2 gap deferred as "architectural, not contextual"** — student looks at a thin spot, says *"that's a real code change, I'll skip for tonight."* High-impact failure mode: skipping a contextual gap that looks architectural makes the un-packaged run fail in a *boring* way (wrong DB assumption, stale config) instead of an *interesting* way (agent loses coherence). M5 can't rescue a boring failure. Trainer hard push: *"if the audit calls it context — even if the fill is 'add a rule saying we use X, not Y' — it's still context. M5 needs an interesting failure to diagnose, not a boring one. Fill it."*
-- **Phase 3 Huryn-as-lecture** — Claude names the three-block frame before quoting the student's own decision as the Block 2 example. Trainer interrupts: *"name the frame only after showing me one of my own decisions (ADR if I have one, otherwise the most concrete recorded choice) as Block 2 — recognition first."*
 - **Debrief pre-empt** — student tries to package the task (add plan.md, build a verifier) before sending off. Trainer push: *"un-packaged is by design. M5 teaches you packaging by diagnosing what breaks here. Don't pre-empt the learning."*
 - **Send-off anxiety** — student hesitates at the final prompt (*"what if it runs forever / breaks things / gets nowhere?"*). Trainer push: *"stop it when you've seen enough. Traces are data. You don't owe the experiment a completed artifact — you owe it a result you can read."*
 - **Business-rules skipped** — student has no clear business-rules layer and moves on without naming it. Trainer push: *"the gap IS the finding. Write one line in memory naming what's missing."*
@@ -152,8 +149,8 @@ Optional. They sit in the Module 4 to Module 5 gap while your un-packaged run is
 
 **Decision points:**
 - **Phase 1 runs long (>15 min):** task is too big. Force a slice. Better a smaller task that runs the full arc than a large one the student can't scope in 15 min.
-- **Phase 2 runs long (>40 min):** audit surfaced genuinely useful gaps. Let it run; compress Phase 3 to 10 min if needed (Huryn recognition is quick when materials are rich).
-- **Phase 3 runs short (<10 min):** student didn't recognise the frame in their own work. Diagnostic: did Claude quote from their own ADRs or recorded decisions? If not, redo the prompt.
+- **Phase 2 runs long (>40 min):** audit surfaced genuinely useful gaps. Let it run; compress the Phase 3 settle beat if needed.
+- **Phase 3 runs short:** fine; the settle beat is quick. Confirm the tidy-up diff landed before the send-off.
 - **Whole-room mood below 7:** curious readiness isn't landing. Check: did the pick conversation produce real tasks (curiosity) or compliance ones (performance)? If compliance, Phase 1 trainer push-back wasn't sharp enough. Task-selection is where this mood starts or dies.
 
 **Plug points (trainer):**
@@ -182,7 +179,7 @@ Optional. They sit in the Module 4 to Module 5 gap while your un-packaged run is
 | Connections — *"come with one or two real candidates"* | Connections blocker — student can't name a task, or names a typo-fix / quarter-long epic | Trainer runs three-candidate conversation. Criteria: sustained coherence, requirement-weaving, multi-file reasoning. Push against too-small AND too-large. |
 | Phase 2 — *"pick the worst three gaps from the audit, fill those"* | Phase 2 over-fill — student tries to close all five gaps | Trainer push: *"Three is the budget. Skip the other two — you'll see next module why."* |
 | Phase 2 — *"if the audit calls it context, fill it"* | Phase 2 gap deferred as *"architectural, not contextual"* — student skips a contextual gap that looks architectural; the un-packaged run fails in a boring way M5 can't rescue | Trainer hard push: *"if the audit calls it context — even if the fill is 'add a rule saying we use X, not Y' — it's still context. M5 needs an interesting failure to diagnose, not a boring one. Fill it."* |
-| Phase 3 — *"Claude quotes one of your own recorded decisions (ADR or otherwise) as the Block 2 example BEFORE naming the three-block frame"* | Phase 3 Huryn-as-lecture — Claude names the three-block frame before showing the student's own decision | Trainer interrupts: *"name the frame only after showing me one of my own decisions (ADR if I have one, otherwise the most concrete recorded choice) as Block 2 — recognition first."* |
+| Phase 3 — *"settle the `observations/` tree on disk before the send-off"* | student plans the tidy-up in chat but never lands the diff | Trainer: *"show me the diff landed before you paste the send-off."* |
 | Send-off — *"pin the SHA on the named branch before sending off"* | Student notes the SHA but not the branch name, OR closes the session before the commit completes; M5's worktree instruction lands with an ambiguous starting point | Trainer push: *"read me back the branch name and SHA Claude confirmed. Have you noted both somewhere you'll find at M5 start?"* |
 | Send-off — *"send un-packaged"* | Debrief pre-empt — student tries to package (add plan.md, build a verifier) before sending off | Trainer push: *"un-packaged is by design. M5 teaches you packaging by diagnosing what breaks here. Don't pre-empt the learning."* |
 | Send-off — *"stop the run when you've seen enough; the trace is the result"* | Send-off anxiety — student hesitates at the final prompt or feels they owe the experiment a completed artifact | Trainer push: *"stop it when you've seen enough. Traces are data. You don't owe the experiment a completed artifact — you owe it a result you can read."* |
@@ -193,7 +190,6 @@ Optional. They sit in the Module 4 to Module 5 gap while your un-packaged run is
 - Uncle Bob via `supplementary/clean-code-is-steering.md` — internal supplementary, not a URL in scope; its own source references are that file's audit surface. No stamp here.
 
 **Frameworks riffed on (attributed in lecture):**
-- **Huryn's three-block memory** — Paweł Huryn. Frame earns its name at Phase 3 through recognition in the student's own material.
 - **Gap analysis** — generic business-analysis framework; no single attribution needed. Named in Phase 2 as *"walk the system you have against the system the task needs."*
 - **Compound engineering** — Kieran Klaassen. Debrief self-compound pattern is Klaassen's Review + Compound step, now in its fourth rep for the student.
 

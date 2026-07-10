@@ -143,13 +143,11 @@ One module at a time. Pick a tab; the URL hash holds the selection so you can sh
 
 - Scope a real send-off task in conversation with Claude — multi-file reasoning, sustained coherence, not step-by-step nudging.
 - Walk what they've built (`CLAUDE.md` + `CLAUDE.local.md` + `observations/` + ADRs + authored skills + connectors) against the task as a subagent audit; push back on the audit.
-- Fill the worst gaps in conversation: observations written, rules sharpened, business-rules pointer wired (or named explicitly as a gap).
-- Name Huryn's three blocks in their own material: Block 1 (observation → hypothesis → rule), Block 2 (decisions + alternatives), Block 3 (quality criteria).
-- Send the task off un-packaged in the same Claude Code session and let it run.
+- Fill the worst gaps in conversation: observations written, rules sharpened, business-rules pointer wired (or named explicitly as a gap).- Send the task off un-packaged in the same Claude Code session and let it run.
 
 **Exercise goals.**
 
-- *Walk and send off* — system walked against the task; gaps filled; Huryn's three blocks named in the student's own material (the frame names what's already there, not a template to fill); tree settled before Debrief. The un-packaged send-off fires at close and runs into the M4→M5 break.
+- *Walk and send off* — system walked against the task; gaps filled; tree settled before Debrief. The un-packaged send-off fires at close and runs into the M4→M5 break.
 
 **Trainer cues.** Drop Connections from 10 to 5; cut Bridge (the 20-min break absorbs the transition); compress Phase 2→3 banter to ~5 min if tight. Expect the "memory is overrated, we should have a company brain" objection during the closing lecture — that's where it lands. Run the company-layer question as open, not settled. **Memory-word allergy:** some engineers react against the auto-memory framing; acknowledge it's legitimate against Claude Code's `/memory`, then point at the disambiguation in `walk-and-send-off.md` Phase 2.
 

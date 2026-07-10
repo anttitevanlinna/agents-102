@@ -153,8 +153,8 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
-| Architecture Decision Record | sponsor-stated ADR home; default `docs/adr/NNNN-slug.md` | Exercise 2 (STRIDE → hardening decision → ADR write) | M4 Phase 2 walk-and-fill (audit subagent reads ADRs as part of *"system you have"*); M4 Phase 4 three-block frame (ADRs become Block 2 examples) |
-| Test-strategy skill | `~/.claude/skills/test-strategy/SKILL.md` | Exercise 3 (one-question-at-a-time authoring conversation; user-level personal install, auto-discovered every session) | M4 Phase 2 walk-and-fill (audit subagent reads as part of system); M4 Phase 4 three-block frame (skill contributes Block 3 quality criteria); M5 verifier-build (test-strategy informs the eval shape); M6 second-skill authoring (the encode loop reads the M3 skill as a precedent) |
+| Architecture Decision Record | sponsor-stated ADR home; default `docs/adr/NNNN-slug.md` | Exercise 2 (STRIDE → hardening decision → ADR write) | M4 Phase 2 walk-and-fill (audit subagent reads ADRs as part of *"system you have"*) |
+| Test-strategy skill | `~/.claude/skills/test-strategy/SKILL.md` | Exercise 3 (one-question-at-a-time authoring conversation; user-level personal install, auto-discovered every session) | M4 Phase 2 walk-and-fill (audit subagent reads as part of system); M5 verifier-build (test-strategy informs the eval shape); M6 second-skill authoring (the encode loop reads the M3 skill as a precedent) |
 | Personal rules update | `./CLAUDE.local.md` (repo-personal, gitignored) | "Sharpen the skill from evidence" prompt at module close (Claude rewrites from session evidence; user pushes back) | Every future session in this repo (auto-loads at session-cold start); specifically M4 onward sees M3's rule additions as part of personal context |
 
 **Per-phase failure mode + escape hatch** (per `check_pedagogy.md` rule 47 — every phase shipping a forcing function names its dominant failure and one recovery move):

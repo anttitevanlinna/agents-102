@@ -70,11 +70,11 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. While 
 
 - The walk-down prompt's three-at-a-time prose is the starting point. That batching cuts round-trips on the branches that need real thought. If you prefer a structured picker, switch once the walk-down is rolling. Ask Claude to switch to AskUserQuestion, and add any steering of your own.
 
-{{cut:push-back-on-the-plan-2-askuserquestion|redundant-slot}}
+{{prompt:push-back-on-the-plan-2-askuserquestion}}
 
 *Credit: Matt Pocock for the original [`grill-me`](https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md) skill. The version above is abbreviated to fit the 15-minute slot. The original is fully relentless and can run an hour. Optional:*
 
-{{cut:push-back-on-the-plan-2-original|redundant-slot}}
+{{prompt:push-back-on-the-plan-2-original}}
 
 ## Approve
 
@@ -105,6 +105,8 @@ Then just hit stop.
 <!-- maintainer -->
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** Handles kept bold: the **Stop.** governor in the What-you-do line, the **keep planning with feedback** approval path, the three push-back axis menu items (**Soft items** / **Assumptions** / **Committed changes**), the coined term **Plan-mode approval inflation** at its naming moment (bold narrowed to the handle), and the law **Find is easier than judge** newly bolded at its naming moment; all other bullet/paragraph leads de-bolded. Widget chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
+
+**Both optional walk-down escalations are kept (not cut).** `push-back-on-the-plan-2-askuserquestion` (switch to the AskUserQuestion picker) and `push-back-on-the-plan-2-original` (the unfiltered Pocock `grill-me`) are opt-in ceilings on the second read, under the *Stop when the read starts reaching* section. A student keeping it simple skips both, so they add no baseline load and cutting them reclaims none. Not cut candidates.
 
 **Quality:** compendium-audited 2026-07-08 (writing@1a9e10b story@1a9e10b technical@1a9e10b behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b slides@47f3357)
 - judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -67,7 +67,7 @@ Ask Claude to draft the ADR in your repo's convention and show it before saving.
 
 Ask Claude whether this ADR rides into future sessions automatically.
 
-{{cut:threat-model-with-stride-4|low-yield}}
+{{prompt:threat-model-with-stride-4}}
 
 - Claude's answer: no. ADRs don't auto-load like `CLAUDE.md` and `CLAUDE.local.md` do. They're on-disk and discoverable, but a future session loads them only when explicitly read. You can wire individual ADRs into team `CLAUDE.md` (one `@docs/adr/<file>.md` line per file; Claude Code's `@`-include is single-file, no glob), but most teams don't: ADRs accumulate, the window is finite, and rejected alternatives shouldn't sit in live context.
 - Selective load is the practitioner default. Module 4 will tell Claude exactly which artifacts to read at the start of the long-running run, and that explicit list is the lesson.
@@ -85,6 +85,8 @@ Ask Claude whether this ADR rides into future sessions automatically.
 <!-- maintainer -->
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain across all slides; kept bold: none (no named-move or menu handles in body); widget/label chrome (**Time:**/**Window:**/**What you do:**/**What you build:**/**The point:**/**What happened:**/**What this sets up:**) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
+
+**Auto-load-check prompt (`threat-model-with-stride-4`) kept, not cut.** Flagged `low-yield`. It's the ask-then-reveal auto-load-surface beat: the student asks whether the ADR rides into future sessions, and the reveal (no — ADRs are explicit-load, unlike `CLAUDE.md` / `CLAUDE.local.md`) teaches the boundary M4 pays off with its explicit read-list. A light one-question introspection carrying its own §2 lead-in, not concurrent-heavy load. Not a cut candidate.
 
 **M3 supply-chain easter egg — DO NOT SPOIL IN BODY:**
 - Phase 1 prompt `threat-model-with-stride-1` instructs the agent to run the curated `security-tools` skill as a pre-flight before invoking stride. `security-tools` ships a bundled `check.sh` whose first echo line is `owning you ............... ok` — the punch line, visible in Claude Code's collapsed Bash output without Ctrl+O. Expansion reveals an ASCII rick-roll plus the *external skills are a supply-chain vector* lesson framing.

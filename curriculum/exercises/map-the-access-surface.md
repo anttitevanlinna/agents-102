@@ -23,7 +23,7 @@
 
 - You should see `access-control-analysis` and `stride` listed under **User**. (If they're missing, check prework Step 4.) The Project list is whatever this repo ships; User is your personal skills. Skills you author later in Module 3 land in User too.
 
-{{cut:map-the-access-surface-1|low-yield}}
+{{prompt:map-the-access-surface-1}}
 
 These are the moves Claude has on hand for the rest of this module, and the load-on-invoke behavior matters for context economy later.
 
@@ -45,7 +45,7 @@ The plan path you noted at Module 2's close is the best input here: it names the
 - You're back in m3-security now; the map landed here. The rest of this exercise runs in this window.
 - See the structured read before you decide. Ask Claude to walk you through the surface map in chat: categories, key findings, ambiguous spots. You want the structured read in front of you before you name your deltas in Phase 3.
 
-{{cut:map-the-access-surface-3|redundant-slot}}
+{{prompt:map-the-access-surface-3}}
 
 ## Phase 3: Add the surface the skill over-called, and the one it missed
 
@@ -80,6 +80,8 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 <!-- maintainer -->
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** Handles kept bold: the delta menu pair **The over-call.** / **The miss.** (one handle per item on the Phase 3 menu slide) and the on-screen **User** skills-list label; all other bullet leads de-bolded. Widget chrome (`**Time:**`, `**Window:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
+
+**Skill-introspection (`map-the-access-surface-1`) and map-walkthrough (`map-the-access-surface-3`) prompts kept, not cut.** `-1` was flagged `low-yield`, `-3` `redundant-slot`. Both are light read/introspect beats, not concurrent-heavy execution, so cutting them reclaims none of the load the cull targeted. `-1` goes one level past `/skills` — storage location on disk plus whether skill bodies are loaded into context (the lazy-load lesson the line after it leans on). `-3` is the read-back-and-prime step before the Phase 3 delta, distinct from the map generation in `-2`. Not cut candidates. (`-1`'s in-body lead-in is thin — the sentence above the marker is about `/skills` output, not this prompt; a one-line §2 action lead-in is owed at re-audit.)
 
 **Quality:** compendium-audited 2026-07-08 (writing@0ef2ca6 story@1a9e10b technical@0ef2ca6 behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b slides@47f3357)
 - judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

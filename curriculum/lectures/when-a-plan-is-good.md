@@ -21,7 +21,7 @@ A 30-second move first. Enter plan mode in your own session right now and ask Cl
 
 Ask Claude to describe what changed in its behaviour when plan mode turned on.
 
-{{cut:when-a-plan-is-good-1|meta-retrospective}}
+{{prompt:when-a-plan-is-good-1}}
 
 
 Watch what comes back. Sometimes Claude names the read-only state directly, sometimes the specific instructions it is following. Skip if you trust the framing. The exercise will show you either way.
@@ -63,9 +63,11 @@ After you've done it once, you'll feel when a plan needs the second read and whe
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** the two checklist slides keep bullets with per-item handles (**A specific file list** / **A verification step** (trimmed to sub-span) / **Named assumptions**; **Structure is persuasive** / **Reasonableness passes for rightness** / **You already agree with it**); all other slides de-bolded fully, bullets kept (status-bar `plan` flipped bold → code span), per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Session widget + both kickers untouched. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
-**Slide-page standardization (2026-07-02, Antti-directed):** `### Optional: ask plan mode directly` promoted to `##` — every slide page = line + `##` headline (the "Wrong is how steering gets in" pattern); no h3/hr page divisions in theory lectures. Layout-only; the section still dies or lives with the prompt-cull decision.
+**Slide-page standardization (2026-07-02, Antti-directed):** `### Optional: ask plan mode directly` promoted to `##` — every slide page = line + `##` headline (the "Wrong is how steering gets in" pattern); no h3/hr page divisions in theory lectures. Layout-only. The `ask plan mode directly` section is kept (see the keep note below).
 
-**Slides-only pass (2026-07-02, unaudited):** covered regions DELETED (Path A — prose was verbatim-redundant with the slides; git carries it). Per-passage verdicts: intro agenda line CUT (slide titles carry it) · "you will notice the wait" FOLDED into slide 1 as fourth bullet (plants M3's two-window move) · "What you do with this" section CUT (the exercise body carries the flow; "then you stop" is the exercise's own beat) · feel-line KEPT as slide-4 kicker (fluency forecast, future-tense informing) · "Three things. That's the read." KEPT as slide-2 kicker · *Optional: ask plan mode directly* section KEPT UNCHANGED — its prompt is a `{{cut:}}` candidate; the section dies or lives with the prompt-cull decision, not this pass. File is now Session widget + six slides + kickers + one cut-flagged optional move.
+**Slides-only pass (2026-07-02, unaudited):** covered regions DELETED (Path A — prose was verbatim-redundant with the slides; git carries it). Per-passage verdicts: intro agenda line CUT (slide titles carry it) · "you will notice the wait" FOLDED into slide 1 as fourth bullet (plants M3's two-window move) · "What you do with this" section CUT (the exercise body carries the flow; "then you stop" is the exercise's own beat) · feel-line KEPT as slide-4 kicker (fluency forecast, future-tense informing) · "Three things. That's the read." KEPT as slide-2 kicker · *Optional: ask plan mode directly* section KEPT UNCHANGED (its prompt is kept — see the keep note below). File is now Session widget + six slides + kickers + one optional plan-mode-introspection move.
+
+**`ask plan mode directly` — kept, not cut.** The `when-a-plan-is-good-1` prompt was flagged `meta-retrospective` for a possible cull (the case for cutting: it adds an optional beat, and trimming lessens cognitive load). Kept by decision: asking plan mode what changed on its own side is a learn-how-the-tool-works beat. The student reads the read-only permission state back from the agent's own report, which the surrounding framing can only assert. The tool-literacy payoff outweighs the load argument; not a cut candidate.
 
 **Deck notes:** does NOT name "plan-mode approval inflation" — that label lands retroactively at exercise P5. *The cheapest gate you will ever run* delivers the name-the-uncertainty governor as a pre-action question (doctrine-legal). *Find is easier than judge* seeds the M5 verification-asymmetry naming.
 

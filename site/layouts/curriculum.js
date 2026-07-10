@@ -54,17 +54,20 @@
                 { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' },
                 { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
             ],
+            // Ordered by first appearance across the module arc (prework → M6), so
+            // the appendix reads in the sequence the modules reach for it. Both the
+            // long-read index and the composed Slides deck follow this array order.
             supplementaries: [
-                { slug: 'build-a-project-from-zero',  title: 'No repo to bring? Build one' },
-                { slug: 'what-is-agentic-engineering', title: 'What is agentic engineering' },
-                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' },
-                { slug: 'token-efficiency',           title: 'Token efficiency: the craft and the folklore' },
-                { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' },
-                { slug: 'workflow-composition-lineages', title: 'Workflow composition lineages' },
-                { slug: 'skill-stacking',             title: "Dino's skill stacking system" },
-                { slug: 'backpressure',               title: 'Backpressure' },
-                { slug: 'verification-asymmetry',     title: 'Verification asymmetry' },
-                { slug: 'the-lethal-trifecta',        title: 'The lethal trifecta' }
+                { slug: 'build-a-project-from-zero',  title: 'No repo to bring? Build one' },        // Prework
+                { slug: 'the-lethal-trifecta',        title: 'The lethal trifecta' },                // M3
+                { slug: 'what-is-agentic-engineering', title: 'What is agentic engineering' },       // M3
+                { slug: 'token-efficiency',           title: 'Token efficiency: the craft and the folklore' }, // M3
+                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' }, // M4→M5
+                { slug: 'verification-asymmetry',     title: 'Verification asymmetry' },             // M4→M5
+                { slug: 'backpressure',               title: 'Backpressure' },                       // M5→M6
+                { slug: 'workflow-composition-lineages', title: 'Workflow composition lineages' },   // M6
+                { slug: 'skill-stacking',             title: "Dino's skill stacking system" },       // M6
+                { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' } // M6
             ],
             references: [
                 { slug: 'claude-code-for-engineers', title: 'Claude Code for engineers' },

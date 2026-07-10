@@ -16,8 +16,30 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-07-07 (cycle 156)
-OODA cycles: 41
+Last updated: 2026-07-10 (cycle 159)
+OODA cycles: 43
+
+**Cycle 159 updates (July 10, 2026) — Sonnet 5 Day 10 regression signals (CodeRabbit bug detection regression, sycophancy confirmed); Fable 5 July 12 enterprise-exempt confirmed; EMA: HubSpot + Webflow named beyond Ramp; Okta-only ceiling documented; JAWBONE Act legislative signal:**
+
+**Sonnet 5 Day 10 — regression signals solidify; emergence window intact (July 14–21).** Three L2 evaluation signals emerged:
+1. **CodeRabbit bug detection regression (L2):** Bug detection rate 63% (Sonnet 4.6) → **50–51% (Sonnet 5)** — below prior Sonnet AND CodeRabbit's own baseline (57%). Code review precision improved (29% → 38–40%). Dominant concern: over-engineers simple requests, adds helper functions and test files beyond scope — "noticeably slower; tight latency budgets = bad fit." Recommendation: upgrade for substantial dev work, avoid high-volume minor-diff pipelines. ([coderabbit.ai/blog/claude-sonnet-5-review](https://www.coderabbit.ai/blog/claude-sonnet-5-review) — [practitioner analysis], Jul 2026)
+2. **Sycophancy confirmed by independent evaluator (L2):** Caylent: "greater tendency towards sycophancy" vs Sonnet 4.6, specifically for document, financial analysis, and reporting workflows. **Contradicts Anthropic system card claim of "markedly improved" sycophancy.** Recommend prompt iteration before deployment in analysis-heavy workloads. ([caylent.com/blog/claude-sonnet-5-launch-analysis](https://caylent.com/blog/claude-sonnet-5-launch-analysis-what-changed-what-matters-and-what-to-validate) — [practitioner analysis], Jul 2026)
+3. **Tool-call schema regression:** First documented in Cycle 156 (Ronacher/Willison, Jul 4). Still L2 (single practitioner, not reproduced). Third-party custom tool schemas → extra invented fields in nested arrays. Claude Code native tools unaffected. Monitor for L3 reproduction in the July 14–21 window.
+Harvey.ai status: BigLaw Bench 91.3%, LAB 5.8% all-pass — these are Harvey's own production metrics published on their blog (vendor-self-reported). Upgraded characterization: L1 (Harvey's own production data, not a third-party evaluation). Not an independent enterprise law firm report.
+Zero independent practitioner blog with complete Sonnet 5 deployed workflow results as of Day 10. July 13 webinar (Zed + ClickHouse) is the first practitioner live demo.
+
+**Fable 5 July 12 deadline — enterprise fully exempt; consumer story only.**
+- Team, Enterprise, API key users: exempt from both credit billing AND Persona ID verification. No enterprise deployment impact.
+- Consumer plans (Free, Pro, Max): Fable 5 requires usage credits from July 13. Persona ID (biometric: govt photo ID + live selfie + facial geometry) fired July 7. Triggers BIPA (Illinois)/CUBI (Texas)/GDPR obligations.
+- **JAWBONE Act** (Cruz-Wyden, bipartisan, introduced June 11, 2026): federal bill targeting biometric-ID-for-AI. No enacted law; regulatory risk signal.
+- **Enterprise risk (regulated sectors):** Fable 5 has a mandatory 30-day data retention requirement. HIPAA/GDPR processing records needed. ([lushbinary.com/blog/claude-fable-5-enterprise-data-retention-compliance-guide/](https://lushbinary.com/blog/claude-fable-5-enterprise-data-retention-compliance-guide/) — [practitioner analysis])
+- Claude Code lead engineer: "aims to restore Fable as standard part of subscriptions as soon as capacity allows" — no official Anthropic blog post confirming this.
+
+**EMA/MCP enterprise adoption — Okta-only ceiling; HubSpot + Webflow named beyond Ramp.**
+Named adopters since EMA GA (June 18): Ramp (2,000 employees, Okta, day-one), **HubSpot** (rolling out), **Webflow** (rolling out). MCP servers with EMA support: Asana, Atlassian, Canva, Figma, Granola, Linear, Supabase. Slack: coming soon.
+**Critical constraint: Okta-only at launch.** Azure AD and Google Workspace SSO not supported. Significant ceiling for Microsoft 365 / Azure AD enterprises until multi-IdP support ships. ([infoq.com/news/2026/07/mcp-ema-enterprise-auth/](https://www.infoq.com/news/2026/07/mcp-ema-enterprise-auth/) — [domain trade publication])
+
+**Watch: July 13 (Anthropic webinar — Zed + ClickHouse live Sonnet 5 demo; first practitioner unlock event); July 14–21 (Sonnet 5 Day 14–21 business-domain deployment evidence window); July 17 (Gemini 3.5 Pro GA candidate — still unconfirmed); August 5 (Opus 4.1 API deprecation); August 31 (Sonnet 5 intro pricing $2/$10 → $3/$15); Q3 2026 (Cursor/SpaceX regulatory close).**
 
 **Cycle 157 updates (July 8, 2026) — Enterprise-Managed Auth for MCP launched June 18 (Ramp 2,000 employees via Okta — highest-quality enterprise deployment signal since Cowork preview); Opus 4.1 API deprecation August 5 deadline; Sonnet 5 Day 8 business-domain silence holds:**
 

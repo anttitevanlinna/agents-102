@@ -15,19 +15,36 @@ answers:
 
 # AI-Native Teams — Research Track
 
+**Last updated:** 2026-07-10 (cycle 159)
+**OODA cycles:** 13
+
+**Cycle 159 updates (July 10, 2026) — N=78 attribution corrected; Sankaranarayanan Explanation Gate added as 6th source; cognitive debt mitigation landscape mapped; Infobip longitudinal data added; Haldar counter-position added:**
+
+**⚡ FACTUAL CORRECTION (cycle 158 error):** Cycle 158 attributed N=78 to Osmani. These are TWO SEPARATE STUDIES. Osmani (Mar 14, 2026) references an **Anthropic RCT with N=52** — not N=78. The **N=78 controlled experiment is Sankaranarayanan (arXiv 2602.20206, Feb 2026)** — a distinct study with a specific structural intervention (Explanation Gate). Both strengthen the cognitive debt evidence chain, but the attribution error in state.md is corrected here. See cycle 159 run log for full detail.
+
+**⚡ COGNITIVE DEBT SOURCE CHAIN — SIX SOURCES (upgraded from five):**
+1. Simon Willison (Feb 15, 2026): coined "cognitive debt" from Margaret-Anne Storey — understanding drifts from AI-built code. ([simonwillison.net/2026/Feb/15/cognitive-debt/](https://simonwillison.net/2026/Feb/15/cognitive-debt/) — [practitioner direct])
+2. Sankaranarayanan (arXiv 2602.20206, Feb 2026): **N=78 controlled experiment.** Three conditions: manual control, unrestricted AI, AI + Explanation Gate (forced teach-back protocol in custom Cursor IDE plugin via Claude 3.5 Sonnet). Unrestricted AI → 77% failure on 30-min maintenance task; Explanation Gate → 39% failure (halved). **Strongest controlled evidence for a specific mitigation.** ([arxiv.org/abs/2602.20206](https://arxiv.org/abs/2602.20206) — [academic/research])
+3. Addy Osmani (Mar 14, 2026): independently named "comprehension debt." Synthesizes Sankaranarayanan + Anthropic **N=52 RCT** (AI-assisted scored 50% vs 67% control — 17% gap). Speed gap framing: AI generates 140–200 lines/min, humans comprehend 20–40 lines/min (5–7x). Key finding: mode matters more than frequency — passive delegation → <40% comprehension; conceptual inquiry → >65%. ([addyosmani.com/blog/comprehension-debt/](https://addyosmani.com/blog/comprehension-debt/) — [practitioner direct])
+4. Farhan Thawar/Shopify via BVP (Apr 2, 2026): VP Engineering names "brain atrophy" risk. Mitigation: weekly demos as comprehension test (not velocity metrics). "2-3 layers below" cultural mandate (enforcement: cultural, not tooled). ([bvp.com/atlas/inside-shopifys-ai-first-engineering-playbook](https://www.bvp.com/atlas/inside-shopifys-ai-first-engineering-playbook) — [practitioner analysis])
+5. Geoffrey Litt (Jul 2, 2026, Notion, AI Engineer conference): "Understanding is the new bottleneck" — three tooling proposals: /explain-diff (structured explainer docs), comprehension quizzes (5-question gate before sharing code), micro-worlds (interactive environments). Deployed at Notion (personal practice), not yet at team scale. ([geoffreylitt.com/2026/07/02/understanding-is-the-new-bottleneck.html](https://www.geoffreylitt.com/2026/07/02/understanding-is-the-new-bottleneck.html) — [practitioner direct])
+6. RevenueCat (Jun 27, 2026): merged PM into engineering as "product engineers" who actively write code. ([revenuecat.com/blog/company/inside-product-engineering/](https://www.revenuecat.com/blog/company/inside-product-engineering/) — [practitioner direct])
+
+**Additional convergence (L2):**
+- **Infobip (Jurić, LeadDev, Jun 18, 2026):** 225 interns, 8 cohorts — longitudinal data confirms mode over frequency. Two 2026 interns with identical AI usage frequency: +3 vs 0 skill growth points. Practices: "try first, check with AI second," AI-free checkpoints, comprehension coaching. Most practically detailed team-level implementation found. ([leaddev.com/ai/ai-coding-creates-two-kinds-of-debt-youre-only-measuring-one](https://leaddev.com/ai/ai-coding-creates-two-kinds-of-debt-youre-only-measuring-one) — [domain trade publication])
+- **Margaret-Anne Storey (ACM Queue, Apr 22, 2026):** Triple Debt Model formalized — Technical Debt + Cognitive Debt + Intent Debt. Mitigations: architecture comprehension maps, knowledge audits, living documentation, reasoning-documentation tests. One student case study (comprehension collapse Week 7). ([queue.acm.org/detail.cfm?id=3807966](https://queue.acm.org/detail.cfm?id=3807966) — [academic/research])
+- **Martin Fowler (Apr 2, 2026):** TDD as comprehension mitigation; LLMs as comprehension aid for legacy code. ([martinfowler.com/fragments/2026-04-02.html](https://martinfowler.com/fragments/2026-04-02.html) — [practitioner direct])
+
+**Counter-position (L1): Haldar, "Cognitive Debt is Leverage" (Jul 4, 2026).** Programmers always selectively forget lower layers when climbing abstraction stacks (compilers, OS, cloud). The real solution is agent verification, not human comprehension. We're stuck in the middle — enough automation to create distance, not enough to create trust. If agents become compiler-reliable, the comprehension argument dissolves. ([vivekhaldar.com/articles/cognitive-debt-is-leverage/](https://vivekhaldar.com/articles/cognitive-debt-is-leverage/) — [practitioner direct])
+
+**Mitigation gap (as of July 10):** Problem at L3; structural mitigations still at L1 (cultural rules) or early L2 (single controlled studies). No named team has confirmed deploying Litt's specific tools at scale. No company measures comprehension as a PR gate metric. Explanation Gate is the strongest intervention with controlled evidence (N=78, failure halved) but remains academic.
+
+**Cycle 158 updates (July 9, 2026) — Cognitive debt UPGRADED TO LEVEL 3 (five independent sources; attribution error corrected in cycle 159):**
+
 **Last updated:** 2026-07-09 (cycle 158)
 **OODA cycles:** 12
 
-**Cycle 158 updates (July 9, 2026) — Cognitive debt UPGRADED TO LEVEL 3 (five independent sources); Osmani N=78 study adds quantitative grounding; Litt (Notion/AIE) as fourth practitioner-direct source; RevenueCat role restructuring as fifth:**
-
-**⚡ COGNITIVE DEBT UPGRADED TO LEVEL 3 — Five independent practitioners across five months confirm the same failure mode.** This is the first L3 finding about AI-native team operational failure modes (previous L3 findings were about platform capabilities). Full source chain:
-1. Simon Willison (Feb 15, 2026): coined "cognitive debt" from Margaret-Anne Storey — understanding drifts from AI-built code. "If you're lacking that fluency, your ability to participate is meaningfully limited." ([simonwillison.net/2026/Feb/15/cognitive-debt/](https://simonwillison.net/2026/Feb/15/cognitive-debt/) — [practitioner direct])
-2. Addy Osmani (Mar 14, 2026): independently named "comprehension debt." Quantitative grounding: N=78 study — 77% of unrestricted AI users failed 30-min maintenance task without AI (vs 39% scaffolded group); Anthropic RCT: AI-assisted scored 50% vs 67% control (17% gap). Speed gap: AI generates 140–200 lines/min, humans comprehend 20–40 lines/min (5–7x). ([addyosmani.com/blog/comprehension-debt/](https://addyosmani.com/blog/comprehension-debt/) — [practitioner direct])
-3. Farhan Thawar/Shopify via BVP (Apr 2, 2026): VP Engineering names "brain atrophy" risk at company level. Mitigation: weekly demos as comprehension test (not velocity metrics). Shopify AI reversion rates at baseline parity = first production quality-parity validation. ([bvp.com/atlas/inside-shopifys-ai-first-engineering-playbook](https://www.bvp.com/atlas/inside-shopifys-ai-first-engineering-playbook) — [practitioner analysis])
-4. Geoffrey Litt (Jul 2, 2026, Notion, AI Engineer conference): "Understanding is the new bottleneck" — proposes concrete tooling responses: code explainer docs, embedded comprehension quizzes as "speed regulators," micro-worlds. Willison amplified same day. ([geoffreylitt.com/2026/07/02/understanding-is-the-new-bottleneck.html](https://www.geoffreylitt.com/2026/07/02/understanding-is-the-new-bottleneck.html) — [practitioner direct])
-5. RevenueCat (Jun 27, 2026): merged PM role into engineering as "product engineers" (5 currently, hiring more) who actively write code. Rationale explicitly: "code writing is no longer the main task — engineers need greater product sense and judgment." Organizational restructuring as structural response to cognitive debt accumulation. ([revenuecat.com/blog/company/inside-product-engineering/](https://www.revenuecat.com/blog/company/inside-product-engineering/) — [practitioner direct])
-
-**Why L3:** Five organizations (solo builders, VC-backed portfolio companies, large-scale SaaS), five time periods (Feb–Jul), five different framings (cognitive debt / comprehension debt / brain atrophy / understanding bottleneck / role restructuring) — zero evidence of coordination. Osmani N=78 provides controlled study grounding. L3 is confirmed.
+**⚡ COGNITIVE DEBT UPGRADED TO LEVEL 3 — Five independent practitioners across five months confirm the same failure mode.** This is the first L3 finding about AI-native team operational failure modes (previous L3 findings were about platform capabilities). [Note: cycle 159 corrected N=78 attribution and added Sankaranarayanan as 6th source.]
 
 **Cycle 157 updates (July 8, 2026) — Cognitive debt named as #1 failure mode (Willison + BVP convergence); RevenueCat 1-3 engineer team model (L2); Shopify quality-parity validation; Gartner smaller-team prediction (L0):**
 

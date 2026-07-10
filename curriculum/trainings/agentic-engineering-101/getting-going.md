@@ -125,6 +125,4 @@ The shipped PR is produced this module; the closed ticket is produced in the `cl
 **Frameworks riffed on:**
 - **TDD (test-driven development)** — Ex2's tests-first, root-cause-driven fix. Recognized framework the engineer audience already knows; the rule written into `./CLAUDE.local.md` at Ex3 is the student's own TDD-style preference.
 - **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (Every Inc.) [practitioner direct, vendor venue]. Plan → Work → Review → Compound. Attributed inside Claude's Ex3 compound summary, not in a lecture.
-- **Three-block memory** — Paweł Huryn (productcompass.pm) [practitioner direct, vendor venue]. Materials seeded in M1 without naming the three-block frame; the frame earns its name at M4 via recognition — explicit naming here would steal it. URL deferred to M4 reveal.
-
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

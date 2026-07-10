@@ -21,7 +21,7 @@ When you added the second batch, Claude didn't start over. It read the existing 
 
 This is the same mechanism from Module 1: context shapes output, run at system scale. The context for this work is what the previous work produced. The context for the next run will be what this work produced. The loop is the product.
 
-Pawel Huryn writes about this as *pragmatic instructions*: keep the rules small, keep them boring, let the compounding do the work. Not "clever prompts." Plain rules, applied consistently across thousands of small updates. The discipline is in refusing to get fancy.
+Keep the rules small, keep them boring, and let the compounding do the work. Not "clever prompts." Plain rules, applied consistently across thousands of small updates. The discipline is in refusing to get fancy.
 
 ## The detail that's easy to miss
 
@@ -61,4 +61,4 @@ Claude comes back with three pointed requests. Answer one. Let it update the pag
 Not used (deliberate): #2 (act on the future), #10 (competence precedes vision), #18 (flywheel) — the first two are Module 8's weight, #18 belongs to the closing module. Keeping the budget to two.
 
 **Deferred per student-facing-first rule:**
-- Facilitator notes: timing within the 10 minutes (the "two words" section is the pivot — don't rush past it); watch-for on the "one question before you close" moment (a room of mostly-generic answers tells you the sources are thin, not that the pattern didn't land); pacing decision if the exercise ran long and lecture time is short (cut "Why the sharpening happens" — the other sections survive alone); Pawel Huryn reference — the trainer may want a specific link or paraphrase, pending a reading-list add.
+- Facilitator notes: timing within the 10 minutes (the "two words" section is the pivot — don't rush past it); watch-for on the "one question before you close" moment (a room of mostly-generic answers tells you the sources are thin, not that the pattern didn't land); pacing decision if the exercise ran long and lecture time is short (cut "Why the sharpening happens" — the other sections survive alone).

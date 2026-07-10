@@ -15,7 +15,6 @@ produces:
     consumed-by:
       - prompt:author-test-strategy-skill-2
       - prompt:walk-and-send-off-2
-      - prompt:walk-and-send-off-4
       - prompt:diagnose-and-resend-6
       - module:spot-gaps-build-the-loop
 ---

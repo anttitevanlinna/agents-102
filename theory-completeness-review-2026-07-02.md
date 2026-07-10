@@ -30,7 +30,7 @@ Taste-vs-gates contradiction (reconciled in corpus) · two-run-arc-credits-n=1 (
 
 ## Minors (unverified, eyeball list)
 
-Map strand vocabulary shown once, never revisited · closers lean on exercise-only vocabulary (worktree fork, three-block memory) · middle loop wears 4 step-decompositions unequated · M1 "rules became load-bearing" vs M6 "a rule in context is not a rule in the output" unreconciled · "that is the design, not a flaw" unearned · Intercom vendor-self-report caveat maintainer-side only (zombie-stat risk in body) · "context engineering" term absent (searchability) · amplification koan un-hedged (Family-A contested) · the-wall lacks J-curve mechanism · variation-selection-retention fold never applied.
+Map strand vocabulary shown once, never revisited · closers lean on exercise-only vocabulary (worktree fork) · middle loop wears 4 step-decompositions unequated · M1 "rules became load-bearing" vs M6 "a rule in context is not a rule in the output" unreconciled · "that is the design, not a flaw" unearned · Intercom vendor-self-report caveat maintainer-side only (zombie-stat risk in body) · "context engineering" term absent (searchability) · amplification koan un-hedged (Family-A contested) · the-wall lacks J-curve mechanism · variation-selection-retention fold never applied.
 
 ## Strengths (8-lens convergence)
 

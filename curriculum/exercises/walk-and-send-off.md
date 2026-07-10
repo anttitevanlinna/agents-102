@@ -1,6 +1,6 @@
 # Walk and *send off*
 
-**Time:** 55 minutes inside a 1h45 module slot (Phases 1–3, breakdown: pick 10 / walk-and-fill 35 / see-the-frame 10). The send-off (~5 min, single prompt paste) closes Module 4 after this exercise.
+**Time:** 55 minutes inside a 1h45 module slot (Phases 1–3, breakdown: pick 10 / walk-and-fill 40 / settle 5). The send-off (~5 min, single prompt paste) closes Module 4 after this exercise.
 
 **Session** *(new, "Module 4 - Run the first experiment")*
 
@@ -12,9 +12,9 @@ Start a new Claude Code session at your repo root.
 
 Start clean. M4 picks up a bigger task than M1–M3. Before the new session, check your working tree and branch. You ride that state into the closing `m4/<slug>` commit and M5's fork.
 
-**What you do:** Pick a task you've been avoiding, the kind you'd send off rather than nudge bit by bit. Walk what you've built across four modules against it. Fill the worst gaps. Sort your material into the three kinds it already contains, and watch a frame you've never been taught name what you built. At the close, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
+**What you do:** Pick a task you've been avoiding, the kind you'd send off rather than nudge bit by bit. Walk what you've built across four modules against it. Fill the worst gaps and settle your `observations/` tree on disk. At the close, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
 
-**What you build:** three things a long run can ride: a scoped task with a 'done' you can name in a sentence, the worst gaps filled in `observations/` and your rules file, and your own material sorted into three blocks (observation, decision, criterion) with the tree settled. Then it goes off un-packaged.
+**What you build:** two things a long run can ride: a scoped task with a 'done' you can name in a sentence, and the worst gaps filled in `observations/` and your rules file, with the `observations/` tree settled on disk. Then it goes off un-packaged.
 
 **The point:** This is the first experiment of a two-run arc. The un-packaged send-off here teaches Module 5 what packaging adds, a lesson no lecture can land. Every send-off is a test, not a production run; you are testing and you are learning.
 
@@ -52,7 +52,7 @@ Ask Claude to run the audit as a subagent and return a ranked top-five.
 
 - Pick the ones that will hurt the agent most, probably two or three, not all five. You'll see next module what the others were for.
 - New observations land in `observations/`, gitignored. That's the default home. If your team kit pins a different path, tell Claude which one and stay consistent with it. If `observations/` is new to your repo, ask Claude to add it to `.gitignore` before any writes; the fills below land there and you don't want them tracked.
-- The agent reads `observations/` when a prompt names the path, the same way it reads your ADRs. It is not auto-loaded the way `CLAUDE.md` and `CLAUDE.local.md` are. It holds the first of the three blocks you'll arrange in Phase 3.
+- The agent reads `observations/` when a prompt names the path, the same way it reads your ADRs. It is not auto-loaded the way `CLAUDE.md` and `CLAUDE.local.md` are.
 
 Ask Claude to walk you through the picked gaps one at a time, using the AskUserQuestion tool to scaffold the flow.
 
@@ -73,26 +73,13 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 
 > **Time check.** Different paces hit this point at different times. The room doesn't wait for the slowest. Five to ten minutes to share what surfaced, where the audit missed, and why the agent sometimes goes lazy.
 
-## Phase 3: Name your own work as observation, decision, and criterion
+## Phase 3: Settle the tree before the send-off
 
-- The frame names what you've been building; it's not a template you fill. This is *Huryn's three-block memory*. The agent rearranges your observations, ADRs, and skill into the three blocks, quoting your own work for each block before it names the frame.
-
-Ask Claude to rearrange your observations, ADRs, and skill into the three blocks, quoting your own work for each block before naming the frame.
-
-{{cut:walk-and-send-off-4|meta-retrospective}}
-
-## Read the quoted examples first
-
-- Skim past the opening summary to the quoted-example-per-block payoff. That's where the three blocks earn their names.
-- If the examples are from your own files, the frame should click. If it doesn't, ask Claude to quote different examples until one does.
-
-## Settle the tree before the send-off
-
-- Let Claude propose the rearrangement once the frame is named through your own material. Keep it inside `./observations/` and cap it at one or two file moves or renames. Leave the ADRs and skills where they are; larger reorganisation is a separate session, not a mid-module sweep.
+- Ask Claude to propose any tidy-up of `./observations/`. Cap it at one or two file moves or renames. Leave the ADRs and skills where they are; larger reorganisation is a separate session, not a mid-module sweep.
 - Ask to see the diff before it lands. The send-off fires next, so the tree wants to be settled on disk, not just planned in chat.
-- The frame shows information hardening: an observation or hunch becomes a rule, and a rule becomes a criterion you hold shipped code to. Consider whether each rule is stored where it will fire.
+- Consider whether each rule is stored where it will fire. A rule the agent never reads is not a rule.
 
-**What happened:** You picked a real task you'd send off rather than nudge bit by bit. You walked what you'd built across four modules against it, filled the worst gaps, and let Claude rearrange observations and ADRs into three blocks against your own material. The frame named what was already there. Phase 3 ended with the tree settled before the send-off.
+**What happened:** You picked a real task you'd send off rather than nudge bit by bit. You walked what you'd built across four modules against it, filled the worst gaps, and settled the `observations/` tree. Phase 3 ended with the tree settled before the send-off.
 
 ## What closes Module 4
 
@@ -122,7 +109,6 @@ Phase 3 is where the exercise ends. Module 4's send-off takes over:
 
 **Frameworks riffed on:**
 - **Gap analysis** (Phase 2) — generic business-analysis framework; named in prose as *walk the system you have against the system the task needs*.
-- **Huryn's three-block memory** (Phase 3) — Paweł Huryn. Earns its name through quote-from-own-work before naming.
 - **Compound engineering** (module Debrief) — Kieran Klaassen. Review + Compound step as Debrief's self-rewrite pattern, now in its fourth rep for the student.
 
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
@@ -134,7 +120,6 @@ Phase 3 is where the exercise ends. Module 4's send-off takes over:
 - **Phase 1 task-sprawl** — student picks the quarterly epic. Diagnostic: the scoped task doesn't have a "done" the student can name. Fix: trainer forces a slice; better a smaller task that runs the full arc.
 - **Phase 2 audit busywork** — Claude returns 12 items instead of 5, student drowns. Diagnostic: prompt wasn't ranked-top-5 enforced. Fix: re-run the prompt; enforce ranking; student picks top 3.
 - **Phase 2 over-fill** — student tries to close all five gaps. Diagnostic: *"just one more"* creep. Fix: trainer names the sponge-not-rock rule; M5 will teach the other two.
-- **Phase 3 Huryn-as-lecture** — Claude names the frame before quoting from the student's own work. Diagnostic: student reads the three-block definition without recognition. Fix: re-run the prompt; insist on quote-first, name-second.
 - **Debrief package-pre-empt** — student tries to add a plan.md or build a verifier before sending off. Diagnostic: *"should I just quickly…"* Fix: trainer names the rule — *"un-packaged is by design. Don't pre-empt M5's learning."*
 - **Send-off anxiety** — student hesitates at the final paste. Diagnostic: *"what if it runs forever / breaks things / gets nowhere?"* Fix: trainer names cancel-is-legit — *"stop it when you've seen enough. Traces are data."*
 
@@ -148,7 +133,7 @@ Phase 3 is where the exercise ends. Module 4's send-off takes over:
 - **Phase 1 >15 min** — task is too big. Force a slice.
 - **Phase 2 audit >15 min** — Claude returned too much. Re-run with ranked-top-5 enforcement.
 - **Phase 2 fill short (<15 min)** — student accepted Claude's drafts without push-back. Trainer prompts for a codebase-specific correction on at least one fill.
-- **Phase 3 <10 min** — frame didn't land. Diagnostic: did Claude quote student's OWN recorded decision (ADR if they have one, otherwise a CLAUDE.md design note or commit message) as Block 2? If not, redo.
+- **Phase 3 <5 min** — settle beat skipped. Check the `observations/` tree actually got tidied and the diff seen before the send-off.
 - **Whole-room mood below 7** — curious readiness isn't landing. Check Phase 1: real task or compliance task? Task-selection is where this mood starts or dies.
 
 **Send-off mechanism (Debrief step 3):**

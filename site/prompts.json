@@ -503,7 +503,6 @@
         "location": "~/.claude/skills/test-strategy/SKILL.md (in-place sharpening update)",
         "consumed-by": [
           "prompt:walk-and-send-off-2",
-          "prompt:walk-and-send-off-4",
           "prompt:diagnose-and-resend-6",
           "module:spot-gaps-build-the-loop"
         ]
@@ -792,7 +791,7 @@
       {
         "id": "observations-folder",
         "if-present-at": "../<repo-name>/observations/",
-        "rationale": "born at M4's walk-and-send-off Phase 2; copied so M5/M6 inherits the three-block memory built during M4"
+        "rationale": "born at M4's walk-and-send-off Phase 2; copied so M5/M6 inherits the observations folder built during M4"
       }
     ]
   },
@@ -1048,7 +1047,6 @@
         "consumed-by": [
           "prompt:author-test-strategy-skill-2",
           "prompt:walk-and-send-off-2",
-          "prompt:walk-and-send-off-4",
           "prompt:diagnose-and-resend-6",
           "module:spot-gaps-build-the-loop"
         ]
@@ -1164,7 +1162,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/compound-and-close",
-    "text": "Review this session end-to-end: the orientation and introspection, the /context read, the TDD bug fix, the diff push-back. Write ./CLAUDE.local.md at the root of this repo (create it if it doesn't exist; add it to .gitignore if it's not already; if the file already exists, integrate, don't append). This is my personal gitignored rules file, not the team ./CLAUDE.md. Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran.\n\nIn your summary to me, name 2–3 practitioners whose published work runs a similar loop, one short clause each. Keep these names in your reply, not in the file. Worth surfacing if they fit: Cherny, Klaassen, Ronacher, Pocock, Karpathy, Willison, Huryn. If you can name fewer than two without guessing, name only what you're sure of.\n\nIf any rule is team-worthy (one every engineer on this codebase should know) flag it in the summary below, don't PR it. I'll decide whether to open a separate PR against team ./CLAUDE.md.\n\nTell me in 3–5 lines: what you wrote and why, grounded in specific session moments. I shouldn't need to open the file to know.",
+    "text": "Review this session end-to-end: the orientation and introspection, the /context read, the TDD bug fix, the diff push-back. Write ./CLAUDE.local.md at the root of this repo (create it if it doesn't exist; add it to .gitignore if it's not already; if the file already exists, integrate, don't append). This is my personal gitignored rules file, not the team ./CLAUDE.md. Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran.\n\nIn your summary to me, name 2–3 practitioners whose published work runs a similar loop, one short clause each. Keep these names in your reply, not in the file. Worth surfacing if they fit: Cherny, Klaassen, Ronacher, Pocock, Karpathy, Willison. If you can name fewer than two without guessing, name only what you're sure of.\n\nIf any rule is team-worthy (one every engineer on this codebase should know) flag it in the summary below, don't PR it. I'll decide whether to open a separate PR against team ./CLAUDE.md.\n\nTell me in 3–5 lines: what you wrote and why, grounded in specific session moments. I shouldn't need to open the file to know.",
     "requires": [
       {
         "id": "read-self-report",
@@ -2609,7 +2607,6 @@
           "prompt:author-test-strategy-skill-2",
           "prompt:ae101-m3-sharpen-skill",
           "prompt:walk-and-send-off-2",
-          "prompt:walk-and-send-off-4",
           "prompt:diagnose-and-resend-6",
           "prompt:ae101-m5-rerun-packaged",
           "module:run-the-first-experiment",
@@ -2765,8 +2762,7 @@
         "id": "gap-audit-report",
         "location": "scrollback (ranked top-5 thin spots + cheapest fixes)",
         "consumed-by": [
-          "prompt:walk-and-send-off-3",
-          "prompt:walk-and-send-off-4"
+          "prompt:walk-and-send-off-3"
         ]
       }
     ]
@@ -2789,49 +2785,12 @@
         "id": "observations-folder",
         "location": "./observations/ (observations + business-rules gaps) + ./CLAUDE.local.md (sharpened rules) + connector setup (no file)",
         "consumed-by": [
-          "prompt:walk-and-send-off-4",
           "prompt:ae101-m4-take-task-end-to-end",
           "prompt:diagnose-and-resend-6",
           "prompt:agents-that-build-agents-handoff",
           "prompt:ae101-m5-worktree-setup"
         ],
         "note": "2-3 fills per audit run, one per picked gap; destination depends on the audit's per-gap shape label. The ./observations/ folder is the durable artefact M4-M6 read as 'observations-folder'; ae101-m5-worktree-setup copies it opportunistically into the M5 worktree."
-      }
-    ]
-  },
-  "walk-and-send-off-4": {
-    "key": "walk-and-send-off-4",
-    "dest": "Claude Code",
-    "context": "",
-    "runtime": "any",
-    "origin": "exercises/walk-and-send-off",
-    "text": "Look at the observations and rules I just added to `./observations/`, the hardening ADR in this repo if there is one, and the test-strategy skill if I've authored one. Don't scan beyond those. Rearrange what's there into Paweł Huryn's three-block memory frame:\n\n- Block 1: observations → hypotheses → rules (what I've noticed about this codebase, what I've started to suspect, what I've decided to treat as true)\n- Block 2: decisions with alternatives (architectural or design choices + what else was considered; ADRs live here if I have them)\n- Block 3: quality criteria (what I expect to be true of shipped code in this codebase; if I've authored a test-strategy skill it contributes here, otherwise pull from existing test conventions)\n\nDon't invent new material. Rearrange what's there.\n\nBefore you name the frame or propose a new structure, show me one concrete example from each block. Quote a specific observation from `./observations/` (Block 1), a specific ADR or other recorded decision (Block 2), a specific check from an authored skill OR a quality criterion from existing tests (Block 3).\n\nIf you propose file moves or renames, keep them inside `./observations/` and cap the proposal at one or two; leave the ADRs and skills in their own homes. The send-off fires shortly after this phase and I want the tree settled before that.",
-    "requires": [
-      {
-        "id": "gap-audit-report",
-        "source": "prompt:walk-and-send-off-2"
-      },
-      {
-        "id": "observations-folder",
-        "source": "prompt:walk-and-send-off-3"
-      },
-      {
-        "id": "stride-adr",
-        "source": "prompt:threat-model-with-stride-3",
-        "conditional": "m3-completed"
-      },
-      {
-        "id": "test-strategy-skill",
-        "source": "prompt:author-test-strategy-skill-1",
-        "conditional": "m3-completed"
-      }
-    ],
-    "produces": [
-      {
-        "id": "three-block-frame",
-        "location": "scrollback (Huryn frame recognition with quoted examples)",
-        "consumed-by": [],
-        "note": "pedagogical artefact — the frame names what's there but doesn't itself flow into the M4 send-off; the underlying memory/ADRs/skills do"
       }
     ]
   },

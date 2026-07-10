@@ -10,7 +10,6 @@ produces:
   - id: observations-folder
     location: ./observations/ (observations + business-rules gaps) + ./CLAUDE.local.md (sharpened rules) + connector setup (no file)
     consumed-by:
-      - prompt:walk-and-send-off-4
       - prompt:ae101-m4-take-task-end-to-end
       - prompt:diagnose-and-resend-6
       - prompt:agents-that-build-agents-handoff

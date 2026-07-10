@@ -132,14 +132,6 @@ Stand-in for the back-and-forth between Claude and the student. Each block below
 
 > A3: For the missing connector — no MCP connector needed for this task. Note as "no external tool surface; in-repo only."
 
-## § M4 three-block frame answers (paste at Phase 3 walk-and-send-off-4)
-
-> Block 1 examples that fit my repo: observations.md mentions CSV escaping (rule born from ADR 0001's CSV-injection diagnosis); the negative-summation contract from CLAUDE.local.md is rule-tier.
->
-> Block 2 examples: ADR 0001 is the canonical Block 2 entry (decision + alternatives considered).
->
-> Block 3 examples: the test-strategy skill from M3 — quality criteria for what shipped code looks like in this codebase.
-
 ## § M4 send-off completion summary (paste after ae101-m3-take-task-end-to-end is invoked, simulating what came back)
 
 > Ran for ~25 min. Shipped: dailyTotalsByCategory function + 4 unit tests (all green), src/cli.js scaffold with --export flag. Didn't ship: README update (forgot), package.json bin entry (got distracted by an unrelated lint warning in src/totals.js and tried to "clean it up", ate 8 min). Verifier output: none — no verifier in play this run. RUN-NOTES.md not used. Manual nudges: 1 (when Claude tried to refactor src/totals.js mid-task).

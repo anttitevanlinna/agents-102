@@ -68,7 +68,6 @@ Tags: `[borrow:X]` imported parent field · `[rsch:Ln]` continuous-research, evi
 
 ### 5 · Vocabulary & typologies — the map and the names you can carry (the cohort's missing piece)
 - **eval = judge / verifier / gate** — one primitive, three faces. `[curr]`
-- **Three-block memory.** `[curr]`
 - The **L0 → L3 ladder** — a typology of the engineer's own progression. `[curr]`
 - The **pattern layer ontology:** Pattern / Component / Dish / Foundation. `[grnd]`
 - **Steering is executable constraint; your stance is the ceiling** (the "infinite chameleon"). `[curr]`
@@ -165,7 +164,7 @@ Two durable anchors + the map, **not** six per-module anchors. Thin-slice = **M2
 
 ## The cull — −20%, reversible
 
-67 `{{prompt}}` refs across M1-M6 → target 54 (−19.4%, ~13). Load: M3=16 (Verification-dense), **M2=12 (filler-heavy — thin first)**, rest ~9-10. Distribution: M2 −5, M3 −4, Day-2 spine-subsumed (arc-retrospective, Huryn-frame) cut *when the spine ships*. **M1 protected** (its 2 cuts re-sourced to next-tier terminals). Full inventory: scratchpad `m1-m6-prompt-cull-inventory.md`.
+67 `{{prompt}}` refs across M1-M6 → target 54 (−19.4%, ~13). Load: M3=16 (Verification-dense), **M2=12 (filler-heavy — thin first)**, rest ~9-10. Distribution: M2 −5, M3 −4, Day-2 spine-subsumed (arc-retrospective) cut. **M1 protected** (its 2 cuts re-sourced to next-tier terminals). Full inventory: scratchpad `m1-m6-prompt-cull-inventory.md`.
 
 **Reversible gray-out, not delete.** New renderer marker `{{cut:<key>|<reason>}}` (sibling of `{{prompt:}}`) → `.cut-candidate` styling (dimmed + ribbon, hover lifts the veil); material fully retained. Antti eyeballs each grayed candidate and decides. The Blast-Radius governor applied to our own edit.
 
@@ -266,7 +265,7 @@ Context agents' `demoFit` treated as evidence, not verdict; overrules noted in-r
 | extract-the-task-shaping-rule-3 | M2 | CUT | Lecture B (where-the-rule-could-live) already names the three shapes with trigger+runtime — demo makes the module pay twice. *(Overrules mechanism agent's same-conversion suggestion)* |
 | map-the-access-surface-3 | M3 | CUT | Beat's job = student sits with THEIR map pre-delta; doesn't transfer by watching; redundant-slot reason holds |
 | ae101-m3-ready-to-clear | M3 | CUT | The yield is catching the student's OWN uncaptured learnings; demo shows the move, loses the catch; low-yield reason holds either way |
-| walk-and-send-off-4 | M4 | CUT | Demo-form IS the exercise's own named failure mode ("Huryn-as-lecture" — frame named before the student's material is quoted). The one cut demo can't rescue: reverse-to-KEEP or die-with-rehoming into M4's durable anchor (open Q) |
+| walk-and-send-off-4 | M4 | CUT | Frame now cut course-wide, so the exercise's demo subject is gone; the reverse-vs-rehome open question is resolved — stays a cut |
 
 ### Cut-overrides — the 13 marks, resolved
 
@@ -286,7 +285,7 @@ Context agents' `demoFit` treated as evidence, not verdict; overrules noted in-r
 1. **Which "plan mode prompt" did you mean?** M1/M2 reader says push-back-on-the-plan-2-original; mechanism agent says when-a-plan-is-good-1. Both classified DEMO, so low-stakes — but confirm pb-1/pb-2 proper stay student-done (they're the module).
 2. **M6 wider-look trio rewire (study/shapes/primitives):** demoing saves the pacing table's flagged >12-min overrun but costs M6 leap-test artifact 1 + the steer-a-long-run agency beat; requires -3 to author against the dominant gap directly with the fit-question folded into its interview. Go / no-go?
 3. **arc-retrospective-1 demo conditions:** needs the trainer holding a real six-module artifact trail or it reads hollow; and does a *witnessed* arc-read satisfy the visible-compounding-capstone need for core-only cohorts before the Field-Map spine ships (the cull's sequencing caveat)?
-4. **walk-and-send-off-4:** reverse to student-done, or let die with the Huryn frame rehomed into M4's durable anchor (this doc already earmarks the rehoming)?
+4. **walk-and-send-off-4:** RESOLVED — the frame is cut course-wide, so there is no frame to reverse-vs-rehome; the exercise's frame-demo purpose is gone.
 5. **M1 ticket-pair knock-ons:** LO 4 + Big Idea + Key Concept 6 reword do→witness; connector-install choreography prose → maintainer tier or dies; cc-4's "ticket beat" sentence loses its referent. Keep Path 3 (manual paste of a Claude-written close-out) as a zero-install student-hands survivor, or full witness?
 6. **Micro-mechanism + M3 minutes:** push-starting-point / clear-before-rerun — demo chrome or plain body-line (nothing to watch in a `/clear`)? And map-1 / tmws-4 — live demo vs static recap-site text (M3 runs 1h50 tight; every live demo adds trainer minutes back)?
 

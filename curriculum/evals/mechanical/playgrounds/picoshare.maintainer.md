@@ -227,8 +227,7 @@ The long send-off (`ae101-m4-take-task-end-to-end`, T6) runs autonomously up to 
 - ✅ Agent picks the security candidate in T1 with leverage-based reasoning (ADR risk live; download counter deferable).
 - ✅ Audit (T2) surfaces the Lock-as-negative-assertion gap as top-2 (the ADR's strongest test is easy to under-implement).
 - ✅ Gap-fill (T3) persists 2-3 fills to `observations/` or `CLAUDE.local.md` — not all four, not zero.
-- ✅ Huryn frame (T4) cites the M3 ADR (Block 2) and the `test-strategy` skill (Block 3) by name.
-- ✅ Commit (T5) creates `m4/<task-slug>` branch, "M4 starting point" message, short SHA echoed.
+- ✅ Commit (T4) creates `m4/<task-slug>` branch, "M4 starting point" message, short SHA echoed.
 - ✅ Send-off (T6) implements: public-status endpoint with DTO projection, status panel rendering, `humanizeDurationUntil` helper, table-test for the JSON handler, render test for the panel, **negative-assertion test against literal `Label` / `Created` / `MaxFileLifetime` in both JSON body and rendered panel HTML**, README subsection.
 - ✅ `./dev-scripts/run-go-tests` (or `go test ./...`) green at the end of T6.
 - ➕ Inactive + unlimited test row explicitly pinned (`0`, not `null`).

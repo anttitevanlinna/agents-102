@@ -56,7 +56,7 @@ Home:
 Reason: 
 ```
 
-**Standard default:** `.claude/memory/` in the repo with three blocks: `knowledge/` (codebase facts the agent learns), `decisions/` (ADRs the session produced), `quality-gates/` (verifiers, judges, evals the team shares). Gitignored by default when M4 introduces it; the team-kit override is respected once a team-kit home exists.
+**Standard default:** `observations/` in the repo (codebase facts and business-rules gaps the agent learns), gitignored, introduced at M4. Decisions live as ADRs in the repo's ADR home; shared quality gates (verifiers, judges, evals) live in the team kit. The team-kit override is respected once a team-kit home exists.
 
 ---
 

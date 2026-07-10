@@ -78,7 +78,7 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
   - Phase 2 names a `.md` file, NOT a skill. M3 Ex3 owns first skill-by-name authoring.
   - Phase 3 asks Claude to NAME shapes, not to invoke any. M5 owns verifier-as-eval; M6 owns eval-encoding. Today's discipline is capture-not-apply.
   - Free-choice location respects the M3 forthcoming auto-load / lazy-load / explicit-load tier reveal — rules file lands in whichever tier the student picks; no curriculum prescription.
-- **Themes earned:** capture-your-world (the rule file IS the captured world; user-chosen location respects that it's THEIR world); compounding (Block 1 — observation → rule, written down); mirror (Claude's extraction reflects what you actually did this session); self-aware + grain of salt (Phase 3 asks Claude to introspect on automation paths — generates hypotheses, doesn't ship them).
+- **Themes earned:** capture-your-world (the rule file IS the captured world; user-chosen location respects that it's THEIR world); compounding (observation → rule, written down); mirror (Claude's extraction reflects what you actually did this session); self-aware + grain of salt (Phase 3 asks Claude to introspect on automation paths — generates hypotheses, doesn't ship them).
 
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
 - adds one rule born from a real planning session to `./CLAUDE.local.md` or `~/.claude/CLAUDE.md`

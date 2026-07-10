@@ -20,7 +20,6 @@ produces:
     location: scrollback (ranked top-5 thin spots + cheapest fixes)
     consumed-by:
       - prompt:walk-and-send-off-3
-      - prompt:walk-and-send-off-4
 ---
 Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including any test-strategy or workflow skills already authored), and the connectors I've wired.
 

@@ -81,16 +81,9 @@ Every piece of agentic work runs the same cycle. Six phases. The loops drawn acr
 <text x="28" y="534" fill="#786c56">A FUZZY IDEA</text>
 <text x="1172" y="534" text-anchor="end" fill="#a05a2c">TRUSTED · SHARED VALUE →</text>
 </g>
+<text x="600" y="534" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="13.5" fill="#786c56">the soil it grows in: act under uncertainty · competence is the gate · a move counts when it crosses the wall</text>
 </svg>
 </figure>
-
-```
-  ┌────────── the loop climbs: personal → team → company ──────────┐
-  INTENT ─▶ CONTEXT ─▶ WORK  │  VERIFICATION ─▶ ABSORPTION ─▶ OUTCOME ─╮
-     ▲      near half (M1–M3) │  far half (M4–M6)                     │ compounds back
-     ╰───────────────────────────────────────────────────────────────╯
-  the soil it grows in:  act under uncertainty · competence is the gate · a move counts when it crosses the wall
-```
 
 - **Intent.** What you point the work at. Which task, what done means, and which unknown the work should teach you the most about.
 - **Context.** What the agent knows going in. The files, rules, and memory that decide whether it acts on your system or on a guess about your system.
@@ -115,13 +108,15 @@ The phases are places, not stages. A run usually stands in more than one at once
 
 <!-- maintainer -->
 
+**ASCII map retired (2026-07-10, Antti-directed "complete the text→pictures replacement"):** EYEBALL Q1 below is answered — the ASCII fence under the SVG is deleted; the SVG carries the territory alone. The ASCII's one un-pictured payload, the soil line (*act under uncertainty · competence is the gate · a move counts when it crosses the wall*), moved into the SVG as a bottom-center italic strip. The ASCII header's "the loop climbs: personal → team → company" is dropped without replacement: the wall/team zone carries personal→team visually, and the three-altitudes claim is the M3 close's beat (`the-loop-half-filled`, "one loop, three sizes"). Quality per-class SHAs predate this pass; re-audit before ship.
+
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** the six phase-definition bullets keep their bold (**Intent.** through **Outcome.** — the map's handles); the *You are here* and *Every move hangs on a location* slides de-bolded fully, bullets kept, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. SVG figure + ASCII map untouched. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **STATUS:** slide-format draft (proper-length bullets per `theory-plan.md` § Slide format, 2026-07-02), WIRED into `plan-mode-done-right.md § Start here`. No Quality line by design (unaudited). Three slides (one `##` = one slide). Container discipline held: phases described by what they govern, no law named.
 
 **Placement:** M2 open, first map reveal of the training (Day-1 loop-half in the internal fold; student body uses module ranges + near/far half, not day labels, per `check_student_facing §22`). Map-first, derive-within doctrine: container is legal here (`check_lectures §2` carve-out, `theory-evals.md` B3); the law NAME / MECHANISM / GOVERNOR stays name-after (the near-half close at M3 names the loop half).
 
-**Delivery mode:** In-room opener, projected. Projection legibility = design constraint (`curriculum/CLAUDE.md`, no-slides doctrine). The ASCII map IS the slide.
+**Delivery mode:** In-room opener, projected. Projection legibility = design constraint (`curriculum/CLAUDE.md`, no-slides doctrine). The map figure IS the slide.
 
 **Time:** 4–6 min target (container, not a teaching lecture). If it runs past 6 in rehearsal it is teaching laws it should leave for later. Cut back to territory plus "you are here."
 
@@ -132,7 +127,7 @@ The phases are places, not stages. A run usually stands in more than one at once
 **Map visual second pass (2026-07-02, Antti-directed, unreviewed):** direction: inner loops within the bigger loop made visible; component outcomes of process phases named. Added: (1) the agent's own loop, a small solid strand INSIDE the build loop (tag `THE AGENT'S OWN LOOP`, sub `act · read the result · correct`). Nesting shown, law NOT named; "one loop, three sizes" and any three-sizes/altitude framing stays the M3 close's beat (`the-loop-half-filled`). (2) The checking loop as a ghost, dashed strand across Verification/Absorption (tag `◌ THE CHECKING LOOP`, sub `read · judge · gate what ships · by hand for now`). No `?` glyph (`?` = frontier-unknown; this ghost = not-yet-built); no backpressure / you-are-the-feedback-signal phrasing (M5's beat). (3) Component outcome caps, EB Garamond italic matching `Trusted shipped change`, one per phase column at a shared baseline: *A task worth running · A grounded picture · A candidate change · A verdict you trust · A win taken up*; Outcome keeps its existing cap. Body rewordings: lede now carries the loop-unification (all drawn loops run one shape, each wearing different work); places-not-stages kicker added to slide 1; slide 3's "which phase" bullet softened to per-move phrasing so it matches the kicker.
 
 **EYEBALL questions (2026-07-02, for Antti):**
-1. Does the ASCII map below the SVG stay (depth layer / print fallback) or die now the SVG carries the territory?
+1. ~~Does the ASCII map below the SVG stay (depth layer / print fallback) or die now the SVG carries the territory?~~ ANSWERED 2026-07-10: dies — see the ASCII-map-retired note above.
 2. Density: nine loop tags plus columns plus outcome caps on one projected slide. OK for a 4–6 min container, or trim strands (ghost prototyping loop is the first cut candidate)?
 3. Palette fidelity: dark-teal + rust on cream. Does it read as the same artifact as the groundwork original, and is the amber dark enough / too muddy?
 4. (Premise reworded, second pass.) The old worry, many loop names colliding with the student's mental model, is addressed by the new lede (all drawn loops run one shape, each wearing different work), pending eyeball. What remains: the names themselves are unearned Field Guide vocabulary (plan loop, security loop, crossing the wall). Furniture under container discipline, or pre-teaching the near-half close?

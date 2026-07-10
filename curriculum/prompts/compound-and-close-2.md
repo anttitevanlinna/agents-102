@@ -2,7 +2,7 @@
 key: compound-and-close-2
 dest: Claude Code
 runtime: any
-origin: exercises/compound-and-close
+origin: exercises/close-the-ticket
 requires:
   - id: shipped-bug-fix
     source: prompt:fix-tests-first-3

@@ -156,7 +156,9 @@
         var h2 = body.querySelector('h2');
         var m = h2 && PHASE_RE.exec(textOf(h2));
         if (m) {
-          out.push(makeDivider('Phase ' + m[1], m[2].trim(), null, o.dark));
+          var pd = makeDivider('Phase ' + m[1], m[2].trim(), null, o.dark);
+          pd.phaseNum = +m[1];
+          out.push(pd);
           h2.textContent = m[2].trim();
         }
       }
@@ -336,9 +338,16 @@
       var btn = el('button', cls, { 'data-index': k });
       var num = el('span', 'deck__rail-num');
       num.textContent = s.isCover ? '•'
-        : s.isDivider ? (s.el.classList.contains('slide--module') && s.secCode ? s.secCode : '§')
+        : s.isDivider ? (s.el.classList.contains('slide--module') && s.secCode ? s.secCode
+                         : (s.phaseNum != null ? '§' + s.phaseNum : '§'))
         : (s.secNum != null ? String(s.secNum) : String(k + 1));
-      var label = el('span', 'deck__rail-label'); label.textContent = s.navLabel || s.title;
+      var label = el('span', 'deck__rail-label');
+      // The num cell is position; the label is the title minus any leading
+      // content ordinal ("1. Pick THE repo" → "Pick THE repo") so two
+      // disagreeing numbers never sit side by side. The slide itself keeps
+      // its step number — it's content there, chrome here.
+      var rawLabel = s.navLabel || s.title;
+      label.textContent = (s.isDivider || s.isCover) ? rawLabel : rawLabel.replace(/^\d+[.)]\s+/, '');
       btn.append(num, label);
       btn.addEventListener('click', function () { go(k); collapseRail(); });
       li.appendChild(btn); railList.appendChild(li); return btn;

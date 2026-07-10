@@ -21,6 +21,8 @@ const { JSDOM } = require('jsdom');
 
 const SLIDES_SRC = fs.readFileSync(
   path.join(__dirname, '../site/layouts/slides.js'), 'utf8');
+const SLIDES_CSS = fs.readFileSync(
+  path.join(__dirname, '../site/layouts/slides.css'), 'utf8');
 
 // A minimal workbook <main>, same shape build-workbook.js emits: a training
 // cover, a prework prose section, one real module carrying a lecture + an
@@ -54,6 +56,8 @@ const FIXTURE = `
       <div class="phase-kicker">Exercise</div>
       <h1>Orient and introspect</h1>
       <h2>Step one</h2><p>body</p>
+      <h2>Phase 2: Read it back</h2><p>body</p>
+      <h2>3. Check the window</h2><p>body</p>
     </section>
   </section>
 
@@ -122,6 +126,16 @@ test('module divider eyebrow carries the module number', () => {
   assert.equal(mod.title, 'Module 1');
 });
 
+// A module opener must read louder than a within-module phase/section divider,
+// or flicking into a new module shows no boundary. The renderer tags it
+// `.slide--module`; the stylesheet must give that class its own treatment
+// (not inherit the plain `.slide--divider` look). Guards the boundary-invisible
+// regression.
+test('module opener has dedicated styling distinct from a phase divider', () => {
+  assert.match(SLIDES_CSS, /\.slide--(divider\.slide--)?module\s*\{[^}]/,
+    'slides.css must carry a rule targeting the module opener (.slide--module)');
+});
+
 test('module number is read from the long-read hero when present', () => {
   const fixture = FIXTURE.replace(
     '<h1>Getting going + context</h1>',
@@ -149,4 +163,48 @@ test('covers and dividers carry the section code but no ordinal', () => {
   model.slides.filter(s => s.isDivider || s.isCover).forEach(s => {
     assert.equal(s.secNum, undefined, (s.title || '') + ' has no ordinal');
   });
+});
+
+// ── left-rail rendering (needs the real open(), not just the model) ─────────
+function openDeck() {
+  const dom = new JSDOM(`<!doctype html><body>${FIXTURE}</body>`, { runScripts: 'outside-only' });
+  dom.window.Element.prototype.scrollIntoView = function () {};
+  dom.window.eval(SLIDES_SRC);
+  const main = dom.window.document.querySelector('main');
+  const ctl = dom.window.CurriculumSlides.open(main, { title: 'Fixture' });
+  const rows = [...dom.window.document.querySelectorAll('.deck__rail-item')].map(btn => ({
+    num: btn.querySelector('.deck__rail-num').textContent,
+    label: btn.querySelector('.deck__rail-label').textContent,
+  }));
+  return { dom, ctl, rows };
+}
+
+test('rail: phase dividers show their phase number, not a bare §', () => {
+  const { rows } = openDeck();
+  const phase = rows.find(r => r.label === 'Read it back');
+  assert.ok(phase, 'phase divider row present (label without the Phase prefix)');
+  assert.equal(phase.num, '§2');
+});
+
+test('rail: a leading content ordinal is stripped from the label (position wins the num cell)', () => {
+  const { rows } = openDeck();
+  const step = rows.find(r => r.label === 'Check the window');
+  assert.ok(step, 'label "3. Check the window" rendered without its baked step number');
+  assert.ok(!rows.some(r => /^\d+[.)]\s/.test(r.label)), 'no rail label starts with a bare ordinal');
+  assert.match(step.num, /^\d+$/, 'num cell carries the positional ordinal');
+});
+
+test('rail: content slide numbers are within-section ordinals, dividers carry section codes', () => {
+  const { rows } = openDeck();
+  const m1 = rows.find(r => r.num === 'M1');
+  assert.ok(m1, 'module divider row shows M1 in the num cell');
+  const first = rows.find(r => r.label === 'Slide A');
+  assert.equal(first.num, '1', 'first content slide of the module is 1, not its global index');
+});
+
+test('counter shows section ref plus global position', () => {
+  const { dom, ctl } = openDeck();
+  ctl.go(3); // first prework content slide ("What to bring")
+  const count = dom.window.document.querySelector('.deck__count').textContent;
+  assert.match(count, /^P·1 — 4 \/ \d+$/);
 });

@@ -69,7 +69,7 @@ Three modules of loop work sit behind you. Before you clear the session, the nea
 
 Still in the main quest window (*m3-security*), signal the wrap-up. The agent converges what's still loose.
 
-{{cut:ae101-m3-ready-to-clear|low-yield}}
+{{prompt:ae101-m3-ready-to-clear}}
 
 > Might be slightly leaky. Here, the simple ask is good enough.
 
@@ -99,6 +99,8 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 
 <!-- maintainer -->
 
+
+**Session-close convergence prompt (`ae101-m3-ready-to-clear`) kept, not cut.** Flagged `low-yield`. It's the converge-before-clear beat (`check_pedagogy.md §58`): the student signals wrap-up, the agent surfaces anything still loose before the `/clear`. A light one-line ask carrying a lead-in and its own "good enough" callout, not concurrent-heavy load. Its `{{cut:}}` marker was reversed to a live `{{prompt:}}` — body touched, so the per-class Quality SHAs below predate it; re-audit before ship. Not a cut candidate.
 
 **Quality:** compendium-audited 2026-07-08 (writing@1a9e10b story@1a9e10b technical@1a9e10b behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b slides@47f3357)
 - judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (override-r8-evidence-unverified-no-CUT-tag-in-file-see-instances/ae101--earn-the-trust.slides.json)

@@ -45,7 +45,7 @@ Decide the location with Claude.
 - **Refinement** is the backlog-grooming loop. Sizing, splitting, and sharpening tickets before they're worked.
 - The prompt asks for shapes, not code. "This rules file" means the `.md` file you saved in Phase 2. The first automation attempt points an agent at that file and one input stream: a Slack channel, an issue queue, or a backlog export.
 
-{{cut:extract-the-task-shaping-rule-3|low-yield}}
+{{prompt:extract-the-task-shaping-rule-3}}
 
 
 ## Read the shapes, hold the build
@@ -59,6 +59,8 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 <!-- maintainer -->
 
 **Ticket phase split out:** the optional "read one real ticket" phase (`extract-the-task-shaping-rule-4`) moved to the `read-the-ticket-rules.md` homework exercise; this file now ends at the automation-shapes read. Body trimmed since the SHAs below, so re-audit before ship.
+
+**Phase 3 automation-shapes prompt (`extract-the-task-shaping-rule-3`) kept, not cut.** It was flagged `low-yield` (the lecture `where-the-rule-could-live` walks the same three shapes). Kept by decision: this is a no-build, name-the-shapes horizon beat, so it adds none of the concurrent-heavy-execution load the cull targeted — cutting it reclaims no load, it only drops a cheap payoff. It gives the slot a breather after the rules-extraction work and primes the lecture reveal (generate-then-reveal). Not a cut candidate.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** One handle kept bold: **Refinement** at its term-earning moment (bold narrowed from the full lead sentence to the word); all other bullet leads de-bolded. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 

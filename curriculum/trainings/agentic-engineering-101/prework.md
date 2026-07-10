@@ -25,7 +25,7 @@ One decision, and you probably have a strong candidate already: which repo are y
 - Real code, real tests, real history, somewhere with enough surface area for rules and memory to land on
 - Real work ahead at two sizes. Module 1 ships a small fix, a few lines here and there. Module 4 onward runs experiments on bigger things: an epic you're about to start, a refactor that's been sitting, a feature with unknowns. The repo should have both.
 
-Pick one. Every module of this training starts from a Claude Code session in this repo. Every rule, every memory, every skill you build during the training lands here.
+Pick one. Every module of this training starts from a Claude Code session in this repo. Every rule and every memory you build during the training lands here.
 
 *Really stuck for a repo that fits? Ask your trainer for the fallback repo, or [build one from zero](trainings/agentic-engineering-101/supplementary/build-a-project-from-zero.md) and grow it across the six modules.*
 

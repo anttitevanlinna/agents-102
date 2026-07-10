@@ -2,7 +2,7 @@
 key: extract-the-task-shaping-rule-4
 dest: Claude Code
 runtime: any
-origin: exercises/extract-the-task-shaping-rule
+origin: exercises/read-the-ticket-rules
 requires:
   - id: ticket-data
     source: scrollback (student pastes one ticket)

@@ -145,7 +145,18 @@
     if (groups.length) {
       var coverEls = groups[0].nodes.filter(function (n) { return n.nodeType === 1; });
       if (!coverEls.length) groups.shift();
-      else { var h1 = coverEls.filter(function (n) { return n.tagName === 'H1'; })[0]; if (h1) docTitle = textOf(h1); }
+      else {
+        var h1 = coverEls.filter(function (n) { return n.tagName === 'H1'; })[0];
+        if (h1) docTitle = textOf(h1);
+        else if (o.mid) {
+          // A mid-module prose run with loose content before its first H2 (e.g. the
+          // thinking-effort blockquote). Fold it into the first H2 slide rather than
+          // emitting an orphan "Cover" slide; a run that is ALL loose content (a lone
+          // connective line) becomes one plain content slide.
+          if (groups.length > 1) { groups[1].nodes = groups[0].nodes.concat(groups[1].nodes); groups.shift(); }
+          else groups[0].isCover = false;
+        }
+      }
     }
 
     var out = [];
@@ -238,11 +249,35 @@
           moduleSeq = mNo;
           code = 'M' + mNo;
           slides.push(makeDivider('Module ' + mNo, moduleTitleOf(moduleEl), 'slide--module', false, moduleBigIdeaOf(moduleEl)));
-          Array.prototype.forEach.call(innerPhases, function (phase) {
-            var isEx = phase.classList.contains('phase--exercise');
-            // the first (cover) slide of each doc reads as a section title in the rail
-            buildSingleDoc(phase, { dark: isEx }).slides.forEach(function (s) { slides.push(s); });
+          // Walk the module in document order so the deck mirrors the long-read:
+          // the hero became the opener above; every OTHER block — Start here /
+          // Connections, What You'll Learn, Key Concepts, the Debrief move and its
+          // prompts, Homework, Next — is slide-ified in place, interleaved with
+          // the lecture/exercise phases. (Before this, only the phases reached the
+          // deck; all module-level prose was stranded in long-read.)
+          var buf = [];
+          function flushProse() {
+            if (!buf.length) return;
+            var box = moduleEl.ownerDocument.createElement('div');
+            buf.forEach(function (n) { box.appendChild(n); });
+            buf = [];
+            buildSingleDoc(box, { dark: false, mid: true }).slides.forEach(function (s) { slides.push(s); });
+          }
+          Array.prototype.forEach.call(Array.prototype.slice.call(moduleEl.children), function (child) {
+            if (child.classList && (child.classList.contains('phase--lecture') || child.classList.contains('phase--exercise'))) {
+              flushProse();
+              var isEx = child.classList.contains('phase--exercise');
+              // the first (cover) slide of each doc reads as a section title in the rail
+              buildSingleDoc(child, { dark: isEx }).slides.forEach(function (s) { slides.push(s); });
+            } else if (child.classList && child.classList.contains('module-hero')) {
+              /* hero (title + Big Idea) already became the module opener */
+            } else if (child.tagName === 'H1') {
+              /* module title in the no-hero fallback — already the opener */
+            } else {
+              buf.push(child);
+            }
           });
+          flushProse();
         } else {
           var kind = proseEyebrowOf(moduleEl);
           if (kind === 'Prework') code = 'P';

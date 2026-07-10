@@ -47,6 +47,11 @@ const FIXTURE = `
 
   <section class="module" id="getting-going">
     <h1>Getting going + context</h1>
+    <blockquote><p>Run M1 on high thinking effort.</p></blockquote>
+    <h2>What You'll Learn</h2>
+    <p>After this module, you will be able to run the loop.</p>
+    <h2>Start here</h2>
+    <p>The question to you: what's one trick you found this week?</p>
     <section class="phase phase--lecture" id="lectures-painting-the-picture">
       <div class="phase-kicker">Lecture</div>
       <h1>Painting the picture</h1>
@@ -59,6 +64,10 @@ const FIXTURE = `
       <h2>Phase 2: Read it back</h2><p>body</p>
       <h2>3. Check the window</h2><p>body</p>
     </section>
+    <h2>Key Concepts</h2>
+    <ul><li>The loop is orient then fix then compound then close.</li></ul>
+    <h2>Next</h2>
+    <p>Module 2 is where plan mode earns its keep.</p>
   </section>
 
   <section class="module" id="supplementary-backpressure">
@@ -136,6 +145,29 @@ test('module opener has dedicated styling distinct from a phase divider', () => 
     'slides.css must carry a rule targeting the module opener (.slide--module)');
 });
 
+// The composed deck must mirror the long-read INSIDE a module too: module-level
+// prose (Connections/Start here, What You'll Learn, Key Concepts, Debrief +
+// prompts, Homework, Next) is not wrapped in a `.phase--*` and used to be
+// dropped from the deck — surviving only in long-read. Bug 2026-07-10.
+test('composed deck renders module-level prose, not only the phases', () => {
+  const { labels } = buildDeck();
+  assert.match(labels, /What You'll Learn/, "module's What You'll Learn reaches the deck");
+  assert.match(labels, /Start here/, "module's Connections/Start here reaches the deck");
+  assert.match(labels, /Key Concepts/, "module's Key Concepts reaches the deck");
+  assert.match(labels, /Next/, "module's Next/bridge reaches the deck");
+});
+
+test('module-level prose is interleaved in document order (before and after phases)', () => {
+  const { model } = buildDeck();
+  const m1 = model.slides.filter(s => s.secCode === 'M1').map(s => s.navLabel || s.title);
+  const wyl = m1.findIndex(t => /What You'll Learn/.test(t));
+  const painting = m1.findIndex(t => /Painting the picture/.test(t));
+  const keyConcepts = m1.findIndex(t => /Key Concepts/.test(t));
+  assert.ok(wyl > -1 && painting > -1 && keyConcepts > -1, 'all three present');
+  assert.ok(wyl < painting, 'What You\'ll Learn (pre-phase prose) comes before the first lecture');
+  assert.ok(keyConcepts > painting, 'Key Concepts (post-phase prose) comes after the phases');
+});
+
 test('module number is read from the long-read hero when present', () => {
   const fixture = FIXTURE.replace(
     '<h1>Getting going + context</h1>',
@@ -198,8 +230,13 @@ test('rail: content slide numbers are within-section ordinals, dividers carry se
   const { rows } = openDeck();
   const m1 = rows.find(r => r.num === 'M1');
   assert.ok(m1, 'module divider row shows M1 in the num cell');
-  const first = rows.find(r => r.label === 'Slide A');
+  // Module prose now leads the module (mirrors long-read), so the first content
+  // slide is "What You'll Learn" — ordinal 1 — and the lecture's "Slide A" follows
+  // the two pre-phase prose slides at ordinal 3. Ordinals stay per-section positional.
+  const first = rows.find(r => r.label === "What You'll Learn");
   assert.equal(first.num, '1', 'first content slide of the module is 1, not its global index');
+  const slideA = rows.find(r => r.label === 'Slide A');
+  assert.equal(slideA.num, '3', 'lecture content follows the two pre-phase prose slides');
 });
 
 test('counter shows section ref plus global position', () => {

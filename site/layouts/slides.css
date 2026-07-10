@@ -89,6 +89,27 @@ body.slides-active { overflow: hidden; }
   font-family: var(--font-serif); font-style: italic; font-size: clamp(1.05rem, 1.9vw, 1.45rem);
   line-height: 1.5; color: var(--fg-2); }
 .slide-divider__sub code { font-style: normal; }
+
+/* ── module opener ─────────────────────────────────────────────────────────
+   A module boundary must read louder than a within-module phase/section
+   divider — otherwise flicking from the last slide of one module into the
+   next shows no boundary at all. Invert the module opener into a dark,
+   full-bleed module cover (local palette override, so all var()-based child
+   styles flip) with a bigger, brighter "Module N" marker and title. */
+.deck .slide--divider.slide--module {
+  --bg: #1a160f; --fg: #f2ead9; --fg-2: #d6cbb4;
+  --accent: #d98a55; --accent-2: #e7a866; --accent-soft: rgba(217, 138, 85, .16);
+  background: var(--bg);
+  background-image: radial-gradient(120% 90% at 82% 12%, var(--accent-soft), transparent 58%); }
+.deck .slide--module .slide-divider__eyebrow {
+  font-size: clamp(.95rem, 1.7vw, 1.25rem); letter-spacing: .3em;
+  font-weight: 700; color: var(--accent-2); }
+.deck .slide--module .slide-divider__eyebrow::before {
+  width: 3.4rem; height: 3px; background: var(--accent-2); }
+.deck .slide--module .slide-divider__title {
+  font-size: clamp(2.9rem, 7vw, 5.6rem); font-weight: 300; color: var(--fg); }
+.deck .slide--module .slide-divider__sub { color: var(--fg-2); }
+
 /* training cover slide (whole-handbook deck, slide 1) */
 .deck .slide--traincover .traincover__eyebrow { font-family: var(--font-body); font-size: .82rem;
   letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin: 0 0 1rem; }

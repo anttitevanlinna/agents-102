@@ -128,7 +128,7 @@ Ask Claude whether this ADR rides into future sessions automatically.
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
-| Hardening-decision ADR | Sponsor-stated ADR home; default `docs/adr/NNNN-slug.md` | Phase 3 (`{{prompt:threat-model-with-stride-3}}`) | M3 Ex3 *Author your test-strategy skill* (the hardening decision becomes a test case the test-strategy invocation reads); M4 Phase 2 walk-and-fill (audit subagent reads ADRs as part of *"system you have"*); M4 Phase 4 three-block frame (ADRs become Block 2 examples) |
+| Hardening-decision ADR | Sponsor-stated ADR home; default `docs/adr/NNNN-slug.md` | Phase 3 (`{{prompt:threat-model-with-stride-3}}`) | M3 Ex3 *Author your test-strategy skill* (the hardening decision becomes a test case the test-strategy invocation reads); M4 Phase 2 walk-and-fill (audit subagent reads ADRs as part of *"system you have"*); M4 Phase 3 three-block frame (ADRs become Block 2 examples) |
 
 **Per-phase failure modes** (per `check_pedagogy.md` rule 47 — every phase shipping a forcing function names its dominant failure and one recovery move):
 

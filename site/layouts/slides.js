@@ -218,24 +218,59 @@
       var coverEl = root.querySelector('.workbook-cover');
       if (coverEl) slides.push(buildTrainingCover(coverEl));
       var sections = root.querySelectorAll(':scope > section.module');
+      // Numbering: every top-level section gets a code — modules reuse the
+      // long-read hero number (M1…M6, same source of truth as the TOC), prose
+      // sections get a kind code (P prework, S1… supplementary, R1… reference).
+      // Content slides are numbered 1…n WITHIN their section; covers/dividers
+      // carry the code but no ordinal. Position is computed here, never
+      // hand-written in the markdown (Phase/Step numbers there are content,
+      // not position — linted by scripts/check-slide-numbering.js).
+      var moduleSeq = 0, kindTallies = {};
       Array.prototype.forEach.call(sections, function (moduleEl) {
         var innerPhases = moduleEl.querySelectorAll('.phase--lecture, .phase--exercise');
+        var start = slides.length, code;
         if (innerPhases.length) {
-          slides.push(makeDivider('Module', moduleTitleOf(moduleEl), 'slide--module', false, moduleBigIdeaOf(moduleEl)));
+          var heroNum = moduleEl.querySelector('.module-hero-num');
+          var mNo = heroNum ? parseInt(heroNum.textContent, 10) : NaN;
+          if (isNaN(mNo)) mNo = moduleSeq + 1;
+          moduleSeq = mNo;
+          code = 'M' + mNo;
+          slides.push(makeDivider('Module ' + mNo, moduleTitleOf(moduleEl), 'slide--module', false, moduleBigIdeaOf(moduleEl)));
           Array.prototype.forEach.call(innerPhases, function (phase) {
             var isEx = phase.classList.contains('phase--exercise');
             // the first (cover) slide of each doc reads as a section title in the rail
             buildSingleDoc(phase, { dark: isEx }).slides.forEach(function (s) { slides.push(s); });
           });
         } else {
-          slides.push(makeDivider(proseEyebrowOf(moduleEl), moduleTitleOf(moduleEl), 'slide--module', false, moduleBigIdeaOf(moduleEl)));
+          var kind = proseEyebrowOf(moduleEl);
+          if (kind === 'Prework') code = 'P';
+          else {
+            var initial = kind.charAt(0).toUpperCase();
+            kindTallies[initial] = (kindTallies[initial] || 0) + 1;
+            code = initial + kindTallies[initial];
+          }
+          slides.push(makeDivider(kind, moduleTitleOf(moduleEl), 'slide--module', false, moduleBigIdeaOf(moduleEl)));
           buildSingleDoc(moduleEl, { dark: false }).slides.forEach(function (s) { slides.push(s); });
+        }
+        var num = 0;
+        for (var k = start; k < slides.length; k++) {
+          slides[k].secCode = code;
+          if (!slides[k].isDivider && !slides[k].isCover) slides[k].secNum = ++num;
         }
       });
       title = title || 'Handbook';
     }
 
-    slides.forEach(function (s, k) { s.index = k; s.el.setAttribute('data-index', String(k)); });
+    // Single-doc decks have no sections: number content slides within the doc.
+    if (!slides.some(function (s) { return s.secCode; })) {
+      var soloNum = 0;
+      slides.forEach(function (s) { if (!s.isDivider && !s.isCover) s.secNum = ++soloNum; });
+    }
+
+    slides.forEach(function (s, k) {
+      s.index = k; s.el.setAttribute('data-index', String(k));
+      if (s.secCode) s.el.setAttribute('data-ref', (s.secCode + (s.secNum ? '.' + s.secNum : '')).toLowerCase());
+    });
     return { slides: slides, title: title };
   }
 
@@ -300,7 +335,9 @@
         + (s.isCover ? ' deck__rail-item--cover' : '');
       var btn = el('button', cls, { 'data-index': k });
       var num = el('span', 'deck__rail-num');
-      num.textContent = s.isCover ? '•' : (s.isDivider ? '§' : String(k + 1));
+      num.textContent = s.isCover ? '•'
+        : s.isDivider ? (s.el.classList.contains('slide--module') && s.secCode ? s.secCode : '§')
+        : (s.secNum != null ? String(s.secNum) : String(k + 1));
       var label = el('span', 'deck__rail-label'); label.textContent = s.navLabel || s.title;
       btn.append(num, label);
       btn.addEventListener('click', function () { go(k); collapseRail(); });
@@ -347,7 +384,9 @@
       railItems.forEach(function (b, k) { b.classList.toggle('is-active', k === n); });
       if (railItems[n]) railItems[n].scrollIntoView({ block: 'nearest' });
       progressFill.style.width = ((n + 1) / slides.length * 100) + '%';
-      count.textContent = (n + 1) + ' / ' + slides.length;
+      var s = slides[n];
+      var ref = s.secCode ? s.secCode + (s.secNum != null ? '·' + s.secNum : '') : '';
+      count.textContent = (ref ? ref + ' — ' : '') + (n + 1) + ' / ' + slides.length;
       edgePrev.disabled = n === 0; edgeNext.disabled = n === slides.length - 1;
     }
 

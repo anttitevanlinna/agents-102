@@ -103,3 +103,50 @@ test('composed deck includes reference sections', () => {
   assert.match(labels, /Prompt anatomy/, 'reference title present');
   assert.match(labels, /The named moves/, 'reference body slide present');
 });
+
+// ── numbering contract ───────────────────────────────────────────────────────
+// Position numbers are computed by the renderer, never hand-written: every
+// top-level section gets a code (M<n> from the long-read hero number, P for
+// prework, S<n>/R<n> for supplementary/reference), content slides get a
+// within-section ordinal, and each slide carries a stable data-ref.
+
+test('sections get codes: P / M1 / S1 / R1, in deck order', () => {
+  const { model } = buildDeck();
+  const dividers = model.slides.filter(s => s.isDivider && s.el.classList.contains('slide--module'));
+  assert.deepEqual(Array.from(dividers, s => s.secCode), ['P', 'M1', 'S1', 'R1']);
+});
+
+test('module divider eyebrow carries the module number', () => {
+  const { model } = buildDeck();
+  const mod = model.slides.find(s => s.secCode === 'M1' && s.isDivider);
+  assert.equal(mod.title, 'Module 1');
+});
+
+test('module number is read from the long-read hero when present', () => {
+  const fixture = FIXTURE.replace(
+    '<h1>Getting going + context</h1>',
+    '<header class="module-hero"><div class="module-hero-num">03</div><h1 class="module-hero-title">Getting going + context</h1></header>');
+  const dom = new JSDOM(fixture, { runScripts: 'outside-only' });
+  dom.window.eval(SLIDES_SRC);
+  const main = dom.window.document.querySelector('main');
+  const model = dom.window.CurriculumSlides.buildDeckModel(main.cloneNode(true), {});
+  assert.ok(model.slides.some(s => s.secCode === 'M3'), 'hero number 03 becomes section code M3');
+});
+
+test('content slides are numbered within their section and carry data-ref', () => {
+  const { model } = buildDeck();
+  const m1 = model.slides.filter(s => s.secCode === 'M1');
+  const content = m1.filter(s => !s.isDivider && !s.isCover);
+  assert.deepEqual(Array.from(content, s => s.secNum), Array.from(content, (_, i) => i + 1), 'ordinals are 1..n within the module');
+  assert.equal(content[0].el.getAttribute('data-ref'), 'm1.1');
+  const preworkContent = model.slides.filter(s => s.secCode === 'P' && !s.isDivider && !s.isCover);
+  assert.equal(preworkContent[0].secNum, 1, 'ordinal restarts per section');
+  assert.equal(preworkContent[0].el.getAttribute('data-ref'), 'p.1');
+});
+
+test('covers and dividers carry the section code but no ordinal', () => {
+  const { model } = buildDeck();
+  model.slides.filter(s => s.isDivider || s.isCover).forEach(s => {
+    assert.equal(s.secNum, undefined, (s.title || '') + ' has no ordinal');
+  });
+});

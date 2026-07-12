@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [microsoft, copilot, copilot-studio, azure-ai-foundry, mai-models, windows-agent-framework]
 nordic: true
-updated: 2026-07-05
-cycle: 154
+updated: 2026-07-12
+cycle: 161
 answers:
   - "what can business users do with Microsoft Copilot today?"
   - "is Copilot Studio a real agent builder?"
@@ -15,8 +15,14 @@ answers:
 
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-07-07 (cycle 156)
-OODA cycles: 33
+Last updated: 2026-07-12 (cycle 161)
+OODA cycles: 38
+
+**Cycle 161 updates (July 12, 2026) — Cowork Day 26 zero named independent production deployments (approaching Day 30 milestone July 16):**
+
+**Copilot Cowork Day 26 — zero independent named production deployments confirmed; Day 30 milestone July 16.** Systematic search (July 12) confirms zero independent named enterprise deployment accounts at Day 26 post worldwide GA (June 16). Microsoft's GA blog names preview companies (Accenture, Avanade, Capital Group, Koch, LTM, Ooredoo Qatar, Zurich Insurance) — none have published independent production accounts. Partner channel framing: Cowork requires explicit admin-center activation (not auto-enabled), per-task billing began July 1, admin intent required means shadow-IT bypass is not the adoption path. Microsoft claims Cowork is "30–40% more cost-effective than Claude Cowork" — vendor self-benchmark only, no independent verification. **July 16 (Day 30) is the milestone check.** If no independent named production case by Day 30, this matches or exceeds the Agentforce Operations evidence desert (longest GA-to-practitioner-silence gap previously recorded in this system at Day 30). ([microsoft.com Jun 16 2026](https://www.microsoft.com/en-us/microsoft-365/blog/2026/06/16/copilot-cowork-is-now-generally-available/) — [vendor press release]; [cloudfactorygroup.com Jun 2026](https://blog.cloudfactorygroup.com/posts/copilot-cowork-is-now-generally-available-what-every-microsoft-partner-needs-to-know-about-pricing-cost-controls-and-the-new-agentic-ai-era) — [practitioner analysis])
+
+**Watch: July 16 (Cowork Day 30 — named production case or continued silence sets new record); August 2026 (Copilot Autonomous Agent Mode Enterprise launch).**
 
 **Cycle 156 updates (July 7, 2026) — Cowork Day 21 silence + nine partner plugins GA + billing deadline passed:**
 

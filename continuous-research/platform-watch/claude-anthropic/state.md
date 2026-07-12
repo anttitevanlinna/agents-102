@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [anthropic, claude-code, claude-cowork, antspace, agent-sdk]
 nordic: false
-updated: 2026-07-03
-cycle: 152
+updated: 2026-07-12
+cycle: 161
 answers:
   - "what is Anthropic's platform strategy?"
   - "what can business users do with Claude today?"
@@ -16,13 +16,23 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-07-10 (cycle 159)
-OODA cycles: 43
+Last updated: 2026-07-12 (cycle 161)
+OODA cycles: 45
 
-**Cycle 159 updates (July 10, 2026) — Sonnet 5 Day 10 regression signals (CodeRabbit bug detection regression, sycophancy confirmed); Fable 5 July 12 enterprise-exempt confirmed; EMA: HubSpot + Webflow named beyond Ramp; Okta-only ceiling documented; JAWBONE Act legislative signal:**
+**Cycle 161 updates (July 12, 2026) — Fable 5 July 12 transition ambiguous (possible second extension); Sonnet 5 Day 12 L2 vendor evidence; MCP EMA Day 24 zero new adopters:**
 
-**Sonnet 5 Day 10 — regression signals solidify; emergence window intact (July 14–21).** Three L2 evaluation signals emerged:
-1. **CodeRabbit bug detection regression (L2):** Bug detection rate 63% (Sonnet 4.6) → **50–51% (Sonnet 5)** — below prior Sonnet AND CodeRabbit's own baseline (57%). Code review precision improved (29% → 38–40%). Dominant concern: over-engineers simple requests, adds helper functions and test files beyond scope — "noticeably slower; tight latency budgets = bad fit." Recommendation: upgrade for substantial dev work, avoid high-volume minor-diff pipelines. ([coderabbit.ai/blog/claude-sonnet-5-review](https://www.coderabbit.ai/blog/claude-sonnet-5-review) — [practitioner analysis], Jul 2026)
+**Fable 5 July 12 transition — ambiguous; possible second extension not confirmed.** Android Authority's live-tracking article updated with headline "(Updated: Not yet)" as of search time July 12 — real-time signal that the 11:59 PM PT transition may have slipped or had not executed at search time. No Anthropic X post, blog post, or changelog entry found confirming execution or announcing second extension. Consumer-only transition (Free/Pro/Max/Team/premium Enterprise). Enterprise/API path unaffected. User complaints on X/Reddit focus more on guardrail tightening than pricing (debugging/refactoring score drops cited by users — unverified). Anthropic stated intent: restore Fable 5 to subscriptions once capacity allows. **Watch: Check status.claude.com and changelog in cycle 162 to confirm whether July 12 executed or extended.** ([androidauthority.com Jul 12 2026](https://www.androidauthority.com/anthropic-claude-fable-5-credits-usage-july-3684840/) — [general press])
+
+**Sonnet 5 Day 12 — Harvey + Box provide L2 vendor evidence; business-domain practitioner silence holds.** Harvey (legal AI vendor deploying Claude): BigLaw Bench 91.3% (highest across all Sonnet versions tested); LAB 5.8% end-to-end task completion. Strengths: risk assessment, compliance, capital markets drafting. Weaknesses: tax, structured finance. Box (platform vendor): Sonnet 5 leads in Energy, Retail, Professional Services, Technology verticals specifically for high-volume operational workflows. Both are vendors evaluating Claude in their own products — evidence is L2 vendor-sourced, not independent enterprise end-users. July 13 Anthropic webinar (Zed + ClickHouse) confirmed on events page — has not yet occurred. **HR, operations, supply chain, finance practitioner reports: zero at Day 12. July 14–21 remains the expected emergence window.** ([harvey.ai Jun 30 2026](https://www.harvey.ai/blog/sonnet-5-in-harvey) — [practitioner analysis]; [box.com Jul 2026](https://blog.box.com/claude-sonnet-5-raises-bar-enterprise-intelligence-across-key-industries) — [practitioner analysis])
+
+**MCP EMA — Day 24 zero new named enterprise adopters; Okta-only ceiling persists.** Systematic search confirms: no new named enterprise end-customers beyond Day-0 adopters (Ramp 2,000 employees, HubSpot, Webflow) have published adoption accounts in 24 days since June 18 launch. Okta remains the only supported IdP for EMA — no Azure AD or Google Workspace SSO announced. Structural ceiling: blocks Microsoft 365/Azure AD enterprises until multi-IdP ships. Independent practitioner analysis characterizes EMA as resolving the single biggest 2025 MCP adoption blocker (per-user OAuth friction) — but adoption evidence has not yet materialized beyond the original three. Evidence level: Level 3 negative (24 days, systematic search). ([infoq.com Jul 2026](https://www.infoq.com/news/2026/07/mcp-ema-enterprise-auth/) — [domain trade publication]; [andrew.ooo Jul 2026](https://andrew.ooo/answers/mcp-model-context-protocol-enterprise-adoption-july-2026/) — [practitioner analysis])
+
+**Watch: July 13 (Anthropic webinar — Zed + ClickHouse first Sonnet 5 practitioner demo); July 14–21 (Sonnet 5 Day 14–21 business-domain emergence window); July 16 (Cowork Day 30 milestone); July 17 (Gemini 3.5 Pro GA candidate — unconfirmed); August 5 (Opus 4.1 API deprecation); August 26 (OpenAI Assistants API shutdown — no migration tooling); August 31 (Sonnet 5 intro pricing $2/$10 → $3/$15); Q3 2026 (Cursor/SpaceX regulatory close).**
+
+**Cycle 159 updates (July 10, 2026) — Sonnet 5 Day 10 evaluation signals (CodeRabbit precision/recall tradeoff, sycophancy confirmed); Fable 5 July 12 enterprise-exempt confirmed; EMA: HubSpot + Webflow named beyond Ramp; Okta-only ceiling documented; JAWBONE Act legislative signal:**
+
+**Sonnet 5 Day 10 — evaluation signals solidify; emergence window intact (July 14–21).** Three L2 evaluation signals emerged:
+1. **CodeRabbit precision/recall tradeoff (L2) — NOT a regression [cycle 160 correction]:** Bug detection recall: 63% (Sonnet 4.6) → **50–51% (Sonnet 5)**; code review precision: 29% (Sonnet 4.6) → **38–40% (Sonnet 5)** — simultaneous improvement. CodeRabbit interpretation: "a reviewer that flags fewer wrong things but also catches fewer real bugs is not obviously more accurate and depends entirely on which mistake costs you more." Teams where false positives waste engineering time: Sonnet 5 may be net improvement. Safety-critical codebases where missing a bug is catastrophic: Sonnet 4.6 remains better. Dominant concern: over-engineers simple requests, adds helper functions and test files beyond scope — "noticeably slower; tight latency budgets = bad fit." ([coderabbit.ai/blog/claude-sonnet-5-review](https://www.coderabbit.ai/blog/claude-sonnet-5-review) — [practitioner analysis], Jul 2026)
 2. **Sycophancy confirmed by independent evaluator (L2):** Caylent: "greater tendency towards sycophancy" vs Sonnet 4.6, specifically for document, financial analysis, and reporting workflows. **Contradicts Anthropic system card claim of "markedly improved" sycophancy.** Recommend prompt iteration before deployment in analysis-heavy workloads. ([caylent.com/blog/claude-sonnet-5-launch-analysis](https://caylent.com/blog/claude-sonnet-5-launch-analysis-what-changed-what-matters-and-what-to-validate) — [practitioner analysis], Jul 2026)
 3. **Tool-call schema regression:** First documented in Cycle 156 (Ronacher/Willison, Jul 4). Still L2 (single practitioner, not reproduced). Third-party custom tool schemas → extra invented fields in nested arrays. Claude Code native tools unaffected. Monitor for L3 reproduction in the July 14–21 window.
 Harvey.ai status: BigLaw Bench 91.3%, LAB 5.8% all-pass — these are Harvey's own production metrics published on their blog (vendor-self-reported). Upgraded characterization: L1 (Harvey's own production data, not a third-party evaluation). Not an independent enterprise law firm report.

@@ -15,8 +15,14 @@ answers:
 
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-07-12 (cycle 161)
-OODA cycles: 38
+Last updated: 2026-07-13 (cycle 162)
+OODA cycles: 39
+
+**Cycle 162 updates (July 13, 2026) — Cowork Day 27: model lineup confirmed first-party (Opus 4.8/Sonnet 5/Fable 5 Preview); 8 Frontier preview names confirmed (pre-GA only); July 1 billing as hard forcing function; evidence desert continues:**
+
+**Copilot Cowork Day 27 — model lineup confirmed (Opus 4.8 default, Sonnet 5 efficient, Fable 5 Preview); evidence desert continues; Day 30 milestone July 16.** First-party confirmation from Microsoft Learn What's New page (last commit July 8): Cowork ships with Claude Opus 4.8 (default flagship), Claude Sonnet 5 (efficient), Claude Fable 5 (Preview — off by default, requires admin opt-in AND data retention acceptance). Model tracking is near-real-time — Cowork uses Anthropic's cutting-edge releases. Eight organizations named in GA blog as Frontier preview participants: Accenture, Avanade, Advance Local, Capital Group, Koch, LTM, Ooredoo Qatar, Zurich Insurance — **all pre-GA preview period, NOT post-June-16 production deployments.** None have published independent post-GA production accounts. What's New page: no July 2026 feature entries (product stable at launch configuration). **July 1 billing live = hard forcing function:** tenants without Copilot Credits configured lost access on July 1 — the real adoption gate. "Fortune 500" and "30-40% cheaper than Claude Cowork" claims: vendor-sourced, no independent verification. Day 27 evidence desert: 27 consecutive days of systematic search, zero named independent post-GA production accounts. **July 16 = Day 30 milestone — if no named case by then, equals or exceeds Agentforce Operations as longest GA-to-practitioner-silence gap tracked in this system.** ([learn.microsoft.com Jul 8 2026](https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/whats-new) — [vendor documentation]; [microsoft.com Jun 16 2026](https://www.microsoft.com/en-us/microsoft-365/blog/2026/06/16/copilot-cowork-is-now-generally-available/) — [vendor press release]; [thurrott.com Jun 16 2026](https://www.thurrott.com/a-i/337462/microsofts-copilot-cowork-ai-agent-goes-out-of-preview) — [domain trade publication])
+
+**Watch: July 16 (Cowork Day 30 — named production case or record silence confirmed); August 2026 (Copilot Autonomous Agent Mode Enterprise launch).**
 
 **Cycle 161 updates (July 12, 2026) — Cowork Day 26 zero named independent production deployments (approaching Day 30 milestone July 16):**
 

@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [openai, chatgpt, codex, frontier]
 nordic: true
-updated: 2026-07-12
-cycle: 161
+updated: 2026-07-13
+cycle: 162
 answers:
   - "what can business users do with ChatGPT today?"
   - "is OpenAI's enterprise platform real or vapor?"
@@ -14,8 +14,18 @@ answers:
 
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-07-12 (cycle 161)
-OODA cycles: 21
+Last updated: 2026-07-13 (cycle 162)
+OODA cycles: 22
+
+**Cycle 162 updates (July 13, 2026) — Assistants API migration reality: NO Thread tooling confirmed + feature parity gaps L3 + Azure → Foundry Agent Service; Gemini 3.5 Pro July 17 downgraded to L0 (YouTube source); ChatGPT Work Day 4 evidence desert:**
+
+**⚠️ ASSISTANTS API SHUTDOWN AUGUST 26 — 44 DAYS — MIGRATION REALITY NOW CONFIRMED [TIME-SENSITIVE].** Official migration guide explicitly states: "We will not provide an automated tool for migrating Threads to Conversations." Thread-to-Conversation conversion is manual (sample code only). Developer community (21+ replies, OpenAI forum thread active since August 26, 2025 announcement) documents three feature parity gaps at Level 3 convergence (10+ independent practitioners, same three blockers): (1) Prompts (Assistants replacement) cannot be created via API — dashboard only, breaking programmatic assistant management; (2) Responses API lacks Assistants' "truncation" for token budget management — must rebuild; (3) File Search users rebuilding from scratch (1 engineering week per agent estimated). Trust rupture signal: "Is the new API a beta as well?" Scale: 2.1M developers on OpenAI platform; Assistants API described as "enormous absolute number of production systems" even as a single-digit traffic share. **AZURE SEPARATE PATH:** Azure OpenAI Assistants API also shuts down August 26, but Azure customers migrate to Microsoft Foundry Agent Service — NOT directly to Responses API — bifurcating migration landscape. ([developers.openai.com/api/docs/deprecations](https://developers.openai.com/api/docs/deprecations) — [vendor documentation]; [developers.openai.com/api/docs/assistants/migration](https://developers.openai.com/api/docs/assistants/migration) — [vendor documentation]; [community.openai.com Jul 2026](https://community.openai.com/t/assistants-api-beta-deprecation-august-26-2026-sunset/1354666) — [practitioner direct]; [socialcrawl.dev 2026](https://www.socialcrawl.dev/blog/openai-assistants-api-2026-shutdown-migration-guide) — [practitioner analysis]; [learn.microsoft.com 2026](https://learn.microsoft.com/en-us/answers/questions/5571874/openai-assistants-api-will-be-deprecated-in-august) — [vendor documentation])
+
+**ChatGPT Work Day 4 — evidence desert confirmed; InfoWorld: "not feature-parity-equivalent" to Cowork alternatives.** Zero independent business-domain practitioners (sales, finance, HR, operations) published hands-on results at Day 4 (expected; same pattern as Copilot Cowork and Agentforce at comparable windows). InfoWorld (domain trade, no independent testing) published the first independent comparative framing: "not enough reason to assume feature parity with Claude Cowork or Copilot Cowork." Plus/Business tier rollout still in progress as of July 9 announcement. **Next check window: July 23 (Day 14).** ([infoworld.com Jul 9 2026](https://www.infoworld.com/article/4195478/openai-launches-chatgpt-work-as-it-broadens-gpt-5-6-rollout.html) — [domain trade publication])
+
+**CORRECTION — Gemini 3.5 Pro July 17 date downgraded to Level 0: traced to YouTube channel "Universe of AI," NOT Google.** Source investigation confirms: the July 17 GA date and the "scrapped 2.5 Pro base model" claim originate from a YouTube channel ("Universe of AI"), laundered through general press (Geeky Gadgets, et al.) without attribution to that origin. No Google DeepMind blog post, no official spokesperson statement, no changelog entry, no AI Studio or Vertex AI release note confirms July 17. Official API changelog (last entry July 6): no Gemini 3.5 Pro entry. Three-wave rollout model (AI Studio whitelist July 8-12, Vertex ~July 15, GA July 22-28) circulating is from the same unconfirmed source cluster. **Watch: if July 17 passes without GA = Level 3 finding (three consecutive confirmed missed dates: June GA, July 12, July 17).** ([geeky-gadgets.com ~Jul 8 2026](https://www.geeky-gadgets.com/gemini-pro-scraps-base-model/) — [general press]; [ai.google.dev/gemini-api/docs/changelog Jul 6 2026](https://ai.google.dev/gemini-api/docs/changelog) — [vendor documentation])
+
+**Watch: July 17 (Gemini 3.5 Pro — if no GA, = Level 3 delay finding, three consecutive missed dates); July 23 (ChatGPT Work Day 14 — first meaningful business-domain practitioner window); August 26 (Assistants API shutdown — 44 days, NO migration tooling, Azure → Foundry Agent Service); August 31 (Sonnet 5 / Terra pricing cliff).**
 
 **Cycle 161 updates (July 12, 2026) — ChatGPT Work Day 3 structural concerns; GPT-5.6 Day 3 practitioner reactions; Assistants API shutdown Aug 26 [TIME-SENSITIVE]; Gemini 3.5 Pro not GA July 12:**
 

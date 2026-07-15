@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [openai, chatgpt, codex, frontier]
 nordic: true
-updated: 2026-07-13
-cycle: 162
+updated: 2026-07-15
+cycle: 163
 answers:
   - "what can business users do with ChatGPT today?"
   - "is OpenAI's enterprise platform real or vapor?"
@@ -14,8 +14,18 @@ answers:
 
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-07-13 (cycle 162)
-OODA cycles: 22
+Last updated: 2026-07-15 (cycle 163)
+OODA cycles: 23
+
+**Cycle 163 updates (July 15, 2026) — Assistants API 42-day check: no new tooling, 4th parity gap (.docx, Level 1); Gemini 3.5 Pro zero official signal at 48h pre-July 17; ChatGPT Work Day 6 governance frame:**
+
+**⚠️ ASSISTANTS API SHUTDOWN AUGUST 26 — 42 DAYS — NO NEW TOOLING CONFIRMED [TIME-SENSITIVE].** Migration guide fetched July 15: unchanged from cycle 162. "We will not provide an automated tool for migrating Threads to Conversations" — confirmed by design. API changelog last entry July 9 (GPT-5.6 launch); no Assistants migration update July 10-15. New potential parity gap (Level 1, single report): Responses API does not support direct .docx upload — developers must convert Word files to PDF first (Assistants API supported .docx natively). 42 days remain with no migration tooling and four documented feature parity gaps. ([developers.openai.com/api/docs/assistants/migration Jul 15 2026](https://developers.openai.com/api/docs/assistants/migration) — [vendor documentation]; [developers.openai.com/api/docs/changelog Jul 9 2026](https://developers.openai.com/api/docs/changelog) — [vendor documentation]; [community.openai.com](https://community.openai.com/t/assistants-api-beta-deprecation-august-26-2026-sunset/1354666?page=2) — [practitioner direct])
+
+**ChatGPT Work Day 6 — governance frame consolidating; evidence desert continues.** Two independent domain-trade publications (Futurum Jul 10, UC Today Jul 13) identify governance/auditability/connector-permission scoping as the leading enterprise procurement concern — not capability. UC Today: "benchmarks and live enterprise deployments are different animals." Futurum: token-based credit pricing shifted days before launch creating cost unpredictability; Claude Cowork's local-run architecture is a distinct data residency advantage. GPT-5.6 vs. Claude benchmark gap "remains unsettled." No independent business-domain practitioner reviews at Day 6 (evidence desert continues; **next meaningful window: July 23, Day 14**). ([futurumgroup.com Jul 10 2026](https://futurumgroup.com/insights/openai-chatgpt-work-ships-files-not-just-chat-the-enterprise-race-is-on/) — [domain trade publication]; [uctoday.com Jul 13 2026](https://www.uctoday.com/productivity-automation/openais-chatgpt-work-promises-enterprise-automation-but-will-it-leaders-trust-it/) — [domain trade publication])
+
+**Gemini 3.5 Pro July 17 — zero official Google signal at 48 hours; approaching Level 3 absence if July 17 passes.** Official Gemini API changelog (last entry July 6): no Gemini 3.5 Pro entry. Official Google blog (May 19): only states "next month" from May, meaning June — which has already been missed. Manifold prediction market "will Gemini 3.5 Pro be released on Gemini API by July 12?" resolved NO July 13 (second consecutive confirmed miss). As of July 15, zero official Google announcement confirming July 17. **If July 17 passes without GA = Level 3 absence finding (three consecutive confirmed missed dates: June GA, July 12, July 17).** ([ai.google.dev/gemini-api/docs/changelog Jul 6 2026](https://ai.google.dev/gemini-api/docs/changelog) — [vendor documentation]; [blog.google May 19 2026](https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/) — [vendor documentation]; [manifold.markets Jul 13 2026](https://manifold.markets/Web3ICP/will-gemini-35-pro-be-released-on-t) — [prediction market])
+
+**Watch: July 17 (Gemini 3.5 Pro — zero official signal at 48h; if no GA = Level 3 delay finding); July 23 (ChatGPT Work Day 14 — first meaningful business-domain practitioner window); August 26 (Assistants API shutdown — 42 days, NO migration tooling, Azure → Foundry Agent Service); August 31 (Sonnet 5 / Terra pricing cliff).**
 
 **Cycle 162 updates (July 13, 2026) — Assistants API migration reality: NO Thread tooling confirmed + feature parity gaps L3 + Azure → Foundry Agent Service; Gemini 3.5 Pro July 17 downgraded to L0 (YouTube source); ChatGPT Work Day 4 evidence desert:**
 

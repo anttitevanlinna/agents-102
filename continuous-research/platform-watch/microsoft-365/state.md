@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [microsoft, copilot, copilot-studio, azure-ai-foundry, mai-models, windows-agent-framework]
 nordic: true
-updated: 2026-07-12
-cycle: 161
+updated: 2026-07-15
+cycle: 163
 answers:
   - "what can business users do with Microsoft Copilot today?"
   - "is Copilot Studio a real agent builder?"
@@ -15,8 +15,16 @@ answers:
 
 # Microsoft 365 / Azure AI Foundry — Platform State
 
-Last updated: 2026-07-13 (cycle 162)
-OODA cycles: 39
+Last updated: 2026-07-15 (cycle 163)
+OODA cycles: 40
+
+**Cycle 163 updates (July 15, 2026) — Cowork Day 30 milestone CONFIRMED (record silence); billing structural barrier identified; MCP EMA 7 new server vendors but enterprise adoption zero; Okta-only IdP ceiling:**
+
+**⚠️ COPILOT COWORK DAY 30 MILESTONE CONFIRMED — RECORD GA-TO-PRACTITIONER SILENCE [LEVEL 3 NEGATIVE].** Day 30 (July 16) confirmed: zero named independent post-GA (June 16+) enterprise production accounts. 30 consecutive days of systematic search across multiple query strategies, zero results. The 8 organizations named in the GA blog (Accenture, Avanade, Advance Local, Capital Group, Koch, LTM, Ooredoo Qatar, Zurich Insurance) remain pre-GA preview participants — none published independent post-GA accounts. Silence is total in both directions: zero success accounts AND zero failure accounts from independent sources. Confirmed structural barriers: (1) **July 1 hard billing cutoff** — tenants without Credits configured lost all access; IT governance burden slows re-enablement; (2) **Admin center configuration required** — no cap by default = cost overrun risk without admin setup. Product design constraints confirmed (vendor docs): no local device file access (OneDrive/SharePoint only), 200 MB file attachment limit, no encrypted file support. Accenture "Agentic Factory" (manufacturing downtime, with Avanade + Kruger + Nissha) confirmed as a DIFFERENT product — NOT a Copilot Cowork deployment. **This matches or exceeds the Agentforce Operations evidence desert as the longest GA-to-practitioner-silence gap tracked in this system.** ([microsoft.com Jun 16 2026](https://www.microsoft.com/en-us/microsoft-365/blog/2026/06/16/copilot-cowork-is-now-generally-available/) — [vendor press release]; [abouttmc.com 2026](https://abouttmc.com/blog/copilot-cowork-pricing/) — [domain trade publication]; [learn.microsoft.com 2026](https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/cowork-faq) — [vendor documentation]; [accenture.com newsroom 2026](https://newsroom.accenture.com/news/2026/accenture-and-avanade-collaborate-with-microsoft-to-develop-agentic-factory-to-help-reduce-manufacturing-downtime) — [vendor press release])
+
+**MCP EMA supply side: 7 new server vendors (Day 27); enterprise customer adoption zero; Okta-only IdP structural ceiling.** New EMA server-side implementations confirmed: Asana, Atlassian, Canva, Figma, Granola, Linear, Supabase — plus Slack actively adding. Critical distinction: these are software vendors building EMA-compatible MCP servers (supply side), not enterprises using EMA to access Claude (demand side). Enterprise customer adoption: zero named at Day 27. Structural ceiling: EMA requires Okta as IdP — the Okta monopoly on IdP support is the adoption wall. **Azure AD (the dominant IdP in Microsoft-heavy enterprises = Copilot Cowork's primary market) and Google Workspace SSO: on roadmap, no timeline given.** InfoQ (Jul 2026): "If your org runs a different IdP, EMA has nothing to attach to yet." This creates a perverse gap: the feature designed to enable Copilot Cowork's enterprise market (EMA) doesn't support Microsoft's own IdP. ([infoq.com Jul 2026](https://www.infoq.com/news/2026/07/mcp-ema-enterprise-auth/) — [domain trade publication]; [mcp.directory Jul 2026](https://mcp.directory/blog/mcp-enterprise-managed-authorization-2026) — [practitioner analysis]; [techtimes.com Jun 19 2026](https://www.techtimes.com/articles/318704/20260619/claude-mcp-connectors-now-provision-through-okta-employees-inherit-access-login.htm) — [domain trade publication])
+
+**Watch: Cowork Day 30+ — next named independent production case (none found as of Day 30); Azure AD timeline for MCP EMA (when Okta monopoly breaks = when Copilot Cowork EMA adoption can move); August 2026 (Copilot Autonomous Agent Mode Enterprise launch).**
 
 **Cycle 162 updates (July 13, 2026) — Cowork Day 27: model lineup confirmed first-party (Opus 4.8/Sonnet 5/Fable 5 Preview); 8 Frontier preview names confirmed (pre-GA only); July 1 billing as hard forcing function; evidence desert continues:**
 

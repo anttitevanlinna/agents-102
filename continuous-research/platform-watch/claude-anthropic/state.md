@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [anthropic, claude-code, claude-cowork, antspace, agent-sdk]
 nordic: false
-updated: 2026-07-15
-cycle: 163
+updated: 2026-07-16
+cycle: 164
 answers:
   - "what is Anthropic's platform strategy?"
   - "what can business users do with Claude today?"
@@ -18,6 +18,16 @@ answers:
 
 Last updated: 2026-07-15 (cycle 163)
 OODA cycles: 33
+
+**Cycle 164 updates (July 16, 2026) — Opus 5 "Honeycomb EAP" leaked in Cursor July 8 (removed within hours); no Fable 5 fourth extension as of July 16; Anthropic webinar recording still not public at T+72h; Gemini 3.5 Pro July 17 at T-24h = still zero official Google signal:**
+
+**Opus 5 "Claude Honeycomb EAP" briefly appeared in Cursor model picker July 8 — first external signal of Anthropic's next flagship model.** Model name "Claude Honeycomb EAP" (Early Access Program) appeared in Cursor's model selector on July 8 and was removed within hours. Observed characteristics: 1M context, extra-high-effort mode, safety classifiers falling back to Opus 4.8, forwarding queries to Opus 4.8 suggesting a successor architecture. Anthropic neither confirmed nor denied the leak. Level 1 speculation: Opus 5 launch by end of July 2026. Critical CTO caveat: the pre-clearance commitment (cycle 145, four commitments to US government) means any Opus 5 launch may require a government review window before GA — the Fable 5 suspension pattern could recur for future flagship releases. Naming: "Honeycomb" consistent with Fable 5's naming family; Opus 5 would be the next Anthropic flagship tier. ([techtimes.com Jul 12 2026](https://www.techtimes.com/articles/320265/20260712/fable-5-free-through-july-19-anthropic-blinks-again-opus-5-leak-surfaces-cursor.htm) — [domain trade publication]; [nowosci.ai Jul 2026](https://www.nowosci.ai/en/article/claude-honeycomb-model-leaks-cursor-opus-5) — [practitioner analysis]; [thenewstack.io Jul 2026](https://thenewstack.io/fable-5-honeycomb-opus/) — [domain trade publication])
+
+**Fable 5 July 19 deadline: no fourth extension as of July 16; Claude Code lead signals this is the final extension.** Official position from Claude Code lead engineer: goal is to return Fable 5 to standard subscriptions "when compute capacity allows" — not to extend the promotional window indefinitely. No fourth extension announcement as of July 16 (T-3 days). Competitive context: TechTimes July 15 framing — "GPT-5.6 Sol closes benchmark gap" — suggests external pressure may not force another extension, as the competitive gap has narrowed. "Access whiplash" framing now in mainstream developer press. After July 19: $10/$50 per M tokens. ([techtimes.com Jul 15 2026](https://www.techtimes.com/articles/320528/20260715/claude-fable-5-free-window-ends-sunday-gpt-56-sol-closes-benchmark-gap.htm) — [domain trade publication]; [bleepingcomputer.com Jul 2026](https://www.bleepingcomputer.com/news/artificial-intelligence/claude-fable-5-stays-free-for-paid-users-until-july-19-as-anthropic-buys-more-time/) — [domain trade publication])
+
+**Anthropic webinar recording (ClickHouse + Zed, July 13): not public at T+72h (July 16).** Page fetch confirms "recording not available yet." Attendee private link may exist. Zero public attendee summaries, LinkedIn posts, or X.com threads from any of the three participants. Extended watch window closes July 17. ClickHouse pre-webinar metrics remain the best data: 80% of employees use Claude-powered analytics agents daily; ~70% of data warehouse queries via agents; 45M tokens/day. ([anthropic.com Jul 2026](https://www.anthropic.com/webinars/production-grade-agents-on-claude-sonnet-5-live-with-zed-and-clickhouse) — [vendor documentation])
+
+**Watch: July 17 (Gemini 3.5 Pro claimed GA — zero official signal at T-24h; third missed date if passes without GA); July 17-18 (last window for Fable 5 fourth extension or July 19 executes); July 19 (Fable 5 credit cutover); July 17 (Anthropic webinar recording extended window); end-of-July (Opus 5 "Honeycomb" launch speculation — Level 1 only; pre-clearance review risk).**
 
 **Cycle 163 updates (July 15, 2026) — Fable 5 July 19 official X post; Polymarket 42% fourth extension; webinar recording not public; Sonnet 5 Harvey legal deployment + tool-calling regression + tokenizer inflation; MCP EMA supply side growing:**
 

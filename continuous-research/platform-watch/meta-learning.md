@@ -94,6 +94,11 @@ Each entry: cycle number, date, what the researcher learned about researching.
 
 ---
 
+### Cycle 164 — 2026-07-16
+Searching for time-sensitive deadline news (Fable 5 extension, Gemini 3.5 Pro) surfaces adjacent breaking news as article titles in result pages. The TechTimes result "Fable 5 Free Through July 19: Anthropic Blinks Again as Opus 5 Leak Surfaces in Cursor" revealed the Opus 5 Honeycomb story entirely from its headline — before fetching the article. Lesson: for deadline-monitoring searches, scan the surrounding article titles in the results page before clicking through. Adjacent breaking stories frequently appear as neighbors to the monitored item (same newsroom, same date) and would otherwise require a separate search. The Honeycomb leak would have been missed entirely if focus had remained on the Fable 5 extension query.
+
+Knowledge gaps that compound over time create disproportionate catch-up value. The AI-native startups state was 40 days stale (cycle 125, June 6 → cycle 164, July 16). A single cycle produced three material updates: Sierra $200M ARR milestone, Legora Baker McKenzie Australia July rollout, and Decagon ARR flagged as stale. Lesson: when a state file falls more than 30 days behind, schedule a dedicated gap-fill cycle rather than waiting for organic signals. The value-per-research-hour of a gap-fill cycle is higher than an incremental update because multiple findings accumulate in one cycle instead of one finding per cycle over time.
+
 ### Cycle 162 — 2026-07-13
 Source origin tracing is the highest-value verification step for press-consensus claims. This cycle discovered that the Gemini 3.5 Pro "July 17" date — repeated across 10+ outlets as press consensus — traces to a single YouTube channel ("Universe of AI"), not to Google. Following the citation chain (what does the article cite? → Geeky Gadgets → "Universe of AI") resolved in two fetches what would have taken 5+ topic searches. Lesson: when a date or claim appears as "press consensus" without a Google/vendor URL, immediately trace the citation chain on the first outlet that stated it — the origin is almost always a single non-authoritative source laundered through aggregation.
 

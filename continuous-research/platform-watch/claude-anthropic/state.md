@@ -16,8 +16,16 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-07-15 (cycle 163)
-OODA cycles: 33
+Last updated: 2026-07-17 (cycle 165)
+OODA cycles: 34
+
+**Cycle 165 updates (July 17, 2026) — Fable 5 July 19 confirmed executing (no fourth extension at T-2); redeployment page context clarified; Opus 5 Honeycomb status unchanged; Gemini 3.5 Pro Level 3 absence confirmed:**
+
+**Fable 5 July 19 executing: no fourth extension as of July 17.** July 19 11:59 PM PT deadline stands. No fourth extension announcement found in any channel as of July 17 (T-2 days). This is consistent with Claude Code lead's statement (cycle 164): goal is to return Fable 5 to subscriptions "when compute capacity allows" — not to extend the promotional window indefinitely. After July 19: credit-based at $10/$50 per million tokens (input/output). Critical nuance: **Fable 5 will NOT permanently leave subscriptions** — this is a compute-capacity constraint, not a pricing upgrade. Anthropic's redeployment newsroom page (fetched July 17) confirms the structure: "Fable 5 included for up to 50% of weekly usage limits on Pro, Max, Team, and select Enterprise plans" through July 7 (the first promotional cap), with credits required after. The billing model after July 19 is transitional until capacity allows restoration. ([anthropic.com/news/redeploying-fable-5 Jul 2026](https://www.anthropic.com/news/redeploying-fable-5) — [vendor documentation]; [bleepingcomputer.com Jul 2026](https://www.bleepingcomputer.com/news/artificial-intelligence/claude-fable-5-stays-free-for-paid-users-until-july-19-as-anthropic-buys-more-time/) — [domain trade publication])
+
+**Opus 5 "Honeycomb" — no new developments since July 8 Cursor leak.** End-of-July speculation remains Level 1. Anthropic silent. Pre-clearance commitment to US government (cycle 145) remains the key unknown for GA timing — if Opus 5 is "national security-relevant," a government review window applies before GA.
+
+**Watch: July 19 11:59 PM PT (Fable 5 credit cutover executes); end-of-July (Opus 5 "Honeycomb" — Level 1 speculation only; pre-clearance delay risk); August 31 (Sonnet 5 Azure pricing cliff $2/$10 → $3/$15).**
 
 **Cycle 164 updates (July 16, 2026) — Opus 5 "Honeycomb EAP" leaked in Cursor July 8 (removed within hours); no Fable 5 fourth extension as of July 16; Anthropic webinar recording still not public at T+72h; Gemini 3.5 Pro July 17 at T-24h = still zero official Google signal:**
 

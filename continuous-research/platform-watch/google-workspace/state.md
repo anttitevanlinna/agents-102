@@ -14,8 +14,14 @@ answers:
 
 # Google Workspace / Gemini Enterprise — Platform State
 
-Last updated: 2026-07-08 (cycle 157)
-OODA cycles: 21
+Last updated: 2026-07-17 (cycle 165)
+OODA cycles: 22
+
+**Cycle 165 updates (July 17, 2026) — Gemini 3.5 Pro LEVEL 3 ABSENCE CONFIRMED (three missed dates); Gemini 3.6 Flash stopgap signal; core training instability; four named talent departures:**
+
+**Gemini 3.5 Pro — LEVEL 3 ABSENCE CONFIRMED: three consecutive missed GA deadlines; Google eyeing Gemini 3.6 Flash stopgap.** As of July 17 with zero official Google GA announcement, the Level 3 pattern (three consecutive confirmed missed dates) is now established: (1) June GA (Pichai's "next month from May" at Google I/O); (2) July 12 API (Manifold resolved NO); (3) July 17 GA (zero official signal at deadline). Root cause — second and distinct from the June architectural restart: **core training instability** — newer training checkpoints underperform older iterations. More training is making the model worse, not better. Additional confirmed failure modes: hallucinations, inconsistent outputs, fails to match GPT-5.6 Sol and Fable 5 in coding and reasoning. Google's next move: model name "Gemini 3.6 Flash" registered — Flash-tier stopgap at version 3.6 before Pro 3.5 ships. If confirmed, this signals the 3.5 Pro architecture may be "fundamentally unworkable." No new Pro GA timeline announced. Product pages: "coming soon." Bloomberg (July 16): "tech falls short of internal goals." Competitive position: Google is now the only major frontier lab without a 2026 flagship in general production on the date its own CEO promised delivery (GPT-5.6 Sol: GA July 9; Grok 4.5: GA July 8; Fable 5: GA June 9 / restored July 1). Named talent departures confirmed during this development period: Noam Shazeer (Transformer co-author, Gemini co-lead → OpenAI), John Jumper (Nobel laureate, AlphaFold lead → Anthropic), Jonas Adler (AI coding lead → Anthropic), Alexander Pritzel (pretraining specialist → Anthropic). **CTO planning implication: Gemini 3.5 Pro cannot be counted on for Q3 2026 platform planning. For multi-tool/MCP-heavy pipelines, Gemini 3.5 Flash remains the credible Google option.** ([aitoolsrecap.com Jul 16 2026](https://aitoolsrecap.com/Blog/gemini-3-5-pro-delayed-third-time-3-6-flash-2026) — [practitioner analysis]; [bloomberg.com Jul 16 2026](https://www.bloomberg.com/news/articles/2026-07-16/google-gemini-launch-delayed-as-tech-falls-short-of-internal-goals) — [general press]; [techtimes.com Jul 16 2026](https://www.techtimes.com/articles/320736/20260716/rebuilt-gemini-35-pro-misses-third-deadline-google-eyes-stopgap-release.htm) — [domain trade publication])
+
+**Watch: Gemini 3.6 Flash GA (2-4 weeks from July 16, per AIToolsRecap — no official date); Gemini 3.5 Pro new timeline (if announced); any change to Gemini AI Studio model registry entries; whether Sol task fabrication finding is confirmed by human practitioners at Day 14 (July 23).**
 
 **Cycle 157 updates (July 8, 2026) — Gemini 3.5 Pro missed June GA; $225B market cap hit; 4 DeepMind researchers to Anthropic; ADK 2.0 GA (no production evidence):**
 

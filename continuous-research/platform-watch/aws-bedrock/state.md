@@ -1,15 +1,41 @@
 # AWS Bedrock AgentCore — Platform State
 
-Last updated: 2026-04-17 (cycle 24)
-OODA cycles: 2
+Last updated: 2026-07-09 (cycle 158)
+OODA cycles: 5
+
+**Cycle 158 updates (July 9, 2026) — Clearwater Analytics L2 deployment confirmed (public company, 800+ agents, $10T AUM); practitioner failure class taxonomy; Day 21 independent write-up gap persists:**
+
+**Clearwater Analytics (NASDAQ: CWAN) — Level 2 AgentCore deployment (investor-grade metrics).** 800+ AI agents + 500 tools deployed on AgentCore, covering $10T in client assets. Results: manual reconciliations down 90%, regulatory reporting 80% faster, financial close cycles 50% shorter. Announced at AWS re:Invent November 2025; referenced in 2026 AWS context. Evidence level: Level 2 — CWAN is NASDAQ-listed; 800 agent count and $10T AUM are investor-grade disclosures, verifiable against CIR filings. This is the most credible AgentCore production evidence in the knowledge base. Beachhead confirmed: financial services compliance + reconciliation (high-structure, auditability-mandatory). Note: pre-GA deployment; cited at Summit context in AWS materials. ([cwan.com Nov 2025](https://cwan.com/press-releases/cwan-reports-800-ai-agents-now-available-for-deployment-across-10-trillion-in-client-assets/) — [vendor press release, public company])
+
+**Seven production failure classes — practitioner taxonomy.** Pre-GA practitioner guide (konishi.com, Apr 28, 2026): model throttling, content-filter rejection, tool timeouts, runtime cold starts, memory extraction lag, identity failures, network partitions. Four-signal observability model required: operational metrics + logs + traces + quality evaluations. "Skipping the fourth [quality evaluations] is the most common mistake when porting traditional APM mental models onto agentic systems." Model routing achieves 30–60% cost reductions vs single-large-model baseline. ([hidekazu-konishi.com Apr 2026](https://hidekazu-konishi.com/entry/amazon_bedrock_agentcore_production_guide.html) — [practitioner direct])
+
+**Day 21 post-GA: independent write-up gap persists.** Zero named companies have published independent practitioner accounts of post-GA (June 18+) AgentCore deployments. Druva (68% autonomous resolution, 3,000+ users) and CloudZero (5x faster TTFT, 50x growth) are AWS-curated vendor press releases (L0). The pattern from pre-GA continues: vendor-sourced names without independent confirmation.
+
+**Watch: First post-GA independent practitioner account; CWAN Q2 FY2026 earnings for any AgentCore metric update; Nordic AgentCore signal (still absent).**
+
+**Cycle 156 updates (July 7, 2026) — AgentCore 5x quota increase (July 2); deployment evidence gap persists at Day 19:**
+
+**AWS AgentCore runtime quotas raised 5x (July 2, 2026).** Concurrent sessions US East/West: 1,000 → 5,000 (5x). Other regions: 500 → 2,500 (5x). Token processing per agent: 25 → 200 tokens/second (8x). Session creation rate: 100 → 400 TPM (4x). Forrester analyst (Charlie Dai): shift "from single-task copilots to multiple production-grade agents serving larger user populations." Gartner analyst (Ashish Banerjee): higher defaults reduce "operational friction of scaling AI agents from pilot to production." Interpretation: AWS scaling infrastructure ahead of named production workloads — consistent with preparing for enterprise deployments, not confirming they exist. Zero named end-user organizations in any July 2-7 coverage. Nasdaq/Visa/Experian remain AWS-sourced from the AWS Summit June 18 context only — no independent confirmation found. No GA-era practitioner account (post June 18) found as of Day 19. Only pre-GA Rackspace review (October 2025) in the public record. ([infoworld.com Jul 2 2026](https://www.infoworld.com/article/4192220/aws-raises-agentcore-runtime-quotas-by-up-to-5x-to-help-enterprises-scale-ai-agents.html) — domain trade publication)
+
+**Watch: First independent practitioner account of AgentCore post-GA; named enterprise confirmation of Nasdaq/Visa/Experian summit-cited deployments; Nordic signal (still absent).**
+
+**Cycle 155 updates (July 6, 2026) — AWS AgentCore GA confirmed June 18 at AWS Summit NYC — MISSED during 18-cycle Fable 5 ban tracking period:**
+
+**AWS AgentCore hit GA at AWS Summit NYC June 18, 2026 — entirely missed during cycles 136-153.** Janakiram MSV (Forbes Tech, independent cloud infrastructure analyst) published June 21: classified as "a big deal for enterprise adoption" due to two-API abstraction lowering infrastructure complexity. AWS claims 15x agent task volume growth in 6 months — vendor claim, unverified. Named customers in production context at Summit: Nasdaq, Visa, Experian — all AWS-sourced, not independently confirmed. No independent practitioner blog posts or trade press interviews from these companies found. Evidence level: Level 1 (analyst assessment + vendor-sourced named customers). Two-API model (deploy / invoke) is a significant developer experience improvement over the multi-step pre-GA setup. Hosted agents with sandboxed sessions confirmed at GA. ([forbes.com Jun 21 2026](https://www.forbes.com/sites/janakirammsv/2026/06/21/why-aws-agentcore-harness-is-a-big-deal-for-enterprise-agents/) — domain trade publication [Janakiram MSV = cloud infrastructure specialist at Forbes Tech])
+
+**Status update: GA confirmed June 18, 2026.** Previously tracked in cycle 24 (April 2026) as "partially pre-adoption with IaC gap closure." The April 2026 vendor-claimed deployments (Epsilon, Ericsson, Southwest, PwC) were Level 0 vendor-sourced. The June 18 GA event adds Nasdaq/Visa/Experian as AWS Summit context customers (Level 1 — independent analyst reporting on vendor claims). The deployment evidence gap pattern documented in April continues: no named company has published an independent practitioner account of running production workloads on AgentCore.
+
+**Watch: Independent post-GA practitioner posts from non-AWS sources; Nasdaq/Visa/Experian posts confirming Summit-cited deployments; Nordic AgentCore signal (still absent after 3 cycles).**
 
 ## Focus
 
 AWS Bedrock AgentCore as an enterprise agent runtime. Not a business user surface — this is pure infrastructure for developers building business agents. Tracked because AgentCore is the first managed runtime supporting all three emerging protocols (MCP + A2A + AG-UI).
 
-## Key Verdict (as of 2026-04-17)
+## Key Verdict (as of 2026-07-06)
 
-**Pre-adoption status partially updated — but the "independent deployment evidence" gap persists.** April 2026 brings: CloudFormation IaC support (closes a key gap), Agent Registry (preview, 5 regions), Spring AI SDK GA, and vendor-sourced claims of enterprise deployments (Epsilon, Ericsson, Southwest Airlines). But the Epsilon/Ericsson deployment data comes exclusively from AWS blog posts and AWS partner materials — all Level 0. Independent practitioner confirmation has not been found. CVE-2026-4269 is fixed in v0.1.13. SailPoint integration remains an announced partnership, not a shipping product. Lock-in risk is now explicitly flagged by independent analyst (Kai Waehner) who places AgentCore in "Risky and Captured" quadrant.
+**GA confirmed June 18, 2026 (AWS Summit NYC) — independent deployment evidence gap persists.** Janakiram MSV (Forbes Tech) classified the GA as "a big deal" due to two-API abstraction. AWS-claimed production customers: Nasdaq, Visa, Experian (AWS Summit context, Level 1). Prior April 2026 vendor-claimed customers (Epsilon, Ericsson, PwC) remain Level 0. No independent practitioner has published a production deployment account. The pattern from pre-GA tracking continues at GA: vendor-sourced customer names without independent confirmation. Lock-in risk (Kai Waehner "Risky and Captured" quadrant, April 2026) is now a GA-context finding.
+
+**Previous verdict (2026-04-17):** Pre-adoption status partially updated — CloudFormation IaC support, Agent Registry (preview), Spring AI SDK GA, vendor-sourced claims (Epsilon, Ericsson, Southwest Airlines — all Level 0). CVE-2026-4269 fixed in v0.1.13.
 
 **Previous verdict (2026-03-21):** Most architecturally complete managed agent runtime — but pre-adoption. Zero independent deployment evidence, Python-only SDK, no IaC support, runtime reliability issues, and a high-severity CVE in the starter toolkit.
 
@@ -121,3 +147,4 @@ Kai Waehner (independent enterprise AI/data architect, April 6, 2026) places Age
 See `runs/` for detailed research:
 - `runs/2026-03-21-cycle23.md` — Initial research: practitioner reports, AG-UI correction, Cedar analysis, reliability issues
 - `runs/2026-04-17-cycle24.md` — April update: Agent Registry, IaC gap closure, SailPoint marketplace, CVE fix confirmation, lock-in risk assessment, claimed enterprise deployments (Level 0)
+- `../cross-platform/runs/2026-07-06-cycle155.md` — AgentCore GA June 18 at AWS Summit NYC confirmed (Finding 5); Nasdaq/Visa/Experian named customers (vendor-sourced L1); missed during 18-cycle Fable 5 tracking period

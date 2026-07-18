@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [google, gemini, workspace-studio, agent-builder, gemini-spark, antigravity, managed-agents-api]
 nordic: true
-updated: 2026-06-05
-cycle: 124
+updated: 2026-07-18
+cycle: 166
 answers:
   - "what can business users do with Gemini today?"
   - "is Workspace Studio a real agent builder?"
@@ -16,6 +16,14 @@ answers:
 
 Last updated: 2026-07-17 (cycle 165)
 OODA cycles: 22
+
+**Cycle 166 updates (July 18, 2026) — Gemini 3.6 Flash remains speculation only (model registrations, no official signal, no timeline); Gemini 3.5 Pro Level 3 delay mechanism confirmed at L3:**
+
+**Gemini 3.6 Flash — still speculation only as of July 18: model name registrations, NO official announcement, NO confirmed timeline.** Evidence consists solely of model name registrations for "Gemini 3.6 Flash" and "Gemini 3.5 Flash Light." No Google blog post, no API changelog entry, no spokesperson quote, no AI Studio appearance. AIToolsRecap's "2-4 weeks from July 16" timeline is editorial inference from registrations — do NOT treat as a Google signal. Registrations often precede products by months; some reflect canceled directions entirely. The "stopgap strategy" framing in press (Geeky Gadgets, TechTimes, AIToolsRecap) is coherent but unsourced. Google API changelog last entry: July 6. ASSESSMENT: L1 only until Google official signal. ([geeky-gadgets.com Jul 15 2026](https://www.geeky-gadgets.com/gemini-3-5-pro-delayed-again/) — [domain trade publication]; [aitoolsrecap.com Jul 17 2026](https://aitoolsrecap.com/Blog/gemini-3-5-pro-delayed-third-time-3-6-flash-2026) — [domain trade publication])
+
+**Gemini 3.5 Pro core training instability: Level 3 confirmed for mechanism.** Three consecutive independent domain trade publications now report the same root cause: newer training checkpoints underperform older iterations. More training is making the model worse. This crosses Level 3 for mechanism (not just the delay fact). Confirmed failures: hallucinations, inconsistent outputs, fails to match Sol/Fable 5 in coding and reasoning. Google remains the only major frontier lab without a 2026 flagship in GA on CEO-promised date. CTO planning: Gemini 3.5 Flash is the realistic Google option for Q3 2026. Do not plan on Pro for H2 2026 without a confirmed GA date.
+
+**Watch: Gemini 3.6 Flash — first official Google signal (changelog entry, blog post, or spokesperson quote upgrades from L1 to actionable); any Gemini 3.5 Pro new timeline announcement; Google I/O follow-up events.**
 
 **Cycle 165 updates (July 17, 2026) — Gemini 3.5 Pro LEVEL 3 ABSENCE CONFIRMED (three missed dates); Gemini 3.6 Flash stopgap signal; core training instability; four named talent departures:**
 

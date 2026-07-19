@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [google, gemini, workspace-studio, agent-builder, gemini-spark, antigravity, managed-agents-api]
 nordic: true
-updated: 2026-07-18
-cycle: 166
+updated: 2026-07-19
+cycle: 167
 answers:
   - "what can business users do with Gemini today?"
   - "is Workspace Studio a real agent builder?"
@@ -14,8 +14,14 @@ answers:
 
 # Google Workspace / Gemini Enterprise — Platform State
 
-Last updated: 2026-07-17 (cycle 165)
+Last updated: 2026-07-19 (cycle 167)
 OODA cycles: 22
+
+**Cycle 167 updates (July 19, 2026) — Google official statement confirms August 2026 projection for Gemini 3.5 Pro; "upgraded Flash model" in partner testing; API changelog still July 6:**
+
+**Google official statement (via Bloomberg/9to5Google, July 16): August 2026 projection; "upgraded Flash model" in partner testing.** Google's own words: "We're currently testing 3.5 Pro, an upgraded Flash model, and other models with partners. We're shipping quickly across a wide range of models while keeping them highly cost-effective for customers." 9to5Google specialist outlet reports this as: "rolling it out next month" = August 2026 target. Root cause unchanged: training data update in late June "disappointing" — coding performance target not met. The "upgraded Flash model" in partner testing corresponds to the "Gemini 3.6 Flash" naming registrations from Cycle 166 — Google has not publicly named it "3.6" but it is in partner testing. Google API changelog (fetched July 19): last entry July 6 (Interactions API logs); zero new Gemini model entries for any tier. Three-cycle calibration: every prior Gemini 3.5 Pro projected date (June, July 12, July 17) has been missed; August is a Google-official projection, not analyst inference, but every prior official projection also missed. CTO planning: treat August as a soft target; plan for contingency; Gemini 3.5 Flash remains the credible Google multi-tool option for Q3 2026 until API changelog confirms GA. ([9to5google.com Jul 16 2026](https://9to5google.com/2026/07/16/gemini-3-5-pro-delays/) — [domain trade publication])
+
+**Watch: Google API changelog (definitive "did it ship?" source — check before secondary press for any GA claim); Gemini 3.6 Flash official naming and GA timeline; Gemini 3.5 Pro August target (if missed becomes fourth consecutive missed date).**
 
 **Cycle 166 updates (July 18, 2026) — Gemini 3.6 Flash remains speculation only (model registrations, no official signal, no timeline); Gemini 3.5 Pro Level 3 delay mechanism confirmed at L3:**
 

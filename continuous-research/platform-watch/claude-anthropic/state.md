@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [anthropic, claude-code, claude-cowork, antspace, agent-sdk]
 nordic: false
-updated: 2026-07-18
-cycle: 166
+updated: 2026-07-19
+cycle: 167
 answers:
   - "what is Anthropic's platform strategy?"
   - "what can business users do with Claude today?"
@@ -16,8 +16,16 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-07-17 (cycle 165)
+Last updated: 2026-07-19 (cycle 167)
 OODA cycles: 34
+
+**Cycle 167 updates (July 19, 2026) — Fable 5 RESOLVED: permanent tier split effective July 20; @claudeai X is now primary commercial announcement channel; Opus 5 still L1:**
+
+**Fable 5 RESOLVED July 18 via @claudeai X — permanent tier split, not a fourth extension.** Outcome: Max and Team Premium subscribers retain Fable 5 permanently at 50% of weekly usage limits starting July 20; Pro and Team Standard subscribers receive a one-time $100 usage credit, then API billing at $10/$50 per M tokens. This is none of the three Cycle 166 scenarios (Opus 5 launch, fourth temporary extension, full cutover for all) — it is a fourth outcome that was not modeled: permanent tier differentiation. **Structural implication:** Fable 5 is now a permanent differentiator for Max/Team Premium, not a temporary promotional window. The value proposition calculation for plan tier is permanently changed. Willison framing: "competitive necessity" — removing Fable 5 from $100-$200/month plans while Sol is GA would break the value proposition. Polymarket had reached 77% YES for a "fourth extension" (up from 42%, +35 points in 24h — largest single-day move in this market) before the announcement resolved the question. Critical channel lesson: @claudeai X is now the primary announcement channel for commercial decisions; the Anthropic newsroom remained silent through July 18 (last post July 14). Watch @claudeai X first for plan changes, pricing, and model access updates — not the newsroom. ([simonwillison.net Jul 18 2026](https://simonwillison.net/2026/Jul/18/claude-make-fable-5-permanent/) — [practitioner analysis]; [techtimes.com Jul 18 2026](https://www.techtimes.com/articles/320905/20260718/claude-fable-5-ends-subscription-limbo-permanent-max-credits-only-pro.htm) — [domain trade publication])
+
+**Opus 5 / Honeycomb: no announcement as of July 19.** Newsroom silent. All post-July-8 coverage remains derivative of the July 8 Cursor leak. "End of July" speculation unchanged at L1. Pre-clearance government commitment remains the key unknown for GA timing. Upgrade trigger: API model ID published, system card appears, or second Cursor sighting confirmed.
+
+**Watch: end-of-July (Opus 5 "Honeycomb" — L1 only; pre-clearance delay risk); August 31 (Sonnet 5 Azure pricing cliff $2/$10 → $3/$15); @claudeai X (now primary channel for commercial announcements — monitor alongside newsroom).**
 
 **Cycle 166 updates (July 18, 2026) — Fable 5 no fourth extension at T-1 (July 18); government suspension context now explicit; Opus 5 Honeycomb: no new signal; developer cost comparison data:**
 

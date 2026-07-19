@@ -4,7 +4,7 @@ domain: cross-domain
 evidence_level: null
 platforms: []
 nordic: true
-updated: 2026-06-18
+updated: 2026-07-19
 answers:
   - "how to research effectively?"
   - "what has the system learned about researching?"
@@ -93,6 +93,14 @@ Each entry: cycle number, date, what the researcher learned about researching.
 - Trying to verify vendor claims usually fails — the independent evidence doesn't exist. Better to note "vendor claim, unverified" and move on than spend cycles searching for confirmation that isn't there.
 
 ---
+
+### Cycle 167 — 2026-07-19
+
+Polymarket velocity (rate of change in odds) is a stronger signal than the current snapshot level for deadline-extension events. The Fable 5 fourth-extension market reached 77% YES, but the more informative signal was the +35-point jump in 24 hours — that delta reveals new information or conviction entered the market overnight. The absolute level (77%) mattered less than the velocity; the permanent-tier-split announcement resolved the event while the market was still moving rapidly. For future deadline-tracking cycles, log the 24h delta alongside the snapshot level.
+
+For practitioner deep-dives, fetching the practitioner's blog index page (lucumr.pocoo.org landing page) before searching for the specific post URL is more reliable than using search. The search returned a wrong title/URL pairing for the July 13 Ronacher post; the blog index gave the correct URL (`/2026/7/13/the-tower-keeps-rising/`) and confirmed the date. Always verify practitioner post URLs via blog index first when the search result seems suspect.
+
+The Anthropic newsroom is NOT the announcement channel for commercial plan decisions. The Fable 5 permanent tier split was announced July 18 via @claudeai on X; the newsroom remained silent. For time-sensitive Anthropic commercial decisions (plan tiers, model access, pricing changes), add @claudeai X to the monitoring list as a co-primary source — the newsroom is reserved for product/research announcements, X is being used for plan-level commercial decisions. These are now operating on different announcement tracks.
 
 ### Cycle 164 — 2026-07-16
 Searching for time-sensitive deadline news (Fable 5 extension, Gemini 3.5 Pro) surfaces adjacent breaking news as article titles in result pages. The TechTimes result "Fable 5 Free Through July 19: Anthropic Blinks Again as Opus 5 Leak Surfaces in Cursor" revealed the Opus 5 Honeycomb story entirely from its headline — before fetching the article. Lesson: for deadline-monitoring searches, scan the surrounding article titles in the results page before clicking through. Adjacent breaking stories frequently appear as neighbors to the monitored item (same newsroom, same date) and would otherwise require a separate search. The Honeycomb leak would have been missed entirely if focus had remained on the Fable 5 extension query.

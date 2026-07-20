@@ -1,7 +1,7 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-07-19 (cycle 167)
-OODA cycles: 24
+Last updated: 2026-07-20 (cycle 168)
+OODA cycles: 25
 
 ## Focus
 
@@ -12,6 +12,14 @@ Coding agents as the **meta-platform** for the agentic transformation. This is N
 **CYCLE 143 UPDATE — Fable 5 Day 12 still offline; Polymarket June 26 at 10% (collapse from 41%), July 31 at 73% — market has abandoned near-term restoration thesis; Legion filed first legal challenge to ban; Ronacher "The Coming Loop" (June 23) crystallizes practitioner belief shift; Osmani (June 15) — review is now the leveraged engineering skill; ServiceNow IT Specialists 26th absence (6 days to June 30 deadline); Cursor/SpaceX date correction: Q3 2026, not July 12.** No Fable 5 restoration as of June 24. Trump verbally softened post-G7 Amodei meeting but Commerce Dept directive unchanged. Legion (legal-tech startup) filed suit against US government — first formal legal challenge. **Critical practitioner belief convergence:** Ronacher published "The Coming Loop" (June 23) — the clearest practitioner belief statement yet: "I don't prompt Claude anymore. I have loops running... My job is to write loops." Honest ambivalence expressed: "I resent it but accept it." Defensive code failure mode named: models are "mortally terrified of exceptions" (citing Karpathy), generating fallbacks rather than enforcing invariants. Osmani (June 15): "The hard part of engineering moved from writing code to deciding whether to trust it" — review is now the leveraged skill. Empirical: 4 AI reviewers on same PRs, 93.4% of issues caught by exactly one tool — heterogeneous review beats single-tool. 4x code output → ~10% delivered value; gap is hidden review work. Both Ronacher and Osmani converge independently: expertise concentrates at architecture/judgment level, not generation. Cursor/SpaceX Q3 2026 close (not July 12 — prior cycle inference, not confirmed deal term; Bloomberg + SEC 8-K say "Q3 2026"). ([lucumr.pocoo.org/2026/6/23/the-coming-loop/ Jun 23 2026](https://lucumr.pocoo.org/2026/6/23/the-coming-loop/) — practitioner direct; [addyosmani.com/blog/agentic-code-review/ Jun 15 2026](https://addyosmani.com/blog/agentic-code-review/) — practitioner direct; [letsdatascience.com Jun 2026](https://letsdatascience.com/news/legion-sues-us-over-lost-access-to-anthropic-models-2e697bd4) — domain trade publication; [Bloomberg Jun 16 2026](https://www.bloomberg.com/news/articles/2026-06-16/spacex-cements-60-billion-deal-to-take-over-ai-startup-cursor) — general press; [Polymarket](https://polymarket.com/event/claude-fable-5-restored-for-us-customers-by-20260613193753196) — prediction market)
 
 **Watch: Q3 2026 (Cursor/SpaceX regulatory close), August 2026 (Polaris GitHub Copilot default), future Anthropic pre-clearance pattern for national-security-relevant models.**
+
+## Key Verdict (as of 2026-07-20)
+
+**CYCLE 168 UPDATE — Sol Cerebras 750 tok/s enterprise tier (L1, no named deployers): changes agent workflow latency calculus; Sol $HOME bug patched but behavior posture unchanged; Opus 5 July 20-21 window missed.**
+
+**Sol Cerebras 750 tok/s enterprise tier: agent workflow latency calculus changes (L1).** OpenAI's multi-year Cerebras partnership (formalized January 2026) delivers Sol at ~750 tokens/second on wafer-scale hardware — 5x standard GPU-hosted frontier models (~150 tok/s). For coding agent and agentic pipeline architects: latency compounds across sequential agent calls. A 40-step pipeline at 8 seconds/step → ~2 seconds/step at 750 tok/s (per Beam.ai framing; note: Beam.ai is a competing agent platform — classified as vendor analysis). Named enterprise deployers: zero confirmed at Day 24. Access: select enterprise customers, expanding. Meta-platform implication: if Cerebras Sol becomes broadly available, the latency barrier for multi-step agentic coding workflows (not just single-model calls) is materially reduced. The "coding agents build the factories" thesis is latency-sensitive; higher throughput accelerates the factory cycle. CTO watch: Cerebras Sol availability timeline and pricing, since current cost ($5/$30 per M tokens) applies to standard tier — Cerebras pricing not yet confirmed as separate or bundled. ([valueaddvc.com Jul 2026](https://valueaddvc.com/pulse/cerebras-openai-gpt-5-6-sol-750-tokens-2026) — [domain trade publication])
+
+**Watch: Opus 5 "Honeycomb" — 11 days remaining in July window (L1 only; pre-clearance delay risk); Sol Day 30 (July 26 — next meaningful enterprise production window); August 2026 (Polaris GitHub Copilot default); Q3 2026 (Cursor/SpaceX close).**
 
 ## Key Verdict (as of 2026-07-19)
 

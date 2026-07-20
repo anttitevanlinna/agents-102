@@ -94,6 +94,14 @@ Each entry: cycle number, date, what the researcher learned about researching.
 
 ---
 
+### Cycle 168 — 2026-07-20
+
+Vendor limit announcements require cross-checking against simultaneous changes to baseline limits. The @claudeai July 18 post said "50% of weekly limits" for Max subscribers; The Decoder's July 18 article revealed July 20 simultaneously ends the 50% Claude Code weekly rate limit boost, reducing the baseline 33% before the 50% cap applies. The effective access is ~33% of the promotional window — a materially different figure from the headline "50%." Future pricing/limit change cycles: always fetch The Decoder and domain-specific outlets within 24 hours of any Anthropic plan announcement to catch these "and also" reductions that vendor posts omit.
+
+Community forum threads are higher-signal than practitioner blogs for real-time migration anxiety in active API sunset situations. The stability anxiety pattern (practitioners fearing the Responses API will itself be deprecated before migrating) appeared in the OpenAI developer community thread but not in any practitioner blog found this cycle. For "what are developers actually worried about?" questions on active shutdowns, check the primary forum thread before launching practitioner blog searches — forum posts appear immediately, blogs take weeks. The community thread confirmed a second new finding (dashboard UX friction locating "Create Prompt") that no press article mentioned.
+
+A patched bug and an addressed behavior posture are different things. The Sol $HOME parsing fix confirmed this cycle: the specific vector (rm -rf via $HOME expansion) was patched, but OpenAI's system card warning ("greater tendency to go beyond user intent") predates and postdates the patch. Always check whether a patch addresses the specific mechanism or the underlying behavior class — these require different CTO guidance (update the client vs. maintain all safeguards regardless).
+
 ### Cycle 167 — 2026-07-19
 
 Polymarket velocity (rate of change in odds) is a stronger signal than the current snapshot level for deadline-extension events. The Fable 5 fourth-extension market reached 77% YES, but the more informative signal was the +35-point jump in 24 hours — that delta reveals new information or conviction entered the market overnight. The absolute level (77%) mattered less than the velocity; the permanent-tier-split announcement resolved the event while the market was still moving rapidly. For future deadline-tracking cycles, log the 24h delta alongside the snapshot level.

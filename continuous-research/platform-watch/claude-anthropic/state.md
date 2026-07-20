@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [anthropic, claude-code, claude-cowork, antspace, agent-sdk]
 nordic: false
-updated: 2026-07-19
-cycle: 167
+updated: 2026-07-20
+cycle: 168
 answers:
   - "what is Anthropic's platform strategy?"
   - "what can business users do with Claude today?"
@@ -16,8 +16,18 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-07-19 (cycle 167)
-OODA cycles: 34
+Last updated: 2026-07-20 (cycle 168)
+OODA cycles: 35
+
+**Cycle 168 updates (July 20, 2026) — Opus 5 July 20–21 community window missed; Fable 5 effective Max limit = ~33% of promotional baseline (not 50% of full limits); Willison GPU constraint hypothesis:**
+
+**Opus 5 / Honeycomb: July 20–21 community window passed without announcement; 11 days remain in July.** Community-derived "July 20–21" timing speculation (timed to coincide with Fable 5 restructuring) was not met. Anthropic newsroom and @claudeai X: silent on July 20. All Honeycomb evidence still traces to the July 8 Cursor leak. lucumr.pocoo.org and simonwillison.net: no July 20 Opus 5 posts. 11 days remain in the "end of July" window. Pre-clearance commitment to US government (cycle 145) remains an explicit delay risk that could push GA to August. Upgrade only if: Anthropic publishes model ID, system card appears, or Cursor sighting re-emerges. ([clauding.de Jul 19 2026](https://clauding.de/en/posts/opus-5-start-steht-bevor-honeycomb/) — [domain trade publication]; [aitoolsrecap.com Jul 15 2026](https://aitoolsrecap.com/Blog/claude-honeycomb-eap-opus-5-anthropic-2026) — [domain trade publication])
+
+**Fable 5 effective limit correction (cycle 168): "50% of weekly limits" for Max applies to an ALREADY-REDUCED baseline.** Critical detail missing from cycle 167: July 20 simultaneously ends the 50% boost to Claude Code weekly rate limits (which had been in place since June 30). Calculation: standard limit → reduced 33% on July 20 (boost ends) → 50% of that reduced limit = effective Fable 5 access is ~33% of what Max subscribers had during the promotional window. This is The Decoder's July 18 framing: "the bonus usage phase ends July 20, cutting regular limits by 33 percent. Fable 5 will only be available at 50 percent of those already reduced limits." The headline "50% of limits" per the official @claudeai announcement understates the dual reduction on July 20. The $100 credit for Pro/Team Standard: The Decoder notes "probably won't last long" — no specific session count quantified. ([the-decoder.com Jul 18 2026](https://the-decoder.com/anthropic-slashes-claude-fable-5-limits-in-max-and-team-premium-and-pushes-pro-users-toward-api-pricing/) — [domain trade publication])
+
+**Willison GPU constraint hypothesis (cycle 168): 50% cap may be physical capacity, not policy choice.** Willison July 18: Anthropic may need to "dial back training efforts in order to make more GPUs available to help serve the model at scale." If true, the 50% limit reflects a physical constraint that resolves when training cycles free GPU capacity — not a permanent tier differentiation. Anthropic's own language ("demand for Fable has been challenging to predict") is consistent with this interpretation. CTO implication: the 50% limit may be temporary if GPU allocation is the driver; watch for limit increases over the next 60-90 days as the interpretation test. ([simonwillison.net Jul 18 2026](https://simonwillison.net/2026/Jul/18/claude-make-fable-5-permanent/) — [practitioner analysis])
+
+**Watch: end-of-July Opus 5 window narrowing (11 days remain; pre-clearance delay risk); August 31 (Sonnet 5 Azure pricing cliff $2/$10 → $3/$15); @claudeai X (primary channel for commercial announcements); whether Fable 5 50% limit rises as GPU capacity increases.**
 
 **Cycle 167 updates (July 19, 2026) — Fable 5 RESOLVED: permanent tier split effective July 20; @claudeai X is now primary commercial announcement channel; Opus 5 still L1:**
 

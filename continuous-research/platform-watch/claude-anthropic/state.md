@@ -16,8 +16,14 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-07-20 (cycle 168)
-OODA cycles: 35
+Last updated: 2026-07-21 (cycle 169)
+OODA cycles: 36
+
+**Cycle 169 updates (July 21, 2026) — Opus 5 July 21 window missed; Anthropic newsroom confirmed silent; 10 days remain in July window:**
+
+**Opus 5 / Honeycomb: July 21 community window missed; Anthropic newsroom fetched and confirmed silent.** Newsroom most recent entry: "Apply for Anthropic's AI for Science rare disease research grants" (July 20). No model announcement, no Honeycomb string, no system card. @claudeai X: no July 21 model post found. All Honeycomb evidence still traces exclusively to the July 8 Cursor leak. The community "July 20-21" speculation window has closed without launch. 10 days remain in the "end of July" window. Pre-clearance commitment to US government (cycle 145) remains the key structural delay risk. Watch: end-of-July window (July 22-31); @claudeai X for any commercial announcement. ([anthropic.com/news, fetched Jul 21 2026](https://www.anthropic.com/news) — [vendor documentation])
+
+**Watch: end-of-July Opus 5 window narrowing (10 days remain; pre-clearance delay risk); August 31 (Sonnet 5 Azure pricing cliff $2/$10 → $3/$15); @claudeai X (primary channel for commercial announcements); whether Fable 5 50% limit rises as GPU capacity increases.**
 
 **Cycle 168 updates (July 20, 2026) — Opus 5 July 20–21 community window missed; Fable 5 effective Max limit = ~33% of promotional baseline (not 50% of full limits); Willison GPU constraint hypothesis:**
 

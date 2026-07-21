@@ -94,6 +94,14 @@ Each entry: cycle number, date, what the researcher learned about researching.
 
 ---
 
+### Cycle 169 — 2026-07-21
+
+Fetching a survey landing page (rather than relying on press summaries) surfaces a different layer of insight. The Tieto Nordic AI survey was already captured via secondary sources in cycle 157 — but fetching the survey page itself revealed five new data points (4% strategic, 50% IT authority, 65% efficiency motivation, 57/60% trust gap, 24% no KPIs) that no press summary had mentioned. The press coverage cites headlines ("31% in production") while the page text contains the structural explanation for why 31% doesn't translate to impact. For survey research: always fetch the primary page, not just the press release — the structural explanation lives there, not in the headline.
+
+Practitioner retrospectives (post-migration) confirm or refute the complexity narrative better than pre-migration guides. The Steudler Medium post (migration from Assistants to Chat Completions) delivered quantified outcomes (60% faster, 40-60% cost reduction) that no pre-migration guide or vendor doc could provide. The complexity was real but resolvable. For active API deprecation cycles: search explicitly for post-migration retrospectives alongside pre-migration guides — these are different source types with different epistemological weight.
+
+For deadline-tracking cycles, the absence of community debate about whether Opus 5 launched is itself a signal. After the July 20-21 window passed, no community posts debating "is it out?" emerged — only silence and continued speculation about later dates. Contrast with Fable 5: the moment it launched, Willison posted within hours and the community lit up. Absence of that lighting-up pattern is stronger evidence of non-launch than the absence of an official announcement.
+
 ### Cycle 168 — 2026-07-20
 
 Vendor limit announcements require cross-checking against simultaneous changes to baseline limits. The @claudeai July 18 post said "50% of weekly limits" for Max subscribers; The Decoder's July 18 article revealed July 20 simultaneously ends the 50% Claude Code weekly rate limit boost, reducing the baseline 33% before the 50% cap applies. The effective access is ~33% of the promotional window — a materially different figure from the headline "50%." Future pricing/limit change cycles: always fetch The Decoder and domain-specific outlets within 24 hours of any Anthropic plan announcement to catch these "and also" reductions that vendor posts omit.

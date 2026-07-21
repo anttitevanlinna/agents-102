@@ -1,7 +1,7 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-07-20 (cycle 168)
-OODA cycles: 25
+Last updated: 2026-07-21 (cycle 169)
+OODA cycles: 26
 
 ## Focus
 
@@ -12,6 +12,14 @@ Coding agents as the **meta-platform** for the agentic transformation. This is N
 **CYCLE 143 UPDATE — Fable 5 Day 12 still offline; Polymarket June 26 at 10% (collapse from 41%), July 31 at 73% — market has abandoned near-term restoration thesis; Legion filed first legal challenge to ban; Ronacher "The Coming Loop" (June 23) crystallizes practitioner belief shift; Osmani (June 15) — review is now the leveraged engineering skill; ServiceNow IT Specialists 26th absence (6 days to June 30 deadline); Cursor/SpaceX date correction: Q3 2026, not July 12.** No Fable 5 restoration as of June 24. Trump verbally softened post-G7 Amodei meeting but Commerce Dept directive unchanged. Legion (legal-tech startup) filed suit against US government — first formal legal challenge. **Critical practitioner belief convergence:** Ronacher published "The Coming Loop" (June 23) — the clearest practitioner belief statement yet: "I don't prompt Claude anymore. I have loops running... My job is to write loops." Honest ambivalence expressed: "I resent it but accept it." Defensive code failure mode named: models are "mortally terrified of exceptions" (citing Karpathy), generating fallbacks rather than enforcing invariants. Osmani (June 15): "The hard part of engineering moved from writing code to deciding whether to trust it" — review is now the leveraged skill. Empirical: 4 AI reviewers on same PRs, 93.4% of issues caught by exactly one tool — heterogeneous review beats single-tool. 4x code output → ~10% delivered value; gap is hidden review work. Both Ronacher and Osmani converge independently: expertise concentrates at architecture/judgment level, not generation. Cursor/SpaceX Q3 2026 close (not July 12 — prior cycle inference, not confirmed deal term; Bloomberg + SEC 8-K say "Q3 2026"). ([lucumr.pocoo.org/2026/6/23/the-coming-loop/ Jun 23 2026](https://lucumr.pocoo.org/2026/6/23/the-coming-loop/) — practitioner direct; [addyosmani.com/blog/agentic-code-review/ Jun 15 2026](https://addyosmani.com/blog/agentic-code-review/) — practitioner direct; [letsdatascience.com Jun 2026](https://letsdatascience.com/news/legion-sues-us-over-lost-access-to-anthropic-models-2e697bd4) — domain trade publication; [Bloomberg Jun 16 2026](https://www.bloomberg.com/news/articles/2026-06-16/spacex-cements-60-billion-deal-to-take-over-ai-startup-cursor) — general press; [Polymarket](https://polymarket.com/event/claude-fable-5-restored-for-us-customers-by-20260613193753196) — prediction market)
 
 **Watch: Q3 2026 (Cursor/SpaceX regulatory close), August 2026 (Polaris GitHub Copilot default), future Anthropic pre-clearance pattern for national-security-relevant models.**
+
+## Key Verdict (as of 2026-07-21)
+
+**CYCLE 169 UPDATE — Compound Engineering "Compound" step mechanism (Every/lethain.com, L2): automated wiki-to-planning feedback loop is what separates compounding from linear gains; Opus 5 July 21 window missed (10 days remain).**
+
+**Compound Engineering — the specific mechanism for compounding (lethain.com/everyinc, 2026):** Will Larson's practitioner analysis of Every's compound engineering methodology names the distinguishing fourth step absent from most compound-engineering descriptions. Four steps: (1) Plan — decouple research from implementation; (2) Work — agentic coding; (3) Review — agents evaluate against best-practices; **(4) Compound — agent summarizes its learnings from each completed task into a structured wiki, automatically consulted by all future iterations.** The mechanism: a closed feedback loop between Compound and Plan where knowledge captured from task N automatically enters task N+1's planning context. This is not manual documentation — it is automated organizational learning. Without the Compound step, coding agent use produces iteration-by-iteration gains. The Compound step is what converts those into compounding gains. CTO implication: this resolves part of the "what comes after 2X" user signal. The 2X is the adoption jump; the further gains come from depth of the compound mechanism. Larson notes this will be absorbed into mainstream tools "within months," becoming invisible infrastructure. **Evidence level: L2** (practitioner analysis of a named company's method; not Larson's own deployment; independent confirmation not yet documented). ([lethain.com/everyinc-compound-engineering 2026](https://lethain.com/everyinc-compound-engineering/) — [practitioner analysis])
+
+**Watch: Opus 5 "Honeycomb" end-of-July window (10 days remain; pre-clearance delay risk); Sol Day 33 (positive enterprise production report threshold still unmet); August 2026 (Polaris GitHub Copilot default); Q3 2026 (Cursor/SpaceX close).**
 
 ## Key Verdict (as of 2026-07-20)
 

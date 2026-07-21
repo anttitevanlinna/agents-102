@@ -14,8 +14,16 @@ answers:
 
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-07-20 (cycle 168)
-OODA cycles: 26
+Last updated: 2026-07-21 (cycle 169)
+OODA cycles: 27
+
+**Cycle 169 updates (July 21, 2026) — Assistants API Day 36: practitioner-direct post-migration data (60% faster, 40-60% cost reduction); Sol Day 33 enterprise deployers still absent:**
+
+**⚠️ ASSISTANTS API SHUTDOWN AUGUST 26 — 36 DAYS — Practitioner migration outcomes now documented (L2).** New this cycle: named practitioner (Jürg Steudler, Medium/@gjasula) published post-migration retrospective from Assistants API to Chat Completions (note: Chat Completions, not Responses API — different target, but complexity narrative and outcomes are directly relevant). **Outcomes: 60% faster responses, 40-60% API cost reduction, code reduced from 450+ lines to streamlined implementation.** Root cause of complexity: (1) thread management required "creating, maintaining, and polling thread states"; (2) multiple async API calls per interaction; (3) model options inflexible (fixed per-assistant, not per-call); (4) "opaque state management on OpenAI's side" made debugging hard. New error patterns differed from prior API. Solution: intelligent model selection per task complexity (gpt-4o for complex, gpt-4o-mini for simpler); 30-day conversation retention replacing thread dependency. **CTO implication: practitioners who completed migrations report favorable outcomes** — the complexity is real but resolvable. The 36-day window is still potentially sufficient for systems that haven't begun. ([medium.com/@gjasula 2026](https://medium.com/@gjasula/from-deprecated-to-optimized-a-production-migration-from-openai-assistants-api-to-chat-completions-21d784036644) — [practitioner direct — migration to Chat Completions, not Responses API])
+
+**Sol Day 33 — named enterprise deployers still absent.** No new named enterprise deployers found this cycle. Fulton (Datadog, July 9) remains the only named human practitioner assessment at Day 33. Cerebras Sol enterprise tier (750 tok/s) access expanding but no customer names disclosed. This is the 7th consecutive cycle without a named enterprise Sol deployer — consistent with the pre-GA caution pattern (the two-week government preview restricted access to ~20 approved organizations before July 9 GA).
+
+**Watch: July 26 (Sol Day 33 — next meaningful enterprise production window); August 26 (Assistants API shutdown — 36 days); whether Steudler-style migration outcomes are replicated in Responses API migrations specifically.**
 
 **Cycle 168 updates (July 20, 2026) — Sol $HOME parsing bug PATCHED (week of July 14; behavior posture unchanged); Assistants API Day 37 stability anxiety; Sol Cerebras 750 tok/s enterprise tier (L1, no named deployers); igor-ya.com migration runbook (three failure modes, 90+ days):**
 

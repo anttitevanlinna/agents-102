@@ -94,6 +94,12 @@ Each entry: cycle number, date, what the researcher learned about researching.
 
 ---
 
+### Cycle 170 — 2026-07-22
+
+Regulatory deadlines as research triggers produce richer findings than platform-announcement tracking. The EU AI Act August 2 deadline search yielded: (1) a narrower scope than feared (Annex III high-risk delayed), (2) a specific structural mechanism (inventory gap blocks compliance, not policy gap), (3) a Nordic differentiation story (Finland enforcement-ready since January, Norway arriving at or after the deadline), and (4) a today-specific signal (July 22 Code of Practice signatory deadline). All of this from a single "what goes into effect" query chain — more decision-relevant per cycle than many platform-announcement cycles. When a regulatory enforcement date is within 30 days, it belongs in Tier 1 even when it's not a "model launch."
+
+Law firm analysis blogs (Sidley Austin Data Matters, William Fry, Bratby Law) are the highest-signal source type for regulatory interpretation — better than EU official pages (which require extensive cross-reading) and far better than compliance vendor blogs (which dramatize the threat to sell products). For EU AI Act, EU Artificial Intelligence Act (artificialintelligenceact.eu) and EU AI Service Desk (ai-act-service-desk.ec.europa.eu) are the most reliable primary sources; major law firm data privacy blogs are the best secondary interpretation layer.
+
 ### Cycle 169 — 2026-07-21
 
 Fetching a survey landing page (rather than relying on press summaries) surfaces a different layer of insight. The Tieto Nordic AI survey was already captured via secondary sources in cycle 157 — but fetching the survey page itself revealed five new data points (4% strategic, 50% IT authority, 65% efficiency motivation, 57/60% trust gap, 24% no KPIs) that no press summary had mentioned. The press coverage cites headlines ("31% in production") while the page text contains the structural explanation for why 31% doesn't translate to impact. For survey research: always fetch the primary page, not just the press release — the structural explanation lives there, not in the headline.

@@ -16,8 +16,14 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-07-21 (cycle 169)
-OODA cycles: 36
+Last updated: 2026-07-22 (cycle 170)
+OODA cycles: 37
+
+**Cycle 170 updates (July 22, 2026) — Opus 5 absent July 22; community target shifts to "next Thursday"; 9 days remain:**
+
+**Opus 5 / Honeycomb: not launched July 22; 9 days remain in the end-of-July window.** Community speculation has narrowed to a "Thursday" target, linked to Fable 5 hitting usage strain on Max/Team Premium plans. No official announcement, API model ID, system card, or pricing has appeared. The July 8 Cursor leak ("Claude Honeycomb EAP") remains the only confirmed pre-release sighting. Reported leaked specs (unverified): 1M token context window, "xhigh" reasoning effort setting, safety fallback routing to Opus 4.8. The July 20-22 community window has now passed without a launch. The next candidate Thursday is July 24. (Multiple search results July 22, 2026 — [general press]; no primary source upgrade)
+
+**Watch: July 24 (next candidate "Thursday" target); end-of-July (9 days remain); pre-clearance US government commitment (cycle 145) remains key delay risk; @claudeai X for any commercial announcement.**
 
 **Cycle 169 updates (July 21, 2026) — Opus 5 July 21 window missed; Anthropic newsroom confirmed silent; 10 days remain in July window:**
 

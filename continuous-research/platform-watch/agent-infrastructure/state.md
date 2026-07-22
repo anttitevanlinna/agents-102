@@ -2,8 +2,34 @@
 
 > *Edited 2026-05-14: hallucinated OpenClaw/ClawHub/NemoClaw cluster content removed. Original git history preserves the prior state.*
 
-Last updated: 2026-07-04 (cycle 153)
-OODA cycles: 4
+Last updated: 2026-07-22 (cycle 170)
+OODA cycles: 5
+
+## Key Verdict (as of 2026-07-22)
+
+**CYCLE 170 UPDATE — EU AI ACT AUGUST 2 ENFORCEMENT: ARTICLE 50 GOES LIVE IN 11 DAYS; ANNEX III HIGH-RISK DELAYED TO DECEMBER 2027; AI AGENTS EXPLICITLY IN SCOPE; ENTERPRISE READINESS GAP IS STRUCTURAL.**
+
+August 2, 2026 is a real enforcement date but a narrower one than originally planned. The Digital Omnibus agreement (May 7, 2026) deferred high-risk Annex III obligations (employment, credit, biometrics, law enforcement) 16 months to December 2, 2027. What activates August 2:
+
+1. **Article 50 transparency obligations** — chatbots, virtual assistants, and AI agents interacting with natural persons must disclose AI identity "at the time of first interaction" in the interaction itself (not terms of service). EU AI Office draft guidelines explicitly confirm: "AI agents fall within Article 50(1)." New AI systems generating synthetic content (text, image, audio, video) must include machine-readable watermarks from August 2 — systems already on market get a grace period to December 2, 2026. Deepfakes and AI-generated text on public-interest matters require visible disclosure (exception: human editorial review with named editor).
+2. **GPAI enforcement powers** — EU Commission gains authority to fine GPAI model providers up to €15M or 3% global annual turnover for documentation, copyright compliance, and risk assessment violations.
+3. **National market surveillance authority enforcement** — decentralized enforcement across 27 member states activates. Finland's Traficom has been active since January 1, 2026 — making Finland the highest-enforcement-risk country for Nordic deployers. Norway's framework is still arriving as of "summer 2026."
+
+**B2B/internal agent exemption is narrow.** The EU AI Office's own guidelines carve out only "strictly technical outputs accessible solely to a restricted group of internal professionals with safeguards against wider dissemination." An internal coding agent used by developers falls within Article 50(1) per this guidance if it interacts with those humans. An automated pipeline with no human interaction loop is more likely exempt.
+
+**Enterprise readiness gap is structural.** Four confirmed gaps across all available survey data (converges from appliedAI N=106, Kiteworks vendor survey, Nordic Twoday consultancy survey): (1) no AI system inventory — most enterprises cannot enumerate which AI systems are deployed; (2) no defined governance owner; (3) no documentation structure; (4) no AI literacy program. Specific stat: 40% of enterprise AI deployments lack clarity on EU AI Act risk classification (appliedAI, N=106 enterprise deployments). The compliance action for Article 50 is technically simple (add "You are speaking with an AI" disclosure); the blocker is the inventory gap.
+
+**July 22, 2026 (today) is the EU AI Office Code of Practice signatory deadline.** Companies that signed commit to a transparency compliance pathway with "strong presumption of compliance" protection and fine mitigation. Non-signatories must demonstrate equivalent rigor independently.
+
+**Watermarking technology gap emerging.** TechTimes headline (July 21, 2026): "EU Finalizes AI Disclosure Rules as Watermarking Mandate Outpaces Technology" — suggests machine-readable watermarking technology may not be mature enough for all content types. The grace period until December 2, 2026 for legacy systems partially mitigates this, but new systems face the August 2 requirement immediately.
+
+**Evidence level:** L3 for Article 50 scope and August 2 activation (convergence: Sidley Austin law firm [law firm analysis], digitialapplied.com [compliance practitioner], artificialintelligenceact.eu [EU civil society tracker], axis-intelligence.com — all independently confirm same scope). L1-L2 for enterprise readiness statistics (Kiteworks = vendor survey, methodology undisclosed; appliedAI N=106 = single study). L2 for Nordic picture (Twoday consultancy + itbranschen.com trade publication independently confirm governance gap).
+
+**Sources:** [digitalapplied.com EU AI Act Aug 2026](https://www.digitalapplied.com/blog/eu-ai-act-august-2026-transparency-obligations-agency-checklist) — [legal analysis]; [artificialintelligenceact.eu Art 50 guide](https://artificialintelligenceact.eu/transparency-rules-article-50/) — [legal analysis]; [Sidley Austin Data Matters Jun 24 2026](https://datamatters.sidley.com/2026/06/24/eu-ai-act-transparency-obligations-preparing-for-compliance-by-2-august-2026/) — [domain trade publication / law firm]; [axis-intelligence.com EU AI Act news](https://axis-intelligence.com/eu-ai-act-news/) — [domain trade publication]; [Kiteworks Jun 23 2026](https://www.kiteworks.com/regulatory-compliance/eu-ai-act-deadline-compliance/) — [vendor survey — methodology undisclosed, directional only]; [Twoday Nordic AI Governance 2026](https://www.twoday.com/blog/nordic-ai-governance-in-2026) — [domain trade publication / Nordic IT consultancy]; [TechTimes Jul 22 signatory deadline](https://www.techtimes.com/articles/318822/20260622/eu-ai-act-chatbot-disclosure-deepfake-labeling-july-22-signatory-deadline.htm) — [general press]
+
+**Watch: August 2 (enforcement activation); first Article 50 enforcement action (zero pre-enforcement cases found); watermarking technology maturity gap (December 2, 2026 = legacy system deadline); December 2, 2027 (Annex III high-risk activation).**
+
+---
 
 ## Key Verdict (as of 2026-07-04)
 

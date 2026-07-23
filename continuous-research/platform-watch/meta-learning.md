@@ -94,6 +94,12 @@ Each entry: cycle number, date, what the researcher learned about researching.
 
 ---
 
+### Cycle 171 — 2026-07-23
+
+Multi-deadline cluster cycles (covering 3 simultaneous deadlines in one scan) are most efficient when each deadline has a different evidence source type. Opus 5 status = search + single article fetch; Assistants API = community forum thread (both pages) + practitioner analysis blog; Polaris = trade press search; Sol Day 14 = named-company search. Each required a different source type; a single search query per deadline was insufficient. The most valuable finding came from fetching the community forum page 2 — the Azure/OpenAI fork (Azure users migrate to Foundry Agents, not Responses API) appeared there in context, not in any press article found. This is consistent with the cycle 162 meta-learning: developer community forums are underused for migration/deprecation signals, especially for "what are practitioners actually running into?" questions.
+
+The Assistants API shutdown coverage gap (no visible dashboard notice; practitioners unaware) reinforces the cycle 161 heuristic: launch news hits tech press in hours; deprecation notices hit developer blogs in weeks. At 34 days to hard stop, zero practitioner "I'm migrating my Assistants" posts found in public channels — the affected population hasn't started writing yet. This is the early-warning-not-acted-on pattern. The next productive check is mid-August (10-14 days before shutdown) when panic posts will appear.
+
 ### Cycle 170 — 2026-07-22
 
 Regulatory deadlines as research triggers produce richer findings than platform-announcement tracking. The EU AI Act August 2 deadline search yielded: (1) a narrower scope than feared (Annex III high-risk delayed), (2) a specific structural mechanism (inventory gap blocks compliance, not policy gap), (3) a Nordic differentiation story (Finland enforcement-ready since January, Norway arriving at or after the deadline), and (4) a today-specific signal (July 22 Code of Practice signatory deadline). All of this from a single "what goes into effect" query chain — more decision-relevant per cycle than many platform-announcement cycles. When a regulatory enforcement date is within 30 days, it belongs in Tier 1 even when it's not a "model launch."

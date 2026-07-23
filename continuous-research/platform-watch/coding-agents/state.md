@@ -1,7 +1,7 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-07-21 (cycle 169)
-OODA cycles: 26
+Last updated: 2026-07-23 (cycle 171)
+OODA cycles: 28
 
 ## Focus
 
@@ -12,6 +12,16 @@ Coding agents as the **meta-platform** for the agentic transformation. This is N
 **CYCLE 143 UPDATE — Fable 5 Day 12 still offline; Polymarket June 26 at 10% (collapse from 41%), July 31 at 73% — market has abandoned near-term restoration thesis; Legion filed first legal challenge to ban; Ronacher "The Coming Loop" (June 23) crystallizes practitioner belief shift; Osmani (June 15) — review is now the leveraged engineering skill; ServiceNow IT Specialists 26th absence (6 days to June 30 deadline); Cursor/SpaceX date correction: Q3 2026, not July 12.** No Fable 5 restoration as of June 24. Trump verbally softened post-G7 Amodei meeting but Commerce Dept directive unchanged. Legion (legal-tech startup) filed suit against US government — first formal legal challenge. **Critical practitioner belief convergence:** Ronacher published "The Coming Loop" (June 23) — the clearest practitioner belief statement yet: "I don't prompt Claude anymore. I have loops running... My job is to write loops." Honest ambivalence expressed: "I resent it but accept it." Defensive code failure mode named: models are "mortally terrified of exceptions" (citing Karpathy), generating fallbacks rather than enforcing invariants. Osmani (June 15): "The hard part of engineering moved from writing code to deciding whether to trust it" — review is now the leveraged skill. Empirical: 4 AI reviewers on same PRs, 93.4% of issues caught by exactly one tool — heterogeneous review beats single-tool. 4x code output → ~10% delivered value; gap is hidden review work. Both Ronacher and Osmani converge independently: expertise concentrates at architecture/judgment level, not generation. Cursor/SpaceX Q3 2026 close (not July 12 — prior cycle inference, not confirmed deal term; Bloomberg + SEC 8-K say "Q3 2026"). ([lucumr.pocoo.org/2026/6/23/the-coming-loop/ Jun 23 2026](https://lucumr.pocoo.org/2026/6/23/the-coming-loop/) — practitioner direct; [addyosmani.com/blog/agentic-code-review/ Jun 15 2026](https://addyosmani.com/blog/agentic-code-review/) — practitioner direct; [letsdatascience.com Jun 2026](https://letsdatascience.com/news/legion-sues-us-over-lost-access-to-anthropic-models-2e697bd4) — domain trade publication; [Bloomberg Jun 16 2026](https://www.bloomberg.com/news/articles/2026-06-16/spacex-cements-60-billion-deal-to-take-over-ai-startup-cursor) — general press; [Polymarket](https://polymarket.com/event/claude-fable-5-restored-for-us-customers-by-20260613193753196) — prediction market)
 
 **Watch: Q3 2026 (Cursor/SpaceX regulatory close), August 2026 (Polaris GitHub Copilot default), future Anthropic pre-clearance pattern for national-security-relevant models.**
+
+## Key Verdict (as of 2026-07-23)
+
+**CYCLE 171 UPDATE — Opus 5 / Honeycomb: July 20-21 window missed; community now speculates July 26-27 weekend; 8-9 days remain in July; single unconfirmed community benchmark (July 14) claims Honeycomb > Sol/Terra on SWE-Bench Pro (L0, unverified); Sol Day 14 enterprise production check: zero named deployers (confirmed absence, consistent with timeline).**
+
+Opus 5 status (July 23): No official Anthropic announcement. No claude-opus-5 model ID in API docs. No pricing page. No system card. July 20-21 community-predicted window passed. Community speculation now points to July 26-27 weekend. A single community benchmark from July 14 reportedly shows "Honeycomb" outperforming Sol and Terra on SWE-Bench Pro — single unconfirmed source, no methodology, no independent replication: hold at L0. The July 8 Cursor leak (two-prompt appearance, then removed) remains the only confirmed pre-release sighting. 8-9 days remain in the "end of July" window. Pre-clearance government review risk (flagged cycle 145) could push past July 31. When Opus 5 does launch, it immediately resets the Sol vs. Fable 5 cost-capability comparison.
+
+Sol GPT-5.6 Day 14 (July 23): Zero named enterprise production deployments found. Pattern consistent with prior model launches — deployment evidence typically emerges at Day 30+. Cerebras-hosted 750 tok/s Sol remains select-customer only. Next check: July 26 (Day 17).
+
+**Watch: Opus 5 "Honeycomb" July 26-27 weekend (community speculation; 8-9 days remain; L0); Sol Day 17 July 26 (next enterprise deployment check); August 2026 (Polaris GitHub Copilot default); Q3 2026 (Cursor/SpaceX close).**
 
 ## Key Verdict (as of 2026-07-21)
 

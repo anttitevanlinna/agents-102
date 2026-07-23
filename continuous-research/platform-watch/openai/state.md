@@ -14,8 +14,16 @@ answers:
 
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-07-21 (cycle 169)
-OODA cycles: 27
+Last updated: 2026-07-23 (cycle 171)
+OODA cycles: 29
+
+**Cycle 171 updates (July 23, 2026) — Assistants API Day 38: tooling gap confirmed NOT closed; Azure/OpenAI migration FORK discovered; Sol Day 14 zero named enterprise deployers:**
+
+**⚠️ ASSISTANTS API SHUTDOWN AUGUST 26 — 34 DAYS — Tooling gap not closed; Azure fork creates two-track migration problem (L2).** This cycle confirmed: (1) **No automated migration tool exists** — thread-to-conversation backfill is manual or accept data loss; (2) **Programmatic Prompt creation still impossible** — dashboard-only, blocking any scripted migration path; (3) **docx file support dropped** — practitioners must pre-convert to PDF; (4) **Deprecation notice not visible from Assistants dashboard** — teams who haven't seen the email announcement may not know the shutdown is imminent. **NEW: Azure fork discovery.** Microsoft is simultaneously retiring the Azure OpenAI Assistants API on August 26 and pushing to Foundry Agents — a different migration destination from the OpenAI.com path (Responses API). Teams using Azure-hosted Assistants face a fork: migrate to OpenAI Responses API or to Azure Foundry Agents. These are architecturally different targets. No CTO guidance document maps both paths simultaneously. Stability anxiety in community: practitioners asking whether Responses API will also be deprecated — OpenAI's March 2026 promise of 12-month notice noted but not fully trusted. **State management shift**: server-side thread persistence → explicit developer ownership of tool loops. Realistic migration effort: 1-4 engineering weeks (small system); 9-12 months (enterprise). ([community.openai.com thread Jul 2026](https://community.openai.com/t/assistants-api-beta-deprecation-august-26-2026-sunset/1354666) — [practitioner community]; [socialcrawl.dev Jul 2026](https://www.socialcrawl.dev/blog/openai-assistants-api-2026-shutdown-migration-guide) — [practitioner analysis]; [windowsnews.ai Jul 2026](https://windowsnews.ai/article/microsoft-sets-august-2026-deadline-to-retire-assistants-api-pushing-azure-ai-developers-to-foundry-.439252) — [domain trade publication])
+
+**Sol Day 14 (July 23) — zero named enterprise production deployers; pattern consistent with timeline.** No named enterprise production deployments found at Day 14. Absence is consistent with pre-GA caution pattern (government-preview phase restricted access to ~20 organizations through July 9). Cerebras Sol 750 tok/s enterprise tier access expanding but no customer names. Next watch point: July 26 (Day 17).
+
+**Watch: August 26 (Assistants API hard stop — 34 days; Azure/OpenAI fork needs clarification); July 26 (Sol Day 17 — next enterprise production check).**
 
 **Cycle 169 updates (July 21, 2026) — Assistants API Day 36: practitioner-direct post-migration data (60% faster, 40-60% cost reduction); Sol Day 33 enterprise deployers still absent:**
 

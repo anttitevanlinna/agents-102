@@ -16,8 +16,16 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-07-24 (cycle 145 + cycles 146-170 from remote)
-OODA cycles: 37
+Last updated: 2026-07-25 (cycle 172)
+OODA cycles: 38
+
+**Cycle 172 updates (July 25, 2026) — OPUS 5 GA JULY 24: $5/$25, 1M context, "Honeycomb" was internal codename only; loop engineering governance discourse Stage 3:**
+
+**OPUS 5 LAUNCHED JULY 24, 2026 — end-of-July watch closes.** Official API model ID: `claude-opus-5`. Pricing: $5/$25 per million input/output tokens — half of Fable 5 ($10/$50). 1M context window, 128K max output, adaptive thinking ON by default. New default for Claude Max subscribers. Anthropic positioning: "thoughtful and proactive model that comes close to the frontier intelligence of Fable 5 at half the price." The "Honeycomb" codename was an internal designation that leaked via the July 8 Cursor EAP sighting — the public name is simply Claude Opus 5. Pre-clearance government commitment (documented cycle 145) was apparently satisfied with no delay past July 31. Bedrock ID: `anthropic.claude-opus-53`; Google Cloud ID: `claude-opus-5`. Opus 4.8 is now legacy (routing fallback); Opus 4.1 API deprecation August 5, 2026 (11 days) unchanged. **Structural implication:** Opus 5 at $5/$25 resets the Sol vs. Fable 5 cost-capability comparison documented in cycles 160-171. For enterprise API deployments, the cost tier now has three options: Fable 5 ($10/$50), Opus 5 ($5/$25), Sonnet 5 ($2/$10 through August 31). ([anthropic.com/news/claude-opus-5 Jul 24 2026](https://www.anthropic.com/news/claude-opus-5) — [vendor press release]; [platform.claude.com/docs/models/overview](https://platform.claude.com/docs/en/about-claude/models/overview) — [vendor documentation]; [bloomberg.com Jul 24 2026](https://www.bloomberg.com/news/articles/2026-07-24/anthropic-unveils-more-cost-efficient-model-for-everyday-tasks) — [general press])
+
+**Loop engineering Stage 3 — governance risk surfacing (cycle 172 update).** Osmani "Own the Outer Loop" (July 15): new accountability thesis: "Accountability will scale the factory." Hazards named: cognitive surrender, cognitive debt, orchestration tax. Ronacher "The Tower Keeps Rising" (July 13): "agents remove coordination friction" is positioned as organizational risk — comprehension collapses while the tower rises. Andrew Ng (~June 30, The Batch): names Cherny + Steinberger as loop engineering viral origin; introduces 3-loop hierarchy (minutes/hours/days). Discourse arc: naming (June) → taxonomy (late June/early July) → governance risk (July 13-25). Implication: Anthropic's own engineering practices (Cherny, Osmani) have become an independent practitioner-research subject. ([addyosmani.com/blog/own-the-outer-loop Jul 15 2026](https://addyosmani.com/blog/own-the-outer-loop/) — [practitioner direct]; [lucumr.pocoo.org/2026/7/13/the-tower-keeps-rising Jul 13 2026](https://lucumr.pocoo.org/2026/7/13/the-tower-keeps-rising/) — [practitioner direct])
+
+**Watch: Opus 5 first independent practitioner benchmark vs. Fable 5 and Sol (Day 7+ from launch); August 5 (Opus 4.1 API deprecation hard deadline); August 31 (Sonnet 5 intro pricing $2/$10 → $3/$15); Cursor/SpaceX Q4 2026 (regulatory timeline slipping).**
 
 **Cycle 170 updates (July 22, 2026) — Opus 5 absent July 22; community target shifts to "next Thursday"; 9 days remain:**
 

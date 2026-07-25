@@ -4,7 +4,7 @@ domain: cross-domain
 evidence_level: null
 platforms: []
 nordic: true
-updated: 2026-07-19
+updated: 2026-07-25
 answers:
   - "how to research effectively?"
   - "what has the system learned about researching?"
@@ -93,6 +93,14 @@ Each entry: cycle number, date, what the researcher learned about researching.
 - Trying to verify vendor claims usually fails — the independent evidence doesn't exist. Better to note "vendor claim, unverified" and move on than spend cycles searching for confirmation that isn't there.
 
 ---
+
+### Cycle 172 — 2026-07-25
+
+Direct page fetches of practitioner blogs (simonwillison.net, lucumr.pocoo.org, addyosmani.com) and vendor documentation (platform.claude.com/docs) yielded higher signal than keyword searches in this cycle — one fetch of the official models overview page confirmed Opus 5's model ID, pricing, and context window as ground truth in a single call, while keyword searches had returned fragmented and slightly inconsistent press summaries. For "did X ship and what are the API details?" questions, start with the official changelog or docs endpoint before any search.
+
+Community-sourced timing speculation (July 26-27 weekend) missed by one day — Opus 5 launched July 24 (Thursday), consistent with the prior Thursday-launch pattern observed across recent Anthropic releases. Scheduled research monitoring is valuable precisely because it catches same-day launches that a next-window cycle would document as old news; the one-day prediction miss is small enough that "end of week" remains a useful prior for Anthropic major model releases. When the community prediction window collapses to 2-3 days, a daily check adds more value than a weekly one.
+
+The Loop Engineering discourse arc (naming → taxonomy → governance risk in 6 weeks) is the fastest concept-maturation cycle observed in this research system. Two independent practitioners (Osmani, Ronacher) arriving at the same governance concern from different ecosystems within a week of each other is the convergence pattern that separates L3 directional from L2 — watch for a third practitioner framing in the next 2-3 weeks to confirm the Stage 3 lock-in.
 
 ### Cycle 171 — 2026-07-23
 

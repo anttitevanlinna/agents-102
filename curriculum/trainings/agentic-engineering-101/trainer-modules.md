@@ -168,7 +168,7 @@ One module at a time. Pick a tab; the URL hash holds the selection so you can sh
 3. Exercise — [Diagnose and re-send](./#exercises-diagnose-and-resend) (65 min; Phases 1–4)
 4. Debrief + re-send (15–20 min; owned by the module file; worktree setup demo here)
 5. Lecture — [What packaging is](./#lectures-what-packaging-is) (closer; Ronacher's three-pattern earned from felt evidence — don't squeeze it)
-6. Lecture — [The gate is a claim too](./#lectures-the-gate-is-a-claim) (final closer, 6–8 min; names the fallibility of the verifier the student just built — the gate is a claim, not proof. Promoted from supplementary 2026-07-03, lands after What packaging is. Two back-to-back closers: budget packaging ~12–15 + gate 6–8 against the 1h45 runtime)
+6. Lecture — [The gate is a claim too](./#lectures-the-gate-is-a-claim) (final closer, 7–9 min; names the fallibility of the verifier the student just built — the gate is a claim, not proof — then closes on the delegation-frontier zoom-out (reach × calibration, four states). Promoted from supplementary 2026-07-03; frontier slide added 2026-07-26. Two back-to-back closers: budget packaging ~12–15 + gate 7–9 against the 1h45 runtime)
 
 **Learning goals.** Student can:
 

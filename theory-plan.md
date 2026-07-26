@@ -48,6 +48,7 @@ Tags: `[borrow:X]` imported parent field · `[rsch:Ln]` continuous-research, evi
 - ★ **Absorption bottleneck:** once generation is cheap, the binding constraint is the human's *evaluation rate*. 95%-at-volume worse than 80%-digestible. `[rsch:L4]`
 - **Blast radius / error budget:** grant autonomy where downside is bounded and reversible; spend it against a measured failure rate. `[borrow:SRE]`
 - ★ **Principal–agent:** "agent" is the literal economic relationship — delegated authority + hidden action + goal misalignment. Alignment, verification gates, reward-hacking are one frame. `[borrow:economics]`
+- **Calibrated delegation frontier:** reach × calibration → four states (chat-shaped work · controlled assistance · reckless autonomy · calibrated agency). Frontier = largest task you can hand off and still trust the result; moves outward only as fast as the gates behind it. Synthesizing frame over blast-radius + principal–agent + absorption-bottleneck; also the model behind AE101 day-30 measurement (PR-layer rework = calibration's outcome anchor). `[curr]` PLACED: M5 close, `the-gate-is-a-claim` final slide (2026-07-26). Payoff twin (compounding moves the frontier) unplaced — M6 `the-map-filled-in` candidate, Antti's call.
 
 ### 3 · Laws of compounding — how capability is built over time (the "growth dynamics")
 - **OODA with Act collapsed:** agents make acting nearly free → judgment (Orient) is the ceiling, not keystrokes. `[borrow:Boyd]` `[curr]`

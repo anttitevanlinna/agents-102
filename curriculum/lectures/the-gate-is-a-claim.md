@@ -34,6 +34,12 @@ Say the re-send comes back green. The verifier you built reads the work and pass
 
 A gate is one more claim in the system. Build it, then hold it to the same bar it holds the work to.
 
+## The delegation frontier
+
+- Every run you hand off sits on two axes. Reach is how much you delegated: the size of the task, the length of the leash. Calibration is whether your trust in what came back was earned by a check you have verified.
+- Four states fall out. Low reach is chat-shaped work or controlled assistance: you read everything, so trust is not the question yet. High reach splits on calibration alone. Calibrated agency when the gates behind the green are ones you have measured, reckless autonomy when they are not. From outside, the two look identical. The five ways a gate lies are the whole difference.
+- The frontier is the largest task you can hand off and still trust the result. It moves outward only as fast as the gates behind it. Push reach past your calibration and you are not delegating more. You are checking less.
+
 <!-- maintainer -->
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all five law slides kept bullets; every bolded lead de-bolded. Two handles kept, at their naming sub-spans: **Goodhart's law** (Gates decay slide) and **tampering** (Deming, Change-on-recurrence slide); slides 1, 2, and 4 carry zero bold (headers carry the laws). Lede + closing line untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
@@ -44,11 +50,14 @@ A gate is one more claim in the system. Build it, then hold it to the same bar i
 
 **Placement:** M5 close, final lecture, immediately after `what-packaging-is.md`. Recognition-after-building (`check_lectures §1`): the student built a verifier and re-sent the packaged run before this page names the gate's own fallibility. No cross-module sequencing in the body (`check_lectures §3`); any onward pointer lives in the module file's `## Next`.
 
-**Laws carried (5, one per slide):** green-is-a-claim (passing is not proof) · calibrate-the-judge · Goodhart/gate-decay · one-run-is-a-sample · don't-tamper (change on recurrence). Trimmed from the reference-dose supplementary: hold-out and integrity-check folded into the gate-decay slide; the error-analysis-first bullet kept tight on the calibrate slide (cut candidate — see eyeball). The demo-is-pass-once and regression-to-the-mean bullets kept as one-line traps.
+**Frontier slide added 2026-07-26 (Antti placement call: "M5 closer"):** *The delegation frontier* as the deck's closing zoom-out — reach × calibration, four states (chat-shaped work · controlled assistance · reckless autonomy · calibrated agency), frontier moves only as fast as the gates. Home-grown, L0, no citation owed; doubles as the model behind the AE101 day-30 measurement design (transcript states + PR-layer rework as calibration's outcome anchor — measurement stays maintainer-side, unpiloted, NOT a body claim). Mood-checked: ends on the reckless-autonomy warning ("you are checking less"), does NOT resolve the closer's open doubt; the optimistic twin beat (compounding moves the frontier outward) is deliberately withheld here — candidate one-liner for M6 `the-map-filled-in`, Antti's call. "Calibration" is earned two slides up (the judge-calibration slide); zero bold (header carries the handle). Quality per-class SHAs below predate this slide; re-audit before ship.
+
+**Laws carried (5 + closing frame):** green-is-a-claim (passing is not proof) · calibrate-the-judge · Goodhart/gate-decay · one-run-is-a-sample · don't-tamper (change on recurrence). Trimmed from the reference-dose supplementary: hold-out and integrity-check folded into the gate-decay slide; the error-analysis-first bullet kept tight on the calibrate slide (cut candidate — see eyeball). The demo-is-pass-once and regression-to-the-mean bullets kept as one-line traps.
 
 **Frameworks riffed on:** Goodhart's law `[cultural-vocab]` (name-only) · W. Edwards Deming on tampering `[cultural-vocab]` (name-only) · judge-calibration loop credited to Hamel Husain inline (URL below) · regression-to-the-mean = statistics commons, un-attributed.
 
 **EYEBALL (queue):**
+- **Frontier slide (2026-07-26):** deck now six slides, ~7–9 min. (a) Does the zoom-out earn its slot after five laws, or is it a second lecture's worth of frame? (b) The slide-5 kicker ("A gate is one more claim…") no longer ends the deck — keep it as the laws' summary line, or move it below the frontier slide as the final word? (c) Commission the M6 payoff twin line in `the-map-filled-in` ("compounding is what moves the frontier"), or let the doubt stand unresolved training-wide?
 - **Does this become THE M5 closer, landing AFTER `what-packaging-is.md`?** M5 then carries two back-to-back closing lectures (packaging ~12–15 min + this ~6–8 min). Confirm the combined closing dose fits the 1h45 runtime, or whether this trims to a shorter recognition beat.
 - **Slide budget:** five slides, one law each. A closer is ~5–8 min; five sits at the top of that. Cheapest trim if tighter: the error-analysis-first bullet on *Calibrate the judge* (an eval-building move, not a gate-fallibility law) folds or drops without losing a law.
 - **Any law to cut for dose:** the five are distinct failure modes of the gate. If one goes, *don't-tamper* (change on recurrence) is the most separable — it is a reaction policy rather than a gate-fallibility law — but it is one of the delivery gaps this promotion was meant to close, so cut it last.

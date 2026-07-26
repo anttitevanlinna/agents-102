@@ -1,11 +1,21 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-07-24 (cycle 145 + cycles 146-171 from remote)
-OODA cycles: 28
+Last updated: 2026-07-26 (cycle 173)
+OODA cycles: 29
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-07-26)
+
+**CYCLE 173 UPDATE — OPUS 5 DAY 2: MIXED SIGNAL (Lovable +22%, Zapier AutomationBench, Ultima Genomics positive; Every.to compound engineering integration friction); SOL DAY 17 ZERO ENTERPRISE DEPLOYERS (4th consecutive absence); OPUS 4.1 DEPRECATION AUGUST 5 (10 days).**
+
+Opus 5 Day 2 (July 26) shows a more heterogeneous adoption signal than typical launches. **Positive side:** Fabian Hedin (Lovable): "+22% over Opus 4.7 on hardest agentic coding tasks, steadier with far less variance run to run" — variance reduction is a new and distinct capability claim beyond peak benchmark scores. Zapier: full churn-prevention sequence end-to-end on AutomationBench. Ultima Genomics: "behaves more like a careful scientist than any model we've run" — first non-tech domain practitioner voice at Day 2. Benchmark positions: Opus 5 outscores Fable 5 on Frontier-Bench v0.1 (43.3% vs 33.7%) and GDPval-AA v2 (1,861 vs 1,747) at half the cost. CursorBench 3.2: within 0.5% of Fable 5 at half cost per task. Willison (July 24): Opus 5 now leads the Artificial Analysis leaderboard above Fable 5; 26% fewer tokens vs Opus 4.8 at max reasoning. **Friction side:** Every.to (Shipper/Parrott, July 24): "Brilliant in Flashes, Frustrating in Practice" — Day 1 integration friction with compound engineering skills and plugins: "argued with instructions, stopped before finished." This is notable because Every.to's compound engineering methodology is a primary CTO reference case — if Opus 5 doesn't plug in cleanly to agentic infrastructure built around prior model behavior, that's a calibration cost, not a capability gap. Likely Day-1 noise, but warrants the Day 7-10 follow-up. **No Opus 5 vs Sol comparison published at Day 2.** Classification: L2 (three independent practitioner voices from distinct domains + one counter-signal). Day 7-10 (July 31+) is the next meaningful benchmark window. ([decrypt.co/374305/claude-opus-5-outscores-fable-5-most-benchmarks-half-price Jul 24 2026](https://decrypt.co/374305/claude-opus-5-outscores-fable-5-most-benchmarks-half-price) — [domain trade publication]; [simonwillison.net/2026/Jul/24/introducing-claude-opus-5/ Jul 24 2026](https://simonwillison.net/2026/Jul/24/introducing-claude-opus-5/) — [practitioner analysis]; [every.to/vibe-check/opus-5 Jul 24 2026](https://every.to/vibe-check/opus-5) — [practitioner analysis — paywalled])
+
+**Sol Day 17 — zero named enterprise production deployments (4th consecutive absence).** Pattern consistent with Day 14, 16. Individual practitioner daily-driver use confirmed (Every.to staff; Naveen Naidu/Monologue debugging) but no enterprise-level production deployment reports. Government-preview cohort (~20 orgs) names still undisclosed. Next meaningful window: **August 8-9 (Day 30).**
+
+**Watch: Opus 5 Day 7-10 practitioner benchmarks (July 31+, Opus 5 vs Sol head-to-head expected here); Every.to compound engineering friction resolution (Day 7-10 re-check); Sol Day 30 enterprise evidence window (August 8-9); August 5 (Opus 4.1 API deprecation — 10 days); August 2026 (Polaris Copilot default); August 26 (Assistants API hard stop — 31 days); August 31 (Sonnet 5 intro pricing cliff); Cursor/SpaceX Q4 2026 regulatory close.**
 
 ## Key Verdict (as of 2026-07-25)
 

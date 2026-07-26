@@ -14,8 +14,16 @@ answers:
 
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-07-23 (cycle 171)
-OODA cycles: 29
+Last updated: 2026-07-26 (cycle 173)
+OODA cycles: 30
+
+**Cycle 173 updates (July 26, 2026) — Assistants API 31-day countdown (August 26 hard stop confirmed same for OpenAI direct + Azure); Sol Day 17 zero named enterprise deployers (4th consecutive absence):**
+
+**⚠️ ASSISTANTS API SHUTDOWN AUGUST 26 — 31 DAYS — NO NEW MIGRATION TOOLING (NINTH CYCLE).** Hard stop August 26 confirmed at both OpenAI direct ([community.openai.com/t/assistants-api-beta-deprecation-august-26-2026-sunset/1354666](https://community.openai.com/t/assistants-api-beta-deprecation-august-26-2026-sunset/1354666) — [vendor official]) and Azure OpenAI ([learn.microsoft.com/answers/questions/5790094 Jul 2026](https://learn.microsoft.com/en-us/answers/questions/5790094/will-azure-openai-assistants-api-specifically-be-d) — [vendor documentation]). No grace period, no degraded mode. Scale: ~2.1M developers on OpenAI platform; Assistants = small % of 2.2B daily API calls but large absolute count of production systems ([socialcrawl.dev updated Jul 22 2026](https://www.socialcrawl.dev/blog/openai-assistants-api-2026-shutdown-migration-guide) — [practitioner analysis]). No automated thread-to-conversation migration tool — by design. 1-4 engineering weeks for small systems; enterprise systems should have been running for months. Azure teams → Foundry Agents (NOT Responses API). Community trust erosion, docx support drop, programmatic Prompt creation dashboard-only — all unchanged from prior cycles. CTO alarm: a team that reads this entry today and hasn't started has 31 days for a small system and no path for a large one.
+
+**Sol Day 17 (July 26) — zero named enterprise production deployments (4th consecutive absence).** Individual practitioner daily-driver use confirmed (Every.to staff; Naveen Naidu/Monologue debugging success); government-preview cohort (~20 orgs) names remain undisclosed. Next meaningful window: August 8-9 (Day 30).
+
+**Watch: August 8-9 (Sol Day 30 — next enterprise production evidence window); August 26 (Assistants API HARD STOP — 31 days); August 31 (Sonnet 5 / Terra Azure pricing cliff).**
 
 **Cycle 171 updates (July 23, 2026) — Assistants API Day 38: tooling gap confirmed NOT closed; Azure/OpenAI migration FORK discovered; Sol Day 14 zero named enterprise deployers:**
 

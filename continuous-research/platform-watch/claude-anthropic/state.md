@@ -16,8 +16,14 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-07-25 (cycle 172)
-OODA cycles: 38
+Last updated: 2026-07-26 (cycle 173)
+OODA cycles: 39
+
+**Cycle 173 updates (July 26, 2026) — OPUS 5 DAY 2: three named practitioner endorsements (Lovable, Zapier, Ultima Genomics) + Every.to integration friction; no Opus 5 vs Sol comparison yet:**
+
+**Opus 5 Day 2 adoption — mixed signal (L2).** Positive voices from three distinct domains: Fabian Hedin (Lovable) reports "+22% on hardest agentic coding tasks, steadier, lower variance" — the variance reduction is a distinct capability claim beyond peak scores, particularly relevant for production agentic coding where run-to-run consistency matters. Zapier: "full churn-prevention sequence end to end" on AutomationBench. Ultima Genomics: "behaves like a careful scientist." Benchmark positions confirmed: Opus 5 leads Fable 5 on Frontier-Bench (43.3% vs 33.7%), GDPval-AA v2 (1,861 vs 1,747), and Artificial Analysis leaderboard — all at half the price ($5/$25 vs $10/$50). Simon Willison: 26% fewer tokens at equivalent quality vs Opus 4.8 at max reasoning. **Friction signal:** Every.to (Shipper/Parrott): "Brilliant in Flashes, Frustrating in Practice" — Day 1 integration issues with compound engineering skills and plugins: "argued with instructions, stopped before finished, generally didn't play well with existing plugins." This is notable because Every.to is a primary CTO reference case for compound engineering. Likely calibration friction not structural incapability — Day 7-10 resolution expected. No Opus 5 vs Sol comparison published at Day 2 (expected Day 7-14). ([decrypt.co/374305 Jul 24 2026](https://decrypt.co/374305/claude-opus-5-outscores-fable-5-most-benchmarks-half-price) — [domain trade publication]; [simonwillison.net/2026/Jul/24 Jul 24 2026](https://simonwillison.net/2026/Jul/24/introducing-claude-opus-5/) — [practitioner analysis]; [every.to/vibe-check/opus-5 Jul 24 2026](https://every.to/vibe-check/opus-5) — [practitioner analysis, paywalled])
+
+**Watch: Opus 5 Day 7-10 practitioner benchmarks (July 31+); Every.to friction resolution (Day 7-10 re-check); August 5 (Opus 4.1 API deprecation — 10 days); August 31 (Sonnet 5 intro pricing cliff); Cursor/SpaceX Q4 2026 regulatory close.**
 
 **Cycle 172 updates (July 25, 2026) — OPUS 5 GA JULY 24: $5/$25, 1M context, "Honeycomb" was internal codename only; loop engineering governance discourse Stage 3:**
 

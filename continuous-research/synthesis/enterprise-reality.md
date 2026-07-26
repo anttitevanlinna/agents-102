@@ -1,8 +1,32 @@
 ---
 type: synthesis
 domain: platform
-updated: 2026-03-28
-answers: ["enterprise readiness", "multi-system orchestration", "agent security", "RBAC", "agent memory"]
+updated: 2026-07-22
+answers: ["enterprise readiness", "multi-system orchestration", "agent security", "RBAC", "agent memory", "EU AI Act compliance", "Article 50 transparency"]
+---
+
+## CYCLE 170 ADDITION (July 22, 2026): EU AI Act August 2 — The Regulatory Reality Test
+
+A fifth enterprise reality dimension: **regulatory compliance**. August 2, 2026 — 11 days away — activates enforcement. What it means for enterprises deploying AI agents:
+
+**What activates August 2:**
+- **Article 50 transparency:** Any AI system interacting with natural persons must disclose AI identity at first interaction. EU AI Office draft guidelines explicitly confirm "AI agents fall within Article 50(1)." Chatbots, virtual assistants, business process agents used by employees — all in scope. Disclosure must appear "in the interaction itself" — not in terms of service or privacy policies.
+- **Synthetic content marking:** New AI systems generating text, image, audio, video must include machine-readable watermarks. Legacy systems get a grace period until December 2, 2026.
+- **GPAI enforcement powers:** EU Commission can fine GPAI model providers (OpenAI, Anthropic, Google) up to €15M or 3% global annual turnover for documentation violations.
+- **National surveillance authority enforcement:** Decentralized across 27 member states. Finland (Traficom) already active since January 2026 — the highest-enforcement-risk country for Nordic deployers.
+
+**What was delayed (Digital Omnibus, May 7, 2026):** Annex III high-risk obligations — employment decisions, credit scoring, biometrics, law enforcement — moved from August 2, 2026 to December 2, 2027.
+
+**Enterprise compliance reality:**
+- The Article 50 fix is technically trivial: add "You are speaking with an AI" to chatbot/agent interfaces.
+- The enterprise blocker is the inventory gap: 40% of enterprise AI deployments lack clarity on their EU AI Act risk classification (appliedAI study, N=106). You can't comply with what you haven't catalogued.
+- B2B/internal exemption is narrow: only applies where AI outputs are strictly technical, accessible only to a restricted internal professional group, with safeguards against wider dissemination. Most enterprise employee-facing AI is in scope.
+- Enterprise readiness gap confirmed as structural: (1) no AI system inventory, (2) no defined governance owner, (3) no documentation structure, (4) no AI literacy program. Only 37% of organizations have AI governance policies (Kiteworks vendor survey, June 2026 — directional only).
+
+**July 22 (today): EU AI Office Code of Practice signatory deadline.** Signed = strong presumption of compliance + fine mitigation. Not signed = must demonstrate equivalent rigor independently.
+
+**Sources:** [digitalapplied.com Aug 2026 guide](https://www.digitalapplied.com/blog/eu-ai-act-august-2026-transparency-obligations-agency-checklist) — [legal analysis]; [artificialintelligenceact.eu Art 50](https://artificialintelligenceact.eu/transparency-rules-article-50/) — [legal analysis]; [Sidley Data Matters Jun 24 2026](https://datamatters.sidley.com/2026/06/24/eu-ai-act-transparency-obligations-preparing-for-compliance-by-2-august-2026/) — [law firm analysis]; [axis-intelligence.com](https://axis-intelligence.com/eu-ai-act-news/) — [domain trade publication]; [Kiteworks Jun 23 2026](https://www.kiteworks.com/regulatory-compliance/eu-ai-act-deadline-compliance/) — [vendor survey, directional]
+
 ---
 
 # The Enterprise Integration Reality Test (March 2026)

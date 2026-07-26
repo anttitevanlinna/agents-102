@@ -3,7 +3,7 @@
 ## What a skill is
 
 - A **skill** is a named, scoped capability the agent can invoke. A markdown file with a frontmatter header and a set of instructions, living in `.claude/skills/<name>/SKILL.md` or an equivalent team-kit home. Claude Code discovers it by name and pulls the body in when the work calls for it.
-- One frontier skill already reached you as a plain prompt. The second-pass walk-down against your Module 2 plan file, where Claude asked you one question at a time about unresolved branches, was patterned on Matt Pocock's `grill-me` skill (Socratic requirement elicitation, MIT-licensed, on his GitHub). It arrived unpackaged because skills hadn't yet been introduced as a primitive. Today the packaging arrives: you invoke two curated skills and author one of your own.
+- One frontier skill already reached you as a plain prompt. The second-pass walk-down against your plan file, where Claude asked you one question at a time about unresolved branches, was patterned on Matt Pocock's `grill-me` skill (Socratic requirement elicitation, MIT-licensed, on his GitHub). It arrived unpackaged because skills hadn't yet been introduced as a primitive. Today the packaging arrives: you invoke two curated skills and author one of your own.
 - Skills are how agentic knowledge compounds across teammates. A Slack thread about "how to threat-model our webhook paths" dies in 48 hours. A STRIDE skill tuned to your stack lives as long as the repo.
 
 ## Borrowed judgement, or your own
@@ -14,7 +14,7 @@
 ## Your authored skill starts personal, then compounds
 
 - Your skills folder, starting today. The skill you author ships to your personal `~/.claude/skills/test-strategy/`, auto-discovered in every session you run. Personal-first is the pattern your kit already follows: your `./CLAUDE.local.md` rules file is personal and gitignored, and the first authored skill lands the same way. Promotion to a team home is a human conversation and then a PR, later.
-- A team kit is born from personal skills. Intercom's 267-skill plugin repo (153 contributors, 31% of R&D by Intercom's own count, as of April 2026) was born exactly that way: one engineer's personal skill, then a teammate's, then accretion.
+- A team kit is born from personal skills. Intercom's 267-skill plugin repo (153 contributors, 31% of R&D headcount are active contributors, by Intercom's own count, as of April 2026) was born exactly that way: one engineer's personal skill, then a teammate's, then accretion.
 
 ## Two curated, one authored
 
@@ -36,14 +36,16 @@
 - The authoring conversation will offer a generic test-pyramid default. Your codebase is not a pyramid. Push back until the skill reflects how your tests actually work.
 - Skills live in specific places. The curated ones were installed as personal skills at prework, so Claude Code auto-discovers them by name; you don't point at a path. The one you author lands in your personal kit at `~/.claude/skills/test-strategy/`. Don't invent new homes.
 
+Go.
+
 <!-- maintainer -->
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all slides kept bullets; bold reduced to two handles — the term **skill** at its slide-1 definition and the principle line **Don't make general what you don't practice yourself** on *Two curated, one authored*. All other leads de-bolded (Borrowed judgement, personal-then-compounds, trust artifacts, and arming slides now carry zero bold); "Go." kicker untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Slides-only pass (2026-07-02, unaudited):** covered regions DELETED (Path A — prose superseded by the slides; git carries it). Per-passage verdicts: opening "Two moves today" agenda CUT (slide titles carry the agenda; the Tuesday-afternoon claim FOLDED into *Two curated, one authored*) · "What's a skill, one breath" CONVERTED to slide 1 — §3 fix: "in Module 2" / "landed as a plain prompt in M2" de-sequenced to content phrasing ("the second-pass walk-down against your plan … arrived unpackaged"); Pocock credit preserved inline · three-voices prose CONVERTED to one slide, one bullet per voice — §3 fix: "M1 was `CLAUDE.local.md` … M3 is your first authored skill" de-sequenced to kit-pattern phrasing (rules file personal + gitignored; first authored skill lands the same way) · "Why this proportion matters" CONVERTED (the two flips became two bullets) · "What earn the trust means" CONVERTED; "end of 1h45" → "by the module's end" (runtime stays in maintainer Meta) · "What to watch for" CONVERTED to the arming slide; Ex1/Ex2/Ex3 labels dropped (bullets name the move — keeps the lecture re-placeable) · STALE FIX: "The one you author lands at the team-kit path your sponsor named" contradicted the personal-first contract (voice three + module maintainer watch-for); now names `~/.claude/skills/test-strategy/` · "Don't make general …" KEPT as slide-3 bullet · "Go." KEPT as closing kicker. §3 grep above the fence: clean.
 
-**Quality:** compendium-audited 2026-07-08 (writing@689e7e0 story@689e7e0 technical@689e7e0 behavior@689e7e0 pedagogy@689e7e0 strategy@689e7e0 slides@47f3357) — predates the slide rework; re-audit before ship.
-- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (override-r2-module-number-is-arc-earned-spine-vocab-per-carve-out-see-instances/ae101--skills-from-the-frontier.slides.json)
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@9697944 technical@9697944 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4) — predates the slide rework; re-audit before ship.
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Lecture meta:** *10–12 minutes. Lecture primes Exercises 1–3 of Module 3 (Earn the trust).*
 **Meta (trainer):**
@@ -59,8 +61,11 @@
 **Frameworks attributed:**
 - STRIDE — Kohnfelder & Garg (Microsoft, 1999) `[academic/research]`. Sharpened by Shostack (*Threat Modeling: Designing for Security*, 2014) `[academic/research]`.
 - Least-privilege principle — Saltzer & Schroeder (*The Protection of Information in Computer Systems*, 1975) `[academic/research]`.
-- Compound engineering / team kit accretion — Kieran Klaassen (Every Inc.) `[practitioner direct]` + Intercom's 267-skill plugin repo `[practitioner direct]` (Darragh Curran, *"2x – nine months later: We did it. You can too."*, [ideas.fin.ai/p/2x-nine-months-later](https://ideas.fin.ai/p/2x-nine-months-later), 2026-04-16; re-verified live 2026-05-22 — 153 contributors / 267 skills / 31% of R&D confirmed in source). Evolving deployment data — re-verify before each cohort and refresh date anchor in body.
+- Compound engineering / team kit accretion — Kieran Klaassen (Every Inc.) `[practitioner direct]` + Intercom's 267-skill plugin repo `[practitioner direct]` (Darragh Curran, *"2x – nine months later: We did it. You can too."*, [ideas.fin.ai/p/2x-nine-months-later](https://ideas.fin.ai/p/2x-nine-months-later), 2026-04-16 — full citation + freshness stamp in Source verification below). Evolving deployment data — re-verify before each cohort and refresh date anchor in body.
 - Test strategy as discipline — Kent Beck `[practitioner direct]` + Google Testing Blog's test-pyramid framing `[practitioner analysis]`. Named but not leaned on — the student's authored skill is theirs.
+
+**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
+- `[checked:2026-07-26 result:OK due:cohort]` https://ideas.fin.ai/p/2x-nine-months-later — [practitioner direct, vendor venue] Darragh Curran, "2x – nine months later: We did it. You can too." 153 contributors / 267 skills / 31% of R&D headcount confirmed live in source. Anchors the team-kit-accretion claim in "A team kit is born from personal skills." fallback: drop the numbers, say "a large practitioner-built plugin repo, born from personal skills."
 
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
 

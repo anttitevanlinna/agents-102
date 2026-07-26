@@ -6,17 +6,48 @@
   "trace_status": "full_regen",
   "prompts_evaluated": 2,
   "prompts_findings": [
-    {"prompt_index": 1, "prompt_lead": "I want to author a test-strategy skill for this codebase. Ask me the questions y", "verdict": "PASS", "load_bearing": true, "risks_fired": [
-      {"pattern_id": "question-dump", "confidence": "low", "evidence": "Strongest structural in-prompt enforcement: 'Ask ONLY question 1 first. Do not preview questions 2-N.'", "fix_hint": "No edit; structural enforcement strongest."},
-      {"pattern_id": "overwrite-anxiety", "confidence": "low", "evidence": "Show-before-save gate.", "fix_hint": "No edit."},
-      {"pattern_id": "default-acceptance", "confidence": "med", "evidence": "Body prose names pushback recovery on Claude's defaults.", "fix_hint": "No edit; mitigation present."}
-    ]},
-    {"prompt_index": 2, "prompt_lead": "Invoke the test-strategy skill we just wrote on the feature I'm shipping: the sa", "verdict": "PASS", "load_bearing": true, "risks_fired": [
-      {"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "Body callout immediately after the fenced prompt names the convenience bias ('biased by design, the same context window self-charity'), names the convenience tradeoff ('one paste, one wait, one read, convenient over rigorous'), offers two-prompt fresh-read split as paste-ready alternative, and closes with student agency ('Your call.'). Matches the carve-out shape in compounded/2026-05-03-pedagogy-convenience-prompt-bias-callout.md — accepted-with-mitigation. Sibling exercises spot-gaps Phase 2 and earn-the-trust carry the same callout shape; this exercise now aligned.", "fix_hint": "No edit; body callout closes the prior REVISE."},
-      {"pattern_id": "self-audit-charity", "confidence": "low", "evidence": "Same body callout addresses self-charity dynamic with the fresh-read recovery move. Carve-out applies.", "fix_hint": "No edit."},
-      {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Multi-part action shape; not load-bearing.", "fix_hint": "No edit at low confidence."}
-    ]}
+    {
+      "prompt_index": 1,
+      "prompt_lead": "I want to author a test-strategy skill for this codebase. Ask me the questions y",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {"pattern_id": "question-dump", "confidence": "low", "evidence": "In-fence: 'Use the AskUserQuestion tool to interview me: one question per tool call, wait for my answer, then the next.'", "fix_hint": "No edit — AskUserQuestion one-per-call phrasing is the strongest legal shape; nothing to add."},
+        {"pattern_id": "overwrite-anxiety", "confidence": "low", "evidence": "'Show me before saving' is a pre-confirm gate on a first-time creation (no prior SKILL.md exists at this path earlier in the module flow), not an ambiguous update-or-overwrite case.", "fix_hint": "No edit — add overwrite-vs-new language only if a re-run/re-author scenario is designed in later."},
+        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Carve-out (simulation-behavior.md 'default-acceptance ... body-callout mitigation'). In-fence 'Push back if my answer is generic' addresses Claude pushing back on the STUDENT; the body prose right after the fence ('Answer from how your codebase really tests') closes the complementary direction: 'Push back when Claude offers a default you don't like... The push-back is where the skill gets its codebase truth.'", "fix_hint": "No edit — body callout already names the failure mode and the push-back move."}
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Invoke the `test-strategy` skill on this codebase and repository, on the code as",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "Evidence-backed Debrief carve-out. Body prose right after the fence ('Sharpen the skill from what came back') names the bias by mechanism ('same-window self-charity'), names the convenience tradeoff ('One paste, one wait, one read, convenient over rigorous'), and offers a concrete two-prompt fresh-read recovery. Grounded in the concrete artifact just produced, not an ungrounded self-grade.", "fix_hint": "No edit — body callout already names the bias and offers the two-prompt fresh-read alternative."},
+        {"pattern_id": "self-audit-charity", "confidence": "low", "evidence": "Same body callout as self-report-inflation names the charity mechanism and gives the fresh-read recovery move.", "fix_hint": "No edit — same callout covers this; carve-out applies."},
+        {"pattern_id": "niceness-tax", "confidence": "low", "evidence": "Self-grading questions are diagnostic/comparative rather than open praise-inviting ('does it read generic?', 'would a teammate ... ask for more?'), which structurally discourages a softened answer; the adjacent self-charity callout further names the bias mechanism though not softened tone by name.", "fix_hint": "Optional: layer one line onto the existing callout naming the softening/bluntness risk directly, not just the self-charity mechanism."}
+      ]
+    }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 2,
+  "catalog_coverage": [
+    {"pattern_id": "question-dump", "status": "fired", "confidence": "low", "prompt_index": 1, "why": "AskUserQuestion one-per-call phrasing structurally suppresses the dump; recorded per carve-out discipline."},
+    {"pattern_id": "overwrite-anxiety", "status": "fired", "confidence": "low", "prompt_index": 1, "why": "Show-before-save gate on a first-time file creation."},
+    {"pattern_id": "default-acceptance", "status": "fired", "confidence": "low", "prompt_index": 1, "why": "Body-callout carve-out names Claude's-offered-defaults failure mode and the push-back recovery."},
+    {"pattern_id": "self-report-inflation", "status": "fired", "confidence": "low", "prompt_index": 2, "why": "Evidence-backed Debrief carve-out; body callout names the same-window self-charity bias and a concrete recovery."},
+    {"pattern_id": "self-audit-charity", "status": "fired", "confidence": "low", "prompt_index": 2, "why": "Same carve-out as self-report-inflation."},
+    {"pattern_id": "niceness-tax", "status": "fired", "confidence": "low", "prompt_index": 2, "why": "Residual softening risk on the self-grade; diagnostic question framing plus the self-charity callout keep it below med."},
+    {"pattern_id": "file-preservation-gap", "status": "not_fired", "why": "Prompt 1 first-creates a new file (no prior artifact to preserve/replace); prompt 2 writes no file."},
+    {"pattern_id": "reading-burden", "status": "not_fired", "why": "No prompt asks the student to manually proofread Claude's output for correctness; prompt 2's self-grade is Claude auditing Claude, not the student."},
+    {"pattern_id": "preamble-before-action", "status": "not_fired", "why": "Neither prompt carries 4+ named sub-steps or invokes plan mode; each is a bounded two-macro-step ask below the structural trigger."},
+    {"pattern_id": "append-vs-integrate", "status": "not_fired", "why": "Neither prompt asks to add a section to an existing file."},
+    {"pattern_id": "plan-mode-preamble-bloat", "status": "not_fired", "why": "Plan mode is not invoked by either prompt."},
+    {"pattern_id": "citation-gap-asymmetry", "status": "not_fired", "why": "Neither prompt requests citation-bearing claims."},
+    {"pattern_id": "plan-mode-approval-inflation", "status": "not_fired", "why": "Plan mode is not invoked by either prompt."},
+    {"pattern_id": "source-type-blindness", "status": "not_fired", "why": "Both prompts read the student's own codebase directly; no heterogeneous external-source ingestion."},
+    {"pattern_id": "citation-cargo-cult", "status": "not_fired", "why": "Neither prompt requests citations."}
+  ],
+  "note": "Cache was STALE on both prompts, not a clean cache hit: the file's two prompts now live in the registry (curriculum/prompts/author-test-strategy-skill-{1,2}.md) post-migration, and prompt 2's text changed substantively since the 2026-05-14 trace (old lead 'Invoke the test-strategy skill we just wrote on the feature I'm shipping: the sa...' vs current 'Invoke the `test-strategy` skill on this codebase and repository, on the code as...' — the STRIDE-ADR/feature-being-shipped framing was replaced with a direct on-this-codebase invocation). Computed SHA-256 of both fenced prompts against the scripts/expand-md.js EXPANDED view; both mismatched their cached prompt_sha, so trace_status is full_regen (all entries regenerated, none reused). The prior instance at this same path (dated pre-this-run) also carried the stale prompt-2 lead and a verdict inconsistency (per-prompt PASS despite low-confidence risks recorded, which the template's own verdict rule reads as TODO regardless of load_bearing) — both are corrected here. check_prompts.md and check_pedagogy.md were read per compendium_paths for adjacent-rule context (carve-out shapes, catalog cross-references); per their own eval_classes frontmatter neither lists 'behavior' as a primary-owning class (check_prompts.md: writing/storytelling/technical; check_pedagogy.md: pedagogy/storytelling/technical), so this class's owned completeness ledger is the 15-pattern catalog in simulation-behavior.md (catalog_coverage above, all 15 patterns accounted for: 6 fired at low confidence, 9 not_fired with reasons), not a raw compendium-rule-by-rule ledger — consistent with curriculum/evals/eval-coverage.ae101.md's open 'Needs a design decision' note on behavior's completeness contract and with the precedent set at ae101--reading-the-return.behavior.json / ae101--where-the-rule-could-live.behavior.json. Both prompts are load_bearing: true (Phase 1 authoring conversation and Phase 2 invoke-and-self-grade are both teaching-moment / hand-off beats, not housekeeping). Applying the verdict rules literally: no risk fires at high confidence and no prompt carries 2+ med-confidence risks, so blocking_findings_count is 0 and top-level verdict is PASS; every fired risk is confidence:low, which the rule reads as TODO regardless of load_bearing, so both prompts are TODO (todos_count: 2) rather than PASS — these are carve-out-accepted risks recorded for traceability, not defects requiring a prompt edit; the one genuinely open item is the optional niceness-tax fix_hint on prompt 2 (naming the softening/bluntness risk directly, not just the self-charity mechanism).",
+  "summary": "PASS with 2 non-blocking TODOs, both carve-out-accepted. Prompt 1 (author via AskUserQuestion interview) fires question-dump/overwrite-anxiety/default-acceptance, all at low confidence and all mitigated by in-fence structure or the adjacent body callout naming the push-back move. Prompt 2 (invoke + same-turn self-grade) fires self-report-inflation/self-audit-charity/niceness-tax, all at low confidence; the body callout in 'Sharpen the skill from what came back' explicitly names the same-window self-charity bias and offers a two-prompt fresh-read escalation, satisfying the evidence-backed Debrief carve-out. No high-confidence or 2+-med-confidence risks on either prompt, so blocking_findings_count is 0. Full regeneration was required: both prompts' SHA-256 mismatched the 2026-05-14 cache (prompt 2's text changed substantively post-registry-migration), so nothing was reused from cache."
 }

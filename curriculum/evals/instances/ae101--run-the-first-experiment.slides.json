@@ -4,16 +4,16 @@
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    { "index": 0, "heading": "H1 — Run the first experiment", "lines": "1-1" },
-    { "index": 1, "heading": "Big Idea", "lines": "3-4" },
-    { "index": 2, "heading": "Prework", "lines": "6-12" },
+    { "index": 0, "heading": "H1 — Run the first experiment", "lines": "1-2" },
+    { "index": 1, "heading": "Big Idea", "lines": "3-5" },
+    { "index": 2, "heading": "Prework", "lines": "6-13" },
     { "index": 3, "heading": "What You'll Learn", "lines": "14-20" },
-    { "index": 4, "heading": "Start here", "lines": "22-44" },
-    { "index": 5, "heading": "Key Concepts", "lines": "46-51" },
-    { "index": 6, "heading": "Send the task off", "lines": "53-120" },
-    { "index": 7, "heading": "Next", "lines": "122-124" },
-    { "index": 8, "heading": "Bring to Module 5", "lines": "126-130" },
-    { "index": 9, "heading": "Pre-reads before Module 5", "lines": "132-142" }
+    { "index": 4, "heading": "Start here", "lines": "21-40" },
+    { "index": 5, "heading": "Key Concepts", "lines": "41-46" },
+    { "index": 6, "heading": "Send the task off", "lines": "47-119" },
+    { "index": 7, "heading": "Next", "lines": "120-123" },
+    { "index": 8, "heading": "Bring to Module 5", "lines": "124-129" },
+    { "index": 9, "heading": "Pre-reads before Module 5", "lines": "130-141" }
   ],
   "rules_evaluated": [
     {
@@ -23,7 +23,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "Prior instance of this eval flagged \"No Debrief.\" at chunk 6 line 55 (unresolved referent, no `## Debrief` heading rendered in AE101). Current text reads \"No compound pass at the close.\" instead — the term is glossed in-paragraph (\"Compound on evidence, not anticipation\") and is arc-earned vocabulary per the maintainer block (\"Compound engineering... now in its fourth rep for the student\"). The prior blocking finding no longer applies; re-verify if \"compound\" is ever swapped again.",
+      "fix_hint": "Chunk 6 line 53 (\"No compound pass at the close... Compound on evidence, not anticipation.\") reuses 'compound' — arc-earned per the maintainer block's fourth-rep note and self-glossed in the same sentence, so it clears rule 1. Chunk 6 lines 55/67 (\"the two markers\", \"this commit\") and chunk 9 line 132 (\"All four\") forward-point within their OWN single large chunk, not across a chunk boundary — resolved a few lines later on the same slide, not a violation.",
       "blocking": true
     },
     {
@@ -33,7 +33,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Chunk 6 line 87 (\"the same three questions from Module 3's close\") names a position but unpacks the claim in the same sentence (\"does the agent hold private data, does untrusted content reach its context window, is there a channel out?\") per the compendium's own passing pattern. Lecture/supplementary links throughout (the-far-half, reading-the-return, the-lethal-trifecta, etc.) name by title and gloss the claim inline.",
       "blocking": true
     },
     {
@@ -43,7 +43,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Chunk 4 line 23 (\"a bug fix, a plan read\") resolves against fix-tests-first (M2) and plan-mode-done-right (M3), both live modules per the instances registry. Chunk 6 line 87's \"Module 3's close\" three-question check matches the file's own maintainer note (\"second firing of the M3 pre-leash beat\") confirming the beat exists upstream.",
       "blocking": true
     },
     {
@@ -53,7 +53,7 @@
       "verdict": "N/A",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "No guess-before-reveal live-demo construction in the body; grep for guess/predict finds only 'mercury-like unpredictability' (chunk 9, an unrelated description of Uncle Bob's experience).",
       "blocking": true
     },
     {
@@ -83,7 +83,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Checked all six sub-items across the body: no 'Not X. Not Y. Z.' construction; the chunk-6 trifecta triple (private data / untrusted content / channel out) is three distinct substantive legs, not anaphoric repetition, so it clears the epistrophe-triple sub-item; no self-grading superlatives; no number-stated-then-retracted pairing; 'sustained coherence / requirement-weaving / multi-file reasoning' (chunks 3-4) read as defined technical criteria, not abstraction-noun padding; no verb triplets with an empty leg.",
       "blocking": false
     },
     {
@@ -93,10 +93,40 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Only hit on a dialect-adjacent grep is chunk 6 line 53 'will surface on the return at Module 5' — ordinary engineering-verb use of 'surface', explicitly carved out as NOT dialect. No 'firing', 'compendium', 'forcing function', 'beat', 'mood', or proper-noun 'Connections' in the body.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "REVISE",
+      "chunks_flagged": [2, 9],
+      "evidence": "chunk 2 \"Prework\": line 10: \"**A real slice you'd send off rather than nudge bit by bit, with a 'done' you can name in a sentence. Bigger than a typo-fix, smaller than an epic.**\" — bolds two full sentences (~28 words), not a handle sub-span. chunk 9 \"Pre-reads before Module 5\": line 134: \"**Read, [Clean Code Is Steering: Insights from Uncle Bob](...)** \" and line 136: \"**Watch, Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](...)** \" — each bolds the genre-word plus the entire linked title (9+ words), the named violation shape (\"every bullet on a slide opens with a bolded sentence\"); line 140 does the same. Line 138 (\"**Read, [Verification asymmetry](...).**\", 3 words) stays inside budget and is not flagged.",
+      "fix_hint": "Shrink chunk 2's bold to a short handle (e.g. bold only \"a real slice\" or drop the bold and let the quote stand as plain lead prose); in chunk 9 bold only the bracketed title text (or nothing) and leave the genre-word ('Read,'/'Watch,') and citation unbolded across all four pre-read entries.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": "Verified against site/layouts/slides.js buildDeckModel: this file is a module page, so the composed-deck branch (phases.length > 0) walks the module's `section.module` children in document order via flushProse(), slide-ifying every non-phase prose block (Prework, What You'll Learn, Key Concepts, Next, Bring to Module 5, Pre-reads before Module 5) between the inlined lecture/exercise phases — none of this file's own sections are phase-less orphans dropped from the default view. (Its external supplementary/reference links are those other files' own presence concern, out of this file's scope.)",
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": "No hand-numbered '## Phase N:' / '## N.' headers in the body (all headings are plain section names); `node scripts/check-slide-numbering.js` reports 'OK — 58 files, Phase/Step numbering consistent' across the corpus including this file. The maintainer trailer's 'Phase 1 pick 10 / Phase 2 walk-and-fill 40 / Phase 3 settle 5' sits past the `<!-- maintainer -->` cut, out of body scope.",
       "blocking": true
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 1
 }

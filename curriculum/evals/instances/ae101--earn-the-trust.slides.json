@@ -1,19 +1,19 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/earn-the-trust.md",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    { "index": 0, "heading": "H1/lede — Earn the trust", "lines": "1-3" },
-    { "index": 1, "heading": "Big Idea", "lines": "5-6" },
-    { "index": 2, "heading": "Prework", "lines": "8-16" },
-    { "index": 3, "heading": "What You'll Learn", "lines": "18-27" },
-    { "index": 4, "heading": "Start here", "lines": "29-41" },
-    { "index": 5, "heading": "Key Concepts", "lines": "43-50" },
-    { "index": 6, "heading": "Sharpen the skill from evidence", "lines": "52-74" },
-    { "index": 7, "heading": "Clear the session", "lines": "76-94" },
-    { "index": 8, "heading": "Next", "lines": "96-108" },
-    { "index": 9, "heading": "Bring to Module 4", "lines": "110-114" }
+    { "index": 0, "heading": "H1/lede — Earn the trust", "lines": "1-4" },
+    { "index": 1, "heading": "Big Idea", "lines": "5-7" },
+    { "index": 2, "heading": "Prework", "lines": "8-17" },
+    { "index": 3, "heading": "What You'll Learn", "lines": "18-28" },
+    { "index": 4, "heading": "Start here", "lines": "29-42" },
+    { "index": 5, "heading": "Key Concepts", "lines": "43-51" },
+    { "index": 6, "heading": "Sharpen the skill from evidence", "lines": "52-75" },
+    { "index": 7, "heading": "Clear the session", "lines": "76-95" },
+    { "index": 8, "heading": "Next", "lines": "96-109" },
+    { "index": 9, "heading": "Bring to Module 4", "lines": "110-115" }
   ],
   "rules_evaluated": [
     {
@@ -90,13 +90,43 @@
       "compendium": "check_slides.md",
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
-      "verdict": "REVISE",
-      "chunks_flagged": [7],
-      "evidence": "chunk 7 \"Clear the session\": line 80: \"**Prompt** *(Claude Code)* ⟦CUT:low-yield⟧\" — a bracketed authoring/editorial tag sitting in the rendered body, above the maintainer cut (line 116).",
-      "fix_hint": "Drop the ⟦CUT:low-yield⟧ tag from the slide line; if it needs to persist as an authoring note, move it below the maintainer cut.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": "Re-audit confirms the prior REVISE (⟦CUT:low-yield⟧ tag at old line 80) no longer applies — the maintainer block records the {{cut:}} marker was reversed to a live {{prompt:}} and the tag is absent from the current body; matches the file's own override note.",
       "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "REVISE",
+      "chunks_flagged": [8, 9],
+      "evidence": "chunk 8 \"Next\": lines 102-104: \"**Does the agent hold private data?**\" / \"**Does untrusted content reach its context window?**\" / \"**Is there a channel out?**\" — each bullet bolds the full question (6-7 words), not a short handle: the exact every-bullet-opens-bolded pattern the rule names as the pre-2026-07-09 violation shape. chunk 9 \"Bring to Module 4\": line 112: \"**One scoped task you'd send off rather than nudge bit by bit: a real slice with a 'done' you can name in a sentence. Bigger than a typo-fix, smaller than an epic.**\" — two full sentences bolded as the entire lead, not a ≲5-word sub-span.",
+      "fix_hint": "Flatten the trifecta bullets and the M4 hand-off lead to plain prose, or bold only a short handle (e.g. \"private data\", \"untrusted content\", \"channel out\", \"one scoped task\").",
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
     }
   ],
-  "blocking_findings_count": 1,
-  "todos_count": 0
+  "blocking_findings_count": 0,
+  "todos_count": 1
 }

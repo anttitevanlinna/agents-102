@@ -3,29 +3,67 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/open-the-side-quest.md",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "generated_first_time",
+  "trace_status": "cached",
   "prompts_evaluated": 2,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_lead": "Fork a sibling worktree. Default path `../<repo-name>-m3-quality`, default bra",
-      "verdict": "PASS",
+      "prompt_lead": "Fork a sibling worktree. Default path `../<repo-name>-m3-quality`, default branc",
+      "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Multi-step shell sequence with defaults invites Claude to narrate a plan; body 'Paste the prompt as-is' and the imperative lead-in mitigate.", "fix_hint": "No edit required; if preamble inflates in cohort, add a one-clause closer like 'Run, then report.' inside the fence."},
-        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Body paragraph 'Clean main is the safe default; pick another branch if you have a reason. Switch now if you need to.' surfaces the base-branch choice before paste, neutralising in-prompt defaults.", "fix_hint": "Carve-out applies via body callout; no in-prompt edit needed."}
+        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Fence carries two shell actions (git worktree add, cp) plus a report-back ask ('Tell me the absolute path to the new worktree directory and which files copied across.') with no in-fence 'No preamble' suppressor; a short narration line before the tool calls is plausible but not forced — only 2 named sub-steps, below check_prompts.md §17's 4+-sub-step structural trigger.", "fix_hint": "Optional in-fence 'No preamble.' opener; not warranted at current confidence given the prompt is short and concrete."},
+        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Body callout two paragraphs above the fence names the choice explicitly and gives the student an action before paste: 'Decide where to base the side worktree... Clean main is the safe default. If you want another base, switch to it before you fork.' Satisfies the body-callout mitigation carve-out (check_prompts.md default-acceptance catalog note, judge template's body-callout carve-out section).", "fix_hint": "No edit needed — carve-out already satisfied by the pre-fence body paragraph."}
       ]
     },
     {
       "prompt_index": 2,
       "prompt_lead": "Confirm worktree state:",
-      "verdict": "PASS",
+      "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Closer 'Report the four lines back. Then wait.' anchors action and idle; preamble unlikely to inflate.", "fix_hint": "No edit required."}
+        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Four bulleted check-items (directory, branch, CLAUDE.md/CLAUDE.local.md load state, git ls-files visibility) with no in-fence 'No preamble' suppressor and no post-fence body primer naming preamble + a skim-past cue; the closing 'Report the four lines back. Then wait.' is a strong directive anchor that keeps the risk low rather than forcing it, despite check_prompts.md §17's 4+-sub-step structural trigger technically being met by the bullet count.", "fix_hint": "Optional in-fence 'No preamble.' would fully suppress; not required given the directive close already does most of the work, but is the cleanest path to clearing this TODO if it fires in cohort."}
       ]
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 2,
+  "rules_evaluated": {
+    "note": "Completeness ledger scoped to the 15-pattern behavioral catalog (simulation-behavior.md) — the operative rubric this judge class grades against per curriculum/evals/judges/prompt-behavior.md. check_prompts.md and check_pedagogy.md are consulted as 'adjacent rules' context (carve-out sourcing, §17 preamble-trigger arithmetic, fresh-install-context carve-out) rather than enumerated rule-by-rule, per the template's own compendium framing ('COMPENDIUMS (read on demand for adjacent rules)').",
+    "prompt_1": [
+      {"pattern_id": "file-preservation-gap", "status": "not-fired", "reason": "cp ./CLAUDE.local.md writes into a brand-new worktree directory just created by git worktree add — fresh-install-context carve-out (compounded/2026-05-24-prompts-overwrite-anxiety-fresh-install-carveout.md) applies; nothing pre-existing to preserve-vs-replace."},
+      {"pattern_id": "reading-burden", "status": "not-applicable", "reason": "no manual proofreading of Claude's output asked; report-back is a factual confirmation (path + file list), not error-catching."},
+      {"pattern_id": "niceness-tax", "status": "not-applicable", "reason": "no evaluative/self-critique content for RLHF softening to mask."},
+      {"pattern_id": "question-dump", "status": "not-applicable", "reason": "no sequence of questions posed to the student."},
+      {"pattern_id": "overwrite-anxiety", "status": "not-fired", "reason": "fresh worktree = fresh target directory; fresh-install-context carve-out applies, no body marker implies a prior-install collision scenario."},
+      {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "low"},
+      {"pattern_id": "append-vs-integrate", "status": "not-applicable", "reason": "no existing document/section is being added to."},
+      {"pattern_id": "plan-mode-preamble-bloat", "status": "not-applicable", "reason": "no permission-mode: plan frontmatter, no plan-mode language."},
+      {"pattern_id": "citation-gap-asymmetry", "status": "not-applicable", "reason": "no factual/citation claims requested."},
+      {"pattern_id": "self-report-inflation", "status": "not-fired", "reason": "'Tell me the absolute path... and which files copied across' asks for objectively checkable facts, not a self-graded quality summary."},
+      {"pattern_id": "default-acceptance", "status": "fired", "confidence": "low"},
+      {"pattern_id": "plan-mode-approval-inflation", "status": "not-applicable", "reason": "no plan-mode plan produced."},
+      {"pattern_id": "source-type-blindness", "status": "not-applicable", "reason": "no source ingestion/classification task."},
+      {"pattern_id": "citation-cargo-cult", "status": "not-applicable", "reason": "no citations requested."},
+      {"pattern_id": "self-audit-charity", "status": "not-applicable", "reason": "no self-critique of own work requested."}
+    ],
+    "prompt_2": [
+      {"pattern_id": "file-preservation-gap", "status": "not-applicable", "reason": "no file write in this prompt — pure read/report of environment state."},
+      {"pattern_id": "reading-burden", "status": "not-applicable", "reason": "student reads the four-line report for orientation/hand-off, not to manually catch Claude's errors."},
+      {"pattern_id": "niceness-tax", "status": "not-applicable", "reason": "purely factual checklist (cwd, branch, file-load status, ls-files); no evaluative content to soften."},
+      {"pattern_id": "question-dump", "status": "not-applicable", "reason": "the four bullets are items Claude checks about its own environment and reports back, not a sequence of questions posed to the student."},
+      {"pattern_id": "overwrite-anxiety", "status": "not-applicable", "reason": "no file write."},
+      {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "low"},
+      {"pattern_id": "append-vs-integrate", "status": "not-applicable", "reason": "no document editing."},
+      {"pattern_id": "plan-mode-preamble-bloat", "status": "not-applicable", "reason": "no plan mode invoked."},
+      {"pattern_id": "citation-gap-asymmetry", "status": "not-applicable", "reason": "no citations."},
+      {"pattern_id": "self-report-inflation", "status": "not-fired", "reason": "all four report items are objectively checkable (directory, branch, file-load state, git ls-files), not a self-graded claim of work quality."},
+      {"pattern_id": "default-acceptance", "status": "not-applicable", "reason": "no defaults offered in this prompt."},
+      {"pattern_id": "plan-mode-approval-inflation", "status": "not-applicable", "reason": "no plan-mode plan produced."},
+      {"pattern_id": "source-type-blindness", "status": "not-applicable", "reason": "no source ingestion."},
+      {"pattern_id": "citation-cargo-cult", "status": "not-applicable", "reason": "no citations."},
+      {"pattern_id": "self-audit-charity", "status": "not-applicable", "reason": "no self-critique asked."}
+    ]
+  },
+  "summary": "PASS at top level. content_sha (0e333d9f8dab91ea1776b566a37bb8d493af2a1c7d145192eb5e42477cf80c01) and both per-prompt SHAs match curriculum/evals/sim-cache/ae101--open-the-side-quest.behavior.json exactly — full cache hit, no regeneration. Both prompts (fork the sibling worktree; confirm worktree state) fire only low-confidence preamble-before-action, and prompt 1 additionally fires a body-callout-mitigated low-confidence default-acceptance. No high or med-confidence risk fires on either prompt, so blocking_findings_count is 0. Per the verdict rules ('TODO if... confidence: low regardless'), low-confidence findings still route each prompt to a per-prompt TODO (2 total) — the expected non-blocking outcome for a body-callout-carved risk, not a defect needing action before ship. Reconciles a prior uncommitted local draft at this path (already corrected from an earlier PASS/PASS misread to TODO/TODO) with the rules_evaluated ledger shape used by sibling behavior instances (e.g. ae101--compound-and-close.behavior.json)."
 }

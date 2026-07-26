@@ -133,5 +133,5 @@
 
 - Family B judged 2026-07-03: B-star durability PASS — container reads whole voice-absent; spine-anchoring exemplary (every far-half phase names its map slot + governor-verb) and worldview-fit textbook recognition-before-naming ("you feel where it bites first"; laws named M5/M6).
 
-**Quality:** compendium-audited 2026-07-08 (slides@47f3357)
-- judges @47f3357: writing grandfathered, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered, slides PASS
+**Quality:** compendium-audited 2026-07-12 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
+- judges @b3143a4: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

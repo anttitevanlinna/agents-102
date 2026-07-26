@@ -5,7 +5,7 @@ Two runs of the same task (un-packaged Module 4, packaged Module 5) are enough e
 
 ## Prework
 
-Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (Aug 2025).
+Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (Aug 2025), and [Checks that push back](trainings/agentic-engineering-101/supplementary/backpressure.md), on why checks that push back inside a loop let a run reach farther than you can watch.
 
 Optional lookup pages: [session transcripts in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for the two-run compare, and [long-running shapes](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#9-long-running-shapes--loop-scheduled-tasks-routines-goal) for when you turn a one-off into a pattern you run on a schedule, in a loop, or until a condition holds.
 
@@ -21,6 +21,8 @@ After this module, you will be able to:
 - **Generalize** the encode-move into a handoff prompt that builds your workflow skills across your stack
 
 ## Start here
+
+Open a fresh Claude Code session in the Module 5 worktree, `../<repo>-m5`. Both runs already live there.
 
 You walk in holding two runs of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-run. The contrast across two runs is the material. One run gave you a failure mode to name. Two runs give you gaps the three-pattern itself didn't anticipate, and a shape for what to do about each one.
 
@@ -38,6 +40,7 @@ You walk in holding two runs of the same task. The un-packaged Module 4 send-off
 
 ## Key Concepts
 - The three-pattern catches what it was shaped to catch. The gaps that surface after two runs are data the pattern didn't anticipate, not proof the pattern failed
+- Claude over-credits its own packaging by default. A fair push-back names one thing the verifier missed, concretely. The runs rule; the summary of them doesn't
 - Gaps sort into three homes: memory (rules that would have prevented the mistake upstream), sharper verifier (a check that would have fired mid-run), or new skill (a move packaged for future tasks)
 - An eval is the automated check that says *this agent-produced thing meets our bar*. Verifier when deterministic, judge when LLM-based, gate when placed in CI. All three are evals
 - The second authored skill IS the loop. It packages the diagnosis into a move the next run inherits.
@@ -82,9 +85,9 @@ Antti
 
 **M6 opener rescue + accept-loss callouts — deliberate exception to `check_student_facing.md` rule 5 (golden path only in body).** Two consecutive blockquotes in `## Start here` carry the rescue paths (nudge / re-send fresh / skip the opener) and the accept-the-loss floor ("you can still do the module's exercises"). Rule 5 normally bans recovery branches in body; here the structural risk (M5 run crashed during lunch in 2-day delivery) is named with scoped rescue, then a softer floor for the case where rescue fails entirely. The blockquote shape isolates both from the golden-path narrative for prepared students. Future judges should not re-flag.
 
-**Quality:** compendium-audited 2026-07-08 (writing@0ef2ca6 story@1ff6f8a technical@0ef2ca6 behavior@1ff6f8a pedagogy@0ef2ca6 strategy@d06b5b8 slides@47f3357) — predates the 2026-07-02 close rework (the-map-filled-in added to the Human close, going-deeper pointers added to `## Next`) and the 2026-07-03 room re-sequence (agents-that-build-agents moved to the training's last beat); re-audit before ship.
-- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (override-r8-surface-verb-not-dialect-see-instances/ae101--spot-gaps-build-the-loop.slides.json)
-- cross_module @0ef2ca6: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop,plan-mode-done-right]
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@9697944 behavior@b3143a4 pedagogy@b3143a4 strategy@9697944 slides@b3143a4) — predates the 2026-07-02 close rework (the-map-filled-in added to the Human close, going-deeper pointers added to `## Next`) and the 2026-07-03 room re-sequence (agents-that-build-agents moved to the training's last beat); re-audit before ship.
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module: PASS see instances/ae101--prework-m6.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Leap test** (per `check_pedagogy.md` rule 45; M6 is an arc-mood exercise so the test names artefact + use, not activity):
@@ -113,14 +116,14 @@ Antti
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
-- **Session runtime:** 1h45 nominal (Story opener 5 / Exercise 45 / Debrief 12 / Human close / Bridge 3). The Human close runs four beats — the story beats, *the-loop-has-a-name* 12–15 (per its maintainer Time line), *the-map-filled-in* 8–10 (per its maintainer Time line), and *agents-that-build-agents* now as the training's closing beat — 20+ min against the 15 the nominal budget gave the old single closer slot, so the close overshoots 1h45. Cutting the arc-retrospective exercise (2026-07-05) frees ~20 min back against that overshoot. Trainer demos slowly, room copy-pastes concurrently.
+- **Session runtime:** 1h45 nominal (Story opener 5 / Exercise 45 / Debrief 12 / Human close / Bridge 3). The Human close runs four beats — the story beats, *the-loop-has-a-name* 12–15 (per its maintainer Time line), *the-map-filled-in* 8–10 (per its maintainer Time line), and *agents-that-build-agents* 5–7 (per its maintainer Lecture meta line) now as the training's closing beat — the three timed lectures sum to ~25–32 min against the 15 the nominal budget gave the old single closer slot, so the close overshoots 1h45. Cutting the arc-retrospective exercise (2026-07-05) frees ~20 min back against that overshoot. Trainer demos slowly, room copy-pastes concurrently.
 - **Prep / bridge timing:** optional Klaassen verifier article 10 min; human close / team-kit accretion slot 10–15 min.
 - **Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know how to encode."* Not confidence-as-performance; competence-as-posture. Failure shapes that steal the mood: compliance-feel (*"build the eval, pass the gate"*), paperwork-feel, credibility-performance (*"we live what we teach"*), trainer-monologue retrospective. If any beat reads like one of those, revise.
 - **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries / §Material distribution (no training-dir state, no `module-N/` folders). Not restated here. Module-specific: M6 opens a fresh session in the M5 worktree at `../<repo>-m5` where both runs already live, then reads + authors + ships in-place. The second skill ships to personal `~/.claude/skills/`; team-PR is a strong follow-up, mediated by human conversation with teammates — not auto-promoted.
 - **Pre-read placement:** none. M6 opens with the Story lecture in-room.
 
 **Push-back moves** (trainer delivers):
-- **Connections blocker** — student walks in without one of the two artefacts accessible (laptop closed between M5 and M6, scrollback gone, repo state unclear on the packaged run). Trainer push: *"both artefacts are whatever's there. Commits between M4 and M5 send-offs, files modified during each run, scrollback at `~/.claude/projects/<project>/` if the sessions closed. Open a fresh Claude Code session in the repo and ask it to surface what each run touched."*
+- **Connections blocker** — student walks in without one of the two artefacts accessible (laptop closed between M5 and M6, scrollback gone, repo state unclear on the packaged run). Trainer push: *"both artefacts are whatever's there. Commits between M4 and M5 send-offs, files modified during each run, scrollback at `~/.claude/projects/<project>/` if the sessions closed — if M4 and M5 share a cwd, recency alone can grab the wrong attempt; filter by a phrase unique to that send-off's opening prompt instead. Open a fresh Claude Code session in the repo and ask it to surface what each run touched."*
 - **Phase 1 over-diagnosis** — student lists a long catalogue of gaps across both runs. Trainer push: *"two runs, maybe three gaps each. Pick the three that cost the most. The second skill you author at Phase 2 fits one shape."*
 - **Phase 2 skill-shape mismatch** — student picks a sharpened-verifier shape when the dominant gap was a drift the verifier wouldn't have seen, or a judge shape when the gap is deterministic. Trainer surfaces the menu: *"qualitative gap wants a judge. Deterministic gap wants a sharpened verifier. Recurring-drift gap wants a gap-finder skill. Which is yours?"*
 - **Phase 2 author-in-editor-not-conversation** — student tries to open a markdown file and type the skill directly. Trainer push: *"The first skill in this training was authored in conversation. Same move here. Claude drafts from the diagnosis, you push back, Claude ships."*
@@ -146,7 +149,7 @@ Antti
 
 **Frameworks riffed on (attributed in closer):**
 - **Ronacher's three-pattern** — Armin Ronacher `[practitioner direct]`. Re-named in the closing lecture as a scaffold the student is now ready to sharpen, not a fixed recipe.
-- **Cherny's three verifier shapes** — Boris Cherny `[practitioner direct]`. The second-skill authoring picks a shape from this menu.
+- **Cherny's three verifier shapes** — Kim on Cherny `[practitioner analysis]`. The second-skill authoring picks a shape from this menu.
 - **Ramp Dojo** — 350-skill marketplace `[practitioner direct, Geoff Charles CPO, 2026-04-09]`, as the team kit's destination shape. Confirmed against ramp.md 2026-05-25 (public X primary paywalled). Closing lecture attribution.
 - **Intercom Tier 1/2/3** — Darragh Curran, [2x Nine Months Later](https://ideas.fin.ai/p/2x-nine-months-later) `[practitioner direct, vendor venue, 2026-04-16]`. 19.2% auto-approved / 14.6 min vs 75.8 min org median / 86% ≤20 lines / ~500-person R&D — four numbers confirmed verbatim 2026-05-25. Closing lecture org-scale anchor.
 - **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) `[practitioner direct, vendor venue, 2026-02-09]`. Live + accurate 2026-05-25. The review + compound step made explicit across two runs. Exercise Phase 2 authoring + closing lecture's team-kit-accretion line.

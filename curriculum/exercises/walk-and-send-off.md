@@ -12,7 +12,7 @@ Start a new Claude Code session at your repo root.
 
 Start clean. M4 picks up a bigger task than M1–M3. Before the new session, check your working tree and branch. You ride that state into the closing `m4/<slug>` commit and M5's fork.
 
-**What you do:** Pick a task you've been avoiding, the kind you'd send off rather than nudge bit by bit. Walk what you've built across four modules against it. Fill the worst gaps and settle your `observations/` tree on disk. At the close, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
+**What you do:** Pick a task you've been avoiding, the kind you'd send off rather than nudge bit by bit. Walk what you've built across four modules against it. Fill the worst gaps and settle your `observations/` tree on disk. At the close, send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
 
 **What you build:** two things a long run can ride: a scoped task with a 'done' you can name in a sentence, and the worst gaps filled in `observations/` and your rules file, with the `observations/` tree settled on disk. Then it goes off un-packaged.
 
@@ -38,6 +38,7 @@ Ask Claude to screen the candidates you bring against the three long-run criteri
 ## Phase 2: Build the ranked list of what will hurt the agent
 
 - The audit walks your whole system so you don't. The agent reads `CLAUDE.md`, `CLAUDE.local.md`, memory, ADRs, and any skills you've authored as a subagent, then ranks the five thin spots that will hurt the agent most on this task.
+- Heavy run expected. Skim past the opening summary; the ranked thin-spots list is the payoff. If the ranked list comes back thin, push Claude to keep digging rather than letting a shallow pass stand as done.
 
 Ask Claude to run the audit as a subagent and return a ranked top-five.
 
@@ -45,7 +46,6 @@ Ask Claude to run the audit as a subagent and return a ranked top-five.
 
 ## Read the ranked thin-spots
 
-- Heavy run expected. Skim past the opening summary; the ranked thin-spots list is the payoff.
 - Name which ones you already knew, which surprised you. This move is *gap analysis*: walk the system you have against the system the task needs. You'll use it for every agent hand-off.
 
 ## Fill the worst two or three gaps
@@ -85,11 +85,9 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 
 Phase 3 is where the exercise ends. Module 4's send-off takes over:
 
-1. You nudge the compound step: Claude reads the session, rewrites your personal `CLAUDE.local.md` from evidence, integrates, sharpens, removes, and reports 3–5 lines. Team-worthy rules get flagged in the summary, not auto-PRed.
-2. You push back on the 3–5 line summary.
-3. You set the two return markers: ask Claude where this session's transcript lives, then ask it to commit the current state on a feature branch and report the short SHA. Push the branch if you want the run to outlast your laptop. Module 5 forks from that commit and reads the transcript.
-4. You run the trifecta check: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening that prompt injection needs. All three present here, cut one leg before you send.
-5. You paste the send-off prompt to the same session. Keep the laptop awake and plugged in. Don't close the lid; sleep freezes the session and it won't resume on wake. If you want to stop the run early, wait for a tool call to finish; clean interrupts between tool calls are fine. Traces are data either way.
+1. You set the two return markers: ask Claude where this session's transcript lives, then ask it to commit the current state on a feature branch and report the short SHA. Push the branch if you want the run to outlast your laptop. Module 5 forks from that commit and reads the transcript.
+2. You run the trifecta check: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening that prompt injection needs. All three present here, cut one leg before you send.
+3. You paste the send-off prompt to the same session. Keep the laptop awake and plugged in. Don't close the lid; sleep freezes the session and it won't resume on wake. If you want to stop the run early, wait for a tool call to finish; clean interrupts between tool calls are fine. Traces are data either way.
 
 <!-- maintainer -->
 
@@ -99,8 +97,8 @@ Phase 3 is where the exercise ends. Module 4's send-off takes over:
 
 **Prompt register — `walk-and-send-off-3` rewritten 2026-05-21.** Earlier "deliberately short" speed-up shape (*"You propose solutions and ask questions. Use the ask-questions tool to speed up my work."*) was the cohort's single biggest individual failure mode (M4 12:36Z + 12:37Z: outright-skipped exercise). Rewritten to scaffold the gap-fill structurally with `AskUserQuestion` by name + pick-then-walk loop + per-shape destination mapping (`observations/` for observations and business-rules gaps; `./CLAUDE.local.md` for rule sharpening; connector setup for connector wiring). Pairs with `author-test-strategy-skill-1`'s 2026-05-21 close — same family fix (replace push-back-by-convention with tool-by-name). Body restructured so the prompt is the default flow, not an opt-in speed-up; conversational-example bullets demoted to "what a fill looks like" reference after the prompt fence, each bullet now naming the matching destination.
 
-**Quality:** compendium-audited 2026-07-08 (writing@0ef2ca6 story@0ef2ca6 technical@0ef2ca6 behavior@689e7e0 pedagogy@0ef2ca6 strategy@689e7e0 slides@47f3357)
-- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-07-26 (writing@9697944 technical@b3143a4 behavior@b3143a4 strategy@b3143a4 slides@9697944)
+- judges @9697944: writing PASS, story REVISE (1/0 see instances/ae101--walk-and-send-off.story.json), technical PASS, behavior PASS, pedagogy REVISE (1/0 see instances/ae101--walk-and-send-off.pedagogy.json), strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Word count:** ~750 words body.
@@ -151,3 +149,5 @@ Phase 3 is where the exercise ends. Module 4's send-off takes over:
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
 
 **2026-07-03** — `## What closes the module` re-aligned to the module file's `## Send the task off` flow, per refuter close-out-drift finding. Two fixes: (1) relabeled off "Debrief" — `run-the-first-experiment.md` says "No Debrief; the send-off is the close of the work", so the close heading + intro, the `**What you do:**` overview, and the `**What happened:**` recap now name the module file's send-off / "the close", not a Debrief section (same mislabel in three body spots); (2) the two beats the module file carries at close but this list omitted were added in true order — the transcript/commit return markers (new step 3) and the trifecta cut-one-leg check (new step 4, before the send-off paste). The existing compound and push-back beats were kept and the list shape preserved; the finding was missing-beats + mislabel, not the step set. Prose-only; no `{{prompt}}` markers touched (the send-off, transcript, and commit prompts live in the module file, not here). Reconcile-in-sweep: this maintainer block, `**Time budget total:**`, and `**Send-off mechanism (Debrief step 3)**` still say "Debrief", and the last now maps to step 5 after the renumber — left for a maintainer-label sweep to avoid touching trainer metadata in a prose-fix batch.
+
+**2026-07-26** — Module-close reconciliation: `run-the-first-experiment.md`'s close was rewritten 2026-07-08 (commit 05fbd36) to drop the compound pass entirely ("No compound pass at the close... Compound on evidence, not anticipation"), which the 2026-07-03 fix above reconciled against an older version. Three fixes here: (1) `**What you do:**` (line 15) dropped "compound your rules file and" — the close is send-off only, no compound framing; (2) `## What closes Module 4` dropped the compound-step and push-back-on-summary beats (old steps 1-2, which the module no longer runs), renumbering the return-markers / trifecta / send-off-paste beats down to 1-3; (3) Phase 2's "Heavy run expected" callout moved ahead of its `{{prompt:walk-and-send-off-2}}` fence (was stranded in the following `## Read the ranked thin-spots` section, i.e. after the run had already started) and now names the premature-stop failure mode alongside the existing over-reading one, per `check_pedagogy.md` §48. **Not completed:** Phase 3's three unfenced "Ask Claude to X" bullets (§16 forcing-function-in-prose finding, pre-authorized) still need a `{{prompt:walk-and-send-off-4}}` fence — drafted ("Propose a tidy-up of `./observations/`... Show me the diff before you make it, and wait for me to say go.") but blocked on the `check_prompts.md` §22 registry-body approval gate, which needs a live human reply and cannot be cleared by an agent quoting its own authorization card. A maintainer typing `APPROVED: walk-and-send-off-4` (or setting `SKIP_PROMPT_GATE=1`) unblocks it. **Reconcile-in-sweep debt widens:** the "Debrief" label sweep deferred 2026-07-03 (`**Time budget total:**`, `**Frameworks riffed on:**` compound-engineering bullet, `**Send-off mechanism (Debrief step 3)**`) is now further stale — "step 3" in that heading pointed at the send-off-paste beat before this pass; after the renumber it points at the trifecta check instead. Still left for the maintainer-label sweep, not touched here.

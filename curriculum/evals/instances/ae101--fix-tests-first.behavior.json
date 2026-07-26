@@ -3,20 +3,38 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/fix-tests-first.md",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "full_regen",
+  "trace_status": "cached",
   "prompts_evaluated": 3,
   "prompts_findings": [
-    {"prompt_index": 1, "prompt_lead": "Find the root cause of this bug by writing the tests that would reveal it. Run t", "verdict": "PASS", "load_bearing": true, "risks_fired": [
-      {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Tool-call sequence; show-diff gate.", "fix_hint": "No edit."},
-      {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Body callout addresses.", "fix_hint": "No edit."}
-    ]},
-    {"prompt_index": 2, "prompt_lead": "Was the change you just made the root cause of the bug, or a layer above it? If ", "verdict": "TODO", "load_bearing": false, "risks_fired": [
-      {"pattern_id": "self-audit-charity", "confidence": "med", "evidence": "Same-context audit on optional prompt; no body-callout in this exercise around this prompt.", "fix_hint": "Optional: add a body callout offering 'Be harsher than necessary, find at least two layers above' for cohorts where charity bites."},
-      {"pattern_id": "self-critique-defense", "confidence": "low", "evidence": "Compliant with §18 (critique verbs).", "fix_hint": "No edit."},
-      {"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "Question-form gates affirmation.", "fix_hint": "No edit."}
-    ]},
-    {"prompt_index": 3, "prompt_lead": "Now do it properly, TDD-style. Write the failing test that names the deeper issu", "verdict": "PASS", "load_bearing": false, "risks_fired": [{"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Show-diff gate.", "fix_hint": "No edit."}]}
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Find the root cause of this bug by writing the tests that would reveal it. Run t",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {"pattern_id": "preamble-before-action", "confidence": "med", "evidence": "Six chained sub-steps (find root cause / write tests / run+confirm fail / fix / rerun / show diff) with no in-fence 'No preamble' suppressor and no body primer naming the narration + skim-past cue, though check_prompts.md #17's 4+-sub-step structural trigger calls for one.", "fix_hint": "Add 'No preamble.' as the fence's closing line, or a one-line body primer after the fence naming the narration + skim-past cue."}
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Was the change you just made the root cause of the bug, or a layer above it? If ",
+      "verdict": "TODO",
+      "load_bearing": false,
+      "risks_fired": [
+        {"pattern_id": "self-audit-charity", "confidence": "med", "evidence": "'Re-read your own diff and tell me what's still surface' is same-context self-audit with neither check_pedagogy.md #31b mitigation present (no 'be harsher' clause, no fresh-subagent read); the evidence-backed carve-out (concrete artifact = the diff, not an abstract self-report) already keeps this non-blocking rather than REVISE, and the prompt is maintainer-marked Optional with a named skip condition, so load_bearing is false.", "fix_hint": "Optional: add 'assume there's a deeper layer unless you can prove otherwise', or route through a fresh subagent given the diff cold, per check_pedagogy.md #31b."}
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Now do it properly, TDD-style. Write the failing test that names the deeper issu",
+      "verdict": "TODO",
+      "load_bearing": false,
+      "risks_fired": [
+        {"pattern_id": "preamble-before-action", "confidence": "med", "evidence": "Five chained sub-steps (write deeper test / run+watch fail / fix / rerun+watch pass / show diff) with no in-fence suppressor or body primer, meeting check_prompts.md #17's 4+-sub-step structural trigger; prompt is maintainer-marked Optional (sent only if the interrogation surfaced a deeper layer), so load_bearing is false.", "fix_hint": "Same as prompt 1 -- 'No preamble.' line or shared body primer covering both TDD-loop prompts."}
+      ]
+    }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1
+  "todos_count": 2,
+  "notes": "Trace cache at curriculum/evals/sim-cache/ae101--fix-tests-first.behavior.json is a full hit this pass: content_sha (62cf538b...) and all three prompt_sha values, recomputed independently via node crypto sha256 over the expand-md.js output, match the cache byte-for-byte -- no regeneration needed, trace_status: cached. This matches (same verdicts, same load_bearing calls, same risks) a prior full_regen pass already on file at this instance path, which had re-walked the prompts after an unrelated content_sha shift (the 2026-07-09 emphasis pass) invalidated an older 2026-05-09 cache; that regeneration reproduced identical findings to what's cached now, so nothing has drifted between passes. Verdict math applied literally per the template's three-clause rule: a lone med-confidence risk on a load_bearing:true prompt (prompt 1) does not meet either the REVISE threshold (needs high, or 2+ med) or the TODO threshold (needs med+load_bearing:false, or any low) and therefore lands PASS, even though check_prompts.md #17's structural trigger is unmet -- recorded in risks_fired regardless so the finding stays visible to the maintainer, not silently dropped. This class's output schema (prompt-behavior.md) defines prompts_findings[] as its completeness unit (one entry per prompt block), not a per-compendium-rule rules_evaluated ledger like the writing/pedagogy/story/strategy/technical classes carry -- this instance covers 3 of 3 prompt blocks in the file (all blocks above the maintainer cut), no omissions against that unit. No rules_evaluated ledger is emitted because the template does not define one for behavior class; per curriculum/evals/eval-coverage.ae101.md this is a standing open item for the maintainer, not a defect introduced by this pass."
 }

@@ -1,0 +1,153 @@
+{
+  "class": "storytelling",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md",
+  "verdict": "PASS",
+  "training": "ae101",
+  "module_mood_contract": "Optional homework between M1 (joyful creation — \"it works, on my repo\") and M2 (grounded competence — \"I can feel when a plan is good before approving it\"). No dedicated Mood (deliberate) entry of its own — reference file, not a module; only M1-M8 modules carry one in the arc table. Felt register per the strategy doc's own framing (content-strategy-agentic-engineering-101.md, M1-in-detail homework section): low-pressure permission — \"You will want to run multiple sessions. Find your way to do it over time -- there's no rush\" — bridging M1's close toward M2 without claiming either module's mood front-on. Explicitly non-gating: \"skipping either [homework piece] does not break M2.\"",
+  "trace_status": "cached",
+  "rules_evaluated": [
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 1,
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
+      "verdict": "PASS",
+      "evidence": "File teaches mechanics/vocabulary (worktrees, stash, conflict recovery) rather than naming a pattern the student already lived through -- not a meta-frame lecture. Placed as optional between-module homework (M1->M2), not a pre-exercise opener front-running a teaching moment. Diagnostic (demo showing a ceiling vs. vocabulary mid-module vs. pattern-naming closer): this is vocabulary-teaching, correctly unconstrained by opener/closer placement rules.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 2,
+      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+      "verdict": "N/A",
+      "evidence": "Rule scopes to contrast-mood modules (M5-style: learn-through-doing, name-after). This file sits between M1 (joyful creation) and M2 (grounded competence) in the reading flow -- neither is the contrast-mood module (that's M5, 'learning through contrast'). Confirmed against strategy doc's mood-arc table (M1-M6): no contrast-mood exercise sits downstream-adjacent to this file's placement.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 3,
+      "rule_lead": "No cross-module sequencing in lecture bodies.",
+      "verdict": "REVISE",
+      "evidence": "Line 3 (body, above the maintainer fence): \"Optional homework between M1 and M2.\" This is a direct M[0-9] hit -- exactly the grep pattern the rule names (\"Pre-ship grep on body above the maintainer fence: M[0-9] + module-name refs -> each hit moves to the module file or dies\"). No arc-lecture carve-out applies (this file's SUBJECT is git/worktree mechanics, not the training arc). The claim is also a pure duplicate: the maintainer block (line 94, below the fence, correctly exempt) already carries the equivalent placement fact -- \"Referenced from AE101 M1 homework.\" Body-prose sequencing pins the file to one slot in a curriculum order that could be reshuffled (the strategy doc itself logs a 2-day-reorder variant, M1-M2-M4/M5-M3-M6, as a live open question) -- exactly the re-placeability risk the rule guards against. Prior cached audit instance (this same file, earlier run) asserted \"Zero module-number references... in the body above the maintainer fence\" -- that claim is factually wrong; this is a genuine miss corrected on fresh read, not a re-flag of something already caught.",
+      "fix_hint": "Drop the module numbers from the opening line -- \"Optional homework, read at your own pace after your first shipped bug fix\" (or similar) states the same reading-order intent without pinning to M1/M2 by number; the maintainer block already carries the exact placement fact for anyone who needs it.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 4,
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "verdict": "PASS",
+      "evidence": "7 `##` headers, each names a concrete concept the section delivers and is truthful to body content: 'Why multi-session, why Git' (states the rationale, delivered), 'Worktrees vs. branches vs. clones' (three-way comparison, delivered with a table-like structure), 'Opening N Claude Code sessions on the same codebase' (the flow + the named 'agent-level trap', delivered), 'Stashing and switching between sessions' (delivered with the stash push/pop example), 'Conflict recovery when two sessions edited the same file' (named scenario, delivered), 'When NOT to run multi-session' (named boundary, delivered as 3 numbered cases -- ordering dependencies, greedy parallelism, new-to-the-loop). No empty-container headers ('The move', 'The names') and no orphan-mystery headers. 'Close' is the curriculum-wide structural closer convention, not a concept-bearing teaching header, and is rationed to one beat per file as the rule expects.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 5,
+      "rule_lead": "A slide's BODY is size-bounded, not just its header.",
+      "verdict": "PASS",
+      "evidence": "Fresh run this session: `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md` -> \"7 slides, 0 oversized, within 210w/6-bullet limits.\" Mechanically confirmed, not carried over from the stale cached instance.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced **Prompt** blocks and no exercise-phase architecture -- confirmed fresh this session via `node scripts/expand-md.js` (output byte-identical to source, confirming no {{prompt:<key>}} markers) and a manual read (every fenced code block is a literal git CLI command the student runs in their own terminal, not an AI-directed prompt). The rule's mechanism -- move a scripted forcing function out of body prose into a prompt fence -- presupposes a fence to move it into; none exists on this reference/homework page. The one discipline-statement in body prose ('Do not let either agent resolve the conflict automatically... the human stays in the driver seat') is appropriate stated guidance for a page with no adjacent prompt architecture, not a forcing function misplaced from a fence.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "No authored conversation/cohort-management cues anywhere in the body (no 'discuss with your neighbor', 'share with the room', 'take N seconds and compare', 'tell the room'). Every sentence is about the WORK (worktree commands, stash/pop, conflict recovery, the self-check list in 'When NOT to run multi-session') not about COHORT MANAGEMENT. Consistent with the file's billing as individual/self-paced optional homework.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences. (Representative entry for the whole compendium -- see evidence.)",
+      "verdict": "N/A",
+      "evidence": "File contains zero AI-directed fenced prompt blocks -- no **Prompt** label, no {{prompt:<key>}} markers, confirmed fresh via `node scripts/expand-md.js` (identical output to source) and manual read of both fenced code blocks (`git worktree add -b feature-x ../my-repo-feature-x` and `git worktree remove ../repo-bug-fix`), both raw git CLI the student types directly, not text pasted to Claude Code. check_prompts.md's scope ('copy-this affordance for a student pasting to an LLM') never fires on this file. Story class is not check_prompts's primary owner (that's writing/technical per its eval_classes frontmatter and the story template's completeness contract, which names only check_lectures as story's full-coverage compendium) -- this single N/A entry records that the compendium's surface is entirely absent here; no other check_prompts rule finds a distinct surface to evaluate.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named / mood lands.",
+      "verdict": "PASS",
+      "evidence": "Phase 1 (whole body, single-phase per the no-##-Phase-headers protocol -- confirmed this file has only topic `##` headers, no `## Phase N` structure) mood_score 8/10; close mood_score 8/10 (trace, content_sha 41dfde7d... matches current file SHA, cached and current). Classified as a TEACHING beat, not setup (the whole page is substantive practice content that cannot compress into a parenthetical without losing the guide) -- mood-floor 8+/10 applies and is met at both phase and close. No dedicated per-module 'Mood (deliberate)' entry exists for this file in the strategy doc's arc table (reference/homework, not a module) -- scored against the felt register the strategy doc names for this exact slot: low-pressure permission bridging M1->M2, confirmed by direct read of the strategy doc's M1-homework section this session.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood, not punitive.",
+      "verdict": "PASS",
+      "evidence": "'Agent committed to the wrong branch in one session? Don't tie your brain in knots... A thirty-second fix' reframes a mistake as trivial and recoverable, not shameful. 'The reason: agents are confident and do not always read carefully enough at a merge boundary' attributes the conflict-recovery caution to agent nature, not student blame. 'The agent-level trap' paragraph names a failure mode the persona trace reports recognizing from their own M1 homework experience ('I did this... this paragraph names what happened to me without ever having asked') -- lands as recognition, not accusation. Register throughout is not-knowing-yet, never having-done-wrong.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "N/A",
+      "evidence": "No Big Idea section exists on this file -- it's a flat reference/homework page, not a module, so the rule's structural target (a module's Big Idea framing) is absent. Non-blocking aside, considered and set aside rather than ignored: the title 'survival guide' carries mild failure-mode flavor as a genre convention (common tech-writing pattern), but the body backs it with genuinely rescue-shaped, non-punitive sections (conflict recovery, wrong-branch recovery -- see rule 2 evidence) rather than dwelling on the failure itself; doesn't read as leading with a failure mode in practice.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
+      "verdict": "PASS",
+      "evidence": "Front-run check: zero plan-mode content (M2's subject) and zero subagent/skill-authoring content (M3's subject) anywhere in the file (confirmed by full-file grep this session). Doesn't re-teach Git fundamentals per the strategy doc's explicit constraint ('Builds on prework's Git assumption; does not re-teach Git fundamentals' -- content-strategy doc, M1-homework §2). Carries exactly the permission-beat framing the strategy doc names for this slot and cross-references in its gap-analysis index (row #11, 'Multisession permission beat... M1, M2 lecture, M4 send-off, M6 callout... one line each, sprinkled') -- this file's closing framing ('You do not have to start here. Find your way to this over time. There is no rush.' / close: 'Two sessions is a milestone. Five is a habit. Ten is something you grow into.') matches the strategy doc's quoted permission line ('You will want to run multiple sessions. Find your way to do it over time -- there's no rush.') almost verbatim. Also correctly doubles as the on-ramp for gap #2 (parallel worktrees), confirmed against the strategy doc's gap-index table read fresh this session (lines 690-708 of content-strategy-agentic-engineering-101.md). Module-to-module arc: this file deliberately does NOT bridge narratively into M2's plan-mode content -- correct by design, since the strategy doc frames both M1-homework pieces as optional and non-gating ('skipping either does not break M2'). Mood-doesn't-resolve-early: file sits outside the M1-M6 mood arc proper and doesn't pre-empt M2's 'grounded competence' teaching beat or any downstream unease/rescue beat. One process observation, non-blocking and not a defect in this file: the strategy doc's own 'Open pre-cohort TODOs' line (line 708) still lists 'multi-session Git survival-guide drafting (new curriculum/reference/ page)' as open, but the file already exists, is compendium-audited (2026-05-03), and matches the strategy doc's spec -- that's the strategy doc's own bookkeeping lagging its shipped state, not a fidelity gap in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Key Concepts shape -- theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": "No 'Key Concepts' section -- reference file, not a module.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": "No 'Key Concepts' section -- reference file, not a module.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape -- capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": "No 'What You'll Learn' section -- reference file, not a module.",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "mood_summary": {
+    "phase_scores": [8],
+    "close_score": 8,
+    "any_below_8": false,
+    "stealing_the_mood": []
+  },
+  "blocking_findings_count": 0,
+  "todos_count": 1
+}

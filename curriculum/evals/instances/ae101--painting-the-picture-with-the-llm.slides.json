@@ -5,9 +5,9 @@
   "training": "ae101",
   "chunk_map": [
     {"index": 0, "heading": "Painting the picture with the LLM [H1, no lede]", "lines": "1"},
-    {"index": 1, "heading": "The LLM mirrors your stance", "lines": "3-8"},
-    {"index": 2, "heading": "You prime, the LLM scales", "lines": "10-14"},
-    {"index": 3, "heading": "Two frontiers: how fast, and the right things", "lines": "16-22"}
+    {"index": 1, "heading": "The LLM mirrors your stance", "lines": "3-11"},
+    {"index": 2, "heading": "You prime, the LLM scales", "lines": "13-19"},
+    {"index": 3, "heading": "Two frontiers: how fast, and the right things", "lines": "21-29"}
   ],
   "rules_evaluated": [
     {
@@ -16,7 +16,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "'The wizard' and 'infinite chameleon' are introduced and self-explained within chunk 1 itself; 'it'/'that' pronouns in chunks 2-3 resolve to the immediately preceding bullet's subject (context window, your setup).",
+      "evidence": "Chunk 1: 'the LLM' first named in the H1 (chunk 0, prior context for all later chunks), then 'It'/'the LLM' pronouns in the same chunk resolve to 'The LLM is an infinite chameleon' one sentence prior. Chunk 2: 'You prime it. The LLM scales it.' (line 15) — 'it' resolves to 'the context window' named immediately before in the same sentence run, confirmed by line 17's payoff ('Whatever you put in front of the LLM... The rules file. The prompt. What sits on disk'). Chunk 3: 'your setup' (line 25) is a plain-English label for the 'what you put in front of the LLM' concept chunk 2 just built (rules file/prompt/disk), not a coined term needing pre-earning; 'it'/'the setup' in line 27 resolve to the same line-25 antecedent. The pre-2026-07-09 calibration finding for this file ('How fast can it learn? ... a system like this' — check curriculum/evals/slide-sweep.md § Calibration) no longer matches the current text; that wording was replaced.",
       "fix_hint": null,
       "blocking": true
     },
@@ -36,7 +36,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Opener lecture; no 'the X you did/saw' backward beat references.",
+      "evidence": "Opener lecture, first content in M1 after the trick-exchange question; no 'the X you did/saw' backward beat reference anywhere in the file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -46,7 +46,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess/predict-before-reveal beat in this file.",
+      "evidence": "No guess/predict-before-reveal instruction anywhere in this file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -56,7 +56,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Every chunk carries multiple self-contained paragraphs and a standalone claim (chunk 1: chameleon/stance-as-ceiling; chunk 2: prime/scale + shotgun-cannon koan; chunk 3: two-frontiers framing + kicker). None is a bare wait-state or single context-dependent bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -66,7 +66,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Chunk 1 header 'The LLM mirrors your stance' matches its closing line verbatim; chunk 2 header 'You prime, the LLM scales' matches 'You prime it. The LLM scales it.' directly; chunk 3 header 'Two frontiers: how fast, and the right things' matches the two named questions (setup speed, learning the right things).",
       "fix_hint": null,
       "blocking": false
     },
@@ -76,8 +76,8 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "REVISE",
       "chunks_flagged": [1],
-      "evidence": "chunk 1 \"The LLM mirrors your stance\": lines 6: \"It can do good work and bad work. It will be what fits the session. It flatters you; it calls unfinished work progress. It mirrors your stance.\" — anaphoric run of \"It...\" clauses; the closing leg (\"It mirrors your stance\") restates the chunk header instead of adding new concrete content, the same shape flagged as a known-true finding in the sibling file the-machine-you-just-met.md (\"it flatters, it progresses, it mirrors\" per slide-sweep.md calibration).",
-      "fix_hint": "Cut to a pair, or give the closing \"It...\" leg its own concrete content instead of restating the header.",
+      "evidence": "chunk 1 \"The LLM mirrors your stance\": line 7: \"The LLM is an infinite chameleon. It can do good work and bad work. It will be what fits the session. It flatters you; it calls unfinished work progress. It mirrors your stance.\" — anaphoric run of 'It...' clauses; the closing leg ('It mirrors your stance') restates the chunk header instead of adding new concrete content, the same shape as the sibling calibration finding in the-machine-you-just-met.md ('it flatters, it progresses, it mirrors' per slide-sweep.md § Calibration). No 'Not X. Not Y. Z.' construction, no self-grading superlative, no number-plus-retraction, and no abstraction-noun stack found elsewhere in the file — this is the only rule-7 hit.",
+      "fix_hint": "Cut the closing 'It mirrors your stance' leg or give it new concrete content instead of restating the header.",
       "blocking": false
     },
     {
@@ -89,6 +89,36 @@
       "evidence": null,
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Zero bold markup anywhere in the body (lines 1-29) — confirmed by the file's own maintainer note (2026-07-09 emphasis pass: 'all three narrative slides recast from bolded-claim bullets to prose paragraphs, zero bold kept'). Well within the ≤1-bolded-element budget; no handle-marking needed given no coined terms introduced here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "This lecture is a standalone include, `[Painting the picture with the LLM](lectures/painting-the-picture-with-the-llm.md)`, under M1's `## Start here` section in curriculum/trainings/agentic-engineering-101/getting-going.md (line 25) — the standard lecture-include convention (curriculum/module-shape.md § Module include) that the renderer wraps in `.phase--lecture` and inlines into the composed Slides deck. Not a prework/supplementary/reference link (the categories rule 10 flags as deck-absent).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "No hand-numbered headers (no '## Phase N:' / '## N.' step headers) and no in-body 'Phase K'/'Step K' references anywhere in the file; all three `##` headings are plain thematic titles left for the renderer to number.",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,

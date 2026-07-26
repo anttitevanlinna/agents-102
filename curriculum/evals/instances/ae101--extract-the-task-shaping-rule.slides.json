@@ -4,15 +4,14 @@
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "H1/lede: Name the rules, place the file", "lines": "1-12"},
+    {"index": 0, "heading": "H1/lede: Name the rules, place the file", "lines": "1-11"},
     {"index": 1, "heading": "Phase 1: Name the rules from this session", "lines": "13-26"},
     {"index": 2, "heading": "Reject or rewrite the generic rule", "lines": "27-31"},
     {"index": 3, "heading": "Phase 2: Pick where the file fires", "lines": "32-45"},
     {"index": 4, "heading": "Wire the file in, check the wording", "lines": "46-50"},
     {"index": 5, "heading": "Phase 3: Name the automation shapes, don't build them", "lines": "51-62"},
     {"index": 6, "heading": "Read the shapes, hold the build", "lines": "63-66"},
-    {"index": 7, "heading": "Optional: Read the rules hiding in one real ticket", "lines": "67-84"},
-    {"index": 8, "heading": "Fold the field-use rules into your file", "lines": "85-92"}
+    {"index": 7, "heading": "What happened", "lines": "67-70"}
   ],
   "rules_evaluated": [
     {
@@ -29,9 +28,9 @@
       "compendium": "check_slides.md",
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No cross-file positional callback appears in the body. Chunk 0's \"The next small lecture names three places this kind of file ends up\" is a forward preview of upcoming content (where-the-rule-could-live.md), not a backward callback pointing at another file by position.",
       "fix_hint": null,
       "blocking": true
     },
@@ -41,7 +40,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Chunk 1's \"You ran a plan, two push-backs, a second-pass walk-down, and an approval\" resolves against push-back-on-the-plan.md's current Phase 3 (two push-backs), Phase 4 (second-pass walk-down), and Approve section (approval) — all present in the module's current exercise set.",
       "fix_hint": null,
       "blocking": true
     },
@@ -51,7 +50,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No guess-before-reveal instructional structure appears anywhere in this file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -91,9 +90,39 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "\"fires\"/\"fire\" recurs in chunks 0, 3, 4 describing when a CLAUDE.md rule activates (\"so it fires when you want it\"; \"The choice is when the rules fire\"; \"actually fire\"). Cross-checked: this is established AE101-wide technical vocabulary for rule/hook/verifier/skill activation, not maintainer-authoring dialect — e.g. composing-the-workflow.md:163 (\"A rule in ./CLAUDE.md fires a move\"), spot-gaps-build-the-loop.md:90 (\"The verifier fires on output; the gap-finder fires before\"), the-loop-has-a-name.md:14 (\"The shape fires on any workflow with a quality bar\"), diagnose-and-resend.md:47/61. Falls under the ordinary-engineering-verb carve-out (compendium's own example: \"surface\" as engineering verb), distinct from the maintainer's compendium-firing sense in content-rules.md. No other dialect terms (compendium, beat, mood, forcing function, surface-as-noun, Connections) appear in the body.",
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "File is linked from plan-mode-done-right.md as a standard [Exercise: ...] include (M2's fourth beat, after push-back-on-the-plan), composed under the module's normal .phase--exercise wrapper — no prework/supplementary-drop anomaly of the kind flagged 2026-07-09.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Phase 1/2/3 headers consecutive with no gap. Chunk 5's in-file reference \"the .md file you saved in Phase 2\" resolves against chunk 3. Post ticket-phase split-out (extract-the-task-shaping-rule-4 moved to read-the-ticket-rules.md homework), no stale \"Phase 4\" reference remains anywhere in the body.",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,

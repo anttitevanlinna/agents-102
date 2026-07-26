@@ -6,7 +6,7 @@ You are testing, and you are learning. Every send-off from here on is an experim
 
 You don't need to get it right first time. You need to read the result and know what to change for the next run. That is the whole obligation.
 
-You're new to this country; don't travel it like a tourist. A tourist runs an agent and hopes; a practitioner runs a test and reads the data. The difference is not the outcome of the run. It is what you can say afterwards about why.
+You're new to this country: the stretch where the agent runs alone and you don't watch each step. Don't travel it like a tourist. A tourist runs an agent and hopes; a practitioner runs a test and reads the data. The difference is not the outcome of the run. It is what you can say afterwards about why.
 
 ## The two-run arc
 
@@ -34,8 +34,8 @@ You're new to this country; don't travel it like a tourist. A tourist runs an ag
 
 - section-3 sweep 2026-07-02: 0 refs remaining to fix — the plan's 5 M5-refs (plus M1–M4 hits) were already removed by the same-day slides-only pass above; verified zero `M[0-9]`/module-name hits above the fence. 3 arc-temporal phrases judged not-sequencing ("from here on", "every future hand-off", the two-run arc — no module named; exercise-internal arc). Owning module `run-the-first-experiment.md` confirmed carrying the dropped sequencing in `## Start here` (short-loops contrast) and `## Next` ("Module 5 opens with...").
 
-**Quality:** compendium-audited 2026-07-08 (writing@689e7e0 story@689e7e0 technical@689e7e0 behavior@689e7e0 pedagogy@689e7e0 strategy@689e7e0 slides@47f3357) — predates the slide rework; re-audit before ship.
-- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@9697944) — predates the slide rework; re-audit before ship.
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Lecture meta:** *10–12 min lecture, now deck-shaped (4 slides + kicker). Sets up M4's walk-and-send-off exercise. Names the spirit of the two-run arc and the one move the exercise opens with — gap analysis.*
 **Word count:** ~380 words body (post slide rework).

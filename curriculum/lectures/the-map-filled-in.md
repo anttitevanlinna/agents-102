@@ -241,5 +241,5 @@ The map is back, one last time.
 
 **Diagram woven in (2026-07-04):** Antti chose proto A (`protos/control-loop-01-closed-loop.html` — the canonical closed-loop block diagram, relabeled in student words) from a 3-proto set (A=canonical form · B=open-vs-closed contrast · C=map-as-loop; B+C stay in `protos/` as alternates, PNG renders in session scratchpad). Inlined as this slide's `<figure class="diagram">`, SVG byte-identical to the proto minus blank/comment lines (marked's raw-HTML block terminates on any interior blank line — same rule as the engine SVG above). Bullet 1 de-duplicated: dropped "the shape robotics and autopilots have run on for decades" (now carried once, in the diagram caption). No SVG ids, so no collision with the engine map's mf- ids on the theory-handbook page. Slide is now figure + 3 bullets, mirroring "The ghost, drawn solid."
 
-**Quality:** compendium-audited 2026-07-08 (slides@47f3357)
-- judges @47f3357: writing grandfathered, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered, slides PASS
+**Quality:** compendium-audited 2026-07-12 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
+- judges @b3143a4: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -3,15 +3,16 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/how-this-training-was-built.md",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "joyful creation — 'it works, on my repo'",
-  "trace_status": "generated_first_time",
+  "module_mood_contract": "Joyful creation — \"it works, on my repo\" (M1 closer lecture; sits after compound-and-close (Ex3), before the Bridge to M2)",
+  "trace_status": "regenerated",
+  "teaching_moment_lands": "PASS (no check_strategy_tie_in rule_index — per template, recorded here not as a ledger row). Named teaching moment: the shape of building this training (bulletpoints → wrong prototypes → named wrongness → rule → rules load-bearing → agents checking agents) is the same shape the student just ran on their own repo over Ex1-Ex3. Lands robustly across persona-skill variation because the parallel is stated explicitly ('The story of building this training is the shape you just ran on your own repo. Over ninety minutes, not a year. On a trivial bug, not a whole training.') rather than left for the reader to infer — a weaker-skilled persona still gets the mapping handed to them in one sentence, not derived.",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
-      "rule_lead": "Meta-frame lectures = closers, not openers.",
+      "rule_lead": "Meta-frame lectures are closers, not openers.",
       "verdict": "PASS",
-      "evidence": "getting-going.md line 35 confirms placement after all three exercises (orient-and-introspect, fix-tests-first, compound-and-close). Maintainer block: 'closes M1, after compound-and-close (Ex3) and before the Bridge to M2.' Lecture names the pattern (compound engineering) the student just lived — canonical closer shape.",
+      "evidence": "Module file `getting-going.md` places this lecture last in the teaching sequence (line 37, after Ex1-Ex3 and `the-machine-you-just-met.md`, before `## Key Concepts`). Strategy doc confirms explicitly (content-strategy-agentic-engineering-101.md line 730): \"M1's closing lecture how-this-training-was-built.md is a closer, not opener... Sits after compound-and-close (Ex3), before the Bridge to M2. Opener slot stays with the-wizard-move.md.\" File's own maintainer Meta block: \"Arc position: closes M1, after compound-and-close (Ex3) and before the Bridge to M2... The meta-frame only lands once the student has the muscle memory.\" Body enacts the pattern textbook-straight: names a pattern (compound engineering) the student already lived, not a claim made in advance.",
       "fix_hint": null,
       "blocking": false
     },
@@ -20,43 +21,70 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "This lecture is a closer, not a pre-exercise opener. M1 is not a contrast-mood module (contrast-mood is M5's shape). Rule 2 fires on dosage of lecturing before contrast-mood exercises; this lecture sits after all exercises as the M1 session cap.",
+      "evidence": "This lecture is M1's terminal beat (dead-last, per rule 1's evidence) — no exercise of any mood follows it before the module closes. Rule 2 governs lecture dosage ahead of an M5-style contrast exercise; there is no downstream exercise here to under- or over-arm.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 3,
+      "rule_lead": "No cross-module sequencing in lecture bodies.",
+      "verdict": "PASS",
+      "evidence": "Grep of the body above the maintainer fence for `M[0-9]` / module-name references returns zero matches. The lecture's own maintainer 'Slides-only pass' note documents a prior line ('The next module will extend it. The module after that will extend it again.') being CUT per this exact rule and replaced with the mechanism it implied ('read by every future session in this repo' — CLAUDE.local.md auto-load). The M1→M2 handoff instead lives correctly in the module file's own `## Next` section (`getting-going.md` line 50-51), confirming the separation this rule requires.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 4,
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "verdict": "PASS",
+      "evidence": "Four headers, squint-tested: 'Wrong is how steering gets in' (claim — body delivers: first drafts are plausible-wrong, the gap is the valuable part) — 'The rules started doing the work' (claim — body delivers the load-bearing-vs-leaky reach argument) — 'Then the agents started checking the agents' (claim — body delivers the scaling-by-breadth ceiling shot) — 'You just ran the compound loop' (recognition claim — body delivers the explicit Ex1-Ex3 mapping). No empty containers, no orphan mystery, no two headers share text, no em-dashes, no pedagogy/contemplative framing. Truth clause holds against each header's own body — no category error, no unsupported universal.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 5,
+      "rule_lead": "A slide's BODY is size-bounded (~210 words / ≤6 bullets), not just its header.",
+      "verdict": "N/A",
+      "evidence": "This file is named as an explicit exemption in the rule text itself ('story lectures how-this-training-was-built + story-of-module-6 exempt'). Confirmed mechanically: `node scripts/check-slide-size.js --file curriculum/lectures/how-this-training-was-built.md` reports 'files: 0  slides: 0' — the script's own file-matching excludes this path.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
-      "rule_lead": "Forcing functions live in prompts, not body prose.",
+      "rule_lead": "Forcing functions live in prompts, not body prose (storytelling-owned facet).",
       "verdict": "N/A",
-      "evidence": "Pure meta-frame lecture — no fenced prompts, no exercises, no forcing functions present. Rule fires on exercise phases with fenced forcing functions; not applicable to a lecture body with no prompt blocks.",
+      "evidence": "File contains zero fenced prompts and zero `{{prompt:}}` markers (confirmed via `node scripts/expand-md.js` — output identical to source, no expansion fired). This is a pure recognition/naming closer describing work already completed in Ex1-Ex3; it asks the student to do nothing new, so there is no forcing function in body prose that should instead live in a prompt fence.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
-      "rule_lead": "Body teaches work; trainer manages room. No authored conversations or pause cues.",
+      "rule_lead": "Classroom = default delivery; body teaches the work, trainer manages the room outside text.",
       "verdict": "PASS",
-      "evidence": "Scanned full body: zero 'discuss with,' 'share with,' 'pair with,' 'take 90 seconds,' 'tell the room' constructions. Body is pure first-person storytelling about the training's construction. No authored cohort-management beats.",
+      "evidence": "No authored conversation cues anywhere in body — no 'discuss with', 'compare with the person next to you', 'tell the room', no pause-cue sentences. Every sentence is about the work (the training's construction, the loop, the rule, the citation), never cohort pacing or comparison instructions.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named; mood lands per phase (8+/10 on teaching beats).",
+      "rule_lead": "Mood contract named — every module has a deliberate mood; mood-floor 8+/10 per TEACHING beat.",
       "verdict": "PASS",
-      "evidence": "Whole body is a single TEACHING beat (not setup). Sim trace phase_score: 9/10. 'That shape you just heard... is the shape you just ran on your own repo' — mirroring works cleanly for a persona who just ran the loop 90 min ago. Mood stays in joyful creation register; does not resolve into M2's grounded competence.",
+      "evidence": "trace.phases[0].mood_score=9, trace.close.mood_score=9 (regenerated trace, content_sha 63b1d34080022407b1914bb6a1564169c0ab9f283a0c81f85158998d7c364d85, matches current file). Whole file is one TEACHING phase — recognition beat, no mood-exempt setup content to split out. Contract is 'Joyful creation — \"it works, on my repo\"' (content-strategy-agentic-engineering-101.md line 237); trace mood_note confirms forward-tilt recognition without resolving into M2's grounded-competence register. No beat below 8, so no facilitator-premium (7/10) signature to report.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
-      "rule_lead": "Epistemic mood not punitive mood.",
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Lecture frames wrongness as productive: 'wrong in the way any first version is wrong' (line 7), 'wrong in specific, namable ways' (line 14), 'That gap turned out to be the valuable part' (line 9). No shame register anywhere. Unease = epistemic not-knowing, not having-done-wrong.",
+      "evidence": "Wrongness is framed throughout as an expected, productive condition of any first draft ('Wrong the way any first version is wrong... The gap turned out to be the valuable part'), never as student or Claude having failed. The student's own Ex1-Ex2 'partly wrong' first read is named the same way ('you let Claude read your repo, saw the wrongness, named it, corrected it') — not-knowing, not having-done-wrong.",
       "fix_hint": null,
       "blocking": false
     },
@@ -65,43 +93,43 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Section headings name positive disciplines: 'Wrong is how steering gets in,' 'The rules started doing the work,' 'Then the agents started checking the agents,' 'What you just did.' Big Idea at close is compound engineering (Klaassen) — a named positive discipline. No failure-mode title, no failure-mode lead.",
+      "evidence": "Big Idea for M1 is 'Compounding (how)' (content-strategy-agentic-engineering-101.md line 237). Title and every header name the positive discipline (steering, rules doing the work, agents checking agents, the compound loop) — no failure word (hallucination, fabrication, violation) leads any section or the title.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
-      "rule_lead": "Big Idea fidelity: M1 Big Idea honored.",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity — consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict.",
       "verdict": "PASS",
-      "evidence": "M1 Big Idea (getting-going.md): 'The first compound loop closes on a trivial bug from your own backlog.' Lecture closes that loop by naming the pattern and citing Klaassen. The lecture IS the Big Idea's summation — names what the student just did and hands it back as a recognisable loop. No competing frame smuggled in.",
+      "evidence": "Big Idea fidelity: body enacts 'Compounding (how)' directly — 'the rules compounded,' 'each pass teaches what was missing,' the compound-loop naming. Module-to-module arc: lecture correctly does not preview M2 (check_lectures §3); the actual bridge lives in `getting-going.md`'s `## Next` (\"Module 2 is where plan mode earns its keep...\"), confirming the intended separation. Mood-doesn't-resolve-early: closes on 'The loop is the shape. The bug today was the excuse' — a recognition/energy beat, not an M2-style competence-assessment beat; stays inside joyful creation throughout. Front-run check: no operational M2/M3 content is taught. Two minor non-blocking observations surfaced during this check, neither changing the verdict: (a) strategy doc line 278 states Klaassen attribution 'happens inside Claude's Ex3 retro summary... Peer recognition, not a lecture' — this file's body explicitly authors the Klaassen citation itself; the file's own maintainer block already documents this as a deliberate, reasoned deviation for reliability ('Removes the prior gamble where Klaassen's name lived only in the retro prompt and depended on Claude reliably citing him') — the private strategy doc's wording simply hasn't been synced to reflect the shipped design; (b) the line 'A subagent dispatched to check a draft is handed them in its brief' names 'subagent' before the curriculum formally introduces the term (M3, per strategy doc line 284: 'No Skill use at M1... first subagent... land together at M3') — persona trace records this as landing as a forward ceiling-glimpse, not a defect, but it is the one unscaffolded technical term in the file.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts (module-only section).",
+      "verdict": "N/A",
+      "evidence": "This is a lecture, not a module file — no student-facing 'Key Concepts' heading exists on this surface. The strategy judge owns Key Concepts coverage at the module-file level (`getting-going.md`).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
-      "rule_lead": "Module-to-module arc: M1 close hands off to M2 open.",
-      "verdict": "PASS",
-      "evidence": "Lecture close: 'The next module will extend it. The module after that will extend it again.' M1 module file Next section bridges to M2 plan-mode. Lecture does not pre-empt M2's grounded-competence teaching moment — leaves the rules file in place as the handoff artifact without explaining what M2 will do with it.",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section (module-only section).",
+      "verdict": "N/A",
+      "evidence": "No Key Concepts section on a lecture surface; N/A by structure, not judgment.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
-      "rule_lead": "Mood doesn't resolve early: joyful creation stays in register, does not preempt M2's grounded competence.",
-      "verdict": "PASS",
-      "evidence": "Close score 9/10 — joyful creation peaks, does not flatten into M2's 'I can feel when a plan is good' competence. 'Mental models only come from doing. You just did.' registers as recognition joy, not mastery-arrival. No plan-mode mention, no multi-file preview — M2's teaching moment is intact.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
-      "rule_lead": "Teaching moment lands reliably across persona variation.",
-      "verdict": "PASS",
-      "evidence": "Key teaching moment: 'That shape you just heard... is the shape you just ran on your own repo.' Depends on student having completed Ex3 (compound-and-close) before the lecture lands. For the target persona (just ran the loop), recognition fires reliably. Delivery risk if timing breaks (trainer runs lecture before Ex3) is a trainer-pacing issue, not a body failure — the arc position in getting-going.md places it correctly after Ex3.",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus (module-only section).",
+      "verdict": "N/A",
+      "evidence": "No 'What You'll Learn' section on a lecture surface; N/A by structure, not judgment.",
       "fix_hint": null,
       "blocking": false
     }
@@ -113,5 +141,5 @@
     "stealing_the_mood": []
   },
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 2
 }

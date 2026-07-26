@@ -20,8 +20,8 @@ You have a `.md` file with three to five rules about how multi-file tasks want t
 
 **Slides-only pass (2026-07-02, unaudited):** covered region DELETED (Path A). Per-passage verdicts: three-shapes prose sections CONVERTED to one slide, one bullet per shape (capability-grounded wording preserved: Slack app / `@Claude`-to-web routing, GitHub Actions `issues` events, scheduled agent — do not imply Claude Code runs inside Slack) · per-shape tail lines (steady part / policy / spec triplet) SUBSUMED by slide 2's first bullet · "Each is real; each is downstream" softener CUT · ticket-pair paragraph CUT (it depended on `extract-the-task-shaping-rule-4`, itself a `{{cut:}}` candidate; if the cull reverses, the exercise carries the connection) · "M3 starts with a feature you're shipping" bridge CUT (module `## Next` owns the bridge) · intro line KEPT as the closer's setup lede. File is now lede + two slides.
 
-**Quality:** compendium-audited 2026-07-08 (story@0fafbbe technical@0fafbbe behavior@0fafbbe pedagogy@0fafbbe strategy@0fafbbe slides@47f3357) — predates the slide rework; re-audit before ship.
-- judges @47f3357: writing grandfathered, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-07-12 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4) — predates the slide rework; re-audit before ship.
+- judges @b3143a4: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - cohorts: none yet
 

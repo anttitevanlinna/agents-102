@@ -5,10 +5,10 @@
   "training": "ae101",
   "chunk_map": [
     {"index": 0, "heading": "# Test and learn (title slide, no lede)", "lines": "1-2"},
-    {"index": 1, "heading": "Every send-off is an experiment", "lines": "3-8"},
-    {"index": 2, "heading": "The two-run arc", "lines": "9-14"},
-    {"index": 3, "heading": "Gap analysis: walk your system against the task", "lines": "15-20"},
-    {"index": 4, "heading": "Cancel is legitimate; traces are data (incl. closing kicker)", "lines": "21-28"}
+    {"index": 1, "heading": "Every send-off is an experiment", "lines": "3-9"},
+    {"index": 2, "heading": "The two-run arc", "lines": "11-15"},
+    {"index": 3, "heading": "Gap analysis: walk your system against the task", "lines": "17-21"},
+    {"index": 4, "heading": "Cancel is legitimate; traces are data", "lines": "23-27"}
   ],
   "rules_evaluated": [
     {
@@ -17,7 +17,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 2 line 12 \"Run two goes packaged, after you've read the return\" reads as ordinary descriptive language (parallel to chunk 1's \"the result is data\") given the apparatus/setup/assay/data metaphor established one slide earlier — resolvable without needing the sibling lecture reading-the-return.md. chunk 4's closer (line 27, \"Walk your system. Fill the gaps. Send it off. Read what comes back.\") reuses \"your system\"/\"the gaps\" from chunk 3, the immediately preceding slide, and \"it\"/\"what comes back\" from chunk 1's send-off framing — sequential reuse across slides of the same file, the explicitly NOT-a-violation case.",
+      "evidence": "chunk 1 'Every send-off is an experiment': line 9 now reads \"You're new to this country: the stretch where the agent runs alone and you don't watch each step. Don't travel it like a tourist.\" The appositive after the colon defines 'this country' in the same sentence, so 'it' in the next clause resolves in-chunk. This is the fix pass: prior run (2026-07-12, recorded in this file's Quality line) flagged the pre-fix wording \"You're new to this country; don't travel it like a tourist\" -- git diff on curriculum/lectures/test-and-learn.md confirms the appositive clause was inserted, replacing the bare semicolon join. Full sequential re-check of all pronouns/demonstratives across chunks 1-4: 'the result'/'that' (ch.1) resolve to the immediately preceding sentence; 'the return' (ch.2, 'after you've read the return') is arc-earned spine vocabulary -- independently grounded in this module's own pre-lecture signposting (run-the-first-experiment.md line 55 'will surface on the return at Module 5' and the Reading the return lecture link, both part of the enclosing module's prior context per the module-include-order carve-out); 'it'/'the thin spots'/'the agent' (ch.3) are named earlier in the same chunk; 'it' in 'stop it' / 'letting it run' (ch.4) refers to the agent/run established file-wide from chunk 1's apparatus framing, reused per the same-file-term carve-out. No unresolved referent remains.",
       "fix_hint": null,
       "blocking": true
     },
@@ -27,7 +27,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "First sentence/bullet of each chunk checked for positional callbacks: ch.1 'You are testing, and you are learning' (none), ch.2 'Same task, two runs' (none), ch.3 '**Gap analysis**: walk the system you have against the system the task needs' (none), ch.4 'Cancel is legitimate; traces are data' (restates own header, none). No 'the opening lecture said' style phrasing, and no file named or implied by position anywhere in the body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -37,7 +37,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No \"the X you did/saw/caught\" backward beat references appear in the body.",
+      "evidence": "No 'the X you did/saw/caught' backward-beat construction appears in the body. 'a specific gap you just saw' (ch.2, line 14) narrates the generic run-two pattern hypothetically -- part of the two-run-arc explanation, not a literal callback to a completed module beat -- so there is no dead-beat risk to check against the module's exercise set.",
       "fix_hint": null,
       "blocking": true
     },
@@ -47,7 +47,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-before-reveal / predict instruction appears anywhere in the body.",
+      "evidence": "No guess-before-reveal / predict-then-watch instruction appears anywhere in the body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -57,7 +57,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Every chunk (1-4) carries a multi-sentence or multi-bullet self-standing claim tied to its own header; none is a bare wait-state or single context-dependent bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -67,7 +67,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 4's closing kicker (line 27) is a whole-lecture recap immediately following the cancel/traces content, functioning as the deck's closer beat rather than breaking the header's summary of the slide's main content.",
+      "evidence": "'Every send-off is an experiment' (ch.1), 'The two-run arc' (ch.2), 'Gap analysis: walk your system against the task' (ch.3), and 'Cancel is legitimate; traces are data' (ch.4, restated verbatim as the chunk's own first bullet) each accurately summarize their chunk's content; no header is contradicted by its body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -77,9 +77,9 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all five sub-items across all chunks: chunk 3's \"Not a template. A question.\" is a two-part antithesis, not the banned three-part \"Not X. Not Y. Z.\" construction; no anaphora/epistrophe triples; no self-grading superlatives; no number-plus-retraction (\"fifteen to thirty minutes\" is a stated range, not a hedge-then-retract); no abstraction-noun stacks (apparatus/setup/assay/data in chunk 1 is a defining metaphor list); no empty-leg verb triplets.",
+      "evidence": "Checked all sub-items across all chunks: no 'Not X. Not Y. Z.' construction anywhere; no anaphora/epistrophe triples (ch.2's 'Run one... Run two...' is a two-item contrast, not a repeated-opener triple); no self-grading superlatives / value-prop leak; no number-with-own-retraction ('twenty minutes' and 'fifteen to thirty minutes' in ch.4 are stated plainly, never hedged then walked back); no abstraction-noun stacks (vocabulary stays concrete: agent, apparatus, rules, context, result, data, plan.md, verifier, reference artifact, thin spots); no empty-leg verb triplets -- ch.2's 'find what went wrong, watch each packaging piece close a specific gap, and send the same task again' and ch.4's 'hallucinating file paths, arguing with itself, or missing a requirement that wasn't in the prompt' are each three distinct, concrete items, not the stylized empty-leg pattern.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -87,7 +87,37 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "\"send-off,\" \"subagent,\" \"gap analysis,\" and \"trace\" are established student-facing AE101 vocabulary (used throughout run-the-first-experiment.md and walk-and-send-off.md), not maintainer/repo-only jargon like surface, firing, compendium, forcing function, beat.",
+      "evidence": "No repo/maintainer vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections-as-proper-noun) appears anywhere in the body. 'Send-off,' 'gap analysis,' and 'trace' are established AE101 student-facing vocabulary from the enclosing module's own signposting (run-the-first-experiment.md 'What You'll Learn' + 'Key Concepts'), not maintainer dialect.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Exactly one bolded span in the whole body: '**Gap analysis**' (chunk 3, line 19) at its naming, matching the handle-only spec. Chunks 1, 2, and 4 carry zero bold, consistent with the maintainer block's 2026-07-09 emphasis-pass note. Re-verified against the current expand-md.js output: single '**' pair in the body region.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "This file is wired into run-the-first-experiment.md via '[Lecture: Test and learn](lectures/test-and-learn.md)' (line 39, after The far half of the map and The agent loop, before the Walk and send off exercise). Standalone lecture includes get wrapped by wrapStandaloneInPhase (site/layouts/curriculum.js) into a .phase--lecture section, which buildDeckModel (site/layouts/slides.js) picks up for the composed Slides deck. No phase-less prose section in this body sits outside that wrapper.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering -- position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "No '## Phase N:' / '## N.' step headers or hand-numbered content ordinals appear anywhere in this file; none of its four `##` headings carry numbers.",
       "fix_hint": null,
       "blocking": true
     }

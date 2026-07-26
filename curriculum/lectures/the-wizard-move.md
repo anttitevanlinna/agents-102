@@ -4,10 +4,6 @@
 
 You've already done the hard part. You found this training because you use Claude Code regularly and you want to get further with it. That's who this training is for.
 
-Nobody here needs the "agents can write code" setup. So this training won't run one.
-
-You'll watch what's possible, not what's missing. That's the posture of the whole training.
-
 ## Context is King
 
 The same question, two answers. Two Claude chat windows. In one, the first prompt is *"What is the capital of Italy?"* Claude answers *Rome.* Then the second prompt: *"What should we have for dinner?"* Claude suggests something Italian: pasta, osso buco, risotto.
@@ -44,8 +40,8 @@ The fix happens once. The loop is what you repeat: a way of working, not one bug
 
 **Slides-only pass (2026-07-02, unaudited):** RE-CHUNK, not cull. Per-passage verdicts: unheaded intro CONVERTED to slide *Who this is for* (new heading; openers carry no setup lede) · posture line ("what's possible, not what's missing") MOVED from the demo section's close into the intro slide as a posture bullet · *Context is King* CONVERTED to one six-bullet slide, demo narration near-verbatim, guess-beat kept in original position (after both windows are narrated, before the live run) · *Where you're starting* CONVERTED one-to-one · *What you'll do today* CONVERTED; **"with plan mode used deliberately" DELETED as drift** — module Big Idea + LO say the M1 fix runs tests-first with NO plan mode (plan mode earns its keep at M2); maintainer eyeball requested · "The bug is the vehicle; the loop is the cargo" gained one mechanism sentence ("a way of working, not one fix") to pass bullet durability; the closer lecture's "loop is the shape / bug was the excuse" kicker NOT stolen. No cuts beyond the drift clause, no new theory, zero map references (M1 protected). File is now four slides.
 
-**Quality:** compendium-audited 2026-07-08 (slides@47f3357) — predates the slide rework; re-audit before ship.
-- judges @47f3357: writing grandfathered, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered, slides PASS
+**Quality:** compendium-audited 2026-07-26 (writing@9697944 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4) — predates the slide rework; re-audit before ship.
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - compendium-audited 2026-04-26 (check_writing voice-quartet Seth-Rory-Risto, check_student_facing #14, check_lectures opener, check_strategy_tie_in)
 **Meta:**

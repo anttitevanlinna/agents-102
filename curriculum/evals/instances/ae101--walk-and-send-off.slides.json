@@ -4,18 +4,16 @@
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "H1 + lede (title slide)", "lines": "1-21"},
-    {"index": 1, "heading": "Phase 1: Pick the task you'll send off", "lines": "23-45"},
-    {"index": 2, "heading": "Push back until the task is one end-to-end slice", "lines": "46-51"},
-    {"index": 3, "heading": "Phase 2: Build the ranked list of what will hurt the agent", "lines": "52-69"},
-    {"index": 4, "heading": "Read the ranked thin-spots", "lines": "70-74"},
-    {"index": 5, "heading": "Fill the worst two or three gaps", "lines": "75-92"},
-    {"index": 6, "heading": "Match each fill to its shape and home", "lines": "93-101"},
-    {"index": 7, "heading": "Push back when a fill drifts from the codebase", "lines": "102-107"},
-    {"index": 8, "heading": "Phase 3: Name your own work as observation, decision, and criterion", "lines": "108-129"},
-    {"index": 9, "heading": "Read the quoted examples first", "lines": "130-134"},
-    {"index": 10, "heading": "Settle the tree before the send-off", "lines": "135-142"},
-    {"index": 11, "heading": "What closes the module (owned by the module file's send-off)", "lines": "143-152"}
+    { "index": 0, "heading": "H1/lede — Walk and send off", "lines": "1-22" },
+    { "index": 1, "heading": "Phase 1: Pick the task you'll send off", "lines": "23-31" },
+    { "index": 2, "heading": "Push back until the task is one end-to-end slice", "lines": "32-37" },
+    { "index": 3, "heading": "Phase 2: Build the ranked list of what will hurt the agent", "lines": "38-46" },
+    { "index": 4, "heading": "Read the ranked thin-spots", "lines": "47-50" },
+    { "index": 5, "heading": "Fill the worst two or three gaps", "lines": "51-60" },
+    { "index": 6, "heading": "Match each fill to its shape and home", "lines": "61-69" },
+    { "index": 7, "heading": "Push back when a fill drifts from the codebase", "lines": "70-75" },
+    { "index": 8, "heading": "Phase 3: Settle the tree before the send-off", "lines": "76-83" },
+    { "index": 9, "heading": "What closes Module 4", "lines": "84-91" }
   ],
   "rules_evaluated": [
     {
@@ -24,7 +22,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Re-checked the two lines this fix pass touched. Chunk 3's new lead sentence 'the opening summary' / 'the ranked list' (before the {{prompt:walk-and-send-off-2}} fence) forward-references the student's own about-to-run session output — session-artifact carve-out (§1) applies, exempt. All other referents resolve within-chunk or against earlier-named chunk vocabulary (task.md, the audit, observations/) as in the prior pass.",
       "fix_hint": null,
       "blocking": true
     },
@@ -34,7 +32,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No changes from this fix pass touch a cross-file or positional callback.",
       "fix_hint": null,
       "blocking": true
     },
@@ -44,7 +42,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "FIXED this pass. Chunk 0 (line 15) no longer asserts 'compound your rules file' at the close — current text: 'At the close, send the task off, un-packaged, to the same Claude Code session.' Chunk 9 ('What closes Module 4', lines 88-90) no longer carries the two compound/push-back-summary steps that contradicted run-the-first-experiment.md's '## Send the task off'; it now reads three steps — return markers, trifecta check, send-off paste — re-verified line-by-line against that module file's live prompt sequence (locate-transcript, commit-starting-point [+ optional push], trifecta paragraph, take-task-end-to-end) and it matches in order and content. No beat referenced by either chunk is now missing from the module's current flow.",
       "fix_hint": null,
       "blocking": true
     },
@@ -54,7 +52,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No guess-before-reveal beat in this file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -64,7 +62,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Chunk 4 ('Read the ranked thin-spots', lines 47-50) is now down to a single bullet after this fix pass moved its other line into chunk 3 — checked specifically for orphan risk given the density drop. The remaining bullet ('Name which ones you already knew, which surprised you. This move is *gap analysis*: walk the system you have against the system the task needs. You'll use it for every agent hand-off.') still names and defines a framework by name and states its scope of use — a self-carrying claim, not a bare wait-state or context-dependent fragment. Not an orphan, though it is now the thinnest slide in the deck.",
       "fix_hint": null,
       "blocking": false
     },
@@ -74,7 +72,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Headers unchanged by this fix pass; re-spot-checked 'What closes Module 4' (now 3 steps, not 5) against its own header — still an accurate summary of what the chunk delivers.",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,9 +82,9 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Checked the new sentence this pass added (chunk 3: 'Heavy run expected. Skim past the opening summary; the ranked thin-spots list is the payoff. If the ranked list comes back thin, push Claude to keep digging rather than letting a shallow pass stand as done.') against all seven sub-checks — no 'Not X. Not Y. Z.' construction, no anaphora/epistrophe triple, no self-grading superlative, no number-with-retraction, no abstraction-noun stack, no empty-leg verb triplet. Clean.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -94,7 +92,37 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No repo/authorial dialect in the lines this pass added or removed.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "No new bold spans introduced by this fix pass; file's 2026-07-09 emphasis pass (maintainer block) still holds.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "File's exercise phases sit under the normal exercise structure this training composes into the deck; nothing moved outside a `.phase--exercise`-eligible section in this fix pass.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "chunks_flagged": [9],
+      "evidence": "Chunk 9's step list was renumbered 1-3 (from the prior 1-5) as part of this fix pass, dropping the two compound/push-back steps. Re-numbering is consecutive from 1 with no gap, and no other in-file prose references 'step 4' or 'step 5' by number, so no dangling content-ordinal reference resulted.",
       "fix_hint": null,
       "blocking": true
     }

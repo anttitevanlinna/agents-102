@@ -37,7 +37,8 @@ Decide the location with Claude.
 
 ## Wire the file in, check the wording
 
-- A rule off the auto-load path needs a wire. If the agent proposes a path other than `./CLAUDE.local.md`, `./CLAUDE.md`, or `~/.claude/CLAUDE.md`, ask Claude to also propose the `@import` line that wires the file in. A rule at `~/.claude/memory/task-shaping.md` (or any notes folder) sits silently on disk until something reads it; adding `@~/.claude/memory/task-shaping.md` to `~/.claude/CLAUDE.md` is what makes "fires anywhere on this laptop" actually fire.
+**Note** A rule off the auto-load path needs a wire, or it sits silently on disk until something reads it. `./CLAUDE.local.md`, `./CLAUDE.md`, and `~/.claude/CLAUDE.md` auto-load; anywhere else needs an `@import` line added to one of those three, e.g. `@~/.claude/memory/task-shaping.md` added to `~/.claude/CLAUDE.md` for a rule that lives at `~/.claude/memory/task-shaping.md`. If Claude picked a path outside the three, ask it for that `@import` line before you move on.
+
 - Read the three rules back. If any drifted from your wording, push back and have Claude rewrite.
 
 ## Phase 3: Name the automation shapes, don't build them
@@ -64,8 +65,8 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** One handle kept bold: **Refinement** at its term-earning moment (bold narrowed from the full lead sentence to the word); all other bullet leads de-bolded. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
-**Quality:** compendium-audited 2026-07-08 (writing@88a1dd4 story@0fafbbe technical@0fafbbe behavior@0fafbbe pedagogy@0fafbbe strategy@0fafbbe slides@47f3357)
-- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-07-26 (writing@9697944 story@b3143a4 technical@9697944 behavior@b3143a4 strategy@b3143a4 slides@b3143a4)
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy REVISE (1/1 see instances/ae101--extract-the-task-shaping-rule.pedagogy.json), strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - cohorts: none yet
 
@@ -83,7 +84,7 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
 - adds one rule born from a real planning session to `./CLAUDE.local.md` or `~/.claude/CLAUDE.md`
 - names the loading mechanism (auto-load vs lazy-load vs `@import`) when deciding where a rule belongs
-- deflects the build instinct toward capture-first when proposing automation against a backlog
+- when asked to automate a backlog process, states the rules-file-first order before requesting any build/code
 
 **Push-back moves:**
 - **P1 generic rules** — Claude returns rubber-stamp rules ("pick tasks that span multiple files"). Trainer push: *"name a moment from THIS session that produced that rule. If you can't, the rule is generic — push Claude for one anchored in what you actually did."*

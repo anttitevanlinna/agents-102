@@ -4,9 +4,55 @@
   "verdict": "PASS",
   "training": "ae101",
   "trace_status": "generated_first_time",
-  "prompts_evaluated": 0,
-  "prompts_findings": [],
+  "prompts_evaluated": 1,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Propose five hooks for this repo and the work we just did, beyond formatting and",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "\"No preamble. List them.\" -- in-fence suppressor present, but check_prompts.md #17 itself calls a bare 'No preamble' line only partial suppression.",
+          "fix_hint": "If a sim run ever shows preamble creeping in ahead of the list, harden to 'No preamble. Open directly with hook 1.' -- not warranted at current confidence."
+        },
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "low",
+          "evidence": "Post-fence body: \"The ones worth keeping are tied to a specific file, convention, or failure mode in this repo, not a generic team-could-want-this.\" -- satisfies the body-callout mitigation carve-out (names the failure mode, gives a selection action).",
+          "fix_hint": "No prompt edit needed -- keep this sentence paired with the fence on any future revision to this section."
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "evidence": "\"the specific thing in this repo or this session it would catch, and the line I'd skip without it\" asks Claude to name a real near-miss from its own prior work this session -- mitigated by the evidence-backed-artifact-level-specificity carve-out (named event + named trigger + named skipped line required, not a bare self-grade).",
+          "fix_hint": "If this shows up live as generic hooks dressed as specific ones, add an in-fence clause anchoring at least one hook to an actual near-miss from the session, not a theoretical one."
+        }
+      ]
+    }
+  ],
   "blocking_findings_count": 0,
-  "todos_count": 0,
-  "note": "Lecture file. Zero **Prompt** fenced blocks in body (above <!-- maintainer --> cut). No prompt-behavior surface to evaluate."
+  "todos_count": 1,
+  "rules_evaluated": [
+    {"pattern_id": "file-preservation-gap", "status": "not_fired", "why": "No file is being written or updated by this prompt -- output is a chat/code-block list ('List them'), not a file write."},
+    {"pattern_id": "reading-burden", "status": "not_fired", "why": "The post-fence curation instruction ('tied to a specific file, convention, or failure mode... not a generic team-could-want-this') is judgment-based selection among proposals, not manual proofreading of Claude's output for mechanical correctness."},
+    {"pattern_id": "niceness-tax", "status": "not_fired", "why": "This is a generative propose-task (design five hooks), not an evaluative review of existing work Claude might diplomatically soften; 'Skip suggestions any team could want' is itself an anti-genericity forcing function (check_prompts.md #44 shape), not a symptom of the pattern."},
+    {"pattern_id": "question-dump", "status": "not_fired", "why": "Prompt does not set up a Claude-led question sequence to the student; no interview shape present."},
+    {"pattern_id": "overwrite-anxiety", "status": "not_fired", "why": "No destination file is named for this prompt's output; nothing for Claude to hesitate about overwriting."},
+    {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "low"},
+    {"pattern_id": "append-vs-integrate", "status": "not_fired", "why": "No existing file/section is being extended or merged into by this prompt."},
+    {"pattern_id": "plan-mode-preamble-bloat", "status": "not_fired", "why": "No plan-mode invocation -- no permission-mode: plan in the registry frontmatter, no plan-mode language in the fence."},
+    {"pattern_id": "citation-gap-asymmetry", "status": "not_fired", "why": "No citation or sourcing request in this prompt."},
+    {"pattern_id": "self-report-inflation", "status": "not_fired", "why": "Claude is not asked to grade or summarize the outcome of prior work; it is asked to propose forward-looking infrastructure (hooks), a generative not a self-reporting task."},
+    {"pattern_id": "default-acceptance", "status": "fired", "confidence": "low"},
+    {"pattern_id": "plan-mode-approval-inflation", "status": "not_fired", "why": "No plan-mode plan is produced by this prompt."},
+    {"pattern_id": "source-type-blindness", "status": "not_fired", "why": "No source-ingestion or classification task in this prompt."},
+    {"pattern_id": "citation-cargo-cult", "status": "not_fired", "why": "No citations requested by this prompt."},
+    {"pattern_id": "self-audit-charity", "status": "fired", "confidence": "low"}
+  ],
+  "compendium_scope_note": "check_prompts.md and check_pedagogy.md are this judge's always-loaded compendiums per the template's maintenance notes, but this judge's owned verdict surface is the 15-pattern behavioral catalog in simulation-behavior.md (the compendiums supply the adjacent rule text/carve-out definitions the catalog entries are compounded from). rules_evaluated above enumerates all 15 catalog patterns with a fired/not_fired verdict and evidence or why for each -- the completeness ledger for this judge's scope. Static-rule mechanics from check_prompts.md not tied to a catalog pattern (action lead-in placement, label shape, placeholder-freedom, chain back-reference, skill-invocation-by-name, artifact-vs-STOP tail ordering, etc.) are explicitly out of this class's scope per simulation-behavior.md ('No static-rule grading... Those = technical judge') and are graded in the sibling technical-class instance, not re-litigated here.",
+  "note": "Corrects a stale prior instance at this path (prompts_evaluated: 0, 'zero **Prompt** fenced blocks') -- that read the file's RAW markdown, which carries only a {{prompt:what-packaging-is-1}} marker, not an inline fenced block. Per the judge template, the file must be expanded via scripts/expand-md.js before scanning; the expanded view resolves the marker into one canonical **Prompt** *(Claude Code)* fenced block (registry key what-packaging-is-1), above the <!-- maintainer --> cut. No sim-cache trace existed at the target path before this run, so trace_status is generated_first_time. All body-callout carve-outs in the judge template were checked against the paragraph immediately following the fence and against the evidence-backed-Debrief carve-out language for self-audit-charity. No risk reached med or high confidence; all three fired risks are low-confidence and load-bearing, which routes the per-prompt verdict to TODO per the template's verdict rules ('TODO if... confidence: low regardless'), rolling up to top-level PASS with zero blocking findings.",
+  "summary": "PASS -- the single prompt block (what-packaging-is-1, the 'propose five hooks' hand-off in the Hooks for must-happen, prompts for taste section) fires no high or med-confidence risk against the 15-pattern catalog. Three low-confidence risks logged for the record: preamble-before-action (in-fence suppressor present but only partial per the source rule), default-acceptance (mitigated by an explicit post-fence curation callout), and self-audit-charity (mitigated by the prompt's artifact-level specificity requirement on the named near-miss). Per-prompt verdict is TODO; top-level verdict is PASS. No blocking findings."
 }

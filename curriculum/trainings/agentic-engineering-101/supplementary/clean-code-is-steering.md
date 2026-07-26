@@ -18,7 +18,7 @@ That alone is a shift in role. The programmer is no longer only the person typin
 
 Then the story gets more interesting.
 
-As his Empire game grows, the AI's raw power begins to show a second face. It can make progress quickly, but the progress is not always stable. Add one feature, and another feature quietly changes. Fix one failing test, and the agent may soften a different assertion. Ask it to preserve old behavior, and it may agree, apologize, and still drift.
+As Empire (the game he's building with this two-window setup) grows, the AI's raw power begins to show a second face. It can make progress quickly, but the progress is not always stable. Add one feature, and another feature quietly changes. Fix one failing test, and the agent may soften a different assertion. Ask it to preserve old behavior, and it may agree, apologize, and still drift.
 
 This is the mercury problem: the code feels compliant, but the system is not yet trustworthy. Push it in one place, and behavior slips out somewhere else.
 
@@ -30,7 +30,7 @@ And this is where Clean Code changes meaning. In the older frame, Clean Code mea
 
 So Clean Code becomes steering.
 
-Not steering as vibes. Not steering as "write a better prompt." Steering as executable constraint. The strange thing is that the unglamorous parts of software engineering become the parts that let you move fastest.
+Steering here means executable constraint, not vibes and not a better prompt. The strange thing is that the unglamorous parts of software engineering become the parts that let you move fastest.
 
 > "Tests are no longer expensive.
 >
@@ -42,17 +42,31 @@ Not steering as vibes. Not steering as "write a better prompt." Steering as exec
 >
 > Architectural discipline is critical.", Uncle Bob, [X](https://x.com/unclebobmartin/status/2032089795766129021)
 
+## Acceptance tests catch what a request quietly breaks
+
 **Acceptance Tests.** Acceptance tests define the externally visible behavior the system must preserve. They matter more with agents because the agent is often good at satisfying the current request while accidentally altering older intent. A good acceptance test says: this is what the world must still look like from the outside when the change is done. It turns product memory into a runnable check.
+
+## Unit tests shrink the agent's room to improvise
 
 **Unit Tests.** Unit tests make small behaviors hard to casually break. They also make the agent's search space smaller. Instead of asking the model to infer every invariant from the whole codebase, the engineer gives it many small, local tripwires. When a unit test fails, the agent has a concrete signal. When the tests are absent, vague, or too broad, the agent has more room to improvise.
 
+## TDD keeps intent ahead of the code
+
 **TDD.** Test-driven development becomes a steering protocol for agentic work. The red test forces the desired behavior to be stated before implementation. The green step gives the agent a tight target. The refactor step lets the human and agent improve structure while keeping behavior pinned. This is not TDD nostalgia. It is a way to keep intent ahead of code generation.
+
+## Mutation testing checks whether the tests defend anything
 
 **Mutation Testing.** Mutation testing asks whether the tests actually defend the behavior they claim to defend. That becomes important when agents can generate large test suites that look reassuring but do not catch meaningful changes. A mutation tester breaks the code in small ways and checks whether the tests notice. In an agentic workflow, that makes it harder for a model to satisfy the appearance of testing while leaving the system weak.
 
+## Metrics are the dashboard, not the wheel
+
 **CRAP And Complexity Metrics.** CRAP scores, cyclomatic complexity, and related metrics expose code that is hard to trust under change. Agents can produce plausible-looking complexity very quickly. Metrics do not replace judgment, but they give the engineer a dashboard for where the codebase is becoming risky. In Uncle Bob's frame, this is part of the instrument panel: not the steering wheel itself, but the gauge that tells you when steering is becoming harder.
 
+## Small units leave fewer places to hide
+
 **Small Decoupled Units.** Small units with clear boundaries reduce collateral damage. This is classic Clean Code, but the agentic reason is sharper. A model operating in a large, tangled unit has many more ways to "fix" one behavior by disturbing another. A model operating in a small, decoupled unit has fewer escape routes. Modularity turns the codebase into terrain the agent can navigate without constantly falling through hidden dependencies.
+
+## Architecture needs an instrument panel too
 
 **Architecture Visibility.** Architecture remains human-owned, but it needs instruments. Dependency direction, cycles, layers, and boundaries should be visible, not merely hoped for.
 
@@ -61,6 +75,8 @@ Not steering as vibes. Not steering as "write a better prompt." Steering as exec
 > If there's some projection of the code or the system you want, get an agent to build it for you.", Uncle Bob, [X](https://x.com/unclebobmartin/status/2049225231273767154)
 
 Uncle Bob's architecture-viewer work is a clue: when agents generate code quickly, engineers need better ways to see the shape of the system. You cannot steer what you cannot perceive.
+
+## The human's job moves up, it doesn't vanish
 
 **Human Mental Model.** The agent may be excellent at tactical implementation, but the human still owns the mental model. What is the system? Where are the boundaries? Which behaviors are invariant? Which dependencies are allowed? What tradeoff is acceptable? The engineer's job moves upward, but it does not vanish. It becomes more like active management of intent, evidence, and structure.
 
@@ -94,8 +110,8 @@ The more powerful the coding agent, the more important the steering system.
 
 **Source-access note:** original X pages may require login or be intermittently inaccessible; the X messages are linked in context in the body. Research pass also used public mirrors, a Security Now transcript, Uncle Bob's `arch-view` repository, and adjacent practitioner writing from Simon Willison and Armin Ronacher.
 
-**Quality:** compendium-audited 2026-05-03 (writing@bb9c1d5 story@bb9c1d5 technical@bb9c1d5)
-- judges @bb9c1d5: writing PASS, story PASS, technical PASS, behavior N/A (no-student-prompt-blocks)
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@9697944 slides@9697944)
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).** All seven Uncle Bob blockquotes verified verbatim via the X oEmbed endpoint 2026-05-25 (x.com 402s to direct fetch; oEmbed returns author + text — see `reference_x_content_fetch_workaround.md`). X posts Mar–Apr 2026; `due:cohort` = re-confirm freshness + resolution at each delivery.
 - `[checked:2026-05-25 result:OK due:cohort]` https://x.com/unclebobmartin/status/2016166910698696916 — [practitioner direct] two-window split (plan dir / code dir, manual pull-push). oEmbed-verified.

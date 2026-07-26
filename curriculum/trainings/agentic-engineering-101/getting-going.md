@@ -63,9 +63,9 @@ Optional. Both sit in the gap between Module 1 and Module 2. Do them and Module 
 
 **Ticketing → homework (this pass):** the connector + ticket close-out moved from Ex3 (`compound-and-close`) to the `close-the-ticket` homework exercise. Body reframed: Big Idea, the Compound LO, the closing Key Concept, a new `## Homework` section, runtime rebalanced. Per-class Quality SHAs below predate the reframe — re-audit before ship.
 
-**Quality:** compendium-audited 2026-07-08 (writing@1a9e10b story@1a9e10b technical@1a9e10b behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b slides@47f3357)
-- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @1765c51: PASS — override-§3-student-noted-path-by-design-§5-contract-row-added-see-instances/ae101--prework-M1-M3.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust]
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@9697944 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@9697944 slides@b3143a4)
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module: PASS see instances/ae101--prework-m6.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

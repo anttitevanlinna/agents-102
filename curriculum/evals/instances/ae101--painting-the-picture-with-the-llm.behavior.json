@@ -1,0 +1,30 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/painting-the-picture-with-the-llm.md",
+  "verdict": "PASS",
+  "training": "ae101",
+  "trace_status": "generated_first_time",
+  "prompts_evaluated": 0,
+  "prompts_findings": [],
+  "blocking_findings_count": 0,
+  "todos_count": 0,
+  "catalog_coverage": [
+    {"pattern_id": "file-preservation-gap", "status": "not_fired", "why": "No **Prompt** fenced block exists in this file (expanded via scripts/expand-md.js -- no {{prompt:<key>}} markers either); the lecture is pure narrative prose (three ## slides + kicker), so no prompt shape can invite this risk."},
+    {"pattern_id": "reading-burden", "status": "not_fired", "why": "No prompt block; no manual-proofread-of-Claude's-output ask exists in the file."},
+    {"pattern_id": "niceness-tax", "status": "not_fired", "why": "No prompt block; no RLHF-softening surface to grade."},
+    {"pattern_id": "question-dump", "status": "not_fired", "why": "No prompt block; no question-sequence ask exists."},
+    {"pattern_id": "overwrite-anxiety", "status": "not_fired", "why": "No prompt block; no file-write destination is named anywhere in the file."},
+    {"pattern_id": "preamble-before-action", "status": "not_fired", "why": "No prompt block; nothing directs Claude to act this turn."},
+    {"pattern_id": "append-vs-integrate", "status": "not_fired", "why": "No prompt block; no add-a-section ask exists."},
+    {"pattern_id": "plan-mode-preamble-bloat", "status": "not_fired", "why": "No prompt block; plan mode is not invoked anywhere in the file (no permission-mode frontmatter, no plan-mode language)."},
+    {"pattern_id": "citation-gap-asymmetry", "status": "not_fired", "why": "No prompt block; no citation/sourcing request exists (the maintainer-block Godin attribution is a source-verification note, not a prompt asking Claude to cite)."},
+    {"pattern_id": "self-report-inflation", "status": "not_fired", "why": "No prompt block; Claude is never asked to grade its own work."},
+    {"pattern_id": "default-acceptance", "status": "not_fired", "why": "No prompt block; no offered-defaults surface exists."},
+    {"pattern_id": "plan-mode-approval-inflation", "status": "not_fired", "why": "No prompt block; no plan-mode plan is produced anywhere in the file."},
+    {"pattern_id": "source-type-blindness", "status": "not_fired", "why": "No prompt block; no source-ingestion task exists."},
+    {"pattern_id": "citation-cargo-cult", "status": "not_fired", "why": "No prompt block; no citation-generation ask exists."},
+    {"pattern_id": "self-audit-charity", "status": "not_fired", "why": "No prompt block; no self-critique ask exists."}
+  ],
+  "note": "This file is a lecture opener with zero **Prompt** fenced blocks and zero {{prompt:<key>}} markers -- confirmed by running node scripts/expand-md.js against the target and grepping the expanded output for '**Prompt**' (0 matches). The body is three ## narrative slides ('The LLM mirrors your stance', 'You prime, the LLM scales', 'Two frontiers: how fast, and the right things') plus a one-line kicker ('Let's go.'), all pure prose -- no student-copied artifact anywhere in the file. This is consistent with the file's own Quality maintainer line ('judges @47f3357: ... behavior grandfathered ...'), which already records that the behavior class has nothing to evaluate on this file. Per the judge template's scope ('For each **Prompt** fenced code block in the body...'), the correct verdict on an empty prompt set is PASS with prompts_evaluated: 0, not REVISE or a skip -- there is no risk surface for the 15-pattern catalog to fire against. No trace cache existed at curriculum/evals/sim-cache/ae101--painting-the-picture-with-the-llm.behavior.json prior to this run; trace_status is generated_first_time. content_sha is computed against the EXPANDED file view per the template's instruction, even though expansion was a no-op here (no markers to resolve).",
+  "summary": "PASS -- zero **Prompt** fenced blocks in this lecture file (verified via scripts/expand-md.js expansion, 0 matches). The 15-pattern behavioral-risk catalog has no prompt shape to fire against; catalog_coverage records all 15 patterns as not_fired with the empty-file reason. prompts_evaluated: 0, blocking_findings_count: 0, todos_count: 0. This matches the file's existing Quality stamp ('behavior grandfathered') and requires no change to that stamp -- behavior class continues to have nothing to grade on this file until a prompt block is added."
+}

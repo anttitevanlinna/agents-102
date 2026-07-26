@@ -4,10 +4,10 @@
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "Prove the bug, then ship the fix (H1/lede)", "lines": "1-11"},
-    {"index": 1, "heading": "Write the failing test and fix the root cause", "lines": "13-28"},
-    {"index": 2, "heading": "Read the diff and push back on a line", "lines": "30-33"},
-    {"index": 3, "heading": "Interrogate the fix for a deeper layer", "lines": "35-55"},
+    {"index": 0, "heading": "Prove the bug, then ship the fix (H1/lede)", "lines": "1-12"},
+    {"index": 1, "heading": "Write the failing test and fix the root cause", "lines": "13-29"},
+    {"index": 2, "heading": "Read the diff and push back on a line", "lines": "30-34"},
+    {"index": 3, "heading": "Interrogate the fix for a deeper layer", "lines": "35-56"},
     {"index": 4, "heading": "Ship the PR", "lines": "57-65"}
   ],
   "rules_evaluated": [
@@ -88,6 +88,36 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Chunk 0's widget-chrome labels (**Time:**, **What you do:**, **What you build:**, **The point:**) and chunk 3/4's **Optional.**/**What happened:** labels, plus the chunk-1 blockquote's bold lead (\"Small fix, small test.\"), are the corpus-wide exercise-template convention (36 exercise files share it), not narrative-bullet bold; only one narrative handle survives per the 2026-07-09 emphasis pass, chunk 1's \"Tests-first, root-cause-driven.\" — consistent with the maintainer note's own attestation. No whole-lead-sentence bold found on any bullet.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "File is a standard exercise linked from getting-going.md's include list; site/layouts/slides.js wraps exercises in .phase--exercise (confirmed lines ~195-269), so the whole body reaches the composed Slides deck. No prework/supplementary/reference-shaped section at risk of being dropped.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "No hand-numbered or \"Phase N:\"/\"N.\" step headers in this file; `node scripts/check-slide-numbering.js` reports \"OK — 58 files, Phase/Step numbering consistent\" corpus-wide, nothing flagged for this file.",
       "fix_hint": null,
       "blocking": true
     }

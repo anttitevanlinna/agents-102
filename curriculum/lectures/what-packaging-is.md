@@ -206,7 +206,7 @@ Packaging is choosing which of these fixes stand without you.
 ## The three-pattern
 
 - Practitioners running multi-hour coding agents converge on the same three pieces. Different posts, different vocabulary, same shape over the last six months. Armin Ronacher names *reference* and *verifier* in his work; *plan.md* lands harder in Geoffrey Huntley's Ralph practice and Kieran Klaassen's plan-as-artifact. The three-pattern is what the convergence looks like assembled, and on the map it is what stands in for you at Verification.
-- **Reference artefact**, against goal drift. A spec the agent reads and re-reads: success criteria, pointers at the relevant memory, named constraints. The spec on disk stays readable mid-run when the buried instructions in the conversation no longer are. In Ronacher's MiniJinja port, the original Rust snapshot tests played this role; in your re-send, the reference you assembled at Phase 4 plays it.
+- **Reference artefact**, against goal drift. A spec the agent reads and re-reads: success criteria, pointers at the relevant memory, named constraints. The spec on disk stays readable mid-run when the buried instructions in the conversation no longer are. In Ronacher's MiniJinja port, the original Rust snapshot tests played this role; in your re-send, the reference you assembled plays it.
 - **plan.md** the agent owns and mutates, against context rot. A working document that holds durable state across the run: the agent reads it at every session boot, updates it as decisions land, re-reads it when the working window fills. What got ruled out an hour ago is written down, not remembered. Geoffrey Huntley's Ralph technique bootstraps entire greenfield projects on this single primitive.
 
 ## The verifier decides pass without you
@@ -220,7 +220,7 @@ Three failures you named, three pieces, one each.
 - **Background-agent verifier.** A separate Claude session reads the produced work and judges it. Right when failures are qualitative: does this answer the question, does this match house style.
 - **Deterministic shell hook.** Tests, lint, type-check, compile, a custom invariant. Right when the failure has a true-false answer: did it break the build, did it touch the wrong directory.
 - **Ralph re-feed.** Loop the prompt with a check baked in; the agent re-runs against its own output until the check passes. Right when drift is the dominant failure and re-anchoring catches it.
-- The menu is practitioner-lived. Boris Cherny (who built Claude Code) reaches for all three in his long-running practice; the menu form is the synthesis. You picked one at Phase 3 against your dominant failure. The other two sit alongside the three-pattern for next time.
+- The menu is practitioner-lived. Boris Cherny (who built Claude Code) reaches for all three in his long-running practice; the menu form is the synthesis. You picked one against your dominant failure. The other two sit alongside the three-pattern for next time.
 
 ## Hooks always fire
 
@@ -230,7 +230,7 @@ Three failures you named, three pieces, one each.
 ## Hooks for must-happen, prompts for taste
 
 - **Must happen goes in a hook**; recommended stays in a prompt or rule. Anything that breaks the work if it skips belongs in a hook: the verifier you just wrote, a pre-commit guard, a session-start context loader. Anything taste-shaped or context-dependent stays in a prompt where the LLM weighs it. Hooks are the runtime's "I will not forget," bought at the cost of flexibility.
-- Your repo has demands that don't show up in someone else's article. The verifier you built was one hook against one failure; the same primitive maps to more. In the session where you built the verifier, ask Claude to propose five hooks tied to this repo and the work you just did, beyond formatting and linting.
+- Your repo has demands that don't show up in someone else's article. The verifier you built was one hook against one failure; the same primitive maps to more. Ask Claude to propose five hooks tied to this repo, beyond formatting and linting.
 
 {{prompt:what-packaging-is-1}}
 
@@ -251,7 +251,7 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 ## At org scale: Intercom's tiers
 
 - Intercom published its own numbers. Darragh Curran (Intercom engineering) wrote "2x, nine months later" in April 2026. His R&D org runs a tiered review structure with auto-approval at the lowest tier: 19.2% of pull requests auto-approved with no human reviewer, merging in 14.6 minutes against an org median of 75.8, and 86% of the auto-approved PRs at 20 lines or fewer.
-- That is your verifier from Phase 3, scaled to an R&D org of roughly 500. Same shape: a check trusted enough that the work passing it ships without a human read. The tiers are an org deciding where a check's word is enough.
+- That is your verifier, scaled to an R&D org of roughly 500. Same shape: a check trusted enough that the work passing it ships without a human read. The tiers are an org deciding where a check's word is enough.
 - Review infrastructure grows by accretion. One engineer's trusted check becomes a team's, one engineer at a time, until what the team runs on has Intercom's shape. It starts at the size of the one you built.
 
 <!-- maintainer -->
@@ -264,8 +264,8 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 
 **§3 disposition (was 4×M5 + 5×M6 above the fence; now zero):** "walked into M5" → lede recast without ref · "start of M5" (failure modes) → folded into slide-1 mapping bullets · "M5 teaches the extend camp" → "the extend camp is the one you just ran" · "Bridge to M6" (all 5×M6 + "M5 asks") → module file `## Next` per §3; no refs remain above the fence.
 
-**Quality:** compendium-audited 2026-07-08 (writing@2b5ae1b story@2b5ae1b technical@2b5ae1b behavior@2b5ae1b pedagogy@2b5ae1b strategy@2b5ae1b slides@47f3357) — predates the slides-only rework; re-audit before ship.
-- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-07-26 (writing@9697944 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@9697944) — predates the slides-only rework; re-audit before ship.
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - source-freshness stamped 2026-05-25; MiniJinja / getpushtoprod / how-Every-codes stamps re-verified 2026-07-02 (stamps in Source verification block; run `source-freshness.sh --target <cohort-date>`).
 **Lecture meta:** *10–15 min closing lecture for M5, deck-shaped. Names the three-pattern after you have built each piece. Earns the name from felt evidence, not from a slide deck delivered cold. The M6 bridge lives in the module file's `## Next`, not here.*

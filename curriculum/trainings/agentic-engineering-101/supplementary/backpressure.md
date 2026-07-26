@@ -49,3 +49,6 @@
 **Source verification — MUST DO before first cohort:**
 - `[checked:2026-07-02 result:OK due:2027-01-02]` https://www.lucasfcosta.com/blog/backpressure-is-all-you-need — [practitioner direct] (Lucas F. da Costa, 2026-05-23). Byline, date, and the quoted sentence verified verbatim 2026-07-02. fallback: paraphrase as "practitioners now frame the human as the default backpressure" without quote.
 - The 0.85/ten-steps arithmetic is an illustration, not an empirical claim (subjunctive framing in body is deliberate — keep it; the body labels it "an illustration, not a measurement"). Do NOT let edits promote it to a measured constant (zombie-stat guard, `theory-audit.md` § Family A).
+
+**Quality:** compendium-audited 2026-07-12 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
+- judges @b3143a4: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

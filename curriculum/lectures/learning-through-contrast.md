@@ -32,8 +32,8 @@ The run shows you what no benchmark can.
 **§3 judgment (cross-module refs in body):** carve-out HOLDS, partially — the lecture's subject IS the contrast arc (M4 baseline → this module's learn → the encode; the lecture is named for it), so the backward anchor "close of M4" and the backward arc legs "M4 was the test. This is the learn." are constitutive, not incidental sequencing; they stay. The forward leg ("M6 will be the encode") was incidental sequencing — the module file's `## Next` owns that bridge — rewritten to name what the encode IS without the module number. Incidental self-refs dispositioned in the same pass: "the move M5 asks of you" / "M5 holds that reflex off" → "this module"; "the re-send at the end of M5" → "the end of this module". No other M-refs above the fence.
 - section-3 sweep 2026-07-02: 3 cross-module refs judged, 1 fixed (forward "M6 will be the encode" → "The encode turns what the read finds into durable checks"; the M6 bridge lives in `learn-from-the-test.md` `## Next`, confirmed present), 2 carve-out ("close of M4" + "M4 was the test" — arc-subject lecture, backward anchors). Self-refs ("this module" ×2) OK.
 
-**Quality:** compendium-audited 2026-07-08 (writing@1ff6f8a story@1ff6f8a behavior@1ff6f8a pedagogy@1ff6f8a strategy@1ff6f8a slides@47f3357) — predates the slides-only rework; re-audit before ship.
-- judges @47f3357: writing PASS, story PASS, technical REVISE (1/0 see instances/ae101--learning-through-contrast.technical.json - /context replaces UI-location claim 2026-05-15), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@9697944 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4) — predates the slides-only rework; re-audit before ship.
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Word count:** ~330 words body (post-rework).
 
@@ -45,8 +45,8 @@ The run shows you what no benchmark can.
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 - `[checked:2026-05-25 result:OK due:2026-11-17]` https://github.com/sirmalloc/ccstatusline — [operational tool] Claude Code status-line w/ context-usage widgets; live, maintained. fallback: name the capability generically ("a status-line tool that shows live context %") if the repo moves.
-- Three failure modes: convergent practitioner vocabulary (no URL), sourced via the 2026-04-21 long-running OODA at `continuous-research/platform-watch/coding-agents/runs/2026-04-21-practitioner-long-running.md`. Convergence IS the citation; confirm against pre-read attribution at delivery, must NOT diverge.
-- `/compact at ~60%`: convergent practitioner pattern (no URL), sourced via `continuous-research/platform-watch/coding-agents/runs/2026-04-23-scaling-session-length-2-platform-mechanics.md`. No single name.
+- `[checked:2026-07-26 result:OK due:cohort]` convergent:three-failure-modes — [practitioner analysis] goal drift / context rot / plausible-but-wrong, convergent vocabulary sourced via the 2026-04-21 long-running OODA at `continuous-research/platform-watch/coding-agents/runs/2026-04-21-practitioner-long-running.md` (L3, ~8 independents). Confirm against pre-read attribution at delivery, must NOT diverge. fallback: name the three lenses without single attribution.
+- `[checked:2026-07-26 result:OK due:cohort]` convergent:compact-at-60-percent — [practitioner analysis] (3 independent posts, L2-strong) manual `/compact` at ~60% before quality degrades, sourced via `continuous-research/platform-watch/coding-agents/runs/2026-04-23-scaling-session-length-2-platform-mechanics.md`. No single name. fallback: describe as "a manual compaction habit practitioners converge on" without the specific percentage.
 
 **Frameworks attributed:**
 - **Three failure modes** — convergent practitioner vocabulary; pre-read carries the citation.

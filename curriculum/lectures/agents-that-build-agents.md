@@ -6,13 +6,13 @@ The map you just drew ended on a dashed loop, yours to draw solid. This is the m
 
 Two skills, two sources, same move. The first, at M3, packaged a piece of judgement you had carried for years (how to write a good test). The second, at M6, packaged a piece of judgement you had earned over two runs of the same task. Each skill made the next run cheaper.
 
-The flywheel turns once more when you hand the agent the move itself. Not "write me a skill." Not "improve my setup." Ask it for a handoff prompt: one you paste into a fresh session later, that studies your work across your repos for the shapes you repeat, draws the ones worth packaging, and authors a skill for each. The same move you just practiced, widened to everything you do.
+The flywheel turns once more when you hand the agent the move itself. Ask it for a handoff prompt: one you paste into a fresh session later, that studies your work across your repos for the shapes you repeat, draws the ones worth packaging, and authors a skill for each. The same move you just practiced, widened to everything you do.
 
 What comes back is a candidate. You read it the way you read any prompt the agent drafts: judgement, push-back, taste. Some of it will be obvious. Some of it will be off. One or two lines will be moves you would not have written on your own.
 
 ## The agent stops where your judgement begins
 
-Not the agent writing its own skills without you in the room. At the start of this training, you might have hoped that was the destination. At the close of M6, you know it is not. Agents that build agents is a collaboration in the same shape every other beat in this training has been a collaboration. Claude proposes, you steer.
+Not the agent writing its own skills without you in the room. At the start of this training, you might have hoped that was the destination. At the close of M6, you know it is not. Agents that build agents is a collaboration in the same shape every other part of this training has been a collaboration. Claude proposes, you steer.
 
 The agent's evidence stops at the disk. It can read the artefacts the loop produced. It cannot read the codebase knowledge in your head, the political situation around the team kit, the next quarter's roadmap, the bug your tech lead lost three days to last sprint. The plan it generates is grounded in the evidence on disk; the decision about which proposals to act on is grounded in evidence the agent does not have.
 
@@ -54,8 +54,8 @@ The training closes. The flywheel does not.
 
 **Lede re-anchor (2026-07-03):** M6 closing sequence re-sequenced — *The map filled in* now sits between *The loop has a name* and this lecture, which is DEAD-LAST (training's final beat). Old lede opened *"The closer named the flywheel in one line"* — a back-reference to *The loop has a name* as the immediately-preceding lecture, now stale. Re-anchored to pick up from the map lecture's *"the next dashed loop is yours to draw solid"* hand-off; flywheel kept as theme (*"named a few beats back"*, not an adjacency claim). *Where the loop ends* beat unchanged. Placement block below still describes the pre-re-sequence chain — re-verify against the module file before ship.
 
-**Quality:** compendium-audited 2026-07-08 (writing@182969a story@182969a technical@6ab470b behavior@6ab470b pedagogy@182969a strategy@182969a slides@47f3357) — predates the slide rework; re-audit before ship.
-- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@9697944) — predates the slide rework; re-audit before ship.
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - sim-passed 2026-05-31 (three-persona sim + handoff-generator live-test @182969a): generated handoff is cold-safe — named shapes carried, on-disk `session-shaper` referenced as the worked example, repos re-studied, no placeholders. Sim-grade (constructed M6 context); a real-cohort live-test on an actual M6 close is still owed — no cohort has run it yet. Per-class instances at `curriculum/evals/instances/ae101--agents-that-build-agents.<class>.json`. Predates the slide rework.
 

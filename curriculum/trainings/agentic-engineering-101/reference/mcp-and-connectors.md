@@ -2,7 +2,7 @@
 
 Flat lookup. How to wire your agent to a ticket tracker (and other outside-the-repo systems) in Claude Code. Updated as the install surface changes; the exercise body stays stable.
 
-**Last verified: 2026-05-14** against Claude Code MCP docs, Atlassian remote MCP server docs, Linear MCP changelog, GitHub MCP server repo, local `claude mcp add --help`.
+**Last verified: 2026-07-26** (cohort-driven re-test; see the maintainer `Source verification` block for the per-source stamp) against Claude Code MCP docs, Atlassian remote MCP server docs, Linear MCP docs, GitHub MCP server repo, local `claude mcp add --help`.
 
 ## Three paths to a work-app action
 
@@ -43,7 +43,7 @@ Trailing slash is canonical. Requires a GitHub fine-grained Personal Access Toke
 
 ## Jira — Atlassian Rovo MCP (official)
 
-Atlassian's Rovo MCP Server hit GA on 2026-02-04, covering Jira, Confluence, Compass, and Bitbucket (Jira Service Management rides on Jira). OAuth 2.1 flow. Docs: [support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server](https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/).
+Atlassian's Rovo MCP Server hit GA on 2026-02-04, covering Jira, Confluence, Compass, Bitbucket, and Jira Service Management. Jira, Confluence, Compass, and Bitbucket tools use OAuth 2.1; JSM ships its own read/write scopes, API-token auth only. Docs: [support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server](https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/).
 
 **Easiest path: Claude.ai inheritance.** Add Atlassian at [claude.ai/customize/connectors](https://claude.ai/customize/connectors), complete OAuth, then start a Claude Code session logged in to the same account. The connector appears in `/mcp`. No `claude mcp add` needed. On Team and Enterprise Claude.ai plans, only admins can add at this surface.
 
@@ -61,7 +61,7 @@ Browser opens; you sign in to your Atlassian org; scopes approve at user level. 
 
 **Note:** the older `https://mcp.atlassian.com/v1/sse` endpoint stops working 2026-06-30 per [Atlassian's support docs](https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/). The current canonical endpoint is `/v1/mcp/authv2`.
 
-**Sources:** [Atlassian Rovo MCP docs](https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/) · [Atlassian admin console](https://admin.atlassian.com/) · [Composio (Jira MCP bridge)](https://composio.dev/)
+**Sources:** [Atlassian Rovo MCP docs](https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/) · [JSM supported tools](https://support.atlassian.com/atlassian-rovo-mcp-server/docs/supported-tools/) · [Atlassian admin console](https://admin.atlassian.com/) · [Composio (Jira MCP bridge)](https://composio.dev/)
 
 ## Linear — first-party MCP (official)
 
@@ -138,18 +138,19 @@ Bump the **Last verified** date at the top. Note what changed in the commit mess
 
 **Source verification (2026-05-14, subagent fact-check pass):** 22 claims checked against authoritative sources — 1 FAIL (`/plugin` Discover-tab GUI contradicted "no GUI marketplace" framing — rewritten), 3 DRIFTs (Rovo coverage list, Atlassian admin-gating absoluteness, managed-settings filename framing — all softened), 16 PASS, 1 UNVERIFIED-adjacent (Linear "no admin gate" matches practitioner behavior; changelog doesn't quote the negation — left as-is).
 
-**Source verification (2026-05-14):**
-- Claude Code MCP docs: https://code.claude.com/docs/en/mcp `[platform docs]` — confirms `claude mcp add --transport http <name> <url>` + `--header` flag shape; SSE transport deprecated in favour of HTTP; documents Claude.ai connector inheritance ("MCP servers you've added in Claude.ai are automatically available in Claude Code") and the `ENABLE_CLAUDEAI_MCP_SERVERS=false` opt-out; documents `managed-mcp.json` as the canonical enterprise-policy filename with OS-specific install paths and exclusive-control semantics
-- Atlassian remote MCP server docs: https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/ `[platform docs]` — canonical endpoint `/v1/mcp/authv2`; `/v1/sse` sunset 2026-06-30
-- Linear MCP: https://linear.app/changelog `[platform docs]` — endpoint `https://mcp.linear.app/mcp`; `/sse` deprecated
-- GitHub MCP server: https://github.com/github/github-mcp-server `[platform docs]` — endpoint `https://api.githubcopilot.com/mcp/` (trailing slash canonical); fine-grained PAT, scopes per repo access required
-- Anthropic Directory: https://claude.ai/directory `[platform docs]` — replaces the older `modelcontextprotocol.io/servers` URL referenced before 2026-Q2; reviewed connector listings; same MCP infrastructure as Claude Code
-- Claude.ai connector panel: https://claude.ai/customize/connectors `[platform docs]` — install surface for connectors that inherit into Claude Code; Team/Enterprise admin-gated
-- `gh` CLI: https://cli.github.com `[platform docs]`
-- Composio Jira MCP bridge: https://composio.dev/ `[third-party bridge docs]` (the old `/content/jira-mcp-server` deep link 404s as of 2026-05-25)
+**Source verification:**
+- `[checked:2026-07-26 result:OK due:cohort]` https://code.claude.com/docs/en/mcp — [capability] Claude Code MCP docs: confirms `claude mcp add --transport http <name> <url>` + `--header` flag syntax; SSE transport deprecated in favour of HTTP; documents Claude.ai connector inheritance ("MCP servers you've added in claude.ai... are automatically available in Claude Code") and the `ENABLE_CLAUDEAI_MCP_SERVERS=false` opt-out; confirms `managed-mcp.json` as the canonical enterprise-policy filename (Managed MCP configuration section). fallback: re-derive syntax from `claude mcp add --help`.
+- `[checked:2026-07-26 result:OK due:cohort]` https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/ — [capability] Atlassian remote MCP server docs: canonical endpoint `/v1/mcp/authv2`; page names Jira, Jira Service Management, Confluence, and Bitbucket as separately covered products, JSM not folded into Jira. fallback: re-derive endpoint from the `/mcp` panel.
+- `[checked:2026-07-26 result:OK due:cohort]` https://support.atlassian.com/atlassian-rovo-mcp-server/docs/supported-tools/ — [capability] JSM supported-tools docs: `read_jsm`/`write_jsm` are dedicated tools with their own permission scopes; API-token authentication only, no OAuth. fallback: drop the JSM parenthetical rather than guess if this changes.
+- `[checked:2026-07-26 result:OK due:cohort]` https://linear.app/docs/mcp — [capability] Linear MCP docs: endpoint `https://mcp.linear.app/mcp` (read-only variant at `/mcp/readonly`); `/sse` is a deprecated fallback for clients without Streamable HTTP support. fallback: re-derive endpoint from the `/mcp` panel.
+- `[checked:2026-07-26 result:OK due:cohort]` https://github.com/github/github-mcp-server — [capability] GitHub MCP server repo: endpoint `https://api.githubcopilot.com/mcp/` (trailing slash canonical, cross-confirmed against Claude Code's own MCP docs example); OAuth is the default flow, fine-grained PAT via `Authorization` header the documented alternative. fallback: confirm via `/mcp` after install.
+- `[checked:2026-07-26 result:BLOCKED due:cohort]` https://claude.ai/directory — [capability] Anthropic Directory: direct fetch 403s (login-gated); role as the reviewed-connector catalog independently confirmed via the Claude Code MCP docs entry above ("Browse reviewed connectors in the Anthropic Directory... use the same MCP infrastructure as Claude Code"). fallback: verify logged in.
+- `[checked:2026-07-26 result:BLOCKED due:cohort]` https://claude.ai/customize/connectors — [capability] Claude.ai connector panel: direct fetch 403s (login-gated); install surface + Team/Enterprise admin-gating independently confirmed via the Claude Code MCP docs entry above. fallback: verify logged in.
+- `[checked:2026-07-26 result:OK due:cohort]` https://cli.github.com — [capability] `gh` CLI homepage, confirms the tool and its scope. fallback: none needed, stable tool identity.
+- `[checked:2026-07-26 result:OK due:cohort]` https://composio.dev/ — [third-party bridge docs] Composio Jira MCP bridge: homepage live; the `/content/jira-mcp-server` deep link that 404'd on 2026-05-25 now resolves (200, "How to connect Jira MCP and Claude Code..."). fallback: link the homepage, not the deep link, if it rots again.
 
 **Why a reference file and not inline in the exercise:**
 Claude Code's MCP surface moves. Atlassian deprecates endpoints. New connectors land monthly. If the exercise body carries install specifics, every cohort delivery ships against stale instructions within a quarter. The reference file is the single point of update; exercises point at it; students get current instructions without editorial churn.
 
-**Quality:** compendium-audited 2026-05-03 (story@bb9c1d5 behavior@bb9c1d5)
-- judges @bb9c1d5: writing grandfathered, story PASS, technical grandfathered, behavior PASS
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@9697944 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

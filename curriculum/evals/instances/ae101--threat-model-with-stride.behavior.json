@@ -3,17 +3,119 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/threat-model-with-stride.md",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "full_regen",
+  "trace_status": "cached",
   "prompts_evaluated": 4,
   "prompts_findings": [
-    {"prompt_index": 1, "prompt_lead": "Invoke the stride skill on the access-surface map from the previous exercise (pa", "verdict": "PASS", "load_bearing": true, "risks_fired": [{"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Tool-call structure compresses preamble.", "fix_hint": "No edit."}]},
-    {"prompt_index": 2, "prompt_lead": "Walk me through picking the load-bearing STRIDE category for this feature. Start", "verdict": "PASS", "load_bearing": true, "risks_fired": [{"pattern_id": "default-acceptance", "confidence": "med", "evidence": "Body callout names recovery move.", "fix_hint": "No edit; body-callout mitigation present."}]},
-    {"prompt_index": 3, "prompt_lead": "Write an ADR for the hardening decision we just made. Use my repo's ADR conventi", "verdict": "PASS", "load_bearing": true, "risks_fired": [
-      {"pattern_id": "overwrite-anxiety", "confidence": "low", "evidence": "Show-before-save gate.", "fix_hint": "No edit."},
-      {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Body callout addresses compliance-voice drift.", "fix_hint": "No edit."}
-    ]},
-    {"prompt_index": 4, "prompt_lead": "Will ADRs auto-load to future sessions?", "verdict": "PASS", "load_bearing": false, "risks_fired": []}
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Run the security-tools skill first as a quick pre-flight to verify the local env",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {"pattern_id": "preamble-before-action", "confidence": "med", "evidence": "Six chained sub-steps in one fence (run security-tools pre-flight, invoke stride, run it in a subagent, save the threat list, flag high-severity, report skill-load status) with no 'No preamble.' suppressor as the fence's last line and no body primer after the fence naming preamble + a skim-past cue — meets check_prompts.md §17's 4+-named-sub-step structural trigger.", "fix_hint": "Add 'No preamble.' as the fence's last line, or a short body primer after the fence naming the preamble + skim-past cue — without touching the body's deliberately-absent lead-in that carries the security-tools easter egg (maintainer note: do not spoil)."},
+        {"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "'Report whether or not the stride skill loaded in the subagent' and 'confirm the stride pass ran on that file' ask Claude to self-attest subagent execution status without naming what evidence (a quoted tool-invocation line, the subagent's own confirmation text) the attestation should point to.", "fix_hint": "Name the evidence to quote when confirming skill-load (e.g. 'quote the line in the subagent's output showing stride was invoked') rather than accepting a bare yes/no self-report."}
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Walk me through picking the load-bearing STRIDE category for this feature. Start",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {"pattern_id": "default-acceptance", "confidence": "med", "evidence": "Claude proposes the incident story, STRIDE mapping, and hardening shape in one pass; body callout immediately after the fence — 'Push back if the story doesn't fit your codebase's reality' — names the failure mode and gives the student a recovery move, per the default-acceptance body-callout mitigation carve-out.", "fix_hint": "No edit needed — the body callout already neutralises the risk per the carve-out."},
+        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "4 named checkpoints in one fence (propose incident story, map to STRIDE class, name the threat, propose hardening shape) meets check_prompts.md §17's 4+-named-sub-step structural trigger; no in-fence suppressor and no body primer naming preamble specifically (the post-fence callout addresses story-fit pushback, not narration-skipping). Not flagged in the prior cached trace — corrected here. Confidence held at low rather than the med applied to Prompts 1/3 because 'Walk me through picking…' explicitly asks for a narrated walk: some framing narration is the requested response shape, not unwanted throat-clearing ahead of a side-effecting action (file write / subagent dispatch) the student is waiting on.", "fix_hint": "Optional — a body primer naming preamble + a skim-past cue would close the rule-17 gap fully, but low confidence means this is not a ship-blocker."}
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Write an ADR for the hardening decision we just made. Use my repo's ADR conventi",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {"pattern_id": "preamble-before-action", "confidence": "med", "evidence": "Eight named sub-steps in one fence (check convention, fall back to default path, ground Context, ground Decision, ground Consequences, ground Alternatives, save, show diff) with no 'No preamble.' suppressor; the body section right after the fence discusses voice/lens, not preamble — same check_prompts.md §17 gap as Prompt 1. Single med risk on this prompt; verdict math needs a second med-confidence risk or a high-confidence one to cross into REVISE, and none is present here.", "fix_hint": "Add 'No preamble.' as the fence's last line, or a short body primer after the fence naming the preamble + skim-past cue."}
+      ]
+    },
+    {
+      "prompt_index": 4,
+      "prompt_lead": "Will ADRs auto-load to future sessions?",
+      "verdict": "PASS",
+      "load_bearing": false,
+      "risks_fired": []
+    }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 2,
+  "rules_evaluated": {
+    "note": "Completeness ledger scoped to the 15-pattern behavioral catalog (simulation-behavior.md) — the operative rubric prompt-behavior.md grades against. check_prompts.md and check_pedagogy.md are read as 'adjacent rules' context (carve-out sourcing, §17 preamble trigger, §32/§50 accept-with-mitigation) per the template's own compendium framing; per their own eval_classes frontmatter neither compendium lists 'behavior' as an owning class (check_prompts.md: writing/storytelling/technical; check_pedagogy.md: pedagogy/storytelling/technical) — consistent with the open design-decision note at curriculum/evals/eval-coverage.ae101.md:75 and the precedent set at ae101--author-test-strategy-skill.behavior.json / ae101--compound-and-close.behavior.json.",
+    "prompt_1": [
+      {"pattern_id": "file-preservation-gap", "status": "not-applicable", "reason": "threat list is a first-time write next to the surface map, no existing file being updated"},
+      {"pattern_id": "reading-burden", "status": "not-applicable"},
+      {"pattern_id": "niceness-tax", "status": "not-applicable"},
+      {"pattern_id": "question-dump", "status": "not-applicable"},
+      {"pattern_id": "overwrite-anxiety", "status": "not-applicable", "reason": "fresh write, no update-existing-file ambiguity"},
+      {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "med"},
+      {"pattern_id": "append-vs-integrate", "status": "not-applicable"},
+      {"pattern_id": "plan-mode-preamble-bloat", "status": "not-applicable", "reason": "no plan mode invoked"},
+      {"pattern_id": "citation-gap-asymmetry", "status": "not-applicable"},
+      {"pattern_id": "self-report-inflation", "status": "fired", "confidence": "low"},
+      {"pattern_id": "default-acceptance", "status": "not-applicable", "reason": "no offered defaults in this prompt"},
+      {"pattern_id": "plan-mode-approval-inflation", "status": "not-applicable"},
+      {"pattern_id": "source-type-blindness", "status": "not-applicable", "reason": "reads own scrollback/map, no external source ingestion"},
+      {"pattern_id": "citation-cargo-cult", "status": "not-applicable"},
+      {"pattern_id": "self-audit-charity", "status": "not-applicable", "reason": "not asked to critique own prior work"}
+    ],
+    "prompt_2": [
+      {"pattern_id": "file-preservation-gap", "status": "not-applicable"},
+      {"pattern_id": "reading-burden", "status": "not-applicable"},
+      {"pattern_id": "niceness-tax", "status": "not-applicable"},
+      {"pattern_id": "question-dump", "status": "not-applicable"},
+      {"pattern_id": "overwrite-anxiety", "status": "not-applicable"},
+      {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "low", "reason": "corrected in this pass; see prompts_findings for rationale on the low (not med) confidence"},
+      {"pattern_id": "append-vs-integrate", "status": "not-applicable"},
+      {"pattern_id": "plan-mode-preamble-bloat", "status": "not-applicable"},
+      {"pattern_id": "citation-gap-asymmetry", "status": "not-applicable"},
+      {"pattern_id": "self-report-inflation", "status": "not-applicable"},
+      {"pattern_id": "default-acceptance", "status": "fired", "confidence": "med"},
+      {"pattern_id": "plan-mode-approval-inflation", "status": "not-applicable"},
+      {"pattern_id": "source-type-blindness", "status": "not-applicable"},
+      {"pattern_id": "citation-cargo-cult", "status": "not-applicable"},
+      {"pattern_id": "self-audit-charity", "status": "not-applicable"}
+    ],
+    "prompt_3": [
+      {"pattern_id": "file-preservation-gap", "status": "not-applicable", "reason": "first-time ADR write, path resolved explicitly (existing convention or docs/adr/NNNN-slug.md fallback)"},
+      {"pattern_id": "reading-burden", "status": "not-applicable", "reason": "post-fence voice/lens read is subjective-fit judgment, not manual error-catching (check_pedagogy.md §30 carve-out)"},
+      {"pattern_id": "niceness-tax", "status": "not-applicable"},
+      {"pattern_id": "question-dump", "status": "not-applicable"},
+      {"pattern_id": "overwrite-anxiety", "status": "not-applicable", "reason": "convention-or-fallback path named explicitly in-fence"},
+      {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "med"},
+      {"pattern_id": "append-vs-integrate", "status": "not-applicable"},
+      {"pattern_id": "plan-mode-preamble-bloat", "status": "not-applicable"},
+      {"pattern_id": "citation-gap-asymmetry", "status": "not-applicable"},
+      {"pattern_id": "self-report-inflation", "status": "not-applicable", "reason": "'show me the diff' is evidence-based, not a self-report claim"},
+      {"pattern_id": "default-acceptance", "status": "not-applicable", "reason": "four-section ADR shape is a structural doc convention, not offered substantive content to accept/reject"},
+      {"pattern_id": "plan-mode-approval-inflation", "status": "not-applicable"},
+      {"pattern_id": "source-type-blindness", "status": "not-applicable"},
+      {"pattern_id": "citation-cargo-cult", "status": "not-applicable"},
+      {"pattern_id": "self-audit-charity", "status": "not-applicable"}
+    ],
+    "prompt_4": [
+      {"pattern_id": "file-preservation-gap", "status": "not-applicable"},
+      {"pattern_id": "reading-burden", "status": "not-applicable"},
+      {"pattern_id": "niceness-tax", "status": "not-applicable"},
+      {"pattern_id": "question-dump", "status": "not-applicable"},
+      {"pattern_id": "overwrite-anxiety", "status": "not-applicable"},
+      {"pattern_id": "preamble-before-action", "status": "not-applicable", "reason": "single-clause factual question, below the 4+-sub-step structural trigger"},
+      {"pattern_id": "append-vs-integrate", "status": "not-applicable"},
+      {"pattern_id": "plan-mode-preamble-bloat", "status": "not-applicable"},
+      {"pattern_id": "citation-gap-asymmetry", "status": "not-applicable"},
+      {"pattern_id": "self-report-inflation", "status": "not-applicable"},
+      {"pattern_id": "default-acceptance", "status": "not-applicable"},
+      {"pattern_id": "plan-mode-approval-inflation", "status": "not-applicable"},
+      {"pattern_id": "source-type-blindness", "status": "not-applicable"},
+      {"pattern_id": "citation-cargo-cult", "status": "not-applicable"},
+      {"pattern_id": "self-audit-charity", "status": "not-applicable"}
+    ]
+  },
+  "note": "Cache lookup: content_sha and all four prompt_shas in curriculum/evals/sim-cache/ae101--threat-model-with-stride.behavior.json matched the current file's SHA-256 (computed against the scripts/expand-md.js EXPANDED view, per the template's cache-key rule) — a clean full cache hit, trace_status: cached, nothing regenerated on the SHA-mismatch path. Independently re-walking all four prompts against the 15-pattern catalog for the completeness ledger (rules_evaluated, above) surfaced one gap the prior cached trace (and the prior instance file at this same path, dated before this pass) missed: Prompt 2 ('Walk me through picking…') has the same 4+-named-sub-step shape (propose story / map to STRIDE class / name the threat / propose hardening) that fired preamble-before-action at med on Prompts 1 and 3, but the prior run's cache carried only default-acceptance for this prompt. Corrected: added preamble-before-action at low confidence (not med — 'walk me through' explicitly requests narration as the response shape, unlike Prompts 1/3 where the ask is an artifact/tool-side-effect and preamble is unwanted throat-clearing ahead of it). This flips Prompt 2's per-prompt verdict from PASS to TODO (a low-confidence risk fires TODO regardless of load_bearing per the template's verdict rules) but does NOT cross into REVISE (REVISE needs 2+ med-confidence risks on a load-bearing prompt; Prompt 2 now has one med + one low). Both the sim-cache trace and this instance file reflect the correction; the trace's generated_at was bumped to record the correction pass. Top-level verdict stays PASS: no prompt carries a high-confidence risk, and no prompt carries 2+ med-confidence risks, so blocking_findings_count is 0; two prompts (1 and 2) carry non-blocking low-confidence-or-mitigated risks, so todos_count is 2 (up from the prior instance's todos_count: 1). Out-of-class observation for the maintainer, NOT filed as a behavior finding (none of the 15 catalog patterns names it): the body lead-in before Prompt 3 says 'show it before saving' / 'You read the call before it lands on disk', but the fenced prompt itself reads 'Save the ADR to that path, then show me the diff' — save-then-show, not show-before-save. This is a body↔prompt mechanics contradiction (check_prompts.md §21 post-action-report vs §38 body-mirrors-prompt-phrasing territory), which is technical/writing-judge scope, not behavior-judge scope — flagged here for cross-judge awareness only, not counted in this file's blocking_findings_count or todos_count.",
+  "summary": "PASS with 2 non-blocking TODOs. Prompt 1 (security-tools pre-flight + stride subagent dispatch) fires preamble-before-action (med — six chained sub-steps, no suppressor) and self-report-inflation (low — ungrounded skill-load self-attestation). Prompt 2 (incident-story walk-through) fires default-acceptance (med, mitigated by the adjacent body-callout carve-out) and, newly corrected in this pass, preamble-before-action (low — same 4-sub-step shape as Prompts 1/3 but downgraded because the prompt explicitly asks for a narrated walk). Prompt 3 (ADR draft) fires preamble-before-action (med — eight chained sub-steps, no suppressor) but stays PASS since it's a single med risk, below the 2-med REVISE threshold. Prompt 4 (auto-load question) is clean. No high-confidence or 2+-med-confidence risk lands on any one prompt, so blocking_findings_count is 0 and the top-level verdict is PASS. All four prompt SHAs and the file content_sha were a clean cache hit against curriculum/evals/sim-cache/ae101--threat-model-with-stride.behavior.json; the one substantive change from the cached trace and the prior instance file is the added low-confidence preamble-before-action finding on Prompt 2, documented in the note field above."
 }

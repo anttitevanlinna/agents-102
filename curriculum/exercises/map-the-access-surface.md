@@ -4,7 +4,7 @@
 
 **Window:** the main quest window (*m3-security*).
 
-**What you do:** Invoke the curated access-control analysis skill on the small feature you brought to Module 3. Read what it surfaces. Decide, on the record in your repo, which surface it called out harder than you would have, and which surface you know matters that the skill didn't catch. Ship the delta as notes the STRIDE exercise consumes next.
+**What you do:** Invoke the curated access-control analysis skill on the small feature you brought to Module 3. Read what it surfaces. Decide, on the record, which surface it called out harder than you would have, and which surface you know matters that the skill didn't catch. Ship the delta as notes the STRIDE exercise consumes next.
 
 **What you build:** an access-surface map, plus the delta only you can add. Two surfaces: the one the curated skill called out harder than you would have, and the one you know matters that the skill missed. The delta is the artifact STRIDE chews on next, not the raw skill output.
 
@@ -30,6 +30,8 @@
 
 - You should see `access-control-analysis` and `stride` listed under **User**. (If they're missing, check prework Step 4.) The Project list is whatever this repo ships; User is your personal skills. Skills you author later in Module 3 land in User too.
 
+Ask Claude to list its installed skills, with storage location and context-load status.
+
 {{prompt:map-the-access-surface-1}}
 
 These are the moves Claude has on hand for the rest of this module, and the load-on-invoke behavior matters for context economy later.
@@ -45,7 +47,7 @@ The plan path you noted at Module 2's close is the best input here: it names the
 ## Kick off the run, then work the other window
 
 - The access-control pass is a breadth walk and takes a few minutes. That wait is the two-window move Module 3 installs: kick off a long run in one window, do active work in the other, come back when the first lands.
-- Switch to your m3-quality window now. While the map builds in m3-security, start authoring the test-strategy skill there (Exercise 3, Phase 1). When the map lands back in m3-security, switch back to walk it and write the delta. Both windows are already open from *Open the side quest*; this is a focus switch, not a new session.
+- Switch to your m3-quality window now. While the map builds in m3-security, start authoring the test-strategy skill there (its first authoring-conversation phase). When the map lands back in m3-security, switch back to walk it and write the delta. Both windows are already open from *Open the side quest*; this is a focus switch, not a new session.
 
 ## Phase 2: Read the map back before you decide the delta
 
@@ -71,14 +73,14 @@ Then ask Claude to add the surface the skill missed but you know matters.
 
 ## Push back until the reason names your codebase
 
-- Answer, then sharpen. Push back on the sharpening question until the reason names something specific to your codebase. *"The billing webhook re-hits the queue on retry, so the same event gets reprocessed"* beats *"webhooks need auth."*
+- Answer, then sharpen. Push back until the reason names something specific to your codebase. *"The billing webhook re-hits the queue on retry, so the same event gets reprocessed"* beats *"webhooks need auth."*
 
 ## Phase 4: Add the context header a cold reader needs
 
 - You're about to hand this map to the STRIDE skill. Glance at it. If a teammate landing on this file cold would miss something the map assumes you know, add a one-line context header. If it reads, close.
 - Most people skip this; some want the pause. Your call.
 
-**What happened:** You ended with a short delta-note in your repo: the surfaces the skill called out harder than you would have, and the surfaces you knew mattered that the skill didn't catch. The delta is the artifact, not the raw skill output.
+**What happened:** You ended with a short delta-note on the record: the surfaces the skill called out harder than you would have, and the surfaces you knew mattered that the skill didn't catch. The delta is the artifact, not the raw skill output.
 
 ## What this sets up
 
@@ -90,10 +92,10 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** Handles kept bold: the delta menu pair **The over-call.** / **The miss.** (one handle per item on the Phase 3 menu slide) and the on-screen **User** skills-list label; all other bullet leads de-bolded. Widget chrome (`**Time:**`, `**Window:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
-**Skill-introspection (`map-the-access-surface-1`) and map-walkthrough (`map-the-access-surface-3`) prompts kept, not cut.** `-1` was flagged `low-yield`, `-3` `redundant-slot`. Both are light read/introspect beats, not concurrent-heavy execution, so cutting them reclaims none of the load the cull targeted. `-1` goes one level past `/skills` — storage location on disk plus whether skill bodies are loaded into context (the lazy-load lesson the line after it leans on). `-3` is the read-back-and-prime step before the Phase 3 delta, distinct from the map generation in `-2`. Not cut candidates. (`-1`'s in-body lead-in is thin — the sentence above the marker is about `/skills` output, not this prompt; a one-line §2 action lead-in is owed at re-audit.)
+**Skill-introspection (`map-the-access-surface-1`) and map-walkthrough (`map-the-access-surface-3`) prompts kept, not cut.** `-1` was flagged `low-yield`, `-3` `redundant-slot`. Both are light read/introspect beats, not concurrent-heavy execution, so cutting them reclaims none of the load the cull targeted. `-1` goes one level past `/skills` — storage location on disk plus whether skill bodies are loaded into context (the lazy-load lesson the line after it leans on). `-3` is the read-back-and-prime step before the Phase 3 delta, distinct from the map generation in `-2`. Not cut candidates.
 
-**Quality:** compendium-audited 2026-07-08 (writing@0ef2ca6 story@1a9e10b technical@0ef2ca6 behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b slides@47f3357)
-- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-07-26 (writing@9697944 story@9697944 technical@9697944 behavior@9697944 pedagogy@9697944 strategy@b3143a4 slides@9697944)
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

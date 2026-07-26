@@ -1,6 +1,6 @@
 # The gate is a claim too
 
-The re-send came back green. The verifier you built read the work and passed it. That green is worth exactly as much as the gate behind it, and the gate is a claim too. On the map it sits in the far half, the last check before the work ships. It can lie in five ways.
+Say the re-send comes back green. The verifier you built reads the work and passes it. That green is worth exactly as much as the gate behind it, and the gate is a claim too. On the map it sits in the far half, the last check before the work ships. It can lie in five ways.
 
 ## Passing is not proof
 
@@ -65,5 +65,5 @@ A gate is one more claim in the system. Build it, then hold it to the same bar i
 - `[checked:2026-07-02 result:CAVEAT due:2027-01-02]` https://hamel.dev/blog/posts/evals/ — [practitioner direct] Husain byline confirmed, judge-vs-human agreement loop confirmed ("iterate on the prompt of the critique model to make it sufficiently aligned"), BUT this post leads with synthetic test cases, not error-analysis-first — the audit's original single-URL attribution was imprecise; the two URLs above carry the body claims. fallback: keep as supporting only; drop this URL and the body loses nothing.
 - Goodhart's law — [cultural-vocab], name-only, no URL owed. Deming on tampering — [cultural-vocab], name-only, no URL owed.
 
-**Quality:** compendium-audited 2026-07-08 (slides@47f3357)
-- judges @47f3357: writing grandfathered, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered, slides PASS
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@9697944 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@9697944 slides@b3143a4)
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

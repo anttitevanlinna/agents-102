@@ -4,13 +4,13 @@
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "Pick one threat, record the decision (H1 + lede)", "lines": "1-13"},
-    {"index": 1, "heading": "Phase 1: Run the threat scan across your mapped surface", "lines": "15-29"},
+    {"index": 0, "heading": "Pick one threat, record the decision (H1 + lede)", "lines": "1-14"},
+    {"index": 1, "heading": "Phase 1: Run the threat scan across your mapped surface", "lines": "15-30"},
     {"index": 2, "heading": "Read the threat list, expect more than you'll use", "lines": "31-35"},
-    {"index": 3, "heading": "Phase 2: Pick the one threat worth hardening against", "lines": "36-47"},
-    {"index": 4, "heading": "Push back on the incident story, land the mitigation", "lines": "49-54"},
-    {"index": 5, "heading": "Phase 3: Write the decision as an ADR", "lines": "55-70"},
-    {"index": 6, "heading": "Read the ADR, check the voice and the lens", "lines": "72-77"},
+    {"index": 3, "heading": "Phase 2: Pick the one threat worth hardening against", "lines": "36-49"},
+    {"index": 4, "heading": "Push back on the incident story, land the mitigation", "lines": "50-54"},
+    {"index": 5, "heading": "Phase 3: Write the decision as an ADR", "lines": "55-72"},
+    {"index": 6, "heading": "Read the ADR, check the voice and the lens", "lines": "73-77"},
     {"index": 7, "heading": "Check where the ADR landed", "lines": "78-83"},
     {"index": 8, "heading": "Ask whether the ADR loads into future sessions", "lines": "84-96"},
     {"index": 9, "heading": "Save the map and the STRIDE walk before you clear", "lines": "97-106"}
@@ -23,7 +23,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "Considered chunk 3 line 39 \"the incident story\" (first mention, immediately unpacked one bullet earlier as \"the worst realistic case\" in the same chunk) and chunk 6 line 75 \"the Decision section\" (established by the Context/Decision/Consequences/Alternatives-considered template rendered in chunk 5's fenced prompt, lines 65-69, which the reader sees on the prior slide even though fence content is exempt from grading) — both resolve under a sequential read; no fix needed.",
+      "fix_hint": null,
       "blocking": true
     },
     {
@@ -95,8 +95,38 @@
       "evidence": null,
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "REVISE",
+      "chunks_flagged": [9],
+      "evidence": "chunk 9 \"Save the map and the STRIDE walk before you clear\": line 101: \"> **Worth keeping?** Ask Claude to save the access-surface map and the STRIDE walk to your repo's `docs/` directory, next to the ADR, before you clear.\"",
+      "fix_hint": "Unbold \"Worth keeping?\" — it's a rhetorical kicker opening a callout, not a named law/governor/coined term/checklist-item handle, and rule 9 bans bold on kickers/koans/quotes outright. Not on the file's own 2026-07-09 emphasis-pass kept-bold list and not a canonical widgets.md label. Flatten to plain, matching the training's other unbolded aside blockquotes (e.g. earn-the-trust.md's \"> Might be slightly leaky...\").",
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": true
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 1
 }

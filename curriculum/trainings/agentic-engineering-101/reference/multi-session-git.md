@@ -95,7 +95,15 @@ Two sessions is a milestone. Five is a habit. Ten is something you grow into.
 
 **Read time:** ~10 min.
 
-**Attribution:** Cherny frames parallel worktrees as "the single biggest productivity unlock" in his [Jan 2026 X thread](https://x.com/bcherny/status/2017742743125299476) and in the [Pragmatic Engineer interview](https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny) [both practitioner direct / practitioner analysis].
+**Attribution:** Cherny frames parallel worktrees as "the single biggest productivity unlock" in his [Jan 2026 X thread](https://x.com/bcherny/status/2017742743125299476) [practitioner direct]. Separately, [Gergely Orosz on Boris Cherny, *Building Claude Code with Boris Cherny*](https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny) [practitioner analysis] — Cherny there describes running five parallel Claude Code instances across separate checkouts, corroborating parallel-session workflows generally, not the "productivity unlock" framing or the "worktrees" word.
 
-**Quality:** compendium-audited 2026-05-03 (story@bb9c1d5 behavior@bb9c1d5)
-- judges @bb9c1d5: writing grandfathered, story PASS, technical grandfathered, behavior PASS
+**Source verification — MUST DO before first cohort:**
+- Open both URLs against original. Re-confirm the X-thread quote verbatim (X posts can be edited or deleted) and re-confirm the Pragmatic Engineer piece still doesn't use "worktree"/"worktrees" before letting it stand as corroboration of anything beyond parallel-checkout workflows.
+- The phrase "single biggest productivity unlock" and the word "worktrees" ride on the X thread only. Do not let the interview citation imply it independently corroborates either.
+- Fallback if the X thread no longer resolves/confirms: drop the single attribution and reframe as "some practitioners describe parallel worktrees as a major productivity unlock" without naming Cherny.
+- Fallback if the interview no longer supports even the parallel-checkouts framing: drop the second citation and let the X thread stand alone.
+- `[checked:2026-07-12 result:OK due:2026-07-31]` https://x.com/bcherny/status/2017742743125299476 — [practitioner direct] Cherny "single biggest productivity unlock" quote; verbatim text + byline confirmed via oEmbed, post dated 2026-01-31. fallback: if unconfirmable at next check, reframe as unattributed "some practitioners" framing.
+- `[checked:2026-07-12 result:OK due:2027-01-12]` https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny — [practitioner analysis: Gergely Orosz on Boris Cherny] describes 5 parallel Claude Code instances via separate checkouts; full-text search for "worktree"/"worktrees"/"productivity unlock" returns zero hits. Cited only for parallel-session workflows, never for the word "worktrees." fallback: drop this citation if it no longer supports even the checkouts framing.
+
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@9697944 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -18,12 +18,10 @@ If you want the primitives this module uses at a glance, [subagents in the refer
 ## What You'll Learn
 After this module, you will be able to:
 - **Fork** a sibling git worktree and run two Claude Code sessions on the same history side by side, one window per lane, working the idle window while the other runs a long prompt
-- **Invoke** a curated access-control analysis skill on a feature you're shipping (as a subagent, fresh context) and name what your first read missed
-- **Apply** a curated STRIDE skill to the mapped surface (again as a subagent), pick one threat worth hardening against, write the decision as an ADR in your repo's convention
+- **Invoke** curated access-control-analysis and STRIDE skills on a feature you're shipping (each as a subagent, fresh context): name what your first read missed, pick one threat worth hardening against, and write the decision as an ADR in your repo's convention
 - **Split** jobs between subagent and main thread, breadth-first curated reads with long structured output go to a subagent; one-question-at-a-time authoring and interactive steering stay in the main thread
 - **Author** a test-strategy skill through conversation with Claude (one question at a time), tuned to your codebase's actual testing conventions
-- **Test** the authored skill: ask it to disclose its own weakest part, then push back on the critique
-- **Invoke** the authored skill on the security-tested feature and ask Claude whether the test strategy is any good
+- **Test** the authored skill: ask it to disclose its own weakest part, push back on the critique, then invoke it on the security-tested feature and ask Claude whether the test strategy is any good
 - **Ship** one authored skill personal-first, and know when it's a team PR
 
 ## Start here
@@ -46,8 +44,7 @@ The question, to you: what's the feature, and what's the surface you're most ner
 - One hardening decision is enough; the team kit's breadth grows across many features
 - A test-strategy skill authored on your codebase is worth more than a perfect generic one. Your codebase teaches the skill, not the manual.
 - Ask the agent what's weakest about its own output; the mirror reflects what your own read would miss
-- Invoke the skill on the thing you just built. Authoring without invocation is theatre
-- One skill shipped beats three skills drafted; the team kit grows by accretion
+- Invoke the skill on the thing you just built. Authoring without invocation is theatre. One skill shipped beats three skills drafted; the team kit grows by accretion
 
 ## Sharpen the skill from evidence
 
@@ -58,6 +55,8 @@ Module 3's compound runs against two artifacts: the skill (its file content carr
 Ask Claude to sharpen the one weakest section of the skill from invocation evidence, then integrate a rule into `./CLAUDE.local.md` if one earned itself. If a moment from m3-quality's authoring scrollback matters that the skill didn't capture, the m3-quality window is still open at this point, switch over and grab quotes, paste them into m3-security's chat before firing the prompt.
 
 {{prompt:ae101-m3-sharpen-skill}}
+
+## Read the sharpen with a skeptical eye
 
 Claude is reading the skill file fresh and your m3-security scrollback. Useful (file content survived the side-quest /clear and carries the encoded conventions) but charitable (same-context-window self-audit under-flags). Two other tells to watch for: Claude may open with a plan before showing the diff, and RLHF softening can dress up a cosmetic edit as a meaningful one. You can make the grill hotter: ask Claude to over-flag (*"be harsher than necessary, find at least two sections that underdelivered, assume it's worse than it looks"*), tell it to skip preamble and lead with the before/after diff, or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.
 
@@ -102,9 +101,9 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 
 **Session-close convergence prompt (`ae101-m3-ready-to-clear`) kept, not cut.** Flagged `low-yield`. It's the converge-before-clear beat (`check_pedagogy.md §58`): the student signals wrap-up, the agent surfaces anything still loose before the `/clear`. A light one-line ask carrying a lead-in and its own "good enough" callout, not concurrent-heavy load. Its `{{cut:}}` marker was reversed to a live `{{prompt:}}` — body touched, so the per-class Quality SHAs below predate it; re-audit before ship. Not a cut candidate.
 
-**Quality:** compendium-audited 2026-07-08 (writing@1a9e10b story@1a9e10b technical@1a9e10b behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b slides@47f3357)
-- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (override-r8-evidence-unverified-no-CUT-tag-in-file-see-instances/ae101--earn-the-trust.slides.json)
-- cross_module @1765c51: PASS — override-§3-student-noted-path-by-design-§5-contract-row-added-see-instances/ae101--prework-M1-M3.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust]
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@9697944 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module: PASS see instances/ae101--prework-m6.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

@@ -7,12 +7,8 @@
     {"index": 0, "heading": "H1/lede: Compound and close the loop", "lines": "1-12"},
     {"index": 1, "heading": "Write your rules file from the session", "lines": "13-32"},
     {"index": 2, "heading": "Push back where the summary misreads", "lines": "33-38"},
-    {"index": 3, "heading": "Reach past the repo with a connector", "lines": "39-43"},
-    {"index": 4, "heading": "Wire one connector into your tracker", "lines": "44-55"},
-    {"index": 5, "heading": "Send the close-out note to the ticket", "lines": "56-77"},
-    {"index": 6, "heading": "Read the close-out and ship it", "lines": "78-82"},
-    {"index": 7, "heading": "Sweep the session into your rules file one more time", "lines": "83-94"},
-    {"index": 8, "heading": "Close the session, the loop is closed", "lines": "95-102"}
+    {"index": 3, "heading": "Sweep the session into your rules file one more time", "lines": "39-50"},
+    {"index": 4, "heading": "Close the session", "lines": "51-58"}
   ],
   "rules_evaluated": [
     {
@@ -22,7 +18,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "Candidate flags considered and dismissed: chunk 2 line 37 \"the compound step\" and chunk 3/4 lines 42/54 \"the loop\" both resolve to chunk 0 — the H1 is literally \"Compound and *close the loop*\" and the lede at line 9 names \"the compound step (plan → work → review → compound, Kieran Klaassen's loop)\". Both are chunk-0 lede/title nouns reused later, the explicit carve-out in the compendium's rule 1, not a violation.",
+      "fix_hint": "Candidate flags considered and dismissed: chunk 0 \"The PR shipped\" (session-artifact carve-out — the shipped PR is fix-tests-first.md's own closer beat, resolves against the session in front of the student); chunk 2 \"Claude's summary\" (immediate continuation of chunk 1's Prompt, which asks Claude for a 3-5 line account); chunk 3 \"the first compound pass at the top of this exercise\" (explicit in-file navigational pointer to chunk 1); chunk 4 \"the loop\" and \"the PR is open\" (both established in chunk 0 / fix-tests-first.md's matching closer beat).",
       "blocking": true
     },
     {
@@ -32,7 +28,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "Both links to mcp-and-connectors.md (chunks 3 and 4) name the doc by title in the link text and unpack the claim in the surrounding sentence — navigational-pointer carve-out applies.",
+      "fix_hint": "chunk 4 line 55 \"The loop's last move, closing the bug's ticket outside the repo, is the Module 1 homework\" unpacks the claim in the same sentence before naming the destination, matching the compendium's compliant example shape — not a bare positional callback.",
       "blocking": true
     },
     {
@@ -42,7 +38,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Verified against getting-going.md's current include list: \"the orient and introspect phases\" (chunk 1) = Ex1 orient-and-introspect.md; \"the PR shipped\"/\"the PR is open\" (chunks 0, 4) = fix-tests-first.md's closer (\"The PR is shipped\"); \"the Module 1 homework\" (chunk 4) = close-the-ticket.md, listed in getting-going.md's Homework section. All beats current post-trim.",
       "blocking": true
     },
     {
@@ -51,8 +47,8 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": "No guess-before-reveal beat in this file.",
+      "evidence": "No guess/predict-before-reveal construction anywhere in the file.",
+      "fix_hint": null,
       "blocking": true
     },
     {
@@ -69,10 +65,10 @@
       "compendium": "check_slides.md",
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
-      "verdict": "REVISE",
-      "chunks_flagged": [4],
-      "evidence": "chunk 4 \"Wire one connector into your tracker\": line 49: \"3. Manual paste: Claude writes the close-out; you paste it into the tracker UI yourself. Five seconds, no tool setup.\" — one of the chunk's three explicit paths wires no connector at all; line 50 itself concedes this (\"For paths 1 or 2, get your connector up and running\"), so the header's \"Wire one connector\" promise only covers 2 of the 3 listed options.",
-      "fix_hint": "Loosen the header to cover all three routes (e.g. \"Get one path into your tracker working\") or scope the header explicitly to paths 1-2 and let path 3 sit under the following chunk's framing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": "Post-trim, the chunk-6/\"Wire one connector\" header that REVISEd in the prior (2026-07-08) audit of this file no longer exists — that section moved to close-the-ticket.md. Remaining four headers each match their chunk's content under the sequential read.",
       "blocking": false
     },
     {
@@ -81,8 +77,8 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": "Checked all six sub-items (Not-X-Not-Y-Z, anaphora triples, self-grading superlatives, number+retraction, abstraction-noun stacks, empty-leg verb triplets) across all chunks; no hits.",
+      "evidence": "Checked all sub-items across all 5 chunks: no \"Not X. Not Y. Z.\" construction; no anaphora/epistrophe triples (chunk 1 line 16 \"You are not drafting...The agent reads...Your job is...\" doesn't share a repeated opening phrase); no self-grading superlatives about the exercise/rules-file; no number-with-retraction; no abstraction-noun stacks (\"the reflection move\", chunk 2 line 35, is a concrete descriptor of the push-back action, not a stacked-abstraction tic); no verb triplets with an empty leg.",
+      "fix_hint": null,
       "blocking": true
     },
     {
@@ -91,11 +87,41 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": "chunk 4 line 54 \"One connector firing on one ticket\" uses \"firing\" in the plain-English trigger/succeed sense (an engine or synapse firing), not the compendium's rule-fires repo-jargon sense — reads clean on a wall.",
+      "evidence": "No repo/maintainer vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections) found in body. \"the compound step\" and \"the loop\" are Klaassen-framework vocabulary attributed in the module's own Key Concepts (getting-going.md: \"The loop is orient -> fix -> compound -> close\") and arc-earned within chunk 0 of this file, not curriculum-authoring dialect.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Body bold spans are limited to widget/label chrome (Time/What you do/What you build/The point/Prompt/What happened, lines 3,5,7,9,20,45,53) plus the blockquote callout lead \"Long session, long read.\" (chunk 1, line 18, 4 words). theory-plan.md line 404 explicitly names the widget-label bold convention as compliant, and the blockquote-callout pattern is used identically across 10+ sibling exercise files (e.g. fix-tests-first.md line 55: \"the blockquote callout untouched, per theory-plan.md Slide format - emphasis budget\"). No bolded narrative bullet-lead sentences remain; matches this file's own maintainer note at line 61 (\"body bullet leads de-bolded; no named-term handles remain in this file\").",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "File is included via the standard exercises/<slug> link from trainings/agentic-engineering-101/getting-going.md line 33 (\"[Compound and close](exercises/compound-and-close.md)\"). scripts/build-workbook.js line 773 resolves exercise includes via inlineIncludes(`[${slug}](exercises/${slug}.md)`), which wraps in section.phase.phase--exercise (mirrors site/layouts/curriculum.js wrapStandaloneInPhase, same wrapper class the standalone-page path uses). site/layouts/slides.js buildDeckModel() (line 214) picks up content via querySelectorAll('.phase--lecture, .phase--exercise'). Content reaches the composed Slides deck.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "No \"## Phase N:\" or \"## N.\" content-ordinal headers in this file — all four ## headings are plain, unnumbered step titles. Nothing for this rule to lint.",
+      "fix_hint": null,
       "blocking": true
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1
+  "todos_count": 0
 }

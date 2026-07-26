@@ -20,7 +20,7 @@ The rules compounded. Learning compounded to make better rules. More rules, more
 
 ## Then the agents started checking the agents
 
-The edits to the training got bigger. One person fixing one line became plan mode reshaping a whole file, then a subagent auditing that file against a checklist in the background, then four agents in parallel auditing a file against four checklists while a fifth checked the neighbouring files.
+The edits to the training got bigger. One person fixing one line became plan mode (where Claude works in planning rather than execution) reshaping a whole file, then a subagent (a Claude instance with fresh context for independent analysis) auditing that file against a checklist in the background, then four agents in parallel auditing a file against four checklists while a fifth checked the neighbouring files.
 
 Work-per-session went up, and care-per-line went up with it. Sweeping changes that would have taken a week got made in an afternoon, because the rules were tight enough to hand off. Every session inherited what the last one figured out, and each one could take on bigger work than the last.
 
@@ -54,8 +54,8 @@ The loop is the shape. The bug today was the excuse.
 
 **Slides-only pass (2026-07-02, unaudited):** RE-CHUNK, not cull. Per-passage verdicts: opening paragraph KEPT as setup lede (closer carve-out), compressed to two sentences with content intact · intro paragraphs 2–4 FOLDED into slide-1 bullets · three rule-quotes KEPT inside one bullet (load-bearing per watch-for below) · *The rules started doing the work* / *agents checking agents* / *What you just did* CONVERTED one-to-one · **"The next module will extend it. The module after that will extend it again." CUT per `check_lectures §3`** (module sequencing; the module file's `## Next` already carries the CLAUDE.local.md-waiting bridge) and replaced with the mechanism it implied ("read by every future session in this repo" — CLAUDE.local.md auto-load, platform-true) · "By the end of the training..." KEPT (arc-range claim on a closer whose subject is the training's own arc; §3 carve-out) · Klaassen attribution KEPT (single student-side mention, cap respected) · kicker "The loop is the shape. The bug today was the excuse." KEPT. No new theory, zero map references (M1 protected). File is now lede + four slides + kicker.
 
-**Quality:** compendium-audited 2026-07-08 (writing@3605eee slides@47f3357) — predates the slide rework; re-audit before ship.
-- judges @47f3357: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered, slides PASS
+**Quality:** compendium-audited 2026-07-26 (writing@9697944 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4) — predates the slide rework; re-audit before ship.
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Understand (the compound loop as a pattern, before running it).

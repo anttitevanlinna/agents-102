@@ -4,10 +4,10 @@
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "Will company memory emerge? (H1 + lede)", "lines": "1-3"},
-    {"index": 1, "heading": "Personal, team, company: memory's three layers", "lines": "5-11"},
-    {"index": 2, "heading": "The third layer is still finding its home", "lines": "13-16"},
-    {"index": 3, "heading": "The hard part is the shape", "lines": "18-21"}
+    { "index": 0, "heading": "Will company memory emerge? (H1 + lede)", "lines": "1-4" },
+    { "index": 1, "heading": "Personal, team, company: memory's three layers", "lines": "5-12" },
+    { "index": 2, "heading": "The third layer is still finding its home", "lines": "13-17" },
+    { "index": 3, "heading": "The hard part is the shape", "lines": "18-22" }
   ],
   "rules_evaluated": [
     {
@@ -35,8 +35,8 @@
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
-      "chunks_flagged": [0],
-      "evidence": null,
+      "chunks_flagged": [],
+      "evidence": "Chunk 0's 'sent it off' resolves against run-the-first-experiment.md's '## Send the task off' send-off prompt (the module wires this lecture in immediately after that prompt: 'The task is running. One open question while it works.' -> [Lecture: Will company memory emerge?]). Beat exists in the module's current send-off exercise flow.",
       "fix_hint": null,
       "blocking": true
     },
@@ -76,9 +76,9 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": "Chunk 2's three \"The [X] layer...\" sentences form an anaphoric triple; the third leg (company layer still unresolved) does carry new content so it clears the cap, but it's the closest call in this file to the banned pattern.",
-      "blocking": true
+      "evidence": "Checked all sub-items per chunk: (a) 'Not X. Not Y. Z.' construction - none found. (b) Anaphora/epistrophe triples - chunk 1's 'some practitioners say memory, some say context, some just say rules, or the files' is a single-sentence term list where each clause carries distinct new content (memory/context vs rules/files), not a rhetorical triple of repeated standalone sentences - not a violation. (c) Self-grading superlatives - none found. (d) Number + own retraction - no numeric claims anywhere in body. (e) Abstraction-noun stacks - none of the banned shape found; 'still finding its home' is a verb metaphor, not a noun-stack. (f) Verb triplets with an empty leg - none found.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -89,6 +89,36 @@
       "evidence": null,
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget - bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Chunk 1 carries exactly the three layer handles ('**Personal.**', '**Team.**', '**Company.**'), one per bullet - matches the 'law/consolidation slide may carry one handle per law' allowance for three parallel named concepts. Chunks 0, 2, 3 carry zero bold. Matches the maintainer-attested 2026-07-09 emphasis pass note in this file's own maintainer block.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content - verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran `node scripts/build-workbook.js agentic-engineering-101 <tmp-output>` and confirmed `<section class=\"phase phase--lecture\" id=\"lectures-will-company-memory-emerge\">` is present in the built agentic-engineering-101 workbook. The file is included via a standard `[Lecture: ...](lectures/will-company-memory-emerge.md)` link in run-the-first-experiment.md's `## Send the task off` section, which build-workbook.js wraps as a `.phase--lecture` section reachable by `buildDeckModel`. Not phase-less prose; reaches the composed Slides deck.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering - position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,

@@ -4,16 +4,16 @@
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    { "index": 0, "heading": "H1/lede — What packaging is", "lines": "1-3" },
-    { "index": 1, "heading": "One run, plotted", "lines": "5-204" },
-    { "index": 2, "heading": "The three-pattern", "lines": "206-210" },
-    { "index": 3, "heading": "The verifier decides pass without you", "lines": "212-216" },
-    { "index": 4, "heading": "Three shapes the verifier takes", "lines": "218-223" },
-    { "index": 5, "heading": "Hooks always fire", "lines": "225-228" },
-    { "index": 6, "heading": "Hooks for must-happen, prompts for taste", "lines": "230-245" },
-    { "index": 7, "heading": "What you didn't build today", "lines": "247-251" },
-    { "index": 8, "heading": "The 80/20 ratio", "lines": "253-257" },
-    { "index": 9, "heading": "At org scale: Intercom's tiers", "lines": "259-263" }
+    { "index": 0, "heading": "H1/lede — What packaging is", "lines": "1-4" },
+    { "index": 1, "heading": "One run, plotted", "lines": "5-205" },
+    { "index": 2, "heading": "The three-pattern", "lines": "206-211" },
+    { "index": 3, "heading": "The verifier decides pass without you", "lines": "212-217" },
+    { "index": 4, "heading": "Three shapes the verifier takes", "lines": "218-224" },
+    { "index": 5, "heading": "Hooks always fire", "lines": "225-229" },
+    { "index": 6, "heading": "Hooks for must-happen, prompts for taste", "lines": "230-246" },
+    { "index": 7, "heading": "What you didn't build today", "lines": "247-252" },
+    { "index": 8, "heading": "The 80/20 ratio", "lines": "253-258" },
+    { "index": 9, "heading": "At org scale: Intercom's tiers", "lines": "259-264" }
   ],
   "rules_evaluated": [
     {
@@ -22,7 +22,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Current body has no unresolved \"the pieces\"/\"the three things\" forward tease before naming (chunk 1's lede is now \"First the shape, then the names\", not a forward pointer at unnamed content). \"Phase 3\"/\"Phase 4\" and \"the verifier you just wrote\" (chunks 1, 2, 4, 6, 9) resolve under the session-artifact / module-arc-closer carve-out — this file is confirmed the M5 closing lecture delivered \"In-room close after Debrief\" for the same run whose phases are named.",
+      "evidence": null,
       "fix_hint": null,
       "blocking": true
     },
@@ -32,7 +32,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No M5/M6 or other cross-file positional pointers remain above the maintainer fence (confirmed by grep and by the maintainer's own §3 disposition note).",
+      "evidence": null,
       "fix_hint": null,
       "blocking": true
     },
@@ -42,7 +42,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 1 (\"The diagnose-and-re-send you just ran\"), chunk 2 (\"the reference you assembled at Phase 4\"), chunk 4 (\"You picked one at Phase 3\"), chunk 9 (\"your verifier from Phase 3\") all resolve against this module's own just-completed exercise run per the Lecture meta placement (closing lecture, in-room close after Debrief).",
+      "evidence": null,
       "fix_hint": null,
       "blocking": true
     },
@@ -62,7 +62,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 3 is thin (one bullet + one recap line) but the bullet carries a self-standing definition (external verifier, against plausible-but-wrong) — not a wait-state-only slide.",
+      "evidence": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -82,7 +82,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "The \"X, against Y\" triad (chunk 2: reference/goal drift, plan.md/context rot; chunk 3: verifier/plausible-but-wrong) spans chunks with each leg carrying distinct concrete content — not a banned same-slide triple. No self-grading superlatives, no number-with-retraction, no abstraction-noun stacks, no empty-leg verb triplets found.",
+      "evidence": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -92,11 +92,41 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No repo/maintainer dialect (compendium, forcing function, beat, mood, surface-as-noun) found in the body.",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "REVISE",
+      "chunks_flagged": [1, 6],
+      "evidence": "chunk 1 \"One run, plotted\": line 200: \"**A check is a position fix**\" — a bolded 6-word declarative clause (subject-verb-complement), over the ≲5-word handle cap and the exact \"never a whole lead sentence\" shape the rule bans, independent of the maintainer's accept-with-note. chunk 6 \"Hooks for must-happen, prompts for taste\": line 232: \"**Must happen goes in a hook**\" — same 6-word whole-clause-bold shape; maintainer block labels it a kept \"(governor)\" handle, but the governor category still has to be a short handle per the rule's own text, not a full sentence. (Chunk 2's \"Reference artefact\" / \"plan.md\" pair, flagged in the prior run, is NOT re-flagged here: both are short noun-phrase handles under 5 words each, and two named pattern-pieces on one slide fit the explicit \"law/consolidation slide may carry one handle per law\" exception cleanly — no separate maintainer sign-off needed for that one.)",
+      "fix_hint": "Trim these two to a short noun-phrase handle (e.g. bold just \"position fix\" / \"hook\") or drop the bold and let the sentence run plain — both currently repeat the pre-2026-07-09 whole-sentence-bold pattern the rest of the pass removed.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
       "fix_hint": null,
       "blocking": true
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 1
 }

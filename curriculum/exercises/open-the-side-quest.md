@@ -6,7 +6,7 @@ Module 3 runs in two windows. Security is the main quest in your chosen repo. Qu
 
 **What you do:** Start a Claude Code session in your repo for security. Fork a sibling worktree for quality, open a second session there, and confirm both sessions read the same codebase from their own working directories.
 
-**What you build:** two Claude Code sessions running side by side on one git history. A security main lane in your repo, and a quality side lane in a sibling worktree that waits until Exercise 3. When one lane runs a long prompt, the other is where you work.
+**What you build:** two Claude Code sessions running side by side on one git history. A security main lane in your repo, and a quality side lane in a sibling worktree that waits until you author the test-strategy skill there. When one lane runs a long prompt, the other is where you work.
 
 ## Fork the side worktree from your security lane
 
@@ -22,7 +22,7 @@ Module 3 runs in two windows. Security is the main quest in your chosen repo. Qu
 - Personal files like `CLAUDE.local.md` don't sync between worktrees. They get copied across once at fork time, then evolve independently.
 - Decide where to base the side worktree. It branches off your current local HEAD. Clean main is the safe default. If you want another base, switch to it before you fork.
 
-The fork prompt reads your repo's folder name from the working directory. Paste it as-is; Claude fills in `<repo-name>` itself.
+Ask Claude to fork a sibling worktree and copy your personal rules across. The prompt reads your repo's folder name from the working directory: paste it as-is, Claude fills in `<repo-name>` itself.
 
 {{prompt:ae101-m3-fork-quality-side}}
 
@@ -40,7 +40,8 @@ The fork prompt reads your repo's folder name from the working directory. Paste 
 /rename m3-quality
 ```
 
-- You author the test-strategy skill here while the main lane runs security. The skill installs to user scope, so Exercise 3 returns to the main lane to invoke it on the security-tested feature. You are not carrying the skill back by hand; it crosses worktrees on its own.
+- Authoring and invoking the test-strategy skill both happen in this window, on this codebase. It installs to user scope, so it crosses back to the main lane on its own, and you never carry it by hand. The main lane's read on it comes later, at a separate step that revisits this window's scrollback rather than invoking anything here again; the evidence-based sharpen runs later still, back in the main lane where the compound step lives.
+- Ask Claude to confirm the worktree state, then wait.
 
 {{prompt:ae101-m3-quality-side-orient}}
 
@@ -55,14 +56,14 @@ The fork prompt reads your repo's folder name from the working directory. Paste 
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain across all slides; kept bold: none (no named-move or menu handles in body); Session widgets and **Time:**/**What you do:**/**What you build:**/**What happened:** chrome untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
-**Quality:** compendium-audited 2026-07-08 (writing@0ef2ca6 story@1a9e10b technical@0ef2ca6 behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b slides@47f3357)
-- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (override-r1-module-signposting-carve-out-see-instances/ae101--open-the-side-quest.slides.json)
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@9697944 behavior@b3143a4 pedagogy@b3143a4 strategy@9697944 slides@9697944)
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Time:** ~5 min.
 
 **Phase:** Module 3 opener, before *Map the access surface*.
 
-**Pedagogical role:** First felt multi-session moment in AE101. Introduces no new primitive. Packages M3's existing Q+S split into two windows so the side-quest is visibly waiting during S exercises. Side-quest converges at Exercise 3 invocation; the authored test-strategy skill installs to `~/.claude/skills/test-strategy/SKILL.md` (user scope) and crosses worktrees freely.
+**Pedagogical role:** First felt multi-session moment in AE101. Introduces no new primitive. Packages M3's existing Q+S split into two windows so the side-quest is visibly waiting during S exercises. Side-quest converges when the authored test-strategy skill installs to `~/.claude/skills/test-strategy/SKILL.md` (user scope) and crosses worktrees freely; the main lane's read on it is a later, separate step, not a re-invocation.
 
 **Why two windows, not two tabs:** projection legibility. The trainer's screen-share shows both worktrees side by side from minute one. Cognitive separation matches the Quality versus Security framing.
 
@@ -80,7 +81,7 @@ The fork prompt reads your repo's folder name from the working directory. Paste 
 - `ae101-m3-quality-side-orient` — side-lane orientation that confirms worktree directory, branch, loaded rules, codebase visibility — then waits.
 
 **Frameworks riffed on:**
-- Worktree-as-side-quest framing inherited from Boris Cherny, *Mastering Claude Code in 30 minutes* (parallel worktrees as productivity unlock).
+- Worktree-as-side-quest framing inherited from Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0) [practitioner direct] (parallel worktrees as productivity unlock).
 - Side-quest convergence-via-user-scope-skill pattern follows Claude Code's skill loading model (skills at `~/.claude/skills/<name>/` auto-discovered every session regardless of working directory).
 
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:

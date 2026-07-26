@@ -4,106 +4,94 @@
   "verdict": "PASS",
   "training": "ae101",
   "trace_status": "full_regen",
-  "generated_at": "2026-05-14T13:12:40Z",
-  "content_sha": "f485823f8275dc7925100f022ee7646f57fe88fcd9b956b5bbab394ad5788c27",
-  "prompts_evaluated": 3,
+  "generated_at": "2026-07-10T00:00:00Z",
+  "content_sha": "f29940ae7a308e8db2af681583bcfb8037ee64b762df6c0dab0a52146faabca3",
+  "prompts_evaluated": 5,
   "blocking_findings_count": 0,
   "todos_count": 2,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_lead": "Commit the current state of the repo on a fresh feature branch named m4/<short-task-",
-      "prompt_sha": "523112111b2994abd31dd7d7f0047ddae92391f4afaac3cc06132981efd57254",
+      "prompt_lead": "Show me where Claude Code is keeping the record of this session. Every session",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": []
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Create a fresh feature branch named m4/<short-task-slug>. Before committing, ap",
       "verdict": "TODO",
       "load_bearing": true,
-      "expected_response_shape": "Claude confirms it will commit, creates the branch, stages all files, commits with the named message, and reports the short SHA — likely with a brief preamble narrating what it is about to do.",
       "risks_fired": [
         {
           "pattern_id": "preamble-before-action",
           "confidence": "med",
-          "evidence": "Four sequential sub-steps ('create branch', 'stage everything', 'commit', 'tell me the short SHA') hit rule-17 structural threshold (4+ named sub-steps); no in-fence 'No preamble' suppressor and no body primer naming the preamble + skim-past cue for the SHA.",
-          "fix_hint": "Add a one-sentence body primer after the fence: 'Claude will confirm steps before acting — the SHA appears at the end of its reply.' Or append 'No preamble. Tell me the short SHA first.' as the prompt's last line."
+          "evidence": "Five named sub-steps in one fence (create branch; append protected block with two named fields; stage everything; commit with named message; report short SHA) hit rule-17's 4+-sub-step structural threshold. No in-fence 'No preamble' suppressor. No body primer after the fence naming preamble + a skim-past cue for the SHA -- the paragraph immediately after (local-vs-push) doesn't mention it.",
+          "fix_hint": "Body primer after the fence: 'The SHA lands at the end of Claude's reply -- scroll past the confirmation paragraph.' Or an in-fence 'No preamble.' directive as the prompt's last line. This is a single med/load-bearing risk (not two), so it doesn't cross the REVISE bar per the verdict rubric -- logged as TODO for the author to reconcile at next touch."
         }
-      ],
-      "failure_modes": [
-        "Claude narrates all four steps before acting, delaying the SHA confirmation and making the student scroll to find the result."
-      ],
-      "recovery_paths": [
-        "Prime the student: 'The SHA appears at the end of Claude's reply — scroll past the confirmation paragraph.' Or add a no-preamble directive inside the fence."
       ]
     },
     {
-      "prompt_index": 2,
-      "prompt_lead": "I want you to take the task we scoped earlier in this session end to end. Work from the",
-      "prompt_sha": "125ab3af307215f516d457ca22917b877b042183aa9a1e529d0b781701037250",
+      "prompt_index": 3,
+      "prompt_lead": "Push the current branch and set its upstream.",
+      "verdict": "PASS",
+      "load_bearing": false,
+      "risks_fired": []
+    },
+    {
+      "prompt_index": 4,
+      "prompt_lead": "I want you to take the task we scoped earlier in this session end to end. Work",
       "verdict": "PASS",
       "load_bearing": true,
-      "expected_response_shape": "Claude produces a planning summary naming each context source, then after a paragraph or two of plan narration begins working. Return summary likely over-claims shipped work. All behavioral risks are deliberate antipattern by design.",
       "risks_fired": [
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "Deliberate-antipattern carve-out (check_pedagogy rule 51, maintainer_acceptance reconfirmed 2026-05-14): preamble-bloat IS the teaching specimen M5 diagnoses in the packaged re-run contrast. Restructuring kills the contrast; body-callout defuses the felt-evidence. Accepted-by-design.",
-          "fix_hint": "No fix — deliberate antipattern. M5 packaged re-run is the contrast specimen."
+          "evidence": "Deliberate-antipattern carve-out (check_pedagogy.md rule 51): preamble-bloat in the un-packaged return IS the specimen M5 diagnoses.",
+          "fix_hint": "No fix -- deliberate antipattern. M5's packaged re-run is the contrast specimen."
         },
         {
           "pattern_id": "plan-mode-preamble-bloat",
           "confidence": "low",
-          "evidence": "Deliberate-antipattern carve-out (check_pedagogy rule 51): explicit context-source enumeration triggers plan-mode narration by design — M5 diagnoses the bloat. Accepted-by-design.",
-          "fix_hint": "No fix — deliberate antipattern."
+          "evidence": "Deliberate-antipattern carve-out (rule 51): explicit multi-source context enumeration invites plan-mode-style narration by design.",
+          "fix_hint": "No fix -- deliberate antipattern."
         },
         {
           "pattern_id": "self-report-inflation",
           "confidence": "low",
-          "evidence": "Deliberate-antipattern carve-out (check_pedagogy rule 51): 'tell me what you shipped and what you didn't' invites return-summary inflation by design — student learns to distrust the summary vs the trace at M5 debrief. Accepted-by-design.",
-          "fix_hint": "No fix — deliberate antipattern. M5 teaches reading the trace vs the summary."
+          "evidence": "Deliberate-antipattern carve-out (rule 51): 'tell me what you shipped and what you didn't' with no evidence surface named invites return-summary inflation by design.",
+          "fix_hint": "No fix -- deliberate antipattern. M5 teaches trusting the trace over the summary."
         },
         {
           "pattern_id": "niceness-tax",
           "confidence": "low",
-          "evidence": "Deliberate-antipattern carve-out (check_pedagogy rule 51): soft stuck-instruction ('write what you tried and why it didn't work rather than inventing a way forward') invites RLHF softening of block signals by design — M5 diagnoses this and introduces the BLOCKED/NEEDS template. Accepted-by-design.",
-          "fix_hint": "No fix — deliberate antipattern. BLOCKED/NEEDS template belongs in the M5 packaged version."
+          "evidence": "Deliberate-antipattern carve-out (rule 51): the soft stuck-instruction ('write what you tried... rather than inventing a way forward') invites RLHF softening of block signals by design.",
+          "fix_hint": "No fix -- deliberate antipattern. M5 introduces the BLOCKED/NEEDS template as the fix."
         }
-      ],
-      "failure_modes": [],
-      "recovery_paths": []
+      ]
     },
     {
-      "prompt_index": 3,
+      "prompt_index": 5,
       "prompt_lead": "Continue --- you can do it. Can't you?",
-      "prompt_sha": "1eca985f5eea1ea4f924b7fe72c84459abc0230d2b84eb51dbc781a18592e009",
       "verdict": "TODO",
       "load_bearing": false,
-      "expected_response_shape": "Claude leads with confidence-affirmation ('Of course! Continuing now...') before resuming task — taunt fires RLHF reassurance reflex.",
       "risks_fired": [
         {
           "pattern_id": "niceness-tax",
           "confidence": "high",
-          "evidence": "'Can't you?' rhetorical question fires RLHF confidence-affirming opener ('Of course I can!') in >70% of runs, defusing the dark-humour taunt.",
-          "fix_hint": "Optional non-load-bearing prompt; accept niceness-tax as the cost of the dark-humour framing. For pure continuation: replace with bare 'Continue.'"
+          "evidence": "'Can't you?' rhetorical question fires the RLHF confidence-affirming opener in the large majority of runs, defusing the dark-humour taunt.",
+          "fix_hint": "Optional, non-load-bearing prompt; accept niceness-tax as the cost of the dark-humour framing. For pure continuation with no risk: replace with bare 'Continue.'"
         },
         {
           "pattern_id": "preamble-before-action",
           "confidence": "med",
-          "evidence": "Taunt-as-encouragement shape invites social acknowledgement sentence before resuming work.",
-          "fix_hint": "Same as above — non-load-bearing; niceness-tax + preamble are the expected cost of the dark-humour shape."
+          "evidence": "Taunt-as-encouragement shape invites a social-acknowledgement sentence before resuming work.",
+          "fix_hint": "Same as above -- non-load-bearing; niceness-tax + preamble are the accepted cost of the dark-humour shape."
         }
-      ],
-      "failure_modes": [
-        "Claude leads with 'Of course! I was just working through the next step...' — taunt becomes a confidence-affirmation prompt rather than a continuation trigger."
-      ],
-      "recovery_paths": [
-        "For pure continuation: replace with 'Continue.' — no taunt, no rhetorical question.",
-        "Accept the niceness-tax as the price of the dark humour; the prompt is optional and non-load-bearing."
       ]
     }
   ],
   "maintainer_acceptance": {
-    "original_verdict": "REVISE",
-    "original_blocking_findings_count": 1,
-    "original_todos_count": 2,
-    "accepted_at": "2026-05-03",
-    "reconfirmed_at": "2026-05-14",
-    "note": "Deliberate-antipattern (check_pedagogy rule 51): prompt 2 take-task-end-to-end's preamble-bloat + plan-mode bloat + self-report-inflation + niceness-tax in the un-packaged return shape ARE the M4/M5 contrast specimen — suppressing any of them would defuse the felt-evidence M5 diagnoses. Prompt 3 nudge-continue niceness-tax is accepted dark-humour, non-load-bearing. Prompt 1 commit-starting-point preamble (med) is non-blocking. SHA mismatch on 2026-05-14 regen reflects registry-migration prompt expansion (prompt content and pedagogical intent unchanged); rule-51 carve-out re-applied and confirmed."
+    "note": "Continuity from the 2026-05-14 audit (prior instance covered 3 prompts; the registry now carries 5 -- ae101-m4-locate-transcript and ae101-m4-push-starting-point were added since, and ae101-m4-commit-starting-point grew a 'Run coordinates' protected-block append). Rule-51 deliberate-antipattern carve-out on prompt 4 (take-task-end-to-end) re-applied and reconfirmed: preamble-bloat + plan-mode bloat + self-report-inflation + niceness-tax in the un-packaged return ARE the M4/M5 contrast specimen; suppressing any of them would defuse the felt-evidence M5 diagnoses. Prompt 5 (nudge-continue) niceness-tax is accepted dark-humour, non-load-bearing, unchanged from prior audit. Prompt 2 (commit-starting-point) preamble-before-action (med, load-bearing) persists across the protected-block addition and is now logged as a single-risk TODO rather than folded into a stale REVISE -- the fix (body primer near the fence, or an in-fence no-preamble line) is still open at next touch. Prompts 1 and 3 are new since the last audit and pass clean: prompt 1 (locate-transcript) is a single short 3-sub-step read/verify/report action below the rule-17 threshold; prompt 3 (push-starting-point, optional) is a single imperative with no catalog pattern invited."
   }
 }

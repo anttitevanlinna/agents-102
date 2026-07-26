@@ -4,9 +4,9 @@
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "H1", "lines": "1-1"},
-    {"index": 1, "heading": "The better the automation, the worse the operator", "lines": "3-7"},
-    {"index": 2, "heading": "Earned trust breeds the miss", "lines": "9-13"}
+    {"index": 0, "heading": "H1: The ironies of automation", "lines": "1-2"},
+    {"index": 1, "heading": "The better the automation, the worse the operator", "lines": "3-8"},
+    {"index": 2, "heading": "Earned trust breeds the miss", "lines": "9-14"}
   ],
   "rules_evaluated": [
     {
@@ -75,7 +75,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Checked all six sub-items per chunk: no 'Not X. Not Y. Z.' construction; no anaphora/epistrophe triples ('Monitor for the rare failure. Take over when it happens.' is a pair, not a triple); no self-grading superlatives; the lone number ('1983 result') is used as provenance, not a retracted estimate; 'detection performance degrades' is cited domain terminology, not an invented abstraction-noun stack; no empty-leg verb triplets.",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,6 +84,36 @@
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Exactly one bold span in the whole file: **overreliance** (chunk 2, line 11), a coined handle at its naming beat. Chunk 1 carries zero bold. Matches the maintainer's own 2026-07-09 emphasis-pass note.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Confirmed wiring: included via standard `[Lecture: The ironies of automation](lectures/ironies-of-automation.md)` at run-the-first-experiment.md line 51, under `## Send the task off`, same include convention as the file's sibling lectures (the-far-half, the-agent-loop, test-and-learn) which reach the composed deck via the standard .phase--lecture wrapper. No phase-less prose section at risk of deck-drop.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
       "chunks_flagged": [],
       "evidence": null,
       "fix_hint": null,

@@ -121,7 +121,7 @@
 ## Reading was never the control
 
 - The outputs in this module were the biggest yet, and control never came from reading them whole. It came from three moves you already made.
-- The delta note held the map against what you already knew of the codebase, in both directions. A probe, not a read. The one-threat pick rejected most of the STRIDE walk with a named reason. The skill critique made the artifact name its own weakest part before it earned trust.
+- The delta note held the access map against what you already knew of the codebase, in both directions. A probe, not a read. The one-threat pick rejected most of the STRIDE walk with a named reason. The skill critique made the artifact name its own weakest part before it earned trust.
 - **Control is interrogation.** Ranked list first, probe where you know most, make the output name its weak spot. The full record stays on disk. You can always read more; you can never read all.
 
 ## The branch is the permission
@@ -165,5 +165,5 @@
 
 - Family B judged 2026-07-03: B-star durability PASS — every law recovers NAMED·PLACED·MECHANISM from the slide alone and the governor is executable/generative; spine holds (Intent filled by the governor, no empty phase) and the kept-5 dose reads as recognition, not a pile.
 
-**Quality:** compendium-audited 2026-07-08 (slides@47f3357)
-- judges @47f3357: writing grandfathered, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered, slides PASS (override-r8-map-position-tags-locked-by-design-see-instances/ae101--the-loop-half-filled.slides.json)
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@9697944)
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

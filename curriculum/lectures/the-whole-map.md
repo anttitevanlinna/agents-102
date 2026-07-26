@@ -85,12 +85,12 @@ Every piece of agentic work runs the same cycle. Six phases. The loops drawn acr
 </svg>
 </figure>
 
-- **Intent.** What you point the work at. Which task, what done means, and which unknown the work should teach you the most about.
+- **Intent.** What you point the work at. Which task, and what done means, before a single step runs.
 - **Context.** What the agent knows going in. The files, rules, and memory that decide whether it acts on your system or on a guess about your system.
 - **Work.** The agent runs the loop: acts, reads the result, corrects, goes again. Everything you would call "using the agent" happens in this phase.
 - **Verification.** How you know the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it.
-- **Absorption.** How much of the result you can actually take up. Generation is fast; reading, judging, and merging are not. The difference decides your real throughput.
-- **Outcome.** What you keep. The fix, the rule it taught you, the skill it became, and how each one compounds into the next run.
+- **Absorption.** How much of the result you can actually take up. What gets read, judged, and merged, not just what gets produced.
+- **Outcome.** What you keep. What survives the run and compounds into the next one.
 
 The phases are places, not stages. A run usually stands in more than one at once, and the plan gets re-entered mid-build.
 
@@ -137,5 +137,5 @@ The phases are places, not stages. A run usually stands in more than one at once
 
 - Family B judged 2026-07-03: B-star durability PASS — map re-readable voice-gone (six phases named + placed, near/far legible); spine holds (the map *is* the spine); worldview container holds at phase level, the nine loop labels ride as furniture (no governor/principle stated → no derivation spent), which is the maintainer's open EYEBALL Q2/Q4/Q5, not a block.
 
-**Quality:** compendium-audited 2026-07-08 (slides@47f3357)
-- judges @47f3357: writing grandfathered, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy grandfathered, strategy grandfathered, slides PASS
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@9697944 slides@b3143a4)
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

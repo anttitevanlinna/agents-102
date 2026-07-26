@@ -4,7 +4,7 @@
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "# Reading the return (title slide, no lede)", "lines": "1-2"},
+    {"index": 0, "heading": "Reading the return (title slide, no lede)", "lines": "1-2"},
     {"index": 1, "heading": "What would have caught this earlier?", "lines": "3-8"},
     {"index": 2, "heading": "Three failure modes you'll use to read", "lines": "9-15"},
     {"index": 3, "heading": "Why these three, every run", "lines": "16-22"},
@@ -17,7 +17,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 3 \"Why these three, every run\" line 18 (\"The three are consequences, not bad luck\") and chunk 4 \"Ronacher's ten-hour port surfaced all three\" line 25 (\"all three failure modes\") both reuse the trio (goal drift / context rot / plausible-but-wrong) named in chunk 2, which precedes both under a sequential deck read. Not a violation — reuse of a term introduced on an earlier slide of the same file is explicitly the NOT-a-violation case in compendium rule 1.",
+      "evidence": "chunk 3 \"Why these three, every run\" line 18 (\"The three are consequences, not bad luck\") and chunk 4 \"Ronacher's ten-hour port surfaced all three\" line 25 (\"all three failure modes\") reuse the trio named in chunk 2 (goal drift / context rot / plausible-but-wrong) — NOT a violation, sequential reuse of a term introduced on an earlier slide. chunk 3 line 20 (\"On the map, they live in the Work phase... the far half's first verification move\") introduces \"the map\"/\"Work phase\"/\"the far half\" with no in-file antecedent, but these are arc-earned AE101 spine vocabulary confirmed live elsewhere in the training (curriculum/lectures/the-far-half.md, the-map-filled-in.md, the-whole-map.md; also documented in this file's own maintainer note, section-3 sweep 2026-07-02, as a pre-verified carve-out) — exempt under the arc-earned-spine-vocabulary carve-out. No never-named, vague-with-history, or re-chunk-stranded referents found elsewhere.",
       "fix_hint": null,
       "blocking": true
     },
@@ -37,7 +37,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "chunk 1 line 5 (\"You stepped away with the agent working. The run finished, hit its budget, or was stopped\") and chunk 4 line 27 (\"A stopped run counts; the trace is the data\") describe the student's just-completed M4 send-off beat. Verified live: run-the-first-experiment.md line 4 (\"send it off un-packaged\") and line 104 (\"A run that produced something... A stopped run counts; the trace is the artefact. Bring the three failure modes from Reading the return\") — the beat exists in M4's current exercise, and this lecture's own maintainer block confirms placement (\"Lands at the close of M4 Debrief, after the send-off prompt has been pasted\"). Covered by the module-arc-beats-in-openers/closers carve-out (a lecture placed directly after the module's exercise may name what the student just did).",
       "fix_hint": null,
       "blocking": true
     },
@@ -47,7 +47,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No guess-before-reveal / predict instruction anywhere in the file; this is a pure pre-read with no live-demo beat.",
       "fix_hint": null,
       "blocking": true
     },
@@ -57,7 +57,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "All 4 content chunks (1-4) carry 3-4 bullets each with a self-contained claim; none reduces to a bare wait-state or single context-dependent fragment. Chunk 0 is a conventional title-only opener, not evaluated as an orphan.",
       "fix_hint": null,
       "blocking": false
     },
@@ -67,7 +67,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 3's and chunk 4's headers read true under the sequential deck read (the trio was named on chunk 2), consistent with the rule-1 disposition above.",
+      "evidence": "All 4 headers are literally true of their chunk's content under the sequential read: \"What would have caught this earlier?\" delivers the diagnostic question; \"Three failure modes you'll use to read\" delivers exactly three named modes; \"Why these three, every run\" delivers the mechanism (statistical machine, finite window) and universality claim; \"Ronacher's ten-hour port surfaced all three\" delivers the ten-hour port anchor and confirms all three modes appeared.",
       "fix_hint": null,
       "blocking": false
     },
@@ -75,10 +75,10 @@
       "compendium": "check_slides.md",
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Checked all five sub-items across all chunks. chunk 1 line 6 (\"Not *did the run succeed*. Not *should I have spec'd it tighter*. A diagnostic:...\") is two \"Not X\" clauses followed by a reframing sentence, not the banned \"Not X. Not Y. Z.\" declarative-collapse construction (the third clause is a redirect to method, not a Z-declarative naming the thing) — read against the compendium's own example (\"Not X. Not Y. Z.\") this is a looser rhetorical question pattern, kept as accept-with-note rather than a flag. No anaphora triples, no self-grading superlatives, no number+retraction, no abstraction-noun stacks, no empty-leg verb triplets found.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "chunks_flagged": [1],
+      "evidence": "\"Not X. Not Y. Z.\" sub-item HIT: chunk 1 line 6 — \"Not *did the run succeed*. Not *should I have spec'd it tighter*. A diagnostic: you read the artefact, you find what went wrong, and for each thing you ask this one question.\" Two negated candidate framings followed by a labeled declarative (\"A diagnostic:\") is the banned triadic shape regardless of X/Y being phrased as questions; the rule's own note that \"slide density makes tics visible — one tic can be the whole slide\" applies directly since this bullet IS effectively the whole slide's opening move. Other sub-items checked clean across all chunks: no anaphora/epistrophe triples, no self-grading superlatives, no number-plus-retraction (chunk 4's \"roughly ten hours\" / \"Two and a bit million tokens\" are sourced measurements, not hedge-then-retract), no abstraction-noun stacks, no empty-leg verb triplets.",
+      "fix_hint": "Recast chunk 1 line 6 as one declarative (e.g. lead with \"A diagnostic, not a verdict:\" and fold the two rejected framings into a single clause) instead of the two-negation build-up.",
       "blocking": false
     },
     {
@@ -87,11 +87,41 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "\"the map\" / \"the Work phase\" (chunk 3) are arc-earned AE101 spine vocabulary (the training's own named framework, carried across modules — the-far-half.md lecture is titled \"The far half of the map\"), not maintainer-only dialect. Carve-out applies.",
+      "evidence": "\"the map\" / \"the Work phase\" / \"the far half\" (chunk 3, line 20) are arc-earned AE101 spine vocabulary carried across multiple lecture files (the-far-half.md is titled \"The far half of the map\"), not maintainer-only repo dialect. No other repo/authorial vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections-as-proper-noun) found in body.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Exactly 3 bold spans in the entire body, all in chunk 2, one per named failure-mode handle (**Goal drift.** line 12, **Context rot.** line 13, **Plausible-but-wrong.** line 14) — matches the explicit \"a law/consolidation slide may carry one handle per law\" exemption for a slide defining three named laws. Zero bold on chunks 0, 1, 3, 4. Consistent with this file's own maintainer note documenting the 2026-07-09 emphasis pass that reduced bold to exactly this shape.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Confirmed in built output: site/clients/acme/agentic-engineering-101/index.html:4348 renders `<section class=\"phase phase--lecture\" id=\"lectures-reading-the-return\">` with `<h1 id=\"reading-the-return\">Reading the return</h1>` — the file is phase-wrapped and reaches the composed Slides deck (not a phase-less prose section that would be dropped).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "No `## Phase N:` / `## N.` step headers and no in-file \"Step K\"/\"Phase K\" student-facing references anywhere in this file — all four `##` headings are descriptive titles, not content ordinals. `node scripts/check-slide-numbering.js` reports \"OK — 58 files, Phase/Step numbering consistent\" (repo-wide, this file included).",
       "fix_hint": null,
       "blocking": true
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 1
 }

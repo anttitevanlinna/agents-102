@@ -7,7 +7,7 @@ Read the un-packaged Module 4 run through three failure-mode lenses, build the v
 
 Walk in with the Module 4 send-off artefact. Stopped, finished, ran out of credit, doesn't matter.
 
-Optional prep in the Module 4 to Module 5 gap: read [Clean Code Is Steering: Insights from Uncle Bob](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md); watch Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich); read Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).
+Optional prep in the Module 4 to Module 5 gap: read [Clean Code Is Steering: Insights from Uncle Bob](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md); watch Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich); read [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md); read Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -47,11 +47,11 @@ A real engineering call lives in this fork: gitignored files (your `CLAUDE.local
 
 Run the fork from your original repo, not the worktree (it doesn't exist yet). If your Module 4 session is still open, ask it there, it's already in the right place. Otherwise open a fresh session in the original repo location and ask there.
 
-**Claude figures out `<repo-name>` from the working directory.** Help it if it gets confused.
+Claude figures out `<repo-name>` from the working directory. Help it if it gets confused.
 
 {{prompt:ae101-m5-worktree-setup}}
 
-**Claude will narrate before acting.** It usually opens with a plan summary listing the six sub-steps, then runs them. Skim past the opening; look for the shell-command output confirming the worktree path and which files copied across.
+Claude will narrate before acting. It usually opens with a plan summary listing the six sub-steps, then runs them. Skim past the opening; look for the shell-command output confirming the worktree path and which files copied across.
 
 **The coordinates are the anchor.** Claude should read the protected `Run coordinates` block in `task.md`, use the exact `m4/<slug>` branch named there, and fork from that branch's "M4 starting point" commit. If the coordinates are missing or the commit message has been rewritten, stop and use the SHA Claude reported at Module 4 close rather than guessing from branch names.
 
@@ -107,7 +107,7 @@ Module 6 reads the packaged run. Subtler misses, subtler drift. Your verifier tu
 
 ## Bring to Module 6
 
-A packaged re-run with substance. Read the scrollback or commits from the Debrief re-send; check the agent didn't just stall in the first minute.
+A packaged re-run with substance. Read the scrollback or commits from the re-send; check the agent didn't just stall in the first minute.
 
 Come to Module 6 without the packaged run and you'll be reading one run while the room is reading two. Your call.
 
@@ -125,9 +125,9 @@ Optional. Skipping does not break Module 6. Both fit the Module 5 to Module 6 ga
 
 **Nag beat + reading reminder added (2026-07-10, Antti-directed cognitive-load arc):** (1) *Long runs, short reads* blockquote in Start here — the M5 reminder leg of the selective-reading arc (M1 teach → M2 exception → M3 take-into-use → M5 remind), per `check_student_facing.md` §29 operational-reminder-at-moment-of-use. (2) New section *The nag writes the verifier* after Start here — reframes the M4 mid-run worry as the verifier's spec ("the feeling of what is missing points at what to build", Antti's frame near-verbatim); names the reference/plan.md/verifier trio in the same role-language the re-send section already uses. Opener-dosage check: arming beat (spirit + one move), does not name Ronacher's three-pattern or the failure-mode↔packaging pairing — closer's beats intact. First para names a plausible mid-run worry: resonant-copy carve-out, don't flatten at re-audit. Quality per-class SHAs predate this pass; re-audit before ship.
 
-**Quality:** compendium-audited 2026-07-08 (writing@0ef2ca6 story@1ff6f8a technical@0ef2ca6 behavior@1ff6f8a pedagogy@0ef2ca6 strategy@1ff6f8a slides@47f3357)
-- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (override-r1-Debrief-canonical-section-vocab-per-carve-out-see-instances/ae101--learn-from-the-test.slides.json)
-- cross_module @0ef2ca6: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop,plan-mode-done-right]
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@9697944)
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module: PASS see instances/ae101--prework-m6.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create

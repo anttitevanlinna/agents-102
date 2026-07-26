@@ -11,6 +11,8 @@ The scoped task you picked as homework.
 
 Come to Module 4 without having picked the task and you'll be scrambling for one while the room is already running theirs. Your call.
 
+Optional forward-look from Module 3: [What is agentic engineering](trainings/agentic-engineering-101/supplementary/what-is-agentic-engineering.md). And when your sessions start running heavy, [Token efficiency](trainings/agentic-engineering-101/supplementary/token-efficiency.md) on keeping the context window lean.
+
 ## What You'll Learn
 After this module, you will be able to:
 - **Scope** a real send-off task in conversation with Claude, multi-file reasoning, sustained coherence, not step-by-step nudging
@@ -48,7 +50,7 @@ Next, the thing you are sending: an LLM in a loop, calling tools.
 
 The run is about to leave your hands. Before it does, the trap that earned trust sets for the watcher:
 
-[Lecture: The ironies of automation](lectures/ironies-of-automation.md)
+[Lecture: Calibrated vigilance](lectures/ironies-of-automation.md)
 
 No compound pass at the close. The send-off is the close of the work. Your rules files, memory, ADRs, and skills are what they are; the agent runs against them as they stand. Whatever needs sharpening will surface on the return at Module 5, when you can see what the system actually produced. Compound on evidence, not anticipation.
 
@@ -120,9 +122,9 @@ Optional. They sit in the Module 4 to Module 5 gap while your un-packaged run is
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-07-08 (writing@0ef2ca6 story@4c539ba technical@0ef2ca6 behavior@ab4b0bd pedagogy@0ef2ca6 strategy@4c539ba slides@47f3357)
-- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @0ef2ca6: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop,plan-mode-done-right]
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@9697944 slides@b3143a4)
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module: PASS see instances/ae101--prework-m6.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create
@@ -168,7 +170,7 @@ Optional. They sit in the Module 4 to Module 5 gap while your un-packaged run is
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
-| M4 starting-point branch + SHA | `m4/<task-slug>` branch at the short SHA Claude reports after the commit prompt; SHA noted in scrollback (or in `./CLAUDE.local.md` if the student writes it down) | "Commit the current state…" prompt in *Send the task off* (line 49) | M5 worktree fork (`../<repo>-m5` checked out from this branch + SHA, so the packaged re-run starts from the same code state as the un-packaged run) |
+| M4 starting-point branch + SHA | `m4/<task-slug>` branch at the short SHA Claude reports after the commit prompt; both written into the protected `Run coordinates` block in `task.md` — the load-bearing stable identifier, not scrollback and not `./CLAUDE.local.md` | "Commit the current state…" prompt in *Send the task off* (line 49) | M5 worktree-setup prompt reads the `Run coordinates` block in `task.md` directly and forks `../<repo>-m5` from the named branch + SHA, so the packaged re-run starts from the same code state as the un-packaged run |
 | Filled gap entries | `observations/` (cross-session default) or sponsor-stated business-rules home | Phase 2 walk-and-fill prompts — observation written, rule articulated, business-rules pointer wired | M5 packaged re-send (the agent loads the same observations + the new packaging on top); M6 second-skill authoring reads as part of the walked-system context |
 | M4 session transcript | `~/.claude/projects/<project-folder>/<session-id>.jsonl` (Claude Code's default storage) | The Claude Code session running the M4 walk + send-off; persisted by the runtime, not by an explicit prompt | M5 opening — the M5 session reads the M4 transcript directly to ground the *"what came back"* read |
 

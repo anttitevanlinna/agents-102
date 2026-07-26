@@ -1,16 +1,25 @@
 {
   "class": "strategy",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/what-packaging-is.md",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "ae101",
-  "strategy_doc_section_loaded": "M5 in detail — learn from the test, re-send packaged (lines 375–414); closing lecture specification (line 387); mood contract (line 398); 80/20 + cost/latency + hooks placement (lines 412–414); module table row (line 239); M5 spirit + two-run arc (lines 377–402)",
+  "strategy_doc_section_loaded": "content-strategy-agentic-engineering-101.md § M5 in detail — learn from the test, re-send packaged (lines 375–421: Spirit, delivery shape, closing-lecture description at line 387, five moves, mood, themes-earned, pre-reads-before-M5 + in-class-beats); § Recurring themes 1–6 (104–120); § Mood arc (250–260); § Woven design rules #1 Compound-step-varies-by-module (136); § Team kit — the side-story that compounds, M5 row (~550); § M6 in detail, Evals-named-and-explained paragraph (~445, cross-checked for front-run risk); no sim trace (strategy class reads file + strategy doc statically per template) — cross-read against companion module file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md (Big Idea, Key Concepts, What You'll Learn, `## Next` bridge-to-M6 content, maintainer push-back row guarding the closing-lecture pre-empt)",
   "rules_evaluated": [
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 0,
+      "rule_lead": "Big Idea match (judge-owned, file × strategy)",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "N/A — file has no `## Big Idea` heading (a module-file construct); the AE101 strategy doc has no per-module \"Big Idea\" field at all (grep for the term across the doc returns zero hits — the M-table's columns are Title / Lead dimension / Mood / Artifact). The companion module file learn-from-the-test.md carries `## Big Idea` and is the correct target for this judgment.",
+      "blocking": true
+    },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
       "rule_lead": "Mood contract named",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "Opening line: \"The packaged re-send is running and the laptop is closed again. What you assembled to get there has names.\" — positions the reader post-Debrief/re-send, matching M5's deliberate mood \"learning through contrast\" (strategy doc line 398) and the strategy doc's own spec for this file: \"Names Ronacher's three-pattern from felt evidence\" (line 387). The lecture's own maintainer block corroborates: \"closer honors recognition-before-naming ('what you assembled… has names')\" (line 261), and the companion module file's push-back row explicitly guards against naming the three-pattern before this closing lecture (learn-from-the-test.md line 149: \"The closing lecture earns the name from felt evidence. If the term comes up in Phases 1–4, the closing has nothing to add.\").",
       "fix_hint": null,
       "blocking": false
     },
@@ -18,27 +27,27 @@
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "N/A — M5's deliberate mood is \"learning through contrast\" (strategy doc line 398), not \"unease\"; this rule's punitive-vs-epistemic gate only fires when mood=unease. Checked defensively anyway: the \"unchecked run arrives confident, and wrong\" / \"wrong harbor\" passage frames a hypothetical ghost-twin scenario diagnostically (what packaging prevents), not the student's own M4 run as a personal failing — no punitive framing found.",
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "evidence": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "N/A — rule fires on Big Idea / Key Concepts / What-You'll-Learn sections; this lecture file carries none (module-file constructs). Checked defensively anyway: this file's own `##` headings (\"The three-pattern\", \"Hooks always fire\", \"The 80/20 ratio\", etc.) are discipline-named, not failure-word titles.",
+      "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity — closing lecture beat inventory",
-      "verdict": "REVISE",
-      "evidence": "Strategy doc line 387 requires the closing lecture to name 'two extension primitives the student didn't build (subagents-for-isolation, /compact at ~60%)'. Neither primitive appears in the student-facing body — they exist only in the maintainer block attribution list (line 89, 98). The 'What you didn't build today' watch-for (maintainer line 107) acknowledges the beat exists but it is absent from the body. // Strategy doc line 699 places hooks as 'M5 (exercise line) — vocabulary fix, one line.' The lecture body contains a full 4-paragraph 'Hooks always fire' section (~200 words) added 2026-05-15 that teaches hooks as a concept. The strategy doc was not updated to reflect this placement change — the two are now out of sync. Either the strategy doc must be updated to own 'Hooks always fire' as a closing-lecture beat, or the section must move to the exercise.",
-      "fix_hint": "Two independent fixes required: (1) add the missing 'extension primitives the student didn't build' beat to the lecture body — subagents-for-isolation and /compact at ~60%, one sentence each, named plainly; (2) resolve the hooks placement mismatch — update the strategy doc to declare 'Hooks always fire' as a closing-lecture beat (not exercise-line only), or move the section to the exercise body. These are distinct edits; resolve strategy doc alignment first so the lecture body can conform.",
+      "rule_lead": "Strategy-fidelity check — cross-module sequencing",
+      "verdict": "PASS",
+      "evidence": "Re-audit against the CURRENT strategy doc (this repo's prior instance file, dated 2026-05-15, flagged REVISE against a now-superseded doc/file pair — both findings are resolved as of this pass). (1) 'Extension primitives the student didn't build' — now in the student-facing body, not just the maintainer block: '**Subagents for isolation.**' is an explicit bolded lead, and 'Manual /compact at around 60%' opens the context-camps bullet. (2) Hooks placement — the prior REVISE cited a stale strategy-doc line placing hooks as exercise-only vocabulary; the CURRENT strategy doc line 387 now explicitly specifies '...names hooks as a closer-beat runtime primitive (full 4-paragraph teaching section, live-verified against this repo's .claude/settings.json + Claude Code 2.1.142)...' and the M5 in-class-beats list repeats this — matching the file's 'Hooks always fire' + 'Hooks for must-happen, prompts for taste' sections exactly. Beyond the two prior findings: three-pattern named from felt evidence only (grep for 'eval' returns zero hits anywhere in the body, so M6's 'the word earns its full weight' moment, strategy doc line 445, is not front-run); Cherny's three stop-hook shapes attributed with the Kim-synthesis hedge intact ('the menu form is the synthesis'); Intercom 2x numbers anchor org scale; 'What you didn't build today' names exactly the five-camp context-for-long-runs divergence the strategy doc specifies (manual /compact ~60%, subagent route, 1M-window-no-compact, Ralph fresh-session reconstruct, plan/execute session split) plus the Amp counter-camp — all present and correctly scoped to this file. One remaining non-blocking staleness: strategy doc line 387 still describes this lecture as the thing that 'bridges to M6 (your verifier IS your first eval)', but the lecture's own maintainer block (line 265, 'Slides-only pass' 2026-07-02) documents that beat was deliberately relocated to the companion module file's `## Next` (learn-from-the-test.md line 106: 'Your verifier turns out to be one of three eval shapes'). The pedagogical content is delivered and not front-run — just relocated, and cross-referenced in both files' maintainer blocks — so this is a documentation-lag note, not a sequencing defect.",
+      "fix_hint": "Non-blocking: update content-strategy-agentic-engineering-101.md line ~387 to note the M6-bridge beat now lives in the module file's `## Next`, not in this lecture, so the strategy doc stays the accurate source of truth per curriculum/CLAUDE.md's \"strategy and module file change in the same edit\" rule.",
       "blocking": true
     },
     {
@@ -47,17 +56,17 @@
       "rule_lead": "Strategic themes recur in Key Concepts",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "N/A — file has no `## Key Concepts` heading; that section lives in the companion module file (learn-from-the-test.md), which carries its own theme-instance bullets (e.g. \"Your verifier is your first eval. The team kit's evals grow from here\").",
+      "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 6,
-      "rule_lead": "Key Concepts shape — §§3/4/5 gates then breadcrumbs",
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, gates first",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "N/A — same reason as rule 5, no Key Concepts section in this file.",
+      "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -65,10 +74,10 @@
       "rule_lead": "What You'll Learn shape — capability register",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "N/A — file has no `## What You'll Learn` heading; that section also lives in the module file (learn-from-the-test.md).",
+      "blocking": true
     }
   ],
-  "blocking_findings_count": 1,
-  "todos_count": 0
+  "blocking_findings_count": 0,
+  "todos_count": 1
 }

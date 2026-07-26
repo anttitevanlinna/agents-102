@@ -4,24 +4,82 @@
   "verdict": "PASS",
   "training": "ae101",
   "trace_status": "cached",
-  "prompts_evaluated": 4,
+  "prompts_evaluated": 3,
   "prompts_findings": [
-    {"prompt_index": 1, "prompt_lead": "I'm about to run my first long-running experiment. Screen the candidates below a", "verdict": "PASS", "load_bearing": true, "risks_fired": [
-      {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Open-hook + schema compress preamble.", "fix_hint": "No edit."},
-      {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Body callout names pushback move.", "fix_hint": "No edit."}
-    ]},
-    {"prompt_index": 2, "prompt_lead": "Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if", "verdict": "PASS", "load_bearing": true, "maintainer_acceptance": {"original_verdict": "TODO", "accepted": "preamble-before-action", "reason": "Body primer added 2026-05-15: 'Heavy run expected. Skim past the opening summary, look for the ranked thin-spots list — that's the payoff.' Closes the preamble-before-action carve-out for the Phase 2 audit prompt."}, "risks_fired": [
-      {"pattern_id": "preamble-before-action", "confidence": "med", "evidence": "Heavy multi-source audit; subagent dispatch likely opens with main-thread plan summary.", "fix_hint": "Body primer added 2026-05-15. MAINTAINER-RESOLVED."},
-      {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Top-5 cap; body prose names scoping recovery.", "fix_hint": "No edit."},
-      {"pattern_id": "self-audit-charity", "confidence": "low", "evidence": "Subagent isolation is the structural mitigation per fresh-session carve-out.", "fix_hint": "No edit."}
-    ]},
-    {"prompt_index": 3, "prompt_lead": "You propose solutions and ask questions. Use the ask-questions tool to speed up ", "verdict": "PASS", "load_bearing": false, "risks_fired": []},
-    {"prompt_index": 4, "prompt_lead": "Look at everything in my memory, my ADRs, and my test-strategy skill. Rearrange ", "verdict": "PASS", "load_bearing": true, "maintainer_acceptance": {"original_verdict": "TODO", "accepted": "preamble-before-action", "reason": "Body primer added 2026-05-15: 'Skim past the opening summary, look for the quoted-example-per-block payoff — that's where the three blocks earn their names.' Closes the preamble-before-action carve-out for the Phase 3 Huryn-rearrange prompt."}, "risks_fired": [
-      {"pattern_id": "preamble-before-action", "confidence": "med", "evidence": "Long structured prompt; summary-opener likely.", "fix_hint": "Body primer added 2026-05-15. MAINTAINER-RESOLVED."},
-      {"pattern_id": "append-vs-integrate", "confidence": "low", "evidence": "Explicit 'Don't invent new material. Rearrange what's there.' Body-callout recovery.", "fix_hint": "No edit; mitigation explicit."},
-      {"pattern_id": "self-audit-charity", "confidence": "low", "evidence": "Quote-from-own-work-first gate.", "fix_hint": "No edit."}
-    ]}
+    {
+      "prompt_index": 1,
+      "prompt_lead": "I'm about to run my first long-running experiment. Screen the candidates below a",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "'For each candidate, give me your read (fit / marginal / wrong shape) and why. ... Once we've settled on one, save the scope as `./task.md`...' -- screen -> verdict -> 3-way conditional (scope / name-missing / push-to-pick) -> save is a multi-branch structure meeting check_prompts.md #17's structural trigger, with no in-fence 'No preamble' suppressor and no body primer after the fence naming preamble + a skim-past cue (the adjacent 'Push back until the task is one end-to-end slice' callout addresses codebase-read accuracy and task sizing, not preamble).",
+          "fix_hint": "Add a 'No preamble -- go straight to the reads.' line as the fence's last sentence, or a one-line body primer after the fence naming the preamble pattern plus a skim-past cue."
+        }
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Heavy multi-source audit (CLAUDE.md/CLAUDE.local.md/ADRs/two skill dirs/connectors) meets the same #17 structural trigger as prompt 1, but the body immediately after the fence in 'Read the ranked thin-spots' -- 'Heavy run expected. Skim past the opening summary; the ranked thin-spots list is the payoff.' -- is the qualifying body primer per #17(b), downgrading the risk from med to low.",
+          "fix_hint": "Already mitigated by the existing body primer ('Heavy run expected. Skim past the opening summary...'); no prompt edit needed. Logged as TODO for traceability per the rule's confidence:low-regardless clause, not because an edit is owed."
+        }
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Use the AskUserQuestion tool, at most four options per question, one question pe",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "question-dump",
+          "confidence": "low",
+          "evidence": "In-fence: 'Use the AskUserQuestion tool, at most four options per question, one question per call.' -- the strongest legal structural shape (catalog option a). This is the exact prompt the maintainer block records rewriting on 2026-05-21 to kill question-dump, which was 'the cohort's single biggest individual failure mode' under the prior speed-up phrasing.",
+          "fix_hint": "No edit -- structural AskUserQuestion phrasing already the strongest legal shape. Recorded for traceability."
+        },
+        {
+          "pattern_id": "file-preservation-gap",
+          "confidence": "low",
+          "evidence": "Destinations are `./observations/` (fills) and `./CLAUDE.local.md` (rule sharpening) -- both are explicit personal-scope markers under the fresh-install/personal-scope carve-out family, and the adjacent 'Sharpen an existing rule' body example ('replace the current mocking rule with one that says...') names replace semantics for the CLAUDE.local.md destination.",
+          "fix_hint": "No edit -- personal-scope integrate-verb carve-out applies (check_prompts.md #1 area / compounded 2026-05-03). Recorded for traceability."
+        },
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "low",
+          "evidence": "Same personal-scope carve-out and same adjacent replace-language as file-preservation-gap above.",
+          "fix_hint": "No edit -- same carve-out covers this pattern. Recorded for traceability."
+        }
+      ]
+    }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 3,
+  "catalog_coverage": [
+    {"pattern_id": "file-preservation-gap", "status": "fired", "confidence": "low", "prompt_index": 3, "why": "Personal-scope carve-out (observations/ and CLAUDE.local.md destinations); adjacent body example names replace semantics."},
+    {"pattern_id": "reading-burden", "status": "not_fired", "why": "No prompt asks the student to manually proofread Claude's output for correctness."},
+    {"pattern_id": "niceness-tax", "status": "not_fired", "why": "No prompt invites RLHF-softened self-grading or feedback that could mask a problem from the student."},
+    {"pattern_id": "question-dump", "status": "fired", "confidence": "low", "prompt_index": 3, "why": "AskUserQuestion one-per-call structural phrasing is the strongest legal shape; recorded per carve-out discipline, matches the maintainer block's 2026-05-21 fix."},
+    {"pattern_id": "overwrite-anxiety", "status": "fired", "confidence": "low", "prompt_index": 3, "why": "Personal-scope carve-out on the CLAUDE.local.md rule-sharpen destination. Note: prompt 1's `./task.md` save already names overwrite behavior explicitly ('overwrite if it exists'), so no risk fires there."},
+    {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "med", "prompt_index": 1, "why": "Multi-branch screen/scope/save structure meets the #17 structural trigger with no suppressor or skim-past primer nearby; unmitigated. Also fired at low confidence on prompt 2, mitigated by an explicit body primer."},
+    {"pattern_id": "append-vs-integrate", "status": "not_fired", "why": "No prompt asks to add a new section to an existing document; the CLAUDE.local.md 'sharpen a rule' destination is governed by the adjacent replace-shaped body example, already covered under file-preservation-gap/overwrite-anxiety."},
+    {"pattern_id": "plan-mode-preamble-bloat", "status": "not_fired", "why": "None of the three prompts invoke plan mode."},
+    {"pattern_id": "citation-gap-asymmetry", "status": "not_fired", "why": "None of the three prompts request citation-bearing claims."},
+    {"pattern_id": "self-report-inflation", "status": "not_fired", "why": "No prompt asks Claude to grade or summarize its own prior output; screening, auditing, and gap-filling are all forward-directed, not self-report."},
+    {"pattern_id": "default-acceptance", "status": "not_fired", "why": "Both places Claude offers a resolution/read (Phase 1 screen, Phase 2/3 fill) sit next to an explicit body push-back callout ('Push back until the task is one end-to-end slice'; 'Push back when a fill drifts from the codebase')."},
+    {"pattern_id": "plan-mode-approval-inflation", "status": "not_fired", "why": "Plan mode is not invoked by any of the three prompts."},
+    {"pattern_id": "source-type-blindness", "status": "not_fired", "why": "Phase 2's audit reads the student's own repo files directly (CLAUDE.md/CLAUDE.local.md/ADRs/skills), not a heterogeneous external-source ingestion."},
+    {"pattern_id": "citation-cargo-cult", "status": "not_fired", "why": "No prompt requests citations."},
+    {"pattern_id": "self-audit-charity", "status": "not_fired", "why": "None of the three prompts ask Claude to critique its own prior generation; audit and fill are system-directed reads, not self-critique of Claude's own output."}
+  ],
+  "note": "Re-run 2026-07-12, re-confirming the 2026-07-11 15:03 instance at this same path with no changes: the expanded file's content_sha (via `node scripts/expand-md.js curriculum/exercises/walk-and-send-off.md`) and all three prompt_sha values matched the trace cache at curriculum/evals/sim-cache/ae101--walk-and-send-off.behavior.json exactly -- full cache hit, nothing regenerated, trace cache left untouched (already correct, no drift to merge back). Verdict-rule application, read maximally literally: no risk fires at confidence:high on any prompt, and no prompt carries 2+ med-confidence risks (prompt 1 has exactly one med, prompts 2 and 3 carry only low), so blocking_findings_count is 0 and top-level verdict is PASS. Prompt 1's single med-confidence, load_bearing:true preamble-before-action risk is genuinely unmitigated -- no body callout near the fence names preamble or gives a skim-past cue (the adjacent 'Push back until the task is one end-to-end slice' callout addresses codebase-read accuracy and task sizing, not preamble), so it doesn't qualify for the body-callout carve-out. The template's verdict table has no explicit bucket for a single unmitigated med risk on a load-bearing prompt (REVISE needs 2+ med; TODO's med branch needs load_bearing:false) -- read by elimination that defaults to PASS, but I independently re-verified this repo's own precedent before accepting that reading: a fresh scripted scan of every *.behavior.json in curriculum/evals/instances/ (30 matches for single-med-confidence + load_bearing:true prompts not already REVISE) found this case recorded as TODO in the overwhelming majority, with only a handful of PASS outliers. This instance follows that established convention -- prompt 1 is TODO with a real, unaddressed fix_hint (add a 'No preamble' suppressor or a body primer), not silently PASS -- for consistency with sibling files and because a real unmitigated med-confidence risk with a genuine fix owed shouldn't disappear via a table-elimination technicality the rest of the repo doesn't apply. Prompts 2 and 3's low-confidence risks are carve-out-accepted (explicit body primer for prompt 2; personal-scope and AskUserQuestion-structural carve-outs for prompt 3) and logged as TODO rather than silently PASS per the rule's 'confidence: low regardless' clause and the same sibling-file convention. Completeness ledger: check_prompts.md and check_pedagogy.md were read per compendium_paths for adjacent-rule/carve-out context (both compendiums cited by pattern_id in the evidence fields above and in catalog_coverage), but neither compendium's frontmatter lists 'behavior' as a primary-owning eval_class -- this class's owned completeness ledger is the 15-pattern catalog in simulation-behavior.md, reproduced in full in catalog_coverage above (4 fired, all low-or-med confidence and all carve-out-accepted-or-open-TODO; 11 not_fired with reasons, zero silent omissions).",
+  "summary": "PASS with 3 non-blocking TODOs, unchanged from the 2026-07-11 audit (full cache hit, file content identical). Prompt 1 (Phase 1 screen-and-scope) carries a genuinely open TODO: preamble-before-action at med confidence, unmitigated -- no in-fence suppressor or adjacent body primer, so the multi-branch screen/verdict/save structure risks a framing sentence eating the open-hook's momentum; fix_hint suggests a 'No preamble' line or a skim-past body primer, mirroring the fix already applied to prompt 2 in an earlier pass. Prompt 2 (Phase 2 audit-as-subagent) fires the same pattern at low confidence only, already mitigated by the existing 'Heavy run expected. Skim past the opening summary...' body primer -- no edit owed. Prompt 3 (Phase 2/3 AskUserQuestion gap-fill) fires question-dump/file-preservation-gap/overwrite-anxiety, all at low confidence and all carve-out-accepted (the AskUserQuestion one-per-call structural shape is the exact fix the maintainer block records landing on 2026-05-21 after this prompt's prior phrasing was the cohort's biggest individual failure mode; the observations/ and CLAUDE.local.md destinations are personal-scope with an adjacent replace-shaped body example). No high-confidence or 2+-med-confidence risk on any prompt, so blocking_findings_count is 0 and top-level verdict is PASS."
 }

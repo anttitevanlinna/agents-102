@@ -4,12 +4,12 @@
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "The gate is a claim too (H1 + lede)", "lines": "1-3"},
-    {"index": 1, "heading": "Passing is not proof", "lines": "5-9"},
-    {"index": 2, "heading": "The judge needs calibrating against your labels", "lines": "11-15"},
-    {"index": 3, "heading": "Gates decay", "lines": "17-21"},
-    {"index": 4, "heading": "One run is a sample", "lines": "23-27"},
-    {"index": 5, "heading": "Change on recurrence, not on noise", "lines": "29-35"}
+    {"index": 0, "heading": "The gate is a claim too (H1 + lede)", "lines": "1-4"},
+    {"index": 1, "heading": "Passing is not proof", "lines": "5-10"},
+    {"index": 2, "heading": "The judge needs calibrating against your labels", "lines": "11-16"},
+    {"index": 3, "heading": "Gates decay", "lines": "17-22"},
+    {"index": 4, "heading": "One run is a sample", "lines": "23-28"},
+    {"index": 5, "heading": "Change on recurrence, not on noise", "lines": "29-36"}
   ],
   "rules_evaluated": [
     {
@@ -48,7 +48,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No guess-before-reveal demo instruction anywhere in the file; the lecture is law recognition, not a live-demo walkthrough.",
       "fix_hint": null,
       "blocking": true
     },
@@ -78,7 +78,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Checked all six sub-items across all 6 chunks: no 'Not X. Not Y. Z.' construction; the two triple-parallel lists (chunk 1 'hand-labels / hold-out / repeated runs', chunk 3 'special-cased / keyword-stuffed / edited into agreement') are 1:1 mapped enumerations with distinct concrete content per leg, not anaphora/epistrophe; no self-grading superlatives; the two numeric claims (chunk 2 'Thirty outputs', '90% agreement after three iterations') are stated plainly with no retraction; no abstraction-noun stacks; the chunk-5 triple 'the rule changes, the gate refreshes, or the skill ships' has three distinct concrete verbs, no empty leg.",
       "fix_hint": null,
       "blocking": false
     },
@@ -89,6 +89,36 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Only two bold spans in the body: line 19 '**Goodhart's law**' (chunk 3, one handle) and line 31 '**tampering**' (chunk 5, one handle); chunks 0, 1, 2, and 4 carry zero bold. Matches the 2026-07-09 emphasis-pass maintainer note exactly.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "File is wired into the deck via the standard `[Lecture: The gate is a claim too](lectures/the-gate-is-a-claim.md)` link in learn-from-the-test.md (line 102), the same pattern as the preceding `[Lecture: What packaging is]` link and every other lecture in the module — content reaches buildDeckModel's `.phase--lecture` wrapper, not stranded phase-less prose.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "No `## Phase N:` / `## N.` step headers in this file (all six `##` headings are prose titles: 'Passing is not proof', 'Gates decay', etc.) and no in-body 'Phase K'/'Step K' references to lint. `node scripts/check-slide-numbering.js` confirms repo-wide: 'OK — 58 files, Phase/Step numbering consistent.'",
       "fix_hint": null,
       "blocking": true
     }

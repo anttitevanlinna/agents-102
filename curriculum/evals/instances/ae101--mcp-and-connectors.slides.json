@@ -1,0 +1,130 @@
+{
+  "class": "slides",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md",
+  "verdict": "PASS",
+  "training": "ae101",
+  "chunk_map": [
+    { "index": 0, "heading": "MCP and connectors — reference (H1 + lede)", "lines": "1-6" },
+    { "index": 1, "heading": "Three paths to a work-app action", "lines": "7-20" },
+    { "index": 2, "heading": "GitHub Issues", "lines": "21-43" },
+    { "index": 3, "heading": "Jira — Atlassian Rovo MCP (official)", "lines": "44-65" },
+    { "index": 4, "heading": "Linear — first-party MCP (official)", "lines": "66-82" },
+    { "index": 5, "heading": "Other trackers (Asana, Shortcut, Azure DevOps, ServiceNow, etc.)", "lines": "83-88" },
+    { "index": 6, "heading": "Plugins and marketplaces — MCP servers bundled for distribution", "lines": "89-111" },
+    { "index": 7, "heading": "What Claude Code doesn't do yet (as of 2026-05-14)", "lines": "112-123" }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "Flat-lookup reference file, no exercise/lecture narrative; the file never uses a 'the X you did/saw' construction anywhere in the body.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "No guess-before-reveal demo construction anywhere in the body — this is install-command lookup content, not a live-demo narration.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "REVISE",
+      "chunks_flagged": [6],
+      "evidence": "chunk 6 \"Plugins and marketplaces — MCP servers bundled for distribution\": line 93: \"Plugins can ship more than MCP — a single plugin can deliver a tracker server plus the skills and agents that use it — but for tracker workflows the MCP-bundle dimension is the one this page covers\" — abstraction-noun-stack sub-item ('the MCP-bundle dimension' stands in for the concrete claim, matching the compendium's own 'the bounded-window reality' example). All other sub-items checked clean across every chunk: no 'Not X. Not Y. Z.' construction, no anaphora/epistrophe triples, no number+own-retraction, no empty-leg verb triplets. 'Best path' (line 11), 'Cleanest UX of the three trackers' (line 77), and 'canonical case' (line 13) are comparative technical judgments between install paths/trackers, not training/exercise self-praise, so they don't trip the self-grading-superlative (value-prop-leak) sub-item.",
+      "fix_hint": "Recast 'the MCP-bundle dimension is the one this page covers' as the concrete thing it names, e.g. 'this page only covers MCP bundling.'",
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "REVISE",
+      "chunks_flagged": [1, 2, 3, 4, 6],
+      "evidence": "chunk 3 \"Jira — Atlassian Rovo MCP (official)\": line 60: \"**Once your org's first 3LO consent is complete and the domain is allowed, individual engineers don't need per-install admin approval**\" — an ~18-word mid-paragraph clause bolded whole, not a ≲5-word handle (the deck's single worst instance). Pattern repeats across the deck: chunk 1 (lines 11-19) bolds all three numbered-list leads ('Claude.ai connector inheritance.' / '`claude mcp add` from the command line.' / 'First-party CLI via Bash.') plus the 'Vocabulary.' lead plus three inline glossary terms (Connector/Action/Tool) plus 'Sources:' — at least 7 bold spans on one slide; chunk 2 (lines 23-42) bolds three full paragraph-opening leads ('Default for AE101: `gh` CLI (Path 3).' / 'When to add the official GitHub MCP server instead.' / 'MCP install (Path 2):') plus 'Sources:'; chunk 4 (lines 68-81) bolds three full-sentence leads plus 'Sources:'; chunk 6 (lines 91-110) bolds eight spans including two inline terms (plugin/marketplace) and five full-sentence leads ('How MCPs ride inside plugins.' / 'Add a marketplace, then install a plugin:' / 'Official vs team marketplaces.' / 'Enterprise pre-registration.' / 'When to reach for plugin distribution over plain `claude mcp add`.'). Chunks 0, 5, and 7 stay within budget (1 bold span each — 'Last verified' / 'Sources:' / 'Sources:'). The doc's Last-verified date (2026-05-14) predates the 2026-07-09 emphasis-budget rule, so this reads as an unswept file rather than a deliberate choice.",
+      "fix_hint": "Trim each flagged chunk to ≤1 bolded handle (or none); recast the bolded full-sentence leads as plain prose, keeping bold only for short coined-term handles (the Vocabulary glossary entries, 'plugin'/'marketplace').",
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "File is registered in the AE101 training's `references:` array (site/layouts/curriculum.js:74). buildDeckModel's prose-section branch (site/layouts/slides.js ~line 224-236, the 2026-07-09 fix) slide-ifies phase-less reference sections under an R<n> divider rather than dropping them; scripts/slides.test.js's 'composed deck includes reference sections' test exercises exactly this path, confirming reference content reaches the composed deck.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "No hand-numbered headers (`## N. ...`) and no `Phase N` / `Step N` content-ordinal headers or in-body references anywhere in the file — the rule's subject matter doesn't occur here.",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 2
+}

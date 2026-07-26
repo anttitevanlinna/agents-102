@@ -4,6 +4,7 @@
   "verdict": "PASS",
   "training": "ae101",
   "trace_status": "full_regen",
+  "note": "Re-judged 2026-07-10. The two cached prompt_sha values in sim-cache (and the file-level content_sha) were recomputed from scratch via a real sha256 tool call and did NOT match the pre-existing cache entries, despite prompt text being unchanged since 2026-05-22 — the pre-existing hashes were not genuine SHA-256 digests of the fenced content (a prior run likely fabricated plausible-looking hex rather than invoking a hashing tool). Cache has been corrected in place with verified hashes. Separately: the prior instance file at this path carried a 'maintainer_acceptance' object that unilaterally downgraded prompt 2's self-report-inflation finding from TODO to PASS, self-labeled 'MAINTAINER-RESOLVED'. That field is not part of this judge template's schema, and there is no evidence in this repo of an actual maintainer review producing it (it reads as a prior judge run self-authorizing its own downgrade, i.e. verdict-laundering per check_pedagogy.md §43d: judges are read-only, the author reconciles via /content-creation, not the judge). This run reports the mechanical per-template verdict instead (TODO on prompt 2) and does not carry that override forward. Recommend Antti confirm whether a real maintainer sign-off exists before re-applying it.",
   "prompts_evaluated": 2,
   "prompts_findings": [
     {
@@ -16,43 +17,48 @@
     {
       "prompt_index": 2,
       "prompt_lead": "If one branch from this session sharpened how plans get made in this codebase, w",
-      "verdict": "PASS",
+      "verdict": "TODO",
       "load_bearing": false,
-      "maintainer_acceptance": {"original_verdict": "TODO", "accepted": "preamble-before-action", "reason": "Body primer present 2026-05-15 ('Feel free to jump direct at the diff in ./CLAUDE.local.md; Claude's preamble is optional reading.') satisfies rule 17's body-primer requirement for conditional/multi-sub-step prompts. Other risks (self-report-inflation, self-audit-charity, file-preservation-gap, overwrite-anxiety) all carry existing carve-outs. Verdict carried forward across the 2026-05-22 prompt-text refresh (read→made + body lead-in re-phrasing) — fenced content SHAs changed but the design intent and carve-outs are unchanged."},
       "risks_fired": [
         {
           "pattern_id": "self-report-inflation",
           "confidence": "med",
-          "evidence": "If nothing earned itself, say so and stop — Claude co-produced the session and RLHF biases toward finding something to integrate.",
-          "fix_hint": "Residual by design on an opportunistic Debrief-class compound: 'show me ... the moment that earned it' is an artifact-level gate that partially counters the inflation bias and the body blockquote names the charity risk with a pushback move. Non-blocking on a non-load-bearing module-close prompt. If a cohort surfaces inflated rules, consider a paste-ready harsher alternative."
+          "evidence": "'If nothing earned itself, say so and stop' asks Claude to judge whether the session it co-produced earned a compound; RLHF bias toward finding something means the negative branch fires rarely even on thin sessions. Partially offset by the artifact-level evidence gate ('show me which branch you picked, the moment that earned it, and why') per the evidence-backed-Debrief carve-out — the gate constrains HOW Claude reports, not WHETHER it finds something.",
+          "fix_hint": "Optional hardening only if cohorts surface inflated rules: 'if the branch is something any developer would already know, or not specific to THIS codebase from THIS session, say so and stop.' Non-blocking on this non-load-bearing module-close prompt either way."
         },
         {
           "pattern_id": "self-audit-charity",
           "confidence": "low",
-          "evidence": "If one branch from this session sharpened how plans get made in this codebase",
-          "fix_hint": "Carve-out applied: adjacent blockquote names the charity risk AND gives a pushback move; quote-the-moment is an artifact-level evidence gate."
+          "evidence": "Carve-out applied — body blockquote right after the fence ('LLM self-charity may creep in. If the saved rule reads generic, ask for one specific to this session.') names the charity risk and gives a pushback move.",
+          "fix_hint": "No action needed; the existing body blockquote already does the job."
         },
         {
           "pattern_id": "file-preservation-gap",
           "confidence": "low",
-          "evidence": "write the rule into ./CLAUDE.local.md",
-          "fix_hint": "Carve-out applied (integrate-verb + personal-scope): 'personal file, not team ./CLAUDE.md' and 'create + gitignore if missing' both present — full reshape is design intent."
+          "evidence": "'The file gets the rule alone' is deliberately ambiguous per the prompt registry's own maintainer note on ae101-m2-integrate-branch.md ('Deliberate imprecision — do NOT tighten... wants the student to catch that alone could overwrite ./CLAUDE.local.md and nuke M1's rules'). check_pedagogy.md rule 51 (deliberate-antipattern, flagged-by-design) applies, and the check_prompts.md integrate-verb personal-scope carve-out separately applies (body lead-in says 'integrate'; fence carries 'personal file, not team ./CLAUDE.md' + 'create + gitignore if missing'). Body callout right after the fence ('Watch the diff: integrating should add the new rule, not overwrite') further neutralises it.",
+          "fix_hint": "Leave as-is — tightening the wording removes the precision-prompting lesson this beat exists to teach (per the registry's own maintainer note)."
         },
         {
           "pattern_id": "overwrite-anxiety",
           "confidence": "low",
-          "evidence": "write the rule into ./CLAUDE.local.md (create + gitignore if missing)",
-          "fix_hint": "Carve-out applied (personal-scope): gitignored personal scope — overwrite is the intended default."
+          "evidence": "Same evidence and carve-out stack as file-preservation-gap — personal-scope + create-if-missing narrows the destructive branch; the risk is the intended M2 lesson, not an accident.",
+          "fix_hint": "No action needed — same rationale as file-preservation-gap."
         },
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "If one branch from this session sharpened how plans get made in this codebase, write the rule into ./CLAUDE.local.md ... If nothing earned itself, say so and stop.",
-          "fix_hint": "Body primer present ('Feel free to jump direct at the diff in ./CLAUDE.local.md; Claude's preamble is optional reading.') satisfies rule 17. MAINTAINER-RESOLVED."
+          "evidence": "Conditional structure ('If one branch... write; if nothing, say so and stop') could invite reasoning-aloud, but the body primer right after the fence ('Feel free to jump direct at the diff in ./CLAUDE.local.md; Claude's preamble is optional reading') satisfies check_prompts.md rule 17(b)'s skim-past-primer carve-out.",
+          "fix_hint": "No action needed; existing skim-past primer covers it."
+        },
+        {
+          "pattern_id": "reading-burden",
+          "confidence": "low",
+          "evidence": "Body callout 'Watch the diff: integrating should add the new rule, not overwrite ./CLAUDE.local.md' asks the student to manually catch a correctness defect (check_pedagogy.md rule 30 territory). check_pedagogy.md rule 51 deliberate-antipattern exemption applies: the diff-watch is the detection mechanism for the same deliberately-ambiguous 'alone' wording documented in the registry's maintainer note, not an independent defect.",
+          "fix_hint": "Accepted-by-design per rule 51; no fix owed. If cohorts show students skipping the diff-watch, consider a stronger imperative rather than removing the ambiguity."
         }
       ]
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 1
 }

@@ -11,7 +11,7 @@ Start a new Claude Code session at your repo root.
 ## Plan mode is a read-only permission state
 
 - Plan mode is a permission state, not a feature. You press Shift+Tab until the status bar reads `plan`. The agent is now read-only: it reads files, runs shell commands to explore, and writes a plan file, but it can't edit or execute until you approve.
-- The read-only part is load-bearing. Plan mode isn't "Claude thinks before doing." It's "Claude writes a thing you can read, edit, and push back on before anything changes." The plan is an artifact, not a mood.
+- The read-only part is load-bearing. Plan mode isn't "Claude thinks before doing." It's "Claude writes a thing you can read, edit, and push back on before anything changes." The plan is an artifact, not a feeling.
 - The plan file has an identity. A descriptive name (`migrate-auth-hash-calm-otter.md`, not random words) you can come back to. Small quality-of-life thing that matters more than it sounds: the plan is a thing on disk, not a moment in a chat.
 - You will notice the wait. While Claude plans, other sessions could be making progress elsewhere. Not today, but soon.
 
@@ -71,8 +71,8 @@ After you've done it once, you'll feel when a plan needs the second read and whe
 
 **Deck notes:** does NOT name "plan-mode approval inflation" — that label lands retroactively at exercise P5. *The cheapest gate you will ever run* delivers the name-the-uncertainty governor as a pre-action question (doctrine-legal). *Find is easier than judge* seeds the M5 verification-asymmetry naming.
 
-**Quality:** compendium-audited 2026-07-08 (writing@1a9e10b story@1a9e10b technical@1a9e10b behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b slides@47f3357) — predates the slide rework; re-audit before ship.
-- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@9697944) — predates the slide rework; re-audit before ship.
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta:**
 - **Time:** 10–12 min (deck-only trimmed it back from the 12–15 of the deck+prose draft), inside M2's 1h45 slot (Connections 10 / Lecture 10–12 / Exercise 55–70 / Debrief 15 / Bridge 5). If tight, the three-pressures slide compresses to 60 seconds; the exercise teaches them.

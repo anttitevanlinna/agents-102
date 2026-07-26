@@ -10,7 +10,7 @@
       "prompt_index": 1,
       "prompt_lead": "List my installed skills. Tell me also their storage location and whether or not",
       "verdict": "PASS",
-      "load_bearing": false,
+      "load_bearing": true,
       "risks_fired": []
     },
     {
@@ -19,7 +19,7 @@
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Open-hook + skill invocation; tool-call shape compresses preamble.", "fix_hint": "No edit warranted — open-hook + subagent dispatch keeps preamble brief."}
+        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "'Invoke the access-control-analysis skill... Save the surface map to a temp directory and tell me the path' is a multi-step action prompt with no in-fence preamble suppressor.", "fix_hint": "Already mitigated by the post-fence 'skip past the opening, look for the saved path' primer; no edit needed unless narration grows heavier."}
       ]
     },
     {
@@ -28,7 +28,8 @@
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "'Walk me through' invites favourable characterisation of subagent output; 'concise' instruction compresses the risk.", "fix_hint": "Phase 3 push-back beat is the verification — no in-prompt edit warranted at low confidence."}
+        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "'Ten lines, then stop' caps total length but doesn't forbid an opening narration sentence before the ranked list starts.", "fix_hint": "Add an in-fence 'No preamble.' line if the ten-line cap ever starts absorbing an opening sentence."},
+        {"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "'the two or three findings that stood out most' asks Claude to characterise its own just-run subagent's output.", "fix_hint": "If ranking drifts toward flattering the skill's own thoroughness, add 'rank by risk to the codebase, not by how complete the analysis looks.'"}
       ]
     },
     {
@@ -37,8 +38,8 @@
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "file-preservation-gap", "confidence": "low", "evidence": "Temp-dir target (Claude-chosen, ephemeral, outside repo). 'integrate' is reshape-intent on a working draft. Show-diff requirement gates surprise rewrites; integrate-verb carve-out applies on the ephemeral working draft.", "fix_hint": "Show-diff is the safety net — no edit."},
-        {"pattern_id": "overwrite-anxiety", "confidence": "low", "evidence": "Show-diff before commit gates the write.", "fix_hint": "No edit."}
+        {"pattern_id": "file-preservation-gap", "confidence": "low", "evidence": "'Update the surface-map file in the temp directory to integrate the delta' — integrate-verb personal-scope carve-out applies (Claude-owned scratch file, ephemeral, outside the repo).", "fix_hint": "Covered by the carve-out plus the show-diff gate; no action needed."},
+        {"pattern_id": "overwrite-anxiety", "confidence": "low", "evidence": "'Show me the diff' is a post-action report rather than a pre-write confirmation ask.", "fix_hint": "Show-diff-after-write already substitutes for a pre-confirm; no action needed."}
       ]
     },
     {
@@ -47,7 +48,7 @@
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Why-skill-missed sentence may go generic; body callout 'Push back on the sharpening question until the reason names something specific to your codebase' is the recovery.", "fix_hint": "Body-callout mitigation present — no edit."}
+        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "'one sentence on why the skill missed it (likely codebase-specific...)' can default to a generic reason absent pushback.", "fix_hint": "Already covered by the immediately-following 'Push back until the reason names your codebase' callout; no action needed."}
       ]
     }
   ],

@@ -3,8 +3,8 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/compound-and-close.md",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "full_regen",
-  "prompts_evaluated": 4,
+  "trace_status": "cached",
+  "prompts_evaluated": 2,
   "prompts_findings": [
     {
       "prompt_index": 1,
@@ -12,43 +12,65 @@
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "self-audit-charity", "confidence": "med", "evidence": "Same-context self-audit; carve-out applies — body callout 'Push back where it misreads. Quote the moment.' present.", "fix_hint": "Body-callout carve-out satisfied; no edit. Consider documenting the residual-by-design status for Debrief prompts."},
-        {"pattern_id": "file-preservation-gap", "confidence": "low", "evidence": "Personal-scope integrate-verb carve-out: 'personal gitignored rules file, not the team ./CLAUDE.md', verb 'integrate, don't append'.", "fix_hint": "Carve-out satisfied per check_prompts §3 personal-scope integrate-verb."},
-        {"pattern_id": "preamble-before-action", "confidence": "med", "evidence": "Multi-step Debrief prompt without 'no preamble' suppressor.", "fix_hint": "Optional: prepend 'No preamble — start with the file write.' Or add a body primer."},
-        {"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "Body callout asks student to push back on the summary; agency preserved.", "fix_hint": "No edit; mitigation present."}
+        {"pattern_id": "preamble-before-action", "confidence": "med", "evidence": "Six-clause compound instruction (review scrollback; write/create/gitignore the file; integrate not append; name the loop shape; name 2-3 practitioners in the reply only; flag team-worthy rules; close with a 3-5 line grounded summary), no in-fence 'No preamble' suppressor, no post-fence body primer naming preamble + a skim-past cue (the post-fence callout addresses push-back on accuracy, not narration-skipping). check_prompts.md §17's 4+-sub-step structural trigger is met and unaddressed.", "fix_hint": "Tail the fence with 'No preamble — start with the review.' or add a one-line body primer per check_prompts.md §17's 4+-sub-step structural trigger."},
+        {"pattern_id": "file-preservation-gap", "confidence": "low", "evidence": "'if the file already exists, integrate, don't append' on ./CLAUDE.local.md, body marker 'personal gitignored rules file, not the team ./CLAUDE.md'.", "fix_hint": "Personal-scope integrate-verb carve-out (compounded/2026-05-03-pedagogy-integrate-verb-personal-scope-carveout.md) satisfied — no edit needed."},
+        {"pattern_id": "overwrite-anxiety", "confidence": "low", "evidence": "'create it if it doesn't exist ... if the file already exists, integrate, don't append' names both branches explicitly.", "fix_hint": "Same carve-out as file-preservation-gap — no edit needed."},
+        {"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "'Tell me in 3-5 lines: what you wrote and why, grounded in specific session moments' paired with the post-fence 'Quote the specific session moment back at Claude' pushback callout in '## Push back where the summary misreads'.", "fix_hint": "Debrief evidence-backed carve-out satisfied (named evidence surfaces + artifact-level grounding + adjacent pushback move) — no edit needed."},
+        {"pattern_id": "self-audit-charity", "confidence": "low", "evidence": "'Add rules that came from how we actually worked, not rules that sound good' asks Claude to self-critique its own co-produced session.", "fix_hint": "Same Debrief carve-out as self-report-inflation — no edit needed."},
+        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Prompt offers a fully-written rules-file rewrite for verbatim acceptance (check_pedagogy.md §32 forced-engagement territory); maintainer block's 'Accept-with-mitigation' section already logs this as accepted-with-mitigation (§32 + §50) via the post-fence 'Read Claude's summary. Push back where it misreads. Quote the moment.' callout.", "fix_hint": "Already logged accept-with-mitigation by the maintainer — no further edit needed."}
       ]
     },
     {
       "prompt_index": 2,
-      "prompt_lead": "Read the ticket for the bug we just fixed. Tell me what it says: reporter, descr",
-      "verdict": "PASS",
-      "load_bearing": true,
-      "risks_fired": [
-        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Tool-call shape compresses preamble.", "fix_hint": "No edit at low confidence."}
-      ]
-    },
-    {
-      "prompt_index": 3,
-      "prompt_lead": "Update the ticket: short close-out note naming what the root cause was and how we",
-      "verdict": "PASS",
-      "load_bearing": true,
-      "risks_fired": [
-        {"pattern_id": "niceness-tax", "confidence": "low", "evidence": "Body callout 'Tell it how your team actually writes ticket comments' is the recovery move.", "fix_hint": "Body-callout mitigation present; no edit."},
-        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Tell-me-what-you-wrote pattern compresses preamble.", "fix_hint": "No edit."}
-      ]
-    },
-    {
-      "prompt_index": 4,
       "prompt_lead": "We're preparing to close this session. Anything more to learn and compound into .",
       "verdict": "TODO",
-      "load_bearing": false,
+      "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "self-audit-charity", "confidence": "med", "evidence": "Debrief residual-by-design; non-load-bearing closer.", "fix_hint": "TODO; no edit. Documented as Debrief residual."},
-        {"pattern_id": "file-preservation-gap", "confidence": "low", "evidence": "Personal-scope integrate-verb carve-out applies.", "fix_hint": "Carve-out satisfied."},
-        {"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "Explicit null path 'or \"nothing new\"'.", "fix_hint": "No edit."}
+        {"pattern_id": "file-preservation-gap", "confidence": "low", "evidence": "'Integrate into the existing file, don't append' targets the same ./CLAUDE.local.md established as personal-scope earlier in the exercise.", "fix_hint": "Personal-scope integrate-verb carve-out satisfied — no edit needed."},
+        {"pattern_id": "overwrite-anxiety", "confidence": "low", "evidence": "Same carve-out; integrate-vs-append instruction is explicit, no ambiguity for Claude to pause on.", "fix_hint": "No edit needed."},
+        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Three-clause prompt (scan since first compound; integrate; report 2-3 lines or 'nothing new') sits below check_prompts.md §17's 4+-sub-step structural trigger.", "fix_hint": "No edit needed at low confidence."},
+        {"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "'Tell me in 2-3 lines what you added, or \"nothing new\" if nothing did' gives an explicit null-path, structurally lowering inflation pressure.", "fix_hint": "Debrief evidence-backed carve-out + explicit null-path satisfied — no edit needed."},
+        {"pattern_id": "self-audit-charity", "confidence": "low", "evidence": "Claude re-audits its own recent session for missed compounds; named evidence surfaces (refusals, push-backs, sequence catches) + explicit null-path + established pushback culture from prompt 1.", "fix_hint": "Same Debrief carve-out as prompt 1 — no edit needed."}
       ]
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 2
+  "todos_count": 2,
+  "rules_evaluated": {
+    "note": "Completeness ledger scoped to the 15-pattern behavioral catalog (simulation-behavior.md) — the operative rubric this judge class grades against per curriculum/evals/judges/prompt-behavior.md. check_prompts.md and check_pedagogy.md are consulted as 'adjacent rules' context (carve-out sourcing, §17 preamble trigger, §32/§50 accept-with-mitigation) rather than enumerated rule-by-rule, per the template's own compendium framing.",
+    "prompt_1": [
+      {"pattern_id": "file-preservation-gap", "status": "fired", "confidence": "low"},
+      {"pattern_id": "reading-burden", "status": "not-applicable"},
+      {"pattern_id": "niceness-tax", "status": "not-applicable"},
+      {"pattern_id": "question-dump", "status": "not-applicable"},
+      {"pattern_id": "overwrite-anxiety", "status": "fired", "confidence": "low"},
+      {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "med"},
+      {"pattern_id": "append-vs-integrate", "status": "not-fired", "reason": "prompt explicitly instructs 'integrate, don't append'"},
+      {"pattern_id": "plan-mode-preamble-bloat", "status": "not-applicable", "reason": "no plan mode invoked"},
+      {"pattern_id": "citation-gap-asymmetry", "status": "not-applicable"},
+      {"pattern_id": "self-report-inflation", "status": "fired", "confidence": "low"},
+      {"pattern_id": "default-acceptance", "status": "fired", "confidence": "low"},
+      {"pattern_id": "plan-mode-approval-inflation", "status": "not-applicable", "reason": "no plan mode invoked"},
+      {"pattern_id": "source-type-blindness", "status": "not-applicable", "reason": "no source ingestion"},
+      {"pattern_id": "citation-cargo-cult", "status": "not-fired", "reason": "practitioner-naming clause carries explicit no-guessing hedge; not a file-citation shape"},
+      {"pattern_id": "self-audit-charity", "status": "fired", "confidence": "low"}
+    ],
+    "prompt_2": [
+      {"pattern_id": "file-preservation-gap", "status": "fired", "confidence": "low"},
+      {"pattern_id": "reading-burden", "status": "not-applicable"},
+      {"pattern_id": "niceness-tax", "status": "not-applicable"},
+      {"pattern_id": "question-dump", "status": "not-applicable"},
+      {"pattern_id": "overwrite-anxiety", "status": "fired", "confidence": "low"},
+      {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "low"},
+      {"pattern_id": "append-vs-integrate", "status": "not-fired", "reason": "prompt explicitly instructs 'integrate into the existing file, don't append'"},
+      {"pattern_id": "plan-mode-preamble-bloat", "status": "not-applicable"},
+      {"pattern_id": "citation-gap-asymmetry", "status": "not-applicable"},
+      {"pattern_id": "self-report-inflation", "status": "fired", "confidence": "low"},
+      {"pattern_id": "default-acceptance", "status": "not-applicable", "reason": "no offered structure for verbatim acceptance in this prompt"},
+      {"pattern_id": "plan-mode-approval-inflation", "status": "not-applicable"},
+      {"pattern_id": "source-type-blindness", "status": "not-applicable"},
+      {"pattern_id": "citation-cargo-cult", "status": "not-applicable", "reason": "no citation/attribution ask in this prompt"},
+      {"pattern_id": "self-audit-charity", "status": "fired", "confidence": "low"}
+    ]
+  }
 }

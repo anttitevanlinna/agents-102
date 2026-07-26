@@ -77,6 +77,8 @@ At M3, the same move goes into durable infrastructure: the judges and gates you 
 
 Ask Claude where it wrote the plan file, note the path; M3 reads it. Close this session when the second read lands. M3 opens fresh and runs security skills against the M2 feature; if it doesn't have an external or user-facing surface, swap to something from your backlog that does.
 
+Come to Module 3 without that noted path and a feature to point the skills at, and you'll be scrambling to reconstruct one while the room is already running STRIDE. Your call.
+
 ## Pre-reads before Module 3
 
 Optional. Lands the modern agentic-security frame before STRIDE and access-control.
@@ -90,9 +92,9 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 
 **Ticketing → homework (this pass):** the optional ticket-inference step split from `extract-the-task-shaping-rule` into the `read-the-ticket-rules` homework exercise; this module gained a `## Homework` link to it. Per-class Quality SHAs below predate the addition — re-audit before ship.
 
-**Quality:** compendium-audited 2026-07-08 (writing@0ef2ca6 story@1a9e10b technical@0ef2ca6 behavior@1a9e10b pedagogy@1a9e10b strategy@1a9e10b slides@47f3357)
-- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @0ef2ca6: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop,plan-mode-done-right]
+**Quality:** compendium-audited 2026-07-12 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
+- judges @b3143a4: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module: PASS see instances/ae101--prework-m6.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

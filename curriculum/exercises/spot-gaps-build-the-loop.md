@@ -92,9 +92,11 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 ## Author the skill in conversation
 
 - Author through conversation. No markdown editor, no hand-crafting SKILL.md in a file tab.
-- The next three prompts (author, critique, invoke) are separate steps. You don't have to run all three.
+- The next three prompts (author, critique, invoke) are separate steps. The critique is optional; the invoke isn't, no invocation, no ship.
 
-> **Skip the critique and the testing if you want.** You know those moves from M3.
+> **Skip the critique if you want.** You know that move from M3.
+
+Ask Claude to author the session-shaper as a personal skill through conversation.
 
 {{prompt:spot-gaps-build-the-loop-3}}
 
@@ -105,6 +107,8 @@ Answer each question. When Claude offers a default that doesn't fit the two runs
 ## Critique the draft before you ship it
 
 - Once Claude shows you SKILL.md, self-critique before shipping. Default-acceptance is the failure mode here too.
+
+Ask Claude to critique the skill before you ship it.
 
 {{prompt:spot-gaps-build-the-loop-4}}
 
@@ -131,8 +135,8 @@ Answer each question. When Claude offers a default that doesn't fit the two runs
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain; kept bold only on the three session-shaper shape handles (**Sharpened verifier** / **LLM-judge** / **Gap-finder**); widget/label chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
-**Quality:** compendium-audited 2026-07-08 (writing@796293b story@e011708 technical@d06b5b8 behavior@e011708 pedagogy@796293b slides@47f3357)
-- judges @47f3357: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy N/A (strategy evaluated at module level), slides PASS (instance=ae101--spot-gaps-build-the-loop.exercise.slides.json)
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@9697944 technical@9697944 behavior@b3143a4 pedagogy@b3143a4 strategy@9697944 slides@b3143a4)
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - re-audit @796293b 2026-05-31: writing PASS, pedagogy PASS — steer-callout gained a premature-completion recovery line (§48/§62) + a render-as-HTML affordance callout after the shapes prompt (§50/§53/§62 hold)
 
@@ -147,7 +151,7 @@ Answer each question. When Claude offers a default that doesn't fit the two runs
 **Frameworks riffed on:**
 - **Diff across two runs** (Phase 1) — the pedagogy of the M4→M5 contrast extended; same artefact-quotation discipline from M5's *Diagnose and re-send*.
 - **Author through conversation** (Phase 2) — repeats the M3 *Author your test-strategy skill* move. Second rep; faster. Kieran Klaassen's compound-engineering Review + Compound step ([Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide), `[practitioner direct, vendor venue]`) across two runs of the same task.
-- **Three skill shapes** (Phase 2) — convergent practitioner vocabulary across Ramp Dojo, Intercom Tier 1/2/3, and solo builders running long tasks. Menu form; shape follows evidence.
+- **Three skill shapes** (Phase 2) — convergent practitioner vocabulary across Ramp Dojo (350-skill marketplace, [Geoff Charles, CPO](https://x.com/geoffintech/status/2042002590758572377) `[practitioner direct, 2026-04-09]`), Intercom Tier 1/2/3 (Darragh Curran, [2x Nine Months Later](https://ideas.fin.ai/p/2x-nine-months-later) `[practitioner direct, vendor venue, 2026-04-16]`), and solo builders running long tasks. Menu form; shape follows evidence. Full citation + freshness stamps: sibling module's maintainer block, `trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` § Frameworks riffed on / § Source verification.
 - **Personal-first, team-promotion-via-human-conversation** — AE101 delivery-architecture rule. Skills ship to `~/.claude/skills/` first; team PRs start with a human conversation.
 
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
@@ -162,7 +166,7 @@ Answer each question. When Claude offers a default that doesn't fit the two runs
 - **Phase 2 wider-look sprawl** — the study scan reads the whole stack and can throw back a wall. The body steer (*read for the few at the top you actually repeat; how far you take this is yours*) is the agency affordance — depth is the student's, not a mandate to catalogue. M6's leeway spirit: study and shapes run, but how wide and what gets packaged is the student's. If a student drowns in the scan, point at the ranked head.
 - **Phase 2 default-acceptance** — student ships Claude's first draft of SKILL.md without the self-critique beat. Diagnostic: the skill reads like a blog-post template. Trainer enforces the critique prompt.
 - **Phase 2 markdown-editor drift** — student opens SKILL.md in an editor and hand-crafts it. The authoring move is conversation; redirect every time. Same load-bearing rule as M3.
-- **Phase 2 invocation-skip** — student ships without running the skill on the packaged run. Authoring without invocation is theatre; the invocation-as-test is the learning moment.
+- **Phase 2 invocation-skip** — student ships without running the skill on the packaged run. Authoring without invocation is theatre; the invocation-as-test is the learning moment. Trainer stops the ship and points back to the invoke prompt: no invocation, no ship.
 - **Phase 2 auto-PR instinct** — student asks Claude to open a PR against the team kit. Stop. Skills ship personal first; team PRs start with a human conversation. Rule extends M3's same constraint.
 
 **Plug points:**

@@ -2,9 +2,9 @@
 
 Token efficiency sounds like a cost problem. Use fewer words, pay a smaller bill. That framing is mostly wrong, and the wrong framing is what makes the topic confusing.
 
-The real story is about quality. An agent works inside a context window: the running set of tokens it can see at once. Your system prompt, your `./CLAUDE.md`, the files it read, every tool result, the whole conversation. The window is finite. As it fills, the model gets worse at using what is in it. Anthropic's engineering team named this context rot: recall drops as the window grows. Chroma tested it across 18 models in 2025 and found the slide happens even on easy tasks, and even far below the window's limit.
+The real story is about quality. An agent works inside a context window: the running set of tokens it can see at once. Your system prompt, your `./CLAUDE.md`, the files it read, every tool result, the whole conversation. The window is finite. As it fills, the model gets worse at using what is in it. Chroma named this context rot in 2025, testing it across 18 models and finding the slide happens even on easy tasks, and even far below the window's limit.
 
-So token efficiency is not thrift. It is signal-to-noise. The goal is the smallest set of high-signal tokens that gets the work done. Anthropic calls the skill context engineering. The cost savings are real, but they are a side effect. A cleaner window is cheaper and smarter at the same time, which is why this is one lever, not two.
+So token efficiency is not thrift. It is signal-to-noise. The goal is the smallest set of high-signal tokens that gets the work done. Anthropic's engineering team later folded the finding into their own guidance, and calls the skill context engineering. The cost savings are real, but they are a side effect. A cleaner window is cheaper and smarter at the same time, which is why this is one lever, not two.
 
 The counterintuitive part: a fuller window can produce a worse answer, not just a slower or pricier one. A 2026 study trimmed an agent's context by 23 to 54 percent on a coding benchmark, and its success rate went up.
 
@@ -34,21 +34,23 @@ On Opus, carrying an extra 100K tokens across 20 turns runs about 10 dollars wit
 
 So the dollar cost is the cheapest line on the bill. That is the point. People price the tokens and miss the real tax, which is the model getting worse at a stuffed window. Trim context for the quality, and the money takes care of itself.
 
-## The craft: moves that hold up
+## The craft: keep the window clean
 
-These are the moves that show up again and again, across many builders working independently. Treat them as defaults.
+These are the moves that show up again and again, across many builders working independently. Treat them as defaults. The first two are about what you let in.
 
 **Start clean.** One task per session. When you switch to something unrelated, run `/clear` instead of carrying the old conversation into the new problem. A fresh window is the cheapest quality upgrade there is, and the most skipped. People hoard one long session as if starting another were expensive. It is not.
 
 **Pass paths, not paste.** Do not paste a wall of code into the chat. Point the agent at the files and let it read what it chooses. Kieran Klaassen frames this as "the folder is the agent." Claude Code leans on the same idea: its search is plain grep and glob driven by the model, and Boris Cherny has said that beat a vector index. Pasted text sits in your window forever. A file the agent reads on demand can leave again. The same caution runs the other way: a tool that pulls a whole file or dumps a full log lands in the window and rides every later turn too, so prefer narrow reads and quiet commands.
 
-**Use a subagent as a firewall.** When a job needs a noisy investigation (read twenty files, run a few commands, trace a config), hand it to a subagent. The subagent works in its own separate window and returns only its summary. It can read a dozen files while your own window barely moves. You see the answer, not the search.
+## The craft: spend and route wisely
 
-There is a trade. A subagent spends its own tokens, so delegation costs more total tokens than doing the work inline. You are buying a clean window with a slightly larger bill. For anything exploratory, that trade is worth it.
+The rest are about what you do with the work once it's in front of you.
+
+**Use a subagent as a firewall.** A noisy investigation (read twenty files, run a few commands, trace a config) doesn't have to land in your own window at all. There is a way to hand it off and get back only the answer, at a price worth knowing before you reach for it. You'll meet it properly, mechanism and trade-off both, later in the training.
 
 **Route by complexity, not price.** A mechanical sub-task (rename across files, pull a list, format some output) does not need your strongest model. Send it to a smaller, faster one and keep the heavy model for the reasoning. Route by how hard the thinking is, not by what looks cheap. A cheap model on a hard task is the expensive mistake.
 
-**Keep what you carry lean.** Everything in `./CLAUDE.md` is paid on every turn of every session, because that file (the team-level, PR-reviewed one) loads at the top of each window. Keep it short. Move the rules you only sometimes need into skills the agent loads on demand, so they cost nothing until they fire.
+**Keep what you carry lean.** Everything in `./CLAUDE.md` is paid on every turn of every session, because that file (the team-level, PR-reviewed one) loads at the top of each window. Keep it short. Move the rules you only sometimes need into skills, so only their full instructions cost tokens once they fire.
 
 ## The folklore: numbers that don't survive a second look
 
@@ -60,25 +62,27 @@ Token-efficiency advice arrives with confident, round numbers. Most do not hold.
 
 That reversal is the real lesson of this whole topic. Every number and rule here has a date. Window sizes grow, models get better at long context, costs move. A move that was craft last quarter can be folklore this quarter. So when you read a tip (including this page), check it against your own `/context` before you trust it.
 
-## Drivers of inefficient context
+## Drivers of inefficient context: the durable ones
 
-Carried context is the driver you can watch in `/context`. It is not the only one. The rest fall into two kinds: durable problems you engineer around, and loud problems whose fix already shipped. Telling the two apart saves you from chasing a cure that landed three releases ago.
-
-**Durable, so engineer around these.**
+Carried context is the driver you can watch in `/context`. It is not the only one. The rest fall into two kinds: durable problems you engineer around, and loud problems whose fix already shipped. Telling the two apart saves you from chasing a cure that landed three releases ago. Start with the durable ones.
 
 **The codebase the agent reads.** A messy repo makes the agent hunt for things, and a short map at the root (an `AGENTS.md`, or a lean `./CLAUDE.md`) cuts the hunting. The one controlled test of this in 2026 found that adding the map dropped the agent's output tokens by about a sixth and its wall-clock time by almost a third. The surprise is that input tokens barely moved: the real tax was never the reading, it was the thrashing and the time.
 
 **Thin memory, both directions.** With no written memory, the agent re-derives each session what it already worked out in the last one; Steve Yegge calls it living through Memento. With too much, a bloated `./CLAUDE.md` is paid on every turn, so the file meant to save effort starts charging for it. The 2026 move is not "write it down," it is "watch what you write down."
 
-**Loud but shrinking, so check before you chase.**
+## Drivers of inefficient context: the loud ones
 
-**The tool and MCP surface.** Every tool you connect adds its description to the window on every turn, used or not, and one popular server was once quoted at tens of thousands of tokens of overhead. Then lazy tool-loading and caching shrank it so far that Simon Willison, who first raised the alarm, now calls it largely solved. Prune what you never call and let the harness defer the rest.
+The other kind is loud but shrinking: it announces itself, and its fix usually already shipped. Check before you chase it.
 
-**Cache invalidation.** Editing something early in the context, or resuming a session, can bust the prompt cache, and then you re-pay full input price for tokens that were nearly free a moment ago. It is real, and on a bad day it has been measured at a large multiple of the normal cost. But the worst cases tend to be version-specific defects that get patched in a release, so check your version before you rebuild your workflow around it.
+**The tool and MCP surface.** Every connected tool adds its description to the window every turn, used or not. One popular server was once quoted at tens of thousands of tokens of overhead; lazy tool-loading and caching shrank that so far that Simon Willison, who first raised the alarm, now calls it largely solved. Prune what you never call; let the harness defer the rest.
 
-**Fanning out too wide.** A single subagent doing your noisy reading is craft, as above; spinning up many parallel agents is a different bill. One widely quoted figure puts multi-agent runs at around fifteen times the tokens of a plain chat. That number is a year old and comes from a single source whose own authors say fan-out is the wrong shape for most coding, so read it as a ceiling for research-style work, not a default for yours.
+**Cache invalidation.** Editing something early in the context, or resuming a session, can bust the prompt cache: you re-pay full input price for tokens that were nearly free a moment ago. On a bad day that's been measured at a large multiple of normal cost, but the worst cases are usually version-specific defects a later release patches, so check your version before rebuilding your workflow around it.
 
-## Where this leaves you
+## Drivers of inefficient context: fanning out is its own bill
+
+**Fanning out too wide.** A single subagent doing your noisy reading is craft, as above; running many in parallel is a different bill. One widely quoted figure puts multi-agent runs at around fifteen times a plain chat's tokens, but it's a year old, single-source, and its own authors say fan-out is the wrong shape for most coding. Treat it as a ceiling for research-style work, not a default for yours.
+
+## One lever, two payoffs
 
 Token efficiency is one lever with two payoffs: a cleaner window thinks better and costs less. You do not need a dashboard to start. You need `/context`, a habit of starting clean, and a subagent doing your noisy reading. The rest is noticing what you loaded and never used.
 
@@ -90,20 +94,23 @@ Token efficiency is one lever with two payoffs: a cleaner window thinks better a
 
 *Which is the point, not the exception. Discipline shrinks the bloat. It does not abolish it. So the session ends the way yours should when it gets heavy: time to compact, or start clean. The cheapest context is the one you just let go of.*
 
-## Sources
+## Sources: quality and craft
 
 - [Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) (Anthropic, 2025)
 - [Context rot](https://research.trychroma.com/context-rot) (Chroma, 2025)
 - [Self-adaptive context pruning for coding agents](https://arxiv.org/abs/2601.16746) (SWE-Pruner, 2026)
-- [On the impact of AGENTS.md files on coding-agent efficiency](https://arxiv.org/abs/2601.20404) (2026)
 - [Building Claude Code with Boris Cherny](https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny) (The Pragmatic Engineer, 2026)
 - [The folder is the agent](https://every.to/source-code) (Kieran Klaassen, Every, 2026)
 - [Compaction and handoff](https://ampcode.com/news/handoff) (Amp, 2025), and [its 2026 reversal](https://ampcode.com/news/neo)
+
+## Sources: cost and other drivers
+
+- [Claude pricing](https://platform.claude.com/docs/en/about-claude/pricing) (Anthropic)
+- [On the impact of AGENTS.md files on coding-agent efficiency](https://arxiv.org/abs/2601.20404) (2026)
 - [Introducing Beads: a coding-agent memory system](https://steve-yegge.medium.com/introducing-beads-a-coding-agent-memory-system-637d7d92514a) (Steve Yegge, 2025)
 - [CLAUDE.md: helpful, or expensive noise?](https://thomas-wiegold.com/blog/claude-md-helpful-or-expensive-noise/) (Thomas Wiegold, 2026)
 - [Simon Willison on MCP tool overhead](https://x.com/simonw/status/2011570719856214153) (2026)
 - [How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system) (Anthropic, 2025)
-- [Claude pricing](https://platform.claude.com/docs/en/about-claude/pricing) (Anthropic)
 
 <!-- maintainer -->
 
@@ -120,8 +127,8 @@ Token efficiency is one lever with two payoffs: a cleaner window thinks better a
 - Still owed before first cohort: a module-side entry point. No module links to it yet. Candidate home: an "if time allows" callout in an M2/M3 module where context discipline first bites.
 - Carries additive calc/exploration prompts (the "price the bloat" cost calc), not primitive demonstrations. `/context` is treated as already-known (it lands in M1 and recurs through the exercises); the page reads it as the instrument the engineer holds, not a move to teach. Do not reintroduce "run `/context`" demonstrations here. Prompts are inline `**Prompt**` blocks (draft form); migrate to registry prompts (`curriculum/prompts/<key>.md`) on wiring, the way `the-agent-loop.md` uses `{{prompt:...}}` includes. Approved-prompt key so far: `ae101-token-efficiency-bloat-cost`.
 
-**Quality:** compendium-audited 2026-06-03 (writing@f2abbf6 story@f2abbf6 technical@a821067 behavior@a821067)
-- judges @f2abbf6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy N/A (supplementary reference — no module architecture), strategy N/A (supplementary reference — strategy_tie_in N/A per story judge)
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@9697944 technical@9697944 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Visible "Sources" list is deliberate.** Linked titles + venue + year (no source-type labels, no ladder vocabulary) = student-facing end-matter, not a "What research says" callout; the no-callout rule bans audit framing inside the prose, not a reading list. Curated to verified URLs only — every entry opened against its byline. Keep the list and the maintainer stamps in sync.
 

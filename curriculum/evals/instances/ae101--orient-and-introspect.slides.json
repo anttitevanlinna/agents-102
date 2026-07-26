@@ -4,12 +4,12 @@
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "Orient and *map the window* (H1 + title block)", "lines": "1-19"},
-    {"index": 1, "heading": "Read your repo deliberately", "lines": "21-36"},
-    {"index": 2, "heading": "Ask what Claude skipped, and why", "lines": "38-49"},
-    {"index": 3, "heading": "Read the self-report, then spot-check it", "lines": "51-54"},
-    {"index": 4, "heading": "Check how full the window is", "lines": "56-66"},
-    {"index": 5, "heading": "Read the unread slice", "lines": "68-72"}
+    { "index": 0, "heading": "Orient and *map the window* (H1 + title-slide widgets)", "lines": "1-20" },
+    { "index": 1, "heading": "Read your repo deliberately", "lines": "21-37" },
+    { "index": 2, "heading": "Ask what Claude skipped, and why", "lines": "38-50" },
+    { "index": 3, "heading": "Read the self-report, then spot-check it", "lines": "51-55" },
+    { "index": 4, "heading": "Check how full the window is", "lines": "56-67" },
+    { "index": 5, "heading": "Read the unread slice", "lines": "68-73" }
   ],
   "rules_evaluated": [
     {
@@ -18,7 +18,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 5 line 72: \"the bug you brought from prework\" — named verbatim in the compendium's own session-artifacts carve-out example list; exempt.",
+      "evidence": null,
       "fix_hint": null,
       "blocking": true
     },
@@ -38,7 +38,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 5 line 72: \"The next exercise fixes the bug you brought from prework\" — confirmed against this file's own maintainer Arc block (\"Hands off to: fix-tests-first — the bug gets fixed in the window you just mapped\"); the referenced beat exists.",
+      "evidence": null,
       "fix_hint": null,
       "blocking": true
     },
@@ -68,8 +68,8 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "REVISE",
       "chunks_flagged": [5],
-      "evidence": "chunk 5 \"Read the unread slice\": lines 70-72: the header promises an action (\"Read the unread slice\") but the three bullets only discuss the significance of the unread percentage and hand off to the next exercise — no prompt or instruction has the student actually read the unread slice's contents.",
-      "fix_hint": "Retitle the chunk around what it delivers (the window-map recap), or add the missing beat: a prompt that has the student look at what's in the unread portion.",
+      "evidence": "chunk 5 \"Read the unread slice\": lines 70-72: the header's verb (\"Read\") promises an examine-the-contents action, matching the literal-action pattern this file's own earlier headers set (chunk 1 \"Read your repo\" -> embedded read prompt; chunk 4 \"Check how full the window is\" -> embedded /context prompt). Chunk 5 carries no such action: all three bullets interpret the significance of the unread PERCENTAGE (\"the number that matters\", \"stays real\", \"a map of the window\") and hand off to the next exercise -- nothing on the slide has the student actually look at what's in the unread slice.",
+      "fix_hint": "Retitle around what the chunk delivers (e.g. a stock-take/recap header), or keep the header and add the missing beat: a prompt or instruction that has the student look at specific unread content.",
       "blocking": false
     },
     {
@@ -78,7 +78,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked sub-items: 'Not X. Not Y. Z.' construction — none. Anaphora/epistrophe triples — none. Self-grading superlatives — none. Number + own retraction — chunk 3 line 53 (\"Assume about 10%... Could be more, could be less\") is the compendium's own named maintainer-attested exception (accept-with-note, no edit); this file's own maintainer block confirms the attestation. Abstraction-noun stacks — none matching the banned pattern. Verb triplets with an empty leg — none.",
+      "evidence": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -87,6 +87,36 @@
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
       "chunks_flagged": [],
       "evidence": null,
       "fix_hint": null,

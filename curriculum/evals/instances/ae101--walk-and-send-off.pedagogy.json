@@ -1,7 +1,7 @@
 {
   "class": "pedagogy",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/walk-and-send-off.md",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "ae101",
   "rules_evaluated": [
     {
@@ -45,7 +45,7 @@
       "rule_index": 6,
       "rule_lead": "One exercise = one bounded activity.",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "Today's fold (Phase 3 heading removed, its two bullets folded into 'Push back when a fill drifts from the codebase') doesn't introduce sub-numbering — the file already nested non-'Phase N' sub-headers under Phase 2's conceptual span before this edit (Read the ranked thin-spots / Fill the worst two or three gaps / Match each fill to its shape and home / Push back when a fill drifts from the codebase all sat between '## Phase 2:' and '## Phase 3:' already). Today's change adds the settle-the-tree content to the tail of an existing sub-header rather than creating a new one. Still one bounded activity, still no sub-numbering.",
       "fix_hint": null,
       "blocking": false
     },
@@ -73,7 +73,7 @@
       "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "No read/spot/judge/notice/recognize-verbed LO in this exercise's scope. 'Name which ones you already knew, which surprised you' (Phase 2) is a single-pass read of one audit output, not a repeated-with-contrast instance set.",
+      "fix_hint": "No read/spot/judge/notice/recognize-verbed LO in this exercise's scope.",
       "blocking": false
     },
     {
@@ -90,7 +90,7 @@
       "rule_index": 10,
       "rule_lead": "Student agency — adults decide.",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "The folded settle-the-tree bullet ('Before the send-off, ask Claude to propose any tidy-up of ./observations/...') reads as advisory rather than mandated ('propose ANY tidy-up' is conditional on there being one worth proposing), consistent with treating it as a skippable refinement rather than a gate. Skipping it does not create a dead end for the send-off that follows.",
       "fix_hint": null,
       "blocking": false
     },
@@ -108,7 +108,7 @@
       "rule_index": 12,
       "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "Two phases now (was three), still chained mechanically with no natural exercise-split point — the settle-the-tree content was never a distinct skill or distinct artifact from the gap-fill work it followed, which is exactly why folding it in rather than fencing it as its own beat is defensible.",
       "fix_hint": null,
       "blocking": false
     },
@@ -135,18 +135,18 @@
       "rule_index": 15,
       "rule_lead": "Auto-fire sim+eval after significant rewrite.",
       "verdict": "PASS",
-      "evidence": "This dispatch (2026-07-26) is the required fire, triggered by the maintainer's fix pass reconciling 'What you do' + '## What closes Module 4' against run-the-first-experiment.md's close (compound/push-back steps dropped, renumbered 1-3) and repositioning Phase 2's fan-out recovery callout ahead of its prompt fence. Phase boundaries and prompt count are unchanged (still 3 phases, 3 fenced prompts) — a reconciliation/cleanup edit, not a structural rewrite — but re-firing on any touch to this file is the safer default per the task's own instruction, and confirms no new architecture defect was introduced.",
-      "fix_hint": "Once the rule-16 finding below is reconciled (walk-and-send-off-4 approved and fenced), advance the pedagogy SHA on the Quality line to that commit.",
+      "evidence": "This dispatch (2026-07-26, second look) is the required fire. Trigger: 'forcing-function mechanic changed' — the file's committed fe18297 state had a drafted, pending {{prompt:walk-and-send-off-4}} fence as the intended fix for the prior REVISE; today's uncommitted edit abandoned that plan and instead removed the Phase 3 heading, folding its content into body prose with no new fence. That is a genuine mechanic change (fenced-prompt-pending -> no-fence-by-design), not mere polish, so re-firing both classes was the correct call independent of this task's explicit instruction to do so.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
-      "verdict": "REVISE",
-      "evidence": "Lines 78-80, '## Phase 3: Settle the tree before the send-off', still carries three body bullets ('Ask Claude to propose any tidy-up of ./observations/...', 'Ask to see the diff before it lands...', 'Consider whether each rule is stored where it will fire') with NO {{prompt:...}} fence anywhere in the phase — unchanged by this fix pass (Phase 3's own content was deliberately left in its original unfenced state so the file stays buildable). Confirmed against the file's own 2026-07-26 maintainer-block entry: 'Phase 3's three unfenced \"Ask Claude to X\" bullets (§16 forcing-function-in-prose finding, pre-authorized) still need a {{prompt:walk-and-send-off-4}} fence — drafted... but blocked on the check_prompts.md §22 registry-body approval gate, which needs a live human reply and cannot be cleared by an agent quoting its own authorization card.' Every other 'Ask Claude to X' lead-in in this file (Phase 1, Phase 2, gap-fill) is immediately followed by a {{prompt:...}} fence; Phase 3 remains the sole exception, and it is the phase's primary load-bearing action, not an optional push-back (§16's carve-out doesn't apply). This is a known-open, maintainer-gated finding, not new drift — re-confirmed unresolved this pass per explicit instruction.",
-      "fix_hint": "Unchanged from prior pass: fence Phase 3's three bullets as {{prompt:walk-and-send-off-4}} once a maintainer replies 'APPROVED: walk-and-send-off-4' (or the session runs with SKIP_PROMPT_GATE=1) per check_prompts.md §22. Not actionable by this judge.",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": "Reverses this file's prior pedagogy verdict (REVISE), which was written against a state where the fix-in-flight was 'draft and get approval for {{prompt:walk-and-send-off-4}}'. That plan was abandoned this session in favor of removing the '## Phase 3: Settle the tree before the send-off' heading and folding its (merged, two-bullet) content into the tail of 'Push back when a fill drifts from the codebase' (current lines 76-77), still unfenced. Two separate questions were in play and this pass keeps them separate: (1) SHOULD THIS BEAT BE FENCED? No — dispositively settled by 2f0c8a2 (2026-07-10), which retired the heavier fenced walk-and-send-off-4 prompt and replaced it with exactly this unfenced 'ask Claude to propose... ask to see the diff' shape; that decision is 16 days old and the body text folded today is verbatim what 2f0c8a2 left behind, not new roughness. §16's own removal test supports the same conclusion independently: cutting the tidy-up bullets does not collapse this module's teaching moment (the M4-underdelivers / M5-packages contrast), which is the definition of an optional refinement under §16's carve-out, not a mandatory teaching prompt. (2) SHOULD THE HEADING ALSO GO? This is a materially different question 2f0c8a2 did not answer — that commit KEPT a dedicated 'Phase 3: Settle the tree' heading/slide even while cutting the frame and the fence, so citing 2f0c8a2 alone as dispositive for removing the heading too (as the maintainer's note frames it) somewhat over-reads that precedent. The maintainer's note does supply an independent argument for the heading cut, though, not resting on 2f0c8a2 alone: 'the propose/review-diff move was already the third rep of the same pattern earlier in this same file (Phase 1 pick, Phase 2 audit, Phase 2 fill).' That argument holds on inspection — Phase 1, Phase 2's audit, and Phase 2's gap-fill each already establish an 'ask Claude to do X, then push back / review' shape via a fenced prompt followed by body-prose critique; a fourth instance of that shape, this one genuinely optional and lower-stakes (1-2 file moves, capped), doesn't need its own heading-level scaffold to land. Verified mechanically: slide-size (`scripts/check-slide-size.js`) and slide-numbering (`scripts/check-slide-numbering.js`) both pass clean post-fold.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
@@ -234,8 +234,8 @@
       "rule_index": 25,
       "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
       "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": "This file's block is titled 'Failure modes + diagnostics' rather than 'Push-back moves', but every Fix: line names 'trainer' as the actor (no host-skill co-naming). Intent satisfied under a file-local heading convention.",
+      "evidence": "This file's block is titled 'Failure modes + diagnostics' rather than 'Push-back moves', but every Fix: line names 'trainer' as the actor (no host-skill co-naming). Intent satisfied under a file-local heading convention, unaffected by today's edit.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -253,7 +253,7 @@
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Time-check blockquote's 'to share what surfaced...' phrasing (line 74, unchanged by this fix pass) is a maintainer-documented, reasoned carve-out; the block explicitly asks future judges not to re-flag it and the reasoning still holds on re-read.",
+      "fix_hint": "Time-check blockquote's 'to share what surfaced...' phrasing (line 74, unchanged by this fold) is a maintainer-documented, reasoned carve-out; the block explicitly asks future judges not to re-flag it and the reasoning still holds on re-read.",
       "blocking": false
     },
     {
@@ -270,8 +270,8 @@
       "rule_index": 30,
       "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
       "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": "Phase 3's 'Ask to see the diff before it lands' is a confirmation gate on an irreversible tidy-up move (capped 1-2 file moves) immediately before an unattended multi-hour send-off — falls under §3's irreversible/trust-line-action confirmation exception, not the reading-burden pattern §30 targets.",
+      "evidence": "The settle-the-tree bullet's 'ask to see the diff before it lands' (now folded into line 76) is a confirmation gate on an irreversible tidy-up move (capped at 1-2 file moves) immediately before an unattended multi-hour send-off — falls under §3's irreversible/trust-line-action confirmation exception, not the reading-burden pattern §30 targets. Same analysis as the pre-fold version; only the location moved.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -315,7 +315,7 @@
       "rule_index": "34b",
       "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal.",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "The 'Settle beat waved through' Decision-points bullet (renamed today from 'Phase 3 <5 min') is a pacing diagnostic, not a hedge undermining the beat's own legitimacy — passes the premise-test (remove the hedge, section still defensible: yes).",
       "fix_hint": null,
       "blocking": false
     },
@@ -351,7 +351,7 @@
       "rule_index": 39,
       "rule_lead": "Removals are strategic — ask before cutting.",
       "verdict": "PASS",
-      "evidence": "This fix pass itself is a removal case, re-checked against the rule: dropping 'compound your rules file and' (line 15) and the two compound/push-back steps in 'What closes Module 4' was pre-authorized per the file's own 2026-07-26 maintainer note, which names the exact reconciliation reason (the module file dropped the compound pass 2026-07-08, commit 05fbd36) rather than a silent cut.",
+      "evidence": "Today's removal (the '## Phase 3: Settle the tree before the send-off' heading, folded into the prior section) is the maintainer's own deliberate edit, documented in the file's own 2026-07-26 'second look' maintainer note with an explicit reason (not reopening a question 2f0c8a2 had already closed) and an explicit rejected alternative (fencing a new walk-and-send-off-4 prompt). A future reader who liked the standalone Phase 3 heading can read exactly why it's gone — satisfies the rule's spirit even though the removal is a heading/structure cut, not a content cut (the two bullets survive verbatim, merged).",
       "fix_hint": null,
       "blocking": false
     },
@@ -396,7 +396,7 @@
       "rule_index": 45,
       "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "None of the three leap-test bullets reference Phase 3 or the settle-the-tree beat by name, so today's fold doesn't strand any of them.",
       "fix_hint": null,
       "blocking": false
     },
@@ -405,8 +405,8 @@
       "rule_index": 47,
       "rule_lead": "Per-phase failure mode + escape hatch.",
       "verdict": "PASS",
-      "evidence": "Phase 1 (task-sprawl) and Phase 2 (audit busywork, over-fill) each carry a maintainer failure-mode+diagnostic entry. Phase 3's settle beat — which per the rule-16 finding still has no fenced forcing function — has an equivalent failure/escape pairing under Decision points: 'Phase 3 <5 min — settle beat skipped. Check the observations/ tree actually got tidied and the diff seen before the send-off' (line 134).",
-      "fix_hint": "Once Phase 3 gains a fenced prompt (rule 16 fix), fold this Decision-points entry into the Failure modes + diagnostics list for shape-consistency with Phases 1–2.",
+      "evidence": "Phase 1 (task-sprawl) and Phase 2 (audit busywork, over-fill) each carry a maintainer failure-mode+diagnostic entry in 'Failure modes + diagnostics'. The settle beat's equivalent pairing lives in the separate 'Decision points (pacing)' list, renamed today from 'Phase 3 <5 min' to 'Settle beat waved through — tidy-up and diff-review took under a minute. Check the observations/ tree actually got tidied and the diff seen before the send-off' (line 131) — same failure/escape shape as before, just relabeled to match the beat no longer being called Phase 3.",
+      "fix_hint": "This split (task-sprawl/audit-busywork/over-fill in one list, settle-beat-skipped in a separate 'Decision points' list) predates today's edit and isn't newly introduced; still worth a shape-consistency pass folding the Decision-points entry into 'Failure modes + diagnostics' alongside Phases 1-2, now that there's no fence-pending reason to defer it.",
       "blocking": false
     },
     {
@@ -414,7 +414,7 @@
       "rule_index": 48,
       "rule_lead": "Heavy fan-out prompts get body recovery callout.",
       "verdict": "PASS",
-      "evidence": "Fixed this pass. Phase 2's audit prompt (walk-and-send-off-2) spawns a subagent reading CLAUDE.md/CLAUDE.local.md/memory/ADRs/all authored skills — a full-memory-audit trigger under §48. The 'Heavy run expected. Skim past the opening summary; the ranked thin-spots list is the payoff.' callout now sits in Phase 2's own body, directly above the {{prompt:walk-and-send-off-2}} fence (previously it was stranded one section later, in 'Read the ranked thin-spots', reached only after the prompt had already fired). It also now names the premature-stop failure explicitly, per the rule's requirement to cover both directions: 'If the ranked list comes back thin, push Claude to keep digging rather than letting a shallow pass stand as done.' Both placement and content gaps from the prior pass are closed.",
+      "evidence": "Unaffected by today's fold, re-verified current: Phase 2's 'Heavy run expected. Skim past the opening summary; the ranked thin-spots list is the payoff. If the ranked list comes back thin, push Claude to keep digging rather than letting a shallow pass stand as done.' (lines 40-41) still sits directly above the {{prompt:walk-and-send-off-2}} fence (line 45), and still names both the over-reading and premature-stop failure directions.",
       "fix_hint": null,
       "blocking": false
     },
@@ -441,7 +441,7 @@
       "rule_index": 51,
       "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
       "verdict": "PASS",
-      "evidence": "walk-and-send-off-1.md's frontmatter note explicitly documents the unconstrained task.md shape as deliberate ('the designed-to-fail un-packaged run... Do NOT constrain this to prose-only / no-metadata to fix it'), correctly logged as accepted-by-design.",
+      "evidence": "walk-and-send-off-1.md's frontmatter documents the unconstrained task.md shape as deliberate, correctly logged as accepted-by-design. Unaffected by today's edit.",
       "fix_hint": null,
       "blocking": false
     },
@@ -468,7 +468,7 @@
       "rule_index": 53,
       "rule_lead": "Pre-action framing doesn't preview prompt's payoff.",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "'What you build' (line 17, untouched by today's edit) names the terminal artifact ('the observations/ tree settled on disk') and a constraint, not the prompt's reveal — stays on the KEEP side of the diagnostic. Noted separately (not a violation of this rule, but a soft internal-consistency point): this line still frames the settled tree as one of 'two things a long run can ride,' which reads more mandatory than the now-explicitly-optional body treatment of the same beat. Pre-existing, not introduced by today's fold.",
       "fix_hint": null,
       "blocking": false
     },
@@ -477,7 +477,7 @@
       "rule_index": 56,
       "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
       "verdict": "PASS",
-      "evidence": "Phase 2's gap-fill uses a forcing-function prompt (walk-and-send-off-3, AskUserQuestion scaffold) rather than a body callout — correctly reserved since an unfilled context gap is a silent miss that only surfaces mid-multi-hour-send-off, matching §56's carve-out for non-recoverable-in-under-a-minute misses.",
+      "evidence": "Phase 2's gap-fill still uses a forcing-function prompt (walk-and-send-off-3, AskUserQuestion scaffold) rather than a body callout — correctly reserved since an unfilled context gap is a silent miss that only surfaces mid-multi-hour-send-off. The settle-the-tree beat, by contrast, is the kind of low-stakes, recoverable-in-under-a-minute miss §56 says defaults to body callout, not forcing function — today's fold moves it further in that direction (body prose, no fence), which is the correct default for this audience and this risk profile, not a regression.",
       "fix_hint": null,
       "blocking": false
     },
@@ -505,7 +505,8 @@
       "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "No reference-page restructuring in scope; the single ref pointer (claude-code-for-engineers.md) is stable.",
+      "fix_hint": "No reference-page restructuring in scope; the single ref pointer (claude-code-for-engineers.md) is stable and untouched."
+      ,
       "blocking": false
     },
     {
@@ -514,7 +515,7 @@
       "rule_lead": "Scan at the unit the rule names, not convenient larger one.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "Auditor-discipline meta-rule about applying other rules at their named unit; not an exercise property.",
+      "fix_hint": "Auditor-discipline meta-rule about applying other rules at their named unit; not an exercise property. Applied this pass: re-scanned at the phase/slide unit (per rule 16 and rule 47 above), not just at whole-file level, before concluding the fold was clean.",
       "blocking": false
     },
     {
@@ -532,7 +533,7 @@
       "rule_lead": "Acting on a flagged item — verify before fixing; its prescribed fix is a hypothesis.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "Auditor-discipline meta-rule, not an exercise property. Applied to my own process this pass: verified the rule-48 fix directly (callout position + premature-stop clause both confirmed in the current file, not assumed from the maintainer note's summary) before flipping that row to PASS, and re-verified rule 16 is still genuinely open (not just still-mentioned in the maintainer block) by re-reading Phase 3's current text for a fence.",
+      "fix_hint": "Auditor-discipline meta-rule, not an exercise property, but this is the rule that governs this whole re-audit and it does NOT fully vindicate the maintainer's stated reasoning as-written. Applying its four discriminators to the maintainer's own citation of 2f0c8a2 as precedent: (a) deliberate roughness, confirmed for the NO-FENCE question (2f0c8a2 is 16-day-old, on-point precedent for leaving this beat unfenced) but NOT self-evidently confirmed for the NO-HEADING question, since 2f0c8a2 itself kept a dedicated Phase 3 heading while cutting the frame and the fence — that commit is being read as broader precedent than it actually established. (b) same layer: yes, both the original flag and this pass's fix are about body-prose-vs-fence placement, not a different layer. (c) does the flagged behavior make the agent misbehave: no, cosmetic/structural only. (d) file-list-is-a-hypothesis: N/A, single-file finding. Net: verified the heading removal independently rather than accepting 'because 2f0c8a2' at face value (see rule 16's evidence) and found it defensible on separate grounds (removal test + third-rep-of-an-established-pattern), so the outcome survives scrutiny even though the maintainer's own stated rationale leans on the precedent slightly harder than the precedent supports.",
       "blocking": false
     },
     {
@@ -540,7 +541,7 @@
       "rule_index": 62,
       "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
       "verdict": "PASS",
-      "evidence": "Phase 2's now-repositioned 'Heavy run expected' callout (rule 48) is a steering move (skim-past + keep-digging), not a pre-emptive naming of one specific failure mode — passes this rule too.",
+      "evidence": "Phase 2's 'Heavy run expected' callout (rule 48) remains a steering move (skim-past + keep-digging), not a pre-emptive naming of one specific failure mode. Unaffected by today's edit.",
       "fix_hint": null,
       "blocking": false
     },
@@ -550,7 +551,7 @@
       "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "Auditor-discipline meta-rule for stale punchlist bullets; not an exercise property.",
+      "fix_hint": "Auditor-discipline meta-rule for stale punchlist bullets; not an exercise property. Applied this pass to the file's own maintainer-block TODOs: the fe18297-era 'Not completed: Phase 3's three unfenced bullets need a fence, blocked on approval' note is now itself stale (superseded by today's fold, which resolved it a different way) — the current maintainer block's 2026-07-26 second-look paragraph correctly supersedes it in place rather than leaving both notes standing.",
       "blocking": false
     },
     {
@@ -558,11 +559,11 @@
       "rule_index": 64,
       "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
       "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
+      "evidence": "No canonical-home duplication introduced by today's edit. One hygiene gap surfaced on this pass, non-blocking: two maintainer-block mentions of 'Phase 3' (line 93's 'Phase 2→Phase 3 callout' label, and line 143's 'Voice-smuggling at Phase 3 or Debrief') were not updated by today's fold and now name a heading that no longer exists in the file. Out of check_slides.md §11's hard-grep scope by design (that check explicitly exempts maintainer prose from in-file Phase-reference resolution, per scripts/check-slide-numbering.js's own header comment: 'maintainer prose cross-references other files' phases by design; the body may not'), so this isn't a blocking violation of any numbered rule — but it's exactly the kind of stale fact this rule's diagnostic asks maintainers to catch, and it sits right next to the already-logged, still-open 'Debrief' label sweep debt this same maintainer block names for itself.",
+      "fix_hint": "Fold both stale 'Phase 3' mentions (lines 93, 143) into the next maintainer-label sweep alongside the existing 'Debrief' label debt (already logged in this file's own maintainer notes) rather than opening a new one-off fix.",
       "blocking": false
     }
   ],
-  "blocking_findings_count": 1,
+  "blocking_findings_count": 0,
   "todos_count": 0
 }

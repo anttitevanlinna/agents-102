@@ -1,8 +1,9 @@
 {
   "class": "technical",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/fix-tests-first.md",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "ae101",
+  "trace_status": "regenerated",
   "rules_evaluated": [
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -16,7 +17,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 2,
-      "rule_lead": "Cloud/remote features carry Git dependency \u2014 out of scope for our training dir.",
+      "rule_lead": "Cloud/remote features carry Git dependency — out of scope for our training dir.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No cloud/remote-feature claim in this file.",
@@ -106,7 +107,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "6b",
-      "rule_lead": "When tool feature behaves differently than expected, update curriculum \u2014 not student's workaround.",
+      "rule_lead": "When tool feature behaves differently than expected, update curriculum — not student's workaround.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
@@ -115,7 +116,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "6d",
-      "rule_lead": "Auto-load surface = FOUR things \u2014 three filenames + `.claude/rules/` directory.",
+      "rule_lead": "Auto-load surface = FOUR things — three filenames + `.claude/rules/` directory.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No CLAUDE.md auto-load claim in this file.",
@@ -160,7 +161,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 7,
-      "rule_lead": "Sessions = unit of work \u2014 write \"start a new session in X,\" not \"open Claude Code in X.\"",
+      "rule_lead": "Sessions = unit of work — write \"start a new session in X,\" not \"open Claude Code in X.\"",
       "verdict": "PASS",
       "evidence": null,
       "fix_hint": "File correctly omits session-open language entirely; this exercise continues the same session as the prior exercise (per Arc note), so no new-session instruction is needed.",
@@ -277,7 +278,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 17,
-      "rule_lead": "Script ratchet \u2014 every LLM-orchestration tooling surface ratchets toward script-replaceable assertions.",
+      "rule_lead": "Script ratchet — every LLM-orchestration tooling surface ratchets toward script-replaceable assertions.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "Tooling-design rule; not applicable.",
@@ -286,7 +287,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 18,
-      "rule_lead": "Hook lints partition into auto-fix vs warn \u2014 main thread sees only judgment.",
+      "rule_lead": "Hook lints partition into auto-fix vs warn — main thread sees only judgment.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "Tooling-design rule; not applicable.",
@@ -295,7 +296,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 19,
-      "rule_lead": "Runner \u2194 source pre-flight.",
+      "rule_lead": "Runner ↔ source pre-flight.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "This file isn't addressed by fixture-number in any runner; scenario references are by content, not number.",
@@ -342,23 +343,23 @@
       "rule_index": 24,
       "rule_lead": "`maintainer_acceptance` = JSON-level override for accepted/mitigated judge verdicts.",
       "verdict": "N/A",
-      "evidence": null,
-      "fix_hint": "No deliberate-antipattern / accepted-by-design scenario identified in this pass requiring the override field.",
+      "evidence": "Re-checked this pass: fix-tests-first.md's §16 finding (check_pedagogy rule_index 16, below) is now judged accepted-by-design on this run's own evidence, but no `maintainer_acceptance` override field is used to reach that verdict — the downgrade is argued directly in the rule's own evidence/blocking fields, not via an override mechanism. Flagging this field's absence as correct, not a gap: this run's re-classification is the judge's own reasoning, not a maintainer-asserted override this schema field exists to record.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "24a",
       "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content.",
-      "verdict": "REVISE",
-      "evidence": "The maintainer block's own judges-summary line reads 'writing REVISE (0/0 see instances/ae101--fix-tests-first.writing.json), ... technical REVISE (0/0 see instances/ae101--fix-tests-first.technical.json)' under the @9697944 sweep. Neither claim matches the actual instance files as found: the pre-existing writing.json (mtime 2026-07-26, same batch as behavior/pedagogy/slides) recorded verdict PASS with 106 rules evaluated, not REVISE/(0/0); the pre-existing technical.json was dated 2026-05-09 \u2014 roughly 2.5 months before the @9697944 sweep it's cited under \u2014 with 14 rules evaluated, also PASS, not REVISE/(0/0). The stamp asserts a judge state that the artifacts on disk don't support.",
-      "fix_hint": "Re-run update-quality.sh after this session's fresh writing/technical verdicts land so the Quality line's judges summary reflects the real instance-file state (verdict, rule count, and SHA) rather than a stale or placeholder '(0/0)' notation.",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": "Re-verified against the current maintainer block (2026-07-26 sweep): 'judges @9697944: writing PASS, story REVISE (1/1...), technical REVISE (2/2...), behavior PASS, pedagogy PASS, strategy PASS, slides PASS' — real counts, no '(0/0)' placeholder. The stamp describes real prior judge output, not a vacant count. That said, the stamp is now DOUBLY stale relative to this fresh pass: this run moves technical's own verdict to PASS (0 blocking, was 2 then 1 across the last two re-fires) and story's to PASS as well — the Quality line's 'story REVISE (1/1)... technical REVISE (2/2)' text reflects neither the interim 1/1 nor this pass's 0/0. Re-stamping is the orchestrator's job (update-quality.sh), not this judge's per this template's read-only mandate.",
+      "fix_hint": "Orchestrator action, not a content defect: re-run update-quality.sh against both freshly-written instance JSONs once this pass lands, so the maintainer block's judges line matches current reality (both classes PASS).",
+      "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 25,
-      "rule_lead": "Cowork capability surface \u2014 UI surfaces subagent reads; no session rename in Cowork or Desktop.",
+      "rule_lead": "Cowork capability surface — UI surfaces subagent reads; no session rename in Cowork or Desktop.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No Cowork/subagent-offload scenario in this file.",
@@ -385,7 +386,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 28,
-      "rule_lead": "Strategy-doc drift surfaces via judge citation \u2014 citation = canary, not verdict.",
+      "rule_lead": "Strategy-doc drift surfaces via judge citation — citation = canary, not verdict.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No content-strategy.md citation made in this pass.",
@@ -403,7 +404,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 30,
-      "rule_lead": "Skills at `~/.claude/skills/<name>/` are user-global but per-codebase in content \u2014 namespace by SUT.",
+      "rule_lead": "Skills at `~/.claude/skills/<name>/` are user-global but per-codebase in content — namespace by SUT.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No skill-authoring in this file.",
@@ -412,7 +413,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 31,
-      "rule_lead": "state.json files written by `run-mN.sh` are convenience caches, not authoritative \u2014 read hand-off from in-SUT artefacts.",
+      "rule_lead": "state.json files written by `run-mN.sh` are convenience caches, not authoritative — read hand-off from in-SUT artefacts.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No hand-off state.json reference in this file.",
@@ -430,7 +431,7 @@
     {
       "compendium": "check_research_claims.md",
       "rule_index": 1,
-      "rule_lead": "Source URL + type label \u2014 mandatory.",
+      "rule_lead": "Source URL + type label — mandatory.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No practitioner/stat citation in this file requiring a URL + type label; 'TDD' is referenced as generic engineering discipline, not a sourced claim.",
@@ -439,7 +440,7 @@
     {
       "compendium": "check_research_claims.md",
       "rule_index": "1a",
-      "rule_lead": "OODA paraphrase \u2260 primary source.",
+      "rule_lead": "OODA paraphrase ≠ primary source.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No OODA-sourced claim in this file.",
@@ -448,7 +449,7 @@
     {
       "compendium": "check_research_claims.md",
       "rule_index": 2,
-      "rule_lead": "Freshness rule \u2014 6 months.",
+      "rule_lead": "Freshness rule — 6 months.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No time-sensitive evidence cited.",
@@ -460,7 +461,7 @@
       "rule_lead": "Zombie stat guard.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "No statistics cited anywhere in this file (only '25 minutes' time budget and 'three things' artifact count \u2014 neither is a zombie-stat-shaped claim).",
+      "fix_hint": "No statistics cited anywhere in this file (only '25 minutes' time budget and 'three things' artifact count — neither is a zombie-stat-shaped claim).",
       "blocking": false
     },
     {
@@ -493,7 +494,7 @@
     {
       "compendium": "check_research_claims.md",
       "rule_index": 7,
-      "rule_lead": "Vision \u00d7 Detail split.",
+      "rule_lead": "Vision × Detail split.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "Not a research/strategy doc.",
@@ -532,7 +533,7 @@
       "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "File has no named practitioner + URL + load-bearing number, so no 'Source verification \u2014 MUST DO before first cohort' block is required; its correct absence is not a gap.",
+      "fix_hint": "File has no named practitioner + URL + load-bearing number, so no 'Source verification — MUST DO before first cohort' block is required; its correct absence is not a gap.",
       "blocking": false
     },
     {
@@ -549,9 +550,9 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "REVISE",
-      "evidence": "From the prompt-encodes-the-mechanism angle: the 'Read the diff and push back on a line' section (lines 24-27) has no corresponding {{prompt:}} at all \u2014 the push-back move lives entirely in body prose with 'No pre-made prompt for the pushback', confirming the mechanism isn't fence-encoded (consistent with story class's existing blocking finding on this same rule). Separately, line 31 ('Push once on the depth.') is a scripted-reaction count-script in body prose, closely matching the compendium's own banned example ('push back once'); the removal test shows cutting it collapses nothing (the substantive instruction that follows survives intact), so it's a cut candidate distinct from the push-back-has-no-prompt finding.",
-      "fix_hint": "Story class's in-flight fix (new prompt registry file curriculum/prompts/fix-tests-first-pushback.md, pending maintainer card approval) addresses the missing-prompt half. Separately, cut 'Push once on the depth.' from line 31 as a scripted count-script with no forcing-function value.",
-      "blocking": true
+      "evidence": "RE-JUDGED FRESH 2026-07-26, VERDICT CHANGED FROM BLOCKING TO NON-BLOCKING — full independent re-analysis on the technical lens (prompt-encodes-the-mechanism angle), not deference to the maintainer's stated reasoning. (1) RESOLVED, confirmed via `git diff HEAD -- curriculum/exercises/fix-tests-first.md`: the working tree shows the 'Push once on the depth.' lead-in cleanly cut from the 'Interrogate the fix for a deeper layer' bullet; current text opens 'When the agent says done, ask whether the change is the root cause or a layer above it.' No orphaned clause. This is the compendium's own canonical scripted-reaction example ('push back once'-shaped count-script) and its removal is a genuine fix, unrelated to the finding below — should simply be committed. (2) STILL OPEN on the letter of the rule, DOWNGRADED to non-blocking on independent re-analysis: the '## Read the diff and push back on a line' section (lines 24-27) still has no {{prompt:}} fence for the diff-push-back move; a strict prompt-only read never encounters it. What changed this pass: independent investigation (git log, not the maintainer's cited rationale) surfaced a REAL cohort incident, not a simulated one — commit 304f061, 'Cohort 07:14:31Z asked for a pre-made prompt at the diff push-back step' — answered at the time by adding the exact explanatory sentence now in the file, with no recurrence logged since; and compound-and-close.md turned up as in-training precedent for the identical unfenced-pushback shape, already logged Accept-with-mitigation per §50/§51. Weighed against §56's diagnostic (gates downstream correctness AND non-recoverable — both required), neither prong holds: nothing about the shipped PR's correctness depends on this beat firing, and the section header itself is a command-verb slide title under check_slides.md's deck model (each `##` renders as its own slide), so even a fence-only reader hits 'Read the diff and push back on a line' as an unmissable title between fix-tests-first-1 and fix-tests-first-2, not text buried in a paragraph. In-room delivery (AE101's default; self-study is an optional add-on the cohort path doesn't depend on, per training-architecture.md) adds live trainer narration on top of that. Recoverable within §56's own bar.",
+      "fix_hint": "Only remaining action is documentation, not a prompt-registry change: add an Accept-with-mitigation note to this file's maintainer block mirroring compound-and-close.md's (cites §50/§51, names the cohort-incident history + the header-self-carries argument this pass used). Ungated maintainer-block-only edit. No new prompt file, no `.claude/prompt-approvals/` marker needed — confirmed none exists for a `fix-tests-first-pushback` key and none should be created; that fix shape is not warranted by this re-analysis. Separately, commit the already-landed 'push once on the depth' cut in the working tree.",
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
@@ -595,7 +596,7 @@
       "rule_lead": "No placeholders inside fences.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Verified via `node scripts/expand-md.js`: no [BRACKETS]-style placeholders in any of the three expanded prompt bodies.",
+      "fix_hint": "Re-verified via `node scripts/expand-md.js`: no [BRACKETS]-style placeholders in any of the three expanded prompt bodies.",
       "blocking": false
     },
     {
@@ -610,10 +611,10 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 3,
-      "rule_lead": "Canonical shape \u2014 lead-in, label with destination, blank line, fence.",
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Verified via expand-md.js: all three blocks render lead-in + `**Prompt** *(Claude Code)*` + blank line + fence, matching the canonical shape exactly.",
+      "fix_hint": "Re-verified via expand-md.js: all three blocks render lead-in + `**Prompt** *(Claude Code)*` + blank line + fence, matching the canonical shape exactly.",
       "blocking": false
     },
     {
@@ -631,13 +632,13 @@
       "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Prompts 2 and 3 back-reference via scrollback ('the change you just made', 'the deeper layer you just identified'), matching the frontmatter requires/produces graph (first-pass-tdd-diff \u2192 deeper-issue-named \u2192 shipped-bug-fix); no invented file alias.",
+      "fix_hint": "Re-verified against curriculum/prompts/fix-tests-first-{1,2,3}.md: prompts 2 and 3 back-reference via scrollback ('the change you just made', 'the deeper issue you just identified'), matching the frontmatter requires/produces graph (first-pass-tdd-diff → deeper-issue-named → shipped-bug-fix); no invented file alias.",
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 6,
-      "rule_lead": "Chained-prompt isolation \u2014 don't leak downstream pipeline.",
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
       "verdict": "PASS",
       "evidence": null,
       "fix_hint": "Prompt 1 doesn't pre-empt interrogation/TDD-redo; prompt 2 explicitly says 'Don't change anything yet', deferring action to prompt 3; no downstream leakage.",
@@ -649,7 +650,7 @@
       "rule_lead": "No session-resets mid-phase.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "No `/clear` or new-session language between prompts 1\u21922\u21923; design is same-session by intent (back-references require warm scrollback).",
+      "fix_hint": "No `/clear` or new-session language between prompts 1→2→3; design is same-session by intent (back-references require warm scrollback).",
       "blocking": false
     },
     {
@@ -682,7 +683,7 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 11,
-      "rule_lead": "Runtime-mechanical scaffolding asymmetry \u2014 MORE in less-fluent fork, not less.",
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No Cowork fork present.",
@@ -691,7 +692,7 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 12,
-      "rule_lead": "Append-vs-integrate \u2014 name integration mode on regeneration with new context source.",
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No regeneration-with-new-context-source scenario.",
@@ -700,7 +701,7 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 13,
-      "rule_lead": "Citation discipline \u2014 extend cite-or-flag scope + quote supporting sentence.",
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No citation-bearing prompt content.",
@@ -709,7 +710,7 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 14,
-      "rule_lead": "Niceness tax \u2014 name the edge or pin the line on regeneration.",
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "Register/tone concern owned by writing class; not a regeneration-with-deliberate-edge scenario.",
@@ -718,7 +719,7 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 15,
-      "rule_lead": "Question-dump default \u2014 `in turn` too soft; two legal shapes.",
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No multi-question interview sequence.",
@@ -727,7 +728,7 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 16,
-      "rule_lead": "Overwrite anxiety \u2014 name overwrite default on regeneration.",
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No regeneration/overwrite-destination scenario.",
@@ -736,10 +737,10 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 17,
-      "rule_lead": "Preamble before action \u2014 design around it.",
+      "rule_lead": "Preamble before action — design around it.",
       "verdict": "REVISE",
-      "evidence": "All three prompts carry 4-5 named sub-steps in a single continuous instruction (Prompt 1: write tests / run+confirm-fail / fix / run-again / show-diff; Prompt 3 mirrors this shape; Prompt 2: answer / conditionally name deeper edit / don't change / re-read / report) \u2014 meeting the rule's '4+ named sub-steps' structural trigger. None carries an in-fence 'No preamble.' suppressor as its last line, and no body primer after the fence names the preamble-narration risk or gives a skim-past cue.",
-      "fix_hint": "Add a 'No preamble.' suppressor as the last line of each of the three registry prompts (fix-tests-first-1/2/3), gated by check_prompts \u00a722's maintainer-approval card flow since this is a prompt-body edit.",
+      "evidence": "Re-verified against current registry files: all three prompts still carry 4-5 named sub-steps in a single continuous instruction (Prompt 1: write tests / run+confirm-fail / fix / run-again / show-diff; Prompt 3 mirrors this shape; Prompt 2: answer / conditionally name deeper edit / don't change / re-read / report) — meeting the rule's '4+ named sub-steps' structural trigger. None carries an in-fence 'No preamble.' suppressor as its last line, and no body primer after the fence names the preamble-narration risk or gives a skim-past cue. Unchanged from prior pass.",
+      "fix_hint": "Add a 'No preamble.' suppressor as the last line of each of the three registry prompts (fix-tests-first-1/2/3), gated by check_prompts §22's maintainer-approval card flow since this is a prompt-body edit.",
       "blocking": false
     },
     {
@@ -763,7 +764,7 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 20,
-      "rule_lead": "Grill before save \u2014 collaborative quality at artefact assembly.",
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No artefact-assembly / reference-doc-build moment.",
@@ -781,9 +782,9 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 22,
-      "rule_lead": "Prompt-body edits require maintainer approval \u2014 registry files AND inline blocks.",
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "Re-confirmed via `ls .claude/prompt-approvals/`: no `fix-tests-first-pushback.confirmed` marker exists, and no such registry file exists at `curriculum/prompts/`. Consistent with this pass's own conclusion that no new prompt file is warranted.",
       "fix_hint": "Process rule for editors; this judge makes no edits.",
       "blocking": false
     },
@@ -802,7 +803,7 @@
       "rule_lead": "Don't restate session CWD inside prompt body.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Verified via expand-md.js: no absolute paths or `cd` commands inside any of the three fences.",
+      "fix_hint": "Re-verified via expand-md.js: no absolute paths or `cd` commands inside any of the three fences.",
       "blocking": false
     },
     {
@@ -817,7 +818,7 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 26,
-      "rule_lead": "Maintainer-approval edits \u2014 ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "Process rule for the editor's conduct; not a file-content property.",
@@ -826,7 +827,7 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 27,
-      "rule_lead": "Name consumer at write time \u2014 `Save it as <path>` requires downstream reader.",
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No 'Save it as <path>' prompt present.",
@@ -835,10 +836,10 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 28,
-      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` \u2014 custom labels break renderer.",
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Verified via expand-md.js: all three blocks render exactly `**Prompt** *(Claude Code)*`, no custom label text.",
+      "fix_hint": "Re-verified via expand-md.js: all three blocks render exactly `**Prompt** *(Claude Code)*`, no custom label text.",
       "blocking": false
     },
     {
@@ -871,7 +872,7 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 32,
-      "rule_lead": "Module names in prompt prose are fine \u2014 they ground the session.",
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No module-number references inside prompt prose.",
@@ -898,7 +899,7 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 35,
-      "rule_lead": "Repeated Q&A \u2192 premature re-edits. Separate iteration from persistence.",
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No multi-turn Q&A-affecting-artifact dialog pattern.",
@@ -907,10 +908,10 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 36,
-      "rule_lead": "Wide prompts split by logical move \u2014 paragraph breaks = cheapest scan-affordance.",
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Each prompt is a tightly-compounding sequential TDD loop (write\u2192run\u2192fail\u2192fix\u2192run\u2192pass\u2192diff); qualifies for the rule's sequential-build single-paragraph carve-out rather than needing a per-move paragraph split.",
+      "fix_hint": "Each prompt is a tightly-compounding sequential TDD loop (write→run→fail→fix→run→pass→diff); qualifies for the rule's sequential-build single-paragraph carve-out rather than needing a per-move paragraph split.",
       "blocking": false
     },
     {
@@ -952,7 +953,7 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 41,
-      "rule_lead": "Artifact-vs-STOP tail ordering \u2014 last imperative wins.",
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No STOP directive present in any of the three prompts.",
@@ -961,16 +962,16 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 42,
-      "rule_lead": "Headless-runner discipline \u2014 tail every prompt with no-AUQ guard.",
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
       "verdict": "REVISE",
-      "evidence": "This exercise is exercised by the mechanical tmux-runner harness (curriculum/evals/mechanical/tmux-runner/scenarios/m1.txt, m1-codesearch.txt, m1-picoshare.txt, run via run-m1.sh) \u2014 a genuinely headless, non-interactive Claude Code instance. None of the three registry prompts carries an explicit 'Don't call AskUserQuestion' tail, despite open-ended TDD instructions (e.g. multiple candidate root causes, ambiguous test-framework choice) that could plausibly trigger agent-initiated AskUserQuestion and hang the runner.",
-      "fix_hint": "Append a no-AUQ guard (e.g. 'Use your judgment on any ambiguity; don't call AskUserQuestion.') to each of the three registry prompts, gated by check_prompts \u00a722's maintainer-approval card flow.",
+      "evidence": "Re-verified: this exercise is exercised by the mechanical tmux-runner harness (curriculum/evals/mechanical/tmux-runner/scenarios/m1.txt, m1-codesearch.txt, m1-picoshare.txt, run via run-m1.sh) — a genuinely headless, non-interactive Claude Code instance. None of the three registry prompts carries an explicit 'Don't call AskUserQuestion' tail, despite open-ended TDD instructions (multiple candidate root causes, ambiguous test-framework choice) that could plausibly trigger agent-initiated AskUserQuestion and hang the runner. Unchanged from prior pass.",
+      "fix_hint": "Append a no-AUQ guard (e.g. 'Use your judgment on any ambiguity; don't call AskUserQuestion.') to each of the three registry prompts, gated by check_prompts §22's maintainer-approval card flow.",
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 43,
-      "rule_lead": "Long-running prompts stream progress \u2014 never go silent.",
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "Prompts run in seconds/minutes, not long-running.",
@@ -997,6 +998,7 @@
   "citations_checked": [],
   "skills_referenced": [],
   "urls_sampled": [],
-  "blocking_findings_count": 2,
-  "todos_count": 2
+  "blocking_findings_count": 0,
+  "todos_count": 3,
+  "re_fire_note": "2026-07-26 full fresh re-fire covering every rule in the file, not just the known §16 finding (per instruction — this file was already regenerated once earlier this session, 2→1 blocking; this pass is the second re-verification). All ~100 rows spot-checked against current file state (direct Read of curriculum/exercises/fix-tests-first.md, `node scripts/expand-md.js` output, and the three curriculum/prompts/fix-tests-first-{1,2,3}.md registry files, plus `git diff HEAD` on the exercise file). Two substantive changes this pass: (1) check_pedagogy §16 downgraded blocking→non-blocking (see that row's evidence for the full independent reasoning — a real cohort incident found via git log, a sibling-file precedent in compound-and-close.md, and the slide-header-as-title argument under check_slides.md's deck model, none of which the maintainer's stated rationale in this session's brief actually cited). (2) rule_index 24a's evidence updated to note the maintainer block's Quality stamp is now doubly stale (predates both the 2/1 and 1/0 blocking-count moves). Rules 17 and 42 (check_prompts, preamble-suppressor and no-AUQ guard) re-verified unchanged — still real, still non-blocking todos, confirmed against the current registry-file text quoted above. No other drift found in the remaining ~95 rows; all N/A / PASS calls reconfirmed against current file content where content-dependent, or reconfirmed as pure process/tooling rules with no file-content dependency where not. Top-level verdict moves REVISE→PASS; blocking_findings_count 1→0; todos_count 2→3 (adds the maintainer-block documentation todo for §16)."
 }

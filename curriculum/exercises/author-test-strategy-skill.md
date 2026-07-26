@@ -41,8 +41,9 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 
 ## Sharpen the skill from what came back
 
+- Before you ship, ask the skill itself to name its own weakest part: the assumption most likely wrong for this codebase, or what a teammate would push back on first. Push back on what it names; don't settle for reassurance.
 - The grade is biased by design. Claude invoked the skill it just helped author, then graded the result in the same context window: same-window self-charity. One paste, one wait, one read, convenient over rigorous.
-- Want a harsher read? Run it as two prompts. Invoke first, read the output, then a second prompt: *"Read that output as if you'd never seen the SKILL.md. Does it fit this codebase, or does it read generic?"* Either approach is fine.
+- Want a harsher read of the output too? Run it as two prompts. Invoke first, read the output, then a second prompt: *"Read that output as if you'd never seen the SKILL.md. Does it fit this codebase, or does it read generic?"* Either approach is fine.
 - If the strategy reads generic, sharpen the skill, not the output. A weak output is usually a weak skill. Sharpen the SKILL.md, then re-invoke.
 - Then decide: one re-invoke, or ship with a TODO. Re-invoke if the sharpen was substantive. Otherwise ship with a one-line TODO at the top naming what's unresolved. A skill that names its own gap is more useful to a teammate than one that pretends it's finished. The authoring muscle is what Module 3 installs; perfection waits for M6.
 
@@ -92,6 +93,8 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 - **P2 invoke-skip.** Student ships without running the skill. Trainer push: *"authoring without invocation is theatre. Run it on this codebase and ask 'is it good?'"*
 - **P2 invoke-output-weak.** Output is generic. Sign the skill itself is weak. Trainer push: *"the output is only as good as the skill. What in the skill would you sharpen to get a better output? sharpen the skill, then re-invoke."*
 - **P3 ship-confusion.** Team-kit home ambiguous. Trainer checks: *"the skill ships to your personal `~/.claude/skills/test-strategy/SKILL.md` (Claude wrote it there in Phase 1). That's the ship for today. The team-PR move is a separate human conversation later, after teammates have weighed in. The pre-engagement contract's team-kit slot names where a skill goes if it graduates, not whether this one ships now."*
+
+**Accept-with-mitigation (`check_pedagogy.md` §56):** no dedicated push-back move for a skipped self-critique ask. The body line above ("ask the skill itself to name its own weakest part...") is the fix; not every miss needs a trainer catch too.
 
 **Watch-fors:**
 - Student opens an editor to hand-craft SKILL.md. Redirect to conversation — the authoring move is prompting Claude, not keyboard-crafting markdown. This rule is load-bearing for the training; catch it every time.

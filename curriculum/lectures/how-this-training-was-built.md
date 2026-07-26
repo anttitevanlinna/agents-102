@@ -24,6 +24,14 @@ The edits to the training got bigger. One person fixing one line became plan mod
 
 Work-per-session went up, and care-per-line went up with it. Sweeping changes that would have taken a week got made in an afternoon, because the rules were tight enough to hand off. Every session inherited what the last one figured out, and each one could take on bigger work than the last.
 
+## Built to forgive
+
+One more design decision is worth knowing before the modules stack up. Each module leaves artifacts behind that later ones pick up: a rules file here, maps and skills and notes further in. The prompts downstream check what exists and work with what they find. A missing file is a detail, not a debt; any artifact in this training can be rebuilt in minutes.
+
+What a later module actually needs is the understanding the artifact condensed: why the test came before the fix, what a correction is worth once it is written down. **Understanding is the artifact.** Files can be re-made from it at any point; the reverse is not true.
+
+So a slot that runs short costs a file at most, never the thread. Take the understanding forward; the unfinished part waits in the workbook.
+
 ## You just ran the compound loop
 
 The story of building this training is the shape you just ran on your own repo. Over ninety minutes, not a year. On a trivial bug, not a whole training. The first read was partly wrong, and the wrongness was the way in: you let Claude read your repo, saw the wrongness, named it, corrected it. That correction turned into a rule.
@@ -35,6 +43,8 @@ The pattern has a name. Kieran Klaassen at Every calls it **compound engineering
 The loop is the shape. The bug today was the excuse.
 
 <!-- maintainer -->
+
+**Pace-valve slide added (2026-07-26, Antti-directed):** new slide *Built to forgive* between *agents checking the agents* and the closer turn. First-cohort overload response, pace leg: names the training's real completion contract — understanding carries forward, artifacts are rebuildable details. Claim verified against the prompt registry at add time: every cross-module `requires:` edge on M1–M3 artifacts is `conditional:` (m1-completed / m3-completed / m3-stride-completed), and M4's body treats artifacts ambiently ("rules files, memory, ADRs, and skills are what they are"). The one unconditional edge (task-shaping-rules-file → module:run-the-first-experiment) is soft in body prose; if a future prompt hard-requires an artifact unconditionally, this slide's promise breaks — check here first. Forward artifact naming ("maps and skills and notes further in") rides the §3 arc-lecture carve-out (subject is the training's own arc, same as the kept "By the end of the training..." line). One bold handle (**Understanding is the artifact**) within budget; file remains size-gate exempt (story lecture). Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"; exemplar file):** narrative slides recast from bolded-claim bullets to prose paragraphs per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Sentences near-verbatim; no claims added or cut; the three rule-quotes kept (load-bearing per watch-for); kicker untouched. One bold survives: **compound engineering** (coined-term handle at the naming beat). Quality per-class SHAs predate this pass; re-audit before ship.
 

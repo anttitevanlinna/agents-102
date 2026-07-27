@@ -1,4 +1,4 @@
-# Calibrated vigilance
+# The ironies of automation
 
 ## Monitoring and takeover run on the same reps
 
@@ -13,6 +13,8 @@
 - Trust and vigilance move in opposite directions. The same observed competence that earns the agent more autonomy degrades the attention you bring to the next run. The trust is deserved. The watching still has to be engineered. So when the next run lands clean, ask the plain question first: when did you last do this kind of work by hand?
 
 <!-- maintainer -->
+
+**Title restored (2026-07-27, Antti call):** H1 back to *The ironies of automation* — a named canonical result (Bainbridge 1983) whose title is the searchable handle, same carve-out as `the-lethal-trifecta`. The 2026-07-12 strategy finding (§3 lead-with-discipline) is answered at header level: both slide headers keep their fe18297 mechanism-led rewrites. The interim H1 *Calibrated vigilance* overshot the fix two ways: it named a discipline this opener deliberately does not teach (scope held to naming the trap; the fix-moves were dropped as closer material — see Scope held below), and it planted "calibrated" one module before M5 earns calibration (judge-vs-labels, calibrated agency, the frontier), giving the modifier a second meaning. Strategy judges: do not re-flag the title; discipline-lead is satisfied by the headers, and the failure-named canonical handle is kept by design.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** both slides are narrative; bullets kept, all leads de-bolded. One handle survives: **overreliance**, at the Parasuraman-and-Riley naming beat on slide 2. Bainbridge quote and all wording intact. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. No claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 

@@ -50,7 +50,7 @@ Next, the thing you are sending: an LLM in a loop, calling tools.
 
 The run is about to leave your hands. Before it does, the trap that earned trust sets for the watcher:
 
-[Lecture: Calibrated vigilance](lectures/ironies-of-automation.md)
+[Lecture: The ironies of automation](lectures/ironies-of-automation.md)
 
 No compound pass at the close. The send-off is the close of the work. Your rules files, memory, ADRs, and skills are what they are; the agent runs against them as they stand. Whatever needs sharpening will surface on the return at Module 5, when you can see what the system actually produced. Compound on evidence, not anticipation.
 

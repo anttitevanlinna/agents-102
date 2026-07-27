@@ -16,7 +16,7 @@
 
 **Title restored (2026-07-27, Antti call):** H1 back to *The ironies of automation* — a named canonical result (Bainbridge 1983) whose title is the searchable handle, same carve-out as `the-lethal-trifecta`. The 2026-07-12 strategy finding (§3 lead-with-discipline) is answered at header level: both slide headers keep their fe18297 mechanism-led rewrites. The interim H1 *Calibrated vigilance* overshot the fix two ways: it named a discipline this opener deliberately does not teach (scope held to naming the trap; the fix-moves were dropped as closer material — see Scope held below), and it planted "calibrated" one module before M5 earns calibration (judge-vs-labels, calibrated agency, the frontier), giving the modifier a second meaning. Strategy judges: do not re-flag the title; discipline-lead is satisfied by the headers, and the failure-named canonical handle is kept by design.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** both slides are narrative; bullets kept, all leads de-bolded. One handle survives: **overreliance**, at the Parasuraman-and-Riley naming beat on slide 2. Bainbridge quote and all wording intact. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. No claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** both slides are narrative; bullets kept, all leads de-bolded. One handle survives: **overreliance**, at the Parasuraman-and-Riley naming beat on slide 2. Bainbridge quote and all wording intact. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. No claims added or cut.
 
 **Promotion (2026-07-03, Antti-directed):** supplementary → M4 lecture, wired into `run-the-first-experiment.md` (placement since moved — see Placement rationale). Same operation that promoted `the-agent-loop` and `the-gate-is-a-claim` earlier this run. Slide-format pass per `theory-plan.md` § Slide format + dosage: two slides (the Bainbridge paradox · the complacency half). Bullets carried from the supplementary body, which was already slide-shaped.
 
@@ -30,8 +30,8 @@
 1. **Slide budget.** +2 slides onto M4's already-flagged raw count (the-agent-loop's eyeball #3 put M4 at ~15 vs the ~6 budget; these two are re-chunked supplementary content, no new teaching load). Cut to one slide (fold the paradox and the complacency half together), or accept two?
 2. **Mood contract.** The paradox is meant to land as a live tension to watch for, not a prediction of failure. Send-off placement is the remedy already applied; if in rehearsal it still reads as *"you will miss the bad run,"* thin it to one slide.
 
-**Quality:** no 2026-07-26 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@9697944 slides@b3143a4) **Quality:** no Quality line by design (new lecture, unaudited — the promotion re-shaped placement and dropped a section; re-audit before ship). The two sources below were verified live on the supplementary and carry over verbatim.
-- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-07-27 (writing@c202a8d story@c202a8d technical@c202a8d behavior@c202a8d pedagogy@c202a8d strategy@c202a8d slides@c202a8d)
+- judges @c202a8d: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Mood target:** curious readiness held (the module's target), with the earned-trust paradox as a named tension. Primes rather than consolidates.
 

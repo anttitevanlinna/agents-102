@@ -94,6 +94,14 @@ Each entry: cycle number, date, what the researcher learned about researching.
 
 ---
 
+### Cycle 174 — 2026-07-27
+
+The third practitioner voice on loop engineering governance (Wang/TrueFoundry, June 16) was discoverable via keyword search ("loop engineering enterprise governance risk 2026") rather than by name — because Wang is not on the existing source roster and is not a prominent blogger. This confirms the heuristic inversion for governance/infrastructure topics: person-name searches are best for deployment findings (Osmani, Ronacher), but concept-name searches are better for finding the "third voice" that hasn't been identified yet. When trying to confirm L3 convergence, search the concept pattern rather than names — you'll find practitioners who haven't been tracked.
+
+Vendor-framed practitioner analysis (ML platform company describing customer deployment failures) occupies an ambiguous epistemological position: the failure-mode descriptions are operationally specific enough to be deployment-grounded (named incident, specific numbers), but the publication motive creates a bias toward dramatizing failure. The right classification is [practitioner analysis / vendor framing], held at L3-directional rather than L3-confirmed until a fourth clearly independent voice appears. This distinction matters: don't let vendor-framed specificity be mistaken for deployer-direct independence.
+
+Platform announcements that are structurally "workaround launches" (Google shipping Flash models while Pro is delayed) carry a different signal type than planned launches. Shipping Gemini 3.6 Flash while 3.5 Pro is still absent, combined with confirming Gemini 4 pre-training, suggests strategic pivot — Flash is the actual execution path, Pro is slipping toward obsolescence before release. For deadline-tracking cycles: when a vendor ships tier-B products during a tier-A launch window, check whether the tier-A product has been de-prioritized rather than delayed.
+
 ### Cycle 172 — 2026-07-25
 
 Direct page fetches of practitioner blogs (simonwillison.net, lucumr.pocoo.org, addyosmani.com) and vendor documentation (platform.claude.com/docs) yielded higher signal than keyword searches in this cycle — one fetch of the official models overview page confirmed Opus 5's model ID, pricing, and context window as ground truth in a single call, while keyword searches had returned fragmented and slightly inconsistent press summaries. For "did X ship and what are the API details?" questions, start with the official changelog or docs endpoint before any search.

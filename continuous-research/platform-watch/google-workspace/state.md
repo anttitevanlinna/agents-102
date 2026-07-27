@@ -14,8 +14,14 @@ answers:
 
 # Google Workspace / Gemini Enterprise — Platform State
 
-Last updated: 2026-07-19 (cycle 167)
-OODA cycles: 22
+Last updated: 2026-07-27 (cycle 174)
+OODA cycles: 23
+
+**Cycle 174 updates (July 27, 2026) — Google ships three Flash models July 21 (3.6 Flash, 3.5 Flash-Lite, 3.5 Flash Cyber); 3.5 Pro absent = fourth consecutive missed date window; Gemini 4 pre-training confirmed; prediction markets 81% July 31:**
+
+**Google July 21, 2026 — three Gemini Flash models shipped; 3.5 Pro absent (fourth consecutive missed window).** Google DeepMind announced three models: (1) **Gemini 3.6 Flash** — "workhorse model" with 17% fewer output tokens vs 3.5 Flash, output $7.50/M (↓ from $9.00/M), input $1.50/M unchanged; improved coding and multimodal; (2) **Gemini 3.5 Flash-Lite** — most economical Flash option; (3) **Gemini 3.5 Flash Cyber** — cybersecurity fine-tune, auto-attacks to verify vulnerabilities, limited to governments and trusted partners only (pilot, not general enterprise). Gemini 3.5 Pro remains absent. Product lead Logan Kilpatrick: "currently testing Gemini 3.5 Pro with partners and hopes to land soon" — no date given. TechCrunch headline: "Google releases three new Gemini models — but no 3.5 Pro." This is the fourth consecutive missed window for 3.5 Pro (June → July 12 → July 17 → July 21). **Gemini 4 pre-training confirmed:** Kilpatrick stated Google "has started its most ambitious pre-training run yet for Gemini 4" — first public confirmation of next-generation training. CTO implication: Google may be executing Flash-velocity strategy while 3.5 Pro remains delayed, with Gemini 4 potentially superseding 3.5 Pro before it reaches widespread adoption. Prediction markets (July 26): 81% for July 31 GA; 73% for August 7 — community consensus has drifted to late July/early August but no official date exists. **Enterprise relevance of 3.6 Flash:** For Q3 2026 Google enterprise agent planning, Gemini 3.6 Flash is the credible option — 17% token efficiency improves per-task agent cost. Gemini 3.5 Flash Cyber is locked to government pilots only. Do not plan on 3.5 Pro for H2 2026 without confirmed API changelog GA entry. ([techcrunch.com/2026/07/21/google-releases-three-new-gemini-models-but-no-3-5-pro/ Jul 21 2026](https://techcrunch.com/2026/07/21/google-releases-three-new-gemini-models-but-no-3-5-pro/) — [domain trade publication])
+
+**Watch: Gemini API changelog (definitive "did it ship?" source — check before secondary press); Gemini 3.5 Pro if GA before July 31; Gemini 4 pre-training timeline (confirmed in-progress); Gemini 3.6 Flash enterprise deployment evidence (too early for L2).**
 
 **Cycle 167 updates (July 19, 2026) — Google official statement confirms August 2026 projection for Gemini 3.5 Pro; "upgraded Flash model" in partner testing; API changelog still July 6:**
 

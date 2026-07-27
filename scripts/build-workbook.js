@@ -124,9 +124,9 @@ const THEORY_HANDBOOK_MANIFEST = {
     ]],
     ['M4', [
       'lectures/the-far-half',
-      'lectures/ironies-of-automation',
       'lectures/the-agent-loop',
       'lectures/test-and-learn',
+      'lectures/ironies-of-automation',
       'lectures/will-company-memory-emerge',
       'lectures/reading-the-return',
       'supplementary/verification-asymmetry',

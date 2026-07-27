@@ -36,9 +36,50 @@ A gate is one more claim in the system. Build it, then hold it to the same bar i
 
 ## The delegation frontier
 
+<figure class="diagram">
+<svg viewBox="0 0 1200 560" role="img" aria-label="A two-by-two map of delegated work. Horizontal axis: reach, how much you hand off. Vertical axis: calibration, whether trust was earned by a measured gate. Four states: chat-shaped work bottom-left, controlled assistance top-left, reckless autonomy bottom-right, calibrated agency top-right. A dashed ochre curve labelled the frontier rises from low reach at low calibration to high reach at high calibration, and moves outward as fast as the gates behind it." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
+<rect x="0.5" y="0.5" width="1199" height="559" rx="7" fill="#efe6d2"/>
+<rect x="12" y="12" width="1176" height="536" fill="none" stroke="#d6c8a3" stroke-width="1" opacity="0.9"/>
+<rect x="650" y="270" width="500" height="200" fill="rgba(138,58,42,0.05)"/>
+<g stroke="#d6c8a3" stroke-width="1" stroke-dasharray="2 8" opacity="0.8">
+<line x1="650" y1="70" x2="650" y2="470"/>
+<line x1="150" y1="270" x2="1150" y2="270"/>
+</g>
+<g stroke="#786c56" stroke-width="1.6" stroke-linecap="round">
+<line x1="150" y1="470" x2="1140" y2="470"/>
+<line x1="150" y1="470" x2="150" y2="80"/>
+</g>
+<g fill="#786c56">
+<polygon points="1150,470 1138,464 1138,476"/>
+<polygon points="150,70 144,82 156,82"/>
+</g>
+<text x="650" y="505" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2.5" fill="#786c56">REACH · HOW MUCH YOU HAND OFF →</text>
+<text x="125" y="270" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2.5" fill="#786c56" transform="rotate(-90 125 270)">CALIBRATION · TRUST, MEASURED ↑</text>
+<g text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.5" letter-spacing="2">
+<text x="400" y="150" fill="#2f6b6b">CONTROLLED ASSISTANCE</text>
+<text x="400" y="400" fill="#2f6b6b">CHAT-SHAPED WORK</text>
+<text x="800" y="150" fill="#2f6b6b">CALIBRATED AGENCY</text>
+<text x="960" y="400" fill="#8a3a2a">RECKLESS AUTONOMY</text>
+</g>
+<g text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234">
+<text x="400" y="168">small handoffs, tight review</text>
+<text x="400" y="418">you read everything</text>
+<text x="800" y="168">long leash, measured gates</text>
+<text x="960" y="418">long leash, unmeasured green</text>
+</g>
+<path d="M 480,470 C 640,420 760,330 850,240 S 980,120 1020,70" fill="none" stroke="#a05a2c" stroke-width="2.4" stroke-dasharray="7 7" opacity="0.85"/>
+<text x="935" y="205" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="2.5" fill="#a05a2c" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE FRONTIER</text>
+<text x="935" y="221" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">moves as fast as the gates behind it</text>
+<line x1="880" y1="250" x2="945" y2="250" stroke="#a05a2c" stroke-width="1.8" stroke-linecap="round"/>
+<polygon points="955,250 943,244 943,256" fill="#a05a2c"/>
+<text x="650" y="533" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="15.5" fill="#4a4234">The frontier: the largest task you can hand off and still trust the result.</text>
+<text x="1176" y="36" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" letter-spacing="2" fill="#8a3a2a">TWO AXES · FOUR STATES</text>
+</svg>
+</figure>
+
 - Every run you hand off sits on two axes. Reach is how much you delegated: the size of the task, the length of the leash. Calibration is whether your trust in what came back was earned by a check you have verified.
 - Four states fall out. Low reach is chat-shaped work or controlled assistance: you read everything, so trust is not the question yet. High reach splits on calibration alone. Calibrated agency when the gates behind the green are ones you have measured, reckless autonomy when they are not. From outside, the two look identical. The five ways a gate lies are the whole difference.
-- The frontier is the largest task you can hand off and still trust the result. It moves outward only as fast as the gates behind it. Push reach past your calibration and you are not delegating more. You are checking less.
+- The frontier moves outward only as fast as the gates behind it. Push reach past your calibration and you are not delegating more. You are checking less.
 
 <!-- maintainer -->
 
@@ -50,23 +91,19 @@ A gate is one more claim in the system. Build it, then hold it to the same bar i
 
 **Placement:** M5 close, final lecture, immediately after `what-packaging-is.md`. Recognition-after-building (`check_lectures §1`): the student built a verifier and re-sent the packaged run before this page names the gate's own fallibility. No cross-module sequencing in the body (`check_lectures §3`); any onward pointer lives in the module file's `## Next`.
 
-**Frontier slide added 2026-07-26 (Antti placement call: "M5 closer"):** *The delegation frontier* as the deck's closing zoom-out — reach × calibration, four states (chat-shaped work · controlled assistance · reckless autonomy · calibrated agency), frontier moves only as fast as the gates. Home-grown, L0, no citation owed; doubles as the model behind the AE101 day-30 measurement design (transcript states + PR-layer rework as calibration's outcome anchor — measurement stays maintainer-side, unpiloted, NOT a body claim). Mood-checked: ends on the reckless-autonomy warning ("you are checking less"), does NOT resolve the closer's open doubt; the optimistic twin beat (compounding moves the frontier outward) is deliberately withheld here — candidate one-liner for M6 `the-map-filled-in`, Antti's call. "Calibration" is earned two slides up (the judge-calibration slide); zero bold (header carries the handle). Quality per-class SHAs below predate this slide; re-audit before ship.
+**Frontier slide added 2026-07-26 (Antti placement call: "M5 closer"):** *The delegation frontier* as the deck's closing zoom-out — reach × calibration, four states (chat-shaped work · controlled assistance · reckless autonomy · calibrated agency), frontier moves only as fast as the gates. Home-grown, L0, no citation owed; doubles as the model behind the AE101 day-30 measurement design (transcript states + PR-layer rework as calibration's outcome anchor — measurement stays maintainer-side, unpiloted, NOT a body claim). Mood-checked: ends on the reckless-autonomy warning ("you are checking less"), does NOT resolve the closer's open doubt; the optimistic twin beat (compounding moves the frontier outward) is deliberately withheld here — PLACED 2026-07-27 as one payoff bullet on `the-map-filled-in`'s closing slide. "Calibration" is earned two slides up (the judge-calibration slide); zero bold (header carries the handle). Quality per-class SHAs below predate this slide; re-audit before ship.
+
+**Antti decisions (2026-07-27):** six slides confirmed as THE M5 closer; all five laws kept (no error-analysis trim, no don't-tamper cut; combined close packaging ~12–15 + gate 7–9 accepted against the 1h45 runtime); the slide-5 kicker ("A gate is one more claim…") stays as the laws' summary line so the deck ends on the frontier warning; 2×2 figure added to the frontier slide in the house SVG style (blank-line-free figure block per the engine-SVG rule; the frontier-definition sentence is carried once, in the figure caption, and dropped from bullet 3).
 
 **Laws carried (5 + closing frame):** green-is-a-claim (passing is not proof) · calibrate-the-judge · Goodhart/gate-decay · one-run-is-a-sample · don't-tamper (change on recurrence). Trimmed from the reference-dose supplementary: hold-out and integrity-check folded into the gate-decay slide; the error-analysis-first bullet kept tight on the calibrate slide (cut candidate — see eyeball). The demo-is-pass-once and regression-to-the-mean bullets kept as one-line traps.
 
 **Frameworks riffed on:** Goodhart's law `[cultural-vocab]` (name-only) · W. Edwards Deming on tampering `[cultural-vocab]` (name-only) · judge-calibration loop credited to Hamel Husain inline (URL below) · regression-to-the-mean = statistics commons, un-attributed.
 
-**EYEBALL (queue):**
-- **Frontier slide (2026-07-26):** deck now six slides, ~7–9 min. (a) Does the zoom-out earn its slot after five laws, or is it a second lecture's worth of frame? (b) The slide-5 kicker ("A gate is one more claim…") no longer ends the deck — keep it as the laws' summary line, or move it below the frontier slide as the final word? (c) Commission the M6 payoff twin line in `the-map-filled-in` ("compounding is what moves the frontier"), or let the doubt stand unresolved training-wide?
-- **Does this become THE M5 closer, landing AFTER `what-packaging-is.md`?** M5 then carries two back-to-back closing lectures (packaging ~12–15 min + this ~6–8 min). Confirm the combined closing dose fits the 1h45 runtime, or whether this trims to a shorter recognition beat.
-- **Slide budget:** five slides, one law each. A closer is ~5–8 min; five sits at the top of that. Cheapest trim if tighter: the error-analysis-first bullet on *Calibrate the judge* (an eval-building move, not a gate-fallibility law) folds or drops without losing a law.
-- **Any law to cut for dose:** the five are distinct failure modes of the gate. If one goes, *don't-tamper* (change on recurrence) is the most separable — it is a reaction policy rather than a gate-fallibility law — but it is one of the delivery gaps this promotion was meant to close, so cut it last.
-
-**Lecture meta:** *6–8 min M5 closer, deck-shaped, five slides. Names the fallibility of the verifier the student just built. Earns each law from the gate in front of them, not cold.*
+**Lecture meta:** *7–9 min M5 closer, deck-shaped, six slides: five gate laws plus the delegation-frontier zoom-out. Names the fallibility of the verifier the student just built. Earns each law from the gate in front of them, not cold.*
 
 **Delivery mode:** In-room close, projected, after `what-packaging-is.md`.
 
-**Time:** 6–8 min at presentation pace (recognition; the student built the gate this module).
+**Time:** 7–9 min at presentation pace (recognition; the student built the gate this module).
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 - `[checked:2026-07-02 result:OK due:2027-01-02]` https://hamel.dev/blog/posts/llm-judge/ — [practitioner direct] Hamel Husain (first-person byline confirmed), judge validated against a domain expert's labels, agreement tracked, ">90% agreement" in "three iterations" verbatim; "You cannot write a good judge prompt until you've seen the data." Anchors the calibrate-the-judge slide incl. the 90%/three-iterations number. fallback: drop the number, keep the move ("measure agreement against your own labels, iterate until you converge").

@@ -1,6 +1,6 @@
 # Walk and *send off*
 
-**Time:** 55 minutes inside a 1h45 module slot (Phases 1–2, breakdown: pick 10 / walk-and-fill 45). The send-off (~5 min, single prompt paste) closes Module 4 after this exercise.
+**Time:** 55 minutes inside a 1h45 module slot (Phases 1–2, breakdown: pick 10 / walk-and-fill 45). The send-off (~5 min, single prompt paste) closes the module after this exercise.
 
 **Session** *(new, "Module 4 - Run the first experiment")*
 
@@ -10,13 +10,13 @@ Start a new Claude Code session at your repo root.
 /rename m4-walk-send
 ```
 
-Start clean. The task here is bigger than anything so far. Before the new session, check your working tree and branch. You ride that state into the closing `m4/<slug>` commit and M5's fork.
+Start clean. The task here is bigger than anything so far. Before the new session, check your working tree and branch. You ride that state into the closing `m4/<slug>` commit and the fork that follows.
 
 **What you do:** Pick a task you've been avoiding, the kind you'd send off rather than nudge bit by bit. Walk what you've built so far against it. Fill the worst gaps and settle your `observations/` tree on disk. At the close, send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
 
 **What you build:** two things a long run can ride: a scoped task with a 'done' you can name in a sentence, and the worst gaps filled in `observations/` and your rules file, with the `observations/` tree settled on disk. Then it goes off un-packaged.
 
-**The point:** This is the first experiment of a two-run arc. The un-packaged send-off here teaches Module 5 what packaging adds, a lesson no lecture can land. Every send-off is a test, not a production run; you are testing and you are learning.
+**The point:** This is the first experiment of a two-run arc. The un-packaged send-off here is what teaches you what packaging adds, a lesson no lecture can land. Every send-off is a test, not a production run; you are testing and you are learning.
 
 ---
 
@@ -78,11 +78,11 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 
 **What happened:** You picked a real task you'd send off rather than nudge bit by bit. You walked what you'd built so far against it, filled the worst gaps, and settled the `observations/` tree before the send-off.
 
-## What closes Module 4
+## What closes the module
 
-The exercise ends here. Module 4's send-off takes over:
+The exercise ends here. The module's send-off takes over:
 
-1. You set the two return markers: ask Claude where this session's transcript lives, then ask it to commit the current state on a feature branch and report the short SHA. Push the branch if you want the run to outlast your laptop. Module 5 forks from that commit and reads the transcript.
+1. You set the two return markers: ask Claude where this session's transcript lives, then ask it to commit the current state on a feature branch and report the short SHA. Push the branch if you want the run to outlast your laptop. The next session forks from that commit and reads the transcript.
 2. You run the trifecta check: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening that prompt injection needs. All three present here, cut one leg before you send.
 3. You paste the send-off prompt to the same session. Keep the laptop awake and plugged in. Don't close the lid; sleep freezes the session and it won't resume on wake. If you want to stop the run early, wait for a tool call to finish; clean interrupts between tool calls are fine. Traces are data either way.
 

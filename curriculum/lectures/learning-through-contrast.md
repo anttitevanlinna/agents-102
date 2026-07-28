@@ -2,9 +2,9 @@
 
 ## Diagnose first, fix later
 
-- The artefact is data, whatever came back. You sent off an un-packaged run at the close of M4. Stopped, finished, ran out of credit: there is something to read now, and reading it is the work.
+- The artefact is data, whatever came back. You sent off an un-packaged run at the last close. Stopped, finished, ran out of credit: there is something to read now, and reading it is the work.
 - **Diagnose first. Fix later.** The move cuts against most engineering instinct. When an agent gets something wrong, the reflex is to fix it immediately: edit the prompt, add a constraint, reach for the next tool. This module holds that reflex off. The failures earn the validation that catches them.
-- The arc is *test → learn → encode*. M4 was the test. This is the learn. The encode turns what the read finds into durable checks.
+- The arc is *test → learn → encode*. The un-packaged send-off was the test. This is the learn. The encode turns what the read finds into durable checks.
 
 The run shows you what no benchmark can.
 
@@ -29,8 +29,7 @@ The run shows you what no benchmark can.
 
 **Slides-only pass (2026-07-02, unaudited):** three slides + one kicker. Per-passage verdicts: opening artefact-anchor + "the move M5 asks of you" lede CONVERTED into slide 1 (first two bullets) · arc line (*test → learn → encode*) KEPT as slide-1 bullet under the §3 arc-subject carve-out (judgment below) · "The pre-read introduced these" connective CUT · three one-sentence lenses CONVERTED to slide 2, "read through all three" tail folded in as fourth bullet · "One operational move" + the hands-off FAQ MERGED into slide 3 (*Managing the window*); "`/context` is oldskool" phrasing dropped, `/context` and ccstatusline both kept (preserves the 2026-05-15 technical fix) · "What is about to happen" phase preview CUT (the exercise body carries the flow) · "Practice beats external proof" pair TRIMMED to the slide-1 kicker · "Open your repo. Let's go." CUT (room beat; trainer carries the exercise start).
 
-**§3 judgment (cross-module refs in body):** carve-out HOLDS, partially — the lecture's subject IS the contrast arc (M4 baseline → this module's learn → the encode; the lecture is named for it), so the backward anchor "close of M4" and the backward arc legs "M4 was the test. This is the learn." are constitutive, not incidental sequencing; they stay. The forward leg ("M6 will be the encode") was incidental sequencing — the module file's `## Next` owns that bridge — rewritten to name what the encode IS without the module number. Incidental self-refs dispositioned in the same pass: "the move M5 asks of you" / "M5 holds that reflex off" → "this module"; "the re-send at the end of M5" → "the end of this module". No other M-refs above the fence.
-- section-3 sweep 2026-07-02: 3 cross-module refs judged, 1 fixed (forward "M6 will be the encode" → "The encode turns what the read finds into durable checks"; the M6 bridge lives in `learn-from-the-test.md` `## Next`, confirmed present), 2 carve-out ("close of M4" + "M4 was the test" — arc-subject lecture, backward anchors). Self-refs ("this module" ×2) OK.
+**§3 judgment (cross-module refs in body):** the lecture's subject IS the contrast arc (baseline → learn → encode; the lecture is named for it), so the backward anchor and the backward arc legs are constitutive and stay. The *number* on them is not: what is load-bearing is that the un-packaged send-off was the test, not which slot it sat in. Both legs now name the artefact instead of the module, so the arc survives a cut that runs these modules in different positions. The forward leg names what the encode IS; the module file's `## Next` owns the bridge. Self-refs read "this module". No module numbers above the fence.
 
 **Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@9697944 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4) — predates the slides-only rework; re-audit before ship.
 - judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

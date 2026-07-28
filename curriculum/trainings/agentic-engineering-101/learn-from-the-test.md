@@ -1,25 +1,25 @@
 # Learn from the test, re-send packaged
 
 ## Big Idea
-Read the un-packaged Module 4 run through three failure-mode lenses, build the validation that would have caught each, assemble the reference and plan.md, and re-send the same task packaged. The contrast is the lesson.
+Read the un-packaged run through three failure-mode lenses, build the validation that would have caught each, assemble the reference and plan.md, and re-send the same task packaged. The contrast is the lesson.
 
 ## Prework
 
-Walk in with the Module 4 send-off artefact. Stopped, finished, ran out of credit, doesn't matter.
+Walk in with the un-packaged send-off artefact. Stopped, finished, ran out of credit, doesn't matter.
 
-Optional prep in the Module 4 to Module 5 gap: read [Clean Code Is Steering: Insights from Uncle Bob](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md); watch Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich); read [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md); read Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).
+Optional prep while the un-packaged run is still going: read [Clean Code Is Steering: Insights from Uncle Bob](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md); watch Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich); read [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md); read Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Diagnose** your un-packaged Module 4 send-off through three named lenses, goal drift, context rot, plausible-but-wrong, with quoted moments per lens
+- **Diagnose** your un-packaged send-off through three named lenses, goal drift, context rot, plausible-but-wrong, with quoted moments per lens
 - **Pair** each failure mode with the packaging that catches it: drift ↔ reference artefact, rot ↔ plan.md, plausible-but-wrong ↔ external verifier
 - **Build** a verifier shaped against your dominant failure using one of three shapes (background-agent, shell-hook, or Ralph re-feed)
-- **Assemble** the reference artefact + plan.md in conversation, scoped to the same task Module 4 sent off
+- **Assemble** the reference artefact + plan.md in conversation, scoped to the same task you sent off
 - **Re-send** the packaged version of the same task in the session your diagnosis ran in, and let it run a second time
 
 ## Start here
 
-You sent off an un-packaged run at the close of Module 4 and read the pre-read. You walk in with the artefact in front of you and the three failure-mode lenses in hand. The in-room lecture below opens the session.
+You sent off an un-packaged run at the last close and read the pre-read. You walk in with the artefact in front of you and the three failure-mode lenses in hand. The in-room lecture below opens the session.
 
 > **Long runs, short reads.** The M1 countermove rides along: never let the agent say everything. Ranked findings first, detail on request, the full record on disk. Chat is for what changed and what needs you.
 
@@ -29,15 +29,15 @@ You sent off an un-packaged run at the close of Module 4 and read the pre-read. 
 
 ## The nag writes the verifier
 
-Somewhere during the M4 send-off a worry surfaced: did it touch the migration, did the tests really cover the edge. There was no way to check mid-run, and it nagged.
+Somewhere during the un-packaged send-off a worry surfaced: did it touch the migration, did the tests really cover the edge. There was no way to check mid-run, and it nagged.
 
 The nag is a spec, arriving one worry at a time. Each one names a check the run should have carried with it. This module turns the list into machinery: the reference pins the goal, plan.md carries the state, the verifier runs the checks you wished you could run mid-flight.
 
 Acting without full control is the job from here on. The feeling of what is missing points at what to build next. Build it, send again.
 
-## Set up the Module 5 worktree
+## Set up the worktree
 
-Before opening the Module 5 session, fork the Module 4 starting SHA into a sibling worktree. Module 5's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second run starts from the same code state as the first. Cherny calls parallel worktrees his biggest productivity unlock; the Module 2 pre-read lands here.
+Before opening this session, fork the un-packaged run's starting SHA into a sibling worktree. This session's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second run starts from the same code state as the first. Cherny calls parallel worktrees his biggest productivity unlock; the Module 2 pre-read lands here.
 
 A real engineering call lives in this fork: gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a worktree because git doesn't see them. AE101's default is to copy them in once at fork time. Your Module 1 evidence rides forward<!--flag:module:earn-the-trust--> (along with any Module 3 artefacts if you've completed it)<!--/flag:module:earn-the-trust-->; compounding then diverges between the worktree and the original.<!--flag:module:spot-gaps-build-the-loop--> You decide post-Module-6 what to merge back.<!--/flag:module:spot-gaps-build-the-loop--> Other engineers wire it differently.
 
@@ -45,7 +45,7 @@ A real engineering call lives in this fork: gitignored files (your `CLAUDE.local
 
 **Session** *(continue or new, "original repo")*
 
-Run the fork from your original repo, not the worktree (it doesn't exist yet). If your Module 4 session is still open, ask it there, it's already in the right place. Otherwise open a fresh session in the original repo location and ask there.
+Run the fork from your original repo, not the worktree (it doesn't exist yet). If the session you sent off from is still open, ask it there, it's already in the right place. Otherwise open a fresh session in the original repo location and ask there.
 
 Claude figures out `<repo-name>` from the working directory. Help it if it gets confused.
 
@@ -55,7 +55,7 @@ Claude will narrate before acting. It usually opens with a plan summary listing 
 
 Check the copy landed before you go on: the output should name both `CLAUDE.local.md` and `observations/` at the worktree path. The whole contrast rests on the second run starting from the same system the first one did, and a rules file that quietly stayed behind changes two variables instead of one. If your rules file lives somewhere other than the two paths Claude checked, ask Claude to copy that one across too.
 
-**The coordinates are the anchor.** Claude should read the protected `Run coordinates` block in `task.md`, use the exact `m4/<slug>` branch named there, and fork from that branch's "M4 starting point" commit. If the coordinates are missing or the commit message has been rewritten, stop and use the SHA Claude reported at Module 4 close rather than guessing from branch names.
+**The coordinates are the anchor.** Claude should read the protected `Run coordinates` block in `task.md`, use the exact `m4/<slug>` branch named there, and fork from that branch's "M4 starting point" commit. If the coordinates are missing or the commit message has been rewritten, stop and use the SHA Claude reported at the send-off close rather than guessing from branch names.
 
 The worktree is forked and ready. You open the session in it at the first exercise.
 
@@ -71,7 +71,7 @@ The worktree is forked and ready. You open the session in it at the first exerci
 
 ## Re-send the same task, packaged
 
-Now the re-send. Same task as Module 4, packaged this time. The prompt can be short because the packaging carries the context: the reference pins the goal, plan.md carries the state, the verifier carries the quality gate. The packaging does the explaining; the prompt invokes it.
+Now the re-send. Same task, packaged this time. The prompt can be short because the packaging carries the context: the reference pins the goal, plan.md carries the state, the verifier carries the quality gate. The packaging does the explaining; the prompt invokes it.
 
 **Session** *(new, "M5 long-run")*
 
@@ -91,13 +91,13 @@ Prefer to stay in the exercise session? Paste this to drop scrollback in-place:
 
 Either way, the re-send prompt below stands alone: Claude lists the worktree root and reads what it finds.
 
-Ask Claude to re-run the same Module 4 task using the reference, plan.md, and verifier you just built.
+Ask Claude to re-run the same task using the reference, plan.md, and verifier you just built.
 
 {{prompt:ae101-m5-rerun-packaged}}
 
-<!--flag:module:spot-gaps-build-the-loop-->The walk-away report at the close is what Module 6 opens on.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->The walk-away report at the close is the evidence this run leaves behind.<!--/flag:no-module:spot-gaps-build-the-loop--> RLHF will frame partial failures as partial successes, *"shipped most of it, hit a snag on X."* The contrast with the un-packaged M4 run depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. You decide whether to push.
+<!--flag:module:spot-gaps-build-the-loop-->The walk-away report at the close is what Module 6 opens on.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->The walk-away report at the close is the evidence this run leaves behind.<!--/flag:no-module:spot-gaps-build-the-loop--> RLHF will frame partial failures as partial successes, *"shipped most of it, hit a snag on X."* The contrast with the un-packaged run depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. You decide whether to push.
 
-The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). Same cancel-is-legit rule from Module 4: stopping when the trace is enough is the result. Manual nudges are part of the run; when nudging turns into typing every step, the agent isn't the agent any more, that's a result worth reading.
+The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). Same cancel-is-legit rule as the un-packaged run: stopping when the trace is enough is the result. Manual nudges are part of the run; when nudging turns into typing every step, the agent isn't the agent any more, that's a result worth reading.
 
 [Lecture: What packaging is](lectures/what-packaging-is.md)
 

@@ -4,17 +4,17 @@
 
 **Session** *(new, "Module 5 worktree session")*
 
-Open a new Claude Code session in the M5 worktree at `../<repo>-m5` (set up at module open).
+Open a new Claude Code session in the worktree at `../<repo>-m5` (set up at module open).
 
 ```
 /rename m5-diagnose-resend
 ```
 
-**HOX** You should be in the M5 worktree now. Make sure you are not continuing on the M4 repo or branch.
+**HOX** You should be in the worktree now. Make sure you are not continuing in the original repo or on its branch.
 
-**What you do:** Read the un-packaged M4 artefact through three failure-mode lenses. For each named failure, ask what validation would have caught it in minutes, not hours. Build a verifier shaped against your dominant failure (one of three shapes). Assemble a task-scoped reference artefact + plan.md in conversation. At Debrief, the module re-sends the same task packaged.
+**What you do:** Read the un-packaged artefact through three failure-mode lenses. For each named failure, ask what validation would have caught it in minutes, not hours. Build a verifier shaped against your dominant failure (one of three shapes). Assemble a task-scoped reference artefact + plan.md in conversation. At Debrief, the module re-sends the same task packaged.
 
-**What you build:** three pieces that make a failed run come back trustworthy: a verifier, a reference, and a plan.md. Each one is built against a specific failure you read in the M4 run.
+**What you build:** three pieces that make a failed run come back trustworthy: a verifier, a reference, and a plan.md. Each one is built against a specific failure you read in the un-packaged run.
 
 **The point:** a practitioner's pattern earns its name in this exercise. You don't learn it from a slide; you build each piece against a failure you read in your own artefact. The closing lecture names what you built afterward.
 
@@ -22,8 +22,8 @@ Open a new Claude Code session in the M5 worktree at `../<repo>-m5` (set up at m
 
 ## Phase 1: Read what the failed run did
 
-- You're diagnosing, not fixing. The un-packaged M4 run was supposed to underdeliver. What came back is data, not blame.
-- Two places hold the story. The repo's git history (commits on the `m4/<slug>` branch, files modified, branch state, all visible from the worktree) tells you *what* the agent did. The M4 session transcript, at the path recorded in `task.md`, tells you *how* it got there, drift and dead-ends included.
+- You're diagnosing, not fixing. The un-packaged run was supposed to underdeliver. What came back is data, not blame.
+- Two places hold the story. The repo's git history (commits on the `m4/<slug>` branch, files modified, branch state, all visible from the worktree) tells you *what* the agent did. That run's session transcript, at the path recorded in `task.md`, tells you *how* it got there, drift and dead-ends included.
 - You hold the three lenses. You are not holding the codebase. The agent reads that for you.
 
 Ask Claude to read the recorded transcript path from `task.md`.
@@ -79,7 +79,7 @@ Read what Claude proposes. Push back if the verifier covers the wrong shape (a g
 - The reference pins the task. Its success criteria, and pointers to the memory, skills, and connectors that matter.
 - plan.md is the agent's mutable working document. Not the plan-mode plan. This is what the agent re-reads when its window fills.
 
-Ask Claude to assemble both, scoped to the same M4 task, in conversation.
+Ask Claude to assemble both, scoped to the same task, in conversation.
 
 {{prompt:diagnose-and-resend-6}}
 
@@ -94,7 +94,7 @@ Ask Claude to assemble both, scoped to the same M4 task, in conversation.
 
 Say *lock it in.* The agent writes both files. Read the diffs.
 
-**What happened:** You ended the exercise with a diagnosis (named failures + quoted moments from your own artefact), a working verifier targeting one specific failure mode, and a reference artefact + plan.md scoped to the same M4 task. Each piece proved its place against a failure you read in your own artefact, not a slide.
+**What happened:** You ended the exercise with a diagnosis (named failures + quoted moments from your own artefact), a working verifier targeting one specific failure mode, and a reference artefact + plan.md scoped to the same task. Each piece proved its place against a failure you read in your own artefact, not a slide.
 
 The exercise ends here. The module's re-send is next: same task, with reference + plan.md + verifier all in play. The personal rules from M1<!--flag:module:earn-the-trust--> (and M3 if completed)<!--/flag:module:earn-the-trust--> carry forward via the worktree fork<!--flag:module:spot-gaps-build-the-loop-->; M6 will cut one stale rule once the contrast lands<!--/flag:module:spot-gaps-build-the-loop-->.
 

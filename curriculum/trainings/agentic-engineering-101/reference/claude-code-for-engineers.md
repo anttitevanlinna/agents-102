@@ -244,7 +244,7 @@ Use for polling during a work block, watching a build, monitoring a long-running
 
 **Routines / `/schedule` — remote (Anthropic's cloud).** Run `/schedule daily PR review at 9am` in the CLI (a one-off like `/schedule tomorrow at 9am …` works too), or sidebar: **Routines → New routine → choose Remote.** Runs on Anthropic's infra regardless of your laptop, on Pro/Max/Team/Enterprise with Claude Code on the web enabled. **Requires a GitHub repo** as working directory (cloned fresh each run) — AE101's default assumption is a local repo, so Routines is out-of-scope for core modules. Flag for later if your org has cloud-Git workflows. CLI `/schedule` creates scheduled triggers only; API and GitHub-event triggers are web-only. No catch-up on wake (the cloud doesn't sleep).
 
-**`/goal <condition>` — condition-driven autonomy.** Set a verifiable completion condition. Claude keeps working turn after turn until the condition holds, then stops. Status with bare `/goal`, stop with `/goal clear`. The runtime evaluates the condition against what showed up in the transcript, so the condition has to be demonstrable in chat. *"All tests pass"* works. *"Code is optimised"* doesn't (too subjective). Different shape from the three above: not scheduled, not interval-driven, condition-driven. The runtime-shipped sibling of the verifier students author at Module 5. Verified live 2026-05-15 against Claude Code 2.1.142.
+**`/goal <condition>` — condition-driven autonomy.** Set a verifiable completion condition. Claude keeps working turn after turn until the condition holds, then stops. Status with bare `/goal`, stop with `/goal clear`. The runtime evaluates the condition against what showed up in the transcript, so the condition has to be demonstrable in chat. *"All tests pass"* works. *"Code is optimised"* doesn't (too subjective). Different shape from the three above: not scheduled, not interval-driven, condition-driven. The runtime-shipped sibling of the verifier you author later in the training. Verified live 2026-05-15 against Claude Code 2.1.142.
 
 ### When each fits
 
@@ -267,15 +267,15 @@ The scheduler or condition invokes the skill. The skill is the thing that catche
 
 ### Session lifecycle — three gotchas
 
-Apply to any long-running session, scheduled or not. M4's un-packaged same-session send-off depends on these as much as a `/loop` or a `/goal` run does. Verified 2026-04-23.
+Apply to any long-running session, scheduled or not. The un-packaged same-session send-off depends on these as much as a `/loop` or a `/goal` run does. Verified 2026-04-23.
 
 1. **Laptop sleep freezes the session.** The Claude Code process pauses when the OS sleeps and does NOT resume on wake — you reopen Claude Code manually. For overnight runs, prevent sleep (`caffeinate -dims` on macOS; power-plan change on Linux/Windows). Don't close the lid.
 2. **Ctrl+C during a tool call can corrupt the session.** Interrupting cleanly between tool calls is fine; interrupting mid-tool can leave the session's `.jsonl` in a state that fails to resume. If the run genuinely needs stopping, wait for a tool call to finish, or accept that `/resume` may not work on that session.
 3. **No per-session budget cap.** Auto-compaction keeps context from ballooning, but there's no built-in token budget or time cap. A multi-hour agentic run can burn more than you expect. Watch the scrollback for drift; `stop when you've seen enough` is a real discipline.
 
-### M4/M5/M6 send-off implications
+### Send-off implications
 
-The un-packaged M4 send-off runs in the **same Claude Code session** (not `/loop`, not scheduled, not `/goal`). Laptop stays awake + plugged in (see module file for OS-specific power settings). Cancel mid-run is legitimate; traces are data. Scheduled agents and `/goal` are the generalisations M6 names as a callout, not authoring exercises.
+The un-packaged send-off runs in the **same Claude Code session** (not `/loop`, not scheduled, not `/goal`). Laptop stays awake + plugged in (see module file for OS-specific power settings). Cancel mid-run is legitimate; traces are data. Scheduled agents and `/goal` are named as a callout, not authoring exercises.
 
 Docs: [Desktop scheduled tasks](https://code.claude.com/docs/en/desktop-scheduled-tasks), [`/loop`](https://code.claude.com/docs/en/scheduled-tasks), [Routines](https://code.claude.com/docs/en/routines). Ctrl+C corruption is documented across [GitHub issues #3003, #17466, #18880](https://github.com/anthropics/claude-code/issues/3003) (checked 2026-05-25 — #3003 closed as duplicate, #17466/#18880 closed as not-planned; the corruption is documented, not resolved). #3003 documents `messages.N: tool_use ids were found without tool_result blocks` after mid-tool interrupt + `--resume`.
 
@@ -297,9 +297,9 @@ The encoded project path is the absolute working-directory path with `/` replace
 ~/.claude/projects/-Users-me-Projects-checkout/
 ```
 
-In a worktree, this matters. The transcript folder usually follows the working directory where that session ran. The original repo and the M5 worktree may have different encoded folders.
+In a worktree, this matters. The transcript folder usually follows the working directory where that session ran. The original repo and the worktree may have different encoded folders.
 
-Your current session knows its own transcript. The `CLAUDE_CODE_SESSION_ID` environment variable holds this session's id in Bash and PowerShell tool subprocesses, and the folder is the working directory encoded as above, so the full path is `~/.claude/projects/<encoded-cwd>/$CLAUDE_CODE_SESSION_ID.jsonl`. That makes the durable move recording, not searching: when a run will be read by a later session, write its transcript path down while you have it. The modules do this, recording the path into `task.md` (Module 4) and `plan.md` (Module 5) so the next session reads it instead of hunting.
+Your current session knows its own transcript. The `CLAUDE_CODE_SESSION_ID` environment variable holds this session's id in Bash and PowerShell tool subprocesses, and the folder is the working directory encoded as above, so the full path is `~/.claude/projects/<encoded-cwd>/$CLAUDE_CODE_SESSION_ID.jsonl`. That makes the durable move recording, not searching: when a run will be read by a later session, write its transcript path down while you have it. The modules do this, recording the path into `task.md` on the un-packaged run and `plan.md` on the packaged re-run, so the next session reads it instead of hunting.
 
 If you arrive at a run with no recorded path, you can still find its transcript by recency. Ask Claude to locate and read it; expect a narration before the findings, skim past the opening to the numbered list.
 
@@ -366,7 +366,7 @@ Docs: [cli-reference § system-prompt flags](https://code.claude.com/docs/en/cli
 
 ## 13. Hooks — runtime extension points
 
-A hook is a small script the runtime invokes on a named event. The script fires deterministically: the agent has no say in whether it runs. That property is what the M5 closer lecture names — *"hooks always fire"* — and what makes hooks the right home for anything that **must** happen versus what's **recommended** (prompts and `CLAUDE.md` rules carry the recommended layer).
+A hook is a small script the runtime invokes on a named event. The script fires deterministically: the agent has no say in whether it runs. That property is what the closing lecture on packaging names — *"hooks always fire"* — and what makes hooks the right home for anything that **must** happen versus what's **recommended** (prompts and `CLAUDE.md` rules carry the recommended layer).
 
 **Nine canonical events** (verified 2026-05-15 against Claude Code 2.1.142 — five via this repo's working `.claude/settings.json` configs, four via the CLI's own hook-event listing):
 
@@ -438,7 +438,7 @@ The hook script receives JSON on stdin (event metadata, tool name + args for too
 | Something that **must** happen on every event (verifier always runs, formatter always fires, secret never leaks) | **Hook** |
 | Something Claude should consider but can override based on context (style preference, naming convention, suggested approach) | **`CLAUDE.md` rule** |
 | A reusable move Claude invokes on demand (security review, threat-model walk, test-strategy authoring) | **Skill** |
-| A check loop that re-runs until a condition holds | **`/goal`** (§ 9) or **Ralph re-feed verifier** (M5) |
+| A check loop that re-runs until a condition holds | **`/goal`** (§ 9) or **Ralph re-feed verifier** |
 | An event-driven sequence Claude orchestrates within one turn | Tool calls inside Claude's response — no hook needed |
 
 **Debugging hooks that don't fire:** run `claude --debug hooks` to see hook-loading and event-firing logs. Useful when `/memory` confirms the config is loaded but the hook still isn't running on the expected event.

@@ -9,7 +9,7 @@ The scoped task you picked as homework.
 
 **A real slice you'd send off rather than nudge bit by bit, with a 'done' you can name in a sentence. Bigger than a typo-fix, smaller than an epic.**
 
-Come to Module 4 without having picked the task and you'll be scrambling for one while the room is already running theirs. Your call.
+Come without having picked the task and you'll be scrambling for one while the room is already running theirs. Your call.
 
 Optional forward-look: [What is agentic engineering](trainings/agentic-engineering-101/supplementary/what-is-agentic-engineering.md). And when your sessions start running heavy, [Token efficiency](trainings/agentic-engineering-101/supplementary/token-efficiency.md) on keeping the context window lean.
 
@@ -52,11 +52,11 @@ The run is about to leave your hands. Before it does, the trap that earned trust
 
 [Lecture: The ironies of automation](lectures/ironies-of-automation.md)
 
-No compound pass at the close. The send-off is the close of the work. Your rules files, memory, ADRs, and skills are what they are; the agent runs against them as they stand. Whatever needs sharpening will surface on the return at Module 5, when you can see what the system actually produced. Compound on evidence, not anticipation.
+No compound pass at the close. The send-off is the close of the work. Your rules files, memory, ADRs, and skills are what they are; the agent runs against them as they stand. Whatever needs sharpening will surface on the return, when you can see what the system actually produced. Compound on evidence, not anticipation.
 
-Before you send, set up the two markers you'll return to in Module 5.
+Before you send, set up the two markers you'll return to.
 
-First, the record of this run. Claude Code keeps a full transcript of every session on disk, the complete scrollback, written live and automatically. Find yours now; at Module 5 you'll point a fresh session straight at it.
+First, the record of this run. Claude Code keeps a full transcript of every session on disk, the complete scrollback, written live and automatically. Find yours now; on the return you'll point a fresh session straight at it.
 
 Ask Claude where the record of this session lives.
 
@@ -68,7 +68,7 @@ Ask Claude to commit current state on a feature branch, record the coordinates, 
 
 {{prompt:ae101-m4-commit-starting-point}}
 
-The starting-point commit is local, and that's the default. This experiment is throwaway work you can reset away. Module 5 forks from the local commit, so nothing later needs a push.
+The starting-point commit is local, and that's the default. This experiment is throwaway work you can reset away. The return forks from the local commit, so nothing later needs a push.
 
 Optional: if you want the run to outlast your laptop or to hand it to someone, ask Claude to push the branch and set its upstream.
 
@@ -99,7 +99,7 @@ Before you close: read [Reading the return](lectures/reading-the-return.md). It 
 
 ## Next
 
-Module 5 opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this run lives, so when the next slot lands a fresh session reads it straight from `task.md`, no hunting through past sessions. Transcripts persist on disk regardless; see [Claude Code for engineers, session transcripts](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for what they hold. Close the session once the run is done; the trace is on disk.
+The next session opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this run lives, so when the next slot lands a fresh session reads it straight from `task.md`, no hunting through past sessions. Transcripts persist on disk regardless; see [Claude Code for engineers, session transcripts](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for what they hold. Close the session once the run is done; the trace is on disk.
 
 ## Bring to Module 5
 
@@ -109,15 +109,15 @@ Come to Module 5 without a run and you'll be scrambling for material while the r
 
 ## Pre-reads before Module 5
 
-Optional. They sit in the Module 4 to Module 5 gap while your un-packaged run is still going. All four point at the same surprise: the effort in agent work sits in the framing and the checking, not the typing. Module 5 picks this up from your own run.
+Optional. They sit in the gap while your un-packaged run is still going. All four point at the same surprise: the effort in agent work sits in the framing and the checking, not the typing. The next session picks this up from your own run.
 
-**Read, [Clean Code Is Steering: Insights from Uncle Bob](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md).** Uncle Bob's public learning journey with AI coding: early speed, mercury-like unpredictability, then tests, architecture visibility, and formal constraints as steering. It moves the question from "the agent ran" to "what would have constrained the drift?", the question Module 5 asks of your run.
+**Read, [Clean Code Is Steering: Insights from Uncle Bob](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md).** Uncle Bob's public learning journey with AI coding: early speed, mercury-like unpredictability, then tests, architecture visibility, and formal constraints as steering. It moves the question from "the agent ran" to "what would have constrained the drift?", the question you'll put to your own run next.
 
-**Watch, Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich).** Interview video and write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. Module 5 shows you the same split in your own run.
+**Watch, Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich).** Interview video and write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. You'll find the same split in your own run.
 
 **Read, [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md).** Some tasks are far cheaper to check than to do, and delegation pays exactly there. The verifier built next is often worth more than the run it checks.
 
-**Read (longer), Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).** The four-step loop (plan, work, review, compound). The weight sits on planning and review, and that is where Module 5 spends its hour.
+**Read (longer), Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).** The four-step loop (plan, work, review, compound). The weight sits on planning and review, and that is where the next hour goes.
 
 <!-- maintainer -->
 

@@ -38,7 +38,7 @@ Ask Claude to sweep the session for anything earned since the first compound and
 
 **What happened:** Your rules file was born from how you actually worked, not from a template. Claude reviewed the whole session, you pushed back where it misread, and the rules that held landed in `./CLAUDE.local.md`.
 
-The PR is open and the rules file is written from session evidence. The loop's last move, closing the bug's ticket outside the repo, is the Module 1 homework.
+The PR is open and the rules file is written from session evidence. The loop's last move, closing the bug's ticket outside the repo, is the homework.
 
 You can close this session now. `./CLAUDE.local.md` stays behind; whether it earns its keep shows up the next time a session reads it.
 

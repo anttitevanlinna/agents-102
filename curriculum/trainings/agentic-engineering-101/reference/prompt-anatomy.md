@@ -296,7 +296,7 @@ Example: `author-test-strategy-skill-1`, `spot-gaps-build-the-loop-3`.
 ### The multi-perspective synthesis
 *Parallel-stance dispatch + don't smooth disagreement + source-or-flag.*
 
-Fires when strategic questions need triangulation rather than a single answer. *Spawn three subagents with named stances. Read the three reads side by side. Name where they disagreed and which one you sided with. Cite every claim or mark `[NOT FOUND]`.* The Agents 101 backbone at M3. The three moves work as a unit: independent sampling, preserved dissent, sourced claims. Drop any one and the method collapses to elaborate-sounding self-confirmation.
+Fires when strategic questions need triangulation rather than a single answer. *Spawn three subagents with named stances. Read the three reads side by side. Name where they disagreed and which one you sided with. Cite every claim or mark `[NOT FOUND]`.* The Agents 101 backbone. The three moves work as a unit: independent sampling, preserved dissent, sourced claims. Drop any one and the method collapses to elaborate-sounding self-confirmation.
 
 Example: `three-minds-one-synthesis-1`, `three-retrievers-one-curator-1`, `self-consistency-after-scoreboard-1`.
 

@@ -11,9 +11,9 @@ Surface one multi-file backlog task in the repo you used for Module 1. Criteria:
 
 **Just a simple task that spans a few files. Not an epic.**
 
-Come to Module 2 without a surfaced task and you'll be scrambling to find one while the room is already in plan mode. Your call.
+Come without a surfaced task and you'll be scrambling to find one while the room is already in plan mode. Your call.
 
-Optional reading in the Module 1 to Module 2 gap: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0); [Multi-session and Git: survival guide](../../trainings/agentic-engineering-101/reference/multi-session-git.md). If you like a lookup page nearby, [plan mode at depth in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#5-plan-mode-at-depth) has the approval paths in one table.
+Optional reading in the gap before this one: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0); [Multi-session and Git: survival guide](../../trainings/agentic-engineering-101/reference/multi-session-git.md). If you like a lookup page nearby, [plan mode at depth in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#5-plan-mode-at-depth) has the approval paths in one table.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -45,7 +45,7 @@ Everyone names a moment first; *When a plan is good* names the pattern.
 
 ## Save the rule if it earned itself
 
-The full compound move ran at M1. M2's is opportunistic. Before saving, ask Claude whether anything from this session has made it to auto-load yet.
+The full compound move ran at M1. This one is opportunistic. Before saving, ask Claude whether anything from this session has made it to auto-load yet.
 
 {{prompt:push-back-on-the-plan-4}}
 

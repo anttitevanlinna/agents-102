@@ -92,6 +92,37 @@
                 { slug: 'earn-the-trust',            title: 'Earn the trust' }
             ]
         },
+        // Team-track variant of Agentic Engineering 101: four sittings, running
+        // AE101 modules 1, 2, 4 and 5 unmodified. AE101 M3 (`earn-the-trust`) is
+        // dropped and M6 (`spot-gaps-build-the-loop`) becomes a customer-authored
+        // workshop; workshops slot between the sittings and are not ours. Same
+        // `contentKey` mechanism as the preview cut above — file resolution points
+        // at the canonical AE101 content dir, so prework, supplementaries and
+        // references are inherited one copy each and a fix to a shared artefact
+        // reaches every variant. Only the module list, label and lede are its own.
+        //
+        // No `prework:` override: this variant receives AE101's own prework page,
+        // which frames six modules, four task sizes and installs the curated
+        // security skills of the module this track drops. That is deliberate, and
+        // it is the highest-visibility entry in the gaps inventory that sits beside
+        // the module files in `curriculum/trainings/agentic-engineering-101/`. That
+        // document lists everywhere plain AE101 does not fit this cut, and the
+        // seams a customer-authored workshop has to be written against. Read it
+        // before changing anything here.
+        //
+        // Build student-facing:
+        // node scripts/build-workbook.js northwind agentic-engineering-101-northwind --no-trainer-docs
+        'agentic-engineering-101-northwind': {
+            contentKey: 'agentic-engineering-101',
+            label: 'Agentic Engineering 101 — Team Track',
+            lede: 'Four modules for software engineers, with team workshops between them. Learn the new loop on your own repo, then take it to your team.',
+            modules: [
+                { slug: 'getting-going',             title: 'Getting going + context' },
+                { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
+                { slug: 'run-the-first-experiment',  title: 'Run the first experiment' },
+                { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' }
+            ]
+        },
         'claude-basics': {
             label: 'Claude Basics',
             lede: 'A 3-hour live workshop for people helping their organisation roll out Claude. See the system, find the crux, then build and verify in your own folder.',

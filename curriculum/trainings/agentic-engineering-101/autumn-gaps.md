@@ -935,6 +935,33 @@ the audit that would confirm the slides still hold has not been run since they c
 paying for a four-sitting engagement receives sixteen projected lectures, fifteen of which carry an open
 quality action their own maintainer blocks declare.
 
+**Enlarged by this session, 2026-07-28, and stated rather than left to be discovered.** Closing gaps 2,
+5, 6, 7, 9, 11, 12, 14, 15, 16, 19, 20 and 21 touched **18 student-facing files** whose Quality lines
+carry per-class SHAs from before those edits. Nothing was re-stamped, because re-stamping without
+re-running the judges is the one move that turns this ledger into fiction:
+
+```
+exercises/            diagnose-and-resend · share-your-work · walk-and-send-off
+lectures/             the-far-half · the-loop-half-filled · the-whole-map
+prompts/              ae101-prework-extract-and-install
+trainings/…/          getting-going · learn-from-the-test · plan-mode-done-right · prework
+                      run-the-first-experiment
+  reference/          prompt-anatomy
+  supplementary/      build-a-project-from-zero · how-the-best-do-ci-cd · skill-stacking
+                      the-lethal-trifecta · workflow-composition-lineages
+```
+
+Most edits are subtractions or single clauses, which is the cheap end of a re-audit. Two are not, and
+should lead the run: *Back to the map, one last time* is newly authored prose (gap 9), and
+`learn-from-the-test`'s worktree beat gained a paragraph (gap 14). The `slides` class is the one to watch
+— several edits changed what a projected chunk says, and one added a chunk.
+
+**A second thing the battery should now check, which it could not before.** Judges read source files, and
+source files now carry flag markers, so a judge reading `plan-mode-done-right.md` sees *both* branches of
+every flagged passage at once. That is not what either cohort is shown. Fire the battery against the
+**built** variant page where the class allows it, or the judge will keep flagging contradictions that no
+student can see.
+
 **Who could close it.** Maintainer, and it is a battery run rather than an authoring job: re-fire the
 seven-class judges on the sixteen and re-stamp. It is not created by this cut and it is not made worse
 by it — canonical AE101 carries the same debt on the same files. It reaches this track because the track

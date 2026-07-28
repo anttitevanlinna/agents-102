@@ -158,6 +158,21 @@ test('module and no-module flags on the same slug are exclusive', () => {
   assert.equal(applyContentFlags(src, undefined, ['other']), 'handle it here');
 });
 
+test('an unclosed module marker throws rather than shipping', () => {
+  // The guard has to cover every name the matcher accepts. A module marker
+  // carries a colon and may carry digits, so a guard narrower than the matcher
+  // lets exactly the newest marker family through: the passage never resolves
+  // and the raw comment ships into the page, invisible until someone reads the
+  // HTML.
+  const orphaned = 'Intro.\n\n<!--flag:module:earn-the-trust-->\n\nHomework.\n';
+  assert.throws(() => applyContentFlags(orphaned, undefined, ['earn-the-trust']),
+                /Unbalanced content-flag marker/);
+  assert.throws(() => applyContentFlags('A.<!--/flag:no-module:m6-->B.', undefined, ['m6']),
+                /Unbalanced content-flag marker/);
+  assert.throws(() => applyContentFlags('A.<!--flag:module:m6-->B.', undefined, ['m6']),
+                /Unbalanced content-flag marker/);
+});
+
 test('module and capability flags coexist in one file', () => {
   const mixed = 'Keep.<!--flag:payload--> payload bit.<!--/flag:payload-->' +
                 '<!--flag:module:gone--> module bit.<!--/flag:module:gone-->';

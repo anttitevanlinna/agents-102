@@ -15,7 +15,7 @@
 ## The attacker targets the agent, not the system
 
 - Classic threat modeling asks who attacks the system you are building. This asks who attacks the agent building it. The target moves from your feature's endpoints to the context window of the agent that ships them.
-- The two audits compose. An access-surface map and a STRIDE pass on the feature still hold; the trifecta adds the row the classic frame doesn't have. STRIDE models attacks on the system; the trifecta models attacks through the agent.
+- The two audits compose. <!--flag:module:earn-the-trust-->The access-surface map and the STRIDE pass you ran on the feature<!--/flag:module:earn-the-trust--><!--flag:no-module:earn-the-trust-->An access-surface map and a STRIDE pass on the feature<!--/flag:no-module:earn-the-trust--> still hold; the trifecta adds the row the classic frame doesn't have. STRIDE models attacks on the system; the trifecta models attacks through the agent.
 - An accident model is not an adversary model. Sandboxes and permission prompts bound what the agent can break by mistake; the trifecta bounds what an attacker can make it do on purpose. A deployment needs both bounds, and they are set by different levers.
 
 ## Removing any one leg breaks the trifecta

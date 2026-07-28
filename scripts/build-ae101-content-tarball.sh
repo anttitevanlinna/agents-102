@@ -57,6 +57,12 @@ trap 'rm -rf "$STAGE"' EXIT
 ROOT="$STAGE/content"
 mkdir -p "$ROOT/lectures" "$ROOT/exercises" "$ROOT/reference" "$ROOT/supplementary" "$ROOT/content/skills"
 
+# Training key whose cut this tarball is for. Content flags resolve against its
+# modules list, so the student's local copy carries one branch of each flagged
+# passage, the same one their workbook page shows. Shipping the markers raw
+# would put both branches in a file they open.
+TRAINING_KEY="agentic-engineering-101"
+
 # Strip maintainer blocks: everything from `<!-- maintainer -->` to end-of-file
 # is trainer-only and shouldn't ship to the agent's local context. Tarball-
 # shipped .md files keep `{{prompt:<key>}}` markers verbatim — the prompt
@@ -65,7 +71,8 @@ mkdir -p "$ROOT/lectures" "$ROOT/exercises" "$ROOT/reference" "$ROOT/supplementa
 strip_maintainer() {
   local src="$1"
   local dst="$2"
-  awk '/<!-- maintainer -->/{exit} {print}' "$src" > "$dst"
+  awk '/<!-- maintainer -->/{exit} {print}' "$src" \
+    | node scripts/resolve-content-flags.js "$TRAINING_KEY" > "$dst"
 }
 
 copy_md_dir() {

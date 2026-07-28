@@ -2030,12 +2030,14 @@ main::before {
    Workbook stacks N modules vertically; flip the layout. */
 body.workbook main {
     flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     gap: 0;
     padding: 4rem 1.5rem 6rem;
 }
 body.workbook .workbook-cover,
 body.workbook .workbook-toc {
+    width: 100%;
     max-width: 40em;
     margin-left: auto;
     margin-right: auto;
@@ -2048,7 +2050,7 @@ body.workbook .workbook-toc {
 .workbook-cover {
     text-align: center;
     padding: 5rem 0 3rem;
-    border-bottom: 1px solid var(--rule);
+    border-bottom: 1px solid var(--line);
     margin-bottom: 3rem;
 }
 .workbook-cover .eyebrow {
@@ -2059,14 +2061,14 @@ body.workbook .workbook-toc {
     margin: 0 0 0.5rem;
 }
 .workbook-cover h1.cover-title {
-    font-family: 'Roboto Slab', Georgia, serif;
+    font-family: var(--font-display);
     font-weight: 200;
     font-size: 3.5rem;
     margin: 0.5rem 0 1rem;
     letter-spacing: -0.02em;
 }
 .workbook-cover .lede {
-    font-family: 'EB Garamond', Georgia, serif;
+    font-family: var(--font-serif);
     font-style: italic;
     font-size: 1.25rem;
     color: var(--ink-muted);
@@ -2076,14 +2078,14 @@ body.workbook .workbook-toc {
 .workbook-toc {
     margin: 0 0 4rem;
     padding: 1.5rem 0;
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
 }
 .workbook-toc h2 {
     margin: 0 0 1rem;
     border: none;
     padding: 0;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -2096,8 +2098,15 @@ body.workbook .workbook-toc {
 }
 .workbook-toc li {
     margin: 0.4em 0;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
 }
+.workbook-toc a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-soft);
+    transition: border-color 0.15s;
+}
+.workbook-toc a:hover { border-bottom-color: var(--accent); }
 
 body.workbook main > section.module {
     margin-top: 9.25rem;
@@ -2121,11 +2130,11 @@ body.workbook main > section.module > .module-hero {
     width: min(100%, 52rem);
     margin: 0 auto 4.75rem;
     padding: 5.25rem 1.5rem 4.25rem;
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
     background:
         linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.18)),
-        var(--paper);
+        var(--bg);
 }
 
 body.workbook main > section.module > .module-hero .module-hero-num {
@@ -2194,7 +2203,7 @@ body.workbook .phase {
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     color: var(--ink-text);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.85rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -4166,7 +4175,7 @@ Then, separately: if one rule about how I worked with security skills, wrote ADR
 <p>Start a new Claude Code session at your repo root.</p>
 <pre><code>/rename m4-walk-send
 </code></pre>
-<p>Start clean. This sitting picks up a bigger task than anything so far. Before the new session, check your working tree and branch. You ride that state into the closing <code>m4/&lt;slug&gt;</code> commit and M5&#39;s fork.</p>
+<p>Start clean. The task here is bigger than anything so far. Before the new session, check your working tree and branch. You ride that state into the closing <code>m4/&lt;slug&gt;</code> commit and M5&#39;s fork.</p>
 <p><strong>What you do:</strong> Pick a task you&#39;ve been avoiding, the kind you&#39;d send off rather than nudge bit by bit. Walk what you&#39;ve built so far against it. Fill the worst gaps and settle your <code>observations/</code> tree on disk. At the close, send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you&#39;ve seen enough.</p>
 <p><strong>What you build:</strong> two things a long run can ride: a scoped task with a &#39;done&#39; you can name in a sentence, and the worst gaps filled in <code>observations/</code> and your rules file, with the <code>observations/</code> tree settled on disk. Then it goes off un-packaged.</p>
 <p><strong>The point:</strong> This is the first experiment of a two-run arc. The un-packaged send-off here teaches Module 5 what packaging adds, a lesson no lecture can land. Every send-off is a test, not a production run; you are testing and you are learning.</p>
@@ -4306,7 +4315,7 @@ For each picked gap, propose a resolution in the shape the audit named, hear my 
 <p><strong>Prompt</strong> <em>(Claude Code, optional)</em></p>
 <pre><code>Push the current branch and set its upstream.
 </code></pre>
-<p>One more check before the send, three questions pointed at this run: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening prompt injection needs, and a run this long reads far more than you&#39;ll watch. All three present here, cut one leg before you paste: read-only where write isn&#39;t needed, hold the push until you&#39;ve read the return, an allowlist where the run needs the web. The frame is <a href="#supplementary-the-lethal-trifecta">The lethal trifecta</a>: three legs, cut one.</p>
+<p>One more check before the send, the same three questions from Module 3&#39;s close, now pointed at this run: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening prompt injection needs, and a run this long reads far more than you&#39;ll watch. All three present here, cut one leg before you paste: read-only where write isn&#39;t needed, hold the push until you&#39;ve read the return, an allowlist where the run needs the web. The frame is <a href="#supplementary-the-lethal-trifecta">The lethal trifecta</a>: three legs, cut one.</p>
 <p>Ask Claude to run the scoped task end-to-end in this same session, with your rules files, memory, ADRs, and skills loaded.</p>
 <p><strong>Prompt</strong> <em>(Claude Code, final move of the module)</em></p>
 <pre><code>I want you to take the task we scoped earlier in this session end to end. Work from the rules I&#39;ve set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the observations at `./observations/`, the ADRs, and the skills available by name in this session. That&#39;s everything you have. Go.
@@ -5814,7 +5823,7 @@ The prompt runs later in a cold session, so bake in what that session won&#39;t 
 <li>Open the page and play. The first thing that looks wrong or feels missing is your Module 1 bug.</li>
 <li>Ask Claude to add a small test suite so the game has real tests to break and guard.</li>
 <li>Ask Claude to commit at each working step, so the repo grows real history instead of one big drop.</li>
-<li>Before you close the session, ask Claude to add one feature that touches data or other players: a shareable level via a URL, a score you submit, or saved progress. A game that only draws to a canvas has one kind of surface; one that stores or shares something has several, and the later task sizes want somewhere real to land.</li>
+<li>Before you close the session, ask Claude to add one feature that touches data or other players: a shareable level via a URL, a score you submit, or saved progress. That surface is what Module 3 reads when you map access control and run STRIDE against it. A toy game with no data has nothing to threat-model.</li>
 </ul>
 <h2 id="where-the-four-task-sizes-come-from">Where the four task sizes come from</h2>
 <p>Same four sizes as the <a href="../prework.md">prework</a>, now sourced from the game&#39;s own backlog:</p>
@@ -5847,7 +5856,7 @@ The prompt runs later in a cold session, so bake in what that session won&#39;t 
 <h2 id="the-attacker-targets-the-agent-not-the-system">The attacker targets the agent, not the system</h2>
 <ul>
 <li>Classic threat modeling asks who attacks the system you are building. This asks who attacks the agent building it. The target moves from your feature&#39;s endpoints to the context window of the agent that ships them.</li>
-<li>The two audits compose. An access-surface map and a STRIDE pass on the feature still hold; the trifecta adds the row the classic frame doesn&#39;t have. STRIDE models attacks on the system; the trifecta models attacks through the agent.</li>
+<li>The two audits compose. The access-surface map and the STRIDE pass you ran on the feature still hold; the trifecta adds the row the classic frame doesn&#39;t have. STRIDE models attacks on the system; the trifecta models attacks through the agent.</li>
 <li>An accident model is not an adversary model. Sandboxes and permission prompts bound what the agent can break by mistake; the trifecta bounds what an attacker can make it do on purpose. A deployment needs both bounds, and they are set by different levers.</li>
 </ul>
 <h2 id="removing-any-one-leg-breaks-the-trifecta">Removing any one leg breaks the trifecta</h2>
@@ -7791,7 +7800,9 @@ git stash pop
     // the passage that mentions it belongs inside the same flag — so it throws
     // rather than shipping a page pointing at a step that is not there.
     function applyContentFlags(md, flags, moduleSlugs) {
-        if (md.indexOf('<!--flag:') === -1) return md;
+        // An orphaned CLOSING marker has to reach the guard too, or the cheap
+        // exit hands it straight through into the page.
+        if (md.indexOf('<!--flag:') === -1 && md.indexOf('<!--/flag:') === -1) return md;
 
         var present = moduleSlugs || [];
         var removed = [];
@@ -7823,7 +7834,9 @@ git stash pop
             }
         );
 
-        var unclosed = out.match(/<!--\/?flag:[a-z-]+-->/);
+        // Same name class as the matcher above, or the guard misses exactly the
+        // markers the matcher accepts but could not pair.
+        var unclosed = out.match(/<!--\/?flag:[a-z0-9:-]+-->/);
         if (unclosed) throw new Error('Unbalanced content-flag marker: ' + unclosed[0]);
         if (!removed.length) return out;
 

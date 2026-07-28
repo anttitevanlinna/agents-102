@@ -13,7 +13,7 @@ You'll build a small Lemmings game in the browser (the 1991 classic: little crea
 - Open the page and play. The first thing that looks wrong or feels missing is your Module 1 bug.
 - Ask Claude to add a small test suite so the game has real tests to break and guard.
 - Ask Claude to commit at each working step, so the repo grows real history instead of one big drop.
-- Before you close the session, ask Claude to add one feature that touches data or other players: a shareable level via a URL, a score you submit, or saved progress. A game that only draws to a canvas has one kind of surface; one that stores or shares something has several, and the later task sizes want somewhere real to land.
+- Before you close the session, ask Claude to add one feature that touches data or other players: a shareable level via a URL, a score you submit, or saved progress. <!--flag:module:earn-the-trust-->That surface is what Module 3 reads when you map access control and run STRIDE against it. A toy game with no data has nothing to threat-model.<!--/flag:module:earn-the-trust--><!--flag:no-module:earn-the-trust-->A game that only draws to a canvas has one kind of surface; one that stores or shares something has several, and the later task sizes want somewhere real to land.<!--/flag:no-module:earn-the-trust-->
 
 ## Where the four task sizes come from
 

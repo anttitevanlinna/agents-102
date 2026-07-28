@@ -10,7 +10,7 @@ Start a new Claude Code session at your repo root.
 /rename m4-walk-send
 ```
 
-Start clean. This sitting picks up a bigger task than anything so far. Before the new session, check your working tree and branch. You ride that state into the closing `m4/<slug>` commit and M5's fork.
+Start clean. The task here is bigger than anything so far. Before the new session, check your working tree and branch. You ride that state into the closing `m4/<slug>` commit and M5's fork.
 
 **What you do:** Pick a task you've been avoiding, the kind you'd send off rather than nudge bit by bit. Walk what you've built so far against it. Fill the worst gaps and settle your `observations/` tree on disk. At the close, send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
 

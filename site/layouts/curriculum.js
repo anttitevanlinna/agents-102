@@ -438,7 +438,9 @@
     // the passage that mentions it belongs inside the same flag — so it throws
     // rather than shipping a page pointing at a step that is not there.
     function applyContentFlags(md, flags, moduleSlugs) {
-        if (md.indexOf('<!--flag:') === -1) return md;
+        // An orphaned CLOSING marker has to reach the guard too, or the cheap
+        // exit hands it straight through into the page.
+        if (md.indexOf('<!--flag:') === -1 && md.indexOf('<!--/flag:') === -1) return md;
 
         var present = moduleSlugs || [];
         var removed = [];
@@ -470,7 +472,9 @@
             }
         );
 
-        var unclosed = out.match(/<!--\/?flag:[a-z-]+-->/);
+        // Same name class as the matcher above, or the guard misses exactly the
+        // markers the matcher accepts but could not pair.
+        var unclosed = out.match(/<!--\/?flag:[a-z0-9:-]+-->/);
         if (unclosed) throw new Error('Unbalanced content-flag marker: ' + unclosed[0]);
         if (!removed.length) return out;
 

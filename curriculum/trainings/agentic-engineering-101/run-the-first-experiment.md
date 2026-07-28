@@ -74,7 +74,7 @@ Optional: if you want the run to outlast your laptop or to hand it to someone, a
 
 {{prompt:ae101-m4-push-starting-point}}
 
-One more check before the send, three questions pointed at this run: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening prompt injection needs, and a run this long reads far more than you'll watch. All three present here, cut one leg before you paste: read-only where write isn't needed, hold the push until you've read the return, an allowlist where the run needs the web. The frame is [The lethal trifecta](trainings/agentic-engineering-101/supplementary/the-lethal-trifecta.md): three legs, cut one.
+One more check before the send, <!--flag:module:earn-the-trust-->the same three questions from Module 3's close, now pointed at this run<!--/flag:module:earn-the-trust--><!--flag:no-module:earn-the-trust-->three questions pointed at this run<!--/flag:no-module:earn-the-trust-->: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening prompt injection needs, and a run this long reads far more than you'll watch. All three present here, cut one leg before you paste: read-only where write isn't needed, hold the push until you've read the return, an allowlist where the run needs the web. The frame is [The lethal trifecta](trainings/agentic-engineering-101/supplementary/the-lethal-trifecta.md): three legs, cut one.
 
 Ask Claude to run the scoped task end-to-end in this same session, with your rules files, memory, ADRs, and skills loaded.
 

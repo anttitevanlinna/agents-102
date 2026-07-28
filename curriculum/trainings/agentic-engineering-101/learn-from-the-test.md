@@ -103,7 +103,18 @@ The laptop stays awake and plugged in while it runs (power settings → prevent 
 
 [Lecture: The gate is a claim too](lectures/the-gate-is-a-claim.md)
 
-<!--flag:module:spot-gaps-build-the-loop-->
+<!--flag:no-module:spot-gaps-build-the-loop-->
+## Back to the map, one last time
+
+The map at sitting 2 had an edge nobody explained. A dashed line down the right side, `THE TEAM` beyond it, and along the bottom, in italics: *a move counts when it crosses the wall*.
+
+**The wall** is the line between what works for you and what works for someone else. A rule in your own `CLAUDE.local.md` sits on your side of it. The same rule in a repo's `CLAUDE.md`, loading into a teammate's session whether they asked for it or not, has crossed.
+
+Everything built in these four sittings is on your side. The rules file, the observations, the verifier, the reference, the plan. That is the right order and not a shortfall: prove it on yourself, then promote. A rule promoted before it works on you is a rule your team has to live with, and a habit that never crosses stays yours alone.
+
+The map's near half is where a single loop runs and compounds. The far half is where runs get long and you build the checks that let them. The right edge is what happens after both work: the crossing. You have run the loop and built the checks. What crosses, and how, is the question the map has been pointing at since sitting 2.
+
+<!--/flag:no-module:spot-gaps-build-the-loop--><!--flag:module:spot-gaps-build-the-loop-->
 ## Next
 
 Module 6 reads the packaged run. Subtler misses, subtler drift. Your verifier turns out to be one of three eval shapes, and the team kit takes its first inherited skill. The question changes scale too: Module 5 asked *did my run pass?* Module 6 starts asking *do all our runs pass, and who reviewed what?*

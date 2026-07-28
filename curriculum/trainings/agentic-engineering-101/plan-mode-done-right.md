@@ -75,7 +75,11 @@ Read the conventions your tracker already encodes: [Read the rules hiding in a t
 
 <!--flag:module:earn-the-trust-->At M3, the same move goes into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch a second read surfaces, before a teammate needs to ask. And the move itself turns out to be packageable as a skill; you author your first one there.
 
-<!--/flag:module:earn-the-trust--><!--flag:module:earn-the-trust-->Ask Claude where it wrote the plan file, note the path; M3 reads it. <!--/flag:module:earn-the-trust-->Close this session when the second read lands.<!--flag:module:earn-the-trust--> M3 opens fresh and runs security skills against the M2 feature; if it doesn't have an external or user-facing surface, swap to something from your backlog that does.
+<!--/flag:module:earn-the-trust--><!--flag:module:earn-the-trust-->Ask Claude where it wrote the plan file, note the path; M3 reads it. <!--/flag:module:earn-the-trust-->Close this session when the second read lands.<!--flag:no-module:earn-the-trust-->
+
+**Pick one scoped task you'd send off rather than nudge bit by bit: a real slice with a *done* you can name in a sentence. Bigger than a typo-fix, smaller than an epic.**
+
+The next sitting opens on that task and spends most of its time walking your system against it. Come without one and you'll be picking while the room is already walking. Your call.<!--/flag:no-module:earn-the-trust--><!--flag:module:earn-the-trust--> M3 opens fresh and runs security skills against the M2 feature; if it doesn't have an external or user-facing surface, swap to something from your backlog that does.
 
 Come to Module 3 without that noted path and a feature to point the skills at, and you'll be scrambling to reconstruct one while the room is already running STRIDE. Your call.<!--/flag:module:earn-the-trust-->
 

@@ -249,6 +249,22 @@ risk.
 by name at sitting 4's worktree fork, so renaming it means editing `learn-from-the-test.md` and
 `ae101-m5-worktree-setup` in the same pass. A trainer cannot paper over a slug the student types.
 
+**Split 2026-07-28: the count claim fixed, the slug namespace accepted.**
+
+The half that was doing real harm is gone. *"Walk what you've built across four modules against it"* is
+now *"walk what you've built so far against it"*, in the exercise body and in its `**What happened:**`
+recap. That line was the one the gap's own room-analysis flagged as costly: a student whose audit comes
+back thin reads it as personal failure rather than as the correct result for the sittings they have
+actually had. Note it was wrong in canonical AE101 too — at sitting 4 an AE101 student has *three*
+modules behind them, not four.
+
+The `m4/<slug>` branch, the `/rename m4-walk-send` session name and the `../<repo>-m5` worktree are kept.
+`check_prompts §32` treats module-numbered artefact namespaces as deliberate: they ground the agent, and
+branch, worktree and transcript slug are one namespace matched by name across two module files and a
+gated prompt. Renaming buys a cosmetic improvement — the student types `m4` at their third sitting — and
+pays for it by breaking a documented convention in three places at once. Accepted; trainer-script
+one-liner if a room asks.
+
 ---
 
 ## 7. Sitting 2 closes by sending the student to prepare for the dropped security module
@@ -358,6 +374,22 @@ team-level compounding, and the promise is drawn on the slide with no sentence b
 commission a consolidation beat at the end of sitting 4. The wall explanation is roughly one slide
 (~120 words); the deleted fork's second slide is a working draft of it.
 
+**Closed 2026-07-28 with the second option, authored fresh.** *Back to the map, one last time* now sits
+at the end of sitting 4, behind `no-module:spot-gaps-build-the-loop`, so it appears only in cuts that
+lack the module whose closer would otherwise fill the map in. AE101 is untouched and keeps
+`the-map-filled-in`.
+
+It does both halves of this gap at once. The map gets closed rather than left half-drawn, and the right
+edge finally gets its sentence: **the wall** is the line between what works for you and what works for
+someone else, a rule in your own `CLAUDE.local.md` is on your side of it, the same rule in a repo's
+`CLAUDE.md` has crossed. It names the order as deliberate rather than as a shortfall — prove it on
+yourself, then promote — which matters because everything these four sittings build sits on the personal
+side, and a room that bought team-level compounding could otherwise read that as the track falling short.
+
+**Deliberately stops before the hand-off.** The closing line points at the crossing as the open question
+rather than answering it. What crosses, and how, is the customer's workshop, and naming it here would be
+authoring their material.
+
 ---
 
 ## 10. The far-half lecture captions its figure `THE FAR HALF · M4–M6`
@@ -445,6 +477,16 @@ exists to protect, is what pays for the scramble.
 **Who could close it.** Bosser, or the customer. Either the workshop between sittings 2 and 3 closes
 with a Bring block issuing the screened task, or sitting 2's close picks it up. This is a curriculum
 decision about the four surviving modules, not something the customer can be handed silently.
+
+**Closed 2026-07-28: sitting 2's close picks it up.** Chosen over the workshop option because a hard gate
+that lives in someone else's material is a hard gate you cannot verify. Behind
+`no-module:earn-the-trust`, so it fires exactly for cuts missing the module whose `## Bring to Module 4`
+block issues this in AE101 — and never doubles up where that block already exists.
+
+The wording deliberately mirrors the AE101 block it stands in for, including the stakes line, minus the
+scramble that cannot happen: *"come without one and you'll be picking while the room is already
+walking."* Gap 7 flagging out the M3 homework is what made room for it; the same close that read as
+homework for a module nobody sits now issues the one task the next sitting actually depends on.
 
 ---
 

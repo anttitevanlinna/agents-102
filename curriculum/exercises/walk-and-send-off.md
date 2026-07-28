@@ -10,9 +10,9 @@ Start a new Claude Code session at your repo root.
 /rename m4-walk-send
 ```
 
-Start clean. M4 picks up a bigger task than M1–M3. Before the new session, check your working tree and branch. You ride that state into the closing `m4/<slug>` commit and M5's fork.
+Start clean. This sitting picks up a bigger task than anything so far. Before the new session, check your working tree and branch. You ride that state into the closing `m4/<slug>` commit and M5's fork.
 
-**What you do:** Pick a task you've been avoiding, the kind you'd send off rather than nudge bit by bit. Walk what you've built across four modules against it. Fill the worst gaps and settle your `observations/` tree on disk. At the close, send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
+**What you do:** Pick a task you've been avoiding, the kind you'd send off rather than nudge bit by bit. Walk what you've built so far against it. Fill the worst gaps and settle your `observations/` tree on disk. At the close, send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you've seen enough.
 
 **What you build:** two things a long run can ride: a scoped task with a 'done' you can name in a sentence, and the worst gaps filled in `observations/` and your rules file, with the `observations/` tree settled on disk. Then it goes off un-packaged.
 
@@ -76,7 +76,7 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 - Before the send-off, ask Claude to propose any tidy-up of `./observations/`. Cap it at one or two file moves or renames; leave the ADRs and skills where they are, and ask to see the diff before it lands.
 - Consider whether each rule is stored where it will fire. A rule the agent never reads is not a rule.
 
-**What happened:** You picked a real task you'd send off rather than nudge bit by bit. You walked what you'd built across four modules against it, filled the worst gaps, and settled the `observations/` tree before the send-off.
+**What happened:** You picked a real task you'd send off rather than nudge bit by bit. You walked what you'd built so far against it, filled the worst gaps, and settled the `observations/` tree before the send-off.
 
 ## What closes Module 4
 

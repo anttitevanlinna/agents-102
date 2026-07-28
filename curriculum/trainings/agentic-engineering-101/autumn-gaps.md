@@ -389,6 +389,16 @@ the record here: three questions (private data, untrusted content, channel out),
 a gate on this run rather than as security teaching. A trainer cannot close it live without unbudgeted
 improvisation.
 
+**Closed 2026-07-28, by the cheaper of the two options.** The recall cue is gone: *"the same three
+questions from Module 3's close, now pointed at this run"* is now *"three questions pointed at this
+run"*. No fenced prompt, no budgeted phase — the three questions and their three mitigations were
+already spelled out in full at that line, so what the gap actually described was **a recall cue with
+nothing to recall**, and deleting the cue leaves a gate that stands on its own.
+
+Which is what `walk-and-send-off.md:86` had been doing all along, standalone and module-free. That
+sibling is the argument this needed no authoring: a gate the student can apply cold is better than one
+that depends on remembering a sitting, and that is as true for canonical AE101 as it is here.
+
 ---
 
 ## 12. The send-off task is a hard gate that nothing in the four sittings issues
@@ -626,6 +636,26 @@ an exercise. This is the one supplementary the surviving body prose actively pus
 
 **Who could close it.** Maintainer. The trifecta page already carries a note that this sentence was
 de-sequenced once; a second pass could finish the job.
+
+**Closed 2026-07-28.** The second pass happened, and the first pass had stopped one word short: it
+replaced the module reference (*"from M3"*) but kept the possessive (*"the STRIDE pass you ran"*), which
+still asserts the student did it. Now *"an access-surface map and a STRIDE pass on the feature"* — the
+argument that the two audits compose is untouched, because it never depended on the reader having run
+either.
+
+`prompt-anatomy.md`'s primed-context-list example is re-cut to beats every cut runs: *"the plan
+walk-down, the push-back that changed the plan, what came back from the send-off, the critique
+exchange."* The move being taught is *name specific beats rather than say read everything*, and it
+demonstrates that better with beats the reader recognises. Also fixed in passing:
+`run-the-first-experiment.md:14` attributed an optional reading to *"Module 3"*; the duplication is
+deliberate (`check_cross_module §2` wants between-module reading in two places) but the attribution was
+not load-bearing, so it went and the links stayed.
+
+**Deliberately not changed:** the `author-test-strategy-skill-1` / `spot-gaps-build-the-loop-3`
+citations two sections down. A citation has to point at where the pattern actually lives; re-pointing it
+at a prompt this cut runs would be a false statement about the corpus to spare the reader an unfamiliar
+name. That the skill-author conversation itself never fires in this cut is gap 18, not a citation
+defect.
 
 ---
 

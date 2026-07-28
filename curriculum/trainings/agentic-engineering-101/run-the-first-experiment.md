@@ -11,7 +11,7 @@ The scoped task you picked as homework.
 
 Come to Module 4 without having picked the task and you'll be scrambling for one while the room is already running theirs. Your call.
 
-Optional forward-look from Module 3: [What is agentic engineering](trainings/agentic-engineering-101/supplementary/what-is-agentic-engineering.md). And when your sessions start running heavy, [Token efficiency](trainings/agentic-engineering-101/supplementary/token-efficiency.md) on keeping the context window lean.
+Optional forward-look: [What is agentic engineering](trainings/agentic-engineering-101/supplementary/what-is-agentic-engineering.md). And when your sessions start running heavy, [Token efficiency](trainings/agentic-engineering-101/supplementary/token-efficiency.md) on keeping the context window lean.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -74,7 +74,7 @@ Optional: if you want the run to outlast your laptop or to hand it to someone, a
 
 {{prompt:ae101-m4-push-starting-point}}
 
-One more check before the send, the same three questions from Module 3's close, now pointed at this run: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening prompt injection needs, and a run this long reads far more than you'll watch. All three present here, cut one leg before you paste: read-only where write isn't needed, hold the push until you've read the return, an allowlist where the run needs the web. The frame is [The lethal trifecta](trainings/agentic-engineering-101/supplementary/the-lethal-trifecta.md): three legs, cut one.
+One more check before the send, three questions pointed at this run: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening prompt injection needs, and a run this long reads far more than you'll watch. All three present here, cut one leg before you paste: read-only where write isn't needed, hold the push until you've read the return, an allowlist where the run needs the web. The frame is [The lethal trifecta](trainings/agentic-engineering-101/supplementary/the-lethal-trifecta.md): three legs, cut one.
 
 Ask Claude to run the scoped task end-to-end in this same session, with your rules files, memory, ADRs, and skills loaded.
 

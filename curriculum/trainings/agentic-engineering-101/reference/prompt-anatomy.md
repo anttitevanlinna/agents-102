@@ -26,7 +26,7 @@ The agent already has the whole internet in its head. Your job is to tell it whi
 
 **Names which moments of scrollback to weight. Not *everything*, which yields an averaged read.** *Read the scrollback* returns the polite median. *Read these four beats* returns evidence. Without the list, the agent samples broadly and treats every moment as equally important, which means none of them is. The list is a weighting function dressed as a sentence.
 
-*"Read this scrollback: the access-control output, the STRIDE decision and ADR, the moment the skill was invoked on the security-tested feature, the critique exchange."*
+*"Read this scrollback: the plan walk-down, the push-back that changed the plan, what came back from the send-off, the critique exchange."*
 
 ### Open hook
 

@@ -3956,7 +3956,7 @@ Then, separately: if one rule about how I worked with security skills, wrote ADR
 <p>The scoped task you picked as homework.</p>
 <p><strong>A real slice you&#39;d send off rather than nudge bit by bit, with a &#39;done&#39; you can name in a sentence. Bigger than a typo-fix, smaller than an epic.</strong></p>
 <p>Come to Module 4 without having picked the task and you&#39;ll be scrambling for one while the room is already running theirs. Your call.</p>
-<p>Optional forward-look from Module 3: <a href="#supplementary-what-is-agentic-engineering">What is agentic engineering</a>. And when your sessions start running heavy, <a href="#supplementary-token-efficiency">Token efficiency</a> on keeping the context window lean.</p>
+<p>Optional forward-look: <a href="#supplementary-what-is-agentic-engineering">What is agentic engineering</a>. And when your sessions start running heavy, <a href="#supplementary-token-efficiency">Token efficiency</a> on keeping the context window lean.</p>
 <h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
@@ -4305,7 +4305,7 @@ For each picked gap, propose a resolution in the shape the audit named, hear my 
 <p><strong>Prompt</strong> <em>(Claude Code, optional)</em></p>
 <pre><code>Push the current branch and set its upstream.
 </code></pre>
-<p>One more check before the send, the same three questions from Module 3&#39;s close, now pointed at this run: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening prompt injection needs, and a run this long reads far more than you&#39;ll watch. All three present here, cut one leg before you paste: read-only where write isn&#39;t needed, hold the push until you&#39;ve read the return, an allowlist where the run needs the web. The frame is <a href="#supplementary-the-lethal-trifecta">The lethal trifecta</a>: three legs, cut one.</p>
+<p>One more check before the send, three questions pointed at this run: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening prompt injection needs, and a run this long reads far more than you&#39;ll watch. All three present here, cut one leg before you paste: read-only where write isn&#39;t needed, hold the push until you&#39;ve read the return, an allowlist where the run needs the web. The frame is <a href="#supplementary-the-lethal-trifecta">The lethal trifecta</a>: three legs, cut one.</p>
 <p>Ask Claude to run the scoped task end-to-end in this same session, with your rules files, memory, ADRs, and skills loaded.</p>
 <p><strong>Prompt</strong> <em>(Claude Code, final move of the module)</em></p>
 <pre><code>I want you to take the task we scoped earlier in this session end to end. Work from the rules I&#39;ve set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the observations at `./observations/`, the ADRs, and the skills available by name in this session. That&#39;s everything you have. Go.
@@ -5844,7 +5844,7 @@ The prompt runs later in a cold session, so bake in what that session won&#39;t 
 <h2 id="the-attacker-targets-the-agent-not-the-system">The attacker targets the agent, not the system</h2>
 <ul>
 <li>Classic threat modeling asks who attacks the system you are building. This asks who attacks the agent building it. The target moves from your feature&#39;s endpoints to the context window of the agent that ships them.</li>
-<li>The two audits compose. The access-surface map and the STRIDE pass you ran on the feature still hold; the trifecta adds the row the classic frame doesn&#39;t have. STRIDE models attacks on the system; the trifecta models attacks through the agent.</li>
+<li>The two audits compose. An access-surface map and a STRIDE pass on the feature still hold; the trifecta adds the row the classic frame doesn&#39;t have. STRIDE models attacks on the system; the trifecta models attacks through the agent.</li>
 <li>An accident model is not an adversary model. Sandboxes and permission prompts bound what the agent can break by mistake; the trifecta bounds what an attacker can make it do on purpose. A deployment needs both bounds, and they are set by different levers.</li>
 </ul>
 <h2 id="removing-any-one-leg-breaks-the-trifecta">Removing any one leg breaks the trifecta</h2>
@@ -7201,7 +7201,7 @@ git stash pop
 <p><em>&quot;Read the test-strategy skill file at <code>~/.claude/skills/test-strategy/SKILL.md</code>.&quot;</em></p>
 <h3 id="primed-context-list">Primed context list</h3>
 <p><strong>Names which moments of scrollback to weight. Not <em>everything</em>, which yields an averaged read.</strong> <em>Read the scrollback</em> returns the polite median. <em>Read these four beats</em> returns evidence. Without the list, the agent samples broadly and treats every moment as equally important, which means none of them is. The list is a weighting function dressed as a sentence.</p>
-<p><em>&quot;Read this scrollback: the access-control output, the STRIDE decision and ADR, the moment the skill was invoked on the security-tested feature, the critique exchange.&quot;</em></p>
+<p><em>&quot;Read this scrollback: the plan walk-down, the push-back that changed the plan, what came back from the send-off, the critique exchange.&quot;</em></p>
 <h3 id="open-hook">Open hook</h3>
 <p><strong>The prompt ends with a colon. You paste your input after, all inside one fenced block.</strong> You have the value more concretely than Claude does: a bug you live with, a feature you own, a delta only you noticed. The hook lets you supply it without a <em>paste this into chat, then describe your bug</em> dance. Pasting and typing in one go is the kind of small ergonomic that adds up over a training week.</p>
 <p><em>&quot;The surface the skill called out harder than I would have:&quot;</em></p>

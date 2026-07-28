@@ -935,6 +935,24 @@ const TARBALLS = {
   'agents-101': 'agents-101-starter.tar.gz',
 };
 
+// Where the payload is served from. A customer publishing on their own estate
+// serves the workbook internally, and a payload host they cannot change means
+// every student's prework reaches out to a vendor endpoint from a managed
+// laptop — blocked by egress and the cohort stalls before session one, allowed
+// and it is a question someone asks at the worst possible moment. Overridden
+// per training with `payloadBase` on the registry entry, so a variant carries
+// its own host the same way it carries its own module list. Not a CLI flag:
+// an argument someone has to remember is wrong the first time they forget.
+const PAYLOAD_BASE_DEFAULT = 'https://agents102.bosser.consulting';
+
+// urlKey is both the registry key and the output-path segment, so it answers
+// "whose host?" and "which folder?" with the same string.
+function payloadUrl(urlKey, customer, tarName) {
+  const base = ((CR.TRAININGS[urlKey] || {}).payloadBase || PAYLOAD_BASE_DEFAULT)
+    .replace(/\/+$/, '');
+  return `${base}/clients/${customer}/${urlKey}/${tarName}`;
+}
+
 function buildPayload(contentKey, customer, urlKey, outDir) {
   // AE101 + Agents 101 each ship a tarball alongside that training's workbook.
   // The payload URL is training-scoped so one customer can host multiple
@@ -956,7 +974,7 @@ function buildPayload(contentKey, customer, urlKey, outDir) {
     fs.copyFileSync(tarSrc, tarDst);
     const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
     console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
-    return `https://agents102.bosser.consulting/clients/${customer}/${urlKey}/${tarName}`;
+    return payloadUrl(urlKey, customer, tarName);
   }
 
   if (contentKey === 'agents-101') {
@@ -975,7 +993,7 @@ function buildPayload(contentKey, customer, urlKey, outDir) {
     // extract-only prompt. Same URL, different transport.
     const tarKB = (fs.statSync(tarDst).size / 1024).toFixed(0);
     console.log(`Copied ${path.relative(ROOT, tarDst)} (${tarKB} KB)`);
-    return `https://agents102.bosser.consulting/clients/${customer}/${urlKey}/${tarName}`;
+    return payloadUrl(urlKey, customer, tarName);
   }
 
   return null;

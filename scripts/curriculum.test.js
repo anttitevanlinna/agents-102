@@ -358,3 +358,19 @@ test('workbook contents list-style does not reach the module cards', () => {
   assert.match(rule[0], /:not\(\.module-list\)/,
     'the rule must exclude .module-list, or module cards get a second marker');
 });
+
+// The payload URL used to be hardcoded to one public host in two places. A
+// customer publishing on their own estate needs the payload reachable from
+// their network, and a host they cannot change is a prework step that fails on
+// a managed laptop. It resolves registry-side rather than from a CLI argument,
+// on the same reasoning as the content flags: a variant that needs a
+// remembered argument ships wrong the first time someone forgets it.
+test('payload base URL is registry-resolvable, not hardcoded', () => {
+  const src = fs.readFileSync(
+    path.join(__dirname, 'build-workbook.js'), 'utf8');
+  const literals = src.match(/return `https:\/\/[a-z0-9.-]+\/clients\//g) || [];
+  assert.equal(literals.length, 0,
+    'payload URL must be built from a configurable base, not a literal host');
+  assert.match(src, /payloadBase/,
+    'expected a payloadBase hook the registry entry can override');
+});

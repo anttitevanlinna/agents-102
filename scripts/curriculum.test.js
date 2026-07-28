@@ -342,3 +342,19 @@ test('theory handbook build', async (t) => {
     assert.match(workbook, /<strong>Prompt<\/strong>/);
   });
 });
+
+// The workbook's contents nav holds two kinds of list: the plain contents `ol`
+// the TOC builder emits, and the module-card `ol`s the runtime builds, which
+// print their own ordinal ("01") inside the card. Both are DIRECT children of
+// `nav.workbook-toc`, so a descendant-scoped list-style reaches the cards at
+// specificity 0,1,1 and beats `.module-list`'s own `list-style: none` at 0,1,0.
+// The result is a browser marker "1." sitting beside the card's printed "01" —
+// invisible in source, visible on every workbook index.
+test('workbook contents list-style does not reach the module cards', () => {
+  const css = fs.readFileSync(
+    path.join(__dirname, '..', 'site', 'layouts', 'curriculum.css'), 'utf8');
+  const rule = css.match(/^\.workbook-toc[^{]*\bol\b[^{]*\{[^}]*list-style[^}]*\}/m);
+  assert.ok(rule, 'expected a .workbook-toc list-style rule to exist');
+  assert.match(rule[0], /:not\(\.module-list\)/,
+    'the rule must exclude .module-list, or module cards get a second marker');
+});

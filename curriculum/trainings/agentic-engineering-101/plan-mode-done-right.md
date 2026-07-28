@@ -73,19 +73,19 @@ Read the conventions your tracker already encodes: [Read the rules hiding in a t
 
 ## Next
 
-At M3, the same move goes into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch a second read surfaces, before a teammate needs to ask. And the move itself turns out to be packageable as a skill; you author your first one there.
+<!--flag:module:earn-the-trust-->At M3, the same move goes into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch a second read surfaces, before a teammate needs to ask. And the move itself turns out to be packageable as a skill; you author your first one there.
 
-Ask Claude where it wrote the plan file, note the path; M3 reads it. Close this session when the second read lands. M3 opens fresh and runs security skills against the M2 feature; if it doesn't have an external or user-facing surface, swap to something from your backlog that does.
+<!--/flag:module:earn-the-trust--><!--flag:module:earn-the-trust-->Ask Claude where it wrote the plan file, note the path; M3 reads it. <!--/flag:module:earn-the-trust-->Close this session when the second read lands.<!--flag:module:earn-the-trust--> M3 opens fresh and runs security skills against the M2 feature; if it doesn't have an external or user-facing surface, swap to something from your backlog that does.
 
-Come to Module 3 without that noted path and a feature to point the skills at, and you'll be scrambling to reconstruct one while the room is already running STRIDE. Your call.
+Come to Module 3 without that noted path and a feature to point the skills at, and you'll be scrambling to reconstruct one while the room is already running STRIDE. Your call.<!--/flag:module:earn-the-trust-->
 
-## Pre-reads before Module 3
+<!--flag:module:earn-the-trust-->## Pre-reads before Module 3
 
 Optional. Lands the modern agentic-security frame before STRIDE and access-control.
 
 **Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (June 2025, the piece that named the threat class). Names the modern threat class that combines private data, untrusted content, and external communication into a compromise surface.
 
-**Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface. The full menu beyond the trifecta, for engineers who want the wider picture before the exercise lands.
+**Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface. The full menu beyond the trifecta, for engineers who want the wider picture before the exercise lands.<!--/flag:module:earn-the-trust-->
 
 <!-- maintainer -->
 

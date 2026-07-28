@@ -406,11 +406,26 @@
     // prework steps that download and extract it describe equipment that variant
     // does not issue.
     //
-    //   <!--flag:payload-->  …passage…  <!--/flag:payload-->
+    //   <!--flag:payload-->         …passage…  <!--/flag:payload-->
+    //   <!--flag:module:<slug>-->   …passage…  <!--/flag:module:<slug>-->
     //
-    // Absent or true → the passage stays and only the markers are dropped.
-    // False → the passage goes. Markers work inline as well as across blocks, so
-    // a single clause inside a sentence can be flagged without splitting it.
+    // Two kinds, and the second is the one to reach for by default.
+    //
+    // **Capability flags** (`payload`) resolve against the registry entry's
+    // `flags` object. Absent or true → the passage stays and only the markers are
+    // dropped. False → the passage goes. Use when the thing a passage describes
+    // is not a module: a payload, a host, a piece of equipment.
+    //
+    // **Module flags** (`module:earn-the-trust`) resolve against the training's
+    // own `modules` list — the passage survives exactly when that module is in
+    // the cut. Nothing is declared, so nothing can drift: a variant that drops a
+    // module drops the homework for it in the same edit, and a variant that later
+    // adds it back gets the homework back for free. Prefer this over a
+    // hand-declared boolean whenever the dependency really is a module, because a
+    // boolean is a second copy of a fact the registry already holds.
+    //
+    // Markers work inline as well as across blocks, so a single clause inside a
+    // sentence can be flagged without splitting it.
     //
     // Removing a numbered step would leave a hole in `## N.` headers and strand
     // every "Step N" reference, so the numbers are recomputed rather than
@@ -419,14 +434,23 @@
     // step that was flagged out is a contradiction the author has to resolve —
     // the passage that mentions it belongs inside the same flag — so it throws
     // rather than shipping a page pointing at a step that is not there.
-    function applyContentFlags(md, flags) {
+    function applyContentFlags(md, flags, moduleSlugs) {
         if (md.indexOf('<!--flag:') === -1) return md;
 
+        var present = moduleSlugs || [];
         var removed = [];
         var out = md.replace(
-            /<!--flag:([a-z-]+)-->([\s\S]*?)<!--\/flag:\1-->/g,
+            /<!--flag:([a-z0-9:-]+)-->([\s\S]*?)<!--\/flag:\1-->/g,
             function (match, name, inner) {
-                if (flags && flags[name] === false) {
+                var drop;
+                if (name.indexOf('module:') === 0) {
+                    // No module list supplied → keep everything. A caller that
+                    // does not know the cut must not silently delete its homework.
+                    drop = moduleSlugs ? present.indexOf(name.slice(7)) === -1 : false;
+                } else {
+                    drop = !!(flags && flags[name] === false);
+                }
+                if (drop) {
                     removed.push({ name: name, inner: inner });
                     return '';
                 }

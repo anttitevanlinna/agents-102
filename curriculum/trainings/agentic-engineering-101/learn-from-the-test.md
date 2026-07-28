@@ -65,7 +65,7 @@ The worktree is forked and ready. You open the session in it at the first exerci
 - You pick the verifier shape against the failure shape. Same eval, different mechanism
 - Same task run twice with packaging as the only changed variable IS the lesson
 - No benchmark told you what went wrong; the artefact did. The artefact rules, self-reports don't.
-- Your verifier is your first eval. The team kit's evals grow from here
+- Your verifier is your first eval.<!--flag:module:spot-gaps-build-the-loop--> The team kit's evals grow from here<!--/flag:module:spot-gaps-build-the-loop-->
 
 ## Re-send the same task, packaged
 
@@ -101,6 +101,7 @@ The laptop stays awake and plugged in while it runs (power settings → prevent 
 
 [Lecture: The gate is a claim too](lectures/the-gate-is-a-claim.md)
 
+<!--flag:module:spot-gaps-build-the-loop-->
 ## Next
 
 Module 6 reads the packaged run. Subtler misses, subtler drift. Your verifier turns out to be one of three eval shapes, and the team kit takes its first inherited skill. The question changes scale too: Module 5 asked *did my run pass?* Module 6 starts asking *do all our runs pass, and who reviewed what?*
@@ -118,6 +119,7 @@ Optional. Skipping does not break Module 6. Both fit the Module 5 to Module 6 ga
 **Read, Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it).** Klaassen runs the verifier 10 consecutive times before trusting it, and uses per-feedback specialised agents in parallel to triage review. Reliability is a number you measure, not a vibe you sense, and one verifier can become a panel. You'll recognise both in your own artefacts when Module 6 gets there.
 
 **Read, [Checks that push back](trainings/agentic-engineering-101/supplementary/backpressure.md).** The verifier from this module is the first gate in a bigger story: checks that push back inside the loop are what let a run reach farther than you can watch. The loop assembled next is this story, with your own artefacts in it.
+<!--/flag:module:spot-gaps-build-the-loop-->
 
 <!-- maintainer -->
 

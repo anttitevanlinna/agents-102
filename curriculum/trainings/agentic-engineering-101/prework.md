@@ -10,10 +10,12 @@ Land at Module 1 with a Claude Code session started in the repo you're going to 
 
 The training runs on YOUR real work, not exercises. You'll work at four task sizes across the training, bring something at each size from your backlog. You don't need them all picked now; you need to know they're there.
 
-- **Trivial bug** for Module 1: a few lines here and there. Picked from your repo's backlog or a recurring annoyance.
-- **A small multi-file task** for Module 2: work you'd ship today if you had the hour. Plan mode wants something a few files wide.
-- **A small feature** for Module 3: external or user-facing surface, shippable in a few hours.
-- **A real task you'd send off** for Module 4 onward: an epic-shaped or refactor-shaped piece you've been avoiding. The kind you'd hand to an agent rather than nudge bit by bit.
+Roughly in the order you'll reach for them:
+
+- **Trivial bug**, wanted on day one: a few lines here and there. Picked from your repo's backlog or a recurring annoyance.
+- **A small multi-file task**, soon after: work you'd ship today if you had the hour. Plan mode wants something a few files wide.
+- **A small feature**: external or user-facing surface, shippable in a few hours.
+- **A real task you'd send off**, for the back half: an epic-shaped or refactor-shaped piece you've been avoiding. The kind you'd hand to an agent rather than nudge bit by bit.
 
 Plus the repo itself (picked in Step 1 below), your team's tracker if you've got one (Linear / Jira / GitHub Issues), and `git worktree` available on your laptop.<!--flag:payload--> The curated security skills install in Step 4.<!--/flag:payload-->
 

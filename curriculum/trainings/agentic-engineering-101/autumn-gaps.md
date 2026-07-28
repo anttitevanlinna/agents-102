@@ -211,6 +211,19 @@ from a page that reads as more detailed and therefore more authoritative.
 variants, so an in-place edit is a three-variant change. A track-specific fallback or a variant marker
 is the straight fix.
 
+**Closed 2026-07-28 — neither, because the requirement itself was wrong.** Maintainer's call: change what
+the page asks for rather than flag who it is asked of. The data-surface step survives, because a game
+that only draws to a canvas has thin surface area and the later task sizes need somewhere real to land;
+what goes is the *security justification* for it (*"that surface is what Module 3 reads when you map
+access control and run STRIDE against it"*). A three-variant edit was the right answer once the ask
+stopped being security-shaped, since no cut benefits from a student engineering an access-control
+surface to feed an exercise.
+
+The module labels went with it, here and in the prework's matching list. Four task sizes assigned to four
+module numbers is a mapping that is wrong in this cut and brittle in every other; the sizes are
+self-describing, and the ordering the student actually needs (*which do I want on day one*) is now
+carried by *"roughly in the order you'll reach for them"* rather than by arithmetic.
+
 ---
 
 ## 6. The four sittings call themselves by their AE101 numbers, and the student types one of them
@@ -261,6 +274,16 @@ The fork had already decided this and left an instruction not to re-add the ask.
 
 **Who could close it.** Maintainer, plus whoever owns the customer's workshop brief — the bridge text
 has to name the workshop, and only the customer knows what it is.
+
+**Closed 2026-07-28 by build-level parametrisation.** The M3 homework, the stakes line and the whole
+*Pre-reads before Module 3* section are wrapped in `<!--flag:module:earn-the-trust-->` and resolve out of
+any cut that does not run that module. One sentence is deliberately left outside the flag — *"Close this
+session when the second read lands"* — because `## Next` with everything removed is an empty heading, and
+an empty heading projects as a slide that says nothing.
+
+**The bridge is still not written, and that is correct rather than pending.** What follows sitting 2 is a
+customer workshop under the IPR split, so Bosser naming it would be authoring their material. The flag
+leaves a clean edge for them to attach to instead of a wrong forward pointer to paper over.
 
 ---
 
@@ -515,6 +538,25 @@ were told carries a known-stale rule, and no beat that removes it.
 **Who could close it.** Nobody, without editing AE101. This is the load-bearing cost of running an
 unmodified module as a track's final sitting. Price it as a trainer-script item rather than discover it
 live.
+
+**Closed 2026-07-28, and the "nobody without editing AE101" verdict is what dated it.** That was true
+when the only tools were forking and in-place editing. A module flag is neither: `## Next`, `## Bring to
+Module 6` and `## Pre-reads before Module 6` are wrapped in
+`<!--flag:module:spot-gaps-build-the-loop-->`, along with the Key Concepts clause promising the team
+kit's evals and `diagnose-and-resend.md`'s *"M6 will cut one stale rule"* (plus its *"and M3 if
+completed"* hedge, under the other module's flag). Canonical AE101 renders byte-for-byte what it rendered
+before.
+
+**What the last sitting now ends on.** The delegation-frontier closing lecture, whose final line is *"you
+are not delegating more. You are checking less."* No trainer-script item, and a better close than three
+headings describing a session that does not exist. The hand-off to the customer's closing workshop stays
+theirs to author, same as gap 7.
+
+**Still open from this gap:** `learning-through-contrast.md:7` — *"M4 was the test. This is the learn."*
+— on slide one of a sitting the room knows as the fourth of four. Left alone deliberately: that lecture's
+subject *is* the M4-to-M5 arc, its maintainer block declares the anchors a considered carve-out, and a
+flag there would gut the lecture rather than trim it. Trainer-script item, and a one-liner rather than
+the three-section problem this gap opened with.
 
 ---
 
@@ -1140,6 +1182,18 @@ The flag is registry-side rather than a CLI switch on purpose: the publishing si
 from its own clone with one command, and a variant whose correctness depends on remembering an extra
 argument ships wrong the first time someone forgets it. Guarded by `scripts/content-flags.test.js`;
 AE101's own prework output was verified byte-identical to the previously committed build.
+
+**A second flag kind, added 2026-07-28, and it declares nothing —** `<!--flag:module:earn-the-trust-->`.
+It resolves against the training's own `modules` list rather than against a boolean someone maintains, so
+a passage preparing the student for a module survives exactly when that module is in the cut. Nothing to
+keep in sync, and the failure mode of the boolean version — homework outliving the module it prepares
+for, which is precisely what gaps 7 and 16 were — cannot recur. A cut that later adds the module back
+gets its homework back for free.
+
+Prefer it over a declared boolean whenever the dependency really is a module, because a boolean would be
+a second copy of a fact the registry already holds. When no module list is supplied at all, every module
+flag keeps its passage: absence of information is not evidence that a module was dropped, and a caller
+that does not know the cut must not silently delete its homework.
 
 **The `git worktree` prerequisite is truthful again.** Prework lists `git worktree` as a hard
 prerequisite. Under the autumn fork nothing used it — the forked exercise had replaced the worktree with

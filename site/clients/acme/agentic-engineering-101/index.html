@@ -2514,11 +2514,12 @@ body.slides-active { overflow: hidden; }
 <p>Land at Module 1 with a Claude Code session started in the repo you&#39;re going to grow, the curated skills installed, and one trivial bug picked.</p>
 <h2 id="what-to-bring">What to bring</h2>
 <p>The training runs on YOUR real work, not exercises. You&#39;ll work at four task sizes across the training, bring something at each size from your backlog. You don&#39;t need them all picked now; you need to know they&#39;re there.</p>
+<p>Roughly in the order you&#39;ll reach for them:</p>
 <ul>
-<li><strong>Trivial bug</strong> for Module 1: a few lines here and there. Picked from your repo&#39;s backlog or a recurring annoyance.</li>
-<li><strong>A small multi-file task</strong> for Module 2: work you&#39;d ship today if you had the hour. Plan mode wants something a few files wide.</li>
-<li><strong>A small feature</strong> for Module 3: external or user-facing surface, shippable in a few hours.</li>
-<li><strong>A real task you&#39;d send off</strong> for Module 4 onward: an epic-shaped or refactor-shaped piece you&#39;ve been avoiding. The kind you&#39;d hand to an agent rather than nudge bit by bit.</li>
+<li><strong>Trivial bug</strong>, wanted on day one: a few lines here and there. Picked from your repo&#39;s backlog or a recurring annoyance.</li>
+<li><strong>A small multi-file task</strong>, soon after: work you&#39;d ship today if you had the hour. Plan mode wants something a few files wide.</li>
+<li><strong>A small feature</strong>: external or user-facing surface, shippable in a few hours.</li>
+<li><strong>A real task you&#39;d send off</strong>, for the back half: an epic-shaped or refactor-shaped piece you&#39;ve been avoiding. The kind you&#39;d hand to an agent rather than nudge bit by bit.</li>
 </ul>
 <p>Plus the repo itself (picked in Step 1 below), your team&#39;s tracker if you&#39;ve got one (Linear / Jira / GitHub Issues), and <code>git worktree</code> available on your laptop. The curated security skills install in Step 4.</p>
 <h2 id="1-pick-the-repo">1. Pick THE repo</h2>
@@ -5006,6 +5007,7 @@ Skip suggestions any team could want. No preamble. List them.
 
 
 
+
 <h2 id="next">Next</h2>
 <p>Module 6 reads the packaged run. Subtler misses, subtler drift. Your verifier turns out to be one of three eval shapes, and the team kit takes its first inherited skill. The question changes scale too: Module 5 asked <em>did my run pass?</em> Module 6 starts asking <em>do all our runs pass, and who reviewed what?</em></p>
 <h2 id="bring-to-module-6">Bring to Module 6</h2>
@@ -5811,15 +5813,15 @@ The prompt runs later in a cold session, so bake in what that session won&#39;t 
 <li>Open the page and play. The first thing that looks wrong or feels missing is your Module 1 bug.</li>
 <li>Ask Claude to add a small test suite so the game has real tests to break and guard.</li>
 <li>Ask Claude to commit at each working step, so the repo grows real history instead of one big drop.</li>
-<li>Before you close the session, ask Claude to add one feature that touches data or other players: a shareable level via a URL, a score you submit, or saved progress. That surface is what Module 3 reads when you map access control and run STRIDE against it. A toy game with no data has nothing to threat-model.</li>
+<li>Before you close the session, ask Claude to add one feature that touches data or other players: a shareable level via a URL, a score you submit, or saved progress. A game that only draws to a canvas has one kind of surface; one that stores or shares something has several, and the later task sizes want somewhere real to land.</li>
 </ul>
 <h2 id="where-the-four-task-sizes-come-from">Where the four task sizes come from</h2>
 <p>Same four sizes as the <a href="../prework.md">prework</a>, now sourced from the game&#39;s own backlog:</p>
 <ul>
-<li><strong>Trivial bug (Module 1):</strong> a rendering glitch, a lemming clipping through a wall, an off-by-one in the survivor count.</li>
-<li><strong>Small multi-file task (Module 2):</strong> a new ability like a digger or a blocker that touches input, the game loop, and rendering.</li>
-<li><strong>Small feature (Module 3):</strong> a user-facing surface like a level-select screen or a win/lose panel, or harden the data feature you seeded at the end of the first session (that is your access-control and STRIDE material).</li>
-<li><strong>A real send-off (Module 4 onward):</strong> multiple levels, a level editor, or a physics refactor you&#39;d rather hand off than nudge bit by bit.</li>
+<li><strong>Trivial bug:</strong> a rendering glitch, a lemming clipping through a wall, an off-by-one in the survivor count.</li>
+<li><strong>Small multi-file task:</strong> a new ability like a digger or a blocker that touches input, the game loop, and rendering.</li>
+<li><strong>Small feature:</strong> a user-facing surface like a level-select screen or a win/lose panel, or harden the data feature you seeded at the end of the first session.</li>
+<li><strong>A real send-off:</strong> multiple levels, a level editor, or a physics refactor you&#39;d rather hand off than nudge bit by bit.</li>
 </ul>
 <h2 id="bring-to-module-1">Bring to Module 1</h2>
 <p>The running game, the test suite, the commit history, and the one bug you spotted while playing. Module 1 opens fresh in this repo.</p>
@@ -7756,11 +7758,26 @@ git stash pop
     // prework steps that download and extract it describe equipment that variant
     // does not issue.
     //
-    //   <!--flag:payload-->  …passage…  <!--/flag:payload-->
+    //   <!--flag:payload-->         …passage…  <!--/flag:payload-->
+    //   <!--flag:module:<slug>-->   …passage…  <!--/flag:module:<slug>-->
     //
-    // Absent or true → the passage stays and only the markers are dropped.
-    // False → the passage goes. Markers work inline as well as across blocks, so
-    // a single clause inside a sentence can be flagged without splitting it.
+    // Two kinds, and the second is the one to reach for by default.
+    //
+    // **Capability flags** (`payload`) resolve against the registry entry's
+    // `flags` object. Absent or true → the passage stays and only the markers are
+    // dropped. False → the passage goes. Use when the thing a passage describes
+    // is not a module: a payload, a host, a piece of equipment.
+    //
+    // **Module flags** (`module:earn-the-trust`) resolve against the training's
+    // own `modules` list — the passage survives exactly when that module is in
+    // the cut. Nothing is declared, so nothing can drift: a variant that drops a
+    // module drops the homework for it in the same edit, and a variant that later
+    // adds it back gets the homework back for free. Prefer this over a
+    // hand-declared boolean whenever the dependency really is a module, because a
+    // boolean is a second copy of a fact the registry already holds.
+    //
+    // Markers work inline as well as across blocks, so a single clause inside a
+    // sentence can be flagged without splitting it.
     //
     // Removing a numbered step would leave a hole in `## N.` headers and strand
     // every "Step N" reference, so the numbers are recomputed rather than
@@ -7769,14 +7786,23 @@ git stash pop
     // step that was flagged out is a contradiction the author has to resolve —
     // the passage that mentions it belongs inside the same flag — so it throws
     // rather than shipping a page pointing at a step that is not there.
-    function applyContentFlags(md, flags) {
+    function applyContentFlags(md, flags, moduleSlugs) {
         if (md.indexOf('<!--flag:') === -1) return md;
 
+        var present = moduleSlugs || [];
         var removed = [];
         var out = md.replace(
-            /<!--flag:([a-z-]+)-->([\s\S]*?)<!--\/flag:\1-->/g,
+            /<!--flag:([a-z0-9:-]+)-->([\s\S]*?)<!--\/flag:\1-->/g,
             function (match, name, inner) {
-                if (flags && flags[name] === false) {
+                var drop;
+                if (name.indexOf('module:') === 0) {
+                    // No module list supplied → keep everything. A caller that
+                    // does not know the cut must not silently delete its homework.
+                    drop = moduleSlugs ? present.indexOf(name.slice(7)) === -1 : false;
+                } else {
+                    drop = !!(flags && flags[name] === false);
+                }
+                if (drop) {
                     removed.push({ name: name, inner: inner });
                     return '';
                 }

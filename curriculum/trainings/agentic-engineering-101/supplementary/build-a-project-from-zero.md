@@ -13,16 +13,16 @@ You'll build a small Lemmings game in the browser (the 1991 classic: little crea
 - Open the page and play. The first thing that looks wrong or feels missing is your Module 1 bug.
 - Ask Claude to add a small test suite so the game has real tests to break and guard.
 - Ask Claude to commit at each working step, so the repo grows real history instead of one big drop.
-- Before you close the session, ask Claude to add one feature that touches data or other players: a shareable level via a URL, a score you submit, or saved progress. That surface is what Module 3 reads when you map access control and run STRIDE against it. A toy game with no data has nothing to threat-model.
+- Before you close the session, ask Claude to add one feature that touches data or other players: a shareable level via a URL, a score you submit, or saved progress. A game that only draws to a canvas has one kind of surface; one that stores or shares something has several, and the later task sizes want somewhere real to land.
 
 ## Where the four task sizes come from
 
 Same four sizes as the [prework](../prework.md), now sourced from the game's own backlog:
 
-- **Trivial bug (Module 1):** a rendering glitch, a lemming clipping through a wall, an off-by-one in the survivor count.
-- **Small multi-file task (Module 2):** a new ability like a digger or a blocker that touches input, the game loop, and rendering.
-- **Small feature (Module 3):** a user-facing surface like a level-select screen or a win/lose panel, or harden the data feature you seeded at the end of the first session (that is your access-control and STRIDE material).
-- **A real send-off (Module 4 onward):** multiple levels, a level editor, or a physics refactor you'd rather hand off than nudge bit by bit.
+- **Trivial bug:** a rendering glitch, a lemming clipping through a wall, an off-by-one in the survivor count.
+- **Small multi-file task:** a new ability like a digger or a blocker that touches input, the game loop, and rendering.
+- **Small feature:** a user-facing surface like a level-select screen or a win/lose panel, or harden the data feature you seeded at the end of the first session.
+- **A real send-off:** multiple levels, a level editor, or a physics refactor you'd rather hand off than nudge bit by bit.
 
 ## Bring to Module 1
 

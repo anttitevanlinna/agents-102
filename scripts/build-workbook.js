@@ -242,12 +242,12 @@ function postProcessIncludes(html) {
     .replace(/<!--\/INC-->/g, '</section>');
 }
 
-function renderModuleMd(trainingKey, slug, contentUrl, flags) {
+function renderModuleMd(trainingKey, slug, contentUrl, flags, moduleSlugs) {
   const modPath = path.join(ROOT, 'curriculum/trainings', trainingKey, slug + '.md');
   let md = readMd(modPath);
   if (md === null) throw new Error(`Module not found: ${modPath}`);
   md = inlineIncludes(md);
-  md = CR.applyContentFlags(md, flags);
+  md = CR.applyContentFlags(md, flags, moduleSlugs);
   md = rewriteCrossDocLinksToAnchors(md);
   md = escapeTildes(md);
   if (contentUrl) md = md.replace(/<CONTENT_URL>/g, contentUrl);
@@ -338,10 +338,16 @@ ${buildToc(contentKey, t)}
   t.modules.forEach(m => allModules.push(m));
   if (t.optionalModules) t.optionalModules.forEach(m => allModules.push(m));
 
+  // Slugs of the modules THIS cut actually runs, for `<!--flag:module:<slug>-->`.
+  // Read from the resolved entry rather than declared anywhere, so homework for a
+  // module cannot outlive the module. Optional modules count as present: they are
+  // on offer, so text pointing at them is not pointing at nothing.
+  const moduleSlugs = allModules.map(m => m.slug);
+
   const modulesHtml = allModules
     .map(m => {
       if (TRAINER_ONLY.has(m.slug + '.md')) return '';
-      const md = renderModuleMd(contentKey, m.slug, contentUrl, raw.flags);
+      const md = renderModuleMd(contentKey, m.slug, contentUrl, raw.flags, moduleSlugs);
       let html = marked.parse(md);
       html = postProcessIncludes(html);
       html = CR.wrapImageFigures(html);

@@ -98,3 +98,48 @@ test('a file with no markers is returned untouched', () => {
   const plain = '## 1. A\n\nBody referencing Step 1.\n';
   assert.equal(applyContentFlags(plain, { payload: false }), plain);
 });
+
+// Module flags resolve against the cut's own module list rather than a declared
+// boolean, so homework cannot outlive the module it prepares for.
+
+const HOMEWORK = [
+  'Close the session.',
+  '',
+  '<!--flag:module:earn-the-trust-->',
+  '## Pre-reads before the security module',
+  '',
+  'Two readings.',
+  '<!--/flag:module:earn-the-trust-->',
+  '',
+  'Bring the task.',
+  '',
+].join('\n');
+
+test('module flag: passage stays when the cut runs that module', () => {
+  const out = applyContentFlags(HOMEWORK, undefined, ['getting-going', 'earn-the-trust']);
+  assert.match(out, /Pre-reads before the security module/);
+  assert.equal(out.includes('<!--flag:'), false);
+});
+
+test('module flag: passage goes when the cut drops that module', () => {
+  const out = applyContentFlags(HOMEWORK, undefined, ['getting-going', 'plan-mode-done-right']);
+  assert.equal(out.includes('Pre-reads before the security module'), false);
+  assert.match(out, /Close the session\./);
+  assert.match(out, /Bring the task\./);
+});
+
+test('module flag: no module list supplied keeps everything', () => {
+  // A caller that does not know the cut must not silently delete homework —
+  // absence of information is not evidence the module was dropped.
+  const out = applyContentFlags(HOMEWORK, undefined, undefined);
+  assert.match(out, /Pre-reads before the security module/);
+});
+
+test('module and capability flags coexist in one file', () => {
+  const mixed = 'Keep.<!--flag:payload--> payload bit.<!--/flag:payload-->' +
+                '<!--flag:module:gone--> module bit.<!--/flag:module:gone-->';
+  const out = applyContentFlags(mixed, { payload: false }, ['here']);
+  assert.equal(out, 'Keep.');
+  const kept = applyContentFlags(mixed, { payload: true }, ['gone']);
+  assert.equal(kept, 'Keep. payload bit. module bit.');
+});

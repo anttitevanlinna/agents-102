@@ -25,7 +25,7 @@ produces:
     consumed-by:
       - prompt:threat-model-with-stride-1
 ---
-I'm starting a six-module training called Agentic Engineering 101. Walk these in order, ask one question at a time if you need to, no preamble.
+I'm starting a training called Agentic Engineering 101. Walk these in order, ask one question at a time if you need to, no preamble.
 
 1. Ensure my AE101 content directory exists. Use ~/Documents/ae101-content unless there is a good reason not to. Create it if necessary.
 

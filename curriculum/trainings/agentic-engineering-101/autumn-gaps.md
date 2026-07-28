@@ -156,6 +156,11 @@ sitting 2 by telling the student to bring a feature to point the skills at.
 decision to ship the skills as unused reference material with a line saying so. The `SKILLS` array in
 `scripts/build-ae101-content-tarball.sh` is the second half of the same decision.
 
+**Closed 2026-07-28 — neither option, a third one.** This track ships no content tarball at all, so the
+install step has nothing to install from and is flagged out of the shared prework
+(`flags: { payload: false }`, § *Decisions* below). The `SKILLS` array is untouched, because AE101 still
+issues the bundle and still sits M3.
+
 ---
 
 ## 4. The first prompt the student pastes announces "a six-module training" to their agent
@@ -175,6 +180,15 @@ themselves outranks a trainer's verbal correction.
 **Who could close it.** Maintainer, via track-specific prompt keys. The deleted prework page had
 already scoped four (`nw-prework-download-tarball`, `nw-prework-extract`, `nw-prework-screen-and-ready`,
 `nw-prework-one-at-a-time`).
+
+**Closed 2026-07-28, incidentally.** No track-specific prompt keys were needed. The offending prompt is
+the *extract-and-install* one, which lives inside the step this track no longer runs, so it left with
+the payload. Worth noting because it is the one gap that closed without anyone aiming at it: the six-
+module frame was never in the prework's own prose, it was in a prompt the prose included. Verified by
+rebuilding and reading the composed page: no registry prompt block in this variant now states a module
+count. **Gap 2 is not closed by this** and the distinction matters — the *prose* still says *"Across six
+modules"*, and the page's copy-block carries that prose, so a student who copies the page still hands
+their agent the wrong count. What changed is that they no longer paste it as an instruction.
 
 ---
 
@@ -1043,11 +1057,14 @@ and the one lecture about where a rules file goes teaches three deployment shape
 day-of failure — a Monday failure. The room will agree the criterion because it sounds obviously right,
 and nobody in it has ever done the thing.
 
-**Three security skills, already installed, with no consumer.** The inverse case, and the only unmet
-seam that is a gift rather than a hole. Prework unconditionally installs `access-control-analysis`,
-`stride` and `security-tools` on every student's machine (gap 3). Their only named consumers were in the
-dropped module. If the customer ever authors a security workshop, it has a working triple for free. If
-nobody tells them, they build from scratch and the install stays dead.
+**Three security skills, no longer installed, and now worth naming out loud.** This paragraph used to
+record a gift: prework installed `access-control-analysis`, `stride` and `security-tools` on every
+student's machine, their only named consumers sat in the dropped module, so a customer authoring a
+security workshop would have found a working triple already on the laptops. **Withdrawn 2026-07-28** —
+the install went with the payload (gap 3). The skills still exist in `content/skills/` and the tarball
+script still whitelists them, so the gift is still available; it just has to be *asked for* now rather
+than found. Which is the safer shape anyway: an unannounced capability nobody knows about is not an
+asset, it is a coincidence.
 
 ---
 
@@ -1055,6 +1072,26 @@ nobody tells them, they build from scratch and the install stays dead.
 
 A gap list that records only what got worse is as misleading as one that omits it. Everything below is a
 real improvement, verified rather than assumed.
+
+**The track ships no content tarball, and the prework says so by construction — 2026-07-28.** Decided
+after checking which surviving surfaces actually open a file in `~/Documents/ae101-content/`: two, both
+M3 security exercises, both in the module this cut drops. Reference and supplementary material renders
+in the workbook regardless. So the payload was equipment issued for a sitting nobody attends, and its
+absence closes gaps 3 and 4.
+
+The mechanism is worth recording because it is new and it is reusable. `flags: { payload: false }` on
+the registry entry, and passages in the *shared* source wrapped in `<!--flag:payload-->`. Not a fork:
+both variants keep reading one `prework.md`, which is what stops the two from drifting the way the five
+deleted forks did. The build strips the flagged passages, **renumbers the remaining `## N.` steps
+consecutively, and rewrites every surviving "Step N" reference to match** — so the student sees steps 1,
+2, 3 rather than 1, 2, 5. A reference left outside the flag that points at a removed step fails the
+build rather than shipping; that guard fired once during authoring, on the lede's *"curated skills
+installed"* clause.
+
+The flag is registry-side rather than a CLI switch on purpose: the publishing side builds this track
+from its own clone with one command, and a variant whose correctness depends on remembering an extra
+argument ships wrong the first time someone forgets it. Guarded by `scripts/content-flags.test.js`;
+AE101's own prework output was verified byte-identical to the previously committed build.
 
 **The `git worktree` prerequisite is truthful again.** Prework lists `git worktree` as a hard
 prerequisite. Under the autumn fork nothing used it — the forked exercise had replaced the worktree with

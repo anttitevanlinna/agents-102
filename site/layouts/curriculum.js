@@ -114,6 +114,15 @@
         // node scripts/build-workbook.js northwind agentic-engineering-101-northwind --no-trainer-docs
         'agentic-engineering-101-northwind': {
             contentKey: 'agentic-engineering-101',
+            // No content tarball. Its only hard consumers were the two M3
+            // security exercises, and M3 is the module this cut drops; reference
+            // and supplementary material renders in the workbook regardless. So
+            // the payload would be equipment issued for a module nobody sits.
+            // Drops the prework's download + extract steps with it (the shared
+            // source carries them behind `<!--flag:payload-->`), which is also
+            // what keeps the student's first instruction from pointing at a URL
+            // this variant never publishes.
+            flags: { payload: false },
             label: 'Agentic Engineering 101 — Team Track',
             lede: 'Four modules for software engineers, with team workshops between them. Learn the new loop on your own repo, then take it to your team.',
             modules: [
@@ -386,6 +395,74 @@
     function stripMaintainerTail(md) {
         var i = md.indexOf('<!-- maintainer -->');
         return i >= 0 ? md.slice(0, i).trimEnd() + '\n' : md;
+    }
+
+    // Content flags — per-variant inclusion of optional passages inside a SHARED
+    // source file. A cut variant (different module list) is still a `contentKey`
+    // entry, not a flag; flags are for when two variants read the SAME file and
+    // one of them genuinely does not have the thing the passage describes. The
+    // motivating case: the Northwind team track ships no content tarball, so the
+    // prework steps that download and extract it describe equipment that variant
+    // does not issue.
+    //
+    //   <!--flag:payload-->  …passage…  <!--/flag:payload-->
+    //
+    // Absent or true → the passage stays and only the markers are dropped.
+    // False → the passage goes. Markers work inline as well as across blocks, so
+    // a single clause inside a sentence can be flagged without splitting it.
+    //
+    // Removing a numbered step would leave a hole in `## N.` headers and strand
+    // every "Step N" reference, so the numbers are recomputed rather than
+    // hand-maintained per variant: headers renumber consecutively from 1 and
+    // body references follow the same old→new map. A surviving reference to a
+    // step that was flagged out is a contradiction the author has to resolve —
+    // the passage that mentions it belongs inside the same flag — so it throws
+    // rather than shipping a page pointing at a step that is not there.
+    function applyContentFlags(md, flags) {
+        if (md.indexOf('<!--flag:') === -1) return md;
+
+        var removed = [];
+        var out = md.replace(
+            /<!--flag:([a-z-]+)-->([\s\S]*?)<!--\/flag:\1-->/g,
+            function (match, name, inner) {
+                if (flags && flags[name] === false) {
+                    removed.push({ name: name, inner: inner });
+                    return '';
+                }
+                return inner;
+            }
+        );
+
+        var unclosed = out.match(/<!--\/?flag:[a-z-]+-->/);
+        if (unclosed) throw new Error('Unbalanced content-flag marker: ' + unclosed[0]);
+        if (!removed.length) return out;
+
+        // Old→new step numbers. Headers are counted in the ORIGINAL text so a
+        // removed step still gets an entry, mapping to null — that is what makes
+        // a stranded reference detectable rather than silently renumbered.
+        var order = [];
+        md.replace(/^## (\d+)\. /gm, function (m, n) { order.push(Number(n)); return m; });
+        var kept = [];
+        out.replace(/^## (\d+)\. /gm, function (m, n) { kept.push(Number(n)); return m; });
+
+        var map = {};
+        order.forEach(function (n) { map[n] = null; });
+        kept.forEach(function (n, i) { map[n] = i + 1; });
+
+        var renumbered = out
+            .replace(/^## (\d+)\. /gm, function (m, n) { return '## ' + map[Number(n)] + '. '; })
+            .replace(/\bStep (\d+)\b/g, function (m, n) {
+                var to = map[Number(n)];
+                if (to == null) {
+                    throw new Error(
+                        'Content flag removed step ' + n + ' but "' + m + '" still refers to it. ' +
+                        'Move that passage inside the same flag, or rewrite it.'
+                    );
+                }
+                return 'Step ' + to;
+            });
+
+        return renumbered;
     }
 
     // Reconstruct the canonical inline prompt-block shape the renderer expects:
@@ -1174,6 +1251,7 @@
         slugifyHeading: slugifyHeading,
         configureMarked: configureMarked,
         stripMaintainerTail: stripMaintainerTail,
+        applyContentFlags: applyContentFlags,
         renderPromptBlock: renderPromptBlock,
         expandPrompts: expandPrompts,
         PROMPT_INCLUDE_RE: PROMPT_INCLUDE_RE,

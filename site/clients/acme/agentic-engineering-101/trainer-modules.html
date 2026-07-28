@@ -2329,7 +2329,7 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#m
 <li>Exercise — <a href="./#exercises-orient-and-introspect">Orient and introspect</a> (15–20 min)</li>
 <li>Exercise — <a href="./#exercises-fix-tests-first">Fix tests-first</a> (25 min)</li>
 <li>Exercise — <a href="./#exercises-compound-and-close">Compound and close</a> (30 min)</li>
-<li>Lecture — <a href="./#lectures-the-machine-you-just-met">The machine you just met</a> (recognition closer, ~5 min; names the two behaviors the exercises surfaced across Ex1–Ex3)</li>
+<li>Lecture — <a href="./#lectures-the-machine-you-just-met">The machine you just met</a> (recognition closer, ~5 min; names the three behaviors the exercises surfaced across Ex1–Ex3)</li>
 <li>Lecture — <a href="./#lectures-how-this-training-was-built">How this training was built</a> (arc closer; names compound engineering)</li>
 </ol>
 <p><strong>Learning goals.</strong> Student can:</p>
@@ -2454,7 +2454,7 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#m
 <li>Exercise — <a href="./#exercises-diagnose-and-resend">Diagnose and re-send</a> (65 min; Phases 1–4)</li>
 <li>Debrief + re-send (15–20 min; owned by the module file; worktree setup demo here)</li>
 <li>Lecture — <a href="./#lectures-what-packaging-is">What packaging is</a> (closer; Ronacher&#39;s three-pattern earned from felt evidence — don&#39;t squeeze it)</li>
-<li>Lecture — <a href="./#lectures-the-gate-is-a-claim">The gate is a claim too</a> (final closer, 6–8 min; names the fallibility of the verifier the student just built — the gate is a claim, not proof. Promoted from supplementary 2026-07-03, lands after What packaging is. Two back-to-back closers: budget packaging ~12–15 + gate 6–8 against the 1h45 runtime)</li>
+<li>Lecture — <a href="./#lectures-the-gate-is-a-claim">The gate is a claim too</a> (final closer, 7–9 min; names the fallibility of the verifier the student just built — the gate is a claim, not proof — then closes on the delegation-frontier zoom-out (reach × calibration, four states). Promoted from supplementary 2026-07-03; frontier slide added 2026-07-26. Two back-to-back closers: budget packaging ~12–15 + gate 7–9 against the 1h45 runtime)</li>
 </ol>
 <p><strong>Learning goals.</strong> Student can:</p>
 <ul>
@@ -2603,6 +2603,46 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#m
                 { slug: 'getting-going',             title: 'Getting going + context' },
                 { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
                 { slug: 'earn-the-trust',            title: 'Earn the trust' }
+            ]
+        },
+        // Team-track variant of Agentic Engineering 101: four sittings, running
+        // AE101 modules 1, 2, 4 and 5 unmodified. AE101 M3 (`earn-the-trust`) is
+        // dropped and M6 (`spot-gaps-build-the-loop`) becomes a customer-authored
+        // workshop; workshops slot between the sittings and are not ours. Same
+        // `contentKey` mechanism as the preview cut above — file resolution points
+        // at the canonical AE101 content dir, so prework, supplementaries and
+        // references are inherited one copy each and a fix to a shared artefact
+        // reaches every variant. Only the module list, label and lede are its own.
+        //
+        // No `prework:` override: this variant receives AE101's own prework page,
+        // which frames six modules, four task sizes and installs the curated
+        // security skills of the module this track drops. That is deliberate, and
+        // it is the highest-visibility entry in the gaps inventory that sits beside
+        // the module files in `curriculum/trainings/agentic-engineering-101/`. That
+        // document lists everywhere plain AE101 does not fit this cut, and the
+        // seams a customer-authored workshop has to be written against. Read it
+        // before changing anything here.
+        //
+        // Build student-facing:
+        // node scripts/build-workbook.js northwind agentic-engineering-101-northwind --no-trainer-docs
+        'agentic-engineering-101-northwind': {
+            contentKey: 'agentic-engineering-101',
+            // No content tarball. Its only hard consumers were the two M3
+            // security exercises, and M3 is the module this cut drops; reference
+            // and supplementary material renders in the workbook regardless. So
+            // the payload would be equipment issued for a module nobody sits.
+            // Drops the prework's download + extract steps with it (the shared
+            // source carries them behind `<!--flag:payload-->`), which is also
+            // what keeps the student's first instruction from pointing at a URL
+            // this variant never publishes.
+            flags: { payload: false },
+            label: 'Agentic Engineering 101 — Team Track',
+            lede: 'Four modules for software engineers, with team workshops between them. Learn the new loop on your own repo, then take it to your team.',
+            modules: [
+                { slug: 'getting-going',             title: 'Getting going + context' },
+                { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
+                { slug: 'run-the-first-experiment',  title: 'Run the first experiment' },
+                { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' }
             ]
         },
         'claude-basics': {
@@ -2868,6 +2908,74 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#m
     function stripMaintainerTail(md) {
         var i = md.indexOf('<!-- maintainer -->');
         return i >= 0 ? md.slice(0, i).trimEnd() + '\n' : md;
+    }
+
+    // Content flags — per-variant inclusion of optional passages inside a SHARED
+    // source file. A cut variant (different module list) is still a `contentKey`
+    // entry, not a flag; flags are for when two variants read the SAME file and
+    // one of them genuinely does not have the thing the passage describes. The
+    // motivating case: the Northwind team track ships no content tarball, so the
+    // prework steps that download and extract it describe equipment that variant
+    // does not issue.
+    //
+    //   <!--flag:payload-->  …passage…  <!--/flag:payload-->
+    //
+    // Absent or true → the passage stays and only the markers are dropped.
+    // False → the passage goes. Markers work inline as well as across blocks, so
+    // a single clause inside a sentence can be flagged without splitting it.
+    //
+    // Removing a numbered step would leave a hole in `## N.` headers and strand
+    // every "Step N" reference, so the numbers are recomputed rather than
+    // hand-maintained per variant: headers renumber consecutively from 1 and
+    // body references follow the same old→new map. A surviving reference to a
+    // step that was flagged out is a contradiction the author has to resolve —
+    // the passage that mentions it belongs inside the same flag — so it throws
+    // rather than shipping a page pointing at a step that is not there.
+    function applyContentFlags(md, flags) {
+        if (md.indexOf('<!--flag:') === -1) return md;
+
+        var removed = [];
+        var out = md.replace(
+            /<!--flag:([a-z-]+)-->([\s\S]*?)<!--\/flag:\1-->/g,
+            function (match, name, inner) {
+                if (flags && flags[name] === false) {
+                    removed.push({ name: name, inner: inner });
+                    return '';
+                }
+                return inner;
+            }
+        );
+
+        var unclosed = out.match(/<!--\/?flag:[a-z-]+-->/);
+        if (unclosed) throw new Error('Unbalanced content-flag marker: ' + unclosed[0]);
+        if (!removed.length) return out;
+
+        // Old→new step numbers. Headers are counted in the ORIGINAL text so a
+        // removed step still gets an entry, mapping to null — that is what makes
+        // a stranded reference detectable rather than silently renumbered.
+        var order = [];
+        md.replace(/^## (\d+)\. /gm, function (m, n) { order.push(Number(n)); return m; });
+        var kept = [];
+        out.replace(/^## (\d+)\. /gm, function (m, n) { kept.push(Number(n)); return m; });
+
+        var map = {};
+        order.forEach(function (n) { map[n] = null; });
+        kept.forEach(function (n, i) { map[n] = i + 1; });
+
+        var renumbered = out
+            .replace(/^## (\d+)\. /gm, function (m, n) { return '## ' + map[Number(n)] + '. '; })
+            .replace(/\bStep (\d+)\b/g, function (m, n) {
+                var to = map[Number(n)];
+                if (to == null) {
+                    throw new Error(
+                        'Content flag removed step ' + n + ' but "' + m + '" still refers to it. ' +
+                        'Move that passage inside the same flag, or rewrite it.'
+                    );
+                }
+                return 'Step ' + to;
+            });
+
+        return renumbered;
     }
 
     // Reconstruct the canonical inline prompt-block shape the renderer expects:
@@ -3656,6 +3764,7 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#m
         slugifyHeading: slugifyHeading,
         configureMarked: configureMarked,
         stripMaintainerTail: stripMaintainerTail,
+        applyContentFlags: applyContentFlags,
         renderPromptBlock: renderPromptBlock,
         expandPrompts: expandPrompts,
         PROMPT_INCLUDE_RE: PROMPT_INCLUDE_RE,

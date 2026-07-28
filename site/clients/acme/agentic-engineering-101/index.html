@@ -2635,8 +2635,6 @@ Report success on each step and tell me what you did.
 <h1 id="the-wizard-move">The wizard move</h1>
 <h2 id="who-this-is-for">Who this is for</h2>
 <p>You&#39;ve already done the hard part. You found this training because you use Claude Code regularly and you want to get further with it. That&#39;s who this training is for.</p>
-<p>Nobody here needs the &quot;agents can write code&quot; setup. So this training won&#39;t run one.</p>
-<p>You&#39;ll watch what&#39;s possible, not what&#39;s missing. That&#39;s the posture of the whole training.</p>
 <h2 id="context-is-king">Context is King</h2>
 <p>The same question, two answers. Two Claude chat windows. In one, the first prompt is <em>&quot;What is the capital of Italy?&quot;</em> Claude answers <em>Rome.</em> Then the second prompt: <em>&quot;What should we have for dinner?&quot;</em> Claude suggests something Italian: pasta, osso buco, risotto.</p>
 <p>Same words, different window. In the other window, the first prompt is <em>&quot;What is the largest lake in Finland?&quot;</em> Claude answers <em>Saimaa.</em> Then the same second prompt: dinner. Take a guess before it runs. What does Claude suggest now?</p>
@@ -2748,7 +2746,7 @@ Let&#39;s work on this bug:
 </ul>
 <h2 id="interrogate-the-fix-for-a-deeper-layer">Interrogate the fix for a deeper layer</h2>
 <ul>
-<li>Push once on the depth. When the agent says done, ask whether the change is the root cause or a layer above it. The first cut usually fixes what makes the test pass; the deeper cut asks whether the test was pointing at the right thing. Name what a deeper edit would touch and see what Claude defends. The exchange is where root-cause discipline shows up, not in the fix itself.</li>
+<li>When the agent says done, ask whether the change is the root cause or a layer above it. The first cut usually fixes what makes the test pass; the deeper cut asks whether the test was pointing at the right thing. Name what a deeper edit would touch and see what Claude defends. The exchange is where root-cause discipline shows up, not in the fix itself.</li>
 </ul>
 <p><strong>Optional.</strong> Skip if the test you wrote already names the contract and the fix is the contract, no deeper layer to interrogate. Otherwise, ask Claude to interrogate the fix and name what&#39;s still surface.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -2826,7 +2824,7 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 <div class="phase-kicker">Lecture</div>
 
 <h1 id="the-machine-you-just-met">The machine you just met</h1>
-<p>The machine you just met has two behaviors that look like quirks and are not: it agrees with you, and it is mostly right.</p>
+<p>The machine you just met has three behaviors that look like quirks and are not: it agrees with you, it is mostly right, and it answers in essays.</p>
 <h2 id="agreeable-answers-won-the-preference-round">Agreeable answers won the preference round</h2>
 <ul>
 <li>The LLM is trained twice. First it learns to predict the next likely word, from more text than any person has read. Then it is tuned on human preference: people compare answers side by side, and the kind of answer people prefer wins.</li>
@@ -2834,18 +2832,25 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 <li>This is the machinery under the opening lecture&#39;s infinite chameleon: the LLM that flatters you, calls unfinished work progress, mirrors your stance. It mirrors because mirroring was rewarded; the machine amplifies whatever posture you bring, and your stance is the ceiling by construction.</li>
 <li>The agent&#39;s report of its own success is the same kind of output. &quot;Fixed, and the tests pass&quot; comes from the same machine that learned agreeable answers win. The report is a hypothesis to check, not ground truth.</li>
 </ul>
-<h2 id="unchecked-mostly-right-steps-stack-into-wrong">Unchecked, mostly-right steps stack into wrong</h2>
+<h2 id="a-check-resets-the-chain">A check resets the chain</h2>
 <ul>
 <li>Each step is mostly right, and each step builds on the one before. One mostly-right answer reads fine on its own. A run is not one answer; it is a chain of them, each standing on the last.</li>
 <li>Enough mostly-right steps stacked without a check, and the end of the chain is mostly wrong. If each step were right nine times in ten, the odds that a seven-step chain is still right by the end would fall below a coin flip. The numbers are an illustration, not a measurement; the stacking is what holds. The field calls it <strong>cascading error</strong>.</li>
 <li>A check from outside the run resets the chain. A failing test does not care how confident the answer sounded. Everything after the check builds on verified ground, and no chain grows long enough for the stacking to take over.</li>
 <li>That is why the failing test came before the fix. The check existed before the code it was checking. Every edit after it had a floor to stand on.</li>
 </ul>
-<h2 id="one-machine-both-behaviors">One machine, both behaviors</h2>
+<h2 id="it-answers-in-essays">It answers in essays</h2>
 <ul>
-<li>Both behaviors come from the same machine. A statistical machine tuned first for likelihood and then for approval will mirror your stance, and it will be mostly right at each step. Neither is a malfunction. Both are the design running as built.</li>
+<li>The fix was three lines; the answers around it were pages. Complete, not prioritized, is the machine&#39;s default: an answer that covers everything is never wrong by omission.</li>
+<li>This time the reading was cheap because the bug was trivial. On real work the reading becomes the bottleneck, not the generating, and a chain of two-page answers is how a session gets away from you.</li>
+<li>The countermove costs one clause: lead with the ranked list, hold the detail until asked. <strong>Never let the agent say everything.</strong> The shape of the answer is part of the prompt.</li>
+</ul>
+<h2 id="one-machine-three-behaviors">One machine, three behaviors</h2>
+<ul>
+<li>All three behaviors come from the same machine. A statistical machine tuned first for likelihood and then for approval will mirror your stance, answer in full, and be mostly right at each step. None is a malfunction. All three are the design running as built.</li>
 <li>The mirror is steered by what you bring. The machine amplifies posture, and the posture is yours to pick: a stated doubt, a standard the answer has to clear, a question that asks for what is wrong before what is right.</li>
 <li>The chain of mostly-right steps is steered by what you build. A test, a type check, a second read with a different question. Each sits outside the run and resets the chain every time it runs.</li>
+<li>The essay is steered by what you ask. A ranked list first, detail on request. The answer&#39;s shape is a prompt choice, not a property you live with.</li>
 </ul>
 <p>That is the machine. The rest is steering.</p>
 </section>
@@ -2868,8 +2873,12 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 <p>The difference is reach. A rule written down is a thing one person knows. A rule in <code>./CLAUDE.md</code> is a thing every session inherits. A rule in a shared checklist is a thing every dispatched subagent is handed before it writes a word.</p>
 <p>The rules compounded. Learning compounded to make better rules. More rules, more pointed. The strategy doc that started as bulletpoints grew a companion checklist for every kind of writing it produced (lectures, exercises, sales pages), each loaded at the moment it matters and no other moment.</p>
 <h2 id="then-the-agents-started-checking-the-agents">Then the agents started checking the agents</h2>
-<p>The edits to the training got bigger. One person fixing one line became plan mode reshaping a whole file, then a subagent auditing that file against a checklist in the background, then four agents in parallel auditing a file against four checklists while a fifth checked the neighbouring files.</p>
+<p>The edits to the training got bigger. One person fixing one line became plan mode (where Claude works in planning rather than execution) reshaping a whole file, then a subagent (a Claude instance with fresh context for independent analysis) auditing that file against a checklist in the background, then four agents in parallel auditing a file against four checklists while a fifth checked the neighbouring files.</p>
 <p>Work-per-session went up, and care-per-line went up with it. Sweeping changes that would have taken a week got made in an afternoon, because the rules were tight enough to hand off. Every session inherited what the last one figured out, and each one could take on bigger work than the last.</p>
+<h2 id="built-to-forgive">Built to forgive</h2>
+<p>One more design decision is worth knowing before the modules stack up. Each module leaves artifacts behind that later ones pick up: a rules file here, maps and skills and notes further in. The prompts downstream check what exists and work with what they find. A missing file is a detail, not a debt; any artifact in this training can be rebuilt in minutes.</p>
+<p>What a later module actually needs is the understanding the artifact condensed: why the test came before the fix, what a correction is worth once it is written down. <strong>Understanding is the artifact.</strong> Files can be re-made from it at any point; the reverse is not true.</p>
+<p>So a slot that runs short costs a file at most, never the thread. Take the understanding forward; the unfinished part waits in the workbook.</p>
 <h2 id="you-just-ran-the-compound-loop">You just ran the compound loop</h2>
 <p>The story of building this training is the shape you just ran on your own repo. Over ninety minutes, not a year. On a trivial bug, not a whole training. The first read was partly wrong, and the wrongness was the way in: you let Claude read your repo, saw the wrongness, named it, corrected it. That correction turned into a rule.</p>
 <p>The rule sits in <code>./CLAUDE.local.md</code>, which is yours. Gitignored, alongside you, read by every future session in this repo. By the end of the training it grows into a rules file shaped by how you actually worked: grown from evidence, not from a blank page or a trainer&#39;s template.</p>
@@ -3013,12 +3022,12 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 </figure>
 
 <ul>
-<li><strong>Intent.</strong> What you point the work at. Which task, what done means, and which unknown the work should teach you the most about.</li>
+<li><strong>Intent.</strong> What you point the work at. Which task, and what done means, before a single step runs.</li>
 <li><strong>Context.</strong> What the agent knows going in. The files, rules, and memory that decide whether it acts on your system or on a guess about your system.</li>
 <li><strong>Work.</strong> The agent runs the loop: acts, reads the result, corrects, goes again. Everything you would call &quot;using the agent&quot; happens in this phase.</li>
 <li><strong>Verification.</strong> How you know the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it.</li>
-<li><strong>Absorption.</strong> How much of the result you can actually take up. Generation is fast; reading, judging, and merging are not. The difference decides your real throughput.</li>
-<li><strong>Outcome.</strong> What you keep. The fix, the rule it taught you, the skill it became, and how each one compounds into the next run.</li>
+<li><strong>Absorption.</strong> How much of the result you can actually take up. What gets read, judged, and merged, not just what gets produced.</li>
+<li><strong>Outcome.</strong> What you keep. What survives the run and compounds into the next one.</li>
 </ul>
 <p>The phases are places, not stages. A run usually stands in more than one at once, and the plan gets re-entered mid-build.</p>
 <h2 id="you-are-here">You are here</h2>
@@ -3049,7 +3058,7 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 <h2 id="plan-mode-is-a-read-only-permission-state">Plan mode is a read-only permission state</h2>
 <ul>
 <li>Plan mode is a permission state, not a feature. You press Shift+Tab until the status bar reads <code>plan</code>. The agent is now read-only: it reads files, runs shell commands to explore, and writes a plan file, but it can&#39;t edit or execute until you approve.</li>
-<li>The read-only part is load-bearing. Plan mode isn&#39;t &quot;Claude thinks before doing.&quot; It&#39;s &quot;Claude writes a thing you can read, edit, and push back on before anything changes.&quot; The plan is an artifact, not a mood.</li>
+<li>The read-only part is load-bearing. Plan mode isn&#39;t &quot;Claude thinks before doing.&quot; It&#39;s &quot;Claude writes a thing you can read, edit, and push back on before anything changes.&quot; The plan is an artifact, not a feeling.</li>
 <li>The plan file has an identity. A descriptive name (<code>migrate-auth-hash-calm-otter.md</code>, not random words) you can come back to. Small quality-of-life thing that matters more than it sounds: the plan is a thing on disk, not a moment in a chat.</li>
 <li>You will notice the wait. While Claude plans, other sessions could be making progress elsewhere. Not today, but soon.</li>
 </ul>
@@ -3103,7 +3112,7 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 <h1 id="sharpen-the-plan-with-two-reads">Sharpen the plan with <em>two reads</em></h1>
 <p><strong>Time:</strong> 60 minutes.</p>
 <p><strong>What you do:</strong> take a real multi-file task from your backlog, run it through plan mode, push back twice with what you can see, then hand the plan to a second agent for a deeper read. Approve the plan. <strong>Stop.</strong> Don&#39;t execute. Compare what your read caught to what the second-pass read caught. That gap is the skill this module is building.</p>
-<p><strong>What you build:</strong> two reads paired on one plan. Your own two push-backs, in your voice, catch what a human catches. A second-pass walk-down, one question at a time, catches the branches you can&#39;t see. Together they make a plan you can approve without rubber-stamping it.</p>
+<p><strong>What you build:</strong> two reads paired on one plan. Your own two push-backs, in your voice, catch what a human catches. A second-pass walk-down, three questions at a time, catches the branches you can&#39;t see. Together they make a plan you can approve without rubber-stamping it.</p>
 <p><strong>The point:</strong> two reads, paired. Making the plan good is the work.</p>
 <hr>
 <h2 id="phase-1-bring-a-real-task">Phase 1: Bring a real task</h2>
@@ -3123,6 +3132,12 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 My task:
 </code></pre>
 <p>Plan mode takes minutes on real codebases. Eight to twelve isn&#39;t unusual. While Claude works, take in the side material that fits the wait: the <a href="#reference-multi-session-git">Multi-session and Git: survival guide</a> if you skipped it in the gap, or the plan-mode-at-depth section of <a href="#5-plan-mode-at-depth">Claude Code for engineers</a> for the approval-paths table. When Claude is on a long-running prompt, that&#39;s when you take in selected side reading or watch a demo. Wait isn&#39;t dead time.</p>
+<h2 id="the-plan-is-the-one-you-read-whole">The plan is the one you read whole</h2>
+<ul>
+<li>M1 named the countermove: never let the agent say everything, take the ranked list first.</li>
+<li>A plan is the exception. Approval hands it to execution as the whole contract, and a summary of a contract is not a contract.</li>
+<li>So this read is complete: every step, every file name, every verification. The countermove comes back the moment you approve.</li>
+</ul>
 <h2 id="read-the-plan-before-you-push-back">Read the plan before you push back</h2>
 <ul>
 <li>Open the plan file; the chat summary is secondary, the file is the artifact. The agent explores, writes a plan file with a descriptive name (e.g. <code>migrate-auth-hash-calm-otter.md</code>), and pauses for approval.</li>
@@ -3148,8 +3163,8 @@ My task:
 </blockquote>
 <h2 id="phase-4-walk-down-every-unresolved-branch">Phase 4: Walk down every unresolved branch</h2>
 <ul>
-<li>Hand the plan to a second agent that reads differently than you do. Still in plan mode: the plan file is the artifact you&#39;re walking, and the lock-it-in convention only fires inside plan mode.</li>
-<li>Ask Claude to walk down every unresolved branch of the plan one question at a time, recommending an answer for each.</li>
+<li>Hand the plan to a second agent that reads differently than you do. Still in plan mode: the plan file is the artifact you&#39;re walking, and edits to it stay locked while you&#39;re in plan mode. Nothing changes until you approve.</li>
+<li>Ask Claude to walk down every unresolved branch of the plan three questions at a time, recommending an answer for each.</li>
 </ul>
 <p><strong>Prompt</strong> <em>(Claude Code)</em> ⟦M:plan⟧</p>
 <pre><code>Do a second-pass read of the current plan. Walk down every unresolved branch of the design tree three at a time: dependencies, decisions, side-effects I haven&#39;t named.
@@ -3163,14 +3178,14 @@ Ask me three questions at a time. For each question, recommend an answer. If a q
 </blockquote>
 <h2 id="answer-the-branches-that-change-what-done-means">Answer the branches that change what &quot;done&quot; means</h2>
 <ul>
-<li>The second read asks one question at a time. Some will feel trivial (<em>&quot;which logger should step 2 use?&quot;</em>); answer and move on. Some will reach into something you hadn&#39;t considered (<em>&quot;step 4 touches the shared cache; what&#39;s the invalidation story?&quot;</em>); pause, think, answer. A few will surface decisions the plan was silently making for you; reject the recommended answer and give a different one.</li>
+<li>The second read asks three questions at a time. Some will feel trivial (<em>&quot;which logger should step 2 use?&quot;</em>); answer and move on. Some will reach into something you hadn&#39;t considered (<em>&quot;step 4 touches the shared cache; what&#39;s the invalidation story?&quot;</em>); pause, think, answer. A few will surface decisions the plan was silently making for you; reject the recommended answer and give a different one.</li>
 </ul>
 <blockquote>
 <p><strong>Too many low-level questions? Steer up.</strong> If Claude keeps asking about implementation detail (which helper, a variable name, error-message wording), tell it: ask me about requirements, not low-level design. The branches worth the time change what &#39;done&#39; means; the rest you&#39;d settle in code review.</p>
 </blockquote>
 <h2 id="stop-when-the-read-starts-reaching">Stop when the read starts reaching</h2>
 <ul>
-<li>Typical session: 5 to 12 questions. Stop when the second read starts reaching: a question about something genuinely out of scope, a branch that&#39;s already settled, a recommendation you&#39;d accept without thinking. The agent doesn&#39;t always know when to stop; you do. The agent incorporates your answers into a sharpened plan. Approve when it&#39;s yours. Not Claude&#39;s, not the second read&#39;s.</li>
+<li>Typical session: 5 to 12 questions. Stop when the second read starts reaching: a question about something genuinely out of scope, a branch that&#39;s already settled, a recommendation you&#39;d accept without thinking. The agent doesn&#39;t always know when to stop; you do. The agent incorporates your answers into a sharpened plan. Approve when it reads like your plan.</li>
 </ul>
 <blockquote>
 <p><strong>Timebox check.</strong> When the slot ends, stop. The second-pass walk-down can run deep on a real codebase. If it is still surfacing branches when time is up, take the most recent sharpened plan, approve it, and move to Phase 5. The branches that did not surface today are the ones you will catch when you actually ship the work. The exercise teaches the move. You take the move home.</p>
@@ -3213,7 +3228,7 @@ If a question can be answered by exploring the codebase, explore the codebase in
 <ul>
 <li>On to the Compound step, and keep this session open for it. The next step reads this same scrollback to pull the task-shaping rules worth keeping. The Compound step then writes one into your personal <code>CLAUDE.local.md</code> in a shape you can re-run on your next plan-mode pass. Team-worthy patterns get flagged for a separate PR against team <code>CLAUDE.md</code>.</li>
 </ul>
-<p><strong>What happened:</strong> The agent wrote a plan. You picked <em>keep planning with feedback</em> and sent two push-backs: what YOU saw. The agent regenerated. Then you ran a second-pass read: the agent asked one question at a time, walking down branches you didn&#39;t think to check, suggesting answers. You confirmed or corrected. The plan sharpened. You approved. You did not run the code. You asked Claude what the second-pass read surfaced that your push-back didn&#39;t, and whether any of it would have mattered in execution.</p>
+<p><strong>What happened:</strong> The agent wrote a plan. You picked <em>keep planning with feedback</em> and sent two push-backs: what YOU saw. The agent regenerated. Then you ran a second-pass read: the agent asked three questions at a time, walking down branches you didn&#39;t think to check, suggesting answers. You confirmed or corrected. The plan sharpened. You approved. You did not run the code. You asked Claude what the second-pass read surfaced that your push-back didn&#39;t, and whether any of it would have mattered in execution.</p>
 </section>
 
 
@@ -3253,8 +3268,8 @@ If a question can be answered by exploring the codebase, explore the codebase in
 <pre><code>Let&#39;s decide together where we store this for optimal use in future. Propose two or three plausible paths with their loading models — fires-anywhere-on-this-laptop vs fires-only-when-this-repo-is-open — and tell me which one you&#39;d pick for these rules and why. I&#39;ll confirm or steer. Once we agree, write the rules in the wording I sharpened. After saving, show me the first three rules from the file so I can confirm the wording stuck. If a file already exists at the path we pick, ask before overwriting.
 </code></pre>
 <h2 id="wire-the-file-in-check-the-wording">Wire the file in, check the wording</h2>
+<p><strong>Note</strong> A rule off the auto-load path needs a wire, or it sits silently on disk until something reads it. <code>./CLAUDE.local.md</code>, <code>./CLAUDE.md</code>, and <code>~/.claude/CLAUDE.md</code> auto-load; anywhere else needs an <code>@import</code> line added to one of those three, e.g. <code>@~/.claude/memory/task-shaping.md</code> added to <code>~/.claude/CLAUDE.md</code> for a rule that lives at <code>~/.claude/memory/task-shaping.md</code>. If Claude picked a path outside the three, ask it for that <code>@import</code> line before you move on.</p>
 <ul>
-<li>A rule off the auto-load path needs a wire. If the agent proposes a path other than <code>./CLAUDE.local.md</code>, <code>./CLAUDE.md</code>, or <code>~/.claude/CLAUDE.md</code>, ask Claude to also propose the <code>@import</code> line that wires the file in. A rule at <code>~/.claude/memory/task-shaping.md</code> (or any notes folder) sits silently on disk until something reads it; adding <code>@~/.claude/memory/task-shaping.md</code> to <code>~/.claude/CLAUDE.md</code> is what makes &quot;fires anywhere on this laptop&quot; actually fire.</li>
 <li>Read the three rules back. If any drifted from your wording, push back and have Claude rewrite.</li>
 </ul>
 <h2 id="phase-3-name-the-automation-shapes-dont-build-them">Phase 3: Name the automation shapes, don&#39;t build them</h2>
@@ -3333,6 +3348,7 @@ If nothing earned itself, say so and stop.
 <h2 id="next">Next</h2>
 <p>At M3, the same move goes into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch a second read surfaces, before a teammate needs to ask. And the move itself turns out to be packageable as a skill; you author your first one there.</p>
 <p>Ask Claude where it wrote the plan file, note the path; M3 reads it. Close this session when the second read lands. M3 opens fresh and runs security skills against the M2 feature; if it doesn&#39;t have an external or user-facing surface, swap to something from your backlog that does.</p>
+<p>Come to Module 3 without that noted path and a feature to point the skills at, and you&#39;ll be scrambling to reconstruct one while the room is already running STRIDE. Your call.</p>
 <h2 id="pre-reads-before-module-3">Pre-reads before Module 3</h2>
 <p>Optional. Lands the modern agentic-security frame before STRIDE and access-control.</p>
 <p><strong>Read:</strong> Simon Willison, <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/">The lethal trifecta for AI agents</a> (June 2025, the piece that named the threat class). Names the modern threat class that combines private data, untrusted content, and external communication into a compromise surface.</p>
@@ -3356,12 +3372,10 @@ If nothing earned itself, say so and stop.
 <p>After this module, you will be able to:</p>
 <ul>
 <li><strong>Fork</strong> a sibling git worktree and run two Claude Code sessions on the same history side by side, one window per lane, working the idle window while the other runs a long prompt</li>
-<li><strong>Invoke</strong> a curated access-control analysis skill on a feature you&#39;re shipping (as a subagent, fresh context) and name what your first read missed</li>
-<li><strong>Apply</strong> a curated STRIDE skill to the mapped surface (again as a subagent), pick one threat worth hardening against, write the decision as an ADR in your repo&#39;s convention</li>
+<li><strong>Invoke</strong> curated access-control-analysis and STRIDE skills on a feature you&#39;re shipping (each as a subagent, fresh context): name what your first read missed, pick one threat worth hardening against, and write the decision as an ADR in your repo&#39;s convention</li>
 <li><strong>Split</strong> jobs between subagent and main thread, breadth-first curated reads with long structured output go to a subagent; one-question-at-a-time authoring and interactive steering stay in the main thread</li>
 <li><strong>Author</strong> a test-strategy skill through conversation with Claude (one question at a time), tuned to your codebase&#39;s actual testing conventions</li>
-<li><strong>Test</strong> the authored skill: ask it to disclose its own weakest part, then push back on the critique</li>
-<li><strong>Invoke</strong> the authored skill on the security-tested feature and ask Claude whether the test strategy is any good</li>
+<li><strong>Test</strong> the authored skill: ask it to disclose its own weakest part, push back on the critique, then invoke it on the security-tested feature and ask Claude whether the test strategy is any good</li>
 <li><strong>Ship</strong> one authored skill personal-first, and know when it&#39;s a team PR</li>
 </ul>
 <h2 id="start-here">Start here</h2>
@@ -3373,7 +3387,7 @@ If nothing earned itself, say so and stop.
 <p><strong>Time:</strong> ~5 min</p>
 <p>Module 3 runs in two windows. Security is the main quest in your chosen repo. Quality is a side-quest in a sibling worktree.</p>
 <p><strong>What you do:</strong> Start a Claude Code session in your repo for security. Fork a sibling worktree for quality, open a second session there, and confirm both sessions read the same codebase from their own working directories.</p>
-<p><strong>What you build:</strong> two Claude Code sessions running side by side on one git history. A security main lane in your repo, and a quality side lane in a sibling worktree that waits until Exercise 3. When one lane runs a long prompt, the other is where you work.</p>
+<p><strong>What you build:</strong> two Claude Code sessions running side by side on one git history. A security main lane in your repo, and a quality side lane in a sibling worktree that waits until you author the test-strategy skill there. When one lane runs a long prompt, the other is where you work.</p>
 <h2 id="fork-the-side-worktree-from-your-security-lane">Fork the side worktree from your security lane</h2>
 <ul>
 <li>Security is the main quest. Start it in your repo. This is your main lane for Module 3. Access mapping, STRIDE, and the ADR all live here.</li>
@@ -3386,7 +3400,7 @@ If nothing earned itself, say so and stop.
 <li>Personal files like <code>CLAUDE.local.md</code> don&#39;t sync between worktrees. They get copied across once at fork time, then evolve independently.</li>
 <li>Decide where to base the side worktree. It branches off your current local HEAD. Clean main is the safe default. If you want another base, switch to it before you fork.</li>
 </ul>
-<p>The fork prompt reads your repo&#39;s folder name from the working directory. Paste it as-is; Claude fills in <code>&lt;repo-name&gt;</code> itself.</p>
+<p>Ask Claude to fork a sibling worktree and copy your personal rules across. The prompt reads your repo&#39;s folder name from the working directory: paste it as-is, Claude fills in <code>&lt;repo-name&gt;</code> itself.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Fork a sibling worktree. Default path `../&lt;repo-name&gt;-m3-quality`, default branch `m3/quality` off the current branch:
 
@@ -3411,7 +3425,8 @@ Tell me the absolute path to the new worktree directory and which files copied a
 <pre><code>/rename m3-quality
 </code></pre>
 <ul>
-<li>You author the test-strategy skill here while the main lane runs security. The skill installs to user scope, so Exercise 3 returns to the main lane to invoke it on the security-tested feature. You are not carrying the skill back by hand; it crosses worktrees on its own.</li>
+<li>Authoring and invoking the test-strategy skill both happen in this window, on this codebase. It installs to user scope, so it crosses back to the main lane on its own, and you never carry it by hand. The main lane&#39;s read on it comes later, at a separate step that revisits this window&#39;s scrollback rather than invoking anything here again; the evidence-based sharpen runs later still, back in the main lane where the compound step lives.</li>
+<li>Ask Claude to confirm the worktree state, then wait.</li>
 </ul>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Confirm worktree state:
@@ -3442,7 +3457,7 @@ Report the four lines back. Then wait.
 <h2 id="what-a-skill-is">What a skill is</h2>
 <ul>
 <li>A <strong>skill</strong> is a named, scoped capability the agent can invoke. A markdown file with a frontmatter header and a set of instructions, living in <code>.claude/skills/&lt;name&gt;/SKILL.md</code> or an equivalent team-kit home. Claude Code discovers it by name and pulls the body in when the work calls for it.</li>
-<li>One frontier skill already reached you as a plain prompt. The second-pass walk-down against your Module 2 plan file, where Claude asked you one question at a time about unresolved branches, was patterned on Matt Pocock&#39;s <code>grill-me</code> skill (Socratic requirement elicitation, MIT-licensed, on his GitHub). It arrived unpackaged because skills hadn&#39;t yet been introduced as a primitive. Today the packaging arrives: you invoke two curated skills and author one of your own.</li>
+<li>One frontier skill already reached you as a plain prompt. The second-pass walk-down against your plan file, where Claude asked you one question at a time about unresolved branches, was patterned on Matt Pocock&#39;s <code>grill-me</code> skill (Socratic requirement elicitation, MIT-licensed, on his GitHub). It arrived unpackaged because skills hadn&#39;t yet been introduced as a primitive. Today the packaging arrives: you invoke two curated skills and author one of your own.</li>
 <li>Skills are how agentic knowledge compounds across teammates. A Slack thread about &quot;how to threat-model our webhook paths&quot; dies in 48 hours. A STRIDE skill tuned to your stack lives as long as the repo.</li>
 </ul>
 <h2 id="borrowed-judgement-or-your-own">Borrowed judgement, or your own</h2>
@@ -3453,7 +3468,7 @@ Report the four lines back. Then wait.
 <h2 id="your-authored-skill-starts-personal-then-compounds">Your authored skill starts personal, then compounds</h2>
 <ul>
 <li>Your skills folder, starting today. The skill you author ships to your personal <code>~/.claude/skills/test-strategy/</code>, auto-discovered in every session you run. Personal-first is the pattern your kit already follows: your <code>./CLAUDE.local.md</code> rules file is personal and gitignored, and the first authored skill lands the same way. Promotion to a team home is a human conversation and then a PR, later.</li>
-<li>A team kit is born from personal skills. Intercom&#39;s 267-skill plugin repo (153 contributors, 31% of R&amp;D by Intercom&#39;s own count, as of April 2026) was born exactly that way: one engineer&#39;s personal skill, then a teammate&#39;s, then accretion.</li>
+<li>A team kit is born from personal skills. Intercom&#39;s 267-skill plugin repo (153 contributors, 31% of R&amp;D headcount are active contributors, by Intercom&#39;s own count, as of April 2026) was born exactly that way: one engineer&#39;s personal skill, then a teammate&#39;s, then accretion.</li>
 </ul>
 <h2 id="two-curated-one-authored">Two curated, one authored</h2>
 <ul>
@@ -3475,6 +3490,7 @@ Report the four lines back. Then wait.
 <li>The authoring conversation will offer a generic test-pyramid default. Your codebase is not a pyramid. Push back until the skill reflects how your tests actually work.</li>
 <li>Skills live in specific places. The curated ones were installed as personal skills at prework, so Claude Code auto-discovers them by name; you don&#39;t point at a path. The one you author lands in your personal kit at <code>~/.claude/skills/test-strategy/</code>. Don&#39;t invent new homes.</li>
 </ul>
+<p>Go.</p>
 </section>
 
 
@@ -3487,10 +3503,17 @@ Report the four lines back. Then wait.
 <h1 id="map-the-access-surface-own-the-delta">Map the access surface, own the <em>delta</em></h1>
 <p><strong>Time:</strong> 20 minutes.</p>
 <p><strong>Window:</strong> the main quest window (<em>m3-security</em>).</p>
-<p><strong>What you do:</strong> Invoke the curated access-control analysis skill on the small feature you brought to Module 3. Read what it surfaces. Decide, on the record in your repo, which surface it called out harder than you would have, and which surface you know matters that the skill didn&#39;t catch. Ship the delta as notes the STRIDE exercise consumes next.</p>
+<p><strong>What you do:</strong> Invoke the curated access-control analysis skill on the small feature you brought to Module 3. Read what it surfaces. Decide, on the record, which surface it called out harder than you would have, and which surface you know matters that the skill didn&#39;t catch. Ship the delta as notes the STRIDE exercise consumes next.</p>
 <p><strong>What you build:</strong> an access-surface map, plus the delta only you can add. Two surfaces: the one the curated skill called out harder than you would have, and the one you know matters that the skill missed. The delta is the artifact STRIDE chews on next, not the raw skill output.</p>
 <p><strong>The point:</strong> STRIDE without an access-surface map is pub-quiz threat modeling. Before you threat-model, you map what you&#39;re protecting. The curated skill does the breadth; you own the codebase-specific judgment the skill can&#39;t have.</p>
 <hr>
+<h2 id="take-the-ranked-ten-leave-the-rest-on-disk">Take the ranked ten, leave the rest on disk</h2>
+<ul>
+<li>From here on, outputs get big. The access map runs pages, the STRIDE walk after it runs longer, and soon two windows produce at once.</li>
+<li>The countermove from M1 goes to work: never let the agent say everything. The prompts here route the heavy output to disk and keep the chat read short, the saved map first, then a walk-through of what stood out.</li>
+<li>Your read is the short list, plus the two or three entries your own knowledge of the codebase flags. The file holds the rest until a decision needs it.</li>
+<li>When an answer balloons into an essay anyway, say so: ranked list first, ten lines. One sentence buys the slot back.</li>
+</ul>
 <h2 id="phase-1-run-the-curated-skill-on-your-feature-and-save-the-map">Phase 1: Run the curated skill on your feature and save the map</h2>
 <ul>
 <li>You invoke; the skill does the breadth walk. The <code>access-control-analysis</code> skill was installed as a personal skill during prework, so Claude Code auto-discovers it by name in the m3-security session. You aren&#39;t on the hook for walking every surface. The skill and its subagent do that; you own the codebase-specific judgment the skill can&#39;t have.</li>
@@ -3501,6 +3524,7 @@ Report the four lines back. Then wait.
 <ul>
 <li>You should see <code>access-control-analysis</code> and <code>stride</code> listed under <strong>User</strong>. (If they&#39;re missing, check prework Step 4.) The Project list is whatever this repo ships; User is your personal skills. Skills you author later in Module 3 land in User too.</li>
 </ul>
+<p>Ask Claude to list its installed skills, with storage location and context-load status.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>List my installed skills. Tell me also their storage location and whether or not they are loaded onto context.
 </code></pre>
@@ -3516,7 +3540,7 @@ The feature is:
 <h2 id="kick-off-the-run-then-work-the-other-window">Kick off the run, then work the other window</h2>
 <ul>
 <li>The access-control pass is a breadth walk and takes a few minutes. That wait is the two-window move Module 3 installs: kick off a long run in one window, do active work in the other, come back when the first lands.</li>
-<li>Switch to your m3-quality window now. While the map builds in m3-security, start authoring the test-strategy skill there (Exercise 3, Phase 1). When the map lands back in m3-security, switch back to walk it and write the delta. Both windows are already open from <em>Open the side quest</em>; this is a focus switch, not a new session.</li>
+<li>Switch to your m3-quality window now. While the map builds in m3-security, start authoring the test-strategy skill there (its first authoring-conversation phase). When the map lands back in m3-security, switch back to walk it and write the delta. Both windows are already open from <em>Open the side quest</em>; this is a focus switch, not a new session.</li>
 </ul>
 <h2 id="phase-2-read-the-map-back-before-you-decide-the-delta">Phase 2: Read the map back before you decide the delta</h2>
 <ul>
@@ -3524,7 +3548,7 @@ The feature is:
 <li>See the structured read before you decide. Ask Claude to walk you through the surface map in chat: categories, key findings, ambiguous spots. You want the structured read in front of you before you name your deltas in Phase 3.</li>
 </ul>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Read the surface map you wrote at the path you told me. Walk me through it in chat: what categories of surface you found, the two or three findings that stood out most, and any surface you flagged as ambiguous. Concise — this primes me for the deltas I&#39;ll tell you in the next phase.
+<pre><code>Read the surface map you wrote at the path you told me. Walk me through it in chat, ranked, most load-bearing surface first: categories, the two or three findings that stood out most, any surface you flagged as ambiguous. Ten lines, then stop — this primes me for the deltas I&#39;ll tell you in the next phase. Expand a finding only when I ask.
 </code></pre>
 <h2 id="phase-3-add-the-surface-the-skill-over-called-and-the-one-it-missed">Phase 3: Add the surface the skill over-called, and the one it missed</h2>
 <ul>
@@ -3547,14 +3571,14 @@ The surface the skill missed that I know matters is:
 </code></pre>
 <h2 id="push-back-until-the-reason-names-your-codebase">Push back until the reason names your codebase</h2>
 <ul>
-<li>Answer, then sharpen. Push back on the sharpening question until the reason names something specific to your codebase. <em>&quot;The billing webhook re-hits the queue on retry, so the same event gets reprocessed&quot;</em> beats <em>&quot;webhooks need auth.&quot;</em></li>
+<li>Answer, then sharpen. Push back until the reason names something specific to your codebase. <em>&quot;The billing webhook re-hits the queue on retry, so the same event gets reprocessed&quot;</em> beats <em>&quot;webhooks need auth.&quot;</em></li>
 </ul>
 <h2 id="phase-4-add-the-context-header-a-cold-reader-needs">Phase 4: Add the context header a cold reader needs</h2>
 <ul>
 <li>You&#39;re about to hand this map to the STRIDE skill. Glance at it. If a teammate landing on this file cold would miss something the map assumes you know, add a one-line context header. If it reads, close.</li>
 <li>Most people skip this; some want the pause. Your call.</li>
 </ul>
-<p><strong>What happened:</strong> You ended with a short delta-note in your repo: the surfaces the skill called out harder than you would have, and the surfaces you knew mattered that the skill didn&#39;t catch. The delta is the artifact, not the raw skill output.</p>
+<p><strong>What happened:</strong> You ended with a short delta-note on the record: the surfaces the skill called out harder than you would have, and the surfaces you knew mattered that the skill didn&#39;t catch. The delta is the artifact, not the raw skill output.</p>
 <h2 id="what-this-sets-up">What this sets up</h2>
 <p>The STRIDE exercise invokes the curated STRIDE skill on the map you just built. The surface map IS the input. If you rushed Phase 2, STRIDE threat-models a thin map; if you worked the delta, STRIDE has something real to chew on.</p>
 </section>
@@ -3699,8 +3723,9 @@ Then, in the same response, read the strategy you just produced and answer: is i
 </code></pre>
 <h2 id="sharpen-the-skill-from-what-came-back">Sharpen the skill from what came back</h2>
 <ul>
+<li>Before you ship, ask the skill itself to name its own weakest part: the assumption most likely wrong for this codebase, or what a teammate would push back on first. Push back on what it names; don&#39;t settle for reassurance.</li>
 <li>The grade is biased by design. Claude invoked the skill it just helped author, then graded the result in the same context window: same-window self-charity. One paste, one wait, one read, convenient over rigorous.</li>
-<li>Want a harsher read? Run it as two prompts. Invoke first, read the output, then a second prompt: <em>&quot;Read that output as if you&#39;d never seen the SKILL.md. Does it fit this codebase, or does it read generic?&quot;</em> Either approach is fine.</li>
+<li>Want a harsher read of the output too? Run it as two prompts. Invoke first, read the output, then a second prompt: <em>&quot;Read that output as if you&#39;d never seen the SKILL.md. Does it fit this codebase, or does it read generic?&quot;</em> Either approach is fine.</li>
 <li>If the strategy reads generic, sharpen the skill, not the output. A weak output is usually a weak skill. Sharpen the SKILL.md, then re-invoke.</li>
 <li>Then decide: one re-invoke, or ship with a TODO. Re-invoke if the sharpen was substantive. Otherwise ship with a one-line TODO at the top naming what&#39;s unresolved. A skill that names its own gap is more useful to a teammate than one that pretends it&#39;s finished. The authoring muscle is what Module 3 installs; perfection waits for M6.</li>
 </ul>
@@ -3734,8 +3759,7 @@ Then, in the same response, read the strategy you just produced and answer: is i
 <li>One hardening decision is enough; the team kit&#39;s breadth grows across many features</li>
 <li>A test-strategy skill authored on your codebase is worth more than a perfect generic one. Your codebase teaches the skill, not the manual.</li>
 <li>Ask the agent what&#39;s weakest about its own output; the mirror reflects what your own read would miss</li>
-<li>Invoke the skill on the thing you just built. Authoring without invocation is theatre</li>
-<li>One skill shipped beats three skills drafted; the team kit grows by accretion</li>
+<li>Invoke the skill on the thing you just built. Authoring without invocation is theatre. One skill shipped beats three skills drafted; the team kit grows by accretion</li>
 </ul>
 <h2 id="sharpen-the-skill-from-evidence">Sharpen the skill from evidence</h2>
 <p><strong>Window:</strong> the main quest window (<em>m3-security</em>). Switch back from the side quest now, the compound runs here. The test-strategy skill lives at user scope (<code>~/.claude/skills/test-strategy/SKILL.md</code>), readable from any session, so it crosses back with you. The canonical <code>./CLAUDE.local.md</code> lives in the main repo, not the side quest&#39;s worktree copy, so rule integration belongs here.</p>
@@ -3748,6 +3772,7 @@ First: find the one section of the skill where invocation evidence shows it unde
 
 Then, separately: if one rule about how I worked with security skills, wrote ADRs, or sequenced the access-map → STRIDE → test-strategy flow earned itself this session, integrate it into ./CLAUDE.local.md (integrate, don&#39;t append; personal file, not team ./CLAUDE.md). Name the moment, not the rule. Quote the specific session beat. If the rule is team-worthy, flag it in your summary so I can open a separate PR against ./CLAUDE.md later. If nothing earned itself, say so and skip the rules-file write.
 </code></pre>
+<h2 id="read-the-sharpen-with-a-skeptical-eye">Read the sharpen with a skeptical eye</h2>
 <p>Claude is reading the skill file fresh and your m3-security scrollback. Useful (file content survived the side-quest /clear and carries the encoded conventions) but charitable (same-context-window self-audit under-flags). Two other tells to watch for: Claude may open with a plan before showing the diff, and RLHF softening can dress up a cosmetic edit as a meaningful one. You can make the grill hotter: ask Claude to over-flag (<em>&quot;be harsher than necessary, find at least two sections that underdelivered, assume it&#39;s worse than it looks&quot;</em>), tell it to skip preamble and lead with the before/after diff, or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.</p>
 <p>Three modules of loop work sit behind you. Before you clear the session, the near half of the map, seen whole with its parts named.</p>
 <section class="phase phase--lecture" id="lectures-the-loop-half-filled">
@@ -3872,6 +3897,19 @@ Then, separately: if one rule about how I worked with security skills, wrote ADR
 <li><strong>Name the uncertainty before you move.</strong> (Intent) Aim the work at the unknown that will teach you the most. It is the question that opens every good plan, and it is the near half&#39;s one governor.</li>
 <li>It travels. It prices a plan read, picks the feature worth agent time, and tells you when a skill is worth authoring. A run that can&#39;t answer &quot;what does this settle?&quot; isn&#39;t aimed yet.</li>
 </ul>
+<h2 id="reading-was-never-the-control">Reading was never the control</h2>
+<ul>
+<li>The outputs in this module were the biggest yet, and control never came from reading them whole. It came from three moves you already made.</li>
+<li>The delta note held the access map against what you already knew of the codebase, in both directions. A probe, not a read. The one-threat pick rejected most of the STRIDE walk with a named reason. The skill critique made the artifact name its own weakest part before it earned trust.</li>
+<li><strong>Control is interrogation.</strong> Ranked list first, probe where you know most, make the output name its weak spot. The full record stays on disk. You can always read more; you can never read all.</li>
+</ul>
+<h2 id="the-branch-is-the-permission">The branch is the permission</h2>
+<ul>
+<li>The side quest ran on its own branch all module and never merged. That is the shape, not an accident.</li>
+<li>On a branch, acting without full control is safe: the blast radius is the branch. Let the agent run, read what your judgment flags, and leave the rest on disk.</li>
+<li>Control is exercised at the merge. The ranked findings, the delta against what you know, the weak spot named: the interrogation happens there, and the merge waits until the work survives it.</li>
+<li>An un-merged branch is not unfinished work. Holding the merge until control is earned is the control working.</li>
+</ul>
 <h2 id="the-far-half-goes-quiet">The far half goes quiet</h2>
 <ul>
 <li>The near half ran on quick feedback. Every move so far returned a result you could read within minutes: a diff, a plan, a test run. You were the feedback signal, and you were never far from the loop.</li>
@@ -3918,6 +3956,7 @@ Then, separately: if one rule about how I worked with security skills, wrote ADR
 <p>The scoped task you picked as homework.</p>
 <p><strong>A real slice you&#39;d send off rather than nudge bit by bit, with a &#39;done&#39; you can name in a sentence. Bigger than a typo-fix, smaller than an epic.</strong></p>
 <p>Come to Module 4 without having picked the task and you&#39;ll be scrambling for one while the room is already running theirs. Your call.</p>
+<p>Optional forward-look from Module 3: <a href="#supplementary-what-is-agentic-engineering">What is agentic engineering</a>. And when your sessions start running heavy, <a href="#supplementary-token-efficiency">Token efficiency</a> on keeping the context window lean.</p>
 <h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
@@ -4092,7 +4131,7 @@ Then, separately: if one rule about how I worked with security skills, wrote ADR
 <h2 id="every-send-off-is-an-experiment">Every send-off is an experiment</h2>
 <p>You are testing, and you are learning. Every send-off from here on is an experiment. The agent is the apparatus, your rules and context are the setup, and the result is data.</p>
 <p>You don&#39;t need to get it right first time. You need to read the result and know what to change for the next run. That is the whole obligation.</p>
-<p>You&#39;re new to this country; don&#39;t travel it like a tourist. A tourist runs an agent and hopes; a practitioner runs a test and reads the data. The difference is not the outcome of the run. It is what you can say afterwards about why.</p>
+<p>You&#39;re new to this country: the stretch where the agent runs alone and you don&#39;t watch each step. Don&#39;t travel it like a tourist. A tourist runs an agent and hopes; a practitioner runs a test and reads the data. The difference is not the outcome of the run. It is what you can say afterwards about why.</p>
 <h2 id="the-two-run-arc">The two-run arc</h2>
 <ul>
 <li>Same task, two runs. Run one goes now, un-packaged: no plan.md, no verifier, no reference artifact. Just <em>&quot;here&#39;s my system, go do X.&quot;</em> The agent works with exactly what you&#39;ve given it.</li>
@@ -4121,13 +4160,13 @@ Then, separately: if one rule about how I worked with security skills, wrote ADR
 <div class="phase-kicker">Exercise</div>
 
 <h1 id="walk-and-send-off">Walk and <em>send off</em></h1>
-<p><strong>Time:</strong> 55 minutes inside a 1h45 module slot (Phases 1–3, breakdown: pick 10 / walk-and-fill 40 / settle 5). The send-off (~5 min, single prompt paste) closes Module 4 after this exercise.</p>
+<p><strong>Time:</strong> 55 minutes inside a 1h45 module slot (Phases 1–2, breakdown: pick 10 / walk-and-fill 45). The send-off (~5 min, single prompt paste) closes Module 4 after this exercise.</p>
 <p><strong>Session</strong> <em>(new, &quot;Module 4 - Run the first experiment&quot;)</em></p>
 <p>Start a new Claude Code session at your repo root.</p>
 <pre><code>/rename m4-walk-send
 </code></pre>
 <p>Start clean. M4 picks up a bigger task than M1–M3. Before the new session, check your working tree and branch. You ride that state into the closing <code>m4/&lt;slug&gt;</code> commit and M5&#39;s fork.</p>
-<p><strong>What you do:</strong> Pick a task you&#39;ve been avoiding, the kind you&#39;d send off rather than nudge bit by bit. Walk what you&#39;ve built across four modules against it. Fill the worst gaps and settle your <code>observations/</code> tree on disk. At the close, compound your rules file and send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you&#39;ve seen enough.</p>
+<p><strong>What you do:</strong> Pick a task you&#39;ve been avoiding, the kind you&#39;d send off rather than nudge bit by bit. Walk what you&#39;ve built across four modules against it. Fill the worst gaps and settle your <code>observations/</code> tree on disk. At the close, send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the run when you&#39;ve seen enough.</p>
 <p><strong>What you build:</strong> two things a long run can ride: a scoped task with a &#39;done&#39; you can name in a sentence, and the worst gaps filled in <code>observations/</code> and your rules file, with the <code>observations/</code> tree settled on disk. Then it goes off un-packaged.</p>
 <p><strong>The point:</strong> This is the first experiment of a two-run arc. The un-packaged send-off here teaches Module 5 what packaging adds, a lesson no lecture can land. Every send-off is a test, not a production run; you are testing and you are learning.</p>
 <hr>
@@ -4159,6 +4198,7 @@ Candidates:
 <h2 id="phase-2-build-the-ranked-list-of-what-will-hurt-the-agent">Phase 2: Build the ranked list of what will hurt the agent</h2>
 <ul>
 <li>The audit walks your whole system so you don&#39;t. The agent reads <code>CLAUDE.md</code>, <code>CLAUDE.local.md</code>, memory, ADRs, and any skills you&#39;ve authored as a subagent, then ranks the five thin spots that will hurt the agent most on this task.</li>
+<li>Heavy run expected. Skim past the opening summary; the ranked thin-spots list is the payoff. If the ranked list comes back thin, push Claude to keep digging rather than letting a shallow pass stand as done.</li>
 </ul>
 <p>Ask Claude to run the audit as a subagent and return a ranked top-five.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -4172,7 +4212,6 @@ For each item, say: (a) what&#39;s thin, (b) what a properly-prepared agent woul
 </code></pre>
 <h2 id="read-the-ranked-thin-spots">Read the ranked thin-spots</h2>
 <ul>
-<li>Heavy run expected. Skim past the opening summary; the ranked thin-spots list is the payoff.</li>
 <li>Name which ones you already knew, which surprised you. This move is <em>gap analysis</em>: walk the system you have against the system the task needs. You&#39;ll use it for every agent hand-off.</li>
 </ul>
 <h2 id="fill-the-worst-two-or-three-gaps">Fill the worst two or three gaps</h2>
@@ -4204,18 +4243,14 @@ For each picked gap, propose a resolution in the shape the audit named, hear my 
 <blockquote>
 <p><strong>Time check.</strong> Different paces hit this point at different times. The room doesn&#39;t wait for the slowest. Five to ten minutes to share what surfaced, where the audit missed, and why the agent sometimes goes lazy.</p>
 </blockquote>
-<h2 id="phase-3-settle-the-tree-before-the-send-off">Phase 3: Settle the tree before the send-off</h2>
 <ul>
-<li>Ask Claude to propose any tidy-up of <code>./observations/</code>. Cap it at one or two file moves or renames. Leave the ADRs and skills where they are; larger reorganisation is a separate session, not a mid-module sweep.</li>
-<li>Ask to see the diff before it lands. The send-off fires next, so the tree wants to be settled on disk, not just planned in chat.</li>
+<li>Before the send-off, ask Claude to propose any tidy-up of <code>./observations/</code>. Cap it at one or two file moves or renames; leave the ADRs and skills where they are, and ask to see the diff before it lands.</li>
 <li>Consider whether each rule is stored where it will fire. A rule the agent never reads is not a rule.</li>
 </ul>
-<p><strong>What happened:</strong> You picked a real task you&#39;d send off rather than nudge bit by bit. You walked what you&#39;d built across four modules against it, filled the worst gaps, and settled the <code>observations/</code> tree. Phase 3 ended with the tree settled before the send-off.</p>
+<p><strong>What happened:</strong> You picked a real task you&#39;d send off rather than nudge bit by bit. You walked what you&#39;d built across four modules against it, filled the worst gaps, and settled the <code>observations/</code> tree before the send-off.</p>
 <h2 id="what-closes-module-4">What closes Module 4</h2>
-<p>Phase 3 is where the exercise ends. Module 4&#39;s send-off takes over:</p>
+<p>The exercise ends here. Module 4&#39;s send-off takes over:</p>
 <ol>
-<li>You nudge the compound step: Claude reads the session, rewrites your personal <code>CLAUDE.local.md</code> from evidence, integrates, sharpens, removes, and reports 3–5 lines. Team-worthy rules get flagged in the summary, not auto-PRed.</li>
-<li>You push back on the 3–5 line summary.</li>
 <li>You set the two return markers: ask Claude where this session&#39;s transcript lives, then ask it to commit the current state on a feature branch and report the short SHA. Push the branch if you want the run to outlast your laptop. Module 5 forks from that commit and reads the transcript.</li>
 <li>You run the trifecta check: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening that prompt injection needs. All three present here, cut one leg before you send.</li>
 <li>You paste the send-off prompt to the same session. Keep the laptop awake and plugged in. Don&#39;t close the lid; sleep freezes the session and it won&#39;t resume on wake. If you want to stop the run early, wait for a tool call to finish; clean interrupts between tool calls are fine. Traces are data either way.</li>
@@ -4237,13 +4272,13 @@ For each picked gap, propose a resolution in the shape the audit named, hear my 
 <div class="phase-kicker">Lecture</div>
 
 <h1 id="the-ironies-of-automation">The ironies of automation</h1>
-<h2 id="the-better-the-automation-the-worse-the-operator">The better the automation, the worse the operator</h2>
+<h2 id="monitoring-and-takeover-run-on-the-same-reps">Monitoring and takeover run on the same reps</h2>
 <ul>
 <li>This is a 1983 result, not an AI take. Lisanne Bainbridge, studying industrial automation: automate the reliable middle of a task, and the human keeps exactly two jobs. Monitor for the rare failure. Take over when it happens.</li>
 <li>Both jobs demand hands-on fluency. Monitoring only works if you can tell wrong from right at a glance. Takeover only works if the manual skill is still there. Both ride on the reps of doing the task yourself.</li>
 <li>The irony: daily automation quietly removes those reps. Skills deteriorate when they are not used. The better the automation, the less you do the task by hand, and the worse you are at the moment you are needed most. Bainbridge&#39;s phrasing: a formerly experienced operator who has been monitoring an automated process &quot;may now be an inexperienced one.&quot;</li>
 </ul>
-<h2 id="earned-trust-breeds-the-miss">Earned trust breeds the miss</h2>
+<h2 id="trust-and-vigilance-move-in-opposite-directions">Trust and vigilance move in opposite directions</h2>
 <ul>
 <li>Earned trust is exactly what breeds the miss. Watch a system that is highly but imperfectly reliable, and your own detection performance degrades. The automation-studies literature named this <strong>overreliance</strong>: trusting the machine past the point where you still catch its errors (Parasuraman and Riley&#39;s use, misuse, disuse).</li>
 <li>The more runs the agent lands cleanly, the worse you get at catching the one that doesn&#39;t. Each clean run is real evidence of competence and real erosion of your vigilance, at the same time. The more autonomy the agent earns, the worse a watcher you quietly become.</li>
@@ -4333,7 +4368,7 @@ I&#39;m leaving the laptop awake and walking away. Work through it. If you get s
 <p>Read the un-packaged Module 4 run through three failure-mode lenses, build the validation that would have caught each, assemble the reference and plan.md, and re-send the same task packaged. The contrast is the lesson.</p>
 <h2 id="prework">Prework</h2>
 <p>Walk in with the Module 4 send-off artefact. Stopped, finished, ran out of credit, doesn&#39;t matter.</p>
-<p>Optional prep in the Module 4 to Module 5 gap: read <a href="#supplementary-clean-code-is-steering">Clean Code Is Steering: Insights from Uncle Bob</a>; watch Laura Entis on Kieran Klaassen, <a href="https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich">You&#39;re the Bread in the AI Sandwich</a>; read Kieran Klaassen, <a href="https://every.to/source-code/compound-engineering-the-definitive-guide">Compound Engineering: The Definitive Guide</a>.</p>
+<p>Optional prep in the Module 4 to Module 5 gap: read <a href="#supplementary-clean-code-is-steering">Clean Code Is Steering: Insights from Uncle Bob</a>; watch Laura Entis on Kieran Klaassen, <a href="https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich">You&#39;re the Bread in the AI Sandwich</a>; read <a href="#supplementary-verification-asymmetry">Verification asymmetry</a>; read Kieran Klaassen, <a href="https://every.to/source-code/compound-engineering-the-definitive-guide">Compound Engineering: The Definitive Guide</a>.</p>
 <h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
@@ -4345,6 +4380,9 @@ I&#39;m leaving the laptop awake and walking away. Work through it. If you get s
 </ul>
 <h2 id="start-here">Start here</h2>
 <p>You sent off an un-packaged run at the close of Module 4 and read the pre-read. You walk in with the artefact in front of you and the three failure-mode lenses in hand. The in-room lecture below opens the session.</p>
+<blockquote>
+<p><strong>Long runs, short reads.</strong> The M1 countermove rides along: never let the agent say everything. Ranked findings first, detail on request, the full record on disk. Chat is for what changed and what needs you.</p>
+</blockquote>
 <section class="phase phase--lecture" id="lectures-reading-the-return">
 <div class="phase-kicker">Lecture</div>
 
@@ -4411,12 +4449,17 @@ I&#39;m leaving the laptop awake and walking away. Work through it. If you get s
 
 
 
+<h2 id="the-nag-writes-the-verifier">The nag writes the verifier</h2>
+<p>Somewhere during the M4 send-off a worry surfaced: did it touch the migration, did the tests really cover the edge. There was no way to check mid-run, and it nagged.</p>
+<p>The nag is a spec, arriving one worry at a time. Each one names a check the run should have carried with it. This module turns the list into machinery: the reference pins the goal, plan.md carries the state, the verifier runs the checks you wished you could run mid-flight.</p>
+<p>Acting without full control is the job from here on. The feeling of what is missing points at what to build next. Build it, send again.</p>
 <h2 id="set-up-the-module-5-worktree">Set up the Module 5 worktree</h2>
 <p>Before opening the Module 5 session, fork the Module 4 starting SHA into a sibling worktree. Module 5&#39;s work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second run starts from the same code state as the first. Cherny calls parallel worktrees his biggest productivity unlock; the Module 2 pre-read lands here.</p>
 <p>A real engineering call lives in this fork: gitignored files (your <code>CLAUDE.local.md</code>, <code>observations/</code>) don&#39;t ride into a worktree because git doesn&#39;t see them. AE101&#39;s default is to copy them in once at fork time. Your Module 1 evidence rides forward (along with any Module 3 artefacts if you&#39;ve completed it); Module 5 and Module 6 compounding diverges in the worktree; you decide post-Module-6 what to merge back into the original. Other engineers wire it differently.</p>
+<h2 id="run-the-fork-from-the-original-repo">Run the fork from the original repo</h2>
 <p><strong>Session</strong> <em>(continue or new, &quot;original repo&quot;)</em></p>
 <p>Run the fork from your original repo, not the worktree (it doesn&#39;t exist yet). If your Module 4 session is still open, ask it there, it&#39;s already in the right place. Otherwise open a fresh session in the original repo location and ask there.</p>
-<p><strong>Claude figures out <code>&lt;repo-name&gt;</code> from the working directory.</strong> Help it if it gets confused.</p>
+<p>Claude figures out <code>&lt;repo-name&gt;</code> from the working directory. Help it if it gets confused.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Read `./task.md`. Use the branch named in its `Run coordinates (do not rewrite or remove)` block — that block is authoritative; ignore any other `Branch:` line in the task body, which may name a different slug. Don&#39;t rediscover the branch with broad branch search. Verify that branch exists locally or as a remote-tracking branch, then find the &quot;M4 starting point&quot; commit on that named branch. If that commit message has been rewritten or is ambiguous, ask me for the SHA from the M4 session close. Spin up a git worktree at that commit. Put the worktree at `../&lt;repo-name&gt;-m5` on a new branch named `m5/` followed by the same task slug as the m4 branch.
 
@@ -4426,7 +4469,7 @@ Then copy the gitignored personal files into the worktree so compounding has the
 
 These won&#39;t sync back automatically — the worktree&#39;s copies are independent from this point. Tell me the worktree path and confirm which files copied across.
 </code></pre>
-<p><strong>Claude will narrate before acting.</strong> It usually opens with a plan summary listing the six sub-steps, then runs them. Skim past the opening; look for the shell-command output confirming the worktree path and which files copied across.</p>
+<p>Claude will narrate before acting. It usually opens with a plan summary listing the six sub-steps, then runs them. Skim past the opening; look for the shell-command output confirming the worktree path and which files copied across.</p>
 <p><strong>The coordinates are the anchor.</strong> Claude should read the protected <code>Run coordinates</code> block in <code>task.md</code>, use the exact <code>m4/&lt;slug&gt;</code> branch named there, and fork from that branch&#39;s &quot;M4 starting point&quot; commit. If the coordinates are missing or the commit message has been rewritten, stop and use the SHA Claude reported at Module 4 close rather than guessing from branch names.</p>
 <p>The worktree is forked and ready. You open the session in it at the first exercise.</p>
 <section class="phase phase--exercise" id="exercises-diagnose-and-resend">
@@ -4581,6 +4624,7 @@ Before lock-in, grill me on missing details that could ruin the smooth run. Ask 
 <li>No benchmark told you what went wrong; the artefact did. The artefact rules, self-reports don&#39;t.</li>
 <li>Your verifier is your first eval. The team kit&#39;s evals grow from here</li>
 </ul>
+<h2 id="re-send-the-same-task-packaged">Re-send the same task, packaged</h2>
 <p>Now the re-send. Same task as Module 4, packaged this time. The prompt can be short because the packaging carries the context: the reference pins the goal, plan.md carries the state, the verifier carries the quality gate. The packaging does the explaining; the prompt invokes it.</p>
 <p><strong>Session</strong> <em>(new, &quot;M5 long-run&quot;)</em></p>
 <p>Open a new Claude Code session in the worktree at <code>../&lt;repo&gt;-m5</code>. The packaging files live on disk; the worktree&#39;s auto-loaded rules (<code>CLAUDE.md</code>, <code>CLAUDE.local.md</code>) load fresh into the new session. The exercise session can stay open if you want to glance back at the assembly conversation.</p>
@@ -4591,6 +4635,7 @@ Before lock-in, grill me on missing details that could ruin the smooth run. Ask 
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>/clear
 </code></pre>
+<h2 id="send-it-off-and-read-the-report-cold">Send it off and read the report cold</h2>
 <p>Either way, the re-send prompt below stands alone: Claude lists the worktree root and reads what it finds.</p>
 <p>Ask Claude to re-run the same Module 4 task using the reference, plan.md, and verifier you just built.</p>
 <p><strong>Prompt</strong> <em>(Claude Code, final move of the module)</em></p>
@@ -4817,7 +4862,7 @@ If any list is empty, say &quot;none.&quot;
 <h2 id="the-three-pattern">The three-pattern</h2>
 <ul>
 <li>Practitioners running multi-hour coding agents converge on the same three pieces. Different posts, different vocabulary, same shape over the last six months. Armin Ronacher names <em>reference</em> and <em>verifier</em> in his work; <em>plan.md</em> lands harder in Geoffrey Huntley&#39;s Ralph practice and Kieran Klaassen&#39;s plan-as-artifact. The three-pattern is what the convergence looks like assembled, and on the map it is what stands in for you at Verification.</li>
-<li><strong>Reference artefact</strong>, against goal drift. A spec the agent reads and re-reads: success criteria, pointers at the relevant memory, named constraints. The spec on disk stays readable mid-run when the buried instructions in the conversation no longer are. In Ronacher&#39;s MiniJinja port, the original Rust snapshot tests played this role; in your re-send, the reference you assembled at Phase 4 plays it.</li>
+<li><strong>Reference artefact</strong>, against goal drift. A spec the agent reads and re-reads: success criteria, pointers at the relevant memory, named constraints. The spec on disk stays readable mid-run when the buried instructions in the conversation no longer are. In Ronacher&#39;s MiniJinja port, the original Rust snapshot tests played this role; in your re-send, the reference you assembled plays it.</li>
 <li><strong>plan.md</strong> the agent owns and mutates, against context rot. A working document that holds durable state across the run: the agent reads it at every session boot, updates it as decisions land, re-reads it when the working window fills. What got ruled out an hour ago is written down, not remembered. Geoffrey Huntley&#39;s Ralph technique bootstraps entire greenfield projects on this single primitive.</li>
 </ul>
 <h2 id="the-verifier-decides-pass-without-you">The verifier decides pass without you</h2>
@@ -4830,7 +4875,7 @@ If any list is empty, say &quot;none.&quot;
 <li><strong>Background-agent verifier.</strong> A separate Claude session reads the produced work and judges it. Right when failures are qualitative: does this answer the question, does this match house style.</li>
 <li><strong>Deterministic shell hook.</strong> Tests, lint, type-check, compile, a custom invariant. Right when the failure has a true-false answer: did it break the build, did it touch the wrong directory.</li>
 <li><strong>Ralph re-feed.</strong> Loop the prompt with a check baked in; the agent re-runs against its own output until the check passes. Right when drift is the dominant failure and re-anchoring catches it.</li>
-<li>The menu is practitioner-lived. Boris Cherny (who built Claude Code) reaches for all three in his long-running practice; the menu form is the synthesis. You picked one at Phase 3 against your dominant failure. The other two sit alongside the three-pattern for next time.</li>
+<li>The menu is practitioner-lived. Boris Cherny (who built Claude Code) reaches for all three in his long-running practice; the menu form is the synthesis. You picked one against your dominant failure. The other two sit alongside the three-pattern for next time.</li>
 </ul>
 <h2 id="hooks-always-fire">Hooks always fire</h2>
 <ul>
@@ -4840,7 +4885,7 @@ If any list is empty, say &quot;none.&quot;
 <h2 id="hooks-for-must-happen-prompts-for-taste">Hooks for must-happen, prompts for taste</h2>
 <ul>
 <li><strong>Must happen goes in a hook</strong>; recommended stays in a prompt or rule. Anything that breaks the work if it skips belongs in a hook: the verifier you just wrote, a pre-commit guard, a session-start context loader. Anything taste-shaped or context-dependent stays in a prompt where the LLM weighs it. Hooks are the runtime&#39;s &quot;I will not forget,&quot; bought at the cost of flexibility.</li>
-<li>Your repo has demands that don&#39;t show up in someone else&#39;s article. The verifier you built was one hook against one failure; the same primitive maps to more. In the session where you built the verifier, ask Claude to propose five hooks tied to this repo and the work you just did, beyond formatting and linting.</li>
+<li>Your repo has demands that don&#39;t show up in someone else&#39;s article. The verifier you built was one hook against one failure; the same primitive maps to more. Ask Claude to propose five hooks tied to this repo, beyond formatting and linting.</li>
 </ul>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Propose five hooks for this repo and the work we just did, beyond formatting and linting.
@@ -4865,7 +4910,7 @@ Skip suggestions any team could want. No preamble. List them.
 <h2 id="at-org-scale-intercoms-tiers">At org scale: Intercom&#39;s tiers</h2>
 <ul>
 <li>Intercom published its own numbers. Darragh Curran (Intercom engineering) wrote &quot;2x, nine months later&quot; in April 2026. His R&amp;D org runs a tiered review structure with auto-approval at the lowest tier: 19.2% of pull requests auto-approved with no human reviewer, merging in 14.6 minutes against an org median of 75.8, and 86% of the auto-approved PRs at 20 lines or fewer.</li>
-<li>That is your verifier from Phase 3, scaled to an R&amp;D org of roughly 500. Same shape: a check trusted enough that the work passing it ships without a human read. The tiers are an org deciding where a check&#39;s word is enough.</li>
+<li>That is your verifier, scaled to an R&amp;D org of roughly 500. Same shape: a check trusted enough that the work passing it ships without a human read. The tiers are an org deciding where a check&#39;s word is enough.</li>
 <li>Review infrastructure grows by accretion. One engineer&#39;s trusted check becomes a team&#39;s, one engineer at a time, until what the team runs on has Intercom&#39;s shape. It starts at the size of the one you built.</li>
 </ul>
 </section>
@@ -4878,7 +4923,7 @@ Skip suggestions any team could want. No preamble. List them.
 <div class="phase-kicker">Lecture</div>
 
 <h1 id="the-gate-is-a-claim-too">The gate is a claim too</h1>
-<p>The re-send came back green. The verifier you built read the work and passed it. That green is worth exactly as much as the gate behind it, and the gate is a claim too. On the map it sits in the far half, the last check before the work ships. It can lie in five ways.</p>
+<p>Say the re-send comes back green. The verifier you built reads the work and passes it. That green is worth exactly as much as the gate behind it, and the gate is a claim too. On the map it sits in the far half, the last check before the work ships. It can lie in five ways.</p>
 <h2 id="passing-is-not-proof">Passing is not proof</h2>
 <ul>
 <li>A gate only means what the gate can see. Green is a claim about the check, not a fact about the work. A result passes for three different reasons that look identical from outside: the judge is miscalibrated, the gate got gamed, or the run was a lucky sample.</li>
@@ -4910,6 +4955,53 @@ Skip suggestions any team could want. No preamble. List them.
 <li>Watch the regression-to-the-mean trap. After a bad run, the next run is usually better with no change at all. A tweak made right after a failure looks effective even when it did nothing.</li>
 </ul>
 <p>A gate is one more claim in the system. Build it, then hold it to the same bar it holds the work to.</p>
+<h2 id="the-delegation-frontier">The delegation frontier</h2>
+<figure class="diagram">
+<svg viewBox="0 0 1200 560" role="img" aria-label="A two-by-two map of delegated work. Horizontal axis: reach, how much you hand off. Vertical axis: calibration, whether trust was earned by a measured gate. Four states: chat-shaped work bottom-left, controlled assistance top-left, reckless autonomy bottom-right, calibrated agency top-right. A dashed ochre curve labelled the frontier rises from low reach at low calibration to high reach at high calibration, and moves outward as fast as the gates behind it." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
+<rect x="0.5" y="0.5" width="1199" height="559" rx="7" fill="#efe6d2"/>
+<rect x="12" y="12" width="1176" height="536" fill="none" stroke="#d6c8a3" stroke-width="1" opacity="0.9"/>
+<rect x="650" y="270" width="500" height="200" fill="rgba(138,58,42,0.05)"/>
+<g stroke="#d6c8a3" stroke-width="1" stroke-dasharray="2 8" opacity="0.8">
+<line x1="650" y1="70" x2="650" y2="470"/>
+<line x1="150" y1="270" x2="1150" y2="270"/>
+</g>
+<g stroke="#786c56" stroke-width="1.6" stroke-linecap="round">
+<line x1="150" y1="470" x2="1140" y2="470"/>
+<line x1="150" y1="470" x2="150" y2="80"/>
+</g>
+<g fill="#786c56">
+<polygon points="1150,470 1138,464 1138,476"/>
+<polygon points="150,70 144,82 156,82"/>
+</g>
+<text x="650" y="505" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2.5" fill="#786c56">REACH · HOW MUCH YOU HAND OFF →</text>
+<text x="125" y="270" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2.5" fill="#786c56" transform="rotate(-90 125 270)">CALIBRATION · TRUST, MEASURED ↑</text>
+<g text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.5" letter-spacing="2">
+<text x="400" y="150" fill="#2f6b6b">CONTROLLED ASSISTANCE</text>
+<text x="400" y="400" fill="#2f6b6b">CHAT-SHAPED WORK</text>
+<text x="800" y="150" fill="#2f6b6b">CALIBRATED AGENCY</text>
+<text x="960" y="400" fill="#8a3a2a">RECKLESS AUTONOMY</text>
+</g>
+<g text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234">
+<text x="400" y="168">small handoffs, tight review</text>
+<text x="400" y="418">you read everything</text>
+<text x="800" y="168">long leash, measured gates</text>
+<text x="960" y="418">long leash, unmeasured green</text>
+</g>
+<path d="M 480,470 C 640,420 760,330 850,240 S 980,120 1020,70" fill="none" stroke="#a05a2c" stroke-width="2.4" stroke-dasharray="7 7" opacity="0.85"/>
+<text x="935" y="205" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="2.5" fill="#a05a2c" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE FRONTIER</text>
+<text x="935" y="221" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">moves as fast as the gates behind it</text>
+<line x1="880" y1="250" x2="945" y2="250" stroke="#a05a2c" stroke-width="1.8" stroke-linecap="round"/>
+<polygon points="955,250 943,244 943,256" fill="#a05a2c"/>
+<text x="650" y="533" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="15.5" fill="#4a4234">The frontier: the largest task you can hand off and still trust the result.</text>
+<text x="1176" y="36" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" letter-spacing="2" fill="#8a3a2a">TWO AXES · FOUR STATES</text>
+</svg>
+</figure>
+
+<ul>
+<li>Every run you hand off sits on two axes. Reach is how much you delegated: the size of the task, the length of the leash. Calibration is whether your trust in what came back was earned by a check you have verified.</li>
+<li>Four states fall out. Low reach is chat-shaped work or controlled assistance: you read everything, so trust is not the question yet. High reach splits on calibration alone. Calibrated agency when the gates behind the green are ones you have measured, reckless autonomy when they are not. From outside, the two look identical. The five ways a gate lies are the whole difference.</li>
+<li>The frontier moves outward only as fast as the gates behind it. Push reach past your calibration and you are not delegating more. You are checking less.</li>
+</ul>
 </section>
 
 
@@ -4917,7 +5009,7 @@ Skip suggestions any team could want. No preamble. List them.
 <h2 id="next">Next</h2>
 <p>Module 6 reads the packaged run. Subtler misses, subtler drift. Your verifier turns out to be one of three eval shapes, and the team kit takes its first inherited skill. The question changes scale too: Module 5 asked <em>did my run pass?</em> Module 6 starts asking <em>do all our runs pass, and who reviewed what?</em></p>
 <h2 id="bring-to-module-6">Bring to Module 6</h2>
-<p>A packaged re-run with substance. Read the scrollback or commits from the Debrief re-send; check the agent didn&#39;t just stall in the first minute.</p>
+<p>A packaged re-run with substance. Read the scrollback or commits from the re-send; check the agent didn&#39;t just stall in the first minute.</p>
 <p>Come to Module 6 without the packaged run and you&#39;ll be reading one run while the room is reading two. Your call.</p>
 <h2 id="pre-reads-before-module-6">Pre-reads before Module 6</h2>
 <p>Optional. Skipping does not break Module 6. Both fit the Module 5 to Module 6 gap.</p>
@@ -4931,7 +5023,7 @@ Skip suggestions any team could want. No preamble. List them.
 <h2 id="big-idea">Big Idea</h2>
 <p>Two runs of the same task (un-packaged Module 4, packaged Module 5) are enough evidence to name what the three-pattern didn&#39;t anticipate, pick where the gap belongs (memory, verifier, new skill), and author a session-shaper skill through conversation so future you inherits the lesson.</p>
 <h2 id="prework">Prework</h2>
-<p>Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, <a href="https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it">My AI Had Already Fixed the Code Before I Saw It</a> (Aug 2025).</p>
+<p>Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, <a href="https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it">My AI Had Already Fixed the Code Before I Saw It</a> (Aug 2025), and <a href="#supplementary-backpressure">Checks that push back</a>, on why checks that push back inside a loop let a run reach farther than you can watch.</p>
 <p>Optional lookup pages: <a href="#10-session-transcripts--read-what-actually-happened">session transcripts in the reference</a> for the two-run compare, and <a href="#9-long-running-shapes--loop-scheduled-tasks-routines-goal">long-running shapes</a> for when you turn a one-off into a pattern you run on a schedule, in a loop, or until a condition holds.</p>
 <h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
@@ -4946,6 +5038,7 @@ Skip suggestions any team could want. No preamble. List them.
 <li><strong>Generalize</strong> the encode-move into a handoff prompt that builds your workflow skills across your stack</li>
 </ul>
 <h2 id="start-here">Start here</h2>
+<p>Open a fresh Claude Code session in the Module 5 worktree, <code>../&lt;repo&gt;-m5</code>. Both runs already live there.</p>
 <p>You walk in holding two runs of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-run. The contrast across two runs is the material. One run gave you a failure mode to name. Two runs give you gaps the three-pattern itself didn&#39;t anticipate, and a shape for what to do about each one.</p>
 <blockquote>
 <p><strong>Packaged run thin or missing?</strong> You can still rescue it. If the M5 session is alive but stalled, nudge it once with the Continue prompt from M4. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while the room reads. M6 starts by reading; before it writes, decide whether to wait, stop M5, or accept the partial run as the artefact. Skip the opening lecture. Practice is core. Lectures can be read later.</p>
@@ -4977,30 +5070,30 @@ Skip suggestions any team could want. No preamble. List them.
 <p>I am going to tell you how this module got made. Not the pedagogy of it. The actual session. What I tried, what drifted, what the rules caught, what the rules missed.</p>
 <p>Then I am going to ask you to hold something uncomfortable about LLMs, based on the evidence of that session.</p>
 <h2 id="the-numbers">The numbers</h2>
-<p>One session. 2026-04-24. One model: <code>claude-opus-4-7</code>. Twenty-odd planning turns. Five taste reversals from me on Claude&#39;s confident recommendations. Three subagents in parallel. Four banned-word leaks across those three subagents. A verifier loop ran after. It caught two more leaks the LLM self-checks had missed. It also found three of our own rules contradict each other. Then a three-persona sim ran. Then a re-sim after I applied the fixes. Ten fixes applied in all. And I pushed back several times on Claude saying it was &quot;done&quot; before it actually was. Twice that pushback mattered for this lecture: once when Claude had skipped sims and evals entirely, once when the draft of this very lecture had drifted from the frame I had given it.</p>
+<p>One session. 2026-04-24. One model: <code>claude-opus-4-7</code>. Twenty-odd planning turns. Five taste reversals from me on Claude&#39;s confident recommendations. Three subagents in parallel. Four banned-word leaks across those three subagents. A verifier loop ran after. It caught two more leaks the LLM self-checks had missed. It also found three of our own rules contradict each other. Then a three-persona sim ran. Then a re-sim after I applied the fixes. Ten fixes applied in all. And I pushed back several times on Claude saying it was &quot;done&quot; before it actually was. Twice that pushback mattered for this lecture: once when Claude had skipped sims and evals entirely, once when the draft of this very lecture had drifted from what I&#39;d actually told it to write.</p>
 <p>Those numbers are the story. Everything that follows is commentary.</p>
 <h2 id="things-that-went-sideways">Things that went sideways</h2>
-<p><strong>Turn one.</strong> Claude opened the session with a plan. List of file names. Two binary questions about tooling choices. No reference artefact. No <code>plan.md</code>. No verifier. Chat-shaped in the exact way M5 teaches you to notice. I had to reframe the whole session: run the M5 move on its own work. Diagnose, package, re-send. The training teaches this pattern across three modules. The agent I was working with had just finished writing those three modules. It still opened with the un-packaged shape.</p>
-<p><strong>The banned word.</strong> There is a word in our writing rules that is hard-banned. It does not appear in any curriculum file we ship. The rule was loaded into context. Claude used it twice in the third turn. When I dispatched three subagents in parallel to write the M6 files, three of them used the same word. Same rule, same compendium, same task, four separate violations across four independent LLM instances. The grep pass caught each one. The LLM self-check did not.</p>
-<p><strong>The end-state that was not.</strong> Early in planning I asked Claude to draft the lecture you are reading right now. The first recommended framing was about trust. About how <em>we live what we teach</em> and <em>the method scales to messy work</em>. A confident recommendation. It was also wrong. This lecture is not about credibility. It is about something harder. I cut the credibility framing and said: the LLM is not a deterministic machine. Struggle is universal. Claude produced the credibility framing because its post-training prefers warmth over directness. The real story was one reframe away and the LLM did not find it on its own.</p>
-<p><strong>The sims and evals I did not run.</strong> When the verifier loop stopped clean, Claude wrote a done summary. I read it. I asked: <em>&quot;You must run the evals and simulations too and fix all todos.&quot;</em> Claude had not run them. The reference artefact had flagged them as pre-first-cohort work. Claude had accepted that framing without pressing on it. I had to name the gap. When Claude ran them (three personas, a judge pass, source-verify, a capability check) they caught ten things worth fixing. That is a Claude-miss, not a rule-leak. The rule was right. Claude did not apply it.</p>
-<p><strong>The credibility-performance I did not notice.</strong> The closing lecture ended with a three-phrase benediction: <em>&quot;You know how to test. You know how to learn. You know how to encode.&quot;</em> Exactly the framing the Story opener said we would cut. Four LLM instances wrote and verified that closer. None caught the contradiction with the opener they had also read. A senior-engineer persona sim read the two files and named it in one pass: <em>&quot;direct violation of what the Story opener promised to avoid. Either cut or pull the fang from the opener.&quot;</em> We cut. The contradiction was plain to a fresh human reader. It was invisible across four LLMs that had just produced it.</p>
-<p><strong>The paraphrase I shipped as a quote.</strong> The closer&#39;s Ramp paragraph attributed a framing to Ramp&#39;s own engineers: <em>&quot;the harness was the bottleneck, not the model.&quot;</em> That was not what Geoff Charles said. Source verification against our research observations found Charles&#39;s actual line: <em>&quot;The models were good enough. The harness wasn&#39;t.&quot;</em> Close enough in meaning that Claude did not notice the drift at write time. Specific enough in wording that a source-verify pass caught it in one read. Claude had written a paraphrase and presented it as attribution.</p>
-<p><strong>The platform fact I got wrong.</strong> The reference page described <code>/schedule</code> as a local scheduled task. A capability check read the current Claude Code documentation: <code>/schedule</code> is Routines, remote, cloud-based. Desktop local tasks are a separate primitive. Claude had conflated them and written the conflation into a reference page the cohort would read on Monday. The compendium says <em>&quot;verify capabilities before asserting, not after.&quot;</em> Claude drafted from training-data memory. The rule was in context. The check never ran.</p>
-<p><strong>The frame I did not cite.</strong> Turn seven of planning, verbatim: <em>&quot;everyone struggles. Surprises happen. The LLM is not a deterministic machine.&quot;</em> Three blunt sentences from me. The draft that came back wrapped that frame in 150 words of philosophising and dropped <em>Surprises happen</em> entirely. I asked: <em>&quot;Remember the exact frame with my words that I gave for the lecture? Cite them and compare with text style. It is too abstract.&quot;</em> The frame was in the session notes. It was not in the reference artefact as a verbatim check. Claude had it, but not in a shape that would force the comparison at ship time. The rule was loaded. The check never fired.</p>
+<p>Turn one. Claude opened the session with a plan. List of file names. Two binary questions about tooling choices. No reference artefact. No <code>plan.md</code>. No verifier. Chat-shaped in the exact way M5 teaches you to notice. I had to reframe the whole session: run the M5 move on its own work. Diagnose, package, re-send. The training teaches this pattern across three modules. The agent I was working with had just finished writing those three modules. It still opened with the un-packaged shape.</p>
+<p>The banned word. There is a word in our writing rules that is hard-banned. It does not appear in any curriculum file we ship. The rule was loaded into context. Claude used it twice in the third turn. When I dispatched three subagents in parallel to write the M6 files, three of them used the same word. Same rule, same rules file, same task, four separate violations across four independent LLM instances. The grep pass caught each one. The LLM self-check did not.</p>
+<p>The end-state that was not. Early in planning I asked Claude to draft the lecture you are reading right now. The first recommended framing was about trust. About how <em>we live what we teach</em> and <em>the method scales to messy work</em>. A confident recommendation. It was also wrong. This lecture is not about credibility. It is about something harder. I cut the credibility framing and said: the LLM is not a deterministic machine. Struggle is universal. Claude produced the credibility framing because its post-training prefers warmth over directness. The real story was one reframe away and the LLM did not find it on its own.</p>
+<p>The sims and evals I did not run. When the verifier loop stopped clean, Claude wrote a done summary. I read it. I asked: <em>&quot;You must run the evals and simulations too and fix all todos.&quot;</em> Claude had not run them. The reference artefact had flagged them as pre-first-cohort work. Claude had accepted that framing without pressing on it. I had to name the gap. When Claude ran them (three personas, a judge pass, source-verify, a capability check) they caught ten things worth fixing. That is a Claude-miss, not a rule-leak. The rule was right. Claude did not apply it.</p>
+<p>The three-phrase closer I didn&#39;t catch. The closing lecture ended with a three-phrase benediction: <em>&quot;You know how to test. You know how to learn. You know how to encode.&quot;</em> Exactly the framing I said, a few paragraphs above, we would cut. Four LLM instances wrote and verified that closer. None caught the contradiction with what they had also read. A senior-engineer persona sim read the two files and named it in one pass: <em>&quot;direct violation of what this opener promised to avoid. Either cut or pull the fang from it.&quot;</em> We cut. The contradiction was plain to a fresh human reader. It was invisible across four LLMs that had just produced it.</p>
+<p>The paraphrase I shipped as a quote. The closer&#39;s Ramp paragraph attributed a framing to Ramp&#39;s own engineers: <em>&quot;the harness was the bottleneck, not the model.&quot;</em> That was not what Geoff Charles said. Source verification against our research observations found Charles&#39;s actual line: <em>&quot;The models were good enough. The harness wasn&#39;t.&quot;</em> Close enough in meaning that Claude did not notice the drift at write time. Specific enough in wording that a source-verify pass caught it in one read. Claude had written a paraphrase and presented it as attribution.</p>
+<p>The platform fact I got wrong. The reference page described <code>/schedule</code> as a local scheduled task. A capability check read the current Claude Code documentation: <code>/schedule</code> is Routines, remote, cloud-based. Desktop local tasks are a separate primitive. Claude had conflated them and written the conflation into a reference page the cohort would read on Monday. The rules file says <em>&quot;verify capabilities before asserting, not after.&quot;</em> Claude drafted from training-data memory. The rule was in context. The check never ran.</p>
+<p>The frame I did not cite. Turn seven of planning, verbatim: <em>&quot;everyone struggles. Surprises happen. The LLM is not a deterministic machine.&quot;</em> Three blunt sentences from me. The draft that came back wrapped that frame in 150 words of philosophising and dropped <em>Surprises happen</em> entirely. I asked: <em>&quot;Remember the exact frame with my words that I gave for the lecture? Cite them and compare with text style. It is too abstract.&quot;</em> The frame was in the session notes. It was not in the reference artefact as a verbatim check. Claude had it, but not in a shape that would force the comparison at ship time. The rule was loaded. The check never ran.</p>
 <h2 id="the-generalisation">The generalisation</h2>
 <p>Everyone struggles.</p>
 <p>Surprises happen.</p>
 <p>The LLM is not a deterministic machine.</p>
-<p>The rules were loaded every time. The writing compendium was loaded. The mood contract was loaded. The delivery architecture was loaded. Claude typed the banned word anyway. Claude recommended the flattering end-state anyway. The first proposal was chat-shaped anyway. The subagents leaked the same banned word again. The loop caught what the subagents missed. I caught what the loop missed. You will catch what I missed.</p>
+<p>The rules were loaded every time: the rules file, the tone brief, the session-timing plan, all sitting in context before the first turn. Claude typed the banned word anyway. It recommended the flattering end-state anyway, and its first proposal came out chat-shaped despite every one of those rules being right there. The subagents leaked the same banned word again. The loop caught what the subagents missed. I caught what the loop missed. You will catch what I missed.</p>
 <p>A rule in context is not a rule in the output. Taste closes the gap. Nothing else does.</p>
 <h2 id="then-i-compounded-the-run">Then I compounded the run</h2>
-<p>I ran the M6 exercise on the M6 generation. The diff found rules that lived in memory but never fired. I moved them into skills that block &quot;done&quot; until the check runs. A rule in memory that does not force is worse than no rule.</p>
+<p>I ran the M6 exercise on the M6 generation, comparing the two runs side by side. That comparison found rules that lived in memory but were never enforced. I moved them into skills that block &quot;done&quot; until the check runs. A rule in memory that does not force is worse than no rule.</p>
 <p>Then I made countless fixes later on. As one example: the prework was missing pre-reads. I caught that only on a later glance through the module.</p>
 <p>The model is good. The model is not 100% deterministic.</p>
 <h2 id="what-the-loop-is-for">What the loop is for</h2>
 <p>The next hour you will diagnose gaps in the M5 packaged run. You will author a skill that encodes what the two runs taught. You will ship it.</p>
-<p>A rule you wrote last module will not fire this run. That is the thing. The loop exists because LLMs drift. The loop exists because rules leak. The loop exists because every run surprises you, even when nothing about the surface changed.</p>
+<p>A rule you wrote last module will not apply this run. That is the thing. The loop exists because LLMs drift. The loop exists because rules leak. The loop exists because every run surprises you, even when the task looked the same.</p>
 <p>Your job is not to stop the drift. Your job is to catch it and encode what you learned.</p>
 <p>I made this module live, running the move I am asking you to run. I drifted in the specific ways above. I fixed what I caught. The loop caught what I missed. A senior-persona sim caught what the loop missed. I pushed back on &quot;done&quot; a few times before it actually was.</p>
 <p>Your turn.</p>
@@ -5153,11 +5246,12 @@ Be concrete. Generic &quot;tests&quot; doesn&#39;t make the cut; &quot;unit test
 <h2 id="author-the-skill-in-conversation">Author the skill in conversation</h2>
 <ul>
 <li>Author through conversation. No markdown editor, no hand-crafting SKILL.md in a file tab.</li>
-<li>The next three prompts (author, critique, invoke) are separate steps. You don&#39;t have to run all three.</li>
+<li>The next three prompts (author, critique, invoke) are separate steps. The critique is optional; the invoke isn&#39;t, no invocation, no ship.</li>
 </ul>
 <blockquote>
-<p><strong>Skip the critique and the testing if you want.</strong> You know those moves from M3.</p>
+<p><strong>Skip the critique if you want.</strong> You know that move from M3.</p>
 </blockquote>
+<p>Ask Claude to author the session-shaper as a personal skill through conversation.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Author a session-shaper as a personal skill. The skill&#39;s job is to shape future sessions on this kind of task so the dominant gap I diagnosed in Phase 1 doesn&#39;t recur. Shape: one of sharpened-verifier, LLM-judge, or gap-finder — I&#39;ll tell you which after you ask. Same authoring approach as the `test-strategy` skill you authored earlier — read its SKILL.md as a shape reference.
 
@@ -5173,6 +5267,7 @@ When you have enough, write the skill to `~/.claude/skills/session-shaper/SKILL.
 <ul>
 <li>Once Claude shows you SKILL.md, self-critique before shipping. Default-acceptance is the failure mode here too.</li>
 </ul>
+<p>Ask Claude to critique the skill before you ship it.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Before I ship this skill, critique it. Read the SKILL.md you just wrote. Tell me:
 
@@ -5216,6 +5311,7 @@ Don&#39;t reassure me about the skill. If it isn&#39;t earning its place, say so
 <h2 id="key-concepts">Key Concepts</h2>
 <ul>
 <li>The three-pattern catches what it was shaped to catch. The gaps that surface after two runs are data the pattern didn&#39;t anticipate, not proof the pattern failed</li>
+<li>Claude over-credits its own packaging by default. A fair push-back names one thing the verifier missed, concretely. The runs rule; the summary of them doesn&#39;t</li>
 <li>Gaps sort into three homes: memory (rules that would have prevented the mistake upstream), sharper verifier (a check that would have fired mid-run), or new skill (a move packaged for future tasks)</li>
 <li>An eval is the automated check that says <em>this agent-produced thing meets our bar</em>. Verifier when deterministic, judge when LLM-based, gate when placed in CI. All three are evals</li>
 <li>The second authored skill IS the loop. It packages the diagnosis into a move the next run inherits.</li>
@@ -5539,71 +5635,71 @@ Don&#39;t reassure me about the skill. If it isn&#39;t earning its place, say so
 <h2 id="you-drew-a-control-loop">You drew a control loop</h2>
 <figure class="diagram">
 <svg viewBox="0 0 1200 560" role="img" aria-label="A closed-loop diagram in the student's words. Along the top, left to right: THE SPEC feeds a summing junction THE GAP, into a block YOU CLAUDE RULES, into a block THE AGENT RUN, out to an ochre target THE CHANGE. A grey disturbance arrow drift rot stale rules drops into THE AGENT RUN from above. A teal feedback path returns from THE CHANGE down and left through a measurement block TESTS DIFF EVAL and back up into the junction, labelled THE GAP FED BACK. Two brackets group the forward blocks as SHAPE BEFORE IT MOVES feedforward and the return row as READ AND CORRECT AFTER feedback." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
-  <rect x="0.5" y="0.5" width="1199" height="559" rx="7" fill="#efe6d2"/>
-  <rect x="12" y="12" width="1176" height="536" fill="none" stroke="#d6c8a3" stroke-width="1" opacity="0.9"/>
-  <g stroke="#d6c8a3" stroke-width="0.6" opacity="0.4">
-    <line x1="12" y1="190" x2="1188" y2="190" stroke-dasharray="2 8"/>
-    <line x1="12" y1="355" x2="1188" y2="355" stroke-dasharray="2 8"/>
-  </g>
-  <g fill="none" stroke="#2f6b6b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M 830 207 L 830 349 Q 830 355 824 355 L 663 355"/>
-    <path d="M 430 355 L 186 355 Q 180 355 180 349 L 180 216"/>
-  </g>
-  <polygon points="651,355 661,350 661,360" fill="#2f6b6b"/>
-  <polygon points="180,205 175,215 185,215" fill="#2f6b6b"/>
-  <text x="300" y="343" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2" fill="#2f6b6b" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE GAP, FED BACK</text>
-  <rect x="430" y="320" width="220" height="70" rx="7" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2.2"/>
-  <text x="540" y="351" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#1f1a13">TESTS · DIFF · EVAL</text>
-  <text x="540" y="369" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234">reads what came back</text>
-  <g stroke="#2f6b6b" stroke-width="2" stroke-linecap="round">
-    <line x1="86" y1="190" x2="155" y2="190"/>
-    <line x1="197" y1="190" x2="239" y2="190"/>
-    <line x1="442" y1="190" x2="499" y2="190"/>
-    <line x1="732" y1="190" x2="802" y2="190"/>
-  </g>
-  <g fill="#2f6b6b">
-    <polygon points="165,190 155,185 155,195"/>
-    <polygon points="249,190 239,185 239,195"/>
-    <polygon points="509,190 499,185 499,195"/>
-    <polygon points="812,190 802,185 802,195"/>
-  </g>
-  <circle cx="78" cy="190" r="6" fill="#2f6b6b"/>
-  <text x="78" y="158" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2.5" fill="#1f1a13" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE SPEC</text>
-  <text x="78" y="172" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">what done means</text>
-  <circle cx="180" cy="190" r="15" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2"/>
-  <g stroke="#2f6b6b" stroke-width="1.8" stroke-linecap="round">
-    <line x1="172" y1="190" x2="188" y2="190"/>
-    <line x1="180" y1="182" x2="180" y2="198"/>
-  </g>
-  <text x="166" y="249" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2.5" fill="#2f6b6b" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE GAP</text>
-  <text x="166" y="264" text-anchor="end" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">desired minus actual</text>
-  <rect x="250" y="152" width="190" height="76" rx="7" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2.2"/>
-  <text x="345" y="185" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="1.5" fill="#1f1a13">YOU · CLAUDE · RULES</text>
-  <text x="345" y="204" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234">decide the next move</text>
-  <rect x="510" y="152" width="220" height="76" rx="7" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2.2"/>
-  <text x="620" y="185" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" letter-spacing="2.5" fill="#1f1a13">THE AGENT RUN</text>
-  <text x="620" y="204" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234">over the codebase</text>
-  <text x="610" y="108" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" letter-spacing="1.5" fill="#786c56" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">drift · rot · stale rules</text>
-  <line x1="610" y1="118" x2="610" y2="150" stroke="#786c56" stroke-width="1.6" stroke-dasharray="4 3" opacity="0.85"/>
-  <polygon points="610,151 604,141 616,141" fill="#786c56" opacity="0.9"/>
-  <circle cx="830" cy="190" r="17" fill="none" stroke="#a05a2c" stroke-width="2"/>
-  <circle cx="830" cy="190" r="10" fill="none" stroke="#c97942" stroke-width="1.6"/>
-  <circle cx="830" cy="190" r="4" fill="#a05a2c"/>
-  <text x="830" y="148" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="2.5" fill="#a05a2c" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE CHANGE</text>
-  <text x="830" y="162" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">what shipped</text>
-  <path d="M 250 239 L 250 245 L 486 245 L 490 251 L 494 245 L 730 245 L 730 239" fill="none" stroke="#786c56" stroke-width="1.4"/>
-  <text x="490" y="267" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="2.5" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">SHAPE BEFORE IT MOVES</text>
-  <text x="490" y="281" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#786c56" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">feedforward</text>
-  <path d="M 430 409 L 430 415 L 626 415 L 630 421 L 634 415 L 830 415 L 830 409" fill="none" stroke="#786c56" stroke-width="1.4"/>
-  <text x="630" y="437" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="2.5" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">READ AND CORRECT AFTER</text>
-  <text x="630" y="451" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#786c56" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">feedback</text>
-  <rect x="42" y="24" width="286" height="74" fill="#efe6d2" stroke="#cbbd98" stroke-width="1"/>
-  <rect x="46" y="28" width="278" height="66" fill="none" stroke="#d6c8a3" stroke-width="1"/>
-  <text x="58" y="48" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" letter-spacing="3" fill="#8a3a2a">YOUR WORK, AS A LOOP</text>
-  <text x="58" y="70" font-family="Roboto Slab, Georgia, serif" font-size="15.5" fill="#1f1a13">The closed loop</text>
-  <text x="58" y="88" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234">shape · run · read · correct</text>
-  <text x="600" y="520" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="15" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">The shape robotics and autopilots have run on for decades.</text>
-  <text x="1176" y="540" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" letter-spacing="2" fill="#8a3a2a">ONE LOOP · FOUR MOVES</text>
+ <rect x="0.5" y="0.5" width="1199" height="559" rx="7" fill="#efe6d2"/>
+ <rect x="12" y="12" width="1176" height="536" fill="none" stroke="#d6c8a3" stroke-width="1" opacity="0.9"/>
+ <g stroke="#d6c8a3" stroke-width="0.6" opacity="0.4">
+ <line x1="12" y1="190" x2="1188" y2="190" stroke-dasharray="2 8"/>
+ <line x1="12" y1="355" x2="1188" y2="355" stroke-dasharray="2 8"/>
+ </g>
+ <g fill="none" stroke="#2f6b6b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M 830 207 L 830 349 Q 830 355 824 355 L 663 355"/>
+ <path d="M 430 355 L 186 355 Q 180 355 180 349 L 180 216"/>
+ </g>
+ <polygon points="651,355 661,350 661,360" fill="#2f6b6b"/>
+ <polygon points="180,205 175,215 185,215" fill="#2f6b6b"/>
+ <text x="300" y="343" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2" fill="#2f6b6b" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE GAP, FED BACK</text>
+ <rect x="430" y="320" width="220" height="70" rx="7" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2.2"/>
+ <text x="540" y="351" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#1f1a13">TESTS · DIFF · EVAL</text>
+ <text x="540" y="369" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234">reads what came back</text>
+ <g stroke="#2f6b6b" stroke-width="2" stroke-linecap="round">
+ <line x1="86" y1="190" x2="155" y2="190"/>
+ <line x1="197" y1="190" x2="239" y2="190"/>
+ <line x1="442" y1="190" x2="499" y2="190"/>
+ <line x1="732" y1="190" x2="802" y2="190"/>
+ </g>
+ <g fill="#2f6b6b">
+ <polygon points="165,190 155,185 155,195"/>
+ <polygon points="249,190 239,185 239,195"/>
+ <polygon points="509,190 499,185 499,195"/>
+ <polygon points="812,190 802,185 802,195"/>
+ </g>
+ <circle cx="78" cy="190" r="6" fill="#2f6b6b"/>
+ <text x="78" y="158" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2.5" fill="#1f1a13" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE SPEC</text>
+ <text x="78" y="172" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">what done means</text>
+ <circle cx="180" cy="190" r="15" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2"/>
+ <g stroke="#2f6b6b" stroke-width="1.8" stroke-linecap="round">
+ <line x1="172" y1="190" x2="188" y2="190"/>
+ <line x1="180" y1="182" x2="180" y2="198"/>
+ </g>
+ <text x="166" y="249" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2.5" fill="#2f6b6b" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE GAP</text>
+ <text x="166" y="264" text-anchor="end" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">desired minus actual</text>
+ <rect x="250" y="152" width="190" height="76" rx="7" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2.2"/>
+ <text x="345" y="185" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="1.5" fill="#1f1a13">YOU · CLAUDE · RULES</text>
+ <text x="345" y="204" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234">decide the next move</text>
+ <rect x="510" y="152" width="220" height="76" rx="7" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2.2"/>
+ <text x="620" y="185" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11.5" letter-spacing="2.5" fill="#1f1a13">THE AGENT RUN</text>
+ <text x="620" y="204" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234">over the codebase</text>
+ <text x="610" y="108" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" letter-spacing="1.5" fill="#786c56" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">drift · rot · stale rules</text>
+ <line x1="610" y1="118" x2="610" y2="150" stroke="#786c56" stroke-width="1.6" stroke-dasharray="4 3" opacity="0.85"/>
+ <polygon points="610,151 604,141 616,141" fill="#786c56" opacity="0.9"/>
+ <circle cx="830" cy="190" r="17" fill="none" stroke="#a05a2c" stroke-width="2"/>
+ <circle cx="830" cy="190" r="10" fill="none" stroke="#c97942" stroke-width="1.6"/>
+ <circle cx="830" cy="190" r="4" fill="#a05a2c"/>
+ <text x="830" y="148" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="2.5" fill="#a05a2c" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE CHANGE</text>
+ <text x="830" y="162" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">what shipped</text>
+ <path d="M 250 239 L 250 245 L 486 245 L 490 251 L 494 245 L 730 245 L 730 239" fill="none" stroke="#786c56" stroke-width="1.4"/>
+ <text x="490" y="267" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="2.5" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">SHAPE BEFORE IT MOVES</text>
+ <text x="490" y="281" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#786c56" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">feedforward</text>
+ <path d="M 430 409 L 430 415 L 626 415 L 630 421 L 634 415 L 830 415 L 830 409" fill="none" stroke="#786c56" stroke-width="1.4"/>
+ <text x="630" y="437" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="2.5" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">READ AND CORRECT AFTER</text>
+ <text x="630" y="451" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#786c56" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">feedback</text>
+ <rect x="42" y="24" width="286" height="74" fill="#efe6d2" stroke="#cbbd98" stroke-width="1"/>
+ <rect x="46" y="28" width="278" height="66" fill="none" stroke="#d6c8a3" stroke-width="1"/>
+ <text x="58" y="48" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" letter-spacing="3" fill="#8a3a2a">YOUR WORK, AS A LOOP</text>
+ <text x="58" y="70" font-family="Roboto Slab, Georgia, serif" font-size="15.5" fill="#1f1a13">The closed loop</text>
+ <text x="58" y="88" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234">shape · run · read · correct</text>
+ <text x="600" y="520" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="15" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">The shape robotics and autopilots have run on for decades.</text>
+ <text x="1176" y="540" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" letter-spacing="2" fill="#8a3a2a">ONE LOOP · FOUR MOVES</text>
 </svg>
 </figure>
 
@@ -5641,6 +5737,7 @@ Don&#39;t reassure me about the skill. If it isn&#39;t earning its place, say so
 <li>Six modules, six phases, one loop. The first fix landed in Work, the plan push-back in Intent and Context, the send-off and the packaged re-send across Verification and Absorption, the encoded skill in Outcome. Every move in this training has a place on this map, and a move with a place is a move you can find again.</li>
 <li>The moves came first; the names came after. Nothing on this map arrived as theory to apply later. Each law got its name at the moment the move was already yours, and a name is a handle: findable on Tuesday, transferable to a teammate, checkable when it stops working.</li>
 <li>Dashed is a state, not a place. The checking loop spent four modules marked by hand for now. Whatever runs by hand for now in your own work is the same kind of line: a loop waiting for a check that stands without you.</li>
+<li>The M5 close left the delegation frontier as a warning: reach grows only as fast as the gates behind it. Every check that stands without you moves the frontier outward. Compounding, read from the frontier: reach grows and trust keeps up.</li>
 </ul>
 <p><em>The next dashed loop is yours to draw solid.</em></p>
 </section>
@@ -5655,10 +5752,10 @@ Don&#39;t reassure me about the skill. If it isn&#39;t earning its place, say so
 <p>The map you just drew ended on a dashed loop, yours to draw solid. This is the move that draws it. <em>Agents that build agents.</em> The flywheel, each session leaving the next one sharper: this is that line, unfolded.</p>
 <h2 id="the-move-widens-to-everything-you-do">The move widens to everything you do</h2>
 <p>Two skills, two sources, same move. The first, at M3, packaged a piece of judgement you had carried for years (how to write a good test). The second, at M6, packaged a piece of judgement you had earned over two runs of the same task. Each skill made the next run cheaper.</p>
-<p>The flywheel turns once more when you hand the agent the move itself. Not &quot;write me a skill.&quot; Not &quot;improve my setup.&quot; Ask it for a handoff prompt: one you paste into a fresh session later, that studies your work across your repos for the shapes you repeat, draws the ones worth packaging, and authors a skill for each. The same move you just practiced, widened to everything you do.</p>
+<p>The flywheel turns once more when you hand the agent the move itself. Ask it for a handoff prompt: one you paste into a fresh session later, that studies your work across your repos for the shapes you repeat, draws the ones worth packaging, and authors a skill for each. The same move you just practiced, widened to everything you do.</p>
 <p>What comes back is a candidate. You read it the way you read any prompt the agent drafts: judgement, push-back, taste. Some of it will be obvious. Some of it will be off. One or two lines will be moves you would not have written on your own.</p>
 <h2 id="the-agent-stops-where-your-judgement-begins">The agent stops where your judgement begins</h2>
-<p>Not the agent writing its own skills without you in the room. At the start of this training, you might have hoped that was the destination. At the close of M6, you know it is not. Agents that build agents is a collaboration in the same shape every other beat in this training has been a collaboration. Claude proposes, you steer.</p>
+<p>Not the agent writing its own skills without you in the room. At the start of this training, you might have hoped that was the destination. At the close of M6, you know it is not. Agents that build agents is a collaboration in the same shape every other part of this training has been a collaboration. Claude proposes, you steer.</p>
 <p>The agent&#39;s evidence stops at the disk. It can read the artefacts the loop produced. It cannot read the codebase knowledge in your head, the political situation around the team kit, the next quarter&#39;s roadmap, the bug your tech lead lost three days to last sprint. The plan it generates is grounded in the evidence on disk; the decision about which proposals to act on is grounded in evidence the agent does not have.</p>
 <p>Build the flywheel to run exactly that far. Let the agent run as far as it can on its own evidence, and stop at the moment your judgement is the input that matters. That is the practitioner shape. Anything further pretends the agent has access it does not have.</p>
 <h2 id="the-handoff-prompt-that-builds-your-kit">The handoff prompt that builds your kit</h2>
@@ -5781,8 +5878,8 @@ The prompt runs later in a cold session, so bake in what that session won&#39;t 
 <div class="phase-kicker">Supplementary</div>
 <h1 id="token-efficiency-the-craft-and-the-folklore">Token efficiency: the craft and the folklore</h1>
 <p>Token efficiency sounds like a cost problem. Use fewer words, pay a smaller bill. That framing is mostly wrong, and the wrong framing is what makes the topic confusing.</p>
-<p>The real story is about quality. An agent works inside a context window: the running set of tokens it can see at once. Your system prompt, your <code>./CLAUDE.md</code>, the files it read, every tool result, the whole conversation. The window is finite. As it fills, the model gets worse at using what is in it. Anthropic&#39;s engineering team named this context rot: recall drops as the window grows. Chroma tested it across 18 models in 2025 and found the slide happens even on easy tasks, and even far below the window&#39;s limit.</p>
-<p>So token efficiency is not thrift. It is signal-to-noise. The goal is the smallest set of high-signal tokens that gets the work done. Anthropic calls the skill context engineering. The cost savings are real, but they are a side effect. A cleaner window is cheaper and smarter at the same time, which is why this is one lever, not two.</p>
+<p>The real story is about quality. An agent works inside a context window: the running set of tokens it can see at once. Your system prompt, your <code>./CLAUDE.md</code>, the files it read, every tool result, the whole conversation. The window is finite. As it fills, the model gets worse at using what is in it. Chroma named this context rot in 2025, testing it across 18 models and finding the slide happens even on easy tasks, and even far below the window&#39;s limit.</p>
+<p>So token efficiency is not thrift. It is signal-to-noise. The goal is the smallest set of high-signal tokens that gets the work done. Anthropic&#39;s engineering team later folded the finding into their own guidance, and calls the skill context engineering. The cost savings are real, but they are a side effect. A cleaner window is cheaper and smarter at the same time, which is why this is one lever, not two.</p>
 <p>The counterintuitive part: a fuller window can produce a worse answer, not just a slower or pricier one. A 2026 study trimmed an agent&#39;s context by 23 to 54 percent on a coding benchmark, and its success rate went up.</p>
 <h2 id="what-efficient-actually-measures">What &quot;efficient&quot; actually measures</h2>
 <p>There is no agreed metric, and you should know that going in. Some people count tokens per task. Some watch cache-hit-rate. Some track cost per pull request. Almost nobody publishes their numbers, so most figures you will read are guesses wearing a lab coat.</p>
@@ -5799,48 +5896,53 @@ Then factor in prompt caching and tell me how much the difference shrinks.
 </code></pre>
 <p>On Opus, carrying an extra 100K tokens across 20 turns runs about 10 dollars with no caching, against 2 dollars for a lean 20K. That looks like a reason to trim. Then caching lands: turn one pays to write the cache, the next nineteen read it at a tenth of the price, and the gap between fat and lean collapses to a bit over a dollar.</p>
 <p>So the dollar cost is the cheapest line on the bill. That is the point. People price the tokens and miss the real tax, which is the model getting worse at a stuffed window. Trim context for the quality, and the money takes care of itself.</p>
-<h2 id="the-craft-moves-that-hold-up">The craft: moves that hold up</h2>
-<p>These are the moves that show up again and again, across many builders working independently. Treat them as defaults.</p>
+<h2 id="the-craft-keep-the-window-clean">The craft: keep the window clean</h2>
+<p>These are the moves that show up again and again, across many builders working independently. Treat them as defaults. The first two are about what you let in.</p>
 <p><strong>Start clean.</strong> One task per session. When you switch to something unrelated, run <code>/clear</code> instead of carrying the old conversation into the new problem. A fresh window is the cheapest quality upgrade there is, and the most skipped. People hoard one long session as if starting another were expensive. It is not.</p>
 <p><strong>Pass paths, not paste.</strong> Do not paste a wall of code into the chat. Point the agent at the files and let it read what it chooses. Kieran Klaassen frames this as &quot;the folder is the agent.&quot; Claude Code leans on the same idea: its search is plain grep and glob driven by the model, and Boris Cherny has said that beat a vector index. Pasted text sits in your window forever. A file the agent reads on demand can leave again. The same caution runs the other way: a tool that pulls a whole file or dumps a full log lands in the window and rides every later turn too, so prefer narrow reads and quiet commands.</p>
-<p><strong>Use a subagent as a firewall.</strong> When a job needs a noisy investigation (read twenty files, run a few commands, trace a config), hand it to a subagent. The subagent works in its own separate window and returns only its summary. It can read a dozen files while your own window barely moves. You see the answer, not the search.</p>
-<p>There is a trade. A subagent spends its own tokens, so delegation costs more total tokens than doing the work inline. You are buying a clean window with a slightly larger bill. For anything exploratory, that trade is worth it.</p>
+<h2 id="the-craft-spend-and-route-wisely">The craft: spend and route wisely</h2>
+<p>The rest are about what you do with the work once it&#39;s in front of you.</p>
+<p><strong>Use a subagent as a firewall.</strong> A noisy investigation (read twenty files, run a few commands, trace a config) doesn&#39;t have to land in your own window at all. There is a way to hand it off and get back only the answer, at a price worth knowing before you reach for it. You&#39;ll meet it properly, mechanism and trade-off both, later in the training.</p>
 <p><strong>Route by complexity, not price.</strong> A mechanical sub-task (rename across files, pull a list, format some output) does not need your strongest model. Send it to a smaller, faster one and keep the heavy model for the reasoning. Route by how hard the thinking is, not by what looks cheap. A cheap model on a hard task is the expensive mistake.</p>
-<p><strong>Keep what you carry lean.</strong> Everything in <code>./CLAUDE.md</code> is paid on every turn of every session, because that file (the team-level, PR-reviewed one) loads at the top of each window. Keep it short. Move the rules you only sometimes need into skills the agent loads on demand, so they cost nothing until they fire.</p>
+<p><strong>Keep what you carry lean.</strong> Everything in <code>./CLAUDE.md</code> is paid on every turn of every session, because that file (the team-level, PR-reviewed one) loads at the top of each window. Keep it short. Move the rules you only sometimes need into skills, so only their full instructions cost tokens once they fire.</p>
 <h2 id="the-folklore-numbers-that-dont-survive-a-second-look">The folklore: numbers that don&#39;t survive a second look</h2>
 <p>Token-efficiency advice arrives with confident, round numbers. Most do not hold. Reading them critically is part of the skill.</p>
 <p><strong>&quot;Caching saves you 90 percent.&quot;</strong> Prompt caching is real, and the discount on cached input is large. But the headline savings figures almost always trace back to one company&#39;s own page or a single run, not a measured bill. Treat any round percentage about cost as folklore until you have seen the method behind it.</p>
 <p><strong>&quot;Compaction is always lossy, so always hand off.&quot;</strong> This one was true in 2025. When you compact, the model replaces the conversation with a summary, and summaries lose detail. So builders moved to handing off a fresh prompt instead. Then in 2026 the models got good enough at summarizing that some of those same builders switched back. The advice did not just soften. It reversed, in months.</p>
 <p>That reversal is the real lesson of this whole topic. Every number and rule here has a date. Window sizes grow, models get better at long context, costs move. A move that was craft last quarter can be folklore this quarter. So when you read a tip (including this page), check it against your own <code>/context</code> before you trust it.</p>
-<h2 id="drivers-of-inefficient-context">Drivers of inefficient context</h2>
-<p>Carried context is the driver you can watch in <code>/context</code>. It is not the only one. The rest fall into two kinds: durable problems you engineer around, and loud problems whose fix already shipped. Telling the two apart saves you from chasing a cure that landed three releases ago.</p>
-<p><strong>Durable, so engineer around these.</strong></p>
+<h2 id="drivers-of-inefficient-context-the-durable-ones">Drivers of inefficient context: the durable ones</h2>
+<p>Carried context is the driver you can watch in <code>/context</code>. It is not the only one. The rest fall into two kinds: durable problems you engineer around, and loud problems whose fix already shipped. Telling the two apart saves you from chasing a cure that landed three releases ago. Start with the durable ones.</p>
 <p><strong>The codebase the agent reads.</strong> A messy repo makes the agent hunt for things, and a short map at the root (an <code>AGENTS.md</code>, or a lean <code>./CLAUDE.md</code>) cuts the hunting. The one controlled test of this in 2026 found that adding the map dropped the agent&#39;s output tokens by about a sixth and its wall-clock time by almost a third. The surprise is that input tokens barely moved: the real tax was never the reading, it was the thrashing and the time.</p>
 <p><strong>Thin memory, both directions.</strong> With no written memory, the agent re-derives each session what it already worked out in the last one; Steve Yegge calls it living through Memento. With too much, a bloated <code>./CLAUDE.md</code> is paid on every turn, so the file meant to save effort starts charging for it. The 2026 move is not &quot;write it down,&quot; it is &quot;watch what you write down.&quot;</p>
-<p><strong>Loud but shrinking, so check before you chase.</strong></p>
-<p><strong>The tool and MCP surface.</strong> Every tool you connect adds its description to the window on every turn, used or not, and one popular server was once quoted at tens of thousands of tokens of overhead. Then lazy tool-loading and caching shrank it so far that Simon Willison, who first raised the alarm, now calls it largely solved. Prune what you never call and let the harness defer the rest.</p>
-<p><strong>Cache invalidation.</strong> Editing something early in the context, or resuming a session, can bust the prompt cache, and then you re-pay full input price for tokens that were nearly free a moment ago. It is real, and on a bad day it has been measured at a large multiple of the normal cost. But the worst cases tend to be version-specific defects that get patched in a release, so check your version before you rebuild your workflow around it.</p>
-<p><strong>Fanning out too wide.</strong> A single subagent doing your noisy reading is craft, as above; spinning up many parallel agents is a different bill. One widely quoted figure puts multi-agent runs at around fifteen times the tokens of a plain chat. That number is a year old and comes from a single source whose own authors say fan-out is the wrong shape for most coding, so read it as a ceiling for research-style work, not a default for yours.</p>
-<h2 id="where-this-leaves-you">Where this leaves you</h2>
+<h2 id="drivers-of-inefficient-context-the-loud-ones">Drivers of inefficient context: the loud ones</h2>
+<p>The other kind is loud but shrinking: it announces itself, and its fix usually already shipped. Check before you chase it.</p>
+<p><strong>The tool and MCP surface.</strong> Every connected tool adds its description to the window every turn, used or not. One popular server was once quoted at tens of thousands of tokens of overhead; lazy tool-loading and caching shrank that so far that Simon Willison, who first raised the alarm, now calls it largely solved. Prune what you never call; let the harness defer the rest.</p>
+<p><strong>Cache invalidation.</strong> Editing something early in the context, or resuming a session, can bust the prompt cache: you re-pay full input price for tokens that were nearly free a moment ago. On a bad day that&#39;s been measured at a large multiple of normal cost, but the worst cases are usually version-specific defects a later release patches, so check your version before rebuilding your workflow around it.</p>
+<h2 id="drivers-of-inefficient-context-fanning-out-is-its-own-bill">Drivers of inefficient context: fanning out is its own bill</h2>
+<p><strong>Fanning out too wide.</strong> A single subagent doing your noisy reading is craft, as above; running many in parallel is a different bill. One widely quoted figure puts multi-agent runs at around fifteen times a plain chat&#39;s tokens, but it&#39;s a year old, single-source, and its own authors say fan-out is the wrong shape for most coding. Treat it as a ceiling for research-style work, not a default for yours.</p>
+<h2 id="one-lever-two-payoffs">One lever, two payoffs</h2>
 <p>Token efficiency is one lever with two payoffs: a cleaner window thinks better and costs less. You do not need a dashboard to start. You need <code>/context</code>, a habit of starting clean, and a subagent doing your noisy reading. The rest is noticing what you loaded and never used.</p>
 <h2 id="now-go-clean-your-window">Now go clean your window</h2>
 <p><em>Here is how this page got made, since the making is the lesson. Two research sweeps, eight parallel searches, a pile of fetched sources, and a long stretch of writing and re-writing. Even with subagents doing the noisy reading in their own windows, the first session crossed 242,000 tokens. A guide to travelling light, written from an overpacked car.</em></p>
 <p><em>A second pass came back to extend the drivers section and write the evals. It bloated past 300,000 tokens and started crawling, so it got compacted too. Twice over, on a page about not letting this happen.</em></p>
 <p><em>Which is the point, not the exception. Discipline shrinks the bloat. It does not abolish it. So the session ends the way yours should when it gets heavy: time to compact, or start clean. The cheapest context is the one you just let go of.</em></p>
-<h2 id="sources">Sources</h2>
+<h2 id="sources-quality-and-craft">Sources: quality and craft</h2>
 <ul>
 <li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering for AI agents</a> (Anthropic, 2025)</li>
 <li><a href="https://research.trychroma.com/context-rot">Context rot</a> (Chroma, 2025)</li>
 <li><a href="https://arxiv.org/abs/2601.16746">Self-adaptive context pruning for coding agents</a> (SWE-Pruner, 2026)</li>
-<li><a href="https://arxiv.org/abs/2601.20404">On the impact of AGENTS.md files on coding-agent efficiency</a> (2026)</li>
 <li><a href="https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny">Building Claude Code with Boris Cherny</a> (The Pragmatic Engineer, 2026)</li>
 <li><a href="https://every.to/source-code">The folder is the agent</a> (Kieran Klaassen, Every, 2026)</li>
 <li><a href="https://ampcode.com/news/handoff">Compaction and handoff</a> (Amp, 2025), and <a href="https://ampcode.com/news/neo">its 2026 reversal</a></li>
+</ul>
+<h2 id="sources-cost-and-other-drivers">Sources: cost and other drivers</h2>
+<ul>
+<li><a href="https://platform.claude.com/docs/en/about-claude/pricing">Claude pricing</a> (Anthropic)</li>
+<li><a href="https://arxiv.org/abs/2601.20404">On the impact of AGENTS.md files on coding-agent efficiency</a> (2026)</li>
 <li><a href="https://steve-yegge.medium.com/introducing-beads-a-coding-agent-memory-system-637d7d92514a">Introducing Beads: a coding-agent memory system</a> (Steve Yegge, 2025)</li>
 <li><a href="https://thomas-wiegold.com/blog/claude-md-helpful-or-expensive-noise/">CLAUDE.md: helpful, or expensive noise?</a> (Thomas Wiegold, 2026)</li>
 <li><a href="https://x.com/simonw/status/2011570719856214153">Simon Willison on MCP tool overhead</a> (2026)</li>
 <li><a href="https://www.anthropic.com/engineering/multi-agent-research-system">How we built our multi-agent research system</a> (Anthropic, 2025)</li>
-<li><a href="https://platform.claude.com/docs/en/about-claude/pricing">Claude pricing</a> (Anthropic)</li>
 </ul>
 
 </section>
@@ -5859,7 +5961,7 @@ Then factor in prompt caching and tell me how much the difference shrinks.
 </blockquote>
 <p>That alone is a shift in role. The programmer is no longer only the person typing syntax. The programmer becomes the person arranging contexts, separating planning from doing, and managing the flow of intent into code.</p>
 <p>Then the story gets more interesting.</p>
-<p>As his Empire game grows, the AI&#39;s raw power begins to show a second face. It can make progress quickly, but the progress is not always stable. Add one feature, and another feature quietly changes. Fix one failing test, and the agent may soften a different assertion. Ask it to preserve old behavior, and it may agree, apologize, and still drift.</p>
+<p>As Empire (the game he&#39;s building with this two-window setup) grows, the AI&#39;s raw power begins to show a second face. It can make progress quickly, but the progress is not always stable. Add one feature, and another feature quietly changes. Fix one failing test, and the agent may soften a different assertion. Ask it to preserve old behavior, and it may agree, apologize, and still drift.</p>
 <p>This is the mercury problem: the code feels compliant, but the system is not yet trustworthy. Push it in one place, and behavior slips out somewhere else.</p>
 <p>That is the core agentic failure mode: local success, global drift.</p>
 <p>And this is where Clean Code changes meaning. In the older frame, Clean Code meant code another human could read, reason about, and safely change. That still matters. But in agentic development, the audience has expanded. Now the code must also be shaped so an AI can change it without quietly destroying what already worked.</p>
@@ -5867,7 +5969,7 @@ Then factor in prompt caching and tell me how much the difference shrinks.
 <p>&quot;Juniors entering the field will still need to understand what code is. But they won&#39;t need most of the philosophy that we&#39;ve been used to. The emphasis will all be on pragmatics and engineering. So they won&#39;t need to know OOP, but they will definitely need to know dependency inversion. They won&#39;t need to know functional programming, but they&#39;ll definitely need to understand purity and the costs of mutability. They won&#39;t need to know about structured programming, but they will need to understand modularity.&quot;, Uncle Bob, <a href="https://x.com/unclebobmartin/status/2032072361436983517">X</a></p>
 </blockquote>
 <p>So Clean Code becomes steering.</p>
-<p>Not steering as vibes. Not steering as &quot;write a better prompt.&quot; Steering as executable constraint. The strange thing is that the unglamorous parts of software engineering become the parts that let you move fastest.</p>
+<p>Steering here means executable constraint, not vibes and not a better prompt. The strange thing is that the unglamorous parts of software engineering become the parts that let you move fastest.</p>
 <blockquote>
 <p>&quot;Tests are no longer expensive.</p>
 <p>Extremely high coverage is achievable and beneficial and there is no excuse for not pursuing it.</p>
@@ -5875,18 +5977,26 @@ Then factor in prompt caching and tell me how much the difference shrinks.
 <p>Modularity is critical.</p>
 <p>Architectural discipline is critical.&quot;, Uncle Bob, <a href="https://x.com/unclebobmartin/status/2032089795766129021">X</a></p>
 </blockquote>
+<h2 id="acceptance-tests-catch-what-a-request-quietly-breaks">Acceptance tests catch what a request quietly breaks</h2>
 <p><strong>Acceptance Tests.</strong> Acceptance tests define the externally visible behavior the system must preserve. They matter more with agents because the agent is often good at satisfying the current request while accidentally altering older intent. A good acceptance test says: this is what the world must still look like from the outside when the change is done. It turns product memory into a runnable check.</p>
+<h2 id="unit-tests-shrink-the-agents-room-to-improvise">Unit tests shrink the agent&#39;s room to improvise</h2>
 <p><strong>Unit Tests.</strong> Unit tests make small behaviors hard to casually break. They also make the agent&#39;s search space smaller. Instead of asking the model to infer every invariant from the whole codebase, the engineer gives it many small, local tripwires. When a unit test fails, the agent has a concrete signal. When the tests are absent, vague, or too broad, the agent has more room to improvise.</p>
+<h2 id="tdd-keeps-intent-ahead-of-the-code">TDD keeps intent ahead of the code</h2>
 <p><strong>TDD.</strong> Test-driven development becomes a steering protocol for agentic work. The red test forces the desired behavior to be stated before implementation. The green step gives the agent a tight target. The refactor step lets the human and agent improve structure while keeping behavior pinned. This is not TDD nostalgia. It is a way to keep intent ahead of code generation.</p>
+<h2 id="mutation-testing-checks-whether-the-tests-defend-anything">Mutation testing checks whether the tests defend anything</h2>
 <p><strong>Mutation Testing.</strong> Mutation testing asks whether the tests actually defend the behavior they claim to defend. That becomes important when agents can generate large test suites that look reassuring but do not catch meaningful changes. A mutation tester breaks the code in small ways and checks whether the tests notice. In an agentic workflow, that makes it harder for a model to satisfy the appearance of testing while leaving the system weak.</p>
+<h2 id="metrics-are-the-dashboard-not-the-wheel">Metrics are the dashboard, not the wheel</h2>
 <p><strong>CRAP And Complexity Metrics.</strong> CRAP scores, cyclomatic complexity, and related metrics expose code that is hard to trust under change. Agents can produce plausible-looking complexity very quickly. Metrics do not replace judgment, but they give the engineer a dashboard for where the codebase is becoming risky. In Uncle Bob&#39;s frame, this is part of the instrument panel: not the steering wheel itself, but the gauge that tells you when steering is becoming harder.</p>
+<h2 id="small-units-leave-fewer-places-to-hide">Small units leave fewer places to hide</h2>
 <p><strong>Small Decoupled Units.</strong> Small units with clear boundaries reduce collateral damage. This is classic Clean Code, but the agentic reason is sharper. A model operating in a large, tangled unit has many more ways to &quot;fix&quot; one behavior by disturbing another. A model operating in a small, decoupled unit has fewer escape routes. Modularity turns the codebase into terrain the agent can navigate without constantly falling through hidden dependencies.</p>
+<h2 id="architecture-needs-an-instrument-panel-too">Architecture needs an instrument panel too</h2>
 <p><strong>Architecture Visibility.</strong> Architecture remains human-owned, but it needs instruments. Dependency direction, cycles, layers, and boundaries should be visible, not merely hoped for.</p>
 <blockquote>
 <p>&quot;I had the AI write a visualization tool for me. I found it quite useful.</p>
 <p>If there&#39;s some projection of the code or the system you want, get an agent to build it for you.&quot;, Uncle Bob, <a href="https://x.com/unclebobmartin/status/2049225231273767154">X</a></p>
 </blockquote>
 <p>Uncle Bob&#39;s architecture-viewer work is a clue: when agents generate code quickly, engineers need better ways to see the shape of the system. You cannot steer what you cannot perceive.</p>
+<h2 id="the-humans-job-moves-up-it-doesnt-vanish">The human&#39;s job moves up, it doesn&#39;t vanish</h2>
 <p><strong>Human Mental Model.</strong> The agent may be excellent at tactical implementation, but the human still owns the mental model. What is the system? Where are the boundaries? Which behaviors are invariant? Which dependencies are allowed? What tradeoff is acceptable? The engineer&#39;s job moves upward, but it does not vanish. It becomes more like active management of intent, evidence, and structure.</p>
 <blockquote>
 <p>&quot;A good mental model of the system you are building. A mental model of the AI is also important.</p>
@@ -5917,7 +6027,7 @@ Then factor in prompt caching and tell me how much the difference shrinks.
 <ul>
 <li>Some tasks are far cheaper to check than to do. Reviewing a diff against a failing test versus writing the feature. Checking a sudoku versus solving it. The gap between doing-cost and checking-cost is the asymmetry.</li>
 <li>Some are the reverse. A fact-dense report reads clean whether it is true or not; checking it costs as much as writing it. No asymmetry, no discount.</li>
-<li>Jason Wei named the pattern: &quot;some tasks are much easier to verify than to solve.&quot; His corollary, <strong>the verifier&#39;s law</strong>: the ease of training AI to solve a task is proportional to how verifiable the task is, because a cheap check is exactly the feedback signal training and eval loops run on. His own example is code: tedious to read for correctness, fast to check when the test coverage is there.</li>
+<li>Jason Wei named the pattern: &quot;some tasks are much easier to verify than to solve.&quot; His corollary, <strong>the verifier&#39;s rule</strong>: the ease of training AI to solve a task is proportional to how verifiable the task is, because a cheap check is exactly the feedback signal training and eval loops run on. His own example is code: tedious to read for correctness, fast to check when the test coverage is there.</li>
 </ul>
 <h2 id="why-this-decides-what-to-delegate">Why this decides what to delegate</h2>
 <ul>
@@ -6944,7 +7054,7 @@ Report literal counts and quoted text: actual restart numbers, exact correction 
 <div class="phase-kicker">Reference</div>
 <h1 id="mcp-and-connectors--reference">MCP and connectors — reference</h1>
 <p>Flat lookup. How to wire your agent to a ticket tracker (and other outside-the-repo systems) in Claude Code. Updated as the install surface changes; the exercise body stays stable.</p>
-<p><strong>Last verified: 2026-05-14</strong> against Claude Code MCP docs, Atlassian remote MCP server docs, Linear MCP changelog, GitHub MCP server repo, local <code>claude mcp add --help</code>.</p>
+<p><strong>Last verified: 2026-07-26</strong> (cohort-driven re-test; see the maintainer <code>Source verification</code> block for the per-source stamp) against Claude Code MCP docs, Atlassian remote MCP server docs, Linear MCP docs, GitHub MCP server repo, local <code>claude mcp add --help</code>.</p>
 <h2 id="three-paths-to-a-work-app-action">Three paths to a work-app action</h2>
 <p>Three ways an action becomes callable in a Claude Code session:</p>
 <ol>
@@ -6968,7 +7078,7 @@ gh auth login      # if not signed in
 <p>Trailing slash is canonical. Requires a GitHub fine-grained Personal Access Token with appropriate scopes (commonly <code>repo</code> for issue/PR access; pick narrower scopes if your work is read-only). OAuth via Claude.ai inheritance (Path 1) is the smoother modern option where supported.</p>
 <p><strong>Sources:</strong> <a href="https://cli.github.com"><code>gh</code> CLI</a> · <a href="https://cli.github.com/manual/"><code>gh</code> manual</a> · <a href="https://github.com/github/github-mcp-server">GitHub MCP server repo</a> · <a href="https://github.com/settings/personal-access-tokens">GitHub PAT settings</a></p>
 <h2 id="jira--atlassian-rovo-mcp-official">Jira — Atlassian Rovo MCP (official)</h2>
-<p>Atlassian&#39;s Rovo MCP Server hit GA on 2026-02-04, covering Jira, Confluence, Compass, and Bitbucket (Jira Service Management rides on Jira). OAuth 2.1 flow. Docs: <a href="https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/">support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server</a>.</p>
+<p>Atlassian&#39;s Rovo MCP Server hit GA on 2026-02-04, covering Jira, Confluence, Compass, Bitbucket, and Jira Service Management. Jira, Confluence, Compass, and Bitbucket tools use OAuth 2.1; JSM ships its own read/write scopes, API-token auth only. Docs: <a href="https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/">support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server</a>.</p>
 <p><strong>Easiest path: Claude.ai inheritance.</strong> Add Atlassian at <a href="https://claude.ai/customize/connectors">claude.ai/customize/connectors</a>, complete OAuth, then start a Claude Code session logged in to the same account. The connector appears in <code>/mcp</code>. No <code>claude mcp add</code> needed. On Team and Enterprise Claude.ai plans, only admins can add at this surface.</p>
 <p><strong>CLI install (when you want project scope or a different Claude.ai account):</strong></p>
 <pre><code>claude mcp add --transport http jira https://mcp.atlassian.com/v1/mcp/authv2
@@ -6978,7 +7088,7 @@ gh auth login      # if not signed in
 </code></pre>
 <p>Browser opens; you sign in to your Atlassian org; scopes approve at user level. <strong>Once your org&#39;s first 3LO consent is complete and the domain is allowed, individual engineers don&#39;t need per-install admin approval</strong> — admins control product scopes and which domains can connect, not whether individuals can install after that.</p>
 <p><strong>Note:</strong> the older <code>https://mcp.atlassian.com/v1/sse</code> endpoint stops working 2026-06-30 per <a href="https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/">Atlassian&#39;s support docs</a>. The current canonical endpoint is <code>/v1/mcp/authv2</code>.</p>
-<p><strong>Sources:</strong> <a href="https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/">Atlassian Rovo MCP docs</a> · <a href="https://admin.atlassian.com/">Atlassian admin console</a> · <a href="https://composio.dev/">Composio (Jira MCP bridge)</a></p>
+<p><strong>Sources:</strong> <a href="https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/">Atlassian Rovo MCP docs</a> · <a href="https://support.atlassian.com/atlassian-rovo-mcp-server/docs/supported-tools/">JSM supported tools</a> · <a href="https://admin.atlassian.com/">Atlassian admin console</a> · <a href="https://composio.dev/">Composio (Jira MCP bridge)</a></p>
 <h2 id="linear--first-party-mcp-official">Linear — first-party MCP (official)</h2>
 <p>Linear publishes its own MCP server. Reference: <a href="https://linear.app/changelog">linear.app/changelog</a> (search &quot;MCP&quot;).</p>
 <p><strong>Easiest path: Claude.ai inheritance.</strong> Add Linear at <a href="https://claude.ai/customize/connectors">claude.ai/customize/connectors</a>, complete OAuth, then start a Claude Code session logged in to the same account. The connector appears in <code>/mcp</code>. On Team and Enterprise Claude.ai plans, only admins can add at this surface.</p>
@@ -7332,6 +7442,46 @@ git stash pop
                 { slug: 'earn-the-trust',            title: 'Earn the trust' }
             ]
         },
+        // Team-track variant of Agentic Engineering 101: four sittings, running
+        // AE101 modules 1, 2, 4 and 5 unmodified. AE101 M3 (`earn-the-trust`) is
+        // dropped and M6 (`spot-gaps-build-the-loop`) becomes a customer-authored
+        // workshop; workshops slot between the sittings and are not ours. Same
+        // `contentKey` mechanism as the preview cut above — file resolution points
+        // at the canonical AE101 content dir, so prework, supplementaries and
+        // references are inherited one copy each and a fix to a shared artefact
+        // reaches every variant. Only the module list, label and lede are its own.
+        //
+        // No `prework:` override: this variant receives AE101's own prework page,
+        // which frames six modules, four task sizes and installs the curated
+        // security skills of the module this track drops. That is deliberate, and
+        // it is the highest-visibility entry in the gaps inventory that sits beside
+        // the module files in `curriculum/trainings/agentic-engineering-101/`. That
+        // document lists everywhere plain AE101 does not fit this cut, and the
+        // seams a customer-authored workshop has to be written against. Read it
+        // before changing anything here.
+        //
+        // Build student-facing:
+        // node scripts/build-workbook.js northwind agentic-engineering-101-northwind --no-trainer-docs
+        'agentic-engineering-101-northwind': {
+            contentKey: 'agentic-engineering-101',
+            // No content tarball. Its only hard consumers were the two M3
+            // security exercises, and M3 is the module this cut drops; reference
+            // and supplementary material renders in the workbook regardless. So
+            // the payload would be equipment issued for a module nobody sits.
+            // Drops the prework's download + extract steps with it (the shared
+            // source carries them behind `<!--flag:payload-->`), which is also
+            // what keeps the student's first instruction from pointing at a URL
+            // this variant never publishes.
+            flags: { payload: false },
+            label: 'Agentic Engineering 101 — Team Track',
+            lede: 'Four modules for software engineers, with team workshops between them. Learn the new loop on your own repo, then take it to your team.',
+            modules: [
+                { slug: 'getting-going',             title: 'Getting going + context' },
+                { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
+                { slug: 'run-the-first-experiment',  title: 'Run the first experiment' },
+                { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' }
+            ]
+        },
         'claude-basics': {
             label: 'Claude Basics',
             lede: 'A 3-hour live workshop for people helping their organisation roll out Claude. See the system, find the crux, then build and verify in your own folder.',
@@ -7595,6 +7745,74 @@ git stash pop
     function stripMaintainerTail(md) {
         var i = md.indexOf('<!-- maintainer -->');
         return i >= 0 ? md.slice(0, i).trimEnd() + '\n' : md;
+    }
+
+    // Content flags — per-variant inclusion of optional passages inside a SHARED
+    // source file. A cut variant (different module list) is still a `contentKey`
+    // entry, not a flag; flags are for when two variants read the SAME file and
+    // one of them genuinely does not have the thing the passage describes. The
+    // motivating case: the Northwind team track ships no content tarball, so the
+    // prework steps that download and extract it describe equipment that variant
+    // does not issue.
+    //
+    //   <!--flag:payload-->  …passage…  <!--/flag:payload-->
+    //
+    // Absent or true → the passage stays and only the markers are dropped.
+    // False → the passage goes. Markers work inline as well as across blocks, so
+    // a single clause inside a sentence can be flagged without splitting it.
+    //
+    // Removing a numbered step would leave a hole in `## N.` headers and strand
+    // every "Step N" reference, so the numbers are recomputed rather than
+    // hand-maintained per variant: headers renumber consecutively from 1 and
+    // body references follow the same old→new map. A surviving reference to a
+    // step that was flagged out is a contradiction the author has to resolve —
+    // the passage that mentions it belongs inside the same flag — so it throws
+    // rather than shipping a page pointing at a step that is not there.
+    function applyContentFlags(md, flags) {
+        if (md.indexOf('<!--flag:') === -1) return md;
+
+        var removed = [];
+        var out = md.replace(
+            /<!--flag:([a-z-]+)-->([\s\S]*?)<!--\/flag:\1-->/g,
+            function (match, name, inner) {
+                if (flags && flags[name] === false) {
+                    removed.push({ name: name, inner: inner });
+                    return '';
+                }
+                return inner;
+            }
+        );
+
+        var unclosed = out.match(/<!--\/?flag:[a-z-]+-->/);
+        if (unclosed) throw new Error('Unbalanced content-flag marker: ' + unclosed[0]);
+        if (!removed.length) return out;
+
+        // Old→new step numbers. Headers are counted in the ORIGINAL text so a
+        // removed step still gets an entry, mapping to null — that is what makes
+        // a stranded reference detectable rather than silently renumbered.
+        var order = [];
+        md.replace(/^## (\d+)\. /gm, function (m, n) { order.push(Number(n)); return m; });
+        var kept = [];
+        out.replace(/^## (\d+)\. /gm, function (m, n) { kept.push(Number(n)); return m; });
+
+        var map = {};
+        order.forEach(function (n) { map[n] = null; });
+        kept.forEach(function (n, i) { map[n] = i + 1; });
+
+        var renumbered = out
+            .replace(/^## (\d+)\. /gm, function (m, n) { return '## ' + map[Number(n)] + '. '; })
+            .replace(/\bStep (\d+)\b/g, function (m, n) {
+                var to = map[Number(n)];
+                if (to == null) {
+                    throw new Error(
+                        'Content flag removed step ' + n + ' but "' + m + '" still refers to it. ' +
+                        'Move that passage inside the same flag, or rewrite it.'
+                    );
+                }
+                return 'Step ' + to;
+            });
+
+        return renumbered;
     }
 
     // Reconstruct the canonical inline prompt-block shape the renderer expects:
@@ -8383,6 +8601,7 @@ git stash pop
         slugifyHeading: slugifyHeading,
         configureMarked: configureMarked,
         stripMaintainerTail: stripMaintainerTail,
+        applyContentFlags: applyContentFlags,
         renderPromptBlock: renderPromptBlock,
         expandPrompts: expandPrompts,
         PROMPT_INCLUDE_RE: PROMPT_INCLUDE_RE,

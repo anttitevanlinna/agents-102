@@ -4,7 +4,7 @@
 >
 > Run modules on `high` thinking effort by default. xhigh adds latency without commensurate value on the work. Module 2 calls out a medium override at the top of that module.
 
-Land at Module 1 with a Claude Code session started in the repo you're going to grow, the curated skills installed, and one trivial bug picked.
+Land at Module 1 with a Claude Code session started in the repo you're going to grow,<!--flag:payload--> the curated skills installed,<!--/flag:payload--> and one trivial bug picked.
 
 ## What to bring
 
@@ -15,7 +15,7 @@ The training runs on YOUR real work, not exercises. Across six modules you'll wo
 - **A small feature** for Module 3: external or user-facing surface, shippable in a few hours.
 - **A real task you'd send off** for Module 4 onward: an epic-shaped or refactor-shaped piece you've been avoiding. The kind you'd hand to an agent rather than nudge bit by bit.
 
-Plus the repo itself (picked in Step 1 below), your team's tracker if you've got one (Linear / Jira / GitHub Issues), and `git worktree` available on your laptop. The curated security skills install in Step 4.
+Plus the repo itself (picked in Step 1 below), your team's tracker if you've got one (Linear / Jira / GitHub Issues), and `git worktree` available on your laptop.<!--flag:payload--> The curated security skills install in Step 4.<!--/flag:payload-->
 
 ## 1. Pick THE repo
 
@@ -35,6 +35,7 @@ Pick one. Every module of this training starts from a Claude Code session in thi
 
 Open a new Claude Code session at the repo you just picked. CLI or desktop both work. If Claude Code doesn't start cleanly here, sort the install before you go further, the rest of prework rides on a working session.
 
+<!--flag:payload-->
 ## 3. Get the content folder onto your laptop
 
 Ask Claude to fetch `ae101-content.tar.gz` to `~/Downloads/`.
@@ -49,6 +50,7 @@ Mechanical setup. Claude needs to write outside the repo (`~/Documents/ae101-con
 
 {{prompt:ae101-prework-extract-and-install}}
 
+<!--/flag:payload-->
 ## 5. Pick a trivial bug and confirm M1 readiness
 
 Now the interactive step. Claude walks three trivial bug candidates from your repo's backlog, helps you pick one, then confirms the repo can test, branch, commit, and open a PR.

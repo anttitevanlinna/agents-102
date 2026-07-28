@@ -242,14 +242,26 @@ function postProcessIncludes(html) {
     .replace(/<!--\/INC-->/g, '</section>');
 }
 
-function renderModuleMd(trainingKey, slug, contentUrl) {
+function renderModuleMd(trainingKey, slug, contentUrl, flags) {
   const modPath = path.join(ROOT, 'curriculum/trainings', trainingKey, slug + '.md');
   let md = readMd(modPath);
   if (md === null) throw new Error(`Module not found: ${modPath}`);
   md = inlineIncludes(md);
+  md = CR.applyContentFlags(md, flags);
   md = rewriteCrossDocLinksToAnchors(md);
   md = escapeTildes(md);
   if (contentUrl) md = md.replace(/<CONTENT_URL>/g, contentUrl);
+
+  // A variant with no payload has no URL to substitute, so a surviving
+  // <CONTENT_URL> would ship literally onto the page. Checked against the
+  // student-visible text only: maintainer blocks document the placeholder and
+  // are stripped before render.
+  if (!contentUrl && CR.stripMaintainerTail(md).indexOf('<CONTENT_URL>') !== -1) {
+    throw new Error(
+      `${slug}.md still references <CONTENT_URL>, but ${trainingKey} builds no payload. ` +
+      `Put that passage inside a content flag.`
+    );
+  }
   return md;
 }
 
@@ -329,7 +341,7 @@ ${buildToc(contentKey, t)}
   const modulesHtml = allModules
     .map(m => {
       if (TRAINER_ONLY.has(m.slug + '.md')) return '';
-      const md = renderModuleMd(contentKey, m.slug, contentUrl);
+      const md = renderModuleMd(contentKey, m.slug, contentUrl, raw.flags);
       let html = marked.parse(md);
       html = postProcessIncludes(html);
       html = CR.wrapImageFigures(html);
@@ -965,7 +977,28 @@ function buildTraining(customer, trainingKey, opts = {}) {
   // A variant training builds its parent's tarball but hosts it under its own
   // path (urlKey = trainingKey). Non-variant trainings resolve to themselves.
   const contentKey = (CR.TRAININGS[trainingKey] || {}).contentKey || trainingKey;
-  const contentUrl = buildPayload(contentKey, customer, trainingKey, outDir);
+
+  // `flags: { payload: false }` — this variant issues no content tarball, so
+  // there is nothing to build, nothing to host, and no URL to substitute. The
+  // prework passages that fetch and extract it are flagged out of the shared
+  // source by the same name.
+  const flags = (CR.TRAININGS[trainingKey] || {}).flags;
+  const contentUrl = (flags && flags.payload === false)
+    ? null
+    : buildPayload(contentKey, customer, trainingKey, outDir);
+  if (flags && flags.payload === false) {
+    // Sweep any tarball a previous build left here. Without this, turning the
+    // flag off leaves the old payload in the output dir, where it is
+    // indistinguishable from a current one to anything that copies the tree —
+    // and it would be served at the URL the page no longer prints.
+    fs.readdirSync(outDir)
+      .filter(f => f.endsWith('.tar.gz'))
+      .forEach(f => {
+        fs.unlinkSync(path.join(outDir, f));
+        console.log(`  Removed stale payload ${f}`);
+      });
+    console.log(`  (no payload: ${trainingKey} ships no content tarball)`);
+  }
   const body = buildBody(trainingKey, customer, contentUrl);
   const html = template(`${CR.TRAININGS[trainingKey].label} — ${customer}`, body, trainingKey);
   const outFile = path.join(outDir, 'index.html');

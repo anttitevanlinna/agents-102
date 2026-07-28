@@ -14,8 +14,14 @@ answers:
 
 # Google Workspace / Gemini Enterprise — Platform State
 
-Last updated: 2026-07-27 (cycle 174)
-OODA cycles: 23
+Last updated: 2026-07-28 (cycle 175)
+OODA cycles: 24
+
+**Cycle 175 updates (July 28, 2026) — Gemini 3.5 Pro absent = FIFTH consecutive missed window; Google Developer and DeepMind blogs silent; prediction markets 81% July 31:**
+
+**Gemini 3.5 Pro — not launched as of July 28, 2026 (fifth consecutive missed window).** Google DeepMind blog (fetched July 28): most recent post July 13 — no Gemini 3.5 Pro announcement. Google Developers blog (fetched July 28): most recent posts July 24, 21, 20 — no announcement. No `gemini-3.5-pro` entry in Gemini API. Developer community: "the best LLM position has been lost to competitors during the delay period." Delay root cause remains coding performance reliability issues. Prediction market: 81% for July 31, 73% for August 7 — community expectation only, not Google confirmation. Logan Kilpatrick's X.com blocked this cycle (402), no signal extracted. **Five missed windows: June → July 12 → July 17 → July 21 → July 28.** CTO guidance: check Gemini API changelog before trusting any press or prediction market signal. ([blog.google/technology/google-deepmind/ fetched Jul 28 2026](https://blog.google/technology/google-deepmind/) — [vendor blog, absence confirmed]; [developers.googleblog.com fetched Jul 28 2026](https://developers.googleblog.com/) — [vendor blog, absence confirmed]; [coursiv.io/blog/gemini-3-5-pro Jul 2026](https://coursiv.io/blog/gemini-3-5-pro) — [domain trade publication]; [eesel.ai/blog/gemini-3-5-pro Jul 2026](https://www.eesel.ai/blog/gemini-3-5-pro) — [domain trade publication])
+
+**Watch: Gemini API changelog for July 31 entry (81% market odds — check this before any other source); Gemini 4 pre-training timeline; Gemini 3.6 Flash enterprise deployment evidence.**
 
 **Cycle 174 updates (July 27, 2026) — Google ships three Flash models July 21 (3.6 Flash, 3.5 Flash-Lite, 3.5 Flash Cyber); 3.5 Pro absent = fourth consecutive missed date window; Gemini 4 pre-training confirmed; prediction markets 81% July 31:**
 

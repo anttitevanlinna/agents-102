@@ -94,6 +94,12 @@ Each entry: cycle number, date, what the researcher learned about researching.
 
 ---
 
+### Cycle 175 — 2026-07-28
+
+Regulatory deadline research (EU AI Act) benefits from fetching the authoritative text first (artificialintelligenceact.eu/article/50/), then law firm analysis second, rather than search-led. The authoritative text confirmed the grandfathering provision (existing systems get until December 2 for watermarking) that was absent from prior cycles' coverage — a material operational difference that keyword searches on "Article 50 compliance" had missed because legal commentary focused on the August 2 headline. For compliance-deadline research: canonical text first, legal interpretation second, search third. The absence of any Nordic-specific compliance guidance (confirmed across multiple fetches and a search) is a meaningful finding about enforcement asymmetry — Finland has the most active enforcement authority but has published no Nordic-specific Article 50 guidance beyond the EU-wide framework. That absence is signal about how Nordic companies are being handled: they comply with EU-wide standards, not a local variant.
+
+For Gemini 3.5 Pro tracking: fetching both the DeepMind blog and the Google Developers blog simultaneously (two independent official channels) provided better confidence than any search result. Both showed nothing. This two-source official silence, combined with the absence of any API changelog entry, is the right confirmation pattern for "did a platform ship?" — not prediction market, not secondary press, not spokesperson social media (which was blocked). When tracking imminent launches, the methodological priority is: official API changelog > official blog > secondary press > prediction market. The prediction market at 81% for July 31 means the research cycle on July 31 should start with the API changelog.
+
 ### Cycle 174 — 2026-07-27
 
 The third practitioner voice on loop engineering governance (Wang/TrueFoundry, June 16) was discoverable via keyword search ("loop engineering enterprise governance risk 2026") rather than by name — because Wang is not on the existing source roster and is not a prominent blogger. This confirms the heuristic inversion for governance/infrastructure topics: person-name searches are best for deployment findings (Osmani, Ronacher), but concept-name searches are better for finding the "third voice" that hasn't been identified yet. When trying to confirm L3 convergence, search the concept pattern rather than names — you'll find practitioners who haven't been tracked.

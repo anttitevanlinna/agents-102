@@ -14,8 +14,14 @@ answers:
 
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-07-26 (cycle 173)
-OODA cycles: 30
+Last updated: 2026-07-28 (cycle 175)
+OODA cycles: 31
+
+**Cycle 175 updates (July 28, 2026) — Assistants API 29-day countdown; "Most teams treat this as an SDK refactor. It is not." confirmed as key practitioner framing:**
+
+**⚠️ ASSISTANTS API SHUTDOWN AUGUST 26 — 29 DAYS — NO NEW MIGRATION TOOLING (TENTH CYCLE).** Migration guide fetched July 28: unchanged. "We will not provide an automated tool for migrating Threads to Conversations" — remains OpenAI's explicit position. Key practitioner framing confirmed from igor-ya.com (March 2026, [practitioner direct]): **"Most teams treat this as an SDK refactor. It is not."** The structural difference: Assistants = server-side thread persistence (OpenAI manages state); Responses API = developer-managed state (client must chain `previous_response_id` explicitly, own all tool loops). Three primary migration failure modes (from practitioner playbook): (1) **state regressions** — follow-up turns lose constraints after Threads→Conversations; (2) **RAG degradation** — File Search wiring differs, `vector_store_ids` instead of implicit assistant-level retrieval, silently degrades grounding; (3) **streaming breakage** — SSE event patterns change, downstream consumers fail. No extension signal from OpenAI. Azure/OpenAI fork unchanged: Azure customers → Foundry Agents (NOT Responses API). **Risk: teams unmigrated as of July 28 are past the comfortable window.** Small systems (1-4 engineering weeks): still viable to August 26. Complex multi-tenant systems: past the 90-day guidance window from igor-ya.com. ([developers.openai.com/api/docs/assistants/migration fetched Jul 28 2026](https://developers.openai.com/api/docs/assistants/migration) — [vendor documentation]; [igor-ya.com Mar 2026](https://igor-ya.com/posts/assistants-api-to-responses-api-migration-playbook-2026/) — [practitioner direct]; [community.openai.com](https://community.openai.com/t/assistants-api-beta-deprecation-august-26-2026-sunset/1354666) — [practitioner community])
+
+**Watch: August 8-9 (Sol Day 30 — next enterprise production evidence window); August 26 (Assistants API HARD STOP — 29 days); August 31 (Sonnet 5 / Terra Azure pricing cliff).**
 
 **Cycle 173 updates (July 26, 2026) — Assistants API 31-day countdown (August 26 hard stop confirmed same for OpenAI direct + Azure); Sol Day 17 zero named enterprise deployers (4th consecutive absence):**
 

@@ -13,7 +13,7 @@ Surface one multi-file backlog task in the repo you used for Module 1. Criteria:
 
 Come without a surfaced task and you'll be scrambling to find one while the room is already in plan mode. Your call.
 
-Optional reading in the gap before this one: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0); [Multi-session and Git: survival guide](../../trainings/agentic-engineering-101/reference/multi-session-git.md). If you like a lookup page nearby, [plan mode at depth in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#5-plan-mode-at-depth) has the approval paths in one table.
+Optional reading in the gap before this module: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0); [Multi-session and Git: survival guide](../../trainings/agentic-engineering-101/reference/multi-session-git.md). If you like a lookup page nearby, [plan mode at depth in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#5-plan-mode-at-depth) has the approval paths in one table.
 
 ## What You'll Learn
 After this module, you will be able to:

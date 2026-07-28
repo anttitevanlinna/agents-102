@@ -6,7 +6,7 @@
 
 ## 1. Treat CI as feedback into the loop, not a gate to pass
 
-The reflex frame for CI is *"a wall I must pass before merge."* That frame burns every red build. A failing CI run is signal. About which memory rule should have caught the mistake upstream. About which verifier was too soft. About which skill ran on auto-pilot when it should have paused. The best route that signal back into the loop the way you route gap diagnosis back into skills and memory. Each red build sharpens the next run.
+The reflex frame for CI is *"a wall I must pass before merge."* That frame burns every red build. A failing CI run is signal. About which memory rule should have caught the mistake upstream. About which verifier was too soft. About which skill ran on auto-pilot when it should have paused. The best route that signal back into the loop<!--flag:module:spot-gaps-build-the-loop--> the way you route gap diagnosis back into skills and memory<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop--> the way you route what a run got wrong back into your rules and your verifier<!--/flag:no-module:spot-gaps-build-the-loop-->. Each red build sharpens the next run.
 
 **Klaassen at Every** named the loop. Each unit of engineering work should make the next one cheaper. The mechanism lives in the artifacts the next agent reads — rules files, skill files, `AGENTS.md` — and the discipline is feeding lessons from one task back into them before the next task starts ([Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide)).
 
@@ -72,7 +72,7 @@ The arrow most orgs get backwards: feel the speed, panic, invest in more pre-mer
 
 ## Where this fits in your AE101 arc
 
-The training taught the loop at your desk. Spot the gap, build the eval, close the loop on your own code. This piece is the same loop, run by engineers who've been at it longer. The shift is not conceptual. The reader is still you. The shift is what each move makes possible once you stop treating CI, review, deploy, and customer signal as separate stages and start treating them as one loop with six tunable surfaces.
+The loop at your desk is the one this training closed:<!--flag:module:spot-gaps-build-the-loop--> spot the gap, build the eval, close the loop on your own code.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop--> send the work off, read what comes back, build the packaging that catches what went wrong.<!--/flag:no-module:spot-gaps-build-the-loop--> This piece is the same loop, run by engineers who've been at it longer. The shift is not conceptual. The reader is still you. The shift is what each move makes possible once you stop treating CI, review, deploy, and customer signal as separate stages and start treating them as one loop with six tunable surfaces.
 
 Pick one move. Run it this week.
 

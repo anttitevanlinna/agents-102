@@ -99,7 +99,7 @@ Before you close: read [Reading the return](lectures/reading-the-return.md). It 
 
 ## Next
 
-The next session opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this run lives, so when the next slot lands a fresh session reads it straight from `task.md`, no hunting through past sessions. Transcripts persist on disk regardless; see [Claude Code for engineers, session transcripts](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for what they hold. Close the session once the run is done; the trace is on disk.
+The next module opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this run lives, so when the next slot lands a fresh session reads it straight from `task.md`, no hunting through past sessions. Transcripts persist on disk regardless; see [Claude Code for engineers, session transcripts](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for what they hold. Close the session once the run is done; the trace is on disk.
 
 ## Bring to Module 5
 

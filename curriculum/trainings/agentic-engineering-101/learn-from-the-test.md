@@ -19,7 +19,7 @@ After this module, you will be able to:
 
 ## Start here
 
-You sent off an un-packaged run at the last close and read the pre-read. You walk in with the artefact in front of you and the three failure-mode lenses in hand. The in-room lecture below opens the session.
+You sent off an un-packaged run and read the pre-read. You walk in with the artefact in front of you and the three failure-mode lenses in hand. The in-room lecture below opens the session.
 
 > **Long runs, short reads.** The M1 countermove rides along: never let the agent say everything. Ranked findings first, detail on request, the full record on disk. Chat is for what changed and what needs you.
 
@@ -37,7 +37,7 @@ Acting without full control is the job from here on. The feeling of what is miss
 
 ## Set up the worktree
 
-Before opening this session, fork the un-packaged run's starting SHA into a sibling worktree. This session's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second run starts from the same code state as the first. Cherny calls parallel worktrees his biggest productivity unlock; the Module 2 pre-read lands here.
+Before the exercise session, fork the un-packaged run's starting SHA into a sibling worktree. This module's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second run starts from the same code state as the first. Cherny calls parallel worktrees his biggest productivity unlock; the Module 2 pre-read lands here.
 
 A real engineering call lives in this fork: gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a worktree because git doesn't see them. AE101's default is to copy them in once at fork time. Your Module 1 evidence rides forward<!--flag:module:earn-the-trust--> (along with any Module 3 artefacts if you've completed it)<!--/flag:module:earn-the-trust-->; compounding then diverges between the worktree and the original.<!--flag:module:spot-gaps-build-the-loop--> You decide post-Module-6 what to merge back.<!--/flag:module:spot-gaps-build-the-loop--> Other engineers wire it differently.
 
@@ -55,7 +55,7 @@ Claude will narrate before acting. It usually opens with a plan summary listing 
 
 Check the copy landed before you go on: the output should name both `CLAUDE.local.md` and `observations/` at the worktree path. The whole contrast rests on the second run starting from the same system the first one did, and a rules file that quietly stayed behind changes two variables instead of one. If your rules file lives somewhere other than the two paths Claude checked, ask Claude to copy that one across too.
 
-**The coordinates are the anchor.** Claude should read the protected `Run coordinates` block in `task.md`, use the exact `m4/<slug>` branch named there, and fork from that branch's "M4 starting point" commit. If the coordinates are missing or the commit message has been rewritten, stop and use the SHA Claude reported at the send-off close rather than guessing from branch names.
+**The coordinates are the anchor.** Claude should read the protected `Run coordinates` block in `task.md`, use the exact `m4/<slug>` branch named there, and fork from that branch's "M4 starting point" commit. If the coordinates are missing or the commit message has been rewritten, stop and use the starting-point SHA Claude reported before the send-off rather than guessing from branch names.
 
 The worktree is forked and ready. You open the session in it at the first exercise.
 

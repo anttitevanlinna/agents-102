@@ -211,8 +211,8 @@ Scoped, named capabilities. Markdown file with frontmatter + instructions, lives
 **When to reach for a skill vs. a rule:**
 - **Skill:** task-specific, loads on demand, reusable move (*"review this against our security policy"*)
 - **Rule:** always-on (or path-scoped), constraints Claude should honour whenever active
-
-<!--flag:module:earn-the-trust-->**AE101 cross-refs:** M3 ships two curated skills (`access-control-analysis`, `stride`) and you author one (`test-strategy`).<!--/flag:module:earn-the-trust--><!--flag:module:spot-gaps-build-the-loop--> M6 authors a second one, the learning-loop skill built from the two-run diff.<!--/flag:module:spot-gaps-build-the-loop-->
+<!--flag:module:earn-the-trust-->
+**AE101 cross-refs:** M3 ships two curated skills (`access-control-analysis`, `stride`) and you author one (`test-strategy`).<!--/flag:module:earn-the-trust--><!--flag:module:spot-gaps-build-the-loop--> M6 authors a second one, the learning-loop skill built from the two-run diff.<!--/flag:module:spot-gaps-build-the-loop-->
 
 Docs: [skills](https://code.claude.com/docs/en/skills).
 
@@ -267,7 +267,7 @@ The scheduler or condition invokes the skill. The skill is the thing that catche
 
 ### Session lifecycle — three gotchas
 
-Apply to any long-running session, scheduled or not. The un-packaged same-session send-off depends on these as much as a `/loop` or a `/goal` run does. Verified 2026-04-23.
+Apply to any long-running session, scheduled or not. An un-packaged same-session send-off depends on these as much as a `/loop` or a `/goal` run does. Verified 2026-04-23.
 
 1. **Laptop sleep freezes the session.** The Claude Code process pauses when the OS sleeps and does NOT resume on wake — you reopen Claude Code manually. For overnight runs, prevent sleep (`caffeinate -dims` on macOS; power-plan change on Linux/Windows). Don't close the lid.
 2. **Ctrl+C during a tool call can corrupt the session.** Interrupting cleanly between tool calls is fine; interrupting mid-tool can leave the session's `.jsonl` in a state that fails to resume. If the run genuinely needs stopping, wait for a tool call to finish, or accept that `/resume` may not work on that session.

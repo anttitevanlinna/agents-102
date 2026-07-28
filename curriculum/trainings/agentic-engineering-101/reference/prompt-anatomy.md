@@ -263,7 +263,7 @@ Recognising single moves is the floor. Recognising the combinations is the ceili
 
 Fires at every module close. *If one rule earned itself, write it to `./CLAUDE.local.md` (personal, not team `./CLAUDE.md`). If nothing earned itself, say so and skip the write.* Pick one thing. Write to the right scope. Allow refusal. The third move is what keeps Compound candid. Without null-case escape, the agent invents a rule rather than admit a quiet session.
 
-Example: `ae101-m2-integrate-branch`, `compound-and-close-1`, `ae101-m3-sharpen-skill`.
+Example: `ae101-m2-integrate-branch`, `compound-and-close-1`<!--flag:module:earn-the-trust-->, `ae101-m3-sharpen-skill`<!--/flag:module:earn-the-trust-->.
 
 ### The audit prompt
 *Sealed context + subagent isolation + bounded count.*

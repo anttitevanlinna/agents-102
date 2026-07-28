@@ -128,7 +128,7 @@
             // The nav and the cards number from the parent, so the row reads
             // M1 M2 M4 M5 and the skip is visible. A visible gap wants an answer
             // on the same page, or the first thing the student does is wonder.
-            lede: 'Four modules for software engineers, with team workshops between them. Numbering follows the full training, so modules 3 and 6 are absent: that ground runs as a workshop instead. Learn the new loop on your own repo, then take it to your team.',
+            lede: 'Four modules for software engineers, with team workshops between them. Numbering follows the full training: 3 and 6 are the workshops. Learn the new loop on your own repo, then take it to your team.',
             modules: [
                 { slug: 'getting-going',             title: 'Getting going + context' },
                 { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },

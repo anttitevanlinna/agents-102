@@ -24,7 +24,7 @@ You'll interview for that job (the agent reads your memory and does most of the 
 
 **Phase 1. Interview for the job (12 min).**
 
-You've built six modules of context. Your memory knows who your teammate is, what the work looks like, where the friction lives. The agent does the heavy lifting. It reads what's already there, drafts a hypothesis about the job, and asks you only the questions that plug real holes.
+The context has been building since the first module. Your memory knows who your teammate is, what the work looks like, where the friction lives. The agent does the heavy lifting. It reads what's already there, drafts a hypothesis about the job, and asks you only the questions that plug real holes.
 
 <div class="rt-code">
 

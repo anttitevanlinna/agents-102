@@ -8,7 +8,7 @@ Land at Module 1 with a Claude Code session started in the repo you're going to 
 
 ## What to bring
 
-The training runs on YOUR real work, not exercises. Across six modules you'll work at four task sizes, bring something at each size from your backlog. You don't need them all picked now; you need to know they're there.
+The training runs on YOUR real work, not exercises. You'll work at four task sizes across the training, bring something at each size from your backlog. You don't need them all picked now; you need to know they're there.
 
 - **Trivial bug** for Module 1: a few lines here and there. Picked from your repo's backlog or a recurring annoyance.
 - **A small multi-file task** for Module 2: work you'd ship today if you had the hour. Plan mode wants something a few files wide.
@@ -27,7 +27,7 @@ One decision, and you probably have a strong candidate already: which repo are y
 
 Pick one. Every module of this training starts from a Claude Code session in this repo. Every rule and every memory you build during the training lands here.
 
-*Really stuck for a repo that fits? Ask your trainer for the fallback repo, or [build one from zero](trainings/agentic-engineering-101/supplementary/build-a-project-from-zero.md) and grow it across the six modules.*
+*Really stuck for a repo that fits? Ask your trainer for the fallback repo, or [build one from zero](trainings/agentic-engineering-101/supplementary/build-a-project-from-zero.md) and grow it across the training.*
 
 ## 2. Open a Claude Code session in that repo
 

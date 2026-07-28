@@ -2513,7 +2513,7 @@ body.slides-active { overflow: hidden; }
 </blockquote>
 <p>Land at Module 1 with a Claude Code session started in the repo you&#39;re going to grow, the curated skills installed, and one trivial bug picked.</p>
 <h2 id="what-to-bring">What to bring</h2>
-<p>The training runs on YOUR real work, not exercises. Across six modules you&#39;ll work at four task sizes, bring something at each size from your backlog. You don&#39;t need them all picked now; you need to know they&#39;re there.</p>
+<p>The training runs on YOUR real work, not exercises. You&#39;ll work at four task sizes across the training, bring something at each size from your backlog. You don&#39;t need them all picked now; you need to know they&#39;re there.</p>
 <ul>
 <li><strong>Trivial bug</strong> for Module 1: a few lines here and there. Picked from your repo&#39;s backlog or a recurring annoyance.</li>
 <li><strong>A small multi-file task</strong> for Module 2: work you&#39;d ship today if you had the hour. Plan mode wants something a few files wide.</li>
@@ -2529,7 +2529,7 @@ body.slides-active { overflow: hidden; }
 <li>Real work ahead at two sizes. Module 1 ships a small fix, a few lines here and there. Module 4 onward runs experiments on bigger things: an epic you&#39;re about to start, a refactor that&#39;s been sitting, a feature with unknowns. The repo should have both.</li>
 </ul>
 <p>Pick one. Every module of this training starts from a Claude Code session in this repo. Every rule and every memory you build during the training lands here.</p>
-<p><em>Really stuck for a repo that fits? Ask your trainer for the fallback repo, or <a href="#supplementary-build-a-project-from-zero">build one from zero</a> and grow it across the six modules.</em></p>
+<p><em>Really stuck for a repo that fits? Ask your trainer for the fallback repo, or <a href="#supplementary-build-a-project-from-zero">build one from zero</a> and grow it across the training.</em></p>
 <h2 id="2-open-a-claude-code-session-in-that-repo">2. Open a Claude Code session in that repo</h2>
 <p><strong>Session</strong> <em>(new, &quot;prework&quot;)</em></p>
 <p>Open a new Claude Code session at the repo you just picked. CLI or desktop both work. If Claude Code doesn&#39;t start cleanly here, sort the install before you go further, the rest of prework rides on a working session.</p>
@@ -2593,7 +2593,7 @@ Report success on each step and tell me what you did.
 <h2 id="big-idea">Big Idea</h2>
 <p>The first compound loop closes on a trivial bug from your own backlog. Orient, fix tests-first without plan mode, retro into a personal <code>CLAUDE.local.md</code> born from the session. The fourth move, closing the bug&#39;s ticket outside the repo, runs as homework. The loop every module after this one rides on.</p>
 <h2 id="prework">Prework</h2>
-<p>Complete the prework at the top of this workbook. You&#39;ll open the first session in the repo you picked there. You&#39;ll stay in this one repo across all six modules. A later module commits your working tree as a fixed starting point, so keep unrelated work-in-progress committed or on its own branch as you go, and nothing stray rides into that snapshot.</p>
+<p>Complete the prework at the top of this workbook. You&#39;ll open the first session in the repo you picked there. You&#39;ll stay in this one repo for the whole training. A later module commits your working tree as a fixed starting point, so keep unrelated work-in-progress committed or on its own branch as you go, and nothing stray rides into that snapshot.</p>
 <h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
@@ -2933,7 +2933,7 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 </ul>
 <h2 id="start-here">Start here</h2>
 <p><strong>The question, to you:</strong> when was the last time Claude wrote a plan you approved without really reading? We all do it. What made you approve? Was it that the plan looked right, or that you were in a hurry, or that pushing back felt like work?</p>
-<p>Before the plan-reading move, one orientation. Here is the whole territory this training covers, and where the first three modules sit in it.</p>
+<p>Before the plan-reading move, one orientation. Here is the whole territory this training covers, and where the ground you are on sits in it.</p>
 <section class="phase phase--lecture" id="lectures-the-whole-map">
 <div class="phase-kicker">Lecture</div>
 
@@ -5801,7 +5801,7 @@ The prompt runs later in a cold session, so bake in what that session won&#39;t 
 <div class="phase-kicker">Supplementary</div>
 <h1 id="no-repo-to-bring-build-one">No repo to bring? Build one.</h1>
 <p>The training runs on a repo you already ship to. No such repo you can use here? Build one. A repo you grow from zero is a clean instrument. Every decision is yours, every bug is legibly your own, and nothing inherited needs explaining away.</p>
-<p>You&#39;ll build a small Lemmings game in the browser (the 1991 classic: little creatures you guide across a level). By the end of the first session it runs, it has a test or two, and it has real commit history. That&#39;s a project. The six modules grow it.</p>
+<p>You&#39;ll build a small Lemmings game in the browser (the 1991 classic: little creatures you guide across a level). By the end of the first session it runs, it has a test or two, and it has real commit history. That&#39;s a project. The training grows it.</p>
 <h2 id="get-to-a-running-game">Get to a running game</h2>
 <ul>
 <li>Set the model to Sonnet first with <code>/model sonnet</code>. Sonnet builds a clean first version, so the bugs you do hit are small and few. That&#39;s the point: a couple of them become your Module 1 material.</li>
@@ -7451,14 +7451,15 @@ git stash pop
         // references are inherited one copy each and a fix to a shared artefact
         // reaches every variant. Only the module list, label and lede are its own.
         //
-        // No `prework:` override: this variant receives AE101's own prework page,
-        // which frames six modules, four task sizes and installs the curated
-        // security skills of the module this track drops. That is deliberate, and
-        // it is the highest-visibility entry in the gaps inventory that sits beside
-        // the module files in `curriculum/trainings/agentic-engineering-101/`. That
-        // document lists everywhere plain AE101 does not fit this cut, and the
-        // seams a customer-authored workshop has to be written against. Read it
-        // before changing anything here.
+        // No `prework:` override, and none needed: AE101's own prework page is now
+        // module-count-neutral, and the payload flag below takes the download,
+        // extract and skill-install steps with it. What remains true for both cuts
+        // is stated once, in one file, rather than forked per variant.
+        //
+        // The gaps inventory beside the module files in
+        // `curriculum/trainings/agentic-engineering-101/` lists what plain AE101
+        // still does not fit about this cut, and the seams a customer-authored
+        // workshop has to be written against. Read it before changing anything here.
         //
         // Build student-facing:
         // node scripts/build-workbook.js northwind agentic-engineering-101-northwind --no-trainer-docs

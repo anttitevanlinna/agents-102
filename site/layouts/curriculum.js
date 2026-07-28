@@ -101,14 +101,15 @@
         // references are inherited one copy each and a fix to a shared artefact
         // reaches every variant. Only the module list, label and lede are its own.
         //
-        // No `prework:` override: this variant receives AE101's own prework page,
-        // which frames six modules, four task sizes and installs the curated
-        // security skills of the module this track drops. That is deliberate, and
-        // it is the highest-visibility entry in the gaps inventory that sits beside
-        // the module files in `curriculum/trainings/agentic-engineering-101/`. That
-        // document lists everywhere plain AE101 does not fit this cut, and the
-        // seams a customer-authored workshop has to be written against. Read it
-        // before changing anything here.
+        // No `prework:` override, and none needed: AE101's own prework page is now
+        // module-count-neutral, and the payload flag below takes the download,
+        // extract and skill-install steps with it. What remains true for both cuts
+        // is stated once, in one file, rather than forked per variant.
+        //
+        // The gaps inventory beside the module files in
+        // `curriculum/trainings/agentic-engineering-101/` lists what plain AE101
+        // still does not fit about this cut, and the seams a customer-authored
+        // workshop has to be written against. Read it before changing anything here.
         //
         // Build student-facing:
         // node scripts/build-workbook.js northwind agentic-engineering-101-northwind --no-trainer-docs

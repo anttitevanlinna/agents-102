@@ -465,6 +465,13 @@ a branch?* gets no answer from the material, because the answer was module 6.
 **Who could close it.** Nobody, without editing AE101 — which is what this revert deliberately does not
 do. A knowingly-carried cost, worth naming rather than discovering in the room.
 
+**Accepted as-is 2026-07-28.** The fork still buys the thing sitting 4 rests on — identical starting code
+state, so packaging is the only changed variable — it just buys it at six steps where a branch would
+manage in one. Unlike gaps 14 and 15, which the worktree *causes*, this is only a price. The honest
+trainer answer to *why not just a branch?* is now on the record: a branch would work for this cut; the
+fork is what the parent training uses because a later module opens a session inside it. Roughly 8–10
+minutes, knowingly spent.
+
 ---
 
 ## 14. The worktree's gitignored-copy step can silently change two variables at once
@@ -489,6 +496,13 @@ and confirm the rules file was where the copy looked. That is a trainer instruct
 content change, but it does not exist in `learn-from-the-test.md`, and the deleted exercise was the only
 place the risk was written down.
 
+**Closed 2026-07-28, and not as a variant fix.** This one was mis-filed as a Northwind gap: nothing in
+canonical AE101 re-checks the copy either, so the same silent two-variable experiment has always been
+available to every cohort. The check is now body prose at the worktree beat, in **both** cuts — *"the
+whole contrast rests on the second run starting from the same system the first one did, and a rules file
+that quietly stayed behind changes two variables instead of one."* Trainer instruction was the wrong
+layer for it: the student is the one who knows where their rules file lives.
+
 ---
 
 ## 15. The student's rules file ends the track in two divergent copies
@@ -508,6 +522,15 @@ directory carrying that sitting's work. Nothing tells them to reconcile. A closi
 
 **Who could close it.** A trainer close-of-sitting instruction (merge the worktree copy back, or delete
 it and keep the original), or the customer workshop naming which copy it means. Neither exists.
+
+**Closed 2026-07-28 by the inverse flag.** AE101 defers the merge decision to post-Module-6, which is
+right for AE101 and impossible here, so the two cuts need *different sentences* rather than one sentence
+minus a clause. `<!--flag:no-module:spot-gaps-build-the-loop-->` carries text that exists only for cuts
+lacking that module: reconcile the two copies before leaving the sitting, and make sure the repo you
+actually work in holds the version carrying this sitting's work. AE101 keeps its deferral, untouched.
+
+This is what the flag mechanism was missing until now — every earlier flag could only *remove*. A gap
+that needs the variant to say something the parent does not was unreachable with subtraction alone.
 
 ---
 
@@ -631,6 +654,15 @@ with the word and no bar behind it — into a customer workshop where the word d
 Concept already leans on it. Or the customer workshop author, who must define it before the routing
 beat.
 
+**Closed 2026-07-28 with the primer, in both cuts.** *"Your verifier is your first eval: the automated
+check that says an agent-produced thing meets your bar."* Six words added where the word first does work.
+
+Worth recording why this was not a variant fix either: AE101's **first** use of *eval* is also at sitting
+4, and its definition arrives at module 6. So canonical AE101 has been using the word a full module
+before earning it, which `check_student_facing §2` asks it not to do. The cut exposed it; the cut did not
+cause it. The customer workshop still owns the Verifier / Judge / Gate split, which is a routing
+distinction rather than a definition.
+
 ---
 
 ## 20. The take-home supplementaries address a reader who finished a module this track does not run
@@ -655,6 +687,22 @@ section is an exercise with four questions, all four unanswerable.
 
 **Who could close it.** Maintainer. A per-variant `supplementaries` list in the registry is the smallest
 lever.
+
+**Closed 2026-07-28, and the smallest lever turned out to be the wrong one.** A per-variant
+`supplementaries` list would have *withheld* the pages. But `how-the-best-do-ci-cd` and `skill-stacking`
+are good reading for anyone who has run the loop twice; only their opening sentences assume a module this
+cut skips. Withholding the page to fix its first line costs the reader the other 95%.
+
+So the openers are flagged and re-written per cut rather than the pages dropped. Where AE101 says *"You
+finished M6 owning the loop at your desk"*, this cut reads *"You own the loop at your desk: a task run
+twice, the difference read, the rules sharpened from what you saw."* Same for `skill-stacking`'s exercise
+lead, which now says *"take any skill you have written, or the next one you would write"* — the four
+questions become answerable instead of unanswerable. `workflow-composition-lineages`'s M3-specific
+paragraph is flagged out entirely; the page's argument does not rest on it.
+
+Flags now apply to supplementaries and references, not just module bodies — this is the surface most
+likely to be read alone weeks later with no trainer present, so it is the surface where congratulating a
+student on work they never did costs most.
 
 ---
 
@@ -719,6 +767,13 @@ build noise that reads as breakage.
 **In the room.** Not a room problem. A maintainer problem: the next person to see those warnings will
 either chase a phantom regression or "fix" them by deleting the mentions from this document, which
 destroys the record. Deleted artefacts are therefore named here by slug rather than by path.
+
+**Closed 2026-07-28.** `autumn-gaps.md` added to the tarball builder's `TRAINER_ONLY` array, with the
+reason recorded at the array: this file names deleted lectures and exercises by path *on purpose*, so
+seeding the reachability walk from it harvests files that are supposed to be gone. The build now runs
+with zero warnings. The cost was never the blast radius — module files are only read as link seeds,
+never copied — it was that a builder crying wolf on every run is a builder whose warnings stop being
+read.
 
 **Who could close it.** Maintainer, under `scripts/` — either an explicit exclude for this file, or the
 module-set-aware payload work already logged as owed. Out of scope for this run by construction.

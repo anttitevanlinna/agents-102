@@ -135,6 +135,29 @@ test('module flag: no module list supplied keeps everything', () => {
   assert.match(out, /Pre-reads before the security module/);
 });
 
+test('no-module flag: passage appears only when the module is absent', () => {
+  const src = 'Base.<!--flag:no-module:spot-gaps--> Reconcile the two copies now.<!--/flag:no-module:spot-gaps-->';
+  assert.equal(applyContentFlags(src, undefined, ['learn-from-the-test']),
+               'Base. Reconcile the two copies now.');
+  assert.equal(applyContentFlags(src, undefined, ['learn-from-the-test', 'spot-gaps']),
+               'Base.');
+});
+
+test('no-module flag: no module list supplied keeps the passage', () => {
+  // Same erring-toward-keeping rule as module flags. It is safe in both
+  // directions here: a spurious instruction is visible to a reader, a silently
+  // dropped one is not.
+  const src = 'Base.<!--flag:no-module:spot-gaps--> Reconcile.<!--/flag:no-module:spot-gaps-->';
+  assert.equal(applyContentFlags(src, undefined, undefined), 'Base. Reconcile.');
+});
+
+test('module and no-module flags on the same slug are exclusive', () => {
+  const src = '<!--flag:module:m6-->defer to M6<!--/flag:module:m6-->' +
+              '<!--flag:no-module:m6-->handle it here<!--/flag:no-module:m6-->';
+  assert.equal(applyContentFlags(src, undefined, ['m6']), 'defer to M6');
+  assert.equal(applyContentFlags(src, undefined, ['other']), 'handle it here');
+});
+
 test('module and capability flags coexist in one file', () => {
   const mixed = 'Keep.<!--flag:payload--> payload bit.<!--/flag:payload-->' +
                 '<!--flag:module:gone--> module bit.<!--/flag:module:gone-->';

@@ -2908,9 +2908,12 @@ body.workbook { padding-top: 3rem; }
     // dropped. False → the passage goes. Use when the thing a passage describes
     // is not a module: a payload, a host, a piece of equipment.
     //
-    // **Module flags** (`module:earn-the-trust`) resolve against the training's
-    // own `modules` list — the passage survives exactly when that module is in
-    // the cut. Nothing is declared, so nothing can drift: a variant that drops a
+    // **Module flags** (`module:earn-the-trust`, and its inverse
+    // `no-module:earn-the-trust`) resolve against the training's own `modules`
+    // list — the passage survives exactly when that module is in the cut, or
+    // exactly when it is not. The inverse is for text the parent training defers
+    // to a later module: a reconciliation step, a hand-off. A cut that drops that
+    // module has to say it somewhere, and this is where. Nothing is declared, so nothing can drift: a variant that drops a
     // module drops the homework for it in the same edit, and a variant that later
     // adds it back gets the homework back for free. Prefer this over a
     // hand-declared boolean whenever the dependency really is a module, because a
@@ -2939,6 +2942,15 @@ body.workbook { padding-top: 3rem; }
                     // No module list supplied → keep everything. A caller that
                     // does not know the cut must not silently delete its homework.
                     drop = moduleSlugs ? present.indexOf(name.slice(7)) === -1 : false;
+                } else if (name.indexOf('no-module:') === 0) {
+                    // The inverse: text that exists ONLY for cuts missing the
+                    // module — a hand-off the parent training defers to it, a
+                    // reconciliation its later sitting would have covered. Same
+                    // no-list rule, and it lands the same way: keep the passage.
+                    // Erring toward keeping is safe in both directions because a
+                    // spurious instruction is visible, while a silently dropped
+                    // one is not.
+                    drop = moduleSlugs ? present.indexOf(name.slice(10)) !== -1 : false;
                 } else {
                     drop = !!(flags && flags[name] === false);
                 }

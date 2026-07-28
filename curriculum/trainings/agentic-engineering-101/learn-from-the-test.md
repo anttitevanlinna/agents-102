@@ -39,7 +39,9 @@ Acting without full control is the job from here on. The feeling of what is miss
 
 Before opening the Module 5 session, fork the Module 4 starting SHA into a sibling worktree. Module 5's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second run starts from the same code state as the first. Cherny calls parallel worktrees his biggest productivity unlock; the Module 2 pre-read lands here.
 
-A real engineering call lives in this fork: gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a worktree because git doesn't see them. AE101's default is to copy them in once at fork time. Your Module 1 evidence rides forward (along with any Module 3 artefacts if you've completed it); Module 5 and Module 6 compounding diverges in the worktree; you decide post-Module-6 what to merge back into the original. Other engineers wire it differently.
+A real engineering call lives in this fork: gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a worktree because git doesn't see them. AE101's default is to copy them in once at fork time. Your Module 1 evidence rides forward<!--flag:module:earn-the-trust--> (along with any Module 3 artefacts if you've completed it)<!--/flag:module:earn-the-trust-->; compounding then diverges between the worktree and the original.<!--flag:module:spot-gaps-build-the-loop--> You decide post-Module-6 what to merge back.<!--/flag:module:spot-gaps-build-the-loop--> Other engineers wire it differently.
+
+Check the copy landed before you go on. The whole contrast rests on the second run starting from the same system the first one did, and a rules file that quietly stayed behind changes two variables instead of one. If your rules file lives somewhere other than where the copy looked, move it across now.<!--flag:no-module:spot-gaps-build-the-loop--> Before you leave this sitting, reconcile the two copies: merge the worktree's `CLAUDE.local.md` and `observations/` back into the original repo, or keep the worktree's and delete the original. Whichever you pick, the repo you actually work in should hold the version carrying this sitting's work.<!--/flag:no-module:spot-gaps-build-the-loop-->
 
 ## Run the fork from the original repo
 
@@ -65,7 +67,7 @@ The worktree is forked and ready. You open the session in it at the first exerci
 - You pick the verifier shape against the failure shape. Same eval, different mechanism
 - Same task run twice with packaging as the only changed variable IS the lesson
 - No benchmark told you what went wrong; the artefact did. The artefact rules, self-reports don't.
-- Your verifier is your first eval.<!--flag:module:spot-gaps-build-the-loop--> The team kit's evals grow from here<!--/flag:module:spot-gaps-build-the-loop-->
+- Your verifier is your first eval: the automated check that says an agent-produced thing meets your bar<!--flag:module:spot-gaps-build-the-loop-->. The team kit's evals grow from here<!--/flag:module:spot-gaps-build-the-loop-->
 
 ## Re-send the same task, packaged
 

@@ -162,7 +162,7 @@ Three companion diagrams ship with this doc.
 
 ## Map your own kit
 
-You shipped a second skill in M6. Hold it up against Dino's four mechanisms and ask:
+<!--flag:module:spot-gaps-build-the-loop-->You shipped a second skill in M6. Hold it up<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->Take any skill you have written, or the next one you would write. Hold it up<!--/flag:no-module:spot-gaps-build-the-loop--> against Dino's four mechanisms and ask:
 
 - Is it a **route** (CLAUDE.md predicate fires it when the right file is touched, or the right phrase appears in a plan)?
 - Is it a **leaf** (you invoke it by name when the task calls for it, no chain)?

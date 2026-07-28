@@ -124,7 +124,7 @@ Four distinctive moves stand out:
 
 The dispatcher pattern **scales cross-repo**. Dino runs a pure-routing meta-layer (`/aios`) over a company-level map of repos; the meta-layer points an invocation to the right repo, where that repo's CLAUDE.md then takes over and dispatches to skills. Same routing primitive, two scales: predicate → handler within a repo, predicate → repo across repos. The within-repo dispatcher organises one kit; the cross-repo dispatcher organises a company's repos. Composing the dispatcher with itself at the higher scale is a deliberate move, not an automatic one. But the primitive carries.
 
-What's specific to AE101: the two curated security skills from M3 (`/access-control-analysis` and `/stride`) sit inside the PLAN phase as upstream input to the mutating skills. The training's curated kit is part of Dino's shipped composition; the worked example IS a feedback loop.
+<!--flag:module:earn-the-trust-->What's specific to AE101: the two curated security skills from M3 (`/access-control-analysis` and `/stride`) sit inside the PLAN phase as upstream input to the mutating skills. The training's curated kit is part of Dino's shipped composition; the worked example IS a feedback loop.<!--/flag:module:earn-the-trust-->
 
 **Read:**
 - [Dino's skill stacking system](trainings/agentic-engineering-101/supplementary/skill-stacking.md): Dino's primary doc. The three-layer model, four composition mechanisms, skill catalogue, six workflow archetypes, seven design principles, in his own words. Three diagrams ship alongside the doc in `supplementary/skill-stacking/`: phase swimlane, `/ship` anatomy, workflow archetypes.

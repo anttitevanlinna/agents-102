@@ -1,8 +1,8 @@
 # How the best do CI/CD: six moves that sharpen the loop
 
-*Supplementary for AE101 Module 6. Read after you've shipped your second skill.*
+<!--flag:module:spot-gaps-build-the-loop-->*Supplementary for AE101 Module 6. Read after you've shipped your second skill.*<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->*Take-home reading. Read once the loop at your own desk feels routine.*<!--/flag:no-module:spot-gaps-build-the-loop-->
 
-You finished M6 owning the loop at your desk. Two runs of the same task, gap diagnosis, a second skill in `~/.claude/skills/`, one rule cut from `./CLAUDE.local.md`. The same loop, run at more people, more PRs, more customers, looks slightly different. Six moves recur in the engineers running it best. Each one sharpens the loop you already own. None require permission from above to start trying.
+<!--flag:module:spot-gaps-build-the-loop-->You finished M6 owning the loop at your desk. Two runs of the same task, gap diagnosis, a second skill in `~/.claude/skills/`, one rule cut from `./CLAUDE.local.md`. The same loop, run at more people, more PRs, more customers, looks slightly different.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->You own the loop at your desk: a task run twice, the difference read, the rules sharpened from what you saw. The same loop, run at more people, more PRs, more customers, looks slightly different.<!--/flag:no-module:spot-gaps-build-the-loop--> Six moves recur in the engineers running it best. Each one sharpens the loop you already own. None require permission from above to start trying.
 
 ## 1. Treat CI as feedback into the loop, not a gate to pass
 

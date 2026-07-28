@@ -373,6 +373,11 @@ ${buildToc(contentKey, t)}
         `Add the file or remove the entry from TRAININGS.${contentKey}.${kind === 'supplementary' ? 'supplementaries' : 'references'} in site/layouts/curriculum.js.`
       );
     }
+    // Same flags as module bodies. Take-home reading is the surface most likely
+    // to be read alone weeks later with no trainer to correct it, so a page
+    // congratulating the student on a module their cut never ran is worse here
+    // than anywhere else.
+    md = CR.applyContentFlags(md, raw.flags, moduleSlugs);
     md = md
       .replace(CR.CROSS_DOC_SHARED_RE,      (_, k, s, hash) => hash ? '](' + hash + ')' : '](#' + k + '-' + s + ')')
       .replace(CR.CROSS_DOC_TRAINING_KS_RE, (_, k, s, hash) => hash ? '](' + hash + ')' : '](#' + k + '-' + s + ')');

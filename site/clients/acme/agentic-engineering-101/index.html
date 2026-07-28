@@ -4456,7 +4456,8 @@ I&#39;m leaving the laptop awake and walking away. Work through it. If you get s
 <p>Acting without full control is the job from here on. The feeling of what is missing points at what to build next. Build it, send again.</p>
 <h2 id="set-up-the-module-5-worktree">Set up the Module 5 worktree</h2>
 <p>Before opening the Module 5 session, fork the Module 4 starting SHA into a sibling worktree. Module 5&#39;s work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second run starts from the same code state as the first. Cherny calls parallel worktrees his biggest productivity unlock; the Module 2 pre-read lands here.</p>
-<p>A real engineering call lives in this fork: gitignored files (your <code>CLAUDE.local.md</code>, <code>observations/</code>) don&#39;t ride into a worktree because git doesn&#39;t see them. AE101&#39;s default is to copy them in once at fork time. Your Module 1 evidence rides forward (along with any Module 3 artefacts if you&#39;ve completed it); Module 5 and Module 6 compounding diverges in the worktree; you decide post-Module-6 what to merge back into the original. Other engineers wire it differently.</p>
+<p>A real engineering call lives in this fork: gitignored files (your <code>CLAUDE.local.md</code>, <code>observations/</code>) don&#39;t ride into a worktree because git doesn&#39;t see them. AE101&#39;s default is to copy them in once at fork time. Your Module 1 evidence rides forward (along with any Module 3 artefacts if you&#39;ve completed it); compounding then diverges between the worktree and the original. You decide post-Module-6 what to merge back. Other engineers wire it differently.</p>
+<p>Check the copy landed before you go on. The whole contrast rests on the second run starting from the same system the first one did, and a rules file that quietly stayed behind changes two variables instead of one. If your rules file lives somewhere other than where the copy looked, move it across now.</p>
 <h2 id="run-the-fork-from-the-original-repo">Run the fork from the original repo</h2>
 <p><strong>Session</strong> <em>(continue or new, &quot;original repo&quot;)</em></p>
 <p>Run the fork from your original repo, not the worktree (it doesn&#39;t exist yet). If your Module 4 session is still open, ask it there, it&#39;s already in the right place. Otherwise open a fresh session in the original repo location and ask there.</p>
@@ -4623,7 +4624,7 @@ Before lock-in, grill me on missing details that could ruin the smooth run. Ask 
 <li>You pick the verifier shape against the failure shape. Same eval, different mechanism</li>
 <li>Same task run twice with packaging as the only changed variable IS the lesson</li>
 <li>No benchmark told you what went wrong; the artefact did. The artefact rules, self-reports don&#39;t.</li>
-<li>Your verifier is your first eval. The team kit&#39;s evals grow from here</li>
+<li>Your verifier is your first eval: the automated check that says an agent-produced thing meets your bar. The team kit&#39;s evals grow from here</li>
 </ul>
 <h2 id="re-send-the-same-task-packaged">Re-send the same task, packaged</h2>
 <p>Now the re-send. Same task as Module 4, packaged this time. The prompt can be short because the packaging carries the context: the reference pins the goal, plan.md carries the state, the verifier carries the quality gate. The packaging does the explaining; the prompt invokes it.</p>
@@ -7768,9 +7769,12 @@ git stash pop
     // dropped. False → the passage goes. Use when the thing a passage describes
     // is not a module: a payload, a host, a piece of equipment.
     //
-    // **Module flags** (`module:earn-the-trust`) resolve against the training's
-    // own `modules` list — the passage survives exactly when that module is in
-    // the cut. Nothing is declared, so nothing can drift: a variant that drops a
+    // **Module flags** (`module:earn-the-trust`, and its inverse
+    // `no-module:earn-the-trust`) resolve against the training's own `modules`
+    // list — the passage survives exactly when that module is in the cut, or
+    // exactly when it is not. The inverse is for text the parent training defers
+    // to a later module: a reconciliation step, a hand-off. A cut that drops that
+    // module has to say it somewhere, and this is where. Nothing is declared, so nothing can drift: a variant that drops a
     // module drops the homework for it in the same edit, and a variant that later
     // adds it back gets the homework back for free. Prefer this over a
     // hand-declared boolean whenever the dependency really is a module, because a
@@ -7799,6 +7803,15 @@ git stash pop
                     // No module list supplied → keep everything. A caller that
                     // does not know the cut must not silently delete its homework.
                     drop = moduleSlugs ? present.indexOf(name.slice(7)) === -1 : false;
+                } else if (name.indexOf('no-module:') === 0) {
+                    // The inverse: text that exists ONLY for cuts missing the
+                    // module — a hand-off the parent training defers to it, a
+                    // reconciliation its later sitting would have covered. Same
+                    // no-list rule, and it lands the same way: keep the passage.
+                    // Erring toward keeping is safe in both directions because a
+                    // spurious instruction is visible, while a silently dropped
+                    // one is not.
+                    drop = moduleSlugs ? present.indexOf(name.slice(10)) !== -1 : false;
                 } else {
                     drop = !!(flags && flags[name] === false);
                 }

@@ -41,8 +41,6 @@ Before opening the Module 5 session, fork the Module 4 starting SHA into a sibli
 
 A real engineering call lives in this fork: gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a worktree because git doesn't see them. AE101's default is to copy them in once at fork time. Your Module 1 evidence rides forward<!--flag:module:earn-the-trust--> (along with any Module 3 artefacts if you've completed it)<!--/flag:module:earn-the-trust-->; compounding then diverges between the worktree and the original.<!--flag:module:spot-gaps-build-the-loop--> You decide post-Module-6 what to merge back.<!--/flag:module:spot-gaps-build-the-loop--> Other engineers wire it differently.
 
-Check the copy landed before you go on. The whole contrast rests on the second run starting from the same system the first one did, and a rules file that quietly stayed behind changes two variables instead of one. If your rules file lives somewhere other than where the copy looked, move it across now.<!--flag:no-module:spot-gaps-build-the-loop--> Before you leave this sitting, reconcile the two copies: merge the worktree's `CLAUDE.local.md` and `observations/` back into the original repo, or keep the worktree's and delete the original. Whichever you pick, the repo you actually work in should hold the version carrying this sitting's work.<!--/flag:no-module:spot-gaps-build-the-loop-->
-
 ## Run the fork from the original repo
 
 **Session** *(continue or new, "original repo")*
@@ -54,6 +52,8 @@ Claude figures out `<repo-name>` from the working directory. Help it if it gets 
 {{prompt:ae101-m5-worktree-setup}}
 
 Claude will narrate before acting. It usually opens with a plan summary listing the six sub-steps, then runs them. Skim past the opening; look for the shell-command output confirming the worktree path and which files copied across.
+
+Check the copy landed before you go on: the output should name both `CLAUDE.local.md` and `observations/` at the worktree path. The whole contrast rests on the second run starting from the same system the first one did, and a rules file that quietly stayed behind changes two variables instead of one. If your rules file lives somewhere other than the two paths Claude checked, ask Claude to copy that one across too.
 
 **The coordinates are the anchor.** Claude should read the protected `Run coordinates` block in `task.md`, use the exact `m4/<slug>` branch named there, and fork from that branch's "M4 starting point" commit. If the coordinates are missing or the commit message has been rewritten, stop and use the SHA Claude reported at Module 4 close rather than guessing from branch names.
 
@@ -95,7 +95,7 @@ Ask Claude to re-run the same Module 4 task using the reference, plan.md, and ve
 
 {{prompt:ae101-m5-rerun-packaged}}
 
-The walk-away report at the close is what Module 6 opens on. RLHF will frame partial failures as partial successes, *"shipped most of it, hit a snag on X."* The contrast with the un-packaged M4 run depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. You decide whether to push.
+<!--flag:module:spot-gaps-build-the-loop-->The walk-away report at the close is what Module 6 opens on.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->The walk-away report at the close is the evidence this run leaves behind.<!--/flag:no-module:spot-gaps-build-the-loop--> RLHF will frame partial failures as partial successes, *"shipped most of it, hit a snag on X."* The contrast with the un-packaged M4 run depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. You decide whether to push.
 
 The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). Same cancel-is-legit rule from Module 4: stopping when the trace is enough is the result. Manual nudges are part of the run; when nudging turns into typing every step, the agent isn't the agent any more, that's a result worth reading.
 
@@ -104,6 +104,10 @@ The laptop stays awake and plugged in while it runs (power settings → prevent 
 [Lecture: The gate is a claim too](lectures/the-gate-is-a-claim.md)
 
 <!--flag:no-module:spot-gaps-build-the-loop-->
+## Bring the worktree's work home
+
+Your `CLAUDE.local.md` and `observations/` have been building in the worktree since the fork; the copies in the original repo stopped there. Ask Claude to copy the worktree's versions back into the original repo and report what changed, so the repo you actually work in holds this sitting's work. Nothing needs deleting.
+
 ## Back to the map, one last time
 
 The map at sitting 2 had an edge nobody explained. A dashed line down the right side, `THE TEAM` beyond it, and along the bottom, in italics: *a move counts when it crosses the wall*.

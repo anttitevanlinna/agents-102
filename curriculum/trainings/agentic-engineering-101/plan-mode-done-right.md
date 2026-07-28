@@ -29,7 +29,7 @@ After this module, you will be able to:
 
 **The question, to you:** when was the last time Claude wrote a plan you approved without really reading? We all do it. What made you approve? Was it that the plan looked right, or that you were in a hurry, or that pushing back felt like work?
 
-Before the plan-reading move, one orientation. Here is the whole territory this training covers, and where the ground you are on sits in it.
+Before the plan-reading move, one orientation. Here is the whole territory this work runs in, and where the ground you are on sits in it.
 
 [Lecture: The whole map](lectures/the-whole-map.md)
 

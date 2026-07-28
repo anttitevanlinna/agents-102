@@ -288,6 +288,24 @@ the tag and the sub-label — and it does not survive the squash, so it is a re-
 Assemble by splice rather than retyping the SVG, which is how the fork did it without disturbing the
 rest of the figure.
 
+**Accepted as-is 2026-07-28 — the map is territory, not a syllabus.** Decided by the maintainer, and the
+reasoning inverts the gap rather than answering it: a map that shows only what the training teaches is a
+table of contents wearing a map's clothes. This one already draws things no cut teaches — the prototyping
+loop and the checking loop are ghosts in both cuts. Security is one more piece of ground the student can
+see and has not walked, which is honest cartography and useful besides: a security and quality module is
+a live possibility for Q4, and erasing the loop now would mean redrawing it then.
+
+**One line changed, because accepting this made the framing false.** The module lead-in said *"the whole
+territory this training covers"* — a claim that only holds while the map and the syllabus are the same
+shape. It now reads *"the whole territory this work runs in"*, matching the lecture's own opening,
+*"Every piece of agentic work runs the same cycle."* That correction applies to canonical AE101 too,
+where the map has always exceeded the syllabus.
+
+**What stays true.** The solid stroke still does not distinguish *not-in-this-track* from *not-yet-built*.
+Under the accepted framing that distinction matters less: both are ground the student has not walked.
+A trainer asked *"why is there a security loop?"* has a real answer rather than a correction — *that phase
+exists in the work; this track does not cover it.*
+
 ---
 
 ## 9. The map promises a spine it never fills in, and its team edge is never explained

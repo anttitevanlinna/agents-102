@@ -19,7 +19,7 @@ const { execSync } = require('node:child_process');
 const fs = require('node:fs');
 const path = require('node:path');
 
-const { expandPrompts } = require('../site/layouts/curriculum.js');
+const { expandPrompts, moduleOrdinal, moduleNumber, TRAININGS } = require('../site/layouts/curriculum.js');
 const audit = require('../scripts/audit-eval-coverage.js');
 
 test('expandPrompts: {{cut:foo|bar}} emits the prompt block with a ⟦CUT:bar⟧ sentinel', () => {
@@ -373,4 +373,48 @@ test('payload base URL is registry-resolvable, not hardcoded', () => {
     'payload URL must be built from a configurable base, not a literal host');
   assert.match(src, /payloadBase/,
     'expected a payloadBase hook the registry entry can override');
+});
+
+// A cut renders a subset of its parent's modules and those pages go on calling
+// themselves "Module 4" in prose. Numbering the cut by position put M3 in the
+// nav above a page that said Module 4, so the same token meant two things in
+// one build and a stated mapping could not repair it. Numbering from the parent
+// keeps one meaning and shows the skipped module as a gap.
+test('a variant cut numbers its modules from the parent, not by position', () => {
+  const parent = TRAININGS['agentic-engineering-101'].modules.map(m => m.slug);
+  const cut = TRAININGS['agentic-engineering-101-northwind'];
+  assert.ok(cut.contentKey, 'northwind must resolve content through a parent');
+  assert.ok(cut.modules.length < parent.length, 'the fixture must actually be a cut');
+
+  cut.modules.forEach((m) => {
+    assert.equal(
+      moduleOrdinal('agentic-engineering-101-northwind', m.slug),
+      parent.indexOf(m.slug) + 1,
+      `${m.slug} must carry its parent ordinal, not its position in the cut`);
+  });
+
+  // The concrete regression: sitting 3 is Module 4, and its number is not 3.
+  assert.equal(moduleOrdinal('agentic-engineering-101-northwind', 'run-the-first-experiment'), 4);
+  assert.equal(moduleNumber('agentic-engineering-101-northwind', 'run-the-first-experiment'), '04');
+
+  // Ordinals in a cut are unique, so two cards never collide on one number.
+  const nums = cut.modules.map(m => moduleNumber('agentic-engineering-101-northwind', m.slug));
+  assert.equal(new Set(nums).size, nums.length, 'module numbers must be unique within a cut');
+});
+
+test('a non-variant training still numbers by position', () => {
+  TRAININGS['agentic-engineering-101'].modules.forEach((m, i) => {
+    assert.equal(moduleOrdinal('agentic-engineering-101', m.slug), i + 1);
+  });
+  assert.equal(moduleNumber('agentic-engineering-101', 'prework'), '00');
+});
+
+// The nav chip is the surface where the collision was visible. It must read the
+// ordinal, not the loop index.
+test('workbook top nav chips are built from the inherited ordinal', () => {
+  const src = fs.readFileSync(path.join(__dirname, 'build-workbook.js'), 'utf8');
+  assert.doesNotMatch(src, /data-target="\$\{m\.slug\}">M\$\{i \+ 1\}/,
+    'nav chips must not be numbered by loop position');
+  assert.match(src, /moduleOrdinal\(trainingKey, m\.slug\)/,
+    'expected the nav chip to resolve its number through moduleOrdinal');
 });

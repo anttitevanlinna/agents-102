@@ -290,14 +290,16 @@ function buildToc(contentKey, t) {
   });
 }
 
-function buildTopNav(t, customer) {
+function buildTopNav(trainingKey, t, customer) {
   // Short labels for chips: "Prework", "M1", "M2", … so the row stays scannable.
+  // A cut numbers its chips from the parent, so M4 in the nav is the page that
+  // calls itself Module 4, and a skipped module shows as a gap in the row.
   const chips = [];
   if (t.prework) {
     chips.push(`      <li><a href="#${t.prework.slug}" data-target="${t.prework.slug}">Prework</a></li>`);
   }
-  t.modules.forEach((m, i) => {
-    chips.push(`      <li><a href="#${m.slug}" data-target="${m.slug}">M${i + 1}</a></li>`);
+  t.modules.forEach((m) => {
+    chips.push(`      <li><a href="#${m.slug}" data-target="${m.slug}">M${CR.moduleOrdinal(trainingKey, m.slug)}</a></li>`);
   });
   return `<nav class="workbook-topnav" aria-label="Workbook navigation">
   <a class="workbook-topnav__home" href="#top">${CR.esc(t.label)} — ${CR.esc(customer)}</a>
@@ -317,7 +319,7 @@ function buildBody(trainingKey, customer, contentUrl) {
   const contentKey = raw.contentKey || trainingKey;
   const t = raw.contentKey ? Object.assign({}, CR.TRAININGS[contentKey], raw) : raw;
 
-  const topNav = buildTopNav(t, customer);
+  const topNav = buildTopNav(trainingKey, t, customer);
 
   const cover = `
 <header class="workbook-cover" id="top">

@@ -125,7 +125,10 @@
             // this variant never publishes.
             flags: { payload: false },
             label: 'Agentic Engineering 101 — Team Track',
-            lede: 'Four modules for software engineers, with team workshops between them. Learn the new loop on your own repo, then take it to your team.',
+            // The nav and the cards number from the parent, so the row reads
+            // M1 M2 M4 M5 and the skip is visible. A visible gap wants an answer
+            // on the same page, or the first thing the student does is wonder.
+            lede: 'Four modules for software engineers, with team workshops between them. Numbering follows the full training, so modules 3 and 6 are absent: that ground runs as a workshop instead. Learn the new loop on your own repo, then take it to your team.',
             modules: [
                 { slug: 'getting-going',             title: 'Getting going + context' },
                 { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
@@ -1070,19 +1073,37 @@
         });
     }
 
+    // The number a module carries, as an integer. A variant cut renders a SUBSET
+    // of its parent's modules, and those module bodies go on calling themselves
+    // "Module 4" because that is what they are. Numbering a cut by position puts
+    // M3 in the nav above a page that says Module 4, and then the same token means
+    // two things in one build. Numbering from the parent keeps one meaning for the
+    // number and lets the gap in the sequence show, which is the honest artifact:
+    // this track runs modules 1, 2, 4 and 5.
+    function moduleOrdinal(trainingKey, slug) {
+        var t = TRAININGS[trainingKey];
+        if (!t) return null;
+        var src = (t.contentKey && TRAININGS[t.contentKey]) || t;
+        var i = src.modules.findIndex(function (m) { return m.slug === slug; });
+        if (i >= 0) return i + 1;
+        if (src.optionalModules) {
+            var k = src.optionalModules.findIndex(function (m) { return m.slug === slug; });
+            if (k >= 0) return src.modules.length + k + 1;
+        }
+        // A cut-specific module the parent never listed has no inherited number;
+        // its own position is the only one available.
+        var j = t.modules.findIndex(function (m) { return m.slug === slug; });
+        return j >= 0 ? j + 1 : null;
+    }
+
     // Compute the 2-digit number for a module slug within a training.
-    // Prework = "00", modules = "01"..., optionalModules continue from there.
+    // Prework = "00", modules and optionalModules take their inherited ordinal.
     function moduleNumber(trainingKey, slug) {
         var t = TRAININGS[trainingKey];
         if (!t) return null;
         if (t.prework && t.prework.slug === slug) return '00';
-        var i = t.modules.findIndex(function (m) { return m.slug === slug; });
-        if (i >= 0) return String(i + 1).padStart(2, '0');
-        if (t.optionalModules) {
-            var j = t.optionalModules.findIndex(function (m) { return m.slug === slug; });
-            if (j >= 0) return String(t.modules.length + j + 1).padStart(2, '0');
-        }
-        return null;
+        var n = moduleOrdinal(trainingKey, slug);
+        return n === null ? null : String(n).padStart(2, '0');
     }
 
     // Pull the H1 + Big Idea out of a rendered module element and replace
@@ -1215,9 +1236,8 @@
                 html += '<' + heading + ' class="index-heading">The ' + word + ' modules</' + heading + '>';
             }
             html += '<ol class="module-list index-modules"' + bigIdeasAttr + '>';
-            t.modules.forEach(function (m, i) {
-                var num = String(i + 1).padStart(2, '0');
-                html += cardHtml(num, m.title, m.slug, opts.moduleHref(trainingKey, m.slug), bigIdea(m.slug));
+            t.modules.forEach(function (m) {
+                html += cardHtml(moduleNumber(trainingKey, m.slug), m.title, m.slug, opts.moduleHref(trainingKey, m.slug), bigIdea(m.slug));
             });
             html += '</ol>';
         }
@@ -1226,9 +1246,8 @@
             if (opts.showModuleCountHeading) html += '<' + heading + ' class="index-heading">Optional extensions — when the cohort wants more</' + heading + '>';
             else html += '<' + heading + ' class="index-heading">Optional extensions</' + heading + '>';
             html += '<ol class="module-list index-modules"' + bigIdeasAttr + '>';
-            t.optionalModules.forEach(function (m, i) {
-                var num = String(t.modules.length + i + 1).padStart(2, '0');
-                html += cardHtml(num, m.title, m.slug, opts.moduleHref(trainingKey, m.slug), bigIdea(m.slug));
+            t.optionalModules.forEach(function (m) {
+                html += cardHtml(moduleNumber(trainingKey, m.slug), m.title, m.slug, opts.moduleHref(trainingKey, m.slug), bigIdea(m.slug));
             });
             html += '</ol>';
         }
@@ -1312,6 +1331,7 @@
         installReadingProgress: installReadingProgress,
         buildModuleHero: buildModuleHero,
         moduleNumber: moduleNumber,
+        moduleOrdinal: moduleOrdinal,
         wrapStandaloneInPhase: wrapStandaloneInPhase,
         simpleRowHtml: simpleRowHtml,
         renderAccents: renderAccents,

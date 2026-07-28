@@ -194,7 +194,7 @@ When you need Claude to do structured work in a fresh context — breadth-first 
 
 **Persistent memory for subagents:** subagents can maintain their own auto memory. See [subagent configuration](https://code.claude.com/docs/en/sub-agents#enable-persistent-memory).
 
-**AE101 cross-refs:** M3 Ex1/Ex2 invoke the curated access-control + STRIDE skills as subagents; Ex3 (test-strategy authoring) stays main-thread. M4 Phase 2 audit runs as a subagent. The discrimination *"which job belongs in which thread"* is a named LO in M3.
+**AE101 cross-refs:** <!--flag:module:earn-the-trust-->M3 Ex1/Ex2 invoke the curated access-control + STRIDE skills as subagents; Ex3 (test-strategy authoring) stays main-thread. <!--/flag:module:earn-the-trust-->M4 Phase 2 audit runs as a subagent.<!--flag:module:earn-the-trust--> The discrimination *"which job belongs in which thread"* is a named LO in M3.<!--/flag:module:earn-the-trust-->
 
 Docs: [sub-agents](https://code.claude.com/docs/en/sub-agents).
 
@@ -212,7 +212,7 @@ Scoped, named capabilities. Markdown file with frontmatter + instructions, lives
 - **Skill:** task-specific, loads on demand, reusable move (*"review this against our security policy"*)
 - **Rule:** always-on (or path-scoped), constraints Claude should honour whenever active
 
-**AE101 cross-refs:** M3 ships two curated skills (`access-control-analysis`, `stride`) and you author one (`test-strategy`). M6 authors the second (the learning-loop skill from the two-run diff).
+<!--flag:module:earn-the-trust-->**AE101 cross-refs:** M3 ships two curated skills (`access-control-analysis`, `stride`) and you author one (`test-strategy`).<!--/flag:module:earn-the-trust--><!--flag:module:spot-gaps-build-the-loop--> M6 authors a second one, the learning-loop skill built from the two-run diff.<!--/flag:module:spot-gaps-build-the-loop-->
 
 Docs: [skills](https://code.claude.com/docs/en/skills).
 
@@ -263,7 +263,7 @@ The scheduler or condition invokes the skill. The skill is the thing that catche
 
 **Continuous polish loop.** `/loop 3m` while editing → prompt reads *"Invoke the `tighten-draft` skill on the current file. Propose changes."* The skill is the move; the loop is the rhythm.
 
-**Rule-drift monitor.** Desktop local task weekly → prompt reads *"Invoke the `rule-drift` skill on the project root. Flag rules in `CLAUDE.md` that the last week of commits contradicted."* Your second authored skill from M6 is a strong candidate to wire into a schedule like this one.
+**Rule-drift monitor.** Desktop local task weekly → prompt reads *"Invoke the `rule-drift` skill on the project root. Flag rules in `CLAUDE.md` that the last week of commits contradicted."*<!--flag:module:spot-gaps-build-the-loop--> Your second authored skill from M6 is a strong candidate to wire into a schedule like this one.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop--> A skill you author yourself is a strong candidate to wire into a schedule like this one.<!--/flag:no-module:spot-gaps-build-the-loop-->
 
 ### Session lifecycle — three gotchas
 
@@ -325,7 +325,7 @@ Why both layers: git tells you what changed. The transcript tells you why the ag
 
 **Security note:** transcripts can contain secrets, customer data, tickets, pasted logs, and failed attempts. Treat them as sensitive local artifacts. Do not commit them. Do not paste a whole transcript into another system. Point Claude at the file and ask for the narrow read you need.
 
-**AE101 cross-refs:** M4 leaves an un-packaged run behind. M5 reads the transcript plus git state to diagnose what packaging changes. M6 compares two runs, so the transcript becomes evidence, not trivia.
+**AE101 cross-refs:** M4 leaves an un-packaged run behind. M5 reads the transcript plus git state to diagnose what packaging changes.<!--flag:module:spot-gaps-build-the-loop--> M6 compares two runs, so the transcript becomes evidence, not trivia.<!--/flag:module:spot-gaps-build-the-loop-->
 
 ---
 
@@ -443,7 +443,7 @@ The hook script receives JSON on stdin (event metadata, tool name + args for too
 
 **Debugging hooks that don't fire:** run `claude --debug hooks` to see hook-loading and event-firing logs. Useful when `/memory` confirms the config is loaded but the hook still isn't running on the expected event.
 
-**AE101 cross-refs:** M5 closer lecture (`what-packaging-is.md`) names hooks as the runtime primitive behind Cherny's shell-hook verifier shape. M3 leans on hooks implicitly via the `eval-class-router` PostToolUse pattern (curriculum's own infrastructure; not student-authored at M3 but referenced as exemplar).
+**AE101 cross-refs:** M5 closer lecture (`what-packaging-is.md`) names hooks as the runtime primitive behind Cherny's shell-hook verifier shape.<!--flag:module:earn-the-trust--> M3 leans on hooks implicitly via the `eval-class-router` PostToolUse pattern (curriculum's own infrastructure; not student-authored at M3 but referenced as exemplar).<!--/flag:module:earn-the-trust-->
 
 Docs: [hooks](https://code.claude.com/docs/en/hooks).
 
@@ -523,10 +523,11 @@ Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/
 
 - **M1 Getting going** — §§ 1 (first `CLAUDE.md` seed, user-level or `CLAUDE.local.md`), 8 (one connector wire)
 - **M2 Plan mode, done right** — § 5, plus Pocock `grill-me` skill as second-pass read
-- **M3 Earn the trust** — §§ 6 (subagents), 7 (skills); first skill use + first authoring
-- **M4 Run the first experiment** — §§ 1 (personal compound target), 6 (subagent audit), 9 (session-left-running for un-packaged send-off), 10 (transcript as trace)
+<!--flag:module:earn-the-trust-->- **M3 Earn the trust** — §§ 6 (subagents), 7 (skills); first skill use + first authoring
+<!--/flag:module:earn-the-trust-->- **M4 Run the first experiment** — §§ 1 (personal compound target), 6 (subagent audit), 9 (session-left-running for un-packaged send-off), 10 (transcript as trace)
 - **M5 Learn from the test, re-send packaged** — §§ 5 (plan.md authoring), 7 (verifier as eval), 9 (send-off), 10 (read transcript plus git)
-- **M6 Spot gaps, build the loop** — §§ 7 (second skill authoring), 9 (long-running shapes callout in closer + Ralph→`/goal` story), 10 (compare two run transcripts)
+<!--flag:module:spot-gaps-build-the-loop-->- **M6 Spot gaps, build the loop** — §§ 7 (second skill authoring), 9 (long-running shapes callout in closer + Ralph→`/goal` story), 10 (compare two run transcripts)
+<!--/flag:module:spot-gaps-build-the-loop-->
 
 ---
 

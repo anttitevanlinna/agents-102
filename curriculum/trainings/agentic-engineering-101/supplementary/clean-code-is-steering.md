@@ -1,7 +1,5 @@
 # Clean Code Is Steering: Insights from Uncle Bob
 
-*Referenced from: Module 5 (learn from the test, re-send packaged).*
-
 AI coding does not make Clean Code irrelevant. It changes what Clean Code is for.
 
 That is the small trick in this shift. The old discipline looks less exciting at exactly the moment it becomes more valuable.

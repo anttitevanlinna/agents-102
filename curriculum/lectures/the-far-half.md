@@ -3,7 +3,7 @@
 ## Back to the map: the far half opens
 
 <figure class="diagram">
-<svg viewBox="0 0 1200 560" role="img" aria-label="The compounding engine at the M4 open: the near half (Intent, Context, Work) sits under a haze marked done; the far half (Verification, Absorption, Outcome) is lit and marked M4 to M6, its checking loop still a dashed ghost across Verification and Absorption." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:6px;">
+<svg viewBox="0 0 1200 560" role="img" aria-label="The compounding engine at the M4 open: the near half (Intent, Context, Work) sits under a haze marked done; the far half (Verification, Absorption, Outcome) is lit and marked ahead, its checking loop still a dashed ghost across Verification and Absorption." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:6px;">
 <defs>
 <linearGradient id="fh-wall" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2f6b6b"/><stop offset="1" stop-color="#a05a2c"/></linearGradient>
 </defs>
@@ -91,12 +91,12 @@
 <text x="660" y="344" font-size="10">act · read the result · correct</text>
 </g>
 <text x="306" y="522" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" letter-spacing="2" fill="#786c56">NEAR HALF · DONE: INTENT · CONTEXT · WORK</text>
-<text x="800" y="522" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" letter-spacing="2" fill="#8a3a2a">THE FAR HALF · M4–M6</text>
+<text x="800" y="522" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" letter-spacing="2" fill="#8a3a2a">THE FAR HALF · AHEAD</text>
 </svg>
 </figure>
 
 - The near half is behind you. Intent, Context, Work: how to aim the work, what the agent needs to know, how a loop runs and compounds. Every move so far lived there.
-- The map lights its other side now. Verification, Absorption, Outcome. M4 to M6 go there, starting with the run you send off in this module.
+- The map lights its other side now. Verification, Absorption, Outcome. The rest of the training goes there, starting with the run you send off in this module.
 
 ## Long-running answers to three new governors
 
@@ -108,12 +108,12 @@
 ## Your first un-packaged long run
 
 - One long run goes off un-packaged, on purpose. You watch what the agent does with the system you built, exactly as it stands. Nothing added for the occasion.
-- You are not handed the laws of this country up front. You feel where it bites first, here. The laws that explain the bite get named at M5 and M6, against what your own run did.
+- You are not handed the laws of this country up front. You feel where it bites first, here. The laws that explain the bite get named later in the training, against what your own run did.
 - One question to carry into the run. When the agent takes a hundred steps alone, what makes you trust the result at the end?
 
 <!-- maintainer -->
 
-**Map figure woven in (2026-07-10, Antti-directed "complete the text→pictures replacement", unreviewed):** the ASCII banner (near half done ▶ VERIFICATION ─▶ ABSORPTION ─▶ OUTCOME) replaced by the engine-map SVG, derived from `the-whole-map.md`'s canvas per the `the-map-filled-in.md` recipe. Edits vs the parent: ids re-prefixed `wm-` → `fh-` (theory handbook renders multiple copies on one page; duplicate ids break defs); a cream veil rect (opacity 0.55) hazes the NEAR half (x≤600, below the phase-header row — all six phase names stay legible); the three seam-straddling Work labels (build loop, agent's own loop, prototyping ghost — tags + subs) re-emitted above the veil with a cream erase-stroke at `fill-opacity="0.45"` so each reads uniformly dimmed instead of half-cut by the veil edge (caught on Chrome render 2026-07-10); two caption strips added at y=522: `NEAR HALF · DONE: INTENT · CONTEXT · WORK` (veiled side) and `THE FAR HALF · M4–M6` (lit side) — carrying the deleted ASCII's two text payloads. The checking loop stays a dashed ghost with its `by hand for now` sub, matching the body bullet ("still a ghost here"). Figure block is blank-line-free ON PURPOSE (marked terminates raw-HTML on an interior blank line). If the M2 parent canvas changes, re-derive this copy. Re-audit before ship.
+**Map figure woven in (2026-07-10, Antti-directed "complete the text→pictures replacement", unreviewed):** the ASCII banner (near half done ▶ VERIFICATION ─▶ ABSORPTION ─▶ OUTCOME) replaced by the engine-map SVG, derived from `the-whole-map.md`'s canvas per the `the-map-filled-in.md` recipe. Edits vs the parent: ids re-prefixed `wm-` → `fh-` (theory handbook renders multiple copies on one page; duplicate ids break defs); a cream veil rect (opacity 0.55) hazes the NEAR half (x≤600, below the phase-header row — all six phase names stay legible); the three seam-straddling Work labels (build loop, agent's own loop, prototyping ghost — tags + subs) re-emitted above the veil with a cream erase-stroke at `fill-opacity="0.45"` so each reads uniformly dimmed instead of half-cut by the veil edge (caught on Chrome render 2026-07-10); two caption strips added at y=522: `NEAR HALF · DONE: INTENT · CONTEXT · WORK` (veiled side) and `THE FAR HALF · AHEAD` (lit side) — carrying the deleted ASCII's two text payloads. The checking loop stays a dashed ghost with its `by hand for now` sub, matching the body bullet ("still a ghost here"). Figure block is blank-line-free ON PURPOSE (marked terminates raw-HTML on an interior blank line). If the M2 parent canvas changes, re-derive this copy. Re-audit before ship.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** container lecture, bullets kept on all three slides; bold reduced to the three phase-name sub-spans where each govern-bullet opens — **Verification** · **Absorption** · **Outcome**. Everything else de-bolded (both map-reveal bullets, the long-running lead, the whole un-packaged-run slide). ASCII fence untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 

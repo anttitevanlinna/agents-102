@@ -97,8 +97,8 @@ The phases are places, not stages. A run usually stands in more than one at once
 ## You are here
 
 - M1 was the first step into this territory, taken without the map on purpose. You feel a country before you see it drawn. The first fix, the first rule, the first read of the context window: all of it already sits somewhere on this map.
-- The near half is Intent, Context, Work. How to aim the work, what the agent needs to know, and how a single loop runs and compounds. M1 to M3 live here.
-- The far half is Verification, Absorption, Outcome. What happens when runs get long and the quick feedback goes quiet. Different ground, different rules. M4 to M6 go there. Not yet.
+- The near half is Intent, Context, Work. How to aim the work, what the agent needs to know, and how a single loop runs and compounds. Every move so far has lived here.
+- The far half is Verification, Absorption, Outcome. What happens when runs get long and the quick feedback goes quiet. Different ground, different rules. The rest of the training goes there. Not yet.
 
 ## Every move hangs on a location
 

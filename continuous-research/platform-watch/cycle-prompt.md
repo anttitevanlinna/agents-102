@@ -288,6 +288,8 @@ git push -u origin main
 
 ## Quality Rules (MANDATORY — copy-paste for subagents)
 
+**Model: run research subagents on Sonnet.** Not Opus, not Fable. Fetching pages, checking bylines, and reading a practitioner's recent output is breadth work. Spend the expensive model on the synthesis step in the main thread, where the evidence-level call gets made.
+
 === MANDATORY RESEARCH RULES ===
 
 FOCUS: BUSINESS AGENTS, NOT CODING AGENTS. We track what sales people, finance analysts, HR managers, and operations leads can do with agent platforms. If a finding is about coding/development, it goes in the developer-focused section only.

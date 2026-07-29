@@ -221,6 +221,34 @@ body.runtime-cowork  .rt-code    { display: none; }
     border-bottom-color: var(--accent-2);
 }
 
+/* ── Persistent bottom-right copyright mark (long-read) — the full footer
+   above already carries the license grant; this is just the always-visible
+   reminder so it isn't a whole-page scroll away. Same source string as the
+   footer and the slide-view deck bar (curriculum.js COPYRIGHT_MARK). ── */
+.copyright-badge {
+    position: fixed;
+    right: 0.9rem;
+    bottom: 0.8rem;
+    z-index: 40;
+    font-size: 0.68rem;
+    line-height: 1;
+    background: var(--bg);
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    padding: 0.3rem 0.7rem;
+    opacity: 0.62;
+    transition: opacity 0.15s;
+}
+
+.copyright-badge:hover {
+    opacity: 1;
+}
+
+.copyright-badge a {
+    color: var(--fg-3);
+    text-decoration: none;
+}
+
 main {
     display: flex;
     justify-content: center;
@@ -1947,6 +1975,7 @@ main::before {
 
     .curriculum-header { display: none !important; }
     .curriculum-footer { display: none !important; }
+    .copyright-badge { display: none !important; }
     .page-nav { display: none !important; }
     .top-nav { display: none !important; }
 
@@ -2074,6 +2103,54 @@ body.workbook .workbook-toc {
     color: var(--ink-muted);
     margin: 0;
 }
+/* Standing description under the cover title (theory handbook). Roman, not
+   italic: the dedication above it is the italic line, and two stacked italic
+   paragraphs read heavy. Measure capped so it breaks over two or three lines
+   rather than one very wide one. */
+.workbook-cover .cover-blurb {
+    max-width: 34em;
+    margin: 1rem auto 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--ink-muted);
+}
+
+/* Theory-handbook exercise cue: one compact header + one paragraph from the
+   canonical exercise's View summary metadata. It restores the lived thread
+   without giving the card the visual weight of a full exercise phase. */
+body.workbook .exercise-summary {
+    box-sizing: border-box;
+    margin: 2rem 0;
+    padding: 0.9rem 1.2rem 1rem;
+    min-height: 7.5rem;
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+body.workbook .exercise-summary h2 {
+    margin: 0 0 0.45rem;
+    padding: 0;
+    border: 0;
+    font-family: var(--font-body);
+    font-size: 1.02rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--accent);
+}
+body.workbook .exercise-summary h2::before { display: none; }
+body.workbook .exercise-summary p,
+body.workbook .exercise-summary h2 + p {
+    margin: 0;
+    max-width: none;
+    min-height: 0;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.48;
+    color: var(--fg-2);
+}
 
 .workbook-toc {
     margin: 0 0 4rem;
@@ -2186,6 +2263,10 @@ body.workbook .phase {
         margin-bottom: 1.5rem;
         padding-top: 1rem;
         padding-bottom: 1rem;
+    }
+    body.workbook .exercise-summary {
+        min-height: 1.2in;
+        margin: 0.18in 0;
     }
 }
 
@@ -2444,9 +2525,16 @@ body.slides-active { overflow: hidden; }
 .deck__exit:hover { border-color: var(--accent-2); color: var(--ink-text); }
 .deck__exit svg { width: .95rem; height: .95rem; }
 
+/* Bottom-right of the bar — same license mark as the long-read badge and
+   full footer, one source string (curriculum.js COPYRIGHT_MARK). */
+.deck__copyright { flex: 0 0 auto; margin-left: .25rem; font-size: .7rem;
+  color: var(--ink-muted); text-decoration: none; white-space: nowrap; }
+.deck__copyright:hover { color: var(--ink-text-2); }
+
 @media (max-width: 620px) {
   .deck .slide { padding: 1.2rem 1.1rem 2rem 3.2rem; align-items: flex-start; }
   .deck__title { display: none; }
+  .deck__copyright { display: none; }
   .deck.is-railopen .deck__rail { width: min(17rem, 86vw); }
 }
 
@@ -2654,7 +2742,7 @@ Report success on each step and tell me what you did.
 <p>That&#39;s the move. The move is loading the right context before the question, not a clever prompt or a slash command you didn&#39;t know. Everything else in this training is about how to earn that kind of primed window on any codebase, any Monday.</p>
 <h2 id="everyone-arrives-partial-trainers-included">Everyone arrives partial, trainers included</h2>
 <p>You found your way to Claude Code by yourself. Maybe a colleague pointed you at it. Maybe you watched a video. Mostly you just typed something, watched what came back, and kept the prompts that worked. You picked up tricks nobody taught you. The slash command that saves keystrokes. The <code>CLAUDE.md</code> shape that produced output you liked. The weird thing you tell Claude at the start of every session.</p>
-<p>Every engineer who sat down with this tool did some version of that. The trick you named at the opening trick-exchange is your slice of partial; everyone else&#39;s slice is different.</p>
+<p>Every engineer who sat down with this tool did some version of that. One engineer brings a slash command, another a <code>CLAUDE.md</code> shape, another a strange opening instruction. Everyone&#39;s slice is partial, and everyone else&#39;s is different.</p>
 <p>This training pools partial into a shared floor, then raises the ceiling. The people building this are partial too. Six months ahead of you on some moves, six months behind on others.</p>
 <h2 id="the-loop-is-what-you-repeat-not-the-fix">The loop is what you repeat, not the fix</h2>
 <p>Fix one trivial bug from your own backlog, end-to-end. Log one decision. Seed a rules file your next session reads first.</p>
@@ -2850,7 +2938,7 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 </ul>
 <h2 id="it-answers-in-essays">It answers in essays</h2>
 <ul>
-<li>The fix was three lines; the answers around it were pages. Complete, not prioritized, is the machine&#39;s default: an answer that covers everything is never wrong by omission.</li>
+<li>The fix was small; the answers around it were pages. Complete, not prioritized, is the machine&#39;s default: an answer that covers everything is never wrong by omission.</li>
 <li>This time the reading was cheap because the bug was trivial. On real work the reading becomes the bottleneck, not the generating, and a chain of two-page answers is how a session gets away from you.</li>
 <li>The countermove costs one clause: lead with the ranked list, hold the detail until asked. <strong>Never let the agent say everything.</strong> The shape of the answer is part of the prompt.</li>
 </ul>
@@ -3078,13 +3166,14 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 <pre><code>How did your behaviour change now that we are in plan mode? Did your base prompt change, or what?
 </code></pre>
 <p>Watch what comes back. Sometimes Claude names the read-only state directly, sometimes the specific instructions it is following. Skip if you trust the framing. The exercise will show you either way.</p>
-<h2 id="three-things-a-good-plan-has">Three things a good plan has</h2>
+<h2 id="four-things-a-good-plan-has">Four things a good plan has</h2>
 <ul>
 <li><strong>A specific file list.</strong> Not &quot;update the config.&quot; <em>Which</em> config, <em>which</em> keys. A plan that names three files has made three decisions. A plan that says &quot;the relevant files&quot; has made zero.</li>
+<li><strong>An early runnable slice.</strong> Find the first step after which something runs end-to-end. A plan that builds layer by layer (data, then services, then UI) answers &quot;the last one,&quot; and every wrong guess stays hidden until then. A plan that stands up a thin end-to-end slice early gets checked by reality from step two onward.</li>
 <li><strong>A verification step</strong> that could actually fail. <em>&quot;Run the tests&quot;</em> is cosmetic; <em>&quot;run <code>pytest tests/auth/ -k hash</code> and expect 14 passing, 0 failing&quot;</em> is a gate. The test is whether, reading the step alone, you could tell Claude it failed and Claude would know what to fix.</li>
 <li><strong>Named assumptions.</strong> Good plans flag what they&#39;re assuming (library versions, schema shapes, whether a teammate&#39;s migration ran last week). A plan without assumptions isn&#39;t assumption-free; it&#39;s just assumption-silent.</li>
 </ul>
-<p>Three things. That&#39;s the read.</p>
+<p>Four things. That&#39;s the read.</p>
 <h2 id="three-pressures-that-make-bad-plans-look-good">Three pressures that make bad plans look good</h2>
 <ul>
 <li><strong>Structure is persuasive.</strong> A 7-item plan with section headers and bold text looks like a decision. It often isn&#39;t. It&#39;s a draft formatted like a decision. The formatting is the trap.</li>
@@ -3152,6 +3241,7 @@ My task:
 <li>Open the plan file; the chat summary is secondary, the file is the artifact. The agent explores, writes a plan file with a descriptive name (e.g. <code>migrate-auth-hash-calm-otter.md</code>), and pauses for approval.</li>
 <li>Read the whole plan before pushing back. Notice which steps name files and which say &quot;the relevant files.&quot; Notice which verification steps could actually fail and which are cosmetic. Notice which assumptions the plan is carrying silently.</li>
 <li>Read the tests section carefully. A good plan names the tests before any code; the tests are part of what &quot;done&quot; means, not something you bolt on after. If the tests section is thin or missing, that&#39;s a push-back.</li>
+<li>Notice at what altitude the steps decide. Naming the file is one decision; naming the new function&#39;s signature, its types, and who calls it is the design. A step that stops at the file name defers the design to mid-run, where nobody is reading. If the steps that matter stop at file names, that&#39;s a push-back.</li>
 <li>When you have two push-backs forming in your head, move on. Don&#39;t wait for the clock.</li>
 </ul>
 <h2 id="phase-3-push-back-twice">Phase 3: Push back twice</h2>
@@ -4004,7 +4094,7 @@ Then, separately: if one rule about how I worked with security skills, wrote ADR
 <h2 id="the-attacker-targets-the-agent-not-the-system">The attacker targets the agent, not the system</h2>
 <ul>
 <li>Classic threat modeling asks who attacks the system you are building. This asks who attacks the agent building it. The target moves from your feature&#39;s endpoints to the context window of the agent that ships them.</li>
-<li>The two audits compose. The access-surface map and the STRIDE pass you ran on the feature still hold; the trifecta adds the row the classic frame doesn&#39;t have. STRIDE models attacks on the system; the trifecta models attacks through the agent.</li>
+<li>The two audits compose. An access-surface map and a STRIDE pass on the feature still hold; the trifecta adds the row the classic frame doesn&#39;t have. STRIDE models attacks on the system; the trifecta models attacks through the agent.</li>
 <li>An accident model is not an adversary model. Sandboxes and permission prompts bound what the agent can break by mistake; the trifecta bounds what an attacker can make it do on purpose. A deployment needs both bounds, and they are set by different levers.</li>
 </ul>
 <h2 id="removing-any-one-leg-breaks-the-trifecta">Removing any one leg breaks the trifecta</h2>
@@ -5505,6 +5595,7 @@ git stash pop
 </section>
 </main>
 <footer class="curriculum-footer"><p><strong>&copy; 2026 Bosser Oy.</strong> All rights reserved. Agents 102 is proprietary training material. As an enrolled student you have a personal usage license &mdash; you may learn from this, run the exercises, own what you build, and apply it at your own workplace. You may not redistribute the curriculum files, teach the material as your own, or use it to build a competing training. See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md">full license terms</a> &middot; <a href="https://bosser.consulting">bosser.consulting</a></p></footer>
+<div class="copyright-badge"><a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" title="Agents 102 is proprietary training material — full license terms">&copy; Bosser 2026</a></div>
 
 <script>// Shared curriculum runtime — single source of truth for both the SPA
 // (curriculum.html) and the single-page workbook (scripts/build-workbook.js).
@@ -5677,6 +5768,17 @@ git stash pop
 
     function renderFooter() {
         return '<footer class="curriculum-footer">' + FOOTER_INNER + '</footer>';
+    }
+
+    // Persistent bottom-right mark — same license, shortest legible form.
+    // Long-read: fixed overlay so the full footer below doesn't need a scroll
+    // to be seen. Slides: rendered into the deck bar by slides.js, same string.
+    var COPYRIGHT_MARK = '&copy; Bosser 2026';
+
+    function renderCopyrightBadge() {
+        return '<div class="copyright-badge">' +
+            '<a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" title="Agents 102 is proprietary training material — full license terms">' +
+            COPYRIGHT_MARK + '</a></div>';
     }
 
     // ── Runtime switcher (Agents 101 dual-runtime: CLI / Desktop / Cowork) ──
@@ -6811,6 +6913,8 @@ git stash pop
         CROSS_DOC_TRAINING_KS_RE: CROSS_DOC_TRAINING_KS_RE,
         FOOTER_INNER: FOOTER_INNER,
         renderFooter: renderFooter,
+        COPYRIGHT_MARK: COPYRIGHT_MARK,
+        renderCopyrightBadge: renderCopyrightBadge,
 
         // Pure (Node-safe)
         esc: esc,
@@ -7264,7 +7368,15 @@ git stash pop
     btnNext.addEventListener('click', function () { go(i + 1); });
     exit.addEventListener('click', function () { if (opts.onExit) opts.onExit(); });
     nav.append(btnRail, btnPrev, count, btnNext);
-    bar.append(title, spacer, exit, nav);
+    var mark = el('a', 'deck__copyright', {
+      href: 'https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md',
+      target: '_blank', rel: 'noopener',
+      title: 'Agents 102 is proprietary training material — full license terms'
+    });
+    // Same short string as the long-read badge and full footer — one source
+    // (CurriculumRuntime.COPYRIGHT_MARK, curriculum.js), rendered three ways.
+    mark.innerHTML = (global.CurriculumRuntime && global.CurriculumRuntime.COPYRIGHT_MARK) || '&copy; Bosser 2026';
+    bar.append(title, spacer, exit, nav, mark);
 
     deck.append(progress, rail, viewport, bar);
     document.body.appendChild(deck);

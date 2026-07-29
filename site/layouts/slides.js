@@ -406,7 +406,15 @@
     btnNext.addEventListener('click', function () { go(i + 1); });
     exit.addEventListener('click', function () { if (opts.onExit) opts.onExit(); });
     nav.append(btnRail, btnPrev, count, btnNext);
-    bar.append(title, spacer, exit, nav);
+    var mark = el('a', 'deck__copyright', {
+      href: 'https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md',
+      target: '_blank', rel: 'noopener',
+      title: 'Agents 102 is proprietary training material — full license terms'
+    });
+    // Same short string as the long-read badge and full footer — one source
+    // (CurriculumRuntime.COPYRIGHT_MARK, curriculum.js), rendered three ways.
+    mark.innerHTML = (global.CurriculumRuntime && global.CurriculumRuntime.COPYRIGHT_MARK) || '&copy; Bosser 2026';
+    bar.append(title, spacer, exit, nav, mark);
 
     deck.append(progress, rail, viewport, bar);
     document.body.appendChild(deck);

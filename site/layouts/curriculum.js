@@ -171,6 +171,17 @@
         return '<footer class="curriculum-footer">' + FOOTER_INNER + '</footer>';
     }
 
+    // Persistent bottom-right mark — same license, shortest legible form.
+    // Long-read: fixed overlay so the full footer below doesn't need a scroll
+    // to be seen. Slides: rendered into the deck bar by slides.js, same string.
+    var COPYRIGHT_MARK = '&copy; Bosser 2026';
+
+    function renderCopyrightBadge() {
+        return '<div class="copyright-badge">' +
+            '<a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" title="Agents 102 is proprietary training material — full license terms">' +
+            COPYRIGHT_MARK + '</a></div>';
+    }
+
     // ── Runtime switcher (Agents 101 dual-runtime: CLI / Desktop / Cowork) ──
     var RUNTIME_KEY = 'agents102-runtime';
     var VALID_RUNTIMES = { cli: 1, desktop: 1, cowork: 1 };
@@ -1303,6 +1314,8 @@
         CROSS_DOC_TRAINING_KS_RE: CROSS_DOC_TRAINING_KS_RE,
         FOOTER_INNER: FOOTER_INNER,
         renderFooter: renderFooter,
+        COPYRIGHT_MARK: COPYRIGHT_MARK,
+        renderCopyrightBadge: renderCopyrightBadge,
 
         // Pure (Node-safe)
         esc: esc,

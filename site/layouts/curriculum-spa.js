@@ -39,10 +39,12 @@
             .catch(function () { window.__ANATOMY = {}; });
     }
 
-    // Fill the legal footer from shared source.
+    // Fill the legal footer + persistent corner mark from shared source.
     (function () {
         var mount = document.getElementById('curriculum-footer-mount');
         if (mount) mount.innerHTML = CurriculumRuntime.FOOTER_INNER;
+        var badgeMount = document.getElementById('copyright-badge-mount');
+        if (badgeMount) badgeMount.outerHTML = CurriculumRuntime.renderCopyrightBadge();
     })();
 
     var params       = new URLSearchParams(window.location.search);

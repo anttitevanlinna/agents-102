@@ -221,6 +221,34 @@ body.runtime-cowork  .rt-code    { display: none; }
     border-bottom-color: var(--accent-2);
 }
 
+/* ── Persistent bottom-right copyright mark (long-read) — the full footer
+   above already carries the license grant; this is just the always-visible
+   reminder so it isn't a whole-page scroll away. Same source string as the
+   footer and the slide-view deck bar (curriculum.js COPYRIGHT_MARK). ── */
+.copyright-badge {
+    position: fixed;
+    right: 0.9rem;
+    bottom: 0.8rem;
+    z-index: 40;
+    font-size: 0.68rem;
+    line-height: 1;
+    background: var(--bg);
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    padding: 0.3rem 0.7rem;
+    opacity: 0.62;
+    transition: opacity 0.15s;
+}
+
+.copyright-badge:hover {
+    opacity: 1;
+}
+
+.copyright-badge a {
+    color: var(--fg-3);
+    text-decoration: none;
+}
+
 main {
     display: flex;
     justify-content: center;
@@ -1947,6 +1975,7 @@ main::before {
 
     .curriculum-header { display: none !important; }
     .curriculum-footer { display: none !important; }
+    .copyright-badge { display: none !important; }
     .page-nav { display: none !important; }
     .top-nav { display: none !important; }
 
@@ -2030,12 +2059,14 @@ main::before {
    Workbook stacks N modules vertically; flip the layout. */
 body.workbook main {
     flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     gap: 0;
     padding: 4rem 1.5rem 6rem;
 }
 body.workbook .workbook-cover,
 body.workbook .workbook-toc {
+    width: 100%;
     max-width: 40em;
     margin-left: auto;
     margin-right: auto;
@@ -2048,7 +2079,7 @@ body.workbook .workbook-toc {
 .workbook-cover {
     text-align: center;
     padding: 5rem 0 3rem;
-    border-bottom: 1px solid var(--rule);
+    border-bottom: 1px solid var(--line);
     margin-bottom: 3rem;
 }
 .workbook-cover .eyebrow {
@@ -2059,45 +2090,102 @@ body.workbook .workbook-toc {
     margin: 0 0 0.5rem;
 }
 .workbook-cover h1.cover-title {
-    font-family: 'Roboto Slab', Georgia, serif;
+    font-family: var(--font-display);
     font-weight: 200;
     font-size: 3.5rem;
     margin: 0.5rem 0 1rem;
     letter-spacing: -0.02em;
 }
 .workbook-cover .lede {
-    font-family: 'EB Garamond', Georgia, serif;
+    font-family: var(--font-serif);
     font-style: italic;
     font-size: 1.25rem;
     color: var(--ink-muted);
     margin: 0;
 }
+/* Standing description under the cover title (theory handbook). Roman, not
+   italic: the dedication above it is the italic line, and two stacked italic
+   paragraphs read heavy. Measure capped so it breaks over two or three lines
+   rather than one very wide one. */
+.workbook-cover .cover-blurb {
+    max-width: 34em;
+    margin: 1rem auto 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--ink-muted);
+}
+
+/* Theory-handbook exercise cue: one compact header + one paragraph from the
+   canonical exercise's View summary metadata. It restores the lived thread
+   without giving the card the visual weight of a full exercise phase. */
+body.workbook .exercise-summary {
+    box-sizing: border-box;
+    margin: 2rem 0;
+    padding: 0.9rem 1.2rem 1rem;
+    min-height: 7.5rem;
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+body.workbook .exercise-summary h2 {
+    margin: 0 0 0.45rem;
+    padding: 0;
+    border: 0;
+    font-family: var(--font-body);
+    font-size: 1.02rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--accent);
+}
+body.workbook .exercise-summary h2::before { display: none; }
+body.workbook .exercise-summary p,
+body.workbook .exercise-summary h2 + p {
+    margin: 0;
+    max-width: none;
+    min-height: 0;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.48;
+    color: var(--fg-2);
+}
 
 .workbook-toc {
     margin: 0 0 4rem;
     padding: 1.5rem 0;
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
 }
 .workbook-toc h2 {
     margin: 0 0 1rem;
     border: none;
     padding: 0;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--ink-muted);
 }
-.workbook-toc ol {
+/* The module-card lists are direct children of this nav and print their own
+   ordinal, so a browser marker here would sit beside it. */
+.workbook-toc ol:not(.module-list) {
     list-style: decimal;
     padding-left: 2em;
     margin: 0;
 }
 .workbook-toc li {
     margin: 0.4em 0;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
 }
+.workbook-toc a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-soft);
+    transition: border-color 0.15s;
+}
+.workbook-toc a:hover { border-bottom-color: var(--accent); }
 
 body.workbook main > section.module {
     margin-top: 9.25rem;
@@ -2121,11 +2209,11 @@ body.workbook main > section.module > .module-hero {
     width: min(100%, 52rem);
     margin: 0 auto 4.75rem;
     padding: 5.25rem 1.5rem 4.25rem;
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
     background:
         linear-gradient(180deg, rgba(255,255,255,.62), rgba(255,255,255,.18)),
-        var(--paper);
+        var(--bg);
 }
 
 body.workbook main > section.module > .module-hero .module-hero-num {
@@ -2176,6 +2264,10 @@ body.workbook .phase {
         padding-top: 1rem;
         padding-bottom: 1rem;
     }
+    body.workbook .exercise-summary {
+        min-height: 1.2in;
+        margin: 0.18in 0;
+    }
 }
 
 /* Sticky top nav: training name on the left, module chips scrollable on the right.
@@ -2194,7 +2286,7 @@ body.workbook .phase {
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     color: var(--ink-text);
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.85rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -2433,9 +2525,16 @@ body.slides-active { overflow: hidden; }
 .deck__exit:hover { border-color: var(--accent-2); color: var(--ink-text); }
 .deck__exit svg { width: .95rem; height: .95rem; }
 
+/* Bottom-right of the bar — same license mark as the long-read badge and
+   full footer, one source string (curriculum.js COPYRIGHT_MARK). */
+.deck__copyright { flex: 0 0 auto; margin-left: .25rem; font-size: .7rem;
+  color: var(--ink-muted); text-decoration: none; white-space: nowrap; }
+.deck__copyright:hover { color: var(--ink-text-2); }
+
 @media (max-width: 620px) {
   .deck .slide { padding: 1.2rem 1.1rem 2rem 3.2rem; align-items: flex-start; }
   .deck__title { display: none; }
+  .deck__copyright { display: none; }
   .deck.is-railopen .deck__rail { width: min(17rem, 86vw); }
 }
 
@@ -3056,7 +3155,7 @@ Don&#39;t apply anything yet. Ask me to approve or reject each one.
 <h2 id="why-the-sharpening-happens">Why the sharpening happens</h2>
 <p>When you added the second batch, Claude didn&#39;t start over. It read the existing topic pages first, as <em>context</em>, then read the new sources, then integrated. The existing memory was part of the prompt for updating the memory. That&#39;s why pages got sharper: the old claims and the new claims met each other, and the ones that couldn&#39;t survive the meeting got cut.</p>
 <p>This is the same mechanism from Module 1: context shapes output, run at system scale. The context for this work is what the previous work produced. The context for the next run will be what this work produced. The loop is the product.</p>
-<p>Pawel Huryn writes about this as <em>pragmatic instructions</em>: keep the rules small, keep them boring, let the compounding do the work. Not &quot;clever prompts.&quot; Plain rules, applied consistently across thousands of small updates. The discipline is in refusing to get fancy.</p>
+<p>Keep the rules small, keep them boring, and let the compounding do the work. Not &quot;clever prompts.&quot; Plain rules, applied consistently across thousands of small updates. The discipline is in refusing to get fancy.</p>
 <h2 id="the-detail-thats-easy-to-miss">The detail that&#39;s easy to miss</h2>
 <p>The memory is a folder of markdown files. That&#39;s it. No database. No special tool. No paid tier. No setup. And the agent you just built, the one sitting in <code>agents/</code>, is also a markdown file. Instructions the model reads at the start of every run. Same plain-text form for the knowledge, same plain-text form for the capability, same plain-text form as the guardrail you wrote in Module 1. One kind of object, three jobs. Which means it also travels, paste the agent file into any LLM tool and it still works.</p>
 <p>That might look like a limitation. It isn&#39;t. Language models are strongest at reading and writing text, that is what they do. When you store knowledge as text, reading it is reading, and updating it is writing. Nothing sits between the model and what it&#39;s best at. Every fancier setup that promised to &quot;fix&quot; this added a layer that the model had to work <em>around</em>.</p>
@@ -4543,7 +4642,7 @@ When you&#39;re done, tell me in 3-5 lines: what you added, what you sharpened, 
 <p>You&#39;ll interview for that job (the agent reads your memory and does most of the work). You&#39;ll pick a candidate against the outcome, not against the infrastructure. You&#39;ll draft a technical plan and a people plan, side by side. You&#39;ll find the absorption bottleneck, test the switch, and name the likely failure before it happens. Some of it won&#39;t finish in the room. That&#39;s by design. The unfinished pieces are your Monday.</p>
 <p><strong>What you do:</strong></p>
 <p><strong>Phase 1. Interview for the job (12 min).</strong></p>
-<p>You&#39;ve built six modules of context. Your memory knows who your teammate is, what the work looks like, where the friction lives. The agent does the heavy lifting. It reads what&#39;s already there, drafts a hypothesis about the job, and asks you only the questions that plug real holes.</p>
+<p>The context has been building since the first module. Your memory knows who your teammate is, what the work looks like, where the friction lives. The agent does the heavy lifting. It reads what&#39;s already there, drafts a hypothesis about the job, and asks you only the questions that plug real holes.</p>
 <div class="rt-code">
 
 <p><strong>Prompt</strong> <em>(Builder Claude)</em></p>
@@ -5583,6 +5682,7 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
 </section>
 </main>
 <footer class="curriculum-footer"><p><strong>&copy; 2026 Bosser Oy.</strong> All rights reserved. Agents 102 is proprietary training material. As an enrolled student you have a personal usage license &mdash; you may learn from this, run the exercises, own what you build, and apply it at your own workplace. You may not redistribute the curriculum files, teach the material as your own, or use it to build a competing training. See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md">full license terms</a> &middot; <a href="https://bosser.consulting">bosser.consulting</a></p></footer>
+<div class="copyright-badge"><a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" title="Agents 102 is proprietary training material — full license terms">&copy; Bosser 2026</a></div>
 
 <script>// Shared curriculum runtime — single source of truth for both the SPA
 // (curriculum.html) and the single-page workbook (scripts/build-workbook.js).
@@ -5678,6 +5778,53 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
                 { slug: 'earn-the-trust',            title: 'Earn the trust' }
             ]
         },
+        // Team-track variant of Agentic Engineering 101: four sittings, running
+        // AE101 modules 1, 2, 4 and 5 unmodified. AE101 M3 (`earn-the-trust`) is
+        // dropped and M6 (`spot-gaps-build-the-loop`) becomes a customer-authored
+        // workshop; workshops slot between the sittings and are not ours. Same
+        // `contentKey` mechanism as the preview cut above — file resolution points
+        // at the canonical AE101 content dir, so prework, supplementaries and
+        // references are inherited one copy each and a fix to a shared artefact
+        // reaches every variant. Only the module list, label and lede are its own.
+        //
+        // No `prework:` override, and none needed: AE101's own prework page is now
+        // module-count-neutral, and the payload flag below takes the download,
+        // extract and skill-install steps with it. What remains true for both cuts
+        // is stated once, in one file, rather than forked per variant.
+        //
+        // The gaps inventory beside the module files in
+        // `curriculum/trainings/agentic-engineering-101/` lists what plain AE101
+        // still does not fit about this cut, and the seams a customer-authored
+        // workshop has to be written against. Read it before changing anything here.
+        //
+        // Build student-facing:
+        // node scripts/build-workbook.js northwind agentic-engineering-101-northwind --no-trainer-docs
+        'agentic-engineering-101-northwind': {
+            contentKey: 'agentic-engineering-101',
+            // No content tarball. Its only hard consumers were the two M3
+            // security exercises, and M3 is the module this cut drops; reference
+            // and supplementary material renders in the workbook regardless. So
+            // the payload would be equipment issued for a module nobody sits.
+            // Drops the prework's download + extract steps with it (the shared
+            // source carries them behind `<!--flag:payload-->`), which is also
+            // what keeps the student's first instruction from pointing at a URL
+            // this variant never publishes.
+            flags: { payload: false },
+            label: 'Agentic Engineering 101 — Team Track',
+            // The nav and the cards number from the parent, so the row reads
+            // M1 M2 M4 M5 and the skip is visible. The lede does not explain the
+            // skip, count the modules, or describe what surrounds them. What
+            // fills the other slots is the customer's programme, not Bosser
+            // material, and it belongs on the customer's own start page. What is
+            // left is what this material is for, which is all a lede owes.
+            lede: 'For software engineers. Learn the new loop on your own repo.',
+            modules: [
+                { slug: 'getting-going',             title: 'Getting going + context' },
+                { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
+                { slug: 'run-the-first-experiment',  title: 'Run the first experiment' },
+                { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' }
+            ]
+        },
         'claude-basics': {
             label: 'Claude Basics',
             lede: 'A 3-hour live workshop for people helping their organisation roll out Claude. See the system, find the crux, then build and verify in your own folder.',
@@ -5708,6 +5855,17 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
 
     function renderFooter() {
         return '<footer class="curriculum-footer">' + FOOTER_INNER + '</footer>';
+    }
+
+    // Persistent bottom-right mark — same license, shortest legible form.
+    // Long-read: fixed overlay so the full footer below doesn't need a scroll
+    // to be seen. Slides: rendered into the deck bar by slides.js, same string.
+    var COPYRIGHT_MARK = '&copy; Bosser 2026';
+
+    function renderCopyrightBadge() {
+        return '<div class="copyright-badge">' +
+            '<a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" title="Agents 102 is proprietary training material — full license terms">' +
+            COPYRIGHT_MARK + '</a></div>';
     }
 
     // ── Runtime switcher (Agents 101 dual-runtime: CLI / Desktop / Cowork) ──
@@ -5941,6 +6099,114 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
     function stripMaintainerTail(md) {
         var i = md.indexOf('<!-- maintainer -->');
         return i >= 0 ? md.slice(0, i).trimEnd() + '\n' : md;
+    }
+
+    // Content flags — per-variant inclusion of optional passages inside a SHARED
+    // source file. A cut variant (different module list) is still a `contentKey`
+    // entry, not a flag; flags are for when two variants read the SAME file and
+    // one of them genuinely does not have the thing the passage describes. The
+    // motivating case: the Northwind team track ships no content tarball, so the
+    // prework steps that download and extract it describe equipment that variant
+    // does not issue.
+    //
+    //   <!--flag:payload-->         …passage…  <!--/flag:payload-->
+    //   <!--flag:module:<slug>-->   …passage…  <!--/flag:module:<slug>-->
+    //
+    // Two kinds, and the second is the one to reach for by default.
+    //
+    // **Capability flags** (`payload`) resolve against the registry entry's
+    // `flags` object. Absent or true → the passage stays and only the markers are
+    // dropped. False → the passage goes. Use when the thing a passage describes
+    // is not a module: a payload, a host, a piece of equipment.
+    //
+    // **Module flags** (`module:earn-the-trust`, and its inverse
+    // `no-module:earn-the-trust`) resolve against the training's own `modules`
+    // list — the passage survives exactly when that module is in the cut, or
+    // exactly when it is not. The inverse is for text the parent training defers
+    // to a later module: a reconciliation step, a hand-off. A cut that drops that
+    // module has to say it somewhere, and this is where. Nothing is declared, so nothing can drift: a variant that drops a
+    // module drops the homework for it in the same edit, and a variant that later
+    // adds it back gets the homework back for free. Prefer this over a
+    // hand-declared boolean whenever the dependency really is a module, because a
+    // boolean is a second copy of a fact the registry already holds.
+    //
+    // Markers work inline as well as across blocks, so a single clause inside a
+    // sentence can be flagged without splitting it.
+    //
+    // Removing a numbered step would leave a hole in `## N.` headers and strand
+    // every "Step N" reference, so the numbers are recomputed rather than
+    // hand-maintained per variant: headers renumber consecutively from 1 and
+    // body references follow the same old→new map. A surviving reference to a
+    // step that was flagged out is a contradiction the author has to resolve —
+    // the passage that mentions it belongs inside the same flag — so it throws
+    // rather than shipping a page pointing at a step that is not there.
+    function applyContentFlags(md, flags, moduleSlugs) {
+        // An orphaned CLOSING marker has to reach the guard too, or the cheap
+        // exit hands it straight through into the page.
+        if (md.indexOf('<!--flag:') === -1 && md.indexOf('<!--/flag:') === -1) return md;
+
+        var present = moduleSlugs || [];
+        var removed = [];
+        var out = md.replace(
+            /<!--flag:([a-z0-9:-]+)-->([\s\S]*?)<!--\/flag:\1-->/g,
+            function (match, name, inner) {
+                var drop;
+                if (name.indexOf('module:') === 0) {
+                    // No module list supplied → keep everything. A caller that
+                    // does not know the cut must not silently delete its homework.
+                    drop = moduleSlugs ? present.indexOf(name.slice(7)) === -1 : false;
+                } else if (name.indexOf('no-module:') === 0) {
+                    // The inverse: text that exists ONLY for cuts missing the
+                    // module — a hand-off the parent training defers to it, a
+                    // reconciliation its later sitting would have covered. Same
+                    // no-list rule, and it lands the same way: keep the passage.
+                    // Erring toward keeping is safe in both directions because a
+                    // spurious instruction is visible, while a silently dropped
+                    // one is not.
+                    drop = moduleSlugs ? present.indexOf(name.slice(10)) !== -1 : false;
+                } else {
+                    drop = !!(flags && flags[name] === false);
+                }
+                if (drop) {
+                    removed.push({ name: name, inner: inner });
+                    return '';
+                }
+                return inner;
+            }
+        );
+
+        // Same name class as the matcher above, or the guard misses exactly the
+        // markers the matcher accepts but could not pair.
+        var unclosed = out.match(/<!--\/?flag:[a-z0-9:-]+-->/);
+        if (unclosed) throw new Error('Unbalanced content-flag marker: ' + unclosed[0]);
+        if (!removed.length) return out;
+
+        // Old→new step numbers. Headers are counted in the ORIGINAL text so a
+        // removed step still gets an entry, mapping to null — that is what makes
+        // a stranded reference detectable rather than silently renumbered.
+        var order = [];
+        md.replace(/^## (\d+)\. /gm, function (m, n) { order.push(Number(n)); return m; });
+        var kept = [];
+        out.replace(/^## (\d+)\. /gm, function (m, n) { kept.push(Number(n)); return m; });
+
+        var map = {};
+        order.forEach(function (n) { map[n] = null; });
+        kept.forEach(function (n, i) { map[n] = i + 1; });
+
+        var renumbered = out
+            .replace(/^## (\d+)\. /gm, function (m, n) { return '## ' + map[Number(n)] + '. '; })
+            .replace(/\bStep (\d+)\b/g, function (m, n) {
+                var to = map[Number(n)];
+                if (to == null) {
+                    throw new Error(
+                        'Content flag removed step ' + n + ' but "' + m + '" still refers to it. ' +
+                        'Move that passage inside the same flag, or rewrite it.'
+                    );
+                }
+                return 'Step ' + to;
+            });
+
+        return renumbered;
     }
 
     // Reconstruct the canonical inline prompt-block shape the renderer expects:
@@ -6507,19 +6773,37 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
         });
     }
 
+    // The number a module carries, as an integer. A variant cut renders a SUBSET
+    // of its parent's modules, and those module bodies go on calling themselves
+    // "Module 4" because that is what they are. Numbering a cut by position puts
+    // M3 in the nav above a page that says Module 4, and then the same token means
+    // two things in one build. Numbering from the parent keeps one meaning for the
+    // number and lets the gap in the sequence show, which is the honest artifact:
+    // this track runs modules 1, 2, 4 and 5.
+    function moduleOrdinal(trainingKey, slug) {
+        var t = TRAININGS[trainingKey];
+        if (!t) return null;
+        var src = (t.contentKey && TRAININGS[t.contentKey]) || t;
+        var i = src.modules.findIndex(function (m) { return m.slug === slug; });
+        if (i >= 0) return i + 1;
+        if (src.optionalModules) {
+            var k = src.optionalModules.findIndex(function (m) { return m.slug === slug; });
+            if (k >= 0) return src.modules.length + k + 1;
+        }
+        // A cut-specific module the parent never listed has no inherited number;
+        // its own position is the only one available.
+        var j = t.modules.findIndex(function (m) { return m.slug === slug; });
+        return j >= 0 ? j + 1 : null;
+    }
+
     // Compute the 2-digit number for a module slug within a training.
-    // Prework = "00", modules = "01"..., optionalModules continue from there.
+    // Prework = "00", modules and optionalModules take their inherited ordinal.
     function moduleNumber(trainingKey, slug) {
         var t = TRAININGS[trainingKey];
         if (!t) return null;
         if (t.prework && t.prework.slug === slug) return '00';
-        var i = t.modules.findIndex(function (m) { return m.slug === slug; });
-        if (i >= 0) return String(i + 1).padStart(2, '0');
-        if (t.optionalModules) {
-            var j = t.optionalModules.findIndex(function (m) { return m.slug === slug; });
-            if (j >= 0) return String(t.modules.length + j + 1).padStart(2, '0');
-        }
-        return null;
+        var n = moduleOrdinal(trainingKey, slug);
+        return n === null ? null : String(n).padStart(2, '0');
     }
 
     // Pull the H1 + Big Idea out of a rendered module element and replace
@@ -6652,9 +6936,8 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
                 html += '<' + heading + ' class="index-heading">The ' + word + ' modules</' + heading + '>';
             }
             html += '<ol class="module-list index-modules"' + bigIdeasAttr + '>';
-            t.modules.forEach(function (m, i) {
-                var num = String(i + 1).padStart(2, '0');
-                html += cardHtml(num, m.title, m.slug, opts.moduleHref(trainingKey, m.slug), bigIdea(m.slug));
+            t.modules.forEach(function (m) {
+                html += cardHtml(moduleNumber(trainingKey, m.slug), m.title, m.slug, opts.moduleHref(trainingKey, m.slug), bigIdea(m.slug));
             });
             html += '</ol>';
         }
@@ -6663,9 +6946,8 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
             if (opts.showModuleCountHeading) html += '<' + heading + ' class="index-heading">Optional extensions — when the cohort wants more</' + heading + '>';
             else html += '<' + heading + ' class="index-heading">Optional extensions</' + heading + '>';
             html += '<ol class="module-list index-modules"' + bigIdeasAttr + '>';
-            t.optionalModules.forEach(function (m, i) {
-                var num = String(t.modules.length + i + 1).padStart(2, '0');
-                html += cardHtml(num, m.title, m.slug, opts.moduleHref(trainingKey, m.slug), bigIdea(m.slug));
+            t.optionalModules.forEach(function (m) {
+                html += cardHtml(moduleNumber(trainingKey, m.slug), m.title, m.slug, opts.moduleHref(trainingKey, m.slug), bigIdea(m.slug));
             });
             html += '</ol>';
         }
@@ -6718,6 +7000,8 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
         CROSS_DOC_TRAINING_KS_RE: CROSS_DOC_TRAINING_KS_RE,
         FOOTER_INNER: FOOTER_INNER,
         renderFooter: renderFooter,
+        COPYRIGHT_MARK: COPYRIGHT_MARK,
+        renderCopyrightBadge: renderCopyrightBadge,
 
         // Pure (Node-safe)
         esc: esc,
@@ -6729,6 +7013,7 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
         slugifyHeading: slugifyHeading,
         configureMarked: configureMarked,
         stripMaintainerTail: stripMaintainerTail,
+        applyContentFlags: applyContentFlags,
         renderPromptBlock: renderPromptBlock,
         expandPrompts: expandPrompts,
         PROMPT_INCLUDE_RE: PROMPT_INCLUDE_RE,
@@ -6748,6 +7033,7 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
         installReadingProgress: installReadingProgress,
         buildModuleHero: buildModuleHero,
         moduleNumber: moduleNumber,
+        moduleOrdinal: moduleOrdinal,
         wrapStandaloneInPhase: wrapStandaloneInPhase,
         simpleRowHtml: simpleRowHtml,
         renderAccents: renderAccents,
@@ -7169,7 +7455,15 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
     btnNext.addEventListener('click', function () { go(i + 1); });
     exit.addEventListener('click', function () { if (opts.onExit) opts.onExit(); });
     nav.append(btnRail, btnPrev, count, btnNext);
-    bar.append(title, spacer, exit, nav);
+    var mark = el('a', 'deck__copyright', {
+      href: 'https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md',
+      target: '_blank', rel: 'noopener',
+      title: 'Agents 102 is proprietary training material — full license terms'
+    });
+    // Same short string as the long-read badge and full footer — one source
+    // (CurriculumRuntime.COPYRIGHT_MARK, curriculum.js), rendered three ways.
+    mark.innerHTML = (global.CurriculumRuntime && global.CurriculumRuntime.COPYRIGHT_MARK) || '&copy; Bosser 2026';
+    bar.append(title, spacer, exit, nav, mark);
 
     deck.append(progress, rail, viewport, bar);
     document.body.appendChild(deck);

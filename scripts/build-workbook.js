@@ -417,7 +417,7 @@ ${buildToc(contentKey, t)}
   const allBody = standaloneHtml ? modulesHtml + '\n\n' + standaloneHtml : modulesHtml;
 
   // Footer markup lives in CR.renderFooter (shared with SPA — single source).
-  return topNav + '\n<main>\n' + cover + '\n' + allBody + '\n</main>\n' + CR.renderFooter() + '\n';
+  return topNav + '\n<main>\n' + cover + '\n' + allBody + '\n</main>\n' + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
 // ── Inline assets ───────────────────────────────────────────────────────────
@@ -526,7 +526,7 @@ function buildTrainerGuide(customer, trainingKey) {
 </header>
 `;
   const main = '<main>\n' + cover + '\n<section class="module" id="trainer-guide">\n' + bodyHtml + '\n</section>\n</main>\n';
-  return main + CR.renderFooter() + '\n';
+  return main + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
 const TRAINER_GUIDE_INIT_JS = `
@@ -659,7 +659,7 @@ function buildTrainerModules(customer, trainingKey) {
 </header>
 `;
   const main = '<main>\n' + cover + '\n<section class="module" id="trainer-modules">\n' + bodyHtml + '\n</section>\n</main>\n';
-  return main + CR.renderFooter() + '\n';
+  return main + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
 function trainerModulesTemplate(customer, content) {
@@ -824,7 +824,7 @@ function buildTheoryBody(trainingKey, recipient) {
   <p class="cover-blurb">${CR.esc(blurb)}</p>
 </header>
 `;
-  return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + CR.renderFooter() + '\n';
+  return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
 function theoryHandbookTemplate(trainingKey, content, recipient) {
@@ -919,7 +919,7 @@ function buildExercisesBody(trainingKey) {
   <h1 class="cover-title">Exercises workbook</h1>
 </header>
 `;
-  return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + CR.renderFooter() + '\n';
+  return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + CR.renderFooter() + '\n' + CR.renderCopyrightBadge() + '\n';
 }
 
 function exercisesWorkbookTemplate(trainingKey, content) {

@@ -215,6 +215,34 @@ body.runtime-cowork  .rt-code    { display: none; }
     border-bottom-color: var(--accent-2);
 }
 
+/* ── Persistent bottom-right copyright mark (long-read) — the full footer
+   above already carries the license grant; this is just the always-visible
+   reminder so it isn't a whole-page scroll away. Same source string as the
+   footer and the slide-view deck bar (curriculum.js COPYRIGHT_MARK). ── */
+.copyright-badge {
+    position: fixed;
+    right: 0.9rem;
+    bottom: 0.8rem;
+    z-index: 40;
+    font-size: 0.68rem;
+    line-height: 1;
+    background: var(--bg);
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    padding: 0.3rem 0.7rem;
+    opacity: 0.62;
+    transition: opacity 0.15s;
+}
+
+.copyright-badge:hover {
+    opacity: 1;
+}
+
+.copyright-badge a {
+    color: var(--fg-3);
+    text-decoration: none;
+}
+
 main {
     display: flex;
     justify-content: center;
@@ -1941,6 +1969,7 @@ main::before {
 
     .curriculum-header { display: none !important; }
     .curriculum-footer { display: none !important; }
+    .copyright-badge { display: none !important; }
     .page-nav { display: none !important; }
     .top-nav { display: none !important; }
 

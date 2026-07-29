@@ -221,6 +221,34 @@ body.runtime-cowork  .rt-code    { display: none; }
     border-bottom-color: var(--accent-2);
 }
 
+/* ── Persistent bottom-right copyright mark (long-read) — the full footer
+   above already carries the license grant; this is just the always-visible
+   reminder so it isn't a whole-page scroll away. Same source string as the
+   footer and the slide-view deck bar (curriculum.js COPYRIGHT_MARK). ── */
+.copyright-badge {
+    position: fixed;
+    right: 0.9rem;
+    bottom: 0.8rem;
+    z-index: 40;
+    font-size: 0.68rem;
+    line-height: 1;
+    background: var(--bg);
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    padding: 0.3rem 0.7rem;
+    opacity: 0.62;
+    transition: opacity 0.15s;
+}
+
+.copyright-badge:hover {
+    opacity: 1;
+}
+
+.copyright-badge a {
+    color: var(--fg-3);
+    text-decoration: none;
+}
+
 main {
     display: flex;
     justify-content: center;
@@ -1947,6 +1975,7 @@ main::before {
 
     .curriculum-header { display: none !important; }
     .curriculum-footer { display: none !important; }
+    .copyright-badge { display: none !important; }
     .page-nav { display: none !important; }
     .top-nav { display: none !important; }
 
@@ -2074,6 +2103,54 @@ body.workbook .workbook-toc {
     color: var(--ink-muted);
     margin: 0;
 }
+/* Standing description under the cover title (theory handbook). Roman, not
+   italic: the dedication above it is the italic line, and two stacked italic
+   paragraphs read heavy. Measure capped so it breaks over two or three lines
+   rather than one very wide one. */
+.workbook-cover .cover-blurb {
+    max-width: 34em;
+    margin: 1rem auto 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--ink-muted);
+}
+
+/* Theory-handbook exercise cue: one compact header + one paragraph from the
+   canonical exercise's View summary metadata. It restores the lived thread
+   without giving the card the visual weight of a full exercise phase. */
+body.workbook .exercise-summary {
+    box-sizing: border-box;
+    margin: 2rem 0;
+    padding: 0.9rem 1.2rem 1rem;
+    min-height: 7.5rem;
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+body.workbook .exercise-summary h2 {
+    margin: 0 0 0.45rem;
+    padding: 0;
+    border: 0;
+    font-family: var(--font-body);
+    font-size: 1.02rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--accent);
+}
+body.workbook .exercise-summary h2::before { display: none; }
+body.workbook .exercise-summary p,
+body.workbook .exercise-summary h2 + p {
+    margin: 0;
+    max-width: none;
+    min-height: 0;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.48;
+    color: var(--fg-2);
+}
 
 .workbook-toc {
     margin: 0 0 4rem;
@@ -2186,6 +2263,10 @@ body.workbook .phase {
         margin-bottom: 1.5rem;
         padding-top: 1rem;
         padding-bottom: 1rem;
+    }
+    body.workbook .exercise-summary {
+        min-height: 1.2in;
+        margin: 0.18in 0;
     }
 }
 
@@ -2521,6 +2602,7 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#m
 </section>
 </main>
 <footer class="curriculum-footer"><p><strong>&copy; 2026 Bosser Oy.</strong> All rights reserved. Agents 102 is proprietary training material. As an enrolled student you have a personal usage license &mdash; you may learn from this, run the exercises, own what you build, and apply it at your own workplace. You may not redistribute the curriculum files, teach the material as your own, or use it to build a competing training. See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md">full license terms</a> &middot; <a href="https://bosser.consulting">bosser.consulting</a></p></footer>
+<div class="copyright-badge"><a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" title="Agents 102 is proprietary training material — full license terms">&copy; Bosser 2026</a></div>
 
 <script>// Shared curriculum runtime — single source of truth for both the SPA
 // (curriculum.html) and the single-page workbook (scripts/build-workbook.js).
@@ -2649,7 +2731,13 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#m
             // this variant never publishes.
             flags: { payload: false },
             label: 'Agentic Engineering 101 — Team Track',
-            lede: 'Four modules for software engineers, with team workshops between them. Learn the new loop on your own repo, then take it to your team.',
+            // The nav and the cards number from the parent, so the row reads
+            // M1 M2 M4 M5 and the skip is visible. The lede does not explain the
+            // skip, count the modules, or describe what surrounds them. What
+            // fills the other slots is the customer's programme, not Bosser
+            // material, and it belongs on the customer's own start page. What is
+            // left is what this material is for, which is all a lede owes.
+            lede: 'For software engineers. Learn the new loop on your own repo.',
             modules: [
                 { slug: 'getting-going',             title: 'Getting going + context' },
                 { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
@@ -2687,6 +2775,17 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#m
 
     function renderFooter() {
         return '<footer class="curriculum-footer">' + FOOTER_INNER + '</footer>';
+    }
+
+    // Persistent bottom-right mark — same license, shortest legible form.
+    // Long-read: fixed overlay so the full footer below doesn't need a scroll
+    // to be seen. Slides: rendered into the deck bar by slides.js, same string.
+    var COPYRIGHT_MARK = '&copy; Bosser 2026';
+
+    function renderCopyrightBadge() {
+        return '<div class="copyright-badge">' +
+            '<a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" title="Agents 102 is proprietary training material — full license terms">' +
+            COPYRIGHT_MARK + '</a></div>';
     }
 
     // ── Runtime switcher (Agents 101 dual-runtime: CLI / Desktop / Cowork) ──
@@ -3594,19 +3693,37 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#m
         });
     }
 
+    // The number a module carries, as an integer. A variant cut renders a SUBSET
+    // of its parent's modules, and those module bodies go on calling themselves
+    // "Module 4" because that is what they are. Numbering a cut by position puts
+    // M3 in the nav above a page that says Module 4, and then the same token means
+    // two things in one build. Numbering from the parent keeps one meaning for the
+    // number and lets the gap in the sequence show, which is the honest artifact:
+    // this track runs modules 1, 2, 4 and 5.
+    function moduleOrdinal(trainingKey, slug) {
+        var t = TRAININGS[trainingKey];
+        if (!t) return null;
+        var src = (t.contentKey && TRAININGS[t.contentKey]) || t;
+        var i = src.modules.findIndex(function (m) { return m.slug === slug; });
+        if (i >= 0) return i + 1;
+        if (src.optionalModules) {
+            var k = src.optionalModules.findIndex(function (m) { return m.slug === slug; });
+            if (k >= 0) return src.modules.length + k + 1;
+        }
+        // A cut-specific module the parent never listed has no inherited number;
+        // its own position is the only one available.
+        var j = t.modules.findIndex(function (m) { return m.slug === slug; });
+        return j >= 0 ? j + 1 : null;
+    }
+
     // Compute the 2-digit number for a module slug within a training.
-    // Prework = "00", modules = "01"..., optionalModules continue from there.
+    // Prework = "00", modules and optionalModules take their inherited ordinal.
     function moduleNumber(trainingKey, slug) {
         var t = TRAININGS[trainingKey];
         if (!t) return null;
         if (t.prework && t.prework.slug === slug) return '00';
-        var i = t.modules.findIndex(function (m) { return m.slug === slug; });
-        if (i >= 0) return String(i + 1).padStart(2, '0');
-        if (t.optionalModules) {
-            var j = t.optionalModules.findIndex(function (m) { return m.slug === slug; });
-            if (j >= 0) return String(t.modules.length + j + 1).padStart(2, '0');
-        }
-        return null;
+        var n = moduleOrdinal(trainingKey, slug);
+        return n === null ? null : String(n).padStart(2, '0');
     }
 
     // Pull the H1 + Big Idea out of a rendered module element and replace
@@ -3739,9 +3856,8 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#m
                 html += '<' + heading + ' class="index-heading">The ' + word + ' modules</' + heading + '>';
             }
             html += '<ol class="module-list index-modules"' + bigIdeasAttr + '>';
-            t.modules.forEach(function (m, i) {
-                var num = String(i + 1).padStart(2, '0');
-                html += cardHtml(num, m.title, m.slug, opts.moduleHref(trainingKey, m.slug), bigIdea(m.slug));
+            t.modules.forEach(function (m) {
+                html += cardHtml(moduleNumber(trainingKey, m.slug), m.title, m.slug, opts.moduleHref(trainingKey, m.slug), bigIdea(m.slug));
             });
             html += '</ol>';
         }
@@ -3750,9 +3866,8 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#m
             if (opts.showModuleCountHeading) html += '<' + heading + ' class="index-heading">Optional extensions — when the cohort wants more</' + heading + '>';
             else html += '<' + heading + ' class="index-heading">Optional extensions</' + heading + '>';
             html += '<ol class="module-list index-modules"' + bigIdeasAttr + '>';
-            t.optionalModules.forEach(function (m, i) {
-                var num = String(t.modules.length + i + 1).padStart(2, '0');
-                html += cardHtml(num, m.title, m.slug, opts.moduleHref(trainingKey, m.slug), bigIdea(m.slug));
+            t.optionalModules.forEach(function (m) {
+                html += cardHtml(moduleNumber(trainingKey, m.slug), m.title, m.slug, opts.moduleHref(trainingKey, m.slug), bigIdea(m.slug));
             });
             html += '</ol>';
         }
@@ -3805,6 +3920,8 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#m
         CROSS_DOC_TRAINING_KS_RE: CROSS_DOC_TRAINING_KS_RE,
         FOOTER_INNER: FOOTER_INNER,
         renderFooter: renderFooter,
+        COPYRIGHT_MARK: COPYRIGHT_MARK,
+        renderCopyrightBadge: renderCopyrightBadge,
 
         // Pure (Node-safe)
         esc: esc,
@@ -3836,6 +3953,7 @@ section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#m
         installReadingProgress: installReadingProgress,
         buildModuleHero: buildModuleHero,
         moduleNumber: moduleNumber,
+        moduleOrdinal: moduleOrdinal,
         wrapStandaloneInPhase: wrapStandaloneInPhase,
         simpleRowHtml: simpleRowHtml,
         renderAccents: renderAccents,

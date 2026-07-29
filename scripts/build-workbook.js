@@ -98,13 +98,15 @@ const TRAINER_ONLY = new Set(['cohort-onboarding-email.md', 'pre-cohort-todos.md
 
 // ── Theory handbook manifest ────────────────────────────────────────────────
 // `node scripts/build-workbook.js <customer> <training> --theory` assembles
-// ONLY these docs — student bodies, no exercises, no module chrome — into
-// site/clients/<customer>/<training>/theory-handbook.html. A maintainer
-// reading/checking artifact: the full theory in one continuous read.
+// these theory docs plus compact exercise-summary metadata — never full
+// exercise bodies — into site/clients/<customer>/<training>/theory-handbook.html.
+// A maintainer reading/checking artifact and a student/prospect handout: the
+// full theory in one continuous read, with the lived work restored in miniature.
 //
 // Grouped by module beat. One entry per line — strike or add a line to trim.
 //   'lectures/<slug>'      → curriculum/lectures/<slug>.md
 //   'supplementary/<slug>' → curriculum/trainings/<training>/supplementary/<slug>.md
+//   'exercises/<slug>'     → H1 + `View summary` metadata from curriculum/exercises/<slug>.md
 // Dual-wired lectures appear once, at their owning module. Duplicates and
 // missing files fail the build.
 // story-of-module-6 stays in the M6 module as the opener memo but is not
@@ -114,16 +116,25 @@ const THEORY_HANDBOOK_MANIFEST = {
     ['M1', [
       'lectures/painting-the-picture-with-the-llm',
       'lectures/the-wizard-move',
+      'exercises/orient-and-introspect',
+      'exercises/fix-tests-first',
+      'exercises/compound-and-close',
       'lectures/the-machine-you-just-met',
       'lectures/how-this-training-was-built',
     ]],
     ['M2', [
       'lectures/the-whole-map',
       'lectures/when-a-plan-is-good',
+      'exercises/push-back-on-the-plan',
+      'exercises/extract-the-task-shaping-rule',
       'lectures/where-the-rule-could-live',
     ]],
     ['M3', [
+      'exercises/open-the-side-quest',
       'lectures/skills-from-the-frontier',
+      'exercises/map-the-access-surface',
+      'exercises/threat-model-with-stride',
+      'exercises/author-test-strategy-skill',
       'lectures/the-loop-half-filled',
       'supplementary/the-lethal-trifecta',
     ]],
@@ -131,6 +142,7 @@ const THEORY_HANDBOOK_MANIFEST = {
       'lectures/the-far-half',
       'lectures/the-agent-loop',
       'lectures/test-and-learn',
+      'exercises/walk-and-send-off',
       'lectures/ironies-of-automation',
       'lectures/will-company-memory-emerge',
       'lectures/reading-the-return',
@@ -138,6 +150,7 @@ const THEORY_HANDBOOK_MANIFEST = {
     ]],
     ['M5', [
       'lectures/learning-through-contrast',
+      'exercises/diagnose-and-resend',
       'lectures/what-packaging-is',
       'lectures/the-gate-is-a-claim',
       'supplementary/backpressure',
@@ -145,6 +158,7 @@ const THEORY_HANDBOOK_MANIFEST = {
     ['M6', [
       'lectures/the-2-frontiers',
       'lectures/quality-is-grounding',
+      'exercises/spot-gaps-build-the-loop',
       'lectures/composing-the-workflow',
       'lectures/the-loop-has-a-name',
       'lectures/the-map-filled-in',
@@ -670,9 +684,10 @@ ${content}
 }
 
 // ── Theory handbook ─────────────────────────────────────────────────────────
-// Maintainer reading/checking artifact: every theory doc from
-// THEORY_HANDBOOK_MANIFEST in one self-contained page, rendered by the SAME
-// pipeline as the workbook. Lectures ride the module include path (synthetic
+// Maintainer reading/checking artifact: every manifest entry in one
+// self-contained page. Theory docs render through the SAME pipeline as the
+// workbook; exercise entries render only their reusable summary metadata.
+// Lectures ride the module include path (synthetic
 // standalone include-link → inlineIncludes → readMd/expandPrompts → marked →
 // postProcessIncludes), so {{prompt:}}/{{cut:}}/{{covered:}} markers, heading
 // ids, and the phase--lecture section wrapper come out byte-equivalent to the
@@ -680,6 +695,50 @@ ${content}
 // transform sequence (link rewrite → inlineImages → escapeTildes → marked →
 // wrapImageFigures). Module-number section headers are assembly chrome — they
 // live here, never in the lecture bodies.
+function readExerciseViewMeta(slug) {
+  const srcPath = path.join(ROOT, 'curriculum/exercises', slug + '.md');
+  if (!fs.existsSync(srcPath)) {
+    throw new Error(`Exercise summary source missing: ${path.relative(ROOT, srcPath)}`);
+  }
+
+  const raw = fs.readFileSync(srcPath, 'utf8');
+  const marker = '<!-- maintainer -->';
+  const markerAt = raw.indexOf(marker);
+  if (markerAt === -1) {
+    throw new Error(`Exercise summary source has no maintainer marker: ${path.relative(ROOT, srcPath)}`);
+  }
+
+  const body = raw.slice(0, markerAt);
+  const tail = raw.slice(markerAt + marker.length);
+  const titleMatch = body.match(/^#\s+(.+?)\s*$/m);
+  if (!titleMatch) {
+    throw new Error(`Exercise summary source has no H1: ${path.relative(ROOT, srcPath)}`);
+  }
+
+  const summaries = [...tail.matchAll(/^\*\*View summary:\*\*\s+(.+?)\s*$/gm)];
+  if (summaries.length !== 1) {
+    throw new Error(
+      `Exercise summary source needs exactly one View summary, found ${summaries.length}: ${path.relative(ROOT, srcPath)}`
+    );
+  }
+
+  const summaryMd = summaries[0][1].trim();
+  const plain = summaryMd
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/[*_~]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const words = plain.match(/\b[\p{L}\p{N}][\p{L}\p{N}'’.-]*\b/gu) || [];
+  if (words.length < 35 || words.length > 45) {
+    throw new Error(
+      `Exercise View summary must be 35–45 words, got ${words.length}: ${path.relative(ROOT, srcPath)}`
+    );
+  }
+
+  return { titleMd: titleMatch[1].trim(), summaryMd, wordCount: words.length };
+}
+
 function renderTheoryEntry(trainingKey, entry) {
   const [kind, slug] = entry.split('/');
 
@@ -711,7 +770,17 @@ function renderTheoryEntry(trainingKey, entry) {
     return `<section class="phase phase--lecture" id="supplementary-${slug}">\n<div class="phase-kicker">Supplementary</div>\n${CR.wrapImageFigures(marked.parse(md))}\n</section>`;
   }
 
-  throw new Error(`Theory manifest entry has unknown kind "${kind}": ${entry} (expected lectures/ or supplementary/)`);
+  if (kind === 'exercises') {
+    const { titleMd, summaryMd } = readExerciseViewMeta(slug);
+    return `<section class="exercise-summary" id="exercise-summary-${slug}">\n`
+      + `<h2>Exercise · ${marked.parseInline(titleMd)}</h2>\n`
+      + `<p>${marked.parseInline(summaryMd)}</p>\n`
+      + `</section>`;
+  }
+
+  throw new Error(
+    `Theory manifest entry has unknown kind "${kind}": ${entry} (expected lectures/, supplementary/, or exercises/)`
+  );
 }
 
 function buildTheoryBody(trainingKey, recipient) {
@@ -909,7 +978,7 @@ function usage() {
   console.error('Usage: node scripts/build-workbook.js <customer-slug> <training-key|training-key,...|all>');
   console.error('   or: node scripts/build-workbook.js <customer-slug> <training-key> <training-key> ...');
   console.error('Legacy single-training form still works: node scripts/build-workbook.js <training-key> <customer-slug>');
-  console.error('Theory handbook (lectures only, no exercises): append --theory');
+  console.error('Theory handbook (theory + slim exercise summaries): append --theory');
   console.error('Exercises workbook (exercises only, prompts inlined): append --exercises');
   console.error('Personalised theory handbook: append --theory --for "<Name>"');
   console.error('  (customer dir must be gitignored — convention: vip-<pseudonym>)');
@@ -1225,7 +1294,7 @@ function guardPersonalisedOutput(customer) {
     ignored = false;  // exit 1 = not ignored; exit 128 = not a repo / git missing
   }
   if (!ignored) {
-    console.error(`Build aborted: --for would write a named copy into ${rel}, which git does NOT ignore.`);
+    console.error(`Build aborted: --for would write a named copy into ${rel}/, which git does NOT ignore.`);
     console.error('  A personalised handbook carries the recipient\'s name in the HTML; committing it leaks that name.');
     console.error('  Use a gitignored customer slug (convention: vip-<pseudonym>), e.g.:');
     console.error('    node scripts/build-workbook.js vip-northwind agentic-engineering-101 --theory --for "<Name>"');

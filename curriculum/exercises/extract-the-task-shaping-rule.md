@@ -59,6 +59,8 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 
 <!-- maintainer -->
 
+**View summary:** You ask the agent to recover the task-shaping rules hidden in the planning session, rewrite anything generic, and save the useful rules where they will fire. The artifact turns one good planning experience into reusable guidance for similar work.
+
 **Ticket phase split out:** the optional "read one real ticket" phase (`extract-the-task-shaping-rule-4`) moved to the `read-the-ticket-rules.md` homework exercise; this file now ends at the automation-shapes read. Body trimmed since the SHAs below, so re-audit before ship.
 
 **Phase 3 automation-shapes prompt (`extract-the-task-shaping-rule-3`) kept, not cut.** It was flagged `low-yield` (the lecture `where-the-rule-could-live` walks the same three shapes). Kept by decision: this is a no-build, name-the-shapes horizon beat, so it adds none of the concurrent-heavy-execution load the cull targeted — cutting it reclaims no load, it only drops a cheap payoff. It gives the slot a breather after the rules-extraction work and primes the lecture reveal (generate-then-reveal). Not a cut candidate.

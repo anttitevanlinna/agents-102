@@ -58,14 +58,54 @@ Go.
 - Engineers with prior security depth may want to debate STRIDE vs PASTA or LINDDUN. Acknowledge (*"PASTA and LINDDUN exist, we picked STRIDE for the 20-min exercise because it's what most readers know"*) and move on.
 - "Is the test-strategy skill just a better unit-test policy?" — good question, wrong framing. It's a skill that tells Claude how to think about testing THIS codebase when asked. The output isn't a policy document; it's an agentic capability. Clarify with the Ex3 invocation beat ("is the test strategy good?") as the proof.
 
-**Frameworks attributed:**
-- STRIDE — Kohnfelder & Garg (Microsoft, 1999) `[academic/research]`. Sharpened by Shostack (*Threat Modeling: Designing for Security*, 2014) `[academic/research]`.
-- Least-privilege principle — Saltzer & Schroeder (*The Protection of Information in Computer Systems*, 1975) `[academic/research]`.
-- Compound engineering / team kit accretion — Kieran Klaassen (Every Inc.) `[practitioner direct]` + Intercom's 267-skill plugin repo `[practitioner direct]` (Darragh Curran, *"2x – nine months later: We did it. You can too."*, [ideas.fin.ai/p/2x-nine-months-later](https://ideas.fin.ai/p/2x-nine-months-later), 2026-04-16 — full citation + freshness stamp in Source verification below). Evolving deployment data — re-verify before each cohort and refresh date anchor in body.
-- Test strategy as discipline — Kent Beck `[practitioner direct]` + Google Testing Blog's test-pyramid framing `[practitioner analysis]`. Named but not leaned on — the student's authored skill is theirs.
+<!-- backing -->
 
-**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
-- `[checked:2026-07-26 result:OK due:cohort]` https://ideas.fin.ai/p/2x-nine-months-later — [practitioner direct, vendor venue] Darragh Curran, "2x – nine months later: We did it. You can too." 153 contributors / 267 skills / 31% of R&D headcount confirmed live in source. Anchors the team-kit-accretion claim in "A team kit is born from personal skills." fallback: drop the numbers, say "a large practitioner-built plugin repo, born from personal skills."
+Format → `curriculum/backing-format.md`.
+
+**Claims**
+- `skill-is-a-file` · detail · "A markdown file with a frontmatter header and a set of instructions, living in `.claude/skills/<name>/SKILL.md`" ← cc-skills-docs
+- `auto-discovery-by-name` · detail · "Claude Code discovers it by name and pulls the body in when the work calls for it" ← cc-skills-docs
+- `grill-me-provenance` · detail · "patterned on Matt Pocock's `grill-me` skill (Socratic requirement elicitation, MIT-licensed, on his GitHub)" ← pocock-grill-me
+- `skills-compound-across-teammates` · vision · "Skills are how agentic knowledge compounds across teammates" ← none-owed
+- `stride-provenance` · borrowed · "STRIDE is Loren Kohnfelder and Praerit Garg's 1999 Microsoft memo, sharpened into a discipline by Adam Shostack's *Threat Modeling: Designing for Security* (2014)" ← kohnfelder-garg-1999, shostack-2014
+- `least-privilege-provenance` · borrowed · "Access-control analysis threads back to Saltzer and Schroeder's 1975 least-privilege paper" ← saltzer-schroeder-1975
+- `saltzer-most-cited` · detail · "still the most-cited piece of computer security writing" ← [SOURCE NEEDED]
+- `intercom-team-kit-accretion` · detail · "Intercom's 267-skill plugin repo (153 contributors, 31% of R&D headcount are active contributors, by Intercom's own count, as of April 2026)" ← curran-2x-nine-months
+- `two-curated-one-authored` · vision · "The proportion is a claim about what you can produce well on a Tuesday afternoon" ← none-owed
+- `dont-generalise-unpracticed` · vision · "Don't make general what you don't practice yourself" ← none-owed
+- `personal-skills-path` · detail · "ships to your personal `~/.claude/skills/test-strategy/`, auto-discovered in every session you run" ← cc-skills-docs
+- `three-trust-artifacts` · vision · "three things exist that your staff engineer and your CISO would actually read" ← none-owed
+
+**Sources**
+- curran-2x-nine-months `[checked:2026-07-26 result:OK due:cohort]` https://ideas.fin.ai/p/2x-nine-months-later — [practitioner direct, vendor venue] Darragh Curran, "2x – nine months later: We did it. You can too." 153 contributors / 267 skills / 31% of R&D headcount confirmed live in source. fallback: drop the numbers, say "a large practitioner-built plugin repo, born from personal skills."
+- cc-skills-docs `[checked:never result:NEEDED due:asap]` https://code.claude.com/docs/en/skills — [capability] skill file location, frontmatter shape, discovery-by-name, personal `~/.claude/skills/` home. Clear by live test, not by reading. fallback: none — if discovery-by-name changed, three body claims and the M3 exercise chain all move.
+- pocock-grill-me `[checked:never result:NEEDED due:asap]` github.com/mattpocock — [practitioner direct] `grill-me` skill, MIT licence, Socratic elicitation framing. Pin the repo URL. fallback: "patterned on a Socratic elicitation skill published by a frontier practitioner" — but the named credit is owed under `check_writing.md §6`, so clearing this beats reframing.
+- kohnfelder-garg-1999 `[checked:never result:NEEDED due:none]` — [academic/research] STRIDE origin, Microsoft 1999. Foundational; `due:none` once opened. fallback: none needed, the attribution is uncontested.
+- shostack-2014 `[checked:never result:NEEDED due:none]` — [academic/research] *Threat Modeling: Designing for Security*, Wiley 2014. Foundational. fallback: as above.
+- saltzer-schroeder-1975 `[checked:never result:NEEDED due:none]` — [academic/research] *The Protection of Information in Computer Systems*, Proc. IEEE 63(9). Foundational; backs the provenance claim only, NOT the most-cited superlative.
+- klaassen-compound-engineering `[checked:2026-07-02 result:CAVEAT due:2027-01-02]` https://every.to/source-code/compound-engineering-how-every-codes-with-agents — [practitioner direct, vendor venue] four-step naming verbatim. CAVEAT: Dec 2025, outside the 6-mo window — cite as the framework's origin, not fresh evidence. Stamp carried from `how-this-training-was-built.md`; keep the two in step.
+
+**Frameworks**
+- STRIDE · [borrow:security-engineering] · law:none · ← kohnfelder-garg-1999, shostack-2014
+- Least privilege · [borrow:security-engineering] · law:none · ← saltzer-schroeder-1975
+- Compound engineering / team-kit accretion · [borrow:practitioner-coined] · law:the-compound-ladder · ← klaassen-compound-engineering, curran-2x-nine-months
+- Test pyramid · [borrow:testing-discipline] · law:none · ← cultural-vocab. Named in body as a generic default the authored skill pushes back on; no credit obligation under `check_writing.md §6` counter-rule.
+
+**Stance** `[stance:2026-07-29 level:L2]`
+- holds: the personal-skill → team-kit path runs in production at two independent orgs with the same shape — an internal marketplace, auto-updating, contribution spread across a wide slice of R&D rather than a central team building for everyone else. Intercom: 267 skills, 153 contributors, 31% of R&D. Ramp's Dojo: 350+ skills, packaged by non-engineers as well.
+- contested: the evidence level, inside our own KB. `observations/ramp.md` reads the paired Intercom + Ramp signal as "Level 3 convergence"; `check_research_claims.md §4` sets the L3 threshold at 10–20 independent practitioners and says six is not enough. Two strong single-org cases is L2. The lecture's body does not lean on a convergence claim, so nothing above the divider is overclaimed — but the KB and the rule disagree and one of them should move.
+- would-move-it: a third and fourth independent org publishing contribution-spread numbers for a skill repo (→ L3, and the lecture could say "this is how team kits form" rather than "this is how one formed"). Or the first published account of a team kit that decayed — no maintainer, skills rotting against a moved codebase — which would put a counterweight slide into the lecture.
+
+**OODA**
+- question: does personal-skill → team-kit accretion hold outside Intercom and Ramp, and has anyone published a kit that decayed?
+- roster: Darragh Curran (Intercom), Geoff Charles (Ramp), Kieran Klaassen (Every), Matt Pocock; plus `platform-watch/coding-agents/state.md` for skills-ecosystem deltas.
+- last-run: never
+
+**Flagged**
+- `[found:2026-07-29]` Test-pyramid attribution in the retired `Frameworks attributed:` list credited Google Testing Blog. The pyramid is Mike Cohn's (*Succeeding with Agile*, 2009); Google popularised a variant. Body is unaffected — it names the pyramid generically with no credit — so this was maintainer-side only, and the entry above now closes as cultural-vocab. → Nothing to fix; confirm the read and this line clears.
+- `[found:2026-07-29]` Six of seven named attributions in this lecture had no freshness stamp — only Curran did. Now enumerated as `NEEDED`. Three are foundational (Kohnfelder, Shostack, Saltzer) and clear in one pass at `due:none`. → Decide whether `saltzer-most-cited` gets a citation or the superlative comes out of the body.
+
+<!-- /backing -->
 
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
 

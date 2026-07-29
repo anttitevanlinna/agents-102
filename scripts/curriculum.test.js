@@ -255,9 +255,9 @@ test('THEORY_HANDBOOK_MANIFEST lecture order is a subsequence of each module fil
  *
  * Contract under test:
  *   - `--theory` emits site/clients/<c>/<t>/theory-handbook.html: theory
- *     lectures only, rendered by the SAME pipeline as the workbook (same
- *     phase--lecture sections, same H1s, same inline SVG survival).
- *   - No exercise content, no maintainer-fence content, each manifest doc
+ *     lectures plus slim exercise-summary metadata. Theory uses the SAME
+ *     pipeline as the workbook (same phase sections, H1s, and SVG survival).
+ *   - No full exercise body, no maintainer-fence content, each theory doc
  *     exactly once (dual-wired lectures collapse to their owning module).
  *   - The normal build is unaffected: exercises still render, and it does not
  *     emit a theory-handbook.html.
@@ -316,17 +316,82 @@ test('theory handbook build', async (t) => {
     assert.equal((handbook.match(/id="lectures-the-loop-has-a-name"/g) || []).length, 1);
   });
 
-  await t.test('excludes exercise content', () => {
-    assert.doesNotMatch(handbook, /id="exercises-/);
-    assert.doesNotMatch(handbook, /Push back<\/em> on the plan/);
-    // …while the same exercise IS in the workbook (sentinel is live).
+  await t.test('renders twelve slim exercise summaries, not exercise bodies', () => {
+    const cards = [...handbook.matchAll(
+      /<section class="exercise-summary" id="exercise-summary-([a-z0-9-]+)">([\s\S]*?)<\/section>/g
+    )];
+    assert.equal(cards.length, 12, 'expected one compact card for each in-class exercise');
+
+    for (const [, slug, card] of cards) {
+      assert.equal((card.match(/<h2>/g) || []).length, 1, `${slug}: expected one h2`);
+      assert.equal((card.match(/<p>/g) || []).length, 1, `${slug}: expected one paragraph`);
+      assert.doesNotMatch(card, /<pre\b|<ol\b|<ul\b|<h3\b|<h4\b/,
+        `${slug}: compact card leaked exercise structure`);
+
+      const paragraph = (card.match(/<p>([\s\S]*?)<\/p>/) || [])[1] || '';
+      const plain = paragraph.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+      const words = plain.match(/\b[\p{L}\p{N}][\p{L}\p{N}'’.-]*\b/gu) || [];
+      assert.ok(words.length >= 35 && words.length <= 45,
+        `${slug}: expected 35–45 words, got ${words.length}`);
+    }
+
+    assert.doesNotMatch(handbook, /class="phase phase--exercise"/);
+    assert.doesNotMatch(handbook, /Phase 1: Bring a real task/);
+    // …while the same full exercise IS in the workbook (sentinel is live).
     assert.match(workbook, /id="exercises-push-back-on-the-plan"/);
+  });
+
+  await t.test('places exercise summaries at their lived points in the theory arc', () => {
+    const markers = [
+      'id="lectures-the-wizard-move"',
+      'id="exercise-summary-orient-and-introspect"',
+      'id="exercise-summary-fix-tests-first"',
+      'id="exercise-summary-compound-and-close"',
+      'id="lectures-the-machine-you-just-met"',
+      'id="lectures-when-a-plan-is-good"',
+      'id="exercise-summary-push-back-on-the-plan"',
+      'id="exercise-summary-extract-the-task-shaping-rule"',
+      'id="lectures-where-the-rule-could-live"',
+      'id="exercise-summary-open-the-side-quest"',
+      'id="lectures-skills-from-the-frontier"',
+      'id="exercise-summary-map-the-access-surface"',
+      'id="exercise-summary-threat-model-with-stride"',
+      'id="exercise-summary-author-test-strategy-skill"',
+      'id="lectures-the-loop-half-filled"',
+      'id="lectures-test-and-learn"',
+      'id="exercise-summary-walk-and-send-off"',
+      'id="lectures-ironies-of-automation"',
+      'id="lectures-learning-through-contrast"',
+      'id="exercise-summary-diagnose-and-resend"',
+      'id="lectures-what-packaging-is"',
+      'id="lectures-quality-is-grounding"',
+      'id="exercise-summary-spot-gaps-build-the-loop"',
+      'id="lectures-composing-the-workflow"',
+    ];
+
+    let cursor = -1;
+    for (const marker of markers) {
+      const next = handbook.indexOf(marker);
+      assert.ok(next > cursor, `expected marker in order: ${marker}`);
+      cursor = next;
+    }
+
+    assert.doesNotMatch(handbook, /exercise-summary-close-the-ticket/);
+    assert.doesNotMatch(handbook, /exercise-summary-read-the-ticket-rules/);
   });
 
   await t.test('excludes maintainer-fence content', () => {
     assert.doesNotMatch(handbook, /<!-- maintainer -->/);
     // Distinctive string from the-whole-map's maintainer tail.
     assert.doesNotMatch(handbook, /Artifact contract \(Family B\)/);
+  });
+
+  await t.test('does not leak unresolved conditional branches', () => {
+    assert.doesNotMatch(
+      handbook,
+      /<!--flag:/,
+      'theory handbook must resolve or avoid conditional content branches'
+    );
   });
 
   await t.test('the whole-map inline SVG survives', () => {

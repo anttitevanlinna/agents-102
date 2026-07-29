@@ -20,7 +20,7 @@ Build the flywheel to run exactly that far. Let the agent run as far as it can o
 
 ## The handoff prompt that builds your kit
 
-This one closes the module. The shapes you drew and the skill you shipped are still in the session. Ask the agent to turn them into a prompt that builds the rest of the kit.
+This one closes the module. The M6 exercise mapped recurring work as diagrams and shipped one session-shaper skill. Those shapes and that skill are still in the session. Ask the agent to turn them into a prompt that builds the rest of the kit.
 
 {{prompt:agents-that-build-agents-handoff}}
 

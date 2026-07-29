@@ -18,7 +18,7 @@ The machine you just met has three behaviors that look like quirks and are not: 
 
 ## It answers in essays
 
-- The fix was three lines; the answers around it were pages. Complete, not prioritized, is the machine's default: an answer that covers everything is never wrong by omission.
+- The fix was small; the answers around it were pages. Complete, not prioritized, is the machine's default: an answer that covers everything is never wrong by omission.
 - This time the reading was cheap because the bug was trivial. On real work the reading becomes the bottleneck, not the generating, and a chain of two-page answers is how a session gets away from you.
 - The countermove costs one clause: lead with the ranked list, hold the detail until asked. **Never let the agent say everything.** The shape of the answer is part of the prompt.
 

@@ -2080,6 +2080,43 @@ body.workbook .workbook-toc {
     color: var(--ink-muted);
 }
 
+/* Theory-handbook exercise cue: one compact header + one paragraph from the
+   canonical exercise's View summary metadata. It restores the lived thread
+   without giving the card the visual weight of a full exercise phase. */
+body.workbook .exercise-summary {
+    box-sizing: border-box;
+    margin: 2rem 0;
+    padding: 0.9rem 1.2rem 1rem;
+    min-height: 7.5rem;
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+body.workbook .exercise-summary h2 {
+    margin: 0 0 0.45rem;
+    padding: 0;
+    border: 0;
+    font-family: var(--font-body);
+    font-size: 1.02rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--accent);
+}
+body.workbook .exercise-summary h2::before { display: none; }
+body.workbook .exercise-summary p,
+body.workbook .exercise-summary h2 + p {
+    margin: 0;
+    max-width: none;
+    min-height: 0;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.48;
+    color: var(--fg-2);
+}
+
 .workbook-toc {
     margin: 0 0 4rem;
     padding: 1.5rem 0;
@@ -2191,6 +2228,10 @@ body.workbook .phase {
         margin-bottom: 1.5rem;
         padding-top: 1rem;
         padding-bottom: 1rem;
+    }
+    body.workbook .exercise-summary {
+        min-height: 1.2in;
+        margin: 0.18in 0;
     }
 }
 

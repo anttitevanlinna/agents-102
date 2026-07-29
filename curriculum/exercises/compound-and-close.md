@@ -44,6 +44,8 @@ You can close this session now. `./CLAUDE.local.md` stays behind; whether it ear
 
 <!-- maintainer -->
 
+**View summary:** The agent reads the finished session as evidence and drafts `./CLAUDE.local.md` from how the work actually went. You push back where it misreads. The result is a personal rules file that improves the next session on this repository.
+
 **Re-audit owed:** the connector + close-out sections were split into the `close-the-ticket.md` homework exercise, leaving this file as the compound-the-rules-file beat only. Body materially trimmed, so the per-class Quality SHAs below predate the trim. Re-audit before ship. **Emphasis budget (`check_slides.md §9`):** widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) stays bold; body bullet leads de-bolded; no named-term handles remain in this file.
 
 **Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@9697944 behavior@b3143a4 pedagogy@b3143a4 strategy@9697944 slides@9697944)

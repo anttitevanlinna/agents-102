@@ -5,7 +5,7 @@ Look at what you just shipped.
 ## Eval
 
 - The thing you built reads an agent's work and decides whether it meets a bar. For most of you it came out as a sharpened verifier, for some as a fresh judge, for a few as a gap-finder that reads the next agent-produced artefact for the failure shape you saw at M5. Different shapes, same move.
-- The name you met at M5 covers all of it: **eval**. Your verifier is an eval. Your judge is an eval. Your gate is an eval.
+- The name for all of it is **eval**. Your verifier is an eval. Your judge is an eval. Your gate is an eval.
 - Three names, one thing. Practitioners say *judge* when the check is itself an LLM reading the work. *Verifier* when the check is deterministic: tests, lint, compile, a shell hook that returns true or false. *Gate* when the same check is placed in CI and a pull request can't merge without it.
 - An eval is the automated check that says *this agent-produced thing meets our bar*. That's it. In practice it's the verifier you built at M5 and the skill you just shipped at M6. You have been doing evals for two modules, and on the map they are the checking loop the M2 drawing left dashed, now drawn solid.
 
@@ -24,7 +24,7 @@ Look at what you just shipped.
 
 - One thing your skill can do that you did not try today: run on a schedule. Claude Code ships three scheduling primitives: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines. The pattern is the same across all three: the skill you just wrote is the thing the scheduled agent invokes.
 - Three places this fits naturally. A standing verifier run: the judge reads the most recent long-running send-off and has a summary waiting when you open the laptop. A scheduled codebase sweep: the gap-finder reads the repo for the drift shape you saw at M5 and opens an issue when it finds one. Rule-drift monitoring: a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
-- You do not have to wire it today. You do need to know it exists, because the second you stop thinking of the eval as a one-shot check and start thinking of it as a thing that runs on cadence, your options change. The [Long-running shapes section in Claude Code for engineers](../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md) walks through the four primitives, when each fits, and how a skill plugs into each.
+- You do not have to wire it today. You do need to know it exists, because the second you stop thinking of the eval as a one-shot check and start thinking of it as a thing that runs on cadence, your options change. The skill defines the check. The runtime supplies the cadence or stopping condition.
 
 ## Why the loop survives the model
 
@@ -58,7 +58,7 @@ The loop feeds itself. That is the flywheel, and it starts with what you encoded
 
 **Watch-fors (delivery):**
 - Mood stays practitioner-fluency. If the Intercom numbers land as vendor-plug ("here's what the big co does, aspire to that"), the mood slips into compliance-feel. They are anchors of the destination shape, not product placements. Pace accordingly.
-- Slide 1 consolidates *eval*, it doesn't reveal it — M5 already named the verifier one. The beat is three-names-one-thing; the word lands because the thing is in hand, not because it's new.
+- Slide 1 names *eval* across the three shapes already in hand. The beat is three-names-one-thing; the word lands because the thing is in hand.
 - Scheduled-agents stays one slide, not a mini-lecture. Three places it fits, one reference-page pointer, move on. If the slide grows past 90 seconds in rehearsal, cut.
 - Monday-morning vs. M7 bridge — both are shipped in the lecture. The trainer or the room picks which lands.
 - Risto voice on "the specific Claude will be replaced." Flat epistemic honesty, no sales varnish. This is the beat that carries the lecture past the current model's expiry date.

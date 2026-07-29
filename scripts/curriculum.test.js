@@ -418,3 +418,94 @@ test('workbook top nav chips are built from the inherited ordinal', () => {
   assert.match(src, /moduleOrdinal\(trainingKey, m\.slug\)/,
     'expected the nav chip to resolve its number through moduleOrdinal');
 });
+
+/*
+ * Personalised theory handbook — `--theory --for "<Name>"`.
+ *
+ * Contract under test:
+ *   - The name lands on the cover (one dedication line) and in the <title>,
+ *     HTML-escaped.
+ *   - Without --for the handbook is byte-identical to before (no stray
+ *     dedication markup, no title change).
+ *   - The build REFUSES to write a named copy into a directory git tracks —
+ *     that guard is the whole reason a real prospect name can be passed at all.
+ */
+const VIP_FIXTURE = 'vip-test-fixture';
+const VIP_DIR = path.join(ROOT, 'site/clients', VIP_FIXTURE);
+
+test('personalised theory handbook', async (t) => {
+  assert.equal(fs.existsSync(VIP_DIR), false,
+    `scratch dir already exists: ${VIP_DIR} — refusing to build over it`);
+  t.after(() => fs.rmSync(VIP_DIR, { recursive: true, force: true }));
+
+  // The fixture slug must itself be gitignored, or the guard would (correctly)
+  // abort and this test would be asserting nothing.
+  assert.doesNotThrow(
+    () => execSync(`git check-ignore -q site/clients/${VIP_FIXTURE}/`, { cwd: ROOT, stdio: 'ignore' }),
+    `site/clients/${VIP_FIXTURE}/ must be gitignored for this test to mean anything`);
+
+  const NAME = 'Ada <Countess> Lovelace';  // angle brackets => escaping is load-bearing
+  execSync(
+    `node scripts/build-workbook.js ${VIP_FIXTURE} agentic-engineering-101 --theory --for ${JSON.stringify(NAME)}`,
+    { cwd: ROOT, stdio: 'pipe' });
+  const raw = fs.readFileSync(
+    path.join(VIP_DIR, 'agentic-engineering-101/theory-handbook.html'), 'utf8');
+
+  await t.test('dedication line on the cover, escaped', () => {
+    assert.match(contentOnly(raw),
+      /<h1 class="cover-title">Theory handbook<\/h1>\s*<p class="lede">Prepared for Ada &lt;Countess&gt; Lovelace<\/p>/);
+  });
+
+  await t.test('recipient leads the <title> so print/PDF carries it', () => {
+    assert.match(raw, /<title>Ada &lt;Countess&gt; Lovelace · [^<]*Theory handbook<\/title>/);
+  });
+
+  await t.test('the raw name never appears unescaped', () => {
+    assert.doesNotMatch(raw, /Ada <Countess> Lovelace/);
+  });
+});
+
+test('un-personalised theory handbook is unchanged', async (t) => {
+  assert.equal(fs.existsSync(VIP_DIR), false, `scratch dir already exists: ${VIP_DIR}`);
+  t.after(() => fs.rmSync(VIP_DIR, { recursive: true, force: true }));
+
+  execSync(`node scripts/build-workbook.js ${VIP_FIXTURE} agentic-engineering-101 --theory`,
+    { cwd: ROOT, stdio: 'pipe' });
+  const raw = fs.readFileSync(
+    path.join(VIP_DIR, 'agentic-engineering-101/theory-handbook.html'), 'utf8');
+
+  assert.doesNotMatch(contentOnly(raw), /Prepared for/);
+  assert.match(raw, /<title>[^<]*· Theory handbook<\/title>/);
+
+  // The cover blurb is standing copy — it ships whether or not --for is used.
+  assert.match(contentOnly(raw),
+    /<p class="cover-blurb">The theory portions of [^<]*distilled into a single doc\. Browse what you find interesting\. Make your own connections to what you already know\.<\/p>/);
+});
+
+test('--for refuses to write into a git-tracked customer dir', () => {
+  // `acme` is committed to this repo — a named copy there would leak the name.
+  let failed = false, stderr = '';
+  try {
+    execSync('node scripts/build-workbook.js acme agentic-engineering-101 --theory --for "Ada Lovelace"',
+      { cwd: ROOT, stdio: 'pipe' });
+  } catch (e) {
+    failed = true;
+    stderr = String(e.stderr || '');
+  }
+  assert.ok(failed, '--for into a tracked customer dir must abort the build');
+  assert.match(stderr, /git does NOT ignore/);
+  assert.match(stderr, /vip-<pseudonym>/);
+});
+
+test('--for without --theory aborts rather than silently dropping the name', () => {
+  let failed = false, stderr = '';
+  try {
+    execSync(`node scripts/build-workbook.js ${VIP_FIXTURE} agentic-engineering-101 --for "Ada Lovelace"`,
+      { cwd: ROOT, stdio: 'pipe' });
+  } catch (e) {
+    failed = true;
+    stderr = String(e.stderr || '');
+  }
+  assert.ok(failed, '--for without --theory must abort');
+  assert.match(stderr, /theory handbook only/);
+});

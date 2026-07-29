@@ -9,6 +9,11 @@
 //   node scripts/build-workbook.js <training-key> <customer-slug>
 //
 // Student-facing build (no trainer docs):
+// Personalised theory handbook for one VIP prospect (name on the cover + title):
+//   node scripts/build-workbook.js vip-<pseudonym> <training-key> --theory --for "<Name>"
+//   The name is a CLI argument, never a repo file. The output directory must be
+//   gitignored (site/clients/vip-*/ is) or the build refuses to run.
+//
 //   node scripts/build-workbook.js <customer-slug> <training-key> --no-trainer-docs
 //   skips trainer-guide.html + trainer-modules.html. A short/preview cut is its
 //   own TRAININGS entry with a `contentKey` alias (e.g. agentic-engineering-101-preview
@@ -709,7 +714,7 @@ function renderTheoryEntry(trainingKey, entry) {
   throw new Error(`Theory manifest entry has unknown kind "${kind}": ${entry} (expected lectures/ or supplementary/)`);
 }
 
-function buildTheoryBody(trainingKey) {
+function buildTheoryBody(trainingKey, recipient) {
   const t = CR.TRAININGS[trainingKey];
   const manifest = THEORY_HANDBOOK_MANIFEST[trainingKey];
   if (!manifest) {
@@ -733,24 +738,40 @@ function buildTheoryBody(trainingKey) {
     return `<section class="module" id="theory-${beat.toLowerCase()}">\n<h1>${CR.esc(label)}</h1>\n${inner}\n</section>`;
   }).join('\n\n');
 
+  // `--for "<Name>"` adds one dedication line and nothing else. The name is a
+  // CLI argument, never a file in this repo — see the personalisation block at
+  // the CLI dispatch for why.
+  const dedication = recipient
+    ? `\n  <p class="lede">Prepared for ${CR.esc(recipient)}</p>`
+    : '';
+  // Standing cover blurb: says what this artifact is and hands the reading
+  // order to the reader. Ships personalised or not.
+  const blurb = `The theory portions of ${t.label} distilled into a single doc. `
+    + 'Browse what you find interesting. Make your own connections to what you already know.';
   const cover = `
 <header class="workbook-cover" id="top">
   <p class="eyebrow">${CR.esc(t.label)}</p>
-  <h1 class="cover-title">Theory handbook</h1>
+  <h1 class="cover-title">Theory handbook</h1>${dedication}
+  <p class="cover-blurb">${CR.esc(blurb)}</p>
 </header>
 `;
   return '<main>\n' + cover + '\n' + sections + '\n</main>\n' + CR.renderFooter() + '\n';
 }
 
-function theoryHandbookTemplate(trainingKey, content) {
+function theoryHandbookTemplate(trainingKey, content, recipient) {
   const t = CR.TRAININGS[trainingKey];
   const runtime = t.runtime || 'cli';
+  // Recipient leads the <title> so the browser tab, the bookmark and the
+  // print/PDF header all carry it — the personalisation survives "save as PDF".
+  const title = recipient
+    ? `${CR.esc(recipient)} · ${CR.esc(t.label)} · Theory handbook`
+    : `${CR.esc(t.label)} · Theory handbook`;
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${CR.esc(t.label)} · Theory handbook</title>
+<title>${title}</title>
 <style>${SPA_CSS}</style>
 </head>
 <body class="runtime-${CR.esc(runtime)} workbook" data-training="${trainingKey}">
@@ -762,10 +783,11 @@ ${content}
 `;
 }
 
-function buildTheoryHandbook(customer, trainingKey) {
+function buildTheoryHandbook(customer, trainingKey, recipient) {
   const outDir = path.join(ROOT, 'site/clients', customer, trainingKey);
   fs.mkdirSync(outDir, { recursive: true });
-  const html = theoryHandbookTemplate(trainingKey, buildTheoryBody(trainingKey));
+  const html = theoryHandbookTemplate(
+    trainingKey, buildTheoryBody(trainingKey, recipient), recipient);
   const outFile = path.join(outDir, 'theory-handbook.html');
   fs.writeFileSync(outFile, html);
   const sizeKB = (fs.statSync(outFile).size / 1024).toFixed(0);
@@ -889,6 +911,8 @@ function usage() {
   console.error('Legacy single-training form still works: node scripts/build-workbook.js <training-key> <customer-slug>');
   console.error('Theory handbook (lectures only, no exercises): append --theory');
   console.error('Exercises workbook (exercises only, prompts inlined): append --exercises');
+  console.error('Personalised theory handbook: append --theory --for "<Name>"');
+  console.error('  (customer dir must be gitignored — convention: vip-<pseudonym>)');
   console.error('  training-key: ' + Object.keys(CR.TRAININGS).join(' | '));
 }
 
@@ -1140,6 +1164,75 @@ function buildCustomerIndex(customer) {
   console.log(`Built ${path.relative(ROOT, indexFile)} (${sizeKB} KB)`);
 }
 
+// ── Personalised builds (`--for "<Name>"`) ──────────────────────────────────
+// A named copy for one VIP prospect: same handbook, one dedication line on the
+// cover and the name in the <title>. The name is a CLI argument on purpose —
+// it lives in the operator's shell, not in this repo, so there is no file to
+// forget to scrub. To keep that true for the OUTPUT as well, a personalised
+// build refuses to write anywhere git would track it (guardPersonalisedOutput
+// below): the emitted HTML carries the name, so its directory must be ignored.
+const FLAGS_WITHOUT_VALUE = new Set(['--theory', '--exercises', '--no-trainer-docs']);
+
+function parseRecipient(argv) {
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === '--for') {
+      const v = argv[i + 1];
+      if (!v || v.startsWith('--')) {
+        console.error('Build aborted: --for needs a name, e.g. --for "Ada Lovelace".');
+        process.exit(1);
+      }
+      return v;
+    }
+    if (a.startsWith('--for=')) {
+      const v = a.slice('--for='.length);
+      if (!v) {
+        console.error('Build aborted: --for= needs a name, e.g. --for="Ada Lovelace".');
+        process.exit(1);
+      }
+      return v;
+    }
+  }
+  return null;
+}
+
+// Drop flags (and --for's separate value) before positional parsing.
+function stripFlags(argv) {
+  const out = [];
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (FLAGS_WITHOUT_VALUE.has(a) || a.startsWith('--for=')) continue;
+    if (a === '--for') { i++; continue; }
+    out.push(a);
+  }
+  return out;
+}
+
+// A personalised page must land in a gitignored directory. Asked of git itself
+// rather than pattern-matched here, so the answer stays true when .gitignore
+// changes. Convention: site/clients/vip-<pseudonym>/ (ignored wholesale).
+function guardPersonalisedOutput(customer) {
+  // Trailing slash on purpose: the target dir usually does not exist yet on a
+  // first build, and without it git can't know the path is a directory — so a
+  // directory-only pattern (`site/clients/vip-*/`) would report "not ignored"
+  // and the guard would refuse every genuinely-safe first run.
+  const rel = 'site/clients/' + customer + '/';
+  let ignored = false;
+  try {
+    execSync(`git check-ignore -q ${JSON.stringify(rel)}`, { cwd: ROOT, stdio: 'ignore' });
+    ignored = true;
+  } catch (e) {
+    ignored = false;  // exit 1 = not ignored; exit 128 = not a repo / git missing
+  }
+  if (!ignored) {
+    console.error(`Build aborted: --for would write a named copy into ${rel}, which git does NOT ignore.`);
+    console.error('  A personalised handbook carries the recipient\'s name in the HTML; committing it leaks that name.');
+    console.error('  Use a gitignored customer slug (convention: vip-<pseudonym>), e.g.:');
+    console.error('    node scripts/build-workbook.js vip-northwind agentic-engineering-101 --theory --for "<Name>"');
+    process.exit(1);
+  }
+}
+
 // `--theory` switches the build to the theory handbook (additive sibling page;
 // the normal workbook path is untouched when the flag is absent).
 // `--no-trainer-docs` suppresses the trainer guide + trainer modules for a
@@ -1148,15 +1241,22 @@ const rawArgs = process.argv.slice(2);
 const theoryMode = rawArgs.includes('--theory');
 const exercisesMode = rawArgs.includes('--exercises');
 const noTrainerDocs = rawArgs.includes('--no-trainer-docs');
-const { customer, trainings, legacy } = parseCli(
-  rawArgs.filter(a => a !== '--theory' && a !== '--exercises' && a !== '--no-trainer-docs')
-);
+const recipient = parseRecipient(rawArgs);
+const { customer, trainings, legacy } = parseCli(stripFlags(rawArgs));
 if (legacy) {
   console.log('Legacy argument order detected; prefer: node scripts/build-workbook.js ' + customer + ' ' + trainings[0]);
 }
 
+if (recipient) {
+  if (!theoryMode) {
+    console.error('Build aborted: --for is implemented for the theory handbook only; add --theory.');
+    process.exit(1);
+  }
+  guardPersonalisedOutput(customer);
+}
+
 if (theoryMode) {
-  trainings.forEach(trainingKey => buildTheoryHandbook(customer, trainingKey));
+  trainings.forEach(trainingKey => buildTheoryHandbook(customer, trainingKey, recipient));
 } else if (exercisesMode) {
   trainings.forEach(trainingKey => buildExercisesWorkbook(customer, trainingKey));
 } else {

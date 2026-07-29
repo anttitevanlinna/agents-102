@@ -8,6 +8,12 @@ Today adds the fifth move: a second skill, packaged from what two runs taught, i
 
 Five moves, one discipline. Tests-first, plan push-back, skill, verifier, loop. That's the quality kit you walk out with. Not one move learned in one module; the discipline, threaded through the whole training.
 
+## Decay clears the gate
+
+Tests answer in seconds; the verifier fires mid-run or not at all. The costs that make a codebase hard to change land weeks later: the shortcut cast, the try-catch that swallows an error, the module that grew a second job. No gate fires on any of them, so a run can come back green and still leave the code worse than it found it.
+
+Coding models share the blind spot, Dex Horthy argues in [Why software factories fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md): they learned against checks that answer fast, and a cost that lands in weeks never reached them. The countermoves are the old discipline with a new job. [Clean Code Is Steering: Insights from Uncle Bob](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md) carries that story: modularity, architecture visibility, metrics that make decay readable.
+
 ## From spec-and-tests to grounding
 
 Nobody reviews 500K lines by hand. Some of the early agentic engineering demos were single devs shipping 500K lines of code in weeks; the first Agentics Helsinki meetup, fall 2025, had a few of them. The recurring theme: every generated line had to correspond to a spec, every feature had to be tested. Without that, no way to know the system works.
@@ -17,6 +23,8 @@ The discipline has gone deeper since: **grounding**. Beyond spec-and-tests, towa
 The agentic engineer maxes that signal out. You ship a million lines of new stuff. How do you know it's right?
 
 <!-- maintainer -->
+
+**Decay slide added (2026-07-29, Antti-directed, from Horthy's wsff.md maintainability-decay gap):** new middle slide *Decay clears the gate* between the five-moves slide and the grounding slide. Placement deliberate: names what the kit's fast checks can't see, so slide 3's pivot to grounding arrives as the answer and the closing question still closes the deck. Avoids the word "grounding" (earned next slide). Runtime now ~5 min. Zero bold on the new slide. Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** both slides recast from bolded-claim bullets to prose paragraphs (narrative stakes-setter; bullets already read as consecutive sentences) per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. One bold survives: **grounding** at its naming beat; the closing question stays plain. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 
@@ -34,6 +42,7 @@ The agentic engineer maxes that signal out. You ship a million lines of new stuf
 
 - `[checked:2025-09-02 result:ATTESTED due:none]` attested:Antti 2025-09-02 Agentics-Helsinki-meetup — [maintainer-attested] single dev shipping ~500K lines in weeks, demoed at the first Agentics Helsinki meetup; spec-and-tests was the recurring discipline. The maintainer was in the room — primary evidence, the best on the ladder. The number stands on his word: no public URL required and none owed. A "hundreds of thousands" phrasing is available as a style option, not a sourcing fix. Correct the body figure only if his own recall was off, never to chase a citation.
 - `[checked:2026-05-25 result:OK due:none]` https://luma.com/bjg7smsc — [practitioner direct] first Agentics Helsinki meetup, Sep 2 2025 at Sitra. Event verified live. Body uses month-band phrasing ("fall 2025") on purpose, matching the recall mood. Dated-historical: body frames it as "the early agentic engineering demos" (allowed under `check_research_claims.md §2` — do NOT auto-flag freshness).
+- `[checked:2026-07-29 result:OK due:2027-01-27]` https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md — [practitioner analysis] Dex Horthy (HumanLayer), "Why Software Factories Fail", July 2026 (repo commits by dexhorthy through 2026-07-27). Cited for the argument that models trained against fast verifiers carry no signal for maintainability costs that land weeks later. Do NOT import its Faros AI incident statistics (vendor telemetry, zombie-stat risk, unvetted). fallback: drop the name, keep the blind-spot claim as convergent practitioner observation.
 - `[checked:2026-05-25 result:OK due:none]` (no URL — directional rhetorical close) — [convergent] the million-line close is paired with the 500K opener, not a single-source citation. fallback: keep directional; swap to a named documented million-line run only if one lands.
 
 **Frameworks attributed:**

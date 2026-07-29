@@ -36,6 +36,7 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. While 
 - Open the plan file; the chat summary is secondary, the file is the artifact. The agent explores, writes a plan file with a descriptive name (e.g. `migrate-auth-hash-calm-otter.md`), and pauses for approval.
 - Read the whole plan before pushing back. Notice which steps name files and which say "the relevant files." Notice which verification steps could actually fail and which are cosmetic. Notice which assumptions the plan is carrying silently.
 - Read the tests section carefully. A good plan names the tests before any code; the tests are part of what "done" means, not something you bolt on after. If the tests section is thin or missing, that's a push-back.
+- Notice at what altitude the steps decide. Naming the file is one decision; naming the new function's signature, its types, and who calls it is the design. A step that stops at the file name defers the design to mid-run, where nobody is reading. If the steps that matter stop at file names, that's a push-back.
 - When you have two push-backs forming in your head, move on. Don't wait for the clock.
 
 ## Phase 3: Push back twice
@@ -109,6 +110,10 @@ Then just hit stop.
 **What happened:** The agent wrote a plan. You picked *keep planning with feedback* and sent two push-backs: what YOU saw. The agent regenerated. Then you ran a second-pass read: the agent asked three questions at a time, walking down branches you didn't think to check, suggesting answers. You confirmed or corrected. The plan sharpened. You approved. You did not run the code. You asked Claude what the second-pass read surfaced that your push-back didn't, and whether any of it would have mattered in execution.
 
 <!-- maintainer -->
+
+**View summary:** You take a real multi-file task into plan mode, challenge the draft twice, then give a second agent the unresolved branches. The result is an approved plan shaped by two different reads, with execution deliberately left for later.
+
+**Design-altitude notice added (2026-07-29, Antti-directed, from Horthy's wsff.md program-design gap):** one bullet in *Read the plan before you push back* teaching the file-list vs interface-level altitude read. Sits above the *Steer up* callout's line (its examples are helpers, variable names, error wording; signatures and callers are design). Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Read-whole exception slide added (2026-07-10, Antti-directed cognitive-load arc):** new chunk *The plan is the one you read whole* before *Read the plan before you push back*. Names M1's never-let-the-agent-say-everything countermove and frames the full plan read as its deliberate exception — protects this module's complete-read pedagogy from the selective-reading arc (M1 teach → M3 take-into-use → M5 remind) instead of colliding with it. Quality per-class SHAs predate this pass; re-audit before ship.
 

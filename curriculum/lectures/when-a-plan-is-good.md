@@ -26,13 +26,14 @@ Ask Claude to describe what changed in its behaviour when plan mode turned on.
 
 Watch what comes back. Sometimes Claude names the read-only state directly, sometimes the specific instructions it is following. Skip if you trust the framing. The exercise will show you either way.
 
-## Three things a good plan has
+## Four things a good plan has
 
 - **A specific file list.** Not "update the config." *Which* config, *which* keys. A plan that names three files has made three decisions. A plan that says "the relevant files" has made zero.
+- **An early runnable slice.** Find the first step after which something runs end-to-end. A plan that builds layer by layer (data, then services, then UI) answers "the last one," and every wrong guess stays hidden until then. A plan that stands up a thin end-to-end slice early gets checked by reality from step two onward.
 - **A verification step** that could actually fail. *"Run the tests"* is cosmetic; *"run `pytest tests/auth/ -k hash` and expect 14 passing, 0 failing"* is a gate. The test is whether, reading the step alone, you could tell Claude it failed and Claude would know what to fix.
 - **Named assumptions.** Good plans flag what they're assuming (library versions, schema shapes, whether a teammate's migration ran last week). A plan without assumptions isn't assumption-free; it's just assumption-silent.
 
-Three things. That's the read.
+Four things. That's the read.
 
 ## Three pressures that make bad plans look good
 
@@ -60,6 +61,8 @@ After you've done it once, you'll feel when a plan needs the second read and whe
 - Making the plan good IS the work. You don't have to execute a plan to know it's good. Recognizing a good plan is the skill; the execution can wait for the day the task is real.
 
 <!-- maintainer -->
+
+**Runnable-slice criterion added (2026-07-29, Antti-directed, from Horthy's wsff.md vertical-slicing gap):** *Three things a good plan has* → *Four things*, new **An early runnable slice** bullet (second position) + kicker updated. The prior three criteria would pass a fully horizontal plan; this one catches it. Slide now four bullets, within size bar. No URL in body by design (the article links from M6's `quality-is-grounding.md`). Quality per-class SHAs predate this pass; re-audit before ship.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** the two checklist slides keep bullets with per-item handles (**A specific file list** / **A verification step** (trimmed to sub-span) / **Named assumptions**; **Structure is persuasive** / **Reasonableness passes for rightness** / **You already agree with it**); all other slides de-bolded fully, bullets kept (status-bar `plan` flipped bold → code span), per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Session widget + both kickers untouched. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
 

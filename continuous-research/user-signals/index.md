@@ -77,6 +77,8 @@ User questions and comments steer research as Tier 0 priority.
 
 - [2026-03-28](questions/2026-03-28-leading-platforms.md) — Which platforms are truly agentic? (answered well, no gap)
 
+- [2026-07-29](comments/2026-07-29-percentage-axis-hides-the-frontier-question.md) — The juniors-gain-more studies (Cui N=4,867 devs; Brynjolfsson N=5,172 agents) are valid but not generalisable: both measure percentage-of-own-baseline on bounded task volume, which flatters a low baseline and reports no absolute spread. Their own stated mechanism is catch-up to known best practice, not who extends the frontier. **Gap:** no absolute-output distributional cut exists for agentic tools; more percentage-axis studies cannot settle it.
+
 ## Recurrence
 
 *When 2+ users ask the same thing, it goes here. At 3+, it becomes a research finding.*

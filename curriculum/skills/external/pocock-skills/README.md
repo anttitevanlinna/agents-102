@@ -9,7 +9,9 @@ Skills authored by Matt Pocock ([aihero.dev](https://www.aihero.dev), [github.co
 
 ## Skills forked here
 
-- **`grill-me/`** — Socratic requirement elicitation. Walks down each branch of a plan's decision tree, recommending an answer per branch. Used in AE101 Module 2 as the second-pass read after the student's own push-back. Canonical source: https://github.com/mattpocock/skills/blob/main/grill-me/SKILL.md
+- **`grill-me/`** — a relentless interview, in the skill's own words. Walks down each branch of a plan's decision tree, recommending an answer per branch and waiting for confirmation before acting. Used in AE101 Module 2 as the second-pass read after the student's own push-back. Canonical source: https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md
+
+  **Our copy is single-file and standalone; upstream's is two.** Upstream splits the skill: `grill-me/SKILL.md` is a 4-line invoker whose whole body is `Run a /grilling session.`, and the method lives in `skills/productivity/grilling/SKILL.md`. Following the update procedure below on `grill-me/SKILL.md` alone replaces a working skill with a pointer to a file we have not forked. Re-sync forks both, or inlines `grilling/`'s body into our single file.
 
 ## Updating
 

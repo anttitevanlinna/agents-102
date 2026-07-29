@@ -38,6 +38,15 @@ Subagents do NOT read CLAUDE.md. Prepend `continuous-research/research-rules.md`
 
 ## Step 3 · Write back — what lands directly, what stops
 
+**Before anything durable lands, one question: what did I conclude that no source actually says?**
+
+Walk each sentence you are about to write into `Stance` or `Flagged` and name the source sentence behind it. No such sentence → it is your inference. Label it (*"my read is…"*) or cut it. This gate exists because `check_research_claims.md` fires at **cite time** and an OODA's damage happens at **synthesis time** — the unsourced sentence sits between two well-cited ones and inherits their authority.
+
+Two shapes to check for by name, both of which have shipped from this skill before (`compounded/2026-07-29-research_claims-evidence-stops-inference-continues.md`):
+
+- **Absence over-read.** "No one has published X" is the whole finding. Not that the data exists, not why it is missing, not that someone should be asked for it.
+- **Axis un-nested.** Naming the population of *your* claim does not discharge §12. When the evidence is a study, name that study's own axis and population before reporting what it shows — a percentage-of-own-baseline result cannot settle an absolute-spread question at any N.
+
 Maintainer-block region, so edits are ungated and not card-shaped (`check_prompts.md §22`, §26 carve-out). But authority splits three ways:
 
 | what | where it goes | approval |

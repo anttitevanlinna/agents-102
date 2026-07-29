@@ -67,6 +67,30 @@ test('detail claim marked [SOURCE NEEDED] is not DETAIL-UNBACKED', () => {
   assert.equal(codes(findings).includes('DETAIL-UNBACKED'), false);
 });
 
+/*
+ * `cultural-vocab` closes a tracker without a URL (check_research_claims §1
+ * carve-out, check_writing §6): a public-domain thinker paraphrased as cultural
+ * vocabulary is credited by name, no source pinned. The Frameworks field always
+ * treated it as a sentinel; the Claims field did not, so a `borrowed` claim
+ * closing correctly on Godin was reported SOURCE-UNDEFINED. Caught on the first
+ * block that had one (painting-the-picture-with-the-llm).
+ */
+test('claim closing on cultural-vocab is not SOURCE-UNDEFINED', () => {
+  const { findings } = audit(block(
+    '**Claims**\n- `tool-vs-taste` · borrowed · "the taste behind the tool" ← cultural-vocab\n'
+  ));
+  assert.equal(codes(findings).includes('SOURCE-UNDEFINED'), false,
+    `expected cultural-vocab to close cleanly, got: ${JSON.stringify(findings)}`);
+});
+
+test('cultural-vocab does not satisfy a detail claim', () => {
+  const { findings } = audit(block(
+    '**Claims**\n- `n` · detail · "a measured number" ← cultural-vocab\n'
+  ));
+  assert.ok(codes(findings).includes('DETAIL-UNBACKED'),
+    'cultural-vocab is an attribution carve-out for borrowed framings, not a source for a measured claim');
+});
+
 test('claim citing an undefined source → SOURCE-UNDEFINED', () => {
   const { findings } = audit(block(
     '**Claims**\n- `n` · detail · "a number" ← ghost\n\n**Sources**\n'

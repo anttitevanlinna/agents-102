@@ -133,6 +133,15 @@ function fields(body) {
   return out;
 }
 
+/*
+ * Sentinels that close a claim without naming a defined source. `none-owed` is
+ * the vision-layer marker. `[SOURCE NEEDED]` is open debt. `cultural-vocab` is
+ * the attribution carve-out (check_research_claims §1, check_writing §6): a
+ * public-domain thinker paraphrased as cultural vocabulary is credited by name
+ * with no URL owed — legal on a `borrowed` claim, never on a `detail` one.
+ */
+const CULTURAL_VOCAB = 'cultural-vocab';
+
 function parseClaim(line) {
   // - `id` · layer · "anchor" ← a, b   |   ← [SOURCE NEEDED]   |   ← none-owed
   const m = line.match(/^\s*-\s*`([^`]+)`\s*·\s*(\w+)\s*·\s*(.+?)\s*←\s*(.+?)\s*$/);
@@ -140,9 +149,11 @@ function parseClaim(line) {
   const [, id, layer, anchor, backing] = m;
   const needed = /\[SOURCE NEEDED\]/i.test(backing);
   const none = /none-owed/i.test(backing);
-  const refs = (none || needed) ? []
+  const all = (none || needed) ? []
     : backing.split(',').map(s => s.trim().replace(/`/g, '')).filter(Boolean);
-  return { id, layer, anchor, refs, needed, none };
+  const culturalVocab = all.includes(CULTURAL_VOCAB);
+  const refs = all.filter(r => r !== CULTURAL_VOCAB);
+  return { id, layer, anchor, refs, needed, none, culturalVocab };
 }
 
 function parseSource(line) {
@@ -220,8 +231,11 @@ function auditText(text, { laws, now, stanceWindow, file = '<text>' } = {}) {
   // source reads as an orphan.
   const cited = new Set();
   for (const c of claims) {
+    // cultural-vocab deliberately does NOT satisfy a detail claim — the carve-out
+    // covers attribution of a borrowed framing, not evidence for a measured claim.
     if (c.layer === 'detail' && !c.refs.length && !c.needed) {
-      add('ERROR', 'DETAIL-UNBACKED', c.line, `detail claim \`${c.id}\` has no source and no [SOURCE NEEDED]`);
+      add('ERROR', 'DETAIL-UNBACKED', c.line, `detail claim \`${c.id}\` has no source and no [SOURCE NEEDED]`
+        + (c.culturalVocab ? ' (cultural-vocab attributes a borrowed framing; it is not evidence)' : ''));
     }
     if (c.layer === 'vision' && c.refs.length) {
       add('WARN', 'VISION-BACKED', c.line, `vision claim \`${c.id}\` cites sources — should it be detail?`);

@@ -1373,6 +1373,17 @@ laptop.
 agent session headlessly, so it could never cover the two room-scale workshops. With those gone, every
 sitting in the Bosser half is drivable.
 
+**Closed 2026-07-28.** `chain-lemmings-northwind.sh` (`curriculum/evals/mechanical/tmux-runner/`)
+drives it: same `run-mN.sh` scripts and prompts as stock AE101 (content is byte-identical under this
+cut's `contentKey`), M3 and M6 simply absent from the topology, M4 repositioned to start from M2's
+ending SHA instead of M3's now-nonexistent ADR commit. Validated live, medium effort, full PASS M1
+through M5 — including the two things this document could only predict from reading source: M4's audit
+turn has no hard dependency on M3's ADR or `test-strategy-lemmings` skill, and M5's
+`verify-by-hand-judge` degrades gracefully (stands down with "nothing to judge") when that skill is
+absent from disk, exactly as the "checked, not a gap" note above predicted. Full account, including one
+unrelated agent-authored-verifier false positive the M5 run caught and documented itself, in
+`lemmings-chain-runbook.md` § *Northwind variant*.
+
 ---
 
 # § Checked, and not a gap

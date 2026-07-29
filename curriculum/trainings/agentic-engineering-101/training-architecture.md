@@ -121,6 +121,47 @@ The student's repo lives wherever the team's code actually lives. If the repo is
 
 No persistent training-dir state. Everything you need after M1 lives in either your repo (compounding artefacts) or your head (the pedagogy).
 
+## Variant: Northwind Team Track
+
+`agentic-engineering-101-northwind` (`site/layouts/curriculum.js`) is a `contentKey`-aliased cut:
+same module files as everything above, four sittings instead of six, getting-going,
+plan-mode-done-right, run-the-first-experiment, learn-from-the-test (stock M1/M2/M4/M5). M3
+(`earn-the-trust`) and M6 (`spot-gaps-build-the-loop`) are absent; a customer-authored workshop
+stands in for both. The full seam-by-seam diff against a six-module delivery lives in
+`curriculum/trainings/agentic-engineering-101/autumn-gaps.md`, this section states only what
+changes mechanically for a Northwind cohort, not the content-level seams already catalogued there.
+
+**Everything above this section describes the full six-module delivery.** Before running or
+writing for a Northwind cohort:
+
+- **No content tarball.** `flags: { payload: false }` strips prework's download/extract/install
+ steps for this cut. §Material distribution's "Content folder" (the tarball, `content/skills/`)
+ does not exist for a Northwind student, its only consumers were the two M3 security exercises,
+ and M3 is the module this cut drops.
+- **No skills.** §Skills' three curated skills (`access-control-analysis`, `stride`,
+ `security-tools`) are M3-only and never install for this cut. M6's verifier-shaped skill authoring
+ also never happens.
+- **One worktree fork, not two.** The gitignore passage above describes gitignored knowledge
+ crossing "the M3/M5 worktree fork", that's two separate forks across the full arc (M3's
+ quality-lane fork, M5's fork from M4). Northwind keeps only the M4→M5 fork; M3's never happens.
+- **The reading contract loses its middle beat.** §Reading contract's five-beat arc (M1 teach → M2
+ exception → M3 take-into-use → M4 silent model → M5 remind+convert) runs four beats here; the M3
+ take-into-use step doesn't fire. Not silently patched, recorded as a seam in `autumn-gaps.md`.
+
+**Mechanically validated, not just read off source.**
+`curriculum/evals/mechanical/tmux-runner/chain-lemmings-northwind.sh` drives M1→M2→M4→M5 on the
+lemmings SUT with M3/M6 absent from the topology (M4 positions from M2's ending SHA instead of
+M3's now-nonexistent ADR commit). Full PASS, 2026-07-28: M4's audit turn carries no hard dependency
+on M3's ADR or the `test-strategy-lemmings` skill; M5's `verify-by-hand-judge` correctly stands down
+("nothing to judge") when that skill is absent from disk, rather than erroring. This confirms at
+runtime what `autumn-gaps.md`'s source-level read had only predicted. Full account:
+`curriculum/evals/mechanical/tmux-runner/lemmings-chain-runbook.md` § *Northwind variant*.
+
+**Not yet swept.** The rest of this document (worktree-fork mechanics, skills distribution, the
+reading-contract arc) still reads as six-module prose throughout. `autumn-gaps.md` § *Still
+unexamined* names this file as part of the owed trainer-facing sweep; this section is the
+disambiguation a trainer needs today, not that sweep.
+
 ---
 
 ## Future TODO, Gemini CLI as alternate runtime

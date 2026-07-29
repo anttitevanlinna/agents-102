@@ -137,3 +137,69 @@ Runner-side context (owned by the runner maintainer, not this wrapper):
 newest `out/*/m{N-1}-state.json` for the starting SHA and skips arrange. M1 run
 standalone (not via the wrapper) still leaves a usable `m1-state.json`, so
 `--from m2` works regardless of how M1 was launched.
+
+## Northwind variant — `chain-lemmings-northwind.sh`
+
+The `agentic-engineering-101-northwind` registry entry (`site/layouts/curriculum.js`)
+is a `contentKey`-aliased cut running the same four module files as stock AE101
+(getting-going, plan-mode-done-right, run-the-first-experiment, learn-from-the-test
+— stock M1/M2/M4/M5) and dropping M3 (`earn-the-trust`) and M6
+(`spot-gaps-build-the-loop`). `curriculum/trainings/agentic-engineering-101/autumn-gaps.md`
+names the tmux battery as newly drivable now that the room-scale workshops are
+gone from this cut — this script is that.
+
+Same `run-mN.sh` scripts, same `scenarios/mN.txt`, same prompts as the stock
+chain (content is byte-identical). The one change: M3 never runs, so M4 can't
+inherit "current HEAD" (the stock chain's assumption — M3's ADR commit). It
+positions from M2's ending SHA directly instead, the same mechanism M2 already
+uses to position from M1's. Confirmed live: M2 makes no repo commit
+(`m2_ending_sha == m2_starting_sha`), so this is not merely a fallback — it's
+the SUT's actual git state either way.
+
+```bash
+./chain-lemmings-northwind.sh                # arrange, then m1, m2, m4, m5
+./chain-lemmings-northwind.sh --to m2         # arrange + M1 + M2 only
+./chain-lemmings-northwind.sh --from m4       # resume at M4 (reads m2-state.json)
+```
+
+**Validated live, medium effort, 2026-07-28 — full PASS, M1 through M5.**
+M1/M2 PASS (unchanged from the stock chain — same modules, same content). M4
+positioned correctly from M2's ending SHA and PASS (in-repo-memory assertion,
+audit turn — no hard dependency on M3's ADR or `test-strategy-lemmings`
+skill, confirmed rather than assumed). M5 phase A (worktree fork at M4's
+starting point) PASS, phase B all 9 turns PASS, phase C (packaged re-send,
+fresh session) shipped real work: ADR authored, 11/11 tests passing, clean
+commit history, worktree clean. `verify-shipped-work.sh` (agent-authored,
+not curriculum code) reported one FAIL — a false positive from its own
+backtick-token extraction in task.md's `## Files` section (picked up
+function-name and conditional-file mentions as if they were required diff
+paths). The agent caught this itself, documented the false-positive analysis
+in `RUN-NOTES.md` rather than relaxing the check, and reported FAIL verbatim.
+Not a defect in this script or in the Northwind cut — a pre-existing
+verifier-authoring nuance that would occur identically in the stock chain,
+since M4/M5 run the same `blocker-deadlock-terminal` task either way.
+
+Also confirmed live (not just source-reviewed): M5's `verify-by-hand-judge`
+correctly found no `test-strategy-lemmings` skill on disk (M3 never ran to
+author it) and stood down with "nothing to judge" rather than erroring —
+the graceful-degradation-on-dropped-M3 behavior `autumn-gaps.md` predicted
+from reading the prompt body, now confirmed at runtime.
+
+**Operational note — background-task kill vs. tmux session survival.** Both
+launches of this chain (the full run and the M5 resume) had their
+orchestrating `run_in_background` Bash wrapper killed by the harness at
+roughly the ~1h mark, for reasons outside this script — but the *tmux
+session itself survived*, detached, and kept working autonomously (that's
+what a plain `tmux new-session -d` is supposed to do; killing the parent
+shell doesn't touch the session). Recovery path: find the live per-runner
+socket (`ls /tmp/tmux-$UID/runner-*`, then `tmux -L <socket> ls`), confirm
+the pane is still active (`capture-pane -p`), and either wait it out via a
+poll (Monitor-style until-loop watching for `out/<run-id>/<phase>/sentinels/turn-N.done`)
+or, once the sentinel fires, manually replicate the post-turn assertions
+`run-mN.sh` would have run (grep the relevant file for its expected marker,
+check mtimes advanced) since the dead orchestrator never gets to. Don't
+assume a killed background wrapper means the actual work died with it —
+check the socket first. Kill the per-runner tmux server once you've pulled
+what you need (`tmux -L <socket> kill-server`); nothing else will clean it
+up (`arrange-lemmings.sh`'s stale-session sweep only reaches the default
+socket, not per-runner ones — same caveat noted above).

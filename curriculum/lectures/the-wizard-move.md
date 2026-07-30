@@ -36,9 +36,15 @@ The fix happens once. The loop is what you repeat: a way of working, not one bug
 
 <!-- maintainer -->
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all five narrative/demo slides recast from bolded-claim bullets to prose paragraphs, zero bold kept, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Context-is-King guess-before-reveal order preserved (guess paragraph still precedes the Finnish-dinner reveal, `check_slides §4`). Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
+**Standing constraints:**
+- **Zero bold on the narrative and demo slides** (Antti: *"go very lightly on the bold"*). Prose paragraphs, not bolded-claim bullets. `theory-plan.md § Slide format — emphasis budget` + `check_slides §9`.
+- **Guess before reveal.** The guess paragraph precedes the Finnish-dinner answer. Both windows get narrated before the live run. `check_slides §4`.
+- **No plan mode on this surface.** M1's fix runs tests-first; plan mode earns its keep at M2. Any phrasing like *"with plan mode used deliberately"* is drift.
+- **Don't steal the closer's kicker.** *"Loop is the shape / bug was the excuse"* belongs to the M1 closer.
+- **Zero map references.** M1 is protected; the map arrives at M2.
+- Openers carry no setup lede.
 
-**Slides-only pass (2026-07-02, unaudited):** RE-CHUNK, not cull. Per-passage verdicts: unheaded intro CONVERTED to slide *Who this is for* (new heading; openers carry no setup lede) · posture line ("what's possible, not what's missing") MOVED from the demo section's close into the intro slide as a posture bullet · *Context is King* CONVERTED to one six-bullet slide, demo narration near-verbatim, guess-beat kept in original position (after both windows are narrated, before the live run) · *Where you're starting* CONVERTED one-to-one · *What you'll do today* CONVERTED; **"with plan mode used deliberately" DELETED as drift** — module Big Idea + LO say the M1 fix runs tests-first with NO plan mode (plan mode earns its keep at M2); maintainer eyeball requested · "The bug is the vehicle; the loop is the cargo" gained one mechanism sentence ("a way of working, not one fix") to pass bullet durability; the closer lecture's "loop is the shape / bug was the excuse" kicker NOT stolen. No cuts beyond the drift clause, no new theory, zero map references (M1 protected). File is now four slides.
+**Open:** the plan-mode drift removal wants a maintainer eyeball against the module's Big Idea + LO.
 
 **Quality:** compendium-audited 2026-07-26 (writing@9697944 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4) — predates the slide rework; re-audit before ship.
 - judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
@@ -56,5 +62,41 @@ The fix happens once. The loop is what you repeat: a way of working, not one bug
 
 **Demo watch-fors:**
 - Room wants something code-specific up front — hold. The exercise is on their codebase; the opener isn't. The abstract demo is what makes Monday-on-their-repo feel inevitable rather than impressive.
+
+<!-- backing -->
+
+Format → `curriculum/backing-format.md`.
+
+**Claims**
+- `context-conditions-next-answer` · detail · "The first exchange became context, and the context colored everything after" ← in-context-conditioning, demo-fires-live
+- `conditioning-is-unreliable` · detail · "But not as reliably." ← demo-fires-live
+- `role-conditions-like-fact` · detail · "A role colors answers the same way a fact does" ← role-prompting-capability, demo-fires-live
+- `context-is-whatever-you-tell-it` · vision · "Context is whatever you tell it. A fact. A role. A preference. A constraint." ← none-owed
+- `the-move-is-loading-context` · vision · "The move is loading the right context before the question, not a clever prompt or a slash command you didn't know" ← none-owed
+- `everyone-arrives-partial` · vision · "Everyone's slice is partial, and everyone else's is different" ← none-owed
+- `trainers-partial-too` · vision · "The people building this are partial too. Six months ahead of you on some moves, six months behind on others." ← none-owed
+- `loop-not-the-fix` · vision · "The fix happens once. The loop is what you repeat" ← none-owed
+- `wizard-by-running-not-reading` · vision · "You become the Claude wizard by running the loop on real work and letting the habit sharpen. Not by reading about it." ← none-owed
+
+**Sources**
+- in-context-conditioning `[checked:never result:NEEDED due:asap]` — the mechanism claim (prior turns condition later answers) has no citation on file. Wants a foundational in-context-learning reference, `due:none` once found. fallback: teach it as the demo alone; the room watches it happen, which is the strongest form available in a live session.
+- role-prompting-capability `[checked:never result:NEEDED due:asap]` — the cardiologist beat asserts a role conditions output the way a fact does. Wants Anthropic's own prompt-engineering documentation as `[capability]`. fallback: fold into the demo claim; the mechanism is one mechanism, and the slide already says so.
+- demo-fires-live `[checked:never result:NEEDED due:cohort]` — **maintainer-attested slot**, `result:ATTESTED` once run. The reliability hedge ("but not as reliably") is an empirical observation about our own demo and is owed nobody's URL, but it IS owed a re-run against the model and product defaults the cohort will actually see. fallback: none. If the demo stops firing, the opener needs rebuilding, not rewording.
+
+**Frameworks**
+- Context conditioning · [borrow:llm-behaviour] · law:steering-is-executable-constraint-your-stance-is-the-ceiling · ← in-context-conditioning, role-prompting-capability
+- The loop over the fix · [borrow:practitioner-coined] · law:the-compound-ladder · ← cultural-vocab. Body carries the recognition beat only; the ladder is not named on this surface.
+
+**Stance** `[stance:2026-07-30 level:L2]`
+- holds: prior turns condition later answers, and a stated role conditions them the same way a stated fact does. Demonstrable in 60 seconds in front of a room, which is why the lecture teaches it as a demo rather than a claim.
+- contested: whether the demo still fires cleanly at delivery. Two independent risks, and the second is the one nobody is watching. **Model:** a model that has got better at ignoring irrelevant prior context weakens the Finland beat, which the body already hedges as the less reliable of the two. **Product:** the demo assumes two fresh, independent windows. Cross-conversation memory and personalization defaults are exactly what breaks that assumption, and they move on the vendor's release schedule, not ours.
+- would-move-it: the demo failing to produce a Finnish answer on a current model, or any claude.ai default that carries state between new conversations. Either one makes this a rebuild, not an edit — the opener's whole job is that the room watches the effect happen.
+
+**OODA**
+- question: does the two-window demo still fire on the model and the product defaults the next cohort will meet? Bounded to delivery reliability. This is not a question about in-context learning as a research topic.
+- roster: `platform-watch/coding-agents/state.md`; Anthropic release notes and the claude.ai memory / personalization settings; Simon Willison for model-behavior deltas.
+- last-run: never
+
+<!-- /backing -->
 
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

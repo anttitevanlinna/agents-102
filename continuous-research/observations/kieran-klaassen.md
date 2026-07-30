@@ -38,7 +38,7 @@ Before any agent writes code, produce a markdown plan with data models, file ref
 
 Specialised reviewer agents running in parallel, each looking for a different class of issue — **[L2 single case]**.
 
-**Two numbers here are unsourced and should not be repeated until pinned.** The Definitive Guide was fetched 2026-07-30 and carries neither a reviewer-agent count nor any enumeration of reviewer specialties, so it cannot be the source for either. The "14-agent parallel review" figure and the five-specialty list (security, performance, architecture, style, accessibility) are `[SOURCE NEEDED]` — find the verbatim sentence or drop them. Note the two do not reconcile with each other either: five named specialties against a count of fourteen leaves nine unaccounted, and nothing states whether the count means distinct roles or repeat invocations.
+**A reviewer-agent count and a specialty list were previously recorded here; both are cut as unsourced.** Two pages fetched 2026-07-30 — *The Definitive Guide* and *How I Polish Software That Agents Built* — carry no reviewer count and no enumeration of specialties. That is a result about those two pages, not proof no such sentence exists anywhere; a third source could still carry it. **Do not reinstate a "14-agent parallel review" figure or a five-specialty list (security, performance, architecture, style, accessibility) without a verbatim quote and a URL.** They did not reconcile with each other in any case: five named specialties against a count of fourteen left nine unaccounted, and nothing stated whether the count meant distinct roles or repeat invocations of fewer.
 
 - Klaassen, *How I Polish Software That Agents Built* — the sourced form of this pattern, quoted below. Prefer it.
 - Klaassen, *My AI Had Already Fixed the Code Before I Saw It* — describes asking Claude to run a test 10 times and analysing the failures (*"it's able to identify a frustrated user nine times out of 10"*). That is iteration against a flaky detector on one feature, **not** "iterate a verifier until 10 consecutive passes" and not a general reliability benchmark. Do not restate it as either.
@@ -79,7 +79,7 @@ Cora, Monologue, Sparkle, Spiral, and Every.to run with primarily single-person 
 
 ## Caveat — novelty-to-packaging ratio
 
-Larson, reading the four-step form, takes three of those four steps to be well-known practice under new names, with the compound step as the one genuinely new mechanism. That is a qualitative judgement about what counts as novel, not a measurement — stating it as a "1:3 ratio" gives it a precision it does not have. **Larson published in Apr 2026 and did not review the 2026-05 expansion**; extending his read to the seven-step form would be our inference, not his finding, and it is not made here. A training built on this curriculum shape should be honest about that — *operationalising what good practitioners were already doing*, not a new paradigm. That honesty is what makes it teachable to CTOs.
+Larson, reading the four-step form, takes three of those four steps to be well-known practice under new names, with the compound step as the one genuinely new mechanism. That is a qualitative judgement about what counts as novel, not a measurement — stating it as a "1:3 ratio" gives it a precision it does not have. **Larson published in Apr 2026 and did not review the 2026-05 expansion**; extending his read to the seven-step form would be our inference, not his finding, and it is not made here. Anyone presenting this as a new paradigm is overselling it. The accurate read is *operationalising what good practitioners were already doing*, with the compound step as the one piece that is genuinely new — and that read is the more persuasive one to a sceptical engineering audience, not the weaker one.
 
 ---
 
@@ -87,7 +87,7 @@ Larson, reading the four-step form, takes three of those four steps to be well-k
 
 **Last updated:** 2026-07-30
 
-**Source verification — MUST DO before first cohort:**
+**Source verification — re-run before this file is cited anywhere:**
 
 1. Re-open every URL against the original. Byline-checked URLs in this file:
    - *Compound Engineering: The Definitive Guide* — Klaassen byline confirmed (Source Code, Feb 2026, updated Mar 2026). [practitioner direct].
@@ -99,13 +99,13 @@ Larson, reading the four-step form, takes three of those four steps to be well-k
    - *How Two Engineers Ship Like a Team of 15* — **podcast episode page**, Dan Shipper hosting Klaassen + Nityesh Agarwal. Re-attributed as "Shipper on Klaassen + Agarwal." [practitioner analysis] (host writing up the episode); the underlying conversation is practitioner voice but the page framing is the host's.
    - *Behind the Craft* (Apple Podcasts) — Peter Yang hosting Klaassen, Feb 2026. Yang is a specialist host. Re-attributed as "Yang on Klaassen." [domain trade publication].
    - *This New Way* (YouTube) — Klaassen as guest, Oct 2025. **Outside the 6-month freshness window.** Removed from this file's primary evidence; if needed, treat as historical context with the Oct 2025 date explicitly stated.
-   - Klaassen × Peter Yang explainer X post (status 2020638198649811203) — could not verify (request returned 402); **[UNVERIFIED]**. Drop unless reproducible at delivery.
+   - Klaassen × Peter Yang explainer X post (status 2020638198649811203) — could not verify (request returned 402); **[UNVERIFIED]**. Do not cite until reproduced — the oEmbed / rotating-subdomain workaround un-blocks most x.com 402s and has not been tried here.
    - `EveryInc/compound-engineering-plugin` GitHub — [practitioner direct].
    - Larson, *Learning from Every's Compound Engineering* — [practitioner analysis] confirmed.
 
-2. Numbers to triple-check at delivery: "80/20 ratio" (Klaassen's own framing, single source); "14-agent parallel review" (Klaassen, single source); "tests pass 10 consecutive runs" (single source); "What used to take a week of coding now happens in hours" — keep `[L2 single case]` label, attribute to Every team self-report.
+2. Numbers to re-check before reuse: "80/20 ratio" (Klaassen's own framing of his working style, single source, not a measurement); "What used to take a week of coding now happens in hours" (`[L2 single case]`, Every self-report). The "14-agent parallel review" count, the five-specialty reviewer list and "tests pass 10 consecutive runs" have all been **cut as unsourced** — see the sections above for what was checked and what a reinstatement would need.
 
-3. Freshness re-check at delivery: 6-month window. Aug 2025 originals only stay in if their Every update timestamp falls inside the window at the cohort date.
+3. Freshness: the 6-month window is measured from **publication**, because no Every.to source in this file has a verified update timestamp. Three were re-fetched 2026-07-30 and expose `published_at` only. The 2025 originals are therefore out of window and stay in as historical context, explicitly dated — not as current evidence.
 
 **Provenance — source-type labels:**
 

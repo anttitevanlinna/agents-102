@@ -16,8 +16,12 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-07-26 (cycle 173)
+Last updated: 2026-07-30 (cycle 173 + out-of-cycle memory-default addition)
 OODA cycles: 39
+
+**Out-of-cycle addition (July 30, 2026) — personal memory is now a paid-tier DEFAULT, not an opt-in:**
+
+**Cross-conversation state ships on by default (bare capability fact — OFF the evidence ladder, which is where a product-setting claim belongs).** Not L2: no deployment is described and no outcome is reported. Vendor documentation is authoritative for what a setting *is* and worthless for what it achieves, and only the first is claimed here. Anthropic's support documentation states of chat search: *"Once the ability to search past chats is rolled out to your account, it will be enabled by default"* — Pro, Max, Team and Enterprise. A separate memory feature synthesises entries across conversations, and Enterprise carries an org-wide *Generate memory from chat history* toggle documented as default-on. Incognito chats are documented as excluded both from being saved to memory and from being searched: *"When this mode is switched on, Claude won't remember your chats, so they won't be saved to Claude's memory or your chat history."* **Two boundaries the documentation leaves open, neither to be filled in by inference.** It describes search as user-initiated (*"Just ask Claude about your previous conversations naturally to use it"*) and does not say whether Claude can invoke it unprompted. And it does not state whether an incognito session can still *read* memory entries the account accumulated earlier — only that it does not write them. **Why this matters beyond the feature.** The personal rung of the personal → team → company memory progression stops being a third-party add-on story and becomes a platform default. The team and company rungs are untouched by it: nothing here shares memory across people. This is a shipped-capability datapoint, not an outcome one — no measured effect on output quality is claimed anywhere, and none should be read in. ([support.claude.com — Use Claude's chat search and memory](https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context) — [vendor documentation], verified live 2026-07-30)
 
 **Cycle 173 updates (July 26, 2026) — OPUS 5 DAY 2: three named practitioner endorsements (Lovable, Zapier, Ultima Genomics) + Every.to integration friction; no Opus 5 vs Sol comparison yet:**
 

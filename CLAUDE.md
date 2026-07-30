@@ -39,9 +39,9 @@ Proprietary (`curriculum/`, `content/`, `site/`, `memory/`, `evals/`, `scripts/`
 
 ## Subagent rule injection
 
-Subagents don't read CLAUDE.md. Prepend the canonical rule file to every launch:
-- Research → `continuous-research/research-rules.md`
-- Content → `.claude/rules/content-rules.md` (routes to `memory/check_*.md`)
+Subagents DO inherit the full CLAUDE.md hierarchy and `.claude/rules/` — user, project, `CLAUDE.local.md`, managed policy. Built-in Explore and Plan are the only exceptions. Prepend only what sits outside an auto-load surface:
+- Research → `continuous-research/research-rules.md` — **prepend verbatim.** This path does not auto-load; a subagent never sees it otherwise.
+- Content → `.claude/rules/content-rules.md` already arrives on its own. Do not prepend it. Name the matching `memory/check_*.md` instead — those are not on an auto-load surface either.
 
 ## Orchestrator pattern
 

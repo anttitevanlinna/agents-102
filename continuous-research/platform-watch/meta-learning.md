@@ -94,6 +94,12 @@ Each entry: cycle number, date, what the researcher learned about researching.
 
 ---
 
+### Cycle 177 — 2026-07-30
+
+Direct blog index fetches (not searches) surfaced two high-signal items missed by four consecutive prior cycles: Osmani's July 20 "Software Factories, Light and Dark" and Willison's July 28 curation of the Anthropic Mythos cryptanalysis. Both posts were on practitioners' active blogs during the cycle 173–176 window but appeared in zero prior search results on their topics. Lesson: when tracking high-frequency practitioners (Osmani, Willison, Ronacher), always fetch their blog index directly at cycle start — topic searches on those practitioners' names lag by 1–3 cycles for posts that don't get mainstream pickup. The Ronacher July 4 "Better Models, Worse Tools" tool regression was also missed by seven cycles using topic searches; it appeared immediately on a direct blog-index fetch. Blog index → scan for new posts → fetch relevant ones is faster and more complete than search for any practitioner with ≥3 posts in the past 3 months.
+
+Two independent research paths (main thread + background agent) covering the same July 30 research question produced complementary, non-overlapping findings — main thread found Osmani July 20 + OpenAI/HF incident + Gemini absence; agent found Mythos cryptanalysis + Ronacher tool regression + AI worming. The overlap was minimal (both confirmed Gemini absent, both checked Opus 5 Day 6). The complementary pattern suggests the two-path approach can be productive when time allows, as long as deduplication happens at synthesis rather than at research time. Agent output must be verified before inclusion: the CSA "Top 10 Incidents" corpus the agent cited could not be independently verified — excluded per URL rule.
+
 ### Cycle 176 — 2026-07-29
 
 Regulatory deadline research benefits from triangulating across three instrument types in sequence: (1) the adopted final Guidelines text (EU Commission, July 20), (2) the Code of Practice adequacy declaration (July 8-9), and (3) the Digital Omnibus final text (July 24 Official Journal). Prior cycles had captured the July 22 state but missed the July 20 Guidelines publication — a 9-day gap where the Commission published the operationally definitive document and it went undetected. Lesson: for major enforcement deadlines within 30 days, check the Commission's official digital-strategy library page directly, not search-led — the final instruments are published there before any press coverage catches up.

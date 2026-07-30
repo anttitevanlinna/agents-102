@@ -75,7 +75,7 @@ You can't skip levels. Level 2 generates the data that trains Level 3.
 
 **What to investigate:**
 - What do Level 2 verification systems look like in non-engineering domains? Brand compliance checkers? Legal accuracy validators?
-- Can agents agents-101 verification infrastructure?
+- Can agents bootstrap verification infrastructure?
 - What's the minimum rule set for Level 2 to be useful?
 - Industries with existing compliance frameworks (finance GAAP, healthcare FDA) — are they naturally closer to Level 2?
 
@@ -165,7 +165,7 @@ Observed: workshops that bring functions together produce excellent results, but
 
 ## Priority 4: From Practitioner Essays (Year One) — Added April 2026
 
-Six research directions surfaced from cross-referencing one year of practitioner essays (`bosser-strategy:practitioner-essays-year-one.md`) with current research findings. These represent gaps the practitioner lived through but the research system hasn't investigated externally.
+Six research directions surfaced from cross-referencing one year of practitioner essays with current research findings. These represent gaps the practitioner lived through but the research system hasn't investigated externally.
 
 ### 4.1 Habit and Taste as Code
 
@@ -267,8 +267,6 @@ This is NOT the decision-speed bottleneck (Goldratt/TOC framing of slow approval
 
 See: [`observations/enterprise-agentic-transformation-case.md`](observations/enterprise-agentic-transformation-case.md) — detailed observations from a year-long enterprise agentic transformation, including 7 original findings.
 
-See also: `bosser-strategy:practitioner-essays-year-one.md` (private — `bosser-strategy` skill) — 20 essays tracking the evolution of thinking over one year, with cross-reference to research findings.
-
 ---
 
 ## Key External Sources Referenced
@@ -353,7 +351,7 @@ See also: `bosser-strategy:practitioner-essays-year-one.md` (private — `bosser
    - Anthropic's "do the simple thing that works" + Member-of-Technical-Staff flat structure → "taste as irreducible" via lack of hierarchy to defer to
    - Shopify's "prove AI can't do it before hiring" → "ship cheaper than argue" via decision-structure change
    - Every's compound-engineering plugin → "writing-down IS the work" via toolchain forcing function
-   - F-Secure's 200+ Agents 101 cohort (curriculum as prosthetic) → which stance-axes emerge? Curriculum-driven stance change is the most-portable prosthetic candidate; testing this is high-value for Bosser specifically.
+   - A large hands-on cohort training program (curriculum as prosthetic) → which stance-axes emerge? Curriculum-driven stance change is the most-portable prosthetic candidate; testing this is high-value for Bosser specifically.
    - Are there cases where a prosthetic produced the *opposite* stance? (Shopify's mandate-with-performance-reviews allegedly produced performative compliance, per Foster Fletcher critique — a candidate negative case.)
 
 3. **Stance vs. selection effect.** Are these practitioners exhibiting the stance because of the prosthetic, or because the prosthetic attracted people who already had the stance? Ramp is explicit about velocity-biased starting culture. Anthropic's "extreme talent density" is selection, not prosthetic. The distinguishing question: any case where a normal-disposition person developed the stance *after* the prosthetic, not before?

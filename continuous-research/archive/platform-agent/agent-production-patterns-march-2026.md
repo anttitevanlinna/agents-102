@@ -197,13 +197,13 @@ If tasks span minutes or hours, event-driven patterns with persistent state trac
 
 ### Level 3+ findings (convergence):
 
-1. **Quality, not cost, is the production killer.** The narrative shifted. Cost dropped as a concern; quality (32%) and latency (20%) are now the top barriers. This validates the "useful AND unreliable" framing in our training.
+1. **Quality, not cost, is the production killer.** The narrative shifted. Cost dropped as a concern; quality (32%) and latency (20%) are now the top barriers. This validates the "useful AND unreliable" framing used in agentic training.
 
 2. **Start single, graduate to multi-agent.** The practitioner consensus is clear and converging: single well-tooled agents first, multi-agent only when complexity demands it. Multi-agent costs 5-10x more.
 
 3. **Observability is table stakes (89% adoption).** Not optional. The tooling is mature with clear market segmentation. OpenTelemetry is the interoperability standard.
 
-4. **The "agent in a trench coat" anti-pattern** is widely recognized — building an agent for what should be a pipeline. This is a great teaching case for our training.
+4. **The "agent in a trench coat" anti-pattern** is widely recognized — building an agent for what should be a pipeline. This is a great teaching case for agentic training.
 
 5. **Integration, not models, is the bottleneck.** Agent failures come from bad RAG, brittle connectors, and polling architectures — not model capability. This shifts the skill requirement from "prompt engineering" to "systems engineering."
 

@@ -252,9 +252,9 @@ Cagan's trajectory aligns with the competence-first thesis (AI builds PM compete
 - **Spec is the moat (L3):** Spec-as-interface is the next evolution — from "specs matter" to "specs are executable infrastructure."
 - **Rules-verification-scarcity (L4):** PM execution work (PRDs, feedback synthesis) fits the L4 meta-pattern. PM strategic work (prioritization, pricing) does not — rules are ambiguous, correctness is subjective.
 
-## Implications for Agents 102
+## Implications
 
-1. **For training:** PM skill shift (evals, spec writing, agent-consumable specifications) should be a training module. PMs are a prime audience for competence-first — they're builders who haven't been treated as builders.
+1. **PM skill shift:** Evals, spec writing, and agent-consumable specifications mark a real skill shift for PMs. PMs are a prime audience for competence-first — they're builders who haven't been treated as builders.
 2. **For advisory:** "Is our PM org structured right for AI?" is a real CTO question. The three-way split framework gives a concrete answer.
 3. **For research:** Track the analytics MCP convergence. When practitioners start using Amplitude/Mixpanel MCP for actual strategic decisions, that's a Level 3 signal worth reporting.
 4. **For content:** The execution-strategy gap is a strong newsletter topic. "AI made PMs faster at everything except the things that matter."

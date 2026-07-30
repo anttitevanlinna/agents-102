@@ -73,4 +73,4 @@ Non-English: did not surface German/Japanese/Nordic practitioner blogs in Englis
 - **Teach the skeptic cases first**: ClickHouse C++ 10-min cadence, Varela "manual faster" cases. Without this, students over-trust.
 - **Ralph loop is demo-worthy but not yet Level 3.** Mention as pattern; don't hinge exercise on it.
 - **Cursor 52h runs: do NOT cite as practitioner evidence.** Vendor marketing until independently replicated.
-- **Trust gap is the real story** — 52% of devs still don't use agents (Stack Overflow 2025). Our training addresses a minority-but-growing practice. Frame accordingly.
+- **Trust gap is the real story** — 52% of devs still don't use agents (Stack Overflow 2025). This is a minority-but-growing practice. Frame accordingly.

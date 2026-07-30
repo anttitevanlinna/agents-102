@@ -48,7 +48,7 @@ After 2 modules of Claude Code 101, pretty much everyone started building — da
 2. **A platform to run AI-generated apps.** "Where does this live? How do I share it?" — the promotion path problem.
 3. **Agent skills / user guidance.** Others need to find, understand, and use what builders create.
 
-**The implication:** Competence creates builders. Builders discover infrastructure gaps faster and more accurately than any consultancy assessment. The three enablers are predictable and plannable. This is the natural handoff from Agents 101 to Advisory.
+**The implication:** Competence creates builders. Builders discover infrastructure gaps faster and more accurately than any consultancy assessment. The three enablers are predictable and plannable. This is the natural handoff from training to Advisory.
 
 Source: F-Secure deployment experience, Antti direct [practitioner direct — first party]
 
@@ -93,7 +93,7 @@ Two independent surveys confirm Nordic companies are systematically more conserv
 - **BCG Nordic AI Report (2026):** Only 4% of Nordic companies achieve strong AI returns. 54% experimenting with agents, 24% observing/planning. 60% allocate less than 5% of AI budgets to agentic initiatives. Source: [BCG](https://www.bcg.com/publications/2026/nordic-ai-value-creation-or-bubble)
 - **Deloitte Nordic AI Survey (Dec 2025):** 58% of Nordic organizations using agentic AI expect 3+ years for significant ROI (vs. 37% rest of Europe). Source: [Deloitte DK](https://www.deloitte.com/dk/en/issues/generative-ai/ai-roi-in-the-nordics.html)
 
-The gap between "agents arriving in your software" and "organizations not budgeting for them" is the exact competence gap Agents 102 addresses.
+The gap between "agents arriving in your software" and "organizations not budgeting for them" is exactly the competence gap organizations need to close.
 
 ## Counter-Evidence Search: "Design First, Then AI" (2026-04-15)
 

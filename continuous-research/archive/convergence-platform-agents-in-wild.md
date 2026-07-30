@@ -155,7 +155,7 @@ The winners are customer service chatbots handling FAQ deflection, IT ticket rou
 ### Pattern 3: ORGANIZATIONAL CHANGE > TECHNICAL IMPLEMENTATION
 The Agilcon insight resonates across all platforms: "An agent is a micro-department — it needs an owner, KPIs, inputs, outputs, and a P&L." Multiple sources confirm the biggest gap is organizational, not technical. Who owns the agent? Who measures its performance? Who decides when to expand scope?
 
-> **Training insight:** Agent deployment is a change management problem, not a technology problem. This is where our training differentiates from vendor training.
+> **Training insight:** Agent deployment is a change management problem, not a technology problem. This is where practitioner-grounded training differentiates from vendor training.
 
 ### Pattern 4: THE PILOT GRAVEYARD IS ENORMOUS
 - Gartner: 80% of enterprise AI projects don't go past pilot
@@ -243,12 +243,12 @@ Based on practitioner evidence (not vendor roadmaps), here is what a large Nordi
 
 ---
 
-## Summary for Agents 102 Training
+## Summary for Agentic Training
 
 ### The Sentence That Matters Most
 **Platform agents work for boring, narrow, well-data'd tasks. They fail for everything else. The gap is not the AI — it is the data, the organizational ownership, and the scope discipline.**
 
-### What This Means for Our Buyers
+### What This Means for Buyers
 1. **Don't wait for "the agent" — start with data readiness.** The companies deploying agents successfully in 2025-2026 invested in data quality first.
 2. **The pilot-to-production gap is the #1 competence need.** Everyone can start a pilot. Almost nobody can scale it. This is where training creates value.
 3. **Vendor roadmaps are 12-24 months ahead of reality.** Teach buyers to read them accordingly.

@@ -35,7 +35,7 @@ Auto-loads when editing files under `continuous-research/`. Loads alongside the 
 
 ## Three systems
 
-1. **Domain research** (`README.md`) — what's becoming possible in agentic practices across operations, finance, HR, compliance, customer service, sales, product, AND coding. Tracks innovators and early adopters. Translates chasm-crossing patterns for early majority buyers. All findings tagged Global vs. Nordic. Coding research is a peer track to business-process research (not an exclusion); needed to keep Agentic Engineering 101 current on L3 practice, factory patterns, multi-agent deliberation, MCP server ecosystems, and what lands in Claude Code / Codex / Cursor monthly.
+1. **Domain research** (`README.md`) — what's becoming possible in agentic practices across operations, finance, HR, compliance, customer service, sales, product, AND coding. Tracks innovators and early adopters. Translates chasm-crossing patterns for early majority buyers. All findings tagged Global vs. Nordic. Coding research is a peer track to business-process research (not an exclusion); the coding-agent frontier moves monthly — L3 practice, factory patterns, multi-agent deliberation, MCP server ecosystems, and what lands in Claude Code / Codex / Cursor all need continuous tracking to stay current.
 
 2. **Platform watch** (`platform-watch/`) — which platform can do which use cases for business users. Semi-autonomous hourly OODA cycles tracking Microsoft, Google, OpenAI, Anthropic, vertical SaaS, AWS Bedrock, and RPA-to-agent platforms (UiPath, Automation Anywhere, Power Automate). Answers the CTO question with evidence-based assessment. Uses personal→team→company agent framework and enterprise reality test (multi-tool, multi-turn, security, promotion path).
 
@@ -68,7 +68,7 @@ Do this silently — never ask *"should I capture this?"*
 
 ## Research Guidelines
 
-- **Scope: agentic practices across business AND engineering.** Business-process research (operations, finance, HR, compliance, customer service, sales, product) is the primary body of work. Coding research is a peer track — coding agents are the meta-platform; practitioner-grounded evidence on factory patterns (Intercom, Ramp), multi-agent engineering deliberation, MCP server ecosystems, skills marketplaces, eval-as-infrastructure at PR scale, and monthly Claude Code / Codex / Cursor deltas is needed to keep AE101 current.
+- **Scope: agentic practices across business AND engineering.** Business-process research (operations, finance, HR, compliance, customer service, sales, product) is the primary body of work. Coding research is a peer track — coding agents are the meta-platform; practitioner-grounded evidence on factory patterns (Intercom, Ramp), multi-agent engineering deliberation, MCP server ecosystems, skills marketplaces, eval-as-infrastructure at PR scale, and monthly Claude Code / Codex / Cursor deltas is needed to track how coding-agent practice is evolving month to month.
 - **Editorial standard:** Practitioner-grounded, specific, verifiable. Every claim needs a named company + specific practice + measurable outcome. *"Deployment is happening"* is not an insight — the secrets are in the *how* and *what really works*.
 - **Framework-integrative, not framework-driven.** Frameworks serve the situation, not the other way around.
 - **OODA loops for research.** See `platform-watch/cycle-prompt.md` for self-contained researcher instructions.
@@ -106,7 +106,7 @@ The article moment is when segment 2 starts confirming what segment 1 has been s
 
 ## Research Quality Protocol
 
-Research rules (evidence ladder L0–L4, source-type labels, freshness, zombie-stat guard, three admission gates) live at **`continuous-research/research-rules.md`** — canonical, auto-loaded when working under `continuous-research/`. Main-thread work routes there via `memory/check_research_claims.md`; subagents read the rules file prepended to their prompt.
+Research rules (evidence ladder L0–L4, source-type labels, freshness, zombie-stat guard, three admission gates) live at **`continuous-research/research-rules.md`** — canonical, and **it does not auto-load.** This file does, because a `CLAUDE.md` anywhere in the project tree is an auto-load surface; a sibling `.md` next to it is not, however prominently linked. So `research-rules.md` reaches a session or a subagent only when something puts it there: read it before research work, and prepend it verbatim to every dispatched research agent. That prepend is load-bearing and stays.
 
 The strategic frame — the *why* behind the rules — stays here:
 
@@ -127,6 +127,6 @@ The strategic frame — the *why* behind the rules — stays here:
 
 ## Antti's practitioner credentials
 
-Author of Agents 101 (7 modules including multi-agent workflows, evals, agents building agents). Trained 200+ people at F-Secure, Neste, Posti. Member of Agentics Helsinki (Mikko Alasaarela's community). Not a journalist or analyst — a practitioner who builds what he writes about.
+Author of a hands-on agentic engineering curriculum (7 modules including multi-agent workflows, evals, agents building agents). Trained 200+ people at F-Secure, Neste, Posti. Member of Agentics Helsinki (Mikko Alasaarela's community). Not a journalist or analyst — a practitioner who builds what he writes about.
 
 **Bosser identity:** *"The best strategies emerge from action, not analysis."* Framework-integrative, not framework-driven. See bosser.consulting.

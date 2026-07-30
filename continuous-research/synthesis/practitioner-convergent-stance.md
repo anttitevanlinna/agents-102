@@ -135,8 +135,6 @@ Böckeler is the single contradicting case, and the contradiction is structural,
 - A product-company practitioner spends tokens on their own codebase and counts the value in shipped throughput.
 - A consultancy practitioner advises clients whose token spend will be approved by CFOs who DON'T hold the stance — so the consultancy's job is to make the cost defensible, not to reframe it.
 
-**The seam runs through Bosser specifically.** Bosser is a training consultancy. The stance Antti needs the training to produce in CTO students is the *product-company stance* — but the seller of that training is the *consultancy-practitioner stance*. The training has to teach a disposition the trainer's commercial form doesn't fully embody. Worth being honest about.
-
 **What survives the seam:**
 - Axis 2 (writing-down IS the work) — Böckeler coined "harness engineering" as the discipline name
 - Axis 4 (taste as irreducible) — Böckeler holds this strongly
@@ -166,17 +164,15 @@ This OODA surfaced nine candidate beyond-the-five additions. Three deserve promo
 - Domain-expert-as-bottleneck (Husain) → refinement of Axis 4
 - Error-analysis-first ordering (Husain) → refinement of Axis 3 (shape of the cheap experiment)
 
-## What this means for Agents 102 / Bosser
+## What this means for the CTO conversation
 
-1. **The CTO conversation gets concrete.** "Platform is downstream of stance" is now an argument with 15 named practitioners and a 5-axis evidence matrix. The training is one of the prosthetics that produces this stance; the next OODA cycle should test which prosthetics produce which axes.
+1. **The CTO conversation gets concrete.** "Platform is downstream of stance" is now an argument with 15 named practitioners and a 5-axis evidence matrix. Training is one of the prosthetics that produces this stance; the next OODA cycle should test which prosthetics produce which axes.
 
-2. **The consultancy seam is a feature, not a bug.** Bosser sells competence — meaning the *student* arrives at the product-company stance even though Bosser-the-vendor operates from the consultancy stance. The training is the bridge. Be clear-eyed: F-Secure cohort post-training behaviour is the live test.
+2. **The review-bandwidth tension is the next stance-axis to teach.** "Ship cheaper than argue" alone produces the PR-overflow / normalization-of-deviance failure mode Willison flagged inside the convergence. Pair it with explicit "throttle the inflow" discipline.
 
-3. **The review-bandwidth tension is the next stance-axis to teach.** "Ship cheaper than argue" alone produces the PR-overflow / normalization-of-deviance failure mode Willison flagged inside the convergence. Pair it with explicit "throttle the inflow" discipline.
+3. **The ETH Zurich result deserves an honest footnote, not a dismissal.** CLAUDE.md is benchmark-neutral, practitioner-load-bearing. Useful nuance to keep front-of-mind when this claim resurfaces.
 
-4. **The ETH Zurich result deserves an honest footnote, not a dismissal.** CLAUDE.md is benchmark-neutral, practitioner-load-bearing. Useful nuance for the technical-class judge to carry.
-
-5. **Ronacher is not a sceptic. Reframe.** He's a fellow traveller in a minor key, with two load-bearing additions the convergence narrative needs (review-asymmetry, substrate-is-mutable). The dedicated `observations/armin-ronacher.md` is now overdue — Agent D produced the raw material.
+4. **Ronacher is not a sceptic. Reframe.** He's a fellow traveller in a minor key, with two load-bearing additions the convergence narrative needs (review-asymmetry, substrate-is-mutable). The dedicated `observations/armin-ronacher.md` is now overdue — Agent D produced the raw material.
 
 ## Open questions for OODA cycle 2
 

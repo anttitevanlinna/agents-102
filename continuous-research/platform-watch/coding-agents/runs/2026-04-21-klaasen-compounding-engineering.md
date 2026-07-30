@@ -49,18 +49,18 @@ Convergence signal present but the term itself is still mostly Every-originated.
 
 **Confirmation-bias guard:** The term is **Every's term traveling outward**, not a widely-converged community vocabulary. Lethain/Larson's piece is the strongest independent voice and he's gently skeptical of the originality claim while endorsing the operational value. No strong takedowns surfaced.
 
-## Curriculum implications for M1/M2 anchor
+## Notes on the compounding-engineering pattern
 
-**Use Klaassen — but honestly.** The framing fits M1→M2 precisely: M1 is warm-up with guardrails; M2 is "the system leap" — the move from *using Claude* to *building a system that compounds*. Klaassen's four-step loop (Plan → Work → Review → **Compound**) is the cleanest articulation in the wild of what M2 is teaching. The "compound" step — write learnings back to `CLAUDE.md` / skill files — **is literally what Agents 102 already does** (see project `memory/` directory, skill files, self-review protocol).
+**Use Klaassen — but honestly.** Klaassen's four-step loop (Plan → Work → Review → **Compound**) is the cleanest articulation in the wild of the plan/execute/review/write-back-learnings pattern. The "compound" step — write learnings back to `CLAUDE.md` / skill files — is a practice practitioners are converging on independently of Every's branding.
 
-**Three anchor moves for M1/M2:**
-1. **Quote Klaassen's "each unit makes the next easier"** as the opening frame of M2. It's memorable and practitioner-grounded.
-2. **The 80/20 inversion (plan+review vs. execution)** is a Rory-style reframe — counterintuitive, load-bearing. Use it.
-3. **`CLAUDE.md` as memory** is Klaassen's concrete artifact. Agents 102 already teaches this; naming it "compound" gives students vocabulary that travels (Larson, Google/Amazon engineers use it too).
+**Three things worth carrying forward:**
+1. Klaassen's line **"each unit makes the next easier"** is the cleanest one-line summary of the pattern — memorable and practitioner-grounded.
+2. **The 80/20 inversion (plan+review vs. execution)** is a Rory-style reframe — counterintuitive, load-bearing.
+3. **`CLAUDE.md` as memory** is Klaassen's concrete artifact. Naming it "compound" gives practitioners vocabulary that travels (Larson, Google/Amazon engineers use it too).
 
 **Honesty guardrail:** Flag Larson's point — compound engineering is *packaging*, not new ideas. For builder-leaders this is a feature, not a bug: the vocabulary makes the practice teachable. Don't oversell it as a new paradigm; sell it as the first clean name for what good practitioners were already doing.
 
-**Counter-evidence to watch:** Single-person teams at Every are a selection effect — Every hires unusually strong engineers writing for an audience of engineers. The practice may not port directly to traditional enterprise teams where "taste" encoded in review agents is contested. M2 should teach the *loop*, not promise Every's outcomes.
+**Counter-evidence to watch:** Single-person teams at Every are a selection effect — Every hires unusually strong engineers writing for an audience of engineers. The practice may not port directly to traditional enterprise teams where "taste" encoded in review agents is contested. Teach the *loop*, not promise Every's outcomes.
 
 ---
 **Freshness:** All primary sources within last 6 months (definitive guide late 2025/early 2026, Larson Jan 2026, plugin active). Cora-MVP-in-3-months is late 2024 — used as trajectory context, explicitly dated.

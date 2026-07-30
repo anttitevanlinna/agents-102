@@ -23,7 +23,7 @@
 **Source type:** [academic/research] — peer-reviewed military academic journal
 **Evidence level:** Level 1 (academic argument with historical analysis, not deployment data). But critically important as counter-evidence.
 **Freshness:** Published 2023, so outside the 6-month window. Included as historical context because the argument remains the strongest counter-thesis in the literature.
-**Key insight for Agents 102:** This is the paradox. AI makes it technically possible for the CEO to micromanage every AI agent centrally. The promise of Auftragstaktik (delegate intent, trust execution) is in tension with the AI reality (you can see everything, monitor everything, override everything). The question is whether organizations choose discipline or succumb to the temptation of centralized control.
+**Key insight:** This is the paradox. AI makes it technically possible for the CEO to micromanage every AI agent centrally. The promise of Auftragstaktik (delegate intent, trust execution) is in tension with the AI reality (you can see everything, monitor everything, override everything). The question is whether organizations choose discipline or succumb to the temptation of centralized control.
 
 ## Finding 3: Defence Horizon Journal — AI and the OODA Loop in Mission Command
 
@@ -51,7 +51,7 @@
 **Source type:** [practitioner direct] — company describing their own practice
 **Evidence level:** Level 2 (single experiment — one company implementing a new role based on deployment experience)
 **Freshness:** Early 2026 — within window.
-**Key insight for Agents 102:** This is the closest thing to civilian Auftragstaktik we found — but they don't use the term. The "Intent Engineer" is functionally the person who formulates commander's intent for AI agents: what we want to achieve, the constraints, the success criteria. Then the AI agent executes autonomously. SQUER arrived at this from software practice, not military philosophy. The convergence is conceptual, not genealogical.
+**Key insight:** This is the closest thing to civilian Auftragstaktik we found — but they don't use the term. The "Intent Engineer" is functionally the person who formulates commander's intent for AI agents: what we want to achieve, the constraints, the success criteria. Then the AI agent executes autonomously. SQUER arrived at this from software practice, not military philosophy. The convergence is conceptual, not genealogical.
 
 ## Finding 6: "Intent Engineering" as Emerging Discipline
 
@@ -128,7 +128,7 @@
 
 **Thread B (Civilian-Emerging):** The "intent engineering" and "agent manager" conversation is structurally identical to Auftragstaktik — centralized intent, decentralized execution, defined authority — but nobody uses the military vocabulary. SQUER's Intent Engineer role is the strongest single practitioner signal. HBR's "agent manager" framing is mainstream but superficial. The Tomasev et al. academic paper formalizes delegation for AI agents. The Pathmode/Product Compass "intent engineering" framework is gaining traction.
 
-**The gap — and the opportunity for Agents 102:**
+**The gap — and the opportunity:**
 
 Nobody is connecting Thread A to Thread B. The military literature has 200+ years of hard-won knowledge about how to delegate to autonomous units operating under uncertainty — including the failure modes (overcentralization, loss of initiative, trust breakdown). The civilian AI agent management conversation is reinventing these concepts from scratch, without the historical depth.
 

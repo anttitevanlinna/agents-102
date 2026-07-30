@@ -122,7 +122,7 @@ Broadened search across all four Nordic countries, major companies, and conferen
 
 **Anti-theatre signals are strong.** J.L. (Scania) dissolved the separate digital team. S.A. (Nordea) warns about wasted investment. A.R. (Novo Nordisk) talks about "midcycle enthusiasm dips" and champion networks. S.N. (SOK) says "you can't buy a transformation." These are people who have lived through transformation theatre and are allergic to it.
 
-**Agentic AI specifically** is still frontier — only H.S. (Equinor) and I.M. (Telenor) explicitly use "agentic AI" language publicly. Most others are in GenAI/Copilot territory. The gap between GenAI deployment and agentic AI capability is exactly where Agents 102 sits.
+**Agentic AI specifically** is still frontier — only H.S. (Equinor) and I.M. (Telenor) explicitly use "agentic AI" language publicly. Most others are in GenAI/Copilot territory. The gap between GenAI deployment and agentic AI capability is exactly where the competence gap this research tracks sits.
 
 ---
 
@@ -149,4 +149,4 @@ Broadened search across all four Nordic countries, major companies, and conferen
 - **Assumption 3 (builder leader exists in volume):** Evidence upgraded. 9 named leaders at major Nordic companies publicly framing the challenge as competence/people — across both target segments (software-adjacent and traditional digitalizers). No longer a single-case hypothesis.
 - **Assumption 5 (problem is competence, not strategy or tools):** 9/15 independently confirm this framing in public statements. Strong signal.
 - **Assumption 10 (urgency):** BCG Nordic GenAI complacency data (19% vs 61% globally, EUR 60B+ GDP risk) plus production-scale deployments at Equinor/Novo Nordisk/Nordea signal real urgency.
-- **Assumption 6 (prerequisite narrative resonates):** S.N.'s "you can't buy a transformation" and C-J.N.'s "95% of pilots fail — the tech is not the problem" are near-exact articulations of the Agents 102 positioning.
+- **Assumption 6 (prerequisite narrative resonates):** S.N.'s "you can't buy a transformation" and C-J.N.'s "95% of pilots fail — the tech is not the problem" are near-exact articulations of the competence-is-the-prerequisite positioning.

@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-23
 **Question:** Where do the real ceilings hit in the last 6 months? When does adding more time / context / packaging stop helping?
-**Why we're asking:** AE101 Module 5 mood is *"learning through contrast."* The success literature is loud; the ceiling literature is what students need to balance it.
+**Why we're asking:** The success literature on long-running agents is loud; the ceiling literature is what practitioners need to balance it.
 
 ## Cost ceiling — confirmed and getting worse
 

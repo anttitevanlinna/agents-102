@@ -40,7 +40,7 @@
 
 **What makes it work.** Celebrity instructor, short commitment, free audit, and laser focus on making AI accessible to non-technical people. It is the proof that massive enrollment can come from the "explain it simply" approach.
 
-**Lessons for Agents 102.** The accessibility-first model works at enormous scale. Our audience overlaps heavily. But Ng stops at awareness — he does not teach people to build anything. That is exactly the gap Agents 102 fills: from understanding to doing.
+**Takeaways.** The accessibility-first model works at enormous scale for a business/non-coder audience. But Ng stops at awareness — he does not teach people to build anything. The gap between understanding and doing remains open.
 
 ---
 
@@ -78,7 +78,7 @@
 
 **What makes it work.** Project-based progression gives learners tangible artifacts. The 8-week structure creates momentum. High agent relevance with practical builds.
 
-**Lessons for Agents 102.** The project-based progression model is powerful — each project builds on the last. However, this course assumes developer skills. Agents 102 can borrow the progressive-project structure while keeping exercises no-code/low-code.
+**Takeaways.** The project-based progression model is powerful — each project builds on the last. However, this course assumes developer skills; the same progressive-project structure could work while keeping exercises no-code/low-code.
 
 ---
 
@@ -116,7 +116,7 @@
 
 **What makes it work.** Rides the LangChain hype wave. Specific, practical, and directly tied to the tools people Google. High search-intent alignment.
 
-**Lessons for Agents 102.** Shows massive demand for agent-building education (116K students). But framework lock-in is a risk — LangChain updates break courses fast. Agents 102 should teach agent patterns and concepts (tool use, memory, planning) in a framework-agnostic way, then show implementations.
+**Takeaways.** Shows massive demand for agent-building education (116K students). But framework lock-in is a risk — LangChain updates break courses fast. A framework-agnostic approach — teaching agent patterns and concepts (tool use, memory, planning) before implementations — would be more durable.
 
 ---
 
@@ -154,7 +154,7 @@
 
 **What makes it work.** Multi-framework coverage reduces obsolescence risk. Including MCP shows curriculum is current. Fast enrollment growth signals strong market demand for agent education.
 
-**Lessons for Agents 102.** MCP is clearly a topic learners want. The multi-framework approach is smart — but still assumes coding ability. Agents 102 can be the "understand agents and build them without deep coding" alternative.
+**Takeaways.** MCP is clearly a topic learners want. The multi-framework approach is smart — but still assumes coding ability. There is room for an "understand agents and build them without deep coding" alternative.
 
 ---
 
@@ -192,7 +192,7 @@
 
 **What makes it work.** IBM brand carries weight for career credentials. Professional certificate format appeals to people seeking resume-building credentials. Enterprise focus differentiates from indie Udemy courses.
 
-**Lessons for Agents 102.** Shows that enterprise/corporate learners are a real audience for agent education. The credential angle matters for this segment. Agents 102 could consider a certificate or badge system. However, multi-month programs have completion problems — our shorter, focused format is an advantage.
+**Takeaways.** Shows that enterprise/corporate learners are a real audience for agent education. The credential angle matters for this segment — a certificate or badge system is worth considering. However, multi-month programs have completion problems; shorter, focused formats have a structural advantage there.
 
 ---
 
@@ -238,7 +238,7 @@
 
 **What makes it work.** Andrew Ng finally bridges the gap between his "AI for Everyone" accessibility brand and hands-on agent-building. The four agentic design patterns (reflection, tool use, planning, multi-agent) provide a conceptual framework that is framework-agnostic. Free pricing removes all barriers.
 
-**Lessons for Agents 102.** This is the closest thing to a direct competitor — Ng's brand, agent content, accessible framing. However, it still requires Python. The four design patterns framework is excellent pedagogy and Agents 102 should adopt similar conceptual scaffolding. The key differentiator: Agents 102 teaches these patterns to people who do not code.
+**Takeaways.** Ng's brand, agent content, and accessible framing make this the closest thing to a direct competitor for non-coder-facing agent education — however, it still requires Python. The four design patterns framework (reflection, tool use, planning, multi-agent) is excellent pedagogy worth adopting as conceptual scaffolding, independent of whether learners code.
 
 ---
 
@@ -276,7 +276,7 @@
 
 **What makes it work.** Ultra-short format (1 hour) means high completion. Learning from the framework creator ensures accuracy. Building an agent from scratch before using a framework teaches underlying principles.
 
-**Lessons for Agents 102.** The "build from scratch, then use a tool" pedagogy is brilliant — it builds understanding before abstraction. Agents 102 could adapt this: first understand what an agent does conceptually, then use no-code tools to build one. The 1-hour format proves that meaningful agent education can be very compact.
+**Takeaways.** The "build from scratch, then use a tool" pedagogy is brilliant — it builds understanding before abstraction. The same sequencing works without code: first understand what an agent does conceptually, then use no-code tools to build one. The 1-hour format proves that meaningful agent education can be very compact.
 
 ---
 
@@ -314,7 +314,7 @@
 
 **What makes it work.** Cohort-based pacing (5 days) creates social accountability that self-paced courses lack. Google brand + Kaggle community = built-in distribution. Free pricing aligns with Google's strategy of growing their AI ecosystem.
 
-**Lessons for Agents 102.** The cohort model is worth studying. Cohort pacing drives completion rates far above self-paced MOOCs. A 5-day sprint format could work well for Agents 102's workshop-style delivery. However, this is vendor-locked to Google's Gemini ecosystem and requires coding — both are gaps Agents 102 can fill.
+**Takeaways.** The cohort model is worth studying. Cohort pacing drives completion rates far above self-paced MOOCs — a 5-day sprint format could work well for workshop-style delivery generally. However, this is vendor-locked to Google's Gemini ecosystem and requires coding — both are open gaps in the market.
 
 ---
 
@@ -352,7 +352,7 @@
 
 **What makes it work.** First-party authority — nobody knows OpenAI's tools better than OpenAI. The certification model adds career value. Multi-tier design means they are reaching both non-technical and technical audiences, though the non-technical tier focuses on prompt engineering, not agent-building.
 
-**Lessons for Agents 102.** OpenAI Academy is the clearest signal that AI companies are entering the education market directly. However, their education is inherently vendor-locked (you learn to build with OpenAI tools). Agents 102's vendor-agnostic, pattern-focused approach is a real differentiator. The multi-tier design is worth borrowing — different entry points for different audiences.
+**Takeaways.** OpenAI Academy is the clearest signal that AI companies are entering the education market directly. However, their education is inherently vendor-locked (you learn to build with OpenAI tools) — a vendor-agnostic, pattern-focused approach remains a real differentiator against it. The multi-tier design is worth borrowing — different entry points for different audiences.
 
 ---
 
@@ -390,7 +390,7 @@
 
 **What makes it work.** University credential + explicit business focus. Targets exactly the audience that wants agents for business impact, not for engineering careers. The McCombs business school context means the framing is business-first.
 
-**Lessons for Agents 102.** This is the closest competitor to Agents 102's positioning — AI agents for business people. However, it is priced at executive education levels ($2K-$5K+), making it inaccessible for most individual learners. Agents 102 can deliver a similar business-first, agents-for-non-coders value proposition at a fraction of the price. The existence of this program validates the audience — business professionals want to learn about AI agents — but the price point leaves massive room below it.
+**Takeaways.** This is the closest thing on the market to "AI agents for business people" positioning. However, it is priced at executive education levels ($2K-$5K+), making it inaccessible for most individual learners. The existence of this program validates the audience — business professionals want to learn about AI agents — but the price point leaves massive room below it for a business-first, agents-for-non-coders offer.
 
 ---
 
@@ -438,7 +438,7 @@
 
 **What makes it work.** Corporate distribution channel — Pluralsight is already in thousands of enterprise L&D budgets. The "productivity" framing appeals to managers who need to justify learning time. Three-course path gives structure without overwhelming commitment.
 
-**Lessons for Agents 102.** Pluralsight reaches the corporate audience Agents 102 wants, but through a subscription model that buries individual courses in a massive catalog. The "productivity" framing is instructive — corporate buyers want ROI language, not technical depth. However, this path appears to focus on understanding and using agents, not building them. The build gap persists even in corporate L&D.
+**Takeaways.** Pluralsight reaches a real corporate audience, but through a subscription model that buries individual courses in a massive catalog. The "productivity" framing is instructive — corporate buyers want ROI language, not technical depth. However, this path appears to focus on understanding and using agents, not building them. The build gap persists even in corporate L&D.
 
 ---
 
@@ -476,7 +476,7 @@
 
 **What makes it work.** Speaks directly to enterprise IT decision-makers in their language: departments, business value, vendor platforms they already use. The Salesforce Agentforce and Amazon Bedrock coverage means learners can immediately apply knowledge in their existing enterprise stack.
 
-**Lessons for Agents 102.** Enterprise agent education is vendor-locked by design — enterprises use Salesforce or AWS, so they learn those tools. Agents 102 cannot compete on vendor-specific depth but can compete on breadth and conceptual understanding. A business leader who understands agentic patterns first will make better decisions about which enterprise tools to adopt. Agents 102 is the "before you buy" education; Pluralsight is the "after you buy" training.
+**Takeaways.** Enterprise agent education is vendor-locked by design — enterprises use Salesforce or AWS, so they learn those tools. That leaves the breadth-and-concepts layer open: a business leader who understands agentic patterns first will make better decisions about which enterprise tools to adopt. Vendor courses like this are "after you buy" training; there is no equivalent "before you buy" education in the market.
 
 ---
 
@@ -510,11 +510,11 @@
 | Content Quality | 3 | Covers the right tools (n8n, Zapier) but quality unverified |
 | Completion/Engagement | 3 | Hands-on projects help; moderate duration |
 | Pricing Model | 4 | Udemy discount model keeps it affordable |
-| AI/Agent Relevance | 5 | Directly teaches no-code AI agent building — closest to Agents 102's positioning |
+| AI/Agent Relevance | 5 | Directly teaches no-code AI agent building — the closest thing found to accessible, non-coder agent education |
 
 **What makes it work.** Explicitly says "no code" in the title — directly targeting the underserved audience. Uses real no-code platforms (n8n, Zapier) that learners can immediately use. Combines agents with automation, which is the practical frame non-coders understand.
 
-**Lessons for Agents 102.** This is the first course found across three rounds that directly occupies the "no-code AI agents" positioning. It is a signal that the market is starting to respond to the gap we identified. However, it is from an unknown instructor with no brand, likely modest enrollment, and unknown quality. The whitespace is being noticed but not yet claimed by a credible player. Agents 102 needs to move before this category fills up. The tool-first framing (n8n + Zapier) is both a strength (practical) and a weakness (platform-locked, not conceptual). Agents 102 can differentiate by teaching patterns first, tools second.
+**Takeaways.** This is the first course found across three rounds that directly occupies the "no-code AI agents" positioning. It is a signal that the market is starting to respond to the identified gap. However, it is from an unknown instructor with no brand, likely modest enrollment, and unknown quality. The whitespace is being noticed but not yet claimed by a credible player — the window to move before this category fills up is closing. The tool-first framing (n8n + Zapier) is both a strength (practical) and a weakness (platform-locked, not conceptual); a patterns-first, tools-second approach would differentiate.
 
 ---
 
@@ -552,7 +552,7 @@
 
 **What makes it work.** Single-platform focus means deep, practical knowledge. n8n is arguably the most capable no-code agent platform in 2026. "No-code" positioning is explicit and intentional.
 
-**Lessons for Agents 102.** Platform-specific courses like this are tool training, not agent education. They teach "how to use n8n" not "what is an agent and why does it matter." Agents 102's value is the conceptual layer above: understanding agent patterns, evaluating tools, designing agent systems — then using platforms like n8n as implementation vehicles. These courses are complementary, not competitive.
+**Takeaways.** Platform-specific courses like this are tool training, not agent education. They teach "how to use n8n" not "what is an agent and why does it matter." The conceptual layer above — understanding agent patterns, evaluating tools, designing agent systems, then using platforms like n8n as implementation vehicles — remains open. These courses are complementary to that layer, not competitive with it.
 
 ---
 
@@ -590,7 +590,7 @@
 
 **What makes it work.** The platform IS the learning environment. Learners build real agents while learning. Templates lower the barrier to entry dramatically — clone a template, modify it, learn by doing. This is the most natural "no-code agent education" experience available today, even though it is not packaged as a course.
 
-**Lessons for Agents 102.** n8n's template-based approach is the strongest informal competitor to Agents 102 for the non-coder audience. A motivated person can learn to build agents on n8n without taking any course — just follow the templates and docs. However, n8n teaches n8n, not agents. There is no conceptual framework, no vendor-agnostic thinking, no strategic layer. Agents 102 provides the "why" and "what" that makes the "how" (which n8n teaches) meaningful. The relationship is complementary: Agents 102 could recommend n8n as a hands-on implementation tool.
+**Takeaways.** n8n's template-based approach is the strongest informal competitor for the non-coder audience in general. A motivated person can learn to build agents on n8n without taking any course — just follow the templates and docs. However, n8n teaches n8n, not agents. There is no conceptual framework, no vendor-agnostic thinking, no strategic layer above it. That "why" and "what" layer — the thing that would make the "how" n8n teaches meaningful — is what's missing, and n8n itself would be a natural hands-on implementation tool to pair it with.
 
 ---
 

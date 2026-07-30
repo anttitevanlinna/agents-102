@@ -75,7 +75,7 @@ Score on these dimensions (1-5):
 | **Hands-On Intensity** | Lecture dominant | Participants build real things |
 | **Fundamentals vs. Tools** | Locked to specific vendors | Tool-agnostic principles first |
 
-Note strengths and gaps relative to Agents 102.
+Note strengths and gaps in the program itself.
 
 #### Output Files
 
@@ -145,7 +145,7 @@ Score on these dimensions (1-5):
 | **Pricing Model** | Expensive, inflexible | Accessible, free tier |
 | **AI/Agent Relevance** | Generic tech | Directly teaches agents |
 
-Note what makes it work and lessons for Agents 102.
+Note what makes it work and what lessons transfer.
 
 #### Output Files
 

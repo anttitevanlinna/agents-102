@@ -345,7 +345,7 @@ Multiple independent sources converge on the same new PM skills:
 5. **Prompt engineering** — described as "the new literacy for PMs"
 6. **Planning horizon compression** — multi-year roadmaps → 3-6 month rolling bets
 
-### What This Means for the Agents 102 Thesis
+### What This Means for the Competence-First Thesis
 
 This connects to the core thesis: **competence → discovery → context → platform.** The PM role evolution IS the competence question applied to product teams. Companies that build AI PM competence first (evals, prototyping, non-deterministic design) can discover what to build. Companies that skip to tools get PMs who use ChatGPT for writing emails and call it "AI transformation."
 

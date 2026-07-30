@@ -1,6 +1,6 @@
 # `continuous-research/` — Open for Contribution
 
-This directory is the **public knowledge base** of the Agents 102 project. Unlike the rest of this repository — which is proprietary to Bosser Oy (see root [`COPYRIGHT.md`](../COPYRIGHT.md)) — the research system is intentionally open for use and contribution by the broader community of agentic industry leaders.
+This directory is the **public knowledge base** of this project. Unlike the rest of this repository — which is proprietary to Bosser Oy (see root [`COPYRIGHT.md`](../COPYRIGHT.md)) — the research system is intentionally open for use and contribution by the broader community of agentic industry leaders.
 
 ## What You Can Do
 

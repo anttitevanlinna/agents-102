@@ -46,7 +46,7 @@ Klarna is piloting a blended workforce: remote agents with flexible schedules, t
 - Evidence level: Level 2-3 (multiple independent sources, single company but defining Nordic case study)
 - Finding category: Production Agentic (hybrid model in production)
 
-**Significance for our training:** Klarna is THE Nordic cautionary tale — and now also the Nordic hybrid success story. The full arc (replacement → failure → hybrid → success) is the most powerful teaching narrative we have. The "Uber-style" workforce model adds a new dimension: AI doesn't just change what work is done, it changes HOW the workforce is structured.
+**Significance:** Klarna is THE Nordic cautionary tale — and now also the Nordic hybrid success story. The full arc (replacement → failure → hybrid → success) is the most powerful teaching narrative in this space. The "Uber-style" workforce model adds a new dimension: AI doesn't just change what work is done, it changes HOW the workforce is structured.
 
 ---
 
@@ -134,7 +134,7 @@ BCG's Nordic AI report (late 2025/early 2026) found:
 - Source: https://www.bcg.com/publications/2026/nordic-ai-value-creation-or-bubble [domain trade publication — BCG]
 - Evidence level: Level 0 (consultancy report — BCG), but useful for Nordic market context
 
-**Significance:** The "4% strong returns" statistic is powerful — it confirms our thesis that most organizations are failing despite investment. And the CEO engagement gap (75% of CxOs say they're doing AI, 26% of CEOs are involved) suggests leadership isn't yet experiencing agents personally.
+**Significance:** The "4% strong returns" statistic is powerful — it confirms the broader finding that most organizations are failing despite investment. And the CEO engagement gap (75% of CxOs say they're doing AI, 26% of CEOs are involved) suggests leadership isn't yet experiencing agents personally.
 
 ### Nordic AI Governance Convergence
 

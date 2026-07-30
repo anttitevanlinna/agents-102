@@ -69,7 +69,7 @@ The YouTube long-course shelf for agentic coding is **thinner than expected.** f
 - AI Coding Summit 2026 (GitNation) — agentic coding workshops — https://gitnation.com/events/ai-coding-summit-2026 — [vendor press release] (event-organizer page)
 - AgenticDevDays Stockholm, Apr 28 2026 — workshop track unclear — https://agenticdevdays.org/ — [vendor press release] (event-organizer page)
 
-Conference workshops are half-day to day-length, not 8-session arcs — complementary to AE101, not substitutes.
+Conference workshops are half-day to day-length, not 8-session arcs — a complementary format, not a substitute.
 
 ## Books with companion courses
 
@@ -77,7 +77,7 @@ Conference workshops are half-day to day-length, not 8-session arcs — compleme
 
 No other book-with-cohort lands in the window.
 
-## Trainings with material arc overlap to AE101
+## Trainings with material arc overlap
 
 - **Pocock, *Claude Code for Real Engineers*** — overlaps the context → plan → execute → delegate arc. No horizon module, no multi-agent deliberation, no team / promotion layer.
 - **Klaassen, *Compound Engineering*** — heavy overlap on test-learn-encode and multi-agent review. Light on early-foundations modules (assumes already technical).
@@ -106,30 +106,18 @@ Counter-check: Reaktor training page, Futurice blog, Gofore, Knowit — no named
 
 ---
 
-## Bosser strategic read (separate from research findings)
-
-> Everything below is Bosser's strategic interpretation of the inventory above, not Level-3 evidence. Marked separately to keep the research findings clean.
-
-1. **Pocock at $795 is the anchor — don't compete on it.** AE101's in-room / remote cohort is a different SKU. Price by seat-equivalent only in self-study; price by engagement when sponsor-attended.
-2. **Klaassen is the narrative neighbour, not the competitor.** Every runs 4-week remote Zoom cohorts in US time. A Nordic CTO wanting in-room + local trainer has no Every option. Credit Klaassen by name; don't hide from him.
-3. **Nordic clear air is real but shrinking.** Stockholm events suggest awareness peaking Q2 2026. *"First Nordic trainer wins the category"* is opinion, not Level-3 evidence — but the timing read is consistent with the inventoried event density.
-4. **Arc completeness is the moat candidate.** No competitor inventoried runs the full L0→L3 arc. The training-as-forcing-function + sponsor-attends model is also unique — no competitor sells the CTO a seat in the room.
-5. **Corporate write-ups tell us what to teach, not what to compete with.** Ramp / Stripe / Shopify publish their platforms; AE101 should teach *how to build those patterns in your own company* — the platform posts become the evidence base, not the competition.
-
----
-
 <!-- maintainer -->
 
 **Last updated:** 2026-05-03
 
-**Source verification — MUST DO before first cohort:**
+**Source verification — refresh before external use:**
 
-1. Maven cohort prices change. Every inferred "~$Xk typical" must be re-fetched at delivery; if a page lists no price, the cohort goes into the **inference** column, not the sourced column.
-2. Klaassen's *Compound Engineering* event price is the single load-bearing inference for the premium-band claim. Open the event page at delivery; if still unpriced, present as a band, not a point estimate.
+1. Maven cohort prices change. Every inferred "~$Xk typical" must be re-fetched before external use; if a page lists no price, the cohort goes into the **inference** column, not the sourced column.
+2. Klaassen's *Compound Engineering* event price is the single load-bearing inference for the premium-band claim. Open the event page before relying on this; if still unpriced, present as a band, not a point estimate.
 3. Nordic absence claim re-checks: Reaktor, Futurice, Solita, Gofore, Knowit, Tietoevry, Vincit, Siili training pages. Convergence to "no public agent-training curriculum for engineers" must be re-verified per quarter — Solita launching a product (RoadCrewAO) is a leading indicator that a training offering may follow.
 4. The Stripe / Intercom case study is **[vendor case study] L0** and was excluded from evidence; if reintroduced, it must be re-labelled.
 5. Numbers to triple-check: "30% of Ramp engineering PRs" (single tech-press source); "18,500 customers / $540M ARR" (Salesforce, not in this file but referenced in adjacent synthesis files); GAIA 30% pass bar (referenced in `curriculum-convergence.md`).
-6. Freshness re-check: every URL above must be inside a 6-month window at delivery time.
+6. Freshness re-check: every URL above must be inside a 6-month window at time of use.
 
 **Provenance — source-type labels:**
 

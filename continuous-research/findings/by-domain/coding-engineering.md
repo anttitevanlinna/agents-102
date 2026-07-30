@@ -33,7 +33,7 @@ The December 2025 "phase shift" is confirmed by multiple independent practitione
 "Compound engineering" (Dan Shipper/Kieran Klaassen, Every Inc): Plan → Work → Review → Compound. The "Compound" step captures learnings into CLAUDE.md, creates new agents. 1 developer = 5 developers output. 5 products run by ~1 person, serving thousands daily. Will Larson (Imprint) independently validated: "not shocking but extremely effective." Plugin has 5,132 GitHub stars. Source: [Every.to](https://every.to/chain-of-thought/compound-engineering-how-every-codes-with-agents) [practitioner direct], [Will Larson](https://lethain.com/everyinc-compound-engineering/) [practitioner analysis]
 
 ### The spec is the moat — Level 3 convergence across 4 domains
-Four independent practitioners in four domains converged on the same pattern in the same month: human writes the spec, coding agent executes, spec compounds. Karpathy (AutoResearch, 42K stars, 700 experiments in 2 days), Shipper (CLAUDE.md compound engineering), Corey Haines (Marketing Skills, 15.4K stars), Agents 102 (cycle-prompt.md). Source: [Karpathy AutoResearch](https://github.com/karpathy/autoresearch) [practitioner direct]
+Four independent practitioners in four domains converged on the same pattern in the same month: human writes the spec, coding agent executes, spec compounds. Karpathy (AutoResearch, 42K stars, 700 experiments in 2 days), Shipper (CLAUDE.md compound engineering), Corey Haines (Marketing Skills, 15.4K stars), this research system's own OODA cycle process (cycle-prompt.md). Source: [Karpathy AutoResearch](https://github.com/karpathy/autoresearch) [practitioner direct]
 
 ## Level 2 Findings
 
@@ -60,7 +60,7 @@ Created workmux: git worktrees + tmux for zero-friction parallel agent developme
 - **Supercell (Helsinki):** AI Innovation Lab. AI strategy pillar: "give our people superpowers." No public evidence of production agentic coding.
 - **Klarna:** 90% employees use AI daily, 96% adoption. But main deployment is customer service, not agentic coding.
 - **Reaktor + University of Helsinki:** Research on GenAI's impact on development productivity. Participating companies include Alma Media, RELEX Solutions. Results not yet published (March 2026).
-- **F-Secure:** 200+ people trained on Agents 101. Non-coders building with Claude Code. First-party evidence but not publicly documented.
+- **F-Secure:** 200+ people trained on hands-on agentic-coding fundamentals. Non-coders building with Claude Code. First-party evidence but not publicly documented.
 
 ## Counter-Evidence
 

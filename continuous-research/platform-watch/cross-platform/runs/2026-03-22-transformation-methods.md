@@ -70,7 +70,7 @@ The strongest pattern across sources: **organizations that invest in capability 
 - MIT/BCG: the "leaders" invested in organizational learning, not just technology
 - HBR experimentation trap: scaling fails because the organization lacks the absorptive capacity
 
-This directly validates the Agents 102 thesis: **Competence → Discovery → Context → Platform.**
+This directly validates a competence-first sequence: **Competence → Discovery → Context → Platform.**
 
 ---
 
@@ -85,7 +85,7 @@ Ethan Mollick (co-director Wharton Generative AI Labs) on the state of play:
 
 ---
 
-## Implications for Agents 102
+## What this validates
 
 ### Our positioning is validated by independent evidence
 
@@ -102,7 +102,7 @@ Our existing research finding holds: "Every framework says 'upskill your workfor
 
 ### The Leadership-Lab-Crowd sequence maps to our customer journey
 
-- **Agents 101** = Lab (intensive hands-on, small group, discover what's possible)
+- **Lab stage** = intensive hands-on, small group, discover what's possible
 - **Champions** = Lab → Crowd bridge (train-the-trainer, scaling mechanism)
 - **Scale** = Crowd (champions run internally)
 - **Leadership** = what we need to add — the CTO/CEO must personally experience agents, not just approve the budget

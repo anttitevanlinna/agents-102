@@ -2,7 +2,7 @@
 
 ## Question + scope
 
-What did Claude Code, Codex, Cursor, Amp, and adjacent harnesses ship in the last 6 months that materially extends how long a single agent session can run coherently? Module 5 of the AE101 training has to teach on top of current tool capability, not last year's product. Vendor framing is bare-fact only; the test of whether a feature matters is whether practitioners are visibly using it.
+What did Claude Code, Codex, Cursor, Amp, and adjacent harnesses ship in the last 6 months that materially extends how long a single agent session can run coherently? Current tool capability, not last year's product. Vendor framing is bare-fact only; the test of whether a feature matters is whether practitioners are visibly using it.
 
 ## Feature-by-feature
 

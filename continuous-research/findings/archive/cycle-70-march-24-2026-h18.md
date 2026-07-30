@@ -33,7 +33,7 @@
 - https://claude.com/customers/nbim [vendor case study — Level 0 for claims, factual for deployment confirmation]
 - https://www.smithstephen.com/p/how-norways-18-trillion-fund-saved [practitioner analysis]
 
-**Significance for Agents 102:** Tangen-vs-Siemiatkowski contrast. Both Nordic leaders, radically different approaches: Klarna cut staff and regretted it; NBIM kept staff, made AI mandatory, saving billions. The NBIM story is the "augmentation wins" case study our buyers need.
+**Significance:** Tangen-vs-Siemiatkowski contrast. Both Nordic leaders, radically different approaches: Klarna cut staff and regretted it; NBIM kept staff, made AI mandatory, saving billions. The NBIM story is the leading "augmentation wins" case study for Nordic AI deployment.
 
 ---
 
@@ -152,7 +152,7 @@ ADK stable release. A2A v0.3 with gRPC. 150+ orgs in ecosystem. **Not a single n
 
 No Priors podcast. Zero manual coding since Dec 2025. "I don't think a normal person actually realizes that this happened or how dramatic it was."
 
-**Autoresearch** released March 7-8: 630-line Python tool, AI agents run autonomous ML experiments. 700 experiments in 2 days. Shopify CEO Lutke independently achieved 19% improvement. Agents-building-agents made concrete → Module 8 content.
+**Autoresearch** released March 7-8: 630-line Python tool, AI agents run autonomous ML experiments. 700 experiments in 2 days. Shopify CEO Lutke independently achieved 19% improvement. Agents-building-agents made concrete.
 
 **Sources:**
 - https://github.com/karpathy/autoresearch [practitioner direct]
@@ -262,7 +262,7 @@ Every major vendor has an enterprise agent platform (Salesforce, Microsoft, Serv
 
 ### Pattern: Agent Legal/IP Risk as New Category (L2)
 
-Chardet relicensing, open-source junk PRs, Mexican government cyberattack with Claude Code. Agents don't just write code — they create legal exposure. Not yet in our curriculum.
+Chardet relicensing, open-source junk PRs, Mexican government cyberattack with Claude Code. Agents don't just write code — they create legal exposure.
 
 ---
 

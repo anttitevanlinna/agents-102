@@ -280,7 +280,7 @@
 
 **The infrastructure builders (Karpathy, Willison, Ball) are entirely coding-focused.** Harrison Chase is the exception — his "ambient agents" concept applies to non-coding domains, but his products are still developer tools.
 
-### Implication for Agents 102
+### Implication for a Curator/Advisory Model
 
 This confirms the blue ocean finding. The thought leadership gap in non-coding enterprise agents is real and wide. Even among the most influential people in AI:
 - Nobody is systematically curating what works in non-coding agent deployment
@@ -288,7 +288,7 @@ This confirms the blue ocean finding. The thought leadership gap in non-coding e
 - The enterprise practitioners (Waldron, Jowiya) share through vendor channels, not their own
 - Only Mollick and Narayanan are producing independent analysis
 
-**This is our space.** The curator role (80/20 model — 80% frontier research + 20% peer premium) is genuinely unoccupied. We don't need to compete with Karpathy or Willison. We need to be the Mollick + Narayanan synthesis for non-coding enterprise agents, with real practitioner evidence from the network.
+**This is a genuinely unoccupied space.** The curator role (80/20 model — 80% frontier research + 20% peer premium) has no incumbent. There is no need to compete with Karpathy or Willison — the opportunity is to be the Mollick + Narayanan synthesis for non-coding enterprise agents, with real practitioner evidence from the network.
 
 ---
 

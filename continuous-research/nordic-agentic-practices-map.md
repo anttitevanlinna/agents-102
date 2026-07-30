@@ -1,6 +1,6 @@
 # Nordic Agentic Practices Map — Q1 2026
 
-*First synthesis from the Agents 102 continuous research program. Based on 95+ findings across 7 business process domains, 17 Nordic enterprise profiles, 12 vertical SaaS platform profiles, and 7 governance patterns. Research date: February 2026.*
+*First synthesis from the continuous research program. Based on 95+ findings across 7 business process domains, 17 Nordic enterprise profiles, 12 vertical SaaS platform profiles, and 7 governance patterns. Research date: February 2026.*
 
 **Editorial standard:** Every claim below is grounded in a named company, a specific practice, and verifiable evidence. Generic "AI transforms X" claims are excluded. The question is not "what's happening?" — anyone can read the news. The question is: **"What specifically works in the agentic world, and what will your organization be able to do in 6 months?"**
 
@@ -154,7 +154,7 @@ From 17 profiled Nordic enterprises:
 
 ---
 
-## What This Means for the Training
+## The Leadership Competence Gap
 
 The research validates a specific competence gap:
 

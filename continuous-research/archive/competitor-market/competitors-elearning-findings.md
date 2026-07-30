@@ -29,13 +29,13 @@
 
 ### Current Hypothesis
 
-**The "agents for non-coders" space is a genuine whitespace in e-learning.** Massive demand exists on both sides (AI awareness at 10M+ enrollments; agent-building at 100K+), but nobody bridges them for non-technical builders. Agents 102 sits in exactly this gap. The risk is not competition — it is execution: can we make agent-building genuinely accessible without dumbing it down?
+**The "agents for non-coders" space is a genuine whitespace in e-learning.** Massive demand exists on both sides (AI awareness at 10M+ enrollments; agent-building at 100K+), but nobody bridges them for non-technical builders. The risk is not competition — it is execution: can agent-building be made genuinely accessible without dumbing it down?
 
 ### What's Still Unclear or Missing
 
 - **Completion rates.** We have enrollment and ratings but no completion data. Do agent courses suffer from the same ~5-15% MOOC completion problem? If so, what design choices improve it?
 - **Non-platform players.** We only looked at Coursera and Udemy. What about DeepLearning.AI's own platform (short courses), Replit's agent tutorials, vendor-specific training (OpenAI, Anthropic), and bootcamp-style programs?
-- **Corporate/enterprise training.** IBM's certificate hints at enterprise demand, but we haven't looked at corporate training providers (Pluralsight, LinkedIn Learning, internal L&D programs). That audience is highly relevant for Agents 102.
+- **Corporate/enterprise training.** IBM's certificate hints at enterprise demand, but we haven't looked at corporate training providers (Pluralsight, LinkedIn Learning, internal L&D programs). That audience is highly relevant to this whitespace.
 - **Free/community resources.** YouTube channels, open-source tutorials, and community-driven learning (e.g., Hugging Face courses) may be the real competition for attention, not paid courses.
 
 ---
@@ -68,31 +68,31 @@
 
 2. **Andrew Ng has closed the awareness-to-building gap — but only for developers.** His new "Agentic AI" course is the most significant development since Round 1. It provides the conceptual framework (four agentic design patterns) that was missing from the market. But it still requires Python. Ng has moved from "explain AI to everyone" to "teach agentic patterns to developers." The non-coder audience is still left behind.
 
-3. **The "four agentic design patterns" framework is becoming canonical.** Reflection, Tool Use, Planning, Multi-Agent — this taxonomy originated from Andrew Ng and is now the standard way to teach agentic AI across multiple courses. Agents 102 should adopt this framework as conceptual scaffolding, regardless of whether learners code.
+3. **The "four agentic design patterns" framework is becoming canonical.** Reflection, Tool Use, Planning, Multi-Agent — this taxonomy originated from Andrew Ng and is now the standard way to teach agentic AI across multiple courses. This framework is worth adopting as conceptual scaffolding, regardless of whether learners code.
 
-4. **Free is the dominant price point for vendor education.** DeepLearning.AI short courses: free. Google Kaggle intensive: free. OpenAI Academy: partially free. When the vendor is also the platform owner, they subsidize education to grow their ecosystem. This means Agents 102 competes against free — but with a value proposition those free courses cannot offer (vendor-agnostic, non-coder-friendly).
+4. **Free is the dominant price point for vendor education.** DeepLearning.AI short courses: free. Google Kaggle intensive: free. OpenAI Academy: partially free. When the vendor is also the platform owner, they subsidize education to grow their ecosystem. This means any independent program competes against free — but with a value proposition those free courses cannot offer (vendor-agnostic, non-coder-friendly).
 
-5. **University programs have found the business audience — at prohibitive prices.** UT Austin's AI Agents for Business Applications program is the single closest competitor to Agents 102's positioning. It explicitly targets business professionals, not developers. But at executive education pricing ($2K-$5K+), it serves only the corporate L&D budget tier. The individual learner, the startup founder, the product manager paying out of pocket — they are priced out.
+5. **University programs have found the business audience — at prohibitive prices.** UT Austin's AI Agents for Business Applications program is the single closest thing on the market to a vendor-agnostic, business-first agent education positioning. It explicitly targets business professionals, not developers. But at executive education pricing ($2K-$5K+), it serves only the corporate L&D budget tier. The individual learner, the startup founder, the product manager paying out of pocket — they are priced out.
 
 ### Surprises
 
 - **Andrew Ng now teaches agent-building, not just awareness.** This is the biggest shift since Round 1. Ng's "Agentic AI" course proves he sees agents as the next wave of accessible AI education. But he chose to require Python — a deliberate decision that leaves the non-coder audience to someone else.
 
-- **Vendor education is free because it is marketing.** Google, OpenAI, and DeepLearning.AI all offer agent courses at no cost. The business model is ecosystem lock-in, not tuition revenue. This reframes the competitive landscape: Agents 102 is not competing with these courses on price — it is competing on independence and breadth.
+- **Vendor education is free because it is marketing.** Google, OpenAI, and DeepLearning.AI all offer agent courses at no cost. The business model is ecosystem lock-in, not tuition revenue. This reframes the competitive landscape: an independent program does not compete with these courses on price — it competes on independence and breadth.
 
-- **The cohort model appears in agent education.** Google's 5-day Kaggle intensive uses daily pacing with community accountability. This is a format innovation that self-paced MOOCs lack. Cohort-based delivery may be a design advantage Agents 102 should consider.
+- **The cohort model appears in agent education.** Google's 5-day Kaggle intensive uses daily pacing with community accountability. This is a format innovation that self-paced MOOCs lack. Cohort-based delivery may be a design advantage worth considering broadly.
 
-- **A2A (Agent-to-Agent protocol) is already in curricula.** DeepLearning.AI has a course on the A2A protocol replacing their earlier ACP course. The protocol landscape is shifting fast — from MCP to ACP to A2A. Agents 102 must teach the concept of agent communication protocols without binding to any single standard.
+- **A2A (Agent-to-Agent protocol) is already in curricula.** DeepLearning.AI has a course on the A2A protocol replacing their earlier ACP course. The protocol landscape is shifting fast — from MCP to ACP to A2A. Any durable curriculum in this space must teach the concept of agent communication protocols without binding to any single standard.
 
 ### Updated Hypothesis
 
-**The whitespace holds — but the edges are closing in.** Round 1 found nobody bridging "AI awareness for everyone" and "agent-building for developers." Round 2 reveals that the bridge is being built from the developer side: Andrew Ng's agentic AI course and vendor academies now teach agent-building accessibly — but still require coding. From the business side, UT Austin targets business professionals with agent education — but at $2K-$5K+. Agents 102's unique position is the intersection: agent-building education that is both accessible to non-coders AND affordable. No program found in either round occupies that exact space.
+**The whitespace holds — but the edges are closing in.** Round 1 found nobody bridging "AI awareness for everyone" and "agent-building for developers." Round 2 reveals that the bridge is being built from the developer side: Andrew Ng's agentic AI course and vendor academies now teach agent-building accessibly — but still require coding. From the business side, UT Austin targets business professionals with agent education — but at $2K-$5K+. The unoccupied position is the intersection: agent-building education that is both accessible to non-coders AND affordable. No program found in either round occupies that exact space.
 
-The competitive risk has shifted. It is no longer "does the gap exist?" — it clearly does. The risk is now: (a) How long before Andrew Ng or a vendor creates a no-code agent course? (b) Can Agents 102 establish itself before the gap closes?
+The competitive risk has shifted. It is no longer "does the gap exist?" — it clearly does. The risk is now: (a) How long before Andrew Ng or a vendor creates a no-code agent course? (b) Can an independent program establish itself before the gap closes?
 
 ### What's Still Unclear or Missing
 
-- **Corporate/enterprise training platforms.** We still have not examined LinkedIn Learning, Pluralsight, or internal L&D agent programs. These are where corporate budgets flow and may be the most relevant distribution channel for Agents 102.
+- **Corporate/enterprise training platforms.** We still have not examined LinkedIn Learning, Pluralsight, or internal L&D agent programs. These are where corporate budgets flow and may be the most relevant distribution channel for reaching this audience.
 - **No-code agent platforms as learning environments.** Tools like n8n, Make, Zapier, and Relevance AI are increasingly marketing themselves with educational content. Are they becoming de facto learning platforms for non-coder agent builders?
 - **Completion and engagement data.** Still no hard data on whether short-format vendor courses (1 hour) outperform long-format MOOC courses (40+ hours) on actual learning outcomes, not just completion rates.
 - **YouTube and community learning.** Free YouTube tutorials and community resources (Hugging Face, Reddit communities) may represent the largest actual competitor for attention, even if they are not structured courses.
@@ -105,7 +105,7 @@ The competitive risk has shifted. It is no longer "does the gap exist?" — it c
 
 **Explore:** LinkedIn Learning, Pluralsight, and no-code agent platforms (n8n, Make, Zapier) that offer agent-building education. Test whether the corporate L&D market has agent education programs, and whether no-code platforms are becoming the de facto "agents for non-coders" learning path.
 
-**Why:** Rounds 1 and 2 confirmed the whitespace in formal education (MOOCs, vendor courses, universities). But the two audiences most relevant to Agents 102 — corporate professionals and non-coder builders — may already be learning through different channels: LinkedIn Learning for corporate L&D, and no-code platform tutorials for hands-on builders. If these channels are already serving our audience well, our positioning needs refinement. If they are not, the whitespace is even larger than we thought.
+**Why:** Rounds 1 and 2 confirmed the whitespace in formal education (MOOCs, vendor courses, universities). But the two most relevant audiences — corporate professionals and non-coder builders — may already be learning through different channels: LinkedIn Learning for corporate L&D, and no-code platform tutorials for hands-on builders. If these channels are already serving that audience well, the positioning hypothesis needs refinement. If they are not, the whitespace is even larger than expected.
 
 ---
 
@@ -135,11 +135,11 @@ The competitive risk has shifted. It is no longer "does the gap exist?" — it c
 
 ### Surprises
 
-- **The no-code agent gap is being noticed.** Udemy courses with "no code" and "AI agents" in the title are appearing for the first time. Class Central published a specific article on "Best AI Agent Courses for Beginners and Non-Coders." The market is waking up to this audience. Agents 102 is not alone in seeing the gap — but no credible player has claimed it yet.
+- **The no-code agent gap is being noticed.** Udemy courses with "no code" and "AI agents" in the title are appearing for the first time. Class Central published a specific article on "Best AI Agent Courses for Beginners and Non-Coders." The market is waking up to this audience. This whitespace is not going unnoticed — but no credible player has claimed it yet.
 
-- **Platform education is stronger than course education for non-coders.** The most effective way a non-coder can learn to build agents today is not through a course — it is through n8n's templates and documentation. This is a pedagogical insight: Agents 102 should integrate platform-based exercises (use n8n, Zapier, or similar tools as hands-on labs) rather than trying to teach agent-building in a vacuum.
+- **Platform education is stronger than course education for non-coders.** The most effective way a non-coder can learn to build agents today is not through a course — it is through n8n's templates and documentation. This is a pedagogical insight: integrating platform-based exercises (using n8n, Zapier, or similar tools as hands-on labs) beats trying to teach agent-building in a vacuum.
 
-- **Enterprise agent education is already vendor-locked.** Pluralsight's enterprise agent content teaches Salesforce Agentforce and Amazon Bedrock specifically. This means corporate learners are being trained on their existing vendor stack, not on agent concepts. Agents 102 can position itself as the "vendor-agnostic foundation" that precedes vendor-specific training.
+- **Enterprise agent education is already vendor-locked.** Pluralsight's enterprise agent content teaches Salesforce Agentforce and Amazon Bedrock specifically. This means corporate learners are being trained on their existing vendor stack, not on agent concepts. There is room for a "vendor-agnostic foundation" positioning that precedes vendor-specific training.
 
 ### Updated Hypothesis
 
@@ -151,15 +151,15 @@ The competitive risk has shifted. It is no longer "does the gap exist?" — it c
 - Corporate L&D (Pluralsight, LinkedIn Learning): Shallow conceptual content or vendor-specific tool training. No build-oriented agent education for non-coders.
 - No-code platforms (n8n, Zapier): Platform-as-education works for hands-on building, but teaches tools, not concepts. No conceptual framework, no strategic layer.
 
-Agents 102's positioning is validated: **vendor-agnostic agent education that is accessible to non-coders, affordable, and goes beyond awareness to actual building.** The closest informal competitors are no-code platform tutorials (n8n), but these are complementary — Agents 102 provides the "why" and "what," while platforms like n8n provide the "how."
+**Vendor-agnostic agent education that is accessible to non-coders, affordable, and goes beyond awareness to actual building** remains an unoccupied position. The closest informal competitors are no-code platform tutorials (n8n), but these are complementary to a conceptual layer above them — a "why" and "what" layer, while platforms like n8n provide the "how."
 
-The competitive risk is no longer that someone occupies this space — it is that the space fragments into tool-specific tutorials before anyone establishes a conceptual brand. Agents 102 needs to be the definitive "understand agents, then build them" program before the market fills with n8n-specific and Zapier-specific mini-courses that collectively address the same audience.
+The competitive risk is no longer that someone occupies this space — it is that the space fragments into tool-specific tutorials before anyone establishes a conceptual brand. Whoever wants this space needs to become the definitive "understand agents, then build them" program before the market fills with n8n-specific and Zapier-specific mini-courses that collectively address the same audience.
 
 ### What's Still Unclear or Missing
 
 - **YouTube and community learning.** Still unexamined. YouTube tutorials on n8n agent building and similar topics may represent significant informal competition.
 - **Completion and learning outcomes.** No hard data across any round. We know enrollment numbers but not whether anyone actually learns.
-- **B2B distribution strategy.** Pluralsight's model shows that corporate distribution matters — being in an existing L&D budget is a powerful advantage. How Agents 102 accesses corporate buyers remains unresolved (this is a go-to-market question, not a competitive research question).
+- **B2B distribution strategy.** Pluralsight's model shows that corporate distribution matters — being in an existing L&D budget is a powerful advantage. How to access corporate buyers remains unresolved (this is a go-to-market question, not a competitive research question).
 
 ---
 

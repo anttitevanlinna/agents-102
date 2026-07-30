@@ -146,7 +146,7 @@ Closest near-misses, each disqualified: **DX** median PR size 44→72 lines (+64
 
 > Being high on the **chat denominator** (Finland is — #1 in Europe on genAI-as-ChatGPT) says **almost nothing** about readiness on the **integration/agentic axis** (almost no one is, anywhere). Finland leads Europe at *chatting with a copilot*; the agentic frontier our other findings document (Spotify's background PR agents, the ~2X coding-throughput ceiling) is a thin, fast-moving slice *inside* that fat number. The race everyone thinks is being won (adoption) is over; the race that's actually open (organisational integration) has barely started. **That gap is the wedge — competence makes the integration question askable, and the fat "we use AI" headline is precisely what disguises how empty the frontier still is.**
 
-*Per research-claims §6, this is a reported read for discussion — not folded into `bosser-strategy` or curriculum without sign-off.*
+*This is a reported read for discussion, not a vetted finding — treat accordingly.*
 
 ## Deck recommendation (software-company audience)
 
@@ -181,4 +181,4 @@ Closest near-misses, each disqualified: **DX** median PR size 44→72 lines (+64
 - **Antti's Agentics Helsinki access = the primary-research channel** to convert the community vein (currently founder-marketing, not evidence) into a citable Finnish coding-agent case.
 - **Refresh `coding-engineering.md`'s global dev line** per `i-`: replace the dated "85% use AI / 62% use a coding agent" with "~84–90% use AI; ~30–35% use a genuine coding agent at some cadence; agentic doubling YoY but still minority."
 - ✅ **`/research-review` run 2026-06-27** (four personas; both rollups). Fixes applied: §4 L3-independence tightened, §6 dev-agent/Bain caveats added, official-cell "latest available" framing, frontmatter cutoff harmonized. **One open hard gate: re-verify the 91/28/12 julkari.fi primary** (currently secondary-sourced) before any deck use.
-- **Decide on the strategic wedge** (§"strategic read") — discuss before folding into strategy/curriculum (research-claims §6).
+- **Decide on the strategic wedge** (§"strategic read") — discuss before promoting to any downstream use.

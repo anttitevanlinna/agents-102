@@ -8,7 +8,7 @@
 
 **Headline:** Progress with what you have never built before.
 
-**Body:** AI strategy agents-101s with competence. Not slides. Not governance frameworks. Your people, building real agents, with your real policies. The vision follows.
+**Body:** AI strategy bootstraps with competence. Not slides. Not governance frameworks. Your people, building real agents, with your real policies. The vision follows.
 
 **CTA:** Start a conversation
 

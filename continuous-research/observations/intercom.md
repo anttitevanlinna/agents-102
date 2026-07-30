@@ -67,19 +67,19 @@ Curran doesn't hide the gap. Top 5% = 6x median. "Ironic that the sentiment amon
 - **`rules-verification-scarcity`** (L4 meta) — the AI-approval system is verification infrastructure made load-bearing. "Rules without verification = wishful thinking" cashes out here as "PR mandate without auto-approval is just a bottleneck shift."
 - **`coding-agent-as-general-platform`** — Intercom runs this thesis in production: Claude Code is the substrate, plugins/skills compound, everyone contributes. 31% of R&D active on the plugin repo is the compounding made visible.
 - **`experience-first-adoption`** — 600 non-R&D users "got over the intimidation of learning the command line" is experience-first crossing the chasm inside the company.
-- **Echo of `project_orchestrator_eval_loop`** — "team-2x" + auto-approval + skills marketplace is the same shape as the project's orchestrator+eval-loop pattern, at org scale.
+- **Orchestrator-plus-eval-loop, at org scale** — "team-2x" + auto-approval + skills marketplace is the shape a single practitioner runs with an orchestrator and an eval loop, enacted across a whole engineering organisation.
 - **Caveat — Intercom is an AI vendor** (Fin). They have motivation and tools to make this work. But the operating-model granularity (team-2x, plugin repo, tiering dimensions, per-PR cost tracking) is too specific to be marketing.
 
-## For Curriculum (Engineering Management training)
+## Change-Management Read
 
-This is likely the **anchor case** for the engineering-management training, the way F-Secure anchors Agents 101. Every module finds backing:
+Intercom is a strong anchor case for any engineering-management-focused curriculum — the case provides evidence at every stage of a Kotter-style change model:
 
-- **M1 (diagnose):** Intercom's 5-dimension per-person tiering = exactly the ADKAR-style diagnostic artifact.
-- **M2 (first move):** "Be at peace with potentially imperfect measures" = the M2 operating stance. PR throughput = the "one imperfect metric that creates pressure" example.
-- **M3 (coalition):** team-2x + plugin marketplace = the guiding coalition as a product.
-- **M4 (vision):** 2x memo itself + "All technical work is becoming agent-first" principle.
-- **M5 (conditions + ritual):** auto-approval system as the verification ritual; PR mandate escalation (80%→95%) as conditions made enforceable.
-- **M6 (signals + plan):** the 9 metrics + day-91-style transparency is the signal dashboard. Exponential spend + declining $/PR is the compound signal.
+- **Diagnose:** Intercom's 5-dimension per-person tiering = exactly the ADKAR-style diagnostic artifact.
+- **First move:** "Be at peace with potentially imperfect measures" = the operating stance. PR throughput = the "one imperfect metric that creates pressure" example.
+- **Coalition:** team-2x + plugin marketplace = the guiding coalition as a product.
+- **Vision:** 2x memo itself + "All technical work is becoming agent-first" principle.
+- **Conditions + ritual:** auto-approval system as the verification ritual; PR mandate escalation (80%→95%) as conditions made enforceable.
+- **Signals + plan:** the 9 metrics + day-91-style transparency is the signal dashboard. Exponential spend + declining $/PR is the compound signal.
 
 ---
 

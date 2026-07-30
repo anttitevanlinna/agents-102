@@ -80,16 +80,16 @@ Treat Claude like an engineer you're delegating to: write the full brief (goal, 
 
 **Last updated:** 2026-05-03
 
-**Source verification — MUST DO before first cohort:**
+**Source verification — MUST DO before citing as current:**
 
 1. Open every URL above against the original. Two specifically need re-checking:
-   - The "treat Claude like an engineer you're delegating to" framing is recapped in *paddo.dev* and the *howborisusesclaudecode.com* fan site, but the primary-quote audio on Lenny's podcast is **paywalled** — could not verify against the original. **[UNVERIFIED]** — flagged for first-cohort verification or reframe as "practitioners summarise his stance as…" without single-quote attribution.
+   - The "treat Claude like an engineer you're delegating to" framing is recapped in *paddo.dev* and the *howborisusesclaudecode.com* fan site, but the primary-quote audio on Lenny's podcast is **paywalled** — could not verify against the original. **[UNVERIFIED]** — flagged for verification or reframe as "practitioners summarise his stance as…" without single-quote attribution.
    - The *howborisusesclaudecode.com* site is a fan-built archive by [@CarolinaCherry](https://github.com/carolinacherry), explicitly "not affiliated with Anthropic" and "sourced directly from Boris's posts." Per the byline-check rule: cite Cherny's underlying X/Threads posts directly when load-bearing; treat the archive site as a navigational aid, not a primary source. Removed from the citation chain in this file.
    - The *finalroundai.com* article on the "software engineer title will go away" claim is a journalist's recap referencing Y Combinator's *Lightcone* podcast (not Lenny's, despite the Lenny preview heading on the Final Round piece). Author byline absent. Treat as **[UNVERIFIED]** until the original Y Combinator clip is opened — alternative: cite Cherny's Threads post on "code is not the bottleneck" as the load-bearing claim, since that one is practitioner-direct.
 
-2. Latent Space podcast (May 2025) is **outside the 6-month freshness window**. Used in this file as historical stance context only, explicitly dated. Do not cite as current evidence. If the embeddings-vs-agentic-search claim is load-bearing for a module, find a 2026 restatement before shipping.
+2. Latent Space podcast (May 2025) is **outside the 6-month freshness window**. Used in this file as historical stance context only, explicitly dated. Do not cite as current evidence. If the embeddings-vs-agentic-search claim is load-bearing for downstream use, find a 2026 restatement before treating it as current.
 
-3. Numbers to triple-check at delivery: "2–3x quality" (Cherny's own claim, single source); "20–30 PRs a day" (Orosz on Cherny, single secondary source); "single biggest productivity unlock" (Cherny's own framing on X — opinion, label as such).
+3. Numbers to triple-check before citing: "2–3x quality" (Cherny's own claim, single source); "20–30 PRs a day" (Orosz on Cherny, single secondary source); "single biggest productivity unlock" (Cherny's own framing on X — opinion, label as such).
 
 **Provenance — source-type labels:**
 

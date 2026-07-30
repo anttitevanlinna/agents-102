@@ -190,7 +190,7 @@
 
 **What changed:** On February 17, 2026, NIST launched the AI Agent Standards Initiative through its Center for AI Standards and Innovation (CAISI). Three pillars: (1) industry-led agent standards, (2) open-source protocol development, (3) research on agent security and identity.
 
-**Why this matters for our training:** What NIST publishes in 2026 will appear in compliance frameworks, vendor questionnaires, and litigation by 2027. Organizations attending our Agents 101 training need to know this is coming.
+**Why this matters for training:** What NIST publishes in 2026 will appear in compliance frameworks, vendor questionnaires, and litigation by 2027. Organizations training their people on agentic AI need to know this is coming.
 
 **Key deliverables coming:**
 - Draft concept paper on agent identity and authorization (NCCOE project)
@@ -218,13 +218,13 @@
 
 4. **NIST entering the agent standards space is the regulatory signal.** This will drive enterprise compliance requirements in 2027. Organizations need to be aware now.
 
-### What to update in our training (Module 7: Agent Platforms)
+### Teaching implications
 
 - LangGraph v1.0 GA is a teachable milestone (stability commitment)
-- The CrewAI prototyping-to-production gap is a perfect teaching case for Module 7
+- The CrewAI prototyping-to-production gap is a perfect teaching case for framework selection
 - A2A + MCP dual-protocol stack should be covered as emerging infrastructure
-- NIST initiative is relevant context for security (Module 4) and platforms (Module 7)
-- OpenAI Agents SDK is no longer OpenAI-locked — update our assessment
+- NIST initiative is relevant context for security and platform-selection curricula
+- OpenAI Agents SDK is no longer OpenAI-locked — a notable reassessment point
 - Microsoft Agent Framework GA is imminent — update from "targeted Q1" to "shipping"
 
 ### What we did NOT find

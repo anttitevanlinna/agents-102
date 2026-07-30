@@ -43,10 +43,10 @@ Creator and Head of Claude Code at Anthropic. Ex-Meta Principal Engineer (5 year
 - Honest note on impact: *"painful for a lot of people"* — he does not sugar-coat labor displacement (Lenny).
 - **What he's notably silent on**: long-term persistent memory as a feature, multi-agent deliberation/debate runtimes, Cursor/Codex comparisons (he almost never names competitors publicly), enterprise deployment friction, evals/verification infrastructure beyond hooks. The silence on evals is striking given how much his throughput depends on verification loops.
 
-## Curriculum implications — held loose
-- **File-based agentic RAG stays canonical for Agents 102.** Boris's own RAG-reply quote is the cleanest public corroboration of the Module 2 "LLM Wiki / files beat retrieval" pattern.
-- **Parallel sessions + plan mode = the builder throughput story.** Useful for Engineering Management and Agentic Engineering 101: the leverage is context-switching discipline, not IDE polish.
-- **CLAUDE.md as live memory, updated on every correction.** Reinforces M1–M2 framing: the memory design surface is a file, not a vector store.
-- **"Builder" identity.** Cherny's language ("builder, not software engineer") converges with Agents 102's "Agent builder" graduate identity — outside corroboration from the platform lead, not marketing.
-- **Agentic design over scaffolds.** His "hackable, abuse it, then build for that" maps cleanly onto "trust the agentic design" rule.
-- **Silence caveat**: he does not publicly validate multi-agent deliberation (M8 peak) or long-term memory. We are not downstream of his roadmap on those; we teach them because practitioners need them, not because Anthropic has said so.
+## Notes — held loose
+- **Files beat retrieval, in the platform lead's own words.** Boris's own RAG-reply quote is the cleanest public corroboration of the "files beat retrieval" pattern for agentic code work.
+- **Parallel sessions + plan mode = the builder throughput story.** The leverage is context-switching discipline, not IDE polish.
+- **CLAUDE.md as live memory, updated on every correction.** The memory design surface is a file, not a vector store.
+- **"Builder" identity.** Cherny's language ("builder, not software engineer") is outside corroboration from the platform lead — not marketing — for the broader "builder" framing practitioners are converging on.
+- **Agentic design over scaffolds.** His "hackable, abuse it, then build for that" maps cleanly onto a "trust the agentic design" principle.
+- **Silence caveat**: he does not publicly validate multi-agent deliberation or long-term memory. Practitioners who teach these do so because the need is real, not because Anthropic has said so.

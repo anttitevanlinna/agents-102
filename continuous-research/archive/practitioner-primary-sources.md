@@ -337,11 +337,11 @@ The people most explicitly using the "agent" framing (Alasaarela, Hagerup, Heini
 
 This suggests the "agent" label is still more a builder/community term than a market-facing term. The practitioners selling to enterprises talk about outcomes (savings, speed, autonomy) not architecture (agents, orchestration).
 
-### Implications for Agents 102
+### Implications for Training/Positioning
 
-1. **Alasaarela is the strongest Finnish-language asset** — prolific, explicitly about agents, community organizer. Natural ally for the program.
-2. **Osika and Junestrand are the strongest case studies** — but they tell vibe coding / legal AI stories, not agent stories. We would need to reframe their work through our lens.
-3. **Fras (Nordea) has the most useful enterprise practitioner insights** — architecture-first scaling, model-agnostic design, governance as 70%+ of the work. This is what our enterprise buyers need to hear.
+1. **Alasaarela is the strongest Finnish-language asset** — prolific, explicitly about agents, community organizer. Natural ally for an agentic training program.
+2. **Osika and Junestrand are the strongest case studies** — but they tell vibe coding / legal AI stories, not agent stories. Their work would need reframing through an agent-competence lens to serve as case studies.
+3. **Fras (Nordea) has the most useful enterprise practitioner insights** — architecture-first scaling, model-agnostic design, governance as 70%+ of the work. This is what enterprise buyers need to hear.
 4. **Skryseth (Equinor) has the most powerful headline** — $130M saved by AI in one year. Hard to argue with.
-5. **Ruokonen (Basware) has the hardest data** — 61% of agent deployments in finance were experiments that failed. This is the kind of reality check our training should include.
-6. **Hellermark's "AI for human genius" framing** is the most articulate version of the augmentation position — directly relevant to how we position agents in our training.
+5. **Ruokonen (Basware) has the hardest data** — 61% of agent deployments in finance were experiments that failed. This is the kind of reality check agentic training should include.
+6. **Hellermark's "AI for human genius" framing** is the most articulate version of the augmentation position — directly relevant to how agents get positioned in training contexts.

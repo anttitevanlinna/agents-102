@@ -1,4 +1,4 @@
-# AI Transformation Frameworks — Findings & Implications for Agents 102
+# AI Transformation Frameworks — Findings & Implications
 
 OODA Round 1 | 2026-02-15
 
@@ -42,9 +42,9 @@ Despite the explosion of agentic frameworks, we identified consistent gaps:
 
 ---
 
-## Implications for Agents 102
+## Implications for agent-competence training
 
-### We are the prerequisite — not the complement — for these frameworks
+### Hands-on competence is the prerequisite — not the complement — for these frameworks
 
 The agentic transformation is fundamentally different from previous ones (digital, agile, cloud). In those, executives didn't need to personally build software to envision a digital company — the vision was accessible through strategy and analysis. Consultancies could hand it down in slide decks.
 
@@ -55,13 +55,7 @@ Agents are different. **You cannot envision what agents do for your organization
 - Maturity models where nobody can picture what "Level 3" actually looks like
 - Change programs that reproduce the consultancy's slides, not the organization's future
 
-Agents 102 is not the execution layer under the strategy deck. **Agents 102 is the prerequisite for having a real strategy.** The vision — the real one — emerges from competence, not from analysis. Once people can think agents, the vision becomes obvious. It is not handed down. It emerges from building.
-
-### Positioning
-
-> "The consultancy frameworks are governance of an abstraction. We create the competence that makes the vision real."
-
-Or in Bosser terms: the best strategies emerge from action, not analysis. We conjecture momentum.
+Hands-on competence is not the execution layer under the strategy deck. **It is the prerequisite for having a real strategy.** The vision — the real one — emerges from competence, not from analysis. Once people can think agents, the vision becomes obvious. It is not handed down. It emerges from building.
 
 ### Frameworks we should reference and build on
 
@@ -89,7 +83,7 @@ None of the frameworks we found address **cross-company learning networks** for 
 **Probably not as a standalone track.** The landscape is clear enough to inform our positioning and curriculum design. However, two focused follow-ups could be useful:
 
 1. **Deep-read of MIT Sloan "Emerging Agentic Enterprise" report** — This is the most intellectually rigorous framework and closest to our thinking. Worth a close read to ensure we align or deliberately diverge.
-2. **Vendor-specific agentic frameworks (Salesforce Agentforce, Microsoft Copilot Studio, AWS Bedrock Agents)** — These are where our training participants will actually encounter agents. Could be a separate research track on "Agentic Platforms & Tools."
+2. **Vendor-specific agentic frameworks (Salesforce Agentforce, Microsoft Copilot Studio, AWS Bedrock Agents)** — These are where non-coder practitioners will actually encounter agents. Could be a separate research track on "Agentic Platforms & Tools."
 
 ### What is still unclear
 

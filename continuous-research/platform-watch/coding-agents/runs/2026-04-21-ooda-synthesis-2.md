@@ -1,8 +1,8 @@
-# OODA synthesis #2 — research backing for Agentic Engineering 101 curriculum — 2026-04-21
+# OODA synthesis #2 — research backing for long-running agentic practice — 2026-04-21
 
-Six parallel OODAs run to validate what the AE101 strategy claims. Each scan wrote to its own file under `runs/`. This synthesis reports findings at evidence level, held loose per `memory/feedback_hold_ooda_loose.md`.
+Six parallel OODAs run to validate claims about long-running agentic work. Each scan wrote to its own file under `runs/`. This synthesis reports findings at evidence level, held loose.
 
-**Context:** Antti's principle — *"The research system was always built thinking of this moment. I have a high-level vision. The detail is the real shit happening by real people. Stuff that works. Stuff that is just hitting beyond early adopters."* Curriculum ships claims; research verifies them. This synthesis maps which AE101 claims survive verification, which are thin, and where the chasm-crossing signal lives right now.
+**Context:** Antti's principle — *"The research system was always built thinking of this moment. I have a high-level vision. The detail is the real shit happening by real people. Stuff that works. Stuff that is just hitting beyond early adopters."* This synthesis maps which claims survive verification, which are thin, and where the chasm-crossing signal lives right now.
 
 ## Source files
 - `2026-04-21-long-running-broader-scan.md` — long-running beyond the earlier Opus-specific OODA

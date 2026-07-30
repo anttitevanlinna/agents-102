@@ -26,9 +26,9 @@
 | Hands-On Intensity | 2 | Participants apply frameworks to their org, but unlikely to build working agents |
 | Fundamentals vs. Tools | 4 | Framework-driven, not vendor-locked |
 
-**Strengths vs. Agents 102**: Strong on organizational transformation framing. "Agentic Enterprise" model is a real framework, not just buzzwords. Targets exactly the right leadership audience.
+**Strengths**: Strong on organizational transformation framing. "Agentic Enterprise" model is a real framework, not just buzzwords. Targets exactly the right leadership audience.
 
-**Gaps vs. Agents 102**: Very light on hands-on building. Participants likely leave with a strategy, not a working agent. Short duration limits depth. No evidence of participants actually constructing agents themselves.
+**Gaps**: Very light on hands-on building. Participants likely leave with a strategy, not a working agent. Short duration limits depth. No evidence of participants actually constructing agents themselves.
 
 **Competitor criteria met**: Agentic (yes), Transformative (yes), Company-scale (yes), Hands-on (weak — strategic exercises, not agent building).
 
@@ -55,9 +55,9 @@
 | Hands-On Intensity | 4 | Design sprint methodology suggests real building |
 | Fundamentals vs. Tools | 3 | Likely practical/tool-oriented given sprint format |
 
-**Strengths vs. Agents 102**: Sprint format creates urgency and real output. Team-based (not individual). Explicit enterprise framing. The "vague AI mandates to tangible results" positioning is sharp.
+**Strengths**: Sprint format creates urgency and real output. Team-based (not individual). Explicit enterprise framing. The "vague AI mandates to tangible results" positioning is sharp.
 
-**Gaps vs. Agents 102**: 5 days is intense but shallow on fundamentals. Likely expensive. Unclear how deep the "building" goes for non-technical participants. Sprint model may not create lasting capability — it produces an artifact, not necessarily understanding.
+**Gaps**: 5 days is intense but shallow on fundamentals. Likely expensive. Unclear how deep the "building" goes for non-technical participants. Sprint model may not create lasting capability — it produces an artifact, not necessarily understanding.
 
 **Competitor criteria met**: Agentic (yes), Transformative (partial — more execution than transformation), Company-scale (yes), Hands-on (yes).
 
@@ -84,9 +84,9 @@
 | Hands-On Intensity | 5 | Each participant builds a working agent |
 | Fundamentals vs. Tools | 3 | Practical build focus, unclear on principle depth |
 
-**Strengths vs. Agents 102**: Strong hands-on component — participants leave with a working agent. Hybrid format (on-demand + live) is a good model. Coached, not just lectured.
+**Strengths**: Strong hands-on component — participants leave with a working agent. Hybrid format (on-demand + live) is a good model. Coached, not just lectured.
 
-**Gaps vs. Agents 102**: Unclear organizational transformation angle. May be individual upskilling rather than company-wide change. Unclear how accessible it is to true non-coders. Likely tool-specific rather than principles-first.
+**Gaps**: Unclear organizational transformation angle. May be individual upskilling rather than company-wide change. Unclear how accessible it is to true non-coders. Likely tool-specific rather than principles-first.
 
 **Competitor criteria met**: Agentic (yes), Transformative (unclear), Company-scale (unclear), Hands-on (yes).
 
@@ -113,9 +113,9 @@
 | Hands-On Intensity | 4 | "Real-world tools and techniques" — hands-on oriented |
 | Fundamentals vs. Tools | 3 | Mix of fundamentals and specific tools |
 
-**Strengths vs. Agents 102**: 9-week duration allows real depth. Mixed audience design is direct and well-positioned. Data Science Dojo has brand credibility. Includes both strategic and technical tracks.
+**Strengths**: 9-week duration allows real depth. Mixed audience design is direct and well-positioned. Data Science Dojo has brand credibility. Includes both strategic and technical tracks.
 
-**Gaps vs. Agents 102**: Prerequisites ("understand basics of LLMs") may exclude true beginners. No organizational transformation angle. Likely individual-focused. "Dojo" branding suggests developer tilt despite the mixed-audience claim.
+**Gaps**: Prerequisites ("understand basics of LLMs") may exclude true beginners. No organizational transformation angle. Likely individual-focused. "Dojo" branding suggests developer tilt despite the mixed-audience claim.
 
 **Competitor criteria met**: Agentic (yes), Transformative (no — individual upskilling), Company-scale (no), Hands-on (yes).
 
@@ -142,9 +142,9 @@
 | Hands-On Intensity | 3 | "Projects and case studies" — some hands-on, likely guided |
 | Fundamentals vs. Tools | 3 | "Industry-relevant tools" suggests tool-centric |
 
-**Strengths vs. Agents 102**: University brand adds credibility. Business school framing naturally attracts the right audience. Case study approach builds judgment, not just skills.
+**Strengths**: University brand adds credibility. Business school framing naturally attracts the right audience. Case study approach builds judgment, not just skills.
 
-**Gaps vs. Agents 102**: Academic pacing may be slow. Likely more analytical than transformative. "Post-graduate program" framing may over-formalize. Unclear how hands-on — case studies can be passive. University programs tend to lag behind fast-moving fields.
+**Gaps**: Academic pacing may be slow. Likely more analytical than transformative. "Post-graduate program" framing may over-formalize. Unclear how hands-on — case studies can be passive. University programs tend to lag behind fast-moving fields.
 
 **Competitor criteria met**: Agentic (yes), Transformative (partial), Company-scale (partial), Hands-on (partial).
 
@@ -175,9 +175,9 @@
 | Hands-On Intensity | 4 | Participants build working agents within Copilot Studio |
 | Fundamentals vs. Tools | 1 | Entirely Copilot Studio-specific — no transferable principles |
 
-**Strengths vs. Agents 102**: Free and accessible. Massive scale through existing Microsoft customer base. Genuinely no-code — you create agents through natural language conversation. Badge/rank system creates a progression path. Already integrated into tools people use daily.
+**Strengths**: Free and accessible. Massive scale through existing Microsoft customer base. Genuinely no-code — you create agents through natural language conversation. Badge/rank system creates a progression path. Already integrated into tools people use daily.
 
-**Gaps vs. Agents 102**: 100% vendor-locked. Teaches how to use one product, not how to think about agents. No organizational transformation framing. No transferable mental models. Participants learn to click buttons in Copilot Studio, not to understand what makes an agent effective. Zero coverage of when agents are the wrong solution.
+**Gaps**: 100% vendor-locked. Teaches how to use one product, not how to think about agents. No organizational transformation framing. No transferable mental models. Participants learn to click buttons in Copilot Studio, not to understand what makes an agent effective. Zero coverage of when agents are the wrong solution.
 
 **Competitor criteria met**: Agentic (narrow), Transformative (no), Company-scale (no), Hands-on (yes, but tool-specific).
 
@@ -204,9 +204,9 @@
 | Hands-On Intensity | 4 | Interactive exercises within the platform |
 | Fundamentals vs. Tools | 1 | Entirely Microsoft Copilot Studio |
 
-**Strengths vs. Agents 102**: Free, well-structured, backed by Microsoft's instructional design team. Workshop variant adds live guidance. Seamless integration with Microsoft 365 work environment.
+**Strengths**: Free, well-structured, backed by Microsoft's instructional design team. Workshop variant adds live guidance. Seamless integration with Microsoft 365 work environment.
 
-**Gaps vs. Agents 102**: Pure product training. No "why" — only "how to use this tool." No critical thinking about agent design. No organizational context. Teaches one vendor's implementation, not the concept.
+**Gaps**: Pure product training. No "why" — only "how to use this tool." No critical thinking about agent design. No organizational context. Teaches one vendor's implementation, not the concept.
 
 **Competitor criteria met**: Agentic (narrow), Transformative (no), Company-scale (no), Hands-on (yes, tool-specific).
 
@@ -233,9 +233,9 @@
 | Hands-On Intensity | 4 | Trailhead's hands-on playground exercises |
 | Fundamentals vs. Tools | 1 | 100% Salesforce Agentforce |
 
-**Strengths vs. Agents 102**: Trailhead is one of the best-designed corporate learning platforms. Gamified, badge-driven, genuinely fun. Free and massive in reach. Salesforce's CRM dominance means many organizations will encounter Agentforce first. Community support (Agentblazers) creates peer learning.
+**Strengths**: Trailhead is one of the best-designed corporate learning platforms. Gamified, badge-driven, genuinely fun. Free and massive in reach. Salesforce's CRM dominance means many organizations will encounter Agentforce first. Community support (Agentblazers) creates peer learning.
 
-**Gaps vs. Agents 102**: Entirely Salesforce-locked. "Agents" here means Agentforce agents — a specific product, not the general concept. No transferable understanding. No organizational transformation lens. Participants learn Salesforce's agent product, not agent thinking. Will not help someone evaluate whether Agentforce is even the right choice.
+**Gaps**: Entirely Salesforce-locked. "Agents" here means Agentforce agents — a specific product, not the general concept. No transferable understanding. No organizational transformation lens. Participants learn Salesforce's agent product, not agent thinking. Will not help someone evaluate whether Agentforce is even the right choice.
 
 **Competitor criteria met**: Agentic (narrow — product-specific), Transformative (no), Company-scale (no), Hands-on (yes, platform-specific).
 
@@ -262,9 +262,9 @@
 | Hands-On Intensity | 2 | Exam-based, not build-based (though preparation involves building) |
 | Fundamentals vs. Tools | 1 | 100% Salesforce Agentforce tooling |
 
-**Strengths vs. Agents 102**: Career credential with market value. Salesforce certifications are widely recognized in enterprise. Structured assessment validates competence. Clear preparation path through Trailhead.
+**Strengths**: Career credential with market value. Salesforce certifications are widely recognized in enterprise. Structured assessment validates competence. Clear preparation path through Trailhead.
 
-**Gaps vs. Agents 102**: Pure vendor certification. Tests product knowledge, not agent design thinking. No transferable skills. No organizational perspective. Narrow audience — only relevant to Salesforce professionals.
+**Gaps**: Pure vendor certification. Tests product knowledge, not agent design thinking. No transferable skills. No organizational perspective. Narrow audience — only relevant to Salesforce professionals.
 
 **Competitor criteria met**: Agentic (narrow), Transformative (no), Company-scale (no), Hands-on (exam, not build).
 
@@ -291,9 +291,9 @@
 | Hands-On Intensity | 4 | Hands-on labs in Google Cloud environment |
 | Fundamentals vs. Tools | 2 | Google Cloud-specific, but covers deeper architectural concepts (MCP, A2A) |
 
-**Strengths vs. Agents 102**: More technically substantive than Microsoft or Salesforce training. Covers real agent architecture concepts (multi-agent orchestration, protocols). Hands-on labs with real cloud infrastructure. Google's ADK and A2A protocol work touches genuine agent interoperability.
+**Strengths**: More technically substantive than Microsoft or Salesforce training. Covers real agent architecture concepts (multi-agent orchestration, protocols). Hands-on labs with real cloud infrastructure. Google's ADK and A2A protocol work touches genuine agent interoperability.
 
-**Gaps vs. Agents 102**: Requires developer skills — not accessible to non-coders. 100% Google Cloud-locked. No organizational transformation context. No business framing. The most technically capable vendor program, but also the least accessible to Agents 102's target audience.
+**Gaps**: Requires developer skills — not accessible to non-coders. 100% Google Cloud-locked. No organizational transformation context. No business framing. The most technically capable vendor program, but also the least accessible to non-coders.
 
 **Competitor criteria met**: Agentic (yes, but platform-specific), Transformative (no), Company-scale (no), Hands-on (yes, technical).
 
@@ -324,9 +324,9 @@
 | Hands-On Intensity | 1 | Zero hands-on agent building — pure strategy and advisory |
 | Fundamentals vs. Tools | 5 | Completely vendor-agnostic, principles-first |
 
-**Strengths vs. Agents 102**: The deepest organizational transformation framing available. McKinsey's "Agentic Organization" concept is intellectually serious. Vendor-agnostic by design. Massive credibility with executive buyers. Published thought leadership creates awareness for the concept that Agents 102 also teaches.
+**Strengths**: The deepest organizational transformation framing available. McKinsey's "Agentic Organization" concept is intellectually serious. Vendor-agnostic by design. Massive credibility with executive buyers. Published thought leadership creates awareness for the concept.
 
-**Gaps vs. Agents 102**: Not a training program at all — it is consulting. No one "enrolls." No hands-on building. Inaccessible to anyone outside Fortune 500 budgets. Creates strategy decks, not capability. Participants (clients) do not learn to build or evaluate agents themselves — McKinsey does it for them.
+**Gaps**: Not a training program at all — it is consulting. No one "enrolls." No hands-on building. Inaccessible to anyone outside Fortune 500 budgets. Creates strategy decks, not capability. Participants (clients) do not learn to build or evaluate agents themselves — McKinsey does it for them.
 
 **Competitor criteria met**: Agentic (strategic only), Transformative (yes), Company-scale (yes), Hands-on (no).
 
@@ -353,9 +353,9 @@
 | Hands-On Intensity | 1 | Workshops may include demos, but no participant-built agents |
 | Fundamentals vs. Tools | 4 | Vendor-agnostic in principle, though often tied to vendor partnerships |
 
-**Strengths vs. Agents 102**: Massive credibility and enterprise relationships. Can bundle training into transformation programs. Have deep benches of AI talent. Vendor partnerships give access to cutting-edge platforms while maintaining advisory independence.
+**Strengths**: Massive credibility and enterprise relationships. Can bundle training into transformation programs. Have deep benches of AI talent. Vendor partnerships give access to cutting-edge platforms while maintaining advisory independence.
 
-**Gaps vs. Agents 102**: Not training programs — consulting services with training components. Inaccessible pricing. Not enrollable by individuals or small teams. Training is a byproduct of consulting, not the product. Often tied to specific vendor partnerships despite "agnostic" framing.
+**Gaps**: Not training programs — consulting services with training components. Inaccessible pricing. Not enrollable by individuals or small teams. Training is a byproduct of consulting, not the product. Often tied to specific vendor partnerships despite "agnostic" framing.
 
 **Competitor criteria met**: Agentic (partial), Transformative (yes, within consulting), Company-scale (yes), Hands-on (no).
 
@@ -382,9 +382,9 @@
 | Hands-On Intensity | 5 | Every course is build-along, participants create working agents |
 | Fundamentals vs. Tools | 2 | Almost entirely tool-specific (n8n, Zapier, etc.) |
 
-**Strengths vs. Agents 102**: Actually deliver on the "non-coders building agents" promise. Cheap and accessible. Participants leave with working automations. Practical and immediately useful. n8n in particular is open-source and relatively vendor-neutral.
+**Strengths**: Actually deliver on the "non-coders building agents" promise. Cheap and accessible. Participants leave with working automations. Practical and immediately useful. n8n in particular is open-source and relatively vendor-neutral.
 
-**Gaps vs. Agents 102**: Zero organizational transformation framing. Teach tool operation, not agent thinking. No strategic context — participants learn to wire nodes in n8n, not to evaluate whether an agent is the right solution. No coverage of when agents fail, ethical considerations, or cross-platform architecture. Freelancer/side-hustle framing, not enterprise transformation. Quality varies wildly across instructors.
+**Gaps**: Zero organizational transformation framing. Teach tool operation, not agent thinking. No strategic context — participants learn to wire nodes in n8n, not to evaluate whether an agent is the right solution. No coverage of when agents fail, ethical considerations, or cross-platform architecture. Freelancer/side-hustle framing, not enterprise transformation. Quality varies wildly across instructors.
 
 **Competitor criteria met**: Agentic (partial — automation-oriented), Transformative (no), Company-scale (no), Hands-on (yes).
 
@@ -411,9 +411,9 @@
 | Hands-On Intensity | 3 | Product use is inherently hands-on, but no structured learning path |
 | Fundamentals vs. Tools | 1 | 100% Zapier-specific |
 
-**Strengths vs. Agents 102**: Zapier's massive user base means many people's first encounter with "AI agents" will be through Zapier Agents. The product is genuinely accessible to non-coders. Integration with 7,000+ apps gives real-world utility immediately.
+**Strengths**: Zapier's massive user base means many people's first encounter with "AI agents" will be through Zapier Agents. The product is genuinely accessible to non-coders. Integration with 7,000+ apps gives real-world utility immediately.
 
-**Gaps vs. Agents 102**: No training program exists — just product docs. "Agents" means something narrower than what Agents 102 teaches. No transferable understanding. No organizational framing. Zapier Agents is a feature within a product, not a capability within a person.
+**Gaps**: No training program exists — just product docs. "Agents" means task-automation, not autonomous reasoning. No transferable understanding. No organizational framing. Zapier Agents is a feature within a product, not a capability within a person.
 
 **Competitor criteria met**: Agentic (narrow — product feature), Transformative (no), Company-scale (no), Hands-on (through product use, not training).
 
@@ -440,8 +440,8 @@
 | Hands-On Intensity | 4 | Platform-native exercises, learn by building |
 | Fundamentals vs. Tools | 1 | 100% platform-specific |
 
-**Strengths vs. Agents 102**: Practical, accessible, and tied to real automation platforms. n8n's open-source nature gives it credibility with technically curious non-coders. Make Academy is well-structured.
+**Strengths**: Practical, accessible, and tied to real automation platforms. n8n's open-source nature gives it credibility with technically curious non-coders. Make Academy is well-structured.
 
-**Gaps vs. Agents 102**: AI agents are a side topic, not the focus. No agentic AI framing, strategy, or organizational transformation. Platform-locked learning. No coverage of agent design principles, failure modes, or evaluation frameworks.
+**Gaps**: AI agents are a side topic, not the focus. No agentic AI framing, strategy, or organizational transformation. Platform-locked learning. No coverage of agent design principles, failure modes, or evaluation frameworks.
 
 **Competitor criteria met**: Agentic (minor feature), Transformative (no), Company-scale (no), Hands-on (yes, platform-specific).

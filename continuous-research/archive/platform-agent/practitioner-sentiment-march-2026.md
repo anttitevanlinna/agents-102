@@ -221,16 +221,16 @@ NBER study (academic, 6,000 executives), PwC survey (4,500 leaders), Deloitte re
 
 ---
 
-## Key Takeaways for Agents 102 Training
+## Key Takeaways for Agentic Training
 
-1. **The "useful AND unreliable" framing is validated.** NBER data + RAND data + practitioner sentiment all confirm: agents work in demos, fail in production at scale. This is exactly the teaching moment our curriculum builds on.
+1. **The "useful AND unreliable" framing is validated.** NBER data + RAND data + practitioner sentiment all confirm: agents work in demos, fail in production at scale. This is exactly the teaching moment agentic curricula should build on.
 
-2. **Multi-agent skepticism is now evidence-based.** The 17x error amplification finding from Google/MIT is peer-reviewed evidence that Module 3 (Multi-Agent Systems) needs to lead with the failure mode, not the promise.
+2. **Multi-agent skepticism is now evidence-based.** The 17x error amplification finding from Google/MIT is peer-reviewed evidence that any multi-agent-systems curriculum needs to lead with the failure mode, not the promise.
 
-3. **Evals are the gap.** Only 52% of orgs with agents in production run offline evals, 37% online. Module 6 (Evaluations) addresses the exact gap the market has identified.
+3. **Evals are the gap.** Only 52% of orgs with agents in production run offline evals, 37% online. An evaluations-focused curriculum module addresses the exact gap the market has identified.
 
-4. **Security is undersold.** 73% prompt injection rate in production + 88% security incidents + 22% governance = Module 4 (Security) addresses a real and growing crisis.
+4. **Security is undersold.** 73% prompt injection rate in production + 88% security incidents + 22% governance = a security-focused curriculum module addresses a real and growing crisis.
 
-5. **The cost story has changed.** Cost is no longer the primary blocker — quality is. Our curriculum should reflect this shift: the problem isn't "can we afford it?" but "can we trust it?"
+5. **The cost story has changed.** Cost is no longer the primary blocker — quality is. Curricula should reflect this shift: the problem isn't "can we afford it?" but "can we trust it?"
 
-6. **The market consolidation strengthens our positioning.** "40% of AI startups fail in 24 months" + "SaaS seat compression" = organizations need internal competence, not vendor dependency. This validates the Agents 102 value proposition: own the transformation.
+6. **The market consolidation strengthens the competence-first positioning.** "40% of AI startups fail in 24 months" + "SaaS seat compression" = organizations need internal competence, not vendor dependency. This validates a core value proposition for agentic training: own the transformation.

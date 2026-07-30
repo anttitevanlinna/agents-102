@@ -125,7 +125,7 @@
 Harvey ($11B, 100K+ lawyers) and Legora ($5.55B, 800+ firms) are both deploying multi-step autonomous agents at scale. Same pattern: agent loops with human-in-the-loop checkpoints, multi-agent pipelines, scheduled autonomous execution. This is no longer single experiments — it's two well-funded companies with thousands of customers independently reporting the same architectural shift from copilot to agent.
 
 ### Nordic Caution Gap — CONFIRMED (Level 3)
-Two independent surveys confirm: Nordic companies invest in AI but are systematically more conservative on agentic AI timelines and budget allocation than European peers. BCG (54% experimenting, 60% <5% budget) + Deloitte (58% expect 3+ years ROI vs. 37% Europe). The gap between "agents arriving in your software" and "organizations not budgeting for them" is the exact competence gap Agents 102 addresses.
+Two independent surveys confirm: Nordic companies invest in AI but are systematically more conservative on agentic AI timelines and budget allocation than European peers. BCG (54% experimenting, 60% <5% budget) + Deloitte (58% expect 3+ years ROI vs. 37% Europe). The gap between "agents arriving in your software" and "organizations not budgeting for them" is the exact competence gap agentic training needs to address.
 
 ### Platform Announcement-to-Deployment Gap — STILL ENORMOUS
 Every major enterprise platform vendor (Oracle, SAP, Microsoft, Workday, ServiceNow, Salesforce) announced agents in Q1 2026. NONE have independently verified customer deployments with named companies and measurable outcomes. No practitioner blog posts, X.com threads, or conference talks describing "I deployed Agentforce/Joule/Dynamics agents and here's what happened."

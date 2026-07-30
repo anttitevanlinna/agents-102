@@ -12,7 +12,7 @@ updated: 2026-04-02
 **Focus area:** Are companies dissolving or radically restructuring program/project management because AI makes execution cheap — not augmenting PMs with AI tools, but questioning whether the function itself is structurally necessary?
 
 **Research mode:** Cross-domain OODA cycle
-**Why this focus:** The Agents 102 thesis includes "tools and connectors commoditize — the real ceiling is organizational learning rate." If organizational middleware (PMs, steering committees, program offices) is being dissolved, that's a structural shift in how enterprises absorb agents. It also affects what we train CTOs to do.
+**Why this focus:** Tools and connectors commoditize — the real ceiling is organizational learning rate. If organizational middleware (PMs, steering committees, program offices) is being dissolved, that's a structural shift in how enterprises absorb agents. It also affects what CTOs need to know how to do.
 
 ## Queries Used
 
@@ -203,7 +203,7 @@ updated: 2026-04-02
 
 This is structurally similar to what happened to "webmasters" in the 2000s. The role dissolved. The functions (design, development, content, analytics) didn't — they became specialized disciplines. PM may be undergoing the same unbundling.
 
-### Implications for Agents 102:
+### Takeaways:
 
 1. **For training:** "Management skills as AI superpower" (Mollick's frame) is the right message for CTOs. Don't tell them PM is dying — tell them PM skills need to be everywhere, not concentrated in a PMO.
 2. **For advisory:** The PMO question matters for enterprise clients. "Should we restructure our PMO for AI?" is a real CTO question. Our answer should be: "The coordination work doesn't shrink — it transforms. Your PMs become agent managers, your steering committees become evaluation frameworks."

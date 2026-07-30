@@ -26,14 +26,14 @@ The five organizations reveal three structural patterns for practice curation:
 
 2. **The Analyst Model** (Gartner): Hire analysts who study practitioners, interview leaders, and synthesize their own frameworks. Practitioners are data sources, not co-creators. The curator is an authority, not a facilitator. This is the most commercially successful model (Gartner: ~USD 6B revenue) but the least participatory.
 
-3. **The Collaborative Model** (IHI, CNCF, and to some extent Vistage/YPO): Create structured spaces where practitioners work together on shared challenges. Practices emerge from the collaboration, and the curator packages and publishes them. Training feeds the pipeline of practitioners. This is the most participatory model and the closest match to what Agents 102 envisions.
+3. **The Collaborative Model** (IHI, CNCF, and to some extent Vistage/YPO): Create structured spaces where practitioners work together on shared challenges. Practices emerge from the collaboration, and the curator packages and publishes them. Training feeds the pipeline of practitioners. This is the most participatory model.
 
-**The Agents 102 model is a hybrid of CNCF and IHI, with Vistage's intimacy:**
+**A hybrid model combining CNCF and IHI, with Vistage's intimacy, is the closest fit to the participatory pattern:**
 
 - From CNCF: Training and certification as the entry point and revenue stream. A curated "landscape" that maps the ecosystem. Member companies as contributors. Governance neutrality.
 - From IHI: The closed loop — training creates practitioners, practitioners join collaboratives, collaboratives generate practices, practices become training. The "bundle" or "practice pack" as a packaging format.
 - From Vistage: Small-group peer dynamics. Confidential, facilitated discussions. The "network is the product" ethos.
-- NOT from Gartner: Agents 102 should not position itself as an authority telling practitioners what works. It should position itself as a curator surfacing what its network discovers. The difference is subtle but structurally important — it determines whether members see themselves as contributors or consumers.
+- NOT from Gartner: a curator positioning itself as an authority telling practitioners what works differs structurally from one that positions itself as a curator surfacing what its network discovers — the difference determines whether members see themselves as contributors or consumers.
 
 **The common revenue model is membership + training + events:**
 
@@ -45,7 +45,7 @@ Every organization in the catalog uses some combination of:
 
 No organization relies on a single revenue stream. The most resilient models (CNCF, IHI) have at least three streams. The most fragile (pure Vistage model) depend heavily on membership retention.
 
-For Agents 102, this suggests a revenue architecture of:
+A viable revenue architecture for this kind of hybrid model would combine:
 1. Training fees (the entry point — immediate revenue)
 2. Network membership (the recurring base — compounding value)
 3. Practice pack licensing or events (the scale play — low marginal cost)
@@ -57,19 +57,19 @@ Three trust mechanisms appear across all models:
 2. **Reciprocity** — Members give data/practices and receive curated intelligence. The exchange must feel fair. APQC makes this explicit: "contribute your benchmarks, access everyone's."
 3. **Quality control** — CNCF's maturity levels (sandbox/incubating/graduated). IHI's improvement science methodology. Gartner's analyst rigor. Someone has to filter signal from noise, and the curator's judgment is the product.
 
-For Agents 102: Trust requires being perceived as a neutral curator, not a vendor. The training program builds credibility. The network membership creates reciprocity. Quality control of practice packs — deciding what gets curated and what does not — is the most important editorial function.
+For any org attempting this model: trust requires being perceived as a neutral curator, not a vendor. A training program builds credibility. Network membership creates reciprocity. Quality control of practice packs — deciding what gets curated and what does not — is the most important editorial function.
 
 **What surprised us:**
 
 - **IHI is the most complete model match, and we did not find it through web search — it came from prior knowledge.** This suggests the best analogs may not show up in searches for "practice curation business model." They show up in domain-specific searches. There may be more IHI-like models in other industries (manufacturing, education, safety) that are worth finding.
 
-- **Vistage is a USD 400M+ business based purely on "CEOs talking to other CEOs."** No curated output. No published practices. No research. Just the network. This proves that the peer network alone has enormous value — everything Agents 102 adds (curation, research, practice packs) is upside on top of a proven base.
+- **Vistage is a USD 400M+ business based purely on "CEOs talking to other CEOs."** No curated output. No published practices. No research. Just the network. This proves that the peer network alone has enormous value — a curation/research/practice-pack layer on top would be upside on a proven base.
 
 - **CNCF's "training as entry point" model generates tens of millions in certification revenue alone.** Kubernetes certifications (CKA, CKAD, CKS) at USD 395 each, with hundreds of thousands of exam takers. Training is not a loss leader — it is a major revenue line that also feeds the network.
 
-- **No one combines all the elements Agents 102 envisions.** APQC curates but does not do training-as-entry-point. CNCF does training-as-entry-point but does not have the intimate peer network. Vistage has the peer network but does not curate or publish. IHI comes closest but is mission-driven nonprofit, not a commercial network. The full combination — training entry point + intimate peer network + practice curation + frontier research — does not exist as a single model.
+- **No one combines all these elements into a single model.** APQC curates but does not do training-as-entry-point. CNCF does training-as-entry-point but does not have the intimate peer network. Vistage has the peer network but does not curate or publish. IHI comes closest but is mission-driven nonprofit, not a commercial network. The full combination — training entry point + intimate peer network + practice curation + frontier research — does not exist as a single model.
 
-**Current hypothesis about the Agents 102 business model:**
+**Current hypothesis about this business model pattern:**
 
 The model is viable because each component has been proven independently at scale. What is unproven is the combination. The risk is not "does practice curation work?" (APQC says yes) or "does a peer network have value?" (Vistage says yes) or "can training be the entry point?" (CNCF says yes). The risk is: can a single organization do all three well, at the scale needed to sustain all three?
 
@@ -81,16 +81,16 @@ The IHI closed loop offers the most promising architecture: training feeds pract
 
 Two angles are most valuable:
 
-1. **Deep dive on IHI's collaborative model mechanics.** How do IHI collaboratives actually work? How do they recruit organizations? What does the "change package" curation process look like in practice? How do they maintain quality? What is the failure rate of collaboratives? This is the mechanical blueprint for Agents 102's network operation.
+1. **Deep dive on IHI's collaborative model mechanics.** How do IHI collaboratives actually work? How do they recruit organizations? What does the "change package" curation process look like in practice? How do they maintain quality? What is the failure rate of collaboratives? This is the mechanical blueprint for any network-operation model of this kind.
 
 2. **Domain-specific practice curators we may have missed.** Industries with strong "practitioner network + practice curation" models: manufacturing (lean/Toyota Production System networks), education (teaching practice networks), safety (aviation safety reporting systems), software engineering (ThoughtWorks Technology Radar as a model?). These may reveal mechanics and pitfalls not visible in the five examples found so far.
 
 **What is still unclear:**
 
-- How do you agents-101 the network? All five examples are decades old and established. How did they get the first 20-50 members? This is the cold-start problem and may be the hardest operational challenge.
-- What is the right price point for Agents 102's membership tier? APQC charges USD 15-100K (enterprise). Vistage charges USD 15-25K (individual CEO). CNCF charges USD 5-370K (by tier). The range is enormous.
+- How do you bootstrap the network? All five examples are decades old and established. How did they get the first 20-50 members? This is the cold-start problem and may be the hardest operational challenge.
+- What is the right price point for a membership tier in this kind of model? APQC charges USD 15-100K (enterprise). Vistage charges USD 15-25K (individual CEO). CNCF charges USD 5-370K (by tier). The range is enormous.
 - Should the practice curation be open (published freely, revenue from membership/training) or closed (members-only access)? CNCF is open. APQC is closed. Both work. The choice shapes the growth model.
-- How does Agents 102 handle competitive dynamics? If Company A and Company B are both members, will they share their agentic practices openly? APQC solves this through anonymization. Vistage solves it by putting non-competing companies in the same group. What is Agents 102's approach?
+- How would this kind of network handle competitive dynamics? If Company A and Company B are both members, will they share their agentic practices openly? APQC solves this through anonymization. Vistage solves it by putting non-competing companies in the same group.
 
 ---
 
@@ -120,7 +120,7 @@ Across IHI BTS, Carnegie NICs, and MEP/Toyota Kata, a consistent operational pat
 - Expert faculty (IHI) or hub leadership (Carnegie) develops an initial "change package" — a curated hypothesis about what practices will close the gap
 - This is NOT the final output. It is the starting point, explicitly designed to be refined by practitioners
 - IHI calls it "change package." Carnegie calls it "shared theory of improvement." Toyota Kata calls it "starter kata."
-- For Agents 102: the "agentic practice pack v0.1" — assembled from expert knowledge, literature, and early adopter experience. It is the invitation, not the answer.
+- Applied to an agentic practice pack: v0.1 assembled from expert knowledge, literature, and early adopter experience is the invitation, not the answer.
 
 **Phase 3 — Recruit and convene**
 - 20-100 organizations join (IHI). 10-50 organizations join (Carnegie). MEP works 1:1 but across 35,000 manufacturers.
@@ -161,17 +161,17 @@ Across IHI BTS, Carnegie NICs, and MEP/Toyota Kata, a consistent operational pat
 
 6. **No sustainability plan after the collaborative ends.** The 6-15 month collaborative generates energy and results, but without a plan for ongoing improvement, organizations revert. IHI addresses this in Learning Session 3 but acknowledges it is the weakest link.
 
-**What this means for the Agents 102 model — refined understanding:**
+**What this means for a hybrid model of this kind — refined understanding:**
 
 Round 1 identified the IHI flywheel as the architecture. Round 2 reveals the operational mechanics inside that flywheel. Three refinements:
 
-1. **The "agentic practice pack" must be a living document, not a finished product.** The change package is a starting hypothesis that gets refined through collaborative testing. Agents 102 should design practice packs as versioned, evolving artifacts — v0.1 from experts, v1.0 from the first collaborative cohort, v2.0 from the second.
+1. **The "agentic practice pack" must be a living document, not a finished product.** The change package is a starting hypothesis that gets refined through collaborative testing. Practice packs should be designed as versioned, evolving artifacts — v0.1 from experts, v1.0 from the first collaborative cohort, v2.0 from the second.
 
-2. **Context variation is the curation challenge.** Carnegie's insight is critical: a practice that works for a 500-person tech company may fail at a 50-person manufacturer. Agents 102 must curate practices with context tags — company size, industry, agentic maturity level, organizational culture. "This practice worked for X type of organization under Y conditions" is far more useful than "this is best practice."
+2. **Context variation is the curation challenge.** Carnegie's insight is critical: a practice that works for a 500-person tech company may fail at a 50-person manufacturer. Practices should be curated with context tags — company size, industry, agentic maturity level, organizational culture. "This practice worked for X type of organization under Y conditions" is far more useful than "this is best practice."
 
-3. **The meta-practice layer is as important as the specific practices.** Toyota Kata teaches people *how to improve*, not *what to do*. This is more durable than any specific practice pack. Agents 102 should teach an "agentic improvement kata" — a structured pattern for discovering, testing, and adopting agentic practices — alongside specific practice packs. The kata outlasts any individual technology or tool.
+3. **The meta-practice layer is as important as the specific practices.** Toyota Kata teaches people *how to improve*, not *what to do*. This is more durable than any specific practice pack. An "agentic improvement kata" — a structured pattern for discovering, testing, and adopting agentic practices — is worth teaching alongside specific practice packs. The kata outlasts any individual technology or tool.
 
-**Specific mechanics Agents 102 should adopt:**
+**Specific mechanics worth adopting:**
 
 - **From IHI BTS**: The three-Learning-Session structure over 6-12 months. The change package as starting material. Monthly data sharing as a requirement. The "all-teach, all-learn" ethos. PDSA cycles adapted as build-measure-learn sprints.
 - **From Carnegie NICs**: The five essential building blocks (common aim, shared problem understanding, shared theory of improvement, improvement science discipline, hub leadership). Context variation testing. Hub leadership as a funded, resourced role.
@@ -185,14 +185,14 @@ Not immediately for the practice collaborative model — the operational bluepri
 
 **What is still unclear — but does not require more research rounds to resolve:**
 
-1. **Agents 101ping.** How to recruit the first 10-20 organizations for the first collaborative. IHI had the advantage of a healthcare quality crisis and a charismatic founder (Don Berwick). Agents 102 has the AI urgency but needs a specific, compelling topic for its first collaborative. This is a strategy decision, not a research question.
+1. **Bootstrapping.** How to recruit the first 10-20 organizations for the first collaborative. IHI had the advantage of a healthcare quality crisis and a charismatic founder (Don Berwick). Any agentic-practice collaborative has the AI urgency but needs a specific, compelling topic for its first cohort. This is a strategy decision, not a research question.
 
-2. **Pricing the collaborative.** IHI charges participation fees but also receives grants and philanthropy. Agents 102 needs a commercial model. The training program generates initial revenue; the collaborative could be a premium offering for training alumni. Pricing needs to be tested, not researched.
+2. **Pricing the collaborative.** IHI charges participation fees but also receives grants and philanthropy. A commercial version needs a monetization model — training generating initial revenue, with the collaborative as a premium offering for training alumni, is one pattern. Pricing needs to be tested, not researched.
 
-3. **The facilitator/coach model.** Who leads the Learning Sessions? Who coaches teams between sessions? IHI uses expert faculty. Carnegie uses hub leadership. MEP uses center staff. Agents 102 will need a facilitation cadre — either internal or trained external coaches. This is an operational design question.
+3. **The facilitator/coach model.** Who leads the Learning Sessions? Who coaches teams between sessions? IHI uses expert faculty. Carnegie uses hub leadership. MEP uses center staff. Any such model will need a facilitation cadre — either internal or trained external coaches. This is an operational design question.
 
-4. **Competitive sensitivity.** Will companies share agentic practices with peers who might be competitors? The BTS model works in healthcare where "competitors" share because the mission (patient safety) overrides competitive instincts. AI agents are more commercially sensitive. Agents 102 may need Vistage-style non-competing cohorts or APQC-style anonymization — or both.
+4. **Competitive sensitivity.** Will companies share agentic practices with peers who might be competitors? The BTS model works in healthcare where "competitors" share because the mission (patient safety) overrides competitive instincts. AI agents are more commercially sensitive. An agentic-practice network may need Vistage-style non-competing cohorts or APQC-style anonymization — or both.
 
-**Recommendation**: The practice curator research track has yielded a clear operational blueprint. The next step is not more research — it is to design the first Agents 102 collaborative using the IHI BTS structure, informed by Carnegie's context variation approach and Toyota Kata's meta-practice layer. The open questions (agents-101ping, pricing, facilitation, competitive sensitivity) are best resolved through design and piloting, not through further desk research.
+**Recommendation**: The practice curator research track has yielded a clear operational blueprint. The next step is not more research — it is to design a pilot collaborative using the IHI BTS structure, informed by Carnegie's context variation approach and Toyota Kata's meta-practice layer. The open questions (bootstrapping, pricing, facilitation, competitive sensitivity) are best resolved through design and piloting, not through further desk research.
 
 ---

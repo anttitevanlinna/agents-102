@@ -489,7 +489,7 @@ Legend: **A** = Active/deployed | **P** = Piloting/early | **-** = No public evi
 
 **Nordic companies are infrastructure-heavy, agent-light.** Most deployments are traditional ML/AI (predictive maintenance, demand forecasting, fraud detection) rather than true agentic AI (autonomous agents making decisions, executing workflows). The agentic wave is arriving but has not yet scaled in most companies beyond Klarna and Ericsson's explicit agentic deployments.
 
-### 5. Implications for Agents 102
+### 5. Implications for Agentic Training
 
 1. **Operations is table stakes, not differentiating.** Everyone is already doing it. The training should acknowledge ops as the entry point but push toward the domains that are empty.
 
@@ -499,4 +499,4 @@ Legend: **A** = Active/deployed | **P** = Piloting/early | **-** = No public evi
 
 4. **Banking is the most mature buyer for multi-domain training.** Banks already have AI across 4+ domains and understand the cross-functional challenge. They are natural early adopters for comprehensive agent competence programs.
 
-5. **Industrial companies are one domain deep.** Equinor, Maersk, Wartsila, LKAB, Scania, Volvo all have deep ops AI but virtually nothing in HR, Finance, Sales, or Compliance. The expansion from ops to the rest of the organization is exactly the transformation challenge Agents 102 addresses.
+5. **Industrial companies are one domain deep.** Equinor, Maersk, Wartsila, LKAB, Scania, Volvo all have deep ops AI but virtually nothing in HR, Finance, Sales, or Compliance. The expansion from ops to the rest of the organization is exactly the transformation challenge agentic training needs to address.

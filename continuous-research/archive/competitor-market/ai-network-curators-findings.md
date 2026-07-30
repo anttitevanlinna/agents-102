@@ -19,7 +19,7 @@ Searched for any organization combining (a) a peer network of companies, (b) cur
 | Consultancies (KPMG etc.) | Client roundtables | Yes, but proprietary | No | Broadly AI | LOW-MEDIUM |
 | Gartner/Forrester | Forum, not collaborative | Analyst-driven | No | Broadly AI | LOW-MEDIUM |
 
-No organization scores above LOW-MEDIUM on proximity to the Agents 102 model.
+No organization scores above LOW-MEDIUM on proximity to the peer-network + curated-practices model described above.
 
 ---
 
@@ -59,7 +59,7 @@ Three places we might be missing something:
 
 **Yes, with high confidence.** The gap is genuine for three structural reasons:
 
-1. The market is too early — there is not yet enough deployment experience to curate at scale. Agents 102 would be building the network while the practices are still being discovered. This is actually an advantage: the first mover defines the format.
+1. The market is too early — there is not yet enough deployment experience to curate at scale. Any entrant would be building the network while the practices are still being discovered. This is actually an advantage: the first mover defines the format.
 
 2. The natural builders of this network (consultancies, analyst firms, standards bodies) are structurally misaligned. Consultancies hoard intelligence. Analyst firms are top-down, not collaborative. Standards bodies work on protocols, not practices. None of them have the incentive or the structure to build a true peer network with curated practices.
 
@@ -87,14 +87,14 @@ The gap is clear enough to proceed with strategic and operational planning. Howe
 
 ## ACT
 
-### Strategic implications for Agents 102
+### Strategic implications
 
-1. **The space is genuinely empty.** No one is building a peer network + curated practices model for AI agent deployment. The closest things that exist (AAIF, LangChain, consultancies) operate at different layers and with different structures. Agents 102 would not be competing with an incumbent — it would be creating a new category.
+1. **The space is genuinely empty.** No one is building a peer network + curated practices model for AI agent deployment. The closest things that exist (AAIF, LangChain, consultancies) operate at different layers and with different structures. A new entrant would not be competing with an incumbent — it would be creating a new category.
 
 2. **Timing is right but narrow.** The market is at the inflection point: enough companies are deploying agents that peer learning has value, but not so many that the practices are codified and commoditized. In 12-18 months, this window may close as consultancies or platform vendors formalize their own practice frameworks.
 
 3. **First-mover advantage is real here.** In a network model, the first credible network captures the early adopters. Those early adopters generate the practices. The practices attract the next wave. This is a classic network effect — and being first matters more than being best.
 
-4. **The positioning is validated.** Agents 102 is not "yet another AI training program" (many exist) and not "yet another AI standards body" (several exist). It occupies a distinct position: the practice layer between protocol standards (AAIF) and individual training (bootcamps). This position is genuinely unoccupied.
+4. **The positioning is validated.** This model would not be "yet another AI training program" (many exist) and not "yet another AI standards body" (several exist). It would occupy a distinct position: the practice layer between protocol standards (AAIF) and individual training (bootcamps). This position is genuinely unoccupied.
 
 5. **The risk is execution, not competition.** The question is not "will someone else do this" — it is "can we build a credible network fast enough to capture the window." The IHI operational blueprint from the practice-curators research gives us the mechanics. The challenge is recruitment, facilitation quality, and practice pack curation quality.

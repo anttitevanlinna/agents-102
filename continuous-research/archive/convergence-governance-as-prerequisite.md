@@ -315,4 +315,4 @@ The mechanism is clear: governance infrastructure (audit trails, access control,
 
 For Nordic enterprises specifically, Finland's position as the first EU member state with operational AI Act enforcement creates both urgency and opportunity. The 6-month infrastructure buildout described above is achievable and directly addresses the governance gap that EY identifies in 50% of Nordic companies.
 
-**Bottom line for Agents 102:** This is training material gold. The governance-as-prerequisite pattern means that agent competence without governance competence leads nowhere — and governance competence without agent competence leads to theatre. Our training must teach both together, which is exactly what nobody else does.
+**Bottom line:** the governance-as-prerequisite pattern means that agent competence without governance competence leads nowhere — and governance competence without agent competence leads to theatre. Teaching both together is exactly what nobody else does.

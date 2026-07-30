@@ -35,12 +35,12 @@ Claude Computer Use launched March 23, 2026 as a research preview for Pro/Max su
 2. **OpenAI (Operator/CUA):** Virtual browser environment on OpenAI's cloud. OSWorld: 38.1%. WebVoyager: 87%. $200/month via ChatGPT Pro. Hands control back to user for sensitive actions like logins.
 3. **Perplexity (Computer / Personal Computer):** Dedicated Mac mini running 24/7. Orchestrates 19 models (Claude Opus 4.6 for reasoning, Gemini for research, GPT-5.2 for long-context recall). $200/month. Enterprise version with Slack/Snowflake connectors announced March 11.
 
-**Why it matters for our training:** Three fundamentally different trust models:
+**Why it matters:** Three fundamentally different trust models:
 - Anthropic: "We run on YOUR machine, with YOUR permission"
 - OpenAI: "We run in OUR sandbox, we handle security"
 - Perplexity: "We run on a DEDICATED machine, always-on proxy"
 
-This is directly relevant to Module 4 (Security) and Module 7 (Agent Platforms) — the architectural choice determines the threat model.
+The architectural choice determines the threat model — a distinction any organization evaluating these products needs to reason through.
 
 - Source: https://workos.com/blog/anthropics-computer-use-versus-openais-computer-using-agent-cua [practitioner analysis — WorkOS engineering blog]
 - Source: https://www.perplexity.ai/hub/blog/introducing-perplexity-computer [vendor press release — Level 0]
@@ -61,7 +61,7 @@ Separately, Check Point researchers found security flaws in Claude Code that cou
 2. The tooling (Claude Code) has had real security vulnerabilities
 3. The tooling has been used in actual attacks
 
-This is premium Module 4 (Security) content. The "permission-first" framing is necessary but not sufficient — the risk is not just "will Claude do something bad on my machine" but also "can an attacker use Claude's capabilities against me."
+The "permission-first" framing is necessary but not sufficient — the risk is not just "will Claude do something bad on my machine" but also "can an attacker use Claude's capabilities against me."
 
 - Source: https://anthropic.com/claude-opus-4-6-risk-report [vendor — but self-critical safety disclosure, unusual]
 - Source: https://www.securityweek.com/hackers-weaponize-claude-code-in-mexican-government-cyberattack/ [domain trade publication — security]
@@ -113,7 +113,7 @@ Two genuinely new signals found: (1) Telenor's sovereign AI Factory with agentic
 - Source: https://www.datacenterknowledge.com/business/mwc-2026-red-hat-telenor-team-up-for-sovereign-norway-ai-factory [domain trade publication — data center]
 - Evidence level: Level 1-2 (vendor claims with some domain trade coverage; "GPU usage tripled" is a specific metric but self-reported)
 
-**Significance for our training:** The sovereign AI angle is directly relevant for Nordic buyers. Data sovereignty is a real constraint for Nordic enterprises — Telenor's "keep data inside Norway" approach is a pattern that will repeat across our target customers. The fact that they chose LlamaStack (open-source) over a proprietary LLM for agentic workflows is a notable architectural choice.
+**Significance:** The sovereign AI angle is directly relevant for Nordic buyers. Data sovereignty is a real constraint for Nordic enterprises — Telenor's "keep data inside Norway" approach is a pattern likely to repeat across the region. The fact that they chose LlamaStack (open-source) over a proprietary LLM for agentic workflows is a notable architectural choice.
 
 ---
 
@@ -127,13 +127,13 @@ Two genuinely new signals found: (1) Telenor's sovereign AI Factory with agentic
 - More than 10% of IT budgets now allocated to AI; nearly 40% of leaders expect increases
 - Warning: without course correction, Nordic companies risk an "AI value bubble"
 
-**Assessment:** This is a consultancy report (Level 0 per our evidence ladder — paid opinion). However, the specific 4% statistic and the structural finding (off-the-shelf vs. transformative) are useful as market context. BCG's credibility in the Nordic market is high enough that this report will be seen by our target buyers.
+**Assessment:** This is a consultancy report (Level 0 per our evidence ladder — paid opinion). However, the specific 4% statistic and the structural finding (off-the-shelf vs. transformative) are useful as market context. BCG's credibility in the Nordic market is high enough that Nordic CxOs will see and reference this report.
 
 - Source: https://www.bcg.com/publications/2026/nordic-ai-value-creation-or-bubble [analyst prediction — Level 0]
 - Source: https://web-assets.bcg.com/71/4b/625c24704f19ae0e716a3036c280/nordic-ai-digital.pdf [analyst prediction — Level 0]
 - Evidence level: Level 0 (consultancy report). **Use only as market context, never as a finding.**
 
-**Significance for our positioning:** The "off-the-shelf vs. transformative" gap is EXACTLY our thesis. Our Agents 101 training teaches people to build, not just configure. If BCG is telling Nordic CxOs that their current approach (buying tools) isn't working, that creates demand for our approach (building competence). This report is a sales enabler, not evidence.
+**Significance:** The "off-the-shelf vs. transformative" gap matches a pattern seen elsewhere in this research — organizations that build competence to create, not just configure purchased tools, capture more value. If BCG is telling Nordic CxOs that their current approach (buying tools) isn't working, that creates market pull toward competence-building. This report is best read as market context, not independent evidence.
 
 ---
 
@@ -200,7 +200,7 @@ Key findings:
 - Sweden: NIS2 enters force January 15, 2026 — uniquely, can impose fines on both public AND private entities, and management can face personal prohibitions
 - Norway: AI Act implementation targeted summer 2026
 
-**Assessment:** This is context, not a finding. But the convergence of AI Act + NIS2 + GDPR + ISO 42001 simultaneously in the Nordics creates a governance complexity that our Module 4 (Security) should address. The Sweden personal liability angle is notable — CxOs personally at risk changes the conversation.
+**Assessment:** This is context, not a finding. But the convergence of AI Act + NIS2 + GDPR + ISO 42001 simultaneously in the Nordics creates governance complexity that any AI security program needs to address. The Sweden personal liability angle is notable — CxOs personally at risk changes the conversation.
 
 - Source: https://www.twoday.com/blog/nordic-ai-governance-in-2026 [vendor blog — Twoday is a consultancy, Level 0]
 - Evidence level: Level 0 (consultancy content). Regulatory facts are verifiable separately.
@@ -224,5 +224,5 @@ Key findings:
 1. **Re-run Claude Computer Use research in 7 days** (by March 31) — practitioner reactions will have appeared by then. Specifically search for Simon Willison, Andrej Karpathy, and Reddit/HN threads.
 2. **Track Pasi Huuhka (Zure, Helsinki)** as a potential Nordic practitioner building multi-agent systems.
 3. **Monitor Telenor AI Factory** for independent coverage of their agentic deployments — if domain trade publications (TelecomTV, Light Reading) cover actual deployment results, this upgrades to Level 2.
-4. **Use BCG "4% returns" report in sales conversations** — it validates our thesis that buying tools is not enough, building competence is needed.
+4. **The BCG "4% returns" report is a strong market-context data point** — it supports the broader finding that buying tools without building competence underperforms.
 5. **Watch for Telia Finland + Nokia AI-RAN results** — if this moves beyond announcement to deployment metrics, it's a new Nordic signal.

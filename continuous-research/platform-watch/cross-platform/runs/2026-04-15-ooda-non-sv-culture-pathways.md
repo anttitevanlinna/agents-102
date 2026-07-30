@@ -389,7 +389,7 @@ This section is as important as the findings. The absences are themselves signal
 
 **Possible explanations:** (a) Nordic culture doesn't perform transformation publicly -- Janteloven effect. (b) The transformation hasn't progressed far enough to write about. (c) The people doing it are too busy to write. (d) Companies treat it as competitive advantage and keep it private.
 
-**Research implication:** This is a demand gap. If Agents 102 can surface these stories, it fills a genuine void.
+**Research implication:** This is a demand gap. Surfacing these stories would fill a genuine void.
 
 ### 2. No evidence that consensus culture accelerates or decelerates AI adoption
 
@@ -413,7 +413,7 @@ The academic literature documents the legal framework (Germany) and the theory (
 
 ---
 
-## DECIDE (Implications for Agents 102)
+## DECIDE (Implications for competence-first training)
 
 ### Three Non-SV Pathways Are Emerging
 
@@ -437,7 +437,7 @@ Gallup's 8.7x multiplier on manager support is the most actionable finding. Any 
 
 ### What This Means for Training
 
-The Agents 102 training program has a differentiated position: it addresses the competence layer that neither the SV mandate model nor the European consensus model provides. The SV model mandates without teaching. The European model negotiates without mandating. Neither builds competence. Competence is the prerequisite for both paths.
+Competence-first training has a differentiated position: it addresses the competence layer that neither the SV mandate model nor the European consensus model provides. The SV model mandates without teaching. The European model negotiates without mandating. Neither builds competence. Competence is the prerequisite for both paths.
 
 ---
 

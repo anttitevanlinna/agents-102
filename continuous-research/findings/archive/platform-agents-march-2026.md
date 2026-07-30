@@ -225,7 +225,7 @@ Microsoft's own framing: "a first-year consultant — fast, structured, but alwa
 - Source: https://futurumgroup.com/insights/is-microsoft-365-copilot-agent-mode-ready-to-rival-human-accuracy/ [analyst — Level 0 for predictions, but Level 1 for benchmark analysis]
 - Source: https://www.spacebar.news/excel-ai-twenty-percent-of-the-time-it-works-every-time/ [practitioner analysis]
 
-**Assessment:** This is the most candid self-assessment from any platform vendor. The 57% vs 71% gap is real data. Useful for our training: demonstrates "useful AND unreliable" — exactly the insight Module 1 teaches.
+**Assessment:** This is the most candid self-assessment from any platform vendor. The 57% vs 71% gap is real data. It demonstrates "useful AND unreliable" — a core insight for evaluating any agent deployment.
 
 ### CRITICAL COUNTER-EVIDENCE: Copilot Adoption Is Struggling
 
@@ -299,7 +299,7 @@ No independent enterprise deployment stories with measurable agent outcomes foun
 
 **But the adoption crisis is real.** The gap between Microsoft's agent ambitions and actual user adoption is the widest of any platform. Only 3.3% penetration after 2 years. Users who have choice prefer competitors. The Anthropic pivot (Cowork built on Claude) signals Microsoft knows GPT-based Copilot was not enough.
 
-**The pattern for our buyers:** Microsoft will push agents into every enterprise M365 tenant starting April 2026. This creates an urgency signal: your people WILL encounter agents in their daily tools. The question is whether they're prepared. But the adoption data shows that having the technology deployed ≠ having it used effectively. This is exactly the competence gap our training addresses.
+**The pattern:** Microsoft will push agents into every enterprise M365 tenant starting April 2026. This creates an urgency signal: people WILL encounter agents in their daily tools. The question is whether they're prepared. But the adoption data shows that having the technology deployed ≠ having it used effectively — that's the competence gap.
 
 **Evidence level:** Level 1-2 overall. Strong vendor announcements (Level 0) with some independent practitioner evidence (Copilot Studio reviews, adoption surveys, SpreadsheetBench data). No independent Dynamics 365 agent deployment stories found.
 
@@ -620,7 +620,7 @@ Previously tracked as Greenlite AI (Lawrence & Jin). Rebranded to Bretton AI aft
 
 **OpenTelemetry as emerging standard:** Community-driven effort to standardize AI agent telemetry. Could make platforms interchangeable.
 
-**Key insight for our training:** "If your LLM observability looks indistinguishable from traditional APM — just with tokens instead of SQL queries — you're monitoring infrastructure, not AI behavior." The distinction between monitoring infrastructure vs. monitoring AI behavior is a critical teaching point for Module 6 (Evals).
+**Key insight:** "If your LLM observability looks indistinguishable from traditional APM — just with tokens instead of SQL queries — you're monitoring infrastructure, not AI behavior." The distinction between monitoring infrastructure vs. monitoring AI behavior is a critical point for any evals practice.
 
 - Source: https://arize.com/blog/best-ai-observability-tools-for-autonomous-agents-in-2026/ [vendor blog — Level 0 for own product, useful for landscape]
 - Source: https://www.getmaxim.ai/articles/top-5-ai-observability-platforms-for-production-ai-systems-in-2026/ [practitioner analysis]

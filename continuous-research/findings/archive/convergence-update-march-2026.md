@@ -147,7 +147,7 @@ Basware launched two distinct agents — AP Business Agent (decision support) an
 
 **Signal count:** 4-6 (below convergence threshold). This is Level 2 — emerging pattern, not yet convergence.
 
-**Assessment:** Agent security incidents are beginning to surface. The Meta incident is the first major public case. Expect more in Q2-Q3 2026 as agent deployment accelerates. This aligns with the curriculum's Module 4 (Security) emphasis.
+**Assessment:** Agent security incidents are beginning to surface. The Meta incident is the first major public case. Expect more in Q2-Q3 2026 as agent deployment accelerates.
 
 **Finding category:** Emerging pattern. Watch for convergence in next research cycle.
 
@@ -193,8 +193,8 @@ Basware launched two distinct agents — AP Business Agent (decision support) an
 **Signal count:** 7-9 (up from 3-5). Approaching Level 2-3 threshold. Multiple independent practitioners AND conference tracks AND production failure analyses all pointing to the same conclusion: context, not model capability, is the primary determinant of agent success.
 
 **Relevance:** Maps directly to:
-1. Our training's emphasis on organizational context ("only the org's people know their requirements, systems, and constraints")
-2. Our Agent Platform Advisory offering (building the system that synthesizes organizational knowledge into structured context)
+1. Organizational context as the primary differentiator — only an org's own people know its requirements, systems, and constraints
+2. Advisory models built on synthesizing organizational knowledge into structured context for agents
 3. The failure taxonomy (context failures, not model failures)
 
 **Assessment upgrade:** Context engineering is graduating from buzzword to discipline. It has conference tracks, dedicated tooling emerging, and production failure data backing it up. Watch for: dedicated "context engineering" tools, frameworks, and job titles in Q2 2026.
@@ -227,7 +227,7 @@ Basware launched two distinct agents — AP Business Agent (decision support) an
 
 **Verdict:** CONFIRMED at Level 3. The failure taxonomy is convergent — the same patterns appear across independent practitioners, conferences (Abu Dhabi, QCon London), and analyst surveys. The root cause is consistently integration/context/governance, not model capability.
 
-**What this means for our training:** The failure taxonomy is directly actionable for Modules 4-6 (Security, Output Quality, Evals). The "88% never reach production" statistic and "85%^10 = 20%" compounding error are powerful teaching tools. The "constraint over freedom" insight (successful agents are flexible pipelines, not open-ended thinkers) is the architectural takeaway.
+**Implication:** The failure taxonomy is directly actionable for security, output-quality, and evals practice. The "88% never reach production" statistic and "85%^10 = 20%" compounding error are powerful illustrations. The "constraint over freedom" insight (successful agents are flexible pipelines, not open-ended thinkers) is the architectural takeaway.
 
 - Source: https://composio.dev/blog/why-ai-agent-pilots-fail-2026-integration-roadmap [practitioner analysis]
 - Source: https://hypersense-software.com/blog/2026/01/12/why-88-percent-ai-agents-fail-production/ [domain trade publication]

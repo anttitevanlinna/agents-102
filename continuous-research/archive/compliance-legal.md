@@ -138,13 +138,13 @@ Compliance and legal is one of the fastest-moving domains for agentic AI adoptio
 | Nordic applicability | Direct -- this IS the Nordic market |
 | Chasm signal | Weak-to-moderate. The collaboration infrastructure exists, but public evidence of multi-step autonomous agents (vs. traditional automation) in KYC/AML is thin. The banks are investing but specific agentic deployments remain behind NDA walls. Industry-wide, AI-driven AML is moving from reactive to proactive. |
 
-## Key Patterns for Agents 102
+## Key Patterns for Agentic Training Curricula
 
 1. **The trust ladder is real.** Contract review (lower stakes, human review retained) adopted first. Regulatory monitoring (higher stakes, but advisory not decisional) second. Autonomous compliance evidence collection (highest autonomy) third. This maps cleanly to a training curriculum -- start with low-autonomy agents, build to high-autonomy.
 
 2. **Institutional memory is the differentiator.** Luminance's concept of agents that remember negotiation history and organizational precedent is the feature that separates production-ready compliance agents from demos. This is worth a training module.
 
-3. **Nordic is punching above its weight.** Two Swedish companies (Legora at $1.8B, Sana Labs with Am Law 200 clients) are global players in legal AI. This is relevant for the Agents 102 narrative -- the Nordics are not behind, they are building the infrastructure.
+3. **Nordic is punching above its weight.** Two Swedish companies (Legora at $1.8B, Sana Labs with Am Law 200 clients) are global players in legal AI. This supports the broader narrative that the Nordics are not behind -- they are building the infrastructure.
 
 4. **The EU AI Act is both accelerant and content.** Full enforcement August 2026 creates urgent demand for compliance tooling AND is itself a topic that compliance agents must handle. Meta-compliance: using agents to comply with the regulation about agents.
 

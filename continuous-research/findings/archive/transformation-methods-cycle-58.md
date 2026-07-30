@@ -14,7 +14,7 @@ He also made the case that **HR — not IT** — is the function best positioned
 **Source:** https://www.teamraderie.com/experiences/ai-experience-with-ethan-mollick/ [practitioner direct — Mollick's own framework published via Teamraderie]
 **Date:** March 18-19, 2026
 **Evidence level:** Level 2 (single practitioner framework, albeit highly influential)
-**Relevance to Agents 102:** Directly validates our model. "Leadership, Lab, Crowd" maps almost exactly to our five-step journey: Agents 101 = seeding the Crowd, Champions = building the Lab, the buyer persona = Leadership. Mollick's framework gives us academic legitimacy for what we designed from practitioner experience.
+**Relevance:** This three-tier framework — leadership sets direction, a dedicated lab builds through experimentation, the broader crowd adopts day-to-day — gives academic backing to adoption models built independently from practitioner experience.
 
 ---
 
@@ -27,7 +27,7 @@ He also noted that Fortune 50 CTOs are saying "We're not signing another five-ye
 **Source:** https://www.insightpartners.com/ideas/generative-ai-ethan-mollick/ [practitioner direct — Mollick's own analysis]
 **Date:** March 4, 2026
 **Evidence level:** Level 2 (practitioner opinion, well-grounded)
-**Relevance:** Reinforces our "no platform-first" positioning. If CTOs themselves won't commit to 5-year contracts, advising organizations to train people first (durable asset) rather than bet on platforms (shifting ground) becomes even more defensible.
+**Relevance:** If CTOs themselves won't commit to 5-year platform contracts, training people first (a durable asset) becomes more defensible than betting on platforms (shifting ground).
 
 ---
 
@@ -100,7 +100,7 @@ Sweden leads within the Nordics: 87% of Swedish CxOs have integrated AI into mos
 **Source:** https://www.vivicta.com/en/blog/25/ai-transformation-impacts-nordic-industries/ [vendor analysis — Level 0-1]
 **Date:** 2026 (exact date not specified, published Q1 2026)
 **Evidence level:** Level 2 (single survey, but substantive methodology with 340 respondents + 10 C-level interviews)
-**Relevance to Agents 102:** This IS our market. The gap between aspiration (high) and execution (low) is exactly where Agents 102 sits. The finding that only 31% have a strategy and leadership is the bottleneck validates our buyer persona (CEO/CTO who wants to own the transformation). The upskilling data (Sweden at 77%) suggests Sweden may be more receptive to training-first approaches than Finland/Norway.
+**Relevance:** The gap between aspiration (high) and execution (low) is a defining market gap. The finding that only 31% have a strategy and leadership is the bottleneck supports a CEO/CTO-owned transformation thesis. The upskilling data (Sweden at 77%) suggests Sweden may be more receptive to training-first approaches than Finland/Norway.
 
 ---
 
@@ -115,7 +115,7 @@ Cox Automotive cited as counter-example: focused on solving real pain points →
 **Source:** https://fortune.com/2026/03/19/from-pilot-mania-to-portfolio-discipline-ai-purgatory/ [general press — but substantive analysis, not a news report]
 **Date:** March 19, 2026
 **Evidence level:** Level 3 (this pattern is now documented across MIT research, Gartner, BCG, Fortune, and multiple practitioner accounts)
-**Relevance:** Pilot purgatory IS what happens without our Step 2 (Make Your Own — change strategy lab). Organizations need to go from "let's try AI" to "here's what we're transforming and who owns it." That strategic clarity is the cure for pilot purgatory.
+**Relevance:** Pilot purgatory is what happens without a deliberate strategy-setting step. Organizations need to go from "let's try AI" to "here's what we're transforming and who owns it." That strategic clarity is the cure for pilot purgatory.
 
 ---
 
@@ -139,7 +139,7 @@ The McKinsey framing: "This is 80% business transformation and 20% tech transfor
 
 **Evidence level:** Level 2 (survey data from multiple analyst firms — while the firms are Level 0 for predictions, their survey data on what CEOs report IS empirical data, though self-reported)
 **Caveat:** All sources are consultancy surveys. Self-reported CEO data has known biases (social desirability, survivorship). We do not have independent verification of these numbers.
-**Relevance:** Validates our buyer persona. The CEO/CTO IS the decision-maker. The "50% believe their job depends on it" stat explains buyer urgency.
+**Relevance:** The CEO/CTO is the decision-maker. The "50% believe their job depends on it" stat explains buyer urgency.
 
 ---
 
@@ -160,7 +160,7 @@ The McKinsey framing: "This is 80% business transformation and 20% tech transfor
 - https://www.fintechweekly.com/magazine/articles/klarna-hires-customer-service-after-ai-pivot [domain trade publication]
 
 **Evidence level:** Level 2 (single high-profile case, but with unusually detailed public admissions from the CEO)
-**Relevance:** Klarna is now THE counter-case against "replace humans with AI." It validates our approach: train people to work WITH agents, don't replace people with agents. The 55% regret stat from Orgvue/Forrester suggests Klarna is the visible tip of a larger iceberg.
+**Relevance:** Klarna is now THE counter-case against "replace humans with AI." It supports a train-people-to-work-WITH-agents thesis over a replace-people-with-agents one. The 55% regret stat from Orgvue/Forrester suggests Klarna is the visible tip of a larger iceberg.
 
 ---
 
@@ -191,20 +191,18 @@ The McKinsey framing: "This is 80% business transformation and 20% tech transfor
 ### NEW Pattern 45: "The Innovation Locus Is Inside" (Level 2)
 **What:** The most advanced AI users are already inside organizations — "they're just doing it secretly" (Mollick). Shadow AI data confirms: 93% of enterprise ChatGPT use is on non-corporate accounts. The innovation is happening bottom-up, not top-down via platform purchases.
 **Signal count:** 5-6 (Mollick, shadow AI surveys, Moderna case)
-**Relevance:** This reframes our Agents 101 offering. We're not introducing AI to organizations — we're making visible what's already happening and giving it structure.
+**Relevance:** This reframes the transformation-education opportunity: the work is not introducing AI to organizations — it's making visible what's already happening and giving it structure.
 
 ---
 
-## Implications for Agents 102
+## Implications
 
-1. **Pattern 44 at Level 3 is our strongest market evidence.** "Training before tooling" is now convergent, not anecdotal. Use this in marketing: "Every major survey in 2026 says competence is the bottleneck, not platforms."
+1. **Pattern 44 reaching Level 3 is strong market evidence.** "Training before tooling" is now convergent, not anecdotal — every major 2026 survey points the same direction: competence is the bottleneck, not platforms.
 
-2. **Mollick's framework validates ours.** His "Leadership, Lab, Crowd" maps to our journey. Citation opportunity: reference Mollick in positioning materials (with appropriate credit).
+2. **Nordic gap is a significant market gap.** 31% have a strategy, most at maturity 1-2, leadership is the bottleneck.
 
-3. **Nordic gap = our market.** 31% have a strategy, most at maturity 1-2, leadership is the bottleneck. This is exactly the problem Agents 101 solves.
+3. **Pilot purgatory needs a strategy cure.** Organizations running 30-900 pilots with no strategy need a deliberate strategic-clarity step: which transformations to pursue, and who owns them.
 
-4. **Pilot purgatory is the disease; we're the cure.** Organizations running 30-900 pilots with no strategy need exactly what Make Your Own provides: strategic clarity on which transformations to pursue.
+4. **Shadow AI is the urgency signal.** 93% unsanctioned use means the transformation is happening whether leadership likes it or not — organizations need structure before it becomes a problem.
 
-5. **Shadow AI is the urgency signal.** 93% unsanctioned use means the transformation is happening whether leadership likes it or not. Our value prop: give it structure before it gives you problems.
-
-6. **Sweden first, then Finland/Norway.** Sweden's 87% CxO integration rate and 77% upskilling investment suggests higher readiness for our offering. Finland's declining AI Index ranking (10th → 15th) may create more urgency but less current readiness.
+5. **Sweden shows higher readiness than Finland/Norway.** Sweden's 87% CxO integration rate and 77% upskilling investment suggest higher current readiness. Finland's declining AI Index ranking (10th → 15th) may create more urgency but less current readiness.

@@ -227,7 +227,7 @@ Many resources (Salesforce, Microsoft Learn, HuggingFace) target:
 
 ---
 
-## Recommendations for Agents 102 Curriculum Design
+## Recommendations for LLM Agent Curriculum Design
 
 Based on this research, successful LLM agent teaching should include:
 

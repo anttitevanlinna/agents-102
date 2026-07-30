@@ -103,7 +103,7 @@ Are Nordic enterprises applying coding-agent-level autonomy to non-coding busine
 - **What he does:** CAIO/CIO at Sitra, leading transformation into an "AI-native organization." Integrates AI into decision-making across business units. Co-organizes Agentics Finland meetups. [11]
 - **Evidence of specific agents:** Limited. Role is strategic/organizational, not product-level. No specific agent deployments are publicly documented.
 - **Evidence level:** L2 for organizational transformation, L1 for specific agents.
-- **Relevance:** Very high as a buyer persona. He represents exactly the kind of leader Agents 102 targets.
+- **Relevance:** Very high as a buyer persona. He represents exactly the kind of leader agentic-competence training targets.
 - **URL:** https://www.sitra.fi/en/people/teemu-linna/
 
 ### 10. Mikko Alasaarela (FI) -- Agion / Agentics Finland -- Governance
@@ -302,7 +302,7 @@ The domains where agents DON'T work lack fast verification:
 
 5. **Norway's Gjensidige is the best enterprise evidence, and we almost missed it.** It was not in our original practitioner list. An NHH research partnership surfaced it. This suggests there may be more enterprise agent deployments happening behind closed doors that are only visible through academic/research partnerships, not through tech media.
 
-6. **No cross-company patterns found.** We found zero evidence of Nordic companies sharing agent practices with each other, learning from each other's deployments, or participating in any cross-company agentic practice network. This validates the Agents 102 network hypothesis: the peer learning infrastructure does not exist yet.
+6. **No cross-company patterns found.** We found zero evidence of Nordic companies sharing agent practices with each other, learning from each other's deployments, or participating in any cross-company agentic practice network. This validates the peer-learning-network hypothesis: the infrastructure does not exist yet.
 
 7. **Denmark is the thinnest market.** Beyond Spektr, Fortiv, Danske Bank, and Novo Nordisk, we found very few Danish agent practitioners. The Danish ecosystem appears smaller than Finland, Sweden, or Norway for agent-specific work.
 
@@ -328,15 +328,15 @@ In coding, tests pass or fail. What is the equivalent in business functions?
 
 ---
 
-## Implications for Agents 102
+## Implications for Agentic Training
 
 1. **Teach verification design, not just agent design.** The biggest insight from this research: autonomous agents require fast verification loops. Training should teach people to DESIGN verification mechanisms for their domain before building agents.
 
 2. **Finance and legal are the showcase domains.** When demonstrating that coding-agent patterns apply to business functions, use AP automation (Vic.ai/Basware) and legal workflows (Legora) as evidence. These are the strongest Nordic examples.
 
-3. **Gjensidige is the enterprise case study.** A 200-year-old Norwegian insurer deploying named autonomous agents is more compelling for our buyer persona (large Nordic companies) than any startup example.
+3. **Gjensidige is the enterprise case study.** A 200-year-old Norwegian insurer deploying named autonomous agents is more compelling for a large-Nordic-company buyer persona than any startup example.
 
-4. **The peer network gap is confirmed.** Zero evidence of cross-company agent practice sharing in the Nordics. This is the exact gap Agents 102's Step 5 (Drive into Value Chains) fills.
+4. **The peer network gap is confirmed.** Zero evidence of cross-company agent practice sharing in the Nordics. This is the exact gap an agentic peer-practice network would fill.
 
 5. **HR is the opportunity and the risk.** Every enterprise needs HR agents, but GDPR makes autonomous HR decisions a minefield. Training should address this tension explicitly.
 

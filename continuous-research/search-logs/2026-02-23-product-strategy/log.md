@@ -193,7 +193,7 @@
    - **HBR** published "To Thrive in the AI Era, Companies Need Agent Managers" (Feb 2026) — legitimizing the "agent manager" role as a new organizational function.
    - **LangChain State of Agent Engineering** survey: 57% of respondents have agents in production (but this is a developer-heavy sample, not enterprise PM teams).
 
-4. **Ethan Mollick's "Management as AI Superpower"** is the most interesting practitioner-direct signal. His thesis: management skills (scoping problems, giving feedback, evaluating work) are the key competency for working with agents. This aligns directly with Agents 102 positioning.
+4. **Ethan Mollick's "Management as AI Superpower"** is the most interesting practitioner-direct signal. His thesis: management skills (scoping problems, giving feedback, evaluating work) are the key competency for working with agents.
 
 5. **Counter-evidence is strong:**
    - 75% of agentic AI tasks fail (Superface data)

@@ -281,7 +281,7 @@ Based on the convergence evidence, here is what a Nordic enterprise should desig
 
 ### What This Means for Training
 
-This convergence evidence directly validates the Agents 102 curriculum thesis:
+This convergence evidence directly validates a competence-first curriculum thesis:
 
 - **The skill is not "deploy an agent."** It's "design the human-AI boundary for your specific context."
 - **The value is not automation.** It's judgment about where automation creates value and where it destroys it.

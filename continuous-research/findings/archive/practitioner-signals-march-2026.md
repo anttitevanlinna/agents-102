@@ -56,7 +56,7 @@ Willison demonstrated Claude Code and OpenAI Codex for data journalism — data 
 - Source: https://simonwillison.net/2026/Mar/22/starlette/ [practitioner direct]
 - Source: https://simonwillison.net (March 2026 posts) [practitioner direct]
 
-**Relevance:** Willison is demonstrating agents in the hands of non-engineers (journalists) — exactly the use case our training targets. The $23 cost point makes this accessible.
+**Relevance:** Willison is demonstrating agents in the hands of non-engineers (journalists) — a use case that matters for any org thinking beyond developers. The $23 cost point makes this accessible.
 
 ### Agent Security: The "Lethal Trifecta"
 Willison identifies three properties that, when combined, create exploitable agent vulnerabilities:
@@ -66,7 +66,7 @@ Willison identifies three properties that, when combined, create exploitable age
 
 - Source: Referenced from June 2025 posts (stale by freshness rule, but the framework remains current)
 
-**Relevance:** Directly relevant to Module 4 (Security) in our curriculum. The "lethal trifecta" is a memorable, teachable framework.
+**Relevance:** The "lethal trifecta" is a memorable, teachable security framework.
 
 ### Autoresearch Pattern
 Willison covered Karpathy's autoresearch and a community extension (Dan Woods running 90 experiments via Claude Code to optimize local LLM inference). Willison expressed skepticism about quality validation — noting claims were "insufficiently documented."
@@ -86,7 +86,7 @@ Willison covered Karpathy's autoresearch and a community extension (Dan Woods ru
 
 **The concept:** Context engineering = the practice of reliably supplying LLMs with necessary external information. Moving from optimizing individual components to reasoning over billions of tokens in production. This is the enterprise challenge — not the model, but what you feed the model.
 
-**Relevance:** This maps to our training's emphasis on organizational context. When we say "the organization's own people know their requirements, systems, and constraints" — that IS context engineering. The term gives a technical name to what we've been describing as the consulting pattern.
+**Relevance:** This gives a technical name to a familiar consulting pattern: "the organization's own people know their requirements, systems, and constraints" — that IS context engineering.
 
 **Evidence level:** Level 1 (practitioner opinion, but emerging terminology with conference traction).
 **Finding category:** Context (conceptual framework, not deployment).
@@ -137,7 +137,7 @@ Research on agent failures in enterprise (March 2026):
 
 **Evidence level:** Level 2-3 (multiple independent sources reporting the same pattern — agent pilots fail on integration and governance, not on model capability).
 
-**Relevance:** This directly supports our convergence finding #2 (governance as prerequisite) and the training's emphasis on governance over technology. The 85% × 10 steps = 20% success framing is a powerful teaching tool for Module 6 (Evals).
+**Relevance:** This directly supports the earlier convergence finding on governance as prerequisite. The 85% × 10 steps = 20% success framing is a powerful illustration of compounding error.
 
 ---
 
@@ -177,7 +177,7 @@ The "context engineering" concept promoted by Swyx/Dex Horthy is now gaining QCo
 
 **Evidence level:** Level 2 → approaching Level 3 (multiple independent practitioners, conference talks, and tools converging on the same concept).
 
-**Relevance to our training:** Context engineering IS what our Agent Platform Advisory offering does — building the system that synthesizes organizational knowledge into structured context for agents. The term validates our approach technically.
+**Relevance:** Context engineering describes exactly the practice of building systems that synthesize organizational knowledge into structured context for agents — the term gives a rigorous technical name to work already being done under other labels.
 
 ### Agent Production Failure Taxonomy: Converging on Integration, Not Intelligence
 

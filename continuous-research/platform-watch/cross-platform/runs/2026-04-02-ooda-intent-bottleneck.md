@@ -199,7 +199,7 @@ Stern (Agoda) comes closest: "communication is no longer the cost to minimize â€
 
 ---
 
-## Implications for Agents 102 Knowledge Base
+## Implications for the knowledge base
 
 1. **The "intent bottleneck" can be added to synthesis files as L3 convergence** â€” with the caveat that it's confirmed only in engineering/technical contexts.
 

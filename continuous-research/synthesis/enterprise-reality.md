@@ -89,7 +89,7 @@ For an environment with SF + Snowflake + Redshift + Slack + O365 + SharePoint + 
 - **MCP ecosystem** (Anthropic) has servers for most, but requires developer setup and has no business-user surface.
 - **Custom build** (Agent SDK + MCP + custom state management) is likely the only path that works.
 
-**This is why the training journey matters:** Agents 101 builds understanding, then platform advisory helps navigate this reality.
+**This is why the training journey matters:** hands-on training builds understanding, then platform advisory helps navigate this reality.
 
 ## Compound Reliability Math (Pattern 30)
 
@@ -112,6 +112,6 @@ Technology alone doesn't cross the chasm (Moore). The whole product = technology
 
 **The pattern:** Technology is "ready" or "partial" across almost every domain. The chasm isn't technological. The missing pieces are consistently **training** and **cross-system integration**. Governance varies — domains with existing audit culture (finance, legal, industrial) have a structural advantage. References are the trailing indicator — they appear only after the other dimensions are at least partial.
 
-**Implication:** "Which platform?" matters less than "who will train our people?" and "who will integrate across our systems?" The platform vendors provide technology. Nobody reliably provides the rest of the whole product. This is the gap Agents 102 fills for the training dimension.
+**Implication:** "Which platform?" matters less than "who will train our people?" and "who will integrate across our systems?" The platform vendors provide technology. Nobody reliably provides the rest of the whole product — training and integration are the open gap.
 
 See [cto-answer.md](cto-answer.md) for platform recommendations per use case. See [platform-trajectories.md](platform-trajectories.md) for where each platform is headed.

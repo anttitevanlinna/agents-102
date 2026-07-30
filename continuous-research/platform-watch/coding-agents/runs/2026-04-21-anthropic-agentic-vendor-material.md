@@ -23,7 +23,7 @@ Core piece: **"Effective harnesses for long-running agents"** [vendor blog] http
 
 ## Memory and CLAUDE.md as design surfaces
 
-Anthropic does not publish a dedicated "CLAUDE.md design guide" blog post. CLAUDE.md shows up in [vendor docs] as part of Claude Code setup but is not theorized as a design surface the way we treat it in Agents 102. Memory is positioned at the **model layer** (Opus 4.7 "carries context across sessions") rather than the **file layer** (CLAUDE.md / skills / notes). This is a vendor tilt to watch — Anthropic prefers to sell memory as a model capability, not as a file discipline.
+Anthropic does not publish a dedicated "CLAUDE.md design guide" blog post. CLAUDE.md shows up in [vendor docs] as part of Claude Code setup but is not theorized as a design surface in the vendor's own material. Memory is positioned at the **model layer** (Opus 4.7 "carries context across sessions") rather than the **file layer** (CLAUDE.md / skills / notes). This is a vendor tilt to watch — Anthropic prefers to sell memory as a model capability, not as a file discipline.
 
 ## Multi-agent and MCP guidance
 
@@ -58,12 +58,11 @@ Not directly named in blog posts: **argue-loops / judge-stalemate / hallucinatio
 - Antspace as a named public product.
 - Any admission of the gap between "announced" (Managed Agents, Cowork enterprise features) and production adoption.
 
-## Curriculum implications — held loose (all claims are vendor-labeled)
+## Vendor framing notes — held loose (all claims are vendor-labeled)
 
-1. **Agents 102 is aligned with Anthropic's own vocabulary.** Skills, subagents, MCP, context engineering, compaction — Anthropic uses the same nouns we teach. The curriculum will feel native on the platform.
-2. **Our CLAUDE.md-as-design-surface frame is a gap Anthropic doesn't fill.** This is differentiation, not duplication. Anthropic tilts toward model-layer memory; we teach file-layer discipline.
-3. **Our hallucination bake-off (M5) and orchestrator+eval-loop (M6) extend Anthropic's eval guidance.** Anthropic says "start with 20–50 real-failure tasks"; we teach the loop that writes and selects them.
-4. **Managed Agents + Cowork are the M7 "cloud agent platform" branch** — now GA enough to be a real M7 option for prepared buyers. Unprepared buyers still hit the three walls.
-5. **Do not upgrade vendor claims.** Opus 4.7's "works coherently for hours" is marketing until a practitioner confirms. Our M2-M8 exercises are the test.
+1. **Anthropic's public vocabulary is unremarkable.** Skills, subagents, MCP, context engineering, compaction — the same nouns practitioners already use. No vendor-specific divergence to flag.
+2. **File-layer memory discipline (CLAUDE.md as a design surface) is a gap Anthropic's own material doesn't fill.** Anthropic tilts toward model-layer memory (Opus 4.7 "carries context across sessions") over file-layer discipline.
+3. **Managed Agents + Cowork are now GA enough to be a real option for organizations with the operational readiness to use them** — unprepared organizations still hit the reliability and trust gaps documented elsewhere in this research program.
+4. **Do not upgrade vendor claims.** Opus 4.7's "works coherently for hours" is marketing until a practitioner confirms it independently.
 
 **Word count: ~780.**

@@ -337,7 +337,7 @@ This means business users can extend platform-shipped agents with custom ones. T
 
 3. **SAP is the operations vector.** For large Nordic industrials, SAP Joule agents in finance and supply chain are the most impactful because they touch core business processes, not just productivity tools.
 
-4. **The competence gap is real and imminent.** These agents are shipping Q1-Q2 2026. Most Nordic enterprises have not trained their people on what agents are, how they work, or how to govern them. The gap between "agents available" and "organization ready" is the exact gap our training addresses.
+4. **The competence gap is real and imminent.** These agents are shipping Q1-Q2 2026. Most Nordic enterprises have not trained their people on what agents are, how they work, or how to govern them. The gap between "agents available" and "organization ready" is the exact gap agentic training needs to address.
 
 5. **No-code agent creation means everyone is an agent builder.** With Copilot Studio, Agentforce Builder, and Joule Studio all offering no-code creation, the question shifts from "can we build agents?" to "should we, and how do we govern them?" This is a training and governance challenge, not a technology challenge.
 

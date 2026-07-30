@@ -57,8 +57,8 @@
 
 ## Curriculum implications — held loose (all claims are vendor-labeled)
 
-- **Codex converges on Claude Code's architecture.** AGENTS.md ≈ CLAUDE.md. SKILL.md is directly ported. MCP supported natively. Subagents are manual. Memory is markdown files. The two tools are shape-compatible — which validates Agents 102's platform-agnostic bet: students learning on Claude Code can carry patterns to Codex.
-- **"Harness engineering" is OpenAI's name for what Module 7 teaches.** Worth noting the term exists — it's useful shared vocabulary with engineering audiences who work in Codex.
+- **Codex converges on Claude Code's architecture.** AGENTS.md ≈ CLAUDE.md. SKILL.md is directly ported. MCP supported natively. Subagents are manual. Memory is markdown files. The two tools are shape-compatible — patterns learned on Claude Code carry directly to Codex.
+- **"Harness engineering" is OpenAI's name for the same discipline practitioners already build around session scaffolding.** Worth noting the term exists — it's useful shared vocabulary with engineering audiences who work in Codex.
 - **Long-running claims are vendor demos, not evidence.** 25-hour / 13M tokens is a single cherry-picked run from OpenAI. Do not cite as what students can expect. Cite only as "what OpenAI advertises is possible."
 - **Codex teaches the same primitives we teach** — markdown memory, skills, subagents on demand, MCP tools. Good news for transferability, bad news for anyone hoping Codex's official docs would reveal a genuinely different paradigm.
 - **Silence on failure modes is loud.** OpenAI's own material ducks abandonment rates, cost-per-successful-run, and when to stop. A curriculum that teaches students to measure these is teaching something the vendors won't.

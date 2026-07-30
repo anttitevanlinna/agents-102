@@ -189,7 +189,7 @@ After 53 cycles:
 - **Operations/Supply Chain:** Found 1 executive (Indira Uppuluri). No hands-on practitioners.
 - **Finance:** Found 1 new executive (Marco Argenti, Goldman CIO). No finance analysts/controllers.
 
-**Why this matters for Agents 102:** Our training targets builders, not buyers. In vendor-driven domains, the "builder" is the vendor's engineering team or a systems integrator (Deloitte, Accenture). The enterprise practitioner is a buyer/configurer. This changes how Module 7 (Agent Platforms) should position the opportunity — in these domains, "building agents" means configuring vendor platforms, not writing code.
+**Domain implication:** In vendor-driven domains, the "builder" is the vendor's engineering team or a systems integrator (Deloitte, Accenture), not the enterprise practitioner — who is a buyer/configurer. Any assessment of builder-level competency in these domains needs to reckon with this: "building agents" means configuring vendor platforms, not writing code.
 
 ---
 

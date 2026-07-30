@@ -394,7 +394,7 @@ The convergence is real, but the nuance matters enormously:
 4. **The real skill is knowing when to split.** Anthropic's three-question framework is the most credible decision tool available
 5. **Orchestration architecture matters more than model choice.** The framework and topology you choose will determine success more than which LLM you use
 
-This is exactly the kind of nuanced, practitioner-grounded insight that belongs in Agents 102 training — not "multi-agent is the future" cheerleading, but "here's how 20 organizations made the decision and what actually worked."
+This is exactly the kind of nuanced, practitioner-grounded insight that belongs in agentic training — not "multi-agent is the future" cheerleading, but "here's how 20 organizations made the decision and what actually worked."
 
 ---
 

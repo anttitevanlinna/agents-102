@@ -1,8 +1,8 @@
-# Continuous Research System — Agents 102
+# Continuous Research System
 
 Track what's just now becoming possible in agentic business practices — **beyond coding**. Translate it for the early majority before anyone else does.
 
-> **Open for contribution.** This directory is the public knowledge base. You may read, quote, fork, and contribute under the terms in [`LICENSE.md`](LICENSE.md). The rest of the Agents 102 repository (curriculum, content, strategy, site) is proprietary to Bosser Oy — see the root [`COPYRIGHT.md`](../COPYRIGHT.md).
+> **Open for contribution.** This directory is the public knowledge base. You may read, quote, fork, and contribute under the terms in [`LICENSE.md`](LICENSE.md). The rest of this repository (curriculum, content, strategy, site) is proprietary to Bosser Oy — see the root [`COPYRIGHT.md`](../COPYRIGHT.md).
 
 ## Scope: Business Processes, Not Code
 
@@ -169,7 +169,7 @@ McKinsey can talk to 500 CTOs. They can't track what's happening on X.com at the
 
 ## Connection to Business Model
 
-This is the 80% frontier research from Bosser's business model canvas (private — see the `bosser-strategy` skill), brought forward in time. We start producing it before the peer network exists.
+This is the 80% frontier research from Bosser's business model canvas, brought forward in time. We start producing it before the peer network exists.
 
 - **Train** — the quiz is the first touch. Research makes it valuable.
 - **Curate** — the research program IS the curation activity, started before the network exists.
@@ -179,7 +179,7 @@ When the peer network eventually forms (Step 5), the 20% peer premium layers on 
 
 ### Assumptions Tested
 
-The research program directly tests two critical assumptions from Bosser's strategic assumption map (private — see the `bosser-strategy` skill):
+The research program directly tests two critical assumptions from Bosser's strategic assumption map:
 
 - **P1:** Can we curate frontier best-in-class agentic practice at quality and pace? The monthly/quarterly cadence is the test.
 - **P2:** Is the 80% frontier curation alone valuable enough? If CTOs share, bookmark, and forward the research — before any peer premium exists — the answer is yes.

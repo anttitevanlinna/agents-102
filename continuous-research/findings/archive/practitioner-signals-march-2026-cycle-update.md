@@ -46,7 +46,7 @@
 
 **Evidence level:** Level 2 (single practitioner, but extremely high-profile and specific about workflow changes).
 
-**Relevance to our training:** The "parallel agents on tiled monitor" workflow and the "December threshold" claim are powerful teaching signals. The discipline of decomposing work for agents maps directly to our Module 8 (Agents Building Agents) and the broader curriculum arc. The "Dobby" home agent is a memorable example of agents beyond coding — relevant to our "other 90% of the company" thesis, even if it's personal rather than business.
+**Relevance:** The "parallel agents on tiled monitor" workflow and the "December threshold" claim are powerful teaching signals. The discipline of decomposing work for agents maps directly to agents-building-agents practice. The "Dobby" home agent is a memorable example of agents beyond coding — relevant to the thesis that agent adoption extends well past the engineering org, even if it's personal rather than business.
 
 ---
 
@@ -68,7 +68,7 @@
 
 **Evidence level:** Level 1 (opinion from highly credible practitioner).
 
-**Relevance:** The "delegation frameworks as agent instructions" insight from January is directly relevant to Module 1 (Getting Going) — participants could try military-style task delegation to agents as an exercise. The adoption gap observation validates our entire business model.
+**Relevance:** The "delegation frameworks as agent instructions" insight from January is directly actionable — practitioners could try military-style task delegation to agents as an exercise. The adoption gap observation validates a training-first, competence-building approach to agent adoption.
 
 ---
 
@@ -104,7 +104,7 @@
 
 **Evidence level:** Level 2 (practitioner direct, specific cases).
 
-**Relevance to our training:** The chardet case is a powerful Module 4 (Security) or Module 7 (Agent Platforms) teaching example — agents don't just have technical risks, they have legal and licensing risks. The "junk PR" problem is relevant to any organization deploying coding agents.
+**Relevance:** The chardet case is a powerful teaching example — agents don't just have technical risks, they have legal and licensing risks. The "junk PR" problem is relevant to any organization deploying coding agents.
 
 ---
 
@@ -185,7 +185,7 @@ Three independent practitioners are now using this term or close variants:
 
 This is approaching **Level 3 convergence** on terminology. The discipline is coalescing around: decomposing work for agents, managing parallel agent workstreams, context engineering, and quality assurance of agent output.
 
-**Relevance:** Our training IS agentic engineering training. The term validates the entire curriculum arc.
+**Relevance:** "Agentic engineering" is the term to track — this convergence validates it as a named discipline, not a marketing coinage.
 
 ### Theme 2: Context Engineering Solidifying
 
@@ -238,17 +238,17 @@ Karpathy specifically identified December 2025 as when coding agents became reli
 
 ---
 
-## Implications for Our Training
+## Implications
 
-1. **"Agentic engineering" is the term to use.** Karpathy coined it, Willison presented on it, Chase is building tools for it. Our training teaches it. We should adopt the term.
+1. **"Agentic engineering" is becoming the term of art.** Karpathy coined it, Willison presented on it, Chase is building tools for it.
 
-2. **Module 1 exercise opportunity:** Mollick's insight that delegation frameworks (military orders, film shot lists, PRDs) work as agent instructions is a concrete exercise — have participants try different delegation styles and compare agent output quality.
+2. **Delegation-framework exercise opportunity:** Mollick's insight that delegation frameworks (military orders, film shot lists, PRDs) work as agent instructions is a concrete exercise — have participants try different delegation styles and compare agent output quality.
 
-3. **Module 4 (Security) teaching case:** The chardet relicensing controversy is a vivid, current example of agent-created legal risk that goes beyond prompt injection.
+3. **Security teaching case:** The chardet relicensing controversy is a vivid, current example of agent-created legal risk that goes beyond prompt injection.
 
-4. **Module 7 (Agent Platforms) update needed:** LangChain's pivot to "harness engineering" (Deep Agents) represents a real shift in the platform landscape. The distinction between frameworks, runtimes, and harnesses is now a meaningful taxonomy.
+4. **Platform-landscape shift:** LangChain's pivot to "harness engineering" (Deep Agents) represents a real shift in the platform landscape. The distinction between frameworks, runtimes, and harnesses is now a meaningful taxonomy.
 
-5. **The adoption gap IS our market:** Both Mollick ("remarkably little has changed in most organizations") and the METR benchmarks showing exponential capability growth confirm that the gap between what agents can do and what organizations are doing with them is widening. This gap is exactly where our training lives.
+5. **The adoption gap is the story:** Both Mollick ("remarkably little has changed in most organizations") and the METR benchmarks showing exponential capability growth confirm that the gap between what agents can do and what organizations are doing with them is widening.
 
 ---
 

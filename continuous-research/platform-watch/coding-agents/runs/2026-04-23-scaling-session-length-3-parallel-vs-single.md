@@ -2,7 +2,7 @@
 
 **Question:** In the last 6 months (Oct 2025 → Apr 2026), where is practitioner consensus moving — toward longer single sessions or toward more parallel-short sessions with orchestration?
 
-**Scope:** people-first read of named practitioners (Ronacher, Karpathy, Charles/Ramp, Wilson Lin/Cursor, Quigley/Sanity, Spotify Honk team, Carlini/Anthropic). Feeds Agentic Engineering 101 M5 (the "send-off" / packaging module).
+**Scope:** people-first read of named practitioners (Ronacher, Karpathy, Charles/Ramp, Wilson Lin/Cursor, Quigley/Sanity, Spotify Honk team, Carlini/Anthropic). Focus: how practitioners package and hand off long-running work.
 
 **Headline:** the consensus has moved toward **parallel-short with file-based orchestration as the default**, with single-session multi-hour reframed as one valid task shape (not the destination). The practitioner population publishing fanout patterns vastly outnumbers those publishing single-session heroics. But the parallel champions are converging on a non-trivial substrate (worktrees + markdown handoff + judge agent + cap on N), and the dissent on coordination overhead is sharp enough to take seriously.
 

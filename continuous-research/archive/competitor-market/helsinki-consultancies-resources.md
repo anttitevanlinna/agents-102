@@ -17,7 +17,7 @@
 - **Agentic AI specifically**: No publicly visible "agentic AI" product, service line, or training program. AI offerings are framed as custom consulting engagements (data platforms, ML models, AI solutions), not as agent-specific capabilities. No mention of agent architectures, MCP, A2A, or agentic workflows in public materials.
 - **Training/education**: Reaktor co-created "Elements of AI" with the University of Helsinki — a massively successful free online course (over 1 million enrollments globally). This is the most significant AI education initiative in Finnish history. However, Elements of AI is an introductory awareness course (what is AI, how does it work), not a capability-building program. It does not teach building, deploying, or managing AI systems. No known agent-specific or advanced AI training program for enterprise clients.
 - **Notable AI clients/cases**: Elements of AI is the flagship. The GenAI/software productivity research project with University of Helsinki and corporate partners is the most recent visible AI initiative. Specific enterprise AI client engagements are not publicly detailed (typical for premium consultancies).
-- **Distance from Agents 102 model**: Far. Reaktor is a bespoke consulting firm. They sell talented people doing custom work, not scalable programs, networks, or curated practices. Elements of AI is the exception — but it was an awareness play, not a commercial training product.
+- **Distance from this model**: Far. Reaktor is a bespoke consulting firm. They sell talented people doing custom work, not scalable programs, networks, or curated practices. Elements of AI is the exception — but it was an awareness play, not a commercial training product.
 
 ---
 
@@ -31,7 +31,7 @@
 - **Agentic AI specifically**: No publicly visible agentic AI service line, product, or training program. AI offerings are framed broadly as part of digital transformation work — not agent-specific.
 - **Training/education**: Futurice does not appear to sell standalone training programs to the market. They run internal capability development and sometimes embed workshops in client engagements (e.g., design sprints, innovation workshops). No known public AI training product. Their "Futurice Culture" materials have educational elements but are about organizational culture, not AI skills.
 - **Notable AI clients/cases**: Futurice's case studies emphasize digital products, service design, and platform builds for clients like public sector organizations and large industrials in Finland and Germany. Specific AI case studies are not prominently featured in public materials — AI appears as a component within broader transformation work, not as the headline.
-- **Distance from Agents 102 model**: Far. Pure consulting model — sells bespoke engagements, not scalable programs. No network/curation play. No training products. Could theoretically run AI workshops for clients, but this would be consulting, not a scaled training business.
+- **Distance from this model**: Far. Pure consulting model — sells bespoke engagements, not scalable programs. No network/curation play. No training products. Could theoretically run AI workshops for clients, but this would be consulting, not a scaled training business.
 
 ---
 
@@ -44,7 +44,7 @@
 - **AI/ML offerings**: Uses AI as part of their digital sales and marketing work — personalization, recommendation engines, marketing automation. Not an AI consultancy per se; AI is a tool within their e-commerce/digital sales delivery.
 - **Agentic AI specifically**: No visible agentic AI offerings.
 - **Training/education**: No standalone training products.
-- **Distance from Agents 102 model**: Very far. Niche e-commerce consultancy, not an AI/agents player.
+- **Distance from this model**: Very far. Niche e-commerce consultancy, not an AI/agents player.
 
 ---
 
@@ -58,7 +58,7 @@
 - **Agentic AI specifically**: No publicly visible agentic AI-specific service line or training program. AI offerings are broad (data platforms, ML, AI integration), not agent-specific.
 - **Training/education**: No known standalone training products for the market. Internal capability development only.
 - **Notable AI clients/cases**: Works with large Finnish enterprises and public sector organizations on data platform modernization and AI adoption. Specific AI case studies not prominently featured in public materials.
-- **Distance from Agents 102 model**: Far. Technology partner / managed services model. Sells developer capacity and project delivery, not training or networks.
+- **Distance from this model**: Far. Technology partner / managed services model. Sells developer capacity and project delivery, not training or networks.
 
 ---
 
@@ -71,7 +71,7 @@
 - **AI/ML offerings**: AI is part of the service portfolio but not the primary identity. Offers AI/ML development services, cloud-native solutions, and data services. Less AI-branded than Siili.
 - **Agentic AI specifically**: No visible agentic AI service line or program.
 - **Training/education**: No known public training products. Vincit runs community events (e.g., Vincit Dev Talks) but these are brand/recruiting events, not commercial training.
-- **Distance from Agents 102 model**: Very far. Custom software shop with strong culture brand. No AI training or network play.
+- **Distance from this model**: Very far. Custom software shop with strong culture brand. No AI training or network play.
 
 ---
 
@@ -84,7 +84,7 @@
 - **AI/ML offerings**: Offers AI consulting as part of digital transformation services. Has data & analytics capabilities. AI is a growing focus area but the company identity is broader — digital transformation, cloud, agile, and public sector specialization.
 - **Agentic AI specifically**: No visible agentic AI service line or program.
 - **Training/education**: Gofore runs some public training (Agile, cloud, digital transformation) but no known AI-specific or agent-specific training programs for the market.
-- **Distance from Agents 102 model**: Far. Consulting plus capacity model. Strong in public sector but no network/curation play or AI training products.
+- **Distance from this model**: Far. Consulting plus capacity model. Strong in public sector but no network/curation play or AI training products.
 
 ---
 
@@ -97,7 +97,7 @@
 - **AI/ML offerings**: Has begun offering AI-assisted development services and AI/ML integration into DevOps pipelines. AI is an emerging, not primary, capability.
 - **Agentic AI specifically**: No visible agentic AI service line.
 - **Training/education**: Eficode runs a substantial training business — DevOps training, Atlassian training, Kubernetes, Docker, CI/CD. This is the closest any Helsinki consultancy comes to having a commercial training product line. However, their training is all DevOps/engineering-focused, not AI/agents.
-- **Distance from Agents 102 model**: Medium-far. Eficode has the *mechanics* of running a training business (training catalog, facilitators, enterprise sales) but applies them to DevOps, not AI/agents. If any Helsinki consultancy could mechanically pivot to an AI training offering, it might be Eficode — they already know how to sell and deliver training to enterprises.
+- **Distance from this model**: Medium-far. Eficode has the *mechanics* of running a training business (training catalog, facilitators, enterprise sales) but applies them to DevOps, not AI/agents. If any Helsinki consultancy could mechanically pivot to an AI training offering, it might be Eficode — they already know how to sell and deliver training to enterprises.
 
 ---
 
@@ -109,7 +109,7 @@
 - **AI/ML offerings**: Global VML has AI capabilities; the Helsinki office applies them primarily in marketing technology, personalization, and customer experience contexts.
 - **Agentic AI specifically**: No visible local agentic AI practice.
 - **Training/education**: No standalone training products from the Finnish office.
-- **Distance from Agents 102 model**: Very far. Marketing-focused, part of global agency network. Different universe.
+- **Distance from this model**: Very far. Marketing-focused, part of global agency network. Different universe.
 
 ---
 
@@ -151,8 +151,8 @@
 - **Agentic AI specifically**: No visible agentic AI program. AI programs are framed around "AI for leaders," "AI strategy," and "data/analytics" — not agent architectures, agentic workflows, or building agents. The framing is strategic/managerial AI literacy, not hands-on agentic capability.
 - **Training/education**: This IS their business. Aalto EE is a training institution. They sell open-enrollment programs, custom corporate programs, and degree programs (EMBA, MBA). Enterprise L&D teams are their primary buyer. They have the full infrastructure: program design, faculty, sales teams, alumni networks, corporate accounts.
 - **Network/community model**: Aalto EE has an alumni network (thousands of executives across Finland and internationally). This is a traditional alumni network (events, directory, brand affiliation) — not a peer practice network or curated intelligence community. It creates ongoing relationship but does not produce collective practice intelligence.
-- **Distance from Agents 102 model**: Medium. Aalto EE is the closest entity in Finland to having the buyer relationship and training infrastructure that Agents 102 needs. They already sell AI programs to the exact buyer persona (SVP of HR, Head of L&D). However, their AI programs are strategic/managerial ("understand AI for decision-making"), not hands-on capability-building ("build agents with your policies"). They do not have a network-is-the-product model, a curation function, or an agentic focus. They are a university extension — they teach, they don't curate peer practice.
-- **Channel or competitor?**: Primarily a potential channel partner. Aalto EE could be the delivery partner or co-brand for Agents 102 in Finland. They have the buyer relationship, the sales infrastructure, and the institutional credibility. The risk is that they launch their own agentic AI program — but their DNA is academic/managerial education, not practitioner capability-building. They would likely teach "AI agents from a strategic perspective" rather than "build agents hands-on." If Agents 102 could partner with Aalto EE (e.g., co-branded program, Aalto EE as channel), it would solve the Finnish go-to-market challenge instantly.
+- **Distance from this model**: Medium. Aalto EE is the closest entity in Finland to having the buyer relationship and training infrastructure a hands-on agentic program would need. They already sell AI programs to the exact buyer persona (SVP of HR, Head of L&D). However, their AI programs are strategic/managerial ("understand AI for decision-making"), not hands-on capability-building ("build agents with your policies"). They do not have a network-is-the-product model, a curation function, or an agentic focus. They are a university extension — they teach, they don't curate peer practice.
+- **Channel or competitor?**: Primarily a potential channel partner. Aalto EE could be the delivery partner or co-brand for an independent agentic program in Finland. They have the buyer relationship, the sales infrastructure, and the institutional credibility. The risk is that they launch their own agentic AI program — but their DNA is academic/managerial education, not practitioner capability-building. They would likely teach "AI agents from a strategic perspective" rather than "build agents hands-on." A co-branded partnership with Aalto EE, with Aalto EE as channel, would solve the Finnish go-to-market challenge instantly for a program of this kind.
 
 ---
 
@@ -166,8 +166,8 @@
 - **Agentic AI specifically**: No visible agentic AI programs.
 - **Training/education**: Yes, this is their business — executive education programs, custom corporate programs, short courses.
 - **Network/community model**: Traditional alumni network. Same model as Aalto EE — events, community, brand affiliation. Not a practice network.
-- **Distance from Agents 102 model**: Far. Hanken & SSE has the training mechanics and executive buyer relationship but no AI depth. Less likely than Aalto EE to be a relevant channel or competitor for AI-specific programs.
-- **Channel or competitor?**: Minor potential channel. Could co-deliver to their Nordic network if Agents 102 wanted to reach Swedish-speaking Finnish/Nordic executives specifically. Not a competitive threat.
+- **Distance from this model**: Far. Hanken & SSE has the training mechanics and executive buyer relationship but no AI depth. Less likely than Aalto EE to be a relevant channel or competitor for AI-specific programs.
+- **Channel or competitor?**: Minor potential channel. Could co-deliver to their Nordic network for reaching Swedish-speaking Finnish/Nordic executives specifically. Not a competitive threat.
 
 ---
 
@@ -181,7 +181,7 @@
 - **Agentic AI specifically**: No agentic AI programs, training, or products.
 - **Training/education**: NBF is NOT a training provider. It is a conference/events company. It does not sell cohort programs, corporate training, or skill-building courses. The value proposition is inspiration and networking at premium events, not capability development.
 - **Network/community model**: NBF has a large community of Finnish and Nordic business leaders who attend events. This is an audience, not a practice network. There is no peer-to-peer intelligence sharing, no curated practices, no ongoing structured collaboration. Attendees come for keynotes and networking, not for collective practice development.
-- **Distance from Agents 102 model**: Very far in terms of product model (events, not training or networks). But NBF owns a powerful buyer relationship — the same Finnish executives who would approve Agents 102 purchases attend NBF. The NBF audience is our buyer's peer group.
+- **Distance from this model**: Very far in terms of product model (events, not training or networks). But NBF owns a powerful buyer relationship — the same Finnish executives who would approve an agentic-training purchase attend NBF. The NBF audience is this buyer persona's peer group.
 - **Channel or competitor?**: Potential lead generation channel. Speaking at or sponsoring NBF could reach the buyer audience. NBF is not a training competitor and will not become one — their model is events, not programs. But they could be a marketing/awareness partner.
 
 ---
@@ -202,7 +202,7 @@
 - **Agentic AI specifically**: YES — Solita has visible agentic AI content. They ran an event titled "Deep Dive into Autonomous AI Agents" and discuss AI agents as performing "dedicated tasks in assigned agent networks" and "open-ended business problems." This is the first firm in the Finnish landscape with publicly visible agentic AI positioning. However, it appears to be thought leadership / events rather than a productized agentic AI training program.
 - **Training/education**: Solita offers "AI master classes and leadership coaching" as part of their service portfolio. These appear to be consulting-embedded training (workshops within client engagements) rather than standalone training products sold to the market. Not a training business — these are supplementary to consulting engagements. No visible open-enrollment training catalog.
 - **Network/community model**: No peer network or curation model. Solita runs events and thought leadership, but the model is consulting-centric — bilateral client relationships, not a multi-org peer network.
-- **Distance from Agents 102 model**: Medium-close on AI depth, far on business model. Solita is the most AI-advanced Finnish firm, has agentic AI on the radar, and even offers some form of AI training (master classes). But the model is still consulting — they sell expert time and solutions, not scalable network-based training programs. FunctionAI is the closest to a product (AI platform), but it is a technology product, not a training product.
+- **Distance from this model**: Medium-close on AI depth, far on business model. Solita is the most AI-advanced Finnish firm, has agentic AI on the radar, and even offers some form of AI training (master classes). But the model is still consulting — they sell expert time and solutions, not scalable network-based training programs. FunctionAI is the closest to a product (AI platform), but it is a technology product, not a training product.
 - **Channel or competitor?**: Competitive concern — moderate. Solita is the firm most likely to offer something that looks like AI training to Finnish enterprises. Their AI master classes, combined with deep enterprise relationships and genuine AI depth, could absorb demand from the SVP-of-HR buyer. The risk: a Finnish enterprise asks Solita to "teach our people about AI agents," and Solita says yes — delivering consulting-embedded workshops rather than a program. This is the embedded-upskilling threat described in Round 1, but Solita is the firm most capable of executing it because they have real AI/agent expertise. However, Solita will always prioritize consulting revenue over training revenue (same structural constraint as all consultancies). They will not build a network/curation model — that is not their business.
 
 ---
@@ -217,8 +217,8 @@
 - **Agentic AI specifically**: No visible agentic AI-specific offering or content. The firm's public positioning is broad "strategic AI" — not agent-specific.
 - **Training/education**: No visible standalone training products. Renessai is a consulting firm — it sells advisory engagements, not training programs. At ~14 people, it likely delivers workshops as part of consulting engagements but does not have a training product line.
 - **Network/community model**: No visible network model. At 14 people, the firm is too small for a network play.
-- **Distance from Agents 102 model**: Far. Renessai is a small strategic AI consultancy. It has some philosophical overlap (strategy-first, helping orgs adopt AI) but is a pure consulting firm with no training products, no network model, no agentic focus, and no scale. The firm could potentially be a collaborator or referral source — their strategic AI advisory work could naturally lead to "and now your people need capability-building" which is where Agents 102 enters.
-- **Channel or competitor?**: Not a competitive threat. Too small and too strategy-focused. Potential referral partner — Renessai advises on AI strategy, Agents 102 builds the capability. Natural handoff.
+- **Distance from this model**: Far. Renessai is a small strategic AI consultancy. It has some philosophical overlap (strategy-first, helping orgs adopt AI) but is a pure consulting firm with no training products, no network model, no agentic focus, and no scale. The firm could potentially be a collaborator or referral source — their strategic AI advisory work could naturally lead to "and now your people need capability-building" downstream.
+- **Channel or competitor?**: Not a competitive threat. Too small and too strategy-focused. Potential referral partner — Renessai advises on AI strategy; a capability-building program executes it. Natural handoff.
 
 ---
 

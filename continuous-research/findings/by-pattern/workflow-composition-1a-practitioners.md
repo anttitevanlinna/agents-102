@@ -4,7 +4,7 @@ Research question: How do the best practitioners currently compose workflows?
 Date: 2026-05-20
 Cycle: 1A (practitioner-by-practitioner sweep)
 Freshness window: since 2025-11-20
-Purpose: Inform AE101 Module 6 composition-move design (final module).
+Purpose: Map how practitioners currently compose multi-step agent workflows, and which composition shapes are teachable as a single, well-scoped exercise.
 
 ## Per-practitioner findings
 
@@ -73,7 +73,7 @@ Purpose: Inform AE101 Module 6 composition-move design (final module).
 - **Tier metric:** 19.2% PRs auto-approved (target >50%); 497 fully-autonomous PR cycles in 4 weeks of rollout.
 **Three-gates:** Agentic? Y · Independent evidence? Y (Anthropic case study cross-references; community plugin at https://github.com/intercom/claude-plugin-external) · Specific outcome? Y — but metrics vendor-self-reported (revert-rate 0.53% AI vs 5.39% human, defect backlog −54%, ship time −39%, cost-per-PR halved, 6x output for top 5%).
 **Representative quote:** "All technical work is becoming agent-first. This is the top priority for R&D."
-**Notes:** **Highest signal for the curriculum question.** Intercom is the only sample where composition is a **distributed-team primitive** rather than a single-practitioner setup. Metrics need [vendor venue] caveat; mechanism is the durable signal.
+**Notes:** **Highest signal in this sweep.** Intercom is the only sample where composition is a **distributed-team primitive** rather than a single-practitioner setup. Metrics need [vendor venue] caveat; mechanism is the durable signal.
 
 ### Geoff Charles + team (Ramp)
 **What they're composing:** A **350-skill marketplace ("Dojo") with a recommendation layer ("Sensei")** that routes role-relevant skills to employees based on tool usage and recent activity. Skills are markdown in Git — forkable, reviewable as code.
@@ -102,7 +102,7 @@ Purpose: Inform AE101 Module 6 composition-move design (final module).
 - "Not a prompt library. Not a workflow. A persistent knowledge system that learns from every session." — substack note, 2026 [SOURCE NEEDED — supply Substack post URL]
 - Recommends: orchestration skills, ReAct vs Plan-and-Execute, evals from day one.
 **Three-gates:** Agentic? Y · Independent evidence? Partial · Specific outcome? Partial (5.2M X impressions self-reported).
-**Notes:** Different audience (PM, not eng). Useful as **non-engineer composition** reference but not a primary signal for AE101.
+**Notes:** Different audience (PM, not eng). Useful as **non-engineer composition** reference but tangential to this sweep's engineer-composition focus.
 
 ---
 
@@ -124,11 +124,11 @@ Named moves appearing across **3+ independent practitioners**:
 
 7. **Compound/learn-back into CLAUDE.md or equivalent** (3 practitioners: Klaassen Compound step; Cherny "Each tip refines my CLAUDE.md"; Pocock per-repo `/setup` scaffolder). **L2 — early convergence signal (N=3; L3 needs 10–20).** The loop closes on persistent memory; without this step, the system doesn't compound.
 
-**The strongest 4-way overlap is moves 1 + 2 + 3 + 4: a kit of small markdown subagents that compose into a plan→work→verify→learn pipeline.** That's the strongest candidate composition shape from this curated sample (N=3–6 practitioners per move) — a hypothesis for the M6 design call to test, not a validated industry pattern.
+**The strongest 4-way overlap is moves 1 + 2 + 3 + 4: a kit of small markdown subagents that compose into a plan→work→verify→learn pipeline.** That's the strongest candidate composition shape from this curated sample (N=3–6 practitioners per move) — a hypothesis to test in exercise design, not a validated industry pattern.
 
 ## Counter-evidence flags
 
-- **Ronacher: composition cannot solve the review bottleneck**, only throttle inflow. He keeps skills disposable and posts experiments individually, not as chained loops. If composition is the curriculum frame, Ronacher's review-bandwidth argument is the disconfirming-evidence anchor — name it explicitly.
+- **Ronacher: composition cannot solve the review bottleneck**, only throttle inflow. He keeps skills disposable and posts experiments individually, not as chained loops. If composition is treated as a teachable move, Ronacher's review-bandwidth argument is the disconfirming-evidence anchor — name it explicitly.
 - **Willison's normalization-of-deviance warning**: composition fluency erodes the review discipline that originally justified composition. The very practitioners who can compose stop verifying.
 - **Pocock: no orchestrator, no DSL, no required chaining** — explicit anti-position on heavy composition frameworks. Skills are weakly coupled by design; the human picks the chain at runtime.
 - **Curran/Intercom counter-flag**: Intercom is large, structured, well-instrumented. Their composition depends on hooks + audit + sub-agents that smaller teams don't have. Composition-as-org-primitive may not scale down to 3-person teams without an SRE-grade telemetry layer.
@@ -140,12 +140,12 @@ Named moves appearing across **3+ independent practitioners**:
 - **Geoff Charles fresh byline** on Ramp's blog within window — most recent posts under his author page are pre-Nov-2025 and product-newsletter shaped. Conference talks (YouTube, Speaker Deck) exist but not opened in this sweep. The Dojo mechanism is well-attested via Goddijn + Buchan companion pieces and Tuck case study.
 - **Matt Pocock cohort recordings/post-cohort write-ups** — cohort ran 2026-03-30 to 2026-04-13. No public post-cohort retrospective from Pocock surfaced; cohort content behind enrollment paywall. Skills repo + X posts + AIHero curriculum page carry the signal.
 - **Boris Cherny long-form** — `howborisusesclaudecode.com` is the canonical source (he posted on Threads pointing there). No deeper Anthropic-blog post-mortem in window.
-- **Paweł Huryn** — searched but his focus is n8n/PM-audience, not engineer-grade composition. Tangential to AE101.
+- **Paweł Huryn** — searched but his focus is n8n/PM-audience, not engineer-grade composition. Tangential to this sweep.
 - **Daniel Sottiaux** — nothing surfaced in two searches; either pseudonymous or not active in this material window.
 - **Klaassen X-thread (`2020638198649811203`)** — returned 402 paywall; quote not captured directly. Substance covered via the Creator Economy + Every write-ups.
 
 ---
 
-## Curriculum implication (one paragraph for the M6 design call)
+## Composition shape — synthesis
 
-The composition move worth teaching in M6 is **"compose a named kit of 3–5 small markdown subagents into a plan→work→verify→learn loop, version-controlled, with one step that writes a learning back into the project's persistent memory."** That's the strongest candidate shape (L2 supporting evidence, N=3–6 practitioners per move — not yet L3) across Klaassen, Cherny, Pocock (implicitly), Intercom, Ramp, and Amp. Single-step authoring is already covered at M3/M6 first half; the missing move is the **wiring**: how the output of one subagent becomes the input of the next, and how the final step closes the loop on persistent memory so the next cycle starts smarter. Ronacher's counter-position (composition is throttling, not multiplication) and Willison's normalization-of-deviance warning belong as the failure-mode callouts inside the same module — otherwise the curriculum teaches the move and silently teaches its decay.
+The strongest candidate teachable composition shape from this sample is: **"compose a named kit of 3–5 small markdown subagents into a plan→work→verify→learn loop, version-controlled, with one step that writes a learning back into the project's persistent memory."** That's the strongest candidate shape (L2 supporting evidence, N=3–6 practitioners per move — not yet L3) across Klaassen, Cherny, Pocock (implicitly), Intercom, Ramp, and Amp. Single-step authoring is a separate, already well-covered skill; the missing move is the **wiring**: how the output of one subagent becomes the input of the next, and how the final step closes the loop on persistent memory so the next cycle starts smarter. Ronacher's counter-position (composition is throttling, not multiplication) and Willison's normalization-of-deviance warning belong alongside this shape as failure-mode callouts — teaching the move without its decay risk is incomplete.

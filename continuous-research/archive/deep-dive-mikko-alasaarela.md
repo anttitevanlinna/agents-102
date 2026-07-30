@@ -280,12 +280,12 @@ Mikko Alasaarela is a serial entrepreneur with genuine technical background (Nok
 - **Third value:** The Agion product thesis (governance-as-code for enterprise agent fleets) is directly relevant to our blue ocean — governance is a business process problem, not a coding problem.
 - **Limitation:** Do not treat him as a primary source on agent architecture or deployment best practices. His public output is vision/evangelism, not technical implementation.
 
-### Relationship to Agents 102
+### Relevance to Agentic Training / Research
 
 | Dimension | Fit |
 |-----------|-----|
-| Potential training customer | LOW — he sells to enterprises, he doesn't need our training |
-| Potential partner / guest speaker | MEDIUM — could contribute to "what's happening in the Finnish agent ecosystem" module |
-| Competitive overlap | LOW — he builds product (Agion), we build training. Different businesses. |
-| Community access | HIGH — Agentics Finland meetups are the best place to find Finnish practitioners to interview, recruit as guest speakers, or validate our assumptions |
+| Potential training customer | LOW — he sells to enterprises, unlikely to need agentic training himself |
+| Potential partner / guest speaker | MEDIUM — could contribute a "what's happening in the Finnish agent ecosystem" session |
+| Competitive overlap | LOW — he builds product (Agion); training providers are a different business |
+| Community access | HIGH — Agentics Finland meetups are the best place to find Finnish practitioners to interview, recruit as guest speakers, or validate research hypotheses |
 | Research signal | HIGH — tracking his public output is a cheap way to monitor the Finnish agent ecosystem pulse |

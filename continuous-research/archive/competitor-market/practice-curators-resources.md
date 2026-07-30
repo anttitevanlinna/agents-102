@@ -17,7 +17,7 @@
 - **Network size**: ~500 member organizations including many Fortune 500 companies
 - **What makes it work**: The flywheel — members contribute data to get benchmarks, which makes the benchmarks more valuable, which attracts more members. APQC's neutrality (nonprofit, vendor-agnostic) builds trust. Members share openly because APQC anonymizes and aggregates.
 
-| Dimension | Relevance to Agents 102 |
+| Dimension | Relevance to this model |
 |-----------|------------------------|
 | Practice curation from network | 5 — Core model match |
 | Peer network as product | 4 — Network exists but benchmarking is the primary value, not peer interaction |
@@ -25,7 +25,7 @@
 | Training as entry point | 2 — Training exists but is not the primary engagement model |
 | Revenue via membership | 5 — Direct match |
 
-**Key insight for Agents 102**: APQC proves the "curate from members, sell back to members" flywheel works at scale. But APQC is dry — benchmarking reports, not community energy. Agents 102 could learn the curation mechanics while adding the community warmth that APQC lacks.
+**Key insight**: APQC proves the "curate from members, sell back to members" flywheel works at scale. But APQC is dry — benchmarking reports, not community energy. A competing model could learn the curation mechanics while adding the community warmth that APQC lacks.
 
 ---
 
@@ -41,7 +41,7 @@
 - **Network size**: 15,000+ client organizations, 2,000+ analysts
 - **What makes it work**: Gartner's authority is self-reinforcing — because everyone reads Gartner, being in a Gartner report matters, which means vendors and practitioners cooperate with Gartner research, which makes the research more comprehensive. The "analyst as curator" model scales better than pure peer-network curation because it does not depend on member willingness to share.
 
-| Dimension | Relevance to Agents 102 |
+| Dimension | Relevance to this model |
 |-----------|------------------------|
 | Practice curation from network | 3 — Analyst-mediated, not direct peer curation |
 | Peer network as product | 3 — Peer Community exists but is secondary to analyst research |
@@ -49,7 +49,7 @@
 | Training as entry point | 2 — Conferences serve this role somewhat |
 | Revenue via membership | 5 — Subscription-based |
 
-**Key insight for Agents 102**: Gartner shows that "curated practitioner intelligence" is a multi-billion-dollar market. But Gartner is analyst-driven — practitioners are data sources, not co-creators. Agents 102's model is more participatory: network members co-create the practices, not just supply data. This is closer to APQC than Gartner.
+**Key insight**: Gartner shows that "curated practitioner intelligence" is a multi-billion-dollar market. But Gartner is analyst-driven — practitioners are data sources, not co-creators. A more participatory model — where network members co-create the practices, not just supply data — sits closer to APQC than Gartner.
 
 ---
 
@@ -65,7 +65,7 @@
 - **Network size**: Vistage: ~45,000 members globally. YPO: ~35,000 members in 150+ countries.
 - **What makes it work**: Confidentiality and trust. Small group intimacy. The "lonely at the top" problem — CEOs cannot discuss real challenges with their teams, so they need a peer group. Facilitation quality is critical. Selectivity (not everyone can join) creates perceived value.
 
-| Dimension | Relevance to Agents 102 |
+| Dimension | Relevance to this model |
 |-----------|------------------------|
 | Practice curation from network | 2 — Practices shared informally, not formally curated or published |
 | Peer network as product | 5 — The peer group IS the product |
@@ -73,7 +73,7 @@
 | Training as entry point | 2 — Events and speakers serve this role |
 | Revenue via membership | 5 — Pure membership model |
 
-**Key insight for Agents 102**: Vistage/YPO prove that "the network is the product" works at massive scale — but they do not curate or publish practices. The knowledge stays inside the group. Agents 102 wants the network dynamic of Vistage PLUS the curation output of APQC. This combination is rare.
+**Key insight**: Vistage/YPO prove that "the network is the product" works at massive scale — but they do not curate or publish practices. The knowledge stays inside the group. The network dynamic of Vistage PLUS the curation output of APQC is a rare combination — no one found in this research does both.
 
 ---
 
@@ -89,7 +89,7 @@
 - **Network size**: CNCF: 800+ member companies, 180+ hosted projects, 200,000+ individual contributors. Linux Foundation: 2,000+ member organizations.
 - **What makes it work**: The "commons" model — companies contribute because the shared infrastructure benefits everyone. CNCF adds curation (the landscape, maturity levels) that individual companies cannot create alone. Training and certification create a talent pipeline that makes the ecosystem more valuable. Governance neutrality (no single company controls CNCF) enables trust.
 
-| Dimension | Relevance to Agents 102 |
+| Dimension | Relevance to this model |
 |-----------|------------------------|
 | Practice curation from network | 5 — Core function: curate what works from the ecosystem |
 | Peer network as product | 4 — Community is strong but secondary to curated landscape |
@@ -97,7 +97,7 @@
 | Training as entry point | 5 — Training and certification are major revenue and engagement drivers |
 | Revenue via membership | 5 — Membership + training + events |
 
-**Key insight for Agents 102**: CNCF is the strongest structural analog. Training is the entry point. Curation of member practices is the core product. The landscape/maturity model creates a navigable map of a complex ecosystem. Agents 102 could create an equivalent "agentic practice landscape" — curated from network members' real deployments, organized by maturity/domain, and continuously updated.
+**Key insight**: CNCF is the strongest structural analog for an agentic-practice curator. Training is the entry point. Curation of member practices is the core product. The landscape/maturity model creates a navigable map of a complex ecosystem — an equivalent "agentic practice landscape," curated from network members' real deployments, organized by maturity/domain, and continuously updated, is a directly transferable format.
 
 ---
 
@@ -106,14 +106,14 @@
 - **URL**: https://www.ihi.org
 - **Type**: Nonprofit focused on healthcare quality improvement
 - **Founded**: 1991
-- **Description**: IHI operates a model that closely matches the Agents 102 vision. It runs improvement networks (called "collaboratives") where healthcare organizations work together on specific quality challenges. IHI curates the practices that emerge from these collaboratives into "improvement packages" — bundles of evidence-based practices that other organizations can adopt. IHI also conducts its own research, runs training programs (the IHI Open School), hosts conferences (the IHI Forum), and publishes white papers. The genius of the IHI model: training creates practitioners, practitioners join collaboratives, collaboratives generate practices, practices become training content. It is a closed loop.
+- **Description**: IHI operates the most complete practice-curator model found in this research. It runs improvement networks (called "collaboratives") where healthcare organizations work together on specific quality challenges. IHI curates the practices that emerge from these collaboratives into "improvement packages" — bundles of evidence-based practices that other organizations can adopt. IHI also conducts its own research, runs training programs (the IHI Open School), hosts conferences (the IHI Forum), and publishes white papers. The genius of the IHI model: training creates practitioners, practitioners join collaboratives, collaboratives generate practices, practices become training content. It is a closed loop.
 - **Who they serve**: Healthcare organizations — hospitals, health systems, public health agencies, globally
 - **How they collect/curate**: Improvement collaboratives (multi-org learning networks focused on specific topics). Participating organizations test practices, report results, and IHI synthesizes what works into "change packages" and "bundles." These are then published and taught globally.
 - **Revenue model**: Mixed — conference revenue, training fees (Open School), consulting/advisory, collaborative participation fees, grants and philanthropy. Total revenue ~USD 60-80M.
 - **Network size**: IHI has engaged organizations in 60+ countries. The IHI Open School has reached over 9 million learners. Collaboratives typically involve 20-100 organizations each.
 - **What makes it work**: The improvement science methodology provides rigor. The "bundle" concept (a curated set of practices that work together) is a powerful packaging innovation — it is not just a list of best practices, it is a tested combination. IHI's mission-driven nature (saving lives) creates emotional commitment that commercial networks cannot match.
 
-| Dimension | Relevance to Agents 102 |
+| Dimension | Relevance to this model |
 |-----------|------------------------|
 | Practice curation from network | 5 — Core function: collaboratives generate and curate practices |
 | Peer network as product | 5 — Collaboratives are multi-org learning networks |
@@ -121,7 +121,7 @@
 | Training as entry point | 5 — IHI Open School is a massive training funnel |
 | Revenue via membership | 4 — Not pure membership, but collaborative participation fees + training revenue |
 
-**Key insight for Agents 102**: IHI is the most complete model match. The "training creates practitioners, practitioners join collaboratives, collaboratives generate practices, practices become training content" loop is exactly what Agents 102 envisions. The "bundle" concept (a curated, tested combination of practices) is a powerful product format that Agents 102 could adapt as "agentic practice packs."
+**Key insight**: IHI is the most complete model match of any organization catalogued here. The "training creates practitioners, practitioners join collaboratives, collaboratives generate practices, practices become training content" loop is a fully closed flywheel. The "bundle" concept (a curated, tested combination of practices) is a powerful product format, directly adaptable as "agentic practice packs."
 
 ---
 
@@ -166,14 +166,14 @@
 
 **What fails**: Collaboratives fail when (a) organizational leadership does not support the team, (b) teams do not test changes between Learning Sessions and show up empty-handed, (c) the topic is too broad or the change package is too vague, (d) measurement is not rigorous enough to show whether changes actually worked.
 
-| Dimension | Relevance to Agents 102 |
+| Dimension | Relevance to this model |
 |-----------|------------------------|
 | Practice collection mechanics | 5 — Monthly data reporting, PDSA cycles, team presentations at Learning Sessions |
 | Practice curation/distillation | 5 — Expert faculty + team experience = refined change package |
 | Practice distribution | 5 — Published change packages, bundles, training content, Open School |
-| Replicability for Agents 102 | 5 — The BTS is the operational blueprint for "agentic practice collaboratives" |
+| Replicability for an agentic-practice model | 5 — The BTS is the operational blueprint for "agentic practice collaboratives" |
 
-**Key insight for Agents 102**: The BTS model is the operational playbook. Replace "clinical quality gap" with "agentic capability gap." Replace "change package" with "agentic practice pack." Replace "PDSA cycles" with "build-measure-learn sprints." The structure — expert faculty, change package, Learning Sessions, Action Periods, monthly data sharing, refined output — translates directly. The 6-15 month timeframe is especially relevant: it is long enough to generate real results, short enough to maintain urgency.
+**Key insight**: The BTS model is a directly usable operational playbook. Replace "clinical quality gap" with "agentic capability gap." Replace "change package" with "agentic practice pack." Replace "PDSA cycles" with "build-measure-learn sprints." The structure — expert faculty, change package, Learning Sessions, Action Periods, monthly data sharing, refined output — translates directly. The 6-15 month timeframe is especially relevant: it is long enough to generate real results, short enough to maintain urgency.
 
 ---
 
@@ -190,7 +190,7 @@
 - **Network size**: NICs vary — typically 10-50 organizations per network. Carnegie has run several high-profile NICs including the Community College Pathways NIC (dozens of colleges focused on developmental math) and Building a Teaching Effectiveness Network (BTEN).
 - **What makes it work**: The "hub leadership" role is critical — someone must actively coordinate, synthesize, and push the network forward. Without strong hub leadership, NICs devolve into loose information-sharing groups with no curation output. The common aim must be specific and measurable, not aspirational. Improvement science discipline prevents the network from becoming a talking shop.
 
-| Dimension | Relevance to Agents 102 |
+| Dimension | Relevance to this model |
 |-----------|------------------------|
 | Practice curation from network | 5 — Core function: test practices across contexts, synthesize what works |
 | Peer network as product | 4 — Network is the engine, but published practices are the output |
@@ -198,7 +198,7 @@
 | Training as entry point | 3 — Training in improvement science methods is embedded, but not a separate revenue stream |
 | Revenue via membership | 2 — Foundation/grant-funded, not commercial |
 
-**Key insight for Agents 102**: Carnegie's NIC model adds a crucial dimension that IHI's BTS model does not emphasize as explicitly: **context variation**. Carnegie explicitly designs NICs to test practices across diverse contexts (urban vs. rural schools, community colleges vs. universities) and to understand *where* a practice works, not just *whether* it works. For Agents 102, this maps to testing agentic practices across different company sizes, industries, and maturity levels — and curating context-specific guidance, not one-size-fits-all recommendations. Carnegie's "five essential building blocks" are also a useful checklist for designing Agents 102 collaboratives.
+**Key insight**: Carnegie's NIC model adds a crucial dimension that IHI's BTS model does not emphasize as explicitly: **context variation**. Carnegie explicitly designs NICs to test practices across diverse contexts (urban vs. rural schools, community colleges vs. universities) and to understand *where* a practice works, not just *whether* it works. Applied to agentic practices, this maps to testing across different company sizes, industries, and maturity levels — and curating context-specific guidance, not one-size-fits-all recommendations. Carnegie's "five essential building blocks" are also a useful checklist for designing any such collaborative.
 
 ---
 
@@ -214,7 +214,7 @@
 - **Network size**: MEP: ~50 centers, ~1,400 staff, serving ~35,000 manufacturers annually. Toyota Kata community: thousands of practitioners globally, loosely connected.
 - **What makes it work**: MEP's distributed center model puts practice coaches physically close to manufacturers — improvement happens on the shop floor, not in a webinar. Toyota Kata works because it is a *meta-practice* — it does not prescribe what to improve, but teaches a rigorous pattern for how to improve anything. This makes it domain-agnostic and infinitely adaptable.
 
-| Dimension | Relevance to Agents 102 |
+| Dimension | Relevance to this model |
 |-----------|------------------------|
 | Practice curation from network | 3 — MEP aggregates at network level but curation is less formalized than IHI |
 | Peer network as product | 3 — MEP is hub-and-spoke (center-to-manufacturer), not peer-to-peer |
@@ -222,6 +222,6 @@
 | Training as entry point | 4 — Training and coaching are the primary engagement model |
 | Revenue via membership | 2 — Government-funded, not membership-based |
 
-**Key insight for Agents 102**: Two transferable ideas. First, Toyota Kata demonstrates the power of a **meta-practice** — teaching people *how to improve* rather than *what to do*. Agents 102 could embed a similar "agentic improvement kata" — a structured pattern for how organizations discover, test, and adopt agentic practices. This is more durable than any specific practice pack because it works even as technology shifts. Second, MEP shows that **distributed local coaching** dramatically increases adoption. Practices that are taught in a classroom get forgotten; practices that are coached on-site get implemented. This suggests Agents 102 should invest in facilitator/coach capability, not just training content.
+**Key insight**: Two transferable ideas. First, Toyota Kata demonstrates the power of a **meta-practice** — teaching people *how to improve* rather than *what to do*. A similar "agentic improvement kata" — a structured pattern for how organizations discover, test, and adopt agentic practices — is more durable than any specific practice pack because it works even as technology shifts. Second, MEP shows that **distributed local coaching** dramatically increases adoption. Practices that are taught in a classroom get forgotten; practices that are coached on-site get implemented. This suggests facilitator/coach capability matters as much as training content.
 
 ---

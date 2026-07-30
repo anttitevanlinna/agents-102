@@ -9,7 +9,7 @@ The central finding is stark: **the chasm for AI agents is not a technology gap 
 
 For our Nordic buyers specifically, this governance gap is simultaneously a threat and an advantage. Nordic enterprises operate under the EU AI Act (with Finland becoming the first EU member state with full enforcement powers on January 1, 2026), strong works council traditions, GDPR maturity, and a high-trust culture that demands transparency. These constraints slow down reckless deployment — but they also mean that organizations that solve the governance problem first will have a durable competitive advantage. The governance patterns documented below are not obstacles to agent adoption; they are the prerequisites for it.
 
-**The key insight for our training:** Leaders do not need to learn how to build agents. They need to learn how to govern them — how to set autonomy boundaries, design escalation paths, build audit trails, classify risk under the EU AI Act, and create the organizational trust that lets agents move from pilot to production. This is the competence gap that no consultancy is filling with actual training.
+**The key insight:** Leaders do not need to learn how to build agents. They need to learn how to govern them — how to set autonomy boundaries, design escalation paths, build audit trails, classify risk under the EU AI Act, and create the organizational trust that lets agents move from pilot to production. This is the competence gap that no consultancy is filling with actual training.
 
 ---
 

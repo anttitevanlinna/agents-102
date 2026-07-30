@@ -1,6 +1,6 @@
 # Practitioner patterns for long-running agentic tasks — OODA 2026-04-21
 
-**Scope:** what working engineers actually do to run Claude Code (and Amp / Codex) on multi-hour tasks. People-first: Willison, Ronacher, Cherny, Karpathy, Charles (Ramp), Wilson Lin (Cursor), Geoffrey Huntley. Freshness cut: Oct 2025 onward. Feeds Agentic Engineering 101 M3.
+**Scope:** what working engineers actually do to run Claude Code (and Amp / Codex) on multi-hour tasks. People-first: Willison, Ronacher, Cherny, Karpathy, Charles (Ramp), Wilson Lin (Cursor), Geoffrey Huntley. Freshness cut: Oct 2025 onward.
 
 **Evidence level overall: L3 convergence.** Same patterns recur across ~8 independent practitioners writing in their own voice. The December 2025 → April 2026 window is when long-running stopped being a demo and started being a daily workflow; Karpathy's public flip (Dec 2025) is the convergence marker.
 

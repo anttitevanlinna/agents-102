@@ -2,7 +2,7 @@
 type: synthesis
 domain: curriculum-landscape
 updated: 2026-05-03
-answers: ["what do agentic engineering curriculums teach", "what's converging across cohort programs", "what topics are absent from current curriculums", "where does AE101 fit in the curriculum landscape"]
+answers: ["what do agentic engineering curriculums teach", "what's converging across cohort programs", "what topics are absent from current curriculums"]
 ---
 
 # Agentic Engineering Curriculums — Convergence and Absences (Apr 2026)
@@ -80,27 +80,19 @@ These surface when you diff frontier-practitioner writing against the 14 invento
 - **Prework assumes Python fluency.** Every curriculum. Non-Python agentic curriculums for the builder-leader audience are a gap.
 - **Vendor curriculums teach their product; practitioner curriculums teach the discipline.** Anthropic Academy = Claude Code features. Husain / Horthy / Ng = transferable patterns. Both coexist; buyers conflate them.
 
-## What this implies for AE101 (separate from the research finding)
-
-> The convergence claims above are research findings. The implications below are Bosser's strategic read, not evidence.
-
-- The **agents-building-agents** absence is the single strongest positioning gap. AE101 is the only curriculum that makes it a module — confirmed by diffing the 14 syllabi above.
-- Evals are converging fast as table stakes, not differentiation. AE101 needs them; teaching them harder than competitors won't move the needle.
-- MCP convergence hardened in the last 4 months. AE101 should treat MCP as plumbing students already half-know, not as a headline module.
-
 ---
 
 <!-- maintainer -->
 
 **Last updated:** 2026-05-03
 
-**Source verification — MUST DO before first cohort:**
+**Source verification — refresh before external use:**
 
-1. Open all 14 curriculum URLs at delivery time. Syllabus pages drift quickly — Anthropic Academy in particular has been adding modules monthly since Mar 2026.
+1. Open all 14 curriculum URLs before relying on this data. Syllabus pages drift quickly — Anthropic Academy in particular has been adding modules monthly since Mar 2026.
 2. The Gauntlet AI tech-press corroboration cited in the source OODA was **[SOURCE NEEDED]** — could not be verified and was not retained. If load-bearing for a claim, find the URL or remove the corroboration.
 3. Convergence count is **9.5 / 14 explicit-plus-implicit for evals** under the conservative methodology footnote. The source OODA called this "12/14"; that count folded "implicit" coverage in at full weight without a definition. The conservative recount stays L3 but at a tighter threshold.
-4. Numbers to triple-check at delivery: GAIA 30% pass bar (HF #10); the count of Maven-listed cohort programs in the inventoried 14 (Maven re-launches and renames cohorts frequently).
-5. Freshness re-check at delivery: any syllabus dated before 2026-05-03 should be re-fetched. The Horthy 12-factor talk (Aug 2025) is outside the 6-month window; current evidence comes from the repo and 2026 Maven cohort, not the talk.
+4. Numbers to triple-check before external use: GAIA 30% pass bar (HF #10); the count of Maven-listed cohort programs in the inventoried 14 (Maven re-launches and renames cohorts frequently).
+5. Freshness re-check before external use: any syllabus dated before 2026-05-03 should be re-fetched. The Horthy 12-factor talk (Aug 2025) is outside the 6-month window; current evidence comes from the repo and 2026 Maven cohort, not the talk.
 
 **Provenance — source-type labels:**
 
@@ -111,6 +103,6 @@ These surface when you diff frontier-practitioner writing against the 14 invento
 
 **Deferred (low-severity) items from 2026-05-03 research-review pass:**
 
-- Vendor-platform syllabus pages (DeepLearning.AI #4, LangChain Academy #11, Hugging Face #10) labeled `[practitioner direct]` — pending Bosser-strategy ruling on whether the founder-teaches-own-course exception applies (Ng founded DeepLearning.AI; Chase co-founded LangChain). Re-label to `[vendor press release]` for syllabus claims if the exception is rejected.
+- Vendor-platform syllabus pages (DeepLearning.AI #4, LangChain Academy #11, Hugging Face #10) labeled `[practitioner direct]` — pending an editorial ruling on whether the founder-teaches-own-course exception applies (Ng founded DeepLearning.AI; Chase co-founded LangChain). Re-label to `[vendor press release]` for syllabus claims if the exception is rejected.
 
-**Companion files:** `training-competitive-landscape.md` (price, format, audience map of paid cohorts that compete for AE101 budget), `boris-cherny.md`, `kieran-klaassen.md`, `every-inc.md`.
+**Companion files:** `training-competitive-landscape.md` (price, format, audience map of paid cohorts in this space), `boris-cherny.md`, `kieran-klaassen.md`, `every-inc.md`.

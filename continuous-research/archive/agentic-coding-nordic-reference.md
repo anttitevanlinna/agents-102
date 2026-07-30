@@ -108,9 +108,9 @@ Finnish developer who has built practical tooling for parallel coding agents and
 - **Community signal:** Active Nordic agentic community exists, but no specific evidence of coding agent discussions.
 
 **F-Secure (Helsinki, Finland) — Training, not public deployment data**
-- 200+ people trained on Agents 101 (Antti's training), non-coders building with Claude Code [direct knowledge — Antti Tevanlinna]
+- 200+ people trained on agentic coding via a practitioner-led training program, non-coders building with Claude Code [direct knowledge — Antti Tevanlinna]
 - No public blog posts, engineering reports, or external evidence about agentic coding deployment
-- **This is valuable first-party evidence for Agents 102 but not citable as an independent finding.**
+- **This is valuable first-party evidence but not citable as an independent finding — the source is the training provider, not an arm's-length observer.**
 
 ---
 

@@ -13,6 +13,8 @@ Come without having picked the task and you'll be scrambling for one while the r
 
 Optional forward-look: [What is agentic engineering](trainings/agentic-engineering-101/supplementary/what-is-agentic-engineering.md). And when your sessions start running heavy, [Token efficiency](trainings/agentic-engineering-101/supplementary/token-efficiency.md) on keeping the context window lean.
 
+If you read [Why Software Factories Fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md) in the gap after Module 1, this module's un-watched run may look like exactly what that essay warns against. It isn't. The run leaves from a pinned commit on a throwaway branch, sized as an experiment, and the planning and checks the essay says are missing are what Module 5 builds. You are not running the factory; you are collecting your own copy of its evidence, on purpose.
+
 ## What You'll Learn
 After this module, you will be able to:
 - **Scope** a real send-off task in conversation with Claude, multi-file reasoning, sustained coherence, not step-by-step nudging
@@ -121,6 +123,7 @@ Optional. They sit in the gap while your un-packaged run is still going. All fou
 
 <!-- maintainer -->
 
+**2026-07-30 (pre-read echo):** student-visible callback in `## Prework` defusing the factory-essay objection (the wsff pre-read in `getting-going.md` argues against lights-off runs; this module's un-packaged send-off is the obvious collision). Framing: throwaway experiment on a pinned branch + Module 5 builds what the essay says is missing. Body touched — per-class Quality SHAs below predate; re-audit before ship.
 
 **Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@9697944 slides@b3143a4)
 - judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

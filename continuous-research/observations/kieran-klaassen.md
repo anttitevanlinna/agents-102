@@ -15,30 +15,33 @@ The Dec 2025 form is four steps, printed in order — **Plan → Work → Review
 
 On 2026-05-29 Klaassen expanded it himself, keeping the name: *"Ideate → brainstorm → plan → work → review → polish → compound → repeat."* His stated reason is that the middle got reliable — *"the work phase has become boring—in the best way"* — so the new stages restore human judgement at both ends. That puts `compound` seventh and `work` fourth. Framed as evolution, explicitly not retraction: *"As the models have grown more capable, the original compound engineering loop started to feel incomplete… So I expanded the loop."*
 
-- "Each unit of engineering work should make subsequent units easier — not harder." — Klaassen, *Compound Engineering: The Definitive Guide* (Every / Source Code, Feb 2026) `[practitioner direct, vendor venue]` — https://every.to/source-code/compound-engineering-the-definitive-guide. Sole byline, first person; byline re-verified 2026-07-30. **Does not carry the step names** — a common misattribution.
+- "Each unit of engineering work should make subsequent units easier — not harder." — Klaassen, *Compound Engineering: The Definitive Guide* (Every / Source Code, Feb 2026) `[practitioner direct, vendor venue]` — https://every.to/source-code/compound-engineering-the-definitive-guide. Sole byline, first person; byline re-verified 2026-07-30. **Does not carry the step names, the 80/20 ratio, or any reviewer-agent count** — all three verified absent on fetch 2026-07-30. This page holds the term and the philosophy sentence; everything operational lives on the other posts. It is the easiest page in the set to over-cite, so check before attaching anything specific to it.
 - Klaassen, *Compound Engineering Gets an Upgrade* (Every, 2026-05-29) `[practitioner direct, vendor venue]` — https://every.to/p/compound-engineering-gets-an-upgrade. The expansion. Sandwich metaphor credited to collaborator Trevin Chow: *"AI is the stuff in the middle. Humans are the bread on either end."*
 - The plugin codifies the loop as invokable commands — `EveryInc/compound-engineering-plugin` — https://github.com/EveryInc/compound-engineering-plugin
 
 ## The 80/20 inversion — planning and review are the job
 
-If you spend most of your time typing code, you're doing it wrong. Klaassen's stated ratio is 80% planning and review, 20% execution. Humans frame and taste-check; the model does the middle.
+Klaassen argues that spending most of your time typing code means you're doing it wrong. His stated split is roughly 80% planning and review, 20% execution: humans frame and taste-check, the model does the middle. **[L1 — the practitioner's own framing of his working style, not a measured time-allocation study.]** No population (which tasks, what period) and no metric axis (wall-clock? token spend? task count?) is stated anywhere, so this cannot be compared against any measured ratio.
 
-- Klaassen, *My AI Had Already Fixed the Code Before I Saw It* (Source Code, Aug 2025, updated Apr 2026) — https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it
-- Laura Entis on Klaassen, *You're the Bread in the AI Sandwich* (Every / Context Window, Apr 2026) — https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich. Entis is the byline; Klaassen was the AI & I podcast guest she wrote up.
+- **The ratio's actual home** is *Compound Engineering: How Every Codes With Agents* (linked below), verbatim: *"Roughly 80 percent of compound engineering is in the plan and review parts, while 20 percent is in the work and compound."* Note the word form and the hedge — quote it with "Roughly".
+- Klaassen, *My AI Had Already Fixed the Code Before I Saw It* (Source Code, Aug 18 2025) `[practitioner direct, vendor venue]` — https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it. Fetched 2026-07-30: **does not state the 80/20 ratio.** Historical (out of window). It does describe running a test 10 times and iterating on the failures — *"On the next iteration, it's able to identify a frustrated user nine times out of 10"* — which is not the same as "iterate a verifier until 10 consecutive passes"; do not restate it that way.
+- Laura Entis on Klaassen, *You're the Bread in the AI Sandwich* (Every / Context Window, Apr 2026) `[practitioner analysis]` — https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich. Entis is the byline; Klaassen was the AI & I podcast guest she wrote up.
 
 ## Plan-as-artifact — the markdown file is the contract
 
 Before any agent writes code, produce a markdown plan with data models, file references, architectural decisions — detailed enough that a human or another agent could execute it without asking a question. Tests are written *from the plan*; testability is a planning output, not a post-hoc add-on.
 
 - Dan Shipper **and** Kieran Klaassen, *Compound Engineering: How Every Codes With Agents* (Every, Dec 11 2025) `[practitioner direct, vendor venue]` — https://every.to/source-code/compound-engineering-how-every-codes-with-agents. Byline checked 2026-07-30: the page carries `authors: [Dan Shipper, Kieran Klaassen]` and is first-person-plural throughout (*"we've created," "We run five software products"*). Genuine co-authorship, not a journalist writing up a practitioner — **do not label this one `[practitioner analysis]`.** The `source-code/` path above is the one verified to resolve; a `chain-of-thought/` path for the same slug has not been tested. This page also carries a vendor-self-reported metric — *"a single developer can do the work of five developers a few years ago, based on our experience at Every"* — Level 0, do not promote.
-- Will Larson on Klaassen, *Learning from Every's Compound Engineering* (Apr 2026) — https://lethain.com/everyinc-compound-engineering/. Larson reports the plan-as-artifact step survived contact with a real monorepo at Imprint.
+- Will Larson on Klaassen, *Learning from Every's Compound Engineering* (Apr 2026) `[practitioner analysis]` — https://lethain.com/everyinc-compound-engineering/. Larson writes about the plan-as-artifact step holding up against a real monorepo at Imprint. **Open question, do not resolve by assumption:** whether he deployed it there himself (which would make this a genuine second data point, and him `[practitioner direct]` for that claim) or is arguing it would hold from his own read. Until someone reads the piece closely enough to say, treat him as one analyst commenting on one org — **not** a second company replicating the pattern.
 
 ## Parallel reviewer agents — fan-out instead of one bottleneck
 
-Specialised reviewer agents (security, performance, architecture, style, accessibility) running in parallel. Klaassen describes a "14-agent parallel review" pattern — **[L2 single case]**.
+Specialised reviewer agents running in parallel, each looking for a different class of issue — **[L2 single case]**.
 
-- Klaassen, *Compound Engineering: The Definitive Guide* — link above
-- Klaassen, *My AI Had Already Fixed the Code Before I Saw It* — iterating verifier prompts until tests pass 10 consecutive runs; verifier reliability treated as a measurable property
+**Two numbers here are unsourced and should not be repeated until pinned.** The Definitive Guide was fetched 2026-07-30 and carries neither a reviewer-agent count nor any enumeration of reviewer specialties, so it cannot be the source for either. The "14-agent parallel review" figure and the five-specialty list (security, performance, architecture, style, accessibility) are `[SOURCE NEEDED]` — find the verbatim sentence or drop them. Note the two do not reconcile with each other either: five named specialties against a count of fourteen leaves nine unaccounted, and nothing states whether the count means distinct roles or repeat invocations.
+
+- Klaassen, *How I Polish Software That Agents Built* — the sourced form of this pattern, quoted below. Prefer it.
+- Klaassen, *My AI Had Already Fixed the Code Before I Saw It* — describes asking Claude to run a test 10 times and analysing the failures (*"it's able to identify a frustrated user nine times out of 10"*). That is iteration against a flaky detector on one feature, **not** "iterate a verifier until 10 consecutive passes" and not a general reliability benchmark. Do not restate it as either.
 - Klaassen, *How I Polish Software That Agents Built* (Every / Source Code, 2026-07-13) `[practitioner direct, vendor venue]` — https://every.to/source-code/how-i-polish-software-that-agents-built. The pattern is still live in his most recent writing on the thread: *"Review fans out parallel reviewers, each looking for a different class of issue."* Also describes `/ce-compound` codifying a stated preference into a rule the system then applies unprompted on the next relevant feature. Still **[L2 single case]** — same practitioner, same org; recency is not independence.
 
 ## The compound step — writing learnings back into CLAUDE.md
@@ -52,9 +55,9 @@ The difference between "I used an agent today" and "my codebase compounds" is on
 
 ## Operational scale — two engineers, five products
 
-Cora, Monologue, Sparkle, Spiral, and Every.to run with primarily single-person engineering teams. The loop isn't theory; it's what makes that ratio work.
+Cora, Monologue, Sparkle, Spiral, and Every.to run with primarily single-person engineering teams. Klaassen attributes that staffing shape to the loop — **[L2 single case, causal claim per practitioner self-report]**. One org asserting why its own headcount works is a claim, not a demonstration.
 
-- Dan Shipper on Klaassen + Nityesh Agarwal, *How Two Engineers Ship Like a Team of 15 With AI Agents* (AI & I podcast, Jun 2025, updated Feb 2026) — https://every.to/podcast/how-two-engineers-ship-like-a-team-of-15-with-ai-agents. Shipper is the host; Klaassen and Agarwal are the guests.
+- Dan Shipper on Klaassen + Nityesh Agarwal, *How Two Engineers Ship Like a Team of 15 With AI Agents* (AI & I podcast, published 2025-06-11) `[practitioner analysis]` — https://every.to/podcast/how-two-engineers-ship-like-a-team-of-15-with-ai-agents. Shipper is the host; Klaassen and Agarwal are the guests. Out of window; historical. **"Team of 15" is a headline with no stated baseline** — fetched 2026-07-30, the page never defines what the 15 is measured against. What it actually reports is *"Two engineers at Every shipped six features, five bug fixes, and three infrastructure updates in one week."* Cite that sentence, never the multiplier. Note also that the episode names three products (Cora, Spiral, Sparkle) where this file's header says five, and "two engineers" against a company shape of ten people — reconcile before either count is reused.
 - Cora MVP shipped solo in 3 months (late 2024) — trajectory context, dated; pre-6-month window
 - "What used to take a week of coding now happens in hours" — Klaassen, *Definitive Guide* — **[L2 single case]** — outcome claim from a single team's self-report
 
@@ -69,14 +72,14 @@ Cora, Monologue, Sparkle, Spiral, and Every.to run with primarily single-person 
 ## What's non-obvious
 
 - **Tests are a planning output, not a coding output.** The plan specifies the tests; the agent writes them first.
-- **Run the verifier 10 times before you trust it.** Reliability of the reviewer loop is measured, not assumed.
-- **The compound step is where most teams fail.** Plan and Review are legible; Compound requires writing the lesson down when the feature already shipped. Larson confirms this is the load-bearing novel piece.
-- **Taste is the non-automatable layer.** Not romantic — division-of-labour. Agents can't tell which of three correct solutions matches the vision in your head.
+- **Klaassen treats reviewer reliability as measurable rather than assumed** — he re-runs a check to see how often it actually fires. The specific "10 times" figure is one example on one feature, not a threshold he prescribes.
+- **Klaassen and Larson both name the compound step as the hard one.** Plan and Review are legible; Compound requires writing the lesson down when the feature already shipped. Larson *agrees* with Klaassen's own self-assessment — one analyst reading one org is not confirmation in the evidentiary sense. **Whether most teams fail at this step is unestablished**: no study, survey, or count of teams is cited anywhere in this file, and one org plus one commentator licenses no claim about a general population.
+- **Taste is the non-automatable layer**, on Klaassen's argument. Not romantic — division-of-labour. His claim is that agents can't tell which of three correct solutions matches the vision in your head; that is his stated view, not an established property of agents.
 - **One plugin, many stacks.** Same loop in Claude Code, Codex, Cursor, Gemini CLI, Copilot. Factor practice from tool.
 
 ## Caveat — novelty-to-packaging ratio
 
-Per Larson, reading the four-step form: roughly 1:3. Three of those four steps are well-known practice renamed; the compound step is the load-bearing new piece. The 2026-05 expansion adds stages at both ends without adding a second novel mechanism, so the ratio gets worse, not better. A training built on this curriculum shape should be honest about that — *operationalising what good practitioners were already doing*, not a new paradigm. That honesty is what makes it teachable to CTOs.
+Larson, reading the four-step form, takes three of those four steps to be well-known practice under new names, with the compound step as the one genuinely new mechanism. That is a qualitative judgement about what counts as novel, not a measurement — stating it as a "1:3 ratio" gives it a precision it does not have. **Larson published in Apr 2026 and did not review the 2026-05 expansion**; extending his read to the seven-step form would be our inference, not his finding, and it is not made here. A training built on this curriculum shape should be honest about that — *operationalising what good practitioners were already doing*, not a new paradigm. That honesty is what makes it teachable to CTOs.
 
 ---
 
@@ -88,8 +91,10 @@ Per Larson, reading the four-step form: roughly 1:3. Three of those four steps a
 
 1. Re-open every URL against the original. Byline-checked URLs in this file:
    - *Compound Engineering: The Definitive Guide* — Klaassen byline confirmed (Source Code, Feb 2026, updated Mar 2026). [practitioner direct].
-   - *Compound Engineering: How Every Codes With Agents* — Shipper + Klaassen joint byline confirmed (Chain of Thought, Dec 2025, updated Apr 2026). [practitioner direct].
-   - *My AI Had Already Fixed the Code Before I Saw It* — Klaassen byline confirmed (Aug 2025, updated Apr 2026). [practitioner direct]. The Aug 2025 original date is outside the 6-month window; the Apr 2026 update brings it in. Treat as practitioner-direct, dated current via the update.
+   - *Compound Engineering: How Every Codes With Agents* — Shipper + Klaassen joint byline confirmed, Dec 11 2025. [practitioner direct, vendor venue]. Verified path is `source-code/`, not `chain-of-thought/`.
+   - *My AI Had Already Fixed the Code Before I Saw It* — Klaassen byline confirmed, Aug 18 2025. [practitioner direct, vendor venue]. **Outside the 6-month window; treat as historical.** Does not carry the 80/20 ratio (see below).
+
+   **No "updated" date on this file's Every.to sources is verified.** Fetched 2026-07-30, three pages expose a `published_at` and no `updated_at`, `modified`, or visible revision line: *How Every Codes With Agents* (2025-12-11), *My AI Had Already Fixed the Code* (2025-08-18), *How Two Engineers Ship* (2025-06-11). Absence of an exposed timestamp is not proof no revision happened — Every may edit without surfacing metadata — so the honest state is **unverified, not disproven**. What it does mean is that **three out-of-window sources have no confirmed mechanism bringing them inside it.** Do not re-add an "updated <date>" annotation to any Every.to citation without a quotable on-page revision line. The Definitive Guide's own "updated Mar 2026" annotation is unchecked; it is not load-bearing, since Feb 2026 publication is already in window.
    - *You're the Bread in the AI Sandwich* — **byline is Laura Entis, not Klaassen.** Entis is a staff writer at Every who wrote the piece *about* Klaassen's appearance on the AI & I podcast. Re-attributed in body as "Laura Entis on Klaassen" per the writer-on-subject rule. [practitioner analysis], not [practitioner direct].
    - *How Two Engineers Ship Like a Team of 15* — **podcast episode page**, Dan Shipper hosting Klaassen + Nityesh Agarwal. Re-attributed as "Shipper on Klaassen + Agarwal." [practitioner analysis] (host writing up the episode); the underlying conversation is practitioner voice but the page framing is the host's.
    - *Behind the Craft* (Apple Podcasts) — Peter Yang hosting Klaassen, Feb 2026. Yang is a specialist host. Re-attributed as "Yang on Klaassen." [domain trade publication].

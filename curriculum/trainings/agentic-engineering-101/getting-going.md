@@ -52,7 +52,9 @@ Module 2 is where plan mode earns its keep: multi-file work, a second pass that 
 
 ## Pre-reads before Module 2
 
-Optional. Both sit in the gap before it. Do them and its moves land as things you've already seen.
+Optional. All three sit in the gap before it. Do them and its moves land as things you've already seen.
+
+**Read: Dex Horthy, [Why Software Factories Fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md)** (HumanLayer). Tests tell you in seconds whether the code passes; bad architecture bills you over months, and no benchmark scores a model on keeping a codebase maintainable. The cure he lands on is human review made affordable by upfront planning, which is where Module 2 goes next.
 
 **Watch: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0).** Cherny walks through how he and the team actually use the tool: plan mode, verification loops, parallel worktrees, `CLAUDE.md` compounding, slash commands, subagent map-reduce, the finish-the-migration rule. The moves of Agentic Engineering 101 (AE101 from here on) show up here first as one person's working rhythm.
 
@@ -60,6 +62,11 @@ Optional. Both sit in the gap before it. Do them and its moves land as things yo
 
 <!-- maintainer -->
 
+**2026-07-30 (pre-read wiring):** added the Horthy factory essay to `## Pre-reads before Module 2` ("Both" → "All three"). Body touched — per-class Quality SHAs below predate; re-audit before ship.
+
+**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
+
+- `[checked:2026-07-30 result:OK due:2027-01-30]` https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md — [practitioner direct, vendor venue] (Dex Horthy, HumanLayer; undated repo doc, content + thesis verified 2026-07-30). Claim anchors: no benchmark measures codebase-quality maintenance; tests-in-seconds vs architecture-cost-in-months; fix = human review + upfront planning. fallback: paraphrase as "practitioners running agent fleets report review, not generation, as the quality bottleneck" without single attribution.
 
 **Ticketing → homework (this pass):** the connector + ticket close-out moved from Ex3 (`compound-and-close`) to the `close-the-ticket` homework exercise. Body reframed: Big Idea, the Compound LO, the closing Key Concept, a new `## Homework` section, runtime rebalanced. Per-class Quality SHAs below predate the reframe — re-audit before ship.
 
@@ -71,7 +78,7 @@ Optional. Both sit in the gap before it. Do them and its moves land as things yo
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze
 - **Session runtime:** ~1h45 (Connections 10 / Lecture 10 / Exercise 75 / Bridge 5). Trainer demos slowly, room copy-pastes concurrently. Exercise breakdown: orient-and-introspect 18 / fix-tests-first 40 / compound-and-close ~18 (compound retro + second sweep). The connector wire + ticket close-out is now the `close-the-ticket` homework (~15 min take-home), which pulls M1 back from its old 2h into the M2–M6 1h45 band; the orient+introspect ramp is what still fills the slot.
-- **Prep timing:** prework 30 min; optional Cherny video 30 min; optional multi-session reference 10 min.
+- **Prep timing:** prework 30 min; optional Cherny video 30 min; optional multi-session reference 10 min; optional factory essay 15 min.
 - **Mood target:** joyful creation — *"it works, on my repo."* Watch for: mood drift toward technical warm-up (the bug feels arbitrary, the loop feels mechanical, "this is just a TDD fix I do anyway"). Diagnostic: student narrates Ex2 as a generic engineering move with no surprise. Fix: trainer surfaces the agentic specificity — *"the loop you just ran was orient → fix → compound on YOUR repo, with a rules file born from how YOU just worked, and the close-outside-the-repo move waiting as homework. That's not a bug fix; that's the instrument starting to play your music."*
 - **Opening-bid install mechanic:** trainer demos a wizard-level move on a volunteer's codebase → Connections harvests tricks each student brought → Ex1 (orient-and-introspect) each student runs the orient + introspect move on their own repo → Ex2 (fix-tests-first) TDD bug fix, ship the PR → Ex3 (compound-and-close) compound `./CLAUDE.local.md` from session evidence. The connector wire + ticket close-out is the `close-the-ticket` homework. No separate module-level Debrief.
 - **Delivery architecture** (content folder, working-dir model, compounding-artifact split, no training-dir state): canonical in `training-architecture.md` §Working directory model / §Material distribution / §Rule files. Not restated here. The four-layer rule-file hierarchy is in `reference/claude-code-for-engineers.md § 1`.

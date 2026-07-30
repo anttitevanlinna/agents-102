@@ -96,8 +96,19 @@ Optional forward-look before M4: [What is agentic engineering](trainings/agentic
 
 Come to Module 4 without having picked the task and you'll be scrambling for one while the room is already running theirs. Your call.
 
+## Pre-read before Module 4
+
+Optional. One read in the gap.
+
+**Read: Simon Willison, [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/)** (September 2025). The skill Willison names is choosing what the agent can iterate against before you start it: the tools it can run, the checks that tell it how it's doing, the room to fail safely. Module 4 opens on a run you send off and step away from; this is the thinking you do before stepping away.
+
 <!-- maintainer -->
 
+**2026-07-30 (pre-read wiring):** added `## Pre-read before Module 4` (Willison, *Designing agentic loops*) — first pre-read section in this file. Body touched — per-class Quality SHAs below predate; re-audit before ship.
+
+**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
+
+- `[checked:2026-07-30 result:OK due:2027-01-30]` https://simonwillison.net/2025/Sep/30/designing-agentic-loops/ — [practitioner direct] (Willison, 2025-09-30). Outside the 6-month window by decision: named framing piece, dated in body, same treatment as the Cherny video exception in `getting-going.md`. fallback: drop the pre-read; Module 4 stands alone.
 
 **Session-close convergence prompt (`ae101-m3-ready-to-clear`) kept, not cut.** Flagged `low-yield`. It's the converge-before-clear beat (`check_pedagogy.md §58`): the student signals wrap-up, the agent surfaces anything still loose before the `/clear`. A light one-line ask carrying a lead-in and its own "good enough" callout, not concurrent-heavy load. Its `{{cut:}}` marker was reversed to a live `{{prompt:}}` — body touched, so the per-class Quality SHAs below predate it; re-audit before ship. Not a cut candidate.
 
@@ -109,7 +120,7 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate + Create
 - **Session runtime:** 2h00 (Connections 10 / Open the side quest 5 / Lecture 12 / Exercises 20+20+28 / Debrief 12 / closer *The loop half, filled in* 8–10 / Bridge 3). Sums 118–120 — no buffer left; the closer's 8-min floor is the only slack. Closer minutes per `lectures/the-loop-half-filled.md` maintainer Time line. Trainer demos slowly, room copy-pastes concurrently — fits 2h00 in-class. Self-study follow-along runs comparably.
-- **Prep timing:** Willison lethal-trifecta pre-read 10–15 min; optional OWASP deeper scan 20 min.
+- **Prep timing:** Willison lethal-trifecta pre-read 10–15 min; optional OWASP deeper scan 20 min; optional agentic-loops pre-read (this file's `## Pre-read before Module 4`) 10 min.
 - **Mood target:** earned trust — *"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big."* Watch for: mood drift toward compliance-feeling. Diagnostic: student at Ex2 frames STRIDE as checkbox. Fix: trainer surfaces the ADR — *"you just made a real architectural call under named pressure; that's not compliance, that's design."*
 - **Delivery architecture** (content folder, compounding-artifact split, skills install, no training-dir state): canonical in `training-architecture.md` §Material distribution / §Working directory model / §Rule files / §Skills. Not restated here. M3-specific: the content folder holds three curated skills (`access-control-analysis` + `stride` + `security-tools`); the authored test-strategy skill ships personal-first to `~/.claude/skills/test-strategy/SKILL.md`, with a sponsor-stated team-kit home as the eventual destination via human conversation (not an auto-PR). The four-layer rule-file hierarchy is in `reference/claude-code-for-engineers.md § 1`.
 

@@ -75,7 +75,19 @@ A picked bug from Step 5. Write it down, file/line, or a one-sentence summary in
 
 The opening question at Module 1: *what's one trick you figured out with Claude Code that nobody taught you?* Bring one. Doesn't have to be big. No trick? Bring a moment Claude Code frustrated you.
 
+## Pre-read before Module 1
+
+Optional. One read, any time before the first session.
+
+**Read: Simon Willison, [Vibe engineering](https://simonwillison.net/2025/Oct/7/vibe-engineering/)** (October 2025). Willison names the difference between vibe coding and working with coding agents as an accountable engineer: the practices that make agents productive are the senior ones (tests, review, documentation), not shortcuts around them. You run exactly those practices from the first bug fix in Module 1.
+
 <!-- maintainer -->
+
+**2026-07-30 (pre-read wiring):** added `## Pre-read before Module 1` (Willison, *Vibe engineering*). Body touched — per-class Quality SHAs below predate; re-audit before ship. The read is optional and outside the 30-min prework runtime target (~15 min if taken).
+
+**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
+
+- `[checked:2026-07-30 result:OK due:2027-01-30]` https://simonwillison.net/2025/Oct/7/vibe-engineering/ — [practitioner direct] (Willison, 2025-10-07). Outside the 6-month window by decision: named framing piece, dated in body, same treatment as the Cherny video exception in `getting-going.md`. fallback: drop the pre-read; Module 1 stands alone.
 
 **Quality:** compendium-audited 2026-07-12 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
 - judges @b3143a4: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

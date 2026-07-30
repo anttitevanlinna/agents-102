@@ -131,14 +131,18 @@ Come to Module 6 without the packaged run and you'll be reading one run while th
 
 ## Pre-reads before Module 6
 
-Optional. Skipping does not break Module 6. Both fit the Module 5 to Module 6 gap.
+Optional. Skipping does not break Module 6. All three fit the Module 5 to Module 6 gap.
 
 **Read, Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it).** Klaassen runs the verifier 10 consecutive times before trusting it, and uses per-feedback specialised agents in parallel to triage review. Reliability is a number you measure, not a vibe you sense, and one verifier can become a panel. You'll recognise both in your own artefacts when Module 6 gets there.
 
 **Read, [Checks that push back](trainings/agentic-engineering-101/supplementary/backpressure.md).** The verifier from this module is the first gate in a bigger story: checks that push back inside the loop are what let a run reach farther than you can watch. The loop assembled next is this story, with your own artefacts in it.
+
+**Read, Lucas F. da Costa, [the essay behind the checks story](https://www.lucasfcosta.com/blog/backpressure-is-all-you-need)** (May 2026). The primary source the reading above draws on, in da Costa's own words: *"any system that relies on a human to catch the machine's mistakes will be limited by the human, not the machine."* The loop you assemble at Module 6 is the answer to that sentence.
 <!--/flag:module:spot-gaps-build-the-loop-->
 
 <!-- maintainer -->
+
+**2026-07-30 (pre-read wiring):** added the da Costa essay as a third § Pre-reads item ("Both" → "All three"), quote verified live, stamp in the source-verification block, banned-word carve-out extended to the external link. Body touched — per-class Quality SHAs below predate; re-audit before ship.
 
 **Slide-size splits (2026-07-10, hand slides-audit):** two pre-existing oversized chunks split at conceptual seams, zero wording changes — `## Re-send the same task, packaged` + `## Send it off and read the report cold` carve the re-send narrative out of `## Key Concepts` (was 430w); `## Run the fork from the original repo` carves execution out of the worktree rationale (was 309w). Headers are command-verb, build-squint checked. Key Concepts now ends at its sixth bullet as the section name promises.
 
@@ -151,11 +155,11 @@ Optional. Skipping does not break Module 6. Both fit the Module 5 to Module 6 ga
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Session runtime:** 1h45 (Connections 5 / In-room opener lecture 6 / Exercise 60 / Debrief 12 / Re-send 3 / Closing lecture 15 / Bridge 3 + buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Closing lecture sits after Debrief + Re-send (structural addition over M4 — names Ronacher's three-pattern from felt evidence). Pre-read (`reading-the-return.md`) lands at the close of M4 Debrief, separate from this module's runtime. Exercise breakdown: Phase 1 read-the-return 15 / Phase 2 align-then-reverse 10 / Phase 3 build-verifier 18 / Phase 4 assemble-reference-and-plan 17.
-- **Prep / bridge timing:** Entis/Klaassen interview 30 min; Klaassen compound-engineering guide 15–20 min; Klaassen verifier article 10 min.
+- **Prep / bridge timing:** Entis/Klaassen interview 30 min; Klaassen compound-engineering guide 15–20 min; Klaassen verifier article 10 min; optional da Costa essay 15 min.
 - **Mood target:** learning through contrast — *"I can feel what packaging adds now; I couldn't have read it as a lecture."* Watch for: mood drift toward correction-feeling (*"my un-packaged run was bad and now I'm fixing it"*) or compliance-feeling (*"the three-pattern is the answer; I should adopt it"*). Diagnostic: student at Phase 3 picks the safest verifier shape regardless of their dominant failure. Fix: trainer reframes — *"the verifier matches the failure, not the comfort. Which one was your dominant?"*
 - **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries. Not restated here. Module-specific: M5 forks a worktree at `../<repo>-m5` and the packaged re-send runs in a fresh session there (cross-cwd boundary, so `new`, not the same session as diagnose + build + assemble). No scheduled agent, no cloud runner — the second run is still a synchronous laptop run.
 - **Pre-read placement:** `lectures/reading-the-return.md` is shared at the close of M4's Debrief, after the un-packaged send-off prompt is pasted. In-room cohorts get the same link in the day-1 wrap-up Slack/Teams thread.
-- **Banned-word carve-out (URL only):** the § Pre-reads pointer to `supplementary/backpressure.md` carries the word solely as the target's filename in the link URL; link text is the paraphrase "Checks that push back". The word stays supplementary-only vocabulary — do not promote it into this module's body prose or link text.
+- **Banned-word carve-out (URL only):** the § Pre-reads pointer to `supplementary/backpressure.md` carries the word solely as the target's filename in the link URL; link text is the paraphrase "Checks that push back". Same carve-out for the § Pre-reads external da Costa essay link — the word appears only in the URL slug; link text is the paraphrase "the essay behind the checks story" (deliberately not the essay's title). The word stays supplementary-only vocabulary — do not promote it into this module's body prose or link text.
 
 **Push-back moves** (trainer delivers):
 - **Connections blocker** — student walks in without the M4 artefact accessible (closed laptop, ran out of credit, repo state unclear). Trainer push: *"the artefact is whatever's there. Repo commits since M4. Files modified. Scrollback at `~/.claude/projects/<project>/` if you closed the session. Open a fresh Claude Code session in the repo and ask it to read what the M4 run touched."* See [Claude Code for engineers — session transcripts](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened).
@@ -221,6 +225,7 @@ Optional. Skipping does not break Module 6. Both fit the Module 5 to Module 6 ga
 - `[checked:2026-05-25 result:OK due:2026-11-25]` https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich — [practitioner analysis] Laura Entis on Klaassen, 2026-04-22. Byline correctly attributed in file. fallback: cite as Entis write-up of the Shipper–Klaassen interview.
 - `[checked:2026-05-25 result:OK due:2026-11-25]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct] Klaassen 2026-02-09, resolves, within window. fallback: cite as Klaassen's canonical compound-engineering writeup.
 - `[checked:2026-05-25 result:OK due:2026-11-25]` https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it — [practitioner direct, vendor venue] Klaassen 2025-08-18, 10-runs + parallel-feedback-agents verbatim. Dated origin; pre-read for recognition. fallback: paraphrase the reliability-as-measured idea, drop the date claim.
+- `[checked:2026-07-30 result:OK due:2027-01-30]` https://www.lucasfcosta.com/blog/backpressure-is-all-you-need — [practitioner direct] (Lucas F. da Costa, 2026-05-23). Byline, date, and the quoted maxim ("any system that relies on a human to catch the machine's mistakes will be limited by the human, not the machine") verified verbatim 2026-07-30. Same source as `supplementary/backpressure.md`'s stamp — keep the two in sync. fallback: drop the pre-read item; the supplementary carries the idea.
 - Ronacher / Cherny / Cur-Intercom cited via `lectures/what-packaging-is.md` and `lectures/the-loop-has-a-name.md` source lists — stamps live there; confirm each stays in sync with this module's references.
 
 **Frameworks riffed on (attributed in lecture):**

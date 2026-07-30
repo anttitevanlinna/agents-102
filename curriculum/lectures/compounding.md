@@ -9,7 +9,7 @@ Not the ingestion, a long enough prompt ingests. Not the task, a good prompt doe
 A system is two things stacked:
 
 - **Persistence.** It remembers. Files on disk, not a thread that resets.
-- **Automation.** It runs on its own. Not because you retyped the prompt, because the instructions are in a file the agent reads every time.
+- **Automation.** It runs on its own. Not because you retyped the prompt. The instructions are in a file the agent reads every time.
 
 Either one alone is a toy. A saved document with no agent is just a document. An agent with no files is a chat. Put them together and you get something that *keeps getting better the more you feed it*. That's the whole claim.
 

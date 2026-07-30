@@ -10,7 +10,7 @@ The same question, two answers. Two Claude chat windows. In one, the first promp
 
 Same words, different window. In the other window, the first prompt is *"What is the largest lake in Finland?"* Claude answers *Saimaa.* Then the same second prompt: dinner. Take a guess before it runs. What does Claude suggest now?
 
-Something Finnish: salmon, rye bread, meatballs. But not as reliably. The first exchange became context, and the context colored everything after.
+Something Finnish: salmon, rye bread, meatballs. But not as reliably. The first exchange became part of context, and the context colored everything after.
 
 ## You steer the answer by loading context
 
@@ -56,7 +56,7 @@ The fix happens once. The loop is what you repeat: a way of working, not one bug
 - **Voice:** Seth × Rory × Risto — warm + counterintuitive + direct.
 
 **The Context is King demo (stolen verbatim from Agents 101):**
-- Two chat windows. Capital-of-Italy → pasta suggestion. Largest-lake-of-Finland → Finnish dinner. Same second prompt, different answer, because the first exchange became context.
+- Two chat windows. Capital-of-Italy → pasta suggestion. Largest-lake-of-Finland → Finnish dinner. Same second prompt, different answer, because the first exchange became part of context.
 - Third window: cardiologist-preparing-dinner-for-patients → heart-healthy suggestion. Context is whatever you tell it.
 - Not adapted for engineers. The universality is the point — the lesson lands because it is not about code. Engineers come in expecting a clever-prompt flex and get a 60-second demo that reframes the whole training.
 
@@ -69,7 +69,7 @@ The fix happens once. The loop is what you repeat: a way of working, not one bug
 Format → `curriculum/backing-format.md`.
 
 **Claims**
-- `context-conditions-next-answer` · detail · "The first exchange became context, and the context colored everything after" ← in-context-conditioning, demo-fires-live
+- `context-conditions-next-answer` · detail · "The first exchange became part of context, and the context colored everything after" ← in-context-conditioning, demo-fires-live
 - `conditioning-is-unreliable` · detail · "But not as reliably." ← demo-fires-live
 - `role-conditions-like-fact` · detail · "A role colors answers the same way a fact does" ← role-prompting-capability, demo-fires-live
 - `context-is-whatever-you-tell-it` · vision · "Context is whatever you tell it. A fact. A role. A preference. A constraint." ← none-owed

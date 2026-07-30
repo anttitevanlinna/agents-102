@@ -7,11 +7,16 @@ Companion file: `every-inc.md` (the company shape — 10 people, 5 products). Th
 
 ---
 
-## The four-step loop
+## The loop — four steps as published, seven as currently practised
 
-The through-line of every Klaassen appearance over the last 6 months: **Plan → Work → Review → Compound.** The agent plans, executes, reviews itself, and writes the lesson back so the next loop starts smarter.
+The name and the mechanism are stable; **the step count is not, and anyone citing an ordinal should re-count first.**
 
-- "Each unit of engineering work should make subsequent units easier — not harder." — Klaassen, *Compound Engineering: The Definitive Guide* (Every / Source Code, Feb 2026) — https://every.to/source-code/compound-engineering-the-definitive-guide
+The Dec 2025 form is four steps, printed in order — **Plan → Work → Review → Compound.** Worth noting who owns which: the source assigns Plan and Work to *"Agents"* and Review and Compound to *"The engineer."* The division of labour is the argument, not the count.
+
+On 2026-05-29 Klaassen expanded it himself, keeping the name: *"Ideate → brainstorm → plan → work → review → polish → compound → repeat."* His stated reason is that the middle got reliable — *"the work phase has become boring—in the best way"* — so the new stages restore human judgement at both ends. That puts `compound` seventh and `work` fourth. Framed as evolution, explicitly not retraction: *"As the models have grown more capable, the original compound engineering loop started to feel incomplete… So I expanded the loop."*
+
+- "Each unit of engineering work should make subsequent units easier — not harder." — Klaassen, *Compound Engineering: The Definitive Guide* (Every / Source Code, Feb 2026) `[practitioner direct, vendor venue]` — https://every.to/source-code/compound-engineering-the-definitive-guide. Sole byline, first person; byline re-verified 2026-07-30. **Does not carry the step names** — a common misattribution.
+- Klaassen, *Compound Engineering Gets an Upgrade* (Every, 2026-05-29) `[practitioner direct, vendor venue]` — https://every.to/p/compound-engineering-gets-an-upgrade. The expansion. Sandwich metaphor credited to collaborator Trevin Chow: *"AI is the stuff in the middle. Humans are the bread on either end."*
 - The plugin codifies the loop as invokable commands — `EveryInc/compound-engineering-plugin` — https://github.com/EveryInc/compound-engineering-plugin
 
 ## The 80/20 inversion — planning and review are the job
@@ -25,7 +30,7 @@ If you spend most of your time typing code, you're doing it wrong. Klaassen's st
 
 Before any agent writes code, produce a markdown plan with data models, file references, architectural decisions — detailed enough that a human or another agent could execute it without asking a question. Tests are written *from the plan*; testability is a planning output, not a post-hoc add-on.
 
-- Dan Shipper on Klaassen, *Compound Engineering: How Every Codes With Agents* (Every / Chain of Thought, Dec 2025, updated Apr 2026) — [practitioner analysis] — https://every.to/chain-of-thought/compound-engineering-how-every-codes-with-agents
+- Dan Shipper **and** Kieran Klaassen, *Compound Engineering: How Every Codes With Agents* (Every, Dec 11 2025) `[practitioner direct, vendor venue]` — https://every.to/source-code/compound-engineering-how-every-codes-with-agents. Byline checked 2026-07-30: the page carries `authors: [Dan Shipper, Kieran Klaassen]` and is first-person-plural throughout (*"we've created," "We run five software products"*). Genuine co-authorship, not a journalist writing up a practitioner — **do not label this one `[practitioner analysis]`.** The `source-code/` path above is the one verified to resolve; a `chain-of-thought/` path for the same slug has not been tested. This page also carries a vendor-self-reported metric — *"a single developer can do the work of five developers a few years ago, based on our experience at Every"* — Level 0, do not promote.
 - Will Larson on Klaassen, *Learning from Every's Compound Engineering* (Apr 2026) — https://lethain.com/everyinc-compound-engineering/. Larson reports the plan-as-artifact step survived contact with a real monorepo at Imprint.
 
 ## Parallel reviewer agents — fan-out instead of one bottleneck
@@ -34,12 +39,14 @@ Specialised reviewer agents (security, performance, architecture, style, accessi
 
 - Klaassen, *Compound Engineering: The Definitive Guide* — link above
 - Klaassen, *My AI Had Already Fixed the Code Before I Saw It* — iterating verifier prompts until tests pass 10 consecutive runs; verifier reliability treated as a measurable property
+- Klaassen, *How I Polish Software That Agents Built* (Every / Source Code, 2026-07-13) `[practitioner direct, vendor venue]` — https://every.to/source-code/how-i-polish-software-that-agents-built. The pattern is still live in his most recent writing on the thread: *"Review fans out parallel reviewers, each looking for a different class of issue."* Also describes `/ce-compound` codifying a stated preference into a rule the system then applies unprompted on the next relevant feature. Still **[L2 single case]** — same practitioner, same org; recency is not independence.
 
 ## The compound step — writing learnings back into CLAUDE.md
 
 The difference between "I used an agent today" and "my codebase compounds" is one file. After every loop, capture the preference, bug-pattern, or architectural rule into CLAUDE.md / AGENTS.md / skill files. The next session starts there.
 
 - Klaassen, *My AI Had Already Fixed the Code Before I Saw It* (single case, L2 — labelled below) — link above
+- Klaassen, *The Folder Is the Agent* (Every / Source Code, 2026-04-13) `[practitioner direct, vendor venue]` — https://every.to/source-code/the-folder-is-the-agent. Names the instruction file **"load-bearing"** and characterises what it holds as *"conventions and standards," "institutional knowledge," "operational memory."* The strongest first-person statement on file that the persistence mechanism is central rather than decorative.
 - Larson (L1 analyst) characterises the compound step as "the one pattern many practitioners have intuited but have not found a consistent mechanism to implement" — single analyst opinion, not independent practitioner replication — https://lethain.com/everyinc-compound-engineering/
 - Peter Yang on Klaassen, *How to Make Claude Code Better Every Time You Use It* (Behind the Craft podcast, Feb 2026) — [domain trade publication] — https://podcasts.apple.com/ky/podcast/how-to-make-claude-code-better-every-time-you-use-it/id1736359687?i=1000748776547. The episode title is the module.
 
@@ -69,13 +76,13 @@ Cora, Monologue, Sparkle, Spiral, and Every.to run with primarily single-person 
 
 ## Caveat — novelty-to-packaging ratio
 
-Per Larson: roughly 1:3. Three of the four steps are well-known practice renamed; the compound step is the load-bearing new piece. A training built on this curriculum shape should be honest about that — *operationalising what good practitioners were already doing*, not a new paradigm. That honesty is what makes it teachable to CTOs.
+Per Larson, reading the four-step form: roughly 1:3. Three of those four steps are well-known practice renamed; the compound step is the load-bearing new piece. The 2026-05 expansion adds stages at both ends without adding a second novel mechanism, so the ratio gets worse, not better. A training built on this curriculum shape should be honest about that — *operationalising what good practitioners were already doing*, not a new paradigm. That honesty is what makes it teachable to CTOs.
 
 ---
 
 <!-- maintainer -->
 
-**Last updated:** 2026-05-03
+**Last updated:** 2026-07-30
 
 **Source verification — MUST DO before first cohort:**
 

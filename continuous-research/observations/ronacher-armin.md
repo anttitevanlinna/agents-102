@@ -84,13 +84,15 @@ He self-describes as a builder who takes responsibility for AI outputs: "I opene
 
 [practitioner direct] https://x.com/mitsuhiko/status/1954643774203924832
 
-## "The Coming Loop" (June 23, 2026) — Identity shift crystallized
+## "The Coming Loop" (June 23, 2026) — the harness loop, named and resisted
 
-**Most direct belief statement yet.** Ronacher published "The Coming Loop" on June 23, 2026 — a post that moves from *how he works* to *what he believes about what's happening*.
+Ronacher published "The Coming Loop" on June 23, 2026 — a post that moves from *how he works* to *what he believes about what's happening*.
 
-Core claim: "I don't prompt Claude anymore. I have loops running that prompt Claude and figuring out what to do. My job is to write loops."
+**ATTRIBUTION CORRECTED 2026-07-31 — do not restore the previous version of this section.** This file previously opened with *"Core claim: 'I don't prompt Claude anymore. I have loops running that prompt Claude and figuring out what to do. My job is to write loops.'"* **That line is Boris Cherny's, not Ronacher's.** It appears in the post as an epigraph, attributed "— Boris Cherny" directly beneath the blockquote. Ronacher quotes it to set up his subject; he does not assert it. Cycle 145 caught this on 2026-07-14 and left a back-sweep flag; the flag was never actioned, so the misattribution survived here and in `coding-agents/state.md` for a further seventeen days. Anywhere this file is used to argue *convergence* on loop engineering, Ronacher does not count as an independent voice for that sentence — he is repeating Cherny's.
 
-This is an identity statement, not a workflow description. The engineering identity has shifted from code-writer to loop-architect.
+Ronacher's own claim is narrower and structural, in his own words: *"work is put into a queue of sorts, a machine picks it up, attempts it, stops, and then some harness decides whether that was actually the end."* And: *"The task stays alive beyond the point where the model by itself would normally have said: 'I am done.'"* His forward call is *"Task queues for coding tasks, orchestration of agents, subagents, durable sessions will matter more and more."*
+
+**His stance is skeptical, not evangelical**, and that is the part most worth preserving: *"I have not had much success with this way of working for code I deeply care about."* Reading this post as an identity-shift manifesto inverts its actual mood.
 
 Additional belief claims from the post:
 - Models are "mortally terrified of exceptions" (citing Karpathy) — they generate defensive, fallback-heavy code that avoids strong invariants. Expert intervention must counteract this at architecture level.

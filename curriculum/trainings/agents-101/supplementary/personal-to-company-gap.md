@@ -21,7 +21,7 @@ Module touchpoints:
 Research touchpoints (for Pass 2 filling):
 - Pattern 2 (promotion path doesn't exist) — `continuous-research/findings/by-pattern/promotion-path-gap.md`
 - Pattern 47 (access-trust gap, L4)
-- Absorption bottleneck (L4, `absorption-bottleneck.md`)
+- Absorption bottleneck (`absorption-bottleneck.md`) — **L2 under audit as of 2026-07-31, not L4.** Read that file's audit note before citing a level.
 - Four sharing strategies (Antti's practitioner taxonomy — not yet research-convergent)
 - The defensibility-by-absence note on coding-agent substrates (user signal 2026-04-19)
 
@@ -32,8 +32,8 @@ Named concept to introduce early: **tacit vs. explicit knowledge** (Polanyi — 
 **Source verification — MUST DO before first cohort:**
 
 1. **Access-Trust Gap (54-95% access vs 5-22% trust)** — body line currently carries `[SOURCE NEEDED]` marker. The five-survey convergence lives in `continuous-research/synthesis/patterns.md` § Pattern 47 and `continuous-research/synthesis/domain-convergence.md`. Pull the five primary URLs (legal, finance, cross-industry, security, plus one corroborating) and pin them inline; or replace the inline % range with a single anchor citation if one survey carries the spine.
-2. **CircleCI 2026 / 95% teams fail to scale** — URLs already inline at body line 104: CircleCI primary report + Bowley independent critique. Re-verify both URLs load and say what we claim at first-cohort delivery. Freshness: report is April 2026, within 6-month window through Oct 2026 — re-pull if cohort runs after.
-3. **Absorption bottleneck framing** — Level 4 meta-pattern in research; full provenance in `continuous-research/findings/by-pattern/absorption-bottleneck.md`. If a CTO challenges the framing on the grounds of one report, reach for Ronacher's Feb 2026 *final bottleneck* piece + Thoughtworks corroboration named in that file.
+2. **CircleCI 2026 / 95% teams fail to scale** — **verified 2026-07-31, and it does not hold.** Three separate errors were live here. (a) The report is dated **18 Feb 2026**, not April, so its six-month window closes **2026-08-18**, not October. (b) Bowley is not an "independent critique" that corroborates us; he disputes the exact cohort behind the 1-in-20 figure (*"their average CI pipeline duration is 6 seconds"*), so citing him as support inverts him. (c) "Re-verify both URLs load and say what we claim" is the wrong instrument — a URL loading is not the claim being true (`check_research_claims.md §14`). The figure itself is CircleCI's compression of two sentences, from a vendor grading its own customers. Treat as `[UNVERIFIED STAT]`.
+3. **Absorption bottleneck framing** — provenance in `continuous-research/findings/by-pattern/absorption-bottleneck.md`, now carrying an audit note that puts it at **L2, not L4**. If a CTO challenges the framing, reach for the two independent practitioners and nothing else: Osmani, *Software Factories, Light and Dark* (20 Jul 2026, the freshest and strongest — the review gate is *"stubbornly resistant to scaling"*), and Ronacher, *The Final Bottleneck* (13 Feb 2026, ages out 2026-08-13; his June follow-up *The Coming Loop* carries the position forward). **Do not reach for Thoughtworks** — that is a consultancy's own blog promoting its own framework, Level 0, and a CTO who checks will find that out.
 
 **Open TODOs:**
 - Five-survey URL pin for Pattern 47 (above).

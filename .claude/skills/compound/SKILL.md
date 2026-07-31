@@ -1,6 +1,6 @@
 ---
 name: compound
-description: Turn a correction, pattern, or decision into a durable schema-validated memory entry that fires at generation time. Invoke at end of session, or after any significant correction. For content/pedagogy/sales corrections, also proposes a one-line amendment to the relevant check_*.md compendium (with Antti's approval).
+description: Turn a correction, pattern, or decision into a durable schema-validated memory entry that fires at generation time. Invoke at end of session, or after any significant correction. For content/pedagogy/sales corrections, also applies a one-line amendment to the relevant check_*.md compendium and reports the landed diff.
 argument-hint: [session | correction | pattern | decision | taste]
 ---
 
@@ -88,19 +88,15 @@ If the correction came from elsewhere (immediate post-correction `/compound` mid
 
 The principle: a correction lives in **one canonical home**. Either the session log (small / not yet ripe for compounding) or the compounded entry + matching compendium (escalated). Never both.
 
-### Step 6 — Propose compendium amendment (content/pedagogy/sales/prompts/lectures/strategy_tie_in surfaces)
+### Step 6 — Apply the compendium amendment (content/pedagogy/sales/prompts/lectures/strategy_tie_in surfaces)
 
-If `proposed_compendium_amendment` is non-empty, show Antti:
+If `proposed_compendium_amendment` is non-empty, **apply it.** Add the one-liner to the relevant section of `check_{surface}.md` and commit with a pointer to the compounded entry.
 
-> **Proposed amendment to `check_{surface}.md`:**
-> {the one-liner}
->
-> Apply now? (y/n)
+A compendium is not a student-facing surface, so it is not card-shaped (`check_prompts.md §26`). Do not ask *"apply now? (y/n)"* — that was the old shape and it defeated the skill's purpose: a rule held in a proposal queue is a rule that does not fire at the next generation, which is exactly the failure this skill exists to close. The correction that prompted the amendment has already been made by Antti; re-asking for permission to write it down spends his attention on a decision he just took.
 
-- **y** → edit the compendium. Add the one-liner to the relevant section. Commit the edit with a pointer to the compounded entry.
-- **n** → leave the compendium untouched. The `memory/compounded/` entry remains as a marker; the amendment can be revisited later via `/refresh`.
+**Apply is not silent.** Show the landed diff in the report — the amended rule, quoted, and which section it went into — so the amendment is visible and revertable. If it is wrong, one word reverts it, and that costs far less than a rule sitting unapplied for a month.
 
-Do NOT silently amend compendiums. Always surface the diff for approval.
+**Where the stop still is:** if the correction implies an edit to student-facing body text or a prompt body, that edit is a card (BEFORE / AFTER / WHY / RISK, one at a time). The compendium amendment lands now; the curriculum edit waits.
 
 ### Step 7 — Check for escalation
 
@@ -115,7 +111,7 @@ After writing, check: did this correction's `severity` just go from `medium` →
 
 - **Replace self-review-protocol.md.** Self-review runs end-of-session, mines the transcript, and produces the *raw* correction list. `/compound` takes one of those corrections and promotes it to structured form. Both exist.
 - **Replace the long-running strategy's own compound step.** `curriculum/module-design-long-running-strategy.md` rewrites its *own* "Rules the file has learned" section at the close of each long-running generation cycle — that's how it compounds on the long-running-generation-pattern itself. `/compound` handles the *cross-surface* corrections from the same session (banned-word leakage, mood violations, sales-copy register leaks) that apply beyond long-running generation. Both run on the same session; they don't overlap.
-- **Add new rules without Antti's approval.** Proposed compendium amendments are proposals. Antti decides.
+- **Card internal edits.** Compendium amendments, `memory/compounded/` entries and `.claude/rules/` land directly and get reported, not proposed (`check_prompts.md §26`). Only an edit a student will read is card-shaped. Antti reverts what he doesn't want; that is cheaper for him than approving what he already asked for.
 - **Bulk-migrate legacy `feedback_*.md` memories.** That's a `/refresh` job. This skill only writes new compounded entries.
 
 ## The real test

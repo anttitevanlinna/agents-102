@@ -47,7 +47,7 @@ Two shapes to check for by name, both of which have shipped from this skill befo
 - **Absence over-read.** "No one has published X" is the whole finding. Not that the data exists, not why it is missing, not that someone should be asked for it.
 - **Axis un-nested.** Naming the population of *your* claim does not discharge §12. When the evidence is a study, name that study's own axis and population before reporting what it shows — a percentage-of-own-baseline result cannot settle an absolute-spread question at any N.
 
-Maintainer-block region, so edits are ungated and not card-shaped (`check_prompts.md §22`, §26 carve-out). But authority splits three ways:
+Maintainer-block region, so edits are ungated and not card-shaped (`check_prompts.md §22`, §26). Not a carve-out — §26 fires on two surfaces only, student-facing body text and prompt bodies, and everything else applies directly. The whole backing block is below the divider, so all of it lands without asking. Authority still splits three ways, but the split is about *evidence*, not permission:
 
 | what | where it goes | approval |
 |---|---|---|
@@ -55,6 +55,10 @@ Maintainer-block region, so edits are ungated and not card-shaped (`check_prompt
 | `last-run` bump | `OODA` | none |
 | Stance movement, new contested item, level change | `Flagged`, as a proposal | **discuss before the `Stance` field changes** |
 | Proposed edit to body prose above the divider | `Flagged` only — never applied here | one card at a time (`check_prompts.md §26`) |
+| Back-sweep fix on any other maintainer block, KB file, script, or rule file | in place, in the same pass | none — apply, then report as landed work |
+| Back-sweep fix that lands in student-facing body text | a card, per file | one card at a time; the non-student half still applies immediately |
+
+The last two rows are where this skill leaks in practice. A back-sweep that corrects a source label, an evidence level or a stale trainer note is the same class of edit as a re-stamp, and waiting on it leaves the corpus self-contradictory for no gain. Grep the blast radius before assuming a correction reaches students — usually it reaches one line or none, and knowing which is the difference between a card and a commit.
 
 Flagged entry shape: `` - `[found:YYYY-MM-DD]` <what changed> → <the discussion it forces> ``
 

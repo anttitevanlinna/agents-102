@@ -80,11 +80,17 @@ Y medium — worth fixing before publish.
 Z low — nice to have.
 ```
 
-### Step 6 — Decision gate
+### Step 6 — Apply, then report. Do not ask.
 
-Ask Antti: *apply high-severity fixes? Mark them for `/compound`? Ship anyway with override?*
+`continuous-research/` is not a student-facing surface, so **every finding on the target file applies directly** — labels, levels, stamps, frontmatter, caveats, demotions, the header's own evidence level. No card, no wait. That is `check_prompts.md §26`: the test is *"will a student read this string?"*, not *"does this need judgement?"*, and a finding surfaced as a question is a correction not yet in force.
 
-If Antti overrides, log the override (file, date, ignored finding) to `memory/compounded/` as a `type: decision` entry so `/refresh` can audit later whether overrides correlate with post-hoc corrections.
+Fix the high-severity findings, then the medium ones worth fixing, then report what landed as prose. Say plainly what you did **not** fix and why — a punch list of eight uncited figures that would take a research cycle to source is a scoped hand-off, not a failure, and naming it beats silently shrinking the job.
+
+**The one thing that does stop and ask:** a finding that forces an edit to **student-facing body text or a prompt body**. Audits reach those often — a demoted source cited in a lecture, a zombie stat quoted in an exercise. Those go back as one card at a time (BEFORE / AFTER / WHY / RISK, `check_prompts.md §26`), and the research-side fix still lands immediately regardless. Before assuming contamination, grep for it: the blast radius on student surfaces is usually one line or none, and knowing which turns a vague worry into a single decision.
+
+**Downgrading an evidence level is an apply, not an ask.** If the audit shows an L4 doesn't hold, the honest header goes in now. Leaving a level you know is unsupported, pending approval, ships a false claim to every reader in the interim — and this KB is shared.
+
+If Antti later overrides an applied fix, log it (file, date, finding) to `memory/compounded/` as a `type: decision` entry so `/refresh` can audit whether overrides correlate with post-hoc corrections.
 
 ## Hook into the OODA cycle
 

@@ -16,7 +16,7 @@ Loaded by `/lecture-ooda`, `backing-lint.sh`, `/curriculum-pre-ship-audit`, and 
 
 Lives below `<!-- maintainer -->`, so it never renders. Explicit close so the linter slices it without heuristics. One region per file. Absorbs and replaces `Frameworks riffed on:` / `Frameworks attributed:` / `**Source verification …**` — do not keep a second copy.
 
-Maintainer-block region → edits are **not** gated by the prompt-approval hook and are **not** card-shaped (`check_prompts.md §22`, §26 carve-out). Apply directly. Cosmetic edits here do not degrade Quality (`quality-format.md`); a claim edit *above* the divider still degrades the stamps that back it (auto-degrade, below).
+Maintainer-block region → edits are **not** gated by the prompt-approval hook and are **not** card-shaped (`check_prompts.md §22`, §26). Apply directly, then report as landed work. Not a carve-out: §26 fires on student-facing body text and prompt bodies only, and everything else applies without asking. Cosmetic edits here do not degrade Quality (`quality-format.md`); a claim edit *above* the divider still degrades the stamps that back it (auto-degrade, below).
 
 ## The five fields
 

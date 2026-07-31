@@ -52,6 +52,14 @@ Subagents DO inherit the full CLAUDE.md hierarchy and `.claude/rules/` — user,
 5. **One message, all agents.** `run_in_background: true`.
 6. **Validate sweep output at apply time** at the Edit's Read-first gate. → `memory/compounded/2026-05-18-platform-explore-sweep-validate-each-at-apply-time.md`
 
+## Approval gate
+
+Card ONLY **student-facing body text + prompt bodies students copy** (`check_prompts.md §26`). BEFORE/AFTER/WHY/RISK, one at a time, wait for the call.
+
+Everything else applies **directly**, then gets reported as landed work: maintainer blocks, backing blocks, `check_*.md`, `.claude/rules/`, CLAUDE.md tiers, `memory/compounded/`, `continuous-research/` (incl. evidence-level downgrades), scripts, trainer notes. Test = *"will a student read this string?"* — NOT *"does this need judgement?"* A rule surfaced as a card is a rule not in force.
+
+Recurring leak = a **skill's own step text** re-imposing the gate (`/research-review` Step 6, `/compound` Step 6, both fixed 2026-07-31). §26 outranks any skill procedure. Grep blast radius before assuming a fix reaches students — usually one line or none.
+
 ## Self-review
 
 - **Session start:** read `memory/self-review-protocol.md` § *Core heuristics*.

@@ -66,7 +66,7 @@ One module at a time. Pick a tab; the URL hash holds the selection so you can sh
 
 **Learning goals.** Student can:
 
-- Run plan mode on a real multi-file task and read the plan for its file list, verification steps, and named assumptions.
+- Run plan mode on a real multi-file task and judge the plan against five criteria, naming the one it fails.
 - Push back twice on the plan via "keep planning with feedback," surfacing what the agent didn't see.
 - Walk down unresolved branches one question at a time, with a recommended answer per branch.
 - Pair human read with agent walk-down: read → push-back → walk-down → approve. Spot approval inflation in past plans.

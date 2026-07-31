@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [google, gemini, workspace-studio, agent-builder, gemini-spark, antigravity, managed-agents-api]
 nordic: true
-updated: 2026-07-19
-cycle: 167
+updated: 2026-07-31
+cycle: 178
 answers:
   - "what can business users do with Gemini today?"
   - "is Workspace Studio a real agent builder?"
@@ -14,8 +14,18 @@ answers:
 
 # Google Workspace / Gemini Enterprise — Platform State
 
-Last updated: 2026-07-28 (cycle 175)
-OODA cycles: 24
+Last updated: 2026-07-31 (cycle 178)
+OODA cycles: 27
+
+**Cycle 178 updates (July 31, 2026) — Gemini 3.5 Pro absent = EIGHTH consecutive missed window; July 31 81% prediction market window closes; Gemini Robotics ER 2 in Public Preview (July 30); Antigravity Agent API clarified:**
+
+**Gemini 3.5 Pro — not launched as of July 31, 2026 (eighth consecutive missed window).** API changelog (fetched July 31): last entry was July 30 (Gemini Robotics ER 2 — see below). Zero Gemini 3.5 Pro entry in any tier. Model list confirms `gemini-3.1-pro` (Preview) remains the newest Pro in the API. **The 81% prediction market window has now officially closed.** Eight missed windows: June → July 12 → July 17 → July 21 → July 28 → July 29 → July 30 → July 31. Next prediction market checkpoint: August 7 at 73%. Bloomberg root cause (July 16, 10 current/former Google employees): training data update in late June "made results worse instead of better"; Alphabet -4.4% (-~$200B market cap) on July 16 disclosure. Google's official target remains August (9to5Google July 16). Gemini 4 pre-training confirmed in-progress — risk horizon: Gemini 4 may supersede 3.5 Pro before it reaches GA. **CTO planning: Gemini 3.6 Flash remains the only credible Google H2 2026 option until API changelog confirms 3.5 Pro GA.** ([ai.google.dev/gemini-api/docs/changelog Jul 31 2026](https://ai.google.dev/gemini-api/docs/changelog) — [vendor documentation, absence confirmed]; [bloomberg.com Jul 16 2026](https://www.bloomberg.com/news/articles/2026-07-16/google-gemini-launch-delayed-as-tech-falls-short-of-internal-goals) — [general press]; [9to5google.com Jul 16 2026](https://9to5google.com/2026/07/16/gemini-3-5-pro-delays/) — [domain trade publication])
+
+**Gemini Robotics ER 2 in Public Preview (July 30, 2026) — new specialized embodied reasoning track.** Two new endpoints: `gemini-robotics-er-2-preview` and `gemini-robotics-er-2-streaming-preview`. Capabilities: advanced spatial reasoning, agentic code execution, multi-step tool orchestration, video moment finding, multi-robot coordination. Deprecates ER 1.6-preview (EOL August 31). Specialized robotics/industrial track — not general business-agent capability. Signal: Google is shipping specialized embodied reasoning while flagship Pro is delayed; portfolio expanding sideways. ([ai.google.dev/gemini-api/docs/changelog Jul 30 2026](https://ai.google.dev/gemini-api/docs/changelog) — [vendor documentation])
+
+**Antigravity Agent API docs — capability and limitation clarification.** Confirmed: Antigravity Agent = "general-purpose managed agent on the Gemini API" in a secure Linux sandbox. Runs **Gemini 3.6 Flash by default** (not 3.5 Pro — bypasses the flagship delay for this product line). MCP server integration confirmed. Cost model: $0.25–$5 per interaction; 50–70% token caching. Context compaction at ~135k tokens. **Explicit capability gaps from docs: no structured outputs, no file search, no computer use, no Google Maps.** Enterprise tier: "coming months" — not currently available. Preview only via Interactions API and Google AI Studio. The personal→team promotion path exists; company-level remains unconfirmed. ([ai.google.dev/gemini-api/docs/antigravity-agent Jul 31 2026](https://ai.google.dev/gemini-api/docs/antigravity-agent) — [vendor documentation])
+
+**Watch: Gemini API changelog for August 7 entry (73% market odds); Antigravity Agent enterprise tier announcement; Gemini 4 pre-training timeline; Gemini Robotics ER 2 first practitioner reports.**
 
 **Cycle 175 updates (July 28, 2026) — Gemini 3.5 Pro absent = FIFTH consecutive missed window; Google Developer and DeepMind blogs silent; prediction markets 81% July 31:**
 

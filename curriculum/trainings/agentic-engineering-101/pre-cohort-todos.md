@@ -46,6 +46,8 @@ Sim sweeps and platform-capability checks are not tracked here. The `curriculum-
  - **`[watch]` §62 pre-emptive callouts** in `diagnose-and-resend` (L87 slowness) and `spot-gaps-build-the-loop` (L24/L25/L77). Check the §50/§51 deliberate-antipattern and convenience carve-outs first: some may be accepted-by-design steers, not rot.
  - Follow-up (not a finding): 6 AE101 lectures still have no `story` instance (needs the sim-trace `/eval-fire story` path). `npm run audit:eval-coverage:gate` lists them.
 
+- **`[action]` Prework must set transcript retention before any measured cohort starts, or day-30 measurement loses its pre-training window.** Claude Code deletes session transcripts older than `cleanupPeriodDays` (default 30) at every startup; the day-30 evaluation reconstructs its pre-training window from exactly those files. Add to the prework contract: set `cleanupPeriodDays: 365` in user settings on day 0 (requires Claude Code ≥2.1.203 for the override to hold; verified 2026-07-31 via `code.claude.com/docs/en/settings.md`). Spec: `bosser-strategy:content-strategy-agentic-engineering-101.md` § *Outcome measurement*; public package stub: [`curriculum/evals/agentic-work-profile/README.md`](../../evals/agentic-work-profile/README.md). The instrument itself (rubric, judges, schema, scripts, collection repo template) is a pre-day-30 build, not a pre-cohort blocker, tracked in the spec, not here.
+
 ---
 
 **Canonical home:** this file. Module files carry zero TODOs, all pre-cohort open items route here.

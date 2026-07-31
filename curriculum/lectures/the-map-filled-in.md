@@ -203,7 +203,7 @@ The map is back, one last time.
 
 **Frontier payoff bullet (2026-07-27, Antti call: "one bullet, closing slide"):** fourth bullet on *The map, filled in* slide pays off the delegation frontier the M5 close (`the-gate-is-a-claim` final slide) left as a warning — reach grows only as fast as the gates; solid loops are what move the frontier. No new slide (M6 dose already at 7 with open eyeball Qs). Vocabulary is arc-earned at the M5 close per `check_slides.md §1` carve-out; the M5 back-reference is the §3 arc carve-out (this lecture's subject IS the arc). Payoff-optimism is in-contract here (consolidation/recognition mood, not the M5 doubt-holder).
 
-**STATUS:** slide-format (proper-length bullets per `theory-plan.md` § Slide format, 2026-07-02). No Quality line by design (unaudited). Family B landing eval pending.
+**STATUS:** slide-format, proper-length bullets per `theory-plan.md` § Slide format. Audited — see the Quality line below. *(Corrected 2026-07-31: denied its own audit and called the Family B eval pending, while carrying a 2026-07-27 all-PASS audit. Present-tense state, not a changelog — `check_writing.md §3`. Family B: if a verdict for this file exists, record it here; if it genuinely has not run, say so directly rather than denying the audit that did.)*
 
 **Commissioned:** 2026-07-02 — theory-completeness-review finding #1 (far half never closes) + Antti ("let's complete the theory addition", 2026-07-02). Far-half twin of `the-loop-half-filled` (M3's near-half consolidation closer).
 

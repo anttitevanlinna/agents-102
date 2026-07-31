@@ -1,12 +1,17 @@
 ---
 type: finding
 domain: cross-domain
-evidence_level: 4
+evidence_level: 2
 platforms: [multiple]
-practitioners: [Osmani, Faros AI, DX, DORA, CodeRabbit, Karpathy, Willison, Furze, NBER, Cursor/Graphite, Anthropic, CircleCI, Ronacher, Bowley, Thoughtworks]
+practitioners: [Osmani, Ronacher]
+vendor_reports: [Faros AI, DX, CodeRabbit, CircleCI, Anthropic, PostHog, Thoughtworks]
+other_sources: [DORA, NBER, Karpathy, Willison, Furze, Bowley, Cursor/Graphite]
 nordic: false
-updated: 2026-04-06
+updated: 2026-07-31
+updated_scope: "practitioner leg + audit note only; the six-domain L4 paragraph, the quantitative table and the six-names table are April-2026 text and were NOT re-verified"
 answers:
+  - "is the review bottleneck easing, or still binding?"
+  - "can an agent reviewer absorb the output instead of a human?"
   - "why doesn't AI productivity show up in organizational metrics?"
   - "what happens when agents generate faster than humans can evaluate?"
   - "what is the absorption bottleneck?"
@@ -17,9 +22,35 @@ answers:
 
 # The Absorption Bottleneck — When AI Generates Faster Than Humans Can Evaluate
 
-**Evidence level:** Level 4 (cross-domain meta-pattern) | **Last updated:** 2026-04-06 | **Source:** Cycles 76 + 81 + 90 + 91
+**Evidence level:** **UNDER AUDIT — claimed L4, demonstrable L2** | **Practitioner leg re-verified:** 2026-07-31 | **Everything below the audit note:** cycles 76 + 81 + 90 + 91, not re-verified since April 2026
 
-**Platform-scale quantitative confirmation (cycle 91, April 6, 2026):** CircleCI 2026 State of Software Delivery (8M+ PRs, 5,000+ teams) provides the largest quantitative dataset yet confirming the WIP accumulation dynamic: 59% more daily workflow runs (generation up), 7% DECLINE in median main-branch throughput (delivery down), 70.8% main-branch success rate (five-year low). Only 1 in 20 teams (5%) managed to scale both generation AND delivery. Independent practitioner Rob Bowley ([blog.robbowley.net](https://blog.robbowley.net/2026/04/02/more-code-less-delivery-but-does-the-circleci-2026-report-really-show-1-in-20-teams-are-benefiting/)) states directly: "for 95% of teams, AI is generating more work in progress that isn't shipping." Armin Ronacher (Feb 2026, [lucumr.pocoo.org](https://lucumr.pocoo.org/2026/2/13/the-final-bottleneck/)) independently identified review as "the final bottleneck" using queue dynamics identical to Little's Law. Thoughtworks analysis adds mechanism: AI code is "often syntactically correct but contextually misaligned" ([Thoughtworks](https://www.thoughtworks.com/insights/blog/generative-ai/a-thoughtworks-perspective-on-circleci-s-2026-state-of-software-)). Together: the Tier 0 user signal (Little's Law / WIP explosion) is now Level 3 confirmed with platform-scale data.
+> **Audit note, 2026-07-31.** A four-persona review (source-type · zombie-stat · freshness · evidence-ladder) found the L4 claim unsupported *as written*. Two reasons, both fixable, neither fixed yet.
+>
+> **1 · The practitioner leg is two people, not five.** Faros AI, DX and CodeRabbit were each labelled `[practitioner analysis]` while CircleCI — identical shape, a vendor reporting telemetry from its own paying customers, bylined by the company, ending in a product pitch — was correctly demoted to Level 0. One standard applied to all four leaves **Ronacher and Osmani** as the independent practitioners on the core claim. The labels below are now corrected and the tally is what it is.
+>
+> **2 · The six-domain cross-check that licenses L4 carries zero URLs.** Every figure in it is an uncited number, and *"three academic papers describe it as domain-independent cognitive failure"* names no paper. Some of it may not even measure this pattern: "21% of ICLR reviews AI-generated" measures AI *writing* reviews, not reviewers drowning in volume. The sourcing, if it exists, is in `platform-watch/cross-platform/runs/2026-03-31-cycle81.md`; until it is pulled forward, that paragraph licenses nothing.
+>
+> **The pattern is not withdrawn.** Two independent practitioners with fresh, quotable, converging material is a real L2, and the direction of travel is not in doubt. What is withdrawn is the claim to have *proven it across domains*. Restoring L4 needs the cycle-81 citations pulled forward and 8+ more independent non-vendor practitioners.
+>
+> **Uncited figures flagged and not yet fixed** — treat every one as `[SOURCE NEEDED]`: Amazon Kiro "6.3M lost orders" · SXSW CMO "$2–3 per $1" and "60–70% abandonment" · StrongDM "32K lines, zero human review" · Greptile "82% bug catch" · Cleveland Clinic "80% alert reduction" · Swiss hospitals "72.4%" · the Three Mile Island operator quote · aviation "<10% of flights". Several are the round-number shape the zombie-stat rule exists to catch.
+
+**Current practitioner anchor (2026-07-31).** The constraint is still described as binding, by the practitioners closest to it, in the freshest material available. Addy Osmani, *Software Factories, Light and Dark* ([addyosmani.com](https://addyosmani.com/blog/software-factories/), 20 Jul 2026) — [practitioner direct]: *"Verification, not generation, is the real constraint on a factory."* *"Generation is a wide mouth; verification is the narrow neck. Speeding up the mouth just deepens the pile at the neck."* And the load-bearing line for anyone hoping tooling closes this: the review gate is *"the only expensive box that proves stubbornly resistant to scaling."* Same author, five days earlier, *Own the Outer Loop* ([addyosmani.com](https://addyosmani.com/blog/own-the-outer-loop/), 15 Jul 2026) — [practitioner direct]: *"Generation moved faster than control."* His coinage for the underlying deficit is defined in *Comprehension Debt* ([addyosmani.com](https://addyosmani.com/blog/comprehension-debt/), 14 Mar 2026) — [practitioner direct]: *"the growing gap between how much code exists in your system and how much of it any human being genuinely understands."*
+
+Ronacher has sharpened rather than walked back his February position: *The Coming Loop* ([lucumr.pocoo.org](https://lucumr.pocoo.org/2026/6/23/the-coming-loop/), 23 Jun 2026) — [practitioner direct] — *"I so far see very little progress of this improving. If anything, on that front it feels to me that we might even be making steps in the wrong direction."*
+
+**Where Osmani puts the gate is the newer finding.** Not a per-item phase but an organisational chokepoint: *"The Factory — Multiple harnessed loops running in parallel, feeding a shared review gate."* One gate, many loops. That predicts the constraint gets *worse* with fan-out rather than being diluted by it, and it is a sharper structural claim than the volume framing this file has carried so far.
+
+**Counter-evidence, and it is real.** Jina Yoon on PostHog's engineering team ([newsletter.posthog.com](https://newsletter.posthog.com/p/code-review-tips), 9 Jul 2026) — [practitioner direct, vendor venue], single-company self-report, Level 2 at best: an agent reviewer named StampHog *"gives the final stamp on roughly 1 in 3 PRs merged into our main repo"* and *"took care of 1.6K PRs on its own"* last month. Safety rails first (PR state checks, blast-radius denylists, diff-size limits), humans still the escalation path. This is the strongest published claim that the gate is easing. Weigh it against Osmani writing, eleven days later and knowing review agents exist, that the gate remains *"stubbornly resistant to scaling."* A "2.09x throughput" figure circulating in search summaries of the PostHog piece **could not be reconfirmed on the page** across two fetches — do not cite it.
+
+**A named model that omits the human entirely.** Ronacher's two-loop decomposition in *The Coming Loop* (agent loop inside, *"harness level loop"* outside) contains **no human stage at all** — *"Even the 'done' signal loses all meanings and just becomes communicated to yet another machine that judges. My role is reduced to that of a messenger."* Note the tension inside one author: his prose says humans are the bottleneck; his diagram does not include them. Whether absorption is a place a machine can stand in, or is human by definition, is now the open question this pattern turns on.
+
+**Platform-scale numbers — vendor-reported, and contested (re-verified 2026-07-31):** CircleCI's 2026 State of Software Delivery is the largest dataset pointing at the WIP accumulation dynamic, and it is **[vendor blog] — Level 0, off the evidence ladder.** CircleCI publishing about telemetry from CircleCI's own paying customers, bylined by its content-marketing staff, selling into the exact pain the report diagnoses. Three figures are verbatim on the page: *"the average number of daily workflow runs increased 59% year over year"*, *"on the main branch, throughput fell by 7%"*, *"Main branch success rates dropped to 70.8%, the lowest in over five years."* The dataset is one month wide: *"Based on 28,738,317 workflows run on CircleCI during September 2025. Projects with at least 2 contributors, workflows that ran at least 5 times."*
+
+The "1 in 20 teams" figure needs three caveats and gets cited with them or not at all. It is a **compression of two adjacent sentences** (*"Fewer than 1 in 20 teams have figured out how to ship at AI speed"* + *"The top 5% of teams are the exception to every trend above"*), not one CircleCI claim. Rob Bowley ([blog.robbowley.net](https://blog.robbowley.net/2026/04/02/more-code-less-delivery-but-does-the-circleci-2026-report-really-show-1-in-20-teams-are-benefiting/)) — [practitioner analysis] — is **counter-evidence, not corroboration**: he attacks the top-5% cohort's data quality directly (*"Their average CI pipeline duration is 6 seconds… it's hard to think of a single CI step that legitimately completes in 6 seconds"*; *"one team apparently running 130,000 CircleCI workflows a day would have an outsized effect on any aggregate figures"*) and concludes *"the data here for the teams making that case doesn't add up clearly enough to draw confident lessons from."* His separate line — *"For 95% of teams, AI is generating more work in progress that isn't shipping"* — is his restatement of CircleCI's framing while disputing it, not an independent measurement. Round number, vendor conflict of interest, independently disputed underlying data: same shape as a zombie stat even though the origin is traceable. Treat as **[UNVERIFIED STAT]-equivalent** — usable only as "CircleCI claims X about its own platform, and a practitioner has disputed the data behind the headline cohort."
+
+Armin Ronacher (Feb 2026, [lucumr.pocoo.org](https://lucumr.pocoo.org/2026/2/13/the-final-bottleneck/)) — [practitioner direct] — independently names review as the bottleneck: *"the pull request review clearly turns into the bottleneck. But it cannot really be automated."* He reasons in informal backpressure language (*throttle, throughput, load shedding*); **the page contains no instance of "Little's Law" or "queueing theory"** (searched 2026-07-31). The queueing formalisation is this file's gloss and the Tier-0 user signal's frame, not Ronacher's — attribute it accordingly. Thoughtworks offers a mechanism — AI code is "often syntactically correct but contextually misaligned" ([Thoughtworks](https://www.thoughtworks.com/insights/blog/generative-ai/a-thoughtworks-perspective-on-circleci-s-2026-state-of-software-)) — but that is a consultancy's own thought-leadership blog promoting its own framework: **[vendor blog] — Level 0**, off the ladder. Quote it as a phrasing, never as evidence.
+
+Net: the WIP dynamic stands on **two independent practitioners, Ronacher and Osmani**, and that is L2. It does not get promoted by the CircleCI numbers, because a vendor grading its own customers is not platform-scale confirmation of anything — and by the same rule it does not get promoted by Faros, DX or CodeRabbit either. All three are vendors reading telemetry off their own paying customers, and each sells into the very burden it reports. Naming that inconsistency was the point of this pass: the demotion has to apply to the vendors whose numbers we like, or it is not a standard.
 
 **Mainstream crossing signal (cycle 90, April 2026):** HBR published "AI Doesn't Reduce Work — It Intensifies It" (Feb 2026). SXSW 2026 CMO data confirms $2-3 training overhead per $1 AI tool spend, with 60-70% tool abandonment without facilitation. The absorption bottleneck concept is now reaching mainstream business press — the practitioner-to-enterprise confirmation arc described in research methodology. Still no entity using the term "absorption bottleneck" specifically.
 
@@ -36,16 +67,16 @@ answers:
 
 | Metric | Source | What it shows |
 |--------|--------|--------------|
-| +59% workflow runs YoY | [CircleCI 2026](https://circleci.com/blog/five-takeaways-2026-software-delivery-report/) (8M+ PRs, 5K+ teams) — [domain trade publication] | Generation side exploding |
-| -7% main-branch throughput (median) | CircleCI 2026 (same dataset) | Delivery side collapsing |
-| 70.8% main-branch success rate | CircleCI 2026 (five-year low) | Quality collapsing under volume |
-| 95% of teams fail to scale both | CircleCI 2026 / [Bowley critique](https://blog.robbowley.net/2026/04/02/more-code-less-delivery-but-does-the-circleci-2026-report-really-show-1-in-20-teams-are-benefiting/) | WIP explosion is the norm, not the exception |
-| 91% increase in PR review time | [Faros AI](https://www.faros.ai/blog/ai-software-engineering) (10K+ devs) — [practitioner analysis] | More AI code = way more human review |
+| +59% workflow runs YoY | [CircleCI 2026](https://circleci.com/blog/five-takeaways-2026-software-delivery-report/) (28.7M workflows, Sept 2025 only) — **[vendor blog] — Level 0** | Generation side exploding, per the vendor's own telemetry |
+| -7% main-branch throughput (median) | CircleCI 2026 (same dataset) — **[vendor blog] — Level 0** | Delivery side collapsing, per the same |
+| 70.8% main-branch success rate | CircleCI 2026 (five-year low) — **[vendor blog] — Level 0** | Quality collapsing under volume, per the same |
+| ~~95% of teams fail to scale both~~ **[UNVERIFIED STAT]** | CircleCI's own compression of two sentences; the cohort behind it is disputed by [Bowley](https://blog.robbowley.net/2026/04/02/more-code-less-delivery-but-does-the-circleci-2026-report-really-show-1-in-20-teams-are-benefiting/) — [practitioner analysis] | Nothing, on its own. Cite only with the dispute attached |
+| 91% increase in PR review time | [Faros AI](https://www.faros.ai/blog/ai-software-engineering) (10K+ devs, 1,255 teams, Jul 2025) — **[vendor blog] — Level 0** | More AI code = way more human review |
 | 98% more PRs merged per developer | Faros AI (same study) | Volume explodes |
-| 1.7x more issues in AI-generated code | [CodeRabbit](https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report) (470 PRs) — [practitioner analysis] | AI code needs MORE review, not less |
+| 1.7x more issues in AI-generated code | [CodeRabbit](https://www.coderabbit.ai/blog/state-of-ai-vs-human-code-generation-report) (470 PRs, Dec 2025) — **[vendor blog] — Level 0**, and it sells AI code review | AI code needs MORE review, not less |
 | ~3.4x total review burden | (2x volume × 1.7x issues combined) | The compound math kills you |
 | 80% zero productivity impact | [NBER](https://fortune.com/2026/02/17/ai-productivity-paradox-ceo-study-robert-solow-information-technology-age/) (6K executives) — [general press] | Volume up, organizational output flat |
-| Time savings plateau at 4 hours | [DX](https://getdx.com/blog/ai-assisted-engineering-q4-impact-report-2025/) (135K devs) — [practitioner analysis] | Hard ceiling regardless of adoption level |
+| Time savings plateau at 4 hours | [DX](https://getdx.com/blog/ai-assisted-engineering-q4-impact-report-2025/) (135K devs, Nov 2025) — **[vendor blog] — Level 0** | Hard ceiling regardless of adoption level |
 | Worker confidence DOWN 18%, usage UP 13% | [ManpowerGroup](https://fortune.com/2026/03/10/ai-productivity-workers-workday-efficiency/) — [general press] | People use more AI and trust it less |
 | No correlation AI adoption → better DORA metrics | [DORA 2025](https://dora.dev/research/2025/dora-report/) — [academic/research] | Organizational delivery flat despite individual throughput gains |
 
@@ -59,10 +90,10 @@ The absorption bottleneck has been independently observed and labeled by multipl
 |------|-----|------------------|----------------|
 | Comprehension debt | [Osmani](https://addyosmani.com/blog/comprehension-debt/) — [practitioner direct] | Accumulated understanding deficit | The throughput constraint |
 | AI Productivity Paradox | [Faros AI](https://www.faros.ai/blog/ai-software-engineering), [NBER](https://fortune.com/2026/02/17/ai-productivity-paradox-ceo-study-robert-solow-information-technology-age/) | Macro outcome failure | Root cause mechanism |
-| Alarm fatigue | [Aviation/nuclear](https://en.wikipedia.org/wiki/Alarm_fatigue) (decades of research) | Desensitization under volume | AI-specific generation dynamics |
-| Slop / effort asymmetry | [Willison](https://simonwillison.net/2026/Mar/23/neurotica/), [Furze](https://leonfurze.com/2026/03/28/the-effort-economy-of-slop/) — [practitioner direct] / [academic] | Production-consumption imbalance | Organizational/team dynamics |
+| Alarm fatigue | [Aviation/nuclear](https://en.wikipedia.org/wiki/Alarm_fatigue) — tertiary aggregator, **context only, not evidence**; trace to primaries before citing | Desensitization under volume | AI-specific generation dynamics |
+| Slop / effort asymmetry | [Willison](https://simonwillison.net/2026/Mar/23/neurotica/), [Furze](https://leonfurze.com/2026/03/28/the-effort-economy-of-slop/) — both [practitioner direct] (Furze writes his own analysis on his own site; not peer-reviewed) | Production-consumption imbalance | Organizational/team dynamics |
 | Societal cognitive overload | [arXiv 2504.19990](https://arxiv.org/abs/2504.19990) — [academic/research] | Systemic institutional paralysis | Practitioner-level actionability |
-| Review bottleneck | [DX](https://blog.robbowley.net/2025/11/05/findings-from-dxs-2025-report-ai-wont-save-you-from-your-engineering-culture/), [Cursor/Graphite](https://fortune.com/2025/12/19/cursor-ai-coding-startup-graphite-competition-heats-up/) | Engineering-specific flow constraint | Cross-domain generalizability |
+| Review bottleneck | [Bowley on DX's 2025 report](https://blog.robbowley.net/2025/11/05/findings-from-dxs-2025-report-ai-wont-save-you-from-your-engineering-culture/) — [practitioner analysis], Nov 2025, **historical** (this is Bowley critiquing DX, not DX); [Cursor/Graphite](https://fortune.com/2025/12/19/cursor-ai-coding-startup-graphite-competition-heats-up/) — [general press], Dec 2025, **historical** | Engineering-specific flow constraint | Cross-domain generalizability |
 
 **Absorption bottleneck is the unifying concept.** It names the specific throughput constraint that creates comprehension debt, drives the productivity paradox, triggers alarm fatigue, makes slop harmful, causes institutional cognitive overload, and manifests as review bottleneck in engineering.
 
@@ -88,7 +119,7 @@ Applied to AI: filtering out the 95% that's fine is more important than catching
 
 LLM-as-a-Judge achieves 80-85% agreement with human judgment at 500x-5000x cost reduction. Human-to-human agreement is only 81% — LLM judges approach parity. Multi-agent debate evaluation emerging as strongest pattern.
 
-Source: [arXiv](https://arxiv.org/html/2508.02994v1) — [academic/research]; [LabelYourData](https://labelyourdata.com/articles/llm-as-a-judge) — [practitioner analysis]
+Source: [arXiv](https://arxiv.org/html/2508.02994v1) — [academic/research]; [LabelYourData](https://labelyourdata.com/articles/llm-as-a-judge) — **[vendor blog] — Level 0** (written by the company's CEO, closing with a pitch for its own annotation services; do not carry it as support for the 80–85% agreement figure)
 
 **Market signal:** Cursor acquired Graphite ($52M) for code review. Anthropic launched multi-agent Code Review (March 2026) — dispatches a team of agents per PR that find bugs in parallel, verify to filter false positives, rank by severity. The money is moving toward agent-evaluates-agent as infrastructure.
 
@@ -120,7 +151,7 @@ Source: [AI UX Design Guide](https://www.aiuxdesign.guide/patterns/progressive-d
 
 1. **The term "absorption bottleneck" in prior literature.** Nobody uses this phrase. Genuinely novel framing that unifies six existing concepts.
 2. ~~**Non-engineering domains experiencing absorption explicitly.**~~ **RESOLVED (cycle 81):** Six non-engineering domains now show independent evidence — academic peer review (L3), healthcare (L3), marketing (L3), legal (L2), customer service (L2), compliance (L2). Finance is the only domain where the bottleneck hasn't manifested yet (still upstream at data ingestion). **Upgraded to L4 cross-domain meta-pattern.**
-3. **Counter-evidence — anyone who scaled AI review without hitting absorption.** Only Karpathy's scalar-metric constraint. The DX data (135K developers) shows NO companies where higher AI adoption correlated with better organizational outcomes. Remarkable absence of counter-evidence.
+3. **Counter-evidence — anyone who scaled AI review without hitting absorption.** **One real counter-example now exists — PostHog's StampHog agent reviewer, self-approving roughly 1 in 3 merged PRs (see the audit note at the top).** It is single-company and self-reported, so it does not settle anything, but the previous wording here ("remarkable absence of counter-evidence") is no longer true and absence was never corroboration in the first place. Karpathy's scalar-metric constraint remains the other partial case. The DX figure that used to close this line is vendor telemetry (Level 0) and cannot carry a "NO companies" universal.
 4. **A formal mathematical model** of the generation-absorption gap as a function.
 
 ## Five Solution Strategies (Cycle 82)

@@ -60,15 +60,17 @@ Cycle 1 found an early convergence signal (N=3–6 practitioners per move — L2
 
 **Source:** https://github.com/mattpocock/skills [practitioner direct] (~54k stars; initial commit 2026-02-03; active).
 
-### Sourcegraph Amp — `/handoff`
+### Sourcegraph Amp — `/handoff` (RETIRED 2026-05-06 — kept as historical record only)
 
 **File location:** Built into Amp; not file-based like Klaassen's plugin.
 
-**What it does:** analyzes current thread → generates a goal-specific prompt for a new thread → identifies relevant files → presents an *editable draft* in the new thread → user reviews before sending.
+**What it did (2025-10-23 through early 2026):** analyzed current thread → generated a goal-specific prompt for a new thread → identified relevant files → presented an *editable draft* in the new thread → user reviewed before sending.
 
-**How outputs chain:** explicitly *not* via summary stacking. The Amp post is pointed about this: compaction is lossy ("each summary replaced prior context, stacking summaries atop summaries"); handoff produces a single fresh prompt the user edits, so the next thread starts clean.
+**How outputs chained:** explicitly *not* via summary stacking. The Amp post was pointed about this: compaction is lossy ("each summary replaced prior context, stacking summaries atop summaries"); handoff produced a single fresh prompt the user edits, so the next thread started clean.
 
-**Source:** https://ampcode.com/news/handoff [practitioner direct, vendor venue] Sourcegraph (2025-10-23 — slightly outside the 6-month window but still the canonical statement of the move; sister doc https://ampcode.com/notes/feedback-loopable Metcalf 2026-02-05 is in window).
+**Correction (2026-08-01) — Amp reversed this position.** On 2026-05-06, https://ampcode.com/news/neo [practitioner direct, vendor venue] announced: *"So handoff is out. Compaction is in"* and *"Handoff is gone. As described above, compaction made it obsolete."* Amp now auto-compacts when the context window is 90% full ("No More Manual Context Management… You don't have to watch context percentages anymore, or decide when to handoff"). Per https://ampcode.com/news/read-bigger-threads [practitioner direct, vendor venue] (2026-07-02), Amp's longest thread has since been compacted 68+ times ("without compaction, it would be over 21 million tokens long"). Amp does retain one strand of the old critique — "Use compactions for orientation, but inspect original messages when exact requirements, wording, code, commands, chronology, edits, or verification matter" — but the wholesale anti-compaction, handoff-replaces-compaction position described below no longer holds. **https://ampcode.com/guides/context-management is marked Archived and still describes Handoff as the live mechanism, never mentioning compaction — do not cite it for current Amp behaviour.**
+
+**Source:** https://ampcode.com/news/handoff [practitioner direct, vendor venue] Sourcegraph (2025-10-23 — describes a mechanism Amp itself retired 2026-05-06; keep only as a dated historical record, not as the canonical current move). Sister doc https://ampcode.com/notes/feedback-loopable Metcalf 2026-02-05 is unrelated to the compaction/handoff question and remains current.
 
 ## Orchestrator pattern — what gets passed, what returns
 

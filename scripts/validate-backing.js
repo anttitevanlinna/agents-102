@@ -142,6 +142,23 @@ function fields(body) {
  */
 const CULTURAL_VOCAB = 'cultural-vocab';
 
+/*
+ * An arrow tail is source ids FIRST, optionally followed by a scoping note:
+ *   ← klaassen-definitive-guide. Not named in this body; M5 owns the naming.
+ * Splitting the whole tail on commas turned that note into phantom refs — a
+ * false SOURCE-UNDEFINED on Claims, and on Frameworks the worse failure: the
+ * real citation never registered and the source came back SOURCE-ORPHAN, a
+ * warning firing on correct input. Ids are kebab-case and carry no sentence
+ * break, so the id list ends at the first `. ` / ` — ` / `; `.
+ */
+const REF_PROSE_BREAK = /\.\s|\s[—–]\s|;\s/;
+function refTokens(backing) {
+  return backing.split(REF_PROSE_BREAK)[0]
+    .split(',')
+    .map(s => s.trim().replace(/[`.]/g, ''))
+    .filter(Boolean);
+}
+
 function parseClaim(line) {
   // - `id` · layer · "anchor" ← a, b   |   ← [SOURCE NEEDED]   |   ← none-owed
   const m = line.match(/^\s*-\s*`([^`]+)`\s*·\s*(\w+)\s*·\s*(.+?)\s*←\s*(.+?)\s*$/);
@@ -149,8 +166,7 @@ function parseClaim(line) {
   const [, id, layer, anchor, backing] = m;
   const needed = /\[SOURCE NEEDED\]/i.test(backing);
   const none = /none-owed/i.test(backing);
-  const all = (none || needed) ? []
-    : backing.split(',').map(s => s.trim().replace(/`/g, '')).filter(Boolean);
+  const all = (none || needed) ? [] : refTokens(backing);
   const culturalVocab = all.includes(CULTURAL_VOCAB);
   const refs = all.filter(r => r !== CULTURAL_VOCAB);
   return { id, layer, anchor, refs, needed, none, culturalVocab };
@@ -257,7 +273,7 @@ function auditText(text, { laws, now, stanceWindow, file = '<text>' } = {}) {
     }
     const arrow = l.split('←')[1];
     if (!arrow) continue;
-    for (const r of arrow.split(',').map(s => s.trim().replace(/[`.]/g, '')).filter(Boolean)) {
+    for (const r of refTokens(arrow)) {
       if (r === 'cultural-vocab' || r === 'none') continue;
       if (defined.has(r)) cited.add(r);
     }

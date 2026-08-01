@@ -43,6 +43,47 @@ test('source cited only by Frameworks is not an orphan', () => {
     `expected no orphan, got: ${JSON.stringify(findings)}`);
 });
 
+/*
+ * The arrow tail carries source ids FIRST and may carry prose after them —
+ * `← ronacher-agentic-coding. Present only as deliberate absence; M5 owns the
+ * naming.` is the authored shape wherever a borrow needs a scoping note. The
+ * first cut split the whole tail on commas, so the entire sentence became one
+ * "ref", it matched no defined id, the citation never registered, and the
+ * source was reported SOURCE-ORPHAN. A warning that fires on correct input is
+ * worse than no warning: it teaches the maintainer to skim past the class.
+ * Caught authoring test-and-learn.md (2026-08-01); the corpus had dodged it
+ * only because every framework line with a trailing note happened to cite
+ * `cultural-vocab`, which is never a defined source and so never orphaned.
+ */
+test('source cited by a Frameworks line with a trailing note is not an orphan', () => {
+  const { findings } = audit(block(
+    '**Claims**\n' +
+    '- `a-claim` · vision · "some framing" ← none-owed\n\n' +
+    '**Sources**\n' +
+    `- ronacher ${STAMP} https://example.com — [practitioner direct] the three-pattern. fallback: none.\n\n` +
+    '**Frameworks**\n' +
+    "- Ronacher's three-pattern · [borrow:practitioner-coined] · law:none · ← ronacher. " +
+    'Present only as deliberate absence — "no plan.md, no verifier, no reference artifact." ' +
+    'Not named in this body; M5 owns the naming.\n'
+  ));
+  assert.equal(codes(findings).includes('SOURCE-ORPHAN'), false,
+    `expected no orphan, got: ${JSON.stringify(findings)}`);
+});
+
+test('claim refs stop at the prose boundary, not at the first comma in the prose', () => {
+  const { findings } = audit(block(
+    '**Claims**\n' +
+    '- `a-claim` · detail · "a sourced thing" ← alpha, beta. Scoped note, with a comma.\n\n' +
+    '**Sources**\n' +
+    `- alpha ${STAMP} https://a.example.com — [practitioner direct] one. fallback: none.\n` +
+    `- beta ${STAMP} https://b.example.com — [practitioner direct] two. fallback: none.\n`
+  ));
+  assert.deepEqual(codes(findings).filter(c => c === 'SOURCE-UNDEFINED'), [],
+    `trailing prose must not mint phantom refs, got: ${JSON.stringify(findings)}`);
+  assert.equal(codes(findings).includes('SOURCE-ORPHAN'), false,
+    `both ids are cited, got: ${JSON.stringify(findings)}`);
+});
+
 test('source cited by nothing IS an orphan', () => {
   const { findings } = audit(block(
     '**Claims**\n' +

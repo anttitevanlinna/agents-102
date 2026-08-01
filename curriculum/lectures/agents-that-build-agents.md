@@ -87,7 +87,7 @@ Claims
 
 Sources
 - huntley-ralph `[checked:2026-05-25 result:OK due:none]` https://ghuntley.com/ralph/ — [practitioner direct] Huntley 2025-07-14: the bash loop and the Simpsons origin, both verbatim. **Durable account, `due:none`** (`source-freshness-format.md` § Durable-account variant) — an origin story published once does not expire, and the body already flags it as origin rather than current practice. The previous `due:2026-11-25` treated a historical origin claim as a currency claim; per `check_research_claims.md §2b` the date belongs on claims about the field's present, not on what a person wrote in 2025. fallback: none needed — origin/historical is exactly what the body claims.
-- cc-goal-capability `[checked:never result:NEEDED due:asap]` https://code.claude.com/docs/en/ — [capability] `/goal [condition|clear]`, verified in a scratch sweep against Claude Code 2.1.142 but **never stamped in-artifact** — the file's own maintainer block has carried this as an open item since that sweep. A body sentence naming a shipped slash command and its semantics is a platform claim under `check_platform_and_boundaries.md`, and scratch-sweep evidence that never lands in the file is evidence the next reader cannot see. fallback: drop the command name and keep the shape — the runtime caught up with the shell hack — which is the sentence's actual argument.
+- cc-goal-capability `[checked:2026-08-01 result:ATTESTED due:cohort]` https://code.claude.com/docs/en/ — [capability, maintainer-attested] `/goal [condition|clear]`, verified in a scratch sweep against Claude Code 2.1.142. **The sweep is the check and the maintainer accepted it on 2026-08-01 without a re-test**, which is what `ATTESTED` records: not that nobody looked, but that the person accountable looked and signed for it. The open-item TODO that had carried this is retired. fallback: drop the command name and keep the shape (the runtime caught up with the shell hack), which is the sentence's actual argument.
 
 Frameworks
 - Ralph loop · [borrow:none] · law:none · ← huntley-ralph — practitioner-coined, credited in body by name
@@ -106,12 +106,11 @@ OODA
 
 Flagged
 - `[found:2026-08-01]` **Resolved 2026-08-01.** The bullet claimed Ralph re-feed *"entered the practitioner vocabulary as one of the named verifier shapes"* — field-wide adoption nobody counted, plus a settled taxonomy that is actually Kim's synthesis of Cherny's habits. Now: the name stuck (persistence, not a census) and it is one of three shapes on the menu **this training** gave them at M5. Huntley's coinage is verified and unaffected. Do not restore the adoption verb.
-- `[found:2026-08-01]` `/goal` has been an unstamped platform claim since the scratch sweep that verified it; now stamped `result:NEEDED due:asap` so it is visible to `source-freshness.sh` instead of living only in a maintainer to-do → re-test before a cohort.
+- `[found:2026-08-01]` **Resolved 2026-08-01.** `/goal` had been an unstamped platform claim living only in a maintainer to-do. Maintainer accepted the existing scratch-sweep verification without a re-test; now stamped `ATTESTED due:cohort` so `source-freshness.sh` can see it. The point of the migration was never the re-test, it was that the debt had been invisible to every tool.
 
 <!-- /backing -->
 
 **Prompt block:** `agents-that-build-agents-handoff` — the agent reads the recurring-work shapes and the ranked primitives menu from the session and writes the student a standalone, cold-runnable prompt that builds workflow skills across their whole stack (study then diagram then author). Re-anchored 2026-08-01 (authoring-sequence cut): requires `-shapes` + `-primitives`, not a shipped skill.
 
 **Open for next pass:**
-- [technical, non-blocking] Stamp the verified `/goal` capability (Claude Code 2.1.142, `/goal [condition|clear]`) into this lecture's own Source-verification block — currently evidenced only in a scratch sweep, not in-artifact.
 - Real-cohort gold standard: the handoff-generator live-test that cleared pedagogy was sim-grade — constructed M6 context (six named shapes, a stand-in skill), and it predates the 2026-08-01 re-anchor (shapes + primitives, no shipped skill). A live-test on an actual student's M6 close (their real shapes, their ranked menu) is the real-cohort bar; owed until a cohort runs.

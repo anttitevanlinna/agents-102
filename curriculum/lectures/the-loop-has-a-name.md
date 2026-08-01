@@ -76,7 +76,7 @@ Claims
 
 Sources
 - curran-2x `[checked:2026-05-25 result:CAVEAT due:2026-11-25]` https://ideas.fin.ai/p/2x-nine-months-later — [practitioner direct, vendor venue] Curran 2026-04-16: 19.2% / 14.6 vs 75.8 min / 86% ≤20 lines, ~473 R&D in 1,305. Metrics are Intercom's own telemetry, and the body carries that scoping ("the numbers are Intercom's own"). "Runs engineering" phrasing avoids the title nit — his title is VP Engineering. fallback: keep the numbers, attribute Intercom's published telemetry, flag self-report.
-- cc-scheduling-primitives `[checked:never result:NEEDED due:asap]` https://code.claude.com/docs/en/ — [capability] **Never stamped.** The body names three scheduling primitives and distinguishes local Routines from `/schedule`'s cloud-backed remote Routines — a three-way capability claim carrying no verification of any kind, in a lecture that has shipped. Scheduling surfaces are among the faster-moving parts of the product. fallback: none available until checked; if a re-test cannot confirm the three-way split, teach the pattern (a kit skill is what the scheduled agent invokes) and name only the primitives that verify.
+- cc-scheduling-primitives `[checked:2026-08-01 result:ATTESTED due:cohort]` https://code.claude.com/docs/en/ — [capability, maintainer-attested] The body names three scheduling primitives and distinguishes local Routines from `/schedule`'s cloud-backed remote Routines. **The underlying check exists and is recorded in `story-of-module-6.md`**, which describes the capability sweep that established exactly this split (`/schedule` is Routines, remote, cloud-based; Desktop local tasks are a separate primitive). Maintainer accepted it on 2026-08-01 without a re-test. The defect this stamp fixes is not a missing check, it is that the check lived in a different file and nothing joined them. fallback: teach the pattern (a kit skill is what the scheduled agent invokes) and name only the primitives a re-test confirms.
 
 Frameworks
 - eval = judge / verifier / gate · [borrow:none] · law:eval-judge-verifier-gate · ← none — the three-way split is banked as a law and taught as a definition; the words are in real use, the taxonomy is ours
@@ -95,7 +95,7 @@ OODA
 
 Flagged
 - `[found:2026-08-01]` **Resolved 2026-08-01 by cutting two words.** The bullet said *"Practitioners say judge …"*, attributing a three-way taxonomy to a field nobody had counted. The names are in real use; the split by check-type is ours. Body now states it as a definition, and the claim is `vision`. Do not restore the survey verb. The standing usage question lives in OODA below — it is worth answering, but the body no longer depends on the answer.
-- `[found:2026-08-01]` The three-scheduling-primitives bullet has never carried a stamp of any kind → re-test against the current product before the next cohort, or narrow the claim to what a live check confirms.
+- `[found:2026-08-01]` **Resolved 2026-08-01.** The bullet had never carried a stamp; the capability check that backs it turned out to be recorded in `story-of-module-6.md`, one module over. Maintainer accepted it without a re-test. **The finding worth keeping is the shape:** a real check existed, in the corpus, and was invisible from the file that depended on it.
 - `[found:2026-08-01]` The geoffintech / Ramp stamp was retired with this migration: its body claim was cut in the slides-only pass, so it backed nothing. Provenance lives in git → no action unless the Ramp claim returns.
 
 <!-- /backing -->

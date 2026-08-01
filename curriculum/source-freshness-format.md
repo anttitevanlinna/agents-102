@@ -78,6 +78,33 @@ The curriculum maintainer is a named practitioner — Agentics Helsinki member, 
 
 Attestation is an honesty contract, not a loophole: `attested:` names a real person who really saw it and can be asked. It is for the maintainer's own observations, not for laundering an unsourced claim into trustworthiness.
 
+## Durable-account variant (`due:none` for a completed event someone reported first-hand)
+
+The variant above says the load-bearing thing and then scopes it too narrowly: *a dated eyewitness fact does not expire the way a vendor metric does; it happened.* That is true of **any** named practitioner's first-hand account of a completed event, not only the maintainer's. A run that took ten hours took ten hours. A port that shipped, shipped. The event is fixed by having occurred, and re-reading the post in six months will not change it.
+
+So the 6-month window is **not** a property of a source's age. It is a property of **what the source is being asked to prove**:
+
+| what you are citing it for | expires? |
+|---|---|
+| *This specific thing happened, this way, to this named person* | **No** — `due:none`. It happened. |
+| *This is what the field currently does / believes / achieves* | **Yes** — 6 months, no exceptions. |
+
+Both readings can come off the same post, which is why the discipline lives in the **body sentence**, not the stamp. Ronacher's MiniJinja port is the worked example: *"Ronacher ported MiniJinja in about ten hours of agent time, reusing the Rust snapshot tests as the reference to diff against"* is durable and citable indefinitely, dated in body. *"Engineers run ten-hour ports"* is a currency claim about present practice and needs in-window backing whatever post it leans on.
+
+```
+- `[checked:2026-08-01 result:OK due:none]` https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/ — [practitioner direct] Ronacher, 14 Jan 2026. Durable account: ~10h agent time (3h supervised), 2.2M tokens, lexer→parser→runtime, Rust snapshot tests reused as the diff reference. Cite dated, as an account. Do NOT cite as evidence of what is typical today.
+```
+
+**Three conditions, all required.** Miss one and the ordinary window applies:
+
+1. **First-hand.** The person did the thing and wrote it up. A journalist's write-up, a digest, or a vendor's summary of a customer is not a durable account — it is a report about one, and reports rot.
+2. **A specific completed event**, with enough detail to be checkable. Not a practice, a trend, a rate, or an opinion. *"I ran X and here is what happened"*, not *"teams are finding that…"*.
+3. **Cited as an account and dated in body.** The date is what stops a durable fact quietly becoming a currency claim. An undated ten-hour port reads as *this is what happens now*, which is the thing the window exists to prevent.
+
+**What this does not license.** Numbers about populations (adoption %, failure rates, throughput deltas), platform capability, pricing, benchmark scores, and who-currently-believes-what all keep the 6-month clock even when a named practitioner reports them first-hand — because those are claims about a moving world that happen to have been observed once. The test is not *"is it first-hand?"* but *"would re-checking it next year change the answer?"*
+
+**Why this is a tightening as much as a loosening.** Under the old rule a stale-but-durable account got quietly swapped or dropped at cohort time, and the swap was where accuracy went — a fresher post with a weaker fit replaced a perfect example for no reason but its date. It also generated busywork the maintainer correctly resented, which is how a rule stops being obeyed at all. The trade is: keep the good example forever, and pay for it by dating it in body every time.
+
 ## Auto-degrade
 
 Touch-based, like Quality. Editing a body claim a stamp backs degrades that stamp's `result` to `never`/re-check (the source pin may no longer match the prose). Editing prose elsewhere in the file does not. The honest move on a claim edit: re-open the source and re-stamp.

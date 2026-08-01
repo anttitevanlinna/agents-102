@@ -15,6 +15,9 @@ const { loadRegistry } = require('./compile-prompts.js');
 const ROOT = path.resolve(__dirname, '..');
 const CURRICULUM = path.join(ROOT, 'curriculum');
 const REGISTRY_DIR = path.join(CURRICULUM, 'prompts');
+// Eval reports quote markers verbatim as evidence (incl. retired ones); they
+// are records, not rendered curriculum — never count them as references.
+const EVALS_DIR = path.join(CURRICULUM, 'evals');
 
 // Both {{prompt:key}} and its cut-candidate sibling {{cut:key|reason}} count as
 // a reference to `key` — a cut candidate is still "used", so it must not trip the
@@ -28,8 +31,8 @@ function walkMarkdown(dir, files) {
     const abs = path.join(dir, entry.name);
     if (entry.isDirectory()) {
       // Skip the registry dir itself when walking — its files don't reference
-      // prompts, they ARE prompts.
-      if (abs === REGISTRY_DIR) continue;
+      // prompts, they ARE prompts. Skip eval records — they quote markers.
+      if (abs === REGISTRY_DIR || abs === EVALS_DIR) continue;
       walkMarkdown(abs, files);
     } else if (entry.isFile() && entry.name.endsWith('.md')) {
       files.push(abs);
@@ -38,10 +41,19 @@ function walkMarkdown(dir, files) {
   return files;
 }
 
+// A {{prompt:key}} marker inside an inline code span or fenced code block is a
+// mention (maintainer narrative, eval reports), not an include — the renderer
+// only expands bare markers. Strip code regions before scanning.
+function stripCodeMentions(text) {
+  return text
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/`[^`\n]*`/g, '');
+}
+
 function findReferences(files) {
   const refs = new Map();    // key -> [referencingFiles]
   for (const f of files) {
-    const text = fs.readFileSync(f, 'utf8');
+    const text = stripCodeMentions(fs.readFileSync(f, 'utf8'));
     let m;
     REFERENCE_RE.lastIndex = 0;
     while ((m = REFERENCE_RE.exec(text)) !== null) {
@@ -100,4 +112,6 @@ function main() {
   console.log('\nPASS');
 }
 
-main();
+if (require.main === module) main();
+
+module.exports = { stripCodeMentions, findReferences, walkMarkdown, REFERENCE_RE };

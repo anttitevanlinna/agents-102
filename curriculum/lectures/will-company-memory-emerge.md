@@ -74,7 +74,7 @@ Format → `curriculum/backing-format.md`. This is the file's only source ledger
 - horthy-ignored-claude-md `[checked:2026-08-01 result:CAVEAT due:2026-09-17]` https://humanlayer.dev/blog/stop-claude-from-ignoring-your-claude-md — [practitioner direct, vendor venue] Horthy, 17 Mar 2026: *"The longer your file gets, the more Claude seems to treat individual sections as optional."* The nearest thing to a named account of the lecture's predicted failure — a rules file rotting into something the agent skims. CAVEAT on scope: **repo-scoped, one level below the company layer this lecture is about.** humanlayer.dev is his own company's venue, so the practice is evidence and any product framing is not.
 
 **Frameworks**
-- Personal / team / company layering · [borrow:none — house framing] · law:none · ← none-owed. Ours. Do not attribute; no external source coined this split for agent memory.
+- Personal / team / company layering · [borrow:none] · law:none · ← none — house framing, ours. Do not attribute; no external source coined this split for agent memory.
 
 **Stance** `[stance:2026-08-01 level:L2]`
 - holds: **a file exists; a home does not.** The platform ships an org-wide tier that auto-loads and cannot be excluded — that is documented and settled, `[vendor documentation]`, authoritative for capability and worth nothing for significance. Separately, teams committing rules to their repo is real practice at L3 across five named companies. Both facts are about mechanisms, and neither touches the lecture's question.

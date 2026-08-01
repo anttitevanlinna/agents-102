@@ -82,10 +82,37 @@ Ask Claude to fork a sibling worktree and copy your personal rules across. The p
 **`observations/` deliberately not copied (2026-05-27).** M3 most often runs before M4, where `observations/` is first authored. At M3 the folder usually doesn't exist and the student has never met it, so naming it in the fork prompt is more harm (an unintroduced concept copied blind) than good (a defensive copy for a rare M4-before-M3 reorder). Earlier versions copied it under an `(if exists)` guard; removed from prompt body + frontmatter. If a cohort does run M4 first, the side-quest forks without prior observations, which is fine.
 - `ae101-m3-quality-side-orient` — side-lane orientation that confirms worktree directory, branch, loaded rules, codebase visibility — then waits.
 
-**Frameworks riffed on:**
-- Worktree-as-side-quest framing inherited from Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0) [practitioner direct] (parallel worktrees as productivity unlock).
-- Side-quest convergence-via-user-scope-skill pattern follows Claude Code's skill loading model (skills at `~/.claude/skills/<name>/` auto-discovered every session regardless of working directory).
+<!-- backing -->
 
+Claims
+- `worktree-is-a-second-working-directory` · detail · "A sibling worktree is a second working directory on the same git history." ← git-worktree-docs
+- `worktree-branches-off-local-head` · detail · "It branches off your current local HEAD. Clean main is the safe default." ← git-worktree-docs
+- `local-files-do-not-sync` · detail · "Personal files like `CLAUDE.local.md` don't sync between worktrees. They get copied across once at fork time, then evolve independently." ← git-worktree-docs
+- `user-scope-skills-cross-lanes` · detail · "It installs to user scope, so it crosses back to the main lane on its own, and you never carry it by hand." ← cc-skills-user-scope
+- `security-is-the-main-quest` · vision · "Security is the main quest. Start it in your repo." ← none-owed
+- `two-sessions-one-history` · vision · "two Claude Code sessions running side by side on one git history" ← none-owed
+- `side-lane-waits` · vision · "a quality side lane in a sibling worktree that waits until you author the test-strategy skill there" ← none-owed
+
+Sources
+- git-worktree-docs `[checked:2026-05-15 result:OK due:none]` https://git-scm.com/docs/git-worktree — [tool docs] `git worktree add` creates a second working directory sharing one `.git`, branching from the current HEAD unless told otherwise. Untracked and gitignored files (which is what `CLAUDE.local.md` is) are not shared between worktrees — they exist per working directory, which is why the body says they are copied at fork time and diverge after. **`due:none`:** worktree semantics are two decades stable, and applying a six-month window to them would flag core Git as STALE — the artifact-of-the-rule case the foundational variant exists for. fallback: none needed.
+- cherny-mastering-cc `[checked:2026-05-25 result:CAVEAT due:none]` https://www.youtube.com/watch?v=6eBSHbLKuN0 — [practitioner direct] Boris Cherny, *Mastering Claude Code in 30 minutes*: parallel worktrees presented as a productivity unlock. **Backs the framing, not a claim** — no sentence in this body cites him, and the side-quest vocabulary is ours. A recorded talk does not expire, hence `due:none`; what would date it is the practice moving on, not the video changing. fallback: drop the name; the worktree mechanics stand on the Git docs alone.
+- cc-skills-user-scope `[checked:2026-05-15 result:OK due:cohort]` https://code.claude.com/docs/en/skills — [capability] Skills installed at user scope (`~/.claude/skills/<name>/`) are discovered every session regardless of working directory, which is the mechanism that carries the test-strategy skill from the side lane back to the main one without the student moving a file. **This is the load-bearing platform claim of the exercise** — the whole two-window shape depends on it, so it is the one to re-test rather than the worktree mechanics. fallback: have the student invoke the skill from the lane that authored it, and drop the crossing-back beat.
+
+Frameworks
+- Worktree as side quest · [borrow:none] · law:none · ← cherny-mastering-cc — framing inherited from Boris Cherny's parallel-worktrees-as-unlock talk; the game vocabulary is ours
+- Blast radius · [borrow:safety engineering] · law:blast-radius-error-budget · ← cultural-vocab — two lanes on one history is isolation bought cheaply, which is the same instinct as fencing the reef
+
+Stance `[stance:2026-08-01 level:L2]`
+- holds: that parallel worktrees are a real practitioner unlock rather than a curriculum convenience, and that user-scope skills cross working directories. Both are mechanical facts about shipped tools rather than contested practice, which is why this file's stance is short and its risk is entirely capability drift.
+- contested: nothing. **The honest note is that this exercise is five minutes of setup for a module beat, and its evidence burden is correspondingly small** — recording that plainly is better than inflating a plumbing step into a claim about the field.
+- would-move-it: user-scope skill discovery changing, which would break the crossing-back beat and with it the two-lane design. Worktree semantics changing would be surprising enough to be news.
+
+OODA
+- question: do user-scope skills still auto-discover across working directories?
+- roster: the Claude Code skills docs and changelog, Boris Cherny
+- last-run: 2026-08-01
+
+<!-- /backing -->
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
 - opens a sibling worktree from a chosen branch when two unrelated changes need to run concurrently
 - runs two Claude Code sessions side by side on the same git history, one window per worktree

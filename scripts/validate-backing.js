@@ -303,7 +303,11 @@ function auditText(text, { laws, now, stanceWindow, file = '<text>' } = {}) {
     if (!arrow) continue;
     for (const r of refTokens(arrow)) {
       if (r === 'cultural-vocab' || r === 'none') continue;
+      // An unresolved framework ref used to be dropped in silence, which made a
+      // dangling attribution look like a recorded one. Same failure as a field
+      // header the parser cannot read: nothing consumed, nothing reported.
       if (defined.has(r)) cited.add(r);
+      else add('ERROR', 'SOURCE-UNDEFINED', ln(i), `framework cites undefined source "${r}"`);
     }
   }
 

@@ -6,7 +6,7 @@ Look at what you have shipped.
 
 - The thing you built at M5 reads an agent's work and decides whether it meets a bar. The checks you just ranked against your dominant gap are the same family: some deterministic, some an LLM reading the work, some firing before the run even starts. Different shapes, same move.
 - The name for all of it is **eval**. Your verifier is an eval. Your judge is an eval. Your gate is an eval.
-- Three names, one thing. Practitioners say *judge* when the check is itself an LLM reading the work. *Verifier* when the check is deterministic: tests, lint, compile, a shell hook that returns true or false. *Gate* when the same check is placed in CI and a pull request can't merge without it.
+- Three names, one thing. *Judge* when the check is itself an LLM reading the work. *Verifier* when the check is deterministic: tests, lint, compile, a shell hook that returns true or false. *Gate* when the same check is placed in CI and a pull request can't merge without it.
 - An eval is the automated check that says *this agent-produced thing meets our bar*. That's it. In practice it's the verifier you built at M5 and every check on the menu you just ranked. You have been doing evals since M5, and on the map they are the checking loop the M2 drawing left dashed, now drawn solid.
 
 ## One primitive, placed wherever there's a bar
@@ -56,7 +56,7 @@ The loop feeds itself. That is the flywheel, and it starts with what you encoded
 Claims
 - `checks-are-one-family` · vision · "Different shapes, same move." ← none-owed
 - `the-name-is-eval` · vision · "The name for all of it is **eval**." ← none-owed
-- `judge-verifier-gate-are-practitioner-words` · detail · "Practitioners say *judge* when the check is itself an LLM reading the work." ← [SOURCE NEEDED]
+- `judge-verifier-gate-three-names` · vision · "Three names, one thing. *Judge* when the check is itself an LLM reading the work." ← none-owed
 - `eval-definition` · vision · "An eval is the automated check that says *this agent-produced thing meets our bar*." ← none-owed
 - `map-placement-checking-loop` · vision · "the checking loop the M2 drawing left dashed, now drawn solid" ← none-owed
 - `fires-on-any-quality-bar` · vision · "The shape fires on any workflow with a quality bar, not only agent runs." ← none-owed
@@ -79,7 +79,7 @@ Sources
 - cc-scheduling-primitives `[checked:never result:NEEDED due:asap]` https://code.claude.com/docs/en/ — [capability] **Never stamped.** The body names three scheduling primitives and distinguishes local Routines from `/schedule`'s cloud-backed remote Routines — a three-way capability claim carrying no verification of any kind, in a lecture that has shipped. Scheduling surfaces are among the faster-moving parts of the product. fallback: none available until checked; if a re-test cannot confirm the three-way split, teach the pattern (a kit skill is what the scheduled agent invokes) and name only the primitives that verify.
 
 Frameworks
-- eval = judge / verifier / gate · [borrow:none] · law:eval-judge-verifier-gate · ← [SOURCE NEEDED] — the three-name split is banked as a law and taught as practitioner vocabulary; neither is evidence that practitioners use these three words this way
+- eval = judge / verifier / gate · [borrow:none] · law:eval-judge-verifier-gate · ← none — the three-way split is banked as a law and taught as a definition; the words are in real use, the taxonomy is ours
 - The value cycle · [borrow:none] · law:the-value-cycle · ← none — the eval's map slot is Verification, the loop M2 left dashed
 - Absorption bottleneck · [borrow:none] · law:absorption-bottleneck · ← curran-2x — auto-approval is an org buying back its own evaluation rate
 
@@ -94,7 +94,7 @@ OODA
 - last-run: never
 
 Flagged
-- `[found:2026-08-01]` *"Practitioners say judge … Verifier … Gate"* is an unbacked usage claim, and it is the naming beat the whole lecture turns on → decide whether to verify the split, or re-cut it the way M5's closer was re-cut ("these are the names we use for them"). This is the exact shape that failed on the three-pattern: a convergence verb attached to vocabulary nobody counted.
+- `[found:2026-08-01]` **Resolved 2026-08-01 by cutting two words.** The bullet said *"Practitioners say judge …"*, attributing a three-way taxonomy to a field nobody had counted. The names are in real use; the split by check-type is ours. Body now states it as a definition, and the claim is `vision`. Do not restore the survey verb. The standing usage question lives in OODA below — it is worth answering, but the body no longer depends on the answer.
 - `[found:2026-08-01]` The three-scheduling-primitives bullet has never carried a stamp of any kind → re-test against the current product before the next cohort, or narrow the claim to what a live check confirms.
 - `[found:2026-08-01]` The geoffintech / Ramp stamp was retired with this migration: its body claim was cut in the slides-only pass, so it backed nothing. Provenance lives in git → no action unless the Ramp claim returns.
 

@@ -258,3 +258,35 @@ test('prose inside a field is never mistaken for a header', () => {
   assert.equal(codes(findings).includes('FIELD-UNPARSED'), false);
   assert.equal(codes(findings).includes('CLAIM-MALFORMED'), false);
 });
+
+/*
+ * A Frameworks line can cite a source id too, and an id that resolves to
+ * nothing must be as loud there as it is on a Claims line. The first cut only
+ * checked Claims: a framework citing a typo'd or never-defined id silently
+ * contributed nothing, so the attribution looked recorded and wasn't. Found by
+ * authoring `open-the-side-quest`'s block with a `cherny-mastering-cc` ref that
+ * had no Sources entry — the file validated clean with an attribution pointing
+ * at empty space. Same disease as the bare-header bug: a check that reads
+ * nothing reports the same as a check that passes.
+ */
+test('Frameworks citing an undefined source → SOURCE-UNDEFINED', () => {
+  const { findings } = audit(block(
+    '**Claims**\n- `a` · vision · "framing" ← none-owed\n\n' +
+    '**Frameworks**\n- CE · [borrow:x] · law:none · ← ghost-source\n'
+  ));
+  const f = findings.find(x => x.code === 'SOURCE-UNDEFINED');
+  assert.ok(f && f.sev === 'ERROR', 'an undefined framework ref must error');
+});
+
+test('Frameworks sentinels and defined ids stay silent', () => {
+  const { findings } = audit(block(
+    '**Claims**\n- `a` · vision · "framing" ← none-owed\n\n' +
+    `**Sources**\n- real ${STAMP} https://example.com — [practitioner direct] x. fallback: none.\n\n` +
+    '**Frameworks**\n' +
+    '- A · [borrow:x] · law:none · ← cultural-vocab\n' +
+    '- B · [borrow:x] · law:none · ← none — house framing\n' +
+    '- C · [borrow:x] · law:none · ← real\n'
+  ));
+  assert.equal(codes(findings).includes('SOURCE-UNDEFINED'), false);
+  assert.equal(codes(findings).includes('SOURCE-ORPHAN'), false);
+});

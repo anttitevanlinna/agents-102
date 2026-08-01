@@ -104,10 +104,38 @@ The exercise ends here. The module's send-off takes over:
 
 **Time budget total:** 60 min exercise body. Module Debrief + send-off adds 15–20 min.
 
-**Frameworks riffed on:**
-- **Gap analysis** (Phase 2) — generic business-analysis framework; named in prose as *walk the system you have against the system the task needs*.
-- **Compound engineering** (module Debrief) — Kieran Klaassen. Review + Compound step as Debrief's self-rewrite pattern, now in its fourth rep for the student.
+<!-- backing -->
 
+Claims
+- `first-experiment-of-a-two-run-arc` · vision · "This is the first experiment of a two-run arc." ← none-owed
+- `unpackaged-send-off-teaches-what-packaging-adds` · vision · "The un-packaged send-off here is what teaches you what packaging adds, a lesson no lecture can land." ← none-owed
+- `every-send-off-is-a-test` · vision · "Every send-off is a test, not a production run" ← none-owed
+- `done-you-can-name-in-a-sentence` · vision · "a scoped task with a 'done' you can name in a sentence" ← none-owed
+- `pick-is-yours-fit-check-is-the-agents` · vision · "The pick is yours; the fit-check is the agent's." ← none-owed
+- `imagining-a-demo-means-too-big` · vision · "Imagining a finished demo means you scoped too big." ← none-owed
+- `audit-walks-the-system-so-you-dont` · vision · "The audit walks your whole system so you don't." ← none-owed
+- `push-if-the-ranked-list-comes-back-thin` · vision · "If the ranked list comes back thin, push Claude to keep digging rather than letting a shallow pass stand as done." ← none-owed
+- `gap-analysis-move` · borrowed · "walk the system you have against the system the task needs" ← cultural-vocab
+
+Sources
+(none. Every claim is the exercise's own design stance or a move the student runs against their own repo. The one borrowed frame is generic business-analysis vocabulary that owes attribution by name only.)
+
+Frameworks
+- Gap analysis · [borrow:business analysis] · law:none · ← cultural-vocab — named in prose as *walk the system you have against the system the task needs*, never as a branded method
+- Test and learn · [borrow:none] · law:variation-selection-retention · ← cultural-vocab — the un-packaged run is the variant this arc generates; the next module selects
+- Name the uncertainty before you move · [borrow:none] · law:name-the-uncertainty-before-you-move · ← none — the fit-check against long-run criteria is this governor fired before a send-off
+
+Stance `[stance:2026-08-01 level:L1]`
+- holds: that a deliberately un-packaged first run teaches more than a lecture about packaging would. **This is a pedagogy stance, not a field finding, and it should never acquire a citation** — the warrant is the contrast the student experiences a module later, and dressing it in practitioner evidence would misdescribe why we do it.
+- contested: nothing in the file. The design bet is real but it is ours to make and ours to test, and the module that follows is the test.
+- would-move-it: cohort evidence that the un-packaged run reads as a waste of an hour rather than as the setup for a contrast. That is delivery evidence from a room, not research — the first cohort has run, so this is answerable rather than hypothetical.
+
+OODA
+- question: did the un-packaged send-off land as a deliberate baseline or as a failed exercise, in the rooms that have run it?
+- roster: none external — cohort debrief notes and the module's own `- cohorts:` log.
+- last-run: 2026-08-01
+
+<!-- /backing -->
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
 - opens a worktree on a clean branch when a real task warrants the un-watched send-off shape
 - walks an audit prompt against a real backlog task before sending it off, fills the worst three gaps

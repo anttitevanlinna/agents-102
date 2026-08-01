@@ -134,18 +134,57 @@ Then just hit stop.
   - Execution artifacts (diff, PR) → student's real repo
   - Compound-step rules update → personal `CLAUDE.local.md` at repo root (gitignored); team-worthy rules flagged for separate PR against sponsor-stated team rules home (`CLAUDE.md` at root, `.claude/CLAUDE.md`, or `AGENTS.md` per pre-engagement contract). See `reference/claude-code-for-engineers.md § 1`.
   - No training-dir state.
-- **Frameworks riffed on:**
-  - **Plan mode** (Anthropic Claude Code). Activation via Shift+Tab; push-back via *keep planning with feedback* at the approval prompt. Reference: https://code.claude.com/docs/en/permission-modes.md `[capability]`, current as of 2026-07-26.
-  - **Walk-down-branches move** — Matt Pocock's grill-me skill ([mattpocock/skills](https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md) `[practitioner direct]`, MIT license, commit `62f43a1` pinned). Billed at source as "a relentless interview to sharpen a plan or design": walks down branches of a decision tree one at a time with recommended answers, and waits for confirmation before acting. **Not Socratic** — Socratic method surfaces contradictions, this one proposes. Do not reintroduce the word. Forked into `curriculum/skills/external/pocock-skills/grill-me/` with LICENSE and attribution preserved. **In M2 we inline the behaviour as a prompt and credit Pocock's original at the end of Phase 4 (after the timebox callout), where the unfiltered original is also offered as an optional deeper variant for next-time runs. The skill reveal — "here's how to author one yourself from a known-good pattern" — lands in M3 as authoring material.**
-  - **Compound engineering** — Kieran Klaassen (Every Inc.). Plan step at depth; continuation from M1's loop. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. Term and philosophy: `every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct, vendor venue]`. **The step names live on a different page** — `every.to/source-code/compound-engineering-how-every-codes-with-agents` — and the loop has since been expanded past four steps; do not attach a step count or ordinal to the Definitive Guide URL.
-  - **"What would have to be true" / strategic-choice assumption-testing** — Roger Martin, developed in *Playing to Win* (HBR Press) and restated in his own words at [rogermartin.medium.com/what-would-have-to-be-true](https://rogermartin.medium.com/what-would-have-to-be-true-83dac5bd2189) `[practitioner direct]`. The assumption-flag move in P3 is the Martin move applied to engineering plans. Most engineers know the shape from strategy readings; optional attribution at Debrief.
 - **Attribution at P5** is terse. Claude names the design pattern first; "plan-mode approval inflation" is the label the exercise hands them after they've already defeated it. Don't front-load.
 
-**Source verification — MUST DO before first cohort:**
-- `[checked:2026-07-26 result:CAVEAT due:cohort]` https://code.claude.com/docs/en/permission-modes.md — [capability] Shift+Tab cycles `default` → `acceptEdits` → `plan` (status bar shows the mode); the plan-mode approval prompt's "keep planning" option sends feedback and stays in plan mode; Ctrl+G opens the plan in `$EDITOR`. Live-verified 2026-07-26, mechanics hold. fallback: live docs label the option "No, keep planning" (no "with feedback" suffix) — if literal button-copy match is ever wanted, retitle body prose to "pick keep planning."
-- `[checked:2026-07-26 result:OK due:2027-01-26]` https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md — [practitioner direct] Pocock's grill-me skill, commit `62f43a1` pinned, file confirmed live at `skills/productivity/grill-me/SKILL.md`; MIT license confirmed via the local fork (`curriculum/skills/external/pocock-skills/grill-me/`), which carries the method inline and runs standalone. At `main` the skill is two files: this path holds a 4-line invoker (`Run a /grilling session.`), the method sits at `skills/productivity/grilling/SKILL.md`. The pin insulates this file from that. fallback: describe as "a branch-walking interview skill, forked with attribution" if the named-skill framing ever needs to soften.
-- `[checked:2026-07-30 result:OK due:2027-01-30]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen (GM of Cora, Every's own product) writing on Every's own site, published 2026-02-09; sole byline, first person throughout. Confirms the term and the philosophy: *"each unit of engineering work should make subsequent units easier—not harder."* **The four-step loop is NOT on this page** — the step names are on the how-Every-codes piece, and as of 2026-05-29 Klaassen has expanded the loop past four steps (`compound-engineering-gets-an-upgrade`). Cite this URL for the term, never for a step count. Every.to is Klaassen's employer's venue — treat any outcome metric from it as vendor-self-reported (none currently quoted in this file). fallback: attribute as "the loop that runs through his work", ordinal-free.
-- `[checked:2026-07-26 result:OK due:2027-01-26]` https://rogermartin.medium.com/what-would-have-to-be-true-83dac5bd2189 — [practitioner direct] Martin's own Medium essay "What Would Have to be True?" (2022-08-22), restating the WWHTBT framework he developed from 1994 and published in *Playing to Win*. Cited as an established strategy framework (historical lineage per §2), not current-trend evidence. fallback: drop the URL and cite the WWHTBT framework generally if single-source attribution needs to soften.
+<!-- backing -->
+
+Claims
+- `two-reads-paired` · vision · "two reads, paired. Making the plan good is the work." ← none-owed
+- `plan-is-the-exception-to-the-ranked-list` · vision · "Approval hands it to execution as the whole contract, and a summary of a contract is not a contract." ← none-owed
+- `read-the-file-not-the-summary` · vision · "the chat summary is secondary, the file is the artifact" ← none-owed
+- `plan-mode-mechanics` · detail · "Shift+Tab until the status bar shows plan" ← cc-permission-modes
+- `keep-planning-with-feedback` · detail · "At the approval prompt, pick **keep planning with feedback**." ← cc-permission-modes
+- `plan-mode-takes-minutes` · vision · "Plan mode takes minutes on real codebases. Eight to twelve isn't unusual." ← none-owed
+- `steps-that-stop-at-file-names-defer-design` · vision · "A step that stops at the file name defers the design to mid-run, where nobody is reading." ← none-owed
+- `tests-are-part-of-done` · vision · "the tests are part of what \"done\" means, not something you bolt on after" ← none-owed
+- `assumption-push-back-is-wwhtbt` · borrowed · "something the plan is carrying silently that it shouldn't" ← martin-wwhtbt
+- `re-softening-on-regeneration` · vision · "Claude will sometimes verbally accept a push-back and re-soften the step anyway (RLHF doing its job)." ← none-owed
+- `find-is-easier-than-judge` · vision · "**Find is easier than judge.**" ← none-owed
+- `walk-down-branches-three-at-a-time` · borrowed · "walk down every unresolved branch of the plan three questions at a time, recommending an answer for each" ← pocock-grill-me
+- `stop-when-the-read-starts-reaching` · vision · "Stop when the second read starts reaching" ← none-owed
+- `typical-five-to-twelve-questions` · vision · "Typical session: 5 to 12 questions." ← none-owed
+- `pocock-credit` · detail · "Credit: Matt Pocock for the original [`grill-me`](https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md) skill." ← pocock-grill-me
+- `neither-read-is-complete-paired-they-are` · vision · "Neither is complete. Paired, they usually are." ← none-owed
+- `plan-mode-approval-inflation` · vision · "**Plan-mode approval inflation** is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions." ← none-owed
+- `compound-step-writes-the-rule` · borrowed · "The Compound step then writes one into your personal `CLAUDE.local.md`" ← klaassen-definitive-guide
+
+Sources
+- cc-permission-modes `[checked:2026-07-26 result:CAVEAT due:cohort]` https://code.claude.com/docs/en/permission-modes.md — [capability] Shift+Tab cycles `default` → `acceptEdits` → `plan`, with the status bar showing the mode; the plan-mode approval prompt's "keep planning" option sends feedback and stays in plan mode; Ctrl+G opens the plan in `$EDITOR`. Live-verified 2026-07-26, mechanics hold. **The CAVEAT is a copy mismatch, not a behaviour one:** live docs label the option *"No, keep planning"* with no "with feedback" suffix, while the body says *"keep planning with feedback"*. fallback: if literal button-copy match is ever wanted, retitle body prose to "pick keep planning."
+- pocock-grill-me `[checked:2026-07-26 result:OK due:2027-01-26]` https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md — [practitioner direct] Pocock's grill-me skill, commit `62f43a1` **pinned**, file confirmed live at that path; MIT licence confirmed via the local fork at `curriculum/skills/external/pocock-skills/grill-me/`, which carries the method inline and runs standalone. At `main` the skill is two files — that path now holds a 4-line invoker and the method sits at `skills/productivity/grilling/SKILL.md` — and **the pin is what insulates this file from that drift**, which is the whole argument for pinning a commit rather than a branch. Billed at source as *"a relentless interview to sharpen a plan or design"*. **Not Socratic** — Socratic method surfaces contradictions, this one proposes. Do not reintroduce the word. fallback: describe as "a branch-walking interview skill, forked with attribution" if the named-skill framing needs to soften.
+- klaassen-definitive-guide `[checked:2026-07-30 result:OK due:2027-01-30]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen (GM of Cora, Every's own product) on Every's own site, published 2026-02-09; sole byline, first person throughout. Confirms the term and the philosophy: *"each unit of engineering work should make subsequent units easier—not harder."* **The four-step loop is NOT on this page** — the step names are on the how-Every-codes piece, and as of 2026-05-29 Klaassen has expanded the loop past four steps. **Cite this URL for the term, never for a step count**, and note the body obeys that by naming only "the Compound step". Every.to is Klaassen's employer's venue: treat any outcome metric from it as vendor-self-reported (none quoted here). fallback: attribute as "the loop that runs through his work", ordinal-free.
+- martin-wwhtbt `[checked:2026-07-26 result:OK due:none]` https://rogermartin.medium.com/what-would-have-to-be-true-83dac5bd2189 — [practitioner direct] Martin's own essay (2022-08-22), restating the framework he developed from 1994 and published in *Playing to Win*. **Foundational-literature variant, `due:none`** — an established strategy framework's content is fixed by publication, and the previous `due:2027-01-26` treated a 2022 restatement of a 1994 framework as if it could expire. Cited as lineage, never as current-trend evidence. fallback: drop the URL and cite WWHTBT generally if single-source attribution needs to soften.
+
+Frameworks
+- Plan mode · [borrow:none] · law:none · ← cc-permission-modes
+- Walk-down-branches interview · [borrow:none] · law:none · ← pocock-grill-me — inlined as a prompt here and credited at Phase 4; the authoring reveal lands a module later
+- What would have to be true · [borrow:strategy] · law:name-the-uncertainty-before-you-move · ← martin-wwhtbt — the assumption-flag push-back is Martin's move applied to an engineering plan
+- Compound engineering · [borrow:none] · law:the-compound-ladder · ← klaassen-definitive-guide
+- Find is easier than judge · [borrow:none] · law:none · ← none — house naming, earned in-room; the supplementary-resident name is deliberately not used in body
+
+Stance `[stance:2026-08-01 level:L2]`
+- holds: that a second automated read catches branches a human read misses, and that the two are complementary rather than redundant. Pocock's skill is one practitioner shipping exactly this move under an open licence, which is stronger evidence than a described practice — the artefact runs. The exercise's own claim is narrower than the field's: it says these two reads catch different things, which the student verifies against their own plan in Phase 5.
+- contested: nothing evidential. The live risk here is copy drift rather than claim drift — this file names a UI affordance, a keystroke, and a third-party skill file, and all three can move under it without anything being wrong about the teaching.
+- would-move-it: plan mode's approval affordances changing shape, or Pocock retiring the skill. Neither would touch the pairing argument; both would strand a sentence.
+
+OODA
+- question: do plan mode's approval options still read as the body describes, and is the pinned grill-me commit still reachable?
+- roster: Matt Pocock, Kieran Klaassen, the Claude Code permission-modes docs and changelog
+- last-run: 2026-08-01
+
+Flagged
+- `[found:2026-08-01]` The permission-modes stamp has carried `result:CAVEAT` since 2026-07-26 for a known copy mismatch — body says *"keep planning with feedback"*, the product says *"No, keep planning"* → decide before a cohort whether to match the button copy exactly. A student following the words on the page will look for a suffix that is not there. Small, and the kind of thing a room notices in the first ten seconds.
+
+<!-- /backing -->
 
 **Watch-fors:**
 - **P3 rubber-stamp.** Student hits "approve" under 60 seconds without sending a push-back message. Diagnostic: no keep-planning-with-feedback branch in the scrollback. Push-back move: *"pick keep planning with feedback — send one soft-item message before approving."*
@@ -181,11 +220,6 @@ Then just hit stop.
 - Picks up from: M1's Plan → Work → Review → Compound loop, run on a 60-min trivial bug. M2 runs the same loop at deeper Plan scope.
 - Hands off to: M2 Debrief (Compound step) — one named pattern about what a good plan looks like for this student on this repo goes into personal `CLAUDE.local.md` (team-worthy flag for separate PR if applicable).
 - M3 picks up: the judge-building move — the push-backs the student sent at P3 are the raw material for M3's first judge ("did the fix really land?"). The push-back discipline becomes the gate spec.
-
-**Frameworks riffed on (attributed at P5):**
-- Compound engineering (Klaassen) — one line, continuation from M1
-- Plan-mode approval inflation — exercise-named pattern, not a practitioner attribution
-- "What would have to be true" (Martin) — optional attribution at Debrief if it lands naturally
 
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
 - picks plan mode before approving a multi-file change

@@ -112,11 +112,46 @@ The exercise ends here. The module's re-send is next: same task, with reference 
 
 **Time budget total:** 65 min exercise body. Phase breakdown: P1 15 / P2 10 / P3 20 / P4 20. Module Debrief + re-send adds 15–20 min. Closing lecture adds 12–15 min after Debrief.
 
-**Frameworks riffed on:**
-- **Diagnosis through named failure modes** (Phase 1) — goal drift / context rot / plausible-but-wrong. **Not "convergent practitioner vocabulary"** (corrected 2026-08-01): only *context rot* is a term the field actually uses; the other two are ours, for phenomena practitioners describe constantly without settling on a name. The phenomena are well attested, which is all this exercise needs. Pre-read carries the colour, this exercise applies them.
-- **Align-then-run, in reverse** (Phase 2) — Ronacher's align-then-run move (ask the agent how it would validate, then negotiate the validation loop) inverted: ask backwards from a failure to the validation that would have caught it. Earns the three-pattern.
-- **Three verifier shapes** (Phase 3) — Boris Cherny. Menu form; student picks one against dominant failure. Closing lecture confirms attribution.
-- **Reference + plan.md** (Phase 4) — two of the three pieces. **Not "Ronacher's three-pattern"** (corrected 2026-08-01): the triad is our synthesis, and he names none of its pieces — *verifier* appears zero times across his 2025–26 archive, *reference* only as an adjective for snapshot files. Huntley's Ralph is the one documented practice carrying all three together. He backs the practice (diff against a reference implementation, gate on an automated test), never the vocabulary. Built in conversation, scoped to the task.
+<!-- backing -->
+
+Claims
+- `artefact-is-data-not-blame` · vision · "The un-packaged run was supposed to underdeliver. What came back is data, not blame." ← none-owed
+- `two-places-hold-the-story` · vision · "The repo's git history … tells you *what* the agent did. That run's session transcript … tells you *how* it got there" ← none-owed
+- `you-hold-the-lenses-not-the-codebase` · vision · "You hold the three lenses. You are not holding the codebase." ← none-owed
+- `three-failure-mode-lenses` · detail · "*diagnosis through named failure modes*" ← three-failure-modes
+- `quote-beats-summary` · vision · "One quoted line per lens beats a paragraph of summary." ← none-owed
+- `ask-what-would-have-caught-it` · vision · "*what validation would have caught this in minutes, not hours?*" ← none-owed
+- `match-shape-to-failure-not-slogan` · vision · "Match the failure, not your familiarity." ← none-owed
+- `three-verifier-shapes` · detail · "**Background-agent verifier** … **Deterministic shell-hook** … **Ralph re-feed**" ← kim-on-cherny
+- `shell-hook-is-a-stop-hook` · detail · "The shell-hook shape IS a Claude Code stop-hook" ← cc-hooks-docs
+- `untested-verifier-is-no-verifier` · vision · "A built-but-untested verifier is no verifier." ← none-owed
+- `reference-pins-the-task` · vision · "The reference pins the task." ← none-owed
+- `plan-md-is-mutable-not-plan-mode` · vision · "plan.md is the agent's mutable working document. Not the plan-mode plan." ← none-owed
+- `pattern-earns-its-name-here` · vision · "a practitioner's pattern earns its name in this exercise" ← none-owed
+
+Sources
+- three-failure-modes `[checked:2026-08-01 result:CAVEAT due:cohort]` (no URL — house vocabulary) — [house canonical] goal drift / context rot / plausible-but-wrong. **Not convergent practitioner vocabulary** (corrected 2026-08-01): only *context rot* is a term the field actually uses, with a study behind it and unprompted use by Ronacher and Osmani. *Goal drift* and *plausible-but-wrong* return zero named practitioners. The phenomena are well attested; the names are largely ours, which is all this exercise needs — it applies the lenses, the pre-read carries the colour. fallback: none needed; the corrected framing is the fallback.
+- kim-on-cherny `[checked:2026-07-02 result:OK due:2026-08-21]` https://getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually — [practitioner analysis] Kim on Cherny (2026-02-21): Cherny reaching for background-agent / agent-stop hook / Ralph re-feed. **The three-shape taxonomy is Kim's synthesis, not Cherny's own**, and is absent from the Orosz interview. The exercise offers them as a menu the student picks from, which is the form the evidence supports. **Due within the month.** fallback: keep the menu, drop the attribution — the shapes stand as options without a name behind them.
+- cc-hooks-docs `[checked:2026-05-15 result:OK due:cohort]` https://code.claude.com/docs/en/hooks — [capability] Stop hooks fire on the named event with no model discretion; live-tested against this repo's `.claude/settings.json` on Claude Code 2.1.142. fallback: describe the shape without naming the hook event.
+- ronacher-align-then-run `[checked:2026-08-01 result:CAVEAT due:none]` https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/ — [practitioner direct] Ronacher's align-then-run move — ask the agent how it would validate, then negotiate the validation loop — which Phase 2 inverts by asking backwards from a failure to the validation that would have caught it. **Scoped to the practice, never the vocabulary:** he does not use *reference*, *plan* or *verifier* as names for any of it (full-text and 14-post archive check, 2026-08-01). Durable account, `due:none`. fallback: teach the inversion without the attribution; the move stands on the student's own artefact.
+
+Frameworks
+- Three failure modes · [borrow:none] · law:three-failure-modes · ← three-failure-modes
+- Align-then-run, inverted · [borrow:none] · law:none · ← ronacher-align-then-run
+- Three verifier shapes · [borrow:none] · law:eval-judge-verifier-gate · ← kim-on-cherny
+- Reference + plan.md · [borrow:none] · law:none · ← none — two of the three pieces; **the triad is our synthesis, and the closing lecture says so.** Do not restore "Ronacher's three-pattern" here
+
+Stance `[stance:2026-08-01 level:L1]`
+- holds: that the three pieces work, on the evidence of the room building them against failures they diagnosed themselves. That is the only warrant this exercise needs and the strongest one available to it — a student's own artefact outranks a citation for the purpose of earning a name.
+- contested: the vocabulary, on every side. Two of the three failure-mode names are ours; the three-shape verifier menu is Kim's synthesis rather than Cherny's taxonomy; the triad is our combination. **None of that weakens the exercise, and all of it would weaken a lecture** — which is exactly why the naming happens in the closer and the building happens here.
+- would-move-it: a verifier shape becoming standard practice that this menu omits, or the field settling on names for goal drift and plausible-but-wrong. Either edits Phase 3's menu or the pre-read's vocabulary, not the exercise's spine.
+
+OODA
+- question: has a fourth verifier shape entered practice, and have the two house failure-mode names been coined by anyone outside this curriculum?
+- roster: Boris Cherny, Hamel Husain, Geoffrey Huntley, Armin Ronacher, Addy Osmani, the Claude Code hooks changelog
+- last-run: 2026-08-01
+
+<!-- /backing -->
 
 **Failure modes + diagnostics:**
 - **Phase 1 generalised diagnosis** — student says "the agent drifted" without quoting moments. Diagnostic: prompt requires quoted artefact moments; if Claude returns only summaries, re-run with explicit *"quote a specific commit / file change / scrollback line"*.

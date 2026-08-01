@@ -107,11 +107,46 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 
 **Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know what my stack repeats."* Watch-for: compliance-feel (student treats the scan as paperwork) or credibility-performance (*"we map our stack like the pros do"*). Both steal the mood.
 
-**Frameworks riffed on:**
-- **Diff across two runs** (Phase 1) — the pedagogy of the M4→M5 contrast extended; same artefact-quotation discipline from M5's *Diagnose and re-send*.
-- **Review and Compound across two runs** (Phase 1) — Kieran Klaassen's compound-engineering Review and Compound steps ([Compound Engineering: How Every Codes With Agents](https://every.to/source-code/compound-engineering-how-every-codes-with-agents), `[practitioner direct, vendor venue]`) across two runs of the same task. The step definitions live on that page, not on the Definitive Guide; in the source, Plan and Work belong to the agents while Review and Compound belong to the engineer.
-- **Checking-primitives menu** (Phase 2) — convergent practitioner vocabulary across Ramp Dojo (350-skill marketplace, [Geoff Charles, CPO](https://x.com/geoffintech/status/2042002590758572377) `[practitioner direct, 2026-04-09]`), Intercom Tier 1/2/3 (Darragh Curran, [2x Nine Months Later](https://ideas.fin.ai/p/2x-nine-months-later) `[practitioner direct, vendor venue, 2026-04-16]`), and solo builders running long tasks. Menu form; the map pairs primitives with recurring shapes. Full citation + freshness stamps: sibling module's maintainer block, `trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` § Frameworks riffed on / § Source verification.
+<!-- backing -->
 
+Claims
+- `diff-two-runs-of-one-task` · vision · "Diff two runs of the same task, route the dominant gap to its home, then read your own history for the work you repeat." ← none-owed
+- `read-from-recorded-coordinates` · vision · "Read from the recorded coordinates, not a branch or transcript search." ← none-owed
+- `you-hold-the-contrast` · vision · "You hold the contrast; the agent reads both runs off disk." ← none-owed
+- `push-back-where-claude-generalises` · vision · "If Claude writes *\"the agent drifted on goal\"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted." ← none-owed
+- `expect-over-credit-on-packaging` · vision · "A fair push-back is *\"name one thing the verifier missed, concretely.\"*" ← none-owed
+- `rules-files-have-a-half-life` · vision · "Adding rules is only half of it; subtracting the dead ones is the other half." ← none-owed
+- `sessions-are-on-disk-and-unread` · vision · "Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back." ← none-owed
+- `recurring-work-has-a-shape` · vision · "Steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described." ← none-owed
+- `checking-primitives-menu` · detail · "The menu grounds the map in what practitioners actually check, not just your own instinct." ← curran-2x, geoffintech-charles
+- `primitives-will-look-familiar` · vision · "The primitives Claude names are the ones your codebase already runs." ← none-owed
+- `gaps-sort-into-three-homes` · vision · "Gaps sort into three homes: memory …, a sharper verifier …, or a skill" ← none-owed
+- `review-and-compound-across-two-runs` · borrowed · "You tested at M4, you learned at M5. Here you name what the two runs cost you and where each lesson belongs." ← klaassen-how-every-codes
+
+Sources
+- klaassen-how-every-codes `[checked:2026-07-30 result:CAVEAT due:2027-01-30]` https://every.to/source-code/compound-engineering-how-every-codes-with-agents — [practitioner direct, vendor venue] Shipper & Klaassen (Dec 2025). The Review and Compound step definitions live on **this** page, not on the Definitive Guide, and in the source Plan and Work belong to the agents while Review and Compound belong to the engineer — which is exactly the split this exercise runs. Dec 2025, outside the 6-month window: framework origin, not fresh evidence. fallback: teach the two-run review without the name; the move stands on the student's own artefacts.
+- curran-2x `[checked:2026-05-25 result:OK due:2026-10-16]` https://ideas.fin.ai/p/2x-nine-months-later — [practitioner direct, vendor venue] Curran (2026-04-16), Intercom's tiered review with auto-approval at the lowest tier. Metrics vendor-self-reported. Backs the checking-primitives menu as something orgs actually run, not a list we invented. fallback: keep the menu, drop the org names.
+- geoffintech-charles `[checked:2026-05-25 result:OK due:2026-11-25]` https://x.com/geoffintech/status/2042002590758572377 — [practitioner direct] Geoff Charles (Ramp), 2026-04-09; the Dojo skill marketplace. Verified via `observations/ramp.md` plus the X oEmbed workaround. kb:observations/ramp.md **Scoped narrowly:** this backs that a large org runs a shared checking kit, not any specific count. The 350-skill figure is not asserted in this exercise's body and should not be reintroduced from the register. fallback: drop the name; "solo builders and large orgs run the same primitives" survives without it.
+
+Frameworks
+- Compound engineering, Review and Compound · [borrow:none] · law:the-compound-ladder · ← klaassen-how-every-codes
+- Diff across two runs · [borrow:none] · law:double-loop-learning · ← cultural-vocab — the M4-to-M5 contrast extended; the second loop is cutting the rule, not fixing the run
+- Checking-primitives menu · [borrow:none] · law:eval-judge-verifier-gate · ← curran-2x, geoffintech-charles
+
+Stance `[stance:2026-08-01 level:L2]`
+- holds: that orgs and solo builders converge on a recognisable set of checking primitives — tests, lint, type-check, review, diff inspection, eval suites. This is the safest convergence claim in the corpus because the primitives predate agents entirely; the exercise is asking the student to recognise their own toolchain, not to accept a finding.
+- contested: **the register that this block replaces called the menu "convergent practitioner vocabulary" across two named orgs and "solo builders."** Two orgs and an unnamed category is not convergence at the L3 bar, and the phrase is the fourth instance of this corpus reaching for a convergence verb to make a menu feel found. The body itself never makes the claim — it says the primitives are the ones the student's own codebase already runs, which is both weaker and true.
+- would-move-it: a primitive entering common practice that the menu omits. The list is deliberately unranked and open, so an addition edits one line rather than the phase.
+
+OODA
+- question: what checking primitives have entered common practice since this menu was written, and does the recognition beat still land for a room whose toolchain has moved?
+- roster: Darragh Curran and the Intercom engineering blog, Geoff Charles and Ramp, Hamel Husain, Simon Willison, Kieran Klaassen
+- last-run: 2026-08-01
+
+Flagged
+- `[found:2026-08-01]` The legacy register described the primitives menu as *"convergent practitioner vocabulary"* on the strength of two named orgs plus "solid builders running long tasks" → retired here rather than migrated, because the body never made the claim and the stance now states what the evidence supports. **Fourth instance of the pattern** across M5 and M6; the sweep to run is whether any surviving file still asserts convergence on a count nobody made.
+
+<!-- /backing -->
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
 - holds a diagrammed map of the work they repeat across their stack, and reads a new task against it before sending the task off
 - cuts a stale rule from their own `CLAUDE.local.md` once a run's evidence shows it never fired or fired wrong, instead of letting the rules-file rot

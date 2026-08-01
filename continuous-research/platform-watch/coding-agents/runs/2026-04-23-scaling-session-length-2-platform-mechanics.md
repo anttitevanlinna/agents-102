@@ -24,9 +24,15 @@ What did Claude Code, Codex, Cursor, Amp, and adjacent harnesses ship in the las
 - https://claudefa.st/blog/guide/mechanics/context-buffer-management [practitioner analysis]
 - https://platform.claude.com/cookbook/tool-use-automatic-context-compaction [vendor — bare fact]
 
-**Practitioner use [L2-strong, 3 signals — below L3 threshold].** Three independent practitioner posts (MindStudio, ClaudeFA, ClaudeLog) recommend the SAME thing: don't let auto-compact fire. Manually `/compact` at ~60% at a natural breakpoint, before quality degrades and before the agent loses the thread mid-task. Strong directional signal but not yet 10–20 independents.
-- https://www.mindstudio.ai/blog/claude-code-compact-command-context-management [practitioner analysis]
-- https://claudelog.com/faqs/what-is-claude-code-auto-compact/ [practitioner analysis]
+**Practitioner use [L1 — one vendor post; corrected 2026-08-01].** This block previously read *"L2-strong, 3 signals"* on the strength of three posts said to converge on manual `/compact` at ~60%. A direct re-fetch of all three on 2026-08-01 does not support that:
+
+- https://www.mindstudio.ai/blog/claude-code-compact-command-context-management [vendor press release — Level 0] — does carry *"around 60% context utilization"*, but the byline is "MindStudio Team" (2026-04-02), an unsigned corporate post from an AI-app-building platform vendor writing about an adjacent tool. Not a practitioner account; the earlier `[practitioner analysis]` label was wrong.
+- https://claudefa.st/blog/guide/mechanics/context-buffer-management [unattributed analysis] — carries **no 60% figure at all**. It covers auto-compact mechanics (83.5% trigger, 33K buffer) and a 50% figure for proactive clearing, a different move. No byline, no date on the page.
+- https://claudelog.com/faqs/what-is-claude-code-auto-compact/ — returns HTTP 403 to direct fetch. **Unverifiable, not disproved.**
+
+So the count is one, and its type is vendor. The percentage has no practitioner backing. The only named practitioner attaching a number to context utilisation is Dex Horthy — *"keeping utilization in the 40%-60% range"* (https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/ace-fca.md, [practitioner direct, vendor venue], last substantively edited 2025-12-03, outside the window) — and his is a band held continuously as a workflow discipline, not a threshold to wait for. Reading 60% as a trigger inverts him.
+
+What survives is the qualitative habit, and it comes from Anthropic rather than from practitioners: *"run `/compact` at a natural break in your work, such as between tasks, instead of waiting for auto-compaction to trigger mid-task"* (https://code.claude.com/docs/en/prompt-caching [vendor docs — bare fact], checked 2026-08-01). Anthropic gives no percentage on any docs page checked.
 
 **Counter-evidence.** Cross-tool comparison (badlogic gist, Mar 2026) finds Amp explicitly rejects auto-compaction — Sourcegraph's stance is "keep conversations short and focused, use manual handoff." Counter-signal that auto-compact is a workaround for sessions that should have been shorter.
 - https://gist.github.com/badlogic/cd2ef65b0697c4dbe2d13fbecb0a0a5f [practitioner analysis]

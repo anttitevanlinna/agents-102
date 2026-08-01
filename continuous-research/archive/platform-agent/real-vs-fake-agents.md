@@ -86,7 +86,7 @@ This is where most enterprise "agentic AI" lives. Concrete examples:
 
 Multi-agent system inquiries surged 1,445% from Q1 2024 to Q2 2025 [13]. Research from multiple sources shows the reality:
 
-- **MAST-Data study** (arXiv, late 2025): Analyzed 1,600+ traces across 7 popular multi-agent frameworks. Found failure rates ranging from 41% to 86.7% [14]. Identified 14 unique failure modes in 3 categories: system design issues, inter-agent misalignment, and task verification failures [14].
+- **MAST-Data study** (arXiv, **March 2025** — corrected 2026-08-01; the body previously said "late 2025" while reference [14] below said March 2025, and [14] is right): Analyzed 1,600+ traces across 7 popular multi-agent frameworks. Found failure rates ranging from 41% to 86.7% [14]. Identified 14 unique failure modes in 3 categories: system design issues, inter-agent misalignment, and task verification failures [14]. **Level 2, not L3** (one study, one team, one methodology — internal breadth is not independent convergence), and the population is **open-source frameworks on benchmark tasks, not enterprise deployments**. Current disposition → `findings/by-domain/coding-engineering.md` § Counter-Evidence.
 - **The "17x error trap"**: The "bag of agents" anti-pattern -- simply adding more agents without proper coordination creates cascading failures. Data shows accuracy gains begin to saturate or fluctuate beyond a 4-agent threshold [15].
 - **Anthropic's multi-agent research system** is the reference implementation that works -- but it's a narrow, internally-built system for web research, not a general-purpose production platform [1].
 
@@ -397,7 +397,7 @@ https://www.pento.ai/blog/a-year-of-mcp-2025-review
 | Coding is the only domain with Level 4 agents at scale | 9/10 | SWE-bench data [17], Karpathy reversal [19], Anthropic data [10] |
 | Customer service is strongest Level 2-3 counter-evidence | 8/10 | Intercom Fin data [6][7], outcome-based pricing, $100M+ ARR companies |
 | Deep Research is closest non-coding Level 3-4 | 7/10 | Limited production data, but architecture is genuinely multi-step [9] |
-| Agents fail 60-80% standalone outside coding | 8/10 | Carnegie Mellon + Upwork + MAST-Data studies converge [14][22][23] |
+| Agents fail 60-80% standalone outside coding | 8/10 → **flagged 2026-08-01** | Carnegie Mellon + Upwork + MAST-Data studies converge [14][22][23] — **but the MAST leg does not support an "outside coding" claim**: its population is open-source *multi-agent frameworks on benchmark tasks*, not standalone agents in non-coding work. Confidence 8/10 rests on a three-way convergence that is really two-way once the denominators are checked. Not re-researched here; do not cite this row without re-deriving it. |
 | Agent washing is widespread (>95% of vendors) | 8/10 | Gartner estimate + broad pattern evidence [3][4] |
 | Compound error is the structural barrier | 9/10 | Mathematical property + empirical confirmation [14][22] |
 | MCP is solving the infrastructure problem | 8/10 | 97M+ downloads, multi-vendor adoption [25] |

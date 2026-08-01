@@ -130,7 +130,7 @@ Finnish developer who has built practical tooling for parallel coding agents and
 
 **Phase 3: Enterprise deployment (early 2026)**
 - Spotify: 1,500+ PRs merged, 650+ per month, CEO public statement (February 2026)
-- Global: 85% of developers use AI tools regularly; 62% use at least one AI coding agent [general surveys — JetBrains, Stack Overflow]
+- Global (corrected 2026-08-01): ~84–90% of developers use AI tools; **~30–35% use a genuine coding agent** at some cadence. ~~62% use at least one AI coding agent~~ — that figure was JetBrains' bundled "assistant, **agent**, or code editor" and overstated agentic depth by roughly double. Current sources + full trace → `findings/by-domain/coding-engineering.md` § Level 3 and `findings/by-pattern/finland-ai-usage-baseline-2026-06-25/i-developer-adoption-depth.md`. [survey, commercial venue — JetBrains, Stack Overflow, DORA]
 
 ### Where Nordics Sit
 
@@ -177,7 +177,7 @@ Addy Osmani documents the "80% problem": agents rapidly generate 80% of the code
 Agents handle rapid initial development but struggle when Tailwind classes are scattered across many files — redesigns and component extraction cause major regressions. Frontend is harder for agents than backend. [practitioner direct — Armin Ronacher] https://lucumr.pocoo.org/2025/6/12/agentic-coding/
 
 **2. Legacy code without tests**
-Multi-agent coordination fails in 60%+ of enterprise deployments because agents lack architectural understanding of legacy systems, undocumented dependencies, and historical context. [general survey data — unclear primary source] [SOURCE NEEDED for 60% figure]
+~~Multi-agent coordination fails in 60%+ of enterprise deployments because agents lack architectural understanding of legacy systems, undocumented dependencies, and historical context.~~ **[UNVERIFIED STAT — killed 2026-08-01, do not cite]**. This file is where the claim first entered the corpus, already carrying its own `[SOURCE NEEDED]` flag and no citation. A three-angle trace with adversarial verification found no original: the two plausible ancestors were opened and contain no such figure, and the only pages repeating it are SEO content farms whose earliest instance postdates this file by three weeks. Round number, undefined denominator, undefined failure criterion, welded-on causal clause. Full disposition and the citable replacement (Cemri et al., MAST — a *range*, 41–86.7%, and on **open-source frameworks, not enterprise deployments**) → `findings/by-domain/coding-engineering.md` § Counter-Evidence. Corrected here rather than left to rot: an archive filename is provenance, not immunity, and a reader of this line saw an authoritative-looking claim with no hint it was overturned.
 
 **3. Complex runtime behavior**
 Agents struggle with Python's magic (Pytest fixture injection, async event loop handling) — frequently producing incorrect code that even the agentic loop can't resolve. [practitioner direct — Armin Ronacher] https://lucumr.pocoo.org/2025/7/30/things-that-didnt-work/

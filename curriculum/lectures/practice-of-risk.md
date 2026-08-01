@@ -62,12 +62,36 @@ That's the work.
 
 **Placement in module:** After Connections, before the exercises. The lecture primes the loop; the exercises run it.
 
-**Frameworks riffed on:**
-- **STRIDE** (Microsoft SDL) — named, reframed as agent-STRIDE. The `agent-security` skill does the category mapping; the lecture just names the ancestor.
-- **Principle of least privilege** — the "best mitigation is the one you don't need" reframe. Named in the "don't open the door" section.
-- **Residual risk** (ISO 31000 / NIST) — central artifact of the module. Vocabulary adopted without the bureaucracy.
-- **Assess → mitigate → reassess → decide** — classical risk-management loop, reshaped for agent systems. Recognisable to anyone with regulated-industry exposure.
+<!-- backing -->
 
+Claims
+- `certainty-is-a-fantasy-you-inherited` · vision · "Certainty is a fantasy you inherited." ← none-owed
+- `the-work-is-the-loop` · borrowed · "**Assess.** … **Mitigate.** … **Reassess residual.** … **Decide.**" ← iso-31000
+- `agent-mitigations-are-shaped-differently` · vision · "Agent mitigations are shaped differently than firewalls." ← none-owed
+- `name-the-residual-and-write-it-down` · vision · "*The residual risk here is X. If Y happens, Z follows.*" ← none-owed
+- `two-options-not-three` · vision · "Accept the residual on record, or close the door. Those are the two options. *\"Hope it doesn't happen\"* is not one." ← none-owed
+- `best-mitigation-is-the-one-you-dont-need` · borrowed · "The best mitigation is the one you don't need." ← cultural-vocab
+
+Sources
+- iso-31000 `[checked:2026-05-15 result:OK due:none]` https://www.iso.org/standard/65694.html — [standards body] ISO 31000, risk management: the assess → treat → evaluate-residual → accept-or-avoid cycle, and *residual risk* as the term for what remains after treatment. NIST's risk-management framework carries the same vocabulary. **Foundational, `due:none`** — a standard's definitions do not expire on a six-month clock, and the lecture takes the vocabulary while explicitly dropping the bureaucracy around it. fallback: teach the four steps without the standard's name; the loop is recognisable to anyone with regulated-industry exposure.
+
+Frameworks
+- Assess → mitigate → reassess → decide · [borrow:risk management] · law:none · ← iso-31000 — classical loop, reshaped for agent systems
+- Residual risk · [borrow:risk management] · law:none · ← iso-31000 — the module's central artifact
+- STRIDE · [borrow:security engineering] · law:none · ← cultural-vocab — named as the ancestor only; the category mapping lives in the skill, not the lecture
+- Principle of least privilege · [borrow:security engineering] · law:blast-radius-error-budget · ← cultural-vocab — the don't-open-the-door reframe
+
+Stance `[stance:2026-08-01 level:L2]`
+- holds: the risk loop, which is standardised, taught, and older than the subject it is being applied to. **The lecture's own contribution is the reshaping, not the loop** — that agent mitigations are shaped differently (scope, tools, credentials, review) than perimeter controls, and that "hope it doesn't happen" is not a decision.
+- contested: nothing in the borrowed frame. What is genuinely unsettled is the mitigation catalogue for agent systems, which is why the lecture names shapes rather than a checklist.
+- would-move-it: an agent-specific risk taxonomy gaining real adoption, which would give the lecture a named catalogue to point at instead of teaching shapes.
+
+OODA
+- question: has an agent-specific risk or mitigation taxonomy reached real adoption, beyond vendor framings?
+- roster: NIST AI RMF working notes, OWASP LLM/agentic top-ten maintainers, Simon Willison, Anthropic safety documentation
+- last-run: 2026-08-01
+
+<!-- /backing -->
 **Philosophy callout (sparing):**
 - Belief — *the discipline beats external proof* (philosophy.md belief on running the loop instead of waiting for certainty) — the core message. Not announced; carried by the full lecture arc.
 - Belief — *name what you don't know* — lands in the "residual risk as artifact" beat.

@@ -33,7 +33,7 @@ while :; do cat PROMPT.md | claude-code; done
 ```
 
 - Geoffrey Huntley saw a lever. An agent runs, drifts, needs nudging. The fix already existed in shell: one line, no scaffolding.
-- He called it Ralph, after the Simpsons. Hacky, simple, powerful. Ralph re-feed entered the practitioner vocabulary as one of the named verifier shapes, for when a multi-hour task wants a stop-and-check.
+- He called it Ralph, after the Simpsons. Hacky, simple, powerful. The name stuck, and Ralph re-feed is one of the three verifier shapes on your menu, for when a multi-hour task wants a stop-and-check.
 - Months later, Claude Code shipped `/goal`. The runtime version of the same move: a condition, a check each turn. The shell hack is now a slash command.
 - Practitioners see levers first. The lever was sitting there in plain shell. Huntley reached for it. The runtime caught up later.
 
@@ -79,7 +79,7 @@ Claims
 - `huntley-saw-a-lever` · detail · "Geoffrey Huntley saw a lever." ← huntley-ralph
 - `ralph-one-line-shell-loop` · detail · "`while :; do cat PROMPT.md | claude-code; done`" ← huntley-ralph
 - `named-after-the-simpsons` · detail · "He called it Ralph, after the Simpsons." ← huntley-ralph
-- `ralph-refeed-entered-the-vocabulary` · detail · "Ralph re-feed entered the practitioner vocabulary as one of the named verifier shapes" ← [SOURCE NEEDED]
+- `ralph-refeed-is-on-your-menu` · vision · "The name stuck, and Ralph re-feed is one of the three verifier shapes on your menu" ← none-owed
 - `goal-shipped-later` · detail · "Months later, Claude Code shipped `/goal`. The runtime version of the same move: a condition, a check each turn." ← cc-goal-capability
 - `practitioners-see-levers-first` · vision · "Practitioners see levers first." ← none-owed
 - `there-is-no-last-turn` · vision · "There is no last turn. Each run surfaces the next gap." ← none-owed
@@ -96,7 +96,7 @@ Frameworks
 
 Stance `[stance:2026-08-01 level:L1]`
 - holds: that the Ralph loop is Huntley's and that it was a shell one-liner before it was a product feature. Both are first-hand and settled. The lecture's larger argument — that the flywheel stops where the agent's evidence stops — is our framing, and the body carries it as a position rather than a finding.
-- contested: whether "Ralph re-feed" is actually practitioner vocabulary. See Flagged. This is the third naming claim in the M6 closer chain asserting that practitioners say a thing, with no count behind any of them.
+- contested: how widely "Ralph re-feed" travels as a name. The body no longer depends on the answer — it claims the name stuck and that the shape is on the menu we handed them, both of which hold. The usage question stays in OODA because it is worth knowing, not because a sentence is waiting on it.
 - would-move-it: evidence that the re-feed shape is called something else in general use, or that nobody outside this curriculum calls it anything. Either turns a recognition beat into a coinage, which is fine to do and not fine to do silently.
 
 OODA
@@ -105,7 +105,7 @@ OODA
 - last-run: 2026-08-01
 
 Flagged
-- `[found:2026-08-01]` *"Ralph re-feed entered the practitioner vocabulary as one of the named verifier shapes"* is unbacked, and it is the third claim of its kind in this closer chain — with `the-loop-has-a-name`'s *"Practitioners say judge / verifier / gate"* and M5's three-pattern, now corrected. **The pattern is the finding:** this corpus reaches for "entered the vocabulary" as a way of making our own naming feel found rather than made → decide whether to count the usage or re-cut all three the way M5's closer was re-cut.
+- `[found:2026-08-01]` **Resolved 2026-08-01.** The bullet claimed Ralph re-feed *"entered the practitioner vocabulary as one of the named verifier shapes"* — field-wide adoption nobody counted, plus a settled taxonomy that is actually Kim's synthesis of Cherny's habits. Now: the name stuck (persistence, not a census) and it is one of three shapes on the menu **this training** gave them at M5. Huntley's coinage is verified and unaffected. Do not restore the adoption verb.
 - `[found:2026-08-01]` `/goal` has been an unstamped platform claim since the scratch sweep that verified it; now stamped `result:NEEDED due:asap` so it is visible to `source-freshness.sh` instead of living only in a maintainer to-do → re-test before a cohort.
 
 <!-- /backing -->

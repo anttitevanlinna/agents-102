@@ -11,7 +11,7 @@ Say the re-send comes back green. The verifier you built reads the work and pass
 ## The judge needs calibrating against your labels
 
 - A judge has an unknown floor until you measure it. A judge is a claim that its bar and your bar agree. Until that is checked against your own labels, a judge-gated pipeline passes work at an agreement rate no one has ever seen.
-- The move is hand-label a sample, measure agreement, sharpen, repeat. Thirty outputs is enough to start. Grade them yourself, compare against the judge's verdicts, sharpen the judge prompt until the two converge, and re-check when the model or the task shifts. Hamel Husain reports better than 90% agreement after three iterations of exactly this loop.
+- The move is hand-label a sample, measure agreement, sharpen, repeat. A few dozen outputs is enough to start; you are looking for disagreement patterns, not a significance test. Grade them yourself, compare against the judge's verdicts, sharpen the judge prompt until the two converge, and re-check when the model or the task shifts. Hamel Husain reports better than 90% agreement after three iterations of exactly this loop.
 - A good gate starts from real traces, not imagined failures. Read runs that actually happened, sort the real failures into buckets, and write the first check for the biggest bucket. A gate built from the armchair catches the failures you pictured and misses the ones you have.
 
 ## Gates decay
@@ -113,7 +113,7 @@ Claims
 - `countermoves-cost-less-than-the-failure` · vision · "All three cost less than the failure they hide." ← none-owed
 - `judge-has-unknown-floor` · vision · "A judge has an unknown floor until you measure it." ← none-owed
 - `hand-label-measure-sharpen-repeat` · vision · "hand-label a sample, measure agreement, sharpen, repeat" ← none-owed
-- `thirty-outputs-to-start` · detail · "Thirty outputs is enough to start." ← [SOURCE NEEDED]
+- `a-few-dozen-to-start` · vision · "A few dozen outputs is enough to start; you are looking for disagreement patterns, not a significance test." ← none-owed
 - `husain-ninety-percent-three-iterations` · detail · "Hamel Husain reports better than 90% agreement after three iterations of exactly this loop." ← husain-llm-judge
 - `error-analysis-before-armchair` · detail · "A good gate starts from real traces, not imagined failures." ← husain-field-guide, husain-evals
 - `goodhart-gates-decay` · borrowed · "**Goodhart's law**, and the agent is an optimizer aimed straight at your gate." ← cultural-vocab
@@ -152,7 +152,7 @@ OODA
 - last-run: 2026-08-01
 
 Flagged
-- `[found:2026-08-01]` *"Thirty outputs is enough to start"* is a bare number in student-facing body with no source behind it — the same shape as the 60% figure that collapsed on M5's opener. It is defensible as a teaching heuristic and indefensible as a reported finding, and the body currently reads as the second → decide whether to source it, soften it to a range with the reasoning shown, or cut the number and keep "a sample."
+- `[found:2026-08-01]` **Resolved 2026-08-01.** The bullet read *"Thirty outputs is enough to start"* — a bare number with nothing behind it, in the shape of a statistical threshold a reader might defend in review. Husain backs the loop and the ">90% after three iterations" figure; he backs no starting sample size. Now a range with its reasoning attached, which is what makes it read as a heuristic rather than a finding. **Precision you cannot source is worse than an honest range, because precision is what gets quoted back at you.**
 
 <!-- /backing -->
 

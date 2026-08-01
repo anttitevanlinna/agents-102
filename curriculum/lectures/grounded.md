@@ -86,12 +86,37 @@ Phase 0 is next: a fresh briefing, then a 30-claim pool extracted from it. The c
 
 **Family-A alignment (2026-07-02):** the compound-reliability passage is a worded subjunctive illustration labeled "an illustration, not a measurement" in body; the `0.85^10` notation and the derived customer-service percentages (95% each = 86%) were dropped, and the closing shorthand no longer names the constants (`theory-audit.md` § Family A). Zombie-stat guard: do not re-promote the constant to a measured figure or re-add notation. The flip-the-math passage keeps its "Say your briefing has..." illustrative framing.
 
-**Frameworks riffed on:**
-- **Compound reliability math — both directions.** Single-pass: 85%^10 = 20% (the trap). Loop-based: 10% → 1% → 0.1% → 0.01% with 90%-catch detector + fix (the escape). Naming both halves is what converts the math from despair to design. The second half is the strategic bridge to M6 — evals aren't a quality gate, they're the mechanism that collapses the error rate.
-- **Grounded-ness as epistemic stance** — journalism/research/legal drafting recognisable move.
-- **Benchmarking** — the empirical-selection pattern lifted from serious evals work (Antti's own, among others). Lecture names WHY benchmarking beats intuition; exercise runs the benchmark.
-- **Benchmark as the measuring stick** — 30 claims, plain, enough to see the pattern without making the run mostly processing. No vendor reference; adjudication against the student's evidence is the judge of the judges.
+<!-- backing -->
 
+Claims
+- `single-pass-compound-decay` · detail · "85%^10 = 20%" ← compound-reliability-math
+- `loop-collapses-the-error-rate` · detail · "10% → 1% → 0.1% → 0.01% with a 90%-catch detector plus fix" ← compound-reliability-math
+- `the-word-is-grounded` · vision · "The word is grounded." ← none-owed
+- `dont-pick-a-method-run-the-candidates` · vision · "Don't pick a method. Run the candidates." ← none-owed
+- `source-triangulation` · vision · "For every specific claim, does it appear in at least one file on disk?" ← none-owed
+- `entailment` · vision · "Does the briefing say more than the sources actually support?" ← none-owed
+- `citation-integrity` · vision · "A citation that doesn't hold is worse than no citation" ← none-owed
+- `counter-evidence-search` · vision · "look for sources that contradict it. One contradiction kills the claim" ← none-owed
+
+Sources
+- compound-reliability-math `[checked:2026-08-01 result:ATTESTED due:none]` (no URL — arithmetic) — [house canonical] Both directions of the compound-reliability figure. Single-pass: 0.85^10 ≈ 0.197. Loop-based with a 90%-catch detector plus fix: 10% → 1% → 0.1% → 0.01%. **This is arithmetic, not a finding, and the stamp exists to say so** — the numbers are checkable on a calculator and owe no citation. What owes care is the *premise* (that a step is 85% reliable and that steps compose independently), which is illustrative rather than measured, and the lecture uses it to motivate a design move rather than to predict a rate. fallback: keep the arithmetic, never present 85% as a measured per-step reliability for any real system.
+
+Frameworks
+- Compound-reliability floor · [borrow:none] · law:compound-reliability-floor-0-85 · ← compound-reliability-math — naming both halves is what turns the math from despair into design
+- Grounded-ness as epistemic stance · [borrow:journalism and legal drafting] · law:none · ← cultural-vocab
+- Benchmarking · [borrow:empirical evaluation] · law:eval-judge-verifier-gate · ← cultural-vocab — the lecture names why benchmarking beats intuition; the exercise runs it
+
+Stance `[stance:2026-08-01 level:L1]`
+- holds: that chain length rather than single-step quality is what kills autonomy, and that a detect-and-fix loop collapses the error rate. The first is arithmetic given the premise; the second is the design conclusion the whole module turns on.
+- contested: **the 85% premise itself, which is illustrative and should never be quoted as measured.** No published per-step reliability figure for agentic steps is trustworthy at this level of generality, and the lecture is careful to use the number as a lens rather than a rate. That care is the fragile part — a reader in a hurry sees a percentage and remembers a finding.
+- would-move-it: nothing about the arithmetic. What would move the teaching is credible measurement of real per-step reliability, which would let the lecture use a real number instead of a round one.
+
+OODA
+- question: has anyone published defensible per-step reliability measurements for agentic chains, as opposed to end-to-end task benchmarks?
+- roster: METR, Anthropic and OpenAI eval publications, Hamel Husain, Shreya Shankar
+- last-run: 2026-08-01
+
+<!-- /backing -->
 **Philosophy callout (sparing):**
 - Belief — Name what you don't know — lands in the closing. The judge's "Known limit:" line makes the belief operational.
 - Belief — Practice beats external proof — continues from M4. Running the benchmark is the discipline; no amount of reasoning about which method *should* win substitutes for measuring.

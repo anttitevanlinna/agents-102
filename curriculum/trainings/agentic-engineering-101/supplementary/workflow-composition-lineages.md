@@ -151,35 +151,63 @@ Two or three practitioners is enough to track. Watch what they ship in their own
 
 **Delivery mode:** Linked from M6's `composing-the-workflow.md` lecture. Optional reading after M6 closes, or pre-read between M6 and post-cohort follow-up.
 
-**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
-- `[checked:2026-05-25 result:OK due:2026-11-25]` <https://github.com/EveryInc/compound-engineering-plugin> — [practitioner direct, vendor venue] /ce-plan,/ce-work,/ce-code-review,/ce-compound + 80/20 ratio confirmed in README. fallback: "Plan→Work→Assess→Compound" is a paraphrase; README verbs are brainstorm/plan/work/review/compound.
-- `[checked:2026-05-25 result:OK due:2026-11-25]` <https://github.com/mattpocock/skills> — [practitioner direct] skill files present, no orchestrator, README opener confirmed. fallback: README uses "engineering - not vibe coding" (dash, not comma) — trivial.
-- `[checked:2026-05-25 result:OK due:2026-11-25]` <https://cognition.ai/blog/multi-agents-working> — [practitioner direct, vendor venue] Yan 2026-04-22, both quotes verbatim. fallback: the 2-bugs/58%-severe Devin Review figure is vendor-self-reported — keep flagged.
-- `[checked:2026-05-25 result:OK due:2026-11-25]` <https://cognition.ai/blog/dont-build-multi-agents> — [practitioner direct, vendor venue] Yan 2025-06-12, historical 2025 stance. fallback: outside freshness window — historical context only, body dates it correctly.
-- `[checked:2026-05-25 result:OK due:2026-11-25]` <https://ampcode.com/notes/feedback-loopable> — [practitioner direct, vendor venue] Metcalf 2026-02-05, three components + "making it feedback loopable" verbatim. fallback: vendor-venue methodology; treat as practitioner-coined, not industry standard (body already says so).
-- `[checked:2026-08-01 result:CORRECT due:asap]` <https://ampcode.com/news/handoff> — [vendor, anonymous team byline] Handoff + "lossy compaction" quotes verbatim, 2025-10-23, and accurate as a record of what Amp argued then. **Superseded: Amp retired the feature on 2026-05-06.** The prior stamp read `OK` and claimed the body flagged this as historical. Neither held: the body presents Handoff in the present tense as a live Amp feature and speculates about its future, and this stamp's own `checked:2026-05-25` date falls **nineteen days after** the reversal it missed. fallback: body must date Handoff as retired; card owed.
-- `[checked:2026-08-01 result:OK due:2027-02-01]` <https://ampcode.com/news/neo> — [practitioner direct, vendor venue] Amp, 2026-05-06: *"So handoff is out. Compaction is in."* · *"Handoff is gone. As described above, compaction made it obsolete."* · *"Compaction now runs automatically when the context window is 90% full."* GA 2026-05-27 (<https://ampcode.com/news/drop-the-neo>). This is the reversal the body must reflect. fallback: none; it is the primary.
-- `[checked:2026-08-01 result:GONE due:asap]` <https://ampcode.com/guides/context-management> — [vendor docs] Marked Archived, body still describes Handoff as the live mechanism, never mentions compaction, and every Chronicle post footer still links it. Never cite for current behaviour. fallback: cite the dated news posts.
-- `[checked:2026-05-25 result:OK due:cohort]` <https://x.com/bcherny/status/2007179832300581177> — [practitioner direct] Cherny's own "how I use Claude Code" thread (Jan 2 2026), verified via X oEmbed 2026-05-25 (x.com 402s to direct fetch; oEmbed returns author+text — see `reference_x_content_fetch_workaround.md`). Intro confirms the scattered-not-unified framing ("surprisingly vanilla... no one correct way"). fallback: corroborated via CarolinaCherry digest (B13), but cite Cherny-direct.
-- `[checked:2026-05-25 result:OK due:2026-11-25]` <https://howborisusesclaudecode.com/> — [practitioner analysis] CarolinaCherry on Cherny, fan-compiled aggregator. fallback: not Cherny-direct — use only as aggregator, never attribute its unifications to Cherny.
-- `[checked:2026-05-25 result:OK due:2026-11-25]` <https://lucumr.pocoo.org/2026/2/13/the-final-bottleneck/> — [practitioner direct] Ronacher 2026-02-13, quote verbatim. fallback: none needed.
-- `[checked:2026-05-25 result:OK due:2026-11-25]` <https://lucumr.pocoo.org/2026/1/31/pi/> — [practitioner direct] Ronacher 2026-01-31; live quote confirmed "I throw skills away if I don't need them" (re-verified 2026-05-25). fallback: none needed.
-- `[checked:2026-05-25 result:OK due:2026-11-25]` <https://lucumr.pocoo.org/2026/1/18/agent-psychosis/> — [practitioner direct] Ronacher 2026-01-18, paraphrase faithful. fallback: none needed.
-- `[checked:2026-05-25 result:OK due:2026-11-25]` <no body URL — OODA findings workflow-composition-1a/3-confirmation> — [practitioner direct] Willison "normalization of deviance" supporting pointer. fallback: convergent pointer grounded in OODA findings; not a body-cited claim.
-- `[checked:2026-05-25 result:OK due:none]` <internal: supplementary/skill-stacking.md> — [maintainer-attested] Dino's worked-example skill stack, shipped in-repo with permission; file + 3 diagrams confirmed on disk. In-repo artefact, does not expire. fallback: none — it's in the repo.
+<!-- backing -->
 
-**Freshness:** The Amp handoff post (2025-10-23) is past the 6-month window **and superseded** — Amp retired Handoff for automatic compaction on 2026-05-06. The body carries the reversal: past tense throughout, the retirement stated in the Handoff paragraph, and the Read list pairs the launch post with `news/neo` the way the Cognition/Yan entries pair Yan's 2025 and 2026 stances. Do not auto-flag on the 2025 date alone. **Do restore the present tense at your peril:** the pre-2026-08-01 body called Handoff a feature Amp "ships" and speculated about "a better `/handoff` next month", and the stamp above it asserted the body already framed it as historical, which is how the defect stayed invisible.
+Claims
+- `the-walk-is-partial-by-design` · vision · "What this walk covers (and doesn't)" ← none-owed
+- `klaassen-compound-engineering` · detail · "/ce-plan, /ce-work, /ce-code-review, /ce-compound" ← every-ce-plugin
+- `pocock-composition-by-invocation` · detail · "skill files present, no orchestrator" ← pocock-skills
+- `yan-single-writer-with-advisors` · detail · "Single writer with advisor agents, Walden Yan and Cognition" ← cognition-multi-agents-working, cognition-dont-build
+- `metcalf-feedback-loopable` · detail · "making it feedback loopable" ← amp-feedback-loopable
+- `handoff-was-a-feature-not-a-framework` · detail · "**Handoff**, anonymous team byline at Amp (2025-10-23), was a product feature Amp shipped, not a framework." ← amp-handoff, amp-neo, amp-context-guide
+- `cherny-moves-without-a-framework` · detail · "Practitioner moves without a published framework, Boris Cherny" ← cherny-thread, howborisusesclaudecode
+- `ronacher-counter-position` · detail · "Counter-position, Armin Ronacher" ← ronacher-bottleneck, ronacher-pi, ronacher-psychosis
+- `willison-normalization-of-deviance` · detail · "composition fluency erodes review" ← willison-deviance
+- `dino-single-orchestrator-by-design` · detail · "**A single orchestrator** by deliberate design. `/ship` is the only skill that composes others." ← dino-skill-stacking
+- `dino-seven-design-principles` · detail · "**Seven design principles** that the system enforces." ← dino-skill-stacking
+- `dino-gates-fire-positionally` · detail · "**Mandatory gates fire positionally**, mid-workflow, by predicate." ← dino-skill-stacking
+- `pick-what-resembles-your-day` · vision · "three filters at the close" ← none-owed
 
-**Frameworks attributed:**
-- **Compound Engineering** — Kieran Klaassen [practitioner direct, vendor venue]. Named, published, plugin-shipped.
-- **Composition by invocation** — Matt Pocock [practitioner direct]. Practice is real and observable; framework label is the curriculum's, not Pocock's.
-- **Single writer with advisor agents** — Walden Yan / Cognition [practitioner direct, vendor venue]. Architectural shape published verbatim by Yan; the curriculum-side label is shorthand.
-- **Feedback-loopable methodology** — Lewis Metcalf at Sourcegraph Amp [practitioner direct, vendor venue]. His coined methodology.
-- **Handoff feature** — Sourcegraph Amp [anonymous team byline]. Vendor feature, not framework.
-- **Practitioner moves catalogue** — Boris Cherny [practitioner direct]. Composition primitives published on X; no unified framework label by Cherny.
-- **Review-bottleneck counter-position** — Armin Ronacher [practitioner direct]. Argument, not framework.
-- **Normalization of deviance (composition fluency erodes review)** — Simon Willison [practitioner direct]; sourced from Cycle 1A practitioner sweep, no direct URL in supplementary body but URL in OODA findings.
-- **Skill stacking system** — Dino [practitioner direct, AE101 trainer]. Three-layer model + four composition mechanisms + seven design principles, shipped 2026-05-24 with the primary doc and three diagrams at `skill-stacking/`. The framework label is Dino's own; permission to ship granted by the author.
+Sources
+- every-ce-plugin `[checked:2026-05-25 result:OK due:2026-11-25]` https://github.com/EveryInc/compound-engineering-plugin — [practitioner direct, vendor venue] `/ce-plan`, `/ce-work`, `/ce-code-review`, `/ce-compound` plus the 80/20 ratio, confirmed in the README. fallback: "Plan → Work → Assess → Compound" is a paraphrase; the README verbs are the primary.
+- pocock-skills `[checked:2026-05-25 result:OK due:2026-11-25]` https://github.com/mattpocock/skills — [practitioner direct] Skill files present, no orchestrator, README opener confirmed. **The framework label "composition by invocation" is the curriculum's, not Pocock's** — the practice is real and observable, the name is ours. fallback: README uses "engineering - not vibe coding" with a dash rather than a comma; trivial.
+- cognition-multi-agents-working `[checked:2026-05-25 result:OK due:2026-11-25]` https://cognition.ai/blog/multi-agents-working — [practitioner direct, vendor venue] Yan, 2026-04-22, both quotes verbatim. fallback: the 2-bugs / 58%-severe Devin Review figure is vendor-self-reported — keep it flagged.
+- cognition-dont-build `[checked:2026-05-25 result:OK due:none]` https://cognition.ai/blog/dont-build-multi-agents — [practitioner direct, vendor venue] Yan, 2025-06-12: the historical 2025 stance. **Durable account, `due:none`** — the body dates it correctly and cites it as the earlier position in a lineage that visibly moved, so it cannot go stale; it can only be superseded, and it already has been by the 2026 post above. Re-dated from `due:2026-11-25`, which would have re-opened a deliberately historical citation on a calendar. fallback: historical context only.
+- amp-feedback-loopable `[checked:2026-05-25 result:OK due:2026-11-25]` https://ampcode.com/notes/feedback-loopable — [practitioner direct, vendor venue] Metcalf, 2026-02-05: three components plus *"making it feedback loopable"* verbatim. fallback: vendor-venue methodology — treat as practitioner-coined, never as industry standard.
+- amp-handoff `[checked:2026-08-01 result:CORRECT due:asap]` https://ampcode.com/news/handoff — [vendor, anonymous team byline] Handoff and the "lossy compaction" quotes verbatim, 2025-10-23, accurate as a record of what Amp argued then. **Superseded: Amp retired the feature on 2026-05-06.** fallback: keep as dated history and say what happened to it.
+- amp-neo `[checked:2026-08-01 result:OK due:2027-02-01]` https://ampcode.com/news/neo — [practitioner direct, vendor venue] Amp, 2026-05-06: *"So handoff is out. Compaction is in."* · *"Handoff is gone. As described above, compaction made it obsolete."* Compaction now runs automatically at 90% fill. fallback: cite as one team's reversal, never as a trend.
+- amp-context-guide `[checked:2026-08-01 result:GONE due:asap]` https://ampcode.com/guides/context-management — [vendor docs] Marked Archived, yet the body still describes Handoff as live, never mentions compaction, and every Chronicle post footer still links it. Never cite for current behaviour. **The reversal is this section's whole teaching point** — a shipped primitive can be retired under you, which is exactly what the lineage walk exists to show. fallback: cite the dated news posts instead.
+- cherny-thread `[checked:2026-05-25 result:OK due:cohort]` https://x.com/bcherny/status/2007179832300581177 — [practitioner direct] Cherny's own "how I use Claude Code" thread, 2026-01-02, verified via the X oEmbed endpoint (x.com 402s to direct fetch; oEmbed returns author and text). fallback: describe the moves without the permalink.
+- howborisusesclaudecode `[checked:2026-05-25 result:OK due:2026-11-25]` https://howborisusesclaudecode.com/ — [practitioner analysis] CarolinaCherry on Cherny, a fan-compiled aggregator. **Not Cherny-direct: use only as an aggregator, and never attribute its unifications to Cherny.** This is the source-laundering failure mode `check_research_claims.md §1` was written for, kept here deliberately labelled rather than dropped. fallback: use the thread above.
+- ronacher-bottleneck `[checked:2026-05-25 result:OK due:2026-11-25]` https://lucumr.pocoo.org/2026/2/13/the-final-bottleneck/ — [practitioner direct] Ronacher, 2026-02-13, quote verbatim. fallback: none needed.
+- ronacher-pi `[checked:2026-05-25 result:OK due:2026-11-25]` https://lucumr.pocoo.org/2026/1/31/pi/ — [practitioner direct] Ronacher, 2026-01-31: *"I throw skills away if I don't need them"*, re-verified. fallback: none needed.
+- ronacher-psychosis `[checked:2026-05-25 result:OK due:2026-11-25]` https://lucumr.pocoo.org/2026/1/18/agent-psychosis/ — [practitioner direct] Ronacher, 2026-01-18, paraphrase faithful. fallback: none needed.
+- willison-deviance `[checked:2026-05-25 result:OK due:2026-11-25]` (no body URL — OODA findings workflow-composition-1a/3-confirmation) — [practitioner direct] Willison on "normalization of deviance" as a supporting pointer. kb:platform-watch/coding-agents/runs fallback: convergent pointer grounded in the OODA findings; not a body-cited claim.
+- dino-skill-stacking `[checked:2026-05-25 result:ATTESTED due:none]` (internal — `supplementary/skill-stacking.md`) — [maintainer-attested] Dino's worked-example skill stack, shipped in-repo with the author's permission; file plus three diagrams confirmed on disk. The three-layer model, four composition mechanisms and seven design principles are Dino's own labels. In-repo artefact, does not expire. fallback: none — it is in the repo.
+
+Frameworks
+- Compound engineering · [borrow:none] · law:the-compound-ladder · ← every-ce-plugin — named, published, plugin-shipped
+- Composition by invocation · [borrow:none] · law:none · ← pocock-skills — **the label is the curriculum's, not Pocock's**
+- Single writer with advisor agents · [borrow:none] · law:none · ← cognition-multi-agents-working — the architectural shape is Yan's, published verbatim; the shorthand is ours
+- Feedback-loopable methodology · [borrow:none] · law:none · ← amp-feedback-loopable — Metcalf's coinage
+- Normalization of deviance · [borrow:safety engineering] · law:none · ← willison-deviance — Vaughan's term, applied by Willison to composition fluency
+- Skill stacking · [borrow:none] · law:none · ← dino-skill-stacking — Dino's own framework label
+- Requisite variety · [borrow:cybernetics] · law:requisite-variety · ← cultural-vocab — the lineages differ because the jobs differ
+
+Stance `[stance:2026-08-01 level:L2]`
+- holds: that composition has several live lineages and no winner. Seven named practitioners or teams, each with published artefacts, and the page's own design refuses to rank them — three filters at the close rather than a winners' table. **The divergence IS the finding, and it is well evidenced.**
+- contested: everything downstream of that. The clearest evidence is Amp's reversal — a shipped primitive retired under its users inside seven months, with the vendor's own archived guide still teaching the dead mechanism three months later. Cognition moved sharply between 2025 and 2026 too. **Two of seven lineages visibly changed position inside the window**, which is a stronger argument for "unsettled" than any single practitioner's opinion.
+- would-move-it: a third Cognition position, or another vendor retiring a composition primitive, both of which are section updates rather than reframings. What would actually move the page is convergence — practitioners arriving at one shape — which would turn a lineage walk into a recommendation and require the ranking section the watch-fors forbid.
+
+OODA
+- question: has any lineage moved again, has a new named framework landed, and has anyone retired another shipped composition primitive?
+- roster: Kieran Klaassen, Matt Pocock, Walden Yan and Cognition, Lewis Metcalf and the Amp Chronicle, Boris Cherny, Armin Ronacher, Simon Willison
+- last-run: 2026-08-01
+
+Flagged
+- `[found:2026-08-01]` Amp's archived context-management guide still describes Handoff as live, three months after the feature was retired, while every Chronicle post footer links it → no action owed on our side, and it is worth keeping visible because it is the sharpest available illustration of the page's own thesis: a vendor's documentation and its shipped behaviour can disagree in public for a quarter.
+
+<!-- /backing -->
 
 **Attribution-cap exception (per `check_writing.md` rule 11):** This supplementary IS a practitioner-by-practitioner walk; each named practitioner gets one section. The cap-at-one-per-module rule is about not over-citing one practitioner; the walk structure means each appears in their own dedicated section, which is the shape of the artefact. Future judges should not re-flag.
 

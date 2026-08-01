@@ -111,12 +111,53 @@ The more powerful the coding agent, the more important the steering system.
 **Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@9697944 slides@9697944)
 - judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
-**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).** All seven Uncle Bob blockquotes verified verbatim via the X oEmbed endpoint 2026-05-25 (x.com 402s to direct fetch; oEmbed returns author + text — see `reference_x_content_fetch_workaround.md`). X posts Mar–Apr 2026; `due:cohort` = re-confirm freshness + resolution at each delivery.
-- `[checked:2026-05-25 result:OK due:cohort]` https://x.com/unclebobmartin/status/2016166910698696916 — [practitioner direct] two-window split (plan dir / code dir, manual pull-push). oEmbed-verified.
-- `[checked:2026-05-25 result:OK due:cohort]` https://x.com/unclebobmartin/status/2032072361436983517 — [practitioner direct] juniors need pragmatics + dependency inversion over OOP/FP labels. oEmbed-verified.
-- `[checked:2026-05-25 result:OK due:cohort]` https://x.com/unclebobmartin/status/2032089795766129021 — [practitioner direct] six fundamentals (tests cheap, coverage, metric-enforced quality, modularity, architecture, constrain AIs). oEmbed-verified.
-- `[checked:2026-05-25 result:OK due:cohort]` https://x.com/unclebobmartin/status/2046222100164153548 — [practitioner direct] "AIs are faster... Deal with it. There's still plenty left for you to do." oEmbed-verified.
-- `[checked:2026-05-25 result:OK due:cohort]` https://x.com/unclebobmartin/status/2049124461127864613 — [practitioner direct] "manage the structure, design, architecture, and process." oEmbed-verified.
-- `[checked:2026-05-25 result:OK due:cohort]` https://x.com/unclebobmartin/status/2049225231273767154 — [practitioner direct] "get an agent to build [a visualization] for you." oEmbed-verified.
-- `[checked:2026-05-25 result:OK due:cohort]` https://x.com/unclebobmartin/status/2049453605237715058 — [practitioner direct] Dijkstra / formalism quote. The tweet spells it "Dykstra" (Bob's typo); body L85 carries the correct "Dijkstra" — kept as the kind correction. oEmbed-verified.
-- Supporting: Security Now transcript `https://www.grc.com/sn/sn-1070.htm`; Uncle Bob `arch-view` `https://github.com/unclebob/arch-view`.
+<!-- backing -->
+
+Claims
+- `clean-code-changes-what-its-for` · vision · "AI coding does not make Clean Code irrelevant. It changes what Clean Code is for." ← none-owed
+- `old-discipline-more-valuable-when-less-exciting` · vision · "The old discipline looks less exciting at exactly the moment it becomes more valuable." ← none-owed
+- `martin-experiments-in-public` · vision · "he is experimenting in public, letting the tool surprise him, and then rediscovering which parts of the discipline carry" ← none-owed
+- `two-window-split` · detail · "I'm keeping two Claude windows open. One making changes to the source code. The other helping me to plan future changes." ← martin-two-windows
+- `six-fundamentals` · detail · "**CRAP And Complexity Metrics.** CRAP scores, cyclomatic complexity, and related metrics expose code that is hard to trust under change." ← martin-six-fundamentals
+- `acceptance-tests-preserve-visible-behaviour` · vision · "Acceptance tests define the externally visible behavior the system must preserve." ← none-owed
+- `unit-tests-shrink-the-search-space` · vision · "They also make the agent's search space smaller." ← none-owed
+- `tdd-states-behaviour-before-implementation` · vision · "The red test forces the desired behavior to be stated before implementation." ← none-owed
+- `mutation-testing-checks-the-tests` · vision · "Mutation testing asks whether the tests actually defend the behavior they claim to defend." ← none-owed
+- `small-units-reduce-collateral-damage` · vision · "Small units with clear boundaries reduce collateral damage." ← none-owed
+- `architecture-needs-instruments` · detail · "Dependency direction, cycles, layers, and boundaries should be visible" ← martin-manage-structure, martin-visualization
+- `human-owns-the-mental-model` · detail · "the human still owns the mental model" ← martin-manage-structure, martin-ais-are-faster
+- `dijkstra-formalism` · detail · "Dijkstra" ← martin-dijkstra
+- `juniors-need-pragmatics` · detail · "Juniors entering the field will still need to understand what code is. But they won't need most of the philosophy that we've been used to." ← martin-juniors
+- `the-learning-arc-itself` · detail · "his learning journey starts with obvious excitement" ← martin-security-now, martin-two-windows, martin-ais-are-faster
+
+Sources
+- martin-two-windows `[checked:2026-05-25 result:OK due:none]` https://x.com/unclebobmartin/status/2016166910698696916 — [practitioner direct] Robert C. Martin, the two-window split: plan directory and code directory, manual pull-push. oEmbed-verified. **`due:none`** — a dated first-hand post about what he was doing then; re-reading it next year cannot change it, and the body frames his arc as a learning journey rather than as current practice.
+- martin-juniors `[checked:2026-05-25 result:OK due:none]` https://x.com/unclebobmartin/status/2032072361436983517 — [practitioner direct] juniors need pragmatics and dependency inversion over OOP/FP labels. oEmbed-verified.
+- martin-six-fundamentals `[checked:2026-05-25 result:OK due:none]` https://x.com/unclebobmartin/status/2032089795766129021 — [practitioner direct] the six fundamentals: tests cheap, coverage, metric-enforced quality, modularity, architecture, constrain AIs. oEmbed-verified. **This is the load-bearing stamp of the page** — it is the one post that maps onto the body's section list rather than onto a single sentence.
+- martin-ais-are-faster `[checked:2026-05-25 result:OK due:none]` https://x.com/unclebobmartin/status/2046222100164153548 — [practitioner direct] *"AIs are faster… Deal with it. There's still plenty left for you to do."* oEmbed-verified.
+- martin-manage-structure `[checked:2026-05-25 result:OK due:none]` https://x.com/unclebobmartin/status/2049124461127864613 — [practitioner direct] *"manage the structure, design, architecture, and process."* oEmbed-verified.
+- martin-visualization `[checked:2026-05-25 result:OK due:none]` https://x.com/unclebobmartin/status/2049225231273767154 — [practitioner direct] *"get an agent to build [a visualization] for you."* oEmbed-verified. Corroborated by his own `arch-view` repo: https://github.com/unclebob/arch-view
+- martin-dijkstra `[checked:2026-05-25 result:OK due:none]` https://x.com/unclebobmartin/status/2049453605237715058 — [practitioner direct] the Dijkstra / formalism quote. **The tweet spells it "Dykstra"** — Martin's typo — and body carries the correct "Dijkstra" as a kind silent correction. Recorded here so a future verifier who greps the source for "Dijkstra" and finds nothing does not report a fabricated quote. oEmbed-verified.
+- martin-security-now `[checked:2026-05-25 result:OK due:none]` https://www.grc.com/sn/sn-1070.htm — [practitioner interview] Security Now transcript, used as supporting context for the arc rather than for any single body sentence. **Source-access note:** original X pages 402 to direct fetch and may require login; every quote above was verified through the oEmbed endpoint, which returns author and text. fallback: quote from the transcript and the mirrors instead of the X permalinks.
+
+Frameworks
+- Clean Code · [borrow:software engineering] · law:none · ← martin-six-fundamentals — Martin's own body of work, credited in the title
+- Test-driven development · [borrow:software engineering] · law:none · ← cultural-vocab
+- Mutation testing · [borrow:software testing] · law:none · ← cultural-vocab
+- Steering is executable constraint · [borrow:none] · law:steering-is-executable-constraint-your-stance-is-the-ceiling · ← none — the page's thesis: the old discipline is how you steer, not how you tidy
+- Good regulator · [borrow:cybernetics] · law:good-regulator · ← cultural-vocab — the human keeps the model of the system; the agent does not have one
+
+Stance `[stance:2026-08-01 level:L1]`
+- holds: that classic Clean Code practices become steering instruments under agentic development. One named practitioner, working through it in public, with seven verified posts behind him. The body is careful about this — it frames his arc as a learning journey rather than as a verdict the field reached.
+- contested: **the mapping between his seven posts and this page's eight sections, which is looser than the section headings imply.** The six-fundamentals post carries most of the load; acceptance tests, TDD and mutation testing are the discipline he has taught for decades rather than things he said about agents in these posts. That is legitimate synthesis of a body of work and it is not the same as quotation, and the title *Insights from Uncle Bob* invites a reader to hear all eight as his recent claims.
+- would-move-it: Martin publishing a position that contradicts the steering framing, or a second practitioner of his standing arriving at the same reframe independently, which would take it to L2 and let the page stop leaning on one figure.
+
+OODA
+- question: has Martin's position moved, and is anyone else reframing classic quality discipline as agent steering rather than as tidiness?
+- roster: Robert C. Martin, Kent Beck, Martin Fowler, Dex Horthy, Adam Tornhill
+- last-run: 2026-08-01
+
+Flagged
+- `[found:2026-08-01]` The page's eight sections map onto seven posts unevenly — three of the eight (acceptance tests, TDD, mutation testing) rest on Martin's decades of published work rather than on anything in the stamped posts about agents → the synthesis is fair, the title is the risk. Consider whether *Insights from Uncle Bob* should read as *Clean Code discipline, read through Uncle Bob's agent experiments*, which is what the page actually does.
+
+<!-- /backing -->

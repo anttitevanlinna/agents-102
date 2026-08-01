@@ -10,7 +10,20 @@ PDCA step 6. Reader's lens; agent's lens = `simulation-behavior.md` (Class B). R
 
 **Delivery mode = classroom (in-room).** Cohort + human trainer. Author the persona walking through with the room around them.
 
-**Mood judged alongside mechanics.** 1–10 per phase-end + close, 8+/10 bar. 7/10 = facilitator-premium signature; treat as "what's stealing mood," not "good enough." Full rubric: `curriculum/evals/exercise.md` / `lecture.md`.
+**Mood judged alongside mechanics.** 1–10 per phase-end + close, 8+/10 bar. 7/10 = facilitator-premium signature; treat as "what's stealing mood," not "good enough." Scale: §Mood scale below (canonical — first stored 2026-08-01; the scale ran unstored in sim prompts before that). Thresholds consumed by `curriculum/evals/exercise.md` / `lecture.md` (REVISE gates) + module decision points ("whole-room mood below 7").
+
+## Mood scale (1–10)
+
+What the number rates: how fully the module's TARGET mood (per-module `Mood (deliberate)` / mood contract) is present in the simulated student at this beat — not general satisfaction, not content quality.
+
+- **9–10** — target mood present + self-generating: the artefact itself produces it ("it works, on my repo"); student would name the feeling unprompted.
+- **8** — ship bar. Target mood present; the content produces it without trainer compensation; minor noise doesn't threaten it.
+- **7** — facilitator-premium signature. Mood lands ONLY if a skilled trainer compensates (reframe, narration, rescue); content alone leaves the student neutral. Always name what would take it 7→8.
+- **5–6** — target mood absent; a neighbouring mood sits in its place (technical warm-up where joyful creation should be; compliance where curiosity should be). Student cooperates; beat is mechanical.
+- **3–4** — counter-mood forming: the drift the module's Watch-fors name (correction-feeling, performance-anxiety, lost control).
+- **1–2** — active negative: frustration/disengagement; student questions returning.
+
+Trainer-side mapping: "whole-room mood below 7" in a module's decision points = the room reads 6 or less = target mood ABSENT, not merely facilitator-premium. The Check that follows each trigger is the observable instrument; the number is the calibration shorthand.
 
 ## Prompt template
 
@@ -33,7 +46,7 @@ FOR EACH PHASE:
 1. Describe what you would paste or do — make up realistic content in your persona's voice (`persona_action`)
 2. Flag any moment you're confused, stuck, or unsure what the exercise wants (`confusion_flags`)
 3. Record the state after the phase — what artifact you now have (`artifact_state`)
-4. **Mood score 1–10** at phase-end + one-line note on what the student is feeling (match against the module mood contract; flag drift) (`mood_score`, `mood_note`)
+4. **Mood score 1–10** at phase-end + one-line note on what the student is feeling (rate against the module mood contract using the Mood scale in this skill's simulation.md §Mood scale; flag drift) (`mood_score`, `mood_note`)
 
 DO NOT predict what Claude would return. DO NOT flag Claude-behavior mismatches. Both moved to Class B (`simulation-behavior.md`) and are owned by the prompt-behavior judge.
 

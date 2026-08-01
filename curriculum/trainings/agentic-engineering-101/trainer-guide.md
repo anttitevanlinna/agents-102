@@ -210,6 +210,8 @@ Per cohort session, three tiers:
 
 ## Live Triage
 
+**Mood, and the "below 7" shorthand.** Each module has a deliberate mood target (named in its run sheet: joyful creation, grounded competence, curious readiness, learning through contrast). Where a decision point says "whole-room mood below 7," it means the target mood is visibly absent — you never poll the room; the Check that follows each trigger is the real instrument, and if the Check fails, run the Fix. For calibration: a 7 is a room where the mood lands only because you are compensating (reframing, narrating, rescuing); at 8 the content itself carries it; below 7 a neighbouring mood has taken over — technical warm-up where joy should be, compliance where curiosity should be.
+
 Protect the core live run. Each session has one main exercise, sometimes two medium ones before the midpoint. If time slips, compress framing, run the prompt, and move polish or extended comparison to homework. Do not try to "cover" the module at the cost of the exercise. AE101 teaches through artifacts and traces, not explanation.
 
 Do not script the cut order too tightly. The trainer is also an adult professional reading the room. The default bias is to preserve the live run and the trace it produces; after that, framing, debrief, comparison, and polish can flex.

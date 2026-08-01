@@ -17,7 +17,7 @@ For the per-judge prompt templates, see `curriculum/evals/judges/{writing,story,
 
 ## Pass thresholds
 
-- **Mood lands** (story class): 8+/10 at every phase-end + close. 7 = facilitator-premium signature; flag what would take it from 7 to 8. Below 7 = REVISE.
+- **Mood lands** (story class): 8+/10 at every phase-end + close. 7 = facilitator-premium signature; flag what would take it from 7 to 8. Below 7 = REVISE. Scale anchors: `.claude/skills/content-creation/simulation.md` §Mood scale (canonical).
 - **Teaching moment lands** (story class): the named teaching moment must reliably trigger across reasonable persona-skill variation. Skippable = REVISE.
 - **No high-confidence behavioral risk on a load-bearing prompt** (behavior class): a high-confidence risk fired against a teaching-moment or hand-off prompt = REVISE.
 - **All blocking rules PASS** per each class judge's JSON output. Any blocking REVISE → file BLOCK.

@@ -18,7 +18,7 @@ For the per-judge prompt templates, see `curriculum/evals/judges/{writing,story,
 ## Pass thresholds
 
 - **Leap test** (story class): a CTO / builder leader can do the named outcomes after reading. Otherwise REVISE.
-- **Mood lands** (story class): 8+/10 at close. Below 7 at close = REVISE.
+- **Mood lands** (story class): 8+/10 at close. Below 7 at close = REVISE. Scale anchors: `.claude/skills/content-creation/simulation.md` §Mood scale (canonical).
 - **Lecture placement** (story class, via `check_lectures.md`): meta-frame lectures are closers, not openers. Minimal lecturing before contrast-mood exercises.
 - **All blocking rules PASS** per each class judge's JSON output. Any blocking REVISE → file BLOCK.
 

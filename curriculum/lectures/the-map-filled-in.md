@@ -225,9 +225,58 @@ The map is back, one last time.
 - **Minor 9** — the crossing-the-wall bullet now carries a worded, no-math dip-before-climb mechanism (your own runs speed up before the team's numbers move; the team's reviewing/sharing has to be rebuilt around the new speed, and the handed-over checks and skills are that rebuild). This is the J-curve / complementary-investment borrow the theory audit assigns to the-wall: [borrow:economics] Paul David, "The Dynamo and the Computer" (1990, AEA P&P); Brynjolfsson, Rock and Syverson, "The Productivity J-Curve" (AEJ: Macroeconomics, 2021). Both verified live 2026-07-03 — stamps below. Body stays unnamed and number-free by design (no laws coined, no math on slides).
 - **Minor 10** — the test-learn-encode bullet now carries the unnamed variation-selection-retention clause (runs generate variants, the eval selects, the memory retains); "eval" is earned earlier in this lecture on the Verification slide. Attribution stays maintainer-side: Donald Campbell's blind-variation-and-selective-retention (BVSR) is the shape; body names zero new laws, per the dose verdict above.
 
-**Source verification — MUST DO before first cohort:**
-- `[checked:2026-07-03 result:OK due:2027-01-03]` https://ideas.repec.org/a/aea/aecrev/v80y1990i2p355-61.html — [academic/research] Paul A. David, "The Dynamo and the Computer: An Historical Perspective on the Modern Productivity Paradox", AER Papers & Proceedings 80(2), 1990, 355–361. Backs the crossing-the-wall bullet's dip-before-climb clause (complementary-investment mechanism; historical borrow, not current evidence — body carries no date or number). The JSTOR stable page (jstor.org/stable/2006600) 403s automated fetches; the RePEc landing page is the live record. fallback: cut the "Your own runs speed up before the team's numbers move..." sentence; the bullet stands without it.
-- `[checked:2026-07-03 result:OK due:2027-01-03]` https://www.nber.org/papers/w25148 — [academic/research] Brynjolfsson, Rock and Syverson, "The Productivity J-Curve: How Intangibles Complement General Purpose Technologies", published AEJ: Macroeconomics 13(1), 2021, 333–372. Same claim-anchor as the David 1990 line. fallback: same — drop the dip-before-climb sentence.
+<!-- backing -->
+
+Claims
+- `checking-loop-drawn-solid` · vision · "A loop made of checks that stand without you gets drawn solid" ← none-owed
+- `nothing-else-moved` · vision · "Nothing else moved. Same six phases, same loops, same wall at the team's edge." ← none-owed
+- `you-drew-a-control-loop` · borrowed · "That is **feedback control** around a non-deterministic agent" ← cultural-vocab
+- `near-half-shapes-far-half-corrects` · vision · "The near half shapes; the far half corrects." ← none-owed
+- `verification-is-the-sensor` · vision · "A loop with no way to read its own result runs open: send the work off and hope." ← none-owed
+- `find-is-easier-than-judge` · vision · "**Find is easier than judge.**" ← none-owed
+- `three-pattern-stands-in-at-verification` · vision · "**The three-pattern** stands in for you at Verification." ← none-owed
+- `verifier-judge-gate-every-one-an-eval` · vision · "**Verifier, judge, gate: every one an eval.**" ← none-owed
+- `generation-fast-absorption-slow` · vision · "**Generation is fast; reading, judging, and merging are not.**" ← none-owed
+- `review-bandwidth-is-the-constraint` · vision · "**Review bandwidth is the constraint** composition cannot relax." ← none-owed
+- `ratio-runs-near-80-20` · detail · "Roughly 80 percent planning and review, 20 percent execution" ← every-compound-80-20
+- `rule-in-context-is-not-rule-in-output` · vision · "**A rule in context is not a rule in the output.**" ← none-owed
+- `test-learn-encode-is-variation-selection-retention` · borrowed · "the runs generate variants, the eval selects, the memory retains" ← cultural-vocab
+- `a-move-counts-when-it-crosses-the-wall` · vision · "**A move counts when it crosses the wall.**" ← none-owed
+- `dip-before-climb` · detail · "Your own runs speed up before the team's numbers move, because the team's way of reviewing and sharing has to be rebuilt around the new speed first" ← david-dynamo-1990, brynjolfsson-j-curve
+- `far-half-governor` · vision · "*When the agent takes a hundred steps alone, what makes you trust the result at the end?*" ← none-owed
+- `governor-answer-became-a-build-list` · vision · "A run the question has no answer for is a run not ready to send." ← none-owed
+- `moves-first-names-after` · vision · "The moves came first; the names came after." ← none-owed
+- `dashed-is-a-state-not-a-place` · vision · "Dashed is a state, not a place." ← none-owed
+- `every-check-moves-the-frontier` · vision · "Every check that stands without you moves the frontier outward." ← none-owed
+
+Sources
+- david-dynamo-1990 `[checked:2026-07-03 result:OK due:none]` https://ideas.repec.org/a/aea/aecrev/v80y1990i2p355-61.html — [academic/research] Paul A. David, *The Dynamo and the Computer: An Historical Perspective on the Modern Productivity Paradox*, AER Papers & Proceedings 80(2), 1990, 355–361. Backs the crossing-the-wall bullet's dip-before-climb clause — the complementary-investment mechanism, a historical borrow rather than current evidence, and the body carries no date or number from it. **Foundational-literature variant, `due:none`** (`backing-format.md` § Foundational): a 1990 paper's claim is fixed by publication, and the previous `due:2027-01-03` would have flagged it STALE as an artifact of the rule rather than a defect in the material. The JSTOR stable page (jstor.org/stable/2006600) 403s automated fetches; the RePEc landing page is the live record. fallback: cut the "Your own runs speed up before the team's numbers move…" sentence; the bullet stands without it.
+- brynjolfsson-j-curve `[checked:2026-07-03 result:OK due:none]` https://www.nber.org/papers/w25148 — [academic/research] Brynjolfsson, Rock and Syverson, *The Productivity J-Curve: How Intangibles Complement General Purpose Technologies*, published AEJ: Macroeconomics 13(1), 2021, 333–372. Same claim-anchor as the David 1990 line, four decades later and on the same mechanism, which is what makes the pairing worth keeping. Foundational variant, `due:none`, same reasoning. fallback: same — drop the dip-before-climb sentence.
+- every-compound-80-20 `[checked:2026-07-30 result:CAVEAT due:2027-01-30]` https://every.to/source-code/compound-engineering-how-every-codes-with-agents — [practitioner direct, vendor venue] Shipper & Klaassen (Dec 2025): *"Roughly 80 percent of compound engineering is in the plan and review parts, while 20 percent is in the work and compound."* **Added 2026-08-01 — this file restated the ratio in body while carrying no stamp for it,** relying on `what-packaging-is` having stamped it two lectures earlier. A claim owes its backing in the file that makes it; a reader auditing this lecture alone would have found a bare number. Dec 2025, outside the 6-month window: framework origin, not fresh evidence. fallback: drop the number and keep the posture — the run is the cheap part, the reading and shaping around it are where the hours live.
+
+Frameworks
+- Feedback control · [borrow:control theory] · law:is-a-closed-loop-controller · ← cultural-vocab — named in body at the control-loop slide, the one place the whole map is stated as one mechanism
+- The value cycle · [borrow:none] · law:the-value-cycle · ← none — the six phases; this lecture is its far-half consolidation
+- Absorption bottleneck · [borrow:none] · law:absorption-bottleneck · ← none — the generation-vs-reading gap and the review-bandwidth bullet are this law twice
+- Crosses the wall · [borrow:economics] · law:crosses-the-wall · ← david-dynamo-1990, brynjolfsson-j-curve — the J-curve borrow the theory audit assigns here; body stays unnamed and number-free by design
+- Variation, selection, retention · [borrow:evolutionary theory] · law:variation-selection-retention · ← cultural-vocab — Campbell's blind-variation-and-selective-retention; attribution stays maintainer-side, body names zero new laws
+- Calibrated delegation frontier · [borrow:none] · law:calibrated-delegation-frontier · ← none — paid off from the M5 close as one closing bullet
+- Double-loop learning · [borrow:Argyris & Schön] · law:double-loop-learning · ← cultural-vocab — encode-what-fires rather than one more sentence in a rules file
+
+Stance `[stance:2026-08-01 level:L2]`
+- holds: the laws, not new findings. This is a consolidation lecture that coins nothing — every law was named in-room before it, and its job is placement rather than assertion. **That is why almost every claim here is `vision` and why that is correct rather than lazy:** a consolidation file restating the training's own framing owes recognition, not citation. The two academic sources back the one mechanism the body borrows from outside.
+- contested: nothing in the laws. The open questions on this file are dose and slot timing, which are delivery decisions rather than evidence ones, and they sit in the eyeball queue where they belong.
+- would-move-it: a law being renamed or retired upstream, which would strand a bullet here — this file is downstream of every other AE101 lecture, so its real risk is drift rather than falsification. The J-curve pairing would move if a study found the dip does not appear for agentic tooling specifically.
+
+OODA
+- question: has any law on this map been renamed, retired, or re-hedged in its home lecture without this consolidation following?
+- roster: none external — this file's OODA is a diff against the eight lectures whose laws it restates, plus `theory-plan.md`'s inventory.
+- last-run: 2026-08-01
+
+Flagged
+- `[found:2026-08-01]` The 80/20 ratio appeared in this body with no stamp in this file, backed only by the stamp two lectures upstream → now stamped locally. **The general question it raises is worth a sweep:** a consolidation lecture restates other lectures' claims by design, and every restated number is a citation this corpus has been carrying in exactly one place. Which other bullets here are restatements whose backing lives elsewhere?
+
+<!-- /backing -->
 
 **EYEBALL questions (2026-07-02, for Antti):**
 1. Slot timing: M6 runs 1h45 with Closer 15 / Bridge 3; this adds 8–10 min as a fourth closer beat. Trim a neighbour, extend the slot, or deliver this as the bridge beat?

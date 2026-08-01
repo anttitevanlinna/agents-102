@@ -86,13 +86,47 @@ Section stays open-ended (no count locked) because the thesis is that surprises 
 **Known TODOs:**
 - Antti's rewrite pass in final voice (~15 min).
 
-**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
+<!-- backing -->
 
-- `[checked:2026-05-25 result:OK due:2026-11-25]` https://x.com/geoffintech/status/2042002590758572377 — [practitioner direct] Charles CPO 2026-04-09 "The models were good enough. The harness wasn't." (L29). Verified via observations/ramp.md + oEmbed; x.com page 402s but the quote is confirmed. Within freshness window. fallback: fire the file's documented reframe — "Ramp's engineers' framing converges on: the harness was the bottleneck, not the model" — drop the named verbatim quote.
+Claims
+- `session-tally` · detail · "One session. 2026-04-24. One model: `claude-opus-4-7`. Twenty-odd planning turns. Five taste reversals from me on Claude's confident recommendations." ← ae101-m6-session-notes
+- `four-banned-word-leaks` · detail · "Three subagents in parallel. Four banned-word leaks across those three subagents." ← ae101-m6-session-notes
+- `verifier-caught-two-more` · detail · "It caught two more leaks the LLM self-checks had missed. It also found three of our own rules contradict each other." ← ae101-m6-session-notes
+- `ten-fixes-applied` · detail · "Ten fixes applied in all." ← ae101-m6-session-notes
+- `opened-chat-shaped` · detail · "No reference artefact. No `plan.md`. No verifier. Chat-shaped in the exact way M5 teaches you to notice." ← ae101-m6-session-notes
+- `same-rule-four-violations` · detail · "Same rule, same rules file, same task, four separate violations across four independent LLM instances." ← ae101-m6-session-notes
+- `sims-and-evals-not-run` · detail · "Claude had not run them. The reference artefact had flagged them as pre-first-cohort work." ← ae101-m6-session-notes
+- `charles-actual-line` · detail · "The models were good enough. The harness wasn't." ← geoffintech-charles
+- `paraphrase-shipped-as-quote` · detail · "Claude had written a paraphrase and presented it as attribution." ← ae101-m6-session-notes, geoffintech-charles
+- `schedule-is-routines-remote` · detail · "`/schedule` is Routines, remote, cloud-based. Desktop local tasks are a separate primitive." ← ae101-m6-session-notes, cc-schedule-capability
+- `everyone-struggles` · vision · "Everyone struggles." ← none-owed
+- `llm-is-not-deterministic` · vision · "The LLM is not a deterministic machine." ← none-owed
+- `rule-in-context-is-not-rule-in-output` · vision · "A rule in context is not a rule in the output. Taste closes the gap. Nothing else does." ← none-owed
+- `rule-in-memory-that-does-not-force` · vision · "A rule in memory that does not force is worse than no rule." ← none-owed
+- `loop-exists-because-llms-drift` · vision · "The loop exists because LLMs drift. The loop exists because rules leak." ← none-owed
+- `catch-it-and-encode-it` · vision · "Your job is not to stop the drift. Your job is to catch it and encode what you learned." ← none-owed
 
-**Frameworks attributed:**
-- Non-determinism framing — Antti's working position, reshaped from earlier *"we live what we teach"* credibility framing after the Claude-generated recommendation was cut at turn 7.
-- Rules-loaded-but-bypassed pattern — emergent from session notes. Candidate for compound-rule amendment at session close.
+Sources
+- ae101-m6-session-notes `[checked:2026-04-24 result:ATTESTED due:none]` attested:Antti 2026-04-24 M6-generation-session — [maintainer-attested] `curriculum/module-design/ae101-m6-session-notes.md`, live running notes from the session. Every number in the memo pulls from that file's tally and its subagent drift reports. The maintainer ran the session: first-hand primary, no URL owed (`check_research_claims.md §1`). **`due:none` is right here, and the reason matters** — this is a dated memo about one session that happened, not a claim about how sessions go. It cannot go stale, only be superseded. fallback: none. **Regeneration, not re-verification, is the maintenance move:** when M6 runs for a new cohort, regenerate the opener from that cohort's notes. A dated memo ages cleanly on its date; a reused dated memo ages as a trip report.
+- geoffintech-charles `[checked:2026-05-25 result:OK due:2026-11-25]` https://x.com/geoffintech/status/2042002590758572377 — [practitioner direct] Geoff Charles (Ramp), 2026-04-09: *"The models were good enough. The harness wasn't."* Verified via `observations/ramp.md` plus the X oEmbed workaround; the x.com page 402s, the quote is confirmed. kb:observations/ramp.md **Load-bearing in an unusual way: the memo's whole point is that our paraphrase drifted from this line, so the verbatim IS the claim.** The documented reframe other files fall back to — "Ramp's engineers' framing converges on: the harness was the bottleneck, not the model" — is precisely the paraphrase this passage is about, and firing it here would delete the anecdote. fallback: if the quote ever fails verification, cut the paragraph rather than soften it.
+- cc-schedule-capability `[checked:2026-04-24 result:OK due:cohort]` https://code.claude.com/docs/en/ — [capability] The capability check the memo describes: `/schedule` is Routines, remote and cloud-backed; Desktop local tasks are a separate primitive. Stamped here because the memo asserts it as a fact about the product, not only as something that happened in a session. **Corroborates `the-loop-has-a-name`'s three-scheduling-primitives bullet, which carries no stamp of its own** — the same underlying check, recorded in the wrong file. fallback: re-test before a cohort; if the split has changed, this passage becomes dated-historical and needs an inline date.
+
+Frameworks
+- Non-determinism as the condition · [borrow:none] · law:none · ← none — Antti's working position, reshaped from an earlier "we live what we teach" credibility framing after the Claude-generated recommendation was cut at turn 7
+- Rules-loaded-but-bypassed · [borrow:none] · law:none · ← ae101-m6-session-notes — a loaded rule is not an enforced rule; this observation is what pushed the corpus toward forcing functions
+- Double-loop learning · [borrow:Argyris & Schön] · law:double-loop-learning · ← cultural-vocab — "then I compounded the run" is the second loop: not fixing the leak, changing the rule that let it leak
+
+Stance `[stance:2026-08-01 level:L4]`
+- holds: everything in it, at the highest rung available. First-hand maintainer testimony about a session the maintainer ran, with the artefacts still on disk. There is no evidence problem here and there never will be — **the only failure mode is age, and age is handled by regeneration rather than by re-checking.**
+- contested: nothing. The single external claim is verified, and the memo's argument does not depend on it — the anecdote is about our own paraphrase drifting, so the quote's job is to be the thing we got wrong.
+- would-move-it: nothing about the field. What retires this lecture is a new M6 generation session producing a new memo. Watch instead for the model name ageing in body: `claude-opus-4-7` was correct on 2026-04-24 and is increasingly a period detail — which is fine in a dated memo and wrong the moment the memo stops reading as dated.
+
+OODA
+- question: has M6 been regenerated for a new cohort, and does this memo still describe the session the shipped module came from?
+- roster: none external. This file's OODA is a read of `curriculum/module-design/ae101-m6-session-notes.md` against the module's own git history.
+- last-run: 2026-08-01
+
+<!-- /backing -->
 
 **Philosophy callouts:** zero in body. The Story names the condition; belief-tagging dilutes the beat.
 

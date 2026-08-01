@@ -201,6 +201,41 @@ Pick the shape that resembles your day.
 
 **Delivery mode:** Read aloud in-room at the closer area with the chart projected, or skipped if the cohort is tight (the two reads are the load-bearing deepening; the lecture is the concrete entry).
 
-**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).** The figure asserts only the student's own kit (test-strategy, verifier, the mapped next move, authored or drawn across the arc) placed on the passage chart, plus the four composition mechanisms. `/ship` is Dino's own skill, NOT a Claude Code built-in; the chart keeps the orchestrator generic ("the pilot") and the named example stays in the supplementary. No independent dated claim lives in this body; all specifics + full per-source stamps live in the two supplementaries this lecture points at.
-- `[checked:2026-07-05 result:OK due:none]` <delegates to `supplementary/skill-stacking.md`> — the four composition mechanisms + the `/ship`-as-pilot worked example (Dino's in-repo stack; does not expire). fallback: re-verify in that doc if its own stamps age out.
-- `[checked:2026-07-05 result:OK due:2026-11-25]` <delegates to `supplementary/workflow-composition-lineages.md`> — the field-survey lineages; per-source stamps live there (checked 2026-05-25, inside window). fallback: this lecture carries no independent claim; re-verify in the supplementary.
+<!-- backing -->
+
+Claims
+- `a-workflow-is-moves-in-order` · vision · "A workflow is those moves in the right order around one passage." ← none-owed
+- `skill-is-a-named-move` · vision · "A **skill** is a named move you reach for. Single purpose, reusable, invoked by name." ← none-owed
+- `footprint-follows-the-job` · vision · "Its **footprint** is wherever the job lands." ← none-owed
+- `never-size-a-skill-in-advance` · vision · "You never size a skill in advance. The job sizes it." ← none-owed
+- `nothing-new-except-the-placing` · vision · "Nothing here is new except the placing." ← none-owed
+- `moves-are-not-phase-bound` · vision · "Its footprint is set by the job, not by the phase line." ← none-owed
+- `four-wiring-mechanisms` · detail · "**an explicit load** … **an orchestrator** … **routing** … **a hand-off**" ← skill-stacking-supp
+- `many-kits-keep-zero-pilots` · detail · "Some workflows have a pilot; many do not." ← skill-stacking-supp, lineages-supp
+- `pilot-and-leaf-defined` · detail · "The **pilot** is one move whose whole job is running the others … A move that does one job and calls nothing is a **leaf**." ← skill-stacking-supp
+- `order-beats-count` · vision · "Three moves in the right sequence beat ten in a heap." ← none-owed
+- `composition-is-a-live-argument` · detail · "How the field composes kits like this is a live argument with no settled answer" ← lineages-supp
+
+Sources
+- skill-stacking-supp `[checked:2026-07-05 result:OK due:none]` kb:none — [delegated stamp] `curriculum/trainings/agentic-engineering-101/supplementary/skill-stacking.md` carries the primary stamps for the four composition mechanisms and the `/ship`-as-pilot worked example (Dino's in-repo stack). A worked example of a shipped kit does not expire. **`/ship` is Dino's own skill, NOT a Claude Code built-in** — the chart keeps the orchestrator generic ("the pilot") and the named example stays in the supplementary, which is the whole reason this body carries no product name. fallback: re-verify in that doc if its own stamps age out.
+- lineages-supp `[checked:2026-08-01 result:CAVEAT due:2027-02-01]` kb:none — [delegated stamp] `curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md` carries the field-survey lineages and their per-source stamps. **Re-dated 2026-08-01, not re-checked here:** that file was substantially corrected on 2026-08-01 when Amp's Handoff reversal landed, and its own stamps moved with it. A delegated stamp inherits the delegate's currency, so this line must move whenever that file does — the previous `due:2026-11-25` was pinned to a 2026-05-25 check that the July correction had already superseded. fallback: this lecture asserts no dated specific of its own; if the supplementary's lineages change, only the "live argument" claim here is affected, and that claim gets *stronger* when the field moves.
+
+Frameworks
+- Footprint follows the job · [borrow:none] · law:none · ← none — house framing, chosen over phases-as-legs in a 5-framing / 3-judge panel (2026-07-04); the rejected alternative re-committed the fixed-mapping error one level up
+- Orchestrator / leaf · [borrow:distributed systems] · law:none · ← skill-stacking-supp — Dino's vocabulary, bridged once to the chart's nautical *pilot*
+- The value cycle · [borrow:none] · law:the-value-cycle · ← none — the phase chain (context, plan, build, verify, ship) is the cycle in run-local form
+
+Stance `[stance:2026-08-01 level:L1]`
+- holds: almost nothing, deliberately. This lecture is a teacher, not a claim-carrier: every dated specific was pushed into the two supplementaries during the 2026-07-04 redesign, and the body was rebuilt from a five-practitioner name-drop into a concrete mechanics slide. Its one field-level assertion is that composition is unsettled, which the supplementary's own evidence supports.
+- contested: composition itself, which is the point — the body says so in as many words. The four mechanisms are the stable part; the shape a kit should take is not.
+- would-move-it: a mechanism being renamed at field level, or a fifth wiring mechanism gaining currency, either of which edits slide 2. Convergence on one composition shape would break the "live argument" framing and turn this lecture back into a survey.
+
+OODA
+- question: have the four wiring mechanisms held their names, and has a fifth appeared?
+- roster: Dino (skill-stacking), Kieran Klaassen, Simon Willison, Geoffrey Huntley, the Amp Chronicle, Anthropic's skills documentation
+- last-run: 2026-08-01
+
+Flagged
+- `[found:2026-08-01]` A delegated stamp had gone stale against its delegate: this file's `due:2026-11-25` pointed at `workflow-composition-lineages.md` as checked 2026-05-25, but that file was corrected on 2026-08-01 and its stamps replaced. Re-dated here → the general question this raises is whether delegated stamps should carry a date at all, or only a pointer, since a date on a delegation is a second copy of a fact that lives elsewhere and drifts the moment the delegate moves.
+
+<!-- /backing -->

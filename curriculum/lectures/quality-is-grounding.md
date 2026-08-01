@@ -38,16 +38,47 @@ The agentic engineer maxes that signal out. You ship a million lines of new stuf
 
 **Delivery mode:** Read in-room early in M6, between Story of Module 6 and the main exercise. Sets the quality-arc stakes before the build move.
 
-**Source verification — freshness stamps. `source-freshness.sh` reads these; format + result vocab in `curriculum/source-freshness-format.md`.**
+<!-- backing -->
 
-- `[checked:2025-09-02 result:ATTESTED due:none]` attested:Antti 2025-09-02 Agentics-Helsinki-meetup — [maintainer-attested] single dev shipping ~500K lines in weeks, demoed at the first Agentics Helsinki meetup; spec-and-tests was the recurring discipline. The maintainer was in the room — primary evidence, the best on the ladder. The number stands on his word: no public URL required and none owed. A "hundreds of thousands" phrasing is available as a style option, not a sourcing fix. Correct the body figure only if his own recall was off, never to chase a citation.
-- `[checked:2026-05-25 result:OK due:none]` https://luma.com/bjg7smsc — [practitioner direct] first Agentics Helsinki meetup, Sep 2 2025 at Sitra. Event verified live. Body uses month-band phrasing ("fall 2025") on purpose, matching the recall mood. Dated-historical: body frames it as "the early agentic engineering demos" (allowed under `check_research_claims.md §2` — do NOT auto-flag freshness).
-- `[checked:2026-07-29 result:OK due:2027-01-29]` https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md — [practitioner direct, vendor venue] Dex Horthy (HumanLayer), "Why Software Factories Fail", July 2026 (repo commits by dexhorthy through 2026-07-27). Horthy argues his own thesis on his own company's org repo, so the label is practitioner-direct with the venue flagged — not `[practitioner analysis]`, which means one builder teardown-ing *another's* work. Kept in step with `getting-going.md`, which carries the same URL. Cited for the argument that models trained against fast verifiers carry no signal for maintainability costs that land weeks later. Do NOT import its Faros AI incident statistics (vendor telemetry, zombie-stat risk, unvetted). fallback: drop the name, keep the blind-spot claim as convergent practitioner observation.
-- `[checked:2026-05-25 result:OK due:none]` (no URL — directional rhetorical close) — [convergent] the million-line close is paired with the 500K opener, not a single-source citation. fallback: keep directional; swap to a named documented million-line run only if one lands.
+Claims
+- `quality-arc-ran-the-whole-training` · vision · "The quality arc ran the whole training." ← none-owed
+- `five-moves-one-discipline` · vision · "Five moves, one discipline. Tests-first, plan push-back, skill, verifier, loop." ← none-owed
+- `discipline-not-one-move-per-module` · vision · "Not one move learned in one module; the discipline, threaded through the whole training." ← none-owed
+- `fast-checks-miss-slow-costs` · vision · "Tests answer in seconds; the verifier fires mid-run or not at all." ← none-owed
+- `decay-clears-the-gate` · vision · "a run can come back green and still leave the code worse than it found it" ← none-owed
+- `horthy-models-share-the-blind-spot` · detail · "they learned against checks that answer fast, and a cost that lands in weeks never reached them" ← horthy-wsff
+- `countermoves-are-old-discipline-new-job` · vision · "The countermoves are the old discipline with a new job." ← none-owed
+- `nobody-reviews-500k-by-hand` · vision · "Nobody reviews 500K lines by hand." ← none-owed
+- `500k-lines-in-weeks` · detail · "Some of the early agentic engineering demos were single devs shipping 500K lines of code in weeks" ← antti-agentics-helsinki, luma-agentics-helsinki
+- `spec-and-tests-was-the-theme` · detail · "every generated line had to correspond to a spec, every feature had to be tested" ← antti-agentics-helsinki
+- `grounding-goes-deeper` · vision · "The discipline has gone deeper since: **grounding**." ← none-owed
+- `human-signal-is-the-grounding` · vision · "Every push-back, every correction, every *\"no, like this\"* is signal of something" ← none-owed
+- `million-line-close` · vision · "You ship a million lines of new stuff. How do you know it's right?" ← none-owed
 
-**Frameworks attributed:**
-- **500K lines / spec-and-tests discipline** — maintainer-attested, stamped above. [practitioner direct, maintainer first-hand].
-- **Grounding as the deeper quality move** — curriculum framing; no single-practitioner attribution. The phrase *"grounding to truth"* is Antti's. Push-back / correction / "no, like this" as signal traces back to recurring theme #5 in the AE101 strategy doc (*the agent is trying — hard — to capture your world*).
+Sources
+- antti-agentics-helsinki `[checked:2025-09-02 result:ATTESTED due:none]` attested:Antti 2025-09-02 Agentics-Helsinki-meetup — [maintainer-attested] single dev shipping ~500K lines in weeks, demoed at the first Agentics Helsinki meetup; spec-and-tests was the recurring discipline. The maintainer was in the room — primary evidence, the best rung on the ladder. The number stands on his word: no public URL required and none owed (`check_research_claims.md §1`, maintainer-attested carve-out). A "hundreds of thousands" phrasing is a style option, not a sourcing fix. Correct the body figure only if his own recall was off, never to chase a citation.
+- luma-agentics-helsinki `[checked:2026-05-25 result:OK due:none]` https://luma.com/bjg7smsc — [practitioner direct] first Agentics Helsinki meetup, 2 Sep 2025 at Sitra. Event verified live. Body uses month-band phrasing ("fall 2025") on purpose, matching the recall mood. Dated-historical: the body frames it as "the early agentic engineering demos", allowed under `check_research_claims.md §2` — do NOT auto-flag freshness.
+- horthy-wsff `[checked:2026-07-29 result:OK due:2027-01-29]` https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md — [practitioner direct, vendor venue] Dex Horthy (HumanLayer), *Why Software Factories Fail*, July 2026 (repo commits by dexhorthy through 2026-07-27). Horthy argues his own thesis on his own company's org repo, so the label is practitioner-direct with the venue flagged — not `[practitioner analysis]`, which means one builder teardown-ing *another's* work. Kept in step with `getting-going.md`, which carries the same URL. Cited for the argument that models trained against fast verifiers carry no signal for maintainability costs landing weeks later. **Do NOT import its Faros AI incident statistics** — vendor telemetry, zombie-stat risk, unvetted. fallback: drop the name, keep the blind-spot claim as convergent practitioner observation.
+
+Frameworks
+- Grounding as the deeper quality move · [borrow:none] · law:none · ← none — curriculum framing, no single-practitioner attribution; the phrase *"grounding to truth"* is Antti's, and push-back-as-signal traces to recurring theme #5 in the AE101 strategy doc (the agent is trying, hard, to capture your world)
+- Feedback latency dominates · [borrow:control theory] · law:feedback-latency-dominates · ← horthy-wsff — the decay slide is this law: a cost that lands in weeks never reaches a check that answers in seconds
+- The value cycle · [borrow:none] · law:the-value-cycle · ← none — the five moves are one arc across Work and Verification
+
+Stance `[stance:2026-08-01 level:L1]`
+- holds: that fast automated checks systematically miss maintainability costs. Horthy is one named practitioner arguing it in print, on his own company's repo, which is L1 and is what the body's *"Dex Horthy argues"* attribution correctly conveys. The 500K demo is maintainer-attested first-hand — the strongest rung available, and unusually it is the *least* contestable claim on the page.
+- contested: nothing in the body, but the neighbouring evidence is a minefield the file deliberately stays out of. Horthy's own piece carries vendor incident telemetry this lecture refuses to import, and that refusal is load-bearing, not fastidious.
+- would-move-it: a second named practitioner publishing the maintainability-blind-spot argument would take it to L2 and let the body drop the single attribution. Published evidence that verifier-trained models *do* carry maintainability signal would break the decay slide outright.
+
+OODA
+- question: is anyone besides Horthy arguing in print that coding models are blind to slow-landing maintainability costs, and has anyone published non-vendor measurements of it?
+- roster: Dex Horthy and the HumanLayer repos, Kent Beck, Martin Fowler, Adam Tornhill and CodeScene, Gergely Orosz
+- last-run: 2026-08-01
+
+Flagged
+- `[found:2026-08-01]` The million-line close previously carried a `[convergent]` stamp for what is a rhetorical figure, not a claim — no source is owed for *"you ship a million lines of new stuff"*, which is the setup for a question rather than a report of anything. Retired here as `vision`; the 500K opener carries the only real number → no action, recorded so the stamp is not re-added as a fix.
+
+<!-- /backing -->
 
 **Watch-fors (delivery):**
 - Voice lead is Rory on the reframe (*"How do you know it's right?"*), Boris-flat on the factual lines (*"Nobody reviews 500K lines by hand"*), Risto on the forward-optimism (*"the agentic engineer maxes that signal out"*). Read aloud before first cohort; if any line lands as L&D-coach or vendor-pitch, swap.
@@ -56,10 +87,6 @@ The agentic engineer maxes that signal out. You ship a million lines of new stuf
 - The closing question (*"How do you know it's right?"*) is the hand-off to whatever comes next (M7 deliberation, Monday morning, scheduled agents). Let it sit. Don't answer it for the room.
 
 **Philosophy callouts:** at most one. *Capture* (theme #5 — the agent is trying to capture your world) is the implicit anchor under "grounding"; don't name-tag it. Do not bolt the 19 beliefs onto this lecture.
-
-**Vision vs. detail:**
-- Vision layer: the five-move-one-arc framing, the spec-and-tests → grounding reframe, the closing question.
-- Detail layer: the 500K number, the Agentics Helsinki venue, the *"no, like this"* phrasing.
 
 **Quality:** compendium-audited 2026-07-12 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
 - judges @b3143a4: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

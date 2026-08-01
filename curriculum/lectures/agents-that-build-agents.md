@@ -67,10 +67,48 @@ The training closes. The flywheel does not.
 
 **Mood target:** practitioner fluency continued, with a forward-tilt. The mood arc names *unleashed leverage* for the meta-frame end of Module 6; this lecture lands the leverage as a runnable move, not a slogan. Watch for: drift toward autonomous-agent fantasy ("the agent writes its own next skill") — the *what this is not* slide is the load-bearing carve-out. If the mood reads triumphal or vendor-pitch-shaped, the carve-out got cut.
 
-**Frameworks attributed:** Geoffrey Huntley, Ralph Loop, [practitioner direct], https://ghuntley.com/ralph/ (2025-07-14, historical foundational — outside 6-month freshness, cite as origin not current evidence). The flywheel framing builds on what Module 3 → Module 5 → Module 6 already named. Klaassen's compound-engineering move sits underneath without re-attribution (already credited in *The loop has a name*).
+<!-- backing -->
 
-**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
-- `[checked:2026-05-25 result:OK due:2026-11-25]` <https://ghuntley.com/ralph/> — [practitioner direct] Huntley 2025-07-14, bash loop + Simpsons origin verbatim. fallback: outside freshness window — origin/historical only, body flags it correctly.
+Claims
+- `every-packaged-move-cheapens-the-next-run` · vision · "Every packaged move makes the next run cheaper." ← none-owed
+- `hand-the-agent-the-move-itself` · vision · "The flywheel turns once more when you hand the agent the move itself." ← none-owed
+- `what-comes-back-is-a-candidate` · vision · "What comes back is a candidate." ← none-owed
+- `not-agent-writing-its-own-skills` · vision · "Not the agent writing its own skills without you in the room." ← none-owed
+- `agents-evidence-stops-at-the-disk` · vision · "The agent's evidence stops at the disk." ← none-owed
+- `stop-where-your-judgement-is-the-input` · vision · "stop at the moment your judgement is the input that matters" ← none-owed
+- `huntley-saw-a-lever` · detail · "Geoffrey Huntley saw a lever." ← huntley-ralph
+- `ralph-one-line-shell-loop` · detail · "`while :; do cat PROMPT.md | claude-code; done`" ← huntley-ralph
+- `named-after-the-simpsons` · detail · "He called it Ralph, after the Simpsons." ← huntley-ralph
+- `ralph-refeed-entered-the-vocabulary` · detail · "Ralph re-feed entered the practitioner vocabulary as one of the named verifier shapes" ← [SOURCE NEEDED]
+- `goal-shipped-later` · detail · "Months later, Claude Code shipped `/goal`. The runtime version of the same move: a condition, a check each turn." ← cc-goal-capability
+- `practitioners-see-levers-first` · vision · "Practitioners see levers first." ← none-owed
+- `there-is-no-last-turn` · vision · "There is no last turn. Each run surfaces the next gap." ← none-owed
+- `kit-compounds-model-rotates` · vision · "The kit compounds; the model rotates." ← none-owed
+
+Sources
+- huntley-ralph `[checked:2026-05-25 result:OK due:none]` https://ghuntley.com/ralph/ — [practitioner direct] Huntley 2025-07-14: the bash loop and the Simpsons origin, both verbatim. **Durable account, `due:none`** (`source-freshness-format.md` § Durable-account variant) — an origin story published once does not expire, and the body already flags it as origin rather than current practice. The previous `due:2026-11-25` treated a historical origin claim as a currency claim; per `check_research_claims.md §2b` the date belongs on claims about the field's present, not on what a person wrote in 2025. fallback: none needed — origin/historical is exactly what the body claims.
+- cc-goal-capability `[checked:never result:NEEDED due:asap]` https://code.claude.com/docs/en/ — [capability] `/goal [condition|clear]`, verified in a scratch sweep against Claude Code 2.1.142 but **never stamped in-artifact** — the file's own maintainer block has carried this as an open item since that sweep. A body sentence naming a shipped slash command and its semantics is a platform claim under `check_platform_and_boundaries.md`, and scratch-sweep evidence that never lands in the file is evidence the next reader cannot see. fallback: drop the command name and keep the shape — the runtime caught up with the shell hack — which is the sentence's actual argument.
+
+Frameworks
+- Ralph loop · [borrow:none] · law:none · ← huntley-ralph — practitioner-coined, credited in body by name
+- The compound ladder · [borrow:none] · law:the-compound-ladder · ← none — fix → memory → skill → system is the flywheel this lecture runs one turn further
+- Principal–agent · [borrow:economics] · law:principal-agent · ← cultural-vocab — "the agent stops where your judgement begins" is the delegation boundary drawn at the limit of the agent's evidence
+
+Stance `[stance:2026-08-01 level:L1]`
+- holds: that the Ralph loop is Huntley's and that it was a shell one-liner before it was a product feature. Both are first-hand and settled. The lecture's larger argument — that the flywheel stops where the agent's evidence stops — is our framing, and the body carries it as a position rather than a finding.
+- contested: whether "Ralph re-feed" is actually practitioner vocabulary. See Flagged. This is the third naming claim in the M6 closer chain asserting that practitioners say a thing, with no count behind any of them.
+- would-move-it: evidence that the re-feed shape is called something else in general use, or that nobody outside this curriculum calls it anything. Either turns a recognition beat into a coinage, which is fine to do and not fine to do silently.
+
+OODA
+- question: does anyone outside Huntley's own posts use *Ralph* or *Ralph re-feed* as a name for the shape, and is `/goal` still the runtime primitive it is described as?
+- roster: Geoffrey Huntley, Simon Willison, Armin Ronacher, the Claude Code changelog and docs, Amp Chronicle
+- last-run: 2026-08-01
+
+Flagged
+- `[found:2026-08-01]` *"Ralph re-feed entered the practitioner vocabulary as one of the named verifier shapes"* is unbacked, and it is the third claim of its kind in this closer chain — with `the-loop-has-a-name`'s *"Practitioners say judge / verifier / gate"* and M5's three-pattern, now corrected. **The pattern is the finding:** this corpus reaches for "entered the vocabulary" as a way of making our own naming feel found rather than made → decide whether to count the usage or re-cut all three the way M5's closer was re-cut.
+- `[found:2026-08-01]` `/goal` has been an unstamped platform claim since the scratch sweep that verified it; now stamped `result:NEEDED due:asap` so it is visible to `source-freshness.sh` instead of living only in a maintainer to-do → re-test before a cohort.
+
+<!-- /backing -->
 
 **Prompt block:** `agents-that-build-agents-handoff` — the agent reads the recurring-work shapes and the ranked primitives menu from the session and writes the student a standalone, cold-runnable prompt that builds workflow skills across their whole stack (study then diagram then author). Re-anchored 2026-08-01 (authoring-sequence cut): requires `-shapes` + `-primitives`, not a shipped skill.
 

@@ -28,3 +28,29 @@
 - Pairs with M1's closer: same two questions, second time. The recurrence carries.
 
 **Carve-out — first-person-plural "we":** room-collective at capstone module open. Sibling of Agents 101 M8 `joint-double-diamond.md` precedent (`check_writing.md` rule 6 carve-out). *We* here means the room (trainer + cohort) at the arc-close — not the training authors. Future writing-judges should not re-flag.
+
+<!-- backing -->
+
+Claims
+- `agent-builds-the-loop-now` · vision · "The agent is building the agentic loop now. Agents building agents." ← none-owed
+- `frontier-one-speed` · vision · "How can a system like this learn faster than a human practitioner can write things down?" ← none-owed
+- `frontier-two-direction` · vision · "Once it can learn fast, how does it learn the right things, and not just any things?" ← none-owed
+
+Sources
+(none. Every line is a question the arc leaves open; the lecture asserts nothing about the world.)
+
+Frameworks
+- Learning rate is the ceiling · [borrow:none] · law:learning-rate-is-the-ceiling · ← none — frontier one is this law posed as a question
+- Variation, selection, retention · [borrow:evolutionary theory] · law:variation-selection-retention · ← cultural-vocab — frontier two asks what does the selecting
+
+Stance `[stance:2026-08-01 level:L0]`
+- holds: nothing, by design. This is the shortest lecture in the training and it makes no factual claim at all — two open questions and one recognition line. `level:L0` is not a weakness here, it is the correct reading of a file with no assertions in it.
+- contested: not applicable. Any answer arriving from the field belongs in whichever lecture teaches it, not here — the maintainer watch-for is explicit that the frontiers must stay unanswered, and a stance that started holding something would break the beat.
+- would-move-it: nothing short of the arc changing. **The failure mode this stance guards is the opposite of the usual one:** not an unbacked claim, but a future editor helpfully answering one of the two questions and turning an opener into a topic.
+
+OODA
+- question: none standing. If this file ever acquires a claim, it has stopped being what it is.
+- roster: none.
+- last-run: 2026-08-01
+
+<!-- /backing -->

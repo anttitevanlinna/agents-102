@@ -51,7 +51,7 @@ From the 2026-08-01 trainability audit (five-reviewer sweep, lens: competent sof
 
 ### Tier 1, visible failure in a peer-trainer room
 
-- **`[action]` M2 books a 15-minute Debrief with no student-facing content.** Runtime map says "Exercise 60 / Debrief 15"; the projected page ends at "Save the rule if it earned itself"; the Debrief's substance (self-compounding push line) exists only in the maintainer push-back list. Fold a short Debrief section into the body or delete the slot from the runtime map.
+- **`[action]` 2-day schedule's M2 part 2 predates Exercise B: 30-min block now holds 42 min of beats.** The trainer-guide's "13:15–13:45 M2 part 2: Exercise Phase 5 + Debrief + Bridge (30 min)" line predates the extract exercise + Where-the-rule-could-live + soft-compound landing in M2's close (P5 10 + Ex B 12 + Lecture B 5 + soft-compound 3 + Debrief 7 + Bridge 5 = 42; recount 2026-08-01). Decide: extend part 2 into the 20-min break, or name a default shave in the schedule row. The run sheet carries the interim move (fold soft-compound into Debrief, break absorbs up to 5); the four-sitting format fits without shaving.
 
 ### Tier 2, high-value
 

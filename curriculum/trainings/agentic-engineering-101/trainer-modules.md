@@ -135,22 +135,22 @@ Never cut: the failing test before the fix and the diff-line push-back. Those tw
 
 **Trainer cues.** Carry the push-backs in cohort delivery; the room won't always push hard the first time. The non-execution is the bet of the module ("Making the plan good IS the work"); if a student wants to run it, name the move and park it. In the 2-day format, lunch lands at 12:00 inside the exercise by design and the pause IS Phase 5's "stop"; post-lunch returns to name the design pattern.
 
-**Runtime map.** Budgets from the module's trainer meta (Connections 10 / Lecture 10 / Exercise 60 / Debrief 15 / Bridge 5) plus the exercise files' phase splits. (These lines sum ≈112–120 against the 105 slot depending on how the lecture beats decompose; the extract exercise's own meta closes the gap by running the plan exercise at 50 and the Debrief at 7. Expect to shave exactly those two.)
+**Runtime map.** Recounted 2026-08-01: Connections 10 / Lecture A 8 / Exercise A 50 / Exercise B 12 / Lecture B 5 / soft-compound 3 / Debrief 7 / Bridge 5 = 100 against 105, with a 5-min buffer. (The module's previous Connections 10 / Lecture 10 / Exercise 60 / Debrief 15 / Bridge 5 line predated Exercise B and the soft-compound.) Exercise A's own phase splits (5/15/15/15/10) sum to 60; the map books it at 50 — the 10 comes out of P2/P4 agent-wait, which runs while the student reads.
 
-| Beat | Budget | Sitting (1h45) | Cohort clock |
+| Beat | Budget | Sitting (1h45) | Cohort clock (2-day) |
 |---|---|---|---|
 | Connections: the approved-unread plan | 10 | 0:00 | 10:50 |
-| Lectures: The whole map + When a plan is good | 10 | 0:10 | 11:00 |
-| Exercise P1: bring a real task | 5 | 0:20 | 11:10 |
-| Exercise P2: enter plan mode, ask for the plan (side reading fills the wait) | 15 | 0:25 | 11:15 |
-| Exercise P3: push back twice, catch the re-softening | 15 | 0:40 | 11:30 |
-| Exercise P4: second-pass walk-down, three questions at a time | 15 | 0:55 | 11:45 → lunch at 12:00 |
-| Exercise P5: stop, name the pattern | 10 | 1:10 | 13:15 |
-| Extract the task-shaping rule | 12 | 1:20 | 13:25 |
-| Lecture: Where the rule could live + save-the-rule prompts | ~8 | 1:32 | compressed into the 30-min block |
-| Debrief + Bridge | 15 + 5 in the meta; in practice run the Debrief at 7 (see note above) | 1:40 | 13:45 (slot end; runs over unless the shaves above land) |
+| Lectures: The whole map + When a plan is good | 8 | 0:10 | 11:00 |
+| Exercise A P1–P4: task, plan, two push-backs, walk-down | 40 booked (nominal 5/15/15/15; the agent-wait overlaps reading) | 0:18 | 11:08 → lunch at 12:00 after P4 |
+| Exercise A P5: stop, name the pattern | 10 | 0:58 | 13:15 |
+| Exercise B: Extract the task-shaping rule | 12 | 1:08 | 13:25 |
+| Lecture: Where the rule could live + save-the-rule prompts | 5 + 3 | 1:20 | 13:37 |
+| Debrief + Bridge | 7 + 5 | 1:28 | runs to ~13:57 — see the 2-day note |
+| Buffer | 5 | ends 1:40 + 5 | — |
 
-The Debrief has no projected section on the student page. Run it as the self-compounding conversation: Claude proposes a plan-reading rule from the session; the push line below ("name a pattern specific to THIS codebase") is the whole procedure.
+**2-day format note.** The post-lunch block (13:15–13:45, 30 min) must now hold P5 + Exercise B + Lecture B + soft-compound + Debrief + Bridge = 42 min; the trainer-guide's "Phase 5 + Debrief + Bridge (30 min)" line predates Exercise B. Until the schedule is reconciled (punchlist item), the practical move: fold the soft-compound into the Debrief conversation, run Debrief + Bridge at ~7 total, and let the following 20-min break absorb up to 5. The sitting format fits without shaving.
+
+The Debrief has no projected section on the student page, by design — it is a 7-minute conversation beat, not a taught section. Run it as the self-compounding conversation: Claude proposes a plan-reading rule from the session; the push line below ("name a pattern specific to THIS codebase") is the whole procedure.
 
 **Push-backs, verbatim.**
 

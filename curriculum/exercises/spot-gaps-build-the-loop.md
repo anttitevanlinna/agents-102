@@ -135,7 +135,7 @@ Ask Claude to critique the skill before you ship it.
 
 **View summary:** You compare the un-packaged and packaged runs, rank what the second attempt still missed, remove one stale rule, and author a session-shaper skill from the evidence. The resulting skill carries the two-run lesson into future work.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain; kept bold only on the three session-shaper shape handles (**Sharpened verifier** / **LLM-judge** / **Gap-finder**); widget/label chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain; kept bold only on the three session-shaper shape handles (**Sharpened verifier** / **LLM-judge** / **Gap-finder**); widget/label chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
 **Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@9697944 technical@9697944 behavior@b3143a4 pedagogy@b3143a4 strategy@9697944 slides@b3143a4)
 - judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

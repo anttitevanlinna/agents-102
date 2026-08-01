@@ -54,7 +54,7 @@ The PR is shipped. Hand off to the compound step.
 
 **View summary:** You bring a real bug through a tests-first repair: prove it with a failing test, fix the root cause, interrogate the diff, and ship the PR. The artifact is working code whose evidence you have read and challenged.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** One handle kept bold: **Tests-first, root-cause-driven** at its naming moment; all other bullet leads de-bolded. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`, `**Optional.**` labels) and the blockquote callout untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** One handle kept bold: **Tests-first, root-cause-driven** at its naming moment; all other bullet leads de-bolded. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`, `**Optional.**` labels) and the blockquote callout untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
 **Quality:** compendium-audited 2026-07-26 (writing@9697944 behavior@b3143a4 pedagogy@b3143a4 strategy@9697944 slides@b3143a4)
 - judges @9697944: writing PASS, story REVISE (1/1 see instances/ae101--fix-tests-first.story.json), technical REVISE (2/2 see instances/ae101--fix-tests-first.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS

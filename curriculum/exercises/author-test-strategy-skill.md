@@ -72,7 +72,7 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 
 **View summary:** You author a test-strategy skill through conversation, challenge its weakest assumption, and invoke it against the real codebase before keeping it. The artifact is a reusable skill shaped by the way this repository actually tests, not by a generic pyramid.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain across all slides; kept bold: none (no named-move or menu handles in body); widget/label chrome (**Time:**/**Window:**/**What you do:**/**What you build:**/**The point:**/**What happened:**/**Note**) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain across all slides; kept bold: none (no named-move or menu handles in body); widget/label chrome (**Time:**/**Window:**/**What you do:**/**What you build:**/**The point:**/**What happened:**/**Note**) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
 **Quality:** compendium-audited 2026-07-26 (writing@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
 - judges @9697944: writing PASS, story REVISE (2/1 see instances/ae101--author-test-strategy-skill.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -28,13 +28,13 @@ You're new to this country: the stretch where the agent runs alone and you don't
 
 <!-- maintainer -->
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** slide 1 (spirit opener) joined into three prose paragraphs, sentences near-verbatim; the tourist/practitioner koan stays plain. Slides 2 and 4 keep bullets with zero bold. Slide 3 keeps one handle: **Gap analysis** at its naming, rest of the lead plain. Closing march kicker untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. No claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** slide 1 (spirit opener) joined into three prose paragraphs, sentences near-verbatim; the tourist/practitioner koan stays plain. Slides 2 and 4 keep bullets with zero bold. Slide 3 keeps one handle: **Gap analysis** at its naming, rest of the lead plain. Closing march kicker untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. No claims added or cut.
 
 **Slides-only pass (2026-07-02, unaudited):** prose deleted outright where a slide supersedes it (Path A; git carries it). Per-passage verdicts: stray leading `---` CUT · intro recap paragraph ("Three modules in... M1 closed a bug, M2 read one plan, M3 shipped a feature") SUBSUMED (the module file's `## Start here` already carries the short-loops-behind-you contrast; module numbering dies per §3) · "Today is structurally different / step away / come back whenever the next M5 slot lands" paragraph SUBSUMED into the module opener + `## Next` (sequencing lives there); its unique operational line (15–30 min is enough) CONVERTED into the last slide's third bullet · spirit section CONVERTED (slide 1; tourist/practitioner line kept as a bullet, load-bearing per delivery watch-for) · two-run arc CONVERTED (slide 2) with "M4 → M5" and "Run two. M5, packaged" module refs dead; "Ronacher's three-pattern" name DROPPED from body (attribution-cap fix, `check_writing §11`: Ronacher's M4 student-side mention lives in `reading-the-return.md`; M5 owns the naming — absence-enumeration "no plan.md, no verifier, no reference artifact" kept, deliberate) · gap-analysis section CONVERTED (slide 3) + find-vs-judge bullet added (arms the Phase-2 pick-the-worst-three move) · cancel-is-legitimate CONVERTED (slide 4) · "What happens after" section CUT ("M5 opens with the return" sequencing = module `## Next`'s job; "Rehearse, apply, fail, try again" dropped as redundant with slide 1) · closing march KEPT as kicker. §3 disposition: M1/M2/M3/M4 + 5×M5 refs all dead or subsumed; zero `M[0-9]` above the fence.
 
 - section-3 sweep 2026-07-02: 0 refs remaining to fix — the plan's 5 M5-refs (plus M1–M4 hits) were already removed by the same-day slides-only pass above; verified zero `M[0-9]`/module-name hits above the fence. 3 arc-temporal phrases judged not-sequencing ("from here on", "every future hand-off", the two-run arc — no module named; exercise-internal arc). Owning module `run-the-first-experiment.md` confirmed carrying the dropped sequencing in `## Start here` (short-loops contrast) and `## Next` ("Module 5 opens with...").
 
-**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@9697944) — predates the slide rework; re-audit before ship.
+**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@9697944)
 - judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Lecture meta:** *10–12 min lecture, now deck-shaped (4 slides + kicker). Sets up M4's walk-and-send-off exercise. Names the spirit of the two-run arc and the one move the exercise opens with — gap analysis.*
@@ -42,22 +42,48 @@ You're new to this country: the stretch where the agent runs alone and you don't
 
 **Time:** 10–12 min at presentation pace. Don't rush; don't pad. The "spirit" slide is load-bearing — it's where the experimental stance lands.
 
-**Frameworks attributed:**
-- **Gap analysis** — generic business-analysis framework; no single attribution. Named as *walk the system you have against the system the task needs.*
-- **Ronacher's three-pattern** — Armin Ronacher `[practitioner direct]`. No longer named in this body (2026-07-02 slides-only pass; attribution-cap + M5-owns-the-naming). The pieces appear only by deliberate absence ("no plan.md, no verifier, no reference artifact"). M5 owns the teaching and the name.
-- **Compound engineering** — Kieran Klaassen `[practitioner direct]`. Implicit in the *test → learn → encode* framing; not name-attributed in this lecture (Klaassen attribution lives at Debrief in M1 and here-onwards is experienced, not recited).
-
 **Philosophy callouts:** none this lecture. The spirit itself is the beat; a further philosophy tag would dilute.
-
-**Vision vs. detail:**
-- Vision layer: the test-and-learn spirit, two-run arc framing, cancel-is-legit rule, experimental-stance positioning.
-- Detail layer: Ronacher three-pattern (needs URL + within-6-months source).
 
 **Watch-fors (delivery):**
 - Don't slide past "a tourist runs an agent and hopes; a practitioner runs a test and reads the data" — that's the sentence that gives the module its mood. Land it.
 - Don't pre-teach Ronacher's three-pattern. M5 does it through diagnosis; naming the pieces here steals M5's contrast.
 - Don't turn "cancel is legit" into a disclaimer. It's a practitioner rule, not a safety net. Frame it as *what real operators do*, not *what nervous students can fall back on*.
 
-**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
-- `[checked:2026-07-02 result:CAVEAT due:2027-01-02]` https://lucumr.pocoo.org/2025/6/12/agentic-coding/ — [practitioner direct, historical Jun-2025] Ronacher agentic-coding principles; re-verified live 2026-07-02 (byline + Jun 12 2025 date hold); does NOT carry verbatim reference/plan/verifier triad + out of freshness window. fallback: anchor the three-pattern to the in-window MiniJinja port (C-2); keep this post as dated principles only.
-- `[checked:2026-07-30 result:OK due:2027-01-30]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen Definitive Guide (Feb 9 2026); re-verified live 2026-07-30, sole byline and first-person voice confirmed. Core thesis verbatim: *"each unit of engineering work should make subsequent units easier—not harder."* The term is still Klaassen's and still current — his most recent post on the thread is Jul 13 2026. Explicit plan/work/review/compound naming is NOT on this page; it is on the how-Every-codes piece, and Klaassen expanded the loop past four steps on 2026-05-29. Nothing in this lecture names a step count, so nothing here breaks. fallback: phrase as "the loop that runs through his work", ordinal-free; treat any Every.to outcome metric as vendor-self-reported.
+<!-- backing -->
+
+Format → `curriculum/backing-format.md`. Absorbed 2026-08-01 from the legacy `Frameworks attributed:` / `Vision vs. detail:` / `Source verification` blocks — those are gone, this is the only copy. Mostly a `vision` file: the two-run arc and the experimental stance are the design's own choices and owe nothing. The three things it does assert about the world are `contrast-is-the-lesson`, `engineers-run-for-hours` and `cancel-is-what-operators-do`.
+
+**Claims**
+- `send-off-is-an-experiment` · vision · "Every send-off from here on is an experiment. The agent is the apparatus, your rules and context are the setup, and the result is data." ← none-owed
+- `read-the-result-not-get-it-right` · vision · "You don't need to get it right first time. You need to read the result and know what to change for the next run." ← none-owed
+- `tourist-vs-practitioner` · vision · "a tourist runs an agent and hopes; a practitioner runs a test and reads the data" ← none-owed
+- `un-packaged-first-by-design` · vision · "Run one goes now, un-packaged: no plan.md, no verifier, no reference artifact." ← none-owed
+- `contrast-is-the-lesson` · borrowed · "The contrast is the lesson. No generic long-running-agent advice lands the way *you just watched this fail, here's what would have caught it* lands." ← `[SOURCE NEEDED]`
+- `gap-analysis-is-a-question` · borrowed · "**Gap analysis**: walk the system you have against the system the task needs." ← cultural-vocab
+- `agent-finds-you-judge` · vision · "The agent finds the thin spots; you judge which ones matter. A ranked list is candidates, not verdicts." ← none-owed
+- `cancel-is-what-operators-do` · detail · "Cancel is legitimate; traces are data." — framed in the delivery notes as *what real operators do*, not as a safety net, which is a claim about practitioners ← `[SOURCE NEEDED]`
+- `any-trace-counts` · vision · "You owe the experiment a result you can read, not a completed artifact." ← none-owed
+- `fifteen-to-thirty-minutes` · vision · "Fifteen to thirty minutes buys the clues the read needs." — the classroom timebox, the maintainer's own design call ← none-owed
+- `engineers-run-for-hours` · detail · "Engineers run these for hours at work when the task warrants it; ambition and length grow run by run." ← `[SOURCE NEEDED]`
+
+**Sources**
+- ronacher-agentic-coding `[checked:2026-07-02 result:CAVEAT due:2027-01-02]` https://lucumr.pocoo.org/2025/6/12/agentic-coding/ — [practitioner direct, historical Jun-2025] Ronacher agentic-coding principles; re-verified live 2026-07-02 (byline + Jun 12 2025 date hold); does NOT carry a verbatim reference/plan/verifier triad, and is outside the freshness window. Backs the `Frameworks` three-pattern entry only, which this body deliberately does not name. fallback: anchor the three-pattern to the in-window MiniJinja port; keep this post as dated principles only.
+- klaassen-definitive-guide `[checked:2026-07-30 result:OK due:2027-01-30]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen Definitive Guide (Feb 9 2026); re-verified live 2026-07-30, sole byline and first-person voice confirmed. Core thesis verbatim: *"each unit of engineering work should make subsequent units easier—not harder."* The term is still Klaassen's and still current — his most recent post on the thread is Jul 13 2026. Explicit plan/work/review/compound naming is NOT on this page; it is on the how-Every-codes piece, and Klaassen expanded the loop past four steps on 2026-05-29. Nothing in this lecture names a step count, so nothing here breaks. fallback: phrase as "the loop that runs through his work", ordinal-free; treat any Every.to outcome metric as vendor-self-reported.
+
+**Frameworks**
+- Gap analysis · [borrow:business analysis] · law:none · ← cultural-vocab. Generic; no single attribution. Named in body as *walk the system you have against the system the task needs.*
+- Ronacher's three-pattern · [borrow:practitioner-coined] · law:none · ← ronacher-agentic-coding. **Present only as deliberate absence** — "no plan.md, no verifier, no reference artifact." Not named in this body since the 2026-07-02 pass (attribution cap + M5 owns the naming). Do not restore the name here; `what-packaging-is` teaches it through contrast and the naming is that lecture's payoff.
+- Compound engineering · [borrow:practitioner-coined] · law:the-compound-ladder · ← klaassen-definitive-guide. Implicit in the test → learn → encode framing; not name-attributed here. Klaassen's one attribution slot in this training is at M1's debrief; from here on the loop is experienced, not recited.
+- Learning from contrast before instruction · [borrow:learning science] · law:none · ← `[SOURCE NEEDED]`
+
+**Stance** `[stance:2026-08-01 level:L1]`
+- holds: *pending first run.* Almost all of this lecture is the design's own stance and is not the field's to confirm. The exposure is narrow and worth stating plainly: the exercise is built on un-packaged-first producing a **readable failure inside thirty minutes**, and on multi-hour un-supervised runs being ordinary practice rather than a stunt.
+- contested: *pending first run.* Whether a thirty-minute un-packaged run reliably goes visibly wrong. A clean run is not a disaster pedagogically — the student still reads a trace — but the lecture's *"you just watched this fail"* promise is written as though failure is the expected case.
+- would-move-it: practitioner accounts showing that un-packaged runs at this length usually complete without a legible defect, which would make the two-run contrast land on nothing and turn the M5 packaging payoff into an assertion. In the other direction: published evidence that early cancellation is read by practitioners as a failed run rather than a finished read, which would put the delivery note's *what real operators do* framing backwards.
+
+**OODA**
+- question: does the field support the two empirical legs under this lecture — that multi-hour un-supervised runs are routine practice, and that stopping one early is a normal read rather than a failure? And is the un-packaged-first contrast ours, or does learning science already own it under a name?
+- roster: Armin Ronacher, Kieran Klaassen, Dex Horthy, Simon Willison, Addy Osmani, Thorsten Ball; plus `platform-watch/coding-agents/state.md`.
+- last-run: never
+
+<!-- /backing -->

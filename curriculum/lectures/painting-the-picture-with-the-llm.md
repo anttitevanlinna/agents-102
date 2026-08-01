@@ -30,7 +30,7 @@ Let's go.
 
 <!-- maintainer -->
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all three narrative slides recast from bolded-claim bullets to prose paragraphs, zero bold kept, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. "Let's go." kicker untouched. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all three narrative slides recast from bolded-claim bullets to prose paragraphs, zero bold kept, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. "Let's go." kicker untouched. Wording near-verbatim; no claims added or cut.
 
 **Slides-only pass (2026-07-02, unaudited):** RE-CHUNK, not cull (M1: right content, wrong beat size). Per-passage verdicts: *The wizard is dead* + *The LLM is an infinite chameleon* CONVERTED into one slide under the wizard-dead title (chameleon heading demoted to a bolded bullet claim; no inbound anchors to the old heading) · *You prime, the LLM scales* CONVERTED one-to-one, wording near-verbatim · *Two frontiers* CONVERTED with compressed bold leads ("How fast can it learn?" / "Can it learn the right things?") that name each question without answering it · "Let's go" KEPT as kicker per delivery watch-for. No cuts, no new theory, zero map references (M1 protected). File is now three slides + kicker.
 
@@ -38,7 +38,7 @@ Let's go.
 
 **Minor-fix (2026-07-02, theory-completeness-review minor #5 "design, not a flaw unearned"):** added a five-word whisper ("It was trained to match you.") to the slide-1 closing bullet — earns "design" as training without teaching the mechanism; `the-machine-you-just-met.md` (M1 closer) owns the full preference-tuning payoff and already calls this bullet back.
 
-**Quality:** compendium-audited 2026-07-12 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4) — predates the slide rework; re-audit before ship.
+**Quality:** compendium-audited 2026-07-12 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
 - judges @b3143a4: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Lecture meta:** *~3 min opener for Module 1, before the wizard-move demo. Sets the two open questions the training answers by accretion through M1–M6.*

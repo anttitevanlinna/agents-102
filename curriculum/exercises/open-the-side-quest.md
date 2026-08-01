@@ -56,7 +56,7 @@ Ask Claude to fork a sibling worktree and copy your personal rules across. The p
 
 **View summary:** You open two agent sessions on one Git history: a security lane in the repository and a quality lane in a sibling worktree. The setup lets independent work continue safely while preserving a clear place for human control at merge.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain across all slides; kept bold: none (no named-move or menu handles in body); Session widgets and **Time:**/**What you do:**/**What you build:**/**What happened:** chrome untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain across all slides; kept bold: none (no named-move or menu handles in body); Session widgets and **Time:**/**What you do:**/**What you build:**/**What happened:** chrome untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
 **Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@9697944 behavior@b3143a4 pedagogy@b3143a4 strategy@9697944 slides@9697944)
 - judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

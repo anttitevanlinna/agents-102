@@ -917,23 +917,30 @@ owes is the list itself, which is this entry and seam H.
 
 ---
 
-## 26. Fifteen of the sixteen lectures this cut projects carry live re-audit debt
+## 26. The slide-rework re-audit debt was already paid; what is still owed is narrower and later
 
 **The track needs.** The lectures a trainer projects to a paying room to have been audited against the
 form they are currently in.
 
-**Plain AE101 does.** Carries an open re-audit on almost all of them. A slide rework landed 2026-07-09;
-the per-class Quality SHAs on these files predate it, and each file says so in its own words —
-*"Quality per-class SHAs predate this pass; re-audit before ship"*, and again on the Quality line itself,
-*"predates the slide rework; re-audit before ship."* Of the sixteen lectures the four surviving modules
-inline, fifteen carry that marker live today, including every lecture in sittings 1 and 2 and both of
-sitting 4's openers.
+**Plain AE101 does — and an earlier draft of this entry said otherwise.** The 2026-07-09 slide rework
+did leave every projected lecture carrying a *"re-audit before ship"* marker, and this entry recorded
+that faithfully. What it never did was check whether the marker was still true. It was not. The full
+re-eval of 2026-07-26 (`fe18297` — 51 files audited, 47 GO / 4 BLOCK) re-ran the judges against the
+reworked bodies and re-stamped every Quality line, but it moved only the date and the per-class SHAs
+and carried the qualifying clause through untouched. So each file went on declaring a debt it had just
+paid, and this entry counted the declarations. Measured against the evidence rather than the annotation
+— the git dates on the `curriculum/evals/instances/*.json` verdict files themselves — **all 25 AE101
+lectures and all 11 marked exercises were judged on 2026-07-26**, seventeen days after the rework. The
+stale clause was swept from 30 files on 2026-08-01.
 
-**In the room.** Nothing visible, which is why it needs writing down rather than assuming someone knows.
-The material is good and the rework was a wording-preserving emphasis pass, so the exposure is narrow:
-the audit that would confirm the slides still hold has not been run since they changed. A customer
-paying for a four-sitting engagement receives sixteen projected lectures, fifteen of which carry an open
-quality action their own maintainer blocks declare.
+**Why it sat wrong.** The instrument was the files' own prose. This entry read sixteen maintainer
+blocks, found the same sentence in fifteen, and reported the count — which measures how many files
+*say* they need a re-audit, not how many do (`check_research_claims.md §14(c)`: a check that confirms
+an annotation exists is not a check that it is true). The mechanical question is one git can answer:
+is a file's newest judge-verdict file older than its last above-the-fence edit?
+
+**In the room.** Nothing visible then, and nothing owed on paper now for the 2026-07-09 pass. Do not
+read that as *the cut is fully audited* — read the next paragraph, which is the part that survives.
 
 **Enlarged by this session, 2026-07-28, and stated rather than left to be discovered.** Closing gaps 2,
 5, 6, 7, 9, 11, 12, 14, 15, 16, 19, 20 and 21 touched **18 student-facing files** whose Quality lines
@@ -1341,9 +1348,12 @@ of that leaves the repo with the deletions.
 
 **What does not follow, and an earlier draft of this bullet claimed it did: that the track therefore
 returns to fully audited artefacts.** It does not. See gap 26. The deleted files carried no
-*re-audit before ship* markers at all — zero across all thirteen — while the lectures this cut returns
-to carry them live. The win here is the removal of unaudited material, not the arrival of audited
-material.
+*re-audit before ship* markers at all — zero across all thirteen — because they carried no stamps
+either; unmarked is not the same as clean. The win here is the removal of unaudited material, not the
+arrival of audited material. *(Amended 2026-08-01: this bullet used to close on "while the lectures
+this cut returns to carry them live." That was true of the 2026-07-09 markers, which turned out to be
+stale and were swept — see gap 26. Two lectures still carry a marker, both correctly: `when-a-plan-is-good`
+and `how-this-training-was-built`, each edited after its last judge run.)*
 
 **The prompt registry becomes whole again.** The deleted files carried inline prompt blocks in the
 pre-migration form, with registry entries logged as owed before ship. Roughly a dozen prompts return to

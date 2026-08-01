@@ -256,7 +256,7 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 
 <!-- maintainer -->
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all slides kept bullets; SVG chart byte-untouched. Handles kept bold: **A check is a position fix** (chart slide), **Reference artefact** / **plan.md** (three-pattern slide), **External verifier** (verifier slide), the three verifier-shape names (**Background-agent verifier** / **Deterministic shell hook** / **Ralph re-feed**), **hook** at its definition, **Must happen goes in a hook** (governor), **Subagents for isolation**; all other leads de-bolded, 80/20 + Intercom slides fully plain, kickers plain, prompt marker + lead-in untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all slides kept bullets; SVG chart byte-untouched. Handles kept bold: **A check is a position fix** (chart slide), **Reference artefact** / **plan.md** (three-pattern slide), **External verifier** (verifier slide), the three verifier-shape names (**Background-agent verifier** / **Deterministic shell hook** / **Ralph re-feed**), **hook** at its definition, **Must happen goes in a hook** (governor), **Subagents for isolation**; all other leads de-bolded, 80/20 + Intercom slides fully plain, kickers plain, prompt marker + lead-in untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
 - Family B judged 2026-07-03: B-star durability PASS — keystone three-pattern (slide 2) recovers NAMED·PLACED·MECHANISM·GOVERNOR cold, placed at Verification; closer honors recognition-before-naming ("what you assembled… has names").
 
@@ -264,7 +264,7 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 
 **§3 disposition (was 4×M5 + 5×M6 above the fence; now zero):** "walked into M5" → lede recast without ref · "start of M5" (failure modes) → folded into slide-1 mapping bullets · "M5 teaches the extend camp" → "the extend camp is the one you just ran" · "Bridge to M6" (all 5×M6 + "M5 asks") → module file `## Next` per §3; no refs remain above the fence.
 
-**Quality:** compendium-audited 2026-07-26 (writing@9697944 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@9697944) — predates the slides-only rework; re-audit before ship.
+**Quality:** compendium-audited 2026-07-26 (writing@9697944 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@9697944)
 - judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - source-freshness stamped 2026-05-25; MiniJinja / getpushtoprod / how-Every-codes stamps re-verified 2026-07-02 (stamps in Source verification block; run `source-freshness.sh --target <cohort-date>`).

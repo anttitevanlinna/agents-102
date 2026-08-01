@@ -16,11 +16,11 @@ You have a `.md` file with three to five rules about how multi-file tasks want t
 
 <!-- maintainer -->
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** slide 1 keeps bullets with the three shape-name handles (**Slack triage** / **Issue webhook** / **Scheduled read**); slide 2 de-bolded except **Agents build agents** (recurring arc handle, becomes an M6 lecture title), per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Lede untouched. Wording near-verbatim; no claims added or cut. Quality per-class SHAs predate this pass; re-audit before ship.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** slide 1 keeps bullets with the three shape-name handles (**Slack triage** / **Issue webhook** / **Scheduled read**); slide 2 de-bolded except **Agents build agents** (recurring arc handle, becomes an M6 lecture title), per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Lede untouched. Wording near-verbatim; no claims added or cut.
 
 **Slides-only pass (2026-07-02, unaudited):** covered region DELETED (Path A). Per-passage verdicts: three-shapes prose sections CONVERTED to one slide, one bullet per shape (capability-grounded wording preserved: Slack app / `@Claude`-to-web routing, GitHub Actions `issues` events, scheduled agent — do not imply Claude Code runs inside Slack) · per-shape tail lines (steady part / policy / spec triplet) SUBSUMED by slide 2's first bullet · "Each is real; each is downstream" softener CUT · ticket-pair paragraph CUT (it depended on `extract-the-task-shaping-rule-4`, itself a `{{cut:}}` candidate; if the cull reverses, the exercise carries the connection) · "M3 starts with a feature you're shipping" bridge CUT (module `## Next` owns the bridge) · intro line KEPT as the closer's setup lede. File is now lede + two slides.
 
-**Quality:** compendium-audited 2026-07-12 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4) — predates the slide rework; re-audit before ship.
+**Quality:** compendium-audited 2026-07-12 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
 - judges @b3143a4: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - cohorts: none yet

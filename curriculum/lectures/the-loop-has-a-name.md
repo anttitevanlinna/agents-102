@@ -1,18 +1,18 @@
 # The check you built is an eval
 
-Look at what you just shipped.
+Look at what you have shipped.
 
 ## Eval
 
-- The thing you built reads an agent's work and decides whether it meets a bar. For most of you it came out as a sharpened verifier, for some as a fresh judge, for a few as a gap-finder that reads the next agent-produced artefact for the failure shape you saw at M5. Different shapes, same move.
+- The thing you built at M5 reads an agent's work and decides whether it meets a bar. The checks you just ranked against your dominant gap are the same family: some deterministic, some an LLM reading the work, some firing before the run even starts. Different shapes, same move.
 - The name for all of it is **eval**. Your verifier is an eval. Your judge is an eval. Your gate is an eval.
 - Three names, one thing. Practitioners say *judge* when the check is itself an LLM reading the work. *Verifier* when the check is deterministic: tests, lint, compile, a shell hook that returns true or false. *Gate* when the same check is placed in CI and a pull request can't merge without it.
-- An eval is the automated check that says *this agent-produced thing meets our bar*. That's it. In practice it's the verifier you built at M5 and the skill you just shipped at M6. You have been doing evals for two modules, and on the map they are the checking loop the M2 drawing left dashed, now drawn solid.
+- An eval is the automated check that says *this agent-produced thing meets our bar*. That's it. In practice it's the verifier you built at M5 and every check on the menu you just ranked. You have been doing evals since M5, and on the map they are the checking loop the M2 drawing left dashed, now drawn solid.
 
 ## One primitive, placed wherever there's a bar
 
 - The shape fires on any workflow with a quality bar, not only agent runs. A code-review checklist, a deployment gate, an internal-doc rubric. Anywhere you can describe *meets the bar*, you can write the check.
-- Naming it is what lets you reuse it. Once you see the verifier, the judge, the gate, and the skill as the same primitive, you can place that primitive in more places. On a pull request. On a nightly run. On the next agent that does the same class of work. On the team's shared kit.
+- Naming it is what lets you reuse it. Once you see the verifier, the judge, and the gate as the same primitive, you can place that primitive in more places. On a pull request. On a nightly run. On the next agent that does the same class of work. On the team's shared kit.
 
 ## The eval primitive scales unchanged
 
@@ -22,14 +22,14 @@ Look at what you just shipped.
 
 ## The primitive that runs on cadence
 
-- One thing your skill can do that you did not try today: run on a schedule. Claude Code ships three scheduling primitives: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines. The pattern is the same across all three: the skill you just wrote is the thing the scheduled agent invokes.
-- Three places this fits naturally. A standing verifier run: the judge reads the most recent long-running send-off and has a summary waiting when you open the laptop. A scheduled codebase sweep: the gap-finder reads the repo for the drift shape you saw at M5 and opens an issue when it finds one. Rule-drift monitoring: a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
+- One thing a kit skill can do that you did not try today: run on a schedule. Claude Code ships three scheduling primitives: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines. The pattern is the same across all three: a skill from your kit is the thing the scheduled agent invokes.
+- Three places this fits naturally. A standing verifier run: a judge reads the most recent long-running send-off and has a summary waiting when you open the laptop. A scheduled codebase sweep: a gap-finder reads the repo for the drift shape you saw at M5 and opens an issue when it finds one. Rule-drift monitoring: a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
 - You do not have to wire it today. You do need to know it exists, because the second you stop thinking of the eval as a one-shot check and start thinking of it as a thing that runs on cadence, your options change. The skill defines the check. The runtime supplies the cadence or stopping condition.
 
 ## Why the loop survives the model
 
 - The specific Claude you used today will be replaced, probably within months. Opus 4.7 will be Opus 4.8, then something with a different name. Every one of those models will be better at the work than the current one. None of that changes the move.
-- The three pieces practitioners converge on (reference, plan, verifier) are not model features. Neither is the encode loop you ran at M6 (diff, name the gaps, package the learning). They are a stance toward a thing that does not behave deterministically. Reference because the agent forgets. Plan because the window fills. Verifier because plausible-but-wrong is the default failure mode of a statistical machine. Encode because a lesson learned once and not written down gets learned again next week.
+- The three pieces (reference, plan, verifier) are not model features. Neither is the encode loop you ran at M6 (diff, name the gaps, map where the lesson lands). They are a stance toward a thing that does not behave deterministically. Reference because the agent forgets. Plan because the window fills. Verifier because plausible-but-wrong is the default failure mode of a statistical machine. Encode because a lesson learned once and not written down gets learned again next week.
 - Practitioner fluency lives in the stance, not in the tooling. When the next model ships, you will open the same kit, point it at the same three pieces, and run the same loop. The work gets faster. The method does not.
 
 The loop feeds itself. That is the flywheel, and it starts with what you encoded today.
@@ -45,7 +45,7 @@ The loop feeds itself. That is the flywheel, and it starts with what you encoded
 **Quality:** compendium-audited 2026-07-12 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
 - judges @b3143a4: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
-**Lecture meta:** *12–15 min closing lecture for AE101 M6 (deck-only trimmed from the 15–18 prose draft). Names evals with full weight from the skill you just authored. Forward-looking register — closes core AE101, bridges to Monday-morning or to M7 depending on the room. M5/M6 refs in body KEPT under the `check_lectures §3` consolidation carve-out: the closer's SUBJECT is naming what M5–M6 built (recognition), not sequencing.*
+**Lecture meta:** *12–15 min closing lecture for AE101 M6 (deck-only trimmed from the 15–18 prose draft). Names evals with full weight from the M5 verifier and the check-menu the module just ranked. Forward-looking register — closes core AE101, bridges to Monday-morning or to M7 depending on the room. M5/M6 refs in body KEPT under the `check_lectures §3` consolidation carve-out: the closer's SUBJECT is naming what M5–M6 built (recognition), not sequencing.*
 
 **Time:** 12–15 min at presentation pace.
 
@@ -73,7 +73,7 @@ The loop feeds itself. That is the flywheel, and it starts with what you encoded
 
 **Edits (2026-07-03):** slide 2 gains the self-report scoping ("the numbers are Intercom's own") woven into the Curran sentence — implements the Intercom stamp's flag-self-report fallback in body per the zombie-stat guard; numbers unchanged, no re-verification owed. The geoffintech stamp above is annotated orphaned (body's Ramp claim was cut in the slides-only pass; stamp kept for provenance).
 
-**Cross-file stamp pointer:** slide 4's triad claim leans on the source stamps in `curriculum/lectures/what-packaging-is.md` § Source verification. Those stamps were re-verified 2026-08-01 and **the convergence framing this slide inherited does not survive them.** Counted strictly — all three pieces present together as artefacts in one practice — the independents number **one** (Huntley's Ralph), against an L3 bar of 10–20. Ronacher is 2-of-3 in practice and 0-of-3 in vocabulary; Klaassen's plan artefact is a pre-work spec, not a document mutated across a run, so it is a different piece wearing the same word. The triad is our synthesis of scattered practice, which is honest work to do and dishonest to call convergence. Slide 4's body wording is a card owed at `what-packaging-is` first, since that lecture is where the naming beat lands; this file follows it.
+**Cross-file stamp pointer:** slide 4's triad claim leans on the source stamps in `curriculum/lectures/what-packaging-is.md` § Source verification. Those stamps were re-verified 2026-08-01 and **the convergence framing this slide inherited does not survive them.** Counted strictly — all three pieces present together as artefacts in one practice — the independents number **one** (Huntley's Ralph), against an L3 bar of 10–20. Ronacher is 2-of-3 in practice and 0-of-3 in vocabulary; Klaassen's plan artefact is a pre-work spec, not a document mutated across a run, so it is a different piece wearing the same word. The triad is our synthesis of scattered practice, which is honest work to do and dishonest to call convergence. **Landed 2026-08-01:** slide 4 now reads *"The three pieces (reference, plan, verifier) are not model features"* — the convergence assertion was doing no work in a sentence whose argument is that the pieces are a stance rather than a model feature. M5's `what-packaging-is` introduces the triad as our combination, so this file must not re-assert convergence downstream of it. **Do not restore the phrase.**
 
 **Coherence retune (2026-07-05):** slide-1 bullet lead "Naming it is what lets you compose" → "Naming it is what lets you reuse it". `composing-the-workflow.md` was reworked this run into the concrete composition teacher (the passage chart + "a workflow is skills in the right order"), so it now OWNS compose/workflow; this bullet's actual content is reuse/placement (place the primitive on a PR, a nightly run, the next agent, the team kit), not composition. Retune frees "compose" for the sibling and ties the spine to that lecture's "a named move you reach for". Also resolves the closer-chain order seam (composing-the-workflow sits before this lecture; it no longer reads as composition-introduced-after-it-was-taught). eval remains this lecture's owned term; "workflow" survives once in body in the generic "any workflow with a quality bar" sense (not the composed-skills sense), left as-is.
 

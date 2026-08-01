@@ -129,7 +129,7 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 **Decision points:**
 - **Exercise runs to 70 min:** the second read went deep (common on real codebases). Take the overflow from the buffer and the Bridge, compress the Debrief last, and keep the pattern-naming step.
 - **Exercise finishes under 45 min:** the second read ran out of branches fast — small task or thin design tree. Use spare time to rerun a second-pass read on another plan in the scrollback, just for the contrast.
-- **Whole room mood below 7:** something is stealing grounded competence. Check: was the student's push-back still active when the second read ran (order matters — push-back first keeps the student's read in the driver's seat)? Was the walk-down taken one question at a time (not dumped and skimmed)? Was "stop, don't execute" named early enough to land as intentional rather than anticlimactic?
+- **Whole room mood below 7:** something is stealing grounded competence. Check: was the student's push-back still active when the second read ran (order matters — push-back first keeps the student's read in the driver's seat)? Was the walk-down taken in its three-question batches (not dumped whole and skimmed)? Was "stop, don't execute" named early enough to land as intentional rather than anticlimactic?
 
 **Plug points (trainer):**
 - Student's own repo (carried from M1) — sponsor-stated example repos by team type if a student arrives without one suitable
@@ -140,7 +140,7 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
 1. **Enters plan mode (Shift+Tab cycle) on a non-trivial multi-file task before approving** anything Claude writes. Falsifiable: scrollback of a working session shows the mode-cycle move on a task that touches two or more files.
 2. **Sends at least one *keep planning with feedback* push-back referencing a specific step number and a specific word from the plan**, before approving. Falsifiable: the push-back message quotes the plan's own step text rather than naming a generic concern.
-3. **Asks Claude to walk down unresolved branches one question at a time** when the plan touches a design tree they don't fully see. Falsifiable: the scrollback shows a Q-and-A sequence, not a prompt that returned a list of branches in one shot.
+3. **Asks Claude to walk down unresolved branches three questions at a time** when the plan touches a design tree they don't fully see. Falsifiable: the scrollback shows a batched Q-and-A sequence, not a prompt that returned a list of branches in one shot.
 
 **Artefact contracts** (per `check_pedagogy.md` rule 46 — every produced artefact with a stable identifier gets a contract row):
 

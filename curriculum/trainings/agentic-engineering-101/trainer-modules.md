@@ -274,6 +274,15 @@ Never cut: Phase 5's stop. Approve, don't execute, and name the pattern; the non
 - Student hesitates at the final prompt → *"Stop it when you've seen enough. Traces are data. You don't owe the experiment a completed artifact — you owe it a result you can read."*
 - Student reads the ranked gap list and moves on without picking → *"Which of these will hurt the agent most given the task? Fill those."*
 
+**Company-memory debate script (closing lecture, while the agent runs).** The lecture runs an open disagreement and lands nothing; that is the design, not a gap. Takes welcome; moving on without discussion is fine too — the closer line works at any point.
+
+- *Terms, ~1 min, read aloud:* "Three words that get tangled: **context** is the live window; it empties when the session ends. **Memory** is whatever persists across sessions. Some practitioners refuse the word memory entirely and just say **rules**, or **files**, because that's literally what it is. You've now built the personal layer and seen the team layer. The open question is whether there's a third."
+- *Seed question — pick ONE, don't run all three:* (1) "Where do the conventions your whole company agrees on live today, and who updates them when they rot?" (2) "If your company had one shared brain: what's the first thing you'd want in it, and the first thing you'd be afraid it learned?" (3) "Every layer you've built this training has an owner: you own your local file, the team owns the PR. Who owns company memory?"
+- *The expected objection* ("memory is overrated, we should have a company brain") *gets agree-and-sharpen, not rebuttal:* "Maybe. The direction is real; the shape is what nobody's solved. What breaks first in your org: trust in what's in it, or the process for updating it?"
+- *Silent room:* state both positions yourself in two sentences ("one camp: conventions belong in files with owners, and company scale just means more files. Other camp: files don't scale past the team; something has to aggregate") — then stop. Don't fish.
+- *No-landing closer, verbatim:* "We're leaving this open on purpose. Nothing ships today, and you'll meet this question in your own org before the field settles it. Meanwhile, your agent is out there right now running on what you DID write down. Module 5 reads what it did with it."
+- *Clock:* terms 1 min, one seed + whatever comes 2 min, closer 30 seconds. Room bites hard → cap at 5 minutes and park it.
+
 **Escape hatches and gotchas.**
 
 - **No task, or a typo-fix, or a quarter-long epic at Connections** → run the three-candidate conversation. Criteria: sustained coherence, requirement-weaving, multi-file reasoning. Push against too-small AND too-large; downstream prompts cannot rescue the wrong task.

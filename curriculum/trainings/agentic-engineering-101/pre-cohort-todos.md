@@ -52,7 +52,6 @@ From the 2026-08-01 trainability audit (five-reviewer sweep, lens: competent sof
 
 ### Tier 1, visible failure in a peer-trainer room
 
-- **`[action]` M4 closing lecture ("run the disagreement, landing nothing") has zero facilitation scaffold, and with M6 absent it's the only true facilitation beat in this cut.** An engineer-trainer's instinct is to answer the question; nothing counteracts it. Add to trainer-guide §M4: three scripted seed questions, one canned response to the "we should have a company brain" objection, one scripted no-landing closer line, one silent-room fallback ("state both positions yourself and stop").
 - **`[action]` M1's opening-bid wizard demo is unscripted improvisation on a volunteer's unseen repo.** The mood-installing opener ("trainer demos a wizard-level move on a volunteer's codebase") exists only as a maintainer note, no candidate moves, no fizzle fallback. Script 2–3 canonical wizard moves (with prompts) that work on any repo, plus a "demo on your own repo instead" fallback. (The three-window cross-chat-memory premise is the separate `[action]` above, decide incognito-as-standing-instruction there.)
 - **`[action]` M2 books a 15-minute Debrief with no student-facing content.** Runtime map says "Exercise 60 / Debrief 15"; the projected page ends at "Save the rule if it earned itself"; the Debrief's substance (self-compounding push line) exists only in the maintainer push-back list. Fold a short Debrief section into the body or delete the slot from the runtime map.
 

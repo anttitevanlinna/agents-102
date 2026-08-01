@@ -4,7 +4,7 @@ domain: coding
 evidence_level: L3
 platforms: [anthropic, coding-agents]
 nordic: false
-updated: 2026-06-03
+updated: 2026-08-01
 cycle: token-eff-s1
 ---
 
@@ -26,6 +26,7 @@ Lens: context-as-filesystem, subagent context isolation, lossy-compaction-vs-han
   - "It's lossy, for one. Every time you compact a thread, what's in the context window gets replaced with a summary."
   - "compaction, we found, encourages long, meandering threads, in which you just compact once you run out of context window, **stacking summary on top of summary**."
   - Mechanism: Amp "analyzes the current thread and generates a prompt plus a list of relevant files for the new thread" — i.e. **file-mediated handoff** (pass paths, not the whole transcript). Example invocations: `/handoff execute phase one of the created plan`.
+- **Superseded:** seven months later Amp reversed this decision and reintroduced automatic compaction — see F2, immediately below.
 
 ### F2 — Amp REVERSES: handoff retired, auto-compaction returns (the counter-evidence to F1)
 - **Who:** Amp team (Sourcegraph).
@@ -39,6 +40,11 @@ Lens: context-as-filesystem, subagent context isolation, lossy-compaction-vs-han
   - Handoff "made obsolete" because "compaction made it obsolete"; design principle: "build for what the frontier models can do now, in 2026, and what they will be able to do in the future."
   - Beta user (named only as beta user): "I love having auto-compaction. NOT missing handoff…"
 - **NB the arc:** lossy-compaction-bad (Oct 2025) → handoff → compaction-fine-again (May 2026). The durable lesson is "focused threads beat meandering ones," not "never compact."
+- **Postscript, rechecked 2026-08-01 — same vendor, no independent corroboration, but the reversal has not flipped back a second time:**
+  - **GA:** 2026-05-27, https://ampcode.com/news/drop-the-neo — **[practitioner direct, vendor venue]** (unnamed "Amp team" byline, same shape as F1/F2 — treat the fact of shipping to GA as operational evidence; the "not a beta-only experiment" framing below is the vendor's own characterization, not independently confirmed durability). The May 6 reversal above shipped to general availability three weeks later.
+  - **2026-07-02:** https://ampcode.com/news/read-bigger-threads — **[practitioner direct, vendor venue]**. Two months post-GA, Amp reports its own longest thread "has been compacted over 68 times — without compaction, it would be over 21 million tokens long." **Self-reported, N=1, no distribution given — an illustrative vendor anecdote, not a benchmark.** One strand of the original F1 critique survives even after the reversal, now stated as a caveat rather than a rejection of compaction: "Use compactions for orientation, but inspect original messages when exact requirements, wording, code, commands, chronology, edits, or verification matter."
+  - **The short-threads counter-essay disowned itself.** 2025-12-09, https://ampcode.com/notes/200k-tokens-is-plenty (Lewis Metcalf) — **[practitioner direct]** (named byline, same treatment as F6's Klaassen-on-Every posts) — argued for short threads at the time: "Agents get drunk if you feed them too many tokens." As of this sweep the page itself carries an appended note retracting the conclusion: "This note was written in December 2025 for an older model and context-window era. Now, auto-compaction makes longer threads work well, and it's fine and productive to go beyond 200k tokens." Cite the original only as a dated 2025 position, never as current guidance.
+  - **Stale doc still live — do not cite for current behavior:** https://ampcode.com/guides/context-management — **[vendor documentation]**, marked Archived — still describes Handoff as the live mechanism and never mentions compaction. A reader landing there without checking the Archived flag would get the pre-reversal picture.
 
 ### F3 — Boris Cherny: Claude Code dropped vector RAG for agentic (grep/glob) search
 - **Who:** Boris Cherny (creator of Claude Code, Anthropic).
@@ -113,12 +119,12 @@ Lens: context-as-filesystem, subagent context isolation, lossy-compaction-vs-han
 
 The field is having an argument with itself, and the argument is the finding. Two camps, same enemy (lossy summary):
 
-- **Curate-the-subset camp** (Amp-handoff F1, Klaassen's folder F6, Cherny's grep-on-demand F3): keep context small by passing *pointers* — file paths, folders, grep results — and let the model pull only what it needs. Token-cheap because nothing enters context speculatively.
+- **Curate-the-subset camp** (Amp-handoff F1 — an Oct 2025 stance only; Amp itself reversed to auto-compaction in May 2026 (F2), and per Amp's own later posts (uncorroborated by any third party) the reversal was still in place as of a July 2026 usage report, see F2 Postscript — Klaassen's folder F6, Cherny's grep-on-demand F3): keep context small by passing *pointers* — file paths, folders, grep results — and let the model pull only what it needs. Token-cheap because nothing enters context speculatively.
 - **Share-everything camp** (Cognition F4): the failure mode isn't too many tokens, it's too few *shared* tokens; don't fragment context across subagents at all, run single-threaded and share full traces.
 
 The counter-evidence the tasking asked for is unusually clean:
 1. **Multi-agent's price is measured and admitted by its own vendor:** 4× (single agent) / 15× (multi-agent) tokens vs. chat — Anthropic's own number (F5). Multi-agent is a *high-value-task* tool, not a default.
-2. **Compaction-is-always-lossy was a 2025 truth that 2026 models partly dissolved:** Amp killed compaction (Oct 2025, F1) then un-killed it (May 2026, F2). The durable lesson survives ("focused threads > meandering ones"); the specific tactic didn't.
+2. **Compaction-is-always-lossy was a 2025 truth that 2026 models partly dissolved:** Amp killed compaction (Oct 2025, F1) then un-killed it (May 2026, F2) — reached GA three weeks later and, per Amp's own account (self-reported, single-vendor, no third-party corroboration), was still running two months after that (see F2 Postscript, rechecked 2026-08-01). The durable lesson survives ("focused threads > meandering ones"); the specific tactic didn't.
 3. **The cheapest context is the context you never loaded:** agentic grep/glob (F3) beat RAG partly by *not* pre-stuffing retrieved chunks — the token saving is in what you decline to retrieve.
 
 Reframe for a builder leader: the question is never "how do I compress context?" but "what did I load that I never needed?" Compaction is firefighting; the discipline is not starting the fire. Pass paths, not paragraphs — even if Klaassen didn't say it in those exact words, his folder did.

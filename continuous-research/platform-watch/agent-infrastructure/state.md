@@ -2,8 +2,28 @@
 
 > *Edited 2026-05-14: hallucinated OpenClaw/ClawHub/NemoClaw cluster content removed. Original git history preserves the prior state.*
 
-Last updated: 2026-07-22 (cycle 170)
-OODA cycles: 5
+Last updated: 2026-08-01 (cycle 179)
+OODA cycles: 6
+
+## Key Verdict (as of 2026-08-01)
+
+**CYCLE 179 UPDATE — EU AI ACT ARTICLE 50 ENFORCEMENT TOMORROW (AUGUST 2, 2026): TRANSPARENCY OBLIGATIONS CONFIRMED LIVE; FIVE SPECIFIC DUTIES NOW ENFORCEABLE; ALL ENTERPRISE AI AGENT DEPLOYMENTS TO EU USERS IN SCOPE; HIGH-RISK ANNEX III SEPARATELY DELAYED TO DECEMBER 2027 (CONFIRMED).**
+
+Article 50 enforcement confirmed for tomorrow (August 2, 2026) via four independent law firm analyses (Jones Walker, Sidley Austin, Licentium, CSA) and EU Commission AI Act service desk. NOT delayed by Digital Omnibus. The five obligations now enforceable:
+
+1. **AI-interaction disclosure** — users must be told they are interacting with AI "at time of first interaction." Applies to all enterprise agent deployments serving EU users: Copilot Chat, Agentforce, Claude Cowork, custom business agents. B2B/internal exemption is narrow — requires "strictly technical outputs accessible solely to a restricted group of internal professionals with safeguards."
+2. **Machine-readable content marking** — AI-generated audio, image, video, text must carry machine-readable markers "to the extent technically feasible." New systems face August 2 requirement immediately; systems marketed before August 2 get grace period to December 2, 2026.
+3. **Emotion recognition/biometric notice** — inform individuals when these systems are operating.
+4. **Deepfake disclosure** — visible disclosure for artificially generated/manipulated visual or audio content.
+5. **Public interest AI text disclosure** — AI-generated text on public matters must be disclosed (exception: human editorial review with named editor).
+
+**Jones Walker LLP (Loring/Ramsden/Lee):** "Companies that treat the extra sixteen months [on high-risk] as cancellation rather than runway will face the same obligations later, with less time." August 2 is real enforcement — not symbolic. GPAI enforcement powers and national market surveillance authorities also activate August 2.
+
+**Sources:** [joneswalker.com Jul 2026](https://www.joneswalker.com/en/insights/blogs/ai-law-blog/yes-august-2-still-matters-the-eu-approved-a-high-risk-ai-delay-but-most-trans.html) — [law firm analysis]; [labs.cloudsecurityalliance.org Jul 29 2026](https://labs.cloudsecurityalliance.org/research/csa-research-note-eu-ai-act-article-50-transparency-20260729/) — [practitioner analysis — CSA]; [datamatters.sidley.com Jun 24 2026](https://datamatters.sidley.com/2026/06/24/eu-ai-act-transparency-obligations-preparing-for-compliance-by-2-august-2026/) — [law firm analysis]; [ai-act-service-desk.ec.europa.eu](https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50) — [regulatory source — EU Commission]
+
+**Watch: August 2 (Article 50 enforcement live — monitor for first enforcement actions); December 2, 2026 (legacy system watermarking grace period ends); December 2, 2027 (Annex III high-risk Annex III activation — now confirmed). EO 14409 formal US AI export control framework (August 1 deadline — check cycle 180).**
+
+---
 
 ## Key Verdict (as of 2026-07-22)
 

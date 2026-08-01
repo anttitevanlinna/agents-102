@@ -16,8 +16,18 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-07-26 (cycle 173)
-OODA cycles: 39
+Last updated: 2026-08-01 (cycle 179)
+OODA cycles: 40
+
+**Cycle 179 updates (August 1, 2026) — OPUS 5 IN MICROSOFT 365 COPILOT CONFIRMED GA JULY 25; OPUS 5 DAY 8 NO PRACTITIONER-DIRECT POSTS; OPUS 4.1 DEPRECATION T-4:**
+
+**Opus 5 in Microsoft 365 Copilot — confirmed GA July 25, 2026 (L2).** Claude Opus 5 is now generally available across the full Microsoft 365 Copilot suite: Word, Excel, PowerPoint, Copilot Chat, Copilot Cowork, and Copilot Studio. Available to all Copilot enterprise tenants with Anthropic integration enabled. Users select between Opus 5 and GPT-5.6 via a model dropdown within the standard $30/user/month Copilot license — Microsoft absorbs API costs, no price uplift to end users. This is the first non-OpenAI frontier model available as a standard option across Microsoft's full productivity suite. **Platform implication:** The "Microsoft = GPT, Anthropic = Claude Code" bifurcation is no longer accurate. Anthropic's enterprise distribution is now: Claude.ai API + AWS Bedrock + Azure AI Foundry + Microsoft 365 Copilot — full multi-cloud and multi-product coverage. A CTO with a Microsoft Copilot relationship now has access to Opus 5 on both business-user (M365) and developer (Claude Code) surfaces. First independent practitioner reviews of Opus 5 performance in Copilot context expected Day 14+ from July 25 (August 8+). ([techcommunity.microsoft.com/blog/microsoft365copilotblog/available-today-anthropic-claude-opus-5-in-microsoft-365-copilot/4540524 Jul 25 2026](https://techcommunity.microsoft.com/blog/microsoft365copilotblog/available-today-anthropic-claude-opus-5-in-microsoft-365-copilot/4540524) — [vendor press release — Microsoft]; [machinebrief.com Jul 2026](https://www.machinebrief.com/news/claude-opus-5-microsoft-365-copilot-word-excel-powerpoint-enterprise-july-2026) — [domain trade publication])
+
+**Opus 5 Day 8 — frontier tie holds, no practitioner-direct production posts.** Osmani site 503 (temporary); Ronacher accessible but no new AI posts since July 13; Willison site 503 second consecutive cycle. Web search for Day 8 surfaces benchmark/spec blogs only (not practitioner-direct). Three-way frontier tie on Artificial Analysis Intelligence Index v4.1 holds: Opus 5 (61) vs Fable 5 (60) vs GPT-5.6 Sol (59). Day 10+ is the next meaningful practitioner-direct window.
+
+**Opus 4.1 deprecation August 5 (T-4) — hard stop confirmed; migration to Opus 4.8.** No practitioner-direct migration friction posts found at T-4. Common failure mode: forgotten serverless functions or archived microservices still calling `claude-opus-4-1-20250805`. Next model in deprecation chain: Sonnet 4.5 retiring September 29, 2026.
+
+**Watch: August 5 (Opus 4.1 deprecation hard stop — T-4, post-deprecation friction cycle 180); August 7 (Gemini 3.5 Pro 73% prediction market window); August 8-9 (Sol Day 30 enterprise deployment window; Opus 5 in M365 Copilot first independent practitioner reviews); August 31 (Sonnet 5 intro pricing cliff); Q4 2026 (Cursor/SpaceX regulatory close; Anthropic IPO pre-roadshow).**
 
 **Cycle 173 updates (July 26, 2026) — OPUS 5 DAY 2: three named practitioner endorsements (Lovable, Zapier, Ultima Genomics) + Every.to integration friction; no Opus 5 vs Sol comparison yet:**
 

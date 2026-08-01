@@ -1,15 +1,17 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-07-31 (cycle 178)
-OODA cycles: 34
+Last updated: 2026-08-01 (cycle 179)
+OODA cycles: 35
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
 
-## Key Verdict (as of 2026-07-31)
+## Key Verdict (as of 2026-08-01)
 
-**CYCLE 178 UPDATE — OPUS 5 DAY 7: NO PRACTITIONER-DIRECT PRODUCTION POSTS (Day 10+ window next); THREE-WAY FRONTIER TIE HOLDS (Artificial Analysis Intelligence Index: Opus 5 = 61, Fable 5 = 60, Sol = 59, within measurement error); UNCONFIRMED SIGNAL: "OPUS 5 IN MICROSOFT 365 COPILOT" headline surfaced — not independently confirmed this cycle, follow up cycle 179; OPUS 4.1 DEPRECATION AUGUST 5 (T-5 days, zero practitioner migration friction reports); NO NEW OSMANI POSTS AFTER JULY 20; NO NEW RONACHER AI POSTS AFTER JULY 13.**
+**CYCLE 179 UPDATE — OPUS 5 IN MICROSOFT 365 COPILOT CONFIRMED GA JULY 25 (Word/Excel/PowerPoint/Chat/Cowork/Studio; model selector vs GPT-5.6; $30/user included; first non-OpenAI frontier model in full M365 suite — "Microsoft=GPT, Anthropic=Claude Code" bifurcation is gone); GEMINI 3.5 PRO 9TH CONSECUTIVE MISSED WINDOW (API changelog August 1 confirmed absent; August 7 = 73% next checkpoint); OPUS 5 DAY 8 NO PRACTITIONER-DIRECT POSTS (Day 10+ window; Willison 503 second consecutive cycle); OPUS 4.1 DEPRECATION T-4 (August 5 hard stop — migrate to 4.8); SOL DAY 22 ZERO NAMED ENTERPRISE DEPLOYMENTS (next window August 8-9); EU AI ACT ARTICLE 50 ENFORCEMENT TOMORROW (August 2, 2026 — NOT delayed by Digital Omnibus).**
+
+**CYCLE 178 UPDATE — OPUS 5 DAY 7: NO PRACTITIONER-DIRECT PRODUCTION POSTS (Day 10+ window next); THREE-WAY FRONTIER TIE HOLDS (Artificial Analysis Intelligence Index: Opus 5 = 61, Fable 5 = 60, Sol = 59, within measurement error); UNCONFIRMED SIGNAL: "OPUS 5 IN MICROSOFT 365 COPILOT" headline surfaced — confirmed cycle 179; OPUS 4.1 DEPRECATION AUGUST 5 (T-5 days, zero practitioner migration friction reports); NO NEW OSMANI POSTS AFTER JULY 20; NO NEW RONACHER AI POSTS AFTER JULY 13.**
 
 **CYCLE 177 UPDATE — LOOP ENGINEERING GOVERNANCE RISK: 5 INDEPENDENT VOICES ACROSS 5 DISTINCT CATEGORIES (Osmani Jul 20 "Software Factories" = verification bottleneck + Back Pressure Law 3–10 steps; OpenAI/HF incident July 8–13 = capability safety governance failure — first external-harm agentic incident; approaching true L3 convergence); GEMINI 3.5 PRO 7TH CONSECUTIVE MISSED WINDOW (July 30 confirmed, July 31 = 81% prediction market window); OPUS 5 DAY 6 SURFACE EMPTY (individual practitioner window opens July 31+); OPUS 4.1 DEPRECATION AUGUST 5 (T-6 days).**
 

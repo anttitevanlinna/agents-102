@@ -14,8 +14,14 @@ answers:
 
 # Google Workspace / Gemini Enterprise — Platform State
 
-Last updated: 2026-07-31 (cycle 178)
-OODA cycles: 27
+Last updated: 2026-08-01 (cycle 179)
+OODA cycles: 28
+
+**Cycle 179 updates (August 1, 2026) — Gemini 3.5 Pro absent = NINTH consecutive missed window; API changelog August 1 confirmed empty; next checkpoint August 7 (73% prediction market); Antigravity Agent confirmed running on Gemini 3.6 Flash (not dependent on delayed 3.5 Pro):**
+
+API changelog confirms no `gemini-3.5-pro` entry for August 1, 2026. Nine consecutive missed windows: June → July 12 → July 17 → July 21 → July 28 → July 29 → July 30 → July 31 → August 1. Most recent API changelog entry remains July 30, 2026 (Gemini Robotics ER 2 — two specialized model endpoints). Newest available Pro: `gemini-3.1-pro` (Preview tier). Bloomberg root cause (July 16, 10 current/former Google employees) stands: training data update in late June 2026 "made results worse instead of better." Google's official August 2026 target unchanged. Next prediction market checkpoint: August 7 at 73%. CTO planning: Gemini 3.6 Flash (stable, GA July 21) is the only credible Google API option through at minimum August 7. ([ai.google.dev/gemini-api/docs/changelog Aug 1 2026](https://ai.google.dev/gemini-api/docs/changelog) — [vendor documentation]; [bloomberg.com Jul 16 2026](https://www.bloomberg.com/news/articles/2026-07-16/google-gemini-launch-delayed-as-tech-falls-short-of-internal-goals) — [general press])
+
+**Watch: August 7 (73% Gemini 3.5 Pro prediction market — check API changelog first); August 31 (Gemini Robotics ER 1.6-preview EOL); Antigravity Agent enterprise tier timeline ("coming months").**
 
 **Cycle 178 updates (July 31, 2026) — Gemini 3.5 Pro absent = EIGHTH consecutive missed window; July 31 81% prediction market window closes; Gemini Robotics ER 2 in Public Preview (July 30); Antigravity Agent API clarified:**
 

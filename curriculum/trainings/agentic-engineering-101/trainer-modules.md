@@ -47,7 +47,7 @@ One module at a time. Pick a tab; the URL hash holds the selection so you can sh
 - *Compound and close* — `./CLAUDE.local.md` written from session evidence (not a template), a push-back pass where the summary misreads, and a second sweep before close.
 - *Close the ticket* (homework) — one connector (or `gh`, or manual paste) wires a close-out note into the bug's tracker.
 
-**Trainer cues.** The Connections trick-share calibrates the room; a quiet first beat is a Nordic norm, not no-signal. Bug pick is the single variable that breaks M1: too small (Claude crunches in 30s, no read worth dragging through introspection) or too large (no close inside the slot). The diff-line push-back IS the pedagogy of Fix tests-first; if students skip it the loop's third beat reads as theatre. The connector wire and ticket close run as homework now; in class, close on the rules file and hand the homework off explicitly.
+**Trainer cues.** The arc closer (How this training was built) is Antti's first-hand story — read it as a document, in narrator voice; you are not claiming the experience, and the opening line says so. The Connections trick-share calibrates the room; a quiet first beat is a Nordic norm, not no-signal. Bug pick is the single variable that breaks M1: too small (Claude crunches in 30s, no read worth dragging through introspection) or too large (no close inside the slot). The diff-line push-back IS the pedagogy of Fix tests-first; if students skip it the loop's third beat reads as theatre. The connector wire and ticket close run as homework now; in class, close on the rules file and hand the homework off explicitly.
 
 **Runtime map.** Budgets from the module's own trainer meta (Connections 10 / Lecture 10 / Exercise 75 / Bridge 5).
 

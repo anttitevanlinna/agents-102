@@ -1,5 +1,7 @@
 # How this training was built
 
+What follows is Antti's story of building this training, in his own words.
+
 At start, this training was bulletpoints. A strategy doc, seven headings, thirty bullets: the sort of list that makes you feel like you understand something and then realise you don't.
 
 ## Wrong is how steering gets in
@@ -45,6 +47,7 @@ The loop is the shape. The bug today was the excuse.
 <!-- maintainer -->
 
 **Standing constraints:**
+- **The opening narrator-frame line names Antti — deliberate rule-6 exception (maintainer call 2026-08-01).** The lecture is a first-hand account; the frame line converts a non-author trainer from witness to narrator ("read the document, don't perform it"). The creator-name lint will flag it; do not strip. Singular by instruction ("not builders — nor were there many").
 - **Zero map references.** M1 is map-protected; the Field Map does not appear on this surface.
 - **No cross-module sequencing** (`check_lectures.md §3`). The module file's `## Next` carries the bridge. The two arc-range lines that stay ("maps and skills and notes further in", "By the end of the training…") ride the §3 arc-lecture carve-out: the subject is the training's own arc.
 - **Narrative slides are prose paragraphs, not bolded-claim bullets** (`theory-plan.md § Slide format — emphasis budget`, `check_slides.md §9`). One bold survives — **compound engineering**, the coined-term handle at the naming beat — plus the **Understanding is the artifact** handle on *Built to forgive*. That is the whole budget.

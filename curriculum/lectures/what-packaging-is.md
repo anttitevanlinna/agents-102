@@ -205,7 +205,7 @@ Packaging is choosing which of these fixes stand without you.
 
 ## The three-pattern
 
-- Practitioners running multi-hour coding agents converge on the same three pieces. Different posts, different vocabulary, same shape over the last six months. Armin Ronacher names *reference* and *verifier* in his work; *plan.md* lands harder in Geoffrey Huntley's Ralph practice and Kieran Klaassen's plan-as-artifact. The three-pattern is what the convergence looks like assembled, and on the map it is what stands in for you at Verification.
+- Each piece turns up on its own across practitioner write-ups. We combined them into one kit and gave them names. Geoffrey Huntley's Ralph is the one published practice that runs all three at once. Armin Ronacher's January 2026 MiniJinja port ran two of them and named neither. You built all three today off your own failures, which beats a citation. On the map, the kit is what stands in for you at Verification.
 - **Reference artefact**, against goal drift. A spec the agent reads and re-reads: success criteria, pointers at the relevant memory, named constraints. The spec on disk stays readable mid-run when the buried instructions in the conversation no longer are. In Ronacher's MiniJinja port, the original Rust snapshot tests played this role; in your re-send, the reference you assembled plays it.
 - **plan.md** the agent owns and mutates, against context rot. A working document that holds durable state across the run: the agent reads it at every session boot, updates it as decisions land, re-reads it when the working window fills. What got ruled out an hour ago is written down, not remembered. Geoffrey Huntley's Ralph technique bootstraps entire greenfield projects on this single primitive.
 
@@ -293,6 +293,8 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 **Watch-fors (delivery):**
 - The lede + slide 1 are the recognition beat. The room just built each piece; don't rush the naming.
 - The three-pattern earns its name HERE, not in the pre-read. If a sim shows the closing landing as repetition rather than naming, the pre-read leaked.
+- **"We combined them into one kit and gave them names" needs the follow-on beat, or it reads as "so this is made up."** The authority is the room's own morning: they built three pieces against three failures they diagnosed themselves. Land the admission and then hand it straight back to them. A trainer who says this apologetically loses the slide; a trainer who says it as a credential ("nobody handed you this, you earned it") wins it. The one published practice running all three is Huntley's Ralph, so the pattern is not invented, only assembled.
+- **Open seam, not yet a card: Huntley is now named twice on this slide with two different scopes.** Slide 1 says Ralph "runs all three at once" (verified 2026-08-01: `@fix_plan.md`, `specs/*` diffed explicitly, tests plus type-system backpressure). The plan.md bullet says Ralph "bootstraps entire greenfield projects on this single primitive." Both hold — the second is about what carries the loop, not about what Ralph contains — but a student can hear a contradiction. Reconciling it means editing a second student line, so it waits for its own card rather than riding along with this one.
 - "What you didn't build today" is one slide, not three topics to expand; the kit's bigger than the lecture.
 - The counter-camp bullet lands soft. Amp is a real product with real engineers behind a real bet. Don't dunk on it.
 

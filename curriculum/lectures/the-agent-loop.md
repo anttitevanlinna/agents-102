@@ -36,12 +36,9 @@ Surface where the tool list comes from, and what it leaves out.
 **Unwiring (promotion = relocation):** both M1 callout links removed — `getting-going.md` "if time allows" blockquote (deleted) and `compound-and-close.md` timebox note (pointer sentence trimmed; the note itself stays). Reversibility: git carries the old wiring — restoring = the two callout lines + the `the-agent-loop` row in `TRAININGS['agentic-engineering-101'].supplementaries` in `site/layouts/curriculum.js`.
 
 **Eyeball questions (Antti):**
-1. Does M1 keep any pointer? The compound-and-close timebox note lost its "something to chew on" target; point that wait-beat at another supplementary, or accept the trim.
-2. Placement beat: after the far-half container, before Test and learn — or later, right before the send-off prompts?
-3. Slide count: +2 slides onto M4's raw count of 15 vs the ~6 budget (fan-out eyeball queue #1's counting question decides whether re-chunked legacy counts; both slides here are re-chunked M1 supplementary content plus one new bullet).
-4. The fourth anatomy bullet is the only new sentence — close enough to M3's loop-sizes beat to cut?
-5. The three prompts' registry `origin:` frontmatter still reads `agentic-engineering-101/supplementary/the-agent-loop` (documentation-only field per `compile-prompts.js`; left alone to avoid a registry edit). Update on the next prompt-registry pass?
-6. ~~Eval coverage.~~ **Closed 2026-08-01, both halves stale.** `SURFACES.lectures` is derived from `theoryManifestLectures()`, so the slug arrives with the M4 manifest entry and needs no hand-listing; and all seven `ae101--the-agent-loop.*.json` instances point at `curriculum/lectures/the-agent-loop.md`, not the supplementary path. `audit-eval-coverage.js --surface lectures` reports this file at 100% applicable on all four compendiums. Verified, not asserted.
+1. Placement beat: after the far-half container, before Test and learn — or later, right before the send-off prompts?
+2. The fourth anatomy bullet is the only new sentence — close enough to M3's loop-sizes beat to cut?
+3. The three prompts' registry `origin:` frontmatter still reads `agentic-engineering-101/supplementary/the-agent-loop` (documentation-only field per `compile-prompts.js`; left alone to avoid a registry edit). Update on the next prompt-registry pass?
 
 **Definitional contract — this slide is downstream of Agents 101, not parallel to it.** The definition bullet lists **four parts** (context · tools · goal · autonomy). Agents 101's `supplementary/what-is-an-agent.md` lists **five facets** (multi-step work · context · tools · goal · bounded autonomy). The difference is one fold, not a disagreement: multi-step work is carried here by *"in a loop"*, which is the term this lecture exists to install. Two altitudes, one definition. Three standing rules for anyone editing this bullet:
 - **Don't re-cut the list without cutting the sibling.** Any properties named here must map onto that file's facets or the house is teaching two theories.

@@ -55,7 +55,7 @@ Claude will narrate before acting. It usually opens with a plan summary listing 
 
 Check the copy landed before you go on: the output should name both `CLAUDE.local.md` and `observations/` at the worktree path. The whole contrast rests on the second run starting from the same system the first one did, and a rules file that quietly stayed behind changes two variables instead of one. If your rules file lives somewhere other than the two paths Claude checked, ask Claude to copy that one across too.
 
-**The coordinates are the anchor.** Claude should read the protected `Run coordinates` block in `task.md`, use the exact `m4/<slug>` branch named there, and fork from that branch's "M4 starting point" commit. If the coordinates are missing or the commit message has been rewritten, stop and use the starting-point SHA Claude reported before the send-off rather than guessing from branch names.
+**The coordinates are the anchor.** Claude should read the protected `Run coordinates` block in `task.md`, use the exact `m4/<slug>` branch named there, and fork from that branch's "M4 starting point" commit. If the coordinates are missing or the commit message has been rewritten, stop and use the starting-point SHA Claude reported before the send-off rather than guessing from branch names. If that SHA was never captured either, ask Claude to fork from the merge-base of `m4/<slug>` and the branch it was cut from; that commit is where the run started.
 
 The worktree is forked and ready. You open the session in it at the first exercise.
 

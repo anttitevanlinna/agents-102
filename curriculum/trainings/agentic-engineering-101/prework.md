@@ -3,6 +3,8 @@
 > Pick your model when you open a session. `/model` swaps between Sonnet and Opus. Sonnet runs every exercise in this training. Opus is there if you want the heavier option.
 >
 > Run modules on `high` thinking effort by default. xhigh adds latency without commensurate value on the work. Module 2 calls out a medium override at the top of that module.
+>
+> Set `cleanupPeriodDays: 365` in `~/.claude/settings.json` before Module 1 (needs Claude Code 2.1.203 or newer). Claude Code deletes session transcripts older than 30 days by default, and the day-30 follow-up after the training reads sessions from before it started.
 
 Land at Module 1 with a Claude Code session started in the repo you're going to grow,<!--flag:payload--> the curated skills installed,<!--/flag:payload--> and one trivial bug picked.
 

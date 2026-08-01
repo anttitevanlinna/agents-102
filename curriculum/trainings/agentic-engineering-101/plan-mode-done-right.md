@@ -53,7 +53,7 @@ If a branch from the second-pass read sharpened how plans get made in this codeb
 
 {{prompt:ae101-m2-integrate-branch}}
 
-> Read the prompt closely. It's fair to read it as replacing the file with only this rule, which would nuke the old rules. Watch the diff: integrating should add the new rule, not overwrite `./CLAUDE.local.md`. Precise prompting is harder than it looks.
+> Read the prompt closely. It's fair to read it as replacing the file with only this rule, which would nuke the old rules. Watch the diff: integrating should add the new rule, not overwrite `./CLAUDE.local.md`. Precise prompting is harder than it looks. If it did overwrite, the old rules are still in this session's scrollback; ask Claude to restore them.
 
 > LLM self-charity may creep in. If the saved rule reads generic, ask for one specific to this session.
 
@@ -103,7 +103,7 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat is the Evaluate beat)
-- **Session runtime:** 1h45 (Connections 10 / Lecture A 8 / Exercise A 50 / Exercise B 12 / Lecture B 5 / soft-compound 3 / Debrief 7 / Bridge 5 + 5 buffer; recounted 2026-08-01 — the previous Connections 10 / Lecture 10 / Exercise 60 / Debrief 15 / Bridge 5 line predated Exercise B and the soft-compound). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Self-study follow-along runs comparably; simple-prompting beats are quick.
+- **Session runtime:** 1h45 (Connections 10 / Lecture A 8 / Exercise A 50 / Exercise B 12 / Lecture B 3 / soft-compound 3 / Debrief 7 / Bridge 5 + 7 buffer; recounted 2026-08-01, Lecture B per its own file's ~3-min Time line). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Self-study follow-along runs comparably; simple-prompting beats are quick.
 - **Prep timing:** backlog-task surfacing 10 min; optional Cherny video 30 min; optional multi-session reference 10 min; Module 3 pre-read 10–15 min; optional OWASP scan 20 min.
 - **Mood target:** grounded competence — *"I can feel when a plan is good before approving it, and I know the move is two reads, not one."* Watch for: mood drift toward *"the second read did everything; my push-back was pointless."* Diagnostic: student at P5 reports the second-pass read caught the interesting stuff. Fix: trainer surfaces the contrast — *"your push-back caught the soft item the second read re-softened; your voice-of-experience beats the agent's breadth on that axis."*
 - **Delivery architecture** (working-dir model, compounding-artifact split, no training-dir state): canonical in `training-architecture.md` §Working directory model / §Rule files. Not restated here. Plan files land in Claude Code's default location; the four-layer rule-file hierarchy is in `reference/claude-code-for-engineers.md § 1`.

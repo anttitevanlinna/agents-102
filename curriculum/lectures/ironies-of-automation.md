@@ -28,9 +28,9 @@
 
 **Unwiring (promotion = relocation):** the M6 back-pointer was already removed this run (`spot-gaps-build-the-loop.md § Next`, see that file's 2026-07-03 wiring-cleanup note). Still open for the cleanup pass: the `ironies-of-automation` row in `TRAININGS['agentic-engineering-101'].supplementaries` (`site/layouts/curriculum.js`) and the `'supplementary/ironies-of-automation'` whitelist line in `scripts/build-workbook.js` — a promoted-to-lecture slug is inlined, not a registered supplementary, so both need the row dropped (mirror the `the-agent-loop` deregistration). Reversibility: git carries the supplementary + its registration. Only the module wiring edited in this pass.
 
-**EYEBALL questions (Antti):**
-1. **Slide budget.** +2 slides onto M4's already-flagged raw count (the-agent-loop's eyeball #3 put M4 at ~15 vs the ~6 budget; these two are re-chunked supplementary content, no new teaching load). Cut to one slide (fold the paradox and the complacency half together), or accept two?
-2. **Mood contract.** The paradox is meant to land as a live tension to watch for, not a prediction of failure. Send-off placement is the remedy already applied; if in rehearsal it still reads as *"you will miss the bad run,"* thin it to one slide.
+**Slide split is load-bearing, do not fold.** Slide 1 rides Bainbridge verbatim; slide 2's agent transfer is separately layered in the backing block. One folded slide merges the two evidentiary registers and lands ≈275 words vs the ~210 ceiling (`check_lectures §5`).
+
+**Watch-fors (delivery):** if the paradox lands in rehearsal as *"you will miss the bad run"* (prediction) rather than a live tension to watch for, thin to one slide — fold the complacency half into the paradox slide and keep the closing question. Past 3 minutes = teaching the fixes; those belong to the far half's closers.
 
 **Quality:** compendium-audited 2026-07-27 (writing@c202a8d story@c202a8d technical@c202a8d behavior@c202a8d pedagogy@c202a8d strategy@c202a8d slides@c202a8d)
 - judges @c202a8d: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

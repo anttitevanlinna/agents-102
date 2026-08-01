@@ -163,6 +163,9 @@ const THEORY_HANDBOOK_MANIFEST = {
       'lectures/the-loop-has-a-name',
       'lectures/the-map-filled-in',
       'lectures/agents-that-build-agents',
+      'supplementary/clean-code-is-steering',
+      'supplementary/skill-stacking',
+      'supplementary/workflow-composition-lineages',
     ]],
   ],
 };
@@ -765,6 +768,10 @@ function renderTheoryEntry(trainingKey, entry) {
     if (md === null) {
       throw new Error(`Theory manifest entry missing: ${path.relative(ROOT, docPath)}`);
     }
+    // The theory handbook is the full training — resolve module-conditional
+    // flag blocks against the complete module list (no customer flags apply).
+    const allModuleSlugs = (CR.TRAININGS[trainingKey].modules || []).map(m => m.slug);
+    md = CR.applyContentFlags(md, null, allModuleSlugs);
     md = rewriteCrossDocLinksToAnchors(md);
     md = inlineImages(md, path.dirname(docPath));
     md = escapeTildes(md);

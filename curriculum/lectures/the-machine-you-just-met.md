@@ -94,7 +94,6 @@ Format → `curriculum/backing-format.md`.
 **Eyeball questions (Antti):**
 1. M1 slide budget: raw count was 11; this adds 3 (raw 14) against the 3-5 budget. Under new-theory-only counting this is M1's first +3 NEW theory slides. Trim candidate if over: slide 3 (*One machine, both behaviors*) folds into the kicker, at the cost of the steerability pair.
 2. Should the opener's "That is the design, not a flaw" bullet now point here? This pass did NOT edit `painting-the-picture-with-the-llm.md`.
-3. M1 session runtime is 2h (Connections 10 / Lecture 10 / Exercise 95 / Bridge 5); this closer costs ~5 min. Confirm which line absorbs it.
 
 **Lecture meta:** *~5 min closer for Module 1, after the exercises and before `how-this-training-was-built`. Recognition pace: names two behaviors the exercises already surfaced.*
 

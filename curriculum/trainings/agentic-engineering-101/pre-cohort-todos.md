@@ -56,8 +56,6 @@ From the 2026-08-01 trainability audit (five-reviewer sweep, lens: competent sof
 ### Tier 2, high-value
 
 - **`[action]` Three open maintainer "eyeball" flags in M4's lecture blocks ship to the deliverer.** The timing side is recounted (2026-08-01, module meta + run sheet now candid); still open and maintainer-only: `the-agent-loop.md` eyeball #1 (M1's lost pointer after promotion, accept trim or re-point the wait-beat) and #3 (slide count +2 vs the ~6 budget), `ironies-of-automation.md` eyeball #1 (two slides or fold to one) and #2 (thin if it reads as "you will miss the bad run" in rehearsal). Resolve or explicitly accept-and-close each before TTT handoff.
-- **`[action]` Add the send-off carve-out to trainer-guide §Prompt Rules.** "Prompt blocks serve intent… if there is a better way, show it and use it" collides with "Minimal send-off is intentional"; only insider knowledge of the two-run arc reconciles them, and a peer trainer who "improves" `ae101-m4-take-task-end-to-end` destroys M5's payoff, the exact thing this cut exists to teach. One sentence: "never applies to send-off prompts, the under-specification is the curriculum."
-- **`[action]` Prep contract needs a tier + an exemplar run pair.** "Dry-run every exercise end to end" means, for M4→M5, a 1–2 working-day agentic project with real credit spend, stated nowhere; a peer trainer will skim instead and can't answer choreography questions. Name the prep cost, name the must-dry-run short list, ship a reference two-run artefact (un-packaged + packaged) to rehearse the M5 diagnosis/diff against.
 
 ### Tier 3, cheap one-liners, batchable
 

@@ -148,14 +148,25 @@ M6 carries more lecture surface than the other modules. By Module 6 the student 
 
 ## Prep Before Each Session
 
+**The train-the-trainer run-through is the primary prep.** You did the exercises there, on your own repo — that run IS your dry-run, and the artifacts it left behind (rules files, branches, run coordinates, transcripts) ARE your demo-repo starting states for cohort delivery. Keep them; don't clean them away.
+
+Per cohort session, three tiers:
+
+**Tier A — re-run what needs re-running.**
+- Bring your demo repo to the module's expected starting state — each run sheet's "Demo repo starting state" block says what must exist and how to regenerate it. Your TTT artifacts cover most of it; regenerate only what staled.
+- Re-run by hand the beats you fumbled at the TTT, and anything the content changed since.
+- If you skipped the TTT, or it didn't reach a module: the full dry-run is on you. For M4→M5 that is a working day plus run-wait, not an evening — schedule it as work. A 15–30-minute send-off run produces everything the M5 rehearsal needs; you do not need to cook a multi-hour run to prep.
+
+**Tier B — rehearse, don't run.**
 - Read the module page on the workbook site, including inlined exercises, lectures, Debrief, Bridge, and references.
-- Check Quality tags in maintainer blocks during prep. No Quality line means un-audited — rehearse harder; `sim-passed` is the top recorded rung. Whether the prompt chain actually runs is no longer a tag (mechanical is a pre-ship system test, not recorded) — so dry-run it yourself (next bullet).
-- Dry-run every exercise end to end on your demo repo. Not skim. Run it.
-- Rehearse the prompt progression, not just individual prompts. Know what each prompt depends on and what evidence it should leave for the next one.
-- Know the lecture material well enough to deliver the point without reading it verbatim.
-- Note two or three dry-run moments you can talk through during agent waits.
+- Walk the prompt progression against the run sheet: know what each prompt depends on and what evidence it should leave for the next one.
+- Lectures have a floor: reading the projected slide aloud is acceptable delivery. The bar is knowing the point well enough to field one question, not performing from memory.
+- Note two or three moments from your own runs you can talk through during agent waits.
+
+**Tier C — have open, confirm once.**
+- The module's run sheet (trainer-modules) in a second tab during delivery.
 - Confirm sponsor-stated homes: ADRs, rules file, ticket tracker, team kit, memory.
-- Keep your demo repo clean, on the right branch, with the expected starting state.
+- Check Quality tags in maintainer blocks during prep. No Quality line means un-audited — rehearse that module harder; `sim-passed` is the top recorded rung.
 
 ## Patterns To Call Out
 
@@ -177,7 +188,7 @@ M6 carries more lecture surface than the other modules. By Module 6 the student 
 
 ## Prompt Rules To Notice Live
 
-**Prompt blocks serve intent.** Teach the shipped prompt by default so the room has a shared reference. If there is a better way to reach the same teaching point, show it and use it. Name what changed, why it better serves the exercise, and compare the result against the intended teaching point.
+**Prompt blocks serve intent.** Teach the shipped prompt by default so the room has a shared reference. If there is a better way to reach the same teaching point, show it and use it. Name what changed, why it better serves the exercise, and compare the result against the intended teaching point. This license never applies to send-off prompts — their under-specification is the curriculum; see the minimal-send-off rule below.
 
 **Read the lead-in.** The sentence before the fenced prompt is part of the instruction. It tells the student what the prompt is about to do and gives you the clean narration beat before everyone pastes.
 

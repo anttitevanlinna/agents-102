@@ -8,7 +8,7 @@ vendor_reports: [Faros AI, DX, CodeRabbit, CircleCI, Anthropic, PostHog, Thought
 other_sources: [DORA, NBER, Karpathy, Willison, Furze, Bowley, Cursor/Graphite]
 nordic: false
 updated: 2026-08-01
-updated_scope: "2026-07-31 re-verified the practitioner leg and wrote the audit note. 2026-08-01 carried that verdict into the body: the L4 cross-domain paragraph is withdrawn, the What-We-Did-Not-Find RESOLVED marker is reopened, the healthcare-L3 claims are withdrawn, and all eight flagged figures now carry [SOURCE NEEDED] at point of use rather than only in the header note. NOT re-verified: the cycle-81 primaries themselves (still unchased), the quantitative table, the six-names table."
+updated_scope: "2026-08-01 added § 'The reviewer degrades too' — a second mechanism (review capacity falls with exposure, rather than staying fixed while volume rises), evidenced in-window by Osmani first-hand plus adjacent accounts from Ball and Beck. Deliberately NOT added to practitioners: — Osmani is already counted, and Ball/Beck are adjacent to the claim rather than on it; listing them would inflate the apparent leg count, which is the error this file was just corrected for. File stays L2. 2026-07-31 re-verified the practitioner leg and wrote the audit note. 2026-08-01 carried that verdict into the body: the L4 cross-domain paragraph is withdrawn, the What-We-Did-Not-Find RESOLVED marker is reopened, the healthcare-L3 claims are withdrawn, and all eight flagged figures now carry [SOURCE NEEDED] at point of use rather than only in the header note. NOT re-verified: the cycle-81 primaries themselves (still unchased), the quantitative table, the six-names table."
 answers:
   - "is the review bottleneck easing, or still binding?"
   - "can an agent reviewer absorb the output instead of a human?"
@@ -108,6 +108,22 @@ People hitting the absorption wall are doing one of three things, all wrong:
 3. **Trust and ship** — until something breaks in production (Amazon Kiro: 6.3M lost orders **[SOURCE NEEDED]**).
 
 The instinct is to review harder, not to review differently. But the bottleneck is structural, not attentional. No amount of human attention scales against 2x volume with 1.7x more issues.
+
+### The reviewer degrades too — a second mechanism, added 2026-08-01
+
+The volume framing above treats review capacity as **fixed** while volume rises. In-window first-hand accounts say capacity is not fixed: it **falls with exposure**, which compounds the same gap from the other side.
+
+Addy Osmani, *Cognitive Surrender* ([addyosmani.com](https://addyosmani.com/blog/cognitive-surrender/), 5 May 2026) — [practitioner direct], and self-implicating rather than observed in others: *"A few places I've watched it happen, mostly to me: Reading the diff. The agent produces a 600-line PR. You scan it. The variable names are reasonable. The tests are green. You approve. ... You didn't review the code. You ratified it. The surrender was the absence of a decision."* The same post reports within-session decay: *"The first PR of the day gets a real review; the fifth one gets a glance."* In his autonomy-levels taxonomy ([agentic-autonomy-levels](https://addyosmani.com/blog/agentic-autonomy-levels/), 2 Jul 2026) he names the mechanism outright: *"Failure mode is approval fatigue; all approvals feel the same regardless of what they're approving."*
+
+Two adjacent first-hand accounts, both in window, neither on the nose. Thorsten Ball ([registerspill](https://registerspill.thorstenball.com/p/joy-and-curiosity-78), 15 Mar 2026) — [practitioner direct]: *"Apparently, I have built up muscle memory to cmd-tab to a different window as soon as I submit a prompt"* — attention leaving while the agent runs, not degraded detection when reading output. Kent Beck ([newsletter.kentbeck.com](https://newsletter.kentbeck.com/p/genie-lessons-nobody-wants-agents), 23 Apr 2026) — [practitioner direct]: *"I was managing it... Holding state in my head that the system should have been holding for me. I'd said I wanted readable code and instead I had a coordination problem"* — the residual-monitoring burden itself.
+
+**Level discipline, and it is the whole reason this section is short: this adds NO independent leg.** Osmani is already this file's anchor practitioner, so the strongest evidence for the new mechanism comes from a witness already counted. Ball and Beck are adjacent rather than on the claim. The file stays **L2**.
+
+**Counter-evidence, from the same witness.** Osmani also reports the countermeasure working ([loop-engineering](https://addyosmani.com/blog/loop-engineering/), 7 Jun 2026): *"If I weren't reviewing the code myself or if I relied entirely on automated loops to fix it my product's quality would suffer"*, and in [agentic-code-review](https://addyosmani.com/blog/agentic-code-review/) (15 Jun 2026): *"I do not auto-merge on the result, and I do not lazy-merge whatever it approves."* Structured sampling with a refusal to rubber-stamp. So the degradation is real and appears correctable by deliberate practice — which cuts against reading this as an inevitability.
+
+**Why it matters for the pattern.** If capacity falls as volume rises, "review harder" fails for a second, independent reason, and the failure is *invisible from the inside* — a ratified PR looks exactly like a reviewed one in every metric an org collects. That is a sharper claim than the volume framing alone, and it is the one worth testing next: it predicts that measured review *throughput* can look healthy precisely when review *quality* has collapsed.
+
+**Prior art, and it is old.** This is Bainbridge's 1983 *Ironies of Automation* argument — automate the reliable middle and the human's monitoring skill decays from disuse — and Parasuraman & Riley's 1997 overreliance taxonomy. Neither is about software. **Notably, none of the practitioners above cites either**; Osmani reconstructs the mechanism from scratch without naming it. The convergence between a 1983 human-factors essay and a 2026 engineering blog is real and is worth flagging as such, but it is a resemblance between two literatures, not a citation chain.
 
 ## The Aviation Parallel
 

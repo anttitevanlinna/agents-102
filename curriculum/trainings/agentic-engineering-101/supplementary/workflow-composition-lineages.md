@@ -55,15 +55,16 @@ Two artefacts in the Amp surface, with different bylines and different shapes.
 
 **Feedback Loopable**, by Lewis Metcalf at Sourcegraph (2026-02-05), is a named methodology Metcalf calls *"making it feedback loopable"*: building things for humans using methods built for agents. His three components, verbatim from the post: *"1. Built a playground. 2. Set up Experiments. 3. Made the inner loop fast."* The playground is a shared agent-human environment. Experiments use URL-driven query parameters for reproducibility. The inner loop is sped up by emitting CLI text output rather than screenshots so the agent can iterate faster. This is Metcalf's coined methodology, not an industry-standard framework.
 
-**Handoff**, anonymous team byline at Amp (2025-10-23), is a product feature shipped by Amp, not a framework. The published description: *"Handoff lets you specify your goal for the new thread. Amp then analyzes the current thread and generates a prompt to start the new thread, along with a list of relevant files."* The argument for handoff over compaction: *"It's lossy, for one. Every time you compact a thread, what's in the context window gets replaced with a summary."* Handoff is a single composition seam Amp ships; it does not arrive as part of a broader framework Amp has named.
+**Handoff**, anonymous team byline at Amp (2025-10-23), was a product feature Amp shipped, not a framework. The published description: *"Handoff lets you specify your goal for the new thread. Amp then analyzes the current thread and generates a prompt to start the new thread, along with a list of relevant files."* The argument for handoff over compaction: *"It's lossy, for one. Every time you compact a thread, what's in the context window gets replaced with a summary."* Amp reversed that argument in May 2026, retired Handoff, and now compacts automatically. It was a single composition seam Amp shipped and later withdrew; it never arrived as part of a broader framework Amp had named.
 
-What's distinctive about the Amp surface: composition seams ship inside Amp's runtime, maintained by Amp's product team. If Amp ships a better `/handoff` next month, the user gets the upgrade without rewriting any skill files. Klaassen and Pocock keep their composition primitives in their own Git repos; Amp keeps its primitives inside the product.
+What's distinctive about the Amp surface: composition seams ship inside Amp's runtime, maintained by Amp's product team. The Handoff reversal is the clearest demonstration. Amp changed its mind about the whole mechanism and users got the new behaviour without rewriting a single skill file, which is the upside and the exposure in one move. Klaassen and Pocock keep their composition primitives in their own Git repos; Amp keeps its primitives inside the product, and can retire one.
 
 What's contested: most of Amp's specific primitives are platform-specific. Read the posts for the architectural shape and the methodology framing; do not expect the verbatim primitives to translate to Claude Code or Cursor.
 
 **Read:**
 - [Feedback Loopable](https://ampcode.com/notes/feedback-loopable): Metcalf's named methodology, three components in his own words.
-- [Handoff](https://ampcode.com/news/handoff): the canonical Amp post on the handoff feature; explains why compaction is lossy.
+- [Handoff](https://ampcode.com/news/handoff): Amp's 2025 post on the handoff feature; explains why they considered compaction lossy.
+- [Amp, Rebuilt](https://ampcode.com/news/neo): the 2026 reversal. Compaction replaces handoff.
 
 ## Practitioner moves without a published framework, Boris Cherny
 
@@ -167,7 +168,7 @@ Two or three practitioners is enough to track. Watch what they ship in their own
 - `[checked:2026-05-25 result:OK due:2026-11-25]` <no body URL — OODA findings workflow-composition-1a/3-confirmation> — [practitioner direct] Willison "normalization of deviance" supporting pointer. fallback: convergent pointer grounded in OODA findings; not a body-cited claim.
 - `[checked:2026-05-25 result:OK due:none]` <internal: supplementary/skill-stacking.md> — [maintainer-attested] Dino's worked-example skill stack, shipped in-repo with permission; file + 3 diagrams confirmed on disk. In-repo artefact, does not expire. fallback: none — it's in the repo.
 
-**Freshness:** The Amp handoff post (2025-10-23) is past the 6-month window **and superseded** — Amp retired Handoff for automatic compaction on 2026-05-06. **The body does NOT currently date it as historical**, so this note may not claim compliance: it presents Handoff in the present tense and speculates about a future version of a discontinued feature. The Cognition/Yan entries above are the treatment this section is missing, pairing the 2025 stance with the evolved 2026 one and linking both. Do not restore "do not auto-flag" until the body cards land.
+**Freshness:** The Amp handoff post (2025-10-23) is past the 6-month window **and superseded** — Amp retired Handoff for automatic compaction on 2026-05-06. The body carries the reversal: past tense throughout, the retirement stated in the Handoff paragraph, and the Read list pairs the launch post with `news/neo` the way the Cognition/Yan entries pair Yan's 2025 and 2026 stances. Do not auto-flag on the 2025 date alone. **Do restore the present tense at your peril:** the pre-2026-08-01 body called Handoff a feature Amp "ships" and speculated about "a better `/handoff` next month", and the stamp above it asserted the body already framed it as historical, which is how the defect stayed invisible.
 
 **Frameworks attributed:**
 - **Compound Engineering** — Kieran Klaassen [practitioner direct, vendor venue]. Named, published, plugin-shipped.

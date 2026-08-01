@@ -236,7 +236,7 @@ Six research directions surfaced from cross-referencing one year of practitioner
 
 ### 5.1 The Feature Throughput Trap: 10x Output, 1x Business Impact
 
-**Finding (practitioner signal, April 7):** The absorption bottleneck research (Level 3: CircleCI, Faros, Ronacher, Bowley) documents teams that can't ship what they generate. But there's a level above that: teams that CAN build, verify, and ship at 10x speed — and still see no business impact improvement. The assumption that development speed was the constraint gets exposed as an excuse. The real constraint was always knowing which of the 200 possible things to build actually moves the business.
+**Finding (practitioner signal, April 7):** The absorption bottleneck research (~~Level 3: CircleCI, Faros, Ronacher, Bowley~~ **corrected 2026-08-01: Level 2, Ronacher and Osmani only** — CircleCI and Faros are vendors reporting on their own customers, and Bowley disputes rather than corroborates) documents teams that can't ship what they generate. But there's a level above that: teams that CAN build, verify, and ship at 10x speed — and still see no business impact improvement. The assumption that development speed was the constraint gets exposed as an excuse. The real constraint was always knowing which of the 200 possible things to build actually moves the business.
 
 This is NOT the decision-speed bottleneck (Goldratt/TOC framing of slow approval chains). It's a different problem: not that decisions are queued waiting for approval, but that **organizations don't know what to want**. Fast execution with thin strategic intent just produces more verified, shipped, irrelevant features faster.
 

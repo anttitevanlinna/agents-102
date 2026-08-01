@@ -24,7 +24,7 @@ Purpose: Map how practitioners currently compose multi-step agent workflows, and
 - **The Final Bottleneck** — "If the machine writes the code, the machine better review the code at the same time" — implicit machine-writer → machine-reviewer → human pipeline, presented as inevitable not recommended. — https://lucumr.pocoo.org/2026/2/13/the-final-bottleneck/ [practitioner direct] (2026-02-13)
 - **Disposable-skills posture** — From earlier `Pi` post (2026-01-31, just inside window): "I throw skills away if I don't need them." Writing-down IS the work, but the artefacts are local and ephemeral, not a marketplace.
 - **Pushing Local Models** — https://lucumr.pocoo.org/2026/5/8/local-models/ [practitioner direct] (2026-05-08) — focus + polish, not composition.
-**Three-gates:** Agentic? Y · Independent evidence? Y (CircleCI 8M-PR dataset confirms his Little's Law framing) · Specific outcome? Y (MiniJinja Go port: $60, 2.2M tokens).
+**Three-gates:** Agentic? Y · Independent evidence? **Weak** — ~~CircleCI 8M-PR dataset confirms his Little's Law framing~~ **corrected 2026-08-01: CircleCI is vendor telemetry on its own paying customers (L0) and confirms nothing.** The gate passes on Osmani as the second independent practitioner, not on the dataset. · Specific outcome? Y (MiniJinja Go port: $60, 2.2M tokens).
 **Representative quote:** "It cannot really be automated... for as long as I carry responsibilities and am accountable, this will remain true."
 **Notes:** Ronacher is the **counter-evidence anchor** for this research question. He's a fellow traveller in workflow craft, but his core claim is that workflow composition is mostly throttling, not multiplication.
 

@@ -8,7 +8,7 @@ Cycle 90 research: Two specific analytical framings from practitioner signals ha
 
 ---
 
-**Cycle 91 UPDATE:** Little's Law/WIP signal upgraded to Level 3 convergence — CircleCI 8M+ PR dataset + Ronacher + Bowley + Thoughtworks all confirm independently. Decision speed bottleneck (TOC framing) remains Level 1 — still no external convergence.
+**Cycle 91 UPDATE:** ~~Little's Law/WIP signal upgraded to Level 3 convergence — CircleCI 8M+ PR dataset + Ronacher + Bowley + Thoughtworks all confirm independently.~~ **CORRECTED 2026-08-01 — Level 2.** CircleCI and Thoughtworks are both L0 (vendor on own customers; consultancy on own framework), and Bowley disputes the CircleCI cohort rather than confirming it. Decision speed bottleneck (TOC framing) remains Level 1 — still no external convergence.
 
 **Cycle 92 UPDATE:** Multi-domain opinion convergence emerging for decision speed bottleneck — Harrington (supply chain, "hierarchical approval structures"), Fryrear (marketing, TOC framing explicitly), EM360Tech (general) all name the mechanism independently. Three domains, Level 1 opinions, no deployment data. Moving toward Level 2 but not there. Next signal to watch: practitioner reporting "our approval cycle is the measured bottleneck after AI deployment."
 
@@ -22,7 +22,7 @@ Cycle 90 research: Two specific analytical framings from practitioner signals ha
 
 Still Level 1 overall. No practitioner has reported measured decision cycle times before/after AI deployment in a non-engineering domain. The measurement gap is real: engineering teams publish PR cycle time data; business teams (marketing, finance, operations) do not yet publish decision latency data.
 
-**Closest to Level 2:** Faros AI (10K developers, July 2025) — PR review time +91%, merge time 1.2 → 3.5 days post-AI. But this is engineering merge approval (technical), not business decision cycle (strategic). Already captured in absorption-bottleneck.md at L3/4.
+**Closest to Level 2:** Faros AI (10K developers, July 2025) — PR review time +91%, merge time 1.2 → 3.5 days post-AI. But this is engineering merge approval (technical), not business decision cycle (strategic). Already captured in absorption-bottleneck.md **[CORRECTED 2026-08-01]** — that file is now **L2**, not L3/L4; do not inherit a level from it. Formerly at L3/4.
 
 **Counter-evidence searched:** No credible independent evidence that AI speeds up strategic business decisions. All speed-up claims are vendor-sourced (Level 0) or cover routine approval automation, not strategic judgment.
 

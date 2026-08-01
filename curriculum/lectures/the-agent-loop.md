@@ -19,7 +19,7 @@ Get the tool list this session is actually carrying.
 
 {{prompt:ae101-agent-loop-tools-list}}
 
-Surface where the tool list comes from, then how MCP-connector tools land in the same set.
+Surface where the tool list comes from, and what it leaves out.
 
 {{prompt:ae101-agent-loop-tool-injection}}
 

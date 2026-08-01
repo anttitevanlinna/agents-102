@@ -41,4 +41,46 @@ You just walked your whole system against a real task and sent it off. The persi
 
 **Source note.** The observable moves named (teams git-tracking rules, symlinking a shared skills folder) are general practitioner practice, kept deliberately unattributed and uncounted. If a concrete company example is wanted (e.g. a named skill-marketplace pattern), it needs a verified within-6-months source before it lands in body.
 
+<!-- backing -->
+
+Format → `curriculum/backing-format.md`. This is the file's only source ledger; the `**Source note.**` block above is absorbed here.
+
+**The one thing to know about this file.** It is a closing lecture that opens a question and deliberately lands nothing, so almost every line is `vision` and owes nothing. Two lines are not: the three-layer file inventory on slide 1 is a **platform capability claim** that moves, and the teams-are-starting-to-act bullet on slide 2 is a **practitioner claim** currently carrying no attribution. Those two are where the debt is.
+
+**Claims**
+- `memory-is-what-persists` · vision · "The persistent part of what you walked, the rules and notes and skills that outlast the session, is what this training calls memory." ← none-owed — the training's own definition, flagged as such by *"what this training calls."*
+- `word-not-settled` · vision · "The word is not settled. Some practitioners say memory, some say context, some just say rules, or the files." ← none-owed — the maintainer's read of the terrain, and the lecture's deliberate refusal to pick.
+- `context-empties-memory-persists` · detail · "*context* already names the live window the agent holds while it works, the part that empties when the session ends" ← cc-memory-docs. Definitional and correct; `check_student_facing.md §4` requires this split be stated precisely and it is.
+- `three-layers` · vision · personal / team / company ← none-owed — the training's own framing, and the spine of the lecture.
+- `personal-layer-home` · detail · "`./CLAUDE.local.md` (gitignored), your `observations/`, the skills you authored" ← cc-memory-docs. `observations/` is our convention, not a platform path — correctly named by location rather than by a reserved term.
+- `team-layer-home` · detail · "`./CLAUDE.md`, changed only through PR review" ← cc-memory-docs. The file is the platform's; the PR gate is org convention, not enforced by the tool.
+- `company-layer-has-no-file` · detail · **"Company. No obvious file."** ← cc-memory-docs, cc-server-managed-settings, local-probe-2026-08-01 — **and the sources CONTRADICT the claim. See Flagged; this is false as written and owes a card.** The live probe is listed alongside the docs deliberately: it is what keeps the correction honest, showing the tier is opt-in and absent on an unmanaged machine rather than something every student already has.
+- `teams-are-starting-to-act` · detail · "They git-track their rules instead of keeping them on one laptop; they symlink a shared skills folder so the same rules load wherever an engineer works." ← `[SOURCE NEEDED]` — deliberately unattributed as general practice; an OODA is testing whether it can be named.
+- `shape-is-the-hard-part` · vision · "The hard part is not whether to build it. It is the shape." ← none-owed — the file's thesis, and the position `memory/company-context-layer-believed-direction.md` records: doubt on the HOW, not the WHETHER.
+- `done-wrong-is-a-tax` · vision · "memory loaded everywhere, owned by no one, the `CLAUDE.md` equivalent of the staff handbook nobody reads" ← none-owed
+- `youll-meet-it-in-your-org` · vision · "You'll meet the answers in your own org before any framework hands them to you." ← none-owed — the closing move, and deliberately the only thing the lecture asks of the student.
+
+**Sources**
+- cc-memory-docs `[checked:2026-08-01 result:CORRECT due:cohort]` https://code.claude.com/docs/en/memory.md — [vendor documentation, authoritative for capability] Fetched whole and read first-hand, not taken from the capability agent (`check_platform_and_boundaries.md §4`, trust-but-verify). **A managed-policy tier sits ABOVE project `./CLAUDE.md`**, at `/Library/Application Support/ClaudeCode/CLAUDE.md` (macOS), `/etc/claude-code/CLAUDE.md` (Linux/WSL), `C:\Program Files\ClaudeCode\CLAUDE.md` (Windows). The docs describe it as *"Organization-wide instructions managed by IT/DevOps"*, scope *"All users in organization"*, and give its example contents as **"Company coding standards, security policies, compliance requirements"** — which is verbatim the list slide 1 says has no home. Also: *"Organizations can deploy a centrally managed CLAUDE.md that applies to all users on a machine. This file cannot be excluded by individual settings."* Deployment is via MDM, Group Policy or Ansible. `result:CORRECT` because it corrects a live body claim.
+- cc-server-managed-settings `[checked:2026-08-01 result:OK due:cohort]` https://code.claude.com/docs/en/server-managed-settings.md — [vendor documentation, authoritative for capability] Fetched and read first-hand. A `claudeMd` key carries managed CLAUDE.md content inside managed settings: *"The `claudeMd` key lets you put managed CLAUDE.md content directly inside `managed-settings.json` instead of deploying a separate file."* Precedence *"same as a managed CLAUDE.md file. Loads before user and project CLAUDE.md."* Honored in *"managed and policy settings only."* **Gated: "Claude for Teams or Claude for Enterprise plan."** The file-based managed CLAUDE.md above carries no such licence gate.
+- local-probe-2026-08-01 `[checked:2026-08-01 result:ATTESTED due:none]` attested:Claude 2026-08-01 live-probe — [maintainer-attested] `check_platform_and_boundaries.md §5a` live-test. Probed the managed-policy paths on this machine: `/Library/Application Support/ClaudeCode/CLAUDE.md` **absent**, `/etc/claude-code/managed-settings.json` **absent**, `~/.claude/CLAUDE.md` present. Load-bearing nuance and the reason the lecture is not simply wrong: **the tier exists and is opt-in, not default.** An org gets it only if IT deploys it. So *"no obvious file"* is false, while *"today it lives in wikis nobody opens"* may well still be true of most companies — which is a claim about adoption, not about the platform.
+
+**Frameworks**
+- Personal / team / company layering · [borrow:none — house framing] · law:none · ← none-owed. Ours. Do not attribute; no external source coined this split for agent memory.
+
+**Stance** `[stance:2026-08-01 level:L1]`
+- holds: the platform side is now settled and documented — an org-wide memory tier exists, is auto-loading, cannot be excluded by users, and its documented purpose is exactly the content this lecture says is homeless. That part is `[vendor documentation]`, authoritative for capability and worth nothing for significance.
+- contested: **whether anyone actually uses it, which is the question the lecture really cares about.** A shipped mechanism is not an adopted practice, and the file's own thesis — the hard part is the shape, not the whether — is untouched by a docs page. Two OODAs are open on that: can `teams-are-starting-to-act` be attributed to named practitioners, and has anyone published a company-layer shape that works.
+- would-move-it: named orgs reporting they run a managed-policy CLAUDE.md and what happened to it — success would close the lecture's open question, and failure (*"it became the handbook nobody reads"*) would confirm the thesis and be more valuable than success.
+
+**OODA**
+- question: the lecture asks whether the third layer gets a real home. The platform half is answered — it has one. The live half is whether orgs use it, in what shape, and whether the shared layer rots the way the lecture predicts.
+- roster: Simon Willison, Armin Ronacher, Addy Osmani, Kieran Klaassen, Dex Horthy, Birgitta Böckeler, Geoffrey Litt, Steve Yegge; plus `platform-watch/coding-agents/state.md` and public company repos carrying org-level `.claude/` conventions.
+- last-run: 2026-08-01
+
+**Flagged**
+- `[found:2026-08-01]` **"Company. No obvious file." is false, and it is a platform claim on a projected slide.** A managed-policy CLAUDE.md tier is documented, sits above project level, auto-loads, cannot be excluded by individual settings, and its documented example contents are *"Company coding standards, security policies, compliance requirements"* — the lecture's own list of homeless conventions, item for item. Verified first-hand against `memory.md` and `server-managed-settings.md`, not taken from the capability agent. → **Owes a card.** The fix is not simply deleting the sentence: the tier is opt-in and absent on an unmanaged machine (live-probed), so the honest correction distinguishes *the platform has no file* (false) from *your company has not filled one in* (probably true, and the more interesting claim). Done well this **strengthens** the lecture — the shape question gets sharper when a file already exists and is still empty.
+
+<!-- /backing -->
+
 - section-3 sweep 2026-07-02: 2 refs judged, 0 fixed, 0 carve-out. "since your first rule" (body) = lived-arc phrasing, already the §3-compliant fix of the former "since Module 1" (converted in the slides-only pass); "you just walked... and sent it off" (lede) = within-module closer setup, not cross-module sequencing. Zero `M[0-9]`/module-name hits above the fence.

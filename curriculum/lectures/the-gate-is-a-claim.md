@@ -97,19 +97,64 @@ A gate is one more claim in the system. Build it, then hold it to the same bar i
 
 **Laws carried (5 + closing frame):** green-is-a-claim (passing is not proof) · calibrate-the-judge · Goodhart/gate-decay · one-run-is-a-sample · don't-tamper (change on recurrence). Trimmed from the reference-dose supplementary: hold-out and integrity-check folded into the gate-decay slide; the error-analysis-first bullet kept tight on the calibrate slide (cut candidate — see eyeball). The demo-is-pass-once and regression-to-the-mean bullets kept as one-line traps.
 
-**Frameworks riffed on:** Goodhart's law `[cultural-vocab]` (name-only) · W. Edwards Deming on tampering `[cultural-vocab]` (name-only) · judge-calibration loop credited to Hamel Husain inline (URL below) · regression-to-the-mean = statistics commons, un-attributed.
-
 **Lecture meta:** *7–9 min M5 closer, deck-shaped, six slides: five gate laws plus the delegation-frontier zoom-out. Names the fallibility of the verifier the student just built. Earns each law from the gate in front of them, not cold.*
 
 **Delivery mode:** In-room close, projected, after `what-packaging-is.md`.
 
 **Time:** 7–9 min at presentation pace (recognition; the student built the gate this module).
 
-**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
-- `[checked:2026-07-02 result:OK due:2027-01-02]` https://hamel.dev/blog/posts/llm-judge/ — [practitioner direct] Hamel Husain (first-person byline confirmed), judge validated against a domain expert's labels, agreement tracked, ">90% agreement" in "three iterations" verbatim; "You cannot write a good judge prompt until you've seen the data." Anchors the calibrate-the-judge slide incl. the 90%/three-iterations number. fallback: drop the number, keep the move ("measure agreement against your own labels, iterate until you converge").
-- `[checked:2026-07-02 result:OK due:2027-01-02]` https://hamel.dev/blog/posts/field-guide/ — [practitioner direct] Hamel Husain: "Error analysis - the single most valuable activity in AI development and consistently the highest-ROI activity"; bottom-up from actual data vs top-down assumed metrics. Anchors the error-analysis-first bullet. fallback: drop the name, teach as "the eval-building discipline practitioners converge on".
-- `[checked:2026-07-02 result:CAVEAT due:2027-01-02]` https://hamel.dev/blog/posts/evals/ — [practitioner direct] Husain byline confirmed, judge-vs-human agreement loop confirmed ("iterate on the prompt of the critique model to make it sufficiently aligned"), BUT this post leads with synthetic test cases, not error-analysis-first — the audit's original single-URL attribution was imprecise; the two URLs above carry the body claims. fallback: keep as supporting only; drop this URL and the body loses nothing.
-- Goodhart's law — [cultural-vocab], name-only, no URL owed. Deming on tampering — [cultural-vocab], name-only, no URL owed.
+<!-- backing -->
+
+Claims
+- `gate-is-a-claim-too` · vision · "That green is worth exactly as much as the gate behind it, and the gate is a claim too." ← none-owed
+- `five-ways-a-gate-lies` · vision · "It can lie in five ways." ← none-owed
+- `green-is-a-claim-not-proof` · vision · "Green is a claim about the check, not a fact about the work." ← none-owed
+- `three-reasons-a-pass-looks-identical` · vision · "the judge is miscalibrated, the gate got gamed, or the run was a lucky sample" ← none-owed
+- `countermoves-cost-less-than-the-failure` · vision · "All three cost less than the failure they hide." ← none-owed
+- `judge-has-unknown-floor` · vision · "A judge has an unknown floor until you measure it." ← none-owed
+- `hand-label-measure-sharpen-repeat` · vision · "hand-label a sample, measure agreement, sharpen, repeat" ← none-owed
+- `thirty-outputs-to-start` · detail · "Thirty outputs is enough to start." ← [SOURCE NEEDED]
+- `husain-ninety-percent-three-iterations` · detail · "Hamel Husain reports better than 90% agreement after three iterations of exactly this loop." ← husain-llm-judge
+- `error-analysis-before-armchair` · detail · "A good gate starts from real traces, not imagined failures." ← husain-field-guide, husain-evals
+- `goodhart-gates-decay` · borrowed · "**Goodhart's law**, and the agent is an optimizer aimed straight at your gate." ← cultural-vocab
+- `passing-while-missing-intent-is-a-signature` · vision · "When work clears the gate and still is not what you meant, the gate has decayed into a target." ← none-owed
+- `holdout-and-integrity-check` · vision · "Keep a check the agent never sees, so nothing can optimize against it." ← none-owed
+- `behaviour-is-a-distribution` · vision · "The agent's behavior is a distribution, not a property." ← none-owed
+- `reachable-is-not-dependable` · vision · "passing once shows the task is reachable, passing again and again shows it is dependable" ← none-owed
+- `demo-is-pass-once-evidence` · vision · "A demo is pass-once evidence." ← none-owed
+- `deming-tampering` · borrowed · "W. Edwards Deming called this **tampering**" ← cultural-vocab
+- `react-on-recurrence` · vision · "The same failure shape returning is signal." ← none-owed
+- `regression-to-the-mean-trap` · borrowed · "After a bad run, the next run is usually better with no change at all." ← cultural-vocab
+- `two-axes-reach-and-calibration` · vision · "Every run you hand off sits on two axes." ← none-owed
+- `four-states-fall-out` · vision · "Calibrated agency when the gates behind the green are ones you have measured, reckless autonomy when they are not." ← none-owed
+- `frontier-moves-with-the-gates` · vision · "The frontier moves outward only as fast as the gates behind it." ← none-owed
+
+Sources
+- husain-llm-judge `[checked:2026-07-02 result:OK due:2027-01-02]` https://hamel.dev/blog/posts/llm-judge/ — [practitioner direct] Hamel Husain (first-person byline confirmed), judge validated against a domain expert's labels, agreement tracked, *">90% agreement"* in *"three iterations"* verbatim; *"You cannot write a good judge prompt until you've seen the data."* Anchors the calibrate-the-judge slide including the 90%/three-iterations number. fallback: drop the number, keep the move — measure agreement against your own labels, iterate until you converge.
+- husain-field-guide `[checked:2026-07-02 result:OK due:2027-01-02]` https://hamel.dev/blog/posts/field-guide/ — [practitioner direct] Hamel Husain: *"Error analysis - the single most valuable activity in AI development and consistently the highest-ROI activity"*; bottom-up from actual data versus top-down assumed metrics. Anchors the error-analysis-first bullet. fallback: drop the name, teach as the eval-building discipline practitioners converge on.
+- husain-evals `[checked:2026-07-02 result:CAVEAT due:2027-01-02]` https://hamel.dev/blog/posts/evals/ — [practitioner direct] Husain byline confirmed, judge-versus-human agreement loop confirmed (*"iterate on the prompt of the critique model to make it sufficiently aligned"*), BUT this post leads with synthetic test cases, not error-analysis-first — an earlier single-URL attribution was imprecise, and the two URLs above carry the body claims. Supporting only. fallback: drop this URL and the body loses nothing.
+
+Frameworks
+- Goodhart's law · [borrow:economics] · law:none · ← cultural-vocab — name-only, no URL owed
+- Tampering · [borrow:statistical process control] · law:dont-tamper · ← cultural-vocab — Deming, name-only, no URL owed
+- Regression to the mean · [borrow:statistics] · law:none · ← cultural-vocab — statistics commons, deliberately un-attributed in body
+- Judge calibration against your own labels · [borrow:none] · law:eval-judge-verifier-gate · ← husain-llm-judge
+- The delegation frontier · [borrow:none] · law:calibrated-delegation-frontier · ← none — home-grown 2×2, L0, no citation owed; also the model behind the AE101 day-30 measurement design, which stays maintainer-side
+
+Stance `[stance:2026-08-01 level:L2]`
+- holds: that a judge must be measured against human labels before it is trusted. Husain is the clearest published practitioner statement of the loop and carries the only number in the lecture. The failure modes themselves — miscalibration, gaming, sampling — are textbook rather than contested, which is why four of the five laws sit on borrowed frames rather than on practitioner counts.
+- contested: nothing material in the five laws. What is unsettled is dosage: whether a room this early can act on judge-calibration at all, or only recognise it. That is a pedagogy question, not an evidence one.
+- would-move-it: a published agreement-rate loop that lands somewhere other than Husain's ">90% after three iterations" — a materially different convergence rate, or a practitioner reporting that judge calibration failed to transfer. One more independent number would take this to L3 and let the body say "practitioners report" instead of naming one person.
+
+OODA
+- question: has anyone besides Husain published a measured judge-versus-human agreement loop with numbers, and does 30 samples hold up as the starting sample size anywhere in print?
+- roster: Hamel Husain, Shreya Shankar, Eugene Yan, Jason Liu, the Anthropic and OpenAI eval cookbooks
+- last-run: 2026-08-01
+
+Flagged
+- `[found:2026-08-01]` *"Thirty outputs is enough to start"* is a bare number in student-facing body with no source behind it — the same shape as the 60% figure that collapsed on M5's opener. It is defensible as a teaching heuristic and indefensible as a reported finding, and the body currently reads as the second → decide whether to source it, soften it to a range with the reasoning shown, or cut the number and keep "a sample."
+
+<!-- /backing -->
 
 **Quality:** compendium-audited 2026-07-27 (writing@c202a8d story@c202a8d technical@c202a8d behavior@c202a8d pedagogy@c202a8d strategy@c202a8d slides@c202a8d)
 - judges @c202a8d: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

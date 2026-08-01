@@ -51,10 +51,54 @@ The loop feeds itself. That is the flywheel, and it starts with what you encoded
 
 **Delivery mode:** In-room close after Debrief.
 
-**Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
+<!-- backing -->
 
-- `[checked:2026-05-25 result:CAVEAT due:2026-11-25]` https://ideas.fin.ai/p/2x-nine-months-later — [practitioner direct, vendor venue] Curran 2026-04-16: 19.2%/14.6 vs 75.8/86% ≤20 lines, ~473 R&D in 1,305. "Runs engineering" phrasing avoids the title nit. fallback: keep numbers, attribute Intercom's published telemetry, flag self-report.
-- `[checked:2026-05-25 result:CAVEAT due:2026-11-25]` https://x.com/geoffintech/status/2042002590758572377 — [practitioner direct] Charles CPO; author + date (April 8 2026) verified via X oEmbed 2026-05-25, but that status is a link-only post — the "models were good enough, the harness wasn't" quote + 350+ Dojo live in the thread/linked piece, confirmed via observations/ramp.md. fallback: attribute the verbatim Charles line from the observation file; if number contested, use "hundreds of skills." (orphaned — body claim removed in slides-only pass; stamp retained for provenance)
+Claims
+- `checks-are-one-family` · vision · "Different shapes, same move." ← none-owed
+- `the-name-is-eval` · vision · "The name for all of it is **eval**." ← none-owed
+- `judge-verifier-gate-are-practitioner-words` · detail · "Practitioners say *judge* when the check is itself an LLM reading the work." ← [SOURCE NEEDED]
+- `eval-definition` · vision · "An eval is the automated check that says *this agent-produced thing meets our bar*." ← none-owed
+- `map-placement-checking-loop` · vision · "the checking loop the M2 drawing left dashed, now drawn solid" ← none-owed
+- `fires-on-any-quality-bar` · vision · "The shape fires on any workflow with a quality bar, not only agent runs." ← none-owed
+- `naming-enables-reuse` · vision · "Naming it is what lets you reuse it." ← none-owed
+- `intercom-auto-approval-numbers` · detail · "19.2% of Intercom's pull requests merge with no human reviewer" ← curran-2x
+- `intercom-timing-and-size` · detail · "Auto-approved PRs merge in 14.6 minutes versus an org median of 75.8 minutes. 86% of them are 20 lines or fewer." ← curran-2x
+- `intercom-org-size` · detail · "The R&D org is around 470 people inside a 1,300-person company." ← curran-2x
+- `verifier-scaled-same-primitive` · vision · "Read that as your verifier from M5, scaled." ← none-owed
+- `shape-survives-org-size` · vision · "The shape doesn't change when the org gets big." ← none-owed
+- `three-scheduling-primitives` · detail · "Claude Code ships three scheduling primitives: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines." ← cc-scheduling-primitives
+- `three-places-cadence-fits` · vision · "A standing verifier run … A scheduled codebase sweep … Rule-drift monitoring" ← none-owed
+- `skill-defines-check-runtime-supplies-cadence` · vision · "The skill defines the check. The runtime supplies the cadence or stopping condition." ← none-owed
+- `model-will-be-replaced` · vision · "The specific Claude you used today will be replaced, probably within months." ← none-owed
+- `three-pieces-are-not-model-features` · vision · "The three pieces (reference, plan, verifier) are not model features." ← none-owed
+- `fluency-lives-in-the-stance` · vision · "Practitioner fluency lives in the stance, not in the tooling." ← none-owed
+- `method-does-not-get-faster` · vision · "The work gets faster. The method does not." ← none-owed
+
+Sources
+- curran-2x `[checked:2026-05-25 result:CAVEAT due:2026-11-25]` https://ideas.fin.ai/p/2x-nine-months-later — [practitioner direct, vendor venue] Curran 2026-04-16: 19.2% / 14.6 vs 75.8 min / 86% ≤20 lines, ~473 R&D in 1,305. Metrics are Intercom's own telemetry, and the body carries that scoping ("the numbers are Intercom's own"). "Runs engineering" phrasing avoids the title nit — his title is VP Engineering. fallback: keep the numbers, attribute Intercom's published telemetry, flag self-report.
+- cc-scheduling-primitives `[checked:never result:NEEDED due:asap]` https://code.claude.com/docs/en/ — [capability] **Never stamped.** The body names three scheduling primitives and distinguishes local Routines from `/schedule`'s cloud-backed remote Routines — a three-way capability claim carrying no verification of any kind, in a lecture that has shipped. Scheduling surfaces are among the faster-moving parts of the product. fallback: none available until checked; if a re-test cannot confirm the three-way split, teach the pattern (a kit skill is what the scheduled agent invokes) and name only the primitives that verify.
+
+Frameworks
+- eval = judge / verifier / gate · [borrow:none] · law:eval-judge-verifier-gate · ← [SOURCE NEEDED] — the three-name split is banked as a law and taught as practitioner vocabulary; neither is evidence that practitioners use these three words this way
+- The value cycle · [borrow:none] · law:the-value-cycle · ← none — the eval's map slot is Verification, the loop M2 left dashed
+- Absorption bottleneck · [borrow:none] · law:absorption-bottleneck · ← curran-2x — auto-approval is an org buying back its own evaluation rate
+
+Stance `[stance:2026-08-01 level:L1]`
+- holds: that automated checks scale to org level without changing shape. Intercom is one published telemetry set, self-reported, and it is the only number in the lecture. That is L1 evidence carrying an L1 claim, which is fine because the body frames it as one org's numbers rather than as a rate the field converges on.
+- contested: the vocabulary. The lecture's central move is naming, and the naming claim is the one thing in it with no source — see Flagged. Whether *judge* / *verifier* / *gate* split this way in practitioner usage has never been checked, and M5 has already taught this corpus what happens when a naming claim goes unaudited.
+- would-move-it: a usage sweep showing practitioners do not split the three words this way, which would turn slide 1 from recognition into invention and require the same "these are our names" honesty M5's closer now carries. A second org publishing auto-approval telemetry would move the Intercom slide from anecdote to pattern.
+
+OODA
+- question: do practitioners actually use *judge*, *verifier* and *gate* with these three distinctions, and has any org besides Intercom published auto-approval rates?
+- roster: Hamel Husain, Shreya Shankar, Eugene Yan, Darragh Curran and the Intercom engineering blog, Simon Willison, the Anthropic eval cookbook, Braintrust and LangSmith docs for vendor usage
+- last-run: never
+
+Flagged
+- `[found:2026-08-01]` *"Practitioners say judge … Verifier … Gate"* is an unbacked usage claim, and it is the naming beat the whole lecture turns on → decide whether to verify the split, or re-cut it the way M5's closer was re-cut ("these are the names we use for them"). This is the exact shape that failed on the three-pattern: a convergence verb attached to vocabulary nobody counted.
+- `[found:2026-08-01]` The three-scheduling-primitives bullet has never carried a stamp of any kind → re-test against the current product before the next cohort, or narrow the claim to what a live check confirms.
+- `[found:2026-08-01]` The geoffintech / Ramp stamp was retired with this migration: its body claim was cut in the slides-only pass, so it backed nothing. Provenance lives in git → no action unless the Ramp claim returns.
+
+<!-- /backing -->
 
 **Watch-fors (delivery):**
 - Mood stays practitioner-fluency. If the Intercom numbers land as vendor-plug ("here's what the big co does, aspire to that"), the mood slips into compliance-feel. They are anchors of the destination shape, not product placements. Pace accordingly.
@@ -64,10 +108,6 @@ The loop feeds itself. That is the flywheel, and it starts with what you encoded
 - Risto voice on "the specific Claude will be replaced." Flat epistemic honesty, no sales varnish. This is the beat that carries the lecture past the current model's expiry date.
 
 **Philosophy callouts:** at most one. The *compounding* theme surfaces naturally in the kit-grows-by-accretion beat; no need to name-tag it. Do not bolt the 19 beliefs onto this lecture.
-
-**Vision vs. detail:**
-- Vision layer: the one-word naming, the stance-survives-the-model argument, the flywheel kicker.
-- Detail layer: every URL above, every number, the `/schedule` and `/loop` primitive names, the reference-page pointer.
 
 **Edits (2026-07-02):** slide 1 places eval on the map (one clause: the checking loop the M2 drawing left dashed, now drawn solid) and slide 4's triad attribution is re-hedged from "pieces Ronacher named" to the convergence form ("pieces practitioners converge on"), matching the M5 closer and the source stamp (triad cleanly inferable from Ronacher, not his verbatim naming) — theory-completeness-review finding #1 + the provenance item.
 

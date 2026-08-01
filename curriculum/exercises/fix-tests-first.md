@@ -75,7 +75,7 @@ The PR is shipped. Hand off to the compound step.
 - **Diff rubber-stamp.** Student says *"looks fine"* under 30 seconds. Trainer push: *"find me one line you'd have written differently — not wrong, just different."*
 
 **Decision points:**
-- **Runs over 35 min.** Bug wasn't trivial. Let it complete; trim the next exercise (MCP close-out) to read-only, flag for follow-up. Note for M2 — student benefits more from plan-mode-at-depth than average.
+- **Runs over 35 min.** Bug wasn't trivial. Let it complete; trim the compound exercise, flag for follow-up. Note for M2 — student benefits more from plan-mode-at-depth than average.
 - **Finishes under 15 min.** Picked something too small. Offer second bug, or use saved time to revisit the introspection move.
 - **Repo has no test infrastructure.** Exercise ends without test verification. Log *"no verifier on this path"* in the `./CLAUDE.local.md` rule — real finding, not exercise failure. M4 picks it up.
 

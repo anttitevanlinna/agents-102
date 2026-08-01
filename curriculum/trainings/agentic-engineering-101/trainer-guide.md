@@ -166,6 +166,7 @@ Per cohort session, three tiers:
 **Tier C — have open, confirm once.**
 - The module's run sheet (trainer-modules) in a second tab during delivery.
 - Confirm sponsor-stated homes: ADRs, rules file, ticket tracker, team kit, memory.
+- Have the fallback-repo answer ready: a student whose repo doesn't fit builds their own in ~15 minutes via the build-a-project-from-zero supplementary. You don't provision anything — the pointer is the answer.
 - Check Quality tags in maintainer blocks during prep. No Quality line means un-audited — rehearse that module harder; `sim-passed` is the top recorded rung.
 
 ## Patterns To Call Out

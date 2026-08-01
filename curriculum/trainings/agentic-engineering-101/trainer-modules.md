@@ -76,7 +76,7 @@ No separate module-level Debrief; the compound exercise is the retro.
 - **The bug's path has no test infrastructure** → the exercise ends without test verification. Have the student log "no verifier on this path" as a rule in `./CLAUDE.local.md`. A real finding, not an exercise failure; Module 4's audit picks it up.
 - **`/context` read as prose, not typed** → *"Type /context in the chat. Look at the number."*
 - **Student's bug has drifted from the prework choice** → run a fresh bug-surfacing conversation on the spot; the criteria are unchanged (trivial, real, from their own backlog).
-- **Fix runs over 35 min** → the bug wasn't trivial. Let it complete, trim the compound exercise, and note this student benefits more than average from Module 2's plan-mode depth. (The exercise file's own escape line still names the retired in-class MCP close-out as the thing to trim; that text predates the homework split — trim the compound exercise.)
+- **Fix runs over 35 min** → the bug wasn't trivial. Let it complete, trim the compound exercise, and note this student benefits more than average from Module 2's plan-mode depth.
 - **Fix finishes under 15 min** → the bug was too small. Offer a second bug, or use the saved time to revisit the introspection move.
 - **Homework: connector install turns into yak-shaving** → one connector firing on one ticket is the proof; manual paste of the Claude-written close-out is always available; tenant-admin approval is worth asking for, not worth waiting on.
 - **Homework: connector added mid-session doesn't appear** → check and authenticate with `/mcp`; if it still isn't there, exit and resume with `claude --resume <session-id>`.

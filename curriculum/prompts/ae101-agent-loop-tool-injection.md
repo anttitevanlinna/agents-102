@@ -7,4 +7,8 @@ requires: []
 produces: []
 note: supplementary exploration prompt; no curriculum artifact flow
 ---
-Explain how you know what tools you can call in this session. Then explain how MCP-connector tools get injected into the same set.
+Explain how you know what tools you can call in this session.
+
+Then explain how MCP-connector tools get injected into the same set.
+
+Last, tell me whether any of them are deferred until you need them, and what that means for the list you gave me earlier.

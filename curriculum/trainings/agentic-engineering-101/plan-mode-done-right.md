@@ -19,7 +19,7 @@ Optional reading in the gap before this module: Boris Cherny, [Mastering Claude 
 After this module, you will be able to:
 - **Run** plan mode on a real multi-file task and judge the plan against five criteria, naming the one it fails
 - **Push back** twice on the plan via *keep planning with feedback*, surfacing what the agent didn't see
-- **Walk down** unresolved branches one question at a time, with a recommended answer per branch
+- **Walk down** unresolved branches, with a recommended answer per branch
 - **Pair** human read with agent walk-down: read → push-back → walk-down → approve
 - **Spot** approval inflation in your own past plans
 - **Extract** task-shaping rules from your session into a `.md` file, sharpening at least one before saving

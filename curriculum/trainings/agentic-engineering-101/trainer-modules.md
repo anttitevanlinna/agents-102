@@ -123,7 +123,7 @@ Never cut: the failing test before the fix and the diff-line push-back. Those tw
 
 - Run plan mode on a real multi-file task and judge the plan against five criteria, naming the one it fails.
 - Push back twice on the plan via "keep planning with feedback," surfacing what the agent didn't see.
-- Walk down unresolved branches with a second-pass read, three questions at a time, with a recommended answer per branch. (The module's learning-objective wording still says "one question at a time"; the shipped prompt asks three at a time — teach the prompt.)
+- Walk down unresolved branches with a second-pass read, a recommended answer per branch (the shipped prompt batches three questions at a time).
 - Pair human read with agent walk-down: read → push-back → walk-down → approve. Spot approval inflation in past plans.
 - Extract task-shaping rules from the session into a `.md` file, sharpening at least one before saving.
 - Name three shapes for turning a rules file into automation.

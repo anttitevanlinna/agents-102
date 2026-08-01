@@ -58,7 +58,7 @@ Token-efficiency advice arrives with confident, round numbers. Most do not hold.
 
 **"Caching saves you 90 percent."** Prompt caching is real, and the discount on cached input is large. But the headline savings figures almost always trace back to one company's own page or a single run, not a measured bill. Treat any round percentage about cost as folklore until you have seen the method behind it.
 
-**"Compaction is always lossy, so always hand off."** This one was true in 2025. When you compact, the model replaces the conversation with a summary, and summaries lose detail. So builders moved to handing off a fresh prompt instead. Then in 2026 the models got good enough at summarizing that some of those same builders switched back. The advice did not just soften. It reversed, in months.
+**"Compaction is always lossy, so always hand off."** This one was true in 2025. When you compact, the model replaces the conversation with a summary, and summaries lose detail. Sourcegraph's Amp built a feature on that argument, Handoff, and shipped it as the fix. In May 2026 Amp reversed: Handoff was retired, automatic compaction took its place, and the reasoning flipped to the opposite conclusion. The advice did not just soften. It reversed, in months.
 
 That reversal is the real lesson of this whole topic. Every number and rule here has a date. Window sizes grow, models get better at long context, costs move. A move that was craft last quarter can be folklore this quarter. So when you read a tip (including this page), check it against your own `/context` before you trust it.
 

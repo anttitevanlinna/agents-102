@@ -103,6 +103,12 @@ Both readings can come off the same post, which is why the discipline lives in t
 
 **What this does not license.** Numbers about populations (adoption %, failure rates, throughput deltas), platform capability, pricing, benchmark scores, and who-currently-believes-what all keep the 6-month clock even when a named practitioner reports them first-hand — because those are claims about a moving world that happen to have been observed once. The test is not *"is it first-hand?"* but *"would re-checking it next year change the answer?"*
 
+**`due:none` scopes the citation, not the source. One URL doing two jobs needs two stamp lines.** This is the variant's sharp edge, and it drew blood within hours of the rule landing. Before writing `due:none`, say in one clause what the stamp is durable *for*, then read the body against that clause. If any body sentence uses the source for a **live position** — *this camp exists*, *this is the current stance*, *practitioners do this* — that sentence is a currency claim and owes its own stamp with a real `due` date, even though the same URL backs both.
+
+The worked failure. Amp's handoff launch was stamped `[checked:2026-05-25 result:OK due:none]`, anchored *"rejects auto-compaction, bets on focused threads + manual handoff,"* with `fallback: escalate to a fresher Amp post if the stance shifts.` Amp reversed on 2026-05-06 — *"So handoff is out. Compaction is in"* — and the lecture taught the handoff camp in the present tense for three months while the stamp stayed audit-clean the whole time. Two jobs, one `due` field: *what Amp shipped and argued on 2025-10-23* is durable and never expires; *the handoff camp is a live position* is a claim about a moving world. `due:none` answered the first and silenced the second.
+
+**Free diagnostic: a `due:none` stamp whose `fallback:` says "escalate if X changes" is a defect on sight.** Nothing re-opens a `due:none`. That fallback is a standing order addressed to a process that will never run. Either the claim needs a real date, or the fallback is describing a job nobody holds.
+
 **Why this is a tightening as much as a loosening.** Under the old rule a stale-but-durable account got quietly swapped or dropped at cohort time, and the swap was where accuracy went — a fresher post with a weaker fit replaced a perfect example for no reason but its date. It also generated busywork the maintainer correctly resented, which is how a rule stops being obeyed at all. The trade is: keep the good example forever, and pay for it by dating it in body every time.
 
 ## Auto-degrade

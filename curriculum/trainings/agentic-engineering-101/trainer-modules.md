@@ -255,18 +255,20 @@ Never cut: Phase 5's stop. Approve, don't execute, and name the pattern; the non
 
 **Trainer cues.** No compound pass at the close: the send-off is the close of the work; whatever needs sharpening surfaces on the return. Expect the "memory is overrated, we should have a company brain" objection during the closing lecture — that's where it lands; run the company-layer question as open, not settled. **Memory-word allergy:** some engineers react against the word; acknowledge the criticism is legitimate against Claude Code's auto-memory, then point at the distinction — `observations/` is files the student wrote, gitignored, read when a prompt names the path.
 
-**Runtime map.** Budgets from the module's trainer meta (Connections 10 / Lecture 12 / Exercise 55 / Debrief 12 / Send-off 5 / Bridge 3). (Two known wrinkles: the named lecture times — far-half 3–5, agent-loop ~5, ironies 2–3, plus Test and learn — overrun the 12-minute lecture line, which the module's own notes flag; and the meta's "Debrief 12" predates the no-compound close — that slot is what the send-off section's marker and trifecta beats actually consume. The exercise file separately carries 60 and a 10/45 split; the module figures below win.)
+**Runtime map.** Recounted 2026-08-01 from the lectures' own Time lines: Connections 10 / Lectures 18–22 / Exercise 55 / Send-off section ~15 / closing lecture ~4 riding the run / Close + Bridge 3 ≈ 103 against 105. (The meta's previous "Lecture 12" predated the promoted lectures; "Debrief 12 / Send-off 5" predated the no-compound close that folded both into the send-off section. The exercise file separately carries 60 and a 10/45 split; the module figures below win.)
 
 | Beat | Budget | Sitting (1h45) | Cohort clock (1h30) |
 |---|---|---|---|
 | Connections: candidate tasks | 10 (cohort: 5) | 0:00 | 08:30 |
-| Lectures: The far half + The agent loop + Test and learn | 12 nominal; runs long, compress the banter not the prompts | 0:10 | 08:35 |
-| Exercise P1: pick (2-min confirm if homework landed) | 10 | 0:25 | 08:50 |
-| Exercise P2: audit + fill the worst gaps | 40 | 0:35 | 09:00 |
-| Exercise P3: settle the `observations/` tree | 5 | 1:15 | 09:40 |
-| Send-off section: Ironies of automation (2–3), transcript + commit markers, trifecta check, prompt paste | ~15 (the meta's Debrief 12 + Send-off 5 slots) | 1:20 | 09:45 |
-| Will company memory emerge? (agent already running) | ~4 | 1:35 | 09:55 |
-| Close: Reading the return pointer + Bridge | 3 (cohort: Bridge cut, break absorbs it) | 1:40 | 10:00 |
+| Lectures: The far half (3–5) + The agent loop (~5) + Test and learn (10–12) | 18–22 honest; land the low end by keeping far-half at its 3-min floor | 0:10 | 08:35 |
+| Exercise P1: pick (2-min confirm if homework landed) | 10 | 0:30 | 08:53 |
+| Exercise P2: audit + fill the worst gaps | 40 | 0:40 | 09:03 |
+| Exercise P3: settle the `observations/` tree | 5 | 1:20 | 09:43 |
+| Send-off section: Ironies of automation (2–3), transcript + commit markers, trifecta check, prompt paste | ~15 | 1:25 | 09:48 |
+| Will company memory emerge? (agent already running — this beat rides the wait) | ~4 | 1:40 | overlaps |
+| Close: Reading the return pointer + Bridge | 3 (cohort: Bridge cut, break absorbs it) | ends ~1:43 | 10:03 |
+
+**2-day format note.** Compressed 1h30 runs ≈95–99 against 90 even with Connections at 5 and the Bridge cut. The default cut is undecided — tracked in the punchlist's 2-day reconciliation item; until then the break after M4 absorbs the overrun.
 
 **Push-backs, verbatim.**
 

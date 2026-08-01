@@ -1,16 +1,16 @@
-# Map the gaps, author the *skill*
+# Map the gaps, read your stack
 
-**Time:** 40–50 minutes inside a 2h module slot.
+**Time:** 30–40 minutes inside the module slot.
 
 **Session** *(new, "Module 6 worktree session")*
 
-Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no fork. M5's session may still be running the re-send. Leave it if that is the right call; M6 starts by reading both runs from disk. Before M6 edits files, cuts rules, or invokes the new skill, decide whether the M5 run is done enough, should be stopped, or should be treated as the partial artefact.
+Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no fork. M5's session may still be running the re-send. Leave it if that is the right call; M6 starts by reading both runs from disk. Before M6 edits files or cuts rules, decide whether the M5 run is done enough, should be stopped, or should be treated as the partial artefact.
 
-**What you do:** Diff two runs of the same task, route the dominant gap to its home, author a second skill from the diagnosis.
+**What you do:** Diff two runs of the same task, route the dominant gap to its home, then read your own history for the work you repeat.
 
-**What you build:** three things from two runs of the same task: a ranked gap map, one stale rule cut from your rules-file, and a session-shaper skill that carries the lesson into every future run.
+**What you build:** a ranked gap map from two runs of the same task, one stale rule cut from your rules-file, and a diagrammed map of the work that recurs across your stack.
 
-**The point:** The authoring move repeats. You ran it at M3 on a test-strategy skill; you run it again here with two runs' evidence in hand. Same move, faster. You tested at M4, you learned at M5, you encode at M6. The skill you ship here is how the next run inherits what these two runs cost you.
+**The point:** You tested at M4, you learned at M5. Here you name what the two runs cost you and where each lesson belongs. Then you look wider: the same reading, run across everything you do. The stack-map you draw is what the closing move builds from.
 
 ---
 
@@ -46,8 +46,7 @@ Ask Claude to cut one rule the two-run diagnosis killed, or to say so and stop i
 
 ## Phase 2: Find the work you repeat across your stack
 
-- Skills aren't hand-crafted. What you practiced at M3 repeats here: author through conversation, push back on defaults, verify by invoking. The shape follows what the two runs demanded, not a template.
-- Look wider than the two runs before you shape the skill. The dominant gap came from one task. The kinds of work you repeat run across everything you do, and most of them never get looked at directly. This is your stack. How wide you look, and what you choose to package, is yours.
+- Look wider than the two runs. The dominant gap came from one task. The kinds of work you repeat run across everything you do, and most of them never get looked at directly. This is your stack. How wide you look, and what you choose to map, is yours.
 - Read your own history first. Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back.
 
 ## Scan your history for the work that recurs
@@ -73,8 +72,8 @@ Ask Claude to draw your top few work-shapes as simple diagrams.
 
 ## List the checks the field runs, rank the ones that fit your gap
 
-- If one of the work-shapes you drew is the kind of work those two runs came from, that is the session-shaper you build now. If not, build it against the dominant gap directly. The rest are the kit you grow later.
-- Expand the menu before you commit to a shape. The menu lands in context right before you author, so the skill is built against what practitioners actually check, not just your own instinct.
+- Hold the menu against the shapes you drew. Where a primitive lines up with a shape you repeat, that pairing is a skill candidate for the kit you grow later.
+- The menu grounds the map in what practitioners actually check, not just your own instinct.
 
 Ask Claude to name the checking primitives the field already runs and rank the ones that fit your gap.
 
@@ -82,58 +81,16 @@ Ask Claude to name the checking primitives the field already runs and rank the o
 
 Expect the list to look familiar: test-writing, browser-testing, PR-building, lint and typecheck gates, compile and build, smoke-test on a real path, code-review, git-diff inspection, schema validation, eval suites for agent outputs. Your list won't be exact. The recognition is the point. The primitives Claude names are the ones your codebase already runs.
 
-## Pick the skill shape the diff points at
+## Route the dominant gap to its home
 
-- The session-shaper takes one of three forms, from the convergence of practitioners running long tasks:
- - **Sharpened verifier.** The M5 verifier targeted one failure mode; the diff surfaced another. The skill encodes the second check so the next run inherits both.
- - **LLM-judge.** Qualitative fit the deterministic verifier can't see (did the output answer the task, does the tone match the codebase, does the commit message respect the team's convention). A judge is a verifier authored in prose.
- - **Gap-finder.** A skill that reads a proposed task plan and flags thin memory, missing connectors, or stale rules before the long-running run starts. The verifier fires on output; the gap-finder fires before.
-- Pick the one the diff points at. If the dominant gap is "verifier missed drift at hour 4," you're building a sharpened verifier. If it's "output technically passed but read off," you're building a judge. If it's "the run shouldn't have started with this context," you're building a gap-finder.
-## Author the skill in conversation
+- Gaps sort into three homes: memory (a rule that would have prevented the mistake upstream), a sharper verifier (a check that would have fired mid-run), or a skill (a move worth packaging for future tasks). The dominant gap gets a named home before anything gets built. If the home is memory, the rule can land in `./CLAUDE.local.md` now, the reverse of the cut above.
+- The skill home stays a name for now, not a build. The closing lecture hands you the encode-move: a prompt built from the shapes you just drew.
 
-- Author through conversation. No markdown editor, no hand-crafting SKILL.md in a file tab.
-- The next three prompts (author, critique, invoke) are separate steps. The critique is optional; the invoke isn't, no invocation, no ship.
-
-> **Skip the critique if you want.** You know that move from M3.
-
-Ask Claude to author the session-shaper as a personal skill through conversation.
-
-{{prompt:spot-gaps-build-the-loop-3}}
-
-If Claude narrates a plan or shows you the full question list before asking one at a time, ask it to skip the preamble and use the AskUserQuestion tool. Or let it narrate; both work.
-
-Answer each question. When Claude offers a default that doesn't fit the two runs' evidence, push back with a quoted moment: *"no, the M5 verifier missed THIS moment. The skill has to catch that shape specifically."*
-
-## Critique the draft before you ship it
-
-- Once Claude shows you SKILL.md, self-critique before shipping. Default-acceptance is the failure mode here too.
-
-Ask Claude to critique the skill before you ship it.
-
-{{prompt:spot-gaps-build-the-loop-4}}
-
-- Same bias as M3: a same-context self-audit under-flags by design. Same two escalations, ask Claude to over-flag, or fresh-session it with a subagent reading the SKILL.md cold.
-- Read the critique. Push back where Claude is wrong; accept where Claude is right. Claude revises SKILL.md from your push-back.
-
-## Invoke the skill on the run you just diffed
-
-- No invocation, no ship, the law your first skill earned at M3. The prompt below runs the skill on the packaged run you just diffed.
-
-{{prompt:spot-gaps-build-the-loop-5}}
-
-- The invocation grades itself, the same bias, one session both authoring and judging. For a harsher read, split it: invoke, read the output, then ask Claude to read it as if it had never seen the SKILL.md.
-- If the output doesn't catch the dominant gap, sharpen the skill and invoke again. If the skill names its own limitation (*"I check drift but not context-rot re-derivations"*), that's a feature. Ship with a one-line TODO at the top. A skill that names its gap is more useful to a teammate than one that pretends it's finished.
-
-## Ship it to your personal kit
-
-- The skill ships personally. It lives at `~/.claude/skills/session-shaper/SKILL.md` and auto-discovers in every future session you run, across every repo. That's the ship.
-- Team-kit candidate, via human conversation. If the skill encodes something your whole team would benefit from (a codebase-specific judge, a verifier against a house style, a gap-finder tuned to the team's project shape), it's a strong PR candidate. But the PR starts with a conversation. Show it to a teammate over coffee. Post it in the channel. Ask: *"does this match how you'd check this kind of work?"* If they say yes, PR it. If they push back, you got the real review for free. Agents don't unilaterally change shared team infrastructure. You do.
-
-**What happened:** You ended with a one-screen gap map across memory / verifier / rules / skill, and one SKILL.md file at `~/.claude/skills/session-shaper/SKILL.md`. Auto-discovered in every future session. The shape followed what the two runs demanded: a sharpened verifier, an LLM-judge, or a gap-finder. Team-kit candidates were flagged for a human conversation, not an auto-PR.
+**What happened:** You ended with a one-screen gap map across memory / verifier / skill, one stale rule cut in place, and a diagrammed map of the work that recurs across your stack. The dominant gap has a named home; the shapes carry into the close.
 
 <!-- maintainer -->
 
-**View summary:** You compare the un-packaged and packaged runs, rank what the second attempt still missed, remove one stale rule, and author a session-shaper skill from the evidence. The resulting skill carries the two-run lesson into future work.
+**View summary:** You compare the un-packaged and packaged runs, rank what the second attempt still missed, remove one stale rule, route the dominant gap to its home, and map the work that recurs across your stack. The stack-map feeds the closing handoff move.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain; kept bold only on the three session-shaper shape handles (**Sharpened verifier** / **LLM-judge** / **Gap-finder**); widget/label chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
@@ -144,17 +101,16 @@ Ask Claude to critique the skill before you ship it.
 
 **Word count:** ~830 words body.
 
-**Primary Bloom's level:** Analyze (Phase 1 diff) + Create (Phase 2 authoring) + Evaluate (Phase 2 self-critique + invocation-as-test).
+**Primary Bloom's level:** Analyze (Phase 1 diff + Phase 2 stack scan) + Evaluate (rule cut + gap routing).
 
-**Time budget total:** 40–50 min. Phase 1 compressed (diff + name-gaps share one phase); Phase 2 carries the module's weight.
+**Time budget total:** 30–40 min. Phase 1 compressed (diff + name-gaps share one phase); Phase 2 is the stack scan (study / shapes / primitives), depth the student's.
 
-**Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know how to encode."* You've now authored two skills the same way. The move is yours. Watch-for: compliance-feel (student treats the skill as paperwork) or credibility-performance (*"we ship skills like the pros do"*). Both steal the mood.
+**Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know what my stack repeats."* Watch-for: compliance-feel (student treats the scan as paperwork) or credibility-performance (*"we map our stack like the pros do"*). Both steal the mood.
 
 **Frameworks riffed on:**
 - **Diff across two runs** (Phase 1) — the pedagogy of the M4→M5 contrast extended; same artefact-quotation discipline from M5's *Diagnose and re-send*.
-- **Author through conversation** (Phase 2) — repeats the M3 *Author your test-strategy skill* move. Second rep; faster. Kieran Klaassen's compound-engineering Review and Compound steps ([Compound Engineering: How Every Codes With Agents](https://every.to/source-code/compound-engineering-how-every-codes-with-agents), `[practitioner direct, vendor venue]`) across two runs of the same task. The step definitions live on that page, not on the Definitive Guide; in the source, Plan and Work belong to the agents while Review and Compound belong to the engineer.
-- **Three skill shapes** (Phase 2) — convergent practitioner vocabulary across Ramp Dojo (350-skill marketplace, [Geoff Charles, CPO](https://x.com/geoffintech/status/2042002590758572377) `[practitioner direct, 2026-04-09]`), Intercom Tier 1/2/3 (Darragh Curran, [2x Nine Months Later](https://ideas.fin.ai/p/2x-nine-months-later) `[practitioner direct, vendor venue, 2026-04-16]`), and solo builders running long tasks. Menu form; shape follows evidence. Full citation + freshness stamps: sibling module's maintainer block, `trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` § Frameworks riffed on / § Source verification.
-- **Personal-first, team-promotion-via-human-conversation** — AE101 delivery-architecture rule. Skills ship to `~/.claude/skills/` first; team PRs start with a human conversation.
+- **Review and Compound across two runs** (Phase 1) — Kieran Klaassen's compound-engineering Review and Compound steps ([Compound Engineering: How Every Codes With Agents](https://every.to/source-code/compound-engineering-how-every-codes-with-agents), `[practitioner direct, vendor venue]`) across two runs of the same task. The step definitions live on that page, not on the Definitive Guide; in the source, Plan and Work belong to the agents while Review and Compound belong to the engineer.
+- **Checking-primitives menu** (Phase 2) — convergent practitioner vocabulary across Ramp Dojo (350-skill marketplace, [Geoff Charles, CPO](https://x.com/geoffintech/status/2042002590758572377) `[practitioner direct, 2026-04-09]`), Intercom Tier 1/2/3 (Darragh Curran, [2x Nine Months Later](https://ideas.fin.ai/p/2x-nine-months-later) `[practitioner direct, vendor venue, 2026-04-16]`), and solo builders running long tasks. Menu form; the map pairs primitives with recurring shapes. Full citation + freshness stamps: sibling module's maintainer block, `trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` § Frameworks riffed on / § Source verification.
 
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
 - now owns a `session-shaper` skill at `~/.claude/skills/session-shaper/SKILL.md` that auto-discovers in every repo, and invokes it on a real run to catch the gap it was built for
@@ -164,12 +120,8 @@ Ask Claude to critique the skill before you ship it.
 **Failure modes + diagnostics:**
 - **Phase 1 generalised diff** — student says *"M5 was better"* without quoted moments. Diagnostic: prompt requires quoted moments from BOTH runs. If Claude returns only summaries, re-run with explicit quote enforcement. Echoes M5's Phase 1 diagnostic.
 - **Phase 1 packaging-over-credit** — student treats the packaged run as fully solved and skips the *"what packaging missed"* beat. Diagnostic: the M5 run did drift somewhere; if Phase 1 outputs zero misses, Claude is over-crediting. Trainer push: *"name one thing the verifier missed, concretely. Quote the scrollback."*
-- **Phase 2 skill-shape mismatch** — student picks the shape they're most comfortable building (usually verifier) regardless of what the diff pointed at. Diagnostic: does the skill fire on the gap you ranked dominant? If not, re-scope.
-- **Phase 2 wider-look sprawl** — the study scan reads the whole stack and can throw back a wall. The body steer (*read for the few at the top you actually repeat; how far you take this is yours*) is the agency affordance — depth is the student's, not a mandate to catalogue. M6's leeway spirit: study and shapes run, but how wide and what gets packaged is the student's. If a student drowns in the scan, point at the ranked head.
-- **Phase 2 default-acceptance** — student ships Claude's first draft of SKILL.md without the self-critique beat. Diagnostic: the skill reads like a blog-post template. Trainer enforces the critique prompt.
-- **Phase 2 markdown-editor drift** — student opens SKILL.md in an editor and hand-crafts it. The authoring move is conversation; redirect every time. Same load-bearing rule as M3.
-- **Phase 2 invocation-skip** — student ships without running the skill on the packaged run. Authoring without invocation is theatre; the invocation-as-test is the learning moment. Trainer stops the ship and points back to the invoke prompt: no invocation, no ship.
-- **Phase 2 auto-PR instinct** — student asks Claude to open a PR against the team kit. Stop. Skills ship personal first; team PRs start with a human conversation. Rule extends M3's same constraint.
+- **Phase 2 wider-look sprawl** — the study scan reads the whole stack and can throw back a wall. The body steer (*read for the few at the top you actually repeat; how far you take this is yours*) is the agency affordance — depth is the student's, not a mandate to catalogue. M6's leeway spirit: study and shapes run, but how wide and what gets mapped is the student's. If a student drowns in the scan, point at the ranked head.
+- **Gap-home dodge** — student ranks the gaps but never commits the dominant one to a home; the routing beat is the exercise's Evaluate move. Diagnostic: can the student say which of the three homes the dominant gap lives in, in one sentence? If not, back to the ranked list.
 
 **Plug points:**
 - Student's M4 un-packaged artefact + M5 packaged re-run artefact (Phase 1 source material; both already in the repo + session transcripts).
@@ -179,15 +131,10 @@ Ask Claude to critique the skill before you ship it.
 **Decision points (pacing):**
 - **Phase 1 >20 min** — over-diffing. The diff is data for Phase 2, not an essay. Force a rank and move on.
 - **Phase 1 <10 min** — under-engagement. Check if Claude returned only summaries; re-run the prompt with quote enforcement if so.
-- **Phase 2 study + shapes run long (>12 min)** — the wider look is a light pass, not a full inventory. Study reads the ranked head; shapes draws a few. The body carries the steer (*how far you take this is yours*). If it eats the clock the student is cataloguing; the authoring is where Phase 2's minutes belong.
-- **Phase 2 question loop >15 min** — Claude is asking too many questions or the student is answering generically. Trainer push: *"answer one with a quote from the diff instead."*
-- **Phase 2 authoring >35 min** — gold-plating. The skill is good enough when it catches the dominant gap on invocation. Ship with a TODO; refine later.
-- **Whole-room mood below 7** — practitioner fluency isn't landing. Check Phase 2 invocation: did the skill fire on the packaged run? If not, the encode step didn't close — student doesn't feel *"I know how to encode"* because they didn't see the skill work.
+- **Phase 2 study + shapes run long (>20 min)** — the wider look is a light pass, not a full inventory. Study reads the ranked head; shapes draws a few. The body carries the steer (*how far you take this is yours*). If it eats the clock the student is cataloguing; force the ranked head and move to primitives.
+- **Whole-room mood below 7** — practitioner fluency isn't landing. Check the routing beat: does the dominant gap have a named home, in the student's own words? If the gaps stayed a list, the read didn't close.
 
 **Watch-fors (cross-phase):**
-- **Skill path leaking into invocation** — if the student pastes `~/.claude/skills/<name>/SKILL.md` into a prompt as an invocation target, catch it. Claude Code auto-discovers; say *"invoke the `<name>` skill on the M5 re-run."* Path is noise at best, breakage at worst.
-- **Team-PR auto-commit** — Claude volunteers to open the PR. Human conversation first; agent drafts the message afterwards. This is the M3 rule extending.
 - **Verifier-as-eval terminology leaking** — the closing lecture names evals with full weight (verifier = judge = gate = eval). Phase 2 can use the plain words (verifier, judge); save the explicit naming for the closer.
-- **Markdown-editor drift** — the authoring move is conversation. Every time.
 
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

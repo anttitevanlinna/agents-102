@@ -229,12 +229,9 @@ Context agents' `demoFit` treated as evidence, not verdict; overrules noted in-r
 | diagnose-and-resend-6 | M5 | KEEP | Grill + lock-it-in gate; both files are per-student re-send inputs |
 | spot-gaps-build-the-loop-1 | M6 | KEEP | M6's entire evidence base: the student's own two-run contrast |
 | spot-gaps-build-the-loop-2 | M6 | KEEP | Compound-by-subtraction on own rules file; leap-test row (git-visible deletion) |
-| spot-gaps-build-the-loop-study | M6 | KEEP ⛔ | Demo-tempting (history-scan wow + >12-min overrun relief) but feeds shapes → -3 (student authoring, undemoable). Unblock: rewire -3 to the body's dominant-gap fallback — open Q |
-| spot-gaps-build-the-loop-shapes | M6 | KEEP ⛔ | Pairs with -study (diagrams feed -3 shape choice + handoff); same rewire condition |
-| spot-gaps-build-the-loop-primitives | M6 | KEEP ⛔ | Second job = loading the menu into the STUDENT's context right before -3; projector puts nothing in their session. Unblock: fold fit-question into -3's interview |
-| spot-gaps-build-the-loop-3 | M6 | KEEP | The encode step; second rep of the M3 authoring move — the rep IS the competence |
-| spot-gaps-build-the-loop-4 | M6 | KEEP | §16's literal example ("ask the skill its weakest part"); load relief already exists as the body's skip affordance |
-| spot-gaps-build-the-loop-5 | M6 | KEEP | Invocation-as-test on own skill against own run; whole-room mood diagnostic keys on it |
+| spot-gaps-build-the-loop-study | M6 | KEEP | Student-owned history scan; feeds shapes → handoff (authoring sequence cut 2026-08-01, the old -3 rewire condition is moot) |
+| spot-gaps-build-the-loop-shapes | M6 | KEEP | Pairs with -study; diagrams feed the handoff |
+| spot-gaps-build-the-loop-primitives | M6 | KEEP | Loads the field's checking menu into the STUDENT's context to pair with their shapes; projector puts nothing in their session |
 | agents-that-build-agents-handoff | M6 | KEEP | *No ctx-agent read (lecture ref)* — graph+inventory verdict: student-owned forward-carry on own artifacts; also the at-home path if the wider-look ever demos. Terminal, optional |
 
 **DEMO — live refs shifted to teacher demo (3)**

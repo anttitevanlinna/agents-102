@@ -1,7 +1,7 @@
 # Spot gaps, build the loop
 
 ## Big Idea
-Two runs of the same task (un-packaged Module 4, packaged Module 5) are enough evidence to name what the three-pattern didn't anticipate, pick where the gap belongs (memory, verifier, new skill), and author a session-shaper skill through conversation so future you inherits the lesson.
+Two runs of the same task (un-packaged Module 4, packaged Module 5) are enough evidence to name what the three-pattern didn't anticipate and pick where each gap belongs (memory, verifier, new skill). Then the same reading turns outward: map the work you repeat across your stack, and leave with a handoff move that builds the skills your shapes call for.
 
 ## Prework
 
@@ -15,10 +15,9 @@ After this module, you will be able to:
 - **Route** each gap to its home: memory, sharper verifier, or new skill
 - **Cut** one rule from `./CLAUDE.local.md` the diagnosis killed
 - **Surface** the kinds of work you repeat across your stack, and draw their recurring shapes
-- **Author** a session-shaper skill through conversation, ship to your personal kit
 - **Map** evals across verifier, judge, and gate
 - **Encode** the lesson so the next loop inherits it
-- **Generalize** the encode-move into a handoff prompt that builds your workflow skills across your stack
+- **Generalize** the shapes you mapped into a handoff prompt that builds your workflow skills across your stack
 
 ## Start here
 
@@ -43,16 +42,16 @@ You walk in holding two runs of the same task. The un-packaged Module 4 send-off
 - Claude over-credits its own packaging by default. A fair push-back names one thing the verifier missed, concretely. The runs rule; the summary of them doesn't
 - Gaps sort into three homes: memory (rules that would have prevented the mistake upstream), sharper verifier (a check that would have fired mid-run), or new skill (a move packaged for future tasks)
 - An eval is the automated check that says *this agent-produced thing meets our bar*. Verifier when deterministic, judge when LLM-based, gate when placed in CI. All three are evals
-- The second authored skill IS the loop. It packages the diagnosis into a move the next run inherits.
-- Encoding is the third phase of test → learn → encode. Two runs tested; the diagnosis learned; the skill encodes. The loop closes when the lesson ships.
+- The handoff prompt IS the loop. It packages the stack-map into a move that authors the skill each shape calls for, when you run it.
+- Encoding is the third phase of test → learn → encode. Two runs tested; the diagnosis learned; the handoff encodes. The loop closes when the lesson ships.
 
 ## Human close
 
-No compound prompt here. The encode step already happened when you shipped the second skill in the exercise; the skills that landed in the team kit are the Module 6 compound. This slot is a human round: talk, compare, no prompts.
+No compound prompt here. The exercise's gap map and stack-map are the Module 6 compound; the encode-move lands inside the last lecture. This slot is a human round: talk, compare, no prompts.
 
-*Three runs of the loop on your own work. The kit, yours.*
+*Two runs of the same task, read to the bone. The loop, yours.*
 
-**Self-study variant.** Close the laptop. The encode step already happened when you shipped the second skill. If you can name the move in one sentence, that's the marker; no further articulation required.
+**Self-study variant.** Close the laptop. If you can name the move in one sentence, that's the marker; no further articulation required.
 
 [Composing the workflow](lectures/composing-the-workflow.md)
 
@@ -92,53 +91,47 @@ Antti
 
 **Leap test** (per `check_pedagogy.md` rule 45; M6 is an arc-mood exercise so the test names artefact + use, not activity):
 - The student has read their own Claude Code history back across the stack and holds a set of mermaid diagrams of the work they repeat. The dominant gap now sits inside a recognised work-shape, not floating alone.
-- The student now owns a second packaged skill in `~/.claude/skills/` shaped to one of three forms (sharpened-verifier / judge / gap-finder), built from the gap-diagnosis across two runs, and invokes it the next time a similar task ships.
 - The student's `./CLAUDE.local.md` shows at least one rule deleted (compound-by-subtraction), the deletion commit visible in git history, born from the two-run diagnosis.
-- The student now holds a standalone handoff prompt, written by the agent from the shipped `session-shaper`, that studies their whole stack and authors a skill per recurring shape when run later. The encode-move generalised from one task to all their work.
+- The student now holds a standalone handoff prompt, written by the agent from the recurring-work shapes mapped in the exercise, that studies their whole stack and authors a skill per recurring shape when run later. The encode-move generalised from one task to all their work.
 
 **Artefact contracts** (per `check_pedagogy.md` rule 46 — every produced artefact with a stable identifier gets a contract row):
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
-| Two-run gap map | Ranked gap list in M6 session scrollback; optionally copied to `observations/` if the student wants it durable | Exercise Phase 1 (diff un-packaged M4 vs packaged M5, quote both runs, rank dominant gap) | Phase 2 session-shaper authoring; future post-cohort team-kit conversation |
-| Recurring-work shapes | Repeated-work inventory + mermaid diagrams (≤30 nodes each) in M6 session scrollback | Exercise Phase 2 study prompt (scan `~/.claude/projects/` across the stack) + shapes prompt (draw the top recurring patterns) | The session-shaper authoring (which shape holds the dominant gap); the `agents-that-build-agents` close (the shapes carry into the handoff prompt) |
+| Two-run gap map | Ranked gap list in M6 session scrollback; optionally copied to `observations/` if the student wants it durable | Exercise Phase 1 (diff un-packaged M4 vs packaged M5, quote both runs, rank dominant gap) | The gap-routing beat (named home); future post-cohort team-kit conversation |
+| Recurring-work shapes | Repeated-work inventory + mermaid diagrams (≤30 nodes each) in M6 session scrollback | Exercise Phase 2 study prompt (scan `~/.claude/projects/` across the stack) + shapes prompt (draw the top recurring patterns) | The `agents-that-build-agents` close (the shapes carry into the handoff prompt) |
 | Stale-rule deletion | `./CLAUDE.local.md` in the M5 worktree, with one rule cut in place if diagnosis killed it | Exercise Phase 1 compound-by-subtraction prompt | Every future session in the worktree; post-M6 merge-back decision into the original repo's personal rules |
-| Session-shaper / second skill | `~/.claude/skills/<skill-name>/SKILL.md` (personal, auto-discovered) | Exercise Phase 2 authoring conversation + self-critique + invocation on packaged run | Future long-running tasks of the same shape; `the-loop-has-a-name` lecture names it as verifier/judge/gate/eval; `agents-that-build-agents` prompt reads it as evidence |
-| Workflow-skills handoff prompt | Standalone prompt in the close scrollback; student saves it where they choose (repo note or `~/.claude/`) | `agents-that-build-agents` close — the agent reads the shipped `session-shaper` and writes a cold-runnable prompt | The student's own later sessions: run cold to study their stack, diagram recurring shapes, author a skill per shape |
+| Workflow-skills handoff prompt | Standalone prompt in the close scrollback; student saves it where they choose (repo note or `~/.claude/`) | `agents-that-build-agents` close — the agent reads the recurring-work shapes and writes a cold-runnable prompt | The student's own later sessions: run cold to study their stack, diagram recurring shapes, author a skill per shape |
 
 **Failure modes + escape hatches per phase** (per `check_pedagogy.md` rule 47; one row per forcing function shipping in the exercise):
 - **Phase 1 — Diff and name the gaps.** Failure: both-runs collapse — student treats the packaged run as the only material worth diagnosing, the un-packaged baseline fades. Escape: trainer asks for quoted moments from each run separately before any synthesis.
 - **Phase 1 — Compound move (cut stale rule).** Failure: addition-only compounding — student only adds rules, never subtracts. Escape: forcing prompt names a specific rule the two-run diagnosis killed; if the student can't name one, the diagnosis wasn't sharp enough — back to Phase 1's quoted-moments check.
-- **Phase 2 — Author the skill (interview).** Failure: skill-shape mismatch — student picks sharpened-verifier when the dominant gap was qualitative drift, or judge shape when the gap is deterministic. Escape: trainer surfaces the menu — *"qualitative gap wants a judge. Deterministic gap wants a sharpened verifier. Recurring-drift gap wants a gap-finder skill. Which is yours?"*
-- **Phase 2 — Author the skill (interview).** Failure: author-in-editor-not-conversation — student tries to open a markdown file and type the skill directly. Escape: trainer holds the line — *"The first skill in this training was authored in conversation. Same move here. Claude drafts from the diagnosis, you push back, Claude ships."*
-- **Phase 2 — Self-critique before ship.** Failure: rubber-stamp self-audit — student or Claude marks the skill complete without finding the section where session evidence shows it underdelivered. Escape: prompt forces enumeration of one named convention from the session that the skill failed to encode; hedged language like *"minor polish"* is rejected.
-- **Phase 2 — Invoke on actual run.** Failure: skill-as-documentation — student writes a SKILL.md that describes the gap instead of moving to catch it. Escape: diagnostic — the skill's `description` ends with an outcome, not a topic; if it reads like a topic page, re-scope in conversation.
+- **Phase 2 — Stack scan (study / shapes / primitives).** Failure: scan-sprawl — the study reads the whole stack and throws back a wall the student catalogues instead of ranks. Escape: the body steer (*read for the few at the top you actually repeat*) plus trainer push to the ranked head; depth is the student's call, not a mandate.
+- **Gap routing.** Failure: home-dodge — gaps stay a ranked list, the dominant one never committed to memory / verifier / skill. Escape: trainer asks for the home in one sentence; if it can't be named, the Phase 1 read wasn't sharp enough — back to quoted moments.
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
-- **Session runtime:** 1h45 nominal (Story opener 5 / Exercise 45 / Debrief 12 / Human close / Bridge 3). The Human close runs four beats — the story beats, *the-loop-has-a-name* 12–15 (per its maintainer Time line), *the-map-filled-in* 8–10 (per its maintainer Time line), and *agents-that-build-agents* 5–7 (per its maintainer Lecture meta line) now as the training's closing beat — the three timed lectures sum to ~25–32 min against the 15 the nominal budget gave the old single closer slot, so the close overshoots 1h45. Cutting the arc-retrospective exercise (2026-07-05) frees ~20 min back against that overshoot. Trainer demos slowly, room copy-pastes concurrently.
+- **Session runtime:** 1h45 (recounted 2026-08-01 after the authoring-sequence cut: fresh-session open + read both runs ~10 / openers *the-2-frontiers* 2 + *story-of-module-6* 7–9 + *quality-is-grounding* 3–5 / Exercise 30–40 / Debrief 12 / Human close *composing-the-workflow* 3–4 + *the-loop-has-a-name* 12–15 + *the-map-filled-in* 8–10 + *agents-that-build-agents* 5–7 / Bridge 3; lecture minutes per each file's own Time line). Typical pacing ≈106 against the 105-min 2-day slot; floors 95, ceilings 117 — the Debrief's 12 and the exercise's scan-depth steer are the slack. Trainer demos slowly, room copy-pastes concurrently.
 - **Prep / bridge timing:** optional Klaassen verifier article 10 min; human close / team-kit accretion slot 10–15 min.
 - **Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know how to encode."* Not confidence-as-performance; competence-as-posture. Failure shapes that steal the mood: compliance-feel (*"build the eval, pass the gate"*), paperwork-feel, credibility-performance (*"we live what we teach"*), trainer-monologue retrospective. If any beat reads like one of those, revise.
-- **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries / §Material distribution (no training-dir state, no `module-N/` folders). Not restated here. Module-specific: M6 opens a fresh session in the M5 worktree at `../<repo>-m5` where both runs already live, then reads + authors + ships in-place. The second skill ships to personal `~/.claude/skills/`; team-PR is a strong follow-up, mediated by human conversation with teammates — not auto-promoted.
+- **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries / §Material distribution (no training-dir state, no `module-N/` folders). Not restated here. Module-specific: M6 opens a fresh session in the M5 worktree at `../<repo>-m5` where both runs already live, then reads, routes, and maps in-place. The handoff prompt from the close is the take-home; skill candidates it surfaces later ship personal-first, team-PR via human conversation — not auto-promoted.
 - **Pre-read placement:** none. M6 opens with the Story lecture in-room.
 
 **Push-back moves** (trainer delivers):
 - **Connections blocker** — student walks in without one of the two artefacts accessible (laptop closed between M5 and M6, scrollback gone, repo state unclear on the packaged run). Trainer push: *"both artefacts are whatever's there. Commits between M4 and M5 send-offs, files modified during each run, scrollback at `~/.claude/projects/<project>/` if the sessions closed — if M4 and M5 share a cwd, recency alone can grab the wrong attempt; filter by a phrase unique to that send-off's opening prompt instead. Open a fresh Claude Code session in the repo and ask it to surface what each run touched."*
 - **Phase 1 over-diagnosis** — student lists a long catalogue of gaps across both runs. Trainer push: *"two runs, maybe three gaps each. Pick the three that cost the most. The second skill you author at Phase 2 fits one shape."*
-- **Phase 2 skill-shape mismatch** — student picks a sharpened-verifier shape when the dominant gap was a drift the verifier wouldn't have seen, or a judge shape when the gap is deterministic. Trainer surfaces the menu: *"qualitative gap wants a judge. Deterministic gap wants a sharpened verifier. Recurring-drift gap wants a gap-finder skill. Which is yours?"*
-- **Phase 2 author-in-editor-not-conversation** — student tries to open a markdown file and type the skill directly. Trainer push: *"The first skill in this training was authored in conversation. Same move here. Claude drafts from the diagnosis, you push back, Claude ships."*
+- **Phase 2 scan-drown** — the study throws back a wall and the student starts cataloguing. Trainer push: *"read the ranked head. The few you actually repeat are the map; the rest is inventory."*
 
 **Watch-fors (cross-phase):**
 - Both-runs collapse — student treats the packaged run as the only material worth diagnosing (the un-packaged baseline fades). Phase 1 recovers by asking for quoted moments from each run, separately.
-- Gap-home confusion — student packs everything into the second skill because skills feel like "the answer." Force separation: some gaps belong in memory, some in a sharper existing verifier, some in a new skill. Phase 1 names the home before Phase 2 builds.
-- Skill-as-documentation — student writes a SKILL.md that describes the gap instead of moving to catch it. Diagnostic: the skill's `description` ends with an outcome, not a topic. If it reads like a topic page, re-scope.
+- Gap-home confusion — student calls everything a skill candidate because skills feel like "the answer." Force separation: some gaps belong in memory, some in a sharper existing verifier, some in a new skill. The routing beat names the home.
 - Closing-lecture-as-pre-read — if the closing names something the student already heard, the opener or exercise leaked. Three-persona sim catches this; ship-pass eval also.
 
 **Decision points (pacing):**
 - **Phase 1 runs short (<10 min):** student didn't engage both runs. Diagnostic: did they quote specific moments from each, or summarise generically? If summary, redo with quote-required prompt.
 - **Phase 1 runs long (>20 min):** student is over-diagnosing. Force ranking — top three gaps, dominant first, one per home (memory / verifier / skill).
-- **Phase 2 runs short (<15 min):** the second skill is too thin. Diagnostic: does it fire on the gap shape it's targeting? If not, re-scope in conversation.
-- **Phase 2 runs long (>35 min):** the skill is becoming a manifesto. Cap at the shape of a tight SKILL.md — named invocation pattern, one or two illustrative examples.
+- **Phase 2 runs short (<10 min):** the scan skimmed. Diagnostic: does the shapes output name work the student recognises as theirs? If it reads generic, re-run study with a narrower pointer.
+- **Phase 2 runs long (>20 min):** cataloguing. Force the ranked head, draw two or three shapes, move to primitives.
 - **Whole-room mood below 7:** practitioner fluency isn't landing. Check Phase 1: did the diagnosis name SPECIFIC gaps with quoted moments from BOTH runs? Specificity-across-two-runs is where this mood lives.
 
 **Plug points (trainer):**
@@ -149,10 +142,10 @@ Antti
 
 **Frameworks riffed on (attributed in closer):**
 - **Ronacher's three-pattern** — Armin Ronacher `[practitioner direct]`. Re-named in the closing lecture as a scaffold the student is now ready to sharpen, not a fixed recipe.
-- **Cherny's three verifier shapes** — Kim on Cherny `[practitioner analysis]`. The second-skill authoring picks a shape from this menu.
+- **Cherny's three verifier shapes** — Kim on Cherny `[practitioner analysis]`. The primitives menu riffs on this convergence.
 - **Ramp Dojo** — 350-skill marketplace `[practitioner direct, Geoff Charles CPO, 2026-04-09]`, as the team kit's destination shape. Confirmed against ramp.md 2026-05-25 (public X primary paywalled). Closing lecture attribution.
 - **Intercom Tier 1/2/3** — Darragh Curran, [2x Nine Months Later](https://ideas.fin.ai/p/2x-nine-months-later) `[practitioner direct, vendor venue, 2026-04-16]`. 19.2% auto-approved / 14.6 min vs 75.8 min org median / 86% ≤20 lines / ~500-person R&D — four numbers confirmed verbatim 2026-05-25. Closing lecture org-scale anchor.
-- **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) `[practitioner direct, vendor venue, 2026-02-09]`. Live + accurate 2026-05-25. The review + compound step made explicit across two runs. Exercise Phase 2 authoring + closing lecture's team-kit-accretion line.
+- **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) `[practitioner direct, vendor venue, 2026-02-09]`. Live + accurate 2026-05-25. The review + compound step made explicit across two runs. Exercise Phase 1 + closing lecture's team-kit-accretion line.
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 
@@ -165,12 +158,10 @@ Antti
 
 **First-cohort observation questions:**
 - Two-run reading stamina — does Phase 1's diagnosis-across-two-runs hold, or does the second run fade?
-- Skill-shape menu — do the three shapes cover the gaps students surface?
+- Primitives menu — do the field's checking primitives pair recognisably with the shapes students draw?
 - Debrief round form — which works best with this mood (pair / whole-room / silent write-then-share)?
 
 Pre-cohort open items for M6: see `pre-cohort-todos.md`.
-
-**M6 close overbooked (2026-07-03) — Antti's eyeball.** The Human close now carries four lecture beats plus the human round against the 15-min nominal closer slot, and the close overshoots 1h45. Which beats stay in-room versus move to the M5-to-M6 gap as prework is a delivery call, not a content one — flagged for Antti to trim; no content changed here.
 
 **2026-07-03 (re-sequence pass)** — Human close re-sequenced to agents-last per Antti: *the-map-filled-in* now the penultimate consolidation beat, *agents-that-build-agents* the training's closing beat, one-line forward-launch transition added before it. Tasks 2–4 were already applied in the same-day close rework and left in place: four source stamps re-verified to `checked:2026-07-02` (MiniJinja → CAVEAT + 6-mo-window note; Kim-on-Cherny shapes at the verbatim "background agent / agent-stop hook / Ralph Wiggin plugin"; Klaassen Definitive Guide → CAVEAT to match the same-source sibling stamps; how-Every-codes → CAVEAT, Dec-2025 origin framing); four-beat runtime line; Quality-predates re-audit note; overbooked-close eyeball flag. This pass only reordered the runtime beat list to agents-last and named the re-sequence in the Quality parenthetical.
 

@@ -29,7 +29,6 @@ produces:
     location: scrollback (ranked gap list with quoted moments + dominant gap)
     consumed-by:
       - prompt:spot-gaps-build-the-loop-2
-      - prompt:spot-gaps-build-the-loop-3
 ---
 I have two runs of the same long-running task on disk, and both recorded their coordinates. The un-packaged run's are in `task.md` (its `m4/` branch and session transcript path); the packaged re-run's are in `plan.md`, in the protected `Run coordinates` block at the top (its `m5/` branch and session transcript path). The un-packaged run had no reference artefact, no plan.md, no verifier. The packaged re-run had all three in play: a reference, a plan.md, and a verifier wired to run on a cadence.
 

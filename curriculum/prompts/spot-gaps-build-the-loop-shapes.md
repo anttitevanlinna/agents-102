@@ -10,7 +10,6 @@ produces:
   - id: recurring-shape-diagrams
     location: scrollback (the top recurring work patterns drawn as small mermaid diagrams)
     consumed-by:
-      - prompt:spot-gaps-build-the-loop-3
       - prompt:agents-that-build-agents-handoff
 ---
 Take the recurring groups you just named. For the top few, draw each one as a mermaid diagram of how that kind of work flows: the steps in order, where it branches, where it loops back, what hands off to what.

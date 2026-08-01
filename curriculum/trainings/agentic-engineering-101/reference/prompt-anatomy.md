@@ -291,7 +291,7 @@ Example: `push-back-on-the-plan-2`, `diagnose-and-resend-6`.
 
 Fires when authoring a Claude Code skill from session evidence rather than from a template. *Ask one question at a time. Push back when my answer is generic. Save to `~/.claude/skills/<name>/SKILL.md`. Personal first, team PR later, separately.* The first two install the rhythm. The third names the ship destination so the agent doesn't quietly write to a team-shared path.
 
-Example: `author-test-strategy-skill-1`, `spot-gaps-build-the-loop-3`.
+Example: `author-test-strategy-skill-1`.
 
 ### The multi-perspective synthesis
 *Parallel-stance dispatch + don't smooth disagreement + source-or-flag.*

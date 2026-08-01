@@ -27,7 +27,6 @@ produces:
     location: m5/<task-slug> branch (commits, changed files, RUN-NOTES.md)
     consumed-by:
       - prompt:spot-gaps-build-the-loop-1
-      - prompt:spot-gaps-build-the-loop-5
   - id: m5-session-transcript
     location: ~/.claude/projects/<encoded-worktree-cwd>/<uuid>.jsonl
     consumed-by:

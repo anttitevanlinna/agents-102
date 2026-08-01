@@ -725,8 +725,7 @@
         "id": "packaged-run-artefact",
         "location": "m5/<task-slug> branch (commits, changed files, RUN-NOTES.md)",
         "consumed-by": [
-          "prompt:spot-gaps-build-the-loop-1",
-          "prompt:spot-gaps-build-the-loop-5"
+          "prompt:spot-gaps-build-the-loop-1"
         ]
       },
       {
@@ -929,18 +928,18 @@
   "agents-that-build-agents-handoff": {
     "key": "agents-that-build-agents-handoff",
     "dest": "Claude Code",
-    "context": "same session, just after shipping the skill",
+    "context": "same session, at the close after the stack scan",
     "runtime": "any",
     "origin": "lectures/agents-that-build-agents",
-    "text": "This session we drew the recurring shapes in my work and shipped one skill from one of them, the session-shaper. The shapes and the move are in your context right now.\n\nWrite me a handoff prompt I can save and run in a fresh session later to build the rest of the kit: one skill per recurring shape worth packaging, across my whole stack. Carry the shapes we just named into the prompt so it starts from them, not from scratch. Same move as the session-shaper, study the work, draw the shape, author through conversation, push back, invoke to verify.\n\nThe prompt runs later in a cold session, so bake in what that session won't have. Tell it to re-study my repos for these shapes, and name the shapes inside it. Put it in a code block so I can save it.",
+    "text": "This session we drew the recurring shapes in my work and listed the checking primitives the field runs. The shapes and the menu are in your context right now.\n\nWrite me a handoff prompt I can save and run in a fresh session later to build the kit: one skill per recurring shape worth packaging, across my whole stack. Carry the shapes we just named into the prompt so it starts from them, not from scratch. For each shape, the move is the one I know from the test-strategy skill: study the work, pick the checking primitive that fits, author through conversation, push back, invoke to verify.\n\nThe prompt runs later in a cold session, so bake in what that session won't have. Tell it to re-study my repos for these shapes, and name the shapes inside it. Put it in a code block so I can save it.",
     "requires": [
       {
         "id": "recurring-shape-diagrams",
         "source": "prompt:spot-gaps-build-the-loop-shapes"
       },
       {
-        "id": "second-authored-skill",
-        "source": "prompt:spot-gaps-build-the-loop-5"
+        "id": "primitive-menu",
+        "source": "prompt:spot-gaps-build-the-loop-primitives"
       }
     ],
     "produces": [
@@ -2316,8 +2315,7 @@
         "id": "two-run-gap-map",
         "location": "scrollback (ranked gap list with quoted moments + dominant gap)",
         "consumed-by": [
-          "prompt:spot-gaps-build-the-loop-2",
-          "prompt:spot-gaps-build-the-loop-3"
+          "prompt:spot-gaps-build-the-loop-2"
         ]
       }
     ]
@@ -2348,120 +2346,13 @@
       }
     ]
   },
-  "spot-gaps-build-the-loop-3": {
-    "key": "spot-gaps-build-the-loop-3",
-    "dest": "Claude Code",
-    "context": "",
-    "runtime": "any",
-    "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "Author a session-shaper as a personal skill. The skill's job is to shape future sessions on this kind of task so the dominant gap I diagnosed in Phase 1 doesn't recur. Shape: one of sharpened-verifier, LLM-judge, or gap-finder — I'll tell you which after you ask. Same authoring approach as the `test-strategy` skill you authored earlier — read its SKILL.md as a shape reference.\n\nInterview me one question at a time. Cover: what the skill fires on (agent output, proposed plan, mid-run state), what the quality bar is in terms I can defend to a teammate, what to flag vs. what to let through, how it outputs (pass/fail, ranked findings, inline critique), and what the failure shape looks like when the skill itself is wrong.\n\nPush back when my answer is generic. A judge that says \"check if the output is good\" is useless; a verifier that duplicates the existing test suite is noise. Codebase-specific and failure-specific.\n\nWhen you have enough, write the skill to `~/.claude/skills/session-shaper/SKILL.md`: frontmatter (name `session-shaper` + description), then instructions. Show me before saving.",
-    "requires": [
-      {
-        "id": "two-run-gap-map",
-        "source": "prompt:spot-gaps-build-the-loop-1"
-      },
-      {
-        "id": "recurring-shape-diagrams",
-        "source": "prompt:spot-gaps-build-the-loop-shapes"
-      },
-      {
-        "id": "primitive-menu",
-        "source": "prompt:spot-gaps-build-the-loop-primitives"
-      },
-      {
-        "id": "test-strategy-skill",
-        "source": "prompt:author-test-strategy-skill-1",
-        "conditional": "m3-completed",
-        "note": "referenced as authoring-pattern template"
-      }
-    ],
-    "produces": [
-      {
-        "id": "session-shaper-skill-draft",
-        "location": "~/.claude/skills/session-shaper/SKILL.md (personal, auto-discovered)",
-        "consumed-by": [
-          "prompt:spot-gaps-build-the-loop-4",
-          "prompt:spot-gaps-build-the-loop-5"
-        ]
-      }
-    ]
-  },
-  "spot-gaps-build-the-loop-4": {
-    "key": "spot-gaps-build-the-loop-4",
-    "dest": "Claude Code",
-    "context": "",
-    "runtime": "any",
-    "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "Before I ship this skill, critique it. Read the SKILL.md you just wrote. Tell me:\n\n- What's the weakest part? Name the assumption most likely to be wrong for my codebase, or the section a teammate would push back on first.\n- Is there anything generic dressed up as codebase-specific? Advice a pyramid-shaped test book would give, or a verifier template from a blog post.\n- Is there anything from the two runs' diff that didn't make it into the skill? A quoted failure moment I named in Phase 1 that would sharpen the skill if it were encoded?\n\nDon't reassure me. Name weak parts.",
-    "requires": [
-      {
-        "id": "session-shaper-skill-draft",
-        "source": "prompt:spot-gaps-build-the-loop-3"
-      },
-      {
-        "id": "two-run-gap-map",
-        "source": "prompt:spot-gaps-build-the-loop-1"
-      }
-    ],
-    "produces": [
-      {
-        "id": "skill-self-critique",
-        "location": "scrollback (named weak parts before shipping)",
-        "consumed-by": [
-          "prompt:spot-gaps-build-the-loop-5"
-        ]
-      }
-    ]
-  },
-  "spot-gaps-build-the-loop-5": {
-    "key": "spot-gaps-build-the-loop-5",
-    "dest": "Claude Code",
-    "context": "",
-    "runtime": "any",
-    "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "Invoke the `session-shaper` skill we just authored — by its name — on the M5 packaged re-run. Not on a toy example. The actual artefacts: the commits, the files, the session transcript.\n\nProduce whatever output the skill asks you to produce (pass/fail, ranked findings, inline critique).\n\nThen, in the same response, answer: is the skill any good? Specifically: does the output catch the dominant gap we named in Phase 1? Does it miss things a staff engineer reviewing this run would catch? Would the M4 un-packaged run have come out better if this skill had fired on it retroactively?\n\nDon't reassure me about the skill. If it isn't earning its place, say so.",
-    "requires": [
-      {
-        "id": "session-shaper-skill-draft",
-        "source": "prompt:spot-gaps-build-the-loop-3"
-      },
-      {
-        "id": "skill-self-critique",
-        "source": "prompt:spot-gaps-build-the-loop-4"
-      },
-      {
-        "id": "packaged-run-artefact",
-        "source": "prompt:ae101-m5-rerun-packaged"
-      }
-    ],
-    "produces": [
-      {
-        "id": "second-authored-skill",
-        "location": "~/.claude/skills/session-shaper/SKILL.md (sharpened after invocation on real artefacts)"
-      }
-    ],
-    "anchors": [
-      {
-        "move": "skill-by-name",
-        "span": "by its name"
-      },
-      {
-        "move": "self-critique-register",
-        "span": "in the same response, answer: is the skill any good?"
-      },
-      {
-        "move": "disambiguation-criteria",
-        "span": "Specifically: does the output catch the dominant gap we named in Phase 1? Does it miss things a staff engineer reviewing this run would catch? Would the M4 un-packaged run have come out better if this skill had fired on it retroactively?"
-      }
-    ]
-  },
   "spot-gaps-build-the-loop-primitives": {
     "key": "spot-gaps-build-the-loop-primitives",
     "dest": "Claude Code",
     "context": "",
     "runtime": "any",
     "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "I'm about to author a skill that wraps a checking primitive against my dominant gap. Before I commit to a shape, expand my menu.\n\nList 5–10 atomic verification primitives a software engineer uses to check agentic work (test-writing, browser-testing, PR-building, lint-gates, ...) — the moves themselves, not the agent context. For each, name in one line what it checks and where it fires (pre-run / mid-run / post-run / continuous).\n\nThen evaluate fit for the dominant gap I named in Phase 1. Which 2–3 primitives would most likely have caught it? Don't recommend a skill shape yet; recommend the primitives.\n\nBe concrete. Generic \"tests\" doesn't make the cut; \"unit test against the changed function\" does.",
+    "text": "Expand my menu of checks before I read my own map against it.\n\nList 5–10 atomic verification primitives a software engineer uses to check agentic work (test-writing, browser-testing, PR-building, lint-gates, ...) — the moves themselves, not the agent context. For each, name in one line what it checks and where it fires (pre-run / mid-run / post-run / continuous).\n\nThen evaluate fit for the dominant gap I named in Phase 1. Which 2–3 primitives would most likely have caught it? Recommend the primitives, and say which of the recurring shapes we drew each one pairs with.\n\nBe concrete. Generic \"tests\" doesn't make the cut; \"unit test against the changed function\" does.",
     "requires": [
       {
         "id": "two-run-gap-map",
@@ -2477,7 +2368,7 @@
         "id": "primitive-menu",
         "location": "scrollback (5-10 atomic verification primitives with one-line check-description and fire-timing per primitive, plus 2-3 ranked by fit against dominant gap)",
         "consumed-by": [
-          "prompt:spot-gaps-build-the-loop-3"
+          "prompt:agents-that-build-agents-handoff"
         ]
       }
     ]
@@ -2500,7 +2391,6 @@
         "id": "recurring-shape-diagrams",
         "location": "scrollback (the top recurring work patterns drawn as small mermaid diagrams)",
         "consumed-by": [
-          "prompt:spot-gaps-build-the-loop-3",
           "prompt:agents-that-build-agents-handoff"
         ]
       }

@@ -376,3 +376,7 @@ Read M1 run `20260524-145026-64490` (turns 1, 2, 6, 7) + M2 run `20260524-151314
 
 These are all "studies to run," not "fixes to ship."
 
+
+## 2026-08-01 — M6 re-scope: authoring turns retired, scenario rework owed
+
+Curriculum cut `spot-gaps-build-the-loop-3/-4/-5` (author / critique / invoke the second skill) from M6; the exercise is now diff + rule-cut + gap-routing + stack scan, and `agents-that-build-agents-handoff` anchors on `-shapes` + `-primitives` instead of the shipped skill. Runner surfaces that still reference the dead turns and need rework before the next M6 run: `run-m6.sh` (turns keyed on the three prompts), the M6 steps in `playgrounds/codesearch.maintainer.md` (steps 4–6) and `playgrounds/picoshare.maintainer.md` (steps 4–6), and `playgrounds/ae101-mocks/student-inputs.md` (the shape-pick and invoke-and-grade sections). Drop the turns, keep the `-study`/`-shapes`/`-primitives` flow, add a handoff-prompt assertion at the close.

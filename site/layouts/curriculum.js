@@ -1284,8 +1284,8 @@
             html += '</ol>';
         }
 
-        // Trainer guide is built and reachable by direct URL (SPA route
-        // ?file=trainer-guide; workbook sibling trainer-guide.html). Not
+        // The trainer handbook is built and reachable by direct URL (SPA route
+        // ?file=trainer-modules; workbook sibling trainer-modules.html). Not
         // surfaced from the student-facing index — trainers know the URL.
 
         return html;

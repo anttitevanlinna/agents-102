@@ -97,7 +97,7 @@ if [ -d "$PROMPTS_SRC" ]; then
   #    resolve locally.
   scan_list="$(mktemp)"
   ls "$A101_MODULES_DIR"/*.md \
-    | grep -vE 'training-architecture|pre-cohort-todos|trainer-guide' > "$scan_list"
+    | grep -vE 'training-architecture|pre-cohort-todos|trainer-guide|trainer-modules' > "$scan_list"
   # Resolve linked exercises/lectures into a separate temp, then append — never
   # read and append the same file in one pipeline. `if` (not `&&`) so a missing
   # link can't make the loop exit nonzero under set -e/pipefail.

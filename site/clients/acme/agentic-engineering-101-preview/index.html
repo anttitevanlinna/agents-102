@@ -2963,17 +2963,18 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 <div class="phase-kicker">Lecture</div>
 
 <h1 id="how-this-training-was-built">How this training was built</h1>
+<p>What follows is Antti&#39;s story of building this training, in his own words.</p>
 <p>At start, this training was bulletpoints. A strategy doc, seven headings, thirty bullets: the sort of list that makes you feel like you understand something and then realise you don&#39;t.</p>
 <h2 id="wrong-is-how-steering-gets-in">Wrong is how steering gets in</h2>
 <p>The thirty bulletpoints became module prototypes, and all of them were wrong. Not wrong the way a bad draft is wrong, where someone missed the point. Wrong the way any first version is wrong: plausible, coherent, reading fine until you hold it next to what the training was actually for. Then the gap showed up. Every time. The gap turned out to be the valuable part; if the first draft had been right, there would have been nothing to push on.</p>
-<p>Each wrongness was specific and namable. A phrase that smuggled consultancy-voice into an engineering lecture. An exercise that asked a real engineer to do something insulting. A module that wanted to feel tidy where the feeling should have been unease. Each thing pointed at turned into a rule. <em>&quot;Don&#39;t end a module with three scripted questions.&quot;</em> <em>&quot;Every prompt block gets a one-sentence lead-in with a command verb.&quot;</em> <em>&quot;Every claim about Claude Code must have been verified within the last month.&quot;</em></p>
+<p>Each wrongness was specific and namable. A phrase that smuggled consultancy-voice into an engineering lecture. An exercise that asked a real engineer to do something insulting. A module that wanted to feel tidy where the feeling should have been unease. Each thing pointed at turned into a rule. <em>&quot;Forcing functions stay, scripted reactions go.&quot;</em> <em>&quot;Every prompt block gets a one-sentence lead-in with a command verb.&quot;</em> <em>&quot;Every claim about Claude Code gets re-checked before each cohort.&quot;</em></p>
 <p>The rules were not right the first time either. Some were overscoped. Some fired on the wrong surface. Some held for one kind of content and broke for another. They got sharpened the same way the drafts did: used, corrected, rewritten.</p>
 <h2 id="the-rules-started-doing-the-work">The rules started doing the work</h2>
-<p>Rules in a file Claude Code could read stopped being reminders and became load-bearing. Claude Code opens a session, loads the rules, plans inside them. A subagent dispatched to check a draft is handed them in its brief by the session that dispatched it. Load-bearing, not leak-proof: a loaded rule still slips out of the output sometimes, and the checking that follows exists because it does.</p>
+<p>Rules in a file Claude Code could read stopped being reminders and became load-bearing. Claude Code opens a session, loads the rules, plans inside them. A subagent dispatched to check a draft starts with them loaded too. Load-bearing, not leak-proof: a loaded rule still slips out of the output sometimes, and the checking that follows exists because it does.</p>
 <p>The difference is reach. A rule written down is a thing one person knows. A rule in <code>./CLAUDE.md</code> is a thing every session inherits. A rule in a shared checklist is a thing every dispatched subagent is handed before it writes a word.</p>
 <p>The rules compounded. Learning compounded to make better rules. More rules, more pointed. The strategy doc that started as bulletpoints grew a companion checklist for every kind of writing it produced (lectures, exercises, sales pages), each loaded at the moment it matters and no other moment.</p>
 <h2 id="then-the-agents-started-checking-the-agents">Then the agents started checking the agents</h2>
-<p>The edits to the training got bigger. One person fixing one line became plan mode (where Claude works in planning rather than execution) reshaping a whole file, then a subagent (a Claude instance with fresh context for independent analysis) auditing that file against a checklist in the background, then four agents in parallel auditing a file against four checklists while a fifth checked the neighbouring files.</p>
+<p>The edits to the training got bigger. One person fixing one line became plan mode reshaping a whole file, then a subagent (a Claude instance with fresh context for independent analysis) auditing that file against a checklist in the background, then four agents in parallel auditing a file against four checklists while a fifth checked the neighbouring files.</p>
 <p>Work-per-session went up, and care-per-line went up with it. Sweeping changes that would have taken a week got made in an afternoon, because the rules were tight enough to hand off. Every session inherited what the last one figured out, and each one could take on bigger work than the last.</p>
 <h2 id="built-to-forgive">Built to forgive</h2>
 <p>One more design decision is worth knowing before the modules stack up. Each module leaves artifacts behind that later ones pick up: a rules file here, maps and skills and notes further in. The prompts downstream check what exists and work with what they find. A missing file is a detail, not a debt; any artifact in this training can be rebuilt in minutes.</p>
@@ -2982,7 +2983,7 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 <h2 id="you-just-ran-the-compound-loop">You just ran the compound loop</h2>
 <p>The story of building this training is the shape you just ran on your own repo. Over ninety minutes, not a year. On a trivial bug, not a whole training. The first read was partly wrong, and the wrongness was the way in: you let Claude read your repo, saw the wrongness, named it, corrected it. That correction turned into a rule.</p>
 <p>The rule sits in <code>./CLAUDE.local.md</code>, which is yours. Gitignored, alongside you, read by every future session in this repo. By the end of the training it grows into a rules file shaped by how you actually worked: grown from evidence, not from a blank page or a trainer&#39;s template.</p>
-<p>The pattern has a name. Kieran Klaassen at Every calls it <strong>compound engineering</strong>. The retro you just ran was step four of his loop: plan, work, review, compound. That is the orient, fix, compound, close loop cut at different joints; the names differ, the loop doesn&#39;t. Mental models only come from doing, and you just did. Compound engineering an hour ago was a name. Now it&#39;s a loop you ran on your own repo.</p>
+<p>The pattern has a name. Kieran Klaassen at Every calls it <strong>compound engineering</strong>. The retro you just ran was the compound step of his loop: plan, work, review, compound. That is the orient, fix, compound, close loop cut at different joints; the names differ, the loop doesn&#39;t. Mental models only come from doing, and you just did. Compound engineering an hour ago was a name. Now it&#39;s a loop you ran on your own repo.</p>
 <p>The loop is the shape. The bug today was the excuse.</p>
 </section>
 
@@ -3024,9 +3025,9 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 <h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
 <ul>
-<li><strong>Run</strong> plan mode on a real multi-file task and read the plan for its file list, verification steps, and named assumptions</li>
+<li><strong>Run</strong> plan mode on a real multi-file task and judge the plan against five criteria, naming the one it fails</li>
 <li><strong>Push back</strong> twice on the plan via <em>keep planning with feedback</em>, surfacing what the agent didn&#39;t see</li>
-<li><strong>Walk down</strong> unresolved branches one question at a time, with a recommended answer per branch</li>
+<li><strong>Walk down</strong> unresolved branches, with a recommended answer per branch</li>
 <li><strong>Pair</strong> human read with agent walk-down: read → push-back → walk-down → approve</li>
 <li><strong>Spot</strong> approval inflation in your own past plans</li>
 <li><strong>Extract</strong> task-shaping rules from your session into a <code>.md</code> file, sharpening at least one before saving</li>
@@ -3158,7 +3159,7 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 </code></pre>
 <h2 id="plan-mode-is-a-read-only-permission-state">Plan mode is a read-only permission state</h2>
 <ul>
-<li>Plan mode is a permission state, not a feature. You press Shift+Tab until the status bar reads <code>plan</code>. The agent is now read-only: it reads files, runs shell commands to explore, and writes a plan file, but it can&#39;t edit or execute until you approve.</li>
+<li>Plan mode is a permission state, not a feature. You press Shift+Tab until the status bar shows plan mode on. The agent is now read-only: it reads files, runs shell commands to explore, and writes a plan file, but it won&#39;t edit your source until you approve.</li>
 <li>The read-only part is load-bearing. Plan mode isn&#39;t &quot;Claude thinks before doing.&quot; It&#39;s &quot;Claude writes a thing you can read, edit, and push back on before anything changes.&quot; The plan is an artifact, not a feeling.</li>
 <li>The plan file has an identity. A descriptive name (<code>migrate-auth-hash-calm-otter.md</code>, not random words) you can come back to. Small quality-of-life thing that matters more than it sounds: the plan is a thing on disk, not a moment in a chat.</li>
 <li>You will notice the wait. While Claude plans, other sessions could be making progress elsewhere. Not today, but soon.</li>
@@ -3170,14 +3171,15 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 <pre><code>How did your behaviour change now that we are in plan mode? Did your base prompt change, or what?
 </code></pre>
 <p>Watch what comes back. Sometimes Claude names the read-only state directly, sometimes the specific instructions it is following. Skip if you trust the framing. The exercise will show you either way.</p>
-<h2 id="four-things-a-good-plan-has">Four things a good plan has</h2>
+<h2 id="five-things-a-good-plan-has">Five things a good plan has</h2>
 <ul>
 <li><strong>A specific file list.</strong> Not &quot;update the config.&quot; <em>Which</em> config, <em>which</em> keys. A plan that names three files has made three decisions. A plan that says &quot;the relevant files&quot; has made zero.</li>
 <li><strong>An early runnable slice.</strong> Find the first step after which something runs end-to-end. A plan that builds layer by layer (data, then services, then UI) answers &quot;the last one,&quot; and every wrong guess stays hidden until then. A plan that stands up a thin end-to-end slice early gets checked by reality from step two onward.</li>
 <li><strong>A verification step</strong> that could actually fail. <em>&quot;Run the tests&quot;</em> is cosmetic; <em>&quot;run <code>pytest tests/auth/ -k hash</code> and expect 14 passing, 0 failing&quot;</em> is a gate. The test is whether, reading the step alone, you could tell Claude it failed and Claude would know what to fix.</li>
 <li><strong>Named assumptions.</strong> Good plans flag what they&#39;re assuming (library versions, schema shapes, whether a teammate&#39;s migration ran last week). A plan without assumptions isn&#39;t assumption-free; it&#39;s just assumption-silent.</li>
+<li><strong>A list of non-goals.</strong> What the plan will <em>not</em> touch. Every adjacent improvement looks helpful, so the agent does the ones you never ruled out. (Dex Horthy)</li>
 </ul>
-<p>Four things. That&#39;s the read.</p>
+<p>Five things. That&#39;s the read.</p>
 <h2 id="three-pressures-that-make-bad-plans-look-good">Three pressures that make bad plans look good</h2>
 <ul>
 <li><strong>Structure is persuasive.</strong> A 7-item plan with section headers and bold text looks like a decision. It often isn&#39;t. It&#39;s a draft formatted like a decision. The formatting is the trap.</li>
@@ -6890,8 +6892,8 @@ git stash pop
             html += '</ol>';
         }
 
-        // Trainer guide is built and reachable by direct URL (SPA route
-        // ?file=trainer-guide; workbook sibling trainer-guide.html). Not
+        // The trainer handbook is built and reachable by direct URL (SPA route
+        // ?file=trainer-modules; workbook sibling trainer-modules.html). Not
         // surfaced from the student-facing index — trainers know the URL.
 
         return html;

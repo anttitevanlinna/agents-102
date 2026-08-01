@@ -420,7 +420,7 @@
             trainingKey: trainingKey,
             moduleHref: function (k, s) { return 'curriculum.html?training=' + k + '&module=' + s; },
             fileHref: function (kind, s) { return 'curriculum.html?file=trainings/' + trainingKey + '/' + kind + '/' + s; },
-            trainerGuideHref: 'curriculum.html?file=trainer-guide',
+            trainerGuideHref: 'curriculum.html?file=trainer-modules',
             bigIdeaFor: null,
             showModuleCountHeading: true,
             headingTag: 'h2',

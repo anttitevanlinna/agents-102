@@ -302,7 +302,7 @@ function buildToc(contentKey, t) {
     trainingKey: contentKey,
     moduleHref: (k, s) => '#' + s,
     fileHref: (kind, s) => '#' + kind + '-' + s,
-    trainerGuideHref: './trainer-guide.html',
+    trainerGuideHref: './trainer-modules.html',
     bigIdeaFor: bigIdeaFor,
     showModuleCountHeading: false,
     headingTag: 'h3'
@@ -613,26 +613,27 @@ const TRAINER_MODULES_TABS_CSS = `
 }
 .module-glance { display: none; }
 .module-glance:target { display: block; }
-/* Default landing when no hash is set: show M1. Uses :has() to detect "no
-   .module-glance is currently targeted" and falls back to the M1 panel. Works
-   without JS. JS still replaces the URL hash to #m1-glance on load so the
-   URL is shareable, but the visual state is correct either way. */
-section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#m1-glance { display: block; }`;
+/* Default landing when no hash is set: show the Start here tab. Uses :has()
+   to detect "no .module-glance is currently targeted" and falls back to the
+   start panel. Works without JS. JS still replaces the URL hash to
+   #start-glance on load so the URL is shareable, but the visual state is
+   correct either way. */
+section.module#trainer-modules:not(:has(.module-glance:target)) .module-glance#start-glance { display: block; }`;
 
 const TRAINER_MODULES_TAB_JS = `
 // Per-module focused view: keep the URL shareable and the active tab highlighted.
-// The :target + :has() CSS handles show/hide; this script only writes #m1-glance
+// The :target + :has() CSS handles show/hide; this script only writes #start-glance
 // to the URL on first load and toggles the .is-active class on the tab strip.
 (function () {
-    var VALID = { '#m1-glance':1, '#m2-glance':1, '#m3-glance':1, '#m4-glance':1, '#m5-glance':1, '#m6-glance':1 };
-    function activeHash() { return VALID[location.hash] ? location.hash : '#m1-glance'; }
+    var VALID = { '#start-glance':1, '#m1-glance':1, '#m2-glance':1, '#m3-glance':1, '#m4-glance':1, '#m5-glance':1, '#m6-glance':1 };
+    function activeHash() { return VALID[location.hash] ? location.hash : '#start-glance'; }
     function syncTabs() {
         var hash = activeHash();
         document.querySelectorAll('.module-tabs a').forEach(function (a) {
             a.classList.toggle('is-active', a.getAttribute('href') === hash);
         });
     }
-    if (!VALID[location.hash]) history.replaceState(null, '', '#m1-glance');
+    if (!VALID[location.hash]) history.replaceState(null, '', '#start-glance');
     syncTabs();
     window.addEventListener('hashchange', syncTabs);
 })();

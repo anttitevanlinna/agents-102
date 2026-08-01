@@ -85,7 +85,7 @@ AE101 ships three curated skills in the content tarball (build whitelist `SKILLS
 
 - `access-control-analysis`, used at M3 to analyze the engineer's own codebase access surface.
 - `stride`, used at M3 for STRIDE threat-modelling on the same codebase.
-- `security-tools`, the M3 supply-chain surprise. Framed to students as a generic security-utility pre-flight; its first STRIDE-exercise invocation runs a bundled rick-roll that lands the "external skills are a supply-chain vector" lesson. Mechanics and the don't-spoil-it rule live in `trainer-guide.md` §"M3, the security-tools surprise".
+- `security-tools`, the M3 supply-chain surprise. Framed to students as a generic security-utility pre-flight; its first STRIDE-exercise invocation runs a bundled rick-roll that lands the "external skills are a supply-chain vector" lesson. Mechanics and the don't-spoil-it rule live in the trainer handbook (trainer-modules.md, M3 tab, "The security-tools surprise").
 
 All three install to `~/.claude/skills/<name>/SKILL.md` during prework. M3 invokes them by name. M3's third exercise authors a new skill from session evidence; M6 authors a verifier-shaped skill.
 
@@ -162,6 +162,12 @@ reading-contract arc) still reads as six-module prose throughout. `autumn-gaps.m
 unexamined* names this file as part of the owed trainer-facing sweep; this section is the
 disambiguation a trainer needs today, not that sweep.
 
+## Delivery-shape variants (2-day)
+
+The default 2-day shape is M1–M3 / M4–M6 (the trainer handbook's Start here tab carries the day tables): broadest fit, no overnight gap, M3's Q+S discipline installed before any long-running send-off.
+
+**Alternative: M1, M2, M4 / M5, M3, M6**, same 3+3 day shape, chosen when the sponsor wants the M4-overnight-M5 hinge. What it buys: the un-packaged send-off runs overnight, so the M5 mirror moment lands on a fresh room, and M3's discipline arrives as response to a felt failure rather than prophylactic. What it costs: M4's Phase 2/3 audit anchors on the repo's existing conventions instead of an authored test-strategy skill or ADRs (the conditional phrasings cover it, but verify: dry-run `walk-and-send-off-2` against a fresh repo with no authored skill and no ADR convention before the cohort); and the M4 task-pick homework moves from M3's close to M2's close. Default 3+3 for first-time trainers; the reorder is an experienced-trainer call.
+
 ---
 
 ## Future TODO, Gemini CLI as alternate runtime
@@ -231,7 +237,7 @@ Re-verify the matrix before each Gemini-cohort activation; pre-1.0 schema drift 
 
 The cheap, durable shape: write body prose abstractly, push runtime-specific paths to three edges. When the next CLI ships, the body doesn't move.
 
-1. **Body style pass.** Sweep AE101 module files (~10) and AE101-touching exercise files (~25) for hardcoded `./CLAUDE.md`, `./CLAUDE.local.md`, `~/.claude/skills/`, `~/.claude/agents/`, "Claude Code session," "Claude Code." Replace with abstract phrasing: *"your personal rules file"*, *"your team rules file"*, *"your skills folder"*, *"your agent session."* Most edits are single-line phrasing swaps. Some prompt blocks need a small re-shape so the agent infers the path from the rules file rather than receiving it inline. Not every Claude-Code reference is a violation, the trainer-guide and maintainer blocks can stay tool-named where they're delivery-context.
+1. **Body style pass.** Sweep AE101 module files (~10) and AE101-touching exercise files (~25) for hardcoded `./CLAUDE.md`, `./CLAUDE.local.md`, `~/.claude/skills/`, `~/.claude/agents/`, "Claude Code session," "Claude Code." Replace with abstract phrasing: *"your personal rules file"*, *"your team rules file"*, *"your skills folder"*, *"your agent session."* Most edits are single-line phrasing swaps. Some prompt blocks need a small re-shape so the agent infers the path from the rules file rather than receiving it inline. Not every Claude-Code reference is a violation, the trainer handbook and maintainer blocks can stay tool-named where they're delivery-context.
 
 2. **Module 1's compound exercise picks up a path-map block.** When `compound-and-close.md`'s prompt writes `./CLAUDE.local.md` (or `./GEMINI.local.md`) from session evidence, it also writes a four-to-six-line path-map block naming the local conventions: where personal rules live, where team rules live, where skills live, where the agent file folder lives. From M2 onward, every fresh session reads this at cold-start, so abstract body prose resolves correctly. One prompt edit. Load-bearing for the whole approach.
 

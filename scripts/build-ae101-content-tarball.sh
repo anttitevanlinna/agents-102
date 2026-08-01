@@ -18,7 +18,7 @@
 #
 # Module files (curriculum/trainings/agentic-engineering-101/*.md at the dir root)
 # are NOT included — those render via the customer workbook URL in browser.
-# Trainer-only files (pre-cohort-todos.md, trainer-guide.md,
+# Trainer-only files (pre-cohort-todos.md, trainer-modules.md,
 # training-architecture.md, cohort-onboarding-email.md) are never in scope.
 
 set -euo pipefail
@@ -42,7 +42,7 @@ SKILLS=(access-control-analysis stride security-tools)
 # builder whose warnings stop being read.
 TRAINER_ONLY=(
   pre-cohort-todos.md
-  trainer-guide.md
+  trainer-modules.md
   training-architecture.md
   cohort-onboarding-email.md
   autumn-gaps.md

@@ -109,3 +109,31 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 **Arc:**
 - Picks up from: `push-back-on-the-plan` Phase 5 — the design pattern Claude named is the raw material for Phase 1 here.
 - Hands off to: `lectures/where-the-rule-could-live.md` — closes the module on the leverage horizon without forcing a build. The optional ticket-inference beat is now the `read-the-ticket-rules` homework (M2).
+
+<!-- backing -->
+
+Claims
+- `the-file-is-the-artifact` · vision · "the file is the artifact" ← none-owed
+- `templates-stay-generic` · vision · "Templates stay generic; this file carries your rules" ← none-owed
+- `you-already-did-the-work-now-name-it` · vision · "You already did the work; now name the rules inside it." ← none-owed
+- `agent-reads-the-scrollback-you-react` · vision · "The agent reads the scrollback; you react to what it proposes." ← none-owed
+- `reject-or-rewrite-the-generic-rule` · vision · "When Claude pauses for the rewrite-and-reject pass, that is where your hand goes on the work." ← none-owed
+
+Sources
+(none. Every claim is the exercise's own design stance; the rules produced are the student's, read off their own session.)
+
+Frameworks
+- Double-loop learning · [borrow:Argyris & Schön] · law:double-loop-learning · ← cultural-vocab — naming the rule behind the decision, not repeating the decision
+- The compound ladder · [borrow:none] · law:the-compound-ladder · ← none — fix to memory, the second rung, run for the first time here
+
+Stance `[stance:2026-08-01 level:L0]`
+- holds: nothing about the field, and it should stay that way. Twelve minutes of extracting a student's own rules from a session they just ran. **The generic-rule rejection beat is the whole design bet:** an agent asked for rules will produce plausible generic ones, and catching that is the skill.
+- contested: nothing evidential.
+- would-move-it: nothing published. What would move it is rooms reporting that the surfaced rules come back generic anyway despite the rejection pass — a delivery signal, answerable from cohort notes.
+
+OODA
+- question: none standing. Watch whether the rejection pass actually fires in rooms or gets skipped for time at twelve minutes.
+- roster: none external — cohort debrief notes.
+- last-run: 2026-08-01
+
+<!-- /backing -->

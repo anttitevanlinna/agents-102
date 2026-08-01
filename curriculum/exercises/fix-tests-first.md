@@ -64,9 +64,36 @@ The PR is shipped. Hand off to the compound step.
 - **Time:** 25 min inside M1's 2h slot. Second of three exercises on the same bug / same repo. Earlier 35–40 min band assumed a meatier bug than prework's trivial-bug spec (under 50 lines, wrong error message / off-by-one / wrong total) actually invites — recalibrated 2026-05-15 after AE101 dry-run flagged the budget as padded.
 - **Prompt progression note:** the commit / push / PR move is intentionally prose-led, not a fenced prompt block. At this point the Builder is already in the repo with the fixed diff in context; the student can ask in their own words. Do not add a paste-ready commit prompt unless the exercise design changes.
 
-**Frameworks riffed on:**
-- **TDD (test-driven development)** — the tests-first, root-cause-driven fix riffs on a framework engineers already know. Named implicitly ("tests-first"); the rule seeded into `./CLAUDE.local.md` is the student's own TDD-style preference.
+<!-- backing -->
 
+Claims
+- `tests-first-root-cause-driven-is-one-discipline` · vision · "**Tests-first, root-cause-driven.** The failing test is the only proof the bug exists." ← none-owed
+- `without-a-test-the-fix-is-a-guess` · vision · "Without it, the fix is a guess that happens to compile." ← none-owed
+- `no-plan-mode-on-a-trivial-bug` · vision · "on a trivial bug, plan mode is overhead" ← none-owed
+- `agent-runs-the-loop-you-read-the-result` · vision · "The agent runs the loop; you read the result." ← none-owed
+- `your-own-wording-matters` · vision · "No pre-made prompt for the pushback." ← none-owed
+- `ask-whether-its-the-root-cause` · vision · "When the agent says done, ask whether the change is the root cause or a layer above it." ← none-owed
+- `first-cut-fixes-what-makes-the-test-pass` · vision · "The first cut usually fixes what makes the test pass; the deeper cut asks why the test could fail that way at all." ← none-owed
+
+Sources
+(none. TDD is named implicitly and owes attribution by name only; every other claim is the exercise's own design stance.)
+
+Frameworks
+- Test-driven development · [borrow:software engineering] · law:none · ← cultural-vocab — named implicitly in body as *tests-first*, never as a branded method; the rule the student seeds into `./CLAUDE.local.md` is their own preference, not ours
+- Five whys · [borrow:manufacturing] · law:none · ← cultural-vocab — the root-cause-versus-a-layer-above beat, unnamed in body on purpose
+- The compound ladder · [borrow:none] · law:the-compound-ladder · ← none — the push-back the student writes here becomes the rule at the compound step
+
+Stance `[stance:2026-08-01 level:L1]`
+- holds: TDD, which needs no defending, and one thing that does — that running the discipline *with an agent* is a second discipline. That second claim is the exercise's own and rests on nothing but the room's experience of it, which is the right warrant for a first-module exercise.
+- contested: nothing evidential. **The interesting tension is pedagogical and already resolved in the body:** the student writes their own push-back with no prompt supplied, which is slower and worse-scaffolded on purpose, because the words have to be theirs when the compound step reuses them.
+- would-move-it: nothing in the field. Agents becoming reliable enough that reading the diff line-by-line stops paying would move it, and that is the training's own bet in reverse.
+
+OODA
+- question: none standing on the field. Watch instead whether rooms actually write their own push-back or wait for a prompt that is deliberately absent.
+- roster: none external — cohort debrief notes.
+- last-run: 2026-08-01
+
+<!-- /backing -->
 **Themes planted** (content-strategy § "Recurring themes"):
 - **Theme 4 (self-aware, grain of salt)** — the diff push-back; Claude explains what it wrote and the student verifies. Compounding theme lands in Ex3.
 

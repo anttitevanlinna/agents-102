@@ -94,3 +94,32 @@ Ask Claude to introspect on what it read, what it skipped, and the call it made 
 1. **Runs `/context` on a working session and reads the unread-slice percentage** without being prompted. Falsifiable: scrollback of a normal session shows `/context` as a deliberate move within the first ten minutes, not a feature tour.
 2. **Asks Claude what it skipped and why after a repo-read**, before taking any code action. Falsifiable: a follow-up introspection prompt appears in scrollback after the initial orient prompt.
 3. **Spot-checks Claude's self-report by quoting a specific file or function back** when the report feels off. Falsifiable: scrollback shows a quote-back move under a "you said you read X, what's actually in it?" shape.
+
+<!-- backing -->
+
+Claims
+- `cant-steer-what-you-cant-see` · vision · "you can't steer what you can't see" ← none-owed
+- `deliberate-read-beats-blind` · vision · "A deliberate read beats a blind one." ← none-owed
+- `you-steer-the-load-not-the-reading` · vision · "You are not on the hook for reading the repo. The agent does that." ← none-owed
+- `every-read-has-a-shadow` · vision · "Every read has a shadow: the files Claude didn't load. The skipped slice is where the surprises hide." ← none-owed
+- `agent-can-introspect-on-what-it-skipped` · detail · "Claude can introspect on what it did and why, including what it chose not to read." ← self-report-is-not-a-log
+- `spot-check-the-self-report` · vision · "Read the self-report, then spot-check it" ← none-owed
+
+Sources
+- self-report-is-not-a-log `[checked:2026-08-01 result:CAVEAT due:cohort]` (no URL — house position) — [house canonical] An agent's account of what it read is generated text, not an instrumented log, and can be confidently wrong about its own behaviour. **The exercise is built on this caveat rather than around it** — the spot-check beat exists precisely because the self-report is unreliable, which is why the claim is safe to teach: the student is asked to verify it, not to trust it. fallback: none needed; the exercise's own third beat is the fallback.
+
+Frameworks
+- Context as a bandwidth-limited channel · [borrow:information theory] · law:bandwidth-limited-channel · ← cultural-vocab
+- Observability precedes control · [borrow:control theory] · law:is-a-closed-loop-controller · ← cultural-vocab — you cannot steer a loop you cannot read
+
+Stance `[stance:2026-08-01 level:L1]`
+- holds: that models can report on their own context decisions well enough to be useful, and not well enough to be trusted. Both halves matter and the exercise teaches both in sequence.
+- contested: how far the self-report tracks reality. **Nobody has published a measurement of it, and this exercise deliberately does not need one** — its move is verify-the-claim, which is correct whether the self-report is 90% accurate or 40%.
+- would-move-it: published work measuring introspective accuracy on context decisions. High accuracy would let the spot-check beat shrink; low accuracy would make it the whole point rather than the third of three.
+
+OODA
+- question: has anyone measured how accurately a coding agent reports what it did and did not read?
+- roster: Anthropic interpretability publications, Simon Willison, Chroma's context research, Addy Osmani
+- last-run: 2026-08-01
+
+<!-- /backing -->

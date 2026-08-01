@@ -56,3 +56,32 @@ You pasted one real ticket, and Claude inferred how your team uses fields like s
 **Arc:**
 - Picks up from: `extract-the-task-shaping-rule` — the task-shaping `.md` saved there is where these field-use rules fold in.
 - Hands off to: nothing by stable path. The field-use rules live in the student's own rules file (terminal artifact).
+
+<!-- backing -->
+
+Claims
+- `tracker-encodes-how-your-team-works` · vision · "your tracker already encodes how your team works" ← none-owed
+- `each-field-carries-an-unwritten-convention` · vision · "Status, labels, priority, estimate: each field carries a convention nobody wrote down." ← none-owed
+- `one-ticket-is-enough-for-a-first-read` · vision · "One ticket is enough for a first read." ← none-owed
+- `one-ticket-gives-rules-not-policy` · vision · "One ticket gives basic rules, not policy." ← none-owed
+- `depth-comes-from-more-tickets` · vision · "Three to five tickets from different work types surface stronger rules than one ticket" ← none-owed
+- `rules-fold-into-the-existing-file` · vision · "These field-use rules become the first add-on to the task-shaping `.md` file you saved in Module 2" ← none-owed
+
+Sources
+(none. The exercise reads the student's own tracker and asserts nothing about anyone else's.)
+
+Frameworks
+- Tacit knowledge made explicit · [borrow:organisational theory] · law:none · ← cultural-vocab — the convention nobody wrote down is Polanyi's shape, unnamed in body on purpose
+- Requisite variety · [borrow:cybernetics] · law:requisite-variety · ← cultural-vocab — one ticket cannot model a team's whole convention space, which is exactly what the body says
+
+Stance `[stance:2026-08-01 level:L0]`
+- holds: nothing about the field. **What makes this file unusual is that it states its own evidential limit in body** — "one ticket gives basic rules, not policy" is the sample-size caveat delivered to the student rather than buried in a maintainer note, which is the shape more of the corpus should take.
+- contested: nothing.
+- would-move-it: nothing published.
+
+OODA
+- question: none standing.
+- roster: none external.
+- last-run: 2026-08-01
+
+<!-- /backing -->

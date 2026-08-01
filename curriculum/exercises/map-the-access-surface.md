@@ -128,3 +128,32 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 3. **Adds at least one codebase-specific surface to the map that the generic skill didn't catch.** Falsifiable: the delta note contains a surface entry with a one-line reason naming a codebase invariant (auth pattern, retry shape, integration boundary) the skill wouldn't know.
 
 **Scratch path:** Claude picks a temp directory for the student's OS (`$TMPDIR`, `/tmp`, or equivalent) and reports the absolute path back. Kept deliberately outside the repo — this is session scratch, not the durable tier. M4 teaches that tier (`observations/`); the contrast between `/tmp/`-tier ephemeral and `observations/`-tier durable is pedagogy. No gitignore concern; nothing lives in the repo.
+
+<!-- backing -->
+
+Claims
+- `stride-without-a-map-is-pub-quiz-threat-modeling` · vision · "STRIDE without an access-surface map is pub-quiz threat modeling." ← none-owed
+- `map-what-youre-protecting-first` · vision · "Before you threat-model, you map what you're protecting." ← none-owed
+- `outputs-get-big-from-here` · vision · "From here on, outputs get big." ← none-owed
+- `never-let-the-agent-say-everything` · vision · "never let the agent say everything" ← none-owed
+- `route-heavy-output-to-disk` · vision · "The prompts here route the heavy output to disk and keep the chat read short" ← none-owed
+- `your-read-is-the-short-list-plus-your-delta` · vision · "Your read is the short list, plus the two or three entries your own knowledge of the codebase flags." ← none-owed
+
+Sources
+(none. The exercise runs a curated skill against the student's own feature and asserts nothing about the field. The security frameworks it sits inside are named in the sibling STRIDE exercise, which carries their attribution.)
+
+Frameworks
+- Access-trust gap · [borrow:none] · law:access-trust-gap · ← none — the delta only the student can add is the gap between what access analysis surfaces and what a maintainer knows
+- Absorption bottleneck · [borrow:none] · law:absorption-bottleneck · ← none — the ranked-ten-to-disk move is this law applied to a single exercise's output
+
+Stance `[stance:2026-08-01 level:L0]`
+- holds: nothing about the field. **The one claim with any edge is the pub-quiz line, and it is a position rather than a finding** — an assertion about what makes threat modelling useful, delivered as an opinion the exercise then demonstrates.
+- contested: nothing.
+- would-move-it: nothing published. The exercise depends on a curated skill we ship, so its real dependency is internal.
+
+OODA
+- question: none standing on the field. The dependency to watch is the curated access-control skill this exercise invokes.
+- roster: none external.
+- last-run: 2026-08-01
+
+<!-- /backing -->

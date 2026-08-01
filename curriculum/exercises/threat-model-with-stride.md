@@ -143,3 +143,33 @@ Ask Claude whether this ADR rides into future sessions automatically.
 | Phase 3 *"write the ADR in repo convention with Alternatives considered"* | P3 ADR drift toward compliance voice OR Alternatives section missing | Trainer push: *"write it for the engineer who takes over this feature in six months. The alternatives ARE the reasoning — without them, the ADR is an assertion, not a decision."* |
 
 **Scratch path:** threat list lands alongside Ex1's surface map in the same Claude-chosen temp directory. Outside the repo; no gitignore concern. See Ex1 maintainer note on the `/tmp`-tier vs `observations/`-tier pedagogy.
+
+<!-- backing -->
+
+Claims
+- `stride-is-a-six-category-checklist` · borrowed · "Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege." ← stride-microsoft
+- `threat-modeling-is-only-useful-if-it-produces-a-decision` · vision · "Threat modeling is only useful if it produces a decision." ← none-owed
+- `strides-value-is-structured-rejection` · vision · "STRIDE's value is that it gives you a structured surface to reject most threats against" ← none-owed
+- `subagent-does-the-walk-you-read-the-result` · vision · "The subagent does the walk; you read the result." ← none-owed
+- `runs-against-the-map-not-the-raw-code` · vision · "It runs in fresh context against the map, not the raw code" ← none-owed
+- `expect-more-than-youll-use` · vision · "Read the threat list, expect more than you'll use" ← none-owed
+
+Sources
+- stride-microsoft `[checked:2026-05-15 result:OK due:none]` https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats — [vendor docs] STRIDE's six categories, as originally coined at Microsoft by Kohnfelder and Garg (1999) and carried in Microsoft's threat-modelling documentation since. **Foundational-literature variant, `due:none`:** a 1999 taxonomy does not expire, and the six category names have been stable for a quarter-century. Vendor-hosted, but the source is the coiner rather than a marketing claim — the L0 vendor-content rule targets promotional evidence, not a vendor documenting a framework it invented. fallback: name the six categories without the URL; STRIDE is cultural vocabulary in security work.
+
+Frameworks
+- STRIDE · [borrow:security engineering] · law:none · ← stride-microsoft
+- Blast radius · [borrow:safety engineering] · law:blast-radius-error-budget · ← cultural-vocab — picking one threat to harden against is triage by irreversibility
+- Name the uncertainty before you move · [borrow:none] · law:name-the-uncertainty-before-you-move · ← none — the recorded decision is the governor fired and written down
+
+Stance `[stance:2026-08-01 level:L2]`
+- holds: STRIDE, which is settled, taught, and older than most of the room. **This is the one exercise in AE101 whose framework is genuinely converged** — a useful contrast with the agentic vocabulary elsewhere in the corpus, where "practitioners say" has repeatedly turned out to mean "we say."
+- contested: nothing about STRIDE. The exercise's own claim — that its value is rejection rather than enumeration — is a position, and a slightly contrarian one against how STRIDE is usually taught.
+- would-move-it: nothing. A twenty-five-year-old taxonomy is not the part of this curriculum that moves.
+
+OODA
+- question: none standing on STRIDE. The dependency to watch is the curated skill this exercise invokes.
+- roster: none external.
+- last-run: 2026-08-01
+
+<!-- /backing -->

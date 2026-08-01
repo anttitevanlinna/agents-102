@@ -76,3 +76,32 @@ The move outside the repo happened on a real job: the ticket for the bug you shi
 **Arc:**
 - Picks up from: `compound-and-close` — the rules file is compounded and the PR is shipped; this closes the bug's ticket outside the repo.
 - Hands off to: nothing by stable path. The closed ticket lives in the team's tracker, not the training corpus (terminal artifact).
+
+<!-- backing -->
+
+Claims
+- `reach-stops-at-the-repo` · vision · "your agent's reach stops at the repo" ← none-owed
+- `real-work-spans-the-system-around-the-code` · vision · "Real engineering work spans tickets, pull requests, CI, chat, documentation: the system around the code." ← none-owed
+- `mcp-is-the-protocol` · detail · "**MCP** is the protocol" ← mcp-spec
+- `one-connector-two-actions` · vision · "One connector, two actions (read + update), closes the loop you just ran on the bug" ← none-owed
+- `teaching-moment-is-the-boundary-crossing` · vision · "The teaching moment is the agent reaching across a tool boundary with a real engineering note, not the install choreography." ← none-owed
+- `push-back-if-it-reads-stiff` · vision · "Read the close-out; push back if it's stiff or wrong. Tell Claude how your team actually writes ticket comments." ← none-owed
+
+Sources
+- mcp-spec `[checked:2026-05-15 result:OK due:cohort]` https://modelcontextprotocol.io — [capability] Model Context Protocol: the open protocol for connecting agents to external tools and data. Named once in body as the thing the connector speaks; no capability of any specific connector is asserted, which is deliberate — **the exercise names three viable paths and commits to none**, so a tracker changing its integration story breaks nothing here. fallback: describe it as "the connector protocol" without the acronym.
+
+Frameworks
+- Access-trust gap · [borrow:none] · law:access-trust-gap · ← none — reaching past the repo is the first place granted access outruns earned trust
+- Blast radius · [borrow:safety engineering] · law:blast-radius-error-budget · ← cultural-vocab — a write into the team's tracker is the first irreversible-in-public action of the training
+
+Stance `[stance:2026-08-01 level:L0]`
+- holds: nothing about the field. This is a wiring exercise with one named protocol and no claim about adoption, effectiveness, or practice. **`L0` here means the file asserts nothing, not that its evidence is weak** — the distinction matters, because a future audit that reads L0 as debt would try to fix a file with nothing wrong with it.
+- contested: nothing. The risk is entirely operational: three integration paths, any of which a vendor can change.
+- would-move-it: a path breaking, which edits setup instructions rather than teaching. If MCP itself were superseded, the boundary-crossing lesson would survive under a new noun.
+
+OODA
+- question: do all three named connector paths still work as described?
+- roster: the MCP spec repo and changelog, Claude Code connector docs
+- last-run: 2026-08-01
+
+<!-- /backing -->

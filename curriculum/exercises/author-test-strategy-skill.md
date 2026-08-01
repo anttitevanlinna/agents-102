@@ -107,3 +107,33 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 **Plug points:**
 - This codebase/repository in the m3-quality worktree — Phase 2 invocation target (the worktree holds the full repo; no cross-window artifact needed)
 - Sponsor-named test framework / mocking policy / CI gate convention — Phase 1 authoring conversation surfaces these as the codebase-specific encoding the skill ships
+
+<!-- backing -->
+
+Claims
+- `skills-are-authored-through-conversation` · vision · "Skills aren't hand-crafted; they're authored through conversation." ← none-owed
+- `you-are-not-typing-markdown` · vision · "You describe your codebase; the agent drafts the SKILL.md." ← none-owed
+- `personal-skills-folder-auto-discovered` · detail · "`~/.claude/skills/test-strategy/SKILL.md`, auto-discovered in every session you run, across every repo" ← cc-skills-user-scope
+- `team-shaped-but-ships-personal-first` · vision · "A test-strategy skill is team-shaped by nature, but it ships personal first." ← none-owed
+- `generic-test-strategy-is-a-pyramid-diagram` · vision · "Test strategy authored generically is a pyramid diagram." ← none-owed
+- `hardened-by-critique-and-invocation` · vision · "hardened by one forced self-critique and one real invocation" ← none-owed
+
+Sources
+- cc-skills-user-scope `[checked:2026-05-15 result:OK due:cohort]` https://code.claude.com/docs/en/skills — [capability] Skills at `~/.claude/skills/<name>/SKILL.md` are discovered in every session regardless of working directory. **The load-bearing platform claim of the M3 side-quest design** — the skill is authored in the quality worktree and has to appear in the security lane without the student moving a file, so if user-scope discovery changes, the two-window shape goes with it. Same stamp carries `open-the-side-quest.md`; re-test both together. fallback: have the student invoke from the lane that authored it.
+
+Frameworks
+- Test pyramid · [borrow:software testing] · law:none · ← cultural-vocab — named once, as the thing generic authoring produces and this exercise avoids
+- Good regulator · [borrow:cybernetics] · law:good-regulator · ← cultural-vocab — a skill tuned to this codebase is a model of the system it regulates
+- The compound ladder · [borrow:none] · law:the-compound-ladder · ← none — memory to skill, the third rung
+
+Stance `[stance:2026-08-01 level:L1]`
+- holds: that conversational authoring beats hand-writing a skill file, and that codebase-specific beats generic. The first is a claim about how to use the tool and rests on the room doing it; the second is close to tautological and is the reason the exercise exists.
+- contested: nothing evidential. The exposure is entirely capability: one docs page carries the whole two-window design.
+- would-move-it: user-scope skill discovery changing shape, or authoring affordances moving. Neither touches the teaching, both strand instructions.
+
+OODA
+- question: do user-scope skills still auto-discover across repos, and has the authoring flow changed?
+- roster: the Claude Code skills docs and changelog
+- last-run: 2026-08-01
+
+<!-- /backing -->

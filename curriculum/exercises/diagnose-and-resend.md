@@ -113,7 +113,7 @@ The exercise ends here. The module's re-send is next: same task, with reference 
 **Time budget total:** 65 min exercise body. Phase breakdown: P1 15 / P2 10 / P3 20 / P4 20. Module Debrief + re-send adds 15–20 min. Closing lecture adds 12–15 min after Debrief.
 
 **Frameworks riffed on:**
-- **Diagnosis through named failure modes** (Phase 1) — convergent practitioner vocabulary (goal drift / context rot / plausible-but-wrong); pre-read carries the colour, this exercise applies them.
+- **Diagnosis through named failure modes** (Phase 1) — goal drift / context rot / plausible-but-wrong. **Not "convergent practitioner vocabulary"** (corrected 2026-08-01): only *context rot* is a term the field actually uses; the other two are ours, for phenomena practitioners describe constantly without settling on a name. The phenomena are well attested, which is all this exercise needs. Pre-read carries the colour, this exercise applies them.
 - **Align-then-run, in reverse** (Phase 2) — Ronacher's align-then-run move (ask the agent how it would validate, then negotiate the validation loop) inverted: ask backwards from a failure to the validation that would have caught it. Earns the three-pattern.
 - **Three verifier shapes** (Phase 3) — Boris Cherny. Menu form; student picks one against dominant failure. Closing lecture confirms attribution.
 - **Reference + plan.md** (Phase 4) — Ronacher's three-pattern, two of three pieces. Built in conversation, scoped to the task.

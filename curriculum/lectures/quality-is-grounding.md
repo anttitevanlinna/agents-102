@@ -4,7 +4,7 @@
 
 The quality arc ran the whole training. M1 opened with tests-first. M2 added plan push-back: quality applied to the agent's intent before any code runs. M3 authored the test-strategy skill from this codebase's conventions. M5 built the verifier, shaped against the failures the un-packaged run actually showed.
 
-Today adds the fifth move: a second skill, packaged from what two runs taught, in the shape the dominant gap calls for.
+Today adds the fifth move: the eval read. Two runs diffed, every gap routed to the check that would have caught it, and a map of where the next checks belong.
 
 Five moves, one discipline. Tests-first, plan push-back, skill, verifier, loop. That's the quality kit you walk out with. Not one move learned in one module; the discipline, threaded through the whole training.
 
@@ -32,7 +32,7 @@ The agentic engineer maxes that signal out. You ship a million lines of new stuf
 
 - section-3 sweep 2026-07-02: 5 refs judged (M1/M2/M3/M5 in slide 1 + "whole training" arc line), 0 fixed, 5 carve-out — consolidation arc-lecture, the quality arc IS the subject; all refs backward-looking material, no forward sequencing in body (M7 mention is below the fence).
 
-**Lecture meta:** *3–5 min stakes-setter for AE101 M6 (deck-only trimmed from the 4–6 min prose draft), placed early between `story-of-module-6.md` and the main exercise. Names the quality arc threaded across the whole training (M1 tests-first → M2 plan push-back → M3 skill → M5 verifier → M6 second skill) and the reframe under it (spec-and-tests → grounding). Pairs with [The loop has a name](the-loop-has-a-name.md) as M6's closer — quality-is-grounding sets the WHY going in, the-loop-has-a-name names the WHAT (eval) coming out.*
+**Lecture meta:** *3–5 min stakes-setter for AE101 M6 (deck-only trimmed from the 4–6 min prose draft), placed early between `story-of-module-6.md` and the main exercise. Names the quality arc threaded across the whole training (M1 tests-first → M2 plan push-back → M3 skill → M5 verifier → M6 eval read) and the reframe under it (spec-and-tests → grounding). Pairs with [The loop has a name](the-loop-has-a-name.md) as M6's closer — quality-is-grounding sets the WHY going in, the-loop-has-a-name names the WHAT (eval) coming out.*
 
 **Time:** 3–5 min at presentation pace.
 

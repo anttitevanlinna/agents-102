@@ -52,7 +52,7 @@ The model is good. The model is not 100% deterministic.
 
 ## What the loop is for
 
-The next hour you will diagnose gaps in the M5 packaged run. You will author a skill that encodes what the two runs taught. You will ship it.
+The next hour you will diagnose gaps in the M5 packaged run. You will map the work you repeat across your stack. You will leave holding the prompt that builds your kit.
 
 A rule you wrote last module will not apply this run. That is the thing. The loop exists because LLMs drift. The loop exists because rules leak. The loop exists because every run surprises you, even when the task looked the same.
 

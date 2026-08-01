@@ -4,9 +4,9 @@ The map you just drew ended on a dashed loop, yours to draw solid. This is the m
 
 ## The move widens to everything you do
 
-Two skills, two sources, same move. The first, at M3, packaged a piece of judgement you had carried for years (how to write a good test). The second, at M6, packaged a piece of judgement you had earned over two runs of the same task. Each skill made the next run cheaper.
+One skill and one map, same move behind both. The skill, at M3, packaged a piece of judgement you had carried for years (how to write a good test). The map, at M6, named the judgement you spend over and over without packaging it. Every packaged move makes the next run cheaper.
 
-The flywheel turns once more when you hand the agent the move itself. Ask it for a handoff prompt: one you paste into a fresh session later, that studies your work across your repos for the shapes you repeat, draws the ones worth packaging, and authors a skill for each. The same move you just practiced, widened to everything you do.
+The flywheel turns once more when you hand the agent the move itself. Ask it for a handoff prompt: one you paste into a fresh session later, that studies your work across your repos for the shapes you repeat, draws the ones worth packaging, and authors a skill for each. The same move you practiced at M3, widened to everything you do.
 
 What comes back is a candidate. You read it the way you read any prompt the agent drafts: judgement, push-back, taste. Some of it will be obvious. Some of it will be off. One or two lines will be moves you would not have written on your own.
 
@@ -20,7 +20,7 @@ Build the flywheel to run exactly that far. Let the agent run as far as it can o
 
 ## The handoff prompt that builds your kit
 
-This one closes the module. The M6 exercise mapped recurring work as diagrams and shipped one session-shaper skill. Those shapes and that skill are still in the session. Ask the agent to turn them into a prompt that builds the rest of the kit.
+This one closes the module. The M6 exercise mapped recurring work as diagrams and ranked the checks that pair with each shape. Those shapes and that menu are still in the session. Ask the agent to turn them into a prompt that builds the kit.
 
 {{prompt:agents-that-build-agents-handoff}}
 
@@ -57,13 +57,13 @@ The training closes. The flywheel does not.
 **Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@9697944)
 - judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
-- sim-passed 2026-05-31 (three-persona sim + handoff-generator live-test @182969a): generated handoff is cold-safe — named shapes carried, on-disk `session-shaper` referenced as the worked example, repos re-studied, no placeholders. Sim-grade (constructed M6 context); a real-cohort live-test on an actual M6 close is still owed — no cohort has run it yet. Per-class instances at `curriculum/evals/instances/ae101--agents-that-build-agents.<class>.json`. Predates the slide rework.
+- sim-passed 2026-05-31 (three-persona sim + handoff-generator live-test @182969a): generated handoff is cold-safe — named shapes carried, on-disk `session-shaper` referenced as the worked example, repos re-studied, no placeholders. Sim-grade (constructed M6 context); a real-cohort live-test on an actual M6 close is still owed — no cohort has run it yet. Per-class instances at `curriculum/evals/instances/ae101--lecture--agents-that-build-agents.<class>.json`. Predates the slide rework.
 
 **Lecture meta:** *5–7 min reading, closer-shaped. Lands as the very last teaching beat in Module 6, immediately after* The map filled in *(the penultimate consolidation beat). It picks up that lecture's "next dashed loop is yours to draw solid" hand-off and draws the loop solid; the flywheel was named two beats earlier in* The loop has a name *before it. Voice: Risto-leading (the optimistic-action-on-the-future register Module 6's mood arc warrants), Boris-grounding (the prompt is concrete and runnable), Martin-spare (the move + its alternative — collaboration, not autonomous-agent fantasy). Sutherland surfaces in the *what this is not* slide. Pedagogical bet: the flywheel survives the model; naming it as collaboration, not autonomy, is what keeps it survivable.*
 
 **Placement:** Module 6 closer chain — Human close → The loop has a name → The map filled in → Agents that build agents (dead-last) → Next. Re-sequenced 2026-07-03 (Antti): The map filled in now sits between The loop has a name and this lecture, so this lecture picks up The map filled in's kicker *"the next dashed loop is yours to draw solid."* The loop has a name's kicker was updated in the same pass to *"The loop feeds itself. That is the flywheel, and it starts with what you encoded today."*
 
-**Why a separate lecture, not an extension of *The loop has a name*:** the closing lecture earns the word *eval* from the just-shipped second skill. That earning beat needs to land cleanly. Adding a flywheel-extension slide dilutes the earning. The flywheel is its own move, named separately.
+**Why a separate lecture, not an extension of *The loop has a name*:** the closing lecture earns the word *eval* from the M5 verifier and the ranked check-menu. That earning beat needs to land cleanly. Adding a flywheel-extension slide dilutes the earning. The flywheel is its own move, named separately.
 
 **Mood target:** practitioner fluency continued, with a forward-tilt. The mood arc names *unleashed leverage* for the meta-frame end of Module 6; this lecture lands the leverage as a runnable move, not a slogan. Watch for: drift toward autonomous-agent fantasy ("the agent writes its own next skill") — the *what this is not* slide is the load-bearing carve-out. If the mood reads triumphal or vendor-pitch-shaped, the carve-out got cut.
 
@@ -72,8 +72,8 @@ The training closes. The flywheel does not.
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 - `[checked:2026-05-25 result:OK due:2026-11-25]` <https://ghuntley.com/ralph/> — [practitioner direct] Huntley 2025-07-14, bash loop + Simpsons origin verbatim. fallback: outside freshness window — origin/historical only, body flags it correctly.
 
-**Prompt block:** the earlier design-the-next-kit plan-mode prompt retired and replaced by `agents-that-build-agents-handoff` — the agent reads the shipped `session-shaper` and writes the student a standalone, cold-runnable prompt that builds workflow skills across their whole stack (study then diagram then author). NEW prompt — no prior version to diff against; flagged per check_prompts #22.
+**Prompt block:** `agents-that-build-agents-handoff` — the agent reads the recurring-work shapes and the ranked primitives menu from the session and writes the student a standalone, cold-runnable prompt that builds workflow skills across their whole stack (study then diagram then author). Re-anchored 2026-08-01 (authoring-sequence cut): requires `-shapes` + `-primitives`, not a shipped skill.
 
 **Open for next pass:**
 - [technical, non-blocking] Stamp the verified `/goal` capability (Claude Code 2.1.142, `/goal [condition|clear]`) into this lecture's own Source-verification block — currently evidenced only in a scratch sweep, not in-artifact.
-- Real-cohort gold standard: the handoff-generator live-test that cleared pedagogy was sim-grade — constructed M6 context (six named shapes, a stand-in `session-shaper`). A live-test on an actual student's M6 close (their real shapes, their just-shipped skill) is the real-cohort bar; owed until a cohort runs.
+- Real-cohort gold standard: the handoff-generator live-test that cleared pedagogy was sim-grade — constructed M6 context (six named shapes, a stand-in skill), and it predates the 2026-08-01 re-anchor (shapes + primitives, no shipped skill). A live-test on an actual student's M6 close (their real shapes, their ranked menu) is the real-cohort bar; owed until a cohort runs.

@@ -92,7 +92,7 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 
 **View summary:** You compare the un-packaged and packaged runs, rank what the second attempt still missed, remove one stale rule, route the dominant gap to its home, and map the work that recurs across your stack. The stack-map feeds the closing handoff move.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain; kept bold only on the three session-shaper shape handles (**Sharpened verifier** / **LLM-judge** / **Gap-finder**); widget/label chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain; widget/label chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. (The three bolded shape handles that survived that pass left with the 2026-08-01 authoring-sequence cut.)
 
 **Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@9697944 technical@9697944 behavior@b3143a4 pedagogy@b3143a4 strategy@9697944 slides@b3143a4)
 - judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
@@ -113,9 +113,9 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 - **Checking-primitives menu** (Phase 2) — convergent practitioner vocabulary across Ramp Dojo (350-skill marketplace, [Geoff Charles, CPO](https://x.com/geoffintech/status/2042002590758572377) `[practitioner direct, 2026-04-09]`), Intercom Tier 1/2/3 (Darragh Curran, [2x Nine Months Later](https://ideas.fin.ai/p/2x-nine-months-later) `[practitioner direct, vendor venue, 2026-04-16]`), and solo builders running long tasks. Menu form; the map pairs primitives with recurring shapes. Full citation + freshness stamps: sibling module's maintainer block, `trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` § Frameworks riffed on / § Source verification.
 
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
-- now owns a `session-shaper` skill at `~/.claude/skills/session-shaper/SKILL.md` that auto-discovers in every repo, and invokes it on a real run to catch the gap it was built for
+- holds a diagrammed map of the work they repeat across their stack, and reads a new task against it before sending the task off
 - cuts a stale rule from their own `CLAUDE.local.md` once a run's evidence shows it never fired or fired wrong, instead of letting the rules-file rot
-- authors that skill through conversation — pushing back on a default with a quoted moment from the run — rather than hand-editing SKILL.md in a tab
+- routes a gap a run surfaces to its home (memory, sharper verifier, or a skill worth building) instead of patching ad hoc
 
 **Failure modes + diagnostics:**
 - **Phase 1 generalised diff** — student says *"M5 was better"* without quoted moments. Diagnostic: prompt requires quoted moments from BOTH runs. If Claude returns only summaries, re-run with explicit quote enforcement. Echoes M5's Phase 1 diagnostic.

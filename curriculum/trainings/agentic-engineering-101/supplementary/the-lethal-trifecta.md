@@ -39,10 +39,44 @@ Three legs. Cut one.
 
 **Laws carried:** lethal-trifecta · instructions-vs-data inseparability (the mechanism). Composes with blast-radius (banked, accident model) — trifecta adds the adversary model blast-radius lacks; the accident-vs-adversary bullet carries that split in body.
 
-**Source verification — MUST DO before first cohort:**
-- `[checked:2026-07-02 result:OK due:2027-01-02]` https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/ — [practitioner direct] (Simon Willison, 2025-06-16; dated framework piece, now standard field vocabulary). Byline, date, three legs, and the quoted constraint sentence verified verbatim 2026-07-02. fallback: teach the three-leg frame unattributed; drop the quote.
-- Willison's guardrail-products point (vendors claiming ~95% detection are inadequate for security) is deliberately carried in body WITHOUT the number ("a filter that mostly works is a gate that sometimes opens") — keep it number-free.
+<!-- backing -->
 
+Claims
+- `three-capabilities-that-must-not-meet` · borrowed · "access to private data, exposure to untrusted content, and a channel to send data out" ← willison-trifecta
+- `not-risky-structural` · vision · "Not risky. Structural." ← none-owed
+- `no-model-quality-makes-it-safe` · detail · "No amount of model quality makes the combination safe" ← willison-trifecta
+- `legs-hide-in-ordinary-wiring` · vision · "Private data is your codebase, your credentials, your customer records." ← none-owed
+- `llm-cannot-separate-instructions-from-data` · detail · "Everything in the context window is one stream of tokens; no privileged channel marks which part came from you." ← willison-trifecta
+- `every-source-is-an-instruction-channel` · vision · "Reading it and obeying it are not separable by the model." ← none-owed
+- `the-exploit-is-a-sentence` · vision · "They need a sentence, placed where the agent will read it. That sentence is the whole exploit chain." ← none-owed
+- `prompt-injection-is-the-field-name` · borrowed · "The field calls this move **prompt injection**" ← willison-trifecta
+- `attacker-targets-the-agent-not-the-system` · vision · "This asks who attacks the agent building it." ← none-owed
+- `the-two-audits-compose` · vision · "STRIDE models attacks on what you ship; the trifecta models attacks on what builds it." ← none-owed
+- `accident-model-is-not-an-adversary-model` · vision · "Sandboxes and permission prompts bound what the agent can break by mistake; the trifecta bounds what an attacker can make it do on purpose." ← none-owed
+- `cut-one-leg` · vision · "Audit any agent deployment for the three legs. Then cut one." ← none-owed
+- `cutting-a-leg-is-ordinary-engineering` · vision · "Read-only where write is not needed. No network where network is not needed." ← none-owed
+
+Sources
+- willison-trifecta `[checked:2026-07-02 result:OK due:none]` https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/ — [practitioner direct] Simon Willison, 2025-06-16. Byline, date, the three legs, and the quoted constraint sentence all verified verbatim. A dated framework piece that has since become standard field vocabulary, so **`due:none` under the durable-account variant** — the old `due:2027-01-02` set a calendar re-open on an essay that cannot change. **This is the rare case where "standard field vocabulary" is defensible rather than the convergence-verb trap:** the term is used by name, by other people, in public, and the corpus can point at that usage rather than asserting it. **Willison's guardrail-products point — that vendors claiming ~95% detection are inadequate for security — is deliberately carried in body WITHOUT the number** ("a filter that mostly works is a gate that sometimes opens"). Keep it number-free: a percentage invites the reader to treat 95% as a passing grade, which is the exact error the sentence exists to prevent. fallback: teach the three-leg frame unattributed as a field observation.
+
+Frameworks
+- The lethal trifecta · [borrow:security engineering] · law:none · ← willison-trifecta — practitioner-coined, credited by name in body
+- Prompt injection · [borrow:security engineering] · law:none · ← willison-trifecta
+- STRIDE · [borrow:security engineering] · law:none · ← cultural-vocab — named as the frame this one composes with, not replaces
+- Blast radius · [borrow:safety engineering] · law:blast-radius-error-budget · ← cultural-vocab — cutting a leg is bounding the radius before the fact
+- Principal–agent · [borrow:economics] · law:principal-agent · ← cultural-vocab — hidden action becomes attacker-directed action
+
+Stance `[stance:2026-08-01 level:L3]`
+- holds: the trifecta, at the highest evidence level in the AE101 corpus. **This is the one page here whose framework genuinely converged** — coined by a named practitioner, adopted by name across the security and agent communities, and repeatedly demonstrated rather than argued. The structural claim (an LLM cannot separate instructions from data) is a property of how context windows work, not a defect awaiting a fix.
+- contested: mitigations, not the frame. Guardrail products claim detection rates; Willison's position, which this page follows, is that a probabilistic filter is not a security control. That is a live argument with vendors on the other side of it.
+- would-move-it: an architecture that gives instructions a privileged channel the model cannot be talked out of. That would not adjust the page, it would retire it — and it is the thing to actually watch for, because it is the difference between a permanent structural constraint and a temporary one.
+
+OODA
+- question: has any architecture credibly separated instruction from data at the model level, and have guardrail detection claims been independently tested?
+- roster: Simon Willison, Anthropic security publications, the OWASP agentic-security maintainers, Johann Rehberger
+- last-run: 2026-08-01
+
+<!-- /backing -->
 **2026-07-02** — "prompt injection" named once in § The mechanism (searchable field handle; a student who hears the term elsewhere finds this page); wired per completeness review finding #2 alongside the `earn-the-trust.md ## Next` pre-leash beat. Same day: second firing wired at M4's send-off gate (`run-the-first-experiment.md ## Send the task off`), closing the finding.
 
 **Quality:** compendium-audited 2026-07-12 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)

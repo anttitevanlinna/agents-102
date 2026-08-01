@@ -30,8 +30,39 @@
 
 **Laws carried:** verification-asymmetry / verifier's rule · the delegation governor (cheap-verifier question). Sharpens convergence-triad's "independently verifiable" leg into a cost ratio (see audit — triad itself still owed a durable home). The triad, 0.85ⁿ, and principal–agent stay OUT of this page (M4-adjacent surface; packaging laws earn at M5).
 
-**Source verification — MUST DO before first cohort:**
-- `[checked:2026-07-26 result:OK due:2027-01-26]` https://www.jasonwei.net/blog/asymmetry-of-verification-and-verifiers-law — [practitioner direct] (Jason Wei, 2025-07-15; dated framework piece, not a freshness-bound evidence claim). Re-verified verbatim 2026-07-26, correcting the 2026-07-02 check: Wei's own H1 and in-body heading both read "Verifier's rule," not "law" ("law" survives only in the stale URL slug); body and maintainer block now say "verifier's rule" throughout. Also re-confirms the coding example ("if you have test cases with ample coverage, you can quickly check any given solution"), the body's "his own example is code" bullet is scoped to exactly that; the post does NOT claim "coding fell to AI early", so the body doesn't either. fallback: teach the asymmetry unattributed as a field observation; drop "verifier's rule" naming.
+<!-- backing -->
 
+Claims
+- `some-tasks-are-cheaper-to-check-than-do` · vision · "Some tasks are far cheaper to check than to do." ← none-owed
+- `some-are-the-reverse` · vision · "A fact-dense report reads clean whether it is true or not; checking it costs as much as writing it." ← none-owed
+- `wei-named-the-pattern` · detail · "some tasks are much easier to verify than to solve" ← wei-asymmetry
+- `verifiers-rule` · borrowed · "His corollary, **the verifier's rule**: the ease of training AI to solve a task is proportional to how verifiable the task is" ← wei-asymmetry
+- `delegation-pays-where-the-check-is-cheap` · vision · "You hand over the making, keep the cheap checking, and the loop runs fast." ← none-owed
+- `expensive-check-makes-delegation-a-trap` · vision · "You saved the writing and bought a harder review. The full cost comes back to you at read time." ← none-owed
+- `find-is-easier-than-judge` · vision · "**find is easier than judge**" ← none-owed
+- `name-your-cheap-verifier-before-a-send-off` · vision · "Before a send-off, ask: what is my cheap verifier here?" ← none-owed
+- `build-the-verifier-first-then-delegate` · vision · "Building the verifier is often the more valuable half of the work: it outlives the run it checks." ← none-owed
+- `each-verifier-converts-a-task-family` · vision · "Every verifier you write converts one more task family from delegation-trap to delegation-win." ← none-owed
+
+Sources
+- wei-asymmetry `[checked:2026-07-26 result:OK due:none]` https://www.jasonwei.net/blog/asymmetry-of-verification-and-verifiers-law — [practitioner direct] Jason Wei, 2025-07-15. A dated framework piece, not a freshness-bound evidence claim, so **`due:none` under the durable-account variant** — the previous `due:2027-01-26` would have re-opened a published essay on a calendar rather than on a reason. Re-verified verbatim 2026-07-26, correcting the 2026-07-02 check: **Wei's own H1 and in-body heading both read "Verifier's rule," not "law"** — "law" survives only in the stale URL slug, and body plus maintainer block now say *rule* throughout. Also re-confirms the coding example (*"if you have test cases with ample coverage, you can quickly check any given solution"*), which is exactly what the body's example bullet is scoped to. **The post does NOT claim coding fell to AI early, so the body does not either.** fallback: teach the asymmetry unattributed as a field observation; drop the "verifier's rule" naming.
+
+Frameworks
+- Verification asymmetry / the verifier's rule · [borrow:none] · law:none · ← wei-asymmetry — practitioner-coined, credited by name in body
+- Find is easier than judge · [borrow:none] · law:none · ← none — the in-room form of the same asymmetry, named at M2 before this page exists
+- Comparative advantage · [borrow:economics] · law:comparative-advantage · ← cultural-vocab — hand the agent what it is relatively best at, keep the cheap check
+- Convergence triad · [borrow:none] · law:convergence-triad · ← none — this page sharpens the triad's *independently verifiable* leg into a per-task question
+
+Stance `[stance:2026-08-01 level:L1]`
+- holds: the asymmetry itself, which Wei named and which is closer to an observation about problem classes than a claim about the field. One named practitioner is L1, and the body attributes accordingly rather than saying practitioners converge — **a discipline this corpus learned the hard way elsewhere and got right here first.**
+- contested: nothing in the asymmetry. What is genuinely open is the corollary's strong form — that verifiability predicts what AI solves next — which is a forecast, and the body carries it as Wei's corollary rather than as our prediction.
+- would-move-it: a task class that is cheap to check and stubbornly unsolved, which would weaken the corollary without touching the delegation advice. The delegation half stands on its own arithmetic.
+
+OODA
+- question: has the verifier's-rule corollary held as a predictor, and has anyone put numbers on doing-cost versus checking-cost for real engineering tasks?
+- roster: Jason Wei, METR, Hamel Husain, Anthropic and OpenAI eval publications
+- last-run: 2026-08-01
+
+<!-- /backing -->
 **Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@9697944 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
 - judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

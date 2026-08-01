@@ -26,9 +26,9 @@ Fires one eval class against one or more curriculum files. The class determines 
 | Class | Default model | Judge prompt | Trace cache | Primary inputs |
 |---|---|---|---|---|
 | `writing` | `haiku` | `curriculum/evals/judges/writing.md` | none | every `memory/check_*.md` with `eval_classes:` containing `writing` |
-| `story` | `sonnet` | `curriculum/evals/judges/story.md` | `sim-cache/<training>--<slug>.persona.json` (Class A persona-reader, per-phase SHA) | every `memory/check_*.md` with `eval_classes:` containing `storytelling`; strategy doc per training |
+| `story` | `sonnet` | `curriculum/evals/judges/story.md` | `sim-cache/<training>--<surface-type>--<slug>.persona.json` (Class A persona-reader, per-phase SHA) | every `memory/check_*.md` with `eval_classes:` containing `storytelling`; strategy doc per training |
 | `technical` | `sonnet` | `curriculum/evals/judges/technical.md` | none | every `memory/check_*.md` with `eval_classes:` containing `technical` |
-| `behavior` | `sonnet` | `curriculum/evals/judges/prompt-behavior.md` | `sim-cache/<training>--<slug>.behavior.json` (Class B prompt-behavior, per-prompt SHA) | `.claude/skills/content-creation/simulation-behavior.md` catalog; `check_prompts.md` + `check_pedagogy.md` |
+| `behavior` | `sonnet` | `curriculum/evals/judges/prompt-behavior.md` | `sim-cache/<training>--<surface-type>--<slug>.behavior.json` (Class B prompt-behavior, per-prompt SHA) | `.claude/skills/content-creation/simulation-behavior.md` catalog; `check_prompts.md` + `check_pedagogy.md` |
 | `pedagogy` | `sonnet` | `curriculum/evals/judges/pedagogy.md` | none | every `memory/check_*.md` with `eval_classes:` containing `pedagogy` (primarily `check_pedagogy.md`) |
 | `strategy` | `sonnet` | `curriculum/evals/judges/strategy.md` | none | every `memory/check_*.md` with `eval_classes:` containing `strategy` (primarily `check_strategy_tie_in.md`); strategy doc per training |
 | `cross_module` | `sonnet` | `curriculum/evals/judges/cross-module.md` | none | `check_cross_module.md`; supplied module-set paths (≥2) |
@@ -71,10 +71,10 @@ For the **cross_module** class, the compendium is fixed: `check_cross_module.md`
 **Marker-aware reading (post-prompts-registry refactor).** The judge templates now instruct subagents to run `node scripts/expand-md.js {{file_path}}` before scanning, so `{{prompt:<key>}}` markers resolve into the canonical `**Prompt** + fenced block` shape the judges' regex / line-count logic was written for. `{{file_path}}` stays the raw source path — only the read view shifts. If a judge template predates this refactor and still reads the raw file directly, expand-md.js is the helper to wire in (see `prompt-behavior.md` for the canonical shape).
 
 Trace path resolution:
-- `story`: `curriculum/evals/sim-cache/<training>--<file-slug>.persona.json`
-- `behavior`: `curriculum/evals/sim-cache/<training>--<file-slug>.behavior.json`
+- `story`: `curriculum/evals/sim-cache/<training>--<surface-type>--<file-slug>.persona.json`
+- `behavior`: `curriculum/evals/sim-cache/<training>--<surface-type>--<file-slug>.behavior.json`
 
-`<file-slug>` is the basename without `.md`; `<training>` is the short training key (`ae101` / `agents-101` / `claude-basics`) that prefixes the instance filenames, resolved the same way as `{{strategy_doc_paths}}` in Step 2 (file path `curriculum/trainings/<dir>/...`, or slug-match against the TRAININGS registry for shared exercise/lecture files). The prefix disambiguates same-slug files across trainings — `getting-going` exists in both Agents 101 and AE101, and a bare slug would feed the wrong training's trace to the judge.
+`<file-slug>` is the basename without `.md`; `<training>` is the short training key (`ae101` / `agents-101` / `claude-basics`) that prefixes the instance filenames, resolved the same way as `{{strategy_doc_paths}}` in Step 2 (file path `curriculum/trainings/<dir>/...`, or slug-match against the TRAININGS registry for shared exercise/lecture files). The prefix disambiguates same-slug files across trainings — `getting-going` exists in both Agents 101 and AE101, and a bare slug would feed the wrong training's trace to the judge. `<surface-type>` is derived from the file's parent directory (`curriculum/trainings/<t>/` → `module`, `curriculum/exercises/` → `exercise`, `curriculum/lectures/` → `lecture`, `curriculum/trainings/<t>/supplementary/` → `supplementary`, `curriculum/trainings/<t>/reference/` → `reference`) — directory-derived, not basename-keyed, so a module and an exercise sharing a slug (`spot-gaps-build-the-loop` is both) never collide.
 
 ### Step 4 — Dispatch the subagent
 
@@ -108,7 +108,7 @@ Each subagent returns structured JSON (see `curriculum/evals/judges/<class>.md` 
 N files, K total blocking, J total TODOs.
 ```
 
-Do NOT inline the entire JSON — extract REVISE rules and quote evidence. The full JSON is logged to `curriculum/evals/instances/<training>--<file-slug>.<class>.json` (e.g. `ae101--getting-going.pedagogy.json`; overwrite per-class per-file per the no-dated-reports rule in `check_writing.md`).
+Do NOT inline the entire JSON — extract REVISE rules and quote evidence. The full JSON is logged to `curriculum/evals/instances/<training>--<surface-type>--<file-slug>.<class>.json`, where `<surface-type>` is derived from the file's parent directory (`curriculum/trainings/<t>/` → `module`, `curriculum/exercises/` → `exercise`, `curriculum/lectures/` → `lecture`, `curriculum/trainings/<t>/supplementary/` → `supplementary`, `curriculum/trainings/<t>/reference/` → `reference`) — e.g. `ae101--module--getting-going.pedagogy.json` (overwrite per-class per-file per the no-dated-reports rule in `check_writing.md`). Directory-derived, not basename-keyed, so a module and an exercise that share a slug (`spot-gaps-build-the-loop` is both) never collide.
 
 ### Step 6.5 — Record verdict to Quality block (PASS AND REVISE)
 
@@ -119,7 +119,7 @@ After Step 6 (Present), the orchestrator MUST shell out to `update-quality.sh` f
 curriculum/evals/scripts/update-quality.sh <file_path> --<class> PASS
 
 # REVISE (note is mandatory, point to the instance JSON for the per-rule findings):
-curriculum/evals/scripts/update-quality.sh <file_path> --<class> REVISE:<NB>/<NT>-see-instances/ae101--<slug>.<class>.json
+curriculum/evals/scripts/update-quality.sh <file_path> --<class> REVISE:<NB>/<NT>-see-instances/ae101--<surface-type>--<slug>.<class>.json
 ```
 
 The script is deterministic, touches ONLY the maintainer-block Quality state, and is the only sanctioned writer of that block. Free-form Quality edits drift; the script keeps the format consistent. This is the **script-ratchet endpoint** for the judge classes — a verdict in, a consistent Quality row out.

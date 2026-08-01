@@ -50,7 +50,7 @@ Process learning (compounded): declaring the gate fixed on the case-4 unit-green
 ## Non-blocking judge todos (live in instance JSONs, NOT in pre-cohort-todos.md)
 - behavior: loop-3 preamble (med; exercise L85 callout partially mitigates), still open; loop-3 fence reword + loop-5 niceness both RESOLVED 2026-05-31.
 - story: align the two pacing-callout registers ("Fast operator?" vs "Solo or fluent?"); "few engineers ever read them back" (L45) mildly over-general for senior (judge: keep).
-- Files: `curriculum/evals/instances/ae101--spot-gaps-build-the-loop.{behavior,story,technical}.json`.
+- Files: `curriculum/evals/instances/ae101--exercise--spot-gaps-build-the-loop.{behavior,story,technical}.json`.
 
 ## Before ship (not done-done blockers)
 - Rebuild workbook + trainer pages: `node scripts/build-workbook.js` (refreshes lead-in/cap edits into trainer-guide.html + trainer-modules.html).

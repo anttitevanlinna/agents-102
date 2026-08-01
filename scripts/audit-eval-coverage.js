@@ -138,8 +138,15 @@ function theoryManifestLectures() {
   return slugs;
 }
 
-// AE101 surface set, in module order. instanceSlug overrides where the instance
-// filename diverges from the source slug (spot-gaps module carries a -module suffix).
+// AE101 surface set, in module order. instanceSlug is directory-derived:
+// ae101--<surface-type>--<slug>, surface-type ∈ {exercise, lecture, module}
+// taken from the group the entry lives in below. This disambiguates files that
+// share a slug across surface types (e.g. spot-gaps-build-the-loop is both a
+// module, curriculum/trainings/.../spot-gaps-build-the-loop.md, and an
+// exercise, curriculum/exercises/spot-gaps-build-the-loop.md) — a bare
+// `ae101--<slug>` basename collided; the old workaround was a one-off
+// `-module` suffix on just this entry. Regression test:
+// audit-eval-coverage.test.js "SURFACES: every instanceSlug …".
 const SURFACES = {
   exercises: [
     'orient-and-introspect', 'fix-tests-first', 'compound-and-close',
@@ -147,19 +154,19 @@ const SURFACES = {
     'open-the-side-quest', 'map-the-access-surface', 'threat-model-with-stride',
     'author-test-strategy-skill', 'walk-and-send-off', 'diagnose-and-resend',
     'spot-gaps-build-the-loop',
-  ].map(slug => ({ slug, file: `curriculum/exercises/${slug}.md`, instanceSlug: `ae101--${slug}` })),
+  ].map(slug => ({ slug, file: `curriculum/exercises/${slug}.md`, instanceSlug: `ae101--exercise--${slug}` })),
   lectures: theoryManifestLectures()
-    .map(slug => ({ slug, file: `curriculum/lectures/${slug}.md`, instanceSlug: `ae101--${slug}` })),
+    .map(slug => ({ slug, file: `curriculum/lectures/${slug}.md`, instanceSlug: `ae101--lecture--${slug}` })),
   modules: [
-    { slug: 'prework', file: 'curriculum/trainings/agentic-engineering-101/prework.md', instanceSlug: 'ae101--prework' },
-    { slug: 'getting-going', file: 'curriculum/trainings/agentic-engineering-101/getting-going.md', instanceSlug: 'ae101--getting-going' },
-    { slug: 'plan-mode-done-right', file: 'curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md', instanceSlug: 'ae101--plan-mode-done-right' },
-    { slug: 'earn-the-trust', file: 'curriculum/trainings/agentic-engineering-101/earn-the-trust.md', instanceSlug: 'ae101--earn-the-trust' },
-    { slug: 'run-the-first-experiment', file: 'curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md', instanceSlug: 'ae101--run-the-first-experiment' },
-    { slug: 'learn-from-the-test', file: 'curriculum/trainings/agentic-engineering-101/learn-from-the-test.md', instanceSlug: 'ae101--learn-from-the-test' },
-    { slug: 'spot-gaps-build-the-loop', file: 'curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md', instanceSlug: 'ae101--spot-gaps-build-the-loop-module' },
+    { slug: 'prework', file: 'curriculum/trainings/agentic-engineering-101/prework.md', instanceSlug: 'ae101--module--prework' },
+    { slug: 'getting-going', file: 'curriculum/trainings/agentic-engineering-101/getting-going.md', instanceSlug: 'ae101--module--getting-going' },
+    { slug: 'plan-mode-done-right', file: 'curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md', instanceSlug: 'ae101--module--plan-mode-done-right' },
+    { slug: 'earn-the-trust', file: 'curriculum/trainings/agentic-engineering-101/earn-the-trust.md', instanceSlug: 'ae101--module--earn-the-trust' },
+    { slug: 'run-the-first-experiment', file: 'curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md', instanceSlug: 'ae101--module--run-the-first-experiment' },
+    { slug: 'learn-from-the-test', file: 'curriculum/trainings/agentic-engineering-101/learn-from-the-test.md', instanceSlug: 'ae101--module--learn-from-the-test' },
+    { slug: 'spot-gaps-build-the-loop', file: 'curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md', instanceSlug: 'ae101--module--spot-gaps-build-the-loop' },
     // An email, not a module: no exercises (pedagogy N/A) and no Big-Idea/Key-Concepts (strategy N/A). Only prose-lint (writing) is mandatory.
-    { slug: 'cohort-onboarding-email', file: 'curriculum/trainings/agentic-engineering-101/cohort-onboarding-email.md', instanceSlug: 'ae101--cohort-onboarding-email', mandatory: ['writing'] },
+    { slug: 'cohort-onboarding-email', file: 'curriculum/trainings/agentic-engineering-101/cohort-onboarding-email.md', instanceSlug: 'ae101--module--cohort-onboarding-email', mandatory: ['writing'] },
   ],
 };
 

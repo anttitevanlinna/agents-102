@@ -21,6 +21,7 @@ const {
   scanInstanceIntegrity,
   naRuleSet,
   splitMissing,
+  SURFACES,
 } = require('./audit-eval-coverage.js');
 
 // A tiny fake compendium set: check_pedagogy has integer rules 9 and 10 only.
@@ -175,4 +176,41 @@ test('known compendium absent from loaded set → NOT flagged unknown (keys off 
   ] };
   const { warnings } = scanInstanceIntegrity('ae101--x.pedagogy.json', 'pedagogy', inst, COMP);
   assert.equal(warnings.filter(w => w.kind === 'unknown-compendium').length, 0);
+});
+
+// ── SURFACES instanceSlug convention: directory-derived, not basename-keyed ──
+// spot-gaps-build-the-loop is both a module (curriculum/trainings/.../spot-gaps-
+// build-the-loop.md) and an exercise (curriculum/exercises/spot-gaps-build-the-
+// loop.md) — same slug, two surfaces. A basename-keyed instanceSlug
+// (`ae101--<slug>`) collides; the fix disambiguates by directory (surface type)
+// baked into the instanceSlug itself: `ae101--<type>--<slug>`. Two regression
+// angles: (a) no two surface entries share an instanceSlug — the collision
+// itself; (b) every instanceSlug embeds its surface-type segment, so a FUTURE
+// slug collision fails loudly instead of silently aliasing two files together
+// (this is the one that fails pre-fix: the spot-gaps module carried a
+// `-module` suffix workaround, not a `--module--` segment).
+test('SURFACES: every instanceSlug is unique across all surface groups (no basename collision)', () => {
+  const seen = new Map(); // instanceSlug -> "group/slug" of first owner
+  const dupes = [];
+  for (const [group, files] of Object.entries(SURFACES)) {
+    for (const f of files) {
+      const owner = `${group}/${f.slug}`;
+      if (seen.has(f.instanceSlug)) dupes.push(`${f.instanceSlug}: ${seen.get(f.instanceSlug)} vs ${owner}`);
+      else seen.set(f.instanceSlug, owner);
+    }
+  }
+  assert.deepEqual(dupes, []);
+});
+
+test('SURFACES: every instanceSlug embeds its surface-type segment (directory-derived, not basename-keyed)', () => {
+  const typeTag = { exercises: '--exercise--', lectures: '--lecture--', modules: '--module--' };
+  const violations = [];
+  for (const [group, files] of Object.entries(SURFACES)) {
+    const tag = typeTag[group];
+    if (!tag) continue;
+    for (const f of files) {
+      if (!f.instanceSlug.includes(tag)) violations.push(`${group}/${f.slug} -> ${f.instanceSlug} (missing "${tag}")`);
+    }
+  }
+  assert.deepEqual(violations, []);
 });

@@ -167,7 +167,7 @@ OUTPUT ONLY THE JSON. No prose preamble, no markdown fence.
 
 This file is loaded by `.claude/skills/eval-fire/SKILL.md` step 3 when the class is `behavior`. Substitute `{{file_path}}`, `{{compendium_paths}}`, `{{trace_path}}`, and `{{catalog_path}}` before dispatch.
 
-`{{trace_path}}` resolves to `curriculum/evals/sim-cache/<training>--<file-slug>.behavior.json` (e.g. `ae101--getting-going.behavior.json`). `<training>` is the short training key (`ae101` / `agents-101` / `claude-basics`) that prefixes the instance filenames; a bare `<file-slug>` collides across trainings.
+`{{trace_path}}` resolves to `curriculum/evals/sim-cache/<training>--<surface-type>--<file-slug>.behavior.json` (e.g. `ae101--module--getting-going.behavior.json`). `<training>` is the short training key (`ae101` / `agents-101` / `claude-basics`) that prefixes the instance filenames; a bare `<file-slug>` collides across trainings. `<surface-type>` is derived from the file's parent directory (`curriculum/trainings/<t>/` → `module`, `curriculum/exercises/` → `exercise`, `curriculum/lectures/` → `lecture`, `curriculum/trainings/<t>/supplementary/` → `supplementary`, `curriculum/trainings/<t>/reference/` → `reference`) — directory-derived, not basename-keyed, so a module and an exercise sharing a slug (`spot-gaps-build-the-loop` is both) never collide.
 
 `{{catalog_path}}` resolves to `.claude/skills/content-creation/simulation-behavior.md` — the catalog table is the primary input.
 

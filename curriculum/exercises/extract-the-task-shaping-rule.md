@@ -68,7 +68,7 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** One handle kept bold: **Refinement** at its term-earning moment (bold narrowed from the full lead sentence to the word); all other bullet leads de-bolded. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
 **Quality:** compendium-audited 2026-07-26 (writing@9697944 story@b3143a4 technical@9697944 behavior@b3143a4 strategy@b3143a4 slides@b3143a4)
-- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy REVISE (1/1 see instances/ae101--extract-the-task-shaping-rule.pedagogy.json), strategy PASS, slides PASS
+- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy REVISE (1/1 see instances/ae101--exercise--extract-the-task-shaping-rule.pedagogy.json), strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - cohorts: none yet
 

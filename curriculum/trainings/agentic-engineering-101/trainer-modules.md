@@ -94,6 +94,8 @@ Never cut: the failing test before the fix and the diff-line push-back. Those tw
 
 - A repo picked against the prework criteria (owned, active, dense enough to compound in), clean working tree.
 - A trivial bug surfaced in the prework conversation, ready to paste.
+- **Wizard-move demo pre-flight:** all demo windows in incognito (the ghost icon on a new chat, outside a project) — cross-chat search and memory are on by default on paid plans and can leak window 1 into window 2. Dry-run the dinner question before the cohort.
+- **If window 2 answers Finnish-adjacent anyway:** *"It remembered — which is the lecture's point one step early: context is what you tell it, and now you've seen it telling itself."* Then run the third window clean.
 - Regenerate: rerun the prework bug-surfacing conversation in a fresh session; criteria unchanged.
 
 </section>

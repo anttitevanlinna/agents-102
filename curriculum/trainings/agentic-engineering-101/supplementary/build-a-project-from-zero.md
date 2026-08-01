@@ -49,3 +49,31 @@ The running game, the test suite, the commit history, and the one bug you spotte
 **Open decisions for maintainer:**
 - How this interlocks with the existing trainer-handed fallback repo in `prework.md` §1. Build-your-own vs clone-a-canned-one are different flavours; pick one as default or offer both.
 - Whether to wire the `prework.md` §1 fallback line to link here (edits a done-done prework file with cross_module contracts; not done in this draft).
+
+<!-- backing -->
+
+Claims
+- `set-the-model-to-sonnet-first` · detail · "Set the model to Sonnet first with `/model sonnet`." ← cc-model-command
+- `sonnet-builds-a-clean-first-version` · vision · "Sonnet builds a clean first version, so the bugs you do hit are small and few." ← none-owed
+- `first-wrong-thing-is-your-bug` · vision · "The first thing that looks wrong or feels missing is your Module 1 bug." ← none-owed
+- `commit-at-each-working-step` · vision · "so the repo grows real history instead of one big drop" ← none-owed
+- `seed-a-data-touching-feature` · vision · "a shareable level via a URL, a score you submit, or saved progress" ← none-owed
+- `four-task-sizes` · vision · "**Trivial bug** … **Small multi-file task** … **Small feature**" ← none-owed
+
+Sources
+- cc-model-command `[checked:2026-05-15 result:OK due:cohort]` https://code.claude.com/docs/en/cli-reference — [capability] `/model <name>` switches the active model in-session. The only product claim on the page. fallback: tell the student to pick the mid-tier model however the current UI offers it.
+
+Frameworks
+- Scaffolded practice · [borrow:pedagogy] · law:none · ← none — house design: manufacture a codebase that will produce each of the four task sizes the training needs
+
+Stance `[stance:2026-08-01 level:L0]`
+- holds: nothing about the field. This is a fallback path for a student with no repo to bring, and it asserts one product affordance and a set of design choices about what makes a good practice codebase.
+- contested: nothing. **The one judgement worth recording is that the seeded project is deliberately made to break in specific ways** — a data-touching feature is planted so M3's security work has a real access surface, which is a curriculum decision rather than a claim.
+- would-move-it: nothing published. If the model lineup changes, the Sonnet instruction needs a name swap, not a rethink.
+
+OODA
+- question: none standing. Watch the model name in body as the lineup moves.
+- roster: the Claude Code CLI reference and changelog.
+- last-run: 2026-08-01
+
+<!-- /backing -->

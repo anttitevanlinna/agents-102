@@ -170,3 +170,32 @@ Three companion diagrams ship with this doc.
 - Is it a **hand-off** (its output feeds the input of the next skill, no orchestrator needed)?
 
 The answer is often "leaf today, route later" or "leaf today, hand-off when the next skill exists." Naming the shape now makes the next skill's place obvious.
+
+<!-- backing -->
+
+Claims
+- `read-for-patterns-not-for-copying` · vision · "This is one engineer's stack on one codebase; your kit will look different." ← none-owed
+- `three-layer-model` · vision · "Layer 1: Shape of one skill … Layer 2: Classification axes … Layer 3: Composition mechanisms" ← none-owed
+- `explicit-load` · detail · "**1. Explicit load.** One skill names another as a precondition." ← dino-stack
+- `orchestrator-composition` · detail · "**2. Orchestrator composition.** `/ship` sequences the ship-half of every workflow." ← dino-stack
+- `four-composition-mechanisms-are-the-transferable-part` · vision · "The four composition mechanisms below are the transferable part" ← none-owed
+
+Sources
+- dino-stack `[checked:2026-07-05 result:ATTESTED due:none]` attested:maintainer — [maintainer-attested] One engineer's in-repo skill stack, read directly: the skill files, their cross-references, and the `/ship` orchestrator. **`/ship` is Dino's own skill, NOT a Claude Code built-in** — the lecture that points here keeps its orchestrator generic for exactly this reason, and any edit that reads `/ship` as a product feature is wrong. First-hand reading of a real kit, so no URL is owed and no date will stale it. **The page's own framing is its best guard:** it tells the reader this is one stack on one codebase, which is the correct evidence claim for a sample of one. fallback: none; the worked example is the evidence and its scope is stated in the first line.
+
+Frameworks
+- Composition mechanisms — explicit load, orchestrator, routing, hand-off · [borrow:none] · law:none · ← dino-stack — the four names the lecture teaches; this page is where they are grounded in a real kit
+- Orchestrator / leaf · [borrow:distributed systems] · law:none · ← dino-stack
+- The compound ladder · [borrow:none] · law:the-compound-ladder · ← none — a stack is what the ladder's top rung looks like once it exists
+
+Stance `[stance:2026-08-01 level:L1]`
+- holds: that the four composition mechanisms describe how a real kit actually wires together. **Evidence is a sample of one, stated as a sample of one in the page's first line** — which is the right shape for a worked example and the wrong shape for a generalisation, and the page never generalises.
+- contested: whether these four are the complete set. Nobody has enumerated composition mechanisms across kits, so four is what one careful reading found rather than a closed list.
+- would-move-it: a second published kit wiring together in a way none of the four describe. That would add a mechanism rather than break one, and it would take the lecture's claim from L1 toward L2.
+
+OODA
+- question: has anyone else published a full skill stack in enough detail to check the four mechanisms against?
+- roster: Dino, Matt Pocock, Kieran Klaassen, Geoffrey Huntley, the Anthropic skills docs
+- last-run: 2026-08-01
+
+<!-- /backing -->

@@ -46,9 +46,40 @@
 
 **Siblings:** `lectures/why-mostly-right-fails.md` (Claude Basics, same checks-compound-too mechanism, business-voiced) · Agents 101 `lectures/new-human-role-in-the-loop.md` (position-change story, M6 closer) · groundwork `design-the-filter` (business mat, Absorption).
 
-**Source verification — MUST DO before first cohort:**
-- `[checked:2026-07-02 result:OK due:2027-01-02]` https://www.lucasfcosta.com/blog/backpressure-is-all-you-need — [practitioner direct] (Lucas F. da Costa, 2026-05-23). Byline, date, and the quoted sentence verified verbatim 2026-07-02. fallback: paraphrase as "practitioners now frame the human as the default backpressure" without quote.
-- The 0.85/ten-steps arithmetic is an illustration, not an empirical claim (subjunctive framing in body is deliberate — keep it; the body labels it "an illustration, not a measurement"). Do NOT let edits promote it to a measured constant (zombie-stat guard, `theory-audit.md` § Family A).
+<!-- backing -->
 
+Claims
+- `run-outproduces-your-review` · vision · "The agent generates faster than any human reads" ← none-owed
+- `backpressure-named-in-flow-engineering` · borrowed · "**Backpressure**: the downstream stage signals upstream that it cannot take more" ← costa-backpressure
+- `the-backpressure-is-you` · detail · "Any system that relies on a human to catch the problem is a system with a bottleneck" ← costa-backpressure
+- `errors-compound-over-unverified-length` · detail · "If one step were 85 percent reliable" ← compound-arithmetic
+- `a-gate-resets-the-chain` · vision · "**A gate resets the chain.**" ← none-owed
+- `gates-go-inside-the-loop` · vision · "One big review at the end reads a chain that has already compounded." ← none-owed
+- `a-gate-is-anything-that-pushes-back-without-you` · vision · "A failing test, a type error, a lint rule, a judge agent reading the diff" ← none-owed
+- `tests-were-backpressure-before-agents` · vision · "The work is not inventing checks from nothing; it is pointing the existing ones at the agent" ← none-owed
+- `session-reach` · vision · "**Session reach**: how far a run gets before it must stop and wait for you." ← none-owed
+- `reach-is-the-lower-of-two-ceilings` · vision · "A frontier model behind thin gates still has short reach" ← none-owed
+
+Sources
+- costa-backpressure `[checked:2026-07-02 result:OK due:none]` https://www.lucasfcosta.com/blog/backpressure-is-all-you-need — [practitioner direct] Lucas F. da Costa, 2026-05-23. Byline, date and the quoted sentence verified verbatim. Durable account of an argument made once, so `due:none` rather than a calendar re-open. fallback: paraphrase as "practitioners now frame the human as the bottleneck stage" and drop the name.
+- compound-arithmetic `[checked:2026-08-01 result:ATTESTED due:none]` (no URL — arithmetic) — [house canonical] 0.85 over ten unverified steps ≈ 0.20. **An illustration, not a measurement, and the body says so in those words.** The subjunctive framing in body ("if one step *were* 85 percent reliable") is deliberate and load-bearing — it is what stops a reader carrying 85% away as a per-step reliability constant for real systems. **Do NOT let an edit promote it to a measured figure** (zombie-stat guard, `theory-audit.md` § Family A). fallback: none; the arithmetic is checkable and the caveat is the claim.
+
+Frameworks
+- Backpressure · [borrow:flow engineering] · law:bandwidth-limited-channel · ← costa-backpressure
+- Compound-reliability floor · [borrow:none] · law:compound-reliability-floor-0-85 · ← compound-arithmetic
+- Absorption bottleneck · [borrow:none] · law:absorption-bottleneck · ← none — the human as the downstream stage that cannot take more
+- Session reach · [borrow:none] · law:calibrated-delegation-frontier · ← none — house naming; reach as the lower of model ceiling and gate ceiling
+
+Stance `[stance:2026-08-01 level:L1]`
+- holds: that the human review stage is the binding constraint on a long run, and that gates inside the loop beat one review at the end. Costa is one named practitioner making the argument in print; the rest is arithmetic and design.
+- contested: **the 85% premise, permanently.** No defensible per-step reliability figure exists for agentic chains at this generality, which is exactly why the body keeps it subjunctive. This is the page most at risk from a well-meaning edit that "firms up" a number, and the stamp exists to make that edit visibly wrong.
+- would-move-it: real per-step reliability measurement, which would let the illustration become an example. A second practitioner naming the human-as-bottleneck stage would take the framing to L2.
+
+OODA
+- question: has anyone measured per-step reliability for agentic chains, and is backpressure catching on as agent vocabulary beyond Costa?
+- roster: Lucas F. da Costa, METR, Hamel Husain, Dex Horthy, Simon Willison
+- last-run: 2026-08-01
+
+<!-- /backing -->
 **Quality:** compendium-audited 2026-07-12 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
 - judges @b3143a4: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

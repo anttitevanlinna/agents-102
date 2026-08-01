@@ -101,30 +101,61 @@ Practitioner-direct writings cited in this piece, in order of appearance:
 
 **Open TODOs:**
 
-- [ ] **Source verification — MUST DO before first cohort** (per `check_research_claims.md` §11): open every URL, confirm the cited claim against the linked text, confirm all load-bearing numbers. Twelve URLs:
-  - Klaassen — [every.to/source-code/compound-engineering-the-definitive-guide](https://every.to/source-code/compound-engineering-the-definitive-guide)
-  - Cursor Bugbot — [cursor.com/blog/bugbot-learning](https://cursor.com/blog/bugbot-learning) — confirm 52% → 80%, 110,000 repos, 44,000 learned rules
-  - Cloudflare — [blog.cloudflare.com/ai-code-review](https://blog.cloudflare.com/ai-code-review/) — confirm seven specialists, 131,246 / 48,095 / 5,169 / 30 days, 3m39s median, 0.6% override
-  - Curran/Intercom — [ideas.fin.ai/p/2x-nine-months-later](https://ideas.fin.ai/p/2x-nine-months-later) — confirm 19.2% / 14.6min / 75.8min / 86%≤20 lines
-  - Gray/Stripe — [stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents](https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents) — confirm 1,300 PRs/week, quarantined EC2 language
-  - `[checked:2026-05-25 result:OK due:none]` https://hamel.dev/blog/posts/evals-faq/whats-the-difference-between-guardrails-evaluators.html — [practitioner direct] Husain, guardrails vs evaluators. Page dated **August 15, 2025** (confirmed 2026-05-25, resolves the prior Jan-2026-vs-Aug-2025 conflict). Past 6-month window — body inline-dates it "Aug 2025" as dated canonical framing; accepted under §2 (definitional split, not a time-sensitive metric). No fresher source needed.
-  - Cherny via Jadhav — [www.anup.io/35-claude-code-tips-from-the-guy-who-built-it](https://www.anup.io/35-claude-code-tips-from-the-guy-who-built-it/) — verified by critical-review pass; "2-3x quality" + Stop-hook + background-agent confirmed. Author name corrected to Anup Jadhav (was Choudhary).
-  - Shapira — [medium.com/elementor-engineers/...](https://medium.com/elementor-engineers/the-self-learning-code-review-teaching-ai-cursor-to-learn-from-human-feedback-454df64c98cc) — verified by critical-review pass; mechanism (gh api → cursor-agent → commit to `.cursor/rules/code-review.mdc`) confirmed.
-  - Larson — [lethain.com/everyinc-compound-engineering](https://lethain.com/everyinc-compound-engineering/) — verified by critical-review pass; quote *"consulted by future iterations of the plan pattern"* confirmed (note the leading word *"consulted"*).
-  - Charles via Rachitsky — [creatoreconomy.so/p/inside-ramp-the-32b-company-ai-agents-geoff-charles](https://creatoreconomy.so/p/inside-ramp-the-32b-company-ai-agents-geoff-charles) — original X URL was auth-walled; swapped to Lenny Rachitsky interview write-up. Numbers re-stated: 350+ skills + 99.5% AI-active + 84% coding agents weekly (was conflated as "99.5% using skills weekly" — corrected).
-  - Majors — [charity.wtf/2026/03/09/...](https://charity.wtf/2026/03/09/your-data-is-made-powerful-by-context-so-stop-destroying-it-already-xpost/) — confirm agent-validation quote
-  - Wolff — [infoq.com/presentations/engineering-ai](https://www.infoq.com/presentations/engineering-ai/) — confirm "implementation cost to zero, feedback loop everything" + SQLite-in-two-weeks anecdote
+<!-- backing -->
 
-- [ ] **Freshness re-check** at first-cohort delivery (6-month rule per `check_research_claims.md` §2). Newest cites pulled 2026-05-15; freshness window expires 2026-11-15.
+Claims
+- `ci-is-feedback-not-a-gate` · vision · "Treat CI as feedback into the loop, not a gate to pass" ← none-owed
+- `klaassen-each-unit-makes-the-next-cheaper` · detail · "Each unit of engineering work should make the next one cheaper." ← klaassen-definitive-guide
+- `bugbot-learns-rules` · detail · "Review comments flagged as useful become learned rules that promote and demote over time." ← cursor-bugbot
+- `cloudflare-seven-specialists` · detail · "seven specialist reviewers in CI through their internal stack, with a coordinator agent producing one structured review" ← cloudflare-ai-review
+- `intercom-tier-1-auto-approve` · detail · "routes 19.2% of merges through a Tier-1 auto-approve path" ← curran-2x
+- `stripe-thousand-prs-all-reviewed` · detail · "Over 1,000 agent-produced PRs merge each week, all human-reviewed, none with human-written code." ← stripe-minions
+- `husain-guardrails-versus-evaluators` · detail · "Guardrails sit inline in the request/response path: fast, deterministic, milliseconds of latency" ← husain-guardrails-faq
+- `ramp-dojo-at-team-scale` · detail · "350+ shared skills, 99.5% of employees actively using AI" ← charles-rachitsky
+- `majors-on-agent-validation` · detail · "How do you expect your agents to validate each change, if they can't?" ← majors-charity-wtf
+- `wolff-implementation-cost-to-zero` · detail · "when the implementation cost goes to zero, the feedback loop is everything" ← wolff-qcon
+- `cherny-quality-multiple` · detail · "2-3x quality" ← cherny-via-jadhav
+- `shapira-self-learning-review` · detail · "teaching the reviewer to learn from human feedback" ← shapira-elementor
+- `larson-on-compound-engineering` · detail · "consulted by future iterations of the plan pattern" ← larson-compound
+- `tier-by-blast-radius` · vision · "Tier by blast radius. Make the Tier-1 case on your own PRs" ← none-owed
+- `get-out-fast-learn-safely` · vision · "Time how long it takes to revert a bad merge in your repo, end to end." ← none-owed
 
-- [x] **Critical-review subagent** completed 2026-05-15. Verdicts: 5 APPROVE (Cloudflare, Curran, Shapira, Larson, Majors) / 7 REVISE / 0 REPLACE. Revisions landed in Pass 2.1 same date. Cross-cutting flag: vendor-venue density is 7-of-12; every one carries the `[practitioner direct, vendor venue]` label and self-reported metrics are flagged "<org>'s own numbers" inline. One open question: Hamel freshness conflict (Jan 2026 per OODA vs Aug 2025 per critical-review) — pending re-fetch.
+Sources
+- klaassen-definitive-guide `[checked:2026-07-30 result:OK due:2027-01-30]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen, 2026-02-09. Confirms the term and the make-the-next-one-cheaper philosophy. **Cite for the term, never for a step count** — the loop's step names live elsewhere and have since expanded past four. fallback: attribute ordinal-free.
+- curran-2x `[checked:2026-05-25 result:OK due:2026-10-16]` https://ideas.fin.ai/p/2x-nine-months-later — [practitioner direct, vendor venue] Curran, 2026-04-16: 19.2% / 14.6 vs 75.8 min / 86% ≤20 lines. Vendor-self-reported; body flags it as Intercom's own numbers. fallback: keep the numbers, attribute the telemetry, flag self-report.
+- husain-guardrails-faq `[checked:2026-05-25 result:OK due:none]` https://hamel.dev/blog/posts/evals-faq/whats-the-difference-between-guardrails-evaluators.html — [practitioner direct] Husain, guardrails versus evaluators, page dated 2025-08-15. Durable FAQ entry, `due:none`. fallback: teach the inline-versus-offline split without the name.
+- cursor-bugbot `[checked:never result:NEEDED due:asap]` https://cursor.com/blog/bugbot-learning — [vendor blog — Level 0] **UNVERIFIED.** Owes confirmation of 52% → 80%, 110,000 repos, 44,000 learned rules. Vendor blog about the vendor's own product: **L0, outside the evidence ladder**, and three round-ish numbers with a before/after improvement is the exact shape the zombie-stat guard exists for. fallback: cut the numbers, keep the mechanism — useful review comments becoming promoted rules — which is the transferable part and needs no telemetry.
+- cloudflare-ai-review `[checked:never result:NEEDED due:asap]` https://blog.cloudflare.com/ai-code-review/ — [vendor blog — Level 0] **UNVERIFIED.** Owes seven specialists, 131,246 / 48,095 / 5,169 over 30 days, 3m39s median, 0.6% override. fallback: keep "an org runs a fan-out of specialist reviewers with a coordinator", drop every figure.
+- stripe-minions `[checked:never result:NEEDED due:asap]` https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents — [vendor blog — Level 0] **UNVERIFIED, and the body and the TODO disagree with each other:** body says "over 1,000 agent-produced PRs merge each week", the verification note says confirm 1,300. One of the two is wrong and nobody has opened the page to find out which. fallback: cut the count, keep the shape — all agent-produced, all human-reviewed.
+- charles-rachitsky `[checked:never result:NEEDED due:asap]` https://creatoreconomy.so/p/inside-ramp-the-32b-company-ai-agents-geoff-charles — [practitioner interview] **UNVERIFIED.** Owes 350+ shared skills, 99.5% of employees actively using AI, 84% on the third figure. The original X URL was auth-walled and swapped for this venue, and the swap was never re-checked. **99.5% adoption is a round-number claim about an entire company** — the highest-risk figure on the page. fallback: cut all three figures, keep "a large org runs a shared skill marketplace".
+- majors-charity-wtf `[checked:never result:NEEDED due:asap]` https://charity.wtf/2026/03/09/your-data-is-made-powerful-by-context-so-stop-destroying-it-already-xpost/ — [practitioner direct] **UNVERIFIED.** Owes the agent-validation quote verbatim. A quotation attributed to a named person is the one thing that must never ship unchecked — M6's own opener is a memo about exactly this failure. fallback: paraphrase and drop the quotation marks.
+- wolff-qcon `[checked:never result:NEEDED due:asap]` https://www.infoq.com/presentations/engineering-ai/ — [practitioner talk] **UNVERIFIED.** Owes the "implementation cost to zero, feedback loop everything" line and the SQLite-in-two-weeks anecdote. Same quotation risk as above. fallback: paraphrase the principle, drop the verbatim and the anecdote.
+- cherny-via-jadhav `[checked:2026-05-15 result:CAVEAT due:asap]` https://www.anup.io/35-claude-code-tips-from-the-guy-who-built-it/ — [practitioner analysis] Verified by a critical-review pass, not by a source-verification pass: the "2-3x quality" figure, the Stop-hook and the background-agent points were checked as reported, but this is one writer's account of Cherny's talk, not Cherny's own words. fallback: drop the multiple, keep the practices.
+- shapira-elementor `[checked:2026-05-15 result:CAVEAT due:asap]` https://medium.com/elementor-engineers/the-self-learning-code-review-teaching-ai-cursor-to-learn-from-human-feedback-454df64c98cc — [practitioner direct] Mechanism verified by the critical-review pass. fallback: keep the mechanism, drop the org name.
+- larson-compound `[checked:2026-05-15 result:CAVEAT due:asap]` https://lethain.com/everyinc-compound-engineering/ — [practitioner analysis] The quoted line was confirmed by the critical-review pass. Larson writing about Every, so it is analysis rather than direct. fallback: cite Klaassen directly instead.
 
-- [ ] **KB patch — stale note.** `continuous-research/platform-watch/coding-agents/runs/2026-04-21-boris-cherny.md` currently says "Cherny silent on evals beyond hooks." OODA 2 falsified this; he openly names verify-your-work as his top tip. One-line patch needed.
+Frameworks
+- Compound engineering · [borrow:none] · law:the-compound-ladder · ← klaassen-definitive-guide
+- Guardrails versus evaluators · [borrow:none] · law:eval-judge-verifier-gate · ← husain-guardrails-faq
+- Tier by blast radius · [borrow:safety engineering] · law:blast-radius-error-budget · ← curran-2x
+- Absorption bottleneck · [borrow:none] · law:absorption-bottleneck · ← curran-2x, stripe-minions
 
-- [ ] **Eval instances** at `curriculum/evals/instances/how-the-best-do-ci-cd.{technical,writing,story}.json` were graded against the prior CTO-targeted Pass 1. Re-run after critical-review subagent clears the sources.
+Stance `[stance:2026-08-01 level:L1]`
+- holds: less than the page appears to. **Seven of its twelve sources have never been opened**, and they carry most of its numbers. What genuinely holds is the *shape* — CI as feedback, fan-out review, tiering by blast radius, guardrails versus evaluators — which is convergent across the orgs named and survives every figure being cut.
+- contested: **every load-bearing number on the page, pending verification.** Five vendor blogs are L0 and outside the ladder entirely; the two quotations are attributed verbatim to named people and unchecked; and body and TODO already contradict each other on Stripe's PR count, which is proof the numbers were never reconciled against the sources.
+- would-move-it: opening the seven URLs. **This is the only stance in the corpus whose next action is not research but bookkeeping** — the finding is that a file marked "MUST DO before first cohort" reached a shipped supplementary with the box unticked.
 
-- [ ] **First-cohort read-through:** confirm the opening does not slip into CTO-briefing register. Confirm the forward-callout from M6 (`spot-gaps-build-the-loop.md` line 64 — *"Going deeper, when this loop has to scale past you"*) still reads as an inviting bridge.
+OODA
+- question: do the seven unopened URLs support the figures attributed to them, and is Stripe's number 1,000 or 1,300?
+- roster: Cursor blog, Cloudflare engineering blog, Stripe dev blog, Geoff Charles via Lenny Rachitsky, Charity Majors, Adam Wolff's QCon talk, Darragh Curran
+- last-run: never
 
+Flagged
+- `[found:2026-08-01]` **Seven of twelve sources unopened, carrying ~15 load-bearing figures including two verbatim quotations and a 99.5%-of-a-company adoption claim** → open them before this ships to a cohort, or cut to the shape and keep no numbers. The migration to a backing block is what made this countable; the checkbox had been sitting unticked in a maintainer list where nothing audited it.
+- `[found:2026-08-01]` Body says "over 1,000" Stripe PRs per week; the verification note says confirm 1,300 → one is wrong, and which one is unknowable without opening the page.
+- `[found:2026-08-01]` The register this block replaces labelled Cursor's and Cloudflare's own product blogs `[practitioner direct, vendor venue]` → **that is a rung too high.** A vendor writing about its own product is Level 0, outside the evidence ladder, not a practitioner report with a venue caveat. The register's own defence — "operational mechanism is evidence" — is right about the mechanism and wrong about the metrics, and the label applied to both. Relabelled in Sources; the same error was caught and corrected in the platform-watch corpus earlier today, so this is the second instance of one mistake in one week.
+
+<!-- /backing -->
 **Iteration log:**
 
 - 2026-05-15 (Pass 2.1, critical-review fixes): nine fixes landed after critical-review subagent flagged: (1) Klaassen M1 claim softened from "runs review findings back into CLAUDE.md/AGENTS.md/skills" to "named the loop" — original mechanic-claim was not in the URL; the concrete mechanism lives in Move 5 (Shapira + Larson). (2) Stripe "1,300 PRs/week" corrected to "over 1,000" per source. (3) Stripe "quarantined EC2 instance" corrected to "isolated devbox." (4) Hamel co-author Shankar dropped — not co-bylined. (5) Hamel freshness conflict logged for re-fetch. (6) Cherny distillation author Choudhary → Jadhav. (7) Charles X URL replaced with Rachitsky's creatoreconomy.so write-up (X was auth-walled). (8) Charles 99.5%/84% conflation corrected. (9) Cursor Bugbot label kept as `[practitioner direct, vendor venue]` with explicit caveat in maintainer that the 52%→80% number is self-reported and not load-bearing. All 12 sources now ship with verified claims; one open item (Hamel freshness) flagged for re-fetch.
@@ -134,23 +165,6 @@ Practitioner-direct writings cited in this piece, in order of appearance:
 - 2026-05-15 (Pass 1 rewrite): replaced original CTO-targeted version after audience-mismatch + mood-collision review. 4 of 12 example slots populated; 8 OODA-pending markers shipped for follow-up.
 
 - 2026-04-24 (original Pass 1): CTO-targeted, replaced.
-
-**Frameworks riffed on:**
-
-| Move | Practitioner | Source-type | Notes |
-|---|---|---|---|
-| 1 | Kieran Klaassen, Every | `[practitioner direct, vendor venue]` | Compound Engineering: The Definitive Guide |
-| 1 | Cursor (Bugbot) | `[practitioner direct, vendor venue]` | Self-reported metrics (52% → 80%, 110K repos, 44K rules); operational mechanism is evidence |
-| 2 | Cloudflare engineering | `[practitioner direct, vendor venue]` | Self-reported metrics (131K/48K/5K, 3m39s, 0.6%); operational mechanism is evidence |
-| 3 | Darragh Curran, Intercom | `[practitioner direct, vendor venue]` | Self-reported metrics (19.2% / 14.6 vs 75.8 / 86%≤20); operational mechanism is evidence |
-| 3 | Alistair Gray, Stripe | `[practitioner direct, vendor venue]` | Self-reported 1,300 PRs/week; quarantine pattern is evidence |
-| 4 | Hamel Husain | `[practitioner direct]` | Independent practitioner blog; L3 codification of a widely-converged pattern. Shankar co-author dropped per critical-review (not co-bylined on the cited URL). Dated Aug 15 2025 (confirmed 2026-05-25); dated-historical canonical framing, accepted under §2 (definitional, not a metric). |
-| 4 | Boris Cherny (via Anup Jadhav distillation) | `[practitioner analysis]` | Writer-on-subject attribution: Jadhav on Cherny. |
-| 5 | Ofer Shapira, Elementor | `[practitioner direct]` | Engineering team publication; CI-loop mechanism with named files |
-| 5 | Will Larson, Imprint | `[practitioner direct]` | Personal blog; runs Every's pattern on his own monorepos |
-| 5 | Geoff Charles, Ramp (Peter Yang interview) | `[practitioner direct]` numbers / `[practitioner analysis]` write-up | 350+/99.5%/84% are Charles-direct from his X post 2026-04-09 (`observations/ramp.md`); Peter Yang's creatoreconomy.so interview is the readable secondary (NOT Lenny Rachitsky — creatoreconomy.so is Peter Yang's newsletter, verified 2026-05-25). |
-| 6 | Charity Majors, Honeycomb | `[practitioner direct]` | Own blog charity.wtf; canonical observability voice |
-| 6 | Adam Wolff, Anthropic Claude Code team | `[practitioner direct]` | QCon SF 2025 talk via InfoQ; same employer as Cherny but distinct practitioner and distinct claim (deploy-loop, not eval-loop) |
 
 **Org-diversity check:** 12 cites across 11 organisations. Anthropic appears twice (Cherny M4 secondary, Wolff M6 secondary) — accepted because the two practitioners are distinct individuals making distinct claims about different layers of the loop. Attribution cap per `check_writing.md` rule 11 is per-practitioner; both Cherny and Wolff are one-mention each.
 

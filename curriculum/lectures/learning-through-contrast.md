@@ -45,18 +45,18 @@ The run shows you what no benchmark can.
 <!-- backing -->
 
 Claims
-- artefact-is-data · vision · "The artefact is data, whatever came back." ← none-owed
-- diagnose-first-fix-later · vision · "Diagnose first. Fix later." ← none-owed
-- test-learn-encode · vision · "The arc is *test → learn → encode*." ← none-owed
-- three-failure-lenses · detail · "**Goal drift** … **Context rot** … **Plausible-but-wrong**" ← three-failure-modes
-- skip-a-lens-lose-a-name · vision · "the lens you skip is the failure you can't name" ← none-owed
-- never-trust-the-window · vision · "Never trust the window to hold over a long run." ← none-owed
-- compact-with-instructions · detail · "`/compact focus on the failure modes and the validation I'm sketching` keeps what you choose" ← anthropic-compact-docs
-- auto-compact-is-legitimate · detail · "Many good engineers just let auto-compact fire." ← osmani-long-running, amp-neo, steipete-inference-speed
-- no-percentage-worth-memorising · detail · "No winning strategy here, and no percentage worth memorising." ← humanlayer-long-context, cc-autocompact-varies, horthy-ace-fca
-- manual-needs-a-keyboard · vision · "Manual compaction works because you're at the keyboard." ← none-owed
-- files-survive-compaction · detail · "Files on disk survive compaction; conversation-only instructions may not." ← cc-context-window-docs
-- compact-is-not-packaging · vision · "`/compact` is session management, not packaging. The whole point of packaging is that you can leave the room." ← none-owed
+- `artefact-is-data` · vision · "The artefact is data, whatever came back." ← none-owed
+- `diagnose-first-fix-later` · vision · "Diagnose first. Fix later." ← none-owed
+- `test-learn-encode` · vision · "The arc is *test → learn → encode*." ← none-owed
+- `three-failure-lenses` · detail · "**Goal drift** … **Context rot** … **Plausible-but-wrong**" ← three-failure-modes
+- `skip-a-lens-lose-a-name` · vision · "the lens you skip is the failure you can't name" ← none-owed
+- `never-trust-the-window` · vision · "Never trust the window to hold over a long run." ← none-owed
+- `compact-with-instructions` · detail · "`/compact focus on the failure modes and the validation I'm sketching` keeps what you choose" ← anthropic-compact-docs
+- `auto-compact-is-legitimate` · detail · "Many good engineers just let auto-compact fire." ← osmani-long-running, amp-neo, steipete-inference-speed
+- `no-percentage-worth-memorising` · detail · "No winning strategy here, and no percentage worth memorising." ← humanlayer-long-context, cc-autocompact-varies, horthy-ace-fca
+- `manual-needs-a-keyboard` · vision · "Manual compaction works because you're at the keyboard." ← none-owed
+- `files-survive-compaction` · detail · "Files on disk survive compaction; conversation-only instructions may not." ← cc-context-window-docs
+- `compact-is-not-packaging` · vision · "`/compact` is session management, not packaging. The whole point of packaging is that you can leave the room." ← none-owed
 
 Sources
 - three-failure-modes `[checked:2026-08-01 result:CAVEAT due:cohort]` (no URL — house vocabulary, see below) — [house canonical] goal drift / context rot / plausible-but-wrong. Per-term hunt 2026-08-01: *context rot* is real field vocabulary with a study behind it (Chroma, 18 models) and Anthropic's own adoption, used unprompted by Ronacher and Osmani — roughly 3–4 named users, short of the L3 bar. *Goal drift* and *plausible-but-wrong* return **zero** named practitioners; the only appearance of "goal drift" as a term is a byline-less digest. **The phenomena are well attested; the names are largely ours.** Body says "practitioners hit" rather than "practitioners name" — keep that verb, and do not restore "convergent practitioner vocabulary". fallback: none needed, the corrected framing is the fallback.
@@ -91,12 +91,9 @@ OODA
 - Don't expand the three-lens explanation. The pre-read carries depth; the opener restates for the room.
 - Don't name reference / plan.md / verifier in the opener — even when answering the hands-off FAQ. The FAQ bullets use descriptive paraphrases ("a working document the agent owns," "a reference it diffs against," "an automated check") that match Phase 2's prompt vocabulary; the closer earns the names. **They are our names, not Ronacher's** (corrected 2026-08-01) — he uses none of the three words. If a student presses for the names in Q&A, defer: *"the closing lecture names them."*
 - **"So what number should I use?" will be asked, and the answer does not fit on the slide.** Give it in the room: there isn't one, and the reason is that a percentage stopped being a meaningful unit. HumanLayer moved their own context warning off 40%-of-usable-window to a flat 100k-token mark precisely because *"For opus 1m this is only 10% of the context window"* (2026-03-23). Claude Code's own auto-compact trigger now varies by model and venue rather than sitting at one number. So a percentage is the wrong shape of answer, not a number we happen to lack. If a student wants something concrete to do, point at `/compact <instructions>` — choosing what survives is the move that actually pays.
-- The opener frames the window as unreliable and offers manual-compact and auto-compact as equally live options. The closer names `/compact` and subagents-for-isolation as kit primitives. **Its counter-camp framing needs rework before delivery** — it still runs Sourcegraph Amp as the live handoff camp, and Amp reversed on 2026-05-06. Confirm at delivery the closer lands as kit-recap, not repetition. Three-persona sim should test this specifically.
+- The opener frames the window as unreliable and offers manual-compact and auto-compact as equally live options. The closer names `/compact` and subagents-for-isolation as kit primitives. Confirm at delivery the closer lands as kit-recap, not repetition. Three-persona sim should test this specifically.
+- *"Never trust the window over a long run"* is Antti's governing stance, not a sourced finding. That is what makes the AFK payoff at the end of the slide an argument rather than a topic change — deliver it as a position held, not as a result reported.
 - The exercise start is the trainer's call now (the "Open your repo. Let's go." closer was cut in the slide pass); land slide 3's last bullet and hand over.
 
 **Philosophy callouts:** none. The diagnostic stance is the beat; further philosophy tagging dilutes.
 
-**Vision vs. detail:**
-- Vision layer: the diagnostic stance ("read first, fix later"), the test→learn→encode framing.
-- Detail layer: the three failure-mode names (sourced via pre-read), `/compact` invocation and its focus-instruction form, the claim that many practitioners rely on auto-compact, and the compaction-survival fact (files on disk survive; conversation-only instructions may not).
-- Vision layer also carries *"never trust the window over a long run"* — that is Antti's governing stance, not a sourced finding, and it is what makes the AFK payoff at the end of the slide an argument rather than a topic change.

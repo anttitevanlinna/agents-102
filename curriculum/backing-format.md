@@ -14,7 +14,9 @@ Loaded by `/lecture-ooda`, `backing-lint.sh`, `/curriculum-pre-ship-audit`, and 
 <!-- /backing -->
 ```
 
-Lives below `<!-- maintainer -->`, so it never renders. Explicit close so the linter slices it without heuristics. One region per file. Absorbs and replaces `Frameworks riffed on:` / `Frameworks attributed:` / `**Source verification …**` — do not keep a second copy.
+Lives below `<!-- maintainer -->`, so it never renders. Explicit close so the linter slices it without heuristics. One region per file. Absorbs and replaces `Frameworks riffed on:` / `Frameworks attributed:` / `**Source verification …**` — do not keep a second copy. A `**Vision vs. detail:**` section is absorbed too, by the Claims `layer` field: delete it when the block lands. It is not in the linter's `LEGACY` list because a file with no block still needs it.
+
+**Field headers** take either spelling — `Claims` bare on its own line, or `**Claims**`. Nothing else. `### Claims` and `Claims:` are errors (`FIELD-UNPARSED`), because a header the parser cannot read makes its whole field invisible and the block reports clean on content nobody checked. Claim ids are backticked; the layer token is bare.
 
 Maintainer-block region → edits are **not** gated by the prompt-approval hook and are **not** card-shaped (`check_prompts.md §22`, §26). Apply directly, then report as landed work. Not a carve-out: §26 fires on student-facing body text and prompt bodies only, and everything else applies without asking. Cosmetic edits here do not degrade Quality (`quality-format.md`); a claim edit *above* the divider still degrades the stamps that back it (auto-degrade, below).
 

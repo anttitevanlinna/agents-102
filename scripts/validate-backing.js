@@ -9,6 +9,7 @@
  * Checks:
  *   ERROR  REGION-UNCLOSED   `<!-- backing -->` with no `<!-- /backing -->`
  *   ERROR  CLAIM-MALFORMED   a Claims line that does not parse
+ *   ERROR  FIELD-UNPARSED    a field header in a spelling the parser cannot read
  *   ERROR  DETAIL-UNBACKED   a `detail` claim with no source id and no [SOURCE NEEDED]
  *   ERROR  SOURCE-UNDEFINED  a claim cites a source id the Sources field never defines
  *   ERROR  LEGACY-DOUBLE     a backing block coexists with `Frameworks riffed on:` /
@@ -121,13 +122,26 @@ function parseBlock(text) {
   };
 }
 
-/* Fields are `**Name**` headed runs inside the block. */
+/*
+ * Fields are headed runs inside the block. Two spellings are legal: `**Name**`
+ * and a bare `Name` on its own line — the spec writes Stance and OODA bare, and
+ * blocks get authored that way. Accepting only the bolded form made a bare-headed
+ * block parse to zero claims and report `0 error · 0 warn`: a green light with no
+ * lamp behind it. The bare form is restricted to the known field vocabulary so a
+ * line of prose can never promote itself to a header.
+ */
+const FIELD_NAMES = ['Claims', 'Sources', 'Frameworks', 'Stance', 'OODA', 'Flagged'];
+const BARE_FIELD = new RegExp(`^(${FIELD_NAMES.join('|')})\\b`);
+/* Any decorated spelling of a field name — `### Claims`, `_Sources_`, `Claims:`. */
+const FIELD_LOOKALIKE = new RegExp(`^[#>*_\\s]{0,6}(${FIELD_NAMES.join('|')})\\b`);
+
 function fields(body) {
   const out = {};
   let cur = null;
   body.split('\n').forEach((line, i) => {
-    const h = line.match(/^\*\*([A-Za-z][A-Za-z ]*?)\*\*/);
-    if (h) { cur = h[1].trim(); out[cur] = out[cur] || []; return; }
+    const bold = line.match(/^\*\*([A-Za-z][A-Za-z ]*?)\*\*/);
+    const name = bold ? bold[1].trim() : (line.match(BARE_FIELD) || [])[1];
+    if (name) { cur = name; out[cur] = out[cur] || []; return; }
     if (cur && line.trim()) out[cur].push({ text: line, i });
   });
   return out;
@@ -220,6 +234,20 @@ function auditText(text, { laws, now, stanceWindow, file = '<text>' } = {}) {
 
   const f = fields(blk.body);
   const ln = i => blk.lineOffset + i;
+
+  /*
+   * A field header the parser did not register. Silent under the old parser: the
+   * run below it landed in whatever field preceded it, or nowhere at all, and the
+   * block still audited clean. Loud now — an unread field is indistinguishable
+   * from an empty one in the summary line, and only one of those is safe.
+   */
+  blk.body.split('\n').forEach((line, i) => {
+    const m = line.match(FIELD_LOOKALIKE);
+    if (m && !(m[1] in f)) {
+      add('ERROR', 'FIELD-UNPARSED', ln(i),
+        `field header "${line.trim().slice(0, 40)}" is not a recognised spelling — use \`${m[1]}\` or \`**${m[1]}**\``);
+    }
+  });
 
   const claims = [];
   for (const { text: l, i } of (f.Claims || [])) {

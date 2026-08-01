@@ -213,3 +213,48 @@ test('slugify strips punctuation and case', () => {
   assert.equal(slugify('The compound ladder:'), 'the-compound-ladder');
   assert.equal(slugify('Principal–agent:'), 'principal-agent');
 });
+
+/*
+ * Bare field headers. The spec's own Stance/OODA example writes the field name
+ * on a bare line, and the first two real blocks were authored that way. The
+ * parser only matched `**Bold**`, so those blocks parsed to zero claims, zero
+ * sources, zero frameworks — and reported `0 error · 0 warn`. A validator that
+ * returns clean because it read nothing is worse than no validator: it is a
+ * green light with no lamp behind it. Both spellings must parse, and any field
+ * header the parser fails to register must be loud.
+ */
+test('bare field headers parse like bolded ones', () => {
+  const { findings } = audit(block(
+    'Claims\n- `n` · detail · "a number" ← ghost\n\nSources\n'
+  ));
+  assert.ok(codes(findings).includes('SOURCE-UNDEFINED'),
+    'a bare `Claims` header must yield parsed claims');
+});
+
+test('bare and bolded headers mix in one block', () => {
+  const { findings } = audit(block(
+    'Claims\n- `a` · vision · "framing" ← none-owed\n\n' +
+    `**Sources**\n- real ${STAMP} https://example.com — [practitioner direct] x. fallback: none.\n\n` +
+    'Frameworks\n- CE · [borrow:x] · law:none · ← real\n'
+  ));
+  assert.equal(codes(findings).includes('SOURCE-ORPHAN'), false,
+    'the bare Frameworks header must count as a citation site');
+});
+
+test('a field header the parser cannot register → FIELD-UNPARSED', () => {
+  const { findings } = audit(block(
+    '### Claims\n- `n` · detail · "a number" ← ghost\n'
+  ));
+  const f = findings.find(x => x.code === 'FIELD-UNPARSED');
+  assert.ok(f && f.sev === 'ERROR',
+    'an unrecognised header spelling must error, not silently parse to nothing');
+});
+
+test('prose inside a field is never mistaken for a header', () => {
+  const { findings } = audit(block(
+    'Claims\n- `a` · vision · "Stance is what the field holds" ← none-owed\n\n' +
+    'Stance `[stance:2026-07-01 level:L2]`\n- holds: Sources and Frameworks both matter\n'
+  ));
+  assert.equal(codes(findings).includes('FIELD-UNPARSED'), false);
+  assert.equal(codes(findings).includes('CLAIM-MALFORMED'), false);
+});

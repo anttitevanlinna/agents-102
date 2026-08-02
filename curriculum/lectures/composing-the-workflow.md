@@ -5,7 +5,7 @@ You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map o
 ## A skill's footprint is where its job lands
 
 <figure class="diagram">
-<svg viewBox="0 0 1200 560" role="img" aria-label="The sea-passage chart re-annotated: the student's kit placed where each job lands (a verifier at one fix, a test-strategy across one leg, the next mapped move at the start pier), an under-drawn pilot bracket over the whole trip, and a bold hand-off arrow between two legs showing a workflow with no orchestrator." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
+<svg viewBox="0 0 1200 560" role="img" aria-label="The sea-passage chart re-annotated: your kit placed where each job lands (a verifier at one fix, a test-strategy across one leg, the next mapped move at the start pier), an under-drawn pilot bracket over the whole trip, and a bold hand-off arrow between two legs showing a workflow with no orchestrator." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
 <defs>
  <pattern id="sk-reefhatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
  <line x1="0" y1="0" x2="0" y2="7" stroke="#a05a2c" stroke-width="1" opacity="0.45"/>

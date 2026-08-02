@@ -1,6 +1,6 @@
 # Read the rules *hiding in a ticket*
 
-**Time:** about 10 minutes, on your own.
+**Time:** about 15 minutes, on your own.
 
 **What you do:** paste one real ticket from your tracker into Claude and have it infer how your team uses the fields, then propose a few backlog-refinement rules you can fold into your task-shaping file.
 
@@ -21,8 +21,8 @@ Ask Claude to infer how your team uses its tracker from that one ticket, and to 
 ## Fold the field-use rules into your file
 
 - One ticket gives basic rules, not policy. Which fields matter, which labels carry meaning, which wording signals "too big," which status changes imply ownership.
-- The rules fold back into the file. These field-use rules become the first add-on to the task-shaping `.md` file you saved in Module 2, or a small companion file beside it.
-- Depth comes from more tickets. Three to five tickets from different work types surface stronger rules than one ticket, and Claude should keep separating strong signals from guesses as the sample grows.
+- The rules fold back into the file, one call each: tell Claude which to keep, which to change, and which to drop. These field-use rules become the first add-on to the task-shaping `.md` file you saved in Module 2, or a small companion file beside it.
+- Depth comes from more tickets. Paste in a second ticket from a different kind of work and ask Claude which rules still hold. Three to five tickets from different work types surface stronger rules than one ticket, and Claude should keep separating strong signals from guesses as the sample grows.
 
 ## What happened
 

@@ -133,7 +133,7 @@ Come to Module 6 without the packaged run and you'll be reading one run while th
 
 Optional. Skipping does not break Module 6. All three fit the Module 5 to Module 6 gap.
 
-**Read, Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it).** Klaassen runs the verifier 10 consecutive times before trusting it, and uses per-feedback specialised agents in parallel to triage review. Reliability is a number you measure, not a vibe you sense, and one verifier can become a panel. You'll recognise both in your own artefacts when Module 6 gets there.
+**Read, Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it).** Klaassen runs the verifier 10 consecutive times before trusting it, and uses per-feedback specialised agents in parallel to triage review. Reliability is a number you measure, not a vibe you sense, and one verifier can become a panel. You'll recognise both in your own artefacts.
 
 **Read, [Checks that push back](trainings/agentic-engineering-101/supplementary/backpressure.md).** The verifier from this module is the first gate in a bigger story: checks that push back inside the loop are what let a run reach farther than you can watch. The loop assembled next is this story, with your own artefacts in it.
 

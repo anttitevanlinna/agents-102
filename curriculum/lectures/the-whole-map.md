@@ -197,5 +197,5 @@ Format → `curriculum/backing-format.md`.
 
 <!-- /backing -->
 
-**Quality:** compendium-audited 2026-08-02 (writing@c9f9c88 story@c9f9c88 technical@c9f9c88 behavior@c9f9c88 pedagogy@c9f9c88 strategy@c9f9c88 slides@c9f9c88)
-- judges @c9f9c88: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-02 (writing@1c765f2 story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@1c765f2)
+- judges @1c765f2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

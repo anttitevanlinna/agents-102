@@ -263,8 +263,8 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 
 **§3 disposition (was 4×M5 + 5×M6 above the fence; now zero):** "walked into M5" → lede recast without ref · "start of M5" (failure modes) → folded into slide-1 mapping bullets · "M5 teaches the extend camp" → "the extend camp is the one you just ran" · "Bridge to M6" (all 5×M6 + "M5 asks") → module file `## Next` per §3; no refs remain above the fence.
 
-**Quality:** compendium-audited 2026-08-02 (story@d1b6f2c technical@d1b6f2c behavior@d1b6f2c pedagogy@d1b6f2c strategy@d1b6f2c slides@d1b6f2c)
-- judges @d1b6f2c: writing REVISE (1/1 see instances/ae101--lecture--what-packaging-is.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-02 (story@d1b6f2c technical@1c765f2 behavior@1c765f2 pedagogy@d1b6f2c strategy@1c765f2 slides@d1b6f2c)
+- judges @1c765f2: writing REVISE (1/1 see instances/ae101--lecture--what-packaging-is.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - source-freshness stamped 2026-05-25; MiniJinja / getpushtoprod / how-Every-codes stamps re-verified 2026-07-02 (stamps in Source verification block; run `source-freshness.sh --target <cohort-date>`).
 **Lecture meta:** *10–15 min closing lecture for M5, deck-shaped. Names the three-pattern after you have built each piece. Earns the name from felt evidence, not from a slide deck delivered cold. The M6 bridge lives in the module file's `## Next`, not here.*

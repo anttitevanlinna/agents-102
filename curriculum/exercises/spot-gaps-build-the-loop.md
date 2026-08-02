@@ -94,8 +94,8 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain; widget/label chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. (The three bolded shape handles that survived that pass left with the 2026-08-01 authoring-sequence cut.)
 
-**Quality:** compendium-audited 2026-08-02 (writing@d1b6f2c story@d1b6f2c technical@c9f9c88 behavior@c9f9c88 pedagogy@c9f9c88 strategy@c9f9c88)
-- judges @c9f9c88: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (verify-refuted), slides REVISE (1/1 see instances/ae101--exercise--spot-gaps-build-the-loop.slides.json)
+**Quality:** compendium-audited 2026-08-02 (writing@d1b6f2c story@d1b6f2c technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2)
+- judges @1c765f2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (verify-refuted), slides REVISE (1/1 see instances/ae101--exercise--spot-gaps-build-the-loop.slides.json)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - re-audit @796293b 2026-05-31: writing PASS, pedagogy PASS — steer-callout gained a premature-completion recovery line (§48/§62) + a render-as-HTML affordance callout after the shapes prompt (§50/§53/§62 hold)
 

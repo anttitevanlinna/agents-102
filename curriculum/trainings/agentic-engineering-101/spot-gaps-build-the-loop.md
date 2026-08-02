@@ -86,8 +86,8 @@ Antti
 
 **Human close's "talk, compare, no prompts" stays in body — `check_pedagogy.md` §27 mode-defining-cue carve-out (maintainer call).** The cue defines the slot's mode against a training that is otherwise prompts; the round's form (pairs, whole-room, write-then-share) stays the trainer's per the strategy doc's M6 Debrief spec. Future judges should not re-flag.
 
-**Quality:** compendium-audited 2026-08-02 (writing@9089694 story@9089694 technical@9089694 behavior@9089694 slides@9089694)
-- judges @9089694: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy REVISE (1/0 see instances/ae101--module--spot-gaps-build-the-loop.pedagogy.json), strategy REVISE (1/0 see instances/ae101--module--spot-gaps-build-the-loop.strategy.json), slides PASS (verify-refuted)
+**Quality:** compendium-audited 2026-08-02 (writing@1c765f2 story@1c765f2 technical@1c765f2 behavior@1c765f2 slides@1c765f2)
+- judges @1c765f2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy REVISE (1/0 see instances/ae101--module--spot-gaps-build-the-loop.pedagogy.json), strategy REVISE (1/0 see instances/ae101--module--spot-gaps-build-the-loop.strategy.json), slides PASS (verify-refuted)
 - cross_module: PASS see instances/ae101--prework-m6.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

@@ -18,7 +18,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Neither of the two body edits touches a referent. chunk 1 line 13's 'passage' is a plain noun with no antecedent to resolve (unlike the retired 'surface', it makes no claim on prior context). chunk 5 line 43's 'Kieran Klaassen at Every calls it compound engineering' is fully self-contained on this chunk (name + affiliation + claim in one clause) regardless of the maintainer block's note that he is also named in compound-and-close.md — a reader who never saw that file still gets a complete attribution here. 'same shape, more names' at line 43 has 'that' anchored to 'his loop' one clause prior, in-chunk. No pronoun/demonstrative anywhere in the body fails to resolve under the sequential read.",
+      "evidence": "RE-JUDGED after the line-13 edit. chunk 1 line 13's 'passage' is a bare noun ('the wrong passage') with no antecedent to resolve — unlike the retired 'surface', it stakes no claim on prior context; a reader parses it as 'a stretch of writing' on the spot. 'went off' is a verb, not a referent, so rule 1 (which governs pronouns/demonstratives/terms needing an antecedent) doesn't reach it at all. chunk 5's Klaassen sentence ('Kieran Klaassen at Every calls it compound engineering') is fully self-contained within its own chunk (name + affiliation + claim in one clause); 'that' in 'same shape, more names' anchors to 'his loop' one clause prior, in-chunk. No pronoun/demonstrative anywhere in the body fails to resolve under the sequential read.",
       "fix_hint": null,
       "blocking": true
     },
@@ -28,7 +28,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Unaffected by the two edits. chunk 5's 'The story of building this training is the shape you just ran on your own repo' is a closer summing its own deck. No positional pointer at another file by position anywhere in the body.",
+      "evidence": "Unaffected by the edits under review. chunk 5's 'The story of building this training is the shape you just ran on your own repo' is a closer summing its own deck, not a positional pointer at another file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -38,7 +38,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Unaffected by the two edits. chunk 5's backward beats resolve against orient-and-introspect.md, fix-tests-first.md/diagnose-and-resend.md, and compound-and-close.md, all current M1 exercises per getting-going.md's include order.",
+      "evidence": "Verified against the CURRENT M1 include order in getting-going.md (lines 29-37): exercises/orient-and-introspect.md, exercises/fix-tests-first.md, exercises/compound-and-close.md, then this lecture, in that order. chunk 5's backward beats ('the retro you just ran' = compound-and-close's retro; 'you let Claude read your repo, saw the wrongness, named it, corrected it' = the orient-and-introspect/fix-tests-first arc) resolve against exercises that currently exist and currently precede this lecture in M1. No dead-beat reference.",
       "fix_hint": null,
       "blocking": true
     },
@@ -48,7 +48,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-before-reveal construction anywhere in the body; this is a narrative lecture, not an interactive demo beat.",
+      "evidence": "No guess-before-reveal construction anywhere in the body; this is a narrative closer lecture, not an interactive demo beat.",
       "fix_hint": null,
       "blocking": true
     },
@@ -58,7 +58,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "All six chunks carry multi-paragraph, self-carrying content; none is a bare wait-state or single context-dependent bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -68,7 +68,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 5 header 'You just ran the compound loop' holds against the reworded body: 'same shape, more names' affirms one loop under two labelings, same singular claim the header makes, and more directly than the retired 'the names differ, the loop doesn't' did. All other headers match their chunk content.",
+      "evidence": "chunk 1 header 'Wrong is how steering gets in' still holds against the reworded line 13 ('Some went off in the wrong passage' reads as a rule misfiring in the wrong place — still a steering-correction beat). chunk 5 header 'You just ran the compound loop' holds against 'same shape, more names' (one loop, two labelings — the header's singular claim, stated more precisely than the retired wording). All other headers match their chunk content unaffected by either edit.",
       "fix_hint": null,
       "blocking": false
     },
@@ -78,7 +78,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "RE-JUDGED. Prior REVISE targeted line 43's retired clause 'the names differ, the loop doesn't', reading it as a 'Number + own retraction' hedge stretched from a single number to a sequence-count (four-token loop vs eight-token loop reconciled by bare assertion). The replacement, 'same shape, more names', does not fit that sub-item on a plain read: it is a flat equivalence claim, not a stated-then-undercut number — nothing is retracted, no hedge word ('roughly', 'could be more or less', 'give or take') appears, and no specific count is asserted and then walked back. It reads as a structural claim (the eight named stages are a finer cut of the same four-stage shape), which is what the sentence actually says. Rest of the rule checked clean across all six chunks: no 'Not X. Not Y. Z.' construction anywhere; chunk 1's triple ('Some were overscoped. Some fired on the wrong passage. Some held for one kind of content and broke for another') has a third leg carrying new concrete content (content-type failure, distinct from breadth and placement) and passes the third-leg test; no self-grading superlatives; no abstraction-noun stacks; no verb triplets with an empty leg. Independent of the maintainer's decision to keep the sequence (recorded in the backing block, and echoed in check_writing.md #11 / check_pedagogy.md §14 carve-outs added for the writing/pedagogy classes) — on check_slides.md's own rule 7 text, the reworded line simply no longer has the shape the rule bans.",
+      "evidence": "Re-checked all sub-items across all six chunks. Line 13's triple ('Some were overscoped. Some went off in the wrong passage. Some held for one kind of content and broke for another') keeps three distinct concrete failure modes (breadth / placement / content-type) — third leg still carries new content, passes the third-leg test; the word swap ('fired'→'went off') didn't change the category of the middle leg. Line 43's 'same shape, more names' is a flat equivalence claim, not a stated-then-undercut number: nothing is retracted, no hedge word appears, no specific count is asserted and walked back — it reads as a structural claim (eight named stages are a finer cut of the same four-stage shape), independent of the maintainer's decision to keep the printed sequence. No 'Not X. Not Y. Z.' construction anywhere (line 9's 'Not wrong the way a bad draft is wrong... Wrong the way any first version is wrong...' is a single negation-then-assertion contrast, not the banned two-negations-plus-Z shape). No self-grading superlatives. No abstraction-noun stacks. No verb triplets with an empty leg. Line 39's paired fragments ('Over ninety minutes, not a year. On a trivial bug, not a whole training.') are pairs, which the rule explicitly allows ('cut to a pair').",
       "fix_hint": null,
       "blocking": false
     },
@@ -88,8 +88,8 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "REVISE",
       "chunks_flagged": [1],
-      "evidence": "RE-JUDGED. chunk 1 \"Wrong is how steering gets in\": line 13: \"Some fired on the wrong passage.\" — the prior flag named two stacked dialect terms ('fired' + 'surface'); 'surface' is gone, but 'fired' survives alone and still trips this rule on its own. The compendium's own illustrative list of banned maintainer dialect names 'firing' verbatim, alongside 'compendium' and 'forcing function' — not a borderline case needing inference. Unlike 'surface', which the compendium explicitly carves out for ordinary-verb use ('surface the issue'), rule 8 gives 'firing'/'fired' no equivalent carve-out for a non-jargon sense, and none applies here: the subject of the sentence is 'the rules' (this training's own compendium rules), and 'fired' is used in exactly the sense content-rules.md ('Fires when…') and this very compendium ('Fires PER CHUNK') use it — a rule activating on a passage. That is the jargon meaning applied to its jargon referent, not a homograph escaping into ordinary English (contrast 'the engine fired', which isn't present). A student with no access to the compendium/rule-firing system cannot parse 'fired on the wrong passage' as 'applied to the wrong kind of writing' without already knowing this repo's internal vocabulary for rule activation.",
-      "fix_hint": "Recast without 'fired' — e.g. 'Some applied to the wrong kind of writing' or 'Some didn't fit the passage they were meant for' — same plain-English swap already made for 'surface'.",
+      "evidence": "The targeted fix at line 13 holds, checked on the rule's own intent rather than assumed clean because the named term is gone. 'went off' is not in rule 8's list and is not maintainer dialect under any reading: it never appears anywhere in check_*.md or content-rules.md as a term of art (grepped, zero hits), and it resolves via the ordinary English idiom for something triggering/misapplying (an alarm going off, a trap going off) — no knowledge of this repo's 'fires' vocabulary is needed to parse 'went off' as 'activated/applied.' 'passage' is even more clearly plain: this repo's own eval-judge files use 'passage' dozens of times in exactly the dictionary sense ('quote passages', 'per-passage verdicts') — it is not part of any internal taxonomy (unlike 'surface', which content-rules.md itself uses as a jargon organizing noun) and makes no claim on insider knowledge. Both hold as a clean fix. BUT re-running the rule across the whole chunk (not just the edited sentence) surfaces an UNFLAGGED violation the two prior fix cycles missed: chunk 1, line 11, one of the three quoted rule-exhibits reads *\"Forcing functions stay, scripted reactions go.\"* — 'forcing function' is named verbatim in rule 8's own illustrative list, immediately beside 'firing' and 'compendium' (the two terms already fixed in this file). Grepped confirmation that this is genuine maintainer dialect, not a term with independent plain-English standing in this repo: every other occurrence of 'forcing function' across curriculum/trainings and curriculum/exercises sits inside maintainer blocks, watch-for tables, or trainer-facing 'per check_pedagogy.md rule 47' rows — never once earned or used in student-facing body prose anywhere in AE101. The maintainer block's own 'Engineer-audience' carve-out on this file names exactly three technical terms cleared for this register — subagent, compendium, plan mode — and pointedly does not include forcing function, which reads as a considered exclusion, not an oversight. Same failure mode the 'fired' fix-cycle named in its own commit message ('I reasoned about what the rule probably covered instead of reading its own examples') — here applied to a location neither fix cycle checked, because both were scoped to the single sentence under repair rather than the whole chunk. The backing block's own claim `corrections-became-rules` treats this quote as a real, verbatim, must-stay-true rule-text exhibit (compendium-rule-quotes source: 'These are quoted as true, so they must stay true'), and its own stated fallback is 'any three real rules spanning pedagogy, formatting and research — the spread is what the beat needs, not these particular three' — so swapping which pedagogy rule gets quoted is a maintainer-sanctioned move, not an invention.",
+      "fix_hint": "Swap the 'Forcing functions stay, scripted reactions go' quote for a different real rule from check_pedagogy.md/check_prompts.md/check_research_claims.md that doesn't carry a banned dialect term — the backing block's own fallback already authorizes this substitution; do not paraphrase 'forcing function' in place, since the backing block requires the quote stay verbatim-true to a real rule.",
       "blocking": true
     },
     {
@@ -98,7 +98,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Unaffected by the two edits. Exactly two bold spans in the whole body: '**Understanding is the artifact.**' (chunk 4, line 33) and '**compound engineering**' (chunk 5, line 43) — both coined-term handles, no whole-sentence bolding.",
+      "evidence": "Unaffected by the edits under review. Exactly two bold spans in the whole body: '**Understanding is the artifact.**' (chunk 4, line 33) and '**compound engineering**' (chunk 5, line 43) — both coined-term handles, no whole-sentence bolding, no bolded bullet-leads (this file is prose paragraphs, not bulleted).",
       "fix_hint": null,
       "blocking": false
     },
@@ -108,7 +108,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Unaffected by the two edits. Shared lecture file, standard `##`-chunked body, included under the host module's phase wrapper (getting-going.md), reaches the composed Slides deck.",
+      "evidence": "Verified against getting-going.md (M1 module file): this lecture is listed in the module's include order (line 37, 'How this training was built') alongside the M1 exercises, reaching the composed Slides deck via the module's phase wrapper same as any other M1 lecture.",
       "fix_hint": null,
       "blocking": false
     },
@@ -118,12 +118,11 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No numbered '## Phase N:' or '## N.' step headers in this file; all headings are named beats, not content ordinals.",
+      "evidence": "No '## Phase N:' or '## N.' step headers in this file; all five `##` headings ('Wrong is how steering gets in', 'The rules started doing the work', 'Then the agents started checking the agents', 'Built to forgive', 'You just ran the compound loop') are named beats, not content ordinals.",
       "fix_hint": null,
       "blocking": false
     }
   ],
-  "note_double_naming": "Task also asked for an independent slides-grounds read of the maintainer block's Klaassen-double-naming attestation (line 55). No slides-class rule is tripped by it: rule 1 is satisfied because this chunk's own Klaassen sentence is fully self-contained (name + affiliation + claim in one clause), so a reader never having seen compound-and-close.md still gets a complete attribution here; rule 7's cadence caps operate per-chunk within one file, so a second mention of the same name in a DIFFERENT file is out of that rule's reach entirely. No disagreement to register on slides grounds.",
   "blocking_findings_count": 1,
   "todos_count": 0
 }

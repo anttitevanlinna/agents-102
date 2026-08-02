@@ -10,7 +10,7 @@ The thirty bulletpoints became module prototypes, and all of them were wrong. No
 
 Each wrongness was specific and namable. A phrase that smuggled consultancy-voice into an engineering lecture. An exercise that asked a real engineer to do something insulting. A module that wanted to feel tidy where the feeling should have been unease. Each thing pointed at turned into a rule. *"Forcing functions stay, scripted reactions go."* *"Every prompt block gets a one-sentence lead-in with a command verb."* *"Every claim about Claude Code gets re-checked before each cohort."*
 
-The rules were not right the first time either. Some were overscoped. Some fired on the wrong passage. Some held for one kind of content and broke for another. They got sharpened the same way the drafts did: used, corrected, rewritten.
+The rules were not right the first time either. Some were overscoped. Some went off in the wrong passage. Some held for one kind of content and broke for another. They got sharpened the same way the drafts did: used, corrected, rewritten.
 
 ## The rules started doing the work
 
@@ -59,8 +59,8 @@ The loop is the shape. The bug today was the excuse.
 - **Subagent gets the same treatment: named, never explained.** M3 owns the first subagent; the build-story names the machinery without glossing it. Do not re-add a definitional parenthetical.
 - **`Built to forgive` promises artifacts are rebuildable.** The promise holds only while every cross-module edge onto an M1–M3 artifact stays `conditional:`. A prompt that hard-requires an artifact unconditionally breaks this slide — check here first. Re-check command in the backing block under `prompt-registry-conditional-edges`.
 
-**Quality:** compendium-audited 2026-08-02 (writing@eaae8cd story@ce6d6ae technical@366047e behavior@366047e pedagogy@c9f9c88) — SHAs stale against current body; re-audit before ship.
-- judges @ce6d6ae: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy REVISE (1/0 see instances/ae101--lecture--how-this-training-was-built.strategy.json), slides REVISE (1/1-see-instances/ae101--lecture--how-this-training-was-built.slides.json)
+**Quality:** compendium-audited 2026-08-02 (writing@a71e43c story@ce6d6ae technical@366047e behavior@366047e pedagogy@a71e43c) — SHAs stale against current body; re-audit before ship.
+- judges @a71e43c: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy REVISE (1/0 see instances/ae101--lecture--how-this-training-was-built.strategy.json), slides REVISE (1/1-see-instances/ae101--lecture--how-this-training-was-built.slides.json)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Understand (the compound loop as a pattern, before running it).

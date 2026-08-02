@@ -30,11 +30,11 @@ You pasted one real ticket, and Claude inferred how your team uses fields like s
 
 <!-- maintainer -->
 
-**Homework exercise — M2 ticket-inference beat, pulled out of `extract-the-task-shaping-rule` where it already lived as an optional "if time remains" step. Promoting it to its own take-home file keeps the in-class exercise focused on the task-shaping rules file.** No Quality line yet: this file needs a `curriculum-pre-ship-audit` pass before ship. Prompt `extract-the-task-shaping-rule-4` is re-parented here (body unchanged; `origin:` frontmatter points at this file).
+**Homework exercise — M2 ticket-inference beat, pulled out of `extract-the-task-shaping-rule` where it already lived as an optional "if time remains" step. Promoting it to its own take-home file keeps the in-class exercise focused on the task-shaping rules file.** Prompt `extract-the-task-shaping-rule-4` is re-parented here (body unchanged; `origin:` frontmatter points at this file).
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (infer field conventions from one ticket) + Apply (fold the rules into the file).
-- **Time:** about 10 min, homework after Module 2. Optional; the required M2 artifact is the task-shaping `.md`, this extends it.
+- **Time:** about 15 min, homework after Module 2. Optional; the required M2 artifact is the task-shaping `.md`, this extends it.
 - **Session continuity:** self-contained. The prompt needs only one pasted ticket; the task-shaping `.md` it folds into is on disk, resolvable from any session in the repo.
 
 **Conversational fold + n=1 first read — deliberate exceptions (2026-08-02, Antti).** Two judge findings accepted as design, not defects. (a) `check_pedagogy §16` (fold call in body, no fenced prompt): the fold is a conversational move in the same chat as `extract-the-task-shaping-rule-4` — a manufactured fold prompt is too prescriptive and mechanical for a 15-minute homework (§16 Boundary 2). (b) `check_pedagogy §9` (read runs on one ticket): n=1 is the design — this is a first read, its evidential limit stated in body ("one ticket gives basic rules, not policy"); the second-ticket ask is offered, not required, and depth belongs to the student's own tickets on their own time. Future judges should not re-flag either.

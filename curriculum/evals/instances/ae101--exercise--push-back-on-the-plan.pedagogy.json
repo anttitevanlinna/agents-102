@@ -1,7 +1,7 @@
 {
   "class": "pedagogy",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/push-back-on-the-plan.md",
-  "verdict": "PASS",
+  "verdict": "REVISE",
   "training": "ae101",
   "rules_evaluated": [
     {
@@ -98,9 +98,9 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 11,
       "rule_lead": "Delegation - student brings, Claude screens",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "L17: 'ask Claude to surface three candidates from recent issues, PRs, or TODO comments' - issues/PRs access (GitHub API/gh CLI) isn't named as an available connector, unlike TODO comments which are plain repo grep.",
+      "fix_hint": "Either name the connector this assumes (e.g. gh CLI) or narrow the fallback to repo-local surfaces (TODO comments, recent commits) that need no external access.",
       "blocking": false
     },
     {
@@ -116,9 +116,9 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 13,
       "rule_lead": "Artifact-realism check",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "L17: same issues/PRs fallback as §11 - accessibility of 'recent issues, PRs' as a live source for Claude isn't verified/named.",
+      "fix_hint": "Confirm gh CLI or equivalent is a fair default for AE101's engineer audience, or drop issues/PRs from the fallback list.",
       "blocking": false
     },
     {
@@ -134,9 +134,9 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 15,
       "rule_lead": "Auto-fire sim+eval after significant rewrite",
-      "verdict": "REVISE",
-      "evidence": "Maintainer block, two separate notes (2026-07-09 emphasis pass and 2026-07-10 read-whole-exception pass) both end with the self-admission 'Quality per-class SHAs predate this pass; re-audit before ship.' The Quality line itself (L119-121) still cites 'compendium-audited 2026-07-08' at SHA 1a9e10b for pedagogy/writing/story/technical/behavior/strategy, predating both maintainer passes.",
-      "fix_hint": "Once the full seven-class + cross_module re-audit lands on this revision, refresh the Quality line's per-class SHAs to the current commit.",
+      "verdict": "PASS",
+      "evidence": "Quality block (L124-126) cites compendium-audited 2026-07-26 with per-class SHAs including pedagogy@b3143a4 and a judges-run line at @9697944, current relative to the maintainer notes above it (2026-07-29 latest). No stale-SHA gap found on inspection.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -386,9 +386,9 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 44,
       "rule_lead": "Plug points + UX",
-      "verdict": "REVISE",
-      "evidence": "Plug points (44a) are well-named and structurally invited (student's own repo, own backlog task, sponsor-stated rules home). But 44b UX fails: the body claims 'one question at a time' four separate times (L7 'What you build', L59 pre-action lead-in, L67 'Answer the branches...', L109 'What happened' recap), while the actual fenced prompt push-back-on-the-plan-2.md batches 'three at a time' three separate times ('Walk down every unresolved branch of the design tree three at a time', 'Ask me three questions at a time', 'I'll confirm or correct three at a time'). A fast operator reading prompt-to-prompt hits a 'wait, what?' count mismatch between what the body promises and what the pasted prompt actually requests.",
-      "fix_hint": "Reconcile the body's 'one question at a time' framing (L7, L59, L67, L109) with the fence's actual 'three at a time' batching in push-back-on-the-plan-2.md, in whichever direction is the intended design.",
+      "verdict": "PASS",
+      "evidence": "Plug points named specifically (student's own repo, own backlog task, sponsor-stated rules home) and structurally invited. Body's 'three questions at a time' framing (L7, L60, L68, L110) matches the fenced prompt push-back-on-the-plan-2.md's own 'three at a time' batching exactly — no count mismatch for a fast operator reading prompt-to-prompt.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -467,10 +467,10 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 53,
       "rule_lead": "Pre-action framing doesn't preview prompt's payoff",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
+      "verdict": "REVISE",
+      "evidence": "L7 'What you build' line pre-announces almost verbatim the answer Phase 5 is designed to have the student discover for themselves: 'Your own two push-backs, in your voice, catch what a human catches. A second-pass walk-down ... catches the branches you can't see.' Compare L102's expected P5 discovery: 'you catch what a human catches (specificity, voice-of-experience) ... the second read catches ... branches you didn't notice, dependencies you didn't name, side-effects you didn't price.' The opening framing states the conclusion the Evaluate-level compare-the-two-reads beat (named in the file's own Meta section as the module's Evaluate beat) is supposed to surface through experience, not through a pre-read.",
+      "fix_hint": "Blunt the 'catches what a human catches / catches the branches you can't see' claim in the top What-you-build line to an activity/artifact description, so P5's compare-the-two-reads beat stays a genuine discovery rather than a confirmation of a claim already made at the top.",
+      "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
@@ -539,9 +539,9 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 62,
       "rule_lead": "Callouts next to prompts: steer, don't pre-empt",
-      "verdict": "REVISE",
-      "evidence": "The Phase 4 callout ('If it feels sluggish, ask why...') is a correctly-shaped steering callout. But the maintainer-block note '**Prompt register - push-back-on-the-plan-4 deliberately short.**' (near end of maintainer block, defending the register of the closing prompt 'are these rules auto-loaded to each session context?') points at a prompt that no longer lives in this file: push-back-on-the-plan-4.md's own 'origin' frontmatter now reads 'agentic-engineering-101/plan-mode-done-right', and grep confirms {{prompt:push-back-on-the-plan-4}} is fenced only in trainings/agentic-engineering-101/plan-mode-done-right.md (L50), not here. This file's prompt chain is only -1, -2, -2-askuserquestion, -2-original, -3. The note is a ghost pointer defending content that has moved.",
-      "fix_hint": "Drop the push-back-on-the-plan-4 maintainer note from this file, or relocate it to plan-mode-done-right.md where that prompt now actually lives.",
+      "verdict": "PASS",
+      "evidence": "The 'If it feels sluggish, ask why' (P4) and 'Too many low-level questions? Steer up' callouts both teach generalizable steering moves rather than naming one rot-prone failure mode.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -557,12 +557,21 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 64,
       "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery",
-      "verdict": "PASS",
-      "evidence": null,
+      "verdict": "REVISE",
+      "evidence": "L195's maintainer note '**Prompt register — push-back-on-the-plan-4 deliberately short.**' defends the register of a prompt this file no longer fences. Grep confirms {{prompt:push-back-on-the-plan-4}} appears only in trainings/agentic-engineering-101/plan-mode-done-right.md (L50); push-back-on-the-plan-4.md's own frontmatter 'origin' now reads 'agentic-engineering-101/plan-mode-done-right', not this exercise. This file's own prompt chain is only -1, -2, -2-askuserquestion, -2-original, -3 — the note is stale, pointing at content that migrated to another file.",
+      "fix_hint": "Drop the push-back-on-the-plan-4 maintainer note from this file, or relocate it to plan-mode-done-right.md where that prompt now actually fires.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 65,
+      "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate",
+      "verdict": "N/A",
+      "evidence": "Exercise doesn't load-bear on a prior module's send-off artifact; Phase 1 draws from the student's own current backlog task, not a required M1 hand-off artifact.",
       "fix_hint": null,
       "blocking": false
     }
   ],
-  "blocking_findings_count": 0,
+  "blocking_findings_count": 1,
   "todos_count": 3
 }

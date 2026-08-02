@@ -11,7 +11,7 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Module file (run-the-first-experiment.md line 94) places the lecture link AFTER the send-off prompt ({{prompt:ae101-m4-take-task-end-to-end}}), under the heading 'The task is running. One open question while it works.' The lecture names the personal/team/company pattern the student has been living inside CLAUDE.local.md and CLAUDE.md since M1 — recognition after four modules of walking it, not an abstract claim before any exercise.",
+      "evidence": "Module file (run-the-first-experiment.md:98) places the lecture link under '## Closing', after the send-off prompt has fired. training-architecture.md:61 confirms: 'The M4 closing lecture will-company-memory-emerge.md poses it and leaves it deliberately unresolved.' The lecture names the personal/team/company pattern the student has been living inside CLAUDE.local.md and CLAUDE.md since M1 — recognition after four modules of walking it, not an abstract claim before any exercise.",
       "fix_hint": null,
       "blocking": false
     },
@@ -29,7 +29,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Body (lines 1-21, above the maintainer fence) carries zero M[0-9] or module-name references. 'since your first rule' (line 9) is lived-arc phrasing, not a module-number reference — matches the file's own section-3 sweep note (2026-07-02): 'zero M[0-9]/module-name hits above the fence.' All cross-module framing (M4/M5 placement, the M4-M5 cliffhanger) lives below the fence in the maintainer block, where the rule doesn't apply.",
+      "evidence": "Body (lines 1-21, above the maintainer fence at line 23) carries zero M[0-9] or module-name references — reconfirmed this pass by direct grep, matching the file's own section-3 sweep note (line 94): 'zero M[0-9]/module-name hits above the fence.' 'since your first rule' (line 9) is lived-arc phrasing, not a module-number reference. All cross-module framing (M4/M5 placement, the M4-M5 cliffhanger) lives below the fence in the maintainer block, where the rule doesn't apply.",
       "fix_hint": null,
       "blocking": false
     },
@@ -47,8 +47,8 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded (~210 words, ≤6 bullets).",
       "verdict": "PASS",
-      "evidence": "Mechanically verified: `node scripts/check-slide-size.js --file curriculum/lectures/will-company-memory-emerge.md` → '3 slides, 0 oversized, every slide within limits.' Manual count confirms: slide 1 = 178w/5 bullets, slide 2 = 127w/2 bullets, slide 3 = 109w/2 bullets — all under the 210w/6-bullet ceiling.",
-      "fix_hint": null,
+      "evidence": "`scripts/check-slide-size.js` is not present at that path in the current tree (node MODULE_NOT_FOUND on re-run this pass), so verified by manual count instead: `awk`+`wc -w` on each slide's bullet lines gives slide 1 (lines 6-11) 179 words / 5 bullets, slide 2 (lines 14-16) 128 words / 2 bullets, slide 3 (lines 19-21) 110 words / 2 bullets — all under the 210-word / 6-bullet ceiling.",
+      "fix_hint": "Missing script path is a tooling gap for the next audit pass to flag (scripts reorganized since 2026-07-26), not a content defect — recorded as a todo, not blocking.",
       "blocking": false
     },
     {
@@ -56,7 +56,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
-      "evidence": "File has zero fenced prompt blocks and zero {{prompt:<key>}} markers (confirmed: `node scripts/expand-md.js` on the file produces byte-identical output — nothing to expand). This is a reflective closer lecture, not an exercise; the forcing-function placement rule targets copy-paste exercise fences, which this file structurally does not carry.",
+      "evidence": "File has zero fenced prompt blocks and zero {{prompt:<key>}} markers. This is a reflective closer lecture, not an exercise; the forcing-function placement rule targets copy-paste exercise fences, which this file structurally does not carry.",
       "fix_hint": null,
       "blocking": false
     },
@@ -65,7 +65,7 @@
       "rule_index": 27,
       "rule_lead": "Body teaches the work; trainer manages the room outside text.",
       "verdict": "PASS",
-      "evidence": "Re-read of current body (lines 1-21): no authored conversation cues, no 'discuss with the person next to you,' no 'share what you noticed,' no pause-cue sentences. Body stays about the artifact (the student's own CLAUDE.local.md/CLAUDE.md/company conventions) and the open question, never about cohort pacing or comparison.",
+      "evidence": "Re-read of current body (lines 1-21): no authored conversation cues, no 'discuss with the person next to you,' no 'share what you noticed,' no pause-cue sentences. Body stays about the artifact (the student's own CLAUDE.local.md/CLAUDE.md/company conventions) and the open question, never about cohort pacing or comparison. Cohort-management (running the disagreement as a live discussion) is explicitly delegated to the trainer in the maintainer block (line 34), outside student-facing text.",
       "fix_hint": null,
       "blocking": false
     },
@@ -74,7 +74,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named and lands; resolving early steals next module's beat.",
       "verdict": "PASS",
-      "evidence": "This is a TEACHING beat (recognition + open question, not mechanical setup), so the 8+/10 mood-floor applies. Trace phase 1 mood_score: 8. Close mood_score: 8. M4 mood contract (curious readiness, from content-strategy-agentic-engineering-101.md M4 row) lands: the persona reads the three-layer taxonomy as recognition of files already in use, not new instruction, and closes wondering (not worrying) about their own company's conventions. The company-layer question stays genuinely unresolved through the close — no premature answer that would flatten the open-question mood into a solved one.",
+      "evidence": "This is a TEACHING beat (recognition + open question, not mechanical setup), so the 8+/10 mood-floor applies. Trace phase 1 mood_score: 8. Close mood_score: 8. M4 mood contract (curious readiness — verified verbatim against content-strategy-agentic-engineering-101.md's M4 row) lands: the persona reads the three-layer taxonomy as recognition of files already in use, not new instruction, and closes wondering (not worrying) about their own company's conventions. The company-layer question stays genuinely unresolved through the close — no premature answer that would flatten the open-question mood into a solved one.",
       "fix_hint": null,
       "blocking": true
     },
@@ -101,14 +101,14 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity — consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict.",
       "verdict": "PASS",
-      "evidence": "Front-run check: cross-referenced against content-strategy-agentic-engineering-101.md's M5 section (Ronacher's three-pattern: reference artifact + plan.md + external verifier) and M6 section (second-skill authoring, team-kit accretion) — the lecture names neither the three-pattern nor team-kit accretion; 'team kit' in M6 is scoped to the team layer, not a company-wide layer, so no collision with this lecture's still-open company-layer question. Big Idea fidelity: M4's Big Idea is 'walk what you've built... send it off un-packaged... learn what the agent does with your system as it stands' (run-the-first-experiment.md); this lecture runs orthogonal to that arc (a side reflective question fired mid-run) without touching how the run will go — matches the maintainer's own stated boundary against 'reading-the-return's M5-prep job.' Module-to-module arc: deliberately does NOT hand off to M5's open (that hand-off belongs to reading-the-return, linked separately at the module's close, line 96 of run-the-first-experiment.md) — this lecture's non-resolution is by design, not a missing bridge. Mood-doesn't-resolve-early: M4 does not feel tidy at this lecture's close; the company-layer question is left open exactly as content-strategy's M4 mood (curious readiness, not completion) requires.",
+      "evidence": "Re-verified directly against content-strategy-agentic-engineering-101.md (§M4-in-detail, §Terminology, §Mood arc): M4 mood 'curious readiness' and M5 mood 'learning through contrast' match the lecture's own maintainer framing exactly (line 40, 'The Module 4 to Module 5 gap holds the run's unease open'); the memory/context split ('Memory compounds; context feeds it... dies at session close') matches the lecture's own split (line 7) precisely. Front-run check: body names neither Ronacher's three-pattern (M5) nor second-skill authoring / team-kit accretion (M6) — 'team kit' in M6 is scoped to the team layer, not the still-open company layer, so no collision. Module wiring confirmed current this pass: run-the-first-experiment.md:98 places it in M4's Closing section; training-architecture.md:61 names it as the M4 closer that 'runs the debate, not the decision.' Mood-doesn't-resolve-early: trace close.mood_note confirms 'open, not resolved' — M4 does not feel tidy at this lecture's close, matching content-strategy's M4 mood requirement and leaving M5's rescue role intact.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 5,
-      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
       "evidence": "Lecture has no ## Key Concepts section — module-file-only section per rule scope.",
       "fix_hint": null,
@@ -140,6 +140,6 @@
     "stealing_the_mood": []
   },
   "blocking_findings_count": 0,
-  "todos_count": 0,
-  "notes": "check_prompts.md was read per content-rules.md's 'Prompt content' surface trigger, but yields no rules_evaluated entries: the compendium's own scope statement restricts it to 'copy-this affordance for a student' fenced blocks, this file has zero fenced prompts and zero {{prompt:<key>}} markers (confirmed via node scripts/expand-md.js — byte-identical output), and it is outside the mechanical auditor's known compendium namespace for the story class (scripts/audit-eval-coverage.js COMPENDIA list omits check_prompts entirely; SURFACE_COMPENDIA.lectures = [check_writing, check_student_facing, check_lectures, check_strategy_tie_in]). Emitting rows against it would trigger the auditor's unknown-compendium warning without crediting any real rule, so it is recorded here as a note rather than a rules_evaluated entry. Trace regenerated: cached content_sha (ee01185a...) predated the 2026-07-02 slides-only pass and the 2026-07-09 emphasis pass; current file content_sha is 4c229948f00e94bcc276db4b57860d7faa2df2fd503f0165e17bcc92b98b7f12. This reconciles the file's own maintainer-block flag ('Quality: ... predates the slide rework; re-audit before ship'). Teaching-moment-lands check (no check_strategy_tie_in rule_index per the template): the personal/team/company distinction is grounded directly in files (CLAUDE.local.md, CLAUDE.md) the student has used for four modules running, so recognition is near-guaranteed across reasonable persona-skill variation — not fragile."
+  "todos_count": 1,
+  "notes": "Re-fired 2026-08-01 against on-disk state (clean, matches HEAD 079ebe4). Content changed by one word since the last audit (commit d43f945, 'Company layer has no home, not no file'): slide 1's 'No obvious file.' -> 'No obvious home.' — tightens the parallel to the Team bullet's 'a clear home and a clear gate' one line above. Trace regenerated (content_sha 51aeb852...cached at 4c229948... was stale); dropped the now-obsolete confusion_flag about a missing setup file, mood scores unchanged at 8/8 since the wording change improves precision without altering the arc. check_prompts.md was read per content-rules.md's 'Prompt content' surface trigger, but yields no rules_evaluated entries: this file has zero fenced prompts and zero {{prompt:<key>}} markers, and is outside the mechanical auditor's known compendium namespace for the story class — recorded here as a note rather than a row. Todo (non-blocking): check_lectures.md rule 5 was verified manually because `scripts/check-slide-size.js` no longer resolves at the path this instance previously cited — worth a repo-wide script-path sweep, not a content defect. Teaching-moment-lands check (no check_strategy_tie_in rule_index per the template): the personal/team/company distinction is grounded directly in files (CLAUDE.local.md, CLAUDE.md) the student has used for four modules running, so recognition is near-guaranteed across reasonable persona-skill variation — not fragile."
 }

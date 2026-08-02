@@ -9,7 +9,8 @@
     {"index": 2, "heading": "The judge needs calibrating against your labels", "lines": "11-16"},
     {"index": 3, "heading": "Gates decay", "lines": "17-22"},
     {"index": 4, "heading": "One run is a sample", "lines": "23-28"},
-    {"index": 5, "heading": "Change on recurrence, not on noise", "lines": "29-36"}
+    {"index": 5, "heading": "Change on recurrence, not on noise", "lines": "29-36"},
+    {"index": 6, "heading": "The delegation frontier", "lines": "37-83"}
   ],
   "rules_evaluated": [
     {
@@ -38,7 +39,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Chunk 0 line 3 'Say the re-send comes back green. The verifier you built reads the work and passes it.' resolves against the host module learn-from-the-test.md (confirmed via trainer-modules.md M5 placement + learn-from-the-test.md's 'Exercise: Diagnose and re-send' / packaged re-send section, currently live) — the beat exists as the module's own exercise, immediately preceding this lecture per the maintainer block's placement note.",
       "fix_hint": null,
       "blocking": true
     },
@@ -48,7 +49,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-before-reveal demo instruction anywhere in the file; the lecture is law recognition, not a live-demo walkthrough.",
+      "evidence": "No guess-before-reveal instructional device anywhere in the file; the lecture is law recognition plus a closing diagram, not a live-demo walkthrough.",
       "fix_hint": null,
       "blocking": true
     },
@@ -78,7 +79,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all six sub-items across all 6 chunks: no 'Not X. Not Y. Z.' construction; the two triple-parallel lists (chunk 1 'hand-labels / hold-out / repeated runs', chunk 3 'special-cased / keyword-stuffed / edited into agreement') are 1:1 mapped enumerations with distinct concrete content per leg, not anaphora/epistrophe; no self-grading superlatives; the two numeric claims (chunk 2 'Thirty outputs', '90% agreement after three iterations') are stated plainly with no retraction; no abstraction-noun stacks; the chunk-5 triple 'the rule changes, the gate refreshes, or the skill ships' has three distinct concrete verbs, no empty leg.",
+      "evidence": "Checked all sub-items across all 7 chunks: no 'Not X. Not Y. Z.' construction anywhere. Two three-item lists (chunk 1 'hand-labels / hold-out / repeated runs', chunk 3 'special-cased / keyword-stuffed / edited into agreement') are 1:1 enumerations mapped to three named reasons/countermoves, distinct concrete content per leg, not anaphora/epistrophe refrain. No self-grading superlatives anywhere. The two numeric claims (chunk 2: 'A few dozen outputs is enough to start'; '90% agreement after three iterations') are each stated plainly with no retraction — the prior 'Thirty outputs' bare-number issue recorded in the backing block's Flagged list has already been resolved to this range-with-reasoning form. No abstraction-noun stacks (reach/calibration are defined terms, not stacked jargon). Chunk 5's 'the rule changes, the gate refreshes, or the skill ships' has three distinct concrete verbs, no empty leg.",
       "fix_hint": null,
       "blocking": false
     },
@@ -98,7 +99,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Only two bold spans in the body: line 19 '**Goodhart's law**' (chunk 3, one handle) and line 31 '**tampering**' (chunk 5, one handle); chunks 0, 1, 2, and 4 carry zero bold. Matches the 2026-07-09 emphasis-pass maintainer note exactly.",
+      "evidence": "Only two bold spans in the body: line 19 '**Goodhart's law**' (chunk 3) and line 31 '**tampering**' (chunk 5), each a sub-span handle, one per slide; chunks 0, 1, 2, 4, and 6 carry zero bold. Matches the 2026-07-09 emphasis-pass maintainer note exactly.",
       "fix_hint": null,
       "blocking": false
     },
@@ -108,9 +109,9 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "File is wired into the deck via the standard `[Lecture: The gate is a claim too](lectures/the-gate-is-a-claim.md)` link in learn-from-the-test.md (line 102), the same pattern as the preceding `[Lecture: What packaging is]` link and every other lecture in the module — content reaches buildDeckModel's `.phase--lecture` wrapper, not stranded phase-less prose.",
+      "evidence": "File is wired into the deck via the standard '[Lecture: The gate is a claim too](lectures/the-gate-is-a-claim.md)' link in learn-from-the-test.md (line 104), same pattern as the preceding '[Lecture: What packaging is]' link and every other lecture in the module — reaches buildDeckModel's `.phase--lecture` wrapper, not stranded phase-less prose.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -118,9 +119,9 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No `## Phase N:` / `## N.` step headers in this file (all six `##` headings are prose titles: 'Passing is not proof', 'Gates decay', etc.) and no in-body 'Phase K'/'Step K' references to lint. `node scripts/check-slide-numbering.js` confirms repo-wide: 'OK — 58 files, Phase/Step numbering consistent.'",
+      "evidence": "No '## Phase N:' / '## N.' step headers in this file — all six body `##` headings are prose titles ('Passing is not proof', 'Gates decay', 'The delegation frontier', etc.), nothing for the numbering rule to bind to.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,

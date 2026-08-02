@@ -4,14 +4,14 @@
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "The map, filled in (H1/lede)", "lines": "1-4"},
+    {"index": 0, "heading": "The map, filled in (H1 + lede)", "lines": "1-4"},
     {"index": 1, "heading": "The checking loop, drawn solid", "lines": "5-90"},
     {"index": 2, "heading": "You drew a control loop", "lines": "91-166"},
     {"index": 3, "heading": "Verification, named", "lines": "167-172"},
     {"index": 4, "heading": "Absorption, named", "lines": "173-178"},
     {"index": 5, "heading": "Outcome, named", "lines": "179-184"},
     {"index": 6, "heading": "The governor you carry out", "lines": "185-190"},
-    {"index": 7, "heading": "The map, filled in (closer)", "lines": "191-198"}
+    {"index": 7, "heading": "The map, filled in (closer)", "lines": "191-199"}
   ],
   "rules_evaluated": [
     {
@@ -80,7 +80,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No \"Not X. Not Y. Z.\" construction; no empty-leg anaphora triples; no self-grading superlatives (\"the oldest search shape there is\" at line 182 describes the borrowed variation-selection-retention mechanism, not the training's own value, so it is not a value-prop leak); the 80/20 number at line 177 is stated plainly with no own-retraction hedge; no abstraction-noun stacks; \"shape · run · read · correct\" (line 157 diagram caption / line 163) and \"the runs generate variants, the eval selects, the memory retains\" (line 182) are labels/triads with distinct concrete legs, not empty-leg verb triplets.",
       "fix_hint": null,
       "blocking": true
     },
@@ -98,21 +98,21 @@
       "compendium": "check_slides.md",
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
-      "verdict": "REVISE",
-      "chunks_flagged": [3, 4, 5],
-      "evidence": "chunk 3 \"Verification, named\": line 171: \"**Verifier, judge, gate: every one an eval.**\" (8-word full sentence bolded, not a sub-span handle); chunk 4 \"Absorption, named\": line 175: \"**Generation is fast; reading, judging, and merging are not.**\" (9-word full sentence bolded); chunk 5 \"Outcome, named\": line 181: \"**A rule in context is not a rule in the output.**\" (10-word full sentence bolded) and line 183: \"**A move counts when it crosses the wall.**\" (8-word full sentence bolded). Contrast with the same slides' correctly-trimmed handles at line 170 \"**The three-pattern**\", line 176 \"**Review bandwidth is the constraint**\", and line 182 \"**Test → learn → encode.**\" — those are sub-spans under the ~5-word ceiling; the four cited lines bold the bullet's entire lead sentence, the exact 'every bullet opens with a bolded sentence' shape the rule names as the pre-2026-07-09 monoculture it exists to prevent. Borderline (not counted toward the flag, noted for completeness): line 169 \"**Find is easier than judge.**\" and line 177 \"**The ratio runs near 80/20.**\" sit at ~5 words but are also whole lead sentences rather than fragments within a longer sentence.",
-      "fix_hint": "Trim the four un-trimmed law-bolds (Verification bullet 3, Absorption bullet 1, Outcome bullets 1 and 3) to short sub-span handles the way 'the three-pattern' and 'Review bandwidth is the constraint' already were on the same slides.",
-      "blocking": false
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Chunk 2 carries exactly one bold handle (\"feedback control\", line 163). Chunks 3, 4, 5 are law-consolidation slides carrying one bold handle per law (three each, lines 169-171, 175-177, 181-183) — within the compendium's explicit \"a law/consolidation slide may carry one handle per law\" allowance. Chunks 0, 1, 6, 7 carry zero bold.",
+      "fix_hint": null,
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Verified against curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md line 58: the file is linked in the module's Human-close include list (a standard `## Start here`-style lecture link, same form as the-loop-has-a-name and agents-that-build-agents), so it reaches the composed deck under the module's phase wrapper; no phase-less section here that would be dropped from the default Slides view.",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -120,11 +120,11 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No `## Phase N:` / `## N.` style content-ordinal headers in this file; all seven `##` headings are unnumbered titles, so there is nothing for this rule to lint.",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1
+  "todos_count": 0
 }

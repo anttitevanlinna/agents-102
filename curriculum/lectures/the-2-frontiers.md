@@ -12,8 +12,8 @@
 
 **Slides-only pass (2026-07-02, unaudited):** four prose paragraphs CONVERTED to one slide, near-verbatim (the two frontier questions ride as bullets two and three; the arc line as bullet one). Nothing cut; no covered regions needed. Deliberately no kicker: the maintainer watch-for says don't answer the frontiers, and any kicker would start to.
 
-**Quality:** compendium-audited 2026-07-12 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
-- judges @b3143a4: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-02 (writing@d1b6f2c story@d1b6f2c technical@d1b6f2c behavior@d1b6f2c pedagogy@d1b6f2c strategy@d1b6f2c slides@d1b6f2c)
+- judges @d1b6f2c: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Lecture meta:** *~2 min opener for Module 6, before "Story of Module 6." Echoes Module 1's "Painting the picture" closer — same two frontiers, recurring at the capstone open. The recurrence is the point. One slide IS the lecture.*
 

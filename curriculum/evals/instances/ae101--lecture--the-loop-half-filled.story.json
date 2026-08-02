@@ -4,14 +4,14 @@
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "earned trust — \"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big\" (M3, per content-strategy-agentic-engineering-101.md § M3 in detail + earn-the-trust.md maintainer Mood target)",
-  "trace_status": "generated_first_time",
+  "trace_status": "regenerated",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "trainer-modules.md:101 places it as \"consolidation closer, 8–10 min... fires after the skill-sharpen, before the session clear\"; earn-the-trust.md links [Lecture: The loop half, filled in] after Ex1–Ex3 and the sharpen-from-evidence prompt, immediately before \"## Clear the session\". Naming a pattern the student just lived (loop laws, governor) after the exercises, not before.",
+      "evidence": "File's own \"Placement\" maintainer line: \"M3 close, the near-half (loop-half) consolidation closer... Consolidation and recognition, NOT new teaching (check_lectures §1: naming a pattern the student lived through = closer).\" Body reads as recognition throughout (\"Three modules in, the near half is lived ground\", \"A name is a handle, not a lesson. Every law below is a move already made\") — fires after Ex1-Ex3 and the skill-sharpen, not before.",
       "fix_hint": null,
       "blocking": false
     },
@@ -20,7 +20,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "Rule targets pre-exercise lectures ahead of contrast-mood (M5-style) exercises. This file is a post-exercise closer with no exercises downstream of it in M3; nothing to keep minimal.",
+      "evidence": "Rule targets pre-exercise lectures ahead of contrast-mood (M5-style) exercises. This is a post-exercise consolidation closer with no exercise downstream of it in M3 — nothing to keep minimal.",
       "fix_hint": null,
       "blocking": false
     },
@@ -29,7 +29,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies (arc-lecture carve-out).",
       "verdict": "PASS",
-      "evidence": "Lines 5-6 name M1/M2 (\"M1 stepped into the territory without the map... The map arrived at M2\"); line 137 names M4 (\"M4 opens it\"); SVG caption at y=522 reads \"THE FAR HALF · M4–M6\". Maintainer block (line 152) explicitly invokes the carve-out: \"the lecture's subject IS the arc.\" This IS the M1–M3 consolidation closer, module refs are the point, not leakage.",
+      "evidence": "Lines 5-6 name M1/M2 (\"M1 stepped into the territory without the map... The map arrived at M2\"); line 106 names M1 again (\"Everything you did in plan mode was feeding that signal early\" ties to M1's loop); line 137 names M4 (\"M4 opens it\"). Maintainer \"Placement\" block invokes the carve-out explicitly (\"the lecture's subject IS the arc\") and, as of the 2026-07-28 edit, the far half is now named by SVG-caption position (\"THE FAR HALF · AHEAD\") rather than a module range — a tightening of the carve-out, not a lapse of it. This IS the M1-M3 consolidation closer; module refs are the point.",
       "fix_hint": null,
       "blocking": false
     },
@@ -38,7 +38,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "7 unique ## headers, no repeats. One orientation beat (\"Back to the map: near half filled\") rationed correctly per the file. Remaining six assert what their own body supports (\"Reading was never the control\", \"The branch is the permission\" both pay off within their own section, not orphan mystery). No unsupported universals found on a full-body scan (\"Nothing from the near half retires\" is scoped to the four named things in the same sentence, not an unscoped absolute).",
+      "evidence": "7 unique ## headers, no repeats. One orientation beat (\"Back to the map: near half filled\") rationed correctly per the file. The other six assert what their own body supports (\"Reading was never the control\", \"The branch is the permission\", \"The far half goes quiet\" all pay off within their own section, not orphan mystery). No unsupported universals on a full-body scan (\"Nothing from the near half retires\" is scoped to the four named things in the same sentence, not an unscoped absolute).",
       "fix_hint": null,
       "blocking": false
     },
@@ -47,7 +47,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header.",
       "verdict": "PASS",
-      "evidence": "node scripts/check-slide-size.js --file curriculum/lectures/the-loop-half-filled.md -> \"files: 1  slides: 7  limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits\".",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/the-loop-half-filled.md` -> \"files: 1  slides: 7  limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits\" (SVG excluded from the count per rule).",
       "fix_hint": null,
       "blocking": false
     },
@@ -56,7 +56,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay in prompts, not body prose.",
       "verdict": "N/A",
-      "evidence": "File carries zero {{prompt:}} markers or fenced prompt blocks (node scripts/expand-md.js on the file produces no diff from source). The forcing functions this closer recognizes (\"name the delta\", \"pick THE threat\", \"disclose its weakest part\") were already enacted in map-the-access-surface.md / threat-model-with-stride.md / author-test-strategy-skill.md's own fences; this file recognizes them after the fact, it doesn't explain-instead-of-enact a live forcing function.",
+      "evidence": "File carries zero fenced prompt blocks or {{prompt:}} includes — it is a lecture, not an exercise. The forcing functions this closer recognizes (\"name the delta\", \"pick THE threat\", \"disclose its weakest part\") were already enacted in the M3 exercises' own prompt fences; this file names the mechanism after the fact, it doesn't explain-instead-of-enact a live forcing function.",
       "fix_hint": null,
       "blocking": true
     },
@@ -65,7 +65,7 @@
       "rule_index": 27,
       "rule_lead": "Body teaches the work; trainer manages the room outside text.",
       "verdict": "PASS",
-      "evidence": "grep -inE \"discuss|pair|share|neighbor|tell the room|trainer|take [0-9]+ (minute|second)\" across lines 1-139 (above the maintainer fence) returns one hit, and it is the SVG map's own caption text \"TRUSTED · SHARED VALUE →\" (line 84), a map label, not an authored conversation cue. No pause-cues, no \"discuss with...\" sentences.",
+      "evidence": "`grep -inE \"discuss|pair up|share (with|your)|neighbor|tell the room|trainer|take [0-9]+ (minute|second)\" curriculum/lectures/the-loop-half-filled.md` over lines 1-139 (above the maintainer fence) returns zero hits. No pause-cues, no \"discuss with...\" sentences, no cohort-management prose anywhere in the body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -74,7 +74,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named; mood lands per beat + close.",
       "verdict": "PASS",
-      "evidence": "Sim trace (curriculum/evals/sim-cache/ae101--the-loop-half-filled.persona.json, generated_first_time) phase_scores [8, 9, 9, 8, 7, 7], close_score 8. All beats are TEACHING/recognition beats (per the mood-floor carve-out, none compress to a parenthetical without breaking the arc) so the 8+ floor applies; two beats (\"Reading was never the control\", \"The branch is the permission\" — both the 2026-07-10 unreviewed addition) land at 7, facilitator-premium, not below-floor. No beat below 7.",
+      "evidence": "Sim trace (curriculum/evals/sim-cache/ae101--lecture--the-loop-half-filled.persona.json, regenerated this run — the cached file was missing phase 7 entirely and phase 1's cached text predated the 2026-07-28 far-half-by-position edit) phase_scores [8, 9, 9, 8, 7, 7, 8], close_score 8. All beats are TEACHING/recognition beats (none compress to a parenthetical without breaking the arc), so the 8-floor applies; two beats (\"Reading was never the control\", \"The branch is the permission\" — the 2026-07-10 unreviewed addition) land at 7, facilitator-premium, not below-floor. No beat below 7.",
       "fix_hint": "Phases 5-6 sit at the 7-floor rather than 8: phase 5's triple-compressed middle bullet (delta note / one-threat pick / skill critique in three clipped clauses) and phase 6's \"control is exercised at the merge\" (see §4 evidence) both currently need the trainer's live pacing/gloss to fully land; tightening either in text would lift them to a self-supporting 8.",
       "blocking": true
     },
@@ -83,7 +83,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood, not punitive mood.",
       "verdict": "PASS",
-      "evidence": "Register is consistently affirming/recognition-toned throughout (\"you already made\", \"your kit is already two rungs up\", \"a task worth running\"). No shame- or failure-attributed-to-the-student language found on a full scan; where failure is discussed (\"the agent can win the function and lose the system\") it's attributed to the system/agent, not the student's conduct.",
+      "evidence": "Register is consistently affirming/recognition-toned throughout (\"you already made\", \"your kit is already two rungs up\", \"a task worth running\"). No shame- or failure-attributed-to-the-student language found on a full scan; where failure is discussed (\"the agent can win the function and lose the system\") it's attributed to the system/agent, not the student's conduct. Close's \"how do you trust work you didn't watch\" is a not-knowing question, not a having-done-wrong one.",
       "fix_hint": null,
       "blocking": false
     },
@@ -92,7 +92,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "The module's own Big Idea (earn-the-trust.md line 6) leads with \"earn your staff engineer's and CISO's trust\" — a positive discipline, not a failure word. This lecture's individual law-names (e.g. \"Local success, global drift\") are diagnostic pattern-recognition inside a consolidation closer, not the module's Big-Idea framing surface this rule targets; they name a phenomenon to watch for, not the module's title claim.",
+      "evidence": "The module's own Big Idea (earn-the-trust.md) leads with earning the staff engineer's/CISO's trust — a positive discipline, not a failure word. This lecture's individual law-names (e.g. \"Local success, global drift\") are diagnostic pattern-recognition inside a consolidation closer, not the module's Big-Idea framing surface this rule targets; they name a phenomenon to watch for, not the module's title claim. \"Control is interrogation\" and \"A governor is a pre-action question\" are the dominant slide-level handles and both are discipline-named.",
       "fix_hint": null,
       "blocking": false
     },
@@ -101,8 +101,8 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity: doesn't front-run downstream teaching moments; module-to-module arc; Big Idea fidelity; mood doesn't resolve early.",
       "verdict": "PASS",
-      "evidence": "Front-run check: \"The far half goes quiet\" (lines 134-138) poses M4/M5's question (\"how do you trust work you didn't watch?\") without answering it; Verification/Absorption/Outcome stay hazed under the SVG's veil, no packaging/verification content taught here — M5's Ronacher three-pattern teaching moment is untouched. Module-to-module arc: line 137 \"M4 opens it\" plus earn-the-trust.md's own \"## Next\" (\"Module 4 turns the discipline inward\") hand off cleanly. Big Idea fidelity: the 2026-07-10 addition (\"Reading was never the control\" / \"The branch is the permission\") explicitly ties this consolidation lecture back to M3's own earned-trust content by naming Ex1's access-control delta, Ex2's one-threat STRIDE pick, and Ex3's skill self-critique as the three lived instances of \"control\" — strengthening, not diluting, the module's actual Big Idea, per the maintainer's own framing (\"Direct response to first-cohort lost-control diagnosis\"). Mood doesn't resolve early: the far-half question is left open, not pre-emptively answered.",
-      "fix_hint": "Phase 6's \"Control is exercised at the merge\" doesn't reconcile with the fact that the concrete side-quest branch this closer references never merges (per open-the-side-quest.md: the skill \"crosses worktrees on its own\", no git merge occurs) — reads as if it's describing this exercise literally when it's actually generalizing to future work; one clause naming that distinction would remove the inferential gap.",
+      "evidence": "Front-run check: \"The far half goes quiet\" (lines 134-138) poses M4/M5's question (\"how do you trust work you didn't watch?\") without answering it; Verification/Absorption/Outcome stay hazed under the SVG's veil (now captioned by position, \"AHEAD\", not by module range), no verification/packaging content taught here — M5's teaching moment is untouched. Module-to-module arc: line 137 \"M4 opens it\" hands off cleanly, matching close.mood_note in the trace (\"hands off cleanly to M4's curious-readiness without pre-answering the far-half question\"). Big Idea fidelity: the 2026-07-10 \"control pair\" addition (\"Reading was never the control\" / \"The branch is the permission\") explicitly ties this consolidation lecture back to M3's own earned-trust content by naming Ex1's access-control delta, Ex2's one-threat STRIDE pick, and Ex3's skill self-critique as three lived instances of \"control\" — strengthening, not diluting, the module's Big Idea, per the maintainer's own framing (\"Direct response to first-cohort lost-control diagnosis\"). Mood doesn't resolve early: the far-half question is left open, not pre-emptively answered.",
+      "fix_hint": "Phase 6's \"Control is exercised at the merge\" doesn't reconcile with the fact that the concrete side-quest branch this closer references never merges (per open-the-side-quest.md: the skill \"crosses worktrees on its own\", no git merge occurs) — reads as if describing this exercise literally when it's actually generalizing to future work; one clause naming that distinction would remove the inferential gap.",
       "blocking": true
     },
     {
@@ -134,7 +134,7 @@
     }
   ],
   "mood_summary": {
-    "phase_scores": [8, 9, 9, 8, 7, 7],
+    "phase_scores": [8, 9, 9, 8, 7, 7, 8],
     "close_score": 8,
     "any_below_8": true,
     "stealing_the_mood": [

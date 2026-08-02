@@ -4,11 +4,11 @@
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "The machine you just met (H1 + lede)", "lines": "1-4"},
-    {"index": 1, "heading": "Agreeable answers won the preference round", "lines": "5-11"},
-    {"index": 2, "heading": "Unchecked, mostly-right steps stack into wrong", "lines": "12-18"},
-    {"index": 3, "heading": "It answers in essays", "lines": "19-24"},
-    {"index": 4, "heading": "One machine, three behaviors", "lines": "25-33"}
+    {"index": 0, "heading": "The machine you just met (H1/lede)", "lines": "1-3"},
+    {"index": 1, "heading": "Agreeable answers won the preference round", "lines": "5-10"},
+    {"index": 2, "heading": "A check resets the chain", "lines": "12-17"},
+    {"index": 3, "heading": "It answers in essays", "lines": "19-23"},
+    {"index": 4, "heading": "One machine, three behaviors", "lines": "25-32"}
   ],
   "rules_evaluated": [
     {
@@ -27,7 +27,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 1 \"Agreeable answers won the preference round\": line 9: \"This is the machinery under the opening lecture's infinite chameleon: the LLM that flatters you, calls unfinished work progress, mirrors your stance.\" — names the source by claim, unpacked in the same sentence; matches the compendium's own worked PASS example verbatim, and the chameleon image is confirmed present in painting-the-picture-with-the-llm.md line 7. Not a violation.",
+      "evidence": "chunk 1 \"Agreeable answers won the preference round\": line 9: \"This is the machinery under the opening lecture's infinite chameleon: the LLM that flatters you, calls unfinished work progress, mirrors your stance.\" names the source by claim, unpacked in the same sentence rather than by bare position — matches the compendium's own worked PASS example for rule 2. Not a violation.",
       "fix_hint": null,
       "blocking": true
     },
@@ -37,7 +37,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 0 title \"The machine you just met\" and chunk 2 line 17 \"That is why the failing test came before the fix\" and chunk 3 lines 21-22 (\"The fix was three lines...\", \"This time the reading was cheap because the bug was trivial\") all resolve against this module's own exercise sequence: getting-going.md confirms placement directly after compound-and-close (Ex3), and fix-tests-first.md's own recap confirms \"A failing test landed in the codebase before the fix did\" and frames the prework bug as trivial (\"under 50 lines\"). Beats exist; carve-out (module-arc beats in openers/closers) applies.",
+      "evidence": "chunk 2 line 17 (\"That is why the failing test came before the fix\") and chunk 3 lines 21-22 (\"The fix was small... the bug was trivial\") resolve against this module's own exercise sequence. getting-going.md confirms this lecture is placed directly after compound-and-close (Ex3), i.e. an opener/closer beat per the module-arc carve-out; fix-tests-first.md's own recap confirms \"A failing test landed in the codebase before the fix did\" and its body frames the exercise's bug as trivial (\"on a trivial bug, plan mode is overhead\"). The beat exists; carve-out (module-arc beats in openers/closers, which the compendium literally cites this lecture's title as its own example of) applies.",
       "fix_hint": null,
       "blocking": true
     },
@@ -47,7 +47,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No guess-before-reveal demo beat anywhere in this lecture.",
       "fix_hint": null,
       "blocking": true
     },
@@ -77,7 +77,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked sub-items across all 5 chunks: 'Not X. Not Y. Z.' construction — none found. Anaphora/epistrophe triples — chunk 4's 'is steered by what you bring / build / ask' triple carries new concrete content on every leg (posture-setting / building a check / asking for a shape), matching the compendium's own passing condition, and the maintainer block names it deliberately (\"bring / build / ask triple\") — not a violation. Self-grading superlatives — none. Number + own retraction — chunk 2 line 15's 'nine times in ten' / 'seven-step chain' carries its own label in the same sentence ('The numbers are an illustration, not a measurement'), the compliant form. Abstraction-noun stacks — none matching the banned pattern. Verb triplets with an empty leg — chunk 4's 'mirror your stance, answer in full, and be mostly right' all cash out concretely against earlier chunks; no empty leg.",
+      "evidence": "'Not X. Not Y. Z.' construction: none found. Anaphora/epistrophe triples: chunk 4 lines 28-30 (\"steered by what you bring / build / ask\") — third leg carries new concrete content (ranked-list-first / detail-on-request), the compliant form, not a violation. Self-grading superlatives: none found. Number + own retraction: chunk 2 line 15's nine-in-ten/seven-step figure is labeled in the same sentence (\"an illustration, not a measurement\") and the maintainer block attests the zombie-stat guard deliberately — the compliant, attested form. Abstraction-noun stacks: none matching the banned pattern. Verb triplets with an empty leg: chunk 4 line 27 (\"mirror your stance, answer in full, and be mostly right at each step\") — all three verbs cash out concretely against the file's own earlier chunks; no empty leg.",
       "fix_hint": null,
       "blocking": false
     },
@@ -97,8 +97,8 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "REVISE",
       "chunks_flagged": [3],
-      "evidence": "chunk 3 \"It answers in essays\": line 23: \"**Never let the agent say everything.**\" — bolds a whole standalone six-word sentence (own capital + terminal period), not a ≲5-word handle sub-span. theory-plan.md's canonical spec (cited by this rule) reads: \"Bold the handle (≲5 words, a sub-span of the sentence; never the whole lead sentence).\" Contrast with the same file's compliant handles at lines 8 and 15 (**sycophancy**, **cascading error**), each a single coined-term word inside a longer sentence, not a sentence unto itself. The file's own maintainer note (line 36) calls this a 'Handle... bolded at naming moment' but the shape doesn't fit the sub-span/short-noun mold the rule defines — it reads as a bolded imperative maxim, not a coined term.",
-      "fix_hint": "Either shrink the bold to a short sub-span inside a longer sentence (a coined 2-3 word handle) or drop the bold and let the sentence carry the point in plain narrative prose, consistent with the rest of the file's mechanism bullets.",
+      "evidence": "chunk 3 \"It answers in essays\": line 23: \"**Never let the agent say everything.**\" bolds a complete six-word imperative sentence (subject+verb+object+period), not a short handle sub-span (rule text: \"Bold the handle (\u2272 5 words, a sub-span), never a whole lead sentence\"). Contrast with this same file's compliant handles — **sycophancy** (line 8) and **error cascade** (line 15) — each a single/two-word coined noun sitting inside a longer sentence, not a sentence unto itself. The maintainer block (line 36) calls this a \"Handle... bolded at naming moment,\" but the shape (a full bolded directive clause) is closer to the pre-2026-07-09 whole-lead-sentence pattern the rule was written to end than to a coined-term handle.",
+      "fix_hint": "Shrink the bold to a short sub-span (e.g. bold only \"say everything\") or drop the bold and let the sentence read as plain narrative prose, consistent with the rest of the file's mechanism bullets.",
       "blocking": false
     },
     {
@@ -107,9 +107,9 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "getting-going.md includes this lecture via the standard bare `[The machine you just met](lectures/the-machine-you-just-met.md)` link under `## Start here`, the identical convention every sibling lecture in the module uses (painting-the-picture-with-the-llm.md, the-wizard-move.md, how-this-training-was-built.md) to reach `.phase--lecture` wrapping in buildDeckModel (site/layouts/slides.js). No phase-less prose section; no evidence of drop from the composed deck.",
+      "evidence": "getting-going.md includes this lecture via the standard bare link `[The machine you just met](lectures/the-machine-you-just-met.md)` under `## Start here`, the same convention every sibling lecture in the module uses to reach `.phase--lecture` wrapping in buildDeckModel. No phase-less prose section in this file; nothing indicates it drops from the composed deck.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -117,9 +117,9 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No hand-numbered headers and no 'Phase N:' / 'N.' step headers or in-file 'Step K'/'Phase K' prose references anywhere in this file's four `##` headings.",
+      "evidence": "No hand-numbered headers and no \"Phase N:\" / \"N.\" step headers or in-file \"Step K\"/\"Phase K\" prose references anywhere in this file's four `##` headings.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,

@@ -4,20 +4,20 @@
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    { "index": 0, "heading": "H1/lede — Sharpen the plan with two reads", "lines": "1-12" },
-    { "index": 1, "heading": "Phase 1: Bring a real task", "lines": "13-18" },
-    { "index": 2, "heading": "Phase 2: Enter plan mode and ask for the plan", "lines": "19-33" },
-    { "index": 3, "heading": "The plan is the one you read whole", "lines": "34-39" },
+    { "index": 0, "heading": "H1/lede — Sharpen the plan with two reads", "lines": "1-11" },
+    { "index": 1, "heading": "Phase 1: Bring a real task", "lines": "13-17" },
+    { "index": 2, "heading": "Phase 2: Enter plan mode and ask for the plan", "lines": "19-32" },
+    { "index": 3, "heading": "The plan is the one you read whole", "lines": "34-38" },
     { "index": 4, "heading": "Read the plan before you push back", "lines": "40-46" },
-    { "index": 5, "heading": "Phase 3: Push back twice", "lines": "47-53" },
-    { "index": 6, "heading": "Catch the re-softening in the revised plan", "lines": "54-61" },
-    { "index": 7, "heading": "Phase 4: Walk down every unresolved branch", "lines": "62-78" },
-    { "index": 8, "heading": "Answer the branches that change what \"done\" means", "lines": "79-84" },
-    { "index": 9, "heading": "Stop when the read starts reaching", "lines": "85-112" },
-    { "index": 10, "heading": "Approve", "lines": "113-118" },
-    { "index": 11, "heading": "Phase 5: Stop, then name the pattern you ran", "lines": "119-130" },
-    { "index": 12, "heading": "Compare what each read caught", "lines": "131-136" },
-    { "index": 13, "heading": "Keep the session open for the Compound step", "lines": "137-142" }
+    { "index": 5, "heading": "Phase 3: Push back twice", "lines": "48-53" },
+    { "index": 6, "heading": "Catch the re-softening in the revised plan", "lines": "55-61" },
+    { "index": 7, "heading": "Phase 4: Walk down every unresolved branch", "lines": "63-78" },
+    { "index": 8, "heading": "Answer the branches that change what \"done\" means", "lines": "80-84" },
+    { "index": 9, "heading": "Stop when the read starts reaching", "lines": "86-112" },
+    { "index": 10, "heading": "Approve", "lines": "114-118" },
+    { "index": 11, "heading": "Phase 5: Stop, then name the pattern you ran", "lines": "120-130" },
+    { "index": 12, "heading": "Compare what each read caught", "lines": "132-136" },
+    { "index": 13, "heading": "Keep the session open for the Compound step", "lines": "138-142" }
   ],
   "rules_evaluated": [
     {
@@ -37,7 +37,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "chunk 3 line 36 (\"M1 named the countermove: never let the agent say everything, take the ranked list first\") names the source by module and unpacks the claim in the same sentence — matches the compendium's own passing shape, not a bare positional pointer.",
       "blocking": true
     },
     {
@@ -57,7 +57,7 @@
       "verdict": "N/A",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "No guess-before-reveal instruction anywhere in the file.",
       "blocking": true
     },
     {
@@ -87,7 +87,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Swept all six sub-items (Not-X-Not-Y-Z, anaphora/epistrophe triples, self-grading superlatives, number+retraction, abstraction-noun stacks, empty-leg verb triplets) across every chunk; none present. Numbers used (\"Eight to twelve,\" \"5 to 12 questions\") are plain illustrations, not hedged-and-retracted.",
       "blocking": false
     },
     {
@@ -97,7 +97,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Only borderline term is \"surface\" (chunk 1, line 17: \"ask Claude to surface three candidates\") — ordinary engineering-verb use, explicitly carved out by the rule.",
       "blocking": true
     },
     {
@@ -107,7 +107,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Chunk 5 carries four bolded handles (**keep planning with feedback**, **Soft items**, **Assumptions**, **Committed changes**) above the usual per-slide budget, but the file's own maintainer block (2026-07-09 emphasis pass) explicitly attests this exact set as deliberately kept — maintainer-attested, no edit owed.",
       "blocking": false
     },
     {
@@ -132,6 +132,5 @@
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0,
-  "summary": "Fresh sequential deck read across all 14 chunks (chunk 0 lede + 13 `##` sections) against all 11 check_slides.md rules, verified directly against current file content rather than trusting the prior instance record. Both issues the prior audit flagged are confirmed fixed on disk: rule 1's chunk-7 'the lock-it-in convention' phrasing is gone, replaced by a plainly explained mechanic ('the plan file is the artifact you're walking, and edits to it stay locked while you're in plan mode'); and rule 7's chunk-9 'Approve when it's yours. Not Claude's, not the second read's.' paired-negation tic is now 'Approve when it reads like your plan' — the prior instance's fix_hint applied verbatim. The new chunk 3 ('The plan is the one you read whole', lines 34-38) got full-depth scrutiny as directed: its line 'M1 named the countermove: never let the agent say everything, take the ranked list first' was traced against M1's actual body — `getting-going.md` (M1) includes `lectures/the-machine-you-just-met.md`, which does teach exactly this countermove, bolded at its naming moment ('Never let the agent say everything') — so the referenced beat is real, not stranded (rule 3 clears). The M1 reference itself unpacks its claim in the same sentence (matching the compendium's own passing pattern) and 'M1' as a module name is arc-earned spine vocabulary once a student has completed Module 1, so rule 2's cross-file-callback bar is also clear; module include-order confirms M2 (this file's host, `plan-mode-done-right.md`) runs after M1. The 2026-07-09 emphasis pass was independently re-checked bullet-by-bullet against the emphasis-budget rule: the Time/What-you-do/What-you-build/The-point/What-happened bold labels are confirmed structural chrome shared verbatim by every exercise file in the library (checked three siblings), not slide-content leads; the three push-back axis names, the 'keep planning with feedback' approval path, and the two coined-term/law handles ('Plan-mode approval inflation', 'Find is easier than judge') are each narrowed to a short handle landing at its naming moment; blockquote callouts are untouched. No chunk exceeds budget. Also swept the whole body fresh for LLM-cadence tics (Not-X-Not-Y constructions, anaphora triples, self-grading superlatives, number+retraction hedges, abstraction-noun stacks, empty verb-triplet legs) and internal dialect terms — none survive; the sole remaining triple-list ('every step, every file name, every verification' at chunk 3) is a single-sentence enumeration of three genuinely distinct concrete items, not the templated-clause-repetition tic the rule targets, and 'the slot' (chunk 7, unglossed) reads as ordinary training-time idiom consistent with 'the clock' used the same way one chunk earlier. Rule 10 (deck presence) and rule 11 (Phase 1-5 numbering, consecutive, every in-file reference resolving) both confirmed clean. Rule 4 stays N/A — no guess-before-reveal demo beats in this exercise. Nothing blocking, nothing TODO: verdict flips from the prior REVISE to PASS."
+  "todos_count": 0
 }

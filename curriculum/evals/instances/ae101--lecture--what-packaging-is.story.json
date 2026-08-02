@@ -3,24 +3,24 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/what-packaging-is.md",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "learning through contrast — \"I can feel what packaging adds now; I couldn't have read it as a lecture\" (Module 5 closing lecture, in-room after Debrief + the packaged re-send)",
-  "trace_status": "generated_first_time",
+  "module_mood_contract": "learning through contrast — \"I can feel what packaging adds now; I couldn't have read it as a lecture\" (Module 5 closing lecture, in-room after Debrief + the packaged re-send, before Module 6)",
+  "trace_status": "regenerated",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Module file (learn-from-the-test.md) links this lecture after '## Send it off and read the report cold' (post-Debrief, post-re-send) and before '## Next' — not before the exercise. Strategy doc M5 detail names it explicitly: 'Closing lecture ... included in the module's ## Closing section after Debrief. Names Ronacher's three-pattern from felt evidence.' Named-pattern lecture placed after the student lived the pattern (diagnose-and-resend Phases 1-4), matching the diagnostic: names a pattern → closer.",
+      "evidence": "Maintainer block: 'Delivery mode: In-room close after Debrief.' Strategy doc line 389 places this file in the module's `## Closing` section after Debrief, naming Ronacher's three-pattern only after the room lived Phase 1-4 of diagnose-and-resend. Lede (lines 3-4) states the recognition frame directly: 'What you assembled to get there has names.'",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "Rule targets PRE-exercise openers on contrast-mood modules. This file is the M5 CLOSER, positioned after diagnose-and-resend and after Debrief/re-send — the opener role for M5 belongs to learning-through-contrast.md, a different file. No pre-exercise lecturing to bound here.",
+      "evidence": "Rule governs PRE-exercise openers (dosage cap before the room does the work). This file is the M5 CLOSER, delivered after Debrief and the packaged re-send — the opposite slot. The pre-exercise dosage budget belongs to `lectures/reading-the-return.md` (pre-read) and `lectures/learning-through-contrast.md` (in-room opener), not this file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -29,80 +29,80 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Grep of the body above the maintainer fence for `M[0-9]` / 'Module N' returns only SVG path 'M' moveto commands (lines 143, 145) — no module-number or module-name cross-references. Confirms the maintainer's own fix-batch note: 'Bridge to M6 section DELETED — sequencing content moved to the module file's ## Next ... no refs remain above the fence.' Phase 3 / Phase 4 references (e.g. 'the reference you assembled at Phase 4', 'you picked one at Phase 3') are intra-module back-references to this same module's diagnose-and-resend exercise, not cross-module bridges — out of this rule's scope.",
+      "evidence": "Body above the maintainer fence (lines 1-254) carries no M-number or forward module reference. The only near-miss ('the kit is what stands in for you at Verification', line 208) is a map-*position* reference (carve-out), not sequencing. Maintainer block documents the deliberate cut: '\"Bridge to M6\" section DELETED — sequencing content moved to the module file's `## Next`' and the Watch-fors entry explains the counter-camp bullet was likewise cut with rationale recorded, not silently dropped.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "9 distinct headers, none repeated: 'One run, plotted', 'The three-pattern', 'The verifier decides pass without you', 'Three shapes the verifier takes', 'Hooks always fire', 'Hooks for must-happen, prompts for taste', 'What you didn't build today', 'The 80/20 ratio', 'At org scale: Intercom's tiers'. Each names a concept or asserts a body-supported claim; no empty containers ('The move'/'The names'), no orphan-mystery headers, no unsupported universals, no em-dashes. 'The three-pattern' correctly avoids the retired 'Ronacher's three-pattern' framing per the 2026-07-03 provenance-alignment fix batch, matching what the body itself supports (hedged multi-practitioner convergence, not solo attribution).",
+      "evidence": "Nine `##` headers, each names a claim ('Hooks always fire', 'The verifier decides pass without you') or a concept ('The three-pattern', 'One run, plotted'); no two share a header; no empty-container or orphan-mystery headers. Truth clause holds against body: 'Hooks always fire' is licensed by 'the agent has no say in whether it runs' two lines below.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded, not just its header.",
+      "rule_lead": "A slide's BODY is size-bounded (~210 words, ≤6 bullets).",
       "verdict": "PASS",
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/what-packaging-is.md --report` → 9 slides, 0 oversized, limits 210w/6 bullets. Largest: 'What you didn't build today' 199w/3 bullets; smallest: 'The verifier decides pass without you' 58w/1 bullet. All within bar.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/what-packaging-is.md --report` on 2026-08-01: 9 slides, largest is 'The three-pattern' at 199 words / 3 bullets, all under the 210-word / 6-bullet ceiling. Oversized: 0.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The lecture's one forcing function (propose five repo-specific hooks) lives entirely inside the fenced `**Prompt** *(Claude Code)*` block ('Propose five hooks for this repo and the work we just did... Skip suggestions any team could want. No preamble. List them.'). Body prose above it is a semantic lead-in ('ask Claude to propose five hooks tied to this repo and the work you just did, beyond formatting and linting'), not a scripted-reaction count-script. No 'push back once' / 'two rounds max' shapes present.",
+      "evidence": "Body line 233 names the ACTIVITY only ('Ask Claude to propose five hooks tied to this repo, beyond formatting and linting') — allowed under §53's activity-naming carve-out. The forcing function itself lives in the fenced prompt `curriculum/prompts/what-packaging-is-1.md`: 'Propose five hooks... name the Claude Code event it fires on... the line I'd skip without it... Skip suggestions any team could want.' Removing the prompt collapses the pedagogy; removing the body sentence does not.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
-      "rule_lead": "Body teaches the work; trainer manages the room outside text.",
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room — no authored conversations.",
       "verdict": "PASS",
-      "evidence": "No authored conversation cues anywhere in the body — no 'discuss with', 'share what you noticed with your neighbor', 'tell the room', no pause-cue sentences. All prose is about the artefact/concept (drift cones, the three-pattern, hooks, the ratio, Intercom's tiers), not cohort management.",
+      "evidence": "No 'discuss with...', 'share with the room', 'compare with your neighbor' or trainer-cue sentence anywhere in the student-facing body (lines 1-254). Every bullet is about the artefact (reference, plan.md, verifier, hooks) or the work (paste the prompt, read the return), not cohort pacing.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named; mood lands 8+/10 at every teaching beat.",
+      "rule_lead": "Mood contract named; mood-floor 8+/10 on teaching beats.",
       "verdict": "PASS",
-      "evidence": "Sim trace: single-phase score 8, close 9, no beat below 7. Student leaves this lecture in confident recognition — three pieces built two hours ago now have names and practitioner lineage, felt-evidence hooks fire throughout ('the reference you assembled at Phase 4 plays it', 'you picked one at Phase 3 against your dominant failure', the 80/20 slide mirroring the afternoon almost exactly). Sets up Module 6 by handing the arc-continuation entirely to the module file's own '## Next' rather than resolving or teasing it here. Held at 8 rather than 9 by one wobble: 'the verifier you built was one hook against one failure' overclaims for 2 of 3 verifier shapes on the Phase 3 menu (only deterministic-shell-hook is literally a Claude Code hook); the exercise's own foreshadowing line ('you will meet the word again if you extend the verifier to fire automatically') lets the persona self-correct on a re-read, so the beat recovers above the 7-floor rather than failing it.",
-      "fix_hint": "Soften the Hooks-transition sentence to shape-agnostic phrasing ('the verifier you built enforces a must-happen check; wire it as a hook and it fires without you') so background-agent and Ralph-re-feed builders don't have to translate a literal-sounding claim.",
+      "evidence": "Trace phase_1 mood_score 8, close mood_score 9 — both at/above the 8-floor for this whole-file teaching beat (no setup/launch sub-beats to exempt). Single wobble noted (Hooks-transition sentence overclaims for 2 of 3 verifier shapes on the Phase 3 menu) costs a re-read but does not drop the beat below 8.",
+      "fix_hint": "Soften the Hooks-transition sentence to shape-agnostic phrasing ('the verifier you built enforces a must-happen check; wire it as a hook and it fires without you') so background-agent and Ralph-re-feed builders don't have to translate.",
       "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
-      "rule_lead": "Epistemic mood, not punitive mood.",
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Register throughout is naming/recognition, not blame. The un-packaged run's failures were already reframed as data, not fault, at the diagnose-and-resend exercise (Phase 1 push-back: 'the un-packaged run was supposed to underdeliver. The diagnosis is data, not blame.'); this closer inherits that frame and never re-opens it punitively — no 'you should have', no shame language. 'Confident, and wrong' (chart label) describes the UNCHECKED ghost run, not the student.",
+      "evidence": "'Confident, and wrong' (line 190, chart) and 'An unchecked run arrives confident, and wrong' (line 202) name a not-knowing failure about the RUN, never shame about the student. Watch-fors instructs the delivery register directly: 'a trainer who says this apologetically loses the slide; a trainer who says it as a credential (\"nobody handed you this, you earned it\") wins it.'",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "All nine slide headers name positive disciplines (the three-pattern, the verifier, hooks, the 80/20 ratio, Intercom's tiers) — none titled after a failure word. Failure vocabulary (drift, the wedge, 'confident, and wrong') appears only inside the chart and body as the negative case each discipline addresses, exactly the shape the rule asks for ('failure mode becomes negative case the discipline addresses, not the title').",
+      "evidence": "Title 'What packaging is' and every slide header lead with the discipline being named (packaging, the three-pattern, the verifier, hooks) rather than the failure mode. Failure modes (drift, plausible-but-wrong, context rot) appear only as the negative case each piece addresses: 'Three failures you named, three pieces, one each' (line 216).",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity — consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict.",
+      "rule_lead": "Strategy-fidelity — draft doesn't front-run downstream teaching moment (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "Front-run check: grep for 'eval' in the body returns zero hits — the lecture never names the verifier an eval, correctly deferring that word to Module 6 ('M5 gave you your first eval ... M6 is where the word earns its full weight' per strategy doc). Module-arc: no M-number cross-references above the maintainer fence (see check_lectures rule 3); the module file's own '## Next' owns the M5-to-M6 handoff ('Module 5 asked did my run pass? Module 6 starts asking do all our runs pass, and who reviewed what?'), and this lecture's close (Intercom's org-scale zoom, 'it starts at the size of the one you built') stays self-contained without teasing that question. Big Idea fidelity: matches the strategy doc's M5 closing-lecture spec near line-for-line — names Ronacher's three-pattern from felt evidence (correctly hedged, not solo-attributed), attributes Cherny's three stop-hook shapes via the Kim-synthesis caveat, anchors at Intercom's 2x numbers with the vendor-self-report scoping carried into the body ('Intercom published its own numbers'), names hooks as a runtime primitive with the must-happen/taste governor, and asks Claude to propose five repo-specific hooks. Mood-doesn't-resolve-early: the lecture stays inside M5's 'learning through contrast' register throughout and does not pre-resolve into M6's 'practitioner fluency' (no self-congratulatory 'I know how to test/learn/encode' framing, no kit-accretion claim beyond the generic 'review infrastructure' point which the maintainer explicitly decoupled from 'the team kit' language).",
-      "fix_hint": null,
+      "evidence": "Checked against `content-strategy-agentic-engineering-101.md` lines 377-390 (M5-in-detail). Big Idea fidelity: file leads with exactly the recognition frame the strategy doc specifies. Front-run/module-arc: the body never names the verifier an 'eval' (that word is M6's per the strategy doc), and the strategy doc's older description — that this file 'bridges to M6' and 'names the Sourcegraph Amp counter-camp' — no longer matches the shipped file, which deliberately dropped both. The maintainer block documents why: (a) `check_lectures.md §3` moved the M6 bridge to the module file's own `## Next`; (b) research found Amp reversed its handoff stance on 2026-05-06 (`Sources` block, amp-neo/amp-handoff stamps), so keeping it as 'the live handoff camp' would ship a stale claim. Both are logged decisions that make the lecture MORE compliant with current rules than the strategy doc's stale description — the strategy doc, not the lecture, is the artifact due for a refresh (flagged as a non-blocking TODO, out of this file's write scope). Mood-doesn't-resolve-early: close stops short of naming the verifier an 'eval' or teasing M6 by number, leaving that recognition for the next module.",
+      "fix_hint": "content-strategy-agentic-engineering-101.md's M5-in-detail entry (lines 389-390) still describes the removed M6-bridge and Amp-counter-camp bullets — worth a strategy-doc refresh pass so the doc matches the shipped lecture (private strategy doc, not a curriculum-file edit).",
       "blocking": true
     },
     {
@@ -110,7 +110,7 @@
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Module-only section (student-facing '## Key Concepts' heading). This file is a lecture, not a module file — no Key Concepts section exists here. Owned by the module file (learn-from-the-test.md) and the strategy judge.",
+      "evidence": "Module-only section ('## Key Concepts' is a module-file heading); this is a lecture file with no Key Concepts section. Owned by the module file and the strategy judge.",
       "fix_hint": null,
       "blocking": false
     },
@@ -119,7 +119,7 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Same as rule 5 — no Key Concepts section in a lecture file.",
+      "evidence": "Same as §5 — no Key Concepts section on a lecture file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -128,7 +128,7 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "Module-only section (student-facing '## What You'll Learn' heading). Not present in a lecture file — owned by the module file and the strategy judge.",
+      "evidence": "Module-only section; this lecture has no 'What You'll Learn' block.",
       "fix_hint": null,
       "blocking": false
     }
@@ -139,7 +139,7 @@
     "any_below_8": false,
     "stealing_the_mood": [],
     "teaching_moment_lands": true,
-    "teaching_moment_note": "The three-pattern naming (slide 2) reliably recovers cold from felt evidence — every named piece traces to an artefact the persona built at diagnose-and-resend Phases 3-4 (verifier, reference, plan.md), not a whiteboard definition. B-star durability judged this PASS on 2026-07-03 (NAMED-PLACED-MECHANISM-GOVERNOR recovered cold, placed at Verification); this run's sim trace corroborates it. No rule_index — recorded here per the template's completeness-contract instruction, not as a rules_evaluated row."
+    "teaching_moment_note": "The three-pattern naming (slide 2) reliably recovers cold from felt evidence — every named piece traces to an artefact the persona built at diagnose-and-resend Phases 3-4 (verifier, reference, plan.md), not a whiteboard definition. Prior durability review (2026-07-03) judged this PASS (NAMED-PLACED-MECHANISM-GOVERNOR recovered cold, placed at Verification); this run's sim trace corroborates it. No rule_index — recorded here per the template's completeness-contract instruction, not as a rules_evaluated row."
   },
   "blocking_findings_count": 0,
   "todos_count": 1

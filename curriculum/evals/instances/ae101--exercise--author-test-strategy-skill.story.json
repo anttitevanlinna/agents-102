@@ -56,7 +56,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions live in prompts, not body prose; optional push-backs/refinements may live in body.",
       "verdict": "PASS",
-      "evidence": "Re-read fresh, full file, current working tree (uncommitted diff on top of HEAD fe18297). Two edits are live since the last pass: (1) a new bullet opening '## Sharpen the skill from what came back' — 'Before you ship, ask the skill itself to name its own weakest part... Push back on what it names; don't settle for reassurance.'; (2) one new maintainer-block line, 'Accept-with-mitigation (§56): no dedicated push-back move for a skipped self-critique ask. The body line above (...) is the fix; not every miss needs a trainer catch too.', placed directly after the Push-back-moves list. Neither fenced prompt was touched — the self-critique ask stays body-only, never inside author-test-strategy-skill-1 or -2. Prior pass blocked here on exactly this: a body-only ask covering the file's own named central risk (default-acceptance), with no matching push-back-move entry anywhere in this file. That gap has not moved at the mechanism level. What has moved: the maintainer has made an explicit, logged call that this is accept-with-mitigation, not an oversight — citing check_pedagogy.md §56 ('Engineer-audience audit fixes default to body callout, not forcing function... AE101... default fix-shape for audit finding = body callout') by rule number, with a stated rationale matching that rule's own logic almost verbatim. This is the same shape already load-bearing and passing elsewhere in this codebase: compound-and-close.md carries an identical pattern (a body-only push-back move, 'push back where the summary misreads', is rule 16's own named carve-out for optional push-backs, backed by an Accept-with-mitigation note citing check_pedagogy.md §50/§51) and that file's story-class instance (instances/ae101--compound-and-close.story.json) scores this PASS, not REVISE, precisely because the logged maintainer decision closes the finding. Per rule 16's own carve-out ('optional push-backs / refinements ... can live in body') and per the eval-architecture contract (rule 43d: judges are read-only; the author reconciles via /content-creation; a maintainer's Accept-with-mitigation note is the designed closing move for exactly this kind of finding), the same reasoning applies here. Cross-checked the module file one level up: earn-the-trust.md already carries a dedicated trainer catch for this exact miss — 'Ex3 default-acceptance on first SKILL.md — student ships Claude's first draft. Trainer runs the self-critique move: \"ask the skill to disclose its weakest part before you ship.\"' — in both its Push-back-moves list AND its Per-phase-failure-mode-+-escape-hatch table, plus a Decision-points line protecting the beat from compression ('Compress Ex3's conversation phase, not the invocation-and-self-critique'). The trainer catch exists at the architecturally correct layer (module files own per-phase failure-mode tables per check_pedagogy.md rule 47; rule 64 prefers a pointer over cross-file duplication) — a duplicate entry inside this exercise file's own Push-back-moves list would restate, not add coverage. Verdict: this is a maintainer-reconciled, correctly-grounded, precedented accept, not an open mechanism gap. Flips from the prior pass's REVISE.",
+      "evidence": "File is unchanged vs. HEAD (git status clean on this path). The 'Sharpen the skill from what came back' bullet ('Before you ship, ask the skill itself to name its own weakest part... Push back on what it names; don't settle for reassurance.') stays body-only — neither author-test-strategy-skill-1 nor -2 fences it. The exercise's own maintainer block carries a logged Accept-with-mitigation line (§56): 'no dedicated push-back move for a skipped self-critique ask. The body line above (...) is the fix; not every miss needs a trainer catch too.' Cross-checked the module file one level up: earn-the-trust.md carries the real trainer catch for this exact miss — 'Ex3 default-acceptance on first SKILL.md — student ships Claude's first draft. Trainer runs the self-critique move: \"ask the skill to disclose its weakest part before you ship.\"' — in its Push-back-moves list AND its Per-phase-failure-mode-+-escape-hatch table, plus a Decision-points line protecting the beat from compression. More importantly, the ACTUAL forcing function for this exact move fires one module-section later: earn-the-trust.md's 'Sharpen the skill from evidence' beat runs {{prompt:ae101-m3-sharpen-skill}}, whose fenced text is 'find the ONE section of the skill where invocation evidence shows it underdelivered... Rewrite that section in place... Show me before and after' — a fenced, mandatory disclose-weakest-part-and-rewrite pass, in the same module, immediately after this exercise. Per rule 16's own carve-out ('optional push-backs / refinements ... can live in body') plus the fact that the real mechanism is fenced one section over, this is a maintainer-reconciled, correctly-grounded accept, not an open mechanism gap.",
       "fix_hint": null,
       "blocking": false
     },
@@ -65,7 +65,7 @@
       "rule_index": 27,
       "rule_lead": "Body teaches the work; trainer manages the room outside text.",
       "verdict": "PASS",
-      "evidence": "Both edited lines re-checked: 'ask the skill itself to name its own weakest part... Push back on what it names' and 'Want a harsher read of the output too?' both direct the student to keep talking to Claude/the skill, not to compare, share, or discuss with a person or the room. No authored conversation/pause/comparison cue anywhere in the file. 'Decide if it graduates to the team' section reads as coached post-training workplace action (the team-PR move itself, the exercise's actual teaching content), not authored in-room pairing.",
+      "evidence": "Both relevant lines checked: 'ask the skill itself to name its own weakest part... Push back on what it names' and 'Want a harsher read of the output too?' both direct the student to keep talking to Claude/the skill, not to compare, share, or discuss with a person or the room. No authored conversation/pause/comparison cue anywhere in the file. 'Decide if it graduates to the team' section reads as coached post-training workplace action (the team-PR move itself, the exercise's actual teaching content), not authored in-room pairing.",
       "fix_hint": null,
       "blocking": false
     },
@@ -74,7 +74,7 @@
       "rule_index": 6,
       "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
       "verdict": "PASS",
-      "evidence": "Read author-test-strategy-skill-1.md and author-test-strategy-skill-2.md fresh, byte-for-byte unchanged by this edit. Phase 1's prompt makes no mention of invocation/grading; Phase 2's prompt makes no mention of the team-PR/shipping beat that follows or of the self-critique ask.",
+      "evidence": "Read author-test-strategy-skill-1.md and author-test-strategy-skill-2.md fresh. Phase 1's prompt makes no mention of invocation/grading; Phase 2's prompt makes no mention of the team-PR/shipping beat that follows or of the self-critique ask.",
       "fix_hint": null,
       "blocking": false
     },
@@ -83,7 +83,7 @@
       "rule_index": 41,
       "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
       "verdict": "REVISE",
-      "evidence": "Unchanged from the prior pass — this edit did not touch the prompt fences. author-test-strategy-skill-1's last line ('Show me before saving') still reads as gating the persisted write behind an unscripted approval turn, while Phase 3's body still asserts unconditionally that the skill is 'already shipped... the agent wrote it there in Phase 1.' Low-severity in practice (a real conversation naturally continues with 'looks good, save it').",
+      "evidence": "author-test-strategy-skill-1's last line ('Show me before saving') reads as gating the persisted write behind an unscripted approval turn, while Phase 3's body asserts unconditionally that the skill is 'already shipped... the agent wrote it there in Phase 1.' Low-severity in practice (a real conversation naturally continues with 'looks good, save it').",
       "fix_hint": "If Phase 3's 'already shipped' framing must hold exactly, make the continuation explicit in the fence ('show me before saving; once I confirm, save it').",
       "blocking": false
     },
@@ -92,7 +92,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named; mood-floor applies to teaching beats only.",
       "verdict": "PASS",
-      "evidence": "Maintainer Meta block unchanged: 'Mood target: earned trust, culminating.' All beats (authoring, invoking, sharpening, deciding-to-ship) are teaching beats — mood-floor applies throughout; see mood_summary for the one 7/10 beat (non-blocking per the story rubric's 7-is-facilitator-premium reading).",
+      "evidence": "Maintainer Meta block: 'Mood target: earned trust, culminating.' All four beats (authoring, invoking, sharpening, deciding-to-ship) are teaching beats — mood-floor applies throughout; see mood_summary for the one 7/10 beat (non-blocking per the story rubric's 7-is-facilitator-premium reading).",
       "fix_hint": null,
       "blocking": false
     },
@@ -101,7 +101,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood, not punitive.",
       "verdict": "PASS",
-      "evidence": "New bullet's closing clause ('Push back on what it names; don't settle for reassurance') reads as intellectual-rigor framing, not shame. Diagnostic/failure-mode language ('default-acceptance failure') stays in the maintainer block, never reaches student-facing body.",
+      "evidence": "The sharpen bullet's closing clause ('Push back on what it names; don't settle for reassurance') reads as intellectual-rigor framing, not shame. Diagnostic/failure-mode language ('default-acceptance failure') stays in the maintainer block, never reaches student-facing body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -110,7 +110,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "'The point:' still leads with the positive discipline (codebase-specific authoring through conversation, hardened by self-critique and invocation) over the generic-pyramid contrast case. Unaffected by this session's edits.",
+      "evidence": "'The point:' leads with the positive discipline (codebase-specific authoring through conversation, hardened by self-critique and invocation) over the generic-pyramid contrast case.",
       "fix_hint": null,
       "blocking": false
     },
@@ -119,7 +119,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "Verified the strategy citation directly this pass (previously taken as given): content-strategy-agentic-engineering-101.md line 332 reads 'Force-push-back move: ask the skill to disclose its own weakest part before shipping. You push back on the self-critique — which is the reflection move; this IS theme #4 (mechanically self-aware) used as designed.' The new body bullet instantiates this move near-verbatim ('ask the skill itself to name its own weakest part... Push back on what it names'). Cross-checked earn-the-trust.md's four citing surfaces fresh: What You'll Learn ('ask it to disclose its own weakest part, push back on the critique') and the Push-back-moves + Per-phase-failure-mode table entries ('ask the skill to disclose its weakest part before shipping') match the new bullet's target unambiguously; the Decision-points compression guidance ('Compress Ex3's conversation phase, not the invocation-and-self-critique') protects the same beat. Key Concepts ('Ask the agent what's weakest about its own output') is a looser paraphrase that could also read as the module-close 'Sharpen the skill from evidence' prompt (a different, later self-critique on the skill's weakest SECTION post-invocation) — ambiguous but not newly broken by this edit, and not blocking. Front-run check, module-to-module arc, and mood-doesn't-resolve-early remain clean. Strategy-fidelity is fully resolved: both the content-presence question (this pass) and the mechanism-placement question (§16, this pass) now close together.",
+      "evidence": "The 'Sharpen the skill from what came back' bullet instantiates the strategy doc's disclose-weakest-part / push-back move near-verbatim. Cross-checked earn-the-trust.md's citing surfaces: What You'll Learn ('ask it to disclose its own weakest part, push back on the critique') and the Push-back-moves + Per-phase-failure-mode table entries match unambiguously; the Decision-points compression guidance ('Compress Ex3's conversation phase, not the invocation-and-self-critique') protects the same beat. Key Concepts ('Ask the agent what's weakest about its own output') is a looser paraphrase that could also read as the module-close 'Sharpen the skill from evidence' prompt (a different, later self-critique on the skill's weakest SECTION post-invocation) — ambiguous but not blocking. Front-run check, module-to-module arc, and mood-doesn't-resolve-early remain clean: this exercise's close ('What happened'/'What this sets up') hands cleanly to M4 reading the skill and M6 repeating the authoring move, without claiming false completeness — the real sharpen pass is one module-section away, not misrepresented as absent.",
       "fix_hint": null,
       "blocking": false
     },
@@ -146,7 +146,7 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "Module-only section; no '## What You'll Learn' heading in this exercise file. Non-blocking note: What You'll Learn's stated order (disclose-weakest-part, push back, THEN invoke) differs from this exercise's actual order (invoke-and-grade THEN disclose-weakest-part). Per this rule's own 'capability register, not syllabus' framing this is not a violation; unaffected by this session's edits.",
+      "evidence": "Module-only section; no '## What You'll Learn' heading in this exercise file. Non-blocking note: What You'll Learn's stated order (disclose-weakest-part, push back, THEN invoke) differs from this exercise's actual order (invoke-and-grade THEN disclose-weakest-part). Per this rule's own 'capability register, not syllabus' framing this is not a violation.",
       "fix_hint": null,
       "blocking": false
     }
@@ -156,13 +156,13 @@
     "close_score": 8,
     "any_below_8": true,
     "stealing_the_mood": [
-      "'Sharpen the skill from what came back' beat (7/10, facilitator-premium — not REVISE-triggering): the disclose-its-own-weakest-part ask is correctly targeted and well-placed (first line of the beat, right after Phase 2's self-graded 'is it good?', where self-charity risk peaks). What keeps it at 7 rather than 8, from the STUDENT'S seat: the ask is still optional body prose for the file's own named central failure mode, and the maintainer's new Accept-with-mitigation note is trainer-facing (below the maintainer fence) — invisible to a fast-operator persona skimming past the bullet. That persona still ships without naming a weak assumption, same as before. The gap now has an owner and a citation (audit-facing, resolved); it does not change what the student sees mid-read (mood-facing, unchanged)."
+      "'Sharpen the skill from what came back' beat (7/10, facilitator-premium — not REVISE-triggering): the disclose-its-own-weakest-part ask is correctly targeted and well-placed (first line of the beat, right after Phase 2's self-graded 'is it good?', where self-charity risk peaks). What keeps it at 7 rather than 8, from the STUDENT'S seat: the ask is still optional body prose for the file's own named central failure mode, and the maintainer's Accept-with-mitigation note is trainer-facing (below the maintainer fence) — invisible to a fast-operator persona skimming past the bullet. That persona ships this beat without naming a weak assumption in-file; the real fenced pass lands one module-section later, outside this file's own frame."
     ]
   },
   "teaching_moment_lands": {
     "verdict": "PASS",
-    "note": "The named teaching moment for Ex3 (the skill disclosing its own weakest part before shipping, with the student pushing back) is present, correctly distinguished from the neighbouring 'harsher read of the output' bullet, and placed at the highest-leverage point in the flow. It is not fence-enforced, so a skim-and-ship read can still miss it — but that residual risk is now a maintainer-logged, rule-grounded (§56) accept-with-mitigation rather than an open mechanism gap, matching the precedent already passing on compound-and-close.md, and backstopped by a real trainer catch one file up in earn-the-trust.md's own failure-mode table. Recorded here per template instruction (never as its own rules_evaluated row); see check_pedagogy.md #16 for the compendium-anchored evidence.",
-    "status": "RESOLVED — content, placement, and mechanism-acceptance all land this pass. Maintainer decision is final per this session's brief; not re-litigated here."
+    "note": "The named teaching moment for Ex3 (the skill disclosing its own weakest part before shipping, with the student pushing back) is present, correctly distinguished from the neighbouring 'harsher read of the output' bullet, and placed at the highest-leverage point in the flow. It is not fence-enforced inside THIS file, so a skim-and-ship read can still miss it here — but the real forcing function fires one module-section later in earn-the-trust.md ({{prompt:ae101-m3-sharpen-skill}}), and this file's own maintainer block already logs the local gap as accept-with-mitigation (§56) rather than an oversight. Recorded here per template instruction (never as its own rules_evaluated row); see check_pedagogy.md #16 for the compendium-anchored evidence.",
+    "status": "RESOLVED — content, placement, and cross-file mechanism all land on a forward read; maintainer's local accept-with-mitigation call is logged and not re-litigated here."
   },
   "blocking_findings_count": 0,
   "todos_count": 1

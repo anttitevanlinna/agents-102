@@ -3,7 +3,7 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/open-the-side-quest.md",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "cached",
+  "trace_status": "full_regen",
   "prompts_evaluated": 2,
   "prompts_findings": [
     {
@@ -12,8 +12,9 @@
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Fence carries two shell actions (git worktree add, cp) plus a report-back ask ('Tell me the absolute path to the new worktree directory and which files copied across.') with no in-fence 'No preamble' suppressor; a short narration line before the tool calls is plausible but not forced — only 2 named sub-steps, below check_prompts.md §17's 4+-sub-step structural trigger.", "fix_hint": "Optional in-fence 'No preamble.' opener; not warranted at current confidence given the prompt is short and concrete."},
-        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Body callout two paragraphs above the fence names the choice explicitly and gives the student an action before paste: 'Decide where to base the side worktree... Clean main is the safe default. If you want another base, switch to it before you fork.' Satisfies the body-callout mitigation carve-out (check_prompts.md default-acceptance catalog note, judge template's body-callout carve-out section).", "fix_hint": "No edit needed — carve-out already satisfied by the pre-fence body paragraph."}
+        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Fence carries two shell actions (git worktree add, cp) plus a report-back ask ('Tell me the absolute path to the new worktree directory and which files copied across.') with no in-fence 'No preamble' suppressor; a short narration line before the tool calls is plausible but not forced.", "fix_hint": "Optional in-fence 'No preamble.' opener; not warranted at current confidence given the prompt is short and concrete."},
+        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Body callout two paragraphs above the fence names the choice explicitly and gives the student an action before paste: 'Decide where to base the side worktree... Clean main is the safe default. If you want another base, switch to it before you fork.' Satisfies the body-callout mitigation carve-out.", "fix_hint": "No edit needed — carve-out already satisfied by the pre-fence body paragraph."},
+        {"pattern_id": "overwrite-anxiety", "confidence": "low", "evidence": "'cp ./CLAUDE.local.md ../<repo-name>-m3-quality/  (if it exists)' writes into a worktree the same prompt just created via `git worktree add` one line earlier — stronger than the fresh-install-context carve-out, since the target directory is structurally guaranteed to have no prior contents.", "fix_hint": "No edit needed — target freshness is guaranteed by prompt order, not by convention."}
       ]
     },
     {
@@ -22,20 +23,20 @@
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Four bulleted check-items (directory, branch, CLAUDE.md/CLAUDE.local.md load state, git ls-files visibility) with no in-fence 'No preamble' suppressor and no post-fence body primer naming preamble + a skim-past cue; the closing 'Report the four lines back. Then wait.' is a strong directive anchor that keeps the risk low rather than forcing it, despite check_prompts.md §17's 4+-sub-step structural trigger technically being met by the bullet count.", "fix_hint": "Optional in-fence 'No preamble.' would fully suppress; not required given the directive close already does most of the work, but is the cleanest path to clearing this TODO if it fires in cohort."}
+        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Four bulleted check-items (directory, branch, CLAUDE.md/CLAUDE.local.md load state, git ls-files visibility) with no in-fence 'No preamble' suppressor; the closing 'Report the four lines back. Then wait.' is a strong directive anchor that keeps the risk low rather than forcing it.", "fix_hint": "Optional in-fence 'No preamble.' would fully suppress; not required given the directive close already does most of the work."}
       ]
     }
   ],
   "blocking_findings_count": 0,
   "todos_count": 2,
   "rules_evaluated": {
-    "note": "Completeness ledger scoped to the 15-pattern behavioral catalog (simulation-behavior.md) — the operative rubric this judge class grades against per curriculum/evals/judges/prompt-behavior.md. check_prompts.md and check_pedagogy.md are consulted as 'adjacent rules' context (carve-out sourcing, §17 preamble-trigger arithmetic, fresh-install-context carve-out) rather than enumerated rule-by-rule, per the template's own compendium framing ('COMPENDIUMS (read on demand for adjacent rules)').",
+    "note": "Completeness ledger scoped to the 15-pattern behavioral catalog (simulation-behavior.md) — the operative rubric this judge class grades against per curriculum/evals/judges/prompt-behavior.md. check_prompts.md and check_pedagogy.md are consulted as 'adjacent rules' context (carve-out sourcing, fresh-install-context carve-out) rather than enumerated rule-by-rule, per the template's own compendium framing ('COMPENDIUMS (read on demand for adjacent rules)').",
     "prompt_1": [
       {"pattern_id": "file-preservation-gap", "status": "not-fired", "reason": "cp ./CLAUDE.local.md writes into a brand-new worktree directory just created by git worktree add — fresh-install-context carve-out (compounded/2026-05-24-prompts-overwrite-anxiety-fresh-install-carveout.md) applies; nothing pre-existing to preserve-vs-replace."},
       {"pattern_id": "reading-burden", "status": "not-applicable", "reason": "no manual proofreading of Claude's output asked; report-back is a factual confirmation (path + file list), not error-catching."},
       {"pattern_id": "niceness-tax", "status": "not-applicable", "reason": "no evaluative/self-critique content for RLHF softening to mask."},
       {"pattern_id": "question-dump", "status": "not-applicable", "reason": "no sequence of questions posed to the student."},
-      {"pattern_id": "overwrite-anxiety", "status": "not-fired", "reason": "fresh worktree = fresh target directory; fresh-install-context carve-out applies, no body marker implies a prior-install collision scenario."},
+      {"pattern_id": "overwrite-anxiety", "status": "fired", "confidence": "low"},
       {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "low"},
       {"pattern_id": "append-vs-integrate", "status": "not-applicable", "reason": "no existing document/section is being added to."},
       {"pattern_id": "plan-mode-preamble-bloat", "status": "not-applicable", "reason": "no permission-mode: plan frontmatter, no plan-mode language."},
@@ -65,5 +66,5 @@
       {"pattern_id": "self-audit-charity", "status": "not-applicable", "reason": "no self-critique asked."}
     ]
   },
-  "summary": "PASS at top level. content_sha (0e333d9f8dab91ea1776b566a37bb8d493af2a1c7d145192eb5e42477cf80c01) and both per-prompt SHAs match curriculum/evals/sim-cache/ae101--open-the-side-quest.behavior.json exactly — full cache hit, no regeneration. Both prompts (fork the sibling worktree; confirm worktree state) fire only low-confidence preamble-before-action, and prompt 1 additionally fires a body-callout-mitigated low-confidence default-acceptance. No high or med-confidence risk fires on either prompt, so blocking_findings_count is 0. Per the verdict rules ('TODO if... confidence: low regardless'), low-confidence findings still route each prompt to a per-prompt TODO (2 total) — the expected non-blocking outcome for a body-callout-carved risk, not a defect needing action before ship. Reconciles a prior uncommitted local draft at this path (already corrected from an earlier PASS/PASS misread to TODO/TODO) with the rules_evaluated ledger shape used by sibling behavior instances (e.g. ae101--compound-and-close.behavior.json)."
+  "summary": "PASS at top level. Both prompt SHAs and the file-level content_sha mismatched the prior cache (dated 2026-07-10) — full regeneration ran against the current on-disk exercise. Prompt 1 (fork the sibling worktree) fires three low-confidence risks: preamble-before-action (unmitigated but low-stakes), default-acceptance (neutralised by the pre-fence body callout naming the base-branch decision), and overwrite-anxiety (neutralised — the copy target is a worktree the same prompt just created, so no prior-file collision is structurally possible). Prompt 2 (confirm worktree state) fires only low-confidence preamble-before-action, damped by the directive close 'Report the four lines back. Then wait.' No high or med-confidence risk fires on either prompt, so blocking_findings_count is 0. Per the verdict rules ('TODO if... confidence: low regardless'), each prompt still routes to a per-prompt TODO (2 total) even though every fired risk is low-confidence or carve-out-mitigated — expected non-blocking outcome, not a defect needing action before ship. Refreshed sim-cache written to curriculum/evals/sim-cache/ae101--exercise--open-the-side-quest.behavior.json."
 }

@@ -8,21 +8,21 @@
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_lead": "This session we drew the recurring shapes in my work and shipped one skill from",
+      "prompt_lead": "This session we drew the recurring shapes in my work and listed the checking pr",
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "No 'No preamble' suppressor in-fence; but this is a single-artifact 'write me a handoff prompt' ask (not a 4+ named-substep directive Claude walks this turn, not a plan-mode invocation), so check_prompts.md #17's structural trigger doesn't obligate a suppressor here — the several content requirements ('carry the shapes,' 'bake in what a cold session won't have,' 'name the shapes inside it,' 'put it in a code block') describe what the OUTPUT prompt should contain, not sub-steps Claude executes in sequence this turn.",
-          "fix_hint": "Optional: append 'No preamble — open directly with the prompt.' as the fence's last line if a terse hand-off becomes load-bearing later; not warranted at current confidence."
+          "evidence": "No 'No preamble' suppressor in-fence; but this is a single-artifact 'write me a handoff prompt' ask (not a 4+ named-substep directive Claude walks this turn, not a plan-mode invocation), so check_prompts.md #17's structural trigger doesn't obligate a suppressor here -- the several content requirements ('carry the shapes,' 'bake in what a cold session won't have,' 'name the shapes inside it,' 'put it in a code block') describe what the OUTPUT prompt should contain, not sub-steps Claude executes in sequence this turn.",
+          "fix_hint": "Optional: append 'No preamble -- open directly with the prompt.' as the fence's last line if a terse hand-off becomes load-bearing later; not warranted at current confidence."
         },
         {
           "pattern_id": "default-acceptance",
           "confidence": "low",
-          "evidence": "Earlier in the same lecture ('The move widens to everything you do' section, several paragraphs before the fence): 'What comes back is a candidate. You read it the way you read any prompt the agent drafts: judgement, push-back, taste. Some of it will be obvious. Some of it will be off. One or two lines will be moves you would not have written on your own.' — names the failure mode (uncritical acceptance) and gives the recovery move (judgement/push-back), satisfying the body-callout mitigation carve-out even though the callout sits before rather than immediately after the fence.",
-          "fix_hint": "None needed — carve-out satisfied by existing body prose. Preserve that paragraph on future edits to this lecture; it is doing the mitigation work for this prompt."
+          "evidence": "Earlier in the same lecture ('The move widens to everything you do' section, several paragraphs before the fence): 'What comes back is a candidate. You read it the way you read any prompt the agent drafts: judgement, push-back, taste. Some of it will be obvious. Some of it will be off. One or two lines will be moves you would not have written on your own.' -- names the failure mode (uncritical acceptance) and gives the recovery move (judgement/push-back), satisfying the body-callout mitigation carve-out even though the callout sits before rather than immediately after the fence.",
+          "fix_hint": "None needed -- carve-out satisfied by existing body prose. Preserve that paragraph on future edits to this lecture; it is doing the mitigation work for this prompt."
         }
       ]
     }
@@ -46,6 +46,6 @@
     {"pattern_id": "citation-cargo-cult", "status": "not_fired", "why": "No citations requested."},
     {"pattern_id": "self-audit-charity", "status": "not_fired", "why": "Claude is not asked to critique its own work; it is asked to synthesize a new artifact from session context."}
   ],
-  "note": "Full regen: the prior cached instance at this path (and the prior sim-cache trace) graded an earlier, since-retired in-lecture plan-mode prompt ('Enable plan mode. Read these artefacts end to end...') that no longer exists in the file -- the maintainer block documents the swap ('the earlier design-the-next-kit plan-mode prompt retired and replaced by agents-that-build-agents-handoff'). Re-walked the file fresh against the current single **Prompt** block (registry key agents-that-build-agents-handoff, expanded via scripts/expand-md.js). File identity for this instance is the lecture path per the judge template ('{{file_path}} is still the canonical identity for instance JSON and Quality stamping -- only the file CONTENT view shifts to expanded'); the underlying prompt body lives at curriculum/prompts/agents-that-build-agents-handoff.md. Scope note: this class grades the 15-pattern behavioral-risk catalog only (simulation-behavior.md) -- placeholder-freedom, cold-session self-containment, capability-claim accuracy, and artifact-vs-STOP tail ordering are technical-class and check_prompts.md-mechanics territory (already graded PASS in the sibling ae101--agents-that-build-agents.technical.json instance), not re-litigated here.",
+  "note": "Full regen: the prior cached trace's prompt_lead ('...shipped one skill from') and prompt_sha no longer match the current registry body ('...listed the checking primitives the field runs') at curriculum/prompts/agents-that-build-agents-handoff.md -- the prompt was reworded since the last cache write (frontmatter now requires recurring-shape-diagrams + primitive-menu, produces workflow-skills-handoff-prompt). Re-walked the file fresh against the current single **Prompt** block (registry key agents-that-build-agents-handoff, expanded via scripts/expand-md.js; expanded content matches the registry file verbatim). File identity for this instance is the lecture path per the judge template. Scope note: this class grades the 15-pattern behavioral-risk catalog only (simulation-behavior.md) -- placeholder-freedom, cold-session self-containment, capability-claim accuracy, and artifact-vs-STOP tail ordering are technical-class and check_prompts.md-mechanics territory, not re-litigated here.",
   "summary": "PASS -- the single prompt block (agents-that-build-agents-handoff) fires no high or med-confidence risk against the 15-pattern catalog. Two low-confidence risks noted for the record: preamble-before-action (no in-fence suppressor, but the structural trigger for one doesn't fire on a single-artifact authoring ask) and default-acceptance (already mitigated by an explicit push-back callout earlier in the same lecture). Per-prompt verdict is TODO (any low-confidence risk routes to TODO under the verdict rules); top-level verdict is PASS. No blocking findings."
 }

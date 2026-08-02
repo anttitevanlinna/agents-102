@@ -4,14 +4,14 @@
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "earned trust, deepening (M3 Ex2 of 3) — student leaves with a real security call made under named pressure, not a compliance checkbox",
-  "trace_status": "cached",
+  "trace_status": "regenerated",
   "rules_evaluated": [
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "Checked each phase's forcing function against the actual registry-prompt text (curriculum/prompts/threat-model-with-stride-{1,2,3}.md), not just the body lead-in. Phase 1: prompt-1 itself instructs 'invoke the stride skill on the access-surface map... Run stride in a subagent... Don't pick yet.' Phase 2: prompt-2 itself enacts 'name the worst case first' — 'Start by proposing the most plausible incident story... then map that story to the STRIDE class it best fits... I'll steer if the story or mapping misses' — the incident-story-before-classification sequencing is IN the fence; body prose (lines 30-31) only narrates the discipline without scripting it. Phase 3: prompt-3 itself requires 'Alternatives considered names the 2-3 options we didn't pick and one line on why' — the mechanic the leap test's second falsifiable outcome depends on is in the fence. All three phases pass; contrast with the sibling exercise (author-test-strategy-skill.md) where this same rule flagged a body-promised, fence-absent forcing function.",
+      "evidence": "Checked each phase's forcing function against the registry-prompt text (curriculum/prompts/threat-model-with-stride-{1,2,3}.md), not just the body lead-in. Phase 1: prompt-1 itself instructs 'invoke the stride skill on the access-surface map... Run stride in a subagent... Don't pick yet — I'll decide next.' Phase 2: prompt-2 enacts 'name the worst case first' in the fence — 'Start by proposing the most plausible incident story... then map that story to the STRIDE class it best fits... I'll steer if the story or mapping misses' — the incident-story-before-classification sequencing is IN the fence; body lines 30-31 only narrate the discipline without re-scripting it. Phase 3: prompt-3 requires 'Alternatives considered names the 2-3 options we didn't pick and one line on why' — the mechanic the leap test's second falsifiable outcome depends on is in the fence. Body line 32 ('One threat, not five') and line 27 ('reject most... that rejection is the point') are framing, not the count-script the rule's removal test would flag — cutting them loses framing, not pedagogy, since the operative pick-one forcing function already lives in the -2 fence.",
       "fix_hint": null,
       "blocking": true
     },
@@ -20,16 +20,16 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "No authored conversation/pair/room-share cues anywhere in the student-facing body (lines 1-83). The 'Check where the ADR landed' section (lines 60-64) reads as agent-behavior diagnosis, not a room-management cue. 'Push-back moves' and 'Watch-fors' live below the `<!-- maintainer -->` fence (line 85+), addressed to the trainer as actor per rule 25's format convention, not scripted into the exercise text students read.",
+      "evidence": "Full body re-read above the maintainer fence (lines 1-84): no 'discuss with', 'share with your neighbor', 'take N seconds and compare', or any authored pause/comparison cue. Every sentence is about the work — the STRIDE walk, the pick, the ADR, the worktree check, the auto-load reveal. 'Check where the ADR landed' (lines 60-64) reads as agent-behavior diagnosis, not a room-management cue. Push-back moves and Watch-fors live entirely below the maintainer fence (line 85+), addressed to the trainer, never scripted into student-facing text.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named; mood lands (8+/10 per TEACHING beat).",
+      "rule_lead": "Mood contract named; mood-floor (8+/10) applies to TEACHING beats only.",
       "verdict": "PASS",
-      "evidence": "Maintainer block names 'Mood target: earned trust, deepening' verbatim, matching content-strategy-agentic-engineering-101.md's mood-arc entry for M3 ('earned trust'). Fresh trace (regenerated, sim-cache/ae101--threat-model-with-stride.persona.json): phase scores 8, 9, 8; close 8. All three phases classify as TEACHING beats (over-production framing, incident-story pick, and ADR-authoring/explicit-load reveal are each load-bearing for downstream teaching moments, not compressible to a parenthetical) — floor applies throughout and clears.",
+      "evidence": "Maintainer block names 'Mood target: earned trust, deepening' verbatim, matching content-strategy-agentic-engineering-101.md's M3 mood-arc entry ('earned trust'). Refreshed trace (regenerated this pass — cached SHAs were stale, recomputed against current file, content unchanged in substance): phase scores 8, 9, 8; close 8. All three phases classify as TEACHING beats (over-production framing, incident-story pick, ADR-authoring + explicit-load reveal are each load-bearing for a downstream teaching moment, not compressible to a parenthetical) — floor applies throughout and clears, peaking at phase 2 (9).",
       "fix_hint": null,
       "blocking": true
     },
@@ -38,7 +38,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood, not punitive mood.",
       "verdict": "PASS",
-      "evidence": "Worktree-location beat (lines 62-64) frames the misplacement as 'the agent reasoned itself there' — an interesting fact about agent inference, not student error. STRIDE's role is framed as giving the student structure to REJECT most threats, not a checklist the student failed to complete.",
+      "evidence": "Worktree-location beat (lines 60-64) frames the misplacement as 'the agent reasoned itself there... reasoned forward from the conversation, not from the filesystem' — an epistemic account of the agent's inference, not a student-failure frame. STRIDE's role throughout is framed as giving the student structure to REJECT most threats (line 11), not a checklist the student failed to clear.",
       "fix_hint": null,
       "blocking": false
     },
@@ -47,7 +47,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title 'Pick one threat, record the decision' and opening line 'Threat modeling is only useful if it produces a decision' (line 11) lead with the decision-making discipline. No failure word (breach, vulnerability, hallucination) in the title or lead framing.",
+      "evidence": "Title 'Pick one threat, record the decision' and opening line 'Threat modeling is only useful if it produces a decision' (line 11) lead with the decision-making discipline. 'What you build' (line 9) names the artifact as 'one recorded hardening decision,' not an avoided disaster. No failure word (breach, vulnerability, compromise) in title or lead framing.",
       "fix_hint": null,
       "blocking": false
     },
@@ -56,7 +56,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity — consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early.",
       "verdict": "PASS",
-      "evidence": "Front-run check: no mention of M4's un-packaged send-off dynamics; M3's own arc (Ex3 test-strategy authoring) stays unresolved at this file's close. Big Idea fidelity: mechanism matches content-strategy-agentic-engineering-101.md M3 Ex2 spec verbatim — STRIDE invoked as subagent on the mapped surface, one threat picked via worst-case-first, ADR with rejected threats as reasoning, 'no menu-shopping' (strategy doc line 328) mirrored by body's 'One threat, not five' (line 32). Module/exercise-to-exercise arc: close ('What this sets up,' line 105) hands off to Ex3 exactly as strategy doc's 'Why S-first' section (line 320) specifies — 'the test-strategy skill (Ex3) invokes on the feature that's already been access-mapped and threat-modeled. Abuse cases STRIDE surfaced become test cases.' Mood doesn't resolve early: this is Ex2 of 3 within M3; the file doesn't prematurely close M3's overall arc.",
+      "evidence": "Checked against content-strategy-agentic-engineering-101.md line 239 (M3 row): '(2) invoke curated STRIDE skill, pick one hardening decision → ADR' — matches this file's shape exactly. Subagent placement matches line 326 ('Ex1 and Ex2 invoke the curated skills as subagents'). Big Idea fidelity: M3's 'software factory (tech) + team integration (how) via team-kit seed + first authored skill' is honored by scope, not front-run — this file produces the ADR that Ex3's authored test-strategy skill and M4's audit later consume (artefact-contracts table, lines 133-135), it doesn't attempt Ex3's authored-skill teaching moment itself. Module/exercise-to-exercise arc: close ('What this sets up', line 83) hands off to 'the next exercise authors a test-strategy skill... The hardening decision becomes a test case in the test strategy', matching strategy doc line 338's Ex3 description almost verbatim. Mood doesn't resolve early: M3's mood is 'earned trust, deepening' across all three exercises (strategy line 239); this file is Ex2 of 3, mid-arc, and doesn't prematurely close M3's overall arc — Ex3's authored-skill/team-kit-seed beat still lies ahead.",
       "fix_hint": null,
       "blocking": true
     },
@@ -65,7 +65,7 @@
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Target is an exercise file with no `## Key Concepts` section — that heading is module-file-only. The module file (agentic-engineering-101/module-3.md or equivalent) is the strategy judge's scope for this rule, not this exercise.",
+      "evidence": "Target is an exercise file with no `## Key Concepts` section — that heading is module-file-only. The M3 module file is the strategy judge's scope for this rule, not this exercise.",
       "fix_hint": null,
       "blocking": false
     },
@@ -92,7 +92,7 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures are closers, not openers.",
       "verdict": "N/A",
-      "evidence": "Target file (threat-model-with-stride.md) is an exercise, not a lecture. check_lectures fires on lecture writing/placement only.",
+      "evidence": "Target file is an exercise, not a lecture. check_lectures fires on lecture writing/placement only.",
       "fix_hint": null,
       "blocking": false
     },
@@ -101,7 +101,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "Not a lecture; not applicable to this exercise file.",
+      "evidence": "Not a lecture; not applicable. M3 is an earned-trust module, not a contrast-mood module.",
       "fix_hint": null,
       "blocking": false
     },
@@ -110,7 +110,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Not a lecture. (For reference: this exercise's own module-number references — 'M3 worktree' at line 62 — are prompt/scrollback-grounding per check_prompts.md §32, a different compendium's carve-out, not this rule's territory.)",
+      "evidence": "Not a lecture. This exercise's own module-number reference ('M3 forked a worktree at turn 1', line 63) is exercise-body scrollback-grounding, not a lecture-body cross-reference — a different compendium's territory, not this rule's.",
       "fix_hint": null,
       "blocking": false
     },
@@ -119,7 +119,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
-      "evidence": "check_lectures fires on lecture surfaces ('lecture-writing-checklist'). This file's `##` slide headers are audited by check_slides.md under the slides class, not storytelling/check_lectures.",
+      "evidence": "check_lectures fires on lecture surfaces. This file's `##` slide headers are audited by check_slides.md under the slides class, not storytelling/check_lectures.",
       "fix_hint": null,
       "blocking": false
     },
@@ -129,6 +129,15 @@
       "rule_lead": "A slide's BODY is size-bounded, not just its header.",
       "verdict": "N/A",
       "evidence": "Same as rule 4 — slide-size mechanics belong to check_slides.md / the slides class for this exercise file, not check_lectures.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 1,
+      "rule_lead": "Group beat ≠ parallel solo work — co-located solo work is not a workshop.",
+      "verdict": "N/A",
+      "evidence": "No room-scale beat anywhere in the file — every phase is one student running Claude against their own feature and writing their own ADR. check_workshop.md's own carve-out for co-located solo work applies wholesale; no group adjudication, no shared artefact, no attribution or promotion tiering.",
       "fix_hint": null,
       "blocking": false
     }
@@ -141,7 +150,7 @@
   },
   "teaching_moment_lands": {
     "verdict": "PASS",
-    "note": "The named teaching moment (STRIDE over-produces on purpose; the student rejects most and names one worst-case-grounded threat to harden; the ADR's Alternatives considered IS the reasoning) fires reliably across the trace's persona read — no under_scaffolded_phases, no ambiguous_instructions in the cached trace, and the forcing function enacting it (naming the incident story before the STRIDE class) is structurally in the Phase 2 prompt fence (see check_pedagogy.md #16 above), not skippable body prose. Recorded here per the template's instruction to never give this judgment its own rules_evaluated row."
+    "note": "The named teaching moment (name the worst realistic incident first, let the STRIDE pick fall out of it, not the reverse) is fence-enforced in threat-model-with-stride-2 ('Start by proposing the most plausible incident story... then map that story to the STRIDE class'), not left to body framing alone — a persona who skims the body still hits the forcing function inside the prompt they paste. Refreshed trace phase 2 (mood_score 9, the peak beat) confirms it lands reliably across the described persona variation ('either nods along or pushes back with a concrete correction'). No under_scaffolded_phases, no ambiguous_instructions in the trace. The M3 supply-chain easter egg (security-tools pre-flight, undisclosed in body by deliberate maintainer design) is a separate, maintainer-owned teaching moment outside this class's rubric — noted, not scored, per the maintainer block's explicit 'DO NOT SPOIL IN BODY' instruction."
   },
   "blocking_findings_count": 0,
   "todos_count": 0

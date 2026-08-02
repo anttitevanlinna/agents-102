@@ -156,5 +156,5 @@ Flagged
 
 <!-- /backing -->
 
-**Quality:** compendium-audited 2026-07-27 (writing@c202a8d story@c202a8d technical@c202a8d behavior@c202a8d pedagogy@c202a8d strategy@c202a8d slides@c202a8d)
-- judges @c202a8d: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-02 (writing@c202a8d story@c202a8d technical@d1b6f2c behavior@d1b6f2c pedagogy@c202a8d strategy@d1b6f2c slides@c202a8d)
+- judges @d1b6f2c: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

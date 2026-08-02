@@ -1,7 +1,7 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/composing-the-workflow.md",
-  "verdict": "PASS",
+  "verdict": "REVISE",
   "training": "ae101",
   "module_mood_contract": "practitioner fluency — 'I know how to test, I know how to learn, I know how to encode'",
   "trace_status": "regenerated",
@@ -11,7 +11,7 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "trainer-guide.md:138 — 'closer-area teacher. Read after Human close, before The loop has a name.' File's own maintainer block confirms the same delivery slot ('Read aloud in-room at the closer area'). This is a recognition beat (re-labels the M5 passage chart with the student's own already-authored kit), placed after the module's exercise AND after the Human close round, not before — matches the closer diagnostic, not the opener one.",
+      "evidence": "Module file spot-gaps-build-the-loop.md line 114 places this lecture in the Human-close runtime sequence (Debrief → composing-the-workflow → the-loop-has-a-name → …), after the M6 exercise, not before it. The lede's 'on the run you already sailed' is a recognition callback to the M5 passage the student already lived, not an abstract claim told in advance.",
       "fix_hint": null,
       "blocking": false
     },
@@ -20,7 +20,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "Rule targets PRE-exercise lectures ('opener arms student to do') gating a contrast-mood exercise downstream. This file sits at the opposite end of M6 — after the module's single exercise (spot-gaps-build-the-loop) and after Human close/Debrief, immediately before the final closer lecture. No exercise follows it in the live sequence (trainer-guide.md:138), so the dosage ceiling this rule polices has no downstream exercise to protect.",
+      "evidence": "This lecture sits at the closer (Human close), after the M6 exercise has already run, not before a contrast-mood exercise. The rule governs opener dosage; not the surface this file occupies.",
       "fix_hint": null,
       "blocking": false
     },
@@ -29,7 +29,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Grep of body above the maintainer fence for `M[0-9]` returns only SVG path-data tokens (e.g. `M470,560`, `M556,496` — path 'moveto' commands), zero module-number prose or module-name refs. File's own maintainer note states this explicitly: '§3 disposition (no cross-module sequencing in body)... No `M[0-9]` tags in body.' The 'run you already sailed' callback is spine-anchoring on the shared M5 chart image, not a numbered cross-module ref.",
+      "evidence": "Body grep for `M[0-9]` above the maintainer fence: no hits. Maintainer block's own '§3 disposition' entry (line 192) argues the kit is named by what it is, backward recognition not forward sequencing; 'the run you already sailed' is spine-anchoring on the shared M5 chart image, matching the carve-out for map-position refs.",
       "fix_hint": null,
       "blocking": false
     },
@@ -38,52 +38,43 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Three `##` headers, each a claim the body supports and none an empty container: 'A skill's footprint is where its job lands' (matches the chart's own caption 'A MOVE'S FOOTPRINT IS WHERE ITS JOB LANDS' and the bullet 'you never size a skill in advance'); 'A workflow is skills in the right order' (matches 'the value is the order, not the count'); 'Composition is a live argument, so you read' (matches 'no settled answer... the move is to read'). No two headers share text; no dropped qualifiers or unsupported universals found.",
+      "evidence": "Slide 1 header 'A skill's footprint is where its job lands' matches the chart's own bottom caption and slide-1 bullet 2's claim. Slide 2 header 'A workflow is skills in the right order' names the composition claim the four-bullet slide argues. Both are claims the body supports at the strength stated (no unsupported universals); no orphan-mystery or empty-container header present.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded (~210 words / ≤6 bullets), mechanically enforced.",
+      "rule_lead": "A slide's BODY is size-bounded, not just its header.",
       "verdict": "PASS",
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/composing-the-workflow.md` → 'files: 1  slides: 3  limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits.'",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/composing-the-workflow.md` run 2026-08-01: 3 slides, 0 oversized, within the 210-word/6-bullet limits.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
-      "rule_index": 16,
-      "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.",
-      "verdict": "N/A",
-      "evidence": "File carries zero prompt blocks — no `{{prompt:<key>}}` markers, no `**Prompt**` fences (grep confirms; matches the file's own Quality note 'behavior N/A, no prompt blocks'). This is a pure reading/pointer beat with no exercise phase and no student action to force; rule 16's forcing-function/prompt-vs-body distinction has no prompt surface to bind to here.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_pedagogy.md",
       "rule_index": 27,
-      "rule_lead": "Classroom = default delivery; body teaches the work, trainer manages room outside text.",
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "No authored conversation cues in body — no 'discuss with', 'compare with the person next to you', 'share what you noticed', 'tell the room'. Body stays on the artifact/concept (kit, chart, four wiring mechanisms), not cohort management. Delivery-mode framing ('Read aloud in-room... or skipped if the cohort is tight') lives in the maintainer block, not the student-facing body.",
+      "evidence": "No authored conversation, pause, or comparison cues in body text (lede, two `##` sections, closing 'Composition is a live argument, so you read' section). All sentences are about the work — the kit, the chart, the four mechanisms, the two reads — not cohort pacing or room-sharing.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named and honored; mood-floor (8+/10) applies to teaching beats.",
+      "rule_lead": "Mood contract named — 8+/10 per teaching beat.",
       "verdict": "PASS",
-      "evidence": "This is a TEACHING beat (lands the teaching moment 'a skill's footprint is where its job lands'), so the 8+ floor applies, not the setup-exempt carve-out. Regenerated trace (2026-07-10, content_sha 502d22ed...): phase mood_score 8, close mood_score 8 — both at floor. Mood honored via recognition ('nothing here is new except the placing') rather than new burden; explicit register-shift line ('no prompt to drill... the move is to read') signals the mode change cleanly.",
-      "fix_hint": null,
-      "blocking": true
+      "evidence": "trace.phases[0].mood_score = 7 (facilitator-premium signature, not below 7); trace.close.mood_score = 8. This is a TEACHING beat (mood-floor applies — the recognition-of-own-kit move IS the pedagogy), and the phase score of 7 sits at the flagged-not-failing threshold per the rule's own carve-out language, driven by the confusion in trace.phases[0].confusion_flags[0] rather than by the beat's design.",
+      "fix_hint": "Fixing the SESSION-SHAPER label mismatch (see §4 below) would move phase 1 from 7 to 8.",
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
-      "rule_lead": "Epistemic mood, not punitive mood.",
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "No shame/failure-of-the-student language anywhere in body. 'Composition is a live argument with no settled answer' is not-knowing framed as an open field to read into, never as something the student got wrong.",
+      "evidence": "No shame-flavored language; the register-shift line ('there is no prompt to drill here, the move is to read') and the closing 'pick the shape that resembles your day' are both permission-giving, not corrective.",
       "fix_hint": null,
       "blocking": false
     },
@@ -92,58 +83,55 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "All three headers name positive disciplines (footprint-sizing, ordering, a live-argument reading practice) — none lead with a failure word (no 'fragmentation', 'sprawl', 'orchestration debt' etc. as the lede). Failure shapes never appear as titles anywhere in the file.",
+      "evidence": "Both slide headers and the four named mechanisms (explicit load, orchestrator, routing, hand-off) are named as positive disciplines/mechanisms, not framed around a failure to avoid.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity — consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict.",
-      "verdict": "PASS",
-      "evidence": "Front-run: file names no 'eval' vocabulary anywhere (grep clean) though 'The loop has a name' — the very next closer lecture — is where 'your verifier is an eval; your judge is an eval; your gate is an eval' gets taught; this file stays on composition mechanics only, doesn't steal that beat. Module-to-module arc: hands off cleanly to 'The loop has a name' ('Look at what you just shipped') per trainer-guide.md:138 sequencing, no dangling reference. Big Idea fidelity: strategy doc's M6 entry (content-strategy-agentic-engineering-101.md:242, :423-451) names the mood 'practitioner fluency' and the spirit 'testing and learning'; this lecture's register-shift into read-and-recognize mode is consonant with, not competing against, that mood — note the strategy doc does not name this lecture or Dino's skill-stacking supplementary by title, so fidelity here is judged against M6's stated spirit rather than a literal per-lecture spec line. Mood-doesn't-resolve-early: M6 is the training's final core-mood beat (M7/M8 optional, different moods: M7 live deliberation, M8 open-question); this file explicitly leaves the composition question unsettled ('no settled answer') rather than resolving it, so it does not preempt M8's 'nobody plain knows' register or touch M7's deliberation stakes at all.",
-      "fix_hint": null,
+      "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
+      "verdict": "REVISE",
+      "evidence": "Front-run/artifact-fidelity facet: the same-day commit 50689ab ('M6 re-scope ripple: the close lectures stop citing the skill nobody ships') reworded the lede (line 3, 'a freshly drawn map of the moves worth packaging next'), the SVG aria-label (line 8), slide-1 bullet 1 (line 156), and three maintainer-block lines to stop claiming the student has shipped a skill named 'session-shaper.' That edit was incomplete: the SVG's rendered, visible on-chart text label at line 134 ('<text ...>SESSION-SHAPER</text>') still names it, at the same visual weight and pier-marker treatment as TEST-STRATEGY and VERIFIER (both of which the student genuinely owns). trace.phases[0].confusion_flags[0] documents the persona catching the mismatch: the chart visually claims an owned, shipped skill the corrected prose explicitly disclaims. Module-to-module arc / Big Idea fidelity facets checked clean (composition-is-unsettled framing preserved, no early resolution of the field argument, hand-off to the-loop-has-a-next lecture untouched).",
+      "fix_hint": "Relabel the SVG text at ~line 134 to match the corrected prose/aria-label wording (e.g. 'NEXT MOVE' or 'MAPPED MOVE' in place of 'SESSION-SHAPER') so the rendered chart agrees with the lede and slide-1 bullet 1 the same 2026-08-01 commit already fixed.",
       "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 5,
-      "rule_lead": "Strategic themes recur in Key Concepts (module-only section).",
+      "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "This is a lecture file, not a module file — no `## Key Concepts` section exists here. The strategy judge owns Key Concepts fidelity at the module-file level (spot-gaps-build-the-loop.md).",
+      "evidence": "Lecture, not a module file — no student-facing `## Key Concepts` heading exists on this surface.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 6,
-      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section (module-only section).",
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Same reason as §5 — no Key Concepts section on a lecture file.",
+      "evidence": "Lecture, not a module file — no Key Concepts section to breadcrumb.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 7,
-      "rule_lead": "What You'll Learn shape — capability register, not syllabus (module-only section).",
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "No `## What You'll Learn` section exists on this lecture file; the section is a module-file convention.",
+      "evidence": "Lecture, not a module file — no What You'll Learn section on this surface.",
       "fix_hint": null,
       "blocking": false
     }
   ],
-  "teaching_moment_lands": {
-    "verdict": "PASS",
-    "note": "Named teaching moment ('a skill's footprint is where its job lands') is grounded on the student's own three authored kit pieces (test-strategy skill, verifier, session-shaper) placed on a chart already familiar from M5, not on abstract or borrowed examples — low fragility across persona-skill variation. The maintainer's own framing-provenance note records a 5-framing/3-judge stress test that selected this exact framing because it 'dissolves the granularity question into one rule' rather than a fixed per-feature mapping a weaker persona could misapply. A persona could skip the four-wiring-mechanisms bullet's finer detail (flagged as a mild confusion point in the trace) without losing the core teaching moment, which survives on the chart + lede alone."
-  },
-  "prompt_compendium_scope_note": "check_prompts.md was supplied in this run's compendium_paths and its frontmatter eval_classes includes 'storytelling', but the story-judge template's Completeness contract names only check_lectures (primary, full ledger) and check_pedagogy/check_strategy_tie_in (owned subset) — it does not designate storytelling as carrying a check_prompts ledger. Scoping check: check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance for a student'; this file has zero such blocks (grep for `{{prompt:` and `**Prompt**` both empty, consistent with the file's own Quality note 'behavior N/A, no prompt blocks'). Recorded here as a scoping decision, not a silent drop: no check_prompts rules_evaluated rows emitted because there is no prompt content for any of its rules to bind to.",
   "mood_summary": {
-    "phase_scores": [8],
+    "phase_scores": [7],
     "close_score": 8,
-    "any_below_8": false,
-    "stealing_the_mood": []
+    "any_below_8": true,
+    "stealing_the_mood": [
+      "Phase 1 (7/10): the chart's still-unfixed 'SESSION-SHAPER' label claims a shipped skill the same-day-corrected prose disclaims, snagging the 'these are artifacts I actually own' recognition the figure exists to deliver."
+    ]
   },
-  "blocking_findings_count": 0,
-  "todos_count": 0
+  "blocking_findings_count": 1,
+  "todos_count": 2
 }

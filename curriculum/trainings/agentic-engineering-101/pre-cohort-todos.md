@@ -39,6 +39,13 @@ Sim sweeps and platform-capability checks are not tracked here. The `curriculum-
  - **`[watch]` §64 restate-not-point on the same two exercises.** Maintainer blocks restate delivery mechanics (worktree home, skill auto-discovery, team-kit PR) instead of one-line pointing at `training-architecture.md §<section>`. Interpretive; verify against §64 Rule B before editing. Partially self-resolved 2026-08-01: the M6 re-scope deleted the ship-to-kit section and its restated mechanics from `spot-gaps-build-the-loop`; re-verify what remains at the quality pass.
  - Follow-up (not a finding): 6 AE101 lectures still have no `story` instance (needs the sim-trace `/eval-fire story` path). `npm run audit:eval-coverage:gate` lists them.
 
+## Open from the full-corpus re-eval (verdict data: `curriculum/evals/reeval-latest.json`)
+
+- **18 REVISE stamps are unverified, verify-or-fix each.** The verifier stage never ran (spend limit); every REVISE Quality stamp points at its instance JSON with the findings. Findings are hypotheses, check §61/§61a before editing. Heaviest files: `plan-mode-done-right` (writing 2-blocking, pedagogy, strategy), `push-back-on-the-plan` (writing, pedagogy), `prework` (writing, technical), `reading-the-return` (technical, pedagogy, body states as fact a claim its own backing block records as still unsourced).
+- **48 judge pairs never ran**, `run-the-first-experiment`, `learn-from-the-test`, M6 module (all 7 each), `earn-the-trust` (writing/technical/pedagogy/slides), onboarding email (writing/behavior), plus cross_module over the module set, M5↔M6 neighbour-alignment, and the §64 watch verification. The M6-redesign set-scope checks are in this gap. Resume replays the 276 cached results and runs only these: `Workflow({scriptPath: <session workflows/scripts/ae101-full-reeval-…>, resumeFromRunId: 'wf_5bd65348-a0b'})`, same args.
+- **~84 verdicts on 13 lectures await stamping**, files carried another session's uncommitted edits at stamp time. Once clean: `node curriculum/evals/scripts/stamp-from-reeval.js curriculum/evals/reeval-latest.json --drift-base 50689ab` (idempotent; skips WIP and drift on its own).
+- **11 classes on 3 lectures need re-judge, not re-stamp**, body moved under the judges mid-run: `the-gate-is-a-claim` + `the-loop-has-a-name` (writing/story/pedagogy/slides), `agents-that-build-agents` (writing/technical/slides). `scan-stale-classes.js --files` re-derives the exact list.
+
 ---
 
 **Canonical home:** this file. Module files carry zero TODOs, all pre-cohort open items route here.

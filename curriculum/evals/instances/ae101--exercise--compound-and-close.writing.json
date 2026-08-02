@@ -613,7 +613,7 @@
       "rule_lead": "Aspirational destination, never corrective gap.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "File addresses student as equals; no corrective/patronizing framing.",
+      "fix_hint": "File addresses student as equals; no corrective/patronizing framing, no ability-tiering, no implausible pre-prompt gates.",
       "blocking": false
     },
     {
@@ -622,7 +622,7 @@
       "rule_lead": "Earn every technical term on first use.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Terms (compound, loop) are unfold-earned contextually. 'compound' unfolds immediately: 'Claude reviews it and writes.'",
+      "fix_hint": "'Compound' unfolds inline at first use (line 9); no bare 'M1' in body (module abbreviation stays in maintainer block only).",
       "blocking": false
     },
     {
@@ -640,16 +640,16 @@
       "rule_lead": "Memory vs context — use deliberately.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "File distinguishes memory (./CLAUDE.local.md) vs session context correctly.",
+      "fix_hint": "File distinguishes memory (./CLAUDE.local.md, persistent artifact) from the session (evidence read once) correctly.",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 5,
       "rule_lead": "Golden path only in body.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": "No troubleshooting or recovery branches; narrative is forward-only.",
+      "verdict": "REVISE",
+      "evidence": "line 18: \"If the review stalls or runs past a couple of minutes, interrupt with `Esc`, narrow to the orient and introspect phases first, and say `continue`.\"",
+      "fix_hint": "This is a 'what if X fails' recovery branch (review stalling) inside body narrative. Rule 5 routes this to live support, a trailing facilitator note below the maintainer cut, or a quick reference — not the golden-path body.",
       "blocking": false
     },
     {
@@ -658,7 +658,7 @@
       "rule_lead": "Trust Claude's defaults for structure.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "No over-specified structure; output shape natural to compound process.",
+      "fix_hint": "No over-specified output structure; prompts reference registry without dictating shape.",
       "blocking": false
     },
     {
@@ -667,7 +667,7 @@
       "rule_lead": "Q1/Q2/Q3 retro interview is banned at every module. Compound-shape varies per module.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "This IS the full M1 compound teaching (first-time, full shape). M2+ will vary per rule design.",
+      "fix_hint": "Body explicitly disclaims the three-question retro shape (line 9, line 15); this is the full M1 compound teaching, not a repeated interview.",
       "blocking": false
     },
     {
@@ -676,7 +676,7 @@
       "rule_lead": "Don't smuggle another module's voice.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Voice is M1-concrete, task-focused; no borrowed patterns.",
+      "fix_hint": "Voice stays task-focused and concrete throughout; no borrowed pattern from another module's mood.",
       "blocking": false
     },
     {
@@ -685,7 +685,7 @@
       "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Student asked to push-back (judge), not error-check. Engagement is active judgment.",
+      "fix_hint": "Student is asked to push back with judgment (quote the moment), not perform mechanical diffing.",
       "blocking": false
     },
     {
@@ -694,7 +694,7 @@
       "rule_lead": "Simulation personas never alone.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "Not a self-study simulation.",
+      "fix_hint": "Not a self-study simulation surface.",
       "blocking": false
     },
     {
@@ -703,7 +703,7 @@
       "rule_lead": "No \"What research says\" callout boxes.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "No research callouts; Klaassen attribution inline.",
+      "fix_hint": "No research callout boxes; Klaassen attribution is a plain inline mention.",
       "blocking": false
     },
     {
@@ -712,7 +712,7 @@
       "rule_lead": "Student moves stay in conversation with agent.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "All actions stay in conversation; no editor/terminal commands required.",
+      "fix_hint": "All actions (review, push back, sweep, close) stay inside the chat; the .gitignore decision (line 27) is framed as a choice, not a terminal command.",
       "blocking": false
     },
     {
@@ -721,7 +721,7 @@
       "rule_lead": "Specify which CLAUDE.md layer — every time.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "./CLAUDE.local.md specified explicitly (line 7, line 43).",
+      "fix_hint": "`./CLAUDE.local.md` named explicitly and consistently (lines 5, 7, 39, 43).",
       "blocking": false
     },
     {
@@ -730,7 +730,7 @@
       "rule_lead": "No em-dashes. Simple sentences.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "No em-dashes; prose uses semicolons and short sentences.",
+      "fix_hint": "No em-dashes in body (lines 1-44); em-dashes present only below the maintainer cut, which is exempt.",
       "blocking": false
     },
     {
@@ -739,16 +739,16 @@
       "rule_lead": "Section headers use command verbs when section is about doing something.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "All headers use imperative verbs: 'Write', 'Push', 'Sweep', 'Close'.",
+      "fix_hint": "All headers lead with a verb: 'Write your rules file...', 'Push back where...', 'Sweep the session...', 'Close the session'.",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 18,
       "rule_lead": "Inline links use target's title, never filename.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "No markdown links in body; markers reference registry files.",
+      "fix_hint": "No markdown links in body; only {{prompt:}} registry markers and bare exercise slugs in the maintainer Arc block.",
       "blocking": false
     },
     {
@@ -757,7 +757,7 @@
       "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "No memory-vs-context collision; ./CLAUDE.local.md is file, not system memory.",
+      "fix_hint": "No collision-prone word (memory, skill, rule, plan, agent) is authored to a contested target for the first time in this file.",
       "blocking": false
     },
     {
@@ -766,7 +766,7 @@
       "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Vocabulary generally correct; invocation uses Claude, description could be more precise (see check_writing.md rule 21 for detailed assessment).",
+      "fix_hint": "'The agent' used for autonomous reading (line 16); 'Claude' used for invocation/addressee (lines 5, 9, 11). Split matches the rule.",
       "blocking": false
     },
     {
@@ -775,16 +775,16 @@
       "rule_lead": "No time-of-day anchors in body prose.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "No time-of-day references (tomorrow, tonight, etc.).",
+      "fix_hint": "No tomorrow/overnight/tonight anchors; time reference is session-relative only.",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 23,
       "rule_lead": "Reflection beats stay invisible in flow.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": "No labeled reflection moments; no banned phrases (pause, sit with, breathe).",
+      "verdict": "REVISE",
+      "evidence": "line 25: \"Quote the specific session moment back at Claude. That push-back is the reflection move.\"",
+      "fix_hint": "Naming the action as 'the reflection move' is self-aware pedagogy labeling, the same theatre the rule bans in header form (e.g. 'The reflection beat'). Let the push-back stand as the instruction; drop the retrospective label.",
       "blocking": false
     },
     {
@@ -793,7 +793,7 @@
       "rule_lead": "No meta-ask when student has already decided.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Push-back is active judgment, not re-asking a decided question.",
+      "fix_hint": "No meta-loop asking student to restate a decision already made in body.",
       "blocking": false
     },
     {
@@ -802,7 +802,7 @@
       "rule_lead": "`.md` is default file type for student artifacts across curriculum.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "File extension `.md` used consistently (./CLAUDE.local.md).",
+      "fix_hint": "`.md` extension used consistently for the rules file artifact.",
       "blocking": false
     },
     {
@@ -811,7 +811,7 @@
       "rule_lead": "Cut NVA: true but not moving student forward.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Prose is lean; each line either sets task or invites action.",
+      "fix_hint": "Prose is lean; each line sets task, frames the point, or invites the next action.",
       "blocking": false
     },
     {
@@ -820,7 +820,7 @@
       "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "No chat-print moments followed by read instructions.",
+      "fix_hint": "No generic read/notice instruction following a chat-print moment.",
       "blocking": false
     },
     {
@@ -829,7 +829,7 @@
       "rule_lead": "Forward-callout closer: student as grammatical subject.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Closes describe state and next action; grammar is sound.",
+      "fix_hint": "Closing sentences keep 'you' or the artifact as subject (lines 41, 43); no training-as-subject, coach-imperative, or role-shift framing.",
       "blocking": false
     },
     {
@@ -838,7 +838,7 @@
       "rule_lead": "Operational reminders live at moment of use, not only where introduced.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "No new operational settings introduced.",
+      "fix_hint": "Timing stated at top per convention; no per-module operational setting (model, thinking-effort) needing a restated reminder here.",
       "blocking": false
     },
     {
@@ -847,7 +847,7 @@
       "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "No banned words (honest, delve, landscape, importantly, crucial, substrate, leverage, synergize, paradigm shift).",
+      "fix_hint": "No banned words (honest, delve, landscape, importantly, crucial, substrate, leverage, synergize, paradigm shift) in body.",
       "blocking": true
     },
     {
@@ -856,7 +856,7 @@
       "rule_lead": "Ritual / practice (noun) / ceremony — hard ban.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "No banned nouns; 'exercise' used for noun form.",
+      "fix_hint": "No banned nouns; 'exercise' used for noun form throughout.",
       "blocking": true
     },
     {
@@ -865,7 +865,7 @@
       "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "No stale markers or changelog annotations.",
+      "fix_hint": "No stale markers or changelog annotations in body.",
       "blocking": false
     },
     {
@@ -874,7 +874,7 @@
       "rule_lead": "Register match.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "AE101 voice quintet (Boris factual, Seth warm, Rory reframe) matched correctly.",
+      "fix_hint": "AE101 voice quintet matched (Boris-direct 'The session is the evidence'; Godin-warm peer register); no negation-callout self-contradiction, no atmospheric-tone miss, no retain-this wrapper.",
       "blocking": false
     },
     {
@@ -892,7 +892,7 @@
       "rule_lead": "Credit original when paraphrasing named technique.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Klaassen's compound step credited inline (line 9 within The point section).",
+      "fix_hint": "Klaassen's compound-engineering loop credited inline at first use (line 9).",
       "blocking": true
     },
     {
@@ -901,7 +901,7 @@
       "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Consistent second-person 'you' register; no teacher-framing in body.",
+      "fix_hint": "Consistent second-person address; no 'the student' or trainer/delivery framing in body.",
       "blocking": true
     },
     {
@@ -910,7 +910,7 @@
       "rule_lead": "Don't smuggle terms of art from maintainer into body.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Body terms (compound, loop) are either earned or plain; no maintainer-leak.",
+      "fix_hint": "'Compound' and 'loop' are earned inline in body itself, not smuggled unexplained from the maintainer block.",
       "blocking": true
     },
     {
@@ -919,16 +919,16 @@
       "rule_lead": "Over-hedge detector.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "No reassurance phrases (fine way to, it's OK if, not a downgrade).",
+      "fix_hint": "No reassurance-shaped phrases (fine way to, it's OK if, not a downgrade) in body.",
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 10,
       "rule_lead": "Verbatim-frame-cite in reference artefact.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "Loop framework (plan → work → review → compound) verbatim and credited.",
+      "fix_hint": "This is an exercise file, not a reference artefact; the verbatim Klaassen frame ('Plan → Work → Review → Compound') lives in the maintainer block, which is exempt from writing-class scope.",
       "blocking": false
     },
     {
@@ -937,7 +937,7 @@
       "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Klaassen mentioned once; single attribution.",
+      "fix_hint": "Klaassen named once in body (line 9); no repeated collecting-credits pattern.",
       "blocking": false
     },
     {
@@ -946,7 +946,7 @@
       "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Punchy negation ('doesn't interview you with three retro questions') followed immediately by grounding.",
+      "fix_hint": "No punchy overclaim requiring a boundary paragraph; negation framing (line 9) is descriptive, not a slogan needing a carve-out.",
       "blocking": false
     },
     {
@@ -955,7 +955,7 @@
       "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "No vendor-defense or positioning language in body.",
+      "fix_hint": "No vendor-defense, aspirational-denial, or positioning language in body.",
       "blocking": true
     },
     {
@@ -964,7 +964,7 @@
       "rule_lead": "Watch out for planting jargon too early.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Jargon ('compound', 'loop') introduced at appropriate arc position (M1 teaching moment).",
+      "fix_hint": "'Compound' is earned inline at introduction; no bare module-abbreviation jargon in body.",
       "blocking": false
     },
     {
@@ -973,7 +973,7 @@
       "rule_lead": "Audit closer when trimming body-prose forcing function.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "No dangling pronouns or bypass-agent punchlines in section closes.",
+      "fix_hint": "Closers (lines 27, 41, 43) anchor pronouns to a single clear referent; no bypass-the-agent punchline.",
       "blocking": false
     },
     {
@@ -982,7 +982,7 @@
       "rule_lead": "Past tense for exercise recap sections — heading and body.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "\"What happened:\" heading and body use past tense (was born, reviewed, landed).",
+      "fix_hint": "\"What happened:\" heading (line 39) and its body use past tense throughout (was born, reviewed, pushed back, landed).",
       "blocking": false
     },
     {
@@ -991,7 +991,7 @@
       "rule_lead": "No combative verbs about the agent in body prose.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "Verbs are peer-flat (let, push back, review); no combative language.",
+      "fix_hint": "Verbs describing student-agent interaction are peer-flat (review, push back, sweep); no combative verb.",
       "blocking": true
     },
     {
@@ -1000,10 +1000,10 @@
       "rule_lead": "Headers must be literally true about the mechanism.",
       "verdict": "PASS",
       "evidence": null,
-      "fix_hint": "All section headers literally describe the student action (Write, Push, Sweep, Close).",
+      "fix_hint": "All section headers literally describe the student action; no spatial-metaphor or unnamed-primary 'other' fault.",
       "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 2
 }

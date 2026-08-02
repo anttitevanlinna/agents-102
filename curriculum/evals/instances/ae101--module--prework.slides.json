@@ -4,14 +4,15 @@
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    { "index": 0, "heading": "Prework: before Module 1 (H1 + lede)", "lines": "1-8" },
-    { "index": 1, "heading": "What to bring", "lines": "9-19" },
-    { "index": 2, "heading": "1. Pick THE repo", "lines": "20-31" },
-    { "index": 3, "heading": "2. Open a Claude Code session in that repo", "lines": "32-37" },
-    { "index": 4, "heading": "3. Get the content folder onto your laptop", "lines": "38-53" },
-    { "index": 5, "heading": "4. Extract the bundle and install the curated skills", "lines": "54-76" },
-    { "index": 6, "heading": "5. Pick a trivial bug and confirm M1 readiness", "lines": "77-104" },
-    { "index": 7, "heading": "Bring to Module 1", "lines": "105-112" }
+    { "index": 0, "heading": "Prework: before Module 1 (H1 + lede)", "lines": "1-9" },
+    { "index": 1, "heading": "What to bring", "lines": "11-22" },
+    { "index": 2, "heading": "1. Pick THE repo", "lines": "24-34" },
+    { "index": 3, "heading": "2. Open a Claude Code session in that repo", "lines": "36-40" },
+    { "index": 4, "heading": "3. Get the content folder onto your laptop", "lines": "43-57" },
+    { "index": 5, "heading": "4. Extract the bundle and install the curated skills", "lines": "59-81" },
+    { "index": 6, "heading": "5. Pick a trivial bug and confirm M1 readiness", "lines": "83-109" },
+    { "index": 7, "heading": "Bring to Module 1", "lines": "111-117" },
+    { "index": 8, "heading": "Pre-read before Module 1", "lines": "119-123" }
   ],
   "rules_evaluated": [
     {
@@ -38,7 +39,7 @@
       "compendium": "check_slides.md",
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
       "evidence": null,
       "fix_hint": null,
@@ -70,8 +71,8 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "REVISE",
       "chunks_flagged": [4],
-      "evidence": "chunk 4 \"3. Get the content folder onto your laptop\": line 38 header promises \"the content folder\"; the chunk's only instruction (line 40: \"Ask Claude to fetch `ae101-content.tar.gz` to `~/Downloads/`.\") downloads a compressed archive to ~/Downloads, not a folder. Extraction into an actual directory doesn't happen until the NEXT chunk (line 63-65: \"Ensure my AE101 content directory exists... Extract ~/Downloads/ae101-content.tar.gz into that AE101 content directory\"). At this chunk's own scope, the header overclaims what the step delivers.",
-      "fix_hint": "Reword the header to name what this step actually does (e.g. \"Download the content bundle\"), or fold the extraction line into this chunk so \"folder\" is literally true here.",
+      "evidence": "chunk 4 \"3. Get the content folder onto your laptop\": line 45: \"Ask Claude to fetch `ae101-content.tar.gz` to `~/Downloads/`.\" — the chunk's only action is downloading a compressed archive to ~/Downloads; nothing in this chunk extracts it into a folder. Extraction into an actual directory happens in the NEXT chunk (line 68-70: \"Ensure my AE101 content directory exists... Extract ~/Downloads/ae101-content.tar.gz into that AE101 content directory\"). At this chunk's own scope, the header \"Get the content folder\" overclaims what the step delivers (a .tar.gz file, not a folder).",
+      "fix_hint": "Reword the header to name what this step actually does (e.g. \"Download the content bundle\"), or leave the folder framing to the following extract step's header.",
       "blocking": false
     },
     {

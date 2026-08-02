@@ -3,7 +3,7 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-wizard-move.md",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "M1 arc mood = joyful creation — \"it works, on my repo\" (content-strategy-agentic-engineering-101.md, M1 row of the six-module table). This file is the second of two M1-opener lectures (after `painting-the-picture-with-the-llm`, before the exercise sequence); its own maintainer Meta block states \"Placement: M1 opener, after Connections, before the exercise\" — consistent with module order in getting-going.md.",
+  "module_mood_contract": "M1 arc mood = joyful creation — \"it works, on my repo\" (content-strategy-agentic-engineering-101.md, M1 row of the six-module table + mood-arc line: \"joyful creation → grounded competence → earned trust → curious readiness → learning through contrast → practitioner fluency\"). This file's own maintainer Meta block states \"Placement: M1 opener, after Connections, before the exercise\" (line 54).",
   "trace_status": "regenerated",
   "rules_evaluated": [
     {
@@ -11,7 +11,7 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "This is a demo lecture showing a ceiling (the Context-is-King two/three-window experiment), not a meta-frame lecture naming a pattern already lived. Placed pre-exercise per getting-going.md line 27 (after `painting-the-picture-with-the-llm`, before `orient-and-introspect`) and its own maintainer Meta block line 53 (\"Placement: M1 opener, after Connections, before the exercise\"). Correct diagnostic category: shows-a-ceiling → opener.",
+      "evidence": "This is a demo lecture showing a ceiling (the Context-is-King two/three-window experiment, lines 7-21), not a meta-frame lecture naming a pattern the student already lived. Placed pre-exercise per its own maintainer Meta block (line 54: \"Placement: M1 opener, after Connections, before the exercise\"). Correct diagnostic category: demo-shows-a-ceiling → opener. (M1's actual meta-frame closer, per the strategy doc line 898, is the separate file `how-this-training-was-built.md`, which sits after the exercises — not this file.)",
       "fix_hint": null,
       "blocking": false
     },
@@ -20,7 +20,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "M1's arc mood is joyful creation, not a contrast-mood module (M5-style: learn-through-doing, name-it-after). Rule is explicitly scoped to contrast-mood modules; that condition doesn't hold for M1.",
+      "evidence": "Rule is scoped to contrast-mood modules (M5-style: learn-through-doing, name-it-after). M1's arc mood is joyful creation (content-strategy M1 row), not contrast-mood — that condition M5 (\"learning through contrast\") owns. Rule doesn't apply to this module.",
       "fix_hint": null,
       "blocking": false
     },
@@ -29,7 +29,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Grep of the body above the maintainer fence (lines 1-39) for `M[0-9]`/`Module [0-9]` returns zero hits. The close (\"Fix one trivial bug from your own backlog, end-to-end. Log one decision. Seed a rules file your next session reads first,\" lines 37-39) previews the fix→compound→close shape that maps onto Ex1-Ex3 without naming a module number or exercise title — forward momentum stays generic (\"any codebase, any Monday,\" line 25), consistent with doctrine that sequencing lives in the module file's `## Next`, not the lecture body.",
+      "evidence": "Grep of the body above the maintainer fence (lines 1-35) for `M[0-9]`/`Module [0-9]` returns zero hits (verified: `awk '/<!-- maintainer -->/{exit}{print}' | grep -nE 'M[0-9]|Module [0-9]'` → empty). The close (\"Fix one trivial bug from your own backlog, end-to-end. Log one decision. Seed a rules file your next session reads first,\" lines 33-35) previews the fix→compound→close shape without naming a module number or exercise title (\"any codebase, any Monday,\" line 21) — sequencing correctly deferred to the module file's `## Next`.",
       "fix_hint": null,
       "blocking": false
     },
@@ -38,7 +38,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "5 headers, no duplicates: \"Who this is for\" (audience-framing claim, matches body's peer-respect/no-gap-fix content), \"Context is King\" (claim the two-window Italy/Finland demo argues), \"You steer the answer by loading context\" (claim the cardiologist-window demo argues — role colors the same way a fact does), \"Everyone arrives partial, trainers included\" (claim matching the self-taught-audience body), \"The loop is what you repeat, not the fix\" (claim matching the close). All declarative claim-shaped headers, none command-verb, none empty-container (\"The move\"/\"The names\"/\"The spirit\"), none orientation-only, zero em-dashes in body (`grep -c '—' body` = 0).",
+      "evidence": "5 headers, no duplicates: \"Who this is for\" (names the audience, matches the one-paragraph peer-recognition body), \"Context is King\" (named concept the two-window Italy/Finland demo argues), \"You steer the answer by loading context\" (claim the cardiologist-window demo argues), \"Everyone arrives partial, trainers included\" (claim matching the self-taught-audience body), \"The loop is what you repeat, not the fix\" (claim matching the close). All declarative claim/named-concept headers, none empty-container (\"The move\"/\"The spirit\"), none orientation-only. `grep -n \"—\"` on lines 1-35 returns zero em-dashes (confirmed against inherited check_student_facing #14).",
       "fix_hint": null,
       "blocking": false
     },
@@ -47,7 +47,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header.",
       "verdict": "PASS",
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/the-wizard-move.md` → \"files: 1  slides: 5  limits: 210 words / 6 bullets — oversized: 0 — every slide is within limits.\" Per-slide word counts: Who this is for 59w, Context is King 102w, You steer the answer by loading context 142w, Everyone arrives partial 132w, The loop is what you repeat 61w — all well under 210w; zero bullets post-emphasis-pass (all five sections are prose paragraphs).",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/the-wizard-move.md` → \"files: 1  slides: 5  limits: 210 words / 6 bullets — oversized: 0 — every slide is within limits.\" Per-section word counts (verified independently by awk): Who this is for 30w, Context is King 104w, You steer the answer by loading context 142w, Everyone arrives partial 138w, The loop is what you repeat 61w — all well under the 210w ceiling; zero bullets, all five sections are prose paragraphs.",
       "fix_hint": null,
       "blocking": false
     },
@@ -56,7 +56,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
-      "evidence": "File contains zero fenced `**Prompt**` blocks and zero `{{prompt:}}` markers, confirmed via `node scripts/expand-md.js curriculum/lectures/the-wizard-move.md` (output identical to source, nothing to expand) and direct read. This is a pure watch-and-think lecture with no student-copied prompt at all — there is no prompt/body split to check.",
+      "evidence": "File contains zero fenced prompt blocks and zero `{{prompt:}}` markers — confirmed by direct read of lines 1-35. This is a pure watch-and-think lecture with no student-copied prompt; there is no prompt/body split for this rule to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -65,16 +65,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room outside text.",
       "verdict": "PASS",
-      "evidence": "No authored conversation/pause cues in body: no \"discuss with,\" \"share what you noticed,\" \"tell the room,\" \"compare with the person next to you\" or equivalent anywhere in the five sections. Body is pure demo narration + posture-setting; the live two-window run and any room pause are trainer-delivered per the maintainer's own Runtime note (\"3 min live two-session demo on the volunteer's codebase\"), not authored into student-facing text.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 1,
-      "rule_lead": "Prompt-block design rules (scope note: copy-this affordance for a student).",
-      "verdict": "N/A",
-      "evidence": "Compendium-wide N/A for this file: check_prompts.md's own scope note restricts it to \"anything inside a fenced code block with copy-this affordance,\" and this lecture has zero fenced prompt blocks of any kind (confirmed above under check_pedagogy §16). The Context-is-King demo is trainer-narrated prose describing two live chat windows, not a student-copied prompt fence. No rule in this compendium has a surface to fire against in this file; recording one consolidated N/A rather than 44 vacuous per-rule rows.",
+      "evidence": "No authored conversation/pause cues in body: no \"discuss with,\" \"share what you noticed,\" \"tell the room,\" \"compare with the person next to you\" anywhere in the five sections. \"Take a guess before it runs. What does Claude suggest now?\" (line 11) addresses the individual reader's own prediction, not a room-share/compare instruction — it is the file's own deliberate guess-before-reveal beat (maintainer note line 41: \"Guess before reveal... Both windows get narrated before the live run\"), not a cohort-management cue. The live two-window/three-window run and any pause are trainer-delivered per the maintainer's own Runtime note (line 55: \"3 min live two-window demo in claude.ai chat windows\") and Demo watch-fors (lines 63-65), not authored into student-facing text.",
       "fix_hint": null,
       "blocking": false
     },
@@ -83,7 +74,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named; mood-floor 8+/10 applies to teaching beats.",
       "verdict": "PASS",
-      "evidence": "Mood contract = joyful creation (content-strategy M1 row); this file's own persona trace (regenerated, curriculum/evals/sim-cache/ae101--the-wizard-move.persona.json) scores phase_1 mood_score=9 and close mood_score=9, both ≥ 8 floor. Whole file classified as TEACHING (mood-setting peer-respect open + two live demos + audience-recognition beat + forward-momentum close) — none of the five sections compress to a mechanical setup/launch parenthetical, so the floor applies throughout and is met.",
+      "evidence": "Mood contract = joyful creation (content-strategy M1 row). This file's regenerated persona trace (curriculum/evals/sim-cache/ae101--lecture--the-wizard-move.persona.json, content_sha a9f3762c... current as of this file's HEAD state) scores phase_1 mood_score=9 and close mood_score=9, both >= the 8 floor. Whole file classifies as TEACHING (peer-recognition open, two live demos, audience-recognition beat, forward-momentum close) — none of the five sections compress to a mechanical setup/launch parenthetical per the mood-floor carve-out diagnostic, so the floor applies throughout and is met.",
       "fix_hint": null,
       "blocking": true
     },
@@ -92,7 +83,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "\"Nobody here needs the 'agents can write code' setup\" (line 7) and \"You'll watch what's possible, not what's missing\" (line 9) frame the whole lecture as generous/epistemic, never having-done-wrong. Trace's persona feels named and respected (\"felt permission that partial practice is the training's starting floor, not a deficiency\"), not corrected or shamed.",
+      "evidence": "\"You've already done the hard part\" (line 5) and \"Everyone's slice is partial, and everyone else's is different\" (line 27) frame partial self-taught knowledge as the shared floor, never as a mistake. The one honesty note in the demo (\"But not as reliably,\" line 13) qualifies a model-behavior observation, not the student's performance. No having-done-wrong language anywhere; trace's persona feels named and respected, not corrected.",
       "fix_hint": null,
       "blocking": false
     },
@@ -101,7 +92,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title and Big Idea are discipline-framed: \"the wizard move\" / \"loading the right context before the question\" (line 25), not a failure-word frame. No section is titled around a failure mode; the closest brush with failure (\"But not as reliably,\" line 17, describing the Finnish-dinner guess) is a one-clause honesty note inside the demo, not the section's frame.",
+      "evidence": "Title and Big Idea are discipline-framed: \"the wizard move\" / \"The move is loading the right context before the question\" (line 21) — a positive practice, not a failure word. No section is titled around a failure mode; \"But not as reliably\" (line 13) is a one-clause honesty note inside the demo, not a section frame.",
       "fix_hint": null,
       "blocking": false
     },
@@ -110,7 +101,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "Big Idea fidelity: near-verbatim match to content-strategy-agentic-engineering-101.md §Positioning — \"a demonstration of what's possible, not an exposure of what's missing\" (strategy doc) vs. \"You'll watch what's possible, not what's missing\" (line 9); \"never sold as a gap-fix\" vs. \"Nobody here needs the 'agents can write code' setup\" (line 7); \"gift first, then climb\" / cohort pools partial vs. \"Everyone arrives partial, trainers included\" section (lines 27-33). Front-run check: file stays scoped to context-loading; no leak of M2 plan-mode, M3 skill-authoring, or M5/M6 content. Module-to-module arc: close (lines 37-39) hands off generically into the fix→compound→close exercise shape without naming Ex1-Ex3, consistent with check_lectures §3's doctrine that the literal M1→M2 bridge lives in getting-going.md's `## Next`, not here. Mood-doesn't-resolve-early: M1 owns none of the arc's harder beats (M3 unease, M4 un-tidy, M5 rescue) that could be preempted, and this file's own close explicitly defers mastery (\"You become the Claude wizard by running the loop on real work... Not by reading about it,\" lines 37-39) rather than claiming it's already landed. Non-blocking aside (not scored against this file): getting-going.md's own maintainer Meta bullet (\"Opening-bid install mechanic: trainer demos a wizard-level move... → Connections harvests tricks...\") states an order that appears to invert the module body's literal sequence (Start-here trick-question listed before both lecture links); this file's own maintainer note (\"after Connections, before the exercise\") is internally consistent with the module body as written, so the ambiguity is getting-going.md's to resolve, not a defect in this file.",
+      "evidence": "Front-run check: file stays scoped to context-loading; no leak of M2 plan-mode (the maintainer block's own standing constraint at line 42 explicitly bans \"with plan mode used deliberately\" phrasing as drift, and the body contains no plan-mode language), no M3 skill/subagent naming, no map references (maintainer line 44: \"Zero map references. M1 is protected; the map arrives at M2\" — confirmed, body has none). Big Idea fidelity: content-strategy's M1 Big Idea is \"Compounding (how)\" (table row, strategy doc line 237); this file sets up the mechanism compounding depends on (\"Everything else in this training is about how to earn that kind of primed window on any codebase, any Monday,\" line 21) and closes on the loop framing that Ex3 then compounds (line 35: \"The loop is what you repeat... You become the Claude wizard by running the loop on real work\") — consistent scaffolding, not a different framing. Module-to-module arc: as M1's OPENER (not its closer), this file's job is not to hand off to M2's open — that responsibility sits with the closer lecture `how-this-training-was-built.md` per strategy doc line 898 (\"M1's closing lecture is a closer, not opener... Opener slot stays with the-wizard-move.md\"); this facet is N/A to this specific file by design, not a gap. Mood-doesn't-resolve-early: M1 owns none of the arc's harder later beats (M3 unease, M4 un-tidy, M5 rescue) that could be preempted, and the close explicitly defers mastery (\"Not by reading about it,\" line 35) rather than claiming the loop is already landed.",
       "fix_hint": null,
       "blocking": true
     },
@@ -147,7 +138,8 @@
     "close_score": 9,
     "any_below_8": false,
     "stealing_the_mood": [],
-    "teaching_moment_lands": "The named teaching moment (context-as-compeller, demonstrated non-code so the lesson isn't mistaken for a prompt-engineering flex) fires reliably across reasonable persona-skill variation: it's a live trainer-run demo with a built-in guess-before-reveal beat, not something the student could skip or misread from the page, and the maintainer's own Demo watch-fors note anticipates the one predictable resistance point (\"room wants something code-specific up front — hold\") with a stated recovery frame. The persona's 'that's why my CLAUDE.md matters' recognition and the cardiologist-window role-insight both land without requiring prior sophistication — accessible to a 2-week Claude Code user and a 6-month veteran alike, which is the intended universality (maintainer note: 'not adapted for engineers... the universality is the point')."
+    "teaching_moment_lands": "The named teaching moment (context-as-compeller, demonstrated non-code so the lesson isn't mistaken for a prompt-engineering flex) fires reliably across reasonable persona-skill variation: it's a live trainer-run demo with a built-in guess-before-reveal beat, not something the student could skip or misread from the page. The maintainer's own Demo watch-fors (lines 63-65) anticipates the one predictable resistance point (\"room wants something code-specific up front — hold\") with a stated recovery frame, and a standing incognito instruction (decided 2026-08-01, line 64) now covers the delivery risk the file's own backing block had flagged (cross-chat search/memory default-on for paid accounts breaking window independence). The file's own Stance/Flagged blocks keep one honest residual risk open — whether the Finland beat still fires reliably on the current model — but that is a live-delivery/OODA concern the file already tracks and mitigates (salvage line + pre-cohort dry-run), not a curriculum defect this class blocks on.",
+    "regeneration_note": "Trace regenerated (previous cache entry, generated 2026-07-10, was stale against a body edit on 2026-07-30 that changed 'became context' to 'became part of context' — content_sha no longer matched). The instance previously on disk at this path also quoted two body sentences (\"Nobody here needs the 'agents can write code' setup\" / \"You'll watch what's possible, not what's missing\") and a maintainer Runtime phrase (\"on the volunteer's codebase\") that no longer exist in the file as of commit fe18297 (2026-07-26, same commit that stamped the prior story PASS) and commit 735e8af (2026-08-01, fixed the volunteer's-codebase maintainer drift). This instance re-derives every quote from the current on-disk body."
   },
   "blocking_findings_count": 0,
   "todos_count": 0

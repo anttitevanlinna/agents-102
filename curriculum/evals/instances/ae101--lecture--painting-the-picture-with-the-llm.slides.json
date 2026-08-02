@@ -16,7 +16,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 1: 'the LLM' first named in the H1 (chunk 0, prior context for all later chunks), then 'It'/'the LLM' pronouns in the same chunk resolve to 'The LLM is an infinite chameleon' one sentence prior. Chunk 2: 'You prime it. The LLM scales it.' (line 15) — 'it' resolves to 'the context window' named immediately before in the same sentence run, confirmed by line 17's payoff ('Whatever you put in front of the LLM... The rules file. The prompt. What sits on disk'). Chunk 3: 'your setup' (line 25) is a plain-English label for the 'what you put in front of the LLM' concept chunk 2 just built (rules file/prompt/disk), not a coined term needing pre-earning; 'it'/'the setup' in line 27 resolve to the same line-25 antecedent. The pre-2026-07-09 calibration finding for this file ('How fast can it learn? ... a system like this' — check curriculum/evals/slide-sweep.md § Calibration) no longer matches the current text; that wording was replaced.",
+      "evidence": "Chunk 1: 'the LLM' first named in the H1 (chunk 0, prior context for all later chunks), then 'It'/'the LLM' pronouns in the same chunk resolve to 'The LLM is an infinite chameleon' one sentence prior. Chunk 2: 'You prime it. The LLM scales it.' (line 15) — 'it' resolves to 'the context window' named immediately before in the same sentence run, confirmed by line 17's payoff ('Whatever you put in front of the LLM... The rules file. The prompt. What sits on disk'). Chunk 3: 'your setup' (line 25) is a plain-English label for the 'what you put in front of the LLM' concept chunk 2 just built (rules file/prompt/disk), not a coined term needing pre-earning; 'it'/'the setup' in line 27 resolve to the same line-25 antecedent.",
       "fix_hint": null,
       "blocking": true
     },
@@ -76,8 +76,8 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "REVISE",
       "chunks_flagged": [1],
-      "evidence": "chunk 1 \"The LLM mirrors your stance\": line 7: \"The LLM is an infinite chameleon. It can do good work and bad work. It will be what fits the session. It flatters you; it calls unfinished work progress. It mirrors your stance.\" — anaphoric run of 'It...' clauses; the closing leg ('It mirrors your stance') restates the chunk header instead of adding new concrete content, the same shape as the sibling calibration finding in the-machine-you-just-met.md ('it flatters, it progresses, it mirrors' per slide-sweep.md § Calibration). No 'Not X. Not Y. Z.' construction, no self-grading superlative, no number-plus-retraction, and no abstraction-noun stack found elsewhere in the file — this is the only rule-7 hit.",
-      "fix_hint": "Cut the closing 'It mirrors your stance' leg or give it new concrete content instead of restating the header.",
+      "evidence": "chunk 1 \"The LLM mirrors your stance\": line 7: \"The LLM is an infinite chameleon. It can do good work and bad work. It will be what fits the session. It flatters you; it calls unfinished work progress. It mirrors your stance.\" — a run of 'It...' clauses culminating in a verb triplet ('flatters' / 'calls unfinished work progress' / 'mirrors your stance'); the closing leg restates the chunk header rather than adding new concrete content beyond it, echoing the compendium's own cited violation shape ('It flatters. It progresses. It mirrors your stance.'). Borderline: each leg does have a concrete completion (flatters you / calls unfinished work progress / mirrors your stance), so it is not a clean miss — flagged as a TODO rather than blocking. No 'Not X. Not Y. Z.' construction, no self-grading superlative, no number-plus-retraction, and no abstraction-noun stack found elsewhere in the file — this is the only rule-7 hit.",
+      "fix_hint": "Consider trimming the closing 'It mirrors your stance' leg or giving it content beyond a header restatement, if a future pass revisits this slide.",
       "blocking": false
     },
     {
@@ -96,7 +96,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Zero bold markup anywhere in the body (lines 1-29) — confirmed by the file's own maintainer note (2026-07-09 emphasis pass: 'all three narrative slides recast from bolded-claim bullets to prose paragraphs, zero bold kept'). Well within the ≤1-bolded-element budget; no handle-marking needed given no coined terms introduced here.",
+      "evidence": "Zero bold markup anywhere in the body (lines 1-29) — confirmed by the file's own maintainer note (2026-07-09 emphasis pass: 'all three narrative slides recast from bolded-claim bullets to prose paragraphs, zero bold kept'). Well within the ≤1-bolded-element budget; no coined terms introduced here needing a handle.",
       "fix_hint": null,
       "blocking": false
     },
@@ -106,7 +106,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "This lecture is a standalone include, `[Painting the picture with the LLM](lectures/painting-the-picture-with-the-llm.md)`, under M1's `## Start here` section in curriculum/trainings/agentic-engineering-101/getting-going.md (line 25) — the standard lecture-include convention (curriculum/module-shape.md § Module include) that the renderer wraps in `.phase--lecture` and inlines into the composed Slides deck. Not a prework/supplementary/reference link (the categories rule 10 flags as deck-absent).",
+      "evidence": "This lecture is included via a standard `[Painting the picture with the LLM](lectures/painting-the-picture-with-the-llm.md)` lecture-include under M1's `## Start here` section in curriculum/trainings/agentic-engineering-101/getting-going.md — the convention the renderer wraps in `.phase--lecture` and inlines into the composed Slides deck (curriculum/module-shape.md § Module include). Not a prework/supplementary/reference link (the categories rule 10 flags as deck-absent).",
       "fix_hint": null,
       "blocking": false
     },

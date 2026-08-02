@@ -3,15 +3,15 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/earn-the-trust.md",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "earned trust — 'the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big'",
-  "trace_status": "regenerated",
+  "module_mood_contract": "earned trust — \"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big\"",
+  "trace_status": "cached",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures are closers, not openers; vocabulary lectures land mid-module.",
       "verdict": "PASS",
-      "evidence": "Two lecture links in this file, both correctly placed, unaffected by the fix pass. 'Skills from the frontier, skills of your own' lands mid-module, after Connections + Open-the-side-quest, before the two curated-skill invocations — vocabulary earning itself at the moment it's needed. 'The loop half, filled in' lands at module end, after all three exercises, before Clear the session — self-identified in its own maintainer block as the near-half consolidation closer, naming a pattern just lived through (check_lectures §1's own test).",
+      "evidence": "'Skills from the frontier, skills of your own' (line 33) lands mid-module, after Connections + Open-the-side-quest, before the two curated-skill invocations — trace phase4 mood_note: 'Vocabulary lecture at exactly the moment it earns itself, right before the first curated-skill invocation.' 'The loop half, filled in' (line 65) lands at module end, after all three exercises, before Clear the session — trace phase9: 'Correctly placed consolidation closer (naming a pattern just lived through), not new teaching.'",
       "fix_hint": null,
       "blocking": false
     },
@@ -20,7 +20,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "M3's mood is earned trust, not contrast-mood (M5 owns the contrast-mood arc per the strategy doc's mood-arc list). Rule does not fire on this module. Unaffected by this pass.",
+      "evidence": "M3's mood is 'earned trust', not the contrast-mood shape (that belongs to M5 per content-strategy-agentic-engineering-101.md's mood-arc: 'joyful creation → grounded competence → earned trust → curious readiness → learning through contrast → practitioner fluency'). Rule scoped to M5-style contrast modules; does not fire here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -29,7 +29,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Rule scopes LECTURE-file bodies. This file is the module file, which the rule itself names as the correct home for cross-module sequencing. The two lecture files this module links to (skills-from-the-frontier.md, the-loop-half-filled.md) carry their own audit surface, out of scope for a module-file judgment. Corroborating, non-binding: this fix pass actually removed a stray cross-module reference from skills-from-the-frontier.md ('your Module 2 plan file' → 'your plan file'), a de-sequencing improvement in the linked lecture, consistent with — not contradicting — this rule.",
+      "evidence": "Rule governs prose inside LECTURE files (skills-from-the-frontier.md, the-loop-half-filled.md), out of scope for this judge run (file_path is the module file). Cross-module sequencing (Next/Bridge) belongs in the module file by the rule's own carve-out; placement of the two linked lectures within this module is judged under rule 1.",
       "fix_hint": null,
       "blocking": false
     },
@@ -37,8 +37,8 @@
       "compendium": "check_lectures.md",
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
-      "verdict": "PASS",
-      "evidence": "The module's author-chosen (non-templated) headers pass both clauses, including the new one from the split: 'Sharpen the skill from evidence' (squint: names the exact move; truth: the fenced prompt does exactly that), 'Read the sharpen with a skeptical eye' (squint: names the ONE discipline — read the output skeptically; truth: the body is entirely charity-tells + escalation menu, matching the claim exactly), and 'Clear the session' (squint: literal, specific action; truth: body delivers it). The other seven headers (Big Idea, Prework, What You'll Learn, Start here, Key Concepts, Next, Bring to Module 4) are canonical module-shape.md scaffolding used verbatim across every AE101 module by design — structural taxonomy labels, not per-slide authored claims, so the squint-test-for-a-claim diagnostic doesn't apply to them.",
+      "verdict": "N/A",
+      "evidence": "This module file's own `##` headers (Big Idea, Prework, What You'll Learn, Start here, Key Concepts, Sharpen the skill from evidence, Read the sharpen with a skeptical eye, Clear the session, Next, Bring to Module 4, Pre-read before Module 4) are structural scaffolding fixed by module-shape.md, not the creative concept-naming lecture/slide headers this rule targets. Header-squint judgment for the two embedded lectures belongs to their own file-level judge runs.",
       "fix_hint": null,
       "blocking": false
     },
@@ -47,25 +47,25 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded (~210 words / 6 bullets), not just its header.",
       "verdict": "PASS",
-      "evidence": "Mechanical check (`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/earn-the-trust.md`) now reports 0 of 10 slides oversized — the fix pass resolved the prior REVISE. The former 334-word '## Sharpen the skill from evidence' section is split into two slides: 'Sharpen the skill from evidence' (179 words) and 'Read the sharpen with a skeptical eye' (155 words), split at exactly the conceptual seam the prior audit named (setup/compound-scope vs. bridge-to-closer). 'What You'll Learn' merged 8→6 bullets (181 words, 6 bullets — at the ceiling, compliant). 'Key Concepts' merged 7→6 bullets (119 words, 6 bullets — at the ceiling, compliant). 'Next' (204 words, 3 bullets, unaffected by this pass) stays the file's largest remaining slide, still under the ceiling. This was the sole blocking finding in the prior audit; it is resolved.",
+      "evidence": "Trace's own mechanical self-checks on the two densest sections: phase7 ('Sharpen the skill from evidence') 179 words, well under the 210-word ceiling and under the 6-bullet cap; phase8 ('Read the sharpen with a skeptical eye') 155 words, own header, nothing else competing for the slot. Trace phase11 ('Next') self-checks at 204/210 words, under the ceiling.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
       "rule_lead": "Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "Every load-bearing move stays fenced: sharpen prompt (ae101-m3-sharpen-skill), the ready-to-clear prompt (ae101-m3-ready-to-clear), and the /clear prompt (ae101-m3-clear-session) — all unaffected by this fix pass. The 'Next' trifecta content (three questions, 'cut one leg before the run') stays forward-looking awareness prose, not a withheld forcing function — no M4 task exists yet inside M3 for the student to apply it to; the action itself belongs to M4's own send-off content. The linked open-the-side-quest.md's new bullet ('Ask Claude to confirm the worktree state, then wait.') describes an already-fenced prompt's effect, not a new unfenced forcing function.",
+      "evidence": "Body prose ahead of each `{{prompt:...}}` fence (lines 51-57 sharpen-skill, 67-71 ready-to-clear, 73-77 clear-session) states context (which window, which artifacts) but leaves the forcing move itself (sharpen from evidence, converge-before-clear) to the fence. No scripted-reaction language ('push back once', 'two rounds max') in body. The 'Next' trifecta content (lines 81-91) is forward-looking awareness prose, not a withheld forcing function — no M4 task exists yet inside M3 to apply it to.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
       "rule_lead": "Body teaches the work; trainer manages the room outside text — no authored conversations in body.",
       "verdict": "PASS",
-      "evidence": "Full read of the current file shows no 'discuss with...', 'share with the room', 'tell your neighbor' phrasing anywhere, including in the merged/split sections. The Connections-opener harvest question ('The room's features will differ wildly; that's the point') is the standing carve-out (room-read IS the work at Connections). Body throughout stays on WORK (feature pick, ADR write, skill author, sharpen, clear, task-name), not cohort management. The new 'Read the sharpen with a skeptical eye' slide is entirely about reading Claude's output critically — a work-directed skill, not a cohort-management cue.",
+      "evidence": "No 'discuss with...', 'share with your neighbor', 'take N seconds and compare' construction anywhere in the body. 'The room's features will differ wildly; that's the point' (line 29) is reassurance about heterogeneity, not an instruction to compare or share — Connections-opener carve-out territory in any case. All body sentences stay WORK-directed (feature pick, ADR write, skill author, sharpen, clear, task-name).",
       "fix_hint": null,
       "blocking": false
     },
@@ -74,16 +74,16 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named and honored; mood-floor applies to teaching beats only.",
       "verdict": "PASS",
-      "evidence": "Maintainer block names the mood explicitly: 'earned trust — the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big.' Regenerated trace (11 phases, up from 10 — the split adds one): teaching beats P2=8, P4=8, P5=9, P6=8, P8=8, P9=8, P11=7. No beat below 7. Setup beats P1/P3/P7/P10 correctly mood-null: P7 is the new mechanical half of the former merged section (window callout + which two artifacts + fire the prompt — compressible to a parenthetical), correctly classified setup rather than teaching. The prior read's P7=7 finding (the merged section, teaching diluted by four jobs under one header) is resolved: the teaching content (self-audit-charity tells + escalation menu) now stands alone at P8=8, exactly the fix the prior audit's fix_hint asked for.",
-      "fix_hint": null,
-      "blocking": true
+      "evidence": "Big Idea (lines 5-6) and maintainer mood-target line match content-strategy-agentic-engineering-101.md's M3 row verbatim ('earned trust — the way I work with agents...'). Teaching-beat mood scores: phase2=8, phase4=8, phase5=9, phase6=8, phase8=8, phase9=8, phase11=7 — none below 7. Setup/launch/transition phases (1, 3, 7, 10) correctly scored mood-null per the mood-floor carve-out.",
+      "fix_hint": "Phase 11 (Next + Bring to Module 4) sits at the 7 floor, not 8: one bridging clause after 'Two signatures, earned' connecting the resolved close to the trifecta check ('now point that rigor at the agent itself') would lift it — non-blocking, the trace already names this exact fix.",
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
       "rule_lead": "Epistemic mood, not punitive mood.",
       "verdict": "PASS",
-      "evidence": "Unaffected by this fix pass. The lethal-trifecta close is professional-diligence framing ('one more check', 'cut one leg before the run'), not shame-based. The new 'Read the sharpen with a skeptical eye' section frames Claude's self-charity as a known tell to watch for, not a failure to catch — epistemic register throughout ('useful... but charitable', 'watch for', 'make the grill hotter' as an offered escalation, not a demand).",
+      "evidence": "Maintainer mood-target diagnostic explicitly guards against compliance/punitive drift: 'you just made a real architectural call under named pressure; that's not compliance, that's design.' Student-facing body ('Read the sharpen with a skeptical eye': 'useful... but charitable', 'watch for', offered escalation moves) stays discovery-flavoured throughout, never shame-flavoured.",
       "fix_hint": null,
       "blocking": false
     },
@@ -92,44 +92,17 @@
       "rule_index": 3,
       "rule_lead": "Lead with the discipline, not the failure mode.",
       "verdict": "PASS",
-      "evidence": "Title 'Earn the trust' and Big Idea both discipline-led, unaffected by this pass. Key Concepts' merged bullet ('Invoke the skill on the thing you just built. Authoring without invocation is theatre. One skill shipped beats three skills drafted; the team kit grows by accretion') stays discipline-framed after the 7→6 merge — the failure-mode clause ('Authoring without invocation is theatre') stays subordinate to the lead discipline verb ('Invoke'), matching the pre-merge shape.",
+      "evidence": "Title/Big Idea 'Earn the trust' is discipline-led. Key Concepts bullets ('A curated skill is upstream work packaged for you to invoke. You don't re-derive it.', 'Ask the agent what's weakest about its own output; the mirror reflects...') lead with positive disciplines; the closing bullet's failure clause ('Authoring without invocation is theatre') stays subordinate to its lead verb ('Invoke the skill on the thing you just built').",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity — consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict.",
       "verdict": "PASS",
-      "evidence": "Big Idea still matches the strategy doc's M3-in-detail 'curated-then-authored' framing (two curated skills for security, one authored for quality, personal-first-then-team-conversation), unaffected by this pass. Front-run check: the lethal-trifecta close still names the three questions without teaching M4's actual content, unaffected. Module-to-module arc: '## Next' still hands the ADR + test-strategy skill forward exactly as the strategy doc's M4 Phase 2 expects. One thing re-verified given the window-location clarification in open-the-side-quest.md and author-test-strategy-skill.md (all of Exercise 3 — author, invoke, self-critique, sharpen, ship — now explicitly confirmed to run inside m3-quality, not crossing back to m3-security mid-exercise as the module's own maintainer prose ambiguously implied before): the strategy doc's M3-in-detail Exercise 3 description ('Invocation closes the loop: run the skill on the security-tested feature') still holds in substance — 'this codebase' as invoked from the m3-quality worktree is the same feature the STRIDE/ADR work targeted (the worktrees share git history up to the fork point; the ADR is a decision record, not a code change, so the feature code invoked-upon is identical across windows). The teaching sequence (map → STRIDE → ADR → author skill → invoke → disclose weakest part → ship) still fires in the right order and targets the right feature; the correction is a window-boundary clarification, not a strategy break. Teaching moment (ADR at P5=9, authored+sharpened skill at P6=8/P8=8) still fires reliably, and more cleanly now than the prior read.",
+      "evidence": "Big Idea (lines 5-6) matches the strategy doc's M3-in-detail framing ('curated-then-authored', 'team kit born here', personal-first-then-human-conversation-promotion) closely, restated in curriculum voice, no copy-paste. Module-to-module arc: 'Bring to Module 4' (lines 93-97) is picked up cleanly by run-the-first-experiment.md's Prework ('The scoped task you picked as homework'). Front-run check on the '## Next' lethal-trifecta beat (lines 81-91): cross-checked run-the-first-experiment.md line 79, which explicitly reuses 'the same three questions from Module 3's close, now pointed at this run' via a flag conditional — confirmed as a deliberate planted-then-recalled beat by this file's own maintainer note (2026-07-02: 'trifecta pre-leash beat added... wired per completeness review finding #2') and the strategy doc's own OODA gap table (gap #5, homed at 'M3 pre-read'), not an accidental duplicate of M4's teaching moment. Mood-doesn't-resolve-early: M3 close resolves on its own earned-trust register ('Two signatures, earned'); the trifecta beat is filed by the trace's persona as forward awareness only ('no task exists yet to apply it to... files it as awareness for M4, not an action now'), leaving M4's own curious-readiness/send-off teaching moment untouched.",
       "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 5,
-      "rule_lead": "Strategic themes recur in Key Concepts.",
-      "verdict": "PASS",
-      "evidence": "Key Concepts (now 6 bullets, merged from 7) still instances AE101 themes after the merge: 'invoke, don't re-derive' = curation principle; 'your codebase teaches the skill, not the manual' = codebase-grounding/mirror; 'ask the agent what's weakest about its own output' = theme #4 mechanically-self-aware; the merged final bullet ('Invoke the skill on the thing you just built. Authoring without invocation is theatre. One skill shipped beats three skills drafted; the team kit grows by accretion') still carries capture-your-world contrast plus Klaassen compounding, unchanged in substance from the two bullets it replaces.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 6,
-      "rule_lead": "Key Concepts breadcrumbs — bolded 'Remember: <essence>' shape, variety beats consistency.",
-      "verdict": "PASS",
-      "evidence": "Unaffected by this fix pass — carried forward. As of the 2026-07-09 quintet voice pass, the bold '**Remember: X**' wrapper on Key Concepts breadcrumbs was deliberately stripped repo-wide; this compendium's own §6 text still literally prescribes the bold wrapper and predates that decision. The breadcrumb essence survives as plain trailing sentences, still theme-instancing, still within a defensible ceiling, no verbatim repeat against the adjacent M2 file. Judged PASS on substance.",
-      "fix_hint": "Reconcile check_strategy_tie_in.md §6's 'bolded breadcrumb' wording against the 2026-07-09 Remember-wrapper-strip decision recorded in check_writing.md, so the two compendiums don't give contradictory guidance to the next author. Still open; not introduced or touched by this pass.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 7,
-      "rule_lead": "What You'll Learn — capability register, engineer voice, no apparatus.",
-      "verdict": "PASS",
-      "evidence": "6 bullets now (down from 8; two merges). Merged bullet 2 ('**Invoke** curated access-control-analysis and STRIDE skills on a feature you're shipping (each as a subagent, fresh context): name what your first read missed, pick one threat worth hardening against, and write the decision as an ADR in your repo's convention') leads with the verb + immediate object (invoke the two skills); the colon clause is carve-out (c), operational elaboration, not apparatus — no Bloom tag, no pedagogical-mechanism tail, no author-defense aside, no didactic taxonomy stamp. Merged Test bullet ('**Test** the authored skill: ask it to disclose its own weakest part, push back on the critique, then invoke it on the security-tested feature and ask Claude whether the test strategy is any good') passes the same check. Both merges are register-clean but denser than the pre-merge originals — worth a lighter touch at a future pass, not a rule violation now (see fix_hint).",
-      "fix_hint": "Both merged WYL bullets (Invoke, Test) now chain 2-3 actions per bullet to fit the 6-bullet ceiling. Register still passes, but a future pass could look for a different merge pair, or trim a clause, to keep each bullet to one clean action-plus-object read. Non-blocking; the current merge is a legitimate response to the ≤6-bullet ceiling, not a regression.",
       "blocking": false
     }
   ],
@@ -138,9 +111,10 @@
     "close_score": 8,
     "any_below_8": true,
     "stealing_the_mood": [
-      "Phase 11 (Next + Bring to Module 4): the lethal-trifecta three-question close still lands with no bridging sentence right after 'Two signatures, earned' — reads as a second gate stacked onto an already-resolved close rather than the same earned-trust discipline extended to the agent. Unaffected by this fix pass; carried forward from the prior audit as a non-blocking TODO."
+      "Phase 11 (Next + Bring to Module 4) at 7 — trifecta beat lands with no bridging sentence right after 'Two signatures, earned', reads as a second gate stacked onto an already-resolved close; would take it to 8 with one connecting clause."
     ]
   },
   "blocking_findings_count": 0,
-  "todos_count": 3
+  "todos_count": 1
 }
+

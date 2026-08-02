@@ -3,16 +3,16 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/walk-and-send-off.md",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "curious readiness — \"I've built enough to try; let's see what the agent does\" (M4 main exercise, per run-the-first-experiment.md maintainer Meta block, line 133, re-verified live this pass)",
+  "module_mood_contract": "curious readiness — \"I've built enough to try; let's see what the agent does\" (M4 main exercise, per run-the-first-experiment.md maintainer Meta block, re-verified live this pass)",
   "trace_status": "regenerated",
-  "teaching_moment_note": "The exercise's core teaching moment — gap analysis (walk the system you have against the system the task needs), scoped via student-pick/agent-screen division of labor, filled via ranked top-5 audit + AskUserQuestion loop, sent off un-packaged for M5 to diagnose — still lands reliably and is still structurally enforced: Phase 1's screening prompt (walk-and-send-off-1) screens candidates against the exact three criteria the strategy doc names as load-bearing, so a too-easy pick gets pushed back on before the teaching moment could fail to land. Structural note for this pass: the file now has only TWO `## Phase N:` headers (the former Phase 3 heading was removed and its two settle-the-tree bullets folded into the tail of 'Push back when a fill drifts from the codebase'). Regenerated trace treats this as Phase 1 (pick) + Phase 2 (audit, fill, push-back, settle — now one longer phase absorbing what used to be Phase 3). Both phases and the close clear the mood floor; no confusion_flags fired reading the fold cold as a persona would.",
+  "teaching_moment_note": "Gap analysis (walk the system you have against the system the task needs), scoped via student-pick/agent-screen division of labor, filled via ranked top-5 audit + AskUserQuestion loop, sent off un-packaged for M5 to diagnose — still lands reliably and is still structurally enforced by the fenced prompts (walk-and-send-off-1/2/3), independent of persona skill level. File is unchanged from HEAD (no working-tree diff); this pass re-verified the prior 2026-07-26 instance's conclusions against fresh sha256 hashes and a regenerated 2-phase trace rather than trusting the cached claim.",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures are closers, not openers.",
       "verdict": "N/A",
-      "evidence": "File is an exercise (two phases, three student-copied prompts), not a lecture. No meta-frame naming pattern to place.",
+      "evidence": "File is an exercise (two `## Phase N:` headers, three student-copied prompts), not a lecture.",
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +21,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "File is an exercise, not a pre-exercise lecture. M4's mood is curious readiness, not the learning-through-contrast shape this rule targets (that's M5).",
+      "evidence": "File is an exercise, not a pre-exercise lecture. M4's mood is curious readiness, not the learning-through-contrast shape this rule targets (that belongs to M5).",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,7 +30,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Rule targets lecture bodies specifically. This exercise's module-number references ('Module 4', 'M5's fork', 'm4/<slug>' branch) are exercise/prompt prose, governed by check_prompts.md §32, not this rule.",
+      "evidence": "Rule targets lecture bodies. This exercise's module-number references ('Module 4', 'M5', 'm4/<slug>') are exercise/prompt prose, governed by check_prompts.md, not this rule.",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,16 +39,16 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test and the truth clause.",
       "verdict": "N/A",
-      "evidence": "Rule scopes to lecture/handbook headers (compendium frontmatter: 'Fire when writing or placing a lecture'). This exercise's slide-rendered headers are governed by check_slides.md §6, evaluated by the slides class, not this one.",
-      "fix_hint": "Flagging forward anyway since it's directly downstream of today's fold: 'Push back when a fill drifts from the codebase' (line 70) now hosts four distinct beats under one slide — push-back-on-drift (line 72), the Time-check blockquote (line 74), the two settle-the-tree bullets (lines 76-77), and the 'What happened' recap (line 79). Squinted cold, the header only names the first beat; a reader who stops at the header wouldn't predict the tidy-up instructions or the recap sitting under it. Mechanically within budget (162w/3 bullets per scripts/check-slide-size.js, well under the 210w/6-bullet ceiling) so this isn't a size violation — it's a header-truth question for the slides class to weigh on next fire.",
+      "evidence": "Rule scopes to lecture/handbook headers (compendium frontmatter fires on lecture writing/placement). This exercise's slide-rendered headers fall to check_slides.md, owned by the slides class.",
+      "fix_hint": "Forwarding anyway since it's directly on this pass's own trace: 'Push back when a fill drifts from the codebase' (line 70) now hosts four beats under one slide — push-back-on-drift (line 72), the time-check blockquote (line 74), the tidy-up-and-diff-review ask (lines 76-77), and the 'What happened' recap (line 79). Squinted cold, the header only names the first beat. Mechanically within budget (well under check_lectures §5's 210w/6-bullet ceiling per prior pass's `check-slide-size.js` run) — this is a header-truth question for the slides class, not a size violation.",
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
-      "rule_lead": "A slide's body is size-bounded, not just its header — exercise slides count too.",
+      "rule_lead": "A slide's body is size-bounded, not just its header.",
       "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/walk-and-send-off.md --report` fresh this pass: 8 slides (down from 9 before today's fold — the Phase 3 heading is gone), 0 oversized, ceiling 210w/6 bullets. Densest slide is 'Match each fill to its shape and home' at 192w/4 bullets (untouched by this fold). 'Push back when a fill drifts from the codebase' — the slide this fold grew — sits at 162w/3 bullets, comfortably under the ceiling even after absorbing the two settle-the-tree bullets and the recap.",
+      "evidence": "File structurally unchanged since the 2026-07-26 pass that measured 8 slides, 0 oversized (ceiling 210w/6 bullets), densest slide 'Match each fill to its shape and home' at 192w/4 bullets. No edit since to re-inflate any slide.",
       "fix_hint": null,
       "blocking": false
     },
@@ -57,7 +57,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions live in prompts, not body prose (storytelling-owned facet).",
       "verdict": "PASS",
-      "evidence": "Corrects this file's prior storytelling pass, which flagged lines 78-80 of the pre-fold file (three unfenced 'Ask Claude to X' bullets under '## Phase 3: Settle the tree before the send-off') as REVISE, expecting a new {{prompt:walk-and-send-off-4}} fence. The maintainer's committed fe18297 pass (2026-07-26, first look) drafted exactly that fence and left it pending human approval per check_prompts.md §22's registry gate. Today's uncommitted second look reversed that plan: instead of fencing, it removed the Phase 3 heading and folded its two (now-merged) bullets into the tail of 'Push back when a fill drifts from the codebase' (lines 76-77), unfenced, as body prose. Verified this reads clean: no dangling pronouns (each bullet's referents resolve within the bullet itself), past-tense recap intact ('settled the observations/ tree before the send-off'), and mechanically the file still passes slide-size and slide-numbering checks (`node scripts/check-slide-numbering.js`: 'OK — 58 files, Phase/Step numbering consistent'). Applying check_pedagogy.md's own removal test from §16 ('cutting collapses pedagogy = forcing function; cutting only removes count-script = cut'): cutting the tidy-up bullets entirely would not collapse the module's actual teaching moment (the M4→M5 unpackaged-vs-packaged contrast), which supports the §16 carve-out for optional refinements living in body. That the beat stays unfenced is itself dispositively settled by 2f0c8a2 (2026-07-10), which deliberately retired the fenced walk-and-send-off-4 prompt and replaced it with exactly this shape of unfenced 'Ask Claude to propose... ask to see the diff' body prose — this file has carried an unfenced settle-the-tree instruction for 16 days without it being new roughness.",
+      "evidence": "The three former Phase-3 'Ask Claude to X' bullets (propose tidy-up, review diff, consider rule placement) are now folded, unfenced, into the tail of 'Push back when a fill drifts from the codebase' (lines 76-77) as optional-refinement body prose. Applying §16's removal test: cutting these bullets would not collapse the module's actual teaching moment (the M4-un-packaged vs M5-packaged contrast) — supports the carve-out for optional refinements living in body, not a fence. This shape has been stable and previously adjudicated: 2f0c8a2 (2026-07-10) deliberately retired the heavier fenced `walk-and-send-off-4` prompt for this exact beat, and the file's own maintainer block (line 152, 'Resolved 2026-07-26') documents that decision as final, not reopened by later folds.",
       "fix_hint": null,
       "blocking": false
     },
@@ -66,7 +66,7 @@
       "rule_index": 27,
       "rule_lead": "Body teaches the work; trainer manages the room outside text.",
       "verdict": "PASS",
-      "evidence": "Only room-share-shaped line in the body is the Time-check blockquote (line 74, unchanged by this fold): '...to share what surfaced, where the audit missed, and why the agent sometimes goes lazy.' The file's own maintainer block (line 93) still documents this as a deliberate, previously-adjudicated exception and instructs future judges not to re-flag it. Re-read cold this pass, the reasoning still holds. No other authored-conversation cue found anywhere in the current body.",
+      "evidence": "Only room-share-shaped line in the body is the time-check blockquote (line 74): '...to share what surfaced, where the audit missed, and why the agent sometimes goes lazy.' No addressee, invitational room-energy rather than a student-action mandate; the file's own maintainer block (line 95) documents this as a deliberately adjudicated exception and asks future judges not to re-flag. Re-read cold this pass, no other authored-conversation cue exists in the body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -75,7 +75,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named; mood-floor applies to teaching beats only.",
       "verdict": "PASS",
-      "evidence": "Both phases are teaching beats, no setup beat to exempt. Regenerated trace (2026-07-26, second look): Phase 1 (pick) = 8, Phase 2 (audit, fill, push-back, settle, now one longer phase) = 8, close = 8 — every beat clears the 8+ floor. Phase 2's score reflects a real but non-disqualifying consideration: the phase now runs through five sub-beats (audit, read-thin-spots, fill, match-fill-to-shape, push-back-and-settle) ending on the folded settle content, and a fast-operator persona reading 'Push back when a fill drifts from the codebase' would not predict the tidy-up instructions waiting at the end of that section (see check_lectures §4 fix_hint above) — a mild but real friction, not enough to drop the beat below the 8 floor since each individual instruction still reads unambiguously on its own.",
+      "evidence": "Both phases are teaching beats (no setup-only beat to exempt). Regenerated trace this pass: Phase 1 (pick) = 8, Phase 2 (audit/fill/push-back/settle) = 8, close = 8 — every beat clears the 8+ floor. Phase 2's confusion_flag (header doesn't predict the tidy-up ask waiting at its tail) is real friction but each instruction still reads unambiguously once reached, so it doesn't drop the beat below floor.",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,7 +84,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood, not punitive.",
       "verdict": "PASS",
-      "evidence": "'Every send-off is a test, not a production run; you are testing and you are learning' (line 19) and 'Traces are data either way' (close of 'What closes Module 4') both frame stopping/incompleteness as valid data, not failure. Neither line touched by today's fold. No shame-framed language anywhere in the current body.",
+      "evidence": "'Every send-off is a test, not a production run; you are testing and you are learning' (line 19) and 'Traces are data either way' (close of '## What closes the module') both frame stopping/incompleteness as valid data, not failure. No shame-framed language anywhere in the body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -93,7 +93,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "'The point: This is the first experiment of a two-run arc... Every send-off is a test, not a production run; you are testing and you are learning' (line 19, unchanged) leads with the testing/learning discipline, not a failure word.",
+      "evidence": "'The point: This is the first experiment of a two-run arc... Every send-off is a test, not a production run; you are testing and you are learning' (line 19) leads with the testing/learning discipline, not a failure word.",
       "fix_hint": null,
       "blocking": false
     },
@@ -102,8 +102,8 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "Module-to-module arc, re-verified against the current file: '## What closes Module 4' now reads 'The exercise ends here. Module 4's send-off takes over:' (line 83), replacing the pre-fold 'Phase 3 is where the exercise ends' — the arc-closer no longer names a phase the file has removed, so today's fold is a net improvement for arc accuracy, not a regression. The three-step list (return markers / trifecta / send-off paste) is unchanged from the fe18297 pass and still matches run-the-first-experiment.md's own close verbatim on re-read live this pass ('No compound pass at the close. The send-off is the close of the work,' run-the-first-experiment.md line 55; mood target 'curious readiness' confirmed current at line 133). Big Idea fidelity: carrying forward the prior pass's finding (unaffected by today's edit) that content-strategy-agentic-engineering-101.md's 'M4 in detail' step 5 (line 364) still contradicts its own earlier, more canonical 'Woven design rules' §1 (line 136) — this file's no-compound close is the side that was already correct against the doc's own canonical rule.",
-      "fix_hint": "No fix owed by this file. Strategy-doc hygiene pass (content-strategy-agentic-engineering-101.md 'M4 in detail' step 5 vs 'Woven design rules' §1) still outstanding, still out of scope for a curriculum-file edit.",
+      "evidence": "Module-to-module arc verified against the current file: '## What closes the module' (line 81) reads 'The exercise ends here. The module's send-off takes over:' and the numbered list (transcript+commit markers / trifecta check / send-off paste) matches run-the-first-experiment.md's own '## Send the task off' section, which explicitly refuses a compound pass at the close ('No compound pass at the close... Compound on evidence, not anticipation'). No premature resolution of M4's readiness-without-completion mood; M5's rescue beat is not front-run. Big Idea fidelity: this file leads with the send-off-as-test discipline the strategy doc names for M4.",
+      "fix_hint": "Carrying forward a prior-pass note, out of scope for this file: content-strategy-agentic-engineering-101.md's 'M4 in detail' step 5 vs its own 'Woven design rules' §1 still have an internal inconsistency on whether M4 runs a compound pass — this file correctly follows the no-compound reading, but the strategy doc itself should be reconciled. Not this file's fix to make.",
       "blocking": true
     },
     {
@@ -111,7 +111,7 @@
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Module-only section; no '## Key Concepts' heading in this exercise file (lives in run-the-first-experiment.md). Strategy judge owns this at module scope.",
+      "evidence": "Module-only section; no '## Key Concepts' heading in this exercise file (lives in run-the-first-experiment.md). Owned by the strategy judge at module scope.",
       "fix_hint": null,
       "blocking": false
     },
@@ -140,7 +140,7 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "cross_check_note": "This pass fully reverses the prior story instance's one blocking finding: that instance flagged Phase 3's three unfenced 'Ask Claude to X' bullets under check_pedagogy.md §16 and expected the fix to be a new {{prompt:walk-and-send-off-4}} fence (a fix the maintainer's own fe18297 commit had, in fact, drafted and pre-authorized, blocked only on a live human approval reply). Between that commit and this pass, the maintainer reconsidered and took a different path: no new prompt, no new registry approval needed — the Phase 3 heading was removed outright and its content folded into the prior section's body prose, citing 2f0c8a2's deliberate 2026-07-10 retirement of the heavier Huryn-frame prompt as the reason not to reopen a fenced-prompt question for this beat at all. Independent re-audit (this pass) agrees the fold resolves the finding, on two grounds: (1) 2f0c8a2 is genuinely dispositive that this specific beat doesn't need a fence — that decision predates today by 16 days and the body prose it left behind is exactly what got folded, unchanged in substance; (2) independently of that precedent, the content passes §16's own removal test (cutting it doesn't collapse the module's teaching moment) and is the fourth rep of an established 'ask Claude to propose, then push back / review' pattern in this same file, supporting the optional-refinement carve-out on its own merits. Previous instance's three check_prompts.md rows (rule_index 1, 6, 22) are dropped this pass: the §22 registry-gate angle they existed to explain is now moot (no prompt is pending approval), and check_prompts.md full-ledger ownership belongs to the behavior class, not story's completeness contract (story is PRIMARY owner only of check_lectures; check_pedagogy/check_strategy_tie_in are owned-facets-only). Two non-blocking items surfaced this pass, not logged as formal REVISE rows because neither maps to a rule story's ledger owns: (a) the merged slide's header no longer names all of its content (check_lectures §4 fix_hint, forwarded to the slides class); (b) two maintainer-block mentions of 'Phase 3' (lines 93, 143) were not updated by today's fold and are now stale — out of check_slides §11's scope by design (maintainer prose is explicitly exempt from the in-file Phase-reference check per scripts/check-slide-numbering.js's own comment), but worth a maintainer-label sweep alongside the already-logged 'Debrief' label debt.",
+  "cross_check_note": "This file's on-disk state carries no working-tree diff against the committed version the 2026-07-26 instance already audited as PASS (blocking_findings_count 0), which itself fully reversed an earlier-still REVISE finding tied to a now-folded Phase 3. This pass independently re-derived the same 2-phase structure and PASS verdict from a fresh read plus a regenerated trace with real sha256 hashes (the prior cache's phase SHAs were illustrative placeholders, not computed hashes, and were still describing a stale 3-phase structure the file no longer has). The Quality line documented at line 100 of the file ('story REVISE (1/0...)') is a historical record of the 2026-07-26-first-look pass, superseded same-day by the 'second look' fold documented in the maintainer block at line 152 — that Quality-line label itself is now stale bookkeeping, out of this judge's read-only scope to fix.",
   "blocking_findings_count": 0,
   "todos_count": 0
 }

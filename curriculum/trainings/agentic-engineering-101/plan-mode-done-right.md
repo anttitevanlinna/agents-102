@@ -96,8 +96,8 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 
 **Ticketing → homework (this pass):** the optional ticket-inference step split from `extract-the-task-shaping-rule` into the `read-the-ticket-rules` homework exercise; this module gained a `## Homework` link to it. Per-class Quality SHAs below predate the addition — re-audit before ship.
 
-**Quality:** compendium-audited 2026-07-12 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
-- judges @b3143a4: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-02 (story@d1b6f2c technical@d1b6f2c behavior@d1b6f2c slides@d1b6f2c)
+- judges @d1b6f2c: writing REVISE (2/0 see instances/ae101--module--plan-mode-done-right.writing.json), story PASS, technical PASS, behavior PASS, pedagogy REVISE (1/2 see instances/ae101--module--plan-mode-done-right.pedagogy.json), strategy REVISE (1/1 see instances/ae101--module--plan-mode-done-right.strategy.json), slides PASS
 - cross_module: PASS see instances/ae101--prework-m6.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

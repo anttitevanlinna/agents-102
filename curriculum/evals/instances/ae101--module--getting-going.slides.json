@@ -12,7 +12,7 @@
     { "index": 5, "heading": "Key Concepts", "lines": "39-46" },
     { "index": 6, "heading": "Homework", "lines": "47-49" },
     { "index": 7, "heading": "Next", "lines": "50-52" },
-    { "index": 8, "heading": "Pre-reads before Module 2", "lines": "53-60" }
+    { "index": 8, "heading": "Pre-reads before Module 2", "lines": "53-62" }
   ],
   "rules_evaluated": [
     {
@@ -21,7 +21,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 1 \"Big Idea\" narratively defines \"the first compound loop\" in its own sentences (orient / fix tests-first / retro into CLAUDE.local.md / \"the fourth move\" = ticket close) — a coined term earning itself in the same chunk it's introduced, not an unresolved referent. chunk 5 \"Key Concepts\" reuses \"The loop is orient -> fix -> compound -> close\", consistent with chunk 1. chunk 6 \"Homework\": \"The loop's fourth move\" echoes chunk 1's own \"The fourth move\" phrase verbatim. chunk 7 \"Next\": \"plan mode\" resolves against chunk 1 (\"fix tests-first without plan mode\") and chunk 3 (\"no plan mode\"), both earlier in the same file. No pronoun/demonstrative found anywhere in the body whose antecedent fails to resolve under the sequential read.",
+      "evidence": "chunk 1 \"Big Idea\" narratively defines \"the first compound loop\" and \"the fourth move\" (closing the ticket) in its own sentences — coined terms earning themselves in the chunk they're introduced. chunk 5 \"Key Concepts\" reuses \"The loop is orient -> fix -> compound -> close\", consistent with chunk 1. chunk 6 \"Homework\": \"The loop's fourth move\" echoes chunk 1's own phrase verbatim. chunk 7 \"Next\": \"plan mode\" resolves against chunk 1 (\"fix tests-first without plan mode\"), earlier in the same file. chunk 8: \"it\" in \"the gap before it\" resolves to \"Module 2\", named in the immediately preceding chunk 7. No pronoun/demonstrative found anywhere in the body whose antecedent fails to resolve under the sequential read.",
       "fix_hint": null,
       "blocking": true
     },
@@ -31,7 +31,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 2 \"Prework\": \"the prework at the top of this workbook\" is a navigational pointer to a real document location, exempt per carve-out. chunk 8 names its two pre-reads by title/author (\"Boris Cherny, Mastering Claude Code in 30 minutes\"; \"Multi-session and Git: survival guide\") rather than by position. No \"the opening lecture said...\" style positional callback to another file found.",
+      "evidence": "chunk 2 \"Prework\": \"the prework at the top of this workbook\" is a navigational pointer to a real document location, exempt per carve-out. chunk 8 names its pre-reads by title/author (Dex Horthy's \"Why Software Factories Fail\"; Boris Cherny's \"Mastering Claude Code in 30 minutes\"; \"Multi-session and Git: survival guide\") rather than by position. No \"the opening lecture said...\" style positional callback found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -41,7 +41,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "All eight included lecture/exercise links (painting-the-picture-with-the-llm.md, the-wizard-move.md, orient-and-introspect.md, fix-tests-first.md, compound-and-close.md, the-machine-you-just-met.md, how-this-training-was-built.md in chunk 4; close-the-ticket.md in chunk 6; multi-session-git.md in chunk 8) resolve to files that exist on disk. No dead \"the X you did/saw\" phrasing found — this is the module's own opener, not a downstream recap.",
+      "evidence": "All included lecture/exercise links resolve to files that exist on disk: curriculum/lectures/painting-the-picture-with-the-llm.md, the-wizard-move.md, the-machine-you-just-met.md, how-this-training-was-built.md; curriculum/exercises/orient-and-introspect.md, fix-tests-first.md, compound-and-close.md, close-the-ticket.md; and trainings/agentic-engineering-101/reference/multi-session-git.md (verified via ls). No dead \"the X you did/saw\" phrasing found — this is the module's own opener, not a downstream recap.",
       "fix_hint": null,
       "blocking": true
     },
@@ -61,7 +61,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every chunk (1 Big Idea, 2 Prework, 3 What You'll Learn, 4 Start here, 5 Key Concepts, 6 Homework, 7 Next, 8 Pre-reads) carries a self-carrying paragraph or bulleted claim, not a bare wait-state or single context-dependent bullet.",
+      "evidence": "Every chunk (1 Big Idea through 8 Pre-reads) carries a self-carrying paragraph or bulleted claim, not a bare wait-state or single context-dependent bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -71,7 +71,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Each header's content matches its label under the sequential read (e.g. \"Homework\" = the take-home ticket-close exercise; \"Pre-reads before Module 2\" = exactly two optional pre-reads before M2); none of the chunk content contradicts its own header.",
+      "evidence": "Each header's content matches its label under the sequential read (e.g. \"Homework\" = the take-home ticket-close exercise; \"Pre-reads before Module 2\" = exactly the three optional pre-reads before M2); none of the chunk content contradicts its own header.",
       "fix_hint": null,
       "blocking": false
     },
@@ -101,8 +101,8 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "REVISE",
       "chunks_flagged": [8],
-      "evidence": "chunk 8 \"Pre-reads before Module 2\": line 57: \"**Watch: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0).**\" bolds a full ~9-word lead sentence, not a short handle; line 59: \"**Read: [Multi-session and Git: survival guide](../../trainings/agentic-engineering-101/reference/multi-session-git.md).**\" does the same (~6 words, a complete sentence) — two bolded full-sentence leads on one slide, over both the 5-word handle cap and the <=1-bolded-element budget. (Note: chunk 3's four LO bullets each bold a single Bloom's verb — Run / Introspect / Fix / Compound — which is the architecture-mandated checklist-item-name pattern and the compendium's own \"one handle per law\" allowance; not flagged.)",
-      "fix_hint": "Trim each bold span down to the imperative label alone (\"Watch:\" / \"Read:\"); let the title and description that follow run as unbolded prose.",
+      "evidence": "chunk 8 \"Pre-reads before Module 2\": line 57: \"**Read: Dex Horthy, [Why Software Factories Fail](...)**\" bolds a full lead clause (medium tag + attribution + linked title, well over the ~5-word handle span); line 59: \"**Watch: Boris Cherny, [Mastering Claude Code in 30 minutes](...).**\" and line 61: \"**Read: [Multi-session and Git: survival guide](...).**\" repeat the same shape — three bolded full-lead-sentences on one chunk, over both the 5-word handle cap and the <=1-bolded-element-per-slide budget. (Note: chunk 3's four LO bullets each bold a single Bloom's verb — Run / Introspect / Fix / Compound — the architecture-mandated checklist-item-name pattern; not flagged.)",
+      "fix_hint": "Trim each bold span down to the imperative label alone (\"Read:\" / \"Watch:\"); let the attribution, title, and description run as unbolded prose.",
       "blocking": false
     },
     {
@@ -111,7 +111,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "getting-going.md is registered as a module (M1) in site/layouts/curriculum.js's training registries, so it renders as a top-level section.module in the composed deck. Per buildDeckModel in site/layouts/slides.js, a section.module's non-phase, non-hero children (Prework, What You'll Learn, Key Concepts, Homework, Next, Pre-reads) are walked and slide-ified via the flushProse/buildSingleDoc path — none of this body is silently dropped from the default Slides view.",
+      "evidence": "getting-going.md is registered as a module (M1) in site/layouts/curriculum.js's training registries, so it renders as a top-level section.module in the composed deck. Per buildDeckModel in site/layouts/slides.js, a section.module's non-phase, non-hero children (Prework, What You'll Learn, Key Concepts, Homework, Next, Pre-reads) are walked and slide-ified — none of this body is silently dropped from the default Slides view.",
       "fix_hint": null,
       "blocking": false
     },

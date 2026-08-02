@@ -1,17 +1,18 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/push-back-on-the-plan.md",
+  "body_sha": "d74d6a0a2293920dcc8875ab3ac0a93a35918d36345b7cee11570778e26aa78a",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "grounded competence — 'I can feel when a plan is good before approving it, and I know the move is two reads, not one' (AE101 M2, 5 phases)",
-  "trace_status": "cached",
+  "trace_status": "regenerated",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
-      "rule_lead": "Meta-frame lectures are closers, not openers.",
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "N/A",
-      "evidence": "Target file is an exercise (push-back-on-the-plan.md), not a lecture.",
+      "evidence": "Target file is an exercise (push-back-on-the-plan.md), not a lecture. check_lectures.md's own frontmatter scopes to 'writing or placing a lecture'; this file contains no meta-frame lecture chunk to place.",
       "fix_hint": null,
       "blocking": false
     },
@@ -20,7 +21,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "Rule fires on lecture dosage ahead of M5-style contrast-mood exercises. This file is the exercise itself, not a lecture, and M2's mood is grounded competence, not contrast-mood.",
+      "evidence": "Rule triggers on contrast-mood modules (M5-style: learn-through-doing, name-after). Strategy doc's mood arc places M2 at 'grounded competence', not the M4-M6 test→learn→encode contrast band — trigger condition absent.",
       "fix_hint": null,
       "blocking": false
     },
@@ -29,25 +30,25 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Rule scopes explicitly to lecture bodies; this is an exercise body. (The exercise does carry one cross-module reference — 'M1 named the countermove' at line 30 — evaluated under check_strategy_tie_in §4 as a backward callback, not a lecture-body sequencing violation.)",
+      "evidence": "Rule governs lecture-body forward-references/module-numbering; this is an exercise file. Line 30 ('M1 named the countermove...') is a within-arc callback the student reads, not a forward-reference/sequencing claim, and check_lectures.md's frontmatter restricts firing to lecture-writing regardless.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 4,
-      "rule_lead": "Slide/lecture headers pass the squint test and the truth clause.",
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
-      "evidence": "Header-squint-test enforcement for this exercise's slide-rendered ## headers is owned by the slides-class judge (check_slides.md §9, cited directly in this file's own maintainer block) on its own run. Rule's own framing targets lecture headers.",
+      "evidence": "Rule governs lecture slide headers. This file's '## Phase N' headers are exercise-phase headers; slide-header/word-ceiling enforcement for exercise phases sits with check_slides.md (technical class), which storytelling does not own.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
-      "rule_lead": "A slide's body is size-bounded (word-count/bullet ceiling).",
+      "rule_lead": "A slide's BODY is size-bounded, not just its header.",
       "verdict": "N/A",
-      "evidence": "Slide-body sizing (scripts/check-slide-size.js) is slides-class territory; rule's mechanism is framed for lecture bodies.",
+      "evidence": "Same scope note as rule 4 — lecture-scoped body-size ceiling, enforced by scripts/check-slide-size.js against lecture files; exercise-phase word ceilings are check_slides.md's (technical class) territory.",
       "fix_hint": null,
       "blocking": false
     },
@@ -56,34 +57,34 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "P2/P4/P5 forcing functions are prompt-fenced ({{prompt:push-back-on-the-plan-1}}, {{prompt:push-back-on-the-plan-2}}, {{prompt:push-back-on-the-plan-3}}). P3's two-push-back forcing function (lines 44-47, 55) is legitimately body-composed: the content IS the student's own free-text critique of a plan neither judge nor prompt-author has seen — reducing it to a fence would pre-script the critique and defeat the pedagogical point. The mechanical UI action inside it ('pick No, keep planning') is still named as a clear imperative in body, matching the trace's own reasoning at phase 3. Storytelling's ownership here is narrowly the WHERE-question (prompt vs. body); the count-script register of 'two push-backs' itself (§16's scripted-reaction sub-clause) is out of scope per the Completeness contract's narrow-ownership instruction and belongs to the pedagogy-class judge's own run.",
+      "evidence": "Phase 3's two-push-backs forcing function (lines 44-47) is inherently student-authored free text reacting to a plan neither party has seen before — no fenced prompt could carry it without pre-scripting the critique. §16's own carve-out names this exact case: 'optional push-backs / refinements ... can live in body.' The walk-down forcing function (three-questions-at-a-time, recommend-then-confirm) IS correctly encoded inside the fenced {{prompt:push-back-on-the-plan-2}} block (expanded body: 'Ask me three questions at a time. For each question, recommend an answer... I'll confirm or correct three at a time.'). The push-back cap ('Two messages, then move on', line 55) is load-bearing per the strategy doc's 'What M2 refuses: three-push-back-quota' and survives as a body callout under the same push-back carve-out, not a bare count-script.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
-      "rule_lead": "Body teaches the work; trainer manages the room outside text.",
+      "rule_lead": "Classroom = default delivery; body teaches the work, trainer manages the room outside text.",
       "verdict": "PASS",
-      "evidence": "Full-body grep (excluding maintainer block and prompt fences) for authored conversation cues ('discuss with', 'share with', 'neighbor/neighbour', 'tell the room', 'compare with', 'pair up', 'turn to') returned zero hits. Blockquote callouts ('Two messages, then move on.' / 'Too many low-level questions? Steer up.' / 'If it feels sluggish, ask why.' / 'Timebox check.') are self-directed pacing instructions about the student's own next move, not cohort-management or pair/group cues. Cohort-management diagnostics (rubber-stamp catches, softening-on-regeneration recovery) live entirely in the maintainer Watch-fors/Push-back-moves sections below the fence.",
+      "evidence": "No authored conversation cues, pause cues, comparison prompts, or 'discuss with...' sentences anywhere in the student-facing body (lines 1-110). All work is solo (student + own agent on own repo/task); room-management content (Watch-fors, Decision points, Push-back moves) lives entirely below the <!-- maintainer --> fence, addressed to the trainer, not the student.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named; mood-floor 8+/10 on teaching beats; setup/launch beats mood-exempt.",
+      "rule_lead": "Mood contract named — module honours its deliberate mood at every beat.",
       "verdict": "PASS",
-      "evidence": "Trace (content_sha 466dbb1d36cba7af; git status clean for this file, on-disk state matches HEAD, no regeneration needed): P1 mood-exempt (mechanical task-pick, correctly scored null per §1 carve-out — 'compresses to a parenthetical without breaking the arc'); P2 8; P3 8; P4 8; P5 8; close 8. module_mood_contract quotes the strategy doc's grounded-competence line verbatim. No beat below 8.",
+      "evidence": "trace.phases[1].mood_score=null (mood-exempt setup beat, per carve-out — Phase 1 is task-scoping, compressible to a parenthetical). trace.phases[2..4].mood_score=8, trace.phases[5].mood_score=8, trace.close.mood_score=8 — all at or above the 8+ floor, none at the 7 facilitator-premium signature. module_mood_contract 'grounded competence' matches strategy doc's M2 mood verbatim.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
       "rule_lead": "Epistemic mood, not punitive mood.",
       "verdict": "PASS",
-      "evidence": "Body frames noticing plan gaps as skill-building ('Notice which steps name files and which say \"the relevant files.\"') not fault-finding. No shame-coded language toward the student anywhere in student-facing text.",
+      "evidence": "Line 52 frames Claude's softening-on-regeneration as 'Claude's niceness bites' / an RLHF tell to notice, never as the student's error. Watch-fors' 'P3 senior-refusing-the-forcing-function' entry explicitly legitimises a student who defends a genuinely clean plan instead of manufacturing push-backs ('let them — the defense IS the read'), keeping the mood in not-yet-certain discernment rather than compliance-or-blame.",
       "fix_hint": null,
       "blocking": false
     },
@@ -92,25 +93,25 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title 'Sharpen the plan with two reads' and opening 'The point: two reads, paired. Making the plan good is the work.' lead with positive discipline. 'Plan-mode approval inflation' — the named failure mode — is introduced only near the close (P5, line 104), after the student has already run the pairing that defeats it, matching the file's own maintainer note: 'Attribution at P5 is terse... Don't front-load.'",
+      "evidence": "Opener (line 9) leads with the discipline: 'two reads, paired. Making the plan good is the work.' The failure-mode term 'Plan-mode approval inflation' (line 104) is introduced only at the P5 compare beat, after the discipline has already defeated it — maintainer block states the design intent explicitly: 'the label the exercise hands them after they've already defeated it. Don't front-load.'",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity — consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early.",
+      "rule_lead": "Strategy-fidelity check — no front-run of downstream teaching moment, module-to-module arc intact, Big Idea honoured, mood doesn't resolve early.",
       "verdict": "PASS",
-      "evidence": "Checked against bosser-strategy:content-strategy-agentic-engineering-101.md § M2 in detail (lines 298-316). Front-run check: the M1 callback ('M1 named the countermove: never let the agent say everything, take the ranked list first', line 30) is a BACKWARD reference to already-taught content, framed explicitly as the deliberate exception, not a front-run. Pocock's grill-me stays un-named through P4, credited only at Phase 4 close (line 82) — matches strategy doc's 'inlined as a plain prompt so M2 doesn't front-run M3's first-Skill-use moment.' Module-to-module arc: file's close ('Keep the session open for the Compound step', lines 106-108) and Arc section ('Hands off to: M2 Debrief (Compound step)'; 'M3 picks up: the judge-building move', lines 220-223) match strategy doc's Second-exercise/task-shaping-rule and M3 pickup exactly — the Second exercise and mini-lecture described in strategy §M2 live in separate files, correctly not duplicated here. Big Idea fidelity: strategy doc's M2 Big Idea ('plan mode, done right', mood 'grounded competence — I can feel when a plan is good before approving it, and I know the move is two reads, not one') lands verbatim in the file's title/opener and the trace's module_mood_contract. Mood-doesn't-resolve-early: P5 explicitly withholds execution ('Don't execute the plan... Execution is next module's concern'), so M3's earned-trust send-off beat stays unstolen, confirmed by the trace's close mood_note ('M3's earned-trust mood stays unstolen — no skill-authoring or Q+S content front-run').",
+      "evidence": "Front-run check: Phase 4's walk-down stays an inlined plain prompt with terse Pocock credit only at Phase 4's end (line 82), matching the strategy doc's explicit intent ('so M2 doesn't front-run M3's first-Skill-use moment... the skill reveal lands in M3'); trace.phases[4].mood_note and trace.close.mood_note both confirm 'M3's earned-trust mood stays unstolen — no skill-authoring or Q+S content front-run.' Module-to-module arc: close (lines 106-108) hands off explicitly to the Compound step (extract-the-task-shaping-rule), matching the strategy doc's named second exercise; Phase 2 (line 30) calls back to M1's countermove, confirming arc continuity backward too. Big Idea fidelity: strategy doc's six-step core exercise (pick task / enter plan mode / two push-backs via keep-planning / walk-down-branches / approve-stop-no-execution / retrospective naming the pattern) maps 1:1 onto the file's Phase 1-5; 'What M2 refuses' (three-push-back quota, plan-as-feature-tour, execution) is honoured — line 55 blockquote caps push-backs at two, Phase 5 stops before execution ('Don't execute the plan... Execution is next module's concern'), line 9 frames plan-reading as discipline not a toggle. The 2026-08-02 maintainer fix (Card E, line 124) removing 'catches the branches you can't see' from the line-7 opener is itself a correction of an earlier front-run risk (stating P5's discovery in the opener) — confirmed already applied in the current body, strengthening this verdict rather than leaving an open finding.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Key Concepts is a module-file-scoped, student-facing heading; this exercise file carries no `## Key Concepts` section (lives on the M2 module file, a separate audit target).",
+      "evidence": "Key Concepts is a module-file-level, student-facing heading (§5's own scope note: 'module's Key Concepts section'). push-back-on-the-plan.md is an exercise file, not the M2 module file — no Key Concepts section exists here to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -119,7 +120,7 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Same as §5 — no Key Concepts section exists in this exercise file; governed on the module file.",
+      "evidence": "Same module-only scope as §5 — no Key Concepts section in this exercise file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -128,7 +129,7 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "No `## What You'll Learn` section exists in this exercise file; that section lives on the M2 module file.",
+      "evidence": "What You'll Learn is a module-file section (anticipatory, before-the-work); this exercise file carries no such section.",
       "fix_hint": null,
       "blocking": false
     }
@@ -137,7 +138,8 @@
     "phase_scores": [null, 8, 8, 8, 8],
     "close_score": 8,
     "any_below_8": false,
-    "stealing_the_mood": []
+    "teaching_moment_lands": true,
+    "note": "Named teaching moment (the two-reads-paired pattern, 'plan-mode approval inflation' as its named failure mode) is forced by Phase 5's fenced prompt regardless of persona skill — the retrospective always runs and always asks Claude to compare what the walk-down surfaced against the student's own push-backs, so it is not skippable. Trace regenerated at Phase 3 only: the cached entry quoted stale UI copy ('keep planning with feedback', pre-2026-08-02 wording) against the current body's 'No, keep planning' (source cc-permission-modes re-verified live 2026-08-02); mood held at 8 after the refresh — the copy fix adds a clarifying clause ('That holds plan mode open and gives you the floor') without changing the pedagogical action. Phases 1, 2, 4, 5 and close were unchanged since generation and reused as cached. Note: the previous story-class instance file (overwritten by this run) had marked trace_status 'cached' against the same stale content_sha without catching this drift — flagging for awareness, not re-litigating."
   },
   "blocking_findings_count": 0,
   "todos_count": 0

@@ -42,8 +42,8 @@ Looking forward to it.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-02 (writing@c9f9c88 behavior@c9f9c88)
-- judges @c9f9c88: writing PASS, story grandfathered, technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered
+**Quality:** compendium-audited 2026-08-02 (writing@9089694 behavior@9089694)
+- judges @9089694: writing PASS, story grandfathered, technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Delivery architecture canonical home:** training-architecture.md (§Platform, §Material distribution, §Prework). Prework runtime, step breakdown, and skill-install mechanics live in prework.md's maintainer block. Don't restate either here.

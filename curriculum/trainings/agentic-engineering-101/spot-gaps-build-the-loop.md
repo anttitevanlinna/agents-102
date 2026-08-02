@@ -84,8 +84,8 @@ Antti
 
 **M6 opener rescue + accept-loss callouts — deliberate exception to `check_student_facing.md` rule 5 (golden path only in body).** Two consecutive blockquotes in `## Start here` carry the rescue paths (nudge / re-send fresh / skip the opener) and the accept-the-loss floor ("you can still do the module's exercises"). Rule 5 normally bans recovery branches in body; here the structural risk (M5 run crashed during lunch in 2-day delivery) is named with scoped rescue, then a softer floor for the case where rescue fails entirely. The blockquote shape isolates both from the golden-path narrative for prepared students. Future judges should not re-flag.
 
-**Quality:** compendium-audited 2026-08-02 (writing@c9f9c88 story@c9f9c88 technical@c9f9c88 behavior@c9f9c88 slides@c9f9c88)
-- judges @c9f9c88: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy REVISE (1/0 see instances/ae101--module--spot-gaps-build-the-loop.pedagogy.json), strategy REVISE (1/0 see instances/ae101--module--spot-gaps-build-the-loop.strategy.json), slides PASS (verify-refuted)
+**Quality:** compendium-audited 2026-08-02 (writing@9089694 story@9089694 technical@9089694 behavior@9089694 slides@9089694)
+- judges @9089694: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy REVISE (1/0 see instances/ae101--module--spot-gaps-build-the-loop.pedagogy.json), strategy REVISE (1/0 see instances/ae101--module--spot-gaps-build-the-loop.strategy.json), slides PASS (verify-refuted)
 - cross_module: PASS see instances/ae101--prework-m6.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

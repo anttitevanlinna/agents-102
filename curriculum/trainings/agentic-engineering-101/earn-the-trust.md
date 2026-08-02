@@ -112,8 +112,8 @@ Optional. One read in the gap.
 
 **Session-close convergence prompt (`ae101-m3-ready-to-clear`) kept, not cut.** Flagged `low-yield`. It's the converge-before-clear beat (`check_pedagogy.md §58`): the student signals wrap-up, the agent surfaces anything still loose before the `/clear`. A light one-line ask carrying a lead-in and its own "good enough" callout, not concurrent-heavy load. Its `{{cut:}}` marker was reversed to a live `{{prompt:}}` — body touched, so the per-class Quality SHAs below predate it; re-audit before ship. Not a cut candidate.
 
-**Quality:** compendium-audited 2026-08-02 (writing@b3143a4 story@d1b6f2c technical@b3143a4 behavior@c9f9c88 pedagogy@c9f9c88 slides@b3143a4)
-- judges @c9f9c88: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy REVISE (1/0 see instances/ae101--module--earn-the-trust.strategy.json), slides PASS
+**Quality:** compendium-audited 2026-08-02 (writing@9089694 story@d1b6f2c technical@9089694 behavior@c9f9c88 pedagogy@9089694 slides@9089694)
+- judges @9089694: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy REVISE (1/0 see instances/ae101--module--earn-the-trust.strategy.json), slides PASS
 - cross_module: PASS see instances/ae101--prework-m6.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

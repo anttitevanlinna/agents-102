@@ -30,17 +30,17 @@ produces:
     consumed-by:
       - prompt:spot-gaps-build-the-loop-2
 ---
-I have two runs of the same long-running task on disk, and both recorded their coordinates. The un-packaged run's are in `task.md` (its `m4/` branch and session transcript path); the packaged re-run's are in `plan.md`, in the protected `Run coordinates` block at the top (its `m5/` branch and session transcript path). The un-packaged run had no reference artefact, no plan.md, no verifier. The packaged re-run had all three in play: a reference, a plan.md, and a verifier wired to run on a cadence.
+I have two sessions of the same long-running task on disk, and both recorded their coordinates. The un-packaged session's are in `task.md` (its `m4/` branch and session transcript path); the packaged re-send's are in `plan.md`, in the protected `Run coordinates` block at the top (its `m5/` branch and session transcript path). The un-packaged session had no reference artefact, no plan.md, no verifier. The packaged re-send had all three in play: a reference, a plan.md, and a verifier wired to run on a cadence.
 
-Read both. Start with both session transcripts at the paths recorded in `task.md` and `plan.md`. Then check repo state: commits on the `m4/` branch after its starting point, commits on the `m5/` branch after the worktree fork, what each run touched. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.
+Read both. Start with both session transcripts at the paths recorded in `task.md` and `plan.md`. Then check repo state: commits on the `m4/` branch after its starting point, commits on the `m5/` branch after the worktree fork, what each session touched. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.
 
 Walk the diff across four dimensions:
 
-- What packaging caught: specific moments in the packaged run where the reference, the plan.md, or the verifier prevented a drift the un-packaged run actually experienced. Quote the un-packaged moment and the packaged moment both.
-- What packaging missed: places the packaged run drifted even with packaging in play. Where the reference was too thin, where the plan.md carried the wrong state, where the verifier's quality bar sat beside the real failure.
+- What packaging caught: specific moments in the packaged session where the reference, the plan.md, or the verifier prevented a drift the un-packaged session actually experienced. Quote the un-packaged moment and the packaged moment both.
+- What packaging missed: places the packaged session drifted even with packaging in play. Where the reference was too thin, where the plan.md carried the wrong state, where the verifier's quality bar sat beside the real failure.
 - What packaging introduced: new failure shapes that only exist because of the packaging itself — over-fitted verifier, plan.md staleness, reference-as-cage.
 - Where the fix belongs: for each named gap — memory (observation, hypothesis, rule), a sharper verifier, a rule in CLAUDE.local.md, or a new skill. Don't prescribe the skill's shape yet.
 
 For every claim, quote a specific moment from the artefacts. Don't generalise.
 
-End with: which gap matters most? Rank by damage-to-a-future-run, not by how interesting it reads.
+End with: which gap matters most? Rank by damage-to-a-future-session, not by how interesting it reads.

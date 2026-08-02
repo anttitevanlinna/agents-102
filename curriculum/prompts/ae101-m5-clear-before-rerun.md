@@ -7,7 +7,7 @@ requires: []
 produces: []
 note: >
   in-session shortcut path before the M5 re-send — drops the exercise scrollback
-  (verifier scaffolding, hook wiring, plan.md drafts) so the long-run doesn't pay
+  (verifier scaffolding, hook wiring, plan.md drafts) so the re-send session doesn't pay
   Opus cache-read on the heavy prefix. ae101-m5-rerun-packaged is
   self-bootstrapping after this; packaging files at the worktree root +
   auto-loaded rules carry forward. Alternative path: open a new Claude Code

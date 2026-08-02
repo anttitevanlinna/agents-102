@@ -16,7 +16,7 @@ produces:
 ---
 Expand my menu of checks before I read my own map against it.
 
-List 5–10 atomic verification primitives a software engineer uses to check agentic work (test-writing, browser-testing, PR-building, lint-gates, ...) — the moves themselves, not the agent context. For each, name in one line what it checks and where it fires (pre-run / mid-run / post-run / continuous).
+List 5–10 atomic verification primitives a software engineer uses to check agentic work (test-writing, browser-testing, PR-building, lint-gates, ...) — the moves themselves, not the agent context. For each, name in one line what it checks and where it fires (pre-session / mid-session / post-session / continuous).
 
 Then evaluate fit for the dominant gap I named in Phase 1. Which 2–3 primitives would most likely have caught it? Recommend the primitives, and say which of the recurring shapes we drew each one pairs with.
 

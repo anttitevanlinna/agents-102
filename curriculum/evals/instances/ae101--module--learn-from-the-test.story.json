@@ -11,7 +11,7 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Closing lectures ('What packaging is', 'The gate is a claim too') sit at lines 100-102, after the re-send prompt and Debrief — structurally last in the module. The two pre-exercise lectures (lines 26, 28) are the pre-read re-projection and an in-room arming opener, neither of which names Ronacher's three-pattern. Maintainer push-back explicitly guards against naming the three-pattern before Phases 1-4 ('Closing lecture pre-empt').",
+      "evidence": "Closing lectures ('What packaging is', 'The gate is a claim too', lines 102-104) sit after the re-send prompt and after 'Send it off and read the report cold' — structurally last in-session. The two pre-exercise lectures (lines 26, 28: 'Reading the return', 'Learning through contrast') are a pre-read re-projection and an in-room arming opener, neither naming Ronacher's three-pattern. Maintainer push-back guards this explicitly ('Closing lecture pre-empt', line 172).",
       "fix_hint": null,
       "blocking": false
     },
@@ -20,7 +20,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "PASS",
-      "evidence": "Pre-exercise content (lines 20-37: 'Start here' + 'The nag writes the verifier') delivers spirit plus a recap of the three lenses plus role-language for reference/plan.md/verifier ('pins the goal' / 'carries the state' / 'runs the checks') without pairing them explicitly to the named failure modes or naming Ronacher — that explicit pairing is deferred to Key Concepts (post-exercise), the practitioner name to the closer. Maintainer self-audit (line 156) concurs; independently verified against the section text.",
+      "evidence": "Pre-exercise content (lines 20-36, 'Start here' + 'The nag writes the verifier') delivers spirit plus the three lenses plus plain-function role-language for reference/plan.md/verifier ('pins the goal' / 'carries the state' / 'runs the checks') without pairing them to the named failure modes (deferred to Key Concepts, line 64-70, post-exercise) or naming Ronacher (deferred to the closer). Trace phase 1 confirms the persona reads this as recognition/arming, not lecture.",
       "fix_hint": null,
       "blocking": false
     },
@@ -29,7 +29,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Target file is the module file itself, not a lecture body — this is the correct location for cross-module sequencing per the rule's own carve-out ('belong to the module file's Next/Bridge'). '## Next' (lines 104-107) and 'Bring to Module 6' (lines 108-113) carry the M6 handoff appropriately.",
+      "evidence": "Target is the module file itself, not a lecture body — the rule's own carve-out places sequencing here ('belong to the module file's Next/Bridge'). '## Next' (lines 122-124) and '## Bring to Module 6' (lines 126-130) carry the M5-to-M6 handoff, which is this file's job, not a lecture's.",
       "fix_hint": null,
       "blocking": false
     },
@@ -38,7 +38,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Authored headers are command-verb and content-matched ('Run the fork from the original repo', 'Re-send the same task, packaged', 'Send it off and read the report cold'). One nuance: 'The nag writes the verifier' (line 30) names only the verifier though the body's payoff names all three artefacts (reference/plan.md/verifier) — read as synecdoche (verifier is the newest, least-previously-covered artifact), not a category error; the header doesn't overclaim what the section teaches.",
+      "evidence": "All 15 `##` headers are command-verb or content-matched, no empty containers ('The move', 'The spirit', etc.) and no orphan mystery headers. 'The nag writes the verifier' (line 30) names only the verifier though the section's payoff spans all three artefacts (reference/plan.md/verifier) — read as synecdoche (verifier is the newest, least-previously-covered artifact), not a category error; the header doesn't overclaim what the section teaches.",
       "fix_hint": null,
       "blocking": false
     },
@@ -46,9 +46,9 @@
       "compendium": "check_lectures.md",
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header.",
-      "verdict": "PASS",
-      "evidence": "scripts/check-slide-size.js --file <this file>: 13 slides, 0 oversized against the 210-word/6-bullet limits. Matches maintainer's 2026-07-10 slide-size-split note (two chunks split at conceptual seams, zero wording changes).",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` (run live this pass): 15 slides, 1 oversized — `## Run the fork from the original repo` (line 44) at 278 words, over the 210-word bound. The section has grown past the 2026-07-10 slide-size-split note's baseline (that pass logged this same section at 309w pre-split; it appears to have regrown since, likely from the 'coordinates are the anchor' recovery paragraph added later).",
+      "fix_hint": "Split at a conceptual seam (e.g. carve the 'coordinates are the anchor' recovery-path paragraph into its own short slide) or trim the recovery-path prose; don't cut the recovery path itself, it's load-bearing per the maintainer's Connections-blocker push-back.",
       "blocking": false
     },
     {
@@ -56,7 +56,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The re-send prompt (lines 111-124) carries the load-bearing forcing function in-fence: the protected Run-coordinates block, 'run the verifier per plan.md cadence; don't paper over failures', and the three-list candid report shape ('shipped / did NOT ship / verifier', 'no hedging'). Surrounding body prose (lines 126-128) explains why candour matters and offers an optional student-initiated push-back, which the rule's carve-out permits in body.",
+      "evidence": "The re-send forcing function is invoked via the `{{prompt:ae101-m5-rerun-packaged}}` fence (line 96); body prose above it (lines 90-94) only frames why the prompt stands alone. The candid-evidence guidance ('If the summary reads polished, ask the agent to list the artifacts that didn't ship...', line 98) is a conditional, student-initiated push-back, not a mandatory forcing function — falls under the rule's own carve-out for optional push-backs/refinements living in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -65,7 +65,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "No authored conversation/pair/room-share cues anywhere in the body (checked the full file above the maintainer fence). All prose is about the work: worktree state, prompt content, artefact, next action. Cohort-management (push-backs, watch-fors, decision points) lives entirely in the maintainer block.",
+      "evidence": "No authored conversation/pair/room-share cues anywhere in the body (grepped for 'discuss with', 'share with', 'neighbo(u)r', 'tell the room', 'take N seconds/minutes', 'pair up', 'compare with', 'turn to' — zero hits above the maintainer fence). All prose is about the work: worktree state, prompt content, artefact, next action. Cohort-management (push-backs, watch-fors, decision points) lives entirely in the maintainer block (lines 143+).",
       "fix_hint": null,
       "blocking": false
     },
@@ -74,7 +74,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named; mood-floor 8+ per TEACHING beat, mood-exempt SETUP beats.",
       "verdict": "PASS",
-      "evidence": "Regenerated trace (curriculum/evals/sim-cache/ae101--learn-from-the-test.persona.json, content_sha 683f93b8cba052c7): Phase 1 (teaching/arming) 8, Phase 2 (setup, worktree fork) null/exempt, Phase 3 (exercise recap + Key Concepts) 9, Phase 4 (re-send + closing lectures) 9, close 9. All teaching beats clear the 8+ floor; none below 7.",
+      "evidence": "Regenerated trace (curriculum/evals/sim-cache/ae101--module--learn-from-the-test.persona.json, content_sha f3129e8ab289e9ad): Phase 1 (teaching/arming) 8, Phase 2 (setup, worktree fork) null/exempt, Phase 3 (exercise recap + Key Concepts) 9, Phase 4 (re-send + closing lectures) 9, Phase 5 (Next/Bring-to-M6/Pre-reads) 8, close 9. All teaching beats clear the 8+ floor; none below 7.",
       "fix_hint": null,
       "blocking": true
     },
@@ -83,7 +83,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood, not punitive.",
       "verdict": "PASS",
-      "evidence": "'The nag writes the verifier' frames the M4 worry as curiosity ('a worry surfaced... it nagged', 'the feeling of what is missing points at what to build next'), not shame. Maintainer push-back explicitly guards the non-blame register: 'the un-packaged run was supposed to underdeliver. The diagnosis is data, not blame.'",
+      "evidence": "'The nag writes the verifier' frames the M4 worry as curiosity ('a worry surfaced... it nagged', 'the feeling of what is missing points at what to build next'), not shame. Maintainer push-back guards the non-blame register explicitly: 'the un-packaged run was supposed to underdeliver. The diagnosis is data, not blame.' (line 166).",
       "fix_hint": null,
       "blocking": false
     },
@@ -92,7 +92,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title 'Learn from the test, re-send packaged' and Big Idea (line 4) lead with the test-then-learn discipline, not with 'goal drift' / 'context rot' / 'plausible-but-wrong' as the headline framing.",
+      "evidence": "Title 'Learn from the test, re-send packaged' and Big Idea (line 4, 'The contrast is the lesson') lead with the test-then-learn discipline, not with 'goal drift' / 'context rot' / 'plausible-but-wrong' as the headline framing — those names appear only inside What You'll Learn as the diagnostic vocabulary, not the title-level frame.",
       "fix_hint": null,
       "blocking": false
     },
@@ -101,7 +101,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "Big Idea matches the strategy doc's 'test -> learn -> encode' framing in spirit. The new 'nag writes the verifier' section is drawn near-verbatim from the strategy doc's own M5 framing ('M5 converts the residual unease into build fuel — the nag writes the verifier', content-strategy-agentic-engineering-101.md line 260) — confirmed strategy-authored, not drift. No front-run: reference/plan.md/verifier are named functionally throughout but the Ronacher/Cherny attribution is reserved for the closer, per the strategy doc's explicit 'earns its name from the M4 evidence, not a whiteboard.' '## Next' (lines 104-107) hands off cleanly to M6's diff-and-encode framing, matching the strategy doc's M6 section closely. Mood does not resolve early: 'The gate is a claim too' (final closing lecture) deliberately reopens doubt on the green verifier result immediately after the win, preserving M6's 'subtler misses, subtler drift' teaching moment.",
+      "evidence": "Cross-checked against `content-strategy-agentic-engineering-101.md`: Big Idea matches the doc's M5 row ('teach Ronacher's three-pattern... through diagnosis of the M4 failures... build the verifier... assemble reference + plan... re-send the same task, packaged'). 'The nag writes the verifier' section echoes the strategy doc's own M5 framing near-verbatim ('M5 converts the residual unease into build fuel — the nag writes the verifier'). No front-run: reference/plan.md/verifier are named functionally throughout the pre-exercise sections but the Ronacher/Cherny attribution is reserved for the closer, matching the doc's 'earns its name from the M4 evidence, not a whiteboard.' '## Next' (lines 122-124) hands off to M6's 'do all our runs pass, and who reviewed what?' framing, matching the doc's M6 section ('subtler misses, subtler drift') closely. Mood does not resolve early: 'The gate is a claim too' (final closing lecture) deliberately reopens doubt on the green verifier result immediately after the win, preserving M6's teaching moment intact.",
       "fix_hint": null,
       "blocking": true
     },
@@ -110,7 +110,7 @@
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Module-only section; per this template's completeness contract, §5-7 are owned by the strategy-class judge, not story ('the pedagogy and strategy judges are primary owners of the rest and carry their verdicts' — same narrow-ownership pattern applied here).",
+      "evidence": "Owned by the strategy-class judge, not storytelling, per this template's completeness contract ('§5/§6/§7 govern module-only sections... N/A on a lecture; the strategy judge owns them').",
       "fix_hint": null,
       "blocking": false
     },
@@ -119,7 +119,7 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Owned by the strategy-class judge, not story, per this template's completeness contract.",
+      "evidence": "Owned by the strategy-class judge, not storytelling, per this template's completeness contract.",
       "fix_hint": null,
       "blocking": false
     },
@@ -128,31 +128,23 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "Owned by the strategy-class judge, not story, per this template's completeness contract.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 6,
-      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
-      "verdict": "PASS",
-      "evidence": "Scope note: check_prompts.md's full-rule ledger is primary-owned by the prompt-behavior (Class B) judge (judges/prompt-behavior.md line 174) and the technical/writing classes; story evaluates only this one storytelling-adjacent judgment, mirroring the narrow-ownership pattern the template applies to check_pedagogy/check_strategy_tie_in (see notes). The worktree-setup prompt (lines 54-62) is purely mechanical and does not pre-name reference/plan.md/verifier or the M6 diff framing. The re-send prompt (lines 111-124) names reference/plan.md/verifier only because Phase 4 already built them by that point — not a leak of a future reveal.",
+      "evidence": "Owned by the strategy-class judge, not storytelling, per this template's completeness contract.",
       "fix_hint": null,
       "blocking": false
     }
   ],
   "mood_summary": {
-    "phase_scores": [8, null, 9, 9],
+    "phase_scores": [8, null, 9, 9, 8],
     "close_score": 9,
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "teaching_moment_note": "Teaching moment (packaging catches the specific failures just diagnosed; the gate itself is a claim) lands reliably. The actual forcing function lives in the linked diagnose-and-resend exercise (separately judged); this module's contribution — the nag beat, Key Concepts recap, and two closing lectures — reinforces it structurally without gating on it, appropriate for a module file whose job is framing and recap, not the exercise's mechanics.",
+  "teaching_moment_note": "Teaching moment (packaging catches the specific failures just diagnosed; the gate itself is a claim, not proof) lands reliably across the trace. The actual forcing function lives in the linked diagnose-and-resend exercise (separately judged); this module file's own contribution — the nag beat, Key Concepts recap, and the two closing lectures — reinforces it structurally without gating on it, appropriate for a module file whose job is framing and recap rather than the exercise's mechanics.",
   "blocking_findings_count": 0,
-  "todos_count": 0,
+  "todos_count": 1,
   "notes": [
-    "Trace regenerated in full: content_sha changed from cached 8af8d43ad8004939 (2026-05-15) to 683f93b8cba052c7 (current, 2026-07-10). File was substantively edited 2026-07-09/07-10 (voice pass, arc-read pass, reading-contract commit adding 'The nag writes the verifier' section + slide-size splits) after the last recorded Quality stamp (2026-07-08) and after the cached trace. Phase count changed 3 -> 4 to match the new section structure; old cache fully superseded, not reused. Prior instance file at this path (2026-05-15) used a looser completeness contract (invented 'story.md' compendium rows for teaching-moment/mood-arc judgments, broader check_pedagogy/check_prompts coverage) that the current story.md template explicitly forbids; this run replaces it per the tightened contract.",
-    "check_prompts.md scoping: the current template (curriculum/evals/judges/story.md) never names check_prompts.md in its 'Specific judgments storytelling owns' completeness-contract paragraph, unlike check_pedagogy/check_strategy_tie_in which get an explicit narrow list. Cross-file confirmation (judges/prompt-behavior.md:174, judges/technical.md:40) shows check_prompts.md is primary-owned by the prompt-behavior and technical classes. Treated as narrow-scope (1 rule, §6) by analogy rather than a full 44-rule ledger, to avoid duplicating those classes' ownership. Flagging as a template gap worth a one-line addition next time story.md is touched."
+    "Whole-file content_sha changed since the last cached trace (78f438df9f0be18f, generated 2026-07-28) to the current f3129e8ab289e9ad — the file gained a third § Pre-reads item (da Costa essay, per the maintainer's 2026-07-30 note) after the cache was last generated, though git status shows no working-tree diff (the change landed via a prior commit after cache generation, not this session's edits). Trace regenerated in full (5 phases, was 4) rather than per-phase-patched, since I could not exactly reproduce the prior run's undocumented phase-boundary convention closely enough to trust a partial reuse; the new phase 5 covers 'Next' + 'Bring to Module 6' + 'Pre-reads before Module 6', previously folded only into the trace's 'close' object without its own phase entry.",
+    "Superseded a prior instance file at this path that included a check_prompts.md row and self-flagged that inclusion as a template-scope guess; the current story.md template (read this pass) does not name check_prompts.md anywhere in its ownership list, so this run drops that row rather than repeat the guess.",
+    "One non-blocking finding: check_lectures.md rule 5 (slide-size ceiling) — 'Run the fork from the original repo' now measures 278w against the 210w bound, live-verified via scripts/check-slide-size.js. Not blocking per this template's blocking-criteria list (slide-size isn't among the five named blocking judgments), logged as the run's one TODO."
   ]
 }

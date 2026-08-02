@@ -4,15 +4,15 @@
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "practitioner fluency — 'I know how to test, I know how to learn, I know how to encode.' Not confidence-as-performance; competence-as-posture. Mood bar 8+/10 per teaching beat. Watch-fors named in the module's own Meta block: compliance-feel, paperwork-feel, credibility-performance, trainer-monologue retrospective.",
-  "trace_status": "generated_first_time",
-  "path_note": "Dispatch instructions named the output path as curriculum/evals/instances/ae101--spot-gaps-build-the-loop.story.json (no '-module' suffix). That path already holds a valid, differently-scoped verdict for the EXERCISE file (curriculum/exercises/spot-gaps-build-the-loop.md, regenerated 2026-05-31) — this module file and that exercise share the terminal slug 'spot-gaps-build-the-loop' and collide under the bare naming pattern. scripts/audit-eval-coverage.js already resolves this exact collision by suffixing the module's instance as 'ae101--spot-gaps-build-the-loop-module' (see SURFACES.modules entry, audit-eval-coverage.js line ~160), matching five sibling class files already on disk (ae101--spot-gaps-build-the-loop-module.{writing,pedagogy,strategy,technical,behavior}.json). Writing this verdict to the bare-slug path would have overwritten the exercise's valid PASS verdict with this module's verdict under the exercise's own filename — silent data loss on the audit trail, and a metadata mismatch (the JSON's own \"file\" field would still name this module, orphaning the exercise's coverage row). Filed here instead, at the canonical '-module' path, replacing a stale 2026-05-15 instance that predates the 2026-07-03 close rework and 2026-07-05 arc-retrospective cut (that stale instance also violated the CURRENT judge template's completeness contract: duplicate check_strategy_tie_in rule_index 1 keys, invented 'story.md' compendium rows, and check_pedagogy rule 54 citation that has since moved to check_cross_module.md §6). The sim-cache persona trace has the matching '-module' suffix and matching rationale. Flagging this path deviation explicitly per content-rules.md's judgement-required-choice trigger.",
+  "trace_status": "regenerated",
+  "path_note": "Dispatch instructions named the output path as curriculum/evals/instances/ae101--spot-gaps-build-the-loop.story.json (no '-module' suffix). That bare-slug path collides with the EXERCISE file (curriculum/exercises/spot-gaps-build-the-loop.md), which already holds its own valid, differently-scoped story verdict there. scripts/audit-eval-coverage.js resolves this exact collision by suffixing the module's instance as 'ae101--spot-gaps-build-the-loop-module'; five sibling class files already on disk use the same '-module' suffix. Filed here at the canonical '-module' path to avoid overwriting the exercise's verdict under its own filename. The sim-cache persona trace uses the matching '-module' suffix.",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures are closers, not openers; demo/ceiling/permission-giving lectures can open.",
       "verdict": "PASS",
-      "evidence": "Three openers in `## Start here` (the-2-frontiers, story-of-module-6, quality-is-grounding) are each self-certified opener-shaped in their own Meta blocks: the-2-frontiers ('Role: opener. Recap + horizon. Does not teach a new term'), story-of-module-6 ('permission-giving, not credibility-performance... Goes first because permission works before the work, not after'), quality-is-grounding ('3–5 min stakes-setter... placed early... Sets the quality-arc stakes before the build move'; explicitly WHY-vs-WHAT split against its paired closer the-loop-has-a-name, which owns naming eval). Four closers in `## Human close` (composing-the-workflow, the-loop-has-a-name, the-map-filled-in, agents-that-build-agents) are each recognition-first against material the student just built: composing-the-workflow opens 'You have a kit now... look at what composition actually is, on the run you already sailed'; the-loop-has-a-name opens 'Look at what you just shipped'; the-map-filled-in is self-certified 'Consolidation and recognition, NOT new teaching (check_lectures §1)'; agents-that-build-agents opens 'The map you just drew ended on a dashed loop, yours to draw solid' — pure callback. No opener teaches a framework-with-reasons ahead of the exercise; no closer introduces unearned vocabulary.",
+      "evidence": "Three openers in `## Start here` (the-2-frontiers, story-of-module-6, quality-is-grounding) and four closers in `## Human close` (composing-the-workflow, the-loop-has-a-name, the-map-filled-in, agents-that-build-agents) are unchanged in placement by the 2026-08-01/02 re-scope (commits d0846ee, 50689ab). All seven lecture files carry current 2026-08-02 Quality stamps (story-of-module-6 is the exception, still dated 2026-07-26 — see check_strategy_tie_in §4 entry below) and grep confirms zero of the four closer lectures still reference the removed 'session-shaper' skill-authoring beat; agents-that-build-agents now runs its handoff-prompt exercise on the M3 skill plus the freshly-drawn stack-map rather than a nonexistent second skill, and the-loop-has-a-name earns its eval-naming beat from the M5 verifier plus the ranked check-primitives menu built in the exercise's new Phase 2. No opener teaches ahead of the exercise; no closer introduces unearned vocabulary.",
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +21,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "PASS",
-      "evidence": "M6's contracted mood is practitioner fluency (encode phase of test→learn→encode), not a contrast-mood module in the rule's own M5-style sense — M4/M5 already ran the contrast this module reads from. Total opener dosage before the exercise is ~12–16 min across three short lectures (2 min / 7–9 min / 3–5 min), none of which map frameworks to problems or explain tradeoffs-with-reasons ahead of the exercise; they arm (recap, permission, stakes) rather than teach ahead.",
+      "evidence": "Unchanged by the re-scope: total opener dosage before the exercise remains ~12–16 min across three short lectures (2 / 7–9 / 3–5 min), none of which map frameworks to problems or explain tradeoffs-with-reasons ahead of the exercise; they arm (recap, permission, stakes) rather than teach ahead. The exercise's Phase 2 got structurally lighter (stack-scan instead of skill-authoring), which if anything reduces any risk of the openers over-arming relative to what follows.",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,7 +30,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies — bridges/forward-refs/module numbering belong to the module file's Next/Bridge.",
       "verdict": "N/A",
-      "evidence": "Rule targets LECTURE-file bodies; module files are the rule's own designated home for sequencing ('lectures teach, module files sequence'). This module file doing cross-module sequencing (Start here → exercise → Human close → Next) is the rule working as designed, not a surface it evaluates pass/fail against. The linked lecture files were independently checked and each carries its own §3 disposition note confirming compliance (e.g. composing-the-workflow: '§3 disposition (no cross-module sequencing in body)... No M[0-9] tags in body').",
+      "evidence": "Rule targets LECTURE-file bodies; this module file doing cross-module sequencing (Start here → exercise → Human close → Next) is the rule working as designed. The linked lecture files were independently re-audited at 2026-08-02 (per their own Quality lines) and are out of this dispatch's compendium set for a body re-scan.",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,7 +39,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
-      "evidence": "Rule targets lecture-file slide headers specifically (the handbook-scanned-cold framing, the diagnose-and-resend density exemplar). This file's own `##` headers (Big Idea, Prework, What You'll Learn, Start here, Key Concepts, Human close, Next) are module-shell section headers, governed by check_slides.md — not in this dispatch's compendium set. Each linked lecture's own slide headers were independently squint-tested inside its own file.",
+      "evidence": "Rule targets lecture-file slide headers. This module file's own `##` headers (Big Idea, Prework, What You'll Learn, Start here, Key Concepts, Human close, Next) are module-shell section headers, governed by check_slides.md — not in this dispatch's compendium set.",
       "fix_hint": null,
       "blocking": false
     },
@@ -48,7 +48,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded (~210 readable words, ≤6 bullets), not just its header.",
       "verdict": "N/A",
-      "evidence": "Rule scopes explicitly to lecture files (and exercise slides, named as an extension); module-shell files are not named. This module's own sections are short (link lists + a handful of bullets per section); size discipline against the 210-word/6-bullet ceiling belongs to check_slides.md, out of this dispatch's scope.",
+      "evidence": "Rule scopes to lecture files and exercise slides; module-shell files are not named. Size discipline for this file's own sections belongs to check_slides.md, out of this dispatch's scope.",
       "fix_hint": null,
       "blocking": false
     },
@@ -57,7 +57,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "Confirmed via `node scripts/expand-md.js` on the raw file: zero `{{prompt:}}` markers, zero fenced `**Prompt**` blocks, zero body-prose forcing-function language. The module shell is pure framing/link/recap; every forcing function (diff-the-runs, cut-a-rule, author/critique/invoke the skill, the study/shapes/primitives scan, the handoff-prompt close) lives in the linked exercise and agents-that-build-agents' `{{prompt:agents-that-build-agents-handoff}}`, each audited at its own file.",
+      "evidence": "Raw file scanned: zero `{{prompt:}}` markers, zero fenced prompt blocks, zero body-prose forcing-function language in the module shell itself. Every forcing function (diff-the-runs, cut-a-rule, study/shapes/primitives scan, gap-routing, the handoff-prompt close) lives in the linked exercise (`{{prompt:spot-gaps-build-the-loop-1}}`, `-2`, `-study`, `-shapes`, `-primitives`) and `agents-that-build-agents`' own prompt block, each audited at its own file. Unchanged in kind by the re-scope — only the exercise's Phase 2 prompt roster shrank (skill-authoring prompts removed, scan prompts kept), which does not move where the forcing function lives.",
       "fix_hint": null,
       "blocking": true
     },
@@ -66,25 +66,25 @@
       "rule_index": 27,
       "rule_lead": "Body teaches the work; trainer manages the room outside text. No authored conversation cues.",
       "verdict": "PASS",
-      "evidence": "Full rendered body scanned (node scripts/render-md.js) for the hard-grep shapes ('compare with the person next to you', 'share with your neighbor', 'tell the room') — none present. The one candidate line, 'This slot is a human round: talk, compare, no prompts' (## Human close), names the SLOT'S NATURE (human-voiced vs. agent-mediated) without prescribing a partner, duration, or interpersonal script — a format statement, not an authored cue, and matches the strategy doc's own design intent that trainer-and-group choose the round's exact form.",
+      "evidence": "Full body scanned for the hard-grep shapes ('compare with the person next to you', 'share with your neighbor', 'tell the room') — none present, unchanged by the re-scope. The candidate line 'This slot is a human round: talk, compare, no prompts' (## Human close) names the slot's nature (human-voiced vs. agent-mediated) without prescribing a partner, duration, or interpersonal script.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 45,
-      "rule_lead": "Per-exercise leap test — 3 observable Monday-morning outcomes (story judge blocks ship on missing/unfalsifiable leap tests).",
+      "rule_lead": "Per-exercise leap test — 3 observable Monday-morning outcomes.",
       "verdict": "PASS",
-      "evidence": "Maintainer block's 'Leap test' section carries 4 bullets, each an observable artifact-plus-use per the arc-mood carve-out this rule itself grants M5/M6 ('names ARTIFACT student now has + uses, not the activity'): reads own Claude Code history + holds mermaid diagrams of recurring work; owns a second packaged skill at ~/.claude/skills/ shaped to one of three forms, invoked on a similar task; CLAUDE.local.md shows a rule deleted with the commit visible in git history; holds a standalone handoff prompt written by the agent from the shipped session-shaper. All four are falsifiable on a working engineer's own Monday.",
+      "evidence": "Maintainer block's 'Leap test' section now carries exactly 3 bullets (down from 4 pre-re-scope — the 'owns a second packaged skill' bullet was correctly removed since the exercise no longer ships one): reads own Claude Code history + holds mermaid diagrams of recurring work; CLAUDE.local.md shows a rule deleted with the commit visible in git history; holds a standalone handoff prompt written by the agent from the recurring-work shapes mapped in the exercise. All three are falsifiable on a working engineer's own Monday and match what the current exercise actually produces (verified against curriculum/exercises/spot-gaps-build-the-loop.md's own 'Leap test (Monday)' section — near-identical three verbs).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 47,
-      "rule_lead": "Per-phase failure mode + escape hatch for every forcing function (story judge blocks ship without both).",
+      "rule_lead": "Per-phase failure mode + escape hatch for every forcing function.",
       "verdict": "PASS",
-      "evidence": "Maintainer block's 'Failure modes + escape hatches per phase' section carries 6 rows matching the exercise's CURRENT (post-2026-07-05-cut) structure exactly: Phase 1 both-runs-collapse + addition-only-compounding (2 rows); Phase 2 skill-shape-mismatch + author-in-editor-not-conversation + rubber-stamp-self-audit + skill-as-documentation (4 rows). Cross-checked against the live exercise file's own prompt sequence (spot-gaps-build-the-loop-1/2/3/4/5 + study/shapes/primitives) — no forcing function is missing a row, no row describes a beat that was cut (the arc-retrospective's rows were fully removed per the maintainer's own 2026-07-05 log, not left dangling).",
+      "evidence": "Maintainer block's 'Failure modes + escape hatches per phase' section carries 4 rows matching the exercise's CURRENT post-re-scope structure: Phase 1 both-runs-collapse + addition-only-compounding (2 rows); Phase 2 stack-scan scan-sprawl (1 row); gap-routing home-dodge (1 row). Cross-checked against the exercise's own 'Failure modes + diagnostics' section (Phase 1 generalised diff, Phase 1 packaging-over-credit, Phase 2 wider-look sprawl, Gap-home dodge — 4 items) — no forcing function is missing a row, and the old skill-authoring rows (skill-shape mismatch, author-in-editor, rubber-stamp self-audit, skill-as-documentation) were fully removed, not left dangling, matching the exercise which no longer has those beats.",
       "fix_hint": null,
       "blocking": false
     },
@@ -93,8 +93,8 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named and honoured — mood-floor (8+/10, 7=facilitator-premium signature, <7=REVISE) on TEACHING beats.",
       "verdict": "PASS",
-      "evidence": "Contract explicitly named in the module's own Meta block ('Mood target: practitioner fluency... Not confidence-as-performance; competence-as-posture'). Fresh single-persona trace (curriculum/evals/sim-cache/ae101--spot-gaps-build-the-loop-module.persona.json, generated 2026-07-10, not reused): whole-module phase scores 8/10 (opener-through-exercise arc lands cleanly, no compliance-feel or credibility-performance found anywhere in the walk); close scores 7/10 — facilitator-premium signature, NOT below the 7 REVISE floor. The 7 is earned honestly, not rounded up: the human round's identity line ('Three runs of the loop on your own work. The kit, yours.') lands as genuine payoff, but four consecutive closer lectures then stack behind a round that was just framed as the mood's actual close, and the module's own Meta block already self-diagnoses this exact risk ('the close overshoots 1h45... trainer-monologue retrospective' is named as one of the mood-stealing failure shapes to watch). Per check_strategy_tie_in §1's mood-floor carve-out, this is a real, still-open pacing risk worth surfacing loudly (2026-07-03 eyeball flag: 'flagged for Antti to trim; no content changed here' — the 2026-07-05 arc-retrospective cut freed ~20 min of session-runtime budget elsewhere but did not reduce the four-lecture density itself), but it does not cross into REVISE territory and per check_pedagogy §27 the fix is trainer-side live pacing discretion, not new body prose.",
-      "fix_hint": "Non-blocking: consider whether the trainer-guide's M6 close section names the live pacing call explicitly (run all four lectures in-room vs. move a subset to async/self-paced reading) so the discretion check_pedagogy §27 already grants the trainer has a documented decision point, not just an open eyeball flag.",
+      "evidence": "Contract explicitly named in the module's own Meta block. Regenerated trace (curriculum/evals/sim-cache/ae101--spot-gaps-build-the-loop-module.persona.json, content_sha ec403254..., regenerated 2026-08-02 — the prior 2026-07-10 trace's SHA no longer matched after the re-scope commits): whole-module phase scores 8/10 (opener-through-exercise arc lands cleanly; the exercise's lighter Phase 2 reads as MORE epistemically honest — it no longer claims a shipped skill from one conversation, just a map plus a deferred handoff prompt); close scores 7/10, unchanged from the pre-re-scope trace — facilitator-premium signature, not below the REVISE floor. The 7 persists for the same structural reason as before (four consecutive closer lectures stack behind a human round just framed as the mood's actual close), now backed by an explicit accounted runtime line in Meta ('typical pacing ≈106 against the 105-min slot; floors 95, ceilings 117') that replaced the prior open-ended '2026-07-03 eyeball flag' — the risk is now measured and bounded rather than parked, but the underlying shape that produces the 7 is unchanged. Per §1's mood-floor carve-out this stays real and worth surfacing, not REVISE; per check_pedagogy §27 the fix is trainer-side live pacing discretion, not new body prose.",
+      "fix_hint": "Non-blocking: consider whether the trainer-guide's M6 close section names the live pacing call explicitly (run all four lectures in-room vs. move a subset to async/self-paced reading), now that Meta carries exact per-lecture minutes to make that call concrete rather than an open eyeball flag.",
       "blocking": true
     },
     {
@@ -102,7 +102,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood, not punitive — unease/uncertainty reads as not-knowing, never having-done-wrong.",
       "verdict": "PASS",
-      "evidence": "Key Concepts bullet 1: 'data the pattern didn't anticipate, not proof the pattern failed.' Second rescue blockquote in Start here: 'You lose a bit of value but you can still do this module's exercises. Despair not.' No shame register anywhere in the rendered body; gaps are consistently framed as evidence to route, not mistakes to confess.",
+      "evidence": "Key Concepts bullet 1: 'data the pattern didn't anticipate, not proof the pattern failed.' Second rescue blockquote in Start here: 'You lose a bit of value but you can still do this module's exercises. Despair not.' Unchanged by the re-scope; no shame register anywhere in the rendered body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -111,7 +111,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Big Idea names three positive disciplines (name the gap, route it to its home, author the skill) — no failure-word title. What You'll Learn bullets lead with discipline verbs (Diagnose, Route, Cut, Surface, Author, Map, Encode, Generalize); Key Concepts leads each bullet with the positive pattern before naming what it catches.",
+      "evidence": "Big Idea names positive disciplines (name the gap, route it to its home, map recurring work, generalize a handoff move) — no failure-word title. What You'll Learn bullets lead with discipline verbs (Diagnose, Route, Cut, Surface, Map, Encode, Generalize); the 'Author' verb was correctly dropped along with the skill-authoring beat it named.",
       "fix_hint": null,
       "blocking": false
     },
@@ -120,8 +120,8 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity — consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict.",
       "verdict": "PASS",
-      "evidence": "Big Idea fidelity: file's Big Idea ('name what the three-pattern didn't anticipate, pick where the gap belongs... author a session-shaper skill') matches the private strategy doc's M6-in-detail spirit ('Encoding is the third phase of test → learn → encode') and its M6 row in the six-core-modules table verbatim in substance. Identity beat: module's close line 'Three runs of the loop on your own work. The kit, yours.' near-verbatim matches the strategy doc's named identity beat ('You ran the loop on your own work three ways. The kit is yours.'). Module-to-module arc: `## Next` hands off to real-world practice without front-running M7's team-deliberation beat or M8's open-question close; agents-that-build-agents explicitly names the boundary ('Not the agent writing its own skills without you in the room... Claude proposes, you steer'). Mood doesn't resolve early: practitioner fluency lands at THIS module's close, not before — no M7/M8 register (awe, team-scale ownership, open-question directness) leaks in. FLAGGED, non-blocking: the private strategy doc (content-strategy-agentic-engineering-101.md § M6-in-detail) is stale against this file's shipped state — it still describes a 'Forward-looking beat — arc-named retrospective' exercise between the exercise and Debrief, and a single-shape Debrief round, both of which this file deliberately cut/restructured on 2026-07-03 and 2026-07-05 (commit 9c954ca, Antti-authorized: 'Cut two M6 beats... arc-retrospective exercise — didn't advance the learning; arc-recognition carried by the Human close + the-map-filled-in'). The strategy doc also doesn't name the four-lecture closer chain (composing-the-workflow, the-loop-has-a-name, the-map-filled-in, agents-that-build-agents) this file now carries. Per curriculum/CLAUDE.md's Alignment rule ('Strategy and module file change in the same edit. Drift = process bug'), this is exactly that bug — but verified before flagging as a module defect (per check_pedagogy §61a): the module file's own maintainer block documents the cut with full dated rationale and cross-file cleanup, so the correct fix is updating the private strategy doc to match the shipped, well-reasoned module, not regressing the module to match a stale doc.",
-      "fix_hint": "Update content-strategy-agentic-engineering-101.md § M6-in-detail: drop the 'Forward-looking beat — arc-named retrospective' paragraph (cut 2026-07-05, see this file's maintainer block), and update the Debrief/closer description to name the current four-lecture closer chain (composing-the-workflow → the-loop-has-a-name → the-map-filled-in → agents-that-build-agents) in place of the single-shape Debrief-round description.",
+      "evidence": "Big Idea fidelity: file's Big Idea now reads 'name what the three-pattern didn't anticipate and pick where each gap belongs... map the work you repeat across your stack, and leave with a handoff move' — internally consistent with the exercise it links (which delivers exactly a gap map, a rule cut, a stack-map, and a routed gap, no shipped skill) and with the four closer lectures' current content (verified stale-reference-free by grep). Identity beat: close line 'Two runs of the same task, read to the bone. The loop, yours' matches the module's own delivered scope (correctly scaled down from the pre-re-scope 'Three runs... the kit, yours' now that only two runs and no second skill feature). Module-to-module arc: `## Next` hands off without front-running later material; agents-that-build-agents still explicitly names the human-in-the-loop boundary. Mood doesn't resolve early: practitioner fluency lands at this module's close, not before. FLAGGED, non-blocking: two staleness items surfaced this pass, both outside this file's own edit surface — (1) story-of-module-6.md's own Quality line still reads 'compendium-audited 2026-07-26', though git history shows it WAS content-edited by the 50689ab re-scope commit ('story-of-module-6's pivot promises the map and the take-home prompt'); its stamp should be re-pinned to the current @366047e/@d1b6f2c generation, a technical/writing-class housekeeping item, not a story-class body defect. (2) The private strategy doc (content-strategy-agentic-engineering-101.md § M6-in-detail) was already flagged stale against the pre-re-scope module in the prior audit (2026-07-05 cut pass) and is now further out of date after the 2026-08-01 skill-authoring removal — per curriculum/CLAUDE.md's Alignment rule this drift should close, updating the strategy doc to match the shipped module (which carries full dated maintainer rationale for both re-scopes), not the reverse.",
+      "fix_hint": "Non-blocking: (a) re-pin story-of-module-6.md's Quality stamp to reflect its 50689ab content edit; (b) update content-strategy-agentic-engineering-101.md § M6-in-detail to drop the second-skill-authoring description and name the current stack-scan + handoff-prompt shape.",
       "blocking": true
     }
   ],
@@ -130,10 +130,10 @@
     "close_score": 7,
     "any_below_8": true,
     "stealing_the_mood": [
-      "Close (7/10): four consecutive closer lectures stack behind a human round already framed as the mood's actual close ('this slot is a human round: talk, compare, no prompts'), reading as a second, longer close riding behind the first. Individually well-built and correctly closer-placed (check_lectures §1 PASS); the risk is density/pacing, not content. The module's own Meta block self-diagnoses this exact risk and names it unresolved as of the 2026-07-03 eyeball flag. Facilitator-premium signature — the fix is a trainer-side live pacing call (check_pedagogy §27's own model), not new body text."
+      "Close (7/10): four consecutive closer lectures stack behind a human round already framed as the mood's actual close ('this slot is a human round: talk, compare, no prompts'), reading as a second, longer close riding behind the first. Unchanged by the 2026-08-01/02 re-scope. Individually well-built and correctly closer-placed (check_lectures §1 PASS); the risk is density/pacing, now measured via an explicit accounted runtime line in Meta rather than an open eyeball flag, but not eliminated by that accounting. Facilitator-premium signature — the fix is a trainer-side live pacing call (check_pedagogy §27's own model), not new body text."
     ]
   },
-  "teaching_moment_and_arc_notes": "Teaching moment lands (no check_strategy_tie_in rule_index per template — recorded here, not as a rules_evaluated row): the diagnose-then-encode moment is carried by the linked exercise, independently audited; this module shell's job is to set correct problem-posture entering it ('you walk in holding two runs of the same task') and correct recognition-posture leaving it (Key Concepts + identity line), and both land per the trace. Under-scaffolded phases: none — the two rescue blockquotes in Start here cover the M5-thin-or-missing structural risk with a scoped rescue path plus an accept-the-loss floor.",
+  "teaching_moment_and_arc_notes": "Teaching moment lands (no check_strategy_tie_in rule_index per template — recorded here, not as a rules_evaluated row): the diagnose-then-map moment is carried by the linked exercise (independently audited, current @366047e PASS across writing/story/technical/behavior/pedagogy), and this module shell's job — set correct problem-posture entering it, correct recognition-posture leaving it — still lands per the regenerated trace. Under-scaffolded phases: none — the two rescue blockquotes in Start here still cover the M5-thin-or-missing structural risk unchanged by the re-scope.",
   "blocking_findings_count": 0,
-  "todos_count": 2
+  "todos_count": 3
 }

@@ -3,8 +3,8 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "full_regen",
-  "generated_at": "2026-07-10T08:33:20.000Z",
+  "trace_status": "cached",
+  "generated_at": "2026-08-02T00:00:00.000Z",
   "prompts_evaluated": 3,
   "blocking_findings_count": 0,
   "todos_count": 2,
@@ -20,6 +20,12 @@
           "confidence": "low",
           "evidence": "Fence chains 6 sub-steps (read task.md, resolve branch from protected block, verify branch, find/confirm commit, spin worktree, copy files, report) with no in-fence 'No preamble' suppressor, but the body sentence right after the closing fence reads 'Claude will narrate before acting. It usually opens with a plan summary listing the six sub-steps, then runs them. Skim past the opening; look for the shell-command output confirming the worktree path and which files copied across.'",
           "fix_hint": "check_prompts.md rule 17 body-callout mitigation already satisfied (names the narration + gives a skim-past cue); no prompt edit needed. Belt-and-braces option only: add an in-fence 'No preamble.' as the fence's last line if the trainer wants zero narration rather than skim-past."
+        },
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "med",
+          "evidence": "The fence's confirmation ask is 'Tell me the worktree path and confirm which files copied across' — worded to confirm positive copies, not to name what was checked-and-absent versus checked-and-failed. `<repo-name>` is Claude-inferred and feeds the cp source paths, and the copy step only ever checks two hardcoded paths (root `CLAUDE.local.md`, root `observations/`) — a personal-rules file living elsewhere is structurally outside what Claude was asked to look for, so 'confirm which files copied' cannot surface its absence.",
+          "fix_hint": "Fence-level fix (not applied — read-only judge): after the two `cp` lines, add 'If either source path does not exist, say so explicitly and name the exact path you checked — do not silently skip.' The body's existing post-fence paragraph ('Check the copy landed before you go on...') already names the right failure and recovery move but sits one section earlier than the fence, separated by a heading and a Session widget — moving it to directly after the narration sentence would tighten the adjacency the carve-out expects."
         }
       ]
     },

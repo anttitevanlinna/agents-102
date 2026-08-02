@@ -19,7 +19,7 @@ After this module, you will be able to:
 
 ## Start here
 
-You sent off an un-packaged run and read the pre-read. You walk in with the artefact in front of you and the three failure-mode lenses in hand. The in-room lecture below opens the session.
+You sent off an un-packaged run and read the pre-read, *Reading the return*. You walk in with the artefact in front of you and the three failure-mode lenses in hand. The in-room lecture below opens the session.
 
 > **Long runs, short reads.** The M1 countermove rides along: never let the agent say everything. Ranked findings first, detail on request, the full record on disk. Chat is for what changed and what needs you.
 

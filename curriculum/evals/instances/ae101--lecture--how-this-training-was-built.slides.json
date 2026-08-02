@@ -1,7 +1,7 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/how-this-training-was-built.md",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
     {"index": 0, "heading": "How this training was built (H1/lede)", "lines": "1-6"},
@@ -18,7 +18,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "RE-JUDGED after the line-13 edit. chunk 1 line 13's 'passage' is a bare noun ('the wrong passage') with no antecedent to resolve — unlike the retired 'surface', it stakes no claim on prior context; a reader parses it as 'a stretch of writing' on the spot. 'went off' is a verb, not a referent, so rule 1 (which governs pronouns/demonstratives/terms needing an antecedent) doesn't reach it at all. chunk 5's Klaassen sentence ('Kieran Klaassen at Every calls it compound engineering') is fully self-contained within its own chunk (name + affiliation + claim in one clause); 'that' in 'same shape, more names' anchors to 'his loop' one clause prior, in-chunk. No pronoun/demonstrative anywhere in the body fails to resolve under the sequential read.",
+      "evidence": "Full re-walk, every pronoun/demonstrative/definite-NP in all six chunks, not just the previously-repaired sentence. Two considered-and-cleared items worth recording: (1) chunk 5 line 43 'That is the orient, fix, compound, close loop cut at more joints' — this exact phrase is never named anywhere IN THIS FILE before this point, which would read as a 'never named' violation under a file-only read; it resolves only via the enclosing module's signposting carve-out (§1: 'vocabulary the enclosing module file's signposting introduced... counts as prior context') — getting-going.md's own Big Idea ('Orient, fix tests-first... retro') and What You'll Learn ('Run an orient → fix → compound → close loop end-to-end') name it first, and this lecture is the module's closing include. Carve-out applies cleanly. (2) chunk 4 line 35 'never the thread' — a metaphor with no prior occurrence of 'thread' anywhere earlier in the file; checked against the 'vague with full history' bar and found it has exactly one inferable referent (via the immediately following clause 'Take the understanding forward'), not multiple competing candidates like the rule's own bad examples ('a system like this', 'what you stored') — passes, but it is genuinely the closest call in the file and worth a maintainer glance. All other referents (the gap/the training/the rules/the strategy doc/the difference is reach/that file/the neighbouring files/the rule sits in ./CLAUDE.local.md/the retro you just ran/his loop) resolve either in-chunk or against chunk 0 / prior chunks per the sequential-deck-read carve-out. No forward pointer to a later slide anywhere.",
       "fix_hint": null,
       "blocking": true
     },
@@ -28,7 +28,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Unaffected by the edits under review. chunk 5's 'The story of building this training is the shape you just ran on your own repo' is a closer summing its own deck, not a positional pointer at another file.",
+      "evidence": "No chunk points at another file by position. chunk 5's 'The story of building this training is the shape you just ran on your own repo' is a closer summing its own deck (explicitly allowed). Klaassen is introduced fresh with full name + affiliation + claim in one clause ('Kieran Klaassen at Every calls it compound engineering') rather than assumed known from compound-and-close.md — self-contained, passes even though the maintainer block confirms he is also named in that sibling file (deliberate reinforcement, not a callback dependency).",
       "fix_hint": null,
       "blocking": true
     },
@@ -38,7 +38,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Verified against the CURRENT M1 include order in getting-going.md (lines 29-37): exercises/orient-and-introspect.md, exercises/fix-tests-first.md, exercises/compound-and-close.md, then this lecture, in that order. chunk 5's backward beats ('the retro you just ran' = compound-and-close's retro; 'you let Claude read your repo, saw the wrongness, named it, corrected it' = the orient-and-introspect/fix-tests-first arc) resolve against exercises that currently exist and currently precede this lecture in M1. No dead-beat reference.",
+      "evidence": "Verified against the CURRENT M1 include order in getting-going.md (lines 25-37): painting-the-picture-with-the-llm, the-wizard-move, orient-and-introspect, fix-tests-first, compound-and-close, the-machine-you-just-met, then this lecture. chunk 5's backward beats ('the retro you just ran' = compound-and-close's compound retro; 'you let Claude read your repo, saw the wrongness, named it, corrected it' = the orient-and-introspect / fix-tests-first arc; './CLAUDE.local.md, which is yours' = compound-and-close's produced artefact, confirmed against the module's own Key Concepts and Artefact-contracts table) all resolve against exercises that currently exist and currently precede this lecture. No dead-beat reference.",
       "fix_hint": null,
       "blocking": true
     },
@@ -68,7 +68,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 1 header 'Wrong is how steering gets in' still holds against the reworded line 13 ('Some went off in the wrong passage' reads as a rule misfiring in the wrong place — still a steering-correction beat). chunk 5 header 'You just ran the compound loop' holds against 'same shape, more names' (one loop, two labelings — the header's singular claim, stated more precisely than the retired wording). All other headers match their chunk content unaffected by either edit.",
+      "evidence": "All five `##` headers checked against their own chunk's content: 'Wrong is how steering gets in' (chunk 1 — wrongness turns into rules), 'The rules started doing the work' (chunk 2 — rules become load-bearing, session-inherited), 'Then the agents started checking the agents' (chunk 3 — subagents auditing files, four agents auditing while a fifth checks neighbours), 'Built to forgive' (chunk 4 — missing artefacts cost a file, never the understanding), 'You just ran the compound loop' (chunk 5 — direct address confirming the reader just ran it). None contradicted by its chunk's content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -78,18 +78,18 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Re-checked all sub-items across all six chunks. Line 13's triple ('Some were overscoped. Some went off in the wrong passage. Some held for one kind of content and broke for another') keeps three distinct concrete failure modes (breadth / placement / content-type) — third leg still carries new content, passes the third-leg test; the word swap ('fired'→'went off') didn't change the category of the middle leg. Line 43's 'same shape, more names' is a flat equivalence claim, not a stated-then-undercut number: nothing is retracted, no hedge word appears, no specific count is asserted and walked back — it reads as a structural claim (eight named stages are a finer cut of the same four-stage shape), independent of the maintainer's decision to keep the printed sequence. No 'Not X. Not Y. Z.' construction anywhere (line 9's 'Not wrong the way a bad draft is wrong... Wrong the way any first version is wrong...' is a single negation-then-assertion contrast, not the banned two-negations-plus-Z shape). No self-grading superlatives. No abstraction-noun stacks. No verb triplets with an empty leg. Line 39's paired fragments ('Over ninety minutes, not a year. On a trivial bug, not a whole training.') are pairs, which the rule explicitly allows ('cut to a pair').",
+      "evidence": "Re-checked every sub-item across all six chunks. 'Not X. Not Y. Z.' construction: only one 'Not'-led sentence exists in the whole body (line 9, 'Not wrong the way a bad draft is wrong... Wrong the way any first version is wrong...') — a single negation-then-assertion contrast, not the banned two-negations-plus-Z shape (grepped: zero other 'Not ' sentence-starts in the file). Considered and rejected as a near-miss: chunk 5 line 39 'Over ninety minutes, not a year. On a trivial bug, not a whole training.' inverts the banned order (declarative first, then two P-not-Q pairs) and each fragment is a pair, which the rule explicitly allows ('cut to a pair'); it also does the closer's job of scaling the whole-training story down to the session just run. Anaphora/epistrophe triples: chunk 3's 'one person → a subagent → four agents... while a fifth' escalation carries new concrete content on every leg (solo fix, single-file audit, parallel four-plus-one) — passes the third-leg test. Self-grading superlatives: none ('the valuable part' in chunk 1 grades the narrative gap, not the training's own worth to the reader — not a value-prop leak). Number + retraction: none — 'ninety minutes' / 'a year' are a comparison of two distinct real durations, not a hedge-then-walk-back of one number. Abstraction-noun stacks: chunk 3's 'work-per-session' / 'care-per-line' are unpacked with a concrete illustration in the same breath ('a week got made in an afternoon'), not left as vague nominalizations. Verb triplets with an empty leg: none present.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
-      "verdict": "REVISE",
-      "chunks_flagged": [1],
-      "evidence": "The targeted fix at line 13 holds, checked on the rule's own intent rather than assumed clean because the named term is gone. 'went off' is not in rule 8's list and is not maintainer dialect under any reading: it never appears anywhere in check_*.md or content-rules.md as a term of art (grepped, zero hits), and it resolves via the ordinary English idiom for something triggering/misapplying (an alarm going off, a trap going off) — no knowledge of this repo's 'fires' vocabulary is needed to parse 'went off' as 'activated/applied.' 'passage' is even more clearly plain: this repo's own eval-judge files use 'passage' dozens of times in exactly the dictionary sense ('quote passages', 'per-passage verdicts') — it is not part of any internal taxonomy (unlike 'surface', which content-rules.md itself uses as a jargon organizing noun) and makes no claim on insider knowledge. Both hold as a clean fix. BUT re-running the rule across the whole chunk (not just the edited sentence) surfaces an UNFLAGGED violation the two prior fix cycles missed: chunk 1, line 11, one of the three quoted rule-exhibits reads *\"Forcing functions stay, scripted reactions go.\"* — 'forcing function' is named verbatim in rule 8's own illustrative list, immediately beside 'firing' and 'compendium' (the two terms already fixed in this file). Grepped confirmation that this is genuine maintainer dialect, not a term with independent plain-English standing in this repo: every other occurrence of 'forcing function' across curriculum/trainings and curriculum/exercises sits inside maintainer blocks, watch-for tables, or trainer-facing 'per check_pedagogy.md rule 47' rows — never once earned or used in student-facing body prose anywhere in AE101. The maintainer block's own 'Engineer-audience' carve-out on this file names exactly three technical terms cleared for this register — subagent, compendium, plan mode — and pointedly does not include forcing function, which reads as a considered exclusion, not an oversight. Same failure mode the 'fired' fix-cycle named in its own commit message ('I reasoned about what the rule probably covered instead of reading its own examples') — here applied to a location neither fix cycle checked, because both were scoped to the single sentence under repair rather than the whole chunk. The backing block's own claim `corrections-became-rules` treats this quote as a real, verbatim, must-stay-true rule-text exhibit (compendium-rule-quotes source: 'These are quoted as true, so they must stay true'), and its own stated fallback is 'any three real rules spanning pedagogy, formatting and research — the spread is what the beat needs, not these particular three' — so swapping which pedagogy rule gets quoted is a maintainer-sanctioned move, not an invention.",
-      "fix_hint": "Swap the 'Forcing functions stay, scripted reactions go' quote for a different real rule from check_pedagogy.md/check_prompts.md/check_research_claims.md that doesn't carry a banned dialect term — the backing block's own fallback already authorizes this substitution; do not paraphrase 'forcing function' in place, since the backing block requires the quote stay verbatim-true to a real rule.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Full dialect inventory across all six chunks against §8's list (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections-as-proper-noun) plus a broader sweep for anything reading as curriculum-authoring-internal: 'surface', 'firing', 'compendium', 'beat', 'mood', and 'Connections'-as-proper-noun are all absent from the body (confirmed by direct read of all six chunks) — the earlier 'compendium'→'checklist' and 'fired'→'went off' swaps hold clean, and 'went off'/'passage' (line 13) are ordinary English with no repo-internal taxonomy standing (grepped: 'passage' is used in its dictionary sense dozens of times across this repo's own eval-judge files). The one remaining list-term hit is chunk 1 line 11, one of three quoted rule-exhibits: *\"Forcing functions stay, scripted reactions go.\"* Evaluated against the amended carve-out and ACCEPTED, not deferred to the maintainer note — see accompanying report for full reasoning; short form: the sentence frame ('Each thing pointed at turned into a rule' + three verbatim quotes) exhibits real compendium rules as specimens of what a correction became, not narration reaching for 'forcing function' as vocabulary to explain a concept, and the amended §8 text uses this file's own sentence shape as its illustrative example of the carve-out. Independently, the audience-register clause clears the term for AE101 engineer ICs regardless. Checked all three quotes for other list-term hits (none) and confirmed no other body sentence uses 'forcing function' outside this one attested, verbatim, backing-block-locked quote. Terms considered and cleared as NOT internal dialect: 'subagent', 'plan mode' (Claude Code product vocabulary, not curriculum-authoring jargon, explicitly cleared for this file's engineer register in the maintainer block), 'load-bearing'/'compound'/'compound engineering' (externally-attested Klaassen vocabulary, explained in-line, the lecture's taught subject matter), 'auditing'/'checklist'/'cohort'/'retro'/'workbook'/'module' (plain English or legitimate navigational/structural terms the student already holds).",
+      "fix_hint": null,
       "blocking": true
     },
     {
@@ -98,7 +98,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Unaffected by the edits under review. Exactly two bold spans in the whole body: '**Understanding is the artifact.**' (chunk 4, line 33) and '**compound engineering**' (chunk 5, line 43) — both coined-term handles, no whole-sentence bolding, no bolded bullet-leads (this file is prose paragraphs, not bulleted).",
+      "evidence": "Exactly two bold spans in the whole body, grep-confirmed: '**Understanding is the artifact.**' (chunk 4, line 33) and '**compound engineering**' (chunk 5, line 43) — both coined-term/thesis handles, each ≤5 words, one per chunk (within the ≤1-per-slide budget), neither is a bulleted lead sentence (this file is prose paragraphs throughout, per the standing-constraint carve-out for narrative slides). No other bold anywhere; the three italicized rule-quotes in chunk 1 are single-asterisk italics, not bold.",
       "fix_hint": null,
       "blocking": false
     },
@@ -108,7 +108,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Verified against getting-going.md (M1 module file): this lecture is listed in the module's include order (line 37, 'How this training was built') alongside the M1 exercises, reaching the composed Slides deck via the module's phase wrapper same as any other M1 lecture.",
+      "evidence": "Verified against getting-going.md (M1 module file): this lecture is listed in the module's include order (line 37, 'How this training was built') in the same form as every other M1 lecture/exercise link, reaching the composed Slides deck via the module's phase wrapper.",
       "fix_hint": null,
       "blocking": false
     },
@@ -123,6 +123,6 @@
       "blocking": false
     }
   ],
-  "blocking_findings_count": 1,
+  "blocking_findings_count": 0,
   "todos_count": 0
 }

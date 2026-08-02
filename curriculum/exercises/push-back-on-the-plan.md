@@ -218,7 +218,7 @@ Flagged
 - **P5:** stay silent until Claude names the shape. Then the trainer says the label — "plan-mode approval inflation" — one line. The corollary (*find is easier than judge*) is in the exercise body and lands the non-obvious beat.
 
 **Arc:**
-- Picks up from: M1's Plan → Work → Review → Compound loop, run on a 60-min trivial bug. M2 runs the same loop at deeper Plan scope.
+- Picks up from: M1's compound loop, run on a 60-min trivial bug. M2 runs the same loop at deeper plan scope. **Do not restate the stage list here** — Klaassen expanded it on 2026-05-29 and a copy in a maintainer note is a second copy that drifts; `compound-and-close` prints the current sequence and carries the stamp.
 - Hands off to: M2 Debrief (Compound step) — one named pattern about what a good plan looks like for this student on this repo goes into personal `CLAUDE.local.md` (team-worthy flag for separate PR if applicable).
 - M3 picks up: the judge-building move — the push-backs the student sent at P3 are the raw material for M3's first judge ("did the fix really land?"). The push-back discipline becomes the gate spec.
 

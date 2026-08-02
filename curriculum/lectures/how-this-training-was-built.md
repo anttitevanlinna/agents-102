@@ -10,7 +10,7 @@ The thirty bulletpoints became module prototypes, and all of them were wrong. No
 
 Each wrongness was specific and namable. A phrase that smuggled consultancy-voice into an engineering lecture. An exercise that asked a real engineer to do something insulting. A module that wanted to feel tidy where the feeling should have been unease. Each thing pointed at turned into a rule. *"Forcing functions stay, scripted reactions go."* *"Every prompt block gets a one-sentence lead-in with a command verb."* *"Every claim about Claude Code gets re-checked before each cohort."*
 
-The rules were not right the first time either. Some were overscoped. Some fired on the wrong surface. Some held for one kind of content and broke for another. They got sharpened the same way the drafts did: used, corrected, rewritten.
+The rules were not right the first time either. Some were overscoped. Some fired on the wrong passage. Some held for one kind of content and broke for another. They got sharpened the same way the drafts did: used, corrected, rewritten.
 
 ## The rules started doing the work
 
@@ -52,15 +52,15 @@ The loop is the shape. The bug today was the excuse.
 - **No cross-module sequencing** (`check_lectures.md §3`). The module file's `## Next` carries the bridge. The two arc-range lines that stay ("maps and skills and notes further in", "By the end of the training…") ride the §3 arc-lecture carve-out: the subject is the training's own arc.
 - **Narrative slides are prose paragraphs, not bolded-claim bullets** (`theory-plan.md § Slide format — emphasis budget`, `check_slides.md §9`). One bold survives — **compound engineering**, the coined-term handle at the naming beat — plus the **Understanding is the artifact** handle on *Built to forgive*. That is the whole budget.
 - **The opening paragraph is a setup lede**, allowed here under the closer carve-out.
-- **Klaassen is named once** on the student surface. The cap is deliberate.
+- **Klaassen is named twice on the student surface across M1, and that is deliberate reinforcement, not a cap breach (maintainer call 2026-08-02).** `compound-and-close` credits him where his loop is printed; this closer runs the naming beat. The compound loop is the one thing M1 exists to install, so a second encounter twenty minutes later is spaced repetition — how it gets memorised — and the two placements do different jobs. `check_writing.md` #11 carries the matching carve-out. **Two things will re-flag this and both are wrong:** a judge reading either file alone cannot see the pair, and a persona sim scores the closer's beat as a spent reveal, which measures novelty where the design wants recall. Do not "fix" the closer by demoting it to a callback, and do not strip the name from either file. A THIRD student-side mention in M1 is still a breach.
 - **The load-bearing/leaky pairing is reconciled with M6's memo** ("a rule in context is not a rule in the output"). Both halves must stay: a loaded rule is load-bearing AND leaks, and the checking exists because of the leak. The M6 memo line is no-polish — do not edit it to match.
 - **File is size-gate exempt** (story lecture).
 - **Plan mode is named here, never explained.** M2 owns it. A gloss on this surface teaches ahead of the module and is the wrong place to get precise about what plan mode blocks (edits, not execution).
 - **Subagent gets the same treatment: named, never explained.** M3 owns the first subagent; the build-story names the machinery without glossing it. Do not re-add a definitional parenthetical.
 - **`Built to forgive` promises artifacts are rebuildable.** The promise holds only while every cross-module edge onto an M1–M3 artifact stays `conditional:`. A prompt that hard-requires an artifact unconditionally breaks this slide — check here first. Re-check command in the backing block under `prompt-registry-conditional-edges`.
 
-**Quality:** compendium-audited 2026-08-02 (writing@eaae8cd technical@366047e behavior@366047e) — SHAs stale against current body; re-audit before ship.
-- judges @366047e: writing PASS, story REVISE (2/1-see-instances/ae101--lecture--how-this-training-was-built.story.json), technical PASS, behavior PASS, pedagogy REVISE (1/0-see-instances/ae101--lecture--how-this-training-was-built.pedagogy.json), strategy REVISE (1/0 see instances/ae101--lecture--how-this-training-was-built.strategy.json), slides REVISE (1/1-see-instances/ae101--lecture--how-this-training-was-built.slides.json)
+**Quality:** compendium-audited 2026-08-02 (writing@eaae8cd story@ce6d6ae technical@366047e behavior@366047e pedagogy@c9f9c88) — SHAs stale against current body; re-audit before ship.
+- judges @ce6d6ae: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy REVISE (1/0 see instances/ae101--lecture--how-this-training-was-built.strategy.json), slides REVISE (1/1-see-instances/ae101--lecture--how-this-training-was-built.slides.json)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Understand (the compound loop as a pattern, before running it).

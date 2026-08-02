@@ -67,7 +67,7 @@ The worktree is forked and ready. You open the session in it at the first exerci
 - You pick the verifier shape against the failure shape. Same eval, different mechanism
 - Same task run twice with packaging as the only changed variable IS the lesson
 - No benchmark told you what went wrong; the artefact did. The artefact rules, self-reports don't.
-- Your verifier is your first eval: the automated check that says an agent-produced thing meets your bar<!--flag:module:spot-gaps-build-the-loop-->. The team kit's evals grow from here<!--/flag:module:spot-gaps-build-the-loop-->
+- Your verifier is your first eval: the automated check that says an agent-produced thing meets your bar<!--flag:module:spot-gaps-build-the-loop-->. Module 6 maps the eval shapes from here<!--/flag:module:spot-gaps-build-the-loop-->
 
 ## Re-send the same task, packaged
 
@@ -121,7 +121,7 @@ The map's near half is where a single loop runs and compounds. The far half is w
 <!--/flag:no-module:spot-gaps-build-the-loop--><!--flag:module:spot-gaps-build-the-loop-->
 ## Next
 
-Module 6 reads the packaged run. Subtler misses, subtler drift. Your verifier turns out to be one of three eval shapes, and the team kit takes its first inherited skill. The question changes scale too: Module 5 asked *did my run pass?* Module 6 starts asking *do all our runs pass, and who reviewed what?*
+Module 6 reads the packaged run. Subtler misses, subtler drift. Your verifier turns out to be one of three eval shapes, and the map widens from one task to the work you repeat across your stack. The question changes scale too: Module 5 asked *did my run pass?* Module 6 starts asking *do all our runs pass, and who reviewed what?*
 
 ## Bring to Module 6
 
@@ -201,9 +201,9 @@ Optional. Skipping does not break Module 6. All three fit the Module 5 to Module
 | M5 worktree branch + SHA (packaged-run starting state) | `m5/<task-slug>` branch in worktree at `../<repo>-m5`, forked from M4's `m4/<task-slug>` SHA | Set up the Module 5 worktree prompt | M5 packaged re-send (runs in worktree); M6 diff (compares M5 packaged-run output to M4 un-packaged-run output) |
 | Reference artefact | `reference.md` at worktree root (or location named in Phase 4 prompt) | Phase 4 (assemble-reference-and-plan) | M5 re-send prompt — Claude reads the reference at the start of the packaged run; M6 diff (does the reference scope still match what shipped?) |
 | Plan.md | `plan.md` at worktree root (or location named in Phase 4 prompt) | Phase 4 | M5 re-send (Claude re-reads plan.md when it drifts); M6 diff |
-| Verifier | path named in Phase 3's build prompt (typically `verifier.sh`, `evals/judge.md`, or a stop-hook config) | Phase 3 (build-verifier) | M5 re-send (verifier fires per plan.md cadence during the packaged run); M6 second-skill authoring reads the verifier as a precedent for the encode loop |
-| Run notes from packaged re-send | `RUN-NOTES.md` at worktree root | Re-send prompt — Claude writes in-flight when stuck | M6 diff (subtler-misses pattern); M6 second-skill authoring (gap-finder shape often emerges from notes) |
-| Personal rules carried into M5 worktree | `./CLAUDE.local.md` in worktree (copied at fork, independent from original after) | Worktree-setup prompt (`ae101-m5-worktree-setup`) — no M5 sharpening by design; the re-send + the M4↔M5 contrast IS M5's compound move | M6 Phase 1 reads them as part of the system that produced both runs; M6 Phase 2 cuts one stale rule from this copy; eventual decision post-M6 about merging back to original repo |
+| Verifier | path named in Phase 3's build prompt (typically `verifier.sh`, `evals/judge.md`, or a stop-hook config) | Phase 3 (build-verifier) | M5 re-send (verifier fires per plan.md cadence during the packaged run); M6 gap-routing reads the verifier as the sharper-verifier home's precedent |
+| Run notes from packaged re-send | `RUN-NOTES.md` at worktree root | Re-send prompt — Claude writes in-flight when stuck | M6 diff (subtler-misses pattern); M6 gap-routing (the dominant gap's home often surfaces in the notes) |
+| Personal rules carried into M5 worktree | `./CLAUDE.local.md` in worktree (copied at fork, independent from original after) | Worktree-setup prompt (`ae101-m5-worktree-setup`) — no M5 sharpening by design; the re-send + the M4↔M5 contrast IS M5's compound move | M6 Phase 1 reads them as part of the system that produced both runs and cuts one stale rule from this copy; eventual decision post-M6 about merging back to original repo |
 | Observations carried into M5 worktree | `./observations/` in worktree (gitignored, copied at fork alongside `CLAUDE.local.md`, independent from original after) | Worktree-setup prompt (`ae101-m5-worktree-setup`) copies it in at fork — M4's `walk-and-send-off` is the real producer; M5 adds none by design | M6 Phase 1 reads it as part of the system that produced both runs; eventual decision post-M6 about merging back to original repo |
 | M5 session transcript | `~/.claude/projects/<project-folder>/<session-id>.jsonl` | Claude Code runtime, persisted automatically | M6 opening session reads M5 transcript directly to ground the read of the packaged run |
 
@@ -230,7 +230,7 @@ Optional. Skipping does not break Module 6. All three fit the Module 5 to Module
 
 **Frameworks riffed on (attributed in lecture):**
 - **Ronacher's three-pattern** — Armin Ronacher. Earns its name in the closing lecture, not before.
-- **Cherny's three stop-hook shapes** — Boris Cherny. Phase 3 names the menu; closing lecture confirms attribution. Hook system reference (event names, config shape, when-to-reach-for-hooks): `claude-code-for-engineers.md` § 13.
+- **Cherny's three stop-hook shapes** — Boris Cherny. Phase 3 names the menu; attribution lives in M6's module-file Frameworks section (`the-loop-has-a-name.md` body never names Cherny). Hook system reference (event names, config shape, when-to-reach-for-hooks): `claude-code-for-engineers.md` § 13.
 - **Intercom Tier 1/2/3** — Darragh Curran. Closing lecture only; the org-scale anchor.
 - **Compound engineering** — Kieran Klaassen. Debrief self-compound, fifth rep for the student.
 - **Hook-vs-prompt partition (must vs should)** — convergent practitioner pattern; named in the closing lecture's *"Hooks always fire"* section.

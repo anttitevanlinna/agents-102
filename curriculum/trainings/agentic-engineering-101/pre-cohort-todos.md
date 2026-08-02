@@ -41,10 +41,7 @@ Sim sweeps and platform-capability checks are not tracked here. The `curriculum-
 
 ## Open from the full-corpus re-eval (verdict data: `curriculum/evals/reeval-latest.json`)
 
-- **M5→M6 seam carries a broken promise (neighbour-alignment BLOCKER + 2 WARNs, same seam).** M5 `## Next` promises *"the team kit takes its first inherited skill"* at M6; the re-scoped M6 ships a handoff prompt, no build. Same fix pass: M5's artefact-contract rows still name "M6 second-skill authoring" as consumer, and an M5 Key Concepts bullet claims *"the team kit's evals grow from here."* Body edits are card-gated.
 - **Pre-read wiring (2026-07-30) owes its ripple, decision needed first.** cross_module flags 3 blocking missing-echoes (Horthy, Willison-loops, da Costa pre-reads added at module ends; the next module's Prework never mentions them) and the strategy judge holds the M4 Willison pre-read front-runs M5's three-pattern (the strategy doc's pre-read set doesn't sanction it). Decide: sanction the four-read set in the strategy doc (then wire the echoes) or move the M4 read to M5's set.
-- **Two confirmed body findings in `run-the-first-experiment`**: §16 count-script (*"past ten"* interventions, unfenced) and a stale four-step compound-loop count the strategy doc retired (doc prints the sequence, never a count). Card-gated.
-- **Confirmed §27 room-share cue in the M6 module body** (*"talk, compare"*, line 50) + §64 restate→point on its Plug-points skill-install bullet (maintainer-side, direct). cross_module also flags `learn-from-the-test`'s artefact table naming the dead M6 skill-authoring phase as consumer (maintainer rows, direct).
 - **Classes invalidated by the 2026-08-02 fix pass and co-edits need re-judge**, `node curriculum/evals/scripts/scan-stale-classes.js --files <all AE101 surfaces>` derives the exact list; stamps for them stay at their pre-fix state until judged.
 
 ---

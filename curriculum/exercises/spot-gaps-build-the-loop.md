@@ -158,7 +158,7 @@ OODA
 
 **Plug points:**
 - Student's M4 un-packaged artefact + M5 packaged re-run artefact (Phase 1 source material; both already in the repo + session transcripts).
-- Repo's skill home convention if any (personal skills default to `~/.claude/skills/<name>/` regardless — auto-discovered; team kit home is a separate PR conversation).
+- Repo's skill home convention if any (install paths + team-kit route → `training-architecture.md` § Skills).
 - Sponsor-stated or team-stated code-review conventions (feeds Phase 2 judge's quality bar, if the shape picked is LLM-judge).
 
 **Decision points (pacing):**

@@ -87,7 +87,7 @@ The laptop stays awake and plugged in while it runs (power settings → prevent 
 
 You'll run more work async from here on.
 
-Nudge by hand while you're watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is the right dose. Past ten and you've become the agent; call it and read what's there.
+Nudge by hand while you're watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is the right dose. Past ten or so, you've become the agent; call it and read what's there.
 
 If Claude stalls and you want to see whether it picks itself back up, this nudge is phrased as encouragement and lands as a taunt:
 
@@ -147,6 +147,8 @@ Optional. They sit in the gap while your un-packaged run is still going. All fou
 - **Send-off anxiety** — student hesitates at the final prompt (*"what if it runs forever / breaks things / gets nowhere?"*). Trainer push: *"stop it when you've seen enough. Traces are data. You don't owe the experiment a completed artifact — you owe it a result you can read."*
 - **Business-rules skipped** — student has no clear business-rules layer and moves on without naming it. Trainer push: *"the gap IS the finding. Write one line in memory naming what's missing."*
 
+**The nudge-count ceiling stays in body as a suggestion (§16 boundary, maintainer call).** *"Past ten or so"* is pacing calibration for the student's first async run, not a count-script — the suggestion register (*or so*) is the compliance, the number is the value. Do not strip the ten or re-flag it against §16.
+
 **Watch-fors (cross-phase):**
 - Task sprawl — student brings the whole epic at Connections. Cap during pick; redirect to a sliceable sub-piece that still needs the three load-bearing properties (sustained coherence, requirement-weaving, multi-file reasoning).
 - Audit busywork — Claude returns 15 items; student drowns. The prompt asks for top 5; enforce.
@@ -191,7 +193,7 @@ Optional. They sit in the gap while your un-packaged run is still going. All fou
 | Send-off — *"stop the run when you've seen enough; the trace is the result"* | Send-off anxiety — student hesitates at the final prompt or feels they owe the experiment a completed artifact | Trainer push: *"stop it when you've seen enough. Traces are data. You don't owe the experiment a completed artifact — you owe it a result you can read."* |
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
-- `[checked:2026-07-02 result:CAVEAT due:2026-08-09]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen Definitive Guide (Feb 9 2026); core "each unit makes the next easier" thesis verified, explicit plan/work/review/compound naming is convergent-across-appearances not verbatim-on-page. fallback: phrase as "the four-step loop that runs through his work"; treat any Every.to outcome metric as vendor-self-reported.
+- `[checked:2026-07-02 result:CAVEAT due:2026-08-09]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen Definitive Guide (Feb 9 2026); core "each unit makes the next easier" thesis verified, explicit plan/work/review/compound naming is convergent-across-appearances not verbatim-on-page. fallback: phrase as "the loop that runs through his work" — never a step count; the loop expanded 2026-05-29 and a count is what dated last time (strategy doc Woven rule #1). Treat any Every.to outcome metric as vendor-self-reported.
 - `[checked:2026-07-02 result:OK due:2026-10-22]` https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich — [practitioner analysis] Laura Entis (staff writer, Every) on Klaassen's AI&I appearance, Apr 22 2026; "bread in the sandwich" metaphor. due recomputed from the Apr 22 2026 byline + 6-month window; the prior due:2026-08-22 did not match the byline (byline re-confirmed 2026-07-03). fallback: keep "Laura Entis on Klaassen" attribution; if removed, cite the underlying AI&I episode as the practitioner source.
 - Uncle Bob via `supplementary/clean-code-is-steering.md` — internal supplementary, not a URL in scope; its own source references are that file's audit surface. No stamp here.
 

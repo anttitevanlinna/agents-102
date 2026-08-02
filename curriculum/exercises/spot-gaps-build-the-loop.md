@@ -10,7 +10,7 @@ Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no 
 
 **What you build:** a ranked gap map from two runs of the same task, one stale rule cut from your rules-file, and a diagrammed map of the work that recurs across your stack.
 
-**The point:** You tested at M4, you learned at M5. Here you name what the two runs cost you and where each lesson belongs. Then you look wider: the same reading, run across everything you do. The stack-map you draw is what the closing move builds from.
+**The point:** You tested at M4, you learned at M5. Here you name what the two runs cost you and where each lesson belongs. Then you look wider: the same reading, run across everything you do. The stack-map you draw is what the closing lecture builds from.
 
 ---
 

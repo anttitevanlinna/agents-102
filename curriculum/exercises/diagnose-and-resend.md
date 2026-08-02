@@ -110,6 +110,11 @@ The exercise ends here. The module's re-send is next: same task, with reference 
 
 **Word count:** ~810 words body.
 
+**Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
+- builds a verifier scoped to one diagnosed failure mode before trusting a delegated run's output, instead of re-reading the whole return
+- writes a task-scoped reference + plan.md before any multi-hour delegated run, pointing at the codebase rules rather than restating them
+- fires the verifier once as a smoke test before relying on it, so the check is checked before it gates anything
+
 **Time budget total:** 65 min exercise body. Phase breakdown: P1 15 / P2 10 / P3 20 / P4 20. Module Debrief + re-send adds 15–20 min. Closing lecture adds 12–15 min after Debrief.
 
 <!-- backing -->

@@ -22,7 +22,7 @@ The rules compounded. Learning compounded to make better rules. More rules, more
 
 ## Then the agents started checking the agents
 
-The edits to the training got bigger. One person fixing one line became plan mode reshaping a whole file, then a subagent (a Claude instance with fresh context for independent analysis) auditing that file against a checklist in the background, then four agents in parallel auditing a file against four checklists while a fifth checked the neighbouring files.
+The edits to the training got bigger. One person fixing one line became plan mode reshaping a whole file, then a subagent auditing that file against a checklist in the background, then four agents in parallel auditing a file against four checklists while a fifth checked the neighbouring files.
 
 Work-per-session went up, and care-per-line went up with it. Sweeping changes that would have taken a week got made in an afternoon, because the rules were tight enough to hand off. Every session inherited what the last one figured out, and each one could take on bigger work than the last.
 
@@ -56,6 +56,7 @@ The loop is the shape. The bug today was the excuse.
 - **The load-bearing/leaky pairing is reconciled with M6's memo** ("a rule in context is not a rule in the output"). Both halves must stay: a loaded rule is load-bearing AND leaks, and the checking exists because of the leak. The M6 memo line is no-polish — do not edit it to match.
 - **File is size-gate exempt** (story lecture).
 - **Plan mode is named here, never explained.** M2 owns it. A gloss on this surface teaches ahead of the module and is the wrong place to get precise about what plan mode blocks (edits, not execution).
+- **Subagent gets the same treatment: named, never explained.** M3 owns the first subagent; the build-story names the machinery without glossing it. Do not re-add a definitional parenthetical.
 - **`Built to forgive` promises artifacts are rebuildable.** The promise holds only while every cross-module edge onto an M1–M3 artifact stays `conditional:`. A prompt that hard-requires an artifact unconditionally breaks this slide — check here first. Re-check command in the backing block under `prompt-registry-conditional-edges`.
 
 **Quality:** compendium-audited 2026-07-26 (writing@9697944 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4) — SHAs stale against current body; re-audit before ship.

@@ -4,7 +4,7 @@
 
 **What you do:** take a real multi-file task from your backlog, run it through plan mode, push back twice with what you can see, then hand the plan to a second agent for a deeper read. Approve the plan. **Stop.** Don't execute. Compare what your read caught to what the second-pass read caught. That gap is the skill this module is building.
 
-**What you build:** two reads paired on one plan. Your own two push-backs, in your voice, catch what a human catches. A second-pass walk-down, three questions at a time, catches the branches you can't see. Together they make a plan you can approve without rubber-stamping it.
+**What you build:** two reads paired on one plan. Your own two push-backs, in your voice. A second-pass walk-down, three questions at a time, catches the branches you can't see. Together they make a plan you can approve without rubber-stamping it.
 
 **The point:** two reads, paired. Making the plan good is the work.
 
@@ -49,7 +49,7 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. While 
 ## Catch the re-softening in the revised plan
 
 - Two messages, your phrasing, specific to what you saw. The agent acknowledges each, regenerates the plan, re-presents it.
-- Read the revised plan carefully. This is where Claude's niceness bites. Claude will sometimes verbally accept a push-back and re-soften the step anyway (RLHF doing its job). If you see the original vagueness survive the regeneration, push back again on that specific line. Softening-on-regeneration is a reliable tell; catching it is part of the read.
+- Read the revised plan carefully. This is where Claude's niceness bites. Claude will sometimes verbally accept a push-back and re-soften the step anyway. If you see the original vagueness survive the regeneration, push back again on that specific line. Softening-on-regeneration is a reliable tell; catching it is part of the read.
 - Stuck on the soft item? Ask Claude which step it's least confident about. That answer IS one. **Find is easier than judge.**
 
 > **Two messages, then move on.** Two push-backs on two axes, plus one check that the regeneration held, is all Phase 3 asks. A third push-back may be forming. That is fine; it is the second-pass read's job to catch the rest. Send your two, check the revision once, and move to Phase 4.
@@ -121,6 +121,8 @@ Then just hit stop.
 
 **Both optional walk-down escalations are kept (not cut).** `push-back-on-the-plan-2-askuserquestion` (switch to the AskUserQuestion picker) and `push-back-on-the-plan-2-original` (the unfiltered Pocock `grill-me`) are opt-in ceilings on the second read, under the *Stop when the read starts reaching* section. A student keeping it simple skips both, so they add no baseline load and cutting them reclaims none. Not cut candidates.
 
+**What-you-build keeps *catches the branches you can't see* (§53 partial accept, maintainer call).** The second read's value claim is the hook that sells the walk-down; the your-read half of the P5 compare (what a human catches) stays unstated in the opener and lands at the Evaluate beat. Do not re-flag the surviving clause against §53.
+
 **Quality:** compendium-audited 2026-08-02 (story@d1b6f2c technical@d1b6f2c behavior@d1b6f2c strategy@d1b6f2c slides@d1b6f2c)
 - judges @d1b6f2c: writing REVISE (1/1 see instances/ae101--exercise--push-back-on-the-plan.writing.json), story PASS, technical PASS, behavior PASS, pedagogy REVISE (1/3 see instances/ae101--exercise--push-back-on-the-plan.pedagogy.json), strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
@@ -148,7 +150,7 @@ Claims
 - `steps-that-stop-at-file-names-defer-design` · vision · "A step that stops at the file name defers the design to mid-run, where nobody is reading." ← none-owed
 - `tests-are-part-of-done` · vision · "the tests are part of what \"done\" means, not something you bolt on after" ← none-owed
 - `assumption-push-back-is-wwhtbt` · borrowed · "something the plan is carrying silently that it shouldn't" ← martin-wwhtbt
-- `re-softening-on-regeneration` · vision · "Claude will sometimes verbally accept a push-back and re-soften the step anyway (RLHF doing its job)." ← none-owed
+- `re-softening-on-regeneration` · vision · "Claude will sometimes verbally accept a push-back and re-soften the step anyway." ← none-owed
 - `find-is-easier-than-judge` · vision · "**Find is easier than judge.**" ← none-owed
 - `walk-down-branches-three-at-a-time` · borrowed · "walk down every unresolved branch of the plan three questions at a time, recommending an answer for each" ← pocock-grill-me
 - `stop-when-the-read-starts-reaching` · vision · "Stop when the second read starts reaching" ← none-owed

@@ -22,27 +22,29 @@ Generate AE101 Module 6 (*Spot gaps, build the loop*) end-to-end: seven new file
 
 Failure shapes that steal the mood: compliance-feel (*"build the eval, pass the gate"*), paperwork-feel, credibility-performance (*"we live what we teach"*), trainer-monologue retrospective. If any draft reads like one of those, revise.
 
-## Learning objectives (Bloom-tagged, verbatim for module file)
+## Learning objectives (verbatim from module file; Bloom ceiling Evaluate — the authoring Create beat lives past the module)
 
-- **Diagnose** (Analyze) the packaged M5 run alongside the un-packaged M4 baseline; name gaps the three-pattern didn't anticipate, quoted from your own artefacts.
-- **Name** (Evaluate) which gap belongs in memory, which in a sharper verifier, which in a new skill — using two runs' evidence, not prescription.
-- **Author** (Create) the second skill through conversation, shape follows what the two runs demanded (sharpened-verifier / judge / gap-finder); self-critique; invoke on the packaged run; ship to personal `~/.claude/skills/`.
-- **Name** (Understand) evals with full weight — verifier = judge = gate = eval — anchored by Ramp Dojo and Intercom Tier 1/2/3 from your just-built artefact.
-- **Articulate** (Evaluate) one key learning and one personal thought on the future in the Debrief round. Not a performance; a marker of where your practice stands after six modules.
+- **Diagnose** the gap two runs of the same task surface
+- **Route** each gap to its home: memory, sharper verifier, or new skill
+- **Cut** one rule from `./CLAUDE.local.md` the diagnosis killed
+- **Surface** the kinds of work you repeat across your stack, and draw their recurring shapes
+- **Map** evals across verifier, judge, and gate
+- **Encode** the lesson so the next loop inherits it
+- **Generalize** the shapes you mapped into a handoff prompt that builds your workflow skills across your stack
 
 ## Three moves of the main exercise (strategy § M6 in detail)
 
 1. **Diff against the baseline.** Read the packaged run alongside the un-packaged one. Where did packaging catch what it was meant to catch? Where did it not? What new failure modes surfaced? Compressed into shared Phase 1.
 2. **Name the gaps, name the loop.** Claude as co-reader, not quizmaster. What belongs in memory, what in the verifier, what in a new skill. Shared Phase 1.
-3. **Package the learning system.** Second authored skill, through conversation (mirrors M3 authoring). Shape follows what the two runs taught. Shipped personally; team-PR candidates flagged via human conversation.
+3. **Map the stack, route the gap.** Stack scan through conversation (work history → recurring shapes → primitives menu); the dominant gap gets a named home before anything gets built. The encode-move ships as the closing lecture's handoff prompt — cold-runnable, built from the shapes and the primitives menu — and the next skill is authored from it after the module, on a real run. No second skill is authored inside M6.
 
 ## Forward-looking beat — arc-named retrospective
 
-Between exercise and Debrief. You ask an agent to read your M1–M6 artefacts (root `CLAUDE.md` / `CLAUDE.local.md`, memory, ADRs, both authored skills, the M4 un-packaged run, the M5 packaged re-run) and write a one-page note on what changed across six modules. The agent names the arc from your own evidence, not a trainer monologue. Lands *"everything is scaling of learning"* throughline. For core-only cohorts, this is the visible compounding moment M7 would otherwise carry. 15–20 min.
+Between exercise and Debrief. You ask an agent to read your M1–M6 artefacts (root `CLAUDE.md` / `CLAUDE.local.md`, memory, ADRs, the test-strategy skill, the stack-map, the M4 un-packaged run, the M5 packaged re-run) and write a one-page note on what changed across six modules. The agent names the arc from your own evidence, not a trainer monologue. Lands *"everything is scaling of learning"* throughline. For core-only cohorts, this is the visible compounding moment M7 would otherwise carry. 15–20 min.
 
 ## Debrief — simple round with trainer/group leeway
 
-M6 closes the core. Default shape: each person speaks briefly on one key learning and one personal thought about the future. Human-voiced, not agent-mediated. Trainer and group choose the exact form (pair exchange, whole-room round, silent write-then-share). The canonical M2+ self-compound pattern does NOT run here — the encode step already happened in the second-skill authoring. Self-study variant: Teacher Claude invites the same two-part articulation in conversation; scrollback carries it; optional keepsake note. 10–15 min.
+M6 closes the core. Default shape: each person speaks briefly on one key learning and one personal thought about the future. Human-voiced, not agent-mediated. Trainer and group choose the exact form (pair exchange, whole-room round, silent write-then-share). The canonical M2+ self-compound pattern does NOT run here — the encode step already happened in the handoff-prompt build. Self-study variant: Teacher Claude invites the same two-part articulation in conversation; scrollback carries it; optional keepsake note. 10–15 min.
 
 ## Lectures
 

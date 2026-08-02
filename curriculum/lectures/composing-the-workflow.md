@@ -131,8 +131,8 @@ You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map o
 <text x="56" y="68" font-family="Roboto Slab, Georgia, serif" font-size="15.5" fill="#1f1a13">The workflow</text>
 <text x="56" y="88" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234">your moves, in the right order.</text>
 <line x1="132" y1="176" x2="120" y2="166" stroke="#786c56" stroke-width="0.8" opacity="0.55"/>
-<text x="150" y="205" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" letter-spacing="2" fill="#2f6b6b" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">SESSION-SHAPER</text>
-<text x="150" y="220" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="10.5" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">a move at the pier. one point.</text>
+<text x="150" y="205" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" letter-spacing="2" fill="#786c56" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">NEXT MAPPED MOVE</text>
+<text x="150" y="220" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="10.5" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">from your stack-map. one point, at the pier.</text>
 <line x1="384" y1="200" x2="384" y2="216" stroke="#786c56" stroke-width="0.8" opacity="0.55"/>
 <text x="384" y="180" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" letter-spacing="2" fill="#2f6b6b" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">TEST-STRATEGY</text>
 <text x="384" y="195" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="10.5" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">carries one whole leg.</text>

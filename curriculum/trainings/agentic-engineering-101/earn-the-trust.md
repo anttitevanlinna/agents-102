@@ -100,7 +100,7 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 
 Optional. One read in the gap.
 
-**Read: Simon Willison, [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/)** (September 2025). The skill Willison names is choosing what the agent can iterate against before you start it: the tools it can run, the checks that tell it how it's doing, the room to fail safely. Module 4 opens on a run you send off and step away from; this is the thinking you do before stepping away.
+**Read: Simon Willison, [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/)** (September 2025). Willison names the skill of setting up an agent's run before you start it. Module 4 opens on a run you send off and step away from; this is the thinking you do before stepping away.
 
 <!-- maintainer -->
 

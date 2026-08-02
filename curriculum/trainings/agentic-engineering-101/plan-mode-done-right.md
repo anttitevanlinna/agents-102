@@ -53,7 +53,7 @@ If a branch from the second-pass read sharpened how plans get made in this codeb
 
 {{prompt:ae101-m2-integrate-branch}}
 
-> Read the prompt closely. It's fair to read it as replacing the file with only this rule, which would nuke the old rules. Watch the diff: integrating should add the new rule, not overwrite `./CLAUDE.local.md`. Precise prompting is harder than it looks. If it did overwrite, the old rules are still in this session's scrollback; ask Claude to restore them.
+> Read the prompt closely. It's fair to read it as replacing the file with only this rule, which would nuke the old rules. After it runs, ask Claude to confirm it added the rule and kept the old ones rather than overwrote `./CLAUDE.local.md`. Precise prompting is harder than it looks. If it did overwrite, the old rules are still in this session's scrollback; ask Claude to restore them.
 
 > LLM self-charity may creep in. If the saved rule reads generic, ask for one specific to this session.
 
@@ -73,7 +73,7 @@ Read the conventions your tracker already encodes: [Read the rules hiding in a t
 
 ## Next
 
-<!--flag:module:earn-the-trust-->At M3, the same move goes into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch a second read surfaces, before a teammate needs to ask. And the move itself turns out to be packageable as a skill; you author your first one there.
+<!--flag:module:earn-the-trust-->At M3, the same move goes into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch a second read surfaces, before a teammate needs to ask.
 
 <!--/flag:module:earn-the-trust--><!--flag:module:earn-the-trust-->Ask Claude where it wrote the plan file, note the path; M3 reads it. <!--/flag:module:earn-the-trust-->Close this session when the second read lands.<!--flag:no-module:earn-the-trust-->
 
@@ -119,6 +119,8 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 - **P5 deflection** — student reports *"the second read did all the work, my push-back was pointless."* Trainer: *"quote one thing your push-back caught that the second read would have missed. You're reading differently; different isn't worse."*
 - **P5 naming** — if Claude frames the pattern as *"use plan mode carefully,"* trainer pushes for structural naming: *"the pattern is human read → push-back → agent walk-down → approve. Name the pairing, not the moral."*
 - **Debrief** — self-compounding. If Claude writes a generic rubric, trainer: *"name a pattern specific to THIS codebase, from THIS session's evidence — what branch did grill surface that a first read would miss on this repo?"*
+
+**Recovery line in the integrate callout stays in body (§5 boundary, maintainer call).** The fence reaches nobody in delivery — neither trainer nor student. The scrollback-restore sentence is a plausible failure's non-obvious rescue in one line; do not re-route it below the fence or re-flag it against sf-5.
 
 **Watch-fors (cross-phase):**
 - Lecture over-runs to 15+ min. Cut the three-pressures section to 60 seconds if tight; the exercise teaches them.

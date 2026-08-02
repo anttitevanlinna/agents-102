@@ -59,7 +59,9 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 
 <!-- maintainer -->
 
-**The `@import` wiring stays in the body Note, not the fence — maintainer call 2026-08-02.** `check_pedagogy.md §16`'s own carve-out ("mandatory teaching prompts stay fenced; optional push-backs / refinements can live in body") covers it: the wiring is **deliberately optional**. Folding the ask into `extract-the-task-shaping-rule-2`'s fence would make the agent do it every time a student picks a non-auto-load path, which removes the choice the Note exists to offer. A pedagogy judge flagged it as a body-prose forcing function and the orchestrator drafted the fence edit; both had read the rule's prohibition and stopped before its carve-out. Do not move it into the prompt.
+**The `@import` wiring stays in the body Note, not the fence — standing `[watch]`, reaffirmed 2026-08-02.** This is a KNOWN §16 gap held open on purpose, logged in `pre-cohort-todos.md` (2026-07-26): *"stays REVISE, `[watch]` … Accepted as-is. Fires if a cohort run shows a student picking a non-auto-load path and missing the wire. Fix when it fires: fold the `@import` ask into `extract-the-task-shaping-rule-2.md`'s fence."* The trigger is field evidence from a cohort, not a judge's re-derivation — so a pedagogy REVISE here is the expected steady state, not a new finding. **Do not fold it into the fence before the trigger fires**, and do not re-argue it from §16's optional-refinements carve-out: the Note says *"before you move on"*, which is a gate, so that carve-out does NOT cover this. The reason is the watch decision, and the maintainer's grounds are that the wiring stays the student's choice.
+
+**When the trigger does fire, fence it as a QUESTION, not an action** — *"do you also want an `@import` line so it fires automatically, or keep it explicit-load-only?"* A silent automatic wire-up collides with rule 37 and with the module's deliberate no-prescription stance on auto-load. The downstream stake, per the Artefact-contracts table in `plan-mode-done-right.md`: M4's walk-and-fill audit subagent cannot see `~/.claude/memory/` unless it is `@import`-wired from `~/.claude/CLAUDE.md`.
 
 **View summary:** You ask the agent to recover the task-shaping rules hidden in the planning session, rewrite anything generic, and save the useful rules where they will fire. The artifact turns one good planning experience into reusable guidance for similar work.
 
@@ -70,7 +72,7 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** One handle kept bold: **Refinement** at its term-earning moment (bold narrowed from the full lead sentence to the word); all other bullet leads de-bolded. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
 **Quality:** compendium-audited 2026-08-02 (writing@1c765f2 story@1c765f2 technical@1c765f2 behavior@1c765f2 strategy@1c765f2 slides@1c765f2)
-- judges @ffc64f9: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy REVISE (1/1 see instances/ae101--exercise--extract-the-task-shaping-rule.pedagogy.json), strategy PASS, slides PASS
+- judges @e409261: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy REVISE (1/3-see-instances/ae101--exercise--extract-the-task-shaping-rule.pedagogy.json), strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - cohorts: none yet
 

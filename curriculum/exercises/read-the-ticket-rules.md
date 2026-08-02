@@ -37,6 +37,8 @@ You pasted one real ticket, and Claude inferred how your team uses fields like s
 - **Time:** about 10 min, homework after Module 2. Optional; the required M2 artifact is the task-shaping `.md`, this extends it.
 - **Session continuity:** self-contained. The prompt needs only one pasted ticket; the task-shaping `.md` it folds into is on disk, resolvable from any session in the repo.
 
+**Conversational fold + n=1 first read — deliberate exceptions (2026-08-02, Antti).** Two judge findings accepted as design, not defects. (a) `check_pedagogy §16` (fold call in body, no fenced prompt): the fold is a conversational move in the same chat as `extract-the-task-shaping-rule-4` — a manufactured fold prompt is too prescriptive and mechanical for a 15-minute homework (§16 Boundary 2). (b) `check_pedagogy §9` (read runs on one ticket): n=1 is the design — this is a first read, its evidential limit stated in body ("one ticket gives basic rules, not policy"); the second-ticket ask is offered, not required, and depth belongs to the student's own tickets on their own time. Future judges should not re-flag either.
+
 **Push-back moves (trainer / self-directed):**
 - **One-ticket overreach** — student treats one-ticket inference as policy. Push: *"one ticket gives basic rules. Mark the guesses, then test them on more tickets later."*
 - **Signal / guess blur** — Claude reports every inference as a strong signal. Push: *"which of these are you sure about from one ticket, and which need a second ticket to confirm?"*

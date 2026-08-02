@@ -146,7 +146,7 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 2. **Sends at least one *No, keep planning* push-back referencing a specific step number and a specific word from the plan**, before approving. Falsifiable: the push-back message quotes the plan's own step text rather than naming a generic concern.
 3. **Asks Claude to walk down unresolved branches three questions at a time** when the plan touches a design tree they don't fully see. Falsifiable: the scrollback shows a batched Q-and-A sequence, not a prompt that returned a list of branches in one shot.
 
-**Artefact contracts** (per `check_pedagogy.md` rule 46 — every produced artefact with a stable identifier gets a contract row):
+**Artefact contracts** (per `check_cross_module.md` §5 — every produced artefact with a stable identifier gets a contract row):
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|

@@ -40,7 +40,7 @@ The story of building this training is the shape you just ran on your own repo. 
 
 The rule sits in `./CLAUDE.local.md`, which is yours. Gitignored, alongside you, read by every future session in this repo. By the end of the training it grows into a rules file shaped by how you actually worked: grown from evidence, not from a blank page or a trainer's template.
 
-The pattern has a name. Kieran Klaassen at Every calls it **compound engineering**. The retro you just ran was the compound step of his loop: ideate → brainstorm → plan → work → review → polish → compound → repeat. That is the orient, fix, compound, close loop cut at different joints; the names differ, the loop doesn't. Mental models only come from doing, and you just did. Compound engineering an hour ago was a name. Now it's a loop you ran on your own repo.
+The pattern has a name. Kieran Klaassen at Every calls it **compound engineering**. The retro you just ran was the compound step of his loop: ideate → brainstorm → plan → work → review → polish → compound → repeat. That is the orient, fix, compound, close loop cut at more joints; same shape, more names. Mental models only come from doing, and you just did. Compound engineering an hour ago was a name. Now it's a loop you ran on your own repo.
 
 The loop is the shape. The bug today was the excuse.
 
@@ -102,7 +102,7 @@ Format → `curriculum/backing-format.md`.
 - `claude-local-md-is-yours` · detail · "Gitignored, alongside you, read by every future session in this repo" ← claude-local-md-autoload
 - `klaassen-names-it` · borrowed · "Kieran Klaassen at Every calls it **compound engineering**" ← klaassen-definitive-guide
 - `retro-is-the-compound-step` · detail · "The retro you just ran was the compound step of his loop: ideate → brainstorm → plan → work → review → polish → compound → repeat" ← klaassen-expanded-loop, klaassen-four-step
-- `same-loop-different-joints` · vision · "That is the orient, fix, compound, close loop cut at different joints; the names differ, the loop doesn't" ← none-owed
+- `same-loop-different-joints` · vision · "That is the orient, fix, compound, close loop cut at more joints; same shape, more names" ← none-owed — **id kept on purpose** (`backing-format.md`: prefer adding to renaming; a rename breaks the OODA diff). Reworded 2026-08-02: the old anchor claimed only the names differed, which was true of the retired four-step form and false the moment the sequence expanded to eight in front of the reader.
 - `mental-models-from-doing` · vision · "Mental models only come from doing, and you just did" ← none-owed
 - `loop-is-the-shape` · vision · "The loop is the shape. The bug today was the excuse." ← none-owed
 

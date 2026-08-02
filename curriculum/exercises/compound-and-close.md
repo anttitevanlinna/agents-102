@@ -6,7 +6,7 @@
 
 **What you build:** a rules file written from session evidence. Concrete, specific, yours, and read at the top of every future session in this repo.
 
-**The point:** the compound step (plan → work → review → compound, Kieran Klaassen's loop) doesn't interview you with three retro questions. The session is the evidence; Claude reviews it and writes. You push back where it misread.
+**The point:** the compound step closes Kieran Klaassen's loop: ideate → brainstorm → plan → work → review → polish → compound → repeat. It doesn't interview you with three retro questions. The session is the evidence; Claude reviews it and writes. You push back where it misread.
 
 The PR shipped. Now compound the session. Claude reviews what happened and writes your rules from how you actually worked.
 
@@ -64,14 +64,15 @@ You can close this session now. `./CLAUDE.local.md` stays behind; whether it ear
 Claims
 - `session-is-the-evidence` · vision · "The session is the evidence." ← none-owed
 - `no-three-question-retro` · vision · "the compound step … doesn't interview you with three retro questions" ← none-owed
-- `compound-step-is-klaassens-loop` · borrowed · "plan → work → review → compound, Kieran Klaassen's loop" ← klaassen-compound-run
+- `compound-step-is-klaassens-loop` · borrowed · "the compound step closes Kieran Klaassen's loop: ideate → brainstorm → plan → work → review → polish → compound → repeat" ← klaassen-expanded-loop, klaassen-compound-run
 - `not-drafting-from-a-blank-page` · vision · "You are not drafting from a blank page. The agent reads the session for you." ← none-owed
 - `quote-the-moment-back` · vision · "Quote the specific session moment back at Claude." ← none-owed
 - `rules-file-is-yours-now` · vision · "Born from the session, extended by every module after this one." ← none-owed
 - `gitignore-edit-is-yours-to-keep` · vision · "The `.gitignore` edit is yours to keep or revert." ← none-owed
 
 Sources
-- klaassen-compound-run `[checked:2026-07-30 result:CAVEAT due:2027-01-30]` https://every.to/source-code/compound-engineering-how-every-codes-with-agents — [practitioner direct, vendor venue] Shipper & Klaassen (Dec 2025). **The four step names live on this page, not on the Definitive Guide**, and in the source Plan and Work belong to the agents while Review and Compound belong to the engineer. The body names all four in order, so this is the URL that has to back it. Klaassen expanded the loop past four steps on 2026-05-29, which the body's ordinal form does not track — **the four-step spelling is now a dated snapshot, not his current position.** Single-practitioner-originated with early independent echoes: roughly L1–L2, not converged community vocabulary. kb:platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md fallback: attribute as "the loop that runs through his work", ordinal-free — which is what the corpus does everywhere the count is not load-bearing.
+- klaassen-expanded-loop `[checked:2026-07-31 result:OK due:2027-01-31]` https://every.to/p/compound-engineering-gets-an-upgrade — [practitioner direct, vendor venue] Klaassen, 29 May 2026. **The current loop, and the one the body prints.** Verbatim sequence: *"Ideate → brainstorm → plan → work → review → polish → compound → repeat"* — seven named stages plus a cyclical repeat, putting **compound seventh and `work` fourth**. His stated reason is that the middle became reliable (*"the work phase has become boring—in the best way"*), so the new stages restore human judgement at both ends; the sandwich framing is credited to Trevin Chow (*"AI is the stuff in the middle. Humans are the bread on either end"*), which is the same idea as the *Bread in the AI Sandwich* video already pre-read at M5. Presented as evolution under the same name, not retraction. Klaassen's own prose says *"from four steps to eight"*, which only reconciles if `repeat` counts as a stage in the new framing and not the old — **this stamp holds to the printed arrow-sequence, not to his count, and so does the body.** Still current as of *How I Polish Software That Agents Built* (https://every.to/source-code/how-i-polish-software-that-agents-built, 13 Jul 2026), which reuses the stage names and introduces no new one. **Re-read the sequence before a cohort: it has moved once and the body now prints it in full, so a second expansion dates the page rather than a footnote.** fallback: drop the sequence and name only the compound step, which is what the corpus does everywhere the shape is not the lesson.
+- klaassen-compound-run `[checked:2026-07-30 result:OK due:2027-01-30]` https://every.to/source-code/compound-engineering-how-every-codes-with-agents — [practitioner direct, vendor venue] Shipper & Klaassen (Dec 2025). **The origin, kept for the division of labour rather than for the count.** In the source Plan and Work belong to the agents while Review and Compound belong to the engineer, which is this exercise's move exactly. The four step names live on this page and not on the Definitive Guide. The prior CAVEAT was that the body printed this page's four-step form as current; that is resolved — the body now prints the 2026-05-29 sequence and cites the expansion first. All four names here survive inside it. Single-practitioner-originated with early independent echoes: roughly L1–L2, not converged community vocabulary. kb:platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md fallback: cite for the agent/engineer split only.
 
 Frameworks
 - Compound engineering · [borrow:none] · law:the-compound-ladder · ← klaassen-compound-run — attributed inside Claude's retro summary, not in a lecture
@@ -79,16 +80,14 @@ Frameworks
 
 Stance `[stance:2026-08-01 level:L1]`
 - holds: that a session's scrollback is better raw material for a rules file than a retro questionnaire. Klaassen is the named origin of the loop and the body credits him inside the agent's own summary rather than teaching him as a lecture, which is the right dose for a single-practitioner framework.
-- contested: the step count. **The body spells four steps; the author has since published more**, so the ordinal is a dated snapshot. It is not wrong as history and it would be wrong as current practice, and the corpus elsewhere already prefers the ordinal-free form.
-- would-move-it: Klaassen restructuring the loop again, or a second practitioner publishing the same four-step shape independently — the second would take this from L1 toward L2 and let the body drop the single name.
+- contested: nothing about the shape; the count question closed. The body printed the Dec 2025 four-step form as current while the author had expanded it on 2026-05-29, so it was a dated snapshot presented in the present tense.
+- decided: **print the current sequence in full, 2026-08-02 (maintainer call).** The corpus default elsewhere is ordinal-free, and the cheap fix was to name only the compound step. Overruled deliberately: seeing where compound sits in the whole arc is what teaches, and an M1 exercise running the compound step benefits from the picture more than it suffers from the length. The cost is accepted and named — this page now dates when the loop moves again, so the expansion source carries a re-read-before-cohort instruction rather than a routine six-month due date.
+- would-move-it: Klaassen restructuring the loop again, which now costs a body edit rather than a stamp edit. Or a second practitioner publishing the same staged shape independently, which would take this from L1 toward L2 and let the body drop the single name.
 
 OODA
 - question: has the compound loop's step count moved again, and has anyone independently arrived at the same shape?
 - roster: Kieran Klaassen, Dan Shipper and the Every source-code feed, Geoffrey Huntley, Addy Osmani
 - last-run: 2026-08-01
-
-Flagged
-- `[found:2026-08-01]` The body names the loop as four ordered steps while its own source has expanded past four since 2026-05-29 → decide whether to drop the ordinal here the way the rest of the corpus does. Low urgency, and it is the kind of small dated specific that reads as authoritative precisely because it is precise.
 
 <!-- /backing -->
 **Watch-fors:**

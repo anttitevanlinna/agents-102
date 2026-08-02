@@ -13,6 +13,8 @@ Come without having picked the task and you'll be scrambling for one while the r
 
 Optional forward-look: [What is agentic engineering](trainings/agentic-engineering-101/supplementary/what-is-agentic-engineering.md). And when your sessions start running heavy, [Token efficiency](trainings/agentic-engineering-101/supplementary/token-efficiency.md) on keeping the context window lean.
 
+If Simon Willison's [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/) is still on your list from Module 3, read it before the send-off: it names the thinking you do before stepping away from a run, and today you step away.
+
 If you read [Why Software Factories Fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md) in the gap after Module 1, this module's un-watched run may look like exactly what that essay warns against. It isn't. The run leaves from a pinned commit on a throwaway branch, sized as an experiment, and the planning and checks the essay says are missing are what Module 5 builds. You are not running the factory; you are collecting your own copy of its evidence, on purpose.
 
 ## What You'll Learn
@@ -172,7 +174,7 @@ Optional. They sit in the gap while your un-packaged run is still going. All fou
 2. **Stops a stalled agent run at ≤20 minutes and names the failure mode in writing** rather than waiting for completion. Falsifiable: scrollback of a long-running task shows a manual stop with a one-line note about what wobbled.
 3. **Walks `observations/` + ADRs + skills against a real task before sending it off**, picks the worst three gaps to fill, and writes them rather than filling all five. Falsifiable: pre-task observations diff shows two-or-three new observations or rules tied to the task at hand, not a comprehensive sweep.
 
-**Artefact contracts** (per `check_pedagogy.md` rule 46 — every produced artefact with a stable identifier gets a contract row):
+**Artefact contracts** (per `check_cross_module.md` §5 — every produced artefact with a stable identifier gets a contract row):
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|

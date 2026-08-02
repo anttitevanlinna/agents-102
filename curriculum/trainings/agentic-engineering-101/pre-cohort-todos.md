@@ -41,7 +41,7 @@ Sim sweeps and platform-capability checks are not tracked here. The `curriculum-
 
 ## Open from the full-corpus re-eval (verdict data: `curriculum/evals/reeval-latest.json`)
 
-- **Pre-read wiring (2026-07-30) owes its ripple, decision needed first.** cross_module flags 3 blocking missing-echoes (Horthy, Willison-loops, da Costa pre-reads added at module ends; the next module's Prework never mentions them) and the strategy judge holds the M4 Willison pre-read front-runs M5's three-pattern (the strategy doc's pre-read set doesn't sanction it). Decide: sanction the four-read set in the strategy doc (then wire the echoes) or move the M4 read to M5's set.
+- **Wire the three pre-read echoes (decision made: the four-read arc is canon, strategy doc § reading flow).** Each next module's Prework carries a one-line echo of the previous gap's read: Horthy *Why Software Factories Fail* echoes in M2's Prework, Willison *Designing agentic loops* in M4's Prework, da Costa's backpressure essay in M6's Start here (flag-gated). Pitch shape per `check_writing §13`. Body edits, card-gated.
 - **Classes invalidated by the 2026-08-02 fix pass and co-edits need re-judge**, `node curriculum/evals/scripts/scan-stale-classes.js --files <all AE101 surfaces>` derives the exact list; stamps for them stay at their pre-fix state until judged.
 
 ---

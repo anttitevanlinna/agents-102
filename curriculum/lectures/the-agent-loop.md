@@ -2,7 +2,7 @@
 
 ## The agent, the harness, the loop
 
-- An **agent** is an LLM in a loop. Four parts: the context it reads, the tools it can call, the goal it works toward, and the autonomy to pick its own next step. Each iteration the LLM receives context (system prompt, conversation, tool results) and either responds to you or uses tools.
+- An **agent** is an LLM calling tools in a loop. Four parts: the context it reads, the tools it can call, the goal it works toward, and the autonomy to pick its own next step. Each iteration the LLM receives context (system prompt, conversation, tool results) and either responds to you or uses tools.
 - The **agent harness** is the surrounding code that runs the loop. It exposes tool definitions to the LLM, executes the tool calls, and feeds results back in. Claude Code is one harness; Cursor, Cline, Gemini CLI are others.
 - The **agent loop** is that iteration itself. Prompt → reason → tool calls → results → reason again, until the agent decides to stop.
 - A long run is this same loop, iterated. Nothing new takes over when the run gets long; the loop keeps choosing the next step from context and tool results, hour after hour.
@@ -64,7 +64,7 @@ Surface where the tool list comes from, and what it leaves out.
 Format → `curriculum/backing-format.md`. Highest-decay file in the M4 block: every claim above is a mechanism or a product fact, so this block's stamps go stale on platform time, not evidence time. Most sources here are `due:cohort` by design.
 
 **Claims**
-- `agent-is-llm-in-a-loop` · borrowed · "An **agent** is an LLM in a loop. Four parts: the context it reads, the tools it can call, the goal it works toward, and the autonomy to pick its own next step." ← willison-agentic-patterns, willison-agents-2025, anthropic-effective-agents, a101-what-is-an-agent
+- `agent-is-llm-in-a-loop` · borrowed · "An **agent** is an LLM calling tools in a loop. Four parts: the context it reads, the tools it can call, the goal it works toward, and the autonomy to pick its own next step." ← willison-agentic-patterns, willison-agents-2025, anthropic-effective-agents, a101-what-is-an-agent
 - `loop-iteration-anatomy` · detail · "Each iteration the LLM receives context (system prompt, conversation, tool results) and either responds to you or uses tools." ← cc-glossary-harness, anthropic-effective-agents, parallel-tool-calls
 - `harness-is-the-runner` · detail · "The **agent harness** is the surrounding code that runs the loop. It exposes tool definitions to the LLM, executes the tool calls, and feeds results back in." ← cc-glossary-harness, anthropic-harness-post, chua-codex-harness, gerganov-harness
 - `named-harnesses` · detail · "Claude Code is one harness; Cursor, Cline, Gemini CLI are others." ← cc-overview, cursor-agent-docs, cline-repo, gemini-cli-repo

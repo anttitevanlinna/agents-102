@@ -207,7 +207,7 @@ Packaging is choosing which of these fixes stand without you.
 
 - Each piece turns up on its own across practitioner write-ups. We combined them into one kit and gave them names. Geoffrey Huntley's Ralph is the one published practice that runs all three at once. Armin Ronacher's January 2026 MiniJinja port ran two of them and named neither. You built all three today off your own failures, which beats a citation. On the map, the kit is what stands in for you at Verification.
 - **Reference artefact**, against goal drift. A spec the agent reads and re-reads: success criteria, pointers at the relevant memory, named constraints. The spec on disk stays readable mid-run when the buried instructions in the conversation no longer are. In Ronacher's MiniJinja port, the original Rust snapshot tests played this role; in your re-send, the reference you assembled plays it.
-- **plan.md** the agent owns and mutates, against context rot. A working document that holds durable state across the run: the agent reads it at every session boot, updates it as decisions land, re-reads it when the working window fills. What got ruled out an hour ago is written down, not remembered. Geoffrey Huntley's Ralph technique bootstraps entire greenfield projects on this single primitive.
+- **plan.md** the agent owns and mutates, against context rot. A working document that holds durable state across the run: the agent reads it at every session boot, updates it as decisions land, re-reads it when the working window fills. What got ruled out an hour ago is written down, not remembered. Ralph leans on exactly this primitive to bootstrap entire greenfield projects.
 
 ## The verifier decides pass without you
 
@@ -289,7 +289,7 @@ Claims
 - `reference-artefact-against-goal-drift` · vision · "**Reference artefact**, against goal drift." ← none-owed
 - `minijinja-snapshot-tests-as-reference` · detail · "the original Rust snapshot tests played this role" ← ronacher-minijinja
 - `plan-md-against-context-rot` · vision · "**plan.md** the agent owns and mutates, against context rot." ← none-owed
-- `ralph-bootstraps-greenfield` · detail · "Ralph technique bootstraps entire greenfield projects on this single primitive" ← huntley-ralph
+- `ralph-bootstraps-greenfield` · detail · "Ralph leans on exactly this primitive to bootstrap entire greenfield projects" ← huntley-ralph
 - `external-verifier-against-plausible-but-wrong` · vision · "**External verifier**, against plausible-but-wrong." ← none-owed
 - `three-failures-three-pieces` · vision · "Three failures you named, three pieces, one each." ← none-owed
 - `verifier-takes-three-shapes` · vision · "**Background-agent verifier** … **Deterministic shell hook** … **Ralph re-feed**" ← none-owed
@@ -344,9 +344,6 @@ OODA
 - question: has anyone besides Huntley published all three pieces as one practice, and has anyone named the triad as a triad?
 - roster: Huntley, Ronacher, Klaassen, Cherny, Osmani, Willison, Horthy and the HumanLayer blog, the Amp Chronicle, Curran and the Intercom engineering blog
 - last-run: 2026-08-01
-
-Flagged
-- `[found:2026-08-01]` Huntley is named twice on slide 1 with two different scopes — "runs all three at once" in the lead, "bootstraps entire greenfield projects on this single primitive" in the plan.md bullet. Both hold (the second is about what carries the loop, not what Ralph contains), but a student can hear a contradiction → decide whether to reconcile in body; it edits a second student-facing line, so it needs its own card rather than riding along with another edit.
 
 <!-- /backing -->
 

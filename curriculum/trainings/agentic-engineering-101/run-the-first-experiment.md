@@ -34,7 +34,7 @@ The map has a far side. Before the first long run, see the country you are enter
 
 [Lecture: The far half of the map](lectures/the-far-half.md)
 
-Next, the thing you are sending: an LLM in a loop, calling tools.
+Next, the thing you are sending: an LLM calling tools in a loop.
 
 [Lecture: The agent loop](lectures/the-agent-loop.md)
 

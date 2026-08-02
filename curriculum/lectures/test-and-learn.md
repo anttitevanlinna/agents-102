@@ -4,14 +4,14 @@
 
 You are testing, and you are learning. Every send-off from here on is an experiment. The agent is the apparatus, your rules and context are the setup, and the result is data.
 
-You don't need to get it right first time. You need to read the result and know what to change for the next run. That is the whole obligation.
+You don't need to get it right first time. You need to read the result and know what to change for the next session. That is the whole obligation.
 
-You're new to this country: the stretch where the agent runs alone and you don't watch each step. Don't travel it like a tourist. A tourist runs an agent and hopes; a practitioner runs a test and reads the data. The difference is not the outcome of the run. It is what you can say afterwards about why.
+You're new to this country: the stretch where the agent runs alone and you don't watch each step. Don't travel it like a tourist. A tourist runs an agent and hopes; a practitioner runs a test and reads the data. The difference is not the outcome of the session. It is what you can say afterwards about why.
 
-## The two-run arc
+## The two-session arc
 
-- Same task, two runs. Run one goes now, un-packaged: no plan.md, no verifier, no reference artifact. Just *"here's my system, go do X."* The agent works with exactly what you've given it.
-- Run two goes packaged, after you've read the return. You find what went wrong, watch each packaging piece close a specific gap you just saw, and send the same task again.
+- Same task, two sessions. Session one goes now, un-packaged: no plan.md, no verifier, no reference artifact. Just *"here's my system, go do X."* The agent works with exactly what you've given it.
+- Session two goes packaged, after you've read the return. You find what went wrong, watch each packaging piece close a specific gap you just saw, and send the same task again.
 - The contrast is the lesson. No generic long-running-agent advice lands the way *you just watched this fail, here's what would have caught it* lands. Un-packaged first is by design.
 
 ## Gap analysis: walk your system against the task
@@ -24,7 +24,7 @@ You're new to this country: the stretch where the agent runs alone and you don't
 
 - Cancel is legitimate; traces are data. If twenty minutes in you can see Claude hallucinating file paths, arguing with itself, or missing a requirement that wasn't in the prompt, stop it. You have the data you came for.
 - You owe the experiment a result you can read, not a completed artifact. Letting it run another hour teaches you less than stopping at twenty minutes with an observation. Any trace counts.
-- Fifteen to thirty minutes buys the clues the read needs. Engineers run these for hours at work when the task warrants it; ambition and length grow run by run.
+- Fifteen to thirty minutes buys the clues the read needs. Engineers run these for hours at work when the task warrants it; ambition and length grow session by session.
 
 <!-- maintainer -->
 
@@ -37,7 +37,7 @@ You're new to this country: the stretch where the agent runs alone and you don't
 **Quality:** compendium-audited 2026-08-02 (writing@1c765f2 story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@1c765f2)
 - judges @1c765f2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
-**Lecture meta:** *10–12 min lecture, now deck-shaped (4 slides + kicker). Sets up M4's walk-and-send-off exercise. Names the spirit of the two-run arc and the one move the exercise opens with — gap analysis.*
+**Lecture meta:** *10–12 min lecture, now deck-shaped (4 slides + kicker). Sets up M4's walk-and-send-off exercise. Names the spirit of the two-session arc and the one move the exercise opens with — gap analysis.*
 **Word count:** ~380 words body (post slide rework).
 
 **Time:** 10–12 min at presentation pace. Don't rush; don't pad. The "spirit" slide is load-bearing — it's where the experimental stance lands.
@@ -51,20 +51,20 @@ You're new to this country: the stretch where the agent runs alone and you don't
 
 <!-- backing -->
 
-Format → `curriculum/backing-format.md`. Absorbed 2026-08-01 from the legacy `Frameworks attributed:` / `Vision vs. detail:` / `Source verification` blocks — those are gone, this is the only copy. Mostly a `vision` file: the two-run arc and the experimental stance are the design's own choices and owe nothing. The three things it does assert about the world are `contrast-is-the-lesson`, `engineers-run-for-hours` and `cancel-is-what-operators-do`.
+Format → `curriculum/backing-format.md`. Absorbed 2026-08-01 from the legacy `Frameworks attributed:` / `Vision vs. detail:` / `Source verification` blocks — those are gone, this is the only copy. Mostly a `vision` file: the two-session arc and the experimental stance are the design's own choices and owe nothing. The three things it does assert about the world are `contrast-is-the-lesson`, `engineers-run-for-hours` and `cancel-is-what-operators-do`.
 
 **Claims**
 - `send-off-is-an-experiment` · vision · "Every send-off from here on is an experiment. The agent is the apparatus, your rules and context are the setup, and the result is data." ← none-owed
-- `read-the-result-not-get-it-right` · vision · "You don't need to get it right first time. You need to read the result and know what to change for the next run." ← none-owed
+- `read-the-result-not-get-it-right` · vision · "You don't need to get it right first time. You need to read the result and know what to change for the next session." ← none-owed
 - `tourist-vs-practitioner` · vision · "a tourist runs an agent and hopes; a practitioner runs a test and reads the data" ← none-owed
-- `un-packaged-first-by-design` · vision · "Run one goes now, un-packaged: no plan.md, no verifier, no reference artifact." ← none-owed
+- `un-packaged-first-by-design` · vision · "Session one goes now, un-packaged: no plan.md, no verifier, no reference artifact." ← none-owed
 - `contrast-is-the-lesson` · vision · "The contrast is the lesson. No generic long-running-agent advice lands the way *you just watched this fail, here's what would have caught it* lands." ← none-owed
 - `gap-analysis-is-a-question` · borrowed · "**Gap analysis**: walk the system you have against the system the task needs." ← cultural-vocab
 - `agent-finds-you-judge` · vision · "The agent finds the thin spots; you judge which ones matter. A ranked list is candidates, not verdicts." ← none-owed
 - `cancel-is-legitimate` · vision · "Cancel is legitimate; traces are data." ← none-owed — the house's own operating rule for the exercise. **Was `detail` until 2026-08-01**, on the strength of the delivery note framing it as *what real operators do*; that framing was not evidenced and has been removed. See Flagged.
 - `any-trace-counts` · vision · "You owe the experiment a result you can read, not a completed artifact." ← none-owed
 - `fifteen-to-thirty-minutes` · vision · "Fifteen to thirty minutes buys the clues the read needs." — the classroom timebox, the maintainer's own design call, set deliberately on 2026-05-21 against a cohort whose real M4 long task ran 12 minutes ← none-owed
-- `engineers-run-for-hours` · detail · "Engineers run these for hours at work when the task warrants it; ambition and length grow run by run." ← klaassen-overnight-prs, horthy-ralph-history, litt-code-like-a-surgeon, ronacher-long-runs-worse. The last one is listed deliberately as backing: it is the standing dissent this claim has to survive, and a re-verifier who reads the three supporting accounts without it will re-grade the claim too generously.
+- `engineers-run-for-hours` · detail · "Engineers run these for hours at work when the task warrants it; ambition and length grow session by session." ← klaassen-overnight-prs, horthy-ralph-history, litt-code-like-a-surgeon, ronacher-long-runs-worse. The last one is listed deliberately as backing: it is the standing dissent this claim has to survive, and a re-verifier who reads the three supporting accounts without it will re-grade the claim too generously.
 
 **Sources**
 - klaassen-overnight-prs `[checked:2026-08-01 result:OK due:2027-02-01]` https://every.to/source-code/how-i-polish-software-that-agents-built — [practitioner direct, vendor venue] Klaassen, 13 Jul 2026 (updated 1 Aug 2026). The cleanest in-window account of unattended overnight work as routine, in ordinary present tense: *"I'll open my laptop in the morning to a stack of green pull requests that agents shipped overnight, with features ready to merge before my first meeting."* Every.to is his employer's venue — the practice is evidence, any throughput metric on that site is not. fallback: none; the claim is that engineers do this, not that it pays.
@@ -85,7 +85,7 @@ Format → `curriculum/backing-format.md`. Absorbed 2026-08-01 from the legacy `
 
 **Stance** `[stance:2026-08-01 level:L2]`
 - holds: almost all of this lecture is the design's own stance and is not the field's to confirm — the first run correctly returned very little, because there was little owed. What it does assert about the world survives at L1–L2: multi-hour largely-unattended runs are published practice by named people (Klaassen wakes to overnight PRs; Horthy ran six hours and checked in only at the end), and the *"when the task warrants it"* hedge is carrying real weight, because two data points is not convergence.
-- contested: **whether longer is better, which the lecture does not claim but nearly implies.** Ronacher, in window: *"present-day hands-off harnesses like Claude Code with ultracode produce worse code than what we were producing last autumn… working uninterrupted on a problem for thirty minutes or more."* Horthy pulled his own Ralph loops back to small cron-bounded overnight jobs. Klaassen found *"more agents didn't make me faster."* None of that touches *whether* engineers run long; all of it touches whether they should, and *"ambition and length grow run by run"* sits next to it uncomfortably.
+- contested: **whether longer is better, which the lecture does not claim but nearly implies.** Ronacher, in window: *"present-day hands-off harnesses like Claude Code with ultracode produce worse code than what we were producing last autumn… working uninterrupted on a problem for thirty minutes or more."* Horthy pulled his own Ralph loops back to small cron-bounded overnight jobs. Klaassen found *"more agents didn't make me faster."* None of that touches *whether* engineers run long; all of it touches whether they should, and *"ambition and length grow session by session"* sits next to it uncomfortably.
 - decided: **M4 owes no run-length caveat, 2026-08-02.** `engineers-run-for-hours` describes practice and the lecture never claims longer is better, so there is nothing to correct — only an adjacent fact left unsaid. Three of the six practitioners searched carry recent reservations about long uninterrupted runs specifically, and Ronacher states the opposite default outright (*"I rarely interrupt it, unless it's a small task"*). This lecture's job is to get a run sent, not to litigate run length; M5 is where packaging becomes the answer to it. Re-open if a fourth voice makes run length a named discipline rather than a preference.
 - decided: **the cancellation delivery note is fixed and the claim demoted, 2026-08-01.** The note told the trainer to frame cancellation as *what real operators do* and the roster does not carry that: six practitioners searched, nobody names the lecture's three signals, and the nearest support (Horthy on discarding a session) is out of window and about restarting rather than reading a trace. The rule itself stands untouched — *cancel is legitimate, traces are data* is good for a classroom whether or not practitioners publish it. What it may not do is borrow their authority.
 - would-move-it: practitioner accounts showing un-packaged runs at this length usually complete without a legible defect, which would make the two-run contrast land on nothing and turn the M5 packaging payoff into an assertion. In the other direction, and now the more likely one: enough named practitioners moving to short bounded runs that *"ambition and length grow"* reads as advice the field has left behind.

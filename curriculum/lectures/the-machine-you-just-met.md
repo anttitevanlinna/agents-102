@@ -11,9 +11,9 @@ The machine you just met has three behaviors that look like quirks and are not: 
 
 ## A check resets the chain
 
-- Each step is mostly right, and each step builds on the one before. One mostly-right answer reads fine on its own. A run is not one answer; it is a chain of them, each standing on the last.
+- Each step is mostly right, and each step builds on the one before. One mostly-right answer reads fine on its own. A session is not one answer; it is a chain of them, each standing on the last.
 - Enough mostly-right steps stacked without a check, and the end of the chain is mostly wrong. If each step were right nine times in ten, the odds that a seven-step chain is still right by the end would fall below a coin flip. The numbers are an illustration, not a measurement; the stacking is what holds. The field calls it an **error cascade**.
-- A check from outside the run resets the chain. A failing test does not care how confident the answer sounded. Everything after the check builds on verified ground, and no chain grows long enough for the stacking to take over.
+- A check from outside the session resets the chain. A failing test does not care how confident the answer sounded. Everything after the check builds on verified ground, and no chain grows long enough for the stacking to take over.
 - That is why the failing test came before the fix. The check existed before the code it was checking. Every edit after it had a floor to stand on.
 
 ## It answers in essays
@@ -26,7 +26,7 @@ The machine you just met has three behaviors that look like quirks and are not: 
 
 - All three behaviors come from the same machine. A statistical machine tuned first for likelihood and then for approval will mirror your stance, answer in full, and be mostly right at each step. None is a malfunction. All three are the design running as built.
 - The mirror is steered by what you bring. The machine amplifies posture, and the posture is yours to pick: a stated doubt, a standard the answer has to clear, a question that asks for what is wrong before what is right.
-- The chain of mostly-right steps is steered by what you build. A test, a type check, a second read with a different question. Each sits outside the run and resets the chain every time it runs.
+- The chain of mostly-right steps is steered by what you build. A test, a type check, a second read with a different question. Each sits outside the session and resets the chain every time it runs.
 - The essay is steered by what you ask. A ranked list first, detail on request. The answer's shape is a prompt choice, not a property you live with.
 
 That is the machine. The rest is steering.
@@ -60,7 +60,7 @@ Format → `curriculum/backing-format.md`.
 - `self-report-is-hypothesis` · vision · "The report is a hypothesis to check, not ground truth" ← none-owed
 - `error-cascade-term` · detail · "The field calls it an **error cascade**" ← owasp-asi08-cascading-failures
 - `chain-stacking-illustration` · vision · "If each step were right nine times in ten … The numbers are an illustration, not a measurement" ← none-owed
-- `check-resets-chain` · vision · "A check from outside the run resets the chain" ← none-owed
+- `check-resets-chain` · vision · "A check from outside the session resets the chain" ← none-owed
 - `essays-are-the-default` · vision · "Complete, not prioritized, is the machine's default" ← none-owed
 - `never-say-everything` · vision · "**Never let the agent say everything.** The shape of the answer is part of the prompt." ← none-owed
 

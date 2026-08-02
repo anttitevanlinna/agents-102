@@ -28,13 +28,13 @@ The one trainer doc. **Start here** is the delivery contract — read it once be
 - You carry the push-backs. The full run-sheet tabs (M1/M2/M4/M5) list them verbatim.
 - Weekly cadence: open every non-first session by naming last week's state and the artifact this module expects. Messy state is data, not a moral failing — the artifact is whatever exists.
 
-**Prep per session.** The train-the-trainer run-through was the primary prep: you did the exercises on your own repo, and the artifacts it left (rules files, branches, run coordinates, transcripts) are your demo-repo starting states. Keep them. Then, per session:
+**Prep per session.** The train-the-trainer run-through was the primary prep: you did the exercises on your own repo, and the artifacts it left (rules files, branches, session coordinates, transcripts) are your demo-repo starting states. Keep them. Then, per session:
 
-- **Re-run what staled.** Bring your demo repo to the module tab's "Demo repo starting state"; re-run only the beats you fumbled at the TTT. Skipped the TTT? The full dry-run is on you — for M4→M5 that is a working day plus run-wait, and a 15–30-minute send-off run produces all the rehearsal material you need.
-- **Rehearse, don't run.** Read the module page; walk the prompt progression against the tab (what each prompt depends on, what evidence it leaves). Lectures have a floor: reading the projected slide aloud is acceptable delivery — the bar is fielding one question, not performing from memory. Note two or three moments from your own runs to narrate during agent waits.
+- **Re-run what staled.** Bring your demo repo to the module tab's "Demo repo starting state"; re-run only the beats you fumbled at the TTT. Skipped the TTT? The full dry-run is on you — for M4→M5 that is a working day plus the send-off wait, and a 15–30-minute send-off session produces all the rehearsal material you need.
+- **Rehearse, don't run.** Read the module page; walk the prompt progression against the tab (what each prompt depends on, what evidence it leaves). Lectures have a floor: reading the projected slide aloud is acceptable delivery — the bar is fielding one question, not performing from memory. Note two or three moments from your own sessions to narrate during agent waits.
 - **Have ready.** This tab's module sheet; sponsor homes confirmed (ADRs, rules file, ticket tracker, team kit); the fallback-repo answer — a student whose repo doesn't fit builds their own in ~15 minutes via the build-a-project-from-zero supplementary, nothing to provision.
 
-**Two-day cohort schedule.** (Weekly sittings: one module per sitting at the tab's sitting column.) Default rhythm: 08:30 start, 1h15 lunch, 20-min breaks; adjust to your sponsor's cadence. Architectural commitments: M1–M3 on Day 1, M4–M6 on Day 2, lunch between M5 and M6 so both async runs have time to produce something M6 can read.
+**Two-day cohort schedule.** (Weekly sittings: one module per sitting at the tab's sitting column.) Default rhythm: 08:30 start, 1h15 lunch, 20-min breaks; adjust to your sponsor's cadence. Architectural commitments: M1–M3 on Day 1, M4–M6 on Day 2, lunch between M5 and M6 so both async sessions have time to produce something M6 can read.
 
 | Day 1 | Block |
 |---|---|
@@ -53,8 +53,8 @@ The one trainer doc. **Start here** is the delivery contract — read it once be
 | 10:00 – 10:20 | Break (≥15 min stays real if M4's tail eats into it) |
 | 10:20 – 12:20 | M5 (2h; zero slack — the 15-min cushion is fully booked by the worktree fork (~10, start it the moment the room settles) and the closers' honest 19–24; if the fork fights back, cap Phase 4 at half-pages — M5 tab cut order #1) |
 | 12:20 – 13:35 | Lunch — the packaged re-send runs through it |
-| 13:35 – 13:50 | Re-entry: nudge a stalled M5 run, settle in |
-| 13:50 – 15:35 | M6 (1h45) — opens in a FRESH session at the same worktree (the M5 session may still be running; read both runs from disk before any write) |
+| 13:35 – 13:50 | Re-entry: nudge a stalled M5 session, settle in |
+| 13:50 – 15:35 | M6 (1h45) — opens in a FRESH session at the same worktree (the M5 session may still be running; read both sessions from disk before any write) |
 | 15:35 – 15:50 | Closing Day 2 |
 
 Don't split M4 across the days: its flow is one sequential beat and the send-off is the close; the M3→M4 task-pick homework is the designed spillover. An alternative shape exists (M1-M2-M4 / M5-M3-M6, for cohorts that want the overnight M4→M5 hinge) — that's a call to make with your delivery contact before the cohort, not solo.
@@ -71,10 +71,10 @@ Don't split M4 across the days: its flow is one sequential beat and the send-off
 8. **Absence is data.** No tests, no ADR convention, thin memory: name the gap, write the smallest durable note, keep moving.
 9. **Teach the shipped prompt by default; show a better way when you have one.** Never on send-off prompts — their under-specification is the curriculum.
 10. **Ask for critique, not defense.** "What is weakest?" produces evidence; "justify this" produces confident prose. And push back on question dumps — one-at-a-time means one at a time.
-11. **Weak runs are evidence.** Don't rescue too early; never rescue the M4 un-packaged run. A student output that differs from yours is comparison material, not error — compare the evidence, not the polish.
+11. **Weak sessions are evidence.** Don't rescue too early; never rescue the M4 un-packaged session. A student output that differs from yours is comparison material, not error — compare the evidence, not the polish.
 12. **Mood.** Each module names a target mood in its tab. "Below 7" means the target is visibly absent — you never poll the room; run the Check in the tab's decision points, then the Fix. Calibration: at 8 the content carries the mood itself; a 7 lands only because you are compensating; below 7 a neighbouring mood has taken over (technical warm-up where joy should be, compliance where curiosity should be).
 
-**The room.** You are a practitioner, not an oracle. Protect the live run above all: if time slips, compress framing and move polish to homework — never "cover" the module at the cost of the exercise. Answer "what's the right way" in context and give your judgment. Steal better workflows from the room with pride. One broken laptop gets 30 seconds of triage, then a buddy — don't stop the room. With ten-plus concurrent runs you cannot inspect them all: when the agent is hiding evidence or pushing students toward accidental approval, name the pattern to the whole room and hand the decision back; spot-assist only where it unblocks the protected exercise. And don't become the grader — students are adult professionals in their own repos; help them see what an artifact rests on (quoted evidence, trace, diff), then they decide if it's good enough for their team. A quiet Nordic first beat is not no-signal; make the opening concrete and easy. Narrate agent waits (tool use, files touched, what the prompt is shaping). Fast room: go deeper, don't pad. Slow room: cut asides, don't sprint.
+**The room.** You are a practitioner, not an oracle. Protect the live exercise above all: if time slips, compress framing and move polish to homework — never "cover" the module at the cost of the exercise. Answer "what's the right way" in context and give your judgment. Steal better workflows from the room with pride. One broken laptop gets 30 seconds of triage, then a buddy — don't stop the room. With ten-plus concurrent sessions you cannot inspect them all: when the agent is hiding evidence or pushing students toward accidental approval, name the pattern to the whole room and hand the decision back; spot-assist only where it unblocks the protected exercise. And don't become the grader — students are adult professionals in their own repos; help them see what an artifact rests on (quoted evidence, trace, diff), then they decide if it's good enough for their team. A quiet Nordic first beat is not no-signal; make the opening concrete and easy. Narrate agent waits (tool use, files touched, what the prompt is shaping). Fast room: go deeper, don't pad. Slow room: cut asides, don't sprint.
 
 **Never:**
 
@@ -83,7 +83,7 @@ Don't split M4 across the days: its flow is one sequential beat and the send-off
 - Pre-summarize a lecture before its slot lands.
 - Apologize for agent waits.
 - Auto-promote personal learnings to team PRs.
-- Rescue a contrast exercise's first run early.
+- Rescue a contrast exercise's first session early.
 
 **After delivery.** Note per module what slipped and what fired, while it's fresh, and route it through your delivery contact (ArcticRex). Don't rely on memory.
 
@@ -503,7 +503,7 @@ Never compress the two closing lectures. What packaging is → The gate is a cla
 3. Lecture — [Story of Module 6](./#lectures-story-of-module-6) (opener; permission-giving memo from this module's own generation)
 4. Lecture — [Quality is grounding](./#lectures-quality-is-grounding) (opener-bridge, 4–6 min; names the quality arc M1→M6)
 5. Exercise — [Spot gaps, build the loop](./#exercises-spot-gaps-build-the-loop) (30–40 min; diff two runs, cut a stale rule, route the dominant gap, scan the stack for recurring work-shapes)
-6. Lecture — [Composing the workflow](./#lectures-composing-the-workflow) (closer-area teacher; 3–4 min; the passage chart re-labelled with the student's kit + the four composition mechanisms)
+6. Lecture — [Composing the workflow](./#lectures-composing-the-workflow) (closer-area teacher; 3–4 min; the passage chart re-labelled with the student's kit; composition variety first — by hand, through files — then the four wirings of one documented kit)
 7. Lecture — [The loop has a name](./#lectures-the-loop-has-a-name) (closer; names *eval* across verifier / judge / gate, anchored on the M5 verifier and the checking-primitives menu)
 8. Lecture — [The map, filled in](./#lectures-the-map-filled-in) (final theory closer, 8–10 min; the whole map drawn solid across M1–M6)
 9. Lecture — [Agents that build agents](./#lectures-agents-that-build-agents) (forward closer; the training's closing beat, dead-last per the 2026-07-03 re-sequence)

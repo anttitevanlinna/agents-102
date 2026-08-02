@@ -1,24 +1,24 @@
-# Read the run before you fix it
+# Read the session before you fix it
 
 ## Diagnose first, fix later
 
-- The artefact is data, whatever came back. You sent off an un-packaged run. Stopped, finished, ran out of credit: there is something to read now, and reading it is the work.
+- The artefact is data, whatever came back. You sent off an un-packaged session. Stopped, finished, ran out of credit: there is something to read now, and reading it is the work.
 - **Diagnose first. Fix later.** The move cuts against most engineering instinct. When an agent gets something wrong, the reflex is to fix it immediately: edit the prompt, add a constraint, reach for the next tool. This module holds that reflex off. The failures earn the validation that catches them.
 - The arc is *test → learn → encode*. The un-packaged send-off was the test. This is the learn. The encode turns what the read finds into durable checks.
 
-The run shows you what no benchmark can.
+The session shows you what no benchmark can.
 
 ## Three failure lenses
 
-- **Goal drift.** The agent solved an adjacent problem with confidence: the instruction got buried or the scope got redirected, and the run kept going.
+- **Goal drift.** The agent solved an adjacent problem with confidence: the instruction got buried or the scope got redirected, and the session kept going.
 - **Context rot.** Signal-to-noise dropped as the working window filled; the agent rehashed approaches it had already ruled out an hour ago.
 - **Plausible-but-wrong.** Outputs look reasonable in isolation and don't match the spec. The most expensive failure to find, because nothing about it looks broken.
 - Every artefact gets read through all three. One lens usually dominates; the read still walks each one, because the lens you skip is the failure you can't name.
 
 ## Managing the window
 
-- **Never trust the window** to hold over a long run. Compact early and manually if you like: `/compact focus on the failure modes and the validation I'm sketching` keeps what you choose, where a bare `/compact` keeps whatever the summariser guessed mattered. Many good engineers just let auto-compact fire. No winning strategy here, and no percentage worth memorising.
-- Manual compaction works because you're at the keyboard. The diagnosis is bounded keyboard work. The re-send at the end of this module runs for hours while you're away, and a run nobody is watching can't be manually compacted.
+- **Never trust the window** to hold over a long session. Compact early and manually if you like: `/compact focus on the failure modes and the validation I'm sketching` keeps what you choose, where a bare `/compact` keeps whatever the summariser guessed mattered. Many good engineers just let auto-compact fire. No winning strategy here, and no percentage worth memorising.
+- Manual compaction works because you're at the keyboard. The diagnosis is bounded keyboard work. The re-send at the end of this module runs for hours while you're away, and a session nobody is watching can't be manually compacted.
 - Hands-off option one: trust auto-compact. The model decides what to keep when its window fills. Sometimes useful, sometimes wrong; better than dropping context entirely.
 - Hands-off option two: give the agent something durable to re-read. A working document the agent owns and updates. A reference it diffs its output against. An automated check that fires on produced work. Files on disk survive compaction; conversation-only instructions may not. Once those exist, auto-compact can fire and the agent re-anchors from what survives.
 - Option two is what the exercise builds. `/compact` is session management, not packaging. The whole point of packaging is that you can leave the room.
@@ -50,7 +50,7 @@ Claims
 - `test-learn-encode` · vision · "The arc is *test → learn → encode*." ← none-owed
 - `three-failure-lenses` · detail · "**Goal drift** … **Context rot** … **Plausible-but-wrong**" ← three-failure-modes
 - `skip-a-lens-lose-a-name` · vision · "the lens you skip is the failure you can't name" ← none-owed
-- `never-trust-the-window` · vision · "Never trust the window to hold over a long run." ← none-owed
+- `never-trust-the-window` · vision · "Never trust the window to hold over a long session." ← none-owed
 - `compact-with-instructions` · detail · "`/compact focus on the failure modes and the validation I'm sketching` keeps what you choose" ← anthropic-compact-docs
 - `auto-compact-is-legitimate` · detail · "Many good engineers just let auto-compact fire." ← osmani-long-running, amp-neo, steipete-inference-speed
 - `no-percentage-worth-memorising` · detail · "No winning strategy here, and no percentage worth memorising." ← humanlayer-long-context, cc-autocompact-varies, horthy-ace-fca

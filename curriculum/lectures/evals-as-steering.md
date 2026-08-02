@@ -18,7 +18,7 @@ Not because evals are tests for AI output. That is too small.
 
 Evals are how you write down what good means so the system can keep applying it when you are not in the chair.
 
-In the full agent picture, evals turn checks into a loop. The model generates, the judge checks, the tactic changes, and the next run starts from a sharper place.
+In the full agent picture, evals turn checks into a loop. The model generates, the judge checks, the tactic changes, and the next session starts from a sharper place.
 
 ## Module 5 turned judgment into a judge
 

@@ -1,6 +1,6 @@
 # Lint — Jargon Ban (Cumulative)
 
-**Catches:** banned business-audience jargon appearing in student-facing text before it's earned with a plain definition tied to what the student just did. See `.claude/skills/content-creation/SKILL.md` § Business-audience jargon ban for the banned list and the SVP test.
+**Catches:** banned business-audience jargon appearing in student-facing text before it's earned with a plain definition tied to what the student just did. This lint is the canonical home of the banned list (pointed at by `check_student_facing.md §3`, `check_writing.md`, `curriculum/vocabulary.md`). SVP test: would an SVP of marketing flinch at the word? Any flinch = replace or earn.
 
 **Cumulative across arc order:** a term may be earned in Mn and then used freely Mn+1 onward. The lint reads modules in sequence and tracks where each term is introduced vs. where it's used.
 
@@ -20,7 +20,7 @@ READ IN SEQUENCE (arc order):
 - personal-to-team.md (M7) + inlined
 - agents-building-agents.md (M8) + inlined
 
-BANNED WORDS (from SKILL.md § Business-audience jargon ban):
+BANNED WORDS (canonical list):
 embeddings, vector, vector database, RAG, retrieval-augmented generation, retrieval (technical sense), pipeline (technical sense), orchestration, orchestrator, schema, architecture, subagent, frontmatter, prompt engineering, inference (technical sense), fine-tuning, statistical default(s), token (technical sense), context window
 
 HARD-BANNED WORDS (never earnable — substitute "exercise"):

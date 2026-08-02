@@ -38,7 +38,7 @@ Classical software security is a mature discipline. It has network controls, acc
 
 **Before you arrive: five lines, in your own voice.**
 
-Module 4's first exercise asks you to type three to five lines about what matters about your company's data and your agent system after the raw policy run. Not a quiz; raw judgment. Have a few specifics warm in your head when class starts, or jot them somewhere you can paste from. Examples of the shape:
+Module 4's first exercise asks you to type three to five lines about what matters about your company's data and your agent system after you run the policy files raw. Not a quiz; raw judgment. Have a few specifics warm in your head when class starts, or jot them somewhere you can paste from. Examples of the shape:
 
 - *"We process customer call recordings; voice data has to stay in-region."*
 - *"Sales never lets unredacted CRM exports leave the building."*

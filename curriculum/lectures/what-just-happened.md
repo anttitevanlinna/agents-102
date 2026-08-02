@@ -6,7 +6,7 @@ That's a small thing. It's also the whole thing.
 
 The rest of the training is seven more instances of the same move. Iterate, learn, encode. Change something, notice what shifted, adjust, build again. You just did a round of it; you'll do a lot more.
 
-The site was the visible surface. The durable thing is the behavior you can now package: what context the agent needs, what generic looks like, what a stronger pass does differently, and which rule should survive into the next run.
+The site was the visible surface. The durable thing is the behavior you can now package: what context the agent needs, what generic looks like, what a stronger pass does differently, and which rule should survive into the next session.
 
 Two beats worth naming, because the mechanism you just used is older than AI.
 
@@ -14,7 +14,7 @@ Two beats worth naming, because the mechanism you just used is older than AI.
 
 **Mental models only come from doing.** Before today, you had a vocabulary. Now you have a little piece of felt experience. Those are different goods. A vocabulary is cheap; a felt model is the thing a leader uses to make a decision at 4pm on a Tuesday when the next reorganisation is being argued about. Nobody can give you a felt model. You can only catch one by reaching for it.
 
-Everything in the next seven modules is more of this. More reaching, more watching, more adjusting, more rules that make the next run start smarter. Don't expect a lecture to replace the doing. There isn't one.
+Everything in the next seven modules is more of this. More reaching, more watching, more adjusting, more rules that make the next session start smarter. Don't expect a lecture to replace the doing. There isn't one.
 
 Now: five minutes with Claude. The debrief.
 

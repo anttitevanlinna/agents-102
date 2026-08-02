@@ -88,6 +88,8 @@ Canonical module file shape (Big Idea / Meta / Plug Points / Debrief / Bridge): 
 
 People who learn by doing. They build something, and the understanding follows. The curriculum rests on three emergences.
 
+The words themselves are controlled: `curriculum/vocabulary.md` is the registry (session/task/run, kit terms, register splits). Check it before coining a term; a new word is a registry decision, not a drafting choice.
+
 ### Emergent knowledge
 
 Knowledge is not transmitted. It emerges from practice. Participants build the thing before they learn what it's called. *"What you just created — that pattern is called orchestration."* Not *"Orchestration is a pattern where..."*

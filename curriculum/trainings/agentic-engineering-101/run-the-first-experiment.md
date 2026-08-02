@@ -13,9 +13,9 @@ Come without having picked the task and you'll be scrambling for one while the r
 
 Optional forward-look: [What is agentic engineering](trainings/agentic-engineering-101/supplementary/what-is-agentic-engineering.md). And when your sessions start running heavy, [Token efficiency](trainings/agentic-engineering-101/supplementary/token-efficiency.md) on keeping the context window lean.
 
-If Simon Willison's [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/) is still on your list from Module 3, read it before the send-off: it names the thinking you do before stepping away from a run, and today you step away.
+If Simon Willison's [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/) is still on your list from Module 3, read it before the send-off: it names the thinking you do before stepping away from a session, and today you step away.
 
-If you read [Why Software Factories Fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md) in the gap after Module 1, this module's un-watched run may look like exactly what that essay warns against. It isn't. The run leaves from a pinned commit on a throwaway branch, sized as an experiment, and the planning and checks the essay says are missing are what Module 5 builds. You are not running the factory; you are collecting your own copy of its evidence, on purpose.
+If you read [Why Software Factories Fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md) in the gap after Module 1, this module's un-watched session may look like exactly what that essay warns against. It isn't. The task leaves from a pinned commit on a throwaway branch, sized as an experiment, and the planning and checks the essay says are missing are what Module 5 builds. You are not running the factory; you are collecting your own copy of its evidence, on purpose.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -32,7 +32,7 @@ Short loops sit behind you so far: a bug fix, a plan read. This is the first lon
 
 *The agent can read your tracker if you've wired one up. Give it your criteria first (sustained coherence, requirement-weaving, multi-file reasoning) or the hunt returns noise. Finding the task is still your judgement about what's been sitting. Bring one or two candidates to the exercise's first step and the agent screens them for fit.*
 
-The map has a far side. Before the first long run, see the country you are entering.
+The map has a far side. Before the first long session, see the country you are entering.
 
 [Lecture: The far half of the map](lectures/the-far-half.md)
 
@@ -47,12 +47,12 @@ Next, the thing you are sending: an LLM calling tools in a loop.
 ## Key Concepts
 - Gap analysis is *walk the system you have against the system the task needs*. The system you have is what gets tested.
 - Un-packaged is by design. The packaging move only lands once you've seen what un-packaged gets wrong
-- Traces are data. Stop the run when you've seen what you needed to see. Stopping is reading, not failing.
+- Traces are data. Stop the session when you've seen what you needed to see. Stopping is reading, not failing.
 - Every send-off is an experiment, not a production run you need to get right first time
 
 ## Send the task off
 
-The run is about to leave your hands. Before it does, the trap that earned trust sets for the watcher:
+The task is about to leave your hands. Before it does, the trap that earned trust sets for the watcher:
 
 [Lecture: The ironies of automation](lectures/ironies-of-automation.md)
 
@@ -60,13 +60,13 @@ No compound pass at the close. The send-off is the close of the work. Your rules
 
 Before you send, set up the two markers you'll return to.
 
-First, the record of this run. Claude Code keeps a full transcript of every session on disk, the complete scrollback, written live and automatically. Find yours now; on the return you'll point a fresh session straight at it.
+First, the record of this session. Claude Code keeps a full transcript of every session on disk, the complete scrollback, written live and automatically. Find yours now; on the return you'll point a fresh session straight at it.
 
 Ask Claude where the record of this session lives.
 
 {{prompt:ae101-m4-locate-transcript}}
 
-Now pin the starting point. Whatever's in your working tree right now lands in this commit, so if you have unrelated WIP, stash or scope it out before pasting the prompt. The commit also writes the branch name and that transcript path into `task.md`, so a later session recovers this run from disk instead of hunting for it.
+Now pin the starting point. Whatever's in your working tree right now lands in this commit, so if you have unrelated WIP, stash or scope it out before pasting the prompt. The commit also writes the branch name and that transcript path into `task.md`, so a later session recovers this experiment from disk instead of hunting for it.
 
 Ask Claude to commit current state on a feature branch, record the coordinates, and tell you the short SHA.
 
@@ -74,18 +74,18 @@ Ask Claude to commit current state on a feature branch, record the coordinates, 
 
 The starting-point commit is local, and that's the default. This experiment is throwaway work you can reset away. The return forks from the local commit, so nothing later needs a push.
 
-Optional: if you want the run to outlast your laptop or to hand it to someone, ask Claude to push the branch and set its upstream.
+Optional: if you want the experiment to outlast your laptop or to hand it to someone, ask Claude to push the branch and set its upstream.
 
 {{prompt:ae101-m4-push-starting-point}}
 
-One more check before the send, <!--flag:module:earn-the-trust-->the same three questions from Module 3's close, now pointed at this run<!--/flag:module:earn-the-trust--><!--flag:no-module:earn-the-trust-->three questions pointed at this run<!--/flag:no-module:earn-the-trust-->: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening prompt injection needs, and a run this long reads far more than you'll watch. All three present here, cut one leg before you paste: read-only where write isn't needed, hold the push until you've read the return, an allowlist where the run needs the web. The frame is [The lethal trifecta](trainings/agentic-engineering-101/supplementary/the-lethal-trifecta.md): three legs, cut one.
+One more check before the send, <!--flag:module:earn-the-trust-->the same three questions from Module 3's close, now pointed at this session<!--/flag:module:earn-the-trust--><!--flag:no-module:earn-the-trust-->three questions pointed at this session<!--/flag:no-module:earn-the-trust-->: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening prompt injection needs, and a session this long reads far more than you'll watch. All three present here, cut one leg before you paste: read-only where write isn't needed, hold the push until you've read the return, an allowlist where the session needs the web. The frame is [The lethal trifecta](trainings/agentic-engineering-101/supplementary/the-lethal-trifecta.md): three legs, cut one.
 
 Ask Claude to run the scoped task end-to-end in this same session, with your rules files, memory, ADRs, and skills loaded.
 
 {{prompt:ae101-m4-take-task-end-to-end}}
 
 
-The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). If watching surfaces a wobble that tells you what next module will diagnose, stop the run; the trace is the result.
+The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). If watching surfaces a wobble that tells you what next module will diagnose, stop the session; the trace is the result.
 
 You'll run more work async from here on.
 
@@ -103,23 +103,23 @@ Before you close: read [Reading the return](lectures/reading-the-return.md). It 
 
 ## Next
 
-The next module opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this run lives, so when the next slot lands a fresh session reads it straight from `task.md`, no hunting through past sessions. Transcripts persist on disk regardless; see [Claude Code for engineers, session transcripts](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for what they hold. Close the session once the run is done; the trace is on disk.
+The next module opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this session lives, so when the next slot lands a fresh session reads it straight from `task.md`, no hunting through past sessions. Transcripts persist on disk regardless; see [Claude Code for engineers, session transcripts](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for what they hold. Close the session once the agent is done; the trace is on disk.
 
 ## Bring to Module 5
 
-A run that produced something. Read the agent's scrollback or commits from the send-off; check the agent didn't just stall in the first minute. A stopped run counts; the trace is the artefact. Bring the three failure modes from [Reading the return](lectures/reading-the-return.md) as your reading lens.
+A session that produced something. Read the agent's scrollback or commits from the send-off; check the agent didn't just stall in the first minute. A stopped session counts; the trace is the artefact. Bring the three failure modes from [Reading the return](lectures/reading-the-return.md) as your reading lens.
 
-Come to Module 5 without a run and you'll be scrambling for material while the room is already reading theirs. Your call.
+Come to Module 5 without a session and you'll be scrambling for material while the room is already reading theirs. Your call.
 
 ## Pre-reads before Module 5
 
-Optional. They sit in the gap while your un-packaged run is still going. All four point at the same surprise: the effort in agent work sits in the framing and the checking, not the typing. The next session picks this up from your own run.
+Optional. They sit in the gap while your un-packaged session is still going. All four point at the same surprise: the effort in agent work sits in the framing and the checking, not the typing. The next session picks this up from your own experiment.
 
-**Read, [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md).** Uncle Bob's public learning journey with AI coding: early speed, mercury-like unpredictability, then tests, architecture visibility, and formal constraints as steering. It moves the question from "the agent ran" to "what would have constrained the drift?", the question you'll put to your own run next.
+**Read, [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md).** Uncle Bob's public learning journey with AI coding: early speed, mercury-like unpredictability, then tests, architecture visibility, and formal constraints as steering. It moves the question from "the agent ran" to "what would have constrained the drift?", the question you'll put to your own session next.
 
-**Watch, Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich).** Interview video and write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. You'll find the same split in your own run.
+**Watch, Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich).** Interview video and write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. You'll find the same split in your own session.
 
-**Read, [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md).** Some tasks are far cheaper to check than to do, and delegation pays exactly there. The verifier built next is often worth more than the run it checks.
+**Read, [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md).** Some tasks are far cheaper to check than to do, and delegation pays exactly there. The verifier built next is often worth more than the task it checks.
 
 **Read (longer), Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).** The term and the philosophy, and the 80/20 that follows from it: the weight sits on planning and review, and that is where the next hour goes.
 
@@ -194,7 +194,7 @@ Optional. They sit in the gap while your un-packaged run is still going. All fou
 | Phase 3 — *"settle the `observations/` tree on disk before the send-off"* | student plans the tidy-up in chat but never lands the diff | Trainer: *"show me the diff landed before you paste the send-off."* |
 | Send-off — *"pin the SHA on the named branch before sending off"* | Student notes the SHA but not the branch name, OR closes the session before the commit completes; M5's worktree instruction lands with an ambiguous starting point | Trainer push: *"read me back the branch name and SHA Claude confirmed. Have you noted both somewhere you'll find at M5 start?"* |
 | Send-off — *"send un-packaged"* | Debrief pre-empt — student tries to package (add plan.md, build a verifier) before sending off | Trainer push: *"un-packaged is by design. M5 teaches you packaging by diagnosing what breaks here. Don't pre-empt the learning."* |
-| Send-off — *"stop the run when you've seen enough; the trace is the result"* | Send-off anxiety — student hesitates at the final prompt or feels they owe the experiment a completed artifact | Trainer push: *"stop it when you've seen enough. Traces are data. You don't owe the experiment a completed artifact — you owe it a result you can read."* |
+| Send-off — *"stop the session when you've seen enough; the trace is the result"* | Send-off anxiety — student hesitates at the final prompt or feels they owe the experiment a completed artifact | Trainer push: *"stop it when you've seen enough. Traces are data. You don't owe the experiment a completed artifact — you owe it a result you can read."* |
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 - `[checked:2026-07-02 result:CAVEAT due:2026-08-09]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen Definitive Guide (Feb 9 2026); core "each unit makes the next easier" thesis verified, explicit plan/work/review/compound naming is convergent-across-appearances not verbatim-on-page. fallback: phrase as "the loop that runs through his work" — never a step count; the loop expanded 2026-05-29 and a count is what dated last time (strategy doc Woven rule #1). Treat any Every.to outcome metric as vendor-self-reported.

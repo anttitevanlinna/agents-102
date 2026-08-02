@@ -2,12 +2,12 @@
 
 The packaged re-send is running and the laptop is closed again. What you assembled to get there has names.
 
-## One run, plotted
+## One session, plotted
 
-First the shape, then the names: one long run, drawn as a sea passage.
+First the shape, then the names: one long session, drawn as a sea passage.
 
 <figure class="diagram">
-<svg viewBox="0 0 1200 560" role="img" aria-label="One agent run plotted as a sea passage: drift cones widen between position fixes and collapse at each fix; rails fence the reef; an unchecked twin run drifts across the no-go line into the rocks and arrives at the wrong harbor." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
+<svg viewBox="0 0 1200 560" role="img" aria-label="One agent session plotted as a sea passage: drift cones widen between position fixes and collapse at each fix; rails fence the reef; an unchecked twin session drifts across the no-go line into the rocks and arrives at the wrong harbor." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
 <defs>
  <pattern id="ps-reefhatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
  <line x1="0" y1="0" x2="0" y2="7" stroke="#a05a2c" stroke-width="1" opacity="0.45"/>
@@ -155,7 +155,7 @@ First the shape, then the names: one long run, drawn as a sea passage.
 <circle cx="1078" cy="130" r="2" fill="#a05a2c"/>
 <!-- ======= cartouche ======= -->
 <rect x="42" y="24" width="286" height="74" fill="none" stroke="#cbbd98" stroke-width="1"/>
-<text x="56" y="45" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" letter-spacing="3" fill="#8a3a2a" opacity="0.85">ONE RUN, PLOTTED</text>
+<text x="56" y="45" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" letter-spacing="3" fill="#8a3a2a" opacity="0.85">ONE SESSION, PLOTTED</text>
 <text x="56" y="67" font-family="Roboto Slab, Georgia, serif" font-size="15.5" fill="#1f1a13">The passage</text>
 <text x="56" y="85" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234">drift grows between checks. a fix resets it.</text>
 <!-- ======= labels ======= -->
@@ -164,7 +164,7 @@ First the shape, then the names: one long run, drawn as a sea passage.
 <!-- drift explainer on the first cone -->
 <line x1="205" y1="290" x2="240" y2="240" stroke="#786c56" stroke-width="0.8" opacity="0.55"/>
 <text x="170" y="302" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" letter-spacing="2.5" fill="#1f1a13" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">DRIFT SINCE LAST CHECK</text>
-<text x="170" y="318" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">the wedge: everywhere the run might be</text>
+<text x="170" y="318" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">the wedge: everywhere the session might be</text>
 <!-- a fix is a check -->
 <line x1="468" y1="166" x2="468" y2="184" stroke="#786c56" stroke-width="0.8" opacity="0.55"/>
 <text x="468" y="144" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2.5" fill="#2f6b6b" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">A FIX · A CHECK</text>
@@ -183,7 +183,7 @@ First the shape, then the names: one long run, drawn as a sea passage.
 <text x="600" y="505" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="2.5" fill="#a05a2c" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE RAILS</text>
 <text x="600" y="521" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">fenced where damage can't be undone</text>
 <!-- ghost -->
-<text x="1000" y="382" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2.5" fill="#786c56" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE SAME RUN, UNCHECKED</text>
+<text x="1000" y="382" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2.5" fill="#786c56" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE SAME SESSION, UNCHECKED</text>
 <text x="1000" y="397" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#786c56" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">no fixes. one wedge, all the way.</text>
 <!-- wrong harbor -->
 <text x="1030" y="500" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" letter-spacing="2.5" fill="#8a3a2a" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">WRONG HARBOR</text>
@@ -196,18 +196,18 @@ First the shape, then the names: one long run, drawn as a sea passage.
 </svg>
 </figure>
 
-- Drift grows with distance since the last check. The agent steers each step from its own previous step, so small errors compound silently until something outside the run measures position. On the chart that is the wedge: everywhere the run might be.
-- **A check is a position fix**. At a fix the wedge of possible states collapses to a point, and the next leg starts from a known position instead of an assumption. The diagnose-and-re-send you just ran was exactly this move: measure where the run actually is, then aim the next leg from there.
-- Rails belong where damage cannot be undone. Fence the reef, not the open water. At an irreversible edge a standing check stays lit whether anyone remembers to look or not; where redo is cheap, let the run sail.
-- An unchecked run arrives confident, and wrong. Same start, no fixes, one wedge widening the whole way. The success report comes from the wrong harbor.
+- Drift grows with distance since the last check. The agent steers each step from its own previous step, so small errors compound silently until something outside the session measures position. On the chart that is the wedge: everywhere the session might be.
+- **A check is a position fix**. At a fix the wedge of possible states collapses to a point, and the next leg starts from a known position instead of an assumption. The diagnose-and-re-send you just ran was exactly this move: measure where the session actually is, then aim the next leg from there.
+- Rails belong where damage cannot be undone. Fence the reef, not the open water. At an irreversible edge a standing check stays lit whether anyone remembers to look or not; where redo is cheap, let the session sail.
+- An unchecked session arrives confident, and wrong. Same start, no fixes, one wedge widening the whole way. The success report comes from the wrong harbor.
 
 Packaging is choosing which of these fixes stand without you.
 
 ## The three-pattern
 
 - Each piece turns up on its own across practitioner write-ups. This training combined them into one kit and gave them names. Geoffrey Huntley's Ralph is the one published practice that runs all three at once. Armin Ronacher's January 2026 MiniJinja port ran two of them and named neither. You built all three today off your own failures, which beats a citation. On the map, the kit is what stands in for you at Verification.
-- **Reference artefact**, against goal drift. A spec the agent reads and re-reads: success criteria, pointers at the relevant memory, named constraints. The spec on disk stays readable mid-run when the buried instructions in the conversation no longer are. In Ronacher's MiniJinja port, the original Rust snapshot tests played this role; in your re-send, the reference you assembled plays it.
-- **plan.md** the agent owns and mutates, against context rot. A working document that holds durable state across the run: the agent reads it at every session boot, updates it as decisions land, re-reads it when the working window fills. What got ruled out an hour ago is written down, not remembered. Ralph leans on exactly this primitive to bootstrap entire greenfield projects.
+- **Reference artefact**, against goal drift. A spec the agent reads and re-reads: success criteria, pointers at the relevant memory, named constraints. The spec on disk stays readable mid-session when the buried instructions in the conversation no longer are. In Ronacher's MiniJinja port, the original Rust snapshot tests played this role; in your re-send, the reference you assembled plays it.
+- **plan.md** the agent owns and mutates, against context rot. A working document that holds durable state across the task: the agent reads it at every session boot, updates it as decisions land, re-reads it when the working window fills. What got ruled out an hour ago is written down, not remembered. Ralph leans on exactly this primitive to bootstrap entire greenfield projects.
 
 ## The verifier decides pass without you
 
@@ -239,13 +239,13 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 ## What you didn't build today
 
 - **Subagents for isolation.** When a phase of a long task wants a sandbox (exploring a third-party API, reading untrusted code, a search you'd rather not pollute the main session with), spin a subagent and let it return only what matters. The main session stays clean; the subagent's context is discarded after it reports. Same instinct as the verifier: keep the long-running thread coherent by routing the noisy work elsewhere.
-- Context for long runs is one of the murkier places. Manual `/compact` at a moment you choose. The full subagent route. The 1M context window with no compaction at all. The original Ralph, rebuilding fresh sessions continuously from durable state. Plan-mode in one session, execution in a fresh one. Different shapes for different jobs; the field hasn't converged.
+- Context for long tasks is one of the murkier places. Manual `/compact` at a moment you choose. The full subagent route. The 1M context window with no compaction at all. The original Ralph, rebuilding fresh sessions continuously from durable state. Plan-mode in one session, execution in a fresh one. Different shapes for different jobs; the field hasn't converged.
 
 ## The 80/20 ratio
 
-- Most of the work that made the re-send land happened before you pressed send. Diagnosing failure modes, mapping validations, building the verifier, assembling reference and plan.md. The run itself was short. The ratio practitioners take from Kieran Klaassen's compound-engineering posture: roughly 80% planning and review, 20% execution.
+- Most of the work that made the re-send land happened before you pressed send. Diagnosing failure modes, mapping validations, building the verifier, assembling reference and plan.md. The session itself was short. The ratio practitioners take from Kieran Klaassen's compound-engineering posture: roughly 80% planning and review, 20% execution.
 - The TDD shape carries it. Klaassen (August 2025): *"Claude writes the test. The test fails, the natural first step in test-driven development (TDD)"* ([My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it)). The packaging you just built IS the 80% side. The re-send was the 20%.
-- Agent hours are org cost. The re-send consumed hours of Opus time, and those hours are real money on the org's bill, the same way engineer hours are. Packaging converts that spend into reliable output instead of reliably wrong output: without it you paid for a run that missed the goal, with it you paid for a run that landed.
+- Agent hours are org cost. The re-send consumed hours of Opus time, and those hours are real money on the org's bill, the same way engineer hours are. Packaging converts that spend into reliable output instead of reliably wrong output: without it you paid for a task that missed the goal, with it you paid for a task that landed.
 
 ## At org scale: Intercom's tiers
 
@@ -280,7 +280,7 @@ Claims
 - `drift-grows-between-checks` · vision · "Drift grows with distance since the last check." ← none-owed
 - `check-is-a-position-fix` · vision · "**A check is a position fix**" ← none-owed
 - `rails-at-irreversible-edges` · vision · "Rails belong where damage cannot be undone. Fence the reef, not the open water." ← none-owed
-- `unchecked-run-confident-and-wrong` · vision · "An unchecked run arrives confident, and wrong." ← none-owed
+- `unchecked-run-confident-and-wrong` · vision · "An unchecked session arrives confident, and wrong." ← none-owed
 - `packaging-is-fixes-that-stand-without-you` · vision · "Packaging is choosing which of these fixes stand without you." ← none-owed
 - `three-pattern-is-our-combination` · vision · "This training combined them into one kit and gave them names." ← none-owed
 - `huntley-runs-all-three` · detail · "Geoffrey Huntley's Ralph is the one published practice that runs all three at once." ← huntley-ralph, huntley-triad-count, klaassen-stop-coding, ronacher-minijinja
@@ -358,6 +358,6 @@ OODA
 
 **Map-position clause (2026-07-02):** slide-1 lead bullet now places the three-pattern on the Field Map as "what stands in for you at Verification" — deliberately NOT an all-three-live-there claim (reference and plan.md guard the run mid-flight; the verifier is the piece that IS Verification); commissioned by theory-completeness-review finding #1, alongside the M6 consolidation closer `the-map-filled-in`.
 
-**Chart (eyeball queue):** the "One run, plotted" slide embeds the dead-reckoning chart from `protos/m4-run-chart-02-passage.html`, chosen by Antti 2026-07-02; protos 01 (terrain) and 03 (orienteering) remain in `protos/` as alternates. Only the svg carried over; the proto page's header strip did not (it names the drift wedge with a two-word label this lecture bans, so the wedge is described here without it). Pattern id renamed to `ps-reefhatch` to avoid collisions with other inlined charts. Slide count is 9 (was 7 before the 2026-07-06 size-split; `The three-pattern` and `Hooks always fire` each shed a slide); the budget question is eyeball queue #1. Open option: graft proto 03's course card (named gates per control: TESTS GREEN, SPEC STILL TRUE, NOTHING LEAKED, DIFF READS CLEAN) onto this chart if Antti wants gates named on-chart.
+**Chart (eyeball queue):** the "One session, plotted" slide embeds the dead-reckoning chart from `protos/m4-run-chart-02-passage.html`, chosen by Antti 2026-07-02; protos 01 (terrain) and 03 (orienteering) remain in `protos/` as alternates. Only the svg carried over; the proto page's header strip did not (it names the drift wedge with a two-word label this lecture bans, so the wedge is described here without it). Pattern id renamed to `ps-reefhatch` to avoid collisions with other inlined charts. Slide count is 9 (was 7 before the 2026-07-06 size-split; `The three-pattern` and `Hooks always fire` each shed a slide); the budget question is eyeball queue #1. Open option: graft proto 03's course card (named gates per control: TESTS GREEN, SPEC STILL TRUE, NOTHING LEAKED, DIFF READS CLEAN) onto this chart if Antti wants gates named on-chart.
 
 **Fix batch (2026-07-03):** completeness-review minor 6 — Intercom slide's lead bullet now reads "published its own numbers", carrying the vendor-self-report scoping into the student body (the stamp already flagged the metrics as self-reported; the body didn't). Provenance alignment (refuter finding) — heading retitled "Ronacher's three-pattern" → "The three-pattern"; Lecture meta and Vision-layer lines re-hedged from Ronacher-as-triad-author to the convergence form, matching the body's slide-1 hedge (the reference and verifier practice is inferable from Ronacher, though **not the words** — the `ronacher-minijinja` stamp's 2026-08-01 full-archive sweep puts him at 0-of-3 on vocabulary; plan.md lands in Huntley/Klaassen), the MiniJinja stamp scope ("cleanly inferable", not his naming), and the-loop-has-a-name's 2026-07-02 re-hedge to "pieces practitioners converge on". Three stamps applied verbatim from the 2026-07-02 live verification: MiniJinja → CAVEAT/cohort (post exits the 6-mo window 2026-07-14), getpushtoprod → OK re-checked (Kim-synthesis caveat kept), how-Every-codes → CAVEAT/2027-01-02 (Dec 2025 byline, framework origin not fresh evidence; stamp's byline date corrected Jan 2026 → Dec 2025).

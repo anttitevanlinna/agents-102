@@ -44,9 +44,9 @@ Name the feature and let the skill run. Ask Claude to invoke the access-control-
 
 The plan path you noted at Module 2's close is the best input here: it names the files, the flows, and the scope the feature actually touches. Paste it, or a ticket link, a design-doc path, or the feature description; Claude reads whatever you give it. Then send. Claude narrates what the skill is doing before the map appears; skip past the opening and look for the saved path when it lands. The skill walks the surfaces and produces the map.
 
-## Kick off the run, then work the other window
+## Kick off the pass, then work the other window
 
-- The access-control pass is a breadth walk and takes a few minutes. That wait is the two-window move Module 3 installs: kick off a long run in one window, do active work in the other, come back when the first lands.
+- The access-control pass is a breadth walk and takes a few minutes. That wait is the two-window move Module 3 installs: kick off a long task in one window, do active work in the other, come back when the first lands.
 - Switch to your m3-quality window now. While the map builds in m3-security, start authoring the test-strategy skill there (its first authoring-conversation phase). When the map lands back in m3-security, switch back to walk it and write the delta. Both windows are already open from *Open the side quest*; this is a focus switch, not a new session.
 
 ## Phase 2: Read the map back before you decide the delta

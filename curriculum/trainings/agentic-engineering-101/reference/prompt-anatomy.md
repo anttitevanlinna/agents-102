@@ -36,7 +36,7 @@ The agent already has the whole internet in its head. Your job is to tell it whi
 
 ### Sealed context
 
-**Names what Claude has to work with, then closes the door against fabrication.** *That's everything you have* tells the agent: missing context is a fact about the world, not a permission to invent. You also get one line you can audit against later: *did the agent stay inside the seal, or did something quietly leak in?* The seal is most valuable on long-running prompts where you won't be there to push back. The negative form (a hard blacklist naming files the agent must NOT read) is the same move from the other side: when the run has to stay independent of a prior artifact, blocking the read is the seal.
+**Names what Claude has to work with, then closes the door against fabrication.** *That's everything you have* tells the agent: missing context is a fact about the world, not a permission to invent. You also get one line you can audit against later: *did the agent stay inside the seal, or did something quietly leak in?* The seal is most valuable on long-running prompts where you won't be there to push back. The negative form (a hard blacklist naming files the agent must NOT read) is the same move from the other side: when the session has to stay independent of a prior artifact, blocking the read is the seal.
 
 *"Work from the rules I've set up (`CLAUDE.md` team and `CLAUDE.local.md` personal both load automatically), plus the observations at `observations/`, the ADRs, and the skills available by name in this session. That's everything you have. Go."*
 
@@ -110,13 +110,13 @@ The agent's defaults are well-rehearsed: append rather than rewrite, wall of tex
 
 ### Don't smooth disagreement
 
-**When synthesizing multiple sources or runs, name where they disagreed, and which one you sided with.** Default agent behavior is to harmonize. Take three contradictory inputs and produce one diplomatic output that loses the information. *Don't smooth the disagreement* keeps the dissent visible. The agreement points are easy. The disagreement points are where the real strategic call lives. If a synthesis reads as if everyone agreed, the synthesis was a lie.
+**When synthesizing multiple sources or sessions, name where they disagreed, and which one you sided with.** Default agent behavior is to harmonize. Take three contradictory inputs and produce one diplomatic output that loses the information. *Don't smooth the disagreement* keeps the dissent visible. The agreement points are easy. The disagreement points are where the real strategic call lives. If a synthesis reads as if everyone agreed, the synthesis was a lie.
 
 *"Name where the three stances disagreed and which one you sided with and why; don't smooth the disagreement."*
 
 ### Append-only collaboration
 
-**When multiple processes share state via files, write append-only. Never overwrite earlier findings.** Streaming append unlocks parallel work: another session can read the file while this one writes to it, finding-by-finding. Overwrites in shared state are how concurrent agents step on each other's outputs and produce nothing usable. The discipline matters most when work is split across sessions or runs.
+**When multiple processes share state via files, write append-only. Never overwrite earlier findings.** Streaming append unlocks parallel work: another session can read the file while this one writes to it, finding-by-finding. Overwrites in shared state are how concurrent agents step on each other's outputs and produce nothing usable. The discipline matters most when work is split across sessions.
 
 *"Append each finding to `sources/wiki-retrieval.md` as soon as you have it… Never overwrite earlier findings."*
 
@@ -230,7 +230,7 @@ Every prompt makes implicit choices about where the agent is allowed to act and 
 
 ### Multi-result fallback
 
-**When a grep or filter returns more than one match, names the disambiguation.** *Find the branch starting with `m4/`* assumes one. Reality: pushed branches show local plus remote-tracking, replays leave several `m4/`-prefixed branches, autonomous runs sometimes rewrite the commit message you were keying on. The fallback shape (*if multiple, pick the one whose log includes <marker>; if missing, ask me for the SHA*) is what makes the prompt survive real machine state.
+**When a grep or filter returns more than one match, names the disambiguation.** *Find the branch starting with `m4/`* assumes one. Reality: pushed branches show local plus remote-tracking, replays leave several `m4/`-prefixed branches, autonomous sessions sometimes rewrite the commit message you were keying on. The fallback shape (*if multiple, pick the one whose log includes <marker>; if missing, ask me for the SHA*) is what makes the prompt survive real machine state.
 
 *"There may be more than one — a push leaves both `m4/<slug>` and `remotes/origin/m4/<slug>`, and a replay can leave several… Pick the one whose log includes the 'M4 starting point' commit. If that commit message has been rewritten, ask me for the SHA."*
 

@@ -12,7 +12,7 @@
 
 **What you do:**
 
-The site is the canvas. The real move is iterate and learn: change the context, watch the agent's output shift, then package what you learned so the next run starts smarter.
+The site is the canvas. The real move is iterate and learn: change the context, watch the agent's output shift, then package what you learned so the next session starts smarter.
 
 **Phase 1. The boring baseline.**
 

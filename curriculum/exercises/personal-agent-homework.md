@@ -74,7 +74,7 @@ Ask Claude to read the morning brief, follow the rules, and write the daily outp
 Read module-2/morning-agent/morning.md and run the job. Read the current state of memory/ as context. Follow the rules in that file and in the root CLAUDE.md. Write the output to module-2/morning-agent/latest.html.
 ```
 
-Save. Click **Run now** once. Double-click `module-2/morning-agent/latest.html` in your file browser, it opens in your browser and should look like it came off your company site. Fix anything off by editing `module-2/morning-agent/morning.md` or `./style.md`, the scheduled task reads both every run, so tomorrow picks up the change.
+Save. Click **Run now** once. Double-click `module-2/morning-agent/latest.html` in your file browser, it opens in your browser and should look like it came off your company site. Fix anything off by editing `module-2/morning-agent/morning.md` or `./style.md`, the scheduled task reads both every session, so tomorrow picks up the change.
 
 **Step 5, let it run for a week.**
 

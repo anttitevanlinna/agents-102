@@ -18,7 +18,7 @@ This isn't a bug that gets patched in the next release. It's the shape of the te
 
 If an agent were 85% correct on a single step (an illustrative number, picked because it sounds forgivable), that would not sound bad. Eighty-five out of a hundred. You'd forgive that in an intern.
 
-Now run ten steps. Retrieval, synthesis, formatting, writing, checking, rewriting, summarising, publishing. Ten is not a lot. Ten unverified steps in a row at 85% each would land near 20% end-to-end: one run in five correct, four in five with a defect somewhere, usually somewhere you won't see. The arithmetic is an illustration, not a measurement; the compounding is what holds.
+Now run ten steps. Retrieval, synthesis, formatting, writing, checking, rewriting, summarising, publishing. Ten is not a lot. Ten unverified steps in a row at 85% each would land near 20% end-to-end: one task in five correct, four in five with a defect somewhere, usually somewhere you won't see. The arithmetic is an illustration, not a measurement; the compounding is what holds.
 
 This is why agentic customer service behaves (a short chain: look up the order, check the policy, draft the reply, with nothing stacking unverified for long). This is why "let the agent handle the full workflow" doesn't (a long chain, no check anywhere in it). The compounding is the difference between a demo that delights and a production system that leaks.
 

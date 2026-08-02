@@ -212,7 +212,7 @@ Scoped, named capabilities. Markdown file with frontmatter + instructions, lives
 - **Skill:** task-specific, loads on demand, reusable move (*"review this against our security policy"*)
 - **Rule:** always-on (or path-scoped), constraints Claude should honour whenever active
 <!--flag:module:earn-the-trust-->
-**AE101 cross-refs:** M3 ships two curated skills (`access-control-analysis`, `stride`) and you author one (`test-strategy`).<!--/flag:module:earn-the-trust--><!--flag:module:spot-gaps-build-the-loop--> M6 authors a second one, the learning-loop skill built from the two-run diff.<!--/flag:module:spot-gaps-build-the-loop-->
+**AE101 cross-refs:** M3 ships two curated skills (`access-control-analysis`, `stride`) and you author one (`test-strategy`).<!--/flag:module:earn-the-trust--><!--flag:module:spot-gaps-build-the-loop--> M6 authors a second one, the learning-loop skill built from the two-session diff.<!--/flag:module:spot-gaps-build-the-loop-->
 
 Docs: [skills](https://code.claude.com/docs/en/skills).
 
@@ -267,15 +267,15 @@ The scheduler or condition invokes the skill. The skill is the thing that catche
 
 ### Session lifecycle — three gotchas
 
-Apply to any long-running session, scheduled or not. An un-packaged same-session send-off depends on these as much as a `/loop` or a `/goal` run does. Verified 2026-04-23.
+Apply to any long-running session, scheduled or not. An un-packaged same-session send-off depends on these as much as a `/loop` or a `/goal` session does. Verified 2026-04-23.
 
-1. **Laptop sleep freezes the session.** The Claude Code process pauses when the OS sleeps and does NOT resume on wake — you reopen Claude Code manually. For overnight runs, prevent sleep (`caffeinate -dims` on macOS; power-plan change on Linux/Windows). Don't close the lid.
-2. **Ctrl+C during a tool call can corrupt the session.** Interrupting cleanly between tool calls is fine; interrupting mid-tool can leave the session's `.jsonl` in a state that fails to resume. If the run genuinely needs stopping, wait for a tool call to finish, or accept that `/resume` may not work on that session.
-3. **No per-session budget cap.** Auto-compaction keeps context from ballooning, but there's no built-in token budget or time cap. A multi-hour agentic run can burn more than you expect. Watch the scrollback for drift; `stop when you've seen enough` is a real discipline.
+1. **Laptop sleep freezes the session.** The Claude Code process pauses when the OS sleeps and does NOT resume on wake — you reopen Claude Code manually. For overnight sessions, prevent sleep (`caffeinate -dims` on macOS; power-plan change on Linux/Windows). Don't close the lid.
+2. **Ctrl+C during a tool call can corrupt the session.** Interrupting cleanly between tool calls is fine; interrupting mid-tool can leave the session's `.jsonl` in a state that fails to resume. If the session genuinely needs stopping, wait for a tool call to finish, or accept that `/resume` may not work on that session.
+3. **No per-session budget cap.** Auto-compaction keeps context from ballooning, but there's no built-in token budget or time cap. A multi-hour agentic session can burn more than you expect. Watch the scrollback for drift; `stop when you've seen enough` is a real discipline.
 
 ### Send-off implications
 
-The un-packaged send-off runs in the **same Claude Code session** (not `/loop`, not scheduled, not `/goal`). Laptop stays awake + plugged in (see module file for OS-specific power settings). Cancel mid-run is legitimate; traces are data. Scheduled agents and `/goal` are named as a callout, not authoring exercises.
+The un-packaged send-off runs in the **same Claude Code session** (not `/loop`, not scheduled, not `/goal`). Laptop stays awake + plugged in (see module file for OS-specific power settings). Cancel mid-session is legitimate; traces are data. Scheduled agents and `/goal` are named as a callout, not authoring exercises.
 
 Docs: [Desktop scheduled tasks](https://code.claude.com/docs/en/desktop-scheduled-tasks), [`/loop`](https://code.claude.com/docs/en/scheduled-tasks), [Routines](https://code.claude.com/docs/en/routines). Ctrl+C corruption is documented across [GitHub issues #3003, #17466, #18880](https://github.com/anthropics/claude-code/issues/3003) (checked 2026-05-25 — #3003 closed as duplicate, #17466/#18880 closed as not-planned; the corruption is documented, not resolved). #3003 documents `messages.N: tool_use ids were found without tool_result blocks` after mid-tool interrupt + `--resume`.
 
@@ -283,7 +283,7 @@ Docs: [Desktop scheduled tasks](https://code.claude.com/docs/en/desktop-schedule
 
 ## 10. Session transcripts — read what actually happened
 
-Claude Code stores session transcripts on disk. They are not the same thing as memory. Memory is the compacted knowledge Claude writes for future sessions. A transcript is the run itself: prompts, tool calls, decisions, dead ends, corrections, and final output.
+Claude Code stores session transcripts on disk. They are not the same thing as memory. Memory is the compacted knowledge Claude writes for future sessions. A transcript is the session itself: prompts, tool calls, decisions, dead ends, corrections, and final output.
 
 Default location:
 
@@ -299,9 +299,9 @@ The encoded project path is the absolute working-directory path with `/` replace
 
 In a worktree, this matters. The transcript folder usually follows the working directory where that session ran. The original repo and the worktree may have different encoded folders.
 
-Your current session knows its own transcript. The `CLAUDE_CODE_SESSION_ID` environment variable holds this session's id in Bash and PowerShell tool subprocesses, and the folder is the working directory encoded as above, so the full path is `~/.claude/projects/<encoded-cwd>/$CLAUDE_CODE_SESSION_ID.jsonl`. That makes the durable move recording, not searching: when a run will be read by a later session, write its transcript path down while you have it. The modules do this, recording the path into `task.md` on the un-packaged run and `plan.md` on the packaged re-run, so the next session reads it instead of hunting.
+Your current session knows its own transcript. The `CLAUDE_CODE_SESSION_ID` environment variable holds this session's id in Bash and PowerShell tool subprocesses, and the folder is the working directory encoded as above, so the full path is `~/.claude/projects/<encoded-cwd>/$CLAUDE_CODE_SESSION_ID.jsonl`. That makes the durable move recording, not searching: when a session will be read by a later session, write its transcript path down while you have it. The modules do this, recording the path into `task.md` on the un-packaged session and `plan.md` on the packaged re-send, so the next session reads it instead of hunting.
 
-If you arrive at a run with no recorded path, you can still find its transcript by recency. Ask Claude to locate and read it; expect a narration before the findings, skim past the opening to the numbered list.
+If you arrive at a session with no recorded path, you can still find its transcript by recency. Ask Claude to locate and read it; expect a narration before the findings, skim past the opening to the numbered list.
 
 **Prompt** *(Claude Code)*
 
@@ -319,13 +319,13 @@ Then compare that read against `git log`, `git diff`, and branch state. Tell me 
 Report literal counts and quoted text: actual restart numbers, exact correction messages. No softened summary.
 ```
 
-Why both layers: git tells you what changed. The transcript tells you why the agent changed it, what it almost did, what it misunderstood, and where you steered. A good post-run read uses both.
+Why both layers: git tells you what changed. The transcript tells you why the agent changed it, what it almost did, what it misunderstood, and where you steered. A good post-session read uses both.
 
-**Subagents:** subagent transcripts may sit in a `subagents/` folder beside the parent session transcript. If a run used subagents, ask Claude to read the parent transcript first, then any subagent files it references.
+**Subagents:** subagent transcripts may sit in a `subagents/` folder beside the parent session transcript. If a session used subagents, ask Claude to read the parent transcript first, then any subagent files it references.
 
 **Security note:** transcripts can contain secrets, customer data, tickets, pasted logs, and failed attempts. Treat them as sensitive local artifacts. Do not commit them. Do not paste a whole transcript into another system. Point Claude at the file and ask for the narrow read you need.
 
-**AE101 cross-refs:** M4 leaves an un-packaged run behind. M5 reads the transcript plus git state to diagnose what packaging changes.<!--flag:module:spot-gaps-build-the-loop--> M6 compares two runs, so the transcript becomes evidence, not trivia.<!--/flag:module:spot-gaps-build-the-loop-->
+**AE101 cross-refs:** M4 leaves an un-packaged session behind. M5 reads the transcript plus git state to diagnose what packaging changes.<!--flag:module:spot-gaps-build-the-loop--> M6 compares two sessions, so the transcript becomes evidence, not trivia.<!--/flag:module:spot-gaps-build-the-loop-->
 
 ---
 
@@ -373,7 +373,7 @@ A hook is a small script the runtime invokes on a named event. The script fires 
 | Event | Fires | Common use |
 |---|---|---|
 | `SessionStart` | When a new session opens at this working directory | Inject context (today's date, recent commits, session-start reminders) |
-| `SessionEnd` | When a session closes | Persist session signals; log run metadata |
+| `SessionEnd` | When a session closes | Persist session signals; log session metadata |
 | `UserPromptSubmit` | After the user submits a prompt, before Claude responds | Surface preflight (load relevant compendium, gate restricted prompts) |
 | `PreToolUse` | Before a tool call runs | Gate dangerous operations; require approval; redirect path |
 | `PostToolUse` | After a tool call returns | Lint / format / auto-fix the file Claude just touched; queue downstream audits |
@@ -526,7 +526,7 @@ Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/
 <!--flag:module:earn-the-trust-->- **M3 Earn the trust** — §§ 6 (subagents), 7 (skills); first skill use + first authoring
 <!--/flag:module:earn-the-trust-->- **M4 Run the first experiment** — §§ 1 (personal compound target), 6 (subagent audit), 9 (session-left-running for un-packaged send-off), 10 (transcript as trace)
 - **M5 Learn from the test, re-send packaged** — §§ 5 (plan.md authoring), 7 (verifier as eval), 9 (send-off), 10 (read transcript plus git)
-<!--flag:module:spot-gaps-build-the-loop-->- **M6 Spot gaps, build the loop** — §§ 7 (second skill authoring), 9 (long-running shapes callout in closer + Ralph→`/goal` story), 10 (compare two run transcripts)
+<!--flag:module:spot-gaps-build-the-loop-->- **M6 Spot gaps, build the loop** — §§ 7 (second skill authoring), 9 (long-running shapes callout in closer + Ralph→`/goal` story), 10 (compare two session transcripts)
 <!--/flag:module:spot-gaps-build-the-loop-->
 
 ---

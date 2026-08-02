@@ -4,14 +4,14 @@ Look at what you have shipped.
 
 ## Eval
 
-- The thing you built at M5 reads an agent's work and decides whether it meets a bar. The checks you just ranked against your dominant gap are the same family: some deterministic, some an LLM reading the work, some firing before the run even starts. Different shapes, same move.
+- The thing you built at M5 reads an agent's work and decides whether it meets a bar. The checks you just ranked against your dominant gap are the same family: some deterministic, some an LLM reading the work, some firing before the session even starts. Different shapes, same move.
 - The name for all of it is **eval**. Your verifier is an eval. Your judge is an eval. Your gate is an eval.
 - Three names, one thing. *Judge* when the check is itself an LLM reading the work. *Verifier* when the check is deterministic: tests, lint, compile, a shell hook that returns true or false. *Gate* when the same check is placed in CI and a pull request can't merge without it.
 - An eval is the automated check that says *this agent-produced thing meets our bar*. That's it. In practice it's the verifier you built at M5 and every check on the menu you just ranked. You have been doing evals since M5, and on the map they are the checking loop the M2 drawing left dashed, now drawn solid.
 
 ## One primitive, placed wherever there's a bar
 
-- The shape fires on any workflow with a quality bar, not only agent runs. A code-review checklist, a deployment gate, an internal-doc rubric. Anywhere you can describe *meets the bar*, you can write the check.
+- The shape fires on any workflow with a quality bar, not only agent sessions. A code-review checklist, a deployment gate, an internal-doc rubric. Anywhere you can describe *meets the bar*, you can write the check.
 - Naming it is what lets you reuse it. Once you see the verifier, the judge, and the gate as the same primitive, you can place that primitive in more places. On a pull request. On a nightly run. On the next agent that does the same class of work. On the team's shared kit.
 
 ## The eval primitive scales unchanged
@@ -59,7 +59,7 @@ Claims
 - `judge-verifier-gate-three-names` · vision · "Three names, one thing. *Judge* when the check is itself an LLM reading the work." ← none-owed
 - `eval-definition` · vision · "An eval is the automated check that says *this agent-produced thing meets our bar*." ← none-owed
 - `map-placement-checking-loop` · vision · "the checking loop the M2 drawing left dashed, now drawn solid" ← none-owed
-- `fires-on-any-quality-bar` · vision · "The shape fires on any workflow with a quality bar, not only agent runs." ← none-owed
+- `fires-on-any-quality-bar` · vision · "The shape fires on any workflow with a quality bar, not only agent sessions." ← none-owed
 - `naming-enables-reuse` · vision · "Naming it is what lets you reuse it." ← none-owed
 - `intercom-auto-approval-numbers` · detail · "19.2% of Intercom's pull requests merge with no human reviewer" ← curran-2x
 - `intercom-timing-and-size` · detail · "Auto-approved PRs merge in 14.6 minutes versus an org median of 75.8 minutes. 86% of them are 20 lines or fewer." ← curran-2x

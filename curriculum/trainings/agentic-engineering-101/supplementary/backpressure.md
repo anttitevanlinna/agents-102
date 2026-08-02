@@ -1,22 +1,22 @@
 # Backpressure
 
-## The run outproduces your review
+## The session outproduces your review
 
-- A longer run produces more than you can inspect. The agent generates faster than any human reads, and every extra hour of run time widens the gap between what was produced and what has been judged.
+- A longer session produces more than you can inspect. The agent generates faster than any human reads, and every extra hour of session time widens the gap between what was produced and what has been judged.
 - Flow engineering has a name for the fix. **Backpressure**: the downstream stage signals upstream that it cannot take more, and the producer slows down, buffers, or sheds load. TCP does it. Message queues do it.
 - In the agent loop today, the backpressure is you. Every unread diff is a queue backing up in your review pile. "Any system that relies on a human to catch the machine's mistakes will be limited by the human, not the machine" (Lucas F. da Costa).
 
 ## Checks compound the other way
 
 - Errors compound over unverified chain length. Enough mostly-right steps in a row and the end of the chain is mostly wrong. If one step were 85 percent reliable, ten unverified steps in a row would land near 20. The arithmetic is an illustration, not a measurement; the mechanism is what holds.
-- **A gate resets the chain.** A check inside the loop catches the bad step before the next step builds on it, so everything after the check builds on verified ground. The same compounding that ruins unchecked runs works for checked ones.
+- **A gate resets the chain.** A check inside the loop catches the bad step before the next step builds on it, so everything after the check builds on verified ground. The same compounding that ruins unchecked sessions works for checked ones.
 - So the gates go inside the loop, at every iteration. One big review at the end reads a chain that has already compounded. A check per step keeps every chain short.
 - A gate is anything that pushes back without you. A failing test, a type error, a lint rule, a judge agent reading the diff, a plan review before code, a monitor watching the merged PR.
 - Tests and types were backpressure for humans long before agents. The work is not inventing checks from nothing; it is pointing the existing ones at the agent, and adding the gates that are still missing.
 
 ## Session reach
 
-- **Session reach**: how far a run gets before it must stop and wait for you. The useful distance between a send-off and the first moment where your judgment is the only thing that can move the work forward.
+- **Session reach**: how far a session gets before it must stop and wait for you. The useful distance between a send-off and the first moment where your judgment is the only thing that can move the work forward.
 - The model sets one ceiling; your gates set the other. Reach is the lower of the two. A frontier model behind thin gates still has short reach: every step past the last check is unverified chain, and the compounding above takes over.
 - The two ceilings move differently. The model ceiling moves on its own, every few months, whether you do anything or not. The gate ceiling moves only when you build. Waiting for a better model raises one ceiling and leaves the other exactly where it is.
 
@@ -28,9 +28,9 @@
 
 ## The first check that isn't you
 
-- Before a send-off: *what is the first check this run will hit that is not me?* If the answer is nothing, you are the gate infrastructure, and the run reaches exactly as far as you can watch.
-- The answer sets the reach you grant. A run that hits a real gate within its first few steps can be sent far. A run whose first check is your read at the end stays short, no matter how good the model is.
-- The same answer twice is a gate worth building. When one class of work keeps arriving with nothing but you in its path, the question has found a missing gate. Build it once, and every later run of that shape reaches further.
+- Before a send-off: *what is the first check this session will hit that is not me?* If the answer is nothing, you are the gate infrastructure, and the session reaches exactly as far as you can watch.
+- The answer sets the reach you grant. A session that hits a real gate within its first few steps can be sent far. A session whose first check is your read at the end stays short, no matter how good the model is.
+- The same answer twice is a gate worth building. When one class of work keeps arriving with nothing but you in its path, the question has found a missing gate. Build it once, and every later session of that shape reaches further.
 
 <!-- maintainer -->
 
@@ -57,7 +57,7 @@ Claims
 - `gates-go-inside-the-loop` · vision · "One big review at the end reads a chain that has already compounded." ← none-owed
 - `a-gate-is-anything-that-pushes-back-without-you` · vision · "A failing test, a type error, a lint rule, a judge agent reading the diff" ← none-owed
 - `tests-were-backpressure-before-agents` · vision · "The work is not inventing checks from nothing; it is pointing the existing ones at the agent" ← none-owed
-- `session-reach` · vision · "**Session reach**: how far a run gets before it must stop and wait for you." ← none-owed
+- `session-reach` · vision · "**Session reach**: how far a session gets before it must stop and wait for you." ← none-owed
 - `reach-is-the-lower-of-two-ceilings` · vision · "A frontier model behind thin gates still has short reach" ← none-owed
 
 Sources

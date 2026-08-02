@@ -13,19 +13,19 @@ A system is two things stacked:
 
 Either one alone is a toy. A saved document with no agent is just a document. An agent with no files is a chat. Put them together and you get something that *keeps getting better the more you feed it*. That's the whole claim.
 
-In the full agent picture, Module 2 adds shelf life. Context stops being something trapped in one conversation. It becomes memory the agent can re-read, update, and carry into the next run.
+In the full agent picture, Module 2 adds shelf life. Context stops being something trapped in one conversation. It becomes memory the agent can re-read, update, and carry into the next session.
 
 ## Why the sharpening happens
 
 When you added the second batch, Claude didn't start over. It read the existing topic pages first, as *context*, then read the new sources, then integrated. The existing memory was part of the prompt for updating the memory. That's why pages got sharper: the old claims and the new claims met each other, and the ones that couldn't survive the meeting got cut.
 
-This is the same mechanism from Module 1: context shapes output, run at system scale. The context for this work is what the previous work produced. The context for the next run will be what this work produced. The loop is the product.
+This is the same mechanism from Module 1: context shapes output, run at system scale. The context for this work is what the previous work produced. The context for the next session will be what this work produced. The loop is the product.
 
 Keep the rules small, keep them boring, and let the compounding do the work. Not "clever prompts." Plain rules, applied consistently across thousands of small updates. The discipline is in refusing to get fancy.
 
 ## The detail that's easy to miss
 
-The memory is a folder of markdown files. That's it. No database. No special tool. No paid tier. No setup. And the agent you just built, the one sitting in `agents/`, is also a markdown file. Instructions the model reads at the start of every run. Same plain-text form for the knowledge, same plain-text form for the capability, same plain-text form as the guardrail you wrote in Module 1. One kind of object, three jobs. Which means it also travels, paste the agent file into any LLM tool and it still works.
+The memory is a folder of markdown files. That's it. No database. No special tool. No paid tier. No setup. And the agent you just built, the one sitting in `agents/`, is also a markdown file. Instructions the model reads at the start of every session. Same plain-text form for the knowledge, same plain-text form for the capability, same plain-text form as the guardrail you wrote in Module 1. One kind of object, three jobs. Which means it also travels, paste the agent file into any LLM tool and it still works.
 
 That might look like a limitation. It isn't. Language models are strongest at reading and writing text, that is what they do. When you store knowledge as text, reading it is reading, and updating it is writing. Nothing sits between the model and what it's best at. Every fancier setup that promised to "fix" this added a layer that the model had to work *around*.
 

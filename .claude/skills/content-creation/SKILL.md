@@ -43,9 +43,10 @@ Can't answer? Read content-strategy.md until you can.
 1. `bosser-strategy:content-strategy.md`
 2. `curriculum/CLAUDE.md`
 3. `curriculum/lecture-guardrails.md`
-4. `bosser-strategy:philosophy.md`
-5. `.claude/rules/content-rules.md` → today's compendium(s)
-6. `continuous-research/insights.md` + domain findings as needed
+4. `curriculum/vocabulary.md` — controlled terms; the words the body is allowed to use
+5. `bosser-strategy:philosophy.md`
+6. `.claude/rules/content-rules.md` → today's compendium(s)
+7. `continuous-research/insights.md` + domain findings as needed
 
 Verify: `python3 -m http.server 8000` at repo root → `http://localhost:8000/site/curriculum.html`.
 

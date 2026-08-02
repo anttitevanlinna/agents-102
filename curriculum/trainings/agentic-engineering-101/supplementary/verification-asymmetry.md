@@ -15,7 +15,7 @@
 ## Every send-off needs a named cheap verifier
 
 - Before a send-off, ask: what is my cheap verifier here? A failing test, a compiler, a diffable reference, a checklist a fresh session can run. If you can name one, the task is a delegation candidate.
-- No cheap verifier? Two options. Keep the task, or build the verifier first and then delegate. Building the verifier is often the more valuable half of the work: it outlives the run it checks.
+- No cheap verifier? Two options. Keep the task, or build the verifier first and then delegate. Building the verifier is often the more valuable half of the work: it outlives the session it checks.
 - Every verifier you write converts one more task family from delegation-trap to delegation-win. That is why gates are worth authoring at all.
 
 <!-- maintainer -->
@@ -41,7 +41,7 @@ Claims
 - `expensive-check-makes-delegation-a-trap` · vision · "You saved the writing and bought a harder review. The full cost comes back to you at read time." ← none-owed
 - `find-is-easier-than-judge` · vision · "**find is easier than judge**" ← none-owed
 - `name-your-cheap-verifier-before-a-send-off` · vision · "Before a send-off, ask: what is my cheap verifier here?" ← none-owed
-- `build-the-verifier-first-then-delegate` · vision · "Building the verifier is often the more valuable half of the work: it outlives the run it checks." ← none-owed
+- `build-the-verifier-first-then-delegate` · vision · "Building the verifier is often the more valuable half of the work: it outlives the session it checks." ← none-owed
 - `each-verifier-converts-a-task-family` · vision · "Every verifier you write converts one more task family from delegation-trap to delegation-win." ← none-owed
 
 Sources

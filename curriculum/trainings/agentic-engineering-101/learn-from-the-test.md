@@ -1,13 +1,13 @@
 # Learn from the test, re-send packaged
 
 ## Big Idea
-Read the un-packaged run through three failure-mode lenses, build the validation that would have caught each, assemble the reference and plan.md, and re-send the same task packaged. The contrast is the lesson.
+Read the un-packaged session through three failure-mode lenses, build the validation that would have caught each, assemble the reference and plan.md, and re-send the same task packaged. The contrast is the lesson.
 
 ## Prework
 
 Walk in with the un-packaged send-off artefact. Stopped, finished, ran out of credit, doesn't matter.
 
-Optional prep while the un-packaged run is still going: read [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md); watch Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich); read [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md); read Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).
+Optional prep while the un-packaged session is still going: read [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md); watch Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich); read [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md); read Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -19,9 +19,9 @@ After this module, you will be able to:
 
 ## Start here
 
-You sent off an un-packaged run and read the pre-read, *Reading the return*. You walk in with the artefact in front of you and the three failure-mode lenses in hand. The in-room lecture below opens the session.
+You sent off an un-packaged session and read the pre-read, *Reading the return*. You walk in with the artefact in front of you and the three failure-mode lenses in hand. The in-room lecture below opens the session.
 
-> **Long runs, short reads.** The M1 countermove rides along: never let the agent say everything. Ranked findings first, detail on request, the full record on disk. Chat is for what changed and what needs you.
+> **Long sessions, short reads.** The M1 countermove rides along: never let the agent say everything. Ranked findings first, detail on request, the full record on disk. Chat is for what changed and what needs you.
 
 [Lecture: Reading the return](lectures/reading-the-return.md)
 
@@ -29,15 +29,15 @@ You sent off an un-packaged run and read the pre-read, *Reading the return*. You
 
 ## The nag writes the verifier
 
-Somewhere during the un-packaged send-off a worry surfaced: did it touch the migration, did the tests really cover the edge. There was no way to check mid-run, and it nagged.
+Somewhere during the un-packaged send-off a worry surfaced: did it touch the migration, did the tests really cover the edge. There was no way to check mid-session, and it nagged.
 
-The nag is a spec, arriving one worry at a time. Each one names a check the run should have carried with it. This module turns the list into machinery: the reference pins the goal, plan.md carries the state, the verifier runs the checks you wished you could run mid-flight.
+The nag is a spec, arriving one worry at a time. Each one names a check the session should have carried with it. This module turns the list into machinery: the reference pins the goal, plan.md carries the state, the verifier runs the checks you wished you could run mid-flight.
 
 Acting without full control is the job from here on. The feeling of what is missing points at what to build next. Build it, send again.
 
 ## Set up the worktree
 
-Before the exercise session, fork the un-packaged run's starting SHA into a sibling worktree. This module's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second run starts from the same code state as the first. Cherny calls parallel worktrees his biggest productivity unlock; the Module 2 pre-read lands here.
+Before the exercise session, fork the un-packaged session's starting SHA into a sibling worktree. This module's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second session starts from the same code state as the first. Cherny calls parallel worktrees his biggest productivity unlock; the Module 2 pre-read lands here.
 
 A real engineering call lives in this fork: gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a worktree because git doesn't see them. AE101's default is to copy them in once at fork time. Your Module 1 evidence rides forward<!--flag:module:earn-the-trust--> (along with any Module 3 artefacts if you've completed it)<!--/flag:module:earn-the-trust-->; compounding then diverges between the worktree and the original.<!--flag:module:spot-gaps-build-the-loop--> You decide post-Module-6 what to merge back.<!--/flag:module:spot-gaps-build-the-loop--> Other engineers wire it differently.
 
@@ -53,9 +53,9 @@ Claude figures out `<repo-name>` from the working directory. Help it if it gets 
 
 Claude will narrate before acting. It usually opens with a plan summary listing the six sub-steps, then runs them. Skim past the opening; look for the shell-command output confirming the worktree path and which files copied across.
 
-Check the copy landed before you go on: the output should name both `CLAUDE.local.md` and `observations/` at the worktree path. The whole contrast rests on the second run starting from the same system the first one did, and a rules file that quietly stayed behind changes two variables instead of one. If your rules file lives somewhere other than the two paths Claude checked, ask Claude to copy that one across too.
+Check the copy landed before you go on: the output should name both `CLAUDE.local.md` and `observations/` at the worktree path. The whole contrast rests on the second session starting from the same system the first one did, and a rules file that quietly stayed behind changes two variables instead of one. If your rules file lives somewhere other than the two paths Claude checked, ask Claude to copy that one across too.
 
-**The coordinates are the anchor.** Claude should read the protected `Run coordinates` block in `task.md`, use the exact `m4/<slug>` branch named there, and fork from that branch's "M4 starting point" commit. If the coordinates are missing or the commit message has been rewritten, stop and use the starting-point SHA Claude reported before the send-off rather than guessing from branch names. If that SHA was never captured either, ask Claude to fork from the merge-base of `m4/<slug>` and the branch it was cut from; that commit is where the run started.
+**The coordinates are the anchor.** Claude should read the protected `Run coordinates` block in `task.md`, use the exact `m4/<slug>` branch named there, and fork from that branch's "M4 starting point" commit. If the coordinates are missing or the commit message has been rewritten, stop and use the starting-point SHA Claude reported before the send-off rather than guessing from branch names. If that SHA was never captured either, ask Claude to fork from the merge-base of `m4/<slug>` and the branch it was cut from; that commit is where the session started.
 
 The worktree is forked and ready. You open the session in it at the first exercise.
 
@@ -81,7 +81,7 @@ Open a new Claude Code session in the worktree at `../<repo>-m5`. The packaging 
 /rename m5-long-run
 ```
 
-Fresh context matters here. The exercise session built heavy scrollback (verifier scaffolding, hooks, plan.md drafts); every long-run turn would otherwise pay cache-read on that prefix, $20-30 saved at Opus prices, and the field has a name for this move (Ralph's fresh-sessions camp, Amp's manual-handoff camp; see [What packaging is](lectures/what-packaging-is.md)).
+Fresh context matters here. The exercise session built heavy scrollback (verifier scaffolding, hooks, plan.md drafts); every re-send turn would otherwise pay cache-read on that prefix, $20-30 saved at Opus prices, and the field has a name for this move (Ralph's fresh-sessions camp, Amp's manual-handoff camp; see [What packaging is](lectures/what-packaging-is.md)).
 
 Prefer to stay in the exercise session? Paste this to drop scrollback in-place:
 
@@ -95,9 +95,9 @@ Ask Claude to re-run the same task using the reference, plan.md, and verifier yo
 
 {{prompt:ae101-m5-rerun-packaged}}
 
-<!--flag:module:spot-gaps-build-the-loop-->The walk-away report at the close is what Module 6 opens on.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->The walk-away report at the close is the evidence this run leaves behind.<!--/flag:no-module:spot-gaps-build-the-loop--> RLHF will frame partial failures as partial successes, *"shipped most of it, hit a snag on X."* The contrast with the un-packaged run depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. You decide whether to push.
+<!--flag:module:spot-gaps-build-the-loop-->The walk-away report at the close is what Module 6 opens on.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->The walk-away report at the close is the evidence this session leaves behind.<!--/flag:no-module:spot-gaps-build-the-loop--> RLHF will frame partial failures as partial successes, *"shipped most of it, hit a snag on X."* The contrast with the un-packaged session depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. You decide whether to push.
 
-The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). Same cancel-is-legit rule as the un-packaged run: stopping when the trace is enough is the result. Manual nudges are part of the run; when nudging turns into typing every step, the agent isn't the agent any more, that's a result worth reading.
+The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). Same cancel-is-legit rule as the un-packaged session: stopping when the trace is enough is the result. Manual nudges are part of the session; when nudging turns into typing every step, the agent isn't the agent any more, that's a result worth reading.
 
 [Lecture: What packaging is](lectures/what-packaging-is.md)
 
@@ -116,18 +116,18 @@ The map at sitting 2 had an edge nobody explained. A dashed line down the right 
 
 Everything built in these four sittings is on your side. The rules file, the observations, the verifier, the reference, the plan. That is the right order and not a shortfall: prove it on yourself, then promote. A rule promoted before it works on you is a rule your team has to live with, and a habit that never crosses stays yours alone.
 
-The map's near half is where a single loop runs and compounds. The far half is where runs get long and you build the checks that let them. The right edge is what happens after both work: the crossing. You have run the loop and built the checks. What crosses, and how, is the question the map has been pointing at since sitting 2.
+The map's near half is where a single loop runs and compounds. The far half is where sessions get long and you build the checks that let them. The right edge is what happens after both work: the crossing. You have run the loop and built the checks. What crosses, and how, is the question the map has been pointing at since sitting 2.
 
 <!--/flag:no-module:spot-gaps-build-the-loop--><!--flag:module:spot-gaps-build-the-loop-->
 ## Next
 
-Module 6 reads the packaged run. Subtler misses, subtler drift. Your verifier turns out to be one of three eval shapes, and the map widens from one task to the work you repeat across your stack. The question changes scale too: Module 5 asked *did my run pass?* Module 6 starts asking *do all our runs pass, and who reviewed what?*
+Module 6 reads the packaged session. Subtler misses, subtler drift. Your verifier turns out to be one of three eval shapes, and the map widens from one task to the work you repeat across your stack. The question changes scale too: Module 5 asked *did my task pass?* Module 6 starts asking *do all our tasks pass, and who reviewed what?*
 
 ## Bring to Module 6
 
-A packaged re-run with substance. Read the scrollback or commits from the re-send; check the agent didn't just stall in the first minute.
+A packaged session with substance. Read the scrollback or commits from the re-send; check the agent didn't just stall in the first minute.
 
-Come to Module 6 without the packaged run and you'll be reading one run while the room is reading two. Your call.
+Come to Module 6 without the packaged session and you'll be reading one session while the room is reading two. Your call.
 
 ## Pre-reads before Module 6
 
@@ -135,7 +135,7 @@ Optional. Skipping does not break Module 6. All three fit the Module 5 to Module
 
 **Read, Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it).** Klaassen runs the verifier 10 consecutive times before trusting it, and uses per-feedback specialised agents in parallel to triage review. Reliability is a number you measure, not a vibe you sense, and one verifier can become a panel. You'll recognise both in your own artefacts.
 
-**Read, [Checks that push back](trainings/agentic-engineering-101/supplementary/backpressure.md).** The verifier from this module is the first gate in a bigger story: checks that push back inside the loop are what let a run reach farther than you can watch. The loop assembled next is this story, with your own artefacts in it.
+**Read, [Checks that push back](trainings/agentic-engineering-101/supplementary/backpressure.md).** The verifier from this module is the first gate in a bigger story: checks that push back inside the loop are what let a session reach farther than you can watch. The loop assembled next is this story, with your own artefacts in it.
 
 **Read, Lucas F. da Costa, [the essay behind the checks story](https://www.lucasfcosta.com/blog/backpressure-is-all-you-need)** (May 2026). The primary source the reading above draws on, in da Costa's own words: *"any system that relies on a human to catch the machine's mistakes will be limited by the human, not the machine."* The loop you assemble at Module 6 is the answer to that sentence.
 <!--/flag:module:spot-gaps-build-the-loop-->
@@ -146,7 +146,7 @@ Optional. Skipping does not break Module 6. All three fit the Module 5 to Module
 
 **Slide-size splits (2026-07-10, hand slides-audit):** two pre-existing oversized chunks split at conceptual seams, zero wording changes — `## Re-send the same task, packaged` + `## Send it off and read the report cold` carve the re-send narrative out of `## Key Concepts` (was 430w); `## Run the fork from the original repo` carves execution out of the worktree rationale (was 309w). Headers are command-verb, build-squint checked. Key Concepts now ends at its sixth bullet as the section name promises.
 
-**Nag beat + reading reminder added (2026-07-10, Antti-directed cognitive-load arc):** (1) *Long runs, short reads* blockquote in Start here — the M5 reminder leg of the selective-reading arc (M1 teach → M2 exception → M3 take-into-use → M5 remind), per `check_student_facing.md` §29 operational-reminder-at-moment-of-use. (2) New section *The nag writes the verifier* after Start here — reframes the M4 mid-run worry as the verifier's spec ("the feeling of what is missing points at what to build", Antti's frame near-verbatim); names the reference/plan.md/verifier trio in the same role-language the re-send section already uses. Opener-dosage check: arming beat (spirit + one move), does not name Ronacher's three-pattern or the failure-mode↔packaging pairing — closer's beats intact. First para names a plausible mid-run worry: resonant-copy carve-out, don't flatten at re-audit.
+**Nag beat + reading reminder added (2026-07-10, Antti-directed cognitive-load arc):** (1) *Long sessions, short reads* blockquote in Start here — the M5 reminder leg of the selective-reading arc (M1 teach → M2 exception → M3 take-into-use → M5 remind), per `check_student_facing.md` §29 operational-reminder-at-moment-of-use. (2) New section *The nag writes the verifier* after Start here — reframes the M4 mid-run worry as the verifier's spec ("the feeling of what is missing points at what to build", Antti's frame near-verbatim); names the reference/plan.md/verifier trio in the same role-language the re-send section already uses. Opener-dosage check: arming beat (spirit + one move), does not name Ronacher's three-pattern or the failure-mode↔packaging pairing — closer's beats intact. First para names a plausible mid-run worry: resonant-copy carve-out, don't flatten at re-audit.
 
 **Quality:** compendium-audited 2026-08-02 (writing@0869025 story@0869025 technical@4b95319 behavior@1c765f2 pedagogy@0869025 strategy@0869025 slides@0869025)
 - judges @0869025: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

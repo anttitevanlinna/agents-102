@@ -42,9 +42,9 @@ The rules were loaded every time: the rules file, the tone brief, the session-ti
 
 A rule in context is not a rule in the output. Taste closes the gap. Nothing else does.
 
-## Then I compounded the run
+## Then I compounded the session
 
-I ran the M6 exercise on the M6 generation, comparing the two runs side by side. That comparison found rules that lived in memory but were never enforced. I moved them into skills that block "done" until the check runs. A rule in memory that does not force is worse than no rule.
+I ran the M6 exercise on the M6 generation, comparing the two sessions side by side. That comparison found rules that lived in memory but were never enforced. I moved them into skills that block "done" until the check runs. A rule in memory that does not force is worse than no rule.
 
 Then I made countless fixes later on. As one example: the prework was missing pre-reads. I caught that only on a later glance through the module.
 
@@ -52,9 +52,9 @@ The model is good. The model is not 100% deterministic.
 
 ## What the loop is for
 
-The next hour you will diagnose gaps in the M5 packaged run. You will map the work you repeat across your stack. You will leave holding the prompt that builds your kit.
+The next hour you will diagnose gaps in the M5 packaged session. You will map the work you repeat across your stack. You will leave holding the prompt that builds your kit.
 
-A rule you wrote last module will not apply this run. That is the thing. The loop exists because LLMs drift. The loop exists because rules leak. The loop exists because every run surprises you, even when the task looked the same.
+A rule you wrote last module will not apply this session. That is the thing. The loop exists because LLMs drift. The loop exists because rules leak. The loop exists because every session surprises you, even when the task looked the same.
 
 Your job is not to stop the drift. Your job is to catch it and encode what you learned.
 
@@ -114,7 +114,7 @@ Sources
 Frameworks
 - Non-determinism as the condition · [borrow:none] · law:none · ← none — Antti's working position, reshaped from an earlier "we live what we teach" credibility framing after the Claude-generated recommendation was cut at turn 7
 - Rules-loaded-but-bypassed · [borrow:none] · law:none · ← ae101-m6-session-notes — a loaded rule is not an enforced rule; this observation is what pushed the corpus toward forcing functions
-- Double-loop learning · [borrow:Argyris & Schön] · law:double-loop-learning · ← cultural-vocab — "then I compounded the run" is the second loop: not fixing the leak, changing the rule that let it leak
+- Double-loop learning · [borrow:Argyris & Schön] · law:double-loop-learning · ← cultural-vocab — "then I compounded the session" is the second loop: not fixing the leak, changing the rule that let it leak
 
 Stance `[stance:2026-08-01 level:L4]`
 - holds: everything in it, at the highest rung available. First-hand maintainer testimony about a session the maintainer ran, with the artefacts still on disk. There is no evidence problem here and there never will be — **the only failure mode is age, and age is handled by regeneration rather than by re-checking.**

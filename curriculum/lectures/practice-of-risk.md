@@ -10,7 +10,7 @@ Software security, done well, sells you a clean story. Perimeter. Access control
 
 Agent systems break the story in three places.
 
-The behaviour is non-deterministic. Same prompt, same files, same tools, different run, different answer. A test that passed before doesn't prove the system passes today.
+The behaviour is non-deterministic. Same prompt, same files, same tools, different session, different answer. A test that passed before doesn't prove the system passes today.
 
 The attack surface is the instruction set. The dangerous move isn't breaking into your server. It's getting your agent to *decide* to do something harmful with access it legitimately has. Well-formed English, arriving through a document the agent reads. Your firewall doesn't see it because your firewall has never had to worry about persuasion.
 

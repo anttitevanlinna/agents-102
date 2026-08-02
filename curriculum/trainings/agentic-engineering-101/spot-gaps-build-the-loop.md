@@ -1,17 +1,17 @@
 # Spot gaps, build the loop
 
 ## Big Idea
-Two runs of the same task (un-packaged Module 4, packaged Module 5) are enough evidence to name what the three-pattern didn't anticipate and pick where each gap belongs (memory, verifier, new skill). Then the same reading turns outward: map the work you repeat across your stack, and leave with a handoff move that builds the skills your shapes call for.
+Two sessions of the same task (un-packaged Module 4, packaged Module 5) are enough evidence to name what the three-pattern didn't anticipate and pick where each gap belongs (memory, verifier, new skill). Then the same reading turns outward: map the work you repeat across your stack, and leave with a handoff move that builds the skills your shapes call for.
 
 ## Prework
 
-Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (Aug 2025), and [Checks that push back](trainings/agentic-engineering-101/supplementary/backpressure.md), on why checks that push back inside a loop let a run reach farther than you can watch. And if Lucas F. da Costa's [essay behind the checks story](https://www.lucasfcosta.com/blog/backpressure-is-all-you-need) is still on your list from Module 5, the loop you assemble today is the answer it calls for.
+Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (Aug 2025), and [Checks that push back](trainings/agentic-engineering-101/supplementary/backpressure.md), on why checks that push back inside a loop let a session reach farther than you can watch. And if Lucas F. da Costa's [essay behind the checks story](https://www.lucasfcosta.com/blog/backpressure-is-all-you-need) is still on your list from Module 5, the loop you assemble today is the answer it calls for.
 
-Optional lookup pages: [session transcripts in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for the two-run compare, and [long-running shapes](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#9-long-running-shapes--loop-scheduled-tasks-routines-goal) for when you turn a one-off into a pattern you run on a schedule, in a loop, or until a condition holds.
+Optional lookup pages: [session transcripts in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for the two-session compare, and [long-running shapes](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#9-long-running-shapes--loop-scheduled-tasks-routines-goal) for when you turn a one-off into a pattern you run on a schedule, in a loop, or until a condition holds.
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Diagnose** the gap two runs of the same task surface
+- **Diagnose** the gap two sessions of the same task surface
 - **Route** each gap to its home: memory, sharper verifier, or new skill
 - **Cut** one rule from `./CLAUDE.local.md` the diagnosis killed
 - **Surface** the kinds of work you repeat across your stack, and draw their recurring shapes
@@ -21,13 +21,13 @@ After this module, you will be able to:
 
 ## Start here
 
-Open a fresh Claude Code session in the Module 5 worktree, `../<repo>-m5`. Both runs already live there.
+Open a fresh Claude Code session in the Module 5 worktree, `../<repo>-m5`. Both sessions already live there.
 
-You walk in holding two runs of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-run. The contrast across two runs is the material. One run gave you a failure mode to name. Two runs give you gaps the three-pattern itself didn't anticipate, and a shape for what to do about each one.
+You walk in holding two sessions of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-send. The contrast across two sessions is the material. One session gave you a failure mode to name. Two sessions give you gaps the three-pattern itself didn't anticipate, and a shape for what to do about each one.
 
-> **Packaged run thin or missing?** You can still rescue it. If the M5 session is alive but stalled, nudge it once with the Continue prompt from M4. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while you read on. M6 starts by reading; before it writes, decide whether to wait, stop M5, or accept the partial run as the artefact. Skip the opening lecture. Practice is core. Lectures can be read later.
+> **Packaged session thin or missing?** You can still rescue it. If the M5 session is alive but stalled, nudge it once with the Continue prompt from M4. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while you read on. M6 starts by reading; before it writes, decide whether to wait, stop M5, or accept the partial session as the artefact. Skip the opening lecture. Practice is core. Lectures can be read later.
 
-> **Just can't get the M5 run working?** You lose a bit of value but you can still do this module's exercises. Despair not.
+> **Just can't get the M5 session working?** You lose a bit of value but you can still do this module's exercises. Despair not.
 
 [The 2 frontiers](lectures/the-2-frontiers.md)
 
@@ -38,18 +38,18 @@ You walk in holding two runs of the same task. The un-packaged Module 4 send-off
 [Spot gaps, build the loop](exercises/spot-gaps-build-the-loop.md)
 
 ## Key Concepts
-- The three-pattern catches what it was shaped to catch. The gaps that surface after two runs are data the pattern didn't anticipate, not proof the pattern failed
-- Claude over-credits its own packaging by default. A fair push-back names one thing the verifier missed, concretely. The runs rule; the summary of them doesn't
-- Gaps sort into three homes: memory (rules that would have prevented the mistake upstream), sharper verifier (a check that would have fired mid-run), or new skill (a move packaged for future tasks)
+- The three-pattern catches what it was shaped to catch. The gaps that surface after two sessions are data the pattern didn't anticipate, not proof the pattern failed
+- Claude over-credits its own packaging by default. A fair push-back names one thing the verifier missed, concretely. The sessions rule; the summary of them doesn't
+- Gaps sort into three homes: memory (rules that would have prevented the mistake upstream), sharper verifier (a check that would have fired mid-session), or new skill (a move packaged for future tasks)
 - An eval is the automated check that says *this agent-produced thing meets our bar*. Verifier when deterministic, judge when LLM-based, gate when placed in CI. All three are evals
 - The handoff prompt IS the loop. It packages the stack-map into a move that authors the skill each shape calls for, when you run it.
-- Encoding is the third phase of test → learn → encode. Two runs tested; the diagnosis learned; the handoff encodes. The loop closes when the lesson ships.
+- Encoding is the third phase of test → learn → encode. Two sessions tested; the diagnosis learned; the handoff encodes. The loop closes when the lesson ships.
 
 ## Human close
 
 No compound prompt here. The exercise's gap map and stack-map are the Module 6 compound; the encode-move lands inside the last lecture. This slot is a human round: talk, compare, no prompts.
 
-*Two runs of the same task, read to the bone. The loop, yours.*
+*Two sessions of the same task, read to the bone. The loop, yours.*
 
 **Self-study variant.** Close the laptop. If you can name the move in one sentence, that's the marker; no further articulation required.
 

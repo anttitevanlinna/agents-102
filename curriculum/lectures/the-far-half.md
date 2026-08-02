@@ -67,7 +67,7 @@
 <text x="600" y="463">run · let it fail · shape the verifier · re-run</text>
 <text x="660" y="344" font-size="10">act · read the result · correct</text>
 <text x="850" y="463" fill="#786c56">read · judge · gate what ships · by hand for now</text>
-<text x="760" y="103">each run's evidence → the next run's rules</text>
+<text x="760" y="103">each session's evidence → the next session's rules</text>
 <text x="1055" y="445">prove it on yourself → promote</text>
 </g>
 <g text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="16" fill="#1f1a13">
@@ -96,20 +96,20 @@
 </figure>
 
 - The near half is behind you. Intent, Context, Work: how to aim the work, what the agent needs to know, how a loop runs and compounds. Every move so far lived there.
-- The map lights its other side now. Verification, Absorption, Outcome. The rest of the training goes there, starting with the run you send off in this module.
+- The map lights its other side now. Verification, Absorption, Outcome. The rest of the training goes there, starting with the session you send off in this module.
 
 ## Long-running answers to three new governors
 
 - Long-running is not more of the same. So far you sat inside every loop: you read each reply, caught each wobble as it happened. When the agent runs for an hour without you watching, that quick feedback goes quiet. You stop seeing every move and meet the result at the end, all at once.
-- **Verification** governs how you know the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it. On a long run, this stops being a glance and becomes a job. The map drew a checking loop across this ground as a ghost, dashed and not yet built; this half is where you build it.
-- **Absorption** governs how much of the output you can actually take up. Generating is fast; reading, judging, and merging are not. On a long run the gap between the two decides your real throughput.
-- **Outcome** governs what survives the run. The fix you keep, the rule it taught you, and whether any of it crosses the wall from you to the team.
+- **Verification** governs how you know the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it. On a long session, this stops being a glance and becomes a job. The map drew a checking loop across this ground as a ghost, dashed and not yet built; this half is where you build it.
+- **Absorption** governs how much of the output you can actually take up. Generating is fast; reading, judging, and merging are not. On a long session the gap between the two decides your real throughput.
+- **Outcome** governs what survives the session. The fix you keep, the rule it taught you, and whether any of it crosses the wall from you to the team.
 
-## Your first un-packaged long run
+## Your first un-packaged long session
 
-- One long run goes off un-packaged, on purpose. You watch what the agent does with the system you built, exactly as it stands. Nothing added for the occasion.
-- You are not handed the laws of this country up front. You feel where it bites first, here. The laws that explain the bite get named later in the training, against what your own run did.
-- One question to carry into the run. When the agent takes a hundred steps alone, what makes you trust the result at the end?
+- One long session goes off un-packaged, on purpose. You watch what the agent does with the system you built, exactly as it stands. Nothing added for the occasion.
+- You are not handed the laws of this country up front. You feel where it bites first, here. The laws that explain the bite get named later in the training, against what your own session did.
+- One question to carry into the session. When the agent takes a hundred steps alone, what makes you trust the result at the end?
 
 <!-- maintainer -->
 
@@ -119,7 +119,7 @@
 
 **STATUS:** slide-format, proper-length bullets per `theory-plan.md` § Slide format. Three slides (one `##` = one slide); the map figure IS the first slide. Wired into `run-the-first-experiment.md § Start here` as the M4 opener, after the opening question. Audited — see the Quality line below; Family B judged PASS 2026-07-03. *(Corrected 2026-07-31: this line called itself a draft, denied its own audit, and placed this lecture immediately before `[Lecture: Test and learn]`. All three went stale under it — the audit landed 2026-07-12, Family B on 2026-07-03, and `the-agent-loop` was inlined between this opener and Test and learn on 2026-07-02. Keep this block present-tense state, not a changelog: `check_writing.md §3`, tense test first.)*
 
-**Container discipline held (2026-07-02 pass):** phases described by what they GOVERN, felt problem named (quick feedback goes quiet; you meet the result all at once), NO packaging law named — no 0.85ⁿ, no convergence triad, no principal–agent, no hybrid-vs-autonomous, no "backpressure" (named at M5 per `theory-audit.md` § Tier 0 placement: felt at M4, named M5, infrastructure M6). "On a long run this stops being a glance and becomes a job" is the felt shape of the human-as-default-gate story, deliberately un-named. Module ranges in body = arc-lecture carve-out (`check_lectures §3`; the SUBJECT is the arc).
+**Container discipline held (2026-07-02 pass):** phases described by what they GOVERN, felt problem named (quick feedback goes quiet; you meet the result all at once), NO packaging law named — no 0.85ⁿ, no convergence triad, no principal–agent, no hybrid-vs-autonomous, no "backpressure" (named at M5 per `theory-audit.md` § Tier 0 placement: felt at M4, named M5, infrastructure M6). "On a long session this stops being a glance and becomes a job" is the felt shape of the human-as-default-gate story, deliberately un-named. Module ranges in body = arc-lecture carve-out (`check_lectures §3`; the SUBJECT is the arc).
 
 **Placement (intended):** M4 open, the far-half (control/quality-half) map reveal (Day-2 open in the internal fold; student body uses module ranges, not day labels, per `check_student_facing §22`). Container only: front-loads the far-half SLOT (`check_lectures §2` carve-out; `theory-evals.md` B3).
 
@@ -144,12 +144,12 @@ Format → `curriculum/backing-format.md`. Figure provenance: derived from `the-
 - `near-half-behind-you` · vision · "The near half is behind you. Intent, Context, Work" ← none-owed
 - `long-running-is-not-more-of-the-same` · vision · "When the agent runs for an hour without you watching, that quick feedback goes quiet." ← none-owed
 - `verification-governs-knowing` · detail · "**Verification** governs how you know the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it." ← osmani-outer-loop
-- `verification-becomes-a-job` · vision · "On a long run, this stops being a glance and becomes a job." ← none-owed
+- `verification-becomes-a-job` · vision · "On a long session, this stops being a glance and becomes a job." ← none-owed
 - `absorption-governs-take-up` · detail · "**Absorption** governs how much of the output you can actually take up. Generating is fast; reading, judging, and merging are not." ← osmani-outer-loop, osmani-software-factories
-- `absorption-gap-decides-throughput` · vision · "On a long run the gap between the two decides your real throughput." ← none-owed
-- `outcome-governs-what-survives` · vision · "**Outcome** governs what survives the run." ← none-owed
+- `absorption-gap-decides-throughput` · vision · "On a long session the gap between the two decides your real throughput." ← none-owed
+- `outcome-governs-what-survives` · vision · "**Outcome** governs what survives the session." ← none-owed
 - `checking-loop-still-a-ghost` · vision · "The map drew a checking loop across this ground as a ghost, dashed and not yet built" ← none-owed
-- `un-packaged-run-on-purpose` · vision · "One long run goes off un-packaged, on purpose." ← none-owed
+- `un-packaged-run-on-purpose` · vision · "One long session goes off un-packaged, on purpose." ← none-owed
 - `trust-work-you-didnt-watch` · vision · "When the agent takes a hundred steps alone, what makes you trust the result at the end?" ← none-owed
 
 **Sources**

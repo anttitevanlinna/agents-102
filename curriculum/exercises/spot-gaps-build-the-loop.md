@@ -4,38 +4,38 @@
 
 **Session** *(new, "Module 6 worktree session")*
 
-Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no fork. M5's session may still be running the re-send. Leave it if that is the right call; M6 starts by reading both runs from disk. Before M6 edits files or cuts rules, decide whether the M5 run is done enough, should be stopped, or should be treated as the partial artefact.
+Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no fork. M5's session may still be running the re-send. Leave it if that is the right call; M6 starts by reading both sessions from disk. Before M6 edits files or cuts rules, decide whether the M5 session is done enough, should be stopped, or should be treated as the partial artefact.
 
-**What you do:** Diff two runs of the same task, route the dominant gap to its home, then read your own history for the work you repeat.
+**What you do:** Diff two sessions of the same task, route the dominant gap to its home, then read your own history for the work you repeat.
 
-**What you build:** a ranked gap map from two runs of the same task, one stale rule cut from your rules-file, and a diagrammed map of the work that recurs across your stack.
+**What you build:** a ranked gap map from two sessions of the same task, one stale rule cut from your rules-file, and a diagrammed map of the work that recurs across your stack.
 
-**The point:** You tested at M4, you learned at M5. Here you name what the two runs cost you and where each lesson belongs. Then you look wider: the same reading, run across everything you do. The stack-map you draw is what the closing lecture builds from.
+**The point:** You tested at M4, you learned at M5. Here you name what the two sessions cost you and where each lesson belongs. Then you look wider: the same reading, run across everything you do. The stack-map you draw is what the closing lecture builds from.
 
 ---
 
-## Phase 1: Diff the two runs, rank the gaps
+## Phase 1: Diff the two sessions, rank the gaps
 
-- You hold two runs of the same task. The un-packaged run sits on the `m4/<slug>` branch recorded in `task.md`; the packaged re-run sits on the `m5/<slug>` branch recorded in `plan.md`. Both are visible via git refs, since the worktree shares `.git` with the original repo.
-- Read from the recorded coordinates, not a branch or transcript search. Both runs recorded their session transcript paths: M4 in `task.md`, M5 in the protected `Run coordinates` block at the top of `plan.md`.
-- You hold the contrast; the agent reads both runs off disk. You are not tracing git refs by hand. Point it at the coordinates and let it pull both runs side by side.
+- You hold two sessions of the same task. The un-packaged session sits on the `m4/<slug>` branch recorded in `task.md`; the packaged re-send sits on the `m5/<slug>` branch recorded in `plan.md`. Both are visible via git refs, since the worktree shares `.git` with the original repo.
+- Read from the recorded coordinates, not a branch or transcript search. Both sessions recorded their transcript paths: M4 in `task.md`, M5 in the protected `Run coordinates` block at the top of `plan.md`.
+- You hold the contrast; the agent reads both sessions off disk. You are not tracing git refs by hand. Point it at the coordinates and let it pull both sessions side by side.
 
-Ask Claude to read both runs side by side and name where packaging caught, where it missed, and what new shapes of drift it introduced.
+Ask Claude to read both sessions side by side and name where packaging caught, where it missed, and what new shapes of drift it introduced.
 
 {{prompt:spot-gaps-build-the-loop-1}}
 
 ## Read the contrast, push back where it generalises
 
 - Skim past the opening plan. Claude will likely open with a four-dimension plan summary (*"I'll start with repo state across the m4/ branch, then..."*) before any quoted evidence lands. The contrast moments are what you're reading for.
-- Push back where Claude generalises. Two runs means two bodies of evidence, and the teaching is in the contrast. If Claude writes *"the agent drifted on goal"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted.
+- Push back where Claude generalises. Two sessions means two bodies of evidence, and the teaching is in the contrast. If Claude writes *"the agent drifted on goal"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted.
 - Expect over-credit on the packaging. A fair push-back is *"name one thing the verifier missed, concretely."* Close with a ranked gap list of three to five items and a dominant gap that will shape Phase 2.
 
 ## Cut one stale rule the diagnosis killed
 
-- Two runs of the same task were the first real stress-test of `./CLAUDE.local.md`. Diagnosis surfaced rules that turned out wrong, never fired when they should have, or fired and made the run worse.
+- Two sessions of the same task were the first real stress-test of `./CLAUDE.local.md`. Diagnosis surfaced rules that turned out wrong, never fired when they should have, or fired and made the session worse.
 - Cleaning is the compound move that keeps the loop fast. Rules-files have a half-life. Adding rules is only half of it; subtracting the dead ones is the other half.
 
-Ask Claude to cut one rule the two-run diagnosis killed, or to say so and stop if all rules held.
+Ask Claude to cut one rule the two-session diagnosis killed, or to say so and stop if all rules held.
 
 {{prompt:spot-gaps-build-the-loop-2}}
 
@@ -46,7 +46,7 @@ Ask Claude to cut one rule the two-run diagnosis killed, or to say so and stop i
 
 ## Phase 2: Find the work you repeat across your stack
 
-- Look wider than the two runs. The dominant gap came from one task. The kinds of work you repeat run across everything you do, and most of them never get looked at directly. This is your stack. How wide you look, and what you choose to map, is yours.
+- Look wider than the two sessions. The dominant gap came from one task. The kinds of work you repeat run across everything you do, and most of them never get looked at directly. This is your stack. How wide you look, and what you choose to map, is yours.
 - Read your own history first. Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back.
 
 ## Scan your history for the work that recurs
@@ -83,7 +83,7 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 
 ## Route the dominant gap to its home
 
-- Gaps sort into three homes: memory (a rule that would have prevented the mistake upstream), a sharper verifier (a check that would have fired mid-run), or a skill (a move worth packaging for future tasks). The dominant gap gets a named home before anything gets built. If the home is memory, the rule can land in `./CLAUDE.local.md` now, the reverse of the cut above.
+- Gaps sort into three homes: memory (a rule that would have prevented the mistake upstream), a sharper verifier (a check that would have fired mid-session), or a skill (a move worth packaging for future tasks). The dominant gap gets a named home before anything gets built. If the home is memory, the rule can land in `./CLAUDE.local.md` now, the reverse of the cut above.
 - The skill home stays a name for now, not a build. The closing lecture hands you the encode-move: a prompt built from the shapes you just drew.
 
 **What happened:** You ended with a one-screen gap map across memory / verifier / skill, one stale rule cut in place, and a diagrammed map of the work that recurs across your stack. The dominant gap has a named home; the shapes carry into the close.
@@ -110,9 +110,9 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 <!-- backing -->
 
 Claims
-- `diff-two-runs-of-one-task` · vision · "Diff two runs of the same task, route the dominant gap to its home, then read your own history for the work you repeat." ← none-owed
+- `diff-two-runs-of-one-task` · vision · "Diff two sessions of the same task, route the dominant gap to its home, then read your own history for the work you repeat." ← none-owed
 - `read-from-recorded-coordinates` · vision · "Read from the recorded coordinates, not a branch or transcript search." ← none-owed
-- `you-hold-the-contrast` · vision · "You hold the contrast; the agent reads both runs off disk." ← none-owed
+- `you-hold-the-contrast` · vision · "You hold the contrast; the agent reads both sessions off disk." ← none-owed
 - `push-back-where-claude-generalises` · vision · "If Claude writes *\"the agent drifted on goal\"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted." ← none-owed
 - `expect-over-credit-on-packaging` · vision · "A fair push-back is *\"name one thing the verifier missed, concretely.\"*" ← none-owed
 - `rules-files-have-a-half-life` · vision · "Adding rules is only half of it; subtracting the dead ones is the other half." ← none-owed
@@ -121,7 +121,7 @@ Claims
 - `checking-primitives-menu` · detail · "The menu grounds the map in what practitioners actually check, not just your own instinct." ← curran-2x, geoffintech-charles
 - `primitives-will-look-familiar` · vision · "The primitives Claude names are the ones your codebase already runs." ← none-owed
 - `gaps-sort-into-three-homes` · vision · "Gaps sort into three homes: memory …, a sharper verifier …, or a skill" ← none-owed
-- `review-and-compound-across-two-runs` · borrowed · "You tested at M4, you learned at M5. Here you name what the two runs cost you and where each lesson belongs." ← klaassen-how-every-codes
+- `review-and-compound-across-two-runs` · borrowed · "You tested at M4, you learned at M5. Here you name what the two sessions cost you and where each lesson belongs." ← klaassen-how-every-codes
 
 Sources
 - klaassen-how-every-codes `[checked:2026-07-30 result:CAVEAT due:2027-01-30]` https://every.to/source-code/compound-engineering-how-every-codes-with-agents — [practitioner direct, vendor venue] Shipper & Klaassen (Dec 2025). The Review and Compound step definitions live on **this** page, not on the Definitive Guide, and in the source Plan and Work belong to the agents while Review and Compound belong to the engineer — which is exactly the split this exercise runs. Dec 2025, outside the 6-month window: framework origin, not fresh evidence. fallback: teach the two-run review without the name; the move stands on the student's own artefacts.

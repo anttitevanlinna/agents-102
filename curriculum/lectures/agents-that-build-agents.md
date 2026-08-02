@@ -4,7 +4,7 @@ The map you just drew ended on a dashed loop, yours to draw solid. This is the m
 
 ## The move widens to everything you do
 
-One skill and one map, same move behind both. The skill, at M3, packaged a piece of judgement you had carried for years (how to write a good test). The map, at M6, named the judgement you spend over and over without packaging it. Every packaged move makes the next run cheaper.
+One skill and one map, same move behind both. The skill, at M3, packaged a piece of judgement you had carried for years (how to write a good test). The map, at M6, named the judgement you spend over and over without packaging it. Every packaged move makes the next session cheaper.
 
 The flywheel turns once more when you hand the agent the move itself. Ask it for a handoff prompt: one you paste into a fresh session later, that studies your work across your repos for the shapes you repeat, draws the ones worth packaging, and authors a skill for each. The same move you practiced at M3, widened to everything you do.
 
@@ -41,7 +41,7 @@ That's the M6 leap. The next Ralph is yours.
 
 ## There is no last turn
 
-- There is no last turn. Each run surfaces the next gap. Each gap proposes the next move. Each move makes the next run cheaper.
+- There is no last turn. Each session surfaces the next gap. Each gap proposes the next move. Each move makes the next session cheaper.
 - The kit compounds; the model rotates. The kit grows, the rules sharpen, the skills accumulate, and the model underneath gets replaced every few months without changing the move.
 
 The training closes. The flywheel does not.
@@ -70,7 +70,7 @@ The training closes. The flywheel does not.
 <!-- backing -->
 
 Claims
-- `every-packaged-move-cheapens-the-next-run` · vision · "Every packaged move makes the next run cheaper." ← none-owed
+- `every-packaged-move-cheapens-the-next-run` · vision · "Every packaged move makes the next session cheaper." ← none-owed
 - `hand-the-agent-the-move-itself` · vision · "The flywheel turns once more when you hand the agent the move itself." ← none-owed
 - `what-comes-back-is-a-candidate` · vision · "What comes back is a candidate." ← none-owed
 - `not-agent-writing-its-own-skills` · vision · "Not the agent writing its own skills without you in the room." ← none-owed
@@ -82,7 +82,7 @@ Claims
 - `ralph-refeed-is-on-your-menu` · vision · "The name stuck, and Ralph re-feed is one of the three verifier shapes on your menu" ← none-owed
 - `goal-shipped-later` · detail · "Months later, Claude Code shipped `/goal`. The runtime version of the same move: a condition, a check each turn." ← cc-goal-capability
 - `practitioners-see-levers-first` · vision · "Practitioners see levers first." ← none-owed
-- `there-is-no-last-turn` · vision · "There is no last turn. Each run surfaces the next gap." ← none-owed
+- `there-is-no-last-turn` · vision · "There is no last turn. Each session surfaces the next gap." ← none-owed
 - `kit-compounds-model-rotates` · vision · "The kit compounds; the model rotates." ← none-owed
 
 Sources

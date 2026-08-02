@@ -86,7 +86,7 @@ Module 4 also hands the agent more autonomy. Before granting it, one more check,
 - **Does untrusted content reach its context window?** Web pages, issue comments, dependencies: anything the agent reads can carry someone else's instructions.
 - **Is there a channel out?** A git push or an HTTP request is enough to move what the agent holds.
 
-All three at once is the opening that prompt injection needs: one sentence, planted where the agent will read it, becomes an instruction. Cut one leg before the run. The frame is [The lethal trifecta](trainings/agentic-engineering-101/supplementary/the-lethal-trifecta.md): three legs, cut one.
+All three at once is the opening that prompt injection needs: one sentence, planted where the agent will read it, becomes an instruction. Cut one leg before the session. The frame is [The lethal trifecta](trainings/agentic-engineering-101/supplementary/the-lethal-trifecta.md): three legs, cut one.
 
 Optional forward-look before M4: [What is agentic engineering](trainings/agentic-engineering-101/supplementary/what-is-agentic-engineering.md). And when your sessions start running heavy, [Token efficiency](trainings/agentic-engineering-101/supplementary/token-efficiency.md) on keeping the context window lean.
 
@@ -100,7 +100,7 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 
 Optional. One read in the gap.
 
-**Read: Simon Willison, [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/)** (September 2025). Willison names the skill of setting up an agent's run before you start it. Module 4 opens on a run you send off and step away from; this is the thinking you do before stepping away.
+**Read: Simon Willison, [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/)** (September 2025). Willison names the skill of setting up an agent's session before you start it. Module 4 opens on a session you send off and step away from; this is the thinking you do before stepping away.
 
 <!-- maintainer -->
 

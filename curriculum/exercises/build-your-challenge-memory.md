@@ -71,7 +71,7 @@ That list is your first quality check. You'll sharpen those pages in Phase 3.
 
 A library without a librarian is a cost. Give it one.
 
-An agent, at its simplest, is a markdown file: instructions the model reads at the start of every run. What this agent is for, and the rules it follows. Same stuff as the memory. Same stuff as the Module 1 guardrail. Text on disk, re-used.
+An agent, at its simplest, is a markdown file: instructions the model reads at the start of every task. What this agent is for, and the rules it follows. Same stuff as the memory. Same stuff as the Module 1 guardrail. Text on disk, re-used.
 
 {{prompt:build-your-challenge-memory-5}}
 

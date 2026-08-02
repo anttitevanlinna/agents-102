@@ -4,7 +4,7 @@ A system, just built. It runs on a task that matters, with rules written here, i
 
 ## A snapshot, not a forever-file
 
-The Phase 2 CLAUDE.md is the current snapshot. It catches what you saw in this run. Later, the team will use the same response.md template for a different question, and Claude will produce a different generic claim that the current rules don't catch yet. The CLAUDE.md is not a forever-file. It is a working file.
+The Phase 2 CLAUDE.md is the current snapshot. It catches what you saw in this session. Later, the team will use the same response.md template for a different question, and Claude will produce a different generic claim that the current rules don't catch yet. The CLAUDE.md is not a forever-file. It is a working file.
 
 The wrong move (what most people do): when the next generic claim shows up, they paste a longer prompt to fix it. *"Don't say X this time."* The fix lives in the next message and dies when the conversation ends.
 

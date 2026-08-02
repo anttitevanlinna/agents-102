@@ -132,7 +132,7 @@ Then tell me what changed in the file.
 What I want the next version to do better:
 ```
 
-Open `response.html` to see what actually shifted, Cowork's chat summary about what changed can drift from the file. The point is not a perfect page; the point is one more rule in your folder for the next run.
+Open `response.html` to see what actually shifted, Cowork's chat summary about what changed can drift from the file. The point is not a perfect page; the point is one more rule in your folder for the next session.
 
 When the page is visibly closer and the folder carries the rule forward, stop. The system is small, but it now has something reusable.
 

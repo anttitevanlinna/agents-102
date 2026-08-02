@@ -10,9 +10,9 @@ Create a `sources/` subfolder and add 1 or 2 source files you know well there. U
 
 You choose the briefing topic. The first prompt should feel like a normal work request.
 
-**Session** *(new, "Find wrong claims - first run")*
+**Session** *(new, "Find wrong claims - first session")*
 
-Open Cowork on this folder for the first run.
+Open Cowork on this folder for the first session.
 
 ## Phase 1. Generate from sources (6 minutes)
 
@@ -86,9 +86,9 @@ After saving `CLAUDE.md`, tell me the rule you added.
 
 The rule does not make Claude perfect. It gives the folder a better default move.
 
-**Session** *(new, "Find wrong claims - second run")*
+**Session** *(new, "Find wrong claims - second session")*
 
-Close this Cowork session. Open a new Cowork session on the same local folder. This tests whether `CLAUDE.md` changes the next run.
+Close this Cowork session. Open a new Cowork session on the same local folder. This tests whether `CLAUDE.md` changes the next session.
 
 ## Phase 4. Generate again (5 minutes)
 

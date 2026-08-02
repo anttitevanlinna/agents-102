@@ -8,7 +8,7 @@ Start a new Cowork task with your personal homework folder as the working folder
 
 **What you do:**
 
-The site is the canvas. The real move is iterate and learn: change the context, watch the agent's output shift, then package what you learned so the next run starts smarter. By the end, you have a personal site you actually like AND a small rules file the agent can re-read on any future personal-shaped task.
+The site is the canvas. The real move is iterate and learn: change the context, watch the agent's output shift, then package what you learned so the next session starts smarter. By the end, you have a personal site you actually like AND a small rules file the agent can re-read on any future personal-shaped task.
 
 **Phase 1. The boring baseline.**
 

@@ -1,11 +1,11 @@
 # The whole map
 
-## Every run runs the same six phases
+## Every task runs the same six phases
 
 Every piece of agentic work runs the same cycle. Six phases. The loops drawn across them all run the same shape, each wearing different work:
 
 <figure class="diagram">
-<svg viewBox="0 0 1200 560" role="img" aria-label="The compounding engine: six phases of the cycle with the named loops running across them, each phase capped by the component outcome its loops hand over, and the compounding return carrying each run's evidence back to the start." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:6px;">
+<svg viewBox="0 0 1200 560" role="img" aria-label="The compounding engine: six phases of the cycle with the named loops running across them, each phase capped by the component outcome its loops hand over, and the compounding return carrying each session's evidence back to the start." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:6px;">
 <defs>
 <linearGradient id="wm-wall" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2f6b6b"/><stop offset="1" stop-color="#a05a2c"/></linearGradient>
 </defs>
@@ -69,7 +69,7 @@ Every piece of agentic work runs the same cycle. Six phases. The loops drawn acr
 <text x="600" y="463">run · let it fail · shape the verifier · re-run</text>
 <text x="660" y="344" font-size="10">act · read the result · correct</text>
 <text x="850" y="463" fill="#786c56">read · judge · gate what ships · by hand for now</text>
-<text x="760" y="103">each run's evidence → the next run's rules</text>
+<text x="760" y="103">each session's evidence → the next session's rules</text>
 <text x="1055" y="445">prove it on yourself → promote</text>
 </g>
 <g text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="16" fill="#1f1a13">
@@ -90,15 +90,15 @@ Every piece of agentic work runs the same cycle. Six phases. The loops drawn acr
 - **Work.** The agent runs the loop: acts, reads the result, corrects, goes again. Everything you would call "using the agent" happens in this phase.
 - **Verification.** How you know the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it.
 - **Absorption.** How much of the result you can actually take up. What gets read, judged, and merged, not just what gets produced.
-- **Outcome.** What you keep. What survives the run and compounds into the next one.
+- **Outcome.** What you keep. What survives the session and compounds into the next one.
 
-The phases are places, not stages. A run usually stands in more than one at once, and the plan gets re-entered mid-build.
+The phases are places, not stages. A task usually stands in more than one at once, and the plan gets re-entered mid-build.
 
 ## You are here
 
 - M1 was the first step into this territory, taken without the map on purpose. You feel a country before you see it drawn. The first fix, the first rule, the first read of the context window: all of it already sits somewhere on this map.
 - The near half is Intent, Context, Work. How to aim the work, what the agent needs to know, and how a single loop runs and compounds. Every move so far has lived here.
-- The far half is Verification, Absorption, Outcome. What happens when runs get long and the quick feedback goes quiet. Different ground, different rules. The rest of the training goes there. Not yet.
+- The far half is Verification, Absorption, Outcome. What happens when sessions get long and the quick feedback goes quiet. Different ground, different rules. The rest of the training goes there. Not yet.
 
 ## Every move hangs on a location
 
@@ -152,9 +152,9 @@ Format → `curriculum/backing-format.md`.
 - `work-is-act-read-correct` · borrowed · "The agent runs the loop: acts, reads the result, corrects, goes again." ← cultural-vocab, ronacher-coming-loop
 - `verification-pushes-back` · vision · "everything that pushes back on the work before you accept it" ← none-owed
 - `absorption-is-the-taking-up` · detail · "How much of the result you can actually take up. What gets read, judged, and merged, not just what gets produced." ← osmani-software-factories, osmani-outer-loop, ronacher-final-bottleneck, user-signal-absorption
-- `outcome-is-what-survives` · vision · "What survives the run and compounds into the next one." ← none-owed
-- `phases-are-places-not-stages` · vision · "The phases are places, not stages. A run usually stands in more than one at once, and the plan gets re-entered mid-build." ← none-owed
-- `near-half-far-half` · vision · "The far half is Verification, Absorption, Outcome. What happens when runs get long and the quick feedback goes quiet." ← none-owed
+- `outcome-is-what-survives` · vision · "What survives the session and compounds into the next one." ← none-owed
+- `phases-are-places-not-stages` · vision · "The phases are places, not stages. A task usually stands in more than one at once, and the plan gets re-entered mid-build." ← none-owed
+- `near-half-far-half` · vision · "The far half is Verification, Absorption, Outcome. What happens when sessions get long and the quick feedback goes quiet." ← none-owed
 - `territory-before-map` · vision · "You feel a country before you see it drawn." ← none-owed
 - `location-aids-recall` · vision · "Material with a location is material you can find again later." ← none-owed
 - `do-then-name` · vision · "You do the moves first and name them after." ← none-owed

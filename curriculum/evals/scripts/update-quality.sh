@@ -102,6 +102,42 @@ for v in "$state_writing" "$state_story" "$state_technical" "$state_behavior" \
   fi
 done
 
+# ---- Stale-verdict guard -----------------------------------------------------
+# A verdict is a claim about the body the judge READ. In a multi-session repo the
+# file can move under a running judge, and stamping then pins a verdict about text
+# that no longer exists — at current HEAD, so nothing downstream can tell. Instance
+# JSONs recording `body_sha` are checked against the file's current hash; instances
+# without the field predate the guard and stamp as before.
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+INSTANCES_DIR="${QUALITY_INSTANCES_DIR:-$SCRIPT_DIR/../instances}"
+slug="$(basename "$FILE" .md)"
+file_sha="$(shasum -a 256 "$FILE" 2>/dev/null | awk '{print $1}')"
+
+check_instance_sha() { # class state
+  local cls="$1" st="$2" recorded
+  [[ "$st" == keep ]] && return 0
+  [[ -n "$file_sha" && -d "$INSTANCES_DIR" ]] || return 0
+  local matches=( "$INSTANCES_DIR"/*--"$slug"."$cls".json )
+  [[ -e "${matches[0]}" ]] || return 0            # no instance: nothing to check
+  [[ ${#matches[@]} -eq 1 ]] || return 0          # ambiguous slug: don't guess
+  recorded="$(sed -nE 's/.*"body_sha"[[:space:]]*:[[:space:]]*"([a-f0-9]{64})".*/\1/p' "${matches[0]}" | head -1)"
+  [[ -n "$recorded" ]] || return 0                # pre-guard instance
+  if [[ "$recorded" != "$file_sha" ]]; then
+    echo "error: the $cls verdict in $(basename "${matches[0]}") was judged against a different body" >&2
+    echo "       recorded: ${recorded:0:12}…   current: ${file_sha:0:12}…" >&2
+    echo "       the file changed after the judge read it — re-fire $cls, then stamp" >&2
+    exit 1
+  fi
+}
+
+check_instance_sha writing   "$state_writing"
+check_instance_sha story     "$state_story"
+check_instance_sha technical "$state_technical"
+check_instance_sha behavior  "$state_behavior"
+check_instance_sha pedagogy  "$state_pedagogy"
+check_instance_sha strategy  "$state_strategy"
+check_instance_sha slides    "$state_slides"
+
 # ---- Read existing Quality block to support --keep ---------------------------
 keep_judges=""
 keep_cross_module=""

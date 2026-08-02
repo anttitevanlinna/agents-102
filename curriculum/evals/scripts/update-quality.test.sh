@@ -192,6 +192,58 @@ rc=$(run "$TMP/t11.md" --maintainer-reviewed PASS --sha new5678 --date 2026-06-0
 assert_rc "$rc" "1" 'T11 axis stamp on a legacy draft line refuses'
 if diff -q "$TMP/t11.before" "$TMP/t11.md" >/dev/null; then pass=$((pass+1)); else fail=$((fail+1)); echo "FAIL: T11 legacy draft file must be unchanged"; fi
 
+# ── T12–T14 — stale-verdict guard ────────────────────────────────────────────
+#    A judge that read the file before a concurrent edit produces a verdict about
+#    text that no longer exists. Stamping it pins that verdict at current HEAD and
+#    the row silently lies. Instances that record `body_sha` get checked; instances
+#    without the field are pre-guard and must still stamp (back-compat).
+#    Real case 2026-08-02: a concurrent session's pedagogy verdict quoted a clause
+#    cut one minute earlier, and read as a clean PASS.
+INST="$TMP/instances"; mkdir -p "$INST"
+export QUALITY_INSTANCES_DIR="$INST"
+
+# T12 — body_sha matches the file on disk → stamps normally
+mkfix t12.md '# Lesson
+<!-- maintainer -->
+**Quality:** compendium-audited 2026-05-15 (writing@old1234)
+- judges @old1234: writing PASS
+
+body'
+sha12=$(shasum -a 256 "$TMP/t12.md" | awk '{print $1}')
+printf '{"class":"writing","body_sha":"%s","verdict":"PASS"}\n' "$sha12" > "$INST/ae101--lecture--t12.writing.json"
+rc=$(run "$TMP/t12.md" --writing PASS --sha new5678 --date 2026-06-01)
+assert_rc   "$rc" "0" 'T12 matching body_sha stamps'
+assert_grep "$TMP/t12.md" 'writing@new5678' 'T12 pin written'
+
+# T13 — body_sha is from a different body → refuse, leave the file untouched
+mkfix t13.md '# Lesson
+<!-- maintainer -->
+**Quality:** compendium-audited 2026-05-15 (pedagogy@old1234)
+- judges @old1234: pedagogy PASS
+
+body'
+printf '{"class":"pedagogy","body_sha":"%s","verdict":"PASS"}\n' \
+  "0000000000000000000000000000000000000000000000000000000000000000" \
+  > "$INST/ae101--exercise--t13.pedagogy.json"
+cp "$TMP/t13.md" "$TMP/t13.before"
+rc=$(run "$TMP/t13.md" --pedagogy PASS --sha new5678 --date 2026-06-01)
+assert_rc "$rc" "1" 'T13 mismatched body_sha refuses to stamp'
+if diff -q "$TMP/t13.before" "$TMP/t13.md" >/dev/null; then pass=$((pass+1)); else fail=$((fail+1)); echo "FAIL: T13 file must be unchanged after a refused stamp"; fi
+
+# T14 — instance without body_sha (pre-guard) still stamps
+mkfix t14.md '# Lesson
+<!-- maintainer -->
+**Quality:** compendium-audited 2026-05-15 (slides@old1234)
+- judges @old1234: slides PASS
+
+body'
+printf '{"class":"slides","verdict":"PASS"}\n' > "$INST/ae101--lecture--t14.slides.json"
+rc=$(run "$TMP/t14.md" --slides PASS --sha new5678 --date 2026-06-01)
+assert_rc   "$rc" "0" 'T14 instance without body_sha still stamps (back-compat)'
+assert_grep "$TMP/t14.md" 'slides@new5678' 'T14 pin written'
+
+unset QUALITY_INSTANCES_DIR
+
 echo "──────────────────────────────"
 echo "update-quality.test.sh: $pass passed, $fail failed"
 [[ $fail -eq 0 ]]

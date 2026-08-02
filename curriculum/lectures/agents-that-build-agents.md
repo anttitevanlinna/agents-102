@@ -54,8 +54,8 @@ The training closes. The flywheel does not.
 
 **Lede re-anchor (2026-07-03):** M6 closing sequence re-sequenced — *The map filled in* now sits between *The loop has a name* and this lecture, which is DEAD-LAST (training's final beat). Old lede opened *"The closer named the flywheel in one line"* — a back-reference to *The loop has a name* as the immediately-preceding lecture, now stale. Re-anchored to pick up from the map lecture's *"the next dashed loop is yours to draw solid"* hand-off; flywheel kept as theme (*"named a few beats back"*, not an adjacency claim). *Where the loop ends* beat unchanged. Placement block below still describes the pre-re-sequence chain — re-verify against the module file before ship.
 
-**Quality:** compendium-audited 2026-08-02 (writing@b3143a4 story@366047e technical@b3143a4 behavior@366047e pedagogy@366047e strategy@366047e slides@9697944)
-- judges @366047e: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-02 (writing@b3143a4 story@c9f9c88 technical@b3143a4 behavior@c9f9c88 pedagogy@c9f9c88 strategy@c9f9c88 slides@9697944)
+- judges @c9f9c88: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - sim-passed 2026-05-31 (three-persona sim + handoff-generator live-test @182969a): generated handoff is cold-safe — named shapes carried, on-disk `session-shaper` referenced as the worked example, repos re-studied, no placeholders. Sim-grade (constructed M6 context); a real-cohort live-test on an actual M6 close is still owed — no cohort has run it yet. Per-class instances at `curriculum/evals/instances/ae101--lecture--agents-that-build-agents.<class>.json`. Predates the slide rework.
 

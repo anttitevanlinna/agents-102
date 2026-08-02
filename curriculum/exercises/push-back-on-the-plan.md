@@ -4,7 +4,7 @@
 
 **What you do:** take a real multi-file task from your backlog, run it through plan mode, push back twice with what you can see, then hand the plan to a second agent for a deeper read. Approve the plan. **Stop.** Don't execute. Compare what your read caught to what the second-pass read caught. That gap is the skill this module is building.
 
-**What you build:** two reads paired on one plan. Your own two push-backs, in your voice. A second-pass walk-down, three questions at a time, catches the branches you can't see. Together they make a plan you can approve without rubber-stamping it.
+**What you build:** two reads paired on one plan. Your own two push-backs, in your voice. A second-pass walk-down, three questions at a time. Together they make a plan you can approve without rubber-stamping it.
 
 **The point:** two reads, paired. Making the plan good is the work.
 

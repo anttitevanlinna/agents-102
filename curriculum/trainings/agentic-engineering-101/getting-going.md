@@ -108,7 +108,7 @@ Optional. All three sit in the gap before it. Do them and its moves land as thin
 2. **Writes a failing test that proves the bug exists before touching the fix** on a real backlog bug. Falsifiable: the commit history shows a test commit before the fix commit, OR the diff shows test additions and source changes in the same commit with the test demonstrably reflecting the bug.
 3. **Edits `./CLAUDE.local.md` from session evidence after a non-trivial session**, integrating rather than appending, with a rule that quotes the specific session beat that earned it. Falsifiable: the rule names a session moment and could not have been written from a blank page.
 
-**Artefact contracts** (per `check_pedagogy.md` rule 46 — every produced artefact with a stable identifier gets a contract row):
+**Artefact contracts** (per `check_cross_module.md` §5 — every produced artefact with a stable identifier gets a contract row):
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|

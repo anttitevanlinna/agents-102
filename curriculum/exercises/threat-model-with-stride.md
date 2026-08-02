@@ -128,7 +128,7 @@ Ask Claude whether this ADR rides into future sessions automatically.
 2. **Rejects the other STRIDE threats explicitly in the ADR's Alternatives considered.** Falsifiable: the ADR's Alternatives section names at least two threats and the reason each was rejected (acceptable risk, already mitigated, out of scope), not left as backlog.
 3. **Writes the hardening decision as an ADR in the repo's convention with all four standard sections (context, decision, alternatives, constraint).** Falsifiable: a file at the sponsor-stated ADR path with the four sections filled in, not a stub.
 
-**Artefact contracts** (per `check_pedagogy.md` rule 46):
+**Artefact contracts** (per `check_cross_module.md` §5):
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|

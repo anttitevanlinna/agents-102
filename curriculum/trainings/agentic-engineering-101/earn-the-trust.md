@@ -159,7 +159,7 @@ Optional. One read in the gap.
 2. **Writes an ADR for one architectural decision under named pressure**, with alternatives + the constraint that picked the winner, in the repo's ADR convention. Falsifiable: a new file at the sponsor-stated ADR path with the four standard sections (context, decision, alternatives, constraint).
 3. **Invokes the authored test-strategy skill on a feature without being prompted to.** Falsifiable: scrollback of a normal working session shows *"invoke the test-strategy skill on this"* (or equivalent) without a teacher cue earlier in the session.
 
-**Artefact contracts** (per `check_pedagogy.md` rule 46 — every produced artefact is a contract row with stable identifier + producing prompt + consuming module):
+**Artefact contracts** (per `check_cross_module.md` §5 — every produced artefact is a contract row with stable identifier + producing prompt + consuming module):
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|

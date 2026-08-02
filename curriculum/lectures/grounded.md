@@ -26,13 +26,13 @@ The number doesn't tell you *what* will go wrong. It tells you that something wi
 
 **Now flip the math.**
 
-Say your briefing has a 10% fabrication rate: ten ungrounded claims in every hundred. You test. A decent detector catches 90% of them; it's that easy, because fabrication leaves fingerprints. You fix what the detector flagged. Test again. The detector catches 90% of what's left. Fix again.
+Say your briefing has a 10% fabrication rate: ten ungrounded claims in every hundred. In practice a first pass lands close to that; treat it as a working prior, not a measurement. You test. Say the detector catches 90% of them, the same prior run in reverse. You fix what the detector flagged. Test again. The detector catches 90% of what's left. Fix again.
 
 Round 1: 10% fabricated → 1% after fix.
 Round 2: 1% → 0.1% after fix.
 Round 3: 0.1% → 0.01%.
 
-The same compounding that destroys single-pass reliability *builds* loop-based reliability. One generation pass is a trap; a test-and-fix loop is the escape. Three rounds and you're at parts-per-ten-thousand, a place single-pass generation cannot reach, no matter how good the model gets.
+The same compounding that destroys single-pass reliability *builds* loop-based reliability. One generation pass is a trap; a test-and-fix loop is the escape. Three rounds of the illustration land at parts-per-ten-thousand, a place you don't reach by making one pass better. You reach it by looping.
 
 This is the shape of the rest of the training. Now you'll run the test side: a benchmark to find the detector that works on *your* output. Module 6 puts that detector in a loop that runs the full test-fix-test cycle without you. That's evals. The compounding-error math is the problem; the compounding-check math is the answer.
 
@@ -90,7 +90,8 @@ Phase 0 is next: a fresh briefing, then a 30-claim pool extracted from it. The c
 
 Claims
 - `single-pass-compound-decay` · detail · "85%^10 = 20%" ← compound-reliability-math
-- `loop-collapses-the-error-rate` · detail · "10% → 1% → 0.1% → 0.01% with a 90%-catch detector plus fix" ← compound-reliability-math
+- `first-pass-prior` · detail · "In practice a first pass lands close to that; treat it as a working prior, not a measurement." ← antti-first-pass-prior
+- `loop-collapses-the-error-rate` · detail · "10% → 1% → 0.1% → 0.01% with a 90%-catch detector plus fix" ← compound-reliability-math, antti-first-pass-prior
 - `the-word-is-grounded` · vision · "The word is grounded." ← none-owed
 - `dont-pick-a-method-run-the-candidates` · vision · "Don't pick a method. Run the candidates." ← none-owed
 - `source-triangulation` · vision · "For every specific claim, does it appear in at least one file on disk?" ← none-owed
@@ -99,7 +100,8 @@ Claims
 - `counter-evidence-search` · vision · "look for sources that contradict it. One contradiction kills the claim" ← none-owed
 
 Sources
-- compound-reliability-math `[checked:2026-08-01 result:ATTESTED due:none]` (no URL — arithmetic) — [house canonical] Both directions of the compound-reliability figure. Single-pass: 0.85^10 ≈ 0.197. Loop-based with a 90%-catch detector plus fix: 10% → 1% → 0.1% → 0.01%. **This is arithmetic, not a finding, and the stamp exists to say so** — the numbers are checkable on a calculator and owe no citation. What owes care is the *premise* (that a step is 85% reliable and that steps compose independently), which is illustrative rather than measured, and the lecture uses it to motivate a design move rather than to predict a rate. fallback: keep the arithmetic, never present 85% as a measured per-step reliability for any real system.
+- compound-reliability-math `[checked:2026-08-01 result:ATTESTED due:none]` (no URL — arithmetic) — [house canonical] Both directions of the compound-reliability figure. Single-pass: 0.85^10 ≈ 0.197. Loop-based with a 90%-catch detector plus fix: 10% → 1% → 0.1% → 0.01%. **This is arithmetic, not a finding, and the stamp exists to say so** — the numbers are checkable on a calculator and owe no citation. What owes care is the *premise*, and the two halves differ: the 85% per-step figure is illustrative rather than measured; the flip side's 10%/90% pair carries the maintainer's attested working prior (antti-first-pass-prior below), labeled a prior in body. The lecture uses both to motivate a design move rather than to predict a rate. fallback: keep the arithmetic; never present 85% as measured; keep the prior labeled a prior.
+- antti-first-pass-prior `[checked:2026-08-02 result:ATTESTED due:none]` attested:Antti 2026-08-02 first-pass error heuristic — [practitioner direct, maintainer-attested] "A first pass gets about one in ten wrong" — standing working prior from the maintainer's own loop practice and trainings (same family as the attested ~10% prior in `orient-and-introspect.md`); the 90% detector figure is the same prior applied to the fix pass. A prior, not a measurement, and the body says so in as many words. fallback: drop to pure stipulation ("say the detector catches 90%") if the attestation needs to soften.
 
 Frameworks
 - Compound-reliability floor · [borrow:none] · law:compound-reliability-floor-0-85 · ← compound-reliability-math — naming both halves is what turns the math from despair into design
@@ -108,7 +110,7 @@ Frameworks
 
 Stance `[stance:2026-08-01 level:L1]`
 - holds: that chain length rather than single-step quality is what kills autonomy, and that a detect-and-fix loop collapses the error rate. The first is arithmetic given the premise; the second is the design conclusion the whole module turns on.
-- contested: **the 85% premise itself, which is illustrative and should never be quoted as measured.** No published per-step reliability figure for agentic steps is trustworthy at this level of generality, and the lecture is careful to use the number as a lens rather than a rate. That care is the fragile part — a reader in a hurry sees a percentage and remembers a finding.
+- contested: **the 85% premise itself, which is illustrative and should never be quoted as measured** — and symmetrically, the flip side's 10%/90% pair, which is an attested working prior and must stay labeled a prior. No published per-step reliability figure for agentic steps is trustworthy at this level of generality, and the lecture is careful to use every number as a lens rather than a rate. That care is the fragile part — a reader in a hurry sees a percentage and remembers a finding.
 - would-move-it: nothing about the arithmetic. What would move the teaching is credible measurement of real per-step reliability, which would let the lecture use a real number instead of a round one.
 
 OODA

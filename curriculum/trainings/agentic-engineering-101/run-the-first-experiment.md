@@ -125,6 +125,8 @@ Optional. They sit in the gap while your un-packaged run is still going. All fou
 
 <!-- maintainer -->
 
+**"Past ten or so, you've become the agent" stays — maintainer call 2026-08-02.** `check_pedagogy.md §16` bans count-scripts but its own boundary clause exempts this shape: *"pacing calibrations survive as suggestions. A number that helps the student pace themselves (when to stop nudging) may stay in body in suggestion register (or so, around, a fair ceiling) — cut the prescription, keep the calibration."* The line carries `or so` and attaches a felt signal (*you've become the agent*), so it calibrates rather than prescribes; the banned shape is a bare imperative count like *"two rounds max"*. Cutting the number would strip the one piece of calibration a first-timer has no way to supply — they cannot know whether three nudges or thirty is normal. A pedagogy judge flagged it once, having read the ban and not the boundary.
+
 **2026-07-30 (pre-read echo):** student-visible callback in `## Prework` defusing the factory-essay objection (the wsff pre-read in `getting-going.md` argues against lights-off runs; this module's un-packaged send-off is the obvious collision). Framing: throwaway experiment on a pinned branch + Module 5 builds what the essay says is missing. Body touched — per-class Quality SHAs below predate; re-audit before ship.
 
 **Quality:** compendium-audited 2026-08-02 (writing@ffc64f9 story@ffc64f9 technical@ffc64f9 behavior@1c765f2 pedagogy@ffc64f9 strategy@ffc64f9 slides@ffc64f9)

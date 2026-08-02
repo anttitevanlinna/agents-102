@@ -59,6 +59,8 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 
 <!-- maintainer -->
 
+**The `@import` wiring stays in the body Note, not the fence — maintainer call 2026-08-02.** `check_pedagogy.md §16`'s own carve-out ("mandatory teaching prompts stay fenced; optional push-backs / refinements can live in body") covers it: the wiring is **deliberately optional**. Folding the ask into `extract-the-task-shaping-rule-2`'s fence would make the agent do it every time a student picks a non-auto-load path, which removes the choice the Note exists to offer. A pedagogy judge flagged it as a body-prose forcing function and the orchestrator drafted the fence edit; both had read the rule's prohibition and stopped before its carve-out. Do not move it into the prompt.
+
 **View summary:** You ask the agent to recover the task-shaping rules hidden in the planning session, rewrite anything generic, and save the useful rules where they will fire. The artifact turns one good planning experience into reusable guidance for similar work.
 
 **Ticket phase split out:** the optional "read one real ticket" phase (`extract-the-task-shaping-rule-4`) moved to the `read-the-ticket-rules.md` homework exercise; this file now ends at the automation-shapes read. Body trimmed since the SHAs below, so re-audit before ship.

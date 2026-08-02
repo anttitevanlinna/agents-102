@@ -6,7 +6,7 @@
 
 **What you build:** a rules file written from session evidence. Concrete, specific, yours, and read at the top of every future session in this repo.
 
-**The point:** the compound step closes Kieran Klaassen's loop: ideate → brainstorm → plan → work → review → polish → compound → repeat. It doesn't interview you with three retro questions. The session is the evidence; Claude reviews it and writes. You push back where it misread.
+**The point:** the compound step closes Kieran Klaassen's loop: ideate → brainstorm → plan → work → review → polish → **compound** → repeat. It doesn't interview you with three retro questions. The session is the evidence; Claude reviews it and writes. You push back where it misread.
 
 The PR shipped. Now compound the session. Claude reviews what happened and writes your rules from how you actually worked.
 
@@ -38,7 +38,7 @@ Ask Claude to sweep the session for anything earned since the first compound and
 
 **What happened:** Your rules file was born from how you actually worked, not from a template. Claude reviewed the whole session, you pushed back where it misread, and the rules that held landed in `./CLAUDE.local.md`.
 
-The PR is open and the rules file is written from session evidence. The loop's last move, closing the bug's ticket outside the repo, is the homework.
+The PR is open and the rules file is written from session evidence. The last move of the loop you ran today, closing the bug's ticket outside the repo, is the homework.
 
 You can close this session now. `./CLAUDE.local.md` stays behind; whether it earns its keep shows up the next time a session reads it.
 
@@ -48,8 +48,8 @@ You can close this session now. `./CLAUDE.local.md` stays behind; whether it ear
 
 **Re-audit owed:** the connector + close-out sections were split into the `close-the-ticket.md` homework exercise, leaving this file as the compound-the-rules-file beat only. Body materially trimmed, so the per-class Quality SHAs below predate the trim. Re-audit before ship. **Emphasis budget (`check_slides.md §9`):** widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) stays bold; body bullet leads de-bolded; no named-term handles remain in this file.
 
-**Quality:** compendium-audited 2026-08-02 (writing@eaae8cd technical@d1b6f2c behavior@d1b6f2c pedagogy@d1b6f2c strategy@d1b6f2c)
-- judges @eaae8cd: writing PASS, story REVISE (1/0-see-instances/ae101--exercise--compound-and-close.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides REVISE (1/1-see-instances/ae101--exercise--compound-and-close.slides.json)
+**Quality:** compendium-audited 2026-08-02 (writing@eaae8cd technical@5117a2c behavior@5117a2c pedagogy@5117a2c strategy@5117a2c)
+- judges @5117a2c: writing PASS, story REVISE (1/0-see-instances/ae101--exercise--compound-and-close.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides REVISE (1/1-see-instances/ae101--exercise--compound-and-close.slides.json)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read the retro summary against session moments) + Apply (integrate the rules file from evidence).
@@ -64,7 +64,7 @@ You can close this session now. `./CLAUDE.local.md` stays behind; whether it ear
 Claims
 - `session-is-the-evidence` · vision · "The session is the evidence." ← none-owed
 - `no-three-question-retro` · vision · "the compound step … doesn't interview you with three retro questions" ← none-owed
-- `compound-step-is-klaassens-loop` · borrowed · "the compound step closes Kieran Klaassen's loop: ideate → brainstorm → plan → work → review → polish → compound → repeat" ← klaassen-expanded-loop, klaassen-compound-run
+- `compound-step-is-klaassens-loop` · borrowed · "the compound step closes Kieran Klaassen's loop: ideate → brainstorm → plan → work → review → polish → **compound** → repeat" ← klaassen-expanded-loop, klaassen-compound-run
 - `not-drafting-from-a-blank-page` · vision · "You are not drafting from a blank page. The agent reads the session for you." ← none-owed
 - `quote-the-moment-back` · vision · "Quote the specific session moment back at Claude." ← none-owed
 - `rules-file-is-yours-now` · vision · "Born from the session, extended by every module after this one." ← none-owed

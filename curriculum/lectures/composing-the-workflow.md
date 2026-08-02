@@ -228,14 +228,12 @@ Frameworks
 Stance `[stance:2026-08-01 level:L1]`
 - holds: almost nothing, deliberately. This lecture is a teacher, not a claim-carrier: every dated specific was pushed into the two supplementaries during the 2026-07-04 redesign, and the body was rebuilt from a five-practitioner name-drop into a concrete mechanics slide. Its one field-level assertion is that composition is unsettled, which the supplementary's own evidence supports.
 - contested: composition itself, which is the point — the body says so in as many words. The four mechanisms are the stable part; the shape a kit should take is not.
+- decided: **delegated stamps take `due:none`, 2026-08-02.** This file's `due:2026-11-25` pointed at a delegate checked 2026-05-25 that had since been corrected and re-stamped, so the pointer aged against a fact it did not own. The pointer is legitimate; a computed date on it is a second copy of the delegate's freshness that nothing in the toolchain compares. Rule now in `backing-format.md` § Delegated.
 - would-move-it: a mechanism being renamed at field level, or a fifth wiring mechanism gaining currency, either of which edits slide 2. Convergence on one composition shape would break the "live argument" framing and turn this lecture back into a survey.
 
 OODA
 - question: have the four wiring mechanisms held their names, and has a fifth appeared?
 - roster: Dino (skill-stacking), Kieran Klaassen, Simon Willison, Geoffrey Huntley, the Amp Chronicle, Anthropic's skills documentation
 - last-run: 2026-08-01
-
-Flagged
-- `[found:2026-08-01]` A delegated stamp had gone stale against its delegate: this file's `due:2026-11-25` pointed at `workflow-composition-lineages.md` as checked 2026-05-25, but that file was corrected on 2026-08-01 and its stamps replaced. Re-dated here → the general question this raises is whether delegated stamps should carry a date at all, or only a pointer, since a date on a delegation is a second copy of a fact that lives elsewhere and drifts the moment the delegate moves.
 
 <!-- /backing -->

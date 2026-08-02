@@ -4,7 +4,7 @@
 >
 > Run modules on `high` thinking effort by default. xhigh adds latency without commensurate value on the work. Module 2 calls out a medium override at the top of that module.
 >
-> Set `cleanupPeriodDays: 365` in `~/.claude/settings.json` before Module 1 (needs Claude Code 2.1.203 or newer). Claude Code deletes session transcripts older than 30 days by default, and the day-30 follow-up after the training reads sessions from before it started.
+> Before Module 1, ask Claude Code to set `cleanupPeriodDays` to 60 in `~/.claude/settings.json` (it can edit its own settings file). Claude Code deletes session transcripts older than 30 days by default, and the day-30 follow-up after the training reads sessions from before it started.
 
 Land at Module 1 with a Claude Code session started in the repo you're going to grow,<!--flag:payload--> the curated skills installed,<!--/flag:payload--> and one trivial bug picked.
 
@@ -81,7 +81,7 @@ The opening question at Module 1: *what's one trick you figured out with Claude 
 
 Optional. One read, any time before the first session.
 
-**Read: Simon Willison, [Vibe engineering](https://simonwillison.net/2025/Oct/7/vibe-engineering/)** (October 2025). Willison names the difference between vibe coding and working with coding agents as an accountable engineer: the practices that make agents productive are the senior ones (tests, review, documentation), not shortcuts around them. You run exactly those practices from the first bug fix in Module 1.
+**Read: Simon Willison, [Vibe engineering](https://simonwillison.net/2025/Oct/7/vibe-engineering/)** (October 2025). Willison draws the line between vibe coding and working with coding agents as an accountable engineer. Module 1's first bug fix starts on the accountable side of that line.
 
 <!-- maintainer -->
 

@@ -136,15 +136,13 @@ Frameworks
 Stance `[stance:2026-08-01 level:L2]`
 - holds: that orgs and solo builders converge on a recognisable set of checking primitives — tests, lint, type-check, review, diff inspection, eval suites. This is the safest convergence claim in the corpus because the primitives predate agents entirely; the exercise is asking the student to recognise their own toolchain, not to accept a finding.
 - contested: **the register that this block replaces called the menu "convergent practitioner vocabulary" across two named orgs and "solo builders."** Two orgs and an unnamed category is not convergence at the L3 bar, and the phrase is the fourth instance of this corpus reaching for a convergence verb to make a menu feel found. The body itself never makes the claim — it says the primitives are the ones the student's own codebase already runs, which is both weaker and true.
+- decided: **the convergence claim is retired, and the corpus-wide sweep it triggered came back clean, 2026-08-02.** The legacy register described the primitives menu as *"convergent practitioner vocabulary"* on the strength of two named orgs plus "solid builders running long tasks" — retired rather than migrated, because the body never made the claim. This was the fourth instance of the pattern across M5 and M6, so the sweep it called for was run across every student-facing line above the divider in every AE101 lecture, exercise and supplementary. Eleven hits, zero survivors: most are the honest inverse (*"the word is not settled"*, *"the field hasn't converged"*), and the two `The field calls this` uses are the control shape — publicly coined terms used by name by other people, with `error cascade` anchored to OWASP ASI08 and an arXiv title carrying the exact phrase.
 - would-move-it: a primitive entering common practice that the menu omits. The list is deliberately unranked and open, so an addition edits one line rather than the phase.
 
 OODA
 - question: what checking primitives have entered common practice since this menu was written, and does the recognition beat still land for a room whose toolchain has moved?
 - roster: Darragh Curran and the Intercom engineering blog, Geoff Charles and Ramp, Hamel Husain, Simon Willison, Kieran Klaassen
 - last-run: 2026-08-01
-
-Flagged
-- `[found:2026-08-01]` The legacy register described the primitives menu as *"convergent practitioner vocabulary"* on the strength of two named orgs plus "solid builders running long tasks" → retired here rather than migrated, because the body never made the claim and the stance now states what the evidence supports. **Fourth instance of the pattern** across M5 and M6; the sweep to run is whether any surviving file still asserts convergence on a count nobody made.
 
 <!-- /backing -->
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:

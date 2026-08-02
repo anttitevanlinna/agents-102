@@ -266,15 +266,13 @@ Frameworks
 Stance `[stance:2026-08-01 level:L2]`
 - holds: the laws, not new findings. This is a consolidation lecture that coins nothing — every law was named in-room before it, and its job is placement rather than assertion. **That is why almost every claim here is `vision` and why that is correct rather than lazy:** a consolidation file restating the training's own framing owes recognition, not citation. The two academic sources back the one mechanism the body borrows from outside.
 - contested: nothing in the laws. The open questions on this file are dose and slot timing, which are delivery decisions rather than evidence ones, and they sit in the eyeball queue where they belong.
+- decided: **restatement sweep run 2026-08-02, and it found something else.** The 80/20 ratio was the only body restatement carrying no local stamp; every other `detail` claim here is locally stamped and the remaining eighteen are `vision` or `borrowed`, which is correct for a consolidation that coins nothing. The sweep's real catch was one layer down: the `absorption-bottleneck` law was attributed five different ways across five files, `[borrow:none]` in three and `[borrow:research-house]` in two, with three different source sets. Fixed corpus-wide and now machine-checked, so this class of drift cannot recur silently.
 - would-move-it: a law being renamed or retired upstream, which would strand a bullet here — this file is downstream of every other AE101 lecture, so its real risk is drift rather than falsification. The J-curve pairing would move if a study found the dip does not appear for agentic tooling specifically.
 
 OODA
 - question: has any law on this map been renamed, retired, or re-hedged in its home lecture without this consolidation following?
 - roster: none external — this file's OODA is a diff against the eight lectures whose laws it restates, plus `theory-plan.md`'s inventory.
 - last-run: 2026-08-01
-
-Flagged
-- `[found:2026-08-01]` The 80/20 ratio appeared in this body with no stamp in this file, backed only by the stamp two lectures upstream → now stamped locally. **The general question it raises is worth a sweep:** a consolidation lecture restates other lectures' claims by design, and every restated number is a citation this corpus has been carrying in exactly one place. Which other bullets here are restatements whose backing lives elsewhere?
 
 <!-- /backing -->
 

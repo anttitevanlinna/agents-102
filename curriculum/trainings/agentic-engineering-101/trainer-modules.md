@@ -198,7 +198,7 @@ Never cut: the failing test before the fix and the diff-line push-back. Those tw
 **Learning goals.** Student can:
 
 - Run plan mode on a real multi-file task and judge the plan against five criteria, naming the one it fails.
-- Push back twice on the plan via "keep planning with feedback," surfacing what the agent didn't see.
+- Push back twice on the plan via "No, keep planning," surfacing what the agent didn't see.
 - Walk down unresolved branches with a second-pass read, a recommended answer per branch (the shipped prompt batches three questions at a time).
 - Pair human read with agent walk-down: read → push-back → walk-down → approve. Spot approval inflation in past plans.
 - Extract task-shaping rules from the session into a `.md` file, sharpening at least one before saving.
@@ -230,7 +230,7 @@ The Debrief has no projected section on the student page, by design — it is a 
 
 **Push-backs, verbatim.**
 
-- Student approves under 60 seconds with no push-back sent → *"Pick keep planning with feedback. Send one soft item before approving."*
+- Student approves under 60 seconds with no push-back sent → *"Pick No, keep planning. Send one soft item before approving."*
 - Push-back names no step, no specific words → *"Which step, which words? Say the thing you'd want a senior reviewer to catch."*
 - Claude acknowledges the push-back but the revised plan is no sharper → *"Did Claude actually sharpen it, or did it acknowledge and re-soften? Push back again."*
 - Student calls the walk-down done after two or three questions → *"Let the walk-down run until it's out of branches; you don't decide when it's finished."*

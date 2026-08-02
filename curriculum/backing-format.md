@@ -87,6 +87,7 @@ The new register, and the OODA's write target.
 Stance `[stance:YYYY-MM-DD level:L<n>]`
 - holds: <what the field currently converges on, one or two lines>
 - contested: <what is not settled, or `nothing material`>
+- decided: <a closed call, its reasoning, and the trigger that would re-open it>   ← optional, repeatable
 - would-move-it: <the observation that would change the lecture>
 
 OODA
@@ -109,6 +110,16 @@ Flagged
 ```
 
 Cleared on resolution — resolved items leave no residue (`check_writing.md §3`: rules are rules, history is git). An empty `Flagged` list is deleted, not kept as a stub.
+
+**Where a cleared item goes, because most of them are not pure history.** Deleting outright loses the thing that stops the next cycle re-running a dead search, and leaving it in place turns the outbox into sediment — a live queue nobody trusts because it is 90% closed. Three destinations, by what the finding actually is:
+
+| the finding is | it goes to |
+|---|---|
+| a call we made, with reasoning and a re-open trigger | `Stance` → `decided:` |
+| a checked absence, so the next cycle does not re-hunt it | `OODA` → `question:` |
+| a correction to one source, or a do-not-revert guard on its wording | that `Sources` line |
+
+Only genuinely open forced decisions stay in `Flagged`. The test at the end of an OODA run: could someone read this list as a to-do? If any line on it is already done, it is in the wrong field.
 
 ## Auto-degrade
 

@@ -86,17 +86,14 @@ Frameworks
 Stance `[stance:2026-08-01 level:L1]`
 - holds: that automated checks scale to org level without changing shape. Intercom is one published telemetry set, self-reported, and it is the only number in the lecture. That is L1 evidence carrying an L1 claim, which is fine because the body frames it as one org's numbers rather than as a rate the field converges on.
 - contested: the vocabulary. The lecture's central move is naming, and the naming claim is the one thing in it with no source — see Flagged. Whether *judge* / *verifier* / *gate* split this way in practitioner usage has never been checked, and M5 has already taught this corpus what happens when a naming claim goes unaudited.
+- decided: **judge / verifier / gate is stated as a definition, not a survey, 2026-08-01.** The bullet read *"Practitioners say judge…"*, attributing a three-way taxonomy to a field nobody had counted. The names are in real use; the split by check-type is ours. Do not restore the survey verb — the standing usage question lives in the OODA below and is worth answering, but the body no longer depends on the answer.
+- decided: **the scheduling bullet is stamped `ATTESTED`, 2026-08-01.** It had never carried a stamp of any kind, and the capability check backing it turned out to be recorded in `story-of-module-6.md`, one module over. The maintainer accepted it without a re-test. The finding worth keeping is the shape: a real check existed, in the corpus, and was invisible from the file that depended on it.
 - would-move-it: a usage sweep showing practitioners do not split the three words this way, which would turn slide 1 from recognition into invention and require the same "these are our names" honesty M5's closer now carries. A second org publishing auto-approval telemetry would move the Intercom slide from anecdote to pattern.
 
 OODA
 - question: do practitioners actually use *judge*, *verifier* and *gate* with these three distinctions, and has any org besides Intercom published auto-approval rates?
 - roster: Hamel Husain, Shreya Shankar, Eugene Yan, Darragh Curran and the Intercom engineering blog, Simon Willison, the Anthropic eval cookbook, Braintrust and LangSmith docs for vendor usage
 - last-run: never
-
-Flagged
-- `[found:2026-08-01]` **Resolved 2026-08-01 by cutting two words.** The bullet said *"Practitioners say judge …"*, attributing a three-way taxonomy to a field nobody had counted. The names are in real use; the split by check-type is ours. Body now states it as a definition, and the claim is `vision`. Do not restore the survey verb. The standing usage question lives in OODA below — it is worth answering, but the body no longer depends on the answer.
-- `[found:2026-08-01]` **Resolved 2026-08-01.** The bullet had never carried a stamp; the capability check that backs it turned out to be recorded in `story-of-module-6.md`, one module over. Maintainer accepted it without a re-test. **The finding worth keeping is the shape:** a real check existed, in the corpus, and was invisible from the file that depended on it.
-- `[found:2026-08-01]` The geoffintech / Ramp stamp was retired with this migration: its body claim was cut in the slides-only pass, so it backed nothing. Provenance lives in git → no action unless the Ramp claim returns.
 
 <!-- /backing -->
 

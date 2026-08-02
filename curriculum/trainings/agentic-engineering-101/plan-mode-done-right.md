@@ -18,7 +18,7 @@ Optional reading in the gap before this module: Boris Cherny, [Mastering Claude 
 ## What You'll Learn
 After this module, you will be able to:
 - **Run** plan mode on a real multi-file task and judge the plan against five criteria, naming the one it fails
-- **Push back** twice on the plan via *keep planning with feedback*, surfacing what the agent didn't see
+- **Push back** twice on the plan via *No, keep planning*, surfacing what the agent didn't see
 - **Walk down** unresolved branches, with a recommended answer per branch
 - **Pair** human read with agent walk-down: read → push-back → walk-down → approve
 - **Spot** approval inflation in your own past plans
@@ -111,7 +111,7 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 
 **Push-back moves:**
 - **P1 blocker** — student can't surface a fitting task. Trainer runs three-candidate conversation. Criteria: multi-file, 30–60 min agent work, touching wrong file matters.
-- **P3 rubber-stamp** — student approves under 60s with no push-back messages. Trainer: *"pick keep planning with feedback — send one soft item before approving."*
+- **P3 rubber-stamp** — student approves under 60s with no push-back messages. Trainer: *"pick No, keep planning — send one soft item before approving."*
 - **P3 generic push-back** — messages lack step numbers or specific concerns. Trainer: *"which step, which words? say the thing you'd want a senior reviewer to catch."*
 - **P3 softening on regeneration** — Claude acknowledges the push-back but re-softens the flagged step in the revised plan. Trainer: *"did Claude actually sharpen it, or did it acknowledge and re-soften? push back again."*
 - **P4 walk-skip** — student calls the second read done after 2–3 questions. Trainer: *"let the walk-down run until it's out of branches; you don't decide when it's finished."*
@@ -139,7 +139,7 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
 1. **Enters plan mode (Shift+Tab cycle) on a non-trivial multi-file task before approving** anything Claude writes. Falsifiable: scrollback of a working session shows the mode-cycle move on a task that touches two or more files.
-2. **Sends at least one *keep planning with feedback* push-back referencing a specific step number and a specific word from the plan**, before approving. Falsifiable: the push-back message quotes the plan's own step text rather than naming a generic concern.
+2. **Sends at least one *No, keep planning* push-back referencing a specific step number and a specific word from the plan**, before approving. Falsifiable: the push-back message quotes the plan's own step text rather than naming a generic concern.
 3. **Asks Claude to walk down unresolved branches three questions at a time** when the plan touches a design tree they don't fully see. Falsifiable: the scrollback shows a batched Q-and-A sequence, not a prompt that returned a list of branches in one shot.
 
 **Artefact contracts** (per `check_pedagogy.md` rule 46 — every produced artefact with a stable identifier gets a contract row):
@@ -165,6 +165,6 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 | Compound — *"save the rule only if one earned itself"* | Compound skip — student skips the compound when one DID earn itself | Trainer push: *"did any branch from the second read change how you'd read the next plan? if yes, integrate it now; if no, the Bridge is next."* |
 
 **Frameworks riffed on (attributed in-exercise or at Debrief):**
-- **Plan mode** (Anthropic Claude Code). Activation: Shift+Tab cycle (CLI) or the mode dropdown (Desktop). Push-back via *keep planning with feedback* at the approval prompt — chat-based, the exercise's path. Reference: https://code.claude.com/docs/en/permission-modes.md `[capability]`. Anthropic's own docs on Anthropic's own product are a capability reference, never `[practitioner direct]`. Live stamp lives on `exercises/push-back-on-the-plan.md`; keep the two in step.
+- **Plan mode** (Anthropic Claude Code). Activation: Shift+Tab cycle (CLI) or the mode dropdown (Desktop). Push-back via *No, keep planning* at the approval prompt — chat-based, the exercise's path. Reference: https://code.claude.com/docs/en/permission-modes.md `[capability]`. Anthropic's own docs on Anthropic's own product are a capability reference, never `[practitioner direct]`. Live stamp lives on `exercises/push-back-on-the-plan.md`; keep the two in step.
 - **Compound engineering** — Kieran Klaassen (Every Inc.). M2 is the Plan step at depth, continuation from M1. Source: `continuous-research/platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md`. URL: `https://every.to/source-code/compound-engineering-the-definitive-guide` `[practitioner direct, vendor venue]`.
 - **"What would have to be true" / strategic-choice assumption-testing** — Roger Martin (HBR, *Playing to Win*). Vision-layer attribution, optional at Debrief; most engineers have seen this in strategy readings.

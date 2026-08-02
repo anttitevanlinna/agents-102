@@ -144,15 +144,13 @@ Frameworks
 Stance `[stance:2026-08-01 level:L2]`
 - holds: that a judge must be measured against human labels before it is trusted. Husain is the clearest published practitioner statement of the loop and carries the only number in the lecture. The failure modes themselves — miscalibration, gaming, sampling — are textbook rather than contested, which is why four of the five laws sit on borrowed frames rather than on practitioner counts.
 - contested: nothing material in the five laws. What is unsettled is dosage: whether a room this early can act on judge-calibration at all, or only recognise it. That is a pedagogy question, not an evidence one.
+- decided: **the starting sample size is a range with its reasoning attached, 2026-08-01.** The bullet read *"Thirty outputs is enough to start"* — a bare number with nothing behind it, in the shape of a statistical threshold a reader might defend in review. Husain backs the loop and the >90%-after-three-iterations figure; he backs no starting sample size. Precision you cannot source is worse than an honest range, because precision is what gets quoted back at you.
 - would-move-it: a published agreement-rate loop that lands somewhere other than Husain's ">90% after three iterations" — a materially different convergence rate, or a practitioner reporting that judge calibration failed to transfer. One more independent number would take this to L3 and let the body say "practitioners report" instead of naming one person.
 
 OODA
 - question: has anyone besides Husain published a measured judge-versus-human agreement loop with numbers, and does 30 samples hold up as the starting sample size anywhere in print?
 - roster: Hamel Husain, Shreya Shankar, Eugene Yan, Jason Liu, the Anthropic and OpenAI eval cookbooks
 - last-run: 2026-08-01
-
-Flagged
-- `[found:2026-08-01]` **Resolved 2026-08-01.** The bullet read *"Thirty outputs is enough to start"* — a bare number with nothing behind it, in the shape of a statistical threshold a reader might defend in review. Husain backs the loop and the ">90% after three iterations" figure; he backs no starting sample size. Now a range with its reasoning attached, which is what makes it read as a heuristic rather than a finding. **Precision you cannot source is worse than an honest range, because precision is what gets quoted back at you.**
 
 <!-- /backing -->
 

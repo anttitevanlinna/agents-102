@@ -197,15 +197,13 @@ Frameworks
 Stance `[stance:2026-08-01 level:L2]`
 - holds: that composition has several live lineages and no winner. Seven named practitioners or teams, each with published artefacts, and the page's own design refuses to rank them — three filters at the close rather than a winners' table. **The divergence IS the finding, and it is well evidenced.**
 - contested: everything downstream of that. The clearest evidence is Amp's reversal — a shipped primitive retired under its users inside seven months, with the vendor's own archived guide still teaching the dead mechanism three months later. Cognition moved sharply between 2025 and 2026 too. **Two of seven lineages visibly changed position inside the window**, which is a stronger argument for "unsettled" than any single practitioner's opinion.
+- decided: **Amp's stale Handoff documentation stays visible as the page's own thesis, 2026-08-01.** The archived context-management guide still describes Handoff as live three months after the feature was retired, while every Chronicle post footer links it. No action is owed on our side, and it is worth keeping named because it is the sharpest available illustration of what this page argues: a vendor's documentation and its shipped behaviour can disagree in public for a quarter.
 - would-move-it: a third Cognition position, or another vendor retiring a composition primitive, both of which are section updates rather than reframings. What would actually move the page is convergence — practitioners arriving at one shape — which would turn a lineage walk into a recommendation and require the ranking section the watch-fors forbid.
 
 OODA
 - question: has any lineage moved again, has a new named framework landed, and has anyone retired another shipped composition primitive?
 - roster: Kieran Klaassen, Matt Pocock, Walden Yan and Cognition, Lewis Metcalf and the Amp Chronicle, Boris Cherny, Armin Ronacher, Simon Willison
 - last-run: 2026-08-01
-
-Flagged
-- `[found:2026-08-01]` Amp's archived context-management guide still describes Handoff as live, three months after the feature was retired, while every Chronicle post footer links it → no action owed on our side, and it is worth keeping visible because it is the sharpest available illustration of the page's own thesis: a vendor's documentation and its shipped behaviour can disagree in public for a quarter.
 
 <!-- /backing -->
 

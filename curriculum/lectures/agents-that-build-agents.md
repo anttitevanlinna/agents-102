@@ -97,16 +97,14 @@ Frameworks
 Stance `[stance:2026-08-01 level:L1]`
 - holds: that the Ralph loop is Huntley's and that it was a shell one-liner before it was a product feature. Both are first-hand and settled. The lecture's larger argument — that the flywheel stops where the agent's evidence stops — is our framing, and the body carries it as a position rather than a finding.
 - contested: how widely "Ralph re-feed" travels as a name. The body no longer depends on the answer — it claims the name stuck and that the shape is on the menu we handed them, both of which hold. The usage question stays in OODA because it is worth knowing, not because a sentence is waiting on it.
+- decided: **Ralph's name stuck; the field did not adopt a taxonomy, 2026-08-01.** The bullet claimed Ralph re-feed *"entered the practitioner vocabulary as one of the named verifier shapes"* — field-wide adoption nobody counted, plus a settled taxonomy that is actually Kim's synthesis of Cherny's habits. Now: the name stuck, which is persistence rather than a census, and it is one of three shapes on the menu **this training** gave them at M5. Huntley's coinage is verified and unaffected. Do not restore the adoption verb.
+- decided: **`/goal` is stamped `ATTESTED due:cohort`, 2026-08-01.** It had been an unstamped platform claim living only in a maintainer to-do. The maintainer accepted the existing scratch-sweep verification without a re-test. The point of the migration was never the re-test; it was that the debt had been invisible to every tool that audits this corpus.
 - would-move-it: evidence that the re-feed shape is called something else in general use, or that nobody outside this curriculum calls it anything. Either turns a recognition beat into a coinage, which is fine to do and not fine to do silently.
 
 OODA
 - question: does anyone outside Huntley's own posts use *Ralph* or *Ralph re-feed* as a name for the shape, and is `/goal` still the runtime primitive it is described as?
 - roster: Geoffrey Huntley, Simon Willison, Armin Ronacher, the Claude Code changelog and docs, Amp Chronicle
 - last-run: 2026-08-01
-
-Flagged
-- `[found:2026-08-01]` **Resolved 2026-08-01.** The bullet claimed Ralph re-feed *"entered the practitioner vocabulary as one of the named verifier shapes"* — field-wide adoption nobody counted, plus a settled taxonomy that is actually Kim's synthesis of Cherny's habits. Now: the name stuck (persistence, not a census) and it is one of three shapes on the menu **this training** gave them at M5. Huntley's coinage is verified and unaffected. Do not restore the adoption verb.
-- `[found:2026-08-01]` **Resolved 2026-08-01.** `/goal` had been an unstamped platform claim living only in a maintainer to-do. Maintainer accepted the existing scratch-sweep verification without a re-test; now stamped `ATTESTED due:cohort` so `source-freshness.sh` can see it. The point of the migration was never the re-test, it was that the debt had been invisible to every tool.
 
 <!-- /backing -->
 

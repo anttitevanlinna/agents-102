@@ -83,6 +83,11 @@ Use the `Agent` tool with:
 - `model:` matching the class (haiku for writing; sonnet for story / technical / behavior)
 - `description:` `"<class>-class judge: <basename>"` per file
 - `prompt:` the substituted judge template, with `.claude/rules/content-rules.md` prepended verbatim (per the subagent rule-injection convention in project CLAUDE.md). For `story --personas N > 1`, append a single line `personas: N` to the substituted prompt — the judge interprets it.
+- **Append this clause verbatim to every dispatched judge prompt, every class:**
+
+  > Before marking any rule REVISE, state in the `evidence` field, in one line, WHAT HARM that rule exists to prevent and whether that harm is actually present here. A rule firing is not the harm arriving: rules encode cheap proxies (a count, a string, a location) for expensive concerns (credential-collecting, dialect-smuggling, body clutter), and a proxy matches on shape while the harm lives in purpose. Read the whole rule including any boundary or exception clause before scoring — exceptions are often stated after the prohibition, and a judge that pattern-matches the ban will stop early. If the harm is absent, or if the obvious fix would degrade the artefact (falsify a verbatim quote, delete a rescue the student needs, break a deliberate repetition), do NOT file a REVISE: report it as a rule question for the maintainer, and say what the rule would have to say to be right. Check the file's maintainer block for an existing accept-note on the passage before flagging it at all.
+
+  Three maintainer rejections on 2026-08-02 — all of correctly-fired checks whose proposed fixes made the material worse — are why this is mandatory rather than advisory. → `memory/compounded/2026-08-02-content_creation-a-rule-firing-is-not-the-harm-arriving.md`
 
 If multiple file paths were passed, dispatch one subagent per file, all in a single message (parallel).
 

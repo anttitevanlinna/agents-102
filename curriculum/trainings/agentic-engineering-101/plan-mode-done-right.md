@@ -100,8 +100,8 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 
 **Prompt register — `push-back-on-the-plan-4` deliberately short.** The closing question (`are these rules auto-loaded to each session context?`) is intentionally end-of-session-tired-engineer register: lowercase, no end punctuation, single short question. It models the casual ask a real engineer types after a long session, contrasting with the longer earlier prompts. Audit-class judges flagging it as a stylistic outlier should treat as accepted-by-design. The note belongs to whichever file fences the prompt — here, line 50, matching the registry's `origin:`. Move it if the prompt moves.
 
-**Quality:** compendium-audited 2026-08-02 (story@d1b6f2c technical@d1b6f2c behavior@d1b6f2c strategy@d1141cd slides@d1b6f2c)
-- judges @d1141cd: writing REVISE (2/0 see instances/ae101--module--plan-mode-done-right.writing.json), story PASS, technical PASS, behavior PASS, pedagogy REVISE (1/2 see instances/ae101--module--plan-mode-done-right.pedagogy.json), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-02 (writing@ffc64f9 story@ffc64f9 technical@ffc64f9 behavior@ffc64f9 pedagogy@ffc64f9 strategy@ffc64f9 slides@ffc64f9)
+- judges @ffc64f9: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module: PASS see instances/ae101--prework-m6.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

@@ -38,10 +38,6 @@ Sim sweeps and platform-capability checks are not tracked here. The `curriculum-
 - **Eval-coverage sweep (2026-05-31): the new complete-ledger judges proved and filled coverage across all 39 AE101 surfaces.** Two forced sweeps regenerated 59 ledgers (all emitted == expected); writing + student_facing + pedagogy now 100% on every exercise and module (uncovered pairs 1707 to 110; gate 14 to 6). Full method + all 20 findings: [eval-coverage.ae101.md](../../evals/eval-coverage.ae101.md). Findings are hypotheses, verify before fixing:
  - Follow-up (not a finding): the coverage gate's mandatory set and the `--list-includes` walker both miss inline-prose links (`## Homework`'s `[Read the rules hiding in a ticket](...)` shape), `read-the-ticket-rules.md` shipped student-reachable with zero instances until 2026-08-02. Instances now exist; the gate/walker enumeration fix is eval-infra work, tracked in `memory/compounded/2026-08-02-platform-inline-links-escape-every-audit-surface.md`.
 
-## Open from the full-corpus re-eval (verdict data: `curriculum/evals/reeval-latest.json`)
-
-- **Classes invalidated by the 2026-08-02 fix pass and co-edits need re-judge**, `node curriculum/evals/scripts/scan-stale-classes.js --files <all AE101 surfaces>` derives the exact list; stamps for them stay at their pre-fix state until judged.
-
 ---
 
 **Canonical home:** this file. Module files carry zero TODOs, all pre-cohort open items route here.

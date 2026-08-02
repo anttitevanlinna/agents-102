@@ -2,8 +2,26 @@
 
 > *Edited 2026-05-14: hallucinated OpenClaw/ClawHub/NemoClaw cluster content removed. Original git history preserves the prior state.*
 
-Last updated: 2026-08-01 (cycle 179)
-OODA cycles: 6
+Last updated: 2026-08-02 (cycle 180)
+OODA cycles: 7
+
+## Key Verdict (as of 2026-08-02)
+
+**CYCLE 180 UPDATE — EU AI ACT ARTICLE 50 ENFORCEMENT LIVE (August 2, 2026 — DAY ONE): EU AI OFFICE INVESTIGATIVE POWERS ACTIVATED; 180+ CODE OF PRACTICE SIGNATORIES (including Anthropic, Google, Microsoft, OpenAI); NO NAMED ENFORCEMENT ACTIONS ON DAY 1 (expected — pattern from GDPR); PENALTY CORRECTION: DEPLOYER FINES UP TO €35M/7% (higher than cycle 179 documented €15M/3%); NEW: WATERMARKING DEFEATABLE FOR <$50 PER ATTACK (CSA July 29 — compliance ≠ security); US EO 14409 AI EXPORT CONTROLS AUGUST 1 DEADLINE — CHECK CYCLE 181.**
+
+EU AI Act Article 50 enforcement confirmed live today from EU Commission primary source ([digital-strategy.ec.europa.eu Aug 2 2026](https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august)). EU AI Office is now empowered to access AI models, restrict them from the EU market, require corrective measures, and issue fines. GPAI enforcement also activated.
+
+**Penalty structure clarified (cycle 179 documented only GPAI/€15M tier):**
+- GPAI model providers violating documentation/copyright/risk assessment: up to €15M or 3% global turnover (EU AI Office)
+- Deployers/providers violating Article 50 transparency obligations: up to **€35M or 7% global turnover** (national authorities)
+
+**New: Watermarking technical gap (CSA, July 29, 2026).** Current machine-readable watermarking schemes (C2PA, SynthID) can be defeated for **under $50 per attack** using publicly available techniques. ([labs.cloudsecurityalliance.org Jul 29 2026](https://labs.cloudsecurityalliance.org/research/csa-research-note-eu-ai-act-article-50-transparency-20260729/) — [practitioner analysis — CSA]) Gap between regulatory expectation and technical reality: comply for legal reasons; don't rely on watermarks for adversarial detection. This is likely to inform revision of the Code of Practice technical standards.
+
+**Day 1 status (no named enforcement actions):** EU AI Office stated it will "first tackle priority issues such as safety and security that are widespread among all providers." GDPR precedent: 6-24 months before first meaningful fines. Next signals: EU AI Office workplan publication; national authority (Finland Traficom, Germany, France) first formal reviews.
+
+**180+ Code of Practice signatories.** Named earlier: Anthropic, Google, IBM, Microsoft, Mistral AI, OpenAI, Cohere, Aleph Alpha, Amazon, Black Forest Labs, ServiceNow, WRITER. Signing creates "presumption of conformity" — the enterprise safe harbor path for GPAI providers. ([mlex.com Aug 2 2026](https://www.mlex.com/mlex/artificial-intelligence/articles/2508149) — [domain trade publication — MLex])
+
+**Watch: EU AI Office workplan publication (watch week of August 2); first national authority formal reviews; December 2, 2026 (legacy system watermarking grace period ends — next compliance cliff); December 2, 2027 (Annex III high-risk activation — confirmed); EO 14409 US AI export controls August 1 deadline (carry forward to cycle 181).**
 
 ## Key Verdict (as of 2026-08-01)
 

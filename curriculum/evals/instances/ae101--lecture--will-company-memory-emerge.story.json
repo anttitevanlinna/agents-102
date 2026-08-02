@@ -1,7 +1,7 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/will-company-memory-emerge.md",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "curious readiness — I've built enough to try something; let's see what the agent does with it",
   "trace_status": "regenerated",
@@ -11,7 +11,7 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Unaffected by today's edit. run-the-first-experiment.md:98 still places the lecture link after the send-off prompt, inside the module's Closing flow. The lecture names the personal/team/company pattern the student has been living inside CLAUDE.local.md and CLAUDE.md since M1 — recognition after four modules of walking it, not an abstract claim before any exercise.",
+      "evidence": "Unaffected by the revert. run-the-first-experiment.md:98 still places the lecture link after the send-off prompt, inside the module's Closing flow. The lecture names the personal/team/company pattern the student has been living inside CLAUDE.local.md and CLAUDE.md since M1 — recognition after four modules of walking it, not an abstract claim before any exercise.",
       "fix_hint": null,
       "blocking": false
     },
@@ -20,7 +20,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "Unaffected by today's edit. This lecture fires after the M4 send-off, not before an M5-style contrast-mood exercise. Neither condition of the rule applies.",
+      "evidence": "Unaffected. This lecture fires after the M4 send-off, not before an M5-style contrast-mood exercise. Neither condition of the rule applies.",
       "fix_hint": null,
       "blocking": false
     },
@@ -29,7 +29,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Re-grepped body (lines 1-21, above the maintainer fence) after today's edit: the new clause ('You can watch the smaller version of this already: as a shared rules file grows, agents start treating its sections as optional.') adds zero M[0-9] or module-name references. Still matches the file's own section-3 sweep note (line 92).",
+      "evidence": "Re-grepped body (lines 1-21, above the maintainer fence) against the current (post-revert, commit a5428ce) text: zero M[0-9] or module-name references. The clause that briefly landed 2026-08-02 ('You can watch the smaller version of this already: as a shared rules file grows, agents start treating its sections as optional') carried no cross-module reference either, so this rule was never the one it tripped — matches the file's own section-3 sweep note (line 92).",
       "fix_hint": null,
       "blocking": false
     },
@@ -38,7 +38,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Today's edit lands inside slide 3's body, not its header. 'The hard part is the shape' (line 18) still squints correctly (names the object — shape, not whether-to-build) and still holds true: both bullets, including the new sentence, argue the shape/risk question, not the existence question. No header changed.",
+      "evidence": "Three headers: 'Personal, team, company: memory's three layers' (names the object), 'The third layer is still finding its home' (a claim the bullets argue), 'The hard part is the shape' (a claim, line 18) — still squints correctly post-revert and still holds true: both remaining bullets under slide 3 argue the shape/risk question only, with the removed clause's proof-point gone and nothing left over-claiming.",
       "fix_hint": null,
       "blocking": false
     },
@@ -47,8 +47,8 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded (~210 words, ≤6 bullets).",
       "verdict": "PASS",
-      "evidence": "The new clause adds ~22 words to slide 3 (lines 19-21), taking it from ~110 to ~132 words across its existing 2 bullets — still well under the 210-word/6-bullet ceiling. `scripts/check-slide-size.js` still not present at its documented path this pass; verified by manual word count as in the prior audit.",
-      "fix_hint": "Same pre-existing tooling gap noted last pass (script path missing) — not a content defect, still worth a repo-wide script-path sweep.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/will-company-memory-emerge.md --report` run this pass: 'Personal, team, company: memory's three layers' 171w/5 bullets, 'The third layer is still finding its home' 119w/2 bullets, 'The hard part is the shape' 102w/2 bullets (down from ~132w while the clause was live) — all three well under the 210-word/6-bullet ceiling, gate reports '✓ every slide is within limits'. The tooling-path gap the prior instance flagged (script not found at its documented location) is resolved — the script now exists and runs clean.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -56,7 +56,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
-      "evidence": "File has zero fenced prompt blocks and zero {{prompt:<key>}} markers, unaffected by today's edit. This is a reflective closer lecture, not an exercise.",
+      "evidence": "File has zero fenced prompt blocks and zero {{prompt:<key>}} markers. This is a reflective closer lecture, not an exercise.",
       "fix_hint": null,
       "blocking": false
     },
@@ -65,7 +65,7 @@
       "rule_index": 27,
       "rule_lead": "Body teaches the work; trainer manages the room outside text.",
       "verdict": "PASS",
-      "evidence": "The new sentence is a claim about agent behavior, not a conversation cue — no 'discuss with,' no pause instruction. Body stays about the artifact and the open question; cohort-management (running the disagreement as a live discussion) remains delegated to the trainer in the maintainer block (line 40 'Voice'), outside student-facing text.",
+      "evidence": "No 'discuss with,' no pause instruction, no room-share cue anywhere in body. Body stays about the artifact and the open question; cohort-management (running the disagreement as a live discussion) remains delegated to the trainer in the maintainer block (line 40 'Voice'), outside student-facing text.",
       "fix_hint": null,
       "blocking": false
     },
@@ -73,9 +73,9 @@
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
       "rule_lead": "Mood contract named and lands; resolving early steals next module's beat.",
-      "verdict": "REVISE",
-      "evidence": "TEACHING beat (recognition + open question, not mechanical setup) — 8+/10 floor applies. Regenerated trace (content_sha 76f4a780…, replacing stale 51aeb852…): phase-1 mood_score 6, close mood_score 6, both below the 7-floor the template treats as automatic REVISE. Mechanism, from the trace's mood_note: slide 3's new clause — 'You can watch the smaller version of this already: as a shared rules file grows, agents start treating its sections as optional' — names its failure case as 'a shared rules file,' the identical noun slide 1 (one screen earlier) anchors to the student's own team CLAUDE.md. The persona is mid-send-off, watching an agent read that exact file right now. The sentence doesn't require the student to make the connection explicit for the mood to shift — it lands as a live diagnostic worry about the run in progress ('is my file's back half the part Claude is currently skimming'), not as an abstract company-scale data point. That is a different unease than the one this beat is contracted to hold open (curious not-knowing about the company layer's shape); it reads closer to the performance-anxiety the module's own Watch-fors name as the drift to avoid at M4 close (run-the-first-experiment.md maintainer block: 'mood drift toward... performance-anxiety (\"what if it fails?\")'). Slides 1-2 and the closing sentence of slide 3 are unaffected and still land at 8; the dip is localized to the one new clause, but it sits at the beat's structural close, right before the agent-run wait continues.",
-      "fix_hint": "Ground the same evidence without naming 'a shared rules file' as the vehicle — attribute the observed pattern to a specific practitioner's file or an org-scale case, so the smaller-version illustration doesn't reuse the exact noun slide 1 just bound to the student's own live CLAUDE.md.",
+      "verdict": "PASS",
+      "evidence": "TEACHING beat (recognition + open question) — 8+/10 floor applies. Regenerated trace against current content (content_sha 0e9ba3a5…, commit a5428ce, replacing the stale 76f4a780… entry bound to the reverted clause): phase-1 mood_score 8, close mood_score 8. The clause that had dropped this to 6/6 ('You can watch the smaller version of this already: as a shared rules file grows, agents start treating its sections as optional' — the same noun as slide 1's 'Team. ./CLAUDE.md', read one beat after the send-off began reading that exact file) is gone from the body; walked the full current text fresh rather than assuming the revert alone restores the score, and confirmed no other sentence reaches toward the live run in the other pane. The beat reads as curious/epistemic throughout, matching the M4 mood contract.",
+      "fix_hint": null,
       "blocking": true
     },
     {
@@ -83,7 +83,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood, not punitive.",
       "verdict": "PASS",
-      "evidence": "The new clause is phrased as a general observed pattern ('agents start treating its sections as optional'), not an accusation aimed at the student's choices — no 'you did this wrong' framing. The risk it creates is a different-axis problem (see rule_index 1: it collides with the module's run-outcome restraint, not with the epistemic-vs-punitive register of THIS lecture's own claims) rather than a punitive-mood violation in its own text.",
+      "evidence": "Body is phrased throughout as open recognition and open question ('Does the third layer get a real home...', 'That is the open question') — no 'you did this wrong' framing anywhere. Unaffected by the revert; this rule was never the one the reverted clause tripped.",
       "fix_hint": null,
       "blocking": false
     },
@@ -92,7 +92,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Section still opens on the discipline framing ('The hard part is not whether to build it. It is the shape,' line 20) with the tax/bloat material appearing only as the risk case inside that discipline-led argument. The new clause deepens the risk case's grounding but does not become the section's lead — it sits mid-paragraph, after the thesis, before the closing question.",
+      "evidence": "Section 3 still opens on the discipline framing ('The hard part is not whether to build it. It is the shape,' line 20), with the tax/bloat material appearing only as the risk case inside that discipline-led argument. With the reverted clause gone, the risk case is shorter and stays exactly where it was before — mid-paragraph, after the thesis, never the section's lead.",
       "fix_hint": null,
       "blocking": false
     },
@@ -100,9 +100,9 @@
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity — consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict.",
-      "verdict": "REVISE",
-      "evidence": "Front-run check is where today's edit fails. run-the-first-experiment.md's own Closing sequence (lines 96-100) places this lecture BEFORE reading-the-return.md, in the same sitting: 'The task is running. One open question while it works. [Will company memory emerge?] ... Before you close: read [Reading the return]. It plants the question and the three failure modes you'll use to read what comes back.' reading-the-return.md's own maintainer block states its design intent explicitly: it 'plants the question, not the fixes' and its Watch-fors warn 'Don't pre-empt the three-pattern... The pre-read names failure modes, not fixes.' The new clause hands the student a specific, plausible explanation for why their own currently-running send-off might already be going wrong (their shared CLAUDE.md's later sections being skipped) several minutes before reading-the-return.md is designed to be the file that raises exactly that kind of doubt, on its own terms, with its own three lenses (goal drift / context rot / plausible-but-wrong). This is not the company-layer question front-running M5 or M6 (checked: no collision found there, matching the prior pass) — it is this lecture front-running the NEXT lecture in the same module's own Closing section. Compounding this, the file's own Lecture meta line is now in tension with its body: 'it does NOT touch how the run will go (that is reading-the-return's M5-prep job, so the Module 4 to Module 5 cliffhanger holds).' The new clause touches how the run might be going, via the same-noun collision with 'a shared rules file' = the student's own team CLAUDE.md. Module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early (the company-layer question itself) remain intact — the clause does not answer 'what is the smallest shared layer,' so that thread stays genuinely open. The REVISE here is specifically the front-run against reading-the-return.md, not a company-scale sequencing break.",
-      "fix_hint": "Either move the observed-pattern evidence to reading-the-return.md or a later file where run-diagnosis is the explicit job, or reword the clause to a source clearly disjoint from the student's own artifact (a named practitioner's file, an org case) so it can't be read as commentary on the run in the other pane.",
+      "verdict": "PASS",
+      "evidence": "Front-run check: read run-the-first-experiment.md's Closing sequence (lines 96-100, current on disk) and reading-the-return.md in full (current on disk, maintainer block: 'plants the question, not the fixes'; watch-for: 'Don't pre-empt the three-pattern'). The current body of this lecture contains nothing that names or gestures at the student's own live run, a rules-file failure mode, or any diagnostic vocabulary reading-the-return.md owns — the sole source of that collision (the 'shared rules file... sections as optional' clause) was reverted commit a5428ce, confirmed absent by direct grep ('smaller version' returns zero hits in the current file). The lecture's own meta line ('it does NOT touch how the run will go... so the Module 4 to Module 5 cliffhanger holds') now matches the body it describes. Module-to-module arc: still hands off cleanly to reading-the-return without pre-empting its three-lens job. Big Idea fidelity: still leads with recognition of the three-layer pattern per the M4 mood contract (verified against content-strategy-agentic-engineering-101.md § M4 in detail — 'curious readiness... stakes back in the room; no compliance framing'). Mood-doesn't-resolve-early: the company-layer question (the file's own stated job) stays genuinely open through the close — 'you'll meet the answers in your own org' hands the thread forward rather than resolving it.",
+      "fix_hint": null,
       "blocking": true
     },
     {
@@ -134,14 +134,12 @@
     }
   ],
   "mood_summary": {
-    "phase_scores": [6],
-    "close_score": 6,
-    "any_below_8": true,
-    "stealing_the_mood": [
-      "Slide 3, new clause ('You can watch the smaller version of this already: as a shared rules file grows, agents start treating its sections as optional') — reuses the exact noun ('a shared rules file') slide 1 just bound to the student's own live team CLAUDE.md, one beat after the send-off started reading that file. Lands as live run-outcome doubt (performance-anxiety register) rather than the open, epistemic company-layer curiosity the beat is contracted to hold."
-    ]
+    "phase_scores": [8],
+    "close_score": 8,
+    "any_below_8": false,
+    "stealing_the_mood": []
   },
-  "blocking_findings_count": 2,
-  "todos_count": 1,
-  "notes": "Trace regenerated in full this pass (content_sha 51aeb852… -> 76f4a780…, commit eaae8cd, single-phase file). Verdict flips PASS -> REVISE relative to the prior instance, which audited the pre-edit text. The two REVISE rows (check_strategy_tie_in §1 and §4) are two facets of one finding, not independent defects: the new clause is well-grounded (two stamped sources, per the backing block) and does not resolve the company-layer question itself — that thread (the lecture's own stated job) stays genuinely open through the close, and the mood-doesn't-resolve-early / Big-Idea-fidelity / module-to-module-arc facets folded into §4 all still pass on their own terms. What fails is narrower and specific: the illustration chosen to ground the tax-risk claim ('a shared rules file') is the same noun this file itself uses one screen earlier for the student's own team CLAUDE.md — the file their currently-running send-off is reading — so the grounding move, whatever its evidentiary merit, front-runs reading-the-return.md's designed job (planting doubt about the live run) inside the same module Closing sequence, and tips this beat's mood from curious/epistemic toward the performance-anxiety the module's own Watch-fors name as the drift to avoid. check_prompts.md and check_workshop.md were both loaded per content-rules.md's surface triggers and reviewed against the current file: check_prompts.md yields no rows (zero fenced prompts, zero {{prompt:<key>}} markers — unaffected by today's edit); check_workshop.md yields no rows (file has no room-scale group beat — this is a solo reflective read, not workshop-shaped). Recorded here rather than as fabricated rows, matching the prior instance's handling. check_lectures.md coverage confirmed complete at 5/5 numbered rules."
+  "blocking_findings_count": 0,
+  "todos_count": 0,
+  "notes": "CYCLE-CLOSE RE-FIRE after commit a5428ce reverted the 2026-08-02 memory-tax clause the prior instance (this same file, verdict REVISE) blocked on. Did not assume the revert discharges the findings: (1) confirmed via `git show a5428ce` that the exact flagged sentence ('You can watch the smaller version of this already: as a shared rules file grows, agents start treating its sections as optional') and its sole backing claim (`rules-file-bloat-observed`) are removed from the file, with nothing else in the student-facing body touched; (2) re-read the full current body fresh, not diffed against the old REVISE reasoning; (3) regenerated the persona trace against the current content_sha (0e9ba3a5…, was 76f4a780…) rather than reusing or patching the stale cache; (4) re-walked check_lectures.md, check_pedagogy.md, and check_strategy_tie_in.md's storytelling-owned rules against the current text; (5) re-read run-the-first-experiment.md and reading-the-return.md on disk to re-verify the front-run check specifically, rather than trusting the prior instance's citations were still accurate. Both previously-blocking rows (check_strategy_tie_in §1 mood-floor, §4 front-run) now PASS: mood trace returns to 8/8 at phase and close, matching the pre-edit baseline this file held before commit eaae8cd, and the front-run vector (the noun collision with the student's own live-running ./CLAUDE.md) has no remaining textual source in the body. The evidence that motivated the clause (Horthy's file-degradation observation, the Thoughtworks bloat entry) is still stamped in this file's backing block and is not lost — it stays correctly un-surfaced to students, tracked as the pre-cohort-todos.md entry 'Relocate the rules-file-degradation evidence into reading-the-return (M4)' for a future cycle to place where it belongs, confirmed present and accurate in that file. check_lectures.md's slide-size rule (§5) is now mechanically verified via `scripts/check-slide-size.js` (previously flagged as a tooling-path gap; the script exists and runs clean this pass) — no fix_hint carried forward. check_prompts.md and check_workshop.md were loaded per content-rules.md's surface triggers and reviewed: check_prompts.md yields no rows (zero fenced prompts, zero {{prompt:<key>}} markers); check_workshop.md yields no rows (solo reflective read, no room-scale group beat). check_lectures.md coverage confirmed complete at 5/5 numbered rules; check_strategy_tie_in.md coverage confirmed complete at 7/7."
 }

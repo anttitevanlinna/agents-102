@@ -1,7 +1,7 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/compound-and-close.md",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
     {"index": 0, "heading": "H1/lede: Compound and *close the loop*", "lines": "1-12"},
@@ -15,10 +15,10 @@
       "compendium": "check_slides.md",
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
-      "verdict": "REVISE",
-      "chunks_flagged": [0, 4],
-      "evidence": "chunk 0 \"H1/lede\": line 9: \"the compound step closes Kieran Klaassen's loop: ideate → brainstorm → plan → work → review → polish → compound → repeat\" — this is the ONLY place this file itself defines 'the loop,' and it prints a full 8-stage sequence ending in 'repeat.' chunk 4 \"Close the session\": line 55: \"The loop's last move, closing the bug's ticket outside the repo, is the homework\" — uses bare 'the loop' to mean a different sequence (the module's own orient→fix→compound→close arc, whose last step is close-the-ticket, per getting-going.md line 40: \"The loop is orient → fix → compound → close\"). That second sequence is never named anywhere in THIS file; it only resolves via the enclosing module's signposting. Under the sequential-deck-read rule, chunk 0's freshly printed, textually prominent, attributed (\"Kieran Klaassen's\") 8-stage sequence is the reader's most recent and most detailed definition of 'the loop' by the time they reach chunk 4 — and by its own terms the loop's last move is 'repeat,' not 'close the ticket.' The disambiguating 'Klaassen's' qualifier is present only on first mention and dropped at chunk 4, so a cold sequential reader has no in-file signal that 'the loop' has silently switched referents. Before this pass printed the full sequence, chunk 0 gave no rival stage-list, so bare 'the loop' cleanly defaulted to the module's arc throughout the file; printing the sequence is what created the two-candidate ambiguity. (A prior instance of this verdict, run before today's edit, waved this through as resolving to chunk 0 without checking that chunk 0's actual last-named stage doesn't match chunk 4's claim — that's the gap this re-run catches.)",
-      "fix_hint": "Either keep the printed Klaassen sequence but stop calling it 'the loop' unqualified later in the file (say 'this module's four-move loop' at chunk 4), or drop the colon-and-stage-list at chunk 0 back to a bare attribution so this file only ever carries one definition of 'the loop.'",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "RE-FIRE RESOLUTION CHECK (prior verdict REVISE, blocking): line 9 still prints the ONLY full stage-list 'loop' in this file, attributed by name — \"the compound step closes Kieran Klaassen's loop: ideate → brainstorm → plan → work → review → polish → **compound** → repeat.\" Line 55 now reads \"The last move of the loop you ran today, closing the bug's ticket outside the repo, is the homework\" (was bare \"The loop's last move\"). Three independent signals now steer a sequential reader away from Klaassen's loop at line 55, not one: (a) content mismatch forces a re-parse — Klaassen's printed sequence ends in 'repeat,' so a reader who provisionally maps 'the loop' to Klaassen's hits an immediate contradiction ('closing the bug's ticket' is not 'repeat') and must look for another antecedent; (b) 'you ran today' is a first-person ownership/temporal marker no reader applies to a loop explicitly attributed to a named third party two sentences earlier — 'Klaassen's loop' and 'the loop you ran' read as different possessives on purpose; (c) module signposting supplies the alternate antecedent legitimately, per this compendium's own carve-out ('vocabulary the enclosing module file's signposting introduced... counts as prior context for the exercises and lectures it includes'): getting-going.md's Big Idea (lines 5-6, rendered before this file's transclusion inside '## Start here') already names 'the first compound loop... The fourth move, closing the bug's ticket outside the repo, runs as homework... The loop every module after this one rides on' — establishing bare 'the loop' = the module's own 4-move arc, homework-as-last-move included, before this file is ever reached in deck order. (Key Concepts' terser 'The loop is orient → fix → compound → close' sits AFTER this file in deck order and is not needed for the resolution to hold.) Verdict: the collision the prior instance correctly caught is resolved, not papered over — withdrawing the REVISE.",
+      "fix_hint": null,
       "blocking": true
     },
     {
@@ -38,7 +38,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "Verified against getting-going.md's current include order (orient-and-introspect -> fix-tests-first -> compound-and-close -> close-the-ticket homework, all four files exist). \"The PR shipped\" (chunk 0) / \"The PR is open\" (chunk 4) resolve to fix-tests-first.md's own closer under the module-arc-beat carve-out. \"the bug's ticket\" (chunk 4) resolves to the close-the-ticket.md homework, which exists.",
+      "fix_hint": "Re-verified against getting-going.md's current include order (orient-and-introspect -> fix-tests-first -> compound-and-close -> close-the-ticket homework, all four files exist, lines 29/31/33/48). \"The PR shipped\" (chunk 0) / \"The PR is open\" (chunk 4) resolve to fix-tests-first.md's own closer under the module-arc-beat carve-out. \"the bug's ticket\" (chunk 4) resolves to the close-the-ticket.md homework, which exists and is named in getting-going.md's Homework section.",
       "blocking": true
     },
     {
@@ -68,17 +68,17 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "All four ## headers match their chunk's content under the sequential read; none contradicted by its own body. (The loop-terminology clash is a rule-1 referent problem, not a header-truth problem, so it's not double-counted here.)",
+      "fix_hint": "All four ## headers match their chunk's content under the sequential read; none contradicted by its own body. The loop-terminology question is a rule-1 referent matter, resolved there, not double-counted here.",
       "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
-      "verdict": "REVISE",
-      "chunks_flagged": [0],
-      "evidence": "chunk 0 \"H1/lede\": line 9: \"ideate → brainstorm → plan → work → review → polish → compound → repeat\" — abstraction-noun-stack sub-item, closest fit: six of the eight named stages (ideate, brainstorm, plan, work, polish, repeat) never recur anywhere else in this file's body; only 'compound' (and loosely 'review' as the push-back beat) is what the student actually does in this 15-minute M1 exercise. The other six land on the opening chunk as unelaborated process nouns with no payoff later in the deck — cold-read weight added to the title slide of an M1 exercise for a name-check the rest of the file never cashes in. All other rule-7 sub-items checked clean across all 5 chunks: no \"Not X. Not Y. Z.\"; no anaphora/epistrophe triples; no self-grading superlatives; no number-with-its-own-retraction; no verb triplets with an empty leg.",
-      "fix_hint": "If the full arc must stay for context, give 'compound' visual priority (the one word this exercise runs) so the other seven read as scene-setting rather than seven equal claims to hold onto.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": "RE-FIRE RESOLUTION CHECK (prior verdict REVISE, todo, abstraction-noun-stack sub-item): line 9's eight-stage Klaassen sequence now bolds **compound**, the exact fix this judge's own prior instance proposed. The other six stages (ideate, brainstorm, plan, work, review, polish) still don't recur by name elsewhere in the file's body -- that hasn't changed -- but the complaint was specifically about undirected cold-read weight ('seven equal claims to hold onto'), and the bold discharges that: a reader hits one visually marked term to carry forward and the rest legibly reads as scene-setting, not seven co-equal facts. Treating as resolved rather than a residual todo. All other rule-7 sub-items remain clean across all 5 chunks: no \"Not X. Not Y. Z.\"; no anaphora/epistrophe triples; no self-grading superlatives; no number-with-its-own-retraction; no verb triplets with an empty leg.",
       "blocking": false
     },
     {
@@ -87,8 +87,8 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No repo/maintainer vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections) in body. \"the compound step\" and \"the loop\" are the module's own Klaassen-framework vocabulary, not curriculum-authoring dialect.",
-      "fix_hint": null,
+      "evidence": null,
+      "fix_hint": "No repo/maintainer vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections) in body. \"the compound step\" and \"the loop\" are the module's own Klaassen-framework/arc vocabulary, not curriculum-authoring dialect.",
       "blocking": true
     },
     {
@@ -97,8 +97,8 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Body bold spans limited to widget chrome (Time/What you do/What you build/The point/Prompt/What happened, attested exempt by this file's own maintainer note) plus one blockquote callout lead, \"Long session, long read.\" (chunk 1, line 18, 4 words, within the <=5-word handle allowance). No bolded narrative bullet-lead sentences remain.",
-      "fix_hint": null,
+      "evidence": null,
+      "fix_hint": "RE-CHECK per orchestrator ask: chunk 0 gained one new non-chrome bold, **compound** (line 9), since the prior PASS was recorded on a zero-narrative-bold body. Budget math per chunk: chunk 0 now carries exactly 1 non-chrome bold (compound, 1 word, well under the 5-word handle cap) alongside its attested-exempt widget chrome (Time/What you do/What you build/The point) -- within the <=1-per-slide budget. Chunk 1 separately carries its own 1 non-chrome bold (the blockquote lead \"Long session, long read.\", 4 words) -- also within budget, unaffected by this diff. No chunk carries 2+ non-chrome bolds. On category, not just count: \"compound\" is this exercise's own recurring, coined-in-context term (the compound step / Compound and close / the first compound pass appear throughout the body) singled out inside an otherwise-unbolded printed sequence -- a handle marking the one term this exercise actually runs, not narrative/mechanism-prose decoration of the Klaassen citation itself. The bold buys real disambiguation (rule 7's fix) at a cost that stays inside the budget's own ceiling -- it does not cost more than it buys.",
       "blocking": false
     },
     {
@@ -107,8 +107,8 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "File is included via the standard `[Compound and close](exercises/compound-and-close.md)` link (getting-going.md), the same exercise-include pattern the Slides deck's `.phase--exercise` wrapper picks up (site/layouts/slides.js buildDeckModel); no prework/supplementary/reference exemption applies to a phased exercise body.",
-      "fix_hint": null,
+      "evidence": null,
+      "fix_hint": "File is included via the standard `[Compound and close](exercises/compound-and-close.md)` link (getting-going.md line 33), the same exercise-include pattern the Slides deck's `.phase--exercise` wrapper picks up (site/layouts/slides.js buildDeckModel); no prework/supplementary/reference exemption applies to a phased exercise body.",
       "blocking": true
     },
     {
@@ -122,6 +122,6 @@
       "blocking": true
     }
   ],
-  "blocking_findings_count": 1,
-  "todos_count": 1
+  "blocking_findings_count": 0,
+  "todos_count": 0
 }

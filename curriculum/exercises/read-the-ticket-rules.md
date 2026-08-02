@@ -88,5 +88,5 @@ OODA
 
 <!-- /backing -->
 
-**Quality:** compendium-audited 2026-08-02 (writing@4b95319 technical@02e17d7 behavior@02e17d7 strategy@02e17d7 slides@4b95319)
-- judges @4b95319: writing PASS, story REVISE (1/0 see instances/ae101--exercise--read-the-ticket-rules.story.json), technical PASS, behavior PASS, pedagogy REVISE (1/2 see instances/ae101--exercise--read-the-ticket-rules.pedagogy.json), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-02 (writing@4b95319 story@ecba753 technical@02e17d7 behavior@02e17d7 pedagogy@ecba753 strategy@02e17d7 slides@4b95319)
+- judges @ecba753: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

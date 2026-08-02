@@ -1,11 +1,11 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/compound-and-close.md",
-  "verdict": "PASS",
+  "verdict": "REVISE",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "H1/lede: Compound and close the loop", "lines": "1-11"},
-    {"index": 1, "heading": "Write your rules file from the session", "lines": "13-31"},
+    {"index": 0, "heading": "H1/lede: Compound and *close the loop*", "lines": "1-12"},
+    {"index": 1, "heading": "Write your rules file from the session", "lines": "13-32"},
     {"index": 2, "heading": "Push back where the summary misreads", "lines": "33-38"},
     {"index": 3, "heading": "Sweep the session into your rules file one more time", "lines": "39-50"},
     {"index": 4, "heading": "Close the session", "lines": "51-58"}
@@ -15,10 +15,10 @@
       "compendium": "check_slides.md",
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": "Candidates checked and cleared: chunk 0 line 11 \"The PR shipped\" (session-artifact carve-out); chunk 2 line 35 \"Claude's summary\" (immediate continuation of chunk 1's Prompt, which asked Claude for a 3-5 line account); chunk 3 line 41 \"the first compound pass at the top of this exercise\" (explicit in-file pointer to chunk 1); chunk 4 line 55 \"The loop\" (established chunk 0, line 9) and \"the bug's ticket\" (see rule 3).",
+      "verdict": "REVISE",
+      "chunks_flagged": [0, 4],
+      "evidence": "chunk 0 \"H1/lede\": line 9: \"the compound step closes Kieran Klaassen's loop: ideate → brainstorm → plan → work → review → polish → compound → repeat\" — this is the ONLY place this file itself defines 'the loop,' and it prints a full 8-stage sequence ending in 'repeat.' chunk 4 \"Close the session\": line 55: \"The loop's last move, closing the bug's ticket outside the repo, is the homework\" — uses bare 'the loop' to mean a different sequence (the module's own orient→fix→compound→close arc, whose last step is close-the-ticket, per getting-going.md line 40: \"The loop is orient → fix → compound → close\"). That second sequence is never named anywhere in THIS file; it only resolves via the enclosing module's signposting. Under the sequential-deck-read rule, chunk 0's freshly printed, textually prominent, attributed (\"Kieran Klaassen's\") 8-stage sequence is the reader's most recent and most detailed definition of 'the loop' by the time they reach chunk 4 — and by its own terms the loop's last move is 'repeat,' not 'close the ticket.' The disambiguating 'Klaassen's' qualifier is present only on first mention and dropped at chunk 4, so a cold sequential reader has no in-file signal that 'the loop' has silently switched referents. Before this pass printed the full sequence, chunk 0 gave no rival stage-list, so bare 'the loop' cleanly defaulted to the module's arc throughout the file; printing the sequence is what created the two-candidate ambiguity. (A prior instance of this verdict, run before today's edit, waved this through as resolving to chunk 0 without checking that chunk 0's actual last-named stage doesn't match chunk 4's claim — that's the gap this re-run catches.)",
+      "fix_hint": "Either keep the printed Klaassen sequence but stop calling it 'the loop' unqualified later in the file (say 'this module's four-move loop' at chunk 4), or drop the colon-and-stage-list at chunk 0 back to a bare attribution so this file only ever carries one definition of 'the loop.'",
       "blocking": true
     },
     {
@@ -28,7 +28,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "Chunk 4 line 55 (\"The loop's last move, closing the bug's ticket outside the repo, is the homework\") names the claim itself rather than pointing at a sibling file by position (\"the next lecture said\"); it does not name close-the-ticket.md. No positional cross-file pointer found anywhere in the body.",
+      "fix_hint": "Chunk 4 line 55 names the claim itself (\"closing the bug's ticket outside the repo\") rather than pointing at close-the-ticket.md by position. No positional cross-file pointer found in the body.",
       "blocking": true
     },
     {
@@ -38,7 +38,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "Verified against getting-going.md's current include order (line 33 places compound-and-close directly after fix-tests-first, line 31): \"The PR shipped\" (chunk 0) and \"The PR is open\" (chunk 4) match fix-tests-first.md's own closer, \"The PR is shipped. Hand off to the compound step.\" (line 49). \"the bug's ticket\" (chunk 4, line 55) resolves to the same running bug fix-tests-first.md establishes (\"Prove the bug, then ship the fix\") via the module-arc-beat carve-out — compound-and-close sits directly after that exercise in include order, so the referent is the student's own just-worked bug, not a missing slide.",
+      "fix_hint": "Verified against getting-going.md's current include order (orient-and-introspect -> fix-tests-first -> compound-and-close -> close-the-ticket homework, all four files exist). \"The PR shipped\" (chunk 0) / \"The PR is open\" (chunk 4) resolve to fix-tests-first.md's own closer under the module-arc-beat carve-out. \"the bug's ticket\" (chunk 4) resolves to the close-the-ticket.md homework, which exists.",
       "blocking": true
     },
     {
@@ -68,18 +68,18 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "All four ## headers (\"Write your rules file from the session\", \"Push back where the summary misreads\", \"Sweep the session into your rules file one more time\", \"Close the session\") match their chunk's content under the sequential read; none contradicted by its own body.",
+      "fix_hint": "All four ## headers match their chunk's content under the sequential read; none contradicted by its own body. (The loop-terminology clash is a rule-1 referent problem, not a header-truth problem, so it's not double-counted here.)",
       "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Checked all sub-items across all 5 chunks: no \"Not X. Not Y. Z.\" construction; no anaphora/epistrophe triples; no self-grading superlatives about the exercise or the rules file; no number-with-its-own-retraction; no abstraction-noun stacks; no verb triplets with an empty leg.",
-      "fix_hint": null,
-      "blocking": true
+      "verdict": "REVISE",
+      "chunks_flagged": [0],
+      "evidence": "chunk 0 \"H1/lede\": line 9: \"ideate → brainstorm → plan → work → review → polish → compound → repeat\" — abstraction-noun-stack sub-item, closest fit: six of the eight named stages (ideate, brainstorm, plan, work, polish, repeat) never recur anywhere else in this file's body; only 'compound' (and loosely 'review' as the push-back beat) is what the student actually does in this 15-minute M1 exercise. The other six land on the opening chunk as unelaborated process nouns with no payoff later in the deck — cold-read weight added to the title slide of an M1 exercise for a name-check the rest of the file never cashes in. All other rule-7 sub-items checked clean across all 5 chunks: no \"Not X. Not Y. Z.\"; no anaphora/epistrophe triples; no self-grading superlatives; no number-with-its-own-retraction; no verb triplets with an empty leg.",
+      "fix_hint": "If the full arc must stay for context, give 'compound' visual priority (the one word this exercise runs) so the other seven read as scene-setting rather than seven equal claims to hold onto.",
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -87,7 +87,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No repo/maintainer vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections) in body. \"the compound step\" and \"the loop\" are the module's own Klaassen-framework vocabulary, named in getting-going.md's Key Concepts (\"The loop is orient -> fix -> compound -> close\") and defined in chunk 0 of this file itself, not curriculum-authoring dialect.",
+      "evidence": "No repo/maintainer vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections) in body. \"the compound step\" and \"the loop\" are the module's own Klaassen-framework vocabulary, not curriculum-authoring dialect.",
       "fix_hint": null,
       "blocking": true
     },
@@ -97,7 +97,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Body bold spans limited to widget chrome (Time/What you do/What you build/The point/Prompt/What happened — lines 3,5,7,9,20,45,53, attested exempt by this file's own maintainer note) plus one blockquote callout lead, \"Long session, long read.\" (chunk 1, line 18, 4 words, within the ≤5-word handle allowance). No bolded narrative bullet-lead sentences remain, matching the maintainer note's own claim (\"body bullet leads de-bolded; no named-term handles remain in this file\").",
+      "evidence": "Body bold spans limited to widget chrome (Time/What you do/What you build/The point/Prompt/What happened, attested exempt by this file's own maintainer note) plus one blockquote callout lead, \"Long session, long read.\" (chunk 1, line 18, 4 words, within the <=5-word handle allowance). No bolded narrative bullet-lead sentences remain.",
       "fix_hint": null,
       "blocking": false
     },
@@ -107,7 +107,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "File is included via the standard `[Compound and close](exercises/compound-and-close.md)` link (getting-going.md line 33), the same exercise-include pattern the Slides deck's phase wrapper picks up; no prework/supplementary/reference exemption applies here (this is a phased exercise body).",
+      "evidence": "File is included via the standard `[Compound and close](exercises/compound-and-close.md)` link (getting-going.md), the same exercise-include pattern the Slides deck's `.phase--exercise` wrapper picks up (site/layouts/slides.js buildDeckModel); no prework/supplementary/reference exemption applies to a phased exercise body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -122,6 +122,6 @@
       "blocking": true
     }
   ],
-  "blocking_findings_count": 0,
-  "todos_count": 0
+  "blocking_findings_count": 1,
+  "todos_count": 1
 }

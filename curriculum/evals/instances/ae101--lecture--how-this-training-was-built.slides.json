@@ -1,15 +1,15 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/how-this-training-was-built.md",
-  "verdict": "PASS",
+  "verdict": "REVISE",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "H1/lede — How this training was built", "lines": "1-5"},
-    {"index": 1, "heading": "Wrong is how steering gets in", "lines": "7-13"},
-    {"index": 2, "heading": "The rules started doing the work", "lines": "15-21"},
-    {"index": 3, "heading": "Then the agents started checking the agents", "lines": "23-27"},
-    {"index": 4, "heading": "Built to forgive", "lines": "29-35"},
-    {"index": 5, "heading": "You just ran the compound loop", "lines": "37-45"}
+    {"index": 0, "heading": "How this training was built (H1/lede)", "lines": "1-6"},
+    {"index": 1, "heading": "Wrong is how steering gets in", "lines": "7-14"},
+    {"index": 2, "heading": "The rules started doing the work", "lines": "15-22"},
+    {"index": 3, "heading": "Then the agents started checking the agents", "lines": "23-28"},
+    {"index": 4, "heading": "Built to forgive", "lines": "29-36"},
+    {"index": 5, "heading": "You just ran the compound loop", "lines": "37-46"}
   ],
   "rules_evaluated": [
     {
@@ -18,7 +18,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 5 line 43 'the orient, fix, compound, close loop' is host-module spine vocabulary earned in getting-going.md ('The loop is orient → fix → compound → close', line 40) — module-include-order prior context, not a fresh forward reference. chunk 4 line 33 'why the test came before the fix' and 'what a correction is worth once it is written down' resolve against the student's own M1 exercises (fix-tests-first, compound-and-close) this lecture closes — module-arc-beats-in-closers carve-out. chunk 4 line 35 'the workbook' resolves against getting-going.md line 10 ('the prework at the top of this workbook'), same host module, prior in include order. chunk 2's 'the rules' / 'The difference is reach' carry over from chunk 1's 'the rules' and are elaborated within the same chunk. No pronoun or demonstrative anywhere in the body fails to resolve under the sequential read.",
+      "evidence": "chunk 5 line 43 'the orient, fix, compound, close loop' is host-module spine vocabulary: getting-going.md (M1's module file, which includes this lecture last) names 'The loop is orient → fix → compound → close' in its own Key Concepts and builds the What You'll Learn LOs around Run/Introspect/Fix/Compound — module-include-order prior context, not a fresh forward reference. chunk 5's eight-token Klaassen sequence ('ideate → brainstorm → plan → work → review → polish → compound → repeat') is likewise not novel at this point in the deck: compound-and-close.md (M1 Ex3, immediately preceding this lecture) already prints the identical arrow-sequence verbatim in its own 'The point:' line, so the closing slide is a callback to something the student read minutes earlier, not an unexplained import. chunk 4's 'the workbook' resolves against getting-going.md's own prework pointer, same host module. No pronoun or demonstrative anywhere in the body fails to resolve under the sequential read once host-module signposting is checked.",
       "fix_hint": null,
       "blocking": true
     },
@@ -28,7 +28,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "chunk 5's 'The story of building this training is the shape you just ran on your own repo' is a closer summing its own deck (this file's own chunks 0-4), matching the compendium's own worked PASS example for this exact line. No positional pointer at another file by position anywhere in the body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -38,7 +38,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 4-5 backward beats (test-before-fix, correction-into-rule) resolve against fix-tests-first.md and compound-and-close.md, both current M1 exercises per getting-going.md's include order.",
+      "evidence": "chunk 5's backward beats ('you let Claude read your repo, saw the wrongness, named it, corrected it', 'the retro you just ran') resolve against orient-and-introspect.md, fix-tests-first.md/diagnose-and-resend.md, and compound-and-close.md — all current M1 exercises per getting-going.md's include order, confirmed against the module file directly.",
       "fix_hint": null,
       "blocking": true
     },
@@ -48,7 +48,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-before-reveal construction anywhere in the body.",
+      "evidence": "No guess-before-reveal construction anywhere in the body; this is a narrative lecture, not an interactive demo beat.",
       "fix_hint": null,
       "blocking": true
     },
@@ -68,7 +68,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "chunk 5 header 'You just ran the compound loop' still holds against its body: the body affirms one loop under two names ('the names differ, the loop doesn't') rather than contradicting the header's singular claim. All other headers match their chunk content directly.",
       "fix_hint": null,
       "blocking": false
     },
@@ -76,20 +76,20 @@
       "compendium": "check_slides.md",
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "chunk 1 line 13 'Some were overscoped. Some fired on the wrong surface. Some held for one kind of content and broke for another.' reads as an anaphoric triple but the third leg carries new concrete content (content-type-specific failure, distinct from breadth and placement) rather than decorative repetition — passes the rule's own third-leg test. No self-grading superlatives, no 'Not X. Not Y. Z.' construction, no number-plus-retraction, no abstraction-noun stacks, no empty-leg verb triplets found anywhere in the body.",
-      "fix_hint": null,
-      "blocking": true
+      "verdict": "REVISE",
+      "chunks_flagged": [5],
+      "evidence": "chunk 5 \"You just ran the compound loop\": line 43: \"The retro you just ran was the compound step of his loop: ideate → brainstorm → plan → work → review → polish → compound → repeat. That is the orient, fix, compound, close loop cut at different joints; the names differ, the loop doesn't.\" — sub-item 'Number + own retraction', generalized from a single number to a sequence-count: this is the module's closing slide, and it prints Klaassen's eight-token arrow-sequence in full, then immediately asks the reader to reconcile it against the training's own four-token loop with a bare assertion rather than a shown mapping. Same shape the rule bans for a hedged percentage, applied here to a hedged headcount ('the names differ, the loop doesn't' functions exactly like 'could be more, could be less'). Both sequences are independently earned earlier in the module's own deck order (getting-going.md names the four-step loop; compound-and-close.md, the exercise immediately prior, already prints the identical eight-token quote), so this is not a referent-novelty problem — it is a density problem: two differently-sized taxonomies asserted equivalent on the one slide meant to leave the student with a single takeaway, at the exact point the training wants to land clean. Every other sub-item (banned triple construction, anaphora/epistrophe, self-grading superlatives, abstraction-noun stacks, empty-leg verb triplets) checked clean across all six chunks — chunk 1's 'Some were overscoped. Some fired on the wrong surface. Some held for one kind of content and broke for another' is a triple whose third leg carries new concrete content (content-type failure, distinct from breadth and placement) and passes the rule's own third-leg test.",
+      "fix_hint": "Drop one of the two sequences from this slide — keep either the Klaassen quote or the orient/fix/compound/close restatement, not both reconciled by assertion, on the training's own closing beat.",
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "'subagent' (chunk 3, glossed in-line as 'a Claude instance with fresh context for independent analysis') and 'checklist' are the only repo-adjacent terms in body; the file's own maintainer register-check note confirms 'subagent' is acceptable AE101-engineer register. No 'compendium', 'firing', 'forcing function', 'beat', 'mood', or 'Connections'-as-proper-noun anywhere in body.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "chunks_flagged": [1],
+      "evidence": "chunk 1 \"Wrong is how steering gets in\": line 13: \"Some fired on the wrong surface.\" — two repo-internal dialect terms stacked in one clause: 'fired' (this repo's own rule-activation verb — content-rules.md's 'Fires when…', check_slides.md's own 'Fires per chunk') and 'surface' used as the noun this repo reserves for a content-context category (content-rules.md's 'Surface → compendium' routing table; check_slides.md §8 lists 'surface as noun' as its own canonical dialect example). A student with no access to the compendium/routing system cannot parse 'fired on the wrong surface' as 'applied to the wrong kind of writing' — it reads as an internal system term, not ordinary English. Not covered by either of the file's own documented maintainer exceptions (bold budget, size-gate exemption), and 'subagent'/'plan mode' (the terms the file's Register check note does carve out for AE101) are a different, already-licensed case.",
+      "fix_hint": "Recast in plain English — e.g. 'applied to the wrong kind of writing' or 'used on content it wasn't meant for' — no compendium-routing vocabulary.",
       "blocking": true
     },
     {
@@ -98,7 +98,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Exactly two bold spans in the whole body: '**Understanding is the artifact.**' (chunk 4, line 33) and '**compound engineering**' (chunk 5, line 43) — matches the maintainer block's own stated budget exactly, both are coined-term handles, no whole-sentence bolding.",
+      "evidence": "Exactly two bold spans in the whole body: '**Understanding is the artifact.**' (chunk 4, line 33) and '**compound engineering**' (chunk 5, line 43) — matches the file's own maintainer-documented budget exactly; both are coined-term handles, no whole-sentence bolding, narrative slides are prose paragraphs throughout per the KNOWN MAINTAINER EXCEPTION.",
       "fix_hint": null,
       "blocking": false
     },
@@ -108,7 +108,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Shared lecture file with no phase-less prose section; standard lecture content included under the host module's phase wrapper.",
+      "evidence": "Shared lecture file, standard `##`-chunked body with no phase-less prose section; included under the host module's phase wrapper (getting-going.md), so it reaches the composed Slides deck.",
       "fix_hint": null,
       "blocking": false
     },
@@ -118,11 +118,11 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No numbered '## Phase N:' or '## N.' headers in this file; all headings are named beats.",
+      "evidence": "No numbered '## Phase N:' or '## N.' step headers in this file; all headings are named beats, not content ordinals.",
       "fix_hint": null,
       "blocking": false
     }
   ],
-  "blocking_findings_count": 0,
-  "todos_count": 0
+  "blocking_findings_count": 1,
+  "todos_count": 1
 }

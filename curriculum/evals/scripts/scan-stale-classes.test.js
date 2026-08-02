@@ -9,13 +9,13 @@ function test(name, fn) { fn(); n++; console.log(`ok ${n} - ${name}`) }
 
 // --- parseHunks ---
 test('parseHunks: full header', () => {
-  assert.deepStrictEqual(parseHunks('@@ -10,3 +12,4 @@ ctx\n+a\n'), [{ oldStart: 10, oldLen: 3, start: 12, len: 4 }])
+  assert.deepStrictEqual(parseHunks('@@ -10,3 +12,4 @@ ctx\n+a\n'), [{ oldStart: 10, oldLen: 3, start: 12, len: 4, added: [12], removedAt: [] }])
 })
 test('parseHunks: single-line shorthand', () => {
-  assert.deepStrictEqual(parseHunks('@@ -5 +6 @@\n'), [{ oldStart: 5, oldLen: 1, start: 6, len: 1 }])
+  assert.deepStrictEqual(parseHunks('@@ -5 +6 @@\n'), [{ oldStart: 5, oldLen: 1, start: 6, len: 1, added: [], removedAt: [] }])
 })
 test('parseHunks: pure deletion', () => {
-  assert.deepStrictEqual(parseHunks('@@ -8,2 +7,0 @@\n-x\n-y\n'), [{ oldStart: 8, oldLen: 2, start: 7, len: 0 }])
+  assert.deepStrictEqual(parseHunks('@@ -8,2 +7,0 @@\n-x\n-y\n'), [{ oldStart: 8, oldLen: 2, start: 7, len: 0, added: [], removedAt: [7, 7] }])
 })
 
 // --- fixture file ---
@@ -157,6 +157,50 @@ test('filterItems: bad sha kept as stale', () => {
 test('filterItems: no diff at all → all pinned classes pruned', () => {
   const { items } = filterItems([ITEM], io({}))
   assert.deepStrictEqual(items[0].classes, [])
+})
+
+/*
+ * Context lines are not changes.
+ *
+ * git pads every hunk with up to 3 unchanged lines on each side. The first cut
+ * walked the hunk's RANGE, so those context lines were tagged as edits — and
+ * because `<!-- maintainer -->` sits immediately after the last body line, ANY
+ * note added at the top of a maintainer block produced a hunk reaching back
+ * into body and falsely staled writing + slides (+ story, when the context hit
+ * the closer region). Caught on run-the-first-experiment.md, whose body was
+ * byte-identical to its pinned SHA while the scanner demanded three re-fires.
+ *
+ * The cost is not a wasted run; it is that a staleness signal which fires on
+ * maintainer bookkeeping is one nobody keeps believing.
+ */
+test('changeTags: maintainer note whose hunk context reaches body → no body tags', () => {
+  const diff = [
+    '@@ -17,3 +17,5 @@ ctx',
+    ' body line 17',
+    ' body line 18',
+    ' <!-- maintainer -->',
+    '+**A maintainer note.**',
+    '+',
+    '',
+  ].join('\n')
+  const t = tagsFor(parseHunks(diff))
+  assert.deepStrictEqual([...t].sort(), [],
+    `a maintainer-only edit must not stale body classes, got ${JSON.stringify([...t])}`)
+})
+
+/* The other half: a real body edit inside the same hunk shape must still fire. */
+test('changeTags: a real body line in the hunk still tags', () => {
+  const diff = [
+    '@@ -8,3 +8,3 @@ ctx',
+    ' ctx line 8',
+    '-old prose',
+    '+new prose',
+    ' ctx line 10',
+    '',
+  ].join('\n')
+  const t = tagsFor(parseHunks(diff))
+  assert(t.has('writing') && t.has('slides'),
+    `a genuine body edit must still stale writing+slides, got ${JSON.stringify([...t])}`)
 })
 
 console.log(`\n${n} tests passed`)

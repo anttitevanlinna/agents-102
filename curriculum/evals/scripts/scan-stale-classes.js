@@ -33,15 +33,40 @@ const path = require('node:path')
 const CLASSES = ['writing', 'story', 'technical', 'behavior', 'pedagogy', 'strategy', 'slides']
 const BULK_BODY_LINES = 15
 
+/*
+ * `added` / `removedAt` carry the lines that actually CHANGED, in new-file
+ * numbering. The header alone is not enough: git pads each hunk with up to 3
+ * unchanged context lines, and `<!-- maintainer -->` sits directly after the
+ * last body line, so walking the range made every maintainer note look like a
+ * body edit and staled writing + slides on bookkeeping. A staleness signal that
+ * fires on bookkeeping stops being believed.
+ *
+ * `+++ b/file` also starts with `+`; it is always above the first `@@`, so the
+ * `!cur` guard drops it. Removals are anchored at the new-file position they
+ * vacated — the same proxy the pure-deletion branch already uses.
+ */
 function parseHunks(diffText) {
   const hunks = []
   const re = /^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@/
+  let cur = null
+  let newLine = 0
   for (const line of diffText.split('\n')) {
     const m = re.exec(line)
-    if (m) hunks.push({
-      oldStart: +m[1], oldLen: m[2] === undefined ? 1 : +m[2],
-      start: +m[3], len: m[4] === undefined ? 1 : +m[4],
-    })
+    if (m) {
+      cur = {
+        oldStart: +m[1], oldLen: m[2] === undefined ? 1 : +m[2],
+        start: +m[3], len: m[4] === undefined ? 1 : +m[4],
+        added: [], removedAt: [],
+      }
+      hunks.push(cur)
+      newLine = cur.start
+      continue
+    }
+    if (!cur) continue
+    if (line.startsWith('\\')) continue          // "\ No newline at end of file"
+    if (line.startsWith('+')) { cur.added.push(newLine); newLine++ }
+    else if (line.startsWith('-')) cur.removedAt.push(newLine)
+    else newLine++                                // context
   }
   return hunks
 }
@@ -112,7 +137,10 @@ function changeTags(meta, hunks) {
   let changedBody = 0
   for (const h of hunks) {
     if (h.len > 0) {
-      for (let L = h.start; L < h.start + h.len; L++) changedBody += tagLine(meta[L - 1], tags)
+      // Hand-built hunks (tests, callers) carry no `added`; fall back to the range.
+      const explicit = h.added ? h.added.concat(h.removedAt || []) : null
+      const lines = explicit || Array.from({ length: h.len }, (_, k) => h.start + k)
+      for (const L of lines) changedBody += tagLine(meta[Math.min(L, meta.length) - 1], tags)
     } else {
       // pure deletion: anchor on surrounding lines; count removed lines if anchored in body
       const anchors = [Math.max(1, h.start), Math.min(meta.length, h.start + 1)]

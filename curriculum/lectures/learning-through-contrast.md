@@ -31,8 +31,8 @@ The run shows you what no benchmark can.
 
 **§3 judgment (cross-module refs in body):** the lecture's subject IS the contrast arc (baseline → learn → encode; the lecture is named for it), so the backward anchor and the backward arc legs are constitutive and stay. The *number* on them is not: what is load-bearing is that the un-packaged send-off was the test, not which slot it sat in. Both legs now name the artefact instead of the module, so the arc survives a cut that runs these modules in different positions. The forward leg names what the encode IS; the module file's `## Next` owns the bridge. Self-refs read "this module". No module numbers above the fence.
 
-**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@9697944 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
-- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-02 (writing@5117a2c story@5117a2c technical@5117a2c behavior@5117a2c pedagogy@5117a2c strategy@5117a2c slides@5117a2c)
+- judges @5117a2c: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Word count:** ~330 words body (post-rework).
 

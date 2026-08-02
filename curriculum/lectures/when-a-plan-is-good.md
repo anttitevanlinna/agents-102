@@ -75,8 +75,8 @@ After you've done it once, you'll feel when a plan needs the second read and whe
 
 **Deck notes:** does NOT name "plan-mode approval inflation" — that label lands retroactively at exercise P5. *The cheapest gate you will ever run* delivers the name-the-uncertainty governor as a pre-action question (doctrine-legal). *Find is easier than judge* seeds the M5 verification-asymmetry naming.
 
-**Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@9697944)
-- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-02 (writing@5117a2c story@5117a2c technical@5117a2c behavior@5117a2c pedagogy@5117a2c strategy@5117a2c slides@5117a2c)
+- judges @5117a2c: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta:**
 - **Time:** 10–12 min (deck-only trimmed it back from the 12–15 of the deck+prose draft), inside M2's 1h45 slot (Connections 10 / Lecture 10–12 / Exercise 55–70 / Debrief 15 / Bridge 5). If tight, the three-pressures slide compresses to 60 seconds; the exercise teaches them.

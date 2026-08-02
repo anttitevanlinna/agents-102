@@ -59,8 +59,8 @@ The loop is the shape. The bug today was the excuse.
 - **Subagent gets the same treatment: named, never explained.** M3 owns the first subagent; the build-story names the machinery without glossing it. Do not re-add a definitional parenthetical.
 - **`Built to forgive` promises artifacts are rebuildable.** The promise holds only while every cross-module edge onto an M1–M3 artifact stays `conditional:`. A prompt that hard-requires an artifact unconditionally breaks this slide — check here first. Re-check command in the backing block under `prompt-registry-conditional-edges`.
 
-**Quality:** compendium-audited 2026-07-26 (writing@9697944 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4) — SHAs stale against current body; re-audit before ship.
-- judges @9697944: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-02 (writing@eaae8cd technical@b3143a4 behavior@b3143a4 strategy@b3143a4) — SHAs stale against current body; re-audit before ship.
+- judges @eaae8cd: writing PASS, story REVISE (2/1-see-instances/ae101--lecture--how-this-training-was-built.story.json), technical PASS, behavior PASS, pedagogy REVISE (1/0-see-instances/ae101--lecture--how-this-training-was-built.pedagogy.json), strategy PASS, slides REVISE (1/1-see-instances/ae101--lecture--how-this-training-was-built.slides.json)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Understand (the compound loop as a pattern, before running it).

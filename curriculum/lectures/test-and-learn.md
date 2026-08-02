@@ -34,8 +34,8 @@ You're new to this country: the stretch where the agent runs alone and you don't
 
 - section-3 sweep 2026-07-02: 0 refs remaining to fix — the plan's 5 M5-refs (plus M1–M4 hits) were already removed by the same-day slides-only pass above; verified zero `M[0-9]`/module-name hits above the fence. 3 arc-temporal phrases judged not-sequencing ("from here on", "every future hand-off", the two-run arc — no module named; exercise-internal arc). Owning module `run-the-first-experiment.md` confirmed carrying the dropped sequencing in `## Start here` (short-loops contrast) and `## Next` ("Module 5 opens with...").
 
-**Quality:** compendium-audited 2026-08-02 (writing@d1b6f2c story@d1b6f2c technical@d1b6f2c behavior@d1b6f2c pedagogy@d1b6f2c strategy@d1b6f2c slides@d1b6f2c)
-- judges @d1b6f2c: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-02 (writing@5117a2c story@5117a2c technical@5117a2c behavior@5117a2c pedagogy@5117a2c strategy@5117a2c slides@5117a2c)
+- judges @5117a2c: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Lecture meta:** *10–12 min lecture, now deck-shaped (4 slides + kicker). Sets up M4's walk-and-send-off exercise. Names the spirit of the two-run arc and the one move the exercise opens with — gap analysis.*
 **Word count:** ~380 words body (post slide rework).

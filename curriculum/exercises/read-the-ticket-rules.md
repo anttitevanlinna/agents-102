@@ -85,3 +85,6 @@ OODA
 - last-run: 2026-08-01
 
 <!-- /backing -->
+
+**Quality:** compendium-audited 2026-08-02 (writing@02e17d7 story@02e17d7 technical@02e17d7 behavior@02e17d7 strategy@02e17d7 slides@02e17d7)
+- judges @02e17d7: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy REVISE (2/2 see instances/ae101--exercise--read-the-ticket-rules.pedagogy.json), strategy PASS, slides PASS

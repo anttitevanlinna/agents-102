@@ -291,5 +291,5 @@ OODA
 
 **Diagram woven in (2026-07-04):** Antti chose proto A (`protos/control-loop-01-closed-loop.html` — the canonical closed-loop block diagram, relabeled in student words) from a 3-proto set (A=canonical form · B=open-vs-closed contrast · C=map-as-loop; B+C stay in `protos/` as alternates, PNG renders in session scratchpad). Inlined as this slide's `<figure class="diagram">`, SVG byte-identical to the proto minus blank/comment lines (marked's raw-HTML block terminates on any interior blank line — same rule as the engine SVG above). Bullet 1 de-duplicated: dropped "the shape robotics and autopilots have run on for decades" (now carried once, in the diagram caption). No SVG ids, so no collision with the engine map's mf- ids on the theory-handbook page. Slide is now figure + 3 bullets, mirroring "The ghost, drawn solid."
 
-**Quality:** compendium-audited 2026-08-02 (writing@5117a2c story@5117a2c technical@5117a2c behavior@5117a2c pedagogy@5117a2c strategy@5117a2c slides@5117a2c)
-- judges @5117a2c: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-02 (writing@366047e story@366047e technical@366047e behavior@366047e pedagogy@366047e strategy@366047e slides@366047e)
+- judges @366047e: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

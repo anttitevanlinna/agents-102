@@ -96,8 +96,8 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 
 **Skill-introspection (`map-the-access-surface-1`) and map-walkthrough (`map-the-access-surface-3`) prompts kept, not cut.** `-1` was flagged `low-yield`, `-3` `redundant-slot`. Both are light read/introspect beats, not concurrent-heavy execution, so cutting them reclaims none of the load the cull targeted. `-1` goes one level past `/skills` — storage location on disk plus whether skill bodies are loaded into context (the lazy-load lesson the line after it leans on). `-3` is the read-back-and-prime step before the Phase 3 delta, distinct from the map generation in `-2`. Not cut candidates.
 
-**Quality:** compendium-audited 2026-08-02 (writing@5117a2c story@5117a2c technical@5117a2c behavior@5117a2c pedagogy@5117a2c strategy@5117a2c slides@5117a2c)
-- judges @5117a2c: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-02 (writing@366047e story@366047e technical@366047e behavior@366047e pedagogy@366047e strategy@366047e slides@366047e)
+- judges @366047e: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

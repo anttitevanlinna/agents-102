@@ -48,8 +48,8 @@ You can close this session now. `./CLAUDE.local.md` stays behind; whether it ear
 
 **Re-audit owed:** the connector + close-out sections were split into the `close-the-ticket.md` homework exercise, leaving this file as the compound-the-rules-file beat only. Body materially trimmed, so the per-class Quality SHAs below predate the trim. Re-audit before ship. **Emphasis budget (`check_slides.md §9`):** widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) stays bold; body bullet leads de-bolded; no named-term handles remain in this file.
 
-**Quality:** compendium-audited 2026-08-02 (writing@eaae8cd technical@5117a2c behavior@5117a2c pedagogy@5117a2c strategy@5117a2c)
-- judges @5117a2c: writing PASS, story REVISE (1/0-see-instances/ae101--exercise--compound-and-close.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides REVISE (1/1-see-instances/ae101--exercise--compound-and-close.slides.json)
+**Quality:** compendium-audited 2026-08-02 (writing@eaae8cd technical@366047e behavior@366047e pedagogy@366047e strategy@366047e)
+- judges @366047e: writing PASS, story REVISE (1/0-see-instances/ae101--exercise--compound-and-close.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides REVISE (1/1-see-instances/ae101--exercise--compound-and-close.slides.json)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read the retro summary against session moments) + Apply (integrate the rules file from evidence).

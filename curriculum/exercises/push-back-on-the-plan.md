@@ -123,8 +123,8 @@ Then just hit stop.
 
 **What-you-build keeps *catches the branches you can't see* (§53 partial accept, maintainer call).** The second read's value claim is the hook that sells the walk-down; the your-read half of the P5 compare (what a human catches) stays unstated in the opener and lands at the Evaluate beat. Do not re-flag the surviving clause against §53.
 
-**Quality:** compendium-audited 2026-08-02 (story@d1b6f2c technical@1c765f2 behavior@1c765f2 strategy@1c765f2 slides@d1b6f2c)
-- judges @1c765f2: writing REVISE (1/1 see instances/ae101--exercise--push-back-on-the-plan.writing.json), story PASS, technical PASS, behavior PASS, pedagogy REVISE (1/3 see instances/ae101--exercise--push-back-on-the-plan.pedagogy.json), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-02 (writing@d1141cd story@d1b6f2c technical@1c765f2 behavior@1c765f2 strategy@1c765f2 slides@d1b6f2c)
+- judges @d1141cd: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy REVISE (1/3 see instances/ae101--exercise--push-back-on-the-plan.pedagogy.json), strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat at P5 is the Evaluate beat)
@@ -226,5 +226,3 @@ Flagged
 - picks plan mode before approving a multi-file change
 - sends two specific push-backs naming step numbers before approving a non-trivial plan
 - runs a second-pass walk-down on any plan that touches more than two files
-
-**Prompt register — `push-back-on-the-plan-4` deliberately short.** The closing question (`are these rules auto-loaded to each session context?`) is intentionally end-of-session-tired-engineer register: lowercase, no end punctuation, single short question. It models the casual ask a real engineer types after a long session, contrasting with the longer earlier prompts. Audit-class judges flagging it as a stylistic outlier should treat as accepted-by-design.

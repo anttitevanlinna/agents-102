@@ -179,7 +179,7 @@ Optional. They sit in the gap while your un-packaged run is still going. All fou
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
 | M4 starting-point branch + SHA | `m4/<task-slug>` branch at the short SHA Claude reports after the commit prompt; both written into the protected `Run coordinates` block in `task.md` — the load-bearing stable identifier, not scrollback and not `./CLAUDE.local.md` | "Commit the current state…" prompt in *Send the task off* (line 49) | M5 worktree-setup prompt reads the `Run coordinates` block in `task.md` directly and forks `../<repo>-m5` from the named branch + SHA, so the packaged re-run starts from the same code state as the un-packaged run |
-| Filled gap entries | `observations/` (cross-session default) or sponsor-stated business-rules home | Phase 2 walk-and-fill prompts — observation written, rule articulated, business-rules pointer wired | M5 packaged re-send (the agent loads the same observations + the new packaging on top); M6 second-skill authoring reads as part of the walked-system context |
+| Filled gap entries | `observations/` (cross-session default) or sponsor-stated business-rules home | Phase 2 walk-and-fill prompts — observation written, rule articulated, business-rules pointer wired | M5 packaged re-send (the agent loads the same observations + the new packaging on top); M6 Phase 1 reads the worktree copy as part of the system that produced both runs |
 | M4 session transcript | `~/.claude/projects/<project-folder>/<session-id>.jsonl` (Claude Code's default storage) | The Claude Code session running the M4 walk + send-off; persisted by the runtime, not by an explicit prompt | M5 opening — the M5 session reads the M4 transcript directly to ground the *"what came back"* read |
 
 **Per-phase failure mode + escape hatch** (per `check_pedagogy.md` rule 47 — every phase shipping a forcing function names its dominant failure and one recovery move):
@@ -201,7 +201,7 @@ Optional. They sit in the gap while your un-packaged run is still going. All fou
 
 **Frameworks riffed on (attributed in lecture):**
 - **Gap analysis** — generic business-analysis framework; no single attribution needed. Named in Phase 2 as *"walk the system you have against the system the task needs."*
-- **Compound engineering** — Kieran Klaassen. Debrief self-compound pattern is Klaassen's Review + Compound step, now in its fourth rep for the student.
+- **Compound engineering** — Kieran Klaassen. Debrief self-compound pattern is the loop that runs through Klaassen's work, now in its fourth rep for the student.
 
 **2026-07-02** — trifecta send-off check added to `## Send the task off` (three-question check + "prompt injection" named once + supplementary pointer, last mandatory beat before the send-off prompt), wired per completeness review finding #2; second firing of the M3 pre-leash beat. Same pass: *"is the practice"* → *"is the move"* in the nudge paragraph (practice-as-noun; the M4 carve-out covers only the opener's engineered sentence at line 24).
 

@@ -62,7 +62,7 @@
                 { slug: 'the-lethal-trifecta',        title: 'The lethal trifecta' },                // M3
                 { slug: 'what-is-agentic-engineering', title: 'What is agentic engineering' },       // M3
                 { slug: 'token-efficiency',           title: 'Token efficiency: the craft and the folklore' }, // M3
-                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' }, // M4→M5
+                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Reading Uncle Bob\'s Agent Experiments' }, // M4→M5
                 { slug: 'verification-asymmetry',     title: 'Verification asymmetry' },             // M4→M5
                 { slug: 'backpressure',               title: 'Backpressure' },                       // M5→M6
                 { slug: 'workflow-composition-lineages', title: 'Workflow composition lineages' },   // M6

@@ -70,8 +70,8 @@ Format → `curriculum/backing-format.md`.
 - owasp-asi08-cascading-failures `[checked:2026-07-29 result:OK due:2027-01-29]` https://genai.owasp.org/2025/12/09/owasp-top-10-for-agentic-applications-the-benchmark-for-agentic-security-in-the-age-of-autonomous-ai/ — [academic/research] OWASP Top 10 for Agentic Applications (9 Dec 2025) names **ASI08 Cascading Failures** — faults propagating across agents, tools and workflows into system-wide impact. Body now says **error cascade**, which is the literature's term: *"From Spark to Fire: Modeling and Mitigating Error Cascades in LLM-Based Multi-Agent Collaboration"* (arXiv 2603.04474, Mar 2026) carries it in the title. **Do not revert to "cascading error"** — that was our paraphrase and matches no term of art, so a student who greps it lands nowhere. fallback: OWASP's "cascading failure" is the other legal form; "failure" shifts the sense toward system-wide impact and away from the accumulating-wrongness the slide teaches, so prefer the cascade noun.
 
 **Frameworks**
-- Sycophancy as preference-tuning artifact · [borrow:alignment-research] · law:none · ← sharma-sycophancy-2023
-- Error compounding over chain length · [borrow:reliability-engineering] · law:compound-reliability-floor-0-85 · ← cultural-vocab. Body carries the subjunctive illustration only; the banked law's 0.85ⁿ form is NOT on the student surface here by design.
+- Sycophancy as preference-tuning artifact · [borrow:alignment research] · law:none · ← sharma-sycophancy-2023
+- Error compounding over chain length · [borrow:reliability engineering] · law:compound-reliability-floor-0-85 · ← cultural-vocab. Body carries the subjunctive illustration only; the banked law's 0.85ⁿ form is NOT on the student surface here by design.
 
 **Stance** `[stance:2026-07-29 level:L3]`
 - holds: sycophancy is a documented consequence of preference tuning, not a quirk — measured across five frontier assistants and traced to human + preference-model judgment. The lecture's causal hedge matches the literature.

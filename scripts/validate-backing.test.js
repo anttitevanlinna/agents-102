@@ -182,15 +182,15 @@ test('stance older than the window → STANCE-STALE', () => {
 
 test('law: key resolves against banked laws, else WARN', () => {
   const laws = { all: new Map([['the-compound-ladder', 'The compound ladder']]), backbone: new Set() };
-  const good = audit(block('**Frameworks**\n- CE · [borrow:x] · law:the-compound-ladder · ← cultural-vocab\n'), { laws });
+  const good = audit(block('**Frameworks**\n- CE · [borrow:economics] · law:the-compound-ladder · ← cultural-vocab\n'), { laws });
   assert.equal(codes(good.findings).includes('LAW-UNRESOLVED'), false);
-  const bad = audit(block('**Frameworks**\n- CE · [borrow:x] · law:invented-law · ← cultural-vocab\n'), { laws });
+  const bad = audit(block('**Frameworks**\n- CE · [borrow:economics] · law:invented-law · ← cultural-vocab\n'), { laws });
   assert.ok(codes(bad.findings).includes('LAW-UNRESOLVED'));
 });
 
 test('law:none is never reported unresolved', () => {
   const laws = { all: new Map([['x', 'X']]), backbone: new Set() };
-  const { findings } = audit(block('**Frameworks**\n- CE · [borrow:x] · law:none · ← cultural-vocab\n'), { laws });
+  const { findings } = audit(block('**Frameworks**\n- CE · [borrow:economics] · law:none · ← cultural-vocab\n'), { laws });
   assert.equal(codes(findings).includes('LAW-UNRESOLVED'), false);
 });
 
@@ -235,7 +235,7 @@ test('bare and bolded headers mix in one block', () => {
   const { findings } = audit(block(
     'Claims\n- `a` · vision · "framing" ← none-owed\n\n' +
     `**Sources**\n- real ${STAMP} https://example.com — [practitioner direct] x. fallback: none.\n\n` +
-    'Frameworks\n- CE · [borrow:x] · law:none · ← real\n'
+    'Frameworks\n- CE · [borrow:economics] · law:none · ← real\n'
   ));
   assert.equal(codes(findings).includes('SOURCE-ORPHAN'), false,
     'the bare Frameworks header must count as a citation site');
@@ -272,7 +272,7 @@ test('prose inside a field is never mistaken for a header', () => {
 test('Frameworks citing an undefined source → SOURCE-UNDEFINED', () => {
   const { findings } = audit(block(
     '**Claims**\n- `a` · vision · "framing" ← none-owed\n\n' +
-    '**Frameworks**\n- CE · [borrow:x] · law:none · ← ghost-source\n'
+    '**Frameworks**\n- CE · [borrow:economics] · law:none · ← ghost-source\n'
   ));
   const f = findings.find(x => x.code === 'SOURCE-UNDEFINED');
   assert.ok(f && f.sev === 'ERROR', 'an undefined framework ref must error');
@@ -283,10 +283,82 @@ test('Frameworks sentinels and defined ids stay silent', () => {
     '**Claims**\n- `a` · vision · "framing" ← none-owed\n\n' +
     `**Sources**\n- real ${STAMP} https://example.com — [practitioner direct] x. fallback: none.\n\n` +
     '**Frameworks**\n' +
-    '- A · [borrow:x] · law:none · ← cultural-vocab\n' +
-    '- B · [borrow:x] · law:none · ← none — house framing\n' +
-    '- C · [borrow:x] · law:none · ← real\n'
+    '- A · [borrow:economics] · law:none · ← cultural-vocab\n' +
+    '- B · [borrow:economics] · law:none · ← none — house framing\n' +
+    '- C · [borrow:economics] · law:none · ← real\n'
   ));
   assert.equal(codes(findings).includes('SOURCE-UNDEFINED'), false);
   assert.equal(codes(findings).includes('SOURCE-ORPHAN'), false);
+});
+
+/*
+ * `law:` resolves against theory-plan.md; `borrow:` resolved against nothing,
+ * and drifted to ~50 distinct values for ~35 real parent fields. Two spellings
+ * of one discipline (`security engineering` / `security-engineering`) split a
+ * grep in half, and three values were not parent fields at all — the worst,
+ * `[borrow:research-house]`, credited an outside research house with the
+ * absorption-bottleneck law that `theory-plan.md` banks as ours at `[rsch:L4]`.
+ * A ledger field nobody validates is a ledger that records whatever was typed.
+ */
+test('an unknown borrow value → BORROW-UNKNOWN warn', () => {
+  const { findings } = audit(block(
+    '**Claims**\n- `a` · vision · "framing" ← none-owed\n\n' +
+    '**Frameworks**\n- X · [borrow:research-house] · law:none · ← none\n'
+  ));
+  const f = findings.find(x => x.code === 'BORROW-UNKNOWN');
+  assert.ok(f && f.sev === 'WARN', 'an unrecognised parent field must warn');
+  assert.match(f.msg, /research-house/);
+});
+
+test('canonical parent fields, none, and named originators stay silent', () => {
+  const { findings } = audit(block(
+    '**Claims**\n- `a` · vision · "framing" ← none-owed\n\n' +
+    '**Frameworks**\n' +
+    '- A · [borrow:none] · law:none · ← none\n' +
+    '- B · [borrow:control theory] · law:none · ← none\n' +
+    '- C · [borrow:SRE] · law:none · ← none\n' +
+    '- D · [borrow:Argyris & Schön] · law:none · ← none\n' +
+    '- E · [borrow:practitioner-coined] · law:none · ← none\n'
+  ));
+  assert.deepEqual(codes(findings).filter(c => c === 'BORROW-UNKNOWN'), []);
+});
+
+/*
+ * A framework can straddle two fields honestly (`learning science / HCI`).
+ * Splitting on `/` and ` and ` validates each part, so the compound keeps the
+ * author's precision without becoming a hole the drift walks back through.
+ */
+test('compound borrow values validate part by part', () => {
+  const { findings } = audit(block(
+    '**Claims**\n- `a` · vision · "framing" ← none-owed\n\n' +
+    '**Frameworks**\n' +
+    '- A · [borrow:learning science / HCI] · law:none · ← none\n' +
+    '- B · [borrow:SRE and security] · law:none · ← none\n'
+  ));
+  assert.deepEqual(codes(findings).filter(c => c === 'BORROW-UNKNOWN'), []);
+});
+
+test('a compound with one unknown part names that part', () => {
+  const { findings } = audit(block(
+    '**Claims**\n- `a` · vision · "framing" ← none-owed\n\n' +
+    '**Frameworks**\n- A · [borrow:economics and vibes] · law:none · ← none\n'
+  ));
+  const f = findings.find(x => x.code === 'BORROW-UNKNOWN');
+  assert.ok(f, 'the unknown half must still warn');
+  assert.match(f.msg, /vibes/);
+  assert.doesNotMatch(f.msg, /economics/);
+});
+
+/*
+ * Exact match on purpose. Accepting `security-engineering` as a synonym of
+ * `security engineering` would let both spellings live in the corpus forever,
+ * which is the defect — one canonical spelling per field is the whole point.
+ */
+test('a hyphenated variant of a canonical field still warns', () => {
+  const { findings } = audit(block(
+    '**Claims**\n- `a` · vision · "framing" ← none-owed\n\n' +
+    '**Frameworks**\n- A · [borrow:security-engineering] · law:none · ← none\n'
+  ));
+  assert.ok(findings.some(f => f.code === 'BORROW-UNKNOWN'),
+    'a near-duplicate spelling is the drift this check exists to catch');
 });

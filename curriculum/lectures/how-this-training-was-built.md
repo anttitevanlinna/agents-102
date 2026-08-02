@@ -121,7 +121,7 @@ Format → `curriculum/backing-format.md`.
 
 **Frameworks**
 - Compound engineering · [borrow:practitioner-coined] · law:the-compound-ladder · ← klaassen-definitive-guide, klaassen-four-step, klaassen-expanded-loop
-- Double-loop learning · [borrow:Argyris] · law:double-loop-learning · ← cultural-vocab. The body's *"The rules were not right the first time either… They got sharpened the same way the drafts did"* is the double-loop move: the correction changes the rule, not just the draft. Argyris is **not named on this surface** and should not be — the lecture's one attribution slot belongs to Klaassen.
+- Double-loop learning · [borrow:Argyris & Schön] · law:double-loop-learning · ← cultural-vocab. The body's *"The rules were not right the first time either… They got sharpened the same way the drafts did"* is the double-loop move: the correction changes the rule, not just the draft. Argyris is **not named on this surface** and should not be — the lecture's one attribution slot belongs to Klaassen.
 
 **Stance** `[stance:2026-07-30 level:L2]`
 - holds: the mechanism the lecture describes is live, current, and independently practised. Klaassen calls persistent instruction files "load-bearing" (Apr 2026) and fans review out to parallel reviewers (Jul 2026) — both stages of the lecture's story, published by someone who is not us. The term "compound engineering" is unmoved: still his, still the same mechanism, no competing name found with practitioner traction. L2 and not higher on purpose — this is one origin practitioner plus our own attested account, which is two organisations, not convergence (`check_research_claims.md §4`).

@@ -87,10 +87,10 @@ Format → `curriculum/backing-format.md`.
 - klaassen-compound-engineering `[checked:2026-07-30 result:CAVEAT due:cohort]` https://every.to/source-code/compound-engineering-how-every-codes-with-agents — [practitioner direct, vendor venue] Shipper + Klaassen, co-bylined, Dec 11 2025; four-step naming verbatim and in printed order. CAVEAT, two of them: Dec 2025 is outside the 6-mo window, so cite as the framework's origin rather than fresh evidence; and Klaassen expanded the loop on 2026-05-29 (`every.to/p/compound-engineering-gets-an-upgrade`) to *"Ideate → brainstorm → plan → work → review → polish → compound → repeat"*, which moves `compound` off fourth place. Name, mechanism and attribution all hold — only the ordinal moved. Never attach a step number to this framework without re-counting first. Stamp carried from `how-this-training-was-built.md`; keep the two in step.
 
 **Frameworks**
-- STRIDE · [borrow:security-engineering] · law:none · ← kohnfelder-garg-1999, shostack-2014
-- Least privilege · [borrow:security-engineering] · law:none · ← saltzer-schroeder-1975
+- STRIDE · [borrow:security engineering] · law:none · ← kohnfelder-garg-1999, shostack-2014
+- Least privilege · [borrow:security engineering] · law:none · ← saltzer-schroeder-1975
 - Compound engineering / team-kit accretion · [borrow:practitioner-coined] · law:the-compound-ladder · ← klaassen-compound-engineering, curran-2x-nine-months
-- Test pyramid · [borrow:testing-discipline] · law:none · ← cultural-vocab. Named in body as a generic default the authored skill pushes back on; no credit obligation under `check_writing.md §6` counter-rule.
+- Test pyramid · [borrow:software testing] · law:none · ← cultural-vocab. Named in body as a generic default the authored skill pushes back on; no credit obligation under `check_writing.md §6` counter-rule.
 
 **Stance** `[stance:2026-07-29 level:L2]`
 - holds: the personal-skill → team-kit path runs in production at two independent orgs with the same shape — an internal marketplace, auto-updating, contribution spread across a wide slice of R&D rather than a central team building for everyone else. Intercom: 267 skills, 153 contributors, 31% of R&D. Ramp's Dojo: 350+ skills, packaged by non-engineers as well.

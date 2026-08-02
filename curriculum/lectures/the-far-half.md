@@ -159,7 +159,7 @@ Format → `curriculum/backing-format.md`. Figure provenance: derived from `the-
 
 **Frameworks**
 - The value cycle, far half · [borrow:groundwork pattern language] · law:the-value-cycle · ← cultural-vocab
-- Absorption bottleneck · [borrow:research-house] · law:absorption-bottleneck · ← osmani-software-factories, osmani-outer-loop
+- Absorption bottleneck · [borrow:none] · law:absorption-bottleneck · ← osmani-software-factories, osmani-outer-loop
 - Verification as the narrow neck · [borrow:practitioner-coined] · law:none · ← osmani-software-factories, ronacher-coming-loop
 
 **Stance** `[stance:2026-07-31 level:L2]`

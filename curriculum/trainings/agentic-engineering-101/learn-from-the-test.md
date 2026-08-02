@@ -7,7 +7,7 @@ Read the un-packaged run through three failure-mode lenses, build the validation
 
 Walk in with the un-packaged send-off artefact. Stopped, finished, ran out of credit, doesn't matter.
 
-Optional prep while the un-packaged run is still going: read [Clean Code Is Steering: Insights from Uncle Bob](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md); watch Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich); read [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md); read Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).
+Optional prep while the un-packaged run is still going: read [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md); watch Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich); read [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md); read Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).
 
 ## What You'll Learn
 After this module, you will be able to:

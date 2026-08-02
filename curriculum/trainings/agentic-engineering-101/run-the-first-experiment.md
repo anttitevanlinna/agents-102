@@ -113,7 +113,7 @@ Come to Module 5 without a run and you'll be scrambling for material while the r
 
 Optional. They sit in the gap while your un-packaged run is still going. All four point at the same surprise: the effort in agent work sits in the framing and the checking, not the typing. The next session picks this up from your own run.
 
-**Read, [Clean Code Is Steering: Insights from Uncle Bob](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md).** Uncle Bob's public learning journey with AI coding: early speed, mercury-like unpredictability, then tests, architecture visibility, and formal constraints as steering. It moves the question from "the agent ran" to "what would have constrained the drift?", the question you'll put to your own run next.
+**Read, [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md).** Uncle Bob's public learning journey with AI coding: early speed, mercury-like unpredictability, then tests, architecture visibility, and formal constraints as steering. It moves the question from "the agent ran" to "what would have constrained the drift?", the question you'll put to your own run next.
 
 **Watch, Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich).** Interview video and write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. You'll find the same split in your own run.
 

@@ -1,4 +1,4 @@
-# Clean Code Is Steering: Insights from Uncle Bob
+# Clean Code Is Steering: Reading Uncle Bob's Agent Experiments
 
 AI coding does not make Clean Code irrelevant. It changes what Clean Code is for.
 
@@ -149,15 +149,12 @@ Frameworks
 
 Stance `[stance:2026-08-01 level:L1]`
 - holds: that classic Clean Code practices become steering instruments under agentic development. One named practitioner, working through it in public, with seven verified posts behind him. The body is careful about this — it frames his arc as a learning journey rather than as a verdict the field reached.
-- contested: **the mapping between his seven posts and this page's eight sections, which is looser than the section headings imply.** The six-fundamentals post carries most of the load; acceptance tests, TDD and mutation testing are the discipline he has taught for decades rather than things he said about agents in these posts. That is legitimate synthesis of a body of work and it is not the same as quotation, and the title *Insights from Uncle Bob* invites a reader to hear all eight as his recent claims.
+- contested: **the mapping between his seven posts and this page's eight sections, which is looser than the section headings imply.** The six-fundamentals post carries most of the load; acceptance tests, TDD and mutation testing are the discipline he has taught for decades rather than things he said about agents in these posts. That is legitimate synthesis of a body of work and it is not the same as quotation. The title carried the risk and was changed 2026-08-02: *Insights from Uncle Bob* promised eight recent claims, *Reading Uncle Bob's Agent Experiments* promises what the page does. Do not restore the old title; the looseness it papered over is real and stays named here.
 - would-move-it: Martin publishing a position that contradicts the steering framing, or a second practitioner of his standing arriving at the same reframe independently, which would take it to L2 and let the page stop leaning on one figure.
 
 OODA
 - question: has Martin's position moved, and is anyone else reframing classic quality discipline as agent steering rather than as tidiness?
 - roster: Robert C. Martin, Kent Beck, Martin Fowler, Dex Horthy, Adam Tornhill
 - last-run: 2026-08-01
-
-Flagged
-- `[found:2026-08-01]` The page's eight sections map onto seven posts unevenly — three of the eight (acceptance tests, TDD, mutation testing) rest on Martin's decades of published work rather than on anything in the stamped posts about agents → the synthesis is fair, the title is the risk. Consider whether *Insights from Uncle Bob* should read as *Clean Code discipline, read through Uncle Bob's agent experiments*, which is what the page actually does.
 
 <!-- /backing -->

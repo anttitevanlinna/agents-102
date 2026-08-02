@@ -61,6 +61,10 @@ The edge is held on this side deliberately. `continuous-research/` ships under i
 
 Freshness applies to what *moves*: deployment numbers, adoption rates, platform capability, who-currently-thinks-what. Not to what was published once and stayed published.
 
+**Delegated variant — `[delegated stamp]` + `due:none`.** A file may point at another file that owns the dated claim, rather than restating it. The pointer is legitimate; a computed `due:` on the pointer is not. That date is a second copy of the delegate's freshness, and nothing in the toolchain compares the two, so it goes stale in silence — `composing-the-workflow` carried a `due:2026-11-25` pinned to a check its delegate had already replaced. Stamp `due:none`: the delegation does not expire, the delegate's own stamps do, and `source-freshness.sh` walks the delegate directly. `checked:` still means the date the pointer was last confirmed to aim at the right file.
+
+The sibling rule cuts the other way and is worth stating next to it: **a claim owes its backing in the file that makes it.** Delegation is for *"the detail lives over there"*, never for *"my number is stamped over there"* — a reader auditing this file alone would find a bare figure. `the-map-filled-in` restated the 80/20 ratio for months on a stamp two lectures upstream.
+
 The maintainer-attested (`result:ATTESTED due:none`) and capability (`due:cohort`) variants carry over unchanged.
 
 ### 4 · Frameworks
@@ -71,6 +75,7 @@ The borrow ledger. One line per imported framework:
 - <name> · [borrow:<parent field>] · law:<theory-plan law name> · ← <source-id | cultural-vocab>
 ```
 
+- **`borrow:`** names the **parent discipline** the framework came from, from the closed vocabulary in `validate-backing.js` (`BORROW_FIELDS`). Two sentinels: `none` when the framing is ours, `practitioner-coined` when a named practitioner coined it. A named originator is legal where the honest answer is a person rather than a field (`Argyris & Schön`, `Boyd`). Compounds split on `/` and `and`, and each part is checked. Matching is exact — accepting `security-engineering` as a synonym of `security engineering` would let both spellings live forever, which is the defect. Adding a field costs one line in the vocabulary, deliberately: a new parent field should be a decision, not a typo that stuck. **`borrow:` is not a source-type slot.** `research-house`, `platform capability` and `cultural-vocab` all appeared here and all named where evidence came from rather than where the *framework* came from; the worst credited an outside house with a law `theory-plan.md` banks as ours at `[rsch:L4]`. Evidence goes in `←`.
 - **`law:`** keys to `theory-plan.md`'s inventory **by law name, never by section number** — numbers drift on restructure (`check_writing.md`, belief-reference rule). `law:none` when the framework is riffed on but anchors no banked law.
 - This field is the join `theory-plan.md` has never had. Every ★ backbone law should be reachable from at least one lecture's `law:` key; a law with no reachable lecture is theory with no delivery, and a `law:` key matching no banked law is a lecture citing a spine that isn't there. The linter reports both directions.
 

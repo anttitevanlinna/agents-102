@@ -129,7 +129,7 @@ Format → `curriculum/backing-format.md`.
 - bossavit-leprechauns `[checked:2026-07-31 result:BLOCKED due:none]` Laurent Bossavit, *The Leprechauns of Software Engineering* (2015), ch. 10 "The Cost of Defects: An Illustrated History" — [practitioner analysis] **the counter-source, recorded on purpose.** Bossavit argues Boehm's dataset was thin and under-documented, that a few points were smoothed into a precise-looking exponential curve, that no shared definition of "defect" or "cost" spans the cited studies, and that the famous 10x/100x-per-phase ratios are a citation telephone game. BLOCKED on the same terms — no verbatim quote pinned to the primary text, so this is triangulated summary and one attractive-sounding line surfaced in search could **not** be re-confirmed and is deliberately not reproduced here. **Why this entry exists:** our body's ordinal framing (minutes / hours / weeks, no multiplier, no curve) survives the critique precisely because it carries no number. The guard is against a future edit "strengthening" it with one. Do not add a multiplier, do not draw the curve, and do not attribute the ordinal claim to Boehm as settled research — it stands as plain cost logic without him.
 
 **Frameworks**
-- Plan mode · [borrow:platform capability] · law:none · ← cc-permission-modes, cc-plan-file
+- Plan mode · [borrow:none] · law:none · ← cc-permission-modes, cc-plan-file
 - Walking skeleton / vertical slice · [borrow:agile practice] · law:none · ← cockburn-walking-skeleton, horthy-wsff
 - Sycophancy · [borrow:ML research] · law:principal-agent · ← sharma-sycophancy, perez-model-written-evals
 - Generator–verifier asymmetry · [borrow:practitioner-coined] · law:ooda-with-act-collapsed · ← osmani-agentic-code-review, vjk-four-reviewers

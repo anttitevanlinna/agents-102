@@ -157,6 +157,42 @@ function fields(body) {
 const CULTURAL_VOCAB = 'cultural-vocab';
 
 /*
+ * The `[borrow:…]` vocabulary. Closed on purpose, and the closing is the check:
+ * this field went unvalidated while `law:` was resolved against theory-plan.md,
+ * and it drifted to ~50 values for ~35 real fields. Two costs. One spelling
+ * splits a grep (`security engineering` / `security-engineering` both lived
+ * here). The other is worse: three values were not parent fields at all, and
+ * `[borrow:research-house]` credited an outside house with the
+ * absorption-bottleneck law `theory-plan.md` banks as ours at `[rsch:L4]` —
+ * the ledger form of the convergence-verb defect, made found instead of made.
+ *
+ * Adding a field costs one line HERE, deliberately. That is the forcing
+ * function: a new parent field should be a decision, not a typo that sticks.
+ * Compounds are honest (`learning science / HCI`) and validate part by part.
+ */
+const BORROW_SENTINELS = ['none', 'practitioner-coined'];
+const BORROW_FIELDS = [
+  'agile practice', 'alignment research', 'automation studies', 'business analysis',
+  'control theory', 'cybernetics', 'distributed systems', 'economics',
+  'educational psychology', 'empirical evaluation', 'evolutionary theory',
+  'flow engineering', 'groundwork pattern language', 'HCI', 'human factors',
+  'information theory', 'journalism', 'learning science', 'legal drafting',
+  'manufacturing', 'marketing', 'military strategy', 'ML research', 'navigation',
+  'organisational learning', 'organisational theory', 'pedagogy',
+  'reliability engineering', 'risk management', 'safety engineering', 'security',
+  'security engineering', 'software economics', 'software engineering',
+  'software testing', 'SRE', 'statistical process control', 'statistics', 'strategy',
+];
+/* Named originators. The honest answer to "where is this from" is sometimes a
+ * person, not a discipline — theory-plan.md's own spine uses this form. */
+const BORROW_ORIGINATORS = ['Argyris & Schön', 'Boyd', 'Conant–Ashby', 'Ricardo'];
+const BORROW_VOCAB = new Set([...BORROW_SENTINELS, ...BORROW_FIELDS, ...BORROW_ORIGINATORS]);
+
+function borrowParts(value) {
+  return value.split(/\s*\/\s*|\s+and\s+/).map(s => s.trim()).filter(Boolean);
+}
+
+/*
  * An arrow tail is source ids FIRST, optionally followed by a scoping note:
  *   ← klaassen-definitive-guide. Not named in this body; M5 owns the naming.
  * Splitting the whole tail on commas turned that note into phantom refs — a
@@ -291,6 +327,15 @@ function auditText(text, { laws, now, stanceWindow, file = '<text>' } = {}) {
   }
 
   for (const { text: l, i } of (f.Frameworks || [])) {
+    const b = l.match(/\[borrow:([^\]]*)\]/);
+    if (b) {
+      for (const part of borrowParts(b[1])) {
+        if (!BORROW_VOCAB.has(part)) {
+          add('WARN', 'BORROW-UNKNOWN', ln(i),
+            `borrow:"${part}" is not a declared parent field — add it to BORROW_FIELDS or use an existing spelling`);
+        }
+      }
+    }
     for (const m of l.matchAll(/law:([a-z0-9-]+)/g)) {
       const key = m[1];
       if (key === 'none') continue;

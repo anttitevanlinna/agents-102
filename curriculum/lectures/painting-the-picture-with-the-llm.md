@@ -71,8 +71,8 @@ Format → `curriculum/backing-format.md`.
 - metr-experienced-devs `[checked:2026-07-29 result:CAVEAT due:2027-01-29]` https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/ — [academic/research] METR, Jul 2025. The only agentic-era measurement (Cursor + Claude), and it **cannot answer the distribution question**: population is uniform, 16 experienced OSS developers, no low-skill arm. Found experienced devs **19% slower** against their own forecast of 24% faster. CAVEAT: N=16, and the single-developer positive outlier inside the writeup is N=1, not a subgroup result. fallback: cite only as "the agentic-era distribution has not been measured."
 
 **Frameworks**
-- Tool and taste · [borrow:cultural-vocab] · law:none · ← cultural-vocab. Godin, name-only per `check_writing.md §6` — a thirty-year argument, no URL owed.
-- Amplification · [borrow:research-house] · law:amplification · ← amplification-org-level, brynjolfsson-task-level. `theory-plan.md` banks this as a ★ backbone law at `[rsch:L3]`; `theory-audit.md` says demote to hypothesis or split the legs. Both are right about different levels — see Stance.
+- Tool and taste · [borrow:marketing] · law:none · ← cultural-vocab. Godin, name-only per `check_writing.md §6` — a thirty-year argument, no URL owed.
+- Amplification · [borrow:none] · law:amplification · ← amplification-org-level, brynjolfsson-task-level. `theory-plan.md` banks this as a ★ backbone law at `[rsch:L3]`; `theory-audit.md` says demote to hypothesis or split the legs. Both are right about different levels — see Stance.
 
 **Stance** `[stance:2026-07-29 level:L2]`
 - holds: at organisational and team level the amplifier framing is strong — three independent sources from three methodological starting points, plus the 15-source productivity-paradox convergence behind Pattern 50, plus DORA 2025 in its own words (*"AI's primary role is as an amplifier, magnifying an organization's existing strengths and weaknesses"*). AI reinforces the system it enters rather than transforming it.

@@ -71,7 +71,7 @@ Sources
 
 Frameworks
 - Three failure modes · [borrow:none] · law:three-failure-modes · ← three-failure-modes
-- Context as a bandwidth-limited channel · [borrow:information-theory] · law:bandwidth-limited-channel · ← cc-context-window-docs
+- Context as a bandwidth-limited channel · [borrow:information theory] · law:bandwidth-limited-channel · ← cc-context-window-docs
 - test → learn → encode · [borrow:none] · law:none · ← cultural-vocab
 
 Stance `[stance:2026-08-01 level:L1]`

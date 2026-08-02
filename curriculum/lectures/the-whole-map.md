@@ -180,7 +180,7 @@ Format → `curriculum/backing-format.md`.
 **Frameworks**
 - The value cycle · [borrow:groundwork pattern language] · law:the-value-cycle · ← groundwork-value-cycle, user-signal-intent-bottleneck, user-signal-absorption. The map IS this law's delivery; the law is not named on this surface and must not be.
 - Closed-loop control · [borrow:control theory] · law:is-a-closed-loop-controller · ← cultural-vocab. The near/far seam is the feedforward/feedback boundary and the whole map is the canonical closed-loop diagram (`theory-plan.md § The Field Map`). Textbook vocabulary, credited by field name, no URL owed. Student-surface dose is exactly one jargon-free naming at M6 (`the-map-filled-in`) — no setpoint, plant or gain ever reaches a student, and none of it reaches this file.
-- Absorption bottleneck · [borrow:research-house] · law:absorption-bottleneck · ← osmani-software-factories, osmani-comprehension-debt, user-signal-absorption. Delivered here de-jargoned, as a phase definition; the name lands later.
+- Absorption bottleneck · [borrow:none] · law:absorption-bottleneck · ← osmani-software-factories, osmani-comprehension-debt, user-signal-absorption. Delivered here de-jargoned, as a phase definition; the name lands later.
 - Advance organizer · [borrow:educational psychology] · law:none · ← ausubel-advance-organizer, cultural-vocab. Ausubel is the origin of "give the framework first, hang the detail on it after" — which is what this lecture does to the whole training. Not named on the student surface; the lecture enacts it rather than teaching it.
 
 **Stance** `[stance:2026-07-31 level:L2]`

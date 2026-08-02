@@ -104,9 +104,11 @@ Claims
 - `every-read-has-a-shadow` · vision · "Every read has a shadow: the files Claude didn't load. The skipped slice is where the surprises hide." ← none-owed
 - `agent-can-introspect-on-what-it-skipped` · detail · "Claude can introspect on what it did and why, including what it chose not to read." ← self-report-is-not-a-log
 - `spot-check-the-self-report` · vision · "Read the self-report, then spot-check it" ← none-owed
+- `ccstatusline-shows-context-continuously` · detail · "shows the same thing continuously in your status line" ← ccstatusline
 
 Sources
 - self-report-is-not-a-log `[checked:2026-08-01 result:CAVEAT due:cohort]` (no URL — house position) — [house canonical] An agent's account of what it read is generated text, not an instrumented log, and can be confidently wrong about its own behaviour. **The exercise is built on this caveat rather than around it** — the spot-check beat exists precisely because the self-report is unreliable, which is why the claim is safe to teach: the student is asked to verify it, not to trust it. fallback: none needed; the exercise's own third beat is the fallback.
+- ccstatusline `[checked:2026-08-02 result:OK due:cohort]` https://github.com/sirmalloc/ccstatusline — [capability] Third-party status-line formatter for the Claude Code CLI, described by its own repo as showing "model info, git branch, token usage, and other metrics in your terminal"; ships Context % and Context Length widgets, which is the continuous read of what `/context` reports once. Active at check: v2.2.27, 361 commits, not archived. `due:cohort` because a third-party tool is somebody else's release schedule. fallback: cut the parenthetical — `/context` alone carries the beat, and the aside is a convenience pointer, not a step.
 
 Frameworks
 - Context as a bandwidth-limited channel · [borrow:information theory] · law:bandwidth-limited-channel · ← cultural-vocab

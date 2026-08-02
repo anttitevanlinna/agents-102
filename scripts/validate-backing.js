@@ -241,6 +241,40 @@ function parseKbRefs(line) {
 }
 
 /*
+ * URLs the STUDENT-FACING body cites, deduped, earliest line each.
+ *
+ * The block audits the claims it lists; nothing audited the claims the body
+ * makes but the block forgot. A live third-party link in student-facing prose
+ * with no stamp has no freshness clock, so nothing will ever re-check it and a
+ * dead link ships to a cohort — the same "silence reads as rigour" failure the
+ * block exists to kill, one level down. Caught on `orient-and-introspect.md`,
+ * which recommends ccstatusline by URL while its Sources field held a single
+ * house position with no URL at all.
+ *
+ * Fenced regions are skipped: a URL inside a fence is a command the student
+ * runs or an example payload, not a citation the file stands behind. Flagging
+ * those would fire on every `git clone` in the corpus, and a check that cries
+ * wolf teaches the maintainer to skim the whole class.
+ */
+function bodyCitations(text) {
+  const end = text.indexOf('<!-- maintainer -->');
+  const lines = text.slice(0, end === -1 ? text.indexOf(OPEN) : end).split('\n');
+  const seen = new Map();
+  let inFence = false;
+  lines.forEach((line, i) => {
+    if (/^\s*```/.test(line)) { inFence = !inFence; return; }
+    if (inFence) return;
+    for (const m of line.matchAll(/https?:\/\/[^\s)\]"'>`]+/g)) {
+      // Trailing sentence punctuation is not part of the URL; a fragment is not
+      // part of its identity for stamping purposes.
+      const url = m[0].replace(/[.,;:]+$/, '').split('#')[0].replace(/\/$/, '');
+      if (!seen.has(url)) seen.set(url, { url, line: i + 1 });
+    }
+  });
+  return [...seen.values()];
+}
+
+/*
  * Audit one file's text. Returns { findings, lawsUsed }.
  * `file` is carried through onto findings purely as a label.
  */
@@ -365,6 +399,13 @@ function auditText(text, { laws, now, stanceWindow, file = '<text>' } = {}) {
     const age = monthsBetween(stance[1], now || new Date());
     if (age !== null && age > (stanceWindow ?? 6)) {
       add('WARN', 'STANCE-STALE', blk.lineOffset, `stance dated ${stance[1]} is ${age} months old (window ${stanceWindow ?? 6})`);
+    }
+  }
+
+  for (const u of bodyCitations(text)) {
+    if (!blk.body.includes(u.url)) {
+      add('WARN', 'BODY-URL-UNSTAMPED', u.line,
+        `body cites ${u.url} but no source in the block stamps it`);
     }
   }
 

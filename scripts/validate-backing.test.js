@@ -362,3 +362,74 @@ test('a hyphenated variant of a canonical field still warns', () => {
   assert.ok(findings.some(f => f.code === 'BORROW-UNKNOWN'),
     'a near-duplicate spelling is the drift this check exists to catch');
 });
+
+/*
+ * BODY-URL-UNSTAMPED — the gap between the two registers.
+ *
+ * The block audits the claims it LISTS. Nothing audited the claims the body
+ * makes but the block forgot, so a live third-party link in student-facing
+ * prose could sit unstamped forever and the file still reported clean —
+ * exactly the "silence reads as rigour" failure the block was built to kill,
+ * reappearing one level down. Caught on `orient-and-introspect.md`, which
+ * recommends ccstatusline by URL in body while its Sources field held a single
+ * house position with no URL at all.
+ *
+ * A stamp is what gives a citation a freshness clock. No stamp, no clock, and
+ * a dead tool link ships to a cohort with nothing to catch it.
+ */
+test('a body URL absent from Sources is flagged', () => {
+  const { findings } = audit(
+    '# A lecture\n\nUse [a tool](https://example.com/tool) for this.\n\n' +
+    '<!-- maintainer -->\n\n<!-- backing -->\n\n' +
+    '**Claims**\n- `a` · vision · "framing" ← none-owed\n\n' +
+    `**Sources**\n- other ${STAMP} https://elsewhere.example — [practitioner direct] backs something else. fallback: none.\n\n` +
+    '<!-- /backing -->\n'
+  );
+  const f = findings.find(x => x.code === 'BODY-URL-UNSTAMPED');
+  assert.ok(f, `expected BODY-URL-UNSTAMPED, got: ${JSON.stringify(findings)}`);
+  assert.match(f.msg, /example\.com\/tool/);
+});
+
+test('a body URL that IS stamped in Sources is not flagged', () => {
+  const { findings } = audit(
+    '# A lecture\n\nUse [a tool](https://example.com/tool) for this.\n\n' +
+    '<!-- maintainer -->\n\n<!-- backing -->\n\n' +
+    '**Claims**\n- `a` · detail · "Use a tool" ← tool\n\n' +
+    `**Sources**\n- tool ${STAMP} https://example.com/tool — [capability] the tool exists. fallback: cut the pointer.\n\n` +
+    '<!-- /backing -->\n'
+  );
+  assert.equal(findings.some(f => f.code === 'BODY-URL-UNSTAMPED'), false,
+    `a stamped URL must not warn: ${JSON.stringify(findings)}`);
+});
+
+/*
+ * A URL inside a fenced block is a command the student runs or an example
+ * payload, not a citation the file is standing behind. Flagging those would
+ * fire on every `git clone` line in the corpus and train everyone to skim the
+ * class — a check that cries wolf is worse than no check.
+ */
+test('a URL inside a fenced code block is not a citation', () => {
+  const { findings } = audit(
+    '# A lecture\n\nRun this:\n\n```bash\ngit clone https://example.com/repo.git\n```\n\n' +
+    '<!-- maintainer -->\n\n<!-- backing -->\n\n' +
+    '**Claims**\n- `a` · vision · "framing" ← none-owed\n\n' +
+    '<!-- /backing -->\n'
+  );
+  assert.equal(findings.some(f => f.code === 'BODY-URL-UNSTAMPED'), false,
+    `fenced URLs must not warn: ${JSON.stringify(findings)}`);
+});
+
+/*
+ * Scoped to files that HAVE a block. A blockless file is already reported
+ * NO-BLOCK; firing both would double-count one defect, and whether the module
+ * layer owes blocks at all is an open architectural question, not this
+ * check's to prejudge.
+ */
+test('a blockless file is left to NO-BLOCK', () => {
+  const { findings } = audit(
+    '# A module\n\nRead [this](https://example.com/tool).\n\n' +
+    '<!-- maintainer -->\n\n**Source verification — freshness stamps.**\n'
+  );
+  assert.equal(findings.some(f => f.code === 'BODY-URL-UNSTAMPED'), false,
+    'NO-BLOCK owns the blockless case');
+});

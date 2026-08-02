@@ -79,7 +79,8 @@ Claims
 - `huntley-saw-a-lever` · detail · "Geoffrey Huntley saw a lever." ← huntley-ralph
 - `ralph-one-line-shell-loop` · detail · "`while :; do cat PROMPT.md | claude-code; done`" ← huntley-ralph
 - `named-after-the-simpsons` · detail · "He called it Ralph, after the Simpsons." ← huntley-ralph
-- `ralph-refeed-is-on-your-menu` · vision · "The name stuck, and Ralph re-feed is one of the three verifier shapes on your menu" ← none-owed
+- `ralph-name-stuck` · detail · "The name stuck" ← ralph-usage-beyond-huntley
+- `ralph-refeed-is-on-your-menu` · vision · "Ralph re-feed is one of the three verifier shapes on your menu" ← none-owed
 - `goal-shipped-later` · detail · "Months later, Claude Code shipped `/goal`. The runtime version of the same move: a condition, a check each turn." ← cc-goal-capability
 - `practitioners-see-levers-first` · vision · "Practitioners see levers first." ← none-owed
 - `there-is-no-last-turn` · vision · "There is no last turn. Each session surfaces the next gap." ← none-owed
@@ -87,6 +88,7 @@ Claims
 
 Sources
 - huntley-ralph `[checked:2026-05-25 result:OK due:none]` https://ghuntley.com/ralph/ — [practitioner direct] Huntley 2025-07-14: the bash loop and the Simpsons origin, both verbatim. **Durable account, `due:none`** (`source-freshness-format.md` § Durable-account variant) — an origin story published once does not expire, and the body already flags it as origin rather than current practice. The previous `due:2026-11-25` treated a historical origin claim as a currency claim; per `check_research_claims.md §2b` the date belongs on claims about the field's present, not on what a person wrote in 2025. fallback: none needed — origin/historical is exactly what the body claims.
+- ralph-usage-beyond-huntley `[checked:2026-04-21 result:OK due:2026-10-21]` kb:continuous-research/platform-watch/coding-agents/runs/2026-04-21-practitioner-long-running.md — [KB staging; primaries recorded there] three uses of the name beyond the coiner: Anthropic's official `ralph-wiggum` plugin (github.com/anthropics/claude-code, `plugins/ralph-wiggum/README.md`) [practitioner direct], paddo.dev/blog/ralph-wiggum-autonomous-loops/ [practitioner direct], and Cherny's "(c) Ralph re-feeds the prompt" via kim-on-cherny [practitioner analysis]. Backs persistence ("the name stuck"), not a census — three recorded users, nobody counted the field. fallback: cut "The name stuck," keep the coinage and the menu ownership.
 - cc-goal-capability `[checked:2026-08-01 result:ATTESTED due:cohort]` https://code.claude.com/docs/en/ — [capability, maintainer-attested] `/goal [condition|clear]`, verified in a scratch sweep against Claude Code 2.1.142. **The sweep is the check and the maintainer accepted it on 2026-08-01 without a re-test**, which is what `ATTESTED` records: not that nobody looked, but that the person accountable looked and signed for it. The open-item TODO that had carried this is retired. fallback: drop the command name and keep the shape (the runtime caught up with the shell hack), which is the sentence's actual argument.
 
 Frameworks
@@ -96,13 +98,13 @@ Frameworks
 
 Stance `[stance:2026-08-01 level:L1]`
 - holds: that the Ralph loop is Huntley's and that it was a shell one-liner before it was a product feature. Both are first-hand and settled. The lecture's larger argument — that the flywheel stops where the agent's evidence stops — is our framing, and the body carries it as a position rather than a finding.
-- contested: how widely "Ralph re-feed" travels as a name. The body no longer depends on the answer — it claims the name stuck and that the shape is on the menu we handed them, both of which hold. The usage question stays in OODA because it is worth knowing, not because a sentence is waiting on it.
+- contested: how far "Ralph re-feed" travels as a name. "The name stuck" is detail-layer, carried by three recorded uses beyond the coiner (ralph-usage-beyond-huntley); how far the name travels beyond those stays in OODA because it is worth knowing, not because a sentence is waiting on it.
 - decided: **Ralph's name stuck; the field did not adopt a taxonomy, 2026-08-01.** The bullet claimed Ralph re-feed *"entered the practitioner vocabulary as one of the named verifier shapes"* — field-wide adoption nobody counted, plus a settled taxonomy that is actually Kim's synthesis of Cherny's habits. Now: the name stuck, which is persistence rather than a census, and it is one of three shapes on the menu **this training** gave them at M5. Huntley's coinage is verified and unaffected. Do not restore the adoption verb.
 - decided: **`/goal` is stamped `ATTESTED due:cohort`, 2026-08-01.** It had been an unstamped platform claim living only in a maintainer to-do. The maintainer accepted the existing scratch-sweep verification without a re-test. The point of the migration was never the re-test; it was that the debt had been invisible to every tool that audits this corpus.
 - would-move-it: evidence that the re-feed shape is called something else in general use, or that nobody outside this curriculum calls it anything. Either turns a recognition beat into a coinage, which is fine to do and not fine to do silently.
 
 OODA
-- question: does anyone outside Huntley's own posts use *Ralph* or *Ralph re-feed* as a name for the shape, and is `/goal` still the runtime primitive it is described as?
+- question: does the name travel further than the three recorded uses (Anthropic plugin, paddo.dev, Cherny via Kim), and is `/goal` still the runtime primitive it is described as?
 - roster: Geoffrey Huntley, Simon Willison, Armin Ronacher, the Claude Code changelog and docs, Amp Chronicle
 - last-run: 2026-08-01
 

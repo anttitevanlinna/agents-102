@@ -47,6 +47,8 @@
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Word count:** ~410 words body (post slide rework + theory promotion).
 
+**Slide size accepted:** Three failure modes you'll use to read — 221w against the 210 cap, maintainer call 2026-08-02. Two trims were proposed and declined: cutting *"the original ask competes with everything generated since"* from **Goal drift** and *"whether the work is right or not"* from **Plausible-but-wrong**. Both restate their own bullet's preceding sentence, and that is the point — this lecture teaches each mechanism twice because the three failure modes are the lens the whole far half depends on, and the doubling is what makes them stick. Same maintainer principle as the deliberate-reinforcement carve-out in `check_writing.md` #11. The slides judge passes this file; only the mechanical cap flagged it. Do not re-propose the trims. If this slide grows further, split it at **Plausible-but-wrong** rather than cutting the restatements.
+
 **Time:** ~5 min read.
 
 **Delivery mode:** Pre-read. Lands at the close of M4 Debrief, after the send-off prompt has been pasted. Re-projected at M5 open (wired in `learn-from-the-test.md § Start here`) — dual-wired file; body stays module-free so both placements read clean.

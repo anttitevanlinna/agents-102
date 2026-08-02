@@ -57,6 +57,26 @@ const ONE_FILE = flag('file', null);
 // Named exceptions per Antti (the two story lectures). Slug-keyed.
 const STORY_EXEMPT = new Set(['how-this-training-was-built', 'story-of-module-6']);
 
+// Per-SLIDE accepted overflow, declared in the file's own maintainer block:
+//
+//   **Slide size accepted:** <exact ## heading text> — <reason>
+//
+// For the case where a maintainer has ruled that a specific passage earns its
+// length (deliberate reinforcement, a quotation that cannot be trimmed). The
+// blunt alternatives are both bad: a file-level exemption hides every OTHER
+// slide in the file, and leaving it flagged forever trains everyone to scroll
+// past the warning — a check that always fires is a check nobody reads.
+// Scoped to the one heading that was ruled on, so the cap keeps biting elsewhere.
+function acceptedSlides(raw) {
+  const out = new Set();
+  const cut = raw.indexOf('<!-- maintainer -->');
+  if (cut === -1) return out;
+  const re = /^\*\*Slide size accepted:\*\*\s*(.+?)\s*(?:—|--)\s/gm;
+  let m;
+  while ((m = re.exec(raw.slice(cut))) !== null) out.add(m[1].trim());
+  return out;
+}
+
 // ── derive the AE101 lecture+exercise file set (module-include order, deduped) ─
 function fileSetFromTraining(trainingKey) {
   const t = CR.TRAININGS[trainingKey];
@@ -168,12 +188,14 @@ for (const f of files) {
   const story = STORY_EXEMPT.has(slug);
   if (story && !INCLUDE_STORIES) continue;
 
+  const accepted = acceptedSlides(fs.readFileSync(abs, 'utf8'));
   const { slides } = measureFile(abs);
   for (const s of slides) {
-    const row = { file: f.file, module: f.module, header: s.header, words: s.words, bullets: s.bullets, line: s.line, story };
+    const ok = accepted.has(s.header);
+    const row = { file: f.file, module: f.module, header: s.header, words: s.words, bullets: s.bullets, line: s.line, story, accepted: ok };
     rows.push(row);
     const over = (s.words > MAX_WORDS) || (s.bullets > MAX_BULLETS);
-    if (over) oversized.push(row);
+    if (over && !ok) oversized.push(row);
   }
 }
 
@@ -185,7 +207,8 @@ if (REPORT) {
   console.log(`${'words'.padStart(5)}  ${'bul'.padStart(3)}  ${'slide header'.padEnd(50)}  file`);
   console.log('─'.repeat(110));
   for (const r of rows) {
-    const mark = (r.words > MAX_WORDS || r.bullets > MAX_BULLETS) ? '⚠' : ' ';
+    const over = r.words > MAX_WORDS || r.bullets > MAX_BULLETS;
+    const mark = over ? (r.accepted ? '~' : '⚠') : ' ';
     console.log(`${mark}${String(r.words).padStart(4)}  ${String(r.bullets).padStart(3)}  ${clamp(r.header, 50)}  ${r.file.replace('curriculum/', '')}`);
   }
   console.log('');

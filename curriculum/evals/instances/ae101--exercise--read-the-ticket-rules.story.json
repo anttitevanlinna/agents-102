@@ -1,10 +1,10 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/read-the-ticket-rules.md",
-  "verdict": "PASS",
+  "verdict": "REVISE",
   "training": "ae101",
   "module_mood_contract": "grounded competence — carried over from M2 (\"I can feel when a plan is good before approving it\"); this homework extends the same felt-competence into a second layer of the tracker, not a new mood",
-  "trace_status": "generated_first_time",
+  "trace_status": "regenerated",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
@@ -29,7 +29,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "File is an exercise; the only module reference ('Module 2') is a correct exercise-file cross-doc reference to the artifact this homework folds into, not a lecture body.",
+      "evidence": "File is an exercise; the only module reference ('Module 2', lines 24/33) is a correct exercise-file cross-doc reference to the artifact this homework folds into, not a lecture body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -55,9 +55,9 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go — forcing functions live in prompts, not body prose.",
-      "verdict": "PASS",
-      "evidence": "Body (lines 15-19) describes the ask lightly ('Ask Claude to infer... and to propose a few backlog-refinement rules'); the actual forcing function — separate strong signals from guesses, propose exactly five rules — is encoded in the fenced prompt extract-the-task-shaping-rule-4 (curriculum/prompts/extract-the-task-shaping-rule-4.md lines 14-18: 'Separate strong signals, guesses that need more tickets, and things you cannot tell. Then propose five basic rules...'). No bare count-script in body; the body's 'three to five tickets' (line 25) is a pacing calibration in suggestion register, not a prescription.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "Line 24 (added since the last story pass at commit 02e17d7, landed in e409261): 'The rules fold back into the file, one call each: tell Claude which to keep, which to change, and which to drop.' This is the exercise's second and load-bearing forcing move — the fold-in that produces the file's stated deliverable ('a short set of field-use rules... added to the rules file,' line 8) — narrated entirely in body prose with no fenced prompt behind it, unlike the first move (lines 17/19, which pairs a light body lead-in with the actual forcing function in the fenced extract-the-task-shaping-rule-4 prompt). Removal test: cutting line 24's clause collapses the exercise's own stated deliverable (there is no other place a fold-in call is asked for) — that makes it a forcing function per rule 16's own test, not a cuttable count-script. Not covered by rule 16's optional-refinement carve-out: 'What you build' (line 8) names this fold-in as the required artifact, not an 'if time remains' extension the way the parent exercise's body-only 'Reject or rewrite the generic rule' section is (that section pushes back on an already-generated prompt output; this section performs the file's own required second move with no prompt backing it at all).",
+      "fix_hint": "Encode the keep/change/drop call as a small fenced prompt (a fifth registry entry, e.g. extract-the-task-shaping-rule-5) that Claude runs against the M2 task-shaping file plus the five proposed rules from Ex4's output, mirroring how extract-the-task-shaping-rule-2 fences the file-location decision rather than leaving it to body prose alone.",
       "blocking": true
     },
     {
@@ -83,7 +83,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood, not punitive.",
       "verdict": "PASS",
-      "evidence": "Line 23-25: 'One ticket gives basic rules, not policy... Claude should keep separating strong signals from guesses as the sample grows.' Framed as not-yet-knowing-enough, never as having-gotten-something-wrong. No shame register.",
+      "evidence": "Lines 23-25: 'One ticket gives basic rules, not policy... Claude should keep separating strong signals from guesses as the sample grows.' Framed as not-yet-knowing-enough, never as having-gotten-something-wrong. No shame register.",
       "fix_hint": null,
       "blocking": false
     },
@@ -101,7 +101,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "Strategy doc M2-detail (content-strategy-agentic-engineering-101.md line 312) names this exact split-out: field-use rules folded into the M2 task-shaping .md, distinct scope from the plan-reading-craft compound. The file's own maintainer note confirms provenance (pulled out of extract-the-task-shaping-rule's optional step). No downstream teaching moment is front-run: M3's Q+S discipline, subagent introduction, and skill-authoring moment are untouched by this ticket-reading homework. Mood (grounded competence) is carried forward, not resolved into something new or prematurely closed — matches trace's mood_note. Hands off to 'nothing by stable path' per the file's own Arc section, which is honest given this is a terminal, self-contained homework artifact, not a module gate.",
+      "evidence": "Strategy doc M2-detail (content-strategy-agentic-engineering-101.md, evidence-maturity-ladder line ~580 and the M2 section) names this exact split-out shape: field-use rules folded into the M2 task-shaping .md, distinct scope from the plan-reading-craft compound. The parent exercise's own Arc section confirms provenance ('The optional ticket-inference beat is now the read-the-ticket-rules homework (M2)'), and this file's maintainer note matches. No downstream teaching moment is front-run: M3's Q+S discipline, subagent introduction, and skill-authoring moment are untouched by this ticket-reading homework — no skill named anywhere in body. Mood (grounded competence) is carried forward, not resolved into something new or prematurely closed — matches trace's mood_note. Hands off to 'nothing by stable path' per the file's own Arc section, which is honest given this is a terminal, self-contained homework artifact, not a module gate.",
       "fix_hint": null,
       "blocking": true
     },
@@ -139,6 +139,6 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "blocking_findings_count": 0,
+  "blocking_findings_count": 1,
   "todos_count": 0
 }

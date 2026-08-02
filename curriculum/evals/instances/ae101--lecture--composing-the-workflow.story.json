@@ -1,7 +1,7 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/composing-the-workflow.md",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "practitioner fluency — 'I know how to test, I know how to learn, I know how to encode'",
   "trace_status": "regenerated",
@@ -38,7 +38,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Slide 1 header 'A skill's footprint is where its job lands' matches the chart's own bottom caption and slide-1 bullet 2's claim. Slide 2 header 'A workflow is skills in the right order' names the composition claim the four-bullet slide argues. Both are claims the body supports at the strength stated (no unsupported universals); no orphan-mystery or empty-container header present.",
+      "evidence": "Slide 1 header 'A skill's footprint is where its job lands' (line 5) matches the chart's own bottom caption (line 152) and slide-1 bullet 2's claim. Slide 2 header 'A workflow is skills in the right order' (line 160) names the composition claim the four-bullet slide argues. Both are claims the body supports at the strength stated (no unsupported universals); no orphan-mystery or empty-container header present.",
       "fix_hint": null,
       "blocking": false
     },
@@ -47,7 +47,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header.",
       "verdict": "PASS",
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/composing-the-workflow.md` run 2026-08-01: 3 slides, 0 oversized, within the 210-word/6-bullet limits.",
+      "evidence": "Slide 1 (lines 156-158): 3 bullets, ~127 words. Slide 2 (lines 162-165): 4 bullets, ~189 words. Both under the 210-word/6-bullet ceiling; SVG and link lines excluded per rule (`scripts/check-slide-size.js` last ran clean 2026-08-01 per maintainer Quality line).",
       "fix_hint": null,
       "blocking": false
     },
@@ -65,8 +65,8 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named — 8+/10 per teaching beat.",
       "verdict": "PASS",
-      "evidence": "trace.phases[0].mood_score = 7 (facilitator-premium signature, not below 7); trace.close.mood_score = 8. This is a TEACHING beat (mood-floor applies — the recognition-of-own-kit move IS the pedagogy), and the phase score of 7 sits at the flagged-not-failing threshold per the rule's own carve-out language, driven by the confusion in trace.phases[0].confusion_flags[0] rather than by the beat's design.",
-      "fix_hint": "Fixing the SESSION-SHAPER label mismatch (see §4 below) would move phase 1 from 7 to 8.",
+      "evidence": "trace.phases[0].mood_score = 8, trace.close.mood_score = 8 (regenerated 2026-08-02 against current on-disk content, content_sha 99e0296b...). This is a single TEACHING beat throughout (recognition-of-own-kit IS the pedagogy; no setup/mechanical sub-beat) — mood-floor 8+ applies and is met at both phase and close. Prior cached trace (2026-08-01) held phase 1 at 7/10 for a chart-label defect (see §4 below); re-simulation against the current file confirms that defect is resolved on disk.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -91,10 +91,10 @@
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
-      "verdict": "REVISE",
-      "evidence": "Front-run/artifact-fidelity facet: the same-day commit 50689ab ('M6 re-scope ripple: the close lectures stop citing the skill nobody ships') reworded the lede (line 3, 'a freshly drawn map of the moves worth packaging next'), the SVG aria-label (line 8), slide-1 bullet 1 (line 156), and three maintainer-block lines to stop claiming the student has shipped a skill named 'session-shaper.' That edit was incomplete: the SVG's rendered, visible on-chart text label at line 134 ('<text ...>SESSION-SHAPER</text>') still names it, at the same visual weight and pier-marker treatment as TEST-STRATEGY and VERIFIER (both of which the student genuinely owns). trace.phases[0].confusion_flags[0] documents the persona catching the mismatch: the chart visually claims an owned, shipped skill the corrected prose explicitly disclaims. Module-to-module arc / Big Idea fidelity facets checked clean (composition-is-unsettled framing preserved, no early resolution of the field argument, hand-off to the-loop-has-a-next lecture untouched).",
-      "fix_hint": "Relabel the SVG text at ~line 134 to match the corrected prose/aria-label wording (e.g. 'NEXT MOVE' or 'MAPPED MOVE' in place of 'SESSION-SHAPER') so the rendered chart agrees with the lede and slide-1 bullet 1 the same 2026-08-01 commit already fixed.",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": "Artifact-fidelity facet (the finding that previously blocked this instance): a prior run flagged that same-day commit 50689ab ('M6 re-scope ripple: the close lectures stop citing the skill nobody ships') reworded the lede, aria-label, and slide-1 bullet 1 to disclaim a shipped 'session-shaper' skill, but left the SVG's rendered on-chart text label at line 134 reading 'SESSION-SHAPER' — a visible contradiction. Re-read of the current file (composing-the-workflow.md:134) shows that label now reads 'NEXT MAPPED MOVE / from your stack-map. one point, at the pier,' which agrees with the lede's 'a freshly drawn map of the moves worth packaging next.' No working-tree diff on this file at judge time (git status clean for this path) — the fix landed in an earlier commit. Front-run facet: strategy doc's M6-in-detail section confirms 'Evals, named and explained' runs later in the same module as its own sub-beat ('M6 is where the word earns its full weight'); this file stays silent on 'eval' by name throughout and does not front-run it. Big Idea / module-to-module arc facets: file's trace close matches the strategy doc's M6 spirit ('test → learn → encode,' mood 'practitioner fluency') near-verbatim, and hands off to the two named supplementary reads rather than a fabricated next-module hook. Mood-doesn't-resolve-early facet: the 'live argument' framing on composition is left open, not resolved into one shape.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -125,13 +125,11 @@
     }
   ],
   "mood_summary": {
-    "phase_scores": [7],
+    "phase_scores": [8],
     "close_score": 8,
-    "any_below_8": true,
-    "stealing_the_mood": [
-      "Phase 1 (7/10): the chart's still-unfixed 'SESSION-SHAPER' label claims a shipped skill the same-day-corrected prose disclaims, snagging the 'these are artifacts I actually own' recognition the figure exists to deliver."
-    ]
+    "any_below_8": false,
+    "stealing_the_mood": []
   },
-  "blocking_findings_count": 1,
-  "todos_count": 2
+  "blocking_findings_count": 0,
+  "todos_count": 0
 }

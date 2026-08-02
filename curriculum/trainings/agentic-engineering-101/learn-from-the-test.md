@@ -148,8 +148,8 @@ Optional. Skipping does not break Module 6. All three fit the Module 5 to Module
 
 **Nag beat + reading reminder added (2026-07-10, Antti-directed cognitive-load arc):** (1) *Long runs, short reads* blockquote in Start here — the M5 reminder leg of the selective-reading arc (M1 teach → M2 exception → M3 take-into-use → M5 remind), per `check_student_facing.md` §29 operational-reminder-at-moment-of-use. (2) New section *The nag writes the verifier* after Start here — reframes the M4 mid-run worry as the verifier's spec ("the feeling of what is missing points at what to build", Antti's frame near-verbatim); names the reference/plan.md/verifier trio in the same role-language the re-send section already uses. Opener-dosage check: arming beat (spirit + one move), does not name Ronacher's three-pattern or the failure-mode↔packaging pairing — closer's beats intact. First para names a plausible mid-run worry: resonant-copy carve-out, don't flatten at re-audit.
 
-**Quality:** compendium-audited 2026-08-02 (writing@ffc64f9 story@ffc64f9 technical@9089694 behavior@1c765f2 pedagogy@ffc64f9 strategy@ffc64f9 slides@ffc64f9)
-- judges @ffc64f9: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-02 (writing@4b95319 story@4b95319 technical@4b95319 behavior@1c765f2 pedagogy@ffc64f9 strategy@ffc64f9)
+- judges @4b95319: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides REVISE (1/1 see instances/ae101--module--learn-from-the-test.slides.json)
 - cross_module: PASS see instances/ae101--prework-m6.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**

@@ -263,8 +263,8 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 
 **§3 disposition (was 4×M5 + 5×M6 above the fence; now zero):** "walked into M5" → lede recast without ref · "start of M5" (failure modes) → folded into slide-1 mapping bullets · "M5 teaches the extend camp" → "the extend camp is the one you just ran" · "Bridge to M6" (all 5×M6 + "M5 asks") → module file `## Next` per §3; no refs remain above the fence.
 
-**Quality:** compendium-audited 2026-08-03 (writing@b74c5d1 story@b74c5d1 technical@1c765f2 behavior@1c765f2 pedagogy@b74c5d1 strategy@1c765f2 slides@b74c5d1)
-- judges @b74c5d1: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-03 (writing@5fc7188 story@5fc7188 technical@1c765f2 behavior@1c765f2 pedagogy@5fc7188 strategy@1c765f2 slides@5fc7188)
+- judges @5fc7188: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - source-freshness stamped 2026-05-25; MiniJinja / getpushtoprod / how-Every-codes stamps re-verified 2026-07-02 (stamps in Source verification block; run `source-freshness.sh --target <cohort-date>`).
 **Lecture meta:** *10–15 min closing lecture for M5, deck-shaped. Names the three-pattern after you have built each piece. Earns the name from felt evidence, not from a slide deck delivered cold. The M6 bridge lives in the module file's `## Next`, not here.*

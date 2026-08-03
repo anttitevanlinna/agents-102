@@ -4,7 +4,7 @@
   "verdict": "REVISE",
   "training": "agents-101",
   "module_mood_contract": "M5 = rescue, not triumph — competence returns because doubt was felt first (M3 unease + M4 residual still stand). This prework's stated job: calibrate the eye, not stoke anxiety.",
-  "trace_status": "generated_first_time",
+  "trace_status": "regenerated",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
@@ -20,8 +20,8 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood (M5-style) exercises.",
       "verdict": "REVISE",
-      "evidence": "Lines 43-61 ('## Why the LLM fabricates', 6 sub-mechanisms) and lines 63-84 ('## Why grounding fails even when the facts are in context', 4 sub-mechanisms) build a 10-mechanism causal model of fabrication and context-failure — this reads as *teaching* (mapping frameworks, explaining tradeoffs with reasons) rather than *arming* (spirit + one operational primitive). Per content-strategy, a dedicated lecture 'Why LLMs Will Always Fabricate' is still TODO and is specced to cover exactly this ground (statistical nature of generation, compound reliability math) — this prework already delivers a close cousin of that content ('It completes the shape' ≈ statistical-generation framing) ahead of both that lecture and the exercise's own discovery-based magic beat (five detectors, scoreboard fills in empirically).",
-      "fix_hint": "Trim the two mechanism sections to the diagnostic lenses that matter for spotting a case in the two stories (not a full causal taxonomy); park the deeper mechanism explanations in the not-yet-written 'Why LLMs Will Always Fabricate' lecture where content-strategy already homes them.",
+      "evidence": "Lines 43-61 ('## Why the LLM fabricates', 6 sub-mechanisms) and lines 63-76 ('## Why grounding fails even when the facts are in context', 4 sub-mechanisms) build a 10-mechanism causal taxonomy of fabrication and context-failure — this reads as TEACHES (mapping frameworks, explaining tradeoffs with reasons) rather than ARMS (spirit + diagnostic lens + one operational primitive). content-strategy still homes a dedicated 'Why LLMs Will Always Fabricate' lecture covering this exact ground; this prework already delivers a close cousin of it ('It completes the shape' ≈ statistical-generation framing) ahead of both that lecture and the exercise's own discovery-based magic beat (five detectors, scoreboard fills in empirically).",
+      "fix_hint": "Trim the two mechanism sections to the diagnostic lenses needed to spot a case in the two stories, not a full causal taxonomy; park the deeper mechanism explanations in the not-yet-written 'Why LLMs Will Always Fabricate' lecture.",
       "blocking": true
     },
     {
@@ -29,7 +29,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "No 'M3'/'M4'/'Module N' references appear in student-facing body (lines 1-84); module cross-references live only below the maintainer fence (lines 90+), which is out of scope for this rule.",
+      "evidence": "No 'M3'/'M4'/'Module N' references appear in the student-facing body (lines 1-84); module cross-references live only below the maintainer fence (line 85+), out of scope for this rule.",
       "fix_hint": null,
       "blocking": false
     },
@@ -48,7 +48,7 @@
       "rule_lead": "A slide's body is size-bounded (~210 words, ≤6 bullets per ## slide).",
       "verdict": "REVISE",
       "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/module-5-prework.md` reports 2 oversized slides: line 43 'Why the LLM fabricates' at 400 words, line 63 'Why grounding fails even when the facts are in context' at 302 words — both roughly double the 210-word ceiling.",
-      "fix_hint": "Split each oversized section at its natural conceptual seam (e.g. the six fabrication mechanisms into two slides of three, same for the four grounding-failure mechanisms) or cut sub-mechanisms per rule 2's dosage finding above — the two fixes reinforce each other.",
+      "fix_hint": "Split each oversized section at its natural conceptual seam (six fabrication mechanisms into two slides of three; same for the four grounding-failure mechanisms) or cut sub-mechanisms per rule 2's dosage finding — the two fixes reinforce each other.",
       "blocking": true
     },
     {
@@ -56,7 +56,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named; mood-floor 8+/10 on teaching beats, 7 = facilitator-premium signature.",
       "verdict": "PASS",
-      "evidence": "trace.phases[0].mood_score = 7 (teaching beat — calibrating the eye on two live cases, not a mechanical setup/launch beat, so the floor applies). 7 is the facilitator-premium signature, not a failure: content lands but the two oversized mechanism sections (see check_lectures §2/§5) are what holds it at 7 instead of 8 — trace.phases[0].mood_note names the exact gap.",
+      "evidence": "trace.phases[0].mood_score = 7 (teaching beat — calibrating the eye on two live cases, not a mechanical setup/launch beat, so the floor applies). 7 is the facilitator-premium signature, not a failure: content lands but the two oversized mechanism sections (see check_lectures §2/§5) are what holds it at 7 instead of 8, per trace.phases[0].mood_note.",
       "fix_hint": "Trimming/splitting the two mechanism sections (already flagged under check_lectures §2/§5) is very likely to lift this to 8 — same fix serves both findings.",
       "blocking": false
     },
@@ -74,7 +74,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title is 'The Missing Check' (line 1) — the positive discipline (verification) is the handle, not 'Fabrication' or 'Hallucination'; failure words appear only inside body as the thing the discipline addresses.",
+      "evidence": "Title is 'The Missing Check' (line 1) — the positive discipline (verification) is the handle, not 'Fabrication' or 'Hallucination'; failure words appear only inside the body as the thing the discipline addresses.",
       "fix_hint": null,
       "blocking": false
     },
@@ -83,7 +83,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity — consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict.",
       "verdict": "REVISE",
-      "evidence": "Front-run facet: the two mechanism sections (see check_lectures §2 evidence) pre-empt ground the strategy doc homes in the still-unwritten M5 lecture, and dilute the exercise's designed 'magic beat' (five detectors, scoreboard empirically reveals which catches what) by pre-teaching the causal 'why' before the student ever runs the benchmark. Big Idea fidelity facet: PASS — 'the missing check' framing honors the Big Idea's discipline-of-groundedness spirit without borrowing its vocabulary prematurely (no 'grounded'/'ungrounded' language used, which correctly stays emergent-from-doing per the exercise's Concept line). Mood-doesn't-resolve-early facet: PASS on its own terms — no explicit M3/M4 reference and no technique/solution is handed to the student, so M3's unease isn't given premature relief. Module-to-module arc facet: PASS — the close ('one sentence per case,' no reading list) hands off cleanly into the in-room Connections beat ('Remember the M3 feeling...') without this file itself claiming that beat.",
+      "evidence": "Front-run facet: the two mechanism sections (see check_lectures §2 evidence) pre-empt ground the strategy doc homes in the still-unwritten M5 lecture, and dilute the exercise's designed magic beat (five detectors, scoreboard empirically reveals which catches what) by pre-teaching the causal 'why' before the student ever runs the benchmark. Big Idea fidelity facet: PASS — 'the missing check' framing honors the Big Idea's discipline-of-groundedness spirit without borrowing its vocabulary prematurely (no 'grounded'/'ungrounded' language used, correctly left emergent-from-doing per the exercise's Concept line). Mood-doesn't-resolve-early facet: PASS on its own terms — no explicit M3/M4 reference and no technique/solution is handed to the student, so M3's unease isn't given premature relief. Module-to-module arc facet: PASS — the close ('one sentence per case,' no reading list) hands off cleanly into the in-room Connections beat without this file itself claiming that beat.",
       "fix_hint": "Same fix as check_lectures §2/§5 — trimming the mechanism density resolves the one failing facet (front-run) without touching the three passing facets.",
       "blocking": true
     },
@@ -120,7 +120,7 @@
       "rule_lead": "Forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "No fenced prompts or agent session in this file at all — maintainer block confirms 'reading only, no Claude-Code capability dependencies.' The one-sentence-per-case task is homework/conversational-fold register (rule 16's Boundary 2 carve-out), not a session exercise mechanic that needs a prompt fence.",
+      "fix_hint": "No fenced prompts or agent session in this file — maintainer block confirms 'reading only, no Claude-Code capability dependencies.' The one-sentence-per-case task is homework/conversational-fold register (rule 16's Boundary 2 carve-out), not a session exercise mechanic needing a prompt fence.",
       "blocking": false
     },
     {
@@ -138,12 +138,9 @@
     "close_score": 8,
     "any_below_8": true,
     "stealing_the_mood": [
-      "Phase 1 (whole file): 7/10 — two stacked mechanism-dump sections (400w and 302w, both over the slide-size ceiling) read as theory-first rather than 'calibrate the eye'; not punitive, just denser than the stated job."
+      "Phase 1 (whole file): 7/10 — two stacked mechanism-dump sections (400w and 302w, both over the slide-size ceiling) read as theory-first rather than 'calibrate the eye'; not punitive, just denser than the stated job.",
+      "Teaching-moment fragility (not a mood-score dip, recorded here per template guidance since it has no check_strategy_tie_in rule_index): the homework asks the student to name 'the organisational check that would have caught this' in their own words for each case, but both cases already state that exact check verbatim in-body ('The missing check: one human opening the cited cases...' line 21; 'The missing check at Deloitte was not exotic: a reviewer opening each cited source...' line 37). A persona of any skill level can satisfy the close by paraphrasing a sentence already handed to them rather than deriving it from the case narrative — this is copy-work risk, not synthesis. Fix belongs to the author (content-creation): state the case facts without naming the check, and let 'name the missing check' be the first place the answer appears in the student's own words."
     ]
-  },
-  "teaching_moment_lands": {
-    "verdict": "REVISE",
-    "note": "The homework asks the student to name 'the organisational check that would have caught this' in their own words for each case — but both cases already state that exact check verbatim in-body ('The missing check: one human opening the cited cases...' line 21; 'The missing check at Deloitte was not exotic: a reviewer opening each cited source...' line 37). A persona of any skill level can satisfy the close by paraphrasing a sentence already handed to them rather than deriving it from the case narrative — the reflection risks being copy-work, not synthesis. Fix belongs to the author (content-creation), not this judge: e.g. state the case facts without naming the check, and let 'name the missing check' be the first place the answer appears in the student's own words."
   },
   "blocking_findings_count": 4,
   "todos_count": 1

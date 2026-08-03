@@ -117,5 +117,5 @@ OODA
 - Voice trio (Godin × Sutherland × Siilasmaa): Sutherland reframe leads (the "don't open the door" beat is the Rory move). Godin peer-warmth carries the body. Siilasmaa lead is held back (forbidden in unease modules per `check_writing.md` #4 mood-arc constraint).
 - "**Time:** 8 minutes." moved below the maintainer divider per `check_writing.md` lecture-meta rule.
 
-**Quality:** compendium-audited 2026-08-03 (writing@b74c5d1 story@b74c5d1 technical@b74c5d1 behavior@b74c5d1 pedagogy@b74c5d1 strategy@b74c5d1 slides@b74c5d1)
-- judges @b74c5d1: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-03 (writing@5fc7188 story@5fc7188 technical@5fc7188 behavior@5fc7188 pedagogy@5fc7188 strategy@5fc7188 slides@5fc7188)
+- judges @5fc7188: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

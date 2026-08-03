@@ -4,7 +4,7 @@
   "verdict": "PASS",
   "training": "agents-101",
   "module_mood_contract": "Epistemic humility, not guilt (content-strategy.md § Security). The feeling is 'I'd like to be safe and I genuinely don't know how to know,' named as the permanent condition, not a failure state. Unease stays open; Module 5 picks up the output-quality thread.",
-  "trace_status": "generated_first_time",
+  "trace_status": "regenerated",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
@@ -38,7 +38,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
-      "evidence": "File has zero `##` headers (only one H1 title, line 1) — same shape as ~13 other lecture files in the corpus (agent-loop-raw.md, grounded.md, what-just-happened.md, module-4-prework.md, etc.). The squint/truth test targets a projected `##` slide read cold in isolation; this file is a single continuous-read unit, not chunked into cold-read slides.",
+      "evidence": "File has zero `##` headers (only one H1 title, line 1) — same shape as other zero-`##` lecture files in the corpus (agent-loop-raw.md, grounded.md, what-just-happened.md, module-4-prework.md, etc.). The squint/truth test targets a projected `##` slide read cold in isolation; this file is a single continuous-read unit, not chunked into cold-read slides.",
       "fix_hint": null,
       "blocking": false
     },
@@ -47,8 +47,8 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header.",
       "verdict": "N/A",
-      "evidence": "907 readable words with zero `##` sections. `scripts/check-slide-size.js` measures only `##`-chunked slides and never scores the pre-first-`##` preamble bucket — confirmed by reading the script (measureFile() pushes only `cur` (## sections) to `slides`; `preamble` is returned but never checked against MAX_WORDS/MAX_BULLETS). This matches the established, unflagged convention across the ~13 other zero-`##` lecture files in curriculum/lectures/ — not a per-file regression.",
-      "fix_hint": "If this lecture is ever delivered via the Slides/deck layout for projection (not long-read scroll), the whole 907-word body renders as one un-paginated slide — worth a maintainer note confirming long-read is the intended delivery mode for this file, same as the other zero-`##` lectures.",
+      "evidence": "~900 readable words with zero `##` sections. `scripts/check-slide-size.js` measures only `##`-chunked slides, never the pre-first-`##` preamble bucket — matches the established, unflagged convention across the other zero-`##` lecture files in curriculum/lectures/, not a per-file regression.",
+      "fix_hint": "If this lecture is ever delivered via the Slides/deck layout for projection (not long-read scroll), the whole ~900-word body renders as one un-paginated slide — worth a maintainer note confirming long-read is the intended delivery mode for this file, same as the other zero-`##` lectures.",
       "blocking": false
     },
     {
@@ -101,7 +101,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "Big Idea fidelity: content-strategy.md's 'You can't tell if your agent is safe by looking at its output... the practice is running the check, not waiting for certainty' is honored almost verbatim by line 5 ('You can wait for it, or you can get to work') and line 19 ('You don't get secure/not secure. You get safe enough, under these conditions'). Mood-doesn't-resolve-early: the close (lines 47-51) explicitly leaves the unease standing and does not offer a fix, matching the mood-arc rule that M4 must not feel tidy. No front-run of M5's grounding/hallucination content anywhere in the body. Module-to-module arc/bridge language correctly lives in the maintainer meta (line 63: 'the lecture primes the loop; the exercises run it'), not the body, per check_lectures §3.",
+      "evidence": "Big Idea fidelity: content-strategy.md's 'you can't tell if your agent is safe by looking at its output — the practice is running the check' is honored almost verbatim by line 5 ('You can wait for it, or you can get to work') and line 19 ('You don't get secure/not secure. You get safe enough, under these conditions'). Mood-doesn't-resolve-early: the close (lines 47-51) explicitly leaves the unease standing and does not offer a fix, matching the mood-arc rule that M4 must not feel tidy. No front-run of M5's grounding/hallucination content anywhere in the body. Module-to-module arc/bridge language correctly lives in the maintainer meta (line 63: 'the lecture primes the loop; the exercises run it'), not the body, per check_lectures §3.",
       "fix_hint": null,
       "blocking": true
     },

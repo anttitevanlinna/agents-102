@@ -42,8 +42,8 @@
 
 **Slides-only pass (2026-07-02, unaudited):** prose deleted outright where a slide supersedes it (Path A; git carries it). Per-passage verdicts: opening stepped-away paragraph CONVERTED into slide-1 bullet 1, "end of M4" module ref dropped (the module file owns placement) · "Here is the question that drives M5" CUT (sequencing; `run-the-first-experiment.md`'s pre-read pointer and `learn-from-the-test.md § Start here` carry it) · question + clock-scaling CONVERTED (slide 1) · three failure modes CONVERTED verbatim-close (slide 2), convergence claim kept as lead bullet ("the lens for the M5 read" → "the lens for the read") · Ronacher anchor CONVERTED (slide 3); "M5 diagnoses what" tease re-phrased module-free as "what that was is where your own read leads" (cliffhanger held, three-pattern still unnamed) · "What to bring to M5" section MOVED: bring-contract line added to `run-the-first-experiment.md § Bring to Module 5`; the lecture keeps a module-free closing bullet ("artefact on screen, three lenses in hand") · "M5 opens with..." closer CUT (module files sequence). §3 disposition: 1×M4 + 6×M5 refs, all dead or moved; zero `M[0-9]` above the fence.
 
-**Quality:** compendium-audited 2026-08-03 (writing@b74c5d1 story@b74c5d1 technical@1c765f2 behavior@1c765f2 pedagogy@b74c5d1 strategy@1c765f2 slides@b74c5d1)
-- judges @b74c5d1: writing PASS, story PASS, technical PASS (verify-refuted), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-03 (writing@5fc7188 story@5fc7188 technical@1c765f2 behavior@1c765f2 pedagogy@5fc7188 strategy@1c765f2 slides@5fc7188)
+- judges @5fc7188: writing PASS, story PASS, technical PASS (verify-refuted), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Word count:** ~410 words body (post slide rework + theory promotion).
 

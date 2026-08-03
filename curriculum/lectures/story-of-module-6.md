@@ -67,8 +67,8 @@ Antti
 <!-- maintainer -->
 
 
-**Quality:** compendium-audited 2026-08-03 (writing@b74c5d1 story@b74c5d1 technical@b3143a4 behavior@b3143a4 pedagogy@b74c5d1 strategy@b3143a4 slides@b74c5d1)
-- judges @b74c5d1: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-03 (writing@5fc7188 story@5fc7188 technical@b3143a4 behavior@b3143a4 pedagogy@5fc7188 strategy@b3143a4 slides@5fc7188)
+- judges @5fc7188: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - source-verified 2026-05-25: Geoff Charles quote confirmed verbatim against ramp.md (practitioner direct, 2026-04-09); public X primary paywalled — attribution disposition open for maintainer (see source-verification block below)
 **Time:** 7–9 min at presentation pace. ~1050 words body. **Voice timing:** L3 framing line is read by the trainer aloud as setup; the body is then read as the memo, signed at close.

@@ -4,9 +4,9 @@ There is truth out there. Your sources carry shards of it. Your agent, left to i
 
 When you ask it for something your sources support, it produces grounded output. When you ask it for something your sources don't support, it still produces something. The difference between those two states is invisible in the tone of the output. That's the whole problem.
 
-PS: we ran today's four detection techniques on the Mata v. Avianca pre-read before class. The story mostly held. And still: source triangulation caught an unsourced "small firm" descriptor and an unsupported "ten minutes" estimate. Entailment caught the story making Schwartz's timeline too clean. Citation integrity caught a direct quote that did not appear in the linked sanctions order. Counter-evidence found a source conflict where CNBC blurred the $5,000 sanction and the court order was more precise. That is the point. Even a careful teaching case benefits from the check.
+PS: today's four detection techniques ran against the Mata v. Avianca pre-read before class. The story mostly held. And still: source triangulation caught an unsourced "small firm" descriptor and an unsupported "ten minutes" estimate. Entailment caught the story making Schwartz's timeline too clean. Citation integrity caught a direct quote that did not appear in the linked sanctions order. Counter-evidence found a source conflict where CNBC blurred the $5,000 sanction and the court order was more precise. That is the point. Even a careful teaching case benefits from the check.
 
-PPS: then we fixed the story and ran the four detectors again. Source triangulation, entailment, and citation integrity came back clean. Counter-evidence still found the CNBC-vs-court-record conflict on the $5,000 sanction, and the revised story followed the primary court record. A re-run months later caught one more smoothing the earlier passes had walked past; it is fixed, and the next pass may catch another. That is the loop: check, tighten, rerun, keep the remaining uncertainty visible.
+PPS: the story got fixed, and the four detectors ran again. Source triangulation, entailment, and citation integrity came back clean. Counter-evidence still found the CNBC-vs-court-record conflict on the $5,000 sanction, and the revised story followed the primary court record. A re-run months later caught one more smoothing the earlier passes had walked past; it is fixed, and the next pass may catch another. That is the loop: check, tighten, rerun, keep the remaining uncertainty visible.
 
 **Why this happens, in one sentence.**
 
@@ -34,7 +34,7 @@ Round 3: 0.1% → 0.01%.
 
 The same compounding that destroys single-pass reliability *builds* loop-based reliability. One generation pass is a trap; a test-and-fix loop is the escape. Three rounds of the illustration land at parts-per-ten-thousand, a place you don't reach by making one pass better. You reach it by looping.
 
-This is the shape of the rest of the training. Now you'll run the test side: a benchmark to find the detector that works on *your* output. Module 6 puts that detector in a loop that runs the full test-fix-test cycle without you. That's evals. The compounding-error math is the problem; the compounding-check math is the answer.
+This is the shape of the rest of the training. Now you'll run the test side: a benchmark to find the detector that works on *your* output. Later the winning detector goes inside a loop that runs the full test-fix-test cycle without you. That's evals. The compounding-error math is the problem; the compounding-check math is the answer.
 
 **The word is grounded.**
 
@@ -66,7 +66,7 @@ Four candidates, chosen because they fail in different directions, so the scoreb
 
 Four candidates, four different failure modes. In the exercise, they run as four parallel agents on the same 30-claim pool, each writing findings to its own file. A scorer adjudicates the claims against the evidence and measures the detectors: precision, recall, coverage. The scoreboard is the mechanism. You don't argue with it; you read it.
 
-The winner (or an ensemble of the top two) becomes a judge file you carry into Module 6, where the judge stops being something you run and becomes something that runs itself.
+The winner (or an ensemble of the top two) becomes a judge file you carry forward, to where the judge stops being something you run and becomes something that runs itself.
 
 **What this buys you.**
 
@@ -74,7 +74,7 @@ Not certainty. Certainty isn't available. What you buy is a *grounded choice abo
 
 That last clause is the one that matters. Grounded output names what it doesn't know. A grounded judge names what it can't catch. Ungrounded output pretends to know everything; a cargo-cult judge pretends to catch everything. The difference looks small on the page. In a decision room, it's the difference between a memo that holds up and a memo that detonates.
 
-Now you run the benchmark. Well, not by hand. You set up four detectors, a claim pool, and a scorer. The agents do the work. You watch the scoreboard fill in. The winner becomes a judge file you'll carry into Module 6, where it goes inside a loop that runs and improves itself.
+Now you run the benchmark. Well, not by hand. You set up four detectors, a claim pool, and a scorer. The agents do the work. You watch the scoreboard fill in. The winner becomes a judge file you keep, headed for a loop that runs and improves itself.
 
 Phase 0 is next: a fresh briefing, then a 30-claim pool extracted from it. The claim pool is the measuring surface the rest of the exercise turns on. Keep the main session blind until the claims exist.
 
@@ -92,8 +92,8 @@ Claims
 - `single-pass-compound-decay` · detail · "85%^10 = 20%" ← compound-reliability-math
 - `first-pass-prior` · detail · "In practice a first pass lands close to that; treat it as a working prior, not a measurement." ← antti-first-pass-prior
 - `loop-collapses-the-error-rate` · detail · "10% → 1% → 0.1% → 0.01% with a 90%-catch detector plus fix" ← compound-reliability-math, antti-first-pass-prior
-- `mata-detector-first-pass` · detail · "we ran today's four detection techniques on the Mata v. Avianca pre-read before class" ← mata-detector-passes
-- `mata-detector-rerun` · detail · "then we fixed the story and ran the four detectors again … A re-run months later caught one more smoothing the earlier passes had walked past" ← mata-detector-passes
+- `mata-detector-first-pass` · detail · "today's four detection techniques ran against the Mata v. Avianca pre-read before class" ← mata-detector-passes
+- `mata-detector-rerun` · detail · "the story got fixed, and the four detectors ran again … A re-run months later caught one more smoothing the earlier passes had walked past" ← mata-detector-passes
 - `cs-short-chain-behaves` · detail · "This is why agentic customer service behaves (a short chain: look up the order, check the policy, draft the reply, with nothing stacking unverified for long). This is why \"let the agent handle the full workflow\" doesn't" ← kb-customer-service-chain-length
 - `the-word-is-grounded` · vision · "The word is grounded." ← none-owed
 - `dont-pick-a-method-run-the-candidates` · vision · "Don't pick a method. Run the candidates." ← none-owed
@@ -151,5 +151,5 @@ OODA
 
 **Lecture meta:** *Closer beat is the lead-in to Phase 0 of the Hallucination benchmark exercise. Trainer pivots straight from the "Phase 0 is next" line into the exercise — no separate transition.*
 
-**Quality:** compendium-audited 2026-08-03 (behavior@b74c5d1 pedagogy@b74c5d1 strategy@b74c5d1 slides@b74c5d1)
-- judges @b74c5d1: writing REVISE (1/0 see instances/agents-101--grounded.writing.json), story REVISE (1/1 see instances/agents-101--grounded.story.json), technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-03 (technical@5fc7188 behavior@5fc7188 pedagogy@5fc7188 strategy@5fc7188 slides@5fc7188)
+- judges @5fc7188: writing REVISE (1/0 see instances/agents-101--grounded.writing.json), story REVISE (1/1 see instances/agents-101--grounded.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

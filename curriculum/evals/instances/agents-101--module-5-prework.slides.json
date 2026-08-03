@@ -5,8 +5,8 @@
   "training": "agents-101",
   "chunk_map": [
     {"index": 0, "heading": "The Missing Check (H1 + lede + Case 1 + Case 2)", "lines": "1-42"},
-    {"index": 1, "heading": "Why the LLM fabricates", "lines": "43-61"},
-    {"index": 2, "heading": "Why grounding fails even when the facts are in context", "lines": "63-84"}
+    {"index": 1, "heading": "Why the LLM fabricates", "lines": "43-49"},
+    {"index": 2, "heading": "Why grounding fails even when the facts are in context", "lines": "50-63"}
   ],
   "rules_evaluated": [
     {
@@ -36,7 +36,7 @@
       "verdict": "N/A",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "No 'the X you did/saw' style backward beat references appear anywhere in this file.",
       "blocking": true
     },
     {
@@ -46,7 +46,7 @@
       "verdict": "N/A",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "No guess-before-reveal demo structure in this reading-only prework.",
       "blocking": true
     },
     {
@@ -77,7 +77,7 @@
       "chunks_flagged": [],
       "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -94,9 +94,9 @@
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "REVISE",
-      "chunks_flagged": [0],
-      "evidence": "chunk 0 \"The Missing Check (H1 + lede + Case 1 + Case 2)\": line 21: \"The missing check: **one human opening the cited cases on a real legal database before the brief was filed.**\" (16-word bolded clause, not a handle); line 37: \"The missing check at Deloitte was not exotic: **a reviewer opening each cited source before the report went to a client.**\" (13-word bolded clause, repeats the same pattern); chunk 0 also carries 6 additional bolded spans (line 7 organisational-decisions phrase, line 11 and line 27 case labels, line 19 and line 33 dates, line 33 Azure OpenAI's GPT-4o) — well over the ≤1-bolded-element-per-slide budget.",
-      "fix_hint": "Bold only the handle inside each 'missing check' sentence (e.g. just 'opening the cited cases'), leave the rest as plain narrative, and thin the rest of chunk 0's bolding to one element.",
+      "chunks_flagged": [0, 1, 2],
+      "evidence": "chunk 1 \"Why the LLM fabricates\": line 45: \"**It completes the shape.**\"; line 46: \"**It fills gaps instead of stopping.**\"; line 47: \"**It can verify inside the same fiction.**\"; line 48: \"**It inherits organisational shortcuts.**\" — every bullet opens with a fully bolded lead sentence, the exact 'pre-2026-07-09 monoculture' shape the rule names as the canonical violation. Chunk 2 \"Why grounding fails...\" repeats it at line 52 \"**The fact is present but not load-bearing.**\", line 53 \"**The source says less than the answer wants.**\", line 54 \"**Conflict gets smoothed.**\". Chunk 0 additionally carries long non-handle bold spans: line 21 \"**one human opening the cited cases on a real legal database before the brief was filed.**\" (12 words) and line 37 \"**a reviewer opening each cited source before the report went to a client.**\" (11 words), plus 5 more bold spans in the same chunk — all past the ≤1-per-slide, ≲5-word-handle budget.",
+      "fix_hint": "Cut each bullet's bolded lead to a short handle (2-4 words) and let the rest of the sentence run as plain prose; in chunk 0, bold only the 'missing check' phrase itself, not the full explanatory clause.",
       "blocking": false
     },
     {
@@ -105,8 +105,8 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "REVISE",
       "chunks_flagged": [0, 1, 2],
-      "evidence": "site/clients/acme/agents-101/index.html:3886 and :3895 link to href=\"#lectures-module-5-prework\", but no `id=\"lectures-module-5-prework\"` section exists anywhere in the built file (grep confirms zero matches) — the prework's content, and its H1 \"The Missing Check\", are absent from the composed page in both layouts, matching the rule's own canonical 2026-07-09 example of prework content dropped from the deck.",
-      "fix_hint": "Confirm module-shape's include convention actually wraps this lecture in a `.phase--lecture` (or `section.module`) block at build time so the anchor resolves and the deck renders it; a dangling `#lectures-module-5-prework` link is a broken cross-reference, not just a missing slide.",
+      "evidence": "site/clients/acme/agents-101/index.html links to href=\"#lectures-module-5-prework\" at two call sites (output-quality.md and security.md's rendered `<a>` tags), but grep for `id=\"lectures-module-5-prework\"` in that built file returns zero matches, while every other shared lecture file (grounded, compounding, context-is-king, etc.) DOES have its `id=\"lectures-<slug>\"` anchor present. This is the compendium's own named 2026-07-09 regression shape: prework content dropped from the composed deck, stranding the in-deck link.",
+      "fix_hint": "Confirm the build/include step wraps this prework in the phase container the other lecture files get, then regenerate site/clients/acme/agents-101/index.html and re-check the anchor resolves.",
       "blocking": false
     },
     {
@@ -116,7 +116,7 @@
       "verdict": "N/A",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "No 'Phase N' / 'Step N' content headers in this file.",
       "blocking": false
     }
   ],

@@ -36,16 +36,84 @@ function acceptedRows(reportOut) {
     .filter(Boolean);
 }
 
+// The declaration path has to be exercised against a fixture, not against
+// whatever the curriculum happens to hold. Zero accepted slides is the healthy
+// state — every slide within the cap and no escape hatch claimed — so a suite
+// that needs a live declaration to prove itself goes red exactly when the
+// content is at its best, and the pressure lands on re-declaring a slide to
+// quiet the tests.
+const FIXTURE_DIR = path.join(ROOT, 'tmp', 'slide-size-fixture');
+const OVERSIZED = [
+  '# Fixture',
+  '',
+  '## A slide that runs long',
+  '',
+  ...Array.from({ length: 7 }, (_, i) => `- Bullet ${i + 1} carries a claim and a sentence of mechanism behind it.`),
+  ''
+].join('\n');
+
+function writeFixture(name, body) {
+  fs.mkdirSync(FIXTURE_DIR, { recursive: true });
+  const rel = path.join('tmp', 'slide-size-fixture', name);
+  fs.writeFileSync(path.join(ROOT, rel), body);
+  return rel;
+}
+
+test('the accepted-overflow declaration, against a fixture', async (t) => {
+  assert.doesNotThrow(
+    () => execFileSync('git', ['check-ignore', '-q', 'tmp/'], { cwd: ROOT, stdio: 'ignore' }),
+    'tmp/ must be gitignored for these fixtures to be safe to write');
+  t.after(() => fs.rmSync(FIXTURE_DIR, { recursive: true, force: true }));
+
+  await t.test('an undeclared oversized slide fails the gate', () => {
+    const rel = writeFixture('undeclared.md', OVERSIZED);
+    const { code, out } = run(['--file', rel]);
+    assert.strictEqual(code, 1, `expected a failure for an undeclared oversized slide:\n${out}`);
+    assert.match(out, /A slide that runs long/);
+  });
+
+  await t.test('declaring it by exact heading clears the gate and marks the row', () => {
+    const rel = writeFixture('declared.md', OVERSIZED +
+      '\n<!-- maintainer -->\n**Slide size accepted:** A slide that runs long — the list is the point.\n');
+    const gate = run(['--file', rel]);
+    assert.strictEqual(gate.code, 0, `expected a declared slide to pass:\n${gate.out}`);
+
+    const rows = acceptedRows(run(['--file', rel, '--report']).out);
+    assert.strictEqual(rows.length, 1, 'expected exactly one accepted-overflow row');
+    assert.strictEqual(rows[0].header, 'A slide that runs long');
+    assert.strictEqual(rows[0].bullets, 7);
+  });
+
+  await t.test('a declaration that misses the heading does not suppress it', () => {
+    const rel = writeFixture('mismatched.md', OVERSIZED +
+      '\n<!-- maintainer -->\n**Slide size accepted:** A slide that runs long! — note the stray punctuation.\n');
+    const { code } = run(['--file', rel]);
+    assert.strictEqual(code, 1,
+      'a near-miss heading must not cover the slide — that is what makes the declaration per-slide');
+  });
+
+  await t.test('a declaration outside the maintainer block is not read', () => {
+    const rel = writeFixture('above-the-line.md',
+      '# Fixture\n\n**Slide size accepted:** A slide that runs long — declared too early.\n' +
+      OVERSIZED.replace('# Fixture\n\n', ''));
+    const { code } = run(['--file', rel]);
+    assert.strictEqual(code, 1,
+      'the declaration is a maintainer ruling; body prose must not be able to claim it');
+  });
+});
+
 test('every oversized slide is either declared or fails the check', () => {
   const { code, out } = run();
   assert.strictEqual(code, 0,
     `check-slide-size exited ${code}. An undeclared slide is over the cap:\n${out}`);
 });
 
-test('each accepted slide is declared in its own maintainer block, by exact heading', () => {
+// Sweeps whatever the curriculum currently holds. An empty result is a pass:
+// the fixture suite above owns proving the mechanism works, so this one is free
+// to say nothing when nothing is declared.
+test('each accepted slide in the curriculum is declared in its own maintainer block', () => {
   const { out } = run(['--report']);
   const rows = acceptedRows(out);
-  assert.ok(rows.length > 0, 'expected at least one accepted-overflow slide to exercise this path');
 
   for (const r of rows) {
     const abs = path.join(ROOT, 'curriculum', r.file);

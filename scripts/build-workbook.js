@@ -572,7 +572,7 @@ ${content}
 // Trainer modules: a per-module one-pager rendered beside the workbook +
 // trainer guide. Same chrome, but one module at a time — a sticky tab strip
 // + :target show/hide on .module-glance sections. Source:
-// curriculum/trainings/<t>/trainer-modules.md (markdown bodies inside raw-HTML
+// curriculum/trainings/<contentKey>/trainer-modules.md (markdown bodies inside raw-HTML
 // <nav>/<section> wrappers; marked parses markdown nested in blank-line-
 // separated block HTML). The outer <section class="module" id="trainer-modules">
 // wrapper is added here so the :has() default-panel fallback selector resolves.
@@ -628,7 +628,11 @@ const TRAINER_MODULES_TAB_JS = `
 // The :target + :has() CSS handles show/hide; this script only writes #start-glance
 // to the URL on first load and toggles the .is-active class on the tab strip.
 (function () {
-    var VALID = { '#start-glance':1, '#m1-glance':1, '#m2-glance':1, '#m3-glance':1, '#m4-glance':1, '#m5-glance':1, '#m6-glance':1 };
+    // Read the tabs off the page rather than listing them here: a cut that
+    // drops a module drops its section, and a hash for a tab this build does
+    // not carry has to fall back to Start here rather than highlight nothing.
+    var VALID = {};
+    document.querySelectorAll('.module-glance[id]').forEach(function (s) { VALID['#' + s.id] = 1; });
     function activeHash() { return VALID[location.hash] ? location.hash : '#start-glance'; }
     function syncTabs() {
         var hash = activeHash();
@@ -643,9 +647,19 @@ const TRAINER_MODULES_TAB_JS = `
 `;
 
 function buildTrainerModules(customer, trainingKey) {
-  const srcPath = path.join(ROOT, 'curriculum/trainings', trainingKey, 'trainer-modules.md');
+  // A variant cut reads its parent's handbook, the same way its workbook reads
+  // the parent's module files, and trims it with the content flags in that
+  // source. Trimming the tab strip alone would be worse than not trimming: the
+  // trainer loses the tabs for sittings that never run but keeps a schedule
+  // that still lists them, on the one surface read under time pressure. The
+  // flags cover the prose too, so both move together.
+  const raw = CR.TRAININGS[trainingKey] || {};
+  const contentKey = raw.contentKey || trainingKey;
+  const t = raw.contentKey ? Object.assign({}, CR.TRAININGS[contentKey], raw) : raw;
+  const srcPath = path.join(ROOT, 'curriculum/trainings', contentKey, 'trainer-modules.md');
   let md = readMd(srcPath);
   if (md === null) return null;
+  md = CR.applyContentFlags(md, raw.flags, (t.modules || []).map(m => m.slug));
   md = escapeTildes(md);
   // Same cross-doc link rewrite as the trainer guide: a `.md` ref into the
   // workbook becomes an absolute-to-this-dir anchor. The page's own

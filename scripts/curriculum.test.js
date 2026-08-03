@@ -19,7 +19,7 @@ const { execSync } = require('node:child_process');
 const fs = require('node:fs');
 const path = require('node:path');
 
-const { expandPrompts, moduleOrdinal, moduleNumber, TRAININGS } = require('../site/layouts/curriculum.js');
+const { expandPrompts, moduleOrdinal, moduleNumber, applyContentFlags, TRAININGS } = require('../site/layouts/curriculum.js');
 const audit = require('../scripts/audit-eval-coverage.js');
 
 test('expandPrompts: {{cut:foo|bar}} emits the prompt block with a ⟦CUT:bar⟧ sentinel', () => {
@@ -573,4 +573,77 @@ test('--for without --theory aborts rather than silently dropping the name', () 
   }
   assert.ok(failed, '--for without --theory must abort');
   assert.match(stderr, /theory handbook only/);
+});
+
+/*
+ * Trainer handbook — per-cut trim.
+ *
+ * One handbook source serves every AE101 cut. A variant reads it through its
+ * parent's contentKey and trims it with the content flags in the file, so a
+ * trainer opens tabs only for sittings that happen.
+ *
+ * Contract under test:
+ *   - The tab strip and the sections agree for every cut. A nav link whose
+ *     section was trimmed is the failure worth a test: it is silent in the
+ *     builder and lands as a dead tab in front of a trainer mid-cohort.
+ *   - No flag marker survives into the rendered page.
+ *   - The six-module arc keeps all seven tabs; the Northwind cut drops M3 + M6
+ *     and swaps the two-day schedule for the per-sitting line.
+ */
+const HANDBOOK_KEYS = Object.keys(TRAININGS).filter(k => fs.existsSync(
+  path.join(ROOT, 'curriculum/trainings', TRAININGS[k].contentKey || k, 'trainer-modules.md')
+));
+
+function trimHandbook(key) {
+  const raw = TRAININGS[key];
+  const contentKey = raw.contentKey || key;
+  const t = raw.contentKey ? Object.assign({}, TRAININGS[contentKey], raw) : raw;
+  const md = fs.readFileSync(
+    path.join(ROOT, 'curriculum/trainings', contentKey, 'trainer-modules.md'), 'utf8');
+  return applyContentFlags(md, raw.flags, (t.modules || []).map(m => m.slug));
+}
+
+const glanceIds = md => [...md.matchAll(/id="([a-z0-9-]+-glance)"/g)].map(m => m[1]);
+const glanceHrefs = md => [...md.matchAll(/href="#([a-z0-9-]+-glance)"/g)].map(m => m[1]);
+
+test('trainer handbook: every cut has a tab strip that matches its sections', () => {
+  assert.ok(HANDBOOK_KEYS.length, 'expected at least one training with a trainer handbook');
+  HANDBOOK_KEYS.forEach(key => {
+    const md = trimHandbook(key);
+    assert.deepEqual(glanceHrefs(md), glanceIds(md),
+      `${key}: tab strip and sections disagree — a tab needs its flag pair in both`);
+  });
+});
+
+test('trainer handbook: no flag marker survives the trim', () => {
+  HANDBOOK_KEYS.forEach(key => {
+    assert.doesNotMatch(trimHandbook(key), /<!--\/?flag:/,
+      `${key}: an unresolved flag marker would render as a comment in the page`);
+  });
+});
+
+test('trainer handbook: a tab exists exactly when the cut runs that module', () => {
+  HANDBOOK_KEYS.forEach(key => {
+    const raw = TRAININGS[key];
+    const t = raw.contentKey ? Object.assign({}, TRAININGS[raw.contentKey], raw) : raw;
+    const expected = ['start-glance'].concat(
+      (t.modules || []).map(m => 'm' + moduleOrdinal(key, m.slug) + '-glance'));
+    assert.deepEqual(glanceIds(trimHandbook(key)), expected,
+      `${key}: handbook tabs must track the cut's module list`);
+  });
+});
+
+test('trainer handbook: the Northwind cut drops the six-module schedule', () => {
+  const cut = trimHandbook('agentic-engineering-101-northwind');
+  const full = trimHandbook('agentic-engineering-101');
+
+  assert.doesNotMatch(cut, /Two-day cohort schedule/,
+    'a four-sitting trainer must not be handed the six-module two-day schedule');
+  assert.match(cut, /\*\*Sittings\.\*\*/,
+    'the trimmed schedule needs its replacement, or the cut has no sitting shape at all');
+  assert.doesNotMatch(cut, /href="#m[36]-glance"/,
+    'M3 and M6 tabs must not be linked in a cut that runs neither');
+
+  assert.match(full, /Two-day cohort schedule/, 'the six-module arc keeps its schedule');
+  assert.doesNotMatch(full, /\*\*Sittings\.\*\*/, 'and does not take the cut-only line');
 });

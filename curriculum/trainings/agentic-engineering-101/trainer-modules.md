@@ -2,17 +2,17 @@
 
 The one trainer doc. **Start here** is the delivery contract — read it once before your first cohort. The module tabs are run sheets — open the module's tab before and during each session. The URL hash holds the selection so you can share or bookmark a tab.
 
-**Format note.** The M1, M2, M4, and M5 tabs are full run sheets: runtime map, verbatim push-back lines, escape hatches, cut order, and demo-repo starting state, built for a peer trainer delivering without author context. M3 and M6 keep a shorter glance format; their rebuild is deferred and out of scope for the four-sitting Northwind track, which runs exactly M1, M2, M4, M5.
+**Format note.** The M1, M2, M4, and M5 tabs are full run sheets: runtime map, verbatim push-back lines, escape hatches, cut order, and demo-repo starting state, built for a peer trainer delivering without author context.<!--flag:module:spot-gaps-build-the-loop--> The M3 and M6 tabs are shorter glances.<!--/flag:module:spot-gaps-build-the-loop-->
 
 <nav class="module-tabs" aria-label="Trainer handbook tabs">
   <a href="#start-glance">Start here</a>
-  <a href="#m1-glance">M1 · Getting going</a>
-  <a href="#m2-glance">M2 · Plan mode</a>
-  <a href="#m3-glance">M3 · Earn the trust</a>
-  <a href="#m4-glance">M4 · First experiment</a>
-  <a href="#m5-glance">M5 · Learn from the test</a>
-  <a href="#m6-glance">M6 · Spot gaps</a>
-</nav>
+<!--flag:module:getting-going-->  <a href="#m1-glance">M1 · Getting going</a>
+<!--/flag:module:getting-going--><!--flag:module:plan-mode-done-right-->  <a href="#m2-glance">M2 · Plan mode</a>
+<!--/flag:module:plan-mode-done-right--><!--flag:module:earn-the-trust-->  <a href="#m3-glance">M3 · Earn the trust</a>
+<!--/flag:module:earn-the-trust--><!--flag:module:run-the-first-experiment-->  <a href="#m4-glance">M4 · First experiment</a>
+<!--/flag:module:run-the-first-experiment--><!--flag:module:learn-from-the-test-->  <a href="#m5-glance">M5 · Learn from the test</a>
+<!--/flag:module:learn-from-the-test--><!--flag:module:spot-gaps-build-the-loop-->  <a href="#m6-glance">M6 · Spot gaps</a>
+<!--/flag:module:spot-gaps-build-the-loop--></nav>
 
 <section class="module-glance" id="start-glance">
 
@@ -25,7 +25,7 @@ The one trainer doc. **Start here** is the delivery contract — read it once be
 - You project the workbook page. There are no slides. You demo each prompt slowly on your own Claude Code while the room copy-pastes into theirs; honor the conversation pauses in the exercise body.
 - Your screen is shared most of the session; there is no private trainer pane. Keep this handbook's module tab open in a second tab.
 - The time budget is `max(trainer, student)`, not trainer time plus student time — everyone runs concurrently.
-- You carry the push-backs. The full run-sheet tabs (M1/M2/M4/M5) list them verbatim.
+- You carry the push-backs. The run-sheet tabs list them verbatim.
 - Weekly cadence: open every non-first session by naming last week's state and the artifact this module expects. Messy state is data, not a moral failing — the artifact is whatever exists.
 
 **Prep per session.** The train-the-trainer run-through was the primary prep: you did the exercises on your own repo, and the artifacts it left (rules files, branches, session coordinates, transcripts) are your demo-repo starting states. Keep them. Then, per session:
@@ -34,7 +34,7 @@ The one trainer doc. **Start here** is the delivery contract — read it once be
 - **Rehearse, don't run.** Read the module page; walk the prompt progression against the tab (what each prompt depends on, what evidence it leaves). Lectures have a floor: reading the projected slide aloud is acceptable delivery — the bar is fielding one question, not performing from memory. Note two or three moments from your own sessions to narrate during agent waits.
 - **Have ready.** This tab's module sheet; sponsor homes confirmed (ADRs, rules file, ticket tracker, team kit); the fallback-repo answer — a student whose repo doesn't fit builds their own in ~15 minutes via the build-a-project-from-zero supplementary, nothing to provision.
 
-**Two-day cohort schedule.** (Weekly sittings: one module per sitting at the tab's sitting column.) Default rhythm: 08:30 start, 1h15 lunch, 20-min breaks; adjust to your sponsor's cadence. Architectural commitments: M1–M3 on Day 1, M4–M6 on Day 2, lunch between M5 and M6 so both async sessions have time to produce something M6 can read.
+<!--flag:module:spot-gaps-build-the-loop-->**Two-day cohort schedule.** (Weekly sittings: one module per sitting at the tab's sitting column.) Default rhythm: 08:30 start, 1h15 lunch, 20-min breaks; adjust to your sponsor's cadence. Architectural commitments: M1–M3 on Day 1, M4–M6 on Day 2, lunch between M5 and M6 so both async sessions have time to produce something M6 can read.
 
 | Day 1 | Block |
 |---|---|
@@ -57,7 +57,7 @@ The one trainer doc. **Start here** is the delivery contract — read it once be
 | 13:50 – 15:35 | M6 (1h45) — opens in a FRESH session at the same worktree (the M5 session may still be running; read both sessions from disk before any write) |
 | 15:35 – 15:50 | Closing Day 2 |
 
-Don't split M4 across the days: its flow is one sequential beat and the send-off is the close; the M3→M4 task-pick homework is the designed spillover. An alternative shape exists (M1-M2-M4 / M5-M3-M6, for cohorts that want the overnight M4→M5 hinge) — that's a call to make with your delivery contact before the cohort, not solo.
+Don't split M4 across the days: its flow is one sequential beat and the send-off is the close; the M3→M4 task-pick homework is the designed spillover. An alternative shape exists (M1-M2-M4 / M5-M3-M6, for cohorts that want the overnight M4→M5 hinge) — that's a call to make with your delivery contact before the cohort, not solo.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->**Sittings.** One module per sitting, in tab order, at the budget on that tab's Slot line.<!--/flag:no-module:spot-gaps-build-the-loop-->
 
 **Craft — the twelve moves.**
 
@@ -89,6 +89,7 @@ Don't split M4 across the days: its flow is one sequential beat and the send-off
 
 </section>
 
+<!--flag:module:getting-going-->
 <section class="module-glance" id="m1-glance">
 
 ### M1 — Getting going + context
@@ -175,7 +176,9 @@ Never cut: the failing test before the fix and the diff-line push-back. Those tw
 - Regenerate: rerun the prework bug-surfacing conversation in a fresh session; criteria unchanged.
 
 </section>
+<!--/flag:module:getting-going-->
 
+<!--flag:module:plan-mode-done-right-->
 <section class="module-glance" id="m2-glance">
 
 ### M2 — Plan mode, done right
@@ -260,7 +263,9 @@ Never cut: Phase 5's stop. Approve, don't execute, and name the pattern; the non
 - Regenerate: rerun M1's compound prompt in any session for the rules file; surface a task via the three-candidate conversation.
 
 </section>
+<!--/flag:module:plan-mode-done-right-->
 
+<!--flag:module:earn-the-trust-->
 <section class="module-glance" id="m3-glance">
 
 ### M3 — Earn the trust
@@ -307,7 +312,9 @@ Never cut: Phase 5's stop. Approve, don't execute, and name the pattern; the non
 - The skill stays installed past M3; if a sponsor pushes to remove it, leave the slot empty rather than substituting something serious-but-thin — the stunt earns its keep precisely because it isn't serious, and the rick-roll body is worth an engineer's re-read.
 
 </section>
+<!--/flag:module:earn-the-trust-->
 
+<!--flag:module:run-the-first-experiment-->
 <section class="module-glance" id="m4-glance">
 
 ### M4 — Run the first experiment
@@ -401,7 +408,9 @@ Never cut: the send-off itself, and never rescue the un-packaged run. A weak fir
 **Northwind topology (four-sitting cut).** No M3 ran, so: the task-pick homework arrives from M2's close instead of M3's; there are no STRIDE ADRs and no authored test-strategy skill for the Phase 2 audit to read. The audit prompt's conditional phrasing ("any skills you've authored," "any ADRs") resolves cleanly — the quality read anchors on the repo's existing test conventions and whatever recorded decisions the repo already has. The trifecta check stands on its own here rather than as a callback to an M3 close. Mechanically validated 2026-07-28, full-chain test PASS: M4's audit turn carries no hard dependency on the M3 ADR or skill.
 
 </section>
+<!--/flag:module:run-the-first-experiment-->
 
+<!--flag:module:learn-from-the-test-->
 <section class="module-glance" id="m5-glance">
 
 ### M5 — Learn from the test, re-send packaged
@@ -487,7 +496,9 @@ Never compress the two closing lectures. What packaging is → The gate is a cla
 **Northwind topology (four-sitting cut).** No M3 ran, so: the worktree-copy note about Module 3 artefacts riding forward drops out (only M1's rules and M4's observations cross); the re-send prompt's conditional requirements on the test-strategy skill and STRIDE ADRs resolve to absent, and the packaged run leans on the reference, plan.md, and verifier alone; post-run judging that looks for the authored skill correctly stands down ("nothing to judge") rather than erroring. This sitting is the finale: the close is bringing the worktree's work home plus the map's last read, and the six-module "Module 6 reads both runs" framing never fires. Mechanically validated 2026-07-28, full-chain test PASS.
 
 </section>
+<!--/flag:module:learn-from-the-test-->
 
+<!--flag:module:spot-gaps-build-the-loop-->
 <section class="module-glance" id="m6-glance">
 
 ### M6 — Spot gaps, build the loop
@@ -524,7 +535,9 @@ Never compress the two closing lectures. What packaging is → The gate is a cla
 **Trainer cues.** Practitioner-fluency register, not lecture-hall — by M6 the student is a practitioner, and the close runs lecture-after-lecture by design: a room of engineers reading the field together, with you as one voice among several. Invite reflection between lectures with open prompts, not Q&A: which lineage resembles their day? What did the quality arc feel like across the five moves? After Dino's worked example, the transfer question — is the skill they just shipped a route, a leaf, an orchestrator, or a hand-off? Two beats of silence is fine; Nordic engineers think before speaking. The composition lecture has no separate drill; Phase 2 of *Spot gaps, build the loop* (the work-shape / primitive scan) is the lived entry to composing — point students there first, then at the [workflow-composition-lineages supplementary](./#supplementary-workflow-composition-lineages) for the field survey. Dino's [skill-stacking system](./#supplementary-skill-stacking) is the worked example. Pacing: if energy is high, give the lineage conversation room; if low, keep the composition lecture to the chart and the four mechanisms, point at the supplementary, and move to the closer pair faster.
 
 </section>
+<!--/flag:module:spot-gaps-build-the-loop-->
 
+<!-- maintainer — tab contract: every module tab and its nav link sit inside a matching `flag:module:<slug>` pair, so a cut's handbook carries a tab exactly when the cut runs that module. build-workbook.js resolves this file from the parent contentKey and applies the flags against the cut's own module list, so a variant needs no file of its own. A new tab needs its flag pair in BOTH the nav strip and the section, or the two drift and the strip points at a tab that is not there. The Start here tab's two-day schedule and the Format note are keyed on `module:spot-gaps-build-the-loop` — M6 is the six-module sentinel — with a `no-module:` Sittings line standing in for cuts. The Format note's "M1, M2, M4, and M5" list is deliberately unflagged: it holds for the six-module arc and the Northwind cut, the only two that build this page. -->
 <!-- maintainer — 2026-07-03: theory-spine lecture beats reconciled against the 2026-07-02 module rework. Added the-machine-you-just-met (M1 closer), the-whole-map (M2 opener), the-loop-half-filled (M3 consolidation closer), the-far-half + the-agent-loop (M4 openers), the-map-filled-in (M6 final closer). Flow beats renumbered per module. Anchors follow the built #lectures-<slug> convention; they resolve once the integration build inlines the new lectures. -->
 <!-- maintainer — 2026-07-03 (eyeball-queue #14): reconciled trainer-modules against the same-day 2026-07-03 close rework in the module .md files. (1) M4 open — added the-ironies-of-automation beat between the-far-half and the-agent-loop (newly promoted supplementary→lecture per run-the-first-experiment.md § Start here); ~2–3 min framing opener, matching the lecture's own Time-line cap (NOT the 5–7 the eyeball note guessed — the lecture author explicitly caps at 2–3, "past 3 it has started teaching the fixes"). M4 flow renumbered 2→8. (2) M5 close — added the-gate-is-a-claim-too as final closer after What-packaging-is (newly promoted supplementary→lecture per learn-from-the-test.md), 6–8 min matching its lecture Time line; M5 trainer cue updated to name two closers. (3) M6 close — swapped so the-map-filled-in is penultimate and agents-that-build-agents is dead-last, per the 2026-07-03 re-sequence recorded in spot-gaps-build-the-loop.md; dropped the stale "training's last beat" tag from map-filled-in. M1/M2/M3 beat lists cross-checked against their module files, already current. Anchors follow the built #lectures-<slug> convention (ironies → #lectures-ironies-of-automation, gate → #lectures-the-gate-is-a-claim). -->
 <!-- maintainer — 2026-08-01 (run-sheet extraction): M1/M2/M4/M5 rebuilt into peer-trainer run sheets. Sources as of this date: each module body + its trainer Meta block (getting-going, plan-mode-done-right, run-the-first-experiment, learn-from-the-test) and the exercise maintainer blocks (orient-and-introspect, fix-tests-first, compound-and-close, close-the-ticket, push-back-on-the-plan, extract-the-task-shaping-rule, read-the-ticket-rules, walk-and-send-off, diagnose-and-resend), plus trainer-guide.md schedule/compression paragraphs, training-architecture.md §Variant: Northwind Team Track, and the peer-trainer readiness tier in pre-cohort-todos.md. Known source contradictions are carried as one-parenthetical notes inside the runtime maps (M1 fix-tests-first 40 vs 25; M2 budget over-sum; M4 Debrief-12 vs no-compound close and 55/60 exercise figures; M5 60 vs 65 exercise split, closer pair vs 15-min line, M5 re-send LO same-session vs new-session body). Ironies-of-automation now sits inside M4's send-off section per the current module body, not between the openers. Alignment rule: any edit to a module body's flow or timing re-derives that module's run sheet in the same commit. M3/M6 remain glance-format; rebuild deferred, out of Northwind scope. -->

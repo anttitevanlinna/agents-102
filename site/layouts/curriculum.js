@@ -113,6 +113,13 @@
         //
         // Build student-facing:
         // node scripts/build-workbook.js northwind agentic-engineering-101-northwind --no-trainer-docs
+        //
+        // Drop the flag to also build the trainer handbook. It trims itself to the
+        // module list below — M3 and M6 tabs gone, and the six-module two-day
+        // schedule replaced by the one-module-per-sitting line — so the cut's
+        // trainers read only delivery that happens in their rooms. The M3 security
+        // spoiler that keeps the flag on for other cuts cannot leak here: this cut
+        // drops M3, so the tab carrying it is not built.
         'agentic-engineering-101-northwind': {
             contentKey: 'agentic-engineering-101',
             // No content tarball. Its only hard consumers were the two M3

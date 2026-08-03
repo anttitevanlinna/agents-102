@@ -220,7 +220,7 @@ Three failures you named, three pieces, one each.
 - **Background-agent verifier.** A separate Claude session reads the produced work and judges it. Right when failures are qualitative: does this answer the question, does this match house style.
 - **Deterministic shell hook.** Tests, lint, type-check, compile, a custom invariant. Right when the failure has a true-false answer: did it break the build, did it touch the wrong directory.
 - **Ralph re-feed.** Loop the prompt with a check baked in; the agent re-runs against its own output until the check passes. Right when drift is the dominant failure and re-anchoring catches it.
-- The menu is practitioner-lived. Boris Cherny (who built Claude Code) reaches for all three in his long-running practice; the menu form is the synthesis. You picked one against your dominant failure. The other two sit alongside the three-pattern for next time.
+- The menu is practitioner-lived. Kim's writeup of Boris Cherny (who built Claude Code) has him reaching for all three in his long-running practice; the menu form is Kim's synthesis. You picked one against your dominant failure. The other two sit alongside the three-pattern for next time.
 
 ## Hooks always fire
 
@@ -243,7 +243,7 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 
 ## The 80/20 ratio
 
-- Most of the work that made the re-send land happened before you pressed send. Diagnosing failure modes, mapping validations, building the verifier, assembling reference and plan.md. The session itself was short. The ratio practitioners take from Kieran Klaassen's compound-engineering posture: roughly 80% planning and review, 20% execution.
+- Most of the work that made the re-send land happened before you pressed send. Diagnosing failure modes, mapping validations, building the verifier, assembling reference and plan.md. The session itself was short. The ratio this training takes from Kieran Klaassen's compound-engineering posture: roughly 80% planning and review, 20% execution.
 - The TDD shape carries it. Klaassen (August 2025): *"Claude writes the test. The test fails, the natural first step in test-driven development (TDD)"* ([My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it)). The packaging you just built IS the 80% side. The re-send was the 20%.
 - Agent hours are org cost. The re-send consumed hours of Opus time, and those hours are real money on the org's bill, the same way engineer hours are. Packaging converts that spend into reliable output instead of reliably wrong output: without it you paid for a task that missed the goal, with it you paid for a task that landed.
 
@@ -282,6 +282,7 @@ Claims
 - `rails-at-irreversible-edges` · vision · "Rails belong where damage cannot be undone. Fence the reef, not the open water." ← none-owed
 - `unchecked-run-confident-and-wrong` · vision · "An unchecked session arrives confident, and wrong." ← none-owed
 - `packaging-is-fixes-that-stand-without-you` · vision · "Packaging is choosing which of these fixes stand without you." ← none-owed
+- `pieces-turn-up-on-their-own` · detail · "Each piece turns up on its own across practitioner write-ups." ← huntley-ralph, ronacher-minijinja, klaassen-stop-coding
 - `three-pattern-is-our-combination` · vision · "This training combined them into one kit and gave them names." ← none-owed
 - `huntley-runs-all-three` · detail · "Geoffrey Huntley's Ralph is the one published practice that runs all three at once." ← huntley-ralph, huntley-triad-count, klaassen-stop-coding, ronacher-minijinja
 - `ronacher-two-of-three-named-neither` · detail · "Armin Ronacher's January 2026 MiniJinja port ran two of them and named neither." ← ronacher-minijinja
@@ -293,7 +294,7 @@ Claims
 - `external-verifier-against-plausible-but-wrong` · vision · "**External verifier**, against plausible-but-wrong." ← none-owed
 - `three-failures-three-pieces` · vision · "Three failures you named, three pieces, one each." ← none-owed
 - `verifier-takes-three-shapes` · vision · "**Background-agent verifier** … **Deterministic shell hook** … **Ralph re-feed**" ← none-owed
-- `cherny-reaches-for-all-three` · detail · "Boris Cherny (who built Claude Code) reaches for all three in his long-running practice" ← kim-on-cherny
+- `cherny-reaches-for-all-three` · detail · "Kim's writeup of Boris Cherny (who built Claude Code) has him reaching for all three in his long-running practice; the menu form is Kim's synthesis" ← kim-on-cherny
 - `hook-fires-on-named-events` · detail · "Session start, prompt submit, before each tool call, after each tool call, on stop, plus a few more." ← cc-hooks-docs
 - `agent-has-no-say-whether-hook-runs` · detail · "the agent has no say in whether it runs" ← cc-hooks-docs
 - `hooks-exist-because-llm-forgetful` · vision · "Hooks exist because the LLM is forgetful." ← none-owed

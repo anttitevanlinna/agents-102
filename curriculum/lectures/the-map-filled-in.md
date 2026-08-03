@@ -174,7 +174,7 @@ The map is back, one last time.
 
 - **Generation is fast; reading, judging, and merging are not.** (Absorption) The gap between those two speeds decides real throughput. The M5 re-send ran with the laptop closed; what was left when it came back was all reading.
 - **Review bandwidth is the constraint** composition cannot relax. (Absorption) Chain workflows end to end and every output still lands on the same reading budget. Each eval that stands without you buys a piece of that budget back.
-- **The ratio runs near 80/20.** (Absorption) Roughly 80 percent planning and review, 20 percent execution: the posture the M5 packaging taught by hand. The session is the cheap part; the reading and shaping around it are where the hours live.
+- **The ratio runs near 80/20.** (Absorption) Roughly 80 percent planning and review, 20 percent execution: compound engineering's posture, the one the M5 packaging taught by hand. The session is the cheap part; the reading and shaping around it are where the hours live.
 
 ## Outcome, named
 
@@ -238,7 +238,7 @@ Claims
 - `verifier-judge-gate-every-one-an-eval` · vision · "**Verifier, judge, gate: every one an eval.**" ← none-owed
 - `generation-fast-absorption-slow` · vision · "**Generation is fast; reading, judging, and merging are not.**" ← none-owed
 - `review-bandwidth-is-the-constraint` · vision · "**Review bandwidth is the constraint** composition cannot relax." ← none-owed
-- `ratio-runs-near-80-20` · detail · "Roughly 80 percent planning and review, 20 percent execution" ← every-compound-80-20
+- `ratio-runs-near-80-20` · detail · "Roughly 80 percent planning and review, 20 percent execution: compound engineering's posture" ← every-compound-80-20 — body attributes the ratio to the posture's one named shop, which is what the CAVEAT stamp licenses; not a field rate.
 - `rule-in-context-is-not-rule-in-output` · vision · "**A rule in context is not a rule in the output.**" ← none-owed
 - `test-learn-encode-is-variation-selection-retention` · borrowed · "the sessions generate variants, the eval selects, the memory retains" ← cultural-vocab
 - `a-move-counts-when-it-crosses-the-wall` · vision · "**A move counts when it crosses the wall.**" ← none-owed

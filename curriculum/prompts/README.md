@@ -121,8 +121,10 @@ Two layers of enforcement protect this directory:
 
 1. **Claude Code `PreToolUse` hook** (`.claude/hooks/prompt-edit-gate.sh`).
    Denies any `Edit`/`Write`/`MultiEdit` against `curriculum/prompts/**.md`
-   inside Claude Code unless the human typed `APPROVED: <key>` in the same
-   chat transcript, or the session is running with `SKIP_PROMPT_GATE=1`.
+   inside Claude Code unless the human's message directly after a card naming
+   `<key>` contains the token `prompt-ok` (case-insensitive; other text may
+   accompany it — it is the only accepted signal), or the session is running
+   with `SKIP_PROMPT_GATE=1`.
 
 2. **Tool-agnostic git pre-commit hook** (`.githooks/pre-commit`). Fires on
    every `git commit` regardless of which agent or tool initiated it

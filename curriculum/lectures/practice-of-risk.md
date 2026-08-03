@@ -12,7 +12,7 @@ Agent systems break the story in three places.
 
 The behaviour is non-deterministic. Same prompt, same files, same tools, different session, different answer. A test that passed before doesn't prove the system passes today.
 
-The attack surface is the instruction set. The dangerous move isn't breaking into your server. It's getting your agent to *decide* to do something harmful with access it legitimately has. Well-formed English, arriving through a document the agent reads. Your firewall doesn't see it because your firewall has never had to worry about persuasion.
+The attack surface is the instruction set. The dangerous move isn't breaking into your server. It's getting your agent to *decide* to do something harmful with access it legitimately has. Well-formed English, arriving through a document the agent reads. Your firewall doesn't see it because your firewall has never had to worry about persuasion. The prework gave this its field name: prompt injection.
 
 Capability is emergent. The agent does what its instructions, its context, and the user's ask imply it should do, combined. You can't fully predict the combination. You can only bound it.
 
@@ -36,7 +36,7 @@ Run the loop. You never finish. You iterate. The discipline isn't arriving at ce
 
 **The best mitigation is the one you don't need.**
 
-Here's the move nobody puts in a security training, because it sounds too much like common sense to charge for. The cheapest, most reliable way to reduce risk on an agent is to not open the door in the first place.
+Here's the oldest move in the security book, the one that sounds too much like common sense to charge for. The cheapest, most reliable way to reduce risk on an agent is to not open the door in the first place.
 
 Should the agent have write access to that system? If not, scope down before you scope up. Should the agent read from that mailbox? If not, don't connect it. Should the agent be the one that drafts customer-facing language? If that's where the biggest risk lives, maybe a human drafts and the agent reviews, not the other way around.
 
@@ -66,6 +66,9 @@ That's the work.
 
 Claims
 - `certainty-is-a-fantasy-you-inherited` · vision · "Certainty is a fantasy you inherited." ← none-owed
+- `behaviour-is-non-deterministic` · vision · "Same prompt, same files, same tools, different session, different answer." ← none-owed
+- `attack-surface-is-the-instruction-set` · borrowed · "The attack surface is the instruction set." ← cultural-vocab
+- `capability-is-emergent` · vision · "Capability is emergent. … You can't fully predict the combination. You can only bound it." ← none-owed
 - `the-work-is-the-loop` · borrowed · "**Assess.** … **Mitigate.** … **Reassess residual.** … **Decide.**" ← iso-31000
 - `agent-mitigations-are-shaped-differently` · vision · "Agent mitigations are shaped differently than firewalls." ← none-owed
 - `name-the-residual-and-write-it-down` · vision · "*The residual risk here is X. If Y happens, Z follows.*" ← none-owed
@@ -80,6 +83,7 @@ Frameworks
 - Residual risk · [borrow:risk management] · law:none · ← iso-31000 — the module's central artifact
 - STRIDE · [borrow:security engineering] · law:none · ← cultural-vocab — named as the ancestor only; the category mapping lives in the skill, not the lecture
 - Principle of least privilege · [borrow:security engineering] · law:blast-radius-error-budget · ← cultural-vocab — the don't-open-the-door reframe
+- Prompt injection · [borrow:security engineering] · law:none · ← cultural-vocab — named in the M4 prework (module-4-prework.md); "the attack surface is the instruction set" is its reframe. The Willison/lethal-trifecta backing lives in AE101's supplementary.
 
 Stance `[stance:2026-08-01 level:L2]`
 - holds: the risk loop, which is standardised, taught, and older than the subject it is being applied to. **The lecture's own contribution is the reshaping, not the loop** — that agent mitigations are shaped differently (scope, tools, credentials, review) than perimeter controls, and that "hope it doesn't happen" is not a decision.

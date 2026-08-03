@@ -151,5 +151,5 @@ OODA
 
 **Lecture meta:** *Closer beat is the lead-in to Phase 0 of the Hallucination benchmark exercise. Trainer pivots straight from the "Phase 0 is next" line into the exercise — no separate transition.*
 
-**Quality:** compendium-audited 2026-08-03 (technical@5fc7188 behavior@5fc7188 pedagogy@5fc7188 strategy@5fc7188 slides@5fc7188)
-- judges @5fc7188: writing REVISE (1/0 see instances/agents-101--grounded.writing.json), story REVISE (1/1 see instances/agents-101--grounded.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-03 (writing@3d8309c story@3d8309c technical@5fc7188 behavior@5fc7188 pedagogy@5fc7188 strategy@5fc7188 slides@3d8309c)
+- judges @3d8309c: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

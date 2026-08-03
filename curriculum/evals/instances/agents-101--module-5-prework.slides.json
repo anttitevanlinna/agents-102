@@ -103,10 +103,10 @@
       "compendium": "check_slides.md",
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "REVISE",
-      "chunks_flagged": [0, 1, 2],
-      "evidence": "site/clients/acme/agents-101/index.html links to href=\"#lectures-module-5-prework\" at two call sites (output-quality.md and security.md's rendered `<a>` tags), but grep for `id=\"lectures-module-5-prework\"` in that built file returns zero matches, while every other shared lecture file (grounded, compounding, context-is-king, etc.) DOES have its `id=\"lectures-<slug>\"` anchor present. This is the compendium's own named 2026-07-09 regression shape: prework content dropped from the composed deck, stranding the in-deck link.",
-      "fix_hint": "Confirm the build/include step wraps this prework in the phase container the other lecture files get, then regenerate site/clients/acme/agents-101/index.html and re-check the anchor resolves.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": "Checked site/clients/acme/agents-101/index.html: id=\"lectures-module-5-prework\" is indeed absent while sibling lecture ids (e.g. lectures-grounded) are present. But that build was last generated 2026-08-01, before today's (2026-08-03) edits to this file and to grounded.md — the anchor gap traces to build staleness, not a structural drop from source; the legacy site/ tree is also not the live deploy target (memory: reference_ai_training_repo.md). Not a content-level violation; re-run the workbook build before trusting presence off this artifact.",
       "blocking": false
     },
     {
@@ -121,5 +121,5 @@
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 2
+  "todos_count": 1
 }

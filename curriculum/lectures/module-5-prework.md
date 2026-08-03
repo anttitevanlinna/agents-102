@@ -18,8 +18,6 @@ Schwartz had used ChatGPT to find supporting precedent. It produced cases with s
 
 Opposing counsel couldn't find the cases because they weren't there. Judge P. Kevin Castel issued a sanctions order on **June 22, 2023**: a $5,000 sanction imposed jointly on both attorneys and the firm. The order is blunt about what went wrong - not the existence of ChatGPT, but the absence of verification. It says technological assistance is not inherently improper, but lawyers still have a gatekeeping duty to check filings for accuracy.
 
-The missing check: **one human opening the cited cases on a real legal database before the brief was filed.**
-
 Read:
 - The sanctions opinion itself (readable, and it quotes Schwartz's affidavit directly): [law.justia.com, Mata v. Avianca, Opinion and Order of June 22, 2023](https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/)
 - CNBC's contemporaneous coverage for the shape of it: [CNBC, Judge sanctions lawyers whose AI-written filing contained fake citations](https://www.cnbc.com/2023/06/22/judge-sanctions-lawyers-whose-ai-written-filing-contained-fake-citations.html)
@@ -32,9 +30,9 @@ The report was published in July 2025. In early October, Dr. Christopher Rudge, 
 
 On **3 October 2025**, Deloitte published a revised version. An appendix disclosed, for the first time, that the report had been produced with assistance from **Azure OpenAI's GPT-4o**, hosted inside the department's own Azure tenancy. Three days later, the government announced Deloitte would refund the final contract installment.
 
-The second-order detail is the one that lands hardest: Rudge reviewed the revised version too. Some of the fabricated citations had been replaced, with new fabricated citations. Deloitte's fix didn't include a "now actually open every source and check it says what we claim" step. The same failure mode recurred inside the corrective response.
+The second-order detail is the one that lands hardest: Rudge reviewed the revised version too. Some of the fabricated citations had been replaced, with new fabricated citations. Whatever Deloitte's fix was, it did not include the step that would have caught them. The same failure mode recurred inside the corrective response.
 
-The missing check at Deloitte was not exotic: **a reviewer opening each cited source before the report went to a client.** The fact that the revision repeated the failure tells you the verification step still wasn't built in.
+The fact that the revision repeated the failure tells you the verification step still wasn't built in. What that step would have been is the sentence you bring to class.
 
 Read:
 - The Guardian's account, including Rudge's findings and the refund: [Guardian, Deloitte to pay money back to Albanese government after using AI in A$440,000 report](https://www.theguardian.com/australia-news/2025/oct/06/deloitte-to-pay-money-back-to-albanese-government-after-using-ai-in-440000-report)
@@ -64,6 +62,8 @@ That's it. No reading list. No ten-bullet rundown of every headline agent failur
 <!-- maintainer -->
 
 **Time:** 35-40 minutes. 10 per case, 10-15 for the mechanisms, 5 for the two sentences.
+
+**No answer reveals in body:** the missing check stays unnamed in both case sections by design — naming it is the take-home, and the question at the top of the file arms the read. Both cases converge on *verification before submission*; that answer lives here for the trainer, never in body. Do not restore the bold "The missing check:" reveals.
 
 **Mechanism dosage:** the two mechanism sections stay at arming depth — four fabrication lenses, three grounding-failure lenses, each slide under the 210-word cap. The deeper causal taxonomy lives in the M5 lecture (grounded.md, "Why this happens"). The prework arms the two-case read; the lecture owns the why. Do not re-expand.
 

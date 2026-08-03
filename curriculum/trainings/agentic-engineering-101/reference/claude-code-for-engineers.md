@@ -71,7 +71,7 @@ Two memory systems load at session start. You write one; Claude writes the other
 - Settings: `"autoMemoryEnabled": false` in project settings
 - Env var: `CLAUDE_CODE_DISABLE_AUTO_MEMORY=1`
 
-**Relocate auto memory:** `"autoMemoryDirectory": "~/my-custom-memory-dir"` in user or local settings. Not accepted from project settings (security — prevents a shared project from redirecting your memory writes).
+**Relocate auto memory:** `"autoMemoryDirectory": "~/my-custom-memory-dir"`. Read from any settings scope — user, project, local, policy, or `--settings`. The value must be an absolute path or start with `~/`. Set in a *project's* `.claude/settings.json` or `.claude/settings.local.json`, it takes effect only once you accept the workspace trust dialog for that folder — the same gate that governs hooks. So a shared project can redirect where your memory gets written, but only after you have trusted it.
 
 Docs: [memory.md § Auto memory](https://code.claude.com/docs/en/memory.md#auto-memory).
 

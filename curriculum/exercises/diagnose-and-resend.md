@@ -66,7 +66,7 @@ Ask Claude to build the verifier shape that matches your dominant failure, scope
 {{prompt:diagnose-and-resend-4}}
 
 
-Read what Claude proposes. Push back if the verifier covers the wrong shape (a generic test suite when you needed a judge, or the reverse). The fit between failure shape and verifier shape is the teaching moment. The verifier IS your first eval; the closing lecture names it.
+Read what Claude proposes. Push back if the verifier covers the wrong shape (a generic test suite when you needed a judge, or the reverse). The fit between failure shape and verifier shape is the teaching moment. The verifier IS your first eval; Module 6 gives it its name.
 
 ## Prove the verifier actually fires
 
@@ -104,8 +104,8 @@ The exercise ends here. The module's re-send is next: same task, with reference 
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"; gold-pattern exemplar):** bullet leads and the "The exercise ends here." paragraph lead de-bolded; kept bold only on the Phase 3 verifier-shape menu handles (**Background-agent verifier** / **Deterministic shell-hook** / **Ralph re-feed**); title-page **What you do:**/**What you build:**/**The point:** thread and all widget chrome untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
-**Quality:** compendium-audited 2026-08-02 (writing@1c765f2 story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@1c765f2)
-- judges @1c765f2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (verify-refuted), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-03 (writing@86a7c32 story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@86a7c32)
+- judges @86a7c32: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (verify-refuted), strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Word count:** ~810 words body.

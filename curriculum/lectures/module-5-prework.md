@@ -42,37 +42,16 @@ Read:
 
 ## Why the LLM fabricates
 
-### It completes the shape
-An LLM is trained to continue text in a pattern that looks right. If the pattern is "legal brief with supporting cases" or "consulting report with academic references," the next likely thing is a case name, a citation, a quoted authority, a careful paragraph. The model can produce the form even when the world does not contain the fact. Fluency is cheap. Existence is separate.
-
-### It fills gaps instead of stopping
-When the sources do not contain the missing piece, the model often supplies what would make the answer feel complete. A user asks for precedent, so the answer supplies precedent. A report needs literature support, so the answer supplies literature. The dangerous moment is not only ignorance; it is the system smoothing over ignorance so the document does not show a hole.
-
-### It treats nearby truth as permission
-A real airline, a real court, a real department, a real policy area, a real academic style: all of that gives the output enough scaffolding to sound grounded. The invented part can sit next to true parts and borrow their credibility. That is why partial grounding is treacherous. The sentence before the false citation may be true, and the sentence after it may be true, which makes the false middle harder to feel.
-
-### It obeys pressure for specificity
-Specific names, dates, numbers, and citations make writing useful. They also make fabrication more convincing. If you ask for a concrete answer and do not give the model a way to say "not enough evidence," it may produce concrete detail anyway. Specificity is not proof. A docket number can be made up just as confidently as an adjective.
-
-### It can verify inside the same fiction
-Asking the same model "are you sure?" is not the same as checking the world. The model may continue the same invented pattern with a second layer of reassurance. In Mata v. Avianca, asking ChatGPT whether Varghese was real did not create an external check. It created another fluent answer. Verification has to leave the generation loop and touch the source.
-
-### It inherits organisational shortcuts
-The model did not file the brief or deliver the client report by itself. People wrapped it in a workflow. If the workflow rewards speed, accepts polished prose, and has no step where someone opens the cited source, the fabrication survives. The missing check is organisational, not only technical.
+- **It completes the shape.** An LLM continues text in the pattern that looks right. If the pattern is "legal brief with supporting cases" or "consulting report with academic references," the next likely thing is a case name, a citation, a careful paragraph. The form arrives whether or not the world contains the fact. Fluency is cheap; existence is separate.
+- **It fills gaps instead of stopping.** When the sources don't hold the missing piece, the model supplies what would make the answer feel complete. The invented part sits next to true parts and borrows their credibility, which is why partial grounding is treacherous. Specific names, docket numbers, dates: more convincing, not more true.
+- **It can verify inside the same fiction.** Asking the same model "are you sure?" is not a check on the world; it is another fluent answer. In Mata v. Avianca, asking ChatGPT whether Varghese was real produced exactly that. Verification has to leave the generation loop and touch the source.
+- **It inherits organisational shortcuts.** The model didn't file the brief or deliver the report; a workflow did. If the workflow rewards speed and has no step where someone opens the cited source, the fabrication survives. The missing check is organisational, not only technical.
 
 ## Why grounding fails even when the facts are in context
 
-### The fact is present but not load-bearing
-Putting a source in the context window does not force the model to use it. The model may read a paragraph, absorb its topic, and then answer from the broader pattern the topic evokes. The fact is nearby, but it is not carrying the sentence. This is why a citation can sit beside a claim without supporting it.
-
-### The context is crowded
-Long context is not the same as equal attention. A source can be present but buried under meeting notes, prior drafts, instructions, summaries, and user pressure. The model may anchor on the most recent, most repeated, or most rhetorically obvious material rather than the quiet sentence that actually settles the claim.
-
-### The source says less than the answer wants
-Ground facts often support a narrower statement than the output makes. A file says one customer complained; the answer says customers are unhappy. A policy says one workflow needs approval; the answer says the company forbids the whole category. The model did use the source, but stretched it past what the source can bear.
-
-### The model resolves conflict by smoothing
-When two sources disagree, or when a source partly supports and partly weakens a claim, the model often produces a clean synthesis instead of preserving the tension. That synthesis may sound more useful than the messy evidence, but it hides the thing a human needed to see: this is not settled. Grounded work keeps the conflict visible.
+- **The fact is present but not load-bearing.** Putting a source in the context window does not force the model to use it. Buried under drafts, notes and instructions, the model may answer from the broader pattern the topic evokes; the citation sits beside the claim without supporting it.
+- **The source says less than the answer wants.** A file says one customer complained; the answer says customers are unhappy. The model used the source and stretched it past what it can bear.
+- **Conflict gets smoothed.** When two sources disagree, the model often produces a clean synthesis instead of preserving the tension. The synthesis sounds more useful than the messy evidence and hides the thing a human needed to see: this is not settled. Grounded work keeps the conflict visible.
 
 **What to bring to class.**
 
@@ -85,6 +64,8 @@ That's it. No reading list. No ten-bullet rundown of every headline agent failur
 <!-- maintainer -->
 
 **Time:** 35-40 minutes. 10 per case, 10-15 for the mechanisms, 5 for the two sentences.
+
+**Mechanism dosage:** the two mechanism sections stay at arming depth — four fabrication lenses, three grounding-failure lenses, each slide under the 210-word cap. The deeper causal taxonomy lives in the M5 lecture (grounded.md, "Why this happens"). The prework arms the two-case read; the lecture owns the why. Do not re-expand.
 
 **Two, not ten — editorial reasoning:**
 - The prework's job is to calibrate the eye, not stoke anxiety. Everybody in a Agents 101 room has seen the headline "another AI lawyer fiasco." What they haven't seen is a case where BOTH the LLM output AND the organisational root cause are on the public record.
@@ -109,10 +90,12 @@ That's it. No reading list. No ten-bullet rundown of every headline agent failur
 - Rudge's finding of "up to 20" fabricated references + fabricated judicial quote is from his own published analysis and Guardian coverage — stable.
 
 **URL verification:**
-- Law.Justia URL for the sanctions order (case docket 54) returns HTTP 403 to automated fetchers as of 2026-08-03 — likely a bot-gate; human-browser behaviour unconfirmed. Treat as flagged at the pre-delivery URL re-verify. The CourtListener fallback carries the full extracted text and works.
-- CourtListener alternative if Justia goes down: https://www.courtlistener.com/docket/63107798/mata-v-avianca-inc/
-- Guardian and The Register links on Deloitte case verified in research pass.
-- Re-verify all four URLs before first delivery per capability-check protocol; case-law aggregators occasionally reshuffle URLs.
+- `[checked:2026-08-03 result:BLOCKED due:asap]` https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/ — HTTP 403 to automated fetchers; likely bot-gate, human-browser behaviour unconfirmed. Students on the pre-read will hit whatever Justia serves. fallback: CourtListener carries the full extracted text.
+- `[checked:2026-08-03 result:OK due:cohort]` https://www.courtlistener.com/docket/63107798/54/mata-v-avianca-inc/ — full text of docket 54, used for the 2026-08-03 detector re-run.
+- `[checked:2026-08-03 result:OK due:cohort]` https://www.cnbc.com/2023/06/22/judge-sanctions-lawyers-whose-ai-written-filing-contained-fake-citations.html — content verified; CNBC's own og:title has drifted from the original headline, link still resolves.
+- `[checked:never result:NEEDED due:cohort]` https://www.theguardian.com/australia-news/2025/oct/06/deloitte-to-pay-money-back-to-albanese-government-after-using-ai-in-440000-report — cited in body; open before first delivery.
+- `[checked:never result:NEEDED due:cohort]` https://www.theregister.com/2025/10/06/deloitte_ai_report_australia/ — cited in body; open before first delivery.
+- Case-law aggregators occasionally reshuffle URLs; re-verify at the pre-delivery pass.
 
 **Frameworks riffed on:**
 - **Citation re-verification** — the lecture's Technique 1. Mata v. Avianca is its clearest real-world case; the prework lands the student with the frame before the lecture formalises the technique.

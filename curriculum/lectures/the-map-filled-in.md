@@ -168,7 +168,7 @@ The map is back, one last time.
 
 - **Find is easier than judge.** (Verification) The agent finds; you judge. The split was named at M2 over a plan, and out here it becomes a whole phase: on a long-running session the finding happened without you, so the judging is the cost that is left.
 - **The three-pattern** stands in for you at Verification. (Verification) Reference against goal drift, plan.md against context rot, verifier against plausible-but-wrong. The first two hold the session on course while it moves; the verifier is the piece that does your judging when the result comes back.
-- **Verifier, judge, gate: every one an eval.** (Verification) A deterministic check, an LLM reading the work, the same check placed in CI. One automated thing that says this meets our bar, and it is what the checking loop now runs on.
+- **Verifier, judge, gate: every one an eval.** (Verification) A deterministic check, an LLM reading the work, the same check placed in CI. One automated thing that says this meets the bar your work requires, and it is what the checking loop now runs on.
 
 ## Absorption, named
 

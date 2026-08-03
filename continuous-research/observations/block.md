@@ -66,21 +66,6 @@ Critical claim: **"There is no need for a permanent middle management layer."**
 - **Contrast with Intercom (`intercom.md` Side A) and Ramp (`ramp.md`)** — Intercom/Ramp are *"run the AI transformation playbook on the existing hierarchy and measure the multiplier."* Block is *"skip the multiplier; replace the hierarchy."* Two different bets on what's happening. Intercom/Ramp have shipped results; Block has thesis + early execution. **Worth naming the tension in curriculum and articles — not choosing a side.**
 - **Intent Taktik insight (working memory)** — "leaders freed from the 80% that isn't leadership." Block's player-coach role is the operationalization: the *20% that IS leadership* (craft + people), with the 80% absorbed by the world model.
 
-## For Curriculum (Engineering Management training)
-
-Use **sparingly and as thesis, not as evidence of what works**. Risk: if cited as "this is where engineering management is going," it makes the buyer's role feel disposable. That's the wrong mood for M1–M3 and the wrong framing for M4 (vision).
-
-Best-fit uses:
-
-- **M4 (vision) lecture** — the historical arc (Roman → Prussian → railroad → Taylor → matrix → now) is a concise, intellectually respectable way to frame *why* the current moment is different. Sets up the "AI-first is not static" principle.
-- **M6 (signals + 90-day plan) reflection** — Dorsey's qualifier ("what does your company understand that is genuinely hard to understand, and is that understanding getting deeper every day?") is a strong reflection prompt for the 90-day plan: *"What is your team learning that gets deeper every day?"*
-- **M4 alternative vision statement** — *"We normalize down to three roles: ICs, DRIs, player-coaches. There is no need for a permanent middle management layer."* Offer as a canonical example of a vision statement with teeth — not as prescription.
-
-Avoid:
-
-- **Do not use as M1 diagnostic baseline.** The ADKAR diagnostic assumes people stay in roles that exist. Dorsey's thesis collapses some of those roles. M1 is not the place to open that question.
-- **Do not present as inevitable.** It's one CEO's thesis, early execution, explicit about likely failure modes. The training should hold the tension, not resolve it.
-
 ## Caveats
 
 - **Dorsey's credibility is high, but motivated.** Block is actively betting on this thesis; the memo is partly an internal signal to Block employees and partly a public flag planted for the narrative.

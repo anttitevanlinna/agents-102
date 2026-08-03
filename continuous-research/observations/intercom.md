@@ -1,7 +1,11 @@
 # Intercom — Two-Front AI-Native Transformation (CS + R&D)
 
 **Type:** CS function restructured (Fin) + R&D "2x factory" (Claude Code internal) | **Size:** ~1,305 total company, ~500 R&D | **Evidence:** Deep case (R&D side, practitioner-direct); Moderate case (CS side)
-**Key sources:** Darragh Curran (CTO), *"2× – nine months later: We did it. You can too."* — [ideas.fin.ai/p/2x-nine-months-later](https://ideas.fin.ai/p/2x-nine-months-later) [practitioner direct, 2026-04-16]; Intercom product announcements; agents-102 cycle-51 research
+**Key sources:** Darragh Curran (CTO), *"2× – nine months later: We did it. You can too."* — [ideas.fin.ai/p/2x-nine-months-later](https://ideas.fin.ai/p/2x-nine-months-later) [practitioner direct, vendor venue, 2026-04-16]; Brian Scanlan, *"Claude Code: Good skills, bad skills"* — [ideas.fin.ai/p/claude-code-good-skills-bad-skills](https://ideas.fin.ai/p/claude-code-good-skills-bad-skills) [practitioner direct, vendor venue, 2026-07-15]; Intercom product announcements; cycle-51 research
+
+> **Naming, as of 2026-08-02.** The company renamed to **Fin** on 2026-05-12 ([intercom.com/blog/today-intercom-becomes-fin](https://www.intercom.com/blog/today-intercom-becomes-fin) — [vendor announcement]); *Intercom* survives as the label for the customer-service product, not the corporate entity, and Salesforce **signed a definitive agreement to acquire Fin on 2026-06-15** ([salesforce.com press release](https://www.salesforce.com/news/press-releases/2026/06/15/salesforce-signs-definitive-agreement-to-acquire-fin/) — `[vendor press release]`, Level 0, acceptable for a bare "this happened" fact and nothing more). **Signed, not closed.** Sources published before the rename say "Intercom" and are correct for their date. This file keeps its name for continuity — rename it only alongside the other files that link here.
+
+> **Two bylines, one org — not corroboration.** Scanlan restates Curran's figures three months later (*"within its first three months, our Claude Code plugins repo had become the most actively contributed-to project at Fin with 153 contributors (31% of R&D) and 267 skills"*). **Restated, not re-measured** — the distinction matters and an earlier draft of this note blurred it by saying "re-verifies". A second byline confirms the April number was reported accurately; it does **not** establish that 153 / 31% / 267 still holds in July, and Scanlan describes the same first-three-months window Curran did. It is also **not** a second independent practitioner for any convergence tally: same company, same repo. **No post-April measurement of this repo has been found.**
 
 ---
 
@@ -70,17 +74,6 @@ Curran doesn't hide the gap. Top 5% = 6x median. "Ironic that the sentiment amon
 - **Orchestrator-plus-eval-loop, at org scale** — "team-2x" + auto-approval + skills marketplace is the shape a single practitioner runs with an orchestrator and an eval loop, enacted across a whole engineering organisation.
 - **Caveat — Intercom is an AI vendor** (Fin). They have motivation and tools to make this work. But the operating-model granularity (team-2x, plugin repo, tiering dimensions, per-PR cost tracking) is too specific to be marketing.
 
-## Change-Management Read
-
-Intercom is a strong anchor case for any engineering-management-focused curriculum — the case provides evidence at every stage of a Kotter-style change model:
-
-- **Diagnose:** Intercom's 5-dimension per-person tiering = exactly the ADKAR-style diagnostic artifact.
-- **First move:** "Be at peace with potentially imperfect measures" = the operating stance. PR throughput = the "one imperfect metric that creates pressure" example.
-- **Coalition:** team-2x + plugin marketplace = the guiding coalition as a product.
-- **Vision:** 2x memo itself + "All technical work is becoming agent-first" principle.
-- **Conditions + ritual:** auto-approval system as the verification ritual; PR mandate escalation (80%→95%) as conditions made enforceable.
-- **Signals + plan:** the 9 metrics + day-91-style transparency is the signal dashboard. Exponential spend + declining $/PR is the compound signal.
-
 ---
 
 # Side B — Non-Engineering AI-Native Restructuring (Customer Service)
@@ -135,4 +128,4 @@ Klarna tried full replacement instead of restructuring:
 
 ---
 
-*Last updated: March 2026*
+*Last updated: 2026-08-02.* Previously stamped "March 2026" while the file cited an April memo, a May rename, a June acquisition and a July post — a stamp that contradicted its own contents. **The stamp records the last editorial pass, not the age of the evidence; most figures below are still anchored to April 2026 and are dated in place.**

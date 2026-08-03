@@ -12,7 +12,7 @@ The machine you just met has three behaviors that look like quirks and are not: 
 ## A check resets the chain
 
 - Each step is mostly right, and each step builds on the one before. One mostly-right answer reads fine on its own. A session is not one answer; it is a chain of them, each standing on the last.
-- Enough mostly-right steps stacked without a check, and the end of the chain is mostly wrong. If each step were right nine times in ten, the odds that a seven-step chain is still right by the end would fall below a coin flip. The numbers are an illustration, not a measurement; the stacking is what holds. The field calls it an **error cascade**.
+- Enough mostly-right steps stacked without a check, and the end of the chain is mostly wrong. If each step were right nine times in ten, the odds that a seven-step chain is still right by the end would fall below a coin flip. The numbers are an illustration, not a measurement; the stacking is what holds. The multi-agent literature's term is **error cascade**, coined for errors crossing chains of agents; a chain of steps stacks the same way.
 - A check from outside the session resets the chain. A failing test does not care how confident the answer sounded. Everything after the check builds on verified ground, and no chain grows long enough for the stacking to take over.
 - That is why the failing test came before the fix. The check existed before the code it was checking. Every edit after it had a floor to stand on.
 
@@ -58,7 +58,7 @@ Format → `curriculum/backing-format.md`.
 - `sycophancy-from-preference-tuning` · detail · "Agreeable answers won the second round … The field calls the result **sycophancy**" ← sharma-sycophancy-2023, anthropic-personal-guidance-2026
 - `mirroring-is-optimization` · vision · "It mirrors because mirroring was rewarded; the machine amplifies whatever posture you bring" ← none-owed
 - `self-report-is-hypothesis` · vision · "The report is a hypothesis to check, not ground truth" ← none-owed
-- `error-cascade-term` · detail · "The field calls it an **error cascade**" ← owasp-asi08-cascading-failures
+- `error-cascade-term` · detail · "The multi-agent literature's term is **error cascade**, coined for errors crossing chains of agents; a chain of steps stacks the same way" ← owasp-asi08-cascading-failures — the attribution names the term's home scope (cross-agent: OWASP ASI08, arXiv 2603.04474) and states the single-session application as our analogy, which is what both sources warrant.
 - `chain-stacking-illustration` · vision · "If each step were right nine times in ten … The numbers are an illustration, not a measurement" ← none-owed
 - `check-resets-chain` · vision · "A check from outside the session resets the chain" ← none-owed
 - `essays-are-the-default` · vision · "Complete, not prioritized, is the machine's default" ← none-owed

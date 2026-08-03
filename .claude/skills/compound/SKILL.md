@@ -68,15 +68,13 @@ Canonical home: {pointer to the compendium/skill/curriculum doc where this rule 
 
 Validate against `memory/compounded/_schema.yaml` — required fields present, enum values correct.
 
-### Step 4 — Index in MEMORY.md
+### Step 4 — Do NOT index in MEMORY.md; confirm the amendment instead
 
-Append a one-liner under a "## Compounded learnings" section:
+**Do not add a per-entry line — this step was retired 2026-08-02 and the instruction to append one is what kept coming back.** `MEMORY.md` used to carry a gist list of recent compounded entries and deliberately dropped it: every line there is always-loaded weight paid each session for a lookup that fires occasionally, and the index grew faster than anything read it. Its § *Compounded learnings* now says so in its own words and gives the scan commands instead (`ls memory/compounded/`, `| grep <surface>`, `grep -l <keyword>`, `/session-historian`).
 
-```markdown
-- [YYYY-MM-DD {surface}: {short title}](compounded/YYYY-MM-DD-{surface}-{slug}.md) — {one-line hook}
-```
+**Recall does not run through `MEMORY.md` anyway — it runs through the compendium.** An entry compounds because `check_{surface}.md` fires at the generating surface (Step 6), not because a link exists in an index. If the amendment landed, the entry is reachable at the moment it matters; if it did not, an index line would not have saved it.
 
-If the section doesn't exist yet, create it. Keep MEMORY.md lines under ~150 chars.
+So Step 4 is a check, not a write: **confirm the entry's `proposed_compendium_amendment` is non-empty and that Step 6 will apply it.** Empty amendment on a `correction` or `pattern` entry → the entry is a diary page. Either write the amendment or reclassify it as `decision`/`taste`, where a durable record without a firing rule is legitimate.
 
 ### Step 5 — Strike the source from `self-review-protocol.md`
 

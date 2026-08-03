@@ -46,7 +46,7 @@ Ask Claude to write the failing test, fix the root cause, and show the diff. Dro
 
 **What happened:** A real PR shipped. A failing test landed in the codebase before the fix did. The diff got read, at least one line got pushback, and the root-cause interrogation ran before the second TDD pass.
 
-The PR is shipped. Hand off to the compound step.
+The PR is shipped. Hand off to the ticket close.
 
 *For those finishing early: chatter about making sure the LLM doesn't fake tests or write tests that just pass. How do you catch that efficiently?*
 
@@ -61,7 +61,7 @@ The PR is shipped. Hand off to the compound step.
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (tests-first fix) + Analyze (read the diff against what you'd write).
-- **Time:** 25 min inside M1's 2h slot. Second of three exercises on the same bug / same repo. Earlier 35–40 min band assumed a meatier bug than prework's trivial-bug spec (under 50 lines, wrong error message / off-by-one / wrong total) actually invites — recalibrated 2026-05-15 after AE101 dry-run flagged the budget as padded.
+- **Time:** 25 min inside M1's 2h slot. Second of four exercises on the same bug / same repo. Earlier 35–40 min band assumed a meatier bug than prework's trivial-bug spec (under 50 lines, wrong error message / off-by-one / wrong total) actually invites — recalibrated 2026-05-15 after AE101 dry-run flagged the budget as padded.
 - **Prompt progression note:** the commit / push / PR move is intentionally prose-led, not a fenced prompt block. At this point the Builder is already in the repo with the fixed diff in context; the student can ask in their own words. Do not add a paste-ready commit prompt unless the exercise design changes.
 
 <!-- backing -->
@@ -111,7 +111,7 @@ OODA
 
 **Arc:**
 - Picks up from: `orient-and-introspect` — fix happens in the window the student just mapped.
-- Hands off to: `compound-and-close` — the retro extends the rule, the connector closes the ticket.
+- Hands off to: `close-the-ticket` — the shipped PR is what the close-out note links to, and the ticket read there feeds the compound sweep that follows it.
 
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
 1. **Writes a failing test that proves the bug exists before touching the fix** on a real backlog bug. Falsifiable: commit history shows a test commit before or with the fix commit, with the test demonstrably reflecting the bug.

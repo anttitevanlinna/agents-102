@@ -525,7 +525,7 @@
     "context": "",
     "runtime": "any",
     "origin": "agentic-engineering-101/run-the-first-experiment",
-    "text": "Create a fresh feature branch named m4/<short-task-slug>. Before committing, append a protected block to `./task.md` headed `Run coordinates (do not rewrite or remove)` so a later session can recover this run without searching for it: the branch name exactly as `git branch --show-current` reports it (read it back from git — don't retype it from memory), and the transcript path you just located. Then stage everything, commit with message \"M4 starting point\", and tell me the short SHA.",
+    "text": "Create a fresh feature branch named m4/<short-task-slug>. Before committing, append a protected block to `./task.md` headed `Run coordinates (do not rewrite or remove)` so a later session can recover this experiment without searching for it: the branch name exactly as `git branch --show-current` reports it (read it back from git — don't retype it from memory), and the transcript path you just located. Then stage everything, commit with message \"M4 starting point\", and tell me the short SHA.",
     "requires": [
       {
         "id": "scoped-task",
@@ -678,7 +678,7 @@
     "text": "/clear",
     "requires": [],
     "produces": [],
-    "note": "in-session shortcut path before the M5 re-send — drops the exercise scrollback (verifier scaffolding, hook wiring, plan.md drafts) so the long-run doesn't pay Opus cache-read on the heavy prefix. ae101-m5-rerun-packaged is self-bootstrapping after this; packaging files at the worktree root + auto-loaded rules carry forward. Alternative path: open a new Claude Code session in the worktree (see Session widget in learn-from-the-test.md). New session is the default; this prompt is the in-session shortcut.\n"
+    "note": "in-session shortcut path before the M5 re-send — drops the exercise scrollback (verifier scaffolding, hook wiring, plan.md drafts) so the re-send session doesn't pay Opus cache-read on the heavy prefix. ae101-m5-rerun-packaged is self-bootstrapping after this; packaging files at the worktree root + auto-loaded rules carry forward. Alternative path: open a new Claude Code session in the worktree (see Session widget in learn-from-the-test.md). New session is the default; this prompt is the in-session shortcut.\n"
   },
   "ae101-m5-rerun-packaged": {
     "key": "ae101-m5-rerun-packaged",
@@ -686,7 +686,7 @@
     "context": "final move of the module",
     "runtime": "any",
     "origin": "agentic-engineering-101/learn-from-the-test",
-    "text": "Before you start, write a protected block at the top of `plan.md` headed `Run coordinates (do not rewrite or remove)`, holding this run's `m5/` branch exactly as `git branch --show-current` reports it (read it back from git — don't retype it from memory) and this session's transcript path (under `~/.claude/projects/`, keyed by the `CLAUDE_CODE_SESSION_ID` environment variable). You'll mutate the rest of plan.md as you run; leave that block alone. Confirm the `.jsonl` exists before writing it; if you can't determine the path, stop and tell me rather than guessing.\n\nThen ask for or write anything else you want for the run.\n\nRun the task at `./task.md` using the packaging in this worktree: reference, plan.md, and verifier all at the worktree root (find them by listing the directory).\n\nRules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.\n\nReport back as three lists, no narrative, no hedging:\n  shipped — each artefact + path\n  did NOT ship — each item, no \"partial\" / \"mostly\" / \"in progress\"\n  verifier — last output line of each run, pasted verbatim\nIf any list is empty, say \"none.\"",
+    "text": "Before you start, write a protected block at the top of `plan.md` headed `Run coordinates (do not rewrite or remove)`, holding this session's `m5/` branch exactly as `git branch --show-current` reports it (read it back from git — don't retype it from memory) and this session's transcript path (under `~/.claude/projects/`, keyed by the `CLAUDE_CODE_SESSION_ID` environment variable). You'll mutate the rest of plan.md as you run; leave that block alone. Confirm the `.jsonl` exists before writing it; if you can't determine the path, stop and tell me rather than guessing.\n\nThen ask for or write anything else you want for the session.\n\nRun the task at `./task.md` using the packaging in this worktree: reference, plan.md, and verifier all at the worktree root (find them by listing the directory).\n\nRules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.\n\nReport back as three lists, no narrative, no hedging:\n  shipped — each artefact + path\n  did NOT ship — each item, no \"partial\" / \"mostly\" / \"in progress\"\n  verifier — last output line of each run, pasted verbatim\nIf any list is empty, say \"none.\"",
     "requires": [
       {
         "id": "m5-worktree",
@@ -1161,7 +1161,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/compound-and-close",
-    "text": "Review this session end-to-end: the orientation and introspection, the /context read, the TDD bug fix, the diff push-back. Write ./CLAUDE.local.md at the root of this repo (create it if it doesn't exist; add it to .gitignore if it's not already; if the file already exists, integrate, don't append). This is my personal gitignored rules file, not the team ./CLAUDE.md. Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran.\n\nIn your summary to me, name 2–3 practitioners whose published work runs a similar loop, one short clause each. Keep these names in your reply, not in the file. Worth surfacing if they fit: Cherny, Klaassen, Ronacher, Pocock, Karpathy, Willison. If you can name fewer than two without guessing, name only what you're sure of.\n\nIf any rule is team-worthy (one every engineer on this codebase should know) flag it in the summary below, don't PR it. I'll decide whether to open a separate PR against team ./CLAUDE.md.\n\nTell me in 3–5 lines: what you wrote and why, grounded in specific session moments. I shouldn't need to open the file to know.",
+    "text": "Review this session end-to-end: the orientation and introspection, the /context read, the TDD bug fix, the diff push-back, the field rules read off the ticket. Write ./CLAUDE.local.md at the root of this repo (create it if it doesn't exist; add it to .gitignore if it's not already; if the file already exists, integrate, don't append). This is my personal gitignored rules file, not the team ./CLAUDE.md. Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran.\n\nIn your summary to me, name 2–3 practitioners whose published work runs a similar loop, one short clause each. Keep these names in your reply, not in the file. Worth surfacing if they fit: Cherny, Klaassen, Ronacher, Pocock, Karpathy, Willison. If you can name fewer than two without guessing, name only what you're sure of.\n\nIf any rule is team-worthy (one every engineer on this codebase should know) flag it in the summary below, don't PR it. I'll decide whether to open a separate PR against team ./CLAUDE.md.\n\nTell me in 3–5 lines: what you wrote and why, grounded in specific session moments. I shouldn't need to open the file to know.",
     "requires": [
       {
         "id": "read-self-report",
@@ -1210,7 +1210,7 @@
       },
       {
         "id": "ticket-tracker",
-        "source": "external (Linear / Jira / GitHub Issues via MCP connector)"
+        "source": "external (Linear / Jira / GitHub Issues; student pastes the ticket, or the agent reads it where it can already reach the tracker)"
       }
     ],
     "produces": [
@@ -1218,6 +1218,7 @@
         "id": "ticket-summary",
         "location": "scrollback (ticket fields + comments read back)",
         "consumed-by": [
+          "prompt:extract-the-task-shaping-rule-4",
           "prompt:compound-and-close-3"
         ]
       }
@@ -1243,7 +1244,7 @@
     "produces": [
       {
         "id": "ticket-close-out",
-        "location": "external (ticket updated via MCP connector)",
+        "location": "external (ticket updated by the agent where it can reach the tracker, otherwise pasted by the student)",
         "consumed-by": [],
         "note": "terminal artifact — the closed ticket lives in the team's tracker, not the training corpus"
       }
@@ -1615,19 +1616,21 @@
     "dest": "Claude Code",
     "context": "",
     "runtime": "any",
-    "origin": "exercises/read-the-ticket-rules",
-    "text": "Reverse-engineer how this team uses its task manager from one ticket. Infer basic rules from the fields and wording: status, labels, priority, component, estimate, owner, epic, acceptance criteria, comments, links, and custom fields.\n\nSeparate strong signals, guesses that need more tickets, and things you cannot tell.\n\nThen propose five basic rules a backlog-refinement agent could use on future tickets.\n\nTicket:",
+    "origin": "exercises/close-the-ticket",
+    "text": "Reverse-engineer how this team uses its task manager from one ticket. Infer basic rules from the fields and wording: status, labels, priority, component, estimate, owner, epic, acceptance criteria, comments, links, and custom fields.\n\nSeparate strong signals, guesses that need more tickets, and things you cannot tell.\n\nThen propose five basic rules a backlog-refinement agent could use on future tickets.",
     "requires": [
       {
-        "id": "ticket-data",
-        "source": "scrollback (student pastes one ticket)"
+        "id": "ticket-summary",
+        "source": "prompt:compound-and-close-2"
       }
     ],
     "produces": [
       {
         "id": "backlog-refinement-rules",
         "location": "scrollback (5 proposed rules)",
-        "consumed-by": []
+        "consumed-by": [
+          "prompt:compound-and-close-1"
+        ]
       }
     ]
   },
@@ -2267,7 +2270,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "I have two runs of the same long-running task on disk, and both recorded their coordinates. The un-packaged run's are in `task.md` (its `m4/` branch and session transcript path); the packaged re-run's are in `plan.md`, in the protected `Run coordinates` block at the top (its `m5/` branch and session transcript path). The un-packaged run had no reference artefact, no plan.md, no verifier. The packaged re-run had all three in play: a reference, a plan.md, and a verifier wired to run on a cadence.\n\nRead both. Start with both session transcripts at the paths recorded in `task.md` and `plan.md`. Then check repo state: commits on the `m4/` branch after its starting point, commits on the `m5/` branch after the worktree fork, what each run touched. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.\n\nWalk the diff across four dimensions:\n\n- What packaging caught: specific moments in the packaged run where the reference, the plan.md, or the verifier prevented a drift the un-packaged run actually experienced. Quote the un-packaged moment and the packaged moment both.\n- What packaging missed: places the packaged run drifted even with packaging in play. Where the reference was too thin, where the plan.md carried the wrong state, where the verifier's quality bar sat beside the real failure.\n- What packaging introduced: new failure shapes that only exist because of the packaging itself — over-fitted verifier, plan.md staleness, reference-as-cage.\n- Where the fix belongs: for each named gap — memory (observation, hypothesis, rule), a sharper verifier, a rule in CLAUDE.local.md, or a new skill. Don't prescribe the skill's shape yet.\n\nFor every claim, quote a specific moment from the artefacts. Don't generalise.\n\nEnd with: which gap matters most? Rank by damage-to-a-future-run, not by how interesting it reads.",
+    "text": "I have two sessions of the same long-running task on disk, and both recorded their coordinates. The un-packaged session's are in `task.md` (its `m4/` branch and session transcript path); the packaged re-send's are in `plan.md`, in the protected `Run coordinates` block at the top (its `m5/` branch and session transcript path). The un-packaged session had no reference artefact, no plan.md, no verifier. The packaged re-send had all three in play: a reference, a plan.md, and a verifier wired to run on a cadence.\n\nRead both. Start with both session transcripts at the paths recorded in `task.md` and `plan.md`. Then check repo state: commits on the `m4/` branch after its starting point, commits on the `m5/` branch after the worktree fork, what each session touched. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.\n\nWalk the diff across four dimensions:\n\n- What packaging caught: specific moments in the packaged session where the reference, the plan.md, or the verifier prevented a drift the un-packaged session actually experienced. Quote the un-packaged moment and the packaged moment both.\n- What packaging missed: places the packaged session drifted even with packaging in play. Where the reference was too thin, where the plan.md carried the wrong state, where the verifier's quality bar sat beside the real failure.\n- What packaging introduced: new failure shapes that only exist because of the packaging itself — over-fitted verifier, plan.md staleness, reference-as-cage.\n- Where the fix belongs: for each named gap — memory (observation, hypothesis, rule), a sharper verifier, a rule in CLAUDE.local.md, or a new skill. Don't prescribe the skill's shape yet.\n\nFor every claim, quote a specific moment from the artefacts. Don't generalise.\n\nEnd with: which gap matters most? Rank by damage-to-a-future-session, not by how interesting it reads.",
     "requires": [
       {
         "id": "un-packaged-run-artefact",
@@ -2326,7 +2329,7 @@
     "context": "only if a rule earned cutting",
     "runtime": "any",
     "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "Read ./CLAUDE.local.md and this session's scrollback: the gap list I just ranked, the un-packaged-vs-packaged contrast moments, the dominant gap.\n\nFind the one rule the two-run diagnosis showed is wrong, stale, or never fires when it should. Cut it from ./CLAUDE.local.md in place.\n\nShow me the line you cut, in two sentences why diagnosis killed it. If every rule still holds under diagnosis, say so and stop.",
+    "text": "Read ./CLAUDE.local.md and this session's scrollback: the gap list I just ranked, the un-packaged-vs-packaged contrast moments, the dominant gap.\n\nFind the one rule the two-session diagnosis showed is wrong, stale, or never fires when it should. Cut it from ./CLAUDE.local.md in place.\n\nShow me the line you cut, in two sentences why diagnosis killed it. If every rule still holds under diagnosis, say so and stop.",
     "requires": [
       {
         "id": "two-run-gap-map",
@@ -2352,7 +2355,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "Expand my menu of checks before I read my own map against it.\n\nList 5–10 atomic verification primitives a software engineer uses to check agentic work (test-writing, browser-testing, PR-building, lint-gates, ...) — the moves themselves, not the agent context. For each, name in one line what it checks and where it fires (pre-run / mid-run / post-run / continuous).\n\nThen evaluate fit for the dominant gap I named in Phase 1. Which 2–3 primitives would most likely have caught it? Recommend the primitives, and say which of the recurring shapes we drew each one pairs with.\n\nBe concrete. Generic \"tests\" doesn't make the cut; \"unit test against the changed function\" does.",
+    "text": "Expand my menu of checks before I read my own map against it.\n\nList 5–10 atomic verification primitives a software engineer uses to check agentic work (test-writing, browser-testing, PR-building, lint-gates, ...) — the moves themselves, not the agent context. For each, name in one line what it checks and where it fires (pre-session / mid-session / post-session / continuous).\n\nThen evaluate fit for the dominant gap I named in Phase 1. Which 2–3 primitives would most likely have caught it? Recommend the primitives, and say which of the recurring shapes we drew each one pairs with.\n\nBe concrete. Generic \"tests\" doesn't make the cut; \"unit test against the changed function\" does.",
     "requires": [
       {
         "id": "two-run-gap-map",
@@ -2625,7 +2628,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/walk-and-send-off",
-    "text": "Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including any test-strategy or workflow skills already authored), and the connectors I've wired.\n\nRun this audit in a fresh context: spawn a sub-task via the Agent tool so you read my setup without this conversation colouring it. Keep this session's scrollback intact — we'll need it for later phases. Return a structured report.\n\nReturn a ranked top-5: thin spots, missing context, wrong assumptions, or unwired tools that will hurt the agent if it tries this task un-packaged. Rank by how much damage each will do during a send-off run.\n\nFor each item, say: (a) what's thin, (b) what a properly-prepared agent would need instead, (c) the cheapest way to close the gap today: add an observation, sharpen a rule, wire a connector, or name it as a business-rules gap.",
+    "text": "Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including any test-strategy or workflow skills already authored), and the connectors I've wired.\n\nRun this audit in a fresh context: spawn a sub-task via the Agent tool so you read my setup without this conversation colouring it. Keep this session's scrollback intact — we'll need it for later phases. Return a structured report.\n\nReturn a ranked top-5: thin spots, missing context, wrong assumptions, or unwired tools that will hurt the agent if it tries this task un-packaged. Rank by how much damage each will do during the send-off.\n\nFor each item, say: (a) what's thin, (b) what a properly-prepared agent would need instead, (c) the cheapest way to close the gap today: add an observation, sharpen a rule, wire a connector, or name it as a business-rules gap.",
     "requires": [
       {
         "id": "scoped-task",

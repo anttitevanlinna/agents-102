@@ -68,9 +68,6 @@ Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble i
 - You don't have to execute a plan to know it's good. Making it good IS the work.
 - Plan mode makes the read possible; it isn't the read
 
-## Homework
-Read the conventions your tracker already encodes: [Read the rules hiding in a ticket](exercises/read-the-ticket-rules.md). Paste one real ticket, let Claude infer how your team uses the fields, and fold a few of those rules into the task-shaping file you saved here.
-
 ## Next
 
 <!--flag:module:earn-the-trust-->At M3, the same move goes into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch a second read surfaces, before a teammate needs to ask.
@@ -94,7 +91,9 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 <!-- maintainer -->
 
 
-**Ticketing → homework (this pass):** the optional ticket-inference step split from `extract-the-task-shaping-rule` into the `read-the-ticket-rules` homework exercise; this module gained a `## Homework` link to it. Per-class Quality SHAs below predate the addition — re-audit before ship.
+**The bolded task-sizing callout in `## Prework` is mandated, not stylistic.** `check_pedagogy.md` §34 requires a **bolded** anti-pattern line naming the ceiling wherever task selection drives the outcome, and prints almost this exact wording as its own example. A slides judge reads it as a §9 emphasis-budget violation (two bolded sentences, not a short handle) because §9 cannot see §34. Accepted-by-design: do not flatten it, and do not re-raise it as a fresh finding.
+
+**M2 issues no homework.** The ticket-conventions read and the *refinement* term both live in M1's `close-the-ticket`; do not reintroduce either here or add a `## Homework` section pointing at one. Body touched since the SHAs below — re-audit before ship.
 
 **Line 56's recovery sentence stays in body — maintainer call 2026-08-02.** *"If it did overwrite, the old rules are still in this session's scrollback; ask Claude to restore them."* This is `check_student_facing.md` §5's own boundary case, not a violation of it: the failure is plausible (the prompt is fair to misread as a replace), the rescue is non-obvious (that the old rules survive in scrollback is not something a student would guess), and it is one tight line of state-plus-one-move. It is also **time-critical** — the scrollback dies with the session, so a student who finds the overwrite after closing has lost the rules for good. Body is the only surface that reaches them while the rescue still works. A writing judge has flagged this once and the orchestrator then proposed routing it below the maintainer fence, which §5 explicitly calls deletion. Do not cut it, and do not "move it to the trainer" — the fence is stripped from every rendered surface.
 

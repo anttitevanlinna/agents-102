@@ -8,12 +8,13 @@
 
 **The point:** the compound step closes Kieran Klaassen's loop: ideate → brainstorm → plan → work → review → polish → **compound** → repeat. It doesn't interview you with three retro questions. The session is the evidence; Claude reviews it and writes. You push back where it misread.
 
-The PR shipped. Now compound the session. Claude reviews what happened and writes your rules from how you actually worked.
+The PR shipped and the ticket is closed. Now compound the session. Claude reviews what happened and writes your rules from how you actually worked.
 
 ## Write your rules file from the session
 
 - The session is the evidence. Claude reviews the whole scrollback in one shot and drafts your rules from how you actually worked. No three-question retro; the compound step reads what happened and writes.
 - You are not drafting from a blank page. The agent reads the session for you. Your job is to push back where it misreads.
+- The tracker conventions count as evidence too. The field rules you read off your own ticket are in this scrollback, and this is where they land on disk.
 
 > **Long session, long read.** Claude reviews the whole scrollback in one shot. If the review stalls or runs past a couple of minutes, interrupt with `Esc`, narrow to the orient and introspect phases first, and say `continue`.
 
@@ -38,7 +39,7 @@ Ask Claude to sweep the session for anything earned since the first compound and
 
 **What happened:** Your rules file was born from how you actually worked, not from a template. Claude reviewed the whole session, you pushed back where it misread, and the rules that held landed in `./CLAUDE.local.md`.
 
-The PR is open and the rules file is written from session evidence. The last move of the loop you ran today, closing the bug's ticket outside the repo, is the homework.
+The PR is open, the ticket is closed, and the rules file is written from session evidence.
 
 You can close this session now. `./CLAUDE.local.md` stays behind; whether it earns its keep shows up the next time a session reads it.
 
@@ -46,14 +47,14 @@ You can close this session now. `./CLAUDE.local.md` stays behind; whether it ear
 
 **View summary:** The agent reads the finished session as evidence and drafts `./CLAUDE.local.md` from how the work actually went. You push back where it misreads. The result is a personal rules file that improves the next session on this repository.
 
-**Re-audit owed:** the connector + close-out sections were split into the `close-the-ticket.md` homework exercise, leaving this file as the compound-the-rules-file beat only. Body materially trimmed, so the per-class Quality SHAs below predate the trim. Re-audit before ship. **Emphasis budget (`check_slides.md §9`):** widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) stays bold; body bullet leads de-bolded; no named-term handles remain in this file.
+**Scope is the rules file only.** The ticket beat is its own exercise (`close-the-ticket`) and runs immediately before this one, so its tracker read is already in scrollback when the sweep fires — do not add a connector or close-out step back into this file. Body touched since the SHAs below; re-audit before ship. **Emphasis budget (`check_slides.md §9`):** widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) stays bold; body bullet leads de-bolded; no named-term handles remain in this file.
 
 **Quality:** compendium-audited 2026-08-02 (writing@ffc64f9 story@40ea060 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@40ea060)
 - judges @ffc64f9: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read the retro summary against session moments) + Apply (integrate the rules file from evidence).
-- **Time:** 15 min inside M1's slot. Third of three in-class exercises on the same bug / same repo. The ticket close-out is now the M1 homework (`close-the-ticket.md`).
+- **Time:** 15 min inside M1's slot. Fourth of four in-class exercises on the same bug / same repo, and the module's last beat before the closing lectures.
 
 **Themes planted** (content-strategy § "Recurring themes"):
 - **Theme 2 (compounding builds the system)** — the retro extends `./CLAUDE.local.md` from session evidence. Klaassen attribution earned here (Claude cites the practitioner if one fits).
@@ -97,8 +98,8 @@ OODA
 - Push-back moves at retro (trainer delivers).
 
 **Arc:**
-- Picks up from: `fix-tests-first` — the rule seeded at that exercise is the file the retro rewrites.
-- Hands off to: `close-the-ticket` (M1 homework — closes the bug's ticket outside the repo) and M1 Bridge → M2 (plan mode at depth on multi-file work).
+- Picks up from: `close-the-ticket` — the shipped PR, the closed ticket and the tracker-convention rules kept there are all session evidence this sweep reads.
+- Hands off to: M1 Bridge → M2 (plan mode at depth on multi-file work), with `./CLAUDE.local.md` already in context at M2's cold start.
 
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
 1. **Compounds one rule from session evidence into `./CLAUDE.local.md`** after a non-trivial session, integrating rather than appending. Falsifiable: file mtime + content shows a session-derived rule added since the prior version, with the rule quoting a specific session moment that earned it.

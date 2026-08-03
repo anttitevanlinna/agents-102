@@ -10,7 +10,7 @@ requires:
     source: prompt:fix-tests-first-3
 produces:
   - id: ticket-close-out
-    location: external (ticket updated via MCP connector)
+    location: external (ticket updated by the agent where it can reach the tracker, otherwise pasted by the student)
     consumed-by: []
     note: terminal artifact — the closed ticket lives in the team's tracker, not the training corpus
 ---

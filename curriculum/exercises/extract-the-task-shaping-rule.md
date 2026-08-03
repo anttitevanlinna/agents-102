@@ -43,7 +43,6 @@ Decide the location with Claude.
 
 ## Phase 3: Name the automation shapes, don't build them
 
-- **Refinement** is the backlog-grooming loop. Sizing, splitting, and sharpening tickets before they're worked.
 - The prompt asks for shapes, not code. "This rules file" means the `.md` file you saved in Phase 2. The first automation attempt points an agent at that file and one input stream: a Slack channel, an issue queue, or a backlog export.
 
 {{prompt:extract-the-task-shaping-rule-3}}
@@ -65,11 +64,11 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 
 **View summary:** You ask the agent to recover the task-shaping rules hidden in the planning session, rewrite anything generic, and save the useful rules where they will fire. The artifact turns one good planning experience into reusable guidance for similar work.
 
-**Ticket phase split out:** the optional "read one real ticket" phase (`extract-the-task-shaping-rule-4`) moved to the `read-the-ticket-rules.md` homework exercise; this file now ends at the automation-shapes read. Body trimmed since the SHAs below, so re-audit before ship.
+**Scope ends at the automation-shapes read.** The ticket-conventions prompt (`extract-the-task-shaping-rule-4`) belongs to M1's `close-the-ticket`, which is also where *refinement* is earned as a term — do not reintroduce either here. Body differs from the SHAs below; re-audit before ship.
 
-**Phase 3 automation-shapes prompt (`extract-the-task-shaping-rule-3`) kept, not cut.** It was flagged `low-yield` (the lecture `where-the-rule-could-live` walks the same three shapes). Kept by decision: this is a no-build, name-the-shapes horizon beat, so it adds none of the concurrent-heavy-execution load the cull targeted — cutting it reclaims no load, it only drops a cheap payoff. It gives the slot a breather after the rules-extraction work and primes the lecture reveal (generate-then-reveal). Not a cut candidate.
+**Phase 3 automation-shapes prompt (`extract-the-task-shaping-rule-3`) kept, not cut.** The lecture `where-the-rule-could-live` walks the same three shapes, which makes this prompt look like a cut candidate. It is not: this is a no-build, name-the-shapes horizon beat, so it adds none of the concurrent-heavy-execution load the cull targeted — cutting it reclaims no load, it only drops a cheap payoff. It gives the slot a breather after the rules-extraction work and primes the lecture reveal (generate-then-reveal). Not a cut candidate.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** One handle kept bold: **Refinement** at its term-earning moment (bold narrowed from the full lead sentence to the word); all other bullet leads de-bolded. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
+**Emphasis budget (`check_slides.md §9`):** no bolded handles in the body; all bullet leads plain. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
 **Quality:** compendium-audited 2026-08-02 (writing@1c765f2 story@1c765f2 technical@1c765f2 behavior@1c765f2 strategy@1c765f2 slides@1c765f2)
 - judges @e409261: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy REVISE (1/3-see-instances/ae101--exercise--extract-the-task-shaping-rule.pedagogy.json), strategy PASS, slides PASS
@@ -112,7 +111,7 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 
 **Arc:**
 - Picks up from: `push-back-on-the-plan` Phase 5 — the design pattern Claude named is the raw material for Phase 1 here.
-- Hands off to: `lectures/where-the-rule-could-live.md` — closes the module on the leverage horizon without forcing a build. The optional ticket-inference beat is now the `read-the-ticket-rules` homework (M2).
+- Hands off to: `lectures/where-the-rule-could-live.md` — closes the module on the leverage horizon without forcing a build.
 
 <!-- backing -->
 

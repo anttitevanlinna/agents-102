@@ -94,9 +94,9 @@ Don't split M4 across the days: its flow is one sequential beat and the send-off
 
 ### M1 — Getting going + context
 
-**Slot.** 2-day cohort: Day 1, 08:30–10:30 (2h slot; the module's own budget is ~1h45, and the slack goes to the orient-and-introspect ramp). Four-sitting track: sitting 1, 1h45. Thinking effort `high` (prework default).
+**Slot.** 2-day cohort: Day 1, 08:30–10:30 (2h slot; the module runs ~1h48 and the remaining ~12 min is your buffer, not padding). Four-sitting track: sitting 1 — **M1 does not quite fit 1h45; it runs ~3 min over.** Take the overrun or cut per the if-behind list below. M1 is the only core module outside the 1h45 band, by design. Thinking effort `high` (prework default).
 
-**Big idea.** The first compound loop closes on a trivial bug from the student's own backlog: orient, fix tests-first without plan mode, retro into a personal `./CLAUDE.local.md` born from the session. The fourth move, closing the bug's ticket via one connector, runs as homework. The loop every module after this one rides on.
+**Big idea.** The first compound loop closes on a trivial bug from the student's own backlog: orient, fix tests-first without plan mode, close the bug's ticket in the register their own tracker just taught the agent, then retro into a personal `./CLAUDE.local.md` born from the session. All four moves happen in the room. The loop every module after this one rides on.
 
 **Flow.**
 
@@ -105,38 +105,41 @@ Don't split M4 across the days: its flow is one sequential beat and the send-off
 3. Lecture — The wizard move (two-window dinner demo; "context is what you tell it")
 4. Exercise — [Orient and introspect](./#exercises-orient-and-introspect)
 5. Exercise — [Fix tests-first](./#exercises-fix-tests-first)
-6. Exercise — [Compound and close](./#exercises-compound-and-close) (rules file only; no connector in class)
-7. Lecture — [The machine you just met](./#lectures-the-machine-you-just-met) (recognition closer, ~5 min; names the three behaviors the exercises surfaced)
-8. Lecture — [How this training was built](./#lectures-how-this-training-was-built) (arc closer; names compound engineering)
-9. Homework hand-off — [Close the ticket](./#exercises-close-the-ticket) (~15 min take-home; one connector, one close-out note)
+6. Exercise — [Close the ticket](./#exercises-close-the-ticket) (one real ticket; conventions read, then close-out in that register)
+7. Exercise — [Compound and close](./#exercises-compound-and-close) (rules file, the tracker read included as evidence)
+8. Lecture — [The machine you just met](./#lectures-the-machine-you-just-met) (recognition closer, ~5 min; names the three behaviors the exercises surfaced)
+9. Lecture — [How this training was built](./#lectures-how-this-training-was-built) (arc closer; names compound engineering)
 
 **Learning goals.** Student can:
 
-- Run an orient → fix → compound → close loop end-to-end on a trivial bug in their own repo.
+- Run an orient → fix → close → compound loop end-to-end on a trivial bug in their own repo.
 - Introspect the agent's read of the repo and dig until they find what it's misrepresenting.
 - Fix the bug tests-first, root-cause-driven, no plan mode, ship the PR.
-- Compound one rule from the session into `./CLAUDE.local.md`; then close the bug's ticket via one connector as homework, the first move outside the repo.
+- Close the bug's ticket from what their own tracker's field conventions show, the first move outside the repo.
+- Compound one rule from the session into `./CLAUDE.local.md`.
 
 **Exercise goals.**
 
 - *Orient and introspect* — Claude reads the repo deliberately; student interrogates the self-report against `/context`. Output: a map of what loaded, what got skipped, and how much window is left.
 - *Fix tests-first* — failing test lands before the fix; at least one diff-line push-back; root-cause interrogation between first and second TDD pass; a real PR shipped.
-- *Compound and close* — `./CLAUDE.local.md` written from session evidence (not a template), a push-back pass where the summary misreads, and a second sweep before close.
-- *Close the ticket* (homework) — one connector (or `gh`, or manual paste) wires a close-out note into the bug's tracker.
+- *Close the ticket* — one real ticket read twice: the agent reverse-engineers the team's field conventions off it, then writes the close-out in that register. Five proposed refinement rules, at least one rejected. The note lands via `gh`, an inherited connector, or a paste.
+- *Compound and close* — `./CLAUDE.local.md` written from session evidence (not a template, and the tracker read counts), a push-back pass where the summary misreads, and a second sweep before close.
 
-**Trainer cues.** The arc closer (How this training was built) is Antti's first-hand story — read it as a document, in narrator voice; you are not claiming the experience, and the opening line says so. The Connections trick-share calibrates the room; a quiet first beat is a Nordic norm, not no-signal. Bug pick is the single variable that breaks M1: too small (Claude crunches in 30s, no read worth dragging through introspection) or too large (no close inside the slot). The diff-line push-back IS the pedagogy of Fix tests-first; if students skip it the loop's third beat reads as theatre. The connector wire and ticket close run as homework now; in class, close on the rules file and hand the homework off explicitly.
+**Trainer cues.** The arc closer (How this training was built) is Antti's first-hand story — read it as a document, in narrator voice; you are not claiming the experience, and the opening line says so. The Connections trick-share calibrates the room; a quiet first beat is a Nordic norm, not no-signal. Bug pick is the single variable that breaks M1: too small (Claude crunches in 30s, no read worth dragging through introspection) or too large (no close inside the slot). The diff-line push-back IS the pedagogy of Fix tests-first; if students skip it the loop's third beat reads as theatre. Close the ticket is the module's only beat outside the repo, and its payoff is the register: the conventions read is what stops the close-out sounding like a language model. If a student skips straight to the close-out prompt, the beat still produces a note but loses the point. Nothing is handed off as homework; the loop finishes in the room.
 
-**Runtime map.** Budgets from the module's own trainer meta (Connections 10 / Lecture 10 / Exercise 75 / Bridge 5).
+**Runtime map.** Budgets from the module's own trainer meta (Connections 10 / Lectures 10 / Exercise 78 / Closers 5 / Bridge 5 = 108). Every exercise figure is that exercise file's own Time line — there is no padding left to spend.
 
-| Beat | Budget | Sitting (1h45) | Cohort clock (2h slot) |
+| Beat | Budget | Sitting (elapsed) | Cohort clock (2h slot) |
 |---|---|---|---|
 | Connections: trick-share | 10 | 0:00 | 08:30 |
 | Lectures: Painting the picture + The wizard move | 10 | 0:10 | 08:40 |
-| Ex 1: Orient and introspect | 18 | 0:20 | 08:50 (the 2h slot's extra ~15 min pads this ramp) |
-| Ex 2: Fix tests-first | 40 (the exercise file's own Time line says 25; the module budget carries the room's slower follow-along pace) | 0:38 | 09:25 |
-| Ex 3: Compound and close | ~18 (module budget; the exercise file's own Time line says 15) | 1:18 | 10:05 |
-| Closers: The machine you just met (~5) + How this training was built | share the remaining ~9 with the Bridge; the module budget doesn't line-item them | 1:36 | 10:21 |
-| Bridge + homework hand-off (Close the ticket) | 5 | 1:40 | 10:25 |
+| Ex 1: Orient and introspect | 18 | 0:20 | 08:50 |
+| Ex 2: Fix tests-first | 25 | 0:38 | 09:08 |
+| Ex 3: Close the ticket | 20 | 1:03 | 09:33 |
+| Ex 4: Compound and close | 15 | 1:23 | 09:53 |
+| Closers: The machine you just met (~5) + How this training was built | 5 | 1:38 | 10:08 |
+| Bridge | 5 | 1:43 | 10:13 |
+| Buffer | 12 | ends 1:48 | ends 10:18, slot to 10:30 |
 
 No separate module-level Debrief; the compound exercise is the retro.
 
@@ -145,6 +148,8 @@ No separate module-level Debrief; the compound exercise is the retro.
 - Student pastes the bug and Claude jumps straight to a fix → *"Back up. What's the failing test that would prove this bug exists?"*
 - Diff approved in under 30 seconds → *"Find me one line you'd have written differently. Not wrong, just different."*
 - Repo summary read, introspection prompt skipped → *"Before we move on: what did Claude choose not to read, and does that match what you'd have expected?"*
+- All five tracker-convention rules accepted without a rejection → *"Which of the five did the agent guess at? Make it separate what it read from what it inferred."*
+- Close-out shipped on first draft → *"Read it against the comments already on that ticket. Does it sound like the same team wrote it?"*
 - Rules file accepted without reading → *"Read it aloud. If someone on your team read this in six months, would they run the same loop?"*
 - Compound summary name-drops session moments without quoting → *"Quote the specific session moment that made you add rule X. If you can't, take it out."*
 
@@ -155,17 +160,20 @@ No separate module-level Debrief; the compound exercise is the retro.
 - **Student's bug has drifted from the prework choice** → run a fresh bug-surfacing conversation on the spot; the criteria are unchanged (trivial, real, from their own backlog).
 - **Fix runs over 35 min** → the bug wasn't trivial. Let it complete, trim the compound exercise, and note this student benefits more than average from Module 2's plan-mode depth.
 - **Fix finishes under 15 min** → the bug was too small. Offer a second bug, or use the saved time to revisit the introspection move.
-- **Homework: connector install turns into yak-shaving** → one connector firing on one ticket is the proof; manual paste of the Claude-written close-out is always available; tenant-admin approval is worth asking for, not worth waiting on.
-- **Homework: connector added mid-session doesn't appear** → check and authenticate with `/mcp`; if it still isn't there, exit and resume with `claude --resume <session-id>`.
+- **No connector and no `gh`** → the agent writes the close-out and hands it over; the student pastes it. The exercise completes on that path, so don't stop the room to install anything.
+- **A student adds a connector live and it doesn't appear** → check and authenticate with `/mcp`; if it still isn't there, exit and resume with `claude --resume <session-id>`. Don't let this spread past the one student.
+- **The bug has no ticket** → the agent offers to create one. If the tracker is unreachable for writes, have the student write a markdown ticket into the repo and link the PR; the sponsor gets a signal.
+- **The ticket has no comments** → nothing to read a register off. The field conventions still land, and the close-out takes its register from the description's own wording.
 - **Repo change mid-training** → supported. The student replays M1 → current module on the new repo in an evening; fast-path the replay (the pedagogy already landed, only the artifacts regenerate).
 
 **If behind, cut in this order.**
 
 1. The two optional Fix tests-first prompts (deeper-layer interrogation and second TDD pass); the exercise marks them optional.
-2. Run Orient and introspect at its 15-minute floor instead of 18.
-3. Compress the Connections trick-share and the lecture framing; run the prompts, move polish to homework.
+2. Close the ticket's second-ticket suggestion and the push-back-on-the-five paragraph; run its three prompts straight through, ~15 instead of 20.
+3. Run Orient and introspect at its 15-minute floor instead of 18.
+4. Compress the Connections trick-share and the lecture framing; run the prompts and let the closers carry the framing.
 
-Never cut: the failing test before the fix and the diff-line push-back. Those two are the module.
+Never cut: the failing test before the fix, the diff-line push-back, and the conventions read before the close-out. The first two are the module; the third is what the close-out's register depends on, and without it Ex3 is a note-generator.
 
 **Demo repo starting state.**
 
@@ -196,7 +204,6 @@ Never cut: the failing test before the fix and the diff-line push-back. Those tw
 5. Exercise — [Extract the task-shaping rule](./#exercises-extract-the-task-shaping-rule) (12 min)
 6. Lecture — [Where the rule could live](./#lectures-where-the-rule-could-live) (names Slack triage / issue webhook / scheduled read)
 7. Save the rule if it earned itself — two short prompts in the module body; opportunistic integrate into `./CLAUDE.local.md`, only if a branch changed how the student reads plans
-8. Homework hand-off — [Read the rules hiding in a ticket](./#exercises-read-the-ticket-rules) (~10 min take-home)
 
 **Learning goals.** Student can:
 
@@ -540,6 +547,6 @@ Never compress the two closing lectures. What packaging is → The gate is a cla
 <!-- maintainer — tab contract: every module tab and its nav link sit inside a matching `flag:module:<slug>` pair, so a cut's handbook carries a tab exactly when the cut runs that module. build-workbook.js resolves this file from the parent contentKey and applies the flags against the cut's own module list, so a variant needs no file of its own. A new tab needs its flag pair in BOTH the nav strip and the section, or the two drift and the strip points at a tab that is not there. The Start here tab's two-day schedule and the Format note are keyed on `module:spot-gaps-build-the-loop` — M6 is the six-module sentinel — with a `no-module:` Sittings line standing in for cuts. The Format note's "M1, M2, M4, and M5" list is deliberately unflagged: it holds for the six-module arc and the Northwind cut, the only two that build this page. -->
 <!-- maintainer — 2026-07-03: theory-spine lecture beats reconciled against the 2026-07-02 module rework. Added the-machine-you-just-met (M1 closer), the-whole-map (M2 opener), the-loop-half-filled (M3 consolidation closer), the-far-half + the-agent-loop (M4 openers), the-map-filled-in (M6 final closer). Flow beats renumbered per module. Anchors follow the built #lectures-<slug> convention; they resolve once the integration build inlines the new lectures. -->
 <!-- maintainer — 2026-07-03 (eyeball-queue #14): reconciled trainer-modules against the same-day 2026-07-03 close rework in the module .md files. (1) M4 open — added the-ironies-of-automation beat between the-far-half and the-agent-loop (newly promoted supplementary→lecture per run-the-first-experiment.md § Start here); ~2–3 min framing opener, matching the lecture's own Time-line cap (NOT the 5–7 the eyeball note guessed — the lecture author explicitly caps at 2–3, "past 3 it has started teaching the fixes"). M4 flow renumbered 2→8. (2) M5 close — added the-gate-is-a-claim-too as final closer after What-packaging-is (newly promoted supplementary→lecture per learn-from-the-test.md), 6–8 min matching its lecture Time line; M5 trainer cue updated to name two closers. (3) M6 close — swapped so the-map-filled-in is penultimate and agents-that-build-agents is dead-last, per the 2026-07-03 re-sequence recorded in spot-gaps-build-the-loop.md; dropped the stale "training's last beat" tag from map-filled-in. M1/M2/M3 beat lists cross-checked against their module files, already current. Anchors follow the built #lectures-<slug> convention (ironies → #lectures-ironies-of-automation, gate → #lectures-the-gate-is-a-claim). -->
-<!-- maintainer — 2026-08-01 (run-sheet extraction): M1/M2/M4/M5 rebuilt into peer-trainer run sheets. Sources as of this date: each module body + its trainer Meta block (getting-going, plan-mode-done-right, run-the-first-experiment, learn-from-the-test) and the exercise maintainer blocks (orient-and-introspect, fix-tests-first, compound-and-close, close-the-ticket, push-back-on-the-plan, extract-the-task-shaping-rule, read-the-ticket-rules, walk-and-send-off, diagnose-and-resend), plus trainer-guide.md schedule/compression paragraphs, training-architecture.md §Variant: Northwind Team Track, and the peer-trainer readiness tier in pre-cohort-todos.md. Known source contradictions are carried as one-parenthetical notes inside the runtime maps (M1 fix-tests-first 40 vs 25; M2 budget over-sum; M4 Debrief-12 vs no-compound close and 55/60 exercise figures; M5 60 vs 65 exercise split, closer pair vs 15-min line, M5 re-send LO same-session vs new-session body). Ironies-of-automation now sits inside M4's send-off section per the current module body, not between the openers. Alignment rule: any edit to a module body's flow or timing re-derives that module's run sheet in the same commit. M3/M6 remain glance-format; rebuild deferred, out of Northwind scope. -->
+<!-- maintainer — 2026-08-01 (run-sheet extraction): M1/M2/M4/M5 rebuilt into peer-trainer run sheets. Sources as of this date: each module body + its trainer Meta block (getting-going, plan-mode-done-right, run-the-first-experiment, learn-from-the-test) and the exercise maintainer blocks (orient-and-introspect, fix-tests-first, compound-and-close, close-the-ticket, push-back-on-the-plan, extract-the-task-shaping-rule, walk-and-send-off, diagnose-and-resend), plus trainer-guide.md schedule/compression paragraphs, training-architecture.md §Variant: Northwind Team Track, and the peer-trainer readiness tier in pre-cohort-todos.md. Known source contradictions are carried as one-parenthetical notes inside the runtime maps (M1 fix-tests-first 40 vs 25; M2 budget over-sum; M4 Debrief-12 vs no-compound close and 55/60 exercise figures; M5 60 vs 65 exercise split, closer pair vs 15-min line, M5 re-send LO same-session vs new-session body). Ironies-of-automation now sits inside M4's send-off section per the current module body, not between the openers. Alignment rule: any edit to a module body's flow or timing re-derives that module's run sheet in the same commit. M3/M6 remain glance-format; rebuild deferred, out of Northwind scope. -->
 <!-- maintainer — 2026-08-01 (guide merge): trainer-guide.md deleted; this file is THE trainer doc (maintainer call: one doc per audience, DRY against student material, KISS for time-poor trainers). Its survivors landed as the Start here tab (operating contract, prep tiers, 2-day tables, twelve craft moves, room paragraph, never-list, feedback line), the M3 stunt block (M3 tab), and the M6 density guidance (M6 cues). Killed as duplication: the Delivery Architecture summary (training-architecture.md is the read-once home; observations/memory-allergy live in the M4 tab), per-module compression/cushion/re-entry paragraphs (in their tabs), the lead-in/open-hooks/back-reference/skill-name prompt rules (the projected student page shows these), the Quality-tag prep bullet (repo-internal), most Live Triage prose (compressed into The room). Relocated: the alternative 2-day reorder → training-architecture.md §Delivery-shape variants. Build: build-workbook.js skips the guide page when the .md is absent; trainerGuideHref retargeted to trainer-modules.html; default tab is start-glance. -->
 

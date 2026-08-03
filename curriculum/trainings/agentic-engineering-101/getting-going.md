@@ -3,7 +3,7 @@
 > Run M1 on `high` thinking effort (the training default).
 
 ## Big Idea
-The first compound loop closes on a trivial bug from your own backlog. Orient, fix tests-first without plan mode, retro into a personal `CLAUDE.local.md` born from the session. The fourth move, closing the bug's ticket outside the repo, runs as homework. The loop every module after this one rides on.
+The first compound loop closes on a trivial bug from your own backlog. Orient, fix tests-first without plan mode, close the bug's ticket in the tracker your team reads, then retro into a personal `./CLAUDE.local.md` born from the session. The loop every module after this one rides on.
 
 ## Prework
 
@@ -11,10 +11,11 @@ Complete the prework at the top of this workbook. You'll open the first session 
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Run** an orient → fix → compound → close loop end-to-end on a trivial bug in your own repo
+- **Run** an orient → fix → close → compound loop end-to-end on a trivial bug in your own repo
 - **Introspect** the agent's read of your repo and dig until you find what it's misrepresenting
 - **Fix** the bug tests-first, root-cause-driven, no plan mode, and ship the PR
-- **Compound** one rule from the session into `./CLAUDE.local.md`. Then close the bug's ticket via one connector as homework. The first move outside the repo
+- **Close** the bug's ticket from what your team's own tracker conventions show. The first move outside the repo
+- **Compound** one rule from the session into `./CLAUDE.local.md`
 
 ## Start here
 
@@ -30,6 +31,8 @@ Everyone names a trick first; the training picks up from there.
 
 [Fix tests-first](exercises/fix-tests-first.md)
 
+[Close the ticket](exercises/close-the-ticket.md)
+
 [Compound and close](exercises/compound-and-close.md)
 
 [The machine you just met](lectures/the-machine-you-just-met.md)
@@ -37,15 +40,13 @@ Everyone names a trick first; the training picks up from there.
 [How this training was built](lectures/how-this-training-was-built.md)
 
 ## Key Concepts
-- The loop is orient → fix → compound → close
+- The loop is orient → fix → close → compound
 - `/context` shows what landed in the window. What didn't land is real, and you choose what fills the next round. (`/context` is oldskool; ccstatusline, or ask Claude to set up the built-in status line.) Context is what you put in it.
 - The agent's self-report is a hypothesis, not ground truth. Dig until you find what misrepresents. Claims aren't evidence.
 - A failing test is the only proof the bug exists. Without it, the fix is a guess that happens to compile
 - A `./CLAUDE.local.md` built from session evidence reads different from one drafted blank: concrete, specific, yours. Personal layer first; team-worthy rules earn their own PR. Rules grow from evidence, not blank pages.
-- Closing the ticket via connector is the first move past the repo. The loop ends outside the code, and that close is your homework
-
-## Homework
-The loop's fourth move, done on your own: [Close the ticket](exercises/close-the-ticket.md). Wire one connector into your tracker and let the agent close the bug's ticket with a real close-out note, outside the repo where your team reads it.
+- The loop ends outside the code. The close-out lands in the tracker your team reads, not only in the repo
+- Your tracker encodes conventions nobody wrote down. One ticket is enough to start reading them back
 
 ## Next
 Module 2 is where plan mode earns its keep: multi-file work, a second pass that pressure-tests the plan, and the catches that come with approving more scope than you'd cold-authorize. `./CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `./CLAUDE.md` if this repo has one; both concatenate into context). Close this session once the rules file lands; Module 2 opens fresh in the same repo.
@@ -62,15 +63,13 @@ Optional. All three sit in the gap before it. Do them and its moves land as thin
 
 <!-- maintainer -->
 
-**2026-07-30 (pre-read wiring):** added the Horthy factory essay to `## Pre-reads before Module 2` ("Both" → "All three"). Body touched — per-class Quality SHAs below predate; re-audit before ship.
-
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 
 - `[checked:2026-07-30 result:OK due:2027-01-30]` https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md — [practitioner direct, vendor venue] (Dex Horthy, HumanLayer; undated repo doc, content + thesis verified 2026-07-30). Claim anchors: no benchmark measures codebase-quality maintenance; tests-in-seconds vs architecture-cost-in-months; fix = human review + upfront planning. fallback: paraphrase as "practitioners running agent fleets report review, not generation, as the quality bottleneck" without single attribution.
 - `[checked:2026-08-03 result:OK due:none]` `continuous-context:status-line` — [delegated stamp] The line 41 aside, both halves: ccstatusline as a third-party install, and `/statusline` for Claude Code's own status line. The dated checks are owned by `exercises/orient-and-introspect.md`, which teaches the beat and carries both URLs; `due:none` because a delegation does not expire and the delegate's own stamps are what `source-freshness.sh` walks. The Key Concepts recap names no URL of its own. fallback: cut the parenthetical — `/context` alone carries the point.
 - `[checked:2026-05-25 result:CAVEAT due:none]` https://www.youtube.com/watch?v=6eBSHbLKuN0 — [delegated stamp] Cherny, *Mastering Claude Code in 30 minutes*. The dated check is owned by `exercises/open-the-side-quest.md`; `due:none` because a delegation does not expire and the delegate's own stamp is what `source-freshness.sh` walks. The May 2025 date sits outside the 6-month window **by maintainer decision** — recorded in the Meta block below as the freshness-rule exception, pedagogy match unbeaten by successors. fallback: the pre-read is optional; drop it and Module 1 stands.
 
-**Ticketing → homework (this pass):** the connector + ticket close-out moved from Ex3 (`compound-and-close`) to the `close-the-ticket` homework exercise. Body reframed: Big Idea, the Compound LO, the closing Key Concept, a new `## Homework` section, runtime rebalanced. Per-class Quality SHAs below predate the reframe — re-audit before ship.
+**M1 runs four in-class exercises and issues no homework.** The loop's order is orient → fix → close → compound, and the close sits third on purpose: the tracker conventions the agent surfaces at `close-the-ticket` are session evidence the compound sweep then integrates, so the field rules reach `./CLAUDE.local.md` without a separate fold step. Do not re-order compound ahead of the close. Connector install is out of scope for the room — see the exercise's own maintainer block. Body reframed across Big Idea, LOs, Key Concepts and section set, so per-class Quality SHAs below predate it. Re-audit before ship.
 
 **Quality:** compendium-audited 2026-08-02 (writing@1c765f2 story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@1c765f2)
 - judges @1c765f2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
@@ -79,30 +78,32 @@ Optional. All three sit in the gap before it. Do them and its moves land as thin
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze
-- **Session runtime:** ~1h45 (Connections 10 / Lecture 10 / Exercise 75 / Bridge 5). Trainer demos slowly, room copy-pastes concurrently. Exercise breakdown: orient-and-introspect 18 / fix-tests-first 40 / compound-and-close ~18 (compound retro + second sweep). The connector wire + ticket close-out is now the `close-the-ticket` homework (~15 min take-home), which pulls M1 back from its old 2h into the M2–M6 1h45 band; the orient+introspect ramp is what still fills the slot.
+- **Session runtime:** ~1h48 in the 2h slot (Connections 10 / Lectures 10 / Exercise 78 / Closers 5 / Bridge 5), leaving ~12 min of buffer. Trainer demos slowly, room copy-pastes concurrently. Exercise breakdown: orient-and-introspect 18 / fix-tests-first 25 / close-the-ticket 20 / compound-and-close 15. Every number is that exercise file's own Time line. If this sum and those lines ever disagree, the files win and this line is the one to recompute. M1 is the training's only module outside the M2–M6 1h45 band, and the four-exercise arc is what fills it.
 - **Prep timing:** prework 30 min; optional Cherny video 30 min; optional multi-session reference 10 min; optional factory essay 15 min.
-- **Mood target:** joyful creation — *"it works, on my repo."* Watch for: mood drift toward technical warm-up (the bug feels arbitrary, the loop feels mechanical, "this is just a TDD fix I do anyway"). Diagnostic: student narrates Ex2 as a generic engineering move with no surprise. Fix: trainer surfaces the agentic specificity — *"the loop you just ran was orient → fix → compound on YOUR repo, with a rules file born from how YOU just worked, and the close-outside-the-repo move waiting as homework. That's not a bug fix; that's the instrument starting to play your music."*
-- **Opening-bid install mechanic:** the wizard-move lecture's live demo (the dinner-question context trick, in claude.ai chat windows — deliberately not code) installs the mood → Connections harvests tricks each student brought → Ex1 (orient-and-introspect) each student runs the orient + introspect move on their own repo → Ex2 (fix-tests-first) TDD bug fix, ship the PR → Ex3 (compound-and-close) compound `./CLAUDE.local.md` from session evidence. The connector wire + ticket close-out is the `close-the-ticket` homework. No separate module-level Debrief.
+- **Mood target:** joyful creation — *"it works, on my repo."* Watch for: mood drift toward technical warm-up (the bug feels arbitrary, the loop feels mechanical, "this is just a TDD fix I do anyway"). Diagnostic: student narrates Ex2 as a generic engineering move with no surprise. Fix: trainer surfaces the agentic specificity — *"the loop you just ran was orient → fix → close → compound on YOUR repo, with a close-out written in your team's own register and a rules file born from how YOU just worked. That's not a bug fix; that's the instrument starting to play your music."*
+- **Opening-bid install mechanic:** the wizard-move lecture's live demo (the dinner-question context trick, in claude.ai chat windows — deliberately not code) installs the mood → Connections harvests tricks each student brought → Ex1 (orient-and-introspect) each student runs the orient + introspect move on their own repo → Ex2 (fix-tests-first) TDD bug fix, ship the PR → Ex3 (close-the-ticket) read the team's tracker conventions off one real ticket, close the bug's ticket in that register → Ex4 (compound-and-close) compound `./CLAUDE.local.md` from session evidence, the tracker read included. No separate module-level Debrief.
 - **Delivery architecture** (content folder, working-dir model, compounding-artifact split, no training-dir state): canonical in `training-architecture.md` §Working directory model / §Material distribution / §Rule files. Not restated here. The four-layer rule-file hierarchy is in `reference/claude-code-for-engineers.md § 1`.
-- **Claude Code specifics** (MCP install per tracker, tenant-admin fallbacks): `curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md`. Updated as Claude Code's install surface changes; exercise body points at it and stays stable.
+- **Claude Code specifics** (MCP install per tracker, tenant-admin fallbacks): `curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md`. No in-class beat installs a connector; the page is the student's own path when they want one, and the exercise body carries a single navigational pointer at it.
 - **Freshness-rule exception — Cherny *Mastering Claude Code in 30 minutes* (May 2025).** Kept outside the 6-month window by decision; pedagogy match unbeaten by successors.
 
-**Push-back moves:**
+**Push-back moves** (trainer delivers):
 - **Ex1 introspection skip** — student reads Claude's repo summary and moves to the bug fix without running the second prompt. Trainer push: *"before we move on — what did Claude choose not to read, and does that match what you'd have expected?"*
 - **Ex1 `/context` skipped** — slash command read as prose, not as a command. Trainer push: *"type /context in the chat — look at the number."*
 - **Ex1 drifted bug** — student has drifted from prework choice. Trainer runs fresh bug-surfacing conversation. Criteria unchanged.
 - **Ex2 tests-skipped** — student pastes bug and Claude jumps to a fix. Trainer push: *"back up — what's the failing test that would prove this bug exists?"* (If no test infrastructure on this path, log "no verifier here" as a note that lands in M4.)
 - **Ex2 diff rubber-stamp** — student says "looks fine" under 30 seconds. Trainer push: *"find me one line you'd have written differently — not wrong, just different."*
-- **Ex3 rule rubber-stamp** — student accepts Claude's `./CLAUDE.local.md` rule without reading. Trainer push: *"read it aloud — if someone on your team read this in six months, would they run the same loop?"*
-- **Ex3 team vs. personal ambiguity** — Claude writes a rule that's team-worthy (*"always validate webhook signatures before dispatch — our payment flow got bitten by this"*) but lands it in `./CLAUDE.local.md` without flagging. Trainer push: *"this rule is the whole team's problem, not yours alone. Flag it in your summary so I can open a PR against team `./CLAUDE.md` separately — don't PR it automatically, but name it."*
-- **Ex3 compound-summary confabulation** — Claude's 3–5 line summary name-drops session moments without quoting. Trainer push: *"quote the specific session moment that made you add rule X. If you can't, take it out."*
+- **Ex3 rules rubber-stamp** — student accepts all five proposed tracker-convention rules without rejecting one. Trainer push: *"which of the five did the agent guess at? Make it separate what it read from what it inferred."*
+- **Ex3 close-out rubber-stamp** — student ships the agent's first close-out draft unread. Trainer push: *"read it against the comments already on that ticket. Does it sound like the same team wrote it?"*
+- **Ex4 rule rubber-stamp** — student accepts Claude's `./CLAUDE.local.md` rule without reading. Trainer push: *"read it aloud — if someone on your team read this in six months, would they run the same loop?"*
+- **Ex4 team vs. personal ambiguity** — Claude writes a rule that's team-worthy (*"always validate webhook signatures before dispatch — our payment flow got bitten by this"*) but lands it in `./CLAUDE.local.md` without flagging. Trainer push: *"this rule is the whole team's problem, not yours alone. Flag it in your summary so I can open a PR against team `./CLAUDE.md` separately — don't PR it automatically, but name it."*
+- **Ex4 compound-summary confabulation** — Claude's 3–5 line summary name-drops session moments without quoting. Trainer push: *"quote the specific session moment that made you add rule X. If you can't, take it out."*
 - **Self-compounding at every module from M1** — the compound move never interviews the student with Q1/Q2/Q3. Claude reviews session evidence, rewrites rules file in place, reports 3–5 lines, student pushes back. Same shape across the training.
 - **Repo change mid-training** — supported. Replay M1 → M(current) on new repo in an evening. Trainer fast-paths replay (pedagogy already landed; regenerate artifacts for the new repo).
 
 **Plug points (trainer):**
 - Student's repo (chosen in prework) — sponsor-stated example repos by team type if a student arrives without one
 - Bug Claude surfaced in prework — sponsor-stated bug-tracking convention informs how the prework prompt phrases the surfacing
-- Sponsor-stated ticket tracker (Linear / Jira / GitHub Issues) — used in the `close-the-ticket` homework; MCP install per tracker, tenant-admin fallback in `reference/mcp-and-connectors.md`
+- Sponsor-stated ticket tracker (Linear / Jira / GitHub Issues) — the field vocabulary Ex3 reverse-engineers is the sponsor's own. A tracker with disciplined labels yields sharper rules than one without, and naming that gap to the room is a live read on the org's own conventions
 - Repo change mid-training is a supported replay path — model in `training-architecture.md` §Replay
 
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
@@ -115,9 +116,9 @@ Optional. All three sit in the gap before it. Do them and its moves land as thin
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
 | Chosen trivial bug (incoming) | Prework session scrollback in the chosen repo + tracker/repo context if one exists | Prework Step 4 bug-screen conversation | M1 Ex2 `fix-tests-first` prompt consumes the selected bug as the failing-test target |
-| Personal rules file | `./CLAUDE.local.md` (repo-personal, gitignored; create-or-integrate) | Exercise 3 compound prompt — Claude reviews full session, writes from evidence, user pushes back | Every future session in this repo (auto-loads at session-cold start); M2 plan-reading session opens with these rules already in context; M4 walk-and-fill audit subagent reads as part of *"system you have"*; M3 sharpens further with security/skill-authoring rules |
+| Personal rules file | `./CLAUDE.local.md` (repo-personal, gitignored; create-or-integrate) | Exercise 4 compound prompt — Claude reviews full session, writes from evidence, user pushes back | Every future session in this repo (auto-loads at session-cold start); M2 plan-reading session opens with these rules already in context; M4 walk-and-fill audit subagent reads as part of *"system you have"*; M3 sharpens further with security/skill-authoring rules |
 
-The shipped PR is produced this module; the closed ticket is produced in the `close-the-ticket` homework. Both live in external systems (the PR system, the ticket tracker) and neither is consumed by a downstream module by stable path, so per rule 46's carve-out they're exempt from the contract requirement.
+The shipped PR and the closed ticket are both produced this module and both live in external systems (the PR system, the ticket tracker). Neither is consumed by a downstream module by stable path, so per rule 46's carve-out they're exempt from the contract requirement. The tracker-convention rules Ex3 surfaces stay in scrollback and reach disk only through Ex4's compound sweep, so they carry no identifier of their own.
 
 **Per-phase failure mode + escape hatch** (per `check_pedagogy.md` rule 47 — every phase shipping a forcing function names its dominant failure and one recovery move):
 
@@ -127,11 +128,14 @@ The shipped PR is produced this module; the closed ticket is produced in the `cl
 | Ex1 — `/context` as command, not prose | `/context` skipped — slash command read as prose | Trainer push: *"type /context in the chat — look at the number."* |
 | Ex2 — tests-first discipline | Tests-skipped — student pastes bug and Claude jumps to a fix | Trainer push: *"back up — what's the failing test that would prove this bug exists?"* (If no test infrastructure on this path, log *"no verifier here"* as a note that lands in M4.) |
 | Ex2 — diff review before merge | Diff rubber-stamp — student says *"looks fine"* under 30 seconds | Trainer push: *"find me one line you'd have written differently — not wrong, just different."* |
-| Ex3 — compound prompt writes `./CLAUDE.local.md` from session evidence | Rule rubber-stamp — student accepts Claude's rule without reading | Trainer push: *"read it aloud — if someone on your team read this in six months, would they run the same loop?"* |
-| Ex3 — team-worthy flag in compound summary | Team vs personal ambiguity — Claude lands a team-worthy rule in `./CLAUDE.local.md` without flagging | Trainer push: *"this rule is the whole team's problem, not yours alone. Flag it in your summary so you can open a PR against team `./CLAUDE.md` separately — don't PR it automatically, but name it."* |
-| Ex3 — quoted-evidence in compound summary | Compound-summary confabulation — Claude name-drops session moments without quoting | Trainer push: *"quote the specific session moment that made you add rule X. If you can't, take it out."* |
+| Ex3 — conventions prompt separates strong signals from guesses | Rules rubber-stamp — all five proposed rules accepted unread | Trainer push: *"which of the five did the agent guess at?"* |
+| Ex3 — close-out prompt reports what it wrote | Close-out rubber-stamp — first draft shipped without reading it against the ticket's own comments | Trainer push: *"read it against the comments already on that ticket."* |
+| Ex4 — compound prompt writes `./CLAUDE.local.md` from session evidence | Rule rubber-stamp — student accepts Claude's rule without reading | Trainer push: *"read it aloud — if someone on your team read this in six months, would they run the same loop?"* |
+| Ex4 — team-worthy flag in compound summary | Team vs personal ambiguity — Claude lands a team-worthy rule in `./CLAUDE.local.md` without flagging | Trainer push: *"this rule is the whole team's problem, not yours alone. Flag it in your summary so you can open a PR against team `./CLAUDE.md` separately — don't PR it automatically, but name it."* |
+| Ex4 — sweep prompt, *"integrate, don't append"* | Self-charity on rule self-review — the agent under-flags its own weak rules in the second pass | Trainer push: *"read each rule aloud — does it quote a specific moment, or just summarize a theme?"* |
+| Ex4 — quoted-evidence in compound summary | Compound-summary confabulation — Claude name-drops session moments without quoting | Trainer push: *"quote the specific session moment that made you add rule X. If you can't, take it out."* |
 
 **Frameworks riffed on:**
-- **TDD (test-driven development)** — Ex2's tests-first, root-cause-driven fix. Recognized framework the engineer audience already knows; the rule written into `./CLAUDE.local.md` at Ex3 is the student's own TDD-style preference.
-- **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (Every Inc.) [practitioner direct, vendor venue]. Plan → Work → Review → Compound. Attributed inside Claude's Ex3 compound summary, not in a lecture.
+- **TDD (test-driven development)** — Ex2's tests-first, root-cause-driven fix. Recognized framework the engineer audience already knows; the rule written into `./CLAUDE.local.md` at Ex4 is the student's own TDD-style preference.
+- **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (Every Inc.) [practitioner direct, vendor venue]. Plan → Work → Review → Compound. Attributed inside Claude's Ex4 compound summary, not in a lecture.
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

@@ -4,9 +4,9 @@
   "verdict": "PASS",
   "training": "agents-101",
   "chunk_map": [
-    {"index": 0, "heading": "The Missing Check (H1 + lede + Case 1 + Case 2)", "lines": "1-42"},
-    {"index": 1, "heading": "Why the LLM fabricates", "lines": "43-49"},
-    {"index": 2, "heading": "Why grounding fails even when the facts are in context", "lines": "50-63"}
+    {"index": 0, "heading": "The Missing Check (H1/lede: What you do, Case 1, Case 2, lead-in to What to bring to class)", "lines": "1-40"},
+    {"index": 1, "heading": "Why the LLM fabricates", "lines": "41-47"},
+    {"index": 2, "heading": "Why grounding fails even when the facts are in context", "lines": "48-61"}
   ],
   "rules_evaluated": [
     {
@@ -36,7 +36,7 @@
       "verdict": "N/A",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "No 'the X you did/saw' style backward beat references appear anywhere in this file.",
+      "fix_hint": "No 'the X you did/saw' style backward beat references appear anywhere in this file — it's a stand-alone reading prework, not placed after a session beat.",
       "blocking": true
     },
     {
@@ -46,7 +46,7 @@
       "verdict": "N/A",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "No guess-before-reveal demo structure in this reading-only prework.",
+      "fix_hint": "No guess-before-reveal demo structure; this is reading-only, and the maintainer note confirms the answer (the missing check) is deliberately withheld from body, not revealed later.",
       "blocking": true
     },
     {
@@ -95,8 +95,8 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "REVISE",
       "chunks_flagged": [0, 1, 2],
-      "evidence": "chunk 1 \"Why the LLM fabricates\": line 45: \"**It completes the shape.**\"; line 46: \"**It fills gaps instead of stopping.**\"; line 47: \"**It can verify inside the same fiction.**\"; line 48: \"**It inherits organisational shortcuts.**\" — every bullet opens with a fully bolded lead sentence, the exact 'pre-2026-07-09 monoculture' shape the rule names as the canonical violation. Chunk 2 \"Why grounding fails...\" repeats it at line 52 \"**The fact is present but not load-bearing.**\", line 53 \"**The source says less than the answer wants.**\", line 54 \"**Conflict gets smoothed.**\". Chunk 0 additionally carries long non-handle bold spans: line 21 \"**one human opening the cited cases on a real legal database before the brief was filed.**\" (12 words) and line 37 \"**a reviewer opening each cited source before the report went to a client.**\" (11 words), plus 5 more bold spans in the same chunk — all past the ≤1-per-slide, ≲5-word-handle budget.",
-      "fix_hint": "Cut each bullet's bolded lead to a short handle (2-4 words) and let the rest of the sentence run as plain prose; in chunk 0, bold only the 'missing check' phrase itself, not the full explanatory clause.",
+      "evidence": "chunk 1 \"Why the LLM fabricates\": line 43: \"- **It completes the shape.** An LLM continues text...\"; line 44: \"- **It fills gaps instead of stopping.**\"; line 45: \"- **It can verify inside the same fiction.**\"; line 46: \"- **It inherits organisational shortcuts.**\" — all four bullets open with a fully bolded lead sentence (not a ≲5-word handle, not a named law/coined term), the exact 'every bullet opens with a bolded sentence' monoculture the rule names as the canonical violation. chunk 2 \"Why grounding fails even when the facts are in context\" repeats the same shape at line 50 \"- **The fact is present but not load-bearing.**\", line 51 \"- **The source says less than the answer wants.**\", line 52 \"- **Conflict gets smoothed.**\". chunk 0 \"The Missing Check\" separately carries 6 bold spans in one slide, including plain dates that aren't handles: line 19 \"...issued a sanctions order on **June 22, 2023**: a $5,000 sanction...\" and line 31 \"On **3 October 2025**, Deloitte published...\" — well past the ≤1-bolded-element-per-slide budget.",
+      "fix_hint": "Cut the bullet leads in chunks 1 and 2 to short handles or drop the bold entirely and let the sentences run as plain prose; unbold the plain dates in chunk 0 and keep bold only for genuine named-entity handles (e.g. the case names).",
       "blocking": false
     },
     {
@@ -106,7 +106,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "Checked site/clients/acme/agents-101/index.html: id=\"lectures-module-5-prework\" is indeed absent while sibling lecture ids (e.g. lectures-grounded) are present. But that build was last generated 2026-08-01, before today's (2026-08-03) edits to this file and to grounded.md — the anchor gap traces to build staleness, not a structural drop from source; the legacy site/ tree is also not the live deploy target (memory: reference_ai_training_repo.md). Not a content-level violation; re-run the workbook build before trusting presence off this artifact.",
+      "fix_hint": null,
       "blocking": false
     },
     {

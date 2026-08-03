@@ -10,18 +10,18 @@ Read them with one question in mind: *what was the organisation's missing check?
 
 **Case 1, Mata v. Avianca (S.D.N.Y., 2023).**
 
-A passenger sued Avianca for a personal-injury claim. His attorneys were Peter LoDuca and Steven Schwartz of the New York firm Levidow, Levidow & Oberman. LoDuca filed an affirmation in opposition that Schwartz had researched and written. It cited six cases to support their legal position.
+A passenger sued Avianca for a personal-injury claim. His attorneys were Peter LoDuca and Steven Schwartz of the New York firm Levidow, Levidow & Oberman. LoDuca filed an affirmation in opposition that Schwartz had researched and written. It cited cases to support their legal position.
 
-None of them existed.
+Six of them did not exist.
 
-Schwartz had used ChatGPT to find supporting precedent. It produced cases with specific names, docket numbers, and paragraphs of plausible reasoning: *Varghese v. China Southern Airlines*, *Martinez v. Delta Airlines*, *Shaboon v. EgyptAir*, and three others. Schwartz later asked ChatGPT directly, *"is varghese a real case?"* ChatGPT said yes, and that it could be found on Westlaw and LexisNexis. He did not verify the cited cases in a real legal research database before relying on them.
+Schwartz had used ChatGPT to find supporting precedent. It produced cases with specific names, docket numbers, and paragraphs of plausible reasoning: *Varghese v. China Southern Airlines*, *Martinez v. Delta Airlines*, *Shaboon v. EgyptAir*, and three others. Schwartz later asked ChatGPT directly, *"Is Varghese a real case"*. ChatGPT said yes, and that it could be found on Westlaw and LexisNexis. He did not verify the cited cases in a real legal research database before relying on them.
 
 Opposing counsel couldn't find the cases because they weren't there. Judge P. Kevin Castel issued a sanctions order on **June 22, 2023**: a $5,000 sanction imposed jointly on both attorneys and the firm. The order is blunt about what went wrong - not the existence of ChatGPT, but the absence of verification. It says technological assistance is not inherently improper, but lawyers still have a gatekeeping duty to check filings for accuracy.
 
 The missing check: **one human opening the cited cases on a real legal database before the brief was filed.**
 
 Read:
-- The sanctions opinion itself (short, readable, quotes Schwartz's affidavit directly): [law.justia.com, Mata v. Avianca, Opinion and Order of June 22, 2023](https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/)
+- The sanctions opinion itself (readable, and it quotes Schwartz's affidavit directly): [law.justia.com, Mata v. Avianca, Opinion and Order of June 22, 2023](https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/)
 - CNBC's contemporaneous coverage for the shape of it: [CNBC, Judge sanctions lawyers whose AI-written filing contained fake citations](https://www.cnbc.com/2023/06/22/judge-sanctions-lawyers-whose-ai-written-filing-contained-fake-citations.html)
 
 **Case 2, Deloitte Australia / DEWR welfare-compliance report (2025).**
@@ -92,7 +92,7 @@ That's it. No reading list. No ten-bullet rundown of every headline agent failur
 - Asking the student to name the missing check in their own words (both cases converge on *verification before submission*) seeds Module 5's Phase 2 (classification) and Phase 3 (grounding rules), and connects to the lecture's Technique 1 (citation re-verification).
 
 **Why these two specifically (and not e.g. Air Canada):**
-- **Mata v. Avianca**: court sanctions order contains the affidavit quoting Schwartz asking ChatGPT "is varghese a real case?" — this is the single most pedagogically useful quote in any LLM-failure case, because it IS citation cargo-cult in one line. The missing check is trivially identifiable: open the cited cases in a real legal database before relying on them.
+- **Mata v. Avianca**: court sanctions order contains the affidavit quoting Schwartz asking ChatGPT "Is Varghese a real case" — this is the single most pedagogically useful quote in any LLM-failure case, because it IS citation cargo-cult in one line. The missing check is trivially identifiable: open the cited cases in a real legal database before relying on them.
 - **Deloitte Australia**: the revision-repeated-the-failure detail is irreplaceable. It proves that acknowledging the issue isn't the fix; BUILDING THE VERIFICATION STEP is. Connects directly to why a discipline and a loop beat a one-time acknowledgement.
 - **Rejected — Moffatt v. Air Canada**: outcome on record, architecture not. Tribunal didn't dig into whether the chatbot lacked grounding rules or whether Air Canada had a verification process. Speculative for teaching.
 - **Rejected — Cursor "Sam"**: practitioner-documented but informal (X threads, founder apology) rather than court/government record. Shorter half-life as a shared reference.
@@ -101,14 +101,15 @@ That's it. No reading list. No ten-bullet rundown of every headline agent failur
 **Factual precision owed:**
 - Mata sanction is **$5,000 jointly** on both attorneys and the firm — NOT $5,000 per attorney. Earlier drafts had this wrong; verified from the sanctions order itself (docket 54).
 - Detector pass 2026-04-30 removed three unsupported/over-clean details from the student-facing Mata story: "small" firm, the "ten minutes" estimate, and a direct Castel quote that did not appear in the linked Justia order.
-- Detector pass 2026-04-30 softened the Schwartz timeline: the order records conflicting accounts about when he asked ChatGPT whether Varghese was real, so the story now says "later asked" and keeps the pedagogical point on verification.
+- Detector pass 2026-04-30 softened the Schwartz timeline: the order's fn.3 records ambiguity about when Schwartz knew Varghese could not be found (the affidavit is internally consistent that the ask-ChatGPT-if-real exchange came after the First OSC), so the story says "later asked" and keeps the pedagogical point on verification.
+- Detector re-run 2026-08-03, all four techniques against docket 54's full text (via CourtListener): triangulation caught the story counting citations as fabrications ("It cited six cases … None of them existed" — the affirmation also cited real authorities; six is the sanction list's count of fabrications), fixed same day to "Six of them did not exist." Quote casing aligned to the order's printed rendering ("Is Varghese a real case", no question mark; the underlying Appendix B screenshot is an image and was not text-verifiable). "short" dropped from the opinion descriptor (the order runs 43 pages). Entailment and citation integrity otherwise clean. Counter-evidence: CNBC's each-pay-$5,000 rendering vs the order's joint $5,000 stands; the story follows the order. Intra-order tension noted, no body change owed: ¶26 "superficially consistent" vs ¶27 "gibberish" — the story's "paragraphs of plausible reasoning" follows ¶26 and Schwartz's own account.
 - Deloitte case is **2025**, not 2024. Contract signed late 2024; report published July 2025; Rudge's critique and the refund both October 2025.
 - Model used by Deloitte is **Azure OpenAI GPT-4o** — disclosed in the revised report's own appendix. Named directly; don't hedge.
 - Firm AI policy at Levidow, Levidow & Oberman: **unverified**. The sanctions order doesn't document whether an AI-use policy existed or didn't. Keep the pedagogical frame on "the missing check" (verification) rather than on the absence of a policy. Policy-vs-discipline is a Module 7 discussion; here we're naming the specific unperformed verification step.
 - Rudge's finding of "up to 20" fabricated references + fabricated judicial quote is from his own published analysis and Guardian coverage — stable.
 
 **URL verification:**
-- Law.Justia URL for the sanctions order is stable (case docket 54).
+- Law.Justia URL for the sanctions order (case docket 54) returns HTTP 403 to automated fetchers as of 2026-08-03 — likely a bot-gate; human-browser behaviour unconfirmed. Treat as flagged at the pre-delivery URL re-verify. The CourtListener fallback carries the full extracted text and works.
 - CourtListener alternative if Justia goes down: https://www.courtlistener.com/docket/63107798/mata-v-avianca-inc/
 - Guardian and The Register links on Deloitte case verified in research pass.
 - Re-verify all four URLs before first delivery per capability-check protocol; case-law aggregators occasionally reshuffle URLs.

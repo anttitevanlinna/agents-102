@@ -2,8 +2,20 @@
 
 > *Edited 2026-05-14: hallucinated OpenClaw/ClawHub/NemoClaw cluster content removed. Original git history preserves the prior state.*
 
-Last updated: 2026-08-02 (cycle 180)
-OODA cycles: 7
+Last updated: 2026-08-03 (cycle 181)
+OODA cycles: 8
+
+## Key Verdict (as of 2026-08-03)
+
+**CYCLE 181 UPDATE — EU AI ACT T+1 (AUGUST 3): NO NAMED FIRST INVESTIGATIONS; META NON-SIGNATORY (outside presumption-of-conformity safe harbor); ENFORCEMENT RESOURCE CONSTRAINT NAMED PUBLICLY; EU AI OFFICE WORKPLAN NOT YET PUBLISHED. EO 14409 (JUNE 2, 2026) AUGUST 1 DEADLINE MISSED — ZERO DELIVERABLES PUBLISHED; LABS ADJUSTING RELEASE TIMELINES DUE TO OVERSIGHT UNCERTAINTY. AI DIFFUSION RULE (EXPORT CONTROL, SEPARATE TRACK): LEGALLY IN EFFECT, UNENFORCED, NO REPLACEMENT — PRUDENT TO CONTINUE ASSESSING TRANSACTIONS AGAINST IT.**
+
+**EO 14409 August 1 deadline missed — zero government deliverables published.** EO 14409 (signed June 2, 2026) required three outputs by August 1: classified AI benchmarking process (NSA/CISA/NIST), voluntary frontier AI disclosure framework (30-day federal pre-release access), federal cyber workforce plan. None published. Yahoo Finance (August 1): "The silence is the story." Consequence: labs are adjusting release timelines due to uncertainty about which model architectures trigger oversight. No enterprise compliance obligation from EO 14409 — targets government deliverables, not company mandates. Under Secretary Kessler (House Foreign Affairs, July 14): "regulatory action on AI and semiconductors is coming." ([finance.yahoo.com/technology/ai/articles/white-house-ai-framework-deadline-002011007.html Aug 1 2026](https://finance.yahoo.com/technology/ai/articles/white-house-ai-framework-deadline-002011007.html) — [general press]; [www.congress.gov/crs-product/IF13268](https://www.congress.gov/crs-product/IF13268) — [regulatory source — CRS IF13268])
+
+**AI Diffusion Rule (Biden-era BIS export control, separate track) — legally in effect, unenforced, no replacement.** Biden rule (January 15, 2025 Federal Register) targeted for rescission by Commerce (May 13, 2025). Rescission incomplete: GAO decision B-337935 (May 2026) held Commerce's non-enforcement announcement is itself a CRA rule that was never submitted to Congress. No replacement in effect. OneLex practitioner guidance: "The prudent course is to continue assessing advanced-computing transactions against the rule, not to treat it as repealed." Active controls: ECCN 3A090/4A090 chip restrictions; catch-all provisions for China/military. ([www.bis.gov/press-release/department-commerce-announces-rescission-biden-era-artificial-intelligence-diffusion-rule-strengthens](https://www.bis.gov/press-release/department-commerce-announces-rescission-biden-era-artificial-intelligence-diffusion-rule-strengthens) — [regulatory source]; [www.onelexpartners.com/news-and-insights/us-export-controls-and-ai-a-practitioners-guide](https://www.onelexpartners.com/news-and-insights/us-export-controls-and-ai-a-practitioners-guide) — [practitioner analysis])
+
+**EU AI Act T+1 — three new signals:** (a) **Meta non-signatory** — Meta did NOT sign the GPAI Code of Practice. 180+ signatories include Microsoft, Google, Amazon, OpenAI, Anthropic; Meta outside the presumption-of-conformity safe harbor. Structurally significant given Llama 4 and future open-weights models may qualify as GPAI. (b) **Enforcement resource constraint** — Euronews (August 2) explicitly named "significant resource constraints and competitive pressure from Washington" for the EU AI Office. The Office is new and small. (c) **OpenAI on-record cooperation** — "We've collaborated closely with the European Commission and the wider ecosystem on implementing the AI Act." No substantive compliance detail. EU AI Office workplan not yet published. No national authority (Finland Traficom, Germany, France) formal review announced. ([euronews.com Aug 2 2026](https://www.euronews.com/my-europe/2026/08/02/eu-rules-on-ai-models-become-enforceable-whats-going-to-change) — [general press]; [lawfaremedia.org](https://www.lawfaremedia.org/article/how-much-power-does-the-eu-ai-office-actually-have) — [practitioner analysis])
+
+**Watch: EU AI Office workplan publication (watch first week of August); first national authority formal review announcement; December 2, 2026 (legacy system watermarking grace period ends); December 2, 2027 (Annex III high-risk activation); EO 14409 government deliverable watch (weekly); Kessler AI/semiconductor regulatory action signal H2 2026.**
 
 ## Key Verdict (as of 2026-08-02)
 

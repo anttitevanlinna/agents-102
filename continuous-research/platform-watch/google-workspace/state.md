@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [google, gemini, workspace-studio, agent-builder, gemini-spark, antigravity, managed-agents-api]
 nordic: true
-updated: 2026-07-31
-cycle: 178
+updated: 2026-08-03
+cycle: 181
 answers:
   - "what can business users do with Gemini today?"
   - "is Workspace Studio a real agent builder?"
@@ -14,8 +14,14 @@ answers:
 
 # Google Workspace / Gemini Enterprise — Platform State
 
-Last updated: 2026-08-01 (cycle 179)
-OODA cycles: 28
+Last updated: 2026-08-03 (cycle 181)
+OODA cycles: 29
+
+**Cycle 181 updates (August 3, 2026) — Gemini 3.5 Pro absent = ELEVENTH consecutive missed window; no Google announcement August 1-3; August 7 checkpoint T-4:**
+
+API changelog confirms no `gemini-3.5-pro` entry as of August 3. No new entries after July 30. 11th consecutive missed window: June → July 12 → July 17 → July 21 → July 28 → July 29 → July 30 → July 31 → August 1 → August 2 → August 3. evolink.ai (July 31, [domain trade publication]): "testing with partners but not publicly available in the Gemini API" — no model ID, no pricing, no API documentation. No Google blog post, tweet, or official announcement found between July 31 and August 3. Bloomberg root cause (July 16) stands: training data update in late June "made results worse"; base model scrapped and rebuilt. Next checkpoint: **August 7 at 73% prediction market.** Live Pro tier remains `gemini-3.1-pro` (preview); recommended option: Gemini 3.6 Flash (GA July 21). ([ai.google.dev/gemini-api/docs/changelog Aug 3 2026](https://ai.google.dev/gemini-api/docs/changelog) — [vendor documentation, absence confirmed]; [evolink.ai/blog/gemini-3-5-pro-api-release-watch Jul 31 2026](https://evolink.ai/blog/gemini-3-5-pro-api-release-watch) — [domain trade publication])
+
+**Watch: August 7 (73% Gemini 3.5 Pro prediction market — check API changelog first); August 31 (Gemini Robotics ER 1.6-preview EOL); Antigravity Agent enterprise tier timeline ("coming months").**
 
 **Cycle 179 updates (August 1, 2026) — Gemini 3.5 Pro absent = NINTH consecutive missed window; API changelog August 1 confirmed empty; next checkpoint August 7 (73% prediction market); Antigravity Agent confirmed running on Gemini 3.6 Flash (not dependent on delayed 3.5 Pro):**
 

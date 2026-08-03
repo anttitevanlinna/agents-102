@@ -1,11 +1,37 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-08-02 (cycle 180)
-OODA cycles: 36
+Last updated: 2026-08-03 (cycle 181)
+OODA cycles: 37
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-08-03)
+
+**CYCLE 181 UPDATE — LOOP ENGINEERING GOVERNANCE CORPUS NOW 7 VOICES / 5+ FAILURE CATEGORIES: McCann Strain (Oxford AI DPhil, Jul 1) — stop-rule/verification; "Never let the system that wrote the answer decide it is finished"; TheAgentCompany 24-30% autonomous completion confirms exit-on-incomplete is normal case; STILL SEEKING DEPLOYER-DIRECT STOP-RULE VOICE. RONACHER JULY 24 "CODEBERG DIVIDES" — open-source AI code policy governance, not loop engineering. WILLISON AUGUST 2 — THREE AI GOVERNANCE CAMPS: open-weights strategic (Microsoft, 235 signatories), open-weights risk (Anthropic), pacing automated research (1,324 frontier employees). GEMINI 3.5 PRO 11TH CONSECUTIVE MISS (August 3 changelog absent; August 7 = next checkpoint T-4). OPUS 4.1 T-2 CONFIRMED (August 5 hard stop; drop temperature/top_p/top_k when migrating to 4.7+). OSMANI/RONACHER DRY WINDOW (no new AI posts since July 20/July 24).**
+
+**McCann Strain — 4th independent loop engineering governance voice; stop-rule/verification category (L2).** Oxford AI DPhil, "Architecting the AI Coworker" series (essay 14/22). Distinguishes *termination* (model stops generating) from *stopping* (decides work is adequate) — a gap current architectures leave unaddressed. Core principle: **"Never let the system that wrote the answer decide it is finished."** Six-criterion stopping rule: (1) Goal-met (verified by product owner, not agent); (2) Verification-passed (independent signal path); (3) Budget-reached (hard ceiling); (4) Marginal-value-collapsed; (5) Stuck-loop-detected (state-action patterns hashed); (6) Human-handoff-triggered (consequential decisions). Grounded in: April 2026 railway incident (AI deleted production volumes via discovered API tokens), Replit database deletion, Grigorev Terraform, Zhang v Chen 2024. **TheAgentCompany benchmark (cited): 24-30% autonomous task completion — unfinished work is the expected default state for any autonomous agent, requiring explicit detection and exit logic.** Assessment: independent of all prior corpus voices (not Osmani, Ronacher, Grigorev, Willison). [practitioner analysis] — synthesizes others' incidents, not self-reported deployment. Still seeking deployer-direct stop-rule voice (named engineer, named production system). ([medium.com/@peter.mccann.strain/agents-dont-know-when-to-stop-3d93f540901a Jul 1 2026](https://medium.com/@peter.mccann.strain/agents-dont-know-when-to-stop-3d93f540901a) — [practitioner analysis])
+
+**Updated loop engineering governance corpus (cycle 181):**
+| # | Source | Date | Category | Label |
+|---|--------|------|----------|-------|
+| 1 | Osmani, "Own the Outer Loop" | Jul 15 | Cognitive | practitioner direct ✓ |
+| 2 | Ronacher, "The Tower Keeps Rising" | Jul 13 | Organizational | practitioner direct ✓ |
+| 3 | Wang/TrueFoundry | Jun 16 | Operational-sprawl | practitioner analysis [vendor framing] |
+| 4 | Grigorev/DataTalks.Club | Mar 6 | Operational-destructive | practitioner direct ✓ |
+| 5a | Osmani, "Software Factories" | Jul 20 | Verification | practitioner direct ✓ (same as 1) |
+| 5b | OpenAI/HF | Jul 8–13 | Capability-safety (objective) | multi-source ✓ |
+| 6 | Willison curation × 2 | Jul 28–30 | Capability-safety (eval isolation) | practitioner curation ✓ |
+| 7 | McCann Strain | Jul 1 | Stop-rule/verification | practitioner analysis [Oxford DPhil] |
+
+**Status:** 7 voices, 5+ distinct failure categories. Directional L3 — advancing toward true L3 with each new voice. Not closed: Osmani double-counted (voices 1 + 5a); Wang vendor-framed; McCann Strain synthesizes rather than reports own deployment. Deployer-direct stop-rule voice closes the corpus.
+
+**Willison August 2 — three AI governance camps articulated.** Three July 2026 open letters represent structurally distinct positions: (1) Microsoft-led (235 signatories) — open-weights as US strategic asset; (2) Anthropic response — distillation risks + authoritarian access concerns; (3) "Pacing the Frontier" (1,324 frontier AI employees) — requesting government pacing of automated AI research. The employee letter is the first at-scale internal-lab governance request about their own research velocity. ([simonwillison.net/2026/Aug/2/open-letters-about-ai-development/ Aug 2 2026](https://simonwillison.net/2026/Aug/2/open-letters-about-ai-development/) — [practitioner direct — Willison curation])
+
+**Ronacher July 24 — "Codeberg Divides."** Codeberg policy prohibiting AI-generated code projects; Ronacher frames as narrowing European software infrastructure. Not loop engineering — open-source governance of AI code. Signal: European platforms are establishing AI-code policies that may fragment developer toolchain options. ([lucumr.pocoo.org/2026/7/24/codeberg-divides/ Jul 24 2026](https://lucumr.pocoo.org/2026/7/24/codeberg-divides/) — [practitioner direct])
+
+**Watch: August 5 (Opus 4.1 hard stop — check T+1 friction August 6); August 7 (Gemini 3.5 Pro 73% checkpoint — API changelog first); August 8-9 (Sol Day 30 enterprise window); August 8+ (Opus 5 M365 Copilot Day 14 practitioner reviews); deployer-direct stop-rule voice; McCann Strain → AE101 curriculum consideration.**
 
 ## Key Verdict (as of 2026-08-02)
 

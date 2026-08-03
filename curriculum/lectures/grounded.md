@@ -150,3 +150,6 @@ OODA
 **Length:** ~950 words. Prework-reading band (800-1200) — above demo-script band (350-600). Delivered in-room (10-12 min). Four candidates need paragraph-each treatment but each paragraph stays tight because the exercise carries the depth.
 
 **Lecture meta:** *Closer beat is the lead-in to Phase 0 of the Hallucination benchmark exercise. Trainer pivots straight from the "Phase 0 is next" line into the exercise — no separate transition.*
+
+**Quality:** compendium-audited 2026-08-03 (behavior@b74c5d1 pedagogy@b74c5d1 strategy@b74c5d1 slides@b74c5d1)
+- judges @b74c5d1: writing REVISE (1/0 see instances/agents-101--grounded.writing.json), story REVISE (1/1 see instances/agents-101--grounded.story.json), technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

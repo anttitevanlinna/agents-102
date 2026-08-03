@@ -4,9 +4,9 @@
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "When a plan is good (H1 + Session widget)", "lines": "1-9"},
+    {"index": 0, "heading": "When a plan is good (H1 + Session widget + /rename)", "lines": "1-9"},
     {"index": 1, "heading": "Plan mode is a read-only permission state", "lines": "11-16"},
-    {"index": 2, "heading": "Optional: ask plan mode directly", "lines": "18-32"},
+    {"index": 2, "heading": "Optional: ask plan mode directly", "lines": "18-31"},
     {"index": 3, "heading": "Five things a good plan has", "lines": "33-41"},
     {"index": 4, "heading": "Three pressures that make bad plans look good", "lines": "43-47"},
     {"index": 5, "heading": "Two reads, paired", "lines": "49-55"},
@@ -20,7 +20,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Checked pronoun/demonstrative in each chunk. Chunk 1's 'You will notice the wait' is followed immediately, same bullet, by 'While Claude plans...' — cataphoric same-sentence elaboration, not a forward pointer to a later slide. Chunk 5's 'the agent's walk-down' resolves against the chunk's own header 'Two reads, paired' plus the next sentence's 'it can walk every unresolved branch of the decision tree.' Chunk 2's 'Skip if you trust the framing' resolves to the read-only teaching established in chunk 1. No never-named or stranded referents found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -38,9 +38,9 @@
       "compendium": "check_slides.md",
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No 'the X you did/saw' construction anywhere in the file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -60,7 +60,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Every chunk (including chunk 2, the optional prompt beat) carries a self-carrying claim, not just a wait-state bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -70,7 +70,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Chunk 3 header 'Five things a good plan has' matches exactly five bullets; chunk 4 header 'Three pressures...' matches exactly three bullets; remaining headers are true summaries of their chunk content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -80,7 +80,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all sub-items per chunk: no 'Not X. Not Y. Z.' construction; the chunk-7 triple (\"Reading intent costs minutes... hours... weeks\") escalates with new concrete content on each leg, not filler anaphora; header 'The cheapest gate you will ever run' (chunk 7) reads as a general claim about the economics of catching mistakes early (backed by the gate-cost-escalation framework), not self-praise of the training/exercise, so not flagged under the self-grading-superlative sub-item; no bare number-with-retraction; no abstraction-noun stacks; no empty-leg verb triplets.",
+      "evidence": "No 'Not X. Not Y. Z.' construction. Chunk 7's triple ('Reading intent costs minutes... hours... weeks') escalates with new concrete content on each leg (minutes/hours/weeks tied to distinct actions), not filler anaphora, and the backing block records this ordinal framing (no multiplier) as a deliberate, source-checked shape. No self-grading superlatives, no number-with-own-retraction, no abstraction-noun stacks, no empty-leg verb triplets.",
       "fix_hint": null,
       "blocking": true
     },
@@ -100,7 +100,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunks 3 and 4 keep one bold handle per checklist bullet (per-item handles, consistent with the maintainer-block emphasis pass); all other chunks are unbolded prose.",
+      "evidence": "Chunks 3 and 4 keep one bold handle (≤5 words) per checklist bullet, matching the maintainer-block's documented 2026-07-09 emphasis pass; all other chunks are unbolded prose.",
       "fix_hint": null,
       "blocking": false
     },
@@ -108,9 +108,9 @@
       "compendium": "check_slides.md",
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "This lecture file has no prework/supplementary/reference in-deck links whose presence needs verifying against the composed deck.",
       "fix_hint": null,
       "blocking": false
     },
@@ -120,7 +120,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No 'Phase N' / 'Step N' content headers in this file.",
+      "evidence": "No 'Phase N' / 'Step N' content headers or in-file phase references in this file.",
       "fix_hint": null,
       "blocking": false
     }

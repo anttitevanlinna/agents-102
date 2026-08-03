@@ -86,5 +86,5 @@ OODA
 
 **Philosophy callouts:** at most one. *Capture* (theme #5 — the agent is trying to capture your world) is the implicit anchor under "grounding"; don't name-tag it. Do not bolt the 19 beliefs onto this lecture.
 
-**Quality:** compendium-audited 2026-08-02 (writing@ffc64f9 story@ffc64f9 technical@ffc64f9 behavior@1c765f2 pedagogy@ffc64f9 strategy@1c765f2 slides@ffc64f9)
-- judges @ffc64f9: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-03 (writing@b74c5d1 story@b74c5d1 technical@ffc64f9 behavior@1c765f2 pedagogy@ffc64f9 strategy@1c765f2 slides@b74c5d1)
+- judges @b74c5d1: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

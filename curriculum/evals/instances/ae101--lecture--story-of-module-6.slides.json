@@ -4,11 +4,11 @@
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "Story of Module 6 (H1 + lede)", "lines": "1-8"},
+    {"index": 0, "heading": "Story of Module 6 (H1 + lede)", "lines": "1-7"},
     {"index": 1, "heading": "The numbers", "lines": "9-13"},
     {"index": 2, "heading": "Things that went sideways", "lines": "15-31"},
     {"index": 3, "heading": "The generalisation", "lines": "33-43"},
-    {"index": 4, "heading": "Then I compounded the run", "lines": "45-51"},
+    {"index": 4, "heading": "Then I compounded the session", "lines": "45-51"},
     {"index": 5, "heading": "What the loop is for", "lines": "53-65"}
   ],
   "rules_evaluated": [
@@ -18,7 +18,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Checked every pronoun/demonstrative against prior chunks: 'the loop' (chunk 3/5) resolves to 'A verifier loop ran after' (chunk 1); 'the banned word' (chunk 3) resolves to chunk 2; 'this pattern' (chunk 2) resolves in-sentence to 'the M5 move'. Chunk-3 line 41 list ('the rules file, the tone brief, the session-timing plan') considered as a candidate never-named violation but is illustrative scene-setting, not a resolvable-referent demand, and matches the phrasing `curriculum/evals/ae101-full-reeval-2026-07-12.md:142` recorded as the deliberate plain-language fix for a prior dialect flag on this exact passage.",
       "fix_hint": null,
       "blocking": true
     },
@@ -28,7 +28,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "'The closing lecture ended with a three-phrase benediction: \"You know how to test...\"' (chunk 2, line 25) and 'The closer's Ramp paragraph attributed a framing... \"the harness was the bottleneck, not the model\"' (chunk 2, line 27) both name the source and unpack its claim in the same sentence, matching the compendium's PASS example rather than the banned bare-position pattern.",
       "fix_hint": null,
       "blocking": true
     },
@@ -38,7 +38,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "This file is the M6 opener, delivered before the exercise (maintainer block: 'Lands before the exercise'); body contains no 'the X you did/saw' construction pointing at a completed student beat, so the rule has nothing to check against.",
       "fix_hint": null,
       "blocking": true
     },
@@ -48,7 +48,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No guess/predict-before-reveal construction anywhere in the file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -58,7 +58,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Every chunk carries a self-standing claim (thesis stats, a named story, the generalisation, the compounding move, the framing for what's next); none is a bare wait-state bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -68,7 +68,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Each header matches its chunk's content: 'The numbers' → stats block; 'Things that went sideways' → seven failure stories; 'The generalisation' → the abstracted lesson; 'Then I compounded the session' → the rule-into-skill move; 'What the loop is for' → the framing handoff to the student.",
       "fix_hint": null,
       "blocking": false
     },
@@ -78,7 +78,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Checked each sub-item per chunk: no 'Not X. Not Y. Z.' construction anywhere (only single-negation forms, e.g. chunk 0 'Not the pedagogy of it. The actual session.'). Two candidate triples reviewed for weak-third-leg — chunk 5 'The loop exists because LLMs drift... rules leak... every session surprises you, even when the task looked the same' and chunk 3 'The loop caught what the subagents missed. I caught what the loop missed. You will catch what I missed.' — both carry a genuinely new, escalating third leg (a distinct control-for-repetition point; a shift from loop→author→reader) rather than restating legs 1-2, so neither trips the cap. No self-grading superlatives, no number-with-retraction, no abstraction-noun stacks, no empty-leg verb triplets.",
       "fix_hint": null,
       "blocking": true
     },
@@ -88,7 +88,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Terms like 'the rules file, the tone brief, the session-timing plan' (chunk 3, line 41) read as plain shop language, not repo dialect — `curriculum/evals/ae101-full-reeval-2026-07-12.md:142` confirms this exact phrasing was the deliberately chosen fix for a prior dialect flag ('what an engineer in the room would say'). No 'compendium', 'forcing function', 'beat', 'surface'-as-noun, 'firing', or 'mood' usage in body; 'reference artefact', 'verifier loop', 'plan.md' are arc-earned M5 spine vocabulary, legitimate for this AE101 engineer audience.",
       "fix_hint": null,
       "blocking": true
     },
@@ -98,7 +98,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No bold markers anywhere in the body (only italics on quoted lines); rule trivially satisfied.",
       "fix_hint": null,
       "blocking": false
     },
@@ -106,9 +106,9 @@
       "compendium": "check_slides.md",
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "N/A",
+      "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "File is included from `curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` as a standard shared lecture, wrapped in the phase mechanism common to all AE101 lecture includes, so it reaches the composed Slides deck.",
       "fix_hint": null,
       "blocking": false
     },
@@ -118,7 +118,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No `## Phase N:` or `## N.` step headers in this file; all `##` headings are unnumbered prose titles.",
       "fix_hint": null,
       "blocking": false
     }

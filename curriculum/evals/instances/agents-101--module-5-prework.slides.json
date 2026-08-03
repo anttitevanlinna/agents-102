@@ -1,19 +1,12 @@
 {
   "class": "slides",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/what-packaging-is.md",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/module-5-prework.md",
   "verdict": "PASS",
-  "training": "ae101",
+  "training": "agents-101",
   "chunk_map": [
-    {"index": 0, "heading": "What packaging is (H1 + lede)", "lines": "1-3"},
-    {"index": 1, "heading": "One session, plotted", "lines": "5-204"},
-    {"index": 2, "heading": "The three-pattern", "lines": "206-210"},
-    {"index": 3, "heading": "The verifier decides pass without you", "lines": "212-216"},
-    {"index": 4, "heading": "Three shapes the verifier takes", "lines": "218-223"},
-    {"index": 5, "heading": "Hooks always fire", "lines": "225-228"},
-    {"index": 6, "heading": "Hooks for must-happen, prompts for taste", "lines": "230-245"},
-    {"index": 7, "heading": "What you didn't build today", "lines": "247-250"},
-    {"index": 8, "heading": "The 80/20 ratio", "lines": "252-256"},
-    {"index": 9, "heading": "At org scale: Intercom's tiers", "lines": "258-262"}
+    {"index": 0, "heading": "The Missing Check (H1 + lede + Case 1 + Case 2)", "lines": "1-42"},
+    {"index": 1, "heading": "Why the LLM fabricates", "lines": "43-61"},
+    {"index": 2, "heading": "Why grounding fails even when the facts are in context", "lines": "63-84"}
   ],
   "rules_evaluated": [
     {
@@ -40,7 +33,7 @@
       "compendium": "check_slides.md",
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
       "evidence": null,
       "fix_hint": null,
@@ -100,20 +93,20 @@
       "compendium": "check_slides.md",
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "chunks_flagged": [0],
+      "evidence": "chunk 0 \"The Missing Check (H1 + lede + Case 1 + Case 2)\": line 21: \"The missing check: **one human opening the cited cases on a real legal database before the brief was filed.**\" (16-word bolded clause, not a handle); line 37: \"The missing check at Deloitte was not exotic: **a reviewer opening each cited source before the report went to a client.**\" (13-word bolded clause, repeats the same pattern); chunk 0 also carries 6 additional bolded spans (line 7 organisational-decisions phrase, line 11 and line 27 case labels, line 19 and line 33 dates, line 33 Azure OpenAI's GPT-4o) — well over the ≤1-bolded-element-per-slide budget.",
+      "fix_hint": "Bold only the handle inside each 'missing check' sentence (e.g. just 'opening the cited cases'), leave the rest as plain narrative, and thin the rest of chunk 0's bolding to one element.",
       "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "chunks_flagged": [0, 1, 2],
+      "evidence": "site/clients/acme/agents-101/index.html:3886 and :3895 link to href=\"#lectures-module-5-prework\", but no `id=\"lectures-module-5-prework\"` section exists anywhere in the built file (grep confirms zero matches) — the prework's content, and its H1 \"The Missing Check\", are absent from the composed page in both layouts, matching the rule's own canonical 2026-07-09 example of prework content dropped from the deck.",
+      "fix_hint": "Confirm module-shape's include convention actually wraps this lecture in a `.phase--lecture` (or `section.module`) block at build time so the anchor resolves and the deck renders it; a dangling `#lectures-module-5-prework` link is a broken cross-reference, not just a missing slide.",
       "blocking": false
     },
     {
@@ -128,5 +121,5 @@
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 2
 }

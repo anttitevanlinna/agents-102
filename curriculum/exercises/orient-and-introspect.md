@@ -51,7 +51,7 @@ Ask Claude to introspect on what it read, what it skipped, and the call it made 
 
 {{prompt:orient-and-introspect-3}}
 
-(`/context` is oldskool; [ccstatusline](https://github.com/sirmalloc/ccstatusline) shows the same thing continuously in your status line.)
+(`/context` is oldskool; a status line shows the same thing continuously. Use [ccstatusline](https://github.com/sirmalloc/ccstatusline), or ask Claude to build your own with `/statusline`.)
 
 ## Read the unread slice
 
@@ -104,11 +104,13 @@ Claims
 - `every-read-has-a-shadow` · vision · "Every read has a shadow: the files Claude didn't load. The skipped slice is where the surprises hide." ← none-owed
 - `agent-can-introspect-on-what-it-skipped` · detail · "Claude can introspect on what it did and why, including what it chose not to read." ← self-report-is-not-a-log
 - `spot-check-the-self-report` · vision · "Read the self-report, then spot-check it" ← none-owed
-- `ccstatusline-shows-context-continuously` · detail · "shows the same thing continuously in your status line" ← ccstatusline
+- `status-line-shows-context-continuously` · detail · "a status line shows the same thing continuously" ← ccstatusline, statusline-builtin
+- `claude-builds-the-status-line` · detail · "ask Claude to build your own with `/statusline`" ← statusline-builtin
 
 Sources
 - self-report-is-not-a-log `[checked:2026-08-01 result:CAVEAT due:cohort]` (no URL — house position) — [house canonical] An agent's account of what it read is generated text, not an instrumented log, and can be confidently wrong about its own behaviour. **The exercise is built on this caveat rather than around it** — the spot-check beat exists precisely because the self-report is unreliable, which is why the claim is safe to teach: the student is asked to verify it, not to trust it. fallback: none needed; the exercise's own third beat is the fallback.
 - ccstatusline `[checked:2026-08-02 result:OK due:cohort]` https://github.com/sirmalloc/ccstatusline — [capability] Third-party status-line formatter for the Claude Code CLI, described by its own repo as showing "model info, git branch, token usage, and other metrics in your terminal"; ships Context % and Context Length widgets, which is the continuous read of what `/context` reports once. Active at check: v2.2.27, 361 commits, not archived. `due:cohort` because a third-party tool is somebody else's release schedule. fallback: cut the parenthetical — `/context` alone carries the beat, and the aside is a convenience pointer, not a step.
+- statusline-builtin `[checked:2026-08-03 result:OK due:cohort]` https://code.claude.com/docs/en/statusline — [capability] Anthropic's docs on Anthropic's own product. Verified against the docs AND live against the installed binary, v2.1.220: `/statusline` is a builtin prompt-command ("Set up Claude Code's status line UI") whose allowed tools are `Read(~/**)` + `Edit(~/.claude/settings.json)`, dispatching subagent type `statusline-setup`. "Ask Claude to build your own" names the mechanism, not a figure of speech. The docs' own example line is `/statusline show model name and context percentage with a progress bar`, and the script it writes receives `context_window.used_percentage` on stdin — the same number `/context` prints once. The docs are terminal-shaped throughout (ANSI colours, `COLUMNS`), so this half of the aside inherits the CLI assumption the ccstatusline pointer already carried. `due:cohort` because the status-line data contract carries per-field version floors that move with releases. fallback: cut the second half of the parenthetical — ccstatusline alone carries the aside.
 
 Frameworks
 - Context as a bandwidth-limited channel · [borrow:information theory] · law:bandwidth-limited-channel · ← cultural-vocab

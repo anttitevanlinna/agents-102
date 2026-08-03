@@ -4,7 +4,7 @@ You just walked your whole system against a real task and sent it off. The persi
 
 ## Personal, team, company: memory's three layers
 
-- The word is not settled. Some practitioners say memory, some say context, some just say rules, or the files. The labels collide for a reason worth knowing: *context* already names the live window the agent holds while it works, the part that empties when the session ends. Memory is what survives. Pick whichever word you'll defend.
+- Memory, context, rules, or just the files: the labels collide for a reason worth knowing. *Context* already names the live window the agent holds while it works, the part that empties when the session ends. Memory is what survives. Pick whichever word you'll defend.
 - The two questions the label hides: where does this stuff live, and who is allowed to change it? Walk them across what you just sent off, and three layers appear.
 - **Personal.** `./CLAUDE.local.md` (gitignored), your `observations/`, the skills you authored. Written by you, for you. The layer you've watched compound since your first rule.
 - **Team.** `./CLAUDE.md`, changed only through PR review. The rules the team agreed were worth sharing. A clear home and a clear gate.
@@ -49,7 +49,7 @@ Format → `curriculum/backing-format.md`. This is the file's only source ledger
 
 **Claims**
 - `memory-is-what-persists` · vision · "The persistent part of what you walked, the rules and notes and skills that outlast the session, is what this training calls memory." ← none-owed — the training's own definition, flagged as such by *"what this training calls."*
-- `word-not-settled` · vision · "The word is not settled. Some practitioners say memory, some say context, some just say rules, or the files." ← none-owed — the maintainer's read of the terrain, and the lecture's deliberate refusal to pick.
+- `word-not-settled` · vision · "Memory, context, rules, or just the files: the labels collide for a reason worth knowing." ← none-owed — the labels presented as labels, no usage census; the lecture's deliberate refusal to pick stands.
 - `context-empties-memory-persists` · detail · "*context* already names the live window the agent holds while it works, the part that empties when the session ends" ← cc-memory-docs. Definitional and correct; `check_student_facing.md §4` requires this split be stated precisely and it is.
 - `three-layers` · vision · personal / team / company ← none-owed — the training's own framing, and the spine of the lecture.
 - `personal-layer-home` · detail · "`./CLAUDE.local.md` (gitignored), your `observations/`, the skills you authored" ← cc-memory-docs. `observations/` is our convention, not a platform path — correctly named by location rather than by a reserved term.

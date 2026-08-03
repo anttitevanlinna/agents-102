@@ -17,7 +17,7 @@ The session shows you what no benchmark can.
 
 ## Managing the window
 
-- **Never trust the window** to hold over a long session. Compact early and manually if you like: `/compact focus on the failure modes and the validation I'm sketching` keeps what you choose, where a bare `/compact` keeps whatever the summariser guessed mattered. Many good engineers just let auto-compact fire. No winning strategy here, and no percentage worth memorising.
+- **Never trust the window** to hold over a long session. Compact early and manually if you like: `/compact focus on the failure modes and the validation I'm sketching` keeps what you choose, where a bare `/compact` keeps whatever the summariser guessed mattered. Some good engineers just let auto-compact fire. No winning strategy here, and no percentage worth memorising.
 - Manual compaction works because you're at the keyboard. The diagnosis is bounded keyboard work. The re-send at the end of this module runs for hours while you're away, and a session nobody is watching can't be manually compacted.
 - Hands-off option one: trust auto-compact. The model decides what to keep when its window fills. Sometimes useful, sometimes wrong; better than dropping context entirely.
 - Hands-off option two: give the agent something durable to re-read. A working document the agent owns and updates. A reference it diffs its output against. An automated check that fires on produced work. Files on disk survive compaction; conversation-only instructions may not. Once those exist, auto-compact can fire and the agent re-anchors from what survives.
@@ -52,7 +52,7 @@ Claims
 - `skip-a-lens-lose-a-name` · vision · "the lens you skip is the failure you can't name" ← none-owed
 - `never-trust-the-window` · vision · "Never trust the window to hold over a long session." ← none-owed
 - `compact-with-instructions` · detail · "`/compact focus on the failure modes and the validation I'm sketching` keeps what you choose" ← anthropic-compact-docs
-- `auto-compact-is-legitimate` · detail · "Many good engineers just let auto-compact fire." ← osmani-long-running, amp-neo, steipete-inference-speed
+- `auto-compact-is-legitimate` · detail · "Some good engineers just let auto-compact fire." ← osmani-long-running, amp-neo, steipete-inference-speed
 - `no-percentage-worth-memorising` · detail · "No winning strategy here, and no percentage worth memorising." ← humanlayer-long-context, cc-autocompact-varies, horthy-ace-fca
 - `manual-needs-a-keyboard` · vision · "Manual compaction works because you're at the keyboard." ← none-owed
 - `files-survive-compaction` · detail · "Files on disk survive compaction; conversation-only instructions may not." ← cc-context-window-docs

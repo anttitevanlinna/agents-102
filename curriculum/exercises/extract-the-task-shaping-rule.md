@@ -64,14 +64,14 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 
 **View summary:** You ask the agent to recover the task-shaping rules hidden in the planning session, rewrite anything generic, and save the useful rules where they will fire. The artifact turns one good planning experience into reusable guidance for similar work.
 
-**Scope ends at the automation-shapes read.** The ticket-conventions prompt (`extract-the-task-shaping-rule-4`) belongs to M1's `close-the-ticket`, which is also where *refinement* is earned as a term — do not reintroduce either here. Body differs from the SHAs below; re-audit before ship.
+**Scope ends at the automation-shapes read.** The ticket-conventions prompt (`extract-the-task-shaping-rule-4`) belongs to M1's `close-the-ticket`, which is also where *refinement* is earned as a term — do not reintroduce either here.
 
 **Phase 3 automation-shapes prompt (`extract-the-task-shaping-rule-3`) kept, not cut.** The lecture `where-the-rule-could-live` walks the same three shapes, which makes this prompt look like a cut candidate. It is not: this is a no-build, name-the-shapes horizon beat, so it adds none of the concurrent-heavy-execution load the cull targeted — cutting it reclaims no load, it only drops a cheap payoff. It gives the slot a breather after the rules-extraction work and primes the lecture reveal (generate-then-reveal). Not a cut candidate.
 
 **Emphasis budget (`check_slides.md §9`):** no bolded handles in the body; all bullet leads plain. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
-**Quality:** compendium-audited 2026-08-02 (writing@1c765f2 story@1c765f2 technical@1c765f2 behavior@1c765f2 strategy@1c765f2 slides@1c765f2)
-- judges @e409261: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy REVISE (1/3-see-instances/ae101--exercise--extract-the-task-shaping-rule.pedagogy.json), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-03 (writing@cb44994 story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@cb44994 strategy@1c765f2 slides@cb44994)
+- judges @cb44994: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - cohorts: none yet
 

@@ -71,8 +71,6 @@ The field rules stay in the scrollback. The next exercise sweeps this whole sess
 
 **Emphasis budget (`check_slides.md §9`):** one bolded handle in the body, **Refinement**, at its term-earning moment on the conventions slide. All other bullet leads plain; widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`) stays bold.
 
-**No Quality line: this file has never been audited.** It needs a `curriculum-pre-ship-audit` pass before ship, and it is now in-class rather than take-home, which raises the bar. Tracked in `pre-cohort-todos.md`.
-
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read conventions off one ticket) + Apply (write and land the close-out).
 - **Time:** 20 min inside M1's slot. Beat split: read the ticket 3 / conventions 5 / push-back 4 / close-out 5 / read and ship 3.
@@ -139,3 +137,6 @@ OODA
 - last-run: 2026-08-03
 
 <!-- /backing -->
+
+**Quality:** compendium-audited 2026-08-03 (writing@d1c41dd story@d1c41dd technical@d1c41dd behavior@d1c41dd pedagogy@d1c41dd strategy@d1c41dd slides@d1c41dd)
+- judges @d1c41dd: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

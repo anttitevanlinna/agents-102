@@ -93,7 +93,7 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 
 **The bolded task-sizing callout in `## Prework` is mandated, not stylistic.** `check_pedagogy.md` §34 requires a **bolded** anti-pattern line naming the ceiling wherever task selection drives the outcome, and prints almost this exact wording as its own example. A slides judge reads it as a §9 emphasis-budget violation (two bolded sentences, not a short handle) because §9 cannot see §34. Accepted-by-design: do not flatten it, and do not re-raise it as a fresh finding.
 
-**M2 issues no homework.** The ticket-conventions read and the *refinement* term both live in M1's `close-the-ticket`; do not reintroduce either here or add a `## Homework` section pointing at one. Body touched since the SHAs below — re-audit before ship.
+**M2 issues no homework.** The ticket-conventions read and the *refinement* term both live in M1's `close-the-ticket`; do not reintroduce either here or add a `## Homework` section pointing at one.
 
 **Line 56's recovery sentence stays in body — maintainer call 2026-08-02.** *"If it did overwrite, the old rules are still in this session's scrollback; ask Claude to restore them."* This is `check_student_facing.md` §5's own boundary case, not a violation of it: the failure is plausible (the prompt is fair to misread as a replace), the rescue is non-obvious (that the old rules survive in scrollback is not something a student would guess), and it is one tight line of state-plus-one-move. It is also **time-critical** — the scrollback dies with the session, so a student who finds the overwrite after closing has lost the rules for good. Body is the only surface that reaches them while the rescue still works. A writing judge has flagged this once and the orchestrator then proposed routing it below the maintainer fence, which §5 explicitly calls deletion. Do not cut it, and do not "move it to the trainer" — the fence is stripped from every rendered surface.
 
@@ -108,9 +108,9 @@ This module points at four sources in body and owned a stamp for none of them; t
 - `[checked:2026-07-02 result:OK due:none]` https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/ — [delegated stamp] Willison, the line 90 `## Pre-read` for Module 3. Dated check owned by `supplementary/the-lethal-trifecta.md`, itself `due:none` as a durable named-framing piece. fallback: the supplementary carries the threat class in full.
 - `[checked:2026-08-02 result:OK due:cohort]` https://owasp.org/www-project-top-10-for-large-language-model-applications/ — [academic/research] The line 92 optional deeper scan, and the one source here no other file stamps. Page live and actively maintained at check. **Scope caveat that will matter at re-check:** the effort has become the OWASP GenAI Security Project and the current list lives at genai.owasp.org/llm-top-10/ (2025 edition), with the v1.1 categories the body echoes — prompt injection, insecure output handling, data leakage — now archived and partly renamed. The landing URL still resolves and still fronts the project. `due:cohort` because that migration is mid-flight. fallback: link the GenAI project root and describe it as the wider LLM-risk checklist without naming categories.
 
-**Quality:** compendium-audited 2026-08-02 (writing@ffc64f9 story@ffc64f9 technical@ffc64f9 behavior@ffc64f9 pedagogy@ffc64f9 strategy@ffc64f9 slides@ffc64f9)
-- judges @ffc64f9: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module: PASS see instances/ae101--prework-m6.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]
+**Quality:** compendium-audited 2026-08-03 (writing@cb44994 story@cb44994 technical@ffc64f9 behavior@ffc64f9 pedagogy@cb44994 strategy@ffc64f9 slides@cb44994)
+- judges @cb44994: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @cb44994: PASS — set=[getting-going,plan-mode-done-right]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

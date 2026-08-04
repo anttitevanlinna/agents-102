@@ -79,6 +79,7 @@ A gate is one more claim in the system. Build it, then hold it to the same bar i
 
 - Every task you hand off sits on two axes. Reach is how much you delegated: the size of the task, the length of the leash. Calibration is whether your trust in what came back was earned by a check you have verified.
 - Four states fall out. Low reach is chat-shaped work or controlled assistance: you read everything, so trust is not the question yet. High reach splits on calibration alone. Calibrated agency when the gates behind the green are ones you have measured, reckless autonomy when they are not. From outside, the two look identical. The five ways a gate lies are the whole difference.
+- The model sets one limit on reach; the gates behind it set another. Useful reach stops at the lower one. A stronger model behind an unverified gate still leaves you with work you cannot safely accept.
 - The frontier moves outward only as fast as the gates behind it. Push reach past your calibration and you are not delegating more. You are checking less.
 
 <!-- maintainer -->
@@ -127,6 +128,7 @@ Claims
 - `regression-to-the-mean-trap` · borrowed · "After a bad session, the next session is usually better with no change at all." ← cultural-vocab
 - `two-axes-reach-and-calibration` · vision · "Every task you hand off sits on two axes." ← none-owed
 - `four-states-fall-out` · vision · "Calibrated agency when the gates behind the green are ones you have measured, reckless autonomy when they are not." ← none-owed
+- `useful-reach-stops-at-the-lower-limit` · vision · "The model sets one limit on reach; the gates behind it set another. Useful reach stops at the lower one." ← none-owed
 - `frontier-moves-with-the-gates` · vision · "The frontier moves outward only as fast as the gates behind it." ← none-owed
 
 Sources

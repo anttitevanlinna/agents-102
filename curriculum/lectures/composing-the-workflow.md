@@ -160,10 +160,11 @@ You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map o
 ## From skills to a workflow
 
 - A session passes through phases: context, plan, build, verify, ship. A skill sits where its job sits. Its footprint is set by the job, not by the phase line.
-- The field wires kits more ways than one; no way has won. Pocock ships a public kit, no orchestrator: you call each skill by hand. Your kit already runs this way; the walk-down against your plan was his grill-me, abbreviated. Klaassen chains steps through files on disk, a gate at every seam.
-- In one engineer's fully documented kit, skills wire four ways. One skill names another as a precondition: **an explicit load**. One sequences and gates a chain: **an orchestrator**, the pilot on the chart. A rule in `./CLAUDE.md` fires a skill when a file or phrase matches: **routing**. One hands its output straight to the next: **a hand-off**.
-- Some workflows have a pilot; many do not. The **pilot** is one skill whose whole job is running the others, stopping on a bad check, re-invoked until the task lands. A skill that does one job and calls nothing is a **leaf**.
-- The value is the order, not the count. Three moves in the right sequence beat ten in a heap.
+- The field wires kits more ways than one; no way has won. Pocock ships a public kit with no orchestrator: you call each skill by hand. Klaassen chains steps through files on disk, a gate at every seam. Some workflows have a pilot; many do not.
+- One documented kit wires skills four ways. One skill names another as a precondition: **an explicit load**. One sequences and gates a chain: **an orchestrator**, the pilot. A rule in `./CLAUDE.md` matches a file or phrase: **routing**. One hands its output to the next: **a hand-off**. A skill that does one job and calls nothing is a **leaf**.
+- A workflow is not only steps in order. At a seam, a check or stop condition decides whether the next step may begin.
+- Chaining generation without checks only moves work into the review queue faster.
+- Your job moves from reading every intermediate output to designing the checks, routes, and exceptions that deserve your judgment.
 
 ## Composition is a live argument, so you read
 
@@ -190,7 +191,7 @@ Pick the shape that resembles your day.
 
 **Vocabulary bridge (earned once).** move = skill (slide-1 bullet 1; slide 2 then speaks *skill* throughout — the noun *move* stays on slide 1 where the chart defines it, avoiding the moves-verb/move-noun collision); pilot = orchestrator (slide-2 pilot bullet); leaf = a skill that does one job and calls nothing (same bullet). The chart speaks nautical (pilot); the supplementaries speak Dino (orchestrator, leaf); the slide bridges them so chart, slide, and reads are one system. Do not re-earn in the supplementaries. Session/task/run vocabulary per `check_student_facing.md §21b`.
 
-**§3 disposition (no cross-module sequencing in body).** The kit is named by what it is ("test-strategy skill, verifier, and a freshly drawn map of the moves worth packaging next") — backward recognition, not forward sequencing. No `M[0-9]` tags in body. The chart callback ("the passage you already sailed") is spine-anchoring on the shared M5 image, not a cross-module ref; likewise "the walk-down against your plan file" is arc-earned content phrasing (lived at M2, named in *Skills from the frontier*), not a module tag.
+**§3 disposition (no cross-module sequencing in body).** The kit is named by what it is ("test-strategy skill, verifier, and a freshly drawn map of the moves worth packaging next") — backward recognition, not forward sequencing. No `M[0-9]` tags in body. The chart callback ("the passage you already sailed") is spine-anchoring on the shared M5 image, not a cross-module ref.
 
 **Length discipline.** The lecture is concrete-teacher-plus-pointer, not survey-pointer. Ceiling: lede + the figure slide + one mechanics slide + the two reads. The variety sentences on slide 2 (Pocock by hand, Klaassen through files, one documented kit) are the ceiling for in-body field coverage; do NOT re-import the full lineages walk — it lives in `workflow-composition-lineages.md`. New composition discoveries land in the supplementary; the lecture body changes only if a mechanism is renamed at the field level, a wiring shape gains or loses currency, or the student's kit shape changes.
 
@@ -211,19 +212,19 @@ Claims
 - `never-size-a-skill-in-advance` · vision · "You never size a skill in advance. The job sizes it." ← none-owed
 - `nothing-new-except-the-placing` · vision · "Nothing here is new except the placing." ← none-owed
 - `moves-are-not-phase-bound` · vision · "Its footprint is set by the job, not by the phase line." ← none-owed
-- `four-wiring-mechanisms` · detail · "In one engineer's fully documented kit, skills wire four ways: **an explicit load** … **an orchestrator** … **routing** … **a hand-off**" ← skill-stacking-supp
+- `four-wiring-mechanisms` · detail · "One documented kit wires skills four ways: **an explicit load** … **an orchestrator** … **routing** … **a hand-off**" ← skill-stacking-supp
 - `field-wires-more-ways-than-one` · detail · "The field wires kits more ways than one; no way has won." ← lineages-supp
-- `pocock-by-hand` · detail · "Pocock ships a public kit, no orchestrator: you call each skill by hand." ← lineages-supp
+- `pocock-by-hand` · detail · "Pocock ships a public kit with no orchestrator: you call each skill by hand." ← lineages-supp
 - `klaassen-file-chained` · detail · "Klaassen chains steps through files on disk, a gate at every seam." ← lineages-supp
-- `walk-down-was-grill-me` · detail · "the walk-down against your plan was his grill-me, abbreviated" ← grill-me-exercise
 - `many-kits-keep-zero-pilots` · detail · "Some workflows have a pilot; many do not." ← skill-stacking-supp, lineages-supp
-- `pilot-and-leaf-defined` · detail · "The **pilot** is one skill whose whole job is running the others … A skill that does one job and calls nothing is a **leaf**." ← skill-stacking-supp
-- `order-beats-count` · vision · "Three moves in the right sequence beat ten in a heap." ← none-owed
+- `pilot-and-leaf-defined` · detail · "**an orchestrator**, the pilot … A skill that does one job and calls nothing is a **leaf**." ← skill-stacking-supp
+- `seam-check-decides-whether-next-step-begins` · vision · "At a seam, a check or stop condition decides whether the next step may begin." ← none-owed
+- `unchecked-generation-fills-the-review-queue` · vision · "Chaining generation without checks only moves work into the review queue faster." ← none-owed
+- `workflow-designer-owns-checks-routes-exceptions` · vision · "Your job moves from reading every intermediate output to designing the checks, routes, and exceptions that deserve your judgment." ← none-owed
 - `composition-is-a-live-argument` · detail · "How the field composes kits like this is a live argument with no settled answer" ← lineages-supp
 
 Sources
 - skill-stacking-supp `[checked:2026-07-05 result:OK due:none]` kb:none — [delegated stamp] `curriculum/trainings/agentic-engineering-101/supplementary/skill-stacking.md` carries the primary stamps for the four composition mechanisms and the `/ship`-as-pilot worked example (Dino's in-repo stack). A worked example of a shipped kit does not expire. **`/ship` is Dino's own skill, NOT a Claude Code built-in** — the chart keeps the orchestrator generic ("the pilot") and the named example stays in the supplementary, which is the whole reason this body carries no product name. fallback: re-verify in that doc if its own stamps age out.
-- grill-me-exercise `[checked:2026-08-02 result:OK due:none]` kb:none — [delegated stamp] `curriculum/exercises/push-back-on-the-plan.md` carries the commit-pinned grill-me stamp (Pocock, MIT-licensed, forked abbreviated with attribution). The delegation does not expire; the exercise's own stamp does. fallback: soften to "a branch-walking interview from a public kit" if the named-skill framing needs to drop.
 - lineages-supp `[checked:2026-08-01 result:CAVEAT due:none]` kb:none — [delegated stamp] `curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md` carries the field-survey lineages and their per-source stamps. **`due:none` is the delegated variant** (`backing-format.md` § Delegated): the delegation does not expire, the delegate's own stamps do, and `source-freshness.sh` already walks that file. The previous `due:2026-11-25` was a second copy of the delegate's freshness, computed from a 2026-05-25 check that the July correction had superseded — it went stale in silence because nothing compares a delegating date against the file it delegates to. `checked:` still means what it says here: the date this pointer was last confirmed to aim at the right file. fallback: this lecture asserts no dated specific of its own; if the supplementary's lineages change, only the "live argument" claim here is affected, and that claim gets *stronger* when the field moves.
 
 Frameworks

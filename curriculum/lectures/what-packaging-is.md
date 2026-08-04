@@ -4,7 +4,7 @@ The packaged re-send is running and the laptop is closed again. What you assembl
 
 ## One session, plotted
 
-First the shape, then the names: one long session, drawn as a sea passage.
+One long session, drawn as a sea passage.
 
 <figure class="diagram">
 <svg viewBox="0 0 1200 560" role="img" aria-label="One agent session plotted as a sea passage: drift cones widen between position fixes and collapse at each fix; rails fence the reef; an unchecked twin session drifts across the no-go line into the rocks and arrives at the wrong harbor." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
@@ -203,6 +203,8 @@ First the shape, then the names: one long session, drawn as a sea passage.
 
 Packaging is choosing which of these fixes stand without you.
 
+A standing check pushes back before the next wrong step builds on the last one. That is the difference between a final review and feedback inside the passage.
+
 ## The three-pattern
 
 - Each piece turns up on its own across practitioner write-ups. This training combined them into one kit and gave them names. Geoffrey Huntley's Ralph is the one published practice that runs all three at once. Armin Ronacher's January 2026 MiniJinja port ran two of them and named neither. You built all three today off your own failures, which beats a citation. On the map, the kit is what stands in for you at Verification.
@@ -282,6 +284,7 @@ Claims
 - `rails-at-irreversible-edges` · vision · "Rails belong where damage cannot be undone. Fence the reef, not the open water." ← none-owed
 - `unchecked-run-confident-and-wrong` · vision · "An unchecked session arrives confident, and wrong." ← none-owed
 - `packaging-is-fixes-that-stand-without-you` · vision · "Packaging is choosing which of these fixes stand without you." ← none-owed
+- `standing-check-pushes-back-inside-the-passage` · vision · "A standing check pushes back before the next wrong step builds on the last one." ← none-owed
 - `pieces-turn-up-on-their-own` · detail · "Each piece turns up on its own across practitioner write-ups." ← huntley-ralph, ronacher-minijinja, klaassen-stop-coding
 - `three-pattern-is-our-combination` · vision · "This training combined them into one kit and gave them names." ← none-owed
 - `huntley-runs-all-three` · detail · "Geoffrey Huntley's Ralph is the one published practice that runs all three at once." ← huntley-ralph, huntley-triad-count, klaassen-stop-coding, ronacher-minijinja

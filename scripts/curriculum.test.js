@@ -37,22 +37,22 @@ test('configured Markdown opens external and supplementary/reference links in a 
   configureMarked(marked);
   const html = marked.parse([
     '[External](https://example.com)',
-    '[Workbook supplement](#supplementary-backpressure)',
+    '[Workbook supplement](#supplementary-verification-asymmetry)',
     '[Workbook reference](#reference-claude-quick-reference)',
-    '[SPA supplement](curriculum.html?file=trainings/agentic-engineering-101/supplementary/backpressure)',
+    '[SPA supplement](curriculum.html?file=trainings/agentic-engineering-101/supplementary/verification-asymmetry)',
     '[Module](#getting-going)'
   ].join('\n\n'));
 
   assert.match(html, /<a href="https:\/\/example\.com" target="_blank" rel="noopener">External<\/a>/);
-  assert.match(html, /<a href="#supplementary-backpressure" target="_blank" rel="noopener">Workbook supplement<\/a>/);
+  assert.match(html, /<a href="#supplementary-verification-asymmetry" target="_blank" rel="noopener">Workbook supplement<\/a>/);
   assert.match(html, /<a href="#reference-claude-quick-reference" target="_blank" rel="noopener">Workbook reference<\/a>/);
-  assert.match(html, /<a href="curriculum\.html\?file=trainings\/agentic-engineering-101\/supplementary\/backpressure" target="_blank" rel="noopener">SPA supplement<\/a>/);
+  assert.match(html, /<a href="curriculum\.html\?file=trainings\/agentic-engineering-101\/supplementary\/verification-asymmetry" target="_blank" rel="noopener">SPA supplement<\/a>/);
   assert.match(html, /<a href="#getting-going">Module<\/a>/);
 });
 
 test('supplementary and reference index rows open in a new tab', () => {
-  const html = simpleRowHtml('Reference', 'Backpressure', '#supplementary-backpressure');
-  assert.match(html, /<a href="#supplementary-backpressure" target="_blank" rel="noopener">/);
+  const html = simpleRowHtml('Reference', 'Verification asymmetry', '#supplementary-verification-asymmetry');
+  assert.match(html, /<a href="#supplementary-verification-asymmetry" target="_blank" rel="noopener">/);
 });
 
 test('shared footer external links open in a new tab', () => {

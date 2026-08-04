@@ -58,9 +58,9 @@ The **personal rules file** (`./CLAUDE.local.md`, gitignored) is the canonical w
 
 The **team rules file** (`./CLAUDE.md`, PR-reviewed) changes only when a rule is team-worthy enough to earn review. Rare by design. M1's compound exercise flags team-worthy rules separately so the engineer can open a PR against the team file outside the training.
 
-There is no company layer. Whether a company's shared conventions earn a file-backed home of their own, the way the personal and team layers already have, is an open question rather than a settled gap. The M4 closing lecture `will-company-memory-emerge.md` poses it and leaves it deliberately unresolved: this section stays the authority on what ships today, the lecture runs the debate, not the decision.
+AE101 ships two defined rule layers: personal and team. It does not prescribe a company-wide rules file. Company-wide conventions still need an owner and a review path before they qualify as durable state; the training keeps that boundary open without giving it a separate lecture.
 
-The in-repo knowledge home needs a rename too, but for a separate, mechanical reason (a name/location collision, not the company-layer debate). That fix is now decided, `.claude/memory/` → repo-root `observations/`, and detailed in §Knowledge-home rename below. It is independent of the open company-layer question; un-parking the rename does not resolve the lecture.
+The in-repo knowledge home is repo-root `observations/` for a separate mechanical reason: `.claude/memory/` collides with Claude Code's own memory name and location. The knowledge home does not create a third rule layer; §Knowledge-home rename below owns its mechanics.
 
 ### Knowledge-home rename: `.claude/memory/` → `observations/` (applied 2026-05-26; runner + compendiums tail)
 

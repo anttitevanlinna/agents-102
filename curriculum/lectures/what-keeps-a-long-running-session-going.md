@@ -24,7 +24,7 @@ The session is working. Do not change this first experiment while it runs. Watch
 
 **Lecture meta:** *~4 min, three slides. M4 closer after the send-off, read while the un-packaged session remains active. The session is the specimen: each slide turns attention toward durable state, downstream feedback, and boundaries already present.*
 
-**Placement:** The observational close rides the active session after `ironies-of-automation` and before `reading-the-return`. It keeps curious readiness open. The trainer does not add a plan, verifier, reference artifact, or new gate during the experiment.
+**Placement:** The observational close rides the active session after `ironies-of-automation` and before `reading-the-return`. It keeps curious readiness open. The trainer does not alter or package the active experiment.
 
 **Time budget total:** ~4 min at presentation pace. One slide per question: what keeps the place, what keeps the direction, what decides whether the session continues.
 

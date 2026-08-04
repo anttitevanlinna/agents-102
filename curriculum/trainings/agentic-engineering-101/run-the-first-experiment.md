@@ -127,8 +127,6 @@ Optional. They sit in the gap while your un-packaged session is still going. All
 
 **"Past ten or so, you've become the agent" stays — maintainer call 2026-08-02.** `check_pedagogy.md §16` bans count-scripts but its own boundary clause exempts this shape: *"pacing calibrations survive as suggestions. A number that helps the student pace themselves (when to stop nudging) may stay in body in suggestion register (or so, around, a fair ceiling) — cut the prescription, keep the calibration."* The line carries `or so` and attaches a felt signal (*you've become the agent*), so it calibrates rather than prescribes; the banned shape is a bare imperative count like *"two rounds max"*. Cutting the number would strip the one piece of calibration a first-timer has no way to supply — they cannot know whether three nudges or thirty is normal. A pedagogy judge flagged it once, having read the ban and not the boundary.
 
-**2026-07-30 (pre-read echo):** student-visible callback in `## Prework` defusing the factory-essay objection (the wsff pre-read in `getting-going.md` argues against lights-off runs; this module's un-packaged send-off is the obvious collision). Framing: throwaway experiment on a pinned branch + Module 5 builds what the essay says is missing. Body touched — per-class Quality SHAs below predate; re-audit before ship.
-
 **Quality:** compendium-audited 2026-08-04 (writing@93bb807 story@93bb807 technical@93bb807 behavior@93bb807 pedagogy@93bb807 strategy@93bb807 slides@93bb807)
 - judges @93bb807: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @93bb807: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; see instances/ae101--m4-m5-m6.cross_module.json

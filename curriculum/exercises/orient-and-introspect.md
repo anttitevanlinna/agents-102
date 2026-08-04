@@ -49,6 +49,8 @@ Ask Claude to introspect on what it read, what it skipped, and the call it made 
 
 - The context window has a ceiling. `/context` is the slash command that shows how full it is: total used, and the breakdown by category (system prompt, messages, memory, skills).
 
+Run `/context` to see how much of the window is used and what fills it.
+
 {{prompt:orient-and-introspect-3}}
 
 (`/context` is oldskool; a status line shows the same thing continuously. Use [ccstatusline](https://github.com/sirmalloc/ccstatusline), or ask Claude to build your own with `/statusline`.)

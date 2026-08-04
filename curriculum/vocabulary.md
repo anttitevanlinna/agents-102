@@ -61,7 +61,7 @@ Names the training assembled or embargoes. One rule governs them all: **a house 
 | **the three-pattern** | reference artefact · plan.md · verifier — the packaging keystone | word embargo before the M5 closer: openers and pre-reads use descriptive paraphrases; the closer earns the names. They are our names, not Ronacher's | `what-packaging-is` |
 | **verifier shapes** | background-agent verifier · deterministic shell hook · Ralph re-feed | the menu is a synthesis of practitioner-lived moves ("the menu form is the synthesis") — attribute the menu to the training, the moves to their practitioners | `what-packaging-is` |
 | **eval** (the word) | the M6-earned name for the ranked check | embargoed until `agents-that-build-agents` earns it from the M5 verifier + ranked check-menu; don't pre-plant | `agents-that-build-agents` |
-| **backpressure** | the far-half governor form | named form owned by the supplementary; deliberately absent elsewhere — siblings keep plain "check resets the chain" language | `supplementary/backpressure.md` |
+| **backpressure** | downstream feedback that slows, stops, or redirects production when the next stage cannot safely accept more | earned once after the M4 send-off; later lectures prefer checks, gates, review bandwidth, reach, and workflow seams | `what-keeps-a-long-running-session-going` |
 | **pre-read** | the between-module reading surface (AE101) | the pre-read carries depth; the opener restates for the room — don't expand opener explanations, don't leak embargoed names there | `learning-through-contrast` maintainer contract |
 
 ## Register bans and conventions (pointers, not copies)

@@ -150,6 +150,10 @@ test('eval-coverage lecture surface includes every THEORY_HANDBOOK_MANIFEST lect
   // Parse sanity: newest lecture present + plausible count, so an empty match
   // can never green-light the assertion below.
   assert.ok(manifestLectures.includes('the-map-filled-in'), 'manifest parse sanity failed: the-map-filled-in not extracted');
+  assert.ok(
+    manifestLectures.includes('what-keeps-a-long-running-session-going'),
+    'manifest parse sanity failed: M4 long-session closer not extracted'
+  );
   assert.ok(manifestLectures.length >= 18, `manifest parse sanity failed: only ${manifestLectures.length} lectures extracted`);
 
   const audit = require('../scripts/audit-eval-coverage.js');
@@ -299,7 +303,9 @@ test('theory handbook build', async (t) => {
     assert.match(handbook, /<section class="phase phase--lecture" id="lectures-the-whole-map">/);
     assert.match(handbook, /<h1 id="the-whole-map">The whole map<\/h1>/);
     assert.match(handbook, /id="lectures-the-agent-loop"/);            // newly promoted lecture
-    assert.match(handbook, /id="supplementary-backpressure"/);        // supplementary theory page
+    assert.match(handbook, /id="lectures-what-keeps-a-long-running-session-going"/);
+    assert.doesNotMatch(handbook, /id="lectures-will-company-memory-emerge"/);
+    assert.doesNotMatch(handbook, /id="supplementary-backpressure"/);
     assert.match(handbook, /Theory handbook/);                        // handbook chrome title
   });
 
@@ -361,6 +367,7 @@ test('theory handbook build', async (t) => {
       'id="lectures-test-and-learn"',
       'id="exercise-summary-walk-and-send-off"',
       'id="lectures-ironies-of-automation"',
+      'id="lectures-what-keeps-a-long-running-session-going"',
       'id="lectures-learning-through-contrast"',
       'id="exercise-summary-diagnose-and-resend"',
       'id="lectures-what-packaging-is"',

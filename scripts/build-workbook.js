@@ -144,7 +144,7 @@ const THEORY_HANDBOOK_MANIFEST = {
       'lectures/test-and-learn',
       'exercises/walk-and-send-off',
       'lectures/ironies-of-automation',
-      'lectures/will-company-memory-emerge',
+      'lectures/what-keeps-a-long-running-session-going',
       'lectures/reading-the-return',
       'supplementary/verification-asymmetry',
     ]],

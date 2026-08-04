@@ -95,9 +95,9 @@ If Claude stalls and you want to see whether it picks itself back up, this nudge
 
 {{prompt:ae101-m4-nudge-continue}}
 
-The task is running. One open question while it works.
+The task is running. One question while it works: what lets a long-running session continue without you holding every step?
 
-[Lecture: Will company memory emerge?](lectures/will-company-memory-emerge.md)
+[Lecture: What keeps a long-running session going?](lectures/what-keeps-a-long-running-session-going.md)
 
 Before you close: read [Reading the return](lectures/reading-the-return.md). It plants the question and the three failure modes you'll use to read what comes back.
 
@@ -135,11 +135,12 @@ Optional. They sit in the gap while your un-packaged session is still going. All
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create
-- **Session runtime:** 1h45 (Connections 10 / Lectures 18–22: far-half 3–5 + agent-loop ~5 + test-and-learn 10–12, per their own Time lines / Exercise 55 / Send-off section ~15 incl. ironies-of-automation 2–3, the return markers, the trifecta check, and the prompt paste / closing lecture ~4 riding the running agent / Close + Bridge 3 ≈ 103 + 2 buffer; recounted 2026-08-01 — the previous "Lecture 12" predated the promoted lectures, and "Debrief 12 / Send-off 5" predated the no-compound close that folded both into the send-off section). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Send-off is a single prompt paste, not a wait. Exercise breakdown: Phase 1 pick 10 / Phase 2 walk-and-fill 40 / Phase 3 settle 5. The 2-day compressed 1h30 slot runs ≈95–99 against 90 even with Connections at 5 and Bridge cut — default cut undecided, tracked in `pre-cohort-todos.md`.
+- **Session runtime:** 1h45 (Connections 10 / Lectures 18–22: far-half 3–5 + agent-loop ~5 + test-and-learn 10–12, per their own Time lines / Exercise 55 / Send-off section ~15 incl. ironies-of-automation 2–3, the return markers, the trifecta check, the prompt paste, and the three-slide observational closer ~4 riding the active session / Close + Bridge 3 ≈ 103 + 2 buffer). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Send-off is a single prompt paste, not a wait. Exercise breakdown: Phase 1 pick 10 / Phase 2 walk-and-fill 40 / Phase 3 settle 5. The 2-day compressed 1h30 slot runs ≈95–99 against 90 even with Connections at 5 and Bridge cut — default cut undecided, tracked in `pre-cohort-todos.md`.
 - **Prep / bridge timing:** `reading-the-return.md` 5 min at M4 close; Uncle Bob supplementary 7 min; Entis/Klaassen interview 30 min; Klaassen compound-engineering guide 15–20 min.
-- **Deliberate incompleteness (module-level stance, maintainer call 2026-08-01):** M4 leaves questions partially open on purpose — the un-packaged send-off, the unfilled gaps beyond the top three, the unresolved company-memory close. The trainer does not fully patch gaps or resolve open questions; students carry them into the send-off and M5, and the thinking-for-themselves is the point. Audits and future passes: partial openness here is design, not under-scaffolding — do not flag or fill it.
+- **Deliberate incompleteness:** M4 leaves the un-packaged send-off and the unfilled gaps beyond the top three open. The closer observes where existing boundaries fire, where the session waits, and where nothing pushes back. The trainer does not add packaging or patch the gaps before M5 reads the result.
 - **Mood target:** curious readiness — *"I've built enough to try; let's see what the agent does."* Watch for: mood drift toward compliance-feeling (*"did I prepare the right way?"*) or performance-anxiety (*"what if it fails?"*). Diagnostic: student at Phase 2 keeps asking *"is this enough?"* Fix: trainer reframes — *"enough is a question for M5. The experiment is the point."*
 - **Lecture wiring (2026-07-02):** `lectures/the-agent-loop.md` promoted from M1 supplementary (Antti-directed), inlined between the far-half opener and Test and learn. Beat rationale: the far half names the country, this names the machine about to walk it; its three introspection prompts run on the live session that will carry the send-off, so the tool list that comes back is the one the long run rides. Adds ~5 min to the Lecture beat (budget above says 12 — eyeball). Promotion record + eyeball questions in the lecture's maintainer block.
+- **Closing lecture wiring:** `lectures/what-keeps-a-long-running-session-going.md` is a three-slide observational beat after the send-off. It rides the active session and points at durable state, feedback, and boundaries already present without changing the un-packaged baseline.
 - **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries. Not restated here. Module-specific: the send-off happens IN the same session the student used for walk + fill + frame + retro — no new session, no scheduled agent, no cloud runner. 15-30 minutes is enough for the clues the M5 read needs; engineers run these for hours at work, ambition grows with practice.
 
 **Push-back moves** (trainer delivers):

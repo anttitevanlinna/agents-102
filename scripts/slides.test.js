@@ -70,10 +70,10 @@ const FIXTURE = `
     <p>Module 2 is where plan mode earns its keep.</p>
   </section>
 
-  <section class="module" id="supplementary-backpressure">
+  <section class="module" id="supplementary-verification-asymmetry">
     <div class="phase-kicker">Supplementary</div>
-    <h1>Backpressure</h1>
-    <h2>The far-half story</h2><p>body</p>
+    <h1>Verification asymmetry</h1>
+    <h2>Checking can be cheaper than doing</h2><p>body</p>
   </section>
 
   <section class="module" id="reference-prompt-anatomy">
@@ -107,8 +107,8 @@ test('composed deck includes the prework section', () => {
 
 test('composed deck includes supplementary sections (linked supplements)', () => {
   const { labels } = buildDeck();
-  assert.match(labels, /Backpressure/, 'supplementary title present');
-  assert.match(labels, /The far-half story/, 'supplementary body slide present');
+  assert.match(labels, /Verification asymmetry/, 'supplementary title present');
+  assert.match(labels, /Checking can be cheaper than doing/, 'supplementary body slide present');
 });
 
 test('composed deck includes reference sections', () => {

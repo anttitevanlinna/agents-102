@@ -153,7 +153,6 @@ const THEORY_HANDBOOK_MANIFEST = {
       'exercises/diagnose-and-resend',
       'lectures/what-packaging-is',
       'lectures/the-gate-is-a-claim',
-      'supplementary/backpressure',
     ]],
     ['M6', [
       'lectures/the-2-frontiers',

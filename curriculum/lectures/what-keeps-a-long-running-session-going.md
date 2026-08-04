@@ -37,7 +37,7 @@ The session is working. Do not change this first experiment while it runs. Watch
 - `boundaries-interrupt-wrong-steps` · vision · "Each can interrupt a wrong step before the next step builds on it." ← none-owed
 
 **Sources**
-- costa-backpressure `[checked:2026-07-02 result:OK due:none]` https://www.lucasfcosta.com/blog/backpressure-is-all-you-need — [practitioner direct] Lucas F. da Costa, 2026-05-23. Byline, date and the quoted sentence verified verbatim. Durable account of an argument made once, so `due:none` rather than a calendar re-open. fallback: paraphrase as "practitioners now frame the human as the bottleneck stage" and drop the name.
+- costa-backpressure `[checked:2026-07-02 result:OK due:none]` https://www.lucasfcosta.com/blog/backpressure-is-all-you-need — [practitioner direct] Lucas F. da Costa, 2026-05-23. Byline, date and the quoted sentence verified verbatim. Durable account of an argument made once, so `due:none` rather than a calendar re-open. fallback: paraphrase as "human review can become the bottleneck stage" and drop the name.
 
 **Frameworks**
 - Backpressure · [borrow:flow engineering] · law:bandwidth-limited-channel · ← costa-backpressure
@@ -48,3 +48,6 @@ The session is working. Do not change this first experiment while it runs. Watch
 - would-move-it: a second independent practitioner naming the same human-as-downstream mechanism in long-running agent work.
 
 <!-- /backing -->
+
+**Quality:** compendium-audited 2026-08-04 (writing@038a6b8 story@038a6b8 technical@038a6b8 behavior@038a6b8 pedagogy@038a6b8 strategy@038a6b8 slides@038a6b8)
+- judges @038a6b8: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

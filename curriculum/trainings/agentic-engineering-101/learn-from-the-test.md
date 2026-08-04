@@ -81,7 +81,7 @@ Open a new Claude Code session in the worktree at `../<repo>-m5`. The packaging 
 /rename m5-long-run
 ```
 
-Fresh context matters here. The exercise session built heavy scrollback (verifier scaffolding, hooks, plan.md drafts); every re-send turn would otherwise pay cache-read on that prefix, $20-30 saved at Opus prices, and the field has a name for this move (Ralph's fresh-sessions camp, Amp's manual-handoff camp; see [What packaging is](lectures/what-packaging-is.md)).
+Fresh context matters here. The exercise session built heavy scrollback (verifier scaffolding, hooks, plan.md drafts); every re-send turn would otherwise pay cache-read on that prefix. A fresh session avoids repeatedly carrying the heaviest context, and the field has a name for this move (Ralph's fresh-sessions camp, Amp's manual-handoff camp; see [What packaging is](lectures/what-packaging-is.md)).
 
 Prefer to stay in the exercise session? Paste this to drop scrollback in-place:
 
@@ -135,7 +135,7 @@ Optional. Skipping does not break Module 6. Both fit the Module 5 to Module 6 ga
 
 **Read, Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it).** Klaassen runs the verifier 10 consecutive times before trusting it, and uses per-feedback specialised agents in parallel to triage review. Reliability is a number you measure, not a vibe you sense, and one verifier can become a panel. You'll recognise both in your own artefacts.
 
-**Read, Lucas F. da Costa, [Backpressure Is All You Need](https://www.lucasfcosta.com/blog/backpressure-is-all-you-need)** (May 2026). Da Costa follows the word from flow systems into agent work: when generation outruns judgment, the human becomes the limiting stage. Module 6 picks up the design question — which checks belong inside the workflow so the session does not wait for your read at every seam?
+**Read, Lucas F. da Costa, [Backpressure Is All You Need](https://www.lucasfcosta.com/blog/backpressure-is-all-you-need)** (May 2026). Da Costa follows the word from flow systems into agent work: when generation outruns judgment, the human becomes the limiting stage. Module 6 picks up the design question: which checks belong inside the workflow so the session does not wait for your read at every seam?
 <!--/flag:module:spot-gaps-build-the-loop-->
 
 <!-- maintainer -->
@@ -144,9 +144,9 @@ Optional. Skipping does not break Module 6. Both fit the Module 5 to Module 6 ga
 
 **Nag beat + reading reminder added (2026-07-10, Antti-directed cognitive-load arc):** (1) *Long sessions, short reads* blockquote in Start here — the M5 reminder leg of the selective-reading arc (M1 teach → M2 exception → M3 take-into-use → M5 remind), per `check_student_facing.md` §29 operational-reminder-at-moment-of-use. (2) New section *The nag writes the verifier* after Start here — reframes the M4 mid-run worry as the verifier's spec ("the feeling of what is missing points at what to build", Antti's frame near-verbatim); names the reference/plan.md/verifier trio in the same role-language the re-send section already uses. Opener-dosage check: arming beat (spirit + one move), does not name Ronacher's three-pattern or the failure-mode↔packaging pairing — closer's beats intact. First para names a plausible mid-run worry: resonant-copy carve-out, don't flatten at re-audit.
 
-**Quality:** compendium-audited 2026-08-02 (writing@0869025 story@0869025 technical@4b95319 behavior@1c765f2 pedagogy@0869025 strategy@0869025 slides@0869025)
-- judges @0869025: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module: PASS see instances/ae101--prework-m6.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]
+**Quality:** compendium-audited 2026-08-04 (writing@038a6b8 story@038a6b8 technical@038a6b8 behavior@038a6b8 pedagogy@038a6b8 strategy@038a6b8 slides@038a6b8)
+- judges @038a6b8: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @038a6b8: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; see instances/ae101--m4-m5-m6.cross_module.json
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create

@@ -129,9 +129,9 @@ Optional. They sit in the gap while your un-packaged session is still going. All
 
 **2026-07-30 (pre-read echo):** student-visible callback in `## Prework` defusing the factory-essay objection (the wsff pre-read in `getting-going.md` argues against lights-off runs; this module's un-packaged send-off is the obvious collision). Framing: throwaway experiment on a pinned branch + Module 5 builds what the essay says is missing. Body touched — per-class Quality SHAs below predate; re-audit before ship.
 
-**Quality:** compendium-audited 2026-08-02 (writing@ffc64f9 story@ffc64f9 technical@ffc64f9 behavior@1c765f2 pedagogy@94ff19b strategy@ffc64f9 slides@ffc64f9)
-- judges @94ff19b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module: PASS see instances/ae101--prework-m6.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]
+**Quality:** compendium-audited 2026-08-04 (writing@038a6b8 story@038a6b8 technical@038a6b8 behavior@038a6b8 pedagogy@038a6b8 strategy@038a6b8 slides@038a6b8)
+- judges @038a6b8: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @038a6b8: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; see instances/ae101--m4-m5-m6.cross_module.json
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create

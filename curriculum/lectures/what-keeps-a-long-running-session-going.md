@@ -48,6 +48,3 @@ The session is working. Do not change this first experiment while it runs. Watch
 - would-move-it: a second independent practitioner naming the same human-as-downstream mechanism in long-running agent work.
 
 <!-- /backing -->
-
-**Quality:** compendium-audited 2026-08-04 (writing@038a6b8 story@038a6b8 technical@038a6b8 behavior@038a6b8 pedagogy@038a6b8 strategy@038a6b8 slides@038a6b8)
-- judges @038a6b8: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

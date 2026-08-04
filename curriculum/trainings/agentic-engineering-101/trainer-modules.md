@@ -381,7 +381,7 @@ Never cut: Phase 5's stop. Approve, don't execute, and name the pattern; the non
 
 *"What is the first thing in this session that can notice a wrong step without you?"*
 
-Let students point at evidence in the live run. If an answer turns into a proposed fix, bring it back to observation: where does the session keep its place, what can push back, and what decides whether it continues? Do not introduce a reference artifact, task-local plan, or external verifier here. Those names belong to the later diagnosis.
+Let students point at evidence in the live run. If an answer turns into a proposed fix, bring it back to observation: where does the session keep its place, what can push back, and what decides whether it continues? Do not introduce the later artifact recipe here; those names belong to the later diagnosis.
 
 **Escape hatches and gotchas.**
 

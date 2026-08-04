@@ -29,7 +29,7 @@ AE101 renders one `##` = one slide (`site/layouts/slides.js`). The 2026-07-02 sl
 - curriculum/lectures/what-packaging-is.md
 - curriculum/lectures/when-a-plan-is-good.md
 - curriculum/lectures/where-the-rule-could-live.md
-- curriculum/lectures/will-company-memory-emerge.md
+- curriculum/lectures/what-keeps-a-long-running-session-going.md
 
 **Tier 2 — everything else AE101 projects as slides (never had a slides pass at all):**
 

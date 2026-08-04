@@ -169,8 +169,8 @@
         'Agents 102 is proprietary training material. As an enrolled student you have a personal usage license &mdash; ' +
         'you may learn from this, run the exercises, own what you build, and apply it at your own workplace. ' +
         'You may not redistribute the curriculum files, teach the material as your own, or use it to build a competing training. ' +
-        'See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md">full license terms</a> ' +
-        '&middot; <a href="https://bosser.consulting">bosser.consulting</a>' +
+        'See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" target="_blank" rel="noopener">full license terms</a> ' +
+        '&middot; <a href="https://bosser.consulting" target="_blank" rel="noopener">bosser.consulting</a>' +
         '</p>';
 
     function renderFooter() {
@@ -184,7 +184,7 @@
 
     function renderCopyrightBadge() {
         return '<div class="copyright-badge">' +
-            '<a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" title="Agents 102 is proprietary training material — full license terms">' +
+            '<a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" title="Agents 102 is proprietary training material — full license terms" target="_blank" rel="noopener">' +
             COPYRIGHT_MARK + '</a></div>';
     }
 
@@ -411,6 +411,14 @@
                 heading: function (text, level) {
                     var id = slugifyHeading(text);
                     return '<h' + level + ' id="' + id + '">' + text + '</h' + level + '>\n';
+                },
+                link: function (href, title, text) {
+                    var titleAttr = title ? ' title="' + esc(title) + '"' : '';
+                    var newTab = /^https?:\/\//i.test(href) ||
+                        /^#(?:supplementary|reference)-/.test(href) ||
+                        /^curriculum\.html\?file=trainings\/[a-z0-9-]+\/(?:supplementary|reference)\//.test(href);
+                    var targetAttr = newTab ? ' target="_blank" rel="noopener"' : '';
+                    return '<a href="' + esc(href) + '"' + titleAttr + targetAttr + '>' + text + '</a>';
                 }
             }
         });
@@ -1187,7 +1195,7 @@
     // Supplementary / reference rows on the training index. Different shape
     // from cardHtml — flat row with kind label + title.
     function simpleRowHtml(kind, title, href) {
-        return '<li><a href="' + href + '">' +
+        return '<li><a href="' + href + '" target="_blank" rel="noopener">' +
                '<span class="supp-kind">' + esc(kind) + '</span>' +
                '<span class="supp-title">' + esc(title) + '</span>' +
                '<span class="module-arrow">→</span>' +

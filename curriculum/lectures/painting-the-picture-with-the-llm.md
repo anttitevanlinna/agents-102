@@ -4,11 +4,11 @@
 
 The wizard typing in neat Perl syntax is dead. Auto-complete was a thing. Auto-complete is no longer a thing. A part of high-end engineering skill has been taken on by the LLM.
 
-The LLM is an infinite chameleon. It can do good work and bad work. It will be what fits the session. It flatters you; it calls unfinished work progress. It mirrors your stance.
+The LLM can do good work and bad work. It will be what fits the session. It flatters you; it calls unfinished work progress. It mirrors your stance.
 
 The tool is not the thing; the taste behind the tool is the thing. Seth Godin has been making that argument about tools for decades. The LLM is the infinite version of it: your stance as input to the session is mirrored in the output.
 
-That is the design, not a flaw. It was trained to match you. Your stance is the ceiling.
+It was trained to match you. Your stance is the ceiling.
 
 ## You prime, the LLM scales
 
@@ -30,6 +30,8 @@ Let's go.
 
 <!-- maintainer -->
 
+**Trainer-feedback pass (2026-08-04):** two surgical cuts from the opener: *"The LLM is an infinite chameleon"* competed with the slide's mirror image, and *"That is the design, not a flaw"* repeated the training explanation immediately after it. The Perl-engineer archetype, autocomplete transition, good/bad range, session fit, mirror, training explanation, and stance ceiling all stay; no replacement framing added.
+
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all three narrative slides recast from bolded-claim bullets to prose paragraphs, zero bold kept, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. "Let's go." kicker untouched. Wording near-verbatim; no claims added or cut.
 
 **Slides-only pass (2026-07-02, unaudited):** RE-CHUNK, not cull (M1: right content, wrong beat size). Per-passage verdicts: *The wizard is dead* + *The LLM is an infinite chameleon* CONVERTED into one slide under the wizard-dead title (chameleon heading demoted to a bolded bullet claim; no inbound anchors to the old heading) · *You prime, the LLM scales* CONVERTED one-to-one, wording near-verbatim · *Two frontiers* CONVERTED with compressed bold leads ("How fast can it learn?" / "Can it learn the right things?") that name each question without answering it · "Let's go" KEPT as kicker per delivery watch-for. No cuts, no new theory, zero map references (M1 protected). File is now three slides + kicker.
@@ -46,7 +48,7 @@ Let's go.
 **Meta:**
 - **Role:** opener. First lecture of M1; lands stance + two-frontiers framing before the wizard-move demo and the exercises.
 - **Mood target:** recognition. Stance is now the load-bearing part. No doom, no hype.
-- **Voice:** Sutherland-tilt for chameleon; Godin for tool/taste; Boris-flat on wizard.
+- **Voice:** Godin for tool/taste; Boris-flat on wizard; the mirror carries the stance.
 
 <!-- backing -->
 
@@ -56,7 +58,7 @@ Format → `curriculum/backing-format.md`.
 - `wizard-is-dead` · vision · "The wizard typing in neat Perl syntax is dead … A part of high-end engineering skill has been taken on by the LLM." ← none-owed
 - `llm-mirrors-stance` · detail · "It flatters you; it calls unfinished work progress. It mirrors your stance." ← sharma-sycophancy-2023, anthropic-personal-guidance-2026
 - `tool-vs-taste` · borrowed · "The tool is not the thing; the taste behind the tool is the thing. Seth Godin has been making that argument about tools for decades." ← cultural-vocab
-- `design-not-flaw` · detail · "That is the design, not a flaw. It was trained to match you." ← sharma-sycophancy-2023
+- `trained-to-match` · detail · "It was trained to match you." ← sharma-sycophancy-2023
 - `stance-is-ceiling` · vision · "Your stance is the ceiling." ← none-owed
 - `you-prime-llm-scales` · vision · "You prime it. The LLM scales it." ← none-owed
 - `sharp-stay-sharp` · detail · "The sharp engineers stay sharp. So the bet goes." ← amplification-org-level, brynjolfsson-task-level, cui-et-al-developer-rcts, metr-experienced-devs
@@ -92,7 +94,6 @@ Format → `curriculum/backing-format.md`.
 
 **Watch-fors (delivery):**
 - Don't expand the wizard beat into Perl history.
-- Don't over-explain "infinite chameleon."
 - "If you want a cannon" is a koan; let it sit.
 - Frontiers section names two open questions — do NOT answer them. The training answers by accretion through M1–M6.
 - "Let's go" closes. No further punchline.

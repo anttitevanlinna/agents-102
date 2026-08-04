@@ -4,7 +4,7 @@
 
 **Session** *(new, "Module 1 - Orient and introspect")*
 
-Start a new Claude Code session at your repo root. Optionally rename to `m1-orient`.
+Start a new Claude Code session at your repo root. Renaming is optional, but helps you find the right window when several are open.
 
 ```
 /rename m1-orient
@@ -42,7 +42,7 @@ Ask Claude to introspect on what it read, what it skipped, and the call it made 
 
 ## Read the self-report, then spot-check it
 
-- The account is a reconstruction, not ground truth. The LLM confabulates reasons sometimes. Assume about 10% of what it says or does is misrepresentation. Could be more, could be less.
+- The account is a reconstruction, not ground truth. The LLM confabulates reasons sometimes. Assume about 10% of what it says or does is misrepresentation. Could be more or less than this heuristic suggests.
 - You can spot-check it. Quote a specific file or function back and ask Claude to confirm it read what it claims.
 
 ## Check how full the window is
@@ -77,7 +77,7 @@ Ask Claude to introspect on what it read, what it skipped, and the call it made 
 - **Theme 4 (self-aware, grain of salt)** — the introspection prompt and the `/context` verification.
 - **Theme 1 (90% correct)** — `/context` makes the unread slice visible.
 
-**Deliberate phrasing (maintainer-attested, do not edit):** the *"Assume about 10%… Could be more, could be less."* line is intentional in exactly that format — the round number plus the open retraction is the teaching shape (a working prior the student holds loosely, not a measured constant). `check_slides.md` rule 7's number-plus-retraction sub-item does NOT fire here; judges flag it → accept-with-note, no edit.
+**Deliberate phrasing (maintainer-attested, do not edit):** the *"Assume about 10%… Could be more or less than this heuristic suggests."* line is intentional in exactly that format — the round number plus the open retraction is the teaching shape (a working prior the student holds loosely, not a measured constant). `check_slides.md` rule 7's number-plus-retraction sub-item does NOT fire here; judges flag it → accept-with-note, no edit.
 
 **Watch-fors:**
 - **Introspection skipped.** Student reads Claude's repo summary and moves to the bug fix without the second prompt. Trainer push: *"before we move on — what did Claude choose not to read, and does that match what you'd have expected?"*

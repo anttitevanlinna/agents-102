@@ -18,9 +18,53 @@ const assert = require('node:assert/strict');
 const { execSync } = require('node:child_process');
 const fs = require('node:fs');
 const path = require('node:path');
+const { marked } = require('marked');
 
-const { expandPrompts, moduleOrdinal, moduleNumber, applyContentFlags, TRAININGS } = require('../site/layouts/curriculum.js');
+const {
+  expandPrompts,
+  moduleOrdinal,
+  moduleNumber,
+  applyContentFlags,
+  configureMarked,
+  simpleRowHtml,
+  renderFooter,
+  renderCopyrightBadge,
+  TRAININGS
+} = require('../site/layouts/curriculum.js');
 const audit = require('../scripts/audit-eval-coverage.js');
+
+test('configured Markdown opens external and supplementary/reference links in a new tab', () => {
+  configureMarked(marked);
+  const html = marked.parse([
+    '[External](https://example.com)',
+    '[Workbook supplement](#supplementary-backpressure)',
+    '[Workbook reference](#reference-claude-quick-reference)',
+    '[SPA supplement](curriculum.html?file=trainings/agentic-engineering-101/supplementary/backpressure)',
+    '[Module](#getting-going)'
+  ].join('\n\n'));
+
+  assert.match(html, /<a href="https:\/\/example\.com" target="_blank" rel="noopener">External<\/a>/);
+  assert.match(html, /<a href="#supplementary-backpressure" target="_blank" rel="noopener">Workbook supplement<\/a>/);
+  assert.match(html, /<a href="#reference-claude-quick-reference" target="_blank" rel="noopener">Workbook reference<\/a>/);
+  assert.match(html, /<a href="curriculum\.html\?file=trainings\/agentic-engineering-101\/supplementary\/backpressure" target="_blank" rel="noopener">SPA supplement<\/a>/);
+  assert.match(html, /<a href="#getting-going">Module<\/a>/);
+});
+
+test('supplementary and reference index rows open in a new tab', () => {
+  const html = simpleRowHtml('Reference', 'Backpressure', '#supplementary-backpressure');
+  assert.match(html, /<a href="#supplementary-backpressure" target="_blank" rel="noopener">/);
+});
+
+test('shared footer external links open in a new tab', () => {
+  const html = renderFooter() + renderCopyrightBadge();
+  const externalAnchors = html.match(/<a\b[^>]*href="https?:\/\/[^\"]+"[^>]*>/g) || [];
+
+  assert.equal(externalAnchors.length, 3);
+  externalAnchors.forEach((anchor) => {
+    assert.match(anchor, /target="_blank"/);
+    assert.match(anchor, /rel="noopener"/);
+  });
+});
 
 test('expandPrompts: {{cut:foo|bar}} emits the prompt block with a ⟦CUT:bar⟧ sentinel', () => {
   const out = expandPrompts('{{cut:foo|bar}}', { foo: { text: 'x' } });

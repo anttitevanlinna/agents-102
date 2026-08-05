@@ -100,15 +100,16 @@ Don't split M4 across the days: its flow is one sequential beat and the send-off
 
 **Flow.**
 
-1. Connections — "one trick you figured out with Claude Code that nobody taught you"
-2. Lecture — Painting the picture with the LLM (the wizard is dead; context is what colors what comes after)
-3. Lecture — The wizard move (two-window dinner demo; "context is what you tell it")
-4. Exercise — [Orient and introspect](./#exercises-orient-and-introspect)
-5. Exercise — [Fix tests-first](./#exercises-fix-tests-first)
-6. Exercise — [Close the ticket](./#exercises-close-the-ticket) (one real ticket; conventions read, then close-out in that register)
-7. Exercise — [Compound and close](./#exercises-compound-and-close) (rules file, the tracker read included as evidence)
-8. Lecture — [The machine you just met](./#lectures-the-machine-you-just-met) (recognition closer, ~5 min; names the three behaviors the exercises surfaced)
-9. Lecture — [How this training was built](./#lectures-how-this-training-was-built) (arc closer; names compound engineering)
+1. Room agreement — How we work in this room
+2. Connections — "one trick you figured out with Claude Code that nobody taught you"
+3. Lecture — Painting the picture with the LLM (the wizard is dead; context is what colors what comes after)
+4. Lecture — The wizard move (two-window dinner demo; "context is what you tell it")
+5. Exercise — [Orient and introspect](./#exercises-orient-and-introspect)
+6. Exercise — [Fix tests-first](./#exercises-fix-tests-first)
+7. Exercise — [Close the ticket](./#exercises-close-the-ticket) (one real ticket; conventions read, then close-out in that register)
+8. Exercise — [Compound and close](./#exercises-compound-and-close) (rules file, the tracker read included as evidence)
+9. Lecture — [The machine you just met](./#lectures-the-machine-you-just-met) (recognition closer, ~5 min; names the three behaviors the exercises surfaced)
+10. Lecture — [How this training was built](./#lectures-how-this-training-was-built) (arc closer; names compound engineering)
 
 **Learning goals.** Student can:
 
@@ -125,13 +126,13 @@ Don't split M4 across the days: its flow is one sequential beat and the send-off
 - *Close the ticket* — one real ticket read twice: the agent reverse-engineers the team's field conventions off it, then writes the close-out in that register. Five proposed refinement rules, at least one rejected. The note lands via `gh`, an inherited connector, or a paste.
 - *Compound and close* — `./CLAUDE.local.md` written from session evidence (not a template, and the tracker read counts), a push-back pass where the summary misreads, and a second sweep before close.
 
-**Trainer cues.** The arc closer (How this training was built) is Antti's first-hand story — read it as a document, in narrator voice; you are not claiming the experience, and the opening line says so. The Connections trick-share calibrates the room; a quiet first beat is a Nordic norm, not no-signal. Bug pick is the single variable that breaks M1: too small (Claude crunches in 30s, no read worth dragging through introspection) or too large (no close inside the slot). The diff-line push-back IS the pedagogy of Fix tests-first; if students skip it the loop's third beat reads as theatre. Close the ticket is the module's only beat outside the repo, and its payoff is the register: the conventions read is what stops the close-out sounding like a language model. If a student skips straight to the close-out prompt, the beat still produces a note but loses the point. Nothing is handed off as homework; the loop finishes in the room.
+**Trainer cues.** Give the room agreement two minutes inside the opening ten; it sets permission and pace, so don't turn it into a policy lecture. The arc closer (How this training was built) is Antti's first-hand story — read it as a document, in narrator voice; you are not claiming the experience, and the opening line says so. The Connections trick-share calibrates the room; a quiet first beat is a Nordic norm, not no-signal. Bug pick is the single variable that breaks M1: too small (Claude crunches in 30s, no read worth dragging through introspection) or too large (no close inside the slot). The diff-line push-back IS the pedagogy of Fix tests-first; if students skip it the loop's third beat reads as theatre. Close the ticket is the module's only beat outside the repo, and its payoff is the register: the conventions read is what stops the close-out sounding like a language model. If a student skips straight to the close-out prompt, the beat still produces a note but loses the point. Nothing is handed off as homework; the loop finishes in the room.
 
-**Runtime map.** Budgets from the module's own trainer meta (Connections 10 / Lectures 10 / Exercise 78 / Closers 5 / Bridge 5 = 108). Every exercise figure is that exercise file's own Time line — there is no padding left to spend.
+**Runtime map.** Budgets from the module's own trainer meta (Opening 10 / Lectures 10 / Exercise 78 / Closers 5 / Bridge 5 = 108). Every exercise figure is that exercise file's own Time line — there is no padding left to spend.
 
 | Beat | Budget | Sitting (elapsed) | Cohort clock (2h slot) |
 |---|---|---|---|
-| Connections: trick-share | 10 | 0:00 | 08:30 |
+| Opening: room agreement + trick-share | 10 | 0:00 | 08:30 |
 | Lectures: Painting the picture + The wizard move | 10 | 0:10 | 08:40 |
 | Ex 1: Orient and introspect | 18 | 0:20 | 08:50 |
 | Ex 2: Fix tests-first | 25 | 0:38 | 09:08 |

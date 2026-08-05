@@ -17,6 +17,14 @@ After this module, you will be able to:
 - **Close** the bug's ticket from what your team's own tracker conventions show. The first move outside the repo
 - **Compound** one rule from the session into `./CLAUDE.local.md`
 
+## How we work in this room
+
+- **We are all learners.** Trainers included. The field moves fast, and everyone struggles to keep up.
+- **Do the exercises.** That is how you experience what the model actually does.
+- **Share and discuss.** Detours and banter are welcome. The trainer will bring us back.
+- **Skip and come back.** There is a lot here. Feel free to skip parts and return later.
+- **We finish at different times.** Chatter is welcome while some agents are still churning. Eventually, we move on. You can finish any unfinished work after the session.
+
 ## Start here
 
 **The question (to you):** what's one trick you figured out with Claude Code that nobody taught you? Doesn't have to be big. The weird prompt shape that works. The slash command you use more than the others. The thing you tell Claude at the start of every session.
@@ -71,6 +79,8 @@ Optional. All three sit in the gap before it. Do them and its moves land as thin
 
 **M1 runs four in-class exercises and issues no homework.** The loop's order is orient → fix → close → compound, and the close sits third on purpose: the tracker conventions the agent surfaces at `close-the-ticket` are session evidence the compound sweep then integrates, so the field rules reach `./CLAUDE.local.md` without a separate fold step. Do not re-order compound ahead of the close. Connector install is out of scope for the room — see the exercise's own maintainer block.
 
+**Room agreement.** Cohort delivery projects `How we work in this room` before the opening trick-share and keeps it inside the existing 10-minute opening allocation. Self-study skips the room-only slide silently.
+
 **Quality:** compendium-audited 2026-08-03 (writing@d1c41dd story@d1c41dd technical@1c765f2 behavior@1c765f2 pedagogy@d1c41dd strategy@d1c41dd slides@d1c41dd)
 - judges @d1c41dd: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @d1c41dd: PASS — set=[getting-going,plan-mode-done-right]
@@ -78,7 +88,7 @@ Optional. All three sit in the gap before it. Do them and its moves land as thin
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze
-- **Session runtime:** ~1h48 in the 2h slot (Connections 10 / Lectures 10 / Exercise 78 / Closers 5 / Bridge 5), leaving ~12 min of buffer. Trainer demos slowly, room copy-pastes concurrently. Exercise breakdown: orient-and-introspect 18 / fix-tests-first 25 / close-the-ticket 20 / compound-and-close 15. Every number is that exercise file's own Time line. If this sum and those lines ever disagree, the files win and this line is the one to recompute. M1 is the training's only module outside the M2–M6 1h45 band, and the four-exercise arc is what fills it.
+- **Session runtime:** ~1h48 in the 2h slot (Opening 10 / Lectures 10 / Exercise 78 / Closers 5 / Bridge 5), leaving ~12 min of buffer. The room agreement and Connections trick-share share the opening allocation. Trainer demos slowly, room copy-pastes concurrently. Exercise breakdown: orient-and-introspect 18 / fix-tests-first 25 / close-the-ticket 20 / compound-and-close 15. Every number is that exercise file's own Time line. If this sum and those lines ever disagree, the files win and this line is the one to recompute. M1 is the training's only module outside the M2–M6 1h45 band, and the four-exercise arc is what fills it.
 - **Prep timing:** prework 30 min; optional Cherny video 30 min; optional multi-session reference 10 min; optional factory essay 15 min.
 - **Mood target:** joyful creation — *"it works, on my repo."* Watch for: mood drift toward technical warm-up (the bug feels arbitrary, the loop feels mechanical, "this is just a TDD fix I do anyway"). Diagnostic: student narrates Ex2 as a generic engineering move with no surprise. Fix: trainer surfaces the agentic specificity — *"the loop you just ran was orient → fix → close → compound on YOUR repo, with a close-out written in your team's own register and a rules file born from how YOU just worked. That's not a bug fix; that's the instrument starting to play your music."*
 - **Opening-bid install mechanic:** the wizard-move lecture's live demo (the dinner-question context trick, in claude.ai chat windows — deliberately not code) installs the mood → Connections harvests tricks each student brought → Ex1 (orient-and-introspect) each student runs the orient + introspect move on their own repo → Ex2 (fix-tests-first) TDD bug fix, ship the PR → Ex3 (close-the-ticket) read the team's tracker conventions off one real ticket, close the bug's ticket in that register → Ex4 (compound-and-close) compound `./CLAUDE.local.md` from session evidence, the tracker read included. No separate module-level Debrief.

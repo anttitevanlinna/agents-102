@@ -18,7 +18,7 @@ The session is working. Do not change this first experiment while it runs. Watch
 
 - Some boundaries already stand without you: tests, types, lint, permission limits, and explicit stop or ask conditions. Each can catch a problem and send the work back for correction before later steps build on it.
 - The question is not how many checks the repo has. It is what notices first when this particular session goes wrong.
-- Do not add packaging mid-experiment. Watch where an existing boundary fires, where the session waits for you, and where nothing pushes back. That is part of the result you bring back.
+- Do not add packaging mid-experiment. Watch what catches problems, where the session waits for you, and where nothing pushes back. That is part of the result you bring back.
 
 <!-- maintainer -->
 

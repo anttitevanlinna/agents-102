@@ -439,7 +439,7 @@ Never cut: the send-off itself, and never rescue the un-packaged run. A weak fir
 
 **Learning goals.** Student can:
 
-- Diagnose the un-packaged M4 send-off through three named lenses — goal drift, context rot, plausible-but-wrong — with quoted moments per lens.
+- Diagnose the un-packaged M4 send-off through three named lenses — goal drift, context rot, plausible-but-wrong — grounded in quoted moments from the run.
 - Pair each failure mode with the packaging that catches it: drift ↔ reference artefact, rot ↔ `plan.md`, plausible-but-wrong ↔ external verifier.
 - Build a verifier shaped against the dominant failure (background-agent / shell-hook / Ralph re-feed).
 - Assemble reference + `plan.md` in conversation, scoped to the same M4 task.

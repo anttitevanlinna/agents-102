@@ -29,6 +29,6 @@ Then walk the work through three lenses:
 - Context rot: moments where the agent rehashed an approach it had already considered and ruled out, or re-derived something already in the working window.
 - Plausible-but-wrong: outputs that look reasonable in isolation but don't match the original task spec.
 
-For EACH lens, quote one specific moment from the artefact (commit message, file change, scrollback line). Don't generalise; quote. If a lens has no instance, say so — that's data too.
+For each lens, quote a specific moment from the artefact (commit message, file change, scrollback line). The same moment may support more than one lens; explain what each lens reveals. If a lens has no instance, say so — that's data too.
 
 End with: which of the three was the DOMINANT failure mode? You'll build the verifier against that one.

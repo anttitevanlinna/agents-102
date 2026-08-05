@@ -17,7 +17,7 @@
 
 - The three are consequences, not bad luck. The LLM is a statistical machine with a finite window: it predicts what is likely, and it holds only so much. Run it long enough and all three failures follow, whoever wrote the prompt.
 - Predictable failures are readable failures. Because the three come from the machine, expect all three in any long session. That is why three lenses are enough to read whatever comes back.
-- One question per finding: which of the three is this? A finding counts when it carries a lens and a quoted moment from the artefact. Two modes tangled in one finding means the read is not done; pull them apart.
+- Use the three as lenses, not boxes. Ground each finding in a quoted moment from the artefact; the same moment can reveal more than one failure mode.
 
 ## Two long ports, long enough for all three
 

@@ -11,7 +11,7 @@ Optional prep while the un-packaged session is still going: read [Clean Code Is 
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Diagnose** your un-packaged send-off through three named lenses, goal drift, context rot, plausible-but-wrong, with quoted moments per lens
+- **Diagnose** your un-packaged send-off through three named lenses, goal drift, context rot, plausible-but-wrong, grounded in quoted moments from the run
 - **Pair** each failure mode with the packaging that catches it: drift ↔ reference artefact, rot ↔ plan.md, plausible-but-wrong ↔ external verifier
 - **Build** a verifier shaped against your dominant failure using one of three shapes (background-agent, shell-hook, or Ralph re-feed)
 - **Assemble** the reference artefact + plan.md in conversation, scoped to the same task you sent off
@@ -170,7 +170,7 @@ Optional. Skipping does not break Module 6. Both fit the Module 5 to Module 6 ga
 - **Closing lecture pre-empt** — trainer accidentally names "Ronacher's three-pattern" before the closing lecture. Don't. The closing lecture earns the name from felt evidence. If the term comes up in Phases 1–4, the closing has nothing to add.
 
 **Watch-fors (cross-phase):**
-- Failure-mode collapse — student conflates two modes (treats goal drift and context rot as the same thing). Phase 1 spots this; force separation by asking for distinct quoted moments for each.
+- Failure-mode collapse — student treats two modes as synonyms without explaining what each reveals. Phase 1 asks for that distinction; a shared quoted moment is fine.
 - Verifier as gold-plating — student tries to build a 5-shape verifier covering everything. M5's verifier is shaped against ONE failure. M6 expands the kit; M5 picks one and runs.
 - Reference-pattern drift — student writes a generic "rules for long-running" file instead of a task-scoped reference artefact. Diagnostic: the file references the task's success criteria and constraints, or it's the wrong artefact.
 - Closing-lecture-as-pre-read — if the closing names something the student already heard in pre-read, the pre-read leaked. Sim catches this; ship-pass eval also.
@@ -188,7 +188,7 @@ Optional. Skipping does not break Module 6. Both fit the Module 5 to Module 6 ga
 - Sponsor-stated test/CI conventions (Phase 3 shell-hook verifier shape integrates here) — sponsor names the test framework + CI gate convention so the verifier shape matches what teammates already run
 
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
-1. **Reads an agent's long-running artefact through three named failure-mode lenses** (goal drift, context rot, plausible-but-wrong) and quotes specific moments per lens. Falsifiable: a real artefact-read produces a written diagnosis with at least one quoted moment per failure mode, not a generic summary.
+1. **Reads an agent's long-running artefact through three named failure-mode lenses** (goal drift, context rot, plausible-but-wrong) and grounds the diagnosis in quoted moments. Falsifiable: a real artefact-read explains what each lens reveals in specific evidence, not a generic summary; one moment may support more than one lens.
 2. **Builds a verifier shaped against the dominant failure mode** of a real long-running agent task, picking from the three-shape menu (background-agent, shell-hook, Ralph re-feed). Falsifiable: a verifier file exists at a stable path; its first 10 lines name the failure mode it targets and the check-shape that catches it.
 3. **Sends the same task twice with packaging as the changed variable**, reads the contrast. Falsifiable: two distinct agent runs of the same scoped task exist (un-packaged baseline + packaged re-run); the diff is the artefact M6 reads.
 

@@ -38,7 +38,7 @@ Confirm the path is right. Then ask Claude to read the repo state on the previou
 
 ## Pin each failure to a quoted moment
 
-- Push back where Claude generalises. One quoted line per lens beats a paragraph of summary. The diagnosis is data, not blame; the un-packaged run was supposed to underdeliver.
+- Push back where Claude generalises. Ground each lens in a quoted moment; the same moment may carry more than one lens. The diagnosis is data, not blame; the un-packaged run was supposed to underdeliver.
 - The move you just ran is *diagnosis through named failure modes*. The vocabulary is the lens; the artefact is the substance.
 
 ## Phase 2: Match each failure to the check that catches it
@@ -124,7 +124,7 @@ Claims
 - `two-places-hold-the-story` · vision · "The repo's git history … tells you *what* the agent did. That run's session transcript … tells you *how* it got there" ← none-owed
 - `you-hold-the-lenses-not-the-codebase` · vision · "You hold the three lenses. You are not holding the codebase." ← none-owed
 - `three-failure-mode-lenses` · detail · "*diagnosis through named failure modes*" ← three-failure-modes
-- `quote-beats-summary` · vision · "One quoted line per lens beats a paragraph of summary." ← none-owed
+- `quote-beats-summary` · vision · "Ground each lens in a quoted moment; the same moment may carry more than one lens." ← none-owed
 - `ask-what-would-have-caught-it` · vision · "*what validation would have caught this in minutes, not hours?*" ← none-owed
 - `match-shape-to-failure-not-slogan` · vision · "Match the failure, not your familiarity." ← none-owed
 - `three-verifier-shapes` · detail · "**Background-agent verifier** … **Deterministic shell-hook** … **Ralph re-feed**" ← kim-on-cherny
@@ -180,7 +180,7 @@ OODA
 - **Whole-room mood below 7** — learning through contrast isn't landing. Check Phase 1 specificity. If diagnoses stayed generic, the contrast in Phase 2 has nothing to bite into.
 
 **Watch-fors (cross-phase):**
-- Failure-mode collapse — student treats two failure modes as the same. Phase 1 must produce distinct quoted moments for each named mode.
+- Failure-mode collapse — student treats two failure modes as synonyms without explaining what each reveals. Phase 1 asks for that distinction; a shared quoted moment is fine.
 - Verifier gold-plating — student tries to build a 5-shape verifier covering everything. M5's verifier is shaped against ONE failure; M6 expands the kit.
 - Three-pattern naming pre-empted — if Phase 2 or Phase 3 names "Ronacher's three-pattern," the closing lecture has nothing to add. Watch for the term-of-art leaking into trainer push-backs.
 - Reference vs. rules drift — students familiar with `CLAUDE.local.md` may try to rewrite it as the reference. The reference is task-local; rules are repo-local.

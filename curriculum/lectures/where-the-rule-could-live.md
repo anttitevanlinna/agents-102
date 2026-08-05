@@ -12,7 +12,7 @@ You have a `.md` file with three to five rules about how multi-file tasks want t
 
 - The `.md` file is the steady part; the agent is the moving part. Across all three shapes, better rules produce better triage. Improvements in the file carry across runtimes, even when the agent changes.
 - The file travels. Slack thread, issue event, sprint cadence; Claude Code on the web, GitHub Actions, a scheduled agent. Trigger and runtime are wiring choices; the file rides along unchanged. Once it exists, you have the guardrail, and every shape above is a deployment decision, not a rewrite.
-- **Agents build agents.** The agent that reads your `.md` file and splits a backlog can itself be built by another agent reading a different `.md` file: yours about how *you* author skills, how *you* test them, how *you* ship them. Today the file exists.
+- **Agents build agents.** An agent can help author the `.md` file. A later agent reads those rules to split the backlog. The first agent's output becomes the second agent's context.
 
 <!-- maintainer -->
 
@@ -51,7 +51,7 @@ Format → `curriculum/backing-format.md`.
 - `improvement-in-artifact-carries` · vision · "Improvements in the file carry across runtimes, even when the agent changes." ← none-owed
 - `file-travels-across-wiring` · vision · "Trigger and runtime are wiring choices; the file rides along unchanged." ← none-owed
 - `deployment-not-rewrite` · vision · "every shape above is a deployment decision, not a rewrite" ← none-owed
-- `agents-build-agents` · vision · "Agents build agents." ← none-owed
+- `agents-build-agents` · vision · "An agent can help author the `.md` file. A later agent reads those rules to split the backlog. The first agent's output becomes the second agent's context." ← none-owed
 
 **Sources**
 - cc-slack-docs `[checked:2026-07-31 result:OK due:cohort]` https://code.claude.com/docs/en/slack — [capability] confirms the body's mechanic almost exactly: *"When you mention @Claude in a Slack channel or thread, Claude automatically analyzes your message to determine if it's a coding task. If Claude detects coding intent, it will route your request to Claude Code on the web instead of responding as a regular chat assistant."* Then *"A new Claude Code session is created on claude.ai/code"*, progress posts back to the thread, completion @-mentions you. Prerequisite: a GitHub account connected with at least one authenticated repo. **Mid-rename:** this page is being retired for Team/Enterprise in favour of Claude Tag; it *"remains the setup path"* for Pro/Max. fallback: none needed — the body already hedges with "or a Slack app hands the thread to an agent runtime", which covers the path this page does not.

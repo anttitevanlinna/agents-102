@@ -21,7 +21,7 @@ This session shows how the agent handled your task and codebase.
 - Manual compaction works because you're at the keyboard. The diagnosis is bounded keyboard work. If you've specified a large enough task well, the re-send at the end of this module can run for hours while you're away—knock on wood. A session nobody is watching can't be manually compacted.
 - Hands-off option one: trust auto-compact. The model decides what to keep when its window fills. Sometimes useful, sometimes wrong; better than dropping context entirely.
 - Hands-off option two: give the agent something durable to re-read. A working document the agent owns and updates. A reference it diffs its output against. An automated check that fires on produced work. Files on disk survive compaction; conversation-only instructions may not. Once those exist, auto-compact can fire and the agent re-anchors from what survives.
-- Option two is what the exercise builds. `/compact` is session management, not packaging. The whole point of packaging is that you can leave the room.
+- Option two is what the exercise builds. `/compact` is session management, not packaging. The whole point of packaging is that the session can continue without you at the keyboard.
 
 <!-- maintainer -->
 

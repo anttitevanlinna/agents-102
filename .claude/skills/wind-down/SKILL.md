@@ -51,6 +51,8 @@ For each item Antti confirms, dispatch via Agent tool (parallel, main thread rea
 - **research-review** → `/research-review <file>` per modified research file.
 - **article pre-publish gate** → banned-word + source-URL scan; CTO-targeted → also `/goalcheck <file> a`.
 
+Report eval evidence at its exact scope: `audit-eval-coverage` proves mandatory stored-instance coverage, not the seven-class pre-ship audit. Name the classes actually fired; say full audit only after all seven current-body verdicts exist and the Quality block is stamped.
+
 ### Step 3 — Compound
 
 Ask: "Any corrections worth compounding? Top 1–3 only." For each, invoke `/compound`. Skip if none surfaced — most sessions yield 0–1.

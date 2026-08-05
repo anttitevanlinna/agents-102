@@ -28,7 +28,7 @@ This is one common route, not a promotion ladder. A useful skill can also emerge
 
 ## The second loop
 
-[Chris Argyris and Donald Schön called the deeper move double-loop learning](https://hbr.org/1977/09/double-loop-learning-in-organizations). The first loop corrects the action. The second questions the governing rule or assumption that shaped the action.
+[Chris Argyris called the deeper move double-loop learning](https://hbr.org/1977/09/double-loop-learning-in-organizations). The first loop corrects the action. The second questions the governing rule or assumption that shaped the action.
 
 <figure class="diagram">
 <svg viewBox="0 0 1200 560" role="img" aria-label="A double feedback loop for agentic work. Context flows into agent work and a result. The inner loop reads the gap and feeds corrections back into context for the next attempt. The outer loop questions the rule or assumption, updates durable instructions in CLAUDE.local.md, CLAUDE.md, or a skill, and shapes future context." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
@@ -69,7 +69,7 @@ This is one common route, not a promotion ladder. A useful skill can also emerge
 **Sources**
 - claude-memory `[checked:2026-08-04 result:OK due:cohort]` https://code.claude.com/docs/en/memory — [capability] Project `CLAUDE.md` is shared team instruction; `CLAUDE.local.md` is personal project-specific instruction. Both load into session context within their scope. fallback: use the sponsor-stated instruction homes and remove the auto-load wording.
 - claude-skills `[checked:2026-08-04 result:OK due:cohort]` https://code.claude.com/docs/en/skills — [capability] Skills package reusable instructions and supporting files; their full content loads when Claude invokes them rather than occupying every session's context. Project and personal skill locations both exist. fallback: say "reusable instruction package" and remove the loading claim.
-- argyris-double-loop `[checked:2026-08-04 result:OK due:none]` https://hbr.org/1977/09/double-loop-learning-in-organizations — [foundational literature] Argyris and Schön developed the theory jointly; this Argyris article popularises the distinction between correction within existing objectives and learning that challenges underlying policies and objectives. fallback: keep the two feedback paths and remove the names.
+- argyris-double-loop `[checked:2026-08-04 result:OK due:none]` https://hbr.org/1977/09/double-loop-learning-in-organizations — [foundational literature] Argyris presents the distinction between correction within existing objectives and learning that challenges underlying policies and objectives. fallback: keep the two feedback paths and remove the name.
 
 **Frameworks**
 - Double-loop learning · [borrow:organisational learning] · law:double-loop-learning · ← argyris-double-loop

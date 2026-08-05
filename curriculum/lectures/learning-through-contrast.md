@@ -2,7 +2,7 @@
 
 ## Diagnose first, fix later
 
-- The artefact is data, whatever came back. You sent off an un-packaged session. Stopped, finished, ran out of credit: there is something to read now, and reading it is the work.
+- The session may have stopped, finished, or run out of credit. Whatever came back is data.
 - **Diagnose first. Fix later.** The move cuts against most engineering instinct. When an agent gets something wrong, the reflex is to fix it immediately: edit the prompt, add a constraint, reach for the next tool. This module holds that reflex off. The failures earn the validation that catches them.
 - The arc is *test → learn → encode*. The un-packaged send-off was the test. This is the learn. The encode turns what the read finds into durable checks.
 
@@ -45,7 +45,7 @@ The session shows you what no benchmark can.
 <!-- backing -->
 
 Claims
-- `artefact-is-data` · vision · "The artefact is data, whatever came back." ← none-owed
+- `artefact-is-data` · vision · "Whatever came back is data." ← none-owed
 - `diagnose-first-fix-later` · vision · "Diagnose first. Fix later." ← none-owed
 - `test-learn-encode` · vision · "The arc is *test → learn → encode*." ← none-owed
 - `three-failure-lenses` · detail · "**Goal drift** … **Context rot** … **Plausible-but-wrong**" ← three-failure-modes
@@ -96,4 +96,3 @@ OODA
 - The exercise start is the trainer's call now (the "Open your repo. Let's go." closer was cut in the slide pass); land slide 3's last bullet and hand over.
 
 **Philosophy callouts:** none. The diagnostic stance is the beat; further philosophy tagging dilutes.
-

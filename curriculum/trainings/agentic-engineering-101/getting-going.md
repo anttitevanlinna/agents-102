@@ -81,8 +81,8 @@ Optional. All three sit in the gap before it. Do them and its moves land as thin
 
 **Room agreement.** Cohort delivery projects `How we work in this room` before the opening trick-share and keeps it inside the existing 10-minute opening allocation. Self-study skips the room-only slide silently.
 
-**Quality:** compendium-audited 2026-08-03 (writing@d1c41dd story@d1c41dd technical@1c765f2 behavior@1c765f2 pedagogy@d1c41dd strategy@d1c41dd slides@d1c41dd)
-- judges @d1c41dd: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-05 (writing@8154c70 story@8154c70 technical@1c765f2 behavior@1c765f2 pedagogy@8154c70 strategy@d1c41dd slides@8154c70)
+- judges @8154c70: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @d1c41dd: PASS — set=[getting-going,plan-mode-done-right]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

@@ -4,7 +4,7 @@ domain: cross-domain
 evidence_level: null
 platforms: []
 nordic: true
-updated: 2026-07-25
+updated: 2026-08-05
 answers:
   - "how to research effectively?"
   - "what has the system learned about researching?"
@@ -64,6 +64,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 ## Cycle Observations
 
 Each entry: cycle number, date, what the researcher learned about researching.
+
+### Cycle 174 — 2026-08-05
+
+A curriculum gap list is useful as a coverage audit, not as evidence. Mapping ten practitioner-derived candidates back into the research system showed five already had durable homes and five were scattered or absent; one indexed map prevents duplicated mentions from masquerading as independent convergence.
+
+The strongest item's evidence level must not leak across the bundle. Cognitive debt has L3 support, while Matt Pocock's grilling is L1 and Ronacher's deletion practice and the Husain/Shankar eval sequence are historical. Recording evidence and freshness per principle prevents a plausible collection from turning into a falsely established framework.
 
 ### Retrospective: Cycles 1-25 (seeded from pattern analysis)
 

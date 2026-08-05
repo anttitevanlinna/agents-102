@@ -1,7 +1,7 @@
 ---
 type: index
 domain: cross-domain
-updated: 2026-05-03
+updated: 2026-08-05
 answers: ["where to find research", "knowledge base map"]
 ---
 
@@ -17,6 +17,7 @@ Topic files, each self-contained. Read this first, then go to the file that answ
 | [enterprise-reality.md](enterprise-reality.md) | Can any platform pass the enterprise integration test? | Cross-platform |
 | [patterns.md](patterns.md) | What cross-platform patterns has the research established? | Level 2-4 |
 | [nordic-landscape.md](nordic-landscape.md) | What's happening with agents in the Nordics? | Nordic-specific |
+| [practitioner-operating-principles.md](practitioner-operating-principles.md) | Which operating principles leading agentic-engineering practitioners emphasize, with evidence limits and open questions. | Mixed L1–L3; per-principle |
 | [curriculum-convergence.md](curriculum-convergence.md) | What do agentic engineering curriculums teach? Convergence and absences across 14 inventoried syllabi. | Level 3 (convergence) + Level 2 (absences) |
 | [training-competitive-landscape.md](training-competitive-landscape.md) | Who competes for engineering-IC agent training budget? Prices, formats, Nordic density. | Inventory + per-claim split (syllabus = fact, price = inference / vendor) |
 

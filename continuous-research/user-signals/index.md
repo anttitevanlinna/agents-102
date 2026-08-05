@@ -1,7 +1,7 @@
 ---
 type: index
 domain: cross-domain
-updated: 2026-07-26
+updated: 2026-08-05
 answers: ["what are users asking?", "what should research prioritize?", "user demand signals"]
 ---
 
@@ -11,6 +11,7 @@ User questions and comments steer research as Tier 0 priority.
 
 ## Open
 
+- [2026-08-05](comments/2026-08-05-stage-practitioner-principles-before-curriculum.md) — Stage practitioner-derived operating principles in continuous research before promoting them into curriculum; discuss sequence and teaching shape only after evidence, freshness, and coverage are visible. **Cycle 174 update:** indexed coverage map created at `synthesis/practitioner-operating-principles.md`; curriculum placement remains deliberately open.
 - [2026-07-26](comments/2026-07-26-agentic-behavior-change-measurement.md) — Day-30 post-training measurement: recalled-before/current self-report + blinded transcript comparison under a public rubric; governing model = calibrated delegation frontier, with four episode states and compounding as trajectory; calibration anchored to PR-layer outcomes (review comments, merge time, rework).
 - [2026-07-26](questions/2026-07-26-agentic-work-transcript-kpis.md) — Can transcripts estimate movement across four reach × calibration states and show the calibrated delegation frontier expanding without loss of control?
 - [2026-05-13](questions/2026-05-13-agentic-coding-practitioner-beliefs.md) — What do practitioners who got agentic coding really working actually believe? Cross-cut belief layer missing; no Ronacher observation file. **CYCLE 119 UPDATE (May 31):** SUBSTANTIALLY RESOLVED. Practitioner belief layer documented at Level 3 convergence in state.md (Practitioner Belief Layer section). Ronacher observation file created at observations/ronacher-armin.md — 12+ months of production use, 8 posts in 2026, specific belief system documented. The "orchestrator not implementer" package (spec quality, test-first, codebase cleanliness, over-engineering failure mode, human judgment concentrates) is now Level 3 across 10+ independent practitioners. **CYCLE 143 UPDATE (June 24):** Deepened with two new practitioner-direct sources. Ronacher "The Coming Loop" (June 23) — crystallized identity shift: "My job is to write loops." Honest ambivalence: "I resent it but accept it." Defensive code failure mode named: models "mortally terrified of exceptions." Osmani (June 15) — review is now the leveraged skill; 4 AI reviewers on same PRs catch different issues (heterogeneous > single-tool). Both converge independently: expertise concentrates at architecture/judgment, not generation. Ronacher observation file updated at `observations/ronacher-armin.md`.

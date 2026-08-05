@@ -97,7 +97,7 @@ First-cohort overload response (root diagnosis: big outputs + unfamiliar ground 
 
 Arc, five beats, each anchored in a shipped surface:
 
-1. **M1 teach**, `lectures/the-machine-you-just-met.md`, third behavior *It answers in essays*; handle **Never let the agent say everything**.
+1. **M1 teach**, `lectures/the-machine-you-just-met.md`, output-shape slide *The LLM answers in essays*; move: tell the LLM what output you want because changing the shape costs virtually nothing.
 2. **M2 exception**, `exercises/push-back-on-the-plan.md` § *The plan is the one you read whole*; plans are the deliberate full read (`push-back-on-the-plan-1` asks "detail over brevity" by design).
 3. **M3 take-into-use**, `exercises/map-the-access-surface.md` opener *Take the ranked ten, leave the rest on disk*; closer pair in `lectures/the-loop-half-filled.md` (*Reading was never the control* · *The branch is the permission*).
 4. **M4 silent model**, `walk-and-send-off-2` enforces ranked-top-five; exercise body carries skim-to-payoff cues.

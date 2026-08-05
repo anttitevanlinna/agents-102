@@ -108,7 +108,7 @@ Don't split M4 across the days: its flow is one sequential beat and the send-off
 6. Exercise — [Fix tests-first](./#exercises-fix-tests-first)
 7. Exercise — [Close the ticket](./#exercises-close-the-ticket) (one real ticket; conventions read, then close-out in that register)
 8. Exercise — [Compound and close](./#exercises-compound-and-close) (rules file, the tracker read included as evidence)
-9. Lecture — [The machine you just met](./#lectures-the-machine-you-just-met) (recognition closer, ~5 min; names the three behaviors the exercises surfaced)
+9. Lecture — [The machine you just met](./#lectures-the-machine-you-just-met) (recognition closer, ~5 min; connects the mirror, error chain, and output shape to how the session is steered)
 10. Lecture — [How this training was built](./#lectures-how-this-training-was-built) (arc closer; names compound engineering)
 
 **Learning goals.** Student can:

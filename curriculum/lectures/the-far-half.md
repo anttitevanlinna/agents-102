@@ -98,12 +98,12 @@
 - The near half is behind you. Intent, Context, Work: how to aim the work, what the agent needs to know, how a loop runs and compounds. Every move so far lived there.
 - The map lights its other side now. Verification, Absorption, Outcome. The rest of the training goes there, starting with the session you send off in this module.
 
-## Long-running answers to three new governors
+## Long-running work adds three new concerns
 
 - Long-running is not more of the same. So far you sat inside every loop: you read each reply, caught each wobble as it happened. When the agent runs for an hour without you watching, that quick feedback goes quiet. You stop seeing every move and meet the result at the end, all at once.
-- **Verification** governs how you know the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it. On a long session, this stops being a glance and becomes a job. The map drew a checking loop across this ground as a ghost, dashed and not yet built; this half is where you build it.
-- **Absorption** governs how much of the output you can actually take up. Generating is fast; reading, judging, and merging are not. On a long session the gap between the two decides your real throughput.
-- **Outcome** governs what survives the session. The fix you keep, the rule it taught you, and whether any of it crosses the wall from you to the team.
+- **Verification** tells you whether the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it. On a long session, this stops being a glance and becomes a job. The map drew a checking loop across this ground as a ghost, dashed and not yet built; this half is where you build it.
+- **Absorption** determines how much of the output you can actually take up. Generating is fast; reading, judging, and merging are not. On a long session the gap between the two decides your real throughput.
+- **Outcome** determines what survives the session. The fix you keep, the rule it taught you, and whether any of it crosses the wall from you to the team.
 
 ## Your first un-packaged long session
 
@@ -143,11 +143,11 @@ Format → `curriculum/backing-format.md`. Figure provenance: derived from `the-
 **Claims**
 - `near-half-behind-you` · vision · "The near half is behind you. Intent, Context, Work" ← none-owed
 - `long-running-is-not-more-of-the-same` · vision · "When the agent runs for an hour without you watching, that quick feedback goes quiet." ← none-owed
-- `verification-governs-knowing` · detail · "**Verification** governs how you know the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it." ← osmani-outer-loop
+- `verification-tests-result` · detail · "**Verification** tells you whether the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it." ← osmani-outer-loop
 - `verification-becomes-a-job` · vision · "On a long session, this stops being a glance and becomes a job." ← none-owed
-- `absorption-governs-take-up` · detail · "**Absorption** governs how much of the output you can actually take up. Generating is fast; reading, judging, and merging are not." ← osmani-outer-loop, osmani-software-factories
+- `absorption-sets-take-up` · detail · "**Absorption** determines how much of the output you can actually take up. Generating is fast; reading, judging, and merging are not." ← osmani-outer-loop, osmani-software-factories
 - `absorption-gap-decides-throughput` · vision · "On a long session the gap between the two decides your real throughput." ← none-owed
-- `outcome-governs-what-survives` · vision · "**Outcome** governs what survives the session." ← none-owed
+- `outcome-sets-what-survives` · vision · "**Outcome** determines what survives the session." ← none-owed
 - `checking-loop-still-a-ghost` · vision · "The map drew a checking loop across this ground as a ghost, dashed and not yet built" ← none-owed
 - `un-packaged-run-on-purpose` · vision · "One long session goes off un-packaged, on purpose." ← none-owed
 - `trust-work-you-didnt-watch` · vision · "When the agent takes a hundred steps alone, what makes you trust the result at the end?" ← none-owed

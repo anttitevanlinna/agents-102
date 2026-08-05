@@ -10,7 +10,7 @@ You have a `.md` file with three to five rules about how multi-file tasks want t
 
 ## The file is steady; the agent moves
 
-- The `.md` file is the steady part; the agent is the moving part. In all three shapes, the triage gets sharper because the file gets sharper, not because the agent gets bigger. Improvement invested in the durable artifact carries; the agent under it can be swapped without losing a thing.
+- The `.md` file is the steady part; the agent is the moving part. Across all three shapes, better rules produce better triage. Improvements in the file carry across runtimes, even when the agent changes.
 - The file travels. Slack thread, issue event, sprint cadence; Claude Code on the web, GitHub Actions, a scheduled agent. Trigger and runtime are wiring choices; the file rides along unchanged. Once it exists, you have the guardrail, and every shape above is a deployment decision, not a rewrite.
 - **Agents build agents.** The agent that reads your `.md` file and splits a backlog can itself be built by another agent reading a different `.md` file: yours about how *you* author skills, how *you* test them, how *you* ship them. Today the file exists.
 
@@ -47,8 +47,8 @@ Format → `curriculum/backing-format.md`.
 - `agent-triages-the-issue` · detail · "The agent reads the issue against your `.md` file, proposes labels, asks for missing info, or splits it into shippable sub-issues." ← cc-action-triage-recipe
 - `scheduled-read-shape` · detail · "Once a sprint, a scheduled agent reads the backlog top-to-bottom against the `.md` file and proposes a re-shape" ← cc-scheduled-tasks, cc-routines, gh-actions-cron
 - `file-is-steady-agent-moves` · vision · "The `.md` file is the steady part; the agent is the moving part." ← none-owed
-- `sharper-file-not-bigger-agent` · vision · "the triage gets sharper because the file gets sharper, not because the agent gets bigger" ← none-owed
-- `improvement-in-artifact-carries` · vision · "Improvement invested in the durable artifact carries; the agent under it can be swapped without losing a thing." ← none-owed
+- `better-rules-better-triage` · vision · "Across all three shapes, better rules produce better triage." ← none-owed
+- `improvement-in-artifact-carries` · vision · "Improvements in the file carry across runtimes, even when the agent changes." ← none-owed
 - `file-travels-across-wiring` · vision · "Trigger and runtime are wiring choices; the file rides along unchanged." ← none-owed
 - `deployment-not-rewrite` · vision · "every shape above is a deployment decision, not a rewrite" ← none-owed
 - `agents-build-agents` · vision · "Agents build agents." ← none-owed

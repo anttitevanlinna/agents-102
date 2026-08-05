@@ -377,7 +377,7 @@ Never cut: Phase 5's stop. Approve, don't execute, and name the pattern; the non
 - Gap deferred as "architectural, not contextual" (the highest-stakes push; a skipped contextual gap makes the run fail in a boring way M5 can't rescue) → *"If the audit calls it context — even if the fill is 'add a rule saying we use X, not Y' — it's still context. Module 5 needs an interesting failure to diagnose, not a boring one. Fill it."*
 - Student wants to add a plan.md or a verifier before sending → *"Un-packaged is by design. Module 5 teaches you packaging by diagnosing what breaks here. Don't pre-empt the learning."*
 - Student tries to close all five gaps → *"Three is the budget. Skip the other two — you'll see next module why."*
-- Student hesitates at the final prompt → *"Stop it when you've seen enough. Traces are data. You don't owe the experiment a completed artifact — you owe it a result you can read."*
+- Student hesitates at the final prompt → *"Stop it when you've seen enough. Traces are data. A result you can read is enough; you do not need a completed artifact."*
 - Student reads the ranked gap list and moves on without picking → *"Which of these will hurt the agent most given the task? Fill those."*
 
 **Long-session observation (closing lecture, while the agent runs).** Keep the active session visible. Name only the three conditions on the slides: durable state, feedback — including backpressure when downstream review cannot safely accept more — and a boundary that can stop or redirect the next step. Then ask one question:

@@ -23,7 +23,7 @@ You're new to this country: the stretch where the agent runs alone and you don't
 ## Cancel is legitimate; traces are data
 
 - Cancel is legitimate; traces are data. If twenty minutes in you can see Claude hallucinating file paths, arguing with itself, or missing a requirement that wasn't in the prompt, stop it. You have the data you came for.
-- You owe the experiment a result you can read, not a completed artifact. Letting it run another hour teaches you less than stopping at twenty minutes with an observation. Any trace counts.
+- A result you can read is enough; you do not need a completed artifact. Letting it run another hour teaches you less than stopping at twenty minutes with an observation. Any trace counts.
 - Fifteen to thirty minutes buys the clues the read needs. Engineers run these for hours at work when the task warrants it; ambition and length grow session by session.
 
 <!-- maintainer -->
@@ -62,7 +62,7 @@ Format → `curriculum/backing-format.md`. Absorbed 2026-08-01 from the legacy `
 - `gap-analysis-is-a-question` · borrowed · "**Gap analysis**: walk the system you have against the system the task needs." ← cultural-vocab
 - `agent-finds-you-judge` · vision · "The agent finds the thin spots; you judge which ones matter. A ranked list is candidates, not verdicts." ← none-owed
 - `cancel-is-legitimate` · vision · "Cancel is legitimate; traces are data." ← none-owed — the house's own operating rule for the exercise. **Was `detail` until 2026-08-01**, on the strength of the delivery note framing it as *what real operators do*; that framing was not evidenced and has been removed. See Flagged.
-- `any-trace-counts` · vision · "You owe the experiment a result you can read, not a completed artifact." ← none-owed
+- `any-trace-counts` · vision · "A result you can read is enough; you do not need a completed artifact." ← none-owed
 - `fifteen-to-thirty-minutes` · vision · "Fifteen to thirty minutes buys the clues the read needs." — the classroom timebox, the maintainer's own design call, set deliberately on 2026-05-21 against a cohort whose real M4 long task ran 12 minutes ← none-owed
 - `engineers-run-for-hours` · detail · "Engineers run these for hours at work when the task warrants it; ambition and length grow session by session." ← klaassen-overnight-prs, horthy-ralph-history, litt-code-like-a-surgeon, ronacher-long-runs-worse. The last one is listed deliberately as backing: it is the standing dissent this claim has to survive, and a re-verifier who reads the three supporting accounts without it will re-grade the claim too generously.
 

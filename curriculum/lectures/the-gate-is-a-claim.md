@@ -6,7 +6,7 @@ Say the re-send comes back green. The verifier you built reads the work and pass
 
 - A gate only means what the gate can see. Green is a claim about the check, not a fact about the work. A result passes for three different reasons that look identical from outside: the judge is miscalibrated, the gate got gamed, or the session was a lucky sample.
 - The check you built is itself a claim that wants verifying. The same scrutiny you point at the agent's work points at the thing that judges the work. A gate nobody has verified is a gate trusted on vibes.
-- Each way a gate lies has its own countermove, and each is cheap. Hand-labels for the miscalibrated judge, a hold-out for the gamed gate, repeated sessions for the lucky sample. All three cost less than the failure they hide.
+- Those three failure modes have different countermoves: compare the judge with your own labels, keep a separate check the agent never sees, or repeat the task across several sessions. You do not need to build these today; ask your agent to walk you through the relevant one when you need it.
 
 ## The judge needs calibrating against your labels
 
@@ -111,7 +111,7 @@ Claims
 - `five-ways-a-gate-lies` · vision · "The check can lie in five ways." ← none-owed
 - `green-is-a-claim-not-proof` · vision · "Green is a claim about the check, not a fact about the work." ← none-owed
 - `three-reasons-a-pass-looks-identical` · vision · "the judge is miscalibrated, the gate got gamed, or the session was a lucky sample" ← none-owed
-- `countermoves-cost-less-than-the-failure` · vision · "All three cost less than the failure they hide." ← none-owed
+- `three-failures-have-different-countermoves` · vision · "compare the judge with your own labels, keep a separate check the agent never sees, or repeat the task across several sessions" ← none-owed
 - `judge-has-unknown-floor` · vision · "A judge has an unknown floor until you measure it." ← none-owed
 - `hand-label-measure-sharpen-repeat` · vision · "hand-label a sample, measure agreement, sharpen, repeat" ← none-owed
 - `a-few-dozen-to-start` · vision · "A few dozen outputs is enough to start; you are looking for disagreement patterns, not a significance test." ← none-owed

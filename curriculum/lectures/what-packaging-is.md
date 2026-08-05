@@ -7,7 +7,7 @@ The packaged re-send is running and the laptop is closed again. What you assembl
 One long session, drawn as a sea passage.
 
 <figure class="diagram">
-<svg viewBox="0 0 1200 560" role="img" aria-label="One agent session plotted as a sea passage: drift cones widen between position fixes and collapse at each fix; rails fence the reef; an unchecked twin session drifts across the no-go line into the rocks and arrives at the wrong harbor." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
+<svg viewBox="0 0 1200 560" role="img" aria-label="One agent session plotted as a sea passage: drift cones widen between position fixes and collapse at each fix; guardrails fence the reef; an unchecked twin session drifts across the no-go line into the rocks and arrives at the wrong harbor." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
 <defs>
  <pattern id="ps-reefhatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
  <line x1="0" y1="0" x2="0" y2="7" stroke="#a05a2c" stroke-width="1" opacity="0.45"/>
@@ -42,7 +42,7 @@ One long session, drawn as a sea passage.
 </g>
 <polygon points="190,440 186,452 194,452" fill="#786c56" opacity="0.6"/>
 <text x="190" y="430" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="8.5" letter-spacing="1.5" fill="#786c56" opacity="0.6">N</text>
-<!-- ======= reef + no-go line (the rails) ======= -->
+<!-- ======= reef + no-go line (the guardrails) ======= -->
 <path d="M470,560 C480,520 495,485 520,462 C560,428 600,450 640,445 C700,438 722,428 760,418 C800,408 840,424 880,428 C930,433 960,430 1000,430 C1040,430 1080,427 1120,426 C1150,425 1175,424 1200,424 L1200,560 Z" fill="url(#ps-reefhatch)" stroke="#a05a2c" stroke-width="1" opacity="0.9" stroke-opacity="0.5"/>
 <!-- rock symbols -->
 <g stroke="#a05a2c" stroke-width="1" opacity="0.55">
@@ -179,8 +179,8 @@ One long session, drawn as a sea passage.
 <!-- lighthouse -->
 <text x="838" y="462" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" letter-spacing="2.5" fill="#a05a2c" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">STANDING CHECK</text>
 <text x="838" y="476" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">always lit at the edge</text>
-<!-- the rails -->
-<text x="600" y="505" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="2.5" fill="#a05a2c" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE RAILS</text>
+<!-- the guardrails -->
+<text x="600" y="505" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="2.5" fill="#a05a2c" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">GUARDRAILS</text>
 <text x="600" y="521" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">fenced where damage can't be undone</text>
 <!-- ghost -->
 <text x="1000" y="382" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2.5" fill="#786c56" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE SAME SESSION, UNCHECKED</text>
@@ -198,7 +198,7 @@ One long session, drawn as a sea passage.
 
 - Drift grows with distance since the last check. The agent steers each step from its own previous step, so small errors compound silently until something outside the session measures position. On the chart that is the wedge: everywhere the session might be.
 - **A check is a position fix**. At a fix the wedge of possible states collapses to a point, and the next leg starts from a known position instead of an assumption. The diagnose-and-re-send you just ran was exactly this move: measure where the session actually is, then aim the next leg from there.
-- Rails belong where damage cannot be undone. Fence the reef, not the open water. At an irreversible edge a standing check stays lit whether anyone remembers to look or not; where redo is cheap, let the session sail.
+- Guardrails belong where damage cannot be undone. Fence the reef, not the open water. At an irreversible edge a standing check stays lit whether anyone remembers to look or not; where redo is cheap, let the session sail.
 - An unchecked session arrives confident, and wrong. Same start, no fixes, one wedge widening the whole way. The success report comes from the wrong harbor.
 
 Packaging is choosing which of these fixes stand without you.
@@ -281,7 +281,7 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 Claims
 - `drift-grows-between-checks` · vision · "Drift grows with distance since the last check." ← none-owed
 - `check-is-a-position-fix` · vision · "**A check is a position fix**" ← none-owed
-- `rails-at-irreversible-edges` · vision · "Rails belong where damage cannot be undone. Fence the reef, not the open water." ← none-owed
+- `guardrails-at-irreversible-edges` · vision · "Guardrails belong where damage cannot be undone. Fence the reef, not the open water." ← none-owed
 - `unchecked-run-confident-and-wrong` · vision · "An unchecked session arrives confident, and wrong." ← none-owed
 - `packaging-is-fixes-that-stand-without-you` · vision · "Packaging is choosing which of these fixes stand without you." ← none-owed
 - `standing-check-pushes-back-inside-the-passage` · vision · "A standing check pushes back before the next wrong step builds on the last one." ← none-owed

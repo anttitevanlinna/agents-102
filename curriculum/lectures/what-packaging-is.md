@@ -222,7 +222,7 @@ Three failures you named, three pieces, one each.
 - **Background-agent verifier.** A separate Claude session reads the produced work and judges it. Right when failures are qualitative: does this answer the question, does this match house style.
 - **Deterministic shell hook.** Tests, lint, type-check, compile, a custom invariant. Right when the failure has a true-false answer: did it break the build, did it touch the wrong directory.
 - **Ralph re-feed.** Loop the prompt with a check baked in; the agent re-runs against its own output until the check passes. Right when drift is the dominant failure and re-anchoring catches it.
-- The menu is practitioner-lived. Kim's writeup of Boris Cherny (who built Claude Code) has him reaching for all three in his long-running practice; the menu form is Kim's synthesis. You picked one against your dominant failure. The other two sit alongside the three-pattern for next time.
+- The menu is practitioner-lived. Kim's writeup of Boris Cherny has him reaching for all three in his long-running practice; the menu form is Kim's synthesis. You picked one against your dominant failure. The other two sit alongside the three-pattern for next time.
 
 ## Hooks always fire
 
@@ -297,7 +297,7 @@ Claims
 - `external-verifier-against-plausible-but-wrong` · vision · "**External verifier**, against plausible-but-wrong." ← none-owed
 - `three-failures-three-pieces` · vision · "Three failures you named, three pieces, one each." ← none-owed
 - `verifier-takes-three-shapes` · vision · "**Background-agent verifier** … **Deterministic shell hook** … **Ralph re-feed**" ← none-owed
-- `cherny-reaches-for-all-three` · detail · "Kim's writeup of Boris Cherny (who built Claude Code) has him reaching for all three in his long-running practice; the menu form is Kim's synthesis" ← kim-on-cherny
+- `cherny-reaches-for-all-three` · detail · "Kim's writeup of Boris Cherny has him reaching for all three in his long-running practice; the menu form is Kim's synthesis" ← kim-on-cherny
 - `hook-fires-on-named-events` · detail · "Session start, prompt submit, before each tool call, after each tool call, on stop, plus a few more." ← cc-hooks-docs
 - `agent-has-no-say-whether-hook-runs` · detail · "the agent has no say in whether it runs" ← cc-hooks-docs
 - `hooks-exist-because-llm-forgetful` · vision · "Hooks exist because the LLM is forgetful." ← none-owed

@@ -16,7 +16,7 @@ The session is working. Do not change this first experiment while it runs. Watch
 
 ## A boundary decides whether to continue
 
-- Some boundaries already stand without you: tests, types, lint, permission limits, and explicit stop or ask conditions. Each can interrupt a wrong step before the next step builds on it.
+- Some boundaries already stand without you: tests, types, lint, permission limits, and explicit stop or ask conditions. Each can catch a problem and send the work back for correction before later steps build on it.
 - The question is not how many checks the repo has. It is what notices first when this particular session goes wrong.
 - Do not add packaging mid-experiment. Watch where an existing boundary fires, where the session waits for you, and where nothing pushes back. That is part of the result you bring back.
 
@@ -34,7 +34,7 @@ The session is working. Do not change this first experiment while it runs. Watch
 - `durable-state-keeps-the-place` · vision · "files on disk survive" ← none-owed
 - `backpressure-named-in-flow-engineering` · borrowed · "Flow engineering calls the push from a slower downstream stage **backpressure**" ← costa-backpressure
 - `handoff-feedback-is-in-system` · vision · "During the handoff, feedback has to come from the system itself. You judge the result when you return." ← none-owed
-- `boundaries-interrupt-wrong-steps` · vision · "Each can interrupt a wrong step before the next step builds on it." ← none-owed
+- `boundaries-return-work-for-correction` · vision · "Each can catch a problem and send the work back for correction before later steps build on it." ← none-owed
 
 **Sources**
 - costa-backpressure `[checked:2026-07-02 result:OK due:none]` https://www.lucasfcosta.com/blog/backpressure-is-all-you-need — [practitioner direct] Lucas F. da Costa, 2026-05-23. Byline, date and the quoted sentence verified verbatim. Durable account of an argument made once, so `due:none` rather than a calendar re-open. fallback: paraphrase as "human review can become the bottleneck stage" and drop the name.

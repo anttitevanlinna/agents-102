@@ -4,7 +4,7 @@
 
 You are testing, and you are learning. Every send-off from here on is an experiment. The agent is the apparatus, your rules and context are the setup, and the result is data.
 
-You don't need to get it right first time. You need to read the result and know what to change for the next session. That is the whole obligation.
+You don't need to get it right first time. Read the result and decide what to change next.
 
 You're new to this country: the stretch where the agent runs alone and you don't watch each step. Don't travel it like a tourist. A tourist runs an agent and hopes; a practitioner runs a test and reads the data. The difference is not the outcome of the session. It is what you can say afterwards about why.
 
@@ -55,7 +55,7 @@ Format → `curriculum/backing-format.md`. Absorbed 2026-08-01 from the legacy `
 
 **Claims**
 - `send-off-is-an-experiment` · vision · "Every send-off from here on is an experiment. The agent is the apparatus, your rules and context are the setup, and the result is data." ← none-owed
-- `read-the-result-not-get-it-right` · vision · "You don't need to get it right first time. You need to read the result and know what to change for the next session." ← none-owed
+- `read-the-result-not-get-it-right` · vision · "You don't need to get it right first time. Read the result and decide what to change next." ← none-owed
 - `tourist-vs-practitioner` · vision · "a tourist runs an agent and hopes; a practitioner runs a test and reads the data" ← none-owed
 - `un-packaged-first-by-design` · vision · "Session one goes now, un-packaged: no plan.md, no verifier, no reference artifact." ← none-owed
 - `contrast-is-the-lesson` · vision · "The contrast is the lesson. No generic long-running-agent advice lands the way *you just watched this fail, here's what would have caught it* lands." ← none-owed

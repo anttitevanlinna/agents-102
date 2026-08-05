@@ -108,7 +108,7 @@
 ## Your first un-packaged long session
 
 - One long session goes off un-packaged, on purpose. You watch what the agent does with the system you built, exactly as it stands. Nothing added for the occasion.
-- You are not handed the laws of this country up front. You feel where it bites first, here. The laws that explain the bite get named later in the training, against what your own session did.
+- You encounter the problems before the training names them.
 - One question to carry into the session. When the agent takes a hundred steps alone, what makes you trust the result at the end?
 
 <!-- maintainer -->

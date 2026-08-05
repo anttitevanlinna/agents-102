@@ -241,7 +241,7 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 ## What you didn't build today
 
 - **Subagents for isolation.** When a phase of a long task wants a sandbox (exploring a third-party API, reading untrusted code, a search you'd rather not pollute the main session with), spin a subagent and let it return only what matters. The main session stays clean; the subagent's context is discarded after it reports. Same instinct as the verifier: keep the long-running thread coherent by routing the noisy work elsewhere.
-- Context for long tasks is one of the murkier places. Manual `/compact` at a moment you choose. The full subagent route. The 1M context window with no compaction at all. The original Ralph, rebuilding fresh sessions continuously from durable state. Plan-mode in one session, execution in a fresh one. Different shapes for different jobs; the field hasn't converged.
+- Context for long tasks is one of the murkier places. Manual `/compact` at a moment you choose. The full subagent route. The 1M context window with no compaction at all. The original Ralph, rebuilding fresh sessions continuously from durable state. Different shapes for different jobs; the field hasn't converged.
 
 ## The 80/20 ratio
 

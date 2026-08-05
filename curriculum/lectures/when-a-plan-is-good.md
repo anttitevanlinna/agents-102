@@ -55,9 +55,9 @@ After you've done it once, you'll feel when a plan needs the second read and whe
 - Generating candidates is cheap for the agent; judging them is where you're needed. Stuck naming a soft item? Ask Claude which step it's least confident about. That answer is a candidate. Whether it matters depends on the codebase and the task.
 - The agent finds, you judge, and everything from here sharpens one side or the other. The split runs through the whole discipline.
 
-## The cheapest gate you will ever run
+## Plan review is a high-leverage gate
 
-- A plan is a check that runs before anything exists. Reading intent costs minutes. Reading the finished diff costs hours. Un-shipping the wrong system costs weeks. Same mistake, three prices; the plan is where catching it is cheapest.
+- A plan is a check before implementation. One correction can redirect every step that follows before the agent turns the plan into code.
 - Aim the read at the unknown that teaches you the most. The branches worth walking are the ones that change what done means. The rest you'd settle in code review anyway.
 - Making the plan good IS the work. You don't have to execute a plan to know it's good. Recognizing a good plan is the skill; the execution can wait for the day the task is real.
 
@@ -73,7 +73,7 @@ After you've done it once, you'll feel when a plan needs the second read and whe
 
 **`ask plan mode directly` — kept, not cut.** The `when-a-plan-is-good-1` prompt was flagged `meta-retrospective` for a possible cull (the case for cutting: it adds an optional beat, and trimming lessens cognitive load). Kept by decision: asking plan mode what changed on its own side is a learn-how-the-tool-works beat. The student reads the read-only permission state back from the agent's own report, which the surrounding framing can only assert. The tool-literacy payoff outweighs the load argument; not a cut candidate.
 
-**Deck notes:** does NOT name "plan-mode approval inflation" — that label lands retroactively at exercise P5. *The cheapest gate you will ever run* delivers the name-the-uncertainty governor as a pre-action question (doctrine-legal). *Find is easier than judge* seeds the M5 verification-asymmetry naming.
+**Deck notes:** does NOT name "plan-mode approval inflation" — that label lands retroactively at exercise P5. *Plan review is a high-leverage gate* delivers the name-the-uncertainty governor as a pre-action question (doctrine-legal). *Find is easier than judge* seeds the M5 verification-asymmetry naming.
 
 **Quality:** compendium-audited 2026-08-03 (writing@5fc7188 story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@5fc7188)
 - judges @5fc7188: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
@@ -111,7 +111,7 @@ Format → `curriculum/backing-format.md`.
 - `agent-walks-decision-tree` · borrowed · "it can walk every unresolved branch of the decision tree without getting bored or skipping the dull ones" ← pocock-grill-me
 - `agent-agrees-easily` · detail · "The agent agrees easily. A flagged step can come back softened rather than sharpened. A push-back is finished when the regenerated plan is sharper, not when Claude says it heard you." ← sharma-sycophancy
 - `find-is-easier-than-judge` · detail · "Generating candidates is cheap for the agent; judging them is where you're needed." ← osmani-agentic-code-review
-- `gate-cost-escalation` · vision · "Reading intent costs minutes. Reading the finished diff costs hours. Un-shipping the wrong system costs weeks." ← none-owed
+- `plan-review-leverage` · vision · "One correction can redirect every step that follows before the agent turns the plan into code." ← none-owed
 - `making-plan-good-is-the-work` · vision · "Recognizing a good plan is the skill; the execution can wait for the day the task is real." ← none-owed
 
 **Sources**

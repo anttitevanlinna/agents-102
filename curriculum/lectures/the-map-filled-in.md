@@ -182,11 +182,11 @@ The map is back, one last time.
 - **Test → learn → encode.** (Outcome) M4 tested, M5 learned, M6 encoded: diff the sessions, name the gaps, package the learning. The loop closes when the lesson ships, the oldest search shape there is: the sessions generate variants, the eval selects, the memory retains.
 - **A move counts when it crosses the wall.** (Outcome) What survives the session is the fix, the rule it taught, and the skill it became; what compounds is the part a team takes up. Review infrastructure grows by accretion, one trusted check at a time, and it starts at the size of the one just shipped. Your own sessions speed up before the team's numbers move, because the team's way of reviewing and sharing has to be rebuilt around the new speed first; the checks and skills you hand over are that rebuild.
 
-## The governor you carry out
+## The question you carry forward
 
-- The far half has one governor, and it arrived at the M4 send-off. *When the agent takes a hundred steps alone, what makes you trust the result at the end?* It fires before the session, costs one sentence, and decides what gets packaged.
+- The far half has one question, and it arrived at the M4 send-off. *When the agent takes a hundred steps alone, what makes you trust the result at the end?* It fires before the session, costs one sentence, and decides what gets packaged.
 - Its answer turned into a build list. At M4 the answer was nothing yet, watch. By M6 the answer names checks: which verifier, which hook, which judge stands at the end of this session. A session the question has no answer for is a session not ready to send.
-- It travels. It prices the next send-off and picks which check to author first, and it pairs with the near half's governor: name the uncertainty before you move, then name what earns your trust at the end. Two questions, one sentence each, before any work moves.
+- It travels. It prices the next send-off and picks which check to author first, and it pairs with the near half's question: name the uncertainty before you move, then name what earns your trust at the end. Two questions, one sentence each, before any work moves.
 
 ## The map, filled in
 
@@ -243,8 +243,8 @@ Claims
 - `test-learn-encode-is-variation-selection-retention` · borrowed · "the sessions generate variants, the eval selects, the memory retains" ← cultural-vocab
 - `a-move-counts-when-it-crosses-the-wall` · vision · "**A move counts when it crosses the wall.**" ← none-owed
 - `dip-before-climb` · detail · "Your own sessions speed up before the team's numbers move, because the team's way of reviewing and sharing has to be rebuilt around the new speed first" ← david-dynamo-1990, brynjolfsson-j-curve
-- `far-half-governor` · vision · "*When the agent takes a hundred steps alone, what makes you trust the result at the end?*" ← none-owed
-- `governor-answer-became-a-build-list` · vision · "A session the question has no answer for is a session not ready to send." ← none-owed
+- `far-half-question` · vision · "*When the agent takes a hundred steps alone, what makes you trust the result at the end?*" ← none-owed
+- `question-answer-became-a-build-list` · vision · "A session the question has no answer for is a session not ready to send." ← none-owed
 - `moves-first-names-after` · vision · "The moves came first; the names came after." ← none-owed
 - `dashed-is-a-state-not-a-place` · vision · "Dashed is a state, not a place." ← none-owed
 - `every-check-moves-the-frontier` · vision · "Every check that stands without you moves the frontier outward." ← none-owed

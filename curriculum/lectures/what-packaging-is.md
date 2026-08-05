@@ -201,7 +201,7 @@ One long session, drawn as a sea passage.
 - Guardrails belong where damage cannot be undone. Fence the reef, not the open water. At an irreversible edge a standing check stays lit whether anyone remembers to look or not; where redo is cheap, let the session sail.
 - An unchecked session arrives confident, and wrong. Same start, no fixes, one wedge widening the whole way. The success report comes from the wrong harbor.
 
-Packaging is choosing which of these fixes stand without you.
+Packaging decides what catches problems during the handoff.
 
 A standing check pushes back before the next wrong step builds on the last one. That is the difference between a final review and feedback inside the passage.
 
@@ -283,7 +283,7 @@ Claims
 - `check-is-a-position-fix` · vision · "**A check is a position fix**" ← none-owed
 - `guardrails-at-irreversible-edges` · vision · "Guardrails belong where damage cannot be undone. Fence the reef, not the open water." ← none-owed
 - `unchecked-run-confident-and-wrong` · vision · "An unchecked session arrives confident, and wrong." ← none-owed
-- `packaging-is-fixes-that-stand-without-you` · vision · "Packaging is choosing which of these fixes stand without you." ← none-owed
+- `packaging-catches-problems-during-handoff` · vision · "Packaging decides what catches problems during the handoff." ← none-owed
 - `standing-check-pushes-back-inside-the-passage` · vision · "A standing check pushes back before the next wrong step builds on the last one." ← none-owed
 - `pieces-turn-up-on-their-own` · detail · "Each piece turns up on its own across practitioner write-ups." ← huntley-ralph, ronacher-minijinja, klaassen-stop-coding
 - `three-pattern-is-our-combination` · vision · "This training combined them into one kit and gave them names." ← none-owed

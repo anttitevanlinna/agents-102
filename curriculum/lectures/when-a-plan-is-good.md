@@ -11,7 +11,7 @@ Start a new Claude Code session at your repo root.
 ## Plan mode is a read-only permission state
 
 - Plan mode is a permission state, not a feature. You press Shift+Tab until the status bar shows plan mode on. The agent is now read-only: it reads files, runs shell commands to explore, and writes a plan file, but it won't edit your source until you approve.
-- The read-only part is load-bearing. Plan mode isn't "Claude thinks before doing." It's "Claude writes a thing you can read, edit, and push back on before your source changes." The plan is an artifact, not a feeling.
+- The read-only part is load-bearing. Plan mode isn't "Claude thinks before doing." It's "Claude writes a thing you can read, edit, and push back on before your source changes."
 - The plan file has an identity. A descriptive name (`migrate-auth-hash-calm-otter.md`, not random words) you can come back to. Small quality-of-life thing that matters more than it sounds: the plan is a thing on disk, not a moment in a chat.
 - You will notice the wait. While Claude plans, other sessions could be making progress elsewhere. Not today, but soon.
 

@@ -6,7 +6,7 @@ You are testing, and you are learning. Every send-off from here on is an experim
 
 You don't need to get it right first time. Read the result and decide what to change next.
 
-You're new to this country: the stretch where the agent runs alone and you don't watch each step. Don't travel it like a tourist. A tourist runs an agent and hopes; a practitioner runs a test and reads the data. The difference is not the outcome of the session. It is what you can say afterwards about why.
+You're new to this country: the stretch where the agent runs alone and you don't watch each step. Don't travel it like a tourist. A tourist runs an agent and hopes; a practitioner runs a test and reads the data. The difference is whether you can explain the result.
 
 ## The two-session arc
 
@@ -23,8 +23,8 @@ You're new to this country: the stretch where the agent runs alone and you don't
 ## Cancel is legitimate; traces are data
 
 - Cancel is legitimate; traces are data. If twenty minutes in you can see Claude hallucinating file paths, arguing with itself, or missing a requirement that wasn't in the prompt, stop it. You have the data you came for.
-- A result you can read is enough; you do not need a completed artifact. Letting it run another hour teaches you less than stopping at twenty minutes with an observation. Any trace counts.
-- Fifteen to thirty minutes buys the clues the read needs. Engineers run these for hours at work when the task warrants it; ambition and length grow session by session.
+- A result you can read is enough; you do not need a completed artifact. A short run with useful observations beats hours of opaque churning.
+- For this first run, fifteen to thirty minutes is enough. Engineers run these for hours at work when the task warrants it; ambition and length grow session by session.
 
 <!-- maintainer -->
 
@@ -63,7 +63,7 @@ Format → `curriculum/backing-format.md`. Absorbed 2026-08-01 from the legacy `
 - `agent-finds-you-judge` · vision · "The agent finds the thin spots; you judge which ones matter. A ranked list is candidates, not verdicts." ← none-owed
 - `cancel-is-legitimate` · vision · "Cancel is legitimate; traces are data." ← none-owed — the house's own operating rule for the exercise. **Was `detail` until 2026-08-01**, on the strength of the delivery note framing it as *what real operators do*; that framing was not evidenced and has been removed. See Flagged.
 - `any-trace-counts` · vision · "A result you can read is enough; you do not need a completed artifact." ← none-owed
-- `fifteen-to-thirty-minutes` · vision · "Fifteen to thirty minutes buys the clues the read needs." — the classroom timebox, the maintainer's own design call, set deliberately on 2026-05-21 against a cohort whose real M4 long task ran 12 minutes ← none-owed
+- `fifteen-to-thirty-minutes` · vision · "For this first run, fifteen to thirty minutes is enough." — the classroom timebox, the maintainer's own design call, set deliberately on 2026-05-21 against a cohort whose real M4 long task ran 12 minutes ← none-owed
 - `engineers-run-for-hours` · detail · "Engineers run these for hours at work when the task warrants it; ambition and length grow session by session." ← klaassen-overnight-prs, horthy-ralph-history, litt-code-like-a-surgeon, ronacher-long-runs-worse. The last one is listed deliberately as backing: it is the standing dissent this claim has to survive, and a re-verifier who reads the three supporting accounts without it will re-grade the claim too generously.
 
 **Sources**

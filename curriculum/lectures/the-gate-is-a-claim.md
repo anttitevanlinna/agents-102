@@ -1,6 +1,6 @@
 # The gate is a claim too
 
-Say the re-send comes back green. The verifier you built reads the work and passes it. A passing result is only as trustworthy as the check that produced it. The check itself needs verification. On the map it sits in the far half, the last check before the work ships. It can lie in five ways.
+Say the re-send comes back green. The verifier you built reads the work and passes it. A passing result is only as trustworthy as the check that produced it. The check itself needs verification. On the map it sits in the far half, the last check before the work ships. The check can lie in five ways.
 
 ## Passing is not proof
 
@@ -108,7 +108,7 @@ A gate is one more claim in the system. Build it, then hold it to the same bar i
 
 Claims
 - `gate-is-a-claim-too` · vision · "A passing result is only as trustworthy as the check that produced it. The check itself needs verification." ← none-owed
-- `five-ways-a-gate-lies` · vision · "It can lie in five ways." ← none-owed
+- `five-ways-a-gate-lies` · vision · "The check can lie in five ways." ← none-owed
 - `green-is-a-claim-not-proof` · vision · "Green is a claim about the check, not a fact about the work." ← none-owed
 - `three-reasons-a-pass-looks-identical` · vision · "the judge is miscalibrated, the gate got gamed, or the session was a lucky sample" ← none-owed
 - `countermoves-cost-less-than-the-failure` · vision · "All three cost less than the failure they hide." ← none-owed

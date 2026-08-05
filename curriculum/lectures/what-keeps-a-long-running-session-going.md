@@ -12,7 +12,7 @@ The session is working. Do not change this first experiment while it runs. Watch
 
 - The session can produce changes faster than you can judge them. Every unread diff joins a queue downstream of the agent.
 - Flow engineering calls the push from a slower downstream stage **backpressure**: slow down, stop, or redirect when the next stage cannot safely accept more.
-- In this experiment, you are part of that feedback. Wherever no check can push back, your attention is the only thing that can move the session safely.
+- During the handoff, feedback has to come from the system itself. You judge the result when you return.
 
 ## A boundary decides whether to continue
 
@@ -33,7 +33,7 @@ The session is working. Do not change this first experiment while it runs. Watch
 **Claims**
 - `durable-state-keeps-the-place` · vision · "files on disk survive" ← none-owed
 - `backpressure-named-in-flow-engineering` · borrowed · "Flow engineering calls the push from a slower downstream stage **backpressure**" ← costa-backpressure
-- `human-is-downstream-feedback` · detail · "Wherever no check can push back, your attention is the only thing that can move the session safely." ← costa-backpressure
+- `handoff-feedback-is-in-system` · vision · "During the handoff, feedback has to come from the system itself. You judge the result when you return." ← none-owed
 - `boundaries-interrupt-wrong-steps` · vision · "Each can interrupt a wrong step before the next step builds on it." ← none-owed
 
 **Sources**

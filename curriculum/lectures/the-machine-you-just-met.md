@@ -16,7 +16,7 @@ The machine you just met has three behaviors that look like quirks and are not: 
 - A check from outside the session resets the chain. A failing test does not care how confident the answer sounded. Everything after the check builds on verified ground, and no chain grows long enough for the stacking to take over.
 - That is why the failing test came before the fix. The check existed before the code it was checking. Every edit after it had a floor to stand on.
 
-## It answers in essays
+## The LLM answers in essays
 
 - The fix was small; the answers around it were pages. Complete, not prioritized, is the machine's default: an answer that covers everything is never wrong by omission.
 - This time the reading was cheap because the bug was trivial. On real work the reading becomes the bottleneck, not the generating, and a chain of two-page answers is how a session gets away from you.
@@ -33,7 +33,7 @@ That is the machine. The rest is steering.
 
 <!-- maintainer -->
 
-**Third behavior added (2026-07-10, Antti-directed cognitive-load arc):** new slide *It answers in essays* between the cascading-error slide and the closer; lede + closer retitled two→three behaviors; closer gains the ask-steering bullet (bring / build / ask triple). Carries the M1 anchor of the selective-reading arc (M2 exception → M3 take-into-use → M5 remind). Handle **Never let the agent say everything** bolded at naming moment per emphasis budget. Mechanism kept observation-grade (no training-cause claim for verbosity; no citation owed — deliberate, don't strengthen to a tuning claim without a source). Ripple applied: `trainer-modules.md` M1 flow line two→three.
+**Third behavior added (2026-07-10, Antti-directed cognitive-load arc):** new slide *The LLM answers in essays* between the cascading-error slide and the closer; lede + closer retitled two→three behaviors; closer gains the ask-steering bullet (bring / build / ask triple). Carries the M1 anchor of the selective-reading arc (M2 exception → M3 take-into-use → M5 remind). Handle **Never let the agent say everything** bolded at naming moment per emphasis budget. Mechanism kept observation-grade (no training-cause claim for verbosity; no citation owed — deliberate, don't strengthen to a tuning claim without a source). Ripple applied: `trainer-modules.md` M1 flow line two→three.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all three slides kept as bullets, bolded lead sentences flattened; bold survives only on the two coined-term handles at their naming moments (**sycophancy**, **error cascade**), per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Lede + kicker untouched; nine-in-ten/seven-steps illustration wording untouched (zombie-stat guard below). Wording near-verbatim; no claims added or cut.
 

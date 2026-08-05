@@ -12,7 +12,7 @@ Start a new Claude Code session at your repo root.
 
 - Plan mode is a permission state, not a feature. You press Shift+Tab until the status bar shows plan mode on. The agent is now read-only: it reads files, runs shell commands to explore, and writes a plan file, but it won't edit your source until you approve.
 - The read-only part is load-bearing. Plan mode isn't "Claude thinks before doing." It's "Claude writes a thing you can read, edit, and push back on before your source changes."
-- The plan file has an identity. A descriptive name (`migrate-auth-hash-calm-otter.md`, not random words) you can come back to. Small quality-of-life thing that matters more than it sounds: the plan is a thing on disk, not a moment in a chat.
+- The plan is saved on disk under a descriptive filename such as `migrate-auth-hash-calm-otter.md`. You can find it again without searching the chat.
 - You will notice the wait. While Claude plans, other sessions could be making progress elsewhere. Not today, but soon.
 
 ## Optional: ask plan mode directly
@@ -97,8 +97,7 @@ Format → `curriculum/backing-format.md`.
 - `plan-mode-shift-tab` · detail · "You press Shift+Tab until the status bar shows plan mode on" ← cc-permission-modes
 - `plan-mode-read-only` · detail · "The agent is now read-only: it reads files, runs shell commands to explore, and writes a plan file, but it won't edit your source until you approve" ← cc-permission-modes
 - `plan-before-source-changes` · detail · "Claude writes a thing you can read, edit, and push back on before your source changes" ← cc-permission-modes — "your source" is the load-bearing scope: since v2.1.218 approved shell commands run during planning, so plan mode protects the source tree, not all state.
-- `plan-file-has-identity` · detail · "A descriptive name (`migrate-auth-hash-calm-otter.md`, not random words) you can come back to" ← cc-plan-file
-- `plan-is-on-disk` · detail · "the plan is a thing on disk, not a moment in a chat" ← cc-plan-file
+- `plan-file-is-findable` · detail · "The plan is saved on disk under a descriptive filename such as `migrate-auth-hash-calm-otter.md`. You can find it again without searching the chat." ← cc-plan-file
 - `parallel-sessions-plant` · vision · "While Claude plans, other sessions could be making progress elsewhere" ← none-owed
 - `specific-file-list` · vision · "A plan that names three files has made three decisions. A plan that says 'the relevant files' has made zero." ← none-owed
 - `early-runnable-slice` · borrowed · "Find the first step after which something runs end-to-end" ← horthy-wsff, cockburn-walking-skeleton

@@ -43,8 +43,8 @@ The loop is the shape. The bug today was the excuse.
 - **The quoted forcing-function rule is a specimen, not introduced vocabulary.** It is verbatim `check_pedagogy.md §16` and makes the correction-to-rule move concrete.
 - **File is size-gate exempt** (story lecture).
 
-**Quality:** compendium-audited 2026-08-02 (writing@ffc64f9 story@6d6f5e1 technical@1c765f2 behavior@1c765f2 pedagogy@ffc64f9 strategy@d1141cd slides@ffc64f9) — SHAs stale against current body; re-audit before ship.
-- judges @ffc64f9: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** sim-passed 2026-08-05 (writing@148c7ea story@148c7ea technical@148c7ea behavior@148c7ea pedagogy@148c7ea strategy@148c7ea slides@148c7ea)
+- judges @148c7ea: writing PASS (codex-audit), story PASS (three-persona-codex-audit), technical PASS (codex-audit), behavior PASS (no-prompts), pedagogy PASS (codex-audit), strategy PASS (codex-audit), slides PASS (codex-audit)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

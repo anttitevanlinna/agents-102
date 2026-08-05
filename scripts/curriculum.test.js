@@ -198,6 +198,10 @@ test('eval-coverage lecture surface includes every THEORY_HANDBOOK_MANIFEST lect
     manifestLectures.includes('what-keeps-a-long-running-session-going'),
     'manifest parse sanity failed: M4 long-session closer not extracted'
   );
+  assert.ok(
+    manifestLectures.includes('how-instructions-grow'),
+    'manifest parse sanity failed: M2 instructions closer not extracted'
+  );
   assert.ok(manifestLectures.length >= 18, `manifest parse sanity failed: only ${manifestLectures.length} lectures extracted`);
 
   const audit = require('../scripts/audit-eval-coverage.js');

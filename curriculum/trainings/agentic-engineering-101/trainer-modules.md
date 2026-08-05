@@ -204,6 +204,7 @@ Never cut: the failing test before the fix, the diff-line push-back, and the con
 5. Exercise — [Extract the task-shaping rule](./#exercises-extract-the-task-shaping-rule) (12 min)
 6. Lecture — [Where the rule could live](./#lectures-where-the-rule-could-live) (names Slack triage / issue webhook / scheduled read)
 7. Save the rule if it earned itself — two short prompts in the module body; opportunistic integrate into `./CLAUDE.local.md`, only if a branch changed how the student reads plans
+8. Lecture — [How instructions grow](./#lectures-how-instructions-grow) (two-slide close: one common route from real work to rules and skills; Argyris's second loop returns durable learning to future context)
 
 **Learning goals.** Student can:
 
@@ -221,7 +222,7 @@ Never cut: the failing test before the fix, the diff-line push-back, and the con
 
 **Trainer cues.** Carry the push-backs in cohort delivery; the room won't always push hard the first time. The non-execution is the bet of the module ("Making the plan good IS the work"); if a student wants to run it, name the move and park it. In the 2-day format, lunch lands at 12:00 inside the exercise by design and the pause IS Phase 5's "stop"; post-lunch returns to name the design pattern.
 
-**Runtime map.** Recounted 2026-08-01: Connections 10 / Lecture A 8 / Exercise A 50 / Exercise B 12 / Lecture B 3 / soft-compound 3 / Debrief 7 / Bridge 5 = 98 against 105, with a 7-min buffer. (Lecture B per its own file, `where-the-rule-could-live.md` ~3 min reading-aloud.) (The module's previous Connections 10 / Lecture 10 / Exercise 60 / Debrief 15 / Bridge 5 line predated Exercise B and the soft-compound.) Exercise A's own phase splits (5/15/15/15/10) sum to 60; the map books it at 50 — the 10 comes out of P2/P4 agent-wait, which runs while the student reads.
+**Runtime map.** Connections 10 / Lecture A 8 / Exercise A 50 / Exercise B 12 / Lecture B 3 / soft-compound 3 / Lecture C 4 / Debrief 7 / Bridge 5 = 102 against 105, with a 3-min buffer. Lecture B is `where-the-rule-could-live.md`; Lecture C is `how-instructions-grow.md`. Exercise A's own phase splits (5/15/15/15/10) sum to 60; the map books it at 50 because P2/P4 agent-wait overlaps reading.
 
 | Beat | Budget | Sitting (1h45) | Cohort clock (2-day) |
 |---|---|---|---|
@@ -231,10 +232,11 @@ Never cut: the failing test before the fix, the diff-line push-back, and the con
 | Exercise A P5: stop, name the pattern | 10 | 0:58 | 13:15 |
 | Exercise B: Extract the task-shaping rule | 12 | 1:08 | 13:25 |
 | Lecture: Where the rule could live + save-the-rule prompts | 3 + 3 | 1:20 | 13:37 |
-| Debrief + Bridge | 7 + 5 | 1:28 | runs to ~13:57 — see the 2-day note |
-| Buffer | 5 | ends 1:40 + 5 | — |
+| Lecture: How instructions grow | 4 | 1:26 | 13:43 |
+| Debrief + Bridge | 7 + 5 | 1:30 | runs to ~14:01 — see the 2-day note |
+| Buffer | 3 | ends 1:42 + 3 | — |
 
-**2-day format note.** The post-lunch block (13:15–13:45, 30 min) holds P5 10 + Exercise B 12 + Lecture B 3 + Debrief 7 (the soft-compound folds into the Debrief conversation — they are the same self-compounding beat) ≈ 32; the Bridge rides the following 20-min break (M4 precedent), which absorbs the ~2-min spill with room to spare. The sitting format fits without shaving.
+**2-day format note.** The post-lunch block (13:15–13:45, 30 min) holds P5 10 + Exercise B 12 + Lecture B 3 + Lecture C 4 + Debrief 7. The soft-compound folds into the Debrief conversation because they are the same self-compounding beat. The Bridge rides the following 20-minute break; the close reaches roughly 14:01. In the four-sitting format, the module fits the 1h45 slot with three minutes of buffer.
 
 The Debrief has no projected section on the student page, by design — it is a 7-minute conversation beat, not a taught section. Run it as the self-compounding conversation: Claude proposes a plan-reading rule from the session; the push line below ("name a pattern specific to THIS codebase") is the whole procedure.
 

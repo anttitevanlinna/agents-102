@@ -128,6 +128,7 @@ const THEORY_HANDBOOK_MANIFEST = {
       'exercises/push-back-on-the-plan',
       'exercises/extract-the-task-shaping-rule',
       'lectures/where-the-rule-could-live',
+      'lectures/how-instructions-grow',
     ]],
     ['M3', [
       'exercises/open-the-side-quest',

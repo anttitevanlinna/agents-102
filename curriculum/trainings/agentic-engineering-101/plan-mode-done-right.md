@@ -59,6 +59,8 @@ If a branch from the second-pass read sharpened how plans get made in this codeb
 
 Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble is optional reading.
 
+[Lecture: How instructions grow](lectures/how-instructions-grow.md)
+
 ## Key Concepts
 - Structure is persuasive. A 7-item plan with headers looks like a decision even when it's a draft. At least 10% wrong.
 - One kind of scrutiny catches one kind of miss; a human read and an agent's walk-down of unresolved branches catch different things, and the gap between them is where the plan-reading skill lives

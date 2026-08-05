@@ -20,7 +20,7 @@ The machine you just met has three behaviors that look like quirks and are not: 
 
 - The fix was small; the answers around it were pages. Complete, not prioritized, is the machine's default: an answer that covers everything is never wrong by omission.
 - This time the reading was cheap because the bug was trivial. On real work the reading becomes the bottleneck, not the generating, and a chain of two-page answers is how a session gets away from you.
-- The countermove costs one clause: lead with the ranked list, hold the detail until asked. **Never let the agent say everything.** The shape of the answer is part of the prompt.
+- The countermove costs one clause: lead with the ranked list, hold the detail until asked. The shape of the answer is part of the prompt.
 
 ## One machine, three behaviors
 
@@ -33,7 +33,7 @@ That is the machine. The rest is steering.
 
 <!-- maintainer -->
 
-**Third behavior added (2026-07-10, Antti-directed cognitive-load arc):** new slide *The LLM answers in essays* between the cascading-error slide and the closer; lede + closer retitled two→three behaviors; closer gains the ask-steering bullet (bring / build / ask triple). Carries the M1 anchor of the selective-reading arc (M2 exception → M3 take-into-use → M5 remind). Handle **Never let the agent say everything** bolded at naming moment per emphasis budget. Mechanism kept observation-grade (no training-cause claim for verbosity; no citation owed — deliberate, don't strengthen to a tuning claim without a source). Ripple applied: `trainer-modules.md` M1 flow line two→three.
+**Third behavior added (2026-07-10, Antti-directed cognitive-load arc):** new slide *The LLM answers in essays* between the cascading-error slide and the closer; lede + closer retitled two→three behaviors; closer gains the ask-steering bullet (bring / build / ask triple). Carries the M1 anchor of the selective-reading arc (M2 exception → M3 take-into-use → M5 remind). Mechanism kept observation-grade (no training-cause claim for verbosity; no citation owed — deliberate, don't strengthen to a tuning claim without a source). Ripple applied: `trainer-modules.md` M1 flow line two→three.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all three slides kept as bullets, bolded lead sentences flattened; bold survives only on the two coined-term handles at their naming moments (**sycophancy**, **error cascade**), per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Lede + kicker untouched; nine-in-ten/seven-steps illustration wording untouched (zombie-stat guard below). Wording near-verbatim; no claims added or cut.
 
@@ -62,7 +62,7 @@ Format → `curriculum/backing-format.md`.
 - `chain-stacking-illustration` · vision · "If each step were right nine times in ten … The numbers are an illustration, not a measurement" ← none-owed
 - `check-resets-chain` · vision · "A check from outside the session resets the chain" ← none-owed
 - `essays-are-the-default` · vision · "Complete, not prioritized, is the machine's default" ← none-owed
-- `never-say-everything` · vision · "**Never let the agent say everything.** The shape of the answer is part of the prompt." ← none-owed
+- `answer-shape-is-prompt` · vision · "The shape of the answer is part of the prompt." ← none-owed
 
 **Sources**
 - sharma-sycophancy-2023 `[checked:2026-07-02 result:OK due:2027-01-02]` https://arxiv.org/abs/2310.13548 — [academic/research] Sharma et al., "Towards Understanding Sycophancy in Language Models" (Anthropic, 2023), dated-foundational. Verified live 2026-07-02: five state-of-the-art assistants exhibit sycophancy across four text-generation tasks; "both humans and preference models (PMs) prefer convincingly-written sycophantic responses over correct ones a non-negligible fraction of the time"; sycophancy "likely driven in part by human preference judgments." Body hedging ("often enough to shape the tuning") matches "driven in part" — do NOT strengthen to sole-cause. kb:findings/by-domain/coding-engineering.md fallback: teach the mechanism as convergent-practitioner observation, no URL owed. Re-verified live 2026-07-29: page live, now at v4 (10 May 2025), all three lines confirmed verbatim.

@@ -10,7 +10,7 @@ Say the re-send comes back green. The verifier you built reads the work and pass
 
 ## The judge needs calibrating against your labels
 
-- A judge has an unknown floor until you measure it. A judge is a claim that its bar and your bar agree. Until that is checked against your own labels, a judge-gated pipeline passes work at an agreement rate no one has ever seen.
+- An LLM judge is another untested component. Until you compare its verdicts with your own review, you do not know its false-pass rate—how often it approves work you would reject.
 - The move is hand-label a sample, measure agreement, sharpen, repeat. A few dozen outputs is enough to start; you are looking for disagreement patterns, not a significance test. Grade them yourself, compare against the judge's verdicts, sharpen the judge prompt until the two converge, and re-check when the model or the task shifts. Hamel Husain reports better than 90% agreement after three iterations of exactly this loop.
 - A good gate starts from real traces, not imagined failures. Read sessions that actually happened, sort the real failures into buckets, and write the first check for the biggest bucket. A gate built from the armchair catches the failures you pictured and misses the ones you have.
 
@@ -112,7 +112,7 @@ Claims
 - `green-is-a-claim-not-proof` · vision · "Green is a claim about the check, not a fact about the work." ← none-owed
 - `three-reasons-a-pass-looks-identical` · vision · "the judge is miscalibrated, the gate got gamed, or the session was a lucky sample" ← none-owed
 - `three-failures-have-different-countermoves` · vision · "compare the judge with your own labels, keep a separate check the agent never sees, or repeat the task across several sessions" ← none-owed
-- `judge-has-unknown-floor` · vision · "A judge has an unknown floor until you measure it." ← none-owed
+- `judge-has-unknown-false-pass-rate` · vision · "Until you compare its verdicts with your own review, you do not know its false-pass rate" ← none-owed
 - `hand-label-measure-sharpen-repeat` · vision · "hand-label a sample, measure agreement, sharpen, repeat" ← none-owed
 - `a-few-dozen-to-start` · vision · "A few dozen outputs is enough to start; you are looking for disagreement patterns, not a significance test." ← none-owed
 - `husain-ninety-percent-three-iterations` · detail · "Hamel Husain reports better than 90% agreement after three iterations of exactly this loop." ← husain-llm-judge

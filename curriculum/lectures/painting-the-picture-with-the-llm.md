@@ -4,7 +4,7 @@
 
 The wizard typing in neat Perl syntax is dead. Auto-complete was a thing. Auto-complete is no longer a thing. A part of high-end engineering skill has been taken on by the LLM.
 
-The LLM can do good work and bad work. It will be what fits the session. It flatters you; it calls unfinished work progress. It mirrors your stance.
+The LLM can do good work and bad work. It will be what fits the session. The LLM mirrors your stance.
 
 The tool is not the thing; the taste behind the tool is the thing. Seth Godin has been making that argument about tools for decades. The LLM is the infinite version of it: your stance as input to the session is mirrored in the output.
 
@@ -56,7 +56,7 @@ Format → `curriculum/backing-format.md`.
 
 **Claims**
 - `wizard-is-dead` · vision · "The wizard typing in neat Perl syntax is dead … A part of high-end engineering skill has been taken on by the LLM." ← none-owed
-- `llm-mirrors-stance` · detail · "It flatters you; it calls unfinished work progress. It mirrors your stance." ← sharma-sycophancy-2023, anthropic-personal-guidance-2026
+- `llm-mirrors-stance` · detail · "The LLM mirrors your stance." ← sharma-sycophancy-2023, anthropic-personal-guidance-2026
 - `tool-vs-taste` · borrowed · "The tool is not the thing; the taste behind the tool is the thing. Seth Godin has been making that argument about tools for decades." ← cultural-vocab
 - `trained-to-match` · detail · "It was trained to match you." ← sharma-sycophancy-2023
 - `stance-is-ceiling` · vision · "Your stance is the ceiling." ← none-owed

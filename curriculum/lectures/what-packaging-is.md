@@ -217,7 +217,7 @@ A standing check pushes back before the next wrong step builds on the last one. 
 
 Three failures you named, three pieces, one each.
 
-## Three shapes the verifier takes
+## Three shapes the verifier can take
 
 - **Background-agent verifier.** A separate Claude session reads the produced work and judges it. Right when failures are qualitative: does this answer the question, does this match house style.
 - **Deterministic shell hook.** Tests, lint, type-check, compile, a custom invariant. Right when the failure has a true-false answer: did it break the build, did it touch the wrong directory.

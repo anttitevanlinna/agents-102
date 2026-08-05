@@ -24,7 +24,6 @@ Say the re-send comes back green. The verifier you built reads the work and pass
 
 - The agent's behavior is a distribution, not a property. One green session is an anecdote with survivorship bias. Reachable and dependable are different claims: passing once shows the task is reachable, passing again and again shows it is dependable. The second collapses far faster than the first.
 - Before crediting an improvement, run it repeatedly. A new rule, a new prompt, a new gate: judge it on pass rates across several sessions, not on the one session that followed the change. On a single session you cannot separate the change from ordinary session-to-session variance.
-- A demo is pass-once evidence. An impressive session someone shows you proves the task is reachable, not that it is dependable. File it there.
 
 ## Change on recurrence, not on noise
 
@@ -96,7 +95,7 @@ A gate is one more claim in the system. Build it, then hold it to the same bar i
 
 **Antti decisions (2026-07-27):** six slides confirmed as THE M5 closer; all five laws kept (no error-analysis trim, no don't-tamper cut; combined close packaging ~12–15 + gate 7–9 accepted against the 1h45 runtime); the slide-5 kicker ("A gate is one more claim…") stays as the laws' summary line so the deck ends on the frontier warning; 2×2 figure added to the frontier slide in the house SVG style (blank-line-free figure block per the engine-SVG rule; the frontier-definition sentence is carried once, in the figure caption, and dropped from bullet 3).
 
-**Laws carried (5 + closing frame):** green-is-a-claim (passing is not proof) · calibrate-the-judge · Goodhart/gate-decay · one-run-is-a-sample · don't-tamper (change on recurrence). Trimmed from the reference-dose supplementary: hold-out and integrity-check folded into the gate-decay slide; the error-analysis-first bullet kept tight on the calibrate slide (cut candidate — see eyeball). The demo-is-pass-once and regression-to-the-mean bullets kept as one-line traps.
+**Laws carried (5 + closing frame):** green-is-a-claim (passing is not proof) · calibrate-the-judge · Goodhart/gate-decay · one-run-is-a-sample · don't-tamper (change on recurrence). Trimmed from the reference-dose supplementary: hold-out and integrity-check folded into the gate-decay slide; the error-analysis-first bullet kept tight on the calibrate slide (cut candidate — see eyeball). The demo-is-pass-once bullet was cut as a restatement; the regression-to-the-mean trap remains.
 
 **Lecture meta:** *7–9 min M5 closer, deck-shaped, six slides: five gate laws plus the delegation-frontier zoom-out. Names the fallibility of the verifier the student just built. Earns each law from the gate in front of them, not cold.*
 
@@ -122,7 +121,6 @@ Claims
 - `holdout-and-integrity-check` · vision · "Keep a check the agent never sees, so nothing can optimize against it." ← none-owed
 - `behaviour-is-a-distribution` · vision · "The agent's behavior is a distribution, not a property." ← none-owed
 - `reachable-is-not-dependable` · vision · "passing once shows the task is reachable, passing again and again shows it is dependable" ← none-owed
-- `demo-is-pass-once-evidence` · vision · "A demo is pass-once evidence." ← none-owed
 - `deming-tampering` · borrowed · "W. Edwards Deming called this **tampering**" ← cultural-vocab
 - `react-on-recurrence` · vision · "The same failure shape returning is signal." ← none-owed
 - `regression-to-the-mean-trap` · borrowed · "After a bad session, the next session is usually better with no change at all." ← cultural-vocab

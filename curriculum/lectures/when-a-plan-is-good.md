@@ -52,8 +52,8 @@ After you've done it once, you'll feel when a plan needs the second read and whe
 
 ## Find is easier than judge
 
-- Generating candidates is cheap for the agent; judging them is where you're needed. Stuck naming a soft item? Ask Claude which step it's least confident about. That answer is a candidate. Whether it matters on this codebase is a decision only you can make.
-- The split runs through the whole discipline. The agent finds, you judge, and everything from here sharpens one side or the other.
+- Generating candidates is cheap for the agent; judging them is where you're needed. Stuck naming a soft item? Ask Claude which step it's least confident about. That answer is a candidate. Whether it matters depends on the codebase and the task.
+- The agent finds, you judge, and everything from here sharpens one side or the other. The split runs through the whole discipline.
 
 ## The cheapest gate you will ever run
 

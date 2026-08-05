@@ -10,7 +10,7 @@ Three slides:
 
 1. **Thirty bullets were not the training.** Keep the origin story and one or two concrete examples of specific wrongness becoming reusable rules. Compress the current “Wrong is how steering gets in” and “The rules started doing the work” sections into this beat.
 2. **Then we tested the training.** Replace the current scaling story with a concise account of the actual quality stack:
-   - 286 numbered rules and subrules across 12 checklists, counted from the canonical `check_*.md` compendiums;
+   - 279 active rules and subrules across 12 checklists, counted from the canonical `check_*.md` compendiums;
    - automated quality judges, each reading through a focused lens;
    - simulated engineer reads using the competent-builder, skeptical-senior, and fast-operator perspectives, plus separate prompt-behavior analysis;
    - real Claude Code sessions driven through M1–M6 in tmux against working codebases.
@@ -29,7 +29,7 @@ Use “automated quality judges,” not “evals,” so the lecture can describe
 
 ## Evidence discipline
 
-- Describe the rule total as a repository snapshot, not a timeless property: “The current system has 286 numbered rules and subrules across 12 checklists.”
+- Describe the rule total as a repository snapshot, not a timeless property: “The system behind this training currently has 279 active rules and subrules across 12 checklists.” Count only bold numbered rules; exclude italic “Moved to…” redirects.
 - “Automated quality judges” refers to the eight focused classes exposed by the eval machinery: writing, story, technical, behavior, pedagogy, strategy, cross-module, and slides.
 - Do not claim three codebases all pass the full M1–M6 chain. The supported claim is that the tmux runner has driven real Claude Code sessions through M1–M6 against working codebases; the complete chain is documented on Lemmings, with later-module variants on Codesearch and Picoshare.
 - Update the lecture's backing claims and maintainer notes so removed claims and retired constraints do not survive below the student-facing body.

@@ -11,7 +11,7 @@
 ## Global Constraints
 
 - Use “automated quality judges,” not “evals,” on the M1 student surface.
-- State the repository snapshot as “286 numbered rules and subrules across 12 checklists.”
+- State the repository snapshot as “279 active rules and subrules across 12 checklists.”
 - Do not claim that all three test codebases passed the full M1–M6 chain.
 - Keep the lecture in Antti's first-person build-story frame.
 - Keep **compound engineering** as the only coined-term emphasis in the close.
@@ -36,10 +36,10 @@ Run:
 ```bash
 rule_dir=/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory
 find "$rule_dir" -maxdepth 1 -type f -name 'check_*.md' | wc -l
-rg --no-filename '^[0-9]+[a-z]?\.' "$rule_dir"/check_*.md | wc -l
+rg --no-filename '^[0-9]+[a-z]?\.[[:space:]]+\*\*' "$rule_dir"/check_*.md | wc -l
 ```
 
-Expected: `12` checklist files and `286` numbered rule/subrule lines. If either changes, use the fresh values in body and backing.
+Expected: `12` checklist files and `279` active rule/subrule lines. The active-rule regex excludes italic “Moved to…” redirects. If either changes, use the fresh values in body and backing.
 
 - [ ] **Step 2: Replace the student-facing body with the approved three-slide draft**
 
@@ -58,7 +58,7 @@ The failures were specific. A phrase brought consultancy voice into an engineeri
 
 The rules were corrected too. Some were too broad. Some fired in the wrong place. Each time a rule failed, the failure sharpened the rule instead of disappearing into one edit.
 
-The current system has 286 numbered rules and subrules across 12 checklists. The count is not a claim that more rules make better work. It shows how much specific judgment had to be written down before another session could reuse it.
+The system behind this training currently has 279 active rules and subrules across 12 checklists. The count is not a claim that more rules make better work. It shows how much specific judgment had to be written down before another session could reuse it.
 
 ## Then we tested the training
 
@@ -66,15 +66,15 @@ Rules shape a draft, but they still leak. Major changes therefore go through aut
 
 Simulated engineers read the result as a competent builder, a skeptical senior, and a fast operator. A separate simulation asks what the LLM is likely to do when each prompt is pasted. Those reads catch ambiguity, condescension, weak handoffs, and prompts whose wording invites the wrong behavior.
 
-Then a tmux runner drives real Claude Code sessions through M1–M6 against working codebases. It catches a different class of failure: a prompt that waits forever, an artifact that never lands, or a handoff that breaks the next module.
+Then a tmux runner drives real Claude Code sessions through Modules 1–6 against working codebases. It catches a different class of failure: a session that stalls, an artifact that never lands, or a handoff that breaks the next module.
 
 None of these checks replaces another. Rules catch mistakes already understood. Judges and simulations challenge the written material. The tmux runs test whether the training actually executes.
 
 ## You just ran the same loop
 
-This build story is the shape you just ran on your own repo. Claude's first read was partly wrong. You found the useful wrongness, corrected it, and wrote the correction into `./CLAUDE.local.md` for the next session.
+This build story is the shape you just ran on your own repo. Claude's first read was partly wrong. You found the useful wrongness, corrected it, and wrote what the session taught you into `./CLAUDE.local.md` for the next session.
 
-Kieran Klaassen calls this **compound engineering**: work produces evidence; evidence improves the system that does the next work. An hour ago that was a name. Now it is a loop you have run yourself.
+Kieran Klaassen calls this **compound engineering**: work produces evidence; evidence improves the system that does the next work. Before you ran it, that was a name. Now it is a loop you have run yourself.
 
 The loop is the shape. The bug today was the excuse.
 ```

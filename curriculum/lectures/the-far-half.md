@@ -101,7 +101,7 @@
 ## Long-running work adds three new concerns
 
 - Long-running is not more of the same. So far you sat inside every loop: you read each reply, caught each wobble as it happened. When the agent runs for an hour without you watching, that quick feedback goes quiet. You stop seeing every move and meet the result at the end, all at once.
-- **Verification** tells you whether the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it. On a long session, this stops being a glance and becomes a job. The map drew a checking loop across this ground as a ghost, dashed and not yet built; this half is where you build it.
+- **Verification** tells you whether the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it. On a long session, this stops being a glance and becomes a job.
 - **Absorption** determines how much of the output you can actually take up. Generating is fast; reading, judging, and merging are not. On a long session the gap between the two decides your real throughput.
 - **Outcome** determines what survives the session. The fix you keep, the rule it taught you, and whether any of it crosses the wall from you to the team.
 
@@ -113,7 +113,7 @@
 
 <!-- maintainer -->
 
-**Map figure woven in (2026-07-10, Antti-directed "complete the text→pictures replacement", unreviewed):** the ASCII banner (near half done ▶ VERIFICATION ─▶ ABSORPTION ─▶ OUTCOME) replaced by the engine-map SVG, derived from `the-whole-map.md`'s canvas per the `the-map-filled-in.md` recipe. Edits vs the parent: ids re-prefixed `wm-` → `fh-` (theory handbook renders multiple copies on one page; duplicate ids break defs); a cream veil rect (opacity 0.55) hazes the NEAR half (x≤600, below the phase-header row — all six phase names stay legible); the three seam-straddling Work labels (build loop, agent's own loop, prototyping ghost — tags + subs) re-emitted above the veil with a cream erase-stroke at `fill-opacity="0.45"` so each reads uniformly dimmed instead of half-cut by the veil edge (caught on Chrome render 2026-07-10); two caption strips added at y=522: `NEAR HALF · DONE: INTENT · CONTEXT · WORK` (veiled side) and `THE FAR HALF · AHEAD` (lit side) — carrying the deleted ASCII's two text payloads. The checking loop stays a dashed ghost with its `by hand for now` sub, matching the body bullet ("still a ghost here"). Figure block is blank-line-free ON PURPOSE (marked terminates raw-HTML on an interior blank line). If the M2 parent canvas changes, re-derive this copy. Re-audit before ship.
+**Map figure woven in (2026-07-10, Antti-directed "complete the text→pictures replacement", unreviewed):** the ASCII banner (near half done ▶ VERIFICATION ─▶ ABSORPTION ─▶ OUTCOME) replaced by the engine-map SVG, derived from `the-whole-map.md`'s canvas per the `the-map-filled-in.md` recipe. Edits vs the parent: ids re-prefixed `wm-` → `fh-` (theory handbook renders multiple copies on one page; duplicate ids break defs); a cream veil rect (opacity 0.55) hazes the NEAR half (x≤600, below the phase-header row — all six phase names stay legible); the three seam-straddling Work labels (build loop, agent's own loop, prototyping ghost — tags + subs) re-emitted above the veil with a cream erase-stroke at `fill-opacity="0.45"` so each reads uniformly dimmed instead of half-cut by the veil edge (caught on Chrome render 2026-07-10); two caption strips added at y=522: `NEAR HALF · DONE: INTENT · CONTEXT · WORK` (veiled side) and `THE FAR HALF · AHEAD` (lit side) — carrying the deleted ASCII's two text payloads. The checking loop stays a dashed ghost with its `by hand for now` sub. Figure block is blank-line-free ON PURPOSE (marked terminates raw-HTML on an interior blank line). If the M2 parent canvas changes, re-derive this copy. Re-audit before ship.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** container lecture, bullets kept on all three slides; bold reduced to the three phase-name sub-spans where each govern-bullet opens — **Verification** · **Absorption** · **Outcome**. Everything else de-bolded (both map-reveal bullets, the long-running lead, the whole un-packaged-run slide). ASCII fence untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
@@ -128,8 +128,6 @@
 **Time:** 3–5 min target (container, not a teaching lecture). Past 5 in rehearsal = teaching laws it should leave for M5/M6.
 
 **Artifact contract (Family B):** the far-half map slot only. Per-law {NAME · MAP-POSITION · MECHANISM · GOVERNOR} for Verification/Absorption/Outcome laws is downstream closer work, not this opener's. Landed shape (2026-07-03): all three far-half phases consolidate at M6 (`the-map-filled-in`); M5 (`what-packaging-is`) map-places the three-pattern only.
-
-**Edit (2026-07-02):** Verification bullet gains one map-vocabulary clause (the ghost checking loop, named by its M2 map tag, still a ghost here) — completeness-review minor "map strand vocabulary shown once, never revisited". Revisit, not un-ghosting: no law named, no by-hand/gate phrasing (M5's beat). Near-half strand revisit queued for `the-loop-half-filled` (file locked this pass).
 
 - Family B judged 2026-07-03: B-star durability PASS — container reads whole voice-absent; spine-anchoring exemplary (every far-half phase names its map slot + governor-verb) and worldview-fit textbook recognition-before-naming ("you feel where it bites first"; backpressure is named in the post-launch M4 closer, then built and calibrated in M5 and composed in M6).
 
@@ -148,7 +146,6 @@ Format → `curriculum/backing-format.md`. Figure provenance: derived from `the-
 - `absorption-sets-take-up` · detail · "**Absorption** determines how much of the output you can actually take up. Generating is fast; reading, judging, and merging are not." ← osmani-outer-loop, osmani-software-factories
 - `absorption-gap-decides-throughput` · vision · "On a long session the gap between the two decides your real throughput." ← none-owed
 - `outcome-sets-what-survives` · vision · "**Outcome** determines what survives the session." ← none-owed
-- `checking-loop-still-a-ghost` · vision · "The map drew a checking loop across this ground as a ghost, dashed and not yet built" ← none-owed
 - `un-packaged-run-on-purpose` · vision · "One long session goes off un-packaged, on purpose." ← none-owed
 - `trust-work-you-didnt-watch` · vision · "When the agent takes a hundred steps alone, what makes you trust the result at the end?" ← none-owed
 

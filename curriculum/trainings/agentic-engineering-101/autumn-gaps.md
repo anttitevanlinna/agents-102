@@ -352,11 +352,11 @@ exists in the work; this track does not cover it.*
 **The track needs.** The map closed as well as opened, and someone in the room saying what the team zone
 on its right edge means, since team-level compounding is why this track exists.
 
-**Plain AE101 does.** `the-whole-map.md:107` promises *"Every module points back to this map"* and
-`:105` *"Each technique in this training has a location on this cycle."* The two lectures that pay that
-off (`the-loop-half-filled`, wired into the dropped `earn-the-trust`; `the-map-filled-in`, wired into
-the dropped `spot-gaps-build-the-loop`) are both out of this cut. `the-far-half.md` re-opens the far
-half at sitting 3 and consolidates nothing.
+**Plain AE101 does.** `the-whole-map.md` opens the six-phase territory and locates the work so far in
+its near half. The two lectures that return to and fill that same map (`the-loop-half-filled`, wired
+into the dropped `earn-the-trust`; `the-map-filled-in`, wired into the dropped
+`spot-gaps-build-the-loop`) are both out of this cut. `the-far-half.md` re-opens the far half at
+sitting 3 and consolidates nothing.
 
 Separately, the SVG prints the soil line *"a move counts when it crosses the wall"* across the bottom,
 plus `THE TEAM →`, `↻ CROSSING THE WALL`, `CROSSES TO THE TEAM ↗` and `TRUSTED · SHARED VALUE →` along

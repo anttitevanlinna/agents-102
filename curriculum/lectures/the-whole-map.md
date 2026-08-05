@@ -100,15 +100,9 @@ The phases are places, not stages. A task usually stands in more than one at onc
 - The near half is Intent, Context, Work. How to aim the work, what the agent needs to know, and how a single loop runs and compounds. Every move so far has lived here.
 - The far half is Verification, Absorption, Outcome. What happens when sessions get long and the quick feedback goes quiet. Different ground, different rules. The rest of the training goes there. Not yet.
 
-## Every move hangs on a location
-
-- One place for every move to hang. Each technique in this training has a location on this cycle, not just a slot in the schedule. Material with a location is material you can find again later.
-- You do the moves first and name them after. The map is a place to hang moves, not a lecture. No law gets taught here; each one gets named at the moment you have already used it and can recognize it as yours.
-- Every module points back to this map. The question is always the same: which phase is this move in, and what does that phase govern?
-
 <!-- maintainer -->
 
-**STATUS:** three slides (one `##` = one slide), proper-length bullets per `theory-plan.md` § Slide format, wired into `plan-mode-done-right.md § Start here`. Container discipline held: phases described by what they govern, no law named.
+**STATUS:** two slides (one `##` = one slide), proper-length bullets per `theory-plan.md` § Slide format, wired into `plan-mode-done-right.md § Start here`. Container discipline held: phases described by what they govern, no law named.
 
 **Placement:** M2 open, first map reveal of the training (Day-1 loop-half in the internal fold; student body uses module ranges + near/far half, not day labels, per `check_student_facing §22`). Map-first, derive-within doctrine: container is legal here (`check_lectures §2` carve-out, `theory-evals.md` B3); the law NAME / MECHANISM / GOVERNOR stays name-after (the near-half close at M3 names the loop half).
 
@@ -123,7 +117,7 @@ The phases are places, not stages. A task usually stands in more than one at onc
 - **No three-altitudes framing here.** "One loop, three sizes", and any *the loop climbs: personal → team → company* wording, is the M3 close's beat (`the-loop-half-filled`). The wall/team zone carries personal→team visually; that is this file's whole dose.
 - **The agent's own loop is drawn solid inside the build loop** (tag `THE AGENT'S OWN LOOP`, sub `act · read the result · correct`). The nesting is shown; the law is not named.
 - **The checking loop stays a ghost** — dashed across Verification/Absorption (tag `◌ THE CHECKING LOOP`, sub `read · judge · gate what ships · by hand for now`). No `?` glyph: `?` means frontier-unknown, and this ghost means not-yet-built. No backpressure / you-are-the-feedback-signal phrasing (M5's beat).
-- **Bold budget:** the six phase-definition bullets keep theirs (**Intent.** through **Outcome.** — the map's handles). *You are here* and *Every move hangs on a location* carry none. → `theory-plan.md § Slide format — emphasis budget`, `check_slides.md §9`.
+- **Bold budget:** the six phase-definition bullets keep theirs (**Intent.** through **Outcome.** — the map's handles). *You are here* carries none. → `theory-plan.md § Slide format — emphasis budget`, `check_slides.md §9`.
 - **Component outcome caps** are EB Garamond italic on one shared baseline, one per phase column, matching `Trusted shipped change`: *A task worth running · A grounded picture · A candidate change · A verdict you trust · A win taken up*.
 
 **Figure — provenance and build constraints.** The inline SVG is the groundwork Field Guide engine canvas (`groundwork/site/sw-engine.html`; six phase columns from `groundwork/protos/map-usability/sw-loops.html`) re-expressed as static light-mode SVG. It carries the six phase columns under this lecture's phase vocabulary, the seven named loop strands at their source altitudes (context · plan-core · security · prototyping-ghost · build · compounding · crossing-the-wall), the dashed compounding return arc, the team zone, the fuzzy-idea-to-shared-value drift line, and the "Trusted shipped change" cap. Out of scope by design: the pattern-card node layer (Field Guide hyperlinks, foreign corpus), glow filters, noise texture, pulse animations, Google fonts, canvas chrome (masthead/footer). Palette maps onto `curriculum.css` tokens: teal `#3fe0c8` → `--note` `#2f6b6b`; amber `#ffb347` → `#a05a2c` (darkened `--warm` for contrast on cream); soil blacks → `--bg` `#efe6d2` panel with `--line-2` frame; spore/ink text → `--fg`/`--fg-2`; col-num teal → `--accent` oxblood. The figure rides the `.diagram` breakout (64rem) so tag text stays legible when projected. No JS, no external requests, self-contained in the workbook build. The block carries no interior blank lines on purpose — `marked` terminates a raw-HTML block on the first one and spills markup into the page.

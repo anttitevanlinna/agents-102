@@ -1,4 +1,4 @@
-# MCP and connectors — reference
+# MCP and connectors: reference
 
 Flat lookup. How to wire your agent to a ticket tracker (and other outside-the-repo systems) in Claude Code. Updated as the install surface changes; the exercise body stays stable.
 
@@ -10,9 +10,9 @@ Three ways an action becomes callable in a Claude Code session:
 
 1. **Claude.ai connector inheritance.** A connector added at [claude.ai/customize/connectors](https://claude.ai/customize/connectors) is automatically available when the CLI is logged in to the same account. Best path for Jira and Linear.
 2. **`claude mcp add` from the command line.** Install an MCP server directly. Covers connectors not in the Claude.ai directory, project-scoped servers (`.mcp.json` in the repo), and local stdio MCPs.
-3. **First-party CLI via Bash.** When the work app ships a CLI (`gh`, `aws`, `gcloud`), Claude calls it through Bash — no MCP. Best ergonomics where the CLI exists; `gh` is the canonical case.
+3. **First-party CLI via Bash.** When the work app ships a CLI (`gh`, `aws`, `gcloud`), Claude calls it through Bash. No MCP. Best ergonomics where the CLI exists; `gh` is the canonical case.
 
-Per-tracker install commands below. Plugins distribute Path 2 at scale — see the [Plugins and marketplaces](#plugins-and-marketplaces--mcp-servers-bundled-for-distribution) section.
+Per-tracker install commands below. Plugins distribute Path 2 at scale. See the [Plugins and marketplaces](#plugins-and-marketplaces--mcp-servers-bundled-for-distribution) section.
 
 **Vocabulary.** MCP is the protocol. **Connector** = the wire into a work app (the word Claude Code's configuration uses). **Action** = a verb with effect in the world (*read ticket, comment, close*). **Tool** = the umbrella term for anything the model can call. A first-party CLI exposes actions through Bash; an MCP server exposes them through the protocol. Same end state from the agent's point of view.
 
@@ -20,7 +20,7 @@ Per-tracker install commands below. Plugins distribute Path 2 at scale — see t
 
 ## GitHub Issues
 
-**Default for AE101: `gh` CLI (Path 3).** GitHub ships [`gh`](https://cli.github.com), an official CLI pre-installed on most developer machines. Claude Code's Bash tool calls it directly — no MCP server, no PAT management, no allowlist work for IT.
+**Default for AE101: `gh` CLI (Path 3).** GitHub ships [`gh`](https://cli.github.com), an official CLI pre-installed on most developer machines. Claude Code's Bash tool calls it directly: no MCP server, no PAT management, no allowlist work for IT.
 
 ```
 gh auth status     # check
@@ -41,7 +41,7 @@ Trailing slash is canonical. Requires a GitHub fine-grained Personal Access Toke
 
 **Sources:** [`gh` CLI](https://cli.github.com) · [`gh` manual](https://cli.github.com/manual/) · [GitHub MCP server repo](https://github.com/github/github-mcp-server) · [GitHub PAT settings](https://github.com/settings/personal-access-tokens)
 
-## Jira — Atlassian Rovo MCP (official)
+## Jira: Atlassian Rovo MCP (official)
 
 Atlassian's Rovo MCP Server hit GA on 2026-02-04, covering Jira, Confluence, Compass, Bitbucket, and Jira Service Management. Jira, Confluence, Compass, and Bitbucket tools use OAuth 2.1; JSM ships its own read/write scopes, API-token auth only. Docs: [support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server](https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/).
 
@@ -57,13 +57,13 @@ Then in Claude Code:
 /mcp
 ```
 
-Browser opens; you sign in to your Atlassian org; scopes approve at user level. **Once your org's first 3LO consent is complete and the domain is allowed, individual engineers don't need per-install admin approval** — admins control product scopes and which domains can connect, not whether individuals can install after that.
+Browser opens; you sign in to your Atlassian org; scopes approve at user level. **Once your org's first 3LO consent is complete and the domain is allowed, individual engineers don't need per-install admin approval.** Admins control product scopes and which domains can connect, not whether individuals can install after that.
 
 **Note:** the older `https://mcp.atlassian.com/v1/sse` endpoint stops working 2026-06-30 per [Atlassian's support docs](https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/). The current canonical endpoint is `/v1/mcp/authv2`.
 
 **Sources:** [Atlassian Rovo MCP docs](https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/) · [JSM supported tools](https://support.atlassian.com/atlassian-rovo-mcp-server/docs/supported-tools/) · [Atlassian admin console](https://admin.atlassian.com/) · [Composio (Jira MCP bridge)](https://composio.dev/)
 
-## Linear — first-party MCP (official)
+## Linear: first-party MCP (official)
 
 Linear publishes its own MCP server. Reference: [linear.app/changelog](https://linear.app/changelog) (search "MCP").
 
@@ -86,11 +86,11 @@ Check the [Anthropic Directory](https://claude.ai/directory) for reviewed connec
 
 **Sources:** [Anthropic Directory](https://claude.ai/directory) · [Model Context Protocol examples](https://modelcontextprotocol.io/examples)
 
-## Plugins and marketplaces — MCP servers bundled for distribution
+## Plugins and marketplaces: MCP servers bundled for distribution
 
-A Claude Code **plugin** is a packaged extension that can bundle skills, agents, hooks, MCP servers, LSP servers, and background monitors into one installable unit. A **marketplace** is a catalog (a `marketplace.json` file hosted in a git repo) that lists plugins and where to fetch them. Plugins distributed this way are the most ergonomic path when one MCP server needs to land on many machines — a team marketplace install replaces N copies of `claude mcp add`.
+A Claude Code **plugin** is a packaged extension that can bundle skills, agents, hooks, MCP servers, LSP servers, and background monitors into one installable unit. A **marketplace** is a catalog (a `marketplace.json` file hosted in a git repo) that lists plugins and where to fetch them. Plugins distributed this way are the most ergonomic path when one MCP server needs to land on many machines. A team marketplace install replaces N copies of `claude mcp add`.
 
-**How MCPs ride inside plugins.** A plugin author puts a standard `.mcp.json` at the plugin root; when the plugin is enabled, every server in that file loads automatically. Plugin-provided MCP servers occupy their own scope in Claude Code's precedence hierarchy (above Claude.ai connectors, below user / project / local-CLI scopes), so a server installed via Path 2 still wins on URL collisions. Plugins can ship more than MCP — a single plugin can deliver a tracker server plus the skills and agents that use it — but for tracker workflows the MCP-bundle dimension is the one this page covers.
+**How MCPs ride inside plugins.** A plugin author puts a standard `.mcp.json` at the plugin root; when the plugin is enabled, every server in that file loads automatically. Plugin-provided MCP servers occupy their own scope in Claude Code's precedence hierarchy (above Claude.ai connectors, below user / project / local-CLI scopes), so a server installed via Path 2 still wins on URL collisions. Plugins can ship more than MCP. A single plugin can deliver a tracker server plus the skills and agents that use it. For tracker workflows, though, the MCP-bundle dimension is the one this page covers.
 
 **Add a marketplace, then install a plugin:**
 
@@ -101,7 +101,7 @@ A Claude Code **plugin** is a packaged extension that can bundle skills, agents,
 
 The first argument to `marketplace add` accepts a GitHub `owner/repo`, a full git URL (`https://gitlab.com/company/plugins.git`), or a local path. Refresh a marketplace's catalog with `/plugin marketplace update`. Non-interactive equivalents exist as `claude plugin marketplace ...` for scripting.
 
-**Official vs team marketplaces.** Anthropic operates a set of official marketplaces (reserved names include `claude-plugins-official`, `anthropic-marketplace`, `agent-skills`). Teams and individuals host their own — public or private — by putting `marketplace.json` in a git repo. Private repositories work the same as any other git operation: Claude Code reuses your existing credentials (`gh auth login`, macOS Keychain, `ssh-agent`, `git-credential-store`).
+**Official vs team marketplaces.** Anthropic operates a set of official marketplaces (reserved names include `claude-plugins-official`, `anthropic-marketplace`, `agent-skills`). Teams and individuals host their own, public or private, by putting `marketplace.json` in a git repo. Private repositories work the same as any other git operation: Claude Code reuses your existing credentials (`gh auth login`, macOS Keychain, `ssh-agent`, `git-credential-store`).
 
 **Enterprise pre-registration.** The managed settings file (`managed-settings.json` on supported OSes) can pre-register approved marketplaces via `extraKnownMarketplaces` (so users don't need to run `/plugin marketplace add` at all) and restrict additions via `strictKnownMarketplaces`. Pairs with `managed-mcp.json` as the second half of tenant-side plugin policy.
 

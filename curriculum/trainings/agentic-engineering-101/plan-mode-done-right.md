@@ -62,7 +62,7 @@ Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble i
 [Lecture: How instructions grow](lectures/how-instructions-grow.md)
 
 ## Key Concepts
-- Structure is persuasive. A 7-item plan with headers looks like a decision even when it's a draft. At least 10% wrong.
+- Structure is persuasive. A 7-item plan with headers looks like a decision even when it's a draft. Assume about 10% of it is wrong and go find which part.
 - One kind of scrutiny catches one kind of miss; a human read and an agent's walk-down of unresolved branches catch different things, and the gap between them is where the plan-reading skill lives
 - Assumption-silent isn't assumption-free. Every plan assumes something, and the good ones say what. Push-backs ship into memory.
 - A plan with a specific file list has made decisions; a plan without one hasn't
@@ -80,7 +80,7 @@ Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble i
 
 The next sitting opens on that task and spends most of its time walking your system against it. Come without one and you'll be picking while the room is already walking. Your call.<!--/flag:no-module:earn-the-trust--><!--flag:module:earn-the-trust--> M3 opens fresh and runs security skills against the M2 feature; if it doesn't have an external or user-facing surface, swap to something from your backlog that does.
 
-Come to Module 3 without that noted path and a feature to point the skills at, and you'll be scrambling to reconstruct one while the room is already running STRIDE. Your call.<!--/flag:module:earn-the-trust-->
+Come to Module 3 without that noted path and a feature to point the skills at, and you'll be scrambling to reconstruct one while the room is already running STRIDE, the six-category threat walk M3 opens with. Your call.<!--/flag:module:earn-the-trust-->
 
 <!--flag:module:earn-the-trust-->## Pre-reads before Module 3
 
@@ -96,6 +96,8 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 **The bolded task-sizing callout in `## Prework` is mandated, not stylistic.** `check_pedagogy.md` §34 requires a **bolded** anti-pattern line naming the ceiling wherever task selection drives the outcome, and prints almost this exact wording as its own example. A slides judge reads it as a §9 emphasis-budget violation (two bolded sentences, not a short handle) because §9 cannot see §34. Accepted-by-design: do not flatten it, and do not re-raise it as a fresh finding.
 
 **M2 issues no homework.** The ticket-conventions read and the *refinement* term both live in M1's `close-the-ticket`; do not reintroduce either here or add a `## Homework` section pointing at one.
+
+**The 10% line in `## Key Concepts` carries M1's attested prior, in M1's register.** `orient-and-introspect.md:45` holds it as *"about 10%… could be more or less"*, a loosely-held search budget, maintainer-attested there. This bullet applies the same prior to a plan instead of to the agent's read of a repo, and keeps the hedge plus the instruction register (*assume, then go find which part*) rather than stating a floor. The distinction is load-bearing: a floor is a claim about the world and gets quoted back at you; the prior is an instruction to the reader. `check_slides.md` §7's number-plus-retraction sub-item does not fire here (no retraction attached), and the attested double-hedge stays M1's alone. Do not harden this to *"at least"*, and do not add a retraction clause.
 
 **Line 56's recovery sentence stays in body — maintainer call 2026-08-02.** *"If it did overwrite, the old rules are still in this session's scrollback; ask Claude to restore them."* This is `check_student_facing.md` §5's own boundary case, not a violation of it: the failure is plausible (the prompt is fair to misread as a replace), the rescue is non-obvious (that the old rules survive in scrollback is not something a student would guess), and it is one tight line of state-plus-one-move. It is also **time-critical** — the scrollback dies with the session, so a student who finds the overwrite after closing has lost the rules for good. Body is the only surface that reaches them while the rescue still works. A writing judge has flagged this once and the orchestrator then proposed routing it below the maintainer fence, which §5 explicitly calls deletion. Do not cut it, and do not "move it to the trainer" — the fence is stripped from every rendered surface.
 

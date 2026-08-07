@@ -238,6 +238,12 @@ Three failures you named, three pieces, one each.
 
 The ones worth keeping are tied to a specific file, convention, or failure mode in this repo, not a generic team-could-want-this.
 
+## Every re-feed pass starts a fresh session
+
+- Each pass is a new session, not a continuation of the last one. The loop re-sends the same prompt, and what carries over is what sits on disk: the work the previous pass wrote, and the check that judged it. Nothing from the conversation survives.
+- That is why it catches drift. Drift lives in the conversation, and the conversation is what the loop throws away. Re-run inside the same session and you compound the drift; re-feed and the next pass reads the goal cold.
+- The check is the stopping condition, so a verifier that can never fail makes an infinite loop. Every pass also pays to re-read its context from scratch. That cost is the point: it buys a session with no drift in it.
+
 ## What you didn't build today
 
 - **Subagents for isolation.** When a phase of a long task wants a sandbox (exploring a third-party API, reading untrusted code, a search you'd rather not pollute the main session with), spin a subagent and let it return only what matters. The main session stays clean; the subagent's context is discarded after it reports. Same instinct as the verifier: keep the long-running thread coherent by routing the noisy work elsewhere.
@@ -256,6 +262,8 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 - Review infrastructure grows by accretion. One engineer's trusted check becomes a team's, one engineer at a time, until what the team runs on has Intercom's shape. It starts at the size of the one you built.
 
 <!-- maintainer -->
+
+**`## Every re-feed pass starts a fresh session` exists to close a depth asymmetry across the verifier menu, and its scope is mechanism only.** The menu names three shapes as peers and the module tells the student *"match the failure, not your familiarity."* Shape 1 is expanded by a whole lecture (`the-gate-is-a-claim.md`); shape 2 by the two hook slides directly above; shape 3 carried a bullet. Runtime primitives (`/goal`, `/loop`, `/schedule`) belong to M6's `the-loop-has-a-name.md` and `agents-that-build-agents.md` and stay out of this slide by design, so the M6 elaboration has something to land. **M6's `## Ralph` slide is a graduation beat, not this slide's twin** — a lever sat in plain shell, Huntley reached for it, the next Ralph is yours — and mechanism bolted onto it would convert the training's closing beat into an explainer. A judge reading *re-anchoring* in the menu bullet as a dangling referent should resolve it here rather than propose a clause upstream. Open and unsettled: `## What you didn't build today` two slides down lists *"The original Ralph, rebuilding fresh sessions continuously from durable state"* among camps the field hasn't converged on, which now restates this slide; what is unconverged there is which context strategy to pick, not how the loop works.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all slides kept bullets; SVG chart byte-untouched. Handles kept bold: **A check is a position fix** (chart slide), **Reference artefact** / **plan.md** (reference-and-plan slide), **External verifier** (verifier slide), the three verifier-shape names (**Background-agent verifier** / **Deterministic shell hook** / **Ralph re-feed**), **hook** at its definition, **Must happen goes in a hook** (governor), **Subagents for isolation**; all other leads de-bolded, 80/20 + Intercom slides fully plain, kickers plain, prompt marker + lead-in untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 

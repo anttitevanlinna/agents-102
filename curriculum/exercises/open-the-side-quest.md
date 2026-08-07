@@ -71,6 +71,8 @@ Ask Claude to fork a sibling worktree and copy your personal rules across. The p
 
 **Plug points:** student's Module 2 inherited repo (main window); worktree directory name (default `../<repo>-m3-quality`, sponsor or student override allowed); fresh branch name on the side (default `m3/quality`).
 
+**The same-folder trap stays trainer-side; an in-body sentence was considered and declined (2026-08-07, Antti call).** Concurrent writers clobbering one working directory is not agent knowledge, it is plumbing this audience already has, so stating it in body pre-empts what the room brings with it and instructs people who do not need instructing (`check_student_facing.md` §1). The mistake still happens under time pressure, and that is what the push-back note below is for: a coaching correction in the room, not a teaching beat in the deck. A later sweep will find the mechanism in `reference/multi-session-git.md:46` and below this fence, and read the in-deck absence as a leak. It is not one.
+
 **Push-back moves:**
 - Student opens both sessions in the same working directory. Trainer push: *"one window per worktree, not two windows on the same folder. The later write wins; the earlier session goes sideways."* Source: `multi-session-git.md` rule (one session per working directory).
 - Student opens a shell and runs `git worktree add` themselves. Redirect to conversation: the fork happens via Claude in the main lane; AE101's agentic-end-to-end rule holds.

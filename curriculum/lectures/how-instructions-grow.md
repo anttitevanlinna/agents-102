@@ -24,7 +24,7 @@ When a rule expands into a repeatable way of doing a job, extract it into a **sk
 </svg>
 </figure>
 
-This is one common route, not a promotion ladder. A useful skill can also emerge directly from repeated work. Most rules remain rules.
+This is one common route, not a promotion ladder. A useful skill can also emerge directly from repeated work.
 
 ## The second loop
 

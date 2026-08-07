@@ -78,7 +78,7 @@ Ask Claude whether this ADR rides into future sessions automatically.
 
 > **Worth keeping?** Ask Claude to save the access-surface map and the STRIDE walk to your repo's `docs/` directory, next to the ADR, before you clear. Your CISO and the next engineer read what's on disk, not your scrollback.
 
-**What happened:** You made one call and wrote the ADR, and the decision shipped to the repo. The rest of the STRIDE output stayed in the session as evidence, not on disk and not a hardening backlog.
+**What happened:** You made one call and wrote the ADR, and the decision shipped to the repo. The rest of the STRIDE output stayed in the session as evidence, not on disk.
 
 **What this sets up:** The next exercise authors a test-strategy skill and invokes it on this feature, which is now security-tested. The hardening decision becomes a test case in the test strategy. The ADR is in the repo. Your CISO has something to read.
 

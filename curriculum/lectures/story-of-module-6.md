@@ -48,11 +48,11 @@ I ran the M6 exercise on the M6 generation, comparing the two sessions side by s
 
 Then I made countless fixes later on. As one example: the prework was missing pre-reads. I caught that only on a later glance through the module.
 
-The model is good. The model is not 100% deterministic.
+The model is good. It is still not 100% deterministic.
 
 ## What the loop is for
 
-The next hour you will diagnose gaps in the M5 packaged session. You will map the work you repeat across your stack. You will leave holding the prompt that builds your kit.
+The next hour you will diagnose gaps in the M5 packaged session, map the work you repeat across your stack, and leave holding the prompt that builds your kit.
 
 A rule you wrote last module will not apply this session. That is the thing. The loop exists because LLMs drift. The loop exists because rules leak. The loop exists because every session surprises you, even when the task looked the same.
 

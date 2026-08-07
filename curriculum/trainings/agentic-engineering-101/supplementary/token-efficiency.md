@@ -4,7 +4,7 @@ Token efficiency sounds like a cost problem. Use fewer words, pay a smaller bill
 
 The real story is about quality. An agent works inside a context window: the running set of tokens it can see at once. Your system prompt, your `./CLAUDE.md`, the files it read, every tool result, the whole conversation. The window is finite. As it fills, the model gets worse at using what is in it. Chroma named this context rot in 2025, testing it across 18 models and finding the slide happens even on easy tasks, and even far below the window's limit.
 
-So token efficiency is not thrift. It is signal-to-noise. The goal is the smallest set of high-signal tokens that gets the work done. Anthropic's engineering team later folded the finding into their own guidance, and calls the skill context engineering. The cost savings are real, but they are a side effect. A cleaner window is cheaper and smarter at the same time, which is why this is one lever, not two.
+So token efficiency is not thrift. It is signal-to-noise. The goal is the smallest set of high-signal tokens that gets the work done. Anthropic's engineering team later folded the finding into their own guidance, and calls the skill context engineering. The cost savings are real, but they are a side effect. A cleaner window is cheaper and smarter at the same time.
 
 The counterintuitive part: a fuller window can produce a worse answer, not just a slower or pricier one. A 2026 study trimmed an agent's context by 23 to 54 percent on a coding benchmark, and its success rate went up.
 
@@ -48,7 +48,7 @@ The rest are about what you do with the work once it's in front of you.
 
 **Use a subagent as a firewall.** A noisy investigation (read twenty files, run a few commands, trace a config) doesn't have to land in your own window at all. There is a way to hand it off and get back only the answer, at a price worth knowing before you reach for it. You'll meet it properly, mechanism and trade-off both, later in the training.
 
-**Route by complexity, not price.** A mechanical sub-task (rename across files, pull a list, format some output) does not need your strongest model. Send it to a smaller, faster one and keep the heavy model for the reasoning. Route by how hard the thinking is, not by what looks cheap. A cheap model on a hard task is the expensive mistake.
+**Route by complexity, not price.** A mechanical sub-task (rename across files, pull a list, format some output) does not need your strongest model. Send it to a smaller, faster one and keep the heavy model for the reasoning. A cheap model on a hard task is the expensive mistake.
 
 **Keep what you carry lean.** Everything in `./CLAUDE.md` is paid on every turn of every session, because that file (the team-level, PR-reviewed one) loads at the top of each window. Keep it short. Move the rules you only sometimes need into skills, so only their full instructions cost tokens once they fire.
 

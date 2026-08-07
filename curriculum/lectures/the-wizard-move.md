@@ -18,7 +18,7 @@ A role colors answers the same way a fact does. One more window. The first promp
 
 Context is whatever you tell it. A fact. A role. A preference. A constraint. All of it colors what comes next. You, in a way, compel the right output by having the right stuff in the context.
 
-That's the move. The move is loading the right context before the question, not a clever prompt or a slash command you didn't know. Everything else in this training is about how to earn that kind of primed window on any codebase, any Monday.
+The move is loading the right context before the question, not a clever prompt or a slash command you didn't know. Everything else in this training is about how to earn that kind of primed window on any codebase, any Monday.
 
 ## Everyone arrives partial, trainers included
 

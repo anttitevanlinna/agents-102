@@ -12,18 +12,18 @@ The PR shipped and the ticket is closed. Now compound the session. Claude review
 
 ## Write your rules file from the session
 
-- The session is the evidence. Claude reviews the whole scrollback in one shot and drafts your rules from how you actually worked. No three-question retro; the compound step reads what happened and writes.
-- You are not drafting from a blank page. The agent reads the session for you. Your job is to push back where it misreads.
+- Claude reviews the whole scrollback in one shot and drafts your rules from how you actually worked.
+- You are not drafting from a blank page. The agent reads the session for you.
 - The tracker conventions count as evidence too. The field rules you read off your own ticket are in this scrollback, and this is where they land on disk.
 
-> **Long session, long read.** Claude reviews the whole scrollback in one shot. If the review stalls or runs past a couple of minutes, interrupt with `Esc`, narrow to the orient and introspect phases first, and say `continue`.
+> **Long session, long read.** If the review stalls or runs past a couple of minutes, interrupt with `Esc`, narrow to the orient and introspect phases first, and say `continue`.
 
 {{prompt:compound-and-close-1}}
 
 
 ## Push back where the summary misreads
 
-- Quote the moment back at Claude. Read Claude's summary. Push back where it misreads. Quote the specific session moment back at Claude. That push-back is the reflection move.
+- Read Claude's summary. Push back where it misreads. Quote the specific session moment back at Claude. That push-back is the reflection move.
 - The rules file is yours now. Born from the session, extended by every module after this one.
 - The `.gitignore` edit is yours to keep or revert. If `CLAUDE.local.md` wasn't already ignored, the compound step added it to your `.gitignore`. That is an uncommitted change now; commit it, or drop it.
 

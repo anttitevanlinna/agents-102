@@ -2,9 +2,9 @@
 
 AI coding does not make Clean Code irrelevant. It changes what Clean Code is for.
 
-That is the small trick in this shift. The old discipline looks less exciting at exactly the moment it becomes more valuable.
+The old discipline looks less exciting at exactly the moment it becomes more valuable.
 
-That is the pattern in Uncle Bob's recent writing about AI-assisted development. He is not reacting like someone trying to defend the old world against the new one. The interesting thing is the opposite: he is experimenting in public, letting the tool surprise him, and then rediscovering which parts of software engineering become more important when code gets cheap.
+Uncle Bob's recent writing about AI-assisted development shows that happening in real time. He is not defending the old world against the new one. He is experimenting in public, letting the tool surprise him, and then rediscovering which parts of software engineering become more important when code gets cheap.
 
 His learning journey starts with obvious excitement. AI can write code. A lot of code. Fast. He experiments with running separate Claude sessions: one for planning, one for implementation.
 
@@ -14,13 +14,11 @@ His learning journey starts with obvious excitement. AI can write code. A lot of
 
 That alone is a shift in role. The programmer is no longer only the person typing syntax. The programmer becomes the person arranging contexts, separating planning from doing, and managing the flow of intent into code.
 
-Then the story gets more interesting.
-
 As Empire (the game he's building with this two-window setup) grows, the AI's raw power begins to show a second face. It can make progress quickly, but the progress is not always stable. Add one feature, and another feature quietly changes. Fix one failing test, and the agent may soften a different assertion. Ask it to preserve old behavior, and it may agree, apologize, and still drift.
 
 This is the mercury problem: the code feels compliant, but the system is not yet trustworthy. Push it in one place, and behavior slips out somewhere else.
 
-That is the core agentic failure mode: local success, global drift.
+The core agentic failure mode is local success, global drift.
 
 And this is where Clean Code changes meaning. In the older frame, Clean Code meant code another human could read, reason about, and safely change. That still matters. But in agentic development, the audience has expanded. Now the code must also be shaped so an AI can change it without quietly destroying what already worked.
 
@@ -28,7 +26,7 @@ And this is where Clean Code changes meaning. In the older frame, Clean Code mea
 
 So Clean Code becomes steering.
 
-Steering here means executable constraint, not vibes and not a better prompt. The strange thing is that the unglamorous parts of software engineering become the parts that let you move fastest.
+Steering here means executable constraint, not a better prompt. The strange thing is that the unglamorous parts of software engineering become the parts that let you move fastest.
 
 > "Tests are no longer expensive.
 >
@@ -42,31 +40,31 @@ Steering here means executable constraint, not vibes and not a better prompt. Th
 
 ## Acceptance tests catch what a request quietly breaks
 
-**Acceptance Tests.** Acceptance tests define the externally visible behavior the system must preserve. They matter more with agents because the agent is often good at satisfying the current request while accidentally altering older intent. A good acceptance test says: this is what the world must still look like from the outside when the change is done. It turns product memory into a runnable check.
+**Acceptance Tests.** They define the externally visible behavior the system must preserve. They matter more with agents because the agent is often good at satisfying the current request while accidentally altering older intent. A good acceptance test says: this is what the world must still look like from the outside when the change is done. It turns product memory into a runnable check.
 
 ## Unit tests shrink the agent's room to improvise
 
-**Unit Tests.** Unit tests make small behaviors hard to casually break. They also make the agent's search space smaller. Instead of asking the model to infer every invariant from the whole codebase, the engineer gives it many small, local tripwires. When a unit test fails, the agent has a concrete signal. When the tests are absent, vague, or too broad, the agent has more room to improvise.
+**Unit Tests.** They make small behaviors hard to casually break. They also make the agent's search space smaller. Instead of asking the model to infer every invariant from the whole codebase, the engineer gives it many small, local tripwires. When a unit test fails, the agent has a concrete signal. When the tests are absent, vague, or too broad, the agent has more room to improvise.
 
 ## TDD keeps intent ahead of the code
 
-**TDD.** Test-driven development becomes a steering protocol for agentic work. The red test forces the desired behavior to be stated before implementation. The green step gives the agent a tight target. The refactor step lets the human and agent improve structure while keeping behavior pinned. This is not TDD nostalgia. It is a way to keep intent ahead of code generation.
+**TDD.** Test-driven development becomes a steering protocol for agentic work. The red test forces the desired behavior to be stated before implementation. The green step gives the agent a tight target. The refactor step lets the human and agent improve structure while keeping behavior pinned. Intent stays ahead of code generation.
 
 ## Mutation testing checks whether the tests defend anything
 
-**Mutation Testing.** Mutation testing asks whether the tests actually defend the behavior they claim to defend. That becomes important when agents can generate large test suites that look reassuring but do not catch meaningful changes. A mutation tester breaks the code in small ways and checks whether the tests notice. In an agentic workflow, that makes it harder for a model to satisfy the appearance of testing while leaving the system weak.
+**Mutation Testing.** It asks whether the tests actually defend the behavior they claim to defend. That becomes important when agents can generate large test suites that look reassuring but do not catch meaningful changes. A mutation tester breaks the code in small ways and checks whether the tests notice. In an agentic workflow, that makes it harder for a model to satisfy the appearance of testing while leaving the system weak.
 
 ## Metrics are the dashboard, not the wheel
 
-**CRAP And Complexity Metrics.** CRAP scores, cyclomatic complexity, and related metrics expose code that is hard to trust under change. Agents can produce plausible-looking complexity very quickly. Metrics do not replace judgment, but they give the engineer a dashboard for where the codebase is becoming risky. In Uncle Bob's frame, this is part of the instrument panel: not the steering wheel itself, but the gauge that tells you when steering is becoming harder.
+**CRAP And Complexity Metrics.** They expose code that is hard to trust under change. Agents can produce plausible-looking complexity very quickly. Metrics do not replace judgment, but they give the engineer a dashboard for where the codebase is becoming risky. In Uncle Bob's frame, this is the gauge that tells you when steering is becoming harder.
 
 ## Small units leave fewer places to hide
 
-**Small Decoupled Units.** Small units with clear boundaries reduce collateral damage. This is classic Clean Code, but the agentic reason is sharper. A model operating in a large, tangled unit has many more ways to "fix" one behavior by disturbing another. A model operating in a small, decoupled unit has fewer escape routes. Modularity turns the codebase into terrain the agent can navigate without constantly falling through hidden dependencies.
+**Small Decoupled Units.** Clear boundaries reduce collateral damage. This is classic Clean Code, but the agentic reason is sharper. A model operating in a large, tangled unit has many more ways to "fix" one behavior by disturbing another. A model operating in a small, decoupled unit has fewer escape routes. Modularity turns the codebase into terrain the agent can navigate without constantly falling through hidden dependencies.
 
 ## Architecture needs an instrument panel too
 
-**Architecture Visibility.** Architecture remains human-owned, but it needs instruments. Dependency direction, cycles, layers, and boundaries should be visible, not merely hoped for.
+**Architecture Visibility.** Architecture remains human-owned, but it needs instruments. Dependency direction, cycles, layers, and boundaries should be visible.
 
 > "I had the AI write a visualization tool for me. I found it quite useful.
 >
@@ -76,13 +74,13 @@ Uncle Bob's architecture-viewer work is a clue: when agents generate code quickl
 
 ## The human's job moves up, it doesn't vanish
 
-**Human Mental Model.** The agent may be excellent at tactical implementation, but the human still owns the mental model. What is the system? Where are the boundaries? Which behaviors are invariant? Which dependencies are allowed? What tradeoff is acceptable? The engineer's job moves upward, but it does not vanish. It becomes more like active management of intent, evidence, and structure.
+**Human Mental Model.** The agent may be excellent at tactical implementation, but the human still owns the mental model. What is the system? Where are the boundaries? Which behaviors are invariant? Which dependencies are allowed? What tradeoff is acceptable? The engineer's job moves upward. It becomes more like active management of intent, evidence, and structure.
 
 > "A good mental model of the system you are building. A mental model of the AI is also important.
 >
 > The word "manager" may be getting lost in translation. You need to manage the structure, design, architecture, and process of building the software.", Uncle Bob, [X](https://x.com/unclebobmartin/status/2049124461127864613)
 
-That is also the abstraction shift. The code generator gets faster; the human job does not vanish. It moves toward the work of deciding what must remain true.
+The code generator gets faster; the human job moves toward the work of deciding what must remain true.
 
 > "Assemblers were faster at writing binary than humans were.
 >
@@ -92,7 +90,7 @@ That is also the abstraction shift. The code generator gets faster; the human jo
 >
 > Deal with it. There's still plenty left for you to do.", Uncle Bob, [X](https://x.com/unclebobmartin/status/2046222100164153548)
 
-That is the deeper pattern in Bob's journey. Natural language is not enough. A prompt can bias the agent, but it does not bind the agent. Human language needs formal support: tests, tools, structure, metrics, and feedback loops.
+Natural language is not enough. A prompt can bias the agent, but it does not bind the agent. Human language needs formal support: tests, tools, structure, metrics, and feedback loops.
 
 > "I completely agree with Dijkstra. Human language is the worst possible language to program a computer in. Some kind of formalism is absolutely necessary. But the formalism does not have to be in the syntax of a particular computer language.", Uncle Bob, [X](https://x.com/unclebobmartin/status/2049453605237715058)
 
@@ -118,12 +116,12 @@ Claims
 - `old-discipline-more-valuable-when-less-exciting` · vision · "The old discipline looks less exciting at exactly the moment it becomes more valuable." ← none-owed
 - `martin-experiments-in-public` · vision · "he is experimenting in public, letting the tool surprise him, and then rediscovering which parts of the discipline carry" ← none-owed
 - `two-window-split` · detail · "I'm keeping two Claude windows open. One making changes to the source code. The other helping me to plan future changes." ← martin-two-windows
-- `six-fundamentals` · detail · "**CRAP And Complexity Metrics.** CRAP scores, cyclomatic complexity, and related metrics expose code that is hard to trust under change." ← martin-six-fundamentals
-- `acceptance-tests-preserve-visible-behaviour` · vision · "Acceptance tests define the externally visible behavior the system must preserve." ← none-owed
+- `six-fundamentals` · detail · "**CRAP And Complexity Metrics.** They expose code that is hard to trust under change." ← martin-six-fundamentals
+- `acceptance-tests-preserve-visible-behaviour` · vision · "They define the externally visible behavior the system must preserve." ← none-owed
 - `unit-tests-shrink-the-search-space` · vision · "They also make the agent's search space smaller." ← none-owed
 - `tdd-states-behaviour-before-implementation` · vision · "The red test forces the desired behavior to be stated before implementation." ← none-owed
-- `mutation-testing-checks-the-tests` · vision · "Mutation testing asks whether the tests actually defend the behavior they claim to defend." ← none-owed
-- `small-units-reduce-collateral-damage` · vision · "Small units with clear boundaries reduce collateral damage." ← none-owed
+- `mutation-testing-checks-the-tests` · vision · "It asks whether the tests actually defend the behavior they claim to defend." ← none-owed
+- `small-units-reduce-collateral-damage` · vision · "Clear boundaries reduce collateral damage." ← none-owed
 - `architecture-needs-instruments` · detail · "Dependency direction, cycles, layers, and boundaries should be visible" ← martin-manage-structure, martin-visualization
 - `human-owns-the-mental-model` · detail · "the human still owns the mental model" ← martin-manage-structure, martin-ais-are-faster
 - `dijkstra-formalism` · detail · "Dijkstra" ← martin-dijkstra

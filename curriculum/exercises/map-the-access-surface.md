@@ -6,7 +6,7 @@
 
 **What you do:** Invoke the curated access-control analysis skill on the small feature you brought to Module 3. Read what it surfaces. Decide, on the record, which surface it called out harder than you would have, and which surface you know matters that the skill didn't catch. Ship the delta as notes the STRIDE exercise consumes next.
 
-**What you build:** an access-surface map, plus the delta only you can add. Two surfaces: the one the curated skill called out harder than you would have, and the one you know matters that the skill missed. The delta is the artifact STRIDE chews on next, not the raw skill output.
+**What you build:** an access-surface map, plus the delta only you can add. The delta is the artifact STRIDE chews on next, not the raw skill output.
 
 **The point:** STRIDE without an access-surface map is pub-quiz threat modeling. Before you threat-model, you map what you're protecting. The curated skill does the breadth; you own the codebase-specific judgment the skill can't have.
 
@@ -21,7 +21,7 @@
 
 ## Phase 1: Run the curated skill on your feature and save the map
 
-- You invoke; the skill does the breadth walk. The `access-control-analysis` skill was installed as a personal skill during prework, so Claude Code auto-discovers it by name in the m3-security session. You aren't on the hook for walking every surface. The skill and its subagent do that; you own the codebase-specific judgment the skill can't have.
+- You invoke; the skill does the breadth walk. The `access-control-analysis` skill was installed as a personal skill during prework, so Claude Code auto-discovers it by name in the m3-security session. You aren't on the hook for walking every surface. The skill and its subagent do that.
 - See what skills your Claude has loaded first. In the Claude Code chat, type:
 
 ```
@@ -80,7 +80,7 @@ Then ask Claude to add the surface the skill missed but you know matters.
 - You're about to hand this map to the STRIDE skill. Glance at it. If a teammate landing on this file cold would miss something the map assumes you know, add a one-line context header. If it reads, close.
 - Most people skip this; some want the pause. Your call.
 
-**What happened:** You ended with a short delta-note on the record: the surfaces the skill called out harder than you would have, and the surfaces you knew mattered that the skill didn't catch. The delta is the artifact, not the raw skill output.
+**What happened:** A short delta-note is on the record, and it is the artifact STRIDE reads next, not the raw skill output.
 
 ## What this sets up
 

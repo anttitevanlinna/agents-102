@@ -13,7 +13,6 @@
 ## Phase 1: Bring a real task
 
 - Bring a task that spans a few files, with enough execution depth to make plan mode worth using. A feature slice, a small migration, a targeted refactor: something where touching the wrong file matters. A one-line fix is too small for plan mode; a refactor whose outcome you can't hold in your head is too big.
-- Just a simple task that spans a few files. Not an epic.
 - If nothing fits, ask Claude to surface three candidates from recent issues, PRs, or TODO comments. Pick the one you'd ship today if you had an hour.
 
 ## Phase 2: Enter plan mode and ask for the plan
@@ -101,13 +100,13 @@ Then just hit stop.
 
 - The agent answers. The pattern it names should be something like: read the plan yourself, push back on what you can see, second-pass read for what you can't, approve. Two reads, two kinds of scrutiny. You catch what a human catches (specificity, voice-of-experience, "I'd write that differently"). The second read catches what an agent walking a decision tree catches: branches you didn't notice, dependencies you didn't name, side-effects you didn't price.
 - Neither is complete. Paired, they usually are.
-- **Plan-mode approval inflation** is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions. One pass by you catches some of it. The second read catches the rest. That's the pairing.
+- **Plan-mode approval inflation** is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions.
 
 ## Keep the session open for the Compound step
 
 - On to the Compound step, and keep this session open for it. The next step reads this same scrollback to pull the task-shaping rules worth keeping. The Compound step then writes one into your personal `CLAUDE.local.md` in a shape you can re-run on your next plan-mode pass. Team-worthy patterns get flagged for a separate PR against team `CLAUDE.md`.
 
-**What happened:** The agent wrote a plan. You picked *No, keep planning* and sent two push-backs: what YOU saw. The agent regenerated. Then you ran a second-pass read: the agent asked three questions at a time, walking down branches you didn't think to check, suggesting answers. You confirmed or corrected. The plan sharpened. You approved. You did not run the code. You asked Claude what the second-pass read surfaced that your push-back didn't, and whether any of it would have mattered in execution.
+**What happened:** One plan, two reads. Two push-backs in your own words, then a walk-down of the branches they missed. The plan sharpened, approved and unexecuted, and the gap between the two reads is on the record.
 
 <!-- maintainer -->
 

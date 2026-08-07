@@ -76,7 +76,7 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 - Before the send-off, ask Claude to propose any tidy-up of `./observations/`. Cap it at one or two file moves or renames; leave the ADRs and skills where they are, and ask to see the diff before it lands.
 - Consider whether each rule is stored where it will fire. A rule the agent never reads is not a rule.
 
-**What happened:** You picked a real task you'd send off rather than nudge bit by bit. You walked what you'd built so far against it, filled the worst gaps, and settled the `observations/` tree before the send-off.
+**What happened:** One scoped task, a ranked audit of the system against it, and the worst gaps filled. The `observations/` tree is settled on disk before the send-off.
 
 ## What closes the module
 

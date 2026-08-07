@@ -51,7 +51,7 @@ Ask Claude to write the close-out, update the ticket, and report what it wrote.
 - The ticket is one instance. Anything can be inspected and reverse-engineered with an LLM: a codebase nobody documented, a CI pipeline, a config, an API you did not write, the system your team runs on and cannot explain.
 - The move is the same every time. Ask the agent to study it. Extract a `.md` file. Use that file as context in the next agent.
 - The ticket is that move at its smallest.
-- The read is only as good as what the thing has recorded. A tracker nobody fills in carefully gives thin rules, and that thinness is itself a finding about the system. Match the depth of the read to what is actually written down, not to the slogan.
+- The read is only as good as what the thing has recorded. A tracker nobody fills in carefully gives thin rules, and that thinness is itself a finding about the system. Match the depth of the read to what is actually written down.
 
 ## What happened
 

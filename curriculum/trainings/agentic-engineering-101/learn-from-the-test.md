@@ -51,7 +51,7 @@ Claude figures out `<repo-name>` from the working directory. Help it if it gets 
 
 {{prompt:ae101-m5-worktree-setup}}
 
-Claude will narrate before acting. It usually opens with a plan summary listing the six sub-steps, then runs them. Skim past the opening; look for the shell-command output confirming the worktree path and which files copied across.
+Claude will narrate before acting. It usually opens with a plan summary listing the six sub-steps, then runs them. Skim past the opening.
 
 Check the copy landed before you go on: the output should name both `CLAUDE.local.md` and `observations/` at the worktree path. The whole contrast rests on the second session starting from the same system the first one did, and a rules file that quietly stayed behind changes two variables instead of one. If your rules file lives somewhere other than the two paths Claude checked, ask Claude to copy that one across too.
 
@@ -73,7 +73,7 @@ The worktree is forked and ready. You open the session in it at the first exerci
 
 ## Re-send the same task, packaged
 
-Now the re-send. Same task, packaged this time. The prompt can be short because the packaging carries the context: the reference pins the goal, plan.md carries the state, the verifier carries the quality gate. The packaging does the explaining; the prompt invokes it.
+Now the re-send. Same task, packaged this time. The prompt can be short because the packaging carries the context. The packaging does the explaining; the prompt invokes it.
 
 **Session** *(new, "M5 long-run")*
 

@@ -59,7 +59,7 @@ After you've done it once, you'll feel when a plan needs the second read and whe
 
 - A plan is a check before implementation. One correction can redirect every step that follows before the agent turns the plan into code.
 - Aim the read at the unknown that teaches you the most. The branches worth walking are the ones that change what done means. The rest you'd settle in code review anyway.
-- Making the plan good IS the work. You don't have to execute a plan to know it's good. Recognizing a good plan is the skill; the execution can wait for the day the task is real.
+- You don't have to execute a plan to know it's good. Recognizing a good plan is the skill; the execution can wait for the day the task is real.
 
 <!-- maintainer -->
 

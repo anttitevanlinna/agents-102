@@ -28,7 +28,7 @@ After this module, you will be able to:
 
 Short loops sit behind you so far: a bug fix, a plan read. This is the first long one. Multi-hour, sustained, running without you watching. The practice is yours now.
 
-**The question, to you:** come with one or two candidate tasks from your backlog. Multi-hour work you haven't got to yet, or tasks big enough that you'd rather an agent took the first pass. Bigger than a typo-fix, smaller than a quarter-long epic. The room's candidates will differ: migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.
+**The question, to you:** come with one or two candidate tasks from your backlog. Multi-hour work you haven't got to yet, or tasks big enough that you'd rather an agent took the first pass. The room's candidates will differ: migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.
 
 *The agent can read your tracker if you've wired one up. Give it your criteria first (sustained coherence, requirement-weaving, multi-file reasoning) or the hunt returns noise. Finding the task is still your judgement about what's been sitting. Bring one or two candidates to the exercise's first step and the agent screens them for fit.*
 

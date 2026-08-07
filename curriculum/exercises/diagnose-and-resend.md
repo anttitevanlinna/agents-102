@@ -38,13 +38,14 @@ Confirm the path is right. Then ask Claude to read the repo state on the previou
 
 ## Pin each failure to a quoted moment
 
-- Push back where Claude generalises. Ground each lens in a quoted moment; the same moment may carry more than one lens. The diagnosis is data, not blame; the un-packaged run was supposed to underdeliver.
+- Push back where Claude generalises. Ground each lens in a quoted moment; the same moment may carry more than one lens.
+- This is an agent's account of an agent's work, on a run you weren't watching. Same prior as the repo read in Module 1: assume about 10% of the account misrepresents the run, and you can't spot which tenth by eye. Ask Claude to show you where two or three of its quoted moments appear in the transcript. Anything it can't find, it made up.
 - The move you just ran is *diagnosis through named failure modes*. The vocabulary is the lens; the artefact is the substance.
 
 ## Phase 2: Match each failure to the check that catches it
 
 - Ask the question that earns the pattern. For each named failure: *what validation would have caught this in minutes, not hours?*
-- Match the verifier shape to the failure, not the slogan. Drift and context rot fire mid-run, on every spec re-read or window fill, so minute cadence is real there. Plausible-but-wrong fires on output: the work compiles, passes lint, looks right, and is wrong.
+- Match the verifier shape to the failure. Drift and context rot fire mid-run, on every spec re-read or window fill, so minute cadence is real there. Plausible-but-wrong fires on output: the work compiles, passes lint, looks right, and is wrong.
 
 Ask Claude to walk each diagnosed failure backwards into the validation that would have caught it.
 
@@ -66,7 +67,7 @@ Ask Claude to build the verifier shape that matches your dominant failure, scope
 {{prompt:diagnose-and-resend-4}}
 
 
-Read what Claude proposes. Push back if the verifier covers the wrong shape (a generic test suite when you needed a judge, or the reverse). The fit between failure shape and verifier shape is the teaching moment. The verifier IS your first eval; Module 6 gives it its name.
+Read what Claude proposes. Push back if the verifier covers the wrong shape (a generic test suite when you needed a judge, or the reverse). The fit between failure shape and verifier shape is the teaching moment. The verifier IS your first eval.
 
 ## Prove the verifier actually fires
 
@@ -94,13 +95,15 @@ Ask Claude to assemble both, scoped to the same task, in conversation.
 
 Say *lock it in.* The agent writes both files. Read the diffs.
 
-**What happened:** You ended the exercise with a diagnosis (named failures + quoted moments from your own artefact), a working verifier targeting one specific failure mode, and a reference artefact + plan.md scoped to the same task. Each piece proved its place against a failure you read in your own artefact, not a slide.
+**What happened:** You ended the exercise with a diagnosis (named failures + quoted moments from your own artefact), a working verifier targeting one specific failure mode, and a reference artefact + plan.md scoped to the same task. Each piece proved its place against a failure you read in your own artefact.
 
 The exercise ends here. The module's re-send is next: same task, with reference + plan.md + verifier all in play. The personal rules from M1<!--flag:module:earn-the-trust--> (and M3 if completed)<!--/flag:module:earn-the-trust--> carry forward via the worktree fork<!--flag:module:spot-gaps-build-the-loop-->; M6 will cut one stale rule once the contrast lands<!--/flag:module:spot-gaps-build-the-loop-->.
 
 <!-- maintainer -->
 
 **View summary:** You read the un-packaged run through three failure lenses, build the checks and durable task artifacts that would have caught its misses, then re-send the same work. The contrast makes packaging visible on your own code rather than as advice.
+
+**The 10% recall in `## Pin each failure to a quoted moment` is the prior's third and last statement, by design.** `orient-and-introspect.md:45` sets it on the agent's read of a repo (maintainer-attested there), `plan-mode-done-right.md` § Key Concepts applies it to a plan, and this bullet applies it to a run transcript the student did not watch. Three instances, roughly two modules apart, a different artefact each time, each carrying its own action: progression-with-variation, not the refrain `check_pedagogy.md` §9b bans. This is the beat that earns it. In M1 and M2 the student can read the whole artefact by eye, so the prior costs nothing there; here it is the only affordable check, and asking the agent to locate its own quotes is the only one available when the agent holds the codebase and the student holds the lenses. The imperative *assume* and the *about* hedge travel from M1 and are load-bearing: the prior is an instruction to the reader, and a floor form would be a claim about the world. Do not harden it, and do not restate it as a general claim about agents. M1's double-hedge (*"could be more or less"*) stays M1's, so `check_slides.md` §7's number-plus-retraction sub-item does not fire here.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"; gold-pattern exemplar):** bullet leads and the "The exercise ends here." paragraph lead de-bolded; kept bold only on the Phase 3 verifier-shape menu handles (**Background-agent verifier** / **Deterministic shell-hook** / **Ralph re-feed**); title-page **What you do:**/**What you build:**/**The point:** thread and all widget chrome untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 

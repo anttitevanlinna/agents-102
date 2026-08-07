@@ -40,13 +40,17 @@ Ask Claude to write the failing test, fix the root cause, and show the diff. Dro
 
 **Optional.** Once the fix is in, dig into code quality and structure. Ask Claude: *did you make it better? Why yes. Why no.* You steer; might take a few nudges.
 
+## There is always a next plausible answer
+
+- You can always dig deeper on the root cause with the LLM. There will be a next plausible answer, because the LLM will always try to find what you asked for. The failing test is what makes this layer real; when to stop digging is your call.
+
 ## Ship the PR
 
 - How far you let Claude drive Git is your choice. Ask Claude to commit, push a branch, and open the PR.
 
 **What happened:** A real PR shipped. A failing test landed in the codebase before the fix did. The diff got read, at least one line got pushback, and the root-cause interrogation ran before the second TDD pass.
 
-The PR is shipped. Hand off to the ticket close.
+Hand off to the ticket close.
 
 *For those finishing early: chatter about making sure the LLM doesn't fake tests or write tests that just pass. How do you catch that efficiently?*
 
@@ -56,8 +60,10 @@ The PR is shipped. Hand off to the ticket close.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** One handle kept bold: **Tests-first, root-cause-driven** at its naming moment; all other bullet leads de-bolded. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`, `**Optional.**` labels) and the blockquote callout untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
-**Quality:** compendium-audited 2026-08-02 (writing@1c765f2 story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@1c765f2)
-- judges @1c765f2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Declaration slide (2026-08-07, Antti-directed):** *There is always a next plausible answer* is a deliberate claim-shaped heading — the one non-imperative heading in this file, and that is the point: a claim among phase labels is what makes a declaration land inside an exercise. Do not flatten to a command verb; `check_student_facing.md` §17's verb rule covers do-sections, and this section names the machine-nature the interrogation just exhibited rather than asking for an action. Header truth guard: the body says *try to find*, never *finds* — do not strengthen. No bold; the file keeps its single handle. First face of the produce-something prior; the far-half naming is `reading-the-return.md` slide 1 (*The closing summary is not the artefact*), which reuses the *plausible* vocabulary planted here. Frame is the maintainer's own, near-verbatim.
+
+**Quality:** compendium-audited 2026-08-07 (writing@ddc0095 story@38c131c technical@1c765f2 behavior@1c765f2 pedagogy@38c131c strategy@1c765f2)
+- judges @38c131c: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides REVISE (1/0-see-instances/ae101--exercise--fix-tests-first.slides.json)
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (tests-first fix) + Analyze (read the diff against what you'd write).
@@ -74,6 +80,7 @@ Claims
 - `your-own-wording-matters` · vision · "No pre-made prompt for the pushback." ← none-owed
 - `ask-whether-its-the-root-cause` · vision · "When the agent says done, ask whether the change is the root cause or a layer above it." ← none-owed
 - `first-cut-fixes-what-makes-the-test-pass` · vision · "The first cut usually fixes what makes the test pass; the deeper cut asks why the test could fail that way at all." ← none-owed
+- `always-a-next-plausible-answer` · vision · "There will be a next plausible answer, because the LLM will always try to find what you asked for." ← none-owed — machine-nature observation, maintainer frame near-verbatim; observation-grade by design, no training-cause claim.
 
 Sources
 (none. TDD is named implicitly and owes attribution by name only; every other claim is the exercise's own design stance.)

@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [google, gemini, workspace-studio, agent-builder, gemini-spark, antigravity, managed-agents-api]
 nordic: true
-updated: 2026-08-03
-cycle: 181
+updated: 2026-08-08
+cycle: 182
 answers:
   - "what can business users do with Gemini today?"
   - "is Workspace Studio a real agent builder?"
@@ -14,8 +14,14 @@ answers:
 
 # Google Workspace / Gemini Enterprise — Platform State
 
-Last updated: 2026-08-03 (cycle 181)
-OODA cycles: 29
+Last updated: 2026-08-08 (cycle 182)
+OODA cycles: 30
+
+**Cycle 182 updates (August 8, 2026) — Gemini 3.5 Pro absent = TWELFTH consecutive missed window; August 7 73% market window closed; "next week" informal target (unconfirmed):**
+
+API changelog confirms no `gemini-3.5-pro` entry as of August 8. Twelve consecutive missed windows: June → July 12 → July 17 → July 21 → July 28 → July 29 → July 30 → July 31 → August 1 → August 2 → August 3 → August 7. NokiaPowerUser (~August 7, [domain trade publication]): "unexpected deployment infrastructure issues pushed it back; industry insiders pointing to next week" — week of August 10 as informal target, no Google confirmation. The 73% prediction market window for August 7 has closed. Live Pro-class model remains Gemini 3.1 Pro Preview (Feb 2026). Recommended credible option: Gemini 3.6 Flash (GA July 21, $7.50/M output, 17% token efficiency improvement vs 3.5 Flash). Root cause history: (1) June GA missed post-I/O; (2) Bloomberg July 16 — coding performance fell short of internal targets; (3) base model scrapped and rebuilt; (4) August 7 deployment infrastructure issues (unnamed insider). Gemini 4 pre-training confirmed in-progress — risk: Gemini 4 may supersede 3.5 Pro before GA. ([ai.google.dev/gemini-api/docs/changelog Aug 8 2026](https://ai.google.dev/gemini-api/docs/changelog) — [vendor documentation, absence confirmed]; [nokiapoweruser.com ~Aug 7 2026](https://nokiapoweruser.com/gemini-3-5-pro-delayed-again-deployment-issues/) — [domain trade publication])
+
+**Watch: API changelog first (before any press or prediction market source) for week of August 10; Gemini 4 pre-training timeline; Antigravity Agent enterprise tier ("coming months").**
 
 **Cycle 181 updates (August 3, 2026) — Gemini 3.5 Pro absent = ELEVENTH consecutive missed window; no Google announcement August 1-3; August 7 checkpoint T-4:**
 

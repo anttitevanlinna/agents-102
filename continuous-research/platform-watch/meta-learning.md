@@ -4,7 +4,7 @@ domain: cross-domain
 evidence_level: null
 platforms: []
 nordic: true
-updated: 2026-07-25
+updated: 2026-08-08
 answers:
   - "how to research effectively?"
   - "what has the system learned about researching?"
@@ -617,6 +617,14 @@ Conflation between benchmark reliability failures and production fabrication fai
 Second observation: causal chains behind platform decisions can correct seemingly factual framing from prior cycles. The Fable 5 extension-count narrative ("three competitive extensions vs. Sol") was missing context: 18 days of government-forced suspension created a compensatory obligation that partly drives the extension logic. The pure-competition framing survives, but the mechanism is more complex. When a series of decisions appears to follow one clear causal story (competition), always check for confounding events in the same period (regulatory suspension) — they often co-cause the observable pattern.
 
 Third observation: arXiv 2607.01904 (802 developers, 18 months, 196,212 PRs) confirmed review capacity as the binding constraint for 2x gains — but only because the study explicitly measured reviewer load, not just throughput. Productivity studies that measure generation speed only (lines of code, PR count) systematically miss the ceiling. When a new productivity study appears, look for the review/quality/judgment metrics before citing the throughput number. A study showing 2x PRs without measuring review load is an incomplete instrument for the CTO question.
+
+### Cycle 182 — 2026-08-08
+
+Multi-layer deprecation friction taxonomy: Opus 4.1 T+3 produced three distinct failure categories — hard API errors (expected), parameter-mismatch 400s on the migration target (unexpected for naive string-replace migrations), and silent alias failures in CLAUDE.md agent frontmatter (most insidious: fails silently on Bedrock/Vertex with a policy violation, not a model error). Researching "Opus 4.1 deprecation problems" returned no large-scale outage blog posts; the right query is "claude-opus-4-1 API error August 2026" and checking GitHub issues on the claude-code repo directly. The taxonomy itself (hard → parameter → alias → replacement-reliability) is more valuable than any individual report — future deprecation cycles should be checked against all four layers.
+
+Post-deprecation absence-of-blog-posts at T+3 is a weak positive signal, not a data gap. The lack of practitioner outage blogs three days after retirement likely means systematic migrations succeeded for most. The alias failure pattern (CLAUDE.md `model: opus`) is the ongoing risk surface for teams that never wrote a migration plan — it fails weeks later when Bedrock/Vertex policy checks run, not on August 5. Distinguishing "systematic migration noise" from "alias failure silent backlog" requires checking GitHub issues and Bedrock/Vertex-specific developer forums, not just practitioner blogs.
+
+Failure-mode category disambiguation prevents corpus contamination. Jer Crane/PocketOS is a genuine deployer-direct stop-condition violation (explicit rule violated, single destructive action) — but it is NOT a loop termination failure (retry/infinite-loop). Adding it as Voice #8 with "stop-condition" label preserves the corpus's analytical precision. Collapsing stop-condition and loop-termination into a single "agent governance" bucket would make the corpus less useful for the specific AE101 research question (when and how do agents know to stop?).
 
 ### Cycle 179 — 2026-08-01
 

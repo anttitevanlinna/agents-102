@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 2
 platforms: [anthropic, claude-code, claude-cowork, antspace, agent-sdk]
 nordic: false
-updated: 2026-07-20
-cycle: 168
+updated: 2026-08-08
+cycle: 182
 answers:
   - "what is Anthropic's platform strategy?"
   - "what can business users do with Claude today?"
@@ -16,8 +16,18 @@ answers:
 
 # Anthropic — Claude / Claude Code — Platform State
 
-Last updated: 2026-08-03 (cycle 181)
-OODA cycles: 41
+Last updated: 2026-08-08 (cycle 182)
+OODA cycles: 42
+
+**Cycle 182 updates (August 8, 2026) — OPUS 4.1 T+3 MULTI-LAYER FRICTION; OPUS 5 M365 COPILOT DAY 14 SILENCE (STRUCTURAL); CRANE/POCKETOS STOP-CONDITION FAILURE (CORPUS VOICE #8 CANDIDATE); OSMANI/RONACHER DRY:**
+
+**Opus 4.1 T+3 — three friction layers confirmed post-August 5 retirement.** (1) Hard API errors for direct calls — expected. (2) Parameter-mismatch 400s on migration target: temperature, top_p, top_k return HTTP 400 on claude-opus-4-8; thinking:{type:"enabled"} also 400 — teams that did string-replace-only are broken. (3) Silent alias failures in Claude Code CLAUDE.md: `model: opus` in any CLAUDE.md agent frontmatter resolves to hardcoded `claude-opus-4-1-20250805`, not a live pointer — post-August 5 this fails on Bedrock/Vertex with policy violation error. Fix: set ANTHROPIC_DEFAULT_OPUS_MODEL env var (not ANTHROPIC_MODEL). Layer 4: claude-opus-4-8 itself has open reliability reports — silent empty turns and "tool call was malformed" errors; workaround is downgrade to claude-opus-4-7 (GitHub issue #68510). No practitioner-direct blog posts documenting large-scale production outages at T+3 — suggests most systematic migrations succeeded; alias failures are the main ongoing risk surface. ([platform.claude.com/docs/en/about-claude/model-deprecations Aug 8 2026, fetched](https://platform.claude.com/docs/en/about-claude/model-deprecations) — [vendor documentation]; [therouter.ai migration guide](https://therouter.ai/news/anthropic-deprecates-claude-opus-4-1-august-5-migration-guide/) — [domain trade publication]; [theorydelta.com alias failures](https://www.theorydelta.com/findings/claude-code-model-aliases-silent-failures/) — [practitioner analysis May 2026]; [github.com/anthropics/claude-code/issues/68510](https://github.com/anthropics/claude-code/issues/68510) — [practitioner direct])
+
+**Opus 5 in M365 Copilot — Day 14 silence is structural, not a quality signal.** Zero independent practitioner reviews of Opus 5 specifically within the M365 Copilot interface found at Day 14 (August 8). All posts found are announcement relays or standalone Claude.ai/API tests, not Copilot integration reviews. Structural cause: Office Watch (July 25) noted "rollout timing may vary by region." Managed enterprise tenants likely still awaiting admin-controlled activation. Next meaningful checkpoint: Day 21 (August 15) — admin activation should be complete in most tenants by then. ([office-watch.com Jul 25 2026](https://office-watch.com/2026/claudes-opus-5-model-in-microsoft-365-apps/) — [domain trade publication])
+
+**Osmani / Ronacher dry.** Osmani: no new posts since July 20 (19-day gap). Ronacher: no new AI/agent posts since July 24 "Codeberg Divides." Blog cadence suggests Osmani post likely within the week.
+
+**Watch: August 15 (Opus 5 M365 Copilot Day 21 — first meaningful practitioner review checkpoint); August 31 (Sonnet 5 intro pricing cliff $2/$10 → $3/$15); September 7 (Sol Day 60 enterprise evidence check); deployer-direct loop termination failure voice (standing open); Crane/PocketOS corpus Voice #8 verification.**
 
 **Cycle 181 updates (August 3, 2026) — MYTHOS 5/GLASSWING FULLY PROFILED; OPUS 4.1 T-2 CONFIRMED UNCHANGED; WILLISON OPEN LETTERS (THREE AI GOVERNANCE CAMPS); OSMANI/RONACHER DRY:**
 

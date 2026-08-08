@@ -44,7 +44,7 @@ Five things. That's the read.
 
 ## Two reads, paired
 
-- Your read and the agent's walk-down catch different misses. You bring the voice of experience: the soft item, the step that contradicts how this codebase actually works. The agent brings breadth: it can walk every unresolved branch of the decision tree without getting bored or skipping the dull ones.
+- Your read and the agent's walk-down catch different misses. You bring the voice of experience: the soft item (the step that reads clean but skips over something), the step that contradicts how this codebase actually works. The agent brings breadth: it can walk every unresolved branch of the decision tree without getting bored or skipping the dull ones.
 - Paired, they give a complete read; neither alone does. Order matters: your push-back first, so your read stays in the driver's seat, then the walk-down for the branches you can't see.
 - Check the revision, not the acknowledgement. The agent agrees easily. A flagged step can come back softened rather than sharpened. A push-back is finished when the regenerated plan is sharper, not when Claude says it heard you.
 
@@ -78,8 +78,8 @@ After you've done it once, you'll feel when a plan needs the second read and whe
 
 **Deferral bullet on the gate slide (2026-08-08, Antti-directed frame, near-verbatim).** *What the plan doesn't decide, the agent decides mid-run* is the inverse of the slide's lead bullet: the correction-redirects-everything claim gets its shadow, the deferred wrong decision that also redirects everything. *Propagates across files*, *wrongness tangles* and *you will not notice* are the maintainer's own words — do not soften *tangles*, and do not revert *you will not notice* to a nobody-is-reading claim: whether anyone watches mid-generation varies by engineer, but a wrong design call reads as progress while it is being made, so the noticing claim is the true one (maintainer correction, this pass). The exercise's two vague-step bullets (`push-back-on-the-plan.md` read-the-plan altitude bullet + soft-items menu entry) stay as point-of-use recalls; the altitude bullet carries the same *and you will not notice* tail so lecture and exercise state the same mechanism (teach, then recall at the move, per the `check_writing.md` §11 carve-out shape). KC recall lands in `plan-mode-done-right.md` § Key Concepts.
 
-**Quality:** compendium-audited 2026-08-08 (writing@da65157 story@da65157 technical@1c765f2 behavior@1c765f2 pedagogy@da65157 strategy@1c765f2)
-- judges @da65157: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides REVISE (1/0-see-instances/ae101--lecture--when-a-plan-is-good.slides.json)
+**Quality:** compendium-audited 2026-08-08 (writing@a06abbc story@a06abbc technical@1c765f2 behavior@1c765f2 pedagogy@da65157 strategy@1c765f2 slides@a06abbc)
+- judges @a06abbc: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta:**
 - **Time:** 10–12 min (deck-only trimmed it back from the 12–15 of the deck+prose draft), inside M2's 1h45 slot (Connections 10 / Lecture 10–12 / Exercise 55–70 / Debrief 15 / Bridge 5). If tight, the three-pressures slide compresses to 60 seconds; the exercise teaches them.

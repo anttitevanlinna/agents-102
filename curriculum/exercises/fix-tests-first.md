@@ -6,7 +6,7 @@
 
 **What you build:** three things that make a fix trustworthy: a failing test that proves the bug exists, the smallest fix that passes it, and a PR you read line by line before it ships.
 
-**The point:** tests-first and root-cause-driven is one discipline. Running it with an agent is a second discipline: reading the diff, pushing back when a line is not what you would have written. Both get practised here. The compound move (writing down what you learned) lives in the next exercise.
+**The point:** tests-first and root-cause-driven is one discipline. Running it with an agent is a second discipline: reading the diff, pushing back when a line is not what you would have written. Both get practised here. The compound move (writing down what you learned) comes later in the module, once the ticket's closed.
 
 ---
 
@@ -62,8 +62,8 @@ Hand off to the ticket close.
 
 **Declaration slide (2026-08-07, Antti-directed):** *There is always a next plausible answer* is a deliberate claim-shaped heading — the one non-imperative heading in this file, and that is the point: a claim among phase labels is what makes a declaration land inside an exercise. Do not flatten to a command verb; `check_student_facing.md` §17's verb rule covers do-sections, and this section names the machine-nature the interrogation just exhibited rather than asking for an action. Header truth guard: the body says *try to find*, never *finds* — do not strengthen. No bold; the file keeps its single handle. First face of the produce-something prior; the far-half naming is `reading-the-return.md` slide 1 (*The closing summary is not the artefact*), which reuses the *plausible* vocabulary planted here. Frame is the maintainer's own, near-verbatim.
 
-**Quality:** compendium-audited 2026-08-07 (writing@ddc0095 story@38c131c technical@1c765f2 behavior@1c765f2 pedagogy@38c131c strategy@1c765f2)
-- judges @38c131c: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides REVISE (1/0-see-instances/ae101--exercise--fix-tests-first.slides.json)
+**Quality:** compendium-audited 2026-08-08 (writing@a06abbc story@a06abbc technical@1c765f2 behavior@1c765f2 pedagogy@a06abbc strategy@1c765f2 slides@a06abbc)
+- judges @a06abbc: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (tests-first fix) + Analyze (read the diff against what you'd write).
@@ -102,7 +102,7 @@ OODA
 
 <!-- /backing -->
 **Themes planted** (content-strategy § "Recurring themes"):
-- **Theme 4 (self-aware, grain of salt)** — the diff push-back; Claude explains what it wrote and the student verifies. Compounding theme lands in Ex3.
+- **Theme 4 (self-aware, grain of salt)** — the diff push-back; Claude explains what it wrote and the student verifies. Compounding theme lands in Ex4 (`compound-and-close`).
 
 **Watch-fors:**
 - **Tests-skipped.** Student pastes the bug and Claude jumps straight to a fix. Common failure mode. Trainer push: *"back up — what's the failing test that would prove this bug exists?"* If the repo has no test infrastructure on this path, log *"no verifier here"* and name it as the first Quality-Gate entry (landing in M4).

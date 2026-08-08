@@ -65,7 +65,7 @@ Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble i
 - Structure is persuasive. A 7-item plan with headers looks like a decision even when it's a draft. Assume about 10% of it is wrong and go find which part.
 - One kind of scrutiny catches one kind of miss; a human read and an agent's walk-down of unresolved branches catch different things, and the gap between them is where the plan-reading skill lives
 - Assumption-silent isn't assumption-free. Every plan assumes something, and the good ones say what. Push-backs ship into memory.
-- A plan with a specific file list has made decisions; a plan without one hasn't
+- A plan with a specific file list has made decisions; a plan without one hasn't. The deferred ones get made mid-run, where a wrong call propagates across files and tangles.
 - Verification steps that could actually fail are gates; verification steps that always pass are decoration
 - You don't have to execute a plan to know it's good. Making it good IS the work.
 - Plan mode makes the read possible; it isn't the read
@@ -80,7 +80,7 @@ Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble i
 
 The next sitting opens on that task and spends most of its time walking your system against it. Come without one and you'll be picking while the room is already walking. Your call.<!--/flag:no-module:earn-the-trust--><!--flag:module:earn-the-trust--> M3 opens fresh and runs security skills against the M2 feature; if it doesn't have an external or user-facing surface, swap to something from your backlog that does.
 
-Come to Module 3 without that noted path and a feature to point the skills at, and you'll be scrambling to reconstruct one while the room is already running STRIDE, the six-category threat walk M3 opens with. Your call.<!--/flag:module:earn-the-trust-->
+Come to Module 3 without that noted path and a feature to point the skills at, and you'll be scrambling to reconstruct them while the room is already running STRIDE, the six-category threat walk. Your call.<!--/flag:module:earn-the-trust-->
 
 <!--flag:module:earn-the-trust-->## Pre-reads before Module 3
 
@@ -112,8 +112,8 @@ This module points at four sources in body and owned a stamp for none of them; t
 - `[checked:2026-07-02 result:OK due:none]` https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/ — [delegated stamp] Willison, the line 90 `## Pre-read` for Module 3. Dated check owned by `supplementary/the-lethal-trifecta.md`, itself `due:none` as a durable named-framing piece. fallback: the supplementary carries the threat class in full.
 - `[checked:2026-08-02 result:OK due:cohort]` https://owasp.org/www-project-top-10-for-large-language-model-applications/ — [academic/research] The line 92 optional deeper scan, and the one source here no other file stamps. Page live and actively maintained at check. **Scope caveat that will matter at re-check:** the effort has become the OWASP GenAI Security Project and the current list lives at genai.owasp.org/llm-top-10/ (2025 edition), with the v1.1 categories the body echoes — prompt injection, insecure output handling, data leakage — now archived and partly renamed. The landing URL still resolves and still fronts the project. `due:cohort` because that migration is mid-flight. fallback: link the GenAI project root and describe it as the wider LLM-risk checklist without naming categories.
 
-**Quality:** compendium-audited 2026-08-03 (writing@cb44994 story@cb44994 technical@ffc64f9 behavior@ffc64f9 pedagogy@cb44994 strategy@ffc64f9 slides@cb44994)
-- judges @cb44994: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-08 (writing@da65157 story@da65157 technical@ffc64f9 behavior@ffc64f9 pedagogy@da65157 strategy@da65157 slides@da65157)
+- judges @da65157: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @cb44994: PASS — set=[getting-going,plan-mode-done-right]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

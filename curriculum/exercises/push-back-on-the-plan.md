@@ -35,7 +35,7 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. While 
 - Open the plan file; the chat summary is secondary, the file is the artifact. The agent explores, writes a plan file with a descriptive name (e.g. `migrate-auth-hash-calm-otter.md`), and pauses for approval.
 - Read the whole plan before pushing back. Notice which steps name files and which say "the relevant files." Notice which verification steps could actually fail and which are cosmetic. Notice which assumptions the plan is carrying silently.
 - Read the tests section carefully. A good plan names the tests before any code; the tests are part of what "done" means, not something you bolt on after. If the tests section is thin or missing, that's a push-back.
-- Notice at what altitude the steps decide. Naming the file is one decision; naming the new function's signature, its types, and who calls it is the design. A step that stops at the file name defers the design to mid-run, where nobody is reading. If the steps that matter stop at file names, that's a push-back.
+- Notice at what altitude the steps decide. Naming the file is one decision; naming the new function's signature, its types, and who calls it is the design. A step that stops at the file name defers the design to mid-run, and you will not notice. If the steps that matter stop at file names, that's a push-back.
 - When you have two push-backs forming in your head, move on. Don't wait for the clock.
 
 ## Phase 3: Push back twice
@@ -122,8 +122,8 @@ Then just hit stop.
 
 **What-you-build states the activity only; the second read's value claim lands at the P5 compare beat (maintainer call 2026-08-02).** Line 7 names what the walk-down IS — *three questions at a time* — not what it catches. The claim *catches the branches you can't see* is near-verbatim P5's own expected finding (*"branches you didn't notice"*), so stating it in the opener turns the compare beat into confirmation instead of discovery. It is not cut from the file, it is placed: it lives post-action in *Compare what each read caught*, which is where §53 wants it. Both halves of the compare now stay unstated in the opener. **This reverses an earlier §53 partial-accept** that kept the clause at line 7 as the hook selling the walk-down — do not restore it there.
 
-**Quality:** compendium-audited 2026-08-02 (writing@0bfc1f5 story@0bfc1f5 technical@1c765f2 behavior@1c765f2 pedagogy@e946856 strategy@1c765f2 slides@0bfc1f5)
-- judges @0bfc1f5: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-08 (writing@da65157 story@da65157 technical@1c765f2 behavior@1c765f2 pedagogy@e946856 strategy@1c765f2 slides@da65157)
+- judges @da65157: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat at P5 is the Evaluate beat)
@@ -146,7 +146,7 @@ Claims
 - `plan-mode-mechanics` · detail · "Shift+Tab until the status bar shows plan" ← cc-permission-modes
 - `keep-planning-with-feedback` · detail · "At the approval prompt, pick **No, keep planning**." ← cc-permission-modes
 - `plan-mode-takes-minutes` · vision · "Plan mode takes minutes on real codebases. Eight to twelve isn't unusual." ← none-owed
-- `steps-that-stop-at-file-names-defer-design` · vision · "A step that stops at the file name defers the design to mid-run, where nobody is reading." ← none-owed
+- `steps-that-stop-at-file-names-defer-design` · vision · "A step that stops at the file name defers the design to mid-run, and you will not notice." ← none-owed — the noticing claim is deliberate (maintainer correction): whether anyone watches mid-generation varies, but a wrong design call reads as progress while it is being made. Do not revert to a nobody-is-reading claim. The taught mechanism lives in `when-a-plan-is-good.md`'s gate slide; this bullet is the point-of-use recall.
 - `tests-are-part-of-done` · vision · "the tests are part of what \"done\" means, not something you bolt on after" ← none-owed
 - `assumption-push-back-is-wwhtbt` · borrowed · "something the plan is carrying silently that it shouldn't" ← martin-wwhtbt
 - `re-softening-on-regeneration` · vision · "Claude will sometimes verbally accept a push-back and re-soften the step anyway." ← none-owed

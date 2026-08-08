@@ -50,7 +50,7 @@ Everyone names a trick first; the training picks up from there.
 ## Key Concepts
 - The loop is orient → fix → close → compound
 - `/context` shows what landed in the window. What didn't land is real, and you choose what fills the next round. (`/context` is oldskool; ccstatusline, or ask Claude to set up the built-in status line.) Context is what you put in it.
-- The agent's self-report is a hypothesis, not ground truth. Dig until you find what misrepresents. Claims aren't evidence.
+- The agent's self-report is a hypothesis, not ground truth. Dig until you find what misrepresents. Claims aren't evidence. The scrollback is the machine's reflection; current state lives on disk.
 - A failing test is the only proof the bug exists. Without it, the fix is a guess that happens to compile
 - A `./CLAUDE.local.md` built from session evidence reads different from one drafted blank: concrete, specific, yours. Personal layer first; team-worthy rules earn their own PR. Rules grow from evidence, not blank pages.
 - The loop ends outside the code. The close-out lands in the tracker your team reads, not only in the repo
@@ -61,7 +61,9 @@ Module 2 is where plan mode earns its keep: multi-file work, a second pass that 
 
 ## Pre-reads before Module 2
 
-Optional. All three sit in the gap before it. Do them and its moves land as things you've already seen.
+Optional. All four sit in the gap before it. Do them and its moves land as things you've already seen.
+
+**Read: [The agentic engineering progression](trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md).** The progression from using AI for assistance to improving the system behind every session, followed by a model of reach and calibrated trust.
 
 **Read: Dex Horthy, [Why Software Factories Fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md)** (HumanLayer). Tests tell you in seconds whether the code passes; bad architecture bills you over months, and no benchmark scores a model on keeping a codebase maintainable. The cure he lands on is human review made affordable by upfront planning, which is where Module 2 goes next.
 
@@ -75,21 +77,21 @@ Optional. All three sit in the gap before it. Do them and its moves land as thin
 
 - `[checked:2026-07-30 result:OK due:2027-01-30]` https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md — [practitioner direct, vendor venue] (Dex Horthy, HumanLayer; undated repo doc, content + thesis verified 2026-07-30). Claim anchors: no benchmark measures codebase-quality maintenance; tests-in-seconds vs architecture-cost-in-months; fix = human review + upfront planning. fallback: paraphrase as "practitioners running agent fleets report review, not generation, as the quality bottleneck" without single attribution.
 - `[checked:2026-08-03 result:OK due:none]` `continuous-context:status-line` — [delegated stamp] The line 41 aside, both halves: ccstatusline as a third-party install, and `/statusline` for Claude Code's own status line. The dated checks are owned by `exercises/orient-and-introspect.md`, which teaches the beat and carries both URLs; `due:none` because a delegation does not expire and the delegate's own stamps are what `source-freshness.sh` walks. The Key Concepts recap names no URL of its own. fallback: cut the parenthetical — `/context` alone carries the point.
+- `[checked:2026-08-08 result:OK due:none]` https://every.to/source-code/compound-engineering-the-definitive-guide — [delegated stamp] Klaassen, *Definitive Guide*, cited in the Frameworks list for the term only, never a step count. The dated check for THIS URL is owned by `exercises/push-back-on-the-plan.md` (`klaassen-definitive-guide`); the current loop sequence is a different claim with different URLs, stamped in `exercises/compound-and-close.md`. `due:none` because a delegation does not expire and the delegate's own stamp is what `source-freshness.sh` walks. fallback: name only the compound step.
 - `[checked:2026-05-25 result:CAVEAT due:none]` https://www.youtube.com/watch?v=6eBSHbLKuN0 — [delegated stamp] Cherny, *Mastering Claude Code in 30 minutes*. The dated check is owned by `exercises/open-the-side-quest.md`; `due:none` because a delegation does not expire and the delegate's own stamp is what `source-freshness.sh` walks. The May 2025 date sits outside the 6-month window **by maintainer decision** — recorded in the Meta block below as the freshness-rule exception, pedagogy match unbeaten by successors. fallback: the pre-read is optional; drop it and Module 1 stands.
+
+**Start-here trick-share accept-note:** *"Everyone names a trick first; the training picks up from there"* is the `check_pedagogy.md` §27 Connections-opener room-harvest carve-out — in-scope-by-design, the room-read IS the work; do not re-flag.
 
 **M1 runs four in-class exercises and issues no homework.** The loop's order is orient → fix → close → compound, and the close sits third on purpose: the tracker conventions the agent surfaces at `close-the-ticket` are session evidence the compound sweep then integrates, so the field rules reach `./CLAUDE.local.md` without a separate fold step. Do not re-order compound ahead of the close. Connector install is out of scope for the room — see the exercise's own maintainer block.
 
 **Room agreement.** Cohort delivery projects `How we work in this room` before the opening trick-share and keeps it inside the existing 10-minute opening allocation. Self-study skips the room-only slide silently.
 
-**Quality:** compendium-audited 2026-08-05 (writing@8154c70 story@8154c70 technical@1c765f2 behavior@1c765f2 pedagogy@8154c70 strategy@d1c41dd slides@8154c70)
-- judges @8154c70: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @d1c41dd: PASS — set=[getting-going,plan-mode-done-right]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze
 - **Session runtime:** ~1h48 in the 2h slot (Opening 10 / Lectures 10 / Exercise 78 / Closers 5 / Bridge 5), leaving ~12 min of buffer. The room agreement and Connections trick-share share the opening allocation. Trainer demos slowly, room copy-pastes concurrently. Exercise breakdown: orient-and-introspect 18 / fix-tests-first 25 / close-the-ticket 20 / compound-and-close 15. Every number is that exercise file's own Time line. If this sum and those lines ever disagree, the files win and this line is the one to recompute. M1 is the training's only module outside the M2–M6 1h45 band, and the four-exercise arc is what fills it.
-- **Prep timing:** prework 30 min; optional Cherny video 30 min; optional multi-session reference 10 min; optional factory essay 15 min.
+- **Prep timing:** prework 30 min; optional overview 5 min; optional Cherny video 30 min; optional multi-session reference 10 min; optional factory essay 15 min.
 - **Mood target:** joyful creation — *"it works, on my repo."* Watch for: mood drift toward technical warm-up (the bug feels arbitrary, the loop feels mechanical, "this is just a TDD fix I do anyway"). Diagnostic: student narrates Ex2 as a generic engineering move with no surprise. Fix: trainer surfaces the agentic specificity — *"the loop you just ran was orient → fix → close → compound on YOUR repo, with a close-out written in your team's own register and a rules file born from how YOU just worked. That's not a bug fix; that's the instrument starting to play your music."*
 - **Opening-bid install mechanic:** the wizard-move lecture's live demo (the dinner-question context trick, in claude.ai chat windows — deliberately not code) installs the mood → Connections harvests tricks each student brought → Ex1 (orient-and-introspect) each student runs the orient + introspect move on their own repo → Ex2 (fix-tests-first) TDD bug fix, ship the PR → Ex3 (close-the-ticket) read the team's tracker conventions off one real ticket, close the bug's ticket in that register → Ex4 (compound-and-close) compound `./CLAUDE.local.md` from session evidence, the tracker read included. No separate module-level Debrief.
 - **Delivery architecture** (content folder, working-dir model, compounding-artifact split, no training-dir state): canonical in `training-architecture.md` §Working directory model / §Material distribution / §Rule files. Not restated here. The four-layer rule-file hierarchy is in `reference/claude-code-for-engineers.md § 1`.
@@ -147,5 +149,8 @@ The shipped PR and the closed ticket are both produced this module and both live
 
 **Frameworks riffed on:**
 - **TDD (test-driven development)** — Ex2's tests-first, root-cause-driven fix. Recognized framework the engineer audience already knows; the rule written into `./CLAUDE.local.md` at Ex4 is the student's own TDD-style preference.
-- **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (Every Inc.) [practitioner direct, vendor venue]. Plan → Work → Review → Compound. Attributed inside Claude's Ex4 compound summary, not in a lecture.
+- **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (Every Inc.) [practitioner direct, vendor venue]. Cite this URL for the term and the each-unit-makes-the-next-easier thesis, never for a step count: the step names live elsewhere and the loop's staging moves; Ex4's compound summary prints the current sequence, whose stamps live in `exercises/compound-and-close.md`, while this URL's own stamp is delegated per the Source verification block above. Attributed inside Claude's Ex4 compound summary, not in a lecture.
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
+
+**Quality:** compendium-audited 2026-08-08 (writing@f9b9406 story@f9b9406 technical@f9b9406 behavior@f9b9406 pedagogy@f9b9406 strategy@f9b9406 slides@f9b9406)
+- judges @f9b9406: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

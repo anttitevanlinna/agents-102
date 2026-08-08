@@ -9,6 +9,12 @@ The machine you just met can be steered. What you bring, what you build, and wha
 - This is the machinery under the opening lecture's mirror: the LLM that flatters you, calls unfinished work progress, mirrors your stance. It mirrors because mirroring was rewarded; the machine amplifies whatever posture you bring, and your stance is the ceiling by construction.
 - The agent's report of its own success is the same kind of output. "Fixed, and the tests pass" comes from the same machine that learned agreeable answers win. The report is a hypothesis to check, not ground truth.
 
+## The scrollback is not the work
+
+- The agent's chat is an abstraction of the work, necessarily. Something has to be left out; otherwise the agent would be printing the code back, narrated.
+- It is the session's architecture diagram: what was meant, not what runs. The machine's reflection of the work, and the reflection drifts.
+- Current state lives on disk, and the agent reads it on request. A state question (where a file landed, what the code does now) is answered from a fresh read, not from recall: *read x, y, z*, then ask.
+
 ## A check resets the chain
 
 - Each step is mostly right, and each step builds on the one before. One mostly-right answer reads fine on its own. A session is not one answer; it is a chain of them, each standing on the last.
@@ -32,17 +38,19 @@ That is the machine. The rest is steering.
 
 <!-- maintainer -->
 
+**Scrollback slide (2026-08-08, Antti-directed):** *The scrollback is not the work* is the second slide and the fifth overall — the M1 slide budget spent deliberately by the maintainer on his own frame, near-verbatim in all three beats: necessity (the chat has to leave things out or it would print the code back, narrated), the architecture-vs-code analog, and disk-as-current-state with the fresh-read move (*read x, y, z*, then ask). Guards for judges: do not soften *not the work*; do not strengthen to everything-in-the-scrollback-is-false (the claim is which surface answers a state question, and the fresh-read bullet shows conversation CAN answer it once grounded); the analog owes no attribution (architecture-drifts-from-code is common engineering knowledge, `check_writing.md` §6 counter-rule); claims are observation-grade by construction (a lossless narration would reproduce the artifact), no citation owed. The closer's bring/build/ask triad deliberately does NOT gain a fourth leg — the disk rule is a reading discipline, not a steering knob. Downstream joins: `orient-and-introspect`'s spot-check is the lived M1 instance (the check quotes a file, not the account); M3's `threat-model-with-stride` ADR catch (*"reasoned forward from the conversation, not from the filesystem"*) is the exercise-level payoff and stays un-cited there on purpose. Trainer line available, not on the slide: *more conversation is more reflection* — the fresh read is the exception that proves it.
+
 **Output-shape slide added (2026-07-10, Antti-directed cognitive-load arc):** *The LLM answers in essays* sits between the cascading-error slide and the closer; the closer gains the ask-steering bullet (bring / build / ask). Carries the M1 anchor of the selective-reading arc (M2 exception → M3 take-into-use → M5 remind). Mechanism kept observation-grade (no training-cause claim for verbosity; no citation owed — deliberate, don't strengthen to a tuning claim without a source). The M1 trainer flow names the mirror, chain, and output without a behavior count.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all three slides kept as bullets, bolded lead sentences flattened; bold survives only on the two coined-term handles at their naming moments (**sycophancy**, **error cascade**), per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Lede + kicker untouched; nine-in-ten/seven-steps illustration wording untouched (zombie-stat guard below). Wording near-verbatim; no claims added or cut.
 
-**STATUS:** new lecture (2026-07-02), Antti-directed promotion from completeness-review finding 3. Decision verbatim (Antti, 2026-07-02): "sycophancy is a good catch. I feel that actually could live in lecture in module 1. After exercises. Could teach sycophancy and reliablity math." Unaudited; no Quality line by design. Slide format per `theory-plan.md` § Slide format: lede + 4 slides + kicker, one `##` = one slide, bolded claim + 1-3 mechanism sentences per bullet.
+**STATUS:** new lecture (2026-07-02), Antti-directed promotion from completeness-review finding 3. Decision verbatim (Antti, 2026-07-02): "sycophancy is a good catch. I feel that actually could live in lecture in module 1. After exercises. Could teach sycophancy and reliablity math." Unaudited; no Quality line by design. Slide format per `theory-plan.md` § Slide format: lede + 5 slides + kicker, one `##` = one slide, bolded claim + 1-3 mechanism sentences per bullet.
 
 **Placement + beat-choice flag (Antti eyeball):** M1 close, after `compound-and-close` (Ex3), BEFORE `how-this-training-was-built`. Reasoning: zoom order runs exercise-level recognition first (this lecture: the machine tendencies felt in Ex1-Ex3) then arc-level recognition (`how-this-training-was-built`: the loop across the whole module); the training-built closer's kicker ("The loop is the shape. The bug today was the excuse.") is the designed hand-off into `## Next`, and wedging a machine-nature beat after it would dilute both the arc close and the bridge. The alternative (after) would end M1 on machine nature rather than the loop; declined because M1's mood target is joyful creation and the loop story carries that better as the last word. Flip is cheap if the eyeball disagrees: one reference line in `getting-going.md` + one manifest line in `scripts/build-workbook.js`.
 
 **Title alternates:** *Why it agreed with you* · *The grain of the machine*. Chosen title is recognition-shaped (closer: names what the student just met). The first slide calls back to the opener's mirror.
 
-**Laws carried:** sycophancy-mechanism (preference tuning rewards agreeable answers, so mirroring is optimization, not courtesy; lived consequence: the agent's self-report is a hypothesis, grounding the module's Key Concept) · reliability-compounding in chain-length form (error stacks over unverified chain length; an outside check resets the chain). The nine-in-ten / seven-steps line is a worded subjunctive illustration, labeled "an illustration, not a measurement" in body. Zombie-stat guard: do NOT let edits promote it to a measured constant, add notation, or add percent forms.
+**Laws carried:** sycophancy-mechanism (preference tuning rewards agreeable answers, so mirroring is optimization, not courtesy; lived consequence: the agent's self-report is a hypothesis, grounding the module's Key Concept) · reliability-compounding in chain-length form (error stacks over unverified chain length; an outside check resets the chain) · scrollback-is-abstraction (the chat necessarily omits, so it drifts from disk like architecture drifts from code; lived consequence: state questions get a fresh read, which is the mechanism under the spot-check and under M3's ADR-placement catch). The nine-in-ten / seven-steps line is a worded subjunctive illustration, labeled "an illustration, not a measurement" in body. Zombie-stat guard: do NOT let edits promote it to a measured constant, add notation, or add percent forms.
 
 **Deliberately absent (owned elsewhere):** the word "backpressure" + gates/session-reach vocabulary (the post-launch M4 closer names the feedback constraint; M5 builds and calibrates the checks; M6 composes them) · the three failure modes · map/phase references (M1 protected ground) · drift-wedge/position-fix chart vocabulary (the M5 chart owns that imagery). This lecture keeps plain "check resets the chain" language only.
 
@@ -57,6 +65,9 @@ Format → `curriculum/backing-format.md`.
 - `sycophancy-from-preference-tuning` · detail · "Agreeable answers won the second round … The field calls the result **sycophancy**" ← sharma-sycophancy-2023, anthropic-personal-guidance-2026
 - `mirroring-is-optimization` · vision · "It mirrors because mirroring was rewarded; the machine amplifies whatever posture you bring" ← none-owed
 - `self-report-is-hypothesis` · vision · "The report is a hypothesis to check, not ground truth" ← none-owed
+- `chat-is-necessary-abstraction` · vision · "The agent's chat is an abstraction of the work, necessarily. Something has to be left out; otherwise the agent would be printing the code back, narrated." ← none-owed — true by construction; maintainer frame near-verbatim.
+- `scrollback-is-architecture-diagram` · vision · "It is the session's architecture diagram: what was meant, not what runs." ← none-owed — maintainer's own analog; architecture-drifts-from-code is common engineering knowledge, no attribution owed.
+- `state-questions-get-fresh-read` · vision · "A state question (where a file landed, what the code does now) is answered from a fresh read, not from recall" ← none-owed
 - `error-cascade-term` · detail · "The multi-agent literature's term is **error cascade**, coined for errors crossing chains of agents; a chain of steps stacks the same way" ← owasp-asi08-cascading-failures — the attribution names the term's home scope (cross-agent: OWASP ASI08, arXiv 2603.04474) and states the single-session application as our analogy, which is what both sources warrant.
 - `chain-stacking-illustration` · vision · "If each step were right nine times in ten … The numbers are an illustration, not a measurement" ← none-owed
 - `check-resets-chain` · vision · "A check from outside the session resets the chain" ← none-owed
@@ -71,6 +82,7 @@ Format → `curriculum/backing-format.md`.
 **Frameworks**
 - Sycophancy as preference-tuning artifact · [borrow:alignment research] · law:none · ← sharma-sycophancy-2023
 - Error compounding over chain length · [borrow:reliability engineering] · law:compound-reliability-floor-0-85 · ← cultural-vocab. Body carries the subjunctive illustration only; the banked law's 0.85ⁿ form is NOT on the student surface here by design.
+- Architecture-vs-code drift · [borrow:software engineering] · law:none · ← cultural-vocab — the diagram describes intention and ages; the application to the scrollback is the maintainer's own.
 
 **Stance** `[stance:2026-07-29 level:L3]`
 - holds: sycophancy is a documented consequence of preference tuning, not a quirk — measured across five frontier assistants and traced to human + preference-model judgment. The lecture's causal hedge matches the literature.
@@ -100,5 +112,5 @@ Format → `curriculum/backing-format.md`.
 
 - Family B judged 2026-07-03: B-star durability PASS — every slide self-carries NAME/MECHANISM/GOVERNOR without the voice; spine-anchoring rides the M1 protected-ground carve-out (no map slot by doctrine, laws anchored to the lived mirror + failing-test-first instead); worldview a clean recognition closer.
 
-**Quality:** compendium-audited 2026-08-03 (writing@5fc7188 story@5fc7188 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@5fc7188)
-- judges @5fc7188: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-08 (writing@cc2296b story@cc2296b technical@1c765f2 behavior@1c765f2 pedagogy@cc2296b strategy@1c765f2 slides@cc2296b)
+- judges @cc2296b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

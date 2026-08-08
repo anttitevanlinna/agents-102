@@ -13,7 +13,7 @@
 ## Phase 1: Name the rules from this session
 
 - You already did the work; now name the rules inside it. You ran a plan, two push-backs, a second-pass walk-down, and an approval. Each decision along the way carried a task-shaping rule about what made this task plan-mode-able.
-- You are not on the hook for remembering it. The agent reads the scrollback; you react to what it proposes.
+- You are not on the hook for remembering it. The agent reads the scrollback; you react to what it proposes. The scrollback is the right source here: the question is how you worked, not what is on disk.
 
 Ask Claude to read the scrollback, propose rules, and pause for your push-back before going further.
 
@@ -64,14 +64,16 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 
 **View summary:** You ask the agent to recover the task-shaping rules hidden in the planning session, rewrite anything generic, and save the useful rules where they will fire. The artifact turns one good planning experience into reusable guidance for similar work.
 
+**Scrollback-ownership clause (2026-08-08, Antti-directed):** Phase 1's *"The scrollback is the right source here: the question is how you worked, not what is on disk"* is the deliberate boundary of M1's scrollback law (`the-machine-you-just-met`, *The scrollback is not the work*): session questions read the chat, state questions read the disk. It stops the law over-learning into scrollback-bad. No module reference in body on purpose; the recognition stays implicit.
+
 **Scope ends at the automation-shapes read.** The ticket-conventions prompt (`extract-the-task-shaping-rule-4`) belongs to M1's `close-the-ticket`, which is also where *refinement* is earned as a term — do not reintroduce either here.
 
 **Phase 3 automation-shapes prompt (`extract-the-task-shaping-rule-3`) kept, not cut.** The lecture `where-the-rule-could-live` walks the same three shapes, which makes this prompt look like a cut candidate. It is not: this is a no-build, name-the-shapes horizon beat, so it adds none of the concurrent-heavy-execution load the cull targeted — cutting it reclaims no load, it only drops a cheap payoff. It gives the slot a breather after the rules-extraction work and primes the lecture reveal (generate-then-reveal). Not a cut candidate.
 
 **Emphasis budget (`check_slides.md §9`):** no bolded handles in the body; all bullet leads plain. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
-**Quality:** compendium-audited 2026-08-03 (writing@cb44994 story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@cb44994 strategy@1c765f2 slides@cb44994)
-- judges @cb44994: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-08 (writing@cc2296b story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@cb44994 strategy@1c765f2 slides@cc2296b)
+- judges @cc2296b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - cohorts: none yet
 
@@ -120,6 +122,7 @@ Claims
 - `templates-stay-generic` · vision · "Templates stay generic; this file carries your rules" ← none-owed
 - `you-already-did-the-work-now-name-it` · vision · "You already did the work; now name the rules inside it." ← none-owed
 - `agent-reads-the-scrollback-you-react` · vision · "The agent reads the scrollback; you react to what it proposes." ← none-owed
+- `scrollback-right-source-for-session-questions` · vision · "The scrollback is the right source here: the question is how you worked, not what is on disk." ← none-owed — the ownership boundary of the M1 scrollback law: session questions read the chat, state questions read the disk.
 - `reject-or-rewrite-the-generic-rule` · vision · "When Claude pauses for the rewrite-and-reject pass, that is where your hand goes on the work." ← none-owed
 
 Sources

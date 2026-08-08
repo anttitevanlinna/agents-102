@@ -112,5 +112,3 @@ One structural note falls out of the same hunt:
 **When an item closes:** delete the bullet. Git log carries the history. Don't annotate "done", closed = gone.
 
 **When a new item surfaces mid-session:** add it here, not in the module file.
-</content>
-</invoke>

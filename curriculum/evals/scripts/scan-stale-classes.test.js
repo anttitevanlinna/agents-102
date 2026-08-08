@@ -2,7 +2,7 @@
 // Tests for scan-stale-classes.js — diff-region → judge-class routing.
 'use strict'
 const assert = require('node:assert')
-const { parseHunks, buildLineMeta, changeTags, extractPins, filterItems } = require('./scan-stale-classes.js')
+const { parseHunks, buildLineMeta, changeTags, extractPins, filterItems, typeOf } = require('./scan-stale-classes.js')
 
 let n = 0
 function test(name, fn) { fn(); n++; console.log(`ok ${n} - ${name}`) }
@@ -201,6 +201,40 @@ test('changeTags: a real body line in the hunk still tags', () => {
   const t = tagsFor(parseHunks(diff))
   assert(t.has('writing') && t.has('slides'),
     `a genuine body edit must still stale writing+slides, got ${JSON.stringify([...t])}`)
+})
+
+// --- typeOf: surface derivation drives instanceSlug ---
+// Regression 2026-08-07: typeOf had only exercise/lecture cases and fell through
+// to 'module' for everything else, so reference/ and supplementary/ files got
+// instanceSlug `ae101--module--<slug>` while their instances are written as
+// `ae101--reference--<slug>` / `ae101--supplementary--<slug>`. The scanner then
+// found no pins and reported every class `never` on files that had just been
+// judged clean — a silent "re-run everything" that looks identical to real
+// staleness. Directory-derived, matching curriculum-pre-ship-audit's convention.
+test('typeOf: exercise', () => {
+  assert.strictEqual(typeOf('curriculum/exercises/audit-your-agent.md'), 'exercise')
+})
+test('typeOf: lecture', () => {
+  assert.strictEqual(typeOf('curriculum/lectures/the-whole-map.md'), 'lecture')
+})
+test('typeOf: module', () => {
+  assert.strictEqual(typeOf('curriculum/trainings/agentic-engineering-101/earn-the-trust.md'), 'module')
+})
+test('typeOf: reference is NOT module', () => {
+  assert.strictEqual(typeOf('curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md'), 'reference')
+})
+test('typeOf: supplementary is NOT module', () => {
+  assert.strictEqual(typeOf('curriculum/trainings/agentic-engineering-101/supplementary/token-efficiency.md'), 'supplementary')
+})
+test('typeOf: supplementary wins over the training dir it sits under', () => {
+  // both substrings are present in the path; the more specific one must win
+  const p = 'curriculum/trainings/agents-101/supplementary/what-is-an-agent.md'
+  assert.strictEqual(typeOf(p), 'supplementary')
+})
+test('instanceSlug for a reference file targets the reference instance', () => {
+  const rel = 'curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md'
+  assert.strictEqual(`ae101--${typeOf(rel)}--claude-code-for-engineers`,
+    'ae101--reference--claude-code-for-engineers')
 })
 
 console.log(`\n${n} tests passed`)

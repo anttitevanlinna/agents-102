@@ -1,18 +1,19 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/earn-the-trust.md",
+  "body_sha": "bc91ffcc0c0378cf6ba3f60287b1d948053c22d5b67e1e5c801882a295d286af",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "earned trust — \"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big\"",
-  "trace_status": "cached",
-  "teaching_moment_lands": "The named teaching moment (Ex1+Ex2's ADR under named pressure, trace phase5 mood=9, 'a real architectural call under named pressure, not a compliance checkbox') fires reliably across the trace: no confusion_flags anywhere, under_scaffolded_phases is empty, and the two curated-skill invocations chain cleanly (STRIDE consumes the access-map delta per line 43's Key Concepts bullet). The persona could not skip it — Ex2 forces the ADR write before the module moves on. PASS, not fragile.",
+  "trace_status": "regenerated",
+  "teaching_moment_lands": "The named teaching moment (Ex1+Ex2's ADR under named pressure, trace phase5 mood=9, 'a real architectural call under named pressure, not a compliance checkbox') still fires reliably across the re-fired trace: no confusion_flags anywhere, under_scaffolded_phases is empty, and the two curated-skill invocations chain cleanly (STRIDE consumes the access-map delta per the Key Concepts bullet). The two changed lines (51, 55) sit in phase 7, a mood-exempt setup beat well upstream of the teaching moment — neither touches it. PASS, not fragile.",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures are closers, not openers; vocabulary lectures land mid-module.",
       "verdict": "PASS",
-      "evidence": "'Skills from the frontier, skills of your own' (line 33) lands mid-module, after Connections + Open-the-side-quest, before the two curated-skill invocations — trace phase4 mood_note: 'Vocabulary lecture at exactly the moment it earns itself, right before the first curated-skill invocation.' 'The loop half, filled in' (line 65) lands at module end, after all three exercises, before Clear the session — trace phase9: 'Correctly placed consolidation closer (naming a pattern just lived through), not new teaching.'",
+      "evidence": "'Skills from the frontier, skills of your own' lands mid-module, after Connections + Open-the-side-quest, before the two curated-skill invocations — trace phase4 mood_note: 'Vocabulary lecture at exactly the moment it earns itself, right before the first curated-skill invocation.' 'The loop half, filled in' lands at module end, after all three exercises, before Clear the session — trace phase9: 'Correctly placed consolidation closer (naming a pattern just lived through), not new teaching.' Unaffected by the line-51/55 edits (both fall between these two lectures; heading order and lecture placement unchanged).",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,7 +31,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Rule governs prose inside LECTURE files (skills-from-the-frontier.md, the-loop-half-filled.md), out of scope for this judge run (file_path is the module file). Cross-module sequencing (Next/Bridge) belongs in the module file by the rule's own carve-out; placement of the two linked lectures within this module is judged under rule 1.",
+      "evidence": "Rule governs prose inside LECTURE files (skills-from-the-frontier.md, the-loop-half-filled.md), out of scope for this judge run (file_path is the module file, and neither lecture file was touched by this edit). Placement of the two linked lectures within this module is judged under rule 1.",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,7 +40,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
-      "evidence": "This module file's own `##` headers (Big Idea, Prework, What You'll Learn, Start here, Key Concepts, Sharpen the skill from evidence, Read the sharpen with a skeptical eye, Clear the session, Next, Bring to Module 4, Pre-read before Module 4) are structural scaffolding fixed by module-shape.md, not the creative concept-naming lecture/slide headers this rule targets. Header-squint judgment for the two embedded lectures belongs to their own file-level judge runs.",
+      "evidence": "This module file's own `##` headers (Big Idea, Prework, What You'll Learn, Start here, Key Concepts, Sharpen the skill from evidence, Read the sharpen with a skeptical eye, Clear the session, Next, Bring to Module 4, Pre-read before Module 4) are structural scaffolding fixed by module-shape.md, not the creative concept-naming lecture/slide headers this rule targets. No heading was added, removed, or reworded by this re-fire — lines 51 and 55 are body prose inside the existing 'Sharpen the skill from evidence' heading.",
       "fix_hint": null,
       "blocking": false
     },
@@ -48,7 +49,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded (~210 words / 6 bullets), not just its header.",
       "verdict": "PASS",
-      "evidence": "Trace's own mechanical self-checks on the two densest sections: phase7 ('Sharpen the skill from evidence') 179 words, well under the 210-word ceiling and under the 6-bullet cap; phase8 ('Read the sharpen with a skeptical eye') 155 words, own header, nothing else competing for the slot. Trace phase11 ('Next') self-checks at 204/210 words, under the ceiling.",
+      "evidence": "The module file is itself slide-rendered (one `##` = one slide, per curriculum/CLAUDE.md). Re-checked the touched slide directly: 'Sharpen the skill from evidence' (lines 49–57, including the line-51 Note widget and the line-55 two-sentence split) sits comfortably under the 210-word ceiling and the 6-bullet cap — the Note-widget swap and the sentence split change punctuation and register, not length; no new bullets introduced. Other phases unchanged from the prior fire.",
       "fix_hint": null,
       "blocking": false
     },
@@ -57,7 +58,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "Body prose ahead of each `{{prompt:...}}` fence (lines 51-57 sharpen-skill, 67-71 ready-to-clear, 73-77 clear-session) states context (which window, which artifacts) but leaves the forcing move itself (sharpen from evidence, converge-before-clear) to the fence. No scripted-reaction language ('push back once', 'two rounds max') in body. The 'Next' trifecta content (lines 81-91) is forward-looking awareness prose, not a withheld forcing function — no M4 task exists yet inside M3 to apply it to.",
+      "evidence": "Body prose ahead of each `{{prompt:...}}` fence (Sharpen the skill from evidence, Clear the session) states context (which window, which artifacts) but leaves the forcing move itself (sharpen from evidence, converge-before-clear) to the fence. Line 51's Note widget and line 55's split lead-in are context/orientation sentences ('Switch back...', 'Ask Claude to sharpen the skill's weakest section from invocation evidence.') — neither authors the forcing move itself, which still lives in `{{prompt:ae101-m3-sharpen-skill}}`. No scripted-reaction language ('push back once', 'two rounds max') introduced. The '## Next' trifecta content is forward-looking awareness prose, not a withheld forcing function.",
       "fix_hint": null,
       "blocking": true
     },
@@ -66,7 +67,7 @@
       "rule_index": 27,
       "rule_lead": "Body teaches the work; trainer manages the room outside text — no authored conversations in body.",
       "verdict": "PASS",
-      "evidence": "No 'discuss with...', 'share with your neighbor', 'take N seconds and compare' construction anywhere in the body. 'The room's features will differ wildly; that's the point' (line 29) is reassurance about heterogeneity, not an instruction to compare or share — Connections-opener carve-out territory in any case. All body sentences stay WORK-directed (feature pick, ADR write, skill author, sharpen, clear, task-name).",
+      "evidence": "No 'discuss with...', 'share with your neighbor', 'take N seconds and compare' construction anywhere in the body, including the two re-fired lines. Line 51's Note widget is a window/focus cue (per widgets.md: 'focus/window switch between already-open sessions' is exactly the Note widget's registered use), not a cohort-management instruction — stays WORK-directed (which window holds the artifacts). Line 55 stays WORK-directed (sharpen the skill, integrate a rule, optionally grab a scrollback quote) throughout the split.",
       "fix_hint": null,
       "blocking": false
     },
@@ -75,8 +76,8 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named and honored; mood-floor applies to teaching beats only.",
       "verdict": "PASS",
-      "evidence": "Big Idea (lines 5-6) and maintainer mood-target line match content-strategy-agentic-engineering-101.md's M3 row verbatim ('earned trust — the way I work with agents...'). Teaching-beat mood scores: phase2=8, phase4=8, phase5=9, phase6=8, phase8=8, phase9=8, phase11=7 — none below 7. Setup/launch/transition phases (1, 3, 7, 10) correctly scored mood-null per the mood-floor carve-out.",
-      "fix_hint": "Phase 11 (Next + Bring to Module 4) sits at the 7 floor, not 8: one bridging clause after 'Two signatures, earned' connecting the resolved close to the trifecta check ('now point that rigor at the agent itself') would lift it — non-blocking (7 ≥ 7 floor), the trace already names this exact fix.",
+      "evidence": "Big Idea and maintainer mood-target line match content-strategy-agentic-engineering-101.md's M3 row verbatim ('earned trust — the way I work with agents...'). Teaching-beat mood scores unchanged by the re-fire: phase2=8, phase4=8, phase5=9, phase6=8, phase8=8, phase9=8, phase11=7 — none below 7. Phase 7 (the phase carrying both re-fired lines) is a setup/launch beat, correctly scored mood-null per the mood-floor carve-out — the Note widget makes the window-switch cue harder to miss, not louder in a way that would flip it to a teaching beat; the diagnostic ('could this beat compress into a parenthetical without breaking the arc?') still answers yes.",
+      "fix_hint": "Phase 11 (Next + Bring to Module 4) still sits at the 7 floor, not 8: one bridging clause after 'Two signatures, earned' connecting the resolved close to the trifecta check would lift it — non-blocking (7 ≥ 7 floor), unchanged from the prior fire, unrelated to lines 51/55.",
       "blocking": true
     },
     {
@@ -84,7 +85,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood, not punitive mood.",
       "verdict": "PASS",
-      "evidence": "Maintainer mood-target diagnostic explicitly guards against compliance/punitive drift: 'you just made a real architectural call under named pressure; that's not compliance, that's design.' Student-facing body ('Read the sharpen with a skeptical eye': 'useful... but charitable', 'watch for', offered escalation moves) stays discovery-flavoured throughout, never shame-flavoured.",
+      "evidence": "Maintainer mood-target diagnostic explicitly guards against compliance/punitive drift: 'you just made a real architectural call under named pressure; that's not compliance, that's design.' Student-facing body ('Read the sharpen with a skeptical eye': 'useful... but charitable', 'watch for', offered escalation moves) stays discovery-flavoured throughout, never shame-flavoured. Line 51's Note widget is procedural orientation, carries no punitive register.",
       "fix_hint": null,
       "blocking": false
     },
@@ -93,7 +94,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with the discipline, not the failure mode.",
       "verdict": "PASS",
-      "evidence": "Title/Big Idea 'Earn the trust' is discipline-led. Key Concepts bullets ('A curated skill is upstream work packaged for you to invoke. You don't re-derive it.', 'Ask the agent what's weakest about its own output; the mirror reflects...') lead with positive disciplines; the closing bullet's failure clause ('Authoring without invocation is theatre') stays subordinate to its lead verb ('Invoke the skill on the thing you just built').",
+      "evidence": "Title/Big Idea 'Earn the trust' is discipline-led. Key Concepts bullets lead with positive disciplines; the closing bullet's failure clause ('Authoring without invocation is theatre') stays subordinate to its lead verb. Unaffected by lines 51/55 (outside Key Concepts).",
       "fix_hint": null,
       "blocking": false
     },
@@ -102,7 +103,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity — consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict.",
       "verdict": "PASS",
-      "evidence": "Big Idea (lines 5-6) matches the strategy doc's M3-in-detail framing ('curated-then-authored', 'team kit born here', personal-first-then-human-conversation-promotion) closely, restated in curriculum voice, no copy-paste. Module-to-module arc: 'Bring to Module 4' (lines 93-97) is picked up cleanly by run-the-first-experiment.md's Prework ('The scoped task you picked as homework'). Front-run check on the '## Next' lethal-trifecta beat (lines 81-91): cross-checked run-the-first-experiment.md line 79, which explicitly reuses 'the same three questions from Module 3's close, now pointed at this run' via a flag conditional — confirmed as a deliberate planted-then-recalled beat by this file's own maintainer note (2026-07-02: 'trifecta pre-leash beat added... wired per completeness review finding #2') and the strategy doc's own OODA gap table (gap #5, homed at 'M3 pre-read'), not an accidental duplicate of M4's teaching moment. Front-run check on the newly-traced '## Pre-read before Module 4' beat (lines 99-103, trace phase 12): the Willison one-line frame ('the thinking you do before stepping away') was checked against run-the-first-experiment.md's own Prework and Start-here sections, whose actual teaching moment is walking what you've built against a send-off task, not 'designing the loop' — no restatement or pre-emption found. Mood-doesn't-resolve-early: M3 close resolves on its own earned-trust register ('Two signatures, earned'); the trifecta beat is filed by the trace's persona as forward awareness only ('no task exists yet to apply it to... files it as awareness for M4, not an action now'), leaving M4's own curious-readiness/send-off teaching moment untouched.",
+      "evidence": "Big Idea matches the strategy doc's M3-in-detail framing ('curated-then-authored', 'team kit born here', personal-first-then-human-conversation-promotion), restated in curriculum voice; exercise order (Ex1 access-map → Ex2 STRIDE/ADR → Ex3 test-strategy skill) mirrors the strategy doc's stated sequence exactly. Module-to-module arc: 'Bring to Module 4' is picked up cleanly by M4's own strategy-doc open. Front-run check on the '## Next' lethal-trifecta beat: this file's own maintainer note logs it as a deliberate planted-then-recalled beat. Mood-doesn't-resolve-early: M3 close resolves on its own earned-trust register ('Two signatures, earned'). The line-51/55 re-fire sits entirely inside the Ex3-to-close compound beat, upstream of and unrelated to the module's arc-level claims — arc confirmed unaffected.",
       "fix_hint": null,
       "blocking": true
     },
@@ -139,10 +140,9 @@
     "close_score": 8,
     "any_below_8": true,
     "stealing_the_mood": [
-      "Phase 11 (Next + Bring to Module 4) at 7 — trifecta beat lands with no bridging sentence right after 'Two signatures, earned', reads as a second gate stacked onto an already-resolved close; would take it to 8 with one connecting clause."
+      "Phase 11 (Next + Bring to Module 4) at 7 — trifecta beat lands with no bridging sentence right after 'Two signatures, earned', reads as a second gate stacked onto an already-resolved close; would take it to 8 with one connecting clause. Unchanged by this re-fire, unrelated to lines 51/55."
     ]
   },
   "blocking_findings_count": 0,
   "todos_count": 1
 }
-

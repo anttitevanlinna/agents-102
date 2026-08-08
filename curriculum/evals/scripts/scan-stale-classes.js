@@ -242,9 +242,17 @@ function gitIo(repo) {
   }
 }
 
+// Surface type drives instanceSlug, so it must match the naming
+// curriculum-pre-ship-audit writes instances under:
+// `ae101--<surface>--<slug>.<class>.json`. Order matters — supplementary/ and
+// reference/ sit UNDER a training dir, so they must be tested before the
+// module fallback or they silently resolve to `module` and the scanner finds
+// no pins (reads as "never judged" on a file judged clean minutes earlier).
 function typeOf(relpath) {
   if (relpath.includes('/exercises/')) return 'exercise'
   if (relpath.includes('/lectures/')) return 'lecture'
+  if (relpath.includes('/supplementary/')) return 'supplementary'
+  if (relpath.includes('/reference/')) return 'reference'
   return 'module'
 }
 
@@ -290,6 +298,6 @@ function main(argv) {
   process.exit(2)
 }
 
-module.exports = { parseHunks, buildLineMeta, changeTags, extractPins, judgesRow, promptKeys, filterItems, scanFile, CLASSES }
+module.exports = { parseHunks, buildLineMeta, changeTags, extractPins, judgesRow, promptKeys, filterItems, scanFile, typeOf, CLASSES }
 
 if (require.main === module) main(process.argv.slice(2))

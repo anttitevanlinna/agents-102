@@ -29,7 +29,7 @@ After this module, you will be able to:
 
 **The question, to you:** when was the last time you entered generation with too little planning? Where did it bite: wrong files, a design decided mid-run, rework you could have planned away?
 
-Before the plan-reading move, one orientation. Here is the whole territory this work runs in, and where the ground you are on sits in it.
+Before the plan-reading move, one orientation: the whole map, and where you are on it.
 
 [Lecture: The whole map](lectures/the-whole-map.md)
 

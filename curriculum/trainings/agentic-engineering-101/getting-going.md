@@ -52,7 +52,7 @@ Everyone names a trick first; the training picks up from there.
 - `/context` shows what landed in the window. What didn't land is real, and you choose what fills the next round. (`/context` is oldskool; ccstatusline, or ask Claude to set up the built-in status line.) Context is what you put in it.
 - The agent's self-report is a hypothesis, not ground truth. Dig until you find what's made up. Claims aren't evidence. The scrollback is the machine's reflection; current state lives on disk.
 - A failing test is the only proof the bug exists. Without it, the fix is a guess that happens to compile
-- A `./CLAUDE.local.md` built from session evidence reads different from one drafted blank: concrete, specific, yours. Personal layer first; team-worthy rules earn their own PR. Rules grow from evidence, not blank pages.
+- A `./CLAUDE.local.md` built from session evidence reads different from one drafted blank: concrete, specific, yours. Personal layer first; team-worthy rules earn their own PR.
 - The loop ends outside the code. The close-out lands in the tracker your team reads, not only in the repo
 - Your tracker encodes conventions nobody wrote down. One ticket is enough to start reading them back
 

@@ -73,7 +73,7 @@ The worktree is forked and ready. You open the session in it at the first exerci
 
 ## Re-send the same task, packaged
 
-Now the re-send. Same task, packaged this time. The prompt can be short because the packaging carries the context. The packaging does the explaining; the prompt invokes it.
+Now the re-send. Same task, packaged this time, and notice the prompt: it shrank while the task stayed the same. The difference is your system, measured in words the prompt no longer needs. The packaging does the explaining; the prompt invokes it.
 
 **Session** *(new, "M5 long-run")*
 

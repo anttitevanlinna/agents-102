@@ -94,7 +94,7 @@ Optional, when your sessions start running heavy: [Token efficiency](trainings/a
 
 **One scoped task you'd send off rather than nudge bit by bit: a real slice with a 'done' you can name in a sentence. Bigger than a typo-fix, smaller than an epic.**
 
-Come to Module 4 without having picked the task and you'll be scrambling for one while the room is already running theirs. Your call.
+Come to Module 4 without having picked the task and you'll be scrambling for one while the exercise is already running. Your call.
 
 ## Pre-read before Module 4
 

@@ -47,13 +47,13 @@ A real engineering call lives in this fork: gitignored files (your `CLAUDE.local
 
 Run the fork from your original repo, not the worktree (it doesn't exist yet). If the session you sent off from is still open, ask it there, it's already in the right place. Otherwise open a fresh session in the original repo location and ask there.
 
-Claude figures out `<repo-name>` from the working directory. Help it if it gets confused.
+Claude figures out `<repo-name>` from the working directory. If it picks the wrong repo or path, steer it in chat.
 
 {{prompt:ae101-m5-worktree-setup}}
 
 Claude will narrate before acting. It usually opens with a plan summary listing the six sub-steps, then runs them. Skim past the opening.
 
-Check the copy landed before you go on: the output should name both `CLAUDE.local.md` and `observations/` at the worktree path. The whole contrast rests on the second session starting from the same system the first one did, and a rules file that quietly stayed behind changes two variables instead of one. If your rules file lives somewhere other than the two paths Claude checked, ask Claude to copy that one across too.
+Check the copy landed before you go on: the output should name both `CLAUDE.local.md` and `observations/` at the worktree path. The whole contrast rests on the second session starting from the same system the first one did, and a rules file that wasn't copied changes two variables instead of one. If your rules file lives somewhere other than the two paths Claude checked, ask Claude to copy that one across too.
 
 ## Anchor the fork to the run coordinates
 
@@ -97,7 +97,7 @@ Ask Claude to re-run the same task using the reference, plan.md, and verifier yo
 
 {{prompt:ae101-m5-rerun-packaged}}
 
-<!--flag:module:spot-gaps-build-the-loop-->The walk-away report at the close is what Module 6 opens on.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->The walk-away report at the close is the evidence this session leaves behind.<!--/flag:no-module:spot-gaps-build-the-loop--> RLHF will frame partial failures as partial successes, *"shipped most of it, hit a snag on X."* The contrast with the un-packaged session depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. You decide whether to push.
+<!--flag:module:spot-gaps-build-the-loop-->The walk-away report at the close is what Module 6 opens on.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->The walk-away report at the close is the evidence this session leaves behind.<!--/flag:no-module:spot-gaps-build-the-loop--> Expect partial failures framed as partial successes, *"shipped most of it, hit a snag on X."* RLHF is a big part of why: agreeable answers won the preference round. The contrast with the un-packaged session depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. You decide whether to push.
 
 The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). Same cancel-is-legit rule as the un-packaged session: stopping when the trace is enough is the result. Manual nudges are part of the session; when nudging turns into typing every step, the agent isn't the agent any more, that's a result worth reading.
 
@@ -118,7 +118,7 @@ The map at sitting 2 had an edge nobody explained. A dashed line down the right 
 
 Everything built in these four sittings is on your side. The rules file, the observations, the verifier, the reference, the plan. That is the right order and not a shortfall: prove it on yourself, then promote. A rule promoted before it works on you is a rule your team has to live with, and a habit that never crosses stays yours alone.
 
-The map's near half is where a single loop runs and compounds. The far half is where sessions get long and you build the checks that let them. The right edge is what happens after both work: the crossing. You have run the loop and built the checks. What crosses, and how, is the question the map has been pointing at since sitting 2.
+The map's near half is where a single loop runs and compounds. The far half is where sessions get long and you build the checks that let them. You have run the loop and built the checks: a long run you can send, and a return you can read, because the checks guiding it are yours. The right edge is the crossing, and the first move across is one rule, proven on you, promoted through your team's normal PR. Your call when it's ready.
 
 <!--/flag:no-module:spot-gaps-build-the-loop--><!--flag:module:spot-gaps-build-the-loop-->
 ## Next
@@ -129,7 +129,7 @@ Module 6 reads the packaged session. Subtler misses, subtler drift. Your verifie
 
 A packaged session with substance. Read the scrollback or commits from the re-send; check the agent didn't just stall in the first minute.
 
-Come to Module 6 without the packaged session and you'll be reading one session while the room is reading two. Your call.
+Come to Module 6 without the packaged session and you'll have one session to read where the exercise needs two. Your call.
 
 ## Pre-reads before Module 6
 
@@ -219,6 +219,8 @@ Optional. Skipping does not break Module 6. Both fit the Module 5 to Module 6 ga
 | Closing lecture — *"name Ronacher's three-pattern only AFTER the felt evidence lands"* | Closing lecture pre-empt — trainer accidentally names the three-pattern before the closing lecture | Trainer: don't. The closing lecture earns the name from felt evidence. If the term gets used in Phases 1–4, the closing has nothing to add. |
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
+
+- `[checked:2026-08-09 result:OK due:none]` `lectures/the-machine-you-just-met.md:sharma-sycophancy-2023` — [delegated stamp] The re-send beat's *"RLHF is a big part of why: agreeable answers won the preference round"* — hedge (*a big part*) matches the source's "driven in part"; the second clause is M1's slide title verbatim, and that lecture's backing owns the dated Sharma check plus the do-not-strengthen-to-sole-cause guard. `due:none` — a delegation does not expire; the delegate's stamp is what `source-freshness.sh` walks. fallback: drop the mechanism clause; "Expect partial failures framed as partial successes" stands alone.
 
 - `[checked:2026-05-25 result:OK due:2026-11-25]` https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich — [practitioner analysis] Laura Entis on Klaassen, 2026-04-22. Byline correctly attributed in file. fallback: cite as Entis write-up of the Shipper–Klaassen interview.
 - `[checked:2026-05-25 result:OK due:2026-11-25]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct] Klaassen 2026-02-09, resolves, within window. fallback: cite as Klaassen's canonical compound-engineering writeup.

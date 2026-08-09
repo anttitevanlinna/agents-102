@@ -73,7 +73,7 @@ If Claude's screening feels like everything-at-once, ask Claude to use the AskUs
 
 Close the prework session when Claude confirms readiness. Module 1 opens fresh in the same repo.
 
-A picked bug from Step 5. Write it down, file/line, or a one-sentence summary in a note. The prework session closes; the bug needs to survive into Module 1. Come to Module 1 without one and you'll be scrambling for one while the room is already fixing theirs. Your call.
+A picked bug from Step 5. Write it down, file/line, or a one-sentence summary in a note. The prework session closes; the bug needs to survive into Module 1. Come to Module 1 without one and you'll be scrambling for one while the exercise is already fixing bugs. Your call.
 
 The opening question at Module 1: *what's one trick you figured out with Claude Code that nobody taught you?* Bring one. Doesn't have to be big. No trick? Bring a moment Claude Code frustrated you.
 

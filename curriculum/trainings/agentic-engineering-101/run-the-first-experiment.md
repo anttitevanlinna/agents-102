@@ -9,7 +9,7 @@ The scoped task you picked as homework.
 
 **A real slice you'd send off rather than nudge bit by bit, with a 'done' you can name in a sentence. Bigger than a typo-fix, smaller than an epic.**
 
-Come without having picked the task and you'll be scrambling for one while the room is already running theirs. Your call.
+Come without having picked the task and you'll be scrambling for one while the exercise is already running. Your call.
 
 Optional forward-look: [The agentic engineering progression](trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md). And when your sessions start running heavy, [Token efficiency](trainings/agentic-engineering-101/supplementary/token-efficiency.md) on keeping the context window lean.
 
@@ -109,7 +109,7 @@ The next module opens with what came back, or what you caught before it went fur
 
 A session that produced something. Read the agent's scrollback or commits from the send-off; check the agent didn't just stall in the first minute. A stopped session counts; the trace is the artefact. Bring the three failure modes from [Reading the return](lectures/reading-the-return.md) as your reading lens.
 
-Come to Module 5 without a session and you'll be scrambling for material while the room is already reading theirs. Your call.
+Come to Module 5 without a session and you'll be scrambling for material while the read is already underway. Your call.
 
 ## Pre-reads before Module 5
 

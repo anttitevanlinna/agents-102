@@ -69,7 +69,7 @@ Tags: `[borrow:X]` imported parent field · `[rsch:Ln]` continuous-research, evi
 
 ### 5 · Vocabulary & typologies — the map and the names you can carry (the cohort's missing piece)
 - **eval = judge / verifier / gate** — one primitive, three faces. `[curr]`
-- The **L0 → L3 ladder** — a typology of the engineer's own progression. `[curr]`
+- The **engineer's progression** — uses AI for assistance → works with it interactively → delegates bounded outcomes → directs several independent sessions → encodes recurring work into checked loops → improves the context, memory, skills, and verification that make every subsequent session stronger. Each stage follows because the engineer encounters a new constraint. `[curr:agentic-engineering-progression]`
 - The **pattern layer ontology:** Pattern / Component / Dish / Foundation. `[grnd]`
 - **Steering is executable constraint; your stance is the ceiling** (the "infinite chameleon"). `[curr]`
 - **Coding agents are the meta-platform:** they build the next agent; vendor platforms can't extend themselves. `[rsch:L3]`

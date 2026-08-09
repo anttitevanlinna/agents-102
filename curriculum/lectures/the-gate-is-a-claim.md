@@ -63,20 +63,20 @@ A gate is one more claim in the system. Build it, then hold it to the same bar i
 <g text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234">
 <text x="400" y="168">small handoffs, tight review</text>
 <text x="400" y="418">you read everything</text>
-<text x="800" y="168">long leash, measured gates</text>
-<text x="960" y="418">long leash, unmeasured green</text>
+<text x="800" y="168">big handoffs, gates and checks you trust</text>
+<text x="960" y="418">big handoffs, green you took on faith</text>
 </g>
 <path d="M 480,470 C 640,420 760,330 850,240 S 980,120 1020,70" fill="none" stroke="#a05a2c" stroke-width="2.4" stroke-dasharray="7 7" opacity="0.85"/>
 <text x="935" y="205" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="2.5" fill="#a05a2c" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE FRONTIER</text>
 <text x="935" y="221" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">moves as fast as the gates behind it</text>
 <line x1="880" y1="250" x2="945" y2="250" stroke="#a05a2c" stroke-width="1.8" stroke-linecap="round"/>
 <polygon points="955,250 943,244 943,256" fill="#a05a2c"/>
-<text x="650" y="533" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="15.5" fill="#4a4234">The frontier: the largest task you can hand off and still trust the result.</text>
+<text x="650" y="533" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="15.5" fill="#4a4234">The frontier: the largest task you can hand off, well designed, enough unclarity removed.</text>
 <text x="1176" y="36" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" letter-spacing="2" fill="#8a3a2a">TWO AXES · FOUR STATES</text>
 </svg>
 </figure>
 
-- Every task you hand off sits on two axes. Reach is how much you delegated: the size of the task, the length of the leash. Calibration is whether your trust in what came back was earned by a check you have verified.
+- Every task you hand off sits on two axes. Reach is how much you delegated: the size of the task, the distance between checks. Calibration is whether your trust in what came back was earned by a check you have verified.
 - Four states fall out. Low reach is chat-shaped work or controlled assistance: you read everything, so trust is not the question yet. High reach splits on calibration alone. Calibrated agency when the gates behind the green are ones you have measured, reckless autonomy when they are not. From outside, the two look identical. The five ways a gate lies are the whole difference.
 - The model limits the difficulty of the challenge you can delegate; the gates limit whether you can trust the result. Useful delegation stops at whichever limit comes first. A stronger model behind an unverified gate still leaves you with work you cannot safely accept.
 - The frontier moves outward only as fast as the gates behind it. Push reach past your calibration and you are not delegating more. You are checking less.

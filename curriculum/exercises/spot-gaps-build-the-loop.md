@@ -90,7 +90,7 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 
 <!-- maintainer -->
 
-**View summary:** You compare the un-packaged and packaged runs, rank what the second attempt still missed, remove one stale rule, and map the work that recurs across your stack. The stack-map feeds the closing handoff move.
+**View summary:** You compare the un-packaged and packaged runs, rank what the second attempt still missed, cut one stale rule from your rules-file, and draw the work that recurs across your stack. The stack-map feeds the closing handoff move.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain; widget/label chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. (The three bolded shape handles that survived that pass left with the 2026-08-01 authoring-sequence cut.)
 

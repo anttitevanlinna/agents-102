@@ -48,6 +48,7 @@ Let's go.
 **Lecture meta:** *~3 min opener for Module 1, before the wizard-move demo. Sets the two open questions the training answers by accretion through M1–M6.*
 
 **Meta:**
+- **Time:** ~3 minutes.
 - **Role:** opener. First lecture of M1; lands stance + two-frontiers framing before the wizard-move demo and the exercises.
 - **Mood target:** recognition. Stance is now the load-bearing part. No doom, no hype.
 - **Voice:** Godin for tool/taste; Boris-flat on wizard; the mirror carries the stance.

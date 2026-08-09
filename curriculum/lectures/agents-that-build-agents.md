@@ -61,6 +61,8 @@ The training closes. The flywheel does not.
 
 **Lecture meta:** *5–7 min reading, closer-shaped. Lands as the very last teaching beat in Module 6, immediately after* The map filled in *(the penultimate consolidation beat). It picks up that lecture's "next dashed loop is yours to draw solid" hand-off and draws the loop solid; the flywheel was named two beats earlier in* The loop has a name *before it. Voice: Risto-leading (the optimistic-action-on-the-future register Module 6's mood arc warrants), Boris-grounding (the prompt is concrete and runnable), Martin-spare (the move + its alternative — collaboration, not autonomous-agent fantasy). Sutherland surfaces in the *what this is not* slide. Pedagogical bet: the flywheel survives the model; naming it as collaboration, not autonomy, is what keeps it survivable.*
 
+**Time:** 5–7 minutes.
+
 **Placement:** Module 6 closer chain — Human close → The loop has a name → The map filled in → Agents that build agents (dead-last) → Next. Re-sequenced 2026-07-03 (Antti): The map filled in now sits between The loop has a name and this lecture, so this lecture picks up The map filled in's kicker *"the next dashed loop is yours to draw solid."* The loop has a name's kicker was updated in the same pass to *"The loop feeds itself. That is the flywheel, and it starts with what you encoded today."*
 
 **Why a separate lecture, not an extension of *The loop has a name*:** the closing lecture earns the word *eval* from the M5 verifier and the ranked check-menu. That earning beat needs to land cleanly. Adding a flywheel-extension slide dilutes the earning. The flywheel is its own move, named separately.

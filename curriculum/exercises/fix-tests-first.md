@@ -67,7 +67,8 @@ Hand off to the ticket close.
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (tests-first fix) + Analyze (read the diff against what you'd write).
-- **Time:** 25 min inside M1's 2h slot. Second of four exercises on the same bug / same repo. Earlier 35–40 min band assumed a meatier bug than prework's trivial-bug spec (under 50 lines, wrong error message / off-by-one / wrong total) actually invites — recalibrated 2026-05-15 after AE101 dry-run flagged the budget as padded.
+- **Atomic — no phase markers.** One TDD loop, start to PR; splitting it would name beats the student does not experience as separate. Line 3 is authored, not generated.
+- **Placement:** second of four exercises on the same bug / same repo. The band assumes prework's trivial-bug spec: under 50 lines, wrong error message / off-by-one / wrong total.
 - **Prompt progression note:** the commit / push / PR move is intentionally prose-led, not a fenced prompt block. At this point the Builder is already in the repo with the fixed diff in context; the student can ask in their own words. Do not add a paste-ready commit prompt unless the exercise design changes.
 
 <!-- backing -->

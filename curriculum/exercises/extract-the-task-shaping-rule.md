@@ -12,6 +12,8 @@
 
 ## Phase 1: Name the rules from this session
 
+*5 min*
+
 - You already did the work; now name the rules inside it. You ran a plan, two push-backs, a second-pass walk-down, and an approval. Each decision along the way carried a task-shaping rule about what made this task plan-mode-able.
 - You are not on the hook for remembering it. The agent reads the scrollback; you react to what it proposes. The scrollback is the right source here: the question is how you worked, not what is on disk.
 
@@ -26,6 +28,8 @@ Ask Claude to read the scrollback, propose rules, and pause for your push-back b
 - The generic rule is the tell. The rule that arrives generic, like "pick tasks that span multiple files," is the one that needs rewriting into your words, or rejecting.
 
 ## Phase 2: Pick where the file fires
+
+*4 min*
 
 - The choice is when the rules fire, not where the bytes sit. Anywhere on this laptop (user-level), or only when this repo is open (repo-personal).
 - Claude carries the path taxonomy; you carry the choice.
@@ -42,6 +46,8 @@ Decide the location with Claude.
 - Read the three rules back. If any drifted from your wording, push back and have Claude rewrite.
 
 ## Phase 3: Name the automation shapes, don't build them
+
+*3 min*
 
 - The prompt asks for shapes, not code. "This rules file" means the `.md` file you saved in Phase 2. The first automation attempt points an agent at that file and one input stream: a Slack channel, an issue queue, or a backlog export.
 
@@ -79,7 +85,7 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (P1 surface) + Evaluate (P1 reject/rewrite) + Understand (P3 read shapes)
-- **Exercise time band:** 12 min inside the wider M2 slot (Connections 10 / Lecture A 8 / Exercise A 50 / Exercise B 12 / Lecture B 5 / soft-compound 3 / Debrief 7 / Bridge 5 + buffer to 1h45). Sits AFTER `push-back-on-the-plan` and BEFORE the optional plan-reading-rule soft-compound. Two compound moves now close M2 with different scopes: this exercise captures task-shaping rules to a free-choice `.md`; the soft-compound integrates one plan-reading branch into `CLAUDE.local.md` if one earned itself.
+- **Placement:** inside the wider M2 slot — `node scripts/calculate-time.js plan-mode-done-right` for the current map; this file owns only its own `**Time:**` line. Sits AFTER `push-back-on-the-plan` and BEFORE the optional plan-reading-rule soft-compound. Two compound moves now close M2 with different scopes: this exercise captures task-shaping rules to a free-choice `.md`; the soft-compound integrates one plan-reading branch into `CLAUDE.local.md` if one earned itself.
 - **Mood target:** extension of grounded competence into capture-and-name. Student leaves: *"the rule sits in MY file at MY location; I see how this could automate; I'm not building it today — and that's the move."*
 - **Strategic beat:** *capture-your-world* (theme #5) made concrete via free-choice location; *non-agentic-default* (theme #6) made concrete via deferred application. The M2 discipline ("approve, don't execute") applied one layer up ("save, don't automate").
 - **Non-front-running checks:**

@@ -54,7 +54,8 @@ You can close this session now. `./CLAUDE.local.md` stays behind; whether it ear
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read the retro summary against session moments) + Apply (integrate the rules file from evidence).
-- **Time:** 15 min inside M1's slot. Fourth of four in-class exercises on the same bug / same repo, and the module's last beat before the closing lectures.
+- **Atomic — no phase markers.** One retro pass into one rules file; the push-back and the second sweep are moves inside it, not beats beside it. Line 3 is authored, not generated.
+- **Placement:** fourth of four in-class exercises on the same bug / same repo, and the module's last beat before the closing lectures.
 
 **Themes planted** (content-strategy § "Recurring themes"):
 - **Theme 2 (compounding builds the system)** — the retro extends `./CLAUDE.local.md` from session evidence. Klaassen attribution earned here (Claude cites the practitioner if one fits).

@@ -2,20 +2,24 @@
 
 **Time:** 60 minutes.
 
-**What you do:** take a real multi-file task from your backlog, run it through plan mode, push back twice with what you can see, then hand the plan to a second agent for a deeper read. Approve the plan. **Stop.** Don't execute. Compare what your read caught to what the second-pass read caught. That gap is the skill this module is building.
+**What you do:** take a real multi-file task from your backlog, run it through plan mode, push back twice with what you can see, then start a full second-pass grilling. Keep the questions that materially sharpen the plan. Approve the plan. **Stop.** Don't execute. Compare what your read caught to what the second-pass read caught. That gap is the skill this module is building.
 
-**What you build:** two reads paired on one plan. Your own two push-backs, in your voice. A second-pass walk-down, three questions at a time. Together they make a plan you can approve without rubber-stamping it.
+**What you build:** two reads paired on one plan. Your own two push-backs, in your voice. A second-pass walk-down, three questions at a time. Together they sharpen the plan until you judge it good enough to generate.
 
-**The point:** two reads, paired. Making the plan good is the work.
+**The point:** two reads, paired. Claude supplies the pressure; you decide when the plan is ready.
 
 ---
 
 ## Phase 1: Bring a real task
 
+*5 min*
+
 - Bring a task that spans a few files, with enough execution depth to make plan mode worth using. A feature slice, a small migration, a targeted refactor: something where touching the wrong file matters. A one-line fix is too small for plan mode; a refactor whose outcome you can't hold in your head is too big.
 - If nothing fits, ask Claude to surface three candidates from recent issues, PRs, or TODO comments. Pick the one you'd ship today if you had an hour.
 
 ## Phase 2: Enter plan mode and ask for the plan
+
+*15 min*
 
 - Shift+Tab until the status bar shows plan. Ask Claude to plan the task you'll drop after the colon: what, why, the one constraint you care about most.
 - You ask; the agent drafts. You are not writing the plan. Plan mode explores the codebase and drafts the steps; your job starts when it pauses for approval.
@@ -24,21 +28,23 @@
 
 Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. While Claude works, take in the side material that fits the wait: the [Multi-session and Git: survival guide](trainings/agentic-engineering-101/reference/multi-session-git.md) if you skipped it in the gap, or the plan-mode-at-depth section of [Claude Code for engineers](trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#5-plan-mode-at-depth) for the approval-paths table. When Claude is on a long-running prompt, that's when you take in selected side reading or watch a demo. Wait isn't dead time.
 
-## The plan is the one you read whole
+## Read for the decisions that matter
 
 - M1 named the countermove: never let the agent say everything, take the ranked list first.
-- A plan is the exception. Approval hands it to execution as the whole contract, and a summary of a contract is not a contract.
-- So this read is complete: every step, every file name, every verification. The countermove comes back the moment you approve.
+- A plan deserves more attention than ordinary agent output because approval hands it to generation. That does not make every line equally important.
+- Scan for the decisions most likely to change the work: files, design, assumptions, and verification. Push on the few that matter most. The countermove stays with you after approval too.
 
 ## Read the plan before you push back
 
 - Open the plan file; the chat summary is secondary, the file is the artifact. The agent explores, writes a plan file with a descriptive name (e.g. `migrate-auth-hash-calm-otter.md`), and pauses for approval.
-- Read the whole plan before pushing back. Notice which steps name files and which say "the relevant files." Notice which verification steps could actually fail and which are cosmetic. Notice which assumptions the plan is carrying silently.
+- Scan the plan before pushing back. Notice which steps name files and which say "the relevant files." Notice which verification steps could actually fail and which are cosmetic. Notice which assumptions the plan is carrying silently. Start with the two or three places where a sharper answer would most change execution.
 - Read the tests section carefully. A good plan names the tests before any code; the tests are part of what "done" means, not something you bolt on after. If the tests section is thin or missing, that's a push-back.
 - Notice at what altitude the steps decide. Naming the file is one decision; naming the new function's signature, its types, and who calls it is the design. A step that stops at the file name defers the design to mid-run, and you will not notice. If the steps that matter stop at file names, that's a push-back.
 - When you have two push-backs forming in your head, move on. Don't wait for the clock.
 
 ## Phase 3: Push back twice
+
+*15 min*
 
 - Don't approve yet. At the approval prompt, pick **No, keep planning**. That holds plan mode open and gives you the floor. Send two push-backs on two different axes: one soft item, and one of (assumption · committed change). Your own words, your own concerns.
 - **Soft items:** the step that reads clean but skips over something. *"Update the config"* without which keys. *"Handle migration errors"* without what happens to rows mid-flight. The vagueness isn't a drafting slip; it's where the agent hasn't decided yet.
@@ -53,10 +59,12 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. While 
 
 > **Two messages, then move on.** Two push-backs on two axes, plus one check that the regeneration held, is all Phase 3 asks. A third push-back may be forming. That is fine; it is the second-pass read's job to catch the rest. Send your two, check the revision once, and move to Phase 4.
 
-## Phase 4: Walk down every unresolved branch
+## Phase 4: Start the full walk-down
+
+*15 min*
 
 - Hand the plan to a second agent that reads differently than you do. Still in plan mode: the plan file is the artifact you're walking, and edits to it stay locked while you're in plan mode. Nothing changes until you approve.
-- Ask Claude to walk down every unresolved branch of the plan three questions at a time, recommending an answer for each.
+- The prompt asks Claude to walk every unresolved branch, three questions at a time, with a recommendation for each. That is deliberately more pressure than you may need. Take the questions that sharpen the plan; you remain the stop gate.
 
 {{prompt:push-back-on-the-plan-2}}
 
@@ -70,7 +78,7 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. While 
 
 ## Stop when the read starts reaching
 
-- Typical session: 5 to 12 questions. Stop when the second read starts reaching: a question about something genuinely out of scope, a branch that's already settled, a recommendation you'd accept without thinking. The agent doesn't always know when to stop; you do. The agent incorporates your answers into a sharpened plan. Approve when it reads like your plan.
+- Stop when the plan is good enough to generate: the decisions most likely to change execution are settled, and the next questions are reaching into routine implementation detail, settled ground, or genuine non-goals. The agent can keep walking; you decide when another answer is no longer worth the working memory it costs. Approve when the plan reads like your plan.
 
 > **Timebox check.** When the slot ends, stop. The second-pass walk-down can run deep on a real codebase. If it is still surfacing branches when time is up, take the most recent sharpened plan, approve it, and move to Phase 5. The branches that did not surface today are the ones you will catch when you actually ship the work. The exercise teaches the move. You take the move home.
 
@@ -90,6 +98,8 @@ Then just hit stop.
 
 ## Phase 5: Stop, then name the pattern you ran
 
+*10 min*
+
 - Don't execute the plan. The work of making it good is the exercise. Execution is next module's concern.
 - Out of plan mode now: you approved and stopped, so Claude Code is back to default mode for this last step.
 - Ask Claude to name the design pattern you just ran and compare what the second-pass read surfaced against what your two push-backs caught.
@@ -99,26 +109,26 @@ Then just hit stop.
 ## Compare what each read caught
 
 - The agent answers. The pattern it names should be something like: read the plan yourself, push back on what you can see, second-pass read for what you can't, approve. Two reads, two kinds of scrutiny. You catch what a human catches (specificity, voice-of-experience, "I'd write that differently"). The second read catches what an agent walking a decision tree catches: branches you didn't notice, dependencies you didn't name, side-effects you didn't price.
-- Neither is complete. Paired, they usually are.
+- Neither read needs to be complete. Paired, they surface the sharpenings worth making before generation.
 - **Plan-mode approval inflation** is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions.
 
 ## Keep the session open for the Compound step
 
 - On to the Compound step, and keep this session open for it. The next step reads this same scrollback to pull the task-shaping rules worth keeping. The Compound step then writes one into your personal `CLAUDE.local.md` in a shape you can re-run on your next plan-mode pass. Team-worthy patterns get flagged for a separate PR against team `CLAUDE.md`.
 
-**What happened:** One plan, two reads. Two push-backs in your own words, then a walk-down of the branches they missed. The plan sharpened, approved and unexecuted, and the gap between the two reads is on the record.
+**What happened:** One plan, two reads. Two push-backs in your own words, then a full walk-down you stopped when the valuable branches had landed. The plan sharpened, approved and unexecuted, and the gap between the two reads is on the record.
 
 <!-- maintainer -->
 
-**View summary:** You take a real multi-file task into plan mode, challenge the draft twice, then give a second agent the unresolved branches. The result is an approved plan shaped by two different reads, with execution deliberately left for later.
+**View summary:** You take a real multi-file task into plan mode, challenge the draft twice, then start a full second-agent grilling and stop it when the valuable branches have landed. The result is an approved plan shaped by two different reads, with execution deliberately left for later.
 
 **Design-altitude notice added (2026-07-29, Antti-directed, from Horthy's wsff.md program-design gap):** one bullet in *Read the plan before you push back* teaching the file-list vs interface-level altitude read. Sits above the *Steer up* callout's line (its examples are helpers, variable names, error wording; signatures and callers are design).
 
-**Read-whole exception slide added (2026-07-10, Antti-directed cognitive-load arc):** new chunk *The plan is the one you read whole* before *Read the plan before you push back*. Names M1's never-let-the-agent-say-everything countermove and frames the full plan read as its deliberate exception — protects this module's complete-read pedagogy from the selective-reading arc (M1 teach → M3 take-into-use → M5 remind) instead of colliding with it.
+**Read-whole exception replaced (2026-08-09, Antti-directed cognitive-load correction):** *Read for the decisions that matter* restores M1's never-let-the-agent-say-everything countermove. The copied prompts still offer the full plan and exhaustive branch walk; the body makes that pressure a ceiling, not a completion requirement. The student takes the highest-value sharpenings and remains the stop gate.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** Handles kept bold: the **Stop.** governor in the What-you-do line, the **No, keep planning** approval path, the three push-back axis menu items (**Soft items** / **Assumptions** / **Committed changes**), the coined term **Plan-mode approval inflation** at its naming moment (bold narrowed to the handle), and the law **Find is easier than judge** newly bolded at its naming moment; all other bullet/paragraph leads de-bolded. Widget chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
-**Both optional walk-down escalations are kept (not cut).** `push-back-on-the-plan-2-askuserquestion` (switch to the AskUserQuestion picker) and `push-back-on-the-plan-2-original` (the unfiltered Pocock `grill-me`) are opt-in ceilings on the second read, under the *Stop when the read starts reaching* section. A student keeping it simple skips both, so they add no baseline load and cutting them reclaims none. Not cut candidates.
+**Both optional walk-down escalations are kept (not cut).** `push-back-on-the-plan-2-askuserquestion` (switch to the AskUserQuestion picker) and `push-back-on-the-plan-2-original` (the unfiltered Pocock `grill-me`) are opt-in ceilings on the second read, under the *Stop when the read starts reaching* section. They preserve full-on pressure for a student who wants it; the body makes clear that nobody owes the ceiling. A student keeping it simple skips both, so they add no baseline load and cutting them reclaims none. Not cut candidates.
 
 **What-you-build states the activity only; the second read's value claim lands at the P5 compare beat (maintainer call 2026-08-02).** Line 7 names what the walk-down IS — *three questions at a time* — not what it catches. The claim *catches the branches you can't see* is near-verbatim P5's own expected finding (*"branches you didn't notice"*), so stating it in the opener turns the compare beat into confirmation instead of discovery. It is not cut from the file, it is placed: it lives post-action in *Compare what each read caught*, which is where §53 wants it. Both halves of the compare now stay unstated in the opener. **This reverses an earlier §53 partial-accept** that kept the clause at line 7 as the hook selling the walk-down — do not restore it there.
 
@@ -127,7 +137,7 @@ Then just hit stop.
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat at P5 is the Evaluate beat)
-- **Exercise time band:** 60 min nominal (P1 5 / P2 15 / P3 15 / P4 15 / P5 10); the current M2 map books it at 50 (Connections 10 / Lecture A 8 / Exercise A 50 / Exercise B 12 / Lecture B 5 / soft-compound 3 / Debrief 7 / Bridge 5 + buffer to 1h45; recounted 2026-08-01) — the 10 comes out of P2/P4 agent-wait, which runs while the student reads. The second-pass read (P4) can stretch on real codebases; the buffer absorbs the overflow.
+- **No agent-wait charge.** P4 blocks on the student, and P2's plan-mode wait carries no other budgeted beat — nothing shares those minutes.
 - **Execution-free by design.** The student does not run the code. The exercise is about reading a plan well; execution is M3's concern. When asked *"why don't we execute?"* the trainer answers: *"you've done the work of making the plan good; recognising a good plan is the skill."*
 - **"Stop" repeats across the Approve section and Phase 5 heading — deliberate.** The Approve section closes with *"Then just hit stop."* (operational stop — the student hits stop after approving so plan-mode does not roll into execution). Phase 5's heading opens with *"Stop. See the design pattern."* (pedagogical stop — name the move, do not execute). Same word, two registers, both load-bearing.
 - **Artifact locations — governed by the pre-engagement contract:**
@@ -140,8 +150,8 @@ Then just hit stop.
 <!-- backing -->
 
 Claims
-- `two-reads-paired` · vision · "two reads, paired. Making the plan good is the work." ← none-owed
-- `plan-is-the-exception-to-the-ranked-list` · vision · "Approval hands it to execution as the whole contract, and a summary of a contract is not a contract." ← none-owed
+- `two-reads-paired` · vision · "two reads, paired. Claude supplies the pressure; you decide when the plan is ready." ← none-owed
+- `plan-attention-is-not-equal-attention` · vision · "A plan deserves more attention than ordinary agent output because approval hands it to generation. That does not make every line equally important." ← none-owed
 - `read-the-file-not-the-summary` · vision · "the chat summary is secondary, the file is the artifact" ← none-owed
 - `plan-mode-mechanics` · detail · "Shift+Tab until the status bar shows plan" ← cc-permission-modes
 - `keep-planning-with-feedback` · detail · "At the approval prompt, pick **No, keep planning**." ← cc-permission-modes
@@ -151,11 +161,10 @@ Claims
 - `assumption-push-back-is-wwhtbt` · borrowed · "something the plan is carrying silently that it shouldn't" ← martin-wwhtbt
 - `re-softening-on-regeneration` · vision · "it can make the wrong choice and tell you, in nice words, that the problem is gone" ← none-owed — maintainer frame near-verbatim; the report-back grain-of-salt is M1's self-report-is-a-hypothesis recalled at point of use.
 - `find-is-easier-than-judge` · vision · "**Find is easier than judge.**" ← none-owed
-- `walk-down-branches-three-at-a-time` · borrowed · "walk down every unresolved branch of the plan three questions at a time, recommending an answer for each" ← pocock-grill-me
-- `stop-when-the-read-starts-reaching` · vision · "Stop when the second read starts reaching" ← none-owed
-- `typical-five-to-twelve-questions` · vision · "Typical session: 5 to 12 questions." ← none-owed
+- `full-grilling-is-an-offer` · borrowed · "The prompt asks Claude to walk every unresolved branch, three questions at a time, with a recommendation for each. That is deliberately more pressure than you may need." ← pocock-grill-me
+- `human-is-the-stop-gate` · vision · "The agent can keep walking; you decide when another answer is no longer worth the working memory it costs." ← none-owed
 - `pocock-credit` · detail · "Credit: Matt Pocock for the original [`grill-me`](https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md) skill." ← pocock-grill-me
-- `neither-read-is-complete-paired-they-are` · vision · "Neither is complete. Paired, they usually are." ← none-owed
+- `paired-reads-surface-sharpenings` · vision · "Neither read needs to be complete. Paired, they surface the sharpenings worth making before generation." ← none-owed
 - `plan-mode-approval-inflation` · vision · "**Plan-mode approval inflation** is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions." ← none-owed
 - `compound-step-writes-the-rule` · borrowed · "The Compound step then writes one into your personal `CLAUDE.local.md`" ← klaassen-definitive-guide
 
@@ -192,7 +201,7 @@ Flagged
 - **P3 softening on regeneration.** Claude accepts a push-back, regenerates, but re-softens the step in the new plan (Claude's RLHF-niceness tell). Diagnostic: revised plan reads no sharper than original on the flagged step. Fix: student says *"you softened it — step 5 still says 'update config' without which keys. Be specific."* Teaches that push-back isn't one-shot; push-back is a check on the revision too.
 - **P3 timer abuse.** Student spends 15+ min reading before sending any message. Diagnostic: past 10 min, zero push-back messages. Fix: *"send what you've got and approve. The discipline is the 10-minute read, not the complete read."*
 - **P3 senior-refusing-the-forcing-function.** Strong senior student refuses to produce three push-backs because the plan is genuinely clean. Diagnostic: they defend the plan with specifics. Fix: let them — the defense IS the read. Ask them to send one sentence per axis defending why the plan is tight there, instead of producing push-backs on auto-pilot.
-- **P4 drift.** Agent expands scope mid-execution. Common on real codebases. Diagnostic: files touched not in plan. Fix: stop, point at plan, resume.
+- **P4 over-answering.** Student keeps answering after the walk-down stops changing the plan. Diagnostic: the latest question only chooses a helper, variable name, or error wording. Fix: *"what would the next answer still change in execution? If nothing material, lock it in. If one branch still matters, take that one."*
 - **P5 deflection.** Student says *"my push-backs didn't really change anything"* as self-deprecation. Diagnostic: was this a comment on their push-back quality or on Claude's execution? Probe which. If the push-back was thin, that's the teaching moment for M3 (they'll build a judge around exactly this).
 
 **Decision points:**
@@ -213,7 +222,7 @@ Flagged
 - **P3 performative:** if push-back messages appear in under 3 min without step numbers or specific concerns, trainer asks for specificity — *"which step, which words? say the thing you'd want a senior reviewer to catch."*
 - **P3 softening:** if Claude's regenerated plan is no sharper than the original on a flagged step, trainer push: *"did Claude actually sharpen it, or did it acknowledge and re-soften? push back again."*
 - **P3 senior refusal:** if student defends the plan as tight and refuses to produce forced push-backs, accept it — ask for a one-line defense per axis instead of push-backs on auto-pilot. The defense IS the read.
-- **P4 tab-away:** fast operators will tab away during execution. Trainer stays silent unless Claude pauses and the student misses the pause.
+- **P4 over-answering:** if the student keeps consuming low-value questions because the prompt can continue, trainer asks *"what would the next answer still change in execution?"* Nothing material → lock it in. One material branch → take that one, then stop.
 - **P5:** stay silent until Claude names the shape. Then the trainer says the label — "plan-mode approval inflation" — one line. The corollary (*find is easier than judge*) is in the exercise body and lands the non-obvious beat.
 
 **Arc:**

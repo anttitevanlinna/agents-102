@@ -1,6 +1,6 @@
 # Two windows on one codebase
 
-**Time:** ~5 min
+**Time:** ~5 minutes.
 
 Module 3 runs in two windows. Security is the main quest in your chosen repo. Quality is a side-quest in a sibling worktree.
 
@@ -61,9 +61,9 @@ Ask Claude to fork a sibling worktree and copy your personal rules across. The p
 **Quality:** compendium-audited 2026-08-02 (writing@1c765f2 story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@1c765f2)
 - judges @1c765f2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
-**Time:** ~5 min.
+**Atomic — no phase markers.** A single `git worktree add` and a second window; too short to have an inside. Line 3 is authored, not generated.
 
-**Phase:** Module 3 opener, before *Map the access surface*.
+**Placement:** Module 3 opener, before *Map the access surface*.
 
 **Pedagogical role:** First felt multi-session moment in AE101. Introduces no new primitive. Packages M3's existing Q+S split into two windows so the side-quest is visibly waiting during S exercises. Side-quest converges when the authored test-strategy skill installs to `~/.claude/skills/test-strategy/SKILL.md` (user scope) and crosses worktrees freely; the main lane's read on it is a later, separate step, not a re-invocation.
 

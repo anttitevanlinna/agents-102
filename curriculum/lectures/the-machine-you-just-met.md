@@ -106,6 +106,7 @@ Format → `curriculum/backing-format.md`.
 **Lecture meta:** *~5 min closer for Module 1, after the exercises and before `how-this-training-was-built`. Recognition pace: names the machine tendencies the exercises already surfaced.*
 
 **Meta:**
+- **Time:** ~5 minutes.
 - **Role:** closer (meta-frame: names a pattern the student just lived, `check_lectures §1`).
 - **Mood target:** recognition. The machine did what it was built to do, and the session can steer it. No doom.
 - **Voice:** Boris-flat on the training mechanics and the arithmetic; Sutherland for the mirror reframe; no Risto lead (recognition beat, not send-off).

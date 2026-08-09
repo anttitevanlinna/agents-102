@@ -52,6 +52,8 @@ Surface where the tool list comes from, and what it leaves out.
 
 **Meta:** *M4 teaching lecture, ~5 minutes projected. Audience: the engineer about to send a multi-hour task off in this same session. The three prompts demonstrate the loop on the student's live session; that's the teaching move — the anatomy slide is scaffolding for the prompts, not the lesson.*
 
+**Time:** ~5 minutes.
+
 **Voice:** Boris-flat technical (mechanism description, not framing).
 
 **Watch-fors (delivery):**

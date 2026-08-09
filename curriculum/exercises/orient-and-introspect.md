@@ -72,7 +72,8 @@ Run `/context` to see how much of the window is used and what fills it.
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read Claude's self-report against `/context`).
-- **Time:** 15–20 min inside M1's 2h slot. First of three exercises on the same bug / same repo.
+- **Atomic — no phase markers.** One conversation with the agent; the interrogation has no seam to cut on. Line 3 is authored, not generated.
+- **Placement:** first of four exercises on the same bug / same repo.
 
 **Themes planted** (content-strategy § "Recurring themes"):
 - **Theme 3 (mirror)** — Claude's read reflects the student's prompt back at them.

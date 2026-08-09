@@ -20,7 +20,7 @@ After this module, you will be able to:
 ## How we work in this room
 
 - **All learners.** Trainers included. The field moves fast, and everyone struggles to keep up.
-- **Exercises.** That is how you experience what the model actually does.
+- **Exercises.** Do them. That is how you experience what the model actually does.
 - **Share and discuss.** Detours and banter are welcome. The trainer will bring us back.
 
 ## Freedom to choose
@@ -95,8 +95,9 @@ Optional. All four sit in the gap before it. Do them and its moves land as thing
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze
-- **Session runtime:** ~1h48 in the 2h slot (Opening 10 / Lectures 10 / Exercise 78 / Closers 5 / Bridge 5), leaving ~12 min of buffer. The two room-agreement slides and Connections trick-share share the opening allocation. Trainer demos slowly, room copy-pastes concurrently. Exercise breakdown: orient-and-introspect 18 / fix-tests-first 25 / close-the-ticket 20 / compound-and-close 15. Every number is that exercise file's own Time line. If this sum and those lines ever disagree, the files win and this line is the one to recompute. M1 is the training's only module outside the M2–M6 1h45 band, and the four-exercise arc is what fills it.
-- **Prep timing:** prework 30 min; optional progression page 2 min; optional Cherny video 30 min; optional multi-session reference 10 min; optional factory essay 15 min.
+- **Pacing:** Runtime is computed — `node scripts/calculate-time.js getting-going`. The two room-agreement slides and the Connections trick-share share the opening allocation. Trainer demos slowly, room copy-pastes concurrently. M1 is sold into a longer slot than the rest of the arc, and the four-exercise arc is what fills it.
+- **Transitions:** opening 10 @start "Opening: two room-agreement slides + trick-share" · bridge 5 @end "Bridge"
+- **Prep timing:** prework 30 min; optional progression page 4 min; optional Cherny video 30 min; optional multi-session reference 10 min; optional factory essay 15 min.
 - **Mood target:** joyful creation — *"it works, on my repo."* Watch for: mood drift toward technical warm-up (the bug feels arbitrary, the loop feels mechanical, "this is just a TDD fix I do anyway"). Diagnostic: student narrates Ex2 as a generic engineering move with no surprise. Fix: trainer surfaces the agentic specificity — *"the loop you just ran was orient → fix → close → compound on YOUR repo, with a close-out written in your team's own register and a rules file born from how YOU just worked. That's not a bug fix; that's the instrument starting to play your music."*
 - **Opening-bid install mechanic:** the wizard-move lecture's live demo (the dinner-question context trick, in claude.ai chat windows — deliberately not code) installs the mood → Connections harvests tricks each student brought → Ex1 (orient-and-introspect) each student runs the orient + introspect move on their own repo → Ex2 (fix-tests-first) TDD bug fix, ship the PR → Ex3 (close-the-ticket) read the team's tracker conventions off one real ticket, close the bug's ticket in that register → Ex4 (compound-and-close) compound `./CLAUDE.local.md` from session evidence, the tracker read included. No separate module-level Debrief.
 - **Delivery architecture** (content folder, working-dir model, compounding-artifact split, no training-dir state): canonical in `training-architecture.md` §Working directory model / §Material distribution / §Rule files. Not restated here. The four-layer rule-file hierarchy is in `reference/claude-code-for-engineers.md § 1`.
@@ -157,5 +158,5 @@ The shipped PR and the closed ticket are both produced this module and both live
 - **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (Every Inc.) [practitioner direct, vendor venue]. Cite this URL for the term and the each-unit-makes-the-next-easier thesis, never for a step count: the step names live elsewhere and the loop's staging moves; Ex4's compound summary prints the current sequence, whose stamps live in `exercises/compound-and-close.md`, while this URL's own stamp is delegated per the Source verification block above. Attributed inside Claude's Ex4 compound summary, not in a lecture.
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
 
-**Quality:** compendium-audited 2026-08-08 (writing@f9b9406 story@f9b9406 technical@f9b9406 behavior@f9b9406 pedagogy@f9b9406 strategy@f9b9406 slides@f9b9406)
-- judges @f9b9406: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-09 (writing@346bd3b story@346bd3b technical@f9b9406 behavior@f9b9406 pedagogy@346bd3b strategy@346bd3b slides@346bd3b)
+- judges @346bd3b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -261,6 +261,25 @@
     // `{{cut:}}` as an equivalent reference (a cut candidate is still "used").
     var PROMPT_CUT_RE = /^\{\{cut:([a-z0-9-]+)(?:\|([a-z0-9-]+))?\}\}[ \t]*$/gm;
 
+    // Runtime-map marker: `{{runtime-map:<module-slug>}}` on its own line,
+    // expanded by expandTimings(). Sibling of `{{prompt:}}` — same alone-on-a-line
+    // rule, same strict-mode throw on an unresolved key — but the block it emits
+    // is COMPUTED, not looked up in a registry of authored text.
+    //
+    // Every duration in the emitted table comes from the leaf that owns it (an
+    // exercise or lecture file's `**Time:**` line) plus the module's own
+    // `**Transitions:**` line; the elapsed and clock columns are running sums.
+    // Nothing is stored, so nothing can drift — the failure this replaces was a
+    // hand-maintained table whose three columns had to be re-added by hand on
+    // every edit, and which collapsed one range two different ways in one row.
+    //
+    // Trainer-only by design: trainer-modules.md is on the content tarball's
+    // exclusion list, so this marker never reaches a student. A module file that
+    // ships WOULD carry the marker raw (the tarball copies .md bytes and there is
+    // no timings registry shipping alongside the way curriculum/prompts/ does),
+    // so keep runtime-map markers out of shipped files until that path exists.
+    var RUNTIME_MAP_RE = /^\{\{runtime-map:([a-z0-9-]+)\}\}[ \t]*$/gm;
+
     // Covered-region markers: `{{covered:<slug>#<anchor>}}` … `{{/covered}}`,
     // each alone on its own line with blank lines around them. Sibling of
     // `{{cut:}}` but for PROSE spans, not prompt refs: wraps a passage whose
@@ -595,6 +614,36 @@
         }
         var fence = '```\n' + text + '\n```';
         return label + '\n\n' + fence;
+    }
+
+    // Replace every `{{runtime-map:<module-slug>}}` line with that module's
+    // computed runtime map.
+    //
+    // `maps` is an object: module-slug -> already-rendered markdown. This module
+    // is fs-free (it is shared with the browser SPA), so the CALLER computes and
+    // passes the maps in — the same contract expandPrompts uses for its registry.
+    // scripts/calculate-time.js owns the arithmetic; there is exactly one
+    // implementation and the CLI and the build both call it.
+    //
+    // Strict mode throws on an unknown slug so a typo fails the build rather than
+    // shipping a trainer handbook with a literal `{{runtime-map:foo}}` in it.
+    function expandTimings(md, maps, opts) {
+        if (!md || !maps) return md;
+        var unresolved = [];
+        var out = md.replace(RUNTIME_MAP_RE, function (match, slug) {
+            if (!Object.prototype.hasOwnProperty.call(maps, slug)) {
+                unresolved.push(slug);
+                return match;
+            }
+            return maps[slug];
+        });
+        if (opts && opts.strict && unresolved.length) {
+            throw new Error(
+                'expandTimings: unresolved {{runtime-map:<slug>}} marker(s): ' +
+                unresolved.map(function (k) { return '{{runtime-map:' + k + '}}'; }).join(', ')
+            );
+        }
+        return out;
     }
 
     // Replace every `{{prompt:<key>}}` line in `md` with the canonical block
@@ -1345,6 +1394,8 @@
         renderPromptBlock: renderPromptBlock,
         expandPrompts: expandPrompts,
         PROMPT_INCLUDE_RE: PROMPT_INCLUDE_RE,
+        RUNTIME_MAP_RE: RUNTIME_MAP_RE,
+        expandTimings: expandTimings,
         extractParent: extractParent,
         extractBigIdea: extractBigIdea,
         escapeTildes: escapeTildes,

@@ -1,6 +1,6 @@
 # Author your test-strategy skill
 
-**Time:** 18–22 minutes.
+**Time:** 20 minutes.
 
 **Window:** the side quest window (*m3-quality*). All phases run here.
 
@@ -16,6 +16,8 @@
 
 ## Phase 1: Author the skill through conversation
 
+*12 min*
+
 - Skills aren't hand-crafted; they're authored through conversation. You describe your codebase; the agent drafts the SKILL.md. You are not typing markdown into an editor.
 - The ship destination is your personal skills folder. `~/.claude/skills/test-strategy/SKILL.md`, auto-discovered in every session you run, across every repo.
 - A test-strategy skill is team-shaped by nature, but it ships personal first. It encodes codebase conventions teammates share. The reasons for personal-first land in Phase 3; the team PR is a follow-up move that starts with a human conversation.
@@ -30,6 +32,8 @@ Ask Claude to author the skill, asking one question at a time.
 - Push back when Claude offers a default you don't like. *"No, we don't mock the database; integration tests run against a real Postgres in Docker."* The push-back is where the skill gets its codebase truth.
 
 ## Phase 2: Invoke the skill on this codebase
+
+*6 min*
 
 - Authoring without invocation is theatre. The skill proves itself only when it runs on real code.
 - The skill is auto-discovered right here. It sits at `~/.claude/skills/test-strategy/SKILL.md`, and this worktree holds the full codebase. Invoke it on the code as it stands in front of you.
@@ -48,6 +52,8 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 - Then decide: one re-invoke, or ship with a TODO. Re-invoke if the sharpen was substantive. Otherwise ship with a one-line TODO at the top naming what's unresolved. A skill that names its own gap is more useful to a teammate than one that pretends it's finished. The authoring muscle is what Module 3 installs.
 
 ## Phase 3: Ship the skill personal-first
+
+*2 min*
 
 - The skill is already shipped. It sits at `~/.claude/skills/test-strategy/SKILL.md`. The agent wrote it there in Phase 1, sharpened by your push-back during Phase 2's invoke-and-critique. Auto-discovered in every session you run. That's the ship.
 
@@ -78,7 +84,6 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**
-- **Time:** 18–22 minutes (12 / 6 / 2)
 - **Primary Bloom's level:** Create + Evaluate
 - **Mood target:** earned trust, culminating. Student leaves with *"I authored a skill, I invoked it on my codebase, I sharpened it from what came back, I shipped it somewhere my teammates read."* Watch for: default-acceptance failure (student ships Claude's first draft verbatim). Diagnostic: skill file has generic testing advice. Fix: trainer pushes at the pyramid-dressed-as-codebase-specific question during Phase 1 and at the invoke-and-critique in Phase 2.
 

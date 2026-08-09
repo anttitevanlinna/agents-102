@@ -73,7 +73,7 @@ The field rules stay in the scrollback. The next exercise sweeps this whole sess
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read conventions off one ticket) + Apply (write and land the close-out).
-- **Time:** 20 min inside M1's slot. Beat split: read the ticket 3 / conventions 5 / push-back 4 / close-out 5 / read and ship 3.
+- **Atomic — no phase markers.** Line 3 is authored, not generated.
 - **Delivery architecture** (working-dir model, no training-dir state): canonical in `training-architecture.md`. Not restated here.
 - **Session continuity:** runs in the same M1 session as the fix and the PR, so *"the bug we just fixed"* resolves from warm scrollback.
 

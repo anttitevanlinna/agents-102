@@ -39,6 +39,7 @@ const { marked } = require('marked');
 
 const ROOT = path.resolve(__dirname, '..');
 const CR = require(path.join(ROOT, 'site/layouts/curriculum.js'));
+const CT = require(path.join(ROOT, 'scripts/calculate-time.js'));
 const { loadRegistry, writeRegistry, OUT_FILE: PROMPTS_JSON } = require('./compile-prompts.js');
 
 // Wire heading-id generation into marked so cross-doc anchor links
@@ -646,6 +647,28 @@ const TRAINER_MODULES_TAB_JS = `
 })();
 `;
 
+// Computed runtime maps, keyed by module slug, for `{{runtime-map:<slug>}}`.
+// Cached per training: one filesystem walk, however many markers the handbook
+// carries. The default shape is the sold cohort shape — the clock column only
+// means anything against a scheduled start.
+const RUNTIME_MAP_CACHE = {};
+function runtimeMaps(trainingKey, shape) {
+  const key = trainingKey + '|' + (shape || 'cohort-2day');
+  if (RUNTIME_MAP_CACHE[key]) return RUNTIME_MAP_CACHE[key];
+  const maps = {};
+  try {
+    const r = CT.computeTraining(trainingKey);
+    for (const m of r.modules) maps[m.slug] = CT.renderRuntimeMap(m, shape || 'cohort-2day');
+  } catch (e) {
+    // A training with no timings.md simply has no maps; a handbook that does not
+    // reference one still builds. A handbook that DOES reference one then fails
+    // in expandTimings' strict mode, naming the marker — which is the error the
+    // author needs, rather than a stack trace from here.
+    if (process.env.DEBUG) console.error(`runtimeMaps(${trainingKey}): ${e.message}`);
+  }
+  return (RUNTIME_MAP_CACHE[key] = maps);
+}
+
 function buildTrainerModules(customer, trainingKey) {
   // A variant cut reads its parent's handbook, the same way its workbook reads
   // the parent's module files, and trims it with the content flags in that
@@ -660,6 +683,9 @@ function buildTrainerModules(customer, trainingKey) {
   let md = readMd(srcPath);
   if (md === null) return null;
   md = CR.applyContentFlags(md, raw.flags, (t.modules || []).map(m => m.slug));
+  // Runtime maps are computed, never stored. Expanded BEFORE escapeTildes so the
+  // emitted `~5` figures get the same tilde treatment as authored prose.
+  md = CR.expandTimings(md, runtimeMaps(contentKey), { strict: true });
   md = escapeTildes(md);
   // Same cross-doc link rewrite as the trainer guide: a `.md` ref into the
   // workbook becomes an absolute-to-this-dir anchor. The page's own

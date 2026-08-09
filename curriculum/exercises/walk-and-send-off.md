@@ -1,6 +1,6 @@
 # Walk and *send off*
 
-**Time:** 55 minutes inside a 1h45 module slot (Phases 1–2, breakdown: pick 10 / walk-and-fill 45). The send-off (~5 min, single prompt paste) closes the module after this exercise.
+**Time:** 55 minutes.
 
 **Session** *(new, "Module 4 - Run the first experiment")*
 
@@ -22,6 +22,8 @@ Start clean. The task here is bigger than anything so far. Before the new sessio
 
 ## Phase 1: Pick the task you'll send off
 
+*10 min*
+
 - A real slice you'd send off rather than nudge bit by bit, with a 'done' you can name in a sentence. Bigger than a typo-fix, smaller than an epic.
 - The pick is yours; the fit-check is the agent's. You are not on the hook for scanning your roadmap or Jira; that stays with you. Bring one or two candidates; the agent screens them for fit against the three long-run criteria.
 
@@ -36,6 +38,8 @@ Ask Claude to screen the candidates you bring against the three long-run criteri
 - Pick one task well. You'll use it again next module.
 
 ## Phase 2: Build the ranked list of what will hurt the agent
+
+*45 min*
 
 - The audit walks your whole system so you don't. The agent reads `CLAUDE.md`, `CLAUDE.local.md`, memory, ADRs, and any skills you've authored as a subagent, then ranks the five thin spots that will hurt the agent most on this task.
 - Heavy audit expected. Skim past the opening summary; the ranked thin-spots list is the payoff. If the ranked list comes back thin, push Claude to keep digging rather than letting a shallow pass stand as done.
@@ -102,7 +106,7 @@ The exercise ends here. The module's send-off takes over:
 
 **Word count:** ~750 words body.
 
-**Time budget total:** 60 min exercise body. Module Debrief + send-off adds 15–20 min.
+**Placement:** the send-off closes M4 after this exercise. This file's own `**Time:**` line at the top is the only duration it owns; the module total is computed — `node scripts/calculate-time.js run-the-first-experiment`.
 
 <!-- backing -->
 

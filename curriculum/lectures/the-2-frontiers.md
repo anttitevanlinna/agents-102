@@ -18,6 +18,7 @@
 **Lecture meta:** *~2 min opener for Module 6, before "Story of Module 6." Echoes Module 1's "Painting the picture" closer — same two frontiers, recurring at the capstone open. The recurrence is the point. One slide IS the lecture.*
 
 **Meta:**
+- **Time:** ~2 minutes.
 - **Role:** opener. Recap + horizon. Does not teach a new term.
 - **Mood target:** practitioner fluency open — *"I've come a long way; the frontier is still open."*
 - **Voice:** Boris-flat recap; Risto-forward on the horizon; Sutherland-shaped on the open questions.

@@ -27,6 +27,8 @@ You have a `.md` file with three to five rules about how multi-file tasks want t
 
 **Lecture meta:** *Meta-frame closer, now deck-shaped. ~3 min reading-aloud. Forward-looking; voice tilts Risto (Siilasmaa) on slide 2 — points at what becomes possible, cues the move now. Mood-arc check: M2 is grounded competence — Risto-tilt appropriate at the closer; the lecture defers application rather than promising it. Slide 2 is the naming beat, placed AFTER the shapes so it lands as recognition (`check_lectures §1`).*
 
+**Time:** ~3 minutes.
+
 **Attribution discipline:** the three shapes ship un-attributed in body. Reasoning: at M2 the cohort is two modules in and hasn't met the practitioners yet; name-dropping reads as authority-borrowing rather than crediting. The deeper attributions land where they're earned: Klaassen + Every's compound-engineering anchor across M5–M6; Ronacher's reference-artifact pattern at M5's verifier build. Per `check_writing.md` #11. Closer beat *"agents build agents"* is Antti's verbatim frame — kept per `check_writing.md` #10.
 
 **Earned-landing map (attribution deferred from body):** compound engineering lands by name at M5–M6; the durable-artifact discipline lands at M5's verifier build. Provenance, stamps and the two attributions this file used to carry wrongly now live in the backing block below — read that before re-crediting either shape to a practitioner.

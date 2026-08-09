@@ -3,7 +3,7 @@
 > Run this module on medium thinking effort. High and xhigh may feel sluggish on a tight slot like this one.
 
 ## Big Idea
-Reading a plan is finite. Your own read catches some of it, a second agent walking the decision tree catches the rest. Push back with what you see; run a second-pass read for what you can't. Paired, they give a complete read; neither alone does.
+A second-pass grilling can press a plan harder than you need to consume. Your own read catches the decisions your codebase experience makes visible; the agent starts walking the branches you may not see. Keep the highest-value sharpenings. Stop when the plan is good enough to generate.
 
 ## Prework
 
@@ -119,8 +119,10 @@ This module points at four sources in body and owned a stamp for none of them; t
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat is the Evaluate beat)
-- **Session runtime:** 1h45 (Connections 10 / Lecture A 8 / Exercise A 50 / Exercise B 12 / Lecture B 3 / soft-compound 3 / Debrief 7 / Bridge 5 + 7 buffer; recounted 2026-08-01, Lecture B per its own file's ~3-min Time line). Trainer demos slowly, room copy-pastes concurrently — fits 1h45 in-class. Self-study follow-along runs comparably; simple-prompting beats are quick.
-- **Prep timing:** backlog-task surfacing 10 min; optional Cherny video 30 min; optional multi-session reference 10 min; Module 3 pre-read 10–15 min; optional OWASP scan 20 min.
+- **Pacing:** Runtime is computed — `node scripts/calculate-time.js plan-mode-done-right`. Trainer demos slowly, room copy-pastes concurrently. Self-study follow-along runs comparably; simple-prompting beats are quick.
+- **Transitions:** connections 10 @start "Connections: the approved-unread plan" · soft-compound 3 @after:where-the-rule-could-live "Save the rule if it earned itself" · debrief 7 @after:how-instructions-grow "Debrief" · bridge 5 @end "Bridge"
+- **No charge on `push-back-on-the-plan`** — rationale in that exercise's block.
+- **Prep timing:** backlog-task surfacing 10 min; optional progression page 4 min; optional Cherny video 30 min; optional multi-session reference 10 min; Module 3 pre-read 10–15 min; optional OWASP scan 20 min.
 - **Mood target:** grounded competence — *"I can feel when a plan is good before approving it, and I know the move is two reads, not one."* Watch for: mood drift toward *"the second read did everything; my push-back was pointless."* Diagnostic: student at P5 reports the second-pass read caught the interesting stuff. Fix: trainer surfaces the contrast — *"your push-back caught the soft item the second read re-softened; your voice-of-experience beats the agent's breadth on that axis."*
 - **Delivery architecture** (working-dir model, compounding-artifact split, no training-dir state): canonical in `training-architecture.md` §Working directory model / §Rule files. Not restated here. Plan files land in Claude Code's default location; the four-layer rule-file hierarchy is in `reference/claude-code-for-engineers.md § 1`.
 - **Wizard demo:** intentionally none — engineer audience, the lecture carries push-back calibration.
@@ -130,7 +132,7 @@ This module points at four sources in body and owned a stamp for none of them; t
 - **P3 rubber-stamp** — student approves under 60s with no push-back messages. Trainer: *"pick No, keep planning — send one soft item before approving."*
 - **P3 generic push-back** — messages lack step numbers or specific concerns. Trainer: *"which step, which words? say the thing you'd want a senior reviewer to catch."*
 - **P3 softening on regeneration** — Claude acknowledges the push-back but re-softens the flagged step in the revised plan. Trainer: *"did Claude actually sharpen it, or did it acknowledge and re-soften? push back again."*
-- **P4 walk-skip** — student calls the second read done after 2–3 questions. Trainer: *"let the walk-down run until it's out of branches; you don't decide when it's finished."*
+- **P4 value-skip** — student stops after 2–3 questions without judging what remains. Trainer: *"what would the next question still change in execution? If nothing material, lock it in. If one branch still matters, take that one."*
 - **P4 auto-accept** — student accepts every recommended answer without correcting any. Trainer: *"reject at least one recommended answer if it's wrong for your codebase — the second read's recommendations are defaults, not prescriptions."*
 - **P5 deflection** — student reports *"the second read did all the work, my push-back was pointless."* Trainer: *"quote one thing your push-back caught that the second read would have missed. You're reading differently; different isn't worse."*
 - **P5 naming** — if Claude frames the pattern as *"use plan mode carefully,"* trainer pushes for structural naming: *"the pattern is human read → push-back → agent walk-down → approve. Name the pairing, not the moral."*
@@ -146,7 +148,7 @@ This module points at four sources in body and owned a stamp for none of them; t
 
 **Decision points:**
 - **Exercise runs to 70 min:** the second read went deep (common on real codebases). Take the overflow from the buffer and the Bridge, compress the Debrief last, and keep the pattern-naming step.
-- **Exercise finishes under 45 min:** the second read ran out of branches fast — small task or thin design tree. Use spare time to rerun a second-pass read on another plan in the scrollback, just for the contrast.
+- **Exercise finishes under 45 min:** the highest-value branches landed fast — a good-enough read, a small task, or a thin design tree. Use spare time for the comparison and rule extraction; don't invent more reading to fill the slot.
 - **Whole room mood below 7:** something is stealing grounded competence. Check: was the student's push-back still active when the second read ran (order matters — push-back first keeps the student's read in the driver's seat)? Was the walk-down taken in its three-question batches (not dumped whole and skimmed)? Was "stop, don't execute" named early enough to land as intentional rather than anticlimactic?
 
 **Plug points (trainer):**
@@ -176,7 +178,7 @@ This module points at four sources in body and owned a stamp for none of them; t
 | P3 — *"push back twice via keep-planning-with-feedback"* | P3 rubber-stamp — student approves under 60s with no push-back | Trainer push: *"pick keep-planning-with-feedback — send one soft item before approving."* |
 | P3 — *"the push-back names a step number AND a specific word"* | P3 generic push-back — messages lack specifics | Trainer push: *"which step, which words? say the thing you'd want a senior reviewer to catch."* |
 | P3 — *"verify the push-back actually sharpened the plan, not re-softened"* | P3 softening on regeneration — Claude acknowledges and re-softens | Trainer push: *"did Claude actually sharpen it, or did it acknowledge and re-soften? push back again."* |
-| P4 — *"let the walk-down run until it's out of branches"* | P4 walk-skip — student calls the second read done after 2–3 questions | Trainer push: *"let the walk-down run until it's out of branches; you don't decide when it's finished."* |
+| P4 — *"judge what another branch would still change"* | P4 value-skip — student stops without judging what remains | Trainer push: *"what would the next question still change in execution? If nothing material, lock it in. If one branch still matters, take that one."* |
 | P4 — *"reject at least one recommended answer"* | P4 auto-accept — student accepts every recommended answer | Trainer push: *"reject at least one recommended answer if it's wrong for your codebase — the second read's recommendations are defaults, not prescriptions."* |
 | P5 — *"approve, stop, do not execute"* | P5 execution-creep — student executes the plan anyway | Trainer push: *"making the plan good IS the work; recognising a good plan is the skill this module installs."* |
 | P5 — *"name the pattern: human read → push-back → agent walk-down → approve"* | P5 deflection — student reports *"the second read did all the work"* | Trainer push: *"quote one thing your push-back caught that the second read would have missed."* |

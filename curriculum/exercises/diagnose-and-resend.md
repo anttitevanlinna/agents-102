@@ -1,6 +1,6 @@
 # Diagnose and *package*
 
-**Time:** 65 minutes inside a 2h module slot (Phases 1–4). Debrief + re-send (~15–20 min) closes the module after this exercise.
+**Time:** 65 minutes.
 
 **Session** *(new, "Module 5 worktree session")*
 
@@ -21,6 +21,8 @@ Open a new Claude Code session in the worktree at `../<repo>-m5` (set up at modu
 ---
 
 ## Phase 1: Read what the failed run did
+
+*15 min*
 
 - You're diagnosing, not fixing. The un-packaged run was supposed to underdeliver. What came back is data, not blame.
 - Two places hold the story. The repo's git history (commits on the `m4/<slug>` branch, files modified, branch state, all visible from the worktree) tells you *what* the agent did. That run's session transcript, at the path recorded in `task.md`, tells you *how* it got there, drift and dead-ends included.
@@ -44,6 +46,8 @@ Confirm the path is right. Then ask Claude to read the repo state on the previou
 
 ## Phase 2: Match each failure to the check that catches it
 
+*10 min*
+
 - Ask the question that earns the pattern. For each named failure: *what validation would have caught this in minutes, not hours?*
 - Match the verifier shape to the failure. Drift and context rot fire mid-run, on every spec re-read or window fill, so minute cadence is real there. Plausible-but-wrong fires on output: the work compiles, passes lint, looks right, and is wrong.
 
@@ -52,9 +56,11 @@ Ask Claude to walk each diagnosed failure backwards into the validation that wou
 {{prompt:diagnose-and-resend-3}}
 
 
-Read the three answers back. You now have three pieces, each tied to a specific failure you diagnosed. Phase 3 builds one of them; Phase 4 assembles the other two.
+Claude gives the full three-way mapping. Your decision is narrower: which failure cost most, and why the other two pieces belong. Once two or three quoted moments make that clear, leave the rest at summary depth. Phase 3 builds the verifier against the dominant failure; Phase 4 assembles the reference and plan.md.
 
 ## Phase 3: Build the verifier for your worst failure
+
+*20 min*
 
 - Pick the shape that matches your dominant failure. The comfortable shape is rarely the right one. Match the failure, not your familiarity.
 
@@ -77,6 +83,8 @@ Read what Claude proposes. Push back if the verifier covers the wrong shape (a g
 
 ## Phase 4: Write the reference and plan.md
 
+*20 min*
+
 - The reference pins the task. Its success criteria, and pointers to the memory, skills, and connectors that matter.
 - plan.md is the agent's mutable working document. Not the plan-mode plan. This is what the agent re-reads when its window fills.
 
@@ -84,7 +92,7 @@ Ask Claude to assemble both, scoped to the same task, in conversation.
 
 {{prompt:diagnose-and-resend-6}}
 
-> **Watch for slowness.** Two files rewritten between every grill turn is the slowness pattern. The prompt above locks both files until you say *lock it in.* If the agent touches either file mid-grill anyway, push back.
+> **Cut the grill when the package is good enough to re-send.** The prompt keeps looking because that is its job. Your threshold is practical: scope, success criteria, constraints, tests, and done are clear enough for the second session. Then say *lock it in.* Until then, neither file should change; push back if the agent rewrites between turns.
 
 ## Check both files are for the agent, not you
 
@@ -105,7 +113,7 @@ The exercise ends here. The module's re-send is next: same task, with reference 
 
 **The 10% recall in `## Pin each failure to a quoted moment` is the prior's third and last statement, by design.** `orient-and-introspect.md:45` sets it on the agent's read of a repo (maintainer-attested there), `plan-mode-done-right.md` § Key Concepts applies it to a plan, and this bullet applies it to a run transcript the student did not watch. Three instances, roughly two modules apart, a different artefact each time, each carrying its own action: progression-with-variation, not the refrain `check_pedagogy.md` §9b bans. This is the beat that earns it. In M1 and M2 the student can read the whole artefact by eye, so the prior costs nothing there; here it is the only affordable check, and asking the agent to locate its own quotes is the only one available when the agent holds the codebase and the student holds the lenses. The imperative *assume* and the *about* hedge travel from M1 and are load-bearing: the prior is an instruction to the reader, and a floor form would be a claim about the world. Do not harden it, and do not restate it as a general claim about agents. M1's double-hedge (*"could be more or less"*) stays M1's, so `check_slides.md` §7's number-plus-retraction sub-item does not fire here.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"; gold-pattern exemplar):** bullet leads and the "The exercise ends here." paragraph lead de-bolded; kept bold only on the Phase 3 verifier-shape menu handles (**Background-agent verifier** / **Deterministic shell-hook** / **Ralph re-feed**); title-page **What you do:**/**What you build:**/**The point:** thread and all widget chrome untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
+**Emphasis:** Bold is limited to title-page labels, widget chrome, the Phase 3 verifier-shape menu handles (**Background-agent verifier** / **Deterministic shell-hook** / **Ralph re-feed**), and the Phase 4 stop-gate handle. All other body prose stays unbolded.
 
 **Quality:** compendium-audited 2026-08-03 (writing@86a7c32 story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@86a7c32)
 - judges @86a7c32: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (verify-refuted), strategy PASS, slides PASS
@@ -165,10 +173,12 @@ OODA
 - **Phase 1 generalised diagnosis** — student says "the agent drifted" without quoting moments. Diagnostic: prompt requires quoted artefact moments; if Claude returns only summaries, re-run with explicit *"quote a specific commit / file change / scrollback line"*.
 - **Phase 1 dominant-failure dodge** — student picks the failure mode they already know how to fix, not the one that cost the most. Diagnostic: ranking is by impact, not familiarity. Trainer push: *"which one cost the run the most? Build the verifier for that one."*
 - **Phase 2 prescription-jumping** — student rushes past the question to start building. Diagnostic: Phase 2 produces three named validations; if the conversation moved to "let me build" before all three, redo.
+- **Phase 2 full-map overload** — student tries to inspect all three mappings at equal depth. Diagnostic: no dominant choice after two or three grounded moments. Trainer push: *"Which failure cost most? Leave the rest at summary depth."*
 - **Phase 3 verifier-shape mismatch** — student picks the shape they're most comfortable building (usually shell-hook), regardless of failure. Diagnostic: does the verifier actually fire on the failure mode it targets? If not, re-scope.
 - **Phase 3 verifier as test suite** — student rebuilds the existing test suite as their verifier. Diagnostic: the verifier targets agent-produced work, with a quality bar that ISN'T already in CI. Trainer push: *"if the existing tests caught it, the run wouldn't have failed. What's missing from the existing tests?"*
 - **Phase 4 reference-as-codebase-rules** — student rewrites `CLAUDE.local.md` content into the reference. Diagnostic: the reference is task-local, lives in a task-scoped folder, references the codebase rules instead of restating them.
 - **Phase 4 plan.md-as-project-plan** — student writes a Gantt-shaped plan instead of an agent-mutable document. Diagnostic: the plan.md has a "current phase" line the agent updates and a "decisions log" the agent appends to. If neither, redo.
+- **Phase 4 grill overrun** — student keeps answering after the package is ready for the second session. Diagnostic: the latest question changes only wording or implementation detail, not scope, success criteria, constraints, tests, or done. Trainer push: *"What would the next answer change? If nothing material, lock it in."*
 
 **Plug points:**
 - Student's own M4 artefact (Phase 1 source material)
@@ -189,8 +199,8 @@ OODA
 - Reference vs. rules drift — students familiar with `CLAUDE.local.md` may try to rewrite it as the reference. The reference is task-local; rules are repo-local.
 
 **Send-off mechanism (Debrief, owned by module file):**
-- Same Claude Code session as the exercise. No new session, no scheduled agent.
-- Reference artefact + plan.md + verifier all loaded; agent re-reads at every working-window pressure point.
+- Fresh Claude Code session in the existing M5 worktree. The exercise session may stay open for reference.
+- Reference artefact + plan.md + verifier live on disk. The re-send prompt finds them at the worktree root, and the fresh session auto-loads the worktree's rules.
 - Same close-the-laptop or stop-when-you've-seen-enough rule as M4.
 
 Pre-cohort open items: see `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

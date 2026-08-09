@@ -52,7 +52,7 @@ The fix happens once. The loop is what you repeat: a way of working, not one bug
 - compendium-audited 2026-04-26 (check_writing voice-quartet Seth-Rory-Risto, check_student_facing #14, check_lectures opener, check_strategy_tie_in)
 **Meta:**
 - **Placement:** M1 opener, after Connections, before the exercise.
-- **Runtime:** 10 min. 5–7 min lecture prose + 3 min live two-window demo in claude.ai chat windows — deliberately not code, per the demo spec above.
+- **Time:** 10 min. 5–7 min lecture prose + 3 min live two-window demo in claude.ai chat windows — deliberately not code, per the demo spec above.
 - **Voice:** Seth × Rory × Risto — warm + counterintuitive + direct.
 
 **The Context is King demo (stolen verbatim from Agents 101):**

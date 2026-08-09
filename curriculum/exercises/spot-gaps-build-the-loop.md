@@ -1,6 +1,6 @@
 # Map the gaps, read your stack
 
-**Time:** 30–40 minutes inside the module slot.
+**Time:** 30–40 minutes.
 
 **Session** *(new, "Module 6 worktree session")*
 
@@ -15,6 +15,8 @@ Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no 
 ---
 
 ## Phase 1: Diff the two sessions, rank the gaps
+
+*15–20 min*
 
 - You hold two sessions of the same task. The un-packaged session sits on the `m4/<slug>` branch recorded in `task.md`; the packaged re-send sits on the `m5/<slug>` branch recorded in `plan.md`. Both are visible via git refs, since the worktree shares `.git` with the original repo.
 - Read from the recorded coordinates, not a branch or transcript search. Both sessions recorded their transcript paths: M4 in `task.md`, M5 in the protected `Run coordinates` block at the top of `plan.md`.
@@ -46,6 +48,8 @@ Ask Claude to cut one rule the two-session diagnosis killed, or to say so and st
 
 ## Phase 2: Find the work you repeat across your stack
 
+*15–20 min*
+
 - Look wider than the two sessions. The dominant gap came from one task. The kinds of work you repeat run across everything you do, and most of them never get looked at directly. This is your stack. How wide you look, and what you choose to map, is yours.
 - Read your own history first. Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back.
 
@@ -53,7 +57,7 @@ Ask Claude to cut one rule the two-session diagnosis killed, or to say so and st
 
 > **Fast operator?** Lump the next three prompts into one go. Paste them one after another in the same conversation, study then shapes then primitives, and let the answers land together. The three moves don't change.
 
-> **This scan runs long, and it is yours to steer.** Narrow it whenever you like, point it at the kind of work you care about. Any time, you can say *tell me what you've found so far*, then let it pick back up. If it wraps up early, nudge it to keep going. There is more in there than a first pass admits.
+> **Cut the scan when the top patterns are clear enough to use.** The prompt keeps looking because that is its job. Narrow it whenever you like, or say *tell me what you've found so far*. Once two or three recurring kinds of work are clear enough to draw and compare, move on. You do not need a complete inventory.
 
 Ask Claude to scan your sessions across every project and group the kinds of work that recur.
 
@@ -84,7 +88,7 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 ## Route the dominant gap to its home
 
 - Gaps sort into three homes: memory (a rule that would have prevented the mistake upstream), a sharper verifier (a check that would have fired mid-session), or a skill (a move worth packaging for future tasks). The dominant gap gets a named home before anything gets built. If the home is memory, the rule can land in `./CLAUDE.local.md` now, the reverse of the cut above.
-- The skill home stays a name for now, not a build. The closing lecture hands you the encode-move: a prompt built from the shapes you just drew.
+- The closing lecture hands you the encode-move: a prompt built from the shapes you just drew.
 
 **What happened:** You ended with a one-screen gap map across memory / verifier / skill, one stale rule cut in place, and a diagrammed map of the work that recurs across your stack. The dominant gap has a named home; the shapes carry into the close.
 
@@ -93,6 +97,8 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 **View summary:** You compare the un-packaged and packaged runs, rank what the second attempt still missed, remove one stale rule, route the dominant gap to its home, and map the work that recurs across your stack. The stack-map feeds the closing handoff move.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain; widget/label chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. (The three bolded shape handles that survived that pass left with the 2026-08-01 authoring-sequence cut.)
+
+**Fast-operator batch path (accepted):** *"Fast operator?"* labels the opt-in path for someone who wants all three prompts in one conversation; it does not set the room's pace or the exercise's completion bar. The separate scan callout is the working-memory stop gate. Preserve both callouts and the label.
 
 **Quality:** compendium-audited 2026-08-02 (writing@ffc64f9 story@ffc64f9 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@d1141cd)
 - judges @ffc64f9: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (verify-refuted), slides PASS
@@ -153,7 +159,7 @@ OODA
 **Failure modes + diagnostics:**
 - **Phase 1 generalised diff** — student says *"M5 was better"* without quoted moments. Diagnostic: prompt requires quoted moments from BOTH runs. If Claude returns only summaries, re-run with explicit quote enforcement. Echoes M5's Phase 1 diagnostic.
 - **Phase 1 packaging-over-credit** — student treats the packaged run as fully solved and skips the *"what packaging missed"* beat. Diagnostic: the M5 run did drift somewhere; if Phase 1 outputs zero misses, Claude is over-crediting. Trainer push: *"name one thing the verifier missed, concretely. Quote the scrollback."*
-- **Phase 2 wider-look sprawl** — the study scan reads the whole stack and can throw back a wall. The body steer (*read for the few at the top you actually repeat; how far you take this is yours*) is the agency affordance — depth is the student's, not a mandate to catalogue. M6's leeway spirit: study and shapes run, but how wide and what gets mapped is the student's. If a student drowns in the scan, point at the ranked head.
+- **Phase 2 wider-look sprawl** — the study scan reads the whole stack and can throw back a wall. The body stop gate is two or three recurring kinds of work clear enough to draw and compare. Depth is the student's, not a mandate to catalogue. If a student drowns in the scan, point at the ranked head and move on.
 - **Gap-home dodge** — student ranks the gaps but never commits the dominant one to a home; the routing beat is the exercise's Evaluate move. Diagnostic: can the student say which of the three homes the dominant gap lives in, in one sentence? If not, back to the ranked list.
 
 **Plug points:**
@@ -164,7 +170,7 @@ OODA
 **Decision points (pacing):**
 - **Phase 1 >20 min** — over-diffing. The diff is data for Phase 2, not an essay. Force a rank and move on.
 - **Phase 1 <10 min** — under-engagement. Check if Claude returned only summaries; re-run the prompt with quote enforcement if so.
-- **Phase 2 study + shapes run long (>20 min)** — the wider look is a light pass, not a full inventory. Study reads the ranked head; shapes draws a few. The body carries the steer (*how far you take this is yours*). If it eats the clock the student is cataloguing; force the ranked head and move to primitives.
+- **Phase 2 study + shapes run long (>20 min)** — the wider look is a light pass, not a full inventory. Study reads the ranked head; shapes draws two or three. If it eats the clock the student is cataloguing; use the body stop gate and move to primitives.
 - **Whole-room mood below 7** — practitioner fluency isn't landing. Check the routing beat: does the dominant gap have a named home, in the student's own words? If the gaps stayed a list, the read didn't close.
 
 **Watch-fors (cross-phase):**

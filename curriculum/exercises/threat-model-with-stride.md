@@ -14,6 +14,8 @@
 
 ## Phase 1: Run the threat scan across your mapped surface
 
+*7 min*
+
 - STRIDE is a six-category checklist for threats. Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege. The curated skill walks your surface against all six, so you don't hold the taxonomy in your head.
 - The subagent does the walk; you read the result. It runs in fresh context against the map, not the raw code, so you are not on the hook for re-deriving the surface. You read what lands.
 
@@ -29,6 +31,8 @@ Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map fr
 
 ## Phase 2: Pick the one threat worth hardening against
 
+*8 min*
+
 - One threat, not five. You are picking a single threat worth hardening against. The move: name the worst realistic case first, and the hardening decision is usually obvious from there.
 - The agent proposes the incident story; you judge whether it fits. You are not inventing the worst case from scratch. Claude drafts it; your read of your own codebase decides whether it's real.
 
@@ -43,6 +47,8 @@ Ask Claude to propose the most plausible incident story and walk you through the
 - Work with Claude to land on the right mitigation. You save it as the ADR next.
 
 ## Phase 3: Write the decision as an ADR
+
+*5 min*
 
 - The ADR states the call, its alternatives, and the constraint that picked the winner. You write it in your repo's convention. It reads like one engineer explaining a call to another, not a compliance checkbox.
 - Have the agent draft it and show it before saving. You read the call before it lands on disk.
@@ -101,7 +107,6 @@ Ask Claude whether this ADR rides into future sessions automatically.
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**
-- **Time:** 20 minutes (7 / 8 / 5)
 - **Primary Bloom's level:** Apply + Evaluate
 - **Mood target:** earned trust, deepening. Student leaves with a real call made under named pressure. Watch for: compliance-feeling. Diagnostic: ADR reads like a checklist item. Fix: trainer makes student name the specific future engineer they'd want this ADR to be useful for.
 

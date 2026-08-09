@@ -21,6 +21,8 @@
 
 ## Phase 1: Run the curated skill on your feature and save the map
 
+*7 min*
+
 - You invoke; the skill does the breadth walk. The `access-control-analysis` skill was installed as a personal skill during prework, so Claude Code auto-discovers it by name in the m3-security session. You aren't on the hook for walking every surface. The skill and its subagent do that.
 - See what skills your Claude has loaded first. In the Claude Code chat, type:
 
@@ -51,12 +53,16 @@ The plan path you noted at Module 2's close is the best input here: it names the
 
 ## Phase 2: Read the map back before you decide the delta
 
+*3 min*
+
 - You're back in m3-security now; the map landed here. The rest of this exercise runs in this window.
 - See the structured read before you decide. Ask Claude to walk you through the surface map in chat: categories, key findings, ambiguous spots. You want the structured read in front of you before you name your deltas in Phase 3.
 
 {{prompt:map-the-access-surface-3}}
 
 ## Phase 3: Add the surface the skill over-called, and the one it missed
+
+*7 min*
 
 - You decide which surface goes on each side of the delta. Two reads.
 - **The over-call.** Where did the map flag something you'd have under-weighted? Lower-risk in your read, higher-risk in the skill's.
@@ -76,6 +82,8 @@ Then ask Claude to add the surface the skill missed but you know matters.
 - Answer, then sharpen. Push back until the reason names something specific to your codebase. *"The billing webhook re-hits the queue on retry, so the same event gets reprocessed"* beats *"webhooks need auth."*
 
 ## Phase 4: Add the context header a cold reader needs
+
+*3 min*
 
 - You're about to hand this map to the STRIDE skill. Glance at it. If a teammate landing on this file cold would miss something the map assumes you know, add a one-line context header. If it reads, close.
 - Most people skip this; some want the pause. Your call.
@@ -101,7 +109,6 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**
-- **Time:** 20 minutes (7 / 3 / 7 / 3)
 - **Primary Bloom's level:** Apply + Evaluate
 - **Mood target:** earned trust, opening beat. Student leaves the exercise with *"a curated skill did breadth I wouldn't have; I named what only I could name."* Watch for: passivity (*"skill ran, fine"*). Diagnostic: the delta section has 0 entries or generic ones. Fix: trainer pushes Phase 3 harder.
 

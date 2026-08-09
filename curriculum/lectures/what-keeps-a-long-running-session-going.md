@@ -26,7 +26,7 @@ The session is working. Do not change this first experiment while it runs. Watch
 
 **Placement:** The observational close rides the active session after `ironies-of-automation` and before `reading-the-return`. It keeps curious readiness open. The trainer does not alter or package the active experiment.
 
-**Time budget total:** ~4 min at presentation pace. One slide per question: what keeps the place, what keeps the direction, what decides whether the session continues.
+**Time:** ~4 min at presentation pace. One slide per question: what keeps the place, what keeps the direction, what decides whether the session continues.
 
 <!-- backing -->
 

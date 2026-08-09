@@ -4,14 +4,14 @@
 
 ## Intent
 
-Module 2 should teach students to make the highest-value plan sharpenings before generation. It should not ask them to read and understand every line, exhaust every branch, or mistake coverage for control.
+Module 2 should teach students to make the highest-value plan sharpenings before generation. The copied prompts deliberately offer a full, relentless grilling. The student is not expected to read and understand every line or exhaust every branch; the human remains the stop gate.
 
 The student still performs two complementary reads:
 
 1. Their own read applies codebase judgment and produces two specific push-backs.
-2. A second-pass agent surfaces consequential branches the student may not have noticed.
+2. A second-pass agent starts a full walk-down of the branches the student may not have noticed.
 
-The stopping rule is materiality: resolve the few uncertainties most likely to change scope, design, files touched, migration safety, or verification. Approve once the remaining questions are routine implementation choices or would not change the plan.
+The stopping rule is good-enough judgment: use the grilling to resolve the uncertainties that would materially improve generation, then stop. The prompt supplies a high ceiling; it does not create a completion requirement.
 
 ## Approved prose pass
 
@@ -26,10 +26,10 @@ Revise non-prompt prose in these surfaces:
 The prose will:
 
 - replace the full-read exception with a decision-focused scan;
-- replace exhaustive branch coverage with ranked, consequential branches;
+- state that the second-pass prompt begins a full grilling while the student decides when enough value has landed;
 - preserve the student's first read and two push-backs;
 - preserve the second-pass read, approval, stop-before-execution, and reflection;
-- make stopping early a judgment call based on remaining value, not a failure to finish;
+- make stopping a judgment call based on whether the plan is good enough to generate, not a failure to finish;
 - update maintainer notes and claims that encode the former complete-read doctrine.
 
 ## Deliberately deferred
@@ -41,13 +41,12 @@ This pass does not edit:
 - timing figures, runtime maps, slots, or exercise durations;
 - the exercise sequence or artifact contract.
 
-Until the prompt discussion is resolved, the current second-pass prompt will remain more exhaustive than the revised body. That temporary mismatch is explicit and must not be treated as the finished M2 design.
+The difference between prompt and prose is intentional. The prompts keep their full-on language (`detail over brevity`, `every unresolved branch`, and the optional relentless variant). The prose gives the student permission and criteria to stop the grilling once the plan is good enough to generate.
 
 ## Acceptance checks
 
 - Active prose no longer directs students to read the whole plan, achieve a complete read, exhaust every unresolved branch, or continue until the agent runs out of branches.
-- The prose consistently names execution impact as the selection and stopping criterion.
+- Active prose makes the deliberate asymmetry clear: the agent offers exhaustive pressure; the human decides when the plan is good enough.
 - The two-read contrast remains intact: human codebase judgment first, agent breadth second.
-- Prompt files and timing lines are unchanged.
+- Prompt files, copied prompt wording, and timing lines are unchanged.
 - Maintainer explanations no longer describe exhaustive reading as M2's protected pedagogy.
-

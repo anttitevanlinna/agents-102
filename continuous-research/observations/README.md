@@ -28,6 +28,7 @@ Practitioner-level observations of organisations operating AI-natively. Not vend
 | Enterprise Case A | Cybersecurity | ~500 | Transitioning (1 year in) | Deep case (practitioner) | [enterprise-agentic-transformation-case.md](enterprise-agentic-transformation-case.md) |
 | Ramp | Fintech (cards + spend) | Mid-size (800+ internal builders) | Whole-company adoption (platform + spokes) | Deep case (practitioner-direct, CPO) | [ramp.md](ramp.md) |
 | Block | Fintech (Square + Cash App + etc.) | ~10,000+ | Org-design thesis: "from hierarchy to intelligence" | Signal / thesis (CEO-direct, early execution) | [block.md](block.md) |
+| Fredrik Wollsén / F-Secure | Cybersecurity (consumer) | 616 (team: 4) | Individual practitioner at parallel-orchestration scale inside a transitioning org | Signal (practitioner-direct, self-measured, commercial interest) | [wollsen-fredrik.md](wollsen-fredrik.md) |
 
 ---
 

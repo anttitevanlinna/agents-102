@@ -50,8 +50,8 @@ Ask Claude to write the close-out, update the ticket, and report what it wrote.
 
 - The ticket is one instance. Anything can be inspected and reverse-engineered with an LLM: a codebase nobody documented, a CI pipeline, a config, an API you did not write, the system your team runs on and cannot explain.
 - The move is the same every time. Ask the agent to study it. Extract a `.md` file. Use that file as context in the next agent.
+- The rules the agent extracts are only as sharp as the tracker data sampled.
 - The ticket is that move at its smallest.
-- The read is only as good as what the thing has recorded. A tracker nobody fills in carefully gives thin rules, and that thinness is itself a finding about the system. Match the depth of the read to what is actually written down.
 
 ## What happened
 
@@ -128,7 +128,7 @@ Frameworks
 
 Stance `[stance:2026-08-03 level:L1]`
 - holds: that the study-extract-carry-forward move generalises past tickets to any inspectable artifact. Single-practitioner origin, maintainer-attested, so L1 and not higher — the frame is Antti's working practice, not a converged community claim. The mechanics of the exercise itself assert nothing and would sit at L0 on their own.
-- contested: the reach of *anything*. The slide states it bare and carries its boundary in the following bullet per `check_writing.md §12`, which is a deliberate choice over hedging the line itself. A judge reading the slogan alone will over-read it; read the fourth bullet before flagging.
+- contested: the reach of *anything*. The slide states it bare and carries its boundary in the third bullet per `check_writing.md §12`, which is a deliberate choice over hedging the line itself. A judge reading the slogan alone will over-read it; read the third bullet before flagging. That bullet is the whole caveat: extraction quality tracks the quality of the tracker data sampled. It replaced a three-sentence version that said the same thing twice and buried a second idea (a thin tracker being itself a finding about the team) inside the restatement; that second idea is not carried anywhere on this slide by design.
 - would-move-it: a second practitioner publishing the same three-step shape independently, which would take this toward L2 and let the body drop the attribution. Or cohort evidence that the read collapses on low-discipline trackers often enough to make the carve-out the headline rather than the footnote.
 
 OODA

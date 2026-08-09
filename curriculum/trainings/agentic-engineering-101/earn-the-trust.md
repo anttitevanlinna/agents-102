@@ -39,11 +39,11 @@ The question, to you: what's the feature, and what's the surface you're most ner
 [Exercise: Author your test-strategy skill](exercises/author-test-strategy-skill.md)
 
 ## Key Concepts
-- A curated skill is upstream work packaged for you to invoke. You don't re-derive it. Invoke, don't re-derive.
+- A curated skill is upstream work packaged for you to invoke. The labor is delegated; the judgment isn't. Invoke, don't re-derive.
 - The access surface is what STRIDE chews on. STRIDE before access-mapping is threat-modeling pub-quiz
 - One hardening decision is enough; the team kit's breadth grows across many features
 - A test-strategy skill authored on your codebase is worth more than a perfect generic one. Your codebase teaches the skill, not the manual.
-- Ask the agent what's weakest about its own output; the mirror reflects what your own read would miss
+- Ask the agent what's weakest about its own output; it surfaces what your read skips. Same-window self-audits under-flag, so push past the first answer.
 - Invoke the skill on the thing you just built. Authoring without invocation is theatre. One skill shipped beats three skills drafted; the team kit grows by accretion
 
 ## Sharpen the skill from evidence
@@ -58,7 +58,7 @@ Ask Claude to sharpen the skill's weakest section from invocation evidence. Then
 
 ## Read the sharpen with a skeptical eye
 
-Claude is reading the skill file fresh and your m3-security scrollback. Useful (file content survived the side-quest /clear and carries the encoded conventions) but charitable (same-context-window self-audit under-flags). Two other tells to watch for: Claude may open with a plan before showing the diff, and RLHF softening can dress up a cosmetic edit as a meaningful one. You can make the grill hotter: ask Claude to over-flag (*"be harsher than necessary, find at least two sections that underdelivered, assume it's worse than it looks"*), tell it to skip preamble and lead with the before/after diff, or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.
+Claude is reading the skill file fresh and your m3-security scrollback. Useful (file content survived the side-quest /clear and carries the encoded conventions) but charitable (same-context-window self-audit under-flags). Two other tells to watch for: Claude may open with a plan before showing the diff, and sycophancy can dress up a cosmetic edit as a meaningful one. You can make the grill hotter (bar higher): ask Claude to over-flag (*"be harsher than necessary, find at least two sections that underdelivered, assume it's worse than it looks"*), tell it to skip preamble and lead with the before/after diff, or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.
 
 Three modules of loop work sit behind you. Before you clear the session, the near half of the map, seen whole with its parts named.
 

@@ -25,7 +25,7 @@ Open a fresh Claude Code session in the Module 5 worktree, `../<repo>-m5`. Both 
 
 You walk in holding two sessions of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-send. The contrast across two sessions is the material. One session gave you a failure mode to name. Two sessions give you gaps the three-pattern itself didn't anticipate, and a shape for what to do about each one.
 
-> **Packaged session thin or missing?** You can still rescue it. If the M5 session is alive but stalled, nudge it once with the Continue prompt from M4. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while you read on. M6 starts by reading; before it writes, decide whether to wait, stop M5, or accept the partial session as the artefact. Skip the opening lecture. Practice is core. Lectures can be read later.
+> **Packaged session thin or missing?** You can still rescue it. If the M5 session is alive but stalled, nudge it once; a *"continue"*-prompt is usually enough. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while you read on. M6 starts by reading; before it writes, decide whether to wait, stop M5, or accept the partial session as the artefact. Skip the opening lecture. Practice is core. Lectures can be read later.
 
 > **Just can't get the M5 session working?** You lose a bit of value but you can still do this module's exercises. Despair not.
 
@@ -39,7 +39,7 @@ You walk in holding two sessions of the same task. The un-packaged Module 4 send
 
 ## Key Concepts
 - The three-pattern catches what it was shaped to catch. The gaps that surface after two sessions are data the pattern didn't anticipate, not proof the pattern failed
-- Claude over-credits its own packaging by default. A fair push-back names one thing the verifier missed, concretely. The sessions rule; the summary of them doesn't
+- Claude over-credits its own packaging by default. You know the countermove by now. A fair push-back names one thing the verifier missed, concretely. The sessions rule; the summary of them doesn't
 - Gaps sort into three homes: memory (rules that would have prevented the mistake upstream), sharper verifier (a check that would have fired mid-session), or new skill (a move packaged for future tasks)
 - An eval is the automated check that says *this agent-produced thing meets our bar*. Verifier when deterministic, judge when LLM-based, gate when placed in CI. All three are evals. A check proves something only where it could say no. A judge in the producer's window cannot say no exactly where the producer went wrong.
 - The handoff prompt IS the loop. It packages the stack-map into a move that authors the skill each shape calls for, when you run it.

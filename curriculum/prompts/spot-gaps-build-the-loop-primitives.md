@@ -11,8 +11,6 @@ requires:
 produces:
   - id: primitive-menu
     location: scrollback (5-10 atomic verification primitives with one-line check-description and fire-timing per primitive, plus 2-3 ranked by fit against dominant gap)
-    consumed-by:
-      - prompt:agents-that-build-agents-handoff
 ---
 Expand my menu of checks before I read my own map against it.
 

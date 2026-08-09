@@ -482,16 +482,16 @@ Never compress the two closing lectures. What packaging is → The gate is a cla
 2. Lecture — [The 2 frontiers](./#lectures-the-2-frontiers) (opener)
 3. Lecture — [Story of Module 6](./#lectures-story-of-module-6) (opener; permission-giving memo from this module's own generation)
 4. Lecture — [Quality is grounding](./#lectures-quality-is-grounding) (opener-bridge, 5 min; names the quality arc M1→M6)
-5. Exercise — [Spot gaps, build the loop](./#exercises-spot-gaps-build-the-loop) (40 min; diff two runs, cut a stale rule, route the dominant gap, scan the stack for recurring work-shapes)
+5. Exercise — [Spot gaps, build the loop](./#exercises-spot-gaps-build-the-loop) (35 min; diff two runs, cut a stale rule, scan the stack for recurring work-shapes)
 6. Lecture — [Composing the workflow](./#lectures-composing-the-workflow) (closer-area teacher; 4 min; the passage chart re-labelled with the student's kit; composition variety first — by hand, through files — then the four wirings of one documented kit)
-7. Lecture — [The loop has a name](./#lectures-the-loop-has-a-name) (closer; names *eval* across verifier / judge / gate, anchored on the M5 verifier and the routing call)
+7. Lecture — [The loop has a name](./#lectures-the-loop-has-a-name) (closer; names *eval* across verifier / judge / gate, anchored on the M5 verifier)
 8. Lecture — [The map, filled in](./#lectures-the-map-filled-in) (final theory closer, 10 min; the whole map drawn solid across M1–M6)
 9. Lecture — [Agents that build agents](./#lectures-agents-that-build-agents) (forward closer; the training's closing beat, dead-last per the 2026-07-03 re-sequence)
 
 **Learning goals.** Student can:
 
 - Diagnose the gaps two runs of the same task surface.
-- Route each gap to its home: memory (rules that would have prevented the mistake), sharper verifier, or new skill.
+- Read where each gap belongs: memory (rules that would have prevented the mistake), sharper verifier, or new skill.
 - Cut one rule from `./CLAUDE.local.md` the diagnosis killed.
 - Surface the kinds of work they repeat across the stack and draw the recurring shapes.
 - Map evals across verifier (deterministic), judge (LLM-based), gate (in CI).
@@ -499,7 +499,7 @@ Never compress the two closing lectures. What packaging is → The gate is a cla
 
 **Exercise goals.**
 
-- *Spot gaps, build the loop* — one-screen gap map across memory / verifier / skill with the dominant gap routed to a named home, one stale rule cut from `./CLAUDE.local.md`, and a diagrammed map of recurring work-shapes that feeds the closing handoff prompt.
+- *Spot gaps, build the loop* — one-screen gap map across memory / verifier / skill with the dominant gap named, one stale rule cut from `./CLAUDE.local.md`, and a diagrammed map of recurring work-shapes that feeds the closing handoff prompt.
 
 **Trainer cues.** Practitioner-fluency register, not lecture-hall — by M6 the student is a practitioner, and the close runs lecture-after-lecture by design: a room of engineers reading the field together, with you as one voice among several. Invite reflection between lectures with open prompts, not Q&A: which lineage resembles their day? What did the quality arc feel like across the five moves? After Dino's worked example, the transfer question — is the skill they just shipped a route, a leaf, an orchestrator, or a hand-off? Two beats of silence is fine; Nordic engineers think before speaking. The composition lecture has no separate drill; Phase 2 of *Spot gaps, build the loop* (the work-shape scan) is the lived entry to composing — point students there first, then at the [workflow-composition-lineages supplementary](./#supplementary-workflow-composition-lineages) for the field survey. Dino's [skill-stacking system](./#supplementary-skill-stacking) is the worked example. Pacing: if energy is high, give the lineage conversation room; if low, keep the composition lecture to the chart and the four mechanisms, point at the supplementary, and move to the closer pair faster.
 

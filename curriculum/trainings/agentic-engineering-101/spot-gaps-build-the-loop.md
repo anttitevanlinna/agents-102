@@ -12,7 +12,7 @@ Optional lookup pages: [session transcripts in the reference](../../trainings/ag
 ## What You'll Learn
 After this module, you will be able to:
 - **Diagnose** the gap two sessions of the same task surface
-- **Route** each gap to its home: memory, sharper verifier, or new skill
+- **Read** where each gap belongs: memory, sharper verifier, or new skill
 - **Cut** one rule from `./CLAUDE.local.md` the diagnosis killed
 - **Surface** the kinds of work you repeat across your stack, and draw their recurring shapes
 - **Map** evals across verifier, judge, and gate
@@ -102,7 +102,7 @@ Antti
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
-| Two-run gap map | Ranked gap list in M6 session scrollback; optionally copied to `observations/` if the student wants it durable | Exercise Phase 1 (diff un-packaged M4 vs packaged M5, quote both runs, rank dominant gap) | The gap-routing beat (named home); future post-cohort team-kit conversation |
+| Two-run gap map | Ranked gap list in M6 session scrollback; optionally copied to `observations/` if the student wants it durable | Exercise Phase 1 (diff un-packaged M4 vs packaged M5, quote both runs, rank dominant gap) | Exercise Phase 1's rule cut (reads the ranked list for the rule the diagnosis killed); future post-cohort team-kit conversation |
 | Recurring-work shapes | Repeated-work inventory + mermaid diagrams (≤30 nodes each) in M6 session scrollback | Exercise Phase 2 study prompt (scan `~/.claude/projects/` across the stack) + shapes prompt (draw the top recurring patterns) | The `agents-that-build-agents` close (the shapes carry into the handoff prompt) |
 | Stale-rule deletion | `./CLAUDE.local.md` in the M5 worktree, with one rule cut in place if diagnosis killed it | Exercise Phase 1 compound-by-subtraction prompt | Every future session in the worktree; post-M6 merge-back decision into the original repo's personal rules |
 | Workflow-skills handoff prompt | Standalone prompt in the close scrollback; student saves it where they choose (repo note or `~/.claude/`) | `agents-that-build-agents` close — the agent reads the recurring-work shapes and writes a cold-runnable prompt | The student's own later sessions: run cold to study their stack, diagram recurring shapes, author a skill per shape |
@@ -110,8 +110,7 @@ Antti
 **Failure modes + escape hatches per phase** (per `check_pedagogy.md` rule 47; one row per forcing function shipping in the exercise):
 - **Phase 1 — Diff and name the gaps.** Failure: both-runs collapse — student treats the packaged run as the only material worth diagnosing, the un-packaged baseline fades. Escape: trainer asks for quoted moments from each run separately before any synthesis.
 - **Phase 1 — Compound move (cut stale rule).** Failure: addition-only compounding — student only adds rules, never subtracts. Escape: forcing prompt names a specific rule the two-run diagnosis killed; if the student can't name one, the diagnosis wasn't sharp enough — back to Phase 1's quoted-moments check.
-- **Phase 2 — Stack scan (study / shapes / primitives).** Failure: scan-sprawl — the study reads the whole stack and throws back a wall the student catalogues instead of ranks. Escape: the body steer (*read for the few at the top you actually repeat*) plus trainer push to the ranked head; depth is the student's call, not a mandate.
-- **Gap routing.** Failure: home-dodge — gaps stay a ranked list, the dominant one never committed to memory / verifier / skill. Escape: trainer asks for the home in one sentence; if it can't be named, the Phase 1 read wasn't sharp enough — back to quoted moments.
+- **Phase 2 — Stack scan (study / shapes).** Failure: scan-sprawl — the study reads the whole stack and throws back a wall the student catalogues instead of ranks. Escape: the body steer (*read for the few at the top you actually repeat*) plus trainer push to the ranked head; depth is the student's call, not a mandate.
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
@@ -124,19 +123,19 @@ Antti
 
 **Push-back moves** (trainer delivers):
 - **Connections blocker** — student walks in without one of the two artefacts accessible (laptop closed between M5 and M6, scrollback gone, repo state unclear on the packaged run). Trainer push: *"both artefacts are whatever's there. Commits between M4 and M5 send-offs, files modified during each run, scrollback at `~/.claude/projects/<project>/` if the sessions closed — if M4 and M5 share a cwd, recency alone can grab the wrong attempt; filter by a phrase unique to that send-off's opening prompt instead. Open a fresh Claude Code session in the repo and ask it to surface what each run touched."*
-- **Phase 1 over-diagnosis** — student lists a long catalogue of gaps across both runs. Trainer push: *"two runs, maybe three gaps each. Pick the three that cost the most. Each gets a home, and the dominant one steers the Phase 2 scan."*
+- **Phase 1 over-diagnosis** — student lists a long catalogue of gaps across both runs. Trainer push: *"two runs, maybe three gaps each. Pick the three that cost the most, dominant first."*
 - **Phase 2 scan-drown** — the study throws back a wall and the student starts cataloguing. Trainer push: *"read the ranked head. The few you actually repeat are the map; the rest is inventory."*
 
 **Watch-fors (cross-phase):**
 - Both-runs collapse — student treats the packaged run as the only material worth diagnosing (the un-packaged baseline fades). Phase 1 recovers by asking for quoted moments from each run, separately.
-- Gap-home confusion — student calls everything a skill candidate because skills feel like "the answer." Force separation: some gaps belong in memory, some in a sharper existing verifier, some in a new skill. The routing beat names the home.
+- Gap-home confusion — the diff prompt calls everything a skill candidate because skills feel like "the answer." Push back on the output: some gaps belong in memory, some in a sharper existing verifier, some in a new skill.
 - Closing-lecture-as-pre-read — if the closing names something the student already heard, the opener or exercise leaked. Three-persona sim catches this; ship-pass eval also.
 
 **Decision points (pacing):**
 - **Phase 1 runs short (<10 min):** student didn't engage both runs. Diagnostic: did they quote specific moments from each, or summarise generically? If summary, redo with quote-required prompt.
-- **Phase 1 runs long (>20 min):** student is over-diagnosing. Force ranking — top three gaps, dominant first, one per home (memory / verifier / skill).
+- **Phase 1 runs long (>20 min):** student is over-diagnosing. Force ranking — top three gaps, dominant first.
 - **Phase 2 runs short (<10 min):** the scan skimmed. Diagnostic: does the shapes output name work the student recognises as theirs? If it reads generic, re-run study with a narrower pointer.
-- **Phase 2 runs long (>20 min):** cataloguing. Force the ranked head, draw two or three shapes, move to primitives.
+- **Phase 2 runs long (>15 min):** cataloguing. Force the ranked head, draw two or three shapes, skip the sidestep.
 - **Whole-room mood below 7:** practitioner fluency isn't landing. Check Phase 1: did the diagnosis name SPECIFIC gaps with quoted moments from BOTH runs? Specificity-across-two-runs is where this mood lives.
 
 **Plug points (trainer):**
@@ -165,7 +164,7 @@ Antti
 
 **First-cohort observation questions:**
 - Two-run reading stamina — does Phase 1's diagnosis-across-two-runs hold, or does the second run fade?
-- Primitives menu — do the field's checking primitives pair recognisably with the shapes students draw?
+- Primitives sidestep — how many rooms take the optional beat, and does the menu pair recognisably with the shapes students draw when they do?
 - Debrief round form — which works best with this mood (pair / whole-room / silent write-then-share)?
 
 Pre-cohort open items for M6: see `pre-cohort-todos.md`.

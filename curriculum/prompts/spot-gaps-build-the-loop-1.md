@@ -39,7 +39,7 @@ Walk the diff across four dimensions:
 - What packaging caught: specific moments in the packaged session where the reference, the plan.md, or the verifier prevented a drift the un-packaged session actually experienced. Quote the un-packaged moment and the packaged moment both.
 - What packaging missed: places the packaged session drifted even with packaging in play. Where the reference was too thin, where the plan.md carried the wrong state, where the verifier's quality bar sat beside the real failure.
 - What packaging introduced: new failure shapes that only exist because of the packaging itself — over-fitted verifier, plan.md staleness, reference-as-cage.
-- Where the fix belongs: for each named gap — memory (observation, hypothesis, rule), a sharper verifier, a rule in CLAUDE.local.md, or a new skill. Don't prescribe the skill's shape yet.
+- Where the fix belongs: for each named gap — memory (an observation, a hypothesis, or a rule in CLAUDE.local.md), a sharper verifier, or a new skill. Don't prescribe the skill's shape yet.
 
 For every claim, quote a specific moment from the artefacts. Don't generalise.
 

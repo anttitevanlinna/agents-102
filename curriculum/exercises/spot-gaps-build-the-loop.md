@@ -1,12 +1,12 @@
 # Map the gaps, read your stack
 
-**Time:** 40 minutes.
+**Time:** 35 minutes.
 
 **Session** *(new, "Module 6 worktree session")*
 
 Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no fork. M5's session may still be running the re-send. Leave it if that is the right call; M6 starts by reading both sessions from disk. Before M6 edits files or cuts rules, decide whether the M5 session is done enough, should be stopped, or should be treated as the partial artefact.
 
-**What you do:** Diff two sessions of the same task, route the dominant gap to its home, then read your own history for the work you repeat.
+**What you do:** Diff two sessions of the same task, cut the rule the diagnosis killed, then read your own history for the work you repeat.
 
 **What you build:** a ranked gap map from two sessions of the same task, one stale rule cut from your rules-file, and a diagrammed map of the work that recurs across your stack.
 
@@ -14,9 +14,9 @@ Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no 
 
 ---
 
-## Phase 1: Diff the two sessions, route what they surfaced
+## Phase 1: Diff the two sessions, rank the gaps
 
-*25 min*
+*20 min*
 
 - You hold two sessions of the same task. The un-packaged session sits on the `m4/<slug>` branch recorded in `task.md`; the packaged re-send sits on the `m5/<slug>` branch recorded in `plan.md`. Both are visible via git refs, since the worktree shares `.git` with the original repo.
 - Read from the recorded coordinates, not a branch or transcript search. Both sessions recorded their transcript paths: M4 in `task.md`, M5 in the protected `Run coordinates` block at the top of `plan.md`.
@@ -45,11 +45,6 @@ Ask Claude to cut one rule the two-session diagnosis killed, or to say so and st
 
 - Claude may pause before editing `./CLAUDE.local.md`. A named config file looks risky to modify. If it asks, just say go.
 - Push back if the diff touches more than the one rule you flagged. *"In place"* is loose wording, and Claude may rewrite more than the one stale rule. One rule cut, no more.
-
-## Route the dominant gap to its home
-
-- Gaps sort into three homes: memory (a rule that would have prevented the mistake upstream), a sharper verifier (a check that would have fired mid-session), or a skill (a move worth packaging for future tasks). The dominant gap gets a named home before anything gets built. If the home is memory, the rule can land in `./CLAUDE.local.md` now, the reverse of the cut above.
-- The closing lecture hands you the encode-move: a prompt built from the shapes you draw next.
 
 ## Phase 2: Find the work you repeat across your stack
 
@@ -81,7 +76,7 @@ Ask Claude to draw your top few work-shapes as simple diagrams.
 
 ## Sidestep: check your menu against the field's
 
-Optional. Your shapes are drawn and the dominant gap has a home. This one widens the menu you pick checks from.
+Optional. Your shapes are drawn and the gaps are ranked. This one widens the menu you pick checks from.
 
 - Where a primitive lines up with a shape you repeat, that pairing is a skill candidate for the kit you grow later.
 
@@ -91,33 +86,33 @@ Ask Claude to name the checking primitives the field already runs and rank the o
 
 Expect the list to look familiar: test-writing, browser-testing, PR-building, lint and typecheck gates, compile and build, smoke-test on a real path, code-review, git-diff inspection, schema validation, eval suites for agent outputs. Your list won't be exact. The recognition is the point. The primitives Claude names are the ones your codebase already runs.
 
-**What happened:** You ended with a one-screen gap map across memory / verifier / skill, one stale rule cut in place, and a diagrammed map of the work that recurs across your stack. The dominant gap has a named home; the shapes carry into the close.
+**What happened:** A one-screen gap map across memory / verifier / skill, one stale rule cut in place, and a diagrammed map of the work that recurs across your stack. The shapes carry into the close.
 
 <!-- maintainer -->
 
-**View summary:** You compare the un-packaged and packaged runs, rank what the second attempt still missed, remove one stale rule, route the dominant gap to its home, and map the work that recurs across your stack. The stack-map feeds the closing handoff move.
+**View summary:** You compare the un-packaged and packaged runs, rank what the second attempt still missed, remove one stale rule, and map the work that recurs across your stack. The stack-map feeds the closing handoff move.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain; widget/label chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. (The three bolded shape handles that survived that pass left with the 2026-08-01 authoring-sequence cut.)
 
-**Fast-operator batch path (accepted):** *"Fast operator?"* labels the opt-in path for someone who wants all three prompts in one conversation; it does not set the room's pace or the exercise's completion bar. The separate scan callout is the working-memory stop gate. Preserve both callouts and the label.
+**Fast-operator batch path (accepted):** *"Fast operator?"* labels the opt-in path for someone who wants both scan prompts in one conversation; it does not set the room's pace or the exercise's completion bar. The separate scan callout is the working-memory stop gate. Preserve both callouts and the label.
 
 **Quality:** compendium-audited 2026-08-02 (writing@ffc64f9 story@ffc64f9 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@d1141cd)
 - judges @ffc64f9: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (verify-refuted), slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - re-audit @796293b 2026-05-31: writing PASS, pedagogy PASS — steer-callout gained a premature-completion recovery line (§48/§62) + a render-as-HTML affordance callout after the shapes prompt (§50/§53/§62 hold)
 
-**Word count:** ~830 words body.
+**Word count:** ~740 words body.
 
-**Primary Bloom's level:** Analyze (Phase 1 diff + Phase 2 stack scan) + Evaluate (rule cut + gap routing).
+**Primary Bloom's level:** Analyze (Phase 1 diff + Phase 2 stack scan) + Evaluate (the rule cut).
 
-**Placement:** Phase 1 carries the two-session diff, the rule cut and the routing call, so the decision runs while both runs are still warm. Phase 2 is the stack scan, depth the student's, closing on an optional primitives sidestep that nothing downstream depends on.
+**Placement:** Phase 1 carries the two-session diff and the rule cut. Phase 2 is the stack scan, depth the student's, closing on an optional primitives sidestep that nothing downstream depends on.
 
 **Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know what my stack repeats."* Watch-for: compliance-feel (student treats the scan as paperwork) or credibility-performance (*"we map our stack like the pros do"*). Both steal the mood.
 
 <!-- backing -->
 
 Claims
-- `diff-two-runs-of-one-task` · vision · "Diff two sessions of the same task, route the dominant gap to its home, then read your own history for the work you repeat." ← none-owed
+- `diff-two-runs-of-one-task` · vision · "Diff two sessions of the same task, cut the rule the diagnosis killed, then read your own history for the work you repeat." ← none-owed
 - `read-from-recorded-coordinates` · vision · "Read from the recorded coordinates, not a branch or transcript search." ← none-owed
 - `you-hold-the-contrast` · vision · "You hold the contrast; the agent reads both sessions off disk." ← none-owed
 - `push-back-where-claude-generalises` · vision · "If Claude writes *\"the agent drifted on goal\"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted." ← none-owed
@@ -126,7 +121,6 @@ Claims
 - `sessions-are-on-disk-and-unread` · vision · "Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back." ← none-owed
 - `recurring-work-has-a-shape` · vision · "Steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described." ← none-owed
 - `primitives-will-look-familiar` · vision · "The primitives Claude names are the ones your codebase already runs." ← none-owed
-- `gaps-sort-into-three-homes` · vision · "Gaps sort into three homes: memory …, a sharper verifier …, or a skill" ← none-owed
 - `review-and-compound-across-two-runs` · borrowed · "You tested at M4, you learned at M5. Here you name what the two sessions cost you and where each lesson belongs." ← klaassen-how-every-codes
 
 Sources
@@ -154,13 +148,13 @@ OODA
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
 - holds a diagrammed map of the work they repeat across their stack, and reads a new task against it before sending the task off
 - cuts a stale rule from their own `CLAUDE.local.md` once a run's evidence shows it never fired or fired wrong, instead of letting the rules-file rot
-- routes a gap a run surfaces to its home (memory, sharper verifier, or a skill worth building) instead of patching ad hoc
+- reads a run's gaps as a ranked list with the dominant one named, instead of treating every miss as equally worth fixing
 
 **Failure modes + diagnostics:**
 - **Phase 1 generalised diff** — student says *"M5 was better"* without quoted moments. Diagnostic: prompt requires quoted moments from BOTH runs. If Claude returns only summaries, re-run with explicit quote enforcement. Echoes M5's Phase 1 diagnostic.
 - **Phase 1 packaging-over-credit** — student treats the packaged run as fully solved and skips the *"what packaging missed"* beat. Diagnostic: the M5 run did drift somewhere; if Phase 1 outputs zero misses, Claude is over-crediting. Trainer push: *"name one thing the verifier missed, concretely. Quote the scrollback."*
 - **Phase 2 wider-look sprawl** — the study scan reads the whole stack and can throw back a wall. The body stop gate is two or three recurring kinds of work clear enough to draw and compare. Depth is the student's, not a mandate to catalogue. If a student drowns in the scan, point at the ranked head and move on.
-- **Gap-home dodge** — student ranks the gaps but never commits the dominant one to a home; the routing beat is the exercise's Evaluate move. Diagnostic: can the student say which of the three homes the dominant gap lives in, in one sentence? If not, back to the ranked list.
+- **Rule-cut dodge** — student accepts *"every rule still holds"* without testing it against the diagnosis. Diagnostic: did any gap in the ranked list trace to a rule that fired wrong or never fired? If yes, the cut was available and got skipped.
 
 **Plug points:**
 - Student's M4 un-packaged artefact + M5 packaged re-run artefact (Phase 1 source material; both already in the repo + session transcripts).
@@ -168,10 +162,10 @@ OODA
 - Sponsor-stated or team-stated code-review conventions (feeds Phase 2 judge's quality bar, if the shape picked is LLM-judge).
 
 **Decision points (pacing):**
-- **Phase 1 >25 min** — over-diffing. The diff is data for the routing call, not an essay. Force a rank and move on.
+- **Phase 1 >20 min** — over-diffing. The diff is data for the rule cut, not an essay. Force a rank and move on.
 - **Phase 1 <10 min** — under-engagement. Check if Claude returned only summaries; re-run the prompt with quote enforcement if so.
 - **Phase 2 study + shapes run long (>15 min)** — the wider look is a light pass, not a full inventory. Study reads the ranked head; shapes draws two or three. If it eats the clock the student is cataloguing; use the body stop gate and skip the sidestep.
-- **Whole-room mood below 7** — practitioner fluency isn't landing. Check the routing beat: does the dominant gap have a named home, in the student's own words? If the gaps stayed a list, the read didn't close.
+- **Whole-room mood below 7** — practitioner fluency isn't landing. Check Phase 1 specificity: did the diagnosis name gaps with quoted moments from BOTH runs? If it stayed generic, the read didn't close.
 
 **Watch-fors (cross-phase):**
 - **Verifier-as-eval terminology leaking** — the closing lecture names evals with full weight (verifier = judge = gate = eval). Phase 2 can use the plain words (verifier, judge); save the explicit naming for the closer.

@@ -42,7 +42,7 @@ Ask Claude to introspect on what it read, what it skipped, and the call it made 
 
 ## Read the self-report, then spot-check it
 
-- The account is a reconstruction, not ground truth. The LLM confabulates reasons sometimes. Assume about 10% of what it says or does is misrepresentation. Could be more or less than this heuristic suggests.
+- The account is a reconstruction, not ground truth. The LLM confabulates reasons sometimes. Assume about 10% of what it says or does is made up. Could be more or less than this heuristic suggests.
 - You can spot-check it. Quote a specific file or function back and ask Claude to confirm it read what it claims.
 
 ## Check how full the window is

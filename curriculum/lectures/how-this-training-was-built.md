@@ -20,7 +20,7 @@ Simulated engineers read the result as a competent builder, a skeptical senior, 
 
 Then a tmux runner drives real Claude Code sessions through Modules 1–6 against working codebases. It catches a different class of failure: a session that stalls, an artifact that never lands, or a handoff that breaks the next module.
 
-None of these checks replaces another. Rules catch mistakes already understood. Judges and simulations challenge the written material. The tmux runs test whether the training actually executes.
+None of these checks replaces another. Rules catch mistakes already understood. Judges and simulations challenge the written material. The tmux runs test whether the training actually executes. You build similar scaffolding for your own repo throughout the training. The rules file you just wrote is the first piece.
 
 ## You just ran the same loop
 
@@ -85,6 +85,7 @@ Format → `curriculum/backing-format.md`.
 - `claude-local-md-carries-session-learning` · detail · what the session taught is written into `./CLAUDE.local.md` for the next session ← claude-local-md-autoload
 - `klaassen-names-it` · borrowed · “Kieran Klaassen calls this **compound engineering**” ← klaassen-definitive-guide
 - `compound-work-improves-next-work` · borrowed · “work produces evidence; evidence improves the system that does the next work” ← klaassen-definitive-guide
+- `claudes-first-read-partly-wrong` · vision · “Claude's first read was partly wrong.” ← none-owed — design-stance about the just-run exercise, not a measured claim: the orient read always leaves a skipped slice, and the introspection prior (“about 10% … made up”, hedged there) makes findable wrongness the expected case. “Partly” carries the same hedge; do not strengthen to a rate.
 - `loop-is-the-shape` · vision · “The loop is the shape. The bug today was the excuse.” ← none-owed
 
 **Sources**

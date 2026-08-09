@@ -114,7 +114,7 @@ Don't split M4 across the days: its flow is one sequential beat and the send-off
 **Learning goals.** Student can:
 
 - Run an orient → fix → close → compound loop end-to-end on a trivial bug in their own repo.
-- Introspect the agent's read of the repo and dig until they find what it's misrepresenting.
+- Introspect the agent's read of the repo and dig until they find what it made up.
 - Fix the bug tests-first, root-cause-driven, no plan mode, ship the PR.
 - Close the bug's ticket from what their own tracker's field conventions show, the first move outside the repo.
 - Compound one rule from the session into `./CLAUDE.local.md`.

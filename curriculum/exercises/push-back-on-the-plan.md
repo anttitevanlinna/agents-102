@@ -48,7 +48,7 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. While 
 ## Catch the re-softening in the revised plan
 
 - Two messages, your phrasing, specific to what you saw. The agent acknowledges each, regenerates the plan, re-presents it.
-- Read the revised plan carefully. This is where Claude's niceness bites. Claude will sometimes verbally accept a push-back and re-soften the step anyway. If you see the original vagueness survive the regeneration, push back again on that specific line. Softening-on-regeneration is a reliable tell; catching it is part of the read.
+- This is where Claude's niceness bites: it can make the wrong choice and tell you, in nice words, that the problem is gone. Take the report-back with a grain of salt, always: read the flagged steps in the revised plan, and if the vagueness survived, push back again on that line.
 - Stuck on the soft item? Ask Claude which step it's least confident about. That answer IS one. **Find is easier than judge.**
 
 > **Two messages, then move on.** Two push-backs on two axes, plus one check that the regeneration held, is all Phase 3 asks. A third push-back may be forming. That is fine; it is the second-pass read's job to catch the rest. Send your two, check the revision once, and move to Phase 4.
@@ -149,7 +149,7 @@ Claims
 - `steps-that-stop-at-file-names-defer-design` · vision · "A step that stops at the file name defers the design to mid-run, and you will not notice." ← none-owed — the noticing claim is deliberate (maintainer correction): whether anyone watches mid-generation varies, but a wrong design call reads as progress while it is being made. Do not revert to a nobody-is-reading claim. The taught mechanism lives in `when-a-plan-is-good.md`'s gate slide; this bullet is the point-of-use recall.
 - `tests-are-part-of-done` · vision · "the tests are part of what \"done\" means, not something you bolt on after" ← none-owed
 - `assumption-push-back-is-wwhtbt` · borrowed · "something the plan is carrying silently that it shouldn't" ← martin-wwhtbt
-- `re-softening-on-regeneration` · vision · "Claude will sometimes verbally accept a push-back and re-soften the step anyway." ← none-owed
+- `re-softening-on-regeneration` · vision · "it can make the wrong choice and tell you, in nice words, that the problem is gone" ← none-owed — maintainer frame near-verbatim; the report-back grain-of-salt is M1's self-report-is-a-hypothesis recalled at point of use.
 - `find-is-easier-than-judge` · vision · "**Find is easier than judge.**" ← none-owed
 - `walk-down-branches-three-at-a-time` · borrowed · "walk down every unresolved branch of the plan three questions at a time, recommending an answer for each" ← pocock-grill-me
 - `stop-when-the-read-starts-reaching` · vision · "Stop when the second read starts reaching" ← none-owed

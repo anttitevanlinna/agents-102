@@ -8,9 +8,9 @@ Start a new Claude Code session at your repo root.
 /rename m2-plan-mode
 ```
 
-## Plan mode is a read-only permission state
+## Plan mode changes the tools and the instructions
 
-- Plan mode is a permission state, not a feature. You press Shift+Tab until the status bar shows plan mode on. The agent is now read-only: it reads files, runs shell commands to explore, and writes a plan file, but it won't edit your source until you approve.
+- Plan mode removes the edit tools and swaps the instructions to explore and propose. You press Shift+Tab until the status bar shows plan mode on. The agent reads files, runs shell commands to explore, and writes a plan file, but it won't edit your source until you approve.
 - The read-only part is load-bearing. Plan mode isn't "Claude thinks before doing." It's "Claude writes a thing you can read, edit, and push back on before your source changes."
 - The plan is saved on disk under a descriptive filename such as `migrate-auth-hash-calm-otter.md`. You can find it again without searching the chat.
 - You will notice the wait. While Claude plans, other sessions could be making progress elsewhere. Not today, but soon.
@@ -34,8 +34,6 @@ Watch what comes back. Sometimes Claude names the read-only state directly, some
 - **Named assumptions.** Good plans flag what they're assuming (library versions, schema shapes, whether a teammate's migration ran last week). A plan without assumptions isn't assumption-free; it's just assumption-silent.
 - **A list of non-goals.** What the plan will *not* touch. Every adjacent improvement looks helpful, so the agent does the ones you never ruled out. (Dex Horthy)
 
-Five things. That's the read.
-
 ## Three pressures that make bad plans look good
 
 - **Structure is persuasive.** A 7-item plan with section headers and bold text looks like a decision. It often isn't. It's a draft formatted like a decision. The formatting is the trap.
@@ -48,7 +46,7 @@ Five things. That's the read.
 - Paired, they give a complete read; neither alone does. Order matters: your push-back first, so your read stays in the driver's seat, then the walk-down for the branches you can't see.
 - Check the revision, not the acknowledgement. The agent agrees easily. A flagged step can come back softened rather than sharpened. A push-back is finished when the regenerated plan is sharper, not when Claude says it heard you.
 
-After you've done it once, you'll feel when a plan needs the second read and when your own read was enough.
+If the plan still has open questions, run the walk-down. If it's all clear, your read is enough.
 
 ## Find is easier than judge
 
@@ -62,7 +60,64 @@ After you've done it once, you'll feel when a plan needs the second read and whe
 - Aim the read at the unknown that teaches you the most. The branches worth walking are the ones that change what done means. The rest you'd settle in code review anyway.
 - You don't have to execute a plan to know it's good. Recognizing a good plan is the skill; the execution can wait for the day the task is real.
 
+## What you can test and check sets your complexity ceiling
+
+<figure class="diagram">
+<svg viewBox="0 0 1200 560" role="img" aria-label="A two-by-two map of delegated work. Horizontal axis: reach, how much you hand off. Vertical axis: calibration, whether trust was earned by a measured gate. Four states: chat-shaped work bottom-left, controlled assistance top-left, reckless autonomy bottom-right, calibrated agency top-right. A dashed ochre curve labelled the frontier rises from low reach at low calibration to high reach at high calibration, and moves outward as fast as the gates behind it." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
+<rect x="0.5" y="0.5" width="1199" height="559" rx="7" fill="#efe6d2"/>
+<rect x="12" y="12" width="1176" height="536" fill="none" stroke="#d6c8a3" stroke-width="1" opacity="0.9"/>
+<rect x="650" y="270" width="500" height="200" fill="rgba(138,58,42,0.05)"/>
+<g stroke="#d6c8a3" stroke-width="1" stroke-dasharray="2 8" opacity="0.8">
+<line x1="650" y1="70" x2="650" y2="470"/>
+<line x1="150" y1="270" x2="1150" y2="270"/>
+</g>
+<g stroke="#786c56" stroke-width="1.6" stroke-linecap="round">
+<line x1="150" y1="470" x2="1140" y2="470"/>
+<line x1="150" y1="470" x2="150" y2="80"/>
+</g>
+<g fill="#786c56">
+<polygon points="1150,470 1138,464 1138,476"/>
+<polygon points="150,70 144,82 156,82"/>
+</g>
+<text x="650" y="505" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2.5" fill="#786c56">REACH · HOW MUCH YOU HAND OFF →</text>
+<text x="125" y="270" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2.5" fill="#786c56" transform="rotate(-90 125 270)">CALIBRATION · TRUST, MEASURED ↑</text>
+<g text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.5" letter-spacing="2">
+<text x="400" y="150" fill="#2f6b6b">CONTROLLED ASSISTANCE</text>
+<text x="400" y="400" fill="#2f6b6b">CHAT-SHAPED WORK</text>
+<text x="800" y="150" fill="#2f6b6b">CALIBRATED AGENCY</text>
+<text x="960" y="400" fill="#8a3a2a">RECKLESS AUTONOMY</text>
+</g>
+<g text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234">
+<text x="400" y="168">small handoffs, tight review</text>
+<text x="400" y="418">you read everything</text>
+<text x="800" y="168">big handoffs, gates and checks you trust</text>
+<text x="960" y="418">big handoffs, green you took on faith</text>
+</g>
+<path d="M 480,470 C 640,420 760,330 850,240 S 980,120 1020,70" fill="none" stroke="#a05a2c" stroke-width="2.4" stroke-dasharray="7 7" opacity="0.85"/>
+<text x="935" y="205" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="2.5" fill="#a05a2c" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE FRONTIER</text>
+<text x="935" y="221" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">moves as fast as the gates behind it</text>
+<line x1="880" y1="250" x2="945" y2="250" stroke="#a05a2c" stroke-width="1.8" stroke-linecap="round"/>
+<polygon points="955,250 943,244 943,256" fill="#a05a2c"/>
+<text x="650" y="533" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="15.5" fill="#4a4234">The frontier: the largest task you can hand off, well designed, enough unclarity removed.</text>
+<text x="1176" y="36" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" letter-spacing="2" fill="#8a3a2a">TWO AXES · FOUR STATES</text>
+</svg>
+</figure>
+
+- Every task you hand off sits on two axes. Reach is how much you delegated: the size of the task, the distance between checks. Calibration is whether your trust in what came back was earned by a check you have verified.
+- The plan read is a calibration move. It is cheap, it runs before anything is built, and its cost does not grow with the size of what you approved.
+- Reach without calibration is what the three pressures produce: a plan that reads well, approved at a scope your read never actually covered.
+- Push reach past what you can check and you have not delegated more. You are checking less.
+- The ceiling is not fixed. Every check you make cheap and repeatable raises it, so building a better check buys you more than approving a bigger plan.
+
 <!-- maintainer -->
+
+**The delegation-frontier slide (`## What you can test and check sets your complexity ceiling`).** The header is a claim rather than the model's name, and that is deliberate: at M2 the bare term *the delegation frontier* is an unearned container (`check_lectures.md §4`) and it pulls optimistic where the slide warns. The name rides the figure's own caption instead, so `the-gate-is-a-claim.md`'s `## The delegation frontier` stays the naming beat. Idea first, name after, the doctrine `the-whole-map.md` states for the laws.
+
+*Ceiling* is the arc's recurring shape for a limit set by what the engineer brings, always locally qualified: `painting-the-picture-with-the-llm.md`'s *"Your stance is the ceiling"* (quality), `new-human-role-in-the-loop.md`'s *"Steering raises the ceiling"*, `law:learning-rate-is-the-ceiling`. *Complexity ceiling* is this slide's variable, so it extends the pattern instead of colliding with it. The header states the relationship between the two axes, which is what the model is; the axes themselves are defined in bullet 1 so the slide stands alone (`check_pedagogy.md §9b` self-sufficiency).
+
+The last bullet carries the raise, and it plants what `the-gate-is-a-claim.md` deliberately withholds at its close. No conflict: the doubt held open there is whether a given gate is honest, not whether ceilings move. Mechanism for raising it stays unnamed here, since naming it would sequence forward (`check_lectures.md §3`).
+
+The canvas is a copy of the one in `the-gate-is-a-claim.md`, which is the parent: change it there and re-derive here. No ids in the SVG, so no prefix collision. The figure carries all four states; the bullets teach only the two axes and the frontier rule, the same furniture split `the-whole-map.md` uses for its nine loop tags. Deliberate early placement of a load-bearing model, per `check_pedagogy.md §9b` — repetition in the right doses is the retention mechanism, so this is dosage rather than a spent reveal, and the M5 closer plugs the same model into the verifier the student builds there. This slide's worked instance is the plan read. Self-sufficiency obligation met in bullet 1: reach and calibration are both defined here, not borrowed from the later lecture. Zero bold, header carries the handle, matching the parent slide. ~135 words against the 210 bar, four bullets against six. Sequential deck read resolves *gate* and *the plan read* from the preceding slide and *the three pressures* from slide 4. If the lecture runs tight, the compression already named below (three-pressures slide to 60 seconds) is the trade; that slide still has to exist, because bullet 3 points at it.
 
 **Criteria slide, two expansions from the same practitioner (2026-07-29 and 2026-07-31, both Antti-directed, both from Dex Horthy).** *Three things* → *Four things* added **An early runnable slice** in second position, from `wsff.md`'s vertical-slicing argument: the prior three would all pass a fully horizontal plan. *Four things* → *Five things* added **A list of non-goals** in last position, from Horthy's `create_plan.md` template, after a 2026-07-31 OODA hunted six practitioners for a criterion the four could not hold and found exactly this one. **Slide now five bullets and sits within a hair of the size bar — measure before touching it.** Attribution differs between the two: the slice ships un-credited in body (the article links from M6's `quality-is-grounding.md`), the non-goals bullet carries a bare *(Dex Horthy)*, because plan mode does not produce that section by itself and the credit stops it reading as a tool behaviour. Horthy is not a new student-side name — M1's `getting-going.md` already assigns his essay as prework. Quality per-class SHAs predate both passes; re-audit before ship.
 
@@ -70,7 +125,7 @@ After you've done it once, you'll feel when a plan needs the second read and whe
 
 **Slide-page standardization (2026-07-02, Antti-directed):** `### Optional: ask plan mode directly` promoted to `##` — every slide page = line + `##` headline (the "Wrong is how steering gets in" pattern); no h3/hr page divisions in theory lectures. Layout-only. The `ask plan mode directly` section is kept (see the keep note below).
 
-**Slides-only pass (2026-07-02, unaudited):** covered regions DELETED (Path A — prose was verbatim-redundant with the slides; git carries it). Per-passage verdicts: intro agenda line CUT (slide titles carry it) · "you will notice the wait" FOLDED into slide 1 as fourth bullet (plants M3's two-window move) · "What you do with this" section CUT (the exercise body carries the flow; "then you stop" is the exercise's own beat) · feel-line KEPT as slide-4 kicker (fluency forecast, future-tense informing) · "Three things. That's the read." KEPT as slide-2 kicker · *Optional: ask plan mode directly* section KEPT UNCHANGED (its prompt is kept — see the keep note below). File is now Session widget + six slides + kickers + one optional plan-mode-introspection move.
+**Slides-only pass (2026-07-02, unaudited):** covered regions DELETED (Path A — prose was verbatim-redundant with the slides; git carries it). Per-passage verdicts: intro agenda line CUT (slide titles carry it) · "you will notice the wait" FOLDED into slide 1 as fourth bullet (plants M3's two-window move) · "What you do with this" section CUT (the exercise body carries the flow; "then you stop" is the exercise's own beat) · slide-4 kicker carries the open-questions decision rule (walk-down vs own read; maintainer-worded, Sami design-phase register — no experience-tier assumption) · *Optional: ask plan mode directly* section KEPT UNCHANGED (its prompt is kept — see the keep note below). File is now Session widget + six slides + kickers + one optional plan-mode-introspection move.
 
 **`ask plan mode directly` — kept, not cut.** The `when-a-plan-is-good-1` prompt was flagged `meta-retrospective` for a possible cull (the case for cutting: it adds an optional beat, and trimming lessens cognitive load). Kept by decision: asking plan mode what changed on its own side is a learn-how-the-tool-works beat. The student reads the read-only permission state back from the agent's own report, which the surrounding framing can only assert. The tool-literacy payoff outweighs the load argument; not a cut candidate.
 
@@ -96,7 +151,7 @@ After you've done it once, you'll feel when a plan needs the second read and whe
 Format → `curriculum/backing-format.md`.
 
 **Claims**
-- `plan-mode-is-permission-state` · detail · "Plan mode is a permission state, not a feature" ← cc-permission-modes
+- `plan-mode-is-tool-and-instruction-change` · detail · "Plan mode removes the edit tools and swaps the instructions to explore and propose" ← cc-permission-modes — maintainer-directed reframe: mechanism, not taxonomy. The docs file plan under permission modes; that taxonomy word stays in the reference page's lookup table (`claude-code-for-engineers.md §5`), where it is a docs citation. The mechanism half is live-observable (edit tools blocked in plan mode; approval ships as a tool call in the loop); the behavioral half ("reads files, runs shell commands to explore, writes a plan, won't edit your source") is near-verbatim the docs and stays on the stamp.
 - `plan-mode-shift-tab` · detail · "You press Shift+Tab until the status bar shows plan mode on" ← cc-permission-modes
 - `plan-mode-read-only` · detail · "The agent is now read-only: it reads files, runs shell commands to explore, and writes a plan file, but it won't edit your source until you approve" ← cc-permission-modes
 - `plan-before-source-changes` · detail · "Claude writes a thing you can read, edit, and push back on before your source changes" ← cc-permission-modes — "your source" is the load-bearing scope: since v2.1.218 approved shell commands run during planning, so plan mode protects the source tree, not all state.

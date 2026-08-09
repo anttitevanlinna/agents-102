@@ -9,7 +9,7 @@ Reading a plan is finite. Your own read catches some of it, a second agent walki
 
 Surface one multi-file backlog task in the repo you used for Module 1. Criteria: non-trivial agent work, touching wrong file matters, you'd ship it today if you had the hour. From your tracker, your head, or in conversation with Claude, your choice.
 
-**Just a simple task that spans a few files. Not an epic.**
+**A task that spans a few files. Not an epic.**
 
 Come without a surfaced task and you'll be scrambling to find one while the room is already in plan mode. Your call.
 
@@ -27,7 +27,7 @@ After this module, you will be able to:
 
 ## Start here
 
-**The question, to you:** when was the last time Claude wrote a plan you approved without really reading? We all do it. What made you approve? Was it that the plan looked right, or that you were in a hurry, or that pushing back felt like work?
+**The question, to you:** when was the last time you entered generation with too little planning? Where did it bite: wrong files, a design decided mid-run, rework you could have planned away?
 
 Before the plan-reading move, one orientation. Here is the whole territory this work runs in, and where the ground you are on sits in it.
 

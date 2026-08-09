@@ -30,6 +30,8 @@ Let's go.
 
 <!-- maintainer -->
 
+**Shotgun/cannon pair is a deliberate provocation beat (maintainer's own words, keep).** The unexplained image is the point: a think-beat that makes the reader do the cashing-out, in the opener's reframe register. Do not cut, literalize, or replace with a named lever — the precise lever already sits two sentences up ("Whatever you put in front of the LLM is what the LLM scales"), and the pair rides on it. Judges reading for decode cost: reframe-texture carve-out applies (`check_writing.md` §4 Sami-pass corollary — rules go banal, reframes keep texture).
+
 **Trainer-feedback pass (2026-08-04):** two surgical cuts from the opener: *"The LLM is an infinite chameleon"* competed with the slide's mirror image, and *"That is the design, not a flaw"* repeated the training explanation immediately after it. The Perl-engineer archetype, autocomplete transition, good/bad range, session fit, mirror, training explanation, and stance ceiling all stay; no replacement framing added.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all three narrative slides recast from bolded-claim bullets to prose paragraphs, zero bold kept, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. "Let's go." kicker untouched. Wording near-verbatim; no claims added or cut.

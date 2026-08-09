@@ -135,7 +135,7 @@ Optional. They sit in the gap while your un-packaged session is still going. All
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create
 - **Pacing:** Runtime is computed — `node scripts/calculate-time.js run-the-first-experiment`. Trainer demos slowly, room copy-pastes concurrently. Send-off is a single prompt paste, not a wait. The compressed 2-day slot still needs a cut beyond the ones the `Transitions` line already models; which one is undecided, tracked in `pre-cohort-todos.md`.
-- **Transitions:** connections 10 @start cohort-2day:5 "Connections: candidate tasks" · send-off 12 @after:walk-and-send-off "Send-off section: transcript + commit markers, trifecta check, prompt paste" · close and bridge 3 @end cohort-2day:0 "Close: Reading the return pointer + Bridge"
+- **Transitions:** connections 10 @start "Connections: candidate tasks" · send-off 12 @after:walk-and-send-off "Send-off section: transcript + commit markers, trifecta check, prompt paste" · close and bridge 3 @end "Close: Reading the return pointer + Bridge"
 - **Charge:** what-keeps-a-long-running-session-going 0 — the three-slide observational closer rides the active send-off session; it spends the room's attention, not the module's clock.
 - **Prep / bridge timing:** `reading-the-return.md` 5 min at M4 close; Uncle Bob supplementary 7 min; Entis/Klaassen interview 30 min; Klaassen compound-engineering guide 15–20 min.
 - **Deliberate incompleteness:** M4 leaves the un-packaged send-off and the unfilled gaps beyond the top three open. The closer observes where existing boundaries fire, where the session waits, and where nothing pushes back. The trainer does not add packaging or patch the gaps before M5 reads the result.

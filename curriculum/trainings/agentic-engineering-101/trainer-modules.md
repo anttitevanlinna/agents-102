@@ -40,22 +40,19 @@ The one trainer doc. **Start here** is the delivery contract — read it once be
 |---|---|
 | 08:30 – 10:30 | M1 (2h) |
 | 10:30 – 10:50 | Break |
-| 10:50 – 12:00 | M2 part 1: Connections + Lecture + Exercise Phases 1–4 |
-| 12:00 – 13:15 | Lunch — lands mid-M2 by design; the pause IS Phase 5's "stop" |
-| 13:15 – 13:45 | M2 part 2: Phase 5 + close |
-| 13:45 – 14:05 | Break |
-| 14:05 – 15:55 | M3 (1h50) — closes with the M4 task-pick homework, which is what compresses M4's Phase 1 to a confirm |
-| 15:55 – 16:10 | Closing Day 1 |
+| 10:50 – 12:50 | M2 (2h) — runs whole; Phase 5 follows Phase 4 directly and the exercise body's own "Stop" carries the beat |
+| 12:50 – 14:05 | Lunch |
+| 14:05 – 16:05 | M3 (2h) — closes with the M4 task-pick homework, which is what compresses M4's Phase 1 to a confirm |
+| 16:05 – 16:20 | Closing Day 1 |
 
 | Day 2 | Block |
 |---|---|
-| 08:30 – 10:00 | M4 (1h30 compressed: Connections 5, Bridge cut, Phase 2→3 banter capped at 5 — cuts in the M4 tab; the break absorbs up to 5 min of send-off tail) |
-| 10:00 – 10:20 | Break (≥15 min stays real if M4's tail eats into it) |
-| 10:20 – 12:20 | M5 (2h; no slack — whatever headroom the slot has is booked by the worktree fork (start it the moment the room settles) and the two closers; if the fork fights back, cap Phase 4 at half-pages — M5 tab cut order #1) |
-| 12:20 – 13:35 | Lunch — the packaged re-send runs through it |
-| 13:35 – 13:50 | Re-entry: nudge a stalled M5 session, settle in |
-| 13:50 – 15:35 | M6 (1h45) — opens in a FRESH session at the same worktree (the M5 session may still be running; read both sessions from disk before any write) |
-| 15:35 – 15:50 | Closing Day 2 |
+| 08:30 – 10:30 | M4 (2h) — runs uncompressed at this slot; the Connections trim and Bridge cut are no longer needed to make it fit |
+| 10:30 – 10:50 | Break |
+| 10:50 – 12:50 | M5 (2h) — the one module still over its slot; start the worktree fork the moment the room settles, and if the fork fights back cap Phase 4 at half-pages (M5 tab cut order #1) |
+| 12:50 – 14:05 | Lunch — the packaged re-send runs through it, and absorbs an M5 overrun |
+| 14:05 – 16:05 | M6 (2h) — opens in a FRESH session at the same worktree (the M5 session may still be running; read both sessions from disk before any write). Its own re-entry beat covers nudging a stalled M5 session |
+| 16:05 – 16:20 | Closing Day 2 |
 
 Don't split M4 across the days: its flow is one sequential beat and the send-off is the close; the M3→M4 task-pick homework is the designed spillover. An alternative shape exists (M1-M2-M4 / M5-M3-M6, for cohorts that want the overnight M4→M5 hinge) — that's a call to make with your delivery contact before the cohort, not solo.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->**Sittings.** One module per sitting, in tab order, at the budget on that tab's Slot line.<!--/flag:no-module:spot-gaps-build-the-loop-->
 
@@ -94,7 +91,7 @@ Don't split M4 across the days: its flow is one sequential beat and the send-off
 
 ### M1 — Getting going + context
 
-**Slot.** 2-day cohort: Day 1, 08:30–10:30 (2h slot). Four-sitting track: sitting 1. M1 is the only core module outside the 1h45 band, by design — the runtime map below carries the current verdict for both shapes, and where it says the sitting overruns, take the overrun or cut per the if-behind list below. Thinking effort `high` (prework default).
+**Slot.** 2-day cohort: Day 1, 08:30–10:30 (2h slot). Four-sitting track: sitting 1, 2h. Both shapes are the same size now, so the runtime map below reads the same for each. Thinking effort `high` (prework default).
 
 **Big idea.** The first compound loop closes on a trivial bug from the student's own backlog: orient, fix tests-first without plan mode, close the bug's ticket in the register their own tracker just taught the agent, then retro into a personal `./CLAUDE.local.md` born from the session. All four moves happen in the room. The loop every module after this one rides on.
 
@@ -182,7 +179,7 @@ Never cut: the failing test before the fix, the diff-line push-back, and the con
 
 ### M2 — Plan mode, done right
 
-**Slot.** 2-day cohort: Day 1, 10:50–12:00 (Connections through Exercise Phase 4, 1h10), lunch, 13:15–13:45 (Phase 5 + close, 30 min). Lunch at 12:00 sharp IS Phase 5's "stop." Four-sitting track: sitting 2, 1h45 straight through; Phase 5 follows Phase 4 directly and the exercise body's own "Stop" carries the beat. Thinking effort `medium` (the module says high may feel sluggish on a tight slot).
+**Slot.** 2-day cohort: Day 1, 10:50–12:50 (2h, straight through). Four-sitting track: sitting 2, 2h. In both shapes Phase 5 follows Phase 4 directly and the exercise body's own "Stop" carries the beat — no lunch lands inside the module to carry it. This is the tightest module in the arc: it runs to the ceiling of its slot, so the if-behind list below is the one to know. Thinking effort `medium` (the module says high may feel sluggish on a tight slot).
 
 **Big idea.** The prompt can grill a plan harder than the student needs to consume. The student's read brings codebase judgment; the second-pass agent brings breadth. The student keeps the highest-value sharpenings and stops when the plan is good enough to generate.
 
@@ -260,7 +257,7 @@ Never cut: Phase 5's stop. Approve, don't execute, and name the pattern; the non
 
 ### M3 — Earn the trust
 
-**Slot.** Day 1, 14:05–15:55 (1h50). Closes with the M4 task-pick homework — that homework is what compresses M4's Phase 1 to a confirm on Day 2.
+**Slot.** Day 1, 14:05–16:05 (2h). Closes with the M4 task-pick homework — that homework is what compresses M4's Phase 1 to a confirm on Day 2.
 
 **Big idea.** Before the agent runs bigger work alone, earn your staff engineer's and CISO's trust on a small piece shipping this week. Two curated skills do the security work; one authored skill does the quality work. Team-kit accretion starts here, personal-first.
 
@@ -313,7 +310,7 @@ Never cut: Phase 5's stop. Approve, don't execute, and name the pattern; the non
 
 ### M4 — Run the first experiment
 
-**Slot.** 2-day cohort: Day 2, 08:30–10:00 (compressed opener; Connections trimmed, Bridge cut, banter compressed). Four-sitting track: sitting 3, the full sitting. Phase 1 is a 2-minute confirm because the task came in as homework (from M3's close in the six-module arc; from M2's close in the four-sitting cut). The runtime map below carries the current verdict for both shapes.
+**Slot.** 2-day cohort: Day 2, 08:30–10:30 (2h). Four-sitting track: sitting 3, 2h. Phase 1 is a 2-minute confirm because the task came in as homework (from M3's close in the six-module arc; from M2's close in the four-sitting cut). At 2h the module runs uncompressed in both shapes — see the cohort-2day Connections trim in `Transitions:`, which the slot no longer requires.
 
 **Big idea.** Walk what's been built so far against a real task; fill the worst gaps; send the task off un-packaged in the same session; learn from what the agent does with the system as it stands. The un-packaged send-off is intentional — it teaches Module 5 what packaging adds.
 
@@ -397,7 +394,7 @@ Never cut: the send-off itself, and never rescue the un-packaged run. A weak fir
 
 ### M5 — Learn from the test, re-send packaged
 
-**Slot.** 2-day cohort: Day 2, 10:20–12:20 (2h slot; the packaged re-send fires at close and runs through lunch). Whatever headroom the slot has is booked by the worktree fork and the closers — start the fork the moment the room settles. Four-sitting track: sitting 4 and the finale; the worktree fork is the squeeze point. The runtime map below carries the current verdict for both shapes.
+**Slot.** 2-day cohort: Day 2, 10:50–12:50 (2h slot; the packaged re-send fires at close and runs through lunch). Four-sitting track: sitting 4 and the finale; the worktree fork is the squeeze point. **The only module still over its slot at 2h** — the runtime map below carries the figure. Start the fork the moment the room settles, and take the overrun into lunch, which the re-send runs through anyway.
 
 **Big idea.** Read the un-packaged M4 run through three failure-mode lenses; build the validation that would have caught each; assemble the reference and `plan.md`; re-send the same task packaged. The contrast IS the lesson.
 
@@ -475,7 +472,7 @@ Never compress the two closing lectures. What packaging is → The gate is a cla
 
 ### M6 — Spot gaps, build the loop
 
-**Slot.** Day 2, 13:50–15:35 (1h45). Opens with M6 reading both runs from disk BEFORE writing anything. Lecture-dense by design — pacing and register notes below the cues.
+**Slot.** Day 2, 14:05–16:05 (2h). Opens with M6 reading both runs from disk BEFORE writing anything. Its re-entry beat also covers nudging an M5 session still running from before lunch. Lecture-dense by design — pacing and register notes below the cues.
 
 **Big idea.** Two runs of the same task (un-packaged M4, packaged M5) are enough evidence to name what the three-pattern didn't anticipate and route each gap to its home (memory / verifier / new skill). Then the reading turns outward: map the work the student repeats across their stack; the close hands them the encode-move built from those shapes.
 

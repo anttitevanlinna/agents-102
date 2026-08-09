@@ -37,7 +37,7 @@
 // Usage:
 //   node scripts/calculate-time.js                        # every module, every shape
 //   node scripts/calculate-time.js getting-going          # one module
-//   node scripts/calculate-time.js --shape sitting-1h45
+//   node scripts/calculate-time.js --shape sitting-2h
 //   node scripts/calculate-time.js --check                # exit 1 on a leaf-level defect
 //   node scripts/calculate-time.js --json
 //   node scripts/calculate-time.js --training agentic-engineering-101

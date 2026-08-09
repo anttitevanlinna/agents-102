@@ -280,7 +280,7 @@ OODA
 <!-- /backing -->
 
 **EYEBALL questions (2026-07-02, for Antti):**
-1. Slot timing: M6 runs 1h45 with Closer 15 / Bridge 3; this adds 8–10 min as a fourth closer beat. Trim a neighbour, extend the slot, or deliver this as the bridge beat?
+1. Slot timing: this adds 8–10 min as a fourth closer beat. Trim a neighbour, or deliver this as the bridge beat? (M6's slot went to 2h; `node scripts/calculate-time.js spot-gaps-build-the-loop` says it now fits with float, so this may already be answered.)
 2. Slide budget: six slides (re-show · three phase slides · governor · close). Trim candidate: fold the governor slide into the close?
 3. Does the final line land — the kicker "The next dashed loop is yours to draw solid" as the training's last word on the map?
 4. SVG dependency: the M2 map's own eyeball queue is open (incl. whether the checking ghost survives at all). If that ghost dies upstream, this re-show loses its payoff — resolve the M2 questions first?

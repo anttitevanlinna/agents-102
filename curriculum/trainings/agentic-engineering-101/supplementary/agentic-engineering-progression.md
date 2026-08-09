@@ -74,7 +74,7 @@ Leverage is not reach alone. It is reach that trust can keep up with.
 
 <!-- maintainer -->
 
-**Meta:** *AE101 supplementary, ~4-minute read. Part 1 gives the engineer-active progression in one section. Part 2 gives the leverage model. First linked from M1's pre-reads; linked again from M4's `## Prework` section.*
+**Meta:** *AE101 supplementary, ~2-minute read. Part 1 gives the engineer-active progression in one section. Part 2 gives the leverage model. First linked from M1's pre-reads; linked again from M4's `## Prework` section.*
 
 **Role:** Names a recurring progression in how engineers use AI, then gives the calibrated delegation frontier for reasoning about leverage. The engineer remains the actor throughout.
 
@@ -99,8 +99,8 @@ Claims
 - `leverage-reach-and-trust` · vision · "Leverage is not reach alone. It is reach that trust can keep up with." ← none-owed
 
 Sources
-- fred-ai-native-playbook `[checked:2026-08-08 result:OK due:2027-02-08]` https://positivelyfred.substack.com/p/the-ai-native-engineering-playbook — [practitioner direct] Wollsén and McCrosky's March 2026 account supplies the Crawl/Walk/Run/Fly sequence and the moves summarized in body: agent in repo, agent-readable context and routines, then parallel orchestration. fallback: remove the stage labels and retain the engineer-active synthesis.
-- fred-throughput-account `[checked:2026-08-08 result:OK due:2027-02-08]` https://positivelyfred.substack.com/p/this-is-getting-ridiculous-i-shipped — [practitioner direct] Wollsén's August 2026 production account supplies the 30–40 open sessions, 10–15 actively managed sessions, and his own three-to-four-times value estimate. The body keeps PR volume and estimated delivered value on separate axes. fallback: remove the numbers and retain the qualitative constraint that parallel output can outrun organizational absorption.
+- fred-ai-native-playbook `[checked:2026-08-08 result:OK due:2026-09-04]` https://positivelyfred.substack.com/p/the-ai-native-engineering-playbook — [practitioner direct, commercial interest] Wollsén and McCrosky's March 2026 account supplies the Crawl/Walk/Run/Fly sequence and the moves summarized in body: agent in repo, agent-readable context and routines, then parallel orchestration. fallback: remove the stage labels and retain the engineer-active synthesis.
+- fred-throughput-account `[checked:2026-08-08 result:OK due:2027-02-08]` https://positivelyfred.substack.com/p/this-is-getting-ridiculous-i-shipped — [practitioner direct, commercial interest] Wollsén's August 2026 production account supplies the 30–40 open sessions, 10–15 actively managed sessions, and his own three-to-four-times value estimate. The body keeps PR volume and estimated delivered value on separate axes. fallback: remove the numbers and retain the qualitative constraint that parallel output can outrun organizational absorption.
 
 Frameworks
 - Engineer-active progression · [borrow:none] · ← none — owned synthesis; a recurring sequence, not a rank assigned to a person
@@ -122,8 +122,7 @@ OODA
 - Part 1 is one section: the six engineer-active stages followed immediately by the constraint chain. Do not split it into level cards.
 - Part 2 owns the leverage model. Do not add a module-by-module explanation around it.
 - The diagram is a deliberate duplicate of `curriculum/lectures/the-gate-is-a-claim.md`; keep the model and labels synchronized.
-- This page deliberately gives away M5's delegation-frontier reveal. That is fine. Repetition can teach better than preserving one big reveal; let M5 deepen and operationalize the model rather than depend on first exposure.
-- If AE101 ever has a small set of student printouts that learners can keep beside them and consult during the training, this page is a strong candidate: the progression and leverage model make a useful reference pair.
+- This page deliberately gives away M5's delegation-frontier reveal. Repetition can teach better than preserving one big reveal; M5 deepens and operationalizes the model rather than depending on first exposure.
 - The progression describes how work is organized, not a score assigned to the person. Session count and autonomy are inputs, not levels.
 - Keep shortcut framing out of the student-facing body.
 

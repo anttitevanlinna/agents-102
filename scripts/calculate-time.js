@@ -86,12 +86,21 @@ function parseBand(text) {
   // A reversed range is an authoring slip, not a band. Surface it rather than
   // quietly sorting it — a "20–15" in a file is a fact someone needs to look at.
   if (hi < lo) return { lo, hi, approx: !!m[1], reversed: true };
+  // Durations are ceilings, single-valued. A range is still PARSED — legacy strings
+  // and prose quotes contain them — but it is flagged so the corpus gate can reject
+  // it. Ranges are what made a total un-actionable: every beat contributed a spread,
+  // the module's spread was the sum of them, and no trainer could plan against
+  // "runs 95–117". The ceiling is the number you can hold a room to.
+  if (hi > lo) return { lo, hi, approx: !!m[1], ranged: true };
   return { lo, hi, approx: !!m[1] };
 }
 
 const band = (lo, hi) => ({ lo, hi: hi === undefined ? lo : hi, approx: false });
 const addBand = (a, b) => ({ lo: a.lo + b.lo, hi: a.hi + b.hi, approx: a.approx || b.approx });
 const ZERO = band(0, 0);
+
+const rangeNote = (where, b) =>
+  `${where}: states a range "${b.lo}–${b.hi}" — a duration is a single ceiling. Write ${b.hi}.`;
 
 function fmtBand(b) {
   if (!b) return '?';
@@ -363,6 +372,10 @@ function computeModule(trainingKey, modSlug) {
     if (leaf.error) problems.push(`${leaf.file}: ${leaf.error}`);
     if (leaf.conflict) problems.push(`${leaf.file}: states its runtime twice — ${leaf.conflict}`);
     if (leaf.undeclared) problems.push(`${leaf.file}: ${leaf.undeclared}`);
+    if (leaf.band && leaf.band.ranged) problems.push(rangeNote(`${leaf.file}:${leaf.line}`, leaf.band));
+    for (const p of (leaf.phases || [])) {
+      if (p.band.ranged) problems.push(rangeNote(`${leaf.file}:${p.line} (${p.title})`, p.band));
+    }
     // A mirror mismatch is a CONTENT decision, not a broken parser: the phases
     // and the stated total are both readable, they just disagree, and only a
     // human can say which is right. Kept out of `problems` so the test suite
@@ -393,6 +406,7 @@ function computeModule(trainingKey, modSlug) {
   const atEnd = mod.transitions.filter(t => t.anchor === 'end');
   for (const t of mod.transitions) {
     if (t.error) problems.push(`${mod.file}: ${t.error} — "${t.raw}"`);
+    if (t.band && t.band.ranged) problems.push(rangeNote(`${mod.file} transition "${t.name}"`, t.band));
     if (!t.anchor) continue;
     const ref = /^(after|before):(.+)$/.exec(t.anchor);
     if (ref && !leafBeats.some(b => b.slug === ref[2])) {
@@ -467,11 +481,15 @@ function computeTraining(trainingKey) {
 // The middle case is the one the prose corpus kept losing: a module whose floor
 // fits and whose ceiling does not is not "fits with buffer" — it is a module that
 // fits only if nothing runs long.
+// Every authored duration is a ceiling, so a total is a ceiling too and a module
+// either fits its cap or does not. TIGHT existed only because ranges did: it named
+// the case where the floor fitted and the ceiling did not, which is not a state a
+// trainer can act on — you cannot deliver at the floor on purpose. One number in,
+// one verdict out.
 function verdict(total, cap) {
   if (!Number.isFinite(cap)) return { state: 'NO CAP' };
   if (total.hi <= cap) return { state: 'FITS', float: cap - total.hi };
-  if (total.lo <= cap) return { state: 'TIGHT', clawback: total.hi - cap };
-  return { state: 'OVER', byLo: total.lo - cap, byHi: total.hi - cap };
+  return { state: 'OVER', by: total.hi - cap };
 }
 
 // ── render ───────────────────────────────────────────────────────────────────
@@ -480,10 +498,9 @@ function verdictLine(shape, cap, v, total) {
   // Always name the total this verdict was reached against. A shape can cut or
   // shorten beats, so its total differs from the base one — and a verdict whose
   // arithmetic the reader cannot see is exactly the thing being replaced.
-  const t = total ? ` (runs ${total.lo === total.hi ? total.lo : total.lo + '–' + total.hi})` : '';
+  const t = total ? ` (runs ${total.hi})` : '';
   if (v.state === 'FITS') return `\`${shape}\` cap ${cap}${t} → **FITS** — ${v.float} min float`;
-  if (v.state === 'TIGHT') return `\`${shape}\` cap ${cap}${t} → **TIGHT** — fits only at the floor; claw back ${v.clawback} min to guarantee it`;
-  if (v.state === 'OVER') return `\`${shape}\` cap ${cap}${t} → **OVER** — by ${v.byLo === v.byHi ? v.byLo : v.byLo + '–' + v.byHi} min`;
+  if (v.state === 'OVER') return `\`${shape}\` cap ${cap}${t} → **OVER** — by ${v.by} min`;
   return `\`${shape}\` — no cap declared`;
 }
 
@@ -523,7 +540,7 @@ function renderRuntimeMap(mod, shape) {
   const t = view.total;
   const totalStr = t.lo === t.hi ? `${t.lo}` : `${t.lo}–${t.hi}`;
   const ends = start ? ` · ends ${addClock(start, t.lo)}–${addClock(start, t.hi)}` : '';
-  L.push(`| **Total** | **${totalStr}** | **${fmtHM(t.lo)}–${fmtHM(t.hi)}**${ends} | |`);
+  L.push(`| **Total** | **${totalStr}** | **${fmtHM(t.hi)}**${ends} | |`);
   L.push('');
 
   for (const sh of Object.keys(mod.caps)) {
@@ -557,7 +574,7 @@ function renderModule(m, shapeFilter) {
   // sum. Propagating it onto the total reads as if the whole band were vague,
   // when the band already carries the uncertainty precisely.
   const totalStr = m.total.lo === m.total.hi ? `${m.total.lo}` : `${m.total.lo}–${m.total.hi}`;
-  L.push(`**Total: ${totalStr} min** (${fmtHM(m.total.lo)}–${fmtHM(m.total.hi)})`);
+  L.push(`**Total: ${totalStr} min** (${fmtHM(m.total.hi)})`);
   const shapeKeys = Object.keys(m.caps).filter(s => !shapeFilter || s === shapeFilter);
   for (const sh of shapeKeys) {
     L.push('- ' + verdictLine(sh, m.caps[sh].cap, m.verdicts[sh], m.views && m.views[sh] && m.views[sh].total));

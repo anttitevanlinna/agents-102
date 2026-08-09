@@ -218,7 +218,7 @@ The map is back, one last time.
 
 **SVG:** derived from `the-whole-map.md`'s engine canvas — same drawing, four edits: checking-loop ellipse solidified (dasharray dropped, stroke 1.8→2.6, opacity 0.45→0.9), tag un-ghosted (`◌` dropped, grey→teal), sub reworded `by hand for now` → `by your evals now` (fill now inherits the body ink), aria-label updated. ALL ids re-prefixed `wm-` → `mf-` (the theory handbook renders both copies on one page; duplicate ids break defs and markers). The figure block is blank-line-free ON PURPOSE — a blank line inside terminates the raw-HTML block in marked and spills markup (verified failure mode in this repo). The parent M2 SVG is itself an unreviewed draft with open eyeball questions (incl. whether the checking ghost survives at all); if the M2 map changes, re-derive this copy.
 
-**Time:** 8–10 min target at recognition pace (the twin's budget). M6's closer slot is budgeted 15 min and already carries three lectures — see eyeball Q1.
+**Time:** 10 min target at recognition pace (the twin's budget). M6's closer slot is budgeted 15 min and already carries three lectures — see eyeball Q1.
 
 **Delivery mode:** In-room close, projected. The re-shown map with the solid checking loop IS the slide.
 

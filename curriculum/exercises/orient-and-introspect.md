@@ -1,6 +1,6 @@
 # Orient and *map the window*
 
-**Time:** 15–20 minutes.
+**Time:** 20 minutes.
 
 **Session** *(new, "Module 1 - Orient and introspect")*
 

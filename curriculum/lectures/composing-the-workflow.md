@@ -199,7 +199,7 @@ Pick the shape that resembles your day.
 
 **Lecture meta:** *3-4 min M6 mini-lecture at the closer area. Teaches what a workflow-of-skills IS, concretely, on the M5 passage the student already met, then hands off to the worked example and the field survey. The register-shift line ("no prompt to drill; the move is to read") is kept so the student knows they are in practitioner mode.*
 
-**Time:** 3-4 min at presentation pace, or a 4-min student read.
+**Time:** 4 min at presentation pace, or a 4-min student read.
 
 **Delivery mode:** Read aloud in-room at the closer area with the chart projected, or skipped if the cohort is tight (the two reads are the load-bearing deepening; the lecture is the concrete entry).
 

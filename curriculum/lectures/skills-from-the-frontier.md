@@ -49,7 +49,7 @@ Go.
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Lecture meta:** *10–12 minutes. Lecture primes Exercises 1–3 of Module 3 (Earn the trust).*
 **Meta (trainer):**
-- **Time:** 10–12 minutes
+- **Time:** 12 minutes
 - **Primary Bloom's level:** Understand + Apply (primes three exercises)
 - **Mood target:** earned trust, before the earning. Students leave the lecture with the stance *"these frameworks are real, the authoring move is real, the team kit is real"* — not *"we're about to do security homework."*
 

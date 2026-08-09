@@ -34,7 +34,7 @@ The agentic engineer maxes that signal out. You ship a million lines of new stuf
 
 **Lecture meta:** *3–5 min stakes-setter for AE101 M6 (deck-only trimmed from the 4–6 min prose draft), placed early between `story-of-module-6.md` and the main exercise. Names the quality arc threaded across the whole training (M1 tests-first → M2 plan push-back → M3 skill → M5 verifier → M6 eval read) and the reframe under it (spec-and-tests → grounding). Pairs with [The loop has a name](the-loop-has-a-name.md) as M6's closer — quality-is-grounding sets the WHY going in, the-loop-has-a-name names the WHAT (eval) coming out.*
 
-**Time:** 3–5 min at presentation pace.
+**Time:** 5 min at presentation pace.
 
 **Delivery mode:** Read in-room early in M6, between Story of Module 6 and the main exercise. Sets the quality-arc stakes before the build move.
 

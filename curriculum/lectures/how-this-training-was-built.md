@@ -49,7 +49,7 @@ The loop is the shape. The bug today was the excuse.
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Understand — recognise the compound loop in the training's construction after running it.
-- **Time:** 3–4 min closer inside M1's 2h slot.
+- **Time:** 4 min closer inside M1's 2h slot.
 - **Arc position:** closes M1, after `compound-and-close` and before the Bridge to M2. The exercises did the teaching; this lecture names the pattern and shows the testing stack behind the material.
 
 **Themes planted** (content-strategy § “Recurring themes”):

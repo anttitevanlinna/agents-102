@@ -104,7 +104,7 @@ A gate is one more claim in the system. Build it, then hold it to the same bar i
 
 **Delivery mode:** In-room close, projected, after `what-packaging-is.md`.
 
-**Time:** 7–9 min at presentation pace (recognition; the student built the gate this module).
+**Time:** 9 min at presentation pace (recognition; the student built the gate this module).
 
 <!-- backing -->
 

@@ -37,7 +37,7 @@
 
 **Mood target:** curious readiness held (the module's target), with the earned-trust paradox as a named tension. Primes rather than consolidates.
 
-**Time:** 2–3 min target (framing opener, projected). Past 3 in rehearsal = it has started teaching the fixes, which belong to the far half's closers, not here.
+**Time:** 3 min target (framing opener, projected). Past 3 in rehearsal = it has started teaching the fixes, which belong to the far half's closers, not here.
 
 **Voice:** Rory-reframe on the counterintuitive turn (trust and vigilance moving opposite ways), Boris-flat on the mechanism. Risto does NOT lead — forward-optimism would resolve the unease the opener means to open.
 

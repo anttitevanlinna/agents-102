@@ -108,7 +108,7 @@ The phases are places, not stages. A task usually stands in more than one at onc
 
 **Delivery mode:** In-room opener, projected. Projection legibility = design constraint (`curriculum/CLAUDE.md`, no-slides doctrine). The map figure IS the slide.
 
-**Time:** 4–6 min target (container, not a teaching lecture). If it runs past 6 in rehearsal it is teaching laws it should leave for later. Cut back to territory plus "you are here."
+**Time:** 6 min target (container, not a teaching lecture). If it runs past 6 in rehearsal it is teaching laws it should leave for later. Cut back to territory plus "you are here."
 
 **Artifact contract (Family B):** the map slot only. Per-law {NAME · MAP-POSITION · MECHANISM · GOVERNOR} is the M3-close job, not this opener's.
 

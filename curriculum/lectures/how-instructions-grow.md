@@ -51,7 +51,7 @@ This is one common route, not a promotion ladder. A useful skill can also emerge
 
 **Lecture meta:** *M2 closing lecture, after the save-if-earned rule integration and before Key Concepts. Two projected slides, 4–5 min. The first slide teaches one common evidence-to-rule-to-skill route while explicitly refusing a universal promotion ladder. The second names Argyris's double-loop distinction through the context mechanism the student has already used. Mood: grounded competence; the student leaves able to place the artifacts without being told every artifact must move.*
 
-**Time:** 4–5 minutes.
+**Time:** 5 minutes.
 
 **Placement constraint:** Skill use and authoring still land at M3. M2 names the destination and its loading behavior but does not invoke, install, or author a skill.
 

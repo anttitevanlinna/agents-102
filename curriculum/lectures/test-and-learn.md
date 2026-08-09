@@ -40,7 +40,7 @@ You're new to this country: the stretch where the agent runs alone and you don't
 **Lecture meta:** *10–12 min lecture, now deck-shaped (4 slides + kicker). Sets up M4's walk-and-send-off exercise. Names the spirit of the two-session arc and the one move the exercise opens with — gap analysis.*
 **Word count:** ~380 words body (post slide rework).
 
-**Time:** 10–12 min at presentation pace. Don't rush; don't pad. The "spirit" slide is load-bearing — it's where the experimental stance lands.
+**Time:** 12 min at presentation pace. Don't rush; don't pad. The "spirit" slide is load-bearing — it's where the experimental stance lands.
 
 **Philosophy callouts:** none this lecture. The spirit itself is the beat; a further philosophy tag would dilute.
 

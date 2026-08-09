@@ -115,19 +115,29 @@ test('a band whose ceiling clears the cap FITS', () => {
   assert.deepEqual(verdict({ lo: 90, hi: 100 }, 105), { state: 'FITS', float: 5 });
 });
 
-test('a band straddling the cap is TIGHT, not FITS', () => {
-  // The state the prose corpus kept recording as "fits with buffer". It does not
-  // fit; it fits if nothing runs long, which is a different promise.
-  const v = verdict({ lo: 100, hi: 110 }, 105);
-  assert.equal(v.state, 'TIGHT');
-  assert.equal(v.clawback, 5);
+test('a total past the cap is OVER by one number', () => {
+  const v = verdict({ lo: 110, hi: 110 }, 105);
+  assert.equal(v.state, 'OVER');
+  assert.equal(v.by, 5);
 });
 
-test('a band whose floor exceeds the cap is OVER, with both edges named', () => {
-  const v = verdict({ lo: 110, hi: 120 }, 105);
-  assert.equal(v.state, 'OVER');
-  assert.equal(v.byLo, 5);
-  assert.equal(v.byHi, 15);
+test('the verdict reads the ceiling, so there is no TIGHT', () => {
+  // TIGHT existed only because durations were ranges: it named a total whose
+  // floor fitted and whose ceiling did not. That is not a state a trainer can
+  // act on — nobody delivers at the floor on purpose — and "fits if nothing runs
+  // long" is the promise the prose corpus used to record as "fits with buffer".
+  // Durations are ceilings now, so a module fits or it does not.
+  assert.equal(verdict({ lo: 100, hi: 110 }, 105).state, 'OVER');
+  assert.equal(verdict({ lo: 100, hi: 105 }, 105).state, 'FITS');
+});
+
+test('a range is parsed but flagged, so the corpus gate can reject it', () => {
+  // Still parsed: legacy strings and quoted prose contain ranges, and silently
+  // failing to read one would hide it rather than surface it.
+  const b = parseBand('15–20 minutes.');
+  assert.equal(b.ranged, true);
+  assert.equal(b.hi, 20);
+  assert.ok(!parseBand('20 minutes.').ranged);
 });
 
 // ── live corpus ──────────────────────────────────────────────────────────────
@@ -351,7 +361,7 @@ test('the rendered runtime map states no number that is not derived', () => {
   const md = CT.renderRuntimeMap(m1, 'cohort-2day');
   // The total in the table must equal the computed total. If a renderer ever
   // starts formatting a number independently, this is what catches it.
-  assert.match(md, new RegExp(`\\*\\*${m1.total.lo}–${m1.total.hi}\\*\\*`));
+  assert.match(md, new RegExp(`\\*\\*${m1.total.hi}\\*\\*`));
   assert.match(md, /Computed from the leaves/);
   // Every beat is present as a row.
   for (const b of m1.beats) assert.ok(md.includes(b.name), `missing row: ${b.name}`);

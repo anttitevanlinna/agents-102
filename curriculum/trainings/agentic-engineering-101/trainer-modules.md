@@ -49,7 +49,7 @@ The one trainer doc. **Start here** is the delivery contract — read it once be
 |---|---|
 | 08:30 – 10:30 | M4 (2h) — runs uncompressed at this slot; the Connections trim and Bridge cut are no longer needed to make it fit |
 | 10:30 – 10:50 | Break |
-| 10:50 – 12:50 | M5 (2h) — the one module still over its slot; start the worktree fork the moment the room settles, and if the fork fights back cap Phase 4 at half-pages (M5 tab cut order #1) |
+| 10:50 – 12:50 | M5 (2h) — the biggest overrun in the arc; start the worktree fork the moment the room settles, and if the fork fights back cap Phase 4 at half-pages (M5 tab cut order #1) |
 | 12:50 – 14:05 | Lunch — the packaged re-send runs through it, and absorbs an M5 overrun |
 | 14:05 – 16:05 | M6 (2h) — opens in a FRESH session at the same worktree (the M5 session may still be running; read both sessions from disk before any write). Its own re-entry beat covers nudging a stalled M5 session |
 | 16:05 – 16:20 | Closing Day 2 |
@@ -179,14 +179,14 @@ Never cut: the failing test before the fix, the diff-line push-back, and the con
 
 ### M2 — Plan mode, done right
 
-**Slot.** 2-day cohort: Day 1, 10:50–12:50 (2h, straight through). Four-sitting track: sitting 2, 2h. In both shapes Phase 5 follows Phase 4 directly and the exercise body's own "Stop" carries the beat — no lunch lands inside the module to carry it. This is the tightest module in the arc: it runs to the ceiling of its slot, so the if-behind list below is the one to know. Thinking effort `medium` (the module says high may feel sluggish on a tight slot).
+**Slot.** 2-day cohort: Day 1, 10:50–12:50 (2h, straight through). Four-sitting track: sitting 2, 2h. In both shapes Phase 5 follows Phase 4 directly and the exercise body's own "Stop" carries the beat — no lunch lands inside the module to carry it. **Runs 3 min past its slot**, the smallest overrun in the arc, so the if-behind list below is the one to know. Thinking effort `medium` (the module says high may feel sluggish on a tight slot).
 
 **Big idea.** The prompt can grill a plan harder than the student needs to consume. The student's read brings codebase judgment; the second-pass agent brings breadth. The student keeps the highest-value sharpenings and stops when the plan is good enough to generate.
 
 **Flow.**
 
 1. Connections — "when did you last approve a plan you didn't really read, and what made you approve?"
-2. Lecture — [The whole map](./#lectures-the-whole-map) (opener, 4–6 min; first map reveal: the whole territory, and where the first modules sit in it)
+2. Lecture — [The whole map](./#lectures-the-whole-map) (opener, 6 min; first map reveal: the whole territory, and where the first modules sit in it)
 3. Lecture — [When a plan is good](./#lectures-when-a-plan-is-good)
 4. Exercise — [Push back on the plan](./#exercises-push-back-on-the-plan) (60 min)
 5. Exercise — [Extract the task-shaping rule](./#exercises-extract-the-task-shaping-rule) (12 min)
@@ -269,7 +269,7 @@ Never cut: Phase 5's stop. Approve, don't execute, and name the pattern; the non
 4. Exercise — [Map the access surface](./#exercises-map-the-access-surface) (20 min; curated `access-control-analysis` skill as subagent)
 5. Exercise — [Threat-model with STRIDE](./#exercises-threat-model-with-stride) (20 min; curated `stride` skill; one ADR ships)
 6. Exercise — [Author your test-strategy skill](./#exercises-author-test-strategy-skill) (20 min; authored through conversation, self-critique, invoke on real feature)
-7. Lecture — [The loop half, filled in](./#lectures-the-loop-half-filled) (consolidation closer, 8–10 min; names the near half of the map whole after three modules of loop work; fires after the skill-sharpen, before the session clear)
+7. Lecture — [The loop half, filled in](./#lectures-the-loop-half-filled) (consolidation closer, 10 min; names the near half of the map whole after three modules of loop work; fires after the skill-sharpen, before the session clear)
 
 **Learning goals.** Student can:
 
@@ -317,11 +317,11 @@ Never cut: Phase 5's stop. Approve, don't execute, and name the pattern; the non
 **Flow.**
 
 1. Connections — one or two candidate tasks from the backlog; bigger than a typo-fix, smaller than an epic
-2. Lecture — [The far half of the map](./#lectures-the-far-half) (opener, 3–5 min; quick feedback goes quiet, the result arrives all at once)
+2. Lecture — [The far half of the map](./#lectures-the-far-half) (opener, 5 min; quick feedback goes quiet, the result arrives all at once)
 3. Lecture — [The agent loop](./#lectures-the-agent-loop) (~5 min; names the machine that keeps stepping; three prompts run on the live session that carries the send-off)
 4. Lecture — [Test and learn](./#lectures-test-and-learn)
 5. Exercise — [Walk and send off](./#exercises-walk-and-send-off) (55 min; pick 10 / walk-and-fill 40 / settle 5)
-6. Send-off section (owned by the module file): [The ironies of automation](./#lectures-ironies-of-automation) (2–3 min framing; the lecture's own cap — past 3 it starts teaching the fixes), then the two return markers (transcript path, starting-point commit on `m4/<slug>`), the trifecta check (private data / untrusted content / channel out — cut one leg), and the single send-off prompt paste
+6. Send-off section (owned by the module file): [The ironies of automation](./#lectures-ironies-of-automation) (3 min framing; the lecture's own cap — past 3 it starts teaching the fixes), then the two return markers (transcript path, starting-point commit on `m4/<slug>`), the trifecta check (private data / untrusted content / channel out — cut one leg), and the single send-off prompt paste
 7. Lecture — [What keeps a long-running session going?](./#lectures-what-keeps-a-long-running-session-going) (fires while the agent runs; three-condition observation; leaves the run untouched)
 8. Close — point at [Reading the return](./#lectures-reading-the-return) as the pre-read; it plants the three failure modes M5 reads with
 
@@ -394,7 +394,7 @@ Never cut: the send-off itself, and never rescue the un-packaged run. A weak fir
 
 ### M5 — Learn from the test, re-send packaged
 
-**Slot.** 2-day cohort: Day 2, 10:50–12:50 (2h slot; the packaged re-send fires at close and runs through lunch). Four-sitting track: sitting 4 and the finale; the worktree fork is the squeeze point. **The only module still over its slot at 2h** — the runtime map below carries the figure. Start the fork the moment the room settles, and take the overrun into lunch, which the re-send runs through anyway.
+**Slot.** 2-day cohort: Day 2, 10:50–12:50 (2h slot; the packaged re-send fires at close and runs through lunch). Four-sitting track: sitting 4 and the finale; the worktree fork is the squeeze point. **The biggest overrun in the arc** — the runtime map below carries the figure. Start the fork the moment the room settles, and take the overrun into lunch, which the re-send runs through anyway.
 
 **Big idea.** Read the un-packaged M4 run through three failure-mode lenses; build the validation that would have caught each; assemble the reference and `plan.md`; re-send the same task packaged. The contrast IS the lesson.
 
@@ -406,7 +406,7 @@ Never cut: the send-off itself, and never rescue the un-packaged run. A weak fir
 4. Exercise — [Diagnose and re-send](./#exercises-diagnose-and-resend) (Phases 1–4, in a new session in the worktree)
 5. Re-send — new session in the worktree by default (fresh context; the exercise scrollback is heavy), or clear the exercise session in place; then the packaged re-send prompt, and the walk-away report gets read cold
 6. Lecture — [What packaging is](./#lectures-what-packaging-is) (closer; the three-pattern earned from felt evidence — don't squeeze it)
-7. Lecture — [The gate is a claim too](./#lectures-the-gate-is-a-claim) (final closer, 7–9 min; the verifier the student just built is a claim, not proof; closes on the delegation-frontier zoom-out)
+7. Lecture — [The gate is a claim too](./#lectures-the-gate-is-a-claim) (final closer, 9 min; the verifier the student just built is a claim, not proof; closes on the delegation-frontier zoom-out)
 8. Four-sitting close only: bring the worktree's `CLAUDE.local.md` and `observations/` home to the original repo, then the map's last read (the wall; what crosses to the team, and how)
 
 **Learning goals.** Student can:
@@ -481,11 +481,11 @@ Never compress the two closing lectures. What packaging is → The gate is a cla
 1. Re-entry (~15 min; nudge stalled M5 run, open M6 in fresh session at same worktree, read both runs before writing)
 2. Lecture — [The 2 frontiers](./#lectures-the-2-frontiers) (opener)
 3. Lecture — [Story of Module 6](./#lectures-story-of-module-6) (opener; permission-giving memo from this module's own generation)
-4. Lecture — [Quality is grounding](./#lectures-quality-is-grounding) (opener-bridge, 3–5 min; names the quality arc M1→M6)
-5. Exercise — [Spot gaps, build the loop](./#exercises-spot-gaps-build-the-loop) (30–40 min; diff two runs, cut a stale rule, route the dominant gap, scan the stack for recurring work-shapes)
-6. Lecture — [Composing the workflow](./#lectures-composing-the-workflow) (closer-area teacher; 3–4 min; the passage chart re-labelled with the student's kit; composition variety first — by hand, through files — then the four wirings of one documented kit)
-7. Lecture — [The loop has a name](./#lectures-the-loop-has-a-name) (closer; names *eval* across verifier / judge / gate, anchored on the M5 verifier and the checking-primitives menu)
-8. Lecture — [The map, filled in](./#lectures-the-map-filled-in) (final theory closer, 8–10 min; the whole map drawn solid across M1–M6)
+4. Lecture — [Quality is grounding](./#lectures-quality-is-grounding) (opener-bridge, 5 min; names the quality arc M1→M6)
+5. Exercise — [Spot gaps, build the loop](./#exercises-spot-gaps-build-the-loop) (40 min; diff two runs, cut a stale rule, route the dominant gap, scan the stack for recurring work-shapes)
+6. Lecture — [Composing the workflow](./#lectures-composing-the-workflow) (closer-area teacher; 4 min; the passage chart re-labelled with the student's kit; composition variety first — by hand, through files — then the four wirings of one documented kit)
+7. Lecture — [The loop has a name](./#lectures-the-loop-has-a-name) (closer; names *eval* across verifier / judge / gate, anchored on the M5 verifier and the routing call)
+8. Lecture — [The map, filled in](./#lectures-the-map-filled-in) (final theory closer, 10 min; the whole map drawn solid across M1–M6)
 9. Lecture — [Agents that build agents](./#lectures-agents-that-build-agents) (forward closer; the training's closing beat, dead-last per the 2026-07-03 re-sequence)
 
 **Learning goals.** Student can:
@@ -501,7 +501,7 @@ Never compress the two closing lectures. What packaging is → The gate is a cla
 
 - *Spot gaps, build the loop* — one-screen gap map across memory / verifier / skill with the dominant gap routed to a named home, one stale rule cut from `./CLAUDE.local.md`, and a diagrammed map of recurring work-shapes that feeds the closing handoff prompt.
 
-**Trainer cues.** Practitioner-fluency register, not lecture-hall — by M6 the student is a practitioner, and the close runs lecture-after-lecture by design: a room of engineers reading the field together, with you as one voice among several. Invite reflection between lectures with open prompts, not Q&A: which lineage resembles their day? What did the quality arc feel like across the five moves? After Dino's worked example, the transfer question — is the skill they just shipped a route, a leaf, an orchestrator, or a hand-off? Two beats of silence is fine; Nordic engineers think before speaking. The composition lecture has no separate drill; Phase 2 of *Spot gaps, build the loop* (the work-shape / primitive scan) is the lived entry to composing — point students there first, then at the [workflow-composition-lineages supplementary](./#supplementary-workflow-composition-lineages) for the field survey. Dino's [skill-stacking system](./#supplementary-skill-stacking) is the worked example. Pacing: if energy is high, give the lineage conversation room; if low, keep the composition lecture to the chart and the four mechanisms, point at the supplementary, and move to the closer pair faster.
+**Trainer cues.** Practitioner-fluency register, not lecture-hall — by M6 the student is a practitioner, and the close runs lecture-after-lecture by design: a room of engineers reading the field together, with you as one voice among several. Invite reflection between lectures with open prompts, not Q&A: which lineage resembles their day? What did the quality arc feel like across the five moves? After Dino's worked example, the transfer question — is the skill they just shipped a route, a leaf, an orchestrator, or a hand-off? Two beats of silence is fine; Nordic engineers think before speaking. The composition lecture has no separate drill; Phase 2 of *Spot gaps, build the loop* (the work-shape scan) is the lived entry to composing — point students there first, then at the [workflow-composition-lineages supplementary](./#supplementary-workflow-composition-lineages) for the field survey. Dino's [skill-stacking system](./#supplementary-skill-stacking) is the worked example. Pacing: if energy is high, give the lineage conversation room; if low, keep the composition lecture to the chart and the four mechanisms, point at the supplementary, and move to the closer pair faster.
 
 **Runtime map.**
 

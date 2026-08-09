@@ -280,7 +280,7 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 **Lecture meta:** *10–15 min closing lecture for M5, deck-shaped. Names the three-pattern after you have built each piece. Earns the name from felt evidence, not from a slide deck delivered cold. The M6 bridge lives in the module file's `## Next`, not here.*
 **Word count:** ~700 words body (post-rework).
 
-**Time:** 12–15 min at presentation pace.
+**Time:** 15 min at presentation pace.
 
 **Delivery mode:** In-room close after Debrief.
 

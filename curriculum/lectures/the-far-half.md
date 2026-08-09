@@ -125,7 +125,7 @@
 
 **Delivery mode:** In-room opener, projected. The map with the far half lit IS the slide.
 
-**Time:** 3–5 min target (container, not a teaching lecture). Past 5 in rehearsal = teaching laws it should leave for M5/M6.
+**Time:** 5 min target (container, not a teaching lecture). Past 5 in rehearsal = teaching laws it should leave for M5/M6.
 
 **Artifact contract (Family B):** the far-half map slot only. Per-law {NAME · MAP-POSITION · MECHANISM · GOVERNOR} for Verification/Absorption/Outcome laws is downstream closer work, not this opener's. Landed shape (2026-07-03): all three far-half phases consolidate at M6 (`the-map-filled-in`); M5 (`what-packaging-is`) map-places the three-pattern only.
 

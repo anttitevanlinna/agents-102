@@ -1,6 +1,6 @@
 # Map the gaps, read your stack
 
-**Time:** 30–40 minutes.
+**Time:** 40 minutes.
 
 **Session** *(new, "Module 6 worktree session")*
 
@@ -14,9 +14,9 @@ Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no 
 
 ---
 
-## Phase 1: Diff the two sessions, rank the gaps
+## Phase 1: Diff the two sessions, route what they surfaced
 
-*15–20 min*
+*25 min*
 
 - You hold two sessions of the same task. The un-packaged session sits on the `m4/<slug>` branch recorded in `task.md`; the packaged re-send sits on the `m5/<slug>` branch recorded in `plan.md`. Both are visible via git refs, since the worktree shares `.git` with the original repo.
 - Read from the recorded coordinates, not a branch or transcript search. Both sessions recorded their transcript paths: M4 in `task.md`, M5 in the protected `Run coordinates` block at the top of `plan.md`.
@@ -30,7 +30,7 @@ Ask Claude to read both sessions side by side and name where packaging caught, w
 
 - Skim past the opening plan. Claude will likely open with a four-dimension plan summary (*"I'll start with repo state across the m4/ branch, then..."*) before any quoted evidence lands. The contrast moments are what you're reading for.
 - Push back where Claude generalises. Two sessions means two bodies of evidence, and the teaching is in the contrast. If Claude writes *"the agent drifted on goal"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted.
-- Expect over-credit on the packaging. A fair push-back is *"name one thing the verifier missed, concretely."* Close with a ranked gap list of three to five items and a dominant gap that will shape Phase 2.
+- Expect over-credit on the packaging. A fair push-back is *"name one thing the verifier missed, concretely."* Close with a ranked gap list of three to five items and a dominant gap that shapes the rest of this phase.
 
 ## Cut one stale rule the diagnosis killed
 
@@ -46,16 +46,21 @@ Ask Claude to cut one rule the two-session diagnosis killed, or to say so and st
 - Claude may pause before editing `./CLAUDE.local.md`. A named config file looks risky to modify. If it asks, just say go.
 - Push back if the diff touches more than the one rule you flagged. *"In place"* is loose wording, and Claude may rewrite more than the one stale rule. One rule cut, no more.
 
+## Route the dominant gap to its home
+
+- Gaps sort into three homes: memory (a rule that would have prevented the mistake upstream), a sharper verifier (a check that would have fired mid-session), or a skill (a move worth packaging for future tasks). The dominant gap gets a named home before anything gets built. If the home is memory, the rule can land in `./CLAUDE.local.md` now, the reverse of the cut above.
+- The closing lecture hands you the encode-move: a prompt built from the shapes you draw next.
+
 ## Phase 2: Find the work you repeat across your stack
 
-*15–20 min*
+*15 min*
 
 - Look wider than the two sessions. The dominant gap came from one task. The kinds of work you repeat run across everything you do, and most of them never get looked at directly. This is your stack. How wide you look, and what you choose to map, is yours.
 - Read your own history first. Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back.
 
 ## Scan your history for the work that recurs
 
-> **Fast operator?** Lump the next three prompts into one go. Paste them one after another in the same conversation, study then shapes then primitives, and let the answers land together. The three moves don't change.
+> **Fast operator?** Lump the next two prompts into one go. Paste them one after another in the same conversation, study then shapes, and let the answers land together. The two moves don't change.
 
 > **Cut the scan when the top patterns are clear enough to use.** The prompt keeps looking because that is its job. Narrow it whenever you like, or say *tell me what you've found so far*. Once two or three recurring kinds of work are clear enough to draw and compare, move on. You do not need a complete inventory.
 
@@ -74,21 +79,17 @@ Ask Claude to draw your top few work-shapes as simple diagrams.
 
 > **Want to see the shapes, not read them?** Mermaid comes back as text. Say *give me this in HTML* to open them in a browser.
 
-## List the checks the field runs, rank the ones that fit your gap
+## Sidestep: check your menu against the field's
 
-- Hold the menu against the shapes you drew. Where a primitive lines up with a shape you repeat, that pairing is a skill candidate for the kit you grow later.
-- The menu grounds the map in what practitioners actually check, not just your own instinct.
+Optional. Your shapes are drawn and the dominant gap has a home. This one widens the menu you pick checks from.
+
+- Where a primitive lines up with a shape you repeat, that pairing is a skill candidate for the kit you grow later.
 
 Ask Claude to name the checking primitives the field already runs and rank the ones that fit your gap.
 
 {{prompt:spot-gaps-build-the-loop-primitives}}
 
 Expect the list to look familiar: test-writing, browser-testing, PR-building, lint and typecheck gates, compile and build, smoke-test on a real path, code-review, git-diff inspection, schema validation, eval suites for agent outputs. Your list won't be exact. The recognition is the point. The primitives Claude names are the ones your codebase already runs.
-
-## Route the dominant gap to its home
-
-- Gaps sort into three homes: memory (a rule that would have prevented the mistake upstream), a sharper verifier (a check that would have fired mid-session), or a skill (a move worth packaging for future tasks). The dominant gap gets a named home before anything gets built. If the home is memory, the rule can land in `./CLAUDE.local.md` now, the reverse of the cut above.
-- The closing lecture hands you the encode-move: a prompt built from the shapes you just drew.
 
 **What happened:** You ended with a one-screen gap map across memory / verifier / skill, one stale rule cut in place, and a diagrammed map of the work that recurs across your stack. The dominant gap has a named home; the shapes carry into the close.
 
@@ -109,7 +110,7 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 
 **Primary Bloom's level:** Analyze (Phase 1 diff + Phase 2 stack scan) + Evaluate (rule cut + gap routing).
 
-**Time budget total:** 30–40 min. Phase 1 compressed (diff + name-gaps share one phase); Phase 2 is the stack scan (study / shapes / primitives), depth the student's.
+**Placement:** Phase 1 carries the two-session diff, the rule cut and the routing call, so the decision runs while both runs are still warm. Phase 2 is the stack scan, depth the student's, closing on an optional primitives sidestep that nothing downstream depends on.
 
 **Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know what my stack repeats."* Watch-for: compliance-feel (student treats the scan as paperwork) or credibility-performance (*"we map our stack like the pros do"*). Both steal the mood.
 
@@ -124,7 +125,6 @@ Claims
 - `rules-files-have-a-half-life` · vision · "Adding rules is only half of it; subtracting the dead ones is the other half." ← none-owed
 - `sessions-are-on-disk-and-unread` · vision · "Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back." ← none-owed
 - `recurring-work-has-a-shape` · vision · "Steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described." ← none-owed
-- `checking-primitives-menu` · detail · "The menu grounds the map in what practitioners actually check, not just your own instinct." ← curran-2x, geoffintech-charles
 - `primitives-will-look-familiar` · vision · "The primitives Claude names are the ones your codebase already runs." ← none-owed
 - `gaps-sort-into-three-homes` · vision · "Gaps sort into three homes: memory …, a sharper verifier …, or a skill" ← none-owed
 - `review-and-compound-across-two-runs` · borrowed · "You tested at M4, you learned at M5. Here you name what the two sessions cost you and where each lesson belongs." ← klaassen-how-every-codes
@@ -141,8 +141,8 @@ Frameworks
 
 Stance `[stance:2026-08-01 level:L2]`
 - holds: that orgs and solo builders converge on a recognisable set of checking primitives — tests, lint, type-check, review, diff inspection, eval suites. This is the safest convergence claim in the corpus because the primitives predate agents entirely; the exercise is asking the student to recognise their own toolchain, not to accept a finding.
-- contested: **the register that this block replaces called the menu "convergent practitioner vocabulary" across two named orgs and "solo builders."** Two orgs and an unnamed category is not convergence at the L3 bar, and the phrase is the fourth instance of this corpus reaching for a convergence verb to make a menu feel found. The body itself never makes the claim — it says the primitives are the ones the student's own codebase already runs, which is both weaker and true.
-- decided: **the convergence claim is retired, and the corpus-wide sweep it triggered came back clean, 2026-08-02.** The legacy register described the primitives menu as *"convergent practitioner vocabulary"* on the strength of two named orgs plus "solid builders running long tasks" — retired rather than migrated, because the body never made the claim. This was the fourth instance of the pattern across M5 and M6, so the sweep it called for was run across every student-facing line above the divider in every AE101 lecture, exercise and supplementary. Eleven hits, zero survivors: most are the honest inverse (*"the word is not settled"*, *"the field hasn't converged"*), and the two `The field calls this` uses are the control shape — publicly coined terms used by name by other people, with `error cascade` anchored to OWASP ASI08 and an arXiv title carrying the exact phrase.
+- contested: **the menu is not convergent practitioner vocabulary.** Two named orgs plus an unnamed category does not clear the L3 bar. The body makes no such claim — it says the primitives are the ones the student's own codebase already runs, which is weaker and true.
+- decided: **no convergence verb attaches to this menu.** The recognition framing carries the whole warrant. Do not reintroduce *"convergent practitioner vocabulary"* from any register. The beat ships as an optional sidestep, so nothing downstream may load-bear on the menu existing.
 - would-move-it: a primitive entering common practice that the menu omits. The list is deliberately unranked and open, so an addition edits one line rather than the phase.
 
 OODA
@@ -168,9 +168,9 @@ OODA
 - Sponsor-stated or team-stated code-review conventions (feeds Phase 2 judge's quality bar, if the shape picked is LLM-judge).
 
 **Decision points (pacing):**
-- **Phase 1 >20 min** — over-diffing. The diff is data for Phase 2, not an essay. Force a rank and move on.
+- **Phase 1 >25 min** — over-diffing. The diff is data for the routing call, not an essay. Force a rank and move on.
 - **Phase 1 <10 min** — under-engagement. Check if Claude returned only summaries; re-run the prompt with quote enforcement if so.
-- **Phase 2 study + shapes run long (>20 min)** — the wider look is a light pass, not a full inventory. Study reads the ranked head; shapes draws two or three. If it eats the clock the student is cataloguing; use the body stop gate and move to primitives.
+- **Phase 2 study + shapes run long (>15 min)** — the wider look is a light pass, not a full inventory. Study reads the ranked head; shapes draws two or three. If it eats the clock the student is cataloguing; use the body stop gate and skip the sidestep.
 - **Whole-room mood below 7** — practitioner fluency isn't landing. Check the routing beat: does the dominant gap have a named home, in the student's own words? If the gaps stayed a list, the read didn't close.
 
 **Watch-fors (cross-phase):**

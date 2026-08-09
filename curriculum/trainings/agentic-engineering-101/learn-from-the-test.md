@@ -153,7 +153,7 @@ Optional. Skipping does not break Module 6. Both fit the Module 5 to Module 6 ga
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Pacing:** Runtime is computed — `node scripts/calculate-time.js learn-from-the-test`. Trainer demos slowly, room copy-pastes concurrently. The closing lecture sits after Debrief + Re-send, where M4 has no closer of its own — it names Ronacher's three-pattern from felt evidence, so it cannot come earlier.
-- **Transitions:** connections 5 @start "Connections" · worktree fork 10–15 @before:diagnose-and-resend "Worktree fork from the original repo (coordinates read, copy check)" · debrief 12 @after:diagnose-and-resend "Debrief" · re-send 3 @after:diagnose-and-resend "Re-send: new session in the worktree, prompt paste, read the report cold" · bridge 3 @end "Bridge"
+- **Transitions:** connections 5 @start "Connections" · worktree fork 15 @before:diagnose-and-resend "Worktree fork from the original repo (coordinates read, copy check)" · debrief 12 @after:diagnose-and-resend "Debrief" · re-send 3 @after:diagnose-and-resend "Re-send: new session in the worktree, prompt paste, read the report cold" · bridge 3 @end "Bridge"
 - **Fork is a band because the spread is real.** Machine time is ~1 min (`ae101-m5-worktree-setup` runner turns); the rest is coordinates-read, copy-verification and Day-2 re-entry fumble. Ceiling is judgement, not observation.
 - **Charge:** reading-the-return 0 — lands as a pre-read at the close of M4's Debrief, so M5 opens with it already read.
 - **Prep / bridge timing:** Entis/Klaassen interview 30 min; Klaassen compound-engineering guide 15–20 min; Klaassen verifier article 10 min; optional da Costa essay 15 min.

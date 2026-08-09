@@ -47,7 +47,7 @@ The loop feeds itself. That is the flywheel, and it starts with what you encoded
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Lecture meta:** *12–15 min closing lecture for AE101 M6 (deck-only trimmed from the 15–18 prose draft). Names evals with full weight from the M5 verifier and the check-menu the module just ranked. Forward-looking register — closes core AE101, bridges to Monday-morning or to M7 depending on the room. M5/M6 refs in body KEPT under the `check_lectures §3` consolidation carve-out: the closer's SUBJECT is naming what M5–M6 built (recognition), not sequencing.*
 
-**Time:** 12–15 min at presentation pace.
+**Time:** 15 min at presentation pace.
 
 **Delivery mode:** In-room close after Debrief.
 

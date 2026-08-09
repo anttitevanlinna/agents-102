@@ -157,7 +157,7 @@
 
 **Delivery mode:** In-room close, projected. The map with the near half filled in IS the slide.
 
-**Time:** 8–10 min target (recognition pace; the student has already done all of it).
+**Time:** 10 min target (recognition pace; the student has already done all of it).
 
 **Edit (2026-07-02):** context-files law's third sentence rescoped from "can't act on" (false universal — the agent can grep the codebase) to "must rediscover or guess each session" (steering-scoped, matches the-whole-map's correctly-scoped Context form) — overclaim scoped per completeness review finding #4.
 

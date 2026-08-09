@@ -137,7 +137,7 @@ The canvas is a copy of the one in `the-gate-is-a-claim.md`, which is the parent
 - judges @a06abbc: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta:**
-- **Time:** 10–12 min. If tight, the three-pressures slide compresses to 60 seconds; the exercise teaches them. M2 is the tightest module in the arc — `node scripts/calculate-time.js plan-mode-done-right` for where this beat sits in the slot.
+- **Time:** 12 min. If tight, the three-pressures slide compresses to 60 seconds; the exercise teaches them. M2 runs slightly past its slot — `node scripts/calculate-time.js plan-mode-done-right` for where this beat sits in it.
 - **Pedagogy:** primer-before-exercise. Names the three moves (merges / soft items / assumptions) that Phase 3 forces.
 - **Mood target:** anticipation toward grounded competence. Student leaves the lecture with "I know what to look for" — the payoff of *actually feeling it* lands in the exercise.
 - **Voice check:** no banned words (`honest`, `delve`, `landscape`-verb, `importantly`, `crucial`, `ritual`, `ceremony`, `practice` as noun). No em-dashes in body.

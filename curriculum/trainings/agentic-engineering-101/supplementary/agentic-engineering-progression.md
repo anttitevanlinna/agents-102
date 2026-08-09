@@ -126,3 +126,6 @@ OODA
 - If AE101 ever has a small set of student printouts that learners can keep beside them and consult during the training, this page is a strong candidate: the progression and leverage model make a useful reference pair.
 - The progression describes how work is organized, not a score assigned to the person. Session count and autonomy are inputs, not levels.
 - Keep shortcut framing out of the student-facing body.
+
+**Quality:** compendium-audited 2026-08-09 (writing@670460b story@670460b technical@670460b behavior@670460b pedagogy@670460b strategy@670460b slides@670460b)
+- judges @670460b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

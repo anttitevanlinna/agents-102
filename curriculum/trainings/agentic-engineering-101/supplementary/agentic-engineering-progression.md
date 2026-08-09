@@ -74,11 +74,11 @@ Leverage is not reach alone. It is reach that trust can keep up with.
 
 <!-- maintainer -->
 
-**Meta:** *AE101 supplementary, ~4-minute read. Part 1 gives the engineer-active progression in one section. Part 2 gives the leverage model. First linked from M1's pre-reads; linked again from M3's `## Next` section.*
+**Meta:** *AE101 supplementary, ~4-minute read. Part 1 gives the engineer-active progression in one section. Part 2 gives the leverage model. First linked from M1's pre-reads; linked again from M4's `## Prework` section.*
 
 **Role:** Names a recurring progression in how engineers use AI, then gives the calibrated delegation frontier for reasoning about leverage. The engineer remains the actor throughout.
 
-**Placement:** Primary link from M1 (`getting-going.md`) under `## Pre-reads before Module 2`. Reappears after M3 (`earn-the-trust.md`) as an optional forward look.
+**Placement:** Primary link from M1 (`getting-going.md`) under `## Pre-reads before Module 2`. Reappears at the start of M4 (`run-the-first-experiment.md`) as an optional forward look.
 
 **Voice:** Direct, compact, engineer-active. The progression and its causal chain stay together; the leverage model gets the page's only diagram.
 

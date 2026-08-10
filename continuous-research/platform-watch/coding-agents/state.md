@@ -1,11 +1,39 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-08-03 (cycle 181)
-OODA cycles: 37
+Last updated: 2026-08-10 (cycle 183)
+OODA cycles: 39
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-08-10)
+
+**CYCLE 183 UPDATE — LOOP ENGINEERING VOICE 9 FOUND (first pure loop termination deployer-direct account: Jain/Attri.ai "$4,200 in 63 hours" — infinite retry on 429 errors; all 8 criteria met; April 14, 2026); CYCLE 182 CRANE/POCKETOS VOICE 8 CONFIRMED (stop-condition violation — distinct category from Voice 9); CORPUS NOW 9 VOICES / 6 DISTINCT FAILURE CATEGORIES; DIRECTIONAL L3 — ONE MORE CLEAN DEPLOYER-DIRECT VOICE FOR FULL L3 CONFIRMATION. SONNET 5 PRICING CLIFF UPGRADED TO LEVEL 3 CONVERGENCE (6 independent sources; compound mechanism: 50% rate increase + ~30% tokenizer inflation = ~90% per-task cost increase; FinOpsLLM: contact Anthropic sales by AUGUST 15 for commitment pricing). GEMINI 3.5 PRO 13TH CONSECUTIVE MISS; POLYMARKET 45.6% "NO AUGUST RELEASE." OSMANI/RONACHER DRY WINDOW CONTINUES (no new posts since July 20/July 24).**
+
+**Loop Engineering Voice 9 — Sattyam Jain/Attri.ai (April 14, 2026) — pure loop termination, deployer-direct [practitioner direct].** GenAI Architect & Tech Lead at Attri.ai published a first-hand production post-mortem: agent entered indefinite retry loop on 429 (rate-limit) errors — 63 hours, ~4,800 re-plans/hour, $4,200 billed before discovered Monday morning. Instruction was "keep trying until it works" with no hard caps on time, cost, or iterations. **This is a pure loop termination failure** (infinite retry, no data deletion, no permissions violated) — distinct from Voice 8 (Crane/PocketOS = stop-condition violation, destructive command). Governance response: four patterns now enforced: (1) boundary validation, (2) per-agent budgets, (3) attributed observability, (4) deny-by-default tool access. Key quote: **"The architecture is the product. The model is an upstream dependency that can regress any week."** Voice 9 checklist: deployer-direct ✓ production incident ✓ pure loop termination ✓ governance response ✓ freshness ✓ named company ✓ URL ✓ gap filled ✓. ([medium.com/@sattyamjain96/the-agent-that-burned-4-200-in-63-hours-a-production-ai-postmortem-d38fd9586a85 Apr 14 2026](https://medium.com/@sattyamjain96/the-agent-that-burned-4-200-in-63-hours-a-production-ai-postmortem-d38fd9586a85) — [practitioner direct — Sattyam Jain, GenAI Architect & Tech Lead, Attri.ai])
+
+**Zombie stat flag from corpus expansion search:** Multiple articles cite "7,246 incident records / 344 verified enterprise agent-inflicted-damage cases" — original source not found. Do not propagate.
+
+**Updated loop engineering corpus (cycle 183):**
+| # | Source | Date | Category | Label |
+|---|--------|------|----------|-------|
+| 1 | Osmani, "Own the Outer Loop" | Jul 15 | Cognitive | practitioner direct ✓ |
+| 2 | Ronacher, "The Tower Keeps Rising" | Jul 13 | Organizational | practitioner direct ✓ |
+| 3 | Wang/TrueFoundry | Jun 16 | Operational-sprawl | practitioner analysis [vendor framing] |
+| 4 | Grigorev/DataTalks.Club | Mar 6 | Operational-destructive | practitioner direct ✓ |
+| 5a | Osmani, "Software Factories" | Jul 20 | Verification | practitioner direct ✓ (same as 1) |
+| 5b | OpenAI/HF | Jul 8–13 | Capability-safety (objective) | multi-source ✓ |
+| 6 | Willison curation × 2 | Jul 28–30 | Capability-safety (eval isolation) | practitioner curation ✓ |
+| 7 | McCann Strain | Jul 1 | Stop-rule/verification | practitioner analysis [Oxford DPhil] |
+| 8 | Crane/PocketOS | Apr 28 | Stop-condition violation (destructive) | practitioner direct ✓ [cycle 182] |
+| 9 | Jain/Attri.ai | Apr 14 | **Loop termination (infinite retry)** | **practitioner direct ✓ [cycle 183 — GAP CLOSED]** |
+
+**Status:** 9 voices, 6 distinct failure categories. Directional L3 — one more clean deployer-direct voice for full L3 confirmation. Gap closed: pure loop termination deployer account. Remaining gap: enterprise-scale deployer on public record; Voice 10 target.
+
+**Sonnet 5 pricing cliff upgraded to Level 3 convergence (August 10, 2026) — compound cost shock, not a simple rate increase.** Six independent sources (July 1–August 2) converge on the same compound mechanism: (1) 50% rate step-up September 1 ($2→$3 input, $10→$15 output per MTok) PLUS (2) ~30% tokenizer inflation (identical text maps to ~30% more billable tokens). Combined effect: **~90% per-task cost increase, not 50%**. Artificial Analysis benchmark cited by three independent sources: $2.29/task on Sonnet 5 vs $1.20/task on Sonnet 4.6. Counter-signal: teams migrating down from Opus 4.7/4.8 can achieve 40–60% savings. **ACTION ITEM: FinOpsLLM recommends contacting Anthropic sales by August 15 (5 days from today) to lock commitment pricing.** Sources: [finout.io Jul 1 2026](https://www.finout.io/blog/claude-sonnet-5-pricing-2026-the-hidden-costs-and-real-savings-behind-the-cost-neutral-launch) + [finopsllm.com Jul 19 2026](https://finopsllm.com/research/sonnet-5-intro-pricing-deadline) + [medium/@ai_93276 Jul 1 2026](https://medium.com/@ai_93276/claude-sonnet-5-the-hidden-cost-of-agentic-performance-de7b56b069d3) + [moclaw.ai Jul 10 2026](https://moclaw.ai/blog/claude-sonnet-5-tokenizer-cost-migration) + [future-stack-reviews.com Jul 23 2026](https://future-stack-reviews.com/claude-sonnet-5-tierc/) + [enterprisedna.co Aug 2 2026](https://enterprisedna.co/resources/news/anthropic-claude-sonnet-5-pricing-deadline-cost-impact-2026/) — all [practitioner analysis] or [domain trade publication]
+
+**Watch: August 15 (Anthropic sales commitment pricing window closes); August 26 (Assistants API hard stop — T-16); August 31 (Sonnet 5 pricing cliff — T-21); Voice 10 deployer-direct loop termination; Opus 5 M365 Copilot Day 21 (August 15); Gemini 3.5 Pro August 12 whisper target.**
 
 ## Key Verdict (as of 2026-08-03)
 

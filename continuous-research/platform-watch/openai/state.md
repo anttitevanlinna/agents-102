@@ -14,8 +14,14 @@ answers:
 
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-07-28 (cycle 175)
-OODA cycles: 31
+Last updated: 2026-08-10 (cycle 183)
+OODA cycles: 32
+
+**Cycle 183 updates (August 10, 2026) — Assistants API T-16 DAYS; Azure blast radius larger than known; SDK breaking change adds second failure vector; no panic posts yet:**
+
+**⚠️ ASSISTANTS API SHUTDOWN AUGUST 26 — T-16 DAYS — NO EXTENSION, NO TOOLING, AZURE DISCOVERY GAP CONFIRMED.** Community thread now at 37+ replies (frustration/confusion pattern, not August panic — expect reckoning week of August 26-September 5 when hard failures surface in production). Official migration guide (fetched August 10) unchanged: no automated migration tool by design, Prompts dashboard-only (no API creation path), Thread backfill manual Python only. **NEW this cycle — Azure blast radius:** There is NO automated discovery tool to find which Azure resources use Assistants API. Organizations must manually audit via: Foundry portal, REST API queries, Azure CLI scripting, application code grep, and Azure Monitor log queries (learn.microsoft.com Q&A thread #5904404, [vendor documentation]). **NEW — SDK breaking change:** `azure-ai-projects` v2.0.0 removes `create_agent()` — replaced by `create_version()`. Teams that do an endpoint migration and then upgrade the SDK break again at a second point. Two failure vectors now confirmed: (1) endpoint migration complexity, (2) SDK version upgrade breaks existing code. Azure migration target remains Foundry Agent Service (not Responses API). igor-ya.com (March 2026) remains canonical practitioner framing: "Most teams treat this as an SDK refactor. It is not." — teams starting today (T-16) are past the 90-day comfortable window for complex multi-tenant systems. Counter-signal: practitioners who completed migrations report favorable outcomes (Steudler: 60% faster, 40-60% cost reduction — see Cycle 169). Absence of public panic does not mean teams are migrated. ([developers.openai.com/api/docs/assistants/migration fetched Aug 10 2026](https://developers.openai.com/api/docs/assistants/migration) — [vendor documentation]; [community.openai.com thread Aug 10 2026](https://community.openai.com/t/assistants-api-beta-deprecation-august-26-2026-sunset/1354666) — [practitioner community, 37+ replies]; [learn.microsoft.com Q&A #5904404 fetched Aug 10 2026](https://learn.microsoft.com/en-au/answers/questions/5904404/) — [vendor documentation — Azure discovery gap]; [igor-ya.com Mar 3 2026](https://igor-ya.com/posts/assistants-api-to-responses-api-migration-playbook-2026/) — [practitioner direct])
+
+**Watch: August 26 HARD STOP — no extension expected; Azure discovery audit urgency; reckoning week August 26-September 5.**
 
 **Cycle 175 updates (July 28, 2026) — Assistants API 29-day countdown; "Most teams treat this as an SDK refactor. It is not." confirmed as key practitioner framing:**
 

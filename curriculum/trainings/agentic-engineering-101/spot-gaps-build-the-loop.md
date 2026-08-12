@@ -7,7 +7,7 @@ Two sessions of the same task (un-packaged Module 4, packaged Module 5) are enou
 
 Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (Aug 2025), and Lucas F. da Costa, [Backpressure Is All You Need](https://www.lucasfcosta.com/blog/backpressure-is-all-you-need) (May 2026). Module 4 gave the pressure a name: backpressure. The Module 5 reading now meets a design question: which checks belong at the seams?
 
-Optional lookup pages: [session transcripts in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts--read-what-actually-happened) for the two-session compare, and [long-running shapes](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#9-long-running-shapes--loop-scheduled-tasks-routines-goal) for when you turn a one-off into a pattern you run on a schedule, in a loop, or until a condition holds.
+Optional lookup pages: [session transcripts in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts-read-what-actually-happened) for the two-session compare, and [long-running shapes](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#9-long-running-shapes-loop-scheduled-tasks-routines-goal) for when you turn a one-off into a pattern you run on a schedule, in a loop, or until a condition holds.
 
 ## What You'll Learn
 After this module, you will be able to:

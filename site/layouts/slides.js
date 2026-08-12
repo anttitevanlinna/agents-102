@@ -208,11 +208,19 @@
     return (k && textOf(k)) || 'Section';
   }
 
+  // An in-deck link (`#supplementary-token-efficiency`, `#5-plan-mode-at-depth`)
+  // has to resolve to a SLIDE, because the deck is not a scroll: the browser's
+  // own fragment navigation moves nothing here. First claim wins — a section
+  // divider beats a heading of the same name deeper in.
+  function claimAnchor(map, id, index) {
+    if (id && !(id in map)) map[id] = index;
+  }
+
   // Decide the deck model from whatever container we're handed.
   function buildDeckModel(root, opts) {
     opts = opts || {};
     var phases = root.querySelectorAll('.phase--lecture, .phase--exercise');
-    var slides, title = opts.title || '';
+    var slides, title = opts.title || '', anchors = {};
 
     if (!phases.length) {
       // single doc
@@ -242,6 +250,11 @@
       Array.prototype.forEach.call(sections, function (moduleEl) {
         var innerPhases = moduleEl.querySelectorAll('.phase--lecture, .phase--exercise');
         var start = slides.length, code;
+        // The section's own id is the target of every cross-doc link into it
+        // (`#prework`, `#supplementary-token-efficiency`, `#getting-going`).
+        // It lives on the wrapper, which does NOT survive into the deck — only
+        // its children do — so claim it for the divider slide about to open.
+        claimAnchor(anchors, moduleEl.id, slides.length);
         if (innerPhases.length) {
           var heroNum = moduleEl.querySelector('.module-hero-num');
           var mNo = heroNum ? parseInt(heroNum.textContent, 10) : NaN;
@@ -267,6 +280,9 @@
             if (child.classList && (child.classList.contains('phase--lecture') || child.classList.contains('phase--exercise'))) {
               flushProse();
               var isEx = child.classList.contains('phase--exercise');
+              // same wrapper problem as the section: `#lectures-reading-the-return`
+              // is the include target, and the wrapper is dropped on the way in
+              claimAnchor(anchors, child.id, slides.length);
               // the first (cover) slide of each doc reads as a section title in the rail
               buildSingleDoc(child, { dark: isEx }).slides.forEach(function (s) { slides.push(s); });
             } else if (child.classList && child.classList.contains('module-hero')) {
@@ -307,8 +323,13 @@
     slides.forEach(function (s, k) {
       s.index = k; s.el.setAttribute('data-index', String(k));
       if (s.secCode) s.el.setAttribute('data-ref', (s.secCode + (s.secNum ? '.' + s.secNum : '')).toLowerCase());
+      // Heading ids DO survive into the deck (nodes are moved, not re-created),
+      // so deep links into one section of a reference land on its slide.
+      Array.prototype.forEach.call(s.el.querySelectorAll('[id]'), function (n) {
+        claimAnchor(anchors, n.id, k);
+      });
     });
-    return { slides: slides, title: title };
+    return { slides: slides, title: title, anchors: anchors };
   }
 
   // Re-attach copy handlers on the cloned deck (listeners don't survive cloneNode).
@@ -355,6 +376,16 @@
     var edgePrev = edge('prev'), edgeNext = edge('next');
     viewport.append(edgePrev, edgeNext);
     rewireCopy(viewport);
+    // Same cloning problem as the copy buttons: a workbook diagram is a data:
+    // URI, so its "Open in new tab" link carries href="#" and relies on a click
+    // handler to open a blob. cloneNode drops the handler but KEEPS the
+    // data-zoom-wired marker the long-read pass left, so a plain re-decorate
+    // no-ops and the link stays dead. Clear the marker first, then re-wire.
+    if (global.CurriculumRuntime && global.CurriculumRuntime.decorateDiagramZoom) {
+      Array.prototype.forEach.call(viewport.querySelectorAll('a.diagram__zoom[data-zoom-wired]'),
+        function (a) { a.removeAttribute('data-zoom-wired'); });
+      global.CurriculumRuntime.decorateDiagramZoom(viewport);
+    }
 
     // left hover-rail
     var rail = el('nav', 'deck__rail');
@@ -441,6 +472,24 @@
       count.textContent = (ref ? ref + ' — ' : '') + (n + 1) + ' / ' + slides.length;
       edgePrev.disabled = n === 0; edgeNext.disabled = n === slides.length - 1;
     }
+
+    // In-deck navigation. A `#fragment` link is a scroll instruction, and the
+    // deck has no scroll: the long-read anchors it points at are inside the
+    // hidden source, so the browser moves nothing and `target="_blank"` re-opens
+    // the whole deck at slide 1. Resolve the fragment to a slide and go there.
+    // Unknown fragment: leave the event alone rather than swallow it.
+    viewport.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+      if (!a || !viewport.contains(a)) return;
+      var href = a.getAttribute('href') || '';
+      if (href.charAt(0) !== '#') return;
+      var id = href.slice(1);
+      try { id = decodeURIComponent(id); } catch (err) { /* keep raw */ }
+      var n = model.anchors[id];
+      if (n == null) return;
+      e.preventDefault();
+      go(n);
+    });
 
     keyHandler = function (e) {
       if (e.metaKey || e.ctrlKey || e.altKey) return;

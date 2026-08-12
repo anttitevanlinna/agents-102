@@ -58,7 +58,7 @@ A rule you wrote last module will not apply this session. That is the thing. The
 
 Your job is not to stop the drift. Your job is to catch it and encode what you learned.
 
-I made this module live, running the move I am asking you to run. I drifted in the specific ways above. I fixed what I caught. The loop caught what I missed. A senior-persona sim caught what the loop missed. I pushed back on "done" a few times before it actually was.
+I made this module live, running the move I am asking you to run. I drifted in every one of the ways this story just walked. I fixed what I caught. The loop caught what I missed. A senior-persona sim caught what the loop missed. I pushed back on "done" a few times before it actually was.
 
 Your turn.
 
@@ -66,6 +66,7 @@ Antti
 
 <!-- maintainer -->
 
+**Slide deixis accepted:** "paragraphs above" (check_slides.md §12) — *"the framing I said, a few paragraphs above, we would cut"* points inside its own `## Things that went sideways` chunk, four paragraphs up on the same slide. Story lecture, read not projected; the geometry is true where it stands.
 
 **Quality:** compendium-audited 2026-08-03 (writing@5fc7188 story@5fc7188 technical@b3143a4 behavior@b3143a4 pedagogy@5fc7188 strategy@b3143a4 slides@5fc7188)
 - judges @5fc7188: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

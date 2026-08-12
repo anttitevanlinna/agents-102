@@ -12,7 +12,7 @@ The counterintuitive part: a fuller window can produce a worse answer, not just 
 
 There is no agreed metric, and you should know that going in. Some people count tokens per task. Some watch cache-hit-rate. Some track cost per pull request. Almost nobody publishes their numbers, so most figures you will read are guesses wearing a lab coat.
 
-What you can read is your own window. `/context` already gives you the breakdown: system prompt, tools, memory files, messages, and free space. The number that matters is not the total. It is the gap between what you loaded and what you actually needed. That gap is the inefficiency, and everything below is about closing it.
+What you can read is your own window. `/context` already gives you the breakdown: system prompt, tools, memory files, messages, and free space. The number that matters is not the total. It is the gap between what you loaded and what you actually needed. That gap is the inefficiency, and the rest of this page is about closing it.
 
 ## Put a number on it
 
@@ -80,7 +80,7 @@ The other kind is loud but shrinking: it announces itself, and its fix usually a
 
 ## Drivers of inefficient context: fanning out is its own bill
 
-**Fanning out too wide.** A single subagent doing your noisy reading is craft, as above; running many in parallel is a different bill. One widely quoted figure puts multi-agent runs at around fifteen times a plain chat's tokens, but it's a year old, single-source, and its own authors say fan-out is the wrong shape for most coding. Treat it as a ceiling for research-style work, not a default for yours.
+**Fanning out too wide.** A single subagent doing your noisy reading is craft; running many in parallel is a different bill. One widely quoted figure puts multi-agent runs at around fifteen times a plain chat's tokens, but it's a year old, single-source, and its own authors say fan-out is the wrong shape for most coding. Treat it as a ceiling for research-style work, not a default for yours.
 
 ## One lever, two payoffs
 

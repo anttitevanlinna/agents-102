@@ -24,7 +24,7 @@
 
 - In January 2026, Armin Ronacher ran a port between two languages in ten hours of agent time. 2.2 million tokens. Long enough for all three failure modes to show up.
 - In May 2026, Jarred Sumner rewrote Bun in Rust the same way, over eleven days, peaking at about sixty-four agents at a time. He was on an unreleased model, so read the scale as where this is going, not as a target to match.
-- Both ports held together anyway. Each had something specific in place that catches the failure modes above. What that was is where your own read leads.
+- Both ports held together anyway. Each had something specific in place that catches all three failure modes. What that was is where your own read leads.
 
 <!-- maintainer -->
 

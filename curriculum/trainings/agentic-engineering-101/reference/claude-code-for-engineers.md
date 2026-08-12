@@ -2,7 +2,7 @@
 
 Flat look-up for the primitives AE101 leans on. No pedagogy, no hand-holding. When a module says *"see the reference for CLAUDE.md precedence"* or *"plan-mode options"*, this is where.
 
-Source of truth is Anthropic's docs. Links and verbatim quotes below point at [code.claude.com/docs/en/memory.md](https://code.claude.com/docs/en/memory.md), [skills](https://code.claude.com/docs/en/skills), [sub-agents](https://code.claude.com/docs/en/sub-agents), [settings](https://code.claude.com/docs/en/settings), [hooks](https://code.claude.com/docs/en/hooks), [cli-reference](https://code.claude.com/docs/en/cli-reference). This reference is a shortcut. When the shortcut disagrees with the docs, the docs win.
+Source of truth is Anthropic's docs. Links and verbatim quotes throughout point at [code.claude.com/docs/en/memory.md](https://code.claude.com/docs/en/memory.md), [skills](https://code.claude.com/docs/en/skills), [sub-agents](https://code.claude.com/docs/en/sub-agents), [settings](https://code.claude.com/docs/en/settings), [hooks](https://code.claude.com/docs/en/hooks), [cli-reference](https://code.claude.com/docs/en/cli-reference). This reference is a shortcut. When the shortcut disagrees with the docs, the docs win.
 
 **Last verified against docs:** 2026-05-14.
 
@@ -531,9 +531,14 @@ Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/
 
 ---
 
-**This document grows.** If you hit something during the training that belongs here and isn't, flag it. For feature-specific detail, the [official docs](https://code.claude.com/docs/en/memory.md) are the source of truth. When docs disagree with anything above, trust the docs.
+**This document grows.** If you hit something during the training that belongs here and isn't, flag it. For feature-specific detail, the [official docs](https://code.claude.com/docs/en/memory.md) are the source of truth. When docs disagree with anything on this page, trust the docs.
 
 <!-- maintainer -->
+
+**Slide deixis accepted:** "blocks below" (check_slides.md §12) — §9's Desktop and Routines blocks sit in the same `## 9.` chunk as the `/loop` line pointing at them.
+**Slide deixis accepted:** "three above" (check_slides.md §12) — the three long-running shapes are `/loop`, scheduled tasks and Routines, all inside `## 9.` with the `/goal` line that reads them back.
+**Slide deixis accepted:** "above:" (check_slides.md §12) — the sleep gotcha it points at is in the same `## 9.` chunk.
+**Slide deixis accepted:** "as above" (check_slides.md §12) — the working-directory encoding is the fenced example six lines up in the same `## 10.` chunk.
 
 **Quality:** compendium-audited 2026-08-07 (writing@da65157 story@bb9c1d5 behavior@bb9c1d5 slides@da65157)
 - judges @da65157: writing PASS, story PASS, technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered, slides PASS

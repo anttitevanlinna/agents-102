@@ -2,7 +2,7 @@
 
 How Dino's Claude Code skills compose. Personal skills live in `~/.claude/skills/`, project skills in `./.claude/skills/`. The harness merges them at runtime; they're indistinguishable to the model.
 
-**Read for the patterns, not for copying.** This is one engineer's stack on one codebase; your kit will look different. The four composition mechanisms below are the move. The specific skills (and the Dino-specific names — `Arctic Deep`, `bronto/MAP.md`, `src/analytics-dashboard/`) are how Dino instantiates the mechanisms against his own work. Read for the shape, then map your own.
+**Read for the patterns, not for copying.** This is one engineer's stack on one codebase; your kit will look different. The four composition mechanisms this page names are the move. The specific skills (and the Dino-specific names — `Arctic Deep`, `bronto/MAP.md`, `src/analytics-dashboard/`) are how Dino instantiates the mechanisms against his own work. Read for the shape, then map your own.
 
 ---
 
@@ -49,7 +49,7 @@ Four mechanisms, in order of visibility:
 - Each step gates the next. Any failure stops the chain; the user fixes and re-invokes `/ship`: that re-invocation is the loop.
 - The review step runs in a fresh sub-agent that loads `/multi-agent-review` internally. Sub-agent isolation gives the same unbiased-context property the old `/clear` step provided manually.
 
-**3. CLAUDE.md routing.** Predicate-driven dispatch from the project's CLAUDE.md. Examples below are from Dino's CLAUDE.md; the predicates point at his codebase.
+**3. CLAUDE.md routing.** Predicate-driven dispatch from the project's CLAUDE.md. These examples are from Dino's CLAUDE.md; the predicates point at his codebase.
 - "behavior change" → `/tdd` (mandatory)
 - "dashboard file under src/analytics-dashboard/" → `/ui` (mandatory; `src/analytics-dashboard/` is Dino's project path)
 - "shared credentials or 3rd-party API" → `/multi-tenant-security`

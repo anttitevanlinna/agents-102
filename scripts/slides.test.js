@@ -43,6 +43,9 @@ const FIXTURE = `
     <p>Pick your model when you open a session.</p>
     <h2>What to bring</h2>
     <p>The training runs on your real work.</p>
+    <p>No repo? <a href="#supplementary-verification-asymmetry" target="_blank" rel="noopener">build one from zero</a>,
+       or read <a href="#the-named-moves">the named moves</a>, or a <a href="#nothing-here">dead one</a>,
+       or <a href="https://example.com/outside">something outside</a>.</p>
   </section>
 
   <section class="module" id="getting-going">
@@ -79,7 +82,7 @@ const FIXTURE = `
   <section class="module" id="reference-prompt-anatomy">
     <div class="phase-kicker">Reference</div>
     <h1>Prompt anatomy</h1>
-    <h2>The named moves</h2><p>body</p>
+    <h2 id="the-named-moves">The named moves</h2><p>body</p>
   </section>
 </main>`;
 
@@ -244,4 +247,103 @@ test('counter shows section ref plus global position', () => {
   ctl.go(3); // first prework content slide ("What to bring")
   const count = dom.window.document.querySelector('.deck__count').textContent;
   assert.match(count, /^P·1 — 4 \/ \d+$/);
+});
+
+// ── in-deck links (regression guard, 2026-08-12) ─────────────────────────────
+// Measured before the fix, on the built northwind workbook in headless Chrome:
+// 24 in-page links in the composed deck, and NONE of their targets — the deck
+// rebuilds slides from cloned content, so the `section.module` wrappers that
+// carry the link targets never arrive. Every click was a no-op, and
+// `target="_blank"` re-opened the whole deck at slide 1.
+
+test('anchors: a section id resolves to that section\'s divider slide', () => {
+  const { model } = buildDeck();
+  const n = model.anchors['supplementary-verification-asymmetry'];
+  assert.equal(typeof n, 'number', 'the supplementary section is an anchor target');
+  assert.ok(model.slides[n].isDivider, 'it lands on the divider that opens the section');
+  assert.match(model.slides[n].navLabel, /Verification asymmetry/);
+});
+
+test('anchors: an include target (phase wrapper id) resolves to the phase\'s first slide', () => {
+  const { model } = buildDeck();
+  const n = model.anchors['exercises-orient-and-introspect'];
+  assert.equal(typeof n, 'number', 'the exercise include target is an anchor');
+  assert.match(model.slides[n].title, /Orient and introspect/);
+});
+
+test('anchors: a deep heading id resolves to the slide carrying it', () => {
+  const { model } = buildDeck();
+  const n = model.anchors['the-named-moves'];
+  assert.equal(typeof n, 'number', 'deep links into one section of a reference resolve');
+  assert.ok(carriesId(model.slides[n].el, 'the-named-moves'), 'that slide carries the heading');
+});
+
+// `slide.querySelector('#id')` is unreliable here: the hidden long-read source
+// keeps its copy of every id, and nwsapi resolves an id selector through
+// document.getElementById, which finds the source copy first and reports "not
+// inside this slide". Ask the slide for its own ids instead.
+const carriesId = (el, id) =>
+  [...el.querySelectorAll('[id]')].some(n => n.id === id);
+
+function clickLink(dom, text) {
+  const a = [...dom.window.document.querySelectorAll('.deck a')]
+    .find(x => new RegExp(text, 'i').test(x.textContent));
+  assert.ok(a, `link "${text}" is in the deck`);
+  const ev = new dom.window.MouseEvent('click', { bubbles: true, cancelable: true });
+  a.dispatchEvent(ev);
+  return ev;
+}
+const activeIndex = dom =>
+  [...dom.window.document.querySelectorAll('.deck .slide')].findIndex(s => s.classList.contains('is-active'));
+
+test('clicking an in-deck link moves the deck to the target slide', () => {
+  const { dom, ctl } = openDeck();
+  ctl.go(3); // the prework slide the link lives on
+  const before = activeIndex(dom);
+  const ev = clickLink(dom, 'build one from zero');
+  assert.ok(ev.defaultPrevented, 'the deck handles it instead of the browser (no new tab)');
+  const after = activeIndex(dom);
+  assert.notEqual(after, before, 'the deck moved');
+  assert.match(dom.window.document.querySelectorAll('.deck .slide')[after].textContent,
+    /Verification asymmetry/, 'and it moved to the right section');
+});
+
+test('a deep heading link lands on the reference slide that carries the heading', () => {
+  const { dom, ctl } = openDeck();
+  ctl.go(3);
+  clickLink(dom, 'the named moves');
+  const slide = dom.window.document.querySelectorAll('.deck .slide')[activeIndex(dom)];
+  assert.ok(carriesId(slide, 'the-named-moves'), 'active slide carries the target heading');
+});
+
+test('diagram zoom links are re-wired on the clone, marker and all', () => {
+  const dom = new JSDOM(`<!doctype html><body>${FIXTURE}</body>`, { runScripts: 'outside-only' });
+  dom.window.Element.prototype.scrollIntoView = function () {};
+  // The long-read pass already ran, so the source link carries the marker that
+  // makes decorateDiagramZoom skip it. The clone inherits the marker, not the
+  // listener — that is exactly how the deck ended up with three dead links.
+  const fig = dom.window.document.createElement('figure');
+  fig.className = 'diagram';
+  fig.innerHTML = '<img src="data:image/svg+xml,%3Csvg%3E">'
+    + '<a class="diagram__zoom" href="#" data-zoom-wired="1" target="_blank">Open in new tab ↗</a>';
+  dom.window.document.querySelector('#prework').appendChild(fig);
+  const seen = [];
+  dom.window.CurriculumRuntime = {
+    decorateDiagramZoom(root) {
+      seen.push([...root.querySelectorAll('a.diagram__zoom')].map(a => a.getAttribute('data-zoom-wired')));
+    },
+  };
+  dom.window.eval(SLIDES_SRC);
+  dom.window.CurriculumSlides.open(dom.window.document.querySelector('main'), { title: 'Fixture' });
+  assert.equal(seen.length, 1, 'the deck re-decorates its clone');
+  assert.deepEqual(seen[0], [null], 'and clears the stale marker first, or the re-wire no-ops');
+});
+
+test('an unresolvable fragment and an external link are left to the browser', () => {
+  const { dom, ctl } = openDeck();
+  ctl.go(3);
+  const before = activeIndex(dom);
+  assert.equal(clickLink(dom, 'dead one').defaultPrevented, false, 'unknown fragment not swallowed');
+  assert.equal(clickLink(dom, 'something outside').defaultPrevented, false, 'external link untouched');
+  assert.equal(activeIndex(dom), before, 'neither moved the deck');
 });

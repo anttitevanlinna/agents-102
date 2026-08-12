@@ -86,7 +86,7 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. While 
 
 {{prompt:push-back-on-the-plan-2-askuserquestion}}
 
-*Credit: Matt Pocock for the original [`grill-me`](https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md) skill. The version above is abbreviated to fit the 15-minute slot. The original is fully relentless and can run an hour. Optional:*
+*Credit: Matt Pocock for the original [`grill-me`](https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md) skill. The walk-down prompt is abbreviated to fit the 15-minute slot. The original is fully relentless and can run an hour. Optional:*
 
 {{prompt:push-back-on-the-plan-2-original}}
 

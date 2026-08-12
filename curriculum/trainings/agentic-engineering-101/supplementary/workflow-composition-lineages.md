@@ -144,6 +144,7 @@ Two or three practitioners is enough to track. Watch what they ship in their own
 
 <!-- maintainer -->
 
+**Slide deixis accepted:** "moves listed above" (check_slides.md §12) — the Cherny moves sit in the same `##` chunk as the Read: list that points back at them, ten lines up on one slide.
 
 **Supplementary meta:** *Reading material for AE101 M6 practitioner-mode beat. Pairs with `lectures/composing-the-workflow.md`. Seven sections: one named framework (Klaassen), four shapes (Pocock / Yan-Cognition / Metcalf-Amp / Cherny-moves), one counter-position (Ronacher), one worked-example case study (Dino, AE101 trainer). Closes with three filters for picking what to study first. Explicit scope note in intro: the walk is partial, the field has more named frameworks than this set surfaces, the curation reflects what AE101's OODA cycles caught.*
 

@@ -12,7 +12,7 @@ Three ways an action becomes callable in a Claude Code session:
 2. **`claude mcp add` from the command line.** Install an MCP server directly. Covers connectors not in the Claude.ai directory, project-scoped servers (`.mcp.json` in the repo), and local stdio MCPs.
 3. **First-party CLI via Bash.** When the work app ships a CLI (`gh`, `aws`, `gcloud`), Claude calls it through Bash. No MCP. Best ergonomics where the CLI exists; `gh` is the canonical case.
 
-Per-tracker install commands below. Plugins distribute Path 2 at scale. See the [Plugins and marketplaces](#plugins-and-marketplaces--mcp-servers-bundled-for-distribution) section.
+Per-tracker install commands come next. Plugins distribute Path 2 at scale, under *Plugins and marketplaces* on this page.
 
 **Vocabulary.** MCP is the protocol. **Connector** = the wire into a work app (the word Claude Code's configuration uses). **Action** = a verb with effect in the world (*read ticket, comment, close*). **Tool** = the umbrella term for anything the model can call. A first-party CLI exposes actions through Bash; an MCP server exposes them through the protocol. Same end state from the agent's point of view.
 
@@ -20,7 +20,7 @@ Per-tracker install commands below. Plugins distribute Path 2 at scale. See the 
 
 ## GitHub Issues
 
-**Default for AE101: `gh` CLI (Path 3).** GitHub ships [`gh`](https://cli.github.com), an official CLI pre-installed on most developer machines. Claude Code's Bash tool calls it directly: no MCP server, no PAT management, no allowlist work for IT.
+**Default for AE101: `gh` CLI (Path 3).** GitHub ships [`gh`](https://cli.github.com), its official CLI. Claude Code's Bash tool calls it directly: no MCP server, no PAT management, no allowlist work for IT.
 
 ```
 gh auth status     # check

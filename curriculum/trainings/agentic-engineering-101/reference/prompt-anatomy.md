@@ -306,6 +306,8 @@ A well-shaped prompt has three moves doing the heavy lifting and a handful of ot
 
 <!-- maintainer -->
 
+**Slide deixis accepted:** "names above" (check_slides.md §12) — the six pattern names are `###` subheads inside the same `## Three-move patterns` chunk; the closing line reads them off its own slide.
+
 **Authoring contract:** prompt frontmatter may carry `anchors` metadata later, but the current renderer does not surface hover highlights. If highlight mode ships, add the frontmatter anchors and renderer support in the same change. Until then, this page is the lookup surface and the examples are the binding.
 
 **Source-of-truth:** the canonical rule-set behind these moves lives in `memory/check_prompts.md` (private). This page is the student-facing surface. The rules file is the author-facing surface. If they drift, the rules file wins and this page updates to match.

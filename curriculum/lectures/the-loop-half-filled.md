@@ -4,7 +4,7 @@
 
 - Three modules in, the near half is lived ground. M1 stepped into the territory without the map, on purpose. The map arrived at M2, and everything since has landed on its near half: Intent, Context, Work, and how a loop compounds. This close puts names on the ground covered.
 - **One loop, three sizes.** The agent's act-observe-correct inside a session; your orient, act, verify, compound around each session (M1's orient, fix, compound, close cut at different joints); and the slow loop that carries a win from you to the team. Same shape at three altitudes; the strands the map draws (context, plan, build, checking) are the same shape again, each wearing different work.
-- A name is a handle, not a lesson. Every law below is a move already made. Naming it makes the move findable on Tuesday, transferable to a teammate, and checkable when it stops working.
+- A name is a handle, not a lesson. Every law coming up is a move already made. Naming it makes the move findable on Tuesday, transferable to a teammate, and checkable when it stops working.
 
 <figure class="diagram">
 <svg viewBox="0 0 1200 560" role="img" aria-label="The compounding engine at the M3 close: the near half (Intent, Context, Work) filled in and named, its loops drawn firm, with the compounding loop lit; the far half (Verification, Absorption, Outcome) sits under a haze marked ahead, its checking loop still dashed." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:6px;">

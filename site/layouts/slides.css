@@ -58,7 +58,14 @@ body.slides-active { overflow: hidden; }
 .deck .slide.is-active { opacity: 1; visibility: visible; transform: none; }
 .deck .slide.is-past { transform: translateY(-10px); }
 
-.deck .slide__body { width: 100%; max-width: 52rem; }
+/* Above the edge click-zones (z-index 5). The zones are 12% of the viewport
+   wide, and on a laptop-sized window that band reaches PAST the content column's
+   left edge — at 1280 it covers the first ~22px of the body, at 1024 ~31px. So
+   the leftmost characters on every slide (the DO / BUILD / WHY labels, a bullet's
+   first letter, a COPY button on the right) sat under an invisible button: hover
+   showed a hand, and a click paged the deck instead of doing nothing. Text must
+   win the hit-test; the zones keep the real margins, which is all they were for. */
+.deck .slide__body { width: 100%; max-width: 52rem; position: relative; z-index: 6; }
 .deck .slide--wide .slide__body, .deck .slide--cover .slide__body { max-width: 66rem; }
 .deck .slide--diagram .slide__body { max-width: 72rem; }
 .deck .slide pre { max-width: 100%; overflow-x: auto; }
@@ -201,9 +208,26 @@ body.slides-active { overflow: hidden; }
 .ex-contract__row { display: grid; grid-template-columns: 5rem 1fr; gap: 1.1rem; align-items: start;
   padding: .95rem 1.2rem; border-top: 1px solid var(--line); }
 .ex-contract__row:first-child { border-top: 0; }
+/* Structural chrome, not emphasis. These labels (DO / BUILD / WHY, lifted from
+   the file's "What you do" / "What you build" / "The point" leads) were accent
+   coloured, which in this palette is what a link looks like — an isolated,
+   uppercase, accent-coloured word in its own column reads as clickable and
+   isn't. Muted: the row's meaning lives in the value, the label just names it. */
 .ex-contract__label { font-family: var(--font-body); font-weight: 700; text-transform: uppercase;
-  letter-spacing: .11em; font-size: .7rem; color: var(--accent); padding-top: .25rem; }
+  letter-spacing: .11em; font-size: .7rem; color: var(--fg-2); padding-top: .25rem; }
 .ex-contract__val { font-size: 1rem; line-height: 1.55; color: var(--fg); }
+/* A link on a slide has to look like one, now that clicking it navigates the
+   deck. curriculum.css gives a link the same rust as every bold lead-in plus an
+   underline at 8% alpha: legible on a laptop, invisible on a wall, so a link
+   and a plain label were the same object at projection distance. Colour can't
+   carry the affordance here (too much else is warm) — the underline does.
+   Heading links and the diagram zoom keep their own deliberate treatment. */
+.deck .slide__body a { border-bottom: 1px solid currentColor; }
+@supports (color: color-mix(in srgb, currentColor 50%, transparent)) {
+  .deck .slide__body a { border-bottom-color: color-mix(in srgb, currentColor 55%, transparent); }
+}
+.deck .slide__body a.diagram__zoom,
+.deck .slide__body h1 a, .deck .slide__body h2 a, .deck .slide__body h3 a { border-bottom: 0; }
 .ex-contract__val strong:first-child { color: var(--fg); }
 .slide__body p.ex-time { display: inline-flex; align-items: center; gap: .45rem; font-style: normal;
   font-size: .8rem; letter-spacing: .03em; color: var(--fg-2); background: var(--bg-3);

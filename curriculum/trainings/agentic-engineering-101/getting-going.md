@@ -3,19 +3,19 @@
 > Run M1 on `high` thinking effort (the training default).
 
 ## Big Idea
-The first compound loop closes on a trivial bug from your own backlog. Orient, fix tests-first without plan mode, close the bug's ticket in the tracker your team reads, then retro into a personal `./CLAUDE.local.md` born from the session. The loop every module after this one rides on.
+Orient in your repo, fix a trivial bug tests-first and without plan mode, close its ticket in your team's own voice, then compound the session into a personal `./CLAUDE.local.md`.
 
 ## Prework
 
-Complete the prework at the top of this workbook. You'll open the first session in the repo you picked there. You'll stay in this one repo for the whole training. A later module commits your working tree as a fixed starting point, so keep unrelated work-in-progress committed or on its own branch as you go, and nothing stray rides into that snapshot.
+Complete the prework at the top of this workbook. You'll open the first session in the repo you picked there. You'll stay in this one repo for the whole training. Probably best to keep the training's work off your mainline.
 
 ## What You'll Learn
 After this module, you will be able to:
 - **Run** an orient → fix → close → compound loop end-to-end on a trivial bug in your own repo
-- **Introspect** the agent's read of your repo and dig until you find what it made up
+- **Distinguish** the agent's account of your repo from the repo's actual state
 - **Fix** the bug tests-first, root-cause-driven, no plan mode, and ship the PR
-- **Close** the bug's ticket from what your team's own tracker conventions show. The first move outside the repo
-- **Compound** one rule from the session into `./CLAUDE.local.md`
+- **Close** the bug's ticket from what your team's own tracker conventions show
+- **Compound** the session into a personal rules file at `./CLAUDE.local.md`
 
 ## How we work in this room
 
@@ -27,14 +27,13 @@ After this module, you will be able to:
 
 - Set the right pace for the group. Not too fast, not too slow.
 - People will finish at different times. Cutting depth and prompts here and there is often the right thing.
-- Protect your working memory. Cut where needed.
+- Exercises over lectures and theory. You can come back to the theory any time.
+- Protect your working memory. Cut where needed. No need to read the agent's output word for word.
 - All modules are designed to cope with missing details from prior modules.
 
 ## Start here
 
 **The question (to you):** what's one trick you figured out with Claude Code that nobody taught you? Doesn't have to be big. The weird prompt shape that works. The slash command you use more than the others. The thing you tell Claude at the start of every session.
-
-Everyone names a trick first; the training picks up from there.
 
 [Painting the picture with the LLM](lectures/painting-the-picture-with-the-llm.md)
 
@@ -55,11 +54,11 @@ Everyone names a trick first; the training picks up from there.
 ## Key Concepts
 - The loop is orient → fix → close → compound
 - `/context` shows what landed in the window. What didn't land is real, and you choose what fills the next round. (`/context` is oldskool; ccstatusline, or ask Claude to set up the built-in status line.) Context is what you put in it.
-- The agent's self-report is a hypothesis, not ground truth. Dig until you find what's made up. Claims aren't evidence. The scrollback is the machine's reflection; current state lives on disk.
-- A failing test is the only proof the bug exists. Without it, the fix is a guess that happens to compile
+- The agent's self-report is a hypothesis, not ground truth. Dig until you find what the LLM confabulated. Introspection generates hypotheses; the artifact rules. The scrollback is the machine's reflection; current state lives on disk.
+- A failing test is what makes the fix checkable. Without it, the fix is a guess that happens to compile
 - A `./CLAUDE.local.md` built from session evidence reads different from one drafted blank: concrete, specific, yours. Personal layer first; team-worthy rules earn their own PR.
 - The loop ends outside the code. The close-out lands in the tracker your team reads, not only in the repo
-- Your tracker encodes conventions nobody wrote down. One ticket is enough to start reading them back
+- Your tracker encodes conventions that live in the tickets, not in a doc. One ticket is enough to start reading them back
 
 ## Next
 Module 2 is where plan mode earns its keep: multi-file work, a second pass that pressure-tests the plan, and the catches that come with approving more scope than you'd cold-authorize. `./CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `./CLAUDE.md` if this repo has one; both concatenate into context). Close this session once the rules file lands; Module 2 opens fresh in the same repo.
@@ -133,7 +132,7 @@ Optional. All four sit in the gap before it. Do them and its moves land as thing
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
-| Chosen trivial bug (incoming) | Prework session scrollback in the chosen repo + tracker/repo context if one exists | Prework Step 4 bug-screen conversation | M1 Ex2 `fix-tests-first` prompt consumes the selected bug as the failing-test target |
+| Chosen trivial bug (incoming) | Prework session scrollback in the chosen repo + tracker/repo context if one exists | Prework bug-screen conversation | M1 Ex2 `fix-tests-first` prompt consumes the selected bug as the failing-test target |
 | Personal rules file | `./CLAUDE.local.md` (repo-personal, gitignored; create-or-integrate) | Exercise 4 compound prompt — Claude reviews full session, writes from evidence, user pushes back | Every future session in this repo (auto-loads at session-cold start); M2 plan-reading session opens with these rules already in context; M4 walk-and-fill audit subagent reads as part of *"system you have"*; M3 sharpens further with security/skill-authoring rules |
 
 The shipped PR and the closed ticket are both produced this module and both live in external systems (the PR system, the ticket tracker). Neither is consumed by a downstream module by stable path, so per rule 46's carve-out they're exempt from the contract requirement. The tracker-convention rules Ex3 surfaces stay in scrollback and reach disk only through Ex4's compound sweep, so they carry no identifier of their own.

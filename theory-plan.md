@@ -247,9 +247,9 @@ Context agents' `demoFit` treated as evidence, not verdict; overrules noted in-r
 
 | key | module | verdict | why |
 |---|---|---|---|
-| compound-and-close-2 | M1 | CUT→DEMO | Antti's named ticket category; witnessing the tool-boundary crossing IS the beat; kills M1's riskiest slot (MCP install gate + yak-shave). **Chain-move with cc-3** (ticket-summary edge is internal to the pair) |
-| compound-and-close-3 | M1 | CUT→DEMO | Same category; terminal + artefact contract already exempts the ticket as external — contract-safe. Trainer models the tone push-back live |
-| extract-the-task-shaping-rule-4 | M2 | CUT→DEMO | Ticket category; 3-min trainer demo on one volunteer ticket beats a maybe-slot + dodges per-student tracker-access variance. Terminal |
+| close-the-ticket-1 | M1 | CUT→DEMO | Antti's named ticket category; witnessing the tool-boundary crossing IS the beat; kills M1's riskiest slot (MCP install gate + yak-shave). **Chain-move with close-the-ticket-3** (ticket-summary edge is internal to the pair) |
+| close-the-ticket-3 | M1 | CUT→DEMO | Same category; terminal + artefact contract already exempts the ticket as external — contract-safe. Trainer models the tone push-back live |
+| close-the-ticket-2 | M1 | CUT→DEMO | Ticket category; 3-min trainer demo on one volunteer ticket beats a maybe-slot + dodges per-student tracker-access variance. Terminal |
 | push-back-on-the-plan-2-original | M2 | CUT→DEMO | Already show-not-do in body ("fully relentless, can run an hour. Optional:") — a slide today in all but name; project, credit Pocock, name it the take-home |
 | push-back-on-the-plan-2-askuserquestion | M2 | CUT→DEMO | 60-second trainer flip of their own live walk-down; capability-awareness at zero slot cost |
 | when-a-plan-is-good-1 | M2 | CUT→DEMO | Three-quarters demo already ("Watch what comes back… Skip if…"); resolves the slides-only pass's open section-fate a third way — section lives, prompt renders demo chrome |

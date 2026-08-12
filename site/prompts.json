@@ -931,15 +931,11 @@
     "context": "same session, at the close after the stack scan",
     "runtime": "any",
     "origin": "lectures/agents-that-build-agents",
-    "text": "This session we drew the recurring shapes in my work and listed the checking primitives the field runs. The shapes and the menu are in your context right now.\n\nWrite me a handoff prompt I can save and run in a fresh session later to build the kit: one skill per recurring shape worth packaging, across my whole stack. Carry the shapes we just named into the prompt so it starts from them, not from scratch. For each shape, the move is the one I know from the test-strategy skill: study the work, pick the checking primitive that fits, author through conversation, push back, invoke to verify.\n\nThe prompt runs later in a cold session, so bake in what that session won't have. Tell it to re-study my repos for these shapes, and name the shapes inside it. Put it in a code block so I can save it.",
+    "text": "This session we drew the recurring shapes in my work. The shapes are in your context right now.\n\nWrite me a handoff prompt I can save and run in a fresh session later to build the kit: one skill per recurring shape worth packaging, across my whole stack. Carry the shapes we just named into the prompt so it starts from them, not from scratch. For each shape: study the work, pick the check that fits, author through conversation, push back, invoke to verify.\n\nThe prompt runs later in a cold session, so bake in what that session won't have. Tell it to re-study my repos for these shapes, and name the shapes inside it.",
     "requires": [
       {
         "id": "recurring-shape-diagrams",
         "source": "prompt:spot-gaps-build-the-loop-shapes"
-      },
-      {
-        "id": "primitive-menu",
-        "source": "prompt:spot-gaps-build-the-loop-primitives"
       }
     ],
     "produces": [
@@ -1155,6 +1151,83 @@
     "origin": "claude-basics/homework-build-and-verify",
     "text": "Read the files in this folder.\n\nTell me:\n- what I can do with this folder in the future\n- what reusable patterns you can see in the rules, prompts, and saved outputs\n- which rule or checking habit is most worth carrying into my next Claude task\n- what kind of future Claude answer I should run through a separate checker before trusting\n\nKeep it to five bullets."
   },
+  "close-the-ticket-1": {
+    "key": "close-the-ticket-1",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/close-the-ticket",
+    "text": "Read the ticket for the bug we just fixed. Tell me what it says: reporter, description, any comments. If you can't find it, search the tracker by keywords from the bug; if there still isn't one, say so and we'll create one.\n\nTicket:",
+    "requires": [
+      {
+        "id": "shipped-bug-fix",
+        "source": "prompt:fix-tests-first-3"
+      },
+      {
+        "id": "ticket-tracker",
+        "source": "external (Linear / Jira / GitHub Issues; student pastes the ticket, or the agent reads it where it can already reach the tracker)"
+      }
+    ],
+    "produces": [
+      {
+        "id": "ticket-summary",
+        "location": "scrollback (ticket fields + comments read back)",
+        "consumed-by": [
+          "prompt:close-the-ticket-2",
+          "prompt:close-the-ticket-3"
+        ]
+      }
+    ]
+  },
+  "close-the-ticket-2": {
+    "key": "close-the-ticket-2",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/close-the-ticket",
+    "text": "Reverse-engineer how this team handles bugs from one bug ticket. Infer basic rules from the fields and wording: status, labels, severity or priority, component, owner, repro steps, acceptance criteria, comments, links, and custom fields.\n\nIf we created this ticket ourselves a moment ago, say so and ask me for a different one. A ticket you wrote carries none of the team's conventions. If you cannot open the ticket, ask me to paste the fields rather than reading anything off the URL.\n\nSeparate strong signals, guesses that need more tickets, and things you cannot tell.\n\nThen propose five basic rules an agent could follow on the next bug in this tracker.",
+    "requires": [
+      {
+        "id": "ticket-summary",
+        "source": "prompt:close-the-ticket-1"
+      }
+    ],
+    "produces": [
+      {
+        "id": "bug-rules",
+        "location": "scrollback (5 proposed bug rules)",
+        "consumed-by": [
+          "prompt:compound-and-close-1"
+        ]
+      }
+    ]
+  },
+  "close-the-ticket-3": {
+    "key": "close-the-ticket-3",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/close-the-ticket",
+    "text": "Update the ticket: short close-out note naming what the root cause was and how we fixed it, link to the PR if you opened one (otherwise link the branch). If we needed to create the ticket just now, create it first, then update. Tell me what you wrote.",
+    "requires": [
+      {
+        "id": "ticket-summary",
+        "source": "prompt:close-the-ticket-1"
+      },
+      {
+        "id": "shipped-bug-fix",
+        "source": "prompt:fix-tests-first-3"
+      }
+    ],
+    "produces": [
+      {
+        "id": "ticket-close-out",
+        "location": "external (ticket updated by the agent where it can reach the tracker, otherwise pasted by the student)",
+        "consumed-by": [],
+        "note": "terminal artifact — the closed ticket lives in the team's tracker, not the training corpus"
+      }
+    ]
+  },
   "compound-and-close-1": {
     "key": "compound-and-close-1",
     "dest": "Claude Code",
@@ -1193,60 +1266,6 @@
           "prompt:ae101-m5-worktree-setup"
         ],
         "note": "ae101-m2-integrate-branch WRITES to ./CLAUDE.local.md (creates if missing) but doesn't strictly consume it as a precondition"
-      }
-    ]
-  },
-  "compound-and-close-2": {
-    "key": "compound-and-close-2",
-    "dest": "Claude Code",
-    "context": "",
-    "runtime": "any",
-    "origin": "exercises/close-the-ticket",
-    "text": "Read the ticket for the bug we just fixed. Tell me what it says: reporter, description, any comments. If you can't find it, search the tracker by keywords from the bug; if there still isn't one, say so and we'll create one.\n\nTicket:",
-    "requires": [
-      {
-        "id": "shipped-bug-fix",
-        "source": "prompt:fix-tests-first-3"
-      },
-      {
-        "id": "ticket-tracker",
-        "source": "external (Linear / Jira / GitHub Issues; student pastes the ticket, or the agent reads it where it can already reach the tracker)"
-      }
-    ],
-    "produces": [
-      {
-        "id": "ticket-summary",
-        "location": "scrollback (ticket fields + comments read back)",
-        "consumed-by": [
-          "prompt:extract-the-task-shaping-rule-4",
-          "prompt:compound-and-close-3"
-        ]
-      }
-    ]
-  },
-  "compound-and-close-3": {
-    "key": "compound-and-close-3",
-    "dest": "Claude Code",
-    "context": "",
-    "runtime": "any",
-    "origin": "exercises/close-the-ticket",
-    "text": "Update the ticket: short close-out note naming what the root cause was and how we fixed it, link to the PR if you opened one (otherwise link the branch). If we needed to create the ticket just now, create it first, then update. Tell me what you wrote.",
-    "requires": [
-      {
-        "id": "ticket-summary",
-        "source": "prompt:compound-and-close-2"
-      },
-      {
-        "id": "shipped-bug-fix",
-        "source": "prompt:fix-tests-first-3"
-      }
-    ],
-    "produces": [
-      {
-        "id": "ticket-close-out",
-        "location": "external (ticket updated by the agent where it can reach the tracker, otherwise pasted by the student)",
-        "consumed-by": [],
-        "note": "terminal artifact — the closed ticket lives in the team's tracker, not the training corpus"
       }
     ]
   },
@@ -1583,6 +1602,10 @@
       {
         "id": "task-shaping-rules-draft",
         "source": "prompt:extract-the-task-shaping-rule-1"
+      },
+      {
+        "id": "story-shaping-rules",
+        "source": "prompt:extract-the-task-shaping-rule-4"
       }
     ],
     "produces": [
@@ -1616,20 +1639,24 @@
     "dest": "Claude Code",
     "context": "",
     "runtime": "any",
-    "origin": "exercises/close-the-ticket",
-    "text": "Reverse-engineer how this team uses its task manager from one ticket. Infer basic rules from the fields and wording: status, labels, priority, component, estimate, owner, epic, acceptance criteria, comments, links, and custom fields.\n\nSeparate strong signals, guesses that need more tickets, and things you cannot tell.\n\nThen propose five basic rules a backlog-refinement agent could use on future tickets.",
+    "origin": "exercises/extract-the-task-shaping-rule",
+    "text": "Reverse-engineer how this team writes stories from one story ticket. Infer basic rules from the fields and wording: status, labels, priority, component, estimate, owner, epic, acceptance criteria, comments, and links.\n\nIf you cannot open the ticket, say so and ask me to paste the fields. Don't infer conventions from the URL.\n\nSeparate strong signals, guesses that need more tickets, and things you cannot tell.\n\nThen propose three basic rules an agent could follow when shaping the next story in this tracker. Keep them in chat beside the rules we just named. We pick where the file lives next, so don't write one yet.\n\nStory ticket:",
     "requires": [
       {
-        "id": "ticket-summary",
-        "source": "prompt:compound-and-close-2"
+        "id": "task-shaping-rules-draft",
+        "source": "prompt:extract-the-task-shaping-rule-1"
+      },
+      {
+        "id": "story-ticket",
+        "source": "external (Linear / Jira / GitHub Issues; student pastes one story ticket, or the fields if the session cannot reach the tracker)"
       }
     ],
     "produces": [
       {
-        "id": "backlog-refinement-rules",
-        "location": "scrollback (5 proposed rules)",
+        "id": "story-shaping-rules",
+        "location": "scrollback (3 proposed rules, held beside the session-derived set; no file written at this step)",
         "consumed-by": [
-          "prompt:compound-and-close-1"
+          "prompt:extract-the-task-shaping-rule-2"
         ]
       }
     ]
@@ -1699,8 +1726,8 @@
         "location": "git (commit on a feature branch; PR if student opens one)",
         "consumed-by": [
           "prompt:compound-and-close-1",
-          "prompt:compound-and-close-2",
-          "prompt:compound-and-close-3"
+          "prompt:close-the-ticket-1",
+          "prompt:close-the-ticket-3"
         ]
       }
     ]
@@ -2270,7 +2297,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "I have two sessions of the same long-running task on disk, and both recorded their coordinates. The un-packaged session's are in `task.md` (its `m4/` branch and session transcript path); the packaged re-send's are in `plan.md`, in the protected `Run coordinates` block at the top (its `m5/` branch and session transcript path). The un-packaged session had no reference artefact, no plan.md, no verifier. The packaged re-send had all three in play: a reference, a plan.md, and a verifier wired to run on a cadence.\n\nRead both. Start with both session transcripts at the paths recorded in `task.md` and `plan.md`. Then check repo state: commits on the `m4/` branch after its starting point, commits on the `m5/` branch after the worktree fork, what each session touched. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.\n\nWalk the diff across four dimensions:\n\n- What packaging caught: specific moments in the packaged session where the reference, the plan.md, or the verifier prevented a drift the un-packaged session actually experienced. Quote the un-packaged moment and the packaged moment both.\n- What packaging missed: places the packaged session drifted even with packaging in play. Where the reference was too thin, where the plan.md carried the wrong state, where the verifier's quality bar sat beside the real failure.\n- What packaging introduced: new failure shapes that only exist because of the packaging itself — over-fitted verifier, plan.md staleness, reference-as-cage.\n- Where the fix belongs: for each named gap — memory (observation, hypothesis, rule), a sharper verifier, a rule in CLAUDE.local.md, or a new skill. Don't prescribe the skill's shape yet.\n\nFor every claim, quote a specific moment from the artefacts. Don't generalise.\n\nEnd with: which gap matters most? Rank by damage-to-a-future-session, not by how interesting it reads.",
+    "text": "I have two sessions of the same long-running task on disk, and both recorded their coordinates. The un-packaged session's are in `task.md` (its `m4/` branch and session transcript path); the packaged re-send's are in `plan.md`, in the protected `Run coordinates` block at the top (its `m5/` branch and session transcript path). The un-packaged session had no reference artefact, no plan.md, no verifier. The packaged re-send had all three in play: a reference, a plan.md, and a verifier wired to run on a cadence.\n\nRead both. Start with both session transcripts at the paths recorded in `task.md` and `plan.md`. Then check repo state: commits on the `m4/` branch after its starting point, commits on the `m5/` branch after the worktree fork, what each session touched. File changes tell you what each agent did; the transcripts tell you how it got there, including drift and re-reads.\n\nWalk the diff across four dimensions:\n\n- What packaging caught: specific moments in the packaged session where the reference, the plan.md, or the verifier prevented a drift the un-packaged session actually experienced. Quote the un-packaged moment and the packaged moment both.\n- What packaging missed: places the packaged session drifted even with packaging in play. Where the reference was too thin, where the plan.md carried the wrong state, where the verifier's quality bar sat beside the real failure.\n- What packaging introduced: new failure shapes that only exist because of the packaging itself — over-fitted verifier, plan.md staleness, reference-as-cage.\n- Where the fix belongs: for each named gap — memory (an observation, a hypothesis, or a rule in CLAUDE.local.md), a sharper verifier, or a new skill. Don't prescribe the skill's shape yet.\n\nFor every claim, quote a specific moment from the artefacts. Don't generalise.\n\nEnd with: which gap matters most? Rank by damage-to-a-future-session, not by how interesting it reads.",
     "requires": [
       {
         "id": "un-packaged-run-artefact",
@@ -2369,10 +2396,7 @@
     "produces": [
       {
         "id": "primitive-menu",
-        "location": "scrollback (5-10 atomic verification primitives with one-line check-description and fire-timing per primitive, plus 2-3 ranked by fit against dominant gap)",
-        "consumed-by": [
-          "prompt:agents-that-build-agents-handoff"
-        ]
+        "location": "scrollback (5-10 atomic verification primitives with one-line check-description and fire-timing per primitive, plus 2-3 ranked by fit against dominant gap)"
       }
     ]
   },

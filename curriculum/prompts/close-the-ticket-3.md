@@ -1,11 +1,11 @@
 ---
-key: compound-and-close-3
+key: close-the-ticket-3
 dest: Claude Code
 runtime: any
 origin: exercises/close-the-ticket
 requires:
   - id: ticket-summary
-    source: prompt:compound-and-close-2
+    source: prompt:close-the-ticket-1
   - id: shipped-bug-fix
     source: prompt:fix-tests-first-3
 produces:

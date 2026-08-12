@@ -1,10 +1,10 @@
 # Name the rules, place the file
 
-**Time:** 12 minutes.
+**Time:** 15 minutes.
 
-**What you do:** ask Claude to surface three to five task-shaping rules from the plan-mode session you just ran.
+**What you do:** surface task-shaping rules from the session you just ran, then read the same off one story ticket.
 
-**What you build:** a rules file naming how you factored this task, saved where Claude will read it.
+**What you build:** one rules file from two sources: how you shaped this task, and how your team writes stories.
 
 **The point:** an agent asked for rules will hand you plausible generic ones.
 
@@ -12,7 +12,7 @@
 
 ## Phase 1: Name the rules from this session
 
-*5 min*
+*8 min*
 
 - The rules are already in the session; naming them is what is left. Each decision in the plan read carried a task-shaping rule about what made this task plan-mode-able.
 - The agent reads the scrollback; you react to what it proposes. The scrollback is the right source here: the question is how you worked, not what is on disk.
@@ -26,6 +26,16 @@ Ask Claude to read the scrollback, propose rules, and pause for your push-back b
 
 - When Claude pauses for the rewrite-and-reject pass, that is where your hand goes on the work.
 - The generic rule is the tell. The rule that arrives generic, like "pick tasks that span multiple files," is the one that needs rewriting into your words, or rejecting.
+
+## Read the same rules off one story ticket
+
+- The same move you ran at M1 on a bug ticket, pointed at a story. How your team writes stories is a rule the tracker has been keeping, same as the bug fields were.
+- If the task you brought came from your tracker, its own ticket is the one to read. Otherwise any real story works. One the agent just wrote carries none of your team's conventions.
+- No tracker this session can reach? Paste the fields instead of the link. [MCP and connectors](../trainings/agentic-engineering-101/reference/mcp-and-connectors.md) has the one-liner per tracker if you want the reach for next time.
+
+Drop a story ticket link after the colon.
+
+{{prompt:extract-the-task-shaping-rule-4}}
 
 ## Phase 2: Pick where the file fires
 
@@ -43,7 +53,7 @@ Decide the location with Claude.
 
 **Note** A rule off the auto-load path needs a wire, or it sits silently on disk until something reads it. `./CLAUDE.local.md`, `./CLAUDE.md`, and `~/.claude/CLAUDE.md` auto-load; anywhere else needs an `@import` line added to one of those three, e.g. `@~/.claude/memory/task-shaping.md` added to `~/.claude/CLAUDE.md` for a rule that lives at `~/.claude/memory/task-shaping.md`. If Claude picked a path outside the three, ask it for that `@import` line before you move on.
 
-- Read the three rules back. If any drifted from your wording, push back and have Claude rewrite.
+- Read the rules back. If any drifted from your wording, push back and have Claude rewrite.
 
 ## Phase 3: Name the automation shapes, don't build them
 
@@ -60,7 +70,7 @@ Decide the location with Claude.
 
 ## What happened
 
-Claude read the scrollback and proposed the rules. You rewrote or rejected at least one. You named the file and the path. Claude wrote it. You asked one open question about where the file could go next. Claude proposed shapes. You read.
+Claude read the scrollback and proposed the rules. You rewrote or rejected at least one. One story ticket gave up a second set. You named the file and the path. Claude wrote it. You asked one open question about where the file could go next. Claude proposed shapes. You read.
 
 <!-- maintainer -->
 
@@ -72,11 +82,11 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 
 **Scrollback-ownership clause (2026-08-08, Antti-directed):** Phase 1's *"The scrollback is the right source here: the question is how you worked, not what is on disk"* is the deliberate boundary of M1's scrollback law (`the-machine-you-just-met`, *The scrollback is not the work*): session questions read the chat, state questions read the disk. It stops the law over-learning into scrollback-bad. No module reference in body on purpose; the recognition stays implicit.
 
-**Scope ends at the automation-shapes read.** The ticket-conventions prompt (`extract-the-task-shaping-rule-4`) belongs to M1's `close-the-ticket`, which is also where *refinement* is earned as a term — do not reintroduce either here.
+**Scope ends at the automation-shapes read.** The split with M1 is by ticket kind, not by move: `close-the-ticket` reads a **bug** ticket and proposes bug rules, this exercise reads a **story** ticket and proposes story rules. The repeat is deliberate and named in the body (`check_pedagogy.md §9b` — same move, different face), so a judge reading the two files side by side should not flag the twin fences as duplication. Do not point either prompt at the other's ticket kind. The `-4` key was M1's bug-conventions prompt until 2026-08-12 and now carries the story read; M1's trio renamed to `close-the-ticket-1/2/3` in the same pass, so any reference to `extract-the-task-shaping-rule-4` dated before then means the bug prompt.
 
 **Phase 3 automation-shapes prompt (`extract-the-task-shaping-rule-3`) kept, not cut.** The lecture `where-the-rule-could-live` walks the same three shapes, which makes this prompt look like a cut candidate. It is not: this is a no-build, name-the-shapes horizon beat, so it adds none of the concurrent-heavy-execution load the cull targeted — cutting it reclaims no load, it only drops a cheap payoff. It gives the slot a breather after the rules-extraction work and primes the lecture reveal (generate-then-reveal). Not a cut candidate.
 
-**Emphasis budget (`check_slides.md §9`):** no bolded handles in the body; all bullet leads plain. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
+**Emphasis budget (`check_slides.md §9`):** no bolded handles in the body; all bullet leads plain. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. (The 2026-08-12 story-ticket pass DID add a slide and three claims; the no-claims-added clause above described the earlier slides-only pass and is kept as its record, not as a current description of the file.)
 
 **Quality:** compendium-audited 2026-08-08 (writing@cc2296b story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@cb44994 strategy@1c765f2 slides@cc2296b)
 - judges @cc2296b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
@@ -84,7 +94,7 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 - cohorts: none yet
 
 **Meta (trainer):**
-- **Primary Bloom's level:** Apply (P1 surface) + Evaluate (P1 reject/rewrite) + Understand (P3 read shapes)
+- **Primary Bloom's level:** Apply (P1 surface, story-ticket read) + Evaluate (P1 reject/rewrite) + Understand (P3 read shapes)
 - **Placement:** inside the wider M2 slot — `node scripts/calculate-time.js plan-mode-done-right` for the current map; this file owns only its own `**Time:**` line. Sits AFTER `push-back-on-the-plan` and BEFORE the optional plan-reading-rule soft-compound. Two compound moves now close M2 with different scopes: this exercise captures task-shaping rules to a free-choice `.md`; the soft-compound integrates one plan-reading branch into `CLAUDE.local.md` if one earned itself.
 - **Mood target:** extension of grounded competence into capture-and-name. Student leaves: *"the rule sits in MY file at MY location; I see how this could automate; I'm not building it today — and that's the move."*
 - **Strategic beat:** *capture-your-world* (theme #5) made concrete via free-choice location; *non-agentic-default* (theme #6) made concrete via deferred application. The M2 discipline ("approve, don't execute") applied one layer up ("save, don't automate").
@@ -96,6 +106,7 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
 - adds one rule born from a real planning session to `./CLAUDE.local.md` or `~/.claude/CLAUDE.md`
+- reads one story ticket for what its fields encode before shaping work from it, rather than reading it only for the ask
 - names the loading mechanism (auto-load vs lazy-load vs `@import`) when deciding where a rule belongs
 - when asked to automate a backlog process, states the rules-file-first order before requesting any build/code
 
@@ -103,6 +114,8 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 - **P1 generic rules** — Claude returns rubber-stamp rules ("pick tasks that span multiple files"). Trainer push: *"name a moment from THIS session that produced that rule. If you can't, the rule is generic — push Claude for one anchored in what you actually did."*
 - **P1 default-acceptance** — student saves all five rules verbatim without rewriting any. Trainer push: *"pick one. Read it aloud. Rewrite it so it sounds like you, or reject it."*
 - **P2 location-paralysis** — student stalls choosing the path. Trainer push: *"the location is reversible. `./CLAUDE.local.md` and `~/.claude/CLAUDE.md` auto-load; anywhere else fires only when a prompt names the path or an `@import` line wires it in. Pick by the mechanism you want; you can move it later."*
+- **Story-ticket read — file written early** — the agent takes *"add them to the rules"* as an instruction to create a rules file, and the placement decision is made before the student makes it. The fence now says not to, so this is the recovery when it happens anyway. Trainer push: *"ask Claude where it put them. If it wrote a file, have it tell you the path and then make the location decision yourself in the next step — the file it picked is a default, not your call."*
+- **Story-ticket read — confident read off an unreachable ticket** — the session cannot open the tracker and the agent produces conventions anyway. Trainer push: *"ask it which fields it actually saw. If it can't quote them, paste the fields and re-run."*
 - **P3 building-instinct** — student starts asking Claude to write the Slack bot. Trainer push: *"the lecture is next. Today is capture; application is downstream."*
 
 **Watch-fors:**

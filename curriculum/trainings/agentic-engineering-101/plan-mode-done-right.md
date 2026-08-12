@@ -3,7 +3,7 @@
 > Run this module on medium thinking effort. High and xhigh may feel sluggish on a tight slot like this one.
 
 ## Big Idea
-A second-pass grilling can press a plan harder than you need to consume. Your own read catches the decisions your codebase experience makes visible; the agent starts walking the branches you may not see. Keep the highest-value sharpenings. Stop when the plan is good enough to generate.
+Take one multi-file task into plan mode, push back twice in your own words, then let a second read walk the branches you can't see.
 
 ## Prework
 
@@ -22,18 +22,14 @@ After this module, you will be able to:
 - **Walk down** unresolved branches, with a recommended answer per branch
 - **Pair** human read with agent walk-down: read → push-back → walk-down → approve
 - **Spot** approval inflation in a plan whose structure makes it look decided
-- **Extract** task-shaping rules from your session into a `.md` file, sharpening at least one before saving
+- **Extract** task-shaping rules from two sources, your plan session and one story ticket, into a `.md` file you place
 - **Name** three shapes for turning a rules file into automation: Slack triage, issue webhook, scheduled read
 
 ## Start here
 
 **The question, to you:** when was the last time you entered generation with too little planning? Where did it bite: wrong files, a design decided mid-run, rework you could have planned away?
 
-Before the plan-reading move, one orientation: the whole map, and where you are on it.
-
 [Lecture: The whole map](lectures/the-whole-map.md)
-
-Everyone names a moment first; *When a plan is good* names the pattern.
 
 [Lecture: When a plan is good](lectures/when-a-plan-is-good.md)
 
@@ -53,7 +49,7 @@ If a branch from the second-pass read sharpened how plans get made in this codeb
 
 {{prompt:ae101-m2-integrate-branch}}
 
-> Read the prompt closely. It's fair to read it as replacing the file with only this rule, which would nuke the old rules. After it runs, ask Claude to confirm it added the rule and kept the old ones rather than overwrote `./CLAUDE.local.md`. Precise prompting is harder than it looks. If it did overwrite, the old rules are still in this session's scrollback; ask Claude to restore them.
+> This prompt is fair to read as replacing the file with only this rule, which would nuke the old rules. After it runs, ask Claude to confirm it added the rule and kept the old ones rather than overwrote `./CLAUDE.local.md`. Precise prompting is harder than it looks. If it did overwrite, the old rules are still in this session's scrollback; ask Claude to restore them.
 
 > LLM self-charity may creep in. If the saved rule reads generic, ask for one specific to this session.
 
@@ -92,10 +88,13 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 
 <!-- maintainer -->
 
+**Big Idea cut from four sentences to one, Antti-directed 2026-08-12.** Prior text: *"A second-pass grilling can press a plan harder than you need to consume. Your own read catches the decisions your codebase experience makes visible; the agent starts walking the branches you may not see. Keep the highest-value sharpenings. Stop when the plan is good enough to generate."* Four sentences of the module summarising its own `when-a-plan-is-good` § *Two reads, paired* slide before the student reached it, with `## What You'll Learn` restating the same arc immediately below in the more precise register. It was briefly moved below this fence, then restored: `slides.js:264` renders the Big Idea as the **subtitle on the module divider slide**, so this is title-card copy projected on a wall, not a body section — below the fence it left M2 the only module with a bare title card. Spec and the ~30-word ceiling now live in `curriculum/module-shape.md` § Big Idea; `check_student_facing.md` §33's exemption was narrowed the same day to cover what a module earns, never where it sits.
+
+**Both `## Start here` connectives cut, same pass.** *"Before the plan-reading move, one orientation: the whole map, and where you are on it."* and *"Everyone names a moment first; When a plan is good names the pattern."* The second was an orphan slide in the composed deck (`check_slides.md` §5): `buildDeckModel` buffers stray module-level prose and flushes it when it hits the next `.phase--*`, so a lone paragraph between two inlined lectures projects as a slide containing one sentence. Both were also arc-positioning under §33, and the second pointed at a room beat by position (§2). M1 and M3 carry bare link runs with no connectives — that is the house shape. Do not reintroduce a framing line above a lecture include here.
 
 **The bolded task-sizing callout in `## Prework` is mandated, not stylistic.** `check_pedagogy.md` §34 requires a **bolded** anti-pattern line naming the ceiling wherever task selection drives the outcome, and prints almost this exact wording as its own example. A slides judge reads it as a §9 emphasis-budget violation (two bolded sentences, not a short handle) because §9 cannot see §34. Accepted-by-design: do not flatten it, and do not re-raise it as a fresh finding.
 
-**M2 issues no homework.** The ticket-conventions read and the *refinement* term both live in M1's `close-the-ticket`; do not reintroduce either here or add a `## Homework` section pointing at one.
+**M2 issues no homework.** Do not add a `## Homework` section. The ticket read is no longer M1's alone: `extract-the-task-shaping-rule` runs the same move on a **story** ticket, where M1's `close-the-ticket` runs it on a **bug** ticket (2026-08-12, maintainer-directed). The split is by ticket kind, and the M2 instance is scoped to one short slide inside the existing exercise — not a second exercise, and not a homework beat.
 
 **The 10% line in `## Key Concepts` carries M1's attested prior, in M1's register.** `orient-and-introspect.md` § *Read the self-report, then spot-check it* holds it as *"about 10%… could be more or less"*, a loosely-held search budget, maintainer-attested there. This bullet applies the same prior to a plan instead of to the agent's read of a repo, and keeps the hedge plus the instruction register (*assume, then go find which part*) rather than stating a floor. The distinction is load-bearing: a floor is a claim about the world and gets quoted back at you; the prior is an instruction to the reader. `check_slides.md` §7's number-plus-retraction sub-item does not fire here (no retraction attached), and the attested double-hedge stays M1's alone. Do not harden this to *"at least"*, and do not add a retraction clause.
 

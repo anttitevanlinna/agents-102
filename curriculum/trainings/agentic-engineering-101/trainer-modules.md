@@ -111,19 +111,19 @@ Don't split M4 across the days: its flow is one sequential beat and the send-off
 **Learning goals.** Student can:
 
 - Run an orient → fix → close → compound loop end-to-end on a trivial bug in their own repo.
-- Introspect the agent's read of the repo and dig until they find what it made up.
+- Distinguish the agent's account of the repo from its actual state, digging until they find what the LLM confabulated.
 - Fix the bug tests-first, root-cause-driven, no plan mode, ship the PR.
-- Close the bug's ticket from what their own tracker's field conventions show, the first move outside the repo.
-- Compound one rule from the session into `./CLAUDE.local.md`.
+- Close the bug's ticket from what their own tracker's field conventions show.
+- Compound the session into a personal rules file at `./CLAUDE.local.md`.
 
 **Exercise goals.**
 
 - *Orient and introspect* — Claude reads the repo deliberately; student interrogates the self-report against `/context`. Output: a map of what loaded, what got skipped, and how much window is left.
 - *Fix tests-first* — failing test lands before the fix; at least one diff-line push-back; root-cause interrogation between first and second TDD pass; a real PR shipped.
-- *Close the ticket* — one real ticket read twice: the agent reverse-engineers the team's field conventions off it, then writes the close-out in that register. Five proposed refinement rules, at least one rejected. The note lands via `gh`, an inherited connector, or a paste.
+- *Close the ticket* — one real ticket read twice: the agent reverse-engineers the team's field conventions off it, then writes the close-out in that register. Five proposed bug rules, at least one rejected. The note lands via `gh`, an inherited connector, or a paste.
 - *Compound and close* — `./CLAUDE.local.md` written from session evidence (not a template, and the tracker read counts), a push-back pass where the summary misreads, and a second sweep before close.
 
-**Trainer cues.** Give the two room-agreement slides two minutes inside the opening ten. The first sets participation norms. The second sets the pace contract: the group moves at a workable average, while an individual may cut depth or prompts to protect working memory and rejoin that pace. Don't turn either slide into a policy lecture, and don't let the fastest participant set the room's speed. The arc closer (How this training was built) is Antti's first-hand story — read it as a document, in narrator voice; you are not claiming the experience, and the opening line says so. The Connections trick-share calibrates the room; a quiet first beat is a Nordic norm, not no-signal. Bug pick is the single variable that breaks M1: too small (Claude crunches in 30s, no read worth dragging through introspection) or too large (no close inside the slot). The diff-line push-back IS the pedagogy of Fix tests-first; if students skip it the loop's third beat reads as theatre. Close the ticket is the module's only beat outside the repo, and its payoff is the register: the conventions read is what stops the close-out sounding like a language model. If a student skips straight to the close-out prompt, the beat still produces a note but loses the point. Nothing is handed off as homework; the loop finishes in the room.
+**Trainer cues.** Give the two room-agreement slides two minutes inside the opening ten. Don't turn either into a policy lecture, and don't let the fastest participant set the room's speed. The arc closer (How this training was built) is Antti's first-hand story — read it as a document, in narrator voice; you are not claiming the experience, and the opening line says so. The Connections trick-share calibrates the room; a quiet first beat is a Nordic norm, not no-signal. Bug pick is the single variable that breaks M1: too small (Claude crunches in 30s, no read worth dragging through introspection) or too large (no close inside the slot). The diff-line push-back IS the pedagogy of Fix tests-first; if students skip it the loop's third beat reads as theatre. Close the ticket's payoff is the register: the conventions read is what stops the close-out sounding like a language model. If a student skips straight to the close-out prompt, the beat still produces a note but loses the point. Nothing is handed off as homework; the loop finishes in the room.
 
 **Runtime map.**
 

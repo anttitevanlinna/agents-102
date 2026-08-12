@@ -1,5 +1,5 @@
 ---
-key: compound-and-close-2
+key: close-the-ticket-1
 dest: Claude Code
 runtime: any
 origin: exercises/close-the-ticket
@@ -12,8 +12,8 @@ produces:
   - id: ticket-summary
     location: scrollback (ticket fields + comments read back)
     consumed-by:
-      - prompt:extract-the-task-shaping-rule-4
-      - prompt:compound-and-close-3
+      - prompt:close-the-ticket-2
+      - prompt:close-the-ticket-3
 ---
 Read the ticket for the bug we just fixed. Tell me what it says: reporter, description, any comments. If you can't find it, search the tracker by keywords from the bug; if there still isn't one, say so and we'll create one.
 

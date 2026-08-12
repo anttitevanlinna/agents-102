@@ -11,7 +11,7 @@ produces:
     location: git (commit on a feature branch; PR if student opens one)
     consumed-by:
       - prompt:compound-and-close-1
-      - prompt:compound-and-close-2
-      - prompt:compound-and-close-3
+      - prompt:close-the-ticket-1
+      - prompt:close-the-ticket-3
 ---
 Now do it properly, TDD-style. Write the failing test that names the deeper issue you just identified, run it, watch it fail. Fix the root cause. Run again, watch it pass. Show me the diff before you commit.

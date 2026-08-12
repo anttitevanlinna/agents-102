@@ -6,6 +6,8 @@ origin: exercises/extract-the-task-shaping-rule
 requires:
   - id: task-shaping-rules-draft
     source: prompt:extract-the-task-shaping-rule-1
+  - id: story-shaping-rules
+    source: prompt:extract-the-task-shaping-rule-4
 produces:
   - id: task-shaping-rules-file
     location: student-picked (./CLAUDE.local.md, ~/.claude/CLAUDE.md, or notes folder)

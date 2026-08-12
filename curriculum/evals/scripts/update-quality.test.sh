@@ -242,6 +242,51 @@ rc=$(run "$TMP/t14.md" --slides PASS --sha new5678 --date 2026-06-01)
 assert_rc   "$rc" "0" 'T14 instance without body_sha still stamps (back-compat)'
 assert_grep "$TMP/t14.md" 'slides@new5678' 'T14 pin written'
 
+# ── T15–T16 — same-slug collision must not disarm the guard ──────────────────
+#    `spot-gaps-build-the-loop` is BOTH a module and an exercise, so a bare
+#    `*--<slug>.<class>.json` glob matches two instances. The guard used to see
+#    two matches and return clean without checking anything — failing OPEN in the
+#    one case the rest of the system takes care to disambiguate. Surface-type is
+#    derived from the parent directory everywhere else; the guard now does the same.
+mkdir -p "$TMP/curriculum/exercises"
+
+# T15 — exercise body moved, module instance still matches → must REFUSE.
+#       Picks the wrong instance (or neither) and this stamps a lie.
+mkfix curriculum/exercises/t15.md '# Lesson
+<!-- maintainer -->
+**Quality:** compendium-audited 2026-05-15 (writing@old1234)
+- judges @old1234: writing PASS
+
+exercise body'
+sha15=$(shasum -a 256 "$TMP/curriculum/exercises/t15.md" | awk '{print $1}')
+printf '{"class":"writing","body_sha":"%s","verdict":"PASS"}\n' "$sha15" \
+  > "$INST/ae101--module--t15.writing.json"          # matches — but it is the MODULE's
+printf '{"class":"writing","body_sha":"%s","verdict":"PASS"}\n' \
+  "1111111111111111111111111111111111111111111111111111111111111111" \
+  > "$INST/ae101--exercise--t15.writing.json"        # the file's own — stale
+cp "$TMP/curriculum/exercises/t15.md" "$TMP/t15.before"
+rc=$(run "$TMP/curriculum/exercises/t15.md" --writing PASS --sha new5678 --date 2026-06-01)
+assert_rc "$rc" "1" 'T15 same-slug collision still refuses on the OWN surface mismatch'
+if diff -q "$TMP/t15.before" "$TMP/curriculum/exercises/t15.md" >/dev/null; then pass=$((pass+1)); else fail=$((fail+1)); echo "FAIL: T15 file must be unchanged after a refused stamp"; fi
+
+# T16 — same collision, but the file's OWN instance matches → must STAMP.
+#       Guards that only ever refuse are as useless as guards that never do.
+mkfix curriculum/exercises/t16.md '# Lesson
+<!-- maintainer -->
+**Quality:** compendium-audited 2026-05-15 (writing@old1234)
+- judges @old1234: writing PASS
+
+exercise body'
+sha16=$(shasum -a 256 "$TMP/curriculum/exercises/t16.md" | awk '{print $1}')
+printf '{"class":"writing","body_sha":"%s","verdict":"PASS"}\n' \
+  "2222222222222222222222222222222222222222222222222222222222222222" \
+  > "$INST/ae101--module--t16.writing.json"          # the module's, stale, irrelevant here
+printf '{"class":"writing","body_sha":"%s","verdict":"PASS"}\n' "$sha16" \
+  > "$INST/ae101--exercise--t16.writing.json"        # the file's own — current
+rc=$(run "$TMP/curriculum/exercises/t16.md" --writing PASS --sha new5678 --date 2026-06-01)
+assert_rc   "$rc" "0" 'T16 same-slug collision stamps when the OWN surface matches'
+assert_grep "$TMP/curriculum/exercises/t16.md" 'writing@new5678' 'T16 pin written'
+
 unset QUALITY_INSTANCES_DIR
 
 echo "──────────────────────────────"

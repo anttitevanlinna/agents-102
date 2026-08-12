@@ -113,13 +113,35 @@ INSTANCES_DIR="${QUALITY_INSTANCES_DIR:-$SCRIPT_DIR/../instances}"
 slug="$(basename "$FILE" .md)"
 file_sha="$(shasum -a 256 "$FILE" 2>/dev/null | awk '{print $1}')"
 
+# Surface-type comes from the parent directory, never the basename — the same
+# derivation the instance filenames use. A slug can name both a module and an
+# exercise (`spot-gaps-build-the-loop` does), and a bare `*--<slug>.<cls>.json`
+# glob then matches two files. Disambiguating on surface keeps the guard armed
+# exactly where the collision it exists to catch is most likely.
+surface_of() {
+  case "$(cd "$(dirname "$1")" && pwd)" in
+    */curriculum/trainings/*/supplementary) echo supplementary ;;
+    */curriculum/trainings/*/reference)     echo reference ;;
+    */curriculum/trainings/*)               echo module ;;
+    */curriculum/exercises)                 echo exercise ;;
+    */curriculum/lectures)                  echo lecture ;;
+    *)                                      echo "" ;;
+  esac
+}
+surface="$(surface_of "$FILE")"
+
 check_instance_sha() { # class state
   local cls="$1" st="$2" recorded
   [[ "$st" == keep ]] && return 0
   [[ -n "$file_sha" && -d "$INSTANCES_DIR" ]] || return 0
-  local matches=( "$INSTANCES_DIR"/*--"$slug"."$cls".json )
+  local matches
+  if [[ -n "$surface" ]]; then
+    matches=( "$INSTANCES_DIR"/*--"$surface"--"$slug"."$cls".json )
+  else
+    matches=( "$INSTANCES_DIR"/*--"$slug"."$cls".json )
+  fi
   [[ -e "${matches[0]}" ]] || return 0            # no instance: nothing to check
-  [[ ${#matches[@]} -eq 1 ]] || return 0          # ambiguous slug: don't guess
+  [[ ${#matches[@]} -eq 1 ]] || return 0          # still ambiguous: don't guess
   recorded="$(sed -nE 's/.*"body_sha"[[:space:]]*:[[:space:]]*"([a-f0-9]{64})".*/\1/p' "${matches[0]}" | head -1)"
   [[ -n "$recorded" ]] || return 0                # pre-guard instance
   if [[ "$recorded" != "$file_sha" ]]; then

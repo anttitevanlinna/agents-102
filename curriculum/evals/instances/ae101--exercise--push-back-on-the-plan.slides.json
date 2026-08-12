@@ -1,6 +1,7 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/push-back-on-the-plan.md",
+  "body_sha": "a1858bc26834213bad588cc1dff3337d3af21ca93471e0adf9e5db976b9adb80",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
@@ -18,7 +19,7 @@
     {"index": 11, "heading": "Run the original grill-me if you want the full hour", "lines": "113-125"},
     {"index": 12, "heading": "Approve", "lines": "127-131"},
     {"index": 13, "heading": "Phase 5: Stop, then name the pattern you ran", "lines": "133-145"},
-    {"index": 14, "heading": "Compare what each read caught", "lines": "147-154"}
+    {"index": 14, "heading": "Compare what each read caught", "lines": "147-152"}
   ],
   "rules_evaluated": [
     {
@@ -28,7 +29,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Checked chunk 12 \"Approve\" line 129 (\"Approve at the prompt\") as a possible stranded referent — \"the prompt\" points at the plan-mode approval prompt named at chunk 5 line 57, seven chunks back. Held on the header's own word (\"Approve\") plus the recurring approval-prompt idiom established at chunk 2 (\"pauses for approval\") and chunk 5 (\"the approval prompt\"); arc-earned within the file, not stranded.",
       "blocking": true
     },
     {
@@ -48,7 +49,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "Verified: chunk 3 line 41's M1 callback (\"never let the agent say everything, take the ranked list first\") resolves against getting-going.md's included lecture the-machine-you-just-met.md (\"a ranked list first, detail on request\").",
+      "fix_hint": "This file is included from getting-going.md / plan-mode-done-right.md (M2). Chunk 3 line 41's M1 callback (\"never let the agent say everything, take the ranked list first\") resolves against M1's countermove beat; no dead-beat references found elsewhere in body.",
       "blocking": true
     },
     {
@@ -68,7 +69,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "Checked chunk 12 \"Approve\" (three short lines) as a possible orphan; it carries a self-standing procedural claim (say lock it in, agent writes plan, approve, stop) and its header names the action. Not an orphan.",
       "blocking": false
     },
     {
@@ -77,8 +78,8 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "REVISE",
       "chunks_flagged": [3],
-      "evidence": "chunk 3 \"Read for the decisions that matter\": line 39 header says \"Read\"; line 43: \"Scan for the decisions most likely to change the work: files, design, assumptions, and verification.\" — the chunk's own body instructs scanning, not reading, contradicting its header verb. This is the exact read-vs-scan defect vocabulary.md documents (\"read a short artifact end-to-end... scan a long one for the parts that matter\") and that this file's own maintainer block records as already fixed at a sibling heading (line 128-129: \"Header was Read the plan… until 2026-08-12\" — but that fix landed on the chunk-4 header \"## Scan the plan before you push back\", not this chunk-3 header, which still reads \"Read for the decisions that matter\").",
-      "fix_hint": "Retitle chunk 3's header to use \"Scan\" (or otherwise match the body's own scanning instruction), mirroring the fix already applied to chunk 4's header.",
+      "evidence": "chunk 3 \"Read for the decisions that matter\": line 39 header verb is \"Read\"; line 43: \"Scan for the decisions most likely to change the work: files, design, assumptions, and verification.\" — the chunk's own body instructs scanning, contradicting the header's verb. This is the identical read-vs-scan defect the maintainer block (line 158) records fixing at the sibling chunk-4 header (\"Header was Read the plan... until 2026-08-12; Antti caught read-vs-scan\") — that fix landed on chunk 4 (\"## Scan the plan before you push back\") but chunk 3's header still reads \"Read.\" Harm: this training's own spine argues against exhaustive reading (M1's countermove, restated one bullet below in the same chunk), so a header instructing \"Read\" directly above content instructing \"Scan\" undercuts the point it is trying to teach — not a cosmetic mismatch.",
+      "fix_hint": "Retitle chunk 3's header to use \"Scan\" (or another verb matching the body's own instruction), mirroring the fix already applied to chunk 4.",
       "blocking": false
     },
     {
@@ -88,7 +89,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "Considered chunk 4's three consecutive \"Notice which...\" sentences (lines 48-49) as a possible anaphora triple; each leg carries distinct concrete content (file-naming, verification steps, assumptions) mirroring chunk 3's named axes, so treated as deliberate scanning-checklist structure rather than a tic. No \"Not X. Not Y. Z.\" construction, no self-grading superlative, no number-with-retraction, no empty-leg verb triplet found.",
+      "fix_hint": "Considered chunk 4's three consecutive \"Notice which...\" sentences (lines 48-49) as a possible anaphora triple; each leg carries distinct concrete content (file-naming, verification steps, assumptions), so treated as a deliberate scanning checklist rather than a tic. No \"Not X. Not Y. Z.\" construction, no self-grading superlative, no number-with-retraction, no empty-leg verb triplet found anywhere in the body.",
       "blocking": true
     },
     {
@@ -98,7 +99,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "\"surface\" appears once (chunk 8, line 91: \"will surface decisions\") as the ordinary engineering verb, exempt per the compendium's own carve-out.",
+      "fix_hint": "\"surface\" appears once (chunk 8, line 91: \"will surface decisions\") as the ordinary engineering verb, exempt per the compendium's own carve-out. No repo/maintainer dialect terms (compendium, forcing function, beat, mood) found in the body region.",
       "blocking": true
     },
     {
@@ -108,7 +109,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "Chunk 5's four bolds (No, keep planning / Soft items / Assumptions / Alternatives) exceed a literal ≤1-per-slide count but match the checklist-item-names license and are maintainer-attested (2026-07-09, 2026-08-12) as the deliberate axis-menu design. Chunk 6's law bold and chunk 14's coined-term bold are each single handles at their naming moment.",
+      "fix_hint": "Chunk 5's four bolds (No, keep planning / Soft items / Assumptions / Alternatives) exceed a literal <=1-per-slide count but match the checklist-item-names license and are maintainer-attested (2026-07-09, 2026-08-12 renaming note) as the deliberate axis-menu design; accept-note in maintainer block covers this passage by name. Chunk 0's stop, chunk 6's law bold, and chunk 14's coined-term bold are each single handles at their naming moment, also maintainer-attested. Blockquote callout leads (chunks 6, 7, 8, 10) are chrome, exempt per the rule text.",
       "blocking": false
     },
     {
@@ -118,7 +119,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "File is included via a standard `[Exercise: ...]` include-link in plan-mode-done-right.md, the same wrapping pattern as other audited exercises; no phase-less prose section that would drop out of the deck.",
+      "fix_hint": "File is included via the standard exercise include-link pattern from getting-going.md / plan-mode-done-right.md, same wrapping as other audited exercises; no phase-less prose section that would drop out of the deck.",
       "blocking": false
     },
     {
@@ -128,7 +129,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "Phase 1 through Phase 5 headers run consecutively with no gaps and no hand-numbered slide-position headers; no in-file \"Phase N\" prose cross-references to check.",
+      "fix_hint": "Phase 1 through Phase 5 headers run consecutively with no gaps and no hand-numbered slide-position headers; no in-file \"Phase N\" prose cross-references to check for resolution.",
       "blocking": false
     },
     {
@@ -138,7 +139,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": null,
+      "fix_hint": "\"Drop your task after the colon\" (chunk 2, line 27) points at the prompt fence in the SAME chunk, which is the passing same-chunk-paste-pointer shape per the rule's own carve-out. No above/below/further-down geometry language pointing at another chunk found.",
       "blocking": false
     },
     {

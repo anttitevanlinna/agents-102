@@ -1,9 +1,10 @@
 {
+  "body_sha": "a1858bc26834213bad588cc1dff3337d3af21ca93471e0adf9e5db976b9adb80",
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/push-back-on-the-plan.md",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "cached",
+  "trace_status": "full_regen",
   "prompts_evaluated": 5,
   "prompts_findings": [
     {
@@ -12,8 +13,7 @@
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "plan-mode-preamble-bloat", "confidence": "med", "evidence": "'Detail over brevity.' directly invites a denser plan than the task needs.", "fix_hint": "Already mitigated by the body's Read-for-the-decisions-that-matter section right after the fence, which caps attention on the few decisions that matter; no prompt edit needed."},
-        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Open-hook 'My task:' for student-supplied input; tests-and-done-criteria requirement gates against a thin plan.", "fix_hint": "Open-hook plus the tests-are-part-of-done body line already discourage a thin plan; no edit needed."}
+        {"pattern_id": "plan-mode-preamble-bloat", "confidence": "low", "evidence": "'Detail over brevity.' pushes toward a denser plan than a small task needs.", "fix_hint": "Already mitigated by the body's Read-for-the-decisions-that-matter section right after the fence; no prompt edit needed."}
       ]
     },
     {
@@ -22,9 +22,7 @@
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "question-dump", "confidence": "low", "evidence": "'Ask me three questions at a time' is structural batching enforcement (check_prompts.md rule 15 path a), not strict one-at-a-time.", "fix_hint": "Three-at-a-time batching already satisfies rule 15 path (a); no edit needed."},
-        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "'For each question, recommend an answer' invites the recommendation sticking; the body section immediately after ('reject the recommended answer and give a different one') names the exact recovery move.", "fix_hint": "Reject-the-recommendation move is already named in the body section right after this fence; no edit needed."},
-        {"pattern_id": "file-preservation-gap", "confidence": "low", "evidence": "In-fence gate: 'Don't touch the plan file until I say lock it in... use Edit on the changed section, not Write on the whole file' — matches check_prompts.md rule 35's five-element shape.", "fix_hint": "In-fence lock-it-in gate plus sectional-edit instruction already satisfy rule 35; no edit needed."}
+        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "'For each question, recommend an answer' invites rubber-stamping the recommendation.", "fix_hint": "Already mitigated — the body section right after the fence names the exact recovery move: 'reject the recommended answer and give a different one.' No prompt edit needed."}
       ]
     },
     {
@@ -33,9 +31,7 @@
       "verdict": "TODO",
       "load_bearing": false,
       "risks_fired": [
-        {"pattern_id": "default-acceptance", "confidence": "med", "evidence": "'ask through AskUserQuestion, one option set per branch, with your recommended answer marked' — the picker pre-selects the recommendation, lowering rubber-stamp friction below prompt 2's free-text form, and the nearest reject-recommendation callout (after prompt 2's fence) isn't adjacent to this fence.", "fix_hint": "Repeat the reject-the-recommendation reminder in this prompt's own lead-in or fence, since the upstream callout after prompt 2 isn't adjacent to this fence. Not blocking — this prompt is an explicitly opt-in ceiling."},
-        {"pattern_id": "question-dump", "confidence": "low", "evidence": "'one option set per branch' structurally scopes each AskUserQuestion call to a single branch (rule 15 path a).", "fix_hint": "One-option-set-per-branch already structurally scopes each call; no edit needed."},
-        {"pattern_id": "file-preservation-gap", "confidence": "low", "evidence": "Lock-it-in gate carried over verbatim from prompt 2 ('Don't touch the plan file until I say lock it in... Edit on the changed section, not Write on the whole file').", "fix_hint": "Gate inherited from prompt 2 already covers this; no edit needed."}
+        {"pattern_id": "default-acceptance", "confidence": "med", "evidence": "'with your recommended answer marked' pre-selects an option in a picker UI, lowering rubber-stamp friction below prompt 2's free-text form, and the nearest reject-the-recommendation callout (after prompt 2's fence) isn't adjacent to this fence.", "fix_hint": "Repeat the reject-the-recommendation reminder in this prompt's own lead-in, since the upstream callout after prompt 2 isn't adjacent to this fence. Not blocking — this prompt is an explicitly opt-in ceiling (maintainer note: kept, not cut)."}
       ]
     },
     {
@@ -44,8 +40,7 @@
       "verdict": "TODO",
       "load_bearing": false,
       "risks_fired": [
-        {"pattern_id": "question-dump", "confidence": "low", "evidence": "'Ask the questions one at a time.' — explicit structural enforcement (rule 15 path a).", "fix_hint": "One-at-a-time is already explicit structural enforcement; no edit needed."},
-        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "'For each question, provide your recommended answer' — same shape as prompts 2/3, but explicitly framed as an optional escalation in the credit line above the fence ('The original is fully relentless and can run an hour. Optional:').", "fix_hint": "Already framed as an optional escalation the student opts into knowingly; no edit needed."}
+        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "'For each question, provide your recommended answer' repeats the recommend-an-answer shape, but the prompt is explicitly framed as an optional hour-long escalation the student opts into knowingly.", "fix_hint": "Optional and self-selecting; no prompt edit needed."}
       ]
     },
     {
@@ -54,8 +49,7 @@
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "self-audit-charity", "confidence": "med", "evidence": "Same-context-window comparison of session work — Claude grades how much its own second-pass read contributed relative to the student's push-backs, with no evidence-quoting requirement in the fence.", "fix_hint": "Add 'Quote one specific moment your push-back caught something the second read missed, and one moment the reverse held' to force evidence-anchored comparison."},
-        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Reflective question; brief opener narration is possible but not load-bearing since plan mode has already exited by this point.", "fix_hint": "Reflective one-shot question outside plan mode; no suppressor needed."}
+        {"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "Claude reflecting on the value of its own second-pass read invites self-serving framing, but the evidence-backed Debrief carve-out applies: the body section right after the fence requires a quote ('quote one thing your push-back caught that it would have missed').", "fix_hint": "Already covered by the body's quote-one-thing requirement; carve-out applies, no prompt edit needed."}
       ]
     }
   ],

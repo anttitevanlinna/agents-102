@@ -80,15 +80,7 @@ If the agent names something missed, decide whether to compound it now or accept
 
 ## Next
 
-Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. Module 4 turns the discipline inward: memory that reads your system, not just a feature. The quality criteria, the access-surface facts, and the hardening decision all feed into what M4 builds.
-
-Module 4 also hands the agent more autonomy. Before granting it, one more check, the audit you just ran on the feature, now pointed at the agent itself. Three questions:
-
-- **Does the agent hold private data?** Your repo, your credentials, whatever a connector reaches.
-- **Does untrusted content reach its context window?** Web pages, issue comments, dependencies: anything the agent reads can carry someone else's instructions.
-- **Is there a channel out?** A git push or an HTTP request is enough to move what the agent holds.
-
-All three at once is the opening that prompt injection needs: one sentence, planted where the agent will read it, becomes an instruction. Cut one leg before the session. The frame is [The lethal trifecta](trainings/agentic-engineering-101/supplementary/the-lethal-trifecta.md): three legs, cut one.
+Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. Module 4 turns the discipline inward: memory that reads your system, not just a feature. The test-strategy conventions, the access-surface facts, and the hardening decision all feed into what M4 builds.
 
 Optional, when your sessions start running heavy: [Token efficiency](trainings/agentic-engineering-101/supplementary/token-efficiency.md) on keeping the context window lean.
 
@@ -192,4 +184,4 @@ Optional. One read in the gap.
 - **Skills as first-class Claude Code primitive** — the authoring move uses conversation, not manual markdown — matches M1's `CLAUDE.local.md` pattern (Claude writes from session evidence; student pushes back).
 - **Hooks as deterministic-fire primitive** — sibling to skills (which Claude invokes on judgment). Hooks fire on named runtime events regardless of agent judgment. Not authored at M3, but the partition (skill = recommended invocation, hook = always-fires) lands at the M5 closer lecture. Hook system reference: `claude-code-for-engineers.md` § 13.
 
-**2026-07-02** — trifecta pre-leash beat added to `## Next` (three-question check + prompt injection named once + supplementary pointer), wired per completeness review finding #2; the trifecta link moved out of the optional forward-look into the unavoidable close.
+**Trifecta pre-leash beat: added to `## Next` 2026-07-02, removed 2026-08-12 (Antti).** The three-question check + prompt-injection naming + supplementary pointer sat in M3's close aimed at M4's autonomy, and M4 carried a second firing of the same beat before its send-off. Both are gone: the trifecta belongs to M3's own body and to `supplementary/the-lethal-trifecta.md`, which the pre-read already points at. Do not re-add a forward-pointing copy; a threat class taught once in the module that teaches it does not owe a reminder in the module that uses it.

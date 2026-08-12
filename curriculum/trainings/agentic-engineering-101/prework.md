@@ -19,7 +19,7 @@ Roughly in the order you'll reach for them:
 - **A small feature**: external or user-facing surface, shippable in a few hours.<!--/flag:module:earn-the-trust-->
 - **A bigger piece**: a refactor, or a feature with unknowns. Size this one by the agent rather than by yourself. Roughly 30 to 120 minutes of the agent working, not counting the time you spend writing prompts.
 
-**Four sizes off your backlog. Not four slices of one task.**
+**Separate tasks off your backlog. Not slices of one.**
 
 Plus the repo itself (picked next), your team's tracker if you've got one (Linear / Jira / GitHub Issues), and `git worktree` available on your laptop. Make sure your Claude Code can operate the GitHub CLI. Ask it to install `gh` if it isn't there.<!--flag:payload--> The curated security skills install when you extract the bundle.<!--/flag:payload-->
 

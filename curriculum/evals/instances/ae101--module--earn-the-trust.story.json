@@ -1,17 +1,18 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/earn-the-trust.md",
+  "body_sha": "fb345f72853c8246a8fd71b9abb40376ada6c8b9287c5104fe722fd56dcb3db1",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "earned trust — 'the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big'",
-  "trace_status": "cached",
+  "trace_status": "regenerated",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Two embedded lectures, both correctly placed. 'Skills from the frontier, skills of your own' (line 33) sits mid-module, right before the first curated-skill invocation (Ex: Map the access surface) — a vocabulary/conceptual lecture landing where the vocab earns itself. Trace phase 4: 'Vocabulary lecture at exactly the moment it earns itself, right before the first curated-skill invocation.' 'The loop half, filled in' (line 65) sits after three modules of lived work, before Clear the session — a consolidation closer naming a pattern just lived through. Trace phase 9: 'Correctly placed consolidation closer (naming a pattern just lived through), not new teaching.'",
+      "evidence": "Two embedded lectures, both correctly placed. 'Skills from the frontier, skills of your own' (line 33) sits mid-module, right before the first curated-skill invocation (Ex: Map the access surface) — a vocabulary/conceptual lecture landing where the vocab earns itself. Trace phase 4: 'Vocabulary lecture at exactly the moment it earns itself, right before the first curated-skill invocation.' 'The loop half, filled in' (line 65) sits after three modules of lived work, before Clear the session — a consolidation closer naming a pattern just lived through. Trace phase 9: 'Correctly placed consolidation closer.'",
       "fix_hint": null,
       "blocking": false
     },
@@ -29,7 +30,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "This rule binds lecture-FILE bodies (skills-from-the-frontier.md, the-loop-half-filled-in.md — not in scope for this fire); the rule's own text names the module file as the correct home for module numbering ('bridges, forward-references, module numbering... belong to the module file's ## Next/## Bridge'). earn-the-trust.md IS that correct home — its M4 forward-references (lines 81, 83, 93-97) are in-scope-by-design, not a violation of a rule aimed at a different file type.",
+      "evidence": "Rule binds lecture-FILE bodies (skills-from-the-frontier.md, the-loop-half-filled-in.md — separately audited), and its own text names the module file as the correct home for module numbering ('bridges, forward-references, module numbering... belong to the module file's ## Next/## Bridge'). earn-the-trust.md IS that home. This fire's own diff (the trifecta beat's removal, see rule_index 4 below) is a case in point: the maintainer note explains the cut as removing a DUPLICATE forward-reference, not as this rule firing — the surviving M4 forward-references at lines 83/91 stay in-scope-by-design.",
       "fix_hint": null,
       "blocking": false
     },
@@ -38,7 +39,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
-      "evidence": "Rule targets lecture-file teaching-payload headers scanned cold in the self-study handbook. This file's `##` headers (Big Idea, Prework, Start here, Next, Bring to Module 4...) are module-scaffolding/navigation headers, not lecture slide headers — the two embedded lecture files carry their own headers and are audited independently.",
+      "evidence": "Rule targets lecture-file teaching-payload headers scanned cold in the self-study handbook. This file's `##` headers (Big Idea, Prework, Start here, Next, Bring to Module 4...) are module-scaffolding/navigation headers; the two embedded lecture files carry their own headers and are audited independently.",
       "fix_hint": null,
       "blocking": false
     },
@@ -56,7 +57,7 @@
       "rule_index": 27,
       "rule_lead": "Body teaches the work; trainer manages the room outside text.",
       "verdict": "PASS",
-      "evidence": "No authored conversation cues ('discuss with...', 'share with your neighbor', 'take 90 seconds and compare') anywhere in the body. All sentences point at the work — the fork, the skill invocations, the ADR, the sharpen prompt, the clear.",
+      "evidence": "No authored conversation cues ('discuss with...', 'share with your neighbor', 'take 90 seconds and compare') anywhere in the body. All sentences point at the work — the fork, the skill invocations, the ADR, the sharpen prompt, the clear. Unaffected by this pass's diff (the removed section carried no conversation cues either).",
       "fix_hint": null,
       "blocking": false
     },
@@ -65,7 +66,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The three fenced forcing-function moves (sharpen the skill, ready-to-clear convergence, clear session) live in registry prompts referenced by `{{prompt:ae101-m3-sharpen-skill}}` (line 57), `{{prompt:ae101-m3-ready-to-clear}}` (line 71), `{{prompt:ae101-m3-clear-session}}` (line 77). Body prose around them stays descriptive (what artifacts are in scope, which window) rather than scripting the moves itself.",
+      "evidence": "The three fenced forcing-function moves (sharpen the skill, ready-to-clear convergence, clear session) live in registry prompts referenced by `{{prompt:ae101-m3-sharpen-skill}}` (line 59), `{{prompt:ae101-m3-ready-to-clear}}` (line 73), `{{prompt:ae101-m3-clear-session}}` (line 79). Body prose around them stays descriptive rather than scripting the moves itself.",
       "fix_hint": null,
       "blocking": false
     },
@@ -74,8 +75,8 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named; mood lands per beat.",
       "verdict": "PASS",
-      "evidence": "Trace: teaching-beat mood scores 8,8,9,8,8,8,7,8 (close 8). All ≥7 (mood-floor rule: 8+ required, 7 = facilitator-premium signature, flag but not REVISE; below-7 REVISE). One beat at 7 — trace phase 11 ('Next + Bring to Module 4'): the trifecta safety beat lands with no bridging clause connecting 'you just proved this rigor on a feature' to 'now point it at the agent,' reading as a second gate stacked onto an already-resolved close. Non-blocking (no beat <7).",
-      "fix_hint": "One clause between 'Two signatures, earned' (close of M3's own resolution) and the trifecta beat, framing the autonomy check as the same discipline extended rather than a new requirement.",
+      "evidence": "Trace regenerated against the current file (which dropped the 'Next' section's trifecta beat, 2026-08-12, per the maintainer note at line 187). Teaching-beat mood scores now 8,8,9,8,8,8,9,8 (close 9) — all ≥8. The prior fire's one sub-8 beat (phase 11, 'Next + Bring to Module 4' at 7/10: the trifecta autonomy check stacking a second gate onto the already-resolved 'Two signatures, earned' close) is resolved by the removal itself, not by a body-callout fix — the close now runs straight into the M4 hand-off. Harm-clause check: the rule's harm (a beat that steals or dilutes an adjacent beat's mood) is now fully absent, not merely mitigated.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -92,7 +93,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Big Idea (line 5-6): 'Run two curated security skills against a feature with a user-facing surface, then author a test-strategy skill through conversation with Claude' — names the positive disciplines (invoke, author), not a failure word. Key Concepts open the same way.",
+      "evidence": "Big Idea (line 5-6): 'Trust isn't watching harder. It's verification you can run without being there.' Names the positive discipline (verification), not a failure word. Key Concepts open the same way ('A curated skill is upstream work packaged for you to invoke...').",
       "fix_hint": null,
       "blocking": false
     },
@@ -101,7 +102,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "Cross-checked against `bosser-strategy:content-strategy-agentic-engineering-101.md` M3-in-detail and M4-in-detail. Big Idea fidelity: file's Big Idea condenses the strategy doc's three-exercise description ('invoke curated access-control skill, name surface delta; invoke curated STRIDE skill, pick hardening decision → ADR; author a test-strategy skill through conversation') faithfully. Mood matches verbatim ('earned trust — the way I work with agents is something my staff engineer and my CISO can sign off on'). Front-run check: file's M4 forward-look (lethal trifecta three-question check) is M3's OWN pre-read content per strategy doc, not M4's actual teaching moment (gap analysis / walk-and-fill / 'backpressure') — no front-run of M4's real reveal. Module-to-module arc: strategy doc's M4 opens on 'you arrive with one or two candidates you've surfaced yourself'; file's 'Bring to Module 4' section (line 93-97) primes exactly that hand-off. Mood-doesn't-resolve-early: M3's own earned-trust mood resolves at its own close ('Two signatures, earned') without pre-empting M4's 'curious readiness' register — the trifecta beat that follows is cautionary/awareness framing, not the next module's mood arriving early.",
+      "evidence": "Cross-checked against `bosser-strategy:content-strategy-agentic-engineering-101.md` M3-in-detail (lines 333-390) and the M3/M4 arc summary (line 245). Big Idea + mood match the strategy doc verbatim. This fire's diff removes the M3-close trifecta beat; the maintainer note (line 187) states the reason directly — the same beat fired a second time in M4 before its own send-off, so M3's close was duplicating M4's teaching moment rather than front-running it. Removal is fidelity-IMPROVING: grep confirms the lethal-trifecta threat class is still taught exactly once in this training's M3 slot (prework pre-read, line 16, backed by `supplementary/the-lethal-trifecta.md`), matching content-strategy's own pre-read table (line 891: '5 | Agentic security awareness | M3 (pre-read) | Willison lethal-trifecta + OWASP optional'). Module-to-module arc: 'Two signatures, earned' (line 83) now hands off directly to 'Module 4 turns the discipline inward: memory that reads your system' — matches strategy doc's M4 gap-analysis framing without an intervening unrelated gate. Mood-doesn't-resolve-early: M3's earned-trust mood resolves at its own close without pre-empting M4's curious-readiness register.",
       "fix_hint": null,
       "blocking": false
     },
@@ -110,7 +111,7 @@
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Module-only section rule; strategy judge is primary owner of Key Concepts content on a module file.",
+      "evidence": "Module-only section rule; strategy judge is primary owner of Key Concepts content on a module file. Unaffected by this pass's diff (Key Concepts untouched).",
       "fix_hint": null,
       "blocking": false
     },
@@ -119,7 +120,7 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Module-only section rule; strategy judge is primary owner of Key Concepts content on a module file.",
+      "evidence": "Module-only section rule; strategy judge is primary owner of Key Concepts content on a module file. Unaffected by this pass's diff.",
       "fix_hint": null,
       "blocking": false
     },
@@ -128,19 +129,17 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "Module-only section rule; strategy judge is primary owner of What You'll Learn content on a module file.",
+      "evidence": "Module-only section rule; strategy judge is primary owner of What You'll Learn content on a module file. Unaffected by this pass's diff.",
       "fix_hint": null,
       "blocking": false
     }
   ],
   "mood_summary": {
-    "phase_scores": [8, 8, 9, 8, 8, 8, 7, 8],
-    "close_score": 8,
-    "any_below_8": true,
-    "stealing_the_mood": [
-      "Phase 11 (Next + Bring to Module 4): 7/10 — the lethal-trifecta autonomy check lands right after 'Two signatures, earned' with no bridging clause, reading as a second gate stacked onto an already-resolved close."
-    ]
+    "phase_scores": [8, 8, 9, 8, 8, 8, 9, 8],
+    "close_score": 9,
+    "any_below_8": false,
+    "stealing_the_mood": []
   },
   "blocking_findings_count": 0,
-  "todos_count": 1
+  "todos_count": 0
 }

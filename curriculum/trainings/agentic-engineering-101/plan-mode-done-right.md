@@ -43,6 +43,8 @@ After this module, you will be able to:
 
 The full compound move ran at M1. This one is opportunistic.
 
+Ask Claude whether these rules are auto-loaded into each session.
+
 {{prompt:push-back-on-the-plan-4}}
 
 If a branch from the second-pass read sharpened how plans get made in this codebase, ask Claude to integrate that one branch into your personal `./CLAUDE.local.md`. If no branch changed how you'd read the next plan, ask Claude to say so and stop.
@@ -100,7 +102,7 @@ Optional. Lands the modern agentic-security frame before STRIDE and access-contr
 
 **Line 56's recovery sentence stays in body — maintainer call 2026-08-02.** *"If it did overwrite, the old rules are still in this session's scrollback; ask Claude to restore them."* This is `check_student_facing.md` §5's own boundary case, not a violation of it: the failure is plausible (the prompt is fair to misread as a replace), the rescue is non-obvious (that the old rules survive in scrollback is not something a student would guess), and it is one tight line of state-plus-one-move. It is also **time-critical** — the scrollback dies with the session, so a student who finds the overwrite after closing has lost the rules for good. Body is the only surface that reaches them while the rescue still works. A writing judge has flagged this once and the orchestrator then proposed routing it below the maintainer fence, which §5 explicitly calls deletion. Do not cut it, and do not "move it to the trainer" — the fence is stripped from every rendered surface.
 
-**Prompt register — `push-back-on-the-plan-4` deliberately short.** The closing question (`are these rules auto-loaded to each session context?`) is intentionally end-of-session-tired-engineer register: lowercase, no end punctuation, single short question. It models the casual ask a real engineer types after a long session, contrasting with the longer earlier prompts. Audit-class judges flagging it as a stylistic outlier should treat as accepted-by-design. The note belongs to whichever file fences the prompt — here, line 50, matching the registry's `origin:`. Move it if the prompt moves.
+**Prompt register — `push-back-on-the-plan-4` deliberately short.** The closing question (`are these rules auto-loaded to each session context?`) is intentionally end-of-session-tired-engineer register: lowercase, no end punctuation, single short question. It models the casual ask a real engineer types after a long session, contrasting with the longer earlier prompts. Audit-class judges flagging it as a stylistic outlier should treat as accepted-by-design. The note belongs to whichever file fences the prompt — here, the `push-back-on-the-plan-4` marker in `## Save the rule if it earned itself`, matching the registry's `origin:`. Move it if the prompt moves.
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 

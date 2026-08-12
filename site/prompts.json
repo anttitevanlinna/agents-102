@@ -1157,7 +1157,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/close-the-ticket",
-    "text": "Read the ticket for the bug we just fixed. Tell me what it says: reporter, description, any comments. If you can't find it, search the tracker by keywords from the bug; if there still isn't one, say so and we'll create one.\n\nTicket:",
+    "text": "Read the ticket for the bug we just fixed. Tell me what it says: reporter, description, any comments.\n\nIf you can't find it, search the tracker by keywords from the bug; if there still isn't one, say so and we'll create one. If you find it but can't open it, ask me to paste the fields rather than reading anything off the URL.\n\nTicket:",
     "requires": [
       {
         "id": "shipped-bug-fix",
@@ -1234,7 +1234,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/compound-and-close",
-    "text": "Review this session end-to-end: the orientation and introspection, the /context read, the TDD bug fix, the diff push-back, the field rules read off the ticket. Write ./CLAUDE.local.md at the root of this repo (create it if it doesn't exist; add it to .gitignore if it's not already; if the file already exists, integrate, don't append). This is my personal gitignored rules file, not the team ./CLAUDE.md. Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran.\n\nIn your summary to me, name 2–3 practitioners whose published work runs a similar loop, one short clause each. Keep these names in your reply, not in the file. Worth surfacing if they fit: Cherny, Klaassen, Ronacher, Pocock, Karpathy, Willison. If you can name fewer than two without guessing, name only what you're sure of.\n\nIf any rule is team-worthy (one every engineer on this codebase should know) flag it in the summary below, don't PR it. I'll decide whether to open a separate PR against team ./CLAUDE.md.\n\nTell me in 3–5 lines: what you wrote and why, grounded in specific session moments. I shouldn't need to open the file to know.",
+    "text": "Review this session end-to-end: the orientation and introspection, the /context read, the TDD bug fix, the diff push-back if I made one, the bug rules read off the ticket. Write ./CLAUDE.local.md at the root of this repo (create it if it doesn't exist; add it to .gitignore if it's not already; if the file already exists, integrate, don't append). This is my personal gitignored rules file, not the team ./CLAUDE.md. Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran.\n\nIn your summary to me, name 2–3 practitioners whose published work runs a similar loop, one short clause each. Keep these names in your reply, not in the file. Worth surfacing if they fit: Cherny, Klaassen, Ronacher, Pocock, Karpathy, Willison. If you can name fewer than two without guessing, name only what you're sure of.\n\nIf any rule is team-worthy (one every engineer on this codebase should know) flag it in the summary below, don't PR it. I'll decide whether to open a separate PR against team ./CLAUDE.md.\n\nTell me in 3–5 lines: what you wrote and why, grounded in specific session moments. I shouldn't need to open the file to know.",
     "requires": [
       {
         "id": "read-self-report",
@@ -1247,6 +1247,10 @@
       {
         "id": "shipped-bug-fix",
         "source": "prompt:fix-tests-first-3"
+      },
+      {
+        "id": "bug-rules",
+        "source": "prompt:close-the-ticket-2"
       }
     ],
     "produces": [
@@ -1597,7 +1601,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/extract-the-task-shaping-rule",
-    "text": "Let's decide together where we store this for optimal use in future. Propose two or three plausible paths with their loading models — fires-anywhere-on-this-laptop vs fires-only-when-this-repo-is-open — and tell me which one you'd pick for these rules and why. I'll confirm or steer. Once we agree, write the rules in the wording I sharpened. After saving, show me the first three rules from the file so I can confirm the wording stuck. If a file already exists at the path we pick, ask before overwriting.",
+    "text": "Let's decide together where we store this for optimal use in future. Propose two or three plausible paths with their loading models — fires-anywhere-on-this-laptop vs fires-only-when-this-repo-is-open — and tell me which one you'd pick for these rules and why. I'll confirm or steer.\n\nOnce we agree, write both sets into that file: the session rules in the wording I sharpened, and the story rules you read off the ticket. If a file already exists at that path, integrate into it. Don't append and don't replace it; it may already hold rules from an earlier session and those stay.\n\nAfter saving, show me the first three rules from the file so I can confirm the wording stuck.",
     "requires": [
       {
         "id": "task-shaping-rules-draft",

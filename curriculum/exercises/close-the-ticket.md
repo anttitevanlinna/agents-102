@@ -13,7 +13,7 @@
 - Open the ticket for the bug you fixed and paste its link.
 - If there is no ticket for this bug, say so in the chat. The agent will offer to create one.
 
-Ask Claude to fetch the ticket.
+Drop the ticket link after the colon.
 
 {{prompt:close-the-ticket-1}}
 

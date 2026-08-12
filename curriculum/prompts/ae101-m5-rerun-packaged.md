@@ -32,7 +32,7 @@ produces:
     consumed-by:
       - prompt:spot-gaps-build-the-loop-1
   - id: m5-run-coordinates
-    location: plan.md (worktree root; protected top block "Run coordinates"; m5/ branch + transcript path, recorded at run start)
+    location: plan.md (task-scoped folder; protected top block "Run coordinates"; m5/ branch + transcript path, recorded at run start)
     consumed-by:
       - prompt:spot-gaps-build-the-loop-1
       - prompt:agents-that-build-agents-handoff
@@ -46,7 +46,7 @@ Before you start, write a protected block at the top of `plan.md` headed `Run co
 
 Then ask for or write anything else you want for the session.
 
-Run the task at `./task.md` using the packaging in this worktree: reference, plan.md, and verifier all at the worktree root (find them by listing the directory).
+Run the task at `./task.md` using the packaging in this worktree: the reference, plan.md, and the verifier. The reference and plan.md sit together in a task-scoped folder; find them by listing the worktree. plan.md names how to invoke the verifier.
 
 Rules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.
 

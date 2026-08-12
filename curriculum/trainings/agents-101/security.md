@@ -65,6 +65,8 @@ Remember also: agent actions start as text. A tool call, an email draft, a CRM u
 
 Agent-sprawl reading: shadow agents, and the 82%-think-protected / 24%-have-visibility pattern. Then read [The Missing Check](lectures/module-5-prework.md): Mata v. Avianca (S.D.N.Y. 2023) and Deloitte Australia / DEWR welfare-compliance report (2025). Bring one sentence per case: "the missing organisational check was X."
 
+[The Missing Check](lectures/module-5-prework.md)
+
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-05-03

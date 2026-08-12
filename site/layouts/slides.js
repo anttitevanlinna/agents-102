@@ -220,7 +220,11 @@
   function buildDeckModel(root, opts) {
     opts = opts || {};
     var phases = root.querySelectorAll('.phase--lecture, .phase--exercise');
-    var slides, title = opts.title || '', anchors = {};
+    // Null-prototype, not `{}`: an anchor map that inherits from Object.prototype
+    // answers `#constructor` and `#__proto__` with a function and an object, and
+    // both survive the `n == null` guard at the click handler. It also refuses to
+    // claim a real heading of that name, since `id in map` is already true.
+    var slides, title = opts.title || '', anchors = Object.create(null);
 
     if (!phases.length) {
       // single doc

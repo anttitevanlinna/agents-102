@@ -27,7 +27,7 @@ produces:
       - prompt:ae101-m5-rerun-packaged
       - prompt:spot-gaps-build-the-loop-1
   - id: plan-md
-    location: plan.md (at worktree root, next to reference)
+    location: plan.md (task-scoped folder, next to reference; path Claude proposes)
     consumed-by:
       - prompt:ae101-m5-rerun-packaged
       - prompt:spot-gaps-build-the-loop-1
@@ -44,6 +44,7 @@ First, the reference artefact. A task-local file (not my codebase rules — thos
 Second, plan.md. A working document the agent owns and mutates as it runs. Should start with:
 - The task broken into 3–7 phases the agent can re-anchor against
 - Tests-first phase: the first phase writes or updates the tests from the reference spec. Code phases come after. The plan makes this ordering explicit.
+- A "verifier" line naming how to invoke the verifier we just built (command, slash-command, or the hook that fires it) and when it runs
 - A "current phase" line the agent updates as it progresses
 - A "decisions log" section the agent appends to when it makes a load-bearing choice
 - A "what I tried that didn't work" section to prevent context-rot re-derivations

@@ -62,6 +62,8 @@ Between now and Module 4, keep working on your real problem. You're close to an 
 
 **Reading.** Read [Agent Trigger List, After Module 3](supplementary/agent-trigger-list.md#after-module-3-notice-when-one-agent-is-not-enough), then selected sections from [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) on multi-agent coordination. Then read [Before Module 4](lectures/module-4-prework.md): personal skills as the package format that carries expertise into your agent, and agent risk layered on top of normal security work.
 
+[Before Module 4](lectures/module-4-prework.md)
+
 **Optional move: pressure-test the memory.** If you've added much to `sources/` this module, run this between modules to let the new evidence pressure-test the memory's shape. Skip if memory's still serving you.
 
 {{prompt:a101-m3-homework-memory-health}}

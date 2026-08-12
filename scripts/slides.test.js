@@ -45,6 +45,7 @@ const FIXTURE = `
     <p>The training runs on your real work.</p>
     <p>No repo? <a href="#supplementary-verification-asymmetry" target="_blank" rel="noopener">build one from zero</a>,
        or read <a href="#the-named-moves">the named moves</a>, or a <a href="#nothing-here">dead one</a>,
+       or <a href="#constructor">an inherited one</a>, or <a href="#__proto__">its sibling</a>,
        or <a href="https://example.com/outside">something outside</a>.</p>
   </section>
 
@@ -337,6 +338,26 @@ test('diagram zoom links are re-wired on the clone, marker and all', () => {
   dom.window.CurriculumSlides.open(dom.window.document.querySelector('main'), { title: 'Fixture' });
   assert.equal(seen.length, 1, 'the deck re-decorates its clone');
   assert.deepEqual(seen[0], [null], 'and clears the stale marker first, or the re-wire no-ops');
+});
+
+// The anchor index is a plain object unless something stops it being one, so
+// `#constructor` and `#__proto__` resolve to values inherited from
+// Object.prototype. Those survive the `n == null` guard, so the deck claims the
+// click and calls go() with a function or an object: every slide loses
+// is-active, then `slides[n]` is undefined and reading its section code throws.
+// The deck goes blank behind stale chrome. Any fragment the deck did not index
+// belongs to the browser, whatever Object.prototype happens to carry.
+test('a fragment naming an inherited Object property is left to the browser', () => {
+  const { dom, ctl } = openDeck();
+  ctl.go(3);
+  const before = activeIndex(dom);
+  assert.equal(clickLink(dom, 'an inherited one').defaultPrevented, false,
+    '#constructor is not an anchor the deck owns');
+  assert.equal(clickLink(dom, 'its sibling').defaultPrevented, false,
+    '#__proto__ is not an anchor the deck owns');
+  assert.equal(activeIndex(dom), before, 'neither moved the deck');
+  assert.ok(dom.window.document.querySelector('.deck .slide.is-active'),
+    'a slide is still active — go(NaN) blanks the deck and leaves nothing selected');
 });
 
 test('an unresolvable fragment and an external link are left to the browser', () => {

@@ -66,6 +66,8 @@ You just made great output AND packaged what you learned into a file the agent c
 
 [Module 2 prework](lectures/module-2-prework.md). Bring a live challenge on your mind, verify your Confluence and OneDrive connectors, run the <span class="rt-code">plan-mode primer</span><span class="rt-cowork">plan-first primer</span>, read Karpathy's LLM Wiki post, and scan the candidate Lindenberg memory-architecture piece if you have room.
 
+[Module 2 prework](lectures/module-2-prework.md)
+
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-05-04

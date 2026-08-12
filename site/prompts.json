@@ -678,7 +678,7 @@
     "text": "/clear",
     "requires": [],
     "produces": [],
-    "note": "in-session shortcut path before the M5 re-send — drops the exercise scrollback (verifier scaffolding, hook wiring, plan.md drafts) so the re-send session doesn't pay Opus cache-read on the heavy prefix. ae101-m5-rerun-packaged is self-bootstrapping after this; packaging files at the worktree root + auto-loaded rules carry forward. Alternative path: open a new Claude Code session in the worktree (see Session widget in learn-from-the-test.md). New session is the default; this prompt is the in-session shortcut.\n"
+    "note": "in-session shortcut path before the M5 re-send — drops the exercise scrollback (verifier scaffolding, hook wiring, plan.md drafts) so the re-send session doesn't pay Opus cache-read on the heavy prefix. ae101-m5-rerun-packaged is self-bootstrapping after this; packaging files in the task-scoped folder + auto-loaded rules carry forward. Alternative path: open a new Claude Code session in the worktree (see Session widget in learn-from-the-test.md). New session is the default; this prompt is the in-session shortcut.\n"
   },
   "ae101-m5-rerun-packaged": {
     "key": "ae101-m5-rerun-packaged",
@@ -686,7 +686,7 @@
     "context": "final move of the module",
     "runtime": "any",
     "origin": "agentic-engineering-101/learn-from-the-test",
-    "text": "Before you start, write a protected block at the top of `plan.md` headed `Run coordinates (do not rewrite or remove)`, holding this session's `m5/` branch exactly as `git branch --show-current` reports it (read it back from git — don't retype it from memory) and this session's transcript path (under `~/.claude/projects/`, keyed by the `CLAUDE_CODE_SESSION_ID` environment variable). You'll mutate the rest of plan.md as you run; leave that block alone. Confirm the `.jsonl` exists before writing it; if you can't determine the path, stop and tell me rather than guessing.\n\nThen ask for or write anything else you want for the session.\n\nRun the task at `./task.md` using the packaging in this worktree: reference, plan.md, and verifier all at the worktree root (find them by listing the directory).\n\nRules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.\n\nReport back as three lists, no narrative, no hedging:\n  shipped — each artefact + path\n  did NOT ship — each item, no \"partial\" / \"mostly\" / \"in progress\"\n  verifier — last output line of each run, pasted verbatim\nIf any list is empty, say \"none.\"",
+    "text": "Before you start, write a protected block at the top of `plan.md` headed `Run coordinates (do not rewrite or remove)`, holding this session's `m5/` branch exactly as `git branch --show-current` reports it (read it back from git — don't retype it from memory) and this session's transcript path (under `~/.claude/projects/`, keyed by the `CLAUDE_CODE_SESSION_ID` environment variable). You'll mutate the rest of plan.md as you run; leave that block alone. Confirm the `.jsonl` exists before writing it; if you can't determine the path, stop and tell me rather than guessing.\n\nThen ask for or write anything else you want for the session.\n\nRun the task at `./task.md` using the packaging in this worktree: the reference, plan.md, and the verifier. The reference and plan.md sit together in a task-scoped folder; find them by listing the worktree. plan.md names how to invoke the verifier.\n\nRules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.\n\nReport back as three lists, no narrative, no hedging:\n  shipped — each artefact + path\n  did NOT ship — each item, no \"partial\" / \"mostly\" / \"in progress\"\n  verifier — last output line of each run, pasted verbatim\nIf any list is empty, say \"none.\"",
     "requires": [
       {
         "id": "m5-worktree",
@@ -737,7 +737,7 @@
       },
       {
         "id": "m5-run-coordinates",
-        "location": "plan.md (worktree root; protected top block \"Run coordinates\"; m5/ branch + transcript path, recorded at run start)",
+        "location": "plan.md (task-scoped folder; protected top block \"Run coordinates\"; m5/ branch + transcript path, recorded at run start)",
         "consumed-by": [
           "prompt:spot-gaps-build-the-loop-1",
           "prompt:agents-that-build-agents-handoff"
@@ -1466,7 +1466,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/diagnose-and-resend",
-    "text": "Build me two task-scoped artefacts for re-running the un-packaged task packaged.\n\nFirst, the reference artefact. A task-local file (not my codebase rules — those already exist). Should hold:\n- The task scope and success criteria, in two or three sentences\n- Pointers to the memory pages, any ADRs, any authored skills, and connectors most relevant to THIS task\n- The constraints the verifier we just built will enforce (the verifier owns execution checks; the reference names WHAT good looks like, not how it's measured)\n- The tests that name the bar: scoped to this task's core paths, named before any code lands. Tests are a first-class part of the task spec for anything load-bearing; throwaway experiments can skip. Where a core requirement resists being named as a test, flag it as a question, not a rule.\n- A \"done means\" line — what the agent should produce that signals task completion (tests green + requirements met)\n\nSecond, plan.md. A working document the agent owns and mutates as it runs. Should start with:\n- The task broken into 3–7 phases the agent can re-anchor against\n- Tests-first phase: the first phase writes or updates the tests from the reference spec. Code phases come after. The plan makes this ordering explicit.\n- A \"current phase\" line the agent updates as it progresses\n- A \"decisions log\" section the agent appends to when it makes a load-bearing choice\n- A \"what I tried that didn't work\" section to prevent context-rot re-derivations\n\nPropose the file paths (next to each other; same task-scoped folder). Show me both files in prose.\n\nDon't touch either file until I say 'lock it in.' When you do edit either file, use Edit on the changed section, not Write on the whole file.\n\nBefore lock-in, grill me on missing details that could ruin the smooth run. Ask three questions at a time. For each, recommend an answer.",
+    "text": "Build me two task-scoped artefacts for re-running the un-packaged task packaged.\n\nFirst, the reference artefact. A task-local file (not my codebase rules — those already exist). Should hold:\n- The task scope and success criteria, in two or three sentences\n- Pointers to the memory pages, any ADRs, any authored skills, and connectors most relevant to THIS task\n- The constraints the verifier we just built will enforce (the verifier owns execution checks; the reference names WHAT good looks like, not how it's measured)\n- The tests that name the bar: scoped to this task's core paths, named before any code lands. Tests are a first-class part of the task spec for anything load-bearing; throwaway experiments can skip. Where a core requirement resists being named as a test, flag it as a question, not a rule.\n- A \"done means\" line — what the agent should produce that signals task completion (tests green + requirements met)\n\nSecond, plan.md. A working document the agent owns and mutates as it runs. Should start with:\n- The task broken into 3–7 phases the agent can re-anchor against\n- Tests-first phase: the first phase writes or updates the tests from the reference spec. Code phases come after. The plan makes this ordering explicit.\n- A \"verifier\" line naming how to invoke the verifier we just built (command, slash-command, or the hook that fires it) and when it runs\n- A \"current phase\" line the agent updates as it progresses\n- A \"decisions log\" section the agent appends to when it makes a load-bearing choice\n- A \"what I tried that didn't work\" section to prevent context-rot re-derivations\n\nPropose the file paths (next to each other; same task-scoped folder). Show me both files in prose.\n\nDon't touch either file until I say 'lock it in.' When you do edit either file, use Edit on the changed section, not Write on the whole file.\n\nBefore lock-in, grill me on missing details that could ruin the smooth run. Ask three questions at a time. For each, recommend an answer.",
     "requires": [
       {
         "id": "validation-mapping",
@@ -1508,7 +1508,7 @@
       },
       {
         "id": "plan-md",
-        "location": "plan.md (at worktree root, next to reference)",
+        "location": "plan.md (task-scoped folder, next to reference; path Claude proposes)",
         "consumed-by": [
           "prompt:ae101-m5-rerun-packaged",
           "prompt:spot-gaps-build-the-loop-1"

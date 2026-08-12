@@ -1,0 +1,69 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/set-the-markers-send-it-off.md",
+  "body_sha": "a58f6161ac555d5e0ec8837eae714e22de101deb61d82eea55d11c02eddd15e9",
+  "verdict": "PASS",
+  "training": "ae101",
+  "trace_status": "generated_first_time",
+  "prompts_evaluated": 5,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Show me where Claude Code is keeping the record of this session. Every ses",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Multi-clause factual-retrieval task (\"Build the full path, confirm the file is there, and show me the path\") with no explicit No-preamble suppressor, but the task has no ambiguity or judgment call for Claude to narrate around.",
+          "fix_hint": "No fix warranted at this confidence."
+        }
+      ]
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Create a fresh feature branch named m4/<short-task-slug>. Before committin",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "5 named sub-steps (branch, append block, read branch name back from git, stage+commit, report SHA) with no in-fence 'No preamble' line and no body primer after the fence per check_prompts.md §17's 4+-sub-step trigger.",
+          "fix_hint": "A one-line 'No preamble — start with git branch.' or a body line after the fence naming the skim-past cue would close the gap; low-stakes since every sub-step here is mechanical, not a judgment call the preamble could substitute for."
+        }
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Push the current branch and set its upstream.",
+      "verdict": "PASS",
+      "load_bearing": false,
+      "risks_fired": []
+    },
+    {
+      "prompt_index": 4,
+      "prompt_lead": "I want you to take the task we scoped earlier in this session end to end.",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "high",
+          "evidence": "Harm the rule guards against: an unattended run's self-report overstates what shipped, and the student — having walked away — has no artifact-level check to catch the gap. Is the harm actually present and unmitigated here? No, on two independent grounds. (1) check_prompts.md §31's evidence-backed-Debrief carve-out downgrades this pattern when the prompt itself carries a recovery instruction — this fence has one: 'If you get stuck, write what you tried and why it didn't work rather than inventing a way forward,' which forbids exactly the fabrication self-report-inflation causes. (2) This is the file's own stated point (‘send it off plainly and you find out what you can't steer yet’) and matches check_pedagogy.md §19 by name — an M4 un-packaged run is DESIGNED to underdeliver against Claude's own report so the student feels the gap, which check_pedagogy.md §51 (deliberate-antipattern prompts) says a single-file judge will keep flagging but should log as accepted-by-design rather than fix. The very next exercise, fork-the-worktree.md → 'Exercise: Diagnose and re-send,' is the pedagogical rescue for exactly this gap — confirmed by reading its recovery ladder (protected task.md block → reported SHA → merge-base), which only makes sense as a recovery FOR an underdelivering, self-reported first run. Filing REVISE would ask the maintainer to neutralise the one moment the module is built to teach.",
+          "fix_hint": "Not a fix target. If this ever needs re-litigating, the question for the maintainer is whether the M5 diagnose-and-resend rescue still lands close enough after this prompt that the felt gap gets addressed rather than just remembered as a bad experience — that's a cross-module pacing question, not a prompt-body edit."
+        }
+      ]
+    },
+    {
+      "prompt_index": 5,
+      "prompt_lead": "Continue --- you can do it. Can't you?",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": []
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 1
+}

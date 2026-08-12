@@ -48,3 +48,6 @@ Ask Claude to fork the worktree and copy your gitignored files across.
 **The module keeps the framing above the include:** why the work runs in a worktree at all, and that gitignored files don't ride along by themselves. This file owns only what the student does.
 
 **Placement:** immediately before `[Exercise: Diagnose and re-send]`. It must stay there — the diagnosis session opens *inside* the worktree this exercise creates.
+
+**Quality:** compendium-audited 2026-08-12 (writing@61e7fc9 story@61e7fc9 technical@61e7fc9 behavior@61e7fc9 pedagogy@61e7fc9 strategy@61e7fc9 slides@61e7fc9)
+- judges @61e7fc9: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

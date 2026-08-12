@@ -1,18 +1,18 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/walk-and-send-off.md",
+  "body_sha": "604d560d7456840d1c3203eb97192c06edd576e16d6b6e63b4da2abb0f86703b",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "Walk and *send off* (H1/lede)", "lines": "1-22"},
-    {"index": 1, "heading": "Phase 1: Pick the task you'll send off", "lines": "23-45"},
-    {"index": 2, "heading": "Push back until the task is one end-to-end slice", "lines": "46-51"},
-    {"index": 3, "heading": "Phase 2: Build the ranked list of what will hurt the agent", "lines": "52-70"},
-    {"index": 4, "heading": "Read the ranked thin-spots", "lines": "71-74"},
-    {"index": 5, "heading": "Fill the worst two or three gaps", "lines": "75-92"},
-    {"index": 6, "heading": "Match each fill to its shape and home", "lines": "93-101"},
-    {"index": 7, "heading": "Push back when a fill drifts from the codebase", "lines": "102-112"},
-    {"index": 8, "heading": "What closes the module", "lines": "113-120"}
+    {"index": 0, "heading": "H1/lede — \"Prep the run, fill the gaps\"", "lines": "1-19"},
+    {"index": 1, "heading": "Phase 1: Pick the task you'll send off", "lines": "21-45"},
+    {"index": 2, "heading": "Push back until the task is one end-to-end slice", "lines": "46-50"},
+    {"index": 3, "heading": "Phase 2: Build the ranked list of what will hurt the agent", "lines": "51-71"},
+    {"index": 4, "heading": "Correct the list and reprioritise it", "lines": "72-76"},
+    {"index": 5, "heading": "Fill the worst two or three gaps", "lines": "77-94"},
+    {"index": 6, "heading": "Match each fill to its shape and home", "lines": "95-103"},
+    {"index": 7, "heading": "Push back when Claude drifts from the codebase", "lines": "104-111"}
   ],
   "rules_evaluated": [
     {
@@ -29,9 +29,9 @@
       "compendium": "check_slides.md",
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No chunk points at another file by position; \"next module\" forward-teases (chunk 2 line 49, chunk 5 line 79) name no file and no location, so §2 (which governs positional pointers, not generic future-teasing) has no candidate here.",
       "fix_hint": null,
       "blocking": true
     },
@@ -39,9 +39,9 @@
       "compendium": "check_slides.md",
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No \"the X you did/saw/caught\" construction appears anywhere in the body; nothing to resolve against the module's exercise set.",
       "fix_hint": null,
       "blocking": true
     },
@@ -51,7 +51,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "File contains no guess-before-reveal / predict-then-watch beat.",
       "fix_hint": null,
       "blocking": true
     },
@@ -61,7 +61,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Every chunk carries at least one self-standing directive (e.g. chunk 2 \"Push back when the screen misses something...\", chunk 4 \"Tell it what's wrong, what's missing, and what you'd move up.\"); none is a bare wait-state.",
       "fix_hint": null,
       "blocking": false
     },
@@ -69,21 +69,21 @@
       "compendium": "check_slides.md",
       "rule_index": 6,
       "rule_lead": "Header self-carries at projection distance.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "chunks_flagged": [7],
+      "evidence": "chunk 7 \"Push back when Claude drifts from the codebase\": line 104 header, but lines 108 and 110 (\"Time check\" blockquote and \"Before the send-off, tidy the folder\") are unrelated to pushing back on drift — a reader who projects only the header would not expect a pacing callout and a tidy-up instruction bundled under it. Harm check: the harm rule 6 guards against is a header that misdescribes what the slide actually says, so a trainer glancing at deck order or a student skimming headers gets a false preview; here two of the chunk's three beats fall outside what the header promises, so the harm is present, not just the rule's shape matching.",
+      "fix_hint": "Either split the time-check + tidy-up into their own chunk/heading, or broaden the header to name the closing beat generally (e.g. a header naming \"close out the fill\" rather than only \"push back\").",
       "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Checked each sub-item across all chunks: no \"Not X. Not Y. Z.\" construction; no anaphora/epistrophe triple; no self-grading superlative (value-prop leak) in the body; no number-with-retraction; no abstraction-noun stack; no verb triplet with an empty leg. None of the six sub-item shapes appear.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -91,7 +91,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No repo/maintainer vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections-as-proper-noun) appears in any chunk; tool names (Agent tool, AskUserQuestion) and file paths are ordinary engineering references, not dialect.",
       "fix_hint": null,
       "blocking": true
     },
@@ -101,7 +101,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Chunk 0 carries five bold field-labels (Time/Session/What you do/What you build/The point) but the file's own maintainer block (2026-07-09 emphasis pass) explicitly names this \"widget/label chrome\" left untouched by design; chunk 6's four bold shape-handles are the same maintainer note's named exception (\"kept bold only on the four fill-shape menu handles\"); chunk 7's single \"Time check.\" label is one bolded handle, within the ≤1 budget. No bullet-lead bold monoculture found elsewhere.",
       "fix_hint": null,
       "blocking": false
     },
@@ -111,7 +111,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "This is a standard exercise file in the shared library, inlined into its module under the normal `.phase--exercise` wrapper per curriculum/CLAUDE.md's module-include convention; nothing here resembles the phase-less prose sections (prework, supplementary, reference) that the 2026-07-09 incident found dropped from the deck.",
       "fix_hint": null,
       "blocking": false
     },
@@ -121,11 +121,31 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Only \"Phase 1\" (chunk 1) and \"Phase 2\" (chunk 3) are content ordinals, consecutive from 1, no orphaned \"Phase 3\" reference in the body; headers do not hand-number slide position.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "chunk 1 line 28 \"Add them after the colon\" points at the \"Candidates:\" line inside the same chunk's prompt fence — the §12 same-chunk exception applies. No other body text uses below/above/further-down/top-of-page phrasing.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "No in-body markdown links appear in the body region of this file.",
       "fix_hint": null,
       "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 1
 }

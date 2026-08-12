@@ -1,0 +1,39 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/fork-the-worktree.md",
+  "body_sha": "195f9f7539dc1f70564d5d0b43d41a10185db98774aa058d689666504b1de223",
+  "verdict": "PASS",
+  "training": "ae101",
+  "trace_status": "generated_first_time",
+  "prompts_evaluated": 1,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Read `./task.md`. Use the branch named in its `Run coordinates (do not rewrite or ",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "6+ named sub-steps in one fence would normally invite a narrated preamble; body line right after the fence already covers it: 'Claude usually opens with a plan summary listing the six sub-steps, then runs them. Skim past it.'",
+          "fix_hint": "No action needed — the body primer already satisfies the rule-17 carve-out for prompts with 4+ named sub-steps."
+        },
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "low",
+          "evidence": "'confirm which files copied across' doesn't force Claude to distinguish 'absent, so skipped' from a silent glossing-over; mitigated by the 'Check the copy landed' section immediately after, which names the exact failure mode ('changes two variables instead of one') and hands the student the verification move.",
+          "fix_hint": "Optional tightening only: 'name each of the two paths explicitly, and say if either did not exist' would make the report self-certifying without leaning on the student's own check — not required to ship."
+        },
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "low",
+          "evidence": "cp targets a `git worktree add` destination that doesn't exist yet, and each cp is already guarded with '(if it exists)' / '(if observations/ exists in the original repo)'.",
+          "fix_hint": "None — fresh-destination shape already forecloses the stop-and-ask pause this pattern names."
+        }
+      ]
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 1
+}

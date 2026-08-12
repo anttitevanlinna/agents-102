@@ -1,0 +1,149 @@
+{
+  "class": "slides",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/set-the-markers-send-it-off.md",
+  "body_sha": "a58f6161ac555d5e0ec8837eae714e22de101deb61d82eea55d11c02eddd15e9",
+  "verdict": "PASS",
+  "training": "ae101",
+  "chunk_map": [
+    {"index": 0, "heading": "H1/lede: Set the markers, send it off", "lines": "1-16"},
+    {"index": 1, "heading": "Phase 1: Set the two return markers", "lines": "17-31"},
+    {"index": 2, "heading": "Pin the starting point", "lines": "32-44"},
+    {"index": 3, "heading": "Push it only if you want it off this laptop", "lines": "45-54"},
+    {"index": 4, "heading": "Phase 2: Send it off", "lines": "55-68"},
+    {"index": 5, "heading": "While it runs", "lines": "69-82"}
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Harm rule 1 guards: a slide reader stranded on an undefined pronoun/noun mid-deck. Checked every pronoun/demonstrative/definite-noun per chunk. Chunk 0 'It already holds the scoped task' resolves to 'The same session' one clause earlier. Chunk 2 'this commit' anticipates the commit the same chunk's prompt creates (same-chunk forward-anaphora, standard instructional shape). Chunk 3 'The commit is local' resolves to chunk 2's prior-chunk commit (sequential carry, explicitly allowed). Chunk 4/1 'the scoped task' and chunk 5 'The trace is the result either way' are session-artifact carve-outs (definite reference to the student's own live-session output). No never-named or vague-with-history referent found; harm absent.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Harm: a slide pointing at another file 'by position' so the reference breaks under any deck-start reordering. Chunk 0's 'the same session that ran the audit' names the referent by its claim (the audit), not by position, and resolves against the module's immediately-preceding exercise (walk-and-send-off.md, confirmed via run-the-first-experiment.md's Key Concepts: 'The audit ranked the thin spots...'). No positional phrasing ('the opening lecture said', 'the previous module') anywhere in body. Harm absent.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Harm: a re-chunk or rewrite stranding a 'the X you did' reference against a beat no longer in the module. Checked 'the same session that ran the audit' (chunk 0) against run-the-first-experiment.md's include order: walk-and-send-off.md ('Walk what you've built...as a subagent audit') sits directly before this exercise, session id m4-walk-send matches. Beat exists and is current. Harm absent.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "Harm: a guess-then-reveal beat where the reveal is narrated before the guess-line. No guess/predict instruction appears anywhere in this file; the exercise is a straight walkthrough (locate transcript, commit, push, send off, monitor). Rule does not apply.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Harm: a slide projecting as content-free (a lone wait-state bullet). Every chunk carries a self-carrying instruction plus a prompt or bullets of its own (chunk 3, the shortest, still carries a rationale bullet and its own optional-push prompt). Harm absent.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Harm: a header a trainer reads aloud that the chunk's own content then contradicts. Considered whether 'Phase 1: Set the two return markers' (chunk 1) is contradicted by delivering only one marker in that chunk (the second lands under the unlabeled 'Pin the starting point' chunk 2) — this is a phase banner spanning built-in sub-steps, not a false claim about chunk 1's own content, and mirrors how 'Phase 2: Send it off' is a banner too. No header is contradicted by its own chunk's content anywhere in the file. Fix that would 'solve' this (renaming chunk 1 to something narrower) would sacrifice the phase-grouping the maintainer block's Placement note relies on. Harm absent; not filing.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Harm: tics that read as machine-generated cadence on a slide (Not-X-Not-Y-Z, anaphora triples, self-grading superlatives, number+retraction, abstraction-noun stacks, empty-leg verb triplets). Scanned every chunk for each sub-item: no 'Not X. Not Y. Z.' constructions, no anaphora triples, no self-grading superlatives, no abstraction-noun stacks, no empty-leg verb triplets. Chunk 5's 'Past ten or so interventions, you have become the agent' is a single soft-register number with no retraction clause (not 'could be more, could be less') so it doesn't match the banned number+retraction shape at all; it is also covered independently by the file's own maintainer block citing check_pedagogy.md §16's calibration carve-out. Harm absent across all sub-items.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Harm: maintainer/repo vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections) landing on a projected slide where the audience never agreed to that dialect. Scanned all body text; none of the listed terms appear. 'Trace' (chunk 5, 'The trace is the result either way') is ordinary engineering vocabulary (execution/session trace), not repo-internal, and is additionally the session-artifact carve-out (the run's own output). Harm absent.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Harm: every bullet opening with a bolded lead sentence (pre-2026-07-09 monoculture), or bold used on a whole sentence instead of a short handle. Chunk 0's bolds (Time, Session, What you do, What you build, The point) are the standard exercise metadata-field labels used training-wide, not narrative bold; **Prompt** labels in chunks 1-5 are the Prompt-widget's own label, same structural exemption. No bullet body anywhere opens with a bolded sentence. Harm absent.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Harm: content authored under a wrapper the deck-builder never reaches, so it renders in long-read and silently vanishes from Slides. This is a standard shared-library exercise file, inlined into run-the-first-experiment.md via the standard [Exercise: ...](exercises/...) include convention already covered by the phase--exercise wrapper contract; nothing in the body sits outside that convention. Harm absent.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Harm: hand-numbered slide position, or a 'Phase K'/'Step K' content reference that doesn't resolve in-file. Only two content ordinals appear, 'Phase 1' and 'Phase 2', consecutive from 1, each named once at its own heading with no forward/backward numeric cross-reference elsewhere in body. Harm absent.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Harm: a pointer aimed at page position ('below', 'above', 'at the top of this page') that becomes meaningless once the renderer cuts the page into standalone slides. Scanned body for geometry words; none present. All references use named nouns (the transcript, the branch, the commit, the scoped task) or reading-order-safe framing. Harm absent.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "Harm: an in-body link that doesn't name its target in the link text, or is located by page geometry. Body contains zero in-page or cross-file links (only {{prompt:...}} widget markers, which are not links). Rule does not apply.",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 0
+}

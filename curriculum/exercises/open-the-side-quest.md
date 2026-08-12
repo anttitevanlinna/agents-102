@@ -4,9 +4,9 @@
 
 Module 3 runs in two windows. Security is the main quest in your chosen repo. Quality is a side-quest in a sibling worktree.
 
-**What you do:** Start a Claude Code session in your repo for security. Fork a sibling worktree for quality, open a second session there, and confirm both sessions read the same codebase from their own working directories.
+**What you do:** start a security session in your repo, fork a sibling worktree, and open a second session there.
 
-**What you build:** two Claude Code sessions running side by side on one git history. A security main lane in your repo, and a quality side lane in a sibling worktree that waits until you author the test-strategy skill there. When one lane runs a long prompt, the other is where you work.
+**What you build:** two Claude Code sessions running side by side on one git history.
 
 ## Fork the side worktree from your security lane
 
@@ -56,7 +56,7 @@ Ask Claude to fork a sibling worktree and copy your personal rules across. The p
 
 **View summary:** You open two agent sessions on one Git history: a security lane in the repository and a quality lane in a sibling worktree. The setup lets independent work continue safely while preserving a clear place for human control at merge.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain across all slides; kept bold: none (no named-move or menu handles in body); Session widgets and **Time:**/**What you do:**/**What you build:**/**What happened:** chrome untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
+**Emphasis:** no bold in the body — this file has no named moves or menu handles to mark. Session widgets and the **Time:** / **What you do:** / **What you build:** / **What happened:** labels are chrome, not emphasis. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 
 **Quality:** compendium-audited 2026-08-02 (writing@1c765f2 story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@1c765f2)
 - judges @1c765f2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
@@ -71,7 +71,7 @@ Ask Claude to fork a sibling worktree and copy your personal rules across. The p
 
 **Plug points:** student's Module 2 inherited repo (main window); worktree directory name (default `../<repo>-m3-quality`, sponsor or student override allowed); fresh branch name on the side (default `m3/quality`).
 
-**The same-folder trap stays trainer-side; an in-body sentence was considered and declined (2026-08-07, Antti call).** Concurrent writers clobbering one working directory is not agent knowledge, it is plumbing this audience already has, so stating it in body pre-empts what the room brings with it and instructs people who do not need instructing (`check_student_facing.md` §1). The mistake still happens under time pressure, and that is what the push-back note below is for: a coaching correction in the room, not a teaching beat in the deck. A later sweep will find the mechanism in `reference/multi-session-git.md:46` and below this fence, and read the in-deck absence as a leak. It is not one.
+**The same-folder trap stays trainer-side — do not add an in-body sentence.** Concurrent writers clobbering one working directory is not agent knowledge, it is plumbing this audience already has, so stating it in body pre-empts what the room brings with it and instructs people who do not need instructing (`check_student_facing.md` §1). The mistake still happens under time pressure, and that is what the push-back note below is for: a coaching correction in the room, not a teaching beat in the deck. The mechanism sits in `reference/multi-session-git.md` § *Opening N Claude Code sessions on the same codebase* and below this fence; its absence from the deck is deliberate, not a leak.
 
 **Push-back moves:**
 - Student opens both sessions in the same working directory. Trainer push: *"one window per worktree, not two windows on the same folder. The later write wins; the earlier session goes sideways."* Source: `multi-session-git.md` rule (one session per working directory).
@@ -81,7 +81,7 @@ Ask Claude to fork a sibling worktree and copy your personal rules across. The p
 **Prompts:**
 - `ae101-m3-fork-quality-side` — main-lane prompt that forks the sibling worktree at `../<repo-name>-m3-quality` on a fresh `m3/quality` branch and copies `CLAUDE.local.md` into it.
 
-**`observations/` deliberately not copied (2026-05-27).** M3 most often runs before M4, where `observations/` is first authored. At M3 the folder usually doesn't exist and the student has never met it, so naming it in the fork prompt is more harm (an unintroduced concept copied blind) than good (a defensive copy for a rare M4-before-M3 reorder). Earlier versions copied it under an `(if exists)` guard; removed from prompt body + frontmatter. If a cohort does run M4 first, the side-quest forks without prior observations, which is fine.
+**`observations/` is deliberately not copied.** M3 most often runs before M4, where `observations/` is first authored. At M3 the folder usually doesn't exist and the student has never met it, so naming it in the fork prompt is more harm (an unintroduced concept copied blind) than good (a defensive copy for a rare M4-before-M3 reorder). Do not reintroduce it, under an `(if exists)` guard or otherwise. If a cohort does run M4 first, the side-quest forks without prior observations, which is fine.
 - `ae101-m3-quality-side-orient` — side-lane orientation that confirms worktree directory, branch, loaded rules, codebase visibility — then waits.
 
 <!-- backing -->
@@ -93,7 +93,7 @@ Claims
 - `user-scope-skills-cross-lanes` · detail · "It installs to user scope, so it crosses back to the main lane on its own, and you never carry it by hand." ← cc-skills-user-scope
 - `security-is-the-main-quest` · vision · "Security is the main quest. Start it in your repo." ← none-owed
 - `two-sessions-one-history` · vision · "two Claude Code sessions running side by side on one git history" ← none-owed
-- `side-lane-waits` · vision · "a quality side lane in a sibling worktree that waits until you author the test-strategy skill there" ← none-owed
+- `side-lane-waits` · vision · "The quality side waits." ← none-owed
 
 Sources
 - git-worktree-docs `[checked:2026-05-15 result:OK due:none]` https://git-scm.com/docs/git-worktree — [tool docs] `git worktree add` creates a second working directory sharing one `.git`, branching from the current HEAD unless told otherwise. Untracked and gitignored files (which is what `CLAUDE.local.md` is) are not shared between worktrees — they exist per working directory, which is why the body says they are copied at fork time and diverge after. **`due:none`:** worktree semantics are two decades stable, and applying a six-month window to them would flag core Git as STALE — the artifact-of-the-rule case the foundational variant exists for. fallback: none needed.
@@ -106,7 +106,7 @@ Frameworks
 
 Stance `[stance:2026-08-01 level:L2]`
 - holds: that parallel worktrees are a real practitioner unlock rather than a curriculum convenience, and that user-scope skills cross working directories. Both are mechanical facts about shipped tools rather than contested practice, which is why this file's stance is short and its risk is entirely capability drift.
-- contested: nothing. **The honest note is that this exercise is five minutes of setup for a module beat, and its evidence burden is correspondingly small** — recording that plainly is better than inflating a plumbing step into a claim about the field.
+- contested: nothing. **The plain note is that this exercise is five minutes of setup for a module beat, and its evidence burden is correspondingly small** — recording that plainly is better than inflating a plumbing step into a claim about the field.
 - would-move-it: user-scope skill discovery changing, which would break the crossing-back beat and with it the two-lane design. Worktree semantics changing would be surprising enough to be news.
 
 OODA

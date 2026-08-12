@@ -79,7 +79,7 @@ Claims
 - `agents-evidence-stops-at-the-disk` · vision · "The agent's evidence stops at the disk." ← none-owed
 - `stop-where-your-judgement-is-the-input` · vision · "stop at the moment your judgement is the input that matters" ← none-owed
 - `huntley-saw-a-lever` · detail · "Geoffrey Huntley saw a lever." ← huntley-ralph
-- `ralph-one-line-shell-loop` · detail · "`while :; do cat PROMPT.md | claude-code; done`" ← huntley-ralph
+- `ralph-one-line-shell-loop` · detail · "The fix already existed in shell: one line, no scaffolding." ← huntley-ralph
 - `named-after-the-simpsons` · detail · "He called it Ralph, after the Simpsons." ← huntley-ralph
 - `ralph-name-stuck` · detail · "The name stuck" ← ralph-usage-beyond-huntley
 - `ralph-refeed-is-on-your-menu` · vision · "Ralph re-feed is one of the three verifier shapes on your menu" ← none-owed

@@ -4,11 +4,11 @@
 
 **Window:** the side quest window (*m3-quality*). All phases run here.
 
-**What you do:** Author a test-strategy skill for your codebase, through conversation with Claude, not by typing markdown. Claude asks you what it needs to encode the skill; you push back on the defaults your codebase doesn't fit. Before you ship, ask the skill to disclose its own weakest part. Then invoke the skill on this codebase, ask Claude if the test strategy is any good, sharpen if needed, and ship it personally first.
+**What you do:** author a test-strategy skill for your codebase through conversation with Claude, not by typing markdown.
 
-**What you build:** one SKILL.md tuned to how your codebase actually tests, hardened by one forced self-critique and one real invocation, living in your personal skills folder, ready for a teammate to adopt.
+**What you build:** one SKILL.md tuned to how your codebase actually tests, living in your personal skills folder.
 
-**The point:** Test strategy authored generically is a pyramid diagram. The habit you're learning isn't *"write a SKILL.md file"*; it's *author skills by prompting Claude, push back on defaults, verify by invoking*.
+**The point:** test strategy authored generically is a pyramid diagram.
 
 > **Quick timebox note.** This is the longest beat in Module 3 and the place where authoring conversations spiral. Keep it tight: one author pass, one self-critique, one invocation, ship.
 
@@ -119,8 +119,8 @@ Claims
 - `you-are-not-typing-markdown` · vision · "You describe your codebase; the agent drafts the SKILL.md." ← none-owed
 - `personal-skills-folder-auto-discovered` · detail · "`~/.claude/skills/test-strategy/SKILL.md`, auto-discovered in every session you run, across every repo" ← cc-skills-user-scope
 - `team-shaped-but-ships-personal-first` · vision · "A test-strategy skill is team-shaped by nature, but it ships personal first." ← none-owed
-- `generic-test-strategy-is-a-pyramid-diagram` · vision · "Test strategy authored generically is a pyramid diagram." ← none-owed
-- `hardened-by-critique-and-invocation` · vision · "hardened by one forced self-critique and one real invocation" ← none-owed
+- `generic-test-strategy-is-a-pyramid-diagram` · vision · "test strategy authored generically is a pyramid diagram." ← none-owed
+- `hardened-by-critique-and-invocation` · vision · "one author pass, one self-critique, one invocation, ship" ← none-owed
 
 Sources
 - cc-skills-user-scope `[checked:2026-05-15 result:OK due:cohort]` https://code.claude.com/docs/en/skills — [capability] Skills at `~/.claude/skills/<name>/SKILL.md` are discovered in every session regardless of working directory. **The load-bearing platform claim of the M3 side-quest design** — the skill is authored in the quality worktree and has to appear in the security lane without the student moving a file, so if user-scope discovery changes, the two-window shape goes with it. Same stamp carries `open-the-side-quest.md`; re-test both together. fallback: have the student invoke from the lane that authored it.

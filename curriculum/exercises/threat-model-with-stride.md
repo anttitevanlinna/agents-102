@@ -4,11 +4,11 @@
 
 **Window:** the main quest window (*m3-security*).
 
-**What you do:** Invoke the curated STRIDE skill on the access-surface map you built in the previous exercise. You pick one threat worth hardening against, write the decision as an ADR (an Architecture Decision Record) in your repo's convention, and move on.
+**What you do:** invoke the curated STRIDE skill on the map you built, then pick one threat worth hardening against.
 
-**What you build:** one recorded hardening decision. Three moves get you there: a STRIDE walk across the surface you mapped, one threat picked from that walk, and an ADR that captures the call with the rejected threats named as its reasoning.
+**What you build:** one recorded hardening decision, written as an ADR (Architecture Decision Record) in your repo's convention.
 
-**The point:** Threat modeling is only useful if it produces a decision. STRIDE's value is that it gives you a structured surface to reject most threats against (acceptable risk, out of scope, already mitigated) so the one you decide to harden is defensible. The ADR is the artifact your CISO would actually read.
+**The point:** threat modeling is only useful if it produces a decision.
 
 ---
 
@@ -17,7 +17,7 @@
 *7 min*
 
 - STRIDE is a six-category checklist for threats. Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege. The curated skill walks your surface against all six, so you don't hold the taxonomy in your head.
-- The subagent does the walk; you read the result. It runs in fresh context against the map, not the raw code, so you are not on the hook for re-deriving the surface. You read what lands.
+- The subagent does the walk; you read the result. It runs in fresh context against the map, not the raw code.
 
 Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map from Exercise 1.
 
@@ -50,7 +50,7 @@ Ask Claude to propose the most plausible incident story and walk you through the
 
 *5 min*
 
-- The ADR states the call, its alternatives, and the constraint that picked the winner. You write it in your repo's convention. It reads like one engineer explaining a call to another, not a compliance checkbox.
+- The ADR states the call, its alternatives, and the constraint that picked the winner. You write it in your repo's convention. It reads like one engineer explaining a call to another, not a compliance checkbox. It is the artifact your CISO would actually read.
 - Have the agent draft it and show it before saving. You read the call before it lands on disk.
 
 Ask Claude to draft the ADR in your repo's convention and show it before saving.
@@ -153,8 +153,8 @@ Ask Claude whether this ADR rides into future sessions automatically.
 
 Claims
 - `stride-is-a-six-category-checklist` · borrowed · "Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege." ← stride-microsoft
-- `threat-modeling-is-only-useful-if-it-produces-a-decision` · vision · "Threat modeling is only useful if it produces a decision." ← none-owed
-- `strides-value-is-structured-rejection` · vision · "STRIDE's value is that it gives you a structured surface to reject most threats against" ← none-owed
+- `threat-modeling-is-only-useful-if-it-produces-a-decision` · vision · "threat modeling is only useful if it produces a decision." ← none-owed
+- `strides-value-is-structured-rejection` · vision · "that rejection is the point, not a failure of the scan" ← none-owed
 - `subagent-does-the-walk-you-read-the-result` · vision · "The subagent does the walk; you read the result." ← none-owed
 - `runs-against-the-map-not-the-raw-code` · vision · "It runs in fresh context against the map, not the raw code" ← none-owed
 - `expect-more-than-youll-use` · vision · "Read the threat list, expect more than you'll use" ← none-owed

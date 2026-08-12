@@ -6,11 +6,11 @@
 
 Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no fork. M5's session may still be running the re-send. Leave it if that is the right call; M6 starts by reading both sessions from disk. Before M6 edits files or cuts rules, decide whether the M5 session is done enough, should be stopped, or should be treated as the partial artefact.
 
-**What you do:** Diff two sessions of the same task, cut the rule the diagnosis killed, then read your own history for the work you repeat.
+**What you do:** diff two sessions of the same task, then read your history for the work you repeat.
 
-**What you build:** a ranked gap map from two sessions of the same task, one stale rule cut from your rules-file, and a diagrammed map of the work that recurs across your stack.
+**What you build:** a ranked gap map, one stale rule cut, and a diagram of the work that recurs across your stack.
 
-**The point:** You tested at M4, you learned at M5. Here you name what the two sessions cost you and where each lesson belongs. Then you look wider: the same reading, run across everything you do. The stack-map you draw is what the closing lecture builds from.
+**The point:** two sessions of one task are enough evidence to say where each lesson belongs.
 
 ---
 
@@ -112,7 +112,7 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 <!-- backing -->
 
 Claims
-- `diff-two-runs-of-one-task` · vision · "Diff two sessions of the same task, cut the rule the diagnosis killed, then read your own history for the work you repeat." ← none-owed
+- `diff-two-runs-of-one-task` · vision · "diff two sessions of the same task, then read your history for the work you repeat" ← none-owed
 - `read-from-recorded-coordinates` · vision · "Read from the recorded coordinates, not a branch or transcript search." ← none-owed
 - `you-hold-the-contrast` · vision · "You hold the contrast; the agent reads both sessions off disk." ← none-owed
 - `push-back-where-claude-generalises` · vision · "If Claude writes *\"the agent drifted on goal\"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted." ← none-owed
@@ -121,7 +121,7 @@ Claims
 - `sessions-are-on-disk-and-unread` · vision · "Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back." ← none-owed
 - `recurring-work-has-a-shape` · vision · "Steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described." ← none-owed
 - `primitives-will-look-familiar` · vision · "The primitives Claude names are the ones your codebase already runs." ← none-owed
-- `review-and-compound-across-two-runs` · borrowed · "You tested at M4, you learned at M5. Here you name what the two sessions cost you and where each lesson belongs." ← klaassen-how-every-codes
+- `review-and-compound-across-two-runs` · borrowed · "two sessions of one task are enough evidence to say where each lesson belongs" ← klaassen-how-every-codes
 
 Sources
 - klaassen-how-every-codes `[checked:2026-07-30 result:CAVEAT due:2027-01-30]` https://every.to/source-code/compound-engineering-how-every-codes-with-agents — [practitioner direct, vendor venue] Shipper & Klaassen (Dec 2025). The Review and Compound step definitions live on **this** page, not on the Definitive Guide, and in the source Plan and Work belong to the agents while Review and Compound belong to the engineer — which is exactly the split this exercise runs. Dec 2025, outside the 6-month window: framework origin, not fresh evidence. fallback: teach the two-run review without the name; the move stands on the student's own artefacts.

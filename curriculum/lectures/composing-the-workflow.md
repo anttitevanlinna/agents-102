@@ -212,7 +212,7 @@ Claims
 - `never-size-a-skill-in-advance` · vision · "You never size a skill in advance. The job sizes it." ← none-owed
 - `nothing-new-except-the-placing` · vision · "Nothing here is new except the placing." ← none-owed
 - `moves-are-not-phase-bound` · vision · "Its footprint is set by the job, not by the phase line." ← none-owed
-- `four-wiring-mechanisms` · detail · "One documented kit wires skills four ways: **an explicit load** … **an orchestrator** … **routing** … **a hand-off**" ← skill-stacking-supp
+- `four-wiring-mechanisms` · detail · "One documented kit wires skills four ways. … **an explicit load** … **an orchestrator** … **routing** … **a hand-off**" ← skill-stacking-supp
 - `field-wires-more-ways-than-one` · detail · "The field wires kits more ways than one; no way has won." ← lineages-supp
 - `pocock-by-hand` · detail · "Pocock ships a public kit with no orchestrator: you call each skill by hand." ← lineages-supp
 - `klaassen-file-chained` · detail · "Klaassen chains steps through files on disk, a gate at every seam." ← lineages-supp

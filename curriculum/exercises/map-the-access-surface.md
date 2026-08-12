@@ -4,11 +4,11 @@
 
 **Window:** the main quest window (*m3-security*).
 
-**What you do:** Invoke the curated access-control analysis skill on the small feature you brought to Module 3. Read what it surfaces. Decide, on the record, which surface it called out harder than you would have, and which surface you know matters that the skill didn't catch. Ship the delta as notes the STRIDE exercise consumes next.
+**What you do:** invoke the curated access-control skill on the feature you brought, and name what it missed.
 
-**What you build:** an access-surface map, plus the delta only you can add. The delta is the artifact STRIDE chews on next, not the raw skill output.
+**What you build:** an access-surface map plus the delta only you can add.
 
-**The point:** STRIDE without an access-surface map is pub-quiz threat modeling. Before you threat-model, you map what you're protecting. The curated skill does the breadth; you own the codebase-specific judgment the skill can't have.
+**The point:** STRIDE without an access-surface map is pub-quiz threat modeling.
 
 ---
 
@@ -23,14 +23,14 @@
 
 *7 min*
 
-- You invoke; the skill does the breadth walk. The `access-control-analysis` skill was installed as a personal skill during prework, so Claude Code auto-discovers it by name in the m3-security session. You aren't on the hook for walking every surface. The skill and its subagent do that.
+- You invoke; the skill does the breadth walk. The `access-control-analysis` skill was installed as a personal skill during prework, so Claude Code auto-discovers it by name in the m3-security session.
 - See what skills your Claude has loaded first. In the Claude Code chat, type:
 
 ```
 /skills
 ```
 
-- You should see `access-control-analysis` and `stride` listed under **User**. (If they're missing, check prework Step 4.) The Project list is whatever this repo ships; User is your personal skills. Skills you author later in Module 3 land in User too.
+- You should see `access-control-analysis` and `stride` listed under **User**. (If they're missing, check back where the prework extracted the bundle and installed the curated skills.) The Project list is whatever this repo ships; User is your personal skills. Skills you author later in Module 3 land in User too.
 
 Ask Claude to list its installed skills, with storage location and context-load status.
 
@@ -98,9 +98,9 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 
 **View summary:** You invoke a curated security skill on a real feature, then compare its access-surface map with what you know about the codebase. The saved artifact combines broad automated coverage with the codebase-specific delta only you can supply.
 
-**Selective-reading opener slide added (2026-07-10, Antti-directed cognitive-load arc):** new chunk *Take the ranked ten, leave the rest on disk* between the header block and Phase 1 — M3 is where the M1 countermove (never let the agent say everything) becomes load-bearing: first heavy curated-skill output, two windows. Slide's claim "prompts route heavy output to disk, chat read short" verified against `map-the-access-surface-2` (saves to temp, reports path) and `-3` ("Concise") at add time; if those prompt bodies change shape, re-check the claim. Companion prompt-sharpen card (ranked bound on `-3`) pending maintainer approval.
+**The selective-reading opener chunk.** *Take the ranked ten, leave the rest on disk* sits between the header block and Phase 1 — M3 is where the M1 countermove (never let the agent say everything) becomes load-bearing: first heavy curated-skill output, two windows. Its claim "prompts route heavy output to disk, chat read short" holds against `map-the-access-surface-2` (saves to temp, reports path) and `-3` ("Concise"); if those prompt bodies change shape, re-check it. A companion prompt-sharpen card (ranked bound on `-3`) is open for maintainer approval.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** Handles kept bold: the delta menu pair **The over-call.** / **The miss.** (one handle per item on the Phase 3 menu slide) and the on-screen **User** skills-list label; all other bullet leads de-bolded. Widget chrome (`**Time:**`, `**Window:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
+**Emphasis:** handles only — the delta menu pair **The over-call.** / **The miss.** (one handle per item on the Phase 3 menu slide) and the on-screen **User** skills-list label. Widget chrome (`**Time:**`, `**Window:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) is not emphasis. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 
 **Skill-introspection (`map-the-access-surface-1`) and map-walkthrough (`map-the-access-surface-3`) prompts kept, not cut.** `-1` was flagged `low-yield`, `-3` `redundant-slot`. Both are light read/introspect beats, not concurrent-heavy execution, so cutting them reclaims none of the load the cull targeted. `-1` goes one level past `/skills` — storage location on disk plus whether skill bodies are loaded into context (the lazy-load lesson the line after it leans on). `-3` is the read-back-and-prime step before the Phase 3 delta, distinct from the map generation in `-2`. Not cut candidates.
 
@@ -140,7 +140,6 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 
 Claims
 - `stride-without-a-map-is-pub-quiz-threat-modeling` · vision · "STRIDE without an access-surface map is pub-quiz threat modeling." ← none-owed
-- `map-what-youre-protecting-first` · vision · "Before you threat-model, you map what you're protecting." ← none-owed
 - `outputs-get-big-from-here` · vision · "From here on, outputs get big." ← none-owed
 - `never-let-the-agent-say-everything` · vision · "never let the agent say everything" ← none-owed
 - `route-heavy-output-to-disk` · vision · "The prompts here route the heavy output to disk and keep the chat read short" ← none-owed

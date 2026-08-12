@@ -68,7 +68,7 @@ Frameworks
 Stance `[stance:2026-08-01 level:L1]`
 - holds: that fast automated checks systematically miss maintainability costs. Horthy is one named practitioner arguing it in print, on his own company's repo, which is L1 and is what the body's *"Dex Horthy argues"* attribution correctly conveys. The 500K demos (two, at the first meetup) are maintainer-attested first-hand — the strongest rung available, and unusually the *least* contestable claim on the page.
 - contested: nothing in the body, but the neighbouring evidence is a minefield the file deliberately stays out of. Horthy's own piece carries vendor incident telemetry this lecture refuses to import, and that refusal is load-bearing, not fastidious.
-- decided: **the million-line close carries no stamp and should not, 2026-08-01.** It previously held a `[convergent]` stamp for what is a rhetorical figure rather than a claim — *"you ship a million lines of new stuff"* is the setup for a question, not a report of anything, and no source is owed. Retired to `vision`; the 500K opener carries the only real number. Recorded so the stamp is not re-added as a fix.
+- decided: **the million-line close carries no stamp and should not.** *"you ship a million lines of new stuff"* is a rhetorical figure rather than a claim — the setup for a question, not a report of anything — so no source is owed and the grade is `vision`. The 500K opener carries the only real number. Do not add a `[convergent]` stamp as a fix.
 - would-move-it: a second named practitioner publishing the maintainability-blind-spot argument would take it to L2 and let the body drop the single attribution. Published evidence that verifier-trained models *do* carry maintainability signal would break the decay slide outright.
 
 OODA

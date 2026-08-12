@@ -6,20 +6,20 @@
 >
 > Before Module 1, ask Claude Code to set `cleanupPeriodDays` to 60 in `~/.claude/settings.json` (it can edit its own settings file). Claude Code deletes session transcripts older than 30 days by default, and the day-30 follow-up after the training reads sessions from before it started.
 
-Land at Module 1 with a Claude Code session started in the repo you're going to grow,<!--flag:payload--> the curated skills installed,<!--/flag:payload--> and one trivial bug picked.
+Come to Module 1 with a Claude Code session started in the repo you're going to grow,<!--flag:payload--> the curated skills installed,<!--/flag:payload--> and one trivial bug picked.
 
 ## What to bring
 
-The training runs on YOUR real work, not exercises. You'll work at four task sizes across the training, bring something at each size from your backlog. You don't need them all picked now; you need to know they're there.
+The training runs on YOUR real work, not exercises. You'll work at different task sizes across the training, bring something at each size from your backlog. You don't need them all picked now; you need to know they're there.
 
 Roughly in the order you'll reach for them:
 
 - **Trivial bug**, wanted on day one: a few lines here and there. Picked from your repo's backlog or a recurring annoyance.
-- **A small multi-file task**, soon after: work you'd ship today if you had the hour. Plan mode wants something a few files wide.
-- **A small feature**: external or user-facing surface, shippable in a few hours.
-- **A real task you'd send off**, for the back half: an epic-shaped or refactor-shaped piece you've been avoiding. The kind you'd hand to an agent rather than nudge bit by bit.
+- **A small multi-file task**, soon after: work you'd ship today if you had the hour. Plan mode wants something a few files wide.<!--flag:module:earn-the-trust-->
+- **A small feature**: external or user-facing surface, shippable in a few hours.<!--/flag:module:earn-the-trust-->
+- **A bigger piece**: a refactor, or a feature with unknowns. Size this one by the agent rather than by yourself. Roughly 30 to 120 minutes of the agent working, not counting the time you spend writing prompts.
 
-Plus the repo itself (picked in Step 1 below), your team's tracker if you've got one (Linear / Jira / GitHub Issues), and `git worktree` available on your laptop.<!--flag:payload--> The curated security skills install in Step 4.<!--/flag:payload-->
+Plus the repo itself (picked next), your team's tracker if you've got one (Linear / Jira / GitHub Issues), and `git worktree` available on your laptop. Make sure your Claude Code can operate the GitHub CLI. Ask it to install `gh` if it isn't there.<!--flag:payload--> The curated security skills install when you extract the bundle.<!--/flag:payload-->
 
 ## 1. Pick THE repo
 
@@ -31,7 +31,7 @@ One decision, and you probably have a strong candidate already: which repo are y
 
 Pick one. Every module of this training starts from a Claude Code session in this repo. Every rule and every memory you build during the training lands here.
 
-*Really stuck for a repo that fits? Ask your trainer for the fallback repo, or [build one from zero](trainings/agentic-engineering-101/supplementary/build-a-project-from-zero.md) and grow it across the training.*
+*Really stuck for a repo that fits? Ask your trainer for the fallback repo, or build one from zero with **Build a project from zero** in this workbook, and grow that across the training.*
 
 ## 2. Open a Claude Code session in that repo
 
@@ -73,7 +73,7 @@ If Claude's screening feels like everything-at-once, ask Claude to use the AskUs
 
 Close the prework session when Claude confirms readiness. Module 1 opens fresh in the same repo.
 
-A picked bug from Step 5. Write it down, file/line, or a one-sentence summary in a note. The prework session closes; the bug needs to survive into Module 1. Come to Module 1 without one and you'll be scrambling for one while the exercise is already fixing bugs. Your call.
+The bug you picked. Write it down, file/line, or a one-sentence summary in a note. The prework session closes; the bug needs to survive into Module 1. Come to Module 1 without one and you'll be scrambling for one while the exercise is already fixing bugs. Your call.
 
 The opening question at Module 1: *what's one trick you figured out with Claude Code that nobody taught you?* Bring one. Doesn't have to be big. No trick? Bring a moment Claude Code frustrated you.
 
@@ -97,7 +97,7 @@ Optional. One read, any time before the first session.
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass — pre-reshape)
 
 **Meta:**
-- **Runtime:** 30 min target. Step breakdown: pick repo 10 / open session 3 / content folder 3 / extract + install 5 / pick bug + readiness 8. Steps 1–4 are crisp; step 5 is where time can expand if the student's repo is messy.
+- **Runtime:** 30 min target. Step breakdown: pick repo 10 / open session 3 / content folder 3 / extract + install 5 / pick bug + readiness 8. The early steps are crisp; the bug screen is where time can expand if the student's repo is messy.
 - **Delivery architecture** (working dir, content folder, skills install, compounding-artifact split): canonical in `training-architecture.md` §Working directory model / §Material distribution / §Skills / §Rule files. Not restated here.
 - **Transport:** two download paths — agentic default (Claude `curl`s `<CONTENT_URL>`) and manual browser fallback; both land the same tarball, Steps 4–5 identical after. Cross-platform via Claude Code's Bash tool. **Auth gate:** `<CONTENT_URL>` sits behind HTTP basic auth. Agentic path — the download prompt warns Claude of the wall and has it ask the student for username/password on a 401, then retry (`curl -u`). Manual path — the browser pops its own basic-auth dialog on the same credentials. Cohort credentials distributed out-of-band (not in the workbook). **Windows shell, verified 2026-08-02 against `code.claude.com/docs/en/setup`:** Claude Code requires **Win10 1809+/Server 2019+** (not 1803 — `curl.exe`+`tar.exe` ship from 1803/build 17063, but Claude Code's own floor is 1809, and that's the binding number). Git for Windows is **optional**; with it the Bash tool runs through Git Bash, without it Claude Code falls back to the **PowerShell tool**, and WSL is a third path. No student-facing Windows note needed: a pro who has `git worktree` already has Git Bash or WSL, and on the PowerShell-tool path the agent translates the M3/M5 worktree prompts' shell snippets (`cp`, `cp -r`) into PowerShell itself — they sit under a natural-language lead-in ("copy the gitignored personal files into the worktree…") as intent-illustration, not a literal script, so `runtime: any` holds.
 - **`<CONTENT_URL>`:** literal placeholder in source, build-time substituted per-customer by `scripts/build-workbook.js`. Explicit exception to `check_prompts.md §1` (no placeholders in fenced blocks) — covered by build substitution, not student fill-in.
@@ -108,9 +108,9 @@ Optional. One read, any time before the first session.
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
-| AE101 content bundle | `~/Downloads/ae101-content.tar.gz` extracted to `~/Documents/ae101-content/` (or student-confirmed equivalent) | Prework Step 3 download + Step 4 extract prompt | Every module as local reference material; M3 skill install source; reference + supplementary links remain browsable from the content folder |
-| Curated skills | `~/.claude/skills/access-control-analysis/SKILL.md`, `~/.claude/skills/stride/SKILL.md`, `~/.claude/skills/security-tools/SKILL.md` | Prework Step 4 install prompt | M3 Exercise 1 invokes `access-control-analysis`; M3 Exercise 2 invokes `stride` and `security-tools` (the latter as the rick-roll pre-flight) |
-| Chosen trivial bug | Prework session scrollback in the chosen repo, plus tracker/repo context if one exists | Prework Step 5 bug-screen conversation | M1 `fix-tests-first` prompt consumes the selected bug |
-| Repo readiness read | Prework session summary: test command or named check path, git status, PR readiness blockers | Prework Step 5 readiness check | M1 trainer/student triage; M1 `fix-tests-first` and `compound-and-close` assume the repo can test, branch, commit, and open or draft a PR |
+| AE101 content bundle | `~/Downloads/ae101-content.tar.gz` extracted to `~/Documents/ae101-content/` (or student-confirmed equivalent) | Prework download + extract prompts | Every module as local reference material; M3 skill install source; reference + supplementary links remain browsable from the content folder |
+| Curated skills | `~/.claude/skills/access-control-analysis/SKILL.md`, `~/.claude/skills/stride/SKILL.md`, `~/.claude/skills/security-tools/SKILL.md` | Prework extract-and-install prompt | M3 Exercise 1 invokes `access-control-analysis`; M3 Exercise 2 invokes `stride` and `security-tools` (the latter as the rick-roll pre-flight) |
+| Chosen trivial bug | Prework session scrollback in the chosen repo, plus tracker/repo context if one exists | Prework bug-screen conversation | M1 `fix-tests-first` prompt consumes the selected bug |
+| Repo readiness read | Prework session summary: test command or named check path, git status, PR readiness blockers | Prework readiness check | M1 trainer/student triage; M1 `fix-tests-first` and `compound-and-close` assume the repo can test, branch, commit, and open or draft a PR |
 
 **Packaging:** see `scripts/build-ae101-content-tarball.sh` header — it owns the source whitelist (incl. the 3-skill `SKILLS=()` array), maintainer-block stripping, and the `build-workbook.js` deploy/`<CONTENT_URL>`-substitution chain. Tarball filename owned by `training-architecture.md` §Material distribution.

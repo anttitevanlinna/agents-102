@@ -6,9 +6,9 @@
 
 **What you build:** a rules file written from session evidence. Concrete, specific, yours, and read at the top of every future session in this repo.
 
-**The point:** the compound step closes Kieran Klaassen's loop: ideate → brainstorm → plan → work → review → polish → **compound** → repeat. It doesn't interview you with three retro questions. The session is the evidence; Claude reviews it and writes. You push back where it misread.
+**The point:** every push-back is a hint toward your own rules.
 
-The PR shipped and the ticket is closed. Now compound the session. Claude reviews what happened and writes your rules from how you actually worked.
+The PR shipped and the ticket is closed. Now compound the session, the closing step of compound engineering. No retro questionnaire: the session is the evidence, Claude reviews it and writes, you push back where it misread.
 
 ## Write your rules file from the session
 
@@ -23,13 +23,17 @@ The PR shipped and the ticket is closed. Now compound the session. Claude review
 
 ## Push back where the summary misreads
 
-- Read Claude's summary. Push back where it misreads. Quote the specific session moment back at Claude. That push-back is the reflection move.
+- Read Claude's summary. Push back where it misreads. Quote the specific session moment back at Claude.
 - The rules file is yours now. Born from the session, extended by every module after this one.
-- The `.gitignore` edit is yours to keep or revert. If `CLAUDE.local.md` wasn't already ignored, the compound step added it to your `.gitignore`. That is an uncommitted change now; commit it, or drop it.
+
+## Keep or revert the `.gitignore` edit
+
+- If `CLAUDE.local.md` wasn't already ignored, the compound step added it to your `.gitignore`. That is an uncommitted change now; commit it, or drop it.
 
 ## Sweep the session into your rules file one more time
 
 - One more pass before close. Anything earned since the first compound pass at the top of this exercise (the push-backs, the rules you rewrote) that didn't land yet?
+- A heads-up that you are about to compact or end the session flushes out work in progress. Claude writes down what it was still holding.
 
 Ask Claude to sweep the session for anything earned since the first compound and integrate.
 
@@ -37,11 +41,9 @@ Ask Claude to sweep the session for anything earned since the first compound and
 
 ## Close the session
 
-**What happened:** Your rules file was born from how you actually worked, not from a template. Claude reviewed the whole session, you pushed back where it misread, and the rules that held landed in `./CLAUDE.local.md`.
+**What happened:** One rules file, written from how you actually worked rather than from a template, living in `./CLAUDE.local.md`.
 
-The PR is open, the ticket is closed, and the rules file is written from session evidence.
-
-You can close this session now. `./CLAUDE.local.md` stays behind; whether it earns its keep shows up the next time a session reads it.
+The file stays behind; whether it earns its keep shows up the next time a session reads it.
 
 <!-- maintainer -->
 
@@ -64,15 +66,17 @@ You can close this session now. `./CLAUDE.local.md` stays behind; whether it ear
 <!-- backing -->
 
 Claims
-- `session-is-the-evidence` · vision · "The session is the evidence." ← none-owed
-- `no-three-question-retro` · vision · "the compound step … doesn't interview you with three retro questions" ← none-owed
-- `compound-step-is-klaassens-loop` · borrowed · "the compound step closes Kieran Klaassen's loop: ideate → brainstorm → plan → work → review → polish → **compound** → repeat" ← klaassen-expanded-loop, klaassen-compound-run
+- `session-is-the-evidence` · vision · "the session is the evidence" ← none-owed
+- `no-three-question-retro` · vision · "No retro questionnaire" ← none-owed
+- `compound-step-is-klaassens` · borrowed · "the closing step of compound engineering" ← klaassen-expanded-loop, klaassen-compound-run
 - `not-drafting-from-a-blank-page` · vision · "You are not drafting from a blank page. The agent reads the session for you." ← none-owed
+- `heads-up-before-close-flushes-wip` · detail · "A heads-up that you are about to compact or end the session flushes out work in progress." ← maintainer-attested-flush
 - `quote-the-moment-back` · vision · "Quote the specific session moment back at Claude." ← none-owed
 - `rules-file-is-yours-now` · vision · "Born from the session, extended by every module after this one." ← none-owed
-- `gitignore-edit-is-yours-to-keep` · vision · "The `.gitignore` edit is yours to keep or revert." ← none-owed
+- `gitignore-edit-is-yours-to-keep` · vision · "Keep or revert the `.gitignore` edit" ← none-owed
 
 Sources
+- maintainer-attested-flush `[checked:2026-08-12 result:ATTESTED due:none]` (no URL — maintainer's own practice) — [house canonical] Telling a session you are about to compact or close it prompts the agent to write out work it has been holding but has not yet committed to disk. Antti's observed working practice, offered as a move rather than a documented platform guarantee, so the body says *flushes out* and never *always*. `due:none` because an attestation does not expire; it is superseded only by the maintainer's own revision. fallback: cut the bullet, the sweep prompt beneath it already does the second pass.
 - klaassen-expanded-loop `[checked:2026-07-31 result:OK due:2027-01-31]` https://every.to/p/compound-engineering-gets-an-upgrade — [practitioner direct, vendor venue] Klaassen, 29 May 2026. **The current loop, and the one the body prints.** Verbatim sequence: *"Ideate → brainstorm → plan → work → review → polish → compound → repeat"* — seven named stages plus a cyclical repeat, putting **compound seventh and `work` fourth**. His stated reason is that the middle became reliable (*"the work phase has become boring—in the best way"*), so the new stages restore human judgement at both ends; the sandwich framing is credited to Trevin Chow (*"AI is the stuff in the middle. Humans are the bread on either end"*), which is the same idea as the *Bread in the AI Sandwich* video already pre-read at M5. Presented as evolution under the same name, not retraction. Klaassen's own prose says *"from four steps to eight"*, which only reconciles if `repeat` counts as a stage in the new framing and not the old — **this stamp holds to the printed arrow-sequence, not to his count, and so does the body.** Still current as of *How I Polish Software That Agents Built* (https://every.to/source-code/how-i-polish-software-that-agents-built, 13 Jul 2026), which reuses the stage names and introduces no new one. **Re-read the sequence before a cohort: it has moved once and the body now prints it in full, so a second expansion dates the page rather than a footnote.** fallback: drop the sequence and name only the compound step, which is what the corpus does everywhere the shape is not the lesson.
 - klaassen-compound-run `[checked:2026-07-30 result:OK due:2027-01-30]` https://every.to/source-code/compound-engineering-how-every-codes-with-agents — [practitioner direct, vendor venue] Shipper & Klaassen (Dec 2025). **The origin, kept for the division of labour rather than for the count.** In the source Plan and Work belong to the agents while Review and Compound belong to the engineer, which is this exercise's move exactly. The four step names live on this page and not on the Definitive Guide. The prior CAVEAT was that the body printed this page's four-step form as current; that is resolved — the body now prints the 2026-05-29 sequence and cites the expansion first. All four names here survive inside it. Single-practitioner-originated with early independent echoes: roughly L1–L2, not converged community vocabulary. kb:platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md fallback: cite for the agent/engineer split only.
 
@@ -81,6 +85,7 @@ Frameworks
 - Double-loop learning · [borrow:Argyris & Schön] · law:double-loop-learning · ← cultural-vocab — the rules file is the governing variable being revised, not the bug being fixed
 
 Stance `[stance:2026-08-01 level:L1]`
+- **2026-08-12: the printed arrow-sequence was dropped, taking the stamp's own named fallback** (*"drop the sequence and name only the compound step, which is what the corpus does everywhere the shape is not the lesson"*). The point slot carries the exercise's contestable claim rather than the borrowed diagram. The body names the practice (*compound engineering*), not the person: the term is Klaassen's own coinage so it carries the credit, and the personal attribution lands where `getting-going.md` already says it should, inside Claude's compound summary rather than in prose. Consequence for `klaassen-expanded-loop`: the body no longer prints the sequence, so a further restructuring of his loop stops being a body edit and goes back to being a stamp edit. Do not restore the diagram to the point.
 - holds: that a session's scrollback is better raw material for a rules file than a retro questionnaire. Klaassen is the named origin of the loop and the body credits him inside the agent's own summary rather than teaching him as a lecture, which is the right dose for a single-practitioner framework.
 - contested: nothing about the shape; the count question closed. The body printed the Dec 2025 four-step form as current while the author had expanded it on 2026-05-29, so it was a dated snapshot presented in the present tense.
 - decided: **print the current sequence in full, 2026-08-02 (maintainer call).** The corpus default elsewhere is ordinal-free, and the cheap fix was to name only the compound step. Overruled deliberately: seeing where compound sits in the whole arc is what teaches, and an M1 exercise running the compound step benefits from the picture more than it suffers from the length. The cost is accepted and named — this page now dates when the loop moves again, so the expansion source carries a re-read-before-cohort instruction rather than a routine six-month due date.

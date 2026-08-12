@@ -4,33 +4,33 @@
 
 **What you do:** fix the bug you brought from prework, tests-first. Ship the PR.
 
-**What you build:** three things that make a fix trustworthy: a failing test that proves the bug exists, the smallest fix that passes it, and a PR you read line by line before it ships.
+**What you build:** a failing test that proves the bug, the smallest fix that passes it, and a shipped PR.
 
-**The point:** tests-first and root-cause-driven is one discipline. Running it with an agent is a second discipline: reading the diff, pushing back when a line is not what you would have written. Both get practised here. The compound move (writing down what you learned) comes later in the module, once the ticket's closed.
+**The point:** pushing back is core work.
 
 ---
 
 ## Write the failing test and fix the root cause
 
-- **Tests-first, root-cause-driven.** The failing test is the only proof the bug exists. Without it, the fix is a guess that happens to compile. Write the test first, watch it fail, then fix the cause, not the symptom.
-- No plan mode here. You are not on the hook for scoping this one; on a trivial bug, plan mode is overhead.
+- **Tests-first, root-cause-driven.** The failing test is what makes the fix checkable. Without it, the fix is a guess that happens to compile. Write the test first, watch it fail, then fix the cause, not the symptom.
+- No plan mode here. On a trivial bug, plan mode is overhead.
 
 > **Small fix, small test.** A trivial bug wants one failing test and a tight fix, not a suite and a refactor. If Claude starts spinning up plenty of tests, or the change creeps past the bug, that's sprawl. Steer it back to one test that proves the bug and the smallest fix that passes it.
 
-Ask Claude to write the failing test, fix the root cause, and show the diff. Drop your bug after the colon.
+Drop your bug after the colon.
 
 {{prompt:fix-tests-first-1}}
 
 ## Read the diff and push back on a line
 
-- The agent runs the loop; you read the result. The agent writes the failing test, watches it fail, fixes the code, watches it pass. Read the diff. If a line isn't what you'd have written, push back. Quote the line and say why. Whoever has the better argument wins.
-- Your own wording matters. No pre-made prompt for the pushback. You return to this exact move at the compound step, so the words you reach for are yours.
+- The agent runs the loop; you read the result. The agent writes the failing test, watches it fail, fixes the code, watches it pass. Read the diff. If a line isn't what you'd have written, push back. Quote the line and say why. The agent yields if you push hard enough, so its agreement settles nothing. Whether your argument was actually better is your call.
+- Your own wording matters. No pre-made prompt for the pushback. The compound step reads this session's scrollback, so your push-back is what becomes a rule.
 
 ## Interrogate the fix for a deeper layer
 
 - When the agent says done, ask whether the change is the root cause or a layer above it. The first cut usually fixes what makes the test pass; the deeper cut asks whether the test was pointing at the right thing. Name what a deeper edit would touch and see what Claude defends. The exchange is where root-cause discipline shows up, not in the fix itself.
 
-**Optional.** Skip if the test you wrote already names the contract and the fix is the contract, no deeper layer to interrogate. Otherwise, ask Claude to interrogate the fix and name what's still surface.
+**Optional.** Skip if your test already pins the right behaviour and the fix does exactly that, nothing deeper to interrogate. Otherwise, ask Claude to interrogate the fix and name what's still surface.
 
 {{prompt:fix-tests-first-2}}
 
@@ -38,11 +38,11 @@ Ask Claude to write the failing test, fix the root cause, and show the diff. Dro
 
 {{prompt:fix-tests-first-3}}
 
-**Optional.** Once the fix is in, dig into code quality and structure. Ask Claude: *did you make it better? Why yes. Why no.* You steer; might take a few nudges.
+**Optional.** Once the fix is in, dig into Claude's view of code quality and structure. Ask Claude: *did you make it better? Why yes. Why no.* You steer; might take a few nudges.
 
 ## There is always a next plausible answer
 
-- You can always dig deeper on the root cause with the LLM. There will be a next plausible answer, because the LLM will always try to find what you asked for. The failing test is what makes this layer real; when to stop digging is your call.
+- You can always dig deeper on the root cause with the LLM. There will be a next plausible answer, because the LLM will always try to find what you asked for. A passing test you trust is what makes a layer real; when to stop digging is your call.
 
 ## Ship the PR
 
@@ -60,7 +60,7 @@ Hand off to the ticket close.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** One handle kept bold: **Tests-first, root-cause-driven** at its naming moment; all other bullet leads de-bolded. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`, `**Optional.**` labels) and the blockquote callout untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
-**Declaration slide (2026-08-07, Antti-directed):** *There is always a next plausible answer* is a deliberate claim-shaped heading — the one non-imperative heading in this file, and that is the point: a claim among phase labels is what makes a declaration land inside an exercise. Do not flatten to a command verb; `check_student_facing.md` §17's verb rule covers do-sections, and this section names the machine-nature the interrogation just exhibited rather than asking for an action. Header truth guard: the body says *try to find*, never *finds* — do not strengthen. No bold; the file keeps its single handle. First face of the produce-something prior; the far-half naming is `reading-the-return.md` slide 1 (*The closing summary is not the artefact*), which reuses the *plausible* vocabulary planted here. Frame is the maintainer's own, near-verbatim.
+**Declaration slide (2026-08-07, Antti-directed):** *There is always a next plausible answer* is a deliberate claim-shaped heading — the one non-imperative heading in this file, and that is the point: a claim among phase labels is what makes a declaration land inside an exercise. Do not flatten to a command verb; `check_student_facing.md` §17's verb rule covers do-sections, and this section names the machine-nature the interrogation just exhibited rather than asking for an action. Header truth guard: the body says *try to find*, never *finds* — do not strengthen. No bold; the file keeps its single handle. Second face of the produce-something prior in this file, and the pair is deliberate: the diff bullet says the agent *yields* under push (so its agreement settles nothing), this section says it always *produces* another plausible answer under digging. Same machine-nature, two different student moves, neither a restatement of the other — do not collapse them. Far-half naming is `reading-the-return.md` slide 1 (*The closing summary is not the artefact*), which reuses the *plausible* vocabulary planted here. Frame is the maintainer's own, near-verbatim.
 
 **Quality:** compendium-audited 2026-08-08 (writing@a06abbc story@a06abbc technical@1c765f2 behavior@1c765f2 pedagogy@a06abbc strategy@1c765f2 slides@a06abbc)
 - judges @a06abbc: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
@@ -74,13 +74,13 @@ Hand off to the ticket close.
 <!-- backing -->
 
 Claims
-- `tests-first-root-cause-driven-is-one-discipline` · vision · "**Tests-first, root-cause-driven.** The failing test is the only proof the bug exists." ← none-owed
+- `tests-first-root-cause-driven-is-one-discipline` · vision · "**Tests-first, root-cause-driven.** The failing test is what makes the fix checkable." ← none-owed
 - `without-a-test-the-fix-is-a-guess` · vision · "Without it, the fix is a guess that happens to compile." ← none-owed
-- `no-plan-mode-on-a-trivial-bug` · vision · "on a trivial bug, plan mode is overhead" ← none-owed
+- `no-plan-mode-on-a-trivial-bug` · vision · "On a trivial bug, plan mode is overhead." ← none-owed
 - `agent-runs-the-loop-you-read-the-result` · vision · "The agent runs the loop; you read the result." ← none-owed
 - `your-own-wording-matters` · vision · "No pre-made prompt for the pushback." ← none-owed
 - `ask-whether-its-the-root-cause` · vision · "When the agent says done, ask whether the change is the root cause or a layer above it." ← none-owed
-- `first-cut-fixes-what-makes-the-test-pass` · vision · "The first cut usually fixes what makes the test pass; the deeper cut asks why the test could fail that way at all." ← none-owed
+- `first-cut-fixes-what-makes-the-test-pass` · vision · "The first cut usually fixes what makes the test pass; the deeper cut asks whether the test was pointing at the right thing." ← none-owed
 - `always-a-next-plausible-answer` · vision · "There will be a next plausible answer, because the LLM will always try to find what you asked for." ← none-owed — machine-nature observation, maintainer frame near-verbatim; observation-grade by design, no training-cause claim.
 
 Sources
@@ -94,7 +94,7 @@ Frameworks
 Stance `[stance:2026-08-01 level:L1]`
 - holds: TDD, which needs no defending, and one thing that does — that running the discipline *with an agent* is a second discipline. That second claim is the exercise's own and rests on nothing but the room's experience of it, which is the right warrant for a first-module exercise.
 - contested: nothing evidential. **The interesting tension is pedagogical and already resolved in the body:** the student writes their own push-back with no prompt supplied, which is slower and worse-scaffolded on purpose, because the words have to be theirs when the compound step reuses them.
-- would-move-it: nothing in the field. Agents becoming reliable enough that reading the diff line-by-line stops paying would move it, and that is the training's own bet in reverse.
+- would-move-it: nothing in the field. Agents becoming reliable enough that reading the diff stops paying would move it, and that is the training's own bet in reverse. Note the bet is on reading a small diff and arguing ONE line, not on exhaustive review: line-by-line as the unit of trust does not scale with agent output and is not what this exercise asks for (2026-08-12). Anything restoring *"read it line by line"* is describing a different, worse exercise.
 
 OODA
 - question: none standing on the field. Watch instead whether rooms actually write their own push-back or wait for a prompt that is deliberately absent.

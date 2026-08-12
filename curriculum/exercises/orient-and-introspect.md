@@ -12,16 +12,15 @@ Start a new Claude Code session at your repo root. Renaming is optional, but hel
 
 **What you do:** have Claude read your repo, then interrogate what it read.
 
-**What you build:** a picture of what landed in the context window and what didn't: a deliberate read of your repo, the agent's own account of what it skipped, and the context budget that shows the unread slice. Together they map the window you steer for the rest of the training.
+**What you build:** a picture of what landed in the context window and what didn't.
 
-**The point:** you can't steer what you can't see. This is the first move of every session after this one. Load deliberately, watch the budget, dig into the self-report.
+**The point:** the context window is not your codebase.
 
 ---
 
 ## Read your repo deliberately
 
-- A deliberate read beats a blind one. You decide what Claude loads: the repo's shape, its structure, what's load-bearing, what's gone stale. A cold agent reads whatever it stumbles into; you point it.
-- You are not on the hook for reading the repo. The agent does that. Your job is to steer what it loads and keep half an eye on the budget.
+- You decide what Claude loads: the repo's shape, its structure, what's load-bearing, what's gone stale. A cold agent reads whatever it stumbles into; you point it.
 
 > **Big repo? The read can fan out.** If Claude starts reading dozens of files, interrupt with `Esc`, narrow to one feature or directory, and say `continue`.
 
@@ -29,20 +28,18 @@ Ask Claude to read your repo deliberately and report what it finds.
 
 {{prompt:orient-and-introspect-1}}
 
-The agent reports back a map of the repo: shape, structure, what's load-bearing, what's stale. Let the read finish before you interrogate the map.
-
 ## Ask what Claude skipped, and why
 
 - Every read has a shadow: the files Claude didn't load. The skipped slice is where the surprises hide.
 - Claude can introspect on what it did and why, including what it chose not to read.
 
-Ask Claude to introspect on what it read, what it skipped, and the call it made on each.
+Ask Claude what it read and what it skipped.
 
 {{prompt:orient-and-introspect-2}}
 
 ## Read the self-report, then spot-check it
 
-- The account is a reconstruction, not ground truth. The LLM confabulates reasons sometimes. Assume about 10% of what it says or does is made up. Could be more or less than this heuristic suggests.
+- The account is a reconstruction, not ground truth. The LLM confabulates its actions as well as its reasons. Assume about 10% of what it says or does is made up. Could be more or less than this heuristic suggests.
 - You can spot-check it. Quote a specific file or function back and ask Claude to confirm it read what it claims.
 
 ## Check how full the window is
@@ -57,9 +54,9 @@ Run `/context` to see how much of the window is used and what fills it.
 
 ## Read the unread slice
 
-- The unread percentage from `/context` is the number that matters. The more the window fills, the less room for new work.
+- What you want is the least context that holds exactly what the task needs. `/context` tells you what you are carrying; the read tells you whether it is the right load.
 - The slice Claude didn't load stays real. The window holds only so much; going forward, you choose what fills it.
-- You now have a map of the window: what loaded, what Claude skipped, and how much room is left. The next exercise fixes the bug you brought from prework, inside the window you just mapped.
+- You now have a map of the window: what loaded, what Claude skipped, and how much of it you've spent. The next exercise fixes the bug you brought from prework, inside the window you just mapped.
 
 <!-- maintainer -->
 
@@ -78,7 +75,9 @@ Run `/context` to see how much of the window is used and what fills it.
 **Themes planted** (content-strategy § "Recurring themes"):
 - **Theme 3 (mirror)** — Claude's read reflects the student's prompt back at them.
 - **Theme 4 (self-aware, grain of salt)** — the introspection prompt and the `/context` verification.
-- **Theme 1 (90% correct)** — `/context` makes the unread slice visible.
+- **Theme 1 (90% correct)** — `/context` makes the spend visible; the introspection prompt makes the skipped slice visible.
+
+**The context frame is a target, not a gauge (Antti, 2026-08-12).** The closing bullet deliberately does not name a number as the one that matters. Both the free-percentage and used-percentage framings were written and both rejected: a capacity reading says *fine until it fills*, and the window does not behave like a container. The aim is to complete the task on the least context that holds exactly the right content, and both halves are load-bearing — a thin context missing what the task needs fails as surely as a bloated one, and only the second shows up on a percentage. `/context` reports what is being carried and cannot report whether it is the right load. Do not restore *"the free percentage is the number that matters"*, *"how much room is left"*, or any fuel-gauge phrasing; a judge flagging the bullet for not naming a metric is flagging the design. Canonical: `bosser-strategy:content-strategy-agentic-engineering-101.md` § Terminology — memory vs context. An earlier draft also carried *"the agent gets less precise as it fills"* — true in practice but an empirical claim with no source in this file, and the target framing makes it unnecessary; the mechanics belong to the token-efficiency supplementary.
 
 **Deliberate phrasing (maintainer-attested, do not edit):** the *"Assume about 10%… Could be more or less than this heuristic suggests."* line is intentional in exactly that format — the round number plus the open retraction is the teaching shape (a working prior the student holds loosely, not a measured constant). `check_slides.md` rule 7's number-plus-retraction sub-item does NOT fire here; judges flag it → accept-with-note, no edit.
 
@@ -94,16 +93,14 @@ Run `/context` to see how much of the window is used and what fills it.
 - Hands off to: `fix-tests-first` — the bug gets fixed in the window you just mapped.
 
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
-1. **Runs `/context` on a working session and reads the unread-slice percentage** without being prompted. Falsifiable: scrollback of a normal session shows `/context` as a deliberate move within the first ten minutes, not a feature tour.
+1. **Runs `/context` on a working session and reads the used percentage** without being prompted. Falsifiable: scrollback of a normal session shows `/context` as a deliberate move within the first ten minutes, not a feature tour.
 2. **Asks Claude what it skipped and why after a repo-read**, before taking any code action. Falsifiable: a follow-up introspection prompt appears in scrollback after the initial orient prompt.
 3. **Spot-checks Claude's self-report by quoting a specific file or function back** when the report feels off. Falsifiable: scrollback shows a quote-back move under a "you said you read X, what's actually in it?" shape.
 
 <!-- backing -->
 
 Claims
-- `cant-steer-what-you-cant-see` · vision · "you can't steer what you can't see" ← none-owed
-- `deliberate-read-beats-blind` · vision · "A deliberate read beats a blind one." ← none-owed
-- `you-steer-the-load-not-the-reading` · vision · "You are not on the hook for reading the repo. The agent does that." ← none-owed
+- `context-window-is-not-the-codebase` · vision · "the context window is not your codebase" ← none-owed
 - `every-read-has-a-shadow` · vision · "Every read has a shadow: the files Claude didn't load. The skipped slice is where the surprises hide." ← none-owed
 - `agent-can-introspect-on-what-it-skipped` · detail · "Claude can introspect on what it did and why, including what it chose not to read." ← self-report-is-not-a-log
 - `spot-check-the-self-report` · vision · "Read the self-report, then spot-check it" ← none-owed

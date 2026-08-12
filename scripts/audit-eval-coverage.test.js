@@ -15,6 +15,8 @@
 
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const {
   parseRules,
@@ -213,4 +215,25 @@ test('SURFACES: every instanceSlug embeds its surface-type segment (directory-de
     }
   }
   assert.deepEqual(violations, []);
+});
+
+/*
+ * Every stored instance must be readable before any of the integrity checks
+ * above mean anything: an unparseable file is scored as one gating structural
+ * bug and then skipped, so its rule verdicts silently leave the corpus. The
+ * recurring break is a rule_lead quoting the compendium's own rule text —
+ * §3's `no "fixed" retrospectives`, §7's `Always "you"` — written with bare
+ * inner quotes. The auditor is non-gating on npm test; this is the gate.
+ */
+test('instances: every stored eval instance parses as JSON', () => {
+  const dir = path.join(__dirname, '..', 'curriculum/evals/instances');
+  const bad = [];
+  for (const f of fs.readdirSync(dir).filter(n => n.endsWith('.json'))) {
+    try {
+      JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+    } catch (e) {
+      bad.push(`${f}: ${e.message}`);
+    }
+  }
+  assert.deepEqual(bad, [], 'unparseable instance files drop their verdicts out of the corpus');
 });

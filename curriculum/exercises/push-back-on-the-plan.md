@@ -57,7 +57,7 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. While 
 
 - Two messages, your phrasing, specific to what you saw. The agent acknowledges each, regenerates the plan, re-presents it.
 - This is where Claude's niceness bites: it can make the wrong choice and tell you, in nice words, that the problem is gone. Take the report-back with a grain of salt, always: read the flagged steps in the revised plan, and if the vagueness survived, push back again on that line.
-- Stuck on the soft item? Ask Claude which step it's least confident about. That answer IS one. **Find is easier than judge.**
+- Stuck on the soft item? Ask Claude which step it's least confident about. That answer is a candidate; whether it matters is your call. **Find is easier than judge.**
 
 > **Two messages, then move on.** Two push-backs on two axes, plus one check that the regeneration held, is all Phase 3 asks. A third push-back may be forming. That is fine; it is the second-pass read's job to catch the rest. Send your two, check the revision once, and move to Phase 4.
 
@@ -112,6 +112,7 @@ Then just hit stop.
 
 - The agent answers. The pattern it names should be something like: read the plan yourself, push back on what you can see, second-pass read for what you can't, approve. Two reads, two kinds of scrutiny. You catch what a human catches (specificity, voice-of-experience, "I'd write that differently"). The second read catches what an agent walking a decision tree catches: branches you didn't notice, dependencies you didn't name, side-effects you didn't price.
 - Neither read needs to be complete. Paired, they surface the sharpenings worth making before generation.
+- If the second read looks like it did all the work, quote one thing your push-back caught that it would have missed.
 - **Plan-mode approval inflation** is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions.
 
 ## Keep the session open for the Compound step

@@ -56,7 +56,7 @@ Decide the location with Claude.
 
 ## Read the shapes, hold the build
 
-- Read the answer as a map, not a mandate.
+- A shape you could use names its trigger and where your file sits in the loop. If Claude offers only one, ask for two more.
 
 ## What happened
 

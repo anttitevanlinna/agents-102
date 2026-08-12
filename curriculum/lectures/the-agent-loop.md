@@ -58,7 +58,7 @@ Surface where the tool list comes from, and what it leaves out.
 
 **Watch-fors (delivery):**
 - The tool list the prompts return is the one the send-off will carry, MCP-connector tools included. A student surprised by their own list IS the lesson; don't rush past it.
-- **The returned list is a summary, not a manifest** (corrected 2026-08-01 against Anthropic's own docs). MCP tool search is on by default: only tool names and server instructions load at session start, and full definitions arrive on demand. The docs then say the chat reply is *"a conversational summary"* and route exact MCP names through `/mcp`. So expect lists that disagree slightly between students, and expect names without descriptions. If someone asks, `/mcp` is the authoritative answer and the two-tier loading is the honest reason — don't improvise a different one.
+- **The returned list is a summary, not a manifest**, per Anthropic's own docs. MCP tool search is on by default: only tool names and server instructions load at session start, and full definitions arrive on demand. The docs then say the chat reply is *"a conversational summary"* and route exact MCP names through `/mcp`. So expect lists that disagree slightly between students, and expect names without descriptions. If someone asks, `/mcp` is the authoritative answer and the two-tier loading is the real reason — don't improvise a different one.
 - Keep it under 5 minutes; past that it starts teaching harness trivia the send-off doesn't need.
 
 <!-- backing -->

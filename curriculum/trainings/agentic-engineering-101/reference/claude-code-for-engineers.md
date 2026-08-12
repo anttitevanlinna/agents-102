@@ -535,5 +535,5 @@ Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-03 (story@bb9c1d5 behavior@bb9c1d5)
-- judges @bb9c1d5: writing grandfathered, story PASS, technical grandfathered, behavior PASS
+**Quality:** compendium-audited 2026-08-07 (writing@da65157 story@bb9c1d5 behavior@bb9c1d5 slides@da65157)
+- judges @da65157: writing PASS, story PASS, technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered, slides PASS

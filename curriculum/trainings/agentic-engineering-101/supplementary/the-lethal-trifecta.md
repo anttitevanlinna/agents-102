@@ -79,5 +79,5 @@ OODA
 <!-- /backing -->
 **2026-07-02** — "prompt injection" named once in § The mechanism (searchable field handle; a student who hears the term elsewhere finds this page); wired per completeness review finding #2 alongside the `earn-the-trust.md ## Next` pre-leash beat. Same day: second firing wired at M4's send-off gate (`run-the-first-experiment.md ## Send the task off`), closing the finding.
 
-**Quality:** compendium-audited 2026-07-12 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
-- judges @b3143a4: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-07 (writing@da65157 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@da65157)
+- judges @da65157: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

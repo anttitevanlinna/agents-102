@@ -62,6 +62,7 @@ Names the training assembled or embargoes. One rule governs them all: **a house 
 | **verifier shapes** | background-agent verifier · deterministic shell hook · Ralph re-feed | the menu is a synthesis of practitioner-lived moves ("the menu form is the synthesis") — attribute the menu to the training, the moves to their practitioners | `what-packaging-is` |
 | **eval** (the word) | the M6-earned name for the ranked check | embargoed until `agents-that-build-agents` earns it from the M5 verifier + ranked check-menu; don't pre-plant | `agents-that-build-agents` |
 | **backpressure** | downstream feedback that slows, stops, or redirects production when the next stage cannot safely accept more | earned once after the M4 send-off; later lectures prefer checks, gates, review bandwidth, reach, and workflow seams | `what-keeps-a-long-running-session-going` |
+| **done-done** | the real finish line, past code-complete: shipped, closed, visible where the team reads | NOT a house coinage and needs no earning, the audience already has it from agile practice (maintainer-attested 2026-08-12, overruling a registry-derived flag against it). Preferred over *end-to-end*, which is flatter and says less. Fine in student body from M1 | `close-the-ticket` § The point |
 | **pre-read** | the between-module reading surface (AE101) | the pre-read carries depth; the opener restates for the room — don't expand opener explanations, don't leak embargoed names there | `learning-through-contrast` maintainer contract |
 
 ## Register bans and conventions (pointers, not copies)
@@ -72,6 +73,7 @@ Names the training assembled or embargoes. One rule governs them all: **a house 
 - Module abbreviations: bare `MN` earned by Module 2; full forms in prework + M1 → `check_student_facing.md §2`
 - Student artifacts default `.md` → `check_student_facing.md §25`
 - Vocabulary-as-evidence (*"practitioners converge on"*, *"the field named"*) is a research claim, not a register choice → `check_research_claims.md §1`
+- **read vs scan** — *read* a short artifact end-to-end (a ticket, a diff, an ADR, a ranked list); *scan* a long one for the parts that matter (a plan, session output, backlog history). Picking the wrong verb teaches the wrong move: this training argues against consuming agent output line by line, so a heading that says *read* over a section instructing selective attention contradicts both the section and the doctrine. Two catches, both Antti: `orient-and-introspect`'s *"you read line by line"* and `push-back-on-the-plan`'s `## Read the plan before you push back` → `## Scan…` (2026-08-12). Headings are where this lands — check the verb against what the bullets actually ask (`check_slides.md` §6).
 
 ## Changing a term
 

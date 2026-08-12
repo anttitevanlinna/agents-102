@@ -82,7 +82,7 @@ Each agent owns a **disjoint set of files**. Two on same file = race. Check over
 
 - **Two layouts.** Curriculum renders long-read (scroll) OR Slides (deck) — reader's toggle; one `##` = one slide. Trainer projects either. Projection legibility = design constraint. → `site/layouts/slides.js`
 - **Follow-along.** Trainer demos; room copy-pastes concurrently. Time budget = slower pace, not the sum.
-- **Body teaches; trainer manages room.** No authored conversations or trainer cues in body (hard-grep enforced).
+- **Body teaches; trainer manages room.** No mandated performance on cue — a specified utterance, at a scheduled beat, reported back (hard-grep enforced). **The wider ban on acknowledging the room is lifted (2026-08-12, Antti-directed), sparingly:** body may name that other people are there and that talking to them is worth doing. Four tells + a one-line-per-file ceiling in `check_student_facing.md` §2. Do not sweep the corpus adding these.
 
 ## Content boundaries
 

@@ -8,7 +8,7 @@ Canonical template + include/link mechanics. Loaded by `/content-creation` Pass 
 # [Title]
 
 ## Big Idea
-[One sentence]
+[What the student does, in one sentence. See § Big Idea below.]
 
 ## Meta
 - Primary Bloom's level: [level]
@@ -46,6 +46,17 @@ After this module, you will be able to:
 ## Bridge
 [One sentence to next module]
 ```
+
+## Big Idea
+
+**Subject = the student's work.** One sentence naming what they do, in concrete verbs, plus at most one short payoff clause. Ceiling ~30 words — the two that hold the bar are AE101 M4 (29) and M5 (29, *"…re-send the same task packaged. The contrast is the lesson."*).
+
+Cut on sight:
+- **Arc-positioning** — which module produced the evidence, what later modules ride on, where this sits in the training. `## What You'll Learn` states the same arc one section below in the more precise register, so a prose restatement is the duplicate, not the summary. §33's exemption for this section is narrow: it may name what the module *earns*, not where the module *sits*.
+- **Repo dialect** — *team kit accretion*, *the three-pattern*, *un-packaged*-as-noun. Projected on a wall to engineers who have not read our maintainer blocks.
+- **Framing preambles** — *"Before the agent runs bigger work alone, …"*. Start on the verb.
+
+Won't fit in one sentence → **it belongs below the `<!-- maintainer -->` fence, not above it in four.** Relocation costs nothing: `check_strategy_tie_in.md` fires on it there, and `eval-class-router.sh` keys the `strategy@` class off a literal `^## Big Idea` at any depth. Precedent: AE101 M2, 2026-08-12, Antti-directed.
 
 ## Module include
 

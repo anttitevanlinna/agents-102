@@ -57,7 +57,7 @@ If the plan still has open questions, run the walk-down. If it's all clear, your
 
 - A plan is a check before implementation. One correction can redirect every step that follows before the agent turns the plan into code.
 - What the plan doesn't decide, the agent decides mid-run, inside work in flight, and you will not notice. A wrong call propagates across files, and the wrongness tangles with everything built after it: what would have been a line edit in the plan becomes an untangling job in the code.
-- Aim the read at the unknown that teaches you the most. The branches worth walking are the ones that change what done means. The rest you'd settle in code review anyway.
+- Aim the read at the unknown that teaches you the most. The branches worth walking are the ones that change what done means. The rest you'd settle in verification anyway.
 - You don't have to execute a plan to know it's good. Recognizing a good plan is the skill; the execution can wait for the day the task is real.
 
 ## What you can test and check sets your complexity ceiling

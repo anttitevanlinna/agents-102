@@ -17,7 +17,7 @@
 - From here on, outputs get big. The access map runs pages, the STRIDE walk after it runs longer, and soon two windows produce at once.
 - The countermove from M1 goes to work: never let the agent say everything. The prompts here route the heavy output to disk and keep the chat read short, the saved map first, then a walk-through of what stood out.
 - Your read is the short list, plus the two or three entries your own knowledge of the codebase flags. The file holds the rest until a decision needs it.
-- When an answer balloons into an essay anyway, say so: ranked list first, ten lines. One sentence buys the slot back.
+- When an answer balloons into an essay anyway, say so: ranked list first, ten lines. One sentence buys the time back.
 
 ## Phase 1: Run the curated skill on your feature and save the map
 

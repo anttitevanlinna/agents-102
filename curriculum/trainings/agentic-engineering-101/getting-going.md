@@ -83,6 +83,8 @@ Optional. All four sit in the gap before it. Do them and its moves land as thing
 
 **The Willison pre-read is mirrored here on purpose.** `check_cross_module.md` §2 wants between-module reading in two places; prework assigns *Vibe engineering* for the gap before this module, so `## Prework` echoes it in the receiver's register. The M2→M3 boundary is the shape being matched. Do not DRY it back to one location.
 
+**Slide size accepted:** Pre-reads before Module 2 — a reading list, not a taught slide. Four readings at 268 words against the 210 cap, and the length is the annotations: each entry says what the reading argues and why this gap is where it lands, which is what makes an optional read get taken. Trimming to the cap means dropping a reading or reducing it to a bare link, and a bare link in a between-module gap does not get opened. Nobody is projected this and talked over it — the student reads it after the module closes, at their own pace, where 268 words is a minute. The cap is calibrated for a slide a trainer stands next to.
+
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 
 - `[checked:2026-07-30 result:OK due:2027-01-30]` https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md — [practitioner direct, vendor venue] (Dex Horthy, HumanLayer; undated repo doc, content + thesis verified 2026-07-30). Claim anchors: no benchmark measures codebase-quality maintenance; tests-in-seconds vs architecture-cost-in-months; fix = human review + upfront planning. fallback: paraphrase as "practitioners running agent fleets report review, not generation, as the quality bottleneck" without single attribution.

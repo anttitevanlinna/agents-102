@@ -102,6 +102,58 @@ test('the accepted-overflow declaration, against a fixture', async (t) => {
   });
 });
 
+// The file set used to be derived purely from what module files LINK to, so a
+// module was opened only to harvest its include lines and never measured itself.
+// Its own `## Big Idea` / `## Key Concepts` / `## What You'll Learn` / `## Next`
+// render as slides under the same one-`##`-one-slide rule and were projected
+// unmeasured. Worse than unchecked: the gate reported all-clear over files it
+// had never opened. Found 2026-08-12 — the cheap deterministic check had a
+// NARROWER net than the expensive slides judge, which is exactly backwards.
+test('the derived file set measures module files, not only what they link to', () => {
+  const { out } = run(['--report']);
+  const files = new Set(
+    out.split('\n')
+      .map(l => (l.match(/(\S+\.md)\s*$/) || [])[1])
+      .filter(Boolean));
+  const modules = [...files].filter(f => /^trainings\/[^/]+\/[^/]+\.md$/.test(f));
+  assert.ok(modules.length > 0,
+    'no module file appears in the report — module `##` sections project as slides ' +
+    'and must be measured, not just mined for their include links.\n' +
+    `measured files were:\n  ${[...files].join('\n  ')}`);
+});
+
+// A runtime-fork slide ships exactly ONE branch — `<!--flag:module:X-->` and
+// `<!--flag:no-module:X-->` are alternatives, never both. Measuring the raw
+// source glues the branches together and reports a slide no reader ever sees.
+// Found 2026-08-12 while triaging the first module-file results: AE101's
+// `plan-mode-done-right` `## Next` measured 274 words against a 210 cap purely
+// by double-counting its two variants. Cap violations have to be about the
+// rendered page, or the gate cries wolf on precisely the files careful enough
+// to carry variants — and a check that always fires is a check nobody reads.
+test('a runtime-fork slide is measured as one branch, not both glued together', (t) => {
+  const FIX = path.join(ROOT, 'tmp', 'slide-size-fixture');
+  t.after(() => fs.rmSync(FIX, { recursive: true, force: true }));
+
+  const long = (tag) => Array.from({ length: 40 }, (_, i) => `${tag} word${i}`).join(' ');
+  const rel = writeFixture('forked.md', [
+    '# Fixture',
+    '',
+    '## A forked slide',
+    '',
+    `<!--flag:module:earn-the-trust-->${long('A')}<!--/flag:module:earn-the-trust-->`,
+    `<!--flag:no-module:earn-the-trust-->${long('B')}<!--/flag:no-module:earn-the-trust-->`,
+    ''
+  ].join('\n'));
+
+  const { out } = run(['--file', rel, '--report', '--max-words', '100']);
+  const row = out.split('\n').map(l => l.match(/^.?\s*(\d+)\s+\d+\s{2}A forked slide/)).find(Boolean);
+  assert.ok(row, `expected a measured row for the forked slide:\n${out}`);
+  const words = Number(row[1]);
+  assert.ok(words < 120,
+    `the forked slide measured ${words} words — both branches were counted. ` +
+    'Only one renders, so the measured slide must be roughly one branch (~80), not their sum (~160).');
+});
+
 test('every oversized slide is either declared or fails the check', () => {
   const { code, out } = run();
   assert.strictEqual(code, 0,

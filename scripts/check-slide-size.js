@@ -77,7 +77,15 @@ function acceptedSlides(raw) {
   return out;
 }
 
-// ── derive the AE101 lecture+exercise file set (module-include order, deduped) ─
+// ── derive the module + lecture + exercise file set (module order, deduped) ────
+// The module file is measured too, not merely mined for its include links. Its
+// own `## Big Idea` / `## Key Concepts` / `## What You'll Learn` / `## Next` cut
+// into slides under the same one-`##`-one-slide rule the renderer applies to
+// everything else, and a trainer projects them. Leaving them out gave the free
+// deterministic check a narrower net than the expensive slides judge — backwards,
+// since the cheap check is the one that runs every time. It also meant a green
+// gate was vouching for files it had never opened, which buys more false comfort
+// than having no gate at all.
 function fileSetFromTraining(trainingKey) {
   const t = CR.TRAININGS[trainingKey];
   if (!t) {
@@ -89,6 +97,11 @@ function fileSetFromTraining(trainingKey) {
   for (const mod of t.modules) {
     const modPath = path.join(ROOT, 'curriculum/trainings', trainingKey, mod.slug + '.md');
     if (!fs.existsSync(modPath)) continue;
+    const modSlug = path.posix.join('trainings', trainingKey, mod.slug);
+    if (!seen.has(modSlug)) {
+      seen.add(modSlug);
+      out.push({ module: mod.slug, kindSlug: modSlug, file: path.join('curriculum', modSlug + '.md') });
+    }
     const body = CR.stripMaintainerTail(fs.readFileSync(modPath, 'utf8'));
     // INCLUDE_LINK_RE is anchored + /g; reset lastIndex per file.
     const re = new RegExp(CR.INCLUDE_LINK_RE.source, 'gm');
@@ -117,9 +130,19 @@ function wordCount(s) {
   return t ? t.split(' ').length : 0;
 }
 
-function measureFile(absPath) {
+// A runtime-fork slide ships exactly one branch: `<!--flag:module:X-->` and
+// `<!--flag:no-module:X-->` are alternatives. Measuring the raw source glues them
+// together and reports a slide nobody is ever shown — AE101's
+// `plan-mode-done-right` `## Next` scored 274 words against a 210 cap that way,
+// entirely from double-counting. So resolve flags through the RENDERER's own
+// `applyContentFlags` before measuring: the cap is a claim about the projected
+// page, and reusing the shipping resolver is what keeps it one.
+function measureFile(absPath, moduleSlugs) {
   const raw = fs.readFileSync(absPath, 'utf8');
-  const body = CR.stripMaintainerTail(raw);
+  const stripped = CR.stripMaintainerTail(raw);
+  // Capability flags default to present (absent-or-true keeps the passage), which
+  // is the widest reading of the page — the variant that carries the most text.
+  const body = CR.applyContentFlags(stripped, {}, moduleSlugs || []);
   const lines = body.split('\n');
 
   const slides = [];
@@ -178,6 +201,12 @@ if (ONE_FILE) {
   files = fileSetFromTraining(TRAINING);
 }
 
+// Module flags resolve against the training's own module list, exactly as the
+// renderer resolves them. An ad-hoc `--file` run has no training cut behind it,
+// so it falls back to the configured training's list rather than to nothing —
+// an empty list would silently drop every `flag:module:` passage and under-report.
+const MODULE_SLUGS = (CR.TRAININGS[TRAINING]?.modules || []).map(m => m.slug);
+
 const rows = [];      // every slide, for --report
 const oversized = []; // flagged slides
 
@@ -189,7 +218,7 @@ for (const f of files) {
   if (story && !INCLUDE_STORIES) continue;
 
   const accepted = acceptedSlides(fs.readFileSync(abs, 'utf8'));
-  const { slides } = measureFile(abs);
+  const { slides } = measureFile(abs, MODULE_SLUGS);
   for (const s of slides) {
     const ok = accepted.has(s.header);
     const row = { file: f.file, module: f.module, header: s.header, words: s.words, bullets: s.bullets, line: s.line, story, accepted: ok };

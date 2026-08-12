@@ -164,5 +164,5 @@ The shipped PR and the closed ticket are both produced this module and both live
 - **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (Every Inc.) [practitioner direct, vendor venue]. Cite this URL for the term and the each-unit-makes-the-next-easier thesis, never for a step count: the step names live elsewhere and the loop's staging moves; Ex4's compound summary prints the current sequence, whose stamps live in `exercises/compound-and-close.md`, while this URL's own stamp is delegated per the Source verification block above. Attributed inside Claude's Ex4 compound summary, not in a lecture.
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
 
-**Quality:** compendium-audited 2026-08-09 (writing@346bd3b story@346bd3b technical@f9b9406 behavior@f9b9406 pedagogy@346bd3b strategy@346bd3b slides@346bd3b)
-- judges @346bd3b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-12 (writing@b1c8389 story@b1c8389 technical@b1c8389 behavior@f9b9406 pedagogy@b1c8389 strategy@b1c8389 slides@b1c8389)
+- judges @b1c8389: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -93,8 +93,8 @@ Optional. One read, any time before the first session.
 
 - `[checked:2026-07-30 result:OK due:2027-01-30]` https://simonwillison.net/2025/Oct/7/vibe-engineering/ — [practitioner direct] (Willison, 2025-10-07). Outside the 6-month window by decision: named framing piece, dated in body, same treatment as the Cherny video exception in `getting-going.md`. fallback: drop the pre-read; Module 1 stands alone.
 
-**Quality:** compendium-audited 2026-08-02 (writing@ffc64f9 story@ffc64f9 technical@42ca070 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@ffc64f9)
-- judges @ffc64f9: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-12 (writing@b1c8389 story@b1c8389 technical@42ca070 behavior@1c765f2 pedagogy@b1c8389 strategy@1c765f2 slides@b1c8389)
+- judges @b1c8389: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module: PASS see instances/ae101--prework-m6.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass — pre-reshape)
 

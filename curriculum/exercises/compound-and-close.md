@@ -51,8 +51,8 @@ The file stays behind; whether it earns its keep shows up the next time a sessio
 
 **Scope is the rules file only.** The ticket beat is its own exercise (`close-the-ticket`) and runs immediately before this one, so its tracker read is already in scrollback when the sweep fires — do not add a connector or close-out step back into this file. **Emphasis budget (`check_slides.md §9`):** widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) stays bold; body bullet leads de-bolded; no named-term handles remain in this file.
 
-**Quality:** compendium-audited 2026-08-03 (writing@cb44994 story@cb44994 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@cb44994)
-- judges @cb44994: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-12 (writing@96b3554 story@96b3554 technical@1c765f2 behavior@96b3554 pedagogy@96b3554 strategy@1c765f2 slides@96b3554)
+- judges @96b3554: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read the retro summary against session moments) + Apply (integrate the rules file from evidence).

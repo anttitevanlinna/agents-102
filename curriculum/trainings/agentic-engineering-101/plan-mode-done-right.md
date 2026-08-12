@@ -41,7 +41,7 @@ After this module, you will be able to:
 
 ## Save the rule if it earned itself
 
-The full compound move ran at M1. This one is opportunistic.
+The full compound move ran at M1. This one is a variation.
 
 Ask Claude whether these rules are auto-loaded into each session.
 
@@ -53,7 +53,7 @@ If a branch from the second-pass read sharpened how plans get made in this codeb
 
 > This prompt is fair to read as replacing the file with only this rule, which would nuke the old rules. After it runs, ask Claude to confirm it added the rule and kept the old ones rather than overwrote `./CLAUDE.local.md`. Precise prompting is harder than it looks. If it did overwrite, the old rules are still in this session's scrollback; ask Claude to restore them.
 
-> LLM self-charity may creep in. If the saved rule reads generic, ask for one specific to this session.
+> Claude may reframe the session into a smart-sounding general rule. If the saved rule could apply to any codebase, ask for one specific to this session.
 
 Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble is optional reading.
 

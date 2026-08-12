@@ -1,7 +1,7 @@
 # Spot gaps, build the loop
 
 ## Big Idea
-Two sessions of the same task (un-packaged Module 4, packaged Module 5) are enough evidence to name what the three-pattern didn't anticipate and pick where each gap belongs (memory, verifier, new skill). Then the same reading turns outward: map the work you repeat across your stack, and leave with a handoff move that builds the skills your shapes call for.
+Diagnose the gaps two sessions of the same task exposed, place each in memory, a verifier, or a new skill, then map the work you repeat across your stack.
 
 ## Prework
 

@@ -189,7 +189,7 @@ Never cut: the failing test before the fix, the diff-line push-back, and the con
 2. Lecture — [The whole map](./#lectures-the-whole-map) (opener, 6 min; first map reveal: the whole territory, and where the first modules sit in it)
 3. Lecture — [When a plan is good](./#lectures-when-a-plan-is-good)
 4. Exercise — [Push back on the plan](./#exercises-push-back-on-the-plan) (60 min)
-5. Exercise — [Extract the task-shaping rule](./#exercises-extract-the-task-shaping-rule) (12 min)
+5. Exercise — [Extract the task-shaping rule](./#exercises-extract-the-task-shaping-rule) (15 min)
 6. Lecture — [Where the rule could live](./#lectures-where-the-rule-could-live) (names Slack triage / issue webhook / scheduled read)
 7. Save the rule if it earned itself — two short prompts in the module body; opportunistic integrate into `./CLAUDE.local.md`, only if a branch changed how the student reads plans
 8. Lecture — [How instructions grow](./#lectures-how-instructions-grow) (two-slide close: one common route from real work to rules and skills; Argyris's second loop returns durable learning to future context)

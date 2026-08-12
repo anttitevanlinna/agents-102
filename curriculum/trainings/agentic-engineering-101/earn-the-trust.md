@@ -3,7 +3,7 @@
 > Run M3 on `high` thinking effort (the training default).
 
 ## Big Idea
-Before the agent runs bigger work alone, earn your staff engineer's and CISO's trust on a small piece you're shipping this week. Two curated skills from the frontier do the security work, one skill you author through conversation with Claude does the quality work. Team kit accretion starts here: the skill you author this hour ships personal first, with a clear path to team promotion through a human conversation later.
+Run two curated security skills against a feature with a user-facing surface, then author a test-strategy skill through conversation with Claude.
 
 ## Prework
 

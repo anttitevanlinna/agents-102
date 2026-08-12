@@ -2,11 +2,11 @@
 
 **Time:** 15 minutes.
 
-**What you do:** surface task-shaping rules from the session you just ran, then read the same off one story ticket.
+**What you do:** surface task-shaping rules from the session you just ran, then read more off one story ticket.
 
 **What you build:** one rules file from two sources: how you shaped this task, and how your team writes stories.
 
-**The point:** an agent asked for rules will hand you plausible generic ones.
+**The point:** find a place for your rules.
 
 ---
 
@@ -17,17 +17,16 @@
 - The rules are already in the session; naming them is what is left. Each decision in the plan read carried a task-shaping rule about what made this task plan-mode-able.
 - The agent reads the scrollback; you react to what it proposes. The scrollback is the right source here: the question is how you worked, not what is on disk.
 
-Ask Claude to read the scrollback, propose rules, and pause for your push-back before going further.
+Ask Claude for the rules.
 
 {{prompt:extract-the-task-shaping-rule-1}}
 
 
 ## Reject or rewrite the generic rule
 
-- When Claude pauses for the rewrite-and-reject pass, that is where your hand goes on the work.
 - The generic rule is the tell. The rule that arrives generic, like "pick tasks that span multiple files," is the one that needs rewriting into your words, or rejecting.
 
-## Read the same rules off one story ticket
+## Read more rules off one story ticket
 
 - The same move you ran at M1 on a bug ticket, pointed at a story. How your team writes stories is a rule the tracker has been keeping, same as the bug fields were.
 - If the task you brought came from your tracker, its own ticket is the one to read. Otherwise any real story works. One the agent just wrote carries none of your team's conventions.
@@ -37,12 +36,12 @@ Drop a story ticket link after the colon.
 
 {{prompt:extract-the-task-shaping-rule-4}}
 
-## Phase 2: Pick where the file fires
+## Phase 2: Pick how the file loads
 
 *4 min*
 
-- The choice is when the rules fire, not where the bytes sit. Anywhere on this laptop (user-level), or only when this repo is open (repo-personal).
-- Claude carries the path taxonomy; you carry the choice.
+- Every session on this laptop (user-level), or only sessions in this repo (repo-personal).
+- Claude knows the paths; the choice is yours.
 
 Decide the location with Claude.
 
@@ -51,30 +50,27 @@ Decide the location with Claude.
 
 ## Wire the file in, check the wording
 
-**Note** A rule off the auto-load path needs a wire, or it sits silently on disk until something reads it. `./CLAUDE.local.md`, `./CLAUDE.md`, and `~/.claude/CLAUDE.md` auto-load; anywhere else needs an `@import` line added to one of those three, e.g. `@~/.claude/memory/task-shaping.md` added to `~/.claude/CLAUDE.md` for a rule that lives at `~/.claude/memory/task-shaping.md`. If Claude picked a path outside the three, ask it for that `@import` line before you move on.
-
+- `./CLAUDE.local.md`, `./CLAUDE.md` and `~/.claude/CLAUDE.md` auto-load. Anywhere else needs an `@import` line in one of those three, e.g. `@~/.claude/memory/task-shaping.md`.
+- If Claude picked a path outside the three, ask for that `@import` line before you move on. Without it the file sits on disk unread.
 - Read the rules back. If any drifted from your wording, push back and have Claude rewrite.
 
-## Phase 3: Name the automation shapes, don't build them
+## Phase 3: Name the automation shapes
 
 *3 min*
 
-- The prompt asks for shapes, not code. "This rules file" means the `.md` file you saved in Phase 2. The first automation attempt points an agent at that file and one input stream: a Slack channel, an issue queue, or a backlog export.
+Ask Claude what this file could drive later.
 
 {{prompt:extract-the-task-shaping-rule-3}}
 
 
-## Read the shapes, hold the build
+## Read the shapes
 
 - A shape you could use names its trigger and where your file sits in the loop. If Claude offers only one, ask for two more.
-
-## What happened
-
-Claude read the scrollback and proposed the rules. You rewrote or rejected at least one. One story ticket gave up a second set. You named the file and the path. Claude wrote it. You asked one open question about where the file could go next. Claude proposed shapes. You read.
+- Want the machinery? Ask about GitHub Actions, the Claude Code action, and Routines by name.
 
 <!-- maintainer -->
 
-**The `@import` wiring stays in the body Note, not the fence — standing `[watch]`, reaffirmed 2026-08-02.** This is a KNOWN §16 gap held open on purpose, logged in `pre-cohort-todos.md` (2026-07-26): *"stays REVISE, `[watch]` … Accepted as-is. Fires if a cohort run shows a student picking a non-auto-load path and missing the wire. Fix when it fires: fold the `@import` ask into `extract-the-task-shaping-rule-2.md`'s fence."* The trigger is field evidence from a cohort, not a judge's re-derivation — so a pedagogy REVISE here is the expected steady state, not a new finding. **Do not fold it into the fence before the trigger fires**, and do not re-argue it from §16's optional-refinements carve-out: the Note says *"before you move on"*, which is a gate, so that carve-out does NOT cover this. The reason is the watch decision, and the maintainer's grounds are that the wiring stays the student's choice.
+**The `@import` wiring stays in body, not the fence — standing `[watch]`, reaffirmed 2026-08-02.** (It sits in plain bullets on the *Wire the file in* slide; the `**Note**` widget it used to occupy was the slide's only content, which is not what a Note is for — a Note is louder than surrounding prose, and there was none.) This is a KNOWN §16 gap held open on purpose, logged in `pre-cohort-todos.md` (2026-07-26): *"stays REVISE, `[watch]` … Accepted as-is. Fires if a cohort run shows a student picking a non-auto-load path and missing the wire. Fix when it fires: fold the `@import` ask into `extract-the-task-shaping-rule-2.md`'s fence."* The trigger is field evidence from a cohort, not a judge's re-derivation — so a pedagogy REVISE here is the expected steady state, not a new finding. **Do not fold it into the fence before the trigger fires**, and do not re-argue it from §16's optional-refinements carve-out: the Note says *"before you move on"*, which is a gate, so that carve-out does NOT cover this. The reason is the watch decision, and the maintainer's grounds are that the wiring stays the student's choice.
 
 **When the trigger does fire, fence it as a QUESTION, not an action** — *"do you also want an `@import` line so it fires automatically, or keep it explicit-load-only?"* A silent automatic wire-up collides with rule 37 and with the module's deliberate no-prescription stance on auto-load. The downstream stake, per the Artefact-contracts table in `plan-mode-done-right.md`: M4's walk-and-fill audit subagent cannot see `~/.claude/memory/` unless it is `@import`-wired from `~/.claude/CLAUDE.md`.
 
@@ -137,17 +133,21 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 <!-- backing -->
 
 Claims
-- `an-agent-hands-you-generic-rules` · vision · "an agent asked for rules will hand you plausible generic ones." ← none-owed
+- `find-a-place-for-your-rules` · vision · "find a place for your rules." ← none-owed — the generic-rules claim it replaces is carried by `the-generic-rule-is-the-tell` in the Reject-or-rewrite beat, where the student meets it at the move.
 - `the-generic-rule-is-the-tell` · vision · "The generic rule is the tell." ← none-owed
 - `the-tracker-keeps-story-conventions-too` · vision · "How your team writes stories is a rule the tracker has been keeping, same as the bug fields were." ← none-owed
 - `an-agent-written-ticket-carries-no-conventions` · vision · "One the agent just wrote carries none of your team's conventions." ← none-owed
 - `the-rules-are-already-in-the-session` · vision · "The rules are already in the session; naming them is what is left." ← none-owed
 - `agent-reads-the-scrollback-you-react` · vision · "The agent reads the scrollback; you react to what it proposes." ← none-owed
 - `scrollback-right-source-for-session-questions` · vision · "The scrollback is the right source here: the question is how you worked, not what is on disk." ← none-owed — the ownership boundary of the M1 scrollback law: session questions read the chat, state questions read the disk.
-- `reject-or-rewrite-the-generic-rule` · vision · "When Claude pauses for the rewrite-and-reject pass, that is where your hand goes on the work." ← none-owed
+- `ask-about-the-machinery` · detail · "Ask about GitHub Actions, the Claude Code action, and Routines by name." ← gh-actions-cron, cc-github-action, cc-routines — an ask, not an assertion: the body names three runtimes to raise with Claude and claims nothing about what any of them does. That framing is what keeps the gating and the default-behaviour caveats below out of student prose.
+(No separate claim on the pause. The prompt creates it — *"stop and ask which one I want to rewrite and which one I want to reject"* — and `the-generic-rule-is-the-tell` carries the beat with the header above it.)
 
 Sources
-(none. Every claim is the exercise's own design stance; the rules produced are the student's, read off their own session.)
+Every other claim here is the exercise's own design stance; the rules produced are the student's, read off their own session. These three back the *Read the shapes* runtime names only. Dated checks are owned by `lectures/where-the-rule-could-live.md`, which stamps all three and is the next thing the student reads; `due:none` because a delegation does not expire, the delegate's stamp does.
+- gh-actions-cron `[checked:2026-07-31 result:OK due:none]` https://code.claude.com/docs/en/github-actions — [delegated stamp] the least plan-gated of the three, a plain `schedule: cron` workflow calling the action.
+- cc-github-action `[checked:2026-07-31 result:CAVEAT due:none]` https://github.com/anthropics/claude-code-action — [delegated stamp] GA at v1.0. **The caveat matters only if this ever hardens into a claim:** default no-configuration behaviour listens for `issue_comment` and `pull_request_review_comment`, not for issues opened or labelled, so triage-on-open is a workflow the team writes.
+- cc-routines `[checked:2026-07-31 result:OK due:none]` https://claude.com/blog/introducing-routines-in-claude-code — [delegated stamp] gated on both a paid plan and Claude Code on the web, itself research preview, so a room will not all have it. Named as something to ask about rather than to run, which is what keeps that gating out of the body.
 
 Frameworks
 - Double-loop learning · [borrow:Argyris & Schön] · law:double-loop-learning · ← cultural-vocab — naming the rule behind the decision, not repeating the decision

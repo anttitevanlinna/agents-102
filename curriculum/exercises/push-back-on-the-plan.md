@@ -78,15 +78,19 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. Use th
 
 > **Too many low-level questions? Steer up.** If Claude keeps asking about implementation detail (which helper, a variable name, error-message wording), tell it: ask me about requirements, not low-level design. The branches worth the time change what 'done' means; the rest you'd settle in verification.
 
-## Stop when the read starts reaching
+## Switch to a picker if you prefer one
 
-- Stop when the plan is good enough to generate: the decisions most likely to change execution are settled, and the next questions are reaching into routine implementation detail, settled ground, or genuine non-goals. The agent can keep walking; you decide when another answer is no longer worth the working memory it costs. Approve when the plan reads like your plan.
-
-> **Timebox check.** The second-pass walk-down can run deep on a real codebase. If it is still surfacing branches when your time is up, take the most recent sharpened plan, approve it, and move to Phase 5. The branches that did not surface today are the ones you will catch when you actually ship the work.
-
-- The walk-down prompt's three-at-a-time prose is the starting point. That batching cuts round-trips on the branches that need real thought. If you prefer a structured picker, switch once the walk-down is rolling. Ask Claude to switch to AskUserQuestion, and add any steering of your own.
+- The walk-down prompt's three-at-a-time prose is the starting point, and that batching cuts round-trips on the branches that need real thought. If you would rather answer from a structured picker, ask Claude to switch to AskUserQuestion once the walk-down is rolling, and add any steering of your own.
 
 {{prompt:push-back-on-the-plan-2-askuserquestion}}
+
+## Stop when the plan is good enough to generate
+
+- The decisions most likely to change execution are settled, and the questions coming back now are routine implementation detail, settled ground, or genuine non-goals. The agent can keep walking; you decide when another answer is no longer worth the working memory it costs. Approve when the plan reads like your plan.
+
+> **Timebox check.** If branches are still surfacing when your time is up, approve the sharpened plan as it stands and move to Phase 5.
+
+## Run the original grill-me if you want the full hour
 
 *Credit: Matt Pocock for the original [`grill-me`](https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md) skill. The walk-down prompt is abbreviated to fit the 15-minute slot. The original is fully relentless and can run an hour. Optional:*
 
@@ -110,14 +114,10 @@ Then just hit stop.
 
 ## Compare what each read caught
 
-- The agent answers. The pattern it names should be something like: read the plan yourself, push back on what you can see, second-pass read for what you can't, approve. Two reads, two kinds of scrutiny. You catch what a human catches (specificity, voice-of-experience, "I'd write that differently"). The second read catches what an agent walking a decision tree catches: branches you didn't notice, dependencies you didn't name, side-effects you didn't price.
+- The agent answers. You catch what a human catches (specificity, voice-of-experience, "I'd write that differently"). The second read catches what an agent walking a decision tree catches: branches you didn't notice, dependencies you didn't name, side-effects you didn't price.
 - Neither read needs to be complete. Paired, they surface the sharpenings worth making before generation.
 - If the second read looks like it did all the work, quote one thing your push-back caught that it would have missed.
 - **Plan-mode approval inflation** is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions.
-
-## Keep the session open for the Compound step
-
-- On to the Compound step, and keep this session open for it. The next step reads this same scrollback to pull the task-shaping rules worth keeping. The Compound step then writes one into your personal `./CLAUDE.local.md` in a shape you can re-run on your next plan-mode pass. Team-worthy patterns get flagged for a separate PR against team `./CLAUDE.md`.
 
 **What happened:** One plan, two reads. Two push-backs in your own words, then a full walk-down you stopped when the valuable branches had landed. The plan sharpened, approved and unexecuted, and the gap between the two reads is on the record.
 
@@ -131,7 +131,7 @@ Then just hit stop.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** Handles kept bold: the **stop** governor closing the What-you-do line, the **No, keep planning** approval path, the three push-back axis menu items (**Soft items** / **Assumptions** / **Alternatives** — third axis renamed from *Committed changes* 2026-08-12, Antti: *"commit is a git word"*; the collision is live inside this training, `compound-and-close.md` using *uncommitted change* in the git sense one module earlier. Do not restore, and do not reach for *commit* / *edit* / *fix* / *proposal* as replacements — each collides with something this arc already owns, git, plan mode's blocked edit tools, M1's bug fix, and the plan itself), the coined term **Plan-mode approval inflation** at its naming moment (bold narrowed to the handle), and the law **Find is easier than judge** newly bolded at its naming moment; all other bullet/paragraph leads de-bolded. Widget chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
-**Both optional walk-down escalations are kept (not cut).** `push-back-on-the-plan-2-askuserquestion` (switch to the AskUserQuestion picker) and `push-back-on-the-plan-2-original` (the unfiltered Pocock `grill-me`) are opt-in ceilings on the second read, under the *Stop when the read starts reaching* section. They preserve full-on pressure for a student who wants it; the body makes clear that nobody owes the ceiling. A student keeping it simple skips both, so they add no baseline load and cutting them reclaims none. Not cut candidates.
+**Both optional walk-down escalations are kept (not cut).** `push-back-on-the-plan-2-askuserquestion` (switch to the AskUserQuestion picker) and `push-back-on-the-plan-2-original` (the unfiltered Pocock `grill-me`) are opt-in ceilings on the second read, now on their own slides (*Switch to a picker if you prefer one* and *Run the original grill-me if you want the full hour*). **Order and split are Antti-directed, 2026-08-12:** the picker comes first, the stop instruction second, and the Pocock credit gets its own slide rather than trailing the stop beat. The old single slide told the student to stop four separate times — the header, the bullet's own lead, a four-line Timebox callout, and the working-memory clause — so *Stop when the read starts reaching* became *Stop when the plan is good enough to generate* (Antti on the old header: *"reaching ???"*) and the Timebox callout dropped to one line. Do not re-merge these three. They preserve full-on pressure for a student who wants it; the body makes clear that nobody owes the ceiling. A student keeping it simple skips both, so they add no baseline load and cutting them reclaims none. Not cut candidates.
 
 **What-you-build states the activity only; the second read's value claim lands at the P5 compare beat (maintainer call 2026-08-02).** Line 7 names what the walk-down IS — *three questions at a time* — not what it catches. The claim *catches the branches you can't see* is near-verbatim P5's own expected finding (*"branches you didn't notice"*), so stating it in the opener turns the compare beat into confirmation instead of discovery. It is not cut from the file, it is placed: it lives post-action in *Compare what each read caught*, which is where §53 wants it. Both halves of the compare now stay unstated in the opener. **This reverses an earlier §53 partial-accept** that kept the clause at line 7 as the hook selling the walk-down — do not restore it there.
 
@@ -169,7 +169,7 @@ Claims
 - `pocock-credit` · detail · "Credit: Matt Pocock for the original [`grill-me`](https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md) skill." ← pocock-grill-me
 - `paired-reads-surface-sharpenings` · vision · "Neither read needs to be complete. Paired, they surface the sharpenings worth making before generation." ← none-owed
 - `plan-mode-approval-inflation` · vision · "**Plan-mode approval inflation** is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions." ← none-owed
-- `compound-step-writes-the-rule` · borrowed · "The Compound step then writes one into your personal `./CLAUDE.local.md`" ← klaassen-definitive-guide
+(No claim here on the Compound step. This file does not point forward to it: `extract-the-task-shaping-rule` states the session dependency three times in its own opener, and has the student place the rules file rather than writing to `./CLAUDE.local.md`. Klaassen is sourced via the Compound engineering framework row.)
 
 Sources
 - cc-permission-modes `[checked:2026-08-02 result:OK due:cohort]` https://code.claude.com/docs/en/permission-modes.md — [capability] Shift+Tab cycles `default` → `acceptEdits` → `plan`, with the status bar showing the mode; Ctrl+G opens the plan in `$EDITOR`. Re-verified live 2026-08-02, and **the standing CAVEAT is cleared by fixing the body, not the stamp**: the docs name the option *"No, keep planning: stay in plan mode and tell Claude what to change"*, and the body now matches it verbatim. Two things the next cohort check must re-read rather than assume. The approval prompt offers **four** options, not two (*Yes, and use auto mode* · *Yes, manually approve edits* · *No, refine with Ultraplan on Claude Code on the web* · *No, keep planning*), and the first label changes with the account — *Yes, auto-accept edits* where auto mode is unavailable, *Yes, and bypass permissions* in a bypass session. A room will not all see the same menu. Plan mode is also enterable by prefixing a prompt with `/plan`, not only Shift+Tab. fallback: drop the literal label and say "decline the plan and keep planning" — durable against the next copy change, at the cost of concreteness a first-time student needs.

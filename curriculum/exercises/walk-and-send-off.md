@@ -12,11 +12,11 @@ Start a new Claude Code session at your repo root.
 
 Start clean. The task here is bigger than anything so far. Before the new session, check your working tree and branch. You ride that state into the closing `m4/<slug>` commit, and the next module forks its worktree from that commit.
 
-**What you do:** Pick a task you've been avoiding, the kind you'd send off rather than nudge bit by bit. Walk what you've built so far against it. Fill the worst gaps and settle your `observations/` tree on disk. At the close, send the task off, un-packaged, to the same Claude Code session. Leave the laptop awake while you step away, or stop the session when you've seen enough.
+**What you do:** walk a task you've been avoiding against what you've built, then send it off un-packaged.
 
-**What you build:** two things a long-running session can ride: a scoped task with a 'done' you can name in a sentence, and the worst gaps filled in `observations/` and your rules file, with the `observations/` tree settled on disk. Then it goes off un-packaged.
+**What you build:** a scoped task with a 'done' you can name, and the worst gaps filled in `observations/`.
 
-**The point:** This is the first experiment of a two-session arc. The un-packaged send-off here is what teaches you what packaging adds, a lesson no lecture can land. Every send-off is a test, not a production run; you are testing and you are learning.
+**The point:** sending this off un-packaged is what teaches you what packaging adds later.
 
 ---
 
@@ -25,7 +25,7 @@ Start clean. The task here is bigger than anything so far. Before the new sessio
 *10 min*
 
 - A real slice you'd send off rather than nudge bit by bit, with a 'done' you can name in a sentence. Bigger than a typo-fix, smaller than an epic.
-- The pick is yours; the fit-check is the agent's. You are not on the hook for scanning your roadmap or Jira; that stays with you. Bring one or two candidates; the agent screens them for fit against the three long-run criteria.
+- The pick is yours; the fit-check is the agent's. Bring one or two candidates; the agent screens them for fit against the three long-run criteria.
 
 Ask Claude to screen the candidates you bring against the three long-run criteria and scope the winner. Drop the candidates after the colon.
 
@@ -42,7 +42,7 @@ Ask Claude to screen the candidates you bring against the three long-run criteri
 *45 min*
 
 - The audit walks your whole system so you don't. The agent reads `CLAUDE.md`, `CLAUDE.local.md`, memory, ADRs, and any skills you've authored as a subagent, then ranks the five thin spots that will hurt the agent most on this task.
-- Heavy audit expected. Skim past the opening summary; the ranked thin-spots list is the payoff. If the ranked list comes back thin, push Claude to keep digging rather than letting a shallow pass stand as done.
+- Heavy audit expected. Skim past the opening summary; the ranked thin-spots list is the payoff. If the ranked list comes back thin, push Claude to keep digging rather than letting a shallow pass stand as done. If it comes back long and unranked, send it back for five, ranked.
 
 Ask Claude to run the audit as a subagent and return a ranked top-five.
 
@@ -111,10 +111,8 @@ The exercise ends here. The module's send-off takes over:
 <!-- backing -->
 
 Claims
-- `first-experiment-of-a-two-run-arc` · vision · "This is the first experiment of a two-session arc." ← none-owed
-- `unpackaged-send-off-teaches-what-packaging-adds` · vision · "The un-packaged send-off here is what teaches you what packaging adds, a lesson no lecture can land." ← none-owed
-- `every-send-off-is-a-test` · vision · "Every send-off is a test, not a production run" ← none-owed
-- `done-you-can-name-in-a-sentence` · vision · "a scoped task with a 'done' you can name in a sentence" ← none-owed
+- `unpackaged-send-off-teaches-what-packaging-adds` · vision · "sending this off un-packaged is what teaches you what packaging adds later" ← none-owed
+- `done-you-can-name-in-a-sentence` · vision · "with a 'done' you can name in a sentence" ← none-owed
 - `pick-is-yours-fit-check-is-the-agents` · vision · "The pick is yours; the fit-check is the agent's." ← none-owed
 - `imagining-a-demo-means-too-big` · vision · "Imagining a finished demo means you scoped too big." ← none-owed
 - `audit-walks-the-system-so-you-dont` · vision · "The audit walks your whole system so you don't." ← none-owed
@@ -149,12 +147,12 @@ OODA
 - **Phase 1 task-sprawl** — student picks the quarterly epic. Diagnostic: the scoped task doesn't have a "done" the student can name. Fix: trainer forces a slice; better a smaller task that runs the full arc.
 - **Phase 2 audit busywork** — Claude returns 12 items instead of 5, student drowns. Diagnostic: prompt wasn't ranked-top-5 enforced. Fix: re-run the prompt; enforce ranking; student picks top 3.
 - **Phase 2 over-fill** — student tries to close all five gaps. Diagnostic: *"just one more"* creep. Fix: trainer names the sponge-not-rock rule; M5 will teach the other two.
-- **Debrief package-pre-empt** — student tries to add a plan.md or build a verifier before sending off. Diagnostic: *"should I just quickly…"* Fix: trainer names the rule — *"un-packaged is by design. Don't pre-empt M5's learning."*
+- **Send-off package-pre-empt** — student tries to add a plan.md or build a verifier before sending off. Diagnostic: *"should I just quickly…"* Fix: trainer names the rule — *"un-packaged is by design. Don't pre-empt M5's learning."*
 - **Send-off anxiety** — student hesitates at the final paste. Diagnostic: *"what if it runs forever / breaks things / gets nowhere?"* Fix: trainer names cancel-is-legit — *"stop it when you've seen enough. Traces are data."*
 
 **Plug points:**
 - Student's own task you'd send off rather than nudge bit by bit (Phase 1 pick)
-- Sponsor-stated rules-file home (Debrief rewrite target)
+- Sponsor-stated rules-file home (Phase 2 rule-sharpening target)
 - Sponsor-stated memory / business-rules home (Phase 2 fill destination for business-rules pointer)
 - Sponsor-stated ADR convention (memory already references; no new move here)
 
@@ -165,7 +163,7 @@ OODA
 - **Settle beat waved through** — tidy-up and diff-review took under a minute. Check the `observations/` tree actually got tidied and the diff seen before the send-off.
 - **Whole-room mood below 7** — curious readiness isn't landing. Check Phase 1: real task or compliance task? Task-selection is where this mood starts or dies.
 
-**Send-off mechanism (Debrief step 3):**
+**Send-off mechanism (module close, step 3):**
 - Student passes the final prompt to the SAME Claude Code session they've been in for 90+ minutes. No new session. No `/schedule`, no `/loop`, no cloud runner.
 - Student closes the laptop (power settings + plugged in) OR stops the run mid-flight when observation is sufficient.
 - Trace preservation: Claude Code scrollback is the artifact M5 reads. Anything the student's configured for conversation logging continues.
@@ -174,11 +172,11 @@ OODA
 **Watch-fors (cross-phase):**
 - Task sprawl at Phase 1 — the biggest single failure mode; everything downstream is sized by the task pick.
 - Audit busywork at Phase 2 — re-run the prompt, don't let student filter a 15-item list manually (that's the anti-pedagogy from `check_student_facing` #9).
-- Voice-smuggling at Phase 3 or Debrief — if it starts sounding like M5's unleashed leverage, student thinks this is the leverage moment. It isn't. M4 is readiness without completion.
-- Package-pre-empt at Debrief — the highest-probability module-specific failure.
+- Voice-smuggling at the fill beat or the close — if it starts sounding like M5's unleashed leverage, student thinks this is the leverage moment. It isn't. M4 is readiness without completion.
+- Package-pre-empt at the close — the highest-probability module-specific failure.
 
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
 
-**2026-07-03** — `## What closes the module` re-aligned to the module file's `## Send the task off` flow, per refuter close-out-drift finding. Two fixes: (1) relabeled off "Debrief" — `run-the-first-experiment.md` says "No Debrief; the send-off is the close of the work", so the close heading + intro, the `**What you do:**` overview, and the `**What happened:**` recap now name the module file's send-off / "the close", not a Debrief section (same mislabel in three body spots); (2) the two beats the module file carries at close but this list omitted were added in true order — the transcript/commit return markers (new step 3) and the trifecta cut-one-leg check (new step 4, before the send-off paste). The existing compound and push-back beats were kept and the list shape preserved; the finding was missing-beats + mislabel, not the step set. Prose-only; no `{{prompt}}` markers touched (the send-off, transcript, and commit prompts live in the module file, not here). Reconcile-in-sweep: this maintainer block, `**Time budget total:**`, and `**Send-off mechanism (Debrief step 3)**` still say "Debrief", and the last now maps to step 5 after the renumber — left for a maintainer-label sweep to avoid touching trainer metadata in a prose-fix batch.
+**M4 has no Debrief — this file names the module's send-off, or "the close".** `run-the-first-experiment.md` closes on the send-off itself, so a Debrief is not a section the student reaches. The label belongs nowhere in this file, body or trainer metadata. `## What closes the module` tracks that section's beats in its own order: return markers, trifecta check, send-off paste.
 
-**2026-07-26** — Module-close reconciliation: `run-the-first-experiment.md`'s close was rewritten 2026-07-08 (commit 05fbd36) to drop the compound pass entirely ("No compound pass at the close... Compound on evidence, not anticipation"), which the 2026-07-03 fix above reconciled against an older version. Three fixes here: (1) `**What you do:**` (line 15) dropped "compound your rules file and" — the close is send-off only, no compound framing; (2) `## What closes Module 4` dropped the compound-step and push-back-on-summary beats (old steps 1-2, which the module no longer runs), renumbering the return-markers / trifecta / send-off-paste beats down to 1-3; (3) Phase 2's "Heavy audit expected" callout moved ahead of its `{{prompt:walk-and-send-off-2}}` fence (was stranded in the following `## Read the ranked thin-spots` section, i.e. after the run had already started) and now names the premature-stop failure mode alongside the existing over-reading one, per `check_pedagogy.md` §48. **Resolved 2026-07-26 (same day, second look):** the §16 finding above proposed re-fencing Phase 3 as `{{prompt:walk-and-send-off-4}}` without checking why that exact prompt was retired 16 days earlier. `2f0c8a2` (2026-07-10) deliberately cut the three-block/Huryn frame as decorative naming that "named the memory architecture without advancing the curriculum," keeping only the practical settle-the-tree beat and dropping 2 slides in the process — not re-fencing it was the point of that commit, not an oversight. Re-adding any prompt here, even a lighter one, reopens a question the maintainer had already closed. Fix instead: Phase 3's heading is gone; its two bullets fold into the close of the prior section as plain body prose, no new `##`, no new prompt. The propose/review-diff move was already the third rep of the same pattern in this file (Phase 1 pick, Phase 2 audit, Phase 2 fill) — by this point body prose carries it. `walk-and-send-off-4` stays retired. **Reconcile-in-sweep debt widens:** the "Debrief" label sweep deferred 2026-07-03 (`**Time budget total:**`, `**Frameworks riffed on:**` compound-engineering bullet, `**Send-off mechanism (Debrief step 3)**`) is now further stale — "step 3" in that heading pointed at the send-off-paste beat before this pass; after the renumber it points at the trifecta check instead. Still left for the maintainer-label sweep, not touched here.
+**`walk-and-send-off-4` stays retired.** The settle-the-tree beat runs as plain body prose at the close of the fill section: no heading, no fence. The three-block frame is deliberately absent — it names the memory architecture without advancing the curriculum — and the propose-then-review-the-diff move is on its third rep in this file by that point (Phase 1 pick, Phase 2 audit, Phase 2 fill), so prose carries it. Do not re-fence it, even lighter.

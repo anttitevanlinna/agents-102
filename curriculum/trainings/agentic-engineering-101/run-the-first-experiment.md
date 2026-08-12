@@ -103,7 +103,7 @@ Before you close: read [Reading the return](lectures/reading-the-return.md). It 
 
 ## Next
 
-The next module opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this session lives, so when the next slot lands a fresh session reads it straight from `task.md`, no hunting through past sessions. Transcripts persist on disk regardless; see [Claude Code for engineers, session transcripts](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts-read-what-actually-happened) for what they hold. Close the session once the agent is done; the trace is on disk.
+The next module opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this session lives, so when the next slot lands a fresh session reads it straight from `task.md`, no hunting through past sessions. Transcripts persist on disk regardless; see [Claude Code for engineers, session transcripts](trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts-read-what-actually-happened) for what they hold. Close the session once the agent is done; the trace is on disk.
 
 ## Bring to Module 5
 
@@ -149,7 +149,7 @@ Optional. They sit in the gap while your un-packaged session is still going. All
 - **Phase 2 audit passivity** — student reads the ranked gap list and moves on without picking three. Trainer push: *"which of these will hurt the agent most given the task? fill those."*
 - **Phase 2 over-fill** — student tries to close all five gaps instead of the worst three. Trainer push: *"Three is the budget. Skip the other two — you'll see next module why."*
 - **Phase 2 gap deferred as "architectural, not contextual"** — student looks at a thin spot, says *"that's a real code change, I'll skip for tonight."* High-impact failure mode: skipping a contextual gap that looks architectural makes the un-packaged run fail in a *boring* way (wrong DB assumption, stale config) instead of an *interesting* way (agent loses coherence). M5 can't rescue a boring failure. Trainer hard push: *"if the audit calls it context — even if the fill is 'add a rule saying we use X, not Y' — it's still context. M5 needs an interesting failure to diagnose, not a boring one. Fill it."*
-- **Debrief pre-empt** — student tries to package the task (add plan.md, build a verifier) before sending off. Trainer push: *"un-packaged is by design. M5 teaches you packaging by diagnosing what breaks here. Don't pre-empt the learning."*
+- **Send-off pre-empt** — student tries to package the task (add plan.md, build a verifier) before sending off. Trainer push: *"un-packaged is by design. M5 teaches you packaging by diagnosing what breaks here. Don't pre-empt the learning."*
 - **Send-off anxiety** — student hesitates at the final prompt (*"what if it runs forever / breaks things / gets nowhere?"*). Trainer push: *"stop it when you've seen enough. Traces are data. A result you can read is enough; you do not need a completed artifact."*
 - **Business-rules skipped** — student has no clear business-rules layer and moves on without naming it. Trainer push: *"the gap IS the finding. Write one line in memory naming what's missing."*
 
@@ -158,7 +158,7 @@ Optional. They sit in the gap while your un-packaged session is still going. All
 **Watch-fors (cross-phase):**
 - Task sprawl — student brings the whole epic at Connections. Cap during pick; redirect to a sliceable sub-piece that still needs the three load-bearing properties (sustained coherence, requirement-weaving, multi-file reasoning).
 - Audit busywork — Claude returns 15 items; student drowns. The prompt asks for top 5; enforce.
-- Voice smuggling — Phase 4 / Debrief framed as unleashed leverage (M5 mood) or joyful creation (M1 mood). M4 is curious readiness — stakes without performance, readiness without completion.
+- Voice smuggling — the fill beat or the close framed as unleashed leverage (M5 mood) or joyful creation (M1 mood). M4 is curious readiness — stakes without performance, readiness without completion.
 - Package-pre-empt — the biggest M4 failure mode. Watch for: *"should I add a plan.md first?"* or *"I'll just build a quick verifier."* Both are correct moves; wrong module.
 
 **Decision points:**
@@ -169,7 +169,7 @@ Optional. They sit in the gap while your un-packaged session is still going. All
 
 **Plug points (trainer):**
 - Student's own task you'd send off rather than nudge bit by bit (Connections pick) — sponsor-stated example tasks by team type (web / back / data / ML) help calibration when the student stalls
-- Sponsor-stated rules-file home (Debrief rewrite lands here) — `./CLAUDE.local.md` is the repo-personal default; sponsor's actual convention overrides
+- Sponsor-stated rules-file home (Phase 2 rule-sharpening lands here) — `./CLAUDE.local.md` is the repo-personal default; sponsor's actual convention overrides
 - Sponsor-stated observations / business-rules home (Phase 2 fill destination) — `observations/` is the cross-session default; sponsor's actual convention (e.g., `docs/business-rules/`, `wiki/policy/`) overrides
 - Sponsor-stated tracker (Phase 1 task surfacing) — Linear / Jira / GitHub Issues; if MCP is wired, Claude can read the tracker for candidates given the criteria first
 
@@ -195,7 +195,7 @@ Optional. They sit in the gap while your un-packaged session is still going. All
 | Phase 2 — *"if the audit calls it context, fill it"* | Phase 2 gap deferred as *"architectural, not contextual"* — student skips a contextual gap that looks architectural; the un-packaged run fails in a boring way M5 can't rescue | Trainer hard push: *"if the audit calls it context — even if the fill is 'add a rule saying we use X, not Y' — it's still context. M5 needs an interesting failure to diagnose, not a boring one. Fill it."* |
 | Phase 3 — *"settle the `observations/` tree on disk before the send-off"* | student plans the tidy-up in chat but never lands the diff | Trainer: *"show me the diff landed before you paste the send-off."* |
 | Send-off — *"pin the SHA on the named branch before sending off"* | Student notes the SHA but not the branch name, OR closes the session before the commit completes; M5's worktree instruction lands with an ambiguous starting point | Trainer push: *"read me back the branch name and SHA Claude confirmed. Have you noted both somewhere you'll find at M5 start?"* |
-| Send-off — *"send un-packaged"* | Debrief pre-empt — student tries to package (add plan.md, build a verifier) before sending off | Trainer push: *"un-packaged is by design. M5 teaches you packaging by diagnosing what breaks here. Don't pre-empt the learning."* |
+| Send-off — *"send un-packaged"* | Send-off pre-empt — student tries to package (add plan.md, build a verifier) before sending off | Trainer push: *"un-packaged is by design. M5 teaches you packaging by diagnosing what breaks here. Don't pre-empt the learning."* |
 | Send-off — *"stop the session when you've seen enough; the trace is the result"* | Send-off anxiety — student hesitates at the final prompt or feels they need a completed artifact | Trainer push: *"stop it when you've seen enough. Traces are data. A result you can read is enough; you do not need a completed artifact."* |
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
@@ -207,10 +207,8 @@ Optional. They sit in the gap while your un-packaged session is still going. All
 
 **Frameworks riffed on (attributed in lecture):**
 - **Gap analysis** — generic business-analysis framework; no single attribution needed. Named in Phase 2 as *"walk the system you have against the system the task needs."*
-- **Compound engineering** — Kieran Klaassen. Debrief self-compound pattern is the loop that runs through Klaassen's work, now in its fourth rep for the student.
+- **Compound engineering** — Kieran Klaassen. Named on the student surface only as a Module 5 pre-read; this module deliberately runs no compound step, so the loop is carried rather than recited.
 
-**2026-07-02** — trifecta send-off check added to `## Send the task off` (three-question check + "prompt injection" named once + supplementary pointer, last mandatory beat before the send-off prompt), wired per completeness review finding #2; second firing of the M3 pre-leash beat. Same pass: *"is the practice"* → *"is the move"* in the nudge paragraph (practice-as-noun; the M4 carve-out covers only the opener's engineered sentence at line 24).
+**`practice` as a noun stays in the opener's one engineered sentence and nowhere else in this file.** `check_writing.md §2`'s AE101 carve-out earns the word at M4, and it earns it once — *"The practice is yours now"* in `## Start here`. Every other beat says *move*. The trifecta check before the send-off is the second firing of M3's pre-leash beat, and it is the last mandatory beat before the send-off prompt.
 
-**2026-07-03** — source-freshness stamps re-verified live 2026-07-02 and applied verbatim from the stamp queue: Klaassen Definitive Guide `checked` advanced to 2026-07-02 (still `result:CAVEAT` — thesis holds, plan/work/review/compound naming still convergent-across-appearances, not verbatim-on-page); Entis "bread in the sandwich" advanced to 2026-07-02 with `due` recomputed to 2026-10-22 from the Apr 22 2026 byline + 6-month window (byline re-confirmed via WebFetch 2026-07-03; the prior `due:2026-08-22` did not match the byline — a miscompute, not a real earlier expiry). Same pass, per refuter cross-doc-link finding: the `## Send the task off` trifecta-beat link dropped its depth-counted `../../` prefix for the bare `trainings/agentic-engineering-101/supplementary/…` form `module-shape.md` requires in source (lint-level — the renderer rewrites either prefix, so no rendered-behaviour change). Not swept: the `../../` links under `## Next`, `## Bring to Module 5`, and `## Pre-reads before Module 5` carry the same banned prefix — identical one-line fix, left for a link-hygiene sweep to avoid scope-creeping this batch.
-
-**2026-07-03** — link-hygiene sweep (eyeball-queue #14): dropped the depth-counted `../../` prefix from the two `## Pre-reads before Module 5` supplementary links (`clean-code-is-steering.md`, `verification-asymmetry.md`) for the bare `trainings/agentic-engineering-101/supplementary/…` form `module-shape.md` requires; renderer rewrites either prefix, so zero rendered change. `## Next` / `## Bring to Module 5` carry no `../../` supplementary link (the `## Next` `../../` link is a `/reference/` path, outside this supplementary-scoped sweep — left as-is).
+**Every in-source cross-doc link uses the bare `trainings/agentic-engineering-101/…` form**, never a depth-counted `../../` prefix, per `module-shape.md`. The renderer rewrites either, so this is lint-level and invisible at delivery, which is exactly why it drifts.

@@ -94,6 +94,14 @@ Each entry: cycle number, date, what the researcher learned about researching.
 
 ---
 
+### Cycle 184 — 2026-08-12
+
+A Level 3 finding (Sonnet 5 pricing cliff) was invalidated within one cycle of being established — Anthropic announced permanent pricing on August 11, the day after Cycle 183 closed. Lesson: for vendor-driven pricing signals, even when six independent sources converge on a compound mechanism, the underlying event can be cancelled by the vendor before it fires. The L3 convergence was methodologically correct; the event was real at research time; the cancellation does not impair the research method. For future pricing-cliff research: add a "vendor can cancel" flag to any pricing-change finding before the event date, and check vendor pricing pages in the first query of each cycle that covers the event window.
+
+Voice 10 (Tensoria/Rabhi) was found via concept-keyword search ("AI agent runaway production incident 2026") returning a regional-boutique founder's post on tensoria.fr — a site that would never appear on a practitioner-name search because Rabhi was not on the source roster. The silent loop / observability gap category (72 API calls, no error state) was new — a failure type that concept searches surface better than roster searches. Heuristic confirmed for the third time: for governance/failure corpus expansion, concept-keyword searches ("AI agent [failure pattern] production 2026") find voices that person-name and blog-index searches miss. Promote to Research Heuristics if it recurs once more.
+
+A prediction market repricing by 17.5 points in two days (Polymarket: 45.6% → 63.1% no-August-release for Gemini 3.5 Pro) after a named whisper date passed is a stronger signal than any single article or source. The two-day jump, not the absolute level, tells you the market absorbed new information (date falsified) and updated. For persistent-delay tracking: watch for sharp Polymarket repricing events after each falsified date — they confirm the market believes the date was an information update, not noise.
+
 ### Cycle 183 — 2026-08-10
 
 The loop termination deployer-direct voice (Voice 9, Jain/Attri.ai) was found not via person-name search or blog index, but via medium.com search for the specific failure pattern ("AI agent infinite loop production failure 2026"). The April 14 post had been in the public domain for 4 months but was missed by nine consecutive dedicated searches across cycles 174–182. Lesson: Medium.com is an underused discovery surface for practitioner failure accounts — practitioners who experienced incidents but don't maintain personal blogs are most likely to publish on Medium. Future searches for deployer-direct incident accounts should include a dedicated Medium search pass alongside blog-index fetches.

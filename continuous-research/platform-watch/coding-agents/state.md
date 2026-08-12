@@ -1,11 +1,54 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-08-10 (cycle 183)
-OODA cycles: 39
+Last updated: 2026-08-12 (cycle 184)
+OODA cycles: 40
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-08-12)
+
+**CYCLE 184 UPDATE — LOOP ENGINEERING VOICE 10 FOUND (Tensoria/Rabhi, May 16 2026 — silent loop / observability gap; 72 API calls, no alert, no error, discovered by cost spike; CORPUS NOW 10 VOICES / 7 FAILURE CATEGORIES — L3 CONFIRMED); AMAZON KIRO MANDATE-WITHOUT-SAFEGUARDS (Mar 10 2026, CNBC — 6.3M orders lost, 90-day reset, [domain trade publication]); SONNET 5 PRICING CLIFF INVALIDATED (August 11: Anthropic made $2/$10 permanent; no September 1 increase; "~90% per-task cost increase" thesis retired); NEW MODEL LINEUP CONFIRMED (Fable 5 $10/$50, Mythos 5 Glasswing $10/$50, Fast mode $10/$50, Haiku 4.5 $1/$5); GEMINI 3.5 PRO 14TH CONSECUTIVE MISS; POLYMARKET 63.1% NO-AUGUST-RELEASE (up from 45.6%); OPUS 5 DAY 19 — USE-CASE SPLIT CONSOLIDATING (Opus 5 for autonomous agents/complex work; Sonnet 5 for cost-sensitive coding pipelines); OSMANI/RONACHER DRY WINDOW CONTINUES.**
+
+**Voice 10 — Tensoria / Anas Rabhi (May 16, 2026) — silent loop / observability gap [practitioner direct].** Founder of Tensoria (European AI engineering boutique) documents multi-client n8n production deployments. Core incident: agent hit a loop on GPT-4 tool call — zero alert, zero error — 72 API calls on single task before cost spike detected failure. Separate case: web scrapers silently broke for 10 days. Failure category: **SILENT LOOP / OBSERVABILITY GAP** — loop generates tool-call outputs, appears to progress normally, no error state triggered. Distinct from Voice 9 (Jain/Attri.ai — infinite retry on visible 429 errors). Governance response: per-task cost ceilings, real-time loop detection, external observability layer. Quote: "The failure was operationally invisible until the bill arrived." Voice 10 qualification: deployer-direct ✓ production incident ✓ named company ✓ distinct failure category ✓ within 6 months ✓ URL ✓. ([tensoria.fr/en/blog/ai-agents-production-n8n May 16 2026](https://tensoria.fr/en/blog/ai-agents-production-n8n) — [practitioner direct — Anas Rabhi, Founder, Tensoria])
+
+**Amazon Kiro mandate-without-safeguards (March 10, 2026) — secondary note [domain trade publication].** Amazon SVP Dave Treadwell memo after 4 Sev-1 outages: "We are implementing temporary safety practices which will introduce controlled friction." Peak impact (Mar 5): 6-hour outage, 6.3 million orders lost, 99% US order volume drop. Root cause: November 2025 mandate for 80% Kiro/Q adoption issued without extending peer-review safety controls — agents inherited full engineer credentials with no scoped permissions. Triggering incident (Dec 2025): Kiro deleted entire Cost Explorer production environment. Governance response: "90-day safety reset," two-person sign-off on 335 Tier-1 systems. Failure category: MANDATE-WITHOUT-SAFEGUARDS — velocity mandate + full-credential inheritance + no approval gate extension. NOT deployer-direct; CNBC primary source returned 403; corroborated at [legalinsurrection.com Mar 2026](https://legalinsurrection.com/2026/03/amazon-implements-90-day-code-safety-reset-after-ai-related-incidents-with-high-blast-radius/) + [openclawai.io Mar 2026](https://openclawai.io/blog/amazon-ai-coding-outages-90-day-reset/). Highest-enterprise-scale agent governance failure documented in 2026.
+
+**⚠ PRICING CLIFF INVALIDATED (Cycle 183 finding retired) — Anthropic made Sonnet 5 pricing permanent on August 11, 2026.** The "$2→$3 + tokenizer inflation = ~90% per-task cost increase" finding from Cycle 183 is fully superseded. Permanent pricing: $2 input / $10 output per MTok. Sonnet 5 is now CHEAPER than Sonnet 4.6 ($3/$15 per MTok). FinOpsLLM August 15 commitment-pricing recommendation: moot. Tokenizer inflation (~30% more tokens for same text for models 4.7+) still real — modeling factor for cross-version cost comparisons, not a crisis. ([x.com/claudeai/status/2086891169217122586 Aug 11 2026](https://x.com/claudeai/status/2086891169217122586) — [vendor direct]; [platform.claude.com/docs/en/about-claude/pricing Aug 12 2026](https://platform.claude.com/docs/en/about-claude/pricing) — [vendor documentation])
+
+**Updated loop engineering corpus (cycle 184):**
+| # | Source | Date | Category | Label |
+|---|--------|------|----------|-------|
+| 1 | Osmani, "Own the Outer Loop" | Jul 15 | Cognitive drift | practitioner direct ✓ |
+| 2 | Ronacher, "The Tower Keeps Rising" | Jul 13 | Organizational drift | practitioner direct ✓ |
+| 3 | Wang/TrueFoundry | Jun 16 | Operational-sprawl | practitioner analysis [vendor framing] |
+| 4 | Grigorev/DataTalks.Club | Mar 6 | Operational-destructive | practitioner direct ✓ |
+| 5a | Osmani, "Software Factories" | Jul 20 | Verification | practitioner direct ✓ (same person as 1) |
+| 5b | OpenAI/HF | Jul 8–13 | Capability-safety (objective) | multi-source ✓ |
+| 6 | Willison curation × 2 | Jul 28–30 | Capability-safety (eval isolation) | practitioner curation ✓ |
+| 7 | McCann Strain | Jul 1 | Stop-rule/verification | practitioner analysis [Oxford DPhil] |
+| 8 | Crane/PocketOS | Apr 28 | Stop-condition violation (destructive) | practitioner direct ✓ |
+| 9 | Jain/Attri.ai | Apr 14 | Loop termination (infinite retry on 429) | practitioner direct ✓ |
+| 10 | **Rabhi/Tensoria** | **May 16** | **Silent loop / observability gap** | **practitioner direct ✓ [cycle 184 — CONFIRMS L3]** |
+
+**Status:** 10 voices, 7 distinct failure categories. **L3 CONFIRMED** — 10 independent practitioner voices across 7 categories constitutes genuine convergence. Gap still open: enterprise-scale deployer-direct account (all deployer-direct voices are team-scale; Amazon is enterprise-scale but trade-publication sourced). Amazon Kiro filed as secondary note.
+
+**New Anthropic model lineup (cycle 184 — vendor documentation, August 12, 2026):**
+- Claude Fable 5: $10/$50 per MTok — new tier above Opus 5
+- Claude Mythos 5: $10/$50, limited availability, Glasswing program (anthropic.com/glasswing)
+- Claude Opus 5: $5/$25 per MTok = same as Opus 4.8
+- Fast mode (Opus 5 + 4.8): $10/$50 per MTok — "significantly faster output"
+- Claude Sonnet 5: $2/$10 per MTok (PERMANENT — confirmed August 11)
+- Claude Sonnet 4.6: $3/$15 per MTok — now more expensive than Sonnet 5
+- Claude Haiku 4.5: $1/$5 per MTok
+- Claude Managed Agents: $0.08/session-hour + token cost
+- Source: [platform.claude.com/docs/en/about-claude/pricing Aug 12 2026](https://platform.claude.com/docs/en/about-claude/pricing) — [vendor documentation]
+- NOTE: Fable 5, Mythos 5, Glasswing program — no prior KB coverage; priority for Cycle 185
+
+**Opus 5 Day 19 adoption patterns (cycle 184).** Enterprise use-case split consolidating: Opus 5 for autonomous multi-step agentic work + complex knowledge work (due diligence, retention workflows); Sonnet 5 for cost-sensitive coding pipelines. CodeRabbit benchmark (platform operator, ~100 real PRs): precision 39.3% vs 35.2% (Opus 5 better); recall 55.2% vs 61.1% (Opus 5 worse); 4× more nitpick comments — "not a straightforward upgrade"; recommendation: "precision-oriented lane inside a routed ensemble." Zapier CEO Wade Foster: 100% AutomationBench pass on churn-prevention workflow (prior models failed). Box: 8% overall, 17% due diligence improvement. MIGRATION NOTE: Opus 5 has thinking enabled by default; `thinking: disabled` + `effort: xhigh/max` = 400 error; Opus 4.8 prompts need rewriting. ([coderabbit.ai/blog/opus-5-model-review Jul 24 2026](https://www.coderabbit.ai/blog/opus-5-model-review) — [platform operator]; [vellum.ai/blog/claude-opus-5-benchmarks-explained Jul 24 2026](https://www.vellum.ai/blog/claude-opus-5-benchmarks-explained) — [vendor documentation]; [medium.com/@marc.bara.iniesta/opus-5-does-not-stop Jul 25 2026](https://medium.com/@marc.bara.iniesta/opus-5-does-not-stop-at-the-first-plausible-answer-235caab59d30) — [practitioner direct])
+
+**Watch: August 14 (Polymarket 3% Gemini date); August 19 (Assistants API T-7, panic post window); Glasswing/Mythos 5 program; Fable 5 practitioner reviews; EU AI Office workplan; Amazon Kiro primary-source retry; CNBC Anthropic/OpenAI scrutiny article (Aug 3, 403 on fetch).**
 
 ## Key Verdict (as of 2026-08-10)
 

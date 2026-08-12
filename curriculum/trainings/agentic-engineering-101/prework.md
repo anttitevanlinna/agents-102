@@ -95,7 +95,7 @@ Optional. One read, any time before the first session.
 
 **Quality:** compendium-audited 2026-08-12 (writing@b1c8389 story@b1c8389 technical@42ca070 behavior@1c765f2 pedagogy@b1c8389 strategy@1c765f2 slides@b1c8389)
 - judges @b1c8389: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module: PASS see instances/ae101--prework-m6.cross_module.json set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]
+- cross_module @022c684: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust] 3 pairs, 9/9 rules each; M3->M4 out of scope, M4+M5 under concurrent edit; see instances/ae101--module-set--prework-m3.cross_module.json
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass — pre-reshape)
 
 **Meta:**

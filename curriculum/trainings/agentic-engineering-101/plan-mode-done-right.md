@@ -113,7 +113,7 @@ This module points at four sources in body and owned a stamp for none of them; t
 
 **Quality:** compendium-audited 2026-08-12 (writing@96b3554 story@96b3554 technical@96b3554 behavior@ffc64f9 pedagogy@96b3554 strategy@96b3554 slides@96b3554)
 - judges @96b3554: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @cb44994: PASS — set=[getting-going,plan-mode-done-right]
+- cross_module @022c684: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust] 3 pairs, 9/9 rules each; M3->M4 out of scope, M4+M5 under concurrent edit; see instances/ae101--module-set--prework-m3.cross_module.json
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**

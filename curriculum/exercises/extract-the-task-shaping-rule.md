@@ -84,8 +84,8 @@ Ask Claude what this file could drive later.
 
 **Emphasis budget (`check_slides.md §9`):** no bolded handles in the body; all bullet leads plain. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. (The 2026-08-12 story-ticket pass added a slide and two backing claims, both logged below; the no-claims-added clause above described the earlier slides-only pass and is kept as its record, not as a current description of the file.)
 
-**Quality:** compendium-audited 2026-08-08 (writing@cc2296b story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@cb44994 strategy@1c765f2 slides@cc2296b)
-- judges @cc2296b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-12 (writing@bc8e9e6 technical@bc8e9e6 behavior@bc8e9e6 strategy@1c765f2 slides@bc8e9e6)
+- judges @bc8e9e6: writing PASS, story REVISE (1/1 strategy-doc drift, not a body defect — doc corrected 2026-08-12, re-judge to clear; see instances/ae101--exercise--extract-the-task-shaping-rule.story.json), technical PASS, behavior PASS, pedagogy REVISE (1/1 §16 @import ask in body — accepted standing override, expected steady state per this file's maintainer block; see instances/ae101--exercise--extract-the-task-shaping-rule.pedagogy.json), strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - cohorts: none yet
 

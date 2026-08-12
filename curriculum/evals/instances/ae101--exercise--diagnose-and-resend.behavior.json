@@ -1,9 +1,10 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/diagnose-and-resend.md",
+  "body_sha": "4f4ced93ab119c160411c8a555c21279dd41519b4e2794715153ff4e2dc83773",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "cached",
+  "trace_status": "partial_regen",
   "prompts_evaluated": 6,
   "prompts_findings": [
     {
@@ -12,7 +13,12 @@
       "verdict": "TODO",
       "load_bearing": false,
       "risks_fired": [
-        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Single deterministic read-and-confirm from task.md's recorded run coordinates (no search, no branching logic); no 'no preamble' suppressor present, but the tool-call shape (Read + existence check) naturally compresses free narration.", "fix_hint": "No edit needed at low confidence; optional terse 'No preamble' closer if the maintainer wants zero narration on this step."}
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "The prompt may produce one sentence of narration before the deterministic path check. The rule protects the student's highest-attention response slot; that harm is not materially present in this short setup response.",
+          "fix_hint": "No edit warranted; the likely preamble is brief and this is housekeeping."
+        }
       ]
     },
     {
@@ -21,9 +27,18 @@
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "preamble-before-action", "confidence": "med", "evidence": "'Read what the un-packaged agent did... Then check the repo state... Then walk the work through three lenses' names 4+ sequential sub-steps (transcript read, repo-state read, 3-lens structured output, dominant-failure naming) — trips check_prompts.md §17's structural trigger. No in-fence suppressor; the adjacent body callout addresses generalisation, not preamble timing, so it does not close this specific gap.", "fix_hint": "Append 'No preamble — start with the goal-drift lens' as the prompt's closing line, or add a body primer naming the narration + a skim-past cue per §17(b)."},
-        {"pattern_id": "self-audit-charity", "confidence": "low", "evidence": "'For EACH lens, quote one specific moment... Don't generalise; quote. If a lens has no instance, say so' structurally gates charity; body callout right after the fence ('Push back where Claude generalises. One quoted line per lens beats a paragraph of summary') is the carve-out shape.", "fix_hint": "No edit; body callout is the established recovery move and already covers this."},
-        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Three-lens menu could invite picking the safest lens as dominant; the quote-mandate plus the exercise's maintainer-block trainer push ('which one cost the run the most? Build the verifier for that one') is the named recovery.", "fix_hint": "No edit; quote-mandate + maintainer-block trainer push already covers this."}
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "Transcript read, branch inspection, three lenses, quotes, and dominant-failure choice will often elicit a plan-summary opener. The proxy fires, but the likely harm is a skimmable opening sentence rather than added student work; the evidence begins at the first quoted moment.",
+          "fix_hint": "No edit warranted for current cognitive-load goals; treat opening narration as skimmable run-up."
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "evidence": "The audit is grounded in the transcript, branch state, and specific quotes; the nearby body tells Claude to locate two or three quoted moments in the transcript and tells the student to push back on generalisation. The evidence-backed Debrief carve-out neutralises blocking harm.",
+          "fix_hint": "No edit; the prompt and body already turn charity into an evidence-checkable claim."
+        }
       ]
     },
     {
@@ -32,8 +47,18 @@
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Three-category menu could invite cargo-cult mapping, but the prompt explicitly forecloses genericness: 'Be specific: not \"a re-readable spec\" generically, but what THAT spec would have said to catch THIS particular goal-drift moment.'", "fix_hint": "No edit; in-prompt anti-generic instruction is sufficient."},
-        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "3x3 structured mapping task; the answer shape is fully specified in-fence, compressing free narration. No suppressor present, so residual low-confidence risk remains.", "fix_hint": "No edit at low confidence; schema-driven answer shape already compresses narration."}
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "low",
+          "evidence": "The three-category menu can invite formulaic matching, but the prompt requires task-specific content and firing time. The new adjacent stop gate narrows the human decision to the dominant failure and explicitly leaves the rest at summary depth, preventing the full mapping from becoming a comprehension burden.",
+          "fix_hint": "No edit; specificity in the fence plus summary-depth permission in the body is sufficient."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "A short mapping preamble remains possible, but the supplied answer shape compresses it and the student is told to act only on the dominant failure. No material working-memory harm is present.",
+          "fix_hint": "No edit."
+        }
       ]
     },
     {
@@ -42,8 +67,18 @@
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "overwrite-anxiety", "confidence": "low", "evidence": "'Show me the verifier before you save anything' explicitly delays write — gates against silent overwrite.", "fix_hint": "No edit; explicit 'show me before you save' already gates the write."},
-        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Open-hook 'Shape:' compresses preamble; tool-led implementation.", "fix_hint": "No edit at low confidence."}
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "low",
+          "evidence": "Claude may pause around persistence, but the prompt deliberately says to show the verifier before saving and the student supplies the shape. This is the required collaboration gate, not harmful overwrite ambiguity.",
+          "fix_hint": "No edit; preserve the show-before-save gate."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "The open-hook shape selection and concrete build request make a long plan opener unlikely; any brief narration does not add a decision for the student.",
+          "fix_hint": "No edit."
+        }
       ]
     },
     {
@@ -52,7 +87,12 @@
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "Self-test invites 'looks good' framing; mitigated by explicit PASS+FAIL pair requirement and 'name what would have to change' wiring-gap instruction.", "fix_hint": "No edit; PASS+FAIL pair requirement and wiring-gap instruction are the built-in recovery."}
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "evidence": "Claude is reporting on its own verifier, but the PASS/FAIL pair, actual fired outputs, missing-wiring check, and required fix provide artifact-level evidence. The self-report proxy fires; inflated unsupported success is unlikely.",
+          "fix_hint": "No edit; the paired smoke test is the recovery."
+        }
       ]
     },
     {
@@ -61,9 +101,24 @@
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "preamble-before-action", "confidence": "med", "evidence": "'First, the reference artefact... [5 sub-items]... Second, plan.md... [5 sub-items]... Propose the file paths... Show me both files in prose... grill me...' names 10+ sequential sub-steps across two artefacts, well past §17's 4+ trigger. No in-fence suppressor and no body primer naming preamble specifically.", "fix_hint": "Append 'No preamble — start with the reference draft' as the prompt's closing line, or add a body primer naming the narration + a skim-past cue."},
-        {"pattern_id": "overwrite-anxiety", "confidence": "low", "evidence": "'Don't touch either file until I say lock it in' + 'Show me both files in prose' explicitly gate the write behind approval — matches check_prompts.md §35's lock mechanism.", "fix_hint": "No edit; lock-it-in gate + grill-before-save (§20) already cover this."},
-        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Detailed schema-list invites template-fill without task substance; the body callout immediately after ('Check both files are for the agent, not you — Push back if the reference reads like generic long-running advice instead of THIS task's substance') names the failure mode and gives the recovery move — body-callout carve-out applies.", "fix_hint": "No edit; body callout is the carve-out shape and already covers this."}
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "The two artefact schemas plus lock-in grill often elicit a polished plan-summary opener. The rule protects working memory from low-value narration; the real risk here is bounded because the adjacent stop gate tells the student exactly what 'good enough' means and when to end the grill.",
+          "fix_hint": "No prompt edit warranted after body mitigation; skim the opener and use the explicit good-enough threshold."
+        },
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "low",
+          "evidence": "The no-write-until-lock-in instruction can make Claude cautious, but that caution is deliberate: the body repeats that neither file should change between turns and gives the student the lock-in trigger. The harm the rule prevents—confused file state—is absent.",
+          "fix_hint": "No edit; keep the explicit write gate."
+        },
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "low",
+          "evidence": "The detailed schemas can produce competent-looking generic drafts, but the adjacent body names both generic-reference and project-plan failure modes, tells the student to push back, and permits ending once five concrete package criteria are clear. The carve-out removes blocking harm.",
+          "fix_hint": "No edit; the current callouts supply both quality recovery and a stopping rule."
+        }
       ]
     }
   ],

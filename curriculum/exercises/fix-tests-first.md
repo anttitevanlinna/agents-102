@@ -62,8 +62,8 @@ Hand off to the ticket close.
 
 **Declaration slide (2026-08-07, Antti-directed):** *There is always a next plausible answer* is a deliberate claim-shaped heading — the one non-imperative heading in this file, and that is the point: a claim among phase labels is what makes a declaration land inside an exercise. Do not flatten to a command verb; `check_student_facing.md` §17's verb rule covers do-sections, and this section names the machine-nature the interrogation just exhibited rather than asking for an action. Header truth guard: the body says *try to find*, never *finds* — do not strengthen. No bold; the file keeps its single handle. Second face of the produce-something prior in this file, and the pair is deliberate: the diff bullet says the agent *yields* under push (so its agreement settles nothing), this section says it always *produces* another plausible answer under digging. Same machine-nature, two different student moves, neither a restatement of the other — do not collapse them. Far-half naming is `reading-the-return.md` slide 1 (*The closing summary is not the artefact*), which reuses the *plausible* vocabulary planted here. Frame is the maintainer's own, near-verbatim.
 
-**Quality:** compendium-audited 2026-08-08 (writing@a06abbc story@a06abbc technical@1c765f2 behavior@1c765f2 pedagogy@a06abbc strategy@1c765f2 slides@a06abbc)
-- judges @a06abbc: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-12 (writing@bc8e9e6 story@bc8e9e6 technical@1c765f2 behavior@bc8e9e6 pedagogy@bc8e9e6 strategy@1c765f2 slides@bc8e9e6)
+- judges @bc8e9e6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (tests-first fix) + Analyze (read the diff against what you'd write).

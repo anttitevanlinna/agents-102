@@ -1,237 +1,140 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/spot-gaps-build-the-loop.md",
+  "body_sha": "f5180276a7547e05b88a19092888d15f94674debf3088473d7f8f6041cfc050f",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "full_regen",
-  "trace_status_note": "Prior instance (dated against a 2026-07-11 trace) evaluated 8 prompts; the M6 re-scope (commit d0846ee, 'the stack scan is the module, the authoring sequence goes') dropped the skill-authoring sequence (former prompt_index 6-8: interview/critique/invoke) from this exercise's body entirely. Current file carries exactly 5 fenced prompts. Ran node scripts/expand-md.js against the current file, computed SHA-256 over each of the 5 fenced blocks, and confirmed via git log that curriculum/prompts/spot-gaps-build-the-loop-{1,2,study,shapes,primitives}.md are unchanged since d0846ee (same commit as the exercise re-scope) -- so the surviving 5 prompts are content-identical to their prior-cache counterparts. Re-verified every quoted evidence line (in-fence suppressors, body callouts) against the current on-disk body at its current line numbers before reusing the prior analysis; all quotes still present and accurate. One metadata error caught and fixed: the prior cache's prompt_index-5 prompt_lead field did not match the actual primitives prompt's fenced content in either the prior or current version (stale copy-paste, not a content drift) -- corrected here. Two load_bearing_note fields (shapes, primitives) updated to point at the correct downstream consumer (prompt:agents-that-build-agents-handoff, per each prompt's own registry frontmatter) since the prior note's named consumer (the in-exercise skill-authoring prompt) no longer exists.",
+  "trace_status": "partial_regen",
   "prompts_evaluated": 5,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_lead": "I have two runs of the same long-running task on disk, and both recorded their c",
-      "key": "spot-gaps-build-the-loop-1",
-      "phase": "Phase 1 — Diff and name the gaps",
+      "prompt_lead": "I have two sessions of the same long-running task on disk, and both recorded the",
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "Four named dimensions ('What packaging caught / missed / introduced / Where the fix belongs') trigger the 4+ named-sub-steps structural rule (check_prompts §17); body primer right after the prompt names the four-dimension plan-summary opener and gives a skim-past cue.",
-          "fix_hint": "Body primer/callout already names the plan-narration opener and gives a skim-past or skip-preamble move; no prompt edit needed."
+          "evidence": "Four named comparison dimensions invite a short plan opener; the body tells the student to skim it. The harm is delay before evidence, not the existence of one orientation sentence, and no material delay remains.",
+          "fix_hint": "The adjacent skim-past-the-opening-plan cue already supplies recovery; no prompt edit needed."
         },
         {
           "pattern_id": "self-report-inflation",
           "confidence": "low",
-          "evidence": "Claude is assessing packaging (reference/plan.md/verifier) it effectively authored in the M5 session; in-fence 'For every claim, quote a specific moment from the artefacts. Don't generalise' plus body callout naming over-credit bias and a concrete push-back ('name one thing the verifier missed, concretely').",
-          "fix_hint": "Body callout already names the over-credit/self-charity bias and gives a concrete push-back or split-escalation move; no prompt edit needed."
+          "evidence": "Claude is evaluating packaging used by an earlier Claude session, but every claim must quote a specific artefact moment and the body names the likely over-credit bias. The harm—an unsupported claim that packaging solved the work—is actively checked.",
+          "fix_hint": "The evidence requirement and concrete verifier-miss push-back already neutralise the harmful path; no prompt edit needed."
         },
         {
           "pattern_id": "self-audit-charity",
           "confidence": "low",
-          "evidence": "Same evidence as self-report-inflation — evaluating own earlier packaging is a self-audit; body callout supplies the pushback move.",
-          "fix_hint": "Body callout already offers over-flag or fresh-session-subagent escalation per check_pedagogy §31(b); no prompt edit needed."
+          "evidence": "This self-audit is grounded in two transcripts, branch changes, and paired quotes, with a nearby challenge to a zero-miss result. The harm—Claude grading itself generously without inspectable evidence—is not present.",
+          "fix_hint": "Keep the existing evidence-backed debrief and push-back; no prompt edit needed."
         },
         {
           "pattern_id": "citation-cargo-cult",
           "confidence": "low",
-          "evidence": "'For every claim, quote a specific moment from the artefacts' forces real retrieval rather than plausible-but-unverified summary, per the quote-the-sentence mitigation shape (check_prompts §13).",
-          "fix_hint": "In-fence quote-the-moment/quote-the-instance requirement already forces real retrieval; no prompt edit needed."
+          "evidence": "'For every claim, quote a specific moment from the artefacts' requires retrieval from named evidence surfaces. The harm—plausible citations standing in for inspection—is not present.",
+          "fix_hint": "The quote-the-moment requirement already forces real retrieval; no prompt edit needed."
         }
-      ],
-      "catalog_coverage_15_of_15": [
-        {"pattern_id": "file-preservation-gap", "status": "not_invited"},
-        {"pattern_id": "reading-burden", "status": "not_invited"},
-        {"pattern_id": "niceness-tax", "status": "not_invited"},
-        {"pattern_id": "question-dump", "status": "not_invited"},
-        {"pattern_id": "overwrite-anxiety", "status": "not_invited"},
-        {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "low"},
-        {"pattern_id": "append-vs-integrate", "status": "not_invited"},
-        {"pattern_id": "plan-mode-preamble-bloat", "status": "not_invited"},
-        {"pattern_id": "citation-gap-asymmetry", "status": "not_invited"},
-        {"pattern_id": "self-report-inflation", "status": "fired", "confidence": "low"},
-        {"pattern_id": "default-acceptance", "status": "not_invited"},
-        {"pattern_id": "plan-mode-approval-inflation", "status": "not_invited"},
-        {"pattern_id": "source-type-blindness", "status": "not_invited"},
-        {"pattern_id": "citation-cargo-cult", "status": "fired", "confidence": "low"},
-        {"pattern_id": "self-audit-charity", "status": "fired", "confidence": "low"}
       ]
     },
     {
       "prompt_index": 2,
       "prompt_lead": "Read ./CLAUDE.local.md and this session's scrollback: the gap list I just ranked",
-      "key": "spot-gaps-build-the-loop-2",
-      "phase": "Phase 1 — Cut one stale rule",
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
         {
           "pattern_id": "file-preservation-gap",
           "confidence": "low",
-          "evidence": "Target is exactly-scoped ('the one rule... Cut it from ./CLAUDE.local.md in place'), a personal-scope file (gitignored per AE101 delivery architecture); body callout guards the over-edit direction explicitly ('push back if the diff touches more than the one rule you flagged').",
-          "fix_hint": "Scope is already exact ('the one rule... in place') and body callout guards the over-edit direction; no prompt edit needed."
+          "evidence": "The edit is exactly scoped to one diagnosed rule in personal-scope ./CLAUDE.local.md, and the body tells the student to reject a wider diff. The harm—collateral loss outside the intended rule—is guarded.",
+          "fix_hint": "The one-rule scope and adjacent wider-diff rejection already preserve the rest of the file; no prompt edit needed."
         },
         {
           "pattern_id": "overwrite-anxiety",
           "confidence": "low",
-          "evidence": "Named config file could trigger a pause-before-edit; body callout right after names it directly ('Claude may pause before editing... If it asks, just say go').",
-          "fix_hint": "Body callout ('just say go') already covers this; no prompt edit needed."
+          "evidence": "A named config file may trigger a permission pause, but the body predicts the pause and says to answer go. The harm—stalling the learning move—is recoverable in one turn.",
+          "fix_hint": "The adjacent 'just say go' cue already handles the pause; no prompt edit needed."
         },
         {
           "pattern_id": "self-audit-charity",
           "confidence": "low",
-          "evidence": "Claude is judging rules it (or a prior session) authored; scope is narrow (one rule) and diagnosis-grounded (session scrollback + ranked gap list), residual risk only.",
-          "fix_hint": "Body callout already offers over-flag or fresh-session-subagent escalation per check_pedagogy §31(b); no prompt edit needed."
+          "evidence": "Claude judges a rules-file shaped by earlier sessions, but the decision is narrowed to one rule and grounded in the just-produced two-session diagnosis. The harm—unearned preservation of its own rule—is bounded and inspectable.",
+          "fix_hint": "Keep the diagnosis-grounded one-rule decision and explicit stop path; no prompt edit needed."
         }
-      ],
-      "catalog_coverage_15_of_15": [
-        {"pattern_id": "file-preservation-gap", "status": "fired", "confidence": "low"},
-        {"pattern_id": "reading-burden", "status": "not_invited"},
-        {"pattern_id": "niceness-tax", "status": "not_invited"},
-        {"pattern_id": "question-dump", "status": "not_invited"},
-        {"pattern_id": "overwrite-anxiety", "status": "fired", "confidence": "low"},
-        {"pattern_id": "preamble-before-action", "status": "not_invited"},
-        {"pattern_id": "append-vs-integrate", "status": "not_invited"},
-        {"pattern_id": "plan-mode-preamble-bloat", "status": "not_invited"},
-        {"pattern_id": "citation-gap-asymmetry", "status": "not_invited"},
-        {"pattern_id": "self-report-inflation", "status": "not_invited"},
-        {"pattern_id": "default-acceptance", "status": "not_invited"},
-        {"pattern_id": "plan-mode-approval-inflation", "status": "not_invited"},
-        {"pattern_id": "source-type-blindness", "status": "not_invited"},
-        {"pattern_id": "citation-cargo-cult", "status": "not_invited"},
-        {"pattern_id": "self-audit-charity", "status": "fired", "confidence": "low"}
       ]
     },
     {
       "prompt_index": 3,
       "prompt_lead": "Go through my work across everything I do, not just this repo. I want to see the",
-      "key": "spot-gaps-build-the-loop-study",
-      "phase": "Phase 2 — Study: scan stack for recurring work",
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
         {
           "pattern_id": "reading-burden",
           "confidence": "low",
-          "evidence": "Fence caps output at 'the top six or so'; combined with progress-streaming this reduces end-of-run info-dump. Satisfies check_prompts §43 (long-running prompts stream progress) in-fence and check_pedagogy §48 (heavy fan-out body recovery callout, both directions) in the blockquote before the prompt.",
-          "fix_hint": "Fence already caps output (numeric cap) and body steers toward the relevant subset; no prompt edit needed."
+          "evidence": "The full cross-project scan invites the real harm of a wall of output that exhausts working memory before the student can choose or act. The fence streams progress and caps the ranked head, while the new body gate explicitly says to narrow, ask 'tell me what you've found so far,' and move on once two or three recurring kinds are usable; no complete inventory is required.",
+          "fix_hint": "The new stop gate directly protects working memory and supplies both a stop condition and an interrupt phrase; no prompt edit needed."
         },
         {
           "pattern_id": "niceness-tax",
           "confidence": "low",
-          "evidence": "'Don't filter to what looks important... show me what actually recurs, including the dull stuff' is an explicit anti-flattery instruction in-fence.",
-          "fix_hint": "In-fence 'don't filter to what looks important' suppressor already present; no prompt edit needed."
+          "evidence": "The prompt says not to filter for importance or impressiveness and to include dull recurring work. The harm—flattering selection hiding the student's actual patterns—is explicitly suppressed.",
+          "fix_hint": "The anti-flattery instruction is already in the prompt; no edit needed."
         },
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "Cross-repo traversal could open with a brief 'I'll scan...' sentence; the in-fence streaming instruction reframes any opener as the first progress line rather than dead narration.",
-          "fix_hint": "In-fence streaming instruction already reframes the opener as the first progress line; no prompt edit needed."
+          "evidence": "A cross-repo traversal may open with a scan plan, but the progress-streaming instruction turns orientation into a short status line. The harm—extended narration delaying useful output—is not materially present.",
+          "fix_hint": "Keep the progress-streaming requirement; no prompt edit needed."
         },
         {
           "pattern_id": "default-acceptance",
           "confidence": "low",
-          "evidence": "Student could accept Claude's grouping taxonomy without scrutiny; body-after-prompt steer ('Read for the few at the top you actually repeat. How far you take this is yours') gives agency over depth but doesn't force pushback on the taxonomy itself.",
-          "fix_hint": "Depth-agency steer present; consider adding a one-line direct pushback cue on the taxonomy itself if this proves a real student miss — optional, not required."
+          "evidence": "The student may accept Claude's grouping taxonomy without challenge. The body clearly gives control over depth and which two or three patterns to use, but does not directly require challenging the taxonomy; this is residual, non-blocking risk.",
+          "fix_hint": "If cohort evidence shows taxonomy acceptance causes harm, add a nearby one-line rename-or-challenge cue; do not change the prompt pre-emptively."
         },
         {
           "pattern_id": "citation-cargo-cult",
           "confidence": "low",
-          "evidence": "'quote an instance or two so I can see it's real' forces real retrieval per group, mitigating fabricated-recurrence claims.",
-          "fix_hint": "In-fence quote-the-instance requirement already forces real retrieval; no prompt edit needed."
+          "evidence": "Every group needs one or two quoted instances from scanned history. The harm—fabricated recurrence claims—is constrained by required inspectable evidence.",
+          "fix_hint": "The quote-an-instance requirement already forces retrieval; no prompt edit needed."
         }
-      ],
-      "catalog_coverage_15_of_15": [
-        {"pattern_id": "file-preservation-gap", "status": "not_invited"},
-        {"pattern_id": "reading-burden", "status": "fired", "confidence": "low"},
-        {"pattern_id": "niceness-tax", "status": "fired", "confidence": "low"},
-        {"pattern_id": "question-dump", "status": "not_invited"},
-        {"pattern_id": "overwrite-anxiety", "status": "not_invited"},
-        {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "low"},
-        {"pattern_id": "append-vs-integrate", "status": "not_invited"},
-        {"pattern_id": "plan-mode-preamble-bloat", "status": "not_invited"},
-        {"pattern_id": "citation-gap-asymmetry", "status": "not_invited"},
-        {"pattern_id": "self-report-inflation", "status": "not_invited"},
-        {"pattern_id": "default-acceptance", "status": "fired", "confidence": "low"},
-        {"pattern_id": "plan-mode-approval-inflation", "status": "not_invited"},
-        {"pattern_id": "source-type-blindness", "status": "not_invited"},
-        {"pattern_id": "citation-cargo-cult", "status": "fired", "confidence": "low"},
-        {"pattern_id": "self-audit-charity", "status": "not_invited"}
       ]
     },
     {
       "prompt_index": 4,
       "prompt_lead": "Take the recurring groups you just named. For the top few, draw each one as a me",
-      "key": "spot-gaps-build-the-loop-shapes",
-      "phase": "Phase 2 — Shapes: draw recurring work patterns as mermaid diagrams",
       "verdict": "TODO",
       "load_bearing": true,
-      "load_bearing_note": "Registry-confirmed hand-off (not housekeeping): produces recurring-shape-diagrams, consumed-by prompt:agents-that-build-agents-handoff (the closing lecture's encode-move), per this prompt's own frontmatter. Prior cache pointed this note at an in-exercise skill-authoring prompt that no longer exists (dropped in the M6 re-scope, commit d0846ee) — corrected here; load_bearing:true still holds, the consumer just moved to the closer.",
       "risks_fired": [
         {
           "pattern_id": "reading-burden",
           "confidence": "low",
-          "evidence": "'For the top few' is open-ended and could yield several diagrams; mitigated by the 30-node fence cap and the body-after-prompt steer toward the dominant-gap-relevant shape; diagrams are visually scannable rather than prose to read.",
-          "fix_hint": "Fence already caps output (30-node cap) and body steers toward the relevant shape; no prompt edit needed."
+          "evidence": "'For the top few' can yield several diagrams, but each has a 30-node cap and the new Phase 2 stop gate establishes a two-or-three-pattern working set. The harm—another undigestible inventory—is contained.",
+          "fix_hint": "Use the existing node cap and stop gate; no prompt edit needed."
         },
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "Possible brief 'I'll draw the following shapes' opener before the first mermaid block; code-block output naturally suppresses extended narration.",
-          "fix_hint": "Mermaid code-block output format self-suppresses extended narration; no prompt edit needed."
+          "evidence": "Claude may add a brief framing sentence before the Mermaid blocks, but the concrete diagram output naturally bounds it. The harm—extended delay before usable output—is absent.",
+          "fix_hint": "The diagram-shaped response already suppresses extended preamble; no prompt edit needed."
         }
-      ],
-      "catalog_coverage_15_of_15": [
-        {"pattern_id": "file-preservation-gap", "status": "not_invited"},
-        {"pattern_id": "reading-burden", "status": "fired", "confidence": "low"},
-        {"pattern_id": "niceness-tax", "status": "not_invited"},
-        {"pattern_id": "question-dump", "status": "not_invited"},
-        {"pattern_id": "overwrite-anxiety", "status": "not_invited"},
-        {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "low"},
-        {"pattern_id": "append-vs-integrate", "status": "not_invited"},
-        {"pattern_id": "plan-mode-preamble-bloat", "status": "not_invited"},
-        {"pattern_id": "citation-gap-asymmetry", "status": "not_invited"},
-        {"pattern_id": "self-report-inflation", "status": "not_invited"},
-        {"pattern_id": "default-acceptance", "status": "not_invited"},
-        {"pattern_id": "plan-mode-approval-inflation", "status": "not_invited"},
-        {"pattern_id": "source-type-blindness", "status": "not_invited"},
-        {"pattern_id": "citation-cargo-cult", "status": "not_invited"},
-        {"pattern_id": "self-audit-charity", "status": "not_invited"}
       ]
     },
     {
       "prompt_index": 5,
-      "prompt_lead": "Expand my menu of checks before I read my own map against it. List 5–10 atomic ",
-      "key": "spot-gaps-build-the-loop-primitives",
-      "phase": "Phase 2 — Primitives: expand checking-primitive menu",
+      "prompt_lead": "Expand my menu of checks before I read my own map against it.\n\nList 5–10 atomic ",
       "verdict": "TODO",
       "load_bearing": true,
-      "load_bearing_note": "Registry-confirmed hand-off: produces primitive-menu, consumed-by prompt:agents-that-build-agents-handoff, per this prompt's own frontmatter. Same correction as the shapes prompt above — prior note pointed at the now-removed in-exercise skill-authoring prompt.",
       "risks_fired": [
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "Minor risk of a brief framing sentence before the list; the task itself is concrete/list-shaped, which naturally bounds any opener.",
-          "fix_hint": "Task shape (concrete list-ask) self-suppresses extended preamble; no prompt edit needed."
+          "evidence": "Claude may add one framing sentence before the list, but the 5–10 item cap, one-line-per-item shape, and 2–3 recommendation cap tightly bound the response. The harm—narration crowding out the task—is absent.",
+          "fix_hint": "The concrete list-and-rank shape is sufficient; no prompt edit needed."
         }
-      ],
-      "catalog_coverage_15_of_15": [
-        {"pattern_id": "file-preservation-gap", "status": "not_invited"},
-        {"pattern_id": "reading-burden", "status": "not_invited"},
-        {"pattern_id": "niceness-tax", "status": "not_invited"},
-        {"pattern_id": "question-dump", "status": "not_invited"},
-        {"pattern_id": "overwrite-anxiety", "status": "not_invited"},
-        {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "low"},
-        {"pattern_id": "append-vs-integrate", "status": "not_invited"},
-        {"pattern_id": "plan-mode-preamble-bloat", "status": "not_invited"},
-        {"pattern_id": "citation-gap-asymmetry", "status": "not_invited"},
-        {"pattern_id": "self-report-inflation", "status": "not_invited"},
-        {"pattern_id": "default-acceptance", "status": "not_invited"},
-        {"pattern_id": "plan-mode-approval-inflation", "status": "not_invited"},
-        {"pattern_id": "source-type-blindness", "status": "not_invited"},
-        {"pattern_id": "citation-cargo-cult", "status": "not_invited"},
-        {"pattern_id": "self-audit-charity", "status": "not_invited"}
       ]
     }
   ],

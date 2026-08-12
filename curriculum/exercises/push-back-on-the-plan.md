@@ -119,8 +119,6 @@ Then just hit stop.
 - If the second read looks like it did all the work, quote one thing your push-back caught that it would have missed.
 - **Plan-mode approval inflation** is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions.
 
-**What happened:** One plan, two reads. Two push-backs in your own words, then a full walk-down you stopped when the valuable branches had landed. The plan sharpened, approved and unexecuted, and the gap between the two reads is on the record.
-
 <!-- maintainer -->
 
 **View summary:** You take a real multi-file task into plan mode, challenge the draft twice, then start a second-pass grilling and stop it when the valuable branches have landed. The result is an approved plan shaped by two different reads, with execution deliberately left for later.

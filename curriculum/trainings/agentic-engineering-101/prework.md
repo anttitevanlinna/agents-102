@@ -2,7 +2,7 @@
 
 > Pick your model when you open a session. `/model` swaps between Sonnet and Opus. Sonnet runs every exercise in this training. Opus is there if you want the heavier option.
 >
-> Run modules on `high` thinking effort by default. xhigh adds latency without commensurate value on the work. Module 2 calls out a medium override at the top of that module.
+> Run modules on `high` thinking effort by default. xhigh adds latency without commensurate value on the work. Module 2 runs on medium instead, because high feels sluggish on a tight slot.
 >
 > Before Module 1, ask Claude Code to set `cleanupPeriodDays` to 60 in `~/.claude/settings.json` (it can edit its own settings file). Claude Code deletes session transcripts older than 30 days by default, and the day-30 follow-up after the training reads sessions from before it started.
 
@@ -18,6 +18,8 @@ Roughly in the order you'll reach for them:
 - **A small multi-file task**, soon after: work you'd ship today if you had the hour. Plan mode wants something a few files wide.<!--flag:module:earn-the-trust-->
 - **A small feature**: external or user-facing surface, shippable in a few hours.<!--/flag:module:earn-the-trust-->
 - **A bigger piece**: a refactor, or a feature with unknowns. Size this one by the agent rather than by yourself. Roughly 30 to 120 minutes of the agent working, not counting the time you spend writing prompts.
+
+**Four sizes off your backlog. Not four slices of one task.**
 
 Plus the repo itself (picked next), your team's tracker if you've got one (Linear / Jira / GitHub Issues), and `git worktree` available on your laptop. Make sure your Claude Code can operate the GitHub CLI. Ask it to install `gh` if it isn't there.<!--flag:payload--> The curated security skills install when you extract the bundle.<!--/flag:payload-->
 

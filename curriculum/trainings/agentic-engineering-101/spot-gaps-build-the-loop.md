@@ -1,7 +1,7 @@
 # Spot gaps, build the loop
 
 ## Big Idea
-Diagnose the gaps two sessions of the same task exposed, place each in memory, a verifier, or a new skill, then map the work you repeat across your stack.
+Every gap you found belongs somewhere durable, or you will find it again next week.
 
 ## Prework
 
@@ -58,8 +58,6 @@ No compound prompt here. The exercise's gap map and stack-map are the Module 6 c
 [The loop has a name](lectures/the-loop-has-a-name.md)
 
 [The map, filled in](lectures/the-map-filled-in.md)
-
-One move is left, and it runs past the edge of this room.
 
 [Agents that build agents](lectures/agents-that-build-agents.md)
 
@@ -168,6 +166,8 @@ Antti
 - Debrief round form — which works best with this mood (pair / whole-room / silent write-then-share)?
 
 Pre-cohort open items for M6: see `pre-cohort-todos.md`.
+
+**Opener order is `The 2 frontiers` first, then `Story of Module 6` (2026-08-12, maintainer-confirmed: *what is in module file is correct*).** The frontier framing opens; the permission beat follows it. `bosser-strategy:content-strategy-agentic-engineering-101.md` § *M6 in detail → Opener* previously had `Story of Module 6` opening, and stated the reason as a principle (*permission works before the work, not after*) rather than a preference, so it read as still binding; the doc is now corrected to match this file and records that the earlier reason is superseded. A `strategy` judge will re-flag this on any run against a stale copy of the doc — the module file is the decision. Do not reorder to match a doc.
 
 **2026-07-03 (re-sequence pass)** — Human close re-sequenced to agents-last per Antti: *the-map-filled-in* now the penultimate consolidation beat, *agents-that-build-agents* the training's closing beat, one-line forward-launch transition added before it. Tasks 2–4 were already applied in the same-day close rework and left in place: four source stamps re-verified to `checked:2026-07-02` (MiniJinja → CAVEAT + 6-mo-window note; Kim-on-Cherny shapes at the verbatim "background agent / agent-stop hook / Ralph Wiggin plugin"; Klaassen Definitive Guide → CAVEAT to match the same-source sibling stamps; how-Every-codes → CAVEAT, Dec-2025 origin framing); four-beat runtime line; Quality-predates re-audit note; overbooked-close eyeball flag. This pass only reordered the runtime beat list to agents-last and named the re-sequence in the Quality parenthetical.
 

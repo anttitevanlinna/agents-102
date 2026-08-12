@@ -3,11 +3,13 @@
 > Run M1 on `high` thinking effort (the training default).
 
 ## Big Idea
-Orient in your repo, fix a trivial bug tests-first and without plan mode, close its ticket in your team's own voice, then compound the session into a personal `./CLAUDE.local.md`.
+Your first session should leave something behind that the next one can use. Otherwise you have a clever assistant and no compounding.
 
 ## Prework
 
-Complete the prework at the top of this workbook. You'll open the first session in the repo you picked there. You'll stay in this one repo for the whole training. Probably best to keep the training's work off your mainline.
+Complete the prework. You'll open the first session in the repo you picked there. You'll stay in this one repo for the whole training. Probably best to keep the training's work off your mainline.
+
+The prework also carries one optional read for the gap before this module: Simon Willison, [Vibe engineering](https://simonwillison.net/2025/Oct/7/vibe-engineering/). He draws the line between vibe coding and working with coding agents as an accountable engineer. The first bug fix here starts on the accountable side of that line.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -76,6 +78,10 @@ Optional. All four sit in the gap before it. Do them and its moves land as thing
 **Read: [Multi-session and Git: survival guide](../../trainings/agentic-engineering-101/reference/multi-session-git.md).** Short local reference page on worktrees versus branches versus clones, and how to open several Claude Code sessions on the same repo without wrecking each other's state. Cherny calls parallel worktrees his single biggest productivity unlock: one repo, several Claude Code sessions running at once, each on its own branch, no stashing and no clobbering. Reach for them when one session is waiting on a long run and another piece of work is ready to move, when you want to try two approaches to the same problem side by side, or when a review task can run alongside the build. The instinct earns itself in use.
 
 <!-- maintainer -->
+
+**`## Prework` opens *"Complete the prework"*, with no locator.** The page-geometry phrase that used to trail it (*"at the top of this workbook"*) is cut: the deck has no top once the renderer cuts at `##` (`check_slides.md` §12), and a student holding the workbook does not need its first section pointed at. `check_slides.md` §2's navigational-pointer carve-out named this exact phrase as exempt; that blessing is withdrawn in the compendium. Do not reintroduce a locator here. The same defect and the same cut landed in `prework.md`'s thinking-effort blockquote the same day.
+
+**The Willison pre-read is mirrored here on purpose.** `check_cross_module.md` §2 wants between-module reading in two places; prework assigns *Vibe engineering* for the gap before this module, so `## Prework` echoes it in the receiver's register. The M2→M3 boundary is the shape being matched. Do not DRY it back to one location.
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 

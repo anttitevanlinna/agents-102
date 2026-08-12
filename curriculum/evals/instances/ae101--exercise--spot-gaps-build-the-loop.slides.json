@@ -1,39 +1,85 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/spot-gaps-build-the-loop.md",
-  "verdict": "PASS",
+  "body_sha": "f5180276a7547e05b88a19092888d15f94674debf3088473d7f8f6041cfc050f",
+  "verdict": "REVISE",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "Map the gaps, read your stack (H1/lede)", "lines": "1-16"},
-    {"index": 1, "heading": "Phase 1: Diff the two runs, rank the gaps", "lines": "17-43"},
-    {"index": 2, "heading": "Read the contrast, push back where it generalises", "lines": "44-49"},
-    {"index": 3, "heading": "Cut one stale rule the diagnosis killed", "lines": "50-66"},
-    {"index": 4, "heading": "Say go, unless the cut spreads past the one rule", "lines": "67-71"},
-    {"index": 5, "heading": "Phase 2: Find the work you repeat across your stack", "lines": "72-76"},
-    {"index": 6, "heading": "Scan your history for the work that recurs", "lines": "77-98"},
-    {"index": 7, "heading": "Draw your top work-shapes as diagrams", "lines": "99-115"},
-    {"index": 8, "heading": "List the checks the field runs, rank the ones that fit your gap", "lines": "116-136"},
-    {"index": 9, "heading": "Route the dominant gap to its home", "lines": "137-143"}
+    {
+      "index": 0,
+      "heading": "Map the gaps, read your stack (H1/lede)",
+      "lines": "1-16"
+    },
+    {
+      "index": 1,
+      "heading": "Phase 1: Diff the two sessions, rank the gaps",
+      "lines": "17-45"
+    },
+    {
+      "index": 2,
+      "heading": "Read the contrast, push back where it generalises",
+      "lines": "46-51"
+    },
+    {
+      "index": 3,
+      "heading": "Cut one stale rule the diagnosis killed",
+      "lines": "52-68"
+    },
+    {
+      "index": 4,
+      "heading": "Say go, unless the cut spreads past the one rule",
+      "lines": "69-73"
+    },
+    {
+      "index": 5,
+      "heading": "Phase 2: Find the work you repeat across your stack",
+      "lines": "74-80"
+    },
+    {
+      "index": 6,
+      "heading": "Scan your history for the work that recurs",
+      "lines": "81-102"
+    },
+    {
+      "index": 7,
+      "heading": "Draw your top work-shapes as diagrams",
+      "lines": "103-119"
+    },
+    {
+      "index": 8,
+      "heading": "List the checks the field runs, rank the ones that fit your gap",
+      "lines": "120-140"
+    },
+    {
+      "index": 9,
+      "heading": "Route the dominant gap to its home",
+      "lines": "141-147"
+    }
   ],
   "rules_evaluated": [
     {
       "compendium": "check_slides.md",
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "chunks_flagged": [
+        6
+      ],
+      "evidence": "Chunk 6 \"Scan your history for the work that recurs\": lines 83 and 85 say \"the next three prompts\" and then \"The prompt keeps looking because that is its job\" before the history-scan prompt is named. HARM: referent resolution keeps a projected control instruction actionable without requiring the reader to advance slides or guess among several future objects. The harm is present: the singular \"The prompt\" is ambiguous after the slide has introduced three prompts, and \"primitives\" also points forward to chunk 8. The maintainer block documents scan-sprawl recovery but contains no accept-note for this forward/ambiguous referent.",
+      "fix_hint": "Name the history scan directly in the stop gate; name the three batched actions without positional or forward-only shorthand.",
       "blocking": true
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "chunks_flagged": [
+        0,
+        9
+      ],
+      "evidence": "Chunk 0 \"Map the gaps, read your stack\": line 13 says \"the closing lecture builds from\" the stack-map. Chunk 9 \"Route the dominant gap to its home\": line 144 says \"The closing lecture hands you the encode-move\". HARM: the callback rule prevents deck order from becoming the identifier for another file, which breaks when the module is re-sequenced or a reader enters from a different start point. The harm is present twice: neither callback names the lecture title or unpacks enough of its claim to identify it. No maintainer accept-note protects the positional callback.",
+      "fix_hint": "Name the target lecture by title or replace the positional label with its concrete handoff-prompt claim.",
       "blocking": true
     },
     {
@@ -52,7 +98,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "The exercise contains no guess-before-reveal or other live-demo prediction beat.",
       "fix_hint": null,
       "blocking": true
     },
@@ -90,10 +136,12 @@
       "compendium": "check_slides.md",
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "chunks_flagged": [
+        2
+      ],
+      "evidence": "Chunk 2 \"Read the contrast, push back where it generalises\": line 49 says \"the teaching is in the contrast.\" HARM: the internal-dialect rule keeps projected slides in the engineer's working language instead of exposing the curriculum author's design vocabulary. The harm is present: \"the teaching\" comments on lesson construction where the slide owes the evidentiary reason for comparing two sessions. No maintainer accept-note protects this phrase.",
+      "fix_hint": "State the evidence mechanism directly: the contrast between two sessions makes the gap concrete.",
       "blocking": true
     },
     {
@@ -101,9 +149,12 @@
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "REVISE",
-      "chunks_flagged": [6, 7],
-      "evidence": "chunk 6 \"Scan your history for the work that recurs\": line 81: \"> **This scan runs long, and it is yours to steer.**\" — a full 9-word sentence bolded whole, not a ≲5-word handle sub-span; still present after the 2026-07-09 emphasis pass despite the maintainer note claiming blockquote callouts were left untouched as chrome (this callout is not an entry in the typed widget palette per `curriculum/widgets.md` / `site/layouts/curriculum.js` decorate* functions — it renders as plain body blockquote, so the emphasis-budget rule applies to it same as any bullet). Also chunk 7 \"Draw your top work-shapes as diagrams\": line 114: \"> **Want to see the shapes, not read them?**\" — an 8-word full question bolded whole, same violation shape. (Sibling callout at chunk 6 line 79, \"**Fast operator?**\", 2 words, stays within budget — not flagged.)",
-      "fix_hint": "Trim both callouts' bold to a short handle span (e.g. bold just \"yours to steer\" / \"see the shapes\") and leave the rest of each sentence unbolded, or drop the bold entirely and let the blockquote carry the emphasis.",
+      "chunks_flagged": [
+        6,
+        7
+      ],
+      "evidence": "Chunk 6 \"Scan your history for the work that recurs\": lines 83 and 85 project two bold callout leads on one slide, including the 12-word full sentence \"Cut the scan when the top patterns are clear enough to use.\" Chunk 7 \"Draw your top work-shapes as diagrams\": line 118 bolds the full 8-word question \"Want to see the shapes, not read them?\" HARM: the emphasis budget preserves a clear projection hierarchy; full-sentence bold and competing callout headlines make the audience scan decoration instead of the control point. The harm is present on both chunks, especially chunk 6's dense pair of escape valves. The maintainer emphasis note only records that blockquotes were left untouched in an earlier pass; it does not attest these long sentences as named handles, and the new stop-gate wording is not the passage that note reviewed.",
+      "fix_hint": "Keep at most a short handle bolded in each callout; on chunk 6, let one control handle own the slide's emphasis.",
       "blocking": false
     },
     {
@@ -127,6 +178,6 @@
       "blocking": false
     }
   ],
-  "blocking_findings_count": 0,
+  "blocking_findings_count": 3,
   "todos_count": 1
 }

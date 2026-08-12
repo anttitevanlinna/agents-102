@@ -256,6 +256,58 @@ function typeOf(relpath) {
   return 'module'
 }
 
+// Instance filenames are `<training>--<surface>--<slug>.<class>.json`, so the
+// training prefix has to follow the file's OWNING training, not a default.
+//
+// Files under curriculum/trainings/<t>/ carry it in the path. Shared-library
+// files (curriculum/exercises/, curriculum/lectures/) do NOT: one pool serves
+// every training, and ownership is whichever training's module files link them.
+// Hardcoding `ae101--` wrote AE101 instances for Agents 101 content — the
+// 2026-08-12 run stamped `ae101--exercise--name-your-challenge.*` for a file
+// linked only from agents-101/building-agent-systems.md.
+//
+// Ambiguous (two trainings link it) or orphaned (none do) returns null. The
+// caller warns and skips; it must never silently pick one.
+const TRAINING_PREFIX = {
+  'agentic-engineering-101': 'ae101',
+  'agents-101': 'agents-101',
+  'claude-basics': 'claude-basics',
+}
+
+function trainingOf(relpath, findLinkers) {
+  const m = relpath.match(/curriculum\/trainings\/([^/]+)\//)
+  if (m) return TRAINING_PREFIX[m[1]] || m[1]
+  const owners = [...new Set(findLinkers ? findLinkers(relpath) : [])]
+  if (owners.length === 1) return TRAINING_PREFIX[owners[0]] || owners[0]
+  return null
+}
+
+// Which trainings link this shared file, by basename, across module files.
+function linkFinder(repo) {
+  return (relpath) => {
+    const base = path.basename(relpath)
+    const root = path.join(repo, 'curriculum/trainings')
+    const owners = []
+    let trainings
+    try { trainings = fs.readdirSync(root) } catch { return owners }
+    for (const t of trainings) {
+      const dir = path.join(root, t)
+      let entries
+      try {
+        if (!fs.statSync(dir).isDirectory()) continue
+        entries = fs.readdirSync(dir)
+      } catch { continue }
+      for (const f of entries) {
+        if (!f.endsWith('.md')) continue
+        let txt
+        try { txt = fs.readFileSync(path.join(dir, f), 'utf8') } catch { continue }
+        if (txt.includes(base)) { owners.push(t); break }
+      }
+    }
+    return owners
+  }
+}
+
 function main(argv) {
   const repoIdx = argv.indexOf('--repo')
   const repo = repoIdx !== -1 ? argv[repoIdx + 1] : process.cwd()
@@ -287,8 +339,13 @@ function main(argv) {
       if (r.classes.length === 0) continue
       const type = typeOf(rel)
       const slug = path.basename(rel, '.md')
-      out.push({ file: rel, type, slug, instanceSlug: `ae101--${type}--${slug}`, classes: r.classes })
-      process.stderr.write(`${rel}\t${r.classes.map(c => `${c}(${r.detail[c]})`).join(' ')}\n`)
+      const training = trainingOf(rel, linkFinder(repo))
+      if (!training) {
+        process.stderr.write(`${rel}\tSKIPPED — cannot resolve owning training (shared file linked from 0 or 2+ trainings). Name the training explicitly rather than defaulting.\n`)
+        continue
+      }
+      out.push({ file: rel, type, slug, training, instanceSlug: `${training}--${type}--${slug}`, classes: r.classes })
+      process.stderr.write(`${rel}\t[${training}] ${r.classes.map(c => `${c}(${r.detail[c]})`).join(' ')}\n`)
     }
     process.stdout.write(JSON.stringify(out, null, 1) + '\n')
     return
@@ -298,6 +355,6 @@ function main(argv) {
   process.exit(2)
 }
 
-module.exports = { parseHunks, buildLineMeta, changeTags, extractPins, judgesRow, promptKeys, filterItems, scanFile, typeOf, CLASSES }
+module.exports = { parseHunks, buildLineMeta, changeTags, extractPins, judgesRow, promptKeys, filterItems, scanFile, typeOf, trainingOf, linkFinder, CLASSES }
 
 if (require.main === module) main(process.argv.slice(2))

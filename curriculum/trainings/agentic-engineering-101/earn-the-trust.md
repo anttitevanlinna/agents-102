@@ -3,13 +3,15 @@
 > Run M3 on `high` thinking effort (the training default).
 
 ## Big Idea
-Run two curated security skills against a feature with a user-facing surface, then author a test-strategy skill through conversation with Claude.
+Trust isn't watching harder. It's verification you can run without being there.
 
 ## Prework
 
 M3 continues in the same repo as M1 and M2. The session opens at the first exercise.
 
-Bring the feature you planned at M2, that's the default. The plan file Claude Code wrote during plan mode is what M3 reads (you noted the path at M2 close). If your M2 task doesn't have an external or user-facing surface, swap to something from your backlog that does, code already in the repo, a Jira or Linear ticket, or a design doc all work. Bigger than a typo-fix, smaller than a quarter-long epic: something you could ship in a few hours. Too small and the agent crunches it in thirty seconds with nothing interesting to surface. Too large and you don't get through it. Pick the size that fits.
+Bring the feature you planned at M2, that's the default. The plan file Claude Code wrote during plan mode is what M3 reads (you noted the path at M2 close). If your M2 task doesn't have an external or user-facing surface, swap to something from your backlog that does, code already in the repo, a Jira or Linear ticket, or a design doc all work. Too small and the agent crunches it in thirty seconds with nothing interesting to surface. Too large and you don't get through it.
+
+**A feature you could ship in a few hours. Not a quarter-long epic.**
 
 Optional pre-reads in the Module 2 to Module 3 gap: Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/); [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) for a deeper scan.
 
@@ -52,7 +54,7 @@ The question, to you: what's the feature, and what's the surface you're most ner
 
 Module 3's compound runs against two artifacts: the skill (its file content carries the conventions the side-quest window *m3-quality* encoded) and your `./CLAUDE.local.md` (where any rule about how you work with security skills, ADRs, or the access-map → STRIDE → test-strategy sequence proved worth keeping). Skills carry the codebase convention; rules carry your working style. The skill sharpen is mandatory; the rules-file update is opportunistic.
 
-Ask Claude to sharpen the skill's weakest section from invocation evidence. Then integrate a rule into `./CLAUDE.local.md` if one earned itself. If a moment from m3-quality's authoring scrollback matters that the skill didn't capture, the m3-quality window is still open at this point, switch over and grab quotes, paste them into m3-security's chat before firing the prompt.
+Ask Claude to sharpen the skill's weakest section from invocation evidence. Then integrate a rule into `./CLAUDE.local.md` if one earned itself. If a moment from m3-quality's authoring scrollback matters that the skill didn't capture, the m3-quality window is still open at this point, switch over and grab quotes, paste them into m3-security's chat before sending the prompt.
 
 {{prompt:ae101-m3-sharpen-skill}}
 
@@ -92,7 +94,7 @@ Optional, when your sessions start running heavy: [Token efficiency](trainings/a
 
 ## Bring to Module 4
 
-**One scoped task you'd send off rather than nudge bit by bit: a real slice with a 'done' you can name in a sentence. Bigger than a typo-fix, smaller than an epic.**
+**One scoped task you'd send off rather than nudge bit by bit: a real slice. Bigger than a typo-fix, smaller than an epic.**
 
 Come to Module 4 without having picked the task and you'll be scrambling for one while the exercise is already running. Your call.
 

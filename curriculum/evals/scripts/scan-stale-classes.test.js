@@ -2,7 +2,7 @@
 // Tests for scan-stale-classes.js — diff-region → judge-class routing.
 'use strict'
 const assert = require('node:assert')
-const { parseHunks, buildLineMeta, changeTags, extractPins, filterItems, typeOf } = require('./scan-stale-classes.js')
+const { parseHunks, buildLineMeta, changeTags, extractPins, filterItems, typeOf, trainingOf } = require('./scan-stale-classes.js')
 
 let n = 0
 function test(name, fn) { fn(); n++; console.log(`ok ${n} - ${name}`) }
@@ -235,6 +235,58 @@ test('instanceSlug for a reference file targets the reference instance', () => {
   const rel = 'curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md'
   assert.strictEqual(`ae101--${typeOf(rel)}--claude-code-for-engineers`,
     'ae101--reference--claude-code-for-engineers')
+})
+
+
+// --- trainingOf: instance prefix must follow the file's OWNING training -----
+//
+// Pins a bug found 2026-08-12 (AE101 changed-files re-eval): the instanceSlug
+// prefix was hardcoded `ae101--`, so every shared-library file got an AE101
+// instance regardless of who owns it. `curriculum/exercises/name-your-challenge.md`
+// is linked only from `agents-101/building-agent-systems.md`, and the run wrote
+// `ae101--exercise--name-your-challenge.*`. The strategy judge independently
+// resolved the file to Agents 101 M2 and disagreed with its own filename.
+//
+// Files under curriculum/trainings/<t>/ carry the training in the path. Shared
+// files (curriculum/exercises/, curriculum/lectures/) do NOT — ownership is
+// whichever training's module files link them, so it has to be looked up.
+// Ambiguous or unlinked => null, and the caller must warn rather than guess.
+
+test('trainingOf: path-carried training wins (ae101)', () => {
+  assert.equal(trainingOf('curriculum/trainings/agentic-engineering-101/getting-going.md'), 'ae101')
+})
+
+test('trainingOf: path-carried training wins (agents-101)', () => {
+  assert.equal(trainingOf('curriculum/trainings/agents-101/building-agent-systems.md'), 'agents-101')
+})
+
+test('trainingOf: path-carried training wins (claude-basics)', () => {
+  assert.equal(trainingOf('curriculum/trainings/claude-basics/security.md'), 'claude-basics')
+})
+
+test('trainingOf: shared exercise resolves to its single linking training', () => {
+  const finder = () => ['agents-101']
+  assert.equal(trainingOf('curriculum/exercises/name-your-challenge.md', finder), 'agents-101')
+})
+
+test('trainingOf: shared exercise linked only from AE101 resolves to ae101', () => {
+  const finder = () => ['agentic-engineering-101']
+  assert.equal(trainingOf('curriculum/exercises/compound-and-close.md', finder), 'ae101')
+})
+
+test('trainingOf: shared file linked from two trainings is ambiguous → null', () => {
+  const finder = () => ['agents-101', 'agentic-engineering-101']
+  assert.equal(trainingOf('curriculum/exercises/shared.md', finder), null)
+})
+
+test('trainingOf: shared file linked from nowhere → null, never a silent default', () => {
+  const finder = () => []
+  assert.equal(trainingOf('curriculum/exercises/orphan.md', finder), null)
+})
+
+test('trainingOf: duplicate linkers from one training still resolve', () => {
+  const finder = () => ['agentic-engineering-101', 'agentic-engineering-101']
+  assert.equal(trainingOf('curriculum/exercises/push-back-on-the-plan.md', finder), 'ae101')
 })
 
 console.log(`\n${n} tests passed`)

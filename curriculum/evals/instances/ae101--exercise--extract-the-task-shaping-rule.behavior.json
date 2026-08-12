@@ -3,8 +3,8 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/extract-the-task-shaping-rule.md",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "cached",
-  "prompts_evaluated": 3,
+  "trace_status": "partial_regen",
+  "prompts_evaluated": 4,
   "prompts_findings": [
     {
       "prompt_index": 1,
@@ -28,26 +28,40 @@
     },
     {
       "prompt_index": 2,
-      "prompt_lead": "Let's decide together where we store this for optimal use in future. Propose two",
+      "prompt_lead": "Reverse-engineer how this team writes stories from one story ticket. Infer basic",
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
         {
-          "pattern_id": "overwrite-anxiety",
+          "pattern_id": "niceness-tax",
           "confidence": "low",
-          "evidence": "Explicit in-fence conditional ('If a file already exists at the path we pick, ask before overwriting') is a deliberate collision guardrail rather than unwanted hesitation; the free-choice, first-time-save location makes the collision case rare.",
-          "fix_hint": "By-design guardrail on a fresh-choice save target; low collision probability — no edit needed."
-        },
-        {
-          "pattern_id": "preamble-before-action",
-          "confidence": "low",
-          "evidence": "Conversational opener ('Let's decide together where we store this for optimal use in future.') invites a brief scene-setting sentence before the path proposal.",
-          "fix_hint": "Low-stakes for a two-way decision prompt; could add a 'no preamble' suppressor if drift is observed, but not load-bearing enough to require one now."
+          "evidence": "The in-fence three-way split ('Separate strong signals, guesses that need more tickets, and things you cannot tell') is itself the mitigation, forcing a low-confidence bucket to exist rather than letting RLHF politeness round every inference up.",
+          "fix_hint": "Already mitigated by the explicit split instruction; watch for under-population of the 'cannot tell' bucket if this drifts in cohort runs, but no fence edit needed now."
         }
       ]
     },
     {
       "prompt_index": 3,
+      "prompt_lead": "Let's decide together where we store this for optimal use in future. Propose tw",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "append-vs-integrate",
+          "confidence": "low",
+          "evidence": "Prompt names integration mode explicitly ('integrate into it. Don't append and don't replace it; it may already hold rules from an earlier session and those stay'), matching rule 12's naming requirement almost verbatim.",
+          "fix_hint": "Explicit preserve/integrate boundary already does the work; residual risk of a bottom-appended section is low given the instruction — no edit needed."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Conversational opener ('Let's decide together where we store this for optimal use in future.') sits before the concrete ask, leaving room for a brief scene-setting sentence.",
+          "fix_hint": "Low-stakes for a two-way decision prompt; could add a 'no preamble' suppressor if drift is observed, but not load-bearing enough to require one now."
+        }
+      ]
+    },
+    {
+      "prompt_index": 4,
       "prompt_lead": "Suppose I wanted this rules file to drive automated task-splitting in the future",
       "verdict": "TODO",
       "load_bearing": false,
@@ -62,5 +76,5 @@
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 3
+  "todos_count": 4
 }

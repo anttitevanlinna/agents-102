@@ -22,7 +22,7 @@ Start a new Claude Code session at your repo root. Renaming is optional, but hel
 
 - You decide what Claude loads: the repo's shape, its structure, what's load-bearing, what's gone stale. A cold agent reads whatever it stumbles into; you point it.
 
-> **Big repo? The read can fan out.** If Claude starts reading dozens of files, interrupt with `Esc`, narrow to one feature or directory, and say `continue`.
+> **Big repo? The read can fan out.** If Claude starts reading dozens of files, interrupt with `Esc`, narrow to one feature or directory, and say `continue`. It can also stop short, and that one is harder to catch because a confident answer arrives either way. If the read names only the files you'd have guessed at, a `"there's more here"`-prompt buys another pass.
 
 Ask Claude to read your repo deliberately and report what it finds.
 
@@ -52,15 +52,16 @@ Run `/context` to see how much of the window is used and what fills it.
 
 (`/context` is oldskool; a status line shows the same thing continuously. Use [ccstatusline](https://github.com/sirmalloc/ccstatusline), or ask Claude to build your own with `/statusline`.)
 
-## Read the unread slice
+## The slice Claude didn't load
 
 - What you want is the least context that holds exactly what the task needs. `/context` tells you what you are carrying; the read tells you whether it is the right load.
 - The slice Claude didn't load stays real. The window holds only so much; going forward, you choose what fills it.
-- You now have a map of the window: what loaded, what Claude skipped, and how much of it you've spent. The next exercise fixes the bug you brought from prework, inside the window you just mapped.
 
 <!-- maintainer -->
 
-**View summary:** You direct the agent’s first read of your real repository, then question its account against the context window. The result is a practical map of what the agent loaded, what it skipped, and where your steering begins.
+**View summary:** You direct the agent’s first read of your real repository, then question its account against the context window.
+
+**Closing beat is `## The slice Claude didn't load`, renamed from `## Read the unread slice` (2026-08-12).** The old header commanded a read of a number `/context` had already printed one beat earlier — `check_student_facing.md` §27 (read-it-after-chat-print is dead weight) and `check_slides.md` §6 (header promised an action its own chunk never delivered; a slides judge flagged it). The beat correctly carries **no prompt**: the `/context` run is the move, and this slide is the closing claim about context economy. `getting-going.md`'s leap test names the target as the *unread-slice number*, not a set of files, so do not "fix" the old header by adding a file-opening instruction — that invents a beat the design does not have and contradicts the leap test. Built workbooks under `site/clients/**` carry the old `id="read-the-unread-slice"` anchor until regenerated. The result is a practical map of what the agent loaded, what it skipped, and where your steering begins.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** All bullet leads de-bolded to plain bullets; no named laws or coined terms in this body, so no handles kept. Widget chrome (`**Time:**`, `**Session**`, `**What you do:**`, `**What you build:**`, `**The point:**`) and the blockquote callout untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 

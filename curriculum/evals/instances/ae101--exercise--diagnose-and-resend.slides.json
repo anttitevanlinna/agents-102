@@ -1,19 +1,55 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/diagnose-and-resend.md",
-  "body_sha": "681e603fd355cb0cb8b362a15bff9add83a1ce913601a7992edad0a58246d63e",
+  "body_sha": "4f4ced93ab119c160411c8a555c21279dd41519b4e2794715153ff4e2dc83773",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "# Diagnose and *package* (H1 + lede)", "lines": "1-21"},
-    {"index": 1, "heading": "## Phase 1: Read what the failed run did", "lines": "23-57"},
-    {"index": 2, "heading": "## Pin each failure to a quoted moment", "lines": "59-63"},
-    {"index": 3, "heading": "## Phase 2: Match each failure to the check that catches it", "lines": "64-89"},
-    {"index": 4, "heading": "## Phase 3: Build the verifier for your worst failure", "lines": "90-118"},
-    {"index": 5, "heading": "## Prove the verifier actually fires", "lines": "119-128"},
-    {"index": 6, "heading": "## Phase 4: Write the reference and plan.md", "lines": "129-163"},
-    {"index": 7, "heading": "## Check both files are for the agent, not you", "lines": "164-168"},
-    {"index": 8, "heading": "## Approve", "lines": "169-176"}
+    {
+      "index": 0,
+      "heading": "# Diagnose and *package* (H1 + lede)",
+      "lines": "1-22"
+    },
+    {
+      "index": 1,
+      "heading": "## Phase 1: Read what the failed run did",
+      "lines": "23-60"
+    },
+    {
+      "index": 2,
+      "heading": "## Pin each failure to a quoted moment",
+      "lines": "61-66"
+    },
+    {
+      "index": 3,
+      "heading": "## Phase 2: Match each failure to the check that catches it",
+      "lines": "67-94"
+    },
+    {
+      "index": 4,
+      "heading": "## Phase 3: Build the verifier for your worst failure",
+      "lines": "95-125"
+    },
+    {
+      "index": 5,
+      "heading": "## Prove the verifier actually fires",
+      "lines": "126-135"
+    },
+    {
+      "index": 6,
+      "heading": "## Phase 4: Write the reference and plan.md",
+      "lines": "136-172"
+    },
+    {
+      "index": 7,
+      "heading": "## Check both files are for the agent, not you",
+      "lines": "173-177"
+    },
+    {
+      "index": 8,
+      "heading": "## Approve",
+      "lines": "178-185"
+    }
   ],
   "rules_evaluated": [
     {
@@ -22,7 +58,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm this rule guards: a reader hitting a pronoun/demonstrative/noun with no resolvable antecedent, stalling comprehension mid-deck. Swept every chunk; the one candidate worth naming is chunk 4 line 117 'The verifier IS your first eval; Module 6 gives it its name' — 'eval' has zero prior occurrence in this file's body (grepped; only other hit is inside the backing block, out of scope). But this is not a referent needing an antecedent — it's a copula-defined coinage ('X IS Y'), the same shape as any first use of a new label, and 'it' in the trailing clause resolves in-sentence to the eval just named. No stall is possible: the reader isn't asked to recall 'eval' from anywhere, they're being told the word for the first time. Elsewhere: 'your dominant failure' (chunk 4) resolves via chunk 1's fenced prompt ('which of the three was the DOMINANT failure mode?') plus the enclosing module file's What You'll Learn bullet 3, both prior context per the module-include-order rule. 'the three lenses' (chunk 1) callbacks to chunk 0's 'three failure-mode lenses'. The session-artifact carve-out covers 'the un-packaged run'/'task.md'/'the m4/<slug> branch' throughout. No unresolved referent found; harm absent.",
+      "evidence": "Swept all nine chunks against the expanded body and the prior-slide history. The revised chunk 3 transition resolves in order: 'full three-way mapping' is the response to that slide's prompt; 'other two pieces' resolves to the verifier/reference/plan triad named in chunk 0; 'the rest' means the two non-dominant mappings; Phase 3 and Phase 4 are real later headers. Chunk 6's stop gate resolves entirely in-slide: 'the prompt' is immediately above it, 'that' is the prompt's continued looking, the five threshold nouns are the artefact criteria just specified, 'the second session' was named as the packaged re-send in chunk 0, and 'until then' points to saying 'lock it in.' Session-artifact and arc-earned-vocabulary carve-outs cover the run, transcript, branch, worktree, rules, and module names. No never-named, vague-with-history, or re-chunk-stranded referent remains.",
       "fix_hint": null,
       "blocking": true
     },
@@ -32,7 +68,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm this rule guards: a reference whose identity depends on where the deck happens to start (e.g. 'the opening lecture said X'), which breaks if the file is excerpted or reordered. Chunk 4 line 117 'Module 6 gives it its name' names its source by TITLE, not position — 'Module 6' is a fixed proper-noun identifier for one specific, unique curriculum module, stable regardless of where this exercise sits (unlike 'the next module', which would be positional). This file already uses the same M1/M3/M4/M6 naming convention elsewhere (chunk 8 line 175: 'The personal rules from M1... M6 will cut one stale rule'), so it's consistent house style, not an isolated case. The clause also unpacks the claim in the same sentence ('gives it its name' = what M6 does), satisfying the rule's 'ideally unpacked in the same sentence' bar. Separately, chunk 0 line 19 ('The closing lecture names what you built afterward') doesn't name a file at all — generic forward signposting with no content retold or misattributed, closer to the rule's own navigational-pointer carve-out than to the banned 'opening lecture said X' shape (which fails specifically because it puts a CLAIM in a positionally-ambiguous mouth). No positional identity-dependence found in either case; harm absent.",
+      "evidence": "No claim depends on an ambiguous file position. Chunk 0's worktree setup, Debrief re-send, and closing-lecture promise are module-arc/navigation beats and were verified against the host module's setup, re-send, and named closing lectures. Chunk 2's Module 1 callback identifies both the module and the repo-read claim, then restates the working prior in the same sentence. Chunk 8 names M1, optional M3, and M6 by stable module identifiers and exact artefacts/actions rather than by 'earlier' or 'next' position. No positional callback harm is present.",
       "fix_hint": null,
       "blocking": true
     },
@@ -42,7 +78,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm this rule guards: a promised beat that was cut or renamed in a later rewrite, stranding the student's expectation. Verified independently: trainings/agentic-engineering-101/spot-gaps-build-the-loop.md (M6 module file) line 58 includes '[The loop has a name](lectures/the-loop-has-a-name.md)', and that lecture's own '## Eval' section (line 8) reads verbatim 'The name for all of it is **eval**. Your verifier is an eval.' — an exact match for chunk 4's promise that Module 6 'gives it its name'. Corroborated independently by the enclosing module file learn-from-the-test.md's own Key Concepts bullet (flag-gated on spot-gaps-build-the-loop being present in the build): 'Your verifier is your first eval... Module 6 maps the eval shapes from here.' Also checked the sibling forward reference at chunk 8 line 175 ('M6 will cut one stale rule once the contrast lands') against spot-gaps-build-the-loop.md's What You'll Learn bullet 3 ('Cut one rule from ./CLAUDE.local.md the diagnosis killed') and its Leap test — confirmed live. Both forward-anchored beats exist in the current module set; harm absent.",
+      "evidence": "Resolved the shared exercise through site/layouts/curriculum.js to AE101 M5 learn-from-the-test.md and checked its current include order. The worktree setup exists before the exercise (module lines 38-62); the exercise is included at line 64; the Debrief/re-send and fresh M5 long-run exist after it (module lines 74-102 plus trainer runtime); and the two closing lectures are included at lines 104-106. what-packaging-is.md explicitly names the three pieces the student assembled. Chunk 8's M6 stale-rule promise resolves to the current M6 module. No dead beat remains.",
       "fix_hint": null,
       "blocking": true
     },
@@ -52,7 +88,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-before-reveal construction anywhere in the file — every prompt asks Claude to produce or diagnose something; none stages a 'guess before you see the answer' beat with an outcome narrated nearby. Rule doesn't engage.",
+      "evidence": "No guess-before-reveal or predict-before-outcome construction appears in the body; the prompts ask the agent to diagnose, map, build, and test rather than asking the student to guess an unrevealed result.",
       "fix_hint": null,
       "blocking": true
     },
@@ -62,7 +98,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a slide that says nothing standalone (pure wait-state or one context-dependent bullet). Thinnest chunks are 2 (three sentences: push back on generalisation, name the move) and 5 (one bullet + a smoke-test prompt) and 7 (two bullets: push back if generic, artefacts are for the agent). Each carries a self-contained claim a reader could act on without the rest of the deck. No chunk is reduced to a bare wait-state.",
+      "evidence": "Every chunk carries an actionable claim. The thinnest slides still self-carry: chunk 2 turns generalised diagnosis into quoted evidence; chunk 5 states and executes the verifier smoke-test; chunk 7 distinguishes agent-consumable artefacts from generic advice; chunk 8 supplies the lock-in action, recap, and hand-off. None is a bare wait-state.",
       "fix_hint": null,
       "blocking": false
     },
@@ -72,7 +108,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a header the chunk's own content contradicts. Checked all 8 non-title headers against their bodies (Phase 1 reads the run / Pin each failure quotes moments / Phase 2 matches failure to check / Phase 3 builds the verifier / Prove the verifier fires smoke-tests it / Phase 4 writes reference+plan.md / Check both files pushes back on genericness / Approve locks in and reports What happened). Every header is a true summary of its chunk.",
+      "evidence": "All eight H2 headers are literally true summaries of their chunks. In particular, chunk 3 does match each failure to a check and then narrows the student's decision; chunk 6 authors the reference and plan.md in conversation while reserving disk persistence for the later Approve slide, which is consistent with 'Write' as the phase-level activity; chunk 7 checks both artefacts; chunk 8 locks them in. No header contradicts its slide.",
       "fix_hint": null,
       "blocking": false
     },
@@ -82,7 +118,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all six sub-items across every chunk (body only, fences excluded): no 'Not X. Not Y. Z.' construction; no anaphora/epistrophe triples; no self-grading superlative (closest candidate is chunk 4's 'the teaching moment', which names what the alignment teaches rather than grading the exercise's own worth comparatively — not the banned 'one of the most useful' shape, so not flagged); no number-with-retraction pattern; no abstraction-noun stacks outside fences; no empty-leg verb triplets. Zero sub-item hits.",
+      "evidence": "Checked all six sub-items in every chunk outside the recorded fence ranges: no 'Not X. Not Y. Z.' construction, no empty third anaphora/epistrophe leg, no self-grading superlative, no number followed by its own retraction, no abstraction-noun stack, and no empty-leg verb triplet. Chunk 2's 'about 10%' is a single working prior, not a retracted number, and its maintainer accept-note explicitly preserves that shape. The revised Phase 2 transition is four plain declaratives, not LLM cadence.",
       "fix_hint": null,
       "blocking": true
     },
@@ -92,7 +128,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: maintainer/repo vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections-as-proper-noun) leaking onto a projected slide. None of the banned terms appear in the body. 'Eval' at chunk 4 line 117 is genuine field vocabulary for AE101's engineer-IC audience (industry-standard term for an automated quality check on agent/LLM output), not repo-internal dialect, and isn't on the banned list. No dialect found.",
+      "evidence": "No compendium, surface-as-noun, mood, Connections-as-proper-noun, or authorial 'beat' language appears in the body. 'Fire'/'fires' describes when a verifier, hook, or failure condition triggers; for AE101 engineer ICs this is ordinary technical event language, not repo-maintainer dialect. 'Teaching moment' is plain classroom prose, not the repository's specialised 'beat' vocabulary. The internal-dialect harm—forcing the room to decode author tooling language—is absent.",
       "fix_hint": null,
       "blocking": true
     },
@@ -102,7 +138,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Existing maintainer accept-note found before flagging (line 181, 'Emphasis pass (2026-07-09)... gold-pattern exemplar'): bold is confirmed intentional on the Phase 3 verifier-shape menu handles (Background-agent verifier / Deterministic shell-hook / Ralph re-feed — one handle per menu item, matching the rule's 'one handle per law' allowance for a consolidation/menu slide) and on the title-page widget-chrome labels (Time/Session/HOX/What you do/What you build/The point, structural per curriculum/widgets.md, not narrative emphasis), plus the chunk-6 blockquote's 'Watch for slowness.' callout label. No narrative sentence-lead bolding found anywhere. Passage already cleared by maintainer; not re-flagged.",
+      "evidence": "The maintainer block explicitly limits bold to title-page labels/widget chrome, the three verifier-shape menu handles, and the Phase 4 stop-gate handle. Chunk 6 has one bold element: 'Cut the grill when the package is good enough to re-send.' It is longer than the usual short handle, but functions as the slide's single governor and makes the cognitive-load escape valve visible at the exact point of use; the rest of the callout is plain. The proxy (a sentence-length bold span) fires, but the harm this rule prevents—bold monoculture and loss of visual hierarchy—is not present, and de-emphasising the stop gate would make the artefact worse. The revised Phase 2 transition has zero bold. No slide carries narrative-lead bolding or per-bullet emphasis monoculture.",
       "fix_hint": null,
       "blocking": false
     },
@@ -112,7 +148,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a phase-less prose section present in long-read but silently absent from the default Slides deck. This file has no bare prose section outside the exercise's own heading structure — the entire body (chunk 0 through chunk 8) sits inside the single exercise, which is included via the module's [Exercise: ...] link and reaches the deck wrapped as one phase--exercise unit. No orphaned pre-heading or post-heading prose found that would be dropped.",
+      "evidence": "The AE101 M5 host includes this file as an Exercise at learn-from-the-test.md line 64. The build's exercise inclusion path wraps it as a phase--exercise unit consumed by buildDeckModel; all body chunks sit inside that exercise and therefore reach the composed Slides deck. No phase-less prose in this file is dropped from the default view.",
       "fix_hint": null,
       "blocking": true
     },
@@ -122,7 +158,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a hand-numbered header fighting the renderer's computed position, or a 'Phase K' in-body reference that doesn't resolve. The four content-ordinal headers (Phase 1/2/3/4) are consecutive and correctly ordered; the four non-content headers (Pin each failure / Prove the verifier actually fires / Check both files / Approve) are correctly left unnumbered, matching the rule's split between nav-computed position and linted content ordinals. In-body Phase refs — chunk 3 line 88 'Phase 3 builds one of them; Phase 4 assembles the other two' and chunk 5 line 121 'Fire it once before Phase 4' — both resolve to real, correctly-numbered headers later in this same file. No cross-file phase refs present.",
+      "evidence": "The content-ordinal headers are consecutive Phase 1 through Phase 4; the four intervening action headers are correctly unnumbered. Body references to Phase 3, Phase 4, and 'before Phase 4' resolve to real later headers in this file. scripts/check-slide-numbering.js completed cleanly across 59 files, including this target. No hand-numbered slide position or unresolved content ordinal appears.",
       "fix_hint": null,
       "blocking": true
     }

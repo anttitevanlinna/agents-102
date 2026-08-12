@@ -16,7 +16,7 @@ The PR shipped and the ticket is closed. Now compound the session, the closing s
 - You are not drafting from a blank page. The agent reads the session for you.
 - The tracker conventions count as evidence too. The field rules you read off your own ticket are in this scrollback, and this is where they land on disk.
 
-> **Long session, long read.** If the review stalls or runs past a couple of minutes, interrupt with `Esc`, narrow to the orient and introspect phases first, and say `continue`.
+> **Long session, long read.** If the review stalls or runs past a couple of minutes, interrupt with `Esc`, narrow to the orient and introspect phases first, and say `continue`. It fails the other way too: a summary that arrives fast and reads clean has usually covered the last few turns and skipped the rest. If nothing in it comes from the early part of the session, a `"there's more here"`-prompt buys another pass.
 
 {{prompt:compound-and-close-1}}
 

@@ -1,18 +1,17 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md",
-  "body_sha": "3a5f4089fc490f76c026c087556add46f750fba163a57f0680dba812f9870e66",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    { "index": 0, "heading": "Spot gaps, build the loop (H1/lede)", "lines": "1-2" },
-    { "index": 1, "heading": "Big Idea", "lines": "3-5" },
-    { "index": 2, "heading": "Prework", "lines": "6-11" },
-    { "index": 3, "heading": "What You'll Learn", "lines": "12-21" },
-    { "index": 4, "heading": "Start here", "lines": "22-39" },
-    { "index": 5, "heading": "Key Concepts", "lines": "40-47" },
-    { "index": 6, "heading": "Human close", "lines": "48-65" },
-    { "index": 7, "heading": "Next", "lines": "66-75" }
+    {"index": 0, "heading": "H1/lede", "lines": "1-2"},
+    {"index": 1, "heading": "Big Idea", "lines": "3-5"},
+    {"index": 2, "heading": "Prework", "lines": "6-11"},
+    {"index": 3, "heading": "What You'll Learn", "lines": "12-21"},
+    {"index": 4, "heading": "Start here", "lines": "22-39"},
+    {"index": 5, "heading": "Key Concepts", "lines": "40-47"},
+    {"index": 6, "heading": "Human close", "lines": "48-65"},
+    {"index": 7, "heading": "Next", "lines": "66-77"}
   ],
   "rules_evaluated": [
     {
@@ -41,7 +40,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 4 \"Start here\": line 28: \"the Continue prompt from M4\" — verified against `curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md:96` (`{{prompt:ae101-m4-nudge-continue}}`) and `curriculum/prompts/ae101-m4-nudge-continue.md` (body: \"Continue --- you can do it. Can't you?\", requires conditional:agent-stalled) — the beat exists and matches the stalled-session nudge use named here. All eight lecture/exercise links (chunks 4 and 6) resolved to existing files under curriculum/lectures/ and curriculum/exercises/. No dead-beat references (the 2026-07-05 cut of Steering the wiring / Arc-named retrospective left no residue in body).",
+      "evidence": null,
       "fix_hint": null,
       "blocking": true
     },
@@ -51,7 +50,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-before-reveal demo beats in this module file (index/link/framing prose only).",
+      "evidence": null,
       "fix_hint": null,
       "blocking": true
     },
@@ -81,9 +80,9 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked every sub-item against every chunk: no \"Not X. Not Y. Z.\" construction; no anaphora/epistrophe triples; no self-grading superlative (\"How the best do CI/CD\" in the Next-chunk link title describes industry practitioners, not the training's own worth — not a value-prop leak); no number-with-retraction; the fresh KC bullet 4 phrase \"the producer's window\" is a same-bullet nominalization of \"agent-produced\" two sentences earlier, not an abstraction-noun stack, and the maintainer block (2026-08-09 note) explicitly frames it as deliberately \"engineer-plain\"; no empty-leg verb triplets.",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -91,7 +90,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Only two \"surface\" hits in body (line 14 \"the gap ... surface\", line 41 \"the gaps that surface\"), both the ordinary engineering-verb sense the compendium explicitly exempts, not the noun/dialect sense. No compendium, firing, forcing function, beat, mood, or Connections-as-proper-noun anywhere in body.",
+      "evidence": null,
       "fix_hint": null,
       "blocking": true
     },
@@ -99,19 +98,19 @@
       "compendium": "check_slides.md",
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
-      "verdict": "REVISE",
-      "chunks_flagged": [7],
-      "evidence": "chunk 7 \"Next\": line 70: \"**Going deeper, when this loop has to scale past you:**\" — a 10-word bolded narrative clause (not a named law/coined term/checklist item), directly against the rule's own \"Narrative ... = no bold\" line. Harm check: the rule exists to keep bold a reliable scan-cue on a projected wall; here it's the sole bold element in a sparse closing chunk (not the canonical every-bullet-bolded monoculture), so the actual legibility harm is mild — and the same file's Prework chunk (2) does the identical further-reading-pointer job (\"Optional lookup pages: ...\") with no bold at all, which is the inconsistency worth a maintainer look. Not destructive to fix, so flagged rather than waved through.",
-      "fix_hint": "Trim to a short handle, e.g. **Going deeper:**, or drop the bold to match the unbolded \"Optional...\" precedent in Prework.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "This module carries lecture/exercise phases (Start here + Human close links), so per `buildDeckModel` (site/layouts/slides.js:243-280) every non-phase prose block in the module — Big Idea, Prework, What You'll Learn, Key Concepts, Human close, Next — is walked and flushed into the composed deck interleaved with the phase slides; none of it is a phase-less top-level section that the historical drop bug (prework/supplementary/reference silently absent) would hit. No anomaly found.",
+      "evidence": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -121,11 +120,31 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No `## Phase N:` / `## N.` step headers or in-file \"Phase K\"/\"Step K\" prose references in this module file. `node scripts/check-slide-numbering.js` reports OK across the corpus (59 files) including this one.",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": null,
       "fix_hint": null,
       "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1
+  "todos_count": 0
 }

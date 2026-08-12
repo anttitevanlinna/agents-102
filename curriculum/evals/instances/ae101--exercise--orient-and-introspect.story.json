@@ -1,10 +1,9 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/orient-and-introspect.md",
-  "body_sha": "b06bb3495dff9b9095c93ed2e84a7b13e83b4a7263bdb31734c83f10e54c6851",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "Joyful creation — \"it works, on my repo.\" M1 Ex1 (orient-and-introspect) is the map-the-window move; the full \"it works\" spike is Ex2's (fix-tests-first) job. Ex1 must plant Theme 3 (mirror) + Theme 4 (self-aware, grain of salt) + Theme 1 (90% correct) experientially without resolving into the fix.",
+  "module_mood_contract": "Joyful creation — \"it works, on my repo.\" M1 Ex1 (orient-and-introspect) is the map-the-window move; the full \"it works\" spike is Ex2's (fix-tests-first) job. Ex1 plants Theme 3 (mirror) + Theme 4 (self-aware, grain of salt) + Theme 1 (90% correct) experientially without resolving into the fix.",
   "trace_status": "regenerated",
   "rules_evaluated": [
     {
@@ -12,7 +11,7 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures are closers, not openers.",
       "verdict": "N/A",
-      "evidence": "check_lectures.md's frontmatter scopes it to 'writing or placing a lecture'; orient-and-introspect.md is an exercise, not a lecture. The exercise's own place inside M1's opener/closer lecture arc (maintainer 'Arc' field: picks up from Connections + the-wizard-move opener lectures; hands off to fix-tests-first) is judged at the module-file level (getting-going.md), not here.",
+      "evidence": "File is an exercise (curriculum/exercises/), not a lecture — no lecture-placement question applies.",
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +20,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "Rule governs lecture placement ahead of a contrast-mood (M5-style learn-through-doing-then-name) module. M1's mood is joyful creation, not contrast, and this file is the exercise itself, not a preceding lecture — doubly outside the rule's precondition.",
+      "evidence": "File is the exercise itself, not a lecture preceding one.",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,70 +29,52 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Rule targets lecture-body prose specifically; this is an exercise file. Grep for 'M[0-9]|Module' across the student-facing body: the only hit is line 5's Session widget name ('Module 1 - Orient and introspect'), a session-rename string, not forward-reference prose. The module-to-module hand-off ('Picks up from... Hands off to: fix-tests-first') correctly lives below the maintainer fence in the 'Arc' field, this rule's own named correct home for that content.",
+      "evidence": "Not a lecture body. The exercise's own maintainer-block Arc section (outside student-facing text) carries the module 1↔2 hand-off, per convention.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 4,
-      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "rule_lead": "Slide/lecture headers pass the squint test and the truth clause.",
       "verdict": "N/A",
-      "evidence": "Rule 4's own framing scopes to lecture headers scanned cold by a self-study reader, unlike rule 5's explicit 'exercise slides count too' carve-out. General header-squint quality on non-lecture ## headers is check_slides.md's territory, not this run's compendium. This exercise's headers ('Read your repo deliberately', 'Ask what Claude skipped, and why', 'Read the self-report, then spot-check it', 'Check how full the window is', 'Read the unread slice') are gerund-phrase move-names, not lecture claim-headers.",
+      "evidence": "Rule scoped to lecture/handbook headers; this is an exercise. (The slides class owns this file's `##` header quality on the exercise surface.)",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded (~210 readable words AND ≤6 bullets per rendered ## slide) — rule explicitly extends to exercise slides.",
-      "verdict": "PASS",
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/exercises/orient-and-introspect.md` → 'files: 1  slides: 5  limits: 210 words / 6 bullets... oversized: 0... every slide is within limits.' Rule 5's own text names 'Exercise slides count too', so this fires regardless of the compendium's lecture-scoped frontmatter, and the script confirms clean compliance. Re-run 2026-08-01, same clean result.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 16,
-      "rule_lead": "Forcing functions stay, scripted reactions go — forcing functions live in prompts, not body prose.",
-      "verdict": "PASS",
-      "evidence": "Three graded moves (deliberate read, introspect-on-skip, /context) each live in a fenced registry prompt (lines 30/41/52: {{prompt:orient-and-introspect-1/-2/-3}}). The one body-only move — '## Read the self-report, then spot-check it' (lines 43-46): 'You can spot-check it. Quote a specific file or function back and ask Claude to confirm it read what it claims' — has no fence. Removal test: cutting this sentence does not collapse the exercise's pedagogy — the maintainer block's 'Themes planted' section attributes Theme 4 (self-aware, grain of salt) to 'the introspection prompt and the /context verification' specifically, not to spot-checking, and neither named Watch-for calls out a spot-check-skipped risk. Satisfies the rule's explicit optional-refinement carve-out.",
+      "rule_lead": "A slide's body is size-bounded, not just its header.",
+      "verdict": "N/A",
+      "evidence": "Slide-size ceiling is owned by the slides class (check_slides.md / check-slide-size.js), not storytelling.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
-      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room — no authored conversations, pair/group cues, or pause beats in body.",
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Grepped the student-facing body for 'share with / tell the room / discuss with / pair up / compare with / neighbor(-ur)' shapes — zero hits (confirmed 2026-08-01). 'Let the read finish before you interrogate the map' (line 32) is a work-pacing instruction about the student's own next move on the artifact, not a cohort-management cue. Both authored trainer pushes ('before we move on — what did Claude choose not to read...', 'type /context in the chat — look at the number') live correctly below the maintainer fence in 'Watch-fors', not in the body.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": null,
-      "rule_lead": "Prompt-block design checklist (44 rules) — scoped to fenced student-copied prompt blocks.",
-      "verdict": "N/A",
-      "evidence": "check_prompts.md is not named in storytelling's owned-rule list (the template's completeness contract grants full per-rule coverage only to check_lectures, and partial coverage to check_pedagogy/check_strategy_tie_in via the 'Specific judgments storytelling owns' list — check_prompts appears nowhere in that list). This exercise carries three fenced registry prompts ({{prompt:orient-and-introspect-1/-2/-3}}); their line-level compliance is the writing/technical judges' territory. Storytelling's own read of these three prompts is folded into the mood trace (all three fire cleanly per persona action, mood 8/8) and into the rule-16 forcing-function verdict above — no additional storytelling-specific defect surfaces. Single summary row per the template's completeness contract.",
+      "evidence": "No authored conversation/pause/share cues anywhere in the body (lines 21-59). Every instruction is either a direct ask-Claude move (line 27, 36) or a prose observation about the work itself. The trainer 'watch-fors' and pushes live entirely in the maintainer block (lines 84-86), outside student-facing text, exactly as the rule requires.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named; mood lands 8+/10 on teaching beats (mood-floor exempts pure setup/launch beats).",
+      "rule_lead": "Mood contract named; mood-floor (8+) applies to teaching beats only.",
       "verdict": "PASS",
-      "evidence": "Single-phase file (no ## Phase headers; five ## sections are sequential moves inside one phase per trace protocol). Content is substantive teaching (introspection + budget-reading), not compressible to a parenthetical, so the mood-floor applies. Trace (curriculum/evals/sim-cache/ae101--exercise--orient-and-introspect.persona.json, content_sha 9c3b6e6aad2f489d97ba7f993db87b685458200f1da6e0302c060a17289295c5, verified matching this file's actual sha256 — the prior cache entry carried a stale/incorrect SHA and was regenerated this run, substance unchanged): phase mood_score 8 ('the mirror moment lands here, and it's genuinely satisfying'), close mood_score 8 ('closes on 'you now have a map,' explicitly defers the payoff to fix-tests-first'). Both beats clear the 8+ floor.",
+      "evidence": "trace.phases[0].mood_score=8, trace.close.mood_score=8. Whole file reads as one teaching beat (no setup-only sub-beat to exempt) — mirror (Theme 3), grain-of-salt (Theme 4), and 90%-correct (Theme 1) all land experientially per trace.phases[0].persona_action.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
-      "rule_lead": "Epistemic mood, not punitive mood (fires when the module's designated mood is 'unease').",
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "N/A",
-      "evidence": "M1's designated mood is joyful creation (content-strategy-agentic-engineering-101.md's mood-arc table), not unease — rule's precondition isn't met. No punitive framing regardless: line 45 ('Assume about 10% of what it says or does is misrepresentation. Could be more, could be less') frames uncertainty at Claude's self-report, never at the student's competence.",
+      "evidence": "Module mood contract here is 'joyful creation,' not 'unease' — the epistemic-vs-punitive distinction this rule polices doesn't have a live target on this file. The self-report caveat ('confabulates its actions as well as its reasons') reads as calibration toward the tool, not shame toward the student — no punitive flavour to flag even in passing.",
       "fix_hint": null,
       "blocking": false
     },
@@ -102,25 +83,25 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title 'Orient and map the window' (line 1) and 'The point' close (line 17, 'you can't steer what you can't see... Load deliberately, watch the budget, dig into the self-report') name positive disciplines (deliberate loading, steering, watching). No failure word (hallucination, fabrication, blind spot) leads any section; 'misrepresentation' (line 45) appears only as the caveat a discipline addresses, not as a section frame.",
+      "evidence": "Line 17 ('The point:** the context window is not your codebase') and the retitled close bullet (line 58, 'What you want is the least context that holds exactly what the task needs') both lead with the positive discipline (deliberate loading) rather than a failure word (overflow, confabulation, hallucination).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity — consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict.",
+      "rule_lead": "Strategy-fidelity check (front-run guard + module-to-module arc + Big Idea fidelity + mood-doesn't-resolve-early, consolidated).",
       "verdict": "PASS",
-      "evidence": "content-strategy-agentic-engineering-101.md's M1 section describes orient-and-introspect as: Claude reads the repo, student interrogates the read via introspection + /context, the bounded window and unread slice become visible — matching this exercise's three-prompt structure near-verbatim. The maintainer 'Themes planted' block (mirror / self-aware+grain-of-salt / 90% correct) reproduces the strategy doc's per-module theme mapping. No front-run: this exercise uses neither plan mode nor Skills/subagents, so nothing here anticipates a downstream module's teaching moment. Module-to-module arc: exercise closes on 'the next exercise fixes the bug you brought from prework, inside the window you just mapped' (line 60); maintainer 'Arc' field names the hand-off to fix-tests-first explicitly. Mood doesn't resolve early: trace.close confirms the file ends holding a map, not a fix — the 'it works, on my repo' payoff stays correctly deferred to Ex2.",
+      "evidence": "Big Idea fidelity: line 17's 'the context window is not your codebase' matches the maintainer's 2026-08-12 note naming the same frame and explicitly rejecting the fuel-gauge alternative the prior draft used (line 80 maintainer block). Front-run guard: the exercise stops at the map, defers the fix explicitly to fix-tests-first (line 59, trace.close.mood_note) — no pushback/forcing-function content is pulled forward from M1 Ex2. Module-to-module arc: maintainer 'Arc' section (line 91-93) hands off cleanly to fix-tests-first; trace.close.final_artifact confirms no premature 'it works' resolution. Mood-doesn't-resolve-early: mood stays at a quieter 8 (not a euphoric spike), correctly leaving the bigger joyful-creation payoff to Ex2, per trace.phases[0].mood_note.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 5,
-      "rule_lead": "Strategic themes recur in Key Concepts (module-only, student-facing '## Key Concepts' heading).",
+      "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "This exercise file carries no '## Key Concepts' heading — per curriculum/CLAUDE.md, Key Concepts is a module-file section (lives in getting-going.md), not an exercise-file section. The strategy judge owns theme-recurrence checks at module scope.",
+      "evidence": "Rule governs a module file's `## Key Concepts` section. This is an exercise file with no Key Concepts heading — strategy class owns Key Concepts on the module file, not here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -129,7 +110,7 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Governs the module-only '## Key Concepts' section, absent from this exercise file for the same reason as rule 5.",
+      "evidence": "No Key Concepts section on an exercise file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -138,7 +119,7 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "Governs the module-only '## What You'll Learn' section, absent from this exercise file (lives in getting-going.md).",
+      "evidence": "No What You'll Learn section on an exercise file — that heading lives on the module file, owned by the strategy judge.",
       "fix_hint": null,
       "blocking": false
     }
@@ -149,7 +130,6 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "teaching_moment_note": "Core teaching moment (mirror + self-aware/grain-of-salt + 90%-correct, landing via the three fenced prompts) is robust across reasonable persona-skill variation — it does not depend on the optional spot-check move. One minor tension worth a maintainer's eye, non-blocking: the exercise's own Leap Test outcome #3 ('Spot-checks Claude's self-report by quoting a specific file or function back') names a real Monday-morning skill, but the body only invites it advisorily ('You can spot-check it') with no fenced prompt and no maintainer Watch-for naming the skip risk. Because it passes the rule-16 removal test cleanly, this stays a PASS rather than a REVISE; flagged here only as color for whoever next touches this file's Watch-fors.",
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 2
 }

@@ -3,7 +3,7 @@
 > Run this module on medium thinking effort. High and xhigh may feel sluggish on a tight slot like this one.
 
 ## Big Idea
-Take one multi-file task into plan mode, push back twice in your own words, then let a second read walk the branches you can't see.
+The first plan is plausible. Plausible isn't good enough, and you are the one who can tell the difference.
 
 ## Prework
 
@@ -13,7 +13,7 @@ Surface one multi-file backlog task in the repo you used for Module 1. Criteria:
 
 Come without a surfaced task and you'll be scrambling to find one while the exercise is already in plan mode. Your call.
 
-Optional reading in the gap before this module: Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0); [Multi-session and Git: survival guide](../../trainings/agentic-engineering-101/reference/multi-session-git.md). And if Dex Horthy's [Why Software Factories Fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md) is still on your list from Module 1, this is the module it pays off in: the cure he lands on is human review made affordable by upfront planning. If you like a lookup page nearby, [plan mode at depth in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#5-plan-mode-at-depth) has the approval paths in one table.
+Optional reading in the gap before this module: [The agentic engineering progression](trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md), which sets up reach and calibrated trust; Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0); [Multi-session and Git: survival guide](../../trainings/agentic-engineering-101/reference/multi-session-git.md). And if Dex Horthy's [Why Software Factories Fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md) is still on your list from Module 1, this is the module it pays off in: the cure he lands on is human review made affordable by upfront planning. If you like a lookup page nearby, [plan mode at depth in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#5-plan-mode-at-depth) has the approval paths in one table.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -40,8 +40,6 @@ After this module, you will be able to:
 [Lecture: Where the rule could live](lectures/where-the-rule-could-live.md)
 
 ## Save the rule if it earned itself
-
-The full compound move ran at M1. This one is a variation.
 
 Ask Claude whether these rules are auto-loaded into each session.
 
@@ -74,11 +72,11 @@ Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble i
 
 <!--/flag:module:earn-the-trust--><!--flag:module:earn-the-trust-->Ask Claude where it wrote the plan file, note the path; M3 reads it. <!--/flag:module:earn-the-trust-->Close this session when the second read lands.<!--flag:no-module:earn-the-trust-->
 
-**Pick one scoped task you'd send off rather than nudge bit by bit: a real slice with a *done* you can name in a sentence. Bigger than a typo-fix, smaller than an epic.**
+**Pick one scoped task you'd send off rather than nudge bit by bit: a real slice. Bigger than a typo-fix, smaller than an epic.**
 
-The next sitting opens on that task and spends most of its time walking your system against it. Come without one and you'll be picking while the walk is already underway. Your call.<!--/flag:no-module:earn-the-trust--><!--flag:module:earn-the-trust--> M3 opens fresh and runs security skills against the M2 feature; if it doesn't have an external or user-facing surface, swap to something from your backlog that does.
+The next sitting opens on that task and spends most of its time walking your system against it. Come without one and you'll be picking while the walk is already underway. Your call.<!--/flag:no-module:earn-the-trust--><!--flag:module:earn-the-trust--> M3 opens fresh and runs security skills against the M2 task; if it doesn't have an external or user-facing surface, swap to something from your backlog that does.
 
-Come to Module 3 without that noted path and a feature to point the skills at, and you'll be scrambling to reconstruct them while STRIDE, the six-category threat walk, is already running. Your call.<!--/flag:module:earn-the-trust-->
+Come to Module 3 without that noted path and a task to point the skills at, and you'll be scrambling to reconstruct them while STRIDE, the six-category threat walk, is already running. Your call.<!--/flag:module:earn-the-trust-->
 
 <!--flag:module:earn-the-trust-->## Pre-reads before Module 3
 

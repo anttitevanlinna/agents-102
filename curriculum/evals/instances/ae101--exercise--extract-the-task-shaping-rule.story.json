@@ -1,9 +1,9 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/extract-the-task-shaping-rule.md",
-  "verdict": "PASS",
+  "verdict": "REVISE",
   "training": "ae101",
-  "module_mood_contract": "extension of grounded competence into capture-and-name (M2 second exercise) — mood target per maintainer block: 'the rule sits in MY file at MY location; I see how this could automate; I'm not building it today — and that's the move.'",
+  "module_mood_contract": "extension of grounded competence into capture-and-name (M2 second exercise) — student leaves feeling the rule sits in MY file at MY location, sees how this could automate, and isn't building it today, and that's the move",
   "trace_status": "regenerated",
   "rules_evaluated": [
     {
@@ -11,7 +11,7 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "N/A",
-      "evidence": "File is an exercise (three phases, three student-copied prompts), not a lecture. The closer this exercise hands off to (lectures/where-the-rule-could-live.md) is correctly sequenced AFTER this exercise per the Arc block, but that placement decision lives in the lecture file and the module file, not here.",
+      "evidence": "File is an exercise (three phases, four student-copied prompts), not a lecture. Its meta-frame closer (lectures/where-the-rule-could-live.md) is correctly sequenced after this exercise per the file's own Arc block, but that placement decision belongs to the lecture file, not this one.",
       "fix_hint": null,
       "blocking": false
     },
@@ -20,7 +20,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "File is an exercise, not a pre-exercise lecture. M2 is a grounded-competence module, not a contrast-mood module (that arc segment is M4/M5's 'learning through contrast').",
+      "evidence": "File is an exercise, not a pre-exercise lecture, and M2 is a grounded-competence module, not a contrast-mood module (that arc segment belongs to M4/M5).",
       "fix_hint": null,
       "blocking": false
     },
@@ -29,7 +29,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Rule targets lecture bodies specifically. This is an exercise with no cross-module M-numbering in its own body ('the next small lecture' is a same-module forward reference, not an M-number); any module-name references inside fenced prompts are governed by check_prompts.md, not this rule.",
+      "evidence": "Rule targets lecture bodies. This exercise's body carries no M-numbering; the reference to the M1 exercise ('the same move you ran at M1 on a bug ticket') names a sibling exercise's move, not a forward/backward M-numbered bridge, and the maintainer block (below the fence) explicitly keeps that cross-reference out of body ('No module reference in body on purpose').",
       "fix_hint": null,
       "blocking": false
     },
@@ -38,7 +38,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
-      "evidence": "Rule scopes to lecture/handbook headers specifically ('the handbook is scanned cold'). This file's slide-rendered headers (## Phase 1/2/3, ## Reject or rewrite the generic rule, ## Wire the file in, check the wording, ## Read the shapes, hold the build, ## What happened) are governed by check_slides.md, not check_lectures.md.",
+      "evidence": "Rule scopes to lecture/handbook headers ('the handbook is scanned cold'). This file's slide-rendered `##` headers are governed by check_slides.md, not this lecture-specific rule.",
       "fix_hint": null,
       "blocking": false
     },
@@ -47,7 +47,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "N/A",
-      "evidence": "Rule scopes to lecture-body slide sizing, §4's sibling in the same lecture-specific frame. Exercise slide-size sizing is governed by check_slides.md (script-enforced). For reference, no phase here is close to the 210-word/6-bullet ceiling — even the reworked 'Wire the file in' Note (the largest single beat) is ~95 words.",
+      "evidence": "Rule is §4's sibling, scoped to lecture-body slide sizing (script-enforced there). Exercise slide-size is governed by check_slides.md; not re-scored here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -55,26 +55,26 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
-      "verdict": "PASS",
-      "evidence": "The three forcing functions all sit inside the fence: extract-the-task-shaping-rule-1.md closes 'After proposing, stop and ask which one I want to rewrite and which one I want to reject. Wait for my answer before continuing.'; extract-the-task-shaping-rule-2.md closes 'After saving, show me the first three rules from the file so I can confirm the wording stuck. If a file already exists at the path we pick, ask before overwriting.'; extract-the-task-shaping-rule-3.md closes 'Don't propose code today.' Body prose ('Read the three rules back. If any drifted from your wording, push back and have Claude rewrite.') is an optional push-back, which rule 16's carve-out permits in body. The new 'Wire the file in, check the wording' Note is mechanical explanation (auto-load paths + @import syntax), not a forcing function, and doesn't need to be fenced.",
-      "fix_hint": null,
-      "blocking": true
+      "verdict": "REVISE",
+      "evidence": "Three of the file's four forcing functions sit correctly inside their fences (extract-the-task-shaping-rule-1 closes 'stop and ask which one I want to rewrite and which one I want to reject... wait for my answer'; -3 closes 'Don't propose code today'; -4 forces the strong-signal/guess/unverifiable split and forbids inferring from the URL). The fourth is the @import wiring decision at 'Wire the file in, check the wording': 'If Claude picked a path outside the three, ask for that @import line before you move on. Without it the file sits on disk unread.' Reading -2's fence in isolation (the diagnostic the rule specifies) does not surface this ask — it lives only in body prose, and the maintainer block's own artefact-contracts stake (M4's walk-and-fill audit subagent cannot see the file without the @import wire) confirms it is load-bearing, not cosmetic. The maintainer block names this as a standing, deliberately-held-open gap (reaffirmed 2026-08-02, logged in pre-cohort-todos.md 2026-07-26) that keeps the wiring decision a student choice rather than a silent auto-wire, and states plainly that 'a pedagogy REVISE here is the expected steady state, not a new finding.' This judge's read agrees with that framing — see fix_hint.",
+      "fix_hint": "No action recommended from this lens: the maintainer block already logs this gap as accepted-by-design pending a cohort-run trigger ('fires if a cohort run shows a student picking a non-auto-load path and missing the wire'). Folding the @import ask into extract-the-task-shaping-rule-2.md's fence now, before that trigger, is explicitly against the maintainer's stated grounds.",
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "No authored conversation, pause, or comparison cue anywhere in the body ('discuss with', 'tell the room', 'share with the person next to you' all absent). Every sentence, including the rewritten Note callout, is about the artifact (rules, file, location, wiring, automation shapes) or the student's own move, not cohort management.",
+      "evidence": "No authored conversation, pause, or comparison cue anywhere in the body — no 'discuss with', 'tell the room', 'share with the person next to you'. Every sentence (rule-naming, story-ticket read, location choice, wiring, automation shapes) is about the artifact or the student's own move with the agent, never about cohort management.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named; mood-floor applies to teaching beats only.",
+      "rule_lead": "Mood contract named; mood-floor (8+/10 per beat, <7 REVISE, 7 = facilitator-premium flag) applies to teaching beats only.",
       "verdict": "PASS",
-      "evidence": "Maintainer Meta block names 'Mood target: extension of grounded competence into capture-and-name.' All three phases are teaching beats (naming rules from evidence, choosing a load-bearing location and wiring it, naming automation shapes without building) — no setup/launch beat to exempt. Regenerated trace (phase 2 SHA changed post the 2026-07-26 Note rewrite) still scores 8/10 at every phase and at close; mood-floor (8+) met throughout, see mood_summary.",
+      "evidence": "Maintainer Meta block names the mood target verbatim ('the rule sits in MY file at MY location... I'm not building it today — and that's the move'). All three grouped beats are teaching beats (rule-naming + reject/rewrite + story-ticket read; location decision + wiring; automation-shapes read), so the mood-floor applies throughout — no setup/launch beat to exempt. Regenerated trace scores 8/7/8 across phases and 8 at close: no beat drops below 7, so no REVISE under this rule. Phase 2 ('Wire the file in, check the wording') lands at 7 — a facilitator-premium gap, not a floor violation; what would take it to 8 is the very @import forcing-function change the pedagogy §16 finding above explicitly declines to recommend, so this gap is accepted alongside that one.",
       "fix_hint": null,
       "blocking": false
     },
@@ -83,7 +83,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "No shame-framing anywhere in student-facing body. 'The generic rule is the tell... needs rewriting into your words, or rejecting' frames the generic rule as a normal, expected artifact of the process to sharpen, not a mistake the student made. The rewritten wiring Note frames the un-wired file as inert plumbing, not a student error ('sits silently on disk until something reads it'). Diagnostic/watch-for language (P1 too long, default-acceptance) is confined to the maintainer block.",
+      "evidence": "No shame-framing in student-facing body. 'The generic rule is the tell... needs rewriting into your words, or rejecting' frames the generic rule as an expected artifact to sharpen, not a mistake the student made. The wiring Note frames an un-wired file as inert plumbing ('sits on disk unread'), not a student error. Diagnostic/watch-for language stays confined to the maintainer block.",
       "fix_hint": null,
       "blocking": false
     },
@@ -92,25 +92,25 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "'The point:' lead: 'the file is the artifact. You captured how you factored this task on this codebase. Templates stay generic; this file carries your rules.' Positive-discipline framing (capture, your own words) leads; the generic-rule failure mode is a named contrast case inside Phase 1, not the section's title or frame.",
+      "evidence": "'**The point:** find a place for your rules' leads with a positive discipline (capture, place, own it), not a failure word. The generic-rule failure mode is a named contrast case inside Phase 1, not the section's title or frame.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
-      "verdict": "PASS",
-      "evidence": "Front-run check: clean — maintainer's own 'Non-front-running checks' confirms Phase 2 names a .md file, not a skill (M3 Ex3 owns first skill-by-name authoring), and Phase 3 names shapes without invoking any (M5/M6 own verifier/eval territory); matches strategy doc's M2-in-detail section verbatim ('inlined as a plain prompt so M2 doesn't front-run M3's first-Skill-use moment'). Module-to-module arc: clean — file's own 'Hands off to: lectures/where-the-rule-could-live.md' matches the strategy doc's description of that mini-lecture closing M2 with the same three shapes (Slack-triage, issue-webhook, scheduled-read). Big Idea fidelity: clean — the paired-reads discipline from the core exercise ('approve, don't execute') is extended one layer up ('save, don't automate'), exactly as the strategy doc frames it. Mood-doesn't-resolve-early: clean — the close explicitly stays open ('You asked one open question about where the file could go next. Claude proposed shapes. You read.'), no downstream teaching moment (M3 skill authoring, M5 verifier, M6 eval-encoding) gets pre-empted. The Phase-2 wiring rewrite (Note replacing a bullet) is a mechanism clarification, not a strategy-fidelity change — same auto-load/lazy-load/@import taxonomy, same non-prescriptive framing ('respects the M3 forthcoming... tier reveal').",
-      "fix_hint": null,
+      "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict).",
+      "verdict": "REVISE",
+      "evidence": "Front-run check: PASS — the file explicitly refuses to name a skill in Phase 2 ('Phase 2 names a `.md` file, NOT a skill. M3 Ex3 owns first skill-by-name authoring') and refuses to build automation in Phase 3 ('Don't propose code today'), matching the private strategy doc's own non-front-running boundary at M3. Module-to-module arc: PASS — the Arc block hands off to `lectures/where-the-rule-could-live.md`, matching the strategy doc's own sequencing ('Mini-lecture — where the rule could live... meta-frame closer'). Big Idea fidelity: PASS — 'find a place for your rules' matches the strategy doc's framing of the second exercise as a capture-your-world beat with a student-picked location. Mood-doesn't-resolve-early: PASS — M2 is a grounded-competence module with no downstream unease to protect. The facet that fails is strategy-fidelity itself: `content-strategy-agentic-engineering-101.md` § 'M2 in detail' (read 2026-08-12, file mtime same day, BEFORE the exercise's story-ticket commits later that day) states plainly 'What M2 no longer carries. The ticket-conventions read and the *refinement* term both belong to M1's `close-the-ticket`. M2 does not re-earn either, issues no homework, and its Phase 3 ends at the automation-shapes read.' The shipped file now runs exactly that move — a ticket-conventions read, via extract-the-task-shaping-rule-4 on a story ticket — inside Phase 1, before the file's own Phase 3. The module file (`plan-mode-done-right.md` line 99) already documents this as a deliberate, maintainer-directed 2026-08-12 addition ('The ticket read is no longer M1's alone... 2026-08-12, maintainer-directed'), so the addition itself is not in question — but the private strategy doc, which is the canonical arc/sequencing source per `curriculum/CLAUDE.md`'s Alignment rule ('Strategy and module file change in the same edit. Drift = process bug.'), was not updated in the same pass and still asserts the opposite boundary.",
+      "fix_hint": "Sync `content-strategy-agentic-engineering-101.md` § 'M2 in detail — plan mode, done right' to reflect the 2026-08-12 story-ticket addition (or its 'What M2 no longer carries' paragraph, which currently contradicts the shipped exercise and the module file's own note). This is a private-strategy-doc edit outside this judge's scope, not a change to the exercise body — the maintainer-directed addition itself reads as settled.",
       "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 5,
-      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "rule_lead": "Key Concepts shape — theme breadcrumbs.",
       "verdict": "N/A",
-      "evidence": "Module-only section (student-facing '## Key Concepts' heading lives in the parent module file, plan-mode-done-right.md, not in this exercise file).",
+      "evidence": "Governs the module file's `## Key Concepts` section (student-facing heading), not an exercise file. This exercise carries no such section.",
       "fix_hint": null,
       "blocking": false
     },
@@ -119,7 +119,7 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Module-only section; no '## Key Concepts' heading in this exercise file.",
+      "evidence": "Same scope as §5 — module-file-only, governed there by the strategy judge, not applicable to this exercise file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -128,48 +128,19 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "Module-only section; no '## What You'll Learn' heading in this exercise file.",
+      "evidence": "Governs the module file's `## What You'll Learn` section, not an exercise file. This exercise carries no such section.",
       "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 2,
-      "rule_lead": "Every prompt block: one-sentence action lead-in.",
-      "verdict": "REVISE",
-      "evidence": "Phase 1's lead-in ('Ask Claude to read the scrollback, propose rules, and pause for your push-back before going further.') and Phase 2's lead-in ('Decide the location with Claude.') are both command-verb sentences that satisfy the rule. Phase 3 has no such sentence: the two lines immediately before {{prompt:extract-the-task-shaping-rule-3}} are '**Refinement** is the backlog-grooming loop...' and 'The prompt asks for shapes, not code...' — both describe/gloss the prompt in third person rather than instructing the student's action in one command-verb sentence. Unaffected by the Phase-2 wiring rewrite; carried forward from prior audit, still open.",
-      "fix_hint": "Add one command-verb lead-in sentence before the Phase 3 marker, e.g. 'Ask Claude to name two or three automation shapes for the rules file, without proposing code.'",
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 6,
-      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
-      "verdict": "PASS",
-      "evidence": "extract-the-task-shaping-rule-1 (propose/reject rules) makes no mention of file location or automation. extract-the-task-shaping-rule-2 (pick location, write file) makes no mention of the automation-shapes ask that follows in Phase 3. Each prompt produces its output as if downstream didn't exist.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 41,
-      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
-      "verdict": "REVISE",
-      "evidence": "extract-the-task-shaping-rule-2.md reads, in order: '...write the rules in the wording I sharpened. After saving, show me the first three rules from the file so I can confirm the wording stuck. If a file already exists at the path we pick, ask before overwriting.' The overwrite-check is a precondition that logically belongs BEFORE the write, but is textually the last sentence, after both 'write the rules' and 'show me the first three rules' (which presumes the write already happened). Low-severity in practice — a competent agent infers the sensible check-then-write order regardless of sentence position, and the regenerated trace shows no persona confusion here — but the fence's own sentence order doesn't match the sequence it describes. Prompt file itself untouched by the on-disk exercise-body change; carried forward, still open.",
-      "fix_hint": "Move the overwrite-check clause immediately after the location is picked and before 'write the rules', so the fence's sentence order matches execution order.",
       "blocking": false
     }
   ],
   "mood_summary": {
-    "phase_scores": [8, 8, 8],
+    "phase_scores": [8, 7, 8],
     "close_score": 8,
-    "any_below_8": false,
-    "stealing_the_mood": []
+    "any_below_8": true,
+    "stealing_the_mood": [
+      "Phase 2 ('Wire the file in, check the wording') lands at 7/10 — a facilitator-premium gap tied to the same accepted, deliberately-held-open @import forcing-function decision flagged under check_pedagogy.md §16 above; not a floor violation."
+    ]
   },
-  "teaching_moment_lands": {
-    "verdict": "PASS",
-    "note": "The named teaching moment — 'the rule sits in MY file at MY location; I see how this could automate; I'm not building it today' — fires reliably across the regenerated trace with zero confusion_flags at any of the three phases and an is_me_rating of 8 at close. The rewrite-or-reject forcing function (Phase 1), the location choice with loading-model tradeoffs plus the now-explicit @import wiring step (Phase 2), and the no-code automation-shapes ask (Phase 3) are each enacted inside their fenced prompts (see check_pedagogy.md #16), not narrated in body prose, so the moment doesn't depend on a persona reading carefully — it fires from executing the prompt as given."
-  },
-  "blocking_findings_count": 0,
-  "todos_count": 2
+  "blocking_findings_count": 1,
+  "todos_count": 1
 }

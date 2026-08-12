@@ -103,6 +103,16 @@ Return ONE JSON object, exactly this shape:
 
 Common mistake on early runs: setting top-level `verdict: REVISE` because the file has multiple non-blocking REVISEs and "feels" like it needs work. Don't. Compute the count, apply the rule.
 
+## JSON validity — the failure that voids the whole fire
+
+**Escape every inner double quote as `\"`.** Compendium rule leads contain literal double quotes — `check_writing.md` rule 3 is *No stale markers, no "fixed" retrospectives, no session biography.* Copying that into a `rule_lead` or `evidence` field raw produces a file that `JSON.parse` rejects, and an unparseable instance is worth exactly as much as no instance at all. Paraphrase the lead without quote characters if escaping is awkward. Same for `evidence` strings quoting body prose.
+
+**Write the file before you compose your reply.** Persist the instance JSON with the Write tool as your first output action, then report. A judge that composes the whole object in its final message and dies mid-response leaves nothing behind; one that wrote first survives the same failure.
+
+**Verify before you finish.** Run `node -e "JSON.parse(require('fs').readFileSync('<path>','utf8'))"` on the file you just wrote. If it throws, fix the file and re-run until it parses. Report the rule count back so the caller can check coverage without re-reading the file.
+
+*(All three failures were observed on 2026-08-12: 9 of 11 writing fires returned clean-looking JSON in-message and persisted nothing; the 2 that wrote produced unparseable files from unescaped quotes. `check_platform_and_boundaries.md` §21 already required writing-class fires to schema-validate — nothing enforced it.)*
+
 OUTPUT ONLY THE JSON. No markdown fence, no commentary, no preamble.
 ```
 

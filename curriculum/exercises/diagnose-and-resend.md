@@ -12,11 +12,11 @@ Open a new Claude Code session in the worktree at `../<repo>-m5` (set up at modu
 
 **HOX** You should be in the worktree now. Make sure you are not continuing in the original repo or on its branch.
 
-**What you do:** Read the un-packaged artefact through three failure-mode lenses. For each named failure, ask what validation would have caught it in minutes, not hours. Build a verifier shaped against your dominant failure (one of three shapes). Assemble a task-scoped reference artefact + plan.md in conversation. At Debrief, the module re-sends the same task packaged.
+**What you do:** read the failed run through three failure-mode lenses, then build a verifier against your worst one.
 
-**What you build:** three pieces that make a failed run come back trustworthy: a verifier, a reference, and a plan.md. Each one is built against a specific failure you read in the un-packaged run.
+**What you build:** a verifier, a reference, and a plan.md, each built against a failure you actually read.
 
-**The point:** a practitioner's pattern earns its name in this exercise. You don't learn it from a slide; you build each piece against a failure you read in your own artefact. The closing lecture names what you built afterward.
+**The point:** packaging you built against your own failure beats packaging you were taught.
 
 ---
 
@@ -111,7 +111,7 @@ The exercise ends here. The module's re-send is next: same task, with reference 
 
 **View summary:** You read the un-packaged run through three failure lenses, build the checks and durable task artifacts that would have caught its misses, then re-send the same work. The contrast makes packaging visible on your own code rather than as advice.
 
-**The 10% recall in `## Pin each failure to a quoted moment` is the prior's third and last statement, by design.** `orient-and-introspect.md:45` sets it on the agent's read of a repo (maintainer-attested there), `plan-mode-done-right.md` § Key Concepts applies it to a plan, and this bullet applies it to a run transcript the student did not watch. Three instances, roughly two modules apart, a different artefact each time, each carrying its own action: progression-with-variation, not the refrain `check_pedagogy.md` §9b bans. This is the beat that earns it. In M1 and M2 the student can read the whole artefact by eye, so the prior costs nothing there; here it is the only affordable check, and asking the agent to locate its own quotes is the only one available when the agent holds the codebase and the student holds the lenses. The imperative *assume* and the *about* hedge travel from M1 and are load-bearing: the prior is an instruction to the reader, and a floor form would be a claim about the world. Do not harden it, and do not restate it as a general claim about agents. M1's double-hedge (*"could be more or less"*) stays M1's, so `check_slides.md` §7's number-plus-retraction sub-item does not fire here.
+**The 10% recall in `## Pin each failure to a quoted moment` is the prior's third and last statement, by design.** `orient-and-introspect.md` § *Read the self-report, then spot-check it* sets it on the agent's read of a repo (maintainer-attested there), `plan-mode-done-right.md` § Key Concepts applies it to a plan, and this bullet applies it to a run transcript the student did not watch. Three instances, roughly two modules apart, a different artefact each time, each carrying its own action: progression-with-variation, not the refrain `check_pedagogy.md` §9b bans. This is the beat that earns it. In M1 and M2 the student can read the whole artefact by eye, so the prior costs nothing there; here it is the only affordable check, and asking the agent to locate its own quotes is the only one available when the agent holds the codebase and the student holds the lenses. The imperative *assume* and the *about* hedge travel from M1 and are load-bearing: the prior is an instruction to the reader, and a floor form would be a claim about the world. Do not harden it, and do not restate it as a general claim about agents. M1's double-hedge (*"could be more or less"*) stays M1's, so `check_slides.md` §7's number-plus-retraction sub-item does not fire here.
 
 **Emphasis:** Bold is limited to title-page labels, widget chrome, the Phase 3 verifier-shape menu handles (**Background-agent verifier** / **Deterministic shell-hook** / **Ralph re-feed**), and the Phase 4 stop-gate handle. All other body prose stays unbolded.
 
@@ -126,7 +126,7 @@ The exercise ends here. The module's re-send is next: same task, with reference 
 - writes a task-scoped reference + plan.md before any multi-hour delegated run, pointing at the codebase rules rather than restating them
 - fires the verifier once as a smoke test before relying on it, so the check is checked before it gates anything
 
-**Time budget total:** 65 min exercise body. Phase breakdown: P1 15 / P2 10 / P3 20 / P4 20. Module Debrief + re-send adds 15–20 min. Closing lecture adds 12–15 min after Debrief.
+**Placement:** the module's Debrief and re-send follow this exercise, and the closing lecture follows those. This file owns only its own `**Time:**` line; the module total is computed — `node scripts/calculate-time.js learn-from-the-test`.
 
 <!-- backing -->
 
@@ -143,7 +143,7 @@ Claims
 - `untested-verifier-is-no-verifier` · vision · "A built-but-untested verifier is no verifier." ← none-owed
 - `reference-pins-the-task` · vision · "The reference pins the task." ← none-owed
 - `plan-md-is-mutable-not-plan-mode` · vision · "plan.md is the agent's mutable working document. Not the plan-mode plan." ← none-owed
-- `pattern-earns-its-name-here` · vision · "a practitioner's pattern earns its name in this exercise" ← none-owed
+- `built-beats-taught` · vision · "packaging you built against your own failure beats packaging you were taught" ← none-owed
 
 Sources
 - three-failure-modes `[checked:2026-08-01 result:CAVEAT due:cohort]` (no URL — house vocabulary) — [house canonical] goal drift / context rot / plausible-but-wrong. **Not convergent practitioner vocabulary** (corrected 2026-08-01): only *context rot* is a term the field actually uses, with a study behind it and unprompted use by Ronacher and Osmani. *Goal drift* and *plausible-but-wrong* return zero named practitioners. The phenomena are well attested; the names are largely ours, which is all this exercise needs — it applies the lenses, the pre-read carries the colour. fallback: none needed; the corrected framing is the fallback.

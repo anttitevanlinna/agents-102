@@ -50,13 +50,13 @@ Claims
 - `test-learn-encode` · vision · "The arc is *test → learn → encode*." ← none-owed
 - `three-failure-lenses` · detail · "**Goal drift** … **Context rot** … **Plausible-but-wrong**" ← three-failure-modes
 - `skip-a-lens-lose-a-name` · vision · "the lens you skip is the failure you can't name" ← none-owed
-- `never-trust-the-window` · vision · "Never trust the window to hold over a long session." ← none-owed
+- `never-trust-the-window` · vision · "**Never trust the window** to hold over a long session." ← none-owed
 - `compact-with-instructions` · detail · "`/compact focus on the failure modes and the validation I'm sketching` keeps what you choose" ← anthropic-compact-docs
 - `auto-compact-is-legitimate` · detail · "Some good engineers just let auto-compact fire." ← osmani-long-running, amp-neo, steipete-inference-speed
 - `no-percentage-worth-memorising` · detail · "No winning strategy here, and no percentage worth memorising." ← humanlayer-long-context, cc-autocompact-varies, horthy-ace-fca
 - `manual-needs-a-keyboard` · vision · "Manual compaction works because you're at the keyboard." ← none-owed
 - `files-survive-compaction` · detail · "Files on disk survive compaction; conversation-only instructions may not." ← cc-context-window-docs
-- `compact-is-not-packaging` · vision · "`/compact` is session management, not packaging. The whole point of packaging is that you can leave the room." ← none-owed
+- `compact-is-not-packaging` · vision · "`/compact` is session management, not packaging. The whole point of packaging is that the session can continue without you at the keyboard." ← none-owed
 
 Sources
 - three-failure-modes `[checked:2026-08-01 result:CAVEAT due:cohort]` (no URL — house vocabulary, see below) — [house canonical] goal drift / context rot / plausible-but-wrong. Per-term hunt 2026-08-01: *context rot* is real field vocabulary with a study behind it (Chroma, 18 models) and Anthropic's own adoption, used unprompted by Ronacher and Osmani — roughly 3–4 named users, short of the L3 bar. *Goal drift* and *plausible-but-wrong* return **zero** named practitioners; the only appearance of "goal drift" as a term is a byline-less digest. **The phenomena are well attested; the names are largely ours.** Body says "practitioners hit" rather than "practitioners name" — keep that verb, and do not restore "convergent practitioner vocabulary". fallback: none needed, the corrected framing is the fallback.

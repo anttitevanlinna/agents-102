@@ -121,7 +121,7 @@ Claims
 - `a-few-dozen-to-start` · vision · "A few dozen outputs is enough to start; you are looking for disagreement patterns, not a significance test." ← none-owed
 - `husain-ninety-percent-three-iterations` · detail · "Hamel Husain reports better than 90% agreement after three iterations of exactly this loop." ← husain-llm-judge
 - `error-analysis-before-armchair` · detail · "A good gate starts from real traces, not imagined failures." ← husain-field-guide, husain-evals
-- `goodhart-gates-decay` · borrowed · "**Goodhart's law**, and the agent is an optimizer aimed straight at your gate." ← cultural-vocab
+- `goodhart-gates-decay` · borrowed · "A measure that becomes a target stops measuring. **Goodhart's law.** The LLM is an optimizer aimed straight at your gate" ← cultural-vocab
 - `passing-while-missing-intent-is-a-signature` · vision · "When work clears the gate and still is not what you meant, the gate has decayed into a target." ← none-owed
 - `holdout-and-integrity-check` · vision · "Keep a check the agent never sees, so nothing can optimize against it." ← none-owed
 - `behaviour-is-a-distribution` · vision · "The agent's behavior is a distribution, not a property." ← none-owed

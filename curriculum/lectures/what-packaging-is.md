@@ -313,10 +313,10 @@ Claims
 - `keeper-hooks-are-repo-specific` · vision · "tied to a specific file, convention, or failure mode in this repo" ← none-owed
 - `subagents-for-isolation` · detail · "the subagent's context is discarded after it reports" ← ooda-long-run-context
 - `long-run-context-has-not-converged` · detail · "Different shapes for different jobs; the field hasn't converged." ← ooda-long-run-context, amp-handoff, amp-200k, amp-neo, amp-context-guide, huntley-ralph
-- `eighty-twenty-ratio` · detail · "roughly 80% planning and review, 20% execution" ← every-compound-80-20
+- `attention-is-front-loaded` · detail · "Most of the human attention that made the re-send land came before you pressed send" ← every-compound-80-20 — the source states a 80/20 split; the body deliberately carries the shape without the ratio, so do not restore a number here.
 - `klaassen-tdd-quote` · detail · "Claude writes the test. The test fails, the natural first step in test-driven development (TDD)" ← klaassen-already-fixed
 - `packaging-is-the-eighty` · vision · "The packaging you just built IS the 80% side. The re-send was the 20%." ← none-owed
-- `agent-hours-are-org-cost` · vision · "those hours are real money on the org's bill, the same way engineer hours are" ← none-owed
+- `re-read-cost-buys-a-clean-session` · vision · "That cost is the point: it buys a session with no drift in it." ← none-owed
 - `intercom-auto-approval-numbers` · detail · "19.2% of pull requests auto-approved with no human reviewer, merging in 14.6 minutes against an org median of 75.8, and 86% of the auto-approved PRs at 20 lines or fewer" ← curran-2x
 - `intercom-rd-org-size` · detail · "an R&D org of roughly 500" ← curran-2x
 - `review-infrastructure-grows-by-accretion` · vision · "Review infrastructure grows by accretion." ← none-owed

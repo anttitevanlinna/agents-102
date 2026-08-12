@@ -8,7 +8,7 @@
 
 **What you build:** one recorded hardening decision, written as an ADR (Architecture Decision Record) in your repo's convention.
 
-**The point:** threat modeling is only useful if it produces a decision.
+**The point:** STRIDE's value is rejection, not enumeration.
 
 ---
 
@@ -153,7 +153,7 @@ Ask Claude whether this ADR rides into future sessions automatically.
 
 Claims
 - `stride-is-a-six-category-checklist` · borrowed · "Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege." ← stride-microsoft
-- `threat-modeling-is-only-useful-if-it-produces-a-decision` · vision · "threat modeling is only useful if it produces a decision." ← none-owed
+- `value-is-rejection-not-enumeration` · vision · "STRIDE's value is rejection, not enumeration." ← none-owed
 - `strides-value-is-structured-rejection` · vision · "that rejection is the point, not a failure of the scan" ← none-owed
 - `subagent-does-the-walk-you-read-the-result` · vision · "The subagent does the walk; you read the result." ← none-owed
 - `runs-against-the-map-not-the-raw-code` · vision · "It runs in fresh context against the map, not the raw code" ← none-owed

@@ -37,7 +37,7 @@ Ask Claude to author the skill, asking one question at a time.
 
 - Authoring without invocation is theatre. The skill proves itself only when it runs on real code.
 - The skill is auto-discovered right here. It sits at `~/.claude/skills/test-strategy/SKILL.md`, and this worktree holds the full codebase. Invoke it on the code as it stands in front of you.
-- The agent reads the codebase; you read what comes back.
+- The agent reads the codebase; you read the strategy it produced and the grade it gave itself, and whether either one reads generic.
 
 Ask Claude to invoke the skill on this codebase and grade what it produced in the same turn.
 

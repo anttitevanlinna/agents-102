@@ -4,7 +4,7 @@
 
 **What you do:** push back twice on your plan, run a second-pass grilling, then approve and **stop**.
 
-**What you build:** two paired reads on one plan: your two push-backs, then a walk-down three questions at a time.
+**What you build:** paired reads on one plan: your two push-backs, then a walk-down three questions at a time.
 
 **The point:** the first pass is plausible, and usually not good enough.
 

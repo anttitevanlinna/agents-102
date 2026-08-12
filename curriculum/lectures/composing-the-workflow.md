@@ -168,7 +168,7 @@ You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map o
 
 ## Composition is a live argument, so you read
 
-How the field composes kits like this is a live argument with no settled answer, so there is no prompt to drill here. The move is to read. Two reads take it further: one engineer's whole worked stack, then the wider field.
+How the field composes kits like this is a live argument with no settled answer, so there is no prompt to drill here. The move is to read: one engineer's whole worked stack, then the wider field.
 
 [Dino's skill stacking system](trainings/agentic-engineering-101/supplementary/skill-stacking.md)
 

@@ -1,22 +1,20 @@
-# Walk and *send off*
+# Prep the run, *fill the gaps*
 
 **Time:** 55 minutes.
 
 **Session** *(new, "Module 4 - Run the first experiment")*
 
-Start a new Claude Code session at your repo root.
-
 ```
 /rename m4-walk-send
 ```
 
-Start clean. The task here is bigger than anything so far. Before the new session, check your working tree and branch. You ride that state into the closing `m4/<slug>` commit, and the next module forks its worktree from that commit.
+Start clean at your repo root. The task here is bigger than anything so far. Before the new session, check your working tree and branch. You ride that state into the closing `m4/<slug>` commit, and the next module forks its worktree from that commit.
 
-**What you do:** walk a task you've been avoiding against what you've built, then send it off un-packaged.
+**What you do:** walk a task you've been avoiding against what you've built, then fill the worst gaps it exposes.
 
-**What you build:** a scoped task with a 'done' you can name, and the worst gaps filled in `observations/`.
+**What you build:** a scoped task, and the worst gaps filled in `observations/`.
 
-**The point:** sending this off un-packaged is what teaches you what packaging adds later.
+**The point:** you find the thin spots before the agent does.
 
 ---
 
@@ -24,33 +22,33 @@ Start clean. The task here is bigger than anything so far. Before the new sessio
 
 *10 min*
 
-- A real slice you'd send off rather than nudge bit by bit, with a 'done' you can name in a sentence. Bigger than a typo-fix, smaller than an epic.
-- The pick is yours; the fit-check is the agent's. Bring one or two candidates; the agent screens them for fit against the three long-run criteria.
+- A real slice you'd send off rather than nudge bit by bit. Bigger than a typo-fix, smaller than an epic.
+- Bring one or two candidates.
 
-Ask Claude to screen the candidates you bring against the three long-run criteria and scope the winner. Drop the candidates after the colon.
+Ask Claude to screen your candidates and scope the winner. Add them after the colon.
 
 {{prompt:walk-and-send-off-1}}
 
 ## Push back until the task is one end-to-end slice
 
-- Push back when the read misses the codebase. The agent is reading the shape, not the substance.
-- Imagining a finished demo means you scoped too big. Slice it down to one end-to-end thing that gives the agent something real to work with.
-- Pick one task well. You'll use it again next module.
+- Push back when the screen misses something you know about the codebase.
+- You'll use this task again next module.
 
 ## Phase 2: Build the ranked list of what will hurt the agent
 
 *45 min*
 
-- The audit walks your whole system so you don't. The agent reads `CLAUDE.md`, `CLAUDE.local.md`, memory, ADRs, and any skills you've authored as a subagent, then ranks the five thin spots that will hurt the agent most on this task.
+- The agent reads `CLAUDE.md`, `CLAUDE.local.md`, memory, ADRs, and any skills you've authored, then ranks the five thin spots that will hurt it most on this task.
 - Heavy audit expected. Skim past the opening summary; the ranked thin-spots list is the payoff. If the ranked list comes back thin, push Claude to keep digging rather than letting a shallow pass stand as done. If it comes back long and unranked, send it back for five, ranked.
 
 Ask Claude to run the audit as a subagent and return a ranked top-five.
 
 {{prompt:walk-and-send-off-2}}
 
-## Read the ranked thin-spots
+## Correct the list and reprioritise it
 
-- Name which ones you already knew, which surprised you. This move is *gap analysis*: walk the system you have against the system the task needs. You'll use it for every agent hand-off.
+- The ranking is Claude's read of your system. Tell it what's wrong, what's missing, and what you'd move up.
+- You fill the top few next.
 
 ## Fill the worst two or three gaps
 
@@ -58,7 +56,7 @@ Ask Claude to run the audit as a subagent and return a ranked top-five.
 - New observations land in `observations/`, gitignored. That's the default home. If your team kit pins a different path, tell Claude which one and stay consistent with it. If `observations/` is new to your repo, ask Claude to add it to `.gitignore` before any writes; the fills below land there and you don't want them tracked.
 - The agent reads `observations/` when a prompt names the path, the same way it reads your ADRs. It is not auto-loaded the way `CLAUDE.md` and `CLAUDE.local.md` are.
 
-Ask Claude to walk you through the picked gaps one at a time, using the AskUserQuestion tool to scaffold the flow.
+Ask Claude to walk the picked gaps one at a time, with AskUserQuestion.
 
 {{prompt:walk-and-send-off-3}}
 
@@ -69,32 +67,21 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 - **Observation or rule:** *"Add this to observations: the payments service treats idempotency keys case-sensitively even though the docs don't say so."* Lands in `observations/`.
 - **Sharpen an existing rule:** *"In my `CLAUDE.local.md`, under 'testing', replace the current mocking rule with one that says: integration tests hit a real Postgres in Docker; unit tests mock at the service boundary, never at the repository."* Lands in `./CLAUDE.local.md`. (Team-worthy version would go in a PR against `CLAUDE.md` separately.)
 - **Wire a connector:** if the task needs something only a connector reaches (issue tracker, staging logs, internal API), wire it now while the task is on your mind, not mid-send-off. Claude Code action, not a file write.
-- **Name a business-rules gap:** if the task touches customer segments, regulatory scope, or team commitments and you don't have that written anywhere Claude can read, *the gap IS the finding*. Write one line in observations naming what's missing and where the real material lives (external wiki, team Notion, sponsor's head). Claude knows what it doesn't know. That's still context. Lands in `observations/`.
+- **Bring the material in:** if the task turns on business rules the repo doesn't carry (customer segments, regulatory scope, team commitments), fetch them. Paste the section, export the Notion page, save the PDF, give Claude the link if it can reach it. Tell Claude to land what you bring in `observations/`. A pointer the agent can't open is not context.
 
-## Push back when a fill drifts from the codebase
+## Push back when Claude drifts from the codebase
 
-- Your observations are what you just admitted is thin in spots. Don't let them re-seed with drift. Push back when Claude writes something that doesn't match the codebase.
+- If Claude says something about your codebase you didn't tell it, ask where it read that.
 
 > **Time check.** Different paces hit this point at different times. The room doesn't wait for the slowest. Five to ten minutes to share what surfaced, where the audit missed, and why the agent sometimes goes lazy.
 
-- Before the send-off, ask Claude to propose any tidy-up of `./observations/`. Cap it at one or two file moves or renames; leave the ADRs and skills where they are, and ask to see the diff before it lands.
-- Consider whether each rule is stored where it will fire. A rule the agent never reads is not a rule.
-
-**What happened:** One scoped task, a ranked audit of the system against it, and the worst gaps filled. The `observations/` tree is settled on disk before the send-off.
-
-## What closes the module
-
-The exercise ends here. The module's send-off takes over:
-
-1. You set the two return markers: ask Claude where this session's transcript lives, then ask it to commit the current state on a feature branch and report the short SHA. Push the branch if you want the experiment to outlast your laptop. The next session forks from that commit and reads the transcript.
-2. You run the trifecta check: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening that prompt injection needs. All three present here, cut one leg before you send.
-3. You paste the send-off prompt to the same session. Keep the laptop awake and plugged in. Don't close the lid; sleep freezes the session and it won't resume on wake. If you want to stop the session early, wait for a tool call to finish; clean interrupts between tool calls are fine. Traces are data either way.
+- Before the send-off, tidy the folder: *"Propose 5 to 10 ways to make `./observations/` load better into future sessions, in priority order."* Take as many as you want from the top.
 
 <!-- maintainer -->
 
 **View summary:** You choose a task large enough to expose drift, ask the agent to find the thinnest parts of your existing context, fill only the worst gaps, and send the task off un-packaged. That first run becomes evidence for the next module.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads and the "Start clean." paragraph lead de-bolded; kept bold only on the four fill-shape menu handles (**Observation or rule** / **Sharpen an existing rule** / **Wire a connector** / **Name a business-rules gap**); widget/label chrome untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads and the "Start clean." paragraph lead de-bolded; kept bold only on the four fill-shape menu handles (**Observation or rule** / **Sharpen an existing rule** / **Wire a connector** / **Bring the material in**); widget/label chrome untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
 **Time-check callout — deliberate exception to `check_student_facing.md` preamble (room-share commands).** The Phase 2→Phase 3 callout uses *"to share what surfaced, where the audit missed, and why the agent sometimes goes lazy."* The preamble bans room-share commands (`share with your neighbor`, `tell the room`, `say X out loud`); *to share* without an addressee reads as invitational room-energy, not a student-action mandate. The blockquote shape + named 5–10 min window is a trainer cue (catch-up window for slower paces + banter beat on agent laziness). Future judges should not re-flag.
 
@@ -111,13 +98,8 @@ The exercise ends here. The module's send-off takes over:
 <!-- backing -->
 
 Claims
-- `unpackaged-send-off-teaches-what-packaging-adds` · vision · "sending this off un-packaged is what teaches you what packaging adds later" ← none-owed
-- `done-you-can-name-in-a-sentence` · vision · "with a 'done' you can name in a sentence" ← none-owed
-- `pick-is-yours-fit-check-is-the-agents` · vision · "The pick is yours; the fit-check is the agent's." ← none-owed
-- `imagining-a-demo-means-too-big` · vision · "Imagining a finished demo means you scoped too big." ← none-owed
-- `audit-walks-the-system-so-you-dont` · vision · "The audit walks your whole system so you don't." ← none-owed
+- `find-thin-spots-before-the-agent-does` · vision · "you find the thin spots before the agent does" ← none-owed
 - `push-if-the-ranked-list-comes-back-thin` · vision · "If the ranked list comes back thin, push Claude to keep digging rather than letting a shallow pass stand as done." ← none-owed
-- `gap-analysis-move` · borrowed · "walk the system you have against the system the task needs" ← cultural-vocab
 
 Sources
 (none. Every claim is the exercise's own design stance or a move the student runs against their own repo. The one borrowed frame is generic business-analysis vocabulary that owes attribution by name only.)
@@ -177,6 +159,6 @@ OODA
 
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
 
-**M4 has no Debrief — this file names the module's send-off, or "the close".** `run-the-first-experiment.md` closes on the send-off itself, so a Debrief is not a section the student reaches. The label belongs nowhere in this file, body or trainer metadata. `## What closes the module` tracks that section's beats in its own order: return markers, trifecta check, send-off paste.
+**M4 has no Debrief — this file names the module's send-off, or "the close".** `run-the-first-experiment.md` closes on the send-off itself, so a Debrief is not a section the student reaches. The label belongs nowhere in this file, body or trainer metadata. A `## What closes the module` section used to preview that section's beats here (return markers, trifecta check, send-off paste); it was cut 2026-08-12 as a forward-pointer duplicating the module text a screen below it. Do not restore it — the module owns its own close.
 
 **`walk-and-send-off-4` stays retired.** The settle-the-tree beat runs as plain body prose at the close of the fill section: no heading, no fence. The three-block frame is deliberately absent — it names the memory architecture without advancing the curriculum — and the propose-then-review-the-diff move is on its third rep in this file by that point (Phase 1 pick, Phase 2 audit, Phase 2 fill), so prose carries it. Do not re-fence it, even lighter.

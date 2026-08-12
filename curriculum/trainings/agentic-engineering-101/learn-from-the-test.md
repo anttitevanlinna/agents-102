@@ -1,7 +1,7 @@
 # Learn from the test, re-send packaged
 
 ## Big Idea
-Read the un-packaged session through three failure-mode lenses, build the validation that would have caught each, assemble the reference and plan.md, and re-send the same task packaged. The contrast is the lesson.
+Steer your long run. You can't stand over a multi-hour session, so the steering goes in before the task leaves, and the run you already have tells you what to put there.
 
 ## Prework
 
@@ -19,7 +19,7 @@ After this module, you will be able to:
 
 ## Start here
 
-You sent off an un-packaged session and read the pre-read, *Reading the return*. You walk in with the artefact in front of you and the three failure-mode lenses in hand. The in-room lecture below opens the session.
+You sent off an un-packaged session. You walk in with the artefact in front of you; the lecture below hands you the lenses to read it with.
 
 > **Long sessions, short reads.** The M1 countermove rides along: never let the agent say everything. Ranked findings first, detail on request, the full record on disk. Chat is for what changed and what needs you.
 
@@ -37,31 +37,17 @@ Acting without full control is the job from here on. The feeling of what is miss
 
 ## Set up the worktree
 
-Before the exercise session, fork the un-packaged session's starting SHA into a sibling worktree. This module's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second session starts from the same code state as the first. Cherny calls parallel worktrees his biggest productivity unlock; the Module 2 pre-read lands here.
+Before the exercise session, fork the un-packaged session's starting SHA into a sibling worktree. This module's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second session starts from the same code state as the first. Cherny calls parallel worktrees his biggest productivity unlock.
 
-A real engineering call lives in this fork: gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a worktree because git doesn't see them. AE101's default is to copy them in once at fork time. Your Module 1 evidence rides forward<!--flag:module:earn-the-trust--> (along with any Module 3 artefacts if you've completed it)<!--/flag:module:earn-the-trust-->; compounding then diverges between the worktree and the original.<!--flag:module:spot-gaps-build-the-loop--> You decide post-Module-6 what to merge back.<!--/flag:module:spot-gaps-build-the-loop--> Other engineers wire it differently.
+Gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a worktree, because git doesn't see them. The setup prompt copies them across, so your Module 1 evidence<!--flag:module:earn-the-trust--> and any Module 3 artefacts<!--/flag:module:earn-the-trust--> comes with you. From there the two copies compound separately.<!--flag:module:spot-gaps-build-the-loop--> After Module 6 you decide what to merge back.<!--/flag:module:spot-gaps-build-the-loop-->
 
-## Run the fork from the original repo
-
-**Session** *(continue or new, "original repo")*
-
-Run the fork from your original repo, not the worktree (it doesn't exist yet). If the session you sent off from is still open, ask it there, it's already in the right place. Otherwise open a fresh session in the original repo location and ask there.
-
-Claude figures out `<repo-name>` from the working directory. If it picks the wrong repo or path, steer it in chat.
-
-{{prompt:ae101-m5-worktree-setup}}
-
-Claude will narrate before acting. It usually opens with a plan summary listing the six sub-steps, then runs them. Skim past the opening.
-
-Check the copy landed before you go on: the output should name both `CLAUDE.local.md` and `observations/` at the worktree path. The whole contrast rests on the second session starting from the same system the first one did, and a rules file that wasn't copied changes two variables instead of one. If your rules file lives somewhere other than the two paths Claude checked, ask Claude to copy that one across too.
-
-## Anchor the fork to the run coordinates
-
-Claude should read the protected `Run coordinates` block in `task.md`, use the exact `m4/<slug>` branch named there, and fork from that branch's "M4 starting point" commit. If the coordinates are missing or the commit message has been rewritten, stop and use the starting-point SHA Claude reported before the send-off rather than guessing from branch names. If that SHA was never captured either, ask Claude to fork from the merge-base of `m4/<slug>` and the branch it was cut from; that commit is where the session started.
-
-The worktree is forked and ready. You open the session in it at the first exercise.
+[Exercise: Fork the worktree, carry the evidence](exercises/fork-the-worktree.md)
 
 [Exercise: Diagnose and re-send](exercises/diagnose-and-resend.md)
+
+[Lecture: What packaging is](lectures/what-packaging-is.md)
+
+[Lecture: The gate is a claim too](lectures/the-gate-is-a-claim.md)
 
 ## Key Concepts
 - The three failure modes earn their names by reading them in your own artefact
@@ -71,45 +57,7 @@ The worktree is forked and ready. You open the session in it at the first exerci
 - No benchmark told you what went wrong; the artefact did. The artefact rules, self-reports don't.
 - Your verifier is your first eval: the automated check that says an agent-produced thing meets your bar<!--flag:module:spot-gaps-build-the-loop-->. Module 6 maps the eval shapes from here<!--/flag:module:spot-gaps-build-the-loop-->
 
-## Re-send the same task, packaged
-
-Now the re-send. Same task, packaged this time, and notice the prompt: it shrank while the task stayed the same. The difference is your system, measured in words the prompt no longer needs. The packaging does the explaining; the prompt invokes it.
-
-**Session** *(new, "M5 long-run")*
-
-Open a new Claude Code session in the worktree at `../<repo>-m5`. The packaging files live on disk; the worktree's auto-loaded rules (`CLAUDE.md`, `CLAUDE.local.md`) load fresh into the new session. The exercise session can stay open if you want to glance back at the assembly conversation.
-
-```
-/rename m5-long-run
-```
-
-Fresh context matters here. The exercise session built heavy scrollback (verifier scaffolding, hooks, plan.md drafts); every re-send turn would otherwise pay cache-read on that prefix. A fresh session avoids repeatedly carrying the heaviest context, and the field has a name for this move (Ralph's fresh-sessions camp, Amp's manual-handoff camp; see [What packaging is](lectures/what-packaging-is.md)).
-
-Prefer to stay in the exercise session? Paste this to drop scrollback in-place:
-
-{{prompt:ae101-m5-clear-before-rerun}}
-
-## Send it off and read the report cold
-
-Either way, the re-send prompt below stands alone: Claude lists the worktree root and reads what it finds.
-
-Ask Claude to re-run the same task using the reference, plan.md, and verifier you just built.
-
-{{prompt:ae101-m5-rerun-packaged}}
-
-<!--flag:module:spot-gaps-build-the-loop-->The walk-away report at the close is what Module 6 opens on.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->The walk-away report at the close is the evidence this session leaves behind.<!--/flag:no-module:spot-gaps-build-the-loop--> Expect partial failures framed as partial successes, *"shipped most of it, hit a snag on X."* RLHF is a big part of why: agreeable answers won the preference round. The contrast with the un-packaged session depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. You decide whether to push.
-
-The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). Same cancel-is-legit rule as the un-packaged session: stopping when the trace is enough is the result. Manual nudges are part of the session; when nudging turns into typing every step, the agent isn't the agent any more, that's a result worth reading.
-
-[Lecture: What packaging is](lectures/what-packaging-is.md)
-
-[Lecture: The gate is a claim too](lectures/the-gate-is-a-claim.md)
-
 <!--flag:no-module:spot-gaps-build-the-loop-->
-## Bring the worktree's work home
-
-Your `CLAUDE.local.md` and `observations/` have been building in the worktree since the fork; the copies in the original repo stopped there. Ask Claude to copy the worktree's versions back into the original repo and report what changed, so the repo you actually work in holds this sitting's work. Nothing needs deleting.
-
 ## Back to the map, one last time
 
 The map at sitting 2 had an edge nobody explained. A dashed line down the right side, `THE TEAM` beyond it, and along the bottom, in italics: *a move counts when it crosses the wall*.
@@ -153,13 +101,13 @@ Optional. Skipping does not break Module 6. Both fit the Module 5 to Module 6 ga
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Pacing:** Runtime is computed — `node scripts/calculate-time.js learn-from-the-test`. Trainer demos slowly, room copy-pastes concurrently. The closing lecture sits after Debrief + Re-send, where M4 has no closer of its own — it names Ronacher's three-pattern from felt evidence, so it cannot come earlier.
-- **Transitions:** connections 5 @start "Connections" · worktree fork 15 @before:diagnose-and-resend "Worktree fork from the original repo (coordinates read, copy check)" · debrief 12 @after:diagnose-and-resend "Debrief" · re-send 3 @after:diagnose-and-resend "Re-send: new session in the worktree, prompt paste, read the report cold" · bridge 3 @end "Bridge"
+- **Transitions:** connections 5 @start "Connections" · debrief 12 @after:diagnose-and-resend "Debrief" · bridge 3 @end "Bridge"
 - **Fork is a band because the spread is real.** Machine time is ~1 min (`ae101-m5-worktree-setup` runner turns); the rest is coordinates-read, copy-verification and Day-2 re-entry fumble. Ceiling is judgement, not observation.
-- **Charge:** reading-the-return 0 — lands as a pre-read at the close of M4's Debrief, so M5 opens with it already read.
+- **Charge:** reading-the-return 5 — it is an in-room M5 opener, charged since 2026-08-12. It was previously charged 0 on the premise that M4's Debrief handed it out as a pre-read; M4 has no Debrief, nothing made it prework, and M5's body asserted the student had read it.
 - **Prep / bridge timing:** Entis/Klaassen interview 30 min; Klaassen compound-engineering guide 15–20 min; Klaassen verifier article 10 min; optional da Costa essay 15 min.
 - **Mood target:** learning through contrast — *"I can feel what packaging adds now; I couldn't have read it as a lecture."* Watch for: mood drift toward correction-feeling (*"my un-packaged run was bad and now I'm fixing it"*) or compliance-feeling (*"the three-pattern is the answer; I should adopt it"*). Diagnostic: student at Phase 3 picks the safest verifier shape regardless of their dominant failure. Fix: trainer reframes — *"the verifier matches the failure, not the comfort. Which one was your dominant?"*
 - **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries. Not restated here. Module-specific: M5 forks a worktree at `../<repo>-m5` and the packaged re-send runs in a fresh session there (cross-cwd boundary, so `new`, not the same session as diagnose + build + assemble). No scheduled agent, no cloud runner — the second run is still a synchronous laptop run.
-- **Pre-read placement:** `lectures/reading-the-return.md` is shared at the close of M4's Debrief, after the un-packaged send-off prompt is pasted. In-room cohorts get the same link in the day-1 wrap-up Slack/Teams thread.
+- **`lectures/reading-the-return.md` is an M5 in-room opener, not a pre-read.** Do not re-file it as prework without also charging M5's clock and cutting the body line that assumes it was read.
 - **Backpressure vocabulary:** the term is earned in Module 4 and reinforced here through da Costa's primary essay. Module 5 keeps the source title and the workflow-seam question together so the word travels with its mechanism, not as a detached label.
 
 **Push-back moves** (trainer delivers):
@@ -200,9 +148,9 @@ Optional. Skipping does not break Module 6. Both fit the Module 5 to Module 6 ga
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
 | M5 worktree branch + SHA (packaged-run starting state) | `m5/<task-slug>` branch in worktree at `../<repo>-m5`, forked from M4's `m4/<task-slug>` SHA | Set up the Module 5 worktree prompt | M5 packaged re-send (runs in worktree); M6 diff (compares M5 packaged-run output to M4 un-packaged-run output) |
-| Reference artefact | `reference.md` at worktree root (or location named in Phase 4 prompt) | Phase 4 (assemble-reference-and-plan) | M5 re-send prompt — Claude reads the reference at the start of the packaged run; M6 diff (does the reference scope still match what shipped?) |
-| Plan.md | `plan.md` at worktree root (or location named in Phase 4 prompt) | Phase 4 | M5 re-send (Claude re-reads plan.md when it drifts); M6 diff |
-| Verifier | path named in Phase 3's build prompt (typically `verifier.sh`, `evals/judge.md`, or a stop-hook config) | Phase 3 (build-verifier) | M5 re-send (verifier fires per plan.md cadence during the packaged run); M6's diff reads the verifier as the sharper-verifier home's precedent |
+| Reference artefact | `reference.md` in the task-scoped folder Phase 4 proposes (sponsor plug point; Claude names the path at lock-in) | Phase 4 (assemble-reference-and-plan) | M5 re-send prompt — Claude reads the reference at the start of the packaged run; M6 diff (does the reference scope still match what shipped?) |
+| Plan.md | `plan.md` in the same task-scoped folder, next to the reference | Phase 4 | M5 re-send (Claude re-reads plan.md when it drifts); M6 diff |
+| Verifier | path named in Phase 3's build prompt (typically `verifier.sh`, `evals/judge.md`, or a stop-hook config), recorded as plan.md's `verifier` line | Phase 3 (build-verifier) | M5 re-send (reads the invocation off plan.md's verifier line and fires it per the cadence recorded there); M6's diff reads the verifier as the sharper-verifier home's precedent |
 | Run notes from packaged re-send | `RUN-NOTES.md` at worktree root | Re-send prompt — Claude writes in-flight when stuck | M6 diff (subtler-misses pattern; the dominant gap's home often surfaces in the notes) |
 | Personal rules carried into M5 worktree | `./CLAUDE.local.md` in worktree (copied at fork, independent from original after) | Worktree-setup prompt (`ae101-m5-worktree-setup`) — no M5 sharpening by design; the re-send + the M4↔M5 contrast IS M5's compound move | M6 Phase 1 reads them as part of the system that produced both runs and cuts one stale rule from this copy; eventual decision post-M6 about merging back to original repo |
 | Observations carried into M5 worktree | `./observations/` in worktree (gitignored, copied at fork alongside `CLAUDE.local.md`, independent from original after) | Worktree-setup prompt (`ae101-m5-worktree-setup`) copies it in at fork — M4's `walk-and-send-off` is the real producer; M5 adds none by design | M6 Phase 1 reads it as part of the system that produced both runs; eventual decision post-M6 about merging back to original repo |

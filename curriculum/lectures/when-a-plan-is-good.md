@@ -2,8 +2,6 @@
 
 **Session** *(new, "Module 2 - Plan mode done right")*
 
-Start a new Claude Code session at your repo root.
-
 ```
 /rename m2-plan-mode
 ```

@@ -1,13 +1,13 @@
 # Run the first experiment
 
 ## Big Idea
-Walk what you've built against a real task you'd send off rather than nudge bit by bit, fill the worst gaps, send it off un-packaged, and learn from what the agent does with your system as it stands.
+Prep your first long run. Whatever you've built so far is what the agent gets, and the run is how you find out what's missing.
 
 ## Prework
 
 The scoped task you picked as homework.
 
-**A real slice you'd send off rather than nudge bit by bit, with a 'done' you can name in a sentence. Bigger than a typo-fix, smaller than an epic.**
+**A real slice you'd send off rather than nudge bit by bit. Bigger than a typo-fix, smaller than an epic.**
 
 Come without having picked the task and you'll be scrambling for one while the exercise is already running. Your call.
 
@@ -36,70 +36,25 @@ The map has a far side. Before the first long session, see the country you are e
 
 [Lecture: The far half of the map](lectures/the-far-half.md)
 
-Next, the thing you are sending: an LLM calling tools in a loop.
-
 [Lecture: The agent loop](lectures/the-agent-loop.md)
 
 [Lecture: Test and learn](lectures/test-and-learn.md)
 
-[Exercise: Walk and send off](exercises/walk-and-send-off.md)
-
-## Key Concepts
-- Gap analysis is *walk the system you have against the system the task needs*. The system you have is what gets tested.
-- Un-packaged is by design. The packaging move only lands once you've seen what un-packaged gets wrong
-- Traces are data. Stop the session when you've seen what you needed to see. Stopping is reading, not failing.
-- Every send-off is an experiment, not a production run you need to get right first time
+[Exercise: Prep the run, fill the gaps](exercises/walk-and-send-off.md)
 
 ## Send the task off
 
-The task is about to leave your hands. Before it does, the trap that earned trust sets for the watcher:
-
 [Lecture: The ironies of automation](lectures/ironies-of-automation.md)
 
-No compound pass at the close. The send-off is the close of the work. Your rules files, memory, ADRs, and skills are what they are; the agent runs against them as they stand. Whatever needs sharpening will surface on the return, when you can see what the system actually produced. Compound on evidence, not anticipation.
-
-Before you send, set up the two markers you'll return to.
-
-First, the record of this session. Claude Code keeps a full transcript of every session on disk, the complete scrollback, written live and automatically. Find yours now; on the return you'll point a fresh session straight at it.
-
-Ask Claude where the record of this session lives.
-
-{{prompt:ae101-m4-locate-transcript}}
-
-Now pin the starting point. Whatever's in your working tree right now lands in this commit, so if you have unrelated WIP, stash or scope it out before pasting the prompt. The commit also writes the branch name and that transcript path into `task.md`, so a later session recovers this experiment from disk instead of hunting for it.
-
-Ask Claude to commit current state on a feature branch, record the coordinates, and tell you the short SHA.
-
-{{prompt:ae101-m4-commit-starting-point}}
-
-The starting-point commit is local, and that's the default. This experiment is throwaway work you can reset away. The return forks from the local commit, so nothing later needs a push.
-
-Optional: if you want the experiment to outlast your laptop or to hand it to someone, ask Claude to push the branch and set its upstream.
-
-{{prompt:ae101-m4-push-starting-point}}
-
-One more check before the send, <!--flag:module:earn-the-trust-->the same three questions from Module 3's close, now pointed at this session<!--/flag:module:earn-the-trust--><!--flag:no-module:earn-the-trust-->three questions pointed at this session<!--/flag:no-module:earn-the-trust-->: does the agent hold private data, does untrusted content reach its context window, is there a channel out? All three at once is the opening prompt injection needs, and a session this long reads far more than you'll watch. All three present here, cut one leg before you paste: read-only where write isn't needed, hold the push until you've read the return, an allowlist where the session needs the web. The frame is [The lethal trifecta](trainings/agentic-engineering-101/supplementary/the-lethal-trifecta.md): three legs, cut one.
-
-Ask Claude to run the scoped task end-to-end in this same session, with your rules files, memory, ADRs, and skills loaded.
-
-{{prompt:ae101-m4-take-task-end-to-end}}
-
-
-The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). If watching surfaces a wobble that tells you what next module will diagnose, stop the session; the trace is the result.
-
-You'll run more work async from here on.
-
-Nudge by hand while you're watching. Answer a question, correct a path, push back on visible drift. A handful of manual interventions is the right dose. Past ten or so, you've become the agent; call it and read what's there.
-
-If Claude stalls and you want to see whether it picks itself back up, this nudge is phrased as encouragement and lands as a taunt:
-
-{{prompt:ae101-m4-nudge-continue}}
-
-The task is running. One question while it works: what lets a long-running session continue without you holding every step?
+[Exercise: Set the markers, send it off](exercises/set-the-markers-send-it-off.md)
 
 [Lecture: What keeps a long-running session going?](lectures/what-keeps-a-long-running-session-going.md)
 
-Before you close: read [Reading the return](lectures/reading-the-return.md). It plants the question and the three failure modes you'll use to read what comes back.
+## Key Concepts
+- The audit ranked the thin spots in your setup against one real task. You corrected the ranking, then filled the worst two or three.
+- The task went out un-packaged: no plan file, no verifier, no reference artefact. Nothing but what you already had.
+- Traces are data. Stopping a run that has gone off the rails is reading, not failing.
+- The run started from a pinned commit on a throwaway branch. This was an experiment, not a production run.
 
 ## Next
 
@@ -107,9 +62,9 @@ The next module opens with what came back, or what you caught before it went fur
 
 ## Bring to Module 5
 
-A session that produced something. Read the agent's scrollback or commits from the send-off; check the agent didn't just stall in the first minute. A stopped session counts; the trace is the artefact. Bring the three failure modes from [Reading the return](lectures/reading-the-return.md) as your reading lens.
+A session that produced something. Read the agent's scrollback or commits from the send-off; check the agent didn't just stall in the first minute. A stopped session counts; the trace is the artefact.
 
-Come to Module 5 without a session and you'll be scrambling for material while the read is already underway. Your call.
+Come to Module 5 without a session that got some way into the task and you'll be scrambling for material while the read is already underway. Your call.
 
 ## Pre-reads before Module 5
 
@@ -135,9 +90,9 @@ Optional. They sit in the gap while your un-packaged session is still going. All
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create
 - **Pacing:** Runtime is computed — `node scripts/calculate-time.js run-the-first-experiment`. Trainer demos slowly, room copy-pastes concurrently. Send-off is a single prompt paste, not a wait. The compressed 2-day slot still needs a cut beyond the ones the `Transitions` line already models; which one is undecided, tracked in `pre-cohort-todos.md`.
-- **Transitions:** connections 10 @start "Connections: candidate tasks" · send-off 12 @after:walk-and-send-off "Send-off section: transcript + commit markers, trifecta check, prompt paste" · close and bridge 3 @end "Close: Reading the return pointer + Bridge"
+- **Transitions:** connections 10 @start "Connections: candidate tasks" · close and bridge 3 @end "Close + Bridge"
 - **Charge:** what-keeps-a-long-running-session-going 0 — the three-slide observational closer rides the active send-off session; it spends the room's attention, not the module's clock.
-- **Prep / bridge timing:** `reading-the-return.md` 5 min at M4 close; Uncle Bob supplementary 7 min; Entis/Klaassen interview 30 min; Klaassen compound-engineering guide 15–20 min.
+- **Prep / bridge timing:** Uncle Bob supplementary 7 min; Entis/Klaassen interview 30 min; Klaassen compound-engineering guide 15–20 min.
 - **Deliberate incompleteness:** M4 leaves the un-packaged send-off and the unfilled gaps beyond the top three open. The closer observes where existing boundaries fire, where the session waits, and where nothing pushes back. The trainer does not add packaging or patch the gaps before M5 reads the result.
 - **Mood target:** curious readiness — *"I've built enough to try; let's see what the agent does."* Watch for: mood drift toward compliance-feeling (*"did I prepare the right way?"*) or performance-anxiety (*"what if it fails?"*). Diagnostic: student at Phase 2 keeps asking *"is this enough?"* Fix: trainer reframes — *"enough is a question for M5. The experiment is the point."*
 - **Lecture wiring (2026-07-02):** `lectures/the-agent-loop.md` promoted from M1 supplementary (Antti-directed), inlined between the far-half opener and Test and learn. Beat rationale: the far half names the country, this names the machine about to walk it; its three introspection prompts run on the live session that will carry the send-off, so the tool list that comes back is the one the long run rides. Promotion record + eyeball questions in the lecture's maintainer block.
@@ -209,6 +164,6 @@ Optional. They sit in the gap while your un-packaged session is still going. All
 - **Gap analysis** — generic business-analysis framework; no single attribution needed. Named in Phase 2 as *"walk the system you have against the system the task needs."*
 - **Compound engineering** — Kieran Klaassen. Named on the student surface only as a Module 5 pre-read; this module deliberately runs no compound step, so the loop is carried rather than recited.
 
-**`practice` as a noun stays in the opener's one engineered sentence and nowhere else in this file.** `check_writing.md §2`'s AE101 carve-out earns the word at M4, and it earns it once — *"The practice is yours now"* in `## Start here`. Every other beat says *move*. The trifecta check before the send-off is the second firing of M3's pre-leash beat, and it is the last mandatory beat before the send-off prompt.
+**`practice` as a noun stays in the opener's one engineered sentence and nowhere else in this file.** `check_writing.md §2`'s AE101 carve-out earns the word at M4, and it earns it once — *"The practice is yours now"* in `## Start here`. Every other beat says *move*.
 
 **Every in-source cross-doc link uses the bare `trainings/agentic-engineering-101/…` form**, never a depth-counted `../../` prefix, per `module-shape.md`. The renderer rewrites either, so this is lint-level and invisible at delivery, which is exactly why it drifts.

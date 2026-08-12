@@ -9,21 +9,19 @@
 
 ## See the loop in your live session
 
-Three prompts to make the loop concrete in your current session.
+Three prompts. Dig into whatever catches you.
 
-Ask Claude to draw the loop as an ASCII diagram.
+Ask for the loop as a diagram.
 
 {{prompt:ae101-agent-loop-ascii}}
 
-Get the tool list this session is actually carrying.
+Ask what tools this session is carrying.
 
 {{prompt:ae101-agent-loop-tools-list}}
 
-Surface where the tool list comes from, and what it leaves out.
+Ask where that list comes from.
 
 {{prompt:ae101-agent-loop-tool-injection}}
-
-> Feel free to dive deeper on any aspect.
 
 <!-- maintainer -->
 
@@ -43,7 +41,7 @@ Surface where the tool list comes from, and what it leaves out.
 **Definitional contract — this slide is downstream of Agents 101, not parallel to it.** The definition bullet lists **four parts** (context · tools · goal · autonomy). Agents 101's `supplementary/what-is-an-agent.md` lists **five facets** (multi-step work · context · tools · goal · bounded autonomy). The difference is one fold, not a disagreement: multi-step work is carried here by *"in a loop"*, which is the term this lecture exists to install. Two altitudes, one definition. Three standing rules for anyone editing this bullet:
 - **Don't re-cut the list without cutting the sibling.** Any properties named here must map onto that file's facets or the house is teaching two theories.
 - **Context and goal stay.** A draft of this bullet once enumerated *repeats / picks its own next step / has tools*, which dropped both. Dropping context in the training whose near half is Intent → Context → Work is the hole worth naming.
-- **"Autonomy" here is deliberately narrower than the sibling's "bounded autonomy."** This slide cashes out only the choosing, because that is what the long-run bullet needs. The bounding was taught at M2 (plan mode as a permission state) and M3 (cut one leg of the trifecta), so it is earned, not missing.
+- **"Autonomy" here is deliberately narrower than the sibling's "bounded autonomy."** This slide cashes out only the choosing, because that is what the long-run bullet needs. **Do not restore a claim that the bounding is taught elsewhere in AE101.** An earlier version of this note credited M2 (plan mode as a permission state) and M3 (cutting one leg of the trifecta); the M3 half was never true of the body and the trifecta beats were removed 2026-08-12, Antti-directed. The narrowing stands on its own: this slide teaches choosing, and the bounding is not this arc's material.
 
 **Plural round shape (Antti-directed, 2026-08-01).** A single round carries as many tool calls as the step needs, and independent calls go out together. Bullet 1 reads *"uses tools"*; bullet 3 reads *"tool calls → results"*. Bullet 2 was always plural (*"executes the tool calls… feeds results back in"*) and is untouched. Do not re-singularise any of the three: a student watching an hour-long run sees batched calls on screen, and a serial machine on the slide would be contradicted inside the same module. Stamp: `parallel-tool-calls`, maintainer-attested.
 

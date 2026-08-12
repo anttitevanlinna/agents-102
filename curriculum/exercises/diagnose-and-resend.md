@@ -1,10 +1,10 @@
 # Diagnose and *package*
 
-**Time:** 65 minutes.
+**Time:** 68 minutes.
 
 **Session** *(new, "Module 5 worktree session")*
 
-Open a new Claude Code session in the worktree at `../<repo>-m5` (set up at module open).
+In the worktree at `../<repo>-m5` (set up at module open).
 
 ```
 /rename m5-diagnose-resend
@@ -16,7 +16,7 @@ Open a new Claude Code session in the worktree at `../<repo>-m5` (set up at modu
 
 **What you build:** a verifier, a reference, and a plan.md, each built against a failure you actually read.
 
-**The point:** packaging you built against your own failure beats packaging you were taught.
+**The point:** packaging you built against your own failure beats packaging you guessed at.
 
 ---
 
@@ -38,17 +38,16 @@ Confirm the path is right. Then ask Claude to read the repo state on the previou
 {{prompt:diagnose-and-resend-2}}
 
 
-## Pin each failure to a quoted moment
+## Keep Claude honest, make it dig
 
-- Push back where Claude generalises. Ground each lens in a quoted moment; the same moment may carry more than one lens.
-- This is an agent's account of an agent's work, on a run you weren't watching. Same prior as the repo read in Module 1: assume about 10% of the account misrepresents the run, and you can't spot which tenth by eye. Ask Claude to show you where two or three of its quoted moments appear in the transcript. Anything it can't find, it made up.
-- The move you just ran is *diagnosis through named failure modes*. The vocabulary is the lens; the artefact is the substance.
+- Push back where Claude generalises. If a lens comes back without a quote from the run, send it back for one. The same moment may carry more than one lens.
+- This is an agent's account of an agent's work, on a run you weren't watching. Same prior as the repo read in Module 1: assume about 10% of the account misrepresents the run, and you can't spot which tenth by eye. Ask Claude to show you where two or three of its quotes appear in the transcript. If it can't show you, don't trust that quote.
 
 ## Phase 2: Match each failure to the check that catches it
 
 *10 min*
 
-- Ask the question that earns the pattern. For each named failure: *what validation would have caught this in minutes, not hours?*
+- For each named failure, ask: *what validation would have caught this in minutes, not hours?*
 - Match the verifier shape to the failure. Drift and context rot fire mid-run, on every spec re-read or window fill, so minute cadence is real there. Plausible-but-wrong fires on output: the work compiles, passes lint, looks right, and is wrong.
 
 Ask Claude to walk each diagnosed failure backwards into the validation that would have caught it.
@@ -62,7 +61,7 @@ Claude gives the full three-way mapping. Your decision is narrower: which failur
 
 *20 min*
 
-- Pick the shape that matches your dominant failure. The comfortable shape is rarely the right one. Match the failure, not your familiarity.
+- Three verifier shapes. Pick the one that matches the failure that cost you most.
 
 - **Background-agent verifier.** Separate Claude session reads the produced work and judges it. Right when the failure was qualitative (style, fit, "did the answer the question").
 - **Deterministic shell-hook.** Tests, lint, type-check, compile, custom invariant. Right when the failure has a true-false answer (broke the build, touched the wrong directory). The shell-hook shape IS a Claude Code stop-hook; you will meet the word again if you extend the verifier to fire automatically between runs.
@@ -73,7 +72,7 @@ Ask Claude to build the verifier shape that matches your dominant failure, scope
 {{prompt:diagnose-and-resend-4}}
 
 
-Read what Claude proposes. Push back if the verifier covers the wrong shape (a generic test suite when you needed a judge, or the reverse). The fit between failure shape and verifier shape is the teaching moment. The verifier IS your first eval.
+Read what Claude proposes. Push back if the verifier covers the wrong shape (a generic test suite when you needed a judge, or the reverse). The fit between failure shape and verifier shape is what you are after.
 
 ## Prove the verifier actually fires
 
@@ -81,12 +80,16 @@ Read what Claude proposes. Push back if the verifier covers the wrong shape (a g
 
 {{prompt:diagnose-and-resend-5}}
 
+## The reference and plan.md
+
+- **Reference** — what the task is and what done looks like: success criteria, plus pointers to the memory, skills and connectors that matter.
+- Written once, before the run, and it stays put while the agent works.
+- **plan.md** — the agent's working document: the steps, and where it has got to.
+- The agent rewrites it as it goes and re-reads it when the context window fills. Not the plan-mode plan.
+
 ## Phase 4: Write the reference and plan.md
 
 *20 min*
-
-- The reference pins the task. Its success criteria, and pointers to the memory, skills, and connectors that matter.
-- plan.md is the agent's mutable working document. Not the plan-mode plan. This is what the agent re-reads when its window fills.
 
 Ask Claude to assemble both, scoped to the same task, in conversation.
 
@@ -96,22 +99,56 @@ Ask Claude to assemble both, scoped to the same task, in conversation.
 
 ## Check both files are for the agent, not you
 
-- Read them in prose. Push back if the reference reads like generic long-running advice instead of THIS task's substance. Push back if plan.md reads like a project plan instead of an agent-mutable working document.
-- The artefacts are for the agent to consume mid-run, not for you to admire.
+- Glance at both files for the rough shape. No need to read the details, unless you want to be meticulous.
+- Push back if the reference reads like generic long-running advice instead of this task's substance, or if plan.md reads like a project plan rather than something the agent rewrites as it goes.
 
 ## Approve
 
-Say *lock it in.* The agent writes both files. Read the diffs.
+Say *lock it in.* The agent writes both files.
 
-**What happened:** You ended the exercise with a diagnosis (named failures + quoted moments from your own artefact), a working verifier targeting one specific failure mode, and a reference artefact + plan.md scoped to the same task. Each piece proved its place against a failure you read in your own artefact.
+## Phase 5: Re-send it, packaged
 
-The exercise ends here. The module's re-send is next: same task, with reference + plan.md + verifier all in play. The personal rules from M1<!--flag:module:earn-the-trust--> (and M3 if completed)<!--/flag:module:earn-the-trust--> carry forward via the worktree fork<!--flag:module:spot-gaps-build-the-loop-->; M6 will cut one stale rule once the contrast lands<!--/flag:module:spot-gaps-build-the-loop-->.
+*3 min*
+
+Now the re-send. Same task, packaged this time, and notice the prompt: it shrank while the task stayed the same. The difference is your system, measured in words the prompt no longer needs. The packaging does the explaining; the prompt invokes it.
+
+**Session** *(new, "M5 long-run")*
+
+In the worktree at `../<repo>-m5`. The packaging files live on disk; the worktree's auto-loaded rules (`CLAUDE.md`, `CLAUDE.local.md`) load fresh into the new session. The exercise session can stay open if you want to glance back at the assembly conversation.
+
+```
+/rename m5-long-run
+```
+
+Fresh context matters here. The exercise session built heavy scrollback (verifier scaffolding, hooks, plan.md drafts); every re-send turn would otherwise pay cache-read on that prefix. A fresh session avoids repeatedly carrying the heaviest context, and the field has a name for this move (Ralph's fresh-sessions camp, Amp's manual-handoff camp; see [What packaging is](lectures/what-packaging-is.md)).
+
+Prefer to stay in the exercise session? Paste this to drop scrollback in-place:
+
+{{prompt:ae101-m5-clear-before-rerun}}
+
+## Send it off and read the report cold
+
+Either way, the re-send prompt below stands alone: Claude finds the packaging in the worktree and reads it cold.
+
+Ask Claude to re-run the same task using the reference, plan.md, and verifier you just built.
+
+{{prompt:ae101-m5-rerun-packaged}}
+
+<!--flag:module:spot-gaps-build-the-loop-->The walk-away report at the close is what Module 6 opens on.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->The walk-away report at the close is the evidence this session leaves behind.<!--/flag:no-module:spot-gaps-build-the-loop--> Expect partial failures framed as partial successes, *"shipped most of it, hit a snag on X."* RLHF is a big part of why: agreeable answers won the preference round. The contrast with the un-packaged session depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. You decide whether to push.
+
+The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). Same cancel-is-legit rule as the un-packaged session: stopping when the trace is enough is the result. Manual nudges are part of the session; when nudging turns into typing every step, the agent isn't the agent any more, that's a result worth reading.
+
+<!--flag:no-module:spot-gaps-build-the-loop-->
+## Bring the worktree's work home
+
+Your `CLAUDE.local.md` and `observations/` have been building in the worktree since the fork; the copies in the original repo stopped there. Ask Claude to copy the worktree's versions back into the original repo and report what changed, so the repo you actually work in holds this sitting's work. Nothing needs deleting.
+<!--/flag:no-module:spot-gaps-build-the-loop-->
 
 <!-- maintainer -->
 
 **View summary:** You read the un-packaged run through three failure lenses, build the checks and durable task artifacts that would have caught its misses, then re-send the same work. The contrast makes packaging visible on your own code rather than as advice.
 
-**The 10% recall in `## Pin each failure to a quoted moment` is the prior's third and last statement, by design.** `orient-and-introspect.md` § *Read the self-report, then spot-check it* sets it on the agent's read of a repo (maintainer-attested there), `plan-mode-done-right.md` § Key Concepts applies it to a plan, and this bullet applies it to a run transcript the student did not watch. Three instances, roughly two modules apart, a different artefact each time, each carrying its own action: progression-with-variation, not the refrain `check_pedagogy.md` §9b bans. This is the beat that earns it. In M1 and M2 the student can read the whole artefact by eye, so the prior costs nothing there; here it is the only affordable check, and asking the agent to locate its own quotes is the only one available when the agent holds the codebase and the student holds the lenses. The imperative *assume* and the *about* hedge travel from M1 and are load-bearing: the prior is an instruction to the reader, and a floor form would be a claim about the world. Do not harden it, and do not restate it as a general claim about agents. M1's double-hedge (*"could be more or less"*) stays M1's, so `check_slides.md` §7's number-plus-retraction sub-item does not fire here.
+**The 10% recall in `## Keep Claude honest, make it dig` is the prior's third and last statement, by design.** `orient-and-introspect.md` § *Read the self-report, then spot-check it* sets it on the agent's read of a repo (maintainer-attested there), `plan-mode-done-right.md` § Key Concepts applies it to a plan, and this bullet applies it to a run transcript the student did not watch. Three instances, roughly two modules apart, a different artefact each time, each carrying its own action: progression-with-variation, not the refrain `check_pedagogy.md` §9b bans. This is the beat that earns it. In M1 and M2 the student can read the whole artefact by eye, so the prior costs nothing there; here it is the only affordable check, and asking the agent to locate its own quotes is the only one available when the agent holds the codebase and the student holds the lenses. The imperative *assume* and the *about* hedge travel from M1 and are load-bearing: the prior is an instruction to the reader, and a floor form would be a claim about the world. Do not harden it, and do not restate it as a general claim about agents. M1's double-hedge (*"could be more or less"*) stays M1's, so `check_slides.md` §7's number-plus-retraction sub-item does not fire here.
 
 **Emphasis:** Bold is limited to title-page labels, widget chrome, the Phase 3 verifier-shape menu handles (**Background-agent verifier** / **Deterministic shell-hook** / **Ralph re-feed**), and the Phase 4 stop-gate handle. All other body prose stays unbolded.
 
@@ -134,16 +171,14 @@ Claims
 - `artefact-is-data-not-blame` · vision · "The un-packaged run was supposed to underdeliver. What came back is data, not blame." ← none-owed
 - `two-places-hold-the-story` · vision · "The repo's git history … tells you *what* the agent did. That run's session transcript … tells you *how* it got there" ← none-owed
 - `you-hold-the-lenses-not-the-codebase` · vision · "You hold the three lenses. You are not holding the codebase." ← none-owed
-- `three-failure-mode-lenses` · detail · "*diagnosis through named failure modes*" ← three-failure-modes
-- `quote-beats-summary` · vision · "Ground each lens in a quoted moment; the same moment may carry more than one lens." ← none-owed
+- `quote-beats-summary` · vision · "If a lens comes back without a quote from the run, send it back for one." ← none-owed
 - `ask-what-would-have-caught-it` · vision · "*what validation would have caught this in minutes, not hours?*" ← none-owed
-- `match-shape-to-failure-not-slogan` · vision · "Match the failure, not your familiarity." ← none-owed
 - `three-verifier-shapes` · detail · "**Background-agent verifier** … **Deterministic shell-hook** … **Ralph re-feed**" ← kim-on-cherny
 - `shell-hook-is-a-stop-hook` · detail · "The shell-hook shape IS a Claude Code stop-hook" ← cc-hooks-docs
 - `untested-verifier-is-no-verifier` · vision · "A built-but-untested verifier is no verifier." ← none-owed
-- `reference-pins-the-task` · vision · "The reference pins the task." ← none-owed
-- `plan-md-is-mutable-not-plan-mode` · vision · "plan.md is the agent's mutable working document. Not the plan-mode plan." ← none-owed
-- `built-beats-taught` · vision · "packaging you built against your own failure beats packaging you were taught" ← none-owed
+- `reference-pins-the-task` · vision · "what the task is and what done looks like" ← none-owed
+- `plan-md-is-mutable-not-plan-mode` · vision · "The agent rewrites it as it goes and re-reads it when the context window fills. Not the plan-mode plan." ← none-owed
+- `built-beats-guessed` · vision · "packaging you built against your own failure beats packaging you guessed at" ← none-owed
 
 Sources
 - three-failure-modes `[checked:2026-08-01 result:CAVEAT due:cohort]` (no URL — house vocabulary) — [house canonical] goal drift / context rot / plausible-but-wrong. **Not convergent practitioner vocabulary** (corrected 2026-08-01): only *context rot* is a term the field actually uses, with a study behind it and unprompted use by Ronacher and Osmani. *Goal drift* and *plausible-but-wrong* return zero named practitioners. The phenomena are well attested; the names are largely ours, which is all this exercise needs — it applies the lenses, the pre-read carries the colour. fallback: none needed; the corrected framing is the fallback.
@@ -200,7 +235,7 @@ OODA
 
 **Send-off mechanism (Debrief, owned by module file):**
 - Fresh Claude Code session in the existing M5 worktree. The exercise session may stay open for reference.
-- Reference artefact + plan.md + verifier live on disk. The re-send prompt finds them at the worktree root, and the fresh session auto-loads the worktree's rules.
+- Reference artefact + plan.md + verifier live on disk. The re-send prompt finds the reference and plan.md in the task-scoped folder Phase 4 proposed, reads the verifier's invocation off plan.md's verifier line, and the fresh session auto-loads the worktree's rules.
 - Same close-the-laptop or stop-when-you've-seen-enough rule as M4.
 
 Pre-cohort open items: see `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.

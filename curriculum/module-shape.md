@@ -8,48 +8,53 @@ Canonical template + include/link mechanics. Loaded by `/content-creation` Pass 
 # [Title]
 
 ## Big Idea
-[What the student does, in one sentence. See § Big Idea below.]
+[One sentence: what the module is for. See § Big Idea below.]
 
-## Meta
-- Primary Bloom's level: [level]
-- Prework: [list or "none"]
-- Homework: [list or "none"]
-- Materials (trainer): [list]
-- Plug points: [list]
+## Prework
+[What the student walks in holding, plus the stakes line if they don't. Optional gap reading.]
 
 ## What You'll Learn
 After this module, you will be able to:
 - **[verb]** [thing]
 
-## Connections
-[Training-specific opening question — audience-specific framing lives here]
+## Start here
+[The opening question to the room, then the run of includes. Lectures and exercises
+are inlined by standalone links in document order — there are no `## Lectures` /
+`## Exercises` container headings.]
 
-## Lectures
+[Lecture: The whole map](lectures/the-whole-map.md)
 
-[Lecture: Context is King](lectures/context-is-king.md)
+[Exercise: Push back on the plan](exercises/push-back-on-the-plan.md)
 
-## Exercises
+## [The module's own teaching sections]
+[Named for the move, not for the format: `Send the task off`, `Set up the worktree`,
+`Sharpen the skill from evidence`, `Human close`. As many as the module needs, each
+carrying its own prompts and includes. This is where a module differs from its siblings.]
 
-[Exercise: Raw LLM](exercises/raw-llm.md)
+## Key Concepts
+[Reminders of what the module's own beats already taught. See § Key Concepts below.
+Goes AFTER the last teaching section — see the placement note there.]
 
-[Exercise: Add the guardrail](exercises/add-guardrail.md)
+## Next
+[Where the arc goes, and what closes here.]
 
-## Key Concepts (Emergent)
-[What emerges from doing the exercises. Concepts don't precede exercises.]
+## Bring to Module [N]
+[Only when the next module needs the student to arrive with something. Bold the ask,
+then the stakes line.]
 
-## Plug Points
-[Where the organization inserts its own context]
-
-## Debrief
-[The 4th C — Conclusions. ~5-min personal retro WITH Claude via pasted prompt. Produces an artifact the student carries forward. Conversational-prompt style. Per-module: debrief questions shift to module's discipline.]
-
-## Bridge
-[One sentence to next module]
+## Pre-reads before Module [N]
+[Optional. Lands in the gap between sittings.]
 ```
+
+**Two sections belong to the training's first module only:** `## How we work in this room` and `## Freedom to choose` sit in M1 between `What You'll Learn` and `Start here`. They set the room's contract once; a later module repeating them is drift.
+
+**`## Meta` lives below the `<!-- maintainer -->` fence,** with Bloom level, timings and trainer materials. It is not a student-facing section.
 
 ## Big Idea
 
-**Subject = the student's work.** One sentence naming what they do, in concrete verbs, plus at most one short payoff clause. Ceiling ~30 words — the two that hold the bar are AE101 M4 (29) and M5 (29, *"…re-send the same task packaged. The contrast is the lesson."*).
+**Meaning, not steps.** One sentence saying what the module is *for* — the thing a student would repeat to a colleague. The sequence of moves belongs in `## What You'll Learn` one section below, which states it in the more precise register; a Big Idea that lists the phases is that section in worse prose. Ceiling ~30 words, and most should land well under. Reference: AE101 M4, *"Prep your first long run. Whatever you've built so far is what the agent gets, and the run is how you find out what's missing."*
+
+Test: **strike every verb the student performs. Is anything left?** If not, it is a recipe. *"Take one task into plan mode, push back twice, then let a second read walk the branches"* is a correct summary of M2 and says nothing about why M2 exists.
 
 Cut on sight:
 - **Arc-positioning** — which module produced the evidence, what later modules ride on, where this sits in the training. `## What You'll Learn` states the same arc one section below in the more precise register, so a prose restatement is the duplicate, not the summary. §33's exemption for this section is narrow: it may name what the module *earns*, not where the module *sits*.
@@ -57,6 +62,16 @@ Cut on sight:
 - **Framing preambles** — *"Before the agent runs bigger work alone, …"*. Start on the verb.
 
 Won't fit in one sentence → **it belongs below the `<!-- maintainer -->` fence, not above it in four.** Relocation costs nothing: `check_strategy_tie_in.md` fires on it there, and `eval-class-router.sh` keys the `strategy@` class off a literal `^## Big Idea` at any depth. Precedent: AE101 M2, 2026-08-12, Antti-directed.
+
+## Key Concepts
+
+**Reminders, not new material.** Every bullet restates something the student met in this module's own exercises and lectures. A bullet carrying information that appears nowhere else is the section teaching, which is the one thing it must not do — the invariant is *concepts emerge from doing*. Test: for each bullet, name the beat it recaps. Can't → it is new material wearing a recap's clothes, and the student meets a term (*un-packaged*, *gap analysis*) without the experience that earns it.
+
+**Placement: after the last teaching section, before `## Next`.** A recap above a teaching beat can only recap half the module, and the bullets covering the other half are briefing wearing a recap's clothes. **Five of six AE101 modules currently violate this** (all but M1): M2 teaches *Save the rule if it earned itself* after it, M3 has three sections after it, M4 the whole send-off, M5 five sections including the re-send, M6 the human close. A corrective pass is owed; until it runs, check what sits below the block before writing a bullet.
+
+One idea per bullet, module's own voice, tactical. Lead with the discipline, not the failure mode. Do not front-run a later module.
+
+**The rest of the spec lives where it fires:** `check_strategy_tie_in.md` §§3/4/5/6 — theme instancing, the 1–3 breadcrumb clauses (5–8 words, no label, no bold), and the vary-between-adjacent-modules rule. That compendium auto-loads on this surface; this section is the shape, not the whole contract.
 
 ## Module include
 

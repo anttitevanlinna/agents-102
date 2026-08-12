@@ -17,7 +17,7 @@ You're new to this country: the stretch where the agent runs alone and you don't
 ## Gap analysis: walk your system against the task
 
 - **Gap analysis**: walk the system you have against the system the task needs. Claude audits your setup as a subagent and returns a ranked list of thin spots.
-- Not a template. A question. *What's between what I've got and what this task is asking for?* You'll use it on every future agent hand-off.
+- Not a template. A question. *What's between what I've got and what this task is asking for?*
 - The agent finds the thin spots; you judge which ones matter. A ranked list is candidates, not verdicts. Which gaps will hurt on this task is yours to judge, and filling the worst few is worth more than closing them all.
 
 ## Cancel is legitimate; traces are data

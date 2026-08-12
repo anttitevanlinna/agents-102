@@ -320,8 +320,8 @@ Never cut: Phase 5's stop. Approve, don't execute, and name the pattern; the non
 2. Lecture — [The far half of the map](./#lectures-the-far-half) (opener, 5 min; quick feedback goes quiet, the result arrives all at once)
 3. Lecture — [The agent loop](./#lectures-the-agent-loop) (~5 min; names the machine that keeps stepping; three prompts run on the live session that carries the send-off)
 4. Lecture — [Test and learn](./#lectures-test-and-learn)
-5. Exercise — [Walk and send off](./#exercises-walk-and-send-off) (55 min; pick 10 / walk-and-fill 40 / settle 5)
-6. Send-off section (owned by the module file): [The ironies of automation](./#lectures-ironies-of-automation) (3 min framing; the lecture's own cap — past 3 it starts teaching the fixes), then the two return markers (transcript path, starting-point commit on `m4/<slug>`), the trifecta check (private data / untrusted content / channel out — cut one leg), and the single send-off prompt paste
+5. Exercise — [Prep the run, fill the gaps](./#exercises-walk-and-send-off) (55 min; pick 10 / walk-and-fill 40 / settle 5)
+6. [The ironies of automation](./#lectures-ironies-of-automation) (3 min framing; the lecture's own cap — past 3 it starts teaching the fixes), then Exercise — [Set the markers, send it off](./#exercises-set-the-markers-send-it-off) (12 min; markers 5 / send 7): transcript path, starting-point commit on `m4/<slug>`, then the send-off prompt paste
 7. Lecture — [What keeps a long-running session going?](./#lectures-what-keeps-a-long-running-session-going) (fires while the agent runs; three-condition observation; leaves the run untouched)
 8. Close — point at [Reading the return](./#lectures-reading-the-return) as the pre-read; it plants the three failure modes M5 reads with
 
@@ -334,7 +334,7 @@ Never cut: Phase 5's stop. Approve, don't execute, and name the pattern; the non
 
 **Exercise goals.**
 
-- *Walk and send off* — system walked against the task; worst two or three gaps filled; `observations/` tree settled on disk. The exercise ends there; the module's send-off section takes over and the un-packaged run fires at close.
+- *Prep the run, fill the gaps* — system walked against the task; worst two or three gaps filled; `observations/` tree settled on disk. The exercise ends there; the module's send-off section takes over and the un-packaged run fires at close.
 
 **Trainer cues.** M4 is deliberately incomplete. Start the closing lecture only after the un-packaged session is active. Keep it to three conditions: durable state keeps the place, feedback keeps the direction, and a boundary decides whether to continue. Ask the room to observe what is already present; do not repair or package the run while it is the specimen. Do not name Module 5's artifacts. No compound pass at the close: the send-off is the close of the work, and whatever needs sharpening surfaces on the return. **Memory-word allergy:** some engineers react against the word; acknowledge the criticism is legitimate against Claude Code's auto-memory, then point at the distinction — `observations/` is files the student wrote, gitignored, read when a prompt names the path. **Steering the opener:** the three lectures are where the module lands at its low end — hold *The far half of the map* to its floor and the rest of the arc keeps its room.
 
@@ -384,7 +384,7 @@ Never cut: the send-off itself, and never rescue the un-packaged run. A weak fir
 - Unrelated work-in-progress committed or on its own branch; the closing commit snapshots the working tree and the M5 fork rides on it.
 - Regenerate: pick a task via the three-candidate conversation; rebuild the rules files by rerunning M1's compound and M2's extract prompts.
 
-**Northwind topology (four-sitting cut).** No M3 ran, so: the task-pick homework arrives from M2's close instead of M3's; there are no STRIDE ADRs and no authored test-strategy skill for the Phase 2 audit to read. The audit prompt's conditional phrasing ("any skills you've authored," "any ADRs") resolves cleanly — the quality read anchors on the repo's existing test conventions and whatever recorded decisions the repo already has. The trifecta check stands on its own here rather than as a callback to an M3 close. Mechanically validated 2026-07-28, full-chain test PASS: M4's audit turn carries no hard dependency on the M3 ADR or skill.
+**Northwind topology (four-sitting cut).** No M3 ran, so: the task-pick homework arrives from M2's close instead of M3's; there are no STRIDE ADRs and no authored test-strategy skill for the Phase 2 audit to read. The audit prompt's conditional phrasing ("any skills you've authored," "any ADRs") resolves cleanly — the quality read anchors on the repo's existing test conventions and whatever recorded decisions the repo already has. Mechanically validated 2026-07-28, full-chain test PASS: M4's audit turn carries no hard dependency on the M3 ADR or skill.
 
 </section>
 <!--/flag:module:run-the-first-experiment-->
@@ -402,9 +402,8 @@ Never cut: the send-off itself, and never rescue the un-packaged run. A weak fir
 
 1. Lectures — [Reading the return](./#lectures-reading-the-return) (the M4-close pre-read, re-anchored briefly) + [Learning through contrast](./#lectures-learning-through-contrast)
 2. The nag writes the verifier — short module-body beat: the mid-run worry from M4 is the verifier's spec
-3. Set up the worktree — fork runs from the ORIGINAL repo (the worktree doesn't exist yet), before the exercise session; Claude reads the `Run coordinates` block in `task.md` and forks `../<repo>-m5` from the `m4/<slug>` starting-point commit, copying `CLAUDE.local.md` and `observations/` across
-4. Exercise — [Diagnose and re-send](./#exercises-diagnose-and-resend) (Phases 1–4, in a new session in the worktree)
-5. Re-send — new session in the worktree by default (fresh context; the exercise scrollback is heavy), or clear the exercise session in place; then the packaged re-send prompt, and the walk-away report gets read cold
+3. Exercise — [Fork the worktree, carry the evidence](./#exercises-fork-the-worktree) (15 min): runs from the ORIGINAL repo, the worktree doesn't exist yet. Claude reads the `Run coordinates` block in `task.md` and forks `../<repo>-m5` from the `m4/<slug>` starting-point commit, copying `CLAUDE.local.md` and `observations/` across
+4. Exercise — [Diagnose and re-send](./#exercises-diagnose-and-resend) (68 min, Phases 1–5, in a new session in the worktree). Phase 5 is the re-send and now sits inside the exercise: a new session in the worktree by default (fresh context; the exercise scrollback is heavy), or clear the exercise session in place; then the packaged re-send prompt, and the walk-away report gets read cold
 6. Lecture — [What packaging is](./#lectures-what-packaging-is) (closer; the three-pattern earned from felt evidence — don't squeeze it)
 7. Lecture — [The gate is a claim too](./#lectures-the-gate-is-a-claim) (final closer, 9 min; the verifier the student just built is a claim, not proof; closes on the delegation-frontier zoom-out)
 8. Four-sitting close only: bring the worktree's `CLAUDE.local.md` and `observations/` home to the original repo, then the map's last read (the wall; what crosses to the team, and how)

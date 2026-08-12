@@ -17,11 +17,11 @@ Optional reading in the gap before this module: Boris Cherny, [Mastering Claude 
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Run** plan mode on a real multi-file task and judge the plan against five criteria, naming the one it fails
+- **Run** plan mode on a real multi-file task and judge the plan against five criteria
 - **Push back** twice on the plan via *No, keep planning*, surfacing what the agent didn't see
 - **Walk down** unresolved branches, with a recommended answer per branch
 - **Pair** human read with agent walk-down: read → push-back → walk-down → approve
-- **Spot** approval inflation in your own past plans
+- **Spot** approval inflation in a plan whose structure makes it look decided
 - **Extract** task-shaping rules from your session into a `.md` file, sharpening at least one before saving
 - **Name** three shapes for turning a rules file into automation: Slack triage, issue webhook, scheduled read
 
@@ -45,7 +45,7 @@ Everyone names a moment first; *When a plan is good* names the pattern.
 
 ## Save the rule if it earned itself
 
-The full compound move ran at M1. This one is opportunistic. Before saving, ask Claude whether anything from this session has made it to auto-load yet.
+The full compound move ran at M1. This one is opportunistic.
 
 {{prompt:push-back-on-the-plan-4}}
 

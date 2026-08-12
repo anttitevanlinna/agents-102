@@ -2,9 +2,9 @@
 
 **Time:** 60 minutes.
 
-**What you do:** take a real multi-file task from your backlog, run it through plan mode, push back twice with what you can see, then start a full second-pass grilling. Keep the questions that materially sharpen the plan. Approve the plan. **Stop.** Don't execute. Compare what your read caught to what the second-pass read caught. That gap is the skill this module is building.
+**What you do:** push back twice on your plan, run a second-pass grilling, then approve and **stop**.
 
-**What you build:** two reads paired on one plan. Your own two push-backs, in your voice. A second-pass walk-down, three questions at a time. Together they sharpen the plan until you judge it good enough to generate.
+**What you build:** two paired reads on one plan: your two push-backs, then a walk-down three questions at a time.
 
 **The point:** two reads, paired. Claude supplies the pressure; you decide when the plan is ready.
 
@@ -21,8 +21,10 @@
 
 *15 min*
 
-- Shift+Tab until the status bar shows plan. Ask Claude to plan the task you'll drop after the colon: what, why, the one constraint you care about most.
-- You ask; the agent drafts. You are not writing the plan. Plan mode explores the codebase and drafts the steps; your job starts when it pauses for approval.
+- Shift+Tab until the status bar shows plan mode on. Name the task, why it matters, and the one constraint you care about most.
+- Plan mode explores the codebase and drafts the steps; your job starts when it pauses for approval.
+
+Drop your task after the colon.
 
 {{prompt:push-back-on-the-plan-1}}
 
@@ -80,7 +82,7 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. While 
 
 - Stop when the plan is good enough to generate: the decisions most likely to change execution are settled, and the next questions are reaching into routine implementation detail, settled ground, or genuine non-goals. The agent can keep walking; you decide when another answer is no longer worth the working memory it costs. Approve when the plan reads like your plan.
 
-> **Timebox check.** When the slot ends, stop. The second-pass walk-down can run deep on a real codebase. If it is still surfacing branches when time is up, take the most recent sharpened plan, approve it, and move to Phase 5. The branches that did not surface today are the ones you will catch when you actually ship the work. The exercise teaches the move. You take the move home.
+> **Timebox check.** When the slot ends, stop. The second-pass walk-down can run deep on a real codebase. If it is still surfacing branches when time is up, take the most recent sharpened plan, approve it, and move to Phase 5. The branches that did not surface today are the ones you will catch when you actually ship the work.
 
 - The walk-down prompt's three-at-a-time prose is the starting point. That batching cuts round-trips on the branches that need real thought. If you prefer a structured picker, switch once the walk-down is rolling. Ask Claude to switch to AskUserQuestion, and add any steering of your own.
 
@@ -100,9 +102,9 @@ Then just hit stop.
 
 *10 min*
 
-- Don't execute the plan. The work of making it good is the exercise. Execution is next module's concern.
+- Don't execute the plan. The work of making it good is the exercise.
 - Out of plan mode now: you approved and stopped, so Claude Code is back to default mode for this last step.
-- Ask Claude to name the design pattern you just ran and compare what the second-pass read surfaced against what your two push-backs caught.
+- Ask Claude what the second-pass read surfaced that your two push-backs didn't.
 
 {{prompt:push-back-on-the-plan-3}}
 
@@ -126,7 +128,7 @@ Then just hit stop.
 
 **Read-whole exception replaced (2026-08-09, Antti-directed cognitive-load correction):** *Read for the decisions that matter* restores M1's never-let-the-agent-say-everything countermove. The copied prompts still offer the full plan and exhaustive branch walk; the body makes that pressure a ceiling, not a completion requirement. The student takes the highest-value sharpenings and remains the stop gate.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** Handles kept bold: the **Stop.** governor in the What-you-do line, the **No, keep planning** approval path, the three push-back axis menu items (**Soft items** / **Assumptions** / **Committed changes**), the coined term **Plan-mode approval inflation** at its naming moment (bold narrowed to the handle), and the law **Find is easier than judge** newly bolded at its naming moment; all other bullet/paragraph leads de-bolded. Widget chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** Handles kept bold: the **stop** governor closing the What-you-do line, the **No, keep planning** approval path, the three push-back axis menu items (**Soft items** / **Assumptions** / **Committed changes**), the coined term **Plan-mode approval inflation** at its naming moment (bold narrowed to the handle), and the law **Find is easier than judge** newly bolded at its naming moment; all other bullet/paragraph leads de-bolded. Widget chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
 **Both optional walk-down escalations are kept (not cut).** `push-back-on-the-plan-2-askuserquestion` (switch to the AskUserQuestion picker) and `push-back-on-the-plan-2-original` (the unfiltered Pocock `grill-me`) are opt-in ceilings on the second read, under the *Stop when the read starts reaching* section. They preserve full-on pressure for a student who wants it; the body makes clear that nobody owes the ceiling. A student keeping it simple skips both, so they add no baseline load and cutting them reclaims none. Not cut candidates.
 
@@ -139,7 +141,7 @@ Then just hit stop.
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat at P5 is the Evaluate beat)
 - **No agent-wait charge.** P4 blocks on the student, and P2's plan-mode wait carries no other budgeted beat — nothing shares those minutes.
 - **Execution-free by design.** The student does not run the code. The exercise is about reading a plan well; execution is M3's concern. When asked *"why don't we execute?"* the trainer answers: *"you've done the work of making the plan good; recognising a good plan is the skill."*
-- **"Stop" repeats across the Approve section and Phase 5 heading — deliberate.** The Approve section closes with *"Then just hit stop."* (operational stop — the student hits stop after approving so plan-mode does not roll into execution). Phase 5's heading opens with *"Stop. See the design pattern."* (pedagogical stop — name the move, do not execute). Same word, two registers, both load-bearing.
+- **"Stop" repeats across the What-you-do line, the Approve section and the Phase 5 heading — deliberate.** The Approve section closes with *"Then just hit stop."* (operational stop — the student hits stop after approving so plan-mode does not roll into execution). Phase 5's heading opens with *"Stop, then name the pattern you ran"* (pedagogical stop — name the move, do not execute). The What-you-do line carries the governor for both. Same word, two registers, both load-bearing.
 - **Artifact locations — governed by the pre-engagement contract:**
   - Plan file → Claude Code's plan directory (auto, descriptive filename)
   - Execution artifacts (diff, PR) → student's real repo
@@ -153,7 +155,7 @@ Claims
 - `two-reads-paired` · vision · "two reads, paired. Claude supplies the pressure; you decide when the plan is ready." ← none-owed
 - `plan-attention-is-not-equal-attention` · vision · "A plan deserves more attention than ordinary agent output because approval hands it to generation. That does not make every line equally important." ← none-owed
 - `read-the-file-not-the-summary` · vision · "the chat summary is secondary, the file is the artifact" ← none-owed
-- `plan-mode-mechanics` · detail · "Shift+Tab until the status bar shows plan" ← cc-permission-modes
+- `plan-mode-mechanics` · detail · "Shift+Tab until the status bar shows plan mode on" ← cc-permission-modes
 - `keep-planning-with-feedback` · detail · "At the approval prompt, pick **No, keep planning**." ← cc-permission-modes
 - `plan-mode-takes-minutes` · vision · "Plan mode takes minutes on real codebases. Eight to twelve isn't unusual." ← none-owed
 - `steps-that-stop-at-file-names-defer-design` · vision · "A step that stops at the file name defers the design to mid-run, and you will not notice." ← none-owed — the noticing claim is deliberate (maintainer correction): whether anyone watches mid-generation varies, but a wrong design call reads as progress while it is being made. Do not revert to a nobody-is-reading claim. The taught mechanism lives in `when-a-plan-is-good.md`'s gate slide; this bullet is the point-of-use recall.

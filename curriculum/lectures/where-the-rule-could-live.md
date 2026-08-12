@@ -52,7 +52,7 @@ Format → `curriculum/backing-format.md`.
 - `better-rules-better-triage` · vision · "Across all three shapes, better rules produce better triage." ← none-owed
 - `improvement-in-artifact-carries` · vision · "Improvements in the file carry across runtimes, even when the agent changes." ← none-owed
 - `file-travels-across-wiring` · vision · "Trigger and runtime are wiring choices; the file rides along unchanged." ← none-owed
-- `deployment-not-rewrite` · vision · "every shape above is a deployment decision, not a rewrite" ← none-owed
+- `deployment-not-rewrite` · vision · "each of the three shapes is a deployment decision, not a rewrite" ← none-owed
 - `agents-build-agents` · vision · "An agent can help author the `.md` file. A later agent reads those rules to split the backlog. The first agent's output becomes the second agent's context." ← none-owed
 
 **Sources**

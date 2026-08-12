@@ -2,11 +2,11 @@
 
 **Time:** 12 minutes.
 
-**What you do:** read back over the plan-mode session you just ran. Ask Claude to surface three to five rules about what made *this* task plan-mode-able, what kind of multi-file work wants this treatment, what a good factoring looks like before plan mode runs on it. Save those rules to a `.md` file at a location you choose. Then ask Claude how the file could drive automated task-splitting in the future.
+**What you do:** ask Claude to surface three to five task-shaping rules from the plan-mode session you just ran.
 
-**What you build:** a rules file that carries how you factored this task on this codebase. Three to five task-shaping rules, surfaced from your own session and sharpened in your own words, saved at a location you chose so it fires when you want it. The automation read stays a read: you name the shapes, you don't build them today.
+**What you build:** a rules file naming how you factored this task, saved where Claude will read it.
 
-**The point:** the file is the artifact. You captured how *you* factored *this* task on *this* codebase. Templates stay generic; this file carries your rules. The next small lecture names three places this kind of file ends up.
+**The point:** an agent asked for rules will hand you plausible generic ones.
 
 ---
 
@@ -14,8 +14,8 @@
 
 *5 min*
 
-- You already did the work; now name the rules inside it. You ran a plan, two push-backs, a second-pass walk-down, and an approval. Each decision along the way carried a task-shaping rule about what made this task plan-mode-able.
-- You are not on the hook for remembering it. The agent reads the scrollback; you react to what it proposes. The scrollback is the right source here: the question is how you worked, not what is on disk.
+- The rules are already in the session; naming them is what is left. Each decision in the plan read carried a task-shaping rule about what made this task plan-mode-able.
+- The agent reads the scrollback; you react to what it proposes. The scrollback is the right source here: the question is how you worked, not what is on disk.
 
 Ask Claude to read the scrollback, propose rules, and pause for your push-back before going further.
 
@@ -56,7 +56,7 @@ Decide the location with Claude.
 
 ## Read the shapes, hold the build
 
-- Read the answer as a map, not a mandate. The next small lecture walks the same shapes with the trigger and runtime for each.
+- Read the answer as a map, not a mandate.
 
 ## What happened
 
@@ -68,7 +68,7 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 
 **When the trigger does fire, fence it as a QUESTION, not an action** — *"do you also want an `@import` line so it fires automatically, or keep it explicit-load-only?"* A silent automatic wire-up collides with rule 37 and with the module's deliberate no-prescription stance on auto-load. The downstream stake, per the Artefact-contracts table in `plan-mode-done-right.md`: M4's walk-and-fill audit subagent cannot see `~/.claude/memory/` unless it is `@import`-wired from `~/.claude/CLAUDE.md`.
 
-**View summary:** You ask the agent to recover the task-shaping rules hidden in the planning session, rewrite anything generic, and save the useful rules where they will fire. The artifact turns one good planning experience into reusable guidance for similar work.
+**View summary:** You ask the agent to recover the task-shaping rules hidden in the planning session, rewrite anything generic, and save the useful rules where Claude will read them. The artifact turns one good planning experience into reusable guidance for similar work.
 
 **Scrollback-ownership clause (2026-08-08, Antti-directed):** Phase 1's *"The scrollback is the right source here: the question is how you worked, not what is on disk"* is the deliberate boundary of M1's scrollback law (`the-machine-you-just-met`, *The scrollback is not the work*): session questions read the chat, state questions read the disk. It stops the law over-learning into scrollback-bad. No module reference in body on purpose; the recognition stays implicit.
 
@@ -124,9 +124,9 @@ Claude read the scrollback and proposed the rules. You rewrote or rejected at le
 <!-- backing -->
 
 Claims
-- `the-file-is-the-artifact` · vision · "the file is the artifact" ← none-owed
-- `templates-stay-generic` · vision · "Templates stay generic; this file carries your rules" ← none-owed
-- `you-already-did-the-work-now-name-it` · vision · "You already did the work; now name the rules inside it." ← none-owed
+- `an-agent-hands-you-generic-rules` · vision · "an agent asked for rules will hand you plausible generic ones." ← none-owed
+- `the-generic-rule-is-the-tell` · vision · "The generic rule is the tell." ← none-owed
+- `the-rules-are-already-in-the-session` · vision · "The rules are already in the session; naming them is what is left." ← none-owed
 - `agent-reads-the-scrollback-you-react` · vision · "The agent reads the scrollback; you react to what it proposes." ← none-owed
 - `scrollback-right-source-for-session-questions` · vision · "The scrollback is the right source here: the question is how you worked, not what is on disk." ← none-owed — the ownership boundary of the M1 scrollback law: session questions read the chat, state questions read the disk.
 - `reject-or-rewrite-the-generic-rule` · vision · "When Claude pauses for the rewrite-and-reject pass, that is where your hand goes on the work." ← none-owed

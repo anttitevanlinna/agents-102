@@ -153,15 +153,15 @@ Format → `curriculum/backing-format.md`.
 **Claims**
 - `plan-mode-is-tool-and-instruction-change` · detail · "Plan mode removes the edit tools and swaps the instructions to explore and propose" ← cc-permission-modes — maintainer-directed reframe: mechanism, not taxonomy. The docs file plan under permission modes; that taxonomy word stays in the reference page's lookup table (`claude-code-for-engineers.md §5`), where it is a docs citation. The mechanism half is live-observable (edit tools blocked in plan mode; approval ships as a tool call in the loop); the behavioral half ("reads files, runs shell commands to explore, writes a plan, won't edit your source") is near-verbatim the docs and stays on the stamp.
 - `plan-mode-shift-tab` · detail · "You press Shift+Tab until the status bar shows plan mode on" ← cc-permission-modes
-- `plan-mode-read-only` · detail · "The agent is now read-only: it reads files, runs shell commands to explore, and writes a plan file, but it won't edit your source until you approve" ← cc-permission-modes
+- `plan-mode-read-only` · detail · "The agent reads files, runs shell commands to explore, and writes a plan file, but it won't edit your source until you approve." ← cc-permission-modes
 - `plan-before-source-changes` · detail · "Claude writes a thing you can read, edit, and push back on before your source changes" ← cc-permission-modes — "your source" is the load-bearing scope: since v2.1.218 approved shell commands run during planning, so plan mode protects the source tree, not all state.
 - `plan-file-is-findable` · detail · "The plan is saved on disk under a descriptive filename such as `migrate-auth-hash-calm-otter.md`. You can find it again without searching the chat." ← cc-plan-file
 - `parallel-sessions-plant` · vision · "While Claude plans, other sessions could be making progress elsewhere" ← none-owed
-- `specific-file-list` · vision · "A plan that names three files has made three decisions. A plan that says 'the relevant files' has made zero." ← none-owed
+- `specific-file-list` · vision · "A plan that names three files has made three decisions. A plan that says \"the relevant files\" has made zero." ← none-owed
 - `early-runnable-slice` · borrowed · "Find the first step after which something runs end-to-end" ← horthy-wsff, cockburn-walking-skeleton
-- `verification-step-could-fail` · vision · "*'Run the tests'* is cosmetic; *'run `pytest tests/auth/ -k hash` and expect 14 passing, 0 failing'* is a gate" ← none-owed
+- `verification-step-could-fail` · vision · "*\"Run the tests\"* is cosmetic; *\"run `pytest tests/auth/ -k hash` and expect 14 passing, 0 failing\"* is a gate" ← none-owed
 - `named-assumptions` · vision · "A plan without assumptions isn't assumption-free; it's just assumption-silent." ← none-owed
-- `named-non-goals` · borrowed · "A list of non-goals. What the plan will *not* touch." ← horthy-create-plan
+- `named-non-goals` · borrowed · "**A list of non-goals.** What the plan will *not* touch." ← horthy-create-plan
 - `structure-is-persuasive` · vision · "It's a draft formatted like a decision. The formatting is the trap." ← none-owed
 - `reasonableness-passes-for-rightness` · vision · "three reasonable steps in the wrong order still ship a bug" ← none-owed
 - `you-already-agree-with-it` · vision · "Agreement is cheap; the read is what matters." ← none-owed

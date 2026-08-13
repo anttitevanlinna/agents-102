@@ -71,7 +71,11 @@ Return ONE JSON object, exactly the writing judge's schema with `"class": "slide
   "todos_count": <int>
 }
 
-`blocking: true` for rules 1, 2, 3, 4, and 8, plus rule 7's self-grading-superlative sub-item (value-prop leak). `blocking: false` for rules 5, 6, and the remaining rule-7 sub-items — those are TODOs.
+`blocking: true` for rules 1, 2, 3, 4, 8, 10, and 12, plus rule 7's self-grading-superlative sub-item (value-prop leak). `blocking: false` for rules 5, 6, 9, 11, 13, 14, and the remaining rule-7 sub-items — those are TODOs.
+
+**The principle, so a rule added tomorrow classifies itself.** Blocking = the slide cannot be UNDERSTOOD OR TRUSTED as shown: a referent that does not resolve (1), a callback pointing at another file by position (2), a backward reference to a beat that does not exist (3), a reveal landing before its guess (4), internal dialect the room cannot parse (8), a section absent from the composed deck entirely (10), a pointer to content by page position that dies at the cut (12), and the value-prop leak that costs trust rather than comprehension. Non-blocking = POLISH on a slide that already works: orphans (5), header self-carry (6), cadence tics (7), emphasis budget (9), numbering (11), link inventory (13, explicitly a review surface and never a gate), slide size (14, mechanically gated with its own accept path). Ask which failure the reader suffers — *"I cannot follow this"* is blocking, *"this could be tighter"* is a TODO.
+
+Rules 9–14 were added to the compendium after this partition was written and went **unlisted for weeks**, while the note below promised new rules are picked up automatically. They were — by the rule list, not by the severity map, so each judge invented a classification and the verdicts were not comparable across runs. Extending the list is not enough on its own; state the principle, or the next rule lands in the same gap. (Added 2026-08-13 after a slides judge flagged the omission itself.)
 
 Top-level `verdict` is computed deterministically, same as the writing judge: `blocking_findings_count > 0` → REVISE, else PASS. Do not override with intuition.
 

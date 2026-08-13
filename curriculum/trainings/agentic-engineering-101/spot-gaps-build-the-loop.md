@@ -11,8 +11,7 @@ Optional lookup pages: [session transcripts in the reference](../../trainings/ag
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Diagnose** the gap two sessions of the same task surface
-- **Read** where each gap belongs: memory, sharper verifier, or new skill
+- **Diagnose** the gaps two sessions of the same task surface, and read where each belongs: memory, sharper verifier, or new skill
 - **Cut** one rule from `./CLAUDE.local.md` the diagnosis killed
 - **Surface** the kinds of work you repeat across your stack, and draw their recurring shapes
 - **Map** evals across verifier, judge, and gate
@@ -41,7 +40,7 @@ You walk in holding two sessions of the same task. The un-packaged Module 4 send
 - The three-pattern catches what it was shaped to catch. The gaps that surface after two sessions are data the pattern didn't anticipate, not proof the pattern failed
 - Claude over-credits its own packaging by default. You know the countermove by now. A fair push-back names one thing the verifier missed, concretely. The sessions rule; the summary of them doesn't
 - Gaps sort into three homes: memory (rules that would have prevented the mistake upstream), sharper verifier (a check that would have fired mid-session), or new skill (a move packaged for future tasks)
-- An eval is the automated check that says *this agent-produced thing meets our bar*. Verifier when deterministic, judge when LLM-based, gate when placed in CI. All three are evals. A check proves something only where it could say no. A judge in the producer's window cannot say no exactly where the producer went wrong.
+- A check proves something only where it could say no. A judge in the producer's window cannot say no exactly where the producer went wrong.
 - The handoff prompt IS the loop. It packages the stack-map into a move that authors the skill each shape calls for, when you run it.
 - Encoding is the third phase of test → learn → encode. Two sessions tested; the diagnosis learned; the handoff encodes. The loop closes when the lesson ships.
 
@@ -84,7 +83,7 @@ Antti
 
 **Human close's "talk, compare, no prompts" stays in body — `check_pedagogy.md` §27 mode-defining-cue carve-out (maintainer call).** The cue defines the slot's mode against a training that is otherwise prompts; the round's form (pairs, whole-room, write-then-share) stays the trainer's per the strategy doc's M6 Debrief spec. Future judges should not re-flag.
 
-**Independence axis on the eval-taxonomy Key Concept (2026-08-09, Antti-directed; buried-gold item):** bullet 4 closes with the kernel (*a check proves something only where it could say no*) and the failure named engineer-plain (*a judge in the producer's window cannot say no exactly where the producer went wrong*). This is the taxonomy's third axis — who judges, relative to who produced — alongside mechanism (deterministic/LLM) and placement (CI). `check_pedagogy §9b` variation of the M5 closer's independence law (`the-gate-is-a-claim.md` slide 1, the second-call law): M5 states the law; this bullet makes it the build-time question. Guards: (a) do not escalate to a prescription ("always use a fresh session") — the M5 accept-note keeps the countermove ladder ranked, not mandated; (b) KC bullet 2's over-credit line is the worked instance two bullets up — the rhyme is deliberate, do not dedupe either side; (c) KC slide at 196w/6b, at the bullet cap — extend-don't-append stands.
+**Independence axis on the eval-taxonomy Key Concept (2026-08-09, Antti-directed; buried-gold item):** bullet 4 closes with the kernel (*a check proves something only where it could say no*) and the failure named engineer-plain (*a judge in the producer's window cannot say no exactly where the producer went wrong*). Independence — who judges, relative to who produced — is the only axis this bullet carries. Mechanism (deterministic/LLM) and placement (CI) belong to `the-loop-has-a-name.md`'s naming slide, which this section precedes in deck order; stating them here hands the closer's payload over two slides early, against `vocabulary.md`'s don't-pre-plant line on *eval*. The word itself still lands in `## What You'll Learn`, where signposting is allowed to name what the module earns. `check_pedagogy §9b` variation of the M5 closer's independence law (`the-gate-is-a-claim.md` slide 1, the second-call law): M5 states the law; this bullet makes it the build-time question. Guards: (a) do not escalate to a prescription ("always use a fresh session") — the M5 accept-note keeps the countermove ladder ranked, not mandated; (b) KC bullet 2's over-credit line is the worked instance two bullets up — the rhyme is deliberate, do not dedupe either side; (c) KC slide at 173w/6b, at the bullet cap — extend-don't-append stands.
 
 **Quality:** compendium-audited 2026-08-12 (writing@96b3554 story@96b3554 technical@93bb807 behavior@1c765f2 pedagogy@96b3554 strategy@96b3554 slides@96b3554)
 - judges @96b3554: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

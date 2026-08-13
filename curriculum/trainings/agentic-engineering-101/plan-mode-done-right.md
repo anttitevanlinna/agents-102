@@ -23,7 +23,6 @@ After this module, you will be able to:
 - **Pair** human read with agent walk-down: read → push-back → walk-down → approve
 - **Spot** approval inflation in a plan whose structure makes it look decided
 - **Extract** task-shaping rules from two sources, your plan session and one story ticket, into a `.md` file you place
-- **Name** three shapes for turning a rules file into automation: Slack triage, issue webhook, scheduled read
 
 ## Start here
 
@@ -63,8 +62,7 @@ Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble i
 - Assumption-silent isn't assumption-free. Every plan assumes something, and the good ones say what. Push-backs ship into memory.
 - A plan with a specific file list has made decisions; a plan without one hasn't. The deferred ones get made mid-run, where a wrong call propagates across files and tangles.
 - Verification steps that could actually fail are gates; verification steps that always pass are decoration
-- You don't have to execute a plan to know it's good. Making it good IS the work.
-- Plan mode makes the read possible; it isn't the read
+- You don't have to execute a plan to know it's good. We knew that long before agents; the skill is old, only the surface is new.
 
 ## Next
 

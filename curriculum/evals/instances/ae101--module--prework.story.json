@@ -1,11 +1,40 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/prework.md",
-  "body_sha": "c3c2f49e6b71c918fd7d999a526790748e7b9a70409da9323f47061d9c7f3b63",
+  "body_sha": "e207c3e6cbcab76d86a763438d909fff2eab74fe064045fb43cbdc426cd9ac88",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "M0 prework — not on the mood arc (mood arc opens at M1: joyful creation). Prework is almost entirely SETUP/LAUNCH beat (repo pick, session open, tarball fetch, extract+install, arrival hand-off, optional pre-read), mood-exempt per check_strategy_tie_in §1. Step 5 (pick a trivial bug + confirm readiness) is the sole TEACHING beat — rehearses the push-back move that recurs across the training. Close hands off verbatim into M1's Connections question, priming joyful creation without pre-empting it.",
-  "trace_status": "cached",
+  "trace_status": "regenerated",
+  "personas": [
+    {
+      "name": "mid_layer_competent",
+      "mood_score": 8,
+      "close_score": 8,
+      "confusions": [],
+      "verdict": "PASS"
+    },
+    {
+      "name": "opinionated_senior",
+      "mood_score": 7,
+      "close_score": 7,
+      "confusions": [
+        "Mild resistance in 'What to bring' to being walked through backlog sizing already known — temperament, not a comprehension gap; resolves on its own."
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "name": "fast_operator",
+      "mood_score": 7,
+      "close_score": 7,
+      "confusions": [
+        "Skimming 'What to bring' risks reading the four task sizes as stages of one task rather than four separate backlog items — the correcting bolded line sits in prose this reader is likely to skip. Self-correcting downstream, not silent, but not caught here.",
+        "Step 5's push-back rehearsal is contingent on BOTH the body sentence being read AND Claude actually dumping all four criteria in one message; a body-skipping reader whose run screens cleanly never exercises the recovery move and has no way of knowing they missed it. The visible end-state artifact is identical to the other two personas' — only the trace shows the practice was thinner."
+      ],
+      "verdict": "PASS"
+    }
+  ],
+  "triangle_disagreement": "The three personas do NOT converge on step 5 (the file's sole teaching beat). The mid-layer-competent read scores it 8/10 — the rehearsal fires cleanly and lands as intended. The opinionated-senior read scores it 7/10 for a DIFFERENT reason: the beat still narrates a push-back move this persona already owns by instinct, so it reads as slightly over-explained rather than under-delivered — the fix is dosage (name the recovery prompt as available, not prescribed), not mechanism. The fast-operator read also scores 7/10, but for a THIRD, more structural reason: the forcing function's trigger is a conjunction of (a) the reader actually reading the body sentence naming the failure mode, and (b) Claude actually dumping all four criteria in one message on that run — neither is forced by the prompt itself, so a fast, prompt-only reader whose run screens cleanly skips the rehearsal entirely without any signal that anything was missed. Reported separately per the run's instruction rather than averaged into one 7.3: the senior's 7 is a dosage complaint (harmless, arguably correct as designed), the fast operator's 7 is a coverage gap in the forcing function's trigger condition (worth a fix_hint, not a REVISE, since no persona actually fell below the mood floor and the visible arrival artifact is complete for all three).",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
@@ -57,8 +86,8 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The step-5 push-back move is enacted by the registry prompt `{{prompt:ae101-prework-one-at-a-time}}`, not scripted in body prose. The body's 'push back if it dumps all four criteria at once' names the situation and hands the recovery move to the fence, matching the sole load-bearing forcing function in this file. The 'ask it to install gh if it isn't there' line (What to bring) is a readiness aside in the same register as the surrounding tracker/worktree bullets, not a scripted teaching move needing a fence. Commit 96b3554 reworded the same section's bolded line to 'Separate tasks off your backlog. Not slices of one.' (dropping a redundant count the bullet list above already carried) — still a clarifying constraint on what the artifact-list means, not a prescribed student reaction or count-script; §16's boundary-2 carve-out (light instructional aside, not load-bearing session machinery) covers it without a fence.",
-      "fix_hint": null,
+      "evidence": "The step-5 push-back move is enacted by the registry prompt `{{prompt:ae101-prework-one-at-a-time}}`, and the mid-layer and opinionated-senior persona reads both fire it as designed (persona.json personas[0].phases[6], personas[1].phases[6]). The fast-operator triangle leg surfaces a real edge rule §16 itself names as the risk to check ('Speed-runners skip body'): the recovery cue lives in body prose ahead of the fenced screening prompt, and the fast-operator read (persona.json personas[2].phases[6]) skips that sentence and, on a run where Claude screens cleanly, never exercises the rehearsal at all — not because the reader missed a fence, but because the trigger condition (body-read AND Claude-misstep) isn't forced by the prompt. Harm check: is this the harm §16 exists to prevent (a load-bearing forcing function silently unavailable to a real reading style)? Partially — the artifact this persona leaves prework with (bug picked, readiness confirmed) is unaffected, so nothing downstream breaks; only the SKILL rehearsal is thinner for this one persona on this one run, and only probabilistically (contingent on Claude's own behavior that turn, not deterministic). That's a coverage gap worth a fix_hint, not a structural §16 violation — the fence still carries a real forcing function ('one at a time'), it's just reactive rather than always-fired. Not blocking.",
+      "fix_hint": "Consider folding a self-report into the primary screening prompt (e.g. ask Claude to name whether it paced the three candidates or presented them together) so the tell surfaces even on a clean run and even for a reader who skipped the body sentence — makes the rehearsal fire regardless of reading style, not just regardless of Claude's phrasing.",
       "blocking": true
     },
     {
@@ -66,7 +95,7 @@
       "rule_index": 27,
       "rule_lead": "Body teaches the work; trainer manages the room outside text.",
       "verdict": "PASS",
-      "evidence": "No group/pair/share cues anywhere in the file (individual setup throughout: pick a repo, open a session, fetch and extract a bundle, pick a bug). Every sentence is about the student's own artifact or next action.",
+      "evidence": "No group/pair/share cues anywhere in the file (individual setup throughout: pick a repo, open a session, fetch and extract a bundle, pick a bug). Every sentence is about the student's own artifact or next action, confirmed across all three persona reads — none flagged a cohort-management cue.",
       "fix_hint": null,
       "blocking": false
     },
@@ -75,7 +104,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named; mood-floor applies to teaching beats only.",
       "verdict": "PASS",
-      "evidence": "trace.module_mood_contract states the beat classification explicitly; trace.phases[6] (Step 5, the sole teaching beat) scores 8/10, meeting the mood-floor. All other phases are correctly classified setup/launch/transition and carry mood_score: null per the carve-out — each is compressible to a parenthetical without breaking the arc (e.g. trace.phases[0].mood_note, trace.phases[3].mood_note).",
+      "evidence": "module_mood_contract states the beat classification explicitly; all three persona records score phase 7 (the sole teaching beat) at or above the 7 facilitator-premium floor (8/7/7 — see personas array above), none below it. All other phases are correctly classified setup/launch/transition and carry mood_score: null per the carve-out across all three persona records — each compressible to a parenthetical without breaking the arc.",
       "fix_hint": null,
       "blocking": true
     },
@@ -84,7 +113,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood, not punitive.",
       "verdict": "PASS",
-      "evidence": "'Come to Module 1 without one and you'll be scrambling for one while the exercise is already fixing bugs. Your call.' (Bring to Module 1) — names the consequence, not a wrongdoing; 'Your call' keeps the frame descriptive rather than shaming. trace.phases[7].mood_note confirms the epistemic-not-punitive read.",
+      "evidence": "'Come to Module 1 without one and you'll be scrambling for one while the exercise is already fixing bugs. Your call.' (Bring to Module 1) — names the consequence, not a wrongdoing; 'Your call' keeps the frame descriptive rather than shaming. All three persona mood_notes at this phase (persona.json phases[7]) read it as epistemic; the opinionated-senior record explicitly notes the 'your call' framing as respecting a persona that dislikes being told what to do.",
       "fix_hint": null,
       "blocking": false
     },
@@ -93,7 +122,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Section headers and body throughout are positive-frame ('What to bring', 'Pick THE repo', 'Pick a trivial bug and confirm M1 readiness') — no failure-word-led framing (e.g. no header naming a mistake or violation).",
+      "evidence": "Section headers and body throughout are positive-frame ('What to bring', 'Pick THE repo', 'Pick a trivial bug and confirm M1 readiness') — no failure-word-led framing (e.g. no header naming a mistake or violation). Consistent across all three persona reads.",
       "fix_hint": null,
       "blocking": false
     },
@@ -102,17 +131,18 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity — no front-run, module-to-module arc holds, Big Idea honored, mood doesn't resolve early.",
       "verdict": "PASS",
-      "evidence": "Close hands off verbatim into M1's Connections opener — 'what's one trick you figured out with Claude Code that nobody taught you?' matches getting-going.md line 36 word for word. Prework surfaces a bug and confirms readiness but does not fix it, so M1's fix-tests-first teaching moment is not front-run. Content-strategy's own line ('Orientation is short, not a setup ramp... Prework has done Claude Code install + repo-choice + bug-surfacing') is honored directly. Mood stays at 'curious/ready' throughout (trace.close.mood_note) rather than resolving into M1's joy, so M1's teaching moment isn't stolen. Commit 96b3554 (redundancy fix flagged by the writing judge: 'the size callout restated the count its own bullet list held') touched only the What-to-bring bolded line, dropping the count in favor of 'separate tasks... not slices of one' — doesn't touch the M1 handoff line or front-run any downstream module.",
+      "evidence": "Close hands off verbatim into M1's Connections opener — 'what's one trick you figured out with Claude Code that nobody taught you?' matches getting-going.md line 36 word for word; verified fresh in all three persona close beats. Prework surfaces a bug and confirms readiness but does not fix it, so M1's fix-tests-first teaching moment is not front-run. Content-strategy's own line ('Orientation is short, not a setup ramp... Prework has done Claude Code install + repo-choice + bug-surfacing,' content-strategy-agentic-engineering-101.md line 281) is honored directly. Mood stays at a ready-not-triumphant register across all three closes (8/7/7) rather than resolving into M1's joy, so M1's teaching moment isn't stolen by any of the three readings. The maintainer-block-only diff since the prior audit (commit 37458df, a cross_module citation reword) doesn't touch this file's body or the M1 handoff line.",
       "fix_hint": null,
       "blocking": true
     }
   ],
   "mood_summary": {
-    "phase_scores": [8],
-    "close_score": 8,
-    "any_below_8": false,
-    "stealing_the_mood": []
+    "phase_scores": [8, 7, 7],
+    "close_score": 7,
+    "any_below_8": true,
+    "stealing_the_mood": [],
+    "note": "phase_scores and close_score here are per-persona at the sole teaching beat (step 5) and at close, in triangle order [mid_layer_competent, opinionated_senior, fast_operator] — not per-phase across one persona. any_below_8 is true (7s from two personas) but none fall below the 7 REVISE floor; see personas array and triangle_disagreement for the full, non-averaged picture."
   },
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 1
 }

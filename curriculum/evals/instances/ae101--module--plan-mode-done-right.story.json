@@ -1,18 +1,47 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md",
-  "body_sha": "2742bfb92f1bcaf02f8650d4a1f17939450a11f9761a4c8cf749106d31af4599",
+  "body_sha": "f9a7ccab76ef03e2beab49d2f1e865015b17dc4f8fed4d9a2f5a82c351e6a3ee",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "grounded competence — \"I can feel when a plan is good before approving it, and I know the move is two reads, not one.\"",
   "trace_status": "regenerated",
+  "personas": [
+    {
+      "name": "mid_layer_competent",
+      "mood_score": 9,
+      "close_score": 9,
+      "confusions": [],
+      "verdict": "PASS"
+    },
+    {
+      "name": "opinionated_senior",
+      "mood_score": 7,
+      "close_score": 7,
+      "confusions": [
+        "Key Concepts line 66 ('You don't have to execute a plan to know it's good. Making it good IS the work.') is read as the module's stated answer to 'why not execute', arriving mid-module as assertion rather than earned proof; the persona's actual resolution comes later, from the retro's own evidence question ('what did grill surface that push-back didn't? would it have mattered?'), not from the bolded line."
+      ],
+      "verdict": "PASS (facilitator-premium, 7/10 — see rule_index check_pedagogy.md#16/#27 note below)"
+    },
+    {
+      "name": "fast_operator",
+      "mood_score": 8,
+      "close_score": 8,
+      "confusions": [
+        "First-read friction between the core loop's own discipline ('approve, stop, no execution') and the module's own length past that point (extract-the-task-shaping-rule, the optional CLAUDE.local.md integration, 'how instructions grow') — reads briefly as the module not applying its own restraint to itself, resolved once the optional/conditional framing on both closers registers."
+      ],
+      "verdict": "PASS"
+    }
+  ],
+  "personas_disagree": true,
+  "disagreement_note": "The opinionated senior is the outlier, scoring the module 2 points under the other two personas (7 vs 9/8). The disagreement is not about content quality — all three personas approve the plan without executing it and none flags a REVISE-worthy defect — it is about WHERE in the module the objection to 'approve, stop, no execution' gets answered. The mid-layer-competent and fast-operator personas take the Key Concepts bullet ('You don't have to execute a plan to know it's good. Making it good IS the work.', line 66) as sufficient; the opinionated senior reads that same line as an assertion arriving before it's earned, and only settles once they reach the retro's own evidence question in Phase 6 of the core exercise ('What did grill surface that push-back didn't? Would it have mattered?') — a question that makes the STUDENT supply the proof rather than accept the module's claim. The module DOES already answer this objection twice, once student-facing (line 66's Key Concepts bullet) and once trainer-facing (maintainer block Watch-fors, line 146: 'Student asks \"why don't we execute?\" near P5. Answer: making the plan good IS the work...'; and the P5-deflection push-back script, line 136: 'quote one thing your push-back caught that the second read would have missed'). What the senior's read surfaces is a SEQUENCING gap, not a missing answer: the assertion (line 66) lands mid-module in Key Concepts, ahead of the retro question (Phase 6, end of the core exercise) that actually produces the evidence for a skeptical reader. This does not cross the REVISE bar — no rule requires the assertion to arrive after its own proof, and the retro question already exists and already does the persuading — but it is worth naming as a placement observation rather than averaging it into a single score.",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Lines 32–40 place the arc-orientation lecture (\"The whole map\") first — a positional carve-out lecture, not a pattern-naming closer — then the plan-quality vocabulary lecture mid-module before the push-back exercise, then the two meta-frame closers (\"Where the rule could live\" at line 40, \"How instructions grow\" at line 58) after the exercises that earned them. Placement is unchanged from the prior pass; the edit under review touched only the Big Idea, one prework link, one deleted sentence, and a dialect fix.",
+      "evidence": "Lines 32–40 place the arc-orientation lecture (\"The whole map\") first — a positional carve-out lecture, not a pattern-naming closer — then the plan-quality vocabulary lecture mid-module before the push-back exercise, then the two meta-frame closers (\"Where the rule could live\" at line 40, \"How instructions grow\" at line 58) after the exercises that earned them. Content unchanged since the last audit; this pass's diff (verified via `git diff 96b3554`) touches only the maintainer block's Quality-stamp bookkeeping line, not body prose or placement.",
       "fix_hint": null,
       "blocking": false
     },
@@ -57,7 +86,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The branch-walk machinery for the plan-mode read stays fenced in `push-back-on-the-plan`'s prompts; the story-ticket read keeps its forcing function in `extract-the-task-shaping-rule`'s fence too. Harm this rule guards against — body prose performing the move so a speed-runner can skip the prompt and still get credit — is absent: module body only frames the arc (line 6, lines 18–27) and never enacts a push-back or branch-walk itself. The removed sentence (\"The full compound move ran at M1. This one is a variation.\") was framing prose, not a forcing function; its deletion doesn't touch this rule's harm either way.",
+      "evidence": "The branch-walk machinery for the plan-mode read stays fenced in `push-back-on-the-plan`'s prompts; the story-ticket read keeps its forcing function in `extract-the-task-shaping-rule`'s fence too. Harm this rule guards against — body prose performing the move so a speed-runner can skip the prompt and still get credit — is absent: module body only frames the arc and never enacts a push-back or branch-walk itself. The opinionated-senior persona's objection (line 66's Key Concepts bullet arriving ahead of the retro's evidence-question) is a SEQUENCING observation, not a forcing-function violation — line 66 is not standing in for a prompt a speed-runner could skip; the actual forcing function (the retro question) still lives correctly in the exercise's fenced prompt, downstream.",
       "fix_hint": null,
       "blocking": false
     },
@@ -66,7 +95,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Module line 36 stays inside the sanctioned Connections-opener room-harvest carve-out. Outside that one opener the body stays on task, plan, prompts, and artifact — including the story-ticket beat, described purely as work with no authored pause/pair/share cue. No new room-management prose entered with this edit; the diff only touched Big Idea, prework, one deleted sentence, task-sizing wording, and \"feature\"→\"task\".",
+      "evidence": "Module line 36 stays inside the sanctioned Connections-opener room-harvest carve-out. Outside that one opener the body stays on task, plan, prompts, and artifact — including the story-ticket beat, described purely as work with no authored pause/pair/share cue. No content change since the last audit (diff is Quality-stamp bookkeeping only).",
       "fix_hint": null,
       "blocking": false
     },
@@ -75,7 +104,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Trace phase 1 and close both score 9. Strategy doc (content-strategy-agentic-engineering-101.md line 309) states the M2 mood as \"grounded competence — I can feel when a plan is good before approving it, and I know the move is two reads, not one,\" which matches the maintainer block's mood-target line (line 125) verbatim, and the trace reads the shortened Big Idea and trimmed task-sizing callout as still landing that mood — nothing in the diff softened or punctured the grounded-competence register.",
+      "evidence": "Strategy doc (content-strategy-agentic-engineering-101.md line 309) states the M2 mood as \"grounded competence — I can feel when a plan is good before approving it, and I know the move is two reads, not one,\" matching the maintainer block's mood-target line (line 125) verbatim. All three widened-trace personas land at or above the 7-facilitator-premium floor (9, 7, 8) with no beat below 7, so the mood contract holds across the audience triangle, not just the single default reader the prior single-persona pass covered.",
       "fix_hint": null,
       "blocking": false
     },
@@ -93,7 +122,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Line 6's re-shortened Big Idea (\"The first plan is plausible. Plausible isn't good enough, and you are the one who can tell the difference.\") leads with the discipline — the student's own judgment call on a plan — not a failure word. It reads as two short sentences rather than one, but the maintainer block's own framing (\"cut to one\") is a maintainer-block wording question, not a §3 violation: the harm §3 guards against — a title-card that fronts a failure mode instead of a discipline — is absent either way.",
+      "evidence": "Line 6's Big Idea (\"The first plan is plausible. Plausible isn't good enough, and you are the one who can tell the difference.\") leads with the discipline — the student's own judgment call on a plan — not a failure word, across all three personas; even the opinionated senior, who tests every claim the module makes, does not read the Big Idea itself as a failure-mode framing.",
       "fix_hint": null,
       "blocking": false
     },
@@ -102,7 +131,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "Front-run check: M2 still refuses plan-execution (line 148 \"approve, stop, do not execute\"; line 25 \"Extract... into a .md file\" not \"invoke a skill\") — the skill-authoring reveal stays reserved for M3 per strategy doc line 315/554. Module-to-module arc: `## Next` (lines 69–87) hands off to M3's STRIDE/security-skills opener without resolving M3's teaching moment early, and the \"M2 feature\"→\"M2 task\" dialect fix (lines 75, 77) tightens the M3 handoff's noun without changing what it hands off. Big Idea fidelity: strategy doc's per-module row (line 244, \"Plan-mode approval inflation catches as the key teaching moment\") is honored by Key Concepts bullet 1 (\"Structure is persuasive...\") unchanged by this edit. Mood doesn't resolve early: M2's grounded competence stays open into M3, no premature tidy resolution introduced by the trimmed prework/task-sizing text. The newly-added progression-page prework link (line 16) matches strategy doc's own M1→M2 reading-gap prescription (line 297) rather than contradicting it.",
+      "evidence": "Front-run check: M2 still refuses plan-execution (line 148 \"approve, stop, do not execute\"; line 25 \"Extract... into a .md file\" not \"invoke a skill\") — the skill-authoring reveal stays reserved for M3 per strategy doc line 315/554, and the opinionated-senior persona's push against no-execution is a mood/pacing finding, not a strategy-fidelity breach: the strategy doc's own M2 design (line 316, \"Approve. Stop. No execution... execution is M3's concern\") IS what the module implements, correctly, even where one persona wants it argued harder. Module-to-module arc: `## Next` (lines 69–87) hands off to M3's STRIDE/security-skills opener without resolving M3's teaching moment early. Big Idea fidelity: strategy doc's per-module row (line 244, \"Plan-mode approval inflation catches as the key teaching moment\") is honored by Key Concepts bullet 1 (\"Structure is persuasive...\"). Mood doesn't resolve early: M2's grounded competence stays open into M3 across all three persona traces; no beat resolves M3's teaching moment early.",
       "fix_hint": null,
       "blocking": false
     }
@@ -110,9 +139,11 @@
   "mood_summary": {
     "phase_scores": [9],
     "close_score": 9,
-    "any_below_8": false,
-    "stealing_the_mood": []
+    "any_below_8": true,
+    "stealing_the_mood": [
+      "opinionated_senior close (7/10): the 'approve, stop, no execution' claim is read as asserted (Key Concepts line 66) before it is proven (retro's evidence question, Phase 6) — a sequencing gap, not a missing answer. See disagreement_note."
+    ]
   },
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 1
 }

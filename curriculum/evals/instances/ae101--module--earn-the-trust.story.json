@@ -1,18 +1,51 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/earn-the-trust.md",
-  "body_sha": "883d35e016d276ba803922b94ef603fb85788f642738f60b0d8fab5a9786b17f",
+  "body_sha": "d82335c816b889581dfad91f337f11470652d974fd885a8677eaa2131b65e486",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "earned trust — 'the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big'",
-  "trace_status": "regenerated (phase 11 only)",
+  "trace_status": "regenerated (audience triangle — 3 personas, widened from single-persona cache per 2026-08-12 dispatch, not reused)",
+  "personas": [
+    {
+      "name": "mid-layer competent",
+      "mood_score": 8.3,
+      "close_score": 9,
+      "confusions": [],
+      "verdict": "PASS"
+    },
+    {
+      "name": "opinionated senior",
+      "mood_score": 7.9,
+      "close_score": 8,
+      "confusions": [
+        "Ex2's single-threat pick ('pick THE threat worth hardening') initially reads thinner than this persona's own team convention (two-reviewer sign-off on a threat model) — resolved once the ADR's alternatives-and-constraint shape is read as what a reviewer would check, not a replacement for review."
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "name": "fast operator",
+      "mood_score": 7.9,
+      "close_score": 8,
+      "confusions": [
+        "Phase 3 (Open the side quest): reads past the window-lifecycle sentence ('the main lane's read on it comes later, at a separate step') too fast to retain its two-part structure — registers only that skill work happens in the other window, not that a deliberate switch-back is coming later.",
+        "Phase 7 (Sharpen the skill from evidence): near-miss — momentum from Ex3 (which runs entirely in m3-quality) almost carries the sharpen prompt into the still-focused m3-quality window before the switch registers; caught on a second pass by the Note widget's distinct visual register and by the prompt itself naming main-repo-specific artifacts, not by this persona's own care."
+      ],
+      "verdict": "PASS"
+    }
+  ],
+  "cross_persona_disagreement": [
+    "Ex2 STRIDE single-threat pick: opinionated senior scores it 8 (institutional caution before the ADR resolves it); mid-layer and fast operator both take it at face value and score 9. Not averaged — the senior's caution is a distinct, real read.",
+    "Phase 7 window switch: mid-layer and senior both read the Note widget cleanly with no incident; fast operator reports a genuine near-miss, caught by the widget's distinctiveness rather than by care. This is the module's one real per-persona fragility point and is the reason this fire exists (per dispatch instruction to watch the fast operator on the two-window fork).",
+    "Phase 8 self-audit-charity teaching: senior and fast operator both score 7, for different reasons — senior because the caution is recognition of an already-held instinct, fast operator because the escalation menu was skimmed as optional rather than read as a live decision. Recorded separately, not collapsed into one shared 7."
+  ],
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Two embedded lectures, both correctly placed. 'Skills from the frontier, skills of your own' (line 33) sits mid-module, right before the first curated-skill invocation (Ex: Map the access surface) — a vocabulary/conceptual lecture landing where the vocab earns itself. Trace phase 4: 'Vocabulary lecture at exactly the moment it earns itself, right before the first curated-skill invocation.' 'The loop half, filled in' (line 65) sits after three modules of lived work, before Clear the session — a consolidation closer naming a pattern just lived through. Trace phase 9: 'Correctly placed consolidation closer.'",
+      "evidence": "Two embedded lectures, both correctly placed across all three persona reads. 'Skills from the frontier, skills of your own' (line 33) sits mid-module, right before the first curated-skill invocation — a vocabulary/conceptual lecture landing where the vocab earns itself; mid-layer scores it 8, senior 8 (recognition of an already-held belief, still a genuine hit), fast operator 7 (thinner uptake at speed, not a placement defect). 'The loop half, filled in' (line 65) sits after three modules of lived work, before Clear the session — a consolidation closer naming a pattern just lived through; all three personas score it 8, including the fast operator (the two named recognition lines are short enough to survive a fast read intact).",
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +54,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "Rule scopes to M5-style contrast-mood modules ('learn through doing the thing, name it after'). M3's mood is earned trust, not a contrast reveal — doesn't apply.",
+      "evidence": "Rule scopes to M5-style contrast-mood modules ('learn through doing the thing, name it after'). M3's mood is earned trust, not a contrast reveal — doesn't apply, for any of the three personas.",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,7 +63,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Rule binds lecture-FILE bodies (skills-from-the-frontier.md, the-loop-half-filled-in.md — separately audited), and its own text names the module file as the correct home for module numbering ('bridges, forward-references, module numbering... belong to the module file's ## Next/## Bridge'). earn-the-trust.md IS that home. This fire's own diff (the trifecta beat's removal, see rule_index 4 below) is a case in point: the maintainer note explains the cut as removing a DUPLICATE forward-reference, not as this rule firing — the surviving M4 forward-references at lines 83/91 stay in-scope-by-design.",
+      "evidence": "Rule binds lecture-FILE bodies (skills-from-the-frontier.md, the-loop-half-filled-in.md — separately audited), and its own text names the module file as the correct home for module numbering. earn-the-trust.md IS that home; the surviving M4 forward-references at lines 83/91 stay in-scope-by-design.",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,7 +72,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
-      "evidence": "Rule targets lecture-file teaching-payload headers scanned cold in the self-study handbook. This file's `##` headers (Big Idea, Prework, Start here, Next, Bring to Module 4...) are module-scaffolding/navigation headers; the two embedded lecture files carry their own headers and are audited independently.",
+      "evidence": "Rule targets lecture-file teaching-payload headers. This file's `##` headers (Big Idea, Prework, Start here, Next, Bring to Module 4...) are module-scaffolding/navigation headers; the two embedded lecture files carry their own headers and are audited independently.",
       "fix_hint": null,
       "blocking": false
     },
@@ -57,7 +90,7 @@
       "rule_index": 27,
       "rule_lead": "Body teaches the work; trainer manages the room outside text.",
       "verdict": "PASS",
-      "evidence": "No authored conversation cues ('discuss with...', 'share with your neighbor', 'take 90 seconds and compare') anywhere in the body. All sentences point at the work — the fork, the skill invocations, the ADR, the sharpen prompt, the clear. Unaffected by this pass's diff (the removed section carried no conversation cues either).",
+      "evidence": "No authored conversation cues ('discuss with...', 'share with your neighbor', 'take 90 seconds and compare') anywhere in the body, across all three persona reads. All sentences point at the work — the fork, the skill invocations, the ADR, the sharpen prompt, the clear. The Note widget at the window-switch beat (line 53) is a focus/window-switch cue per widgets.md, not a room-management cue — correctly in scope.",
       "fix_hint": null,
       "blocking": false
     },
@@ -66,7 +99,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The three fenced forcing-function moves (sharpen the skill, ready-to-clear convergence, clear session) live in registry prompts referenced by `{{prompt:ae101-m3-sharpen-skill}}` (line 59), `{{prompt:ae101-m3-ready-to-clear}}` (line 73), `{{prompt:ae101-m3-clear-session}}` (line 79). Body prose around them stays descriptive rather than scripting the moves itself.",
+      "evidence": "The three fenced forcing-function moves (sharpen the skill, ready-to-clear convergence, clear session) live in registry prompts referenced by `{{prompt:ae101-m3-sharpen-skill}}` (line 59), `{{prompt:ae101-m3-ready-to-clear}}` (line 73), `{{prompt:ae101-m3-clear-session}}` (line 79). The fast-operator persona's phase-6 read confirms this is load-bearing in practice: the one-question-at-a-time discipline in Ex3's authoring prompt is what stops this persona from batching questions, not body-prose self-restraint — the design is robust to a reader who wouldn't otherwise slow down.",
       "fix_hint": null,
       "blocking": false
     },
@@ -75,8 +108,8 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named; mood lands per beat.",
       "verdict": "PASS",
-      "evidence": "Trace regenerated for phase 11 only (the sole diff since last fire: line 83's 'The quality criteria' → 'The test-strategy conventions'). Teaching-beat mood scores unchanged at 8,8,9,8,8,8,9,8 (close 9) — all ≥8; phase 11 stays 9/10. Harm-clause check on this specific edit: 'the quality criteria' was an undefined referent (no prior sentence in the file names any 'quality criteria'), a cold-read snag right at the close; 'the test-strategy conventions' resolves in the same sentence to the skill just named two clauses earlier ('a test-strategy skill tuned to this codebase'). This is a clarity fix landing squarely inside the close's already-9 mood, not a mood-affecting change.",
-      "fix_hint": null,
+      "evidence": "Audience triangle regenerated across all 12 phases for 3 personas (widened from the prior single-persona cache, per dispatch instruction not to reuse it). Teaching-beat floor across all three: minimum 7/10 (opinionated senior at phase 2 and phase 8; fast operator at phase 4 and phase 8) — per check_strategy_tie_in.md §1, 7 is the facilitator-premium floor, not a REVISE trigger (only <7 blocks). No beat scores below 7 for any persona. Close mood: mid-layer 9, senior 8, fast operator 8 — all comfortably at or above ship bar. Harm-clause check on the one sub-7-adjacent finding (fast operator phase 7 near-miss, mood-exempt setup beat so no floor applies): the near-miss is real but the design's own recovery mechanism (Note widget's distinct visual register, per check_pedagogy.md §52b) is what catches it before it becomes a lost artifact — the harm the mood-floor rule guards against (a teaching beat landing flat) is not present here because this is a setup beat with a working recovery path, not a teaching beat that fails to land.",
+      "fix_hint": "Not blocking, but worth a maintainer note: the Note widget at line 53 is doing real work catching a fast-moving reader mid-momentum from the single-window Ex3. If a future edit ever weakens that widget's visual distinctiveness (e.g. folds it back into a generic Session chip), the fast-operator recovery this trace observed would likely fail. No text change needed now — flagging the dependency for the maintainer block's Push-back moves list, which does not currently name this failure mode.",
       "blocking": false
     },
     {
@@ -84,7 +117,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood, not punitive.",
       "verdict": "PASS",
-      "evidence": "Earned-trust register throughout is about proving rigor to a staff engineer/CISO, never about having done something wrong. The Ex2 STRIDE hardening decision and Ex3 self-critique push-back are framed as demonstrating judgment, not correcting a mistake.",
+      "evidence": "Earned-trust register throughout is about proving rigor to a staff engineer/CISO, never about having done something wrong, across all three persona reads. The Ex2 STRIDE hardening decision and Ex3 self-critique push-back are framed as demonstrating judgment, not correcting a mistake. The opinionated senior's Ex2 skepticism (confusion flag) is institutional caution about process depth, not shame about a prior error — still epistemic, not punitive.",
       "fix_hint": null,
       "blocking": false
     },
@@ -93,7 +126,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Big Idea (line 5-6): 'Trust isn't watching harder. It's verification you can run without being there.' Names the positive discipline (verification), not a failure word. Key Concepts open the same way ('A curated skill is upstream work packaged for you to invoke...').",
+      "evidence": "Big Idea (line 5-6): 'Trust isn't watching harder. It's verification you can run without being there.' Names the positive discipline (verification), not a failure word. Key Concepts open the same way ('A curated skill is upstream work packaged for you to invoke...'). Unaffected by persona — this is a text-level property, not a read-dependent one.",
       "fix_hint": null,
       "blocking": false
     },
@@ -102,7 +135,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "This fire's diff is scoped to line 83's referent swap ('the quality criteria' → 'the test-strategy conventions') inside the same M4 hand-off sentence audited last fire; the rest of the strategy-fidelity read (M3-in-detail cross-check, trifecta-removal fidelity, module-to-module arc, mood-doesn't-resolve-early) is unaffected and carries forward. Module-to-module arc, re-checked at the edited sentence specifically: the hand-off names three artifacts M4 consumes — 'the test-strategy conventions, the access-surface facts, and the hardening decision.' Cross-referenced against the strategy doc's M4 gap-analysis framing and this file's own artefact-contracts table (lines 159-165, all three rows: ADR / test-strategy skill / CLAUDE.local.md consumed by M4 Phase 2 walk-and-fill) — 'test-strategy conventions' names the same artifact the table already tracks under 'Test-strategy skill.' 'Quality criteria' named nothing the file or table defined; the new phrase is strictly more faithful to the strategy doc's artifact-handoff shape, not less.",
+      "evidence": "Cross-checked against the strategy doc's M3-in-detail section (S-first-then-Q, subagents for curated skills, main-thread for authoring, personal-first skill shipping, team-kit-via-conversation) — the module file matches every sequencing claim. Module-to-module arc: the M4 hand-off names three artifacts M4 consumes ('the test-strategy conventions, the access-surface facts, and the hardening decision'), matching the strategy doc's M4-in-detail framing and this file's own artefact-contracts table (lines 159-165). Mood-doesn't-resolve-early: M3's unease (does my hardening decision hold up?) resolves INSIDE M3 via the ADR write, which is correct per the strategy doc — M3 is not one of the modules whose unease is meant to carry forward (that's M4's un-packaged send-off feeding M5's contrast). All three personas confirm the close lands resolved, not prematurely tidy nor artificially left open.",
       "fix_hint": null,
       "blocking": false
     },
@@ -111,7 +144,7 @@
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Module-only section rule; strategy judge is primary owner of Key Concepts content on a module file. Unaffected by this pass's diff (Key Concepts untouched).",
+      "evidence": "Module-only section rule; strategy judge is primary owner of Key Concepts content on a module file. This fire (audience-triangle sim widening) touches no Key Concepts content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -120,7 +153,7 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Module-only section rule; strategy judge is primary owner of Key Concepts content on a module file. Unaffected by this pass's diff.",
+      "evidence": "Module-only section rule; strategy judge is primary owner of Key Concepts content on a module file. Unaffected by this fire.",
       "fix_hint": null,
       "blocking": false
     },
@@ -129,17 +162,31 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "Module-only section rule; strategy judge is primary owner of What You'll Learn content on a module file. Unaffected by this pass's diff.",
+      "evidence": "Module-only section rule; strategy judge is primary owner of What You'll Learn content on a module file. Unaffected by this fire.",
       "fix_hint": null,
       "blocking": false
     }
   ],
   "mood_summary": {
-    "phase_scores": [8, 8, 9, 8, 8, 8, 9, 8],
-    "close_score": 9,
-    "any_below_8": false,
-    "stealing_the_mood": []
+    "phase_scores": {
+      "mid-layer competent": [8, 8, 9, 8, 8, 8, 9],
+      "opinionated senior": [7, 8, 8, 9, 7, 8, 8],
+      "fast operator": [8, 7, 9, 8, 7, 8, 8]
+    },
+    "close_score": {
+      "mid-layer competent": 9,
+      "opinionated senior": 8,
+      "fast operator": 8
+    },
+    "any_below_8": true,
+    "any_below_7": false,
+    "stealing_the_mood": [
+      "Opinionated senior, phase 2 (Connections question): 7 — facilitator-premium, real question but nothing challenges a senior yet; correct floor for a setup-adjacent beat, not under-engagement.",
+      "Opinionated senior, phase 8 (Read the sharpen with a skeptical eye): 7 — the self-audit-charity caution is recognition of an already-held instinct for this persona, not new information.",
+      "Fast operator, phase 4 (Skills from the frontier lecture): 7 — thinner uptake at speed, lecture placement itself not at fault.",
+      "Fast operator, phase 8 (Read the sharpen with a skeptical eye): 7 — escalation menu skimmed as optional rather than read as a live decision."
+    ]
   },
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 1
 }

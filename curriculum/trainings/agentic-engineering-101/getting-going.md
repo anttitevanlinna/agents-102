@@ -59,8 +59,7 @@ After this module, you will be able to:
 - The agent's self-report is a hypothesis, not ground truth. Read it as the agent's account of the repo, not the repo. Introspection generates hypotheses; the artifact rules. The scrollback is the machine's reflection; current state lives on disk.
 - A failing test is what makes the fix checkable. Without it, the fix is a guess that happens to compile
 - A `./CLAUDE.local.md` built from session evidence reads different from one drafted blank: concrete, specific, yours. Personal layer first; team-worthy rules earn their own PR.
-- The loop ends outside the code. The close-out lands in the tracker your team reads, not only in the repo
-- Your tracker encodes conventions that live in the tickets, not in a doc. One ticket is enough to start reading them back
+- The loop ends outside the code. The close-out lands in the tracker your team reads, and that tracker encodes conventions living in the tickets, not in a doc. One ticket is enough to start reading them back
 
 ## Next
 Module 2 is where plan mode earns its keep: multi-file work, a second pass that pressure-tests the plan, and the catches that come with approving more scope than you'd cold-authorize. `./CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `./CLAUDE.md` if this repo has one; both concatenate into context). Close this session once the rules file lands; Module 2 opens fresh in the same repo.

@@ -1,8 +1,8 @@
 {
   "class": "pedagogy",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/set-the-markers-send-it-off.md",
-  "body_sha": "a58f6161ac555d5e0ec8837eae714e22de101deb61d82eea55d11c02eddd15e9",
-  "verdict": "REVISE",
+  "body_sha": "c08781d4a0ce0fd74326bd5cc86af1de404984a079db868b8c531ce254a9aaba",
+  "verdict": "PASS",
   "training": "ae101",
   "rules_evaluated": [
     {
@@ -396,18 +396,18 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 45,
       "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
-      "verdict": "REVISE",
-      "evidence": "Harm this rule guards against: an exercise whose claimed outcome has no falsifiable Monday-morning check, so ship review can't tell if the LO actually landed. That harm is present: this file's own maintainer block carries no Leap test section at all, unlike its same-module, same-day sibling walk-and-send-off.md (which carries its own 3-item leap test even though the module file also carries one). The module-level leap test (run-the-first-experiment.md) already states falsifiable items 1 (\"pins a SHA on a fresh branch before dispatching\") and 2 (\"stops a stalled agent run at ≤20 minutes and names the failure mode\") that map almost exactly onto this file's Phase 1 and \"While it runs\" beats, but the established per-file convention in this module is that the exercise carries its own copy, not only a module-level pointer.",
-      "fix_hint": "Add a 3-item Monday leap test to this exercise's own maintainer block, restating (in this file's own words) the module leap-test items that map onto Phase 1 (SHA-pin-before-dispatch) and \"While it runs\" (stop-a-stalled-run-and-name-it), plus a third scoped to this file if one exists (e.g. transcript-path capture).",
+      "verdict": "PASS",
+      "evidence": "Harm this rule guards against: a claimed outcome with no falsifiable Monday-morning check, so ship review can't tell whether the LO landed. Harm no longer present: the maintainer block now carries a 3-item leap test, verified item by item against the isolation diagnostic (\"working engineer can't tell whether they did it Monday → competency claim\"). (a) \"owns a starting-point commit on a throwaway `m4/<slug>` branch, and can name the transcript path\" — checkable directly against the student's own `git branch` and their own answer. (b) \"hands a real task to an agent and walks away from it rather than nudging it line by line\" — binary self-report of manner (did I paste back every reply or step away), same shape as the compendium's own named-verb examples. (c) \"stops a run that has gone off the rails and keeps the trace, having treated the cancel as data\" — conditional on a run actually going sideways, but still falsifiable either way (student can name whether it happened and, if so, what they did); this is the same real branch the body already scopes as a live possibility (\"If the run goes completely off the rails, stop it\"), not a hypothetical bolted on for the leap test.",
+      "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 47,
       "rule_lead": "Per-phase failure mode + escape hatch.",
-      "verdict": "REVISE",
-      "evidence": "Harm this rule guards against: a phase carrying a forcing function (per §16) with no documented dominant failure mode or recovery move, so a trainer running this file cold has no rescue script. That harm is present: this file's maintainer block has no Failure modes / escape-hatch section, while its sibling walk-and-send-off.md carries its own 5-item Failure modes + diagnostics list and the module file (run-the-first-experiment.md) carries a full per-phase table whose \"Send-off\" rows (SHA/branch note-back, package-pre-empt, send-off anxiety) map directly onto this file's three phases. The per-exercise copy that the module's own convention would predict is missing here.",
-      "fix_hint": "Add a per-phase failure-mode + escape-hatch table (or bullet list, matching walk-and-send-off.md's shape) to this file's own maintainer block, drawing on the module's existing Send-off rows scoped to Phase 1 / Phase 2 / \"While it runs.\"",
+      "verdict": "PASS",
+      "evidence": "Harm this rule guards against: a phase carrying a forcing function (per §16) with no documented dominant failure mode or recovery move, so a trainer running this file cold has no rescue script. Harm no longer present, checked per the file's two named `## Phase N` units (matching the caller's own per-phase, not per-prompt, scope): Phase 1 (locate-transcript + commit-starting-point + optional push-starting-point) is covered by \"Coordinates never pinned\" (diagnostic: no `m4/<slug>` branch at the close; escape hatch: trainer catches it before the room breaks, since M5's worktree fork reads exactly that commit). Phase 2 (take-task-end-to-end + the conditional nudge-continue under \"While it runs\") is covered by \"Send-off anxiety\" (diagnostic: hesitation at the final paste; escape hatch: trainer names cancel-is-legit) and \"Package-pre-empt\" (diagnostic: \"should I just quickly…\"; escape hatch: trainer names the un-packaged-by-design rule). Both phases now carry at least one named failure mode with a paired recovering move; the over-nudging risk on the conditional nudge prompt is separately handled inline in body as a pacing calibration (§16 boundary), not left to the maintainer block alone.",
+      "fix_hint": null,
       "blocking": true
     },
     {
@@ -744,6 +744,6 @@
       "blocking": false
     }
   ],
-  "blocking_findings_count": 2,
+  "blocking_findings_count": 0,
   "todos_count": 0
 }

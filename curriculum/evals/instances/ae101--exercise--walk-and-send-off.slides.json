@@ -1,19 +1,19 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/walk-and-send-off.md",
-  "body_sha": "bfc9aee24176f2938e3ecf07cb8dd6de3e6c24fcaa5b83ea4b221bbcf9dde63d",
+  "body_sha": "f002aaadce0381f0bb5cf18e13cb7d85cc6043973dc59a1c418aa033cc4578c4",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "H1/lede: Prep the run, fill the gaps", "lines": "1-19"},
+    {"index": 0, "heading": "H1/lede: Prep the run, fill the gaps", "lines": "1-20"},
     {"index": 1, "heading": "Phase 1: Pick the task you'll send off", "lines": "21-45"},
-    {"index": 2, "heading": "Push back until the task is one end-to-end slice", "lines": "46-49"},
-    {"index": 3, "heading": "Phase 2: Build the ranked list of what will hurt the agent", "lines": "51-70"},
-    {"index": 4, "heading": "Correct the list and reprioritise it", "lines": "72-75"},
-    {"index": 5, "heading": "Fill the worst two or three gaps", "lines": "77-93"},
-    {"index": 6, "heading": "Match each fill to its shape and home", "lines": "95-102"},
-    {"index": 7, "heading": "Push back when Claude drifts from the codebase", "lines": "104-106"},
-    {"index": 8, "heading": "Compare notes, then tidy the folder", "lines": "108-112"}
+    {"index": 2, "heading": "Push back until the task is one end-to-end slice", "lines": "46-50"},
+    {"index": 3, "heading": "Phase 2: Build the ranked list of what will hurt the agent", "lines": "51-71"},
+    {"index": 4, "heading": "Correct the list and reprioritise it", "lines": "72-76"},
+    {"index": 5, "heading": "Fill the worst two or three gaps", "lines": "77-94"},
+    {"index": 6, "heading": "Match each fill to its shape and home", "lines": "95-103"},
+    {"index": 7, "heading": "Push back when Claude drifts from the codebase", "lines": "104-107"},
+    {"index": 8, "heading": "Compare notes, then tidy the folder", "lines": "108-113"}
   ],
   "rules_evaluated": [
     {
@@ -63,7 +63,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "chunk 7 \"Push back when Claude drifts from the codebase\" is single-bullet (17 words) but carries one concrete, self-carrying instruction — not a wait-state stub. Same family as chunks 2 and 4, already this short in the file's audited state.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -73,7 +73,7 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": "Re-verified per the prior finding: chunk 7's header now covers only the surviving single bullet (no leftover callout/tidy content) — the 2026-08-12 re-chunk resolved it. Chunk 8's header \"Compare notes, then tidy the folder\" is a two-part header for two-part content: \"Compare notes\" maps to the time-check callout's \"share what surfaced, where the audit missed, and why the agent sometimes goes lazy\"; \"tidy the folder\" maps verbatim to the bullet's own \"tidy the folder\" lead. Both halves are covered, no residual.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -84,7 +84,7 @@
       "chunks_flagged": [],
       "evidence": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -103,8 +103,8 @@
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "chunk 6 carries four bold handles (fill-shape menu names) — over the ≤1-per-slide default, but this is the maintainer-attested named-handle menu from the 2026-07-09 emphasis pass, not the pre-pass bolded-lead-sentence monoculture the rule targets; harm (visual noise drowning the real handle) is absent since each bold span is a coined checklist-item name, not a whole sentence.",
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -152,8 +152,8 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": "node scripts/check-slide-size.js --file walk-and-send-off.md: 8 slides, 0 oversized. Largest: \"Match each fill to its shape and home\" 189w/4b. Smallest: \"Push back when Claude drifts from the codebase\" 17w/1b.",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/walk-and-send-off.md --report: heaviest slide 'Match each fill to its shape and home' 189 words / 4 bullets vs 210-word cap; oversized: 0 across all 8 slides. Confirms the previously-recorded figures, no drift since the last PASS.",
+      "fix_hint": "No fix needed; flagging that 189/210 is the tightest margin in the file and the slide most likely to break on any future addition to the four fill-shape bullets.",
       "blocking": false
     }
   ],

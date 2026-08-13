@@ -85,5 +85,5 @@ If Claude stalls, ask it to keep going — the nudge is phrased as encouragement
 
 **Placement:** the last beat of M4. The ironies lecture sits above the include in the module file (it frames the watcher's trap before the task leaves), and the two closing lectures sit below it (they run while the task is already going). This file owns only what the student does.
 
-**Quality:** compendium-audited 2026-08-12 (writing@61e7fc9 story@61e7fc9 technical@61e7fc9 behavior@61e7fc9 slides@61e7fc9)
-- judges @61e7fc9: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy REVISE (2blocking/0todo-see-instances/ae101--exercise--set-the-markers-send-it-off.pedagogy.json), strategy REVISE (1blocking/0todo-see-instances/ae101--exercise--set-the-markers-send-it-off.strategy.json), slides PASS
+**Quality:** compendium-audited 2026-08-13 (writing@19249df story@19249df technical@61e7fc9 behavior@61e7fc9 pedagogy@19249df strategy@19249df slides@19249df)
+- judges @19249df: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

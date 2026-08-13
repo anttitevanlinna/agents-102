@@ -138,7 +138,7 @@ newest `out/*/m{N-1}-state.json` for the starting SHA and skips arrange. M1 run
 standalone (not via the wrapper) still leaves a usable `m1-state.json`, so
 `--from m2` works regardless of how M1 was launched.
 
-## Northwind variant — `chain-lemmings-northwind.sh`
+## Northwind variant — `chain-northwind.sh`
 
 The `agentic-engineering-101-northwind` registry entry (`site/layouts/curriculum.js`)
 is a `contentKey`-aliased cut running the same four module files as stock AE101
@@ -157,10 +157,48 @@ uses to position from M1's. Confirmed live: M2 makes no repo commit
 the SUT's actual git state either way.
 
 ```bash
-./chain-lemmings-northwind.sh                # arrange, then m1, m2, m4, m5
-./chain-lemmings-northwind.sh --to m2         # arrange + M1 + M2 only
-./chain-lemmings-northwind.sh --from m4       # resume at M4 (reads m2-state.json)
+./chain-northwind.sh                          # lemmings: arrange, then m1, m2, m4, m5
+./chain-northwind.sh --to m2                  # arrange + M1 + M2 only
+./chain-northwind.sh --from m4                # resume at M4 (reads m2-state.json)
+./chain-northwind.sh --sut-kit picoshare      # same cut on picoshare
+./chain-northwind.sh --sut-kit codesearch --from m4   # codesearch has no arrange helper
 ```
+
+**SUT kits (added 2026-08-13).** The cut is content, not SUT — so the wrapper
+takes `--sut-kit lemmings | picoshare | codesearch`, which fixes the repo path,
+the slugs, the M5 worktree, the scenario suffix, and whether an arrange helper
+exists. `chain-lemmings-northwind.sh` survives as the lemmings preset (a
+one-line `exec`), so the name autumn-gaps.md cites still works. codesearch has
+no arrange script, so `--from m1|m2` is refused there rather than half-run.
+State lookup is SUT-scoped (matches `mN_cwd` in the state file) — `out/` holds
+runs from every kit, and taking "newest of any SUT" would position one kit's
+branch at another's SHA.
+
+### Curriculum drift repaired 2026-08-13 — re-validation owed
+
+The 2026-07-28 PASS below is **stale**: AE101 content moved under the battery
+between then and 2026-08-13, and four of those moves broke or hollowed the walk.
+Fixed here; none of it has been re-run live yet.
+
+| Drift | Break | Fix |
+|---|---|---|
+| Packaging moved off the worktree root into a task-scoped folder (`diagnose-and-resend-6`, `ae101-m5-rerun-packaged`) | `run-m5.sh` hard-coded `$worktree_cwd/reference.md` + `plan.md` — every PB-post assertion FAILs on a *correct* run | `locate_packaging_file` discovers them (pinned hint → newest under worktree → root placeholder); all three m5 scenarios' canned grill answers now name a task-scoped folder |
+| `plan.md` gained a required verifier-invocation line | Nothing checked it; the re-send reads the invocation off plan.md | New PB-post assertion (FAIL) + a co-location WARN when reference/plan split folders |
+| M1 split `compound-and-close-2/3` → `close-the-ticket-1/2/3`, and `compound-and-close-1` now requires bug-rules from `close-the-ticket-2` | Scenario header named dead keys; the compound turn asked Claude to review a ticket read that never happened | Header re-pointed; `compound-and-close-1` tail tells Claude to skip the ticket clause. The close-the-ticket trio stays scoped out — no tracker connector, and `-3` writes to a real tracker |
+| `extract-the-task-shaping-rule-4` (story-ticket read) joined M2 between `-1` and `-2`, and `-2` now writes both rule sets | The walk skipped `-4` entirely, so `-2` asked for rules nobody proposed | `-4` inserted into `scenarios/m2.txt` with a pasted lemmings-shaped story ticket (the prompt's own paste-the-fields fallback); `-2` tail says "both sets" |
+| `walk-and-send-off-2/3` retired "business-rules gap" for "material the repo doesn't carry" | M4 scenario tails contradicted the prompt they were appended to | Vocabulary synced in all four m4 scenarios |
+
+**`run-m2.sh` now dispatches assertions on the prompt key, not on `key_seq`.**
+Ordinal dispatch coupled every SUT variant to one turn count — inserting `-4`
+into the lemmings walk would have silently re-pointed cases 5–8 at the wrong
+prompts in the picoshare/codesearch variants. Keys are stable; ordinals are not.
+`run-m1.sh`, `run-m4.sh`, `run-m5.sh` are still ordinal — same latent trap, no
+turn inserted yet. Worth converting the next time any of their walks grows.
+
+Known remaining gap: `-4` is in the lemmings m2 walk only. The picoshare and
+codesearch m2 scenarios still run the 8-key sequence, so the story-ticket turn
+is uncovered there (their `-2` will report having no story rules to write —
+correct behavior, thinner coverage).
 
 **Validated live, medium effort, 2026-07-28 — full PASS, M1 through M5.**
 M1/M2 PASS (unchanged from the stock chain — same modules, same content). M4

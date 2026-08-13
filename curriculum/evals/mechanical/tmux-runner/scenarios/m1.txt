@@ -7,10 +7,20 @@
 # so after the round resolves the HUD still reads 12 'Out' with zero
 # lemmings on the playfield. Real, small, TDD-able, single-file root.
 #
-# Compound-and-close turns 2 (read-ticket via MCP) and 3 (update-ticket)
-# are scoped OUT of the headless run — no real tracker connector
-# configured. The fourth compound (second-pass integrate) closes the
-# session and is treated as the terminal turn.
+# The close-the-ticket exercise (close-the-ticket-1/2/3 — read the bug's
+# ticket, reverse-engineer the team's field conventions, write and SEND
+# the close-out) is scoped OUT of the headless run: no tracker connector,
+# and -3 writes back to a real tracker, which this battery has no business
+# doing. Those three keys were compound-and-close-2/3 until 2026-08-12,
+# when M1 split them into their own exercise; the scope-out is unchanged,
+# only the names are. The fourth compound (second-pass integrate) closes
+# the session and is treated as the terminal turn.
+#
+# Consequence, handled in the compound-and-close-1 tail below:
+# compound-and-close-1 now REQUIRES bug-rules from close-the-ticket-2 and
+# its body reviews "the bug rules read off the ticket". With the ticket
+# exercise scoped out there are none, so the tail tells Claude to skip
+# that clause rather than invent a ticket read that never happened.
 #
 # AskUserQuestion guards: orient-1/2 are non-interactive; orient-3 is
 # the /context slash command (no LLM call, no Stop hook — runner has a
@@ -44,6 +54,6 @@ fix-tests-first-2
 
 fix-tests-first-3 I'm doing a headless dry-run, please don't call AskUserQuestion. Show me the diff in chat. After showing it, go ahead and commit as one commit on the current branch, no PR. Don't wait for approval.
 
-compound-and-close-1
+compound-and-close-1 I'm doing a headless dry-run with no tracker connector, so we never ran the ticket step — skip the "bug rules read off the ticket" clause and review only what actually happened in this session. Don't call AskUserQuestion; write the file and report.
 
 compound-and-close-4

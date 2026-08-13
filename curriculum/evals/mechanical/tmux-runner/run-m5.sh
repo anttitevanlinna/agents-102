@@ -16,15 +16,19 @@
 #   Phase B — exercise pane, in the worktree (--worktree-cwd):
 #     diagnose-and-resend-1..6 + canned-reply literals + lock-it-in.
 #     Two ask-and-wait turns (verifier approval at -4; reference+plan
-#     grill at -6). Builds verifier + reference.md + plan.md at the
-#     worktree root.
+#     grill at -6). Builds verifier + reference.md + plan.md in a
+#     task-scoped folder inside the worktree (the agent proposes the
+#     path; the scenario's canned grill answer pins it so the headless
+#     walk stays deterministic, and locate_packaging_file discovers it
+#     either way).
 #
 #   Phase C — rerun pane, in the worktree, FRESH session:
 #     ae101-m5-rerun-packaged is the long autonomous send-off (up to 1h).
 #     Module body says "Open a new Claude Code session in the worktree"
 #     — we open a second tmux pane with a fresh `claude` process to
 #     match. The packaging files (reference.md, plan.md, verifier) are
-#     on disk in the worktree; the new session loads CLAUDE.md /
+#     on disk in the worktree — the prompt tells the fresh session to
+#     find them by listing it; the new session loads CLAUDE.md /
 #     CLAUDE.local.md fresh.
 #
 # Per-turn artifact assertions (check_platform_and_boundaries.md § 16a):
@@ -295,8 +299,31 @@ mkdir -p "$worktree_transcripts_dir"
 pre_pb_transcripts="$(ls "$worktree_transcripts_dir" 2>/dev/null | sort | tr '\n' ' ')"
 worktree_baseline_sha="$(cd "$worktree_cwd" && git rev-parse --short HEAD)"
 worktree_branch="$(cd "$worktree_cwd" && git rev-parse --abbrev-ref HEAD)"
-reference_md="$worktree_cwd/reference.md"
-plan_md="$worktree_cwd/plan.md"
+# Packaging location is DISCOVERED, not assumed (2026-08-13). The curriculum
+# moved reference.md + plan.md off the worktree root into a task-scoped folder
+# the agent proposes (diagnose-and-resend-6: "Propose the file paths (next to
+# each other; same task-scoped folder)"; ae101-m5-rerun-packaged: "find them by
+# listing the worktree"). Hard-coding "$worktree_cwd/<base>" made every PB-post
+# assertion fail on a correct run. Resolution order: the pinned hint (the m5
+# scenario's canned grill answer names a folder, so the headless walk stays
+# deterministic), then newest match anywhere under the worktree, then the root
+# path as the not-yet-created placeholder so mtime baselines read 0.
+packaging_dir_hint="${CLAUDE_RUNNER_M5_PACKAGING_DIR:-}"
+locate_packaging_file() {               # $1=basename -> abs path (may not exist)
+  local base="$1" hit
+  if [[ -n "$packaging_dir_hint" && -f "$worktree_cwd/$packaging_dir_hint/$base" ]]; then
+    printf '%s\n' "$worktree_cwd/$packaging_dir_hint/$base"; return 0
+  fi
+  hit="$(find "$worktree_cwd" -maxdepth 3 -type f -name "$base" \
+           -not -path '*/.git/*' -not -path '*/node_modules/*' \
+           -exec ls -t {} + 2>/dev/null | head -1)"
+  printf '%s\n' "${hit:-$worktree_cwd/$base}"
+}
+refresh_packaging_paths() {             # re-resolve; call before every check
+  reference_md="$(locate_packaging_file reference.md)"
+  plan_md="$(locate_packaging_file plan.md)"
+}
+refresh_packaging_paths
 reference_baseline_mtime="$(mtime_of "$reference_md")"
 plan_baseline_mtime="$(mtime_of "$plan_md")"
 echo "[m5] worktree baseline: branch=$worktree_branch sha=$worktree_baseline_sha"
@@ -420,6 +447,7 @@ assert_pb_turn() {
           return 1
         fi
         local ref_now plan_now
+        refresh_packaging_paths          # the agent may have proposed a folder
         ref_now="$(mtime_of "$reference_md")"
         plan_now="$(mtime_of "$plan_md")"
         if [[ "$ref_now" -gt "$reference_baseline_mtime" ]]; then
@@ -486,12 +514,14 @@ done
 # 'lock it in' literal. (The literal is the last canned reply in
 # the PB block; its sentinel has fired but it carries no assertion
 # of its own.)
+refresh_packaging_paths
+echo "[m5] packaging resolved: reference=$reference_md plan=$plan_md"
 if [[ ! -f "$reference_md" ]]; then
-  echo "[assert] FAIL PB post: reference.md missing at $reference_md after lock-it-in" >&2
+  echo "[assert] FAIL PB post: reference.md not found anywhere under $worktree_cwd after lock-it-in" >&2
   exit 1
 fi
 if [[ ! -f "$plan_md" ]]; then
-  echo "[assert] FAIL PB post: plan.md missing at $plan_md after lock-it-in" >&2
+  echo "[assert] FAIL PB post: plan.md not found anywhere under $worktree_cwd after lock-it-in" >&2
   exit 1
 fi
 ref_final_mtime="$(mtime_of "$reference_md")"
@@ -505,6 +535,24 @@ if [[ "$plan_final_mtime" -le "$plan_baseline_mtime" ]]; then
   exit 1
 fi
 echo "[assert] PASS PB post: reference.md + plan.md landed after lock-it-in"
+
+# Same-folder contract: diagnose-and-resend-6 asks for both files "next to each
+# other; same task-scoped folder", and ae101-m5-rerun-packaged tells the fresh
+# session they sit together. Split files still run, so WARN rather than FAIL.
+if [[ "$(dirname "$reference_md")" != "$(dirname "$plan_md")" ]]; then
+  echo "[assert] WARN PB post: reference.md and plan.md are not in the same folder ($(dirname "$reference_md") vs $(dirname "$plan_md"))" >&2
+else
+  echo "[assert] PASS PB post: packaging co-located in $(dirname "$plan_md")"
+fi
+# Verifier-invocation line (added to diagnose-and-resend-6 after the 2026-07-28
+# validation): plan.md must name how to invoke the verifier and when it runs —
+# ae101-m5-rerun-packaged reads the invocation off plan.md, so a plan without
+# it sends the re-send off with a verifier it cannot call.
+if ! grep -E -i -q "verif" "$plan_md"; then
+  echo "[assert] FAIL PB post: plan.md carries no verifier-invocation line (diagnose-and-resend-6 requires one; the re-send reads the invocation off plan.md)" >&2
+  exit 1
+fi
+echo "[assert] PASS PB post: plan.md names the verifier"
 
 pane_capture "$pb_session" "$pb_dir/transcript.txt"
 # Identify PB session UUID.
@@ -567,6 +615,7 @@ pane_capture "$pc_session" "$pc_dir/transcript.txt"
 #    mutated plan.md during the run).
 #  - HEAD in worktree may or may not have advanced — the prompt doesn't
 #    require commits. Capture as data, don't assert.
+refresh_packaging_paths
 if ! grep -E -i -q "Run coordinates" "$plan_md"; then
   echo "[assert] FAIL PC post: plan.md missing 'Run coordinates' block (prompt body requires it before the run)" >&2
   exit 1

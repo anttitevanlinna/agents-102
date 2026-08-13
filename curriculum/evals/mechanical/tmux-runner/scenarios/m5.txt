@@ -69,7 +69,12 @@ diagnose-and-resend-4 Don't call AskUserQuestion. Propose the verifier shape and
 # to ask about edge cases; suppress.
 diagnose-and-resend-5 Don't call AskUserQuestion — invent the two synthetic inputs yourself (one shaped to pass, one shaped to fail in the dominant-failure mode). Report what fired and what each input returned.
 
-# T6: assemble reference.md + plan.md. Body says: "Don't touch either
+# T6: assemble reference.md + plan.md. The curriculum moved these off the
+# worktree root into a task-scoped folder the agent proposes (2026-08-13),
+# and added a verifier-invocation line to plan.md's required shape. The
+# canned answer pins the folder so the walk is deterministic; run-m5.sh
+# discovers it anyway (locate_packaging_file) if the agent picks another.
+# Body says: "Don't touch either
 # file until I say 'lock it in.' ... Before lock-in, grill me on missing
 # details that could ruin the smooth run. Ask three questions at a time."
 # This is the structural grill — agent will want to ask three questions
@@ -78,7 +83,7 @@ diagnose-and-resend-5 Don't call AskUserQuestion — invent the two synthetic in
 # answers, then "lock it in" literal triggers the file writes.
 diagnose-and-resend-6 Don't call AskUserQuestion. Ask your three grill questions per round as a numbered list in your reply (plain chat text) and STOP — don't touch either file yet. I'll answer in a follow-up message; ask the next three (or tell me you're ready) the same way. The 'lock it in' line will be a separate message from me when I'm ready to approve the writes.
 
-* answers: 1) reference.md and plan.md both at the worktree root, next to task.md. 2) keep success criteria tight to the blocker-deadlock fix: end-of-game check covers the all-blockers-remaining case, a status-text path for the player, regression test alongside the existing suite (whichever test dir M1 created — `test/` or `tests/`), run via `node --test`; don't create a second test dir. 3) tests-first phase: write the failing test for the all-blockers-remaining case before touching step()'s end-of-game logic. 4) decisions log: append-only, one line per load-bearing choice (which state-machine path to enumerate; what status text). 5) what-didn't-work section: empty at start, agent appends as it goes. anything else, use your judgement. ask the next three if you have them, or say ready.
+* answers: 1) put reference.md and plan.md next to each other in a task-scoped folder `./blocker-deadlock-terminal/` at the worktree root — create the folder; task.md stays where it is. In plan.md, include the verifier line naming the exact command that invokes the verifier you saved and when it runs. 2) keep success criteria tight to the blocker-deadlock fix: end-of-game check covers the all-blockers-remaining case, a status-text path for the player, regression test alongside the existing suite (whichever test dir M1 created — `test/` or `tests/`), run via `node --test`; don't create a second test dir. 3) tests-first phase: write the failing test for the all-blockers-remaining case before touching step()'s end-of-game logic. 4) decisions log: append-only, one line per load-bearing choice (which state-machine path to enumerate; what status text). 5) what-didn't-work section: empty at start, agent appends as it goes. anything else, use your judgement. ask the next three if you have them, or say ready.
 
 * lock it in
 

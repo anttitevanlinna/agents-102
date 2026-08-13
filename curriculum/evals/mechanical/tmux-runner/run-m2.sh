@@ -129,13 +129,20 @@ plan_mtime_pre_lock=0
 # transcript capture only, no assertion. This lets the same script
 # drive both scenarios/m2.txt (no canned student replies — just the
 # `* lock it in` literal between push-back-2 and push-back-3) and
-# scenarios/m2-codesearch.txt (canned reply literals after the four
-# ask-and-wait prompts). The prompt-key sequence is identical across
-# both variants, so key_seq aligns case numbers cleanly.
+# scenarios/m2-codesearch.txt / m2-picoshare.txt (canned reply literals
+# after the ask-and-wait prompts).
+#
+# Dispatched on the PROMPT KEY, not on key_seq (2026-08-13). Ordinal
+# dispatch coupled every SUT variant to one turn count: adding
+# extract-the-task-shaping-rule-4 to the lemmings walk silently
+# re-pointed cases 5..8 at the wrong prompts in the variants that don't
+# carry it. Keys are stable, ordinals are not. A scenario carrying a key
+# with no case here fails loudly at the `*)` arm; a case with no turn in
+# this scenario simply never fires.
 assert_turn() {
-  local seq="$1" transcript="$2"
-  case "$seq" in
-    1)  # push-back-on-the-plan-1 — plan file written under ~/.claude/plans/.
+  local key="$1" transcript="$2"
+  case "$key" in
+    push-back-on-the-plan-1)  # plan file written under ~/.claude/plans/.
         locate_plan_file
         if [[ -n "$plan_file_global" && -f "$plan_file_global" ]]; then
           echo "[assert] PASS T1 plan-file: $plan_file_global"
@@ -145,7 +152,7 @@ assert_turn() {
         echo "[assert] FAIL T1 plan-file: no new file in $plans_dir since baseline" >&2
         return 1
         ;;
-    2)  # push-back-on-the-plan-2 — explicit "don't touch the plan yet".
+    push-back-on-the-plan-2)  # explicit "don't touch the plan yet".
         # Two checks: scrollback contains branch-walk language (soft),
         # AND plan file mtime is UNCHANGED since T1 (catches silent
         # plan-file violation — the "Don't touch until lock it in"
@@ -166,7 +173,7 @@ assert_turn() {
         # edit triggered by the intervening 'lock it in' literal).
         plan_mtime_pre_lock="$plan_mtime_now"
         ;;
-    3)  # push-back-on-the-plan-3 — design pattern named in scrollback,
+    push-back-on-the-plan-3)  # design pattern named in scrollback,
         # AND plan file mtime advanced past T2 baseline (the 'lock it in'
         # literal that fired between T2 and T3 should have triggered the
         # in-place plan edit by now).
@@ -180,11 +187,22 @@ assert_turn() {
         fi
         assert_scrollback_grep "T3 pattern-named" "$transcript" "push.back|second.pass|walk.down|pair|design pattern|pattern"
         ;;
-    4)  # extract-the-task-shaping-rule-1 — 3-5 rules proposed in scrollback.
+    extract-the-task-shaping-rule-1)  # 3-5 rules proposed in scrollback.
         # Loose match: scrollback contains numbered or bulleted rules.
         assert_scrollback_grep "T4 rules-proposed" "$transcript" "rule|^[[:space:]]*[0-9]\.|^[[:space:]]*\*|^[[:space:]]*-"
         ;;
-    5)  # extract-the-task-shaping-rule-2 — paths proposed in scrollback.
+    extract-the-task-shaping-rule-4)  # story-ticket read (added to this
+        # exercise 2026-08-12; was M1's bug-conventions prompt before that).
+        # Three story rules proposed in chat, NO file written yet — the
+        # placement decision belongs to -2, and the prompt says so. The
+        # headless walk pastes the ticket fields (no tracker reachable), so
+        # the "ask me to paste the fields" fallback should not fire.
+        if ! assert_scrollback_grep "T5 story-rules-proposed" "$transcript" "rule|convention|signal|guess"; then
+          return 1
+        fi
+        assert_or_warn assert_scrollback_grep "T5 signal-separation" "$transcript" "strong|guess|cannot tell|can't tell|more tickets"
+        ;;
+    extract-the-task-shaping-rule-2)  # paths proposed in scrollback.
         # Under the ask-and-wait pattern, the agent proposes paths and STOPS.
         # Actual file save + SAVED-PATH emission land in the next literal
         # turn's response (the canned-reply turn). Lemmings runs (suppression
@@ -192,10 +210,10 @@ assert_turn() {
         # case 6 handles both shapes (reads all transcripts so far).
         assert_scrollback_grep "T5 paths-proposed" "$transcript" "path|/Users|~/|\.claude|\.local"
         ;;
-    6)  # extract-the-task-shaping-rule-3 — automation shapes named AND
-        # deferred SAVED-PATH check from case 5. Reads all turn transcripts
-        # because under ask-and-wait the actual save lives in the literal
-        # turn between cases 5 and 6; under suppression it lives in case 5's
+    extract-the-task-shaping-rule-3)  # automation shapes named AND
+        # deferred SAVED-PATH check from the -2 turn. Reads all turn
+        # transcripts because under ask-and-wait the actual save lives in the
+        # literal turn between -2 and -3; under suppression it lives in -2's
         # own transcript. Reading all turns handles both.
         if ! assert_scrollback_grep "T6 shapes-named" "$transcript" "slack|webhook|schedul|cron|queue|trigger|automation"; then
           return 1
@@ -219,10 +237,10 @@ assert_turn() {
         echo "[assert] FAIL T6 rules-file: no SAVED-PATH absolute-path marker in any transcript" >&2
         return 1
         ;;
-    7)  # push-back-on-the-plan-4 — answers the auto-load question.
+    push-back-on-the-plan-4)  # answers the auto-load question.
         assert_scrollback_grep "T7 auto-load-answer" "$transcript" "auto.?load|CLAUDE\.md|CLAUDE\.local|@import|loaded|context"
         ;;
-    8)  # ae101-m2-integrate-branch — conditional integrate into CLAUDE.local.md.
+    ae101-m2-integrate-branch)  # conditional integrate into CLAUDE.local.md.
         # Pass if either: file mtime advanced OR scrollback says nothing earned.
         if assert_file_mtime_advanced "T8 CLAUDE.local.md mtime" "$claude_local_md" "$claude_local_mtime_baseline" 2>/dev/null; then
           return 0
@@ -230,7 +248,7 @@ assert_turn() {
         assert_scrollback_grep "T8 nothing-earned fallback" "$transcript" "nothing earned|didn't earn|no branch|did not earn|stop"
         ;;
     *)
-        echo "[m2] no assertion configured for prompt-key turn $seq" >&2
+        echo "[m2] no assertion configured for prompt key '$key'" >&2
         return 1
         ;;
   esac
@@ -266,7 +284,7 @@ for line in "${lines[@]}"; do
   # plan refinement Claude does in the prior turn (e.g. integrating
   # canned-reply answers in m2-codesearch.txt) bleeds into the baseline
   # set at end-of-T1 and fails case 2 through no fault of push-back-2.
-  if [[ "$is_literal" -eq 0 && "$key_seq" -eq 2 ]]; then
+  if [[ "$is_literal" -eq 0 && "$key" == "push-back-on-the-plan-2" ]]; then
     locate_plan_file
     if [[ -n "$plan_file_global" ]]; then
       plan_mtime_pre_lock="$(mtime_of "$plan_file_global")"
@@ -278,10 +296,10 @@ for line in "${lines[@]}"; do
   printf '%s' "$body" > "$run_dir/turn-$seq.prompt.txt"
 
   # Per-turn timeout: T2 (push-back-on-the-plan-2 walk-down) gets the
-  # long budget; others use the standard turn timeout. Dispatched on
-  # key_seq so canned-reply literals in m2-codesearch.txt don't shift
-  # which prompt-key earns the walkdown budget.
-  if [[ "$is_literal" -eq 0 && "$key_seq" -eq 2 ]]; then
+  # long budget; others use the standard turn timeout. Dispatched on the
+  # prompt key so neither canned-reply literals nor an inserted turn shift
+  # which prompt earns the walkdown budget.
+  if [[ "$is_literal" -eq 0 && "$key" == "push-back-on-the-plan-2" ]]; then
     turn_timeout="$walkdown_timeout"
     echo "[m2] turn=$seq is walk-down; timeout=${turn_timeout}s"
   else
@@ -309,9 +327,9 @@ for line in "${lines[@]}"; do
     continue
   fi
 
-  if ! assert_turn "$key_seq" "$run_dir/turn-$seq.transcript.txt"; then
+  if ! assert_turn "$key" "$run_dir/turn-$seq.transcript.txt"; then
     pane_capture_safe "$session" "$run_dir/transcript.txt" 10
-    echo "[m2] FAIL turn=$seq key_seq=$key_seq assertion miss — see $run_dir/turn-$seq.transcript.txt" >&2
+    echo "[m2] FAIL turn=$seq key=$key assertion miss — see $run_dir/turn-$seq.transcript.txt" >&2
     exit 1
   fi
 done

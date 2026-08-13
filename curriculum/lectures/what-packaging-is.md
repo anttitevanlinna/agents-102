@@ -213,16 +213,10 @@ A standing check pushes back before the next wrong step builds on the last one. 
 
 ## The verifier completes the three-pattern
 
-- **External verifier**, against plausible-but-wrong. An automated check that decides whether a piece of agent-produced work meets a quality bar: tests, lint, compile, a deterministic shell hook, or a separate background agent that reads the work and judges it. You don't have to be the one to spot it.
+- **External verifier**, against plausible-but-wrong. An automated check that decides whether a piece of agent-produced work meets a quality bar. You don't have to be the one to spot it.
+- The menu you picked from is practitioner-lived. Kim's writeup of Boris Cherny has him reaching for all three shapes in his long-running practice; the menu form is Kim's synthesis. You built one against your dominant failure. The other two sit alongside the three-pattern for next time.
 
 Three failures you named, three pieces, one each.
-
-## Three shapes the verifier can take
-
-- **Background-agent verifier.** A separate Claude session reads the produced work and judges it. Right when failures are qualitative: does this answer the question, does this match house style.
-- **Deterministic shell hook.** Tests, lint, type-check, compile, a custom invariant. Right when the failure has a true-false answer: did it break the build, did it touch the wrong directory.
-- **Ralph re-feed.** Loop the prompt with a check baked in; the agent re-runs against its own output until the check passes. Right when drift is the dominant failure and re-anchoring catches it.
-- The menu is practitioner-lived. Kim's writeup of Boris Cherny has him reaching for all three in his long-running practice; the menu form is Kim's synthesis. You picked one against your dominant failure. The other two sit alongside the three-pattern for next time.
 
 ## Hooks always fire
 
@@ -263,9 +257,9 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 
 <!-- maintainer -->
 
-**`## Every re-feed pass starts a fresh session` exists to close a depth asymmetry across the verifier menu, and its scope is mechanism only.** The menu names three shapes as peers and the module tells the student *"match the failure, not your familiarity."* Shape 1 is expanded by a whole lecture (`the-gate-is-a-claim.md`); shape 2 by the two hook slides directly above; shape 3 carried a bullet. Runtime primitives (`/goal`, `/loop`, `/schedule`) belong to M6's `the-loop-has-a-name.md` and `agents-that-build-agents.md` and stay out of this slide by design, so the M6 elaboration has something to land. **M6's `## Ralph` slide is a graduation beat, not this slide's twin** — a lever sat in plain shell, Huntley reached for it, the next Ralph is yours — and mechanism bolted onto it would convert the training's closing beat into an explainer. A judge reading *re-anchoring* in the menu bullet as a dangling referent should resolve it here rather than propose a clause upstream. Open and unsettled: `## What you didn't build today` two slides down lists *"The original Ralph, rebuilding fresh sessions continuously from durable state"* among camps the field hasn't converged on, which now restates this slide; what is unconverged there is which context strategy to pick, not how the loop works.
+**`## Every re-feed pass starts a fresh session` exists to close a depth asymmetry across the verifier menu, and its scope is mechanism only.** The menu lives in `diagnose-and-resend.md`'s Phase 3, where the student picks from it; it names three shapes as peers and tells them *"match the failure, not your familiarity."* Shape 1 is expanded by a whole lecture (`the-gate-is-a-claim.md`); shape 2 by the two hook slides directly above; shape 3 has no expansion here. Runtime primitives (`/goal`, `/loop`, `/schedule`) belong to M6's `the-loop-has-a-name.md` and `agents-that-build-agents.md` and stay out of this slide by design, so the M6 elaboration has something to land. **M6's `## Ralph` slide is a graduation beat, not this slide's twin** — a lever sat in plain shell, Huntley reached for it, the next Ralph is yours — and mechanism bolted onto it would convert the training's closing beat into an explainer. A judge reading *re-anchoring* in the exercise's Ralph re-feed bullet as a dangling referent should resolve it here rather than propose a clause upstream. Open and unsettled: `## What you didn't build today` two slides down lists *"The original Ralph, rebuilding fresh sessions continuously from durable state"* among camps the field hasn't converged on, which now restates this slide; what is unconverged there is which context strategy to pick, not how the loop works.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all slides kept bullets; SVG chart byte-untouched. Handles kept bold: **A check is a position fix** (chart slide), **Reference artefact** / **plan.md** (reference-and-plan slide), **External verifier** (verifier slide), the three verifier-shape names (**Background-agent verifier** / **Deterministic shell hook** / **Ralph re-feed**), **hook** at its definition, **Must happen goes in a hook** (governor), **Subagents for isolation**; all other leads de-bolded, 80/20 + Intercom slides fully plain, kickers plain, prompt marker + lead-in untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all slides kept bullets; SVG chart byte-untouched. Handles kept bold: **A check is a position fix** (chart slide), **Reference artefact** / **plan.md** (reference-and-plan slide), **External verifier** (verifier slide), **hook** at its definition, **Must happen goes in a hook** (governor), **Subagents for isolation**; all other leads de-bolded, 80/20 + Intercom slides fully plain, kickers plain, prompt marker + lead-in untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
 - Family B judged 2026-07-03: B-star durability PASS — keystone three-pattern (slides 2–3) recovers NAMED·PLACED·MECHANISM·GOVERNOR cold, placed at Verification; closer honors recognition-before-naming ("what you assembled… has names").
 
@@ -304,8 +298,7 @@ Claims
 - `ralph-bootstraps-greenfield` · detail · "Ralph leans on exactly this primitive to bootstrap entire greenfield projects" ← huntley-ralph
 - `external-verifier-against-plausible-but-wrong` · vision · "**External verifier**, against plausible-but-wrong." ← none-owed
 - `three-failures-three-pieces` · vision · "Three failures you named, three pieces, one each." ← none-owed
-- `verifier-takes-three-shapes` · vision · "**Background-agent verifier** … **Deterministic shell hook** … **Ralph re-feed**" ← none-owed
-- `cherny-reaches-for-all-three` · detail · "Kim's writeup of Boris Cherny has him reaching for all three in his long-running practice; the menu form is Kim's synthesis" ← kim-on-cherny
+- `cherny-reaches-for-all-three` · detail · "Kim's writeup of Boris Cherny has him reaching for all three shapes in his long-running practice; the menu form is Kim's synthesis" ← kim-on-cherny
 - `hook-fires-on-named-events` · detail · "Session start, prompt submit, before each tool call, after each tool call, on stop, plus a few more." ← cc-hooks-docs
 - `agent-has-no-say-whether-hook-runs` · detail · "the agent has no say in whether it runs" ← cc-hooks-docs
 - `hooks-exist-because-llm-forgetful` · vision · "Hooks exist because the LLM is forgetful." ← none-owed

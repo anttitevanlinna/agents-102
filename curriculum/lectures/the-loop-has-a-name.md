@@ -4,10 +4,10 @@ Look at what you have shipped.
 
 ## Eval
 
-- The thing you built at M5 reads an agent's work and decides whether it meets a bar. The checks you just ranked against your dominant gap are the same family: some deterministic, some an LLM reading the work, some firing before the session even starts. Different shapes, same move.
-- The name for all of it is **eval**. Your verifier is an eval. Your judge is an eval. Your gate is an eval.
+- The thing you built at M5 reads an agent's work and decides whether it meets a bar. The checks you just ranked against your dominant gap are the same family: some deterministic, some an LLM reading the work, some firing before the session even starts.
+- The name for all of it is **eval**: the automated check that says *this agent-produced thing meets our bar*.
 - Three names, one thing. *Judge* when the check is itself an LLM reading the work. *Verifier* when the check is deterministic: tests, lint, compile, a shell hook that returns true or false. *Gate* when the same check is placed in CI and a pull request can't merge without it.
-- An eval is the automated check that says *this agent-produced thing meets our bar*. That's it. In practice it's the verifier you built at M5 and every check on the menu you just ranked. You have been doing evals since M5, and on the map they are the checking loop the M2 drawing left dashed, now drawn solid.
+- On the map they are the checking loop the M2 drawing left dashed, now drawn solid.
 
 ## One primitive, placed wherever there's a bar
 
@@ -17,7 +17,7 @@ Look at what you have shipped.
 ## The eval primitive scales unchanged
 
 - 19.2% of Intercom's pull requests merge with no human reviewer. Darragh Curran runs engineering there; the numbers are Intercom's own, published in his April post *"2x, nine months later"*. Auto-approved PRs merge in 14.6 minutes versus an org median of 75.8 minutes. 86% of them are 20 lines or fewer. The R&D org is around 470 people inside a 1,300-person company.
-- Read that as your verifier from M5, scaled. Same primitive: an automated check that says *this meets the bar*, placed in CI, fed by convention, trusted by a human team that set the thresholds.
+- Read that as your verifier from M5, scaled. Same primitive, placed in CI, fed by convention, trusted by a human team that set the thresholds.
 - The shape doesn't change when the org gets big. Only the number of evals, the number of places they sit, and the number of engineers contributing to the kit.
 
 ## The primitive that runs on cadence
@@ -54,10 +54,10 @@ The loop feeds itself. That is the flywheel, and it starts with what you encoded
 <!-- backing -->
 
 Claims
-- `checks-are-one-family` · vision · "Different shapes, same move." ← none-owed
-- `the-name-is-eval` · vision · "The name for all of it is **eval**." ← none-owed
+- `checks-are-one-family` · vision · "The checks you just ranked against your dominant gap are the same family" ← none-owed
+- `the-name-is-eval` · vision · "The name for all of it is **eval**" ← none-owed
 - `judge-verifier-gate-three-names` · vision · "Three names, one thing. *Judge* when the check is itself an LLM reading the work." ← none-owed
-- `eval-definition` · vision · "An eval is the automated check that says *this agent-produced thing meets our bar*." ← none-owed
+- `eval-definition` · vision · "the automated check that says *this agent-produced thing meets our bar*" ← none-owed
 - `map-placement-checking-loop` · vision · "the checking loop the M2 drawing left dashed, now drawn solid" ← none-owed
 - `fires-on-any-quality-bar` · vision · "The shape fires on any workflow with a quality bar, not only agent sessions." ← none-owed
 - `naming-enables-reuse` · vision · "Naming it is what lets you reuse it." ← none-owed

@@ -66,7 +66,7 @@ Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble i
 
 ## Next
 
-<!--flag:module:earn-the-trust-->At M3, the same move goes into durable infrastructure: the judges and gates you ship to your team kit catch exactly the kind of branch a second read surfaces, before a teammate needs to ask.
+<!--flag:module:earn-the-trust-->At M3 you point the same move at a feature you're shipping: curated reads that walk the branches you can't see, and the call they surface written down in your repo where a teammate finds it before they have to ask.
 
 <!--/flag:module:earn-the-trust--><!--flag:module:earn-the-trust-->Ask Claude where it wrote the plan file, note the path; M3 reads it. <!--/flag:module:earn-the-trust-->Close this session when the second read lands.<!--flag:no-module:earn-the-trust-->
 

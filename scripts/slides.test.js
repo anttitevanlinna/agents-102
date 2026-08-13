@@ -6,8 +6,8 @@
  *
  * Run: node --test scripts/slides.test.js
  *
- * Regression under test (bug 2026-07-09): the Slides layout is the default view,
- * but it walked only `.phase--lecture, .phase--exercise`. Prework, supplementary
+ * Regression under test (bug 2026-07-09): the Slides layout is a sticky per-reader
+ * toggle, and it walked only `.phase--lecture, .phase--exercise`. Prework, supplementary
  * and reference sections render as a plain `<section class="module">` with no
  * phase wrapper, so they were silently dropped from the deck — and any in-deck
  * link into them was stranded. Toggling long-read -> slides must not lose them.

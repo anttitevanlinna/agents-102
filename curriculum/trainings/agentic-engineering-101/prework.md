@@ -6,11 +6,11 @@
 >
 > Before Module 1, ask Claude Code to set `cleanupPeriodDays` to 60 in `~/.claude/settings.json` (it can edit its own settings file). Claude Code deletes session transcripts older than 30 days by default, and the day-30 follow-up after the training reads sessions from before it started.
 
-Come to Module 1 with a Claude Code session started in the repo you're going to grow,<!--flag:payload--> the curated skills installed,<!--/flag:payload--> and one trivial bug picked.
+Come to Module 1 with the repo picked,<!--flag:payload--> the curated skills installed,<!--/flag:payload--> and one trivial bug.
 
 ## What to bring
 
-The training runs on YOUR real work, not exercises. You'll work at different task sizes across the training, bring something at each size from your backlog. You don't need them all picked now; you need to know they're there.
+The training runs on YOUR real work. You'll work at different task sizes across the training, bring something at each size from your backlog. You don't need them all picked now; you need to know they're there.
 
 Roughly in the order you'll reach for them:
 
@@ -19,9 +19,9 @@ Roughly in the order you'll reach for them:
 - **A small feature**: external or user-facing surface, shippable in a few hours.<!--/flag:module:earn-the-trust-->
 - **A bigger piece**: a refactor, or a feature with unknowns. Size this one by the agent rather than by yourself. Roughly 30 to 120 minutes of the agent working, not counting the time you spend writing prompts.
 
-**Separate tasks off your backlog. Not slices of one.**
+**Separate tasks off your backlog.**
 
-Plus the repo itself (picked next), your team's tracker if you've got one (Linear / Jira / GitHub Issues), and `git worktree` available on your laptop. Make sure your Claude Code can operate the GitHub CLI. Ask it to install `gh` if it isn't there.<!--flag:payload--> The curated security skills install when you extract the bundle.<!--/flag:payload-->
+Plus the repo itself (picked next) and your team's tracker if you've got one (Linear / Jira / GitHub Issues). Make sure your Claude Code can operate the GitHub CLI. Ask it to install `gh` if it isn't there.<!--flag:payload--> The curated security skills install when you extract the bundle.<!--/flag:payload-->
 
 ## 1. Pick THE repo
 
@@ -75,7 +75,7 @@ If Claude's screening feels like everything-at-once, ask Claude to use the AskUs
 
 Close the prework session when Claude confirms readiness. Module 1 opens fresh in the same repo.
 
-The bug you picked. Write it down, file/line, or a one-sentence summary in a note. The prework session closes; the bug needs to survive into Module 1. Come to Module 1 without one and you'll be scrambling for one while the exercise is already fixing bugs. Your call.
+The bug you picked. Come to Module 1 without one and you'll be scrambling for one while the exercise is already fixing bugs. Your call.
 
 The opening question at Module 1: *what's one trick you figured out with Claude Code that nobody taught you?* Bring one. Doesn't have to be big. No trick? Bring a moment Claude Code frustrated you.
 

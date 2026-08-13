@@ -174,54 +174,54 @@ State lookup is SUT-scoped (matches `mN_cwd` in the state file) — `out/` holds
 runs from every kit, and taking "newest of any SUT" would position one kit's
 branch at another's SHA.
 
-### Curriculum drift repaired 2026-08-13 — re-validation owed
+**Validated live, medium effort, lemmings kit, 2026-08-13 — full PASS, M1
+through M5. Zero WARN, zero FAIL.** M4 positions from M2's ending SHA and
+passes its in-repo-memory assertion with no dependency on M3's ADR or a
+`test-strategy-lemmings` skill — the cut's one structural difference, exercised
+rather than assumed. M4 named its own branch from the task (`m4/deadlock-terminal-state`,
+not the wrapper's slug) and M5 forked from the right commit anyway, so the
+slug-reconciliation path is covered too. M5 phase B all 6 key turns PASS; phase
+C (packaged re-send, fresh session) shipped 2 commits, 15/15 tests green via the
+project's own `npm test`, clean worktree.
 
-The 2026-07-28 PASS below is **stale**: AE101 content moved under the battery
-between then and 2026-08-13, and four of those moves broke or hollowed the walk.
-Fixed here; none of it has been re-run live yet.
+M5's `verify-by-hand-judge` finds no `test-strategy-lemmings` skill on disk (M3
+never runs to author it) and stands down with "nothing to judge" rather than
+erroring — the graceful degradation on a dropped M3 that `autumn-gaps.md`
+predicted from the prompt body, confirmed at runtime.
 
-| Drift | Break | Fix |
-|---|---|---|
-| Packaging moved off the worktree root into a task-scoped folder (`diagnose-and-resend-6`, `ae101-m5-rerun-packaged`) | `run-m5.sh` hard-coded `$worktree_cwd/reference.md` + `plan.md` — every PB-post assertion FAILs on a *correct* run | `locate_packaging_file` discovers them (pinned hint → newest under worktree → root placeholder); all three m5 scenarios' canned grill answers now name a task-scoped folder |
-| `plan.md` gained a required verifier-invocation line | Nothing checked it; the re-send reads the invocation off plan.md | New PB-post assertion (FAIL) + a co-location WARN when reference/plan split folders |
-| M1 split `compound-and-close-2/3` → `close-the-ticket-1/2/3`, and `compound-and-close-1` now requires bug-rules from `close-the-ticket-2` | Scenario header named dead keys; the compound turn asked Claude to review a ticket read that never happened | Header re-pointed; `compound-and-close-1` tail tells Claude to skip the ticket clause. The close-the-ticket trio stays scoped out — no tracker connector, and `-3` writes to a real tracker |
-| `extract-the-task-shaping-rule-4` (story-ticket read) joined M2 between `-1` and `-2`, and `-2` now writes both rule sets | The walk skipped `-4` entirely, so `-2` asked for rules nobody proposed | `-4` inserted into `scenarios/m2.txt` with a pasted lemmings-shaped story ticket (the prompt's own paste-the-fields fallback); `-2` tail says "both sets" |
-| `walk-and-send-off-2/3` retired "business-rules gap" for "material the repo doesn't carry" | M4 scenario tails contradicted the prompt they were appended to | Vocabulary synced in all four m4 scenarios |
+### Standing constraints
 
-**`run-m2.sh` now dispatches assertions on the prompt key, not on `key_seq`.**
-Ordinal dispatch coupled every SUT variant to one turn count — inserting `-4`
-into the lemmings walk would have silently re-pointed cases 5–8 at the wrong
-prompts in the picoshare/codesearch variants. Keys are stable; ordinals are not.
-`run-m1.sh`, `run-m4.sh`, `run-m5.sh` are still ordinal — same latent trap, no
-turn inserted yet. Worth converting the next time any of their walks grows.
+Four things about this battery that are easy to break and expensive to diagnose.
 
-Known remaining gap: `-4` is in the lemmings m2 walk only. The picoshare and
-codesearch m2 scenarios still run the 8-key sequence, so the story-ticket turn
-is uncovered there (their `-2` will report having no story rules to write —
-correct behavior, thinner coverage).
+**Packaging location is discovered, never assumed.** `diagnose-and-resend-6` has
+the agent propose a task-scoped folder for `reference.md` + `plan.md`; they do
+not sit at the worktree root. `run-m5.sh`'s `locate_packaging_file` resolves
+them (pinned hint → newest under the worktree → root placeholder before they
+exist), and each m5 scenario's canned grill answer names a folder so the
+headless walk stays deterministic. `plan.md` must also carry a verifier-invocation
+line — the re-send reads how to call the verifier off it, so a plan without one
+sends the run off with a verifier it cannot invoke.
 
-**Validated live, medium effort, 2026-07-28 — full PASS, M1 through M5.**
-M1/M2 PASS (unchanged from the stock chain — same modules, same content). M4
-positioned correctly from M2's ending SHA and PASS (in-repo-memory assertion,
-audit turn — no hard dependency on M3's ADR or `test-strategy-lemmings`
-skill, confirmed rather than assumed). M5 phase A (worktree fork at M4's
-starting point) PASS, phase B all 9 turns PASS, phase C (packaged re-send,
-fresh session) shipped real work: ADR authored, 11/11 tests passing, clean
-commit history, worktree clean. `verify-shipped-work.sh` (agent-authored,
-not curriculum code) reported one FAIL — a false positive from its own
-backtick-token extraction in task.md's `## Files` section (picked up
-function-name and conditional-file mentions as if they were required diff
-paths). The agent caught this itself, documented the false-positive analysis
-in `RUN-NOTES.md` rather than relaxing the check, and reported FAIL verbatim.
-Not a defect in this script or in the Northwind cut — a pre-existing
-verifier-authoring nuance that would occur identically in the stock chain,
-since M4/M5 run the same `blocker-deadlock-terminal` task either way.
+**Assertion dispatch keys on the prompt key, not the ordinal.** A walk that
+grows by one turn silently re-points every ordinal case after it, in every SUT
+variant that did not grow. `run-m2.sh` is converted; `run-m1.sh`, `run-m4.sh`
+and `run-m5.sh` are still ordinal — convert the next time one of their walks
+gains a turn.
 
-Also confirmed live (not just source-reviewed): M5's `verify-by-hand-judge`
-correctly found no `test-strategy-lemmings` skill on disk (M3 never ran to
-author it) and stood down with "nothing to judge" rather than erroring —
-the graceful-degradation-on-dropped-M3 behavior `autumn-gaps.md` predicted
-from reading the prompt body, now confirmed at runtime.
+**Scenario files are one turn per line.** `run-mN.sh` reads each non-blank,
+non-comment line as a turn and its first token as a prompt key. A multi-line
+paste (a fixture ticket, a canned answer with structure) becomes N turns, and
+every line after the first fails to resolve. Ride long fixtures on one line with
+`·` separators.
+
+**Two turns are scoped out of the headless walk, both for want of a tracker.**
+M1's `close-the-ticket-1/2/3` (`-3` writes back to a real tracker, which this
+battery has no business doing) — so `compound-and-close-1`, which reads
+`close-the-ticket-2`'s bug rules opportunistically, carries a tail telling
+Claude to skip that clause. M2's `extract-the-task-shaping-rule-4` IS driven,
+via the prompt's own paste-the-fields fallback, but only in `scenarios/m2.txt`;
+the picoshare and codesearch m2 walks run without it, so their `-2` reports
+having no story rules to write. Correct behaviour, thinner coverage.
 
 **Operational note — background-task kill vs. tmux session survival.** Both
 launches of this chain (the full run and the M5 resume) had their

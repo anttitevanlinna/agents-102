@@ -54,10 +54,10 @@ Where Claude reads from, and when:
 
 | What | Where | Loads | To wire |
 |---|---|---|---|
-| CLAUDE.md files | `./CLAUDE.md` · `./CLAUDE.local.md` (gitignored) · `~/.claude/CLAUDE.md` | every session | create the file |
-| Rules | `.claude/rules/*.md` · `~/.claude/rules/*.md` | every session; `paths:`-scoped ones when a matching file is read | `paths:` frontmatter scopes a rule to files |
+| CLAUDE.md files | personal, repo, or repo-local (gitignored) | every session | |
+| Rules | `.claude/rules/` (repo) · `~/.claude/rules/` (personal) | every session; `paths:`-scoped ones when a matching file is read | `paths:` frontmatter scopes a rule to files |
 | Auto memory | `~/.claude/projects/<project>/memory/` | `MEMORY.md` index every session; topic files as needed | Claude writes it; `/memory` to inspect |
-| Skills | `.claude/skills/<name>/` · `~/.claude/skills/<name>/` | name and description every session; full body on invocation | save the folder; invoke by name |
+| Skills | personal or repo skills folder | name and description every session; full body on invocation | author one, or install from a plugin marketplace; invoke by name |
 | Roll your own | any path: a notes folder, `~/.claude/memory/` | only when a prompt names it or Claude reads it | an `@path` line in an auto-loaded CLAUDE.md upgrades it to every session |
 
 - If Claude picked a path that only loads when named, ask for that `@import` line before you move on. Without it the file sits on disk unread.

@@ -88,7 +88,7 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 
 Optional. One read in the gap.
 
-**Read: Simon Willison, [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/)** (September 2025). Willison names the skill of setting up an agent's session before you start it. Module 4 opens on a session you send off and step away from; this is the thinking you do before stepping away.
+**Read:** Simon Willison, [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/) (September 2025). Willison names the skill of setting up an agent's session before you start it. Module 4 opens on a session you send off and step away from; this is the thinking you do before stepping away.
 
 ## Next
 
@@ -97,6 +97,8 @@ Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to 
 Optional, when your sessions start running heavy: [Token efficiency](trainings/agentic-engineering-101/supplementary/token-efficiency.md) on keeping the context window lean.
 
 <!-- maintainer -->
+
+**The two `{{prompt:}}` fences in `## Clear the session` are accepted, not an unextracted exercise.** `check_pedagogy.md` §52a treats a fence in module prose as a greppable tell, and this section matches it. It is not what the rule was built from: §52a's precedent is a four-prompt section with a Session widget, large enough that the deck gives it one unbreakable slide. This is a two-prompt wrap ritual — signal the wrap, then clear — and extracting it would bill a closing beat as its own file. Accepted-by-design 2026-08-13 (Antti-directed): do not extract, do not re-raise. The same call covers `plan-mode-done-right.md` and `prework.md`, which carry the corpus's only other instances.
 
 **2026-07-30 (pre-read wiring):** added `## Pre-read before Module 4` (Willison, *Designing agentic loops*) — first pre-read section in this file. Body touched — per-class Quality SHAs below predate; re-audit before ship.
 

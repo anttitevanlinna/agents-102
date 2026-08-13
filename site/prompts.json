@@ -1196,7 +1196,8 @@
       {
         "id": "bug-rules",
         "location": "scrollback (5 proposed bug rules)",
-        "consumed-by": [
+        "consumed-by": [],
+        "opportunistic-copy-by": [
           "prompt:compound-and-close-1"
         ]
       }
@@ -1247,10 +1248,6 @@
       {
         "id": "shipped-bug-fix",
         "source": "prompt:fix-tests-first-3"
-      },
-      {
-        "id": "bug-rules",
-        "source": "prompt:close-the-ticket-2"
       }
     ],
     "produces": [
@@ -1270,6 +1267,13 @@
           "prompt:ae101-m5-worktree-setup"
         ],
         "note": "ae101-m2-integrate-branch WRITES to ./CLAUDE.local.md (creates if missing) but doesn't strictly consume it as a precondition"
+      }
+    ],
+    "opportunistic-copy": [
+      {
+        "id": "bug-rules",
+        "source": "prompt:close-the-ticket-2",
+        "note": "close-the-ticket runs off an external tracker the student may not reach (admin-gated connectors, no ticket for this bug), and the exercise gives them a no-ticket path. Optional read — the compound stands on the session alone."
       }
     ]
   },
@@ -1390,7 +1394,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/diagnose-and-resend",
-    "text": "For each of the three failures we just named, walk it backwards: what specific validation would have caught it in minutes, not hours?\n\nPractitioners running multi-hour coding agents in the last six months converge on three validation categories. Use these as the answer shape:\n\n- A re-readable spec: scope + success criteria + constraints the agent can diff its in-progress work against, mid-run. Holds the goal pinned down when the conversation grows.\n- A working document the agent owns and updates: durable state the agent re-reads when its working window fills. Phase breakdown, current-phase marker, decisions log, what-didn't-work list. Survives compaction.\n- An automated check on produced work: tests, lint, compile, a deterministic hook, or an LLM judge. Fires on agent output and decides pass/fail against a quality bar.\n\nFor each failure I diagnosed, map it to the validation category that would have caught it. Be specific: not \"a re-readable spec\" generically, but what THAT spec would have said to catch THIS particular goal-drift moment. Name when the validation would have fired (start of run, mid-run, end-of-task, on commit).\n\nDon't name frameworks or practitioners by label (\"Ronacher's three-pattern,\" \"Huntley's Ralph,\" etc.) — walk from the specific failure to the specific validation. The naming happens later.",
+    "text": "For each of the three failures we just named, walk it backwards: what specific validation would have caught it in minutes, not hours?\n\nValidation for multi-hour agent runs groups into three categories. Use these as the answer shape:\n\n- A re-readable spec: scope + success criteria + constraints the agent can diff its in-progress work against, mid-run. Holds the goal pinned down when the conversation grows.\n- A working document the agent owns and updates: durable state the agent re-reads when its working window fills. Phase breakdown, current-phase marker, decisions log, what-didn't-work list. Survives compaction.\n- An automated check on produced work: tests, lint, compile, a deterministic hook, or an LLM judge. Fires on agent output and decides pass/fail against a quality bar.\n\nFor each failure I diagnosed, map it to the validation category that would have caught it. Be specific: not \"a re-readable spec\" generically, but what THAT spec would have said to catch THIS particular goal-drift moment. Name when the validation would have fired (start of run, mid-run, end-of-task, on commit).\n\nDon't name frameworks or practitioners by label. Walk from the specific failure to the specific validation.",
     "requires": [
       {
         "id": "three-failure-lens-read",
@@ -1590,6 +1594,7 @@
         "id": "task-shaping-rules-draft",
         "location": "scrollback (3-5 proposed one-liners)",
         "consumed-by": [
+          "prompt:extract-the-task-shaping-rule-4",
           "prompt:extract-the-task-shaping-rule-2"
         ]
       }
@@ -2656,7 +2661,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/walk-and-send-off",
-    "text": "Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including any test-strategy or workflow skills already authored), and the connectors I've wired.\n\nRun this audit in a fresh context: spawn a sub-task via the Agent tool so you read my setup without this conversation colouring it. Keep this session's scrollback intact — we'll need it for later phases. Return a structured report.\n\nReturn a ranked top-5: thin spots, missing context, wrong assumptions, or unwired tools that will hurt the agent if it tries this task un-packaged. Rank by how much damage each will do during the send-off.\n\nFor each item, say: (a) what's thin, (b) what a properly-prepared agent would need instead, (c) the cheapest way to close the gap today: add an observation, sharpen a rule, wire a connector, or name it as a business-rules gap.",
+    "text": "Audit my system against the task we just scoped. Read both `CLAUDE.md` (team, if it exists) and `CLAUDE.local.md` (personal, gitignored), the ADRs in this repo, the skills at both `.claude/skills/` (repo-level) AND `~/.claude/skills/` (personal, including any test-strategy or workflow skills already authored), and the connectors I've wired.\n\nRun this audit in a fresh context: spawn a sub-task via the Agent tool so you read my setup without this conversation colouring it. Keep this session's scrollback intact — we'll need it for later phases. Return a structured report.\n\nReturn a ranked top-5: thin spots, missing context, wrong assumptions, or unwired tools that will hurt the agent if it tries this task un-packaged. Rank by how much damage each will do during the send-off.\n\nFor each item, say: (a) what's thin, (b) what a properly-prepared agent would need instead, (c) the cheapest way to close the gap today: add an observation, sharpen a rule, wire a connector, or bring in material the repo doesn't carry.",
     "requires": [
       {
         "id": "scoped-task",
@@ -2694,7 +2699,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/walk-and-send-off",
-    "text": "Use the AskUserQuestion tool, at most four options per question, one question per call. First ask which 2-3 audit gaps I want to focus on; if the audit surfaced more than four, offer the four most material as options.\n\nAfter I've picked, list the gaps you left off so I can see what didn't make the cut.\n\nFor each picked gap, propose a resolution in the shape the audit named, hear my pushback, then persist it: the `./observations/` folder in your repo for observations and business-rules gaps, `./CLAUDE.local.md` for rule sharpening, connector setup for connector wiring.",
+    "text": "Use the AskUserQuestion tool, at most four options per question, one question per call. First ask which 2-3 audit gaps I want to focus on; if the audit surfaced more than four, offer the four most material as options.\n\nAfter I've picked, list the gaps you left off so I can see what didn't make the cut.\n\nFor each picked gap, propose a resolution in the shape the audit named, hear my pushback, then persist it: the `./observations/` folder in your repo for observations and material you brought in, `./CLAUDE.local.md` for rule sharpening, connector setup for connector wiring.",
     "requires": [
       {
         "id": "gap-audit-report",
@@ -2704,7 +2709,7 @@
     "produces": [
       {
         "id": "observations-folder",
-        "location": "./observations/ (observations + business-rules gaps) + ./CLAUDE.local.md (sharpened rules) + connector setup (no file)",
+        "location": "./observations/ (observations + brought-in material) + ./CLAUDE.local.md (sharpened rules) + connector setup (no file)",
         "consumed-by": [
           "prompt:ae101-m4-take-task-end-to-end",
           "prompt:diagnose-and-resend-6",

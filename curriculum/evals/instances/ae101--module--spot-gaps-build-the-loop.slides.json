@@ -1,17 +1,16 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md",
-  "body_sha": "2e791b10ac012bf17c74f08044e019a2b9a08d1559578a28cdf34310389aa2fc",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "H1", "lines": "1-2"},
+    {"index": 0, "heading": "H1 (title)", "lines": "1-2"},
     {"index": 1, "heading": "Big Idea", "lines": "3-5"},
-    {"index": 2, "heading": "Prework", "lines": "6-11"},
-    {"index": 3, "heading": "What You'll Learn", "lines": "12-20"},
-    {"index": 4, "heading": "Start here", "lines": "21-38"},
-    {"index": 5, "heading": "Key Concepts", "lines": "39-46"},
-    {"index": 6, "heading": "Human close", "lines": "47-62"},
+    {"index": 2, "heading": "Prework", "lines": "6-10"},
+    {"index": 3, "heading": "What You'll Learn", "lines": "12-19"},
+    {"index": 4, "heading": "Start here", "lines": "21-37"},
+    {"index": 5, "heading": "Human close", "lines": "39-53"},
+    {"index": 6, "heading": "Key Concepts", "lines": "55-61"},
     {"index": 7, "heading": "Next", "lines": "63-73"}
   ],
   "rules_evaluated": [
@@ -21,9 +20,10 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 4 \"Start here\" line 25: grep -n \"three-pattern\" confirms \"the three-pattern itself\" is arc-earned spine vocabulary — also present in learn-from-the-test.md (M5), earned before M6 opens, per §1's arc-earned-vocabulary carve-out. chunk 3 \"What You'll Learn\" line 14 \"the diagnosis killed\" and \"two sessions of the same task\" are the standard forward-looking Bloom-LO preview genre (descriptive noun phrases, not pronouns/demonstratives pointing at a missing specific antecedent) — no harm: a reader is not left holding an unresolved pointer, only a course-objective preview, which is the genre's normal shape across every AE101 module's What You'll Learn. chunk 5 \"Key Concepts\" line 43 \"A judge in the producer's window\" resolves against chunk 3 line 17 \"Map evals across verifier, judge, and gate\", which names the term earlier in the same file; the maintainer block (line 86) already carries a dated accept-note (2026-08-09, Antti-directed) explaining why full definition is deferred to the-loop-has-a-name.md and why naming-only in signposting is deliberate — checked per harm clause before flagging, no re-flag warranted.",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "notes": "Central check for this cycle: KC (chunk 6) bullet 5 (\"The handoff prompt IS the loop\") now sits AFTER chunk 5 (Human close), which is where \"the loop\" (\"The loop, yours.\") and \"the handoff prompt\"'s companion terms first land in this file's body. Under the OLD order (KC above Human close) this bullet would have forward-referenced an unintroduced term; under the NEW order it resolves. \"handoff prompt\" itself is pre-named in chunk 3's LO bullet 6. \"the three-pattern\" (chunk 6 bullet 1) resolves against chunk 4 (\"Start here\"). \"the producer's window\" (chunk 6 bullet 4) and the over-credit \"countermove\" (chunk 6 bullet 2) are arc-earned spine vocabulary per the maintainer block's M5-independence-axis note — carve-out applies, not a fresh unintroduced term."
     },
     {
       "compendium": "check_slides.md",
@@ -31,7 +31,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 7 \"Next\" line 67: \"The training opened on a trick nobody taught you\" unpacks its own claim inline rather than locating another file by position (no \"the opening lecture said\" shape) — a closer summing the whole arc, the carved-out shape in §2. No cross-file positional pointer found anywhere in the body (lines 1-73).",
+      "evidence": null,
       "fix_hint": null,
       "blocking": true
     },
@@ -41,9 +41,10 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Verified on disk: all six lecture links (curriculum/lectures/the-2-frontiers.md, story-of-module-6.md, quality-is-grounding.md, composing-the-workflow.md, the-loop-has-a-name.md, the-map-filled-in.md, agents-that-build-agents.md) and the exercise link (curriculum/exercises/spot-gaps-build-the-loop.md) and the supplementary link (curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md) all exist (`for f in ...; do [ -f \"$f\" ] && echo OK || echo MISSING; done` → all OK). The 2026-07-05 maintainer cut-pass note confirms the two removed beats (steering-the-wiring, arc-retrospective) were swept from body and grep confirms neither string appears in the body (lines 1-73).",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "notes": "All 8 included lecture/exercise siblings verified to exist on disk."
     },
     {
       "compendium": "check_slides.md",
@@ -51,9 +52,10 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-before-reveal live-demo construction appears in this module file; that beat shape belongs to the linked exercise/lecture files, not the module shell.",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "notes": "No guess-before-reveal demo beat in this file."
     },
     {
       "compendium": "check_slides.md",
@@ -61,7 +63,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every chunk (1-7) carries multiple substantive lines / a self-carrying claim; none is a bare wait-state or single context-dependent bullet.",
+      "evidence": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -71,7 +73,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "All seven headers (Big Idea, Prework, What You'll Learn, Start here, Key Concepts, Human close, Next) are architecture-mandated module-section names (check_student_facing.md §17) whose content matches the header's promise; no header is contradicted by its chunk's body.",
+      "evidence": null,
       "fix_hint": null,
       "blocking": false
     },
@@ -81,9 +83,10 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "grep across body lines 1-73 for \"Not \" / superlative / triplet markers found only one incidental hit (line 69 \"How the best do CI/CD\" — a supplementary title, not a self-grading superlative about this module's own content). No \"Not X. Not Y. Z.\" construction, no anaphora/epistrophe triple, no self-grading superlative, no number-with-retraction, no abstraction-noun stack, no empty-leg verb triplet found in the body.",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": false,
+      "notes": "No 'Not X. Not Y. Z.' constructions, anaphora triples, self-grading superlatives, number+retraction, abstraction-noun stacks, or empty-leg verb triplets found in body."
     },
     {
       "compendium": "check_slides.md",
@@ -91,9 +94,10 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "grep -in for beat/surface/mood/forcing function/compendium/Connections across body lines 1-73 returns three hits, all \"surface\" used as the ordinary engineering verb (line 14 \"gaps...surface\", line 16 \"**Surface** the kinds of work\", line 40 \"gaps that surface\") — exempt per §8's explicit ordinary-verb carve-out, not the noun-dialect form (\"a writing surface\").",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "notes": "\"Surface\" (chunk 3 LO bullet) used as ordinary engineering verb, exempt per rule 8. No compendium/forcing-function/beat/mood/surface-as-noun dialect found in body."
     },
     {
       "compendium": "check_slides.md",
@@ -101,9 +105,10 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 3's six LO bullets each bold a single Bloom verb (Diagnose/Cut/Surface/Map/Encode/Generalize, ≲2 words) — handle-shaped, not whole-lead-sentence bold (the banned pre-2026-07-09 monoculture). Chunks 4, 6, 7 each carry at most one bolded lead per callout/paragraph (e.g. line 27 \"**Packaged session thin or missing?**\", line 53 \"**Self-study variant.**\", line 69 \"**Going deeper...**\"). No slide exceeds the ≤1-bolded-element-per-slide budget in narrative prose.",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "notes": "Chunk 3 (What You'll Learn) LO bullets carry one bolded verb each per module-shape.md's mandated template — N/A per §9's explicit LO carve-out. Chunk 7 (Next) carries exactly one bold handle (\"Going deeper, when this loop has to scale past you:\"), within the ≤1/slide budget. Key Concepts (chunk 6) carries no bold at all. Maintainer accept-note: KC measured at 173w/6b, confirmed by check-slide-size.js as not oversized."
     },
     {
       "compendium": "check_slides.md",
@@ -111,9 +116,10 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "This is a standard flat-slug module file at curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md, the file shape the renderer's section.module wrapper composes into the deck (per curriculum/CLAUDE.md's module-file-shape convention); no prose section here sits outside that wrapper the way the 2026-07-09 incident's prework/supplementary/reference sections did.",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": true,
+      "notes": "All 8 sections (Big Idea through Next) sit under the module's own top-level section.module wrapper; no phase-less prose section observed missing from deck composition."
     },
     {
       "compendium": "check_slides.md",
@@ -121,9 +127,10 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-numbering.js --file curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` → output: \"OK — 1 files, Phase/Step numbering consistent.\" File has no hand-numbered headers or Phase/Step refs at all (module shell, not the exercise).",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "notes": "node scripts/check-slide-numbering.js --file <target> ran clean: \"OK — 1 files, Phase/Step numbering consistent.\" Exit 0. File has no Phase N/Step N headers."
     },
     {
       "compendium": "check_slides.md",
@@ -131,19 +138,21 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` → output: \"OK — 1 files, no page-geometry pointers across the slide cut.\" No 'below/above/further down/at the top of this page' phrasing found.",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": true,
+      "notes": "node scripts/check-slide-deixis.js --file <target> ran clean: \"OK — 1 files, no page-geometry pointers across the slide cut.\" Exit 0. Chunk 5's \"the last lecture\" and chunk 4's \"Skip the opening lecture\" are same-chunk forward pointers to links appearing later in the same chunk — spatially true per the same-chunk-use carve-out."
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 13,
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "All eleven links in the body name the target document/lecture in the link text itself (e.g. \"[The 2 frontiers]\", \"[session transcripts in the reference]\", \"[How the best do CI/CD at agent scale]\") rather than locating by page position — the surviving requirement this section carries forward from §2/§12. No editorial cut/add action is warranted since §13 itself states there is no rule to enforce beyond that.",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "notes": "Review surface only, never gates. No new in-body links introduced by the reorder; only standalone structural include-links, which were never in scope."
     },
     {
       "compendium": "check_slides.md",
@@ -151,9 +160,10 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` → output: \"files: 1  slides: 7  limits: 210 words / 6 bullets / oversized: 0 / ✓ every slide is within limits.\" Chunk 3 \"What You'll Learn\" now sits at exactly 6 bullets after the 2873257 merge of the former Diagnose/Read pair into one Diagnose bullet — confirmed clean by the script, not by eyeball count.",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "notes": "node scripts/check-slide-size.js --file <target> ran clean: \"files: 1  slides: 7  limits: 210 words / 6 bullets  oversized: 0\". Exit 0."
     }
   ],
   "blocking_findings_count": 0,

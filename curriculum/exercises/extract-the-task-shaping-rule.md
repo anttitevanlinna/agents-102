@@ -60,7 +60,7 @@ Decide the location with Claude.
 
 Roll your own is often facilitated by hooks and router skills: a hook injects it at session start, a router skill reads it when the work calls for it.
 
-- If the picked path only loads when named, ask for the `@import` line before you move on. Without it the file sits on disk unread.
+- If the picked path only loads when named, ask for the `@import` line before you move on. Without it the file sits unread.
 - Read the rules back. If any drifted from your wording, push back and have Claude rewrite.
 - [Claude Code for engineers](../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md) is the long form: precedence, walk-up, the managed layer.
 

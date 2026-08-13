@@ -94,8 +94,8 @@ Module 6 reads the packaged session. Subtler misses, subtler drift. Your verifie
 
 **Nag beat + reading reminder added (2026-07-10, Antti-directed cognitive-load arc):** (1) *Long sessions, short reads* blockquote in Start here — the M5 reminder leg of the selective-reading arc (M1 teach → M2 exception → M3 take-into-use → M5 remind), per `check_student_facing.md` §29 operational-reminder-at-moment-of-use. (2) New section *The nag writes the verifier* after Start here — reframes the M4 mid-run worry as the verifier's spec ("the feeling of what is missing points at what to build", Antti's frame near-verbatim); names the reference/plan.md/verifier trio in the same role-language the re-send section already uses. Opener-dosage check: arming beat (spirit + one move), does not name Ronacher's three-pattern or the failure-mode↔packaging pairing — closer's beats intact. First para names a plausible mid-run worry: resonant-copy carve-out, don't flatten at re-audit.
 
-**Quality:** compendium-audited 2026-08-04 (writing@93bb807 story@93bb807 technical@93bb807 behavior@93bb807 pedagogy@93bb807 strategy@93bb807 slides@93bb807)
-- judges @93bb807: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-13 (writing@315cd5a story@315cd5a behavior@93bb807 pedagogy@315cd5a strategy@315cd5a slides@315cd5a)
+- judges @315cd5a: writing PASS, story PASS, technical REVISE (1/1-see-instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @93bb807: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; see instances/ae101--m4-m5-m6.cross_module.json
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**

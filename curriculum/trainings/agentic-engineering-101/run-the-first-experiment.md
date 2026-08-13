@@ -1,7 +1,7 @@
 # Run the first experiment
 
 ## Big Idea
-Prep your first long run. Whatever you've built so far is what the agent gets, and the run is how you find out what's missing.
+Prep your first long session. Whatever you've built so far is what the agent gets, and the session is how you find out what's missing.
 
 ## Prework
 
@@ -53,7 +53,7 @@ The map has a far side. Before the first long session, see the country you are e
 ## Key Concepts
 - The audit ranked the thin spots in your setup against one real task. You corrected the ranking, then filled the worst two or three.
 - The task went out un-packaged: no plan file, no verifier, no reference artefact. Nothing but what you already had.
-- Traces are data. Stopping a run that has gone off the rails is reading, not failing.
+- Traces are data. Stopping a session that has gone off the rails is reading, not failing.
 - The run started from a pinned commit on a throwaway branch. This was an experiment, not a production run.
 
 ## Bring to Module 5
@@ -66,13 +66,13 @@ Come to Module 5 without a session that got some way into the task and you'll be
 
 Optional. They sit in the gap while your un-packaged session is still going. All four point at the same surprise: the effort in agent work sits in the framing and the checking, not the typing. The next session picks this up from your own experiment.
 
-**Read, [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md).** Uncle Bob's public learning journey with AI coding: early speed, mercury-like unpredictability, then tests, architecture visibility, and formal constraints as steering. It moves the question from "the agent ran" to "what would have constrained the drift?", the question you'll put to your own session next.
+**Read,** [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md). Uncle Bob's public learning journey with AI coding: early speed, mercury-like unpredictability, then tests, architecture visibility, and formal constraints as steering. It moves the question from "the agent ran" to "what would have constrained the drift?", the question you'll put to your own session next.
 
-**Watch, Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich).** Interview video and write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. You'll find the same split in your own session.
+**Watch,** Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich). Interview video and write-up. The identity metaphor that names your job as framing and taste-checking; the model is the filling. You'll find the same split in your own session.
 
-**Read, [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md).** Some tasks are far cheaper to check than to do, and delegation pays exactly there. The verifier built next is often worth more than the task it checks.
+**Read,** [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md). Some tasks are far cheaper to check than to do, and delegation pays exactly there. The verifier built next is often worth more than the task it checks.
 
-**Read (longer), Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).** The term and the philosophy, and the 80/20 that follows from it: the weight sits on planning and review, and that is where the next hour goes.
+**Read (longer),** Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide). The term and the philosophy, and the 80/20 that follows from it: the weight sits on planning and review, and that is where the next hour goes.
 
 ## Next
 

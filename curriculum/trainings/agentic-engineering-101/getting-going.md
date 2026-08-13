@@ -63,7 +63,7 @@ After this module, you will be able to:
 
 ## Pre-reads before Module 2
 
-Optional. All four sit in the gap before it. Do them and its moves land as things you've already seen.
+Optional. They sit in the gap before it. Do them and its moves land as things you've already seen.
 
 **Read:** [The agentic engineering progression](trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md). The progression from using AI for assistance to improving the system behind every session, followed by a model of reach and calibrated trust.
 

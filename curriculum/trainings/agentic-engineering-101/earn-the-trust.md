@@ -110,8 +110,8 @@ Optional, when your sessions start running heavy: [Token efficiency](trainings/a
 
 **Session-close convergence prompt (`ae101-m3-ready-to-clear`) kept, not cut.** Flagged `low-yield`. It's the converge-before-clear beat (`check_pedagogy.md §58`): the student signals wrap-up, the agent surfaces anything still loose before the `/clear`. A light one-line ask carrying a lead-in and its own "good enough" callout, not concurrent-heavy load. Its `{{cut:}}` marker was reversed to a live `{{prompt:}}` — body touched, so the per-class Quality SHAs below predate it; re-audit before ship. Not a cut candidate.
 
-**Quality:** compendium-audited 2026-08-12 (writing@b1c8389 story@b1c8389 technical@b1c8389 behavior@1c765f2 pedagogy@b1c8389 strategy@b1c8389 slides@b1c8389)
-- judges @b1c8389: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-13 (writing@7992fd0 story@7992fd0 technical@7992fd0 behavior@1c765f2 pedagogy@7992fd0 strategy@7992fd0 slides@7992fd0)
+- judges @7992fd0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @022c684: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust] 3 pairs, 9/9 rules each; M3->M4 out of scope, M4+M5 under concurrent edit; see instances/ae101--module-set--prework-m3.cross_module.json
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 

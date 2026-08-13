@@ -97,8 +97,8 @@ The opening question at Module 1: *what's one trick you figured out with Claude 
 
 - `[checked:2026-07-30 result:OK due:2027-01-30]` https://simonwillison.net/2025/Oct/7/vibe-engineering/ — [practitioner direct] (Willison, 2025-10-07). Outside the 6-month window by decision: named framing piece, dated in body, same treatment as the Cherny video exception in `getting-going.md`. fallback: drop the pre-read; Module 1 stands alone.
 
-**Quality:** compendium-audited 2026-08-12 (writing@b1c8389 story@b1c8389 technical@42ca070 behavior@1c765f2 pedagogy@b1c8389 strategy@1c765f2 slides@b1c8389)
-- judges @b1c8389: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-13 (writing@7992fd0 story@7992fd0 technical@7992fd0 behavior@1c765f2 pedagogy@7992fd0 strategy@1c765f2 slides@7992fd0)
+- judges @7992fd0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @022c684: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust] 3 pairs, 9/9 rules each; M3->M4 out of scope, M4+M5 under concurrent edit; see instances/ae101--module-set--prework-m3.cross_module.json
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass — pre-reshape)
 

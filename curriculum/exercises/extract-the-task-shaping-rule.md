@@ -60,6 +60,8 @@ Where Claude reads from, and when:
 | Skills | personal or repo skills folder | name and description every session; full body on invocation | author one, or install from a plugin marketplace; invoke by name |
 | Roll your own | any path: a notes folder, `~/.claude/memory/` | only when a prompt names it or Claude reads it | an `@path` line in an auto-loaded CLAUDE.md upgrades it to every session |
 
+Roll your own is often facilitated by hooks and mini-skills that route the context loading: a hook can inject a file at session start, a small skill can read the folder when its work comes up.
+
 - If Claude picked a path that only loads when named, ask for that `@import` line before you move on. Without it the file sits on disk unread.
 - Read the rules back. If any drifted from your wording, push back and have Claude rewrite.
 - [Claude Code for engineers](../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md) is the long form: precedence, walk-up behaviour, the managed layer.

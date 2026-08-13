@@ -1,18 +1,18 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md",
-  "body_sha": "5555b2b88988265e4dc7065733e08959637777e960348f0615181a9873b2bda2",
+  "body_sha": "37d26e68e67df0c90805b45e751b0c0aa909ecf2cf2b2f587a672ce095b650c3",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "curious readiness — 'I've built enough to try; let's see what the agent does'",
-  "trace_status": "cached",
+  "module_mood_contract": "curious readiness — \"I've built enough to try; let's see what the agent does\" (strategy doc content-strategy-agentic-engineering-101.md § M4 in detail; maintainer block line 97 restates it)",
+  "trace_status": "regenerated",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures are closers, not openers.",
       "verdict": "PASS",
-      "evidence": "No embedded lecture is a meta-frame closer misplaced as an opener. 'The far half of the map' (line 37) is a ceiling-shower/spirit opener (arc-lecture carve-out). 'The agent loop' + 'Test and learn' (lines 41/43) teach vocabulary mid-module. 'The ironies of automation' (line 57) arms the student against a trap right before the risky send-off — a warning, not a recognition of a pattern already lived. 'Will company memory emerge?' (line 100) and 'Reading the return' (line 102) are open-question/bridge lectures pointed at M5, not this module's own closer.",
+      "evidence": "grep -n \"## Start here\\|## Send the task off\" run-the-first-experiment.md -> lines 27, 45. Embedded lectures: the-far-half (line 37, arc-lecture carve-out, opener), the-agent-loop (line 39, vocab, mid-module), test-and-learn (line 41, spirit-framing, pre-exercise), ironies-of-automation (line 47, own maintainer block calls itself 'Framing lecture, not a teaching lecture — it arms a lens, it does not hand the fixes', placed right before the send-off it warns about — an arming opener, not a recognition-of-a-lived-pattern closer), what-keeps-a-long-running-session-going (line 51, own maintainer block: 'M4 closer after the send-off, read while the un-packaged session remains active' — correctly the only closer, and it is placed last). No meta-frame lecture is misplaced as an opener.",
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +21,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "Rule scoped to M5-style contrast-mood modules (learn-through-doing, name-after). This module's deliberate mood is curious readiness (strategy doc §M4), not contrast-mood — M5 owns that mood. Not the surface this rule governs.",
+      "evidence": "Rule scopes M5-style contrast-mood modules (learn-through-doing, name-after). Strategy doc names M4's mood as curious readiness, not contrast — M5 owns learning-through-contrast. Not this file's surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -29,8 +29,8 @@
       "compendium": "check_lectures.md",
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
-      "verdict": "N/A",
-      "evidence": "Rule targets lecture-file bodies. This is a module file, whose ## Next / ## Bring to Module 5 sections are exactly where the rule's own carve-out says cross-module sequencing belongs (lines 104-113). Not a lecture-body violation.",
+      "verdict": "PASS",
+      "evidence": "Ran grep -nE \"M[0-9]|Module [0-9]\" against the four linked lecture files (the-far-half.md, the-agent-loop.md, test-and-learn.md, ironies-of-automation.md, what-keeps-a-long-running-session-going.md). All hits land in maintainer/backing blocks below each file's own fence (e.g. the-agent-loop.md line 30 'Promotion (2026-07-02...) M1 supplementary -> M4 lecture'), none in student-facing body above the fence — each lecture's own maintainer note explicitly records a zero-refs-above-fence audit (e.g. test-and-learn.md line 35: 'verified zero M[0-9]/module-name hits above the fence'). This module file's own ## Next / ## Bring to Module 5 sections (lines 59-67) carry the sequencing, which is the rule's own carve-out for module files.",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,7 +39,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test and truth clause.",
       "verdict": "N/A",
-      "evidence": "Governs lecture/slide-handbook headers; this file's ## headers are module section headers (Prework, Start here, Key Concepts, etc.), not lecture headers. Surface mismatch.",
+      "evidence": "Governs lecture-file slide headers. This file's ## headers (Big Idea, Prework, Start here, Key Concepts, Next, Bring to Module 5, Pre-reads before Module 5) are module-section headers, not lecture headers — the linked lecture files carry their own headers and their own story-class audits.",
       "fix_hint": null,
       "blocking": false
     },
@@ -48,43 +48,61 @@
       "rule_index": 5,
       "rule_lead": "A slide's body is size-bounded (word/bullet ceiling).",
       "verdict": "N/A",
-      "evidence": "Governs lecture-slide body density; not evaluated against module-file section length. Surface mismatch.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 27,
-      "rule_lead": "Body teaches the work; trainer manages the room outside text.",
-      "verdict": "PASS",
-      "evidence": "No authored conversation/comparison/pause cues found anywhere in body (checked Prework, Start here, Key Concepts, Send the task off, Next/Bring-to-M5/Pre-reads). Every sentence is about the artifact/prompt/next move (e.g. 'Ask Claude to commit current state on a feature branch...', line 71) or trainer-block-only push-backs (kept in maintainer fence, lines 143-151), never in body.",
+      "evidence": "Same surface mismatch as rule 4 — this is a module file; the word/bullet ceiling applies to the lecture and exercise files' own slides, which carry their own current Quality lines (walk-and-send-off.md and set-the-markers-send-it-off.md both show story@19249df PASS in their own maintainer blocks).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
-      "rule_lead": "Forcing functions live in prompts, not body prose.",
+      "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.",
+      "verdict": "N/A",
+      "evidence": "This module file carries no fenced {{prompt}} blocks itself — per curriculum/CLAUDE.md 'Module file shape', module files are thin (metadata + LOs + ordered refs + framing) and the forcing-function prompts live in the linked exercise files (walk-and-send-off.md, set-the-markers-send-it-off.md), which own and pass this rule independently. The module body's framing sentences ('The question, to you: come with one or two candidate tasks...', line 31) set up the exercise's forcing function rather than substituting for it — the actual prompt is {{prompt:walk-and-send-off-1}} in the linked file, not narrated here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "All named forcing functions (locate transcript, commit starting point, push, take-task-end-to-end, nudge-continue) are fenced prompts (lines 67, 73, 79, 85, 96). The body's 'Past ten or so, you've become the agent' (line 92) is a pacing calibration in suggestion register ('or so'), not a count-script — matches rule 16's own boundary clause, and the maintainer block (line 152) names the carve-out explicitly and forbids re-flagging it.",
+      "evidence": "grep -n \"discuss\\|share with\\|tell the room\\|neighbor\\|neighbour\\|pair\" run-the-first-experiment.md returned no matches above the maintainer fence (line 81). Body sentences are all WORK-shaped: task-picking framing (lines 29-33), lecture/exercise sequencing, Key Concepts, handoff to M5. No authored pause-cue, no room-share sentence, no trainer-cue beat. Harm check: the rule exists to keep cohort-pacing decisions with the trainer, not scripted into text a self-study reader would follow verbatim with no room to share with; that harm is simply absent here — nothing in this file asks the student to talk to anyone.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 45,
+      "rule_lead": "Leap test — 3 observable Monday outcomes (story judge blocks ship on missing/unfalsifiable leap tests).",
+      "verdict": "PASS",
+      "evidence": "grep -n \"Leap test\" run-the-first-experiment.md -> line 131 '**Leap test** (per `check_pedagogy.md` rule 45 ...)'. Three items follow (lines 132-134), each with a named verb (pins a SHA on a fresh branch; stops a stalled run at <=20 min and names the failure mode in writing; walks observations/+ADRs+skills before sending off) and an explicit 'Falsifiable:' clause naming the observable disk/git evidence. None reads as an abstract competency.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 47,
+      "rule_lead": "Per-phase failure mode + escape hatch (story judge blocks ship without both).",
+      "verdict": "PASS",
+      "evidence": "grep -n \"Per-phase failure mode\" run-the-first-experiment.md -> line 144, table follows (lines 146-154) with one row per forcing-function phase (Connections, Phase 2 over-fill, Phase 2 gap-deferred, Phase 3 settle, Send-off SHA-pin, Send-off pre-empt, Send-off anxiety), each row naming both a dominant failure mode and a named trainer escape-hatch line.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named / mood lands.",
+      "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "trace.phases[0].mood_score=8, trace.close.mood_score=8. Both clear the 8+ floor for a teaching-beat module (whole-file single phase, no setup-only carve-out claimed). mood_note: 'Curious readiness lands cleanly... Stakes without performance, readiness without completion' honors strategy doc §M4 'curious readiness — I've built enough to try something; let's see what the agent does with it.'",
+      "evidence": "Strategy doc content-strategy-agentic-engineering-101.md line 384: 'Mood: curious readiness — \"I've built enough to try something; let's see what the agent does with it.\" Stakes back in the room; no compliance framing.' Trace mood_score = 8/10 at the single phase and at close (curriculum/evals/sim-cache/ae101--module--run-the-first-experiment.persona.json). Body honours it: opens on prep-not-completion (Big Idea, lines 3-4), 'Your call' (lines 12, 67) keeps stakes without compliance pressure, and Key Concepts (line 56) frames a stopped run as reading, not failing.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
-      "rule_lead": "Epistemic mood, not punitive.",
+      "rule_lead": "Epistemic mood, not punitive mood.",
       "verdict": "PASS",
-      "evidence": "Key Concepts: 'Traces are data. Stop the run when you've seen what you needed to see. Stopping is reading, not failing.' (line 50) and 'Every send-off is an experiment, not a production run you need to get right first time' (line 51) explicitly frame the not-knowing as curiosity, never as fault.",
+      "evidence": "M4's mood is curious readiness, not unease, so the rule's literal not-knowing-vs-having-done-wrong contrast doesn't have an unease beat to test against here; the underlying spirit (uncertainty framed as discovery, not shame) still holds throughout — 'the run is how you find out what's missing' (line 4) and 'Traces are data. Stopping a run that has gone off the rails is reading, not failing' (line 56) both frame not-knowing-yet as the point, never as a student failing to have prepared enough.",
       "fix_hint": null,
       "blocking": false
     },
@@ -93,7 +111,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Big Idea (lines 3-4) leads with 'Walk... fill... send it off... learn' — positive disciplines. 'The ironies of automation' and 'The lethal trifecta' keep their canonical failure-named titles under the named-canonical-result carve-out (§3), which the rule permits.",
+      "evidence": "Big Idea (lines 3-4) leads with 'Prep your first long run' and 'find out what's missing', not a failure word. The one failure-named title in the linked set, 'The ironies of automation' (line 47), is a named canonical result (Bainbridge 1983) — the rule's own carve-out for canonical-handle titles, and that lecture's own maintainer block (line 19) records the 2026-07-27 discipline-lead-at-header-level fix already applied. No re-flag warranted.",
       "fix_hint": null,
       "blocking": false
     },
@@ -102,9 +120,36 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "Big Idea and Key Concepts match strategy doc §M4 ('walk what you've built... fill the obvious gaps, and send off — un-packaged') in spirit. No front-run: the module names no downstream framework/skill it hasn't earned, and defers packaging entirely to M5 ('No compound pass at the close... Module 5 builds', line 59). Module-to-module arc: ## Next hands off 'what came back, or what you caught before it went further' (line 106) to M5's opening read. Mood doesn't resolve early: trace.close.mood_note confirms 'not resolved, not anxious' — a genuine 'let's see', matching the requirement that M4 not feel tidy at close.",
+      "evidence": "Checked against content-strategy-agentic-engineering-101.md lines 366-434 (M4-in-detail + M5-in-detail). Front-run: body never names plan.md, a verifier, a reference artifact, or the three-pattern — 'un-packaged' (Key Concepts line 55, maintainer 'Deliberate incompleteness' line 96) matches the strategy doc's explicit ban on M4 teaching packaging. Big Idea fidelity: 'the run is how you find out what's missing' (line 4) matches strategy line 368 ('The result will be instructive... that middle IS the lesson M5 reads'). Module-to-module arc: '## Next' (lines 59-61) and '## Bring to Module 5' (lines 63-67) hand off to 'what came back' — matches strategy line 396 ('M5 opens with the return'). Mood-doesn't-resolve-early: nothing in the body resolves the curious-readiness stakes into either anxiety or premature completion; the maintainer block's mood-drift watch (lines 97, 123) and the trace's mood_score=8 at both the single phase and close (no dip, no early tidy-up) confirm the module ends on 'let's see', matching strategy's explicit mood line. Pre-reads (lines 71-79) match the strategy doc's 'four pieces, one surprise' list (lines 434-439) near-verbatim in content and ordering.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": "Module-only section; strategy judge is primary owner of Key Concepts theme-instancing per the storytelling judge template's Completeness contract ('the strategy judge owns them on modules'). Not scored here to avoid a duplicate-rule-index collision with the strategy class's own verdict.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": "Same ownership split as §5 — strategy judge scores Key Concepts breadcrumb shape on modules; story class defers.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": "Same ownership split as §5/§6 — strategy judge scores What You'll Learn register on modules; story class defers.",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "mood_summary": {
@@ -113,7 +158,12 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "teaching_moment_lands": "The trifecta check before the send-off prompt (line 81) is the module's load-bearing teaching moment — it fires inline in body prose immediately before the final forcing-function prompt, not skippable, and the trace confirms the persona recognizes it as the M3 leash-check returning ('recognises it as M3's leash-check returning pointed at this run') and acts on it (cuts one leg) before pasting the send-off prompt. Reliable across reasonable persona-skill variation: the check is unconditional body text on the critical path, not an optional aside the persona could route around.",
+  "teaching_moment": {
+    "named_moment": "the un-packaged send-off itself, plus the walk-and-fill audit that precedes it (gap analysis against a real task)",
+    "verdict": "PASS",
+    "evidence": "Persona trace shows the moment firing regardless of persona-skill variation: the exercise files' own prompts ({{prompt:walk-and-send-off-2}} ranked-top-5 audit; {{prompt:ae101-m4-take-task-end-to-end}} send-off) are the load-bearing mechanism and both linked exercise files carry current story@19249df PASS in their own Quality lines, so the module file is not the single point of failure for the moment landing — its job (framing + sequencing + handoff) is intact and does not undercut the exercises' forcing functions."
+  },
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 0,
+  "rules_evaluated_summary": "check_lectures 5/5 (primary owner, full coverage); check_pedagogy 4/66 (story-owned subset: rules 16, 27, 45, 47 — each explicitly names 'story judge' or is story's named consolidated judgment; pedagogy judge owns and carries the remaining 62); check_strategy_tie_in 7/7 (4 scored directly — §§1-4 — + 3 marked N/A-owned-by-strategy-judge — §§5-7 — per template's module-only-sections split)"
 }

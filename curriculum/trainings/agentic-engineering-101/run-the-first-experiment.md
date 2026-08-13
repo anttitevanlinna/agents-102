@@ -80,10 +80,10 @@ Optional. They sit in the gap while your un-packaged session is still going. All
 
 <!-- maintainer -->
 
-**"Past ten or so, you've become the agent" stays — maintainer call 2026-08-02.** `check_pedagogy.md §16` bans count-scripts but its own boundary clause exempts this shape: *"pacing calibrations survive as suggestions. A number that helps the student pace themselves (when to stop nudging) may stay in body in suggestion register (or so, around, a fair ceiling) — cut the prescription, keep the calibration."* The line carries `or so` and attaches a felt signal (*you've become the agent*), so it calibrates rather than prescribes; the banned shape is a bare imperative count like *"two rounds max"*. Cutting the number would strip the one piece of calibration a first-timer has no way to supply — they cannot know whether three nudges or thirty is normal. A pedagogy judge flagged it once, having read the ban and not the boundary.
+**The nudge-count accept-note lives with the line, in `exercises/set-the-markers-send-it-off.md`.** *"Past ten or so, you've become the agent"* moved into that exercise when the send-off mechanics were extracted (2026-08-12); the §16 boundary argument defending it travelled with it and is stated there once. This block used to carry a byte-identical copy plus a second paraphrase of the same call — three copies of one decision, two of them defending a sentence this file no longer contains. Both are cut (2026-08-13, `check_pedagogy.md` §64: maintainer blocks point, they do not restate). Do not re-add: a judge auditing this file never reads the exercise body, so it cannot flag the line from here.
 
-**Quality:** compendium-audited 2026-08-04 (writing@93bb807 story@93bb807 technical@93bb807 behavior@93bb807 pedagogy@93bb807 strategy@93bb807 slides@93bb807)
-- judges @93bb807: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-13 (writing@275bb2e story@275bb2e technical@93bb807 behavior@93bb807 pedagogy@6cd1001 strategy@275bb2e slides@275bb2e)
+- judges @6cd1001: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @93bb807: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; see instances/ae101--m4-m5-m6.cross_module.json
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
@@ -107,8 +107,6 @@ Optional. They sit in the gap while your un-packaged session is still going. All
 - **Send-off pre-empt** — student tries to package the task (add plan.md, build a verifier) before sending off. Trainer push: *"un-packaged is by design. M5 teaches you packaging by diagnosing what breaks here. Don't pre-empt the learning."*
 - **Send-off anxiety** — student hesitates at the final prompt (*"what if it runs forever / breaks things / gets nowhere?"*). Trainer push: *"stop it when you've seen enough. Traces are data. A result you can read is enough; you do not need a completed artifact."*
 - **Business-rules skipped** — student has no clear business-rules layer and moves on without naming it. Trainer push: *"the gap IS the finding. Write one line in memory naming what's missing."*
-
-**The nudge-count ceiling stays in body as a suggestion (§16 boundary, maintainer call).** *"Past ten or so"* is pacing calibration for the student's first async run, not a count-script — the suggestion register (*or so*) is the compliance, the number is the value. Do not strip the ten or re-flag it against §16.
 
 **Watch-fors (cross-phase):**
 - Task sprawl — student brings the whole epic at Connections. Cap during pick; redirect to a sliceable sub-piece that still needs the three load-bearing properties (sustained coherence, requirement-weaving, multi-file reasoning).

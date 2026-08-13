@@ -8,7 +8,7 @@ requires:
     source: prompt:walk-and-send-off-2
 produces:
   - id: observations-folder
-    location: ./observations/ (observations + business-rules gaps) + ./CLAUDE.local.md (sharpened rules) + connector setup (no file)
+    location: ./observations/ (observations + brought-in material) + ./CLAUDE.local.md (sharpened rules) + connector setup (no file)
     consumed-by:
       - prompt:ae101-m4-take-task-end-to-end
       - prompt:diagnose-and-resend-6
@@ -20,4 +20,4 @@ Use the AskUserQuestion tool, at most four options per question, one question pe
 
 After I've picked, list the gaps you left off so I can see what didn't make the cut.
 
-For each picked gap, propose a resolution in the shape the audit named, hear my pushback, then persist it: the `./observations/` folder in your repo for observations and business-rules gaps, `./CLAUDE.local.md` for rule sharpening, connector setup for connector wiring.
+For each picked gap, propose a resolution in the shape the audit named, hear my pushback, then persist it: the `./observations/` folder in your repo for observations and material you brought in, `./CLAUDE.local.md` for rule sharpening, connector setup for connector wiring.

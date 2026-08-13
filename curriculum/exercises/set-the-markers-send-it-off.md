@@ -38,6 +38,8 @@ Ask Claude to commit current state on a feature branch and report the short SHA.
 
 - The commit is local, and that is the default. This is throwaway work you can reset away, and the next module forks from the local commit.
 
+Ask Claude to push the branch to the remote.
+
 {{prompt:ae101-m4-push-starting-point}}
 
 ## Phase 2: Send it off
@@ -54,7 +56,7 @@ Ask Claude to run the scoped task end-to-end in this same session.
 - Nudge by hand: answer a question, correct a path, push back on visible drift. Past ten or so interventions, you have become the agent; call it and read what is there.
 - If the run goes completely off the rails, stop it. The trace is the result either way.
 
-If Claude stalls and you want to see whether it picks itself back up, this nudge is phrased as encouragement and lands as a taunt:
+If Claude stalls, ask it to keep going — the nudge is phrased as encouragement and lands as a taunt.
 
 {{prompt:ae101-m4-nudge-continue}}
 
@@ -62,11 +64,24 @@ If Claude stalls and you want to see whether it picks itself back up, this nudge
 
 **View summary:** You pin the two markers the next module returns to, the session transcript path and a starting-point commit on a throwaway branch, then paste the send-off prompt and step away while the agent works the task alone.
 
-**Extracted from `run-the-first-experiment.md` § *Send the task off*, 2026-08-12, Antti-directed** (*"this passage actually should be a separate exercise. And split to few slides"*). The section ran as unbroken module prose carrying four prompts, which meant the Slides layout gave the whole send-off one enormous chunk and the beats had no headings to land on. Body wording is near-verbatim; the four `{{prompt:ae101-m4-*}}` refs are byte-intact. Two things changed beyond re-chunking: the transcript paragraph's mechanism (*"a full transcript of every session on disk, the complete scrollback, written live and automatically"*) compressed to one bullet, and *"You'll run more work async from here on"* was cut as a forward promise the module does not cash.
+**Extracted from `run-the-first-experiment.md` § *Send the task off*, 2026-08-12, Antti-directed** (*"this passage actually should be a separate exercise. And split to few slides"*). The section ran as unbroken module prose carrying four prompts, which meant the Slides layout gave the whole send-off one enormous chunk and the beats had no headings to land on. Body wording is near-verbatim and the four `{{prompt:ae101-m4-*}}` refs are byte-intact. The transcript mechanism stays at one bullet — the fuller description belongs to the reference page, not here. No async-permission line in this file: M4 does not cash that promise, and the strategy doc's commitment #11 is carried by M1, the M2 lecture and M6.
 
-**Timing.** The 12 min this file owns is the budget the module's `send-off` transition used to carry; that transition was removed in the same edit, so the module total is unchanged at 105 min. Do not re-add a transition for this beat — the leaf owns its duration.
+**Timing.** The 12 min this file owns is the send-off's whole budget, and the module total is 105 min with it. Do not add a module-level transition for this beat — the leaf owns its duration, and a transition would bill it twice.
 
 **"Past ten or so, you've become the agent" stays — maintainer call 2026-08-02.** `check_pedagogy.md §16` bans count-scripts but its own boundary clause exempts this shape: *"pacing calibrations survive as suggestions. A number that helps the student pace themselves (when to stop nudging) may stay in body in suggestion register (or so, around, a fair ceiling) — cut the prescription, keep the calibration."* The line carries `or so` and attaches a felt signal (*you've become the agent*), so it calibrates rather than prescribes; the banned shape is a bare imperative count like *"two rounds max"*. Cutting the number would strip the one piece of calibration a first-timer has no way to supply — they cannot know whether three nudges or thirty is normal. A pedagogy judge flagged it once, having read the ban and not the boundary.
+
+**Leap test.** By the next working day the student: (a) owns a starting-point commit on a throwaway `m4/<slug>` branch, and can name the transcript path the next module reads; (b) hands a real task to an agent and walks away from it rather than nudging it line by line; (c) stops a run that has gone off the rails and keeps the trace, having treated the cancel as data.
+
+**Failure modes + diagnostics.** This file owns the send-off, so it owns the send-off's failure modes; `walk-and-send-off.md` points here rather than restating them.
+- **Package-pre-empt** — student tries to add a plan.md or build a verifier before sending off. Diagnostic: *"should I just quickly…"* Fix: trainer names the rule — *"un-packaged is by design. Don't pre-empt M5's learning."*
+- **Send-off anxiety** — student hesitates at the final paste. Diagnostic: *"what if it runs forever / breaks things / gets nowhere?"* Fix: trainer names cancel-is-legit — *"stop it when you've seen enough. Traces are data."*
+- **Coordinates never pinned** — student pastes the task prompt without committing a starting point. Diagnostic: no `m4/<slug>` branch at the close. Fix: catch it before the room breaks; M5's worktree fork reads exactly that commit, and its recovery ladder is a fallback, not a plan.
+
+**Send-off mechanism:**
+- Student passes the final prompt to the SAME Claude Code session they've been in for 90+ minutes. No new session. No `/schedule`, no `/loop`, no cloud runner.
+- Student closes the laptop (power settings + plugged in) OR stops the run mid-flight when observation is sufficient.
+- Trace preservation: Claude Code scrollback is the artifact M5 reads. Anything the student's configured for conversation logging continues.
+- **Capability verified:** laptop-sleep freezes the session (not resumable on wake); Ctrl+C mid-tool-call can corrupt the `.jsonl`; no per-session token budget. Details in `reference/claude-code-for-engineers.md § 9`.
 
 **Placement:** the last beat of M4. The ironies lecture sits above the include in the module file (it frames the watcher's trap before the task leaves), and the two closing lectures sit below it (they run while the task is already going). This file owns only what the student does.
 

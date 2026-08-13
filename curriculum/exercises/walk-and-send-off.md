@@ -25,7 +25,7 @@ Start clean at your repo root. The task here is bigger than anything so far. Bef
 - A real slice you'd send off rather than nudge bit by bit. Bigger than a typo-fix, smaller than an epic.
 - Bring one or two candidates.
 
-Ask Claude to screen your candidates and scope the winner. Add them after the colon.
+Ask Claude to screen your candidates, scope the winner, and add them after the colon.
 
 {{prompt:walk-and-send-off-1}}
 
@@ -73,6 +73,8 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 
 - If Claude says something about your codebase you didn't tell it, ask where it read that.
 
+## Compare notes, then tidy the folder
+
 > **Time check.** Different paces hit this point at different times. The room doesn't wait for the slowest. Five to ten minutes to share what surfaced, where the audit missed, and why the agent sometimes goes lazy.
 
 - Before the send-off, tidy the folder: *"Propose 5 to 10 ways to make `./observations/` load better into future sessions, in priority order."* Take as many as you want from the top.
@@ -85,7 +87,7 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 
 **Time-check callout — deliberate exception to `check_student_facing.md` preamble (room-share commands).** The Phase 2→Phase 3 callout uses *"to share what surfaced, where the audit missed, and why the agent sometimes goes lazy."* The preamble bans room-share commands (`share with your neighbor`, `tell the room`, `say X out loud`); *to share* without an addressee reads as invitational room-energy, not a student-action mandate. The blockquote shape + named 5–10 min window is a trainer cue (catch-up window for slower paces + banter beat on agent laziness). Future judges should not re-flag.
 
-**Prompt register — `walk-and-send-off-3` rewritten 2026-05-21.** Earlier "deliberately short" speed-up shape (*"You propose solutions and ask questions. Use the ask-questions tool to speed up my work."*) was the cohort's single biggest individual failure mode (M4 12:36Z + 12:37Z: outright-skipped exercise). Rewritten to scaffold the gap-fill structurally with `AskUserQuestion` by name + pick-then-walk loop + per-shape destination mapping (`observations/` for observations and business-rules gaps; `./CLAUDE.local.md` for rule sharpening; connector setup for connector wiring). Pairs with `author-test-strategy-skill-1`'s 2026-05-21 close — same family fix (replace push-back-by-convention with tool-by-name). Body restructured so the prompt is the default flow, not an opt-in speed-up; conversational-example bullets demoted to "what a fill looks like" reference after the prompt fence, each bullet now naming the matching destination.
+**Prompt register — `walk-and-send-off-3` rewritten 2026-05-21.** Earlier "deliberately short" speed-up shape (*"You propose solutions and ask questions. Use the ask-questions tool to speed up my work."*) was the cohort's single biggest individual failure mode (M4 12:36Z + 12:37Z: outright-skipped exercise). Rewritten to scaffold the gap-fill structurally with `AskUserQuestion` by name + pick-then-walk loop + per-shape destination mapping (`observations/` for observations and brought-in material; `./CLAUDE.local.md` for rule sharpening; connector setup for connector wiring). The fourth shape is **Bring the material in**, and it asks the student to fetch the document, not to label the gap — do not reintroduce a naming-only tag, in body or registry. Pairs with `author-test-strategy-skill-1`'s 2026-05-21 close — same family fix (replace push-back-by-convention with tool-by-name). Body restructured so the prompt is the default flow, not an opt-in speed-up; conversational-example bullets demoted to "what a fill looks like" reference after the prompt fence, each bullet now naming the matching destination.
 
 **Quality:** compendium-audited 2026-08-12 (writing@61e7fc9 story@61e7fc9 behavior@61e7fc9 pedagogy@61e7fc9 strategy@1c765f2 slides@61e7fc9)
 - judges @61e7fc9: writing PASS, story PASS, technical REVISE (1blocking/0todo-see-instances/ae101--exercise--walk-and-send-off.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
@@ -93,7 +95,7 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 
 **Word count:** ~750 words body.
 
-**Placement:** the send-off closes M4 after this exercise. This file's own `**Time:**` line at the top is the only duration it owns; the module total is computed — `node scripts/calculate-time.js run-the-first-experiment`.
+**Placement:** `set-the-markers-send-it-off.md` follows immediately and closes M4. This file's own `**Time:**` line at the top is the only duration it owns; the module total is computed — `node scripts/calculate-time.js run-the-first-experiment`.
 
 <!-- backing -->
 
@@ -105,7 +107,7 @@ Sources
 (none. Every claim is the exercise's own design stance or a move the student runs against their own repo. The one borrowed frame is generic business-analysis vocabulary that owes attribution by name only.)
 
 Frameworks
-- Gap analysis · [borrow:business analysis] · law:none · ← cultural-vocab — named in prose as *walk the system you have against the system the task needs*, never as a branded method
+- Gap analysis · [borrow:business analysis] · law:none · ← cultural-vocab — the Phase 2 audit is this move, and the body never names it. Deliberate: the label is universally known and adds nothing the ranked list does not already do. Do not reintroduce it as a named method.
 - Test and learn · [borrow:none] · law:variation-selection-retention · ← cultural-vocab — the un-packaged run is the variant this arc generates; the next module selects
 - Name the uncertainty before you move · [borrow:none] · law:name-the-uncertainty-before-you-move · ← none — the fit-check against long-run criteria is this governor fired before a send-off
 
@@ -123,14 +125,13 @@ OODA
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
 - opens a worktree on a clean branch when a real task warrants the un-watched send-off shape
 - walks an audit prompt against a real backlog task before sending it off, fills the worst three gaps
-- sends off un-packaged in the same Claude Code session and cancels when the trace is enough, treating the cancel as data not failure
+- tidies `./observations/` from a ranked list of proposals rather than leaving the folder as it fell out of the session
 
 **Failure modes + diagnostics:**
 - **Phase 1 task-sprawl** — student picks the quarterly epic. Diagnostic: the scoped task doesn't have a "done" the student can name. Fix: trainer forces a slice; better a smaller task that runs the full arc.
 - **Phase 2 audit busywork** — Claude returns 12 items instead of 5, student drowns. Diagnostic: prompt wasn't ranked-top-5 enforced. Fix: re-run the prompt; enforce ranking; student picks top 3.
 - **Phase 2 over-fill** — student tries to close all five gaps. Diagnostic: *"just one more"* creep. Fix: trainer names the sponge-not-rock rule; M5 will teach the other two.
-- **Send-off package-pre-empt** — student tries to add a plan.md or build a verifier before sending off. Diagnostic: *"should I just quickly…"* Fix: trainer names the rule — *"un-packaged is by design. Don't pre-empt M5's learning."*
-- **Send-off anxiety** — student hesitates at the final paste. Diagnostic: *"what if it runs forever / breaks things / gets nowhere?"* Fix: trainer names cancel-is-legit — *"stop it when you've seen enough. Traces are data."*
+- **Package-pre-empt at the hand-off** — student tries to add a plan.md or build a verifier before the task leaves. It surfaces here, at the fill beat, but the send-off itself now lives in `set-the-markers-send-it-off.md`, which owns the diagnostic and the trainer move.
 
 **Plug points:**
 - Student's own task you'd send off rather than nudge bit by bit (Phase 1 pick)
@@ -145,17 +146,13 @@ OODA
 - **Settle beat waved through** — tidy-up and diff-review took under a minute. Check the `observations/` tree actually got tidied and the diff seen before the send-off.
 - **Whole-room mood below 7** — curious readiness isn't landing. Check Phase 1: real task or compliance task? Task-selection is where this mood starts or dies.
 
-**Send-off mechanism (module close, step 3):**
-- Student passes the final prompt to the SAME Claude Code session they've been in for 90+ minutes. No new session. No `/schedule`, no `/loop`, no cloud runner.
-- Student closes the laptop (power settings + plugged in) OR stops the run mid-flight when observation is sufficient.
-- Trace preservation: Claude Code scrollback is the artifact M5 reads. Anything the student's configured for conversation logging continues.
-- **Capability verified:** laptop-sleep freezes the session (not resumable on wake); Ctrl+C mid-tool-call can corrupt the `.jsonl`; no per-session token budget. Details in `reference/claude-code-for-engineers.md § 9`.
+**Send-off mechanism:** owned by `set-the-markers-send-it-off.md`, which runs immediately after this exercise. Do not restate the same-session rule, the laptop-sleep capability note or the trace-preservation contract here.
 
 **Watch-fors (cross-phase):**
 - Task sprawl at Phase 1 — the biggest single failure mode; everything downstream is sized by the task pick.
 - Audit busywork at Phase 2 — re-run the prompt, don't let student filter a 15-item list manually (that's the anti-pedagogy from `check_student_facing` #9).
 - Voice-smuggling at the fill beat or the close — if it starts sounding like M5's unleashed leverage, student thinks this is the leverage moment. It isn't. M4 is readiness without completion.
-- Package-pre-empt at the close — the highest-probability module-specific failure.
+- Package-pre-empt at the fill beat — the highest-probability module-specific failure, and it starts here even though it lands next door.
 
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
 

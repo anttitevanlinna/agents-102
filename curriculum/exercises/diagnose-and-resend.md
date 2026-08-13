@@ -150,7 +150,7 @@ Your `CLAUDE.local.md` and `observations/` have been building in the worktree si
 
 **The 10% recall in `## Keep Claude honest, make it dig` is the prior's third and last statement, by design.** `orient-and-introspect.md` § *Read the self-report, then spot-check it* sets it on the agent's read of a repo (maintainer-attested there), `plan-mode-done-right.md` § Key Concepts applies it to a plan, and this bullet applies it to a run transcript the student did not watch. Three instances, roughly two modules apart, a different artefact each time, each carrying its own action: progression-with-variation, not the refrain `check_pedagogy.md` §9b bans. This is the beat that earns it. In M1 and M2 the student can read the whole artefact by eye, so the prior costs nothing there; here it is the only affordable check, and asking the agent to locate its own quotes is the only one available when the agent holds the codebase and the student holds the lenses. The imperative *assume* and the *about* hedge travel from M1 and are load-bearing: the prior is an instruction to the reader, and a floor form would be a claim about the world. Do not harden it, and do not restate it as a general claim about agents. M1's double-hedge (*"could be more or less"*) stays M1's, so `check_slides.md` §7's number-plus-retraction sub-item does not fire here.
 
-**Emphasis:** Bold is limited to title-page labels, widget chrome, the Phase 3 verifier-shape menu handles (**Background-agent verifier** / **Deterministic shell-hook** / **Ralph re-feed**), and the Phase 4 stop-gate handle. All other body prose stays unbolded.
+**Emphasis:** Bold is limited to title-page labels, widget chrome, the Phase 3 verifier-shape menu handles (**Background-agent verifier** / **Deterministic shell-hook** / **Ralph re-feed**), the Phase 4 stop-gate handle, and the two definitional handles on *The reference and plan.md* (**Reference** / **plan.md**). All other body prose stays unbolded.
 
 **Quality:** compendium-audited 2026-08-12 (writing@61e7fc9 behavior@61e7fc9 pedagogy@61e7fc9 strategy@1c765f2 slides@61e7fc9)
 - judges @61e7fc9: writing PASS, story REVISE (2blocking/1todo-see-instances/ae101--exercise--diagnose-and-resend.story.json), technical REVISE (1blocking/0todo-see-instances/ae101--exercise--diagnose-and-resend.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
@@ -163,7 +163,7 @@ Your `CLAUDE.local.md` and `observations/` have been building in the worktree si
 - writes a task-scoped reference + plan.md before any multi-hour delegated run, pointing at the codebase rules rather than restating them
 - fires the verifier once as a smoke test before relying on it, so the check is checked before it gates anything
 
-**Placement:** the module's Debrief and re-send follow this exercise, and the closing lecture follows those. This file owns only its own `**Time:**` line; the module total is computed — `node scripts/calculate-time.js learn-from-the-test`.
+**Placement:** the re-send is Phase 5 of this exercise, not a module-level beat; the module file must not carry a second one. The closing lecture follows this exercise. This file owns only its own `**Time:**` line; the module total is computed — `node scripts/calculate-time.js learn-from-the-test`.
 
 <!-- backing -->
 
@@ -214,6 +214,8 @@ OODA
 - **Phase 4 reference-as-codebase-rules** — student rewrites `CLAUDE.local.md` content into the reference. Diagnostic: the reference is task-local, lives in a task-scoped folder, references the codebase rules instead of restating them.
 - **Phase 4 plan.md-as-project-plan** — student writes a Gantt-shaped plan instead of an agent-mutable document. Diagnostic: the plan.md has a "current phase" line the agent updates and a "decisions log" the agent appends to. If neither, redo.
 - **Phase 4 grill overrun** — student keeps answering after the package is ready for the second session. Diagnostic: the latest question changes only wording or implementation detail, not scope, success criteria, constraints, tests, or done. Trainer push: *"What would the next answer change? If nothing material, lock it in."*
+- **Phase 5 polished-report acceptance** — the packaged run reports back well and the student takes the report for the result. Diagnostic: the student can summarise what the agent said and not what the verifier returned. Trainer push: *"run the verifier yourself. What does it say?"* Body already names the risk; this is the trainer's version of it.
+- **Phase 5 re-send from the wrong place** — student pastes the re-send into the exercise session, or into the original repo rather than the M5 worktree. Diagnostic: the fresh session's rules or paths don't match what Phase 4 wrote. Fix: check `pwd` before the paste; the worktree is the whole point of the split test.
 
 **Plug points:**
 - Student's own M4 artefact (Phase 1 source material)
@@ -233,7 +235,7 @@ OODA
 - Three-pattern naming pre-empted — if Phase 2 or Phase 3 names "Ronacher's three-pattern," the closing lecture has nothing to add. Watch for the term-of-art leaking into trainer push-backs.
 - Reference vs. rules drift — students familiar with `CLAUDE.local.md` may try to rewrite it as the reference. The reference is task-local; rules are repo-local.
 
-**Send-off mechanism (Debrief, owned by module file):**
+**Send-off mechanism (Phase 5, owned by this file):**
 - Fresh Claude Code session in the existing M5 worktree. The exercise session may stay open for reference.
 - Reference artefact + plan.md + verifier live on disk. The re-send prompt finds the reference and plan.md in the task-scoped folder Phase 4 proposed, reads the verifier's invocation off plan.md's verifier line, and the fresh session auto-loads the worktree's rules.
 - Same close-the-laptop or stop-when-you've-seen-enough rule as M4.

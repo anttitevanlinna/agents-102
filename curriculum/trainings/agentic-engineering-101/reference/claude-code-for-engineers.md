@@ -29,7 +29,7 @@ Four layers. More specific overrides broader. All loaded files **concatenate**. 
 
 **`CLAUDE.local.md` is the intended gitignored pattern.** Verbatim from docs:
 
-> For private per-project preferences that shouldn't be checked into version control, create a `CLAUDE.local.md` at the project root. It loads alongside `CLAUDE.md` and is treated the same way. Add `CLAUDE.local.md` to your `.gitignore` so it isn't committed; running `/init` and choosing the personal option does this for you.
+> For private per-project preferences that shouldn't be checked into version control, create a `CLAUDE.local.md` at the project root. It loads alongside `CLAUDE.md` and is treated the same way. Add `CLAUDE.local.md` to your `.gitignore` so it isn't committed. With `CLAUDE_CODE_NEW_INIT=1` set, running `/init` and choosing the personal option does this for you.
 
 **Worktree gotcha:** gitignored `CLAUDE.local.md` only exists in the worktree where you created it. Cross-worktree personal instructions → import from home directory instead: `@~/.claude/my-project-instructions.md` in your `CLAUDE.md`.
 
@@ -47,7 +47,7 @@ Two memory systems load at session start. You write one; Claude writes the other
 |---|---|---|
 | **Who writes** | You | Claude |
 | **Contains** | Instructions, rules, conventions | Learnings, patterns, things Claude noticed |
-| **Scope** | Project / user / org (per § 1) | Per working tree (per-repo) |
+| **Scope** | Project / user / org (per § 1) | Per repo, shared across worktrees |
 | **Location** | Per § 1 hierarchy | `~/.claude/projects/<project>/memory/` |
 | **Loaded into context** | Every session, in full | Every session, first 200 lines or 25KB of `MEMORY.md` |
 | **Use for** | *"Always do X"* rules | *"I learned X about this codebase"* notes |
@@ -142,7 +142,7 @@ See @README for project overview and @package.json for available npm commands.
 - personal preferences @~/.claude/my-preferences.md
 ```
 
-Relative paths resolve relative to the importing file, not the working directory. Recursion depth: **5 hops maximum.**
+Relative paths resolve relative to the importing file, not the working directory. Recursion depth: **four hops maximum.**
 
 **First-time approval:** the first time a project uses external imports, Claude Code shows an approval dialog. If you decline, imports stay disabled and the dialog doesn't reappear.
 

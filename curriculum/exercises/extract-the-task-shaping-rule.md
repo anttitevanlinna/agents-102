@@ -50,9 +50,19 @@ Decide the location with Claude.
 
 ## Wire the file in, check the wording
 
-- `./CLAUDE.local.md`, `./CLAUDE.md` and `~/.claude/CLAUDE.md` auto-load. Anywhere else needs an `@import` line in one of those three, e.g. `@~/.claude/memory/task-shaping.md`.
-- If Claude picked a path outside the three, ask for that `@import` line before you move on. Without it the file sits on disk unread.
+Where Claude reads from, and when:
+
+| What | Where | Loads | To wire |
+|---|---|---|---|
+| CLAUDE.md files | `./CLAUDE.md` · `./CLAUDE.local.md` (gitignored) · `~/.claude/CLAUDE.md` | every session | create the file |
+| Rules | `.claude/rules/*.md` · `~/.claude/rules/*.md` | every session; `paths:`-scoped ones when a matching file is read | `paths:` frontmatter scopes a rule to files |
+| Auto memory | `~/.claude/projects/<project>/memory/` | `MEMORY.md` index every session; topic files as needed | Claude writes it; `/memory` to inspect |
+| Skills | `.claude/skills/<name>/` · `~/.claude/skills/<name>/` | name and description every session; full body on invocation | save the folder; invoke by name |
+| Roll your own | any path: a notes folder, `~/.claude/memory/` | only when a prompt names it or Claude reads it | an `@path` line in an auto-loaded CLAUDE.md upgrades it to every session |
+
+- If Claude picked a path that only loads when named, ask for that `@import` line before you move on. Without it the file sits on disk unread.
 - Read the rules back. If any drifted from your wording, push back and have Claude rewrite.
+- [Claude Code for engineers](../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md) is the long form: precedence, walk-up behaviour, the managed layer.
 
 ## Phase 3: Name the automation shapes
 
@@ -70,13 +80,15 @@ Ask Claude what this file could drive later.
 
 <!-- maintainer -->
 
-**The `@import` wiring stays in body, not the fence — standing `[watch]`, reaffirmed 2026-08-02.** (It sits in plain bullets on the *Wire the file in* slide; the `**Note**` widget it used to occupy was the slide's only content, which is not what a Note is for — a Note is louder than surrounding prose, and there was none.) This is a KNOWN §16 gap held open on purpose, logged in `pre-cohort-todos.md` (2026-07-26): *"stays REVISE, `[watch]` … Accepted as-is. Fires if a cohort run shows a student picking a non-auto-load path and missing the wire. Fix when it fires: fold the `@import` ask into `extract-the-task-shaping-rule-2.md`'s fence."* The trigger is field evidence from a cohort, not a judge's re-derivation — so a pedagogy REVISE here is the expected steady state, not a new finding. **Do not fold it into the fence before the trigger fires**, and do not re-argue it from §16's optional-refinements carve-out: the Note says *"before you move on"*, which is a gate, so that carve-out does NOT cover this. The reason is the watch decision, and the maintainer's grounds are that the wiring stays the student's choice.
+**The `@import` wiring stays in body, not the fence — standing `[watch]`, reaffirmed 2026-08-02.** (The ask sits in a plain bullet under the load-map table on the *Wire the file in* slide; the `**Note**` widget it used to occupy was the slide's only content, which is not what a Note is for — a Note is louder than surrounding prose, and there was none.) This is a KNOWN §16 gap held open on purpose, logged in `pre-cohort-todos.md` (2026-07-26): *"stays REVISE, `[watch]` … Accepted as-is. Fires if a cohort run shows a student picking a non-auto-load path and missing the wire. Fix when it fires: fold the `@import` ask into `extract-the-task-shaping-rule-2.md`'s fence."* The trigger is field evidence from a cohort, not a judge's re-derivation — so a pedagogy REVISE here is the expected steady state, not a new finding. **Do not fold it into the fence before the trigger fires**, and do not re-argue it from §16's optional-refinements carve-out: the Note says *"before you move on"*, which is a gate, so that carve-out does NOT cover this. The reason is the watch decision, and the maintainer's grounds are that the wiring stays the student's choice.
 
 **When the trigger does fire, fence it as a QUESTION, not an action** — *"do you also want an `@import` line so it fires automatically, or keep it explicit-load-only?"* A silent automatic wire-up collides with rule 37 and with the module's deliberate no-prescription stance on auto-load. The downstream stake, per the Artefact-contracts table in `plan-mode-done-right.md`: M4's walk-and-fill audit subagent cannot see `~/.claude/memory/` unless it is `@import`-wired from `~/.claude/CLAUDE.md`.
 
 **View summary:** You ask the agent to recover the task-shaping rules hidden in the planning session, rewrite anything generic, and save the useful rules where Claude will read them. The artifact turns one good planning experience into reusable guidance for similar work.
 
 **Scrollback-ownership clause (2026-08-08, Antti-directed):** Phase 1's *"The scrollback is the right source here: the question is how you worked, not what is on disk"* is the deliberate boundary of M1's scrollback law (`the-machine-you-just-met`, *The scrollback is not the work*): session questions read the chat, state questions read the disk. It stops the law over-learning into scrollback-bad. No module reference in body on purpose; the recognition stays implicit.
+
+**The load-map table on the *Wire the file in* slide (2026-08-13, Antti-directed).** One compact map, the reference kept as the long form. Roster is Antti's call: CLAUDE.md variants squashed to one row (this audience knows the scoping split), rules dirs, auto memory, skills, roll-your-own with dynamic loading. The skills and auto-memory rows sit here as lookup rows ahead of their concepts' earning beats (`how-instructions-grow` names skill loading at M2's close; M3 runs it) — accepted as part of the roster call, not an earning leak. The table follows the placement prompt, so it verifies the pick rather than answering the prompt. Every row verified 2026-08-13 against docs/en/memory.md, user-level `~/.claude/rules/` additionally live-probed by cold-start session; five auto-load surfaces per `check_platform_and_boundaries.md` §6d.
 
 **Scope ends at the automation-shapes read.** The split with M1 is by ticket kind, not by move: `close-the-ticket` reads a **bug** ticket and proposes bug rules, this exercise reads a **story** ticket and proposes story rules. The repeat is deliberate and named in the body (`check_pedagogy.md §9b` — same move, different face), so a judge reading the two files side by side should not flag the twin fences as duplication. Do not point either prompt at the other's ticket kind. The `-4` key was M1's bug-conventions prompt until 2026-08-12 and now carries the story read; M1's trio renamed to `close-the-ticket-1/2/3` in the same pass, so any reference to `extract-the-task-shaping-rule-4` dated before then means the bug prompt.
 
@@ -109,7 +121,7 @@ Ask Claude what this file could drive later.
 **Push-back moves:**
 - **P1 generic rules** — Claude returns rubber-stamp rules ("pick tasks that span multiple files"). Trainer push: *"name a moment from THIS session that produced that rule. If you can't, the rule is generic — push Claude for one anchored in what you actually did."*
 - **P1 default-acceptance** — student saves all five rules verbatim without rewriting any. Trainer push: *"pick one. Read it aloud. Rewrite it so it sounds like you, or reject it."*
-- **P2 location-paralysis** — student stalls choosing the path. Trainer push: *"the location is reversible. `./CLAUDE.local.md` and `~/.claude/CLAUDE.md` auto-load; anywhere else fires only when a prompt names the path or an `@import` line wires it in. Pick by the mechanism you want; you can move it later."*
+- **P2 location-paralysis** — student stalls choosing the path. Trainer push: *"the location is reversible. The CLAUDE files and both rules dirs auto-load; anywhere else fires only when a prompt names the path or an `@import` line wires it in. Pick by the mechanism you want; you can move it later."*
 - **Story-ticket read — file written early** — the agent takes *"add them to the rules"* as an instruction to create a rules file, and the placement decision is made before the student makes it. `extract-the-task-shaping-rule-4`'s fence says not to; `-1` carries no such guard and runs earlier, so this is the recovery either way. Trainer push: *"ask Claude where it put them. If it wrote a file, have it tell you the path and then make the location decision yourself in the next step — the file it picked is a default, not your call."*
 - **Story-ticket read — confident read off an unreachable ticket** — the session cannot open the tracker and the agent produces conventions anyway. Trainer push: *"ask it which fields it actually saw. If it can't quote them, paste the fields and re-run."*
 - **P3 building-instinct** — student starts asking Claude to write the Slack bot. Trainer push: *"the lecture is next. Today is capture; application is downstream."*

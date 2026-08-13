@@ -18,7 +18,7 @@
 # Usage:
 #   source-freshness.sh [--target YYYY-MM-DD] [paths...]
 #   --target  cohort date to audit against (default: today)
-#   paths     files/dirs to scan (default: curriculum/)
+#   paths     files/dirs to scan (default: curriculum/ continuous-research/)
 
 set -eu
 
@@ -34,7 +34,7 @@ while [[ $# -gt 0 ]]; do
     *) PATHS+=("$1"); shift ;;
   esac
 done
-[[ ${#PATHS[@]} -eq 0 ]] && PATHS=(curriculum)
+[[ ${#PATHS[@]} -eq 0 ]] && PATHS=(curriculum continuous-research)
 
 # grep every stamp line: file:line:content. Require a real date (20YY-) or
 # `never` after checked: so prose examples (`[checked:… result:… due:…]`) in

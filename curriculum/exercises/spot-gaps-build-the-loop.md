@@ -88,6 +88,10 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 
 **What happened:** A one-screen gap map across memory / verifier / skill, one stale rule cut in place, and a diagrammed map of the work that recurs across your stack. The shapes carry into the close.
 
+## Decide what crosses back to your main repo
+
+**Note** The M5 worktree holds this module's work: `./CLAUDE.local.md` with the rule you cut, `observations/`, and M5's packaging. Your main repo's copies stopped at the fork, stale rule and all. What crosses back is yours: copy the worktree's versions over, take the parts you want, or leave them where they are.
+
 <!-- maintainer -->
 
 **View summary:** You compare the un-packaged and packaged runs, rank what the second attempt still missed, cut one stale rule from your rules-file, and draw the work that recurs across your stack. The stack-map feeds the closing handoff move.

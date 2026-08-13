@@ -1,6 +1,7 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
+  "body_sha": "e2cf248b318b1b71fb0715da3dad4ed1ad59ce7e937a79489e3215ab8d52d9f1",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
@@ -10,15 +11,11 @@
     {"index": 3, "heading": "## What You'll Learn", "lines": "12-19"},
     {"index": 4, "heading": "## Start here", "lines": "20-29"},
     {"index": 5, "heading": "## The nag writes the verifier", "lines": "30-37"},
-    {"index": 6, "heading": "## Set up the worktree", "lines": "38-43"},
-    {"index": 7, "heading": "## Run the fork from the original repo", "lines": "44-67"},
-    {"index": 8, "heading": "## Anchor the fork to the run coordinates", "lines": "68-75"},
-    {"index": 9, "heading": "## Key Concepts", "lines": "76-83"},
-    {"index": 10, "heading": "## Re-send the same task, packaged", "lines": "84-105"},
-    {"index": 11, "heading": "## Send it off and read the report cold", "lines": "106-137"},
-    {"index": 12, "heading": "## Next", "lines": "154-157"},
-    {"index": 13, "heading": "## Bring to Module 6", "lines": "158-163"},
-    {"index": 14, "heading": "## Pre-reads before Module 6", "lines": "164-171"}
+    {"index": 6, "heading": "## Set up the worktree", "lines": "38-51"},
+    {"index": 7, "heading": "## Key Concepts", "lines": "52-59"},
+    {"index": 8, "heading": "## Bring to Module 6", "lines": "72-77", "note": "renders under <!--flag:module:spot-gaps-build-the-loop-->; the alternate <!--flag:no-module--> branch (lines 61-70, '## Back to the map, one last time') was also read and passes the same rules — runtime forks are one branch per rule 14"},
+    {"index": 9, "heading": "## Pre-reads before Module 6", "lines": "78-84"},
+    {"index": 10, "heading": "## Next", "lines": "85-89"}
   ],
   "rules_evaluated": [
     {
@@ -29,7 +26,8 @@
       "chunks_flagged": [],
       "evidence": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "notes": "chunk 4 'Start here' line 22 'the lecture below hands you the lenses to read it with' is singular but two lecture links follow in the same chunk (lines 26, 28). Harm check: rule 1's harm is a referent a reader cannot resolve; here both candidates sit in the same chunk immediately after and the reader loses nothing by reading it as 'the lecture(s) below' — a grammar-number nit, not a comprehension break, and it is out of slides-class scope (writing/grammar) besides. Not filed. Chunk 8's 'the map' (both branches) and the Key Concepts 'Module 6 maps the eval shapes from here' forward pointer resolve via the compendium's own named arc-earned-vocabulary carve-out."
     },
     {
       "compendium": "check_slides.md",
@@ -47,7 +45,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Verified via site/layouts/curriculum.js: M1=getting-going, M3=earn-the-trust. Chunk 4's blockquote 'The M1 countermove rides along: never let the agent say everything' matches curriculum/exercises/map-the-access-surface.md:18 ('The countermove from M1 goes to work: never let the agent say everything') and curriculum/exercises/push-back-on-the-plan.md:35 ('M1 named the countermove'). Chunk 6's 'your Module 1 evidence and any Module 3 artefacts' names real, current modules. The reference is also self-explaining in-chunk regardless.",
       "fix_hint": null,
       "blocking": true
     },
@@ -57,7 +55,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No guess-before-reveal demo beat in this file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -87,7 +85,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Checked all five sub-items across all chunks: no 'Not X. Not Y. Z.' constructions, no anaphora/epistrophe triples, no self-grading superlatives in the author's own voice ('Cherny calls parallel worktrees his biggest productivity unlock' is an attributed practitioner claim, not house voice), no number+retraction, no empty-leg verb triplets.",
       "fix_hint": null,
       "blocking": false
     },
@@ -97,7 +95,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "grep -n -iE '\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|\\bforcing function\\b|\\bbeat\\b|\\bmood\\b|\\bConnections\\b' against the expanded body (lines 1-89, before the maintainer cut at line 91) returned no matches.",
       "fix_hint": null,
       "blocking": true
     },
@@ -105,10 +103,10 @@
       "compendium": "check_slides.md",
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "chunks_flagged": [9],
+      "evidence": "chunk 9 \"Pre-reads before Module 6\": line 82: \"**Read, Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](...)**\" and line 84: \"**Read, Lucas F. da Costa, [Backpressure Is All You Need](...)**\" both bold mode-plus-title (author name + full link title), well past the ≲ 5-word handle cap. Harm check: §9's 2026-08-13 carve-out lifts the per-slide bold budget on reading-list/menu slides but keeps the handle cap explicitly to stop exactly this shape (\"Bolding mode-plus-title is the pre-2026-07-09 monoculture wearing a list for cover\") — the harm (decorative bold crowding a scannable list, diluting the one thing bold should mark: the mode) is present here on both entries. Per the task brief this is a known, already-decided fix awaiting a quiet window, not news — flagging per instructions, not proposing to land it now.",
+      "fix_hint": "Bold only the mode word (\"**Read:**\") and leave author + title plain, matching the carve-out's own worked example.",
       "blocking": false
     },
     {
@@ -117,7 +115,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "This is a module file; all its ## sections sit under the standard section.module wrapper the renderer composes into the deck (no phase-less orphaned prose section observed). Not independently re-verified against a live headless-Chrome build in this pass — no build/browser tool was run, so this is a structural read, not a mechanically confirmed one.",
       "fix_hint": null,
       "blocking": false
     },
@@ -127,11 +125,41 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "`node scripts/check-slide-numbering.js curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` -> \"OK — 61 files, Phase/Step numbering consistent.\" This file's body has no hand-numbered `## Phase N:` / `## N.` headers to lint.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "grep -n -iE '\\b(below|above|further down|at the top|see below|a few paragraphs)\\b' against the expanded file found two hits in-body: chunk 4 line 22 'the lecture below' (both linked lectures sit in the same chunk, lines 26 and 28 — same-chunk use passes per rule 12's own test) and line 134 'Whole-room mood below 7' (maintainer block, below the cut, exempt). `node scripts/check-slide-deixis.js curriculum/trainings/agentic-engineering-101/learn-from-the-test.md --report` produced no rows for this file at all (no unresolved deixis flagged).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "§13 is explicitly an open review surface, never a gate, and its settled half (link mechanics) is a platform concern already fixed and tested elsewhere, not a content defect to score in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` -> \"files: 1  slides: 10  limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits.\"",
       "fix_hint": null,
       "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 1
 }

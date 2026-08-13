@@ -52,7 +52,7 @@ Decide the location with Claude.
 
 | What | Where | Loads | To wire |
 |---|---|---|---|
-| CLAUDE.md files | personal, repo, repo-local (gitignored) | every session | |
+| CLAUDE.md files | user-level, repo, repo-personal (gitignored) | every session | |
 | Rules | `.claude/rules/` (repo) · `~/.claude/rules/` (personal) | every session; `paths:`-scoped ones on matching file reads | `paths:` frontmatter |
 | Auto memory | `~/.claude/projects/<project>/memory/` | `MEMORY.md` index every session; topic files as needed | Claude writes it; `/memory` to inspect |
 | Skills | personal or repo skills folder | name and description every session; full body on invocation | author or install from a plugin marketplace |

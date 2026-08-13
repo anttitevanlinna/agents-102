@@ -142,8 +142,20 @@ check_instance_sha() { # class state
   fi
   [[ -e "${matches[0]}" ]] || return 0            # no instance: nothing to check
   [[ ${#matches[@]} -eq 1 ]] || return 0          # still ambiguous: don't guess
-  recorded="$(sed -nE 's/.*"body_sha"[[:space:]]*:[[:space:]]*"([a-f0-9]{64})".*/\1/p' "${matches[0]}" | head -1)"
-  [[ -n "$recorded" ]] || return 0                # pre-guard instance
+  # Absence and malformation are different answers and must not share a branch.
+  # A capture pinned to `[a-f0-9]{64}` returns empty on a sha1, a truncated paste
+  # or invented hex, and empty used to mean *pre-guard instance, stamp as before* —
+  # so a bad hash switched the guard OFF rather than tripping it. Detect the field
+  # first, validate second: no field is legacy, a field that is not 64 hex is a
+  # judge whose bookkeeping failed, and its verdict is exactly the one to distrust.
+  grep -q '"body_sha"' "${matches[0]}" || return 0 # pre-guard instance
+  recorded="$(sed -nE 's/.*"body_sha"[[:space:]]*:[[:space:]]*"([^"]*)".*/\1/p' "${matches[0]}" | head -1)"
+  if [[ ! "$recorded" =~ ^[a-f0-9]{64}$ ]]; then
+    echo "error: the $cls verdict in $(basename "${matches[0]}") records a malformed body_sha" >&2
+    echo "       recorded: \"${recorded:0:20}\" (${#recorded} chars; a sha256 is 64 hex)" >&2
+    echo "       a hash nobody computed proves nothing — recompute with shasum -a 256, or re-fire $cls" >&2
+    exit 1
+  fi
   if [[ "$recorded" != "$file_sha" ]]; then
     echo "error: the $cls verdict in $(basename "${matches[0]}") was judged against a different body" >&2
     echo "       recorded: ${recorded:0:12}…   current: ${file_sha:0:12}…" >&2

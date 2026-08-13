@@ -36,14 +36,6 @@ You walk in holding two sessions of the same task. The un-packaged Module 4 send
 
 [Spot gaps, build the loop](exercises/spot-gaps-build-the-loop.md)
 
-## Key Concepts
-- The three-pattern catches what it was shaped to catch. The gaps that surface after two sessions are data the pattern didn't anticipate, not proof the pattern failed
-- Claude over-credits its own packaging by default. You know the countermove by now. A fair push-back names one thing the verifier missed, concretely. The sessions rule; the summary of them doesn't
-- Gaps sort into three homes: memory (rules that would have prevented the mistake upstream), sharper verifier (a check that would have fired mid-session), or new skill (a move packaged for future tasks)
-- A check proves something only where it could say no. A judge in the producer's window cannot say no exactly where the producer went wrong.
-- The handoff prompt IS the loop. It packages the stack-map into a move that authors the skill each shape calls for, when you run it.
-- Encoding is the third phase of test → learn → encode. Two sessions tested; the diagnosis learned; the handoff encodes. The loop closes when the lesson ships.
-
 ## Human close
 
 No compound prompt here. The exercise's gap map and stack-map are the Module 6 compound; the encode-move lands inside the last lecture. This slot is a human round: talk, compare, no prompts.
@@ -59,6 +51,14 @@ No compound prompt here. The exercise's gap map and stack-map are the Module 6 c
 [The map, filled in](lectures/the-map-filled-in.md)
 
 [Agents that build agents](lectures/agents-that-build-agents.md)
+
+## Key Concepts
+- The three-pattern catches what it was shaped to catch. The gaps that surface after two sessions are data the pattern didn't anticipate, not proof the pattern failed
+- Claude over-credits its own packaging by default. You know the countermove by now. A fair push-back names one thing the verifier missed, concretely. The sessions rule; the summary of them doesn't
+- Gaps sort into three homes: memory (rules that would have prevented the mistake upstream), sharper verifier (a check that would have fired mid-session), or new skill (a move packaged for future tasks)
+- A check proves something only where it could say no. A judge in the producer's window cannot say no exactly where the producer went wrong.
+- The handoff prompt IS the loop. It packages the stack-map into a move that authors the skill each shape calls for, when you run it.
+- Encoding is the third phase of test → learn → encode. Two sessions tested; the diagnosis learned; the handoff encodes. The loop closes when the lesson ships.
 
 ## Next
 

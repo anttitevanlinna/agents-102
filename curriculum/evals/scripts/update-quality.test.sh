@@ -331,6 +331,31 @@ printf 'a neighbour session edited the body\n' >> "$TMP/curriculum/lectures/t18.
 rc=$(run "$TMP/curriculum/lectures/t18.md" --slides PASS --sha new2222 --date 2026-06-01)
 assert_rc "$rc" "1" 'T18b real body movement between stamps still refuses'
 
+# T19 — a PRESENT but malformed body_sha must REFUSE. The capture requires 64 hex,
+#       and an empty capture reads as "pre-guard instance", so a sha1, a truncated
+#       paste or invented hex switches the guard OFF instead of tripping it. A
+#       judge that writes a bad hash is exactly the judge whose verdict is suspect.
+mkfix curriculum/lectures/t19.md '# Lesson
+body text
+<!-- maintainer -->
+**Quality:** compendium-audited 2026-05-15 (writing@old1234)
+- judges @old1234: writing PASS'
+printf '{"class":"writing","body_sha":"da39a3ee5e6b4b0d3255bfef95601890afd80709","verdict":"PASS"}\n' \
+  > "$INST/ae101--lecture--t19.writing.json"
+rc=$(run "$TMP/curriculum/lectures/t19.md" --writing PASS --sha new1111 --date 2026-06-01)
+assert_rc "$rc" "1" 'T19 present-but-malformed body_sha refuses (fails closed, never open)'
+
+# T20 — the pre-guard path survives. An instance with NO body_sha field at all
+#       predates the guard and must still stamp, or every legacy instance breaks.
+mkfix curriculum/lectures/t20.md '# Lesson
+body text
+<!-- maintainer -->
+**Quality:** compendium-audited 2026-05-15 (writing@old1234)
+- judges @old1234: writing PASS'
+printf '{"class":"writing","verdict":"PASS"}\n' > "$INST/ae101--lecture--t20.writing.json"
+rc=$(run "$TMP/curriculum/lectures/t20.md" --writing PASS --sha new1111 --date 2026-06-01)
+assert_rc "$rc" "0" 'T20 absent body_sha still stamps (pre-guard instance)'
+
 unset QUALITY_INSTANCES_DIR
 
 echo "──────────────────────────────"

@@ -40,14 +40,6 @@ The question, to you: what's the feature, and what's the surface you're most ner
 
 [Exercise: Author your test-strategy skill](exercises/author-test-strategy-skill.md)
 
-## Key Concepts
-- A curated skill is upstream work packaged for you to invoke. The labor is delegated; the judgment isn't. Invoke, don't re-derive.
-- The access surface is what STRIDE chews on. STRIDE before access-mapping is threat-modeling pub-quiz
-- One hardening decision is enough; the team kit's breadth grows across many features
-- A test-strategy skill authored on your codebase is worth more than a perfect generic one. Your codebase teaches the skill, not the manual.
-- Ask the agent what's weakest about its own output; it surfaces what your read skips. Same-window self-audits under-flag, so push past the first answer.
-- Invoke the skill on the thing you just built. Authoring without invocation is theatre. One skill shipped beats three skills drafted; the team kit grows by accretion
-
 ## Sharpen the skill from evidence
 
 **Note** Switch back from the side quest to the main quest window (*m3-security*) now. The compound runs here. The test-strategy skill lives at user scope (`~/.claude/skills/test-strategy/SKILL.md`), readable from any session, so it crosses back with you. The canonical `./CLAUDE.local.md` lives in the main repo, not the side quest's worktree copy, so rule integration belongs here.
@@ -77,6 +69,14 @@ Still in the main quest window (*m3-security*), signal the wrap-up. The agent co
 If the agent names something missed, decide whether to compound it now or accept the loss. Then clear the session. Module 4 opens a new one.
 
 {{prompt:ae101-m3-clear-session}}
+
+## Key Concepts
+- A curated skill is upstream work packaged for you to invoke. The labor is delegated; the judgment isn't. Invoke, don't re-derive.
+- The access surface is what STRIDE chews on. STRIDE before access-mapping is threat-modeling pub-quiz
+- A test-strategy skill authored on your codebase is worth more than a perfect generic one. Your codebase teaches the skill, not the manual.
+- Ask the agent what's weakest about its own output; it surfaces what your read skips. Same-window self-audits under-flag, so push past the first answer.
+- One hardening decision is enough, and one skill shipped beats three drafted. The team kit grows by accretion. Invoke it on the thing you just built; an untested skill in the team kit is slop-sharing
+- Skills carry the codebase's conventions; your rules file carries how you work. Sharpening the skill is the mandatory move; the rule only goes in if it earned itself
 
 ## Next
 

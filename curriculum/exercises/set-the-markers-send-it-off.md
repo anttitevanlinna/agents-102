@@ -56,7 +56,7 @@ Ask Claude to run the scoped task end-to-end in this same session.
 - Nudge by hand: answer a question, correct a path, push back on visible drift. Past ten or so interventions, you have become the agent; call it and read what is there.
 - If the run goes completely off the rails, stop it. The trace is the result either way.
 
-If Claude stalls, ask it to keep going — the nudge is phrased as encouragement and lands as a taunt.
+If Claude stalls, ask it to keep going, the nudge is phrased as encouragement and lands as a taunt.
 
 {{prompt:ae101-m4-nudge-continue}}
 
@@ -64,7 +64,7 @@ If Claude stalls, ask it to keep going — the nudge is phrased as encouragement
 
 **View summary:** You pin the two markers the next module returns to, the session transcript path and a starting-point commit on a throwaway branch, then paste the send-off prompt and step away while the agent works the task alone.
 
-**Extracted from `run-the-first-experiment.md` § *Send the task off*, 2026-08-12, Antti-directed** (*"this passage actually should be a separate exercise. And split to few slides"*). The section ran as unbroken module prose carrying four prompts, which meant the Slides layout gave the whole send-off one enormous chunk and the beats had no headings to land on. Body wording is near-verbatim and the four `{{prompt:ae101-m4-*}}` refs are byte-intact. The transcript mechanism stays at one bullet — the fuller description belongs to the reference page, not here. No async-permission line in this file: M4 does not cash that promise. **Do not restore one here on the strength of the strategy doc's row #11** — that row names four carriers and only M1's is solid (`reference/multi-session-git.md`); the M2 lecture plants the idea without granting permission, and the M6 callout does not exist in the shipped set. The ledger is the strategy doc's to correct, and correcting it is not this file's job.
+**Extracted from `run-the-first-experiment.md` § *Send the task off*, 2026-08-12, Antti-directed** (*"this passage actually should be a separate exercise. And split to few slides"*). The section ran as unbroken module prose carrying four prompts, which meant the Slides layout gave the whole send-off one enormous chunk and the beats had no headings to land on. Body wording is near-verbatim and the four `{{prompt:ae101-m4-*}}` refs are byte-intact. The transcript mechanism stays at one bullet — the fuller description belongs to the reference page, not here. No async-permission line in this file, and none belongs here: the send-off runs in the same session the student has been in all module, and `training-architecture.md:13` puts async cloud agents out of scope. **The strategy doc's row #11 is about a different promise** — permission to run two sessions at once, not permission to walk away from one — and it is under open decision at `pre-cohort-todos.md`, which is where a line for this file would be authorised. Do not add one on the row's own authority.
 
 **Timing.** The 12 min this file owns is the send-off's whole budget, and the module total is 105 min with it. Do not add a module-level transition for this beat — the leaf owns its duration, and a transition would bill it twice.
 

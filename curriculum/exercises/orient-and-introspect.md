@@ -59,7 +59,7 @@ Run `/context` to see how much of the window is used and what fills it.
 
 <!-- maintainer -->
 
-**View summary:** You direct the agent’s first read of your real repository, then question its account against the context window.
+**View summary:** You direct the agent's first read of your real repository, ask what it skipped and why, spot-check that self-report against the files themselves, and close on the `/context` number naming how much of your codebase never entered the window at all.
 
 **Closing beat is `## The slice Claude didn't load`, renamed from `## Read the unread slice` (2026-08-12).** The old header commanded a read of a number `/context` had already printed one beat earlier — `check_student_facing.md` §27 (read-it-after-chat-print is dead weight) and `check_slides.md` §6 (header promised an action its own chunk never delivered; a slides judge flagged it). The beat correctly carries **no prompt**: the `/context` run is the move, and this slide is the closing claim about context economy. `getting-going.md`'s leap test names the target as the *unread-slice number*, not a set of files, so do not "fix" the old header by adding a file-opening instruction — that invents a beat the design does not have and contradicts the leap test. Built workbooks under `site/clients/**` carry the old `id="read-the-unread-slice"` anchor until regenerated. The result is a practical map of what the agent loaded, what it skipped, and where your steering begins.
 

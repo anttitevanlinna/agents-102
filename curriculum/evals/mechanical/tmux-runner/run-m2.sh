@@ -48,7 +48,7 @@ session="runner-$run_id"
 launch_cmd="env CLAUDE_RUNNER_SENTINEL_DIR=$sentinel_dir ${CLAUDE_CMD:-claude}"
 warmup="${CLAUDE_RUNNER_WARMUP:-10}"
 standard_timeout="${CLAUDE_RUNNER_TIMEOUT:-3600}"
-# T2 (push-back-on-the-plan-2 walk-down) can run long on real codebases —
+# The walk-down turn (push-back-on-the-plan-2) can run long on real codebases —
 # pre-cohort-todos notes a 13m15s walk-down on a real codebase. Give it
 # more headroom than the standard turn budget.
 walkdown_timeout="${CLAUDE_RUNNER_M2_WALKDOWN_TIMEOUT:-3600}"
@@ -145,51 +145,51 @@ assert_turn() {
     push-back-on-the-plan-1)  # plan file written under ~/.claude/plans/.
         locate_plan_file
         if [[ -n "$plan_file_global" && -f "$plan_file_global" ]]; then
-          echo "[assert] PASS T1 plan-file: $plan_file_global"
+          echo "[assert] PASS pushback-1 plan-file: $plan_file_global"
           plan_mtime_pre_lock="$(mtime_of "$plan_file_global")"
           return 0
         fi
-        echo "[assert] FAIL T1 plan-file: no new file in $plans_dir since baseline" >&2
+        echo "[assert] FAIL pushback-1 plan-file: no new file in $plans_dir since baseline" >&2
         return 1
         ;;
     push-back-on-the-plan-2)  # explicit "don't touch the plan yet".
         # Two checks: scrollback contains branch-walk language (soft),
-        # AND plan file mtime is UNCHANGED since T1 (catches silent
+        # AND plan file mtime is UNCHANGED since pushback-1 (catches silent
         # plan-file violation — the "Don't touch until lock it in"
-        # contract). Refresh the baseline at end of T2 so T3's check
-        # asserts only the T2→T3 delta. The "lock it in" literal (and,
+        # contract). Refresh the baseline at end of this turn so pushback-3.s check
+        # asserts only the delta across the lock-it-in literal. The "lock it in" literal (and,
         # in m2-codesearch.txt, the canned student-voice reply that
-        # precedes it) fires BETWEEN this turn and T3 — both are skipped
-        # by the dispatcher, so the plan edit lands before key_seq=3.
-        assert_or_warn assert_scrollback_grep "T2 branch-walk" "$transcript" "branch|dependenc|side.effect|assumption|recommend"
+        # precedes it) fires BETWEEN this turn and pushback-3 — both are skipped
+        # by the dispatcher, so the plan edit lands before pushback-3.
+        assert_or_warn assert_scrollback_grep "pushback-2 branch-walk" "$transcript" "branch|dependenc|side.effect|assumption|recommend"
         local plan_mtime_now
         plan_mtime_now="$(mtime_of "$plan_file_global")"
         if [[ "$plan_mtime_now" -gt "$plan_mtime_pre_lock" ]]; then
-          echo "[assert] FAIL T2 plan-file touched before 'lock it in' (mtime $plan_mtime_pre_lock -> $plan_mtime_now)" >&2
+          echo "[assert] FAIL pushback-2 plan-file touched before 'lock it in' (mtime $plan_mtime_pre_lock -> $plan_mtime_now)" >&2
           return 1
         fi
-        echo "[assert] PASS T2 plan-file untouched (mtime stable at $plan_mtime_now)"
-        # Refresh baseline: T3 asserts only the post-T2 delta (i.e. the
+        echo "[assert] PASS pushback-2 plan-file untouched (mtime stable at $plan_mtime_now)"
+        # Refresh baseline: pushback-3 asserts only the post-walk-down delta (i.e. the
         # edit triggered by the intervening 'lock it in' literal).
         plan_mtime_pre_lock="$plan_mtime_now"
         ;;
     push-back-on-the-plan-3)  # design pattern named in scrollback,
-        # AND plan file mtime advanced past T2 baseline (the 'lock it in'
-        # literal that fired between T2 and T3 should have triggered the
+        # AND plan file mtime advanced past the walk-down baseline (the 'lock it in'
+        # literal that fired between the walk-down and this turn should have triggered the
         # in-place plan edit by now).
         locate_plan_file
         if [[ -z "$plan_file_global" ]]; then
-          echo "[assert] FAIL T3 plan-locked: plan file not located" >&2
+          echo "[assert] FAIL pushback-3 plan-locked: plan file not located" >&2
           return 1
         fi
-        if ! assert_file_mtime_advanced "T3 plan locked-in" "$plan_file_global" "$plan_mtime_pre_lock"; then
+        if ! assert_file_mtime_advanced "pushback-3 plan locked-in" "$plan_file_global" "$plan_mtime_pre_lock"; then
           return 1
         fi
-        assert_scrollback_grep "T3 pattern-named" "$transcript" "push.back|second.pass|walk.down|pair|design pattern|pattern"
+        assert_scrollback_grep "pushback-3 pattern-named" "$transcript" "push.back|second.pass|walk.down|pair|design pattern|pattern"
         ;;
     extract-the-task-shaping-rule-1)  # 3-5 rules proposed in scrollback.
         # Loose match: scrollback contains numbered or bulleted rules.
-        assert_scrollback_grep "T4 rules-proposed" "$transcript" "rule|^[[:space:]]*[0-9]\.|^[[:space:]]*\*|^[[:space:]]*-"
+        assert_scrollback_grep "extract-1 rules-proposed" "$transcript" "rule|^[[:space:]]*[0-9]\.|^[[:space:]]*\*|^[[:space:]]*-"
         ;;
     extract-the-task-shaping-rule-4)  # story-ticket read (added to this
         # exercise 2026-08-12; was M1's bug-conventions prompt before that).
@@ -197,10 +197,10 @@ assert_turn() {
         # placement decision belongs to -2, and the prompt says so. The
         # headless walk pastes the ticket fields (no tracker reachable), so
         # the "ask me to paste the fields" fallback should not fire.
-        if ! assert_scrollback_grep "T5 story-rules-proposed" "$transcript" "rule|convention|signal|guess"; then
+        if ! assert_scrollback_grep "extract-4 story-rules-proposed" "$transcript" "rule|convention|signal|guess"; then
           return 1
         fi
-        assert_or_warn assert_scrollback_grep "T5 signal-separation" "$transcript" "strong|guess|cannot tell|can't tell|more tickets"
+        assert_or_warn assert_scrollback_grep "extract-4 signal-separation" "$transcript" "strong|guess|cannot tell|can't tell|more tickets"
         ;;
     extract-the-task-shaping-rule-2)  # paths proposed in scrollback.
         # Under the ask-and-wait pattern, the agent proposes paths and STOPS.
@@ -208,14 +208,14 @@ assert_turn() {
         # turn's response (the canned-reply turn). Lemmings runs (suppression
         # pattern) emit SAVED-PATH in this same turn — the deferred check in
         # case 6 handles both shapes (reads all transcripts so far).
-        assert_scrollback_grep "T5 paths-proposed" "$transcript" "path|/Users|~/|\.claude|\.local"
+        assert_scrollback_grep "extract-2 paths-proposed" "$transcript" "path|/Users|~/|\.claude|\.local"
         ;;
     extract-the-task-shaping-rule-3)  # automation shapes named AND
         # deferred SAVED-PATH check from the -2 turn. Reads all turn
         # transcripts because under ask-and-wait the actual save lives in the
         # literal turn between -2 and -3; under suppression it lives in -2's
         # own transcript. Reading all turns handles both.
-        if ! assert_scrollback_grep "T6 shapes-named" "$transcript" "slack|webhook|schedul|cron|queue|trigger|automation"; then
+        if ! assert_scrollback_grep "extract-3 shapes-named" "$transcript" "slack|webhook|schedul|cron|queue|trigger|automation"; then
           return 1
         fi
         local saved
@@ -227,25 +227,25 @@ assert_turn() {
         if [[ -n "$saved" ]]; then
           saved="${saved/#\~/$HOME}"
           if [[ -f "$saved" && "$(stat -f %m "$saved" 2>/dev/null || stat -c %Y "$saved")" -ge "$run_start_epoch" ]]; then
-            echo "[assert] PASS T6 rules-file at $saved"
+            echo "[assert] PASS extract-3 rules-file at $saved"
             echo "$saved" > "$run_dir/m2-rules-file.path"
             return 0
           fi
-          echo "[assert] FAIL T6 rules-file: SAVED-PATH=$saved not found or stale" >&2
+          echo "[assert] FAIL extract-3 rules-file: SAVED-PATH=$saved not found or stale" >&2
           return 1
         fi
-        echo "[assert] FAIL T6 rules-file: no SAVED-PATH absolute-path marker in any transcript" >&2
+        echo "[assert] FAIL extract-3 rules-file: no SAVED-PATH absolute-path marker in any transcript" >&2
         return 1
         ;;
     push-back-on-the-plan-4)  # answers the auto-load question.
-        assert_scrollback_grep "T7 auto-load-answer" "$transcript" "auto.?load|CLAUDE\.md|CLAUDE\.local|@import|loaded|context"
+        assert_scrollback_grep "pushback-4 auto-load-answer" "$transcript" "auto.?load|CLAUDE\.md|CLAUDE\.local|@import|loaded|context"
         ;;
     ae101-m2-integrate-branch)  # conditional integrate into CLAUDE.local.md.
         # Pass if either: file mtime advanced OR scrollback says nothing earned.
-        if assert_file_mtime_advanced "T8 CLAUDE.local.md mtime" "$claude_local_md" "$claude_local_mtime_baseline" 2>/dev/null; then
+        if assert_file_mtime_advanced "integrate-branch CLAUDE.local.md mtime" "$claude_local_md" "$claude_local_mtime_baseline" 2>/dev/null; then
           return 0
         fi
-        assert_scrollback_grep "T8 nothing-earned fallback" "$transcript" "nothing earned|didn't earn|no branch|did not earn|stop"
+        assert_scrollback_grep "integrate-branch nothing-earned fallback" "$transcript" "nothing earned|didn't earn|no branch|did not earn|stop"
         ;;
     *)
         echo "[m2] no assertion configured for prompt key '$key'" >&2
@@ -283,19 +283,19 @@ for line in "${lines[@]}"; do
   # must be snapshotted JUST BEFORE push-back-2 is sent, otherwise any
   # plan refinement Claude does in the prior turn (e.g. integrating
   # canned-reply answers in m2-codesearch.txt) bleeds into the baseline
-  # set at end-of-T1 and fails case 2 through no fault of push-back-2.
+  # set at end of push-back-1 and fails through no fault of push-back-2.
   if [[ "$is_literal" -eq 0 && "$key" == "push-back-on-the-plan-2" ]]; then
     locate_plan_file
     if [[ -n "$plan_file_global" ]]; then
       plan_mtime_pre_lock="$(mtime_of "$plan_file_global")"
-      echo "[m2] turn=$seq pre-T2 plan mtime baseline refreshed to $plan_mtime_pre_lock"
+      echo "[m2] turn=$seq pre-walk-down plan mtime baseline refreshed to $plan_mtime_pre_lock"
     fi
   fi
 
   pane_send_text "$session" "$body"
   printf '%s' "$body" > "$run_dir/turn-$seq.prompt.txt"
 
-  # Per-turn timeout: T2 (push-back-on-the-plan-2 walk-down) gets the
+  # Per-turn timeout: the walk-down (push-back-on-the-plan-2) gets the
   # long budget; others use the standard turn timeout. Dispatched on the
   # prompt key so neither canned-reply literals nor an inserted turn shift
   # which prompt earns the walkdown budget.

@@ -52,15 +52,15 @@ Decide the location with Claude.
 
 | What | Where | Loads | To wire |
 |---|---|---|---|
-| CLAUDE.md files | personal, repo, or repo-local (gitignored) | every session | |
-| Rules | `.claude/rules/` (repo) · `~/.claude/rules/` (personal) | every session; `paths:`-scoped ones when a matching file is read | `paths:` frontmatter |
+| CLAUDE.md files | personal, repo, repo-local (gitignored) | every session | |
+| Rules | `.claude/rules/` (repo) · `~/.claude/rules/` (personal) | every session; `paths:`-scoped ones on matching file reads | `paths:` frontmatter |
 | Auto memory | `~/.claude/projects/<project>/memory/` | `MEMORY.md` index every session; topic files as needed | Claude writes it; `/memory` to inspect |
-| Skills | personal or repo skills folder | name and description every session; full body on invocation | author one, or install from a plugin marketplace |
+| Skills | personal or repo skills folder | name and description every session; full body on invocation | author or install from a plugin marketplace |
 | Roll your own | any path: a notes folder, `~/.claude/memory/` | only when a prompt names it or Claude reads it | an `@path` line in an auto-loaded CLAUDE.md upgrades it to every session |
 
-Roll your own is often facilitated by hooks and mini-skills that route the context loading: a hook injects the file at session start, a mini-skill reads it when the work calls for it.
+Roll your own is often facilitated by hooks and mini-skills that route the context loading: a hook injects it at session start, a mini-skill reads it when the work calls for it.
 
-- If Claude picked a path that only loads when named, ask for the `@import` line before you move on. Without it the file sits on disk unread.
+- If the picked path only loads when named, ask for the `@import` line before you move on. Without it the file sits on disk unread.
 - Read the rules back. If any drifted from your wording, push back and have Claude rewrite.
 - [Claude Code for engineers](../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md) is the long form: precedence, walk-up, the managed layer.
 

@@ -57,7 +57,7 @@ Mechanical setup. Claude needs to write outside the repo (`~/Documents/ae101-con
 {{prompt:ae101-prework-extract-and-install}}
 
 <!--/flag:payload-->
-## 5. Pick a trivial bug and confirm M1 readiness
+## 5. Pick a trivial bug and confirm Module 1 readiness
 
 Now the interactive step. Claude walks three trivial bug candidates from your repo's backlog, helps you pick one, then confirms the repo can test, branch, commit, and open a PR.
 
@@ -87,7 +87,7 @@ Optional. One read, any time before the first session.
 
 <!-- maintainer -->
 
-**The two `{{prompt:}}` fences in `## 5. Pick a trivial bug and confirm M1 readiness` are accepted, not an unextracted exercise.** `check_pedagogy.md` §52a treats a fence in module prose as a greppable tell for an exercise nobody extracted, and this section matches the tell. It is not the thing the rule was built from: §52a's precedent is a four-prompt section carrying a Session widget, big enough that the deck hands it one unbreakable slide. This is one screening prompt plus its fallback for when the screen arrives all-at-once — the second only fires if the first misbehaves. Extracting it would give prework an exercise file before the training starts. Accepted-by-design 2026-08-13 (Antti-directed): do not extract, do not re-raise.
+**The two `{{prompt:}}` fences in `## 5. Pick a trivial bug and confirm Module 1 readiness` are accepted, not an unextracted exercise.** `check_pedagogy.md` §52a treats a fence in module prose as a greppable tell for an exercise nobody extracted, and this section matches the tell. It is not the thing the rule was built from: §52a's precedent is a four-prompt section carrying a Session widget, big enough that the deck hands it one unbreakable slide. This is one screening prompt plus its fallback for when the screen arrives all-at-once — the second only fires if the first misbehaves. Extracting it would give prework an exercise file before the training starts. Accepted-by-design 2026-08-13 (Antti-directed): do not extract, do not re-raise.
 
 **2026-07-30 (pre-read wiring):** added `## Pre-read before Module 1` (Willison, *Vibe engineering*). Body touched — per-class Quality SHAs below predate; re-audit before ship. The read is optional and outside the 30-min prework runtime target (~15 min if taken).
 

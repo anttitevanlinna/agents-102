@@ -35,16 +35,22 @@ carrying its own prompts and includes. This is where a module differs from its s
 [Reminders of what the module's own beats already taught. See § Key Concepts below.
 Goes AFTER the last teaching section — see the placement note there.]
 
-## Next
-[Where the arc goes, and what closes here.]
-
 ## Bring to Module [N]
 [Only when the next module needs the student to arrive with something. Bold the ask,
 then the stakes line.]
 
 ## Pre-reads before Module [N]
 [Optional. Lands in the gap between sittings.]
+
+## Next
+[Where the arc goes, and what closes here. LAST — see the placement note below.]
 ```
+
+**Placement: `## Next` is the last section of the body.** Gap material — what to bring, what to read — sits above it. One `##` is one slide, so the final section is the last thing on the wall while a room packs up, and it used to be a reading list: the forward beat fired two slides early and then drained into admin. Risto raised it twice. Moved 2026-08-13 across prework, M1, M3, M4, M5; M2 and M6 already ended on `## Next` and were left alone, which is the tell that the old order had been half-abandoned in practice before anyone wrote it down.
+
+**Prework is the same rule with a different last section.** It has no `## Next`, so its closing beat is `## Bring to Module 1` — which ends on the opening question the student carries into the room — and `## Pre-read before Module 1` sits above it. Naming the pre-read below the closing beat put it where a student who reads "Bring to Module 1" as the end never scrolls.
+
+**What this costs, and it is real:** those five `## Next` paragraphs were written as connective tissue between a close and some admin. They now carry the close. Read them as closers, not as bridges, before the next cohort.
 
 **Two sections belong to the training's first module only:** `## How we work in this room` and `## Freedom to choose` sit in M1 between `What You'll Learn` and `Start here`. They set the room's contract once; a later module repeating them is drift.
 

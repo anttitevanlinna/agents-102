@@ -61,9 +61,6 @@ After this module, you will be able to:
 - A `./CLAUDE.local.md` built from session evidence reads different from one drafted blank: concrete, specific, yours. Personal layer first; team-worthy rules earn their own PR.
 - The loop ends outside the code. The close-out lands in the tracker your team reads, and that tracker encodes conventions living in the tickets, not in a doc. One ticket is enough to start reading them back
 
-## Next
-Module 2 is where plan mode earns its keep: multi-file work, a second pass that pressure-tests the plan, and the catches that come with approving more scope than you'd cold-authorize. `./CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `./CLAUDE.md` if this repo has one; both concatenate into context). Close this session once the rules file lands; Module 2 opens fresh in the same repo.
-
 ## Pre-reads before Module 2
 
 Optional. All four sit in the gap before it. Do them and its moves land as things you've already seen.
@@ -75,6 +72,9 @@ Optional. All four sit in the gap before it. Do them and its moves land as thing
 **Watch:** Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0). Cherny walks through how he and the team actually use the tool: plan mode, verification loops, parallel worktrees, `CLAUDE.md` compounding, slash commands, subagent map-reduce, the finish-the-migration rule. The moves of Agentic Engineering 101 (AE101 from here on) show up here first as one person's working rhythm.
 
 **Read:** [Multi-session and Git: survival guide](trainings/agentic-engineering-101/reference/multi-session-git.md). Short local reference page on worktrees versus branches versus clones, and how to open several Claude Code sessions on the same repo without wrecking each other's state. Cherny calls parallel worktrees his single biggest productivity unlock: one repo, several Claude Code sessions running at once, each on its own branch, no stashing and no clobbering. Reach for them when one session is waiting on a long run and another piece of work is ready to move, when you want to try two approaches to the same problem side by side, or when a review task can run alongside the build. The instinct earns itself in use.
+
+## Next
+Module 2 is where plan mode earns its keep: multi-file work, a second pass that pressure-tests the plan, and the catches that come with approving more scope than you'd cold-authorize. `./CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `./CLAUDE.md` if this repo has one; both concatenate into context). Close this session once the rules file lands; Module 2 opens fresh in the same repo.
 
 <!-- maintainer -->
 

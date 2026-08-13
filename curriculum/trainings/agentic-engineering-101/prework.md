@@ -71,6 +71,12 @@ If Claude's screening feels like everything-at-once, ask Claude to use the AskUs
 
 *Small steer, small trick. A minute here, another there. You find them.*
 
+## Pre-read before Module 1
+
+Optional. One read, any time before the first session.
+
+**Read: Simon Willison, [Vibe engineering](https://simonwillison.net/2025/Oct/7/vibe-engineering/)** (October 2025). Willison draws the line between vibe coding and working with coding agents as an accountable engineer. Module 1's first bug fix starts on the accountable side of that line.
+
 ## Bring to Module 1
 
 Close the prework session when Claude confirms readiness. Module 1 opens fresh in the same repo.
@@ -78,12 +84,6 @@ Close the prework session when Claude confirms readiness. Module 1 opens fresh i
 The bug you picked. Come to Module 1 without one and you'll be scrambling for one while the exercise is already fixing bugs. Your call.
 
 The opening question at Module 1: *what's one trick you figured out with Claude Code that nobody taught you?* Bring one. Doesn't have to be big. No trick? Bring a moment Claude Code frustrated you.
-
-## Pre-read before Module 1
-
-Optional. One read, any time before the first session.
-
-**Read: Simon Willison, [Vibe engineering](https://simonwillison.net/2025/Oct/7/vibe-engineering/)** (October 2025). Willison draws the line between vibe coding and working with coding agents as an accountable engineer. Module 1's first bug fix starts on the accountable side of that line.
 
 <!-- maintainer -->
 

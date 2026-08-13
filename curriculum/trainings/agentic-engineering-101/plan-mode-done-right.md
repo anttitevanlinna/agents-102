@@ -64,6 +64,14 @@ Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble i
 - Verification steps that could actually fail are gates; verification steps that always pass are decoration
 - You don't have to execute a plan to know it's good. We knew that long before agents; the skill is old, only the surface is new.
 
+<!--flag:module:earn-the-trust-->## Pre-reads before Module 3
+
+Optional. Lands the modern agentic-security frame before STRIDE and access-control.
+
+**Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (June 2025, the piece that named the threat class). Names the modern threat class that combines private data, untrusted content, and external communication into a compromise surface.
+
+**Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface. The full menu beyond the trifecta, for engineers who want the wider picture before the exercise lands.<!--/flag:module:earn-the-trust-->
+
 ## Next
 
 <!--flag:module:earn-the-trust-->At M3 you point the same move at a feature you're shipping: curated reads that walk the branches you can't see, and the call they surface written down in your repo where a teammate finds it before they have to ask.
@@ -75,14 +83,6 @@ Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble i
 The next sitting opens on that task and spends most of its time walking your system against it. Come without one and you'll be picking while the walk is already underway. Your call.<!--/flag:no-module:earn-the-trust--><!--flag:module:earn-the-trust--> M3 opens fresh and runs security skills against the M2 task; if it doesn't have an external or user-facing surface, swap to something from your backlog that does.
 
 Come to Module 3 without that noted path and a task to point the skills at, and you'll be scrambling to reconstruct them while STRIDE, the six-category threat walk, is already running. Your call.<!--/flag:module:earn-the-trust-->
-
-<!--flag:module:earn-the-trust-->## Pre-reads before Module 3
-
-Optional. Lands the modern agentic-security frame before STRIDE and access-control.
-
-**Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (June 2025, the piece that named the threat class). Names the modern threat class that combines private data, untrusted content, and external communication into a compromise surface.
-
-**Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface. The full menu beyond the trifecta, for engineers who want the wider picture before the exercise lands.<!--/flag:module:earn-the-trust-->
 
 <!-- maintainer -->
 

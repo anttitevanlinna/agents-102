@@ -78,12 +78,6 @@ If the agent names something missed, decide whether to compound it now or accept
 - One hardening decision is enough, and one skill shipped beats three drafted. The team kit grows by accretion. Invoke it on the thing you just built; an untested skill in the team kit is slop-sharing
 - Skills carry the codebase's conventions; your rules file carries how you work. Sharpening the skill is the mandatory move; the rule only goes in if it earned itself
 
-## Next
-
-Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. Module 4 turns the discipline inward: memory that reads your system, not just a feature. The test-strategy conventions, the access-surface facts, and the hardening decision all feed into what M4 builds.
-
-Optional, when your sessions start running heavy: [Token efficiency](trainings/agentic-engineering-101/supplementary/token-efficiency.md) on keeping the context window lean.
-
 ## Bring to Module 4
 
 **One scoped task you'd send off rather than nudge bit by bit: a real slice. Bigger than a typo-fix, smaller than an epic.**
@@ -95,6 +89,12 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 Optional. One read in the gap.
 
 **Read: Simon Willison, [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/)** (September 2025). Willison names the skill of setting up an agent's session before you start it. Module 4 opens on a session you send off and step away from; this is the thinking you do before stepping away.
+
+## Next
+
+Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. Module 4 turns the discipline inward: memory that reads your system, not just a feature. The test-strategy conventions, the access-surface facts, and the hardening decision all feed into what M4 builds.
+
+Optional, when your sessions start running heavy: [Token efficiency](trainings/agentic-engineering-101/supplementary/token-efficiency.md) on keeping the context window lean.
 
 <!-- maintainer -->
 

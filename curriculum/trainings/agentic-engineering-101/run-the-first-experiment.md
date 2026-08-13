@@ -56,10 +56,6 @@ The map has a far side. Before the first long session, see the country you are e
 - Traces are data. Stopping a run that has gone off the rails is reading, not failing.
 - The run started from a pinned commit on a throwaway branch. This was an experiment, not a production run.
 
-## Next
-
-The next module opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this session lives, so when the next slot lands a fresh session reads it straight from `task.md`, no hunting through past sessions. Transcripts persist on disk regardless; see [Claude Code for engineers, session transcripts](trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts-read-what-actually-happened) for what they hold. Close the session once the agent is done; the trace is on disk.
-
 ## Bring to Module 5
 
 A session that produced something. Read the agent's scrollback or commits from the send-off; check the agent didn't just stall in the first minute. A stopped session counts; the trace is the artefact.
@@ -77,6 +73,10 @@ Optional. They sit in the gap while your un-packaged session is still going. All
 **Read, [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md).** Some tasks are far cheaper to check than to do, and delegation pays exactly there. The verifier built next is often worth more than the task it checks.
 
 **Read (longer), Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).** The term and the philosophy, and the 80/20 that follows from it: the weight sits on planning and review, and that is where the next hour goes.
+
+## Next
+
+The next module opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this session lives, so when the next slot lands a fresh session reads it straight from `task.md`, no hunting through past sessions. Transcripts persist on disk regardless; see [Claude Code for engineers, session transcripts](trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts-read-what-actually-happened) for what they hold. Close the session once the agent is done; the trace is on disk.
 
 <!-- maintainer -->
 

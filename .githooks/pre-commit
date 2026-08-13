@@ -51,6 +51,24 @@ def body(content):
     mb_start = mb_idx if mb_idx != -1 else len(content)
     return content[fm_end:mb_start]
 
+def normalize(region):
+    # What the gate protects is the text a student pastes into a fence. Line
+    # endings, trailing spaces and the blank lines topping and tailing the
+    # region are not that — and `.claude/hooks/eval-class-router.sh` rewrites
+    # the WHOLE body on every Write/Edit, so a maintainer-block-only edit can
+    # leave an incidental whitespace diff behind. Nagging there trains the
+    # committer to type y without reading, which is how a gate stops working.
+    # INTERNAL blank lines stay significant: check_prompts.md §36 makes the
+    # paragraph split between moves a load-bearing scan affordance, so a
+    # collapsed one is a real edit to what the student reads.
+    region = region.replace('\r\n', '\n').replace('\r', '\n')
+    lines = [ln.rstrip() for ln in region.split('\n')]
+    while lines and not lines[0]:
+        lines.pop(0)
+    while lines and not lines[-1]:
+        lines.pop()
+    return '\n'.join(lines)
+
 staged = [f for f in os.environ.get("STAGED_FILES", "").splitlines() if f.strip()]
 
 for fp in staged:
@@ -64,7 +82,7 @@ for fp in staged:
     except subprocess.CalledProcessError:
         # New file with no HEAD version. Gate.
         print(1); sys.exit(0)
-    if body(old) != body(new):
+    if normalize(body(old)) != normalize(body(new)):
         print(1); sys.exit(0)
 
 print(0)

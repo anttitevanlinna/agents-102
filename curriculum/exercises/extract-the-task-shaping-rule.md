@@ -56,7 +56,7 @@ Decide the location with Claude.
 | Rules | `.claude/rules/` (repo) · `~/.claude/rules/` (personal) | every session; `paths:`-scoped ones on matching file reads | `paths:` frontmatter |
 | Auto memory | `~/.claude/projects/<project>/memory/` | `MEMORY.md` index every session; topic files as needed | Claude writes it; `/memory` to inspect |
 | Skills | personal or repo skills folder | name and description every session; full body on invocation | author or install from a plugin marketplace |
-| Roll your own | any path: a notes folder, `~/.claude/memory/` | only when a prompt names it or Claude reads it | an `@import` line in an auto-loaded CLAUDE.md upgrades it to every session |
+| Roll your own | any path: a notes folder, an ADR directory | only when a prompt names it or Claude reads it | an `@import` line in an auto-loaded CLAUDE.md upgrades it to every session |
 
 Roll your own is often facilitated by hooks and router skills: a hook injects it at session start, a router skill reads it when the work calls for it.
 

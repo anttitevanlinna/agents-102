@@ -10,6 +10,7 @@ produces:
   - id: task-shaping-rules-draft
     location: scrollback (3-5 proposed one-liners)
     consumed-by:
+      - prompt:extract-the-task-shaping-rule-4
       - prompt:extract-the-task-shaping-rule-2
 ---
 Read this session end-to-end. Propose three to five rules about what makes a multi-file task plan-mode-able on this codebase. Phrase each as a one-liner I could re-read tomorrow. Anchor each rule in a specific moment from the session: the task I picked, what the second-pass read surfaced, what my push-backs caught, where the plan factored cleanly and where it didn't. Rules about task shape, not about plan-reading craft. After proposing, stop and ask which one I want to rewrite and which one I want to reject. Wait for my answer before continuing.

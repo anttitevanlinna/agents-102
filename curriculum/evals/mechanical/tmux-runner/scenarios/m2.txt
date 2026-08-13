@@ -25,7 +25,10 @@
 #    tracker the headless run doesn't have. The prompt's own fallback is
 #    "ask me to paste the fields" — the tail pastes them instead, so the
 #    fallback resolves without a stop. Fixture ticket is lemmings-shaped
-#    and matches this scenario's own task (levels 2 and 3).
+#    and matches this scenario's own task (levels 2 and 3). It rides on ONE
+#    line with `·` field separators because the parser is one-turn-per-line
+#    (run-m2.sh:96) — a multi-line paste becomes N turns, and every line
+#    after the first is read as a prompt key that doesn't resolve.
 #  - extract-the-task-shaping-rule-2 negotiates a save path interactively;
 #    the tail tells Claude to pick its own recommendation and save. It now
 #    writes BOTH sets (session rules + story rules from -4), so the tail
@@ -47,18 +50,7 @@ push-back-on-the-plan-3
 
 extract-the-task-shaping-rule-1 I'm doing a headless dry-run, please don't call AskUserQuestion and don't pause for rewrite/reject. Propose the 3-5 rules in prose and continue — assume I'm keeping all of them as proposed.
 
-extract-the-task-shaping-rule-4 I'm doing a headless dry-run, please don't call AskUserQuestion, and don't try to open the tracker — there's no connector wired. Here are the fields, pasted; read them and keep the three story rules in chat, no file yet.
-
-LEM-214 · Story · Status: In Progress (was: Refinement → Ready) · Priority: P2 · Component: gameplay/terrain · Estimate: 3 · Owner: unassigned at creation, picked up at Ready · Epic: LEM-180 "Level progression" · Labels: needs-test, gameplay
-Title: As a player I want levels 2 and 3 so that finishing level 1 leads somewhere
-Description: Level geometry is hardcoded in main.js. Move it per-level so each level carries its own walls, gaps and spawn points, and advance 1 → 2 → 3 on win.
-Acceptance criteria:
-- [ ] Level geometry is per-level data, not inline in the loader
-- [ ] Winning level N loads level N+1; winning level 3 ends the run
-- [ ] HUD shows the current level
-- [ ] Regression test covers the bash-at-rightmost-column case
-Links: blocks LEM-231, relates to LEM-198
-Comments: "Refinement 12/3 — split the terrain move out if it grows past a day; keep the test in the same PR as the geometry change." / "Ready — AC rewritten as checkboxes, estimate held at 3."
+extract-the-task-shaping-rule-4 I'm doing a headless dry-run, please don't call AskUserQuestion, and don't try to open the tracker — there's no connector wired. Here are the fields, pasted; read them and keep the three story rules in chat, no file yet. LEM-214 · Story · Status: In Progress (was: Refinement → Ready) · Priority: P2 · Component: gameplay/terrain · Estimate: 3 · Owner: unassigned at creation, picked up at Ready · Epic: LEM-180 "Level progression" · Labels: needs-test, gameplay · Title: As a player I want levels 2 and 3 so that finishing level 1 leads somewhere · Description: Level geometry is hardcoded in main.js. Move it per-level so each level carries its own walls, gaps and spawn points, and advance 1 → 2 → 3 on win. · Acceptance criteria: [ ] Level geometry is per-level data, not inline in the loader; [ ] Winning level N loads level N+1, winning level 3 ends the run; [ ] HUD shows the current level; [ ] Regression test covers the bash-at-rightmost-column case · Links: blocks LEM-231, relates to LEM-198 · Comments: "Refinement 12/3 — split the terrain move out if it grows past a day; keep the test in the same PR as the geometry change." / "Ready — AC rewritten as checkboxes, estimate held at 3."
 
 extract-the-task-shaping-rule-2 I'm doing a headless dry-run, please don't call AskUserQuestion. Propose two-three plausible paths with their loading models, pick your recommendation, and write BOTH sets — the session rules and the story rules you read off the ticket — to the chosen path without waiting for confirmation. If a file already exists at the path, integrate rather than overwrite. After saving, echo the saved path on its own line as `SAVED-PATH: <abs path>` so the run can capture it.
 

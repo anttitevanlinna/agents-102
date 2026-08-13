@@ -10,8 +10,10 @@ requires:
     source: prompt:orient-and-introspect-3
   - id: shipped-bug-fix
     source: prompt:fix-tests-first-3
+opportunistic-copy:
   - id: bug-rules
     source: prompt:close-the-ticket-2
+    note: close-the-ticket runs off an external tracker the student may not reach (admin-gated connectors, no ticket for this bug), and the exercise gives them a no-ticket path. Optional read — the compound stands on the session alone.
 produces:
   - id: claude-local-md
     location: ./CLAUDE.local.md (created + gitignored if missing)

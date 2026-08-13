@@ -9,7 +9,8 @@ requires:
 produces:
   - id: bug-rules
     location: scrollback (5 proposed bug rules)
-    consumed-by:
+    consumed-by: []
+    opportunistic-copy-by:
       - prompt:compound-and-close-1
 ---
 Reverse-engineer how this team handles bugs from one bug ticket. Infer basic rules from the fields and wording: status, labels, severity or priority, component, owner, repro steps, acceptance criteria, comments, links, and custom fields.

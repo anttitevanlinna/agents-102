@@ -123,7 +123,7 @@ OODA
 
 <!-- /backing -->
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
-- opens a worktree on a clean branch when a real task warrants the un-watched send-off shape
+- scopes a real backlog task down to one end-to-end slice, pushing back where the agent's screen misses something they know about the codebase
 - walks an audit prompt against a real backlog task before sending it off, fills the worst three gaps
 - tidies `./observations/` from a ranked list of proposals rather than leaving the folder as it fell out of the session
 

@@ -1,23 +1,24 @@
 {
   "class": "technical",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/walk-and-send-off.md",
-  "body_sha": "767012b35f180034951f653a640a59ef12eac8c57ad3f62a1a3b79626773e221",
+  "body_sha": "bfc9aee24176f2938e3ecf07cb8dd6de3e6c24fcaa5b83ea4b221bbcf9dde63d",
   "verdict": "PASS",
   "training": "ae101",
+  "re_fire_note": "Re-derived from scratch per orchestrator instruction (not carried from prior round). Source expanded via scripts/expand-md.js; registry files walk-and-send-off-1/2/3.md read directly; four-shape chain and reference/claude-code-for-engineers.md §9 pointer re-walked independently.",
   "rules_evaluated": [
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 1,
       "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
       "verdict": "PASS",
-      "evidence": "File names only 'Claude Code' as dest throughout (prompt frontmatter dest: Claude Code x3); no claude.ai-only feature asserted.",
+      "evidence": "File names only 'Claude Code' as prompt destination throughout (all three registry prompts carry dest: Claude Code); no claude.ai-only feature asserted. Harm this rule guards (student pointed at a runtime that doesn't exist for AE101) is absent.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 2,
-      "rule_lead": "Cloud/remote features carry Git dependency \u2014 out of scope.",
+      "rule_lead": "Cloud/remote features carry Git dependency — out of scope.",
       "verdict": "N/A",
       "evidence": "No cloud/remote-feature claim in this file.",
       "fix_hint": null,
@@ -28,7 +29,7 @@
       "rule_index": 3,
       "rule_lead": "Local scheduled tasks catch up on wake, once, 7-day window.",
       "verdict": "N/A",
-      "evidence": "File makes no scheduled-task claim; the run is live/interactive.",
+      "evidence": "File makes no scheduled-task claim; the run is live/interactive, same session.",
       "fix_hint": null,
       "blocking": false
     },
@@ -37,7 +38,7 @@
       "rule_index": 4,
       "rule_lead": "Verify capabilities BEFORE asserting, not after.",
       "verdict": "PASS",
-      "evidence": "Claims checked: AskUserQuestion tool (line 88/92 body, prompt-3 body), Agent tool for subagent spawn (prompt-2 body), CLAUDE.md/CLAUDE.local.md auto-load vs observations/ non-auto-load (body line 57, 81). All match established platform facts (\u00a76, \u00a76d) with no contradiction found; no new unverified capability claim introduced by this file.",
+      "evidence": "Re-checked each capability claim in the expanded file: AskUserQuestion tool (prompt-3, 'at most four options per question, one question per call') matches current tool contract; Agent tool for subagent spawn (prompt-2, 'spawn a sub-task via the Agent tool') matches canonical tool name; CLAUDE.md/CLAUDE.local.md auto-load vs observations/ non-auto-load (body 'It is not auto-loaded the way CLAUDE.md and CLAUDE.local.md are') matches §6d. No claim contradicts shipped reality; harm (student told a false capability) is absent.",
       "fix_hint": null,
       "blocking": false
     },
@@ -100,7 +101,7 @@
       "rule_index": 6,
       "rule_lead": "Known correct Claude Code facts (easy to get wrong).",
       "verdict": "PASS",
-      "evidence": "'/rename m4-walk-send' (line 8) matches CLI /rename convention; 'spawn a sub-task via the Agent tool' (walk-and-send-off-2.md line 26) matches canonical tool name 'Agent', not the wrong 'Task' name flagged elsewhere in this compendium (\u00a719).",
+      "evidence": "'/rename m4-walk-send' (line 8) matches CLI /rename convention; 'spawn a sub-task via the Agent tool' (walk-and-send-off-2.md) uses the canonical tool name 'Agent', not the wrong 'Task' name §19 flags elsewhere. Re-verified against current registry file text, not carried from prior round.",
       "fix_hint": null,
       "blocking": false
     },
@@ -127,7 +128,7 @@
       "rule_index": "6d",
       "rule_lead": "Auto-load surface = FOUR things.",
       "verdict": "PASS",
-      "evidence": "Body line 57 correctly states observations/ 'is not auto-loaded the way CLAUDE.md and CLAUDE.local.md are' \u2014 consistent with the four-surface rule; no over-claim that an arbitrary gitignored folder auto-loads.",
+      "evidence": "Body correctly states observations/ 'is not auto-loaded the way CLAUDE.md and CLAUDE.local.md are' — consistent with the four-surface rule; no over-claim that an arbitrary gitignored folder auto-loads. Harm (student believes observations/ silently loads and skips naming the path) is absent.",
       "fix_hint": null,
       "blocking": false
     },
@@ -145,7 +146,7 @@
       "rule_index": "6f",
       "rule_lead": "Compendium pointers inside files = autoload-redundant.",
       "verdict": "N/A",
-      "evidence": "File contains no '\u2192 check_X.md' pointer.",
+      "evidence": "File contains no '→ check_X.md' pointer.",
       "fix_hint": null,
       "blocking": false
     },
@@ -161,9 +162,9 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 7,
-      "rule_lead": "Sessions = unit of work \u2014 'start a new session in X,' not 'open Claude Code in X.'",
+      "rule_lead": "Sessions = unit of work — 'start a new session in X,' not 'open Claude Code in X.'",
       "verdict": "PASS",
-      "evidence": "File uses 'Session (new, ...)' widget (line 5) and 'Start clean at your repo root' (line 11) \u2014 never 'open Claude Code'.",
+      "evidence": "File uses 'Session (new, ...)' widget (line 5) and 'Start clean at your repo root' (line 11) — never 'open Claude Code'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -181,7 +182,7 @@
       "rule_index": "7b",
       "rule_lead": "Cross-working-directory boundaries always open new; evidence travels by disk.",
       "verdict": "PASS",
-      "evidence": "File stays same session/cwd throughout (no worktree fork here \u2014 that's M5); observations/ and CLAUDE.local.md are correctly named as the gitignored artefacts that 'travel by disk' when M5's worktree-setup copies them (per prompt-3 frontmatter consumed-by list, matching \u00a77b's mechanism).",
+      "evidence": "File stays same session/cwd throughout (no worktree fork here — that's M5); observations/ and CLAUDE.local.md are correctly named as the gitignored artefacts that travel by disk when M5's worktree-setup copies them (walk-and-send-off-3.md frontmatter names ae101-m5-worktree-setup as a consumer), matching §7b's mechanism.",
       "fix_hint": null,
       "blocking": false
     },
@@ -215,7 +216,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 10,
-      "rule_lead": "External org content \u2014 IP boundary.",
+      "rule_lead": "External org content — IP boundary.",
       "verdict": "N/A",
       "evidence": "No external training/product content referenced.",
       "fix_hint": null,
@@ -262,7 +263,7 @@
       "rule_index": 14,
       "rule_lead": "Internal audit/session-retro directories default-gitignore from creation.",
       "verdict": "PASS",
-      "evidence": "Body line 56 instructs adding observations/ to .gitignore before any writes if new to the repo \u2014 matches gitignore-from-creation discipline (applied to the student's own repo, the analogous case this rule generalizes from).",
+      "evidence": "Body instructs adding observations/ to .gitignore before any writes if new to the repo — matches gitignore-from-creation discipline, applied to the student's own repo.",
       "fix_hint": null,
       "blocking": false
     },
@@ -305,7 +306,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 19,
-      "rule_lead": "Runner \u2194 source pre-flight.",
+      "rule_lead": "Runner ↔ source pre-flight.",
       "verdict": "N/A",
       "evidence": "No test-harness fixture numbering scheme in this file.",
       "fix_hint": null,
@@ -352,7 +353,7 @@
       "rule_index": 24,
       "rule_lead": "maintainer_acceptance = JSON-level override for accepted/mitigated judge verdicts.",
       "verdict": "N/A",
-      "evidence": "Instance-JSON tooling rule, not a claim in the target file.",
+      "evidence": "No mitigated/accepted finding on this file this round; nothing to override.",
       "fix_hint": null,
       "blocking": false
     },
@@ -368,9 +369,9 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 25,
-      "rule_lead": "Cowork capability surface \u2014 no session rename in Cowork or Desktop.",
+      "rule_lead": "Cowork capability surface — no session rename in Cowork or Desktop.",
       "verdict": "PASS",
-      "evidence": "'/rename m4-walk-send' (line 8) is CLI-only usage \u2014 matches the rule's statement that CLI /rename is the only rename path; no Cowork/Desktop rename claim made.",
+      "evidence": "'/rename m4-walk-send' (line 8) is CLI-only usage — matches the rule's statement that CLI /rename is the only rename path; no Cowork/Desktop rename claim made.",
       "fix_hint": null,
       "blocking": false
     },
@@ -379,7 +380,7 @@
       "rule_index": 26,
       "rule_lead": "Audit scope derives from TRAININGS registry + link-walk, not disk dir or tarball.",
       "verdict": "N/A",
-      "evidence": "Binds how the judge itself scopes an audit; already satisfied by the explicit file_path + compendium_paths instructions given for this fire.",
+      "evidence": "Binds how the judge itself scopes an audit; already satisfied by the explicit file_path + compendium_paths given for this fire.",
       "fix_hint": null,
       "blocking": false
     },
@@ -388,14 +389,14 @@
       "rule_index": 27,
       "rule_lead": "Acceptance-test contract covers (i)+(ii), NOT (iii) prompt's shell actually working.",
       "verdict": "N/A",
-      "evidence": "None of this exercise's three prompts contain a literal shell fence for the student to paste into a terminal \u2014 all are natural-language Claude Code asks (agent-run); the one raw command ('/rename m4-walk-send') is a Claude Code CLI slash-command, not a shell script, so axis (iii) doesn't apply.",
+      "evidence": "None of the three registry prompts contain a literal shell fence for the student to paste into a terminal — all are natural-language Claude Code asks (agent-run); the one raw command ('/rename m4-walk-send') is a Claude Code CLI slash-command, not a shell script the student types blind, so axis (iii) doesn't apply.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 28,
-      "rule_lead": "Strategy-doc drift surfaces via judge citation \u2014 citation = canary, not verdict.",
+      "rule_lead": "Strategy-doc drift surfaces via judge citation — citation = canary, not verdict.",
       "verdict": "N/A",
       "evidence": "No strategy-doc citation made or disputed in this pass.",
       "fix_hint": null,
@@ -406,14 +407,14 @@
       "rule_index": 29,
       "rule_lead": "Portability audits: analyze AGENT'S runtime, not prompt's literal syntax.",
       "verdict": "PASS",
-      "evidence": "All three prompts (`walk-and-send-off-1/2/3.md`) are agent-run natural language with `runtime: any` in frontmatter \u2014 correctly set since the agent, not the student, executes any underlying shell action (e.g. .gitignore edit, Agent-tool subagent spawn); no student-typed shell command exists to flag.",
+      "evidence": "All three prompts (walk-and-send-off-1/2/3.md) are agent-run natural language with runtime: any in frontmatter — correctly set since the agent, not the student, executes any underlying shell action (e.g. .gitignore edit, Agent-tool subagent spawn); no student-typed shell command exists to flag.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 30,
-      "rule_lead": "Skills at ~/.claude/skills/<name>/ are per-codebase in content \u2014 namespace by SUT.",
+      "rule_lead": "Skills at ~/.claude/skills/<name>/ are per-codebase in content — namespace by SUT.",
       "verdict": "N/A",
       "evidence": "No skill authored or named in this file.",
       "fix_hint": null,
@@ -424,7 +425,7 @@
       "rule_index": 31,
       "rule_lead": "state.json files are convenience caches, not authoritative.",
       "verdict": "N/A",
-      "evidence": "This file doesn't read or write state.json; task.md is the SUT-side canonical artefact per prompt-1's own note, consistent with this rule's preferred pattern.",
+      "evidence": "This file doesn't read or write state.json; task.md is the SUT-side canonical artefact per walk-and-send-off-1.md's own note, consistent with this rule's preferred pattern.",
       "fix_hint": null,
       "blocking": false
     },
@@ -467,16 +468,16 @@
     {
       "compendium": "check_research_claims.md",
       "rule_index": 1,
-      "rule_lead": "Source URL + type label \u2014 mandatory.",
+      "rule_lead": "Source URL + type label — mandatory.",
       "verdict": "N/A",
-      "evidence": "File's own backing block states 'Sources: (none. Every claim is the exercise's own design stance...)' \u2014 no citation exists to label.",
+      "evidence": "File's own backing block states 'Sources: (none. Every claim is the exercise's own design stance...)' — no citation exists to label.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": "1a",
-      "rule_lead": "OODA paraphrase \u2260 primary source.",
+      "rule_lead": "OODA paraphrase ≠ primary source.",
       "verdict": "N/A",
       "evidence": "No OODA-sourced claim transcribed in this file.",
       "fix_hint": null,
@@ -485,7 +486,7 @@
     {
       "compendium": "check_research_claims.md",
       "rule_index": 2,
-      "rule_lead": "Freshness rule \u2014 6 months.",
+      "rule_lead": "Freshness rule — 6 months.",
       "verdict": "N/A",
       "evidence": "No dated evidence citation to check for staleness.",
       "fix_hint": null,
@@ -530,9 +531,9 @@
     {
       "compendium": "check_research_claims.md",
       "rule_index": 7,
-      "rule_lead": "Vision \u00d7 Detail split.",
+      "rule_lead": "Vision × Detail split.",
       "verdict": "PASS",
-      "evidence": "Backing block correctly labels both file claims as 'vision' tier with '\u2190 none-owed' (lines 100-102 of source) \u2014 no practitioner/detail-tier claim mislabeled as vision, or vice versa.",
+      "evidence": "Backing block labels both file claims as 'vision' tier with '← none-owed' — no practitioner/detail-tier claim mislabeled as vision, or vice versa; matches re-read of the backing block.",
       "fix_hint": null,
       "blocking": false
     },
@@ -559,7 +560,7 @@
       "rule_index": 10,
       "rule_lead": "No 'What research says' callout boxes.",
       "verdict": "PASS",
-      "evidence": "File contains no such callout; citations (none exist) would in any case run inline, not boxed.",
+      "evidence": "File contains no such callout; there are no citations to box in any case.",
       "fix_hint": null,
       "blocking": false
     },
@@ -584,7 +585,7 @@
     {
       "compendium": "check_research_claims.md",
       "rule_index": 13,
-      "rule_lead": "Inference beyond source \u2014 absence licenses only absence.",
+      "rule_lead": "Inference beyond source — absence licenses only absence.",
       "verdict": "N/A",
       "evidence": "File draws no research conclusion from absence of a published finding.",
       "fix_hint": null,
@@ -595,7 +596,7 @@
       "rule_index": 14,
       "rule_lead": "A green check must measure the fact, not a proxy that co-varies with it.",
       "verdict": "N/A",
-      "evidence": "About verification-instrument design generally; not a property this file exhibits (it is not itself a checking instrument).",
+      "evidence": "About verification-instrument design generally; this file is not itself a checking instrument.",
       "fix_hint": null,
       "blocking": false
     },
@@ -620,16 +621,16 @@
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
-      "rule_lead": "Forcing functions stay, scripted reactions go \u2014 forcing functions live in prompts, not body.",
+      "rule_lead": "Forcing functions live in prompts, not body.",
       "verdict": "PASS",
-      "evidence": "The three load-bearing moves (screen+scope the task, run the audit, walk gaps with AskUserQuestion) all sit inside the fenced prompts (walk-and-send-off-1/2/3.md); body text around them is calibration/suggestion register ('probably two or three, not all five', 'push Claude to keep digging') not a bare imperative count.",
+      "evidence": "The three load-bearing moves (screen+scope the task, run the audit, walk gaps with AskUserQuestion) sit inside the fenced registry prompts; surrounding body text is calibration register ('probably two or three, not all five'), not a bare imperative substituting for the prompt's own mechanism. Harm this rule guards against (a rule stated only in prose that never reaches the agent) is absent — the mechanism is in the fence.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 22,
-      "rule_lead": "Rule in memory without forcing function = worse than no rule.",
+      "rule_lead": "Rule that does not force is worse than no rule.",
       "verdict": "N/A",
       "evidence": "About this repo's own memory-compounding discipline; not a property of the student-facing exercise file.",
       "fix_hint": null,
@@ -638,7 +639,7 @@
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 23,
-      "rule_lead": "Short skeptical pushback on 'done' = re-verify trigger.",
+      "rule_lead": "Skeptical pushbacks are re-verify triggers.",
       "verdict": "N/A",
       "evidence": "About the author's own re-verification habit; not a checkable property of the shipped file.",
       "fix_hint": null,
@@ -647,7 +648,7 @@
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 36,
-      "rule_lead": "Verification machinery needs smoke-test before trust.",
+      "rule_lead": "Verification machinery needs a smoke-test.",
       "verdict": "N/A",
       "evidence": "File builds no verification machinery (hook/judge/loop/eval/gate) for students to smoke-test.",
       "fix_hint": null,
@@ -656,9 +657,9 @@
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 37,
-      "rule_lead": "Context-loading tiers as staged progression.",
+      "rule_lead": "Context-loading tiers.",
       "verdict": "PASS",
-      "evidence": "Body (line 57) explicitly contrasts auto-load (CLAUDE.md/CLAUDE.local.md) against explicit-load (observations/, 'reads it when a prompt names the path, the same way it reads your ADRs') \u2014 teaches the tier distinction using the surface that proves it, per this rule's method.",
+      "evidence": "Body explicitly contrasts auto-load (CLAUDE.md/CLAUDE.local.md) against explicit-load (observations/, 'reads it when a prompt names the path, the same way it reads your ADRs') — teaches the tier distinction using the surface that proves it.",
       "fix_hint": null,
       "blocking": false
     }
@@ -693,45 +694,33 @@
   "skills_referenced": [],
   "urls_sampled": [],
   "four_shape_chain_check": {
+    "note": "Re-walked independently this round, not carried from prior verdict.",
     "body_shape_menu": [
       "Observation or rule",
       "Sharpen an existing rule",
       "Wire a connector",
       "Bring the material in"
     ],
-    "audit_tag_source": "walk-and-send-off-2.md line 30 (c): 'add an observation, sharpen a rule, wire a connector, or bring in material the repo doesn't carry'",
-    "fill_routing_source": "walk-and-send-off-3.md line 23: './observations/ folder ... for observations and material you brought in, ./CLAUDE.local.md for rule sharpening, connector setup for connector wiring'",
+    "audit_tag_source": "walk-and-send-off-2.md, item (c): 'add an observation, sharpen a rule, wire a connector, or bring in material the repo doesn't carry'",
+    "fill_routing_source": "walk-and-send-off-3.md body: 'the ./observations/ folder in your repo for observations and material you brought in, ./CLAUDE.local.md for rule sharpening, connector setup for connector wiring'",
     "mapping": [
-      {
-        "shape": "Observation or rule",
-        "audit_verb": "add an observation",
-        "fill_destination": "./observations/",
-        "deterministic": true
-      },
-      {
-        "shape": "Sharpen an existing rule",
-        "audit_verb": "sharpen a rule",
-        "fill_destination": "./CLAUDE.local.md",
-        "deterministic": true
-      },
-      {
-        "shape": "Wire a connector",
-        "audit_verb": "wire a connector",
-        "fill_destination": "connector setup (no file)",
-        "deterministic": true
-      },
-      {
-        "shape": "Bring the material in",
-        "audit_verb": "bring in material the repo doesn't carry",
-        "fill_destination": "./observations/",
-        "deterministic": true
-      }
+      { "shape": "Observation or rule", "audit_verb": "add an observation", "fill_destination": "./observations/", "deterministic": true },
+      { "shape": "Sharpen an existing rule", "audit_verb": "sharpen a rule", "fill_destination": "./CLAUDE.local.md", "deterministic": true },
+      { "shape": "Wire a connector", "audit_verb": "wire a connector", "fill_destination": "connector setup (no file)", "deterministic": true },
+      { "shape": "Bring the material in", "audit_verb": "bring in material the repo doesn't carry", "fill_destination": "./observations/", "deterministic": true }
     ],
-    "verdict": "PASS \u2014 all four body-named shapes have a matching audit-tag verb AND a named fill destination; no shape is orphaned, no destination is invented outside the three named in prompt-3's frontmatter (observations/, CLAUDE.local.md, connector setup).",
+    "verdict": "PASS — all four body-named shapes have a matching audit-tag verb AND a named fill destination; no shape is orphaned, no destination is invented outside the three named in walk-and-send-off-3.md's frontmatter (observations/, CLAUDE.local.md, connector setup). Maintainer note at line 90 confirms the retired 'naming-only tag' (a fifth, business-rules-pointer shape) was deliberately cut 2026-05-21 and must not be reintroduced — the corpus grep below confirms it wasn't.",
     "grep_business_rules_gap": {
-      "walk-and-send-off-2.md": 0,
-      "walk-and-send-off-3.md": 0
+      "curriculum/prompts/walk-and-send-off-2.md": 0,
+      "curriculum/prompts/walk-and-send-off-3.md": 0
     }
+  },
+  "section_9_pointer_check": {
+    "claim_location": "walk-and-send-off.md maintainer block: 'Send-off mechanism: owned by set-the-markers-send-it-off.md ... Do not restate the same-session rule, the laptop-sleep capability note or the trace-preservation contract here.'",
+    "finding": "This file itself makes none of the §9 capability claims (laptop-sleep freeze, Ctrl+C mid-tool-call corruption, no per-session token budget) — it correctly defers them, per its own maintainer note, to the sibling exercise. The claims live in set-the-markers-send-it-off.md line 84: 'Capability verified: laptop-sleep freezes the session (not resumable on wake); Ctrl+C mid-tool-call can corrupt the .jsonl; no per-session token budget. Details in reference/claude-code-for-engineers.md § 9.'",
+    "pointer_resolution": "reference/claude-code-for-engineers.md § 9 ('Long-running shapes') read in full this round. All three claims verified word-for-true-fact against the section's 'Session lifecycle: three gotchas' subsection: (1) 'Laptop sleep freezes the session... does NOT resume on wake' — matches; (2) 'Ctrl+C during a tool call can corrupt the session... leave the session's .jsonl in a state that fails to resume' — matches; (3) 'No per-session budget cap' — matches verbatim heading. Pointer resolves; no drift found after today's edits to this file's maintainer block (the edits under review here didn't touch the Send-off-mechanism note or the §9 claims themselves).",
+    "verdict": "PASS",
+    "blocking": false
   },
   "blocking_findings_count": 0,
   "todos_count": 0

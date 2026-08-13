@@ -1,11 +1,11 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/fork-the-worktree.md",
-  "body_sha": "6f0e9399e2de891ca56347c1b564d20a3ac2d883b4685b6a52edf56019d67459",
+  "body_sha": "97a86e3cc761337a559435b3434b59034f60d667878bcc33a30dbc8e2fe810e9",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "H1/lede — Fork the worktree, carry the evidence", "lines": "1-16"},
+    {"index": 0, "heading": "Fork the worktree, carry the evidence (H1/lede)", "lines": "1-16"},
     {"index": 1, "heading": "Phase 1: Fork it", "lines": "17-28"},
     {"index": 2, "heading": "Check the copy landed", "lines": "29-34"},
     {"index": 3, "heading": "Anchor the fork to the run coordinates", "lines": "35-40"}
@@ -17,7 +17,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm this rule prevents: a slide-viewer stranded on a pronoun/demonstrative with no in-file antecedent. Checked every chunk: chunk 0's 'the session you sent off from' is the session-artifacts carve-out (student's own live session); chunk 1's prompt is self-contained; chunk 2's 'the output'/'the worktree path' continue chunk 1's own prompt-and-response; chunk 3's 'Run coordinates' block and 'M4 starting point' commit were both first named inside chunk 1's prompt text and are reused, not invented. No never-named or vague-with-full-history referent found — harm absent.",
+      "evidence": "Chunk 0: \"the commit your un-packaged run started at\" and chunk 3: \"the starting-point SHA Claude reported before the send-off\" resolve under the session-artifact carve-out (student's own prior send-off run). Chunk 1's \"the six sub-steps\" resolves in-chunk against the fenced {{prompt:ae101-m5-worktree-setup}} block sitting directly below it. Chunk 2's \"the output\"/\"the two paths Claude checked\" resolve against chunk 1's prompt run and CLAUDE.local.md/observations/ naming. No never-named or vague-with-history referents found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -25,9 +25,9 @@
       "compendium": "check_slides.md",
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
-      "verdict": "N/A",
+      "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a slide pointing at another file by position ('the opening lecture said'). No body text names another file at all (the only cross-file reference, 'learn-from-the-test.md', sits in the maintainer block below the cut) — harm not applicable to this body.",
+      "evidence": "No chunk points at another file by position; all backward references are within-file or session-artifact-scoped.",
       "fix_hint": null,
       "blocking": true
     },
@@ -37,7 +37,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a dead 'the X you did/saw' pointing at a beat the current module set doesn't have. The only backward-looking mentions are the session-artifact carve-out ('the session you sent off from') and 'the M4 rules and observations' — both point at real, current prior-module state (M4), not a removed beat. Harm absent.",
+      "evidence": "Chunk 3's \"before the send-off\" and chunk 0's \"your un-packaged run\" point at the student's own prior M4 send-off, which the module's own sequencing (this exercise's placement) guarantees already happened; no dead beat reference found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -47,7 +47,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Harm: a guess-before-reveal beat broken by the reveal landing above the guess. No guess/predict construct anywhere in this file's body — harm not applicable.",
+      "evidence": "No guess-before-reveal instruction anywhere in this file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -57,7 +57,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a chunk that projects as content-free (a lone wait-state bullet). Every chunk carries multiple substantive, self-carrying bullets or a full prompt block — none is a bare context-dependent fragment. Harm absent.",
+      "evidence": "Every chunk (title metadata, Phase 1 prompt beat, copy-check, coordinate-recovery ladder) carries a self-standing claim.",
       "fix_hint": null,
       "blocking": false
     },
@@ -67,7 +67,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a header the chunk's own content contradicts. This is the previously-flagged chunk: heading is now 'Anchor the fork to the run coordinates' (pre-extraction title), and content is the normal-case read of Run coordinates plus two fallback bullets — the header covers both, it no longer promises fallback-only content while opening with the success path. Harm resolved; re-derived independently, not taken on the maintainer note's word.",
+      "evidence": "\"Phase 1: Fork it\" → forking content; \"Check the copy landed\" → the copy-verification bullets; \"Anchor the fork to the run coordinates\" → the coordinates-recovery ladder (maintainer note confirms this heading was deliberately kept neutral because the first bullet is the normal path, not just the failure case). All headers match their chunk's content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -77,7 +77,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: visible LLM tics (Not-X-Not-Y-Z, anaphora triples, self-grading superlatives, number+retraction, abstraction-noun stacks, empty-leg verb triplets) turning a slide into filler. Scanned every chunk for each sub-item: none present. Harm absent across all sub-items.",
+      "evidence": "No \"Not X. Not Y. Z.\" construction, no anaphora/epistrophe triples, no self-grading superlatives, no unlabeled-number-with-retraction, no abstraction-noun stacks, no verb triplets with an empty leg, in any chunk.",
       "fix_hint": null,
       "blocking": true
     },
@@ -87,7 +87,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: repo/maintainer vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood) landing on a projected slide where an engineer in the room has no context for it. Body uses only ordinary or arc-earned terms (session, worktree, branch, commit, task.md) — no maintainer dialect in chunks 0-3. Harm absent.",
+      "evidence": "Vocabulary used (worktree, split test, gitignored, send-off, m4/<slug> branch, Run coordinates block) is training-established or ordinary engineering shop talk for AE101's IC audience, not repo-internal dialect (compendium, beat, forcing function, surface-as-noun). The prompt body itself is fenced and exempt.",
       "fix_hint": null,
       "blocking": true
     },
@@ -97,7 +97,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: bold used on whole narrative lead sentences instead of short handles, exceeding the ≤1-bolded-element norm. Chunk 0's bolds ('Time:', 'Session', 'What you do:', 'What you build:', 'The point:') are the standard exercise-widget label pattern, each ≲3 words, not narrative leads; chunks 1-3 carry no body bold outside the fenced prompt (exempt). Harm absent.",
+      "evidence": "Chunk 0's bold spans (Time, Session, What you do, What you build, The point) are the architecture-mandated exercise metadata labels, not bolded narrative sentences; chunk 1's \"Prompt\" is the Prompt widget's own mandated label. No chunk opens every bullet with a bolded lead.",
       "fix_hint": null,
       "blocking": false
     },
@@ -107,7 +107,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Harm: rules 1-9 evaluated against a section absent from the composed Slides deck (phase-less prose dropped by buildDeckModel). This file's sections sit inside the standard exercise wrapper structure used throughout AE101 exercises — no reason to suspect deck-absence, and this rule is a presence gate, not a per-chunk content rule to score PASS/REVISE on. Harm not applicable here.",
+      "evidence": "This is an inlined exercise body under a `.phase--exercise` wrapper; no phase-less prose section at risk of dropping from the composed deck.",
       "fix_hint": null,
       "blocking": false
     },
@@ -117,7 +117,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: hand-numbered slide position, or a 'Phase K'/'Step K' reference that doesn't resolve in-file. Only one phase header exists ('Phase 1: Fork it'), no other phase is referenced elsewhere in this file, so there is no sequence or cross-reference to break. Harm absent.",
+      "evidence": "Only one content ordinal (\"Phase 1: Fork it\"), no other in-file \"Phase K\"/\"Step K\" reference to check. `node scripts/check-slide-numbering.js --file curriculum/exercises/fork-the-worktree.md` → \"OK — 1 files, Phase/Step numbering consistent.\"",
       "fix_hint": null,
       "blocking": false
     },
@@ -127,7 +127,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a body pointer aimed at page position ('below', 'above', 'at the top of this page') that resolves to nothing once the renderer cuts at ##. No such geometry language appears anywhere in the body. Harm absent.",
+      "evidence": "No body instance of below/above/further down/at the top/see below; `node scripts/check-slide-deixis.js --file curriculum/exercises/fork-the-worktree.md` → \"OK — 1 files, no page-geometry pointers across the slide cut.\" (The one \"above the include\" hit is in the maintainer block, out of scope.)",
       "fix_hint": null,
       "blocking": false
     },
@@ -137,9 +137,19 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Harm: an in-body link that doesn't earn its place, or is located by page geometry rather than named. The body carries zero in-body links (the one cross-doc pointer, '[Exercise: Diagnose and re-send]', sits in the maintainer block below the cut, exempt). Harm not applicable.",
+      "evidence": "No in-page links in this file's body.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/exercises/fork-the-worktree.md --report`: Anchor the fork to the run coordinates = 82 words / 3 bullets; Check the copy landed = 66 words / 3 bullets; Phase 1: Fork it = 52 words / 2 bullets. Summary: files 1, slides 3, oversized 0.",
+      "fix_hint": null,
+      "blocking": true
     }
   ],
   "blocking_findings_count": 0,

@@ -56,5 +56,5 @@ Ask Claude to fork the worktree and copy your gitignored files across.
 
 **Placement:** immediately before `[Exercise: Diagnose and re-send]`. It must stay there — the diagnosis session opens *inside* the worktree this exercise creates.
 
-**Quality:** compendium-audited 2026-08-12 (writing@61e7fc9 story@61e7fc9 technical@61e7fc9 behavior@61e7fc9 pedagogy@61e7fc9 strategy@61e7fc9 slides@61e7fc9)
-- judges @61e7fc9: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-13 (writing@ca5e5c5 story@ca5e5c5 technical@61e7fc9 behavior@61e7fc9 pedagogy@ca5e5c5 strategy@61e7fc9 slides@ca5e5c5)
+- judges @ca5e5c5: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

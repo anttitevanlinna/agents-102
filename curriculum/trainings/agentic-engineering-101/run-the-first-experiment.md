@@ -161,7 +161,7 @@ Optional. They sit in the gap while your un-packaged session is still going. All
 - `[checked:2026-07-31 result:OK due:none]` https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md — [delegated stamp] Horthy, *Why Software Factories Fail*. Freshest dated check is `lectures/when-a-plan-is-good.md`. This module carries the pointer and its thesis, no number, so it delegates rather than keeping a fourth copy of the date. fallback: drop the pointer.
 
 **Frameworks riffed on (attributed in lecture):**
-- **Gap analysis** — generic business-analysis framework; no single attribution needed. Named in Phase 2 as *"walk the system you have against the system the task needs."*
+- **Gap analysis** — generic business-analysis framework; no single attribution needed. The Phase 2 audit is this move and the body never names it: the label is universally known and adds nothing the ranked list does not already do.
 - **Compound engineering** — Kieran Klaassen. Named on the student surface only as a Module 5 pre-read; this module deliberately runs no compound step, so the loop is carried rather than recited.
 
 **`practice` as a noun stays in the opener's one engineered sentence and nowhere else in this file.** `check_writing.md §2`'s AE101 carve-out earns the word at M4, and it earns it once — *"The practice is yours now"* in `## Start here`. Every other beat says *move*.

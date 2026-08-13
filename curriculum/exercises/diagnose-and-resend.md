@@ -152,8 +152,8 @@ Your `CLAUDE.local.md` and `observations/` have been building in the worktree si
 
 **Emphasis:** Bold is limited to title-page labels, widget chrome, the Phase 3 verifier-shape menu handles (**Background-agent verifier** / **Deterministic shell-hook** / **Ralph re-feed**), the Phase 4 stop-gate handle, and the two definitional handles on *The reference and plan.md* (**Reference** / **plan.md**). All other body prose stays unbolded.
 
-**Quality:** compendium-audited 2026-08-12 (writing@61e7fc9 behavior@61e7fc9 pedagogy@61e7fc9 strategy@1c765f2 slides@61e7fc9)
-- judges @61e7fc9: writing PASS, story REVISE (2blocking/1todo-see-instances/ae101--exercise--diagnose-and-resend.story.json), technical REVISE (1blocking/0todo-see-instances/ae101--exercise--diagnose-and-resend.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-13 (writing@61e7fc9 story@ca5e5c5 technical@ca5e5c5 behavior@ca5e5c5 pedagogy@61e7fc9 strategy@1c765f2 slides@61e7fc9)
+- judges @ca5e5c5: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Word count:** ~810 words body.

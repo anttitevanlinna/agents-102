@@ -1,7 +1,7 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/set-the-markers-send-it-off.md",
-  "body_sha": "c08781d4a0ce0fd74326bd5cc86af1de404984a079db868b8c531ce254a9aaba",
+  "body_sha": "e549766299dafd92f3997b97d19a80a233103aa0fa7149fbf597adcc4d3f7fb5",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
@@ -19,7 +19,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 3's new lead-in \"Want it on the remote anyway? Ask Claude to push the branch.\" — \"it\" resolves to \"the commit\" named in the same chunk's opening bullet, and \"the branch\" was named two chunks earlier (chunk 2, \"Create a fresh feature branch\") — arc-earned within-file reuse per §1's explicit non-violation carve-out. No new pronoun/demonstrative in any other chunk.",
+      "evidence": "Chunk 3's new close, \"Ask Claude to push the branch to the remote.\" — \"the branch\" was named two chunks earlier (chunk 2 header \"Pin the starting point\" + \"commit current state on a feature branch\"), in-file reuse, not a violation. Chunk 5's new close, \"If Claude stalls, ask it to keep going — the nudge is phrased as encouragement and lands as a taunt.\" — \"it\" resolves to \"Claude\" in the same clause; \"the nudge\" resolves to the instruction just given (\"ask it to keep going\"), itself an instance of the \"Nudge by hand\" bullet earlier in the SAME chunk (line 74) — both antecedents sit inside chunk 5, no forward or cross-file pointer.",
       "fix_hint": null,
       "blocking": true
     },
@@ -29,7 +29,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No chunk points at another file by position; \"Ask Claude to push the branch\" is an in-file forward action, not a callback to another document.",
+      "evidence": "No chunk points at another file by position. Both new lead-ins (\"push the branch to the remote\", \"the nudge is phrased as encouragement\") are in-file, in-chunk statements, not callbacks.",
       "fix_hint": null,
       "blocking": true
     },
@@ -37,9 +37,9 @@
       "compendium": "check_slides.md",
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "N/A",
+      "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No \"the X you did/saw\" backward reference in any chunk of this file.",
+      "evidence": "Chunk 0's \"The same session that ran the audit\" is the only backward beat reference in the file; \"the audit\" resolves against the module's actual preceding exercise (`walk-and-send-off.md`, included immediately above this file under \"## Send the task off\" in `run-the-first-experiment.md`, and its Key Concepts line \"The audit ranked the thin spots...\"). Beat exists.",
       "fix_hint": null,
       "blocking": true
     },
@@ -59,7 +59,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 3 now carries header, one bullet, an explicit question-plus-instruction, and the push prompt fence — a self-carrying claim, strengthened rather than weakened by the added lead-in. All other chunks unchanged and self-carrying.",
+      "evidence": "Every chunk carries header + instruction + prompt fence (chunk 4 is thinnest at 14 words but still states the whole send-off instruction plus its prompt). No chunk is a bare wait-state.",
       "fix_hint": null,
       "blocking": false
     },
@@ -69,7 +69,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "\"Push it only if you want it off this laptop\" is borne out by the chunk's own content (commit stays local by default; new line makes the opt-in action explicit) — header not contradicted.",
+      "evidence": "\"While it runs\" is borne out by its own bullets (keep laptop awake, nudge by hand, stop if off the rails) plus the new closing line about stalls — content matches header at slide scope.",
       "fix_hint": null,
       "blocking": false
     },
@@ -79,7 +79,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No \"Not X. Not Y. Z.\" construction, no anaphora triples, no self-grading superlative, no number-plus-retraction outside the already-accepted §16 pacing note, no abstraction-noun stacks, no empty-leg verb triplets in any chunk, including the new sentence in chunk 3.",
+      "evidence": "No \"Not X. Not Y. Z.\" construction, no anaphora/epistrophe triple, no self-grading superlative, no abstraction-noun stack, no empty-leg verb triplet in any chunk. \"Past ten or so interventions\" (chunk 5) is a suggestion-register pacing calibration per the file's own maintainer block (§16 boundary clause), not the banned number-plus-retraction tic — it never retracts itself, it calibrates with \"or so.\"",
       "fix_hint": null,
       "blocking": true
     },
@@ -89,7 +89,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No repo/authorial vocabulary (compendium, forcing function, beat, mood, surface-as-noun) in any body chunk.",
+      "evidence": "No repo/authorial vocabulary (compendium, forcing function, beat, mood, surface-as-noun) anywhere in the body chunks (0-5); those terms appear only below the maintainer cut.",
       "fix_hint": null,
       "blocking": true
     },
@@ -99,7 +99,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Only bolded elements are the widget-type handles (\"Prompt\") and the Session/Time/What-you-do/build/point handles in chunk 0 — no new bold introduced by this diff.",
+      "evidence": "Only bolded elements are the field-label handles in chunk 0 (Time/Session/What you do/What you build/The point) and the \"Prompt\" widget handles inside fences (exempt). No bolded lead sentences in any body chunk.",
       "fix_hint": null,
       "blocking": false
     },
@@ -109,7 +109,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "File body sits under the exercise phase wrapper per its inclusion in the module; unchanged by this diff, and the new lead-in sentence is plain body text, not a phase-less section that could drop from the composed deck.",
+      "evidence": "Whole file is plain exercise body under its module's `.phase--exercise` include; no phase-less prose section that could drop from the composed deck.",
       "fix_hint": null,
       "blocking": false
     },
@@ -119,7 +119,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "\"Phase 1\"/\"Phase 2\" content ordinals are consecutive and unaffected by this diff; `node scripts/check-slide-numbering.js curriculum/exercises/set-the-markers-send-it-off.md` (run against the full 61-file corpus) reports OK.",
+      "evidence": "\"Phase 1\"/\"Phase 2\" content ordinals are consecutive and unaffected by this diff.",
       "fix_hint": null,
       "blocking": false
     },
@@ -129,7 +129,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "New sentence \"Want it on the remote anyway? Ask Claude to push the branch.\" carries no positional pointer (no \"below/above/further down\"); `node scripts/check-slide-deixis.js --file curriculum/exercises/set-the-markers-send-it-off.md` reports no page-geometry pointers across the cut.",
+      "evidence": "Neither new lead-in (\"push the branch to the remote\", \"the nudge is phrased as encouragement\") carries a positional pointer (no below/above/further down); `grep -niE` for geometry words hits only line 108, which is below the maintainer cut (exempt); `node scripts/check-slide-deixis.js --file curriculum/exercises/set-the-markers-send-it-off.md --report` returns clean.",
       "fix_hint": null,
       "blocking": false
     },
@@ -149,7 +149,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/exercises/set-the-markers-send-it-off.md` reports 5 slides, 0 oversized, well inside 210 words / 6 bullets even with the added lead-in sentence in chunk 3.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/exercises/set-the-markers-send-it-off.md --report` (tightened limits, module files included, forks de-duplicated) reports 5 slides, 0 oversized; largest is chunk 5 \"While it runs\" at 85 words / 3 bullets, well inside 210/6.",
       "fix_hint": null,
       "blocking": false
     }

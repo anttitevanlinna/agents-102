@@ -1,7 +1,7 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/diagnose-and-resend.md",
-  "body_sha": "b187c2ab9b773ea9cdff56c836c110fc5b8b159b7b645734b393fe2efefce2cf",
+  "body_sha": "d96416c6ced9f9c940ca8fd2ad2ee9c8cfb8fe18d450ae9ab54913efbf5b15d6",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "learning through contrast — \"I can feel what packaging adds now; I couldn't have read it as a lecture\"",
@@ -21,7 +21,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "PASS",
-      "evidence": "This rule's own worked example names the exact risk this run re-verified: named practitioner terms belong in the closer, not before. Grep confirms 0 hits for Ronacher/Huntley/Cherny/Kim/Osmani/three-pattern across all 8 prompts this exercise sends (diagnose-and-resend-1..6, ae101-m5-clear-before-rerun, ae101-m5-rerun-packaged); prompt 3's current working-tree text reads 'Don't name frameworks or practitioners by label. Walk from the specific failure to the specific validation.' with the parenthetical examples and 'The naming happens later' both removed.",
+      "evidence": "Re-verified live: `grep -cE 'converge|often mention|Practitioners' curriculum/prompts/diagnose-and-resend-3.md` = 0. Prompt 3's current text opens 'Validation for multi-hour agent runs groups into three categories.' with no population claim, and closes 'Don't name frameworks or practitioners by label. Walk from the specific failure to the specific validation.' Checked all 8 sent prompts (diagnose-and-resend-1..6, ae101-m5-clear-before-rerun, ae101-m5-rerun-packaged) for Ronacher/Huntley/Cherny/Kim/Osmani/three-pattern — zero matches.",
       "fix_hint": null,
       "blocking": false
     },
@@ -48,7 +48,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/exercises/diagnose-and-resend.md` reports: 11 slides, 0 oversized, 210-word/6-bullet limits — includes Phase 5 and its two sub-sections.",
+      "evidence": "File reads at ~810 words body (maintainer word-count line), spread across 5 phases plus a short setup/close; no phase reads as an oversized single slide relative to the others. No size regression from the two edits in scope (Placement line, Send-off heading date removal) — both are one-line maintainer-block changes, not body growth.",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,7 +84,7 @@
       "rule_index": 47,
       "rule_lead": "Per-phase failure mode + escape hatch.",
       "verdict": "PASS",
-      "evidence": "HARM this rule prevents: a trainer facing a stuck student at a forcing-function beat has no authored diagnostic or recovery move to reach for. HARM NOW ABSENT: the maintainer's Failure-modes+diagnostics ledger carries two Phase 5 rows — 'Phase 5 polished-report acceptance' (diagnostic: student can summarise what the agent said but not what the verifier returned; trainer push: 'run the verifier yourself. What does it say?') and 'Phase 5 re-send from the wrong place' (diagnostic: fresh session's rules/paths don't match Phase 4's; fix: check `pwd`). Phase 5 now has a named dominant failure AND a recovering move, matching every other phase's ledger shape. Placement line (166) and the 'Send-off mechanism' heading (238) are both correctly re-attributed to this file as of 2026-08-12.",
+      "evidence": "HARM this rule prevents: a trainer facing a stuck student at a forcing-function beat has no authored diagnostic or recovery move to reach for. HARM NOW ABSENT: the maintainer's Failure-modes+diagnostics ledger carries two Phase 5 rows — 'Phase 5 polished-report acceptance' (diagnostic: student can summarise what the agent said but not what the verifier returned; trainer push: 'run the verifier yourself. What does it say?') and 'Phase 5 re-send from the wrong place' (diagnostic: fresh session's rules/paths don't match Phase 4's; fix: check `pwd`). Re-verified line 166 (Placement: 're-send is Phase 5 of this exercise, not a module-level beat; the module file must not carry a second one') and line 238 ('Send-off mechanism (Phase 5, owned by this file):', no date) both correctly attribute the mechanism and its ownership to this file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -93,7 +93,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Regenerated three-persona trace (phases + close, all personas) scores 8 or 9 at every beat with `any_below_8: false`. The prior 7/10 dip (opinionated-senior, Phase 2) was a direct read on prompt 3's now-removed parenthetical; with that text gone from the pasted prompt, the persona has nothing early to privately clock and the beat re-scores 8.",
+      "evidence": "Regenerated trace (Phase 5 re-hashed after the Placement/Send-off-heading edits; Phases 1-4 unchanged) scores 8 or 9 at every beat across all three personas, `any_below_8: false`. The Phase 5 edits are maintainer-block-only (Placement line, heading date removal) and don't touch the persona-facing body text, so mood at that beat is unaffected.",
       "fix_hint": null,
       "blocking": true
     },
@@ -120,7 +120,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "HARM this rule prevents: the closing lecture's naming of the practitioner pattern gets front-run, so the room's recognition beat lands as re-confirmation instead of discovery. HARM NOW ABSENT: `diagnose-and-resend-3.md`'s working-tree text no longer contains 'Ronacher's three-pattern' / 'Huntley's Ralph' or the 'naming happens later' tell (verified: `grep -c 'Ronacher' curriculum/prompts/diagnose-and-resend-3.md` = 0); the bare instruction 'Don't name frameworks or practitioners by label' survives without the examples that were doing the spoiling. Checked all 8 sent prompts (diagnose-and-resend-1..6, ae101-m5-clear-before-rerun, ae101-m5-rerun-packaged) for Ronacher/Huntley/Cherny/Kim/Osmani/three-pattern — zero matches. The backing block's Frameworks ledger note ('Do not restore \"Ronacher's three-pattern\" here') and the Watch-fors entry now describe a risk the prompt text no longer creates. Other §4 facets: the five phases match M5's diagnose→map→verify→package→re-send sequence, line 137 hands the report to Module 6's open, and no phase resolves the contrast before Phase 5 actually runs.",
+      "evidence": "HARM this rule prevents: the closing lecture's naming of the practitioner pattern gets front-run, so the room's recognition beat lands as re-confirmation instead of discovery. HARM NOW ABSENT: live grep confirms `curriculum/prompts/diagnose-and-resend-3.md` carries zero hits for 'converge|often mention|Practitioners', and the population-claim opener is gone (current opener: 'Validation for multi-hour agent runs groups into three categories.'). Checked all 8 sent prompts for Ronacher/Huntley/Cherny/Kim/Osmani/three-pattern — zero matches. Other §4 facets re-verified this run: the five phases match M5's diagnose→map→verify→package→re-send sequence, line 137 hands the report to Module 6's open, no phase resolves the contrast before Phase 5 actually runs, and the Placement line (166) now correctly scopes the re-send to this file alone (module must not carry a second one) with the Send-off mechanism heading (238) carrying no stale date.",
       "fix_hint": null,
       "blocking": true
     },
@@ -158,7 +158,7 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "teaching_moment_lands": "PASS. Across mid-layer, opinionated-senior, and fast-operator traces, the student moves from a quoted failure to a verifier shape, forces both PASS and FAIL behavior, builds the remaining package around the same task, and re-sends the packaged task in Phase 5, reading a candid report cold. The fast operator consumes only the dominant mapping deeply and cuts the Phase 4 grill at the stated threshold, and still feels the Phase 5 payoff immediately via the shrunk prompt, so the moment survives speed without turning into a reading-completion test. The opinionated-senior persona, previously the one persona at risk of an early reveal via prompt 3's parenthetical, now reads the same withholding instruction with nothing to privately clock.",
+  "teaching_moment_lands": "PASS. Across mid-layer, opinionated-senior, and fast-operator traces, the student moves from a quoted failure to a verifier shape, forces both PASS and FAIL behavior, builds the remaining package around the same task, and re-sends the packaged task in Phase 5, reading a candid report cold. The fast operator consumes only the dominant mapping deeply and cuts the Phase 4 grill at the stated threshold, and still feels the Phase 5 payoff immediately via the shrunk prompt, so the moment survives speed without turning into a reading-completion test. The opinionated-senior persona reads prompt 3's now-name-free closing instruction with nothing to privately clock before the closing lecture's reveal. This run's two edits (Placement line, Send-off heading date removal) are maintainer-only content and don't change any persona's read of Phase 5.",
   "blocking_findings_count": 0,
   "todos_count": 0
 }

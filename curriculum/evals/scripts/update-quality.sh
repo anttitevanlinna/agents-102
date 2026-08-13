@@ -497,6 +497,42 @@ awk -v top="$NEW_TOP" \
 ' "$FILE" > "$TMP"
 
 mv "$TMP" "$FILE"
+
+# ---- Carry pending verdicts across our own write -----------------------------
+# Judges return asynchronously, so a file's classes arrive one at a time. Every
+# stamp rewrites the Quality block and so changes the whole-file hash — which made
+# the guard above refuse every verdict still pending on the same file. The tool was
+# invalidating verdicts as a side effect of recording one, and the only workaround
+# was an ordering discipline (collect ALL classes, then stamp once) that async
+# dispatch cannot guarantee.
+#
+# We know exactly what changed: the Quality block, and nothing else. A verdict that
+# was valid immediately BEFORE this write is still a true claim about the body
+# immediately after, because no judge's verdict reads the Quality rows — those are
+# the audit log this script owns. Accept-notes, which judges DO read, live in other
+# maintainer paragraphs and are untouched here.
+#
+# So advance only the instances whose recorded sha equals the PRE-write hash. Any
+# instance recording something else was already stale for a real reason and stays
+# refused. This narrows the guard to its actual purpose (the body moved under a
+# judge) instead of also catching the stamper's own footprint.
+new_file_sha="$(shasum -a 256 "$FILE" 2>/dev/null | awk '{print $1}')"
+if [[ -n "$file_sha" && -n "$new_file_sha" && "$file_sha" != "$new_file_sha" && -d "$INSTANCES_DIR" ]]; then
+  for cls in writing story technical behavior pedagogy strategy slides; do
+    if [[ -n "$surface" ]]; then
+      inst=( "$INSTANCES_DIR"/*--"$surface"--"$slug"."$cls".json )
+    else
+      inst=( "$INSTANCES_DIR"/*--"$slug"."$cls".json )
+    fi
+    [[ -e "${inst[0]}" ]] || continue
+    [[ ${#inst[@]} -eq 1 ]] || continue
+    rec="$(sed -nE 's/.*"body_sha"[[:space:]]*:[[:space:]]*"([a-f0-9]{64})".*/\1/p' "${inst[0]}" | head -1)"
+    [[ "$rec" == "$file_sha" ]] || continue
+    sed -i.bak -E "s/(\"body_sha\"[[:space:]]*:[[:space:]]*\")$file_sha(\")/\1$new_file_sha\2/" "${inst[0]}"
+    rm -f "${inst[0]}.bak"
+  done
+fi
+
 echo "Updated Quality block in $FILE"
 echo "---"
 awk '/^\*\*Quality:\*\*/ {p=1} p && /^$/ {exit} p' "$FILE"

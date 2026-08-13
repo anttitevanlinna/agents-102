@@ -287,6 +287,50 @@ rc=$(run "$TMP/curriculum/exercises/t16.md" --writing PASS --sha new5678 --date 
 assert_rc   "$rc" "0" 'T16 same-slug collision stamps when the OWN surface matches'
 assert_grep "$TMP/curriculum/exercises/t16.md" 'writing@new5678' 'T16 pin written'
 
+# ── T17 — stamping one class must not invalidate the others ──────────────────
+#    Judges return asynchronously, so a file's classes arrive one at a time. Each
+#    stamp rewrites the Quality block, which changes the whole-file hash, which
+#    made the guard refuse every verdict still pending on that file — the tool
+#    invalidating verdicts as a side effect of recording one. The guard must stay
+#    armed against real body movement while ignoring its OWN write: a verdict that
+#    was valid immediately before the stamp is still a true claim about the body
+#    immediately after, because the only delta is the Quality block, which no
+#    judge's verdict reads (accept-notes live in other maintainer paragraphs).
+mkdir -p "$TMP/curriculum/lectures"
+mkfix curriculum/lectures/t17.md '# Lesson
+body text the judges read
+<!-- maintainer -->
+**Quality:** compendium-audited 2026-05-15 (writing@old1234 slides@old1234)
+- judges @old1234: writing PASS, slides PASS'
+sha17=$(shasum -a 256 "$TMP/curriculum/lectures/t17.md" | awk '{print $1}')
+printf '{"class":"writing","body_sha":"%s","verdict":"PASS"}\n' "$sha17" \
+  > "$INST/ae101--lecture--t17.writing.json"
+printf '{"class":"slides","body_sha":"%s","verdict":"PASS"}\n' "$sha17" \
+  > "$INST/ae101--lecture--t17.slides.json"
+rc=$(run "$TMP/curriculum/lectures/t17.md" --writing PASS --sha new1111 --date 2026-06-01)
+assert_rc "$rc" "0" 'T17a first class stamps'
+rc=$(run "$TMP/curriculum/lectures/t17.md" --slides PASS --sha new2222 --date 2026-06-01)
+assert_rc   "$rc" "0" 'T17b second class still stamps after the first rewrote the block'
+assert_grep "$TMP/curriculum/lectures/t17.md" 'slides@new2222' 'T17b second pin written'
+
+# T18 — the guard must still fire when the BODY actually moved between stamps.
+#       T17 must not have been bought by disarming the guard.
+mkfix curriculum/lectures/t18.md '# Lesson
+body text the judges read
+<!-- maintainer -->
+**Quality:** compendium-audited 2026-05-15 (writing@old1234 slides@old1234)
+- judges @old1234: writing PASS, slides PASS'
+sha18=$(shasum -a 256 "$TMP/curriculum/lectures/t18.md" | awk '{print $1}')
+printf '{"class":"writing","body_sha":"%s","verdict":"PASS"}\n' "$sha18" \
+  > "$INST/ae101--lecture--t18.writing.json"
+printf '{"class":"slides","body_sha":"%s","verdict":"PASS"}\n' "$sha18" \
+  > "$INST/ae101--lecture--t18.slides.json"
+rc=$(run "$TMP/curriculum/lectures/t18.md" --writing PASS --sha new1111 --date 2026-06-01)
+assert_rc "$rc" "0" 'T18a first class stamps'
+printf 'a neighbour session edited the body\n' >> "$TMP/curriculum/lectures/t18.md"
+rc=$(run "$TMP/curriculum/lectures/t18.md" --slides PASS --sha new2222 --date 2026-06-01)
+assert_rc "$rc" "1" 'T18b real body movement between stamps still refuses'
+
 unset QUALITY_INSTANCES_DIR
 
 echo "──────────────────────────────"

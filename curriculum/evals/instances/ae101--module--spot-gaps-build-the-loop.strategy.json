@@ -1,10 +1,10 @@
 {
   "class": "strategy",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md",
-  "body_sha": "05061097fe3d585732ec1c9ce381bdd4b9e029d44d24d16007f38a45b9843b6f",
+  "body_sha": "2e791b10ac012bf17c74f08044e019a2b9a08d1559578a28cdf34310389aa2fc",
   "verdict": "PASS",
   "training": "ae101",
-  "strategy_doc_section_loaded": "M6 in detail — spot gaps, build the loop (content-strategy-agentic-engineering-101.md, lines 447-492); Recurring themes (lines 104-121); Mood arc (lines 256-267)",
+  "strategy_doc_section_loaded": "content-strategy-agentic-engineering-101.md §M6 in detail — spot gaps, build the loop; §Recurring themes; §Mood arc",
   "rules_evaluated": [
     {
       "compendium": "check_strategy_tie_in.md",
@@ -20,7 +20,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood",
       "verdict": "N/A",
-      "evidence": "M6's mood is practitioner fluency, not unease (strategy doc line 473, module maintainer Meta block). This rule's diagnostic is scoped to unease-flavour modules; no unease framing to check for punitive drift here, and no punitive language appears in the body regardless.",
+      "evidence": "Module mood target (Meta block, `curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md:117`, grep-verified: `**Mood target:** practitioner fluency`) is not 'unease' — rule 2 only fires when mood is unease. Rule does not apply to this file's mood.",
       "fix_hint": null,
       "blocking": false
     },
@@ -36,16 +36,16 @@
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check",
+      "rule_lead": "Strategy-fidelity check (cross-module sequencing)",
       "verdict": "PASS",
-      "evidence": "Opener order in `## Start here` (line 32-34) is `The 2 frontiers` then `Story of Module 6`. The strategy doc's M6 §Opener now reads: 'Opener — The 2 frontiers, then Story of Module 6' (line 463) with an explicit reconciliation note (line 467): the prior text stated Story-of-M6-first as a principle, and was corrected 2026-08-12 to match the shipped module, which is authoritative. No drift — a prior run of this judge (superseded by this write) flagged the pre-reconciliation copy of the doc as REVISE against the old opener claim; that claim no longer exists in the doc. Second sequencing check: the 'in-module second-skill build' the doc records as cut 2026-07-03/08-01 (lines 459/461) is correctly absent from the module body (no second-skill authoring beat, no ship-to-team-kit beat in `## Start here` or `## Human close`).",
+      "evidence": null,
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 5,
-      "rule_lead": "Strategic themes recur in Key Concepts",
+      "rule_lead": "Strategic themes recur in Key Concepts (≥2-3 instances)",
       "verdict": "PASS",
       "evidence": null,
       "fix_hint": null,
@@ -72,5 +72,13 @@
   ],
   "blocking_findings_count": 0,
   "todos_count": 0,
-  "note": "2026-08-12 re-fire supersedes the prior REVISE at rule 4, which cited the strategy doc's pre-reconciliation opener claim (Story-of-M6-first) against the shipped module (2-frontiers-first). Doc-drift is now resolved in the doc itself per maintainer confirmation; module file was authoritative all along. No residual doc-drift to report."
+  "notes": [
+    "Big Idea (`grep -n \"^## Big Idea\" spot-gaps-build-the-loop.md` → line 3; body line 4: 'Every gap you found belongs somewhere durable, or you will find it again next week.') honors strategy doc's M6 spirit ('test → learn → encode', gaps sorted into memory/verifier/skill homes) with no drift found — no explicit one-line 'Big Idea' string exists in the strategy doc for AE101 (confirmed: `grep -n \"Big Idea\" content-strategy-agentic-engineering-101.md` returned no matches), so the comparison is against the 'What you walk away with' / 'Three moves' prose, which the file's Big Idea compresses faithfully.",
+    "Mood: Meta block states 'Mood target: practitioner fluency' (grep-verified line 117) verbatim-matching strategy doc's M6 mood ('Mood: practitioner fluency — \"I know how to test, I know how to learn, I know how to encode.\" Not confidence-as-performance; competence-as-posture.'). Opening ('Start here', lines 21-25) frames the contrast between two sessions as material, consistent with the mood-arc's 'learning through contrast → practitioner fluency' handoff from M5. Mood is not flattened or resolved early — the Human close (line 47) explicitly withholds a compound prompt and defers to a human round, matching the strategy doc's Debrief spec.",
+    "Key Concepts (lines 39-45, grep-verified `^## Key Concepts` at line 39) surface at least 3 of the 6 AE101 recurring themes in the module's own language: theme 1 (90%-correct — 'the three-pattern catches what it was shaped to catch... gaps... are data the pattern didn't anticipate, not proof the pattern failed'), theme 4 (self-aware/grain-of-salt — 'Claude over-credits its own packaging by default... The sessions rule; the summary of them doesn't'), and theme 2 (compounding — 'Gaps sort into three homes...', 'The handoff prompt IS the loop', 'Encoding is the third phase of test → learn → encode'). This matches the strategy doc's explicit 'Themes earned' line for M6 ('self-aware + grain of salt... compounding'). No `Remember:`-labelled or bolded breadcrumb wrapper found (retired form per compounded 2026-04-27 rule) — bullets close on compact clauses in the module's own voice, satisfying §6's detection method (read for a landed clause, not a marker).",
+    "What You'll Learn (lines 12-19, six bullets: Diagnose / Cut / Surface / Map / Encode / Generalize) — each strips to verb + concrete immediate object (gaps/rule/kinds-of-work/evals/lesson/shapes), no Bloom-tag parentheticals, no pedagogical-mechanism tails ('by mapping...', 'by walking...'), no author-defence asides, no didactic taxonomy stamps. 'Cut one rule from `./CLAUDE.local.md` the diagnosis killed' leads with the practice verb and lands the file as destination, matching §7's own worked fix-example for the object-leads-with-destination failure mode. No front-run of downstream (M7/M8) material found in either section.",
+    "Frontier-order and self-study-variant items were checked against the strategy doc and found already resolved by explicit maintainer notes in the file's own maintainer block (opener order 2026-08-12: 'module file is correct... do not reorder to match a doc'; independence-axis Key Concept bullet 2026-08-09 accept-note with stated guards) — per the harm clause and the accept-note check, these are not re-flagged.",
+    "One observation outside this class's scope, reported for completeness, not filed as a rule finding: the strategy doc's M6 self-study line ('Teacher Claude invites the same two-part articulation in conversation; scrollback carries it; optional keepsake note') reads more prescriptive than the module file's self-study variant (line 53: 'Close the laptop. If you can name the move in one sentence, that's the marker; no further articulation required.'). This is a delivery-format/facilitation detail, not a Big Idea, Mood-contract, Key-Concepts, WYL, or cross-module-sequencing item, so it falls to pedagogy/self-study skill design rather than this class's named judgments (per the judge template's Scope boundaries: in-file architecture and delegation/forcing-function placement belong to the pedagogy judge). Flagging here only as a maintainer FYI, not blocking.",
+    "Note per task instructions: What You'll Learn was trimmed 2026-08-12 (two bullets merged); judged the current six-bullet shape as shipped, did not evaluate restoring the cut."
+  ]
 }

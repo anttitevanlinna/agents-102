@@ -48,7 +48,6 @@ Ask Claude to run the audit as a subagent and return a ranked top-five.
 ## Correct the list and reprioritise it
 
 - The ranking is Claude's read of your system. Tell it what's wrong, what's missing, and what you'd move up.
-- You fill the top few next.
 
 ## Fill the worst two or three gaps
 

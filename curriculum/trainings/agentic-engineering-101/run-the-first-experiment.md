@@ -64,7 +64,7 @@ Come to Module 5 without a session that got some way into the task and you'll be
 
 ## Pre-reads before Module 5
 
-Optional. They sit in the gap while your un-packaged session is still going. All four point at the same surprise: the effort in agent work sits in the framing and the checking, not the typing. The next session picks this up from your own experiment.
+Optional. Read them while your un-packaged session is still going. All four point at the same surprise: the effort in agent work sits in the framing and the checking, not the typing. The next session picks this up from your own experiment.
 
 **Read,** [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md). Uncle Bob's public learning journey with AI coding: early speed, mercury-like unpredictability, then tests, architecture visibility, and formal constraints as steering. It moves the question from "the agent ran" to "what would have constrained the drift?", the question you'll put to your own session next.
 
@@ -76,7 +76,7 @@ Optional. They sit in the gap while your un-packaged session is still going. All
 
 ## Next
 
-The next module opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this session lives, so when the next slot lands a fresh session reads it straight from `task.md`, no hunting through past sessions. Transcripts persist on disk regardless; see [Claude Code for engineers, session transcripts](trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts-read-what-actually-happened) for what they hold. Close the session once the agent is done; the trace is on disk.
+The next module opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this session lives, so a fresh session reads it straight from `task.md` rather than hunting through past sessions.
 
 <!-- maintainer -->
 

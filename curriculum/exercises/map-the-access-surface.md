@@ -36,7 +36,7 @@ Ask Claude to list its installed skills, with storage location and context-load 
 
 {{prompt:map-the-access-surface-1}}
 
-These are the moves Claude has on hand for the rest of this module, and the load-on-invoke behavior matters for context economy later.
+These are the moves Claude has on hand for the rest of this module. Only each skill's name and description sit in context until you invoke one; the body loads then.
 
 ## Point the skill at your feature
 
@@ -85,8 +85,8 @@ Then ask Claude to add the surface the skill missed but you know matters.
 
 *3 min*
 
-- You're about to hand this map to the STRIDE skill. Glance at it. If a teammate landing on this file cold would miss something the map assumes you know, add a one-line context header. If it reads, close.
-- Most people skip this; some want the pause. Your call.
+- You're about to hand this map to the STRIDE skill. Glance at it. If a teammate landing on this file cold would miss something the map assumes you know, add a one-line context header. If it reads clean, move on.
+- Your call.
 
 **What happened:** A short delta-note is on the record, and it is the artifact STRIDE reads next, not the raw skill output.
 

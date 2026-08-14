@@ -13,7 +13,7 @@ Bring the feature you planned at M2, that's the default. The plan file Claude Co
 
 **A feature you could ship in a few hours. Not a quarter-long epic.**
 
-Optional pre-reads in the Module 2 to Module 3 gap: Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/); [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) for a deeper scan.
+Optional pre-reads before this module: Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/); [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) for a deeper scan.
 
 If you want the primitives this module uses at a glance, [subagents in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#6-subagents-agent-tool-fresh-context) and [skills in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#7-skills) cover what each is and when to reach for it. Optional.
 
@@ -66,7 +66,7 @@ Still in the main quest window (*m3-security*), signal the wrap-up. The agent co
 
 > Might be slightly leaky. Here, the simple ask is good enough.
 
-If the agent names something missed, decide whether to compound it now or accept the loss. Then clear the session. Module 4 opens a new one.
+If the agent names something missed, decide whether to compound it now or accept the loss. Then clear the session.
 
 {{prompt:ae101-m3-clear-session}}
 
@@ -86,13 +86,13 @@ Come to Module 4 without having picked the task and you'll be scrambling for one
 
 ## Pre-read before Module 4
 
-Optional. One read in the gap.
+Optional. One read.
 
-**Read:** Simon Willison, [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/) (September 2025). Willison names the skill of setting up an agent's session before you start it. Module 4 opens on a session you send off and step away from; this is the thinking you do before stepping away.
+**Read:** Simon Willison, [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/) (September 2025). Willison names the skill of setting up an agent's session before you start it. Module 4 opens on a session you send off and step away from; this is the thinking you do first.
 
 ## Next
 
-Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. Module 4 turns the discipline inward: memory that reads your system, not just a feature. The test-strategy conventions, the access-surface facts, and the hardening decision all feed into what M4 builds.
+Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. Module 4 turns the discipline inward: a real task walked against everything you have built so far, the test-strategy conventions and the access-surface facts and the hardening decision included.
 
 Optional, when your sessions start running heavy: [Token efficiency](trainings/agentic-engineering-101/supplementary/token-efficiency.md) on keeping the context window lean.
 

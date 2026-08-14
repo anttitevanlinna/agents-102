@@ -40,7 +40,7 @@ Ask Claude to fork a sibling worktree and copy your personal rules across. The p
 /rename m3-quality
 ```
 
-- Authoring and invoking the test-strategy skill both happen in this window, on this codebase. It installs to user scope, so it crosses back to the main lane on its own, and you never carry it by hand. The main lane's read on it comes later, at a separate step that revisits this window's scrollback rather than invoking anything here again; the evidence-based sharpen runs later still, back in the main lane where the compound step lives.
+- Authoring and invoking the test-strategy skill both happen in this window, on this codebase. It installs to user scope, so it crosses back to the main lane on its own, and you never carry it by hand. The main lane reads it later, at a step that revisits this window's scrollback rather than invoking anything here again, and the evidence-based sharpen runs there too, where the compound step lives.
 - Ask Claude to confirm the worktree state, then wait.
 
 {{prompt:ae101-m3-quality-side-orient}}

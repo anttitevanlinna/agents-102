@@ -8,7 +8,7 @@
 
 **The point:** every push-back is a hint toward your own rules.
 
-The PR shipped and the ticket is closed. Now compound the session, the closing step of compound engineering. No retro questionnaire: the session is the evidence, Claude reviews it and writes, you push back where it misread.
+The PR shipped and the ticket is closed. Now compound the session, the closing step of compound engineering. No retro questionnaire: the session is the evidence.
 
 ## Write your rules file from the session
 
@@ -24,7 +24,7 @@ The PR shipped and the ticket is closed. Now compound the session, the closing s
 ## Push back where the summary misreads
 
 - Read Claude's summary. Push back where it misreads. Quote the specific session moment back at Claude.
-- The rules file is yours now. Born from the session, extended by every module after this one.
+- The rules file is yours now. Born from the session, evolved over time.
 
 ## Keep or revert the `.gitignore` edit
 
@@ -39,11 +39,13 @@ Ask Claude to sweep the session for anything earned since the first compound and
 
 {{prompt:compound-and-close-4}}
 
+> **The escape hatch is deliberate.** The closing `or "nothing new" if nothing did` allows Claude to report an empty sweep. Ask only what it added, and the agent finds something to have added.
+
 ## Close the session
 
-**What happened:** One rules file, written from how you actually worked rather than from a template, living in `./CLAUDE.local.md`.
+**What happened:** One rules file, written from how you actually worked rather than from a template.
 
-The file stays behind; whether it earns its keep shows up the next time a session reads it.
+Whether it earns its keep shows up the next time a session reads it.
 
 <!-- maintainer -->
 
@@ -72,7 +74,7 @@ Claims
 - `not-drafting-from-a-blank-page` · vision · "You are not drafting from a blank page. The agent reads the session for you." ← none-owed
 - `heads-up-before-close-flushes-wip` · detail · "A heads-up that you are about to compact or end the session flushes out work in progress." ← maintainer-attested-flush
 - `quote-the-moment-back` · vision · "Quote the specific session moment back at Claude." ← none-owed
-- `rules-file-is-yours-now` · vision · "Born from the session, extended by every module after this one." ← none-owed
+- `rules-file-is-yours-now` · vision · "Born from the session, evolved over time." ← none-owed
 - `gitignore-edit-is-yours-to-keep` · vision · "Keep or revert the `.gitignore` edit" ← none-owed
 
 Sources

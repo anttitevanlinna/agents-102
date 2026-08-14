@@ -34,7 +34,7 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. Use th
 
 - M1 named the countermove: never let the agent say everything, take the ranked list first.
 - A plan deserves more attention than ordinary agent output because approval hands it to generation. That does not make every line equally important.
-- Scan for the decisions most likely to change the work: files, design, assumptions, and verification. Push on the few that matter most. The countermove stays with you after approval too.
+- Scan for the decisions most likely to change the work: files, design, assumptions, and verification. Push on the few that matter most.
 
 ## Scan the plan before you push back
 
@@ -80,7 +80,7 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. Use th
 
 ## Switch to a picker if you prefer one
 
-- The walk-down prompt's three-at-a-time prose is the starting point, and that batching cuts round-trips on the branches that need real thought. If you would rather answer from a structured picker, ask Claude to switch to AskUserQuestion once the walk-down is rolling, and add any steering of your own.
+- If you would rather answer from a structured picker, ask Claude to switch to AskUserQuestion once the walk-down is rolling, and add any steering of your own.
 
 {{prompt:push-back-on-the-plan-2-askuserquestion}}
 
@@ -107,7 +107,7 @@ Then just hit stop.
 *10 min*
 
 - Don't execute the plan. The work of making it good is the exercise.
-- Out of plan mode now: you approved and stopped, so Claude Code is back to default mode for this last step.
+- Approving took you out of plan mode, so this last step runs in default mode.
 - Ask Claude what the second-pass read surfaced that your two push-backs didn't.
 
 {{prompt:push-back-on-the-plan-3}}

@@ -49,7 +49,7 @@ Ask Claude to write the close-out, update the ticket, and report what it wrote.
 
 ## What happened
 
-The ticket gave up two things: a close-out note on the bug you shipped, and the conventions your team has been encoding in its fields all along. The loop that started with a failing test closed where the work is actually visible.
+The ticket gave up two things: a close-out note on the bug you shipped, and the conventions your team has been encoding in its fields all along. The loop that started with a failing test closed.
 
 The field rules stay in the scrollback. The next exercise sweeps this whole session.
 

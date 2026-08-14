@@ -22,7 +22,7 @@ Ask Claude to describe what changed in its behaviour when plan mode turned on.
 {{prompt:when-a-plan-is-good-1}}
 
 
-Watch what comes back. Sometimes Claude names the read-only state directly, sometimes the specific instructions it is following. Skip if you trust the framing. The exercise will show you either way.
+Watch what comes back. Sometimes Claude names the read-only state directly, sometimes the specific instructions it is following. Skip if you trust the framing.
 
 ## Five things a good plan has
 

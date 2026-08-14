@@ -56,14 +56,14 @@ After this module, you will be able to:
 ## Key Concepts
 - The loop is orient → fix → close → compound
 - `/context` shows what landed in the window. What didn't land is real, and you choose what fills the next round. (`/context` is oldskool; ccstatusline, or ask Claude to set up the built-in status line.) Context is what you put in it.
-- The agent's self-report is a hypothesis, not ground truth. Read it as the agent's account of the repo, not the repo. Introspection generates hypotheses; the artifact rules. The scrollback is the machine's reflection; current state lives on disk.
+- The agent's self-report is a hypothesis, not ground truth. Read it as the agent's account of the repo and the session, not the things themselves. The scrollback is the machine's reflection; current state lives on disk.
 - A failing test is what makes the fix checkable. Without it, the fix is a guess that happens to compile
 - A `./CLAUDE.local.md` built from session evidence reads different from one drafted blank: concrete, specific, yours. Personal layer first; team-worthy rules earn their own PR.
-- The loop ends outside the code. The close-out lands in the tracker your team reads, and that tracker encodes conventions living in the tickets, not in a doc. One ticket is enough to start reading them back
+- The loop ends outside the code. The close-out lands in the tracker your team reads, and that tracker encodes conventions living in the tickets. One ticket is enough to start reading them back
 
 ## Pre-reads before Module 2
 
-Optional. They sit in the gap before it. Do them and its moves land as things you've already seen.
+Optional. Do them and Module 2's moves land as things you've already seen.
 
 **Read:** [The agentic engineering progression](trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md). The progression from using AI for assistance to improving the system behind every session, followed by a model of reach and calibrated trust.
 
@@ -74,7 +74,7 @@ Optional. They sit in the gap before it. Do them and its moves land as things yo
 **Read:** [Multi-session and Git: survival guide](trainings/agentic-engineering-101/reference/multi-session-git.md). Short local reference page on worktrees versus branches versus clones, and how to open several Claude Code sessions on the same repo without wrecking each other's state. Cherny calls parallel worktrees his single biggest productivity unlock: one repo, several Claude Code sessions running at once, each on its own branch, no stashing and no clobbering. Reach for them when one session is waiting on a long run and another piece of work is ready to move, when you want to try two approaches to the same problem side by side, or when a review task can run alongside the build. The instinct earns itself in use.
 
 ## Next
-Module 2 is where plan mode earns its keep: multi-file work, a second pass that pressure-tests the plan, and the catches that come with approving more scope than you'd cold-authorize. `./CLAUDE.local.md` sits at the top of the next session, waiting to be read (alongside team `./CLAUDE.md` if this repo has one; both concatenate into context). Close this session once the rules file lands; Module 2 opens fresh in the same repo.
+Module 2 is where plan mode earns its keep: multi-file work, and a second pass that pressure-tests the plan before you approve it. Your rules file gets read at the top of that session.
 
 <!-- maintainer -->
 

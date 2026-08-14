@@ -24,13 +24,13 @@ Ask Claude for the rules.
 
 ## Reject or rewrite the generic rule
 
-- The generic rule is the tell. The rule that arrives generic, like "pick tasks that span multiple files," is the one that needs rewriting into your words, or rejecting.
+- The rule that arrives generic, like "pick tasks that span multiple files," is the one to rewrite in your words, or reject.
 
 ## Read more rules off one story ticket
 
 - The same move you ran at M1 on a bug ticket, pointed at a story. How your team writes stories is a rule the tracker has been keeping, same as the bug fields were.
 - If the task you brought came from your tracker, its own ticket is the one to read. Otherwise any real story works. One the agent just wrote carries none of your team's conventions.
-- No tracker this session can reach? Paste the fields instead of the link. [MCP and connectors](../trainings/agentic-engineering-101/reference/mcp-and-connectors.md) has the one-liner per tracker if you want the reach for next time.
+- No tracker this session can reach? Paste the fields instead of the link. [MCP and connectors](../trainings/agentic-engineering-101/reference/mcp-and-connectors.md) has the one command per tracker if you want the reach for next time.
 
 Drop a story ticket link after the colon.
 
@@ -146,7 +146,6 @@ Ask Claude what this file could drive later.
 
 Claims
 - `find-a-place-for-your-rules` · vision · "find a place for your rules." ← none-owed — the generic-rules claim it replaces is carried by `the-generic-rule-is-the-tell` in the Reject-or-rewrite beat, where the student meets it at the move.
-- `the-generic-rule-is-the-tell` · vision · "The generic rule is the tell." ← none-owed
 - `the-tracker-keeps-story-conventions-too` · vision · "How your team writes stories is a rule the tracker has been keeping, same as the bug fields were." ← none-owed
 - `an-agent-written-ticket-carries-no-conventions` · vision · "One the agent just wrote carries none of your team's conventions." ← none-owed
 - `the-rules-are-already-in-the-session` · vision · "The rules are already in the session; naming them is what is left." ← none-owed

@@ -13,7 +13,7 @@ Surface one multi-file backlog task in the repo you used for Module 1. Criteria:
 
 Come without a surfaced task and you'll be scrambling to find one while the exercise is already in plan mode. Your call.
 
-Optional reading in the gap before this module: [The agentic engineering progression](trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md), which sets up reach and calibrated trust; Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0); [Multi-session and Git: survival guide](../../trainings/agentic-engineering-101/reference/multi-session-git.md). And if Dex Horthy's [Why Software Factories Fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md) is still on your list from Module 1, this is the module it pays off in: the cure he lands on is human review made affordable by upfront planning. If you like a lookup page nearby, [plan mode at depth in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#5-plan-mode-at-depth) has the approval paths in one table.
+Optional reading before this module: [The agentic engineering progression](trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md), which sets up reach and calibrated trust; Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0); [Multi-session and Git: survival guide](../../trainings/agentic-engineering-101/reference/multi-session-git.md). And if Dex Horthy's [Why Software Factories Fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md) is still on your list from Module 1, this is the module it pays off in: the cure he lands on is human review made affordable by upfront planning. If you like a lookup page nearby, [plan mode at depth in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#5-plan-mode-at-depth) has the approval paths in one table.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -66,23 +66,23 @@ Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble i
 
 <!--flag:module:earn-the-trust-->## Pre-reads before Module 3
 
-Optional. Lands the modern agentic-security frame before STRIDE and access-control.
+Optional. The security frame Module 3 works in.
 
-**Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (June 2025, the piece that named the threat class). Names the modern threat class that combines private data, untrusted content, and external communication into a compromise surface.
+**Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (June 2025). Names the threat class that combines private data, untrusted content, and external communication into a compromise surface.
 
-**Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface. The full menu beyond the trifecta, for engineers who want the wider picture before the exercise lands.<!--/flag:module:earn-the-trust-->
+**Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface.<!--/flag:module:earn-the-trust-->
 
 ## Next
 
 <!--flag:module:earn-the-trust-->At M3 you point the same move at a feature you're shipping: curated reads that walk the branches you can't see, and the call they surface written down in your repo where a teammate finds it before they have to ask.
 
-<!--/flag:module:earn-the-trust--><!--flag:module:earn-the-trust-->Ask Claude where it wrote the plan file, note the path; M3 reads it. <!--/flag:module:earn-the-trust-->Close this session when the second read lands.<!--flag:no-module:earn-the-trust-->
+<!--/flag:module:earn-the-trust--><!--flag:module:earn-the-trust-->Ask Claude where it wrote the plan file, note the path; M3 reads it. <!--/flag:module:earn-the-trust--><!--flag:no-module:earn-the-trust-->
 
 **Pick one scoped task you'd send off rather than nudge bit by bit: a real slice. Bigger than a typo-fix, smaller than an epic.**
 
-The next sitting opens on that task and spends most of its time walking your system against it. Come without one and you'll be picking while the walk is already underway. Your call.<!--/flag:no-module:earn-the-trust--><!--flag:module:earn-the-trust--> M3 opens fresh and runs security skills against the M2 task; if it doesn't have an external or user-facing surface, swap to something from your backlog that does.
+The next sitting opens on that task and spends most of its time walking your system against it. Come without one and you'll be picking while the walk is already underway. Your call.<!--/flag:no-module:earn-the-trust--><!--flag:module:earn-the-trust--> M3 runs security skills against the M2 task; if it doesn't have an external or user-facing surface, swap to something from your backlog that does.
 
-Come to Module 3 without that noted path and a task to point the skills at, and you'll be scrambling to reconstruct them while STRIDE, the six-category threat walk, is already running. Your call.<!--/flag:module:earn-the-trust-->
+Come to Module 3 without that noted path and a task to point the skills at, and you'll be scrambling to reconstruct them while the threat walk is already running. Your call.<!--/flag:module:earn-the-trust-->
 
 <!-- maintainer -->
 

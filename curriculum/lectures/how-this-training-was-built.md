@@ -2,7 +2,7 @@
 
 What follows is Antti's story of building this training, in his own words.
 
-## Thirty bullets were not the training
+## Everything starts as a few bulletpoints somewhere
 
 At first, this training was a strategy document: seven headings and thirty bulletpoints. It looked complete in the way a good list can look complete. Then the bulletpoints became module prototypes, and the gaps became visible.
 
@@ -10,7 +10,7 @@ The failures were specific. A phrase brought consultancy voice into an engineeri
 
 The rules were corrected too. Some were too broad. Some fired in the wrong place. Each time a rule failed, the failure sharpened the rule instead of disappearing into one edit.
 
-The system behind this training currently has 279 active rules and subrules across 12 checklists. The count is not a claim that more rules make better work. It shows how much specific judgment had to be written down before another session could reuse it.
+The system behind this training currently has 279 active rules and subrules across 12 checklists. The count is not a claim that more rules make better work. It shows how much specific judgment had to be written down to reach control over the training's style.
 
 ## Then we tested the training
 
@@ -26,8 +26,7 @@ None of these checks replaces another. Rules catch mistakes already understood. 
 
 This build story is the shape you just ran on your own repo. Claude's first read was partly wrong. You found the useful wrongness, corrected it, and wrote what the session taught you into `./CLAUDE.local.md` for the next session.
 
-Kieran Klaassen calls this **compound engineering**: work produces evidence; evidence improves the system that does the next work. Before you ran it, that was a name. Now it is a loop you have run yourself.
-
+Kieran Klaassen calls this **compound engineering**: work produces evidence; evidence improves the system that does the next work.
 The loop is the shape. The bug today was the excuse.
 
 <!-- maintainer -->
@@ -73,7 +72,7 @@ Format → `curriculum/backing-format.md`.
 
 **Claims**
 - `training-began-as-bulletpoints` · detail · “At first, this training was a strategy document: seven headings and thirty bulletpoints” ← training-construction
-- `prototype-failures-were-specific` · detail · the three failure examples on *Thirty bullets were not the training* ← training-construction
+- `prototype-failures-were-specific` · detail · the three failure examples on *Everything starts as a few bulletpoints somewhere* ← training-construction
 - `corrections-became-rules` · detail · “Each correction became a reusable rule” ← compendium-rules
 - `rules-were-corrected` · detail · “The rules were corrected too” ← training-construction
 - `rule-compendium-snapshot` · detail · “279 active rules and subrules across 12 checklists” ← compendium-snapshot

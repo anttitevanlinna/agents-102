@@ -42,7 +42,7 @@ No compound prompt here. The exercise's gap map and stack-map are the Module 6 c
 
 *Two sessions of the same task, read to the bone. The loop, yours.*
 
-**Self-study variant.** Close the laptop. If you can name the move in one sentence, that's the marker; no further articulation required.
+**Self-study variant.** Close the laptop. If you can put the move in one sentence, that's the marker; no further articulation required.
 
 [Composing the workflow](lectures/composing-the-workflow.md)
 

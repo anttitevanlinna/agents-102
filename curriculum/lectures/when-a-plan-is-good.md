@@ -10,8 +10,8 @@
 
 - Plan mode removes the edit tools and swaps the instructions to explore and propose. You press Shift+Tab until the status bar shows plan mode on. The agent reads files, runs shell commands to explore, and writes a plan file, but it won't edit your source until you approve.
 - The read-only part is load-bearing. Plan mode isn't "Claude thinks before doing." It's "Claude writes a thing you can read, edit, and push back on before your source changes."
-- The plan is saved on disk under a descriptive filename such as `migrate-auth-hash-calm-otter.md`. You can find it again without searching the chat.
-- You will notice the wait. While Claude plans, other sessions could be making progress elsewhere. Not today, but soon.
+- The plan is saved on disk under a descriptive filename such as `migrate-auth-hash-calm-otter.md`.
+- Feel free to muse on what the heck the agent is reading, and why. Aka context engineering.
 
 ## Optional: ask plan mode directly
 
@@ -34,21 +34,19 @@ Watch what comes back. Sometimes Claude names the read-only state directly, some
 
 ## Three pressures that make bad plans look good
 
-- **Structure is persuasive.** A 7-item plan with section headers and bold text looks like a decision. It often isn't. It's a draft formatted like a decision. The formatting is the trap.
-- **Reasonableness passes for rightness.** Each step sounds reasonable, so the plan sounds right. But three reasonable steps in the wrong order still ship a bug. Read the sequence, not the steps.
-- **You already agree with it.** The plan matches what you'd have written, which feels like alignment. But Claude wrote it from a partial read of the codebase and your instinct isn't a substitute for the read. Agreement is cheap; the read is what matters.
+- **Structure is persuasive.** A 7-item plan with section headers and bold text looks like a decision. It often isn't. It's a draft formatted like a decision.
+- **Reasonableness passes for rightness.** Each step sounds reasonable, so the plan sounds right. But reasonable steps in the wrong order, or with one missing, still ship a bug. Judge what the steps add up to, not how each one reads.
+- **You already agree with it.** The plan matches what you'd have written, which feels like alignment. But it was written from a partial read of the codebase, and your instinct is not a check on it. Read it assuming something in there is wrong; there usually is.
 
 ## Two reads, paired
 
 - Your read and the agent's walk-down catch different misses. You bring the voice of experience: the soft item, the step that contradicts how this codebase actually works. The agent brings breadth: it can keep walking branches without getting bored or skipping the dull ones.
-- The full grilling is an offer, not an obligation. Order matters: your push-back first, so your read stays in the driver's seat; then let the walk-down surface what you did not see. Stop when another answer would no longer materially sharpen the plan.
+- Order matters: your push-back first, so your read stays in the driver's seat; then let the walk-down surface what you did not see. Stop when another answer would no longer materially sharpen the plan.
 - Check the revision, not the acknowledgement. The agent agrees easily. A flagged step can come back softened rather than sharpened. A push-back is finished when the regenerated plan is sharper, not when Claude says it heard you.
-
-If the plan still has open questions, run the walk-down. If it's all clear, your read is enough.
 
 ## Find is easier than judge
 
-- Generating candidates is cheap for the agent; judging them is where you're needed. Stuck naming a soft item? Ask Claude which step it's least confident about. That answer is a candidate. Whether it matters depends on the codebase and the task.
+- Generating candidates is cheap for the agent; judging them is where you're needed. Stuck naming a soft item? Ask Claude which step it's least confident about. That answer is a candidate.
 - The agent finds, you judge, and everything from here sharpens one side or the other. The split runs through the whole discipline.
 
 ## Plan review is a high-leverage gate
@@ -56,7 +54,7 @@ If the plan still has open questions, run the walk-down. If it's all clear, your
 - A plan is a check before implementation. One correction can redirect every step that follows before the agent turns the plan into code.
 - What the plan doesn't decide, the agent decides mid-run, inside work in flight, and you will not notice. A wrong call propagates across files, and the wrongness tangles with everything built after it: what would have been a line edit in the plan becomes an untangling job in the code.
 - Aim the read at the unknown that teaches you the most. The branches worth walking are the ones that change what done means. The rest you'd settle in verification anyway.
-- You don't have to execute a plan to know it's good. Recognizing a good plan is the skill; the execution can wait for the day the task is real.
+- You don't have to execute a plan to know it's good. Recognizing one is the skill.
 
 ## What you can test and check sets your complexity ceiling
 
@@ -121,9 +119,11 @@ The canvas is a copy of the one in `the-gate-is-a-claim.md`, which is the parent
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** the two checklist slides keep bullets with per-item handles (**A specific file list** / **A verification step** (trimmed to sub-span) / **Named assumptions**; **Structure is persuasive** / **Reasonableness passes for rightness** / **You already agree with it**); all other slides de-bolded fully, bullets kept (status-bar `plan` flipped bold → code span), per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Session widget + both kickers untouched. Wording near-verbatim; no claims added or cut.
 
+**Slide 1's last bullet is Antti's own voice, friendly on purpose (2026-08-14, verbatim).** *"Feel free to muse on what the heck the agent is reading, and why. Aka context engineering."* It is an invitation, not an instruction, and the warmth is the point: slide 1 is where the room first watches an agent read without being allowed to touch anything, and the register says curiosity is a legitimate use of the wait. *What the heck*, *muse*, and *aka* are all deliberate. A judge will read the informality as register drift against the file's flatter house voice and the loose *aka* as an imprecise gloss. Both are accepted-by-design: do not tighten to *"Consider what the agent is reading and why (context engineering)."* If the term itself ever needs a real definition, that belongs in M3's `the-loop-half-filled.md`, which is where it is named.
+
 **Slide-page standardization (2026-07-02, Antti-directed):** `### Optional: ask plan mode directly` promoted to `##` — every slide page = line + `##` headline (the "Wrong is how steering gets in" pattern); no h3/hr page divisions in theory lectures. Layout-only. The `ask plan mode directly` section is kept (see the keep note below).
 
-**Slides-only pass (2026-07-02, unaudited):** covered regions DELETED (Path A — prose was verbatim-redundant with the slides; git carries it). Per-passage verdicts: intro agenda line CUT (slide titles carry it) · "you will notice the wait" FOLDED into slide 1 as fourth bullet (plants M3's two-window move) · "What you do with this" section CUT (the exercise body carries the flow; "then you stop" is the exercise's own beat) · slide-4 kicker carries the open-questions decision rule (walk-down vs own read; maintainer-worded, Sami design-phase register — no experience-tier assumption) · *Optional: ask plan mode directly* section KEPT UNCHANGED (its prompt is kept — see the keep note below). File is now Session widget + six slides + kickers + one optional plan-mode-introspection move.
+**Slides-only pass (2026-07-02, unaudited):** covered regions DELETED (Path A — prose was verbatim-redundant with the slides; git carries it). Per-passage verdicts: intro agenda line CUT (slide titles carry it) · "you will notice the wait" was FOLDED into slide 1 as a fourth bullet to plant M3's two-window move; **that bullet is gone (2026-08-14, Antti-worded), replaced by an invitation to muse on what the agent is reading and why, glossed *aka context engineering*.** M3 installs the two-window move on its own (`map-the-access-surface.md` names the wait as the move), so nothing downstream depended on the plant. The gloss lands the term one module before `the-loop-half-filled.md` formally names it in M3; that lecture's naming clause now reads as recognition, and it stays the place the term is defined. · "What you do with this" section CUT (the exercise body carries the flow; "then you stop" is the exercise's own beat) · slide-4 kicker carried the open-questions decision rule (walk-down vs own read; maintainer-worded, Sami design-phase register) until it was **CUT 2026-08-14 (Antti): it is not how a student should act.** *"If it's all clear, your read is enough"* licenses skipping the walk-down exactly when the plan reads clean, which is the state the previous slide has just called the trap. The bullet's own *Stop when another answer would no longer materially sharpen the plan* is the stopping rule, and it stops on diminishing returns rather than on absence of visible doubt. Do not restore a run-it-only-if kicker here · *Optional: ask plan mode directly* section KEPT UNCHANGED (its prompt is kept — see the keep note below). File is now Session widget + six slides + kickers + one optional plan-mode-introspection move.
 
 **`ask plan mode directly` — kept, not cut.** The `when-a-plan-is-good-1` prompt was flagged `meta-retrospective` for a possible cull (the case for cutting: it adds an optional beat, and trimming lessens cognitive load). Kept by decision: asking plan mode what changed on its own side is a learn-how-the-tool-works beat. The student reads the read-only permission state back from the agent's own report, which the surrounding framing can only assert. The tool-literacy payoff outweighs the load argument; not a cut candidate.
 
@@ -153,24 +153,23 @@ Format → `curriculum/backing-format.md`.
 - `plan-mode-shift-tab` · detail · "You press Shift+Tab until the status bar shows plan mode on" ← cc-permission-modes
 - `plan-mode-read-only` · detail · "The agent reads files, runs shell commands to explore, and writes a plan file, but it won't edit your source until you approve." ← cc-permission-modes
 - `plan-before-source-changes` · detail · "Claude writes a thing you can read, edit, and push back on before your source changes" ← cc-permission-modes — "your source" is the load-bearing scope: since v2.1.218 approved shell commands run during planning, so plan mode protects the source tree, not all state.
-- `plan-file-is-findable` · detail · "The plan is saved on disk under a descriptive filename such as `migrate-auth-hash-calm-otter.md`. You can find it again without searching the chat." ← cc-plan-file
-- `parallel-sessions-plant` · vision · "While Claude plans, other sessions could be making progress elsewhere" ← none-owed
+- `plan-file-is-findable` · detail · "The plan is saved on disk under a descriptive filename such as `migrate-auth-hash-calm-otter.md`." ← cc-plan-file
 - `specific-file-list` · vision · "A plan that names three files has made three decisions. A plan that says \"the relevant files\" has made zero." ← none-owed
 - `early-runnable-slice` · borrowed · "Find the first step after which something runs end-to-end" ← horthy-wsff, cockburn-walking-skeleton
 - `verification-step-could-fail` · vision · "*\"Run the tests\"* is cosmetic; *\"run `pytest tests/auth/ -k hash` and expect 14 passing, 0 failing\"* is a gate" ← none-owed
 - `named-assumptions` · vision · "A plan without assumptions isn't assumption-free; it's just assumption-silent." ← none-owed
 - `named-non-goals` · borrowed · "**A list of non-goals.** What the plan will *not* touch." ← horthy-create-plan
-- `structure-is-persuasive` · vision · "It's a draft formatted like a decision. The formatting is the trap." ← none-owed
-- `reasonableness-passes-for-rightness` · vision · "three reasonable steps in the wrong order still ship a bug" ← none-owed
-- `you-already-agree-with-it` · vision · "Agreement is cheap; the read is what matters." ← none-owed
+- `structure-is-persuasive` · vision · "It's a draft formatted like a decision." ← none-owed
+- `reasonableness-passes-for-rightness` · vision · "reasonable steps in the wrong order, or with one missing, still ship a bug" ← none-owed
+- `you-already-agree-with-it` · vision · "Read it assuming something in there is wrong; there usually is." ← none-owed
 - `two-reads-catch-different-misses` · vision · "Your read and the agent's walk-down catch different misses" ← none-owed
 - `agent-can-keep-walking-branches` · borrowed · "it can keep walking branches without getting bored or skipping the dull ones" ← pocock-grill-me
-- `human-stops-the-full-grilling` · vision · "The full grilling is an offer, not an obligation." ← none-owed
+- `human-stops-the-full-grilling` · vision · "Stop when another answer would no longer materially sharpen the plan." ← none-owed
 - `agent-agrees-easily` · detail · "The agent agrees easily. A flagged step can come back softened rather than sharpened. A push-back is finished when the regenerated plan is sharper, not when Claude says it heard you." ← sharma-sycophancy
 - `find-is-easier-than-judge` · detail · "Generating candidates is cheap for the agent; judging them is where you're needed." ← osmani-agentic-code-review
 - `plan-review-leverage` · vision · "One correction can redirect every step that follows before the agent turns the plan into code." ← none-owed
 - `deferral-propagates-and-tangles` · vision · "What the plan doesn't decide, the agent decides mid-run... A wrong call propagates across files, and the wrongness tangles with everything built after it" ← none-owed — maintainer frame near-verbatim; the inverse of `plan-review-leverage`, stated on the same slide.
-- `making-plan-good-is-the-work` · vision · "Recognizing a good plan is the skill; the execution can wait for the day the task is real." ← none-owed
+- `making-plan-good-is-the-work` · vision · "Recognizing one is the skill." ← none-owed
 
 **Sources**
 - cc-permission-modes `[checked:2026-07-31 result:CORRECT due:cohort]` https://code.claude.com/docs/en/permission-modes — [capability] Anthropic's own docs on Anthropic's own product: a capability reference, **never `[practitioner direct]`** (that mislabel shipped in this file and in `plan-mode-done-right.md` until 2026-07-31; `push-back-on-the-plan.md` had it right). Verified against docs AND live against the installed binary, v2.1.220, build 2026-07-24. **Three separate results, do not collapse them.** (1) *Permission state, not a feature* — HOLDS. The page defines the whole family (`default`/`acceptEdits`/`plan`/`auto`/`dontAsk`/`bypassPermissions`) as permission modes sharing one Shift+Tab cycle and one `permissionMode` config surface; plan is one row in that table. Our phrasing is a fair reading of the page's structure, not a quote from it. (2) *Read-only* — HOLDS almost verbatim: *"Claude reads files, runs shell commands to explore, and writes a plan, but does not edit your source."* Shell exploration is explicitly permitted; only non-read-only tool use is blocked. **But it is no longer unconditional.** Since **v2.1.218** — days before this check — `useAutoModeDuringPlan` defaults on, and where auto mode is available *"the classifier reviews shell commands during planning instead of prompting you. Approved commands run"*, including commands outside the read-only set. And *"In sessions with bypass permissions available, Claude Code also doesn't enforce plan mode's blocks."* The claim was flatly true when written in April and acquired two exceptions in July. **Body corrected 2026-07-31:** it used to promise the agent *"can't edit or execute until you approve"*; the execute half is what stopped being universally true, so the line now promises only that it *"won't edit your source"* — which holds in every case including both exceptions, and matches the docs' own wording. Do not re-widen it back to "execute". **Open, deliberately unresolved:** how often auto mode is actually *available* in a plain classroom CLI session was not established, so the practical reach of exception (1) is unknown. If a cohort ever sees a command run during planning, that is this, not a bug. (3) *Status bar* — the body used to say it reads `plan`; **it reads `⏸ plan mode on`.** Confirmed twice: the docs state the label set, and the shipped binary's status-line table stores it literally as `{label:"plan mode on",symbol:J3r,color:"planMode"}`. The bare word `plan` appears only in a keyboard-hint carousel. **Body corrected 2026-07-31** to "shows plan mode on", deliberately un-code-spanned so it describes the label rather than pinning a literal string to match — the glyph and casing are exactly the sort of thing that churns. Do not re-add a code span here. Also undocumented in our body, and deliberately so at M2: `/plan` as a prompt prefix is a second documented entry point.

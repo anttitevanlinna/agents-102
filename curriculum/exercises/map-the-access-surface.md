@@ -40,7 +40,7 @@ These are the moves Claude has on hand for the rest of this module. Only each sk
 
 ## Point the skill at your feature
 
-Name the feature and let the skill run. Ask Claude to invoke the access-control-analysis skill on the feature you name after the colon, and save the surface map to a temp directory.
+Pick the feature and let the skill run. Ask Claude to invoke the access-control-analysis skill on the feature you type after the colon, and save the surface map to a temp directory.
 
 {{prompt:map-the-access-surface-2}}
 

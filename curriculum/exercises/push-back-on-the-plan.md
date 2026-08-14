@@ -65,7 +65,7 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. Use th
 
 *15 min*
 
-- The second read runs in this same session, and it works through the plan differently from the way you did. Still in plan mode: the plan file is the artifact you're walking, and edits to it stay locked while you're in plan mode. Nothing changes until you approve.
+- The second read runs in this same session and still in plan mode, working through the plan file differently from the way you did.
 - The prompt asks Claude to walk every unresolved branch, three questions at a time, with a recommendation for each. Take the questions that sharpen the plan; you remain the stop gate.
 
 {{prompt:push-back-on-the-plan-2}}
@@ -102,7 +102,7 @@ Say *lock it in.* The agent writes the sharpened plan. Approve at the prompt.
 
 Then just hit stop.
 
-## Phase 5: Stop, then name the pattern you ran
+## Phase 5: Stop, then surface the patterns
 
 *10 min*
 
@@ -116,7 +116,6 @@ Then just hit stop.
 
 - The agent answers. You catch what a human catches (specificity, voice-of-experience, "I'd write that differently"). The second read catches what an agent walking a decision tree catches: branches you didn't notice, dependencies you didn't name, side-effects you didn't price.
 - Neither read needs to be complete. Paired, they surface the sharpenings worth making before generation.
-- If the second read looks like it did all the work, quote one thing your push-back caught that it would have missed.
 - **Plan-mode approval inflation** is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions.
 
 <!-- maintainer -->
@@ -140,7 +139,7 @@ Then just hit stop.
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat at P5 is the Evaluate beat)
 - **No agent-wait charge.** P4 blocks on the student, and P2's plan-mode wait carries no other budgeted beat — nothing shares those minutes.
 - **Execution-free by design.** The student does not run the code. The exercise is about reading a plan well; execution is M3's concern. When asked *"why don't we execute?"* the trainer answers: *"you've done the work of making the plan good; recognising a good plan is the skill."*
-- **"Stop" repeats across the What-you-do line, the Approve section and the Phase 5 heading — deliberate.** The Approve section closes with *"Then just hit stop."* (operational stop — the student hits stop after approving so plan-mode does not roll into execution). Phase 5's heading opens with *"Stop, then name the pattern you ran"* (pedagogical stop — name the move, do not execute). The What-you-do line carries the governor for both. Same word, two registers, both load-bearing.
+- **"Stop" repeats across the What-you-do line, the Approve section and the Phase 5 heading — deliberate.** The Approve section closes with *"Then just hit stop."* (operational stop — the student hits stop after approving so plan-mode does not roll into execution). Phase 5's heading opens with *"Stop, then surface the patterns"* (pedagogical stop — surface what the session showed, do not execute). It read *"name the pattern you ran"* until 2026-08-14 (Antti): the student names nothing here, the prompt asks Claude to, and the phase's own beats are the comparison of what each read caught. **The prompt was deliberately left alone** — its third question still asks for the repeatable move, and the tension with the module file's *"Claude may reframe the session into a smart-sounding general rule"* callout is known and accepted; only the heading was mis-framing the beat. The What-you-do line carries the governor for both. Same word, two registers, both load-bearing.
 - **Artifact locations — governed by the pre-engagement contract:**
   - Plan file → Claude Code's plan directory (auto, descriptive filename)
   - Execution artifacts (diff, PR) → student's real repo
@@ -162,7 +161,7 @@ Claims
 - `assumption-push-back-is-wwhtbt` · borrowed · "something the plan is carrying silently that it shouldn't" ← martin-wwhtbt
 - `re-softening-on-regeneration` · vision · "it can make the wrong choice and tell you, in nice words, that the problem is gone" ← none-owed — maintainer frame near-verbatim; the report-back grain-of-salt is M1's self-report-is-a-hypothesis recalled at point of use.
 - `find-is-easier-than-judge` · vision · "**The agent finds; you judge.**" ← none-owed — plain form 2026-08-12 (Antti: *"there is big idea behind that but students will not get it"*). The bare law read as two verbs with no objects and no actors, planted in a bullet that carries no unpacking. This wording is the corpus's own — `the-map-filled-in.md`'s consolidation already glosses the law exactly this way — and it names both actors, which the compressed form hid. The coinage itself is unchanged and still lands at `when-a-plan-is-good.md`'s slide, where the header is followed immediately by its mechanism.
-- `full-grilling-is-an-offer` · borrowed · "The prompt asks Claude to walk every unresolved branch, three questions at a time, with a recommendation for each." ← pocock-grill-me — the *"deliberately more pressure than you may need"* tail was cut 2026-08-12 (Antti: *"too early"*): it stated the payoff before the student had felt the pressure. The frame is not lost, it is placed — `when-a-plan-is-good.md` sets it up beforehand (*"The full grilling is an offer, not an obligation"*) and three beats in this file land it after the fact (*Stop when the read starts reaching*, the *Steer up* callout, the Timebox check). Do not restore it to Phase 4's opener.
+- `full-grilling-is-an-offer` · borrowed · "The prompt asks Claude to walk every unresolved branch, three questions at a time, with a recommendation for each." ← pocock-grill-me — the *"deliberately more pressure than you may need"* tail was cut 2026-08-12 (Antti: *"too early"*): it stated the payoff before the student had felt the pressure. The frame is not lost, it is placed — `when-a-plan-is-good.md` sets it up beforehand (*"Stop when another answer would no longer materially sharpen the plan"*; the *"offer, not an obligation"* sentence that used to open that bullet was cut 2026-08-14 as a forward reference to a word the lecture has not earned, and the stop-clause carries the permission on its own) and three beats in this file land it after the fact (*Stop when the read starts reaching*, the *Steer up* callout, the Timebox check). Do not restore it to Phase 4's opener.
 - `human-is-the-stop-gate` · vision · "The agent can keep walking; you decide when another answer is no longer worth the working memory it costs." ← none-owed
 - `pocock-credit` · detail · "Credit: Matt Pocock for the original [`grill-me`](https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md) skill." ← pocock-grill-me
 - `paired-reads-surface-sharpenings` · vision · "Neither read needs to be complete. Paired, they surface the sharpenings worth making before generation." ← none-owed

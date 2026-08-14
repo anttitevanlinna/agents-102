@@ -8,4 +8,4 @@ requires:
     source: prompt:extract-the-task-shaping-rule-2
 produces: []
 ---
-Suppose I wanted this rules file to drive automated task-splitting in the future — running over a backlog, an issue queue, or a stream of incoming requests, splitting epics into shippable slices using these rules as the guardrail. What two or three shapes does that automation typically take? Name each shape, what would invoke it, and where the rules file would sit in the loop. Don't propose code today.
+Suppose I wanted these rules to drive automated ticket refinement in the future — running over a backlog, an issue queue, or a stream of incoming requests, splitting big items into smaller tickets with these rules as the guardrail. What two or three shapes does that automation typically take? For each: what invokes it, and where these rules would sit in the loop. Don't propose code today.

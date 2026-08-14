@@ -11,8 +11,6 @@ Surface one multi-file backlog task in the repo you used for Module 1. Criteria:
 
 **A task that spans a few files. Not an epic.**
 
-Come without a surfaced task and you'll be scrambling to find one while the exercise is already in plan mode. Your call.
-
 Optional reading before this module: [The agentic engineering progression](trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md), which sets up reach and calibrated trust; Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0); [Multi-session and Git: survival guide](../../trainings/agentic-engineering-101/reference/multi-session-git.md). And if Dex Horthy's [Why Software Factories Fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md) is still on your list from Module 1, this is the module it pays off in: the cure he lands on is human review made affordable by upfront planning. If you like a lookup page nearby, [plan mode at depth in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#5-plan-mode-at-depth) has the approval paths in one table.
 
 ## What You'll Learn
@@ -121,7 +119,7 @@ This module points at four sources in body and owned a stamp for none of them; t
 - **Pacing:** Runtime is computed — `node scripts/calculate-time.js plan-mode-done-right`. Trainer demos slowly, room copy-pastes concurrently. Self-study follow-along runs comparably; simple-prompting beats are quick.
 - **Transitions:** connections 10 @start "Connections: the approved-unread plan" · soft-compound 3 @after:where-the-rule-could-live "Save the rule if it earned itself" · debrief 7 @after:how-instructions-grow "Debrief" · bridge 5 @end "Bridge"
 - **No charge on `push-back-on-the-plan`** — rationale in that exercise's block.
-- **Prep timing:** backlog-task surfacing 10 min; optional progression page 4 min; optional Cherny video 30 min; optional multi-session reference 10 min; Module 3 pre-read 10–15 min; optional OWASP scan 20 min.
+- **Prep timing:** backlog-task surfacing 10 min; optional progression page 5 min; optional Cherny video 30 min; optional multi-session reference 10 min; Module 3 pre-read 10–15 min; optional OWASP scan 20 min.
 - **Mood target:** grounded competence — *"I can feel when a plan is good before approving it, and I know the move is two reads, not one."* Watch for: mood drift toward *"the second read did everything; my push-back was pointless."* Diagnostic: student at P5 reports the second-pass read caught the interesting stuff. Fix: trainer surfaces the contrast — *"your push-back caught the soft item the second read re-softened; your voice-of-experience beats the agent's breadth on that axis."*
 - **Delivery architecture** (working-dir model, compounding-artifact split, no training-dir state): canonical in `training-architecture.md` §Working directory model / §Rule files. Not restated here. Plan files land in Claude Code's default location; the four-layer rule-file hierarchy is in `reference/claude-code-for-engineers.md § 1`.
 - **Wizard demo:** intentionally none — engineer audience, the lecture carries push-back calibration.

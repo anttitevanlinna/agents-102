@@ -79,7 +79,7 @@ The hardest part of a memory isn't the tool. It's the scope. A memory about "our
 - Roger Martin strategy-as-assumptions — the challenge brief is a set of assumptions the memory will help you stress-test.
 
 **Prerequisites:**
-- Claude Code installed, training directory created (per training prework Step 0).
+- Claude Code installed, training directory created (per the training prework).
 - Both prompts run on pure text conversation — no connectors required for this exercise. Connector verification is a separate prework item.
 
 **Watch-fors in class:**

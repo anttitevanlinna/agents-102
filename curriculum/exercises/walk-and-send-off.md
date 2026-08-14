@@ -22,8 +22,7 @@ Start clean at your repo root. The task here is bigger than anything so far. Bef
 
 *10 min*
 
-- A real slice you'd send off rather than nudge bit by bit. Bigger than a typo-fix, smaller than an epic.
-- Bring one or two candidates.
+- Bring one or two candidates: a real slice you'd send off rather than nudge bit by bit.
 
 Ask Claude to screen your candidates, scope the winner, and add them after the colon.
 
@@ -31,7 +30,7 @@ Ask Claude to screen your candidates, scope the winner, and add them after the c
 
 ## Push back until the task is one end-to-end slice
 
-- Push back when the screen misses something you know about the codebase.
+- Push back when the screening goes off-topic, or misses something you know about the codebase.
 - You'll use this task again next module.
 
 ## Phase 2: Build the ranked list of what will hurt the agent
@@ -74,9 +73,10 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 
 ## Compare notes, then tidy the folder
 
-> **Time check.** Different paces hit this point at different times. The room doesn't wait for the slowest. Five to ten minutes to share what surfaced, where the audit missed, and why the agent sometimes goes lazy.
+> **Time check.** Different paces hit this point at different times. The room doesn't wait for the slowest. Five to ten minutes here.
 
-- Before the send-off, tidy the folder: *"Propose 5 to 10 ways to make `./observations/` load better into future sessions, in priority order."* Take as many as you want from the top.
+- Compare notes with the people around you: what surfaced, where the audit missed, when the agent went lazy.
+- Optional, before the send-off: tidy the folder. *"Propose 5 to 10 ways to make `./observations/` load better into future sessions, in priority order."* Take as many as you want from the top.
 
 <!-- maintainer -->
 
@@ -86,7 +86,7 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads and the "Start clean." paragraph lead de-bolded; kept bold only on the four fill-shape menu handles (**Observation or rule** / **Sharpen an existing rule** / **Wire a connector** / **Bring the material in**); widget/label chrome untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
-**Time-check callout — deliberate exception to `check_student_facing.md` preamble (room-share commands).** The Phase 2→Phase 3 callout uses *"to share what surfaced, where the audit missed, and why the agent sometimes goes lazy."* The preamble bans room-share commands (`share with your neighbor`, `tell the room`, `say X out loud`); *to share* without an addressee reads as invitational room-energy, not a student-action mandate. The blockquote shape + named 5–10 min window is a trainer cue (catch-up window for slower paces + banter beat on agent laziness). Future judges should not re-flag.
+**The compare-notes beat is one slide, two moves, and the room line is deliberate (rebuilt 2026-08-14, Antti-directed).** The slide was a timing callout with the room-share folded into it and a single tidy bullet hanging below; it now reads as one beat: (a) compare notes with the people around you, (b) optionally run the folder tidy-up before the send-off. The callout is pure timing now, and **the room naming moved into bullet (a), which keeps this file at exactly one room line** — the ceiling `check_student_facing.md` §2 sets for the lifted acknowledge-the-room ban. *Compare notes with the people around you* names that others are present and that talking to them is worth doing; it mandates no utterance, no addressee, and no report-back, which is the line §2 actually draws. The 5–10 minute window is a trainer cue (catch-up for slower paces plus the banter beat on agent laziness). Do not re-flag as a room-share command, and do not add a second room line elsewhere in this file.
 
 **Prompt register — `walk-and-send-off-3` rewritten 2026-05-21.** Earlier "deliberately short" speed-up shape (*"You propose solutions and ask questions. Use the ask-questions tool to speed up my work."*) was the cohort's single biggest individual failure mode (M4 12:36Z + 12:37Z: outright-skipped exercise). Rewritten to scaffold the gap-fill structurally with `AskUserQuestion` by name + pick-then-walk loop + per-shape destination mapping (`observations/` for observations and brought-in material; `./CLAUDE.local.md` for rule sharpening; connector setup for connector wiring). The fourth shape is **Bring the material in**, and it asks the student to fetch the document, not to label the gap — do not reintroduce a naming-only tag, in body or registry. Pairs with `author-test-strategy-skill-1`'s 2026-05-21 close — same family fix (replace push-back-by-convention with tool-by-name). Body restructured so the prompt is the default flow, not an opt-in speed-up; conversational-example bullets demoted to "what a fill looks like" reference after the prompt fence, each bullet now naming the matching destination.
 

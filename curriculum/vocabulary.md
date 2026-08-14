@@ -68,7 +68,7 @@ Names the training assembled or embargoes. One rule governs them all: **a house 
 
 ## Register bans and conventions (pointers, not copies)
 
-- *ritual / ceremony / practice*(n) → **exercise**. AE101 carve-out: *practice*(n) earned at `run-the-first-experiment`'s opener, fluent after; the cultivated character noun is **practitioner** (AE101 end-state) → `check_writing.md §2`; `lecture-guardrails.md`
+- *ritual / ceremony / practice*(n) → **exercise**. **The AE101 carve-out is retired (2026-08-14):** it licensed exactly one sentence, `run-the-first-experiment`'s opener *"The practice is yours now"*, which was cut as saying nothing a student could act on. No student-facing body in the arc uses *practice*(n) now, so the ban is clean again — do not re-open the carve-out for a single line. The cultivated character noun is still **practitioner** (AE101 end-state) → `check_writing.md §2`; `lecture-guardrails.md`
 - Banned-word greps (*honest, delve, leverage*(v), *substrate*, …) → `check_writing.md §1`
 - Business-audience jargon ban (Agents 101 surfaces) → `curriculum/evals/lints/jargon-ban.md` (canonical list + SVP test)
 - Module abbreviations: bare `MN` earned by Module 2; full forms in prework + M1 → `check_student_facing.md §2`

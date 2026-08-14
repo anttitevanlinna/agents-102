@@ -6,25 +6,25 @@ You are testing, and you are learning. Every send-off from here on is an experim
 
 You don't need to get it right first time. Read the result and decide what to change next.
 
-You're new to this country: the stretch where the agent runs alone and you don't watch each step. Don't travel it like a tourist. A tourist runs an agent and hopes; a practitioner runs a test and reads the data. The difference is whether you can explain the result.
+You're new to this country: the stretch where the agent runs alone and you don't watch each step. Don't travel it like a tourist. A tourist runs an agent and hopes; a practitioner runs a test and reads the data.
 
 ## The two-session arc
 
 - Same task, two sessions. Session one goes now, un-packaged: no plan.md, no verifier, no reference artifact. Just *"here's my system, go do X."* The agent works with exactly what you've given it.
 - Session two goes packaged, after you've read the return. You find what went wrong, watch each packaging piece close a specific gap you just saw, and send the same task again.
-- The contrast is the lesson. No generic long-running-agent advice lands the way *you just watched this fail, here's what would have caught it* lands. Un-packaged first is by design.
+- The contrast is the lesson. Un-packaged first is by design.
 
 ## Gap analysis: walk your system against the task
 
 - **Gap analysis**: walk the system you have against the system the task needs. Claude audits your setup as a subagent and returns a ranked list of thin spots.
-- Not a template. A question. *What's between what I've got and what this task is asking for?*
-- The agent finds the thin spots; you judge which ones matter. A ranked list is candidates, not verdicts. Which gaps will hurt on this task is yours to judge, and filling the worst few is worth more than closing them all.
+- *What's between what I've got and what this task is asking for?*
+- The agent finds the thin spots; you judge which ones matter. Which gaps will hurt on this task is yours to judge, and filling the worst few is worth more than closing them all.
 
 ## Cancel is legitimate; traces are data
 
 - Cancel is legitimate; traces are data. If twenty minutes in you can see Claude hallucinating file paths, contradicting its own earlier steps, or missing a requirement that wasn't in the prompt, stop it. You have the data you came for.
 - A result you can read is enough; you do not need a completed artifact. A short run with useful observations beats hours of trace you can't read.
-- For this first run, fifteen to thirty minutes is enough. Run length follows the task and how well your checks guide it. The send-off is next.
+- For this first run, fifteen to thirty minutes is enough. Run length follows the task and how well your checks guide it.
 
 <!-- maintainer -->
 
@@ -58,9 +58,9 @@ Format → `curriculum/backing-format.md`. Absorbed 2026-08-01 from the legacy `
 - `read-the-result-not-get-it-right` · vision · "You don't need to get it right first time. Read the result and decide what to change next." ← none-owed
 - `tourist-vs-practitioner` · vision · "a tourist runs an agent and hopes; a practitioner runs a test and reads the data" ← none-owed
 - `un-packaged-first-by-design` · vision · "Session one goes now, un-packaged: no plan.md, no verifier, no reference artifact." ← none-owed
-- `contrast-is-the-lesson` · vision · "The contrast is the lesson. No generic long-running-agent advice lands the way *you just watched this fail, here's what would have caught it* lands." ← none-owed
+- `contrast-is-the-lesson` · vision · "The contrast is the lesson. Un-packaged first is by design." ← none-owed
 - `gap-analysis-is-a-question` · borrowed · "**Gap analysis**: walk the system you have against the system the task needs." ← cultural-vocab
-- `agent-finds-you-judge` · vision · "The agent finds the thin spots; you judge which ones matter. A ranked list is candidates, not verdicts." ← none-owed
+- `agent-finds-you-judge` · vision · "The agent finds the thin spots; you judge which ones matter." ← none-owed
 - `cancel-is-legitimate` · vision · "Cancel is legitimate; traces are data." ← none-owed — the house's own operating rule for the exercise. **Was `detail` until 2026-08-01**, on the strength of the delivery note framing it as *what real operators do*; that framing was not evidenced and has been removed. See Flagged.
 - `any-trace-counts` · vision · "A result you can read is enough; you do not need a completed artifact." ← none-owed
 - `fifteen-to-thirty-minutes` · vision · "For this first run, fifteen to thirty minutes is enough." ← none-owed — the classroom timebox, the maintainer's own design call, set against a cohort whose real M4 long task ran 12 minutes.

@@ -7,30 +7,26 @@ Prep your first long session. Whatever you've built so far is what the agent get
 
 The scoped task you picked as homework.
 
-**A real slice you'd send off rather than nudge bit by bit. Bigger than a typo-fix, smaller than an epic.**
-
-Come without having picked the task and you'll be scrambling for one while the exercise is already running. Your call.
+**A real slice you'd send off rather than nudge bit by bit. Bigger than a typo-fix, smaller than a big epic.**
 
 Optional forward-look: [The agentic engineering progression](trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md). And when your sessions start running heavy, [Token efficiency](trainings/agentic-engineering-101/supplementary/token-efficiency.md) on keeping the context window lean.
 
-If Simon Willison's [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/) is still on your list from Module 3, read it before the send-off: it names the thinking you do before stepping away from a session, and today you step away.
+If Simon Willison's [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/) is still on your list from <!--flag:module:earn-the-trust-->Module 3<!--/flag:module:earn-the-trust--><!--flag:no-module:earn-the-trust-->Module 2<!--/flag:no-module:earn-the-trust-->, read it before the send-off: it names the thinking you do before stepping away from a session, and today you step away.
 
-If you read [Why Software Factories Fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md) in the gap after Module 1, this module's un-watched session may look like exactly what that essay warns against. It isn't. The task leaves from a pinned commit on a throwaway branch, sized as an experiment, and the planning and checks the essay says are missing are what Module 5 builds. You are not running the factory; you are collecting your own copy of its evidence, on purpose.
+If you read [Why Software Factories Fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md) in the gap after Module 1, this module's un-watched session may look like exactly what that essay warns against.
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Scope** a real send-off task in conversation with Claude, multi-file reasoning, sustained coherence, not step-by-step nudging
+- **Scope** a real send-off task in conversation with Claude, multi-file reasoning, not step-by-step nudging
 - **Walk** what you've built (`CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + any skills you've authored + connectors) against the task as a subagent audit, then push back on the audit
 - **Fill** the worst gaps in conversation: new observations written, rules sharpened, business-rules pointer wired wherever your team keeps shared rules (or the gap named explicitly)
 - **Send off** the task un-packaged in the same Claude Code session, no plan.md, no verifier, no reference artifact, and let it run
 
 ## Start here
 
-Short loops sit behind you so far: a bug fix, a plan read. This is the first long one. Multi-hour, sustained, running without you watching. The practice is yours now.
+Short loops sit behind you so far: a bug fix, a plan read. This is the first long one. Multi-hour, sustained, running without you watching.
 
-**The question, to you:** come with one or two candidate tasks from your backlog. Multi-hour work you haven't got to yet, or tasks big enough that you'd rather an agent took the first pass. The room's candidates will differ: migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.
-
-*The agent can read your tracker if you've wired one up. Give it your criteria first (sustained coherence, requirement-weaving, multi-file reasoning) or the hunt returns noise. Finding the task is still your judgement about what's been sitting. Bring one or two candidates to the exercise's first step and the agent screens them for fit.*
+**The question, to you:** which task have you been putting off because it needs someone to sit with it for a few hours? The room's answers will differ: migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.
 
 The map has a far side. Before the first long session, see the country you are entering.
 
@@ -41,8 +37,6 @@ The map has a far side. Before the first long session, see the country you are e
 [Lecture: Test and learn](lectures/test-and-learn.md)
 
 [Exercise: Prep the run, fill the gaps](exercises/walk-and-send-off.md)
-
-## Send the task off
 
 [Lecture: The ironies of automation](lectures/ironies-of-automation.md)
 
@@ -64,7 +58,7 @@ Come to Module 5 without a session that got some way into the task and you'll be
 
 ## Pre-reads before Module 5
 
-Optional. Read them while your un-packaged session is still going. All four point at the same surprise: the effort in agent work sits in the framing and the checking, not the typing. The next session picks this up from your own experiment.
+Optional. All four point at the same surprise: the effort in agent work sits in the framing and the checking.
 
 **Read,** [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md). Uncle Bob's public learning journey with AI coding: early speed, mercury-like unpredictability, then tests, architecture visibility, and formal constraints as steering. It moves the question from "the agent ran" to "what would have constrained the drift?", the question you'll put to your own session next.
 
@@ -76,9 +70,13 @@ Optional. Read them while your un-packaged session is still going. All four poin
 
 ## Next
 
-The next module opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this session lives, so a fresh session reads it straight from `task.md` rather than hunting through past sessions.
+The next module opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this session lives, so a fresh session reads it straight from `task.md`.
 
 <!-- maintainer -->
+
+**The tracker-hunt aside is cut from `## Start here` (2026-08-14, Antti).** It read *"The agent can read your tracker if you've wired one up. Give it your criteria first … or the hunt returns noise. Finding the task is still your judgement about what's been sitting. Bring one or two candidates to the exercise's first step and the agent screens them for fit."* Wrong slide: the task was picked as homework at the previous module's close, so by this slide the student is in the room holding candidates and the hunting advice has expired. The rest was either obvious to a working engineer (give an agent your criteria or get noise) or already said by the beat it points at (`walk-and-send-off` Phase 1 screens the candidates). The Connections blocker in the trainer notes keeps the recovery for the student who arrives empty-handed, which is where a room-time answer belongs.
+
+**The factory pre-read now ends on the provocation, unanswered (2026-08-14, Antti: "gives too much away").** It used to continue *"It isn't. The task leaves from a pinned commit on a throwaway branch, sized as an experiment, and the planning and checks the essay says are missing are what Module 5 builds. You are not running the factory; you are collecting your own copy of its evidence, on purpose."* That answered the module's own tension in prework: it named the pinned-commit / throwaway-branch design before the student meets it, and it pre-announced M5's job. The line now stops at *may look like exactly what that essay warns against* and the module resolves it by being run. Do not restore the reassurance; if a judge reads the pre-read as leaving the student uneasy, that is the intended state.
 
 **The nudge-count accept-note lives with the line, in `exercises/set-the-markers-send-it-off.md`.** *"Past ten or so, you've become the agent"* moved into that exercise when the send-off mechanics were extracted (2026-08-12); the §16 boundary argument defending it travelled with it and is stated there once. This block used to carry a byte-identical copy plus a second paraphrase of the same call — three copies of one decision, two of them defending a sentence this file no longer contains. Both are cut (2026-08-13, `check_pedagogy.md` §64: maintainer blocks point, they do not restate). Do not re-add: a judge auditing this file never reads the exercise body, so it cannot flag the line from here.
 
@@ -109,7 +107,7 @@ The next module opens with what came back, or what you caught before it went fur
 - **Business-rules skipped** — student has no clear business-rules layer and moves on without naming it. Trainer push: *"the gap IS the finding. Write one line in memory naming what's missing."*
 
 **Watch-fors (cross-phase):**
-- Task sprawl — student brings the whole epic at Connections. Cap during pick; redirect to a sliceable sub-piece that still needs the three load-bearing properties (sustained coherence, requirement-weaving, multi-file reasoning).
+- Task sprawl — student brings the whole epic at Connections. Cap during pick; redirect to a sliceable sub-piece that still needs the two load-bearing properties (requirement-weaving, multi-file reasoning).
 - Audit busywork — Claude returns 15 items; student drowns. The prompt asks for top 5; enforce.
 - Voice smuggling — the fill beat or the close framed as unleashed leverage (M5 mood) or joyful creation (M1 mood). M4 is curious readiness — stakes without performance, readiness without completion.
 - Package-pre-empt — the biggest M4 failure mode. Watch for: *"should I add a plan.md first?"* or *"I'll just build a quick verifier."* Both are correct moves; wrong module.
@@ -143,7 +141,7 @@ The next module opens with what came back, or what you caught before it went fur
 
 | Phase forcing function | Dominant failure mode | Escape hatch |
 |---|---|---|
-| Connections — *"come with one or two real candidates"* | Connections blocker — student can't name a task, or names a typo-fix / quarter-long epic | Trainer runs three-candidate conversation. Criteria: sustained coherence, requirement-weaving, multi-file reasoning. Push against too-small AND too-large. |
+| Connections — *"come with one or two real candidates"* | Connections blocker — student can't name a task, or names a typo-fix / quarter-long epic | Trainer runs three-candidate conversation. Criteria: requirement-weaving, multi-file reasoning. Push against too-small AND too-large. |
 | Phase 2 — *"pick the worst three gaps from the audit, fill those"* | Phase 2 over-fill — student tries to close all five gaps | Trainer push: *"Three is the budget. Skip the other two — you'll see next module why."* |
 | Phase 2 — *"if the audit calls it context, fill it"* | Phase 2 gap deferred as *"architectural, not contextual"* — student skips a contextual gap that looks architectural; the un-packaged run fails in a boring way M5 can't rescue | Trainer hard push: *"if the audit calls it context — even if the fill is 'add a rule saying we use X, not Y' — it's still context. M5 needs an interesting failure to diagnose, not a boring one. Fill it."* |
 | Phase 3 — *"settle the `observations/` tree on disk before the send-off"* | student plans the tidy-up in chat but never lands the diff | Trainer: *"show me the diff landed before you paste the send-off."* |
@@ -155,7 +153,7 @@ The next module opens with what came back, or what you caught before it went fur
 - `[checked:2026-07-02 result:CAVEAT due:2026-08-09]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen Definitive Guide (Feb 9 2026); core "each unit makes the next easier" thesis verified, explicit plan/work/review/compound naming is convergent-across-appearances not verbatim-on-page. fallback: phrase as "the loop that runs through his work" — never a step count; the loop expanded 2026-05-29 and a count is what dated last time (strategy doc Woven rule #1). Treat any Every.to outcome metric as vendor-self-reported.
 - `[checked:2026-07-02 result:OK due:2026-10-22]` https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich — [practitioner analysis] Laura Entis (staff writer, Every) on Klaassen's AI&I appearance, Apr 22 2026; "bread in the sandwich" metaphor. due recomputed from the Apr 22 2026 byline + 6-month window; the prior due:2026-08-22 did not match the byline (byline re-confirmed 2026-07-03). fallback: keep "Laura Entis on Klaassen" attribution; if removed, cite the underlying AI&I episode as the practitioner source.
 - Uncle Bob via `supplementary/clean-code-is-steering.md` — internal supplementary, not a URL in scope; its own source references are that file's audit surface. No stamp here.
-- `[checked:2026-07-30 result:OK due:none]` https://simonwillison.net/2025/Sep/30/designing-agentic-loops/ — [delegated stamp] Willison, the line 16 send-off callback to the Module 3 pre-read. Dated check owned by `earn-the-trust.md`, which assigns it. `due:none` — the delegation does not expire, the delegate's stamp does, and `source-freshness.sh` walks the delegate. fallback: drop the callback; the send-off stands without it.
+- `[checked:2026-07-30 result:OK due:none]` https://simonwillison.net/2025/Sep/30/designing-agentic-loops/ — [delegated stamp] Willison, the line 16 send-off callback to the pre-read. Dated check owned by `earn-the-trust.md`, which assigns it in the six-module arc. **The callback names its assigning module behind flags (2026-08-14):** M3 where M3 runs, M2 in cuts that drop it, because `plan-mode-done-right.md` carries the `no-module:earn-the-trust` pre-read block that keeps this reference from dangling. Change one and change the other. `due:none` — the delegation does not expire, the delegate's stamp does, and `source-freshness.sh` walks the delegate. fallback: drop the callback; the send-off stands without it.
 - `[checked:2026-07-31 result:OK due:none]` https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md — [delegated stamp] Horthy, *Why Software Factories Fail*. Freshest dated check is `lectures/when-a-plan-is-good.md`. This module carries the pointer and its thesis, no number, so it delegates rather than keeping a fourth copy of the date. fallback: drop the pointer.
 
 **Frameworks riffed on (attributed in lecture):**

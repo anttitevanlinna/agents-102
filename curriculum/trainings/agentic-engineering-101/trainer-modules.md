@@ -190,8 +190,8 @@ Never cut: the failing test before the fix, the diff-line push-back, and the con
 3. Lecture — [When a plan is good](./#lectures-when-a-plan-is-good)
 4. Exercise — [Push back on the plan](./#exercises-push-back-on-the-plan) (60 min)
 5. Exercise — [Extract the task-shaping rule](./#exercises-extract-the-task-shaping-rule) (15 min)
-6. Lecture — [Where the rule could live](./#lectures-where-the-rule-could-live) (names Slack triage / issue webhook / scheduled read)
-7. Save the rule if it earned itself — two short prompts in the module body; opportunistic integrate into `./CLAUDE.local.md`, only if a branch changed how the student reads plans
+6. Save the rule if it earned itself — two short prompts in the module body; opportunistic integrate into `./CLAUDE.local.md`, only if a branch changed how the student reads plans
+7. Lecture — [Where the rule could live](./#lectures-where-the-rule-could-live) (names Slack triage / issue webhook / scheduled read)
 8. Lecture — [How instructions grow](./#lectures-how-instructions-grow) (two-slide close: one common route from real work to rules and skills; Argyris's second loop returns durable learning to future context)
 
 **Learning goals.** Student can:
@@ -214,7 +214,7 @@ Never cut: the failing test before the fix, the diff-line push-back, and the con
 
 {{runtime-map:plan-mode-done-right}}
 
-**2-day format note.** The post-lunch block (13:15–13:45) holds Exercise A's Phase 5, Exercise B, *Where the rule could live*, *How instructions grow*, and the Debrief. The soft-compound folds into the Debrief conversation because they are the same self-compounding beat. The Bridge rides the following 20-minute break. The map's clock column runs straight through — it does not model the lunch this module splits across, so read it as elapsed, not as wall time after 12:00.
+**2-day format note.** The post-lunch block (13:15–13:45) holds Exercise A's Phase 5, Exercise B, the soft-compound, *Where the rule could live*, *How instructions grow*, and the Debrief. **The soft-compound moved 2026-08-14: it now runs straight off Exercise B's load map rather than after both lectures, so it no longer folds into the Debrief** — the student saves while the placement decision is still warm, and the two lectures close the module on the horizon without a housekeeping beat between them. The Bridge rides the following 20-minute break. The map's clock column runs straight through — it does not model the lunch this module splits across, so read it as elapsed, not as wall time after 12:00.
 
 The Debrief has no projected section on the student page, by design — it is a 7-minute conversation beat, not a taught section. Run it as the self-compounding conversation: Claude proposes a plan-reading rule from the session; the push line below ("name a pattern specific to THIS codebase") is the whole procedure.
 
@@ -327,7 +327,7 @@ Never cut: Phase 5's stop. Approve, don't execute, and name the pattern; the non
 
 **Learning goals.** Student can:
 
-- Scope a real send-off task in conversation with Claude — multi-file reasoning, sustained coherence, not step-by-step nudging.
+- Scope a real send-off task in conversation with Claude — multi-file reasoning, not step-by-step nudging.
 - Walk what they've built (`CLAUDE.md` + `CLAUDE.local.md` + `observations/` + ADRs + any authored skills + connectors) against the task as a subagent audit; push back on the audit.
 - Fill the worst gaps in conversation: observations written, rules sharpened, business-rules pointer wired (or the gap named explicitly).
 - Send the task off un-packaged in the same Claude Code session and let it run.
@@ -360,7 +360,7 @@ Let students point at evidence in the live run. If an answer turns into a propos
 
 **Escape hatches and gotchas.**
 
-- **No task, or a typo-fix, or a quarter-long epic at Connections** → run the three-candidate conversation. Criteria: sustained coherence, requirement-weaving, multi-file reasoning. Push against too-small AND too-large; downstream prompts cannot rescue the wrong task.
+- **No task, or a typo-fix, or a quarter-long epic at Connections** → run the three-candidate conversation. Criteria: requirement-weaving, multi-file reasoning. Push against too-small AND too-large; downstream prompts cannot rescue the wrong task.
 - **Audit returns 12–15 items** → re-run the audit prompt with the ranked top-five enforced; don't let the student hand-filter a long list.
 - **The gap-fill question tool caps at four options.** If the audit surfaced five gaps, have Claude offer the four most material as options and print the left-off gap as a note after the pick.
 - **Markers missed at send-off** → *"Read me back the branch name and the short SHA Claude confirmed. Have you noted both somewhere you'll find at Module 5 start?"* Module 5's worktree fork depends on exactly those two.
@@ -401,7 +401,7 @@ Never cut: the send-off itself, and never rescue the un-packaged run. A weak fir
 **Flow.**
 
 1. Lectures — [Reading the return](./#lectures-reading-the-return) (the M4-close pre-read, re-anchored briefly) + [Learning through contrast](./#lectures-learning-through-contrast)
-2. The nag writes the verifier — short module-body beat: the mid-run worry from M4 is the verifier's spec
+2. Your nag writes the verifier — short module-body beat: the mid-run worry from M4 is the verifier's spec
 3. Exercise — [Fork the worktree, carry the evidence](./#exercises-fork-the-worktree) (15 min): runs from the ORIGINAL repo, the worktree doesn't exist yet. Claude reads the `Run coordinates` block in `task.md` and forks `../<repo>-m5` from the `m4/<slug>` starting-point commit, copying `CLAUDE.local.md` and `observations/` across
 4. Exercise — [Diagnose and re-send](./#exercises-diagnose-and-resend) (68 min, Phases 1–5, in a new session in the worktree). Phase 5 is the re-send and now sits inside the exercise: a new session in the worktree by default (fresh context; the exercise scrollback is heavy), or clear the exercise session in place; then the packaged re-send prompt, and the walk-away report gets read cold
 6. Lecture — [What packaging is](./#lectures-what-packaging-is) (closer; the three-pattern earned from felt evidence — don't squeeze it)

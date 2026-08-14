@@ -34,8 +34,6 @@ After this module, you will be able to:
 
 [Exercise: Extract the task-shaping rule](exercises/extract-the-task-shaping-rule.md)
 
-[Lecture: Where the rule could live](lectures/where-the-rule-could-live.md)
-
 ## Save the rule if it earned itself
 
 Ask Claude whether these rules are auto-loaded into each session.
@@ -52,15 +50,18 @@ If a branch from the second-pass read sharpened how plans get made in this codeb
 
 Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble is optional reading.
 
+[Lecture: Where the rule could live](lectures/where-the-rule-could-live.md)
+
 [Lecture: How instructions grow](lectures/how-instructions-grow.md)
 
 ## Key Concepts
 - Structure is persuasive. A 7-item plan with headers looks like a decision even when it's a draft. Assume about 10% of it is wrong and go find which part.
 - One kind of scrutiny catches one kind of miss; a human read and an agent's walk-down of unresolved branches catch different things, and the gap between them is where the plan-reading skill lives
-- Assumption-silent isn't assumption-free. Every plan assumes something, and the good ones say what. Push-backs ship into memory.
+- Assumption-silent isn't assumption-free. Every plan assumes something, and the good ones say what. A verification step that could actually fail is a gate; one that always passes is decoration.
 - A plan with a specific file list has made decisions; a plan without one hasn't. The deferred ones get made mid-run, where a wrong call propagates across files and tangles.
-- Verification steps that could actually fail are gates; verification steps that always pass are decoration
 - You don't have to execute a plan to know it's good. We knew that long before agents; the skill is old, only the surface is new.
+- A rule that doesn't load doesn't exist. Where you put it decides when it fires: some paths load every session, some only when a prompt names them.
+- Fixing the plan is the first loop. Changing the rule that shaped the plan is the second, and Argyris called that double-loop learning. A session that ends with a sharpened rule has run both.
 
 <!--flag:module:earn-the-trust-->## Pre-reads before Module 3
 
@@ -68,7 +69,11 @@ Optional. The security frame Module 3 works in.
 
 **Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (June 2025). Names the threat class that combines private data, untrusted content, and external communication into a compromise surface.
 
-**Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface.<!--/flag:module:earn-the-trust-->
+**Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface.<!--/flag:module:earn-the-trust--><!--flag:no-module:earn-the-trust-->## Pre-reads before Module 4
+
+Optional. The thinking Module 4 asks you to do before you step away from a session.
+
+**Read:** Simon Willison, [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/) (September 2025). What to decide up front when an agent will run without you watching: what it can reach, what it must not touch, and how you will know afterwards whether it went well.<!--/flag:no-module:earn-the-trust-->
 
 ## Next
 
@@ -98,7 +103,7 @@ Come to Module 3 without that noted path and a task to point the skills at, and 
 
 **Line 56's recovery sentence stays in body — maintainer call 2026-08-02.** *"If it did overwrite, the old rules are still in this session's scrollback; ask Claude to restore them."* This is `check_student_facing.md` §5's own boundary case, not a violation of it: the failure is plausible (the prompt is fair to misread as a replace), the rescue is non-obvious (that the old rules survive in scrollback is not something a student would guess), and it is one tight line of state-plus-one-move. It is also **time-critical** — the scrollback dies with the session, so a student who finds the overwrite after closing has lost the rules for good. Body is the only surface that reaches them while the rescue still works. A writing judge has flagged this once and the orchestrator then proposed routing it below the maintainer fence, which §5 explicitly calls deletion. Do not cut it, and do not "move it to the trainer" — the fence is stripped from every rendered surface.
 
-**Prompt register — `push-back-on-the-plan-4` deliberately short.** The closing question (`are these rules auto-loaded to each session context?`) is intentionally end-of-session-tired-engineer register: lowercase, no end punctuation, single short question. It models the casual ask a real engineer types after a long session, contrasting with the longer earlier prompts. **The question is also deliberately answerable — a small introspection beat plus mild repetition (Antti 2026-08-13).** The load map on `extract-the-task-shaping-rule`'s *Wire the file in* slide states the answer one exercise earlier; the value here is the agent introspecting its own loading, and the repeat is the retention dose (`check_pedagogy.md` §9b). Do not flag the table, or any earlier auto-load statement, as spoiling this question. Audit-class judges flagging it as a stylistic outlier should treat as accepted-by-design. The note belongs to whichever file fences the prompt — here, the `push-back-on-the-plan-4` marker in `## Save the rule if it earned itself`, matching the registry's `origin:`. Move it if the prompt moves.
+**Prompt register — `push-back-on-the-plan-4` deliberately short.** The closing question (`are these rules auto-loaded to each session context?`) is intentionally end-of-session-tired-engineer register: lowercase, no end punctuation, single short question. It models the casual ask a real engineer types after a long session, contrasting with the longer earlier prompts. **The question is also deliberately answerable — a small introspection beat plus mild repetition (Antti 2026-08-13).** The load map on `extract-the-task-shaping-rule`'s *Where rules can live* slide states the answer; the value here is the agent introspecting its own loading, and the repeat is the retention dose (`check_pedagogy.md` §9b). Do not flag the table, or any earlier auto-load statement, as spoiling this question. **Distance shrank 2026-08-14 and the ask stays unchanged (Antti: "repetition is fine").** The soft-compound moved up to sit directly after that exercise, so the table is now the previous screen rather than a lecture away. Adjacency is not the objection a judge will think it is: the table states what loads, the prompt makes the agent report what it actually loaded, and hearing the same fact twice from two different sources one screen apart is the dose working, not a redundancy. Do not re-raise this at any distance. Audit-class judges flagging it as a stylistic outlier should treat as accepted-by-design. The note belongs to whichever file fences the prompt — here, the `push-back-on-the-plan-4` marker in `## Save the rule if it earned itself`, matching the registry's `origin:`. Move it if the prompt moves.
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 
@@ -107,6 +112,7 @@ This module points at four sources in body and owned a stamp for none of them; t
 - `[checked:2026-05-25 result:CAVEAT due:none]` https://www.youtube.com/watch?v=6eBSHbLKuN0 — [delegated stamp] Cherny, *Mastering Claude Code in 30 minutes*, the line 16 optional pre-read. Dated check owned by `exercises/open-the-side-quest.md`; outside the 6-month window by maintainer decision, recorded in `getting-going.md`. `due:none` — a delegation does not expire, the delegate's stamp does. fallback: optional reading; drop it.
 - `[checked:2026-07-31 result:OK due:none]` https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md — [delegated stamp] Horthy, *Why Software Factories Fail*, the line 16 callback. Freshest dated check is `lectures/when-a-plan-is-good.md`; `getting-going.md` also carries one. This module makes no numeric claim on it, only the pointer plus its thesis (the cure is human review made affordable by upfront planning), so delegation is the right shape rather than a fourth copy. fallback: drop the callback; the module stands without it.
 - `[checked:2026-07-02 result:OK due:none]` https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/ — [delegated stamp] Willison, the line 90 `## Pre-read` for Module 3. Dated check owned by `supplementary/the-lethal-trifecta.md`, itself `due:none` as a durable named-framing piece. fallback: the supplementary carries the threat class in full.
+- `[checked:2026-07-30 result:OK due:none]` https://simonwillison.net/2025/Sep/30/designing-agentic-loops/ — [delegated stamp] Willison, the `## Pre-reads before Module 4` block that renders only in cuts without M3. Dated check owned by `earn-the-trust.md`, which assigns the same essay in the six-module arc; `due:none` because the delegation does not expire, the delegate's stamp does. **Assigned twice on purpose, never in the same build:** the six-module arc assigns it at M3 and `run-the-first-experiment.md` calls back to it, so a cut that drops M3 has to assign it somewhere or the callback dangles. fallback: drop this block and the M4 callback together.
 - `[checked:2026-08-02 result:OK due:cohort]` https://owasp.org/www-project-top-10-for-large-language-model-applications/ — [academic/research] The line 92 optional deeper scan, and the one source here no other file stamps. Page live and actively maintained at check. **Scope caveat that will matter at re-check:** the effort has become the OWASP GenAI Security Project and the current list lives at genai.owasp.org/llm-top-10/ (2025 edition), with the v1.1 categories the body echoes — prompt injection, insecure output handling, data leakage — now archived and partly renamed. The landing URL still resolves and still fronts the project. `due:cohort` because that migration is mid-flight. fallback: link the GenAI project root and describe it as the wider LLM-risk checklist without naming categories.
 
 **Quality:** compendium-audited 2026-08-13 (story@18f4a2b technical@4fed74b behavior@ffc64f9 pedagogy@18f4a2b strategy@4fed74b slides@4fed74b)
@@ -117,9 +123,9 @@ This module points at four sources in body and owned a stamp for none of them; t
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat is the Evaluate beat)
 - **Pacing:** Runtime is computed — `node scripts/calculate-time.js plan-mode-done-right`. Trainer demos slowly, room copy-pastes concurrently. Self-study follow-along runs comparably; simple-prompting beats are quick.
-- **Transitions:** connections 10 @start "Connections: the approved-unread plan" · soft-compound 3 @after:where-the-rule-could-live "Save the rule if it earned itself" · debrief 7 @after:how-instructions-grow "Debrief" · bridge 5 @end "Bridge"
+- **Transitions:** connections 10 @start "Connections: the approved-unread plan" · soft-compound 3 @after:extract-the-task-shaping-rule "Save the rule if it earned itself" · debrief 7 @after:how-instructions-grow "Debrief" · bridge 5 @end "Bridge"
 - **No charge on `push-back-on-the-plan`** — rationale in that exercise's block.
-- **Prep timing:** backlog-task surfacing 10 min; optional progression page 5 min; optional Cherny video 30 min; optional multi-session reference 10 min; Module 3 pre-read 10–15 min; optional OWASP scan 20 min.
+- **Prep timing:** backlog-task surfacing 10 min; optional progression page 5 min; optional Cherny video 30 min; optional multi-session reference 10 min; Module 3 pre-read 10–15 min; optional OWASP scan 20 min. In cuts without M3 the last two are replaced by the Module 4 pre-read, Willison's *Designing agentic loops*, 10 min.
 - **Mood target:** grounded competence — *"I can feel when a plan is good before approving it, and I know the move is two reads, not one."* Watch for: mood drift toward *"the second read did everything; my push-back was pointless."* Diagnostic: student at P5 reports the second-pass read caught the interesting stuff. Fix: trainer surfaces the contrast — *"your push-back caught the soft item the second read re-softened; your voice-of-experience beats the agent's breadth on that axis."*
 - **Delivery architecture** (working-dir model, compounding-artifact split, no training-dir state): canonical in `training-architecture.md` §Working directory model / §Rule files. Not restated here. Plan files land in Claude Code's default location; the four-layer rule-file hierarchy is in `reference/claude-code-for-engineers.md § 1`.
 - **Wizard demo:** intentionally none — engineer audience, the lecture carries push-back calibration.

@@ -27,13 +27,13 @@ You sent off an un-packaged session. You walk in with the artefact in front of y
 
 [Lecture: Learning through contrast](lectures/learning-through-contrast.md)
 
-## The nag writes the verifier
+## Your nag writes the verifier
 
 Somewhere during the un-packaged send-off a worry surfaced: did it touch the migration, did the tests really cover the edge. There was no way to check mid-session, and it nagged.
 
-The nag is a spec, arriving one worry at a time. Each one names a check the session should have carried with it. This module turns the list into machinery: the reference pins the goal, plan.md carries the state, the verifier runs the checks you wished you could run mid-flight.
+Hold that worry beside the artefact. Where the run bears it out, it names your first check. Where it doesn't, the artefact wins: it saw the session and you didn't.
 
-Acting without full control is the job from here on. The feeling of what is missing points at what to build next. Build it, send again.
+Acting without full control is the job from here on. Build the check, send again.
 
 ## Set up the worktree
 
@@ -93,7 +93,9 @@ Module 6 reads the packaged session: subtler misses, subtler drift. Your verifie
 
 **Slide-size splits (2026-07-10, hand slides-audit):** two pre-existing oversized chunks split at conceptual seams, zero wording changes — `## Re-send the same task, packaged` + `## Send it off and read the report cold` carve the re-send narrative out of `## Key Concepts` (was 430w); `## Run the fork from the original repo` carves execution out of the worktree rationale (was 309w). Headers are command-verb, build-squint checked. Key Concepts now ends at its sixth bullet as the section name promises.
 
-**Nag beat + reading reminder added (2026-07-10, Antti-directed cognitive-load arc):** (1) *Long sessions, short reads* blockquote in Start here — the M5 reminder leg of the selective-reading arc (M1 teach → M2 exception → M3 take-into-use → M5 remind), per `check_student_facing.md` §29 operational-reminder-at-moment-of-use. (2) New section *The nag writes the verifier* after Start here — reframes the M4 mid-run worry as the verifier's spec ("the feeling of what is missing points at what to build", Antti's frame near-verbatim); names the reference/plan.md/verifier trio in the same role-language the re-send section already uses. Opener-dosage check: arming beat (spirit + one move), does not name Ronacher's three-pattern or the failure-mode↔packaging pairing — closer's beats intact. First para names a plausible mid-run worry: resonant-copy carve-out, don't flatten at re-audit.
+**Nag beat + reading reminder added (2026-07-10, Antti-directed cognitive-load arc):** (1) *Long sessions, short reads* blockquote in Start here — the M5 reminder leg of the selective-reading arc (M1 teach → M2 exception → M3 take-into-use → M5 remind), per `check_student_facing.md` §29 operational-reminder-at-moment-of-use. (2) New section *Your nag writes the verifier* after Start here — reframes the M4 mid-run worry as a source of candidate checks ("the feeling of what is missing points at what to build", Antti's frame near-verbatim). Opener-dosage check: arming beat (spirit + one move), does not name Ronacher's three-pattern or the failure-mode↔packaging pairing — closer's beats intact. First para names a plausible mid-run worry: resonant-copy carve-out, don't flatten at re-audit.
+
+**Two corrections to that beat, 2026-08-14 (Antti: "may be misplaced, and it now contradicts a bit with the agent encodes from evidence").** (a) **The nag no longer writes the spec on its own.** It read *"Your nag is a spec, arriving one worry at a time. Each one names a check the session should have carried with it."* — which contradicts the module's own method, where `diagnose-and-resend` Phase 1 reads the artefact through three lenses and Phase 2 asks *what validation would have caught this* per **named failure**. The nag is a remembered feeling about a run the student was not watching, the exact source Phase 1 teaches them to distrust (*"assume about 10% of the account misrepresents the run"*). Body now says hold the worry beside the artefact, and **the artefact adjudicates**. Do not restore a wording where the feeling is the spec. (b) **The trio pre-announcement is cut** — *"the reference pins the goal, plan.md carries the state, the verifier runs the checks"* handed out all three roles before the student had diagnosed anything, and `what-packaging-is` exists to earn those names from felt evidence at the closer. The beat is now spirit plus one move, which is what the opener-dosage line above always claimed it was.
 
 **Quality:** compendium-audited 2026-08-13 (writing@315cd5a story@315cd5a behavior@93bb807 pedagogy@315cd5a strategy@315cd5a slides@315cd5a)
 - judges @315cd5a: writing PASS, story PASS, technical REVISE (1/1-see-instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS

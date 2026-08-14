@@ -41,7 +41,7 @@ Ask Claude to sweep the session for anything earned since the first compound and
 
 > **The escape hatch is deliberate.** The closing `or "nothing new" if nothing did` allows Claude to report an empty sweep. Ask only what it added, and the agent finds something to have added.
 
-## Close the session
+## What you built
 
 **What happened:** One rules file, written from how you actually worked rather than from a template.
 

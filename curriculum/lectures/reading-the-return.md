@@ -8,7 +8,7 @@
 
 ## Three failure modes you'll use to read
 
-- Practitioners hit the same three. Use them as the lens for the read.
+- Practitioners hit the same three. Use them as lenses, not boxes: ground each finding in a quoted moment from the artefact, and the same moment can reveal more than one mode.
 - **Goal drift.** The instructions get buried as the conversation grows, and before long the agent is solving an adjacent problem with confidence. The LLM reasons from what fills the window now, and the original ask competes with everything generated since. Hard to spot until you compare what was asked against what was done.
 - **Context rot.** Signal-to-noise drops as the working window fills. The agent rehashes approaches it already ruled out two hours ago, because "ruled out two hours ago" no longer fits in the working window.
 - **Plausible-but-wrong.** Outputs look reasonable in isolation and don't match the original spec. The LLM produces the next likely word, not the next true one, so fluent and confident is its default finish whether the work is right or not. The most expensive failure to find, because it doesn't trigger an obvious tell.
@@ -18,13 +18,12 @@
 
 - The three are consequences, not bad luck. The LLM is a statistical machine with a finite window: it predicts what is likely, and it holds only so much. Run it long enough and all three failures follow, whoever wrote the prompt.
 - Predictable failures are readable failures. Because the three come from the machine, expect all three in any long session. That is why three lenses are enough to read whatever comes back.
-- Use the three as lenses, not boxes. Ground each finding in a quoted moment from the artefact; the same moment can reveal more than one failure mode.
 
 ## Two long ports, long enough for all three
 
 - In January 2026, Armin Ronacher ran a port between two languages in ten hours of agent time. 2.2 million tokens. Long enough for all three failure modes to show up.
 - In May 2026, Jarred Sumner rewrote Bun in Rust the same way, over eleven days, peaking at about sixty-four agents at a time. He was on an unreleased model, so read the scale as where this is going, not as a target to match.
-- Both ports held together anyway. Each had something specific in place that catches all three failure modes. What that was is where your own read leads.
+- Neither port held together on model quality. Each had something outside the agent that could say when the work had gone wrong. Your run had nothing of the kind, by design, and that is what the read is about to show you.
 
 <!-- maintainer -->
 
@@ -79,7 +78,7 @@ Format → `curriculum/backing-format.md`. This is the file's only source and fr
 - `long-enough-for-all-three` · vision · "Two long ports, long enough for all three" ← none-owed — the header applies `three-are-consequences` to the two attested durations; occurrence of any mode in either port is NOT claimed and neither source records one. Do not restore "surfaced".
 - `ronacher-ten-hour-port` · detail · "In January 2026, Armin Ronacher ran a port between two languages in ten hours of agent time. 2.2 million tokens." ← ronacher-minijinja. **Figures are exact, not hedged, and that is deliberate** — the post says *"Agent run duration: 10 hours (3 hours supervised)"* and *"Total tokens: 2.2 million"*. The body previously read *"roughly ten hours"* and *"two and a bit million"*, which hedged numbers we had verified verbatim; that reads as caution while discarding precision already paid for. Do not re-soften.
 - `sumner-bun-scale` · detail · "In May 2026, Jarred Sumner rewrote Bun in Rust the same way, over eleven days, peaking at about sixty-four agents at a time" ← sumner-bun-rust. *"About"* is Sumner's own hedge and *peaking* is his own scoping (*"At peak… About 64 Claudes at a time"*, against *"about 50 dynamic workflows… run continuously over the course of 11 days"*), both carried rather than rounded. The unreleased-model clause is his disclosure and is load-bearing: it stops the scale reading as a reproducible target. The Anthropic ownership disclosure stays out of body deliberately — it bears on trusting his praise of the tooling, and this slide makes no tooling claim. The body anchors the account with its month (*"In May 2026"*).
-- `run-held-together` · vision · "Each had something specific in place that catches all three failure modes. What that was is where your own read leads." ← none-owed — the deliberate withholding; naming the three-pattern here would collapse the M5 contrast, per the delivery watch-for.
+- `run-held-together` · detail · "Each had something outside the agent that could say when the work had gone wrong." ← ronacher-minijinja, sumner-bun-rust — **the paraphrase is the embargo working, not vagueness.** Both stamps record the same mechanism by name (MiniJinja's own test suite; Bun's TypeScript suite, which survives the language rewrite because it does not depend on the runtime's language), and the three-pattern words are embargoed until the M5 closer earns them (`curriculum/vocabulary.md` § House coinages). Describe the mechanism here, never name it. The replaced line — *"Each had something specific in place that catches all three failure modes. What that was is where your own read leads."* — kept the embargo but asked the student to intuit the mechanism unaided, which is why the slide read as trivia (Antti, 2026-08-14). The closing clause *"Your run had nothing of the kind, by design"* is the module's own contrast and owes no source.
 
 **Sources**
 - ooda-long-running-2026-04-21 `[checked:2026-08-02 result:CAVEAT due:cohort]` `continuous-research/platform-watch/coding-agents/runs/2026-04-21-practitioner-long-running.md` — [internal OODA run] The cited basis for the three modes. **Read in full, and it carries less than it seems.** Goal drift rests on a SitePoint article its own note describes as a *"synthesis of practitioner reports"* — `[tech press]`, a digest, one source not many. Context rot rests on a single Medium post by an individual. Plausible-but-wrong carries **no source**. The run's own limitations section: *"Hard hour-by-hour failure-rate numbers. Practitioners describe qualitative drift; nobody published 'at hour N, P(failure)=X.'"* The body carries no clock claim; the CAVEAT is the thin per-mode sourcing above.

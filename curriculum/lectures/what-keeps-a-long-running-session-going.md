@@ -20,17 +20,35 @@ The session is working. Watch what already helps it continue, and where it still
 - The question is not how many checks the repo has. It is what notices first when this particular session goes wrong.
 - Watch what catches problems, where the session waits for you, and where nothing pushes back. That is part of the result you bring back.
 
+## What stops a long run before done-done
+
+- It stops and waits. Sometimes on you: a decision it will not take alone, posed as a question, with nobody there to answer. Sometimes on the world: a ticket it cannot open, a credential it does not have, information it decides is out of reach, so it stops rather than guesses. Whether that information was truly unreachable is your call on return, not its.
+- It declares done on the part it managed. Tests pass, the summary is confident, and the piece it quietly dropped goes unmentioned. You find this one on return, not during.
+- It blocks on something that never returns. A dev server started in the foreground, a test suite waiting on a keypress. Not stuck on the problem, stuck on the terminal, and from the outside that looks the same as hard thinking.
+- It spends the whole run on one obstacle. The same failing fix, re-attempted with variations, while the rest of the task goes untouched. This one never stopped at all.
+
+When your agent stops for missing information, check whether there was a way for it to uncover that. Usually there was.
+
 <!-- maintainer -->
 
-**Lecture meta:** *~4 min, three slides. M4 closer after the send-off, read while the un-packaged session remains active. The session is the specimen: each slide turns attention toward durable state, downstream feedback, and boundaries already present.*
+**Lecture meta:** *~5 min, four slides. M4 closer after the send-off, read while the un-packaged session remains active. The session is the specimen: each slide turns attention toward durable state, downstream feedback, and boundaries already present.*
 
 **Placement:** The observational close rides the active session after `ironies-of-automation` and before `reading-the-return`. It keeps curious readiness open. The trainer does not alter or package the active experiment.
 
-**Time:** ~4 min at presentation pace. One slide per question: what keeps the place, what keeps the direction, what decides whether the session continues.
+**Time:** ~5 min at presentation pace. One slide per question: what keeps the place, what keeps the direction, what decides whether the session continues, and what stops it early.
+
+**The fourth slide (2026-08-14, Antti-directed) inverts the lecture's own frame, and its roster is a maintainer call.** Three slides answer *what keeps a run going*; this one asks what ends it **ahead of done-done**, which is the question a student can act on while their own send-off is in flight. Roster: stops-and-waits (Antti's own — the agent concludes information is out of reach and stops rather than guesses; the belief is the stopper, not the reachability, and re-judging it is the student's move on return) · declares-done-on-the-part-it-managed · blocks-on-a-non-returning-command · spends-the-run-on-one-obstacle. **Two candidates were considered and cut:** *the environment ends it* (sleeping laptop, dropped network) as obvious to a working engineer and already covered operationally by `set-the-markers-send-it-off`'s While-it-runs bullet; and *the context fills and compaction thins the thread*, cut to keep the slide to four and because context economics is not this lecture's axis. Do not re-add either without taking one out. **The kicker is the slide's one move, and it belongs to bullet 1 (2026-08-14, Antti-worded).** *"When your agent stops for missing information, check whether there was a way for it to uncover that. Usually there was."* Kicker shape rather than a `**Note**` widget on purpose: a Note box would out-weigh the bullet it comments on, and this is a trainer's aside, not a hazard. It turns the whole slide from a taxonomy into something the student does on return — the agent's belief that information was out of reach is the stopper, and the check is whether a connector, a file, a command or a question to a colleague would have dissolved it. Placement is fixed to this slide: moved anywhere else it reads as generic advice.
+
+**The last bullet's closing line is load-bearing** — the retry-churn case never stopped at all, so a slide titled *what stops a run* closing on the one that did not is the point, not an inconsistency to tidy. It reads as a bare observation on purpose (2026-08-14): the *most expensive of the four* tail that first shipped with it was cut as NVA, since ranking the four changes nothing the student does and the bullet already shows the cost.
 
 <!-- backing -->
 
 **Claims**
+- `run-stops-and-waits` · vision · "It stops and waits." ← none-owed
+- `declares-done-on-the-part-it-managed` · vision · "It declares done on the part it managed." ← none-owed
+- `blocks-on-something-that-never-returns` · vision · "It blocks on something that never returns." ← none-owed
+- `spends-the-whole-run-on-one-obstacle` · vision · "It spends the whole run on one obstacle." ← none-owed
+- `missing-info-was-usually-reachable` · vision · "When your agent stops for missing information, check whether there was a way for it to uncover that. Usually there was." ← none-owed — Antti's own frame, near-verbatim. *Usually* is the hedge doing the work: it is a maintainer's field observation, not a measured rate. Do not quantify it, and do not soften it to *sometimes* — the claim is that the reachable case is the common one, which is what makes checking worth the student's time.
 - `durable-state-keeps-the-place` · vision · "files on disk survive" ← none-owed
 - `backpressure-named-in-flow-engineering` · borrowed · "Flow engineering calls the push from a slower downstream stage **backpressure**" ← costa-backpressure
 - `handoff-feedback-is-in-system` · vision · "During the handoff, feedback has to come from the system itself. You judge the result when you return." ← none-owed

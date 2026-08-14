@@ -28,7 +28,7 @@ Every engineer who sat down with this tool did some version of that. One enginee
 
 This training pools partial into a shared floor, then raises the ceiling. The people building this are partial too. Six months ahead of you on some moves, six months behind on others.
 
-## The loop is what you repeat, not the fix
+## The loop is what you repeat
 
 Fix one trivial bug from your own backlog, end-to-end. Log one decision. Seed a rules file your next session reads first.
 

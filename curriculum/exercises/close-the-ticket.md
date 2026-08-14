@@ -22,7 +22,7 @@ Drop the ticket link after the colon.
 - Every field carries a convention. Status, labels, severity, component, owner, repro steps: how your team fills them is a rule your tracker has been keeping for years.
 - One ticket gives a sample of your team's rules, not the policy. The agent separates strong signals from guesses, and names what it cannot tell from a single ticket.
 - No ticket of your own to read? Any other real ticket from your tracker works. One the agent just wrote carries none of your team's conventions.
-- The rules the agent proposes are for the next bug, not for this one ticket.
+- The rules the agent proposes are for this bug and the ones after it.
 
 Ask Claude to reverse-engineer how your team handles bugs and propose five bug rules.
 
@@ -32,7 +32,7 @@ Push back on the five. The ones you reject sharpen the read as much as the ones 
 
 ## Write the close-out and send it
 
-- Adding a connector is one line per tracker. [MCP and connectors](../trainings/agentic-engineering-101/reference/mcp-and-connectors.md) has them, and it pays back on every session after this one.
+- Adding a connector is one command per tracker. [MCP and connectors](../trainings/agentic-engineering-101/reference/mcp-and-connectors.md) has them, and it pays back on every session after this one.
 
 Ask Claude to write the close-out, update the ticket, and report what it wrote.
 
@@ -40,19 +40,18 @@ Ask Claude to write the close-out, update the ticket, and report what it wrote.
 
 ## Double-check the voice
 
-- Does it sound like the comments already on the ticket? If a line reads stiffer than your team's, tell Claude which and why.
+- Does it sound like the comments already on the ticket? If a line reads stiffer than your team's, name it and say what style you want instead.
 
 ## Anything can be reverse-engineered
 
 - The ticket is one instance. Anything can be inspected and reverse-engineered with an LLM: a codebase nobody documented, a CI pipeline, a config, an API you did not write, the system your team runs on and cannot explain.
-- The move is the same every time. Ask the agent to study it. Extract a `.md` file. Use that file as context in the next agent.
-- The read is only as good as what the thing has recorded.
+- The move is the same every time. Ask the agent to study the pipeline, the config, the undocumented code. Extract a `.md` file. Use that file as context in the next agent.
 
 ## What happened
 
 The ticket gave up two things: a close-out note on the bug you shipped, and the conventions your team has been encoding in its fields all along. The loop that started with a failing test closed where the work is actually visible.
 
-The field rules stay in the scrollback. The next exercise sweeps this whole session into `./CLAUDE.local.md`.
+The field rules stay in the scrollback. The next exercise sweeps this whole session.
 
 <!-- maintainer -->
 
@@ -104,12 +103,11 @@ The field rules stay in the scrollback. The next exercise sweeps this whole sess
 Claims
 - `agent-reverse-engineers-unwritten-rules` · vision · "the agent can reverse-engineer your team's rules" ← none-owed
 - `each-field-carries-a-convention` · vision · "Every field carries a convention." ← none-owed
-- `conventions-read-shapes-the-close-out-voice` · vision · "If a line reads stiffer than your team's, tell Claude which and why." ← none-owed
+- `conventions-read-shapes-the-close-out-voice` · vision · "If a line reads stiffer than your team's, name it and say what style you want instead." ← none-owed
 - `one-ticket-gives-rules-not-policy` · vision · "One ticket gives a sample of your team's rules, not the policy." ← none-owed
 - `rejected-rules-sharpen-the-read` · vision · "The ones you reject sharpen the read as much as the ones you keep." ← none-owed
 - `anything-can-be-reverse-engineered` · vision · "Anything can be inspected and reverse-engineered with an LLM" ← maintainer-frame
-- `study-extract-carry-forward` · vision · "Ask the agent to study it. Extract a `.md` file. Use that file as context in the next agent." ← maintainer-frame
-- `read-is-only-as-good-as-the-record` · vision · "The read is only as good as what the thing has recorded." ← none-owed
+- `study-extract-carry-forward` · vision · "Ask the agent to study the pipeline, the config, the undocumented code. Extract a `.md` file. Use that file as context in the next agent." ← maintainer-frame
 
 Sources
 - maintainer-frame `[checked:2026-08-03 result:ATTESTED due:none]` — [maintainer-attested] Antti's own working frame, given verbatim in session and carried near-verbatim into the closing slide: *"Anything can be inspected and reverse engineered with LLM. The move is: ask LLM to study it. Extract .md file. Use .md file as context in the next agent."* Per `check_research_claims.md §1` a maintainer-attested claim is the author's own word and owes no URL. One reshape on the record: *LLM* → *the agent* on the three action steps, per the acting-versus-thinking vocabulary split; the capability sentence keeps *LLM*. fallback: cut the generalisation and the exercise stands as a tracker read, losing the Monday-morning transfer.

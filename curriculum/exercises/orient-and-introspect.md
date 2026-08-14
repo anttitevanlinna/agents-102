@@ -20,7 +20,7 @@ Start a new Claude Code session at your repo root. Renaming is optional, but hel
 
 ## Read your repo deliberately
 
-- You decide what Claude loads: the repo's shape, its structure, what's load-bearing, what's gone stale. A cold agent reads whatever it stumbles into; you point it.
+- You steer what Claude loads: the repo's shape, its structure, what's load-bearing, what's gone stale. A cold agent reads whatever it stumbles into; you point it.
 
 > **Big repo? The read can fan out.** If Claude starts reading dozens of files, interrupt with `Esc`, narrow to one feature or directory, and say `continue`. It can also stop short, and that one is harder to catch because a confident answer arrives either way. If the read names only the files you'd have guessed at, a `"there's more here"`-prompt buys another pass.
 
@@ -54,7 +54,7 @@ Run `/context` to see how much of the window is used and what fills it.
 
 ## The slice Claude didn't load
 
-- What you want is the least context that holds exactly what the task needs. `/context` tells you what you are carrying; the read tells you whether it is the right load.
+- What you want is the least context that holds exactly what the task needs. `/context` tells you what you are carrying; accuracy on the next task tells you whether it is the right load.
 - The slice Claude didn't load stays real. The window holds only so much; going forward, you choose what fills it.
 
 <!-- maintainer -->

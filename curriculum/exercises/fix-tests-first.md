@@ -50,8 +50,6 @@ Drop your bug after the colon.
 
 **What happened:** A real PR shipped. A failing test landed in the codebase before the fix did. The diff got read, at least one line got pushback, and the root-cause interrogation ran before the second TDD pass.
 
-Hand off to the ticket close.
-
 *For those finishing early: chatter about making sure the LLM doesn't fake tests or write tests that just pass. How do you catch that efficiently?*
 
 <!-- maintainer -->

@@ -178,7 +178,7 @@ Claims
 - `three-layer-model` · vision · "Layer 1: Shape of one skill … Layer 2: Classification axes … Layer 3: Composition mechanisms" ← none-owed
 - `explicit-load` · detail · "**1. Explicit load.** One skill names another as a precondition." ← dino-stack
 - `orchestrator-composition` · detail · "**2. Orchestrator composition.** `/ship` sequences the ship-half of every workflow." ← dino-stack
-- `four-composition-mechanisms-are-the-transferable-part` · vision · "The four composition mechanisms below are the transferable part" ← none-owed
+- `four-composition-mechanisms-are-the-transferable-part` · vision · "The four composition mechanisms this page names are the move." ← none-owed
 
 Sources
 - dino-stack `[checked:2026-07-05 result:ATTESTED due:none]` attested:maintainer — [maintainer-attested] One engineer's in-repo skill stack, read directly: the skill files, their cross-references, and the `/ship` orchestrator. **`/ship` is Dino's own skill, NOT a Claude Code built-in** — the lecture that points here keeps its orchestrator generic for exactly this reason, and any edit that reads `/ship` as a product feature is wrong. First-hand reading of a real kit, so no URL is owed and no date will stale it. **The page's own framing is its best guard:** it tells the reader this is one stack on one codebase, which is the correct evidence claim for a sample of one. fallback: none; the worked example is the evidence and its scope is stated in the first line.

@@ -114,7 +114,7 @@ The more powerful the coding agent, the more important the steering system.
 Claims
 - `clean-code-changes-what-its-for` · vision · "AI coding does not make Clean Code irrelevant. It changes what Clean Code is for." ← none-owed
 - `old-discipline-more-valuable-when-less-exciting` · vision · "The old discipline looks less exciting at exactly the moment it becomes more valuable." ← none-owed
-- `martin-experiments-in-public` · vision · "he is experimenting in public, letting the tool surprise him, and then rediscovering which parts of the discipline carry" ← none-owed
+- `martin-experiments-in-public` · vision · "He is experimenting in public, letting the tool surprise him, and then rediscovering which parts of software engineering become more important when code gets cheap." ← none-owed
 - `two-window-split` · detail · "I'm keeping two Claude windows open. One making changes to the source code. The other helping me to plan future changes." ← martin-two-windows
 - `six-fundamentals` · detail · "**CRAP And Complexity Metrics.** They expose code that is hard to trust under change." ← martin-six-fundamentals
 - `acceptance-tests-preserve-visible-behaviour` · vision · "They define the externally visible behavior the system must preserve." ← none-owed
@@ -126,7 +126,7 @@ Claims
 - `human-owns-the-mental-model` · detail · "the human still owns the mental model" ← martin-manage-structure, martin-ais-are-faster
 - `dijkstra-formalism` · detail · "Dijkstra" ← martin-dijkstra
 - `juniors-need-pragmatics` · detail · "Juniors entering the field will still need to understand what code is. But they won't need most of the philosophy that we've been used to." ← martin-juniors
-- `the-learning-arc-itself` · detail · "his learning journey starts with obvious excitement" ← martin-security-now, martin-two-windows, martin-ais-are-faster
+- `the-learning-arc-itself` · detail · "His learning journey starts with obvious excitement." ← martin-security-now, martin-two-windows, martin-ais-are-faster
 
 Sources
 - martin-two-windows `[checked:2026-05-25 result:OK due:none]` https://x.com/unclebobmartin/status/2016166910698696916 — [practitioner direct] Robert C. Martin, the two-window split: plan directory and code directory, manual pull-push. oEmbed-verified. **`due:none`** — a dated first-hand post about what he was doing then; re-reading it next year cannot change it, and the body frames his arc as a learning journey rather than as current practice.

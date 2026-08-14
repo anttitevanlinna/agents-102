@@ -72,16 +72,16 @@ Format → `curriculum/backing-format.md`.
 
 **Claims**
 - `training-began-as-bulletpoints` · detail · “At first, this training was a strategy document: seven headings and thirty bulletpoints” ← training-construction
-- `prototype-failures-were-specific` · detail · the three failure examples on *Everything starts as a few bulletpoints somewhere* ← training-construction
+- `prototype-failures-were-specific` · detail · "The failures were specific." ← training-construction
 - `corrections-became-rules` · detail · “Each correction became a reusable rule” ← compendium-rules
 - `rules-were-corrected` · detail · “The rules were corrected too” ← training-construction
 - `rule-compendium-snapshot` · detail · “299 active rules and subrules across 12 checklists, written over 1,399 commits” ← compendium-snapshot
 - `rules-leak` · detail · “Rules shape a draft, but they still leak” ← training-construction
-- `automated-quality-judges` · detail · the eight focused lenses on *Then we tested the training* ← quality-judges
-- `persona-simulation` · detail · the competent-builder, skeptical-senior, and fast-operator reads ← simulation-stack
+- `automated-quality-judges` · detail · "Major changes therefore go through automated quality judges, each reading through a focused lens" ← quality-judges
+- `persona-simulation` · detail · "Simulated engineers read the result as a competent builder, a skeptical senior, and a fast operator." ← simulation-stack
 - `prompt-behavior-simulation` · detail · “what the LLM is likely to do when each prompt is pasted” ← simulation-stack
 - `tmux-system-test` · detail · “a tmux runner drives real Claude Code sessions through Modules 1–6 against working codebases” ← tmux-runner
-- `claude-local-md-carries-session-learning` · detail · what the session taught is written into `./CLAUDE.local.md` for the next session ← claude-local-md-autoload
+- `claude-local-md-carries-session-learning` · detail · "wrote what the session taught you into `./CLAUDE.local.md` for the next session" ← claude-local-md-autoload
 - `klaassen-names-it` · borrowed · “Kieran Klaassen calls this **compound engineering**” ← klaassen-definitive-guide
 - `compound-work-improves-next-work` · borrowed · “work produces evidence; evidence improves the system that does the next work” ← klaassen-definitive-guide
 - `claudes-first-read-partly-wrong` · vision · “Claude's first read was partly wrong.” ← none-owed — design-stance about the just-run exercise, not a measured claim: the orient read always leaves a skipped slice, and the introspection prior (“about 10% … made up”, hedged there) makes findable wrongness the expected case. “Partly” carries the same hedge; do not strengthen to a rate.

@@ -58,7 +58,7 @@ Claims
 - `first-wrong-thing-is-your-bug` · vision · "The first thing that looks wrong or feels missing is your Module 1 bug." ← none-owed
 - `commit-at-each-working-step` · vision · "so the repo grows real history instead of one big drop" ← none-owed
 - `seed-a-data-touching-feature` · vision · "a shareable level via a URL, a score you submit, or saved progress" ← none-owed
-- `four-task-sizes` · vision · "**Trivial bug** … **Small multi-file task** … **Small feature**" ← none-owed
+- `four-task-sizes` · vision · "**Trivial bug:** … **Small multi-file task:** … **Small feature:**" ← none-owed
 
 Sources
 - cc-model-command `[checked:2026-05-15 result:OK due:cohort]` https://code.claude.com/docs/en/cli-reference — [capability] `/model <name>` switches the active model in-session. The only product claim on the page. fallback: tell the student to pick the mid-tier model however the current UI offers it.

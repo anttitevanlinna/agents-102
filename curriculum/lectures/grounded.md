@@ -89,9 +89,9 @@ Phase 0 is next: a fresh briefing, then a 30-claim pool extracted from it. The c
 <!-- backing -->
 
 Claims
-- `single-pass-compound-decay` · detail · "85%^10 = 20%" ← compound-reliability-math
+- `single-pass-compound-decay` · detail · "Ten unverified steps in a row at 85% each would land near 20% end-to-end" ← compound-reliability-math
 - `first-pass-prior` · detail · "In practice a first pass lands close to that; treat it as a working prior, not a measurement." ← antti-first-pass-prior
-- `loop-collapses-the-error-rate` · detail · "10% → 1% → 0.1% → 0.01% with a 90%-catch detector plus fix" ← compound-reliability-math, antti-first-pass-prior
+- `loop-collapses-the-error-rate` · detail · "Round 1: 10% fabricated → 1% after fix." ← compound-reliability-math, antti-first-pass-prior
 - `mata-detector-first-pass` · detail · "today's four detection techniques ran against the Mata v. Avianca pre-read before class" ← mata-detector-passes
 - `mata-detector-rerun` · detail · "the story got fixed, and the four detectors ran again … A re-run months later caught one more smoothing the earlier passes had walked past" ← mata-detector-passes
 - `cs-short-chain-behaves` · detail · "This is why agentic customer service behaves (a short chain: look up the order, check the policy, draft the reply, with nothing stacking unverified for long). This is why \"let the agent handle the full workflow\" doesn't" ← kb-customer-service-chain-length

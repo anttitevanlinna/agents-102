@@ -42,16 +42,16 @@ Three legs. Cut one.
 <!-- backing -->
 
 Claims
-- `three-capabilities-that-must-not-meet` · borrowed · "access to private data, exposure to untrusted content, and a channel to send data out" ← willison-trifecta
+- `three-capabilities-that-must-not-meet` · borrowed · "access to private data, exposure to untrusted content, and a channel that communicates out" ← willison-trifecta
 - `not-risky-structural` · vision · "Not risky. Structural." ← none-owed
 - `no-model-quality-makes-it-safe` · detail · "No amount of model quality makes the combination safe" ← willison-trifecta
 - `legs-hide-in-ordinary-wiring` · vision · "Private data is your codebase, your credentials, your customer records." ← none-owed
 - `llm-cannot-separate-instructions-from-data` · detail · "Everything in the context window is one stream of tokens; no privileged channel marks which part came from you." ← willison-trifecta
-- `every-source-is-an-instruction-channel` · vision · "Reading it and obeying it are not separable by the model." ← none-owed
+- `every-source-is-an-instruction-channel` · vision · "what private data can it read, what untrusted content reaches it, what channels leave the machine" ← none-owed
 - `the-exploit-is-a-sentence` · vision · "They need a sentence, placed where the agent will read it. That sentence is the whole exploit chain." ← none-owed
 - `prompt-injection-is-the-field-name` · borrowed · "The field calls this move **prompt injection**" ← willison-trifecta
 - `attacker-targets-the-agent-not-the-system` · vision · "This asks who attacks the agent building it." ← none-owed
-- `the-two-audits-compose` · vision · "STRIDE models attacks on what you ship; the trifecta models attacks on what builds it." ← none-owed
+- `the-two-audits-compose` · vision · "STRIDE models attacks on the system; the trifecta models attacks through the agent." ← none-owed
 - `accident-model-is-not-an-adversary-model` · vision · "Sandboxes and permission prompts bound what the agent can break by mistake; the trifecta bounds what an attacker can make it do on purpose." ← none-owed
 - `cut-one-leg` · vision · "Audit any agent deployment for the three legs. Then cut one." ← none-owed
 - `cutting-a-leg-is-ordinary-engineering` · vision · "Read-only where write is not needed. No network where network is not needed." ← none-owed

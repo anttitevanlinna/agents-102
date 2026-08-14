@@ -71,7 +71,7 @@ Claims
 - `capability-is-emergent` · vision · "Capability is emergent. … You can't fully predict the combination. You can only bound it." ← none-owed
 - `the-work-is-the-loop` · borrowed · "**Assess.** … **Mitigate.** … **Reassess residual.** … **Decide.**" ← iso-31000
 - `agent-mitigations-are-shaped-differently` · vision · "Agent mitigations are shaped differently than firewalls." ← none-owed
-- `name-the-residual-and-write-it-down` · vision · "*The residual risk here is X. If Y happens, Z follows.*" ← none-owed
+- `name-the-residual-and-write-it-down` · vision · "*The residual risk here is X. If Y happens, we haven't prevented it, we've made it less likely.*" ← none-owed
 - `two-options-not-three` · vision · "Accept the residual on record, or close the door. Those are the two options. *\"Hope it doesn't happen\"* is not one." ← none-owed
 - `best-mitigation-is-the-one-you-dont-need` · borrowed · "The best mitigation is the one you don't need." ← cultural-vocab
 

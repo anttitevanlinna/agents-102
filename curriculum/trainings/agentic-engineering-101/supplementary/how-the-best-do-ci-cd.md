@@ -121,12 +121,12 @@ Claims
 - `intercom-tier-1-auto-approve` · detail · "routes 19.2% of merges through a Tier-1 auto-approve path" ← curran-2x
 - `stripe-thousand-prs-all-reviewed` · detail · "Over 1,000 agent-produced PRs merge each week, all human-reviewed, none with human-written code." ← stripe-minions
 - `husain-guardrails-versus-evaluators` · detail · "guardrails sit inline and block the response, evaluators run async on heavier compute" ← husain-guardrails-faq
-- `ramp-dojo-at-team-scale` · detail · "350+ shared skills, 99.5% of employees actively using AI" ← charles-rachitsky
-- `majors-on-agent-validation` · detail · "How do you expect your agents to validate each change, if they can't?" ← majors-charity-wtf
-- `wolff-implementation-cost-to-zero` · detail · "when the implementation cost goes to zero, the feedback loop is everything" ← wolff-qcon
-- `cherny-quality-multiple` · detail · "2-3x quality" ← cherny-via-jadhav
-- `shapira-self-learning-review` · detail · "teaching the reviewer to learn from human feedback" ← shapira-elementor
-- `larson-on-compound-engineering` · detail · "consulted by future iterations of the plan pattern" ← larson-compound
+- `ramp-dojo-at-team-scale` · detail · "a shared marketplace of skills that any engineer can publish to and any engineer can pull from" ← charles-rachitsky
+- `majors-on-agent-validation` · detail · "an agent cannot validate a change whose consequences nobody can find" ← majors-charity-wtf
+- `wolff-implementation-cost-to-zero` · detail · "when the implementation cost goes to zero, the feedback loop becomes everything." ← wolff-qcon
+- `cherny-quality-multiple` · detail · "the one that 2-3x's the quality of the final result" ← cherny-via-jadhav
+- `shapira-self-learning-review` · detail · "grabs human review comments, hands them to a Cursor CLI agent, extracts patterns, and commits the rules file back to master" ← shapira-elementor
+- `larson-on-compound-engineering` · detail · "by future iterations of the plan pattern" ← larson-compound
 - `tier-by-blast-radius` · vision · "Tier by blast radius. Make the Tier-1 case on your own PRs" ← none-owed
 - `get-out-fast-learn-safely` · vision · "Time how long it takes to revert a bad merge in your repo, end to end." ← none-owed
 

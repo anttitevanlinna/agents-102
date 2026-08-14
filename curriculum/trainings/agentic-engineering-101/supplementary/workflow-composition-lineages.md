@@ -156,18 +156,18 @@ Two or three practitioners is enough to track. Watch what they ship in their own
 
 Claims
 - `the-walk-is-partial-by-design` · vision · "What this walk covers (and doesn't)" ← none-owed
-- `klaassen-compound-engineering` · detail · "/ce-plan, /ce-work, /ce-code-review, /ce-compound" ← every-ce-plugin
-- `pocock-composition-by-invocation` · detail · "skill files present, no orchestrator" ← pocock-skills
+- `klaassen-compound-engineering` · detail · "The plugin's slash commands include `/ce-plan`, `/ce-work`, `/ce-code-review`, `/ce-compound`" ← every-ce-plugin
+- `pocock-composition-by-invocation` · detail · "no `compose` skill, no orchestrator, no master entry point in the repo" ← pocock-skills
 - `yan-single-writer-with-advisors` · detail · "Single writer with advisor agents, Walden Yan and Cognition" ← cognition-multi-agents-working, cognition-dont-build
 - `metcalf-feedback-loopable` · detail · "making it feedback loopable" ← amp-feedback-loopable
 - `handoff-was-a-feature-not-a-framework` · detail · "**Handoff**, anonymous team byline at Amp (2025-10-23), was a product feature Amp shipped, not a framework." ← amp-handoff, amp-neo, amp-context-guide
 - `cherny-moves-without-a-framework` · detail · "Practitioner moves without a published framework, Boris Cherny" ← cherny-thread, howborisusesclaudecode
 - `ronacher-counter-position` · detail · "Counter-position, Armin Ronacher" ← ronacher-bottleneck, ronacher-pi, ronacher-psychosis
-- `willison-normalization-of-deviance` · detail · "composition fluency erodes review" ← willison-deviance
+- `willison-normalization-of-deviance` · detail · "Composition fluency erodes the review discipline that originally justified composition." ← willison-deviance
 - `dino-single-orchestrator-by-design` · detail · "**A single orchestrator** by deliberate design. `/ship` is the only skill that composes others." ← dino-skill-stacking
 - `dino-seven-design-principles` · detail · "**Seven design principles** that the system enforces." ← dino-skill-stacking
 - `dino-gates-fire-positionally` · detail · "**Mandatory gates fire positionally**, mid-workflow, by predicate." ← dino-skill-stacking
-- `pick-what-resembles-your-day` · vision · "three filters at the close" ← none-owed
+- `pick-what-resembles-your-day` · vision · "Three filters that work better than ranking" ← none-owed
 
 Sources
 - every-ce-plugin `[checked:2026-05-25 result:OK due:2026-11-25]` https://github.com/EveryInc/compound-engineering-plugin — [practitioner direct, vendor venue] `/ce-plan`, `/ce-work`, `/ce-code-review`, `/ce-compound` plus the 80/20 ratio, confirmed in the README. fallback: "Plan → Work → Assess → Compound" is a paraphrase; the README verbs are the primary.

@@ -135,11 +135,11 @@ Token efficiency is one lever with two payoffs: a cleaner window thinks better a
 <!-- backing -->
 
 Claims
-- `context-rot-and-attention-budget` · detail · "recall drops as the window fills" ← anthropic-context-engineering, chroma-context-rot
-- `pricing-arithmetic` · detail · the "Put a number on it" figures — ~$10 versus ~$2 naive, ~$1.26 cached over 20 turns ← anthropic-pricing
+- `context-rot-and-attention-budget` · detail · "a fuller window can produce a worse answer, not just a slower or pricier one" ← anthropic-context-engineering, chroma-context-rot
+- `pricing-arithmetic` · detail · "carrying an extra 100K tokens across 20 turns runs about 10 dollars with no caching, against 2 dollars for a lean 20K" ← anthropic-pricing
 - `start-clean-one-task-per-session` · vision · "**Start clean.** One task per session." ← none-owed
 - `pass-paths-not-paste` · detail · "Point the agent at the files and let it read what it chooses." ← klaassen-folder-is-the-agent, orosz-cherny
-- `subagent-as-a-firewall` · vision · "A noisy investigation … doesn't have to land in your main window." ← none-owed
+- `subagent-as-a-firewall` · vision · "A noisy investigation … doesn't have to land in your own window at all." ← none-owed
 - `route-by-complexity-not-price` · vision · "A mechanical sub-task … does not need your strongest model." ← none-owed
 - `keep-what-you-carry-lean` · detail · "Everything in `./CLAUDE.md` is paid on every turn of every session" ← wiegold-claude-md, lulla-agents-md
 - `caching-savings-folklore` · detail · "**\"Caching saves you 90 percent.\"**" ← anthropic-pricing
@@ -149,7 +149,7 @@ Claims
 - `mcp-surface-costs-every-turn` · detail · "Every connected tool adds its description to the window every turn, used or not." ← willison-mcp-overhead
 - `cache-invalidation-costs-real-money` · detail · "Editing something early in the context, or resuming a session, can bust the prompt cache" ← cc-cache-bust-issues
 - `fanning-out-is-its-own-bill` · detail · "running many in parallel is a different bill" ← anthropic-multi-agent
-- `pruning-can-improve-results` · detail · "trimming context can improve results, not just cut cost" ← swe-pruner
+- `pruning-can-improve-results` · detail · "trimmed an agent's context by 23 to 54 percent on a coding benchmark, and its success rate went up" ← swe-pruner
 
 Sources
 - anthropic-context-engineering `[checked:2026-06-03 result:OK due:cohort]` https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents — [practitioner direct, vendor venue] *"context rot"*, *"attention budget"*, *"smallest possible set of high-signal tokens."* Dated 2025-09-29, over six months: **cite as the durable definition and origin, not as fresh evidence.** fallback: keep "recall drops as the window fills" as the plain mechanism, drop the coined terms.

@@ -89,14 +89,14 @@ Leverage is not reach alone. It is reach that trust can keep up with.
 Claims
 - `engineer-expands-reach` · vision · "progressively extending an engineer's reach with AI" ← none-owed
 - `engineer-remains-active` · vision · "The engineer remains the active party" ← none-owed
-- `engineer-active-progression` · vision · "uses AI for assistance → works with it interactively → delegates bounded outcomes → directs several independent sessions → encodes recurring work into checked loops → improves the context, memory, skills, and verification behind subsequent sessions" ← none-owed
+- `engineer-active-progression` · vision · "The engineer uses AI for assistance. … The engineer directs several independent sessions. … The engineer improves the context, memory, skills, and verification that make every subsequent session stronger." ← none-owed
 - `constraint-chain` · vision · "Trust enables delegation ... Working loops make the surrounding system the highest-value thing to improve" ← none-owed
 - `playbook-team-progression` · detail · "a similar team-scale movement ... from using the agent inside one task to engineering the conditions behind many tasks" ← fred-ai-native-playbook
-- `reach-definition` · vision · "Reach is how much you delegate" ← none-owed
-- `calibration-definition` · vision · "Calibration is whether trust in the result was earned by a gate you have verified" ← none-owed
+- `reach-definition` · vision · "**Reach** is how much you delegate: the size of the task and the distance between checks." ← none-owed
+- `calibration-definition` · vision · "**Calibration** is whether trust in the result was earned by a gate you have verified." ← none-owed
 - `high-reach-splits` · vision · "Measured gates produce calibrated agency. Unmeasured green produces reckless autonomy." ← none-owed
 - `frontier-follows-gates` · vision · "The frontier moves outward only as fast as the gates behind it" ← none-owed
-- `wollsen-parallel-session-account` · detail · "30 to 40 sessions open and actively managing 10 to 15" ← fred-throughput-account
+- `wollsen-parallel-session-account` · detail · "he kept 30 to 40 sessions open and actively managed 10 to 15 through a working day" ← fred-throughput-account
 - `wollsen-value-estimate` · detail · "three to four times the value of an average team, far below the multiple suggested by its pull-request count" ← fred-throughput-account
 - `leverage-reach-and-trust` · vision · "Leverage is not reach alone. It is reach that trust can keep up with." ← none-owed
 

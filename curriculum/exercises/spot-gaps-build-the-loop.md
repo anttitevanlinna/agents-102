@@ -55,7 +55,7 @@ Ask Claude to cut one rule the two-session diagnosis killed, or to say so and st
 
 ## Scan your history for the work that recurs
 
-> **Fast operator?** Lump the next two prompts into one go. Paste them one after another in the same conversation, study then shapes, and let the answers land together. The two moves don't change.
+> **Fast operator?** Lump the next two prompts into one go. Paste them one after another in the same conversation, study the shapes, and let the answers land together. The two moves don't change.
 
 > **Cut the scan when the top patterns are clear enough to use.** The prompt keeps looking because that is its job. Narrow it whenever you like, or say *tell me what you've found so far*. Once two or three recurring kinds of work are clear enough to draw and compare, move on. You do not need a complete inventory.
 

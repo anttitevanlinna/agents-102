@@ -5,7 +5,7 @@ Every gap you found belongs somewhere durable, or you will find it again next we
 
 ## Prework
 
-Optional pre-read in the Module 5 to Module 6 gap: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (Aug 2025), and Lucas F. da Costa, [Backpressure Is All You Need](https://www.lucasfcosta.com/blog/backpressure-is-all-you-need) (May 2026). Module 4 gave the pressure a name: backpressure. The Module 5 reading now meets a design question: which checks belong at the seams?
+Optional pre-read before this module: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (Aug 2025), and Lucas F. da Costa, [Backpressure Is All You Need](https://www.lucasfcosta.com/blog/backpressure-is-all-you-need) (May 2026). Module 4 gave the pressure a name: backpressure. The Module 5 reading now meets a design question: which checks belong at the seams?
 
 Optional lookup pages: [session transcripts in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#10-session-transcripts-read-what-actually-happened) for the two-session compare, and [long-running shapes](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#9-long-running-shapes-loop-scheduled-tasks-routines-goal) for when you turn a one-off into a pattern you run on a schedule, in a loop, or until a condition holds.
 
@@ -20,7 +20,7 @@ After this module, you will be able to:
 
 ## Start here
 
-Open a fresh Claude Code session in the Module 5 worktree, `../<repo>-m5`. Both sessions already live there.
+Open a fresh Claude Code session in the Module 5 worktree, `../<repo>-m5`. Both sessions are readable from there: the branches share `.git`, and each run recorded its transcript path.
 
 You walk in holding two sessions of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-send. The contrast across two sessions is the material. One session gave you a failure mode to name. Two sessions give you gaps the three-pattern itself didn't anticipate, and a shape for what to do about each one.
 
@@ -54,7 +54,7 @@ No compound prompt here. The exercise's gap map and stack-map are the Module 6 c
 
 ## Key Concepts
 - The three-pattern catches what it was shaped to catch. The gaps that surface after two sessions are data the pattern didn't anticipate, not proof the pattern failed
-- Claude over-credits its own packaging by default. You know the countermove by now. A fair push-back names one thing the verifier missed, concretely. The sessions rule; the summary of them doesn't
+- Claude over-credits its own packaging by default. You know the countermove by now. A fair push-back names one thing the verifier missed, concretely. The evidence is in the sessions, not in the summary of them
 - Gaps sort into three homes: memory (rules that would have prevented the mistake upstream), sharper verifier (a check that would have fired mid-session), or new skill (a move packaged for future tasks)
 - A check proves something only where it could say no. A judge in the producer's window cannot say no exactly where the producer went wrong.
 - The handoff prompt IS the loop. It packages the stack-map into a move that authors the skill each shape calls for, when you run it.

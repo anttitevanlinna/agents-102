@@ -252,7 +252,7 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 ## At org scale: Intercom's tiers
 
 - Intercom published its own numbers. Darragh Curran (Intercom engineering) wrote "2x, nine months later" in April 2026. His R&D org runs a tiered review structure with auto-approval at the lowest tier: 19.2% of pull requests auto-approved with no human reviewer, merging in 14.6 minutes against an org median of 75.8, and 86% of the auto-approved PRs at 20 lines or fewer.
-- That is your verifier, scaled to an R&D org of roughly 500. Same shape: a check trusted enough that the work passing it ships without a human read. The tiers are an org deciding where a check's word is enough.
+- That is your verifier, scaled to an R&D org of about 470. Same shape: a check trusted enough that the work passing it ships without a human read. The tiers are an org deciding where a check's word is enough.
 - Review infrastructure grows by accretion. One engineer's trusted check becomes a team's, one engineer at a time, until what the team runs on has Intercom's shape. It starts at the size of the one you built.
 
 <!-- maintainer -->
@@ -311,7 +311,7 @@ Claims
 - `packaging-is-the-eighty` · vision · "The packaging you just built IS the 80% side. The re-send was the 20%." ← none-owed
 - `re-read-cost-buys-a-clean-session` · vision · "That cost is the point: it buys a session with no drift in it." ← none-owed
 - `intercom-auto-approval-numbers` · detail · "19.2% of pull requests auto-approved with no human reviewer, merging in 14.6 minutes against an org median of 75.8, and 86% of the auto-approved PRs at 20 lines or fewer" ← curran-2x
-- `intercom-rd-org-size` · detail · "an R&D org of roughly 500" ← curran-2x
+- `intercom-rd-org-size` · detail · "an R&D org of about 470" ← curran-2x
 - `review-infrastructure-grows-by-accretion` · vision · "Review infrastructure grows by accretion." ← none-owed
 
 Sources

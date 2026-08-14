@@ -433,3 +433,113 @@ test('a blockless file is left to NO-BLOCK', () => {
   assert.equal(findings.some(f => f.code === 'BODY-URL-UNSTAMPED'), false,
     'NO-BLOCK owns the blockless case');
 });
+
+/*
+ * ANCHOR-DRIFT. `curriculum/backing-format.md` states the contract plainly:
+ * the anchor is "the body phrase that breaks if the backing fails. Quote it;
+ * don't paraphrase." Nothing enforced it. The block's whole premise is that a
+ * re-verifier reads the source against the quoted prose, so an anchor that no
+ * longer appears in the body silently points the next verifier at a sentence
+ * that is not there, and the file still reports zero errors.
+ *
+ * Found live 2026-08-12 in fix-tests-first.md: the claim quoted "the deeper cut
+ * asks why the test could fail that way at all" against a body that had been
+ * rewritten to "asks whether the test was pointing at the right thing". The file
+ * was stamped PASS on seven judges at the time.
+ *
+ * Matching is on the prose ABOVE the block, not above the maintainer fence:
+ * a handful of anchors legitimately quote maintainer prose, and this check's
+ * job is catching drift, not relitigating where an anchor may point.
+ */
+test('an anchor whose phrase is gone from the body is ANCHOR-DRIFT', () => {
+  const { findings } = audit(
+    '# A lecture\n\nThe deeper cut asks whether the test was pointing at the right thing.\n\n' +
+    '<!-- backing -->\n\n' +
+    '**Claims**\n- `a` · vision · "the deeper cut asks why the test could fail that way at all" ← none-owed\n\n' +
+    '<!-- /backing -->\n'
+  );
+  assert.equal(findings.some(f => f.code === 'ANCHOR-DRIFT'), true,
+    `drifted anchor must error: ${JSON.stringify(findings)}`);
+});
+
+test('an anchor still present in the body does not fire', () => {
+  const { findings } = audit(
+    '# A lecture\n\nThe deeper cut asks whether the test was pointing at the right thing.\n\n' +
+    '<!-- backing -->\n\n' +
+    '**Claims**\n- `a` · vision · "asks whether the test was pointing at the right thing" ← none-owed\n\n' +
+    '<!-- /backing -->\n'
+  );
+  assert.equal(findings.some(f => f.code === 'ANCHOR-DRIFT'), false,
+    `intact anchor must not fire: ${JSON.stringify(findings)}`);
+});
+
+/*
+ * Anchors carry markdown (`**bold**`, backticks) and curly quotes that the body
+ * also carries; normalising both sides keeps the check from failing on
+ * typography while still catching a real reword.
+ */
+test('anchor matching survives smart quotes and surrounding whitespace', () => {
+  const { findings } = audit(
+    '# A lecture\n\nClaude’s first read was partly wrong.\n\n' +
+    '<!-- backing -->\n\n' +
+    '**Claims**\n- `a` · vision · "Claude\'s first read was partly wrong." ← none-owed\n\n' +
+    '<!-- /backing -->\n'
+  );
+  assert.equal(findings.some(f => f.code === 'ANCHOR-DRIFT'), false,
+    `typography must not trip the check: ${JSON.stringify(findings)}`);
+});
+
+/*
+ * The corpus elides the middle of a long quote with an ellipsis. That is a
+ * quoting convention, not a paraphrase, so each fragment must appear in order
+ * rather than the whole string appearing verbatim. Getting this wrong made the
+ * first run of this check report 96 findings, most of them typography.
+ */
+test('an ellipsis in an anchor elides, and each fragment must still appear in order', () => {
+  const body = '# A page\n\nA noisy investigation (read twenty files) does not have to land in your own window.\n\n';
+  const block = (anchor) =>
+    body + '<!-- backing -->\n\n**Claims**\n- `a` · vision · "' + anchor + '" ← none-owed\n\n<!-- /backing -->\n';
+
+  assert.equal(
+    audit(block('A noisy investigation … does not have to land in your own window.'))
+      .findings.some(f => f.code === 'ANCHOR-DRIFT'),
+    false, 'a correctly elided quote must not fire');
+
+  assert.equal(
+    audit(block('A noisy investigation … does not have to land in your main window.'))
+      .findings.some(f => f.code === 'ANCHOR-DRIFT'),
+    true, 'elision must not hide a reworded tail');
+
+  assert.equal(
+    audit(block('does not have to land in your own window … A noisy investigation'))
+      .findings.some(f => f.code === 'ANCHOR-DRIFT'),
+    true, 'fragments out of order are not a quote');
+});
+
+/*
+ * Anchors quote body prose that itself contains quoted speech, so the outer
+ * pair must be stripped exactly once. A greedy strip ate the inner quote and
+ * reported drift on an intact anchor.
+ */
+test('only the outer quote pair is stripped from an anchor', () => {
+  const { findings } = audit(
+    '# A lecture\n\nAsk it: "List the tools you have available." The session can name them.\n\n' +
+    '<!-- backing -->\n\n' +
+    '**Claims**\n- `a` · vision · ""List the tools you have available." The session can name them." ← none-owed\n\n' +
+    '<!-- /backing -->\n'
+  );
+  assert.equal(findings.some(f => f.code === 'ANCHOR-DRIFT'), false,
+    `nested quotes must survive: ${JSON.stringify(findings)}`);
+});
+
+test('anchors may escape the quotes they contain', () => {
+  const { findings } = audit(
+    '# A lecture\n\nThis is why "let the agent handle it" does not.\n\n' +
+    '<!-- backing -->\n\n' +
+    '**Claims**\n- `a` · detail · "This is why \\"let the agent handle it\\" does not." ← s\n\n' +
+    'Sources\n- s `[checked:2026-08-01 result:OK due:2027-01-01]` (no URL) — [house canonical] x\n\n' +
+    '<!-- /backing -->\n'
+  );
+  assert.equal(findings.some(f => f.code === 'ANCHOR-DRIFT'), false,
+    `escaped inner quotes must normalise: ${JSON.stringify(findings)}`);
+});

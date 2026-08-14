@@ -12,6 +12,7 @@
  *   ERROR  FIELD-UNPARSED    a field header in a spelling the parser cannot read
  *   ERROR  DETAIL-UNBACKED   a `detail` claim with no source id and no [SOURCE NEEDED]
  *   ERROR  SOURCE-UNDEFINED  a claim cites a source id the Sources field never defines
+ *   ERROR  ANCHOR-DRIFT      a claim's quoted anchor no longer appears in the prose
  *   ERROR  LEGACY-DOUBLE     a backing block coexists with `Frameworks riffed on:` /
  *                            `Frameworks attributed:` / `Source verification` — two homes
  *                            for one fact is how the corpus drifted in the first place
@@ -94,6 +95,30 @@ function bankedLaws() {
     }
   }
   return { all, backbone };
+}
+
+/*
+ * Anchor matching. `curriculum/backing-format.md`: the anchor is "the body
+ * phrase that breaks if the backing fails. Quote it; don't paraphrase." So the
+ * check is a verbatim substring — but typography is not the target, and the
+ * corpus mixes straight and curly quotes on both sides of the block. Normalise
+ * quotes, dashes and runs of whitespace; change anything else and a real reword
+ * starts passing.
+ */
+function normalizeAnchor(s) {
+  return s
+    .replace(/\\(["'])/g, '$1')
+    .replace(/[\u2018\u2019\u02bc]/g, "'")
+    .replace(/[\u201c\u201d]/g, '"')
+    .replace(/[\u2013\u2014]/g, '-')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function stripAnchorQuotes(s) {
+  // Exactly one pair. Body prose quotes speech, and a greedy strip eats the
+  // inner quote and reports drift on an intact anchor.
+  return s.trim().replace(/^["\u201c\u2018]/, '').replace(/["\u201d\u2019]$/, '');
 }
 
 function slugify(s) {
@@ -326,6 +351,36 @@ function auditText(text, { laws, now, stanceWindow, file = '<text>' } = {}) {
     if (!c) { add('ERROR', 'CLAIM-MALFORMED', ln(i), l.trim().slice(0, 90)); continue; }
     if (!LAYERS.has(c.layer)) add('ERROR', 'CLAIM-MALFORMED', ln(i), `unknown layer "${c.layer}" (${[...LAYERS].join('|')})`);
     claims.push({ ...c, line: ln(i) });
+  }
+
+  /*
+   * ANCHOR-DRIFT. A claim whose quoted phrase has been edited out of the body
+   * points the next re-verifier at prose that is not there, and every other
+   * check still passes — which is how it stayed invisible. Matched against
+   * everything ABOVE the block rather than above the maintainer fence: a few
+   * anchors legitimately quote maintainer prose, and this check exists to catch
+   * drift, not to relitigate where an anchor may point.
+   */
+  const prose = normalizeAnchor(text.slice(0, text.indexOf(OPEN)));
+  for (const c of claims) {
+    const phrase = normalizeAnchor(stripAnchorQuotes(c.anchor));
+    if (!phrase) continue;
+    /*
+     * An ellipsis elides the middle of a long quote — a quoting convention the
+     * corpus uses freely. Each fragment must appear, and in order, so elision
+     * shortens a quote without licensing a reworded tail.
+     */
+    let at = 0;
+    let intact = true;
+    for (const part of phrase.split(/\s*(?:\u2026|\.\.\.)\s*/).filter(Boolean)) {
+      const hit = prose.indexOf(part, at);
+      if (hit === -1) { intact = false; break; }
+      at = hit + part.length;
+    }
+    if (!intact) {
+      add('ERROR', 'ANCHOR-DRIFT', c.line,
+        `claim \`${c.id}\` quotes a phrase absent from the body: "${phrase.slice(0, 70)}${phrase.length > 70 ? '…' : ''}"`);
+    }
   }
 
   const defined = new Set();

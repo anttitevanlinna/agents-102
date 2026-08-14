@@ -39,7 +39,7 @@ Acting without full control is the job from here on. The feeling of what is miss
 
 Before the exercise session, fork the un-packaged session's starting SHA into a sibling worktree. This module's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second session starts from the same code state as the first. Cherny calls parallel worktrees his biggest productivity unlock.
 
-Gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a worktree, because git doesn't see them. The setup prompt copies them across, so your Module 1 evidence<!--flag:module:earn-the-trust--> and any Module 3 artefacts<!--/flag:module:earn-the-trust--> comes with you. From there the two copies compound separately.<!--flag:module:spot-gaps-build-the-loop--> After Module 6 you decide what to merge back.<!--/flag:module:spot-gaps-build-the-loop-->
+Gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a worktree, because git doesn't see them. The setup prompt copies them across, so what you built in Module 1<!--flag:module:earn-the-trust--> and Module 3<!--/flag:module:earn-the-trust--> comes with you. From there the two copies compound separately.<!--flag:module:spot-gaps-build-the-loop--> After Module 6 you decide what to merge back.<!--/flag:module:spot-gaps-build-the-loop-->
 
 [Exercise: Fork the worktree, carry the evidence](exercises/fork-the-worktree.md)
 
@@ -54,7 +54,7 @@ Gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a wor
 - One move per failure mode, not three to memorise. Reference catches drift; plan.md catches rot; verifier catches plausible-but-wrong
 - You pick the verifier shape against the failure shape. Same eval, different mechanism
 - Same task run twice with packaging as the only changed variable IS the lesson
-- No benchmark told you what went wrong; the artefact did. The artefact rules, self-reports don't.
+- No benchmark told you what went wrong; the artefact did. The evidence is in the artefact, not in the self-report.
 - Your verifier is your first eval: the automated check that says an agent-produced thing meets your bar<!--flag:module:spot-gaps-build-the-loop-->. Module 6 maps the eval shapes from here<!--/flag:module:spot-gaps-build-the-loop-->
 
 <!--flag:no-module:spot-gaps-build-the-loop-->
@@ -77,14 +77,15 @@ Come to Module 6 without the packaged session and you'll have one session to rea
 
 ## Pre-reads before Module 6
 
-Optional. Skipping does not break Module 6. Both fit the Module 5 to Module 6 gap.
+Optional.
 
 **Read,** Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it). Klaassen runs the verifier 10 consecutive times before trusting it, and uses per-feedback specialised agents in parallel to triage review. Reliability is a number you measure, not a vibe you sense, and one verifier can become a panel. You'll recognise both in your own artefacts.
 
 **Read,** Lucas F. da Costa, [Backpressure Is All You Need](https://www.lucasfcosta.com/blog/backpressure-is-all-you-need) (May 2026). Da Costa follows the word from flow systems into agent work: when generation outruns judgment, the human becomes the limiting stage. Module 6 picks up the design question: which checks belong inside the workflow so the session does not wait for your read at every seam?
+
 ## Next
 
-Module 6 reads the packaged session. Subtler misses, subtler drift. Your verifier turns out to be one of three eval shapes, and the map widens from one task to the work you repeat across your stack. The question changes scale too: Module 5 asked *did my task pass?* Module 6 starts asking *do all our tasks pass, and who reviewed what?*
+Module 6 reads the packaged session: subtler misses, subtler drift. Your verifier turns out to be one of three eval shapes, and the question widens from *did my task pass?* to *do all our tasks pass, and who reviewed what?*
 
 <!--/flag:module:spot-gaps-build-the-loop-->
 

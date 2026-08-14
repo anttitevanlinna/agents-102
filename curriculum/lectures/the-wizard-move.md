@@ -22,7 +22,7 @@ The move is loading the right context before the question, not a clever prompt o
 
 ## Everyone arrives partial, trainers included
 
-You found your way to Claude Code by yourself. Maybe a colleague pointed you at it. Maybe you watched a video. Mostly you just typed something, watched what came back, and kept the prompts that worked. You picked up tricks nobody taught you. The slash command that saves keystrokes. The `CLAUDE.md` shape that produced output you liked. The weird thing you tell Claude at the start of every session.
+You found your way to Claude Code by yourself. Maybe a colleague pointed you at it. Maybe you watched a video. Mostly you just typed something, watched what came back, and kept the prompts that worked. You picked up tricks. The slash command that saves keystrokes. The `CLAUDE.md` shape that produced output you liked. The weird thing you tell Claude at the start of every session.
 
 Every engineer who sat down with this tool did some version of that. One engineer brings a slash command, another a `CLAUDE.md` shape, another a strange opening instruction. Everyone's slice is partial, and everyone else's is different.
 

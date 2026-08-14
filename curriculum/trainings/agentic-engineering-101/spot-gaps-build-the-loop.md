@@ -64,7 +64,7 @@ No compound prompt here. The exercise's gap map and stack-map are the Module 6 c
 
 The next task you start, package it and send it off, then read what comes back through the lens you built. The reading is the loop, not the sending. It's yours now.
 
-The training opened on a trick nobody taught you. The loop is how the next one gets found on purpose.
+The training opened on a trick. The loop is how the next one gets found on purpose.
 
 **Going deeper, when this loop has to scale past you:** [How the best do CI/CD at agent scale](trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md).
 

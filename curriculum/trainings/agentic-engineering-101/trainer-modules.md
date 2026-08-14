@@ -98,7 +98,7 @@ Don't split M4 across the days: its flow is one sequential beat and the send-off
 **Flow.**
 
 1. Room agreement — How we work in this room + Freedom to choose
-2. Connections — "one trick you figured out with Claude Code that nobody taught you"
+2. Connections — "your favourite Claude Code trick that not many people know"
 3. Lecture — Painting the picture with the LLM (the wizard is dead; context is what colors what comes after)
 4. Lecture — The wizard move (two-window dinner demo; "context is what you tell it")
 5. Exercise — [Orient and introspect](./#exercises-orient-and-introspect)

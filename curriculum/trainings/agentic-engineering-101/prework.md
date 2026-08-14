@@ -31,13 +31,13 @@ One decision, and you probably have a strong candidate already: which repo are y
 
 Pick one. Every module of this training starts from a Claude Code session in this repo. Every rule and every memory you build during the training lands here.
 
-*Really stuck for a repo that fits? Ask your trainer for the fallback repo, or build one from zero with **Build a project from zero** in this workbook, and grow that across the training.*
+*Really stuck for a repo that fits? Ask your trainer for the fallback repo, or [build one from zero](trainings/agentic-engineering-101/supplementary/build-a-project-from-zero.md), and grow that across the training.*
 
 ## 2. Open a Claude Code session in that repo
 
 **Session** *(new, "prework")*
 
-Open a new Claude Code session at the repo you just picked. CLI or desktop both work. If Claude Code doesn't start cleanly here, sort the install before you go further, the rest of prework rides on a working session.
+Open a new Claude Code session at the repo you just picked. CLI or desktop both work.
 
 <!--flag:payload-->
 ## 3. Get the content folder onto your laptop
@@ -67,7 +67,7 @@ If Claude's screening feels like everything-at-once, ask Claude to use the AskUs
 
 {{prompt:ae101-prework-one-at-a-time}}
 
-*Small steer, small trick. A minute here, another there. You find them.*
+*Small steer, small trick. A minute here, another there.*
 
 ## Pre-read before Module 1
 
@@ -77,11 +77,9 @@ Optional. One read, any time before the first session.
 
 ## Bring to Module 1
 
-Close the prework session when Claude confirms readiness. Module 1 opens fresh in the same repo.
-
 The bug you picked. Come to Module 1 without one and you'll be scrambling for one while the exercise is already fixing bugs. Your call.
 
-The opening question at Module 1: *what's one trick you figured out with Claude Code that nobody taught you?* Bring one. Doesn't have to be big. No trick? Bring a moment Claude Code frustrated you.
+The opening question at Module 1: *what's your favourite Claude Code trick that not many people know?* Bring one. Doesn't have to be big. No trick? Bring a moment Claude Code frustrated you.
 
 <!-- maintainer -->
 

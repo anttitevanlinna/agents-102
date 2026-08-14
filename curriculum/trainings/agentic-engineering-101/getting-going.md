@@ -7,7 +7,7 @@ Your first session should leave something behind that the next one can use. Othe
 
 ## Prework
 
-Complete the prework. You'll open the first session in the repo you picked there. You'll stay in this one repo for the whole training. Probably best to keep the training's work off your mainline.
+You'll open the first session in the repo you picked. You'll stay in this one repo for the whole training. Probably best to keep the training's work off your mainline.
 
 The prework also carries one optional read for the gap before this module: Simon Willison, [Vibe engineering](https://simonwillison.net/2025/Oct/7/vibe-engineering/). He draws the line between vibe coding and working with coding agents as an accountable engineer. The first bug fix here starts on the accountable side of that line.
 
@@ -35,7 +35,7 @@ After this module, you will be able to:
 
 ## Start here
 
-**The question (to you):** what's one trick you figured out with Claude Code that nobody taught you? Doesn't have to be big. The weird prompt shape that works. The slash command you use more than the others. The thing you tell Claude at the start of every session.
+**The question (to you):** what's your favourite Claude Code trick that not many people know? Doesn't have to be big. The weird prompt shape that works. The slash command you use more than the others. The thing you tell Claude at the start of every session.
 
 [Painting the picture with the LLM](lectures/painting-the-picture-with-the-llm.md)
 
@@ -78,7 +78,7 @@ Module 2 is where plan mode earns its keep: multi-file work, a second pass that 
 
 <!-- maintainer -->
 
-**`## Prework` opens *"Complete the prework"*, with no locator.** The page-geometry phrase that used to trail it (*"at the top of this workbook"*) is cut: the deck has no top once the renderer cuts at `##` (`check_slides.md` §12), and a student holding the workbook does not need its first section pointed at. `check_slides.md` §2's navigational-pointer carve-out named this exact phrase as exempt; that blessing is withdrawn in the compendium. Do not reintroduce a locator here. The same defect and the same cut landed in `prework.md`'s thinking-effort blockquote the same day.
+**`## Prework` carries no instruction to do the prework and no locator.** A student reading this module either did it or did not; the section states what the prework left them holding. The page-geometry phrase that once trailed it (*"at the top of this workbook"*) is banned: the deck has no top once the renderer cuts at `##` (`check_slides.md` §12), and `check_slides.md` §2's navigational-pointer carve-out named that exact phrase as exempt before the blessing was withdrawn in the compendium. Do not reintroduce a locator, or the compliance line.
 
 **The Willison pre-read is mirrored here on purpose.** `check_cross_module.md` §2 wants between-module reading in two places; prework assigns *Vibe engineering* for the gap before this module, so `## Prework` echoes it in the receiver's register. The M2→M3 boundary is the shape being matched. Do not DRY it back to one location.
 

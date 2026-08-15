@@ -452,7 +452,7 @@ Never cut: the send-off itself, and never rescue the un-packaged run. A weak fir
 2. If the verifier fight needs time, take it from Phase 4; the verifier is the load-bearing artefact for the re-send.
 3. Force Phase 1 to a single dominant failure early; past 20 minutes of diagnosis, rank and pick.
 
-Never compress the two closing lectures. What packaging is → The gate is a claim too is the pair that lands the module; trim upstream instead.
+Never compress the two closing lectures. What packaging is → The gate is a claim too is the pair that lands the module; trim upstream instead. Both decks are dense by design: land the header and the bolded handle on each slide and move — never read the bullets aloud. The bullets are the student's second read in the workbook; the same note sits in the module body, so the room has been told.
 
 **Demo repo starting state.**
 

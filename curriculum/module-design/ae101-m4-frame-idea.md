@@ -462,6 +462,49 @@ block, where no student reaches them. **The claim we cannot stand behind is in t
 prove is in a comment block.** That is the argument for the swap, and it is much stronger than a
 placement preference.
 
+## Working M5 slide progression
+
+Keep the existing slides visible while testing the new middle. `(new)` marks the three deliberately empty
+theory placeholders.
+
+```text
+What would have caught this earlier?
+Three failure modes you'll use to read
+Why these three, every session
+Two long ports, long enough for all three
+Diagnose first, fix later
+Exercise: Fork the worktree, carry the evidence
+Exercise: Diagnose and re-send
+One session, plotted
+Reference and plan
+The verifier completes the three-pattern
+Theory 1 (new)
+Theory 2 (new)
+Theory 3 (new)
+Hooks always fire
+Hooks for must-happen, prompts for taste
+Every re-feed pass starts a fresh session
+Passing is not proof
+The judge needs calibrating against your labels
+Gates decay
+One session is a sample
+Change on recurrence, not on noise
+The delegation frontier
+```
+
+Window management does not need a dedicated slide. Its useful pieces dissolve into M4 where the existing
+slides already explain that live context fills, files survive and unattended work needs durable state.
+The reference, plan and verifier remain M5's answer; M4 does not reveal them before the baseline.
+
+The three-problem menu keeps one dedicated slide, `Three failure modes you'll use to read`; the shorter
+`Three failure lenses` recap is redundant. Subagents for context isolation become a small M4 callout beside
+the window and durable-state material, not an M5 slide. The useful part of `The 80/20 ratio` folds into the
+new theory middle as its personal axis: the agent makes evidence production cheap; the engineer spends
+attention defining the bar, judging the result and deciding what deserves to survive. The ratio itself does
+not need a slide.
+
+The Intercom tier case already has its M6 home in `the-loop-has-a-name.md`; M5 carries no duplicate.
+
 ## Open decisions
 
 **Settled in direction (Antti 2026-08-13):** students need the frame — the failure mode without it is the
@@ -480,6 +523,11 @@ Still open:
    surface), kit-handover clause (cheapest, likely carries most load), contrastive naming sentence. The
    variance beat needs a solo/self-read fallback — the workbook is also read alone.
 3. **Does the floor get named,** or does naming it soften C into something comfortable?
+   - Partly answered by the Key Concepts candidate: the four-line summary (model knows the public field ·
+     missing evidence is the task×model×repo×setup interaction · experiment produces a candidate, not an
+     optimum · agent makes evidence cheap, engineer decides what it means and what becomes durable
+     practice) is captured verbatim in `learn-from-the-test.md`'s maintainer block (Antti 2026-08-14) and
+     fires with the corpus-wide KC placement pass.
 4. **How much maintenance machinery becomes visible?** A training that says *the field moves* while
    visibly running dated source stamps against a cohort date makes the argument twice. Almost nobody can
    make that second argument. Also: the reference file currently 3x past its own staleness bar is either an

@@ -192,7 +192,7 @@ Verified by direct WebFetch on `geminicli.com` (the official Google docs site, c
 | 4 | Subdirectory memory scoping | optional | ✅ | ✅ workspace + parents searched | `geminicli.com/docs/cli/gemini-md/` |
 | 5 | `@file` import in memory files | M2+ optional | ✅ | ✅ `@file.md` syntax | `geminicli.com/docs/cli/gemini-md/` |
 | 6 | Session transcripts on disk | M5 | ✅ `~/.claude/projects/<project>/` | ⚠️ two paths: `~/.gemini/history/<project_hash>` (git snapshots) + `~/.gemini/tmp/<project_hash>/checkpoints` (chat). Resume via `/restore`, not `--resume <UUID>` | `geminicli.com/docs/cli/checkpointing/` |
-| 7 | Multiple parallel sessions on same repo (worktree) | M2+ | ✅ | ✅ generic `git worktree`, runtime-agnostic | n/a |
+| 7 | Multiple parallel sessions on same repo (worktree) | M3+ | ✅ | ✅ generic `git worktree`, runtime-agnostic | n/a |
 | 8 | Plan mode (read-only proposal turn) | M2 | ✅ | ✅ `/plan [goal]` or Shift+Tab cycle; explicit user approval to exit; auto-YOLO in CI | `geminicli.com/docs/cli/plan-mode/` |
 | 9 | Show context-window usage as percentage | M1 | ✅ `/context` (% filled) | ❌ no native % display; `/stats` shows token counts only, not percentage of window | `geminicli.com/docs/reference/commands/` |
 | 10 | Reset / compact session context | optional | ✅ two verbs: `/clear` resets to fresh context (prior conversation saved, resumable); `/compact` summarises history in place | ⚠️ verb fork: `/clear` is visual-only (clears display, not session); `/compress` is the actual context summariser | `geminicli.com/docs/reference/commands/` |

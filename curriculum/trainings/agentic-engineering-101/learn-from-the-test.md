@@ -33,7 +33,7 @@ Somewhere during the un-packaged send-off a worry surfaced: did it touch the mig
 
 Hold that worry beside the artefact. Where the run bears it out, it names your first check. Where it doesn't, the artefact wins: it saw the session and you didn't.
 
-Acting without full control is the job from here on. Build the check, send again.
+Acting without full control is the job from here on. Build the check, send again. That control pays twice: a session your checks steer is a session you don't babysit, and a session you don't babysit can run beside another.
 
 ## Set up the worktree
 
@@ -45,17 +45,17 @@ Gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a wor
 
 [Exercise: Diagnose and re-send](exercises/diagnose-and-resend.md)
 
+> **Dense slides.** In the two closing lectures, the headings carry the claims; the bullets are the evidence. Follow the headings; pick the detail that interests you most.
+
 [Lecture: What packaging is](lectures/what-packaging-is.md)
 
 [Lecture: The gate is a claim too](lectures/the-gate-is-a-claim.md)
 
 ## Key Concepts
-- The three failure modes earn their names by reading them in your own artefact
-- One move per failure mode, not three to memorise. Reference catches drift; plan.md catches rot; verifier catches plausible-but-wrong
-- You pick the verifier shape against the failure shape. Same eval, different mechanism
-- Same task run twice with packaging as the only changed variable IS the lesson
-- No benchmark told you what went wrong; the artefact did. The evidence is in the artefact, not in the self-report.
-- Your verifier is your first eval: the automated check that says an agent-produced thing meets your bar<!--flag:module:spot-gaps-build-the-loop-->. Module 6 maps the eval shapes from here<!--/flag:module:spot-gaps-build-the-loop-->
+- The model already knows the public field.
+- The missing evidence is the interaction of this task, model, repository, and setup.
+- The experiment produces a candidate, not an optimum.
+- The agent makes evidence cheap; the engineer decides what it means and what becomes durable practice.
 
 <!--flag:no-module:spot-gaps-build-the-loop-->
 ## Back to the map, one last time
@@ -96,6 +96,28 @@ Module 6 reads the packaged session: subtler misses, subtler drift. Your verifie
 **Nag beat + reading reminder added (2026-07-10, Antti-directed cognitive-load arc):** (1) *Long sessions, short reads* blockquote in Start here — the M5 reminder leg of the selective-reading arc (M1 teach → M2 exception → M3 take-into-use → M5 remind), per `check_student_facing.md` §29 operational-reminder-at-moment-of-use. (2) New section *Your nag writes the verifier* after Start here — reframes the M4 mid-run worry as a source of candidate checks ("the feeling of what is missing points at what to build", Antti's frame near-verbatim). Opener-dosage check: arming beat (spirit + one move), does not name Ronacher's three-pattern or the failure-mode↔packaging pairing — closer's beats intact. First para names a plausible mid-run worry: resonant-copy carve-out, don't flatten at re-audit.
 
 **Two corrections to that beat, 2026-08-14 (Antti: "may be misplaced, and it now contradicts a bit with the agent encodes from evidence").** (a) **The nag no longer writes the spec on its own.** It read *"Your nag is a spec, arriving one worry at a time. Each one names a check the session should have carried with it."* — which contradicts the module's own method, where `diagnose-and-resend` Phase 1 reads the artefact through three lenses and Phase 2 asks *what validation would have caught this* per **named failure**. The nag is a remembered feeling about a run the student was not watching, the exact source Phase 1 teaches them to distrust (*"assume about 10% of the account misrepresents the run"*). Body now says hold the worry beside the artefact, and **the artefact adjudicates**. Do not restore a wording where the feeling is the spec. (b) **The trio pre-announcement is cut** — *"the reference pins the goal, plan.md carries the state, the verifier runs the checks"* handed out all three roles before the student had diagnosed anything, and `what-packaging-is` exists to earn those names from felt evidence at the closer. The beat is now spirit plus one move, which is what the opener-dosage line above always claimed it was.
+
+**Key Concepts (Antti-decided 2026-08-15): the four lines ARE the block, verbatim.** Each maps to a beat
+the module teaches — the three theory slides mid-deck in `lectures/what-packaging-is.md`, after the
+three-pattern slide — so the reminders-only test passes by construction. The engineer-as-actor grammar in
+the fourth line is deliberate; keep it. Do not re-expand with mechanics bullets: the verifier-shape menu
+and evidence-in-artefact reminders live in the exercise body and the closer lectures, and a KC bullet
+restating them is a duplicate, not a recap.
+
+**Multisession permission carrier (Antti 2026-08-15): M5 alone, one line** at the close of *Your nag
+writes the verifier* — control → no babysitting → a second session beside this one. M4 declined (its
+stamps stay current). Ledger corrections that travel with this: `training-architecture.md` row 7 (parallel
+sessions date to M3+, where `open-the-side-quest` first runs two), and the commitment-table row #11 in
+`bosser-strategy:content-strategy-agentic-engineering-101.md` — row #11 correction still owed.
+
+**Dense-slides note (Antti-directed 2026-08-15, closing clause Antti-worded):** body blockquote before the
+closer includes — *headings carry the claims; bullets are the evidence; follow the headings, pick the
+detail that interests you most*. Engineer register, no house dialect ("handles") on a student surface. The
+claims/evidence split is load-bearing for the SOLO reader: with no trainer speaking the connective tissue
+the bullets ARE the lecture. The closing clause is authority-grammar on purpose (equals-not-pupils): it
+describes the artifact and hands the attention decision to the student — do not rewrite it into curriculum
+scheduling ("come back later", "read them after"). Trainer sibling in `trainer-modules.md` M5 says land the
+header and handle per slide, never read bullets aloud. Two registers, one instruction; keep them in step.
 
 **Quality:** compendium-audited 2026-08-13 (writing@315cd5a story@315cd5a behavior@93bb807 pedagogy@315cd5a strategy@315cd5a slides@315cd5a)
 - judges @315cd5a: writing PASS, story PASS, technical REVISE (1/1-see-instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
@@ -180,12 +202,11 @@ Module 6 reads the packaged session: subtler misses, subtler drift. Your verifie
 - `[checked:2026-05-25 result:OK due:2026-11-25]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct] Klaassen 2026-02-09, resolves, within window. fallback: cite as Klaassen's canonical compound-engineering writeup.
 - `[checked:2026-05-25 result:OK due:2026-11-25]` https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it — [practitioner direct, vendor venue] Klaassen 2025-08-18, 10-runs + parallel-feedback-agents verbatim. Dated origin; pre-read for recognition. fallback: paraphrase the reliability-as-measured idea, drop the date claim.
 - `[checked:2026-07-30 result:OK due:2027-01-30]` https://www.lucasfcosta.com/blog/backpressure-is-all-you-need — [practitioner direct] (Lucas F. da Costa, 2026-05-23). Byline, date, and the claim that a human error-catching stage limits the system were verified against the original. The body paraphrases that limit and passes its design question to Module 6. Same source as `spot-gaps-build-the-loop.md` § Prework; keep the two in sync. fallback: drop the pre-read item; the M4 lecture still earns the term from the student's live session.
-- Ronacher / Cherny / Cur-Intercom cited via `lectures/what-packaging-is.md` and `lectures/the-loop-has-a-name.md` source lists — stamps live there; confirm each stays in sync with this module's references.
+- Ronacher and Cherny are cited via `lectures/what-packaging-is.md`; stamps live there and should stay in sync with this module's references. The Intercom tier case lives in M6's `lectures/the-loop-has-a-name.md`.
 
 **Frameworks riffed on (attributed in lecture):**
 - **Ronacher's three-pattern** — Armin Ronacher. Earns its name in the closing lecture, not before.
 - **Cherny's three stop-hook shapes** — Boris Cherny. Phase 3 names the menu; attribution lives in M6's module-file Frameworks section (`the-loop-has-a-name.md` body never names Cherny). Hook system reference (event names, config shape, when-to-reach-for-hooks): `claude-code-for-engineers.md` § 13.
-- **Intercom Tier 1/2/3** — Darragh Curran. Closing lecture only; the org-scale anchor.
 - **Compound engineering** — Kieran Klaassen. Debrief self-compound, fifth rep for the student.
 - **Hook-vs-prompt partition (must vs should)** — convergent practitioner pattern; named in the closing lecture's *"Hooks always fire"* section.
 

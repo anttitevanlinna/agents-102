@@ -1,5 +1,9 @@
 # Exercise lead-in audit — 2026-08-12
 
+> **STALE ON THE AE101 HALF. Re-measured 2026-08-15: every AE101 exercise is inside budget.** `author-test-strategy-skill` reads 15 / 15 / 7 where this document records 71 / 30 / 30; `threat-model-with-stride` 17 / 15 / 5 against 39 / 38 / 51; `map-the-access-surface` 15 / 10 / 8 against 54 / 24 / 32. The proposals below were applied to that half between the two dates. **Do not re-derive a work list from the AE101 rows here** — count the current file instead.
+>
+> **The Agents 101 rows are not a length defect and are deliberately unapplied** (maintainer call 2026-08-15: leave Agents 101 alone). Those seventeen files use a different lead-in architecture, described in `curriculum/exercises/README.md`. Applying a proposal here verbatim deletes prose those slots were carrying as body — `build-your-challenge-memory`'s challenge-scoping examples and its *narrow enough that 5–8 topic pages cover it* bound exist nowhere else. The word counts in those rows measure a multi-paragraph section, not a bloated sentence, which is why they look so extreme.
+
 Auditing `**What you do:**` / `**What you build:**` / `**The point:**` in `curriculum/exercises/*.md` against `check_pedagogy.md` §52c. Budget: one sentence, ~15 words, no colon-list. Reference: `orient-and-introspect.md` at 9/12/7 words.
 
 **Scope:** 35 files in `curriculum/exercises/`. 5 carry no lead-in trio at all (`build-your-system.md`, `find-the-crux.md`, `find-the-wrong-claims.md`, `organisers-prepare-claude-basics.md`, `organisers-synthesize-rollout.md` — claude-basics-tier files, different shape entirely, out of scope). 30 files carry at least one of the three slots. Of those, 15 are missing `**What you build:**` entirely (structural, not a length defect — see *Out of scope* below), and 2 are missing both `**What you build:**` and `**The point:**`.

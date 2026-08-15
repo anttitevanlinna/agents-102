@@ -76,3 +76,17 @@ Sami's signature means: *I would run this on my own repo Monday, and I could def
 - Any new or substantially reshaped AE101 student-facing file, after the writing-class judge passes (compliance first, taste second — no point panel-reading a file with banned words in it).
 - Periodic: alongside the sequential arc read (pre-cohort), one panel per module's heaviest-prose file.
 - NOT on: maintainer blocks, reference lookup tables, prompt registry bodies, trainer pages.
+
+## Taste log — logged as heard, no cards owed
+
+Moved here from `pre-cohort-todos.md` on 2026-08-15. It is a record, not a work item: it has no firing condition, so it could never be a `[watch]`, and it was blocking that file from reaching watch-only. It belongs beside the panel because a future panel needs the reader-veto entries in particular, which are standing decisions rather than observations.
+
+Per module, as heard:
+
+- **M1** — opener *"infinite version of it"* and the bare *"Let's go."*; closer's 279-count beat and its kicker (three-way persona split, author's voice); *"useful wrongness"*.
+- **M3** — the map-transition line; the worktree LO left unframed; one hardening boundary left unstated.
+- **M4** — opener's bare permission; *"Not a template. A question."*; the gap-analysis credit ABSENCE.
+- **M5** — the merge-base paragraph's idea-sentence; the single-variable reframe buried in Key Concepts; *"mid-flight"*; impersonal worry-narration.
+- **M6** — *"read to the bone"*; the *"Going deeper"* subhead; the Encoding-taxonomy bullet.
+
+**Reader-veto keeps, on the record.** These survived a flag and stay by decision, so a later panel that re-flags them is re-litigating, not finding: *"slightly leaky"* (the cautious reader's delight), *"Despair not."* (the slang-test list), the capstone sign-off (author voice), and shotgun/cannon (the provocation-beat guard is written into the file itself).

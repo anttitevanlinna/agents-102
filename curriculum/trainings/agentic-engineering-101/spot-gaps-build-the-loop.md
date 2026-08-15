@@ -60,6 +60,15 @@ No compound prompt here. The exercise's gap map and stack-map are the Module 6 c
 - The handoff prompt IS the loop. It packages the stack-map into a move that authors the skill each shape calls for, when you run it.
 - Encoding is the third phase of test → learn → encode. Two sessions tested; the diagnosis learned; the handoff encodes. The loop closes when the lesson ships.
 
+## Optional challenges
+
+Pick one when you want to turn your kit back on itself.
+
+- Build a universal skill loader that works from any directory, finds every skill available to the current project, and loads the one the task needs.
+- Write an eval for system-design quality and architectural compliance. Make it a required PR check that blocks changes which violate your architecture.
+- Ship one skill for your team and get it adopted. Two teammates must use it on real work and send back one improvement each.
+- Build a system that shows which skills, hooks, and rules in your kit fired across recent sessions, and which never fired at all.
+
 ## Next
 
 The next task you start, package it and send it off, then read what comes back through the lens you built. The reading is the loop, not the sending. It's yours now.

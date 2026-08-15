@@ -50,6 +50,15 @@ The map has a far side. Before the first long session, see the country you are e
 - Traces are data. Stopping a session that has gone off the rails is reading, not failing.
 - The run started from a pinned commit on a throwaway branch. This was an experiment, not a production run.
 
+## Optional challenges
+
+Pick one when a normal send-off no longer feels strange enough.
+
+- Run Matt Shumer's [Gauntlet Loop](https://somethingbig.ai/gauntlet-loop) against an inspectable artifact and a real external quality bar.
+- Try Matt Pocock's [Wayfinder skill](https://github.com/mattpocock/skills/blob/main/skills/engineering/wayfinder/SKILL.md) on a project too foggy for one session. See whether its decision map clears the route.
+- Build a personal brain that reads your specs, ADRs, and postmortems, then helps you frame a feature by asking the questions your team usually discovers late.
+- On a disposable branch, use [`/goal`](https://code.claude.com/docs/en/goal) to make the codebase 10% smaller while every test stays green. Stop if behavior changes.
+
 ## Bring to Module 5
 
 A session that produced something. Read the agent's scrollback or commits from the send-off; check the agent didn't just stall in the first minute. A stopped session counts; the trace is the artefact.
@@ -149,6 +158,9 @@ The next module opens with what came back, or what you caught before it went fur
 | Send-off — *"stop the session when you've seen enough; the trace is the result"* | Send-off anxiety — student hesitates at the final prompt or feels they need a completed artifact | Trainer push: *"stop it when you've seen enough. Traces are data. A result you can read is enough; you do not need a completed artifact."* |
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
+- `[checked:2026-08-15 result:OK due:2027-02-15]` https://somethingbig.ai/gauntlet-loop — [practitioner direct] Matt Shumer's named method splits an inspectable artifact among builders and fresh critics, compares it with a concrete bar, and repeats. fallback: describe the challenge generically as separate builder-and-critic loops against an external bar.
+- `[checked:2026-08-15 result:OK due:2027-02-15]` https://github.com/mattpocock/skills/blob/main/skills/engineering/wayfinder/SKILL.md — [practitioner direct] Matt Pocock's skill maps work too large for one session into linked decision tickets until the route is clear. fallback: ask the student to build the same decision map manually without naming the skill.
+- `[checked:2026-08-15 result:OK due:2027-02-15]` https://code.claude.com/docs/en/goal — [platform docs] `/goal` keeps a session working toward a measurable completion condition and supports constraints such as tests staying green. fallback: run a bounded manual loop against the same size and test conditions.
 - `[checked:2026-07-02 result:CAVEAT due:2026-08-09]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen Definitive Guide (Feb 9 2026); core "each unit makes the next easier" thesis verified, explicit plan/work/review/compound naming is convergent-across-appearances not verbatim-on-page. fallback: phrase as "the loop that runs through his work" — never a step count; the loop expanded 2026-05-29 and a count is what dated last time (strategy doc Woven rule #1). Treat any Every.to outcome metric as vendor-self-reported.
 - `[checked:2026-07-02 result:OK due:2026-10-22]` https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich — [practitioner analysis] Laura Entis (staff writer, Every) on Klaassen's AI&I appearance, Apr 22 2026; "bread in the sandwich" metaphor. due recomputed from the Apr 22 2026 byline + 6-month window; the prior due:2026-08-22 did not match the byline (byline re-confirmed 2026-07-03). fallback: keep "Laura Entis on Klaassen" attribution; if removed, cite the underlying AI&I episode as the practitioner source.
 - Uncle Bob via `supplementary/clean-code-is-steering.md` — internal supplementary, not a URL in scope; its own source references are that file's audit surface. No stamp here.

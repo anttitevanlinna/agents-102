@@ -62,6 +62,15 @@ Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble i
 - You don't have to execute a plan to know it's good. The skill is old; only the surface is new.
 - A rule that doesn't load doesn't exist, and where you put it decides when it fires. Fixing the plan is the first loop; changing the rule that shaped it is the second, which Argyris called double-loop learning.
 
+## Optional challenges
+
+Pick one when plan mode feels too comfortable.
+
+- Apply domain-driven design, or your favorite design framework, in plan mode. Make the plan name boundaries, invariants, and decisions before files.
+- Build an internet-research system that searches broadly, prefers primary sources, rejects unsupported claims, and returns a claim-to-evidence table instead of fluff.
+- Start a [Claude Code cloud session](https://code.claude.com/docs/en/claude-code-on-the-web), steer it for a few turns from the mobile app, then inspect the branch and transcript back at your desk.
+- Try to bully plan mode into a bad architecture. Keep insisting on one tempting shortcut, then record where Claude pushes back and where it caves.
+
 <!--flag:module:earn-the-trust-->## Pre-reads before Module 3
 
 Optional. The security frame Module 3 works in.
@@ -104,6 +113,7 @@ The next sitting opens on that task and spends most of its time walking your sys
 
 This module points at four sources in body and owned a stamp for none of them; three are checked in the file that teaches them and are delegated here, one is checked live.
 
+- `[checked:2026-08-15 result:OK due:2027-02-15]` https://code.claude.com/docs/en/claude-code-on-the-web — [platform docs] Cloud sessions run on Anthropic-managed infrastructure and can be opened and steered from the Claude mobile app. fallback: replace the cloud-and-mobile challenge with a local Remote Control handoff.
 - `[checked:2026-05-25 result:CAVEAT due:none]` https://www.youtube.com/watch?v=6eBSHbLKuN0 — [delegated stamp] Cherny, *Mastering Claude Code in 30 minutes*, the line 16 optional pre-read. Dated check owned by `exercises/open-the-side-quest.md`; outside the 6-month window by maintainer decision, recorded in `getting-going.md`. `due:none` — a delegation does not expire, the delegate's stamp does. fallback: optional reading; drop it.
 - `[checked:2026-07-31 result:OK due:none]` https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md — [delegated stamp] Horthy, *Why Software Factories Fail*, the line 16 callback. Freshest dated check is `lectures/when-a-plan-is-good.md`; `getting-going.md` also carries one. This module makes no numeric claim on it, only the pointer plus its thesis (the cure is human review made affordable by upfront planning), so delegation is the right shape rather than a fourth copy. fallback: drop the callback; the module stands without it.
 - `[checked:2026-07-02 result:OK due:none]` https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/ — [delegated stamp] Willison, the line 90 `## Pre-read` for Module 3. Dated check owned by `supplementary/the-lethal-trifecta.md`, itself `due:none` as a durable named-framing piece. fallback: the supplementary carries the threat class in full.

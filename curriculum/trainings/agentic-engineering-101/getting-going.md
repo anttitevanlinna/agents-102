@@ -61,6 +61,15 @@ After this module, you will be able to:
 - A `./CLAUDE.local.md` built from session evidence reads different from one drafted blank: concrete, specific, yours. Personal layer first; team-worthy rules earn their own PR.
 - The loop ends outside the code. The close-out lands in the tracker your team reads, and that tracker encodes conventions living in the tickets. One ticket is enough to start reading them back
 
+## Optional challenges
+
+Pick one when you want a side quest before Module 2.
+
+- Use [`/loop`](https://code.claude.com/docs/en/scheduled-tasks) to babysit one PR until its checks pass and its review threads are quiet.
+- Create a morning [routine](https://code.claude.com/docs/en/routines) that triages new Jira issues, investigates likely root causes, and leaves an evidence trail.
+- Sweep 100 resolved PR comments. Cluster repeated feedback, find missing repository rules, and reject any proposed rule without three examples.
+- Automate rule compounding. After each session, capture one evidenced lesson, route it to the right instruction surface, and check whether it helps next time.
+
 ## Pre-reads before Module 2
 
 Optional. Do them and Module 2's moves land as things you've already seen.
@@ -86,6 +95,8 @@ Module 2 is where plan mode earns its keep: multi-file work, and a second pass t
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 
+- `[checked:2026-08-15 result:OK due:2027-02-15]` https://code.claude.com/docs/en/scheduled-tasks — [platform docs] `/loop` is session-scoped repeated prompting, and the official examples include babysitting a PR until checks and review comments settle. fallback: keep the challenge but remove the feature name and ask Claude to poll the PR manually.
+- `[checked:2026-08-15 result:OK due:2027-02-15]` https://code.claude.com/docs/en/routines — [platform docs] Cloud routines run autonomously on schedules with selected repositories and connectors. Jira is the challenge's chosen connected source, not a capability claim made by the page. fallback: schedule the same triage outside Claude Code and send its output into a session.
 - `[checked:2026-07-30 result:OK due:2027-01-30]` https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md — [practitioner direct, vendor venue] (Dex Horthy, HumanLayer; undated repo doc, content + thesis verified 2026-07-30). Claim anchors: no benchmark measures codebase-quality maintenance; tests-in-seconds vs architecture-cost-in-months; fix = human review + upfront planning. fallback: paraphrase as "practitioners running agent fleets report review, not generation, as the quality bottleneck" without single attribution.
 - `[checked:2026-08-03 result:OK due:none]` `continuous-context:status-line` — [delegated stamp] The `/context` aside, both halves: ccstatusline as a third-party install, and `/statusline` for Claude Code's own status line. The dated checks are owned by `exercises/orient-and-introspect.md`, which teaches the beat and carries both URLs; `due:none` because a delegation does not expire and the delegate's own stamps are what `source-freshness.sh` walks. The Key Concepts recap names no URL of its own. fallback: cut the parenthetical — `/context` alone carries the point.
 - `[checked:2026-08-08 result:OK due:none]` https://every.to/source-code/compound-engineering-the-definitive-guide — [delegated stamp] Klaassen, *Definitive Guide*, cited in the Frameworks list for the term only, never a step count. The dated check for THIS URL is owned by `exercises/push-back-on-the-plan.md` (`klaassen-definitive-guide`); the current loop sequence is a different claim with different URLs, stamped in `exercises/compound-and-close.md`. `due:none` because a delegation does not expire and the delegate's own stamp is what `source-freshness.sh` walks. fallback: name only the compound step.

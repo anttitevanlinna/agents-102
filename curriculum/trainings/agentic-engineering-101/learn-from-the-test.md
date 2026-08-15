@@ -68,7 +68,18 @@ Everything built in these four sittings is on your side. The rules file, the obs
 
 The map's near half is where a single loop runs and compounds. The far half is where sessions get long and you build the checks that let them. You have run the loop and built the checks: a long session you can send, and a return you can read, because the checks guiding it are yours. The right edge is the crossing, and the first move across is one rule, proven on you, promoted through your team's normal PR. Your call when it's ready.
 
-<!--/flag:no-module:spot-gaps-build-the-loop--><!--flag:module:spot-gaps-build-the-loop-->
+<!--/flag:no-module:spot-gaps-build-the-loop-->
+
+## Optional challenges
+
+Pick one when you want the test to bite harder.
+
+- Run Geoffrey Huntley's [original Ralph](https://ghuntley.com/ralph/) on one small task in a disposable repo. Inspect what repetition fixes, and what it repeats forever.
+- Run a wide refactor with Claude Code's [`ultracode`](https://claude.com/blog/introducing-dynamic-workflows-in-claude-code) workflow. Cap the budget, keep the task scoped, and review every cross-cutting decision.
+- On a disposable branch, plant 20 plausible bugs. Run the current tests and count the catches. Then open a fresh review session, count again, and reveal your answer key.
+- Build an adversarial, experimental [agent team](https://code.claude.com/docs/en/agent-teams) for feature planning: an orchestrator, quirky ideator, pessimist, and solid performer. Let them message one another before the orchestrator commits to a plan.
+
+<!--flag:module:spot-gaps-build-the-loop-->
 ## Bring to Module 6
 
 A packaged session with substance. Read the scrollback or commits from the re-send; check the agent didn't just stall in the first minute.
@@ -195,6 +206,9 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 
+- `[checked:2026-08-15 result:OK due:2027-02-15]` https://ghuntley.com/ralph/ — [practitioner direct] Geoffrey Huntley's original Ralph account describes the repeated agent loop named in the challenge. fallback: describe a minimal fresh-context coding loop without the Ralph name.
+- `[checked:2026-08-15 result:OK due:2027-02-15]` https://claude.com/blog/introducing-dynamic-workflows-in-claude-code — [platform primary] Anthropic's launch post names `ultracode` as the effort setting that lets Claude decide when to use a dynamic workflow, and warns that it can consume substantially more tokens. fallback: use a manually designed multi-agent workflow with the same scope and budget cap.
+- `[checked:2026-08-15 result:OK due:2027-02-15]` https://code.claude.com/docs/en/agent-teams — [platform docs] Agent teams provide a lead, independent teammates, a shared task list, and direct inter-agent messaging. fallback: run the four roles in separate sessions and pass their notes through the orchestrator by hand.
 - `[checked:2026-08-09 result:OK due:none]` `lectures/the-machine-you-just-met.md:sharma-sycophancy-2023` — [delegated stamp] The re-send beat's *"RLHF is a big part of why: agreeable answers won the preference round"* — hedge (*a big part*) matches the source's "driven in part"; the second clause is M1's slide title verbatim, and that lecture's backing owns the dated Sharma check plus the do-not-strengthen-to-sole-cause guard. `due:none` — a delegation does not expire; the delegate's stamp is what `source-freshness.sh` walks. fallback: drop the mechanism clause; "Expect partial failures framed as partial successes" stands alone.
 
 - `[checked:2026-05-25 result:OK due:2026-10-22]` https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich — [practitioner analysis] Laura Entis on Klaassen, 2026-04-22; due is publication+6mo. Byline correctly attributed in file. fallback: cite as Entis write-up of the Shipper–Klaassen interview.

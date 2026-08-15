@@ -144,7 +144,7 @@ This module points at four sources in body and owned a stamp for none of them; t
 - Student asks *"why don't we execute?"* near P5. Answer: making the plan good IS the work; recognising a good plan is the skill this module installs.
 
 **Decision points:**
-- **Exercise runs to 70 min:** the second read went deep (common on real codebases). Take the overflow from the buffer and the Bridge, compress the Debrief last, and keep the pattern-naming step.
+- **Exercise runs to 70 min:** the second read went deep (common on real codebases). That is 13 over its 57, and there is no spare beat to take it from — this module has no buffer transition, and the 3-minute overrun on the Slot line is already spent. Take it from the Bridge (5), then compress the Debrief (7) — in that order, and keep the pattern-naming step. Below that, the give is the second exercise, not the close.
 - **Exercise finishes under 45 min:** the highest-value branches landed fast — a good-enough read, a small task, or a thin design tree. Use spare time for the comparison and rule extraction; don't invent more reading to fill the slot.
 - **Whole room mood below 7:** something is stealing grounded competence. Check: was the student's push-back still active when the second read ran (order matters — push-back first keeps the student's read in the driver's seat)? Was the walk-down taken in its three-question batches (not dumped whole and skimmed)? Was "stop, don't execute" named early enough to land as intentional rather than anticlimactic?
 

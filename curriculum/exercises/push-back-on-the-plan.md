@@ -1,6 +1,6 @@
 # Sharpen the plan with *two reads*
 
-**Time:** 60 minutes.
+**Time:** 57 minutes.
 
 **What you do:** push back twice on your plan, run a second-pass grilling, then approve and **stop**.
 
@@ -46,7 +46,7 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. Use th
 
 ## Phase 3: Push back twice
 
-*15 min*
+*12 min*
 
 - Don't approve yet. At the approval prompt, pick **No, keep planning**. That holds plan mode open. Send two push-backs on two different axes: one soft item, and one of (assumption · alternative). Your own words, your own concerns.
 - **Soft items:** the step that reads clean but skips over something. *"Update the config"* without which keys. *"Handle migration errors"* without what happens to rows mid-flight. The vagueness isn't a drafting slip; it's where the agent hasn't decided yet.
@@ -205,7 +205,7 @@ Flagged
 
 **Decision points:**
 - **P3 under 3 min:** push-back was performative. Send them back in with *"send one more soft item — look at consecutive steps for overlap."*
-- **P3 exceeds 12 min:** compress P4's watch time; let Claude run while student reads. Note: this student reads plans seriously; M3 judge-building will go fast.
+- **P3 exceeds 12 min:** compress P4's watch time; let Claude run while student reads. Note: this student reads plans seriously; M3 judge-building will go fast. **P3 is now booked at 12 (was 15, cut 2026-08-15), which is what makes this threshold mean anything:** a trainer instruction to intervene above 12 could never fire against a 15-minute booking, because the plan itself was already over the line. The 12 is also what the body asks for — the timer-abuse watch-for above calls the discipline *the 10-minute read*, leaving two minutes for the two sends. Exercise total 60 → 57; M2's runtime 126 → 123, which restores the *"runs 3 min past its slot"* figure `trainer-modules.md` already states. Do not restore the 15 without re-reading that Slot line.
 - **P4 completes in under 15 min:** the task was too small for plan mode. Log for the Debrief: *"plan mode is overkill below ~30 min of agent work — know the floor."*
 - **Student asks about Ctrl+G plan-file editing:** it's a real practitioner move (opens the plan in $EDITOR for in-place edits) and fine to mention at Debrief as a next-tier tool — but not the exercise's forcing function. The chat-based push-back stays in conversation with the agent, which is the whole training's shape.
 - **P4 turn-time on real codebases.** A single Q-and-A turn can eat 10+ min when the codebase-read fallback fires (2026-05-15 dry-run: 13m15s + 37.7K tokens on one turn). Trainer move: if the slot is being eaten, trim the prompt for next cohort.

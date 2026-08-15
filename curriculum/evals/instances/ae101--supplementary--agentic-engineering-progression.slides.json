@@ -1,25 +1,20 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md",
-  "body_sha": "5be200ce8389026bac460840561d054e7e415c694fef39d0740f25884ac92554",
+  "body_sha": "07d3d53aa6aef33f1b859914ec8c29e1300b8d87679e9bad8c4d81f63f3baba5",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {
-      "index": 0,
-      "heading": "H1/lede: The agentic engineering progression",
-      "lines": "1-4"
-    },
-    {
-      "index": 1,
-      "heading": "Part 1: The progression",
-      "lines": "5-22"
-    },
-    {
-      "index": 2,
-      "heading": "Part 2: The leverage model",
-      "lines": "23-74"
-    }
+    {"index": 0, "heading": "H1/lede: The agentic engineering progression", "lines": "1-4"},
+    {"index": 1, "heading": "Part 1: The progression", "lines": "5-10"},
+    {"index": 2, "heading": "Assistance", "lines": "11-16"},
+    {"index": 3, "heading": "Interactive work", "lines": "17-22"},
+    {"index": 4, "heading": "Delegating bounded outcomes", "lines": "23-28"},
+    {"index": 5, "heading": "Directing parallel sessions", "lines": "29-34"},
+    {"index": 6, "heading": "Encoding checked loops", "lines": "35-40"},
+    {"index": 7, "heading": "Improving the system", "lines": "41-46"},
+    {"index": 8, "heading": "Part 2: The leverage model", "lines": "47-98"},
+    {"index": 9, "heading": "One model, not two", "lines": "99-102"}
   ],
   "rules_evaluated": [
     {
@@ -48,7 +43,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Supplementary reading page, no 'the X you did/saw' exercise-beat backward references anywhere in body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -58,7 +53,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No guess-before-reveal demo beats in this page.",
       "fix_hint": null,
       "blocking": true
     },
@@ -78,7 +73,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "'Six levels' claim in chunk 1 matches the actual count of level headings (Assistance..Improving the system = 6); each level header matches its chunk's content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -88,7 +83,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No 'Not X. Not Y. Z.' construction, no anaphora/epistrophe triples, no self-grading superlatives, no number-plus-retraction, no empty-leg verb triplets found on read-through. The repeated **Moves you up:** refrain (6 uses) is maintainer-attested structural design (§154), not an unintended tic.",
       "fix_hint": null,
       "blocking": false
     },
@@ -108,7 +103,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Chunk 8 carries two bold handles (Reach, Calibration) marking the two axis-defining terms of the diagram just shown — reads as the law/consolidation carve-out (one handle per defined term of the model), not the pre-2026-07-09 bold-every-lead monoculture. All other chunks carry ≤1 bolded 'Moves you up:' handle or none.",
       "fix_hint": null,
       "blocking": false
     },
@@ -128,7 +123,37 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Ran `node scripts/check-slide-numbering.js` -> 'OK — 61 files, Phase/Step numbering consistent.' (exit 0). File uses no hand-numbered Phase N/Step N headers (Part 1/Part 2 + named levels only); 'Part 1'/'Part 2' are content ordinals, consecutive from 1, matching the linter's scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md` -> 'OK — 1 files, no page-geometry pointers across the slide cut.' (exit 0). The one grep hit for 'below' (line 95, 'far below the multiple suggested by its pull-request count') is a magnitude comparison, not a page-position pointer.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "Only two links in body, both external (positivelyfred.substack.com), both named by article title in the link text. No in-page/cross-doc anchors to evaluate.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md` -> '9 slides, oversized: 0, every slide is within limits' (exit 0).",
       "fix_hint": null,
       "blocking": false
     }

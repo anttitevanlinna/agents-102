@@ -1,7 +1,7 @@
 # Learn from the test, re-send packaged
 
 ## Big Idea
-Steer your long run. You can't stand over a multi-hour session, so the steering goes in before the task leaves, and the run you already have tells you what to put there.
+Steer your long session. You can't stand over it hour by hour, so the steering goes in before the task leaves, and the return you already have tells you what to put there.
 
 ## Prework
 
@@ -11,7 +11,7 @@ Optional prep while the un-packaged session is still going: read [Clean Code Is 
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Diagnose** your un-packaged send-off through three named lenses, goal drift, context rot, plausible-but-wrong, grounded in quoted moments from the run
+- **Diagnose** your un-packaged send-off through three named lenses, goal drift, context rot, plausible-but-wrong, grounded in quoted moments from the return
 - **Pair** each failure mode with the packaging that catches it: drift ↔ reference artefact, rot ↔ plan.md, plausible-but-wrong ↔ external verifier
 - **Build** a verifier shaped against your dominant failure using one of three shapes (background-agent, shell-hook, or Ralph re-feed)
 - **Assemble** the reference artefact + plan.md in conversation, scoped to the same task you sent off
@@ -27,17 +27,17 @@ You sent off an un-packaged session. You walk in with the artefact in front of y
 
 [Lecture: Learning through contrast](lectures/learning-through-contrast.md)
 
-## Your nag writes the verifier
+## Hold the worry beside the artefact
 
 Somewhere during the un-packaged send-off a worry surfaced: did it touch the migration, did the tests really cover the edge. There was no way to check mid-session, and it nagged.
 
-Hold that worry beside the artefact. Where the run bears it out, it names your first check. Where it doesn't, the artefact wins: it saw the session and you didn't.
+Hold that worry beside the artefact. Where the return bears it out, it names your first check. Where it doesn't, the artefact wins: it saw the session and you didn't.
 
 Acting without full control is the job from here on. Build the check, send again. That control pays twice: a session your checks steer is a session you don't babysit, and a session you don't babysit can run beside another.
 
 ## Set up the worktree
 
-Before the exercise session, fork the un-packaged session's starting SHA into a sibling worktree. This module's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second session starts from the same code state as the first. Cherny calls parallel worktrees his biggest productivity unlock.
+Before the exercise session, fork the un-packaged session's starting SHA into a sibling worktree. This module's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second session starts from the same code state as the first.
 
 Gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a worktree, because git doesn't see them. The setup prompt copies them across, so what you built in Module 1<!--flag:module:earn-the-trust--> and Module 3<!--/flag:module:earn-the-trust--> comes with you. From there the two copies compound separately.<!--flag:module:spot-gaps-build-the-loop--> After Module 6 you decide what to merge back.<!--/flag:module:spot-gaps-build-the-loop-->
 
@@ -66,7 +66,7 @@ The map at sitting 2 had an edge nobody explained. A dashed line down the right 
 
 Everything built in these four sittings is on your side. The rules file, the observations, the verifier, the reference, the plan. That is the right order and not a shortfall: prove it on yourself, then promote. A rule promoted before it works on you is a rule your team has to live with, and a habit that never crosses stays yours alone.
 
-The map's near half is where a single loop runs and compounds. The far half is where sessions get long and you build the checks that let them. You have run the loop and built the checks: a long run you can send, and a return you can read, because the checks guiding it are yours. The right edge is the crossing, and the first move across is one rule, proven on you, promoted through your team's normal PR. Your call when it's ready.
+The map's near half is where a single loop runs and compounds. The far half is where sessions get long and you build the checks that let them. You have run the loop and built the checks: a long session you can send, and a return you can read, because the checks guiding it are yours. The right edge is the crossing, and the first move across is one rule, proven on you, promoted through your team's normal PR. Your call when it's ready.
 
 <!--/flag:no-module:spot-gaps-build-the-loop--><!--flag:module:spot-gaps-build-the-loop-->
 ## Bring to Module 6

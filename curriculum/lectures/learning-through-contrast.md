@@ -12,8 +12,8 @@ This session shows how the agent handled your task and codebase.
 
 **Current shape (2026-08-14, Antti-directed):** one slide + one kicker. The full three-problem menu stays in `reading-the-return.md`, which is reprojected when M5 opens; it is not duplicated here. Context-window handling now lives beside durable state in the M4 closer. This lecture holds only the diagnostic stance that hands the room into the exercises.
 
-**Quality:** compendium-audited 2026-08-03 (writing@5fc7188 story@5fc7188 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@5fc7188)
-- judges @5fc7188: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-15 (writing@0774e2f story@0774e2f technical@1c765f2 behavior@1c765f2 pedagogy@0774e2f strategy@1c765f2 slides@0774e2f)
+- judges @0774e2f: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Word count:** ~100 words body.
 

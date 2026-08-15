@@ -3,78 +3,24 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/what-keeps-a-long-running-session-going.md",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "M4 curious readiness: while the first long run is still going, notice the conditions that keep it going—durable state, feedback/backpressure, and a continuation boundary—without front-running M5's verifier build.",
+  "module_mood_contract": "curious readiness — \"I've built enough to try something; let's see what the agent does with it.\" M4 closer, read while the un-packaged send-off session remains active; observes without repairing the run and does not name M5's artifact recipe.",
   "trace_status": "generated_first_time",
   "rules_evaluated": [
     {
-      "compendium": "check_lectures.md",
-      "rule_index": 1,
-      "rule_lead": "Meta-frame lectures = closers, not openers.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 2,
-      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
-      "verdict": "N/A",
-      "evidence": "This is an M4 closing lecture, not a pre-exercise opener in a contrast-mood module.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 3,
-      "rule_lead": "No cross-module sequencing in lecture bodies.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 4,
-      "rule_lead": "Slide/lecture headers pass the squint test and the truth clause.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded (~210 words, ≤6 bullets), not just its header.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 27,
-      "rule_lead": "Body teaches the work; trainer manages the room outside text.",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named (mood-floor 8+/10 on teaching beats).",
+      "rule_lead": "Mood contract named (mood-floor 8+/10 on TEACHING beats).",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "No `## Phase` headers, so the whole body is SHA-keyed as one phase per the judge template. trace.phases[0].mood_score=8, trace.close.mood_score=8 (fresh trace generated this session, cache written to curriculum/evals/sim-cache/ae101--lecture--what-keeps-a-long-running-session-going.persona.json, content_sha b781bd4d...). All four `##` sections (including the new fourth, added 2026-08-14) are TEACHING beats — each names a concept (durable state, feedback/backpressure, boundary, stop-conditions), none are mechanical setup — so the 8+ floor applies across the board and is met.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
-      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "rule_lead": "Epistemic mood, not punitive.",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "The new fourth slide's bullets target the AGENT's behavior/belief (\"the agent decides information is out of reach\", \"declares done on the part it managed\"), not the student. The maintainer block names the mechanism explicitly as \"the belief is the stopper, not the reachability, and re-judging it is the student's move on return\" — a diagnostic frame, not blame. The kicker (\"check whether there was a way for it to uncover that. Usually there was.\") is phrased as a check to run, not an accusation of student failure. No \"you failed / you did this wrong\" language anywhere in body (read in full).",
       "fix_hint": null,
       "blocking": false
     },
@@ -83,17 +29,17 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "This rule targets a module-level Big Idea line; a lecture carries none. At slide-header level, three of four headers stay positive-discipline-shaped (\"Durable state keeps the place\", \"Feedback keeps the direction\", \"A boundary decides whether to continue\"). The new fourth header, \"What stops a long run before done-done\", names a topic/question rather than a blame word (no fabrication/violation/hallucination-style label), mirroring the file's own question-shaped title (\"What keeps a long-running session going?\") — consistent with the existing register, not a new failure-lead pattern.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
-      "verdict": "PASS",
-      "evidence": null,
-      "fix_hint": null,
+      "rule_lead": "Strategy-fidelity — consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict.",
+      "verdict": "REVISE",
+      "evidence": "Facets checked on THIS file's own body, all clean: front-run — zero M5 vocabulary (\"goal drift\" / \"context rot\" / \"plausible-but-wrong\") or artifact-recipe language anywhere in the read body. Big Idea fidelity — \"You observe what exists without repairing the run\" tracks the strategy doc's M4 spirit verbatim (\"You observe what exists without repairing the run\", content-strategy-agentic-engineering-101.md line 382). Mood-doesn't-resolve-early — the kicker defers the actual read to return (\"check ... on return\"), it does not resolve M5's diagnostic in place. Module-to-module arc — the close (\"check whether there was a way ... usually there was\") hands cleanly to reading-the-return.md's open (\"what would have caught this earlier in the session?\"). HARM found and verified, not in this file's body but in three sibling descriptions of it that are now stale: `run-the-first-experiment.md:92` (\"the three-slide observational closer\") and `:97` (\"a three-slide observational beat\"), plus `trainer-modules.md:326` (\"three-condition observation\") all still describe the pre-2026-08-14 shape. `git log` confirms the fourth slide landed in commit 5ff124e (2026-08-14 16:40), and the private AE101 strategy doc (`content-strategy-agentic-engineering-101.md`, M4 section) was last modified 2026-08-12 (`stat` confirmed) and still reads \"Three conditions, and only three\" — predates the commit. This is the exact drift `curriculum/CLAUDE.md` § Alignment names as a process bug (\"Strategy and module file change in the same edit\"), and it is not cosmetic: `run-the-first-experiment.md`'s own \"Charge: what-keeps-a-long-running-session-going 0\" trainer-pacing line was written against the 3-slide/~4-min beat, not the shipped 4-slide/~5-min one. Recorded non-blocking because the defect is not in this lecture's own body (which is sound) but in the sibling files' descriptions of it — fixing it means editing `run-the-first-experiment.md`, `trainer-modules.md`, and the private strategy doc, none of which are in scope for this judge to touch.",
+      "fix_hint": "Sync run-the-first-experiment.md's maintainer block (lines 92, 97) and trainer-modules.md line 326 to \"four slides / ~5 min\", and re-check whether the M4 module's \"Charge: ...0\" pacing figure still holds against the added slide; update the private strategy doc's M4 section off the same commit (5ff124e) so it no longer reads \"Three conditions, and only three.\"",
       "blocking": false
     },
     {
@@ -101,38 +47,99 @@
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "This lecture has no Key Concepts or What You'll Learn section.",
+      "evidence": "Module-only section (Key Concepts is a module-file, student-facing heading). This file is a lecture with no Key Concepts section.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 6,
-      "rule_lead": "Key Concepts shape -- theme breadcrumbs, not standalone section.",
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "This lecture has no Key Concepts or What You'll Learn section.",
+      "evidence": "Module-only section. Not applicable to a lecture file.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 7,
-      "rule_lead": "What You'll Learn shape -- capability register, not syllabus.",
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "This lecture has no Key Concepts or What You'll Learn section.",
+      "evidence": "Module-only section. Not applicable to a lecture file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 1,
+      "rule_lead": "Meta-frame lectures are closers, not openers.",
+      "verdict": "PASS",
+      "evidence": "Positioned as M4's last lecture (`run-the-first-experiment.md` line 45, after the send-off exercise at line 43). It arms a forward-looking watch-list on a session whose outcome is still unknown, rather than naming a pattern the student already fully lived through — matches the \"vocabulary lands mid-module\" + \"closer\" diagnostic. The new fourth slide keeps the same shape: it names stop-conditions to watch FOR, not a result already seen.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 2,
+      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+      "verdict": "N/A",
+      "evidence": "M4's mood is curious readiness, not the M5 contrast-mood module this rule targets, and this lecture is M4's closer (after the send-off), not a pre-exercise opener.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 3,
+      "rule_lead": "No cross-module sequencing in lecture bodies.",
+      "verdict": "PASS",
+      "evidence": "`sed -n '1,33p' curriculum/lectures/what-keeps-a-long-running-session-going.md | grep -nE \"M[0-9]|module|Module\"` run this session returns zero hits on the student-facing body (lines 1-33, above the maintainer fence). All module-number and slide-count cross-references (the M4/M5 wiring discussion) live in the maintainer block only, which is exempt.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 4,
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "verdict": "PASS",
+      "evidence": "`grep -n \"^## \"` returns 4 distinct headers, no duplicates: \"Durable state keeps the place\", \"Feedback keeps the direction\", \"A boundary decides whether to continue\", \"What stops a long run before done-done\" — each names the one thing its own bullets argue; none are empty-container or orphan-mystery shaped. Truth clause on the new header carries a deliberate tension the maintainer block already attests to: bullet 4 (\"It spends the whole run on one obstacle ... This one never stopped at all\") reads as if it contradicts a header about what STOPS a run, and the maintainer block names this directly as the intended point (\"a slide titled what stops a run closing on the one that did not is the point, not an inconsistency to tidy\") — an attested accept-note, treated as N/A per the judge brief rather than re-flagged as a truth-clause violation. `grep -nP \"\\x{2014}\"` on lines 1-33 returns zero em-dash hits in body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 5,
+      "rule_lead": "A slide's BODY is size-bounded, not just its header.",
+      "verdict": "PASS",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/what-keeps-a-long-running-session-going.md` this session. Output: \"files: 1   slides: 4   limits: 210 words / 6 bullets ... oversized: 0 ... ✓ every slide is within limits.\" All four slides, including the new fourth, fit the cap.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "N/A",
+      "evidence": "`grep -n \"^\\*\\*Prompt\\*\\*\\|{{prompt:\"` on the file returns zero hits. Pure observational lecture with no fenced prompt block or `{{prompt:}}` marker to misplace.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Body teaches the work; trainer manages the room outside text.",
+      "verdict": "PASS",
+      "evidence": "`grep -niE` for discuss/share-with/tell-the-room/compare-with/take-N-seconds/neighbor/pair-up/turn-to on lines 1-33 returns zero hits. All four slides, including the new fourth, are about the WORK (what the session is doing, what to check on return) — no cohort-management sentence anywhere.",
       "fix_hint": null,
       "blocking": false
     }
   ],
   "mood_summary": {
-    "phase_scores": [
-      9
-    ],
+    "phase_scores": [8],
     "close_score": 8,
     "any_below_8": false,
     "stealing_the_mood": []
   },
   "blocking_findings_count": 0,
-  "todos_count": 0,
-  "body_sha": "acdd2ffcbcc16be18d737cab35b41e0262dd944a8c10ed2c28d2c2b576d19da8"
+  "todos_count": 1,
+  "body_sha": "33b4f030a3959f209bbd895508ca8f5f8bb3ecf0e57e38476f4eb8fcf33265b9"
 }

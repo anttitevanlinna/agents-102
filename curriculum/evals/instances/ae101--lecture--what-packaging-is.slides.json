@@ -1,30 +1,30 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/what-packaging-is.md",
-  "body_sha": "d44e56d4ceeceb94de5087c77addc6ed85af2b4b8ab571ae14a96c91285c896b",
-  "verdict": "PASS",
+  "body_sha": "b9ccaff1a5c2fda643d620780e017d3e7d2aa9b658d507e7612604c0b12ae0b9",
+  "verdict": "REVISE",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "# What packaging is (lede)", "lines": "1-4"},
-    {"index": 1, "heading": "## One session, plotted", "lines": "5-207"},
+    {"index": 0, "heading": "# What packaging is (lede)", "lines": "1-3"},
+    {"index": 1, "heading": "## One session, plotted", "lines": "5-206"},
     {"index": 2, "heading": "## Reference and plan", "lines": "208-213"},
-    {"index": 3, "heading": "## The verifier completes the three-pattern", "lines": "214-220"},
-    {"index": 4, "heading": "## Hooks always fire", "lines": "221-225"},
-    {"index": 5, "heading": "## Hooks for must-happen, prompts for taste", "lines": "226-234"},
-    {"index": 6, "heading": "## Every re-feed pass starts a fresh session", "lines": "235-240"},
-    {"index": 7, "heading": "## What you didn't build today", "lines": "241-245"},
-    {"index": 8, "heading": "## The 80/20 ratio", "lines": "246-251"},
-    {"index": 9, "heading": "## At org scale: Intercom's tiers", "lines": "252-257"}
+    {"index": 3, "heading": "## The verifier completes the three-pattern", "lines": "214-219"},
+    {"index": 4, "heading": "## The model has read the field", "lines": "221-225"},
+    {"index": 5, "heading": "## The evidence did not exist yet", "lines": "227-231"},
+    {"index": 6, "heading": "## Two bearings make a candidate, not an optimum", "lines": "233-238"},
+    {"index": 7, "heading": "## Hooks always fire", "lines": "240-244"},
+    {"index": 8, "heading": "## Hooks for must-happen, prompts for taste", "lines": "245-260"},
+    {"index": 9, "heading": "## Every re-feed pass starts a fresh session", "lines": "262-266"}
   ],
   "rules_evaluated": [
     {
       "compendium": "check_slides.md",
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Two candidate flags checked and cleared. (a) chunk 1, line 200: \"The diagnose-and-re-send you just ran was exactly this move\" — names the exercise by its slug-title (not merely located), and this lecture's own maintainer block + Lecture meta (\"In-room close after Debrief\") place it directly after the diagnose-and-resend exercise, so the module-arc-beats-in-openers/closers carve-out applies. (b) chunk 2, line 210: \"Geoffrey Huntley's Ralph is the one published practice that runs all three at once\" uses \"all three\" before this file itself has enumerated three pieces (plan.md and the verifier are named later, chunk 2 and chunk 3). Checked against `curriculum/exercises/diagnose-and-resend.md` (grep -n \"three\" — line 15: \"read the failed run through three failure-mode lenses\"; line 176: \"three-verifier-shapes\"): the exercise the student just ran already established the three-piece/three-lens frame, so \"all three\" resolves via the arc-earned/session-carryover route this lecture is placed to use, not as a dangling forward reference. Harm check: the rule guards against a reader losing the thread of a live antecedent; here the antecedent was set an hour earlier in the room, which is exactly what the carve-out exists to permit.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "chunks_flagged": [4],
+      "evidence": "Chunk 4 \"The model has read the field\", line 223: \"The weights hold the written record: the setup posts, the plan-file templates, the verifier write-ups, the reversals.\" The first three list items map cleanly onto chunks 2-3, which just spent two slides establishing reference-artefact / plan.md / external-verifier — \"setup posts\", \"plan-file templates\" and \"verifier write-ups\" all read as \"writing about the thing we just named.\" \"The reversals\" does not map onto anything: grepped the body above the maintainer cut for \"reversal\" — one hit, this line, no other occurrence anywhere before or after it in the student-facing text. This is not merely under-specified (the compendium's \"vague with full history\" example, \"a system like this\", at least narrows to a shortlist) — a cold reader has zero candidates to narrow to. The backing block (student-invisible) supplies the referent via amp-handoff/amp-neo (a vendor's compaction-vs-handoff reversal), but that pairing never surfaces in the body, so nothing in-file resolves it. Harm check: this module's own delivery contract (learn-from-the-test.md maintainer block, \"Dense-slides note\") states the bullets ARE the evidence with no trainer narration filling gaps — an unexplained, specific-sounding definite noun phrase mid-list either stalls a listener or gets silently dropped, which undercuts the exact claim (\"the weights hold the written record\") the bullet exists to evidence. The harm is present, and naming what kind of reversal (or cutting the item back to the three that already map) costs the artefact nothing.",
+      "fix_hint": "Name what reversal you mean (e.g. \"the reversals when a team's own setup posts contradict each other\"), or drop the fourth list item and let the three that already map stand alone.",
       "blocking": true
     },
     {
@@ -33,7 +33,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "The one cross-material reference (\"the diagnose-and-re-send you just ran\", chunk 1 line 200) names the source by its title/slug rather than locating it by position (\"the previous exercise\"). All other citations (Huntley, Ronacher, Klaassen, Kim/Cherny, Curran) are external practitioner attributions with names attached, not positional pointers into another repo file.",
+      "evidence": "Grepped the body for \"opening lecture|earlier lecture|prior lecture|previous lecture|last lecture|earlier module|prior module|previous slide\" — zero hits. The one cross-material reference (\"the diagnose-and-re-send you just ran\", chunk 1 line 200) names the exercise by its own title, not by position. All practitioner citations (Huntley, Ronacher, Kim/Cherny) name sources directly, none point at another file by location.",
       "fix_hint": null,
       "blocking": true
     },
@@ -43,7 +43,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked three backward references against `curriculum/exercises/diagnose-and-resend.md`: \"the diagnose-and-re-send you just ran\" (chunk 1, line 200) — exercise file exists at that path; \"the verifier you just wrote\" (chunk 5, line 228) — matches diagnose-and-resend.md line 58's Phase 3 (\"Phase 3 builds the verifier against the dominant failure\"); \"the menu you picked from\" (chunk 3, line 217) — matches diagnose-and-resend.md line 176's three-verifier-shapes menu. All three beats exist in the current exercise file, none are dead.",
+      "evidence": "Grepped the body for \"you just|you ran|you built|you picked|you assembled|you named|you wrote\" and checked each against curriculum/exercises/diagnose-and-resend.md (the module's immediately preceding exercise): \"the diagnose-and-re-send you just ran\" (chunk1 line 200) and \"the reference you assembled\" (chunk2 line 211) match Phase 4 (assemble-reference-and-plan); \"the menu you picked from\" and \"you built one against your dominant failure\" (chunk3 line 217) match Phase 3's three-verifier-shapes menu (diagnose-and-resend.md line 176); \"three failures you named\" (chunk3 line 219) matches Phase 1's three failure-mode lenses (diagnose-and-resend.md line 15); \"the verifier you just wrote\" / \"the verifier you built\" (chunk8 lines 247-248) match Phase 3's build-verifier step. All beats exist in the current exercise file; none are dead.",
       "fix_hint": null,
       "blocking": true
     },
@@ -53,7 +53,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-before-reveal instruction anywhere in the body (no \"guess\", \"predict\", or \"take a guess\" language) — this lecture has no live-demo beat for the rule to bind to.",
+      "evidence": "No \"guess\"/\"predict\"/\"take a guess\" language anywhere in the body — no guess-before-reveal structure for this rule to bind to.",
       "fix_hint": null,
       "blocking": true
     },
@@ -63,7 +63,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every chunk (1-9) carries at least one self-contained claim beyond a bare wait-state bullet: e.g. chunk 4 \"Hooks always fire\" (lines 221-225) states the hook-fires-unconditionally claim in its own two bullets; chunk 9 (lines 252-257) states the Intercom-tier claim standalone. No chunk consists only of a context-dependent fragment.",
+      "evidence": "Every chunk (1-9) carries a self-standing claim: e.g. chunk 4 states the weights-hold-the-record + best-practice-as-forecast claim in three bullets; chunk 6 states the two-bearing-fix claim in four. None is a bare wait-state fragment.",
       "fix_hint": null,
       "blocking": false
     },
@@ -73,7 +73,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked each of the 9 headers against its chunk body: e.g. \"Hooks for must-happen, prompts for taste\" (line 226) is answered exactly by its own bullet \"Must happen goes in a hook; recommended stays in a prompt or rule\" (line 228); \"At org scale: Intercom's tiers\" (line 252) is answered by the tiered-review-structure content that follows. No header is contradicted by its own chunk.",
+      "evidence": "Checked all 9 headers against their chunk content. New theory-passage headers checked in detail: \"The model has read the field\" (chunk4) is answered by \"the weights hold the written record\"; \"The evidence did not exist yet\" (chunk5) is answered by \"What no survey returns... until the run, there is nothing to document\"; \"Two bearings make a candidate, not an optimum\" (chunk6) is answered by \"the contrast is two bearings on the same water... a two-bearing fix is a start, wide by design.\" No header is contradicted by its own content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -83,9 +83,9 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all five sub-items against the full body: no \"Not X. Not Y. Z.\" construction found; no anaphora/epistrophe triples found; no self-grading superlative (e.g. \"one of the most useful\") found anywhere in the body; the only stated numbers (19.2%, 14.6 min, 75.8 min, 86%, ~500; roughly 80%/20%) are asserted plainly and never retracted or hedged into vagueness; no abstraction-noun-stack phrasing or empty-leg verb triplets found. No harm present, no flag.",
+      "evidence": "Grepped for \"^- Not |Not [A-Z][a-z]+\\. Not\" — zero hits, no \"Not X. Not Y. Z.\" construction. Checked the theory passage's parallel-structure candidates against the anaphora-triple ban: chunk5's \"how this task, this model, this repository and this setup behave together\" is four noun phrases inside ONE sentence (enumeration), not repeated bullet/sentence-opener anaphora across the chunk — doesn't match the banned pattern (\"Every session inherited... Every session got better...\"). Chunk6's \"it runs the task, reads its own transcript, diffs the returns\" and \"what counts, what the evidence means, what earns promotion\" are triplets where each leg names a distinct, concrete action/question — none fails the \"what does this concretely mean\" test, so no empty-leg violation. No self-grading superlative anywhere in the body (grepped for \"one of the most\", \"most useful\", none found). No number-with-retraction (chunk4-6 carry no numbers at all). No abstraction-noun-stack of the banned shape (\"the bounded-window reality\"-style) — \"a well-read average\" (chunk4) is a concrete-enough metaphor, not a vague abstraction standing in for something namable, and is separately flagged in this file's own maintainer block for the technical judge's accuracy lens, not a cadence tic.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -93,7 +93,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `grep -niE \"\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|forcing function|\\bbeat\\b|\\bmood\\b|Connections\"` against the file and filtered to lines <=264 (body region): the only hit is \"beat\" at line 260, inside the `<!-- maintainer -->` block (starts line 258), which is out of scope/exempt. Zero dialect terms in the student-facing body.",
+      "evidence": "Ran `awk '/<!-- maintainer -->/{exit}{print}' curriculum/lectures/what-packaging-is.md | grep -nE \"compendium|surface as|forcing function|\\bbeat\\b|\\bmood\\b|Connections|firing\"` — zero hits in the body region. \"Kit\", \"the field\", \"candidate\", \"bearings\" are ordinary or attributed-framework vocabulary (navigation borrow per this file's own Frameworks section), not repo-internal dialect.",
       "fix_hint": null,
       "blocking": true
     },
@@ -103,7 +103,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 2 (\"Reference and plan\", lines 208-213) carries two bolded handles on one slide — **Reference artefact** (line 211) and **plan.md** (line 212) — which on its face reads as over the ≤1-per-slide budget. Checked the maintainer block first per the harm clause: lines 262-263 document an Antti-directed emphasis pass (2026-07-09) that explicitly names both bolds as deliberate, citing the rule's own \"a law/consolidation slide may carry one handle per law\" clause (this slide names two of the three-pattern's pieces as parallel named artefacts). Existing accept-note found; not a fresh violation. All other bolded spans (chunk 1 \"A check is a position fix\"; chunk 3 \"External verifier\"; chunk 4 \"hook\"; chunk 5 \"Must happen goes in a hook\"; chunk 7 \"Subagents for isolation.\") are single handles ≤5 words each, one per slide.",
+      "evidence": "Bold count per chunk (grepped '\\*\\*' against the body): chunk1=1 (\"A check is a position fix\"), chunk2=2 (\"Reference artefact\" / \"plan.md\" — pre-existing since before this file's last audit, covered by this file's own maintainer accept-note citing the rule's \"one handle per law\" consolidation-slide exception), chunk3=1 (\"External verifier\"), chunk4=1 (\"candidates\"), chunk5=1 (\"A prediction is not a measurement.\"), chunk6=1 (\"The engineer decides\"), chunk7=1 (\"hook\"), chunk8=1 (\"Must happen goes in a hook\"). All within the ≤1-per-slide budget except chunk2's pre-existing, already-accepted exception. Closest call, and new since this file's last slides pass: chunk5's \"A prediction is not a measurement.\" is a full six-word declarative sentence bolded whole, which a literal read of \"never a whole lead sentence\" would catch. But it functions as one of three parallel epigrammatic \"laws\" this file coins as its device across the chart and theory slides — chunk1's \"A check is a position fix\" (same length, already accepted) and chunk6's \"The engineer decides\" (shorter, same shape) are its siblings — each is the sole bold on its slide and IS the governing claim of its bullet, not a lead-in to elaboration below it, matching rule 9's own \"named laws\" category. Harm check: the rule exists to stop every-bullet-bolded monoculture that dilutes which bold is a real handle; here exactly one law is bolded per slide against otherwise-plain bullets, so the signal the rule protects stays intact. Not filing a REVISE.",
       "fix_hint": null,
       "blocking": false
     },
@@ -113,9 +113,9 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "This rule governs whether a phase-less prose section (module supplementary/reference/prework) silently drops from the composed deck. `what-packaging-is.md` is a lecture file included into its module via the standard include-link, not a standalone phase-less section; whether it lands under a `.phase--lecture` wrapper is a property of the including module file and the renderer, not of this file's own content, and is guarded by `scripts/slides.test.js` at the renderer level rather than per-lecture-file. No content-level presence gap to flag here.",
+      "evidence": "Ran `grep -n \"flag:\" curriculum/lectures/what-packaging-is.md` — zero hits, no content-flag wrapping anywhere in this file that could hide a chunk from a variant. This is a lecture body included into its module via the standard include-link (learn-from-the-test.md), not a phase-less prose section; whether it lands under a `.phase--lecture` wrapper is a property of the including module file and the renderer (guarded by scripts/slides.test.js), not of this file's own content. Confirmed via `node scripts/expand-md.js` that all 9 `##` chunks plus the {{prompt:what-packaging-is-1}} marker resolve in the composed read — no presence gap to flag.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -123,7 +123,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-numbering.js`: output \"OK — 61 files, Phase/Step numbering consistent.\" No `## Phase N:` or `## N.` step headers appear anywhere in this file's `##` headings (grep -n \"^##\" confirms all 9 headings are prose titles, e.g. \"One session, plotted\", \"Hooks always fire\") and no in-body \"Step K\"/\"Phase K\" references exist to check for drift. Rule doesn't bind to a file with no content ordinals.",
+      "evidence": "Ran `node scripts/check-slide-numbering.js --file curriculum/lectures/what-packaging-is.md`: output \"OK — 1 files, Phase/Step numbering consistent.\" No `## Phase N:` / `## N.` step headers appear anywhere in this file's 9 headings, and no in-body \"Step K\"/\"Phase K\" references exist to check for drift.",
       "fix_hint": null,
       "blocking": false
     },
@@ -135,7 +135,7 @@
       "chunks_flagged": [],
       "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/lectures/what-packaging-is.md`: output \"OK — 1 files, no page-geometry pointers across the slide cut.\" No manual override needed.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -143,7 +143,7 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "The file contains exactly one markdown link, an external citation at chunk 8 line 257: \"([My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it))\" — an outbound URL to a third-party article, not an in-page/in-repo anchor this rule's mechanism or open-question sections govern. Link text already names the document per the surviving naming convention. No in-deck or cross-file structural links present to audit.",
+      "evidence": "Ran `awk '/<!-- maintainer -->/{exit}{print}' curriculum/lectures/what-packaging-is.md | grep -n '\\[.*\\](.*)'` — zero hits. This file currently carries no markdown links of any kind in its student-facing body (the one external citation link this file carried at its last audit lived in the \"At org scale: Intercom's tiers\" section, which the 2026-08-14 theory-passage edit removed along with \"What you didn't build today\" and \"The 80/20 ratio\" — that content now lives in M4's durable-state slide and M6's the-loop-has-a-name.md per this file's own maintainer note). Nothing to audit.",
       "fix_hint": null,
       "blocking": false
     },
@@ -153,11 +153,15 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/what-packaging-is.md --report`: 9 slides, 0 oversized on either axis. Largest two are close to the word ceiling but under it: \"One session, plotted\" 207/210 words, 4 bullets; \"Reference and plan\" 199/210 words, 3 bullets. All other slides are well under (84-140 words, 2-3 bullets). No accept-note needed, cap is met without one.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/what-packaging-is.md --report`: 9 slides, 0 oversized on either axis. Largest two: \"One session, plotted\" 207/210 words, 4 bullets; \"Reference and plan\" 199/210 words, 3 bullets. The three new theory slides: \"The model has read the field\" 100 words/3 bullets, \"The evidence did not exist yet\" 97 words/3 bullets, \"Two bearings make a candidate, not an optimum\" 110 words/4 bullets — all comfortably under. No accept-note needed.",
       "fix_hint": null,
       "blocking": false
     }
   ],
-  "blocking_findings_count": 0,
-  "todos_count": 0
+  "blocking_findings_count": 1,
+  "todos_count": 0,
+  "notes": [
+    "Out of lane for this class, surfaced for the maintainer: this file's own maintainer block contradicts itself on current state. The \"Current shape (2026-08-14, Antti-directed)\" paragraph says `Theory 1`, `Theory 2`, `Theory 3` are unwritten placeholders (\"carry no body until the theory is settled and are not shippable final content\"), but the body now contains the fully written theory passage, and the paragraph directly below it (\"Theory passage... wording Antti-blessed 2026-08-14/15\") confirms the wording is done and blessed. The two maintainer paragraphs describe different states of the same file. This is a writing-class/bookkeeping accuracy question, not a slides-class rule.",
+    "Out of lane for this class, considered and not filed: chunk 3's \"Kim's writeup of Boris Cherny\" (unchanged since this file's last audited pass) introduces \"Kim\" with no surname or publication, while every other named practitioner in the same file (Huntley, Ronacher, Cherny) gets a full name and dated context on first mention. Checked this against slides rule 1 and concluded it doesn't meet that rule's bar — rule 1 governs pronoun/demonstrative-style backward reference, and \"Kim\" is a fresh proper-noun introduction rather than something standing in for an established antecedent. Reads as a citation-completeness question (check_research_claims.md / check_writing.md's lane), not a referent-resolution failure."
+  ]
 }

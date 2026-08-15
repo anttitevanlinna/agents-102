@@ -1,19 +1,19 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
-  "body_sha": "c243295c1bc8b7042a0995afd5860f026a0a6572f9d23f57a696a71ef07ed086",
-  "verdict": "PASS",
+  "body_sha": "3abe725c0488de588d13b4c2e78b58cf72dc653c52a9d7f5fb996fabd3c220c4",
+  "verdict": "REVISE",
   "training": "ae101",
   "module_mood_contract": "learning through contrast — \"I can feel what packaging adds now; I couldn't have read it as a lecture\"",
   "trace_status": "regenerated",
-  "notes": "Post-layout-move re-fire, wave 2, second pass (2026-08-13). Prior verdict (body_sha 0d270f4f...) was PASS. Since then the ONLY diff is one line: `git diff HEAD~1 -- curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` (run this session) shows a stray unpaired `**` removed right after the da Costa/Backpressure link — `...you-need)** (May 2026)` -> `...you-need) (May 2026)`. Confirmed section order and both content-flag cuts unchanged: `node scripts/render-variants.js curriculum/trainings/agentic-engineering-101/learn-from-the-test.md full` (this session) ends `Big Idea > Prework > What You'll Learn > Start here > The nag writes the verifier > Set up the worktree > Key Concepts > Bring to Module 6 > Pre-reads before Module 6 > Next`; `... preview` ends `... > Key Concepts > Back to the map, one last time` — matching the prior verdict's finding exactly, both cuts still close well. Sim trace regenerated: file-level content_sha recomputed (0d270f4f... -> c25ae791...), phase 4's phase_sha recomputed (729c7d6c... -> 06e0d758...) since that's the phase the edit lives in; phases 1-3 and 4-preview untouched (edit sits inside the flag:module:spot-gaps-build-the-loop span, which the PREVIEW cut strips entirely). Every rule below re-derived fresh this session (grep/script output pasted per-rule), not copy-forwarded from the prior instance file, per queue instruction. Net effect of the fix: a rendering-bug correction (the stray ** would otherwise open an unclosed bold span running into whatever bold markdown appears next in render order) — strict clarity improvement, no confusion introduced, no rule crosses a threshold it wasn't already clear of.",
+  "notes": "Re-fire triggered by substantial body drift since the last stamped audit (Quality line still reads compendium-audited 2026-08-13 @315cd5a, but `git diff 315cd5a -- <file>` this session shows the nag section rewritten (2026-08-14 correction), Key Concepts fully replaced (2026-08-15 Antti-decided), a new dense-slides blockquote added, and the Pre-reads/Next prose tightened — none of that is reflected in the stamped Quality row yet). Every rule below re-derived fresh this session against the CURRENT body; nothing copy-forwarded from the prior instance (prior body_sha c243295c1bc8b7042a0995afd5860f026a0a6572f9d23f57a696a71ef07ed086, now stale). Read-mostly constraint for this dispatch: only this instance JSON was written; `curriculum/evals/sim-cache/ae101--module--learn-from-the-test.persona.json` was read (content_sha c25ae791..., generated 2026-08-13, pre-dates this rewrite) but NOT overwritten — the phase-level trace below was derived fresh in-session and is not persisted to that cache file. OUT-OF-SCOPE OBSERVATION (not a finding on this file, flagged per the 'stay in your class' clause): to verify the new Key Concepts bullets are genuine lecture recaps (per the maintainer's claim they map to 'the three theory slides mid-deck in lectures/what-packaging-is.md, after the three-pattern slide'), I read that lecture file this session. The mapping holds — `## The model has read the field`, `## The evidence did not exist yet`, and `## Two bearings make a candidate, not an optimum` (lines 221/227/233) contain the matching content, several clauses near-verbatim. But that lecture's OWN maintainer block (lines 264, 364) still calls these three slides '`Theory 1`, `Theory 2`, and `Theory 3`... deliberate blanks... not shippable final content... do not improvise body copy into them' — stale commentary describing an earlier placeholder state, contradicted by the file's own body and by its later note at line 279 that the wording was 'Antti-blessed 2026-08-14/15'. That staleness lives in a different file under a different class (pedagogy/technical maintainer-block hygiene on `lectures/what-packaging-is.md`), not this module's story verdict — noted for the maintainer, not scored here.",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "`grep -n '^##' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` (this session): `## Set up the worktree` (line 38) links `[Lecture: What packaging is]` (line 48) and `[Lecture: The gate is a claim too]` (line 50) AFTER the two exercise links `[Exercise: Fork the worktree...]` (line 44) and `[Exercise: Diagnose and re-send]` (line 46) — Ronacher's three-pattern and Cherny's three shapes still get named from lived evidence, not before it. Opener lectures `reading-the-return.md` + `learning-through-contrast.md` are linked at `## Start here` (lines 26, 28), before any exercise. Edited line (84) sits inside `## Pre-reads before Module 6`, unrelated to this rule's surface.",
+      "evidence": "`grep -n '^##' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` (this session) plus `grep -n 'Ronacher\\|Cherny' <same file>`: closer lectures `[Lecture: What packaging is]` (line 50) and `[Lecture: The gate is a claim too]` (line 52) still sit AFTER both exercise links (`[Exercise: Fork the worktree...]` line 44, `[Exercise: Diagnose and re-send]` line 46). Opener lectures `[Lecture: Reading the return]` / `[Lecture: Learning through contrast]` still sit at `## Start here` (lines 26, 28), before any exercise. Unaffected by this session's rewrites, which touched the nag section, Key Concepts, and the pre-reads/Next prose, not the link ordering. Harm this rule guards against (abstract-claim-before-lived-evidence) is absent — sequence unchanged.",
       "fix_hint": null,
       "blocking": false
     },
@@ -22,7 +22,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "PASS",
-      "evidence": "`## The nag writes the verifier` (lines 30-36, `grep -n '^## The nag'` -> line 30) delivers spirit + plain-function role-language for reference/plan.md/verifier without pairing them to the named failure modes (deferred to Key Concepts, line 52, post-exercise) or naming Ronacher (deferred to the closer lecture link at line 48). Regenerated trace phase 1 confirms the persona reads this as recognition/arming, not lecture. The edited line is downstream of both exercise links, not part of the pre-exercise dosage this rule governs.",
+      "evidence": "The rewritten `## Your nag writes the verifier` section (lines 30-36) is now MORE minimal than before, not less: the maintainer block's 2026-08-14 correction note (b) confirms the trio pre-announcement ('the reference pins the goal, plan.md carries the state, the verifier runs the checks') was deliberately CUT because it handed out all three names before diagnosis happened. Current body: worry surfaces, gets weighed against the artefact, 'Build the check, send again' — spirit plus one move, no Ronacher's three-pattern, no failure-mode↔packaging pairing (both still reserved for the closer lectures). Harm this rule guards against (over-lecturing collapsing the closer's felt-evidence reveal) is not present — if anything the correction reduced the risk versus the prior audited version.",
       "fix_hint": null,
       "blocking": false
     },
@@ -31,7 +31,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Rule targets lecture-file bodies (`curriculum/lectures/*.md`), not this module file. This module file is the designated place for module-numbered sequencing content per `curriculum/CLAUDE.md`. Not this rule's surface — no harm to state since the rule cannot fire here.",
+      "evidence": "Rule targets lecture-file bodies (`curriculum/lectures/*.md`); this module file is the designated home for module-numbered sequencing per `curriculum/CLAUDE.md`. Not this rule's surface — no harm to state since the rule cannot fire here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,17 +39,17 @@
       "compendium": "check_lectures.md",
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
-      "verdict": "PASS",
-      "evidence": "`grep -n '^##' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` (this session), lines 3, 6, 12, 20, 30, 38, 52, 61, 72, 78, 85: Big Idea, Prework, What You'll Learn, Start here, The nag writes the verifier, Set up the worktree, Key Concepts, Back to the map one last time, Bring to Module 6, Pre-reads before Module 6, Next. All command-verb, concept-named, or structural-convention headings; no empty-container or orphan-mystery header; `Next` truthfully names a forward hand-off. The edited line (84) is body text under `## Pre-reads before Module 6`, not the header itself — no header string touched.",
-      "fix_hint": null,
-      "blocking": false
+      "verdict": "REVISE",
+      "evidence": "Header at line 30, `## Your nag writes the verifier`, asserts an unqualified causal claim (the nag produces the verifier). The maintainer's own 2026-08-14 correction note (a), quoted in the body above the fence, explicitly REJECTS that exact claim: the removed sentence read 'Your nag is a spec, arriving one worry at a time. Each one names a check the session should have carried with it' — Antti's own words call this 'contradicts... the agent encodes from evidence.' The corrected body (lines 34-36, read fresh this session) now says 'Hold that worry beside the artefact. Where the run bears it out, it names your first check. Where it doesn't, the artefact wins: it saw the session and you didn't' — a conditional, artefact-adjudicated claim, not an unconditional 'writes.' The header was not touched by the 2026-08-14 correction (only the body prose is quoted/discussed in that maintainer note) and still names the stronger, now-disavowed claim. HARM CHECK (mandatory clause): this rule exists to stop a header asserting more than the body supports, because a crisp header is easier to believe than the qualified prose beneath it — exactly what self-study/deck-cold reading rewards (§4's own diagnostic: 'cover the bullets; the header still names the ONE thing the student walks away holding'). The harm is present, not theoretical: a skim reader retains 'my nag writes the verifier,' which is precisely the epistemically-charitable-to-self-report belief Phase 1 of `diagnose-and-resend` teaches the student to distrust ('assume about 10% of the account misrepresents the run') and precisely what Antti's own correction rationale names as the fault. No maintainer accept-note covers the header specifically — the 2026-08-14 note discusses only the body sentence removed.",
+      "fix_hint": "Rename the header to match the corrected body's adjudication move rather than the disavowed 'nag writes' claim — e.g. something closer to 'Weigh your nag against the artefact' or 'Your nag, checked' — author's call, not a prescribed replacement.",
+      "blocking": true
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded (~210 readable words, ≤6 bullets).",
       "verdict": "PASS",
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` run this session: `files: 1  slides: 10  limits: 210 words / 6 bullets` / `oversized: 0` / `✓ every slide is within limits`. Removing one stray `**` character is not a word — the slide's word count is unaffected, if anything one markup character lighter.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` run this session: `files: 1  slides: 10  limits: 210 words / 6 bullets` / `oversized: 0` / `✓ every slide is within limits`. The Key Concepts rewrite went from 5-6 bullets to 4, and the nag section stayed 3 short paragraphs — both moves shrink density, not grow it.",
       "fix_hint": null,
       "blocking": false
     },
@@ -58,16 +58,16 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "`grep -n '{{prompt' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` run this session: no matches (exit 1). Both worktree-setup and re-send prompts live in the linked exercise files (`exercises/fork-the-worktree.md`, `exercises/diagnose-and-resend.md`), not in this module body. The edited pre-read line is a citation-link punctuation fix, not a forcing function or scripted reaction.",
+      "evidence": "`grep -n '{{prompt' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` run this session: no matches (exit 1). The rewritten nag section ('Build the check, send again') is descriptive framing, not a scripted forcing function performed in body prose — the actual worktree-fork and diagnose-and-resend forcing functions still live in the two linked exercise files. Harm this rule guards against (body prose smuggling in a forcing move that should be in a fence) is absent.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
-      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room. Carries a third carve-out (2026-08-12/13): the room may be named, sparingly.",
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "`grep -niE 'discuss with|share with|neighbo(u)?r|tell the room|compare with|pair up|turn to' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` run this session: no matches (exit 1). All prose stays on artefact + work; cohort-management lives entirely in the maintainer block. No room-naming line present either, so the third carve-out doesn't need invoking (it permits, it doesn't require) — nothing to flag either direction. Harm this rule guards against (trainer-scripted room performance baked into student-facing body) is not present: the sole edit removed a stray markdown character, not prose.",
+      "evidence": "`grep -niE 'discuss with|share with|neighbo(u)?r|tell the room|compare with|pair up|turn to' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` run this session: no matches (exit 1). The new dense-slides blockquote (line 48, 'headings carry the claims; bullets are the evidence. Follow the headings; pick the detail that interests you most.') is reading guidance about the ARTEFACT (how the two closer lectures are structured), not cohort management (pacing/sharing/comparing) — same register as the pre-existing 'Long sessions, short reads' blockquote already audited clean. No room-naming line present either. Harm absent.",
       "fix_hint": null,
       "blocking": false
     },
@@ -76,7 +76,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named; mood-floor 8+ per TEACHING beat, mood-exempt SETUP beats.",
       "verdict": "PASS",
-      "evidence": "Regenerated trace (this session, sim-cache, content_sha c25ae791...): FULL reading phase scores 8 / null(setup) / 9 / 8, close 9 — all teaching beats clear the 8+ floor. PREVIEW reading close (phase 4-preview) scores 9, unaffected (its content sits outside the edited span, which the preview cut strips entirely). Phase 4's phase_sha recomputed this session (`sed -n '72,88p' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md | shasum -a 256` -> 06e0d7583478baef, differs from prior 729c7d6cc528fdcf as expected since the edited line lives in that phase); mood_score unchanged at 8 because removing a stray unpaired `**` is a rendering-bug fix, not a content or register change — if anything it removes a source of unintended bold-span confusion, so the harm this rule guards against (mood collapsing under a real content problem) is doubly absent here.",
+      "evidence": "Trace rebuilt fresh this session against current body (phase SHAs recomputed via `sed -n '<range>p' <file> | shasum -a 256`, run this session — phase1 10de24dc..., phase2 d040c360..., phase3 b6f8b486..., phase4 3a2f75cd..., phase4-preview d4395249...). FULL reading phase scores 8 / null(setup) / 9 / 8, close 9 — all teaching beats clear the 8+ floor. Phase 1 ('Start here' + rewritten nag beat): 8 — the worry-then-artefact-adjudicates move reads clearly and is more epistemically honest than the pre-correction version, tempered slightly by the rule-4 header/body tension noted above (same slide, so the qualifying body sentence is read immediately after the header, not a page-turn away). Phase 3 (rewritten Key Concepts): 9 — verified this session as a genuine grounded recap of `lectures/what-packaging-is.md`'s theory slides (near-verbatim clause matches confirmed by reading that file), not floating jargon; lands as payoff, not new lecture. Phase 2 stays mood-exempt (setup/link-list beat; the new dense-slides blockquote is more of the same orientation register, doesn't convert it to a teaching beat). Phase 4 (FULL close) stays 8 — the 'Next' rewording (colon instead of period-break, 'widens' replacing 'changes scale too... starts asking') is a tightening, not a content change; still the scale-shift hand-off. Phase 4-preview ('Back to the map') is untouched by this diff (`git diff 315cd5a` shows zero changes to that span) — stays 9.",
       "fix_hint": null,
       "blocking": true
     },
@@ -85,7 +85,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood, not punitive.",
       "verdict": "PASS",
-      "evidence": "'The nag writes the verifier' (line 32) frames the M4 worry as curiosity ('a worry surfaced... it nagged', 'the feeling of what is missing points at what to build next'), not shame; maintainer block's Phase-1-diagnosis-as-blame push-back (`grep -n 'diagnosis-as-blame' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` this session -> line 115) guards the non-blame register explicitly for the linked exercise. Trace phase 1 mood_note reads as recognition, not correction-feeling. Unaffected by the stray-`**` fix — that line is outside this section entirely.",
+      "evidence": "The rewritten nag beat frames the worry as something to WEIGH ('hold that worry beside the artefact'), not something the student did wrong — no blame language, consistent with the maintainer's stated intent to remove a framing that let the felt worry outrank the evidence. The rule-4 header issue above is a truth-clause defect, not a punitive-tone defect — the header overclaims confidently, it doesn't shame. Key Concepts' new register ('the model already knows,' 'the missing evidence is,' 'the engineer decides') stays descriptive/curious, not corrective. Harm this rule guards against (shame register) is absent throughout.",
       "fix_hint": null,
       "blocking": false
     },
@@ -94,7 +94,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Big Idea (line 4, 'Steer your long run... the run you already have tells you what to put there') leads with the steering/read discipline as subject; the three failure names never headline the module — they surface as lenses inside Key Concepts (line 53) and the linked exercise. Unaffected by the edit, which sits far downstream in the pre-reads section.",
+      "evidence": "Big Idea (line 4, unchanged this session, `Steer your long run... the run you already have tells you what to put there`) still leads with the steering discipline. The four rewritten Key Concepts bullets lead with positive framings (model knowledge, evidence-gap, candidacy, engineer's judgment) — none titled by a failure word. The rewritten nag section leads with a worry as recognition, not a failure label. Unaffected in direction by this session's edits.",
       "fix_hint": null,
       "blocking": false
     },
@@ -103,7 +103,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "`node scripts/render-variants.js curriculum/trainings/agentic-engineering-101/learn-from-the-test.md full` (this session): sections end `... > Bring to Module 6 > Pre-reads before Module 6 > Next` — the room's LAST slide is still the forward hand-off to M6 ('do all our tasks pass, and who reviewed what?'), not the reading list. `... preview` (this session) confirms the 3-module cut still ends on 'Back to the map, one last time' — no dangling M6 reference. No front-run: Ronacher/Cherny attribution stays reserved for the closer lecture link (line 48). Mood doesn't resolve early: closer lecture 'The gate is a claim too' (line 50) still reopens doubt on the packaged run's green verifier result right after the win; neither reading's close attempts to resolve that doubt. The stray-`**` fix touches only the pre-read citation punctuation inside the FULL-only span and changes none of this arc.",
+      "evidence": "`node scripts/render-variants.js curriculum/trainings/agentic-engineering-101/learn-from-the-test.md full` and `... preview` (both run this session): FULL ends `... > Bring to Module 6 > Pre-reads before Module 6 > Next` (sha 9f2623f26609); PREVIEW ends `... > Key Concepts > Back to the map, one last time` (sha 35cffcd12103) — both closers intact, no dangling forward-reference in the preview cut. No front-run: `grep -n 'Ronacher\\|Cherny' <file>` (this session) shows the only above-the-fence Cherny mention (line 40, 'Cherny calls parallel worktrees his biggest productivity unlock') is a DIFFERENT claim from the reserved 'three stop-hook shapes' taxonomy — unaffected by this session's edits and already present pre-rewrite. Ronacher is named only below the fence. Mood doesn't resolve early: the rewritten Key Concepts bullet 'The experiment produces a candidate, not an optimum' if anything REINFORCES the open doubt from 'The gate is a claim too' (a green verifier result is a candidate, not a proof) rather than resolving it — consistent with the arc's refusal to pre-empt M6. Big Idea fidelity holds per rule 3's evidence above.",
       "fix_hint": null,
       "blocking": true
     },
@@ -112,7 +112,7 @@
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Module-only section; owned by the strategy-class judge as primary owner per this template's completeness contract ('§5/§6/§7 govern module-only sections... the strategy judge owns them on modules').",
+      "evidence": "Module-only section; owned by the strategy-class judge as primary owner per this template's completeness contract ('§5/§6/§7 govern module-only sections... the strategy judge owns them on modules'). The Key Concepts rewrite is a maintainer-decided change (2026-08-15, 'the four lines ARE the block, verbatim') worth flagging to the strategy judge for its own §5/§6 pass, but not this class's verdict to render.",
       "fix_hint": null,
       "blocking": false
     },
@@ -130,7 +130,7 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "Module-only section; owned by the strategy-class judge as primary owner, per this template's completeness contract.",
+      "evidence": "Module-only section; owned by the strategy-class judge as primary owner, per this template's completeness contract. Unaffected by this session's diff (the `## What You'll Learn` section itself was not touched).",
       "fix_hint": null,
       "blocking": false
     }
@@ -142,7 +142,7 @@
     "stealing_the_mood": [],
     "preview_reading_close_score": 9
   },
-  "teaching_moment_note": "The named teaching moment ('the three pieces earn their names from the M4 evidence, not a whiteboard') still lands reliably: it fires inside the linked closer lecture 'What packaging is' (routed from line 48), reached after both exercises at the same functional arc position. The stray-`**` fix on the two pre-read leads does not touch this moment or its placement. Re-checked the ## Next paragraph (line 85) against the queue's named live risk (bridge reading as connective tissue, not a closer) — it still names the real scale-shift question M6 asks ('did my task pass?' -> 'do all our tasks pass, and who reviewed what?'), scored as a teaching beat (8), not exempted as sequencing-only. Both content-flag cuts (FULL ending on Next, PREVIEW ending on Back to the map) close well, confirmed again this session.",
-  "blocking_findings_count": 0,
+  "teaching_moment_note": "The named teaching moment ('the three pieces earn their names from the M4 evidence, not a whiteboard') still lands reliably: it fires inside the linked closer lectures, reached after both exercises, unaffected by this session's rewrites (the diff touched the nag section, Key Concepts, the dense-slides blockquote, and pre-reads/Next prose — not the exercise or lecture links themselves). The Key Concepts rewrite introduces a second, coherent teaching point verified this session against `lectures/what-packaging-is.md`'s actual theory-slide content ('The model has read the field' / 'The evidence did not exist yet' / 'Two bearings make a candidate, not an optimum') — the four bullets are genuine, near-verbatim-in-places recaps of that lecture, not new unearned claims. The rule-4 header finding is a localized truth-clause defect on one section header, not a teaching-moment failure — the corrected body immediately supplies the right claim on the same slide.",
+  "blocking_findings_count": 1,
   "todos_count": 0
 }

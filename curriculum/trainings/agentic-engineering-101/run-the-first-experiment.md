@@ -26,7 +26,7 @@ After this module, you will be able to:
 
 Short loops sit behind you so far: a bug fix, a plan read. This is the first long one. Multi-hour, sustained, running without you watching.
 
-**The question, to you:** which task have you been putting off because it needs someone to sit with it for a few hours? The room's answers will differ: migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.
+**The question, to you:** which task have you been putting off because it needs hours of babysitting? The room's answers will differ: migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.
 
 The map has a far side. Before the first long session, see the country you are entering.
 
@@ -94,7 +94,7 @@ The next module opens with what came back, or what you caught before it went fur
 - **Deliberate incompleteness:** M4 leaves the un-packaged send-off and the unfilled gaps beyond the top three open. The closer observes where existing boundaries fire, where the session waits, and where nothing pushes back. The trainer does not add packaging or patch the gaps before M5 reads the result.
 - **Mood target:** curious readiness — *"I've built enough to try; let's see what the agent does."* Watch for: mood drift toward compliance-feeling (*"did I prepare the right way?"*) or performance-anxiety (*"what if it fails?"*). Diagnostic: student at Phase 2 keeps asking *"is this enough?"* Fix: trainer reframes — *"enough is a question for M5. The experiment is the point."*
 - **Lecture wiring (2026-07-02):** `lectures/the-agent-loop.md` promoted from M1 supplementary (Antti-directed), inlined between the far-half opener and Test and learn. Beat rationale: the far half names the country, this names the machine about to walk it; its three introspection prompts run on the live session that will carry the send-off, so the tool list that comes back is the one the long run rides. Promotion record + eyeball questions in the lecture's maintainer block.
-- **Closing lecture wiring:** `lectures/what-keeps-a-long-running-session-going.md` is a three-slide observational beat after the send-off. It rides the active session and points at durable state, feedback, and boundaries already present without changing the un-packaged baseline.
+- **Closing lecture wiring:** `lectures/what-keeps-a-long-running-session-going.md` is a four-slide observational beat after the send-off. It rides the active session and points at durable state, feedback, and boundaries already present without changing the un-packaged baseline.
 - **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries. Not restated here. Module-specific: the send-off happens IN the same session the student used for walk + fill + frame + retro — no new session, no scheduled agent, no cloud runner. 15-30 minutes is enough for the clues the M5 read needs; engineers run these for hours at work, ambition grows with practice.
 
 **Push-back moves** (trainer delivers):

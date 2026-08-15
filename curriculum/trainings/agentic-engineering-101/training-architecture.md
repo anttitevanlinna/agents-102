@@ -101,7 +101,7 @@ Arc, five beats, each anchored in a shipped surface:
 2. **M2 pressure + stop gate**, `exercises/push-back-on-the-plan.md` § *Read for the decisions that matter*; the copied prompts deliberately offer a full plan and an exhaustive branch walk, while the body tells the student to consume only the sharpenings worth making before generation.
 3. **M3 take-into-use**, `exercises/map-the-access-surface.md` opener *Take the ranked ten, leave the rest on disk*; closer pair in `lectures/the-loop-half-filled.md` (*Reading was never the control* · *The branch is the permission*).
 4. **M4 silent model**, `walk-and-send-off-2` enforces ranked-top-five; exercise body carries skim-to-payoff cues.
-5. **M5 remind + convert**, `learn-from-the-test.md` § *Long runs, short reads* blockquote + § *Your nag writes the verifier*.
+5. **M5 remind + convert**, `learn-from-the-test.md` § *Long sessions, short reads* blockquote + § *Hold the worry beside the artefact*.
 
 Prompt mechanics carrying the contract: `map-the-access-surface-2` (map to disk, path back), `map-the-access-surface-3` (ranked, ten lines, expand on ask), `threat-model-with-stride-1` (STRIDE in subagent, list to file, high-severity flags only in chat), `ae101-m5-rerun-packaged` (three lists, no narrative). New heavy-output prompts follow the same shape: bound the chat read, full record to disk, detail on ask. An exhaustive prompt can be deliberate without creating an exhaustive reading requirement: M2 supplies the pressure, and the human sets the stop gate.
 

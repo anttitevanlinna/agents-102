@@ -8,10 +8,10 @@
 
 ## Three failure modes you'll use to read
 
-- Practitioners hit the same three. Use them as lenses, not boxes: ground each finding in a quoted moment from the artefact, and the same moment can reveal more than one mode.
+- Practitioners hit the same three. Use them as lenses, not boxes: ground each finding in a quoted moment, and one moment can carry more than one mode.
 - **Goal drift.** The instructions get buried as the conversation grows, and before long the agent is solving an adjacent problem with confidence. The LLM reasons from what fills the window now, and the original ask competes with everything generated since. Hard to spot until you compare what was asked against what was done.
 - **Context rot.** Signal-to-noise drops as the working window fills. The agent rehashes approaches it already ruled out two hours ago, because "ruled out two hours ago" no longer fits in the working window.
-- **Plausible-but-wrong.** Outputs look reasonable in isolation and don't match the original spec. The LLM produces the next likely word, not the next true one, so fluent and confident is its default finish whether the work is right or not. The most expensive failure to find, because it doesn't trigger an obvious tell.
+- **Plausible-but-wrong.** Outputs look reasonable in isolation and don't match the original spec. The LLM produces the next likely word, not the next true one, so fluent and confident is its default finish whether the work is right or not. The most expensive to find: no obvious tell.
 - Your rules file is in that window too. Dex Horthy, on the failure: *"The longer your file gets, the more Claude seems to treat individual sections as optional."* One more question for the read: did the rules you compounded actually reach the work?
 
 ## Why these three, every session

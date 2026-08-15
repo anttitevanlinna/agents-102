@@ -64,7 +64,7 @@ The plan path you noted at Module 2's close is the best input here: it names the
 
 *7 min*
 
-- You decide which surface goes on each side of the delta. Two reads.
+- You decide which surface goes on each side of the delta.
 - **The over-call.** Where did the map flag something you'd have under-weighted? Lower-risk in your read, higher-risk in the skill's.
 - **The miss.** What's missing that you know matters? Often the "weird bit" of your feature, the part you'd describe as not-quite-standard.
 - If neither is obvious from a quick scan, ask Claude in chat to propose two or three candidates per side with a one-line reason each. Pick from those; push back if the reasons read generic.

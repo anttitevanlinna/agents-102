@@ -21,6 +21,7 @@ detail and the retraction record live in git.
 - **The empty-box rule governs delivery.** Understood-but-not-acted = nothing transferred. Theory reaches the student **derived** (they name the law after they've felt it) or as a **governor** (a pre-action question) — *not* front-loaded as a lecture.
 - **One theory, two surfaces.** IC / CTO / field want incompatible *forms* of the same theory. Resolve: a named, scar-backed field-facing theory (groundwork = IP moat) whose classroom delivery is a derivation scaffold (AE101).
 - **The same-hole insight.** Groundwork is a pattern language with lexicon + grammar but few *sentences* (it generates cards, not compositions/paths). AE101 lacks a theory layer. AE101's module *sequence* already IS a composition over groundwork's patterns. Wiring them fills both holes at once.
+- **Scope (Antti, 2026-08-15): this file may hold non-software-engineering theory too** — org design, operating styles, the social layer — beside the engineering laws. The crossing is part of the theory, and org-level material stages here until it finds its weighted home (EM training, CTO deck, buyer-side). Deliberate widening, in a good direction; do not prune it back to IC scope on tidiness grounds.
 
 ## Decisions banked
 
@@ -324,6 +325,64 @@ either cynicism or sociology on an engineer slide — the student-facing form, i
 PR-shaped and concrete (*work counts when someone with a name vouches for it; your gates are how you make
 vouching cheap*), never social theory. Buyer-side (CTO deck, EM training) is the natural weighted home —
 the 1000-agents fantasy is a buyer fantasy, and this layer is the argument that prices it.
+
+### Follow-up hypothesis — distributed operating styles thrive (2026-08-15, Antti + session synthesis; candidate)
+
+**The claim (Antti, verbatim):** under agreement capacity, *"distributed operating styles will thrive.
+decide→execute VS experiment and amplify what works."*
+
+**Mechanism — an arbitrage on the price of agreement.** Decide→execute purchases agreement once, up front,
+at maximum scope, on the least evidence, then amortises it over execution — the right design while
+execution was the expensive half. Agents invert the cost structure: the decide→execute org now spends its
+scarcest resource at the widest scope, and the settlement goes stale mid-rollout (the frame's own churn
+claim). Experiment-and-amplify reorders the purchase: **decide→execute prices agreement before evidence;
+experiment-and-amplify prices evidence before agreement.** Experiments run below the agreement threshold —
+bounded blast radius, local standing suffices, no steering group convened — and amplification is where
+agreement is finally bought, with a result in hand. Evidence is a discount on consensus. Distributed styles
+do not bypass the agreement bottleneck; they route the maximum share of work underneath it and spend
+agreement only on winners.
+
+**Already carried by the inventory (assembly, not new laws):** BVSR at org scale (experiment = variation ·
+agreement = selection · encoding = retention) · blast radius sets the below-threshold boundary ·
+amplification names the stakes (decide→execute plus agents amplifies the decision bottleneck; distributed
+plus agents amplifies the learning rate) · Stanford-51 (55% of high performers redesigned workflows vs 20%)
+· Cutler again (central deciders hold status-quo incentives; experiments route around the veto until
+evidence arrives).
+
+**Two refinements, from the plan's own laws — keep both or the hypothesis is cheerleading:**
+1. **Distributed's failure mode is local success / global drift at org scale.** Selection is itself
+   agreement: without a working amplify-and-encode function, experiment-and-amplify degenerates into pilot
+   purgatory — everything experiments, nothing amplifies. The style thrives only with a strong retention
+   rung (= the compound ladder; = the training's product).
+2. **The boundary is the Convergence Triad.** Distributed wins where blast radius is boundable and
+   correctness independently verifiable; the payments core keeps decide→execute for good reason. Sharp
+   form: **the winning org design maximises the share of work that is Triad-shaped so it can run below the
+   agreement threshold — org design as threshold engineering.**
+
+**The lived failure mode — waiting for "somebody" (Antti, verbatim: *"Why don't we have a 'customer
+feedback' agent? Not everybody should be building their own — they say."*).** The passive voice is the
+tell: the summoned somebody has the least local knowledge of what customer feedback means in the
+requester's function and the least standing to make them trust its output. *"Not everybody should build
+their own"* is DRY logic applied to a learning process — DRY-ing code removes duplication, DRY-ing learning
+removes the learning; the agent artifact is exhaust, the compounding loop that built it is the product. A
+commissioned company-agent carries nobody's judgment → generic output → reviewed harshly → *"we tried AI
+and it doesn't work here"* — the amplification law running downhill, with Mollick's *"IT is where AI goes
+to die"* as its epitaph. And the sentence is usually the agreement bottleneck defending itself (Cutler).
+The rescuable kernel: the org is right that fifty half-built feedback agents forever is waste — but the
+shared agent should be a **promoted survivor, not a commissioned artifact.** Many local builds → selection
+on evidence → the winner amplified function-wide with its track record and its sponsor attached, arriving
+pre-agreed because it already won somewhere real. Competence → discovery → context → platform, in that
+order; the centralizers are not wrong about the destination, they are running the sequence backwards.
+
+**Nordic corollary:** consensus cultures pay the highest price per unit of agreement, which makes
+evidence-first sequencing worth MORE there, not less — the culture that cannot afford many decisions should
+buy them pre-evidenced. Also resolves the design-first vs competence-first signal (user-signal 2026-04-15):
+*"design the structure first"* is decide→execute applied to the transformation itself.
+
+**Falsifier:** a named decide→execute org converting agent capacity into institutional value at the rate of
+a distributed peer — central roadmap, commissioned agents, no below-threshold experimentation, matched
+outcomes. Would-strengthen: more Stanford-51-shaped splits; a documented promoted-survivor case (a
+team-built agent adopted function-wide, with measured absorption).
 
 ## The cull — −20%, reversible
 

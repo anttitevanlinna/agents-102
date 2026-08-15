@@ -1,20 +1,20 @@
 {
+  "body_sha": "0021ddbaab7f4d1967d31458b403b7ce30c47bf5295241e54a5dc28feba9d7e8",
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md",
-  "body_sha": "07d3d53aa6aef33f1b859914ec8c29e1300b8d87679e9bad8c4d81f63f3baba5",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "H1/lede: The agentic engineering progression", "lines": "1-4"},
-    {"index": 1, "heading": "Part 1: The progression", "lines": "5-10"},
-    {"index": 2, "heading": "Assistance", "lines": "11-16"},
-    {"index": 3, "heading": "Interactive work", "lines": "17-22"},
-    {"index": 4, "heading": "Delegating bounded outcomes", "lines": "23-28"},
-    {"index": 5, "heading": "Directing parallel sessions", "lines": "29-34"},
-    {"index": 6, "heading": "Encoding checked loops", "lines": "35-40"},
-    {"index": 7, "heading": "Improving the system", "lines": "41-46"},
-    {"index": 8, "heading": "Part 2: The leverage model", "lines": "47-98"},
-    {"index": 9, "heading": "One model, not two", "lines": "99-102"}
+    {"index": 0, "heading": "H1/lede: The agentic engineering progression", "lines": "1-3"},
+    {"index": 1, "heading": "Part 1: The progression", "lines": "5-9"},
+    {"index": 2, "heading": "Assistance", "lines": "11-15"},
+    {"index": 3, "heading": "Interactive work", "lines": "17-21"},
+    {"index": 4, "heading": "Delegating bounded outcomes", "lines": "23-27"},
+    {"index": 5, "heading": "Directing parallel sessions", "lines": "29-33"},
+    {"index": 6, "heading": "Encoding checked loops", "lines": "35-39"},
+    {"index": 7, "heading": "Improving the system", "lines": "41-45"},
+    {"index": 8, "heading": "Part 2: The leverage model", "lines": "47-97"},
+    {"index": 9, "heading": "One model, not two", "lines": "99-101"}
   ],
   "rules_evaluated": [
     {
@@ -23,7 +23,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Every pronoun/demonstrative resolves in-chunk (chunk 2 'it'→AI named same chunk; chunk 3 'it'/'the result'→agent/change named same chunk; chunk 7 'it'→'the limit' same sentence). Cross-chunk reuse is compliant reuse, not a violation: chunk 9's 'an unfamiliar codebase' verbatim-reuses the phrase chunk 3 coined six slides earlier (rule 1's explicit non-violation case), and chunk 9's 'the progression'/'the leverage model' name chunks 1 and 8 by their own section titles. Chunk 1's 'Six levels, from assistance to a system you keep improving' is a self-contained overview clause (not a referring pronoun needing an antecedent) whose two endpoints are immediately cashed out by the very next chunk header ('Assistance') and, seven chunks later, 'Improving the system' — a reader is never stranded mid-read.",
       "fix_hint": null,
       "blocking": true
     },
@@ -33,7 +33,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No body sentence points at another file by position. The two external citations (chunk 1's Wollsén/McCrosky playbook, chunk 8's Wollsén throughput post) are both named with title + link, not located positionally. All within-file backward references (chunk 9) name their target by section title, matching the rule's own passing example shape.",
       "fix_hint": null,
       "blocking": true
     },
@@ -43,7 +43,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Supplementary reading page, no 'the X you did/saw' exercise-beat backward references anywhere in body.",
+      "evidence": "No 'the X you did/saw/caught' beat-reference construction anywhere in body (grep for you did|saw|caught|built|wrote|ran|made returned only the third-person Wollsén citation, not a student-beat reference). This is a supplementary reading with no session-beat callbacks to check.",
       "fix_hint": null,
       "blocking": true
     },
@@ -53,7 +53,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-before-reveal demo beats in this page.",
+      "evidence": "File contains no guess/predict-then-reveal instruction (grep for guess|predict returned no body hits). Nothing for this rule to check.",
       "fix_hint": null,
       "blocking": true
     },
@@ -63,7 +63,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Every chunk carries a self-sufficient claim, including the short closer (chunk 9's two sentences state the Part1/Part2 identity outright). No chunk is a bare wait-state or single context-dependent bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -73,7 +73,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "'Six levels' claim in chunk 1 matches the actual count of level headings (Assistance..Improving the system = 6); each level header matches its chunk's content.",
+      "evidence": "Each level header (Assistance, Interactive work, Delegating bounded outcomes, Directing parallel sessions, Encoding checked loops, Improving the system) is a literally true summary of its chunk's content, as are 'Part 1: The progression', 'Part 2: The leverage model', and 'One model, not two' (which states exactly that the two parts are one model).",
       "fix_hint": null,
       "blocking": false
     },
@@ -83,9 +83,9 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No 'Not X. Not Y. Z.' construction, no anaphora/epistrophe triples, no self-grading superlatives, no number-plus-retraction, no empty-leg verb triplets found on read-through. The repeated **Moves you up:** refrain (6 uses) is maintainer-attested structural design (§154), not an unintended tic.",
+      "evidence": "Checked all six sub-items per chunk: no 'Not X. Not Y. Z.' construction anywhere; no anaphora/epistrophe triples (chunk 8's four bullets each open differently, not a triplet cadence); no self-grading superlatives (grep-equivalent scan found none — the value-prop leak sub-item is clean); no number-with-retraction pattern (the 30-40/10-15 session counts and 3-4x estimate in chunk 8 are precise attributed citations from the source, not a hedged-then-retracted figure); no abstraction-noun stacks (vocabulary stays concrete: 'worktrees', 'checks', 'a diff'); no verb triplet with an empty leg.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -93,7 +93,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No repo-internal vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood) anywhere in body. Terms used ('context', 'memory', 'skills', 'verification', 'worktrees', 'checks') are AE101 spine vocabulary and ordinary engineering terms for this audience, not maintainer dialect.",
       "fix_hint": null,
       "blocking": true
     },
@@ -103,7 +103,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 8 carries two bold handles (Reach, Calibration) marking the two axis-defining terms of the diagram just shown — reads as the law/consolidation carve-out (one handle per defined term of the model), not the pre-2026-07-09 bold-every-lead monoculture. All other chunks carry ≤1 bolded 'Moves you up:' handle or none.",
+      "evidence": "Chunks 2-6 and 9 each carry exactly one bolded handle ('**Moves you up:**'), within the ≤1 budget. Chunk 8 carries two bolded handles ('**Reach**', '**Calibration**') on a consolidation slide defining the model's two named axes — the rule's own exception ('a law/consolidation slide may carry one handle per law') covers exactly this shape. No whole-sentence bolding anywhere.",
       "fix_hint": null,
       "blocking": false
     },
@@ -113,9 +113,9 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Ran `grep -n \"supplementary\" site/layouts/slides.js`, which shows the deck builder has first-class handling for supplementary pages (id prefix 'supplementary-', kind code 'S...'), unlike the 2026-07-09 incident where prework/supplementary/reference sections were dropped. This file's section is not phase-less prose stranded outside the deck model.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -123,7 +123,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-numbering.js` -> 'OK — 61 files, Phase/Step numbering consistent.' (exit 0). File uses no hand-numbered Phase N/Step N headers (Part 1/Part 2 + named levels only); 'Part 1'/'Part 2' are content ordinals, consecutive from 1, matching the linter's scope.",
+      "evidence": "Ran `node scripts/check-slide-numbering.js --file curriculum/trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md` → output 'OK — 1 files, Phase/Step numbering consistent.' 'Part 1'/'Part 2' are consecutive content labels for the file's two sections, not hand-numbered slide positions, and no in-file 'Phase K'/'Step K' references exist to go stale.",
       "fix_hint": null,
       "blocking": false
     },
@@ -133,7 +133,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md` -> 'OK — 1 files, no page-geometry pointers across the slide cut.' (exit 0). The one grep hit for 'below' (line 95, 'far below the multiple suggested by its pull-request count') is a magnitude comparison, not a page-position pointer.",
+      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md` → output 'OK — 1 files, no page-geometry pointers across the slide cut.' Exit 0. No 'below/above/further down/top of this' pointers in body (grep confirms).",
       "fix_hint": null,
       "blocking": true
     },
@@ -143,7 +143,7 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Only two links in body, both external (positivelyfred.substack.com), both named by article title in the link text. No in-page/cross-doc anchors to evaluate.",
+      "evidence": "File contains only two external links (both named-by-title citations to Wollsén's posts), no in-page fragment links to check against the anchor-index mechanism this rule documents. Rule 13 is explicitly a review surface, never a gate, and there is nothing here to review.",
       "fix_hint": null,
       "blocking": false
     },
@@ -153,7 +153,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md` -> '9 slides, oversized: 0, every slide is within limits' (exit 0).",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md` → output 'files: 1  slides: 9  limits: 210 words / 6 bullets  oversized: 0' and '✓ every slide is within limits'.",
       "fix_hint": null,
       "blocking": false
     }

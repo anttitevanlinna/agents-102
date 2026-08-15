@@ -73,6 +73,10 @@ Tags: `[borrow:X]` imported parent field · `[rsch:Ln]` continuous-research, evi
 - **Access–Trust gap:** experimentation always widespread, production-trust always rare, gap always >35pts. Bottleneck is trust, not access. `[rsch:L3]`
 - **Trust is earned through observed competence**, not claimed capability — the crossing is demonstrated, not announced. `[rsch:L1, thin]`
 - ★ **The value cycle:** Intent → Context → Work → Verification → Absorption → Outcome, compounding as it climbs personal→team→company. `[grnd]` — the natural spine.
+- **Agreement capacity (candidate):** the social reading of the absorption bottleneck — the company is a
+  social network, and work becomes real when the network accepts it; once generation is cheap, the binding
+  rate is agreement, and unsponsored agent output is a stranger's opinion wearing a diff. `[grnd]` →
+  § *The social layer*.
 
 ### 5 · Vocabulary & typologies — the map and the names you can carry (the cohort's missing piece)
 - **eval = judge / verifier / gate** — one primitive, three faces. `[curr]`
@@ -254,6 +258,72 @@ exists**, and the ratchet between them is the delegation frontier moving as fast
 fallback · floor naming · maintenance-machinery visibility (the training that says *the field moves* while
 running dated stamps against a cohort date makes the argument twice) · M1 general-transfer skew (own
 initiative; mood-demo caveat applies — the substitution test may be the wrong test for live demos).
+
+## The social layer — why 1000 agents cannot be told "fix everything" (2026-08-15, Antti musing + session synthesis; candidate — house-thesis, validate adversarially)
+
+**Origin frame (verbatim, Antti):** look at the "local" as *"the company, which is a social network.
+Nothing is really real. All is just conversation and social opinion."* And the consequence it explains:
+*"that is really the thing why we can't just add 1000 agents and go tell them: fix everything."*
+
+**The claim: local has two strata, and the experiment only resolves one.** The general/local frame's
+missing evidence — task × model × repository × setup — is the *codebase* stratum: agent-readable,
+experiment-resolvable, settled by measurement in an afternoon. Above it sits the *social* stratum: what
+counts as good, whose approval makes work real, which trade-off is acceptable, what "done" means this
+quarter. That stratum is not a fact about the system; it is the current settlement of an ongoing
+negotiation, and it is resolved only by conversation, at conversation speed. Reality still audits the
+settlement eventually (the code runs or it doesn't, the customer churns or she doesn't) — but inside the
+company, work becomes real when the social network accepts it, not when the tests pass.
+
+**Why 1000 agents fail.** Generation multiplies proposals, not agreement. An experiment produces evidence,
+but evidence does not spend itself — someone with standing has to spend it. Agent output that arrives
+unsponsored is a stranger's opinion wearing a diff; the same diff steered by a trusted person arrives
+pre-endorsed. So the absorption bottleneck (§2) has a deeper form than evaluation rate: **agreement
+capacity** — the rate at which the org can converge on "this is good, merge it, build on it." Code used to
+be expensive enough that its existence forced consensus; now generation is cheap and the scarce resource is
+what it always secretly was: agreement. This is WHY the preserved tension *parallel generation vs
+accountable absorption* exists, not merely a restatement of it.
+
+**Three consequences.**
+1. **Encoding is a speech act.** A rules file does not just persist knowledge — it participates in the
+   negotiation. The written, citable version wins the next argument on behalf of whoever wrote it. This is
+   the mechanism by which personal gains cross the wall into institutional value (or don't): the compound
+   ladder's team rung is consensus manufacture, not knowledge transfer. (Strategy-doc echo: *"my agent is
+   strongest when it meets other people's agents on a real problem"* — the kit is a negotiating position.)
+2. **Rules decay socially, not only factually.** A rule fossilises yesterday's settlement; it goes stale
+   when the *opinion* moves, even when nothing technical changed. The taught move "subtract a rule;
+   rules-files have a half-life" already handles this; this names the second driver of the half-life.
+3. **The non-encodable input is standing, not information.** The counter-view's "the engineer keeps
+   evaluation authority" is right and incomplete: authority is *held socially* — conferred by the network,
+   spent per intervention, non-transferable to an agent. Interactive presence (the tensions block above) is
+   therefore doing two jobs: discovering novel judgment AND conferring legitimacy on what returns. Only the
+   first is encodable.
+
+**What already carries it (do not re-derive):** absorption bottleneck `[rsch:L4]` + access–trust gap
+`[rsch:L3]` (the bottleneck is trust, not access — and trust is social) + individual ≠ institutional
+`[rsch:L3]` + amplification `[rsch:L3]`. Practitioner corroboration in the signals corpus: Cutler — *"the
+people who built organizational complexity are the same people whose authority depends on it, and AI gives
+them better arguments for the status quo"* — and Mollick's *"IT is where AI goes to die; KPIs are the
+biggest enemy"* (both `[practitioner analysis]`, user-signal 2026-04-09 thread, cycle 117). Wollsén's 490
+PRs at self-estimated 3–4× team value is the lived instance: the queue formed at agreement, not review.
+The house sequence competence → discovery → context → platform reads, under this layer, as a
+standing-building sequence — each stage accumulates the social capital the next stage spends.
+
+**Status + falsifier.** `[grnd]` stance sitting on L3/L4 laws; the stance itself is unvalidated and
+house-thesis-shaped (confirmation-bias caveat applies). Falsifier: a named org where unsponsored agent
+output converts to institutional value at volume — e.g. auto-merge-to-prod at scale succeeding without any
+human sponsorship layer, or measured parity between sponsored and unsponsored agent PRs in absorption rate.
+Would-move-it the other way: more Stanford-51-shaped evidence that workflow *redesign* (a renegotiation of
+the settlement) separates winners from the flat median.
+
+**Curriculum touch (AE101, IC scope) — name it maintainer-side, enact it student-side.** Nothing new to
+teach M1–M5. The layer explains existing choices: why day-30 measurement anchors to PR-layer outcomes
+(review comments, merge time, rework ARE the conversation's acceptance signals); why M6 ends at *what the
+team can absorb*; why the delegation frontier's gates include a reviewer who answers to other people.
+Register hazard if it ever reaches body: "nothing is really real" is maintainer philosophy and lands as
+either cynicism or sociology on an engineer slide — the student-facing form, if one is ever carded, is
+PR-shaped and concrete (*work counts when someone with a name vouches for it; your gates are how you make
+vouching cheap*), never social theory. Buyer-side (CTO deck, EM training) is the natural weighted home —
+the 1000-agents fantasy is a buyer fantasy, and this layer is the argument that prices it.
 
 ## The cull — −20%, reversible
 

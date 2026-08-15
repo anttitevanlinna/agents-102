@@ -81,7 +81,7 @@ Every piece of agentic work runs the same cycle. Six phases. The loops drawn acr
 <text x="28" y="534" fill="#786c56">A FUZZY IDEA</text>
 <text x="1172" y="534" text-anchor="end" fill="#a05a2c">TRUSTED · SHARED VALUE →</text>
 </g>
-<text x="600" y="534" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="13.5" fill="#786c56">the soil it grows in: act under uncertainty · competence is the gate · a move counts when it crosses the wall</text>
+<text x="600" y="534" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="13.5" fill="#786c56">the soil it grows in: act under uncertainty · competence sets the ceiling · cross personal → team</text>
 </svg>
 </figure>
 
@@ -113,8 +113,8 @@ The phases are places, not stages. A task usually stands in more than one at onc
 **Artifact contract (Family B):** the map slot only. Per-law {NAME · MAP-POSITION · MECHANISM · GOVERNOR} is the M3-close job, not this opener's.
 
 **Standing constraints:**
-- **The SVG carries the territory alone.** No ASCII fence under it, no print fallback. The one payload the picture does not carry on its own — the soil line (*act under uncertainty · competence is the gate · a move counts when it crosses the wall*) — rides the SVG as its bottom-center italic strip.
-- **No three-altitudes framing here.** "One loop, three sizes", and any *the loop climbs: personal → team → company* wording, is the M3 close's beat (`the-loop-half-filled`). The wall/team zone carries personal→team visually; that is this file's whole dose.
+- **The SVG carries the territory alone.** No ASCII fence under it, no print fallback. The one payload the picture does not carry on its own — the soil line (*act under uncertainty · competence sets the ceiling · cross personal → team*) — rides the SVG as its bottom-center italic strip.
+- **No three-altitudes framing here.** "One loop, three sizes", and any *the loop climbs: personal → team → company* wording, is the M3 close's beat (`the-loop-half-filled`). The wall/team zone carries personal→team visually, and the soil strip's third clause reads *cross personal → team* (Antti-worded 2026-08-15) — the two plain words are in dose; the full climb wording stays with the M3 close.
 - **The agent's own loop is drawn solid inside the build loop** (tag `THE AGENT'S OWN LOOP`, sub `act · read the result · correct`). The nesting is shown; the law is not named.
 - **The checking loop stays a ghost** — dashed across Verification/Absorption (tag `◌ THE CHECKING LOOP`, sub `read · judge · gate what ships · by hand for now`). No `?` glyph: `?` means frontier-unknown, and this ghost means not-yet-built. No backpressure / you-are-the-feedback-signal phrasing (M5's beat).
 - **Bold budget:** the six phase-definition bullets keep theirs (**Intent.** through **Outcome.** — the map's handles). *You are here* carries none. → `theory-plan.md § Slide format — emphasis budget`, `check_slides.md §9`.
@@ -150,7 +150,7 @@ Format → `curriculum/backing-format.md`.
 - `phases-are-places-not-stages` · vision · "The phases are places, not stages. A task usually stands in more than one at once, and the plan gets re-entered mid-build." ← none-owed
 - `near-half-far-half` · vision · "The far half is Verification, Absorption, Outcome. What happens when sessions get long and the quick feedback goes quiet." ← none-owed
 - `territory-before-map` · vision · "You feel a country before you see it drawn." ← none-owed
-- `soil-line` · vision · "act under uncertainty · competence is the gate · a move counts when it crosses the wall" ← none-owed
+- `soil-line` · vision · "act under uncertainty · competence sets the ceiling · cross personal → team" ← none-owed
 - `checking-loop-is-manual` · vision · "read · judge · gate what ships · by hand for now" ← none-owed
 
 **Sources**

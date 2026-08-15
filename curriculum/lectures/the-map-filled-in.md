@@ -81,6 +81,7 @@ The map is back, one last time.
 <text x="28" y="534" fill="#786c56">A FUZZY IDEA</text>
 <text x="1172" y="534" text-anchor="end" fill="#a05a2c">TRUSTED · SHARED VALUE →</text>
 </g>
+<text x="600" y="534" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="13.5" fill="#786c56">the soil it grows in: act under uncertainty · competence sets the ceiling · cross personal → team</text>
 </svg>
 </figure>
 
@@ -181,7 +182,7 @@ The map is back, one last time.
 
 - **A rule in context is not a rule in the output.** (Outcome) Rules leak, and the loop exists because they leak. That is why the lesson gets encoded into something that fires (a verifier, a hook, a skill) instead of stopping as one more sentence in `./CLAUDE.local.md`.
 - **Test → learn → encode.** (Outcome) M4 tested, M5 learned, M6 encoded: diff the sessions, name the gaps, package the learning. The loop closes when the lesson ships, the oldest search shape there is: the sessions generate variants, the eval selects, the memory retains.
-- **A move counts when it crosses the wall.** (Outcome) What survives the session is the fix, the rule it taught, and the skill it became; what compounds is the part a team takes up. Review infrastructure grows by accretion, one trusted check at a time, and it starts at the size of the one just shipped. Your own sessions speed up before the team's numbers move, because the team's way of reviewing and sharing has to be rebuilt around the new speed first; the checks and skills you hand over are that rebuild.
+- **Cross personal → team.** (Outcome) What survives the session is the fix, the rule it taught, and the skill it became; what compounds is the part a team takes up. Review infrastructure grows by accretion, one trusted check at a time, and it starts at the size of the one just shipped. Your own sessions speed up before the team's numbers move, because the team's way of reviewing and sharing has to be rebuilt around the new speed first; the checks and skills you hand over are that rebuild.
 
 ## The question you carry forward
 
@@ -223,12 +224,13 @@ The map is back, one last time.
 **Delivery mode:** In-room close, projected. The re-shown map with the solid checking loop IS the slide.
 
 **Completeness-review minors closed (2026-07-03):**
-- **Minor 9** — the crossing-the-wall bullet now carries a worded, no-math dip-before-climb mechanism (your own sessions speed up before the team's numbers move; the team's reviewing/sharing has to be rebuilt around the new speed, and the handed-over checks and skills are that rebuild). This is the J-curve / complementary-investment borrow the theory audit assigns to the-wall: [borrow:economics] Paul David, "The Dynamo and the Computer" (1990, AEA P&P); Brynjolfsson, Rock and Syverson, "The Productivity J-Curve" (AEJ: Macroeconomics, 2021). Both verified live 2026-07-03 — stamps below. Body stays unnamed and number-free by design (no laws coined, no math on slides).
+- **Minor 9** — the wall-crossing bullet (**Cross personal → team**) now carries a worded, no-math dip-before-climb mechanism (your own sessions speed up before the team's numbers move; the team's reviewing/sharing has to be rebuilt around the new speed, and the handed-over checks and skills are that rebuild). This is the J-curve / complementary-investment borrow the theory audit assigns to the-wall: [borrow:economics] Paul David, "The Dynamo and the Computer" (1990, AEA P&P); Brynjolfsson, Rock and Syverson, "The Productivity J-Curve" (AEJ: Macroeconomics, 2021). Both verified live 2026-07-03 — stamps below. Body stays unnamed and number-free by design (no laws coined, no math on slides).
 - **Minor 10** — the test-learn-encode bullet now carries the unnamed variation-selection-retention clause (sessions generate variants, the eval selects, the memory retains); "eval" is earned earlier in this lecture on the Verification slide. Attribution stays maintainer-side: Donald Campbell's blind-variation-and-selective-retention (BVSR) is the shape; body names zero new laws, per the dose verdict above.
 
 <!-- backing -->
 
 Claims
+- `soil-line` · vision · "act under uncertainty · competence sets the ceiling · cross personal → team" ← none-owed
 - `checking-loop-drawn-solid` · vision · "A loop made of checks that stand without you gets drawn solid" ← none-owed
 - `nothing-else-moved` · vision · "Nothing else moved. Same six phases, same loops, same wall at the team's edge." ← none-owed
 - `you-drew-a-control-loop` · borrowed · "That is **feedback control** around a non-deterministic agent" ← cultural-vocab
@@ -242,7 +244,7 @@ Claims
 - `ratio-runs-near-80-20` · detail · "Roughly 80 percent planning and review, 20 percent execution: compound engineering's posture" ← every-compound-80-20 — body attributes the ratio to the posture's one named shop, which is what the CAVEAT stamp licenses; not a field rate.
 - `rule-in-context-is-not-rule-in-output` · vision · "**A rule in context is not a rule in the output.**" ← none-owed
 - `test-learn-encode-is-variation-selection-retention` · borrowed · "the sessions generate variants, the eval selects, the memory retains" ← cultural-vocab
-- `a-move-counts-when-it-crosses-the-wall` · vision · "**A move counts when it crosses the wall.**" ← none-owed
+- `cross-personal-to-team` · vision · "**Cross personal → team.**" ← none-owed
 - `dip-before-climb` · detail · "Your own sessions speed up before the team's numbers move, because the team's way of reviewing and sharing has to be rebuilt around the new speed first" ← david-dynamo-1990, brynjolfsson-j-curve
 - `harness-enables-surround-decides` · vision · "What a session gets right without you is set by what has accumulated around it" ← none-owed
 - `same-model-same-harness-two-agents` · vision · "The M4 send-off and the M5 re-send: same model, same harness, two different agents." ← none-owed

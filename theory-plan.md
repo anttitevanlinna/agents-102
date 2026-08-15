@@ -39,6 +39,7 @@ Tags: `[borrow:X]` imported parent field · `[rsch:Ln]` continuous-research, evi
 - Capability is forged *only* by deliberate action under uncertainty → learning → capability → braver action. **Capability is a flow, not a stock.**
 - Competence is the gate and can't be outsourced; practice before platform; the org's **learning rate is the ceiling**.
 - A move only counts when it **crosses the wall** (personal → team → company); give it away so it compounds.
+- Student-facing form of the three (the soil strip, all four map copies; Antti-worded 2026-08-15): *act under uncertainty · competence sets the ceiling · cross personal → team*. "Gate" and "a move counts" stay design-side — *gate* is M5-earned vocabulary, *counts* is scorekeeper register; the strip speaks standing orders, not observations.
 
 ### 1 · Laws of the loop — how a single agent loop behaves and fails (the "physics")
 - ★ The agent loop **is a closed-loop controller** (act→observe→correct). No feedback signal (test/eval/compiler) → it diverges. `[borrow:control theory]` `[curr:the-agent-loop]`

@@ -92,6 +92,7 @@
 </g>
 <text x="306" y="522" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" letter-spacing="2" fill="#786c56">NEAR HALF · DONE: INTENT · CONTEXT · WORK</text>
 <text x="800" y="522" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" letter-spacing="2" fill="#8a3a2a">THE FAR HALF · AHEAD</text>
+<text x="600" y="534" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="13.5" fill="#786c56">the soil it grows in: act under uncertainty · competence sets the ceiling · cross personal → team</text>
 </svg>
 </figure>
 
@@ -113,7 +114,7 @@
 
 <!-- maintainer -->
 
-**Map figure woven in (2026-07-10, Antti-directed "complete the text→pictures replacement", unreviewed):** the ASCII banner (near half done ▶ VERIFICATION ─▶ ABSORPTION ─▶ OUTCOME) replaced by the engine-map SVG, derived from `the-whole-map.md`'s canvas per the `the-map-filled-in.md` recipe. Edits vs the parent: ids re-prefixed `wm-` → `fh-` (theory handbook renders multiple copies on one page; duplicate ids break defs); a cream veil rect (opacity 0.55) hazes the NEAR half (x≤600, below the phase-header row — all six phase names stay legible); the three seam-straddling Work labels (build loop, agent's own loop, prototyping ghost — tags + subs) re-emitted above the veil with a cream erase-stroke at `fill-opacity="0.45"` so each reads uniformly dimmed instead of half-cut by the veil edge (caught on Chrome render 2026-07-10); two caption strips added at y=522: `NEAR HALF · DONE: INTENT · CONTEXT · WORK` (veiled side) and `THE FAR HALF · AHEAD` (lit side) — carrying the deleted ASCII's two text payloads. The checking loop stays a dashed ghost with its `by hand for now` sub. Figure block is blank-line-free ON PURPOSE (marked terminates raw-HTML on an interior blank line). If the M2 parent canvas changes, re-derive this copy. Re-audit before ship.
+**Map figure woven in (2026-07-10, Antti-directed "complete the text→pictures replacement", unreviewed):** the ASCII banner (near half done ▶ VERIFICATION ─▶ ABSORPTION ─▶ OUTCOME) replaced by the engine-map SVG, derived from `the-whole-map.md`'s canvas per the `the-map-filled-in.md` recipe. Edits vs the parent: ids re-prefixed `wm-` → `fh-` (theory handbook renders multiple copies on one page; duplicate ids break defs); a cream veil rect (opacity 0.55) hazes the NEAR half (x≤600, below the phase-header row — all six phase names stay legible); the three seam-straddling Work labels (build loop, agent's own loop, prototyping ghost — tags + subs) re-emitted above the veil with a cream erase-stroke at `fill-opacity="0.45"` so each reads uniformly dimmed instead of half-cut by the veil edge (caught on Chrome render 2026-07-10); two caption strips added at y=522: `NEAR HALF · DONE: INTENT · CONTEXT · WORK` (veiled side) and `THE FAR HALF · AHEAD` (lit side) — carrying the deleted ASCII's two text payloads. The checking loop stays a dashed ghost with its `by hand for now` sub. The soil strip (parent's bottom-center italic line, y=534) paints last, above the veil: the soil stays lit in both halves, and a re-derive must keep it last in element order. Figure block is blank-line-free ON PURPOSE (marked terminates raw-HTML on an interior blank line). If the M2 parent canvas changes, re-derive this copy. Re-audit before ship.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** container lecture, bullets kept on all three slides; bold reduced to the three phase-name sub-spans where each govern-bullet opens — **Verification** · **Absorption** · **Outcome**. Everything else de-bolded (both map-reveal bullets, the long-running lead, the whole un-packaged-run slide). ASCII fence untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
@@ -139,6 +140,7 @@
 Format → `curriculum/backing-format.md`. Figure provenance: derived from `the-whole-map.md`'s canvas — if that parent changes, re-derive. Sibling copies: `the-loop-half-filled.md`, `the-map-filled-in.md`.
 
 **Claims**
+- `soil-line` · vision · "act under uncertainty · competence sets the ceiling · cross personal → team" ← none-owed
 - `near-half-behind-you` · vision · "The near half is behind you. Intent, Context, Work" ← none-owed
 - `long-running-is-not-more-of-the-same` · vision · "When the agent runs for an hour without you watching, that quick feedback goes quiet." ← none-owed
 - `verification-tests-result` · detail · "**Verification** tells you whether the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it." ← osmani-outer-loop

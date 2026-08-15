@@ -12,6 +12,8 @@ This session shows how the agent handled your task and codebase.
 
 **Current shape (2026-08-14, Antti-directed):** one slide + one kicker. The full three-problem menu stays in `reading-the-return.md`, which is reprojected when M5 opens; it is not duplicated here. Context-window handling now lives beside durable state in the M4 closer. This lecture holds only the diagnostic stance that hands the room into the exercises.
 
+**Filename is the module-mood name — accepted residue (Antti 2026-08-15).** The file no longer teaches contrast by name; H1 and content are the diagnostic stance. "Learning through contrast" is M5's mood target, which this lecture opens. A rename costs a build-chain sweep (~35 refs, including eval-instance filenames) plus a full re-judge for zero student-visible change — students see the H1, never the slug. Piggyback a rename only on a real content edit that stales the pins anyway.
+
 **Quality:** compendium-audited 2026-08-15 (writing@0774e2f story@0774e2f technical@1c765f2 behavior@1c765f2 pedagogy@0774e2f strategy@1c765f2 slides@0774e2f)
 - judges @0774e2f: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 **Word count:** ~100 words body.

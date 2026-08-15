@@ -7,7 +7,7 @@ Steer your long session. You can't stand over it hour by hour, so the steering g
 
 Walk in with the un-packaged send-off artefact. Stopped, finished, ran out of credit, doesn't matter.
 
-Optional prep while the un-packaged session is still going: read [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md); watch Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich); read [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md); read Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).
+Optional prep while the un-packaged session is still going: read [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md); watch Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich); read [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md); read [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -79,7 +79,7 @@ Come to Module 6 without the packaged session and you'll have one session to rea
 
 Optional.
 
-**Read,** Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it). Klaassen runs the verifier 10 consecutive times before trusting it, and uses per-feedback specialised agents in parallel to triage review. Reliability is a number you measure, not a vibe you sense, and one verifier can become a panel. You'll recognise both in your own artefacts.
+**Read,** Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it). He runs the verifier 10 consecutive times before trusting it, and uses per-feedback specialised agents in parallel to triage review. Reliability is a number you measure, not a vibe you sense, and one verifier can become a panel. You'll recognise both in your own artefacts.
 
 **Read,** Lucas F. da Costa, [Backpressure Is All You Need](https://www.lucasfcosta.com/blog/backpressure-is-all-you-need) (May 2026). Da Costa follows the word from flow systems into agent work: when generation outruns judgment, the human becomes the limiting stage. Module 6 picks up the design question: which checks belong inside the workflow so the session does not wait for your read at every seam?
 
@@ -119,8 +119,8 @@ describes the artifact and hands the attention decision to the student — do no
 scheduling ("come back later", "read them after"). Trainer sibling in `trainer-modules.md` M5 says land the
 header and handle per slide, never read bullets aloud. Two registers, one instruction; keep them in step.
 
-**Quality:** compendium-audited 2026-08-15 (writing@315cd5a story@315cd5a behavior@93bb807 pedagogy@315cd5a strategy@9c75ce2 slides@315cd5a)
-- judges @9c75ce2: writing PASS, story PASS, technical REVISE (1/1-see-instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** sim-passed 2026-08-15 (writing@dccde3d story@dccde3d technical@dccde3d behavior@93bb807 pedagogy@dccde3d strategy@9c75ce2 slides@dccde3d)
+- judges @dccde3d: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @93bb807: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; see instances/ae101--m4-m5-m6.cross_module.json
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create

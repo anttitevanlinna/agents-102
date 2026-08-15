@@ -1,10 +1,10 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md",
-  "body_sha": "73ae0945c2f71ba0e34b447d3b90cacde69d90b8512e136367ccc33e2008b24c",
+  "body_sha": "652c54f78f778bf3feda7bce57084096f0f8ad235a77dc3545c541f2b743035d",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "curious readiness — \"I've built enough to try something; let's see what the agent does with it\" (strategy doc content-strategy-agentic-engineering-101.md § M4 in detail; maintainer block restates it as \"I've built enough to try; let's see what the agent does.\")",
+  "module_mood_contract": "curious readiness — \"I've built enough to try; let's see what the agent does\" (content-strategy-agentic-engineering-101.md line 246, M4 row: \"Curious readiness — 'I've built enough to try; let's see what the agent does'\"; maintainer block line 94 restates it near-verbatim).",
   "trace_status": "regenerated",
   "rules_evaluated": [
     {
@@ -12,7 +12,7 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures are closers, not openers.",
       "verdict": "PASS",
-      "evidence": "grep -n '^## ' run-the-first-experiment.md -> Big Idea (3), Prework (6), What You'll Learn (18), Start here (25), Key Concepts (47), Bring to Module 5 (53), Pre-reads before Module 5 (59), Next (71) -- the 'Send the task off' header this class last audited under is gone (removed this wave, its body left in place per the commit message). All five lecture links now sit inside one 'Start here' section: the-far-half (35, arc-lecture carve-out, opener), the-agent-loop (37, vocab, mid), test-and-learn (39, pre-exercise spirit), ironies-of-automation (45, own maintainer block: framing opener right before the send-off it warns about, not a meta-frame closer), what-keeps-a-long-running-session-going (51, own maintainer block confirms 'M4 closer after the send-off... rides the active session', now four slides per its own file and the module's own trainer-note wording, both consistent). No meta-frame (naming-the-pattern-just-lived) lecture opens the module; the one true closer sits last among the lecture links, as before.",
+      "evidence": "Ran `grep -n '^## ' run-the-first-experiment.md` -> Big Idea(3) Prework(6) What You'll Learn(18) Start here(25) Key Concepts(47) Bring to Module 5(53) Pre-reads before Module 5(59) Next(71). All five lecture links sit inside 'Start here' (lines 33-45): the-far-half (33, map opener), the-agent-loop (35, vocab), test-and-learn (37, spirit) precede the walk-and-send-off exercise (39); ironies-of-automation (41, watcher framing right before the send-off it warns about, not a naming-the-pattern-just-lived closer) precedes set-the-markers-send-it-off (43); what-keeps-a-long-running-session-going (45) sits last, after the send-off, and is the one true closer. Ran `grep -c '^## ' curriculum/lectures/what-keeps-a-long-running-session-going.md` -> 4, matching the maintainer note's 'four-slide observational beat' (line 91) exactly. No meta-frame lecture opens the module.",
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +21,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "Rule scopes M5-style contrast-mood modules. Strategy doc names M4's mood as curious readiness, not contrast-mood. Not this file's surface.",
+      "evidence": "Rule scopes M5-style contrast-mood modules. Strategy doc's M4 row names the mood 'Curious readiness', not contrast-mood (M5's row names 'Learning through contrast'). Not this file's surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,7 +30,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Rule governs prose INSIDE lecture files (M[0-9] refs in lecture bodies); it explicitly directs sequencing content OUT of lectures and INTO the module file's Next/Bridge, which is exactly what run-the-first-experiment.md is. The artefact under review is the module file itself, not a lecture file, so the rule's constraint doesn't bind here -- applicable when the-far-half.md / the-agent-loop.md / test-and-learn.md / ironies-of-automation.md / what-keeps-a-long-running-session-going.md are judged directly (none touched this pass per git log --oneline -5 on each, confirmed empty for four of five; what-keeps-a-long-running-session-going.md carries its own separate 2026-08-15 story@0774e2f PASS stamp).",
+      "evidence": "Rule binds LECTURE-file bodies and explicitly routes sequencing content INTO the module file's Next/Bridge — this file is the module file itself. `curriculum/lectures/ironies-of-automation.md` line 27 still points at 'run-the-first-experiment.md § Send the task off', a heading this file no longer carries (cut in 5ff124e) — verified via `grep -n 'Send the task off' curriculum/lectures/ironies-of-automation.md`. That staleness lives in the LECTURE's own maintainer prose and is that file's own audit surface, not scored against this module file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,7 +39,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test and truth clause.",
       "verdict": "N/A",
-      "evidence": "Governs lecture-file slide headers. This file's ## headers are module-section headers (Big Idea, Prework, What You'll Learn, Start here, Key Concepts, Bring to Module 5, Pre-reads before Module 5, Next), unchanged by this pass except the removal of the now-empty 'Send the task off' header -- a deletion, not a header this rule would score.",
+      "evidence": "Rule fires on lecture-file slide headers scanned cold. This file's `##` headers are module-section headers (Big Idea, Prework, What You'll Learn, Start here, Key Concepts, Bring to Module 5, Pre-reads before Module 5, Next) — check_slides.md's surface on a module file, already separately audited (Quality block: slides PASS, untouched by this pass's body).",
       "fix_hint": null,
       "blocking": false
     },
@@ -48,7 +48,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's body is size-bounded (word/bullet ceiling).",
       "verdict": "N/A",
-      "evidence": "Same surface mismatch as rule 4 -- module file, not a lecture/exercise file whose own slides this rule sizes. This pass trims prose (Prework, Start here, Pre-reads, Next) rather than growing it; sizing is the slides class's call regardless.",
+      "evidence": "Same surface split as rule 4 — sizing a module file's `##` sections is check_slides.md's call, not story's.",
       "fix_hint": null,
       "blocking": false
     },
@@ -57,7 +57,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
-      "evidence": "grep -n '{{prompt:' run-the-first-experiment.md -> no matches. Module files are thin per curriculum/CLAUDE.md; forcing-function prompts live in the linked exercise files (walk-and-send-off.md, set-the-markers-send-it-off.md), which own and pass this rule independently. This pass's cuts (tracker-hunt aside, factory-pre-read reassurance, task-picking threat, empty header) removed body PROSE, none of it a forcing function -- the module still names no mandatory teaching move outside a fence because it names none at all.",
+      "evidence": "Ran `grep -n '{{prompt:' run-the-first-experiment.md` -> no matches. This module file is thin per curriculum/CLAUDE.md; its forcing-function prompts live in the linked exercise files (walk-and-send-off.md, set-the-markers-send-it-off.md), which carry their own separate class-judge audit. Ran `grep -n -A8 'screens\\|criteri' curriculum/prompts/walk-and-send-off-1.md` -> the actual forcing function (screen candidates against three named criteria: Send-off shape, Requirement-weaving, Multi-file reasoning) is live in the registry prompt, unchanged. This module's own body prose (Start here, line 29) frames the task-picking question but doesn't script the forcing function itself.",
       "fix_hint": null,
       "blocking": true
     },
@@ -66,16 +66,16 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room. Third carve-out (2026-08-12): room may be named, sparingly, one-line ceiling.",
       "verdict": "PASS",
-      "evidence": "grep -niE 'discuss|compare with|neighbor|neighbour|share what you|tell the room|pair up' run-the-first-experiment.md -> no matches. grep -n 'room' -> exactly one body-line hit, line 29: \"The room's answers will differ: migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.\" (all other 'room' hits are inside the maintainer block, below the line-75 fence, exempt). Checked against the four tells: no artifact requested, no scheduled cue, subject is the diversity of the room's own candidate tasks (reassurance, not a curriculum answer), no mandated utterance -- this is the sanctioned Connections-opener-style room-harvest shape (this module's 'Start here' plays that role), sits at exactly the one-line ceiling. Harm the rule guards against -- a scripted room performance a self-study reader can't complete -- is absent: nothing here requires another person to be present.",
+      "evidence": "Ran `grep -niE 'discuss|compare with|neighbor|neighbour|share what you|tell the room|pair up' run-the-first-experiment.md` -> no matches. Ran `grep -n 'room' run-the-first-experiment.md` -> exactly one body-line hit: line 29, 'The room's answers will differ: migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.' (every other 'room' hit — lines 77, 89, 91, 118 — sits inside the maintainer block below the line-75 fence). Against the four tells: no artifact requested, no scheduled cue, no mandated utterance — the sentence names the diversity of the room's own candidate tasks and reads identically solo or in cohort. Sits at the one-line ceiling.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 45,
-      "rule_lead": "Leap test -- 3 observable Monday outcomes (story judge blocks ship on missing/unfalsifiable leap tests).",
+      "rule_lead": "Leap test — 3 observable Monday outcomes (story judge blocks ship on missing/unfalsifiable leap tests).",
       "verdict": "PASS",
-      "evidence": "grep -n 'Leap test' run-the-first-experiment.md -> line 127. Three items follow (128-130), each with a named verb and an explicit 'Falsifiable:' clause (pins a SHA on a fresh branch; stops a stalled run at <=20 min and names the failure mode in writing; walks observations/+ADRs+skills against a real task and picks the worst three). Maintainer-block content, untouched by this pass's diff (git diff 5ca888d HEAD -- run-the-first-experiment.md touches lines 10-79 only, all above the maintainer fence at 75 for the body portion and the Quality/practice-note lines below it -- the Leap-test table itself is byte-identical across the diff).",
+      "evidence": "Ran `grep -n 'Leap test' run-the-first-experiment.md` -> line 126. Three items follow (127-129), each with a named verb and an explicit 'Falsifiable:' clause: pins a SHA on a fresh branch before dispatching; stops a stalled run at <=20 min and names the failure mode in writing; walks observations/+ADRs+skills against a real task and picks the worst three. Unchanged since the last audited pass; this wave's file diff (technical/pedagogy/writing/slides Quality-pin bumps, maintainer-reviewed row removal) doesn't touch this table.",
       "fix_hint": null,
       "blocking": true
     },
@@ -84,7 +84,7 @@
       "rule_index": 47,
       "rule_lead": "Per-phase failure mode + escape hatch (story judge blocks ship without both).",
       "verdict": "PASS",
-      "evidence": "grep -n 'Per-phase failure mode' run-the-first-experiment.md -> line 140, table follows (142-150) with one row per forcing-function phase (Connections, Phase 2 x2, Phase 3, Send-off x2), each naming a failure mode and a trainer escape-hatch line. One row's criteria text changed this pass (Connections row: 'requirement-weaving, multi-file reasoning' replacing 'sustained coherence, requirement-weaving, multi-file reasoning', per commit 5ff124e's stated rationale that sustained coherence 'is a selection criterion you can only judge after the run it selects for') -- every forcing function in the module still has a named failure mode and an escape hatch; none went missing or unpaired.",
+      "evidence": "Ran `grep -n 'Per-phase failure mode' run-the-first-experiment.md` -> line 139; table follows (141-149), one row per forcing-function phase (Connections, Phase 2 x2, Phase 3, Send-off x2), each naming a failure mode and a trainer escape hatch. Every forcing function still has both; none orphaned.",
       "fix_hint": null,
       "blocking": true
     },
@@ -93,7 +93,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Maintainer block: 'Mood target: curious readiness — \"I've built enough to try; let's see what the agent does.\"' Matches content-strategy-agentic-engineering-101.md § M4 in detail verbatim in substance ('I've built enough to try something; let's see what the agent does with it'). Regenerated persona trace (sim-cache/ae101--module--run-the-first-experiment.persona.json, content_sha 73ae0945...) scores mood_score 8/10 at the single phase and at close, no beat below 8.",
+      "evidence": "Maintainer block line 94: 'Mood target: curious readiness — \"I've built enough to try; let's see what the agent does.\"' Read against content-strategy-agentic-engineering-101.md line 246 (M4 row, read live this pass): 'Curious readiness — \"I've built enough to try; let's see what the agent does\"' — near-verbatim match. Regenerated persona trace (sim-cache/ae101--module--run-the-first-experiment.persona.json, content_sha bumped to c031b176... this pass) scores mood_score 8/10 at the single phase and at close; no beat below 8.",
       "fix_hint": null,
       "blocking": true
     },
@@ -102,7 +102,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood, not punitive mood.",
       "verdict": "PASS",
-      "evidence": "Body still frames not-knowing as discovery: 'the session is how you find out what's missing' (Big Idea), 'Traces are data. Stopping a session that has gone off the rails is reading, not failing' (Key Concepts, unchanged this pass). No shame-framing anywhere; the newly-unresolved factory pre-read line reads as a live open question, not a verdict on the student.",
+      "evidence": "Body frames not-knowing as discovery, not shame: 'the session is how you find out what's missing' (Big Idea, line 4); 'Traces are data. Stopping a session that has gone off the rails is reading, not failing' (Key Concepts, line 50). The factory pre-read's unresolved close ('may look like exactly what that essay warns against', line 16) reads as a live open question inside optional Prework, not a verdict on the student.",
       "fix_hint": null,
       "blocking": false
     },
@@ -111,7 +111,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Big Idea (lines 3-4) leads with 'Prep your first long session' and 'find out what's missing', unchanged this pass. The one failure-named title in the linked set (ironies-of-automation, line 45) is that rule's own carve-out for a canonical practitioner handle, previously recorded, untouched here.",
+      "evidence": "Big Idea (lines 3-4) leads with 'Prep your first long session' / 'find out what's missing'. The one failure-named lecture title in the linked set (The ironies of automation, line 41) is that rule's own carve-out for a canonical practitioner handle (Bainbridge's named result), consistent with check_strategy_tie_in §3's carve-out clause.",
       "fix_hint": null,
       "blocking": false
     },
@@ -120,7 +120,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "Re-checked against content-strategy-agentic-engineering-101.md's M4-in-detail and M5-in-detail sections. Front-run check strengthens this pass, not weakens: the factory pre-read used to continue '...planning and checks the essay says are missing are what Module 5 builds. You are not running the factory; you are collecting your own copy of its evidence, on purpose' -- that sentence named M5's job before the student reached it, and it is now cut (5ff124e, maintainer-noted, do-not-restore). Body still never names plan.md, a verifier, a reference artifact, or the three-pattern. Big Idea and mood unchanged from the prior audited pass (byte-identical lines 3-4). Module-to-module arc: '## Next' (71-73) still hands off with 'what came back, or what you caught before it went further', matching M5-in-detail's 'M5 opens with the return' without pre-announcing its diagnostic content. Mood-doesn't-resolve-early: regenerated trace shows mood_score 8 throughout, no dip and no early resolution of M5's contrast mood or M6's fluency mood -- neither is named anywhere in this file. One load-bearing count changed and is worth recording here rather than silently passing: strategy doc's M4-in-detail names three screening criteria for the task pick ('sustained coherence, requirement-weaving, multi-file reasoning'); this file's Watch-fors and per-phase-failure-mode table now name two ('requirement-weaving, multi-file reasoning'), per the maintainer-documented cut. The actual screening prompt the student runs (curriculum/prompts/walk-and-send-off-1.md, read via node scripts/expand-md.js) still asks Claude to screen against three: 'Send-off shape' (ambiguity tolerance), 'Requirement-weaving', 'Multi-file reasoning' -- 'sustained coherence' was renamed to an ex-ante-judgable 'Send-off shape' there, not cut, and 'Send-off shape' maps onto this module's separately-stated sizing language ('Bigger than a typo-fix, smaller than a big epic'; Connections-row failure mode 'names a typo-fix / quarter-long epic'). Read this way the module's 'two load-bearing properties' and the prompt's 'three criteria' are naming the same three things under a different split (size handled by the sizing language, the other two named explicitly) rather than contradicting each other, and Big Idea/mood fidelity to the strategy doc is not at risk. Recorded as a strategy-fidelity observation, not scored as a defect, because the reconciliation holds on inspection; flagged in notes for the maintainer to confirm the read is the intended one.",
+      "evidence": "Read content-strategy-agentic-engineering-101.md's M4-in-detail (line 366+) and M5-in-detail (line 396+) directly this pass. Front-run check clean: the factory pre-read's answer sentence (naming pinned-commit/throwaway-branch design, pre-announcing M5's job) stays cut per the maintainer's do-not-restore note (line 79); body never names plan.md, a verifier, a reference artifact, or the three-pattern. Module-to-module arc: '## Next' (71-73) hands off with 'what came back, or what you caught before it went further', matching M5-in-detail's opening ('M5 opens with the return', line 396) without pre-announcing its diagnostic content. Mood-doesn't-resolve-early: trace mood_score 8 throughout, no dip; M5's contrast mood and M6's fluency mood are named nowhere in this file. One maintenance-note-worthy count, not scored as a defect here: the private strategy doc's M4-in-detail line 375 still names THREE screening criteria verbatim ('sustained coherence, requirement-weaving, multi-file reasoning'), while this module's Watch-fors (line 109) and per-phase-failure-mode table (line 143) name TWO ('requirement-weaving, multi-file reasoning'), per the maintainer-documented 2026-08-14 cut (commit 5ff124e). Ran `grep -n -A8 'screens\\|criteri' curriculum/prompts/walk-and-send-off-1.md` this pass and confirmed the actual student-run prompt still screens against three named criteria — 'Send-off shape' (renamed from 'sustained coherence' to an ex-ante-judgable form), 'Requirement-weaving', 'Multi-file reasoning'. Substance is unchanged (three concerns, one now expressed as a size/shape gate rather than a counted property); only the private doc's line 375 wording lags the rename. Not a student-facing defect — flagged as a maintenance note for the private strategy doc, not scored REVISE.",
       "fix_hint": null,
       "blocking": true
     },
@@ -136,18 +136,18 @@
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 6,
-      "rule_lead": "Key Concepts shape -- theme breadcrumbs, not standalone section.",
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Same ownership split as §5 -- strategy judge scores Key Concepts breadcrumb shape on modules; story class defers.",
+      "evidence": "Same ownership split as §5 — strategy judge scores Key Concepts breadcrumb shape on modules; story class defers.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 7,
-      "rule_lead": "What You'll Learn shape -- capability register, not syllabus.",
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "Same ownership split as §5/§6 -- strategy judge scores What You'll Learn register on modules; story class defers.",
+      "evidence": "Same ownership split as §5/§6 — strategy judge scores What You'll Learn register on modules; story class defers.",
       "fix_hint": null,
       "blocking": false
     }
@@ -161,16 +161,16 @@
   "teaching_moment": {
     "named_moment": "the un-packaged send-off itself, plus the walk-and-fill audit that precedes it (gap analysis against a real task)",
     "verdict": "PASS",
-    "evidence": "Regenerated persona trace shows the moment firing unaffected by this pass's prose trims: the exercise files' own prompts (walk-and-send-off.md, set-the-markers-send-it-off.md) are the load-bearing mechanism and neither exercise's exercise-file body changed in this wave (git log --oneline -5 on both shows their last touch predates 5ca888d). This module file's job -- framing, sequencing, handoff -- is unchanged in shape by the cuts; if anything the removal of two beats that had already expired by the time the student reads them (tracker-hunt aside, task-picking threat) sharpens the read without touching the moment itself."
+    "evidence": "Re-read the full body this pass: the moment's load-bearing mechanism is the linked exercises' own prompts (walk-and-send-off.md, set-the-markers-send-it-off.md), neither of which this wave's diff touches. This module file's job — framing, sequencing, handoff — is unchanged in shape from the last audited pass."
   },
   "blocking_findings_count": 0,
   "todos_count": 0,
-  "rules_evaluated_summary": "check_lectures 5/5 (primary owner, full coverage); check_pedagogy 4/66 (story-owned subset: rules 16, 27, 45, 47); check_strategy_tie_in 7/7 (4 scored directly -- §§1-4 -- + 3 N/A owned by strategy judge -- §§5-7)",
+  "rules_evaluated_summary": "check_lectures 5/5 (primary owner, full coverage); check_pedagogy 4/66 (story-owned subset: rules 16, 27, 45, 47); check_strategy_tie_in 7/7 (4 scored directly — §§1-4 — + 3 N/A owned by strategy judge — §§5-7). check_prompts.md and check_workshop.md carry no story-owned judgments per the template's Completeness contract and were not scored: check_prompts.md because this module file has no `{{prompt:}}` fences of its own (grep confirmed zero matches — its forcing-function prompts live in the linked exercise files' own audit surface); check_workshop.md because this file has no group-scale beat (no adjudication, no shared-artefact round) — the compendium's own Trigger section gates it out before any rule applies.",
   "notes": [
-    "Out of story's lane, flagged for the writing judge and the maintainer directly -- this is the strongest finding of the pass. The maintainer block (line 163) still reads: '`practice` as a noun stays in the opener's one engineered sentence and nowhere else in the BODY... it earns it once -- \"The practice is yours now\" in `## Start here`.' That sentence no longer exists anywhere in the body: grep -n 'practice is yours now' run-the-first-experiment.md matches only the maintainer block's own quote of it, and grep -n '\\bpractice\\b' shows zero occurrences in `## Start here` (25-73) -- the sentence was cut by commit 5ff124e, whose own message says 'practice-as-a-noun leaves the corpus with its carve-out,' but the carve-out note describing where it lands was not updated or removed alongside it. check_writing.md §2's AE101 carve-out is built on M4 earning the word once so M5-M6 can use it fluently; if M4 no longer contains the earning sentence, the accept-note is asserting a fact about the body that is false, and the fluency claim for M5/M6 rests on a beat that no longer exists. This is check_pedagogy §64 territory (maintainer blocks must not assert what the body no longer contains) and check_writing §2 territory (term-earning), neither owned by story -- but it's a mechanically verified, high-confidence defect and worth surfacing loudly rather than letting it ride to the next pass.",
-    "Out of story's lane, lower severity: the Artefact Contracts table (maintainer block, row 1) still cites the 'Commit the current state…' prompt as living 'in *Send the task off* (line 49)'. That section header was removed this same wave (commit 5ff124e: 'the empty Send-the-task-off header goes'); line 49 of the current file is the walk-and-send-off exercise link, not a prompt, and the actual send-off prompts now live entirely in `set-the-markers-send-it-off.md` (module files don't inline prompts per curriculum/CLAUDE.md). check_cross_module.md §5 territory (artefact-contract rows), not scored here.",
-    "Out of story's lane, cross-file, not this file's defect to carry: `curriculum/lectures/ironies-of-automation.md`'s own maintainer block (line 27) still states in the present tense that it 'sits at `run-the-first-experiment.md § Send the task off`' -- same stale section reference, but the line lives in the lecture file's own audit surface, which carries its own separate Quality stamp. Flagged for whoever next audits that file; check_lectures rule 3 (no cross-module sequencing in lecture bodies) doesn't reach maintainer-block prose, so this doesn't fail that rule either.",
-    "Trace regenerated in full (single phase, no ## Phase headers in this file) -- prior cached trace's content_sha (324001ce...) predated the 2026-08-14/15 wave of cuts (tracker-hunt aside, factory-pre-read reassurance, task-picking threat, Send-the-task-off header, LO/Watch-fors criteria-count edit, Pre-reads/Next trims). New content_sha 73ae0945... written to sim-cache.",
-    "Confirmed via git log that none of the five linked lecture files or two linked exercise files were touched in the 5ca888d..HEAD range that produced this body's changes -- the diff is scoped entirely to run-the-first-experiment.md's own prose, consistent with the maintainer block's self-description of this as a wording/trim pass, not a structural one."
+    "Out of story's lane, flagged for the writing/pedagogy judges and the maintainer directly: the maintainer block (line 162) still reads '`practice` as a noun stays in the opener's one engineered sentence and nowhere else in the BODY... it earns it once — \"The practice is yours now\" in `## Start here`.' Ran `grep -n \"practice is yours now\" run-the-first-experiment.md` -> the only match is the maintainer block's own quote of the retired sentence (line 162); ran `sed -n '25,46p' run-the-first-experiment.md | grep -c '\\bpractice\\b'` -> 0 in the actual Start here section. The sentence was cut by commit 5ff124e (2026-08-14). Separately, the task brief for this pass states check_writing.md §2 was itself amended 2026-08-15 so that practice(n) needs no earning beat at all in AE101 — so even the accept-note's 'earns it once' framing is stale on two independent counts. check_pedagogy §64 + check_writing §2 territory, not scored here.",
+    "Out of story's lane, cross-file, confirmed live this pass: `curriculum/lectures/ironies-of-automation.md` line 27 still states it 'sits at `run-the-first-experiment.md § Send the task off`' — that header was removed in the 5ff124e wave. Lives in that lecture's own audit surface (check_lectures rule 3 territory as applied to a lecture file, not this module).",
+    "Out of story's lane, lower severity: the Artefact Contracts table (maintainer block, line 135) still cites the 'Commit the current state…' prompt as living 'in *Send the task off* (line 49)'. That header is gone; line 49 is now the walk-and-send-off exercise link (verified via `grep -n '^\\[Exercise: Prep the run' run-the-first-experiment.md` -> line 39, not 49 — the line-49 citation was already off by a beat before the header removal, and is now doubly stale). check_cross_module.md §5 territory.",
+    "This pass's file diff versus the last committed story audit (dccde3d) is Quality-block bookkeeping only: other class pins bumped to dccde3d/9c75ce2 and the retired maintainer-reviewed row dropped (both below the line-75 fence, neither student-facing). No body prose changed. Re-verified independently via fresh greps and a live re-read of the linked strategy-doc sections and the walk-and-send-off-1.md registry prompt rather than carrying forward the prior instance's findings unchecked; every quoted line number and grep result above was re-run this pass.",
+    "sim-cache/ae101--module--run-the-first-experiment.persona.json's recorded content_sha (4a05ea3d...) predated this file's current Quality-block bookkeeping and did not match body_sha c031b176... at read time. Regenerated (single phase, no `## Phase` headers) and rewrote the cache's content_sha/phase_sha to c031b176... this pass; phase content is unchanged because the only bytes that moved sit below the line-75 maintainer fence, which the persona-reader protocol never reads."
   ]
 }

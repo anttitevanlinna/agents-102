@@ -80,8 +80,8 @@ The next module opens with what came back, or what you caught before it went fur
 
 **The nudge-count accept-note lives with the line, in `exercises/set-the-markers-send-it-off.md`.** *"Past ten or so, you've become the agent"* moved into that exercise when the send-off mechanics were extracted (2026-08-12); the §16 boundary argument defending it travelled with it and is stated there once. This block used to carry a byte-identical copy plus a second paraphrase of the same call — three copies of one decision, two of them defending a sentence this file no longer contains. Both are cut (2026-08-13, `check_pedagogy.md` §64: maintainer blocks point, they do not restate). Do not re-add: a judge auditing this file never reads the exercise body, so it cannot flag the line from here.
 
-**Quality:** compendium-audited 2026-08-15 (writing@5ca888d story@5ca888d technical@9c75ce2 behavior@93bb807 pedagogy@5ca888d strategy@76a630d slides@5ca888d)
-- judges @9c75ce2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-15 (writing@dccde3d story@dccde3d technical@9c75ce2 behavior@93bb807 pedagogy@dccde3d strategy@dccde3d slides@dccde3d)
+- judges @dccde3d: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @93bb807: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; see instances/ae101--m4-m5-m6.cross_module.json
 
 **Meta (trainer):**
@@ -159,6 +159,6 @@ The next module opens with what came back, or what you caught before it went fur
 - **Gap analysis** — generic business-analysis framework; no single attribution needed. The Phase 2 audit is this move and the body never names it: the label is universally known and adds nothing the ranked list does not already do.
 - **Compound engineering** — Kieran Klaassen. Named on the student surface only as a Module 5 pre-read; this module deliberately runs no compound step, so the loop is carried rather than recited.
 
-**`practice` as a noun stays in the opener's one engineered sentence and nowhere else in the BODY.** `check_writing.md §2`'s AE101 carve-out earns the word at M4, and it earns it once — *"The practice is yours now"* in `## Start here`. Every other beat says *move*. Scope is the body, not the file: this block itself uses the word freely (*"ambition grows with practice"*), and maintainer prose is exempt from §2 term-earning. A pedagogy judge read the old wording literally on 2026-08-13 and filed the block's own sentence as a contradiction — an accept-note that overstates its scope buys a finding every pass.
+**`practice` as a noun — ruling updated (Antti 2026-08-15): OK in AE101 body, sparingly; no earning beat owed (`check_writing.md §2`).** The old accept-note defended *"The practice is yours now"* in `## Start here`; that sentence is cut and the body now uses the noun zero times. Maintainer prose was always exempt (*"ambition grows with practice"* above is fine). If the noun returns to body, sparingly is the bar, not an engineered earning sentence.
 
 **Every in-source cross-doc link uses the bare `trainings/agentic-engineering-101/…` form**, never a depth-counted `../../` prefix, per `module-shape.md`. The renderer rewrites either, so this is lint-level and invisible at delivery, which is exactly why it drifts.

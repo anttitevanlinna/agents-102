@@ -128,8 +128,6 @@ One structural note falls out of the same hunt:
 
 - **Breadcrumb compliance is unmeasured and probably thin.** `check_strategy_tie_in.md` §6 asks 1–3 bullets per module to close on a 5–8 word clause carrying a strategic theme, varied between adjacent modules. It is deliberately not greppable (the `**Remember:**` wrapper was swept corpus-wide in `a90c9ec`), so nothing checks it and no one has read for it since. **Action:** one pass across all six, reading for whether each section lands on a memorable clause at all, and whether adjacent modules are repeating a theme. Do this AFTER the placement and reminders-only passes — a breadcrumb on a bullet that shouldn't exist makes the section worse (§6's own rule).
 
-### M4 read 2026-08-12
-
 ---
 
 **Canonical home:** this file. Module files carry zero TODOs, all pre-cohort open items route here.

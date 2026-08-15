@@ -24,7 +24,7 @@ Open a fresh Claude Code session in the Module 5 worktree, `../<repo>-m5`. Both 
 
 You walk in holding two sessions of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-send. The contrast across two sessions is the material. One session gave you a failure mode to name. Two sessions give you gaps the three-pattern itself didn't anticipate, and a shape for what to do about each one.
 
-> **Packaged session thin or missing?** You can still rescue it. If the M5 session is alive but stalled, nudge it once; a *"continue"*-prompt is usually enough. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while you read on. M6 starts by reading; before it writes, decide whether to wait, stop M5, or accept the partial session as the artefact. Skip the opening lecture. Practice is core. Lectures can be read later.
+> **Packaged session thin or missing?** You can still rescue it. If the M5 session is alive but stalled, nudge it once; a *"continue"*-prompt is usually enough. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while you read on. M6 starts by reading; before it writes, decide whether to wait, stop M5, or accept the partial session as the artefact. If the room starts the lecture while you are still getting a session going, stay with the rescue and read it afterwards.
 
 > **Just can't get the M5 session working?** You lose a bit of value but you can still do this module's exercises. Despair not.
 
@@ -73,6 +73,8 @@ Keep on learning and sharing.
 Antti
 
 <!-- maintainer -->
+
+**The rescue callout's lecture line is triage, not a ranking of lectures against exercises (reworded 2026-08-15, Antti).** It read *"Skip the opening lecture. Practice is core. Lectures can be read later."* — right instruction, wrong scope: a doctrine about all lectures, stated to the one student least able to judge it, in a training whose theory layer is a selling point. It also sat four sentences after *"let it catch up while you read on"*, so the same callout said read and skip. Now scoped to the moment: *"If the room starts the lecture while you are still getting a session going, stay with the rescue and read it afterwards."* The room-parallelism is the point — others sit the lecture while this student fixes a session — so keep the line, and keep it conditional. Do not restore the general claim, and do not cut the beat: a stranded student needs permission to spend room time on the rescue.
 
 
 **Capstone-close sign-off — deliberate exception to `check_writing.md` rule 6** (creator-name ban). The `## Next` section closes with a personal sign-off from the curriculum author (the bare-name line after *"Keep on learning and sharing."*). M6 is the AE101 core arc's final module; the close earns the human voice that the practitioner-fluency mood warrants. Per the rule's second exception (added 2026-05-03), the signature is in-scope-by-design for capstone-module closes. Future judges should not re-flag.

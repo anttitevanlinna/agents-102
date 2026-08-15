@@ -14,7 +14,7 @@
 
 *5 min*
 
-- Bring a task that spans a few files, with enough execution depth to make plan mode worth using. A feature slice, a small migration, a targeted refactor: something where touching the wrong file matters. A one-line fix is too small for plan mode; a refactor whose outcome you can't hold in your head is too big.
+- Bring a task that spans a few files, with enough execution depth to make plan mode worth using. A feature slice, a small migration, a targeted refactor: something where touching the wrong file matters. **A one-line fix is too small for plan mode; a refactor whose outcome you can't hold in your head is too big.**
 - If nothing fits, ask Claude to surface three candidates from recent issues, PRs, or TODO comments. Pick the one you'd ship today if you had an hour.
 
 ## Phase 2: Enter plan mode and ask for the plan

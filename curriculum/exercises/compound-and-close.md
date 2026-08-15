@@ -39,7 +39,7 @@ Ask Claude to sweep the session for anything earned since the first compound and
 
 {{prompt:compound-and-close-4}}
 
-> **The escape hatch is deliberate.** The closing `or "nothing new" if nothing did` allows Claude to report an empty sweep. Ask only what it added, and the agent finds something to have added.
+> **The escape hatch is deliberate.** The closing `or "nothing new" if nothing did` allows Claude to report an empty sweep. Ask only what it added, and the agent finds something to have added. If a line it wrote reads generic, ask which session moment earned it; with no moment to point at, have Claude take the line back out of the file.
 
 ## What you built
 

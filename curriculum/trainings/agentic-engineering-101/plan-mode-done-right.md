@@ -56,12 +56,11 @@ Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble i
 
 ## Key Concepts
 - Structure is persuasive. A 7-item plan with headers looks like a decision even when it's a draft. Assume about 10% of it is wrong and go find which part.
-- One kind of scrutiny catches one kind of miss; a human read and an agent's walk-down of unresolved branches catch different things, and the gap between them is where the plan-reading skill lives
-- Assumption-silent isn't assumption-free. Every plan assumes something, and the good ones say what. A verification step that could actually fail is a gate; one that always passes is decoration.
-- A plan with a specific file list has made decisions; a plan without one hasn't. The deferred ones get made mid-run, where a wrong call propagates across files and tangles.
-- You don't have to execute a plan to know it's good. We knew that long before agents; the skill is old, only the surface is new.
-- A rule that doesn't load doesn't exist. Where you put it decides when it fires: some paths load every session, some only when a prompt names them.
-- Fixing the plan is the first loop. Changing the rule that shaped the plan is the second, and Argyris called that double-loop learning. A session that ends with a sharpened rule has run both.
+- A human read and an agent's walk-down catch different misses. The gap between them is where the plan-reading skill lives.
+- Assumption-silent isn't assumption-free: every plan assumes something, the good ones say what. A verification step that could fail is a gate; one that always passes is decoration.
+- A plan with a specific file list has made decisions; a plan without one hasn't. The deferred ones get made mid-run, where a wrong call tangles across files.
+- You don't have to execute a plan to know it's good. The skill is old; only the surface is new.
+- A rule that doesn't load doesn't exist, and where you put it decides when it fires. Fixing the plan is the first loop; changing the rule that shaped it is the second, which Argyris called double-loop learning.
 
 <!--flag:module:earn-the-trust-->## Pre-reads before Module 3
 
@@ -77,15 +76,11 @@ Optional. The thinking Module 4 asks you to do before you step away from a sessi
 
 ## Next
 
-<!--flag:module:earn-the-trust-->At M3 you point the same move at a feature you're shipping: curated reads that walk the branches you can't see, and the call they surface written down in your repo where a teammate finds it before they have to ask.
-
-<!--/flag:module:earn-the-trust--><!--flag:module:earn-the-trust-->Ask Claude where it wrote the plan file, note the path; M3 reads it. <!--/flag:module:earn-the-trust--><!--flag:no-module:earn-the-trust-->
+<!--flag:module:earn-the-trust-->At M3 you point the same move at a feature you're shipping, and the call it surfaces gets written down where a teammate finds it. Note the plan file path on your way out: M3 reads it, against a task with an external or user-facing surface.<!--/flag:module:earn-the-trust--><!--flag:no-module:earn-the-trust-->
 
 **Pick one scoped task you'd send off rather than nudge bit by bit: a real slice. Bigger than a typo-fix, smaller than an epic.**
 
-The next sitting opens on that task and spends most of its time walking your system against it. Come without one and you'll be picking while the walk is already underway. Your call.<!--/flag:no-module:earn-the-trust--><!--flag:module:earn-the-trust--> M3 runs security skills against the M2 task; if it doesn't have an external or user-facing surface, swap to something from your backlog that does.
-
-Come to Module 3 without that noted path and a task to point the skills at, and you'll be scrambling to reconstruct them while the threat walk is already running. Your call.<!--/flag:module:earn-the-trust-->
+The next sitting opens on that task and spends most of its time walking your system against it. Come without one and you'll be picking while the walk is already underway. Your call.<!--/flag:no-module:earn-the-trust-->
 
 <!-- maintainer -->
 

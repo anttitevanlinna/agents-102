@@ -2,10 +2,10 @@
   "class": "technical",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
   "instanceSlug": "ae101--module--learn-from-the-test",
-  "body_sha": "3abe725c0488de588d13b4c2e78b58cf72dc653c52a9d7f5fb996fabd3c220c4",
-  "verdict": "REVISE",
+  "body_sha": "a0fa7f0a7ec7c808af905edb155a386620dd3540220d2e440498bfd4645977d0",
+  "verdict": "PASS",
   "training": "ae101",
-  "summary": "Re-fire against the standing REVISE. Prior instance's two findings (rule 11: Cherny-claim stamp gap + §11a arithmetic; rule 2: §2a durable-account misclassification on the Klaassen practice claim) both STANDING on the current body (body_sha changed only because the maintainer block gained four unrelated 2026-08-14/15 entries — Key Concepts lock, multisession-permission line, dense-slides note, nag-beat correction — none of which touch the source-verification block, line 40, or line 82). Re-verified fresh, not carried: (a) `grep -c worktree curriculum/lectures/what-packaging-is.md` = 0, which proves the file's own delegation line ('Ronacher and Cherny are cited via lectures/what-packaging-is.md; stamps live there') is factually FALSE for the Cherny claim actually used at line 40 — that lecture's only Cherny stamp (kim-on-cherny) backs a different claim (three stop-hook shapes), not worktree-productivity. The correct home for the worktree claim's stamp is `curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md:105-106` (reached via M1's getting-going.md citation) and a third independent stamp exists at `curriculum/exercises/open-the-side-quest.md:100` — neither is what this file's delegation note names, so a reader following the note lands on the wrong file's wrong stamp. (b) Recomputed all 4 stamp-arithmetic lines against today (2026-08-15): L177 (Klaassen compound-engineering) true due 2026-08-09 is now 6 days past and still reads due:2026-11-25/OK; L178 (Klaassen my-ai-had-already, on-clock per §2a since it backs a present-tense practice claim) true due 2026-02-18 is now 178 days past and still reads due:2026-11-25/OK. Ran `bash curriculum/evals/scripts/source-freshness.sh --target 2026-08-15` fresh (exit 1, 58 BLOCK + 88 WARN elsewhere) and grepped its output for this file's slug: 0 hits — the wrong-arithmetic stamps remain invisible to the mechanical gate exactly as before. Neither finding has moved.",
+  "summary": "Round-3 re-fire against the narrowed REVISE, per orchestrator instruction to verify commit 9c75ce2's two claimed fixes mechanically. (a) Cherny worktree clause — RE-CONFIRMED CUT: `grep -n Cherny curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` = 2 hits (lines 205, 209), both below the `<!-- maintainer -->` fence (line 92); zero hits in student-facing body. Same result as round 2 — no regression. (b) §11a freshness-stamp arithmetic — NOW FIXED, verified by independently recomputing pub+6mo for all four stamps against today (2026-08-15) with `python3` date math, not by reading the maintainer's account of the fix: entis pub 2026-04-22 -> pub+6mo 2026-10-22 (68 days future) — stamp reads `due:2026-10-22`, exact match. da-costa pub 2026-05-23 -> pub+6mo 2026-11-23 (100 days future) — stamp reads `due:2026-11-23`, exact match. compound-eng pub 2026-02-09 -> pub+6mo 2026-08-09 (-6 days, i.e. 6 days PAST today) — stamp no longer asserts a future due date at all; it now reads `result:CAVEAT due:none`, reclassified as 'the framework's canonical writeup (origin, not fresh evidence)'. my-ai pub 2025-08-18 -> pub+6mo 2026-02-18 (-178 days, i.e. 178 days PAST today) — stamp likewise reads `result:CAVEAT due:none`, 'dated origin ... pre-read for recognition, never current practice'. The round-2 HARM was a mechanical gate silently reading two already-stale sources as OK-with-future-due (checked+6mo arithmetic disguising true pub-date staleness); that shape is gone in the current file — the two out-of-window sources no longer claim a future due date at all, they surface as `CAVEAT` (an explicit INFO-level, accepted-caveat result per `source-freshness-format.md`'s vocabulary table), not a silent clean pass. Re-ran `bash curriculum/evals/scripts/source-freshness.sh --target 2026-08-15` fresh this cycle (exit 1, corpus-wide BLOCK/WARN elsewhere) and grepped for this file's slug — 0 hits in either list, consistent with the file no longer carrying a false-fresh stamp for the script to (fail to) catch. (c) Rule-2 (line-82 Klaassen durable-account misclassification) judged fresh on the current file per orchestrator instruction: line 82 text is unchanged from prior instances ('Klaassen runs the verifier 10 consecutive times before trusting it ... Reliability is a number you measure, not a vibe you sense') — still a present-tense general-practice claim, still undated in body, still fails the §2a carve-out's third condition (cited as an account AND dated in body) even though its citing stamp is now `CAVEAT due:none` rather than a wrong future date. This is a DIFFERENT axis from the §11a arithmetic fix just verified — §11a is about whether the `due` field is computed correctly from the stated publication date (now correct); rule 2 is about whether the BODY sentence itself is framed as a durable one-off account vs a live-position claim (still not, per §2b's 'one URL doing two jobs needs two stamp lines'). Kept non-blocking because the citing stamp's fallback ('paraphrase the reliability-as-measured idea, drop the date claim') is unchanged and still gives a documented rescue if this ever needs to close. Net: both prior BLOCKING sub-findings (Cherny delegation, §11a arithmetic) are independently re-verified fixed; the one standing non-blocking finding (rule 2 / L82 framing) carries forward unchanged exactly as briefed. blocking_findings_count drops from 1 to 0, so top-level verdict flips REVISE -> PASS. Also noted, not scored: the LO bullet at line 18 ('Re-send the packaged version of the same task') dropped the round-2 file's trailing clause 'in the session your diagnosis ran in, and let it run a second time' — that clause would have contradicted this file's own Trainer Meta §7b claim that M5's re-send is a cross-cwd boundary requiring `new`, not a same-session continuation; its removal is a platform-claim improvement, not a new defect, and is outside the two findings this re-fire was scoped to verify.",
   "rules_evaluated": [
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -39,7 +39,7 @@
       "rule_index": "4",
       "rule_lead": "Verify capability claims before asserting.",
       "verdict": "PASS",
-      "evidence": "Verifiable platform claims (worktree/gitignore at line 42, cross-cwd 'new' at line 134, CLAUDE.md-vs-local at line 65) checked true against §6d/§7b below. The Cherny worktree-productivity claim at line 40 has no verification stamp of its OWN in this file (see rule 11 finding); that gap is a research-claims defect, not a platform-capability one — the claim itself ('Cherny calls parallel worktrees his biggest productivity unlock') is independently attested true via `reference/multi-session-git.md:105` (X-thread verbatim quote, re-confirmed 2026-08-01), so §4 (does the platform claim match reality) passes even though §11 (does THIS file's own stamp cover it) does not.",
+      "evidence": "Verifiable platform claims (worktree/gitignore at line 42, cross-cwd 'new' at line 134, CLAUDE.md-vs-local at line 65) checked true against §6d/§7b below. Cherny worktree-productivity claim remains absent (grep-confirmed). LO line 18 no longer asserts 're-send in the session your diagnosis ran in' — that clause would have contradicted §7b's cross-cwd-always-new fact given this file's own Trainer Meta section; its removal is consistent, not a new claim needing verification.",
       "fix_hint": null,
       "blocking": false
     },
@@ -120,7 +120,7 @@
       "rule_index": "6d",
       "rule_lead": "Auto-load surface = five things; CLAUDE.md vs CLAUDE.local.md distinction.",
       "verdict": "PASS",
-      "evidence": "Line 65 (unchanged from prior verdict): 'A rule in your own `CLAUDE.local.md` sits on your side of it. The same rule in a repo's `CLAUDE.md`, loading into a teammate's session whether they asked for it or not, has crossed' — matches §6d fact that ./CLAUDE.md auto-loads for every session in that tree while CLAUDE.local.md is personal/gitignored.",
+      "evidence": "Line 65 (unchanged): 'A rule in your own `CLAUDE.local.md` sits on your side of it. The same rule in a repo's `CLAUDE.md`, loading into a teammate's session whether they asked for it or not, has crossed' — matches §6d fact.",
       "fix_hint": null,
       "blocking": false
     },
@@ -138,7 +138,7 @@
       "rule_index": "6e",
       "rule_lead": "Transcript-by-mtime selection fragile.",
       "verdict": "PASS",
-      "evidence": "Line 139/188 push-back move names 'Scrollback at `~/.claude/projects/<project>/`' as a fallback source, not a bare mtime-latest instruction, and points to `claude-code-for-engineers.md#10-session-transcripts-read-what-actually-happened` for the actual selection method — doesn't assert 'pick the most recent .jsonl' as sufficient.",
+      "evidence": "Line 139/188 push-back move names 'Scrollback at `~/.claude/projects/<project>/`' as a fallback source and points to `claude-code-for-engineers.md#10-session-transcripts-read-what-actually-happened` for the real selection method — no bare mtime-latest instruction.",
       "fix_hint": null,
       "blocking": false
     },
@@ -165,7 +165,7 @@
       "rule_index": "7",
       "rule_lead": "Sessions = unit of work; 'start a new session' not 'open Claude Code'.",
       "verdict": "PASS",
-      "evidence": "Line 139/188 use 'Open a fresh Claude Code session in the repo' — pairs 'open' with 'session', not bare 'open Claude Code'; matches rule's intent for a student about to do work.",
+      "evidence": "Line 139/188 use 'Open a fresh Claude Code session in the repo' — pairs 'open' with 'session'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -174,7 +174,7 @@
       "rule_index": "7b",
       "rule_lead": "Cross-working-directory boundaries always open 'new'; evidence travels by disk.",
       "verdict": "PASS",
-      "evidence": "Line 134: 'cross-cwd boundary, so `new`, not the same session as diagnose + build + assemble.' Line 42: gitignored files 'don't ride into a worktree, because git doesn't see them' + setup prompt copies them — matches §7b exactly (worktree = separate cwd, no resume, gitignored files copied at fork).",
+      "evidence": "Line 134: 'cross-cwd boundary, so `new`, not the same session as diagnose + build + assemble.' Line 42: gitignored files 'don't ride into a worktree, because git doesn't see them' + setup prompt copies them. LO line 18 no longer says 're-send in the session your diagnosis ran in' (that phrasing was in an earlier round's file and would have contradicted this exact rule) — current text is silent on session identity at the LO level, consistent with the fuller correct statement at line 134.",
       "fix_hint": null,
       "blocking": false
     },
@@ -264,7 +264,7 @@
       "rule_index": "13b",
       "rule_lead": "Check ship status before auditing a built artifact; re-measure before acting.",
       "verdict": "PASS",
-      "evidence": "Applied to this judge's own process: re-ran source-freshness.sh fresh against today's date (2026-08-15) rather than trusting the prior instance's 2026-08-13 run, and grepped the fresh output for this file's slug before asserting the gate still misses it (0 hits, confirmed below at rule 11).",
+      "evidence": "Applied to this judge's own process: re-ran `shasum -a 256` (new body_sha a0fa7f0a...), `grep -n Cherny`, the python3 stamp-arithmetic recompute, and `source-freshness.sh --target 2026-08-15` fresh this cycle rather than trusting either prior instance's evidence or the commit message's self-description ('the judge's arithmetic stands').",
       "fix_hint": null,
       "blocking": false
     },
@@ -327,7 +327,7 @@
       "rule_index": "20",
       "rule_lead": "Judge must honor script exit codes.",
       "verdict": "PASS",
-      "evidence": "Applied to this judge's own process: `source-freshness.sh` returned exit 1 on the fresh run and that exit code is treated as authoritative (58 BLOCK + 88 WARN, this file among neither list) rather than papered over.",
+      "evidence": "Applied to this judge's own process: `source-freshness.sh` returned exit 1 on the fresh run and that exit code is treated as authoritative (this file among neither BLOCK nor WARN list, checked by grep on the raw output) rather than papered over.",
       "fix_hint": null,
       "blocking": false
     },
@@ -363,7 +363,7 @@
       "rule_index": "24",
       "rule_lead": "maintainer_acceptance JSON-level override convention.",
       "verdict": "N/A",
-      "evidence": "No maintainer_acceptance override exists for the standing findings on this file; not applicable to apply here.",
+      "evidence": "No maintainer_acceptance override exists for this file; not applicable to apply here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -480,7 +480,7 @@
       "rule_index": "36",
       "rule_lead": "Hash guard only as good as what it hashes; malformed hash fails open.",
       "verdict": "PASS",
-      "evidence": "This instance's own `body_sha` was obtained via `shasum -a 256` on the raw source at judge-start (3abe725c0488de588d13b4c2e78b58cf72dc653c52a9d7f5fb996fabd3c220c4), a real 64-char hex value, not fabricated or reused.",
+      "evidence": "This instance's own `body_sha` was obtained via `shasum -a 256` on the raw source at judge-start (a0fa7f0a7ec7c808af905edb155a386620dd3540220d2e440498bfd4645977d0), a real 64-char hex value, distinct from both prior instances' hashes because the underlying content actually changed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -489,7 +489,7 @@
       "rule_index": "37",
       "rule_lead": "Measure the defect before proposing the fix.",
       "verdict": "PASS",
-      "evidence": "Applied to this judge's own process: both standing findings below were re-derived from fresh `grep`/`shasum`/date arithmetic against the CURRENT file rather than restated from the prior instance's evidence field.",
+      "evidence": "Applied to this judge's own process: neither the Cherny cut nor the arithmetic fix was accepted on the maintainer's commit-message description ('the judge's arithmetic stands') — both were independently re-derived this cycle (fresh grep; fresh python3 date-diff against today, 2026-08-15, not against the date used in either prior instance).",
       "fix_hint": null,
       "blocking": false
     },
@@ -498,7 +498,7 @@
       "rule_index": "38",
       "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism.",
       "verdict": "N/A",
-      "evidence": "Checked the artefact-contract table (lines 171-182) and the forward pointer to M6 (§Next) for the rule's three tells (invented retrieval mechanism, misapplied lifecycle noun, unsourced cadence). Line 178's 'fires it per the cadence recorded there' defers the cadence to the student's own plan.md rather than asserting one; line 182's 'persisted automatically' is a known-true always-on platform fact (session transcripts), not a forward-looking automation beat. No new rule in this compendium since the prior instance was applicable to this file's content — this is a first-pass check, not a re-verify.",
+      "evidence": "Checked the artefact-contract table (lines 171-182) and the forward pointer to M6 (§Next) for the rule's three tells (invented retrieval mechanism, misapplied lifecycle noun, unsourced cadence). No change since the prior instance in the relevant passages.",
       "fix_hint": null,
       "blocking": false
     },
@@ -507,7 +507,7 @@
       "rule_index": "1",
       "rule_lead": "Source URL + type label mandatory on every claim (maintainer-block scope).",
       "verdict": "PASS",
-      "evidence": "Lines 201-204 each carry a URL + [label]; body prose (lines 40, 82, 84) cites in builder voice without inline label per §1's scope note.",
+      "evidence": "Lines 201-204 each carry a URL + [label]; body prose (line 82, 84) cites in builder voice without inline label per §1's scope note.",
       "fix_hint": null,
       "blocking": false
     },
@@ -525,8 +525,8 @@
       "rule_index": "2",
       "rule_lead": "Freshness rule — 6 months incl. §2a durable-account carve-out and §2b due:none scoping.",
       "verdict": "REVISE",
-      "evidence": "STANDING, not fixed. Line 82 (unchanged, verified via `grep -n \"Klaassen runs the verifier\"` = 1 hit at line 82): 'Klaassen runs the verifier 10 consecutive times before trusting it... Reliability is a number you measure, not a vibe you sense' — present-tense, general recommendation, matches §2a's explicit on-clock list ('practice, trend, or rate'), so it does NOT earn the durable-account due:none carve-out even though the citing stamp (line 203) reads due:2026-11-25/OK. Correct due for this on-clock practice claim is publication+6mo = 2025-08-18 + 6mo = 2026-02-18, which as of today (2026-08-15) is 178 days past — computed via `python3 -c \"from datetime import date; print((date(2026,8,15)-date(2026,2,18)).days)\"` = 178. Same underlying defect as rule 11's §11a finding below (checked+6mo arithmetic on all 4 stamps) — blocking status carried on that entry, not double-counted here. §2b: no due:none stamps in this file's body citations, so the live-position-leak shape doesn't independently apply.",
-      "fix_hint": "Either reframe the L82 body claim as a dated one-off account ('in an August 2025 run, Klaassen...') to earn due:none, or keep it as a live practice claim and give it an honest due date reflecting true staleness; then recompute all 4 stamps' due from publication date, not checked date (see rule 11 fix_hint for the concrete corrected dates).",
+      "evidence": "STANDING, unchanged — judged fresh on the current file per orchestrator instruction. Line 82 is byte-identical to both prior instances (`grep -n \"Klaassen runs the verifier\"` = 1 hit at line 82): 'Klaassen runs the verifier 10 consecutive times before trusting it... Reliability is a number you measure, not a vibe you sense' — present-tense, general recommendation. This is a DIFFERENT axis from the §11a arithmetic finding just verified fixed below: §11a is whether the stamp's `due` field is computed correctly (now yes — the citing stamp for this claim, line 203, now correctly reads `result:CAVEAT due:none` rather than a wrong future OK-date); rule 2 is whether the BODY SENTENCE is framed as a durable dated one-off account per §2a's three conditions (first-hand — yes; specific completed event — arguable; cited as an account AND dated in body — no, still absent). Per §2b ('one URL doing two jobs needs two stamp lines'), a stamp reclassified to durable/CAVEAT does not retroactively make an undated present-tense body claim a durable account — the body still needs its own dating to earn that. Non-blocking because the citing stamp's fallback ('paraphrase the reliability-as-measured idea, drop the date claim') is unchanged and gives a documented rescue.",
+      "fix_hint": "Either reframe the L82 body claim as a dated one-off account ('in an August 2025 run, Klaassen...') to earn due:none legitimately, or apply the stamp's own documented fallback and paraphrase the reliability-as-measured idea while dropping the date-sensitive specifics.",
       "blocking": false
     },
     {
@@ -570,7 +570,7 @@
       "rule_index": "7",
       "rule_lead": "Vision × Detail split — detail-layer claims need KB backing.",
       "verdict": "PASS",
-      "evidence": "Detail-layer claims (Klaassen verifier practice, da Costa backpressure claim, Cherny worktree claim) each carry or independently have (Cherny, via reference/multi-session-git.md and open-the-side-quest.md) a maintainer-block source entry somewhere in the corpus; vision-layer framing (Key Concepts, the nag-writes-the-verifier reframe) is attributed as the module's own synthesis, not asserted as field consensus.",
+      "evidence": "Detail-layer claims (Klaassen verifier practice, da Costa backpressure claim) each carry a maintainer-block source entry (lines 201-204). Vision-layer framing (Key Concepts, the worry-adjudication reframe) is attributed as the module's own synthesis, not asserted as field consensus.",
       "fix_hint": null,
       "blocking": false
     },
@@ -597,7 +597,7 @@
       "rule_index": "10",
       "rule_lead": "No 'What research says' callout boxes — inline builder-voice citations only.",
       "verdict": "PASS",
-      "evidence": "Citations are inline in builder voice (lines 40, 82, 84); source-type labels live only in the maintainer block per §1's scope note.",
+      "evidence": "Citations are inline in builder voice (lines 82, 84); source-type labels live only in the maintainer block per §1's scope note.",
       "fix_hint": null,
       "blocking": false
     },
@@ -605,10 +605,10 @@
       "compendium": "check_research_claims.md",
       "rule_index": "11",
       "rule_lead": "Source-verification maintainer block required on any file with practitioner citations, incl. §11a per-source freshness-stamp arithmetic.",
-      "verdict": "REVISE",
-      "evidence": "STANDING, not fixed — both prior sub-findings re-verified fresh against the current file. (a) Delegation is WRONG, not merely vague: line 205 reads 'Ronacher and Cherny are cited via `lectures/what-packaging-is.md`; stamps live there and should stay in sync with this module's references.' `grep -c worktree curriculum/lectures/what-packaging-is.md` = 0 (run fresh this cycle) — that lecture carries zero worktree-related text; its only Cherny stamp (kim-on-cherny, line 335) backs a DIFFERENT claim (the three stop-hook shapes), never the worktree-productivity claim actually used at line 40 ('Cherny calls parallel worktrees his biggest productivity unlock'). A reader following this file's own delegation note lands on a stamp that doesn't cover the claim. The claim's actual, correctly-dated stamps live at `curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md:105-106` (`[checked:2026-08-01 due:2026-08-21]` X-thread + `[checked:2026-07-12 due:2027-01-12]` Orosz interview) and a separate one at `curriculum/exercises/open-the-side-quest.md:100` — neither is named by this file. (b) §11a freshness-stamp-arithmetic: recomputed by hand for all 4 stamps against TODAY (2026-08-15), not the prior instance's 2026-08-13 baseline. L176 (Entis/Klaassen sandwich) checked:2026-05-25 due:2026-11-25 — checked+6mo matches shown due; publication 2026-04-22 so correct due is 2026-10-22 (68 days from today) — ~1mo too generous, not yet passed. L177 (Klaassen compound-engineering) checked:2026-05-25 due:2026-11-25 — checked+6mo matches; publication 2026-02-09 → correct due 2026-08-09, which is 6 days past as of today — stamp reads OK/future while the true window closed 6 days ago (was 4 days past at the prior 2026-08-13 instance; gap widening, unflagged). L178 (Klaassen my-ai-had-already) checked:2026-05-25 due:2026-11-25 — checked+6mo matches; source dated 2025-08-18 and (per rule 2's §2a analysis above) is an on-clock practice claim, so correct due 2026-02-18 is 178 days past as of today — a genuinely stale source still reads OK. L179 (da Costa) checked:2026-07-30 due:2027-01-30 — checked+6mo matches exactly; publication ~2026-05-23 → correct due ~2026-11-23 (100 days from today) — ~2mo too generous, not yet passed. HARM, re-measured: ran `bash curriculum/evals/scripts/source-freshness.sh --target 2026-08-15` fresh (not reused from the prior instance) — exit code 1, 58 BLOCK + 88 WARN elsewhere in the repo (`grep -c \"learn-from-the-test\"` on the fresh output = 0) — this file appears in NEITHER list; the wrong-arithmetic stamps remain invisible to the mechanical gate exactly as §11a predicts, and are now further past-due than at the last audit, not closer to resolved.",
-      "fix_hint": "(a) Fix the delegation: either add a source-verification stamp for the Cherny worktree-productivity claim (line 40) directly in this file, or correct line 205 to point at `reference/multi-session-git.md` (the file that actually carries the stamp) instead of `what-packaging-is.md` (which doesn't). (b) Recompute all 4 due dates (lines 201-204) from each source's publication date, not checked date; reclassify L178 per rule 2's fix_hint; re-run source-freshness.sh to confirm correct routing.",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": "Both sub-findings from prior instances re-verified this cycle, independently. (a) Delegation (Cherny/Ronacher): `grep -n Cherny` on the current file returns only lines 205 and 209, both below the maintainer fence (line 92) — zero hits in student-facing body; the delegation line correctly covers the remaining maintainer-block Cherny/Ronacher references via `lectures/what-packaging-is.md`'s stamps (unchanged from round 2's verification). (b) §11a arithmetic: recomputed all 4 stamps fresh against today (2026-08-15) via `python3` date math from each source's STATED PUBLICATION date. L201 (Entis/Klaassen sandwich): pub 2026-04-22 -> pub+6mo 2026-10-22; stamp reads `due:2026-10-22` — EXACT MATCH, 68 days still in the future. L202 (Klaassen compound-engineering): pub 2026-02-09 -> pub+6mo 2026-08-09, which is 6 days PAST today; stamp no longer claims a future due date — reads `result:CAVEAT due:none`, reclassified as the framework's canonical origin writeup rather than fresh evidence. L203 (Klaassen my-ai-had-already): pub 2025-08-18 -> pub+6mo 2026-02-18, which is 178 days PAST today; stamp likewise reads `result:CAVEAT due:none`, reclassified as dated-origin pre-read material. L204 (da Costa backpressure): pub 2026-05-23 -> pub+6mo 2026-11-23; stamp reads `due:2026-11-23` — EXACT MATCH, 100 days still in the future. All four `due` fields now derive from the stated publication date, not the checked date — the round-2 defect (checked+6mo silently reading two already-stale sources as OK-with-future-due) is gone: the two out-of-window sources no longer assert a future due date at all, and instead surface as an explicit `CAVEAT` (INFO-level per `source-freshness-format.md`'s result-vocabulary table), which is a truthful, visible state rather than a silent false-clean pass. Re-ran `bash curriculum/evals/scripts/source-freshness.sh --target 2026-08-15` fresh (exit 1, corpus-wide BLOCK/WARN elsewhere; `grep -n \"learn-from-the-test.md\"` on the output = 0 hits) — consistent with the file no longer carrying the false-fresh-stamp shape the gate was blind to.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
@@ -633,7 +633,7 @@
       "rule_index": "14",
       "rule_lead": "A green check must measure the fact, not a co-varying proxy.",
       "verdict": "PASS",
-      "evidence": "Applied above: source-freshness.sh's silent pass on this file (freshly re-run, not reused) was used as corroborating evidence for the rule-11/§11a finding, not treated as proof of correctness — the script's clean run was correctly read as 'the arithmetic gate doesn't check this,' not as 'the stamps are right.'",
+      "evidence": "Applied above: `source-freshness.sh`'s silent pass on this file (freshly re-run this cycle, not reused) was read as 'the arithmetic gate can't see this shape either way now that the stamps are honest,' not as independent proof of correctness — the manual pub+6mo recompute is what actually establishes the rule-11 PASS, the script's clean exit is corroborating, not load-bearing.",
       "fix_hint": null,
       "blocking": false
     },
@@ -642,7 +642,7 @@
       "rule_index": "15",
       "rule_lead": "Word-presence claims need an unprimed fetch.",
       "verdict": "N/A",
-      "evidence": "The `grep -c worktree` check above is a mechanical string search, not a primed generative-summarizer fetch — §15's failure mode (an LLM manufacturing a hit) doesn't apply to a literal grep.",
+      "evidence": "The `grep -n Cherny` check above is a mechanical string search, not a primed generative-summarizer fetch — §15's failure mode doesn't apply to a literal grep.",
       "fix_hint": null,
       "blocking": false
     },
@@ -687,7 +687,7 @@
       "rule_index": "36",
       "rule_lead": "Verification machinery needs a smoke-test before trust.",
       "verdict": "N/A",
-      "evidence": "The module file references Phase 3's verifier-build step by pointer only (leap test, artefact contract); the smoke-test mechanic itself is authored in the linked exercise file, out of this file's own scope.",
+      "evidence": "The module file references Phase 3's verifier-build step by pointer only; the smoke-test mechanic itself is authored in the linked exercise file, out of this file's own scope.",
       "fix_hint": null,
       "blocking": false
     },
@@ -719,12 +719,6 @@
       "line": 65,
       "verdict": "PASS",
       "source": "compendium"
-    },
-    {
-      "claim": "Cherny calls parallel worktrees his biggest productivity unlock",
-      "line": 40,
-      "verdict": "PASS",
-      "source": "inferred (claim itself is true — independently attested via reference/multi-session-git.md's X-thread stamp, re-confirmed 2026-08-01; the defect is this file's own source-verification block, filed under research_claims §11, not a platform-capability inaccuracy)"
     }
   ],
   "citations_checked": [
@@ -750,7 +744,7 @@
       "label_present": true,
       "url_present": true,
       "url_alive": true,
-      "evidence_level_honest": true
+      "evidence_level_honest": false
     },
     {
       "line": 204,
@@ -774,11 +768,14 @@
       "status_code": 200
     }
   ],
-  "blocking_findings_count": 1,
+  "blocking_findings_count": 0,
   "todos_count": 1,
   "notes": [
-    "Standing-REVISE re-fire per orchestrator instruction. Both prior findings re-verified against the CURRENT file (body_sha 3abe725c..., differs from prior c243295c... only because four unrelated maintainer-block entries were added 2026-08-14/15 — Key Concepts lock, multisession-permission line, dense-slides note, nag-beat correction — none touching the source-verification block, line 40, or line 82). Neither finding is fixed; the rule-11(a) delegation finding sharpened from 'no stamp of its own' to 'delegates to a file that doesn't carry the right stamp' after a fresh `grep -c worktree` on the delegate target returned 0; the rule-11(b)/rule-2 arithmetic findings re-confirmed with today's date (2026-08-15) showing the two already-passed true-due-dates 2 and 178 days further past than at the last audit.",
-    "New compendium rule since prior instance: check_platform_and_boundaries.md gained §38 (imagined-runtime-mechanism drift). Evaluated fresh against this file — N/A, no forward-looking automation beat with an invented mechanism or unsourced cadence found.",
-    "Out of scope, noted only: `curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md` and `curriculum/exercises/open-the-side-quest.md` both carry correctly-dated, independent Cherny-worktree stamps that this file's own delegation note fails to name — a maintainer fixing rule 11(a) has two ready-made correct targets to point to instead of authoring a fifth stamp."
+    "Round-3 re-fire per orchestrator instruction to mechanically verify commit 9c75ce2's two claimed fixes. body_sha a0fa7f0a... differs from the round-2 instance's f800b8a4... — the freshness-stamp lines (201-204) changed due dates/results, plus the LO bullet at line 18 was trimmed and the 'Your nag writes the verifier' section was renamed to 'Hold the worry beside the artefact' (both outside this re-fire's scope, noted not scored).",
+    "Cherny delegation sub-finding: RE-CONFIRMED FIXED, no regression from round 2. `grep -n Cherny` = 2 hits, both below the maintainer fence.",
+    "§11a arithmetic sub-finding: NOW FIXED. Independently recomputed pub+6mo for all 4 stamps via python3 date math against today (2026-08-15): entis 68d future (due:2026-10-22, exact match), da-costa 100d future (due:2026-11-23, exact match), compound-eng 6d past (reclassified CAVEAT due:none rather than a false future date), my-ai 178d past (reclassified CAVEAT due:none rather than a false future date). Rule 11 flips REVISE(blocking) -> PASS.",
+    "Rule 2 (Klaassen line-82 durable-account misclassification): judged fresh per orchestrator instruction — body text unchanged, still non-blocking REVISE, still carries the same documented fallback. This is a body-framing question distinct from the now-fixed stamp-arithmetic question, and is explicitly NOT resolved by the CAVEAT reclassification of its citing stamp.",
+    "blocking_findings_count 1 -> 0; top-level verdict REVISE -> PASS.",
+    "No new compendium rule since the prior instance was applicable to this file's content."
   ]
 }

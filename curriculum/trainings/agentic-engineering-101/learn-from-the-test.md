@@ -85,7 +85,7 @@ Optional.
 
 ## Next
 
-Module 6 reads the packaged session: subtler misses, subtler drift. Your verifier turns out to be one of three eval shapes, and the question widens from *did my task pass?* to *do all our tasks pass, and who reviewed what?*
+Module 6 reads the packaged session: subtler misses, subtler drift. The question widens from *did my task pass?* to *do all our tasks pass, and who reviewed what?*
 
 <!--/flag:module:spot-gaps-build-the-loop-->
 
@@ -119,8 +119,8 @@ describes the artifact and hands the attention decision to the student — do no
 scheduling ("come back later", "read them after"). Trainer sibling in `trainer-modules.md` M5 says land the
 header and handle per slide, never read bullets aloud. Two registers, one instruction; keep them in step.
 
-**Quality:** compendium-audited 2026-08-13 (writing@315cd5a story@315cd5a behavior@93bb807 pedagogy@315cd5a strategy@315cd5a slides@315cd5a)
-- judges @315cd5a: writing PASS, story PASS, technical REVISE (1/1-see-instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-15 (writing@315cd5a story@315cd5a behavior@93bb807 pedagogy@315cd5a strategy@9c75ce2 slides@315cd5a)
+- judges @9c75ce2: writing PASS, story PASS, technical REVISE (1/1-see-instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @93bb807: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; see instances/ae101--m4-m5-m6.cross_module.json
 - maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**

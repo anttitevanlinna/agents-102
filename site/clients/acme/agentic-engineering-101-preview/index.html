@@ -3027,9 +3027,9 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 <pre><code>We&#39;re preparing to close this session. Anything more to learn and compound into ./CLAUDE.local.md since the first compound — refusals, push-backs, sequence catches, anything that earned a rule? Integrate into the existing file, don&#39;t append. Tell me in 2–3 lines what you added, or &quot;nothing new&quot; if nothing did.
 </code></pre>
 <blockquote>
-<p><strong>The escape hatch is deliberate.</strong> The closing <code>or &quot;nothing new&quot; if nothing did</code> allows Claude to report an empty sweep. Ask only what it added, and the agent finds something to have added.</p>
+<p><strong>The escape hatch is deliberate.</strong> The closing <code>or &quot;nothing new&quot; if nothing did</code> allows Claude to report an empty sweep. Ask only what it added, and the agent finds something to have added. If a line it wrote reads generic, ask which session moment earned it; with no moment to point at, have Claude take the line back out of the file.</p>
 </blockquote>
-<h2 id="close-the-session">Close the session</h2>
+<h2 id="what-you-built">What you built</h2>
 <p><strong>What happened:</strong> One rules file, written from how you actually worked rather than from a template.</p>
 <p>Whether it earns its keep shows up the next time a session reads it.</p>
 </section>
@@ -3091,7 +3091,7 @@ Tell me in 3–5 lines: what you wrote and why, grounded in specific session mom
 <p>At first, this training was a strategy document: seven headings and thirty bulletpoints. It looked complete in the way a good list can look complete. Then the bulletpoints became module prototypes, and the gaps became visible.</p>
 <p>The failures were specific. A phrase brought consultancy voice into an engineering lecture. An exercise asked an experienced engineer to perform a scripted reaction. A module tried to feel tidy where the student should have felt uncertainty. Each correction became a reusable rule. One now says <em>“Forcing functions stay, scripted reactions go.”</em> Another requires every Claude Code capability claim to be checked before each cohort.</p>
 <p>The rules were corrected too. Some were too broad. Some fired in the wrong place. Each time a rule failed, the failure sharpened the rule instead of disappearing into one edit.</p>
-<p>The system behind this training currently has 279 active rules and subrules across 12 checklists. The count is not a claim that more rules make better work. It shows how much specific judgment had to be written down to reach control over the training&#39;s style.</p>
+<p>The system behind this training currently has 299 active rules and subrules across 12 checklists, written over 1,399 commits. Neither count is a claim that more rules make better work. They show how much specific judgment had to be written down, and how many passes it took, to reach control over the training&#39;s style.</p>
 <h2 id="then-we-tested-the-training">Then we tested the training</h2>
 <p>Rules shape a draft, but they still leak. Major changes therefore go through automated quality judges, each reading through a focused lens: writing, story, technical accuracy, agent behavior, pedagogy, strategy, cross-module fit, and slide design.</p>
 <p>Simulated engineers read the result as a competent builder, a skeptical senior, and a fast operator. A separate simulation asks what the LLM is likely to do when each prompt is pasted. Those reads catch ambiguity, condescension, weak handoffs, and prompts whose wording invites the wrong behavior.</p>
@@ -3135,7 +3135,6 @@ The loop is the shape. The bug today was the excuse.</p>
 <h2 id="prework">Prework</h2>
 <p>Surface one multi-file backlog task in the repo you used for Module 1. Criteria: non-trivial agent work, touching wrong file matters, you&#39;d ship it today if you had the hour. From your tracker, your head, or in conversation with Claude, your choice.</p>
 <p><strong>A task that spans a few files. Not an epic.</strong></p>
-<p>Come without a surfaced task and you&#39;ll be scrambling to find one while the exercise is already in plan mode. Your call.</p>
 <p>Optional reading before this module: <a href="#supplementary-agentic-engineering-progression" target="_blank" rel="noopener">The agentic engineering progression</a>, which sets up reach and calibrated trust; Boris Cherny, <a href="https://www.youtube.com/watch?v=6eBSHbLKuN0" target="_blank" rel="noopener">Mastering Claude Code in 30 minutes</a>; <a href="#reference-multi-session-git" target="_blank" rel="noopener">Multi-session and Git: survival guide</a>. And if Dex Horthy&#39;s <a href="https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md" target="_blank" rel="noopener">Why Software Factories Fail</a> is still on your list from Module 1, this is the module it pays off in: the cure he lands on is human review made affordable by upfront planning. If you like a lookup page nearby, <a href="#5-plan-mode-at-depth">plan mode at depth in the reference</a> has the approval paths in one table.</p>
 <h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
@@ -3232,7 +3231,7 @@ The loop is the shape. The bug today was the excuse.</p>
 <text x="28" y="534" fill="#786c56">A FUZZY IDEA</text>
 <text x="1172" y="534" text-anchor="end" fill="#a05a2c">TRUSTED · SHARED VALUE →</text>
 </g>
-<text x="600" y="534" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="13.5" fill="#786c56">the soil it grows in: act under uncertainty · competence is the gate · a move counts when it crosses the wall</text>
+<text x="600" y="534" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="13.5" fill="#786c56">the soil it grows in: act under uncertainty · competence sets the ceiling · cross personal → team</text>
 </svg>
 </figure>
 
@@ -3268,8 +3267,8 @@ The loop is the shape. The bug today was the excuse.</p>
 <ul>
 <li>Plan mode removes the edit tools and swaps the instructions to explore and propose. You press Shift+Tab until the status bar shows plan mode on. The agent reads files, runs shell commands to explore, and writes a plan file, but it won&#39;t edit your source until you approve.</li>
 <li>The read-only part is load-bearing. Plan mode isn&#39;t &quot;Claude thinks before doing.&quot; It&#39;s &quot;Claude writes a thing you can read, edit, and push back on before your source changes.&quot;</li>
-<li>The plan is saved on disk under a descriptive filename such as <code>migrate-auth-hash-calm-otter.md</code>. You can find it again without searching the chat.</li>
-<li>You will notice the wait. While Claude plans, other sessions could be making progress elsewhere. Not today, but soon.</li>
+<li>The plan is saved on disk under a descriptive filename such as <code>migrate-auth-hash-calm-otter.md</code>.</li>
+<li>Feel free to muse on what the heck the agent is reading, and why. Aka context engineering.</li>
 </ul>
 <h2 id="optional-ask-plan-mode-directly">Optional: ask plan mode directly</h2>
 <p>A 30-second move first. Enter plan mode in your own session right now and ask Claude what shifted from its side.</p>
@@ -3288,20 +3287,19 @@ The loop is the shape. The bug today was the excuse.</p>
 </ul>
 <h2 id="three-pressures-that-make-bad-plans-look-good">Three pressures that make bad plans look good</h2>
 <ul>
-<li><strong>Structure is persuasive.</strong> A 7-item plan with section headers and bold text looks like a decision. It often isn&#39;t. It&#39;s a draft formatted like a decision. The formatting is the trap.</li>
-<li><strong>Reasonableness passes for rightness.</strong> Each step sounds reasonable, so the plan sounds right. But three reasonable steps in the wrong order still ship a bug. Read the sequence, not the steps.</li>
-<li><strong>You already agree with it.</strong> The plan matches what you&#39;d have written, which feels like alignment. But Claude wrote it from a partial read of the codebase and your instinct isn&#39;t a substitute for the read. Agreement is cheap; the read is what matters.</li>
+<li><strong>Structure is persuasive.</strong> A 7-item plan with section headers and bold text looks like a decision. It often isn&#39;t. It&#39;s a draft formatted like a decision.</li>
+<li><strong>Reasonableness passes for rightness.</strong> Each step sounds reasonable, so the plan sounds right. But reasonable steps in the wrong order, or with one missing, still ship a bug. Judge what the steps add up to, not how each one reads.</li>
+<li><strong>You already agree with it.</strong> The plan matches what you&#39;d have written, which feels like alignment. But it was written from a partial read of the codebase, and your instinct is not a check on it. Read it assuming something in there is wrong; there usually is.</li>
 </ul>
 <h2 id="two-reads-paired">Two reads, paired</h2>
 <ul>
 <li>Your read and the agent&#39;s walk-down catch different misses. You bring the voice of experience: the soft item, the step that contradicts how this codebase actually works. The agent brings breadth: it can keep walking branches without getting bored or skipping the dull ones.</li>
-<li>The full grilling is an offer, not an obligation. Order matters: your push-back first, so your read stays in the driver&#39;s seat; then let the walk-down surface what you did not see. Stop when another answer would no longer materially sharpen the plan.</li>
+<li>Order matters: your push-back first, so your read stays in the driver&#39;s seat; then let the walk-down surface what you did not see. Stop when another answer would no longer materially sharpen the plan.</li>
 <li>Check the revision, not the acknowledgement. The agent agrees easily. A flagged step can come back softened rather than sharpened. A push-back is finished when the regenerated plan is sharper, not when Claude says it heard you.</li>
 </ul>
-<p>If the plan still has open questions, run the walk-down. If it&#39;s all clear, your read is enough.</p>
 <h2 id="find-is-easier-than-judge">Find is easier than judge</h2>
 <ul>
-<li>Generating candidates is cheap for the agent; judging them is where you&#39;re needed. Stuck naming a soft item? Ask Claude which step it&#39;s least confident about. That answer is a candidate. Whether it matters depends on the codebase and the task.</li>
+<li>Generating candidates is cheap for the agent; judging them is where you&#39;re needed. Stuck naming a soft item? Ask Claude which step it&#39;s least confident about. That answer is a candidate.</li>
 <li>The agent finds, you judge, and everything from here sharpens one side or the other. The split runs through the whole discipline.</li>
 </ul>
 <h2 id="plan-review-is-a-high-leverage-gate">Plan review is a high-leverage gate</h2>
@@ -3309,7 +3307,7 @@ The loop is the shape. The bug today was the excuse.</p>
 <li>A plan is a check before implementation. One correction can redirect every step that follows before the agent turns the plan into code.</li>
 <li>What the plan doesn&#39;t decide, the agent decides mid-run, inside work in flight, and you will not notice. A wrong call propagates across files, and the wrongness tangles with everything built after it: what would have been a line edit in the plan becomes an untangling job in the code.</li>
 <li>Aim the read at the unknown that teaches you the most. The branches worth walking are the ones that change what done means. The rest you&#39;d settle in verification anyway.</li>
-<li>You don&#39;t have to execute a plan to know it&#39;s good. Recognizing a good plan is the skill; the execution can wait for the day the task is real.</li>
+<li>You don&#39;t have to execute a plan to know it&#39;s good. Recognizing one is the skill.</li>
 </ul>
 <h2 id="what-you-can-test-and-check-sets-your-complexity-ceiling">What you can test and check sets your complexity ceiling</h2>
 <figure class="diagram">
@@ -3370,7 +3368,7 @@ The loop is the shape. The bug today was the excuse.</p>
 <div class="phase-kicker">Exercise</div>
 
 <h1 id="sharpen-the-plan-with-two-reads">Sharpen the plan with <em>two reads</em></h1>
-<p><strong>Time:</strong> 60 minutes.</p>
+<p><strong>Time:</strong> 57 minutes.</p>
 <p><strong>What you do:</strong> push back twice on your plan, run a second-pass grilling, then approve and <strong>stop</strong>.</p>
 <p><strong>What you build:</strong> paired reads on one plan: your two push-backs, then a walk-down three questions at a time.</p>
 <p><strong>The point:</strong> the first pass is plausible, and usually not good enough.</p>
@@ -3378,7 +3376,7 @@ The loop is the shape. The bug today was the excuse.</p>
 <h2 id="phase-1-bring-a-real-task">Phase 1: Bring a real task</h2>
 <p><em>5 min</em></p>
 <ul>
-<li>Bring a task that spans a few files, with enough execution depth to make plan mode worth using. A feature slice, a small migration, a targeted refactor: something where touching the wrong file matters. A one-line fix is too small for plan mode; a refactor whose outcome you can&#39;t hold in your head is too big.</li>
+<li>Bring a task that spans a few files, with enough execution depth to make plan mode worth using. A feature slice, a small migration, a targeted refactor: something where touching the wrong file matters. <strong>A one-line fix is too small for plan mode; a refactor whose outcome you can&#39;t hold in your head is too big.</strong></li>
 <li>If nothing fits, ask Claude to surface three candidates from recent issues, PRs, or TODO comments. Pick the one you&#39;d ship today if you had an hour.</li>
 </ul>
 <h2 id="phase-2-enter-plan-mode-and-ask-for-the-plan">Phase 2: Enter plan mode and ask for the plan</h2>
@@ -3409,7 +3407,7 @@ My task:
 <li>When you have two push-backs forming in your head, move on.</li>
 </ul>
 <h2 id="phase-3-push-back-twice">Phase 3: Push back twice</h2>
-<p><em>15 min</em></p>
+<p><em>12 min</em></p>
 <ul>
 <li>Don&#39;t approve yet. At the approval prompt, pick <strong>No, keep planning</strong>. That holds plan mode open. Send two push-backs on two different axes: one soft item, and one of (assumption · alternative). Your own words, your own concerns.</li>
 <li><strong>Soft items:</strong> the step that reads clean but skips over something. <em>&quot;Update the config&quot;</em> without which keys. <em>&quot;Handle migration errors&quot;</em> without what happens to rows mid-flight. The vagueness isn&#39;t a drafting slip; it&#39;s where the agent hasn&#39;t decided yet.</li>
@@ -3428,7 +3426,7 @@ My task:
 <h2 id="phase-4-walk-down-the-unresolved-branches">Phase 4: Walk down the unresolved branches</h2>
 <p><em>15 min</em></p>
 <ul>
-<li>The second read runs in this same session, and it works through the plan differently from the way you did. Still in plan mode: the plan file is the artifact you&#39;re walking, and edits to it stay locked while you&#39;re in plan mode. Nothing changes until you approve.</li>
+<li>The second read runs in this same session and still in plan mode, working through the plan file differently from the way you did.</li>
 <li>The prompt asks Claude to walk every unresolved branch, three questions at a time, with a recommendation for each. Take the questions that sharpen the plan; you remain the stop gate.</li>
 </ul>
 <p><strong>Prompt</strong> <em>(Claude Code)</em> ⟦M:plan⟧</p>
@@ -3476,7 +3474,7 @@ If a question can be answered by exploring the codebase, explore the codebase in
 <h2 id="approve">Approve</h2>
 <p>Say <em>lock it in.</em> The agent writes the sharpened plan. Approve at the prompt.</p>
 <p>Then just hit stop.</p>
-<h2 id="phase-5-stop-then-name-the-pattern-you-ran">Phase 5: Stop, then name the pattern you ran</h2>
+<h2 id="phase-5-stop-then-surface-the-patterns">Phase 5: Stop, then surface the patterns</h2>
 <p><em>10 min</em></p>
 <ul>
 <li>Don&#39;t execute the plan. The work of making it good is the exercise.</li>
@@ -3490,7 +3488,6 @@ If a question can be answered by exploring the codebase, explore the codebase in
 <ul>
 <li>The agent answers. You catch what a human catches (specificity, voice-of-experience, &quot;I&#39;d write that differently&quot;). The second read catches what an agent walking a decision tree catches: branches you didn&#39;t notice, dependencies you didn&#39;t name, side-effects you didn&#39;t price.</li>
 <li>Neither read needs to be complete. Paired, they surface the sharpenings worth making before generation.</li>
-<li>If the second read looks like it did all the work, quote one thing your push-back caught that it would have missed.</li>
 <li><strong>Plan-mode approval inflation</strong> is the thing this pairing defeats: structured plans get rubber-stamped because they look like decisions.</li>
 </ul>
 </section>
@@ -3502,16 +3499,16 @@ If a question can be answered by exploring the codebase, explore the codebase in
 <section class="phase phase--exercise" id="exercises-extract-the-task-shaping-rule">
 <div class="phase-kicker">Exercise</div>
 
-<h1 id="name-the-rules-place-the-file">Name the rules, place the file</h1>
+<h1 id="codify-the-rules-place-the-file">Codify the rules, place the file</h1>
 <p><strong>Time:</strong> 15 minutes.</p>
 <p><strong>What you do:</strong> surface task-shaping rules from the session you just ran, then read more off one story ticket.</p>
 <p><strong>What you build:</strong> one rules file from two sources: how you shaped this task, and how your team writes stories.</p>
 <p><strong>The point:</strong> find a place for your rules.</p>
 <hr>
-<h2 id="phase-1-name-the-rules-from-this-session">Phase 1: Name the rules from this session</h2>
+<h2 id="phase-1-codify-the-rules-from-this-session">Phase 1: Codify the rules from this session</h2>
 <p><em>8 min</em></p>
 <ul>
-<li>The rules are already in the session; naming them is what is left. Each decision in the plan read carried a task-shaping rule about what made this task plan-mode-able.</li>
+<li>The rules are already in the session, unwritten; codifying them is the work. Each decision in the plan read carries indirect information about the rules you already work by.</li>
 <li>The agent reads the scrollback; you react to what it proposes. The scrollback is the right source here: the question is how you worked, not what is on disk.</li>
 </ul>
 <p>Ask Claude for the rules.</p>
@@ -3526,7 +3523,7 @@ If a question can be answered by exploring the codebase, explore the codebase in
 <ul>
 <li>The same move you ran at M1 on a bug ticket, pointed at a story. How your team writes stories is a rule the tracker has been keeping, same as the bug fields were.</li>
 <li>If the task you brought came from your tracker, its own ticket is the one to read. Otherwise any real story works. One the agent just wrote carries none of your team&#39;s conventions.</li>
-<li>No tracker this session can reach? Paste the fields instead of the link. <a href="#reference-mcp-and-connectors" target="_blank" rel="noopener">MCP and connectors</a> has the one command per tracker if you want the reach for next time.</li>
+<li>No tracker this session can reach? Paste the fields instead of the link.</li>
 </ul>
 <p>Drop a story ticket link after the colon.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -3540,7 +3537,7 @@ Then propose three basic rules an agent could follow when shaping the next story
 
 Story ticket:
 </code></pre>
-<h2 id="phase-2-pick-how-the-file-loads">Phase 2: Pick how the file loads</h2>
+<h2 id="phase-2-save-the-file-where-you-want-it">Phase 2: Save the file where you want it</h2>
 <p><em>4 min</em></p>
 <ul>
 <li>Every session on this laptop (user-level), or only sessions in this repo (repo-personal).</li>
@@ -3554,7 +3551,7 @@ Once we agree, write both sets into that file: the session rules in the wording 
 
 After saving, show me the first three rules from the file so I can confirm the wording stuck.
 </code></pre>
-<h2 id="wire-the-file-in-check-the-wording">Wire the file in, check the wording</h2>
+<h2 id="where-rules-can-live-and-when-they-load">Where rules can live, and when they load</h2>
 <table>
 <thead>
 <tr>
@@ -3580,7 +3577,7 @@ After saving, show me the first three rules from the file so I can confirm the w
 <td>Auto memory</td>
 <td><code>~/.claude/projects/&lt;project&gt;/memory/</code></td>
 <td><code>MEMORY.md</code> index every session; topic files as needed</td>
-<td>Claude writes it; <code>/memory</code> to inspect</td>
+<td>Claude writes it; <em>&quot;memorize X&quot;</em> to store, <code>/memory</code> to inspect</td>
 </tr>
 <tr>
 <td>Skills</td>
@@ -3598,42 +3595,18 @@ After saving, show me the first three rules from the file so I can confirm the w
 <p>Roll your own is often facilitated by hooks and router skills: a hook injects it at session start, a router skill reads it when the work calls for it.</p>
 <ul>
 <li>If the picked path only loads when named, ask for the <code>@import</code> line before you move on. Without it the file sits unread.</li>
-<li>Read the rules back. If any drifted from your wording, push back and have Claude rewrite.</li>
 <li><a href="#reference-claude-code-for-engineers" target="_blank" rel="noopener">Claude Code for engineers</a> is the long form: precedence, walk-up, the managed layer.</li>
 </ul>
-<h2 id="phase-3-name-the-automation-shapes">Phase 3: Name the automation shapes</h2>
+<h2 id="phase-3-what-this-file-could-automate-later">Phase 3: What this file could automate later</h2>
 <p><em>3 min</em></p>
 <p>Ask Claude what this file could drive later.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
-<pre><code>Suppose I wanted this rules file to drive automated task-splitting in the future — running over a backlog, an issue queue, or a stream of incoming requests, splitting epics into shippable slices using these rules as the guardrail. What two or three shapes does that automation typically take? Name each shape, what would invoke it, and where the rules file would sit in the loop. Don&#39;t propose code today.
+<pre><code>Suppose I wanted these rules to drive automated ticket refinement in the future — running over a backlog, an issue queue, or a stream of incoming requests, splitting big items into smaller tickets with these rules as the guardrail. What two or three shapes does that automation typically take? For each: what invokes it, and where these rules would sit in the loop. Don&#39;t propose code today.
 </code></pre>
 <h2 id="read-the-shapes">Read the shapes</h2>
 <ul>
-<li>A shape you could use names its trigger and where your file sits in the loop. If Claude offers only one, ask for two more.</li>
+<li>A shape you could use has a trigger and a place for your file in the loop. If Claude offers only one, ask for two more.</li>
 <li>Want the machinery? Ask about GitHub Actions, the Claude Code action, and Routines by name.</li>
-</ul>
-</section>
-
-
-
-
-
-<section class="phase phase--lecture" id="lectures-where-the-rule-could-live">
-<div class="phase-kicker">Lecture</div>
-
-<h1 id="where-the-rule-could-live">Where the rule could live</h1>
-<p>You have a <code>.md</code> file with three to five rules about how multi-file tasks want to be factored on your codebase. Three shapes for what happens to a file like this in real use.</p>
-<h2 id="three-shapes-for-the-file">Three shapes for the file</h2>
-<ul>
-<li><strong>Slack triage.</strong> A request lands in a thread; <code>@Claude</code> routes it into Claude Code on the web, or a Slack app hands the thread to an agent runtime. The agent reads the thread plus your <code>.md</code> file and replies with the suggested slice or the next question: this is a one-liner, this is a feature slice and here is how it splits, this is an epic in three shippable pieces.</li>
-<li><strong>Issue webhook.</strong> A teammate opens, edits, or labels a GitHub issue; a GitHub Actions workflow or GitHub App picks it up. The agent reads the issue against your <code>.md</code> file, proposes labels, asks for missing info, or splits it into shippable sub-issues. Your file decides what counts as shippable.</li>
-<li><strong>Scheduled read.</strong> Once a sprint, a scheduled agent reads the backlog top-to-bottom against the <code>.md</code> file and proposes a re-shape: which items want to merge, which want to split, which want to die. You arrive to a proposal, not a queue.</li>
-</ul>
-<h2 id="the-file-is-steady-the-agent-moves">The file is steady; the agent moves</h2>
-<ul>
-<li>The <code>.md</code> file is the steady part; the agent is the moving part. Across all three shapes, better rules produce better triage.</li>
-<li>The file travels. Slack thread, issue event, sprint cadence; Claude Code on the web, GitHub Actions, a scheduled agent. Trigger and runtime are wiring choices; the file rides along unchanged. Once it exists, you have the guardrail, and each of the three shapes is a deployment decision, not a rewrite.</li>
-<li><strong>Agents build agents.</strong> An agent can help author the <code>.md</code> file. A later agent reads those rules to split the backlog. The first agent&#39;s output becomes the second agent&#39;s context.</li>
 </ul>
 </section>
 
@@ -3659,6 +3632,29 @@ If nothing earned itself, say so and stop.
 <p>Claude may reframe the session into a smart-sounding general rule. If the saved rule could apply to any codebase, ask for one specific to this session.</p>
 </blockquote>
 <p>Feel free to jump direct at the diff in <code>./CLAUDE.local.md</code>; Claude&#39;s preamble is optional reading.</p>
+<section class="phase phase--lecture" id="lectures-where-the-rule-could-live">
+<div class="phase-kicker">Lecture</div>
+
+<h1 id="where-the-rule-could-live">Where the rule could live</h1>
+<p>You can extract any rules into their own <code>.md</code> file. Eventually your Claude files get too big. Let&#39;s simulate a few uses for your <code>backlog-refinement-rules.md</code>.</p>
+<h2 id="three-agents-using-the-file">Three agents using the file</h2>
+<ul>
+<li><strong>Slack triage.</strong> A request lands in a thread; <code>@Claude</code> routes it into Claude Code on the web, or a Slack app hands the thread to an agent runtime. The agent reads the thread plus <code>backlog-refinement-rules.md</code> and replies with the suggested split or the next question.</li>
+<li><strong>Issue webhook.</strong> A teammate opens, edits, or labels a GitHub issue; a GitHub Actions workflow or GitHub App picks it up. The agent runs with the file in context: it proposes labels, asks for missing info, or splits the issue into smaller tickets. The file decides what a well-shaped ticket looks like.</li>
+<li><strong>Scheduled read.</strong> Once a day, a scheduled agent runs with the file in context, reads the backlog top-to-bottom, and proposes a re-shape: which items want to merge, which want to split, which want to die. You arrive to a proposal, not a queue.</li>
+</ul>
+<h2 id="the-file-is-steady-the-agent-moves">The file is steady; the agent moves</h2>
+<ul>
+<li>The file is the steady part; the agent is the moving part. Across all three agents, better rules produce better tickets.</li>
+<li>The file travels. Slack thread, issue event, daily schedule; Claude Code on the web, GitHub Actions, a scheduled agent. Trigger and runtime are wiring choices; the file rides along unchanged. Put it somewhere the agent can read, and each of the three is a wiring decision, not a rewrite.</li>
+<li><strong>Agents build agents.</strong> An agent can help author the file. A later agent reads those rules to split the backlog. The first agent&#39;s output becomes the second agent&#39;s context.</li>
+</ul>
+</section>
+
+
+
+
+
 <section class="phase phase--lecture" id="lectures-how-instructions-grow">
 <div class="phase-kicker">Lecture</div>
 
@@ -3667,7 +3663,7 @@ If nothing earned itself, say so and stop.
 <p>Start with real work. Capture the smallest useful lesson in <code>./CLAUDE.local.md</code>, then sharpen it from evidence. Share a short standing rule through <code>./CLAUDE.md</code> when the team should inherit it.</p>
 <p>When a rule expands into a repeatable way of doing a job, extract it into a <strong>skill</strong>: instructions and supporting material Claude loads when that work calls for them.</p>
 <figure class="diagram">
-<svg viewBox="0 0 1200 560" role="img" aria-label="One common route from real work to durable instructions. Real work surfaces a recurring correction, which can become a personal rule in CLAUDE.local.md. A team-worthy rule can move into the repository CLAUDE.md. Rules in either file can feed a skill when they expand into a repeatable way of doing a job. A separate dashed path shows that repeated work can also produce a skill directly. Most rules remain rules." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
+<svg viewBox="0 0 1200 560" role="img" aria-label="One common route from real work to durable instructions. Real work surfaces a recurring correction, which can become a personal rule in CLAUDE.local.md. A team-worthy rule can move into the repository CLAUDE.md. Rules in either file can feed a skill when they expand into a repeatable way of doing a job. A separate dashed path shows that repeated work can also produce a skill directly." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
 <rect x="0.5" y="0.5" width="1199" height="559" rx="7" fill="#efe6d2"/><rect x="12" y="12" width="1176" height="536" fill="none" stroke="#d6c8a3" stroke-width="1"/><defs><marker id="hig-teal" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#2f6b6b"/></marker><marker id="hig-rust" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a05a2c"/></marker></defs>
 <text x="48" y="45" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10" letter-spacing="3" fill="#8a3a2a">WORK TOWARD THE RIGHT INSTRUCTIONS</text><text x="48" y="70" font-family="Roboto Slab,Georgia,serif" font-size="18" fill="#1f1a13">One common route</text><text x="48" y="91" font-family="Inter,-apple-system,sans-serif" font-size="11" fill="#786c56">evidence first · promotion only when earned</text>
 <g fill="none" stroke="#2f6b6b" stroke-width="2.4" marker-end="url(#hig-teal)"><path d="M174 190 H286"/><path d="M454 190 H548"/><path d="M782 190 H892"/></g>
@@ -3680,7 +3676,7 @@ If nothing earned itself, say so and stop.
 <rect x="694" y="358" width="290" height="92" rx="8" fill="#efe6d2" stroke="#a05a2c" stroke-width="2.7"/><text x="839" y="389" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="13" font-weight="700" letter-spacing="1.4" fill="#1f1a13">SKILL.md</text><text x="839" y="410" text-anchor="middle" font-family="Inter,-apple-system,sans-serif" font-size="10" fill="#786c56">package the way of working</text><text x="839" y="431" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="9" letter-spacing="1.2" fill="#a05a2c">RUN · OBSERVE · SHARPEN AGAIN</text>
 <path d="M372 234 V404 H681" fill="none" stroke="#a05a2c" stroke-width="1.8" stroke-dasharray="6 5" marker-end="url(#hig-rust)"/><text x="500" y="391" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="8.5" letter-spacing="1" fill="#a05a2c" paint-order="stroke" stroke="#efe6d2" stroke-width="4">REPEATED WORK CAN ALSO FEED A SKILL DIRECTLY</text>
 <path d="M650 244 V484 H142 V205" fill="none" stroke="#2f6b6b" stroke-width="1.8" marker-end="url(#hig-teal)"/><text x="390" y="474" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="9" letter-spacing="1.2" fill="#2f6b6b" paint-order="stroke" stroke="#efe6d2" stroke-width="4">WORK AGAIN · SHARPEN FROM EVIDENCE</text>
-<text x="600" y="526" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-style="italic" font-size="15" fill="#4a4234">Most rules remain rules. No promotion step is mandatory.</text>
+<text x="600" y="526" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-style="italic" font-size="15" fill="#4a4234">No promotion step is mandatory.</text>
 </svg>
 </figure>
 
@@ -3710,20 +3706,18 @@ If nothing earned itself, say so and stop.
 <h2 id="key-concepts">Key Concepts</h2>
 <ul>
 <li>Structure is persuasive. A 7-item plan with headers looks like a decision even when it&#39;s a draft. Assume about 10% of it is wrong and go find which part.</li>
-<li>One kind of scrutiny catches one kind of miss; a human read and an agent&#39;s walk-down of unresolved branches catch different things, and the gap between them is where the plan-reading skill lives</li>
-<li>Assumption-silent isn&#39;t assumption-free. Every plan assumes something, and the good ones say what. Push-backs ship into memory.</li>
-<li>A plan with a specific file list has made decisions; a plan without one hasn&#39;t. The deferred ones get made mid-run, where a wrong call propagates across files and tangles.</li>
-<li>Verification steps that could actually fail are gates; verification steps that always pass are decoration</li>
-<li>You don&#39;t have to execute a plan to know it&#39;s good. We knew that long before agents; the skill is old, only the surface is new.</li>
+<li>A human read and an agent&#39;s walk-down catch different misses. The gap between them is where the plan-reading skill lives.</li>
+<li>Assumption-silent isn&#39;t assumption-free: every plan assumes something, the good ones say what. A verification step that could fail is a gate; one that always passes is decoration.</li>
+<li>A plan with a specific file list has made decisions; a plan without one hasn&#39;t. The deferred ones get made mid-run, where a wrong call tangles across files.</li>
+<li>You don&#39;t have to execute a plan to know it&#39;s good. The skill is old; only the surface is new.</li>
+<li>A rule that doesn&#39;t load doesn&#39;t exist, and where you put it decides when it fires. Fixing the plan is the first loop; changing the rule that shaped it is the second, which Argyris called double-loop learning.</li>
 </ul>
 <h2 id="pre-reads-before-module-3">Pre-reads before Module 3</h2>
 <p>Optional. The security frame Module 3 works in.</p>
 <p><strong>Read:</strong> Simon Willison, <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/" target="_blank" rel="noopener">The lethal trifecta for AI agents</a> (June 2025). Names the threat class that combines private data, untrusted content, and external communication into a compromise surface.</p>
 <p><strong>Optional deeper scan:</strong> <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener">OWASP Top 10 for LLM Applications</a>. Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface.</p>
 <h2 id="next">Next</h2>
-<p>At M3 you point the same move at a feature you&#39;re shipping: curated reads that walk the branches you can&#39;t see, and the call they surface written down in your repo where a teammate finds it before they have to ask.</p>
-<p>Ask Claude where it wrote the plan file, note the path; M3 reads it.  M3 runs security skills against the M2 task; if it doesn&#39;t have an external or user-facing surface, swap to something from your backlog that does.</p>
-<p>Come to Module 3 without that noted path and a task to point the skills at, and you&#39;ll be scrambling to reconstruct them while the threat walk is already running. Your call.</p>
+<p>At M3 you point the same move at a feature you&#39;re shipping, and the call it surfaces gets written down where a teammate finds it. Note the plan file path on your way out: M3 reads it, against a task with an external or user-facing surface.</p>
 
 </section>
 
@@ -3738,7 +3732,7 @@ If nothing earned itself, say so and stop.
 <p>M3 continues in the same repo as M1 and M2. The session opens at the first exercise.</p>
 <p>Bring the feature you planned at M2, that&#39;s the default. The plan file Claude Code wrote during plan mode is what M3 reads (you noted the path at M2 close). If your M2 task doesn&#39;t have an external or user-facing surface, swap to something from your backlog that does, code already in the repo, a Jira or Linear ticket, or a design doc all work. Too small and the agent crunches it in thirty seconds with nothing interesting to surface. Too large and you don&#39;t get through it.</p>
 <p><strong>A feature you could ship in a few hours. Not a quarter-long epic.</strong></p>
-<p>Optional pre-reads in the Module 2 to Module 3 gap: Simon Willison, <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/" target="_blank" rel="noopener">The lethal trifecta for AI agents</a>; <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener">OWASP Top 10 for LLM Applications</a> for a deeper scan.</p>
+<p>Optional pre-reads before this module: Simon Willison, <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/" target="_blank" rel="noopener">The lethal trifecta for AI agents</a>; <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener">OWASP Top 10 for LLM Applications</a> for a deeper scan.</p>
 <p>If you want the primitives this module uses at a glance, <a href="#6-subagents-agent-tool-fresh-context">subagents in the reference</a> and <a href="#7-skills">skills in the reference</a> cover what each is and when to reach for it. Optional.</p>
 <h2 id="what-youll-learn">What You&#39;ll Learn</h2>
 <p>After this module, you will be able to:</p>
@@ -3797,7 +3791,7 @@ Tell me the absolute path to the new worktree directory and which files copied a
 <pre><code>/rename m3-quality
 </code></pre>
 <ul>
-<li>Authoring and invoking the test-strategy skill both happen in this window, on this codebase. It installs to user scope, so it crosses back to the main lane on its own, and you never carry it by hand. The main lane&#39;s read on it comes later, at a separate step that revisits this window&#39;s scrollback rather than invoking anything here again; the evidence-based sharpen runs later still, back in the main lane where the compound step lives.</li>
+<li>Authoring and invoking the test-strategy skill both happen in this window, on this codebase. It installs to user scope, so it crosses back to the main lane on its own, and you never carry it by hand. The main lane reads it later, at a step that revisits this window&#39;s scrollback rather than invoking anything here again, and the evidence-based sharpen runs there too, where the compound step lives.</li>
 <li>Ask Claude to confirm the worktree state, then wait.</li>
 </ul>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -3901,9 +3895,9 @@ Report the four lines back. Then wait.
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>List my installed skills. Tell me also their storage location and whether or not they are loaded onto context.
 </code></pre>
-<p>These are the moves Claude has on hand for the rest of this module, and the load-on-invoke behavior matters for context economy later.</p>
+<p>These are the moves Claude has on hand for the rest of this module. Only each skill&#39;s name and description sit in context until you invoke one; the body loads then.</p>
 <h2 id="point-the-skill-at-your-feature">Point the skill at your feature</h2>
-<p>Name the feature and let the skill run. Ask Claude to invoke the access-control-analysis skill on the feature you name after the colon, and save the surface map to a temp directory.</p>
+<p>Pick the feature and let the skill run. Ask Claude to invoke the access-control-analysis skill on the feature you type after the colon, and save the surface map to a temp directory.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>Invoke the access-control-analysis skill on the feature I&#39;ll name. Save the surface map to a temp directory and tell me the path. Use the skill&#39;s default output shape; don&#39;t prompt me to customize.
 
@@ -3927,7 +3921,7 @@ The feature is:
 <h2 id="phase-3-add-the-surface-the-skill-over-called-and-the-one-it-missed">Phase 3: Add the surface the skill over-called, and the one it missed</h2>
 <p><em>7 min</em></p>
 <ul>
-<li>You decide which surface goes on each side of the delta. Two reads.</li>
+<li>You decide which surface goes on each side of the delta.</li>
 <li><strong>The over-call.</strong> Where did the map flag something you&#39;d have under-weighted? Lower-risk in your read, higher-risk in the skill&#39;s.</li>
 <li><strong>The miss.</strong> What&#39;s missing that you know matters? Often the &quot;weird bit&quot; of your feature, the part you&#39;d describe as not-quite-standard.</li>
 <li>If neither is obvious from a quick scan, ask Claude in chat to propose two or three candidates per side with a one-line reason each. Pick from those; push back if the reasons read generic.</li>
@@ -3951,8 +3945,8 @@ The surface the skill missed that I know matters is:
 <h2 id="phase-4-add-the-context-header-a-cold-reader-needs">Phase 4: Add the context header a cold reader needs</h2>
 <p><em>3 min</em></p>
 <ul>
-<li>You&#39;re about to hand this map to the STRIDE skill. Glance at it. If a teammate landing on this file cold would miss something the map assumes you know, add a one-line context header. If it reads, close.</li>
-<li>Most people skip this; some want the pause. Your call.</li>
+<li>You&#39;re about to hand this map to the STRIDE skill. Glance at it. If a teammate landing on this file cold would miss something the map assumes you know, add a one-line context header. If it reads clean, move on.</li>
+<li>Your call.</li>
 </ul>
 <p><strong>What happened:</strong> A short delta-note is on the record, and it is the artifact STRIDE reads next, not the raw skill output.</p>
 <h2 id="what-this-sets-up">What this sets up</h2>
@@ -4122,10 +4116,10 @@ Then, in the same response, read the strategy you just produced and answer: is i
 <li>Agents don&#39;t unilaterally change shared team infrastructure. You do.</li>
 <li>Personal stays a fine final home. Not every skill graduates to a shared kit. The test: would teammates use it as-written, and does the skill carry enough codebase truth to survive their review.</li>
 </ul>
-<p><strong>What happened:</strong> One SKILL.md tuned to your codebase&#39;s actual testing conventions (framework, mocking policy, integration boundary, flakiness patterns, regression scope), living in your personal skills folder. Shipped. The Debrief integrates the session.</p>
+<p><strong>What happened:</strong> One SKILL.md tuned to your codebase&#39;s actual testing conventions (framework, mocking policy, integration boundary, flakiness patterns, regression scope), living in your personal skills folder. Shipped. The module&#39;s close sharpens it from what the invocation showed.</p>
 <h2 id="what-this-sets-up">What this sets up</h2>
 <ul>
-<li>Module 4 reads this skill as part of the system you have. M4 (memory that reads your system) consumes the test-strategy skill as a quality-criterion anchor.</li>
+<li>Module 4 reads this skill as part of the system you have: it walks a real task against everything you&#39;ve built, and the test-strategy skill is the quality-criterion anchor in that walk.</li>
 <li>Your personal skills folder now holds one file you authored from session evidence. Promotion to a team home is the conversation you start over coffee, not the move you make here.</li>
 </ul>
 <p><strong>Note</strong> The side-quest worktree may still hold changes the agent made here: code, tests, scratch files. Its copy of <code>CLAUDE.local.md</code> came over at the fork and may have drifted from the one in your main repo. The skill crossed back on its own (it lives at user scope); everything else stays in the worktree. Those changes are yours to handle later: keep them, carry the useful parts to your main repo, or delete the worktree.</p>
@@ -4249,6 +4243,7 @@ Then, separately: if one rule about how I worked with security skills, wrote ADR
 </g>
 <text x="306" y="522" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" letter-spacing="2" fill="#8a3a2a">NAMED SO FAR: INTENT · CONTEXT · WORK</text>
 <text x="894" y="522" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9.5" letter-spacing="2" fill="#8a3a2a">THE FAR HALF · AHEAD</text>
+<text x="600" y="534" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="13.5" fill="#786c56">the soil it grows in: act under uncertainty · competence sets the ceiling · cross personal → team</text>
 </svg>
 </figure>
 
@@ -4300,7 +4295,7 @@ Then, separately: if one rule about how I worked with security skills, wrote ADR
 <blockquote>
 <p>Might be slightly leaky. Here, the simple ask is good enough.</p>
 </blockquote>
-<p>If the agent names something missed, decide whether to compound it now or accept the loss. Then clear the session. Module 4 opens a new one.</p>
+<p>If the agent names something missed, decide whether to compound it now or accept the loss. Then clear the session.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
 <pre><code>/clear
 </code></pre>
@@ -4317,10 +4312,10 @@ Then, separately: if one rule about how I worked with security skills, wrote ADR
 <p><strong>One scoped task you&#39;d send off rather than nudge bit by bit: a real slice. Bigger than a typo-fix, smaller than an epic.</strong></p>
 <p>Come to Module 4 without having picked the task and you&#39;ll be scrambling for one while the exercise is already running. Your call.</p>
 <h2 id="pre-read-before-module-4">Pre-read before Module 4</h2>
-<p>Optional. One read in the gap.</p>
-<p><strong>Read:</strong> Simon Willison, <a href="https://simonwillison.net/2025/Sep/30/designing-agentic-loops/" target="_blank" rel="noopener">Designing agentic loops</a> (September 2025). Willison names the skill of setting up an agent&#39;s session before you start it. Module 4 opens on a session you send off and step away from; this is the thinking you do before stepping away.</p>
+<p>Optional. One read.</p>
+<p><strong>Read:</strong> Simon Willison, <a href="https://simonwillison.net/2025/Sep/30/designing-agentic-loops/" target="_blank" rel="noopener">Designing agentic loops</a> (September 2025). Willison names the skill of setting up an agent&#39;s session before you start it. Module 4 opens on a session you send off and step away from; this is the thinking you do first.</p>
 <h2 id="next">Next</h2>
-<p>Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. Module 4 turns the discipline inward: memory that reads your system, not just a feature. The test-strategy conventions, the access-surface facts, and the hardening decision all feed into what M4 builds.</p>
+<p>Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. Module 4 turns the discipline inward: a real task walked against everything you have built so far, the test-strategy conventions and the access-surface facts and the hardening decision included.</p>
 <p>Optional, when your sessions start running heavy: <a href="#supplementary-token-efficiency" target="_blank" rel="noopener">Token efficiency</a> on keeping the context window lean.</p>
 
 </section>
@@ -4359,14 +4354,26 @@ Then, separately: if one rule about how I worked with security skills, wrote ADR
 <h1 id="the-agentic-engineering-progression">The agentic engineering progression</h1>
 <p>Agentic engineering is the discipline of progressively extending an engineer&#39;s reach with AI. The engineer remains the active party: choosing what to attempt, shaping the conditions, judging the result, and deciding what the system should learn.</p>
 <h2 id="part-1-the-progression">Part 1: The progression</h2>
-<p>The engineer uses AI for assistance.</p>
-<p>The engineer works with it interactively.</p>
-<p>The engineer delegates bounded outcomes.</p>
-<p>The engineer directs several independent sessions.</p>
-<p>The engineer encodes recurring work into checked loops.</p>
-<p>The engineer improves the context, memory, skills, and verification that make every subsequent session stronger.</p>
-<p>Each stage follows because the engineer encounters a new constraint. Trust enables delegation. Durable context enables longer work. Verification enables greater reach. Independent work enables parallelism. Parallelism demands coordination. Repetition reveals what belongs in a loop. Working loops make the surrounding system the highest-value thing to improve.</p>
+<p>Six levels, from assistance to a system you keep improving. Each level holds until it exposes the constraint the next one removes: what moves an engineer up is not ambition, it is a limit met in real work.</p>
 <p>Fredrik Wollsén and Jesse McCrosky describe a similar team-scale movement in <a href="https://positivelyfred.substack.com/p/the-ai-native-engineering-playbook" target="_blank" rel="noopener">The AI-Native Engineering Playbook: Crawl, Walk, Run, Fly</a>. Their labels differ. The recurring progression is from using the agent inside one task to engineering the conditions behind many tasks.</p>
+<h2 id="assistance">Assistance</h2>
+<p>AI helps with work already on your desk. It completes a function, explains a file, drafts a test. You stay beside it, supplying context and correcting each move, and you read everything before you use it.</p>
+<p><strong>Moves you up:</strong> the agent can act, not just answer. The first time you let it edit a file and run the tests while you watch, the work has a second pair of hands in it.</p>
+<h2 id="interactive-work">Interactive work</h2>
+<p>One conversation, one task. The agent reads the code, proposes a change, and acts; you steer each step and watch the result land. Working side by side is where trust starts: you see what it gets right without you, and what it should never be left alone with. It is also where you return on an unfamiliar codebase.</p>
+<p><strong>Moves you up:</strong> trust enables delegation. Once observed competence covers a whole task shape, standing beside every step is the expensive part.</p>
+<h2 id="delegating-bounded-outcomes">Delegating bounded outcomes</h2>
+<p>You hand over an outcome, not a step: the agent reads the repository, makes the change, runs the checks, and returns a diff. You have not left engineering. You have widened what you engineer: the task, the conditions around it, and the evidence that says it is done.</p>
+<p><strong>Moves you up:</strong> durable context lets a handoff stretch longer, and verification lets it stretch farther without losing control. A delegated task also leaves you waiting, and waiting is capacity.</p>
+<h2 id="directing-parallel-sessions">Directing parallel sessions</h2>
+<p>Once one task runs without your constant attention, another runs beside it, if you have a second task shaped well enough to hand over. Worktrees separate the changes, durable files carry the context, and checks establish what deserves to survive. You direct several sessions rather than one conversation.</p>
+<p><strong>Moves you up:</strong> parallelism demands coordination: handoffs, checks, merge discipline. The work of running the sessions starts to repeat, and repetition reveals what belongs in a loop.</p>
+<h2 id="encoding-checked-loops">Encoding checked loops</h2>
+<p>Recurring work becomes a loop with its own checks: the task shape is written down, the gate that judges the result is part of it, and a session can run it end to end. You review outcomes instead of keystrokes.</p>
+<p><strong>Moves you up:</strong> a working loop shifts the question. It no longer improves when you prompt harder; it improves when its surroundings do.</p>
+<h2 id="improving-the-system">Improving the system</h2>
+<p>You improve the context, memory, skills, and verification that make every subsequent session stronger. Every fix that becomes a rule and every check that becomes a gate raises the floor of all future work. The limit keeps moving outward too: eventually it is what you can review, and what your team can absorb.</p>
+<p>The measure is not maximum delegation. It is knowing what to delegate, how far to let it run, and what evidence to demand.</p>
 <h2 id="part-2-the-leverage-model">Part 2: The leverage model</h2>
 <figure class="diagram">
 <svg viewBox="0 0 1200 560" role="img" aria-label="A two-by-two map of delegated work. Horizontal axis: reach, how much you hand off. Vertical axis: calibration, whether trust was earned by a measured gate. Four states: chat-shaped work bottom-left, controlled assistance top-left, reckless autonomy bottom-right, calibrated agency top-right. A dashed ochre curve labelled the frontier rises from low reach at low calibration to high reach at high calibration, and moves outward as fast as the gates behind it." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
@@ -4417,6 +4424,8 @@ Then, separately: if one rule about how I worked with security skills, wrote ADR
 </ul>
 <p>At the high-reach edge, scale makes the distinction visible. In August 2026, Wollsén wrote in <a href="https://positivelyfred.substack.com/p/this-is-getting-ridiculous-i-shipped" target="_blank" rel="noopener">This is getting ridiculous: I shipped 490 pull requests in June</a> that he kept 30 to 40 sessions open and actively managed 10 to 15 through a working day. He estimated his four-engineer team delivered three to four times the value of an average team, far below the multiple suggested by its pull-request count.</p>
 <p>Leverage is not reach alone. It is reach that trust can keep up with.</p>
+<h2 id="one-model-not-two">One model, not two</h2>
+<p>The progression and the leverage model describe the same thing. Every <strong>Moves you up:</strong> is a check getting cheap enough to license more reach, so the levels are calibration states, not ranks. That is why an unfamiliar codebase sends you down a level, and why moving down is the model working.</p>
 
 </section>
 
@@ -4950,7 +4959,7 @@ allowed-tools:                  ← optional, restricts what the skill can touch
 <li><code>three-layer-model</code> · vision · &quot;Layer 1: Shape of one skill … Layer 2: Classification axes … Layer 3: Composition mechanisms&quot; ← none-owed</li>
 <li><code>explicit-load</code> · detail · &quot;<strong>1. Explicit load.</strong> One skill names another as a precondition.&quot; ← dino-stack</li>
 <li><code>orchestrator-composition</code> · detail · &quot;<strong>2. Orchestrator composition.</strong> <code>/ship</code> sequences the ship-half of every workflow.&quot; ← dino-stack</li>
-<li><code>four-composition-mechanisms-are-the-transferable-part</code> · vision · &quot;The four composition mechanisms below are the transferable part&quot; ← none-owed</li>
+<li><code>four-composition-mechanisms-are-the-transferable-part</code> · vision · &quot;The four composition mechanisms this page names are the move.&quot; ← none-owed</li>
 </ul>
 <p>Sources</p>
 <ul>
@@ -5048,7 +5057,7 @@ allowed-tools:                  ← optional, restricts what the skill can touch
 <h1 id="claude-code-for-engineers-reference">Claude Code for engineers: reference</h1>
 <p>Flat look-up for the primitives AE101 leans on. No pedagogy, no hand-holding. When a module says <em>&quot;see the reference for CLAUDE.md precedence&quot;</em> or <em>&quot;plan-mode options&quot;</em>, this is where.</p>
 <p>Source of truth is Anthropic&#39;s docs. Links and verbatim quotes throughout point at <a href="https://code.claude.com/docs/en/memory.md" target="_blank" rel="noopener">code.claude.com/docs/en/memory.md</a>, <a href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener">skills</a>, <a href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener">sub-agents</a>, <a href="https://code.claude.com/docs/en/settings" target="_blank" rel="noopener">settings</a>, <a href="https://code.claude.com/docs/en/hooks" target="_blank" rel="noopener">hooks</a>, <a href="https://code.claude.com/docs/en/cli-reference" target="_blank" rel="noopener">cli-reference</a>. This reference is a shortcut. When the shortcut disagrees with the docs, the docs win.</p>
-<p><strong>Last verified against docs:</strong> 2026-05-14.</p>
+<p><strong>Last verified against docs:</strong> 2026-08-15, all sixteen sections.</p>
 <p><strong>Stale if older than:</strong> 30 days. Re-verify against <a href="https://code.claude.com/docs/en/" target="_blank" rel="noopener">code.claude.com/docs/en/</a> and run a live capability check (<code>claude --version</code>, <code>/help</code>, <code>claude-code-guide</code> subagent) before the next cohort.</p>
 <hr>
 <h2 id="1-the-memory-hierarchy-where-your-rules-actually-live">1. The memory hierarchy: where your rules actually live</h2>
@@ -5180,6 +5189,8 @@ paths:
 - Use the standard error response format
 </code></pre>
 <p>Glob patterns: <code>**/*.ts</code>, <code>src/**/*</code>, <code>*.md</code>, <code>src/components/*.tsx</code>. Brace expansion supported: <code>&quot;src/**/*.{ts,tsx}&quot;</code>.</p>
+<p><strong>A rule with no <code>paths:</code> is not a lesser CLAUDE.md.</strong> It loads at launch with <em>the same priority as <code>.claude/CLAUDE.md</code></em>, which makes <code>.claude/rules/</code> a legitimate way to split a long CLAUDE.md into topic files rather than a second-class annex. All <code>.md</code> files under the directory are discovered recursively, so subdirectories organise without changing load behaviour.</p>
+<p><strong>Path-scoped rules do not survive <code>/compact</code> on their own.</strong> The project-root <code>CLAUDE.md</code> is re-read from disk and re-injected; a <code>paths:</code>-scoped rule is not, and reloads only the next time Claude touches a file matching its glob. An instruction that vanishes after compaction is usually this, a nested <code>CLAUDE.md</code>, or something you only ever said in chat.</p>
 <p><strong>User-level rules:</strong> <code>~/.claude/rules/preferences.md</code> and similar apply to every project. Project rules override user rules.</p>
 <p><strong>Symlinks supported.</strong> Link a shared rules repo into multiple projects:</p>
 <pre><code class="language-bash">ln -s ~/shared-claude-rules .claude/rules/shared
@@ -5217,18 +5228,30 @@ ln -s ~/company-standards/security.md .claude/rules/security.md
 - personal preferences @~/.claude/my-preferences.md
 </code></pre>
 <p>Relative paths resolve relative to the importing file, not the working directory. Recursion depth: <strong>four hops maximum.</strong></p>
-<p><strong>First-time approval:</strong> the first time a project uses external imports, Claude Code shows an approval dialog. If you decline, imports stay disabled and the dialog doesn&#39;t reappear.</p>
-<p>Docs: <a href="https://code.claude.com/docs/en/memory.md#import-additional-files" target="_blank" rel="noopener">memory.md § Import additional files</a>.</p>
+<p>A path in backticks is not an import: <code>`@README`</code> stays literal, <code>@README</code> outside backticks pulls the file in. Import parsing skips code spans and fenced blocks.</p>
+<p><strong>Imports organise; they do not save context.</strong> Every imported file loads at launch, in full, exactly as if you had pasted it. If the goal is a smaller startup cost, the tool is a <code>paths:</code>-scoped rule or a skill, not an import.</p>
+<p><strong>First-time approval:</strong> the first time a project uses external imports — an import resolving outside the working directory, like <code>@~/.claude/…</code> — Claude Code shows an approval dialog. If you decline, imports stay disabled and the dialog doesn&#39;t reappear. Imports inside user-scope files load without the dialog; you wrote those.</p>
+<p><strong><code>AGENTS.md</code>: Claude Code does not read it.</strong> If your repo already keeps one for other coding agents, don&#39;t duplicate — import it from a <code>CLAUDE.md</code> and add Claude-specific instructions underneath:</p>
+<pre><code class="language-markdown">@AGENTS.md
+
+## Claude Code
+
+Use plan mode for changes under `src/billing/`.
+</code></pre>
+<p>A symlink (<code>ln -s AGENTS.md CLAUDE.md</code>) works when you have nothing Claude-specific to add, though on Windows that needs Administrator or Developer Mode, so prefer the import. Either way, confirm with <code>/context</code> that <code>CLAUDE.md</code> shows under <strong>Memory files</strong>.</p>
+<p><code>/import</code> does the heavier version once: it appends a copy of another agent&#39;s instruction files into the matching <code>CLAUDE.md</code> and carries over MCP servers, commands, subagents and skills. Requires v2.1.213 or later. <code>/init</code> separately reads Cursor and Copilot rules while generating a <code>CLAUDE.md</code>.</p>
+<p>Docs: <a href="https://code.claude.com/docs/en/memory.md#import-additional-files" target="_blank" rel="noopener">memory.md § Import additional files</a>, <a href="https://code.claude.com/docs/en/memory.md#agents-md" target="_blank" rel="noopener">memory.md § AGENTS.md</a>.</p>
 <hr>
 <h2 id="5-plan-mode-at-depth">5. Plan mode at depth</h2>
 <p>Plan mode: Claude researches and proposes a plan instead of writing files. You approve the plan; Claude executes.</p>
 <p><strong>Toggle on:</strong></p>
 <ul>
-<li>Prompt: <em>&quot;Enable plan mode.&quot;</em> or prefix a single prompt with <code>/plan</code></li>
-<li>Shift+Tab cycles permission modes (default → acceptEdits → plan). <code>auto</code> and <code>bypassPermissions</code> slot in after <code>plan</code> only when enabled per-account (live-verified 2026-05-14)</li>
+<li>Prefix a single prompt with <code>/plan</code>, optionally naming the task: <code>/plan fix the auth bug</code></li>
+<li>Shift+Tab cycles permission modes. From <code>auto</code>, the first press switches to <code>default</code>; the cycle then runs default → acceptEdits → plan. Enabled optional modes slot in after <code>plan</code>, <code>bypassPermissions</code> first and <code>auto</code> last</li>
+<li>Start there: <code>claude --permission-mode plan</code>, or <code>&quot;defaultMode&quot;: &quot;plan&quot;</code> under <code>permissions</code> in <code>.claude/settings.json</code></li>
 <li>Desktop mode dropdown: pick <em>Plan</em></li>
 </ul>
-<p><strong>Five approval paths when the plan is ready</strong> (live-verified 2026-05-14 against <code>code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode</code>):</p>
+<p><strong>Three approval paths when the plan is ready</strong> (live-verified 2026-08-15 against <code>code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode</code>):</p>
 <table>
 <thead>
 <tr>
@@ -5238,35 +5261,26 @@ ln -s ~/company-standards/security.md .claude/rules/security.md
 </tr>
 </thead>
 <tbody><tr>
-<td><strong>Approve and start in auto mode</strong></td>
-<td>Full execution, no further approval</td>
-<td>Plan looks right, work is reversible or low-stakes; auto-mode requirements met</td>
+<td><strong>Yes, and use auto mode</strong></td>
+<td>Full execution, no further approval. Reads <em>Yes, auto-accept edits</em> where auto mode isn&#39;t available</td>
+<td>Plan looks right, work is reversible or low-stakes</td>
 </tr>
 <tr>
-<td><strong>Approve and accept edits</strong></td>
-<td>Auto-approves file edits; Bash still prompts on non-filesystem commands</td>
-<td>Plan looks right, edits-only is the shape of the work</td>
-</tr>
-<tr>
-<td><strong>Approve and review each edit manually</strong></td>
+<td><strong>Yes, manually approve edits</strong></td>
 <td>Claude pauses per file write</td>
 <td>Plan looks right, work touches something you need to watch</td>
 </tr>
 <tr>
-<td><strong>Keep planning with feedback</strong></td>
+<td><strong>No, keep planning</strong></td>
 <td>Push back with specific items; Claude regenerates the plan</td>
 <td>Plan is 80% there; one or two named fixes</td>
 </tr>
-<tr>
-<td><strong>Refine with Ultraplan</strong></td>
-<td>Hand off to a Claude Code on the web session in plan mode for browser-based review</td>
-<td>Plan needs more thought than you want to spend in-session; the browser view gives you per-section comments</td>
-</tr>
 </tbody></table>
+<p>Approving exits plan mode and switches the session into whichever permission mode the option names, so Claude starts editing immediately.</p>
+<p><strong>Read the plan somewhere you can actually read it.</strong> <code>Ctrl+G</code> opens the proposed plan in your default text editor, and edits you make there carry into what Claude executes.</p>
 <p><strong>Exit without executing:</strong> Shift+Tab again, or mode dropdown.</p>
-<p><strong>Keep-planning-with-feedback (before approval):</strong> instead of approving, push back with specific items. Claude regenerates. Use when you want to sharpen the plan without restarting the whole prompt.</p>
 <p><strong>AE101 cross-refs:</strong> M2 exercise <code>push-back-on-the-plan.md</code> teaches the two-read pattern (human push-back → Pocock <code>grill-me</code> second-pass → approve). M1 deliberately runs without plan mode (trivial bug doesn&#39;t earn it).</p>
-<p>Docs: <a href="https://code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode" target="_blank" rel="noopener">plan mode</a>, <a href="https://code.claude.com/docs/en/ultraplan" target="_blank" rel="noopener">Ultraplan</a>.</p>
+<p>Docs: <a href="https://code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode" target="_blank" rel="noopener">plan mode</a>.</p>
 <hr>
 <h2 id="6-subagents-agent-tool-fresh-context">6. Subagents: Agent tool, fresh context</h2>
 <p>When you need Claude to do structured work in a fresh context, spawn a subagent. Good fits: breadth-first audits, long structured reports, parallel work on different concerns.</p>
@@ -5281,20 +5295,79 @@ ln -s ~/company-standards/security.md .claude/rules/security.md
 <li><strong>Subagent:</strong> breadth-first audits, long structured reports that would clutter scrollback, genuinely parallel work, invoking a skill on a one-shot bounded job.</li>
 <li><strong>Main thread:</strong> interactive authoring (one-question-at-a-time), iterative steering where you want to see every reply, short jobs where context-switch cost &gt; benefit.</li>
 </ul>
-<p><strong>Persistent memory for subagents:</strong> subagents can maintain their own auto memory. See <a href="https://code.claude.com/docs/en/sub-agents#enable-persistent-memory" target="_blank" rel="noopener">subagent configuration</a>.</p>
+<p><strong>What a subagent starts with:</strong> every level of the CLAUDE.md hierarchy the main conversation loads — user, project, <code>CLAUDE.local.md</code>, managed policy. The built-in Explore and Plan agents are the exception and skip it. What does <strong>not</strong> cross over is the main conversation&#39;s auto memory, so a fact Claude learned about your repo this session is not something the subagent knows.</p>
+<p><strong>Persistent memory for subagents:</strong> a subagent can keep auto memory of its own, in its own directory, scoped <code>user</code> / <code>project</code> / <code>local</code>. See <a href="https://code.claude.com/docs/en/sub-agents#enable-persistent-memory" target="_blank" rel="noopener">subagent configuration</a>.</p>
 <p><strong>AE101 cross-refs:</strong> M3 Ex1/Ex2 invoke the curated access-control + STRIDE skills as subagents; Ex3 (test-strategy authoring) stays main-thread. M4 Phase 2 audit runs as a subagent. The discrimination <em>&quot;which job belongs in which thread&quot;</em> is a named learning goal in M3.</p>
 <p>Docs: <a href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener">sub-agents</a>.</p>
 <hr>
 <h2 id="7-skills">7. Skills</h2>
-<p>Scoped, named capabilities. Markdown file with frontmatter + instructions, lives in <code>.claude/skills/&lt;name&gt;/SKILL.md</code> (or equivalent team-kit location per the pre-engagement contract).</p>
+<p>Scoped, named capabilities. Markdown file with frontmatter + instructions, in a folder whose name becomes the command you type.</p>
+<p><strong>Three places a skill can live</strong>, and they do not all mean the same thing:</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Path</th>
+<th>Available in</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Personal</td>
+<td><code>~/.claude/skills/&lt;name&gt;/SKILL.md</code></td>
+<td>all your projects</td>
+</tr>
+<tr>
+<td>Project</td>
+<td><code>.claude/skills/&lt;name&gt;/SKILL.md</code></td>
+<td>this project only</td>
+</tr>
+<tr>
+<td>Plugin</td>
+<td><code>&lt;plugin&gt;/skills/&lt;name&gt;/SKILL.md</code></td>
+<td>wherever the plugin is enabled</td>
+</tr>
+</tbody></table>
+<p><strong>Personal beats project on a name collision</strong> — a <code>deploy</code> skill in both places means <code>/deploy</code> runs the personal one, and enterprise beats both. So a skill you wrote months ago in <code>~/.claude/skills/</code> can silently shadow the one your team committed. Plugin skills are namespaced <code>plugin-name:skill-name</code> and cannot collide. A skill in a subdirectory&#39;s <code>.claude/skills/</code> loads the first time Claude reads or edits a file under that directory, which is how a monorepo package ships its own.</p>
 <p><strong>Two invocation modes:</strong></p>
 <ul>
-<li>Claude invokes when it determines the skill is relevant to the current task</li>
-<li>You invoke explicitly: <em>&quot;apply the <code>stride</code> skill to this feature&quot;</em></li>
+<li>Claude invokes it when the <code>description</code> matches what you are doing — which is what that field is for; write it as <em>when to use this</em>, not as a title</li>
+<li>You invoke it explicitly by typing <code>/&lt;skill-name&gt;</code></li>
 </ul>
+<p><strong>Custom commands and skills are now the same thing.</strong> <code>.claude/commands/deploy.md</code> and <code>.claude/skills/deploy/SKILL.md</code> both give you <code>/deploy</code>. Existing command files keep working; skills add a folder for supporting files and the frontmatter below.</p>
+<p><strong>Frontmatter worth knowing</strong> (all optional; <code>description</code> is the one that earns its keep):</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>disable-model-invocation: true</code></td>
+<td>only you can fire it, with <code>/name</code>. For destructive or expensive procedures</td>
+</tr>
+<tr>
+<td><code>user-invocable: false</code></td>
+<td>only Claude can fire it. For background knowledge that should never be a menu item</td>
+</tr>
+<tr>
+<td><code>allowed-tools</code></td>
+<td>tools pre-approved for the turn that invokes the skill; the grant clears at your next message</td>
+</tr>
+<tr>
+<td><code>context: fork</code></td>
+<td>runs the skill in its own subagent context instead of inline</td>
+</tr>
+<tr>
+<td><code>model</code>, <code>effort</code></td>
+<td>override for the duration of the skill</td>
+</tr>
+</tbody></table>
+<p><strong>Edits are picked up live</strong> — add, change or delete a skill under <code>~/.claude/skills/</code> or the project&#39;s <code>.claude/skills/</code> and the running session sees it, no restart. A brand-new top-level skills directory that did not exist at startup does need one.</p>
+<p><strong>A personal skill does not travel.</strong> Cowork sessions, cloud sessions and Routines do not read <code>~/.claude/skills/</code> on your machine — they load what is enabled on your claude.ai account, plus (for cloud) skills committed to the repo. A routine that invokes a skill only you have on disk reports it as not found.</p>
 <p><strong>When to reach for a skill vs. a rule:</strong></p>
 <ul>
-<li><strong>Skill:</strong> task-specific, loads on demand, reusable move (<em>&quot;review this against our security policy&quot;</em>)</li>
+<li><strong>Skill:</strong> task-specific, loads on demand, reusable move (<em>&quot;review this against our security policy&quot;</em>). Its body stays in context once loaded, so keep it short</li>
 <li><strong>Rule:</strong> always-on (or path-scoped), constraints Claude should honour whenever active</li>
 </ul>
 <p><strong>AE101 cross-refs:</strong> M3 ships two curated skills (<code>access-control-analysis</code>, <code>stride</code>) and you author one (<code>test-strategy</code>).</p>
@@ -5302,21 +5375,25 @@ ln -s ~/company-standards/security.md .claude/rules/security.md
 <hr>
 <h2 id="8-connectors--mcp">8. Connectors / MCP</h2>
 <p>Covered separately in <code>reference/mcp-and-connectors.md</code>. Per-tracker install (GitHub Issues via <code>gh</code> CLI, Jira via Atlassian Rovo MCP, Linear via Composio or Merge), tenant-admin fallbacks, freshness-dated.</p>
-<p>Short version: <code>+</code> button next to the prompt, or Settings → Connectors. OAuth flow. Tenant admin gate for M365 / Google Workspace. Screenshot fallback when IT hasn&#39;t green-lit yet.</p>
+<p>Short version: <code>+</code> button next to the prompt box → <strong>Connectors</strong>, or Settings → Connectors, or <strong>Manage connectors</strong> from the Connectors menu. OAuth flow. Tenant admin gate for M365 / Google Workspace. Screenshot fallback when IT hasn&#39;t green-lit yet.</p>
+<p>Two boundaries worth knowing before you plan around this. The <code>+</code> button is not there in cloud or WSL sessions — Routines configure their connectors at creation time instead. And the Desktop app&#39;s <strong>Customize</strong> sidebar, which is where connectors, skills and plugins are managed together, syncs through your claude.ai account rather than the CLI&#39;s <code>~/.claude</code> — so the Cowork tab and the Code tab are not looking at the same configuration.</p>
+<p>Connectors are MCP servers with a graphical setup flow. Anything not on the list is a manual MCP server entry in a settings file.</p>
 <p>Docs: <a href="https://code.claude.com/docs/en/desktop" target="_blank" rel="noopener">Claude Code desktop → Connectors</a>.</p>
 <hr>
 <h2 id="9-long-running-shapes-loop-scheduled-tasks-routines-goal">9. Long-running shapes: <code>/loop</code>, scheduled tasks, Routines, <code>/goal</code></h2>
 <p>Four primitives. Pick by intent. Composes with any installed skill.</p>
-<p><strong><code>/loop</code>: in-session recurring.</strong> Two forms (re-verified 2026-05-25 against <code>code.claude.com/docs/en/scheduled-tasks</code>; the delivery-time scheduling-primitive recheck this date covers the Desktop and Routines blocks below too):</p>
+<p><strong><code>/loop</code>: in-session recurring.</strong> Two forms (re-verified 2026-08-15 against <code>code.claude.com/docs/en/scheduled-tasks</code>; the delivery-time scheduling-primitive recheck this date covers the Desktop and Routines blocks below too):</p>
 <ul>
 <li><strong>Fixed interval:</strong> <code>/loop 5m &lt;prompt&gt;</code> runs the prompt every 5 minutes while the session is open. Closes when you close the session.</li>
 <li><strong>Self-paced:</strong> <code>/loop &lt;prompt&gt;</code> (omit interval). Claude picks the cadence (1 min to 1 hour) based on activity. Short waits while a build is finishing, longer waits when nothing is pending. Bare <code>/loop</code> (no prompt either) runs the built-in maintenance prompt at a dynamically chosen interval, or a <code>.claude/loop.md</code> if you&#39;ve written one.</li>
 </ul>
+<p>Press <code>Esc</code> while a loop waits to clear the pending wakeup. Recurring tasks expire seven days after creation — one final fire, then they delete themselves — so a loop you forget about has a floor on how long it can run.</p>
 <p>Use for polling during a work block, watching a build, monitoring a long-running task&#39;s intermediate output, continuous polish on active work. <em>&quot;Check the build every 5 minutes until it passes.&quot;</em> <em>&quot;Re-run the verifier every 2 minutes on each new commit.&quot;</em> Ralph-style re-feed sits here.</p>
-<p><strong>Desktop scheduled tasks: local (the everyday choice).</strong> Sidebar: <strong>Routines → New routine → choose Local.</strong> Set the name, instructions, and schedule. Runs on your laptop when the task fires; uses your local config files and connectors.</p>
-<p><strong>Missed-run behavior:</strong> if the laptop was asleep at scheduled time, Claude Code catches up <strong>once</strong> for the most recently missed slot (within a 7-day window). A daily task missed for three days runs once on wake, not three times. Encode time-awareness in the prompt if catch-up would misfire (<em>&quot;only run if it&#39;s before 10:00am; otherwise report skipped&quot;</em>).</p>
-<p><strong>Routines / <code>/schedule</code>: remote (Anthropic&#39;s cloud).</strong> Run <code>/schedule daily PR review at 9am</code> in the CLI (a one-off like <code>/schedule tomorrow at 9am …</code> works too), or sidebar: <strong>Routines → New routine → choose Remote.</strong> Runs on Anthropic&#39;s infra regardless of your laptop, on Pro/Max/Team/Enterprise with Claude Code on the web enabled. <strong>Requires a GitHub repo</strong> as working directory (cloned fresh each run). AE101&#39;s default assumption is a local repo, so Routines is out-of-scope for core modules. Flag for later if your org has cloud-Git workflows. CLI <code>/schedule</code> creates scheduled triggers only; API and GitHub-event triggers are web-only. No catch-up on wake (the cloud doesn&#39;t sleep).</p>
-<p><strong><code>/goal &lt;condition&gt;</code>: condition-driven autonomy.</strong> Set a verifiable completion condition. Claude keeps working turn after turn until the condition holds, then stops. Status with bare <code>/goal</code>, stop with <code>/goal clear</code>. The runtime evaluates the condition against what showed up in the transcript, so the condition has to be demonstrable in chat. <em>&quot;All tests pass&quot;</em> works. <em>&quot;Code is optimised&quot;</em> doesn&#39;t (too subjective). Different shape from the three above: the condition drives it, not a schedule or an interval. The runtime-shipped sibling of the verifier you author later in the training. Verified live 2026-05-15 against Claude Code 2.1.142.</p>
+<p><strong>Desktop scheduled tasks: local (the everyday choice).</strong> Sidebar: <strong>Routines → New routine → choose Local.</strong> Set the name, instructions, and schedule. Runs on your laptop when the task fires; uses your local config files and connectors. A per-task worktree toggle gives each run its own isolated checkout instead of your working directory as it currently stands, uncommitted changes and all.</p>
+<p><strong>Tasks fire only while the app is open and the machine is awake.</strong> Settings → <strong>Desktop app → General → Keep computer awake</strong> is the switch for that; closing the lid still sleeps it.</p>
+<p><strong>Missed-run behavior:</strong> if the laptop was asleep at scheduled time, Claude Code catches up <strong>once</strong> for the most recently missed slot (within a 7-day window). A daily task missed for three days runs once on wake, not three times. Encode time-awareness in the prompt if catch-up would misfire (<em>&quot;only run if it&#39;s before 10:00am; otherwise report skipped&quot;</em>) — a 9am task can land at 11pm.</p>
+<p><strong>Routines / <code>/schedule</code>: remote (Anthropic&#39;s cloud).</strong> Run <code>/schedule daily PR review at 9am</code> in the CLI (a one-off like <code>/schedule tomorrow at 9am …</code> works too), or sidebar: <strong>Routines → New routine → choose Remote.</strong> Runs on Anthropic&#39;s infra regardless of your laptop, on Pro/Max/Team/Enterprise with Claude Code on the web enabled. <strong>Requires a GitHub repo</strong> as working directory (cloned fresh each run). AE101&#39;s default assumption is a local repo, so Routines is out-of-scope for core modules. Flag for later if your org has cloud-Git workflows. <code>/schedule list</code>, <code>update</code> and <code>run</code> manage existing routines from the CLI; GitHub-event triggers can be attached from either surface (CLI path needs v2.1.225+), while API-trigger tokens are generated on the web only. No catch-up on wake (the cloud doesn&#39;t sleep). <strong>Routines are a research preview</strong> — behaviour and limits may change under you.</p>
+<p><strong><code>/goal &lt;condition&gt;</code>: condition-driven autonomy.</strong> Set a verifiable completion condition. Claude keeps working turn after turn until the condition holds <strong>or it judges the condition impossible</strong>, then stops — so a stopped goal is not by itself evidence the condition was met. Status with bare <code>/goal</code>; <code>clear</code>, <code>stop</code>, <code>off</code>, <code>reset</code>, <code>none</code> or <code>cancel</code> all end it early. The runtime evaluates the condition against what showed up in the transcript, so the condition has to be demonstrable in chat. <em>&quot;All tests pass&quot;</em> works. <em>&quot;Code is optimised&quot;</em> doesn&#39;t (too subjective). Different shape from the three above: the condition drives it, not a schedule or an interval. The runtime-shipped sibling of the verifier you author later in the training. Verified live 2026-05-15 against Claude Code 2.1.142.</p>
 <h3 id="when-each-fits">When each fits</h3>
 <table>
 <thead>
@@ -5368,10 +5445,12 @@ ln -s ~/company-standards/security.md .claude/rules/security.md
 <p>Default location:</p>
 <pre><code class="language-text">~/.claude/projects/&lt;encoded-project-path&gt;/&lt;session-id&gt;.jsonl
 </code></pre>
-<p>The encoded project path is the absolute working-directory path with <code>/</code> replaced by <code>-</code>. A repo at <code>/Users/me/Projects/checkout</code> maps to:</p>
+<p>The encoded project path is the absolute working-directory path with <strong>every non-alphanumeric character</strong> replaced by <code>-</code> — not just the slashes. A repo at <code>/Users/me/Projects/checkout</code> maps to:</p>
 <pre><code class="language-text">~/.claude/projects/-Users-me-Projects-checkout/
 </code></pre>
+<p>but a repo at <code>/Users/me/Projects/check.out_v2</code> maps to <code>-Users-me-Projects-check-out-v2</code>, so do not construct the path by hand from a repo name with a dot, an underscore or a space in it. If the converted name would run past 200 characters it is truncated to 200 with a hash of the full path appended. <code>CLAUDE_CONFIG_DIR</code> moves the whole tree elsewhere.</p>
 <p>In a worktree, this matters. The transcript folder usually follows the working directory where that session ran. The original repo and the worktree may have different encoded folders.</p>
+<p><strong>Transcripts expire.</strong> The default retention is 30 days (<code>cleanupPeriodDays</code> in <code>settings.json</code>). A transcript you intend to read months later is one you export, not one you leave on disk and trust.</p>
 <p>Your current session knows its own transcript. The <code>CLAUDE_CODE_SESSION_ID</code> environment variable holds this session&#39;s id in Bash and PowerShell tool subprocesses, and the folder is the working directory encoded as above, so the full path is <code>~/.claude/projects/&lt;encoded-cwd&gt;/$CLAUDE_CODE_SESSION_ID.jsonl</code>. That makes the durable move recording, not searching: when a session will be read by a later session, write its transcript path down while you have it. The modules do this, recording the path into <code>task.md</code> on the un-packaged session and <code>plan.md</code> on the packaged re-send, so the next session reads it instead of hunting.</p>
 <p>If you arrive at a session with no recorded path, you can still find its transcript by recency. Ask Claude to locate and read it; expect a narration before the findings, skim past the opening to the numbered list.</p>
 <p><strong>Prompt</strong> <em>(Claude Code)</em></p>
@@ -5388,7 +5467,8 @@ Then compare that read against `git log`, `git diff`, and branch state. Tell me 
 Report literal counts and quoted text: actual restart numbers, exact correction messages. No softened summary.
 </code></pre>
 <p>Why both layers: git tells you what changed. The transcript tells you why the agent changed it, what it almost did, what it misunderstood, and where you steered. A good post-session read uses both.</p>
-<p><strong>Subagents:</strong> subagent transcripts may sit in a <code>subagents/</code> folder beside the parent session transcript. If a session used subagents, ask Claude to read the parent transcript first, then any subagent files it references.</p>
+<p><strong>Subagents:</strong> a session that spawned subagents gets a folder named for its own session id beside the <code>.jsonl</code>, holding <code>subagents/agent-&lt;id&gt;.jsonl</code> (plus a <code>.meta.json</code> per agent) and a <code>tool-results/</code> folder where oversized tool outputs are spilled to disk. Ask Claude to read the parent transcript first, then any subagent files it references. That <code>tool-results/</code> folder is worth knowing about on its own: it is where the full text of a large read or fetch survives, even when the parent transcript only kept a preview.</p>
+<p><strong>Read it, don&#39;t parse it.</strong> The per-line entry format is internal to Claude Code and changes between releases, so a script that walks the JSONL breaks on an upgrade. Asking Claude to read the file is fine — that is what the prompt above does. For anything you intend to automate, use <code>/export</code> (renders the conversation as readable text, to clipboard or a file) or the <code>transcript_path</code> field that hooks and status-line commands already receive.</p>
 <p><strong>Security note:</strong> transcripts can contain secrets, customer data, tickets, pasted logs, and failed attempts. Treat them as sensitive local artifacts. Do not commit them. Do not paste a whole transcript into another system. Point Claude at the file and ask for the narrow read you need.</p>
 <p><strong>AE101 cross-refs:</strong> M4 leaves an un-packaged session behind. M5 reads the transcript plus git state to diagnose what packaging changes.</p>
 <hr>
@@ -5399,9 +5479,9 @@ Report literal counts and quoted text: actual restart numbers, exact correction 
 <p><strong><code>/clear</code> and <code>/compact</code>: two verbs split the work</strong> (live-verified 2026-05-14 against <code>code.claude.com/docs/en/commands</code>):</p>
 <ul>
 <li><strong><code>/clear</code></strong> starts a new conversation with empty context. The previous conversation stays available in <code>/resume</code> (pass a name to label it in the picker: <code>/clear my-old-thread</code>). Aliases: <code>/reset</code>, <code>/new</code>. Project memory (CLAUDE.md, rules, auto-memory) re-loads on the fresh thread. Use when the task is genuinely done and the next task wants its own slate.</li>
-<li><strong><code>/compact</code></strong> summarises the conversation in place. Same thread, smaller context. Project-root <code>CLAUDE.md</code> re-reads from disk and re-injects; nested subdirectory CLAUDE.md files <strong>do NOT</strong> re-inject (they reload next time Claude reads a file in that subdir); conversation-only instructions (things you said in chat but didn&#39;t write to a file) are LOST. Optionally pass focus instructions: <code>/compact keep the auth-flow diagnosis verbatim</code>. Use when you want to keep going on the same task with less weight.</li>
+<li><strong><code>/compact</code></strong> summarises the conversation in place. Same thread, smaller context. Project-root <code>CLAUDE.md</code> re-reads from disk and re-injects; nested subdirectory CLAUDE.md files and rules carrying <code>paths:</code> frontmatter <strong>do NOT</strong> re-inject (they reload next time Claude reads a file in that subdir, or a file matching the rule&#39;s patterns); conversation-only instructions (things you said in chat but didn&#39;t write to a file) are LOST. Optionally pass focus instructions: <code>/compact keep the auth-flow diagnosis verbatim</code>. Use when you want to keep going on the same task with less weight.</li>
 </ul>
-<p>If an instruction disappeared after <code>/compact</code>, it was either conversation-only or lives in a subdirectory CLAUDE.md that hasn&#39;t reloaded. Persistent instructions belong in a file, not just in scrollback.</p>
+<p>If an instruction disappeared after <code>/compact</code>, it was conversation-only, or lives in a subdirectory CLAUDE.md that hasn&#39;t reloaded, or is a path-scoped rule that hasn&#39;t matched a file since. Persistent instructions belong in a file, not just in scrollback — and a path-scoped one belongs where the work will touch it.</p>
 <p>Docs: <a href="https://code.claude.com/docs/en/memory.md#view-and-edit-with-memory" target="_blank" rel="noopener">memory.md § View and edit with <code>/memory</code></a>, <a href="https://code.claude.com/docs/en/commands" target="_blank" rel="noopener">commands § <code>/context</code> / <code>/clear</code> / <code>/compact</code></a>, <a href="https://code.claude.com/docs/en/context-window#what-survives-compaction" target="_blank" rel="noopener">context-window § What survives compaction</a>.</p>
 <hr>
 <h2 id="12---append-system-prompt-system-prompt-level-instructions">12. <code>--append-system-prompt</code>: system-prompt-level instructions</h2>
@@ -5409,12 +5489,42 @@ Report literal counts and quoted text: actual restart numbers, exact correction 
 <p>For instructions that need system-prompt-level treatment (stronger adherence, harder to override mid-conversation), use <code>--append-system-prompt</code>:</p>
 <pre><code class="language-bash">claude --append-system-prompt &quot;Never edit production config files.&quot;
 </code></pre>
-<p>Passed at every invocation. Suited for scripts, CI, and automation more than interactive use. For interactive sessions, wrap in a shell alias or launcher.</p>
+<p>Passed at every invocation. Suited for scripts, CI, and automation more than interactive use, though nothing stops you using it interactively. For a rule long enough to be worth version control, <code>--append-system-prompt-file ./extra-rules.txt</code> takes the path instead of the string — better than wrapping a growing quoted blob in a shell alias.</p>
+<p><strong>The full family</strong>, because reaching for the wrong one is easy:</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--append-system-prompt &quot;&lt;text&gt;&quot;</code></td>
+<td>adds to the end of the default system prompt</td>
+</tr>
+<tr>
+<td><code>--append-system-prompt-file &lt;path&gt;</code></td>
+<td>same, read from a file</td>
+</tr>
+<tr>
+<td><code>--system-prompt &quot;&lt;text&gt;&quot;</code></td>
+<td><strong>replaces</strong> the default system prompt entirely</td>
+</tr>
+<tr>
+<td><code>--system-prompt-file &lt;path&gt;</code></td>
+<td>same, from a file</td>
+</tr>
+<tr>
+<td><code>--append-subagent-system-prompt &quot;&lt;text&gt;&quot;</code></td>
+<td>appends to every subagent&#39;s prompt. <code>-p</code> runs only</td>
+</tr>
+</tbody></table>
+<p>The two <code>--system-prompt</code> forms replace rather than append — that discards the default prompt, and with it most of what makes Claude Code behave like Claude Code. Append unless you specifically want a different tool.</p>
 <p>Docs: <a href="https://code.claude.com/docs/en/cli-reference#system-prompt-flags" target="_blank" rel="noopener">cli-reference § system-prompt flags</a>.</p>
 <hr>
 <h2 id="13-hooks-runtime-extension-points">13. Hooks: runtime extension points</h2>
 <p>A hook is a small script the runtime invokes on a named event. The script fires deterministically: the agent has no say in whether it runs. The closing lecture on packaging names that property <em>&quot;hooks always fire.&quot;</em> It&#39;s what makes hooks the right home for anything that <strong>must</strong> happen versus what&#39;s <strong>recommended</strong> (prompts and <code>CLAUDE.md</code> rules carry the recommended layer).</p>
-<p><strong>Nine canonical events</strong> (verified 2026-05-15 against Claude Code 2.1.142: five via the AE101 curriculum repository&#39;s working <code>.claude/settings.json</code> configs, four via the CLI&#39;s own hook-event listing):</p>
+<p><strong>Ten events carry almost everything you&#39;ll write.</strong> The docs define 31 in total; reach for the full list when none of these fits (re-verified 2026-08-15 against <code>code.claude.com/docs/en/hooks</code>):</p>
 <table>
 <thead>
 <tr>
@@ -5467,6 +5577,11 @@ Report literal counts and quoted text: actual restart numbers, exact correction 
 <td><code>PreCompact</code></td>
 <td>Before auto-compaction summarises history</td>
 <td>Capture mid-context state to disk before it folds into the summary</td>
+</tr>
+<tr>
+<td><code>InstructionsLoaded</code></td>
+<td>When a <code>CLAUDE.md</code> or <code>.claude/rules/*.md</code> file loads into context, at session start and on lazy load</td>
+<td>Log exactly which instruction files loaded and when — the tool for debugging a path-scoped rule that isn&#39;t firing</td>
 </tr>
 </tbody></table>
 <p>AE101&#39;s own curriculum repository wires five of these in its <code>.claude/settings.json</code> (SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, Stop). Useful working configs to grep when authoring your first hook.</p>
@@ -5599,7 +5714,7 @@ Report literal counts and quoted text: actual restart numbers, exact correction 
 <p><strong>&quot;Claude isn&#39;t following my CLAUDE.md.&quot;</strong> Run <code>/memory</code> first. Check the file actually loaded. If loaded and still not followed: specificity (<em>&quot;Use 2-space indentation&quot;</em> beats <em>&quot;format code nicely&quot;</em>); conflict (two files giving contradictory guidance); and the fundamental non-enforcement: CLAUDE.md is context, not a system-prompt constraint. For strict adherence use <code>--append-system-prompt</code> or a hook.</p>
 <p><strong>&quot;Auto memory saved something weird.&quot;</strong> <code>/memory</code> → open the auto memory folder. Plain markdown. Edit or delete.</p>
 <p><strong>&quot;CLAUDE.md is too large (&gt;200 lines) and adherence is dropping.&quot;</strong> Move path-scoped rules to <code>.claude/rules/</code>. Move rare-but-needed content to <code>@path</code> imports (note: imports still load into context at launch, so they don&#39;t reduce size. They only organise). Trim what isn&#39;t needed every session.</p>
-<p><strong>&quot;Instructions seem lost after <code>/compact</code>.&quot;</strong> Project-root CLAUDE.md survives; nested subdirectory CLAUDE.md and conversation-only instructions don&#39;t. Put persistent rules in a file at a level that survives.</p>
+<p><strong>&quot;Instructions seem lost after <code>/compact</code>.&quot;</strong> Project-root CLAUDE.md survives; nested subdirectory CLAUDE.md, <code>paths:</code>-scoped rules, and conversation-only instructions don&#39;t. Put persistent rules in a file at a level that survives.</p>
 <p><strong>&quot;Multiple CLAUDE.md files in a monorepo are polluting context.&quot;</strong> <code>claudeMdExcludes</code> in settings (§ 14).</p>
 <p><strong>&quot;I want to verify exactly which files loaded and why.&quot;</strong> <code>InstructionsLoaded</code> hook (§ 13).</p>
 <p>Docs: <a href="https://code.claude.com/docs/en/memory.md#troubleshoot-memory-issues" target="_blank" rel="noopener">memory.md § Troubleshoot memory issues</a>, <a href="https://code.claude.com/docs/en/debug-your-config" target="_blank" rel="noopener">debug your configuration</a>.</p>

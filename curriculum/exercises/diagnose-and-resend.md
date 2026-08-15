@@ -72,7 +72,7 @@ Ask Claude to build the verifier shape that matches your dominant failure, scope
 {{prompt:diagnose-and-resend-4}}
 
 
-Read what Claude proposes. Push back if the verifier covers the wrong shape (a generic test suite when you needed a judge, or the reverse). The fit between failure shape and verifier shape is what you are after.
+Read what Claude proposes. Push back if the verifier covers the wrong shape (a generic test suite when you needed a judge, or the reverse). The fit between failure shape and verifier shape is what you are after. When the shape fits the failure, say *save it.*
 
 ## Prove the verifier actually fires
 
@@ -154,7 +154,6 @@ Your `CLAUDE.local.md` and `observations/` have been building in the worktree si
 
 **Quality:** compendium-audited 2026-08-13 (writing@61e7fc9 story@ca5e5c5 technical@ca5e5c5 behavior@ca5e5c5 pedagogy@61e7fc9 strategy@1c765f2 slides@61e7fc9)
 - judges @ca5e5c5: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Word count:** ~810 words body.
 

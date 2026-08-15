@@ -94,7 +94,6 @@ You just ran **Recipe 4** end-to-end on your real system: the two-lens audit, th
 
 **Quality:** compendium-audited 2026-05-09 (behavior@56f9332)
 - judges @56f9332: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
-- maintainer-reviewed @60b1b6c: PASS — M4 manual walkthrough — phases 1-4 run + tested
 
 **TODO (Claude Code Desktop edition review 2026-04-29):**
 - Desktop skill-install step is body-only, not a prompt block, so `scripts/extract-training-prompts.js --training agents-101 --flavor desktop` under-represents the Desktop load path. Decide whether to label the Desktop install as a prompt or teach the extractor to capture install-instruction blocks.

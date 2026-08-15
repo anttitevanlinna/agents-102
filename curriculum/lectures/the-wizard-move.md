@@ -48,7 +48,6 @@ The fix happens once. The loop is what you repeat: a way of working, not one bug
 
 **Quality:** compendium-audited 2026-08-02 (writing@1c765f2 story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@1c765f2)
 - judges @1c765f2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - compendium-audited 2026-04-26 (check_writing voice-quartet Seth-Rory-Risto, check_student_facing #14, check_lectures opener, check_strategy_tie_in)
 **Meta:**
 - **Placement:** M1 opener, after Connections, before the exercise.

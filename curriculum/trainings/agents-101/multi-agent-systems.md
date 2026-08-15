@@ -74,7 +74,6 @@ Memory is a working artefact, sharpened by what it bumps into.
 
 **Quality:** compendium-audited 2026-05-03
 - judges: not yet judge-audited
-- maintainer-reviewed @60b1b6c: PASS — M3 manual walkthrough
 
 **TODO (Cowork edition review 2026-04-29):**
 - Learning goals and Key Concepts still leak Code-only terminology in Cowork rendering: "subagents inside one session", "when separate sessions beat subagents", and "Two multi-agent shapes in Claude Code." Runtime-fork or neutralize those lines so Cowork students see agents/tasks language while preserving the same learning goals.

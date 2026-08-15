@@ -80,7 +80,6 @@ You just ran **Recipe 3**'s parallel-retrieval shape: three retrievers fanning o
 
 **Quality:** compendium-audited 2026-05-03
 - judges: not yet judge-audited
-- maintainer-reviewed @60b1b6c: PASS — M3 manual walkthrough
 
 **Role in Module 3:** Second exercise (after `name-your-crux`). Produces curated `memory/` updates + raw `sources/` retrievals; sets up the artifact stack the next exercise (`three-minds-one-synthesis`) reasons against.
 

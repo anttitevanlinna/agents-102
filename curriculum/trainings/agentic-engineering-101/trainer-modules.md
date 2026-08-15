@@ -394,14 +394,14 @@ Never cut: the send-off itself, and never rescue the un-packaged run. A weak fir
 
 ### M5 — Learn from the test, re-send packaged
 
-**Slot.** 2-day cohort: Day 2, 10:50–12:50 (2h slot; the packaged re-send fires at close and runs through lunch). Four-sitting track: sitting 4 and the finale; the worktree fork is the squeeze point. **The biggest overrun in the arc** — the runtime map below carries the figure. Start the fork the moment the room settles, and take the overrun into lunch, which the re-send runs through anyway.
+**Slot.** 2-day cohort: Day 2, 10:50–12:50 (2h slot; the packaged re-send fires at close and runs through lunch). Four-sitting track: sitting 4 and the finale; the worktree fork is the squeeze point. **The biggest overrun in the arc, and it is accepted: the module runs about 13 minutes past a 2h slot by design — plan for it, don't cut for it.** In the 2-day shape the overrun disappears into lunch, which the re-send runs through anyway. On the four-sitting track, book the sitting at 2h15 if you can; if you can't, end on the gate lecture's last landed slide and point at the rest — the closing decks are built for headings-first reading, so the workbook carries what the clock didn't. Start the fork the moment the room settles.
 
 **Big idea.** Read the un-packaged M4 run through three failure-mode lenses; build the validation that would have caught each; assemble the reference and `plan.md`; re-send the same task packaged. The contrast IS the lesson.
 
 **Flow.**
 
 1. Lectures — [Reading the return](./#lectures-reading-the-return) (the M4-close pre-read, re-anchored briefly) + [Learning through contrast](./#lectures-learning-through-contrast)
-2. Your nag writes the verifier — short module-body beat: the mid-run worry from M4 is the verifier's spec
+2. Hold the worry beside the artefact — short module-body beat: the mid-run worry from M4 is tested against the return before it earns a check
 3. Exercise — [Fork the worktree, carry the evidence](./#exercises-fork-the-worktree) (15 min): runs from the ORIGINAL repo, the worktree doesn't exist yet. Claude reads the `Run coordinates` block in `task.md` and forks `../<repo>-m5` from the `m4/<slug>` starting-point commit, copying `CLAUDE.local.md` and `observations/` across
 4. Exercise — [Diagnose and re-send](./#exercises-diagnose-and-resend) (68 min, Phases 1–5, in a new session in the worktree). Phase 5 is the re-send and now sits inside the exercise: a new session in the worktree by default (fresh context; the exercise scrollback is heavy), or clear the exercise session in place; then the packaged re-send prompt, and the walk-away report gets read cold
 6. Lecture — [What packaging is](./#lectures-what-packaging-is) (closer; the three-pattern earned from felt evidence — don't squeeze it)
@@ -414,7 +414,7 @@ Never cut: the send-off itself, and never rescue the un-packaged run. A weak fir
 - Pair each failure mode with the packaging that catches it: drift ↔ reference artefact, rot ↔ `plan.md`, plausible-but-wrong ↔ external verifier.
 - Build a verifier shaped against the dominant failure (background-agent / shell-hook / Ralph re-feed).
 - Assemble reference + `plan.md` in conversation, scoped to the same M4 task.
-- Re-send the packaged version of the same task and let it run a second time. (The module's learning-objective wording says "in the session your diagnosis ran in"; the module's re-send section opens a fresh session in the worktree by default, with clear-in-place as the alternative — teach the re-send section.)
+- Re-send the packaged version of the same task.
 
 **Exercise goals.**
 

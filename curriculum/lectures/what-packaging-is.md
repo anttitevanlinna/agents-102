@@ -232,7 +232,7 @@ Three failures you named, three pieces, one each.
 
 ## Two bearings make a candidate, not an optimum
 
-- The contrast is two bearings on the same water: the task without the kit, then with it. Where the runs disagree, something real about this repo shows: which failures the task produces, which checks catch them.
+- The contrast is two bearings on the same water: the task without the kit, then with it. Where the sessions disagree, you have something local to test: which failure recurs, and whether the check catches it again.
 - A two-bearing fix is a start, wide by design. It narrows as more runs cross it; the optimum stays ahead, moving when your stack moves.
 - The agent makes the evidence cheap: it runs the task, reads its own transcript, diffs the returns. **The engineer decides**: what counts, what the evidence means, what earns promotion into durable practice.
 - A grounded candidate holds in review: *"measured here, this catches it, watch."*
@@ -269,9 +269,8 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 
 **§3 disposition (was 4×M5 + 5×M6 above the fence; now zero):** "walked into M5" → lede recast without ref · "start of M5" (failure modes) → folded into slide-1 mapping bullets · "M5 teaches the extend camp" → "the extend camp is the one you just ran" · "Bridge to M6" (all 5×M6 + "M5 asks") → module file `## Next` per §3; no refs remain above the fence.
 
-**Quality:** compendium-audited 2026-08-13 (writing@18f4a2b story@18f4a2b technical@1c765f2 behavior@1c765f2 pedagogy@18f4a2b strategy@1c765f2 slides@18f4a2b)
-- judges @18f4a2b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
+**Quality:** compendium-audited 2026-08-15 (writing@296bb3a story@18f4a2b technical@1c765f2 behavior@1c765f2 pedagogy@18f4a2b strategy@1c765f2 slides@18f4a2b)
+- judges @296bb3a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - source-freshness stamped 2026-05-25; MiniJinja and getpushtoprod stamps re-verified 2026-07-02 (stamps in Source verification block; run `source-freshness.sh --target <cohort-date>`).
 **Lecture meta:** *10–15 min closing lecture for M5, deck-shaped. Names the three-pattern after you have built each piece. Earns the name from felt evidence, not from a slide deck delivered cold. The M6 bridge lives in the module file's `## Next`, not here.*
 **Word count:** ~900 words body, excluding the SVG.

@@ -67,7 +67,6 @@ Run `/context` to see how much of the window is used and what fills it.
 
 **Quality:** compendium-audited 2026-08-12 (writing@96b3554 story@96b3554 technical@36ad3a6 behavior@1c765f2 pedagogy@96b3554 strategy@1c765f2 slides@96b3554)
 - judges @96b3554: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read Claude's self-report against `/context`).
 - **Atomic — no phase markers.** One conversation with the agent; the interrogation has no seam to cut on. Line 3 is authored, not generated.

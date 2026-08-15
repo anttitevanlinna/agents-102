@@ -55,7 +55,6 @@ Whether it earns its keep shows up the next time a session reads it.
 
 **Quality:** compendium-audited 2026-08-12 (writing@96b3554 story@96b3554 technical@1c765f2 behavior@96b3554 pedagogy@96b3554 strategy@1c765f2 slides@96b3554)
 - judges @96b3554: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read the retro summary against session moments) + Apply (integrate the rules file from evidence).
 - **Atomic — no phase markers.** One retro pass into one rules file; the push-back and the second sweep are moves inside it, not beats beside it. Line 3 is authored, not generated.

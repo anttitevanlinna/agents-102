@@ -62,7 +62,6 @@ Drop your bug after the colon.
 
 **Quality:** compendium-audited 2026-08-12 (writing@bc8e9e6 story@bc8e9e6 technical@1c765f2 behavior@bc8e9e6 pedagogy@bc8e9e6 strategy@1c765f2 slides@bc8e9e6)
 - judges @bc8e9e6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (tests-first fix) + Analyze (read the diff against what you'd write).
 - **Atomic — no phase markers.** One TDD loop, start to PR; splitting it would name beats the student does not experience as separate. Line 3 is authored, not generated.

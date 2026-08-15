@@ -50,7 +50,6 @@ Claude comes back with three pointed requests. Answer one. Let it update the pag
 <!-- maintainer -->
 
 **Quality:** maintainer-reviewed 2026-04-29
-- maintainer-reviewed 2026-04-29 (Antti, M2 closing lecture manual read)
 
 **Time:** 10 minutes.
 

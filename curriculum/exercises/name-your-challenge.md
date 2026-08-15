@@ -70,7 +70,6 @@ The hardest part of a memory isn't the tool. It's the scope. A memory about "our
 
 **Quality:** compendium-audited 2026-05-09 (behavior@56f9332)
 - judges @56f9332: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
-- maintainer-reviewed 2026-04-29 (Antti, M2 opening exercise manual run)
 
 **Role in Module 2:** This is the opening exercise of Module 2 — the first 15 minutes of the main session. Prework handed them the nudge ("bring a live challenge"); this exercise pins it into `./challenge.md` before `build-your-challenge-memory` runs. Do not treat as prework — students skip prework, and the rest of Module 2 cannot proceed without a pinned challenge.
 

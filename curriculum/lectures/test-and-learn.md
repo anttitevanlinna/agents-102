@@ -36,7 +36,6 @@ You're new to this country: the stretch where the agent runs alone and you don't
 
 **Quality:** compendium-audited 2026-08-02 (writing@1c765f2 story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@1c765f2)
 - judges @1c765f2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Lecture meta:** *10–12 min lecture, now deck-shaped (4 slides + kicker). Sets up M4's walk-and-send-off exercise. Names the spirit of the two-session arc and the one move the exercise opens with — gap analysis.*
 **Word count:** ~380 words body (post slide rework).
 

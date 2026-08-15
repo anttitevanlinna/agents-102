@@ -43,6 +43,5 @@ That's a guardrail. That's your turn.
 <!-- maintainer -->
 
 **Quality:** maintainer-reviewed 2026-04-29
-- maintainer-reviewed 2026-04-29 (Antti, M1 opening lecture manual read)
 
 **Time:** 10 minutes.

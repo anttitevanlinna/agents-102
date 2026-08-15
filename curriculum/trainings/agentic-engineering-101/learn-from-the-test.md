@@ -122,7 +122,6 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 **Quality:** compendium-audited 2026-08-15 (writing@315cd5a story@315cd5a behavior@93bb807 pedagogy@315cd5a strategy@9c75ce2 slides@315cd5a)
 - judges @9c75ce2: writing PASS, story PASS, technical REVISE (1/1-see-instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @93bb807: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; see instances/ae101--m4-m5-m6.cross_module.json
-- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Pacing:** Runtime is computed — `node scripts/calculate-time.js learn-from-the-test`. Trainer demos slowly, room copy-pastes concurrently. The closing lecture sits after Debrief + Re-send, where M4 has no closer of its own — it names Ronacher's three-pattern from felt evidence, so it cannot come earlier.

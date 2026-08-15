@@ -14,7 +14,6 @@ This session shows how the agent handled your task and codebase.
 
 **Quality:** compendium-audited 2026-08-15 (writing@0774e2f story@0774e2f technical@1c765f2 behavior@1c765f2 pedagogy@0774e2f strategy@1c765f2 slides@0774e2f)
 - judges @0774e2f: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 **Word count:** ~100 words body.
 
 **Time:** ~2 min at presentation pace. This is a room-opener, not a topic.

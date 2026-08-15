@@ -22,9 +22,8 @@ You can extract any rules into their own `.md` file. Eventually your Claude file
 
 **Slides-only pass (2026-07-02, unaudited):** covered region DELETED (Path A). Per-passage verdicts: three-shapes prose sections CONVERTED to one slide, one bullet per shape (capability-grounded wording preserved: Slack app / `@Claude`-to-web routing, GitHub Actions `issues` events, scheduled agent — do not imply Claude Code runs inside Slack) · per-shape tail lines (steady part / policy / spec triplet) SUBSUMED by slide 2's first bullet · "Each is real; each is downstream" softener CUT · ticket-pair paragraph CUT (it depended on `extract-the-task-shaping-rule-4`, itself a `{{cut:}}` candidate; if the cull reverses, the exercise carries the connection) · "M3 starts with a feature you're shipping" bridge CUT (module `## Next` owns the bridge) · intro line KEPT as the closer's setup lede. File is now lede + two slides.
 
-**Quality:** compendium-audited 2026-08-02 (writing@1c765f2 story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@1c765f2)
-- judges @1c765f2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
+**Quality:** compendium-audited 2026-08-15 (writing@1c765f2 story@1c765f2 technical@9c75ce2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@1c765f2)
+- judges @9c75ce2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cohorts: none yet
 
 **Lecture meta:** *Meta-frame closer, now deck-shaped. ~3 min reading-aloud. Forward-looking; voice tilts Risto (Siilasmaa) on slide 2 — points at what becomes possible, cues the move now. Mood-arc check: M2 is grounded competence — Risto-tilt appropriate at the closer; the lecture defers application rather than promising it. Slide 2 is the naming beat, placed AFTER the shapes so it lands as recognition (`check_lectures §1`).*

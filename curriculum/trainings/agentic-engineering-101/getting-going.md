@@ -98,7 +98,6 @@ Module 2 is where plan mode earns its keep: multi-file work, and a second pass t
 
 **Room agreement.** Cohort delivery projects `How we work in this room` and `Freedom to choose` before the opening trick-share. The first slide sets the participation norms. The second gives the group responsibility for a workable pace and makes selective cutting explicit when an individual's working memory is full. Both stay inside the existing 10-minute opening allocation. Self-study skips the room-only slides silently.
 
-- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze

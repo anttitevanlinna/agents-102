@@ -67,7 +67,6 @@ Module 2 takes that idea and applies it to your challenge. The memory will be sm
 
 **Quality:** compendium-audited 2026-05-03 (writing@60b1b6c)
 - judges @60b1b6c: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
-- maintainer-reviewed 2026-04-29 (Antti, M2 prework manual read)
 
 **Time:** 30-35 minutes. 5 to choose the challenge, 5 to check connectors, 15 for the plan-mode primer, 5-10 for Karpathy.
 

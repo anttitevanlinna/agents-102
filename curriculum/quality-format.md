@@ -13,14 +13,13 @@ No `draft` rung (removed 2026-05-31). A file is either audited — `compendium-a
 
 The ladder tops at `sim-passed` — the last *recorded* LLM check. Two things gate release but are NOT rungs, for the same reason touch-degrade would forbid ever standing on one: the `tmux-runner` system test (run pre-ship, unrecorded), and delivery reality (a cohort ran it; survived many — logged on the `- cohorts:` row as a factual record).
 
-**Orthogonal axis:** `maintainer-reviewed` — Antti read end-to-end + ran prompts manually. Own dimension-log row, never folded into LLM provenance.
+**There is no `maintainer-reviewed` axis (removed 2026-08-15, Antti-directed).** It went stale the moment any body moved and nobody re-marked it. Maintainer direction is visible where it actually lands: dated decision notes in the maintainer block. The stamper strips any stray `- maintainer-reviewed` row it encounters on re-stamp.
 
 **Format** (top-state line + dimension log in maintainer block):
 ```
 **Quality:** <top-state> <YYYY-MM-DD> (writing@<sha> story@<sha> technical@<sha> behavior@<sha> pedagogy@<sha> strategy@<sha>)
 - judges @<sha>: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
 - cross_module @<set-sha>: PASS — set=[<M(N)>, <M(N+1)>, ...]    # module-set scope; only when ≥2 modules audited together
-- maintainer-reviewed <YYYY-MM-DD> (<one-line note>)
 - sim-passed <YYYY-MM-DD> (<persona names + scores>)  # carry forward when storytelling or behavior judge regen + PASS
 - cohorts: <none yet | cohort-name + date + post-cohort changes>
 ```
@@ -44,8 +43,8 @@ Each class's SHA = file's git short-SHA when that judge passed.
 
 - **Auto-degrade is touch-based, not time-based.** File touched after audit date → that tier and higher degrade. Cosmetic edits below `<!-- maintainer -->` don't degrade.
 - **Per-class auto-degrade.** Touching a writing-only line invalidates only `writing@<sha>`; others carry forward. Mappings: prompt block → `behavior@` (+ usually `technical@`); `## Phase` / `## Plug Points` / `## Bridge` → `pedagogy@`; `## Big Idea` / `## Key Concepts` / `## What You'll Learn` → `strategy@`. `eval-class-router.sh` PostToolUse hook classifies each edit, writes to `/tmp/claude-eval-queue-<sid>` for next `/wind-down`.
-- **Never delete a Quality block to avoid a stale marker.** A body edit degrades named classes; it does not void the record. The stamp must survive to go stale, because `scan-stale-classes.js` routes diff-regions to classes by diffing against the pinned SHAs — remove them and the routing has nothing to compare, so a recoverable to-do becomes an unrecoverable one. Deleting also takes the `cross_module:` row with it, which costs a judge run across the whole set to regenerate (up to seven files). Editing body and dropping the block reads as tidiness and is data loss. Restore from `git show <sha>:<path>` if it already happened. (2026-08-09: `f45db08` did this to M3 + M4, leaving an orphaned `- maintainer-reviewed` bullet under no parent — that dangling bullet is the tell.)
+- **Never delete a Quality block to avoid a stale marker.** A body edit degrades named classes; it does not void the record. The stamp must survive to go stale, because `scan-stale-classes.js` routes diff-regions to classes by diffing against the pinned SHAs — remove them and the routing has nothing to compare, so a recoverable to-do becomes an unrecoverable one. Deleting also takes the `cross_module:` row with it, which costs a judge run across the whole set to regenerate (up to seven files). Editing body and dropping the block reads as tidiness and is data loss. Restore from `git show <sha>:<path>` if it already happened. (2026-08-09: `f45db08` did this to M3 + M4; an orphaned axis bullet under no parent is the tell.)
 - **Grandfather rule** for files audited pre-2026-05-14: existing `compendium-audited @ <sha>` satisfies the four old classes (writing / story / technical / behavior) IF mtime unchanged. The two new classes (`pedagogy@`, `strategy@`) = `grandfathered` until next touch.
 - **Reference files** (`curriculum/trainings/<training>/reference/`) **exempt** — flat lookup, no mood / sim surface.
 
-Full rationale → `memory/compounded/2026-04-25-content_creation-quality-state-tagging.md` + `2026-04-28-content_creation-maintainer-reviewed-orthogonal-dimension.md`.
+Full rationale → `memory/compounded/2026-04-25-content_creation-quality-state-tagging.md`.

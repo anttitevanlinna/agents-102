@@ -132,7 +132,6 @@ You just ran **Recipe 2** end-to-end: the three layers (sources, memory, rules f
 
 **Quality:** compendium-audited 2026-05-02 (story@9ddfac3)
 - judges @9ddfac3: writing grandfathered, story PASS, technical grandfathered, behavior grandfathered
-- maintainer-reviewed 2026-04-29 (Antti, M2 main exercise manual run; all four phases tested under Cowork lens)
 
 **Frameworks riffed on:**
 - Karpathy's LLM Wiki pattern (prework) — the named idea the exercise operationalizes

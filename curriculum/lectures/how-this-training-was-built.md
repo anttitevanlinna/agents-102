@@ -44,7 +44,6 @@ The loop is the shape. The bug today was the excuse.
 
 **Quality:** sim-passed 2026-08-05 (writing@148c7ea story@148c7ea technical@148c7ea behavior@148c7ea pedagogy@148c7ea strategy@148c7ea slides@148c7ea)
 - judges @148c7ea: writing PASS (codex-audit), story PASS (three-persona-codex-audit), technical PASS (codex-audit), behavior PASS (no-prompts), pedagogy PASS (codex-audit), strategy PASS (codex-audit), slides PASS (codex-audit)
-- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Understand — recognise the compound loop in the training's construction after running it.

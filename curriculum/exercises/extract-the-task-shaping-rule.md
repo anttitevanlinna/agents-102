@@ -99,7 +99,6 @@ Ask Claude what this file could drive later.
 
 **Quality:** compendium-audited 2026-08-12 (writing@bc8e9e6 story@96b3554 technical@bc8e9e6 behavior@bc8e9e6 pedagogy@96b3554 strategy@1c765f2 slides@bc8e9e6)
 - judges @96b3554: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 - cohorts: none yet
 
 **Meta (trainer):**

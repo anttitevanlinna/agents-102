@@ -89,7 +89,6 @@ assert_no_grep "$TMP/t3.md" 'mechanical-tested'   'T3 legacy mechanical row purg
 mkfix t4.md '# Lecture
 <!-- maintainer -->
 **Quality:** maintainer-reviewed 2026-04-29
-- maintainer-reviewed 2026-04-29 (Antti, full pass)
 
 body'
 run "$TMP/t4.md" --cohorts "Acme cohort 2026-06" --sha x --date 2026-06-01 >/dev/null
@@ -142,7 +141,6 @@ mkfix t8.md '# Module
 <!-- maintainer -->
 **Quality:** compendium-audited 2026-05-15 (writing@1ff6f8a story@1ff6f8a)
 - judges @1ff6f8a: writing PASS, story PASS
-- maintainer-reviewed 2026-04-28 (Antti, full pass)
 
 body'
 cp "$TMP/t8.md" "$TMP/t8.before"

@@ -96,7 +96,6 @@ The opening question at Module 1: *what's your favourite Claude Code trick that 
 **Quality:** compendium-audited 2026-08-13 (writing@7992fd0 story@7992fd0 technical@7992fd0 behavior@1c765f2 pedagogy@7992fd0 strategy@1c765f2 slides@7992fd0)
 - judges @7992fd0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @022c684: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust] 3 pairs, 9/9 rules each; M3->M4 out of scope, M4+M5 under concurrent edit; see instances/ae101--module-set--prework-m3.cross_module.json
-- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass — pre-reshape)
 
 **Meta:**
 - **Runtime:** 30 min target. Step breakdown: pick repo 10 / open session 3 / content folder 3 / extract + install 5 / pick bug + readiness 8. The early steps are crisp; the bug screen is where time can expand if the student's repo is messy.

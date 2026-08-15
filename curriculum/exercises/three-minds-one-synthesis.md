@@ -60,7 +60,6 @@ Hold the doubt. Name it to yourself. Don't fix it here.
 
 **Quality:** compendium-audited 2026-05-03
 - judges @60b1b6c: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
-- maintainer-reviewed @60b1b6c: PASS — M3 manual walkthrough
 
 **Role in Module 3:** Third exercise (after `name-your-crux` + `three-retrievers-one-curator`). Reads the curated `memory/` from the previous exercise; produces the `## Answer` section in `./crux.md`. Closes Module 3 with the doubt-naming beat that hands off to Module 5.
 

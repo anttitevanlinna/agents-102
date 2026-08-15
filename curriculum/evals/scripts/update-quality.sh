@@ -7,7 +7,6 @@
 # FOUR axes (each renders as ≤1 row):
 #   judges               — six-class verdict (writing/story/technical/behavior/pedagogy/strategy)
 #   cross_module         — module-set verdict (fires at module-set scope only)
-#   maintainer-reviewed  — Antti read end-to-end + ran prompts manually
 #   cohorts              — delivery state
 #
 # (mechanical axis removed 2026-06-01 — the tmux-runner battery is a pre-ship
@@ -25,7 +24,6 @@
 #
 # Other axis flags:
 #   --cross-module        <state>[:<note>]   # module-set scope; note typically `set=[...]`
-#   --maintainer-reviewed <state>[:<note>]
 #   --cohorts             <state>[:<note>]
 #
 # State values:
@@ -82,7 +80,7 @@ while [[ $# -gt 0 ]]; do
     --strategy)            state_strategy="$2"; shift 2 ;;
     --slides)              state_slides="$2"; shift 2 ;;
     --cross-module)        state_cross_module="$2"; shift 2 ;;
-    --maintainer-reviewed) state_maintainer_reviewed="$2"; shift 2 ;;
+    --maintainer-reviewed) echo "error: the maintainer-reviewed axis was removed 2026-08-15" >&2; exit 1 ;;
     --cohorts)             state_cohorts="$2"; shift 2 ;;
     --sha)                 SHA="$2"; shift 2 ;;
     --date)                DATE="$2"; shift 2 ;;
@@ -95,7 +93,7 @@ done
 # REVISE without note is a hard error
 for v in "$state_writing" "$state_story" "$state_technical" "$state_behavior" \
          "$state_pedagogy" "$state_strategy" "$state_slides" "$state_cross_module" \
-         "$state_maintainer_reviewed" "$state_cohorts"; do
+         "$state_cohorts"; do
   if [[ "$v" == "REVISE" ]]; then
     echo "error: REVISE state requires :<note> (cause or accept-reason)" >&2
     exit 1
@@ -198,7 +196,7 @@ while IFS= read -r line; do
     case "$line" in
       "- judges:"*|"- judges "*)                     keep_judges="$line" ;;
       "- cross_module:"*|"- cross_module "*)         keep_cross_module="$line" ;;
-      "- maintainer-reviewed:"*|"- maintainer-reviewed "*) keep_maintainer="$line" ;;
+      "- maintainer-reviewed:"*|"- maintainer-reviewed "*) : ;; # axis removed 2026-08-15 — stray rows dropped on re-stamp
       "- cohorts:"*|"- cohorts "*) keep_cohorts="$line" ;;
       ""|"**"*)                                       in_block=0 ;;
     esac
@@ -370,7 +368,7 @@ render_axis_row() {
 }
 
 cross_module_row=$(render_axis_row cross_module "$state_cross_module" "$keep_cross_module")
-maintainer_row=$(render_axis_row maintainer-reviewed "$state_maintainer_reviewed" "$keep_maintainer")
+maintainer_row="" # maintainer-reviewed axis removed 2026-08-15
 cohorts_row=$(render_axis_row cohorts "$state_cohorts" "$keep_cohorts")
 
 # ---- Build top-state line: SHA pins for PASS judge-classes ------------------

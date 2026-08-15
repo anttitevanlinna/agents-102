@@ -26,7 +26,6 @@ Looking forward to it.
 
 **Quality:** compendium-audited 2026-08-12 (writing@bc8e9e6 behavior@1c765f2) — body rewritten 2026-08-12, re-audit owed before ship.
 - judges @bc8e9e6: writing PASS, story grandfathered, technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered, slides N/A (not slide-rendered — email template, no ## headings, absent from the Slides layout and MODULES array)
-- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Delivery architecture canonical home:** training-architecture.md (§Platform, §Material distribution, §Prework). Prework runtime, step breakdown, and skill-install mechanics live in prework.md's maintainer block. Don't restate either here.
 

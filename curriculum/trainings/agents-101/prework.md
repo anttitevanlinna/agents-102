@@ -96,7 +96,6 @@ You walk into Module 1 with <span class="rt-code">Claude Code</span><span class=
 
 **Quality:** compendium-audited 2026-05-04
 - judges: writing PASS, story PASS, technical PASS, behavior PASS (see instances/prework.*.json)
-- maintainer-reviewed 2026-04-29 (Antti, Agents 101 prework manual cohort-prep run; install path tested end-to-end under Cowork lens, snake + meetings + read all verified)
 
 **Packaging:**
 - `<CONTENT_URL>` is build-time substituted by `scripts/build-workbook.js` per customer. Example rendered URL: `https://agents102.bosser.consulting/clients/acme/agents-101/agents-101-starter.tar.gz`. Source markdown carries the placeholder so substitution is auditable; rendered workbooks never show it.

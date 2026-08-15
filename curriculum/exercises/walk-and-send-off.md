@@ -94,7 +94,6 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 
 **Quality:** compendium-audited 2026-08-13 (writing@19249df story@19249df technical@19249df behavior@19249df pedagogy@19249df strategy@1c765f2 slides@19249df)
 - judges @19249df: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)
 
 **Word count:** ~750 words body.
 

@@ -4,7 +4,7 @@ Flat look-up for the primitives AE101 leans on. No pedagogy, no hand-holding. Wh
 
 Source of truth is Anthropic's docs. Links and verbatim quotes throughout point at [code.claude.com/docs/en/memory.md](https://code.claude.com/docs/en/memory.md), [skills](https://code.claude.com/docs/en/skills), [sub-agents](https://code.claude.com/docs/en/sub-agents), [settings](https://code.claude.com/docs/en/settings), [hooks](https://code.claude.com/docs/en/hooks), [cli-reference](https://code.claude.com/docs/en/cli-reference). This reference is a shortcut. When the shortcut disagrees with the docs, the docs win.
 
-**Last verified against docs:** 2026-05-14.
+**Last verified against docs:** 2026-08-15 (§§ 1–6, 9, 11, 13–16). §§ 7, 8, 10 and 12 last verified 2026-05-14 and are the next re-verify's first stop.
 
 **Stale if older than:** 30 days. Re-verify against [code.claude.com/docs/en/](https://code.claude.com/docs/en/) and run a live capability check (`claude --version`, `/help`, `claude-code-guide` subagent) before the next cohort.
 
@@ -155,27 +155,28 @@ Docs: [memory.md § Import additional files](https://code.claude.com/docs/en/mem
 Plan mode: Claude researches and proposes a plan instead of writing files. You approve the plan; Claude executes.
 
 **Toggle on:**
-- Prompt: *"Enable plan mode."* or prefix a single prompt with `/plan`
-- Shift+Tab cycles permission modes (default → acceptEdits → plan). `auto` and `bypassPermissions` slot in after `plan` only when enabled per-account (live-verified 2026-05-14)
+- Prefix a single prompt with `/plan`, optionally naming the task: `/plan fix the auth bug`
+- Shift+Tab cycles permission modes. From `auto`, the first press switches to `default`; the cycle then runs default → acceptEdits → plan. Enabled optional modes slot in after `plan`, `bypassPermissions` first and `auto` last
+- Start there: `claude --permission-mode plan`, or `"defaultMode": "plan"` under `permissions` in `.claude/settings.json`
 - Desktop mode dropdown: pick *Plan*
 
-**Five approval paths when the plan is ready** (live-verified 2026-05-14 against `code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode`):
+**Three approval paths when the plan is ready** (live-verified 2026-08-15 against `code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode`):
 
 | Option | Behavior | Pick when |
 |---|---|---|
-| **Approve and start in auto mode** | Full execution, no further approval | Plan looks right, work is reversible or low-stakes; auto-mode requirements met |
-| **Approve and accept edits** | Auto-approves file edits; Bash still prompts on non-filesystem commands | Plan looks right, edits-only is the shape of the work |
-| **Approve and review each edit manually** | Claude pauses per file write | Plan looks right, work touches something you need to watch |
-| **Keep planning with feedback** | Push back with specific items; Claude regenerates the plan | Plan is 80% there; one or two named fixes |
-| **Refine with Ultraplan** | Hand off to a Claude Code on the web session in plan mode for browser-based review | Plan needs more thought than you want to spend in-session; the browser view gives you per-section comments |
+| **Yes, and use auto mode** | Full execution, no further approval. Reads *Yes, auto-accept edits* where auto mode isn't available | Plan looks right, work is reversible or low-stakes |
+| **Yes, manually approve edits** | Claude pauses per file write | Plan looks right, work touches something you need to watch |
+| **No, keep planning** | Push back with specific items; Claude regenerates the plan | Plan is 80% there; one or two named fixes |
+
+Approving exits plan mode and switches the session into whichever permission mode the option names, so Claude starts editing immediately.
+
+**Read the plan somewhere you can actually read it.** `Ctrl+G` opens the proposed plan in your default text editor, and edits you make there carry into what Claude executes.
 
 **Exit without executing:** Shift+Tab again, or mode dropdown.
 
-**Keep-planning-with-feedback (before approval):** instead of approving, push back with specific items. Claude regenerates. Use when you want to sharpen the plan without restarting the whole prompt.
-
 **AE101 cross-refs:** M2 exercise `push-back-on-the-plan.md` teaches the two-read pattern (human push-back → Pocock `grill-me` second-pass → approve). M1 deliberately runs without plan mode (trivial bug doesn't earn it).
 
-Docs: [plan mode](https://code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode), [Ultraplan](https://code.claude.com/docs/en/ultraplan).
+Docs: [plan mode](https://code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode).
 
 ---
 
@@ -192,7 +193,9 @@ When you need Claude to do structured work in a fresh context, spawn a subagent.
 - **Subagent:** breadth-first audits, long structured reports that would clutter scrollback, genuinely parallel work, invoking a skill on a one-shot bounded job.
 - **Main thread:** interactive authoring (one-question-at-a-time), iterative steering where you want to see every reply, short jobs where context-switch cost > benefit.
 
-**Persistent memory for subagents:** subagents can maintain their own auto memory. See [subagent configuration](https://code.claude.com/docs/en/sub-agents#enable-persistent-memory).
+**What a subagent starts with:** every level of the CLAUDE.md hierarchy the main conversation loads — user, project, `CLAUDE.local.md`, managed policy. The built-in Explore and Plan agents are the exception and skip it. What does **not** cross over is the main conversation's auto memory, so a fact Claude learned about your repo this session is not something the subagent knows.
+
+**Persistent memory for subagents:** a subagent can keep auto memory of its own, in its own directory, scoped `user` / `project` / `local`. See [subagent configuration](https://code.claude.com/docs/en/sub-agents#enable-persistent-memory).
 
 **AE101 cross-refs:** <!--flag:module:earn-the-trust-->M3 Ex1/Ex2 invoke the curated access-control + STRIDE skills as subagents; Ex3 (test-strategy authoring) stays main-thread. <!--/flag:module:earn-the-trust-->M4 Phase 2 audit runs as a subagent.<!--flag:module:earn-the-trust--> The discrimination *"which job belongs in which thread"* is a named learning goal in M3.<!--/flag:module:earn-the-trust-->
 
@@ -232,19 +235,23 @@ Docs: [Claude Code desktop → Connectors](https://code.claude.com/docs/en/deskt
 
 Four primitives. Pick by intent. Composes with any installed skill.
 
-**`/loop`: in-session recurring.** Two forms (re-verified 2026-05-25 against `code.claude.com/docs/en/scheduled-tasks`; the delivery-time scheduling-primitive recheck this date covers the Desktop and Routines blocks below too):
+**`/loop`: in-session recurring.** Two forms (re-verified 2026-08-15 against `code.claude.com/docs/en/scheduled-tasks`; the delivery-time scheduling-primitive recheck this date covers the Desktop and Routines blocks below too):
 - **Fixed interval:** `/loop 5m <prompt>` runs the prompt every 5 minutes while the session is open. Closes when you close the session.
 - **Self-paced:** `/loop <prompt>` (omit interval). Claude picks the cadence (1 min to 1 hour) based on activity. Short waits while a build is finishing, longer waits when nothing is pending. Bare `/loop` (no prompt either) runs the built-in maintenance prompt at a dynamically chosen interval, or a `.claude/loop.md` if you've written one.
 
+Press `Esc` while a loop waits to clear the pending wakeup. Recurring tasks expire seven days after creation — one final fire, then they delete themselves — so a loop you forget about has a floor on how long it can run.
+
 Use for polling during a work block, watching a build, monitoring a long-running task's intermediate output, continuous polish on active work. *"Check the build every 5 minutes until it passes."* *"Re-run the verifier every 2 minutes on each new commit."* Ralph-style re-feed sits here.
 
-**Desktop scheduled tasks: local (the everyday choice).** Sidebar: **Routines → New routine → choose Local.** Set the name, instructions, and schedule. Runs on your laptop when the task fires; uses your local config files and connectors.
+**Desktop scheduled tasks: local (the everyday choice).** Sidebar: **Routines → New routine → choose Local.** Set the name, instructions, and schedule. Runs on your laptop when the task fires; uses your local config files and connectors. A per-task worktree toggle gives each run its own isolated checkout instead of your working directory as it currently stands, uncommitted changes and all.
 
-**Missed-run behavior:** if the laptop was asleep at scheduled time, Claude Code catches up **once** for the most recently missed slot (within a 7-day window). A daily task missed for three days runs once on wake, not three times. Encode time-awareness in the prompt if catch-up would misfire (*"only run if it's before 10:00am; otherwise report skipped"*).
+**Tasks fire only while the app is open and the machine is awake.** Settings → **Desktop app → General → Keep computer awake** is the switch for that; closing the lid still sleeps it.
 
-**Routines / `/schedule`: remote (Anthropic's cloud).** Run `/schedule daily PR review at 9am` in the CLI (a one-off like `/schedule tomorrow at 9am …` works too), or sidebar: **Routines → New routine → choose Remote.** Runs on Anthropic's infra regardless of your laptop, on Pro/Max/Team/Enterprise with Claude Code on the web enabled. **Requires a GitHub repo** as working directory (cloned fresh each run). AE101's default assumption is a local repo, so Routines is out-of-scope for core modules. Flag for later if your org has cloud-Git workflows. CLI `/schedule` creates scheduled triggers only; API and GitHub-event triggers are web-only. No catch-up on wake (the cloud doesn't sleep).
+**Missed-run behavior:** if the laptop was asleep at scheduled time, Claude Code catches up **once** for the most recently missed slot (within a 7-day window). A daily task missed for three days runs once on wake, not three times. Encode time-awareness in the prompt if catch-up would misfire (*"only run if it's before 10:00am; otherwise report skipped"*) — a 9am task can land at 11pm.
 
-**`/goal <condition>`: condition-driven autonomy.** Set a verifiable completion condition. Claude keeps working turn after turn until the condition holds, then stops. Status with bare `/goal`, stop with `/goal clear`. The runtime evaluates the condition against what showed up in the transcript, so the condition has to be demonstrable in chat. *"All tests pass"* works. *"Code is optimised"* doesn't (too subjective). Different shape from the three above: the condition drives it, not a schedule or an interval. The runtime-shipped sibling of the verifier you author later in the training. Verified live 2026-05-15 against Claude Code 2.1.142.
+**Routines / `/schedule`: remote (Anthropic's cloud).** Run `/schedule daily PR review at 9am` in the CLI (a one-off like `/schedule tomorrow at 9am …` works too), or sidebar: **Routines → New routine → choose Remote.** Runs on Anthropic's infra regardless of your laptop, on Pro/Max/Team/Enterprise with Claude Code on the web enabled. **Requires a GitHub repo** as working directory (cloned fresh each run). AE101's default assumption is a local repo, so Routines is out-of-scope for core modules. Flag for later if your org has cloud-Git workflows. `/schedule list`, `update` and `run` manage existing routines from the CLI; GitHub-event triggers can be attached from either surface (CLI path needs v2.1.225+), while API-trigger tokens are generated on the web only. No catch-up on wake (the cloud doesn't sleep). **Routines are a research preview** — behaviour and limits may change under you.
+
+**`/goal <condition>`: condition-driven autonomy.** Set a verifiable completion condition. Claude keeps working turn after turn until the condition holds **or it judges the condition impossible**, then stops — so a stopped goal is not by itself evidence the condition was met. Status with bare `/goal`; `clear`, `stop`, `off`, `reset`, `none` or `cancel` all end it early. The runtime evaluates the condition against what showed up in the transcript, so the condition has to be demonstrable in chat. *"All tests pass"* works. *"Code is optimised"* doesn't (too subjective). Different shape from the three above: the condition drives it, not a schedule or an interval. The runtime-shipped sibling of the verifier you author later in the training. Verified live 2026-05-15 against Claude Code 2.1.142.
 
 ### When each fits
 
@@ -340,9 +347,9 @@ Why both layers: git tells you what changed. The transcript tells you why the ag
 **`/clear` and `/compact`: two verbs split the work** (live-verified 2026-05-14 against `code.claude.com/docs/en/commands`):
 
 - **`/clear`** starts a new conversation with empty context. The previous conversation stays available in `/resume` (pass a name to label it in the picker: `/clear my-old-thread`). Aliases: `/reset`, `/new`. Project memory (CLAUDE.md, rules, auto-memory) re-loads on the fresh thread. Use when the task is genuinely done and the next task wants its own slate.
-- **`/compact`** summarises the conversation in place. Same thread, smaller context. Project-root `CLAUDE.md` re-reads from disk and re-injects; nested subdirectory CLAUDE.md files **do NOT** re-inject (they reload next time Claude reads a file in that subdir); conversation-only instructions (things you said in chat but didn't write to a file) are LOST. Optionally pass focus instructions: `/compact keep the auth-flow diagnosis verbatim`. Use when you want to keep going on the same task with less weight.
+- **`/compact`** summarises the conversation in place. Same thread, smaller context. Project-root `CLAUDE.md` re-reads from disk and re-injects; nested subdirectory CLAUDE.md files and rules carrying `paths:` frontmatter **do NOT** re-inject (they reload next time Claude reads a file in that subdir, or a file matching the rule's patterns); conversation-only instructions (things you said in chat but didn't write to a file) are LOST. Optionally pass focus instructions: `/compact keep the auth-flow diagnosis verbatim`. Use when you want to keep going on the same task with less weight.
 
-If an instruction disappeared after `/compact`, it was either conversation-only or lives in a subdirectory CLAUDE.md that hasn't reloaded. Persistent instructions belong in a file, not just in scrollback.
+If an instruction disappeared after `/compact`, it was conversation-only, or lives in a subdirectory CLAUDE.md that hasn't reloaded, or is a path-scoped rule that hasn't matched a file since. Persistent instructions belong in a file, not just in scrollback — and a path-scoped one belongs where the work will touch it.
 
 Docs: [memory.md § View and edit with `/memory`](https://code.claude.com/docs/en/memory.md#view-and-edit-with-memory), [commands § `/context` / `/clear` / `/compact`](https://code.claude.com/docs/en/commands), [context-window § What survives compaction](https://code.claude.com/docs/en/context-window#what-survives-compaction).
 
@@ -368,7 +375,7 @@ Docs: [cli-reference § system-prompt flags](https://code.claude.com/docs/en/cli
 
 A hook is a small script the runtime invokes on a named event. The script fires deterministically: the agent has no say in whether it runs. The closing lecture on packaging names that property *"hooks always fire."* It's what makes hooks the right home for anything that **must** happen versus what's **recommended** (prompts and `CLAUDE.md` rules carry the recommended layer).
 
-**Nine canonical events** (verified 2026-05-15 against Claude Code 2.1.142: five via the AE101 curriculum repository's working `.claude/settings.json` configs, four via the CLI's own hook-event listing):
+**Ten events carry almost everything you'll write.** The docs define 31 in total; reach for the full list when none of these fits (re-verified 2026-08-15 against `code.claude.com/docs/en/hooks`):
 
 | Event | Fires | Common use |
 |---|---|---|
@@ -381,6 +388,7 @@ A hook is a small script the runtime invokes on a named event. The script fires 
 | `Stop` | When Claude completes a turn | Surface end-of-turn nudges, run wind-down checks, log session signals |
 | `SubagentStop` | When a dispatched subagent completes | Roll up subagent results, trigger downstream audits |
 | `PreCompact` | Before auto-compaction summarises history | Capture mid-context state to disk before it folds into the summary |
+| `InstructionsLoaded` | When a `CLAUDE.md` or `.claude/rules/*.md` file loads into context, at session start and on lazy load | Log exactly which instruction files loaded and when — the tool for debugging a path-scoped rule that isn't firing |
 
 AE101's own curriculum repository wires five of these in its `.claude/settings.json` (SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, Stop). Useful working configs to grep when authoring your first hook.
 
@@ -504,7 +512,7 @@ Docs: [memory.md § Manage CLAUDE.md for large teams](https://code.claude.com/do
 
 **"CLAUDE.md is too large (>200 lines) and adherence is dropping."** Move path-scoped rules to `.claude/rules/`. Move rare-but-needed content to `@path` imports (note: imports still load into context at launch, so they don't reduce size. They only organise). Trim what isn't needed every session.
 
-**"Instructions seem lost after `/compact`."** Project-root CLAUDE.md survives; nested subdirectory CLAUDE.md and conversation-only instructions don't. Put persistent rules in a file at a level that survives.
+**"Instructions seem lost after `/compact`."** Project-root CLAUDE.md survives; nested subdirectory CLAUDE.md, `paths:`-scoped rules, and conversation-only instructions don't. Put persistent rules in a file at a level that survives.
 
 **"Multiple CLAUDE.md files in a monorepo are polluting context."** `claudeMdExcludes` in settings (§ 14).
 
@@ -534,6 +542,14 @@ Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/
 **This document grows.** If you hit something during the training that belongs here and isn't, flag it. For feature-specific detail, the [official docs](https://code.claude.com/docs/en/memory.md) are the source of truth. When docs disagree with anything on this page, trust the docs.
 
 <!-- maintainer -->
+
+**Doc re-verify 2026-08-15, §§ 5–16.** Fetched live: memory.md, hooks, permission-modes, commands, ultraplan, scheduled-tasks, routines, desktop-scheduled-tasks, sub-agents. Corrections landed where the docs contradicted the page (this file's own contract is *docs win*, so those needed no maintainer call): §5 Ultraplan row cut and the approval table went five rows → three, §5 toggle list re-derived from the current cycle description, §13 "nine canonical events" → the docs define 31 and the table is now a curated ten, §9 Routines' "GitHub triggers are web-only" corrected, §11/§16 `/compact` survival list gained `paths:`-scoped rules, §9 `/goal` gained *or judged impossible*, §6 gained the auto-memory-does-not-cross-over fact.
+
+**The Ultraplan removal has a five-file blast radius and only this file is fixed.** Still carrying the dead five-option menu: `exercises/build-your-challenge-memory.md` (names options by NUMBER — the highest-harm instance, Agents 101), `trainings/agents-101/reference/claude-quick-reference.md` (quotes the menu verbatim), and four built `site/clients/**/index.html` workbooks (build output — regenerate, never hand-edit). `exercises/push-back-on-the-plan.md`'s source stamp is corrected.
+
+**Freshness lesson, worth keeping:** `push-back-on-the-plan.md` stamped this same doc `result:OK` on 2026-08-02 and recorded a four-option menu. Thirteen days later it was three. A research preview can be withdrawn between two checks, so cite an option count by shape, not by number, unless the check is fresh.
+
+**§§ 7, 8, 10, 12 were NOT re-verified this pass** and still carry 2026-05-14. Named on the header stamp so the next sitting starts there.
 
 **Slide deixis accepted:** "blocks below" (check_slides.md §12) — §9's Desktop and Routines blocks sit in the same `## 9.` chunk as the `/loop` line pointing at them.
 **Slide deixis accepted:** "three above" (check_slides.md §12) — the three long-running shapes are `/loop`, scheduled tasks and Routines, all inside `## 9.` with the `/goal` line that reads them back.

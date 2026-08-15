@@ -78,12 +78,27 @@ mkfix t3.md '# Closing lecture
 - mechanical-tested: N/A (lectures are trainer-narrated)
 
 body'
-run "$TMP/t3.md" --maintainer-reviewed PASS --sha new5678 --date 2026-06-01 >/dev/null
+run "$TMP/t3.md" --cohorts "none yet" --sha new5678 --date 2026-06-01 >/dev/null
 assert_grep    "$TMP/t3.md" '**Quality:** compendium-audited 2026-04-28' 'T3 stage AND date frozen on all-keep'
 assert_no_grep "$TMP/t3.md" '2026-06-01'          'T3 date not bumped by axis-only stamp'
 assert_grep    "$TMP/t3.md" 'post rule-#3 sweeps' 'T3 narrative preserved'
 assert_grep    "$TMP/t3.md" 'sim-passed 2026-04-27' 'T3 sim-passed row not deleted'
 assert_no_grep "$TMP/t3.md" 'mechanical-tested'   'T3 legacy mechanical row purged (axis removed 2026-06-01)'
+
+# ── T3b — the maintainer-reviewed flag hard-errors (axis removed 2026-08-15) ─
+#    The flag refuses and leaves the file untouched; a stray legacy row is
+#    purged (GC) by the next real stamp, never reconstructed.
+mkfix t3b.md '# Lecture
+<!-- maintainer -->
+**Quality:** compendium-audited 2026-04-28
+- maintainer-reviewed: 2026-04-20 (Antti)
+
+body'
+rc=$(run "$TMP/t3b.md" --maintainer-reviewed PASS --sha x --date 2026-06-01)
+assert_rc "$rc" 1 'T3b --maintainer-reviewed refuses (axis removed 2026-08-15)'
+assert_grep "$TMP/t3b.md" 'maintainer-reviewed: 2026-04-20' 'T3b refused stamp left the file untouched'
+run "$TMP/t3b.md" --cohorts "none yet" --sha x --date 2026-06-01 >/dev/null
+assert_no_grep "$TMP/t3b.md" 'maintainer-reviewed' 'T3b stray maintainer-reviewed row purged on re-stamp'
 
 # ── T4 — maintainer-reviewed top-state preserved on an axis-only stamp ───────
 mkfix t4.md '# Lecture

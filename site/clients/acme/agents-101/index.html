@@ -3128,7 +3128,7 @@ When done, tell me the three lists: (1) fetched and saved as content, (2) linked
 <p><strong>Beat 3. Build memory.</strong> Now the memory gets built from what&#39;s actually on disk. <span class="rt-code">Turn on plan mode first. Claude writes out what it&#39;s about to do before touching files, you approve, nothing commits until you say go. Tell Claude <em>&quot;Enable plan mode.&quot;</em> (Alternatives: pick <em>Plan</em> from the mode dropdown at the bottom of the Claude Code desktop app, or press Shift+Tab to cycle.) The footer should read <em>plan mode</em>.</span><span class="rt-cowork">Before you do anything, ask Claude to write a plan first. It writes what it&#39;s about to do before touching files, so you can review and steer before files commit.</span></p>
 <div class="rt-code">
 
-<p>Heads up on what happens at the end of the plan: Claude will pause and ask <em>&quot;Claude has written up a plan and is ready to execute. Would you like to proceed?&quot;</em> with five options. For this exercise: <strong>option 1 (Approve and start in auto mode)</strong> is the friendly default if the plan&#39;s topic split looks right. If two topics should merge, or something&#39;s missing, pick <strong>option 4 (Keep planning with feedback)</strong> and type one sentence of feedback; Claude rewrites the plan. Options 2 (accept edits), 3 (review each edit), and 5 (Ultraplan) aren&#39;t needed here. Full rundown in the <a href="#reference-claude-quick-reference" target="_blank" rel="noopener">quick reference</a>.</p>
+<p>Heads up on what happens at the end of the plan: Claude will pause and ask <em>&quot;Claude has written up a plan and is ready to execute. Would you like to proceed?&quot;</em> For this exercise, <strong>Yes, and use auto mode</strong> is the friendly default if the plan&#39;s topic split looks right. If two topics should merge, or something&#39;s missing, pick <strong>No, keep planning</strong> and type one sentence of feedback; Claude rewrites the plan. The remaining option walks you through each file write one at a time, which this exercise doesn&#39;t need. Your first option may be worded a little differently depending on your account, so pick by wording rather than by position. Full rundown in the <a href="#reference-claude-quick-reference" target="_blank" rel="noopener">quick reference</a>.</p>
 </div>
 <div class="rt-cowork">
 
@@ -5878,27 +5878,24 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
 <ul>
 <li>Tell Claude <em>&quot;Enable plan mode.&quot;</em> (Works anywhere. Recommended default.)</li>
 <li>Use the <strong>mode dropdown</strong> at the bottom of the Claude Code desktop app — pick <em>Plan</em> from the list.</li>
-<li>Keyboard: Shift+Tab to cycle permission modes (default → acceptEdits → plan). Two extra modes (<code>auto</code> and <code>bypassPermissions</code>) slot in after <code>plan</code> only when your account has them enabled; most Agents 101 students will see the three-mode cycle.</li>
+<li>Keyboard: Shift+Tab to cycle permission modes. On Pro, Max and Team plans your session starts in <code>auto</code>, and the first press takes you to <code>default</code>; the cycle then runs default → acceptEdits → plan. Where <code>auto</code> and <code>bypassPermissions</code> are both enabled they slot in after <code>plan</code>. Whatever the cycle looks like on your machine, keep pressing until the footer reads <em>plan mode</em>.</li>
 </ul>
 <p><strong>When the footer reads <em>plan mode</em></strong> and you paste a prompt, Claude returns a plan instead of writing files. When the plan is ready, Claude Code pauses and asks:</p>
 <blockquote>
 <p><em>Claude has written up a plan and is ready to execute. Would you like to proceed?</em></p>
-<p><em>1. Approve and start in auto mode</em>
-<em>2. Approve and accept edits</em>
-<em>3. Approve and review each edit manually</em>
-<em>4. Keep planning with feedback</em>
-<em>5. Refine with Ultraplan</em></p>
+<p><em>Yes, and use auto mode</em>
+<em>Yes, manually approve edits</em>
+<em>No, keep planning</em></p>
 </blockquote>
+<p><strong>Pick by wording, not by position.</strong> The first option is worded to match your account — you may see <em>Yes, auto-accept edits</em> instead — so a room of twelve people will not all be looking at identical text. The options themselves behave the same way.</p>
 <p><strong>What each option does, and when to pick it:</strong></p>
 <ul>
-<li><strong>1. Approve and start in auto mode</strong> — Claude executes the whole plan without asking again. Fastest. Pick this when the plan looks right and the work is low-stakes (creating memory pages, drafting an agent file, generating documentation). <strong>This is the friendly default for most Agents 101 exercises.</strong></li>
-<li><strong>2. Approve and accept edits</strong> — Claude auto-approves file writes but still pauses for non-file commands (terminal actions, etc.). A useful middle ground when the plan is edits-only.</li>
-<li><strong>3. Approve and review each edit manually</strong> — Claude pauses for each file write. You OK each one. Slower, safer. Pick this when the plan touches something you care deeply about (editing a live policy file, modifying production-adjacent work).</li>
-<li><strong>4. Keep planning with feedback</strong> — Opens a text box. You type specific feedback (<em>&quot;merge buyer-tone and buyer-segments into one page,&quot;</em> <em>&quot;add a topic for competitive response&quot;</em>). Claude rewrites the plan. Pick this when the plan is mostly right but something is off. Cheaper than re-running the whole prompt from scratch.</li>
-<li><strong>5. Refine with Ultraplan</strong> — Sends the plan to a cloud-based refinement tool. Not used in Agents 101; ignore.</li>
+<li><strong>Yes, and use auto mode</strong> — Claude executes the whole plan without asking again. Fastest. Pick this when the plan looks right and the work is low-stakes (creating memory pages, drafting an agent file, generating documentation). <strong>This is the friendly default for most Agents 101 exercises.</strong></li>
+<li><strong>Yes, manually approve edits</strong> — Claude pauses for each file write. You OK each one. Slower, safer. Pick this when the plan touches something you care deeply about (editing a live policy file, modifying production-adjacent work).</li>
+<li><strong>No, keep planning</strong> — Opens a text box. You type specific feedback (<em>&quot;merge buyer-tone and buyer-segments into one page,&quot;</em> <em>&quot;add a topic for competitive response&quot;</em>). Claude rewrites the plan. Pick this when the plan is mostly right but something is off. Cheaper than re-running the whole prompt from scratch.</li>
 </ul>
-<p><strong>Rule of thumb for Agents 101:</strong> plan looks solid → option 1. Plan is close but needs a tweak → option 4 with one sentence of feedback. Plan is fundamentally wrong → option 4 describing the change, or exit plan mode and re-paste the prompt with sharper instructions.</p>
-<p><strong>Turning it off — usually no action needed.</strong> Plan mode exits automatically after you approve a plan and Claude runs it; the footer goes back to <em>default</em> on its own. You only need to toggle off manually if you want out <em>before</em> executing a plan (e.g., you changed your mind and want to exit without running) — tell Claude <em>&quot;Disable plan mode&quot;</em>, pick <em>Default</em> from the mode dropdown, or cycle with Shift+Tab.</p>
+<p><strong>Rule of thumb for Agents 101:</strong> plan looks solid → approve with auto mode. Plan is close but needs a tweak → keep planning, with one sentence of feedback. Plan is fundamentally wrong → keep planning and describe the change, or exit plan mode and re-paste the prompt with sharper instructions.</p>
+<p><strong>Turning it off — usually no action needed.</strong> Plan mode exits automatically after you approve a plan and Claude runs it; the footer switches to whichever mode the option you picked named. You only need to toggle off manually if you want out <em>before</em> executing a plan (e.g., you changed your mind and want to exit without running) — tell Claude <em>&quot;Disable plan mode&quot;</em>, pick <em>Default</em> from the mode dropdown, or cycle with Shift+Tab.</p>
 <p>Use plan mode when a prompt is about to write many files, or touch anything you care about. Skip it for quick single-turn work.</p>
 <h2 id="working-with-files">Working with files</h2>
 <p>Claude Code can read and write files in your project directory. Ending a prompt with &quot;save as X&quot; or &quot;save in this project&quot; writes the file.</p>

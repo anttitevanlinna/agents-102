@@ -484,7 +484,7 @@ Never compress the two closing lectures. What packaging is → The gate is a cla
 5. Exercise — [Spot gaps, build the loop](./#exercises-spot-gaps-build-the-loop) (35 min; diff two runs, cut a stale rule, scan the stack for recurring work-shapes)
 6. Lecture — [Composing the workflow](./#lectures-composing-the-workflow) (closer-area teacher; 4 min; the passage chart re-labelled with the student's kit; composition variety first — by hand, through files — then the four wirings of one documented kit)
 7. Lecture — [The loop has a name](./#lectures-the-loop-has-a-name) (closer; names *eval* across verifier / judge / gate, anchored on the M5 verifier)
-8. Lecture — [The map, filled in](./#lectures-the-map-filled-in) (final theory closer, 10 min; the whole map drawn solid across M1–M6)
+8. Lecture — [The map, filled in](./#lectures-the-map-filled-in) (final theory closer, 10 min; the whole map drawn solid across M1–M6; land the soil line off the figure — three standing orders, read them from the map, never lectured)
 9. Lecture — [Agents that build agents](./#lectures-agents-that-build-agents) (forward closer; the training's closing beat, dead-last per the 2026-07-03 re-sequence)
 
 **Learning goals.** Student can:

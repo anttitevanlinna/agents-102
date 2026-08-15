@@ -188,7 +188,7 @@ Never cut: the failing test before the fix, the diff-line push-back, and the con
 1. Connections — "when did you last approve a plan you didn't really read, and what made you approve?"
 2. Lecture — [The whole map](./#lectures-the-whole-map) (opener, 6 min; first map reveal: the whole territory, and where the first modules sit in it)
 3. Lecture — [When a plan is good](./#lectures-when-a-plan-is-good)
-4. Exercise — [Push back on the plan](./#exercises-push-back-on-the-plan) (60 min)
+4. Exercise — [Push back on the plan](./#exercises-push-back-on-the-plan) (57 min)
 5. Exercise — [Extract the task-shaping rule](./#exercises-extract-the-task-shaping-rule) (15 min)
 6. Save the rule if it earned itself — two short prompts in the module body; opportunistic integrate into `./CLAUDE.local.md`, only if a branch changed how the student reads plans
 7. Lecture — [Where the rule could live](./#lectures-where-the-rule-could-live) (names Slack triage / issue webhook / scheduled read)

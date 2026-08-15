@@ -243,7 +243,7 @@ Scoped, named capabilities. Markdown file with frontmatter + instructions, in a 
 - Claude invokes it when the `description` matches what you are doing — which is what that field is for; write it as *when to use this*, not as a title
 - You invoke it explicitly by typing `/<skill-name>`
 
-**Custom commands and skills are now the same thing.** `.claude/commands/deploy.md` and `.claude/skills/deploy/SKILL.md` both give you `/deploy`. Existing command files keep working; skills add a folder for supporting files and the frontmatter below.
+**Custom commands and skills are now the same thing.** `.claude/commands/deploy.md` and `.claude/skills/deploy/SKILL.md` both give you `/deploy`. Existing command files keep working; skills add a folder for supporting files and the frontmatter that follows.
 
 **Frontmatter worth knowing** (all optional; `description` is the one that earns its keep):
 

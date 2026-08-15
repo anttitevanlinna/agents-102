@@ -2,6 +2,12 @@
 
 **Status:** v0.6 — 2026-07-02. Inventory + evals banked · placement fixed (Day-1/Day-2 fold) · −20% cull scoped (reversible gray-out mechanism shipped) · three lecture skeletons slotted + all three WIRED (M2 open, M3 close, M4 open) · M1–M3-first scope gate removed · **coverage audit + canon gap check + Family A adversarial pass DONE → `theory-audit.md`** · groundwork pinned as canonical map basis (§ below) · edit-to-perfect next, per-lecture, against the audit. **v0.7 (2026-07-02 later): M1+M3–M6 slides-only fan-out DONE** — 5-module workflow sweep (rework → review → fix), cross-module bridges applied, build + 7/7 tests + prompt graph + grep battery clean. Pending Antti eyeball → § Fan-out eyeball queue. Demo-shift plan § below (own open questions). **v0.8 (2026-07-02 evening): theory visuals + promotions.** M2 engine visual: groundwork `sw-engine.html` → light-mode inline SVG in `the-whole-map.md`, two passes (pass 2: + agent's inner loop drawn solid inside build loop · ghost checking loop over Verification/Absorption, sub "by hand for now" · six component-outcome caps · lede now carries same-shape-different-work; eyeball Qs in its maintainer block) · run-view terrain picture banked (§ Placement — word "backpressure" BANNED on its student surfaces; 3 protos → `protos/m4-run-chart-0{1,2,3}.html`, workflow in flight at compact) · `the-agent-loop` PROMOTED supplementary → M4 lecture (wired `run-the-first-experiment § Start here`, M1 unwired, manifest updated, graph 74-prompt clean; eyeball Qs in its maintainer block) · three failure modes PROMOTED to anchor form in `reading-the-return.md` (per-mode mechanisms + *Why these three, every run* slide + enacted which-lens governor) · **theory handbook build commissioned** (`--theory` mode on build-workbook, manifest-driven, → `theory-handbook.html`; agent in flight at compact). **NEXT: completeness reviews of theory** — run over the theory handbook as one document: Family A axes + Family B durability-without-voice (theory-evals.md) against the theory-audit.md coverage matrix. **v0.9 (2026-07-02): proto 02 woven into M5 closer** (new first slide of `curriculum/lectures/what-packaging-is.md`) + **theory handbook BUILT** — `site/clients/goats/agentic-engineering-101/theory-handbook.html`, `THEORY_HANDBOOK_MANIFEST` const in `scripts/build-workbook.js`, `--theory` flag, 27 entries, 14/14 tests — + completeness review phase started. **v1.0 (2026-07-02): completeness review DONE** — 4 confirmed / 11 downgraded / 6 refuted / 10 minors; results → `theory-completeness-review-2026-07-02.md` + `.results.json`. **M1 machine-nature closer lecture COMMISSIONED** (sycophancy mechanism + reliability math; Antti-directed: "could live in lecture in module 1. After exercises"). **v1.1 (2026-07-02 late): M1 lecture BUILT** — `curriculum/lectures/the-machine-you-just-met.md` (3 slides; Sharma et al. verified live; wired getting-going.md before how-this-training-was-built; handbook now 28 docs; adversarial review clean, 0 fix rounds; eyeball Qs in its maintainer block; Antti saw it in SPA) + **slide-page standard applied** (§ Slide format: line + `##` headline everywhere; 2 deviations fixed corpus-wide). OPEN from review, Antti's calls: far-half consolidation closer (blocking #1, = engine-re-show payoff beat) · M4 send-off security beat + "prompt injection" into trifecta (blocking #2) · loop-half-filled:18 files-overclaim one-liner · the-loop-has-a-name Ronacher-provenance one-liner · supplementary-placement cluster (11 downgraded) · 10 minors. → ALL CLOSED 2026-07-03. **v1.2 (2026-07-03):** sequence reorder (far-half opens M4 · agents-that-build-agents dead-last · the-map-filled-in penultimate · story-of-module-6 out of theory manifest, kept in room) + closing-seam repair + subsequence drift-guard test shipped. **v2.0 (2026-07-03): theory layer COMPLETE** — ironies-of-automation → proper M4-opening lecture + the-gate-is-a-claim → proper M5-close lecture (both PASS adversarial + Family-B; old supplementaries deleted + deregistered); all 6 actionable eyeball tasks done; ALL theory anchors Family-B PASS; builds/tests/graph green. REMAINING = separate initiatives + Antti decisions only: demo-shift (unbuilt, 6 open Qs) · −20% cull · ~4 genuine calls (skills-from-the-frontier team-kit vs sponsor contract · canonical-home/IPR fence · demo-shift+cull scope) · confirm-default eyeball items. **v2.1 (2026-07-03): control-theory grounding added** (Antti + external read) — the whole Field Map named as a feedback control loop (near half = feedforward · far half = feedback · verification = the sensor layer); full canonical mapping banked design-side (§ The Field Map, below the table); ONE jargon-free naming beat on the student surface at M6 (`the-map-filled-in` § *The shape you drew*, 3 bullets, no setpoint/plant/gain) per Antti's dosage call (Option B). No new student-facing jargon and zero new laws coined — the §1 single-loop closed-loop-controller borrow, widened to the whole map at consolidation. Field Map stays the student-facing spine; control theory is its de-jargoned grounding. **v2.2 (2026-07-04): exercise-format refactor scoped + instrument shipped.** The load rubric (theory's success = cognitive-load management, not depth) extended from lectures to EXERCISES — the untouched other half of the overwhelm. Diagnosis, target format, and a staged plan banked (§ Exercise format refactor). Exercises-only workbook shipped (`--exercises` build mode, auto-derived from module includes, prompts inlined) as the eyeball surface + student handout. Step 1 = chunk to slides (before/after prompt-frame); prototype = `diagnose-and-resend` hand-chunked to set the pattern; fan-out via workflow after Antti eyeball. **v2.3 (2026-07-04): exercise header rule discovered + prototype re-cut + full re-assembly spec banked.** Blind-squint test (headers-only → reconstruct the build) proved the chunking preserved a 100%-opaque legacy header (`Phase 2: Align-then-run, in reverse`). Fix = the **build-squint header rule** (§ Re-assembly spec). Prototype `diagnose-and-resend` re-cut + renamed to *Diagnose and package* (names the construction, not the action) + gained a `**What you build:**` construction thread; it is now the gold exemplar. Complete fan-out spec written (compact-proof) so the redo sweep runs from the notes alone. **v2.4 (2026-07-05): M6 re-eval + closer-chain pass DONE.** The M5 run-view passage picture (§ Placement, M6 backbone-picture Q) woven into M6 at the *skill* zoom: `composing-the-workflow` reworked around **footprint-follows-the-job** (a skill's footprint = wherever its job lands, never sized in advance · not every workflow has an orchestrator · move=skill · pilot=orchestrator · leaf=one-job-calls-nothing) — proto 01 (`protos/m6-skill-passage-01-footprint.html`; phases context→plan→build→verify→ship carried in slide prose, NOT drawn on the chart — the phases-as-legs framing scored weakest in a 5-framing/3-judge panel, re-commits the fixed-mapping trap) inlined as slide 1; skill-stacking merged in as a pointer, not a second lecture. `the-loop-has-a-name` coherence retune (compose→reuse). **TWO M6 beats CUT** (Antti, verified): `steering-the-wiring` lecture (worktree-wiring is plumbing, not a load-bearing concept; its graduation beat already carried by composing's close) + `arc-retrospective` exercise (didn't advance the learning; arc-recognition carried by the Human close + `the-map-filled-in`) — removed everywhere (2 files git-rm'd · `arc-retrospective-1` prompt + 8 `consumed-by` refs · 11 eval instances · theory manifest · 2 audit-script hardcodes · trainer pages · M5 forward-pointer); frees ~20 min against the overbooked M6 close. Latent build fragility fixed: `build-ae101-content-tarball.sh` no-match `grep` under `set -euo pipefail` aborted the whole build when a reachability hop found zero links (the arc-retrospective cut exposed it — M6's second hop now has zero exercise links, so every default build exercises the guard) → `|| true`. Verified: prompt graph CLEAN · compile OK · artifact-contracts clean · all 3 builds (default/theory/exercises) pass · 0 slug leaks across 5 built HTML surfaces. This branch (`ae101-theory-reeval`) = the theory-plan's M6 re-eval piece. **Supersedes below (historical text kept):** the cull's Day-2 `arc-retrospective` line (§ The cull), the `arc-retrospective-1` CUT→DEMO row + open-Q #3 (§ Demo-shift, now cut-not-demo), the `steering-the-wiring` entries in the §3 sweep worklist + eyeball-queue #8, and `arc-retrospective` in both exercise enumerations (§ Exercise format refactor: 13→12 AE101 exercises).
 
+**v2.5 (2026-08-15): the general/local frame merged in** (§ below, before The cull) — why the training
+refuses to hand over best practice, now doctrine: operating claim + aha + cheap-reading levers + dosage
+ladder (M5 weighted home SHIPPED as three theory slides + the KC four-liner; M4 disclosure + M6 echo open,
+carded). `module-design/ae101-m4-frame-idea.md` dissolved into this section; derivation, corpus-audit
+detail and the retraction record live in git.
+
 **Method (Antti, 2026-07-01):** placement-first. *Slot the new lectures as bulletpoint skeletons → research the right theory → edit the bullets until perfect.* Placement before wording (= Family B improve ladder). Family A does not gate the skeletons; the research pass IS the editing. Slide-style viewer coming in a later session — author every skeleton glance-legible / slide-shaped so it drops into the viewer (ASCII map → real diagram).
 
 **Why this exists.** Cohort feedback on AE101 escalated from *"too little theory"* to *"as it stands, this doesn't work for us."* Two stated reasons — and they're one root cause, **cognitive overload with no anchor**: (1) an unfamiliar common project *plus* new techniques at once = two unknowns multiplied, not added; (2) *"too much material, too little structure,"* no durable slides/background. The sharpened diagnosis: the theory **was** there — but carried *as practice, delivered verbally*. Verbal is lossy, un-rewindable, no error-correction: if a student didn't hear the trainer name it, the theory didn't exist for them. So there were two failures — **no spine** (nowhere to hang the material) and **no durable body** (verbal-only, nothing re-readable). This doc establishes *what theory is*, *what pieces exist*, and the *solution* that gives theory a spine and a durable body without breaking the emergent-knowledge worldview.
@@ -163,6 +169,91 @@ Each day **opens with its half of the map** (container, `check_lectures §2`-leg
 - **M5-M6** — earned by contrast, as-is.
 
 Two durable anchors + the map, **not** six per-module anchors. Thin-slice = **M2** (where theory really starts).
+
+## The general/local frame — why the training refuses to hand over best practice (2026-08-13→15; merged from `module-design/ae101-m4-frame-idea.md`, dissolved — full derivation in git)
+
+**The operating claim (full strength, student-facing thesis; directional, not literal omniscience):**
+*Anything general this training can tell you, the LLM already knows or soon will. What it cannot know yet is
+what works in your codebase, with your task, your constraints and your standards. That knowledge has to be
+produced locally.* Mechanism kept precise (the counter-view that survived): the agent can read the repo,
+transcript and tests — what it cannot retrieve is **the outcome of an experiment nobody has run**. The
+missing evidence is the interaction of this task × model × repository × setup. Asked ahead, a model
+predicts; **a prediction is not a measurement**. The moat is not local knowledge; it is **the rate at which
+a person or team produces, judges and encodes local evidence.** M4 creates the evidence · M5 interprets it ·
+M6 encodes it. Keep four causal pieces separate: capability growth makes general knowledge cheap · the same
+growth makes local experiments cheap · churn makes recipes perishable (growth = economics, churn = expiry —
+never bundle) · the engineer keeps evaluation authority (what counts, what it means, what earns promotion).
+
+**Evidence structure (authoring apparatus — never the student payload):** A (no convergence) and C (the
+field keeps moving; same people reversing inside the window — Amp handoff→compaction, HumanLayer %→100k,
+Steinberger) are perishable *evidence*, restamp before each cohort. D (the answer is local; don't take ours
+on authority) is the durable *claim* — cannot be falsified by events. E (the experiment got cheap) is what
+turns locality from warning into skill. B (therefore we shaped the module so) is derivative — **never
+written alone**; it is the author admiring the lesson plan, and its learning-science borrow was considered
+and DECLINED (Kapur — see `test-and-learn.md` backing).
+
+**The aha (student payload, two halves — Antti-approved formulation):** *"The reason nobody could tell me
+the best way isn't that the field is young — the question doesn't have a general answer. And the answer it
+does have, for my repo, costs twenty minutes and my agent runs the experiment. I've been queuing at an
+oracle when I own a lab."* Half one: a field of locally true answers looks like churn from outside;
+convergence is structurally impossible, so you cannot be behind in a race that was never the job. Half two:
+the class of question that stayed lore because experiments were expensive now settles by measurement in an
+afternoon. Feeling: relief converting into agency. Got-it test (leap shape): student defends the two-run
+path to their own staff engineer **unattributed** — *"the answer for our codebase didn't exist until I
+produced it."* Near-misses that steal it: "packaging works" (the cheap reading) · "the field is immature"
+(waiting is exactly wrong) · "empiricism is good" (already believed) · "the training was cleverly designed"
+(B; the moment the aha is about us it is stolen).
+
+**The cheap-reading hazard:** the M4/M5 contrast supports two readings and Reading 1 — *packaged won → use
+plan files*, imported best practice wearing a lab coat — wins by default: the headline replicates across
+every student, and uniform results read as universal truths. (The bakeoff dodges this structurally:
+divergent winners; AE101's variance stays private per laptop.) Levers: kit-handover reframe (SHIPPED — the
+theory slides re-price the trophy to *candidate* immediately after the three-pattern slide) · room-variance
+beat (OPEN — trainer surface; needs solo fallback) · contrastive neighbour line (OPEN — *same experiment,
+different kit*).
+
+**The floor (do not let C become nihilism):** artefacts churn; physics does not (files survive
+compaction, conversations don't; fuller window = worse answer; write it down or lose it). The
+`due:cohort` / `due:none` stamp split IS this line, held mechanically. Partly named student-side via the
+KC four-liner; full naming still an open call.
+
+**Delivery ledger (SHIPPED 2026-08-14/15):** three theory slides mid-M5 deck (`what-packaging-is`: *The
+model has read the field* · *The evidence did not exist yet* · *Two bearings make a candidate, not an
+optimum*) — placed to project while the packaged re-send is out, so *"the second bearing is being taken
+now"* is literally true in the room; hands to *Passing is not proof*, never resolves it; "best practice"
+fate stays an open question by design. KC = the four-line frame summary verbatim (`learn-from-the-test`).
+Supporting cuts executed (window menu → M4 closer; lenses re-teach, 80/20, Intercom tiers out — Intercom
+lives at M6). Dense-slides note in two registers; consumption guidance ends on student authority
+(`check_student_facing` rule 5, compounded 2026-08-15).
+
+**Dosage ladder (settled direction):** one-sentence M4 disclosure (world-facing reason to send the
+baseline; survival test — must push toward sending as-is, never name the package or predict the diagnosis;
+if a persona read shows even the narrow sentence invites pre-packaging, CUT it and let *"un-packaged first
+is by design"* stand) · the weighted home in M5 (SHIPPED) · one-sentence M6 rate echo (*the frontier keeps
+moving; your advantage is the rate at which you test, judge and encode what works here*). M4 + M6 sentences
+still OPEN, gated body edits, cards.
+
+**Corpus audit headlines (2026-08-13; instrument + retraction lessons in git via the dissolved frame doc):**
+69% of lectures / 75% of words already vocabulary-stance rather than general transfer; substitutable
+passages ≈ 21% of the deck. Skew is at the FRONT: M1 = 61.6% general-transfer word share (the module that
+must prove the training beats a chat window is the most chat-reproducible) vs M6 = 0%. The corpus already
+places locality claims ~2x earlier than unsettledness claims (median depth 49% vs 90%) — placement law
+observed, not decided. APPARATUS = 0 primary across 26 lectures (exercises generate, lectures name — make
+it a stated choice). Candidate fifth class: LOCAL_TESTIMONY (`how-this-training-was-built`,
+`story-of-module-6`). Caveats that survive: `← none-owed` is a vocabulary detector, not a substitutability
+detector; and every audit claim of the form "file X currently says Y" is unverified until read.
+
+**Tensions the theory must preserve (do not smooth):** parallel generation vs accountable absorption ·
+encoded rules vs delegated judgment (both action-framed in `pre-cohort-todos.md` § Tensions) · **interactive
+bandwidth vs encoded latency** (2026-08-15, Antti-agreed): "more input faster" is true and is the argument
+FOR encoding — encoded input is the fastest input there is; interactivity is where novel judgment gets
+DISCOVERED, encoding is how it accelerates; **interactive for novel discovery, encoded for optimising what
+exists**, and the ratchet between them is the delegation frontier moving as fast as the gates behind it.
+
+**Open (frame):** M4 disclosure sentence + M6 echo (cards) · room-variance beat + neighbour line + solo
+fallback · floor naming · maintenance-machinery visibility (the training that says *the field moves* while
+running dated stamps against a cohort date makes the argument twice) · M1 general-transfer skew (own
+initiative; mood-demo caveat applies — the substitution test may be the wrong test for live demos).
 
 ## The cull — −20%, reversible
 

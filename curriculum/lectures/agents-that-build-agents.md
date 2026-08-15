@@ -28,9 +28,9 @@ What comes back is a prompt, not a plan. Save it where you will find it. The kit
 
 ## You make agentic happen
 
-- **Act under uncertainty.** This might not work. That was never a reason to wait; it was the reason to send it and read what came back.
-- **Competence sets the ceiling.** Nobody can hand you this one. Every check you built raised what you could hand off. The ceiling moves when you do.
-- **Cross personal → team.** A kit that stays yours stays small. The best rule in it is a gift you haven't given yet. Give it away; watch it compound.
+- **Act under uncertainty.** The right way moves every day; there is no time to test everything. Acting is the move from *possibly* to *I have something*.
+- **Competence sets the ceiling.** Your brain needs the reps to think different. The pathways you build show you the next level.
+- **Cross personal → team.** Personal mastery is nice. But it will never be enough. Share and learn together.
 
 All three have been on the map the whole time: the small print along the bottom, there since M2.
 
@@ -70,7 +70,7 @@ The training closes. The flywheel does not.
 
 **Time:** 8 minutes.
 
-**Soil slide — *You make agentic happen* (2026-08-15, Antti-directed; buried-gold item, relocated from `the-map-filled-in.md`):** full slide between the handoff prompt and *Ralph*, the soil line's one spoken home. Antti's calls, all three: title verbatim; bullets first, provenance line after as a small aside; strip wording *act under uncertainty · competence sets the ceiling · cross personal → team* (*gate* is banned student-side, *a move counts* is scorekeeper register; design-side names + student-form pointer in `theory-plan.md` §0). Register: Godin-leading inside the Risto closer — the orders land as gifts (*This might not work* · *a gift you haven't given yet*), and *give it away; watch it compound* is the design axiom's own wording on a student surface. Guards: (a) one bold handle per order = the law-slide pattern; (b) the slide never names Ralph — the next slide is the unspoken worked example (Huntley acted under uncertainty; the check is Ralph's stopping condition; he gave it away and the name stuck), trainer says the connection, body does not; (c) title is the engineer-side voice of *Accumulated, not enabled* (`theory-plan.md` §3) — you, not the product, make agentic happen; the system-side twin sits on `the-map-filled-in.md`'s control-loop slide; (d) the strip rides all four map figures visually — this slide is its only spoken home, do not add siblings.
+**Soil slide — *You make agentic happen* (2026-08-15, Antti-directed; buried-gold item, relocated from `the-map-filled-in.md`):** full slide between the handoff prompt and *Ralph*, the soil line's one spoken home. Antti's calls, all three: title verbatim; bullets first, provenance line after as a small aside; strip wording *act under uncertainty · competence sets the ceiling · cross personal → team* (*gate* is banned student-side, *a move counts* is scorekeeper register; design-side names + student-form pointer in `theory-plan.md` §0). Register: Godin-leading inside the Risto closer; bullet bodies are Antti's kernels, lightly shaped (2026-08-15) — *possibly* → *I have something* as the acting phase-change · reps and pathways (*think different* keeps its broken grammar, the same game the title plays) · *Share and learn together.* as the open-handed landing. Guards: (a) one bold handle per order = the law-slide pattern; (b) the slide never names Ralph — the next slide is the unspoken worked example (Huntley acted under uncertainty; the check is Ralph's stopping condition; he gave it away and the name stuck), trainer says the connection, body does not; (c) title is the engineer-side voice of *Accumulated, not enabled* (`theory-plan.md` §3) — you, not the product, make agentic happen; the system-side twin sits on `the-map-filled-in.md`'s control-loop slide; (d) the strip rides all four map figures visually — this slide is its only spoken home, do not add siblings.
 
 **Placement:** Module 6 closer chain — Human close → The loop has a name → The map filled in → Agents that build agents (dead-last) → Next. Re-sequenced 2026-07-03 (Antti): The map filled in now sits between The loop has a name and this lecture, so this lecture picks up The map filled in's kicker *"the next dashed loop is yours to draw solid."* The loop has a name's kicker was updated in the same pass to *"The loop feeds itself. That is the flywheel, and it starts with what you encoded today."*
 
@@ -82,8 +82,9 @@ The training closes. The flywheel does not.
 
 Claims
 - `you-make-agentic-happen` · vision · "You make agentic happen" ← none-owed
-- `ceiling-moves-when-you-do` · vision · "The ceiling moves when you do." ← none-owed
-- `give-it-away-watch-it-compound` · vision · "Give it away; watch it compound." ← none-owed
+- `possibly-to-i-have-something` · vision · "Acting is the move from *possibly* to *I have something*." ← none-owed
+- `pathways-show-the-next-level` · vision · "The pathways you build show you the next level." ← none-owed
+- `share-and-learn-together` · vision · "Share and learn together." ← none-owed
 - `soil-on-the-map-the-whole-time` · vision · "All three have been on the map the whole time: the small print along the bottom, there since M2." ← none-owed
 - `every-packaged-move-cheapens-the-next-run` · vision · "Every packaged move makes the next session cheaper." ← none-owed
 - `hand-the-agent-the-move-itself` · vision · "The flywheel turns once more when you hand the agent the move itself." ← none-owed

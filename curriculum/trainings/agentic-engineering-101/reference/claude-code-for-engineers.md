@@ -4,7 +4,7 @@ Flat look-up for the primitives AE101 leans on. No pedagogy, no hand-holding. Wh
 
 Source of truth is Anthropic's docs. Links and verbatim quotes throughout point at [code.claude.com/docs/en/memory.md](https://code.claude.com/docs/en/memory.md), [skills](https://code.claude.com/docs/en/skills), [sub-agents](https://code.claude.com/docs/en/sub-agents), [settings](https://code.claude.com/docs/en/settings), [hooks](https://code.claude.com/docs/en/hooks), [cli-reference](https://code.claude.com/docs/en/cli-reference). This reference is a shortcut. When the shortcut disagrees with the docs, the docs win.
 
-**Last verified against docs:** 2026-08-15 (§§ 1–6, 9, 11, 13–16). §§ 7, 8, 10 and 12 last verified 2026-05-14 and are the next re-verify's first stop.
+**Last verified against docs:** 2026-08-15, all sixteen sections.
 
 **Stale if older than:** 30 days. Re-verify against [code.claude.com/docs/en/](https://code.claude.com/docs/en/) and run a live capability check (`claude --version`, `/help`, `claude-code-guide` subagent) before the next cohort.
 
@@ -109,6 +109,10 @@ paths:
 
 Glob patterns: `**/*.ts`, `src/**/*`, `*.md`, `src/components/*.tsx`. Brace expansion supported: `"src/**/*.{ts,tsx}"`.
 
+**A rule with no `paths:` is not a lesser CLAUDE.md.** It loads at launch with *the same priority as `.claude/CLAUDE.md`*, which makes `.claude/rules/` a legitimate way to split a long CLAUDE.md into topic files rather than a second-class annex. All `.md` files under the directory are discovered recursively, so subdirectories organise without changing load behaviour.
+
+**Path-scoped rules do not survive `/compact` on their own.** The project-root `CLAUDE.md` is re-read from disk and re-injected; a `paths:`-scoped rule is not, and reloads only the next time Claude touches a file matching its glob. An instruction that vanishes after compaction is usually this, a nested `CLAUDE.md`, or something you only ever said in chat.
+
 **User-level rules:** `~/.claude/rules/preferences.md` and similar apply to every project. Project rules override user rules.
 
 **Symlinks supported.** Link a shared rules repo into multiple projects:
@@ -144,9 +148,27 @@ See @README for project overview and @package.json for available npm commands.
 
 Relative paths resolve relative to the importing file, not the working directory. Recursion depth: **four hops maximum.**
 
-**First-time approval:** the first time a project uses external imports, Claude Code shows an approval dialog. If you decline, imports stay disabled and the dialog doesn't reappear.
+A path in backticks is not an import: `` `@README` `` stays literal, `@README` outside backticks pulls the file in. Import parsing skips code spans and fenced blocks.
 
-Docs: [memory.md § Import additional files](https://code.claude.com/docs/en/memory.md#import-additional-files).
+**Imports organise; they do not save context.** Every imported file loads at launch, in full, exactly as if you had pasted it. If the goal is a smaller startup cost, the tool is a `paths:`-scoped rule or a skill, not an import.
+
+**First-time approval:** the first time a project uses external imports — an import resolving outside the working directory, like `@~/.claude/…` — Claude Code shows an approval dialog. If you decline, imports stay disabled and the dialog doesn't reappear. Imports inside user-scope files load without the dialog; you wrote those.
+
+**`AGENTS.md`: Claude Code does not read it.** If your repo already keeps one for other coding agents, don't duplicate — import it from a `CLAUDE.md` and add Claude-specific instructions underneath:
+
+```markdown
+@AGENTS.md
+
+## Claude Code
+
+Use plan mode for changes under `src/billing/`.
+```
+
+A symlink (`ln -s AGENTS.md CLAUDE.md`) works when you have nothing Claude-specific to add, though on Windows that needs Administrator or Developer Mode, so prefer the import. Either way, confirm with `/context` that `CLAUDE.md` shows under **Memory files**.
+
+`/import` does the heavier version once: it appends a copy of another agent's instruction files into the matching `CLAUDE.md` and carries over MCP servers, commands, subagents and skills. Requires v2.1.213 or later. `/init` separately reads Cursor and Copilot rules while generating a `CLAUDE.md`.
+
+Docs: [memory.md § Import additional files](https://code.claude.com/docs/en/memory.md#import-additional-files), [memory.md § AGENTS.md](https://code.claude.com/docs/en/memory.md#agents-md).
 
 ---
 
@@ -205,14 +227,40 @@ Docs: [sub-agents](https://code.claude.com/docs/en/sub-agents).
 
 ## 7. Skills
 
-Scoped, named capabilities. Markdown file with frontmatter + instructions, lives in `.claude/skills/<name>/SKILL.md` (or equivalent team-kit location per the pre-engagement contract).
+Scoped, named capabilities. Markdown file with frontmatter + instructions, in a folder whose name becomes the command you type.
+
+**Three places a skill can live**, and they do not all mean the same thing:
+
+| Level | Path | Available in |
+|---|---|---|
+| Personal | `~/.claude/skills/<name>/SKILL.md` | all your projects |
+| Project | `.claude/skills/<name>/SKILL.md` | this project only |
+| Plugin | `<plugin>/skills/<name>/SKILL.md` | wherever the plugin is enabled |
+
+**Personal beats project on a name collision** — a `deploy` skill in both places means `/deploy` runs the personal one, and enterprise beats both. So a skill you wrote months ago in `~/.claude/skills/` can silently shadow the one your team committed. Plugin skills are namespaced `plugin-name:skill-name` and cannot collide. A skill in a subdirectory's `.claude/skills/` loads the first time Claude reads or edits a file under that directory, which is how a monorepo package ships its own.
 
 **Two invocation modes:**
-- Claude invokes when it determines the skill is relevant to the current task
-- You invoke explicitly: *"apply the `stride` skill to this feature"*
+- Claude invokes it when the `description` matches what you are doing — which is what that field is for; write it as *when to use this*, not as a title
+- You invoke it explicitly by typing `/<skill-name>`
+
+**Custom commands and skills are now the same thing.** `.claude/commands/deploy.md` and `.claude/skills/deploy/SKILL.md` both give you `/deploy`. Existing command files keep working; skills add a folder for supporting files and the frontmatter below.
+
+**Frontmatter worth knowing** (all optional; `description` is the one that earns its keep):
+
+| Field | What it does |
+|---|---|
+| `disable-model-invocation: true` | only you can fire it, with `/name`. For destructive or expensive procedures |
+| `user-invocable: false` | only Claude can fire it. For background knowledge that should never be a menu item |
+| `allowed-tools` | tools pre-approved for the turn that invokes the skill; the grant clears at your next message |
+| `context: fork` | runs the skill in its own subagent context instead of inline |
+| `model`, `effort` | override for the duration of the skill |
+
+**Edits are picked up live** — add, change or delete a skill under `~/.claude/skills/` or the project's `.claude/skills/` and the running session sees it, no restart. A brand-new top-level skills directory that did not exist at startup does need one.
+
+**A personal skill does not travel.** Cowork sessions, cloud sessions and Routines do not read `~/.claude/skills/` on your machine — they load what is enabled on your claude.ai account, plus (for cloud) skills committed to the repo. A routine that invokes a skill only you have on disk reports it as not found.
 
 **When to reach for a skill vs. a rule:**
-- **Skill:** task-specific, loads on demand, reusable move (*"review this against our security policy"*)
+- **Skill:** task-specific, loads on demand, reusable move (*"review this against our security policy"*). Its body stays in context once loaded, so keep it short
 - **Rule:** always-on (or path-scoped), constraints Claude should honour whenever active
 <!--flag:module:earn-the-trust-->
 **AE101 cross-refs:** M3 ships two curated skills (`access-control-analysis`, `stride`) and you author one (`test-strategy`).<!--/flag:module:earn-the-trust--><!--flag:module:spot-gaps-build-the-loop--> M6 authors a second one, the learning-loop skill built from the two-session diff.<!--/flag:module:spot-gaps-build-the-loop-->
@@ -225,7 +273,11 @@ Docs: [skills](https://code.claude.com/docs/en/skills).
 
 Covered separately in `reference/mcp-and-connectors.md`. Per-tracker install (GitHub Issues via `gh` CLI, Jira via Atlassian Rovo MCP, Linear via Composio or Merge), tenant-admin fallbacks, freshness-dated.
 
-Short version: `+` button next to the prompt, or Settings → Connectors. OAuth flow. Tenant admin gate for M365 / Google Workspace. Screenshot fallback when IT hasn't green-lit yet.
+Short version: `+` button next to the prompt box → **Connectors**, or Settings → Connectors, or **Manage connectors** from the Connectors menu. OAuth flow. Tenant admin gate for M365 / Google Workspace. Screenshot fallback when IT hasn't green-lit yet.
+
+Two boundaries worth knowing before you plan around this. The `+` button is not there in cloud or WSL sessions — Routines configure their connectors at creation time instead. And the Desktop app's **Customize** sidebar, which is where connectors, skills and plugins are managed together, syncs through your claude.ai account rather than the CLI's `~/.claude` — so the Cowork tab and the Code tab are not looking at the same configuration.
+
+Connectors are MCP servers with a graphical setup flow. Anything not on the list is a manual MCP server entry in a settings file.
 
 Docs: [Claude Code desktop → Connectors](https://code.claude.com/docs/en/desktop).
 
@@ -298,13 +350,17 @@ Default location:
 ~/.claude/projects/<encoded-project-path>/<session-id>.jsonl
 ```
 
-The encoded project path is the absolute working-directory path with `/` replaced by `-`. A repo at `/Users/me/Projects/checkout` maps to:
+The encoded project path is the absolute working-directory path with **every non-alphanumeric character** replaced by `-` — not just the slashes. A repo at `/Users/me/Projects/checkout` maps to:
 
 ```text
 ~/.claude/projects/-Users-me-Projects-checkout/
 ```
 
+but a repo at `/Users/me/Projects/check.out_v2` maps to `-Users-me-Projects-check-out-v2`, so do not construct the path by hand from a repo name with a dot, an underscore or a space in it. If the converted name would run past 200 characters it is truncated to 200 with a hash of the full path appended. `CLAUDE_CONFIG_DIR` moves the whole tree elsewhere.
+
 In a worktree, this matters. The transcript folder usually follows the working directory where that session ran. The original repo and the worktree may have different encoded folders.
+
+**Transcripts expire.** The default retention is 30 days (`cleanupPeriodDays` in `settings.json`). A transcript you intend to read months later is one you export, not one you leave on disk and trust.
 
 Your current session knows its own transcript. The `CLAUDE_CODE_SESSION_ID` environment variable holds this session's id in Bash and PowerShell tool subprocesses, and the folder is the working directory encoded as above, so the full path is `~/.claude/projects/<encoded-cwd>/$CLAUDE_CODE_SESSION_ID.jsonl`. That makes the durable move recording, not searching: when a session will be read by a later session, write its transcript path down while you have it. The modules do this, recording the path into `task.md` on the un-packaged session and `plan.md` on the packaged re-send, so the next session reads it instead of hunting.
 
@@ -328,7 +384,9 @@ Report literal counts and quoted text: actual restart numbers, exact correction 
 
 Why both layers: git tells you what changed. The transcript tells you why the agent changed it, what it almost did, what it misunderstood, and where you steered. A good post-session read uses both.
 
-**Subagents:** subagent transcripts may sit in a `subagents/` folder beside the parent session transcript. If a session used subagents, ask Claude to read the parent transcript first, then any subagent files it references.
+**Subagents:** a session that spawned subagents gets a folder named for its own session id beside the `.jsonl`, holding `subagents/agent-<id>.jsonl` (plus a `.meta.json` per agent) and a `tool-results/` folder where oversized tool outputs are spilled to disk. Ask Claude to read the parent transcript first, then any subagent files it references. That `tool-results/` folder is worth knowing about on its own: it is where the full text of a large read or fetch survives, even when the parent transcript only kept a preview.
+
+**Read it, don't parse it.** The per-line entry format is internal to Claude Code and changes between releases, so a script that walks the JSONL breaks on an upgrade. Asking Claude to read the file is fine — that is what the prompt above does. For anything you intend to automate, use `/export` (renders the conversation as readable text, to clipboard or a file) or the `transcript_path` field that hooks and status-line commands already receive.
 
 **Security note:** transcripts can contain secrets, customer data, tickets, pasted logs, and failed attempts. Treat them as sensitive local artifacts. Do not commit them. Do not paste a whole transcript into another system. Point Claude at the file and ask for the narrow read you need.
 
@@ -365,7 +423,19 @@ For instructions that need system-prompt-level treatment (stronger adherence, ha
 claude --append-system-prompt "Never edit production config files."
 ```
 
-Passed at every invocation. Suited for scripts, CI, and automation more than interactive use. For interactive sessions, wrap in a shell alias or launcher.
+Passed at every invocation. Suited for scripts, CI, and automation more than interactive use, though nothing stops you using it interactively. For a rule long enough to be worth version control, `--append-system-prompt-file ./extra-rules.txt` takes the path instead of the string — better than wrapping a growing quoted blob in a shell alias.
+
+**The full family**, because reaching for the wrong one is easy:
+
+| Flag | Effect |
+|---|---|
+| `--append-system-prompt "<text>"` | adds to the end of the default system prompt |
+| `--append-system-prompt-file <path>` | same, read from a file |
+| `--system-prompt "<text>"` | **replaces** the default system prompt entirely |
+| `--system-prompt-file <path>` | same, from a file |
+| `--append-subagent-system-prompt "<text>"` | appends to every subagent's prompt. `-p` runs only |
+
+The two `--system-prompt` forms replace rather than append — that discards the default prompt, and with it most of what makes Claude Code behave like Claude Code. Append unless you specifically want a different tool.
 
 Docs: [cli-reference § system-prompt flags](https://code.claude.com/docs/en/cli-reference#system-prompt-flags).
 
@@ -546,6 +616,14 @@ Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/
 **Doc re-verify 2026-08-15, §§ 5–16.** Fetched live: memory.md, hooks, permission-modes, commands, ultraplan, scheduled-tasks, routines, desktop-scheduled-tasks, sub-agents. Corrections landed where the docs contradicted the page (this file's own contract is *docs win*, so those needed no maintainer call): §5 Ultraplan row cut and the approval table went five rows → three, §5 toggle list re-derived from the current cycle description, §13 "nine canonical events" → the docs define 31 and the table is now a curated ten, §9 Routines' "GitHub triggers are web-only" corrected, §11/§16 `/compact` survival list gained `paths:`-scoped rules, §9 `/goal` gained *or judged impossible*, §6 gained the auto-memory-does-not-cross-over fact.
 
 **The Ultraplan removal's blast radius is closed in source; two built workbooks lag.** Fixed 2026-08-15: this file, `exercises/build-your-challenge-memory.md` (which named options by NUMBER — the highest-harm instance, Agents 101), `trainings/agents-101/reference/claude-quick-reference.md`, `exercises/push-back-on-the-plan.md`'s source stamp, and `site/clients/acme/agents-101/index.html` (rebuilt from source — build output, never hand-edited). Still dead: `site/clients/acme/agentic-engineering-101/index.html` and `.../agentic-engineering-101-preview/index.html`, both blocked because AE101 source was uncommitted under a concurrent session at rebuild time and a build would have baked its WIP in. `goats` and `northwind` never shipped the menu. Rebuild is `node scripts/build-workbook.js acme agentic-engineering-101` once AE101 source is clean; deploy is separate.
+
+**Doc re-verify 2026-08-15, second sitting: §§ 7, 8, 10, 12 — the four the first sitting deferred.** Fetched live: skills, cli-reference, sessions, desktop, env-vars. The page is now wholly re-verified and the header says so. What moved:
+- **§7 was the thinnest section on the page and is now the longest of the four.** It knew only the project-level path. Added the three-level table, the precedence rule (personal beats project, enterprise beats both — a stale `~/.claude/skills/` entry silently shadows the team's committed one, which is the same failure the `test-strategy` collision watch in `pre-cohort-todos.md` describes), `/skill-name` as the documented explicit invocation, the merge of custom commands into skills, the frontmatter table, live change detection, and the fact that personal skills do not reach Cowork / cloud / Routines.
+- **§10's encoding rule was wrong.** It said `/` → `-`; the docs say *every non-alphanumeric character* → `-`. Harmless on the page's own example and wrong the moment a student's repo has a dot or underscore in its name. Also added: 200-char truncation with hash, `CLAUDE_CONFIG_DIR`, the 30-day retention default, and the internal-format warning with `/export` and `transcript_path` as the stable routes.
+- **§10's subagent paragraph was a hedge (*"may sit in a `subagents/` folder"*) and is now live-verified**, structure read off this repo's own transcript tree: `<session-id>/subagents/agent-<id>.jsonl` + `.meta.json`, plus a sibling `tool-results/` holding spilled oversized tool output. `CLAUDE_CODE_SESSION_ID` was also confirmed live (`env` inside the Bash tool) — it is real but is NOT in the env-vars doc, so it is an undocumented surface the page depends on. Watch it.
+- **§12 was correct but incomplete.** `--append-system-prompt` is one of five; added the table, and the warning that the `--system-prompt` forms replace rather than append.
+- **The four gaps the punchlist named were still missing and are now in.** They were recorded on 2026-08-13 and survived the 2026-08-15 §§5–16 sitting untouched, because all four land in §§ 3–4 and that sitting's scope started at §5 — a scope boundary quietly reading as coverage. §3 gained *unscoped rules load at `.claude/CLAUDE.md` priority* (which reframes `.claude/rules/` from annex to legitimate CLAUDE.md split) and the `paths:`-rules-don't-re-inject-after-`/compact` fact. §4 gained the `AGENTS.md` import/symlink interop, `/import` (v2.1.213+), the backtick escape, and the point that imports organise without reducing startup context.
+- **§8 needed the least.** `+` → Connectors and Settings → Connectors both still correct. Added the cloud/WSL absence of the `+` button and the Customize-syncs-through-claude.ai split, since a trainer planning a Cowork demo would otherwise expect CLI config to carry.
 
 **Freshness lesson, worth keeping:** `push-back-on-the-plan.md` stamped this same doc `result:OK` on 2026-08-02 and recorded a four-option menu. Thirteen days later it was three. A research preview can be withdrawn between two checks, so cite an option count by shape, not by number, unless the check is fresh.
 

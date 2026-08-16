@@ -531,6 +531,28 @@ without conversation, matching a conversation-built team's outcomes. That would 
 it the whole borrow. Would-strengthen: a documented case of an ET-mature org converting that muscle into
 agent alignment faster than a peer without it (predicted by the isomorphism; not yet sought).
 
+**Open (borrow) — handoff, 2026-08-16.** Five threads, hardest-first; nothing here is blocking, all are
+pickup-able cold from this section alone.
+1. **The candidate governor needs Antti's call.** *An encoded line must be traceable to a discovered threat,
+   not to a good idea* (mission correction, (a)) is sharper than anything the frame currently states about
+   what earns encoding. Decide whether it becomes stated doctrine, and if so its weighted home — M6 encodes,
+   so either a `check_*.md` line maintainer-side or an M6 governor student-side. Do NOT ship it student-side
+   without the M1 general-transfer skew test (borrowed QA vocabulary is exactly the chat-reproducible
+   general transfer the corpus audit flagged at the front of the deck).
+2. **UNVERIFIED CLAIM inside this section — clear it first.** *"Our M4 shape already enacts most of it"*
+   (charter + timebox + written return) was asserted from this plan's own description of M4, **not** from
+   reading the M4 exercise files. Read them; either firm the claim or retract it. The whole *import the
+   charter* recommendation rests on it.
+3. **Blast-radius grep for difference 4.** Does any existing surface imply rules-file-as-regression-suite
+   ("write it down and it holds")? Not checked. If the corpus is clean, difference 4 stays maintainer-side
+   theory; if a lecture makes the wrong mapping, that is a real defect and gets carded.
+4. **Primaries not opened.** Beizer 1990 (pesticide-paradox quote), Weinberg (*value to some person*),
+   Bach/Bolton (*who matters*) — all currently secondary-source only. A verification pass firms the stamps;
+   per `check_research_claims §11` these should not reach student-facing body until opened.
+5. **The falsifier is stated but unsought.** Nobody has looked for the predicted case — an ET-mature org
+   converting that muscle into agent alignment faster than a peer without it. Would move this from candidate
+   toward grounded; its absence after a real search is itself informative.
+
 **Curriculum touch: none proposed.** Maintainer-side lineage only, per the audit finding that naming
 lineage is cheap Family-A groundedness. `earn-the-trust.md` already names the Beck/Bach exploratory lineage
 at lecture level — that is the existing student-facing surface and it does not need widening. Any student

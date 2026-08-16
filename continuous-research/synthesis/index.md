@@ -1,7 +1,7 @@
 ---
 type: index
 domain: cross-domain
-updated: 2026-05-03
+updated: 2026-08-16
 answers: ["where to find research", "knowledge base map"]
 ---
 

@@ -420,6 +420,27 @@ assembly. Nothing here is a new law.
 | pesticide paradox — a fixed suite finds less over time (Beizer 1990) | rules-file half-life; *subtract a rule* |
 | session report + debrief | the written return; day-30 PR-layer measurement |
 
+**The mission correction — ET does not establish rightness, it finds threats to it fast (2026-08-16, Antti
+raised: *"exploratory testing had as goal to establish correctness / fitness for customers, the fastest"*).**
+Half right, and the wrong half is the one context-driven testing spends its energy on. The *fastest* half is
+literal — RST defines itself as **the fastest, least expensive testing that completely fulfils the mission**,
+with Bach's cost heuristic *don't suggest a million dollar test when a 10 dollar test will do*. But the
+mission is *to discover the status of the product and any threats to its value, so that our clients can make
+informed decisions about it* — **negative, asymmetric, and terminating in someone else's decision, never in a
+verdict.** Dijkstra is the floor: testing shows the presence of bugs, never their absence. Of the candidate
+words, *fitness for customers* is nearest, via quality = value to some person who matters — and even that is
+approached from the negative.
+
+**What the correction changes on our side (the payoff, not a footnote).** (a) **The alignment loop is
+problem-finding, not specification-writing.** Carry "establish the right rules fastest" across and you get an
+engineer authoring a correct `CLAUDE.md` from good ideas; the correct posture is *discover fastest where the
+model's general prior threatens value here.* Acceptance test for an encoded line becomes **traceable to a
+discovered threat**, not *is this true* — sharper than anything we currently state, and a candidate governor.
+(b) **Dijkstra transfers intact**: a run can show the presence of misalignment, never its absence — which is
+the mechanism under *two bearings make a candidate, not an optimum* and under rules files accumulating rather
+than converging. Our epistemics were already right; this names why. (c) The cost heuristic is the frame's
+§ E claim arriving from the parent field: cheap experiments are not a concession, they are the method.
+
 **Seven similarities, at mechanism level.**
 1. **Both refuse the specify-then-execute split, for the same reason** — the information needed to design
    step *n+1* does not exist until step *n* has run. Kaner's four activities "run in parallel"; our
@@ -470,11 +491,15 @@ assembly. Nothing here is a new law.
    asserts nothing. The true analogue of the automated check is **the eval / the gate** (`the-gate-is-a-claim`);
    the rules file is closer to onboarding documentation for a probabilistic colleague. Teams that map
    rules→regression-suite conclude "we wrote it down, therefore it holds," and skip the gate.
-5. **The social stratum is outside ET's canon.** FEW HICCUPPS reaches outward at *claims / purpose / user
-   expectations*, but treats them as fixed inputs to a testing judgment — not as a live settlement under
-   negotiation. Our local has two strata (§ social layer); conversation in ET learns about a product,
-   conversation here **also sets the standard**. Difference in kind, not degree — and the reason ET's
-   instruments cover our codebase stratum well and our social stratum not at all.
+5. **The social stratum is *named* in ET's canon but held still** (narrowed 2026-08-16 — the first draft of
+   this row overclaimed "outside the canon"; Weinberg's *quality is value to some person*, amended by
+   Bach/Bolton to **"…who matters"**, makes whose-values-count a prior decision to any testing at all, which
+   IS the standing question). What ET does not do is treat that settlement as **moving and negotiable during
+   the work**: FEW HICCUPPS' outward oracles — *claims / purpose / user expectations* — are inputs fixed
+   before the session, not a live negotiation the work itself renegotiates. Our local has two strata
+   (§ social layer); conversation in ET learns about a product, conversation here **also sets the standard.**
+   Difference survives, in degree not kind — and it is why ET's instruments cover our codebase stratum well
+   and our social stratum only at its entry point.
 6. **The scarcity moved, so ET's budgeting optimises our wrong constraint.** SBTM's economics: exploration
    cheap (human time), automation expensive (write + maintain) → explore broadly, automate the valuable
    subset. Ours: running the experiment got cheap (§ E) *and* encoding is cheap (a paragraph) — while
@@ -513,7 +538,10 @@ form would have to survive the M1 general-transfer skew test (a borrowed QA voca
 of chat-reproducible general transfer the corpus audit flagged at the front of the deck).
 
 **Sources (2026-08-16; historical/cultural-vocab carve-out applies — lineage attributions, not fresh
-evidence).** Kaner's definition, coined 1984, wording from his own 2006 post → `kaner.com/?p=46` ·
+evidence).** RST mission + cost heuristic → `rapid-software-testing.com/about-rapid-software-testing/` +
+`satisfice.com/rapid-testing-methodology` · quality = value to some person (Weinberg) *who matters*
+(Bach/Bolton amendment), *at some time* (Bolton) — **secondary sources only, primaries not opened** ·
+Kaner's definition, coined 1984, wording from his own 2006 post → `kaner.com/?p=46` ·
 Bolton testing-vs-checking (2009→refined) → `developsense.com/blog/2009/08/testing-vs-checking` · FEW
 HICCUPPS → `developsense.com/blog/2012/07/few-hiccupps` · SBTM, J. + J. Bach 2000 (charter · timebox ·
 session report · debrief) → `satisfice.com` / Wikipedia *Session-based testing* · Fowler bliki

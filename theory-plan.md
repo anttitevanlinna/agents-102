@@ -8,6 +8,17 @@ ladder (M5 weighted home SHIPPED as three theory slides + the KC four-liner; M4 
 carded). `module-design/ae101-m4-frame-idea.md` dissolved into this section; derivation, corpus-audit
 detail and the retraction record live in git.
 
+**v2.6 (2026-08-16): the exploratory-testing borrow banked** (§ after the follow-up hypothesis, before The
+cull) — the house claim *alignment is built in conversation, bit by bit* given a parent field. Context-driven
+testing (Kaner · Bach · Bolton · Hendrickson · Beizer · Pyhäjärvi) mapped against the general/local frame:
+9-row isomorphism, 7 mechanism-level similarities, 7 differences. Load-bearing corrections the mapping
+forces: **rules file ≠ regression suite** (the automated check's true analogue is the eval/gate — a rule is
+fed to a stochastic worker and asserts nothing) · **the instrument moves under you** (encoded local
+knowledge goes redundant, not wrong — no ET equivalent, and the reason subtraction is our own discipline) ·
+**import the charter, not the session budget** (ET's economics assumed expensive automation; ours has cheap
+experiments and expensive judgment). Maintainer-side lineage; no curriculum change proposed. Isomorphism =
+house synthesis, unvalidated, falsifier stated.
+
 **Method (Antti, 2026-07-01):** placement-first. *Slot the new lectures as bulletpoint skeletons → research the right theory → edit the bullets until perfect.* Placement before wording (= Family B improve ladder). Family A does not gate the skeletons; the research pass IS the editing. Slide-style viewer coming in a later session — author every skeleton glance-legible / slide-shaped so it drops into the viewer (ASCII map → real diagram).
 
 **Why this exists.** Cohort feedback on AE101 escalated from *"too little theory"* to *"as it stands, this doesn't work for us."* Two stated reasons — and they're one root cause, **cognitive overload with no anchor**: (1) an unfamiliar common project *plus* new techniques at once = two unknowns multiplied, not added; (2) *"too much material, too little structure,"* no durable slides/background. The sharpened diagnosis: the theory **was** there — but carried *as practice, delivered verbally*. Verbal is lossy, un-rewindable, no error-correction: if a student didn't hear the trainer name it, the theory didn't exist for them. So there were two failures — **no spine** (nowhere to hang the material) and **no durable body** (verbal-only, nothing re-readable). This doc establishes *what theory is*, *what pieces exist*, and the *solution* that gives theory a spine and a durable body without breaking the emergent-knowledge worldview.
@@ -384,6 +395,132 @@ buy them pre-evidenced. Also resolves the design-first vs competence-first signa
 a distributed peer — central roadmap, commissioned agents, no below-threshold experimentation, matched
 outcomes. Would-strengthen: more Stanford-51-shaped splits; a documented promoted-survivor case (a
 team-built agent adopted function-wide, with measured absorption).
+
+## The exploratory-testing borrow — conversation-built alignment IS session-based exploratory testing, one level up (2026-08-16; `[borrow:context-driven testing]`, candidate)
+
+**Why this borrow.** The general/local frame's standing house claim — *the connective tissue between what the
+model knows generally and what is optimal here is built in conversation, iteratively, bit by bit* — has been
+asserted repeatedly and grounded only in our own practice. Context-driven testing solved a structurally
+identical problem 25 years earlier (unscripted skilled investigation, under management pressure to
+pre-specify) and produced named instruments + a defended vocabulary. Per § *the field is theory-borrowing*:
+the explanatory theory exists, filed elsewhere; **the assembly is the white space.** This section is the
+assembly. Nothing here is a new law.
+
+**The isomorphism (structural, not metaphorical).**
+
+| exploratory testing | conversation-built alignment |
+|---|---|
+| scripted test plan written before the build is seen | best-practice rules file written before the agent is run |
+| test design + execution + learning + interpretation, **in parallel** (Kaner) | prompt → return → correction → next prompt; the correction IS the next design |
+| the missing information = behaviour of *this build* in *this environment* | the missing evidence = *this task × model × repo × setup* (§ operating claim) |
+| charter: *Explore [target] with [resources] to discover [information]* | the M4 run brief |
+| oracle / FEW HICCUPPS — fallible consistency heuristics for recognising a problem | *the engineer keeps evaluation authority* (§ operating claim) |
+| automated check — same question, same way, every time (Bolton) | **the eval / gate**, NOT the rules file (see difference 4) |
+| explore → automate the subset worth re-running | discover → encode the correction worth re-firing (M4→M5→M6) |
+| pesticide paradox — a fixed suite finds less over time (Beizer 1990) | rules-file half-life; *subtract a rule* |
+| session report + debrief | the written return; day-30 PR-layer measurement |
+
+**Seven similarities, at mechanism level.**
+1. **Both refuse the specify-then-execute split, for the same reason** — the information needed to design
+   step *n+1* does not exist until step *n* has run. Kaner's four activities "run in parallel"; our
+   interactive channel is where novel judgment gets DISCOVERED (§ Tensions). Same claim, different decade.
+   Decide→execute prices agreement before evidence (§ follow-up hypothesis) is the org-scale form of the
+   scripted-test-plan error.
+2. **Both target knowledge that cannot be retrieved, only produced.** A specification cannot tell you what
+   the product does; a model cannot retrieve the outcome of an experiment nobody ran. Both gaps are an
+   untested interaction, and in both fields the unit of resolution is an experiment, not a lookup.
+3. **Both emit two outputs and the artifact is the lesser one.** ET → bug reports + a tester holding a model
+   of the system. Alignment → rules lines + an engineer who knows how their agent fails here. Our
+   *artifact-is-exhaust, the loop is the product* line is the same claim ET makes against a central
+   automation team writing tests for teams that never explored — which is the QA-shaped twin of *"not
+   everybody should build their own"* (§ lived failure mode).
+4. **The promotion step is the same step.** Explore→automate and discover→encode both convert an expensive
+   interactive discovery into a cheap repeatable one, and in both the promotion is a **judgment call about
+   recurrence value**, never an automatic consequence of having found something.
+5. **Both encoded layers decay, and both decay twice.** Beizer: "every method you use to prevent or find
+   bugs leaves a residue of subtler bugs against which those methods are ineffectual" — a suite's yield
+   falls as the residue shifts AND as the system moves under it. Rules files: factual churn AND social
+   staleness (§ social layer, consequence 2). Both remedies are the same shape: **the encoded layer only
+   keeps paying if a live exploratory layer runs above it.** Fowler's red flag (no exploratory testing even
+   with excellent automation) transfers verbatim to a team that has a fat `CLAUDE.md` and no live probing.
+6. **The oracle is the scarce part in both.** ET's founding problem is not generating tests, it is knowing
+   a failure when you see one. Generation is now cheap on our side too; the binding constraint is the
+   evaluation rate (§2 absorption bottleneck). **Absorption bottleneck = the oracle problem at volume.**
+7. **Both are skill-gated and neither degrades gracefully.** Pyhäjärvi's test — *"if you find yourself not
+   learning, you most likely are not exploring"* — is competence-is-the-gate stated as a self-check, and is
+   the sharpest one-line student-facing form of it we have found outside our own corpus.
+
+**Seven differences — sharpest first; these are where importing wholesale would mislead.**
+1. **The instrument moves under you.** ET assumes the build holds still for the session (version consistency
+   is itself an oracle). Our general side ships new capability, so a portion of encoded local knowledge goes
+   **redundant rather than wrong** — a failure mode with no ET equivalent. Consequence: alignment needs a
+   *subtraction* discipline ET never had to develop (ET prunes for cost and staleness, never for "the tester
+   learned it since"). This is the one asymmetry that makes the borrow a borrow and not an import.
+2. **Role collapse.** ET keeps explorer / system-under-test / oracle in three places, with the tool
+   amplifying the human. In alignment the model is the object probed, the probing instrument, and part of
+   the oracle. Imported failure mode ET does not carry: **the system under test flatters the tester**
+   (sycophancy — `the-machine-you-just-met`). Independent verifiability (Convergence Triad) is load-bearing
+   here in a way it is merely good practice there.
+3. **The encoding sits one level up.** An ET session yields information about *product quality*, decision
+   support for a release. An alignment session yields a change to *how future work is produced*. A bad test
+   raises a false alarm; a bad rule silently biases every subsequent generation — local success / global
+   drift, with a longer fuse and no red build to announce it.
+4. **Rules file ≠ regression suite — the tempting wrong mapping.** A check's value is that it is
+   deterministic; a rule is fed to a stochastic worker, so encoding raises compliance probability and
+   asserts nothing. The true analogue of the automated check is **the eval / the gate** (`the-gate-is-a-claim`);
+   the rules file is closer to onboarding documentation for a probabilistic colleague. Teams that map
+   rules→regression-suite conclude "we wrote it down, therefore it holds," and skip the gate.
+5. **The social stratum is outside ET's canon.** FEW HICCUPPS reaches outward at *claims / purpose / user
+   expectations*, but treats them as fixed inputs to a testing judgment — not as a live settlement under
+   negotiation. Our local has two strata (§ social layer); conversation in ET learns about a product,
+   conversation here **also sets the standard**. Difference in kind, not degree — and the reason ET's
+   instruments cover our codebase stratum well and our social stratum not at all.
+6. **The scarcity moved, so ET's budgeting optimises our wrong constraint.** SBTM's economics: exploration
+   cheap (human time), automation expensive (write + maintain) → explore broadly, automate the valuable
+   subset. Ours: running the experiment got cheap (§ E) *and* encoding is cheap (a paragraph) — while
+   judging and agreement stayed expensive. **Import the charter; do not import the session budget.**
+7. **Weaker ground truth per experiment.** ET usually reaches a strong oracle eventually (it crashes or it
+   does not). Many alignment questions are standards questions with no crisp pass/fail — *two bearings make
+   a candidate, not an optimum*. So an exploratory alignment run yields less per run than an exploratory
+   test run does, which is exactly why the candidate-vs-settled label (`due:cohort` / `due:none`) is
+   mechanical here and optional there.
+
+**What is worth importing (instrument level, not vocabulary).** The **charter + timebox + written return**
+triad is the strongest candidate: SBTM was built to answer *"unscripted means unmanageable"* from a
+sceptical manager, which is the identical objection a CTO raises at *"so you want my engineers to chat with
+it."* It is prior art that the answer to "unscripted" is "chartered," not "scripted." Our M4 shape already
+enacts most of it — the borrow supplies the **lineage and the defence**, not a new move. Second candidate:
+the oracle vocabulary as a name for evaluation authority, useful maintainer-side.
+
+**What NOT to import.** ET's manual/automated framing (Pyhäjärvi's contemporary scoping already dissolves it
+— exploratory testing "encompasses use of programming for testing purposes"; ours dissolves it further,
+since the exploring is done *with* the machine) · the tester-as-separate-role assumption · SBTM's 60–120 min
+session budgeting (difference 6) · the testing-vs-checking word pair on any student surface, where it costs
+a vocabulary slot to re-import a distinction our Verification phase already carries.
+
+**Status + falsifier.** `[borrow:context-driven testing]` sitting on the frame's own claims — ET side is
+canon and well-attested; **the isomorphism is house synthesis, unvalidated, confirmation-bias caveat
+applies** (we went looking for a parent field and found one). Falsifier: a team that builds durable local
+alignment by a route with no interactive discovery step at all — imported rules only, tuned by measurement
+without conversation, matching a conversation-built team's outcomes. That would break similarity 1 and with
+it the whole borrow. Would-strengthen: a documented case of an ET-mature org converting that muscle into
+agent alignment faster than a peer without it (predicted by the isomorphism; not yet sought).
+
+**Curriculum touch: none proposed.** Maintainer-side lineage only, per the audit finding that naming
+lineage is cheap Family-A groundedness. `earn-the-trust.md` already names the Beck/Bach exploratory lineage
+at lecture level — that is the existing student-facing surface and it does not need widening. Any student
+form would have to survive the M1 general-transfer skew test (a borrowed QA vocabulary is exactly the kind
+of chat-reproducible general transfer the corpus audit flagged at the front of the deck).
+
+**Sources (2026-08-16; historical/cultural-vocab carve-out applies — lineage attributions, not fresh
+evidence).** Kaner's definition, coined 1984, wording from his own 2006 post → `kaner.com/?p=46` ·
+Bolton testing-vs-checking (2009→refined) → `developsense.com/blog/2009/08/testing-vs-checking` · FEW
+HICCUPPS → `developsense.com/blog/2012/07/few-hiccupps` · SBTM, J. + J. Bach 2000 (charter · timebox ·
+session report · debrief) → `satisfice.com` / Wikipedia *Session-based testing* · Fowler bliki
+*ExploratoryTesting* (fine-net framing + the red flag) · Hendrickson *Explore It!* 2013 (charter format) ·
+Beizer *Software Testing Techniques* 2nd ed. 1990 (pesticide paradox, quote verified in secondary sources,
+**primary not opened**) · Pyhäjärvi, *What is Exploratory Testing?* (contemporary scoping; programming
+included; the not-learning test).
 
 ## The cull — −20%, reversible
 

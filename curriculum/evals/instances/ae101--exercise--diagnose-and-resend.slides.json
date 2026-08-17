@@ -1,13 +1,13 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/diagnose-and-resend.md",
-  "body_sha": "03ff00b6e8c02f87a1f50dc8cbc5f0e617635c91f3a7846bca640a935c8c6ee6",
+  "body_sha": "95be6c73c891e07880b81ea8d795144a219fd87645a4766bf0ea99434b459e52",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
     {"index": 0, "heading": "H1/lede", "lines": "1-22"},
     {"index": 1, "heading": "Phase 1: Read what the failed run did", "lines": "23-60"},
-    {"index": 2, "heading": "Keep Claude honest, make it dig", "lines": "61-65"},
+    {"index": 2, "heading": "Make Claude show its work, make it dig", "lines": "61-65"},
     {"index": 3, "heading": "Phase 2: Match each failure to the check that catches it", "lines": "66-93"},
     {"index": 4, "heading": "Phase 3: Build the verifier for your worst failure", "lines": "94-124"},
     {"index": 5, "heading": "Prove the verifier actually fires", "lines": "125-134"},
@@ -26,7 +26,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a reader loses the thread when a pronoun/noun has no antecedent they can hold. Checked every chunk. 'the failed run' / 'the un-packaged run' / 'the m4/<slug> branch' (chunks 0-1) resolve via the session-artifact carve-out (student's own M4 work). 'each named failure' (chunk 3, line 70) resolves against the three lenses named in Phase 1's fenced prompt (lines 51-53), which the sequential reader has already passed. 'you will meet the word again' (chunk 4, line 101) is a forward-looking aside, not a referent requiring resolution now. Chunk 6's 'Reference'/'plan.md' are defined in the same chunk they're bolded in. No unresolved referent found; harm absent.",
+      "evidence": "Harm: a reader loses the thread when a pronoun/noun has no antecedent they can hold. Walked all 13 chunks in order, fences excluded. 'the failed run'/'the un-packaged run' (chunk 0 line 15, chunk 1 line 27) resolve via the module-arc carve-out -- this exercise opens M5 directly on the M4 run the student just sent off. 'three failure-mode lenses' (chunk 1 line 40) resolves to chunk 0 line 15's own naming, one chunk prior. 'each named failure' (chunk 3 lines 66-70) resolves to the goal-drift/context-rot/plausible-but-wrong list the student's own Phase-1 prompt (chunk 1, fenced -- visible on the slide even though exempt from evaluation) produced; session-artifact carve-out. Chunk 10 line 190 'notice the prompt: it shrank while the task stayed the same' is the closest candidate to a violation: narrative anticipation of the re-send prompt shown one chunk later (chunk 11) plus the M4 prompt the student's own memory holds -- not an antecedent the sentence needs resolved right now, same shape as the compendium's own accepted 'you will meet the word again' aside (chunk 4 line 101). Chunk 6's 'Reference'/'plan.md' handles are defined in the chunk they're bolded in. No unresolved referent found; harm absent.",
       "fix_hint": null,
       "blocking": true
     },
@@ -36,7 +36,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a callback that depends on which file/module sits where breaks under re-sequencing. Chunk 2 line 64: 'Same prior as the repo read in Module 1: assume about 10% of the account misrepresents the run...' names the source (Module 1) AND unpacks the claim in the same sentence, satisfying the carve-out's bar. Chunk 10 line 200: 'the field has a name for this move ... see [What packaging is](lectures/what-packaging-is.md)' names the document in the link text (sentence still reads with the link stripped). Chunk 11 line 236: 'Same cancel-is-legit rule as the un-packaged session: stopping when the trace is enough is the result' unpacks the rule inline. No position-dependent phrasing ('the opening lecture', 'the previous module') found. Harm absent.",
+      "evidence": "Harm: a callback that depends on which file/module sits where breaks under re-sequencing. Three candidates, all name the source rather than locate it. Chunk 2 line 64: 'Same prior as the repo read in Module 1: assume about 10% of the account misrepresents the run...' names the source by number and unpacks the claim in the same sentence -- verified this session that Module 1 = getting-going.md (site/layouts/curriculum.js:50) which includes exercises/orient-and-introspect.md, the repo-read exercise. Chunk 10 line 200: 'the field has a name for this move ... see [What packaging is](lectures/what-packaging-is.md)' names the document in the link text; sentence still reads with the link stripped. Chunk 11 (module-flag branch) lines 234/236: 'Module 6 opens on' and 'Same cancel-is-legit rule as the un-packaged session' both name the target by number or by claim, never by position ('the previous module', 'the opening lecture'). No position-dependent phrasing found anywhere in body. Harm absent.",
       "fix_hint": null,
       "blocking": true
     },
@@ -46,7 +46,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a backward/forward beat-reference that names a beat the current module set doesn't have strands the reader. Chunk 11 (line 234, module-flag branch): 'The walk-away report at the close is what Module 6 opens on.' Verified against site/layouts/curriculum.js MODULES array: this file's host module is 'learn-from-the-test' (M5), and the very next module is 'spot-gaps-build-the-loop' (M6) -- matching the flag condition exactly. The referenced beat exists. Harm absent.",
+      "evidence": "Harm: 'the X you did/saw' pointing at a beat the module's current file set doesn't have strands the reader. Two candidates, both re-verified fresh this session (not carried from any prior instance). (a) Chunk 11 (module-flag branch) line 234: 'The walk-away report at the close is what Module 6 opens on.' `grep -n slug: site/layouts/curriculum.js` lines 54-55 place 'learn-from-the-test' (this file's host module -- confirmed via `grep -n diagnose-and-resend curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` -> line 46 includes this exercise) immediately before 'spot-gaps-build-the-loop': M6 exists and is the true next module. (b) Chunk 11 line 236: 'Same cancel-is-legit rule as the un-packaged session.' Ran `grep -rn cancel curriculum/trainings/agentic-engineering-101/*.md curriculum/exercises/*.md curriculum/lectures/*.md` this session: the beat lives at exercises/set-the-markers-send-it-off.md:77 ('trainer names cancel-is-legit -- stop it when you've seen enough. Traces are data.') and as the named claim `cancel-is-legitimate` in lectures/test-and-learn.md's backing block; both files confirmed as M4 content via run-the-first-experiment.md lines 37 and 43 (its own include links). Note for the record: an earlier slides-instance for this file cited run-the-first-experiment.md and trainer-modules.md directly for this same callback; re-running that exact grep against those two files this session returns zero hits for 'cancel', so that earlier citation does not reproduce. The underlying beat is real -- confirmed above under different filenames -- so the rule-3 verdict itself is unaffected, but the earlier evidence text was not re-derivable and I am not carrying it forward. Harm absent, on freshly verified evidence.",
       "fix_hint": null,
       "blocking": true
     },
@@ -56,7 +56,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Harm: a guess-before-reveal instruction whose answer is narrated above it, so the beat is already spoiled on a text read. No guess/predict-then-reveal construction appears anywhere in this file's body -- the file is a diagnose-then-build-then-resend exercise, not a live-demo prediction beat. Rule doesn't apply; no harm to check for.",
+      "evidence": "Harm: a guess-before-reveal instruction whose answer is narrated above it spoils the beat on a text read. Scanned all 13 chunks: the file's shape is diagnose -> match -> build -> prove -> assemble -> resend; no guess/predict-then-reveal construction exists anywhere. Rule doesn't apply; no harm to check for.",
       "fix_hint": null,
       "blocking": true
     },
@@ -66,7 +66,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a chunk that says nothing on its own projects as a blank beat. Shortest chunk is 9 ('Approve', lines 182-185): 'Say *lock it in.* The agent writes both files.' -- terse but self-carrying (names the trigger phrase and its effect), not a wait-state bullet like the compendium's canonical orphan example. Harm absent across all 13 chunks.",
+      "evidence": "Harm: a chunk whose only content is a wait-state or one context-dependent bullet projects as a slide that says nothing standalone. Shortest chunks checked: chunk 9 'Approve' (182-185, 'Say lock it in. The agent writes both files.') names the trigger phrase and its effect -- self-carrying. Chunk 6 'The reference and plan.md' (135-141) defines both artefacts in four bullets. Chunk 5 'Prove the verifier actually fires' (125-134) carries a full smoke-test prompt plus its own rationale bullet. Every other chunk carries multiple substantive sentences or a fenced prompt. Harm absent across all 13 chunks.",
       "fix_hint": null,
       "blocking": false
     },
@@ -76,7 +76,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a header the chunk's own content contradicts misleads a reader who only skims headers. Every header (Phase 1-5, 'Keep Claude honest, make it dig', 'Approve', etc.) matches its chunk's content on inspection. Harm absent.",
+      "evidence": "Harm: a header the chunk's own content contradicts misleads a reader who only skims headers. Checked all 12 `##` headers against their chunk bodies: e.g. 'Make Claude show its work, make it dig' -> push-back-for-quotes-and-verification content; 'Check both files are for the agent, not you' -> glance-and-push-back-on-genericness content; 'Send it off and read the report cold' -> re-send prompt + candour-check content. Every header is a true summary of its own chunk. Harm absent.",
       "fix_hint": null,
       "blocking": false
     },
@@ -86,7 +86,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: repo-authored prose tics (triadic constructions, self-grading, hedged numbers, abstraction stacks, empty-leg verb triplets) read as filler on a wall-projected slide. Grepped body for 'Not X. Not Y.' constructions, anaphora triples, superlatives, abstraction-noun stacks: none found. The one number+hedge instance ('about 10%', chunk 2 line 64) carries an explicit maintainer accept-note ('M1's double-hedge stays M1's, so check_slides.md's number-plus-retraction sub-item does not fire here') naming exactly this passage -- checked per the maintainer-accept-note gate before flagging. Harm absent.",
+      "evidence": "Harm: repo-authored prose tics read as filler once wall-projected. Ran `grep -niE 'not [a-z]+\\.[[:space:]]*not [a-z]+\\.'` over body: 0 hits (Not-X-Not-Y ban). Ran `grep -niE 'one of the most|most useful|best way'` over body: 0 hits (self-grading superlative / value-prop-leak sub-item). Ran `grep -noE '([A-Z][a-z]+ [a-z]+\\. ){2,}'` over body: 0 hits (verb-triplet shape). Manually re-read every chunk for anaphora/epistrophe triples and abstraction-noun stacks: none found. The one number instance in body ('about 10%', chunk 2 line 64) is NOT paired with a retraction phrase in this file (no 'could be more, could be less'); the maintainer block explicitly names this passage and states 'M1's double-hedge ... stays M1's, so check_slides.md §7's number-plus-retraction sub-item does not fire here' -- checked before scoring, matches: this specimen never had the retraction half to begin with. Harm absent on every sub-item.",
       "fix_hint": null,
       "blocking": true
     },
@@ -96,7 +96,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: repo/maintainer vocabulary (surface-as-noun, compendium, forcing function, beat, mood) smuggled onto a slide reads as jargon to an engineer in the room. Grepped body for these terms: no hits. 'HOX', 'Session', canonical widget names are architecture-mandated chrome, not dialect. 'stop-hook' (chunk 4) is Claude Code product terminology, cited to the cc-hooks-docs source in backing, not repo-internal jargon. Harm absent.",
+      "evidence": "Harm: repo/maintainer vocabulary smuggled onto a slide reads as unparseable jargon to an engineer in the room. Ran `grep -niE '\\bsurface\\b|\\beval\\b|compendium|forcing function|\\bbeat\\b|\\bmood\\b| firing |Connections\\b'` over body (maintainer block excluded): 0 hits. 'judges it' / 'a judge' (chunk 4, verifier-shape menu) is the ordinary LLM-as-judge engineering pattern, not this repo's class-judge system -- audience-appropriate for AE101 engineer ICs. 'HOX'/'Session' are architecture-mandated widget chrome. 'stop-hook' (chunk 4) is Claude Code product terminology, sourced to cc-hooks-docs in the backing block. 'Ralph re-feed'/'Ralph's fresh-sessions camp'/'Amp's manual-handoff camp' (chunks 4, 10) name real practitioner techniques (kim-on-cherny backing), not house dialect. Harm absent.",
       "fix_hint": null,
       "blocking": true
     },
@@ -106,7 +106,7 @@
       "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: bold-monoculture (whole sentences/leads bolded) buries the actual handles and reads as noise on a slide. Bold in body is confined to title-page/widget-chrome labels (chunk 0), the Phase 3 verifier-shape handles (chunk 4, one per bullet), the Phase 4 stop-gate handle (chunk 7 blockquote), and two coined-term handles 'Reference'/'plan.md' introduced on their own definitional chunk (chunk 6, one handle per bullet, consistent with the 'one handle per law/consolidation slide' allowance). No whole-sentence bold, no bullet-opens-with-bold monoculture. Note for the maintainer, not a rule violation: the file's own Emphasis paragraph (line 153) lists title-page/widget-chrome/Phase-3-menu/Phase-4-stop-gate as the full bold inventory and doesn't mention chunk 6's two handles -- the note appears to have gone stale relative to the current body, worth a one-line update, but the rendered bold itself stays within budget so no REVISE.",
+      "evidence": "Harm: bold-monoculture (whole sentences/leads bolded) buries the actual handles and reads as noise once wall-projected. Ran `grep -no` for `**...**` spans over body: 13 hits, checked by hand against every chunk. Chunk 0: 6 spans (Time/Session/HOX/What-you-do/-build/-point) -- title-page widget chrome, exempt on the same convention close-the-ticket.md's own maintainer block states verbatim ('widget chrome... stays bold'). Chunk 4: 3 spans, one per verifier-shape bullet -- matches the reading-list/menu-slide carve-out (a menu the student scans and picks from; each entry earns one handle, all ≤3 words). Chunk 6: 2 spans, Reference/plan.md -- one handle per defined term, the law/consolidation-slide allowance. Chunk 10: 1 span, Session widget repeat -- chrome. Chunk 7: 1 span, the FULL sentence 'Cut the grill when the package is good enough to re-send.' -- this is the one specimen that reads the letter of the rule ('never a whole lead sentence') and fails it. Weighed against harm: it is the ONLY full-sentence bold in the file (no monoculture pattern -- every other span is a 1-3 word handle or chrome), the maintainer's own Emphasis paragraph names it as one of a short deliberate list, and functionally it matches the principle the rule states for its own carved-out exceptions ('a five-word fragment cannot carry both the floor and the ceiling') -- the sentence names both the stop condition and the action a short fragment couldn't compress without losing the instruction. Isolated + attested + functionally load-bearing: the harm (noise/monoculture) this rule exists to prevent is not present. Flagging it would ask the maintainer to shorten the one deliberate stop-gate signal in an otherwise minimally-bolded file, which degrades the artefact rather than improving it -- so this is a rule question noted here, not a REVISE.",
       "fix_hint": null,
       "blocking": false
     },
@@ -116,9 +116,9 @@
       "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: content invisible in the default Slides deck (phase-less sections dropped by buildDeckModel) gets audited as if present. All content sits under the exercise's normal ## structure inside the exercise file, which is included via the module's phase--exercise wrapper -- no phase-less prose section here. Harm absent.",
+      "evidence": "Harm: content invisible to the layout a reader is actually in (long-read fallback vs sticky Slides deck) reads as silently missing. This file is an exercise reached via a standalone-paragraph include link (`[Exercise: Diagnose and re-send](exercises/diagnose-and-resend.md)`, confirmed at learn-from-the-test.md:46); the renderer wraps included exercise files under `.phase--exercise`, the wrapper every AE101 exercise uses to reach `buildDeckModel`. This file carries no prework/supplementary/reference-shaped section (the surface-types the 2026-07-09 incident actually dropped) -- all content sits inside Phase/`##` headings under the exercise proper, including the flag-conditional chunk 12, which the renderer resolves through `applyContentFlags` before the deck is built (rule 14's own note on runtime forks). Harm absent.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -126,7 +126,7 @@
       "rule_lead": "Numbering -- position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: hand-numbered or inconsistent Phase/Step ordinals strand in-file cross-references. Phase headers run 1,2,3,4,5 consecutively; in-file forward refs ('Phase 3 builds the verifier...Phase 4 assembles...', chunk 3; 'Fire it once before Phase 4', chunk 5) all resolve to real later headers. Confirmed mechanically: node scripts/check-slide-numbering.js reports 'OK -- 61 files, Phase/Step numbering consistent' (this file included in the scanned set). Harm absent.",
+      "evidence": "Harm: hand-numbered or inconsistent Phase/Step ordinals strand in-file cross-references. Ran `node scripts/check-slide-numbering.js curriculum/exercises/diagnose-and-resend.md` this session: output 'OK — 61 files, Phase/Step numbering consistent.' Phase headers run 1-5 consecutively; in-file forward refs ('Phase 3 builds the verifier against the dominant failure; Phase 4 assembles...' chunk 3, 'Fire it once before Phase 4' chunk 5) resolve to real later headers. Harm absent.",
       "fix_hint": null,
       "blocking": false
     },
@@ -136,9 +136,9 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a positional pointer ('below', 'above') aims at a wall once the renderer cuts at ##. Chunk 11 line 212: 'the re-send prompt below stands alone' -- the referenced prompt (lines 218-232) sits in the SAME chunk, matching the compendium's canonical same-chunk-passes example exactly. No other below/above/further-down phrasing found. Confirmed mechanically: node scripts/check-slide-deixis.js reports 'OK -- 61 files, no page-geometry pointers across the slide cut.' Harm absent.",
+      "evidence": "Harm: a positional pointer ('below'/'above'/'at the top of this page') aims at a wall once the renderer cuts at `##`. Ran `node scripts/check-slide-deixis.js --file curriculum/exercises/diagnose-and-resend.md` this session: output 'OK — 1 files, no page-geometry pointers across the slide cut.' The one below/above-shaped phrase in body, chunk 11 line 212 'the re-send prompt below stands alone,' points at the fenced prompt on lines 218-232 -- the SAME chunk, matching the compendium's own canonical same-chunk-passes shape. Harm absent.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -146,7 +146,27 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a dead in-deck link (mechanism) or an unnamed, geometry-located link (open question, now settled as no-rule). One link in body: chunk 10 line 200, '[What packaging is](lectures/what-packaging-is.md)' -- names the document in the link text, mechanism fixed 2026-08-12 per the compendium's own note, no rule to apply beyond naming. Harm absent.",
+      "evidence": "Harm: a dead in-deck link, or one that is unnamed/geometry-located (both settled corpus-wide, mechanism fixed 2026-08-12). Ran `node scripts/check-slide-deixis.js --links --file curriculum/exercises/diagnose-and-resend.md` this session: one link found, chunk 10 line 200 'What packaging is' -> lectures/what-packaging-is.md, named in the link text, not located by page position. Harm absent; explicitly a review surface, never a gate.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size -- 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Harm: an over-cap chunk gets trimmed off-schedule or, if missed, over-projects on the wall unnoticed. Ran `node scripts/check-slide-size.js --file curriculum/exercises/diagnose-and-resend.md` this session: 'files: 1 slides: 11 limits: 210 words / 6 bullets ... oversized: 0 ... ✓ every slide is within limits.' No `**Slide size accepted:**` note needed. Harm absent.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Harm: an exercise heading phrased as a lecture-style claim blurs the imperative-vs-declarative mood signal the deck relies on. Read all 12 `##` headers: ten are imperative or 'Phase N:' phase labels ('Read what the failed run did', 'Make Claude show its work, make it dig', 'Build the verifier for your worst failure', 'Prove the verifier actually fires', 'Check both files are for the agent, not you', 'Approve', 'Send it off and read the report cold', 'Bring the worktree's work home', plus two bare 'Phase N:' labels). Two are bare topic-noun labels, not claims: 'The reference and plan.md' and its echo 'Phase 4: Write the reference and plan.md' -- neither asserts a truth with a verb the way this training's two calibrated declaratives do ('Anything can be reverse-engineered' in close-the-ticket.md, 'There is always a next plausible answer' in fix-tests-first.md); a topic-labelled definitional interlude is the third shape the rule's binary (imperative/label vs. claim) doesn't ban, consistent with the compendium's own calibration count. No declarative-claim heading found in this file. Harm absent.",
       "fix_hint": null,
       "blocking": false
     }

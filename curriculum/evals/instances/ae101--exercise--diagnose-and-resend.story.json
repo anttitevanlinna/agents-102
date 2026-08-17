@@ -1,7 +1,7 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/diagnose-and-resend.md",
-  "body_sha": "d96416c6ced9f9c940ca8fd2ad2ee9c8cfb8fe18d450ae9ab54913efbf5b15d6",
+  "body_sha": "95be6c73c891e07880b81ea8d795144a219fd87645a4766bf0ea99434b459e52",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "learning through contrast — \"I can feel what packaging adds now; I couldn't have read it as a lecture\"",
@@ -12,7 +12,7 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "N/A",
-      "evidence": "The target is an exercise, not a lecture-placement surface. Its pattern-naming closer is a separate lecture (what-packaging-is.md) owned by the M5 module.",
+      "evidence": "Rule governs where a meta-frame LECTURE is scheduled in the module sequence (a module-file decision); this is an exercise, not a lecture. The exercise's own complicity with that design — never naming the closer's practitioner pattern early — is judged under strategy §4 below, not this rule. HARM check: rule exists to stop a naming-the-pattern lecture landing before the room has lived the pattern; that harm targets lecture placement, which this file doesn't control.",
       "fix_hint": null,
       "blocking": false
     },
@@ -20,8 +20,8 @@
       "compendium": "check_lectures.md",
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
-      "verdict": "PASS",
-      "evidence": "Re-verified live: `grep -cE 'converge|often mention|Practitioners' curriculum/prompts/diagnose-and-resend-3.md` = 0. Prompt 3's current text opens 'Validation for multi-hour agent runs groups into three categories.' with no population claim, and closes 'Don't name frameworks or practitioners by label. Walk from the specific failure to the specific validation.' Checked all 8 sent prompts (diagnose-and-resend-1..6, ae101-m5-clear-before-rerun, ae101-m5-rerun-packaged) for Ronacher/Huntley/Cherny/Kim/Osmani/three-pattern — zero matches.",
+      "verdict": "N/A",
+      "evidence": "Rule governs pre-exercise LECTURE dosage (reading-the-return.md, learning-through-contrast.md, both scheduled before this exercise at module open) — a lecture-authoring concern, not this exercise file's content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,7 +30,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Lecture-body-scoped rule; this exercise legitimately carries worktree and M6 handoff mechanics (line 137's flagged M6 hand-off sentence is exercise-scoped, not a lecture body).",
+      "evidence": "Rule text scopes explicitly to LECTURE bodies. This is an exercise. Its one cross-module callback ('the repo read in Module 1', line 44, inside 'Make Claude show its work, make it dig') is a backward epistemic-prior reference, not a forward bridge/sequencing claim of the kind the rule bans (\"gets its full name at M5\"), and the file's own maintainer block already defends it as a deliberate progression-with-variation instance under check_pedagogy §9b (three placements, roughly two modules apart, each carrying its own action). No unreviewed drift present.",
       "fix_hint": null,
       "blocking": false
     },
@@ -38,8 +38,8 @@
       "compendium": "check_lectures.md",
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
-      "verdict": "N/A",
-      "evidence": "This file's `##` headers are procedural phase labels (\"Phase 1: Read what the failed run did\") rather than lecture-style claim/concept headers the squint-and-truth test targets. check_slides.md (not in this run's compendium set) is the dedicated owner for exercise-slide header wording; story evaluates the learning arc, not header phrasing.",
+      "verdict": "PASS",
+      "evidence": "Rule text names 'Slide/lecture headers' explicitly, so this file's 11 `##` chunks are in scope. Squinted each: 'Phase 1: Read what the failed run did' / 'Make Claude show its work, make it dig' / 'Phase 2: Match each failure to the check that catches it' / 'Phase 3: Build the verifier for your worst failure' / 'Prove the verifier actually fires' / 'The reference and plan.md' / 'Phase 4: Write the reference and plan.md' / 'Check both files are for the agent, not you' / 'Approve' / 'Phase 5: Re-send it, packaged' / 'Send it off and read the report cold' (+ the flagged 'Bring the worktree's work home'). Each names the one thing the section does and is true against its own bullets; command-verb form is correct register for an exercise (check_lectures §4's 'declarative noun-phrase, not command verb' clause is an inherited LECTURE carve-out, not the exercise default). No duplicate headers, no em-dashes in any header. The renamed 'Make Claude show its work, make it dig' (was 'Keep Claude honest, make it dig') squints to the same concept — verify the agent's quoted claims — and is truer to the body's actual ask (locate the quotes) than the old 'honest' framing, which implied a dishonesty the body never asserts.",
       "fix_hint": null,
       "blocking": false
     },
@@ -48,7 +48,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "File reads at ~810 words body (maintainer word-count line), spread across 5 phases plus a short setup/close; no phase reads as an oversized single slide relative to the others. No size regression from the two edits in scope (Placement line, Send-off heading date removal) — both are one-line maintainer-block changes, not body growth.",
+      "evidence": "Rule text explicitly includes exercise slides. Ran `node scripts/check-slide-size.js --file curriculum/exercises/diagnose-and-resend.md` this session: output 'files: 1  slides: 11  limits: 210 words / 6 bullets — oversized: 0 — ✓ every slide is within limits', exit 0. The two body edits since last stamp (heading rename; 'Three verifier shapes.' → 'Pick the verifier shape...' plus the added 'When the shape fits the failure, say *save it.*' sentence) are within a few words of each other and don't push any chunk over budget, confirmed by the live run rather than inferred from the diff size.",
       "fix_hint": null,
       "blocking": false
     },
@@ -57,34 +57,16 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "Every load-bearing move is in a `{{prompt:...}}` fence: transcript-path read (prompt 1), three-lens diagnosis (prompt 2), failure-to-validation mapping (prompt 3), verifier build with show-before-save gate (prompt 4), smoke test (prompt 5), reference+plan.md assembly with the grill (prompt 6), and Phase 5's re-send (`ae101-m5-rerun-packaged`). Body prose (lines 27, 137's RLHF paragraph) stays advisory per the rule's carve-out, not a substitute for the fenced move.",
+      "evidence": "Every load-bearing move sits in a `{{prompt:...}}` fence (diagnose-and-resend-1..6, ae101-m5-clear-before-rerun, ae101-m5-rerun-packaged). Body prose stays advisory: 'Push back where Claude generalises... send it back for one' (line 43) is qualitative steering, not a count-script (no 'push back once', no 'two rounds max'). The new Phase 3 line 'When the shape fits the failure, say *save it.*' is an operational-trigger phrase in body prose, not a fenced forcing function — this is the same shape as the pre-existing, already-reviewed 'Say *lock it in*' gate in Phase 4/Approve, which check_prompts.md §35(e) names as the correct home for exactly this kind of trigger ('gives operational trigger a home'). HARM check: the rule exists to stop pedagogy quietly migrating into body prose the speed-runner skips; reading Phase 3 prompt-only (ignoring body) still delivers the verifier build, the shape choice, and the smoke test — the 'save it' line only tells the student what to SAY once they've already decided, it doesn't carry content a fence-only reader would miss.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Full body contains no pair/group-share/room-discussion cue. Every sentence concerns the transcript, diagnosis, verifier, package, or next agent action, including the Phase 5 'notice the prompt: it shrank' line, which is about the artefact, not the room.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 45,
-      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
-      "verdict": "PASS",
-      "evidence": "Maintainer block's Leap test lines name three falsifiable own-codebase verbs: build a failure-scoped verifier before trusting a delegated return, write a task-scoped reference + plan.md before a multi-hour run, and smoke-test the verifier before relying on it.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 47,
-      "rule_lead": "Per-phase failure mode + escape hatch.",
-      "verdict": "PASS",
-      "evidence": "HARM this rule prevents: a trainer facing a stuck student at a forcing-function beat has no authored diagnostic or recovery move to reach for. HARM NOW ABSENT: the maintainer's Failure-modes+diagnostics ledger carries two Phase 5 rows — 'Phase 5 polished-report acceptance' (diagnostic: student can summarise what the agent said but not what the verifier returned; trainer push: 'run the verifier yourself. What does it say?') and 'Phase 5 re-send from the wrong place' (diagnostic: fresh session's rules/paths don't match Phase 4's; fix: check `pwd`). Re-verified line 166 (Placement: 're-send is Phase 5 of this exercise, not a module-level beat; the module file must not carry a second one') and line 238 ('Send-off mechanism (Phase 5, owned by this file):', no date) both correctly attribute the mechanism and its ownership to this file.",
+      "evidence": "Ran `grep -inE \"discuss with|neighbour|neighbor|share what|tell the room|pair up|the person next to\" curriculum/exercises/diagnose-and-resend.md` this session: zero matches. Every sentence in the body concerns the artefact, the agent's next move, or the student's own read of it (e.g. Phase 5's 'notice the prompt: it shrank' is about the artefact, not the room).",
       "fix_hint": null,
       "blocking": true
     },
@@ -93,7 +75,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Regenerated trace (Phase 5 re-hashed after the Placement/Send-off-heading edits; Phases 1-4 unchanged) scores 8 or 9 at every beat across all three personas, `any_below_8: false`. The Phase 5 edits are maintainer-block-only (Placement line, heading date removal) and don't touch the persona-facing body text, so mood at that beat is unaffected.",
+      "evidence": "Regenerated Phase 1 and Phase 3 trace entries this session (the only two phases whose body text moved since the cache's 2026-08-13 generation — heading rename in Phase 1; count-drop + new save-it gate in Phase 3) for all three personas; all three still score 8-9 at every beat, `any_below_8: false`, close_score 8 for all three. Phase 3 remains the 9/10 peak across personas: the verifier built against the student's own diagnosed failure is where 'learning through contrast' concentrates, and the new explicit save-it gate sharpens rather than dilutes it (removes the one open ambiguity — when to stop iterating). Phases 2, 4, 5 unchanged since generation (confirmed via `git show` on the three intervening commits touching this file, ca5e5c5/b2fb8e3/dccde3d/1e4ae21 — all four either untouched this file's body outside Phase 1/3, or touched maintainer-block-only lines) so their cached scores still hold.",
       "fix_hint": null,
       "blocking": true
     },
@@ -102,7 +84,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Line 27 states the underdelivery is data, not blame. All three regenerated traces treat the failed run as evidence to inspect, never a mistake to confess, through Phase 5's candid-report framing too.",
+      "evidence": "Line 27: 'You're diagnosing, not fixing... What came back is data, not blame' states the frame explicitly before any prompt runs. The 10% prior (line 44) is phrased as an epistemic hedge ('assume... you can't spot which tenth by eye'), never as a confession. The Phase 1 heading rename from 'Keep Claude honest, make it dig' to 'Make Claude show its work, make it dig' removes the one place in the file that carried a faint accusatory charge (Claude might be dishonest) in favour of a procedural framing (show the work); this moves the file further toward the rule's intent, not away from it.",
       "fix_hint": null,
       "blocking": false
     },
@@ -111,16 +93,16 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title 'Diagnose and package' and the point line ('packaging you built against your own failure beats packaging you guessed at') lead with the positive discipline; failure modes stay the material the discipline addresses.",
+      "evidence": "Title 'Diagnose and package' and every `##` header lead with an action/discipline (Read, Make Claude show its work, Match, Build, Prove, Write, Check, Approve, Re-send) rather than a failure-mode label; the three failure modes (goal drift, context rot, plausible-but-wrong) appear only as content the disciplines act on, never as section titles.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check.",
+      "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "HARM this rule prevents: the closing lecture's naming of the practitioner pattern gets front-run, so the room's recognition beat lands as re-confirmation instead of discovery. HARM NOW ABSENT: live grep confirms `curriculum/prompts/diagnose-and-resend-3.md` carries zero hits for 'converge|often mention|Practitioners', and the population-claim opener is gone (current opener: 'Validation for multi-hour agent runs groups into three categories.'). Checked all 8 sent prompts for Ronacher/Huntley/Cherny/Kim/Osmani/three-pattern — zero matches. Other §4 facets re-verified this run: the five phases match M5's diagnose→map→verify→package→re-send sequence, line 137 hands the report to Module 6's open, no phase resolves the contrast before Phase 5 actually runs, and the Placement line (166) now correctly scopes the re-send to this file alone (module must not carry a second one) with the Send-off mechanism heading (238) carrying no stale date.",
+      "evidence": "Big Idea ('Steer your long session... the return you already have tells you what to put there') is enacted structurally: Phase 1 reads the return, Phases 2-4 build the steering artefacts from what it showed, Phase 5 re-sends steered. Front-run check: ran `grep -n \"Ronacher|three-pattern\" curriculum/exercises/diagnose-and-resend.md` this session — both hits (lines 192, 234) are in the backing/maintainer block below the student-facing fence, none in body; the closing lecture's naming beat is unspent. Module-to-module arc: close hands to M6 without over-explaining it ('The walk-away report at the close is what Module 6 opens on' / '...is the evidence this session leaves behind') — names the artefact M6 reads, not M6's content. Mood-doesn't-resolve-early: M5 is the arc's designated rescue module (per check_pedagogy §4's peak table); this file fully resolving its OWN task-level worry at Phase 5 is the correct shape for a rescue module, and doesn't touch M6's distinct 'subtler misses at scale' teaching moment, which this file never previews.",
       "fix_hint": null,
       "blocking": true
     },
@@ -129,7 +111,7 @@
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Module-only Key Concepts rule; this exercise has no Key Concepts section.",
+      "evidence": "Module-only Key Concepts rule; this exercise file has no `## Key Concepts` section (it lives in the parent module file, learn-from-the-test.md).",
       "fix_hint": null,
       "blocking": false
     },
@@ -138,7 +120,7 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Module-only Key Concepts rule; no such section exists in this exercise.",
+      "evidence": "Module-only Key Concepts rule; no such section exists in this exercise file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -147,18 +129,19 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "Module-only What You'll Learn rule; no such section exists in this exercise.",
+      "evidence": "Module-only What You'll Learn rule; no such section exists in this exercise file.",
       "fix_hint": null,
       "blocking": false
     }
   ],
   "mood_summary": {
-    "phase_scores": [8, 8, 8, 8, 8],
+    "phase_scores": [8, 8, 9, 8, 8],
     "close_score": 8,
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "teaching_moment_lands": "PASS. Across mid-layer, opinionated-senior, and fast-operator traces, the student moves from a quoted failure to a verifier shape, forces both PASS and FAIL behavior, builds the remaining package around the same task, and re-sends the packaged task in Phase 5, reading a candid report cold. The fast operator consumes only the dominant mapping deeply and cuts the Phase 4 grill at the stated threshold, and still feels the Phase 5 payoff immediately via the shrunk prompt, so the moment survives speed without turning into a reading-completion test. The opinionated-senior persona reads prompt 3's now-name-free closing instruction with nothing to privately clock before the closing lecture's reveal. This run's two edits (Placement line, Send-off heading date removal) are maintainer-only content and don't change any persona's read of Phase 5.",
+  "teaching_moment_lands": "PASS. Re-verified this session with a fresh read of the two changed phases against all three personas: mid-layer, opinionated-senior, and fast-operator each still move from a quoted failure (Phase 1) to a verifier shape that demonstrably passes good input and fails bad (Phase 3, the 9/10 peak for all three), assemble the remaining package (Phase 4), and re-send it (Phase 5), reading a candid report cold. The Phase 3 additions (dropped 'Three' count, added 'say *save it*' gate) don't fragment this — the fast operator explicitly doesn't register the dropped count as a loss ('the three bullets were always the real menu'), and the opinionated senior reads the new gate as the discipline they'd already be applying, not an imposed script. The moment survives the persona-skill spread without turning into a reading-completion test.",
+  "notes": "Two Antti-queued, non-blocking TODOs already recorded on other classes' instances for this file were re-confirmed present but are out of story's scope and not re-litigated here per the run brief: (1) noun-run vocabulary drift across several body lines (check_writing.md — curriculum/vocabulary.md register rule), logged in ae101--exercise--diagnose-and-resend.writing.json (todos_count 2); (2) Phase 3's body lead-in near-duplicating diagnose-and-resend-4.md's own opening sentence (check_prompts.md §2a dangling-colon sub-case), same writing.json. Neither is a check_lectures/check_pedagogy(§16,27)/check_strategy_tie_in rule this class owns, so neither appears in rules_evaluated above; keeping them as TODOs on their owning class's ledger rather than duplicating or escalating them here.",
   "blocking_findings_count": 0,
   "todos_count": 0
 }

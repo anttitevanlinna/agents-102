@@ -40,8 +40,6 @@ You walk in holding two sessions of the same task. The un-packaged Module 4 send
 
 No compound prompt here. The exercise's gap map and stack-map are the Module 6 compound; the encode-move lands inside the last lecture. This slot is a human round: talk, compare, no prompts.
 
-One number first, the same sentence the training opened on: *Agentic engineering is the use of AI agents to build software (planning, writing code, testing, shipping) and to improve the way you build it. Rate your confidence, 1 to 10, that you could build production systems this way today.* Write it beside your M1 number.
-
 *Two sessions of the same task, read to the bone. The loop, yours.*
 
 **Self-study variant.** Close the laptop. If you can put the move in one sentence, that's the marker; no further articulation required.
@@ -85,7 +83,7 @@ Antti
 
 <!-- maintainer -->
 
-**The confidence re-rate in the Human close is an instrument, not prose.** Canonical wording lives in `theory-plan.md` § Baseline instrument; it must stay verbatim-identical to the M1-open before-measurement or the delta measures the wording. Do not polish, do not paraphrase, do not let a sweep touch the italic sentence. Target delta +3.
+**The confidence after-measurement fires at this module's Human close but lives OUTSIDE the workbook.** The measurement system is deliberately not in student-facing body; the trainer administers it. Canonical wording in `theory-plan.md` § Baseline instrument — verbatim-identical to the before-measurement or the delta measures the wording. Target delta +3. Do not add a rating beat to this file's body.
 
 **The rescue callout's lecture line is triage, not a ranking of lectures against exercises (reworded 2026-08-15, Antti).** It read *"Skip the opening lecture. Practice is core. Lectures can be read later."* — right instruction, wrong scope: a doctrine about all lectures, stated to the one student least able to judge it, in a training whose theory layer is a selling point. It also sat four sentences after *"let it catch up while you read on"*, so the same callout said read and skip. Now scoped to the moment: *"If the room starts the lecture while you are still getting a session going, stay with the rescue and read it afterwards."* The room-parallelism is the point — others sit the lecture while this student fixes a session — so keep the line, and keep it conditional. Do not restore the general claim, and do not cut the beat: a stranded student needs permission to spend room time on the rescue.
 

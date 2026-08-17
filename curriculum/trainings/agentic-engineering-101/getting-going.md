@@ -87,6 +87,8 @@ Module 2 is where plan mode earns its keep: multi-file work, and a second pass t
 
 <!-- maintainer -->
 
+**The confidence before-measurement fires at this module's open, ahead of any teaching, and lives OUTSIDE the workbook.** The measurement system is deliberately not in student-facing body; the trainer administers it. Canonical wording in `theory-plan.md` § Baseline instrument — verbatim-identical to the M6 after-measurement or the delta measures the wording. Do not add a rating beat to this file's body.
+
 **`## Prework` carries no instruction to do the prework and no locator.** A student reading this module either did it or did not; the section states what the prework left them holding. The page-geometry phrase that once trailed it (*"at the top of this workbook"*) is banned: the deck has no top once the renderer cuts at `##` (`check_slides.md` §12), and `check_slides.md` §2's navigational-pointer carve-out named that exact phrase as exempt before the blessing was withdrawn in the compendium. Do not reintroduce a locator, or the compliance line.
 
 **The Willison pre-read is mirrored here on purpose.** `check_cross_module.md` §2 wants between-module reading in two places; prework assigns *Vibe engineering* for the gap before this module, so `## Prework` echoes it in the receiver's register. The M2→M3 boundary is the shape being matched. Do not DRY it back to one location.
@@ -175,6 +177,6 @@ The shipped PR and the closed ticket are both produced this module and both live
 - **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (Every Inc.) [practitioner direct, vendor venue]. Cite this URL for the term and the each-unit-makes-the-next-easier thesis, never for a step count: the step names live elsewhere and the loop's staging moves; Ex4's compound summary prints the current sequence, whose stamps live in `exercises/compound-and-close.md`, while this URL's own stamp is delegated per the Source verification block above. Attributed inside Claude's Ex4 compound summary, not in a lecture.
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
 
-**Quality:** compendium-audited 2026-08-15 (writing@0774e2f story@0774e2f technical@ebe620f behavior@f9b9406 pedagogy@0774e2f strategy@0774e2f slides@0774e2f)
-- judges @0774e2f: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-15 (writing@1480362 story@1480362 technical@1480362 behavior@1480362 pedagogy@1480362 strategy@1480362 slides@1480362)
+- judges @1480362: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @022c684: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust] 3 pairs, 9/9 rules each; M3->M4 out of scope, M4+M5 under concurrent edit; see instances/ae101--module-set--prework-m3.cross_module.json

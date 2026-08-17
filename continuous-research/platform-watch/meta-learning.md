@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 188 — 2026-08-17
+
+BCG "AI brain fry" was discovered via trade press synthesis (builtin.com) of a corporate study not openly published — trade press articles citing specific corporate research are a valid discovery path when the source isn't indexed directly. The CHI 2026 concurrent-sessions methodological gap was found by searching ACM DL; academic conference proceedings surface orthogonal evidence that corroborates or challenges practitioner self-reports without adding more L1 opinions. Running ACM/arXiv searches in parallel with practitioner-blog searches doubles coverage.
+
+Security CVEs require a different query than capability research: searching "[tool] CVE 2026" or "[tool] security vulnerability exploit" surfaces SentinelOne, NVD, and CSA — sources entirely separate from the practitioner cluster. Running security-specific queries in parallel with capability queries surfaces a different evidence layer without additional cycles.
+
 ### Retrospective: Cycles 1-25 (seeded from pattern analysis)
 
 **Source reliability patterns observed across 25 cycles:**

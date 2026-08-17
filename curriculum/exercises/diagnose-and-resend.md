@@ -38,7 +38,7 @@ Confirm the path is right. Then ask Claude to read the repo state on the previou
 {{prompt:diagnose-and-resend-2}}
 
 
-## Keep Claude honest, make it dig
+## Make Claude show its work, make it dig
 
 - Push back where Claude generalises. If a lens comes back without a quote from the run, send it back for one. The same moment may carry more than one lens.
 - This is an agent's account of an agent's work, on a run you weren't watching. Same prior as the repo read in Module 1: assume about 10% of the account misrepresents the run, and you can't spot which tenth by eye. Ask Claude to show you where two or three of its quotes appear in the transcript. If it can't show you, don't trust that quote.
@@ -61,7 +61,7 @@ Claude gives the full three-way mapping. Your decision is narrower: which failur
 
 *20 min*
 
-- Three verifier shapes. Pick the one that matches the failure that cost you most.
+- Pick the verifier shape that matches the failure that cost you most.
 
 - **Background-agent verifier.** Separate Claude session reads the produced work and judges it. Right when the failure was qualitative (style, fit, "did the answer the question").
 - **Deterministic shell-hook.** Tests, lint, type-check, compile, custom invariant. Right when the failure has a true-false answer (broke the build, touched the wrong directory). The shell-hook shape IS a Claude Code stop-hook; you will meet the word again if you extend the verifier to fire automatically between runs.
@@ -82,9 +82,9 @@ Read what Claude proposes. Push back if the verifier covers the wrong shape (a g
 
 ## The reference and plan.md
 
-- **Reference** — what the task is and what done looks like: success criteria, plus pointers to the memory, skills and connectors that matter.
+- **Reference**, what the task is and what done looks like: success criteria, plus pointers to the memory, skills and connectors that matter.
 - Written once, before the run, and it stays put while the agent works.
-- **plan.md** — the agent's working document: the steps, and where it has got to.
+- **plan.md**, the agent's working document: the steps, and where it has got to.
 - The agent rewrites it as it goes and re-reads it when the context window fills. Not the plan-mode plan.
 
 ## Phase 4: Write the reference and plan.md
@@ -148,12 +148,12 @@ Your `CLAUDE.local.md` and `observations/` have been building in the worktree si
 
 **View summary:** You read the un-packaged run through three failure lenses, build the checks and durable task artifacts that would have caught its misses, then re-send the same work. The contrast makes packaging visible on your own code rather than as advice.
 
-**The 10% recall in `## Keep Claude honest, make it dig` is the prior's third and last statement, by design.** `orient-and-introspect.md` § *Read the self-report, then spot-check it* sets it on the agent's read of a repo (maintainer-attested there), `plan-mode-done-right.md` § Key Concepts applies it to a plan, and this bullet applies it to a run transcript the student did not watch. Three instances, roughly two modules apart, a different artefact each time, each carrying its own action: progression-with-variation, not the refrain `check_pedagogy.md` §9b bans. This is the beat that earns it. In M1 and M2 the student can read the whole artefact by eye, so the prior costs nothing there; here it is the only affordable check, and asking the agent to locate its own quotes is the only one available when the agent holds the codebase and the student holds the lenses. The imperative *assume* and the *about* hedge travel from M1 and are load-bearing: the prior is an instruction to the reader, and a floor form would be a claim about the world. Do not harden it, and do not restate it as a general claim about agents. M1's double-hedge (*"could be more or less"*) stays M1's, so `check_slides.md` §7's number-plus-retraction sub-item does not fire here.
+**The 10% recall in `## Make Claude show its work, make it dig` is the prior's third and last statement, by design.** `orient-and-introspect.md` § *Read the self-report, then spot-check it* sets it on the agent's read of a repo (maintainer-attested there), `plan-mode-done-right.md` § Key Concepts applies it to a plan, and this bullet applies it to a run transcript the student did not watch. Three instances, roughly two modules apart, a different artefact each time, each carrying its own action: progression-with-variation, not the refrain `check_pedagogy.md` §9b bans. This is the beat that earns it. In M1 and M2 the student can read the whole artefact by eye, so the prior costs nothing there; here it is the only affordable check, and asking the agent to locate its own quotes is the only one available when the agent holds the codebase and the student holds the lenses. The imperative *assume* and the *about* hedge travel from M1 and are load-bearing: the prior is an instruction to the reader, and a floor form would be a claim about the world. Do not harden it, and do not restate it as a general claim about agents. M1's double-hedge (*"could be more or less"*) stays M1's, so `check_slides.md` §7's number-plus-retraction sub-item does not fire here.
 
 **Emphasis:** Bold is limited to title-page labels, widget chrome, the Phase 3 verifier-shape menu handles (**Background-agent verifier** / **Deterministic shell-hook** / **Ralph re-feed**), the Phase 4 stop-gate handle, and the two definitional handles on *The reference and plan.md* (**Reference** / **plan.md**). All other body prose stays unbolded.
 
-**Quality:** compendium-audited 2026-08-13 (writing@61e7fc9 story@ca5e5c5 technical@ca5e5c5 behavior@ca5e5c5 pedagogy@61e7fc9 strategy@1c765f2 slides@61e7fc9)
-- judges @ca5e5c5: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-17 (story@ca5e5c5 technical@ca5e5c5 behavior@ca5e5c5 pedagogy@61e7fc9 strategy@1c765f2 slides@dccde3d)
+- judges @dccde3d: writing REVISE (2/3-see-instances/ae101--exercise--diagnose-and-resend.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Word count:** ~810 words body.
 

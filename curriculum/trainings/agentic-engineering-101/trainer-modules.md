@@ -323,7 +323,7 @@ Never cut: Phase 5's stop. Approve, don't execute, and name the pattern; the non
 5. Exercise — [Prep the run, fill the gaps](./#exercises-walk-and-send-off) (55 min; pick 10 / walk-and-fill 40 / settle 5)
 6. [The ironies of automation](./#lectures-ironies-of-automation) (3 min framing; the lecture's own cap — past 3 it starts teaching the fixes), then Exercise — [Set the markers, send it off](./#exercises-set-the-markers-send-it-off) (12 min; markers 5 / send 7): transcript path, starting-point commit on `m4/<slug>`, then the send-off prompt paste
 7. Lecture — [What keeps a long-running session going?](./#lectures-what-keeps-a-long-running-session-going) (fires while the agent runs; three-condition observation; leaves the run untouched)
-8. Close — point at [Reading the return](./#lectures-reading-the-return) as the pre-read; it plants the three failure modes M5 reads with
+8. Close — nothing to hand out: [Reading the return](./#lectures-reading-the-return) is an in-room M5 opener (charged there since 2026-08-12), not a pre-read
 
 **Learning goals.** Student can:
 
@@ -400,7 +400,7 @@ Never cut: the send-off itself, and never rescue the un-packaged run. A weak fir
 
 **Flow.**
 
-1. Lectures — [Reading the return](./#lectures-reading-the-return) (the M4-close pre-read, re-anchored briefly) + [Learning through contrast](./#lectures-learning-through-contrast)
+1. Lectures — [Reading the return](./#lectures-reading-the-return) (in-room opener, full read — not a pre-read) + [Learning through contrast](./#lectures-learning-through-contrast)
 2. Hold the worry beside the artefact — short module-body beat: the mid-run worry from M4 is tested against the return before it earns a check
 3. Exercise — [Fork the worktree, carry the evidence](./#exercises-fork-the-worktree) (15 min): runs from the ORIGINAL repo, the worktree doesn't exist yet. Claude reads the `Run coordinates` block in `task.md` and forks `../<repo>-m5` from the `m4/<slug>` starting-point commit, copying `CLAUDE.local.md` and `observations/` across
 4. Exercise — [Diagnose and re-send](./#exercises-diagnose-and-resend) (68 min, Phases 1–5, in a new session in the worktree). Phase 5 is the re-send and now sits inside the exercise: a new session in the worktree by default (fresh context; the exercise scrollback is heavy), or clear the exercise session in place; then the packaged re-send prompt, and the walk-away report gets read cold

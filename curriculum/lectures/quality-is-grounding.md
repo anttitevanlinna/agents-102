@@ -10,7 +10,7 @@ Five moves, one discipline. Tests-first, plan push-back, skill, verifier, loop. 
 
 ## Decay clears the gate
 
-Tests answer in seconds; the verifier fires mid-session or not at all. The costs that make a codebase hard to change land weeks later: the shortcut cast, the try-catch that swallows an error, the module that grew a second job. No gate fires on any of them, so a session can come back green and still leave the code worse than it found it.
+Tests answer in seconds; the verifier advises the agent. The costs that make a codebase hard to change land weeks later: the shortcut cast, the try-catch that swallows an error, the module that grew a second job. No gate fires on any of them, so a session can come back green and still leave the code worse than it found it.
 
 Coding models share the blind spot, Dex Horthy argues in [Why software factories fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md): they learned against checks that answer fast, and a cost that lands in weeks never reached them. The countermoves are the old discipline with a new job. [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md) carries that story: modularity, architecture visibility, metrics that make decay readable.
 
@@ -44,7 +44,7 @@ Claims
 - `quality-arc-ran-the-whole-training` · vision · "The quality arc ran the whole training." ← none-owed
 - `five-moves-one-discipline` · vision · "Five moves, one discipline. Tests-first, plan push-back, skill, verifier, loop." ← none-owed
 - `discipline-not-one-move-per-module` · vision · "Not one move learned in one module; the discipline, threaded through the whole training." ← none-owed
-- `fast-checks-miss-slow-costs` · vision · "Tests answer in seconds; the verifier fires mid-session or not at all." ← none-owed
+- `fast-checks-miss-slow-costs` · vision · "Tests answer in seconds; the verifier advises the agent." ← none-owed
 - `decay-clears-the-gate` · vision · "a session can come back green and still leave the code worse than it found it" ← none-owed
 - `horthy-models-share-the-blind-spot` · detail · "they learned against checks that answer fast, and a cost that lands in weeks never reached them" ← horthy-wsff
 - `countermoves-are-old-discipline-new-job` · vision · "The countermoves are the old discipline with a new job." ← none-owed

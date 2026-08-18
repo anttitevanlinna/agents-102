@@ -20,7 +20,7 @@ Simulated engineers read the result as a competent builder, a skeptical senior, 
 
 Then a tmux runner drives real Claude Code sessions through Modules 1–6 against working codebases. It catches a different class of failure: a session that stalls, an artifact that never lands, or a handoff that breaks the next module.
 
-None of these checks replaces another. Rules catch mistakes already understood. Judges and simulations challenge the written material. The tmux runs test whether the training actually executes. You build similar scaffolding for your own repo throughout the training. The rules file you just wrote is the first piece.
+None of these checks replaces another, as they catch differing failure modes. You build similar scaffolding for your own repo throughout the training. The rules file you just wrote is the first piece.
 
 ## You just ran the same loop
 
@@ -42,8 +42,8 @@ The loop is the shape. The bug today was the excuse.
 - **The quoted forcing-function rule is a specimen, not introduced vocabulary.** It is verbatim `check_pedagogy.md §16` and makes the correction-to-rule move concrete.
 - **File is size-gate exempt** (story lecture).
 
-**Quality:** sim-passed 2026-08-05 (writing@148c7ea story@148c7ea technical@148c7ea behavior@148c7ea pedagogy@148c7ea strategy@148c7ea slides@148c7ea)
-- judges @148c7ea: writing PASS (codex-audit), story PASS (three-persona-codex-audit), technical PASS (codex-audit), behavior PASS (no-prompts), pedagogy PASS (codex-audit), strategy PASS (codex-audit), slides PASS (codex-audit)
+**Quality:** sim-passed 2026-08-15 (writing@1480362 story@1480362 behavior@1480362 pedagogy@1480362 strategy@1480362 slides@1480362)
+- judges @1480362: writing PASS, story PASS, technical REVISE (1/1-see-instances/ae101--lecture--how-this-training-was-built.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Understand — recognise the compound loop in the training's construction after running it.

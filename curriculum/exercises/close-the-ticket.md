@@ -40,7 +40,7 @@ Ask Claude to write the close-out, update the ticket, and report what it wrote.
 
 ## Double-check the voice
 
-- Does it sound like the comments already on the ticket? If a line reads stiffer than your team's, name it and say what style you want instead.
+- Does it sound like the comments already on the ticket? If the wording feels off or wrong, tell Claude which line and how you'd write it.
 
 ## Anything can be reverse-engineered
 
@@ -49,7 +49,7 @@ Ask Claude to write the close-out, update the ticket, and report what it wrote.
 
 ## What happened
 
-The ticket gave up two things: a close-out note on the bug you shipped, and the conventions your team has been encoding in its fields all along. The loop that started with a failing test closed.
+Two things came out of one ticket: a close-out note on the bug you shipped, and the conventions your team has been encoding in its fields all along. The loop that started with a failing test closed.
 
 The field rules stay in the scrollback. The next exercise sweeps this whole session.
 
@@ -103,7 +103,7 @@ The field rules stay in the scrollback. The next exercise sweeps this whole sess
 Claims
 - `agent-reverse-engineers-unwritten-rules` · vision · "the agent can reverse-engineer your team's rules" ← none-owed
 - `each-field-carries-a-convention` · vision · "Every field carries a convention." ← none-owed
-- `conventions-read-shapes-the-close-out-voice` · vision · "If a line reads stiffer than your team's, name it and say what style you want instead." ← none-owed
+- `conventions-read-shapes-the-close-out-voice` · vision · "If the wording feels off or wrong, tell Claude which line and how you'd write it." ← none-owed
 - `one-ticket-gives-rules-not-policy` · vision · "One ticket gives a sample of your team's rules, not the policy." ← none-owed
 - `rejected-rules-sharpen-the-read` · vision · "The ones you reject sharpen the read as much as the ones you keep." ← none-owed
 - `anything-can-be-reverse-engineered` · vision · "Anything can be inspected and reverse-engineered with an LLM" ← maintainer-frame
@@ -129,5 +129,5 @@ OODA
 
 <!-- /backing -->
 
-**Quality:** compendium-audited 2026-08-03 (writing@d1c41dd story@d1c41dd technical@d1c41dd behavior@d1c41dd pedagogy@d1c41dd strategy@d1c41dd slides@d1c41dd)
-- judges @d1c41dd: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-15 (writing@1480362 story@1480362 technical@1480362 behavior@1480362 pedagogy@1480362 strategy@1480362 slides@1480362)
+- judges @1480362: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

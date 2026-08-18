@@ -1,8 +1,8 @@
 # The whole map
 
-## Every task runs the same six phases
+## Every task maps onto the same six phases
 
-Every piece of agentic work runs the same cycle. Six phases. The loops drawn across them all run the same shape, each wearing different work:
+Every piece of agentic work maps onto the same cycle. Six phases. The loops drawn across them all run the same shape, each wearing different work:
 
 <figure class="diagram">
 <svg viewBox="0 0 1200 560" role="img" aria-label="The compounding engine: six phases of the cycle with the named loops running across them, each phase capped by the component outcome its loops hand over, and the compounding return carrying each session's evidence back to the start." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:6px;">
@@ -92,7 +92,7 @@ Every piece of agentic work runs the same cycle. Six phases. The loops drawn acr
 - **Absorption.** How much of the result you can actually take up. What gets read, judged, and merged, not just what gets produced.
 - **Outcome.** What you keep. What survives the session and compounds into the next one.
 
-The phases are places, not stages. A task usually stands in more than one at once, and the plan gets re-entered mid-build.
+The phases are places, not a pipeline. A real task sits in several at once.
 
 ## You are here
 
@@ -139,7 +139,7 @@ The phases are places, not stages. A task usually stands in more than one at onc
 Format → `curriculum/backing-format.md`.
 
 **Claims**
-- `six-phase-cycle` · borrowed · "Every piece of agentic work runs the same cycle. Six phases." ← groundwork-value-cycle, willison-subagents, cursor-scaling-agents, karpathy-sequoia, klaassen-expanded-loop
+- `six-phase-cycle` · borrowed · "Every piece of agentic work maps onto the same cycle. Six phases." ← groundwork-value-cycle, willison-subagents, cursor-scaling-agents, karpathy-sequoia, klaassen-expanded-loop
 - `loops-run-one-shape` · borrowed · "The loops drawn across them all run the same shape, each wearing different work" ← cultural-vocab, osmani-software-factories, willison-what-is-agentic-engineering
 - `intent-names-done-first` · vision · "Which task, and what done means, before a single step runs." ← none-owed
 - `context-system-or-guess` · vision · "The files, rules, and memory that decide whether it acts on your system or on a guess about your system." ← none-owed
@@ -147,7 +147,7 @@ Format → `curriculum/backing-format.md`.
 - `verification-pushes-back` · vision · "everything that pushes back on the work before you accept it" ← none-owed
 - `absorption-is-the-taking-up` · detail · "How much of the result you can actually take up. What gets read, judged, and merged, not just what gets produced." ← osmani-software-factories, osmani-outer-loop, ronacher-final-bottleneck, user-signal-absorption
 - `outcome-is-what-survives` · vision · "What survives the session and compounds into the next one." ← none-owed
-- `phases-are-places-not-stages` · vision · "The phases are places, not stages. A task usually stands in more than one at once, and the plan gets re-entered mid-build." ← none-owed
+- `phases-are-places-not-stages` · vision · "The phases are places, not a pipeline. A real task sits in several at once." ← none-owed
 - `near-half-far-half` · vision · "The far half is Verification, Absorption, Outcome. What happens when sessions get long and the quick feedback goes quiet." ← none-owed
 - `territory-before-map` · vision · "You feel a country before you see it drawn." ← none-owed
 - `soil-line` · vision · "act under uncertainty · competence sets the ceiling · cross personal → team" ← none-owed

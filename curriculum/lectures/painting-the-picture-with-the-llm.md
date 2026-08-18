@@ -20,8 +20,6 @@ If you want a shotgun, you have a shotgun. If you want a cannon, you have that t
 
 ## Two frontiers: how fast, and the right things
 
-Two questions out in front. Neither has a settled answer.
-
 How fast can your setup learn? The rules and context you put in front of the LLM: can that stack learn faster than a human practitioner can write things down?
 
 Can it learn the right things? Once the setup can learn fast, how does it learn the right things, and not just any things?
@@ -38,12 +36,12 @@ Let's go.
 
 **Slides-only pass (2026-07-02, unaudited):** RE-CHUNK, not cull (M1: right content, wrong beat size). Per-passage verdicts: *The wizard is dead* + *The LLM is an infinite chameleon* CONVERTED into one slide under the wizard-dead title (chameleon heading demoted to a bolded bullet claim; no inbound anchors to the old heading) · *You prime, the LLM scales* CONVERTED one-to-one, wording near-verbatim · *Two frontiers* CONVERTED with compressed bold leads ("How fast can it learn?" / "Can it learn the right things?") that name each question without answering it · "Let's go" KEPT as kicker per delivery watch-for. No cuts, no new theory, zero map references (M1 protected). File is now three slides + kicker.
 
-**The amplification koan carries no verbal hedge, and does not need one (Antti 2026-08-14, read at slide scale).** "The sharp engineers stay sharp" closes a paragraph already written as belief — shotgun/cannon, stance as ceiling, no data cited — and slide 3 opens two lines later on *"Neither has a settled answer."* A tag ("So the bet goes", added 2026-07-02 against theory-completeness minor #8) named a bettor the slide never establishes and read as folk wisdom rather than as an admission. The demotion the Stance block requires is carried by register and by slide 3, not by four words. **Do not re-hedge in the body, and do not strengthen the koan either** — no "we know it", no importing the org-level L3 to prop it up. If a future pass needs the wager visible, it belongs in the trainer handbook, not the deck.
+**The amplification koan carries no verbal hedge, and does not need one (Antti 2026-08-14, read at slide scale).** "The sharp engineers stay sharp" closes a paragraph already written as belief — shotgun/cannon, stance as ceiling, no data cited — and slide 3 poses both frontier questions and answers neither. A tag ("So the bet goes", added 2026-07-02 against theory-completeness minor #8) named a bettor the slide never establishes and read as folk wisdom rather than as an admission. The demotion the Stance block requires is carried by register and by slide 3's unanswered questions, not by four words. **Do not re-hedge in the body, and do not strengthen the koan either** — no "we know it", no importing the org-level L3 to prop it up. If a future pass needs the wager visible, it belongs in the trainer handbook, not the deck.
 
 **Minor-fix (2026-07-02, theory-completeness-review minor #5 "design, not a flaw unearned"):** added a five-word whisper ("It was trained to match you.") to the slide-1 closing bullet — earns "design" as training without teaching the mechanism; `the-machine-you-just-met.md` (M1 closer) owns the full preference-tuning payoff and already calls this bullet back.
 
-**Quality:** compendium-audited 2026-08-04 (writing@36ad3a6 story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@36ad3a6)
-- judges @36ad3a6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-15 (writing@1480362 story@1480362 behavior@1480362 pedagogy@1480362 strategy@1480362 slides@1480362)
+- judges @1480362: writing PASS, story PASS, technical REVISE (1/0-see-instances/ae101--lecture--painting-the-picture-with-the-llm.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Lecture meta:** *~3 min opener for Module 1, before the wizard-move demo. Sets the two open questions the training answers by accretion through M1–M6.*
 

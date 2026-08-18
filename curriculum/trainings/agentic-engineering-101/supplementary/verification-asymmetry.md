@@ -14,9 +14,9 @@
 
 ## Every send-off needs a named cheap verifier
 
-- Before a send-off, ask: what is my cheap verifier here? A failing test, a compiler, a diffable reference, a checklist a fresh session can run. If you can name one, the task is a delegation candidate.
+- Before a send-off, ask: what is my cheap verifier here? A failing test, a compiler, a diffable expected output, a checklist a fresh session can run. If you can name one, the task is a delegation candidate.
 - No cheap verifier? Two options. Keep the task, or build the verifier first and then delegate. Building the verifier is often the more valuable half of the work: it outlives the session it checks.
-- Every verifier you write converts one more task family from delegation-trap to delegation-win. That is why gates are worth authoring at all.
+- Every verifier you write converts one more task family from delegation-trap to delegation-win. That is why checks are worth authoring at all.
 
 <!-- maintainer -->
 

@@ -2,7 +2,7 @@
 
 ## Who this is for
 
-You've already done the hard part. You found this training because you use Claude Code regularly and you want to get further with it. That's who this training is for.
+You've already done the hard part. You found this training because you use Claude Code regularly and you want to get further with it.
 
 ## Context is King
 
@@ -14,19 +14,11 @@ Something Finnish: salmon, rye bread, meatballs. But not as reliably. The first 
 
 ## You steer the answer by loading context
 
-A role colors answers the same way a fact does. One more window. The first prompt: *"I'm a cardiologist preparing dinner for my patients."* Then the same second prompt about dinner. The suggestion shifts again: heart-healthy, low-sodium, vegetable-forward. Not because Claude knows medicine better than Italian cooking. You told it who you are, and every answer after took that into account.
-
 Context is whatever you tell it. A fact. A role. A preference. A constraint. All of it colors what comes next. You, in a way, compel the right output by having the right stuff in the context.
 
-The move is loading the right context before the question, not a clever prompt or a slash command you didn't know. Everything else in this training is about how to earn that kind of primed window on any codebase, any Monday.
+A role colors answers the same way a fact does. One more window. The first prompt: *"I'm a cardiologist preparing dinner for my patients."* Then the same second prompt about dinner. The suggestion shifts again: heart-healthy, low-sodium, vegetable-forward. Not because Claude knows medicine better than Italian cooking. You told it who you are, and every answer after took that into account.
 
-## Everyone arrives partial, trainers included
-
-You found your way to Claude Code by yourself. Maybe a colleague pointed you at it. Maybe you watched a video. Mostly you just typed something, watched what came back, and kept the prompts that worked. You picked up tricks. The slash command that saves keystrokes. The `CLAUDE.md` shape that produced output you liked. The weird thing you tell Claude at the start of every session.
-
-Every engineer who sat down with this tool did some version of that. One engineer brings a slash command, another a `CLAUDE.md` shape, another a strange opening instruction. Everyone's slice is partial, and everyone else's is different.
-
-This training pools partial into a shared floor, then raises the ceiling. The people building this are partial too. Six months ahead of you on some moves, six months behind on others.
+The move is loading the right context before the question, not a clever prompt or a slash command you didn't know.
 
 ## The loop is what you repeat
 
@@ -46,8 +38,8 @@ The fix happens once. The loop is what you repeat: a way of working, not one bug
 
 **Open:** the plan-mode drift removal wants a maintainer eyeball against the module's Big Idea + LO.
 
-**Quality:** compendium-audited 2026-08-02 (writing@1c765f2 story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@1c765f2)
-- judges @1c765f2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-15 (writing@1480362 story@1480362 behavior@1480362 pedagogy@1480362 strategy@1480362 slides@1480362)
+- judges @1480362: writing PASS, story PASS, technical REVISE (1/0-see-instances/ae101--lecture--the-wizard-move.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - compendium-audited 2026-04-26 (check_writing voice-quartet Seth-Rory-Risto, check_student_facing #14, check_lectures opener, check_strategy_tie_in)
 **Meta:**
 - **Placement:** M1 opener, after Connections, before the exercise.
@@ -73,8 +65,6 @@ Format → `curriculum/backing-format.md`.
 - `role-conditions-like-fact` · detail · "A role colors answers the same way a fact does" ← role-prompting-capability, demo-fires-live
 - `context-is-whatever-you-tell-it` · vision · "Context is whatever you tell it. A fact. A role. A preference. A constraint." ← none-owed
 - `the-move-is-loading-context` · vision · "The move is loading the right context before the question, not a clever prompt or a slash command you didn't know" ← none-owed
-- `everyone-arrives-partial` · vision · "Everyone's slice is partial, and everyone else's is different" ← none-owed
-- `trainers-partial-too` · vision · "The people building this are partial too. Six months ahead of you on some moves, six months behind on others." ← none-owed
 - `loop-not-the-fix` · vision · "The fix happens once. The loop is what you repeat" ← none-owed
 - `wizard-by-running-not-reading` · vision · "You become the Claude wizard by running the loop on real work and letting the habit sharpen. Not by reading about it." ← none-owed
 

@@ -337,7 +337,7 @@ a live possibility for Q4, and erasing the loop now would mean redrawing it then
 **One line changed, because accepting this made the framing false.** The module lead-in said *"the whole
 territory this training covers"* — a claim that only holds while the map and the syllabus are the same
 shape. It now reads *"the whole territory this work runs in"*, matching the lecture's own opening,
-*"Every piece of agentic work runs the same cycle."* That correction applies to canonical AE101 too,
+*"Every piece of agentic work maps onto the same cycle."* That correction applies to canonical AE101 too,
 where the map has always exceeded the syllabus.
 
 **What stays true.** The solid stroke still does not distinguish *not-in-this-track* from *not-yet-built*.

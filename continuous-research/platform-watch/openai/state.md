@@ -14,8 +14,14 @@ answers:
 
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-08-10 (cycle 183)
-OODA cycles: 32
+Last updated: 2026-08-18 (cycle 189)
+OODA cycles: 38
+
+**Cycle 189 updates (August 18, 2026) — ASSISTANTS API T-8 HARD STOP CONFIRMED NO EXTENSION (August 14 product update was last realistic announcement window; no extension signal present; Zoho 100+ page thread is only enterprise panic proxy; hard stop August 26 stands):**
+
+**⚠️ ASSISTANTS API SHUTDOWN AUGUST 26 — T-8 DAYS — NO EXTENSION POSSIBLE; HARD STOP CONFIRMED (L3).** Live fetch of OpenAI deprecations page (August 18) confirms August 26 unchanged. **Critical: OpenAI's August 14 product update was the last realistic announcement window before the deadline — it contained zero mention of extension, grace period, or migration tooling.** Extension is now functionally impossible without a public announcement that has not been made. Azure: same August 26 deadline confirmed; migration target is Foundry Agents (not Responses API). Zoho help portal thread has 100+ pages of enterprise user discussion — the only observable enterprise panic proxy this cycle; content behind auth. No Reddit, X.com, or practitioner blog posts from August 14-18 documenting active migration scrambles. No automated Thread-to-Conversations migration tool (by design; unchanged). Migration complexity: 1-4 engineering weeks (simple), months (complex). Why no visible panic: (1) OpenAI community forum August 2026 content behind auth/not indexed; (2) Zoho thread content unreadable; (3) T-8 panic lives in Slack/Discord, not indexed. **Reckoning week remains August 26 – September 5** when hard failures surface in production. ([developers.openai.com/api/docs/deprecations live Aug 18 2026](https://developers.openai.com/api/docs/deprecations) — [vendor documentation]; [releasebot.io/updates/openai Aug 14 2026](https://releasebot.io/updates/openai) — [domain trade publication, zero extension mention]; [help.zoho.com portal thread Aug 2026](https://help.zoho.com/portal/en/community/topic/deprecation-notice-openai-assistants-api-will-be-shut-down-on-august-26-2026) — [practitioner direct — 100+ pages, content behind auth]; [igor-ya.com Mar 3 2026](https://igor-ya.com/posts/assistants-api-to-responses-api-migration-playbook-2026/) — [practitioner direct]; [socialcrawl.dev updated Jul 13 2026](https://www.socialcrawl.dev/blog/openai-assistants-api-2026-shutdown-migration-guide) — [practitioner analysis])
+
+**Watch Cycle 190:** Assistants API T-7 (August 19 — peak panic window; any enterprise crisis posts on X.com or HN?); any OpenAI emergency announcement; reckoning week August 26–September 5 for production failure reports.
 
 **Cycle 183 updates (August 10, 2026) — Assistants API T-16 DAYS; Azure blast radius larger than known; SDK breaking change adds second failure vector; no panic posts yet:**
 

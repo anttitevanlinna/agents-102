@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 189 — 2026-08-18
+
+Absence of visible enterprise panic for the Assistants API T-8 window doesn't mean smooth migration — three distinct reasons explained the silence (forum content behind auth, Zoho thread unreadable, real-time panic in private channels). Learning: explicitly encoding the structural reasons for absence is as important as the absence itself, so downstream cycles don't repeat the same "why isn't this visible?" cycle. The Zoho 100+ page thread as an enterprise panic proxy (page count as signal even when content is inaccessible) is a new discovery method worth reusing — when a vendor's support forum thread has dozens of pages, that IS the signal, even before you read a word of it.
+
+Gemini 3.5 Pro at Miss #19 produced a pattern-shift reframe: looking at what Google DID ship (Gemini 3.7 Flash GA with Pro-tier framing) revealed a possible product retirement rather than a delay — a conclusion that 19 straight "not found" cycles alone wouldn't surface. Learning: once a miss count crosses ~15 consecutive cycles, the productive research question shifts from "when does it ship?" to "what are they shipping instead, and does that explain why this never ships?" The counter-evidence query is more valuable than the confirmation query at this stage.
+
 ### Cycle 188 — 2026-08-17
 
 BCG "AI brain fry" was discovered via trade press synthesis (builtin.com) of a corporate study not openly published — trade press articles citing specific corporate research are a valid discovery path when the source isn't indexed directly. The CHI 2026 concurrent-sessions methodological gap was found by searching ACM DL; academic conference proceedings surface orthogonal evidence that corroborates or challenges practitioner self-reports without adding more L1 opinions. Running ACM/arXiv searches in parallel with practitioner-blog searches doubles coverage.

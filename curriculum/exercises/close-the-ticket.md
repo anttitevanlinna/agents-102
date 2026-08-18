@@ -59,6 +59,8 @@ The field rules stay in the scrollback. The next exercise sweeps this whole sess
 
 **In-class M1 exercise, third of four.** Runs after `fix-tests-first` (the PR is shipped) and before `compound-and-close`, so the field rules the agent surfaces here are session evidence the compound sweep picks up. No separate fold step, and no rules-file write in this exercise.
 
+**"Connector" is assumed-known vocabulary (Antti 2026-08-18):** engineer audience knows MCP/connectors; the term owes no one-breath earning at its line-35 use. `check_writing §8` / `check_student_facing §2` earned-vocabulary findings on it are overruled — do not re-file.
+
 **Connector install is named, not taught — because it is a one-liner, not because it is hard.** A connector added at the Claude account's connector surface inherits into a logged-in Claude Code session, and `claude mcp add --transport http <name> <url>` is a single command otherwise (verified against Claude Code 2.1.220 and the reference page's 2026-07-26 stamp). Spending room time on that choreography earns nothing, so the body carries one pointer to `reference/mcp-and-connectors.md` and nothing else. The three-routes bullet (gh / inherited connector / paste) was cut 2026-08-12 as NVA: the session picks the route, the student neither chooses nor acts on it, and the paste fallback needs no forewarning. Do not restore it. The exercise completes on any of them, so per `check_pedagogy.md §17` the connector stays enhancement and never a forcing function.
 
 **Trainer plug-point caveat, deliberately not in the body:** on Team and Enterprise Claude.ai plans only admins can add at the connector surface. Where the sponsor's tenant has not enabled tracker connectors, the room falls to `gh` and paste, and the ask is worth raising with the sponsor before the cohort rather than in the slot.
@@ -129,5 +131,5 @@ OODA
 
 <!-- /backing -->
 
-**Quality:** compendium-audited 2026-08-18 (story@2b5a60a technical@1480362 behavior@1480362 pedagogy@1480362 strategy@1480362 slides@2b5a60a)
-- judges @2b5a60a: writing REVISE (1/2-see-instances/ae101--exercise--close-the-ticket.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-18 (writing@f858459 story@2b5a60a technical@1480362 behavior@1480362 pedagogy@1480362 strategy@1480362 slides@2b5a60a)
+- judges @f858459: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

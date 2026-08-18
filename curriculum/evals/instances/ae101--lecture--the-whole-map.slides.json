@@ -1,126 +1,178 @@
 {
-  "class": "slides",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-whole-map.md",
-  "verdict": "PASS",
-  "training": "ae101",
-  "chunk_map": [
-    {"index": 0, "heading": "The whole map (H1, no lede)", "lines": "1-2"},
-    {"index": 1, "heading": "Every run runs the same six phases", "lines": "3-96"},
-    {"index": 2, "heading": "You are here", "lines": "97-102"},
-    {"index": 3, "heading": "Every move hangs on a location", "lines": "103-108"}
-  ],
-  "rules_evaluated": [
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 1,
-      "rule_lead": "Referent resolution under a sequential deck read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 2,
-      "rule_lead": "Cross-file and positional callbacks.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 3,
-      "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "chunk 2 \"You are here\": line 99: \"The first fix, the first rule, the first read of the context window\" — verified against getting-going.md (AE101 M1): first fix = Ex2 fix-tests-first, first rule = Ex3 CLAUDE.local.md compound, first read of the context window = Ex1 introspection + /context. All three resolve.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 5,
-      "rule_lead": "No orphan slides.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 6,
-      "rule_lead": "Header self-carries at projection distance.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 7,
-      "rule_lead": "LLM-cadence caps.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 8,
-      "rule_lead": "Internal dialect never lands on a slide.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    }
-  ],
-  "blocking_findings_count": 0,
-  "todos_count": 0
+ "class": "slides",
+ "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-whole-map.md",
+ "body_sha": "535dbbe1074990e256b5e154e342440d095e529c4f4bcc092dc22b76a28ef8d5",
+ "verdict": "PASS",
+ "training": "ae101",
+ "chunk_map": [
+  {
+   "index": 0,
+   "heading": "H1 (title slide, no lede)",
+   "lines": "1-1"
+  },
+  {
+   "index": 1,
+   "heading": "Every task maps onto the same six phases",
+   "lines": "3-95"
+  },
+  {
+   "index": 2,
+   "heading": "You are here",
+   "lines": "97-101"
+  }
+ ],
+ "rules_evaluated": [
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 1,
+   "rule_lead": "Referent resolution under a sequential deck read.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Chunk 1's 'them'/'across them' resolves to 'six phases' stated one clause earlier; the six bold-led bullets each define their own term inline (Intent./Context./Work./Verification./Absorption./Outcome.). Chunk 2's 'this territory' resolves against chunk 0's title 'The whole map' plus chunk 1's 'cycle'/'six phases'; 'the near half'/'the far half' resolve against the phase names chunk 1 already bulleted. No forward references, no orphaned pronouns.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 2,
+   "rule_lead": "Cross-file and positional callbacks.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": "No pointer to another file, by position or otherwise, occurs anywhere in the body.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 3,
+   "rule_lead": "Every backward reference points at a beat that exists.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "'M1 was the first step into this territory' names the real, current preceding module (M1) rather than a specific exercise/lecture beat; no dead beat reference is present.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 4,
+   "rule_lead": "Live-demo beats survive a text read.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": "No guess-before-reveal demo instruction occurs in this container lecture.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 5,
+   "rule_lead": "No orphan slides.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Chunk 1 carries the full figure, six defined phases, and the places-not-pipeline claim; chunk 2 carries three self-carrying orientation bullets. Neither is a bare wait-state.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 6,
+   "rule_lead": "Header self-carries at projection distance.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "'Every task maps onto the same six phases' is confirmed by the body's 'Every piece of agentic work maps onto the same cycle. Six phases' — the softened 'maps onto' wording (fresh 2026-08-18 edit) matches between header and body, so header truth holds under the mapping-not-identity framing. 'You are here' is confirmed by the chunk's orientation content (M1 recap, near/far half split).",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 7,
+   "rule_lead": "LLM-cadence caps.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "No 'Not X. Not Y. Z.' construction; no anaphora/epistrophe triple; no self-grading superlative; no number-with-retraction; no abstraction-noun stack. The SVG's short verb chains ('act · read the result · correct'; 'run · let it fail · shape the verifier · re-run'; 'read · judge · gate what ships · by hand for now') are each concrete on every leg, not empty-leg triplets.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 8,
+   "rule_lead": "Internal dialect never lands on a slide.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "No repo/authorial dialect term (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections) appears in body or SVG label text. The nine loop names (THE CONTEXT LOOP, THE PLAN LOOP, etc.) are this training's own coined vocabulary, not maintainer-internal editorial dialect — their earned-ness is an open pedagogy/strategy question already logged in the file's own EYEBALL queue item 3, out of this compendium's scope.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 9,
+   "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Chunk 1's six phase-definition bullets each carry exactly one short bolded handle (**Intent.** through **Outcome.**), matching the 'law/consolidation slide may carry one handle per law' allowance and the file's own maintainer-block bold-budget note. Chunk 2 carries no bold, as its maintainer block states.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 10,
+   "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Lecture is inlined via plan-mode-done-right.md § Start here per its own maintainer block; body sits under normal `##` headings with no phase-less prose section that would be dropped by buildDeckModel.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 11,
+   "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": "No 'Phase N:'/'Step N.' headers or ordinal cross-references occur. `node scripts/check-slide-numbering.js --file curriculum/lectures/the-whole-map.md` reported 'OK — 1 files, Phase/Step numbering consistent.'",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 12,
+   "rule_lead": "Page geometry dies at the cut; reading order survives.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/the-whole-map.md --report` returned no findings (empty output) — no page-geometry pointer (below/above/further down) occurs.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 13,
+   "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": "No in-body markdown links occur in this file.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 14,
+   "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/the-whole-map.md --report` returned: 'Every task maps onto the same six phases' 176 words / 6 bullets; 'You are here' 113 words / 3 bullets. Both within the 210-word/6-bullet ceiling; 0 oversized.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 15,
+   "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "'Every task maps onto the same six phases' is a declarative claim fulfilled by its body. 'You are here' is the orientation-header exception explicitly rationed as legal once per arc lecture, and this is M2's first map reveal — the single legal use.",
+   "fix_hint": null,
+   "blocking": false
+  }
+ ],
+ "blocking_findings_count": 0,
+ "todos_count": 0
 }

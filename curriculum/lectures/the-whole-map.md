@@ -104,7 +104,7 @@ The phases are places, not a pipeline. A real task sits in several at once.
 
 **STATUS:** two slides (one `##` = one slide), proper-length bullets per `theory-plan.md` § Slide format, wired into `plan-mode-done-right.md § Start here`. Container discipline held: phases described by what they govern, no law named.
 
-**Placement:** M2 open, first map reveal of the training (Day-1 loop-half in the internal fold; student body uses module ranges + near/far half, not day labels, per `check_student_facing §22`). Map-first, derive-within doctrine: container is legal here (`check_lectures §2` carve-out, `theory-evals.md` B3); the law NAME / MECHANISM / GOVERNOR stays name-after (the near-half close at M3 names the loop half).
+**Placement:** M2 open, first map reveal of the training (Day-1 loop-half in the internal fold; student body uses module ranges + near/far half, not day labels, per `check_student_facing §22`). Map-first, derive-within doctrine: container is legal here (`check_lectures §3` carve-out + `check_pedagogy §14`, `theory-evals.md` B3); the law NAME / MECHANISM / GOVERNOR stays name-after (the near-half close at M3 names the loop half).
 
 **Delivery mode:** In-room opener, projected. Projection legibility = design constraint (`curriculum/CLAUDE.md`, no-slides doctrine). The map figure IS the slide.
 
@@ -189,5 +189,5 @@ Format → `curriculum/backing-format.md`.
 
 <!-- /backing -->
 
-**Quality:** compendium-audited 2026-08-02 (writing@1c765f2 story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@1c765f2)
-- judges @1c765f2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-18 (writing@2b5a60a story@2b5a60a technical@1c765f2 behavior@1c765f2 pedagogy@2b5a60a strategy@1c765f2 slides@2b5a60a)
+- judges @2b5a60a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -1,9 +1,10 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-loop-has-a-name.md",
+  "body_sha": "ce4a4ef496c33183e91889201a9099942e3921fd4b64d15536996603b2da36e2",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "practitioner fluency — \"I know how to test, I know how to learn, I know how to encode.\" Not confidence-as-performance; competence-as-posture.",
+  "module_mood_contract": "practitioner fluency — 'I know how to test, I know how to learn, I know how to encode.' Not confidence-as-performance; competence-as-posture.",
   "trace_status": "regenerated",
   "rules_evaluated": [
     {
@@ -11,7 +12,7 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Maintainer block 'Lecture meta' line: '12–15 min closing lecture for AE101 M6.' Module file (spot-gaps-build-the-loop.md, Human close section, lines 58-64) places this lecture after the exercise, inside a three-lecture human-close sequence (composing-the-workflow → the-loop-has-a-name → the-map-filled-in → agents-that-build-agents). It names a pattern ('eval') the student already lived across M5's verifier and the exercise's ranked-gap diagnosis — recognition, not abstract claim before the work.",
+      "evidence": "Harm this rule prevents: a naming/recognition lecture told before the student has lived the pattern reads as an abstract claim instead of recognition, and steals its own payoff. Not present here — maintainer block: '12–15 min closing lecture for AE101 M6... closes core AE101'; sim trace confirms it fires directly after the spot-gaps-build-the-loop exercise and its Debrief, and the lecture's own opening move ('Look at what you have shipped') only works because the checks it names were just ranked minutes earlier by the student.",
       "fix_hint": null,
       "blocking": false
     },
@@ -20,16 +21,16 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "This file is a post-exercise closer inside the M6 Human close, not a pre-exercise opener. Rule governs opener dosage before contrast-mood exercises.",
+      "evidence": "Rule binds lectures placed BEFORE a contrast-mood exercise (openers that must not over-teach and collapse the exercise's felt-evidence). This lecture fires AFTER the M6 exercise as its closer (see rule 1 evidence) — the pre-exercise-dosage constraint the rule guards against does not apply to a post-exercise beat.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 3,
-      "rule_lead": "No cross-module sequencing in lecture bodies (carve-out for consolidation closers whose SUBJECT is the arc).",
+      "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Body (above the maintainer fence) names M5/M6 four times: line 7 'The thing you built at M5 reads an agent's work'; lines 8/10 'You have been doing evals since M5'; line 20 'Read that as your verifier from M5, scaled'; line 26 'the drift shape you saw at M5'; line 32 'the encode loop you ran at M6'. All backward-pointing to work the student already did this session, not forward bridges or numbered sequencing claims ('M3 starts with...'). The lecture's SUBJECT is naming a pattern just lived — matches the rule's consolidation-closer carve-out. Maintainer block (lines 47-48) records this reasoning explicitly.",
+      "evidence": "Harm this rule prevents: hardcoded module bridges ('M3 reads this file') turn a lecture into a non-reusable, non-relaced piece of shared library. Body carries five M5/M6 refs (lines 7, 9, 20, 26, 32: 'The thing you built at M5', 'M5 used verifier and gate...', 'your verifier from M5, scaled', 'the drift shape you saw at M5', 'the encode loop you ran at M6') — all are recognition of what the SAME module's own exercise just built, not sequencing pointers to a different file. Maintainer block names this explicitly as the check_lectures §3 consolidation carve-out (arc/closer lecture whose SUBJECT is naming what M5-M6 built). Carve-out applies cleanly; harm absent.",
       "fix_hint": null,
       "blocking": false
     },
@@ -38,79 +39,79 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Five distinct ## headers: 'Eval' (named-thing, takeaway-is-the-name carve-out, slide 1), 'One primitive, placed wherever there's a bar' (claim, slide 2), 'The eval primitive scales unchanged' (claim licensed by body line 21 'the shape doesn't change when the org gets big' — the universal 'unchanged' is qualified to shape, not literal metrics), 'The primitive that runs on cadence' (named-thing, slide 4), 'Why the loop survives the model' (claim licensed by body's stance-not-model-feature argument, lines 31-33). No empty containers, no orphan mystery, no two slides share a header.",
+      "evidence": "Five headers checked: 'Eval' (single-word named-practice takeaway, carve-out applies), 'One primitive, placed wherever there's a bar' (claim the body supports: 'The shape fires on any workflow with a quality bar'), 'The eval primitive scales unchanged' (body: 'The shape doesn't change when the org gets big' — supports 'unchanged' as a claim about shape, not an unsupported universal about outcomes), 'The primitive that runs on cadence' (names the concept), 'Why the loop survives the model' (body argues exactly this via reference/plan/verifier/encode-as-stance-not-tooling). No two slides share a header. No em-dashes, no pedagogy-register headers ('The move', 'The question'). Closest-to-violating candidate is 'scales unchanged' for the universal-word clause, and it stays inside because the body's own claim is scoped to shape, not magnitude.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded (~210 words, ≤6 bullets), not just its header.",
+      "rule_lead": "A slide's BODY is size-bounded (~210 readable words AND ≤6 bullets).",
       "verdict": "PASS",
-      "evidence": "Measured against current file: Eval 183w/4 bullets, One primitive... 91w/2 bullets, The eval primitive scales unchanged 127w/3 bullets, The primitive that runs on cadence 198w/3 bullets, Why the loop survives the model 182w/3 bullets. All under the 210-word ceiling and well under 6 bullets.",
+      "evidence": "Mechanically checked. Command: `node curriculum/evals/scripts/check-slide-size.js --file curriculum/lectures/the-loop-has-a-name.md --report` (run from repo root). Output: 'words bul slide header ... 196 3 The primitive that runs on cadence ... 182 3 Why the loop survives the model ... 161 4 Eval ... 119 3 The eval primitive scales unchanged ... 92 2 One primitive, placed wherever there's a bar ... files: 1 slides: 5 limits: 210 words / 6 bullets ... oversized: 0 ... ✓ every slide is within limits'. All five slides under both the word and bullet ceilings.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
-      "rule_lead": "Forcing functions live in prompts, not body prose.",
+      "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
-      "evidence": "Lecture has no fenced prompt blocks and no student-facing exercise instructions anywhere in the body (lines 1-35) — no forcing-function surface to check body-vs-prompt against.",
+      "evidence": "Rule binds session exercises with fenced, copy-this prompts that carry the load-bearing move. Grep for fenced code blocks in the file returns zero matches — this is a pure closing lecture with no student action to fence, so there is no forcing function to check for mislocation. Harm (a forcing function accidentally left loose in body prose, skippable by a speed-runner) cannot occur where no forcing function exists.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
-      "rule_lead": "Body teaches the work; trainer manages the room outside text.",
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room outside text.",
       "verdict": "PASS",
-      "evidence": "Grepped body (lines 1-35) for conversation-cue shapes ('discuss', 'neighbor', 'share', 'compare', 'the room', 'pair', 'tell the'): only hit is line 15's 'the team's shared kit', a kit reference, not a cohort-management cue. No authored pause/compare/share sentences found; body is entirely about the WORK (naming the eval, the reuse primitive, the scaling claim, scheduling, the stance).",
+      "evidence": "Harm this rule prevents: authored conversation cues ('discuss with your neighbor', pause-cues) collapse trainer authority over pacing and read as scripted theatre in a room. Grep of the student-facing body (lines 1-36, above the maintainer fence) for discuss/share/pause/turn-to/talk-to/'the room' returns zero hits — the only 'the room' mentions live in the maintainer's Lecture-meta and Watch-fors notes (lines 47, 110), which are trainer-facing, not student body text. Body stays entirely on the work (naming evals, the Intercom numbers, scheduling primitives, the stance argument).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named and honoured per beat (8+/10 teaching-beat floor).",
+      "rule_lead": "Mood contract named / mood-floor 8+ at teaching beats.",
       "verdict": "PASS",
-      "evidence": "Regenerated trace (curriculum/evals/sim-cache/ae101--lecture--the-loop-has-a-name.persona.json, content_sha b811c97f... matching current file's sha256 b811c97f51350f4a73a20180b296d5a99d58038b0f26b327d3a8a2d06c174e19): single-phase mood_score 9, close mood_score 9. Every beat is a teaching beat (naming, reuse-claim, scale-claim, scheduling, model-survival argument) — no setup/launch beats to exempt. No beat below 7; no stealing-the-mood entries.",
+      "evidence": "Harm this rule prevents: a teaching beat that reads flat or compliance-shaped when the module's contract demands practitioner fluency. Regenerated Class A trace (whole body = one teaching beat, no setup-only sub-beats) scores mood_score 9 for the phase and close_score 9, is_me_rating 9 — all above the 8+ ship bar, none at the 7 facilitator-premium floor. Trace note: only soft spot is slide 3's Intercom numbers staying one enthusiastic trainer away from vendor-plug feel, which the file's own Watch-fors already flags as a delivery-pacing note, not a text defect.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "No shame or having-done-wrong framing anywhere. 'Why the loop survives the model' section (lines 29-33) is epistemic reassurance delivered flatly, not correction of a mistake.",
+      "evidence": "Harm this rule prevents: an 'unease' or challenge beat reading as 'I messed up' shame instead of 'I'd like to know and can't' not-knowing. This module's mood is fluency, not unease, but the adjacent risk is the model-replacement line (line 31, 'The specific Claude you used today will be replaced') landing as anxiety-inducing rather than epistemic. Trace: persona feels 'a small jolt... followed by relief at The work gets faster. The method does not' — the line resolves into permission, not shame or dread. Watch-fors §5 explicitly directs 'Flat epistemic candour, no sales varnish' for this exact beat, confirming the register is deliberate.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 3,
-      "rule_lead": "Lead with the discipline, not the failure mode.",
+      "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title 'The check you built is an eval' and every slide header name a positive discipline (naming, reuse, scaling, scheduling, durability) — no failure-mode word (fabrication, hallucination, drift) used as a headline anywhere.",
+      "evidence": "Harm this rule prevents: titling/heading a teaching beat by the mistake it corrects rather than the practice it builds, which frames the student as already-wrong. All five headers and the title name a positive discipline or artifact ('eval', 'one primitive... placed', 'scales unchanged', 'runs on cadence', 'survives the model') — none lead with a failure word (no 'drift', 'rot', 'blind spot' as a header). The closest failure-adjacent language ('plausible-but-wrong is the default failure mode', line 32) is one clause inside a body sentence building toward the positive discipline (verifier), not a lead.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity — consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict.",
+      "rule_lead": "Strategy-fidelity — no front-running downstream teaching, module arc respected, Big Idea fidelity, mood resolves without stealing.",
       "verdict": "PASS",
-      "evidence": "Big Idea fidelity: strategy doc's M6-in-detail 'Evals, named and explained' section (content-strategy-agentic-engineering-101.md, lines 454-456) is the near-verbatim source for this file's framing ('your verifier is an eval; your judge is an eval; your gate is an eval') and the same Intercom anchor numbers (19.2% auto-approved, 14.6 vs 75.8 min) — this file operationalises that framing faithfully; the file's own Flagged note (2026-08-01) already softened the 'practitioners say' taxonomy claim to a stated definition since the split-by-check-type is the training's own synthesis, an honest tightening not a drift. Front-run check: strategy doc explicitly scopes scheduled agents as 'callout, not an exercise' (line 456) and this file's slide 4 matches ('You do not have to wire it today', line 27). Module-to-module arc / mood-doesn't-resolve-early: module file (spot-gaps-build-the-loop.md, lines 58-64, 169) confirms closer chain this file → the-map-filled-in → agents-that-build-agents; closing line (line 35, 'The loop feeds itself... started with what you encoded today') names no specific next-lecture title, handing off without pre-empting the next two closers' teaching moments.",
+      "evidence": "Harm this rule prevents: a lecture claiming a teaching moment or resolution that belongs to a different module/lecture, or asserting a Big Idea the strategy doc doesn't license. Checked against `content-strategy-agentic-engineering-101.md` §'M6 in detail': (a) Big Idea fidelity — strategy's scripted framing ('your verifier is an eval; your judge is an eval; your gate is an eval... Practitioners call them judges when LLM-based, verifiers when deterministic, gates when placed in CI') is rendered faithfully in body lines 7-9, with the naming-as-definition-not-survey stance from the backing block's 2026-08-01 decision correctly NOT restored as a claimed convergence; the Ramp anchor case named in strategy is absent from body, but the maintainer block already records this as an intentional, dated decision (orphaned stamp, kept for provenance) — an existing accept-note, not a fresh foul. (b) Scheduled-agents section matches strategy's 'callout, not an exercise' instruction verbatim in shape (three fits named, explicit 'You do not have to wire it today'). (c) Module arc — maintainer block's stated closer chain (loop-has-a-name → the-map-filled-in → agents-that-build-agents) matches the strategy doc's Debrief section, which routes the arc-recognition work to the Human close + 'the-map-filled-in', consistent with this file naming no specific next lecture. (d) Mood resolution — this file resolves its OWN arc (the loop-survives-the-model permission beat) completely (trace close_score 9, is_me 9) while explicitly declining to claim the full M6 close, leaving that to the chain's later files ('Do not restore [a pointer to a named next beat]; the forward-lean... is thematic, not a tee') — earned resolution at this file's own scope, not a stolen or premature resolution of the larger arc.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Lecture has no student-facing '## Key Concepts' section — module-only section, owned by the strategy judge on module files.",
+      "evidence": "Module-only rule (student-facing `## Key Concepts` heading). This is a lecture file with no Key Concepts section.",
       "fix_hint": null,
       "blocking": false
     },
@@ -119,7 +120,7 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Same as §5 — no Key Concepts section exists on a lecture file.",
+      "evidence": "Module-only rule, sibling of §5. No Key Concepts section in a lecture file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -128,17 +129,20 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "No 'What You'll Learn' section exists on a lecture file — module-only section.",
+      "evidence": "Module-only rule (student-facing `## What You'll Learn` heading). No such section in a lecture file.",
       "fix_hint": null,
       "blocking": false
     }
   ],
   "mood_summary": {
-    "phase_scores": [9],
+    "phase_scores": [
+      9
+    ],
     "close_score": 9,
     "any_below_8": false,
     "stealing_the_mood": []
   },
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 0,
+  "notes": "Teaching-moment-lands (no rule_index, per completeness contract): PASS. Regenerated trace confirms all three carried takeaways land — eval-as-umbrella-word, the M2 dashed-checking-loop closing solid (trace calls this 'the best line in the lecture'), and the stance-survives-the-model permission beat, which the trace names as the lecture's emotionally load-bearing moment and the thing the persona will actually repeat to a colleague. Two named judgments in the task brief map into check_prompts and check_workshop, both of which are read-on-demand compendiums for this file but neither triggers: `check_prompts` — grep for fenced code blocks in the body returns zero; there is no student-copied prompt content in this lecture to misplace a forcing function into (folded into check_pedagogy §16 N/A above). `check_workshop` — no beat in this file has an output that belongs to a group rather than an individual; it is a lecture with no room-scale adjudication, so the compendium does not fire at all (not even as an N/A row — its trigger clause requires a group-owned artefact, absent here). Sim-cache staleness: the cached trace's content_sha (b811c97f...) did not match the current file's body_sha (5098cc86...) — the maintainer block confirms the body was edited today (naming bullet's trailing clause + the 'Reference because the goal drifts' bullet). Regenerated a fresh Class A trace via subagent per `simulation.md`, merged it into the cache file (overwritten in place), and judged against the fresh trace. Fresh trace's only two confusion_flags are both sub-blocking micro-friction (the added naming clause momentarily requires re-sorting which M5 artifact is which; 'send-off' vocabulary density on slide 4) — neither reaches ambiguous_instructions or under_scaffolded_phases in the trace's own close block, and neither maps to a REVISE-worthy compendium rule."
 }

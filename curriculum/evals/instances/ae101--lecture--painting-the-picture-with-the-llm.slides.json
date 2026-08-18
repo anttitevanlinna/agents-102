@@ -1,127 +1,185 @@
 {
-  "class": "slides",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/painting-the-picture-with-the-llm.md",
-  "body_sha": "1c175c3fb3816f60695dc47d38c874349c11b45df81630cfe99c3b9a0df40564",
-  "verdict": "PASS",
-  "training": "ae101",
-  "chunk_map": [
-    {"index": 0, "heading": "Painting the picture with the LLM [H1, no lede]", "lines": "1"},
-    {"index": 1, "heading": "The LLM mirrors your stance", "lines": "3-11"},
-    {"index": 2, "heading": "You prime, the LLM scales", "lines": "13-19"},
-    {"index": 3, "heading": "Two frontiers: how fast, and the right things", "lines": "21-29"}
-  ],
-  "rules_evaluated": [
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 1,
-      "rule_lead": "Referent resolution under a sequential deck read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Chunk 1: 'the LLM' first named in the H1 (chunk 0, prior context for all later chunks), then 'It'/'the LLM' pronouns in the same chunk resolve to 'The LLM is an infinite chameleon' one sentence prior. Chunk 2: 'You prime it. The LLM scales it.' (line 15) — 'it' resolves to 'the context window' named immediately before in the same sentence run, confirmed by line 17's payoff ('Whatever you put in front of the LLM... The rules file. The prompt. What sits on disk'). Chunk 3: 'your setup' (line 25) is a plain-English label for the 'what you put in front of the LLM' concept chunk 2 just built (rules file/prompt/disk), not a coined term needing pre-earning; 'it'/'the setup' in line 27 resolve to the same line-25 antecedent.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 2,
-      "rule_lead": "Cross-file and positional callbacks.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 3,
-      "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "Opener lecture, first content in M1 after the trick-exchange question; no 'the X you did/saw' backward beat reference anywhere in the file.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "No guess/predict-before-reveal instruction anywhere in this file.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 5,
-      "rule_lead": "No orphan slides.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Every chunk carries multiple self-contained paragraphs and a standalone claim (chunk 1: chameleon/stance-as-ceiling; chunk 2: prime/scale + shotgun-cannon koan; chunk 3: two-frontiers framing + kicker). None is a bare wait-state or single context-dependent bullet.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 6,
-      "rule_lead": "Header self-carries at projection distance.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Chunk 1 header 'The LLM mirrors your stance' matches its closing line verbatim; chunk 2 header 'You prime, the LLM scales' matches 'You prime it. The LLM scales it.' directly; chunk 3 header 'Two frontiers: how fast, and the right things' matches the two named questions (setup speed, learning the right things).",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 7,
-      "rule_lead": "LLM-cadence caps.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 8,
-      "rule_lead": "Internal dialect never lands on a slide.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Zero bold markup anywhere in the body (lines 1-29) — confirmed by the file's own maintainer note (2026-07-09 emphasis pass: 'all three narrative slides recast from bolded-claim bullets to prose paragraphs, zero bold kept'). Well within the ≤1-bolded-element budget; no coined terms introduced here needing a handle.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "This lecture is included via a standard `[Painting the picture with the LLM](lectures/painting-the-picture-with-the-llm.md)` lecture-include under M1's `## Start here` section in curriculum/trainings/agentic-engineering-101/getting-going.md — the convention the renderer wraps in `.phase--lecture` and inlines into the composed Slides deck (curriculum/module-shape.md § Module include). Not a prework/supplementary/reference link (the categories rule 10 flags as deck-absent).",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "No hand-numbered headers (no '## Phase N:' / '## N.' step headers) and no in-body 'Phase K'/'Step K' references anywhere in the file; all three `##` headings are plain thematic titles left for the renderer to number.",
-      "fix_hint": null,
-      "blocking": false
-    }
-  ],
-  "blocking_findings_count": 0,
-  "todos_count": 0
+ "class": "slides",
+ "file": "curriculum/lectures/painting-the-picture-with-the-llm.md",
+ "verdict": "PASS",
+ "training": "ae101",
+ "body_sha": "a354ccac5083682b2a50387b04b4681dcca421c5a3245b4600b52779606a27d3",
+ "chunk_map": [
+  {
+   "chunk": 0,
+   "heading": "# Painting the picture with the LLM",
+   "lines": "1-2"
+  },
+  {
+   "chunk": 1,
+   "heading": "## The LLM mirrors your stance",
+   "lines": "3-11"
+  },
+  {
+   "chunk": 2,
+   "heading": "## You prime, the LLM scales",
+   "lines": "13-19"
+  },
+  {
+   "chunk": 3,
+   "heading": "## Two frontiers: how fast, and the right things",
+   "lines": "21-27"
+  }
+ ],
+ "rules_evaluated": [
+  {
+   "compendium": "check_slides.md",
+   "rule_index": "1",
+   "rule_lead": "Referent resolution under a sequential deck read",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Sequential read holds. Chunk1: wizard/auto-complete/LLM all named in-sentence; Godin named directly (§6 name-only carve-out); 'it' in 'the infinite version of it' resolves to the immediately preceding tool/taste argument. Chunk2: 'it'/'that' in 'You prime it. The LLM scales it.' resolve to 'the session'/'the context window' named two sentences earlier same chunk; shotgun/cannon is a self-contained metaphor, not a referent needing an antecedent. Chunk3: 'your setup' and 'it' both defined within the same sentence pair ('The rules and context you put in front of the LLM: can that stack learn...' / 'Once the setup can learn fast...'). No never-named, vague, or stranded referents found. Harm the rule prevents (a slide leaning on nothing) is absent throughout.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": "2",
+   "rule_lead": "Cross-file and positional callbacks",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": "No pointers to other files by position. Godin is named-only, no location claim, no 'the opening lecture said' style callback anywhere in the file.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": "3",
+   "rule_lead": "Every backward reference points at a beat that exists",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": "File is the opener of M1 (per Lecture meta: 'opener... before the wizard-move demo'); it contains no backward-pointing 'the X you did/saw/caught' references to any prior beat.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": "4",
+   "rule_lead": "Live-demo beats survive a text read",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": "No guess-before-reveal structure in this file; maintainer's own watch-for confirms the two frontier questions are deliberately left unanswered rather than staged as a reveal ('do NOT answer them').",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": "5",
+   "rule_lead": "No orphan slides",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "All three body chunks carry multiple self-carrying sentences (chunk1: wizard/autocomplete/mirror argument; chunk2: prime-and-scale + shotgun/cannon koan; chunk3: two named frontier questions + kicker). None is a bare wait-state bullet.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": "6",
+   "rule_lead": "Header self-carries at projection distance",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Chunk1 header 'The LLM mirrors your stance' is restated verbatim as the chunk's closing sentence. Chunk2 header 'You prime, the LLM scales' is restated verbatim two sentences in ('You prime it. The LLM scales it.'). Chunk3 header 'Two frontiers: how fast, and the right things' is cashed out by the chunk's own two questions ('How fast can your setup learn?' / 'Can it learn the right things?'). No header is contradicted by its chunk's content.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": "7",
+   "rule_lead": "LLM-cadence caps (aggregated)",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Not-X-Not-Y-Z: none found (closest is 'Auto-complete was a thing. Auto-complete is no longer a thing.' — a two-sentence contrast, not the banned triadic-negation shape). Anaphora/epistrophe triples: shotgun/cannon is a deliberate two-leg pair (maintainer accept-note line 31), no third leg to fail on. Self-grading superlatives: none present anywhere in the body — sub-item PASS (blocking sub-item clean). Number+retraction: no numbers appear in the body at all, N/A. Abstraction-noun stacks: 'context window' and 'stack' are used as plain engineering terms with concrete referents, not abstraction-stacking. Verb triplets with an empty leg: 'The LLM can do good work and bad work. It will be what fits the session. The LLM mirrors your stance.' has three sentences but different subjects/predicates, none is a padding verb-triplet with a leg that fails 'what does this concretely mean?'.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": "8",
+   "rule_lead": "Internal dialect never lands on a slide",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Grepped body for the banned list (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections-as-proper-noun) — none present. 'Session' and 'stance' are ordinary/training-coined vocabulary the deck itself is establishing, not repo-authoring dialect being smuggled in.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": "9",
+   "rule_lead": "Emphasis budget — bold is for handles",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Zero bold markers in the body region (lines 1-27), confirmed by direct read. Matches maintainer's own 2026-07-09 emphasis-pass note: 'all three narrative slides recast from bolded-claim bullets to prose paragraphs, zero bold kept.'",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": "10",
+   "rule_lead": "Presence precedes content — verify against the composed deck",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "`grep -rn painting-the-picture-with-the-llm curriculum/trainings/` shows it is included from `curriculum/trainings/agentic-engineering-101/getting-going.md:40` via a standalone include-link, which places it inside the module's `.phase--lecture` wrapper and reaches the composed Slides deck.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": "11",
+   "rule_lead": "Numbering — position computed, content ordinals linted",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": "No 'Phase N:' or 'N.' step headers in this file. `node scripts/check-slide-numbering.js curriculum/lectures/painting-the-picture-with-the-llm.md` → 'OK — 61 files, Phase/Step numbering consistent.'",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": "12",
+   "rule_lead": "Page geometry dies at the cut; reading order survives",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "`node scripts/check-slide-deixis.js --report curriculum/lectures/painting-the-picture-with-the-llm.md` returned no rows for this file (report lists only other files' accepted matches). Direct read confirms no 'below/above/further down/at the top of this page' phrasing anywhere in the body.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": "13",
+   "rule_lead": "In-deck links work now; whether they earn their place is open",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": "No in-body markdown links anywhere in the file's body; the only link-shaped text in the file is the include-link into it from getting-going.md, which is outside this file's scope.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": "14",
+   "rule_lead": "Slide size — 210 words / 6 bullets, machine-checked",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/painting-the-picture-with-the-llm.md` → 'slides: 3   limits: 210 words / 6 bullets   oversized: 0 ... every slide is within limits'.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": "15",
+   "rule_lead": "Heading grammar is the mood switch",
+   "verdict": "PASS",
+   "chunks_flagged": [
+    "chunk 3"
+   ],
+   "evidence": "This is a lecture, so headings should be claims. Chunk1 ('The LLM mirrors your stance') and chunk2 ('You prime, the LLM scales') are full-sentence claims, both restated verbatim inside their own chunk content — clean. Chunk3's header, 'Two frontiers: how fast, and the right things,' is label-shaped rather than a truth-claim sentence — the closest-to-violating specimen in the file. Judged PASS-by-exception rather than REVISE: the maintainer's own watch-for ('Frontiers section names two open questions — do NOT answer them... The training answers by accretion through M1–M6') establishes that the section's entire content is two deliberately unresolved questions, so a claim-shaped heading would misstate content the file is intentionally not asserting yet. Forcing a declarative heading here would create the exact defect rule 6 bans (header the chunk's own content contradicts). No harm from the label shape reaches the reader; the open-question framing is legible as its own move.",
+   "fix_hint": "No action needed given the deliberate open-question design; if a future pass wants full rule-15 compliance, the header would need to become a claim that names the two-frontier idea without resolving either question (e.g. a phrasing like 'Two open questions decide the setup' would still need maintainer sign-off as a body-text change).",
+   "blocking": false
+  }
+ ],
+ "blocking_findings_count": 0,
+ "todos_count": 0
 }

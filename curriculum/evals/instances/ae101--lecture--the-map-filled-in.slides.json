@@ -1,162 +1,128 @@
 {
-  "class": "slides",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-map-filled-in.md",
-  "body_sha": "eef9e5dbe342fc89f8b8bddfb375382d2bf57dba6e0ff0a83aea07bddfc278be",
-  "verdict": "PASS",
-  "training": "ae101",
-  "chunk_map": [
-    {"index": 0, "heading": "The map, filled in (H1 + lede)", "lines": "1-4"},
-    {"index": 1, "heading": "The checking loop, drawn solid", "lines": "5-92"},
-    {"index": 2, "heading": "You drew a control loop", "lines": "93-169"},
-    {"index": 3, "heading": "Verification, named", "lines": "170-175"},
-    {"index": 4, "heading": "Absorption, named", "lines": "176-181"},
-    {"index": 5, "heading": "Outcome, named", "lines": "182-187"},
-    {"index": 6, "heading": "The question you carry forward", "lines": "188-193"},
-    {"index": 7, "heading": "The map, filled in (closer)", "lines": "194-202"}
-  ],
-  "rules_evaluated": [
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 1,
-      "rule_lead": "Referent resolution under a sequential deck read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm guarded: a reader hits a pronoun/term with nothing in reach to resolve it against, and the slide stalls. Judged fresh against the CURRENT body (this file gained a fourth bullet in chunk 1, the 2026-08-15 'soil line spoken' addition, since the prior instance on disk). Chunk 0: 'the map' is arc-earned spine vocabulary (the training's central image), fine at chunk 0. Chunk 1 (the changed chunk): 'the checking loop' resolves off its own header; 'Verification'/'Absorption'/'Outcome' are named by the diagram's own phase labels at lines 23-24 before any bullet uses them; 'the stack-map you drew' -- verified live this session, not carried from any prior instance: `grep -rn stack-map curriculum/exercises/spot-gaps-build-the-loop.md curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md curriculum/lectures/composing-the-workflow.md` returns hits in the M6 exercise (line 97, the coining beat), the M6 module's own body (line 60), and the M6 lecture 'composing-the-workflow' (lines 135/156) -- all same-module, all earlier in the module's include order (verified via `grep -n '^\\[' .../spot-gaps-build-the-loop.md`: exercise at line 37, composing-the-workflow at line 47, this file at line 51) -- resolves under the arc-earned-vocabulary carve-out, adjacency not required for that carve-out (only for the stricter 'module-arc beats in openers/closers' carve-out). New bullet 4's 'The line along the bottom' points at the SVG text physically rendered in the SAME chunk (line 84: 'the soil it grows in: act under uncertainty...') -- same-chunk visual referent, resolves cleanly; 'the crossing' in the same bullet's closing clause resolves against 'cross personal -> team' quoted two clauses earlier in the identical bullet. Chunk 2: 'Verification' (bullet 3) reuses the diagram label already shown in chunk 1, not a forward reference to chunk 3's header. Chunks 3-5 (law-consolidation slides): every bolded law is self-contained per bullet. Chunk 6: 'the near half's question' is glossed in its own clause via colon. Chunk 7: 'the delegation frontier' is named plus its claim unpacked in the same sentence ('the M5 close left [it] as a warning: reach grows only as fast as the gates behind it'). No unresolved referent found anywhere in the file.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 2,
-      "rule_lead": "Cross-file and positional callbacks.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm guarded: a claim whose identity depends on where the deck happens to start rather than a named source. Ran `grep -niE \"the opening (lecture|exercise)|the previous (lecture|module|exercise)|earlier (lecture|module)|the last (lecture|module)|that lecture|that module\"` against lines 1-202 this session -- zero matches. Every cross-module reference names the source by module identity (M2/M3/M4/M5/M6) or by the concept's own name (the delegation frontier, the stack-map, the three-pattern), never by position. Chunk 7's closer sums the whole deck by design -- the rule's own explicit carve-out for a closer's summation.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 3,
-      "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm guarded: a reference to a beat that was cut or renamed since, stranding the student. Re-verified live this session: stack-map exists at `exercises/spot-gaps-build-the-loop.md:97` and the module's own body `trainings/agentic-engineering-101/spot-gaps-build-the-loop.md:60`. Module include order confirmed via `grep -n '^\\['`: exercise (37) -> composing-the-workflow (47) -> the-loop-has-a-name (49) -> this file (51) -> agents-that-build-agents (53) -- every backward reference in this file sits earlier in the module's actual include order or in a numerically prior module (M2/M3/M4/M5). The new soil-line bullet's referent ('the line along the bottom') is the SVG's own bottom-strip text, present in the same chunk -- not a backward reference to a beat outside the file at all, so rule 3 doesn't engage on it; checked anyway for completeness.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "Ran `grep -inE \"\\\\bguess\\\\b|\\\\bpredict\\\\b|before you (watch|see|run)\"` against lines 1-202 this session -- zero matches. No guess-before-reveal construction anywhere in the file. Rule doesn't engage.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 5,
-      "rule_lead": "No orphan slides.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Every chunk (0-7) carries either a figure plus 3-4 substantive bullets or 3-4 full claim+mechanism bullets; `check-slide-size.js --report` (run this session) confirms every slide sits between 112 and 209 words with 3-4 bullets -- no chunk is a bare wait-state or single context-dependent fragment.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 6,
-      "rule_lead": "Header self-carries at projection distance.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Checked all eight headers against their own chunk's content fresh: 'The checking loop, drawn solid' matches the solidified-loop diagram plus the new soil-line bullet (still about the loop and the map, not a topic shift); 'You drew a control loop' matches the feedback-control framing; 'Verification, named' / 'Absorption, named' / 'Outcome, named' each hold exactly the three laws they promise, tagged per bullet; 'The question you carry forward' matches the governor-question content; 'The map, filled in' (closer) matches the whole-arc summation. No header-content contradiction. (Noted, not filed: this closer header is identical to the file's own H1 title -- a storytelling/`check_lectures.md §4` concern about header uniqueness across the deck, not a check_slides.md rule; out of this class's lane per the rule scope, recorded in notes below.)",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 7,
-      "rule_lead": "LLM-cadence caps.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Checked all six sub-items fresh. Ran `grep -inE \"Not [A-Z][a-z]+\\\\. Not\"` this session -- zero matches, no 'Not X. Not Y. Z.' construction. No anaphora/epistrophe triple (repeated sentence-opener across separate sentences) anywhere; the closest candidate is a within-sentence tricolon at chunk 7 line 197 ('findable on Tuesday, transferable to a teammate, checkable when it stops working') -- each leg is distinct and concrete (a date, a person, a failure condition), not the vague/escalating shape the rule targets, and it isn't the banned cross-sentence anaphora pattern at all, so it stays. Ran `grep -inE \"one of the (most|best)|incredibly|amazing|the best way|most (useful|important|valuable)\"` this session -- zero matches, no self-grading superlative. '80/20' (chunk 4) is stated once with its label and never retracted. No abstraction-noun-stack phrasing, no verb-triplet-with-empty-leg. Zero sub-item hits.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 8,
-      "rule_lead": "Internal dialect never lands on a slide.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran `grep -inE \"governor|compendium|forcing function|surface\\\\b|firing\\\\b|\\\\bmood\\\\b|Connections\\\\b|ceremony|ritual\"` against lines 1-202 this session -- zero matches. 'Harness', 'session', 'agent', 'loop', 'phase', 'checks' are established platform/spine vocabulary for AE101's engineer audience, not maintainer shop-talk. No dialect found in the body, including the new soil-line bullet.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 9,
-      "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran `grep -noE '\\*\\*[^*]+\\*\\*'` against lines 1-202 this session: 10 bolded spans total -- 1 in chunk 2 ('feedback control'), 3 each in chunks 3-5 (one law handle per bullet). Chunks 0, 1, 6, 7 (title, checking-loop re-show including the new soil-line bullet, question, closer) carry zero bold. This matches a law/consolidation slide's explicit allowance ('a law/consolidation slide may carry one handle per law'). Several law handles exceed the general ~5-word guidance (e.g. 'Verifier, judge, gate: every one an eval.' is 7 words, 'A rule in context is not a rule in the output.' is 11 words) -- checked against the file's own maintainer block before scoring, per the mandatory pre-flag check: the 2026-07-09 'Emphasis pass' note explicitly reviewed this exact set of spans, named them by text, and kept the full-sentence bolds deliberately ('law-consolidation file, keeps the most bold -- one handle per law'), trimming only 'The three-pattern' and 'Review bandwidth is the constraint' to sub-spans. This is a standing maintainer accept-note covering the specific passages in question, not a fresh judgment call -- the harm the word cap guards against (decorative bolding of ordinary narrative) is absent, since these ARE the named laws verbatim and a law's own canonical wording cannot be truncated to five words without changing what it says.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 10,
-      "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Confirmed live this session: `grep -n \"the-map-filled-in\" curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` -> `[The map, filled in](lectures/the-map-filled-in.md)` at line 51, a standard include-link that `build-workbook.js` wraps in a `.phase--lecture` container `buildDeckModel` reads -- not a phase-less prose section of the kind rule 10 warns about. Both SVG figure blocks remain blank-line-free (verified by re-reading lines 7-86 and 95-163 this session), per the maintainer's own note that a blank line inside the raw-HTML block would terminate it early and spill markup into the deck.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering -- position is computed, content ordinals are linted.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "No `## Phase N:` / `## N.` step headers anywhere in this file's eight headers, no student-facing 'Step K'/'Phase K' prose reference. Ran `node scripts/check-slide-numbering.js` this session -- 'OK -- 61 files, Phase/Step numbering consistent.' (exit 0), scan includes this file. Rule doesn't engage.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 12,
-      "rule_lead": "Page geometry dies at the cut; reading order survives.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/lectures/the-map-filled-in.md --report` this session -- exit 0, zero output, zero page-geometry hits for this file. Cross-checked by hand with `grep -inE \"\\\\b(below|above)\\\\b|further down|top of this (page|workbook)|see below\"` -- the only hit is inside SVG #2's `aria-label` accessibility text ('drops into THE AGENT SESSION from above'), describing the diagram's own visual arrow direction, not a cross-reference to other slide content. No page-geometry pointer in the rule's sense, including in the new soil-line bullet (its referent is same-chunk, not positional).",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "Ran `grep -noE '\\[[^]]*\\]\\([^)]*\\)'` against lines 1-202 this session -- zero matches, zero in-body markdown links. Nothing to inventory; rule doesn't engage (review-aid, never-gates regardless).",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 14,
-      "rule_lead": "Slide size -- 210 words / 6 bullets, and the cap is machine-checked.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/the-map-filled-in.md --report` this session. Per-chunk: 'You drew a control loop' 209w/4b, 'The map, filled in' 205w/4b, 'Outcome, named' 183w/3b, 'The checking loop, drawn solid' 172w/4b (grew from the new soil-line bullet but still under cap), 'The question you carry forward' 141w/3b, 'Verification, named' 138w/3b, 'Absorption, named' 112w/3b. Gate summary: 'files: 1 slides: 7 limits: 210 words / 6 bullets oversized: 0' -- exit 0. 'You drew a control loop' sits one word under the 210 cap; worth watching on the next edit to that chunk, but not oversized now. No accept-note needed.",
-      "fix_hint": null,
-      "blocking": false
-    }
-  ],
-  "blocking_findings_count": 0,
-  "todos_count": 0,
-  "judge_notes": "Judged fresh against the CURRENT working-tree body (body_sha eef9e5d..., re-derived live this session, not copied from the prior instance's 3cc751ab... which predates the 2026-08-15 soil-line addition). The only body change since the last slides PASS is confirmed to be the fourth bullet on chunk 1 ('The checking loop, drawn solid'), landed via commits d40df7b and 5401193 -- both newer than the dccde3d reference commit named in the dispatch brief. `git diff -- curriculum/lectures/the-map-filled-in.md` at dispatch time showed only an uncommitted Quality-block SHA edit on top of that already-committed body change; no separate body drift to account for. Independently re-ran every mechanical checker this session against this file specifically (--file scoped, not corpus-wide): check-slide-size.js (oversized:0), check-slide-deixis.js (0 output), check-slide-numbering.js (OK, 61 files) -- plus fresh greps for dialect terms, bold spans, cadence tics, geometry pointers, and markdown links, all scoped to lines 1-202 of the current file. One item noted but deliberately not filed as a rules_evaluated finding, because it belongs to a sibling class: chunk 7's header ('The map, filled in') is identical to the file's own H1 title, which is a `check_lectures.md §4` header-uniqueness concern (storytelling class), not a check_slides.md rule -- staying in lane per the dispatch instruction. No REVISE filed on any of the 14 rules."
+ "class": "slides",
+ "file": "curriculum/lectures/the-map-filled-in.md",
+ "verdict": "PASS",
+ "training": "ae101",
+ "body_sha": "2b9b6a1d97a2e98e7866b90aa4eb5928a41c7ec41d08a3823084c2d7779a9df6",
+ "chunk_map": [
+  "chunk0: H1 The map, filled in + lede The map is back, one last time. (lines 1-4)",
+  "chunk1: ## The checking loop, drawn solid (lines 5-91)",
+  "chunk2: ## You drew a control loop (lines 92-168)",
+  "chunk3: ## Verification, named (lines 169-174)",
+  "chunk4: ## Absorption, named (lines 175-180)",
+  "chunk5: ## Outcome, named (lines 181-186)",
+  "chunk6: ## The question you carry forward (lines 187-192)",
+  "chunk7: ## The map, filled in (lines 193-201)",
+  "MAINTAINER_CUT: line 202 (<!-- maintainer -->)",
+  "FENCE_RANGES: none (no fenced code blocks in this file)"
+ ],
+ "rules_evaluated": [
+  {
+   "rule": 1,
+   "name": "Referent resolution under a sequential deck read",
+   "blocking": true,
+   "result": "PASS",
+   "evidence": "judgement: 'the map' (chunk0) is arc-earned spine vocabulary. Phase names Intent/Context/Work/Verification/Absorption/Outcome are named inside chunk1's SVG text (line 23) before chunk7 uses them ('landed in Work, ... across Verification and Absorption, ... in Outcome'). Reference/plan.md/verifier (chunk3) and M2/M4/M5/M6 module refs throughout resolve under the module-arc-beat carve-out (rule 1) — this lecture's SUBJECT is the arc per the chunking brief. 'The checking loop' named at chunk1 header+body, reused later without re-earning (rule 1 NOT-a-violation example). No never-named or vague-with-full-history referents found."
+  },
+  {
+   "rule": 2,
+   "name": "Cross-file and positional callbacks",
+   "blocking": true,
+   "result": "PASS",
+   "evidence": "judgement: no phrase locates content in another file by position. 'M2 map', 'M5 close', 'M4 send-off' name beats by module identity, not position ('the opening lecture said...' shape absent). Within-file sequential callbacks (chunk7 summing the whole deck) are the closer doing its job per rule 2's own carve-out."
+  },
+  {
+   "rule": 3,
+   "name": "Every backward reference points at a beat that exists",
+   "blocking": true,
+   "result": "PASS",
+   "evidence": "judgement: 'the M5 close left the delegation frontier as a warning' (chunk7) is the frontier-payoff bullet explicitly logged in the maintainer block (2026-07-27 note) as verified against 'the-gate-is-a-claim' final slide in the host module spot-gaps-build-the-loop.md. 'the M4 send-off', 'the M5 re-send', governor-question carry-in (chunk6) are each cross-referenced in the maintainer/backing blocks as promoted-not-minted from real prior beats. No dangling backward reference found."
+  },
+  {
+   "rule": 4,
+   "name": "Live-demo beats survive a text read",
+   "blocking": true,
+   "result": "N/A",
+   "evidence": "No guess-before-reveal beat in this file (consolidation/recognition lecture, no live-demo structure)."
+  },
+  {
+   "rule": 5,
+   "name": "No orphan slides",
+   "blocking": false,
+   "result": "PASS",
+   "evidence": "judgement: every chunk (0-7) carries multiple self-carrying bullets or a figure+bullets; none is a single wait-state or context-dependent fragment."
+  },
+  {
+   "rule": 6,
+   "name": "Header self-carries at projection distance",
+   "blocking": false,
+   "result": "PASS",
+   "evidence": "judgement: each header is contradicted by nothing in its chunk — 'The checking loop, drawn solid' (loop solidified per body), 'You drew a control loop' (control-loop mechanism follows), 'Verification/Absorption/Outcome, named' (each names that phase's laws), 'The question you carry forward' (the far-half question follows), closing 'The map, filled in' (map-completion summary follows)."
+  },
+  {
+   "rule": 7,
+   "name": "LLM-cadence caps (aggregated)",
+   "blocking": "self-grading-superlative sub-item only",
+   "result": "PASS",
+   "evidence": "mechanical/judgement, aggregated: no 'Not X. Not Y. Z.' construction found. Two triads present ('M4 tested, M5 learned, M6 encoded'; 'diff the sessions, name the gaps, package the learning', both chunk5) — each leg carries distinct concrete content (test/learn/encode are different actions, not the banned hollow-repetition anaphora shape from the canonical failure example), so not flagged. No self-grading superlatives found (grepped for value-prop-leak phrasing — none). '80 percent... 20 percent' (chunk4) is a number with its label attached and a maintainer-attested backing stamp, not a number-then-retraction pattern — not flagged. No abstraction-noun stacks or empty-leg verb triplets found."
+  },
+  {
+   "rule": 8,
+   "name": "Internal dialect never lands on a slide",
+   "blocking": true,
+   "result": "PASS",
+   "evidence": "judgement: grepped body for compendium/firing/forcing function/beat/mood/Connections-as-proper-noun/surface-as-noun — none present. 'Eval', 'the far half', 'the near half', 'the checking loop' are training-arc vocabulary already earned in-room, not repo-internal authorial dialect."
+  },
+  {
+   "rule": 9,
+   "name": "Emphasis budget",
+   "blocking": false,
+   "result": "PASS",
+   "evidence": "judgement: chunk3/4/5 each carry one bold handle per law bullet (3 per slide) — matches the file's own maintainer accept-note (2026-07-09, 'law-consolidation file, keeps the most bold — one handle per law') which rule 9 itself allows ('a law/consolidation slide may carry one handle per law'). chunk2 carries one bold span ('feedback control'). Two handles run past the ≲5-word cap in raw token count ('Verifier, judge, gate: every one an eval.'; 'Generation is fast; reading, judging, and merging are not.') but both are covered by the same file-level maintainer accept-note treating the full law statement as the handle for this consolidation file — pre-existing, dated, reasoned; not re-flagged."
+  },
+  {
+   "rule": 10,
+   "name": "Presence precedes content",
+   "blocking": true,
+   "result": "PASS",
+   "evidence": "judgement: file is wired into spot-gaps-build-the-loop.md's M6 include chain per the maintainer Placement/wiring note and THEORY_HANDBOOK_MANIFEST — a standard lecture include, no phase-less prose section observed. Not independently re-verified against a live composed-deck render this pass; no evidence found suggesting exclusion."
+  },
+  {
+   "rule": 11,
+   "name": "Numbering",
+   "blocking": false,
+   "result": "PASS",
+   "evidence": "mechanical: `node scripts/check-slide-numbering.js curriculum/lectures/the-map-filled-in.md` → 'OK — 61 files, Phase/Step numbering consistent.' No hand-numbered `## Phase N:`/`## N.` headers in this file."
+  },
+  {
+   "rule": 12,
+   "name": "Page geometry dies at the cut",
+   "blocking": true,
+   "result": "PASS",
+   "evidence": "mechanical: `node scripts/check-slide-deixis.js curriculum/lectures/the-map-filled-in.md` → 'OK — 61 files, no page-geometry pointers across the slide cut.'"
+  },
+  {
+   "rule": 13,
+   "name": "In-deck links",
+   "blocking": false,
+   "result": "N/A",
+   "evidence": "No in-body links present in this file's body."
+  },
+  {
+   "rule": 14,
+   "name": "Slide size — 210 words / 6 bullets",
+   "blocking": false,
+   "result": "PASS",
+   "evidence": "mechanical: `node scripts/check-slide-size.js --file curriculum/lectures/the-map-filled-in.md` → 'files: 1  slides: 7  limits: 210 words / 6 bullets  oversized: 0 — every slide is within limits.'"
+  },
+  {
+   "rule": 15,
+   "name": "Heading grammar is the mood switch",
+   "blocking": false,
+   "result": "PASS",
+   "evidence": "judgement: lecture headings read as claims/consolidation labels consistent with the file's declared style ('You drew a control loop' is a full declarative claim; 'The checking loop, drawn solid' and the 'X, named' triad function as compressed claims about what the slide does — not imperative/phase-label exercise style). Closest call: the 'X, named' parallel headers (Verification/Absorption/Outcome) read closer to label than full-sentence claim, but this is a non-blocking judgement rule and the parallel-structure convention is consistent and load-bearing across the file's own consolidation architecture; no exercise-style imperative found anywhere."
+  }
+ ],
+ "blocking_findings_count": 0,
+ "todos_count": 0
 }

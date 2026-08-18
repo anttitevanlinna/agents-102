@@ -38,8 +38,8 @@ The fix happens once. The loop is what you repeat: a way of working, not one bug
 
 **Open:** the plan-mode drift removal wants a maintainer eyeball against the module's Big Idea + LO.
 
-**Quality:** compendium-audited 2026-08-15 (writing@1480362 story@1480362 behavior@1480362 pedagogy@1480362 strategy@1480362 slides@1480362)
-- judges @1480362: writing PASS, story PASS, technical REVISE (1/0-see-instances/ae101--lecture--the-wizard-move.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-18 (writing@2b5a60a story@1480362 technical@2b5a60a behavior@1480362 pedagogy@1480362 strategy@1480362 slides@2b5a60a)
+- judges @2b5a60a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - compendium-audited 2026-04-26 (check_writing voice-quartet Seth-Rory-Risto, check_student_facing #14, check_lectures opener, check_strategy_tie_in)
 **Meta:**
 - **Placement:** M1 opener, after Connections, before the exercise.

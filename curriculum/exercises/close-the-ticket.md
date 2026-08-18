@@ -129,5 +129,5 @@ OODA
 
 <!-- /backing -->
 
-**Quality:** compendium-audited 2026-08-15 (writing@1480362 story@1480362 technical@1480362 behavior@1480362 pedagogy@1480362 strategy@1480362 slides@1480362)
-- judges @1480362: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-18 (story@2b5a60a technical@1480362 behavior@1480362 pedagogy@1480362 strategy@1480362 slides@2b5a60a)
+- judges @2b5a60a: writing REVISE (1/2-see-instances/ae101--exercise--close-the-ticket.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

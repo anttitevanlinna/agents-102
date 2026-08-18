@@ -10,7 +10,7 @@ The failures were specific. A phrase brought consultancy voice into an engineeri
 
 The rules were corrected too. Some were too broad. Some fired in the wrong place. Each time a rule failed, the failure sharpened the rule instead of disappearing into one edit.
 
-The system behind this training currently has 299 active rules and subrules across 12 checklists, written over 1,399 commits. Neither count is a claim that more rules make better work. They show how much specific judgment had to be written down, and how many passes it took, to reach control over the training's style.
+The system behind this training currently has 302 active rules and subrules across 12 checklists, written over 1,447 commits. Neither count is a claim that more rules make better work. They show how much specific judgment had to be written down, and how many passes it took, to reach control over the training's style.
 
 ## Then we tested the training
 
@@ -36,14 +36,14 @@ The loop is the shape. The bug today was the excuse.
 - **Zero map references and no cross-module sequencing.** M1 is map-protected, and the module file's `## Next` carries the bridge.
 - **Narrative slides stay prose paragraphs.** The only bold student-side handle is **compound engineering**.
 - **“Automated quality judges” is deliberate M1 language.** It describes the testing machinery without pre-planting the M6 word *eval*.
-- **The rule and commit counts are repository snapshots.** Before a cohort, re-run `find <canonical-memory-dir> -maxdepth 1 -type f -name 'check_*.md' | wc -l`, `rg --no-filename '^[0-9]+[a-z]?\.[[:space:]]+\*\*' <canonical-memory-dir>/check_*.md | wc -l`, and `git rev-list --count HEAD`; update both body and backing if the results are no longer 12 / 299 / 1,399. The active-rule regex deliberately excludes italic “Moved to…” redirects. The commit count is this repo's whole history, curriculum and research and tooling alike, and the body claims only that it took that many passes, never that each one touched a module.
+- **The rule and commit counts are repository snapshots.** Before a cohort, re-run `find <canonical-memory-dir> -maxdepth 1 -type f -name 'check_*.md' | wc -l`, `rg --no-filename '^[0-9]+[a-z]?\.[[:space:]]+\*\*' <canonical-memory-dir>/check_*.md | wc -l`, and `git rev-list --count HEAD`; update both body and backing if the results are no longer 12 / 302 / 1,447. The active-rule regex deliberately excludes italic “Moved to…” redirects. The commit count is this repo's whole history, curriculum and research and tooling alike, and the body claims only that it took that many passes, never that each one touched a module.
 - **The tmux claim is bounded.** The runner has driven real Claude Code sessions through M1–M6 on working codebases. The full M1–M6 wrapper is documented on Lemmings; later-module variants exist for Codesearch and Picoshare. Do not turn this into “three codebases passed end to end.”
 - **Klaassen is named twice on the student surface across M1, deliberately.** `compound-and-close` prints the loop; this closer connects the student's work to the name. A third M1 mention would still breach the cap.
 - **The quoted forcing-function rule is a specimen, not introduced vocabulary.** It is verbatim `check_pedagogy.md §16` and makes the correction-to-rule move concrete.
 - **File is size-gate exempt** (story lecture).
 
-**Quality:** sim-passed 2026-08-15 (writing@1480362 story@1480362 behavior@1480362 pedagogy@1480362 strategy@1480362 slides@1480362)
-- judges @1480362: writing PASS, story PASS, technical REVISE (1/1-see-instances/ae101--lecture--how-this-training-was-built.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** sim-passed 2026-08-18 (writing@2b5a60a story@1480362 technical@2b5a60a behavior@1480362 pedagogy@1480362 strategy@1480362 slides@2b5a60a)
+- judges @2b5a60a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Understand — recognise the compound loop in the training's construction after running it.
@@ -74,7 +74,7 @@ Format → `curriculum/backing-format.md`.
 - `prototype-failures-were-specific` · detail · "The failures were specific." ← training-construction
 - `corrections-became-rules` · detail · “Each correction became a reusable rule” ← compendium-rules
 - `rules-were-corrected` · detail · “The rules were corrected too” ← training-construction
-- `rule-compendium-snapshot` · detail · “299 active rules and subrules across 12 checklists, written over 1,399 commits” ← compendium-snapshot
+- `rule-compendium-snapshot` · detail · “302 active rules and subrules across 12 checklists, written over 1,447 commits” ← compendium-snapshot
 - `rules-leak` · detail · “Rules shape a draft, but they still leak” ← training-construction
 - `automated-quality-judges` · detail · "Major changes therefore go through automated quality judges, each reading through a focused lens" ← quality-judges
 - `persona-simulation` · detail · "Simulated engineers read the result as a competent builder, a skeptical senior, and a fast operator." ← simulation-stack
@@ -89,7 +89,7 @@ Format → `curriculum/backing-format.md`.
 **Sources**
 - training-construction `[checked:2026-08-05 result:ATTESTED due:none]` attested:Antti 2026-04→2026-08 building-AE101 — [maintainer-attested] First-hand account of the bulletpoint origin, the prototype failures, the rules being corrected, and loaded rules still leaking. fallback: none needed; this is the author's build story.
 - compendium-rules `[checked:2026-08-05 result:OK due:cohort]` `/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory/check_*.md` — [maintainer-attested] The forcing-function sentence is verbatim `check_pedagogy.md §16`; the Claude Code capability requirement resolves to `check_research_claims.md §11a`. fallback: replace either example with a current rule and update the body.
-- compendium-snapshot `[checked:2026-08-14 result:OK due:cohort]` `/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory/check_*.md` — [maintainer-attested] `find ... -name 'check_*.md' | wc -l` returned 12; `rg --no-filename '^[0-9]+[a-z]?\.[[:space:]]+\*\*' .../check_*.md | wc -l` returned 299; `git rev-list --count HEAD` returned 1399. A broader numbered-entry count returns 306 because it includes seven italic “Moved to…” redirects; those are not active rules. fallback: re-run and replace all three numbers.
+- compendium-snapshot `[checked:2026-08-18 result:OK due:cohort]` `/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory/check_*.md` — [maintainer-attested] `find ... -name 'check_*.md' | wc -l` returned 12; `rg --no-filename '^[0-9]+[a-z]?\.[[:space:]]+\*\*' .../check_*.md | wc -l` returned 302; `git rev-list --count HEAD` returned 1447. A broader numbered-entry count returns 309 because it includes seven italic “Moved to…” redirects; those are not active rules. fallback: re-run and replace all three numbers.
 - quality-judges `[checked:2026-08-05 result:OK due:cohort]` `.claude/skills/eval-fire/SKILL.md`, `curriculum/evals/judges/` — [maintainer-attested] The class table defines writing, story, technical, behavior, pedagogy, strategy, cross-module, and slides as separate focused reads. fallback: name only the classes still exposed by the current eval machinery.
 - simulation-stack `[checked:2026-08-05 result:OK due:cohort]` `.claude/skills/content-creation/simulation.md`, `.claude/skills/content-creation/simulation-behavior.md` — [maintainer-attested] Class A defines the three engineer-reader perspectives; Class B separately reasons over likely prompt behavior. fallback: describe only the currently configured simulation classes.
 - tmux-runner `[checked:2026-08-05 result:OK due:cohort]` `curriculum/evals/mechanical/tmux-runner/README.md`, `curriculum/evals/mechanical/tmux-runner/lemmings-chain-runbook.md` — [maintainer-attested] The runner preserves the real Claude Code TTY surface. The Lemmings M1–M6 chain was validated through the wrapper; Codesearch and Picoshare carry later-module variants. fallback: narrow the body to the latest live-validated span.

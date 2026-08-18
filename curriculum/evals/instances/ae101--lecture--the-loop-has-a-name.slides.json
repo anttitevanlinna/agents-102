@@ -1,159 +1,20 @@
 {
-  "class": "slides",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-loop-has-a-name.md",
-  "body_sha": "5152b5ef3d8abd93f93f6b9eed8311ba3fd2ed1b8dbbeae9cb1c1d979687406e",
-  "verdict": "PASS",
-  "training": "ae101",
-  "chunk_map": [
-    {"index": 0, "heading": "H1: The check you built is an eval (lede: \"Look at what you have shipped.\")", "lines": "1-4"},
-    {"index": 1, "heading": "Eval", "lines": "5-11"},
-    {"index": 2, "heading": "One primitive, placed wherever there's a bar", "lines": "12-16"},
-    {"index": 3, "heading": "The eval primitive scales unchanged", "lines": "17-22"},
-    {"index": 4, "heading": "The primitive that runs on cadence", "lines": "23-28"},
-    {"index": 5, "heading": "Why the loop survives the model", "lines": "29-36"}
-  ],
-  "rules_evaluated": [
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 1,
-      "rule_lead": "Referent resolution under a sequential deck read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "grep -n \"\" curriculum/lectures/the-loop-has-a-name.md confirms line text. chunk 1 line 7 \"The thing you built at M5\" and \"The checks you just ranked against your dominant gap\" resolve against this module's own prior beats: verified live against curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md line 57 (include-link places this lecture after the module's own exercise) and curriculum/exercises/spot-gaps-build-the-loop.md lines 17-33 (Phase 1: diff the two sessions, rank the gaps, dominant gap named) — module-arc-beat carve-out. chunk 1 line 10 \"on the map they are the checking loop the M2 drawing left dashed, now drawn solid\" — verified the M2 module (plan-mode-done-right.md) includes the-whole-map.md (grep -rln the-whole-map curriculum/trainings/ shows plan-mode-done-right.md), and the-whole-map.md line 119 shows the dashed checking loop tag; arc-earned spine vocabulary, self-cashing. chunk 2 line 15 \"Naming it is what lets you reuse it\" resolves to \"the shape\"/\"the primitive\" named in chunk 2's own line 14. chunk 3 line 20 \"Read that as your verifier from M5, scaled\" resolves to the Intercom numbers in the same chunk's line 19. chunk 5 line 32 \"The three pieces (reference, plan, verifier)\" and \"the encode loop you ran at M6\" self-define via their own parentheticals. Closer line 35 \"That is the flywheel\" defines the term in the same sentence.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 2,
-      "rule_lead": "Cross-file and positional callbacks.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm check: this rule prevents a reader from being stranded resolving a claim they'd have to guess which file/position it points at; absent here. chunk 1's \"M5\"/\"M2 drawing\" and chunk 5's \"M6\" name the source module directly and unpack the claim in the same clause (e.g. line 7 \"The thing you built at M5 reads an agent's work and decides whether it meets a bar\"), rather than pointing at another file by bare position (\"the opening lecture said\"). No file referenced by position alone.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 3,
-      "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm check: prevents a strand reference to a beat re-chunks/rewrites deleted; not present. Checked against the live module file curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md and its included exercise curriculum/exercises/spot-gaps-build-the-loop.md. chunk 1's \"the checks you just ranked against your dominant gap\" resolves against exercise Phase 1 (lines 17-33: diff the two sessions, rank the gaps, close with a ranked gap list and a dominant gap). chunk 1's \"the thing you built at M5\" resolves against the M5 module's verifier-building exercise (learn-from-the-test.md). chunk 5's \"the encode loop you ran at M6\" resolves against this same module's own PDCA arc. chunk 1's \"M2 drawing\" resolves against plan-mode-done-right.md's inclusion of the-whole-map.md (grep confirmed). All backward beats currently exist.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "No guess-before-reveal demo instruction anywhere in the body (grep -niE \"guess|predict\" against the file returns no body hits above line 37); this is a consolidation/naming closer, not a live-demo beat, so no harm this rule guards against can occur.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 5,
-      "rule_lead": "No orphan slides.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "All five ## chunks carry 2-4 substantive bullets each with a self-carrying claim (verified against grep -n \"\" line dump above); no wait-state or single context-dependent bullet slide.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 6,
-      "rule_lead": "Header self-carries at projection distance.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Each header is a true (not contradicted) summary of its chunk: \"Eval\" names the term chunk 1 defines; \"One primitive, placed wherever there's a bar\" matches chunk 2's reuse/placement content; \"The eval primitive scales unchanged\" matches chunk 3's Intercom-scale argument and its closing line 21; \"The primitive that runs on cadence\" matches chunk 4's scheduling content; \"Why the loop survives the model\" matches chunk 5's stance-not-tooling argument. Chunk 0's H1 states the lecture's thesis and its lede sets up the recognition beat the following chunks unpack — not contradicted by content, consistent with this corpus's thesis-first closer convention.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 7,
-      "rule_lead": "LLM-cadence caps.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "No \"Not X. Not Y. Z.\" construction anywhere in body (grep -n \"Not \" the file returns no hits). chunk 5 line 32's \"Reference because...Plan because...Verifier because...Encode because...\" is a four-part enumeration but every leg carries distinct, new concrete content (agent forgets / window fills / plausible-but-wrong failure mode / lesson re-learned) rather than hollow repetition — not the banned tic shape. No self-grading superlatives (grep -niE \"one of the most|most useful|most important\" returns no hits). No number-with-own-retraction pattern — chunk 3's Intercom numbers (line 19) are stated plainly with self-report attribution, no \"could be more, could be less\" hedge. No abstraction-noun stack left uncashed — chunk 5's \"a stance toward a thing that does not behave deterministically\" (line 32) is immediately cashed into four concrete reasons in the same sentence. No verb triplet with an empty leg.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 8,
-      "rule_lead": "Internal dialect never lands on a slide.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm check: prevents maintainer-internal jargon (compendium, firing, forcing function, beat, mood, surface-as-noun) from being projected at engineers who never see the authoring layer; grep -niE \"compendium|forcing function|\\\\bbeat\\\\b|\\\\bmood\\\\b|Connections|writing surface|firing\" against lines 1-37 returns zero hits. \"Kit\" (chunk 2 line 15 \"the team's shared kit\", chunk 4 line 25 \"a kit skill\"/\"a skill from your kit\") is not on the compendium's banned-dialect list and reads as ordinary engineering usage (toolkit), matching the register carve-out for AE101 engineer ICs.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "grep -n '\\*\\*' curriculum/lectures/the-loop-has-a-name.md — only one bold span in the body: line 8 \"**eval**\", a single-word handle at the naming beat, within the <=1-per-slide / <~5-word budget. No other chunk carries bold, matching the file's own maintainer note at line 39 (2026-07-09 emphasis pass, verified: \"bold reduced to one handle — **eval**\").",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "grep -n \"the-loop-has-a-name\" curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md line 57: \"[The loop has a name](lectures/the-loop-has-a-name.md)\" — a standard structural include-link (not a phase-less embedded prose subsection), so the whole file reaches the composed deck via the lecture wrapper.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "No ## Phase N: / ## N. step headers in this file (all five ## headings are unnumbered prose titles), and no in-body \"Phase K\"/\"Step K\" content-ordinal references. Ran `node scripts/check-slide-numbering.js` (exit checked via full-output run): output \"OK — 61 files, Phase/Step numbering consistent.\" — this file included in that clean sweep, no numbering issue flagged for it.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 12,
-      "rule_lead": "Page geometry dies at the cut; reading order survives.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm check: prevents a body pointer aimed at page position (above/below/at the top) from landing on nothing once the renderer cuts at ##; ran `grep -niE \"\\\\b(above|below|further down|a few paragraphs|at the top|see below|earlier in this module|the rest of this page)\\\\b\" curriculum/lectures/the-loop-has-a-name.md` — the only hits (lines 89, 118, 124) are all inside the <!-- backing --> / maintainer sections below the line-37 cut, out of the rule's body scope. No page-geometry pointer in the body (lines 1-36). Also ran `node scripts/check-slide-deixis.js --report`: output \"OK — 61 files, no page-geometry pointers across the slide cut,\" consistent with the manual grep.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "`grep -n '\\[.*\\](' curriculum/lectures/the-loop-has-a-name.md` returns no matches — this file's body contains no markdown links of any kind (no in-page links, no structural include-links inside it), so there is nothing for this rule to evaluate.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 14,
-      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/the-loop-has-a-name.md --report`, exit 0. Output: 5 slides measured, largest \"The primitive that runs on cadence\" at 196 words/3 bullets, then \"Why the loop survives the model\" 182w/3b, \"Eval\" 135w/4b, \"The eval primitive scales unchanged\" 119w/3b, \"One primitive, placed wherever there's a bar\" 92w/2b. Summary line: \"oversized: 0\" / \"✓ every slide is within limits\". No accept-note needed, no maintainer block escape hatch present or required.",
-      "fix_hint": null,
-      "blocking": true
-    }
-  ],
-  "blocking_findings_count": 0,
-  "todos_count": 0
+  "class":"slides","file":"/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-loop-has-a-name.md","body_sha":"ce4a4ef496c33183e91889201a9099942e3921fd4b64d15536996603b2da36e2","verdict":"PASS","training":"ae101","chunk_map":[{"index":0,"heading":"H1/lede","lines":"1-3"},{"index":1,"heading":"Eval","lines":"5-11"},{"index":2,"heading":"One primitive, placed wherever there's a bar","lines":"12-16"},{"index":3,"heading":"The eval primitive scales unchanged","lines":"17-22"},{"index":4,"heading":"The primitive that runs on cadence","lines":"23-28"},{"index":5,"heading":"Why the loop survives the model","lines":"29-36"}],
+  "rules_evaluated":[
+    {"compendium":"check_slides.md","rule_index":1,"rule_lead":"Referent resolution under a sequential deck read.","verdict":"PASS","chunks_flagged":[],"evidence":"Chunk 0 ('the check you built', 'Look at what you have shipped') and chunk 1 ('The thing you built at M5', 'The checks you just ranked against your dominant gap', fresh-edited 'a background-agent verifier from M5') fall under the module-arc-beat carve-out (task-confirmed): this is AE101 M6's closing/naming lecture and naming what the student just built at M5/M6 is its subject. Referents verified real, not just carved-out: 'the checks you just ranked against your dominant gap' resolves to exercises/spot-gaps-build-the-loop.md's Phase 1 ('Close with a ranked gap list of three to five items and a dominant gap that shapes the rest of this phase') and Phase 2 sidestep ('rank the ones that fit your gap'); 'a background-agent verifier from M5' resolves to exercises/diagnose-and-resend.md's Phase 3 verifier-shape menu ('Background-agent verifier. Separate Claude session reads the produced work and judges it'), M5's own exercise. 'M2 drawing left dashed' names M2 explicitly and is arc-earned spine vocabulary (the-whole-map.md: 'The checking loop stays a ghost — dashed'). Chunk 2's 'the verifier, the judge, and the gate' reuses chunk-1 terms. Chunk 3 'your verifier from M5' — same carve-out. Chunk 4/5 have no unresolved referents.","fix_hint":null,"blocking":true},
+    {"compendium":"check_slides.md","rule_index":2,"rule_lead":"Cross-file and positional callbacks.","verdict":"PASS","chunks_flagged":[],"evidence":"No positional cross-file callback ('the opening lecture said' shape absent). M2/M5 named directly with claim unpacked in the same sentence ('the checking loop the M2 drawing left dashed, now drawn solid'; 'M5 used verifier and gate for the whole family'). Self-references to M6 ('the encode loop you ran at M6') are same-file/same-module, not cross-file.","fix_hint":null,"blocking":true},
+    {"compendium":"check_slides.md","rule_index":3,"rule_lead":"Every backward reference points at a beat that exists.","verdict":"PASS","chunks_flagged":[],"evidence":"Verified against source files (see rule 1): dominant-gap ranking beat exists in spot-gaps-build-the-loop.md; background-agent verifier shape exists in diagnose-and-resend.md Phase 3; the M2 dashed checking loop exists in the-whole-map.md line 119. No dead beat refs found.","fix_hint":null,"blocking":true},
+    {"compendium":"check_slides.md","rule_index":4,"rule_lead":"Live-demo beats survive a text read.","verdict":"N/A","chunks_flagged":[],"evidence":"No guess-before-reveal structure present anywhere in this lecture.","fix_hint":null,"blocking":true},
+    {"compendium":"check_slides.md","rule_index":5,"rule_lead":"No orphan slides.","verdict":"PASS","chunks_flagged":[],"evidence":"Chunk 0 is a standard title/lede slide; chunks 1-5 each carry 2-4 self-carrying bullets/paragraphs, none is a bare wait-state or single context-dependent bullet.","fix_hint":null,"blocking":false},
+    {"compendium":"check_slides.md","rule_index":6,"rule_lead":"Header self-carries at projection distance.","verdict":"PASS","chunks_flagged":[],"evidence":"Each header matches its chunk's content: 'Eval' names the term the chunk defines; 'One primitive, placed wherever there's a bar' matches the reuse-across-contexts content; 'The eval primitive scales unchanged' matches the Intercom-at-scale content; 'The primitive that runs on cadence' matches the scheduling-primitives content; 'Why the loop survives the model' matches the model-churn/stance content. None contradicted by its own chunk.","fix_hint":null,"blocking":false},
+    {"compendium":"check_slides.md","rule_index":7,"rule_lead":"LLM-cadence caps.","verdict":"PASS","chunks_flagged":[],"evidence":"No 'Not X. Not Y. Z.' construction anywhere. Two parallel-structure passages checked against the anaphora/epistrophe rule and cleared because every leg carries new concrete content, not an empty/generic third leg: chunk 1's 'Judge when... Verifier when... Gate when...' (three distinct check-mechanisms: LLM-read / deterministic / CI-placement) and chunk 5's fresh-edited 'Reference because the goal drifts. Plan because the window fills. Verifier because plausible-but-wrong is the default failure mode of a statistical machine. Encode because a lesson learned once and not written down gets learned again next week.' (four distinct concrete reasons, no repetition). Chunk 2's 'On a pull request. On a nightly run. On the next agent... On the team's shared kit.' likewise four concrete, distinct placements. No self-grading superlative. No number+own-retraction (Intercom numbers in chunk 3 are stated plainly, no hedge-then-undercut). No abstraction-noun stacks (bounded-window-reality style) — 'kit', 'primitive', 'stance' are concrete/ordinary, not stacked abstractions. No empty-leg verb triplet.","fix_hint":null,"blocking":true},
+    {"compendium":"check_slides.md","rule_index":8,"rule_lead":"Internal dialect never lands on a slide.","verdict":"PASS","chunks_flagged":[],"evidence":"No occurrence of the banned list (surface-as-noun, compendium, forcing function, beat, mood, Connections-as-proper-noun). Chunk 2's 'The shape fires on any workflow with a quality bar' uses 'fires' for a rule/trigger activating — weighed against §8's audience-register note; this is ordinary engineering usage outside this repo too (a webhook fires, a linter rule fires, a CI job fires), unlike repo-internal terms with no life outside authoring (compendium, surface-as-noun). Not scored as dialect. 'kit', 'primitive', 'stance', 'shape' are AE101 taught/spine vocabulary or ordinary engineering words, not maintainer dialect.","fix_hint":null,"blocking":true},
+    {"compendium":"check_slides.md","rule_index":9,"rule_lead":"Emphasis budget — bold is for handles, and go very lightly.","verdict":"PASS","chunks_flagged":[],"evidence":"Only bold in the body is **eval** at its naming beat (chunk 1), confirmed by grep and matching the maintainer block's 2026-07-09 emphasis pass ('bold reduced to one handle — eval at the naming beat on slide 1... every other bolded lead across all slides de-bolded'). Single sub-span handle, well within the ≤1-per-slide budget; every other slide carries zero bold.","fix_hint":null,"blocking":false},
+    {"compendium":"check_slides.md","rule_index":10,"rule_lead":"Presence precedes content — verify against the composed deck, not long-read.","verdict":"PASS","chunks_flagged":[],"evidence":"File is a standard structural include-link ([The loop has a name](lectures/the-loop-has-a-name.md)) inside spot-gaps-build-the-loop.md's '## Human close' phase-lecture chain, same wrapper pattern as sibling lecture files already confirmed in-deck. `node scripts/check-slide-size.js --file curriculum/lectures/the-loop-has-a-name.md --report` returned all 5 slides measured (0 oversized), confirming the checker (which reads the composed deck model) sees the file.","fix_hint":null,"blocking":true},
+    {"compendium":"check_slides.md","rule_index":11,"rule_lead":"Numbering — position is computed, content ordinals are linted.","verdict":"N/A","chunks_flagged":[],"evidence":"No hand-numbered headers or Phase/Step content in this file. `node scripts/check-slide-numbering.js --file curriculum/lectures/the-loop-has-a-name.md` — 'OK — 1 files, Phase/Step numbering consistent.'","fix_hint":null,"blocking":true},
+    {"compendium":"check_slides.md","rule_index":12,"rule_lead":"Page geometry dies at the cut; reading order survives.","verdict":"PASS","chunks_flagged":[],"evidence":"No position pointers (above/below/further down/at the top of this page/see below) anywhere in the body. `node scripts/check-slide-deixis.js --file curriculum/lectures/the-loop-has-a-name.md --report` returned no output (exit 0, no matches, no accepted-list entries needed).","fix_hint":null,"blocking":true},
+    {"compendium":"check_slides.md","rule_index":13,"rule_lead":"In-deck links work now; whether they EARN their place is open.","verdict":"N/A","chunks_flagged":[],"evidence":"No in-body document links in this file's body (grep for markdown link syntax returned zero matches in the body).","fix_hint":null,"blocking":false},
+    {"compendium":"check_slides.md","rule_index":14,"rule_lead":"Slide size — 210 words / 6 bullets, and the cap is machine-checked.","verdict":"PASS","chunks_flagged":[],"evidence":"`node scripts/check-slide-size.js --file curriculum/lectures/the-loop-has-a-name.md --report` — 5 slides, 0 oversized; largest is 'The primitive that runs on cadence' at 196 words / 3 bullets, all within 210w/6b. No accept-note present or needed.","fix_hint":null,"blocking":false},
+    {"compendium":"check_slides.md","rule_index":15,"rule_lead":"Heading grammar is the mood switch, and it is load-bearing.","verdict":"PASS","chunks_flagged":[],"evidence":"Lecture headings read as claims/definitional labels, not imperatives or exercise-style phase labels: 'One primitive, placed wherever there's a bar', 'The eval primitive scales unchanged', 'The primitive that runs on cadence', 'Why the loop survives the model' are all declarative. 'Eval' (chunk 1) is a single-word header but functions as the naming beat's own claim (this section's job is asserting 'this is called eval') rather than a task instruction or phase label — no imperative-vs-declarative mood confusion results, the harm this rule guards against.","fix_hint":null,"blocking":false}
+  ],"blocking_findings_count":0,"todos_count":0
 }

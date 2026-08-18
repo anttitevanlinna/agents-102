@@ -300,5 +300,5 @@ OODA
 
 **Soil line (2026-08-15):** the strip rides this figure visually (bottom-center italic, paints last); its one spoken home is `agents-that-build-agents.md` § *You make agentic happen* (Antti-directed — the orders belong at the launch beat, not the consolidation). Do not add a spoken bullet here: the first slide stays three bullets, and *Nothing else moved* is literally true of the strip, which is on both the M2 and M6 figures.
 
-**Quality:** compendium-audited 2026-08-15 (writing@dccde3d story@dccde3d technical@dccde3d behavior@1c765f2 pedagogy@dccde3d strategy@1c765f2 slides@dccde3d)
-- judges @dccde3d: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-18 (writing@2b5a60a story@dccde3d technical@dccde3d behavior@1c765f2 pedagogy@dccde3d strategy@1c765f2 slides@2b5a60a)
+- judges @2b5a60a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

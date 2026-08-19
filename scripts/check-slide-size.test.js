@@ -240,3 +240,21 @@ test('a declaration only covers a slide that is actually over the cap', () => {
       `${r.file}: "${r.header}" carries an accepted-overflow declaration but is within limits (${r.words}w, ${r.bullets} bullets) — drop the declaration`);
   }
 });
+
+// A bare path argument is a mistake worth stopping on. The training scan covers
+// modules plus the files they include; reference and supplementary pages are
+// outside it, so `check-slide-size.js some/page.md` used to ignore the path and
+// report a clean training — a pass that says nothing about the page asked about.
+test('a positional path argument is refused, not ignored', () => {
+  const r = run(['curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md']);
+  assert.notStrictEqual(r.code, 0, 'a bare path must not exit 0');
+  assert.match(r.out, /--file/, 'the error must name the flag that does what was meant');
+});
+
+test('--file reaches a page the training scan does not cover', () => {
+  const page = 'curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md';
+  const scan = run(['--report']);
+  assert.doesNotMatch(scan.out, /prompt-anatomy/, 'reference pages are outside the training scan');
+  const one = run(['--file', page]);
+  assert.match(one.out, /prompt-anatomy/, '--file must measure the page it is handed');
+});

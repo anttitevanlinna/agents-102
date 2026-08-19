@@ -53,6 +53,17 @@ const MAX_WORDS = Number(flag('max-words', 210));
 const MAX_BULLETS = Number(flag('max-bullets', 6));
 const ONE_FILE = flag('file', null);
 
+// The training scan covers modules and the files they include; reference and
+// supplementary pages sit outside it. A bare path therefore has to be an error:
+// ignoring it and scanning the training returns a verdict about other files
+// entirely, and the caller reads it as a verdict about the page they named.
+const VALUE_FLAGS = new Set(['--training', '--max-words', '--max-bullets', '--file']);
+for (let i = 0; i < argv.length; i++) {
+  if (argv[i].startsWith('--')) { if (VALUE_FLAGS.has(argv[i])) i++; continue; }
+  console.error(`Unexpected argument: ${argv[i]}\nTo measure one file, pass it as --file ${argv[i]}`);
+  process.exit(2);
+}
+
 // Narrative lectures: read at home / told as a story, not squinted off a slide.
 // Named exceptions per Antti (the two story lectures). Slug-keyed.
 const STORY_EXEMPT = new Set(['how-this-training-was-built', 'story-of-module-6']);

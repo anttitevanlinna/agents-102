@@ -61,7 +61,7 @@ That's it. No reading list. No ten-bullet rundown of every headline agent failur
 
 <!-- maintainer -->
 
-**Time:** 35-40 minutes. 10 per case, 10-15 for the mechanisms, 5 for the two sentences.
+**Time:** 40 minutes. 10 per case, 15 for the mechanisms, 5 for the two sentences.
 
 **No answer reveals in body:** the missing check stays unnamed in both case sections by design — naming it is the take-home, and the question at the top of the file arms the read. Both cases converge on *verification before submission*; that answer lives here for the trainer, never in body. Do not restore the bold "The missing check:" reveals.
 

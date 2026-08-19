@@ -18,7 +18,7 @@ That is the question the next lecture opens.
 
 Created 2026-06-06 in the M1–M6 tmux-runner fix pass (finding C10). Not yet compendium-audited; owes a full pass at the next `/curriculum-pre-ship-audit` (no Quality stamp until then).
 
-**Time:** 3-4 minutes.
+**Time:** 4 minutes.
 
 **Placement:** Agents 101 Module 6, after `exercises/eval-loop.md` and before the closer `lectures/new-human-role-in-the-loop.md`. A recognition beat: it names a pattern the student just lived (the flatlining count in the loop), so it lands after the exercise, never before (`check_lectures.md` §1).
 

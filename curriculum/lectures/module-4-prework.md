@@ -51,7 +51,7 @@ Three to five lines, plain language, the things you would not want a generic pol
 
 <!-- maintainer -->
 
-**Time:** 30-40 minutes total. 10 on personal skills, 15-20 on the security shift, 5 on the five-lines prep, 5 on the "borrowed expertise" note.
+**Time:** 40 minutes total. 10 on personal skills, 20 on the security shift, 5 on the five-lines prep, 5 on the "borrowed expertise" note.
 
 **Frameworks riffed on:**
 - **STRIDE** (Microsoft SDL) — historical reference; the M4 audit uses named attack classes directly rather than STRIDE categories so the lens cannot collapse into closed-loop self-grading.

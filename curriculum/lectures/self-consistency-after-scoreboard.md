@@ -28,7 +28,7 @@ Ask Claude to build a multi-method judge against any other output you want to qu
 
 <!-- maintainer -->
 
-**Time:** 8-10 minutes if demoed live; 3 minutes if taught as contrast only.
+**Time:** 10 minutes if demoed live; 3 minutes if taught as contrast only.
 
 **Placement in module:** Immediately after the Hallucination benchmark exercise. The judge is already saved. This lecture/demo contrasts groundedness scoring with reproducibility drift without reopening the detector panel.
 

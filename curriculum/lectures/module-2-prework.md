@@ -68,7 +68,7 @@ Module 2 takes that idea and applies it to your challenge. The memory will be sm
 **Quality:** compendium-audited 2026-05-03 (writing@60b1b6c)
 - judges @60b1b6c: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
 
-**Time:** 30-35 minutes. 5 to choose the challenge, 5 to check connectors, 15 for the plan-mode primer, 5-10 for Karpathy.
+**Time:** 35 minutes. 5 to choose the challenge, 5 to check connectors, 15 for the plan-mode primer, 10 for Karpathy.
 
 **Role in Module 2:** Lightweight prework designed to survive being skipped. The challenge-naming moved from prework into the main session (`name-your-challenge.md`, first 15 min of Module 2) because students skip prework and Module 2 Phase 1 stalls for anyone who arrives without a pinned challenge. Connector verification and plan-mode primer stay in prework — they're *useful* before class but not load-bearing if missed (fallback: facilitator triages connector issues live, Code gets a 60-second plan-mode primer and Cowork gets the prompt-level simulation in Phase 1).
 

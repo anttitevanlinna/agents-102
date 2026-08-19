@@ -71,7 +71,7 @@ Return ONE JSON object, exactly this shape:
       "rule_lead": "<short lead from the rule>",
       "verdict": "PASS" | "REVISE" | "N/A",
       "evidence": "<line:quote if REVISE; null otherwise>",
-      "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. The author reconciles in /content-creation. null if PASS.>",
+      "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. The author reconciles in an authoring turn. null if PASS.>",
       "blocking": true | false
     }
   ],

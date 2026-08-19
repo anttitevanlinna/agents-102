@@ -1,6 +1,6 @@
 # Curriculum Production
 
-- **Generation** (three-pass, PDCA, prompt + exercise design, simulation): `.claude/skills/content-creation/SKILL.md` via `/content-creation`.
+- **Generation** (three-pass, PDCA, prompt + exercise design): the `memory/check_*.md` compendiums, autoloaded per `.claude/rules/content-rules.md`. Simulation: `curriculum/evals/simulation.md` (Class A) + `curriculum/evals/simulation-behavior.md` (Class B).
 - **Pedagogy** (Bloom, 4 Cs, audience, throughlines): `curriculum/lecture-guardrails.md`.
 - **Vocabulary** (controlled terms: session/task/run, kit terms, register splits): `curriculum/vocabulary.md`. Term change = amend the registry first, then one sweep pass — never a local synonym.
 - **Long-running generation** (plan → walk away → return): `curriculum/module-design-long-running-strategy.md`.

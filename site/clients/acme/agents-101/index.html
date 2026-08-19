@@ -6018,7 +6018,7 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
                 { slug: 'build-a-project-from-zero',  title: 'No repo to bring? Build one' },        // Prework
                 { slug: 'agentic-engineering-progression', title: 'The agentic engineering progression' }, // M1
                 { slug: 'the-lethal-trifecta',        title: 'The lethal trifecta' },                // M3
-                { slug: 'token-efficiency',           title: 'Token efficiency: the craft and the folklore' }, // M3
+                { slug: 'the-context-ceiling',        title: 'The context ceiling and token efficiency: the craft and the folklore' }, // M2→M3
                 { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Reading Uncle Bob\'s Agent Experiments' }, // M4→M5
                 { slug: 'verification-asymmetry',     title: 'Verification asymmetry' },             // M4→M5
                 { slug: 'workflow-composition-lineages', title: 'Workflow composition lineages' },   // M6
@@ -6217,6 +6217,17 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
     // order-independent. Every tool that scans `{{prompt:` as a reference treats
     // `{{cut:}}` as an equivalent reference (a cut candidate is still "used").
     var PROMPT_CUT_RE = /^\{\{cut:([a-z0-9-]+)(?:\|([a-z0-9-]+))?\}\}[ \t]*$/gm;
+
+    // Figure-include marker: `{{figure:<key>}}` on its own line, expanded by
+    // expandFigures() at the start of the markdown pipeline (before marked).
+    // Source of truth lives in curriculum/figures/<key>.md — a blank-line-free
+    // `<figure class="diagram">…</figure>` raw-HTML block; the SPA reads the
+    // compiled site/figures.json registry, the build script reads source files
+    // directly (scripts/compile-figures.js). One drawing, many slides: a
+    // figure two lectures re-show (the map, the frontier 2x2) is authored
+    // once and referenced from each. Marker MUST be alone on a line so the
+    // expansion lands as a block-level raw-HTML run.
+    var FIGURE_INCLUDE_RE = /^\{\{figure:([a-z0-9-]+)\}\}[ \t]*$/gm;
 
     // Runtime-map marker: `{{runtime-map:<module-slug>}}` on its own line,
     // expanded by expandTimings(). Sibling of `{{prompt:}}` — same alone-on-a-line
@@ -6661,6 +6672,31 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
             throw new Error(
                 'expandPrompts: unbalanced {{covered:}} region(s): ' +
                 opens + ' open vs ' + closes + ' close'
+            );
+        }
+        return out;
+    }
+
+    // Replace every `{{figure:<key>}}` line in `md` with the registry's
+    // figure block. Same contract as expandPrompts: permissive by default
+    // (unknown keys pass through as visible literal text), strict mode throws
+    // with every unresolved key so the build fails instead of shipping a
+    // missing drawing.
+    function expandFigures(md, registry, opts) {
+        if (!md || !registry) return md;
+        var unresolved = [];
+        var out = md.replace(FIGURE_INCLUDE_RE, function (match, key) {
+            var block = registry[key];
+            if (!block) {
+                unresolved.push(key);
+                return match;
+            }
+            return block;
+        });
+        if (opts && opts.strict && unresolved.length) {
+            throw new Error(
+                'expandFigures: unresolved {{figure:<key>}} marker(s): ' +
+                unresolved.map(function (k) { return '{{figure:' + k + '}}'; }).join(', ')
             );
         }
         return out;
@@ -7350,7 +7386,9 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
         applyContentFlags: applyContentFlags,
         renderPromptBlock: renderPromptBlock,
         expandPrompts: expandPrompts,
+        expandFigures: expandFigures,
         PROMPT_INCLUDE_RE: PROMPT_INCLUDE_RE,
+        FIGURE_INCLUDE_RE: FIGURE_INCLUDE_RE,
         RUNTIME_MAP_RE: RUNTIME_MAP_RE,
         expandTimings: expandTimings,
         extractParent: extractParent,
@@ -7593,7 +7631,7 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
     return (k && textOf(k)) || 'Section';
   }
 
-  // An in-deck link (`#supplementary-token-efficiency`, `#5-plan-mode-at-depth`)
+  // An in-deck link (`#supplementary-the-context-ceiling`, `#5-plan-mode-at-depth`)
   // has to resolve to a SLIDE, because the deck is not a scroll: the browser's
   // own fragment navigation moves nothing here. First claim wins — a section
   // divider beats a heading of the same name deeper in.
@@ -7640,7 +7678,7 @@ When you&#39;re done, tell me in 3-5 lines: which file you rewrote, what you add
         var innerPhases = moduleEl.querySelectorAll('.phase--lecture, .phase--exercise');
         var start = slides.length, code;
         // The section's own id is the target of every cross-doc link into it
-        // (`#prework`, `#supplementary-token-efficiency`, `#getting-going`).
+        // (`#prework`, `#supplementary-the-context-ceiling`, `#getting-going`).
         // It lives on the wrapper, which does NOT survive into the deck — only
         // its children do — so claim it for the divider slide about to open.
         claimAnchor(anchors, moduleEl.id, slides.length);

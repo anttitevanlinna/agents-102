@@ -83,7 +83,7 @@ Return ONE JSON object, exactly this shape:
       "rule_lead": "Verify before assert.",
       "verdict": "PASS" | "REVISE" | "N/A",
       "evidence": "<line:quote if REVISE; null otherwise>",
-      "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. The author reconciles in /content-creation, not here.>",
+      "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. The author reconciles in an authoring turn, not here.>",
       "blocking": true | false
     }
   ],

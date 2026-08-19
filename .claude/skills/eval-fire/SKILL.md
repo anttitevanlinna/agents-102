@@ -28,7 +28,7 @@ Fires one eval class against one or more curriculum files. The class determines 
 | `writing` | `haiku` | `curriculum/evals/judges/writing.md` | none | every `memory/check_*.md` with `eval_classes:` containing `writing` |
 | `story` | `sonnet` | `curriculum/evals/judges/story.md` | `sim-cache/<training>--<surface-type>--<slug>.persona.json` (Class A persona-reader, per-phase SHA) | every `memory/check_*.md` with `eval_classes:` containing `storytelling`; strategy doc per training |
 | `technical` | `sonnet` | `curriculum/evals/judges/technical.md` | none | every `memory/check_*.md` with `eval_classes:` containing `technical` |
-| `behavior` | `sonnet` | `curriculum/evals/judges/prompt-behavior.md` | `sim-cache/<training>--<surface-type>--<slug>.behavior.json` (Class B prompt-behavior, per-prompt SHA) | `.claude/skills/content-creation/simulation-behavior.md` catalog; `check_prompts.md` + `check_pedagogy.md` |
+| `behavior` | `sonnet` | `curriculum/evals/judges/prompt-behavior.md` | `sim-cache/<training>--<surface-type>--<slug>.behavior.json` (Class B prompt-behavior, per-prompt SHA) | `curriculum/evals/simulation-behavior.md` catalog; `check_prompts.md` + `check_pedagogy.md` |
 | `pedagogy` | `sonnet` | `curriculum/evals/judges/pedagogy.md` | none | every `memory/check_*.md` with `eval_classes:` containing `pedagogy` (primarily `check_pedagogy.md`) |
 | `strategy` | `sonnet` | `curriculum/evals/judges/strategy.md` | none | every `memory/check_*.md` with `eval_classes:` containing `strategy` (primarily `check_strategy_tie_in.md`); strategy doc per training |
 | `cross_module` | `sonnet` | `curriculum/evals/judges/cross-module.md` | none | `check_cross_module.md`; supplied module-set paths (≥2) |
@@ -56,7 +56,7 @@ Glob `~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory/check
 
 For the storytelling class, the class name in compendium frontmatter is `storytelling` (full word). For the args, accept `story` as shorthand and translate.
 
-For the behavior class, the compendium set is fixed: `check_prompts.md` + `check_pedagogy.md`. The catalog at `.claude/skills/content-creation/simulation-behavior.md` is the primary input — pass its path as `{{catalog_path}}`.
+For the behavior class, the compendium set is fixed: `check_prompts.md` + `check_pedagogy.md`. The catalog at `curriculum/evals/simulation-behavior.md` is the primary input — pass its path as `{{catalog_path}}`.
 
 For the **pedagogy** class, the primary compendium is `check_pedagogy.md` (frontmatter `eval_classes:` contains `pedagogy`). Cross-module rules that moved to `check_cross_module.md` are stub redirects in `check_pedagogy.md` — the judge returns N/A on those numbers. No sim trace.
 
@@ -143,11 +143,11 @@ curriculum/evals/scripts/update-quality.sh <file_path> --<class> REVISE:<NB>/<NT
 
 The script is deterministic, touches ONLY the maintainer-block Quality state, and is the only sanctioned writer of that block. Free-form Quality edits drift; the script keeps the format consistent. This is the **script-ratchet endpoint** for the judge classes — a verdict in, a consistent Quality row out.
 
-REVISE-stamped files still route through `/content-creation` per Step 7 for the actual fixes. The cycle-close re-fire of `/eval-fire` overwrites the REVISE row with PASS once the cycle closes (or with a tighter REVISE if blockers remain).
+REVISE-stamped files still route through Step 7 for the actual fixes. The cycle-close re-fire of `/eval-fire` overwrites the REVISE row with PASS once the cycle closes (or with a tighter REVISE if blockers remain).
 
 **A REVISE row is a claim about the CURRENT body — re-fire in the same pass as the fix.** Fixing the finding and moving on leaves the row asserting a defect that no longer exists, and a successor cannot tell stale-REVISE from live-REVISE without re-deriving the finding by hand. One judge now beats a stamp that lies for months. Corpus survey 2026-08-02: 15 files carried REVISE; 9 were already fixed.
 
-**Inheriting a REVISE of unknown age — cheap triage, do this before dispatching anything.** Each instance JSON stores the finding's own quoted evidence. Pull the longest quoted span from `rules_evaluated[].evidence` and grep the current body for it: GONE → fix landed, re-fire the class; STILL-PRESENT → finding is live, route to `/content-creation`. Brief every such re-fire with **"do not pass because the old string vanished — re-derive every rule"**; on the 2026-08-02 sweep that instruction is what caught a violation of the same rule three lines above the repaired sentence, a second over-budget bold a prior run missed, and one re-fire premise that was itself wrong (flagged sentence still present, no longer a violation because the rule had gained a carve-out).
+**Inheriting a REVISE of unknown age — cheap triage, do this before dispatching anything.** Each instance JSON stores the finding's own quoted evidence. Pull the longest quoted span from `rules_evaluated[].evidence` and grep the current body for it: GONE → fix landed, re-fire the class; STILL-PRESENT → finding is live, route to an authoring turn. Brief every such re-fire with **"do not pass because the old string vanished — re-derive every rule"**; on the 2026-08-02 sweep that instruction is what caught a violation of the same rule three lines above the repaired sentence, a second over-budget bold a prior run missed, and one re-fire premise that was itself wrong (flagged sentence still present, no longer a violation because the rule had gained a carve-out).
 
 **Scope a lint-driven re-read to the unit the check reads, never to the sentence you edited.** Slides = the `##` chunk; writing = the section. `how-this-training-was-built.md` chunk 1 took three cycles for one rule (`surface`, then `fired`, then `forcing function` three lines up) because each cycle re-read only its own repair. Canonical source: `memory/compounded/2026-05-03-platform-todos-route-to-training-tracking-surface-not-maintainer-blocks.md` (related — the Quality block is the per-class state surface; `pre-cohort-todos.md` is the cross-file TODO surface; the two are not redundant).
 
@@ -162,13 +162,13 @@ If any file has a REVISE verdict and the author wants fixes:
 1. **Exit this skill.** Do not edit inside the eval cycle.
 2. **Pick a dispatch shape, then route.** Two legal shapes:
 
-   **(a) Single-file `/content-creation` invocation** (default for one or two files). The skill loads bosser-strategy preflight, mood contract, Big Idea, compendiums, runs PDCA, and re-fires `/eval-fire` at cycle close. Slower but inside the canonical boundary.
+   **(a) Single-file authoring turn** (default for one or two files). Load the bosser-strategy preflight, mood contract, Big Idea, and today's compendiums; run PDCA; re-fire `/eval-fire` at cycle close. Slower but inside the canonical boundary.
 
    **(b) Parallel fan-out via subagents** (when 3+ files have disjoint surgical fixes — see `curriculum/CLAUDE.md` § Orchestrator pattern). Subagents cannot invoke skills, so each subagent's brief MUST include the output of `curriculum/evals/scripts/content-creation-brief.sh <file>` (training, voice contract, Big Idea, mood contract, compendiums, hard rules) — that script extracts what `/content-creation`'s preflight would have loaded. The brief output is appended verbatim into each subagent's prompt alongside the per-finding fix-hint. Strategy-loaded subagents make mood-honest edits; strategy-unloaded subagents pass compendium rules but can drift mood. **Default to including the brief; omit only when fix is purely mechanical (em-dash, banned word, single-line credit add).**
 
-3. **Override decisions** (deliberately accepting a flagged risk) get logged to `memory/compounded/` as `type: decision`. Overrides are content-creation-skill output, not eval-fire output.
+3. **Override decisions** (deliberately accepting a flagged risk) get logged to `memory/compounded/` as `type: decision`. Overrides are authoring-turn output, not eval-fire output.
 
-Diagnostic for the orchestrator: if you (the running agent) are about to call `Edit` or `Write` on a curriculum file inside this skill's invocation, STOP. The boundary collapsed. Surface the verdict, return control to the user, let them invoke `/content-creation` if they want fixes.
+Diagnostic for the orchestrator: if you (the running agent) are about to call `Edit` or `Write` on a curriculum file inside this skill's invocation, STOP. The boundary collapsed. Surface the verdict, return control to the user, let them open an authoring turn if they want fixes.
 
 Canonical source: `memory/compounded/2026-05-02-platform-sim-eval-verdicts-are-read-only.md`.
 

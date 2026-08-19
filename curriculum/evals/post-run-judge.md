@@ -62,7 +62,7 @@ Group by file touched so edits can be batched.
 
 === JOB 4 — SYSTEM UPGRADES ===
 
-If the run revealed a Claude-behavior pattern not in `.claude/skills/content-creation/SKILL.md` § "Known Claude-behavior patterns," propose the new entry.
+If the run revealed a Claude-behavior pattern not in the 15-pattern catalog at `curriculum/evals/simulation-behavior.md`, propose the new entry.
 
 If the run revealed a missing judge in any per-exercise eval, propose the judge.
 

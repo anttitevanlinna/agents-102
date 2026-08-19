@@ -36,7 +36,7 @@ Report a 5-line punch list:
 Deferred this session:
 - N substantive curriculum edits → sim+eval gate (curriculum-pre-ship-audit)
 - N research files modified      → /research-review per file
-- N article(s) flipped to ready  → article pre-publish gate (+ /goalcheck if CTO-targeted)
+- N article(s) flipped to ready  → article pre-publish gate
 - M uncommitted signal/content files → commit + push
 - K corrections worth capturing   → /compound
 ```
@@ -49,7 +49,7 @@ For each item Antti confirms, dispatch via Agent tool (parallel, main thread rea
 
 - **sim+eval** → `/curriculum-pre-ship-audit` against named files. Block on REVISE; approve-with-todos OK.
 - **research-review** → `/research-review <file>` per modified research file.
-- **article pre-publish gate** → banned-word + source-URL scan; CTO-targeted → also `/goalcheck <file> a`.
+- **article pre-publish gate** → banned-word + source-URL scan.
 
 Report eval evidence at its exact scope: `audit-eval-coverage` proves mandatory stored-instance coverage, not the seven-class pre-ship audit. Name the classes actually fired; say full audit only after all seven current-body verdicts exist and the Quality block is stamped.
 

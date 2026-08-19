@@ -4,7 +4,7 @@
 >
 > **What this file is NOT.** A generation-time checklist. Generation rules fire from `memory/check_*.md` compendiums (writing, sales_copy, student_facing, prompts, lectures, strategy_tie_in, pedagogy, research_claims, platform_and_boundaries) — not from this file.
 >
-> **Where the live rules live.** Architecture: `curriculum/CLAUDE.md`. Session/PDCA cadence and three-pass build: `.claude/skills/content-creation/SKILL.md`. Compounded learnings (atomic, schema-validated): `memory/compounded/`.
+> **Where the live rules live.** Architecture: `curriculum/CLAUDE.md`. Session/PDCA cadence and three-pass build: `check_pedagogy.md`. Compounded learnings (atomic, schema-validated): `memory/compounded/`.
 
 ---
 

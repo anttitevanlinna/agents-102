@@ -147,7 +147,7 @@ Return ONE JSON object, exactly this shape:
       "verdict": "PASS" | "REVISE" | "TODO",
       "load_bearing": true | false,
       "risks_fired": [
-        {"pattern_id": "<id>", "confidence": "high|med|low", "evidence": "<line>", "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. The author reconciles in /content-creation, not here.>"}
+        {"pattern_id": "<id>", "confidence": "high|med|low", "evidence": "<line>", "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. The author reconciles in an authoring turn, not here.>"}
       ]
     }
   ],
@@ -169,7 +169,7 @@ This file is loaded by `.claude/skills/eval-fire/SKILL.md` step 3 when the class
 
 `{{trace_path}}` resolves to `curriculum/evals/sim-cache/<training>--<surface-type>--<file-slug>.behavior.json` (e.g. `ae101--module--getting-going.behavior.json`). `<training>` is the short training key (`ae101` / `agents-101` / `claude-basics`) that prefixes the instance filenames; a bare `<file-slug>` collides across trainings. `<surface-type>` is derived from the file's parent directory (`curriculum/trainings/<t>/` → `module`, `curriculum/exercises/` → `exercise`, `curriculum/lectures/` → `lecture`, `curriculum/trainings/<t>/supplementary/` → `supplementary`, `curriculum/trainings/<t>/reference/` → `reference`) — directory-derived, not basename-keyed, so a module and an exercise sharing a slug (`spot-gaps-build-the-loop` is both) never collide.
 
-`{{catalog_path}}` resolves to `.claude/skills/content-creation/simulation-behavior.md` — the catalog table is the primary input.
+`{{catalog_path}}` resolves to `curriculum/evals/simulation-behavior.md` — the catalog table is the primary input.
 
 `{{compendium_paths}}` is the union of `check_prompts.md` (always — owns the prompt-design rules adjacent to the patterns) and `check_pedagogy.md` (always — owns the pedagogy-side patterns: self-report inflation, default-acceptance, plan-mode approval inflation, source-type blindness, self-audit charity).
 

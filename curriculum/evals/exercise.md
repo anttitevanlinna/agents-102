@@ -13,11 +13,11 @@ For the per-judge prompt templates, see `curriculum/evals/judges/{writing,story,
 | **story** | seam | Sonnet 4.6 | (when this exercise sits at a module seam) — runs `curriculum/evals/seams/seam-judge.md` |
 | **story** | arc | Sonnet 4.6 | (when this exercise is part of a Agents 101 or AE101 module sequence) — runs `curriculum/evals/arc-pass.md` |
 | **technical** | piece | Sonnet 4.6 | `check_platform_and_boundaries.md`, `check_research_claims.md` + technical sub-rules in `check_pedagogy.md` and `check_prompts.md` |
-| **behavior** | piece | Sonnet 4.6 | `check_prompts.md` + `check_pedagogy.md` + 15-pattern catalog at `.claude/skills/content-creation/simulation-behavior.md` (Class B prompt-behavior sim trace, per-prompt SHA-keyed) |
+| **behavior** | piece | Sonnet 4.6 | `check_prompts.md` + `check_pedagogy.md` + 15-pattern catalog at `curriculum/evals/simulation-behavior.md` (Class B prompt-behavior sim trace, per-prompt SHA-keyed) |
 
 ## Pass thresholds
 
-- **Mood lands** (story class): 8+/10 at every phase-end + close. 7 = facilitator-premium signature; flag what would take it from 7 to 8. Below 7 = REVISE. Scale anchors: `.claude/skills/content-creation/simulation.md` §Mood scale (canonical).
+- **Mood lands** (story class): 8+/10 at every phase-end + close. 7 = facilitator-premium signature; flag what would take it from 7 to 8. Below 7 = REVISE. Scale anchors: `curriculum/evals/simulation.md` §Mood scale (canonical).
 - **Teaching moment lands** (story class): the named teaching moment must reliably trigger across reasonable persona-skill variation. Skippable = REVISE.
 - **No high-confidence behavioral risk on a load-bearing prompt** (behavior class): a high-confidence risk fired against a teaching-moment or hand-off prompt = REVISE.
 - **All blocking rules PASS** per each class judge's JSON output. Any blocking REVISE → file BLOCK.

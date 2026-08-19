@@ -36,11 +36,7 @@ When the demo closes, the room doesn't have a new piece of software. It has a ma
 
 **1. Show the folders (3 min, no prompt).** Open the deployed workbook in a browser. Switch to the repo. Click through `curriculum/trainings/claude-basics/`, the module file, `curriculum/lectures/`, the project-root `CLAUDE.md`, `curriculum/CLAUDE.md`, `memory/`, and `site/clients/it-bits/claude-basics/`. The reveal is map-shaped: source, rules, memory, build, deployed page, all visible folders.
 
-**2. Rules, named by the agent (5 min, 3 short prompts).** Load content-generation context first:
-
-> /content-creation
-
-Then three short prompts, one at a time:
+**2. Rules, named by the agent (5 min, 3 short prompts).** Three short prompts, one at a time (the first trips the surface-detector hook, which loads the rule compendiums in front of the room):
 
 > List every rule file that applies when writing Claude Basics content. Just the map, no opening. (~30s)
 

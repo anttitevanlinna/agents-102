@@ -15,22 +15,22 @@ At session start, read:
 
 If an instruction here conflicts with a `CLAUDE.md`, the `CLAUDE.md` is the project source of truth unless the active Codex system/developer instructions require otherwise.
 
-## Content Creation Skill
+## Content Creation Rules
 
-Most curriculum/content editing in this repo is governed by the Claude `content-creation` skill. Codex does not automatically invoke Claude skills, so mimic it manually.
+Most curriculum/content editing in this repo is governed by the `memory/check_*.md` compendiums. Claude autoloads them from a hook; Codex does not, so load them by hand.
 
-Before writing, revising, or reviewing curriculum content, read the full `.claude/skills/content-creation/SKILL.md`. Then follow its firing-moment router:
+Before writing, revising, or reviewing curriculum content, read `.claude/rules/content-rules.md` and load every compendium it maps to today's surface. Then, by firing moment:
 
-- Prompt blocks students copy: also read `.claude/skills/content-creation/prompts.md`.
-- Student-facing prose, structure, voice, or body copy: also read `.claude/skills/content-creation/writing.md`.
-- Simulation, testing, or PDCA Test/Check work: also read `.claude/skills/content-creation/simulation.md`.
+- Prompt blocks students copy: also read `check_prompts.md`.
+- Student-facing prose, structure, voice, or body copy: also read `check_student_facing.md` + `check_writing.md`.
+- Simulation, testing, or PDCA Test/Check work: also read `curriculum/evals/simulation.md`.
 - Any student-, buyer-, or external-facing prose: read `.claude/rules/content-rules.md` and the matching `check_*.md` compendiums before drafting. Use the exact compendium directory named inside `.claude/rules/content-rules.md`; in current Codex checkouts this may be a private per-project Claude memory path rather than repo-local `memory/`.
 
 When editing any fenced prompt block that students copy, run a final prompt-shape pass before answering. Check at minimum: no placeholders inside the fence; any student-supplied input uses the open-hook pattern with the colon line last; file paths match the student's working folder; save/read artifacts are coherent for downstream phases; the prompt starts from the normal LLM work request before adding orchestration. Do this even if the relevant rule was just loaded into context.
 
 When asked for a session retro, do not leave it as chat-only reflection. Select the one improvement that should change future behavior, persist it in the appropriate rule or memory surface, and report the path where it was saved.
 
-The `content-creation` skill requires the private `bosser-strategy` skill for generation work. If `~/.claude/skills/bosser-strategy/SKILL.md` is absent, do not generate curriculum; explain that the strategic context is missing. If present, use it to resolve `bosser-strategy:<filename>` references on demand.
+Generation work requires the private `bosser-strategy` skill. If `~/.claude/skills/bosser-strategy/SKILL.md` is absent, do not generate curriculum; explain that the strategic context is missing. If present, use it to resolve `bosser-strategy:<filename>` references on demand.
 
 For Claude Basics specifically, resolve and read `bosser-strategy:content-strategy-claude-basics.md` before generating or reshaping module, exercise, lecture, prompt, or cohort-facing prose. Do not fall back to the Agents 101 strategy doc for Claude Basics work.
 

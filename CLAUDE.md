@@ -3,7 +3,7 @@
 Curated knowledge engine for the agentic transformation. **Curate → Connect → Advise.**
 
 - **Research** (OODA, findings, KB, signals) → [`continuous-research/CLAUDE.md`](continuous-research/CLAUDE.md). Auto-loads under `continuous-research/`.
-- **Curriculum** → [`curriculum/CLAUDE.md`](curriculum/CLAUDE.md) + `/content-creation`.
+- **Curriculum** → [`curriculum/CLAUDE.md`](curriculum/CLAUDE.md). Generation rules autoload per [`.claude/rules/content-rules.md`](.claude/rules/content-rules.md).
 - **Strategy** (value prop, buyer, sequence, funnel, IP) → `bosser-strategy` skill.
 - **Research results** → `continuous-research/synthesis/index.md`. Don't hardcode findings here.
 

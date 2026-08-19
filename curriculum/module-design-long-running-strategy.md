@@ -4,7 +4,7 @@
 
 - Generation-time rules fire from `memory/check_*.md`.
 - Architecture lives in `curriculum/CLAUDE.md`.
-- Per-turn PDCA lives in `.claude/skills/content-creation/SKILL.md`.
+- Per-turn PDCA lives in `check_pedagogy.md`.
 - Compounded atomic learnings live in `memory/compounded/`.
 - *"Rules the file has learned"* below = ONLY long-running-mode rules. Cross-surface rules go to `/compound`, not here.
 

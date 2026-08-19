@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # content-creation-brief.sh — emit the strategic context for a curriculum file.
 #
-# Subagents can't invoke the /content-creation skill (skills don't load in
+# Subagents don't get the autoloaded compendiums (hooks don't fire in
 # subagents). When the orchestrator dispatches fan-out edits, this script
-# extracts what /content-creation's preflight would have loaded:
+# extracts what an authoring turn's preflight would have loaded:
 #   - training (agents-101 | ae101 | shared) → voice contract
 #   - Big Idea (from ## Big Idea section)
 #   - Mood contract (from maintainer block, when present)
@@ -12,7 +12,7 @@
 #
 # The orchestrator pipes this into each subagent's brief verbatim, alongside
 # the per-finding fix-hint. Subagents now edit with strategy in context, same
-# shape as /content-creation does in the main thread.
+# shape as an authoring turn does in the main thread.
 #
 # Strategic source (bosser-strategy:content-strategy.md) is a private skill —
 # orchestrator loads it once per session and pastes the relevant module slice

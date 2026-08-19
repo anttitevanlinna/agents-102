@@ -13,12 +13,12 @@ For the per-judge prompt templates, see `curriculum/evals/judges/{writing,story,
 | **story** | seam | Sonnet 4.6 | (when this lecture sits at a module seam) — `curriculum/evals/seams/seam-judge.md` |
 | **story** | arc | Sonnet 4.6 | (when this lecture is part of a Agents 101 or AE101 module sequence) — `curriculum/evals/arc-pass.md` |
 | **technical** | piece | Sonnet 4.6 | `check_platform_and_boundaries.md`, `check_research_claims.md` + technical sub-rules in `check_pedagogy.md` and `check_prompts.md` |
-| **behavior** | piece | Sonnet 4.6 | (only when the lecture body contains `**Prompt**` blocks a student would copy — most lectures don't) `check_prompts.md` + 15-pattern catalog at `.claude/skills/content-creation/simulation-behavior.md` |
+| **behavior** | piece | Sonnet 4.6 | (only when the lecture body contains `**Prompt**` blocks a student would copy — most lectures don't) `check_prompts.md` + 15-pattern catalog at `curriculum/evals/simulation-behavior.md` |
 
 ## Pass thresholds
 
 - **Leap test** (story class): a CTO / builder leader can do the named outcomes after reading. Otherwise REVISE.
-- **Mood lands** (story class): 8+/10 at close. Below 7 at close = REVISE. Scale anchors: `.claude/skills/content-creation/simulation.md` §Mood scale (canonical).
+- **Mood lands** (story class): 8+/10 at close. Below 7 at close = REVISE. Scale anchors: `curriculum/evals/simulation.md` §Mood scale (canonical).
 - **Lecture placement** (story class, via `check_lectures.md`): meta-frame lectures are closers, not openers. Minimal lecturing before contrast-mood exercises.
 - **All blocking rules PASS** per each class judge's JSON output. Any blocking REVISE → file BLOCK.
 

@@ -84,7 +84,7 @@ Return ONE JSON object, exactly this shape:
       "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS" | "REVISE" | "N/A",
       "evidence": "<line-number:quoted-substring> if REVISE; null otherwise",
-      "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. The author reconciles in /content-creation, not here. null if PASS.>",
+      "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. The author reconciles in an authoring turn, not here. null if PASS.>",
       "blocking": true | false
     }
   ],

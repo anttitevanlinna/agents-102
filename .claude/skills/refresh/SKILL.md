@@ -1,6 +1,6 @@
 ---
 name: refresh
-description: Proactively audit the memory store and content-creation rule surfaces for staleness. Walks memory/, memory/compounded/, memory/check_*.md, and the content-creation/article/self-study skills. Outputs Keep / Update / Consolidate / Replace / Delete candidates with one-line reasons. Antti approves interactively.
+description: Proactively audit the memory store and content rule surfaces for staleness. Walks memory/, memory/compounded/, memory/check_*.md, and the self-study skill. Outputs Keep / Update / Consolidate / Replace / Delete candidates with one-line reasons. Antti approves interactively.
 argument-hint: [scope] (memory | compendiums | skills | all)
 ---
 
@@ -55,7 +55,7 @@ For each entry:
 For each:
 - **Rule freshness:** any rule that references a specific incident, person, or session-artifact older than 6 months and not re-referenced since → flag for Update (generalize or retire).
 - **Contradiction across compendiums:** `check_writing.md` vs `check_sales_copy.md` vs `check_student_facing.md` — do two compendiums give conflicting advice on the same surface? Flag for Consolidate.
-- **Skill-sync:** `check_student_facing.md` rules should match `.claude/skills/self-study/SKILL.md` and `.claude/skills/content-creation/SKILL.md`. `check_sales_copy.md` rules should match `ai-training/design.md § 6`. Flag divergences.
+- **Skill-sync:** `check_student_facing.md` rules should match `.claude/skills/self-study/SKILL.md`. `check_sales_copy.md` rules should match `ai-training/design.md § 6`. Flag divergences.
 
 ### `skills` — files under `.claude/skills/*/SKILL.md`
 

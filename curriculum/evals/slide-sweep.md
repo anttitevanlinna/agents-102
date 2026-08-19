@@ -65,7 +65,7 @@ A judge run over these files that does NOT flag these is under-sensitive; fix th
 
 1. **Audit:** `/eval-fire slides <files>` in batches (parallel judge subagents, one per file — orchestrator pattern, disjoint files). Tier 1 first; calibration check against the table above on the M1 files before trusting tier-1 verdicts at scale.
 2. **Stamp:** every verdict via `update-quality.sh <file> --slides PASS|REVISE:<note>` (script extended for the slides class 2026-07-08; slides omitted from legacy rows until first judged).
-3. **Fix:** REVISE files route per eval-fire step 7 — parallel fan-out with `content-creation-brief.sh` output prepended per subagent (3+ files, disjoint, surgical), or `/content-creation` single-file for anything touching mood/arc. Referent fixes are usually one-clause restatements; demo-beat and orphan-slide fixes can reshape a chunk — those get the brief.
+3. **Fix:** REVISE files route per eval-fire step 7 — parallel fan-out with `content-creation-brief.sh` output prepended per subagent (3+ files, disjoint, surgical), or a single-file authoring turn for anything touching mood/arc. Referent fixes are usually one-clause restatements; demo-beat and orphan-slide fixes can reshape a chunk — those get the brief.
 4. **Re-fire:** cycle-close re-run of `/eval-fire slides` on fixed files; overwrite REVISE with PASS.
 5. **Neighbours:** a fix that renames a heading or cuts a beat re-checks inbound anchors (`grep -rn "<slug>#"` + module include lines).
 

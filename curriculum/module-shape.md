@@ -1,6 +1,6 @@
 # Module file shape + cross-doc links
 
-Canonical template + include/link mechanics. Loaded by `/content-creation` Pass 1 + any session creating a new module file or editing includes/cross-doc links. Pointer from `curriculum/CLAUDE.md`.
+Canonical template + include/link mechanics. Loaded at Pass 1 of the three-pass build (`check_pedagogy.md`) + any session creating a new module file or editing includes/cross-doc links. Pointer from `curriculum/CLAUDE.md`.
 
 ## Module File Shape
 

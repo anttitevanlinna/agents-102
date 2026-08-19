@@ -1,6 +1,6 @@
 # Agents 101 Trainer Guide
 
-**What this file is.** Delivery prep for Agents 101. Read before your first cohort, then re-skim the relevant module before each session. This is for what happens in the room; authoring rules live in `memory/check_*.md` and `.claude/skills/content-creation/SKILL.md`.
+**What this file is.** Delivery prep for Agents 101. Read before your first cohort, then re-skim the relevant module before each session. This is for what happens in the room; authoring rules live in `memory/check_*.md`.
 
 Agents 101 is the chat-to-systems leap for builder leaders. The student starts with ordinary LLM use and leaves with a compounding working directory: memory, sources, agents, skills, judges, outputs, and a root `CLAUDE.md` earned through work.
 

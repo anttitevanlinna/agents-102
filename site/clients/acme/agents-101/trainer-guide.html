@@ -2353,7 +2353,7 @@ body.workbook { padding-top: 3rem; }
 
 <section class="module" id="trainer-guide">
 <h1 id="agents-101-trainer-guide">Agents 101 Trainer Guide</h1>
-<p><strong>What this file is.</strong> Delivery prep for Agents 101. Read before your first cohort, then re-skim the relevant module before each session. This is for what happens in the room; authoring rules live in <code>memory/check_*.md</code> and <code>.claude/skills/content-creation/SKILL.md</code>.</p>
+<p><strong>What this file is.</strong> Delivery prep for Agents 101. Read before your first cohort, then re-skim the relevant module before each session. This is for what happens in the room; authoring rules live in <code>memory/check_*.md</code>.</p>
 <p>Agents 101 is the chat-to-systems leap for builder leaders. The student starts with ordinary LLM use and leaves with a compounding working directory: memory, sources, agents, skills, judges, outputs, and a root <code>CLAUDE.md</code> earned through work.</p>
 <h2 id="operating-contract">Operating Contract</h2>
 <p>You project the workbook page. There are no slides. You demo each exercise prompt slowly while the room copy-pastes into their own runtime. You honor the conversation pauses in the exercise body. When the agent runs, you fill the air with dry-run evidence, tool tips you actually use, or why this module is shaped the way it is.</p>
@@ -2498,7 +2498,7 @@ body.workbook { padding-top: 3rem; }
                 { slug: 'build-a-project-from-zero',  title: 'No repo to bring? Build one' },        // Prework
                 { slug: 'agentic-engineering-progression', title: 'The agentic engineering progression' }, // M1
                 { slug: 'the-lethal-trifecta',        title: 'The lethal trifecta' },                // M3
-                { slug: 'token-efficiency',           title: 'Token efficiency: the craft and the folklore' }, // M3
+                { slug: 'the-context-ceiling',        title: 'The context ceiling and token efficiency: the craft and the folklore' }, // M2→M3
                 { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Reading Uncle Bob\'s Agent Experiments' }, // M4→M5
                 { slug: 'verification-asymmetry',     title: 'Verification asymmetry' },             // M4→M5
                 { slug: 'workflow-composition-lineages', title: 'Workflow composition lineages' },   // M6
@@ -2697,6 +2697,17 @@ body.workbook { padding-top: 3rem; }
     // order-independent. Every tool that scans `{{prompt:` as a reference treats
     // `{{cut:}}` as an equivalent reference (a cut candidate is still "used").
     var PROMPT_CUT_RE = /^\{\{cut:([a-z0-9-]+)(?:\|([a-z0-9-]+))?\}\}[ \t]*$/gm;
+
+    // Figure-include marker: `{{figure:<key>}}` on its own line, expanded by
+    // expandFigures() at the start of the markdown pipeline (before marked).
+    // Source of truth lives in curriculum/figures/<key>.md — a blank-line-free
+    // `<figure class="diagram">…</figure>` raw-HTML block; the SPA reads the
+    // compiled site/figures.json registry, the build script reads source files
+    // directly (scripts/compile-figures.js). One drawing, many slides: a
+    // figure two lectures re-show (the map, the frontier 2x2) is authored
+    // once and referenced from each. Marker MUST be alone on a line so the
+    // expansion lands as a block-level raw-HTML run.
+    var FIGURE_INCLUDE_RE = /^\{\{figure:([a-z0-9-]+)\}\}[ \t]*$/gm;
 
     // Runtime-map marker: `{{runtime-map:<module-slug>}}` on its own line,
     // expanded by expandTimings(). Sibling of `{{prompt:}}` — same alone-on-a-line
@@ -3141,6 +3152,31 @@ body.workbook { padding-top: 3rem; }
             throw new Error(
                 'expandPrompts: unbalanced {{covered:}} region(s): ' +
                 opens + ' open vs ' + closes + ' close'
+            );
+        }
+        return out;
+    }
+
+    // Replace every `{{figure:<key>}}` line in `md` with the registry's
+    // figure block. Same contract as expandPrompts: permissive by default
+    // (unknown keys pass through as visible literal text), strict mode throws
+    // with every unresolved key so the build fails instead of shipping a
+    // missing drawing.
+    function expandFigures(md, registry, opts) {
+        if (!md || !registry) return md;
+        var unresolved = [];
+        var out = md.replace(FIGURE_INCLUDE_RE, function (match, key) {
+            var block = registry[key];
+            if (!block) {
+                unresolved.push(key);
+                return match;
+            }
+            return block;
+        });
+        if (opts && opts.strict && unresolved.length) {
+            throw new Error(
+                'expandFigures: unresolved {{figure:<key>}} marker(s): ' +
+                unresolved.map(function (k) { return '{{figure:' + k + '}}'; }).join(', ')
             );
         }
         return out;
@@ -3830,7 +3866,9 @@ body.workbook { padding-top: 3rem; }
         applyContentFlags: applyContentFlags,
         renderPromptBlock: renderPromptBlock,
         expandPrompts: expandPrompts,
+        expandFigures: expandFigures,
         PROMPT_INCLUDE_RE: PROMPT_INCLUDE_RE,
+        FIGURE_INCLUDE_RE: FIGURE_INCLUDE_RE,
         RUNTIME_MAP_RE: RUNTIME_MAP_RE,
         expandTimings: expandTimings,
         extractParent: extractParent,

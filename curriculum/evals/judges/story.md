@@ -41,7 +41,7 @@ If the file has no `## Phase` headers (lecture, supplementary, prework), the who
 
 ### Trace generation protocol
 
-Follow the persona-reader protocol at `.claude/skills/content-creation/simulation.md` (Class A). Default delivery mode = `in-room` (classroom-first) across all trainings. For Agents 101 exercises, persona is "SVP of HR at a 500-person Nordic software company, used ChatGPT weekly for drafting, never built an agent, never used Claude Code before." For AE101, persona is "mid-level software engineer with 5 years experience, hands-on with Claude Code daily for 2 weeks, has shipped one agent to a non-critical workflow." For Claude Basics, persona is "IT-leaning rollout custodian at a 500-person Nordic company, used ChatGPT a handful of times, OneDrive-comfortable, never built an agent, never used Cowork before today; in the room because the company bought Claude licenses and asked their team to help roll it out." For lectures or supplementary, persona reads the file as prework and reports comprehension + lingering questions.
+Follow the persona-reader protocol at `curriculum/evals/simulation.md` (Class A). Default delivery mode = `in-room` (classroom-first) across all trainings. For Agents 101 exercises, persona is "SVP of HR at a 500-person Nordic software company, used ChatGPT weekly for drafting, never built an agent, never used Claude Code before." For AE101, persona is "mid-level software engineer with 5 years experience, hands-on with Claude Code daily for 2 weeks, has shipped one agent to a non-critical workflow." For Claude Basics, persona is "IT-leaning rollout custodian at a 500-person Nordic company, used ChatGPT a handful of times, OneDrive-comfortable, never built an agent, never used Cowork before today; in the room because the company bought Claude licenses and asked their team to help roll it out." For lectures or supplementary, persona reads the file as prework and reports comprehension + lingering questions.
 
 If the orchestrator passes `personas: N` (N > 1) via `/eval-fire story --personas N`, run the audience triangle: (a) mid-layer competent, (b) opinionated senior, (c) fast operator. Each persona produces its own trace stored at `{{trace_path}}` with persona-keyed records.
 
@@ -127,7 +127,7 @@ Return ONE JSON object, exactly this shape:
       "rule_lead": "Forcing functions live in prompts, not body.",
       "verdict": "PASS" | "REVISE" | "N/A",
       "evidence": "<line:quote or trace.phases[N].field if REVISE; null otherwise>",
-      "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. The author reconciles in /content-creation, not here. null if PASS.>",
+      "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. The author reconciles in an authoring turn, not here. null if PASS.>",
       "blocking": true | false
     }
   ],

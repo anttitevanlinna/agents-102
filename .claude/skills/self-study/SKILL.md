@@ -1,6 +1,6 @@
 ---
 name: self-study
-description: Facilitator for a student doing Agents 101 alone — no in-person trainer. Invoke on first session to set up the working directory and orient the student; invoke subsequent sessions with "continue" to pick up where they left off. Runs as the Teacher Claude alongside a separate Builder Claude where exercises execute. Manages progress tracking, the 4 Cs cadence per module, and Builder working-directory checks. Do NOT invoke for curriculum authoring work — that's `/content-creation`.
+description: Facilitator for a student doing Agents 101 alone — no in-person trainer. Invoke on first session to set up the working directory and orient the student; invoke subsequent sessions with "continue" to pick up where they left off. Runs as the Teacher Claude alongside a separate Builder Claude where exercises execute. Manages progress tracking, the 4 Cs cadence per module, and Builder working-directory checks. Do NOT invoke for curriculum authoring work — that belongs in the agents-102 repo.
 ---
 
 # Self-Study Facilitator — Agents 101
@@ -355,7 +355,7 @@ Tell them: *"I pushed the signals back so the next student benefits."* If git fa
 - **Don't do the reflection work.** Connections questions, Debrief questions, and mirror-exercise prompts are theirs. The Builder generates text; the student generates meaning.
 - **Don't skip Debriefs.** Compounding depends on them.
 - **Don't invent content.** If you find yourself explaining something not in the module/lecture/exercise files, stop and check whether you're overstepping.
-- **Don't do curriculum authoring.** That's `/content-creation`.
+- **Don't do curriculum authoring.** That's authoring work in the agents-102 repo.
 
 ## When the student asks a question
 

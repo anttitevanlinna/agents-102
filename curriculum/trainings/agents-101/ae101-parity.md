@@ -54,6 +54,8 @@ Four read-only scouts ran 2026-08-19; every finding is promoted into § *Punch l
 
 ## Confirmed non-gaps
 
+- **A101 puts `## Key Concepts` ABOVE `## Debrief`**, where `module-shape.md` wants the recap after the last teaching section. Consistent across all A101 modules, and predates this pass. Reordering is a training change, not a machinery match — out of scope here. Raise it with Antti separately if it is worth raising at all.
+
 - `.claude/skills/self-study/` paths: all resolve. `curriculum/self-study-signals/`, `.../friction/`, `curriculum/scaffolds/agents-101-starter/` all exist; `~/.claude/agents-102-self-study.json` is a runtime state file in the user's home, correctly absent until a first self-study session writes it. Earlier "two stale paths" flag was wrong.
 
 Verified present for A101 — do not re-investigate, do not "fix":
@@ -69,7 +71,11 @@ Each item: `[ ] [S/M/L] <gap> → <fix>`. Done items are deleted, not annotated 
 
 - [ ] [M] `audit-eval-coverage.js` has no `--training` flag; `SURFACES` 100% AE101-hardcoded → the coverage gate silently ignores A101. **BLOCKED 2026-08-19: a concurrent session is live in this file (and `.test.js`). Do not touch. Re-check `git status` before starting.**
 - [ ] [L] Timings. `calculate-time.js --training agents-101 --check` already runs and returns ~40 findings: 30 leaf files with no phase markers and no atomic declaration, 16 modules with no `- **Transitions:**` line, 32 durations written as a range where the contract is a single ceiling. A101 also has no `timings.md`, so caps and rhythm are unpriced. Fix the leaves, add `timings.md`, then pass `--training` in the `time` / `audit:timings` scripts.
-- [ ] [M] `check-slide-size --training agents-101` fails: 12 oversized slides across 7 files. AE101's precedent is to SPLIT at a conceptual seam with zero wording changes and a command-verb header (`learn-from-the-test.md:115`), not to declare the overflow; the per-slide `**Slide size accepted:**` escape exists but AE101 barely uses it. Split, then wire the A101 invocation into `test` + `test:gates` beside the other two.
+- [ ] [S] `check-slide-size --training agents-101`: **16 -> 4** (2026-08-19). Two landed fixes, one decision left.
+  - Machinery: the checker glued all three runtime branches together (`.rt-cli` / `.rt-desktop` / `.rt-cowork` / `.rt-code`) because AE101 is Code-only and never carried the construct. Now measured per runtime, widest branch wins. Also fixed the opposite error — a slide forking inline on one line counted zero, because the markup skip drops any line starting with a tag.
+  - Content: twelve sections split at their own seams, zero wording changed, headers named for the move. `## Debrief` was A101's blob; AE101 has none, because its beats each get their own `##`.
+  - **Left: four `## Key Concepts` blocks** — `personal-to-team` 398w/9b, `security` 373w/8b, `output-quality` 280w/7b, `agents-building-agents` 213w/6b. Not a seam problem; they need real cuts. Calibration: AE101 tops out at 177w/6b and A101's own other four sit at 39-155w. These four drifted; the training does not write long Key Concepts. Approval-gated (student-facing body, a decision Antti has not made) -> carded.
+  - Then wire the A101 invocation into `test` + `test:gates` beside deixis and numbering.
 
 **Prompt graph**
 

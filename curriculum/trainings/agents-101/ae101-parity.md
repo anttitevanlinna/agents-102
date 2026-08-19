@@ -54,6 +54,8 @@ Four read-only scouts ran 2026-08-19; every finding is promoted into § *Punch l
 
 ## Confirmed non-gaps
 
+- `.claude/skills/self-study/` paths: all resolve. `curriculum/self-study-signals/`, `.../friction/`, `curriculum/scaffolds/agents-101-starter/` all exist; `~/.claude/agents-102-self-study.json` is a runtime state file in the user's home, correctly absent until a first self-study session writes it. Earlier "two stale paths" flag was wrong.
+
 Verified present for A101 — do not re-investigate, do not "fix":
 
 - **Hook layer is already training-agnostic.** `eval-class-router.sh:90` matches `curriculum/(trainings/[^/]+|exercises|lectures|supplementary)/*.md` — A101 module edits route eval classes exactly as AE101's do. `prompt-edit-gate.sh:43` matches all of `curriculum/prompts/**`, so `a101-*` prompt bodies carry the same approval gate. `surface-detector.sh:36` names `agents-101` in its keyword regex.
@@ -68,7 +70,6 @@ Each item: `[ ] [S/M/L] <gap> → <fix>`. Done items are deleted, not annotated 
 - [ ] [M] `audit-eval-coverage.js` has no `--training` flag; `SURFACES` 100% AE101-hardcoded → the coverage gate silently ignores A101. **BLOCKED 2026-08-19: a concurrent session is live in this file (and `.test.js`). Do not touch. Re-check `git status` before starting.**
 - [ ] [L] Timings. `calculate-time.js --training agents-101 --check` already runs and returns ~40 findings: 30 leaf files with no phase markers and no atomic declaration, 16 modules with no `- **Transitions:**` line, 32 durations written as a range where the contract is a single ceiling. A101 also has no `timings.md`, so caps and rhythm are unpriced. Fix the leaves, add `timings.md`, then pass `--training` in the `time` / `audit:timings` scripts.
 - [ ] [M] `check-slide-size --training agents-101` fails: 12 oversized slides across 7 files. AE101's precedent is to SPLIT at a conceptual seam with zero wording changes and a command-verb header (`learn-from-the-test.md:115`), not to declare the overflow; the per-slide `**Slide size accepted:**` escape exists but AE101 barely uses it. Split, then wire the A101 invocation into `test` + `test:gates` beside the other two.
-- [ ] [S] `build-workbook.js` `THEORY_HANDBOOK_MANIFEST` has no `agents-101` entry → `--theory` hard-aborts for A101.
 
 **Prompt graph**
 
@@ -90,12 +91,12 @@ Each item: `[ ] [S/M/L] <gap> → <fix>`. Done items are deleted, not annotated 
 - [ ] [M] Noun-run for the agent sitting in `supplementary/cookbook-for-agent-system-design.md`: `### The Run` heading + 3 body uses → session / task per `vocabulary.md` § The work.
 - [ ] [M] Em-dash ban unenforced: `reference/claude-quick-reference.md` (35 body hits) + `learning-and-compounding-systems.md` (4). These files never passed through the auto-rewrite hook.
 - [ ] [S] 3 supplementaries on disk (`agent-ready-data`, `personal-to-company-gap`, `agent-trigger-list`) are unregistered in `curriculum.js`'s `supplementaries:` array. **Settled 2026-08-19: that array drives the INDEX listing only — the loader fetches by path, so a linked-but-unregistered page still opens.** So this is not a dead link; it is a page students can reach but cannot find. `agent-trigger-list` has 6 inbound body links and is plainly live → register it. `agent-ready-data` and `personal-to-company-gap` are Pass-1 skeletons whose only inbound links are from each other and from maintainer notes → register or delete is a maintainer call.
-- [ ] [S] `pre-cohort-todos.md:114` malformed backtick span `` `arrange-/chain-agents-101.sh` `` — one dead literal where two real script names belong (`curriculum/evals/mechanical/tmux-runner/arrange-agents-101.sh`, `chain-agents-101.sh`). Plus two stale self-study-signal paths in `.claude/skills/self-study/`.
 
 **Deliberate non-goals** (recorded so they are not re-proposed)
 
 - `## Optional challenges` is in all 7 AE101 modules and 0 of 9 A101 modules — but it is NOT in `module-shape.md`. Authoring nine of them is curriculum expansion, not parity. Maintainer call, not sweep work.
 - A101's `trainer-guide.md` vs AE101's per-module `trainer-modules.md` run-sheets: a deliberate decide, not a build.
+- `build-workbook.js --theory` aborts for A101 because `THEORY_HANDBOOK_MANIFEST` has no A101 entry. Checked: the theory layer is AE101-only IP (`theory-plan.md` / `theory-audit.md` / `theory-evals.md` at repo root, all AE101). A101 has no theory spine to compile, so the abort is correct and its error message already says what to do. Building one is inventing a layer, not matching machinery.
 
 ## Decided
 

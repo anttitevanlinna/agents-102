@@ -17,7 +17,7 @@
 - Bring a task that spans a few files, with enough execution depth to make plan mode worth using. A feature slice, a small migration, a targeted refactor: something where touching the wrong file matters. **A one-line fix is too small for plan mode; a refactor whose outcome you can't hold in your head is too big.**
 - If nothing fits, ask Claude to surface three candidates from recent issues, PRs, or TODO comments. Pick the one you'd ship today if you had an hour.
 
-## Phase 2: Enter plan mode and ask for the plan
+## Phase 2: Ask for the plan
 
 *15 min*
 
@@ -30,11 +30,11 @@ Drop your task after the colon.
 
 Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. Use the wait to chat with colleagues about what you're building.
 
-## Read for the decisions that matter
+## Read the right stuff first
 
-- M1 named the countermove: never let the agent say everything, take the ranked list first.
+- M1 named the countermove: steer how the agent best communicates with you; here, take the ranked list first.
 - A plan deserves more attention than ordinary agent output because approval hands it to generation. That does not make every line equally important.
-- Scan for the decisions most likely to change the work: files, design, assumptions, and verification. Push on the few that matter most.
+- Scan for the decisions most likely to change the work: files, design, assumptions, and verification. The few that matter most are the ones you'll push the agent back on in the steps ahead.
 
 ## Scan the plan before you push back
 
@@ -124,7 +124,7 @@ Then just hit stop.
 
 **Design-altitude notice added (2026-07-29, Antti-directed, from Horthy's wsff.md program-design gap):** one bullet in *Scan the plan before you push back* teaching the file-list vs interface-level altitude read. (Header was *Read the plan…* until 2026-08-12; Antti caught read-vs-scan — the section instructs scanning, and reading a plan line by line is the move this training argues against.) Sits above the *Steer up* callout's line (its examples are helpers, variable names, error wording; signatures and callers are design).
 
-**Read-whole exception replaced (2026-08-09, Antti-directed cognitive-load correction):** *Read for the decisions that matter* restores M1's never-let-the-agent-say-everything countermove. The copied prompts still offer the full plan and exhaustive branch walk; the body makes that pressure a ceiling, not a completion requirement. The student takes the highest-value sharpenings and remains the stop gate.
+**Read-whole exception replaced (2026-08-09, Antti-directed cognitive-load correction):** *Read the right stuff first* restores M1's countermove (now phrased in-body as *steer how the agent best communicates with you*, per Antti 2026-08-19). The copied prompts still offer the full plan and exhaustive branch walk; the body makes that pressure a ceiling, not a completion requirement. The student takes the highest-value sharpenings and remains the stop gate.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** Handles kept bold: the **stop** governor closing the What-you-do line, the **No, keep planning** approval path, the three push-back axis menu items (**Soft items** / **Assumptions** / **Alternatives** — third axis renamed from *Committed changes* 2026-08-12, Antti: *"commit is a git word"*; the collision is live inside this training, `compound-and-close.md` using *uncommitted change* in the git sense one module earlier. Do not restore, and do not reach for *commit* / *edit* / *fix* / *proposal* as replacements — each collides with something this arc already owns, git, plan mode's blocked edit tools, M1's bug fix, and the plan itself), the coined term **Plan-mode approval inflation** at its naming moment (bold narrowed to the handle), and the law **Find is easier than judge** newly bolded at its naming moment; all other bullet/paragraph leads de-bolded. Widget chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 

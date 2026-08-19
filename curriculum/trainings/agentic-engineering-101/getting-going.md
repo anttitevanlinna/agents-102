@@ -21,9 +21,9 @@ After this module, you will be able to:
 
 ## How we work in this room
 
-- **All learners.** Trainers included. The field moves fast, and everyone struggles to keep up.
+- **Make it work for you.** Start from the same moves, then find your optimal way of working in your system.
 - **Exercises.** Do them. That is how you experience what the model actually does.
-- **Share and discuss.** Detours and banter are welcome. The trainer will bring us back.
+- **Everybody should be answering.** The trainer keeps the room moving; they are not the debugger or necessarily the deepest Claude Code expert here. Ask Claude what is wrong, or ask out loud.
 
 ## Freedom to choose
 
@@ -109,7 +109,7 @@ Module 2 is where plan mode earns its keep: multi-file work, and a second pass t
 
 **M1 runs four in-class exercises and issues no homework.** The loop's order is orient → fix → close → compound, and the close sits third on purpose: the tracker conventions the agent surfaces at `close-the-ticket` are session evidence the compound sweep then integrates, so the field rules reach `./CLAUDE.local.md` without a separate fold step. Do not re-order compound ahead of the close. Connector install is out of scope for the room — see the exercise's own maintainer block.
 
-**Room agreement.** Cohort delivery projects `How we work in this room` and `Freedom to choose` before the opening trick-share. The first slide sets the participation norms. The second gives the group responsibility for a workable pace and makes selective cutting explicit when an individual's working memory is full. Both stay inside the existing 10-minute opening allocation. Self-study skips the room-only slides silently.
+**Room agreement.** Cohort delivery projects `How we work in this room` and `Freedom to choose` before the opening trick-share. The first slide establishes that each engineer finds their own optimal way of working, the trainer keeps the room moving rather than serving as its debugger or deepest Claude Code expert, and everybody helps answer questions. The second gives the group responsibility for a workable pace and makes selective cutting explicit when an individual's working memory is full. Both stay inside the existing 10-minute opening allocation. Self-study skips the room-only slides silently.
 
 
 **Meta (trainer):**
@@ -179,4 +179,4 @@ The shipped PR and the closed ticket are both produced this module and both live
 
 **Quality:** compendium-audited 2026-08-15 (writing@1480362 story@1480362 technical@1480362 behavior@1480362 pedagogy@1480362 strategy@1480362 slides@1480362)
 - judges @1480362: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @1cef93d: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
+- cross_module @0dea491e: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json

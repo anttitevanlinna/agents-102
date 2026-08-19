@@ -2,7 +2,7 @@
 
 ## Who this is for
 
-You've already done the hard part. You found this training because you use Claude Code regularly and you want to get further with it.
+You already know Claude Code. This is where you find out how your way of working can compound, and how much further it lets you reach.
 
 ## Context is King
 

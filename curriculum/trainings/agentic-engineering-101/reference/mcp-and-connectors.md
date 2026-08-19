@@ -57,7 +57,7 @@ Then in Claude Code:
 /mcp
 ```
 
-Browser opens; you sign in to your Atlassian org; scopes approve at user level. **Once your org's first 3LO consent is complete and the domain is allowed, individual engineers don't need per-install admin approval.** Admins control product scopes and which domains can connect, not whether individuals can install after that.
+Browser opens; you sign in to your Atlassian org; scopes approve at user level. Once your org's first 3LO consent is complete and the domain is allowed, **individual engineers don't need per-install admin approval**. Admins control product scopes and which domains can connect, not whether individuals can install after that.
 
 **Note:** the older `https://mcp.atlassian.com/v1/sse` endpoint stops working 2026-06-30 per [Atlassian's support docs](https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/). The current canonical endpoint is `/v1/mcp/authv2`.
 

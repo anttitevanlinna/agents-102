@@ -79,9 +79,18 @@ Section stays open-ended (no count locked) because the thesis is that surprises 
 
 **Voice:** First-person singular past tense, Antti's memo. Risto epistemic directness, not Rory wit. Antti reshapes in final voice; rough-cut blunt lines per `check_writing §5`. Do NOT polish past *read-aloud-in-5-7-min direct memo* — polish moves it toward credibility-performance which Antti cut in turn 7 of the generation session.
 
-**Source (the journal):** `curriculum/module-design/ae101-m6-session-notes.md` — live running notes from the 2026-04-24 generation session. Stats and the three fails pull from that file's tally + subagent drift reports. When M6 runs for a new cohort, regenerate the opener from the new session's notes — don't reuse this file's numbers. A dated memo ages cleanly on the date. A reused dated memo ages as a trip report.
+**Source (the session tally):** the 2026-04-24 M6 generation session, run by Antti. The running notes are not retained; this block is the record every number in the memo pulls from.
 
-**Design constraint (from notes, turn 8):** the Story names the CONDITION (non-determinism, universal struggle) without spoiling the SPECIFIC failure modes a reader is about to experience in Phase 1. Meta-failure (curriculum generation drifting, banned-word leak, rules loaded late) is not student-run failure (packaged run drifts at hour 2, memory thin on the critical file). Same condition, different domain. Preserved in drafting.
+- One session, 2026-04-24, one model (`claude-opus-4-7`), twenty-odd planning turns, five taste reversals by Antti on Claude's confident recommendations.
+- Three subagents in parallel produced four banned-word leaks between them. The verifier caught two more the LLM self-checks had missed, and found three of our own rules contradicting each other. Ten fixes applied in all.
+- The session opened chat-shaped: no reference artefact, no `plan.md`, no verifier.
+- Sims and evals were not run; the reference artefact had flagged them as pre-first-cohort work.
+- One paraphrase shipped as an attributed quote (the Charles line).
+- Capability check made in-session: `/schedule` is Routines, remote and cloud-backed; Desktop local tasks are a separate primitive.
+
+When M6 runs for a new cohort, regenerate the opener from that session's own tally — don't reuse these numbers. A dated memo ages cleanly on the date. A reused dated memo ages as a trip report.
+
+**Design constraint (session turn 8):** the Story names the CONDITION (non-determinism, universal struggle) without spoiling the SPECIFIC failure modes a reader is about to experience in Phase 1. Meta-failure (curriculum generation drifting, banned-word leak, rules loaded late) is not student-run failure (packaged run drifts at hour 2, memory thin on the critical file). Same condition, different domain. Preserved in drafting.
 
 **Known TODOs:**
 - Antti's rewrite pass in final voice (~15 min).
@@ -89,16 +98,16 @@ Section stays open-ended (no count locked) because the thesis is that surprises 
 <!-- backing -->
 
 Claims
-- `session-tally` · detail · "One session. 2026-04-24. One model: `claude-opus-4-7`. Twenty-odd planning turns. Five taste reversals from me on Claude's confident recommendations." ← ae101-m6-session-notes
-- `four-banned-word-leaks` · detail · "Three subagents in parallel. Four banned-word leaks across those three subagents." ← ae101-m6-session-notes
-- `verifier-caught-two-more` · detail · "It caught two more leaks the LLM self-checks had missed. It also found three of our own rules contradict each other." ← ae101-m6-session-notes
-- `ten-fixes-applied` · detail · "Ten fixes applied in all." ← ae101-m6-session-notes
-- `opened-chat-shaped` · detail · "No reference artefact. No `plan.md`. No verifier. Chat-shaped in the exact way M5 teaches you to notice." ← ae101-m6-session-notes
-- `same-rule-four-violations` · detail · "Same rule, same rules file, same task, four separate violations across four independent LLM instances." ← ae101-m6-session-notes
-- `sims-and-evals-not-run` · detail · "Claude had not run them. The reference artefact had flagged them as pre-first-cohort work." ← ae101-m6-session-notes
+- `session-tally` · detail · "One session. 2026-04-24. One model: `claude-opus-4-7`. Twenty-odd planning turns. Five taste reversals from me on Claude's confident recommendations." ← m6-generation-session
+- `four-banned-word-leaks` · detail · "Three subagents in parallel. Four banned-word leaks across those three subagents." ← m6-generation-session
+- `verifier-caught-two-more` · detail · "It caught two more leaks the LLM self-checks had missed. It also found three of our own rules contradict each other." ← m6-generation-session
+- `ten-fixes-applied` · detail · "Ten fixes applied in all." ← m6-generation-session
+- `opened-chat-shaped` · detail · "No reference artefact. No `plan.md`. No verifier. Chat-shaped in the exact way M5 teaches you to notice." ← m6-generation-session
+- `same-rule-four-violations` · detail · "Same rule, same rules file, same task, four separate violations across four independent LLM instances." ← m6-generation-session
+- `sims-and-evals-not-run` · detail · "Claude had not run them. The reference artefact had flagged them as pre-first-cohort work." ← m6-generation-session
 - `charles-actual-line` · detail · "The models were good enough. The harness wasn't." ← geoffintech-charles
-- `paraphrase-shipped-as-quote` · detail · "Claude had written a paraphrase and presented it as attribution." ← ae101-m6-session-notes, geoffintech-charles
-- `schedule-is-routines-remote` · detail · "`/schedule` is Routines, remote, cloud-based. Desktop local tasks are a separate primitive." ← ae101-m6-session-notes, cc-schedule-capability
+- `paraphrase-shipped-as-quote` · detail · "Claude had written a paraphrase and presented it as attribution." ← m6-generation-session, geoffintech-charles
+- `schedule-is-routines-remote` · detail · "`/schedule` is Routines, remote, cloud-based. Desktop local tasks are a separate primitive." ← m6-generation-session, cc-schedule-capability
 - `everyone-struggles` · vision · "Everyone struggles." ← none-owed
 - `llm-is-not-deterministic` · vision · "The LLM is not a deterministic machine." ← none-owed
 - `post-training-warmth-read` · vision · "Our read: much is caused by post-training preferring warmth over directness." ← none-owed — an owned inference, labeled as one in body. The literature edge (Sharma et al. on sycophancy) lives in painting-the-picture-with-the-llm's ledger, where the "driven in part by" hedge is marked load-bearing; do not strengthen here either.
@@ -108,13 +117,13 @@ Claims
 - `catch-it-and-encode-it` · vision · "Your job is not to stop the drift. Your job is to catch it and encode what you learned." ← none-owed
 
 Sources
-- ae101-m6-session-notes `[checked:2026-04-24 result:ATTESTED due:none]` attested:Antti 2026-04-24 M6-generation-session — [maintainer-attested] `curriculum/module-design/ae101-m6-session-notes.md`, live running notes from the session. Every number in the memo pulls from that file's tally and its subagent drift reports. The maintainer ran the session: first-hand primary, no URL owed (`check_research_claims.md §1`). **`due:none` is right here, and the reason matters** — this is a dated memo about one session that happened, not a claim about how sessions go. It cannot go stale, only be superseded. fallback: none. **Regeneration, not re-verification, is the maintenance move:** when M6 runs for a new cohort, regenerate the opener from that cohort's notes. A dated memo ages cleanly on its date; a reused dated memo ages as a trip report.
+- m6-generation-session `[checked:2026-04-24 result:ATTESTED due:none]` attested:Antti 2026-04-24 M6-generation-session — [maintainer-attested] the session tally recorded in this file's maintainer block, § *Source (the session tally)*. Every number in the memo pulls from it. The maintainer ran the session: first-hand primary, no URL owed (`check_research_claims.md §1`). The tally lives beside the memo on purpose: an attestation that delegates to a separate journal is only as durable as that journal. **`due:none` is right here, and the reason matters** — this is a dated memo about one session that happened, not a claim about how sessions go. It cannot go stale, only be superseded. fallback: none. **Regeneration, not re-verification, is the maintenance move:** when M6 runs for a new cohort, regenerate the opener from that cohort's notes. A dated memo ages cleanly on its date; a reused dated memo ages as a trip report.
 - geoffintech-charles `[checked:2026-05-25 result:OK due:2026-11-25]` https://x.com/geoffintech/status/2042002590758572377 — [practitioner direct] Geoff Charles (Ramp), 2026-04-09: *"The models were good enough. The harness wasn't."* Verified via `observations/ramp.md` plus the X oEmbed workaround; the x.com page 402s, the quote is confirmed. kb:observations/ramp.md **Load-bearing in an unusual way: the memo's whole point is that our paraphrase drifted from this line, so the verbatim IS the claim.** The documented reframe other files fall back to — "Ramp's engineers' framing converges on: the harness was the bottleneck, not the model" — is precisely the paraphrase this passage is about, and firing it here would delete the anecdote. fallback: if the quote ever fails verification, cut the paragraph rather than soften it.
 - cc-schedule-capability `[checked:2026-04-24 result:OK due:cohort]` https://code.claude.com/docs/en/ — [capability] The capability check the memo describes: `/schedule` is Routines, remote and cloud-backed; Desktop local tasks are a separate primitive. Stamped here because the memo asserts it as a fact about the product, not only as something that happened in a session. **Corroborates `the-loop-has-a-name`'s three-scheduling-primitives bullet, which carries no stamp of its own** — the same underlying check, recorded in the wrong file. fallback: re-test before a cohort; if the split has changed, this passage becomes dated-historical and needs an inline date.
 
 Frameworks
 - Non-determinism as the condition · [borrow:none] · law:none · ← none — Antti's working position, reshaped from an earlier "we live what we teach" credibility framing after the Claude-generated recommendation was cut at turn 7
-- Rules-loaded-but-bypassed · [borrow:none] · law:none · ← ae101-m6-session-notes — a loaded rule is not an enforced rule; this observation is what pushed the corpus toward forcing functions
+- Rules-loaded-but-bypassed · [borrow:none] · law:none · ← m6-generation-session — a loaded rule is not an enforced rule; this observation is what pushed the corpus toward forcing functions
 - Double-loop learning · [borrow:Argyris & Schön] · law:double-loop-learning · ← cultural-vocab — "then I compounded the session" is the second loop: not fixing the leak, changing the rule that let it leak
 
 Stance `[stance:2026-08-01 level:L4]`
@@ -124,7 +133,7 @@ Stance `[stance:2026-08-01 level:L4]`
 
 OODA
 - question: has M6 been regenerated for a new cohort, and does this memo still describe the session the shipped module came from?
-- roster: none external. This file's OODA is a read of `curriculum/module-design/ae101-m6-session-notes.md` against the module's own git history.
+- roster: none external. This file's OODA is a read of the session tally above against the module's own git history.
 - last-run: 2026-08-01
 
 <!-- /backing -->

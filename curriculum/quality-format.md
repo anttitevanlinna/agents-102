@@ -9,7 +9,7 @@ Every student-facing artifact (module / exercise / lecture / prework) carries a 
 
 No `draft` rung (removed 2026-05-31). A file is either audited — `compendium-audited` or higher — or carries no Quality line at all. Un-audited is the absence of a state, not a state; the stamper refuses to fabricate one (`update-quality.sh` errors rather than mint a floor).
 
-**Mechanical is not a rung (removed 2026-06-01).** The `tmux-runner` battery is a pre-ship system test: run it, fix what it finds, ship — it gates release like a software system test, but is not recorded as a stamp. No `- mechanical` row in artifacts; no `mechanical-tested` ladder state. (The old `bin/judge.sh` actor/judge runner was removed the same day.)
+**Mechanical is not a rung (removed 2026-06-01).** The `tmux-runner` battery is a pre-ship system test: run it, fix what it finds, ship — it gates release like a software system test, but is not recorded as a stamp. No `- mechanical` row in artifacts; no `mechanical-tested` ladder state.
 
 The ladder tops at `sim-passed` — the last *recorded* LLM check. Two things gate release but are NOT rungs, for the same reason touch-degrade would forbid ever standing on one: the `tmux-runner` system test (run pre-ship, unrecorded), and delivery reality (a cohort ran it; survived many — logged on the `- cohorts:` row as a factual record).
 

@@ -42,7 +42,7 @@ A short plan, approved in 2 minutes of plan-mode-style review before generation 
 - **Arc** — phases / beats / subsections
 - **Length band** (per Agents 101 1h45 target, or relevant variant)
 - **Practitioners to weave in** — specific named sources
-- **Vision-detail split explicit.** Name which claims are vision-layer (Antti's framing, no KB backing needed) vs. detail-layer (practitioner claims, must have KB backing). See `memory/project_vision_times_detail.md`.
+- **Vision-detail split explicit.** Name which claims are vision-layer (Antti's framing, no KB backing needed) vs. detail-layer (practitioner claims, must have KB backing). The layer split and what each layer owes → `curriculum/backing-format.md` § *Claims* (`vision` owes none, per `check_research_claims.md §7`).
 - **Research-backing check.** Every detail-layer claim points at a specific file in `continuous-research/` or a practitioner-direct URL. If unsourced: run an OODA, drop it, or move to vision-layer.
 - **Banned-word scan committed** — grep before handoff
 - **Self-eval committed** — run the relevant eval template on my own draft

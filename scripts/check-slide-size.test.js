@@ -255,6 +255,8 @@ test('--file reaches a page the training scan does not cover', () => {
   const page = 'curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md';
   const scan = run(['--report']);
   assert.doesNotMatch(scan.out, /prompt-anatomy/, 'reference pages are outside the training scan');
+  // Assert on the scan scope, not on findings: a clean page lists no rows, so
+  // matching the filename would only pass while the page happened to be over cap.
   const one = run(['--file', page]);
-  assert.match(one.out, /prompt-anatomy/, '--file must measure the page it is handed');
+  assert.match(one.out, /files:\s*1\b/, '--file must measure exactly the one page it is handed');
 });

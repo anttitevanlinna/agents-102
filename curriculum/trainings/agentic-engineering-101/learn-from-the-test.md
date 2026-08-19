@@ -58,6 +58,14 @@ Gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a wor
 - The agent makes evidence cheap; the engineer decides what it means and what becomes durable practice.
 
 <!--flag:no-module:spot-gaps-build-the-loop-->
+## Inspect your results
+
+The packaged session returns after this sitting ends. The experiment produces its evidence only when the return gets read.
+
+- Give it the read the first return got: the three lenses, your worries tested against the artefact. Where the two sessions disagree is the local evidence: which failure the kit caught, and which still recurs.
+- The verifier's green is a claim, not proof. Ask the agent to show what the gate checked and what sat outside its view before you credit the kit.
+- What recurs names your next check. Build it, send again: the loop you just ran is yours to keep running.
+
 ## Back to the map, one last time
 
 {{figure:map-engine-m4-open}}

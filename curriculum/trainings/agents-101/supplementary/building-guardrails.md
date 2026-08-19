@@ -15,6 +15,8 @@ A reference document that grows across the training. Each module that adds a new
 
 ---
 
+<!-- maintainer -->
+
 **TODO:** the sections listed here get written as each module's exercise stabilizes.
 
 **Quality:** compendium-audited 2026-05-03 (writing@bb9c1d5)

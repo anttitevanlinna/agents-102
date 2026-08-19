@@ -34,6 +34,7 @@
             ],
             supplementaries: [
                 { slug: 'what-is-an-agent',                      title: 'What is an Agent' },
+                { slug: 'agent-trigger-list',                    title: 'Agent Trigger List' },
                 { slug: 'building-guardrails',                   title: 'Building Guardrails (and Skills)' },
                 { slug: 'learning-and-compounding-systems',      title: 'Learning and Compounding Systems' },
                 { slug: 'cookbook-for-agent-system-design',      title: 'Cookbook for Agent System Design' }

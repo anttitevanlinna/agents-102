@@ -49,8 +49,8 @@ Ask Claude to sweep the session for anything earned since the first compound and
 
 **Scope is the rules file only.** The ticket beat is its own exercise (`close-the-ticket`) and runs immediately before this one, so its tracker read is already in scrollback when the sweep fires — do not add a connector or close-out step back into this file. **Emphasis budget (`check_slides.md §9`):** widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`) stays bold; body bullet leads de-bolded; no named-term handles remain in this file.
 
-**Quality:** compendium-audited 2026-08-19 (story@ba5ccf5 technical@1480362 behavior@1480362 pedagogy@1480362 strategy@1480362 slides@ba5ccf5)
-- judges @ba5ccf5: writing REVISE (see-instances/ae101--exercise--compound-and-close.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-19 (writing@a7f3966 story@ba5ccf5 technical@1480362 behavior@1480362 pedagogy@1480362 strategy@1480362 slides@ba5ccf5)
+- judges @a7f3966: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read the retro summary against session moments) + Apply (integrate the rules file from evidence).
 - **Atomic — no phase markers.** One retro pass into one rules file; the push-back and the second sweep are moves inside it, not beats beside it. Line 3 is authored, not generated.

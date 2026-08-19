@@ -1,19 +1,19 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/prework.md",
-  "body_sha": "89d99307aaf4980cde64b121117fdd6ee4ec09802e52ebda6bbc5808d448661b",
+  "body_sha": "cdf88c71834cd634161914c53bbaed2f0cd83170f7ed2c02982ea15a02166b69",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "H1/lede", "lines": "1-8"},
-    {"index": 1, "heading": "What to bring", "lines": "9-23"},
-    {"index": 2, "heading": "1. Pick THE repo", "lines": "24-35"},
-    {"index": 3, "heading": "2. Open a Claude Code session in that repo", "lines": "36-42"},
-    {"index": 4, "heading": "3. Get the content folder onto your laptop", "lines": "43-50"},
-    {"index": 5, "heading": "4. Extract the bundle and install the curated skills", "lines": "51-57"},
-    {"index": 6, "heading": "5. Pick a trivial bug and confirm Module 1 readiness", "lines": "58-71"},
-    {"index": 7, "heading": "Pre-read before Module 1", "lines": "72-77"},
-    {"index": 8, "heading": "Bring to Module 1", "lines": "78-83"}
+    { "index": 0, "heading": "H1 + lede", "lines": "1-8" },
+    { "index": 1, "heading": "Bring real work", "lines": "9-23" },
+    { "index": 2, "heading": "1. Pick THE repo", "lines": "24-35" },
+    { "index": 3, "heading": "2. Open a Claude Code session in that repo", "lines": "36-41" },
+    { "index": 4, "heading": "3. Get the content folder onto your laptop", "lines": "43-50" },
+    { "index": 5, "heading": "4. Extract the bundle and install the curated skills", "lines": "51-57" },
+    { "index": 6, "heading": "5. Pick a trivial bug and confirm Module 1 readiness", "lines": "58-71" },
+    { "index": 7, "heading": "Pre-read before Module 1", "lines": "72-77" },
+    { "index": 8, "heading": "Bring to Module 1", "lines": "78-83" }
   ],
   "rules_evaluated": [
     {
@@ -22,7 +22,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm check: a reader stuck on an unresolved referent loses the thread. Closest candidate: chunk 1 line 22 'Plus the repo itself (picked next)' — 'the repo' is reused from chunk 0 line 7 ('Come to Module 1 with the repo picked'), in-file carve-out applies; 'picked next' is a reading-order pointer (rule 12 territory, not rule 1) and resolves fine since chunk 2 immediately follows. Chunk 8 line 80 'The bug you picked' resolves to chunk 6's screening step, same file, earlier. No never-named or vague-with-history referents found across all 9 chunks.",
+      "evidence": "Every pronoun/demonstrative checked against a sequential read: chunk 1 line 12 'them'/'they' forward-point to the bulleted task-size list two lines below within the SAME chunk (in-chunk forward reference, not cross-chunk); chunk 3 line 40 'that repo' resolves to chunk 2's 'Pick THE repo' (line 24, sequential); chunk 8 line 80 'The bug you picked' resolves to chunk 6's bug-screen (session-artifact carve-out). No never-named or vague-with-history referent found in any of the 9 chunks. Harm check: a broken referent here would strand a reader mid-slide; none found, so no REVISE.",
       "fix_hint": null,
       "blocking": true
     },
@@ -32,7 +32,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm check: a reader can't tell which file/section is meant. Two in-body links checked: chunk 2 line 34 '[build one from zero](trainings/.../build-a-project-from-zero.md)' — named by claim, not located by position. Chunk 4 line 49 '[the cohort URL]' — named, not located. Neither points at another file by page position ('the opening lecture said').",
+      "evidence": "Two links to other documents: chunk 2 line 34 '[build one from zero](trainings/agentic-engineering-101/supplementary/build-a-project-from-zero.md)' names the target inline ('build one from zero'), not located by position; chunk 7 line 76 Willison link is named by title and author in the same sentence. Neither points at another file by position ('the opening lecture said'). No cross-file positional callback found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -42,7 +42,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm check: a dead-beat reference strands the reader on something that no longer exists. Prework precedes Module 1, so there are no prior-module beats to reference. Closest candidate, chunk 8 line 80 'The bug you picked' — points at chunk 6 (same file, step 5), which exists and precedes it in reading order. No cross-module 'the X you did/saw' construction present.",
+      "evidence": "chunk 8 line 80-81 'Come to Module 1 without one and you'll be scrambling for one while the exercise is already fixing bugs' names a real M1 beat: maintainer block's Artefact contracts table (this file, line ~114) confirms 'M1 fix-tests-first prompt consumes the selected bug'. chunk 6's bug-screen references the repo's own backlog, not a prior training beat. No dead-beat reference found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -52,7 +52,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-before-reveal construction (no 'take a guess before...' instruction paired with a narrated outcome) appears anywhere in the body.",
+      "evidence": "No guess-before-reveal construction anywhere in the body; prework has no live-demo beat.",
       "fix_hint": null,
       "blocking": true
     },
@@ -62,7 +62,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm check: a slide with only a wait-state/context-dependent bullet projects as saying nothing. Thinnest candidate is chunk 3 (lines 36-42, 'Open a Claude Code session'): even at 2 sentences it carries one self-carrying claim ('Open a new Claude Code session at the repo you just picked. CLI or desktop both work.'). Every other chunk carries substantially more. None are orphans.",
+      "evidence": "Thinnest chunk is chunk 3 ('2. Open a Claude Code session in that repo', 20 words per check-slide-size.js) but still carries a self-standing instruction ('Open a new Claude Code session at the repo you just picked. CLI or desktop both work.') — not a bare wait-state. Every other chunk carries substantially more standalone content. No orphan found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -72,7 +72,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all 8 '##' headers against their chunk content: e.g. chunk 4 header 'Get the content folder onto your laptop' (line 43) is followed by exactly that instruction (line 45, fetch the tarball); chunk 6 header 'Pick a trivial bug and confirm Module 1 readiness' (line 58) matches its two-part content (bug screen + readiness check). No header is contradicted by its own chunk.",
+      "evidence": "Checked all 8 headers against their chunk content: 'Bring real work' (chunk 1) is the header the content the chunk's own content contradicts test applied — content lists task sizes to bring, consistent; 'Bring to Module 1' (chunk 8) content is exactly what to bring plus the opening question, consistent. No header the content contradicts.",
       "fix_hint": null,
       "blocking": false
     },
@@ -82,9 +82,9 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all five sub-items across all chunks. 'Not X. Not Y. Z.': none found. Anaphora/epistrophe triple: closest candidate chunk 2 line 29 'Real code, real tests, real history' — third leg 'real history' is concrete and distinct (git history, not a repeat of code/tests), stays inside per rule text. Self-grading superlatives: none found (no 'one of the most useful' phrasing). Number + own retraction: none found ('30 to 120 minutes' chunk 1 line 18 is a plain range, not a retraction). Abstraction-noun stacks: none found. Empty-leg verb triplets: none found.",
+      "evidence": "Checked all 5 sub-items across all 9 chunks: no 'Not X. Not Y. Z.' construction; no anaphora/epistrophe triple; no self-grading superlative (nothing like 'one of the most useful moves'); no number-plus-retraction; no abstraction-noun stack; no empty-leg verb triplet. Clean across the file.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -92,7 +92,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "grep -inE for surface|firing|compendium|forcing function|beat|mood|connections over body (lines 1-83): 2 hits, both 'surface' — chunk 1 line 17 'external or user-facing surface' and chunk 2 line 29 'surface area for rules and memory to land on'. Both are ordinary software/idiomatic usage (a shippable UI/API surface; physical-metaphor 'surface area'), not the repo-internal noun sense ('a writing surface' for a document) rule 8 bans. No compendium/beat/mood/firing/forcing-function hits.",
+      "evidence": "No repo/maintainer vocabulary (compendium, forcing function, beat, mood, surface-as-noun, firing) found in body prose. 'Plan mode' (chunk 1, line 16) is a real Claude Code feature name, ordinary to the engineer audience, not repo-internal dialect.",
       "fix_hint": null,
       "blocking": true
     },
@@ -101,9 +101,9 @@
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "REVISE",
-      "chunks_flagged": [1],
-      "evidence": "chunk 1 \"What to bring\": line 20: \"**Separate tasks off your backlog.**\" — a whole imperative sentence (5 words) bolded, not a noun-phrase handle. The section's four list bullets (lines 15-18, 'Trivial bug', 'A small multi-file task', 'A small feature', 'A bigger piece') read as a menu of task sizes and clear under the reading-list/menu waiver — each bolded lead is a short noun-phrase handle within the ≲5-word cap. This fifth bolded item sits outside that list, is a directive rather than a label, and doesn't match the §34 exception's function (naming a floor+ceiling in one line) or its named headings ('## Prework', '## Bring to Module N', '## Next') — this chunk is headed '## What to bring'. Harm is mild (one extra bold element on an otherwise-clean menu slide) but the rule's own text bans exactly this shape ('never a whole lead sentence').",
-      "fix_hint": "Unbold the sentence, or recast as a short handle if it needs to stand out.",
+      "chunks_flagged": [7],
+      "evidence": "chunk 7 \"Pre-read before Module 1\": line 76 bolds '**Read: Simon Willison, [Vibe engineering](...)**' — the whole mode-word-plus-author-plus-title, not the mode word alone. The compendium names this exact shape as the violation: 'bold the mode word alone (`**Read:**`, `**Watch:**`) and leave the title plain. Bolding mode-plus-title is the pre-2026-07-09 monoculture wearing a list for cover.' The reading-list carve-out lifts the per-slide budget here but not the handle cap, and this bold exceeds it in kind, not just word count. Harm: low (single one-item pre-read slide, not a multi-item scan surface where the pattern would actually mislead) but the rule is unambiguous and the shape matches its own named failure verbatim. Chunk 1's four bulleted task-size bolds ('Trivial bug', 'A small multi-file task', etc.) are checklist-item-name handles, ≲5 words each, explicitly allowed by the base rule — not flagged. The de-bolded 'Separate tasks off your backlog.' (chunk 1, line 20) now carries no bold and does not contribute to any over-budget finding — the de-bold this session correctly cleared the prior rule-9 finding on that line.",
+      "fix_hint": "Bold only 'Read:' and leave 'Simon Willison, Vibe engineering (October 2025)' plain.",
       "blocking": false
     },
     {
@@ -112,7 +112,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Not mechanically re-verified against the composed deck this run (no headless-Chrome check executed). Structural read: prework.md is a module file under curriculum/trainings/agentic-engineering-101/, which the renderer wraps in section.module (per this rule's own architecture note); every '##' chunk sits inside that wrapper, and no phase-less prose section sits outside it in source. This mechanical claim is unverified live; flagging so the maintainer can re-run scripts/slides.test.js or a headless check if this file is suspected of a drop.",
+      "evidence": "Ran: node scripts/check-slide-numbering.js --file curriculum/trainings/agentic-engineering-101/prework.md → 'OK — 1 files, Phase/Step numbering consistent' (confirms the file is recognized by the slide tooling). Read site/layouts/slides.js lines 236-248 directly: comment states 'A prose section with no phases — prework, supplementary, reference — is slide-ified in place under a kind-labelled divider... prose sections get a kind code (P prework...)' — prework is explicitly handled by name in the current (fixed) code path, not silently dropped. All 8 `##` chunks reach the composed deck.",
       "fix_hint": null,
       "blocking": true
     },
@@ -122,7 +122,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-numbering.js --file curriculum/trainings/agentic-engineering-101/prework.md` → output: \"OK — 1 files, Phase/Step numbering consistent.\" Headers '## 1.' through '## 5.' are consecutive; no in-body 'Step N'/'Phase N' cross-references to check.",
+      "evidence": "Ran: node scripts/check-slide-numbering.js --file curriculum/trainings/agentic-engineering-101/prework.md → 'OK — 1 files, Phase/Step numbering consistent'. The hand-numbered '1.'..'5.' step headers (chunks 2-6) are consecutive from 1 and every in-file reference resolves.",
       "fix_hint": null,
       "blocking": false
     },
@@ -132,7 +132,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/prework.md` → output: \"OK — 1 files, no page-geometry pointers across the slide cut.\" Confirms the canonical failure this rule cites ('the repo itself (picked in Step 1 below)') is no longer present — current text (chunk 1 line 22) reads 'Plus the repo itself (picked next)', a reading-order pointer, not a page-position one.",
+      "evidence": "Ran: node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/prework.md --report → exit 0, no output (clean); node scripts/check-slide-deixis.js --file <same> (non-report mode) → 'OK — 1 files, no page-geometry pointers across the slide cut.' The canonical pre-fix failure this rule cites ('the repo itself (picked in Step 1 below)') is gone from the current body — the 'Bring real work' chunk (line 22) now reads 'Plus the repo itself (picked next)...' with no page-position pointer.",
       "fix_hint": null,
       "blocking": true
     },
@@ -142,7 +142,7 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Rule text states explicitly for the open half: 'There is no rule here.' The settled mechanism half is a platform claim, not a per-file editorial check. Both in-body links (chunk 2, chunk 4) are already covered under rule 2 (named, not located).",
+      "evidence": "Review-only surface per the rule itself ('never gates'). Two links present: chunk 2's structural include-link to the fallback-repo supplementary (named 'build one from zero', not located by position) and chunk 7's external Willison link (named by title/author). Neither is an in-page fragment link into this file's own deck, so the settled anchor-routing mechanism doesn't apply here either way.",
       "fix_hint": null,
       "blocking": false
     },
@@ -152,7 +152,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/prework.md` → output: \"files: 1  slides: 8  limits: 210 words / 6 bullets / oversized: 0 / ✓ every slide is within limits.\" Slide count (8) matches this judge's chunk map minus chunk 0 (title lede, not scripted as its own slide).",
+      "evidence": "Ran: node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/prework.md --report → largest slide 'Bring real work' 199 words / 4 bullets, all 8 slides within 210/6; summary: 'oversized: 0 ... ✓ every slide is within limits'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -160,9 +160,9 @@
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-      "verdict": "N/A",
+      "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Rule text scopes the imperative-vs-claim contract to exercise files and lecture files specifically ('Exercise ## headings = imperative or phase label. Lecture headings = claims.'). prework.md's surface-type (per dispatch-preamble derivation: curriculum/trainings/<t>/ → module) is module, not exercise or lecture, so the contract this rule states doesn't bind this file.",
+      "evidence": "All 8 body headings are imperative ('Bring real work', 'Bring to Module 1') or numbered step labels ('1. Pick THE repo' ... '5. Pick a trivial bug and confirm Module 1 readiness'), consistent with the exercise-heading convention this file follows (prework is a task-walkthrough, not a lecture). No declarative claim-heading present, so no mood mismatch to flag. 'Bring real work' (renamed this session from 'What to bring') stayed imperative, preserving the convention.",
       "fix_hint": null,
       "blocking": false
     }

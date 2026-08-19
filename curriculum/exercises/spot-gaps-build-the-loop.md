@@ -86,7 +86,7 @@ Ask Claude to name the checking primitives the field already runs and rank the o
 
 Expect the list to look familiar: test-writing, browser-testing, PR-building, lint and typecheck gates, compile and build, smoke-test on a real path, code-review, git-diff inspection, schema validation, eval suites for agent outputs. Your list won't be exact. The recognition is the point. The primitives Claude names are the ones your codebase already runs.
 
-**What happened:** A one-screen gap map across memory / verifier / skill, one stale rule cut in place, and a diagrammed map of the work that recurs across your stack. The shapes feed the handoff prompt you write in the close.
+**What happened:** A one-screen gap map across memory / verifier / skill, one stale rule cut in place, and a diagrammed map of the work that recurs across your stack. The shapes stay in this session's scrollback; you build the handoff prompt from them.
 
 ## Decide what crosses back to your main repo
 
@@ -100,8 +100,8 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 
 **Fast-operator batch path (accepted):** *"Fast operator?"* labels the opt-in path for someone who wants both scan prompts in one conversation; it does not set the room's pace or the exercise's completion bar. The separate scan callout is the working-memory stop gate. Preserve both callouts and the label.
 
-**Quality:** compendium-audited 2026-08-19 (story@ba5ccf5 technical@1c765f2 behavior@ba5ccf5 pedagogy@ba5ccf5 strategy@1c765f2 slides@ba5ccf5)
-- judges @ba5ccf5: writing REVISE (see-instances/ae101--exercise--spot-gaps-build-the-loop.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (verify-refuted), slides PASS
+**Quality:** compendium-audited 2026-08-19 (writing@a7f3966 story@ba5ccf5 technical@1c765f2 behavior@ba5ccf5 pedagogy@ba5ccf5 strategy@1c765f2 slides@a7f3966)
+- judges @a7f3966: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (verify-refuted), slides PASS
 - re-audit @796293b 2026-05-31: writing PASS, pedagogy PASS — steer-callout gained a premature-completion recovery line (§48/§62) + a render-as-HTML affordance callout after the shapes prompt (§50/§53/§62 hold)
 
 **Word count:** ~740 words body.

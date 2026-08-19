@@ -1,25 +1,25 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/open-the-side-quest.md",
-  "body_sha": "4284348e4ccf90a4415e58d84a0ac33655df155345fbf11031370551c36d8396",
-  "verdict": "REVISE",
+  "body_sha": "852c42893204b344b3efde33ad2a10f62b8503e711e353de1c4bcdbe712f3a5c",
+  "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "H1/lede — Two windows on one codebase", "lines": "1-9"},
-    {"index": 1, "heading": "Fork the side worktree from your security lane", "lines": "11-40"},
-    {"index": 2, "heading": "Read back the worktree path", "lines": "42-44"},
-    {"index": 3, "heading": "Open the quality lane in the new worktree", "lines": "46-70"},
-    {"index": 4, "heading": "Set the two windows side by side", "lines": "72-77"}
+    {"index": 0, "heading": "H1/lede — Two windows on one codebase", "lines": "1-12"},
+    {"index": 1, "heading": "Fork the side worktree from your security lane", "lines": "13-43"},
+    {"index": 2, "heading": "Read back the worktree path", "lines": "44-47"},
+    {"index": 3, "heading": "Open the quality lane in the new worktree", "lines": "48-73"},
+    {"index": 4, "heading": "Set the two windows side by side", "lines": "74-78"}
   ],
   "rules_evaluated": [
     {
       "compendium": "check_slides.md",
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
-      "verdict": "REVISE",
-      "chunks_flagged": [3],
-      "evidence": "chunk 3 \"Open the quality lane in the new worktree\": line 56: \"the evidence-based sharpen runs there too, where the compound step lives.\" Neither \"the evidence-based sharpen\" nor \"the compound step\" is named anywhere earlier in this file or in the enclosing module's (earn-the-trust.md) signposting before this exercise's include point (the exercise sits under `## Start here`, first item; \"## Sharpen the skill from evidence\", the section that would earn both terms, appears LATER in the module body, after `Author your test-strategy skill`). Harm check: a reader hits two unresolved named things mid-sentence on the quality-lane orientation slide — this is the canonical \"before the three things get named\" forward-reference failure, not a proxy false-positive; the sentence cannot be parsed to a referent at this point in the deck.",
-      "fix_hint": "Either drop the forward mention (the mechanism is already stated plainly by \"the main lane reads it later\") or name what it's pointing at generically (\"a later step in this module\") instead of coining terms this slide hasn't earned.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "The previously-flagged sentence naming \"the evidence-based sharpen\" and \"the compound step\" (old chunk 3) is gone from the body entirely — confirmed by grep, zero hits. Re-derived fresh: chunk 3 line 58's first mention of \"the test-strategy skill\" and chunk 1 line 15's \"Access mapping, STRIDE, and the ADR\" both resolve against the enclosing module's `## What You'll Learn` bullets (earn-the-trust.md lines 22-25), which per §1's module-include-order carve-out count as prior context for every exercise the module includes, and this exercise is the module's first include. Chunk 4 line 77's \"the quality side waits until you author the test-strategy skill there\" resolves against chunk 3's own header + \"m3-quality\" session name, in-file. \"Module 3\" (chunk 0) and \"the sibling worktree\" (chunk 2, from chunk 1) both resolve to earlier same-file mentions. No unresolved referent found in a fresh read.",
+      "fix_hint": null,
       "blocking": true
     },
     {
@@ -28,7 +28,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Only cross-file pointer in body is chunk 1, line 21: \"The [Multi-session and Git survival guide](../trainings/agentic-engineering-101/reference/multi-session-git.md) carries the longer read.\" — named by title, not located by position (\"the longer read\" is a role description, not a page position). Matches the §2 navigational-pointer carve-out. No other file named by position anywhere in the body.",
+      "evidence": "Only cross-file pointer in body is chunk 1, line 23: \"The [Multi-session and Git survival guide](../trainings/agentic-engineering-101/reference/multi-session-git.md) carries the longer read.\" Named by title, not located by page position — matches the §2 navigational-pointer carve-out. No other file named anywhere in body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -38,7 +38,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No \"the X you did/saw/caught\" backward-beat construction appears anywhere in the body — this exercise opens Module 3 (\"## Start here\", first item) so it has nothing earlier in-module to backward-reference; \"What happened\" recap (chunk 4) only restates this same file's own prior chunks, which is rule 1's session-artifact/in-file territory, not a dead-beat callback.",
+      "evidence": "No \"the X you did/saw/caught\" backward-beat construction anywhere in the body. This exercise is the module's opening item (`## Start here`, first link in earn-the-trust.md), so it has no prior in-module beat to reference. The `**What happened:**` recap block that used to close the file has been cut.",
       "fix_hint": null,
       "blocking": true
     },
@@ -48,7 +48,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-before-reveal construction in the file — this exercise is procedural setup (fork worktree, open second session, arrange windows), no \"take a guess\" beat anywhere in the body.",
+      "evidence": "No guess-before-reveal construction anywhere in the file — this exercise is procedural setup (fork worktree, open second session, arrange windows), no \"take a guess\" beat present.",
       "fix_hint": null,
       "blocking": true
     },
@@ -58,7 +58,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest candidate is chunk 2 (\"Read back the worktree path\", lines 42-44), the file's shortest chunk: \"- Claude reports the sibling worktree path. That path is where the second session opens.\" It stays inside PASS because the bullet carries one self-standing claim (where the second session opens), not a bare wait-state fragment — it survives being read with no other chunk in view.",
+      "evidence": "Closest candidate is chunk 2 (\"Read back the worktree path\", lines 44-47), the file's shortest chunk: \"Claude reports the sibling worktree path. That path is where the second session opens.\" Stays inside PASS: it carries one self-standing claim (where the second session opens next), not a bare wait-state fragment.",
       "fix_hint": null,
       "blocking": false
     },
@@ -68,7 +68,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "All four `##` headers are literally true of their chunk content: \"Fork the side worktree...\" (chunk 1) forks via the prompt; \"Read back the worktree path\" (chunk 2) is exactly that beat; \"Open the quality lane...\" (chunk 3) opens the second session; \"Set the two windows side by side\" (chunk 4) is the arrangement instruction plus its own recap. None contradicted by chunk body.",
+      "evidence": "All four `##` headers are literally true of their chunk content: \"Fork the side worktree...\" (chunk 1) forks via the prompt block; \"Read back the worktree path\" (chunk 2) is exactly that beat; \"Open the quality lane...\" (chunk 3) opens the second session; \"Set the two windows side by side\" (chunk 4) is the arrangement instruction. None contradicted by chunk body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -78,9 +78,9 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all five sub-items against every chunk: no \"Not X. Not Y. Z.\" construction; no anaphora/epistrophe triples; no self-grading superlatives (closest is chunk 0 line 9 \"two Claude Code sessions running side by side on one git history\" — a plain description, not a value-prop claim about usefulness, so it stays inside); no number-with-retraction pattern anywhere (no numeric claims in the file at all); no abstraction-noun stacks (vocabulary throughout is concrete: worktree, branch, window, session); no verb-triplet construction present to test.",
+      "evidence": "Checked all five sub-items against every chunk, including the two new lines (chunk 0's \"**The point:** a long-running prompt is dead time only if you have one window\" and chunk 4's closer). No \"Not X. Not Y. Z.\" construction; no anaphora/epistrophe triples; no self-grading superlative (closest is chunk 0 line 9, \"two Claude Code sessions running side by side on one git history\" — plain description, not a value claim, stays inside); no number-with-retraction (file has no numeric claims); no abstraction-noun stacks (vocabulary stays concrete: worktree, branch, window, session, skill); no verb-triplet construction present to test.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -88,7 +88,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Scanned all chunks for repo/authorial vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections). None present — \"lane\" (main lane / side-quest lane) is this exercise's own defined game vocabulary, not repo-internal maintainer dialect, and it self-defines in chunk 1 line 13 (\"This is your main lane for Module 3\").",
+      "evidence": "Scanned all chunks for repo/authorial vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections). None present. \"Lane\" (main lane / side-quest lane / quality lane) is this exercise's own defined game vocabulary, self-defined in chunk 1 line 15 (\"This is your main lane for Module 3\"), not repo-internal maintainer dialect.",
       "fix_hint": null,
       "blocking": true
     },
@@ -98,7 +98,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every bolded span in the body is a Session-widget label (\"**Session**\", chunk 1 line 15 and chunk 3 line 50) or the file's own declared chrome (\"**Time:**\", \"**What you do:**\", \"**What you build:**\" in chunk 0; \"**What happened:**\" in chunk 4) — the file's own maintainer block (raw source, below cut) states these are chrome not emphasis, consistent with the widget-label exemption this rule implies. Zero non-chrome bold anywhere in body; budget of ≤1/slide is not approached.",
+      "evidence": "Chunk 0 carries four bolded field labels: **Time:**, **What you do:**, **What you build:**, and the newly-added **The point:** — each ≤3 words, wrapping only the label not the sentence after it. `grep -rl \"^\\*\\*Time:\\*\\*\" curriculum/exercises/*.md | wc -l` → 37 files; of those, 30 also carry a `^**The point:**` line (verified by loop over the 37-file set) — this is a corpus-wide structural field-label convention identical in kind to Time:/What you do:/What you build:, not a narrative bolded sentence lead. The maintainer block's own Emphasis note (raw source, below cut) is stale — it still lists the now-cut \"What happened:\" and omits the added \"The point:\" — but that is maintainer bookkeeping drift, not a body defect the reader hits; the body's actual bold usage stays inside the chrome-label pattern the note was trying to describe. No other bold anywhere in the body (Session/Prompt widget labels are the only other bolded spans, both chrome).",
       "fix_hint": null,
       "blocking": false
     },
@@ -108,7 +108,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked earn-the-trust.md (the enclosing module): the exercise is included via a plain standalone-paragraph link \"[Exercise: Open the side quest](exercises/open-the-side-quest.md)\" under \"## Start here\" (module line 33) — the ordinary include shape that reaches `.phase--exercise` wrapping and the composed deck, not a phase-less prose section or a supplementary/reference page (the categories rule 10 names as droppable). No reason to expect this file is absent from the deck.",
+      "evidence": "Checked earn-the-trust.md (the enclosing module): the exercise is included via a plain standalone-paragraph link \"[Exercise: Open the side quest](exercises/open-the-side-quest.md)\" under `## Start here` (module line 33) — the ordinary include shape that reaches `.phase--exercise` wrapping and the composed deck. Not a phase-less prose section or a dropped supplementary/reference page.",
       "fix_hint": null,
       "blocking": true
     },
@@ -118,7 +118,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-numbering.js` and filtered for this file's slug — no output for open-the-side-quest.md, i.e. the linter raised nothing for it. The file's headers are imperative labels (\"Fork...\", \"Read back...\", \"Open...\", \"Set...\"), not `## Phase N:` / `## N.` step headers, so this rule's numbered-step scheme does not apply.",
+      "evidence": "Ran `node scripts/check-slide-numbering.js` and grepped output for \"side-quest\" → no lines. Headers are imperative labels (\"Fork...\", \"Read back...\", \"Open...\", \"Set...\"), not `## Phase N:` / `## N.` step headers, so this rule's numbered-step scheme doesn't apply.",
       "fix_hint": null,
       "blocking": false
     },
@@ -128,7 +128,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/exercises/open-the-side-quest.md` → output: \"OK — 1 files, no page-geometry pointers across the slide cut.\" A manual grep for below/above/further down/at the top/see below across the expanded body confirmed the only hits are in the maintainer section (below the `<!-- maintainer -->` cut, out of body scope).",
+      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/exercises/open-the-side-quest.md` → output: \"OK — 1 files, no page-geometry pointers across the slide cut.\" Manual scan for below/above/further down/at the top/see below across the body confirms no hits.",
       "fix_hint": null,
       "blocking": true
     },
@@ -138,7 +138,7 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Single in-body link (chunk 1 line 21, the multi-session-git reference) is named by title (\"Multi-session and Git survival guide\") not located by page position — satisfies the surviving §13 requirement (name the document, don't locate it) independent of the settled mechanism question, which this rule states is a review surface, never a gate.",
+      "evidence": "Single in-body link (chunk 1 line 23, multi-session-git reference) is named by title, not located by page position — satisfies the surviving requirement independent of the settled mechanism question. This rule is a review surface, never a gate.",
       "fix_hint": null,
       "blocking": false
     },
@@ -148,7 +148,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/open-the-side-quest.md` → output: \"files: 1  slides: 4  limits: 210 words / 6 bullets\" / \"oversized: 0\" / \"✓ every slide is within limits\". No accept-note needed.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/open-the-side-quest.md` → \"files: 1  slides: 4  limits: 210 words / 6 bullets\" / \"oversized: 0\" / \"✓ every slide is within limits\". No accept-note needed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -158,11 +158,11 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "All four body headers are imperative (\"Fork the side worktree from your security lane\", \"Read back the worktree path\", \"Open the quality lane in the new worktree\", \"Set the two windows side by side\") — correct mood for an exercise file per this rule's split; no declarative-claim heading present or expected here.",
+      "evidence": "All four body headers are imperative (\"Fork the side worktree from your security lane\", \"Read back the worktree path\", \"Open the quality lane in the new worktree\", \"Set the two windows side by side\") — correct mood for an exercise file; no declarative-claim heading present.",
       "fix_hint": null,
       "blocking": false
     }
   ],
-  "blocking_findings_count": 1,
+  "blocking_findings_count": 0,
   "todos_count": 0
 }

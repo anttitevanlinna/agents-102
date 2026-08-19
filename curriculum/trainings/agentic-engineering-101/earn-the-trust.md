@@ -121,8 +121,8 @@ Optional, when your sessions start running heavy: [The context ceiling and token
 
 **Session-close convergence prompt (`ae101-m3-ready-to-clear`) kept, not cut.** Flagged `low-yield`. It's the converge-before-clear beat (`check_pedagogy.md §58`): the student signals wrap-up, the agent surfaces anything still loose before the `/clear`. A light one-line ask carrying a lead-in and its own "good enough" callout, not concurrent-heavy load. Its `{{cut:}}` marker was reversed to a live `{{prompt:}}` — body touched, so the per-class Quality SHAs below predate it; re-audit before ship. Not a cut candidate.
 
-**Quality:** compendium-audited 2026-08-19 (story@ba5ccf5 technical@ba5ccf5 behavior@1c765f2 pedagogy@ba5ccf5 strategy@7992fd0 slides@ba5ccf5)
-- judges @ba5ccf5: writing REVISE (see-instances/ae101--module--earn-the-trust.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-19 (writing@a7f3966 story@ba5ccf5 technical@ba5ccf5 behavior@1c765f2 pedagogy@ba5ccf5 strategy@7992fd0 slides@ba5ccf5)
+- judges @a7f3966: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @022c684: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust] 3 pairs, 9/9 rules each; M3->M4 out of scope, M4+M5 under concurrent edit; see instances/ae101--module-set--prework-m3.cross_module.json
 
 **Meta (trainer):**

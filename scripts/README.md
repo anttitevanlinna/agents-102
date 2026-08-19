@@ -47,6 +47,27 @@ The older AE101-specific entrypoint still works:
 node scripts/audit-ae101-artifact-contracts.js
 ```
 
+## What Actually Fires
+
+`scripts/fire-log.sh` records which scripts and skills run. It is registered as a
+PostToolUse hook on Bash and Skill in `.claude/settings.json`, and appends a
+timestamp plus a name to `.fire-log` at the repo root. Both the hook script and
+its registration are tracked, so the tracker travels with a clone; `.claude/hooks/`
+is gitignored and anything parked there exists on one machine only.
+
+```sh
+cut -f2 .fire-log | sort | uniq -c | sort -rn      # what runs, most-used first
+comm -13 <(cut -f2 .fire-log | sort -u) \
+         <(git ls-files scripts/ | grep -E '\.(js|sh)$' | grep -v '\.test\.' | sort)
+```
+
+The second command lists tracked scripts the log has never seen. Read it as a
+question, not a verdict: the log covers Claude sessions on one machine, so a name
+on that list may be run by CI, by a person in a plain terminal, or from another
+clone. A script that is genuinely never invoked is one of three things — a product
+nobody was told to use, a broken trigger, or dead weight — and only the third is
+safe to delete.
+
 ## Deployment Shape
 
 GitHub Pages publishes `site/`. A customer URL is:

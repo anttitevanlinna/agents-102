@@ -11,7 +11,7 @@ Fires one eval class against one or more curriculum files. The class determines 
 ## When to invoke
 
 - **Iterating on a single file** during authoring — fastest signal, cheapest token cost.
-- **Triaging a queued class** from `/tmp/claude-eval-queue-<sid>` (the eval-class-router hook writes per-class entries on every curriculum edit).
+- **Triaging what still owes a judge** — `npm run evals:queue` (`curriculum/evals/scripts/eval-queue.js`) walks the universe and derives every (file, class) pair still owing, from each file's own Quality pins.
 - **High-stakes story sweep:** `/eval-fire story --personas 3` runs the audience triangle (mid-layer / opinionated senior / fast operator). Default is single canonical persona; the flag is opt-in for cohort-imminent or sponsor-critical files.
 - **NOT** for a full ship-time audit — that's `/curriculum-pre-ship-audit`, which dispatches all four classes in parallel and adds source-verify + capability-check + Quality-tag check on top.
 

@@ -92,8 +92,8 @@ The canvas is a copy of the one in `the-gate-is-a-claim.md`, which is the parent
 
 **Deferral bullet on the gate slide (2026-08-08, Antti-directed frame, near-verbatim).** *What the plan doesn't decide, the agent decides mid-run* is the inverse of the slide's lead bullet: the correction-redirects-everything claim gets its shadow, the deferred wrong decision that also redirects everything. *Propagates across files*, *wrongness tangles* and *you will not notice* are the maintainer's own words — do not soften *tangles*, and do not revert *you will not notice* to a nobody-is-reading claim: whether anyone watches mid-generation varies by engineer, but a wrong design call reads as progress while it is being made, so the noticing claim is the true one (maintainer correction, this pass). The exercise's two vague-step bullets (`push-back-on-the-plan.md` read-the-plan altitude bullet + soft-items menu entry) stay as point-of-use recalls; the altitude bullet carries the same *and you will not notice* tail so lecture and exercise state the same mechanism (teach, then recall at the move, per the `check_writing.md` §11 carve-out shape). KC recall lands in `plan-mode-done-right.md` § Key Concepts.
 
-**Quality:** compendium-audited 2026-08-15 (writing@a06abbc story@a06abbc technical@9c75ce2 behavior@1c765f2 pedagogy@da65157 strategy@1c765f2 slides@a06abbc)
-- judges @9c75ce2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-19 (writing@3e3d4ae5 story@3e3d4ae5 technical@9c75ce2 behavior@1c765f2 pedagogy@3e3d4ae5 strategy@1c765f2 slides@3e3d4ae5)
+- judges @3e3d4ae5: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 **Meta:**
 - **Time:** 12 min. If tight, the three-pressures slide compresses to 60 seconds; the exercise teaches them. M2 runs slightly past its slot — `node scripts/calculate-time.js plan-mode-done-right` for where this beat sits in it.
 - **Pedagogy:** primer-before-exercise. Names the three moves (merges / soft items / assumptions) that Phase 3 forces.

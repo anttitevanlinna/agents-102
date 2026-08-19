@@ -1,18 +1,18 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/when-a-plan-is-good.md",
-  "body_sha": "29d7437dc10906c50a2d5bfa6be5686f45bc0345ea9f4d01107afa30f4c606fa",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "anticipation toward grounded competence — student leaves the lecture thinking 'I know what to look for'; the exercise earns 'I can feel when a plan is good before approving it'",
   "trace_status": "regenerated",
+  "body_sha": "c3ee53243f5adb377cb56131c8374527819ed907f14453fc12838e402020063f",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
-      "rule_lead": "Meta-frame lectures are closers, not openers; conceptual vocabulary belongs mid-module and ceiling demos may open.",
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "This is a primer-before-exercise lecture that introduces plan-review vocabulary (five qualities, three pressures, paired reads) and shows the calibration ceiling. It does not retrospectively name a pattern the student already lived, so the closer-only constraint does not bind. Its placement immediately before the M2 plan exercise is the rule's intended vocabulary/ceiling shape.",
+      "evidence": "Not a meta-frame lecture (it does not narrate a pattern the student already lived through). Placement diagnostic in the rule text (\"showing a ceiling, or teaching vocabulary\") fits: line 27-33 teaches five criteria as vocabulary, line 59-67 (`## What you can test and check sets your complexity ceiling`) shows a ceiling model, both sanctioned for opener placement. Maintainer Meta line 99: \"Pedagogy: primer-before-exercise.\" Harm the rule guards against (teaching a recognition as an abstract claim before the student has felt it) is absent — this file is deliberately pre-felt content, and the felt payoff is explicitly deferred to the exercise (line 100).",
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +21,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "M2 targets grounded competence, not the M4/M5-style contrast mood in which explanation would pre-empt felt evidence. This lecture is explicitly the M2 vocabulary primer, while the exercise still owns the felt payoff.",
+      "evidence": "Rule targets M5-style contrast-mood modules (\"learn through doing the thing, name it after\"). M2's Meta block (line 99-100) states \"primer-before-exercise\" and a mood target of \"anticipation toward grounded competence\" — a build-then-practice module, not a contrast-mood module where pre-teaching would collapse the exercise's felt-evidence. The harm this rule guards (over-lecturing stealing a contrast module's reveal) has no module here to steal from.",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,79 +30,61 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "The teaching slides contain no forward or backward module sequencing. The line-3 session label names the current session ('Module 2 - Plan mode done right') as setup metadata; it is not a bridge or a claim about another module.",
+      "evidence": "Only body hit for `M[0-9]` is line 3: **Session** *(new, \"Module 2 - Plan mode done right\")* — a Session widget naming the CURRENT module for the rename slug, per `check_pedagogy.md §52` widget shape, not a forward-reference or bridge to another module. No `M[0-9]` bridging language, no \"gets its full name at M5\"-shaped sentence anywhere in lines 1-68. The maintainer block's own cross-module cross-checks (e.g. line 91 \"does NOT name 'plan-mode approval inflation'\") confirm the body was deliberately kept clear of forward sequencing.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 4,
-      "rule_lead": "Slide and lecture headers pass the squint test and truth clause.",
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "All eight headers name their payload cold and at the strength the body supports: tool/instruction change, optional direct inspection, five qualities, three pressures, paired reads, find-versus-judge, plan review as gate, and the complexity ceiling. The revised paired-read body now explicitly qualifies the walk-down as optional and supplies a stop condition, so its header remains true without claiming both reads are mandatory in every case.",
+      "evidence": "All 8 `##` headers (lines 9, 16, 27, 35, 41, 47, 52, 59) are distinct, each names either a claim the slide argues (\"Three pressures that make bad plans look good\", \"Find is easier than judge\" — this exact header is the rule's own cited example of a correct claim-header) or a specific named thing (\"Five things a good plan has\", \"Two reads, paired\"), none are empty containers (\"The move\"/\"The names\" shape) or unsupported universals. \"Optional: ask plan mode directly\" (line 16) reads as an imperative but its payload IS a live do-move (the student actually asks Claude directly), satisfying the §4-inherited §17 carve-out for command-verb headers.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
-      "rule_lead": "A slide body is size-bounded: under about 210 readable words and no more than six bullets.",
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/when-a-plan-is-good.md` reports 8 slides, 0 oversized. The revised paired-read slide remains below both limits.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 16,
-      "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, with optional refinements allowed in body prose.",
-      "verdict": "PASS",
-      "evidence": "The only action on this lecture's page is an explicitly optional registered prompt. The revised body does not replace the later exercise's full-on walk-down prompt; it gives the professional student the decision rule around that optional refinement: human push-back first, continue while answers materially sharpen the plan, and stop when they do not. This is the rule's optional-refinement carve-out, not leaked session machinery or a scripted count.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 27,
-      "rule_lead": "Classroom is the default delivery; body teaches work and the trainer manages the room.",
-      "verdict": "PASS",
-      "evidence": "No body sentence authors a pair, group, room-share, pause, or trainer cue. Every instruction concerns the student's session, plan read, judgment, or next action; room pacing stays outside the lecture body.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/when-a-plan-is-good.md` → \"files: 1  slides: 8  limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits\", exit 0.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named; the 8+ floor applies to teaching beats.",
+      "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "The regenerated single-persona trace scores the whole teaching phase 8/10 and the close 8/10. The session rename is setup inside that phase and mood-exempt; the teaching body itself produces anticipation toward grounded competence without trainer compensation: 'I know what to look for,' with the felt proof reserved for the exercise.",
+      "evidence": "Trace close.mood_score = 8, phase 1 mood_score = 8 (both ≥8 floor). Beat is a TEACHING beat throughout (primer content, not mechanical setup), so the floor applies and is met. Trace mood_note: \"Anticipation toward grounded competence lands without needing a trainer to repair it... the lecture doesn't try to steal that beat\" — matches the maintainer's stated mood target verbatim (line 100).",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
-      "rule_lead": "Epistemic mood is not punitive mood.",
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "The lecture frames uncertainty as what the plan has not yet decided and what the engineer can surface, never as a student mistake. The revised stopping rule reduces performance pressure: deeper questioning is useful only while it materially sharpens the plan.",
+      "evidence": "Trace phase 1 and close both read as not-knowing-yet framing (\"I know what to look for\") rather than having-done-wrong framing. Line 39 (\"Read it assuming something in there is wrong; there usually is\") is about the PLAN being wrong, never the student — no shame-register line found in lines 1-68.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "The title and headers lead with positive disciplines: knowing when a plan is good, paired reads, judgment, plan review, calibration, and checks. Persuasive but weak plans appear as contrast cases inside the discipline rather than as the lecture's governing frame.",
+      "evidence": "File title \"When a plan is good\" and top-level frame are discipline-led (recognizing a good plan), not failure-led. \"Three pressures that make bad plans look good\" (line 35) names a failure mode at slide-body level only, consistent with the carve-out precedent the rule itself cites (\"Gates decay\", \"Passing is not proof\" ship failure-named at body/slide level) — the file's own identity stays discipline-named.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy fidelity consolidates Big Idea, front-run, arc handoff, and mood-does-not-resolve-early checks.",
+      "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Big Idea fidelity: the lecture treats plan mode as a review discipline and cheap calibration gate, not a feature tour. Front-run: it does not execute the plan, name plan-mode approval inflation before the exercise retro, or expose Pocock's move as a Skill before M3. The full walk-down remains available in the later copied prompt; the new stop rule governs whether continuing is valuable, not whether the plan itself gets read. Arc handoff: the student leaves with the exact five-qualities/three-pressures/two-read vocabulary the M2 exercise turns into action. Mood timing: the lecture stops at 'I know what to look for' and does not claim the exercise's felt grounded competence in advance.",
+      "evidence": "Consolidated facets: (a) front-run check — maintainer line 91 explicitly states the body \"does NOT name 'plan-mode approval inflation' — that label lands retroactively at exercise P5,\" a deliberate guard against front-running the exercise's own naming beat. (b) module-to-module arc — line 93's deferral bullet is stated to echo forward into the exercise's own maintainer-block bullets (\"lecture and exercise state the same mechanism\"), and Meta line 100 hands the felt payoff to the exercise. (c) Big Idea fidelity — the file stays within its stated scope (\"short and operational,\" line 103, zero philosophy-callout budget) rather than reaching for a different framing. (d) mood-doesn't-resolve-early — trace close mood_note confirms the felt \"I can feel when a plan is good\" claim is explicitly left for the exercise, not resolved here.",
       "fix_hint": null,
       "blocking": true
     },
@@ -111,25 +93,63 @@
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Key Concepts is a module-file section; this standalone lecture has no such section.",
+      "evidence": "Module-only section (`## Key Concepts`); this is a lecture file with no such heading. Owned by the strategy judge at module scope.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 6,
-      "rule_lead": "Key Concepts use theme breadcrumbs rather than a standalone themes section.",
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Key Concepts is a module-file section; this standalone lecture has no such section.",
+      "evidence": "Module-only section; no `## Key Concepts` heading in this lecture file.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 7,
-      "rule_lead": "What You'll Learn uses capability register, not syllabus register.",
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "What You'll Learn is a module-file section; this standalone lecture has no such section.",
+      "evidence": "Module-only section; no `## What You'll Learn` heading in this lecture file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "grep for scripted-reaction phrasing (\"push back once\", \"two rounds max\", \"don't scan\", \"instinct is to\") over lines 1-68 → 0 matches, exit 1. The file's single fenced prompt ({{prompt:when-a-plan-is-good-1}}, line 22) is explicitly optional (\"A 30-second move first... Skip if you trust the framing\", lines 18/25) — falls under the §16 carve-out for optional push-backs/refinements living in body. The teaching content (five things, three pressures, two reads, find-is-easier-than-judge, the gate) is primer prose, not a forcing function on the student — no student move is prescribed with a count or scripted instinct.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "grep for authored conversation cues (\"discuss with\", \"share with\", \"take N seconds/minutes\", \"tell the room\", \"compare with the person\") over lines 1-68 → 0 matches, exit 1. Every sentence in the body is about the work (the plan, the checklist, the read) — no cohort-management sentence found, so none of the three carve-outs need to be invoked.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Trigger — is this file workshop-shaped?",
+      "verdict": "N/A",
+      "evidence": "Whole-file scope call: this lecture has no beat where the output belongs to the group rather than to a participant (no adjudication, no shared record, no room decision). check_workshop.md does not fire; check_pedagogy.md governs the file's individual-learning beats unchanged, per the file's own trigger clause.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Applies to anything inside a fenced code block with copy-this affordance",
+      "verdict": "N/A",
+      "evidence": "Scope call, not a story-class judgment: check_prompts.md's numbered rules (prompt-body design) are primary-owned by the writing/technical classes, not storytelling. The story template's \"Specific judgments storytelling owns\" list maps forcing-function placement to `check_pedagogy.md §16` (evaluated above), not to check_prompts's own rule numbers. Flagging here would be an unowned claim outside this judge's lane, per the dispatch preamble.",
       "fix_hint": null,
       "blocking": false
     }
@@ -140,6 +160,7 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
+  "teaching_moment_note": "The named teaching moment (the five-criteria checklist + the reach/calibration ceiling model) fires reliably across the trace: the persona reconstructs a usable checklist and a self-first-then-agent read order without any confusion_flags or under_scaffolded_phases. Big Idea fidelity and module-to-module arc are folded into the check_strategy_tie_in.md §4 row above per the template's consolidation instruction.",
   "blocking_findings_count": 0,
   "todos_count": 0
 }

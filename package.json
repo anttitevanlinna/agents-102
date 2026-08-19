@@ -7,10 +7,11 @@
     "test-local": "cd site && python3 -m http.server 8080",
     "audit:eval-coverage": "node scripts/audit-eval-coverage.js --surface all",
     "audit:eval-coverage:gate": "node scripts/audit-eval-coverage.js --surface all --gate",
+    "evals:queue": "node curriculum/evals/scripts/eval-queue.js",
     "audit:backing": "node scripts/validate-backing.js",
     "time": "node scripts/calculate-time.js",
     "audit:timings": "node scripts/calculate-time.js --check",
-    "test": "node --test scripts/*.test.js && bash curriculum/evals/scripts/update-quality.test.sh && bash curriculum/evals/scripts/source-freshness.test.sh && node curriculum/evals/scripts/scan-stale-classes.test.js && node scripts/check-emphasis-balance.js && node scripts/check-cross-doc-anchors.js && node scripts/check-slide-size.js && node scripts/check-slide-deixis.js && node scripts/check-slide-numbering.js",
+    "test": "node --test scripts/*.test.js && bash curriculum/evals/scripts/update-quality.test.sh && bash curriculum/evals/scripts/source-freshness.test.sh && node curriculum/evals/scripts/scan-stale-classes.test.js && node curriculum/evals/scripts/eval-queue.test.js && node scripts/check-emphasis-balance.js && node scripts/check-cross-doc-anchors.js && node scripts/check-slide-size.js && node scripts/check-slide-deixis.js && node scripts/check-slide-numbering.js",
     "test:gates": "node scripts/check-emphasis-balance.js && node scripts/check-cross-doc-anchors.js && node scripts/check-slide-size.js && node scripts/check-slide-deixis.js && node scripts/check-slide-numbering.js"
   },
   "dependencies": {

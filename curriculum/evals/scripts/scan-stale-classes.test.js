@@ -2,7 +2,7 @@
 // Tests for scan-stale-classes.js — diff-region → judge-class routing.
 'use strict'
 const assert = require('node:assert')
-const { parseHunks, buildLineMeta, changeTags, extractPins, filterItems, typeOf, trainingOf } = require('./scan-stale-classes.js')
+const { parseHunks, buildLineMeta, changeTags, extractPins, filterItems, scanFile, typeOf, trainingOf } = require('./scan-stale-classes.js')
 
 let n = 0
 function test(name, fn) { fn(); n++; console.log(`ok ${n} - ${name}`) }
@@ -287,6 +287,30 @@ test('trainingOf: shared file linked from nowhere → null, never a silent defau
 test('trainingOf: duplicate linkers from one training still resolve', () => {
   const finder = () => ['agentic-engineering-101', 'agentic-engineering-101']
   assert.equal(trainingOf('curriculum/exercises/push-back-on-the-plan.md', finder), 'ae101')
+})
+
+// --- scanFile: unpinned file falls back to the judges row ---
+// The row reads `- judges @sha: writing PASS, story PASS, ...` — the FIRST
+// class sits after a colon, every later one after a comma. A `(^|, )` anchor
+// matched only the later ones, so the leading class fell through to 'never'
+// on every unpinned file: a class judged clean, re-queued forever.
+function rowIo(body) {
+  return { readFile: () => body, gitDiff: () => '', validSha: () => true }
+}
+const CLEAN_ROW = '# T\n**Quality:** compendium-audited 2026-01-01 ()\n- judges @abc1234: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS\n'
+
+test('scanFile: unpinned, all-PASS judges row owes nothing (leading class included)', () => {
+  assert.deepStrictEqual(scanFile('curriculum/lectures/x.md', rowIo(CLEAN_ROW)).classes, [])
+})
+
+test('scanFile: leading class REVISE on the judges row is caught', () => {
+  const r = scanFile('curriculum/lectures/x.md', rowIo(CLEAN_ROW.replace('writing PASS', 'writing REVISE')))
+  assert.deepStrictEqual(r.classes, ['writing'])
+  assert.equal(r.detail.writing, 'revise')
+})
+
+test('scanFile: a class absent from the judges row reads as never', () => {
+  assert.deepStrictEqual(scanFile('curriculum/lectures/x.md', rowIo(CLEAN_ROW.replace(', slides PASS', ''))).classes, ['slides'])
 })
 
 console.log(`\n${n} tests passed`)

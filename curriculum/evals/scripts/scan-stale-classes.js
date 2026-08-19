@@ -163,6 +163,12 @@ function extractPins(text) {
   return pins
 }
 
+// A judges row reads `- judges @sha: writing PASS, story PASS, ...` — the
+// first class follows a colon, the rest follow commas. Anchoring on `(^|, )`
+// alone never matched the leading class, so it fell through to 'never' on
+// every unpinned file and a judged-clean class re-entered the queue forever.
+const VERDICT_LEAD = '(^|[:,]\\s*)'
+
 function judgesRow(text) {
   const lines = text.split('\n')
   const qi = lines.findIndex(l => /^\*\*Quality:\*\*/.test(l))
@@ -225,9 +231,9 @@ function scanFile(relpath, io) {
       let stale = cache[sha].has(cls)
       if (!stale && cls === 'behavior') stale = promptKeys(text).some(k => io.gitDiff(sha, `curriculum/prompts/${k}.md`).trim() !== '')
       if (stale) { classes.push(cls); detail[cls] = 'diff-region' }
-    } else if (new RegExp(`(^|, )${cls} REVISE`).test(row)) {
+    } else if (new RegExp(`${VERDICT_LEAD}${cls} REVISE`).test(row)) {
       classes.push(cls); detail[cls] = 'revise'
-    } else if (!new RegExp(`(^|, )${cls} (PASS|grandfathered|N/A)`).test(row)) {
+    } else if (!new RegExp(`${VERDICT_LEAD}${cls} (PASS|grandfathered|N/A)`).test(row)) {
       classes.push(cls); detail[cls] = 'never'
     }
   }

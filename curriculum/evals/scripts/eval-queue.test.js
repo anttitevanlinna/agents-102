@@ -1,0 +1,118 @@
+#!/usr/bin/env node
+// Tests for eval-queue.js — universe enumeration + non-surface exclusion.
+// The routing itself is scan-stale-classes' contract, tested there; what is
+// new here is WHICH files get scanned, and that is where a silent hole hides:
+// a maintainer file quietly entering the queue is noise, a real surface
+// quietly leaving it is a missed judge.
+'use strict'
+const assert = require('node:assert')
+const fs = require('node:fs')
+const os = require('node:os')
+const path = require('node:path')
+const { buildUniverse, isSurface, collect } = require('./eval-queue.js')
+
+let n = 0
+function test(name, fn) { fn(); n++; console.log(`ok ${n} - ${name}`) }
+
+function fixture() {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'eval-queue-'))
+  const w = (rel, body) => {
+    fs.mkdirSync(path.join(root, path.dirname(rel)), { recursive: true })
+    fs.writeFileSync(path.join(root, rel), body)
+  }
+  const clean = '**Quality:** compendium-audited 2026-01-01 ()\n- judges @abc: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS\n'
+  w('curriculum/trainings/t-one/getting-going.md', `# Getting going\n${clean}\n[Ex](exercises/do-a-thing.md)\n`)
+  w('curriculum/trainings/t-one/timings.md', '# timings\n')
+  w('curriculum/trainings/t-one/pre-cohort-todos.md', '# todos\n')
+  w('curriculum/trainings/t-one/autumn-gaps.md', '# gaps\n\n<!-- maintainer -->\n\nNot student material.\n')
+  w('curriculum/trainings/t-one/supplementary/deep-dive.md', `# Deep dive\n${clean}\n`)
+  w('curriculum/trainings/t-one/reference/lookup.md', `# Lookup\n${clean}\n`)
+  w('curriculum/exercises/do-a-thing.md', '# Do a thing\n')
+  w('curriculum/lectures/orphan-lecture.md', '# Orphan\n')
+  return root
+}
+
+test('buildUniverse: collects modules, supplementary, reference, shared pool', () => {
+  const root = fixture()
+  const u = buildUniverse(root)
+  assert.deepStrictEqual(u.sort(), [
+    'curriculum/exercises/do-a-thing.md',
+    'curriculum/lectures/orphan-lecture.md',
+    'curriculum/trainings/t-one/getting-going.md',
+    'curriculum/trainings/t-one/reference/lookup.md',
+    'curriculum/trainings/t-one/supplementary/deep-dive.md',
+  ])
+})
+
+test('isSurface: named non-surfaces excluded', () => {
+  const root = fixture()
+  assert.strictEqual(isSurface(root, 'curriculum/trainings/t-one/timings.md'), false)
+  assert.strictEqual(isSurface(root, 'curriculum/trainings/t-one/pre-cohort-todos.md'), false)
+})
+
+test('isSurface: <!-- maintainer --> marker excludes whatever the name is', () => {
+  const root = fixture()
+  assert.strictEqual(isSurface(root, 'curriculum/trainings/t-one/autumn-gaps.md'), false)
+})
+
+test('isSurface: a real module stays in', () => {
+  const root = fixture()
+  assert.strictEqual(isSurface(root, 'curriculum/trainings/t-one/getting-going.md'), true)
+})
+
+// A shared file no module links has no resolvable training, so its instance
+// prefix would be a guess. It must surface as UNOWNED, never be scanned under
+// a defaulted training.
+test('collect: unlinked shared file lands in unowned, not items', () => {
+  const root = fixture()
+  const io = {
+    readFile: p => { try { return fs.readFileSync(path.join(root, p), 'utf8') } catch { return null } },
+    gitDiff: () => '',
+    validSha: () => true,
+  }
+  const { items, unowned } = collect(root, io, 'all')
+  assert.ok(unowned.includes('curriculum/lectures/orphan-lecture.md'))
+  assert.ok(!items.some(i => i.slug === 'orphan-lecture'))
+})
+
+test('collect: linked exercise resolves its owning training and owes every class', () => {
+  const root = fixture()
+  const io = {
+    readFile: p => { try { return fs.readFileSync(path.join(root, p), 'utf8') } catch { return null } },
+    gitDiff: () => '',
+    validSha: () => true,
+  }
+  const { items } = collect(root, io, 'all')
+  const ex = items.find(i => i.slug === 'do-a-thing')
+  assert.strictEqual(ex.training, 't-one')
+  assert.strictEqual(ex.type, 'exercise')
+  assert.strictEqual(ex.instanceSlug, 't-one--exercise--do-a-thing')
+  assert.strictEqual(ex.classes.length, 7)
+  assert.strictEqual(ex.detail.writing, 'never')
+})
+
+// A file whose judges row says PASS on every class and whose pins show no diff
+// owes nothing — it must not appear at all, or the queue cries wolf.
+test('collect: fully-passed file is absent from the queue', () => {
+  const root = fixture()
+  const io = {
+    readFile: p => { try { return fs.readFileSync(path.join(root, p), 'utf8') } catch { return null } },
+    gitDiff: () => '',
+    validSha: () => true,
+  }
+  const { items } = collect(root, io, 'all')
+  assert.ok(!items.some(i => i.slug === 'getting-going'))
+})
+
+test('collect: --training filter keeps only the wanted training', () => {
+  const root = fixture()
+  const io = {
+    readFile: p => { try { return fs.readFileSync(path.join(root, p), 'utf8') } catch { return null } },
+    gitDiff: () => '',
+    validSha: () => true,
+  }
+  assert.strictEqual(collect(root, io, 't-two').items.length, 0)
+  assert.ok(collect(root, io, 't-one').items.length > 0)
+})
+
+console.log(`\n1..${n}`)

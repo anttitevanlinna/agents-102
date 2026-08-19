@@ -2,7 +2,7 @@
 
 How Dino's Claude Code skills compose. Personal skills live in `~/.claude/skills/`, project skills in `./.claude/skills/`. The harness merges them at runtime; they're indistinguishable to the model.
 
-**Read for the patterns, not for copying.** This is one engineer's stack on one codebase; your kit will look different. The four composition mechanisms this page names are the move. The specific skills (and the Dino-specific names — `Arctic Deep`, `bronto/MAP.md`, `src/analytics-dashboard/`) are how Dino instantiates the mechanisms against his own work. Read for the shape, then map your own.
+**Read for the patterns, not for copying.** This is one engineer's stack on one codebase; your kit will look different. The four composition mechanisms this page names are the move. The specific skills (and the Dino-specific names: `Arctic Deep`, `bronto/MAP.md`, `src/analytics-dashboard/`) are how Dino instantiates the mechanisms against his own work. Read for the shape, then map your own.
 
 ---
 
@@ -20,8 +20,8 @@ Every `SKILL.md` follows the same minimal contract:
 
 ```
 name + description (triggers)  →  body (procedure)  →  optional cross-skill loads
-user_invocable: true            ← gates /<name> as a slash command
-allowed-tools:                  ← optional, restricts what the skill can touch
+user-invocable: false           ← optional, hides it from the / menu (default true)
+allowed-tools:                  ← pre-approves tools for the turn (disallowed-tools restricts)
 ```
 
 That uniformity is what makes stacking possible.
@@ -162,7 +162,7 @@ Three companion diagrams ship with this doc.
 
 ## Map your own kit
 
-<!--flag:module:spot-gaps-build-the-loop-->You shipped a second skill in M6. Hold it up<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->Take any skill you have written, or the next one you would write. Hold it up<!--/flag:no-module:spot-gaps-build-the-loop--> against Dino's four mechanisms and ask:
+Take any skill you have written, or the next one you would write. Hold it up against Dino's four mechanisms and ask:
 
 - Is it a **route** (CLAUDE.md predicate fires it when the right file is touched, or the right phrase appears in a plan)?
 - Is it a **leaf** (you invoke it by name when the task calls for it, no chain)?
@@ -170,6 +170,12 @@ Three companion diagrams ship with this doc.
 - Is it a **hand-off** (its output feeds the input of the next skill, no orchestrator needed)?
 
 The answer is often "leaf today, route later" or "leaf today, hand-off when the next skill exists." Naming the shape now makes the next skill's place obvious.
+
+<!-- maintainer -->
+
+**Runtime fork collapsed 2026-08-19.** `## Map your own kit` used to branch on whether the reader had done M6, and the module branch opened *"You shipped a second skill in M6."* The 2026-08-01 M6 cut removed the in-module second-skill build: M6's close now produces a handoff prompt the student runs later to author skills, so no skill ships inside the module (see `spot-gaps-build-the-loop.md` Artefact contracts). The surviving wording is true for every reader, M6 or not, because an M6 student has still written a skill back at M3. Do not restore the fork without an M6-produced skill to point at.
+
+**Skill frontmatter is quoted from the shipped docs, not from memory.** The field is `user-invocable` (hyphenated), it defaults to `true`, and it is set `false` to hide a skill from the `/` menu, so the useful example is the negative one. `allowed-tools` pre-approves a tool set for the turn and does NOT restrict access; `disallowed-tools` is the restricting field. All three were wrong here until 2026-08-19 and were corrected against code.claude.com/docs/en/skills. Re-verify against the live page before editing, never against this note.
 
 <!-- backing -->
 

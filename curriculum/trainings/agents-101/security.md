@@ -31,14 +31,11 @@ You've had three agents search your company and three more decide. What doesn't 
 [Exercise: Audit your agent](exercises/audit-your-agent.md)
 
 ## Key Concepts
-- **Certainty is a fantasy; the discipline is the answer.** Normal security work already has residual-risk vocabulary, accepted-risk registers, and named owners. Agent security inherits all of that and adds non-determinism, unbounded text inputs, and emergent tool use on top. You never get a proof; you get a loop. Run the loop, not the anxiety.
-- **Policy files first, reusable expertise second.** The files in `module-4/policies/` are source material. You run them raw once, then package the useful check so it travels as a personal skill.
-- **Two lenses, one check you authored.** One lens carries what your company has already decided is off-limits. The other carries named risk patterns and a plain access review. You did not have to become a policy expert or a security specialist; you had to know what mattered and dictate it.
-- **Prompt injection is a class, not a footnote.** Direct prompt injection arrives in the user's input. Indirect prompt injection arrives in a source the agent retrieves and reads. Both turn well-formed English into the attack surface. Classical perimeter does not see the attack because the attack is not malformed.
-- **"I can't tell" is a real answer.** Most rows in the policy report land here. They are not failures; they are the plain state of a system whose behaviour is non-deterministic. Closing an "I can't tell" requires evidence, not confidence.
-- **Agent mitigations are layered, not replacements.** Scope, split, filter, gate, review sit on top of the controls a real production agent already lives behind: network controls, identity and access management, logging, supplier review, and security review. Loop design is additive. A leader who concludes "the agent check replaces security" ships a breach. The floor stays; the loop adds new surfaces above it.
-- **Residual risk is a first-class artifact.** After mitigation, something remains. You name it and accept it on record. The report should not pretend that a narrower instruction erased the risk; it should show what changed and what stayed true.
-- **Skills as expertise injection.** A skill is how an agent borrows capability it doesn't natively have. It scopes DOWN (what the agent can't do) and scopes UP (what expertise it brings). The security check is one instance of a much broader move.
+- **Certainty is a fantasy; the discipline is the answer.** Agents add non-determinism, unbounded inputs, and emergent tool use on top of security work. You never get a proof, you get a loop, and what remains after it you name and accept on record.
+- **Policy files first, reusable expertise second, two lenses in one check you authored.** The files in `module-4/policies/` are source material: run them raw once, then package the useful check as a personal skill, which is how an agent borrows expertise. One lens carries what your company decided is off-limits, the other named risk patterns and an access review. You did not have to become a security specialist; you had to know what mattered and dictate it.
+- **Prompt injection is a class, not a footnote.** Direct injection arrives in the user's input, indirect in a source the agent retrieves. Both turn well-formed English into the attack surface, which classical perimeter misses.
+- **"I can't tell" is a real answer.** Most rows land here: not failures, the plain state of a non-deterministic system. Closing one takes evidence.
+- **Mitigations are layered, not replacements.** Scope, split, filter, gate, review sit on top of network controls, access management, logging. Concluding that the agent check replaces security ships a breach.
 
 ## Debrief
 

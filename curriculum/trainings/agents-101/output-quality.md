@@ -33,13 +33,12 @@ This module measures what the system actually says inside its scope. Four detect
 [Lecture: Self-consistency after the scoreboard](lectures/self-consistency-after-scoreboard.md)
 
 ## Key Concepts
-- **Benchmarking as a pattern.** N candidates on the same input, scorer measures, winner (or ensemble) is kept. Portable to any quality judgment you'll ever automate (tone, brand, compliance, steering). Groundedness is just the first instance.
-- **Empirical method selection over authority.** You don't pick a detector because the docs or a paper said so. You run several against your own output and your own benchmark and the data names the winner. The move works wherever a machine has to make the judgment.
-- **The scoreboard is the artifact.** Precision, recall, coverage, measured per detector on the same claim pool. Read it row by row and you can name why one detector won and where another lost.
-- **Benchmarking teaches evaluating evaluators.** The real move isn't "build a detector"; it's "build the thing that benchmarks detectors." Once you've run a benchmark once, you've seen what evaluating evaluators looks like, and the idea transfers to every future quality question.
-- **A judge is narrow on purpose.** The winning judge file says what it catches and names its known limit. Narrow tools that work beat broad tools that pretend. A judge that tries to do everything does nothing well.
-- **Grounded is the discipline; the benchmark is how you build the check.** There IS truth out there. Sources carry shards of it. A judge that's been measured against a benchmark is the machine that keeps the output connected to the ground when you're not in the room.
-- **What the judge can't reach.** A small benchmark is enough to prove the method. A production judge wants hundreds of claims, running on every build, learning from its own corrections. Same method, bigger scale.
+- **Benchmarking as a pattern.** N candidates on the same input, scorer measures, winner (or ensemble) is kept. Portable to any quality judgment you'll automate: tone, brand, compliance, steering.
+- **The real move is building the thing that benchmarks the detectors.** Run one benchmark and you have seen what evaluating evaluators looks like. It transfers to every future quality question.
+- **Empirical method selection over authority.** You don't pick a detector because the docs or a paper said so. You run several against your own output and your own benchmark, and the data names the winner.
+- **The scoreboard is the artifact.** Precision, recall, coverage, measured per detector on the same claim pool. Read it row by row and you can name why one won and where another lost.
+- **A judge is narrow on purpose.** The winning judge file says what it catches and names its known limit. Narrow tools that work beat broad tools that pretend.
+- **Grounded is the discipline; the benchmark is how you build the check.** A judge measured against a benchmark is what keeps output connected to the ground when you're not in the room. A small benchmark proves the method; a production judge wants hundreds of claims and learns from its own corrections.
 
 ## Debrief
 

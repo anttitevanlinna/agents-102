@@ -671,5 +671,5 @@ Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/
 
 **§§ 13–15, 16, 25–29, 33 (old §§7, 8, 10, 12) were NOT re-verified this pass** and still carry 2026-05-14. Named on the header stamp so the next sitting starts there.
 
-**Quality:** compendium-audited 2026-08-07 (writing@da65157 story@bb9c1d5 behavior@bb9c1d5 slides@da65157)
-- judges @da65157: writing PASS, story PASS, technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered, slides PASS
+**Quality:** compendium-audited 2026-08-19 (writing@fa43db7c story@fa43db7c behavior@bb9c1d5 slides@fa43db7c)
+- judges @fa43db7c: writing PASS, story PASS, technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered, slides PASS

@@ -35,7 +35,7 @@ Full strategic context → `bosser-strategy` skill.
 
 ## Copyright
 
-Proprietary (`curriculum/`, `content/`, `site/`, `memory/`, `evals/`, `scripts/`, `.claude/`, root docs) → © 2026 Bosser Oy, all rights reserved. Each proprietary top-level folder carries `COPYRIGHT.md`. Public: `continuous-research/` under `continuous-research/LICENSE.md`. In doubt → root [`COPYRIGHT.md`](COPYRIGHT.md).
+Proprietary (`curriculum/`, `content/`, `site/`, `memory/`, `docs/`, `scripts/`, `.claude/`, root docs) → © 2026 Bosser Oy, all rights reserved. Each proprietary top-level folder carries `COPYRIGHT.md`. Public: `continuous-research/` under `continuous-research/LICENSE.md`. In doubt → root [`COPYRIGHT.md`](COPYRIGHT.md).
 
 ## Subagent rule injection
 

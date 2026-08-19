@@ -1,9 +1,26 @@
 # Curriculum Production
 
-- **Generation** (three-pass, PDCA, prompt + exercise design): the `memory/check_*.md` compendiums, autoloaded per `.claude/rules/content-rules.md`. Simulation: `curriculum/evals/simulation.md` (Class A) + `curriculum/evals/simulation-behavior.md` (Class B).
+## Canon
+
+Docs with authority over generation. Anything not listed is session material: read it, never cite it as a rule. Spent session docs move to `docs/archive/`; `node scripts/find-session-docs.js` lists candidates.
+
+**All trainings**
+
+- **Generation** (three-pass, PDCA, prompt + exercise design): the `memory/check_*.md` compendiums, autoloaded per `.claude/rules/content-rules.md`.
 - **Pedagogy** (Bloom, 4 Cs, audience, throughlines): `curriculum/lecture-guardrails.md`.
-- **Vocabulary** (controlled terms: session/task/run, kit terms, register splits): `curriculum/vocabulary.md`. Term change = amend the registry first, then one sweep pass — never a local synonym.
+- **Vocabulary** (controlled terms: session/task/run, kit terms, register splits): `curriculum/vocabulary.md`. Term change = amend the registry first, then one sweep pass, never a local synonym.
+- **Module file shape**: `curriculum/module-shape.md`. **Widgets**: `curriculum/widgets.md`. **Quality line**: `curriculum/quality-format.md`.
+- **Backing blocks**: `curriculum/backing-format.md`. **Source stamps**: `curriculum/source-freshness-format.md`.
 - **Long-running generation** (plan → walk away → return): `curriculum/module-design-long-running-strategy.md`.
+- **Eval procedure**: `curriculum/evals/` top level (README = the pyramid; `simulation.md` Class A + `simulation-behavior.md` Class B; `exercise.md` / `lecture.md` manifests; `arc-pass.md`, `post-run-judge.md`, `pre-flight-checklist.md`, `manual-run-observation.md`, `slide-sweep.md` runbooks; `delivery-incidents.md` append-only; `IMPROVEMENTS.md` open machinery work). Rubrics: `curriculum/evals/judges/`. Lints: `curriculum/evals/lints/`.
+
+**Agentic Engineering 101**
+
+- **Delivery + runtime**: `curriculum/trainings/agentic-engineering-101/training-architecture.md`.
+- **Arc / storyline / LOs**: `bosser-strategy:content-strategy-agentic-engineering-101.md`.
+- **Theory** (spine, placement, doctrine): `theory-plan.md`, backed by `theory-audit.md` (coverage matrix) and `theory-evals.md` (soundness + landing specs).
+- **Open work**: `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
+- **Standing reports**, one per scope, overwritten on rerun: `curriculum/evals/arc-read.ae101.md` (sequential arc), `voice-hunt.ae101.md` (per-file voice), `eval-coverage.ae101.md` (rule coverage).
 
 State of play → `bosser-strategy:content-strategy.md` § *State of play*.
 

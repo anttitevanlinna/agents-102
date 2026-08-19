@@ -140,8 +140,8 @@ The dated review artifacts were valuable as instruments, but they are not perman
 
 ### Delete after migration
 
-- `theory-completeness-review-2026-07-02.md`
-- `theory-completeness-review-2026-07-02.results.json`
+- `docs/archive/theory/theory-completeness-review-2026-07-02.md`
+- `docs/archive/theory/theory-completeness-review-2026-07-02.results.json`
 - `theory-audit.md`
 
 Before deletion, run a unique-content comparison against the rewritten canon. Git history remains the archive. Keep `theory-evals.md`: it is an operational rubric, not a snapshot of theory content.

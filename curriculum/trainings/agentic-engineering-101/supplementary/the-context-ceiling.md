@@ -18,7 +18,7 @@ What you can read is your own window. `/context` already gives you the breakdown
 
 It helps to see the cost once, in dollars, and then stop worrying about it. In an agent session the whole context is re-sent as input on every turn, so anything you carry is paid again and again across the session.
 
-Ask Claude to price the bloat: 100K extra tokens over 20 turns on Opus, then what caching does to it.
+Ask Claude to price the bloat from current Opus pricing: 100K extra tokens over 20 turns, then what caching does to it.
 
 **Prompt** *(Claude Code)*
 
@@ -36,7 +36,7 @@ So the dollar cost is the cheapest line on the bill. That is the point. People p
 
 ## The craft: keep the window clean
 
-These are the moves that show up again and again, across many builders working independently. Treat them as defaults. The first two are about what you let in.
+Treat these as your defaults. The first two are about what you let in.
 
 **Start clean.** One task per session. When you switch to something unrelated, run `/clear` instead of carrying the old conversation into the new problem. A fresh window is the cheapest quality upgrade there is, and the most skipped. People hoard one long session as if starting another were expensive. It is not.
 
@@ -46,7 +46,7 @@ These are the moves that show up again and again, across many builders working i
 
 The rest are about what you do with the work once it's in front of you.
 
-**Use a subagent as a firewall.** A noisy investigation (read twenty files, run a few commands, trace a config) doesn't have to land in your own window at all. There is a way to hand it off and get back only the answer, at a price worth knowing before you reach for it. You'll meet it properly, mechanism and trade-off both, later in the training.
+**Subagent as a firewall.** A noisy investigation (read twenty files, run a few commands, trace a config) doesn't have to land in your own window at all. There is a way to hand it off and get back only the answer, at a price worth knowing before you reach for it. You'll meet it properly, mechanism and trade-off both, later in the training.
 
 **Route by complexity, not price.** A mechanical sub-task (rename across files, pull a list, format some output) does not need your strongest model. Send it to a smaller, faster one and keep the heavy model for the reasoning. A cheap model on a hard task is the expensive mistake.
 
@@ -54,7 +54,7 @@ The rest are about what you do with the work once it's in front of you.
 
 ## More rules, worse edits
 
-A rules file has a quality ceiling of its own, and it arrives earlier than the token count suggests. Two things happen as the file grows. Every rule is a background check the model runs while it works, billed against the same attention that does the work. And rules are checkable where quality is not, so a big enough file quietly turns the goal into rule-passing: edits that would survive an audit and still miss the point.
+A rules file has a quality ceiling of its own, and it arrives earlier than the token count suggests. Every rule is a background check the model runs while it works, billed against the same attention that does the work. And rules are checkable where quality is not, so a big enough file quietly turns the goal into rule-passing: edits that would survive an audit and still miss the point.
 
 Neither is fixed by writing better rules. The fix is where the rules live. Keep the always-loaded file down to principles with the why attached (a rule that carries its reason gets absorbed as taste and stops costing attention; a bare prohibition never does). The positive form is also the short one: saying what good looks like usually takes fewer words than the cage of no-statements built around everything you don't, and it steers where no prohibition anticipated. Move the sometimes-rules into skills that load when their work shows up. And put the long checklist where checklists work: in a review pass over the finished work, not in the window while it writes. Checking against fifty rules is what a review is for. Writing against fifty rules is how you get compliance prose.
 
@@ -86,7 +86,7 @@ The other kind is loud but shrinking: it announces itself, and its fix usually a
 
 ## Drivers of inefficient context: fanning out is its own bill
 
-**Fanning out too wide.** A single subagent doing your noisy reading is craft; running many in parallel is a different bill. One widely quoted figure puts multi-agent runs at around fifteen times a plain chat's tokens, but it's a year old, single-source, and its own authors say fan-out is the wrong shape for most coding. Treat it as a ceiling for research-style work, not a default for yours.
+**Fanning out too wide.** A single subagent doing your noisy reading is craft; running many in parallel is a different bill. One widely quoted figure puts multi-agent systems at around fifteen times a plain chat's tokens, but it's a year old, single-source, and its own authors say fan-out is the wrong shape for most coding. Treat it as a ceiling for research-style work, not a default for yours.
 
 ## One lever, two payoffs
 
@@ -119,6 +119,8 @@ Token efficiency is one lever with two payoffs: a cleaner window thinks better a
 - [How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system) (Anthropic, 2025)
 
 <!-- maintainer -->
+
+**Folklore handles are quotes, and quotes do not get trimmed to a word budget.** `check_slides.md` §9 caps a bold handle at roughly five words. The two handles in `## The folklore` are quoted claims being debunked, not labels: shortening *"Compaction is always lossy, so always hand off."* either misquotes the folklore or deletes the very advice the paragraph goes on to show reversing. §9's harm is an emphasis budget spent on decoration; a claim under examination is not decoration. Future judges should score §9 N/A on that section rather than propose a trim.
 
 **Meta:** *Supplementary for AE101. Audience: software-engineer ICs (L0 to L3); Claude Code is floor, so primitives (`/context`, `/clear`, subagents) are used without re-teaching. Answers a customer request for a practitioner treatment of token efficiency: (1) what it is, (2) how to define and measure it, (3) basic moves and shortcuts, (4) the other drivers beyond carried context. ~7 minutes. Reference register: declarative section headers, verb-led move lead-ins.*
 

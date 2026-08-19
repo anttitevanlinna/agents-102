@@ -49,6 +49,21 @@ Sim sweeps and platform-capability checks are not tracked here. The `curriculum-
 - **`spot-gaps-build-the-loop` (exercise) has two Phase 2 gaps.** A trainer plug-point references an LLM-judge that Phase 2 does not contain, and there is no branch for a student who skipped M5 entirely — which is a self-study path, not a hypothetical.
 - **`author-test-strategy-skill` restates the SKILL.md install mechanic four times.** One statement plus a pointer at `training-architecture.md` §Skills is the shape.
 
+## AE101 judge sweep — where it stands, and how to resume (2026-08-19)
+
+`node curriculum/evals/scripts/eval-queue.js --training ae101` regenerates the work list from repo state; it is the source of truth, not this note. This records only what the queue cannot: decisions taken, and fixes drafted but not landed.
+
+**All-PASS and stamped:** seven modules, `agentic-engineering-progression`, `build-a-project-from-zero`, `clean-code-is-steering`, `the-context-ceiling`, `skill-stacking`, the `spot-gaps` exercise. All four cross-module sets re-earned; every adjacent seam covered, including M3→M4, which no modern run had touched.
+
+**Owed, with the fix already decided:**
+- `mcp-and-connectors` — all five classes returned PASS with two non-blocking findings. Split `## Plugins and marketplaces` (395w) per the split-to-fit decision, trim the whole-sentence bolds in chunks 2/3/4/6 (worst: 20 bolded words at line 60), then re-fire all five.
+- `claude-code-for-engineers` — the 16→40 split is committed. Its writing, story and slides classes still need re-firing against the new body. The writing judge's two blocking findings (em-dashes, filename link text) are already fixed.
+- `workflow-composition-lineages` — one blocking em-dash at line 17; two source-type labels at 178/180 want `[vendor press release]`. `strategy` and `slides` have never been judged on this file. Fix, then fire all seven.
+- 17 lectures, ~62 pairs, untouched. All staleness is diff-region from the figure-registry and soil-line commits, so expected defect density is far below the never-judged files.
+- `getting-going` — a concurrent session was rewriting its room-agreement slide, so its per-class pins and the prework–M3 cross-module row read drift. Re-fire once that work settles.
+
+**Standing decisions from this sweep.** Reference pages get split to fit the slide cap, not accept-notes. A runtime fork whose branches no longer differ gets collapsed, not re-pointed. A file with findings pays a full re-fire, because the `body_sha` guard is whole-file.
+
 ## Never-judged supplementaries and reference pages — non-blocking findings (2026-08-19 sweep)
 
 Banked from the first full judge pass over the six AE101 surfaces that had never been judged in any class. Blocking findings were fixed and re-fired in the same pass; these are the ones that survived as non-blocking and are worth one deliberate decision each.

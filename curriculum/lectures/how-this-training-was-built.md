@@ -42,8 +42,8 @@ The loop is the shape. The bug today was the excuse.
 - **The quoted forcing-function rule is a specimen, not introduced vocabulary.** It is verbatim `check_pedagogy.md §16` and makes the correction-to-rule move concrete.
 - **File is size-gate exempt** (story lecture).
 
-**Quality:** sim-passed 2026-08-18 (writing@2b5a60a story@1480362 technical@2b5a60a behavior@1480362 pedagogy@1480362 strategy@1480362 slides@2b5a60a)
-- judges @2b5a60a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** sim-passed 2026-08-19 (writing@b5d15c39 story@1480362 technical@2b5a60a behavior@1480362 pedagogy@1480362 strategy@1480362 slides@b5d15c39)
+- judges @b5d15c39: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Understand — recognise the compound loop in the training's construction after running it.

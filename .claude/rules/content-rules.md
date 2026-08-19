@@ -25,7 +25,7 @@ Surface → index (T1 file is `_index/<surface>.leads.md`; the compendium named 
 - **Strategy tie-in** (Big Idea, Key Concepts, mood contract) → `check_strategy_tie_in.md`
 - **Pedagogy** (module/exercise design, PDCA) → `check_pedagogy.md`
 - **Room-scale beats** (group adjudication, attributed contribution into a shared record, team deliberation, group round) → `check_workshop.md`. Fires **alongside** `check_pedagogy.md`, never instead of it — the split is per-beat, and `check_workshop.md` carries the N/A carve-out for the individual-learning rules that must not fire on a group beat. Trigger: the artefact belongs to the group, not to a participant. Co-located solo work is not a workshop.
-- **Research claims** (citations, stats, practitioner refs) → `check_research_claims.md` (+ `.claude/rules/research-rules.md`: evidence ladder, source-type labels, freshness, zombie-stat guard)
+- **Research claims** (citations, stats, practitioner refs) → `check_research_claims.md` (+ `continuous-research/research-rules.md`: evidence ladder, source-type labels, freshness, zombie-stat guard)
 - **Platform/IP claims** (Claude Code capabilities, infra proposals) → `check_platform_and_boundaries.md`
 
 === END RULES ===

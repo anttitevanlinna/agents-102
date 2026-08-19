@@ -84,6 +84,10 @@ Between now and Module 4, keep working on your real problem. You're close to an 
 
 **Module time (trainer):** ≈ 75 min total. Crux opener (with question) ~8 min, *Three retrievers, one curator* ~28 min, *Three minds, one synthesis* ~22 min (incl. Close), *When to split* lecture 8–10 min, *Debugging stuck agents* callout ~4 min, Debrief ~5 min. Each exercise's own time label is exercise-only; schedule the whole module against the sum.
 
+- **Transitions:** crux opener 8 @start "Crux opener + the question" · debrief 5 @end "Debrief" · bridge 3 @end "Bridge"
+- **Where these numbers come from:** crux opener and debrief both from the **Module time (trainer):** line above. Every beat here has no file of its own, so nothing else prices it.
+- **Charge:** module-4-prework 0 — same: inlined for findability, read between sittings.
+
 **Artefact contracts**
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|

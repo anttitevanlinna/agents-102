@@ -1,6 +1,6 @@
 # Exercise: Hallucination benchmark
 
-**Time:** 45–60 minutes. Phase 0 ~12, Phase 1 ~8 (set up + watch four detectors), Phase 2 ~20 (watch scoreboard + read it), Phase 3 ~10, Close ~5.
+**Time:** 60 minutes. Phase 0 ~12, Phase 1 ~8 (set up + watch four detectors), Phase 2 ~20 (watch scoreboard + read it), Phase 3 ~10, Close ~5.
 
 **Session** *(new, "Module 5 - Hallucination benchmark")*
 

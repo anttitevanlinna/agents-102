@@ -78,6 +78,8 @@ You just ran **Recipe 3**'s parallel-retrieval shape: three retrievers fanning o
 
 <!-- maintainer -->
 
+- **Atomic — no phase markers.** Four sessions run concurrently on one retrieval-and-curate window; the seams here are between agents, not across time. Line 3 is authored, not generated.
+
 **Quality:** compendium-audited 2026-05-03
 - judges: not yet judge-audited
 

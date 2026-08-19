@@ -34,6 +34,8 @@ Same move: iterate if it's a topic restatement instead of a real call; save when
 
 <!-- maintainer -->
 
+- **Atomic — no phase markers.** One conversation; the second prompt appends to the same `crux.md` in the same session, so there is nothing to cut between them. Line 3 is authored, not generated.
+
 **Quality:** compendium-audited 2026-05-09 (behavior@56f9332)
 - judges @56f9332: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
 

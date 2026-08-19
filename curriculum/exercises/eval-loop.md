@@ -1,6 +1,6 @@
 # Exercise: The eval loop runs itself
 
-**Time:** 35-45 min. Phase 0 manual run ~5 min, Phase 1 kickoff ~3 min, walk-away window ~20-25 min, Phase 2 return and read notes ~10 min.
+**Time:** 45 min. Phase 0 manual run ~5 min, Phase 1 kickoff ~3 min, walk-away window ~25 min, Phase 2 return and read notes ~10 min.
 
 **Session** *(new, "Module 6 - Evaluations")*
 

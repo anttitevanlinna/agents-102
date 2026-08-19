@@ -81,6 +81,8 @@ The sharing plan leaves the room and meets the organisation. What comes back fro
 - judges @9ddfac3: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
 
 **Meta (trainer):**
+- **Transitions:** framing 12 @start "Framing: interview for the job, four sharing shapes" · debrief 5 @end "Debrief" · bridge 3 @end "Bridge"
+- **Where these numbers come from:** framing from this block's own **Framing time:** line, taken at its ceiling; debrief from the body ("Five minutes."). Every beat here has no file of its own, so nothing else prices it.
 - **Primary Bloom's level:** Analyze → Evaluate
 - **Framing time:** 10–12 minutes. No separate lecture file; the framing runs straight into the exercise.
 - **Source-verification debt — Access-Trust Gap stat.** Earlier drafts carried *"54–95% access, 5–22% production trust, gap always wider than 35 points."* The number range circulates across consultancy reports and analyst posts, but the original methodology, sample size, and definition of "production trust" couldn't be traced inside the 6-month freshness window per `check_research_claims.md` § zombie-stat rule. `[UNVERIFIED STAT]` — current draft is qualitative ("wide gap, in our work"). If a verified primary source surfaces (sample size, methodology, recency under 6 months), restore the number with inline citation; otherwise keep qualitative.

@@ -68,6 +68,8 @@ The hardest part of a memory isn't the tool. It's the scope. A memory about "our
 
 <!-- maintainer -->
 
+- **Atomic — no phase markers.** One interview that lands `./challenge.md`; previewing the sources is a tail-move inside it, not a beat beside it. Line 3 is authored, not generated.
+
 **Quality:** compendium-audited 2026-05-09 (behavior@56f9332)
 - judges @56f9332: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
 

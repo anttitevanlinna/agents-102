@@ -89,6 +89,9 @@ Before the next module, try making a few more agents you actually need. Pick by 
 **Opening connector demo (trainer, 5 min):** Place after the opening questions and before `Name your next big challenge`. Use non-sensitive trainer material. Ask Claude to answer one small work question by checking two connected systems and the open web: for example, a wiki page, a recent document or meeting note, and one outside source. The point is not the answer. The point is the moment where Claude combines clues that normally live in separate places.
 
 **Meta (trainer):**
+- **Transitions:** connector demo 5 @start "Opening connector demo" · debrief 5 @end "Debrief" · bridge 3 @end "Bridge"
+- **Where these numbers come from:** connector demo from this block's own "(trainer, 5 min)"; debrief from the body ("Five minutes."). Every beat here has no file of its own, so nothing else prices it.
+- **Charge:** module-3-prework 0 — same: inlined for findability, read between sittings.
 - **Primary Bloom's level:** Apply → Analyze
 - **Prework time:** 30-35 minutes. Challenge choice 5, connector check 5, plan-mode or plan-first primer 15, Karpathy 5-10.
 - **Materials (trainer):** Module 2 zip that unpacks into the student's working directory — empty `sources/` (participant fills via curation on class day — no pre-load), empty `memory/`, and empty `agents/`. No root `CLAUDE.md` ships; the student creates it in the Debrief. Five-minute connector demo uses non-sensitive trainer material across two connected systems plus one outside source. Phase 3's second batch comes from the participant themselves — they find another piece of material mid-exercise. No trainer injection; the three-minute "go find more" loop is part of the lesson.

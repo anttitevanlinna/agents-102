@@ -1,6 +1,6 @@
 # Exercise: Share your work
 
-**Time:** 55–70 minutes. Some phases will run long. That's where the learning lives.
+**Time:** 70 minutes. Some phases will run long. That's where the learning lives.
 
 **Session** *(new, "Module 7 - Personal to team")*
 

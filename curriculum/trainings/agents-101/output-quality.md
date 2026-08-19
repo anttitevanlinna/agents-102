@@ -78,6 +78,8 @@ The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine th
 <!-- maintainer -->
 
 **Meta (trainer):**
+- **Transitions:** connections 5 @start "Connections" · debrief 5 @end "Debrief" · agent actions 3 @end "Agent actions" · bridge 3 @end "Bridge"
+- **Where these numbers come from:** debrief from the body ("Five minutes."); connections and agent-actions are estimates. Every beat here has no file of its own, so nothing else prices it.
 - **Primary Bloom's level:** Evaluate (method selection) → Synthesize (winning judge saved as reusable file)
 - **Materials (trainer):** the student's Module 3 synthesized answer and retrievals — no pre-built failing agent. The briefing that comes out of Module 3's synthesis IS the test corpus.
 - **Plug points:** briefing target, four detector methods, benchmark size

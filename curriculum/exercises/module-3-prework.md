@@ -1,6 +1,6 @@
 # Exercise: Prework before Module 3
 
-**Time:** 30–40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> primer.
+**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> primer.
 
 **What you do:**
 

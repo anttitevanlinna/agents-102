@@ -84,6 +84,9 @@ You just made great output AND packaged what you learned into a file the agent c
 - judges: writing PASS, story PASS, behavior PASS (see instances/getting-going.*.json); technical grandfathered
 
 **Meta (trainer):**
+- **Transitions:** opening 10 @start "Opening: how we work in this room" · debrief 5 @end "Debrief: retro + cold read" · bridge 3 @end "Bridge"
+- **Where these numbers come from:** opening is an estimate (AE101 M1 prices its room-agreement opening at 10); debrief from the body ("Five minutes."). Every beat here has no file of its own, so nothing else prices it.
+- **Charge:** module-2-prework 0 — the page is inlined here so students find it at the close, but it is read between sittings and costs no room time.
 - **Primary Bloom's level:** Apply
 - **Prework time:** about 30–60 minutes before Module 1.
 - **Materials (trainer):** none — the exercise is vanilla Claude Code + the student's own LinkedIn. The Debrief sharpens `module-1/personal-brand-generation.md`; Module 1 deliberately creates no `CLAUDE.md`.

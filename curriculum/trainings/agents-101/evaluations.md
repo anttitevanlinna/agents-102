@@ -79,6 +79,8 @@ You just built an eval that improves itself. The system can now keep pressure on
 - judges @ade2ec9: writing PASS, story PASS, technical PASS, behavior PASS (see instances/evaluations.*.json), pedagogy grandfathered, strategy grandfathered
 
 **Meta (trainer):**
+- **Transitions:** connections 5 @start "Connections" · debrief 5 @end "Debrief" · bridge 3 @end "Bridge"
+- **Where these numbers come from:** debrief from the body ("Five minutes."); connections is an estimate. Every beat here has no file of its own, so nothing else prices it.
 - **Primary Bloom's level:** Create
 - **Materials (trainer):** `judges/groundedness-judge.md` handoff from Module 5's benchmark winner. Pre-flight capability check on generation/judging agent separation and tactic rewrite reliability.
 - **Plug points:** the topic for the generation run (defaults to the Module 3 system's primary output); starting tactic; number of rounds.

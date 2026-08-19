@@ -7,7 +7,7 @@ requires:
   - id: root-claude-md
     source: prompt:a101-m2-debrief-claude-md
   - id: m3-agent-work
-    source: module:multi-agent-systems
+    source: prompt:three-minds-one-synthesis-1
 produces:
   - id: root-claude-md
     location: ./CLAUDE.md (integrate in place)

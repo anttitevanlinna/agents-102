@@ -115,15 +115,19 @@ if (require.main === module) {
   // says nothing about artefact ordering; run the validator as a sibling so a
   // premature-read / dangling-require can't pass the build. A child process
   // keeps the two modules decoupled (no require cycle) and propagates the exit
-  // code. Scoped to AE101, the training whose graph is normalized; pass
-  // --training to validate-prompt-graph.js directly to check others.
+  // code. Every training with a normalized graph is validated here: a graph
+  // that is only checked on demand goes stale, which is how Agents 101 came to
+  // carry fifteen errors nobody saw.
   const { execFileSync } = require('child_process');
+  const VALIDATED_TRAININGS = ['agentic-engineering-101', 'agents-101'];
   try {
-    execFileSync(
-      process.execPath,
-      [path.join(__dirname, 'validate-prompt-graph.js'), '--training', 'agentic-engineering-101'],
-      { stdio: 'inherit' }
-    );
+    for (const training of VALIDATED_TRAININGS) {
+      execFileSync(
+        process.execPath,
+        [path.join(__dirname, 'validate-prompt-graph.js'), '--training', training],
+        { stdio: 'inherit' }
+      );
+    }
   } catch (e) {
     console.error('\nPrompt dependency-graph validation failed — see errors above. Build aborted.');
     process.exit(1);

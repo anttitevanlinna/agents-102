@@ -3,6 +3,11 @@ key: eval-loop-2
 dest: Claude Code
 runtime: any
 origin: exercises/eval-loop
+produces:
+  - id: m6-run-artifacts
+    location: module-6/eval-notes.md, module-6/runs/round-1/
+  - id: generation-tactic
+    location: ./generation-tactic.md
 ---
 Run an eval loop using my fixed judge.
 

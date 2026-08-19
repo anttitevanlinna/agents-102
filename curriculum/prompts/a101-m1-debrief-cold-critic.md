@@ -5,7 +5,7 @@ runtime: any
 origin: agents-101/getting-going
 requires:
   - id: m1-site
-    source: module:getting-going
+    source: prompt:personal-site-with-guardrails-1
 produces:
   - id: m1-site-cold-read
     location: scrollback

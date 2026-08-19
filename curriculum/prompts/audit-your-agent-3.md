@@ -3,6 +3,10 @@ key: audit-your-agent-3
 dest: Claude Code
 runtime: any
 origin: exercises/audit-your-agent
+produces:
+  - id: security-reports
+    location: outputs/policy-report-raw.md, outputs/policy-report.md, outputs/security-report.md
+    note: completes the set by appending "Mitigation applied and residual" to the security report
 ---
 Apply a mitigation to my system for the risk I'm about to name. Pick the shape from the five (scope, split, filter, gate, review), make the file or instruction changes, and walk me through what you did and why. If the shape doesn't fit, I'll tell you and we'll iterate.
 

@@ -3,6 +3,13 @@ key: hallucination-bakeoff-8
 dest: Claude Code
 runtime: any
 origin: exercises/hallucination-bakeoff
+produces:
+  - id: m5-evidence-artifacts
+    location: module-5/briefing.md, module-5/claim-pool.md, module-5/scoreboard.md
+    note: completes the set at the scoreboard
+  - id: groundedness-judge
+    location: judges/groundedness-judge.md
+    note: short markdown judge, prompt kept under 20 lines
 ---
 Take the winning detector (or the ensemble) from module-5/scoreboard.md. Rewrite it as a portable judge prompt. The judge should:
 

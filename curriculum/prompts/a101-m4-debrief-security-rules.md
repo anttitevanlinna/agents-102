@@ -8,7 +8,7 @@ requires:
     source: prompt:a101-m2-debrief-claude-md
     conditional: m2-completed
   - id: security-reports
-    source: module:security
+    source: prompt:audit-your-agent-3
 produces:
   - id: root-claude-md
     location: ./CLAUDE.md (Security operating rules section)

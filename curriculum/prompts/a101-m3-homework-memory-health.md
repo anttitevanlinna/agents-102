@@ -5,7 +5,7 @@ runtime: any
 origin: agents-101/multi-agent-systems
 requires:
   - id: m3-agent-work
-    source: module:multi-agent-systems
+    source: prompt:three-minds-one-synthesis-1
 produces:
   - id: memory-health-plan
     location: scrollback (shown before files change)

@@ -5,7 +5,7 @@ runtime: any
 origin: agents-101/getting-going
 requires:
   - id: m1-brand-rules
-    source: module:getting-going
+    source: prompt:personal-site-with-guardrails-6
 produces:
   - id: m1-brand-rules
     location: module-1/personal-brand-generation.md (overwrite in place)

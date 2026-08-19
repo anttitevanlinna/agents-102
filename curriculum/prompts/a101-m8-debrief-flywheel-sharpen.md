@@ -5,7 +5,7 @@ runtime: any
 origin: agents-101/agents-building-agents
 requires:
   - id: m8-deliberation
-    source: module:agents-building-agents
+    source: prompt:joint-double-diamond-8
 produces:
   - id: m8-heaviest-file
     location: deliberation folder (synthesizer rules / kernel / agent-set — overwrite in place)

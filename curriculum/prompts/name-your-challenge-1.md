@@ -3,6 +3,10 @@ key: name-your-challenge-1
 dest: Claude Code
 runtime: any
 origin: exercises/name-your-challenge
+produces:
+  - id: challenge-md
+    location: ./challenge.md
+    note: one-paragraph brief, shown before saving
 ---
 I'm in a training where I'll build a working memory around one live challenge I'm wrestling with. Help me pin the challenge down. Ask me these in turn:
 

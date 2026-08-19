@@ -8,9 +8,9 @@ requires:
     source: prompt:a101-m2-debrief-claude-md
     conditional: m2-completed
   - id: m5-evidence-artifacts
-    source: module:output-quality
+    source: prompt:hallucination-bakeoff-8
   - id: groundedness-judge
-    source: module:output-quality
+    source: prompt:hallucination-bakeoff-8
 produces:
   - id: root-claude-md
     location: ./CLAUDE.md (Groundedness checks section)

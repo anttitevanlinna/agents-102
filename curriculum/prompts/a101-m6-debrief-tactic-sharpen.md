@@ -5,11 +5,11 @@ runtime: any
 origin: agents-101/evaluations
 requires:
   - id: generation-tactic
-    source: module:evaluations
+    source: prompt:eval-loop-2
   - id: m6-run-artifacts
-    source: module:evaluations
+    source: prompt:eval-loop-2
   - id: groundedness-judge
-    source: module:output-quality
+    source: prompt:hallucination-bakeoff-8
 produces:
   - id: generation-tactic
     location: ./generation-tactic.md (overwrite in place)

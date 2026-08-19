@@ -3,6 +3,10 @@ key: joint-double-diamond-8
 dest: central synthesizer
 runtime: any
 origin: exercises/joint-double-diamond
+produces:
+  - id: m8-deliberation
+    location: shared folder root — strategy-kernel.md and the synthesis files
+    note: final synthesis over every proposal.md / critique.md in the deliberation
 ---
 Read challenge.md, selection-board.md, midway-instructions.md, every proposal.md, every critique.md, and any pushback.md files. Update selection-board.md if a critique changed the best idea.
 

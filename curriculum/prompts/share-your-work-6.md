@@ -3,6 +3,9 @@ key: share-your-work-6
 dest: Builder Claude
 runtime: any
 origin: exercises/share-your-work
+produces:
+  - id: m7-artifacts
+    location: module-7/jtbd.md, module-7/people-plan.md, module-7/assumptions.md, module-7/failure-stories.md
 ---
 It is six months from now. My teammate
 kept using their current hire. My candidate sat unused, or they tried it twice

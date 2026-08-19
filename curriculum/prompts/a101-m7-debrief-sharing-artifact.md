@@ -5,7 +5,7 @@ runtime: any
 origin: agents-101/personal-to-team
 requires:
   - id: m7-artifacts
-    source: module:personal-to-team
+    source: prompt:share-your-work-6
 produces:
   - id: m7-sharing-artifact
     location: module-7/<chosen-file> (overwrite in place)

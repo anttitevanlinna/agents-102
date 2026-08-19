@@ -5,7 +5,7 @@ runtime: any
 origin: agents-101/building-agent-systems
 requires:
   - id: challenge-md
-    source: module:building-agent-systems
+    source: prompt:name-your-challenge-1
   - id: working-tree-scaffold
     source: prompt:a101-prework-extract-tarball
 produces:

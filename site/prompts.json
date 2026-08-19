@@ -9,7 +9,7 @@
     "requires": [
       {
         "id": "m1-site",
-        "source": "module:getting-going"
+        "source": "prompt:personal-site-with-guardrails-1"
       }
     ],
     "produces": [
@@ -30,7 +30,7 @@
     "requires": [
       {
         "id": "m1-brand-rules",
-        "source": "module:getting-going"
+        "source": "prompt:personal-site-with-guardrails-6"
       }
     ],
     "produces": [
@@ -51,7 +51,7 @@
     "requires": [
       {
         "id": "challenge-md",
-        "source": "module:building-agent-systems"
+        "source": "prompt:name-your-challenge-1"
       },
       {
         "id": "working-tree-scaffold",
@@ -85,7 +85,7 @@
       },
       {
         "id": "m3-agent-work",
-        "source": "module:multi-agent-systems"
+        "source": "prompt:three-minds-one-synthesis-1"
       }
     ],
     "produces": [
@@ -106,7 +106,7 @@
     "requires": [
       {
         "id": "m3-agent-work",
-        "source": "module:multi-agent-systems"
+        "source": "prompt:three-minds-one-synthesis-1"
       }
     ],
     "produces": [
@@ -132,7 +132,7 @@
       },
       {
         "id": "security-reports",
-        "source": "module:security"
+        "source": "prompt:audit-your-agent-3"
       }
     ],
     "produces": [
@@ -158,11 +158,11 @@
       },
       {
         "id": "m5-evidence-artifacts",
-        "source": "module:output-quality"
+        "source": "prompt:hallucination-bakeoff-8"
       },
       {
         "id": "groundedness-judge",
-        "source": "module:output-quality"
+        "source": "prompt:hallucination-bakeoff-8"
       }
     ],
     "produces": [
@@ -183,15 +183,15 @@
     "requires": [
       {
         "id": "generation-tactic",
-        "source": "module:evaluations"
+        "source": "prompt:eval-loop-2"
       },
       {
         "id": "m6-run-artifacts",
-        "source": "module:evaluations"
+        "source": "prompt:eval-loop-2"
       },
       {
         "id": "groundedness-judge",
-        "source": "module:output-quality"
+        "source": "prompt:hallucination-bakeoff-8"
       }
     ],
     "produces": [
@@ -212,7 +212,7 @@
     "requires": [
       {
         "id": "m7-artifacts",
-        "source": "module:personal-to-team"
+        "source": "prompt:share-your-work-6"
       }
     ],
     "produces": [
@@ -233,7 +233,7 @@
     "requires": [
       {
         "id": "m8-deliberation",
-        "source": "module:agents-building-agents"
+        "source": "prompt:joint-double-diamond-8"
       }
     ],
     "produces": [
@@ -967,7 +967,14 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/audit-your-agent",
-    "text": "Apply a mitigation to my system for the risk I'm about to name. Pick the shape from the five (scope, split, filter, gate, review), make the file or instruction changes, and walk me through what you did and why. If the shape doesn't fit, I'll tell you and we'll iterate.\n\nThen re-run the check the reusable lens performed for this specific risk (re-apply the relevant lens, not the whole audit). Report the new verdict. Is the risk reduced, eliminated, or shifted somewhere else?\n\nThen append a short section to outputs/security-report.md named \"Mitigation applied and residual\". Name what changed, what the new verdict is, and what's still true after the mitigation. Do not rewrite the earlier report. Not what we fixed. What's left. Be specific.\n\nThe risk:"
+    "text": "Apply a mitigation to my system for the risk I'm about to name. Pick the shape from the five (scope, split, filter, gate, review), make the file or instruction changes, and walk me through what you did and why. If the shape doesn't fit, I'll tell you and we'll iterate.\n\nThen re-run the check the reusable lens performed for this specific risk (re-apply the relevant lens, not the whole audit). Report the new verdict. Is the risk reduced, eliminated, or shifted somewhere else?\n\nThen append a short section to outputs/security-report.md named \"Mitigation applied and residual\". Name what changed, what the new verdict is, and what's still true after the mitigation. Do not rewrite the earlier report. Not what we fixed. What's left. Be specific.\n\nThe risk:",
+    "produces": [
+      {
+        "id": "security-reports",
+        "location": "outputs/policy-report-raw.md, outputs/policy-report.md, outputs/security-report.md",
+        "note": "completes the set by appending \"Mitigation applied and residual\" to the security report"
+      }
+    ]
   },
   "author-security-skill-1": {
     "key": "author-security-skill-1",
@@ -1534,7 +1541,17 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/eval-loop",
-    "text": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds."
+    "text": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/groundedness-judge.md.\n- Before round 1, compute and record the starting SHA of judges/groundedness-judge.md.\n- When the loop stops, compute the ending SHA and report whether the judge stayed byte-identical.\n\nStarting generation tactic:\n- Read ./generation-tactic.md from Phase 0. If it is missing, stop and tell me Phase 0 has not been completed.\n- Create module-6/runs/round-1/, module-6/runs/round-2/, and module-6/runs/round-3/. If the loop continues, keep the same numbering pattern with round-4/, round-5/, and so on.\n\nRun at least 3 rounds. After round 3, keep going until there is no longer significant improvement from the previous round.\n\nFor each round:\n1. Dispatch a generator subagent. It must read ./generation-tactic.md, ./crux.md, and memory/. It writes the briefing for that round:\n   - briefing.md in that round's folder\n2. Dispatch a separate judge subagent. It must read judges/groundedness-judge.md, ./crux.md, memory/, and the briefing for that round. It writes the judgment for that round:\n   - judgment.md in that round's folder\n   Each judgment includes verdicts, one-sentence grounding feedback per factual claim, one generation-tactic rule for each flagged failure class, plus a top-line count of flagged claims.\n3. The main session, not a subagent, reads the judgment for that round and rewrites ./generation-tactic.md for the next round. Integrate the lesson; do not append retro notes.\n4. Starting after round 3, decide whether the last round improved significantly compared with the previous round. Significant improvement means fewer flagged claims, a new failure class resolved, or a clearly sharper generation tactic. When there is no longer significant improvement, stop the loop.\n\nWhen the loop stops:\n- Write module-6/eval-notes.md with the score trajectory, the generation-tactic change after each round, why the loop stopped, the judge SHA check, one thing the judge still cannot see, and one human decision still needed.\n- In chat, show me the same summary in under 12 lines.\n\nDo not stop for confirmation between rounds.",
+    "produces": [
+      {
+        "id": "m6-run-artifacts",
+        "location": "module-6/eval-notes.md, module-6/runs/round-1/"
+      },
+      {
+        "id": "generation-tactic",
+        "location": "./generation-tactic.md"
+      }
+    ]
   },
   "eval-loop-3": {
     "key": "eval-loop-3",
@@ -1803,7 +1820,19 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/hallucination-bakeoff",
-    "text": "Take the winning detector (or the ensemble) from module-5/scoreboard.md. Rewrite it as a portable judge prompt. The judge should:\n\n1. Take any output file and the relevant evidence files as inputs.\n2. Flag ungrounded claims using the method(s) that won the benchmark.\n3. Return a short structured list — claim flagged, category, one-line reasoning.\n4. Not classify claims I didn't ask about. Stay narrow. A judge that tries to do everything does nothing well.\n\nWrite the judge as a markdown file to judges/groundedness-judge.md — a short heading, one paragraph describing what it checks and why, then the prompt itself (the thing I'd paste at Claude to run the judge). Keep the judge prompt under 20 lines. Prompts that sprawl get ignored.\n\nAt the end of the file, add a one-line \"Known limit:\" — the failure mode this judge doesn't catch, based on what lost the benchmark."
+    "text": "Take the winning detector (or the ensemble) from module-5/scoreboard.md. Rewrite it as a portable judge prompt. The judge should:\n\n1. Take any output file and the relevant evidence files as inputs.\n2. Flag ungrounded claims using the method(s) that won the benchmark.\n3. Return a short structured list — claim flagged, category, one-line reasoning.\n4. Not classify claims I didn't ask about. Stay narrow. A judge that tries to do everything does nothing well.\n\nWrite the judge as a markdown file to judges/groundedness-judge.md — a short heading, one paragraph describing what it checks and why, then the prompt itself (the thing I'd paste at Claude to run the judge). Keep the judge prompt under 20 lines. Prompts that sprawl get ignored.\n\nAt the end of the file, add a one-line \"Known limit:\" — the failure mode this judge doesn't catch, based on what lost the benchmark.",
+    "produces": [
+      {
+        "id": "m5-evidence-artifacts",
+        "location": "module-5/briefing.md, module-5/claim-pool.md, module-5/scoreboard.md",
+        "note": "completes the set at the scoreboard"
+      },
+      {
+        "id": "groundedness-judge",
+        "location": "judges/groundedness-judge.md",
+        "note": "short markdown judge, prompt kept under 20 lines"
+      }
+    ]
   },
   "joint-double-diamond-1": {
     "key": "joint-double-diamond-1",
@@ -1867,7 +1896,14 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/joint-double-diamond",
-    "text": "Read challenge.md, selection-board.md, midway-instructions.md, every proposal.md, every critique.md, and any pushback.md files. Update selection-board.md if a critique changed the best idea.\n\nThen write three files at the shared folder root:\n\n1. strategy-kernel.md\nFour sections: diagnosis, guiding policy, experiments, risks. Cite every claim against its source file. Keep the kernel under one page. Don't smooth the disagreements; where the selected idea beat a strong alternative, name the alternative in one line.\n\n2. agent-set.md\nSuggest the set of agents the company should build or assign next. For each agent: job, owner, input files/systems, output, first evaluation or judge, and why this agent belongs in the set. Keep it to the smallest set that can execute the plan.\n\n3. plan.md\nWrite the plan for the next two weeks. Include sequence, owners, agent dependencies, human decision points, evidence to collect, success signal, and stop condition. Make clear which work can start concurrently and which work must wait."
+    "text": "Read challenge.md, selection-board.md, midway-instructions.md, every proposal.md, every critique.md, and any pushback.md files. Update selection-board.md if a critique changed the best idea.\n\nThen write three files at the shared folder root:\n\n1. strategy-kernel.md\nFour sections: diagnosis, guiding policy, experiments, risks. Cite every claim against its source file. Keep the kernel under one page. Don't smooth the disagreements; where the selected idea beat a strong alternative, name the alternative in one line.\n\n2. agent-set.md\nSuggest the set of agents the company should build or assign next. For each agent: job, owner, input files/systems, output, first evaluation or judge, and why this agent belongs in the set. Keep it to the smallest set that can execute the plan.\n\n3. plan.md\nWrite the plan for the next two weeks. Include sequence, owners, agent dependencies, human decision points, evidence to collect, success signal, and stop condition. Make clear which work can start concurrently and which work must wait.",
+    "produces": [
+      {
+        "id": "m8-deliberation",
+        "location": "shared folder root — strategy-kernel.md and the synthesis files",
+        "note": "final synthesis over every proposal.md / critique.md in the deliberation"
+      }
+    ]
   },
   "map-the-access-surface-1": {
     "key": "map-the-access-surface-1",
@@ -1986,7 +2022,14 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/name-your-challenge",
-    "text": "I'm in a training where I'll build a working memory around one live challenge I'm wrestling with. Help me pin the challenge down. Ask me these in turn:\n\n1. In one sentence, what's the initiative? A real, midsized-to-large piece of work you're carrying over the next few weeks — scope, stakes, still open.\n2. What have you already tried, read, or decided? What's ruled out, what's still open?\n3. Where are you currently stuck on this — what's the specific part you can't seem to get past, or the question you keep asking yourself and not landing?\n\nWhen I've answered all three, write a one-paragraph brief to ./challenge.md. Show it to me before saving."
+    "text": "I'm in a training where I'll build a working memory around one live challenge I'm wrestling with. Help me pin the challenge down. Ask me these in turn:\n\n1. In one sentence, what's the initiative? A real, midsized-to-large piece of work you're carrying over the next few weeks — scope, stakes, still open.\n2. What have you already tried, read, or decided? What's ruled out, what's still open?\n3. Where are you currently stuck on this — what's the specific part you can't seem to get past, or the question you keep asking yourself and not landing?\n\nWhen I've answered all three, write a one-paragraph brief to ./challenge.md. Show it to me before saving.",
+    "produces": [
+      {
+        "id": "challenge-md",
+        "location": "./challenge.md",
+        "note": "one-paragraph brief, shown before saving"
+      }
+    ]
   },
   "name-your-challenge-2": {
     "key": "name-your-challenge-2",
@@ -2086,7 +2129,14 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/personal-site-with-guardrails",
-    "text": "Build me a personal HTML one-pager site from the LinkedIn profile below. Save it as `module-1/site.html`.\n\nLinkedIn:"
+    "text": "Build me a personal HTML one-pager site from the LinkedIn profile below. Save it as `module-1/site.html`.\n\nLinkedIn:",
+    "produces": [
+      {
+        "id": "m1-site",
+        "location": "module-1/site.html",
+        "note": "first generation, from the LinkedIn profile alone"
+      }
+    ]
   },
   "personal-site-with-guardrails-2": {
     "key": "personal-site-with-guardrails-2",
@@ -2126,7 +2176,14 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/personal-site-with-guardrails",
-    "text": "Write a generation rules file at `module-1/personal-brand-generation.md` — a portable agent guideline I could invoke on the next personal-brand task (a colleague's bio, a team page, a client one-pager). Structure it: what this is for, the core rule (distinctive not descriptive), what never to generate, what always to do, the framework moves to apply (StoryBrand-tuned for the help section, anti-branding for voice, visual-steal for chrome), voice rules. Pull from what we just did — the actual decisions, the actual flips, the actual chrome — not from generic guidance. Keep the edge — distinctive over diplomatic. No CTA theatre.\n\nWhen you're done, tell me in 4–6 lines what's in the file: the structure you used, the strongest 2–3 rules, anything you weren't sure about. I shouldn't have to open the file to know what landed."
+    "text": "Write a generation rules file at `module-1/personal-brand-generation.md` — a portable agent guideline I could invoke on the next personal-brand task (a colleague's bio, a team page, a client one-pager). Structure it: what this is for, the core rule (distinctive not descriptive), what never to generate, what always to do, the framework moves to apply (StoryBrand-tuned for the help section, anti-branding for voice, visual-steal for chrome), voice rules. Pull from what we just did — the actual decisions, the actual flips, the actual chrome — not from generic guidance. Keep the edge — distinctive over diplomatic. No CTA theatre.\n\nWhen you're done, tell me in 4–6 lines what's in the file: the structure you used, the strongest 2–3 rules, anything you weren't sure about. I shouldn't have to open the file to know what landed.",
+    "produces": [
+      {
+        "id": "m1-brand-rules",
+        "location": "module-1/personal-brand-generation.md",
+        "note": "portable generation rules distilled from the decisions made across this exercise"
+      }
+    ]
   },
   "push-back-on-the-plan-1": {
     "key": "push-back-on-the-plan-1",
@@ -2298,7 +2355,13 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/share-your-work",
-    "text": "It is six months from now. My teammate\nkept using their current hire. My candidate sat unused, or they tried it twice\nand fired it.\n\nRead module-7/jtbd.md, module-7/technical-plan.md, module-7/people-plan.md, and\nmodule-7/assumptions.md.\n\nWrite three failure stories, each a short paragraph:\n- Most likely social failure — about the incumbent, the teammate, the\n  workflow. \"They trust their own spreadsheet more than any agent output\" is\n  usually closer than \"it broke technically.\"\n- Most likely technical failure — what broke, how it broke.\n- The failure I'm not seeing — bias your thinking toward what I seem to be\n  assuming will go fine.\n\nFor each story, one sentence: the early warning sign I'd see in week two if\nthis were starting to happen.\n\nSave to module-7/failure-stories.md."
+    "text": "It is six months from now. My teammate\nkept using their current hire. My candidate sat unused, or they tried it twice\nand fired it.\n\nRead module-7/jtbd.md, module-7/technical-plan.md, module-7/people-plan.md, and\nmodule-7/assumptions.md.\n\nWrite three failure stories, each a short paragraph:\n- Most likely social failure — about the incumbent, the teammate, the\n  workflow. \"They trust their own spreadsheet more than any agent output\" is\n  usually closer than \"it broke technically.\"\n- Most likely technical failure — what broke, how it broke.\n- The failure I'm not seeing — bias your thinking toward what I seem to be\n  assuming will go fine.\n\nFor each story, one sentence: the early warning sign I'd see in week two if\nthis were starting to happen.\n\nSave to module-7/failure-stories.md.",
+    "produces": [
+      {
+        "id": "m7-artifacts",
+        "location": "module-7/jtbd.md, module-7/people-plan.md, module-7/assumptions.md, module-7/failure-stories.md"
+      }
+    ]
   },
   "spot-gaps-build-the-loop-1": {
     "key": "spot-gaps-build-the-loop-1",
@@ -2563,7 +2626,14 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/three-minds-one-synthesis",
-    "text": "Start dispatching immediately. No plan or preamble.\n\nSpawn three subagents in parallel, each with a different stance. Each reads my curated memory/ (the layer the previous exercise integrated the retrievals into) and writes a short note (under 200 words) to module-3/stances/.\n\nSubagent 1: Backward-from-end planner. Imagine the outcome we want in 12 months. Work backwards. What must be true by month 9, month 6, month 3, next week? What's the first move on Monday?\n\nSubagent 2: Assumption experimenter. Roger Martin's test: for the most attractive option, what would have to be true for it to work? List the load-bearing assumptions. For each, name the cheapest test that could kill it within a week.\n\nSubagent 3: Counterintuitive reframer. What's the obvious answer here? Now, what's the reframe? Question the framing of the question itself. Steal an analogy from an unrelated field. Which bias is operating, and what happens if we invert it? (Be sharp, not glib.)\n\nWhen the three return, show me the stances side by side, unsummarised, so I read them as three voices. Tell me where memory had conflicts or gaps that weakened any stance.\n\nThen synthesize. Apply Rumelt's strategy kernel — diagnosis (what's really going on, in plain language), guiding policy (one coherent approach that addresses the diagnosis), coherent actions (3–5 concrete moves that follow). Append only a new `## Answer` section to ./crux.md with the three legs; do not modify existing sections. Name where the three stances disagreed and which one you sided with and why; don't smooth the disagreement. Show me before saving."
+    "text": "Start dispatching immediately. No plan or preamble.\n\nSpawn three subagents in parallel, each with a different stance. Each reads my curated memory/ (the layer the previous exercise integrated the retrievals into) and writes a short note (under 200 words) to module-3/stances/.\n\nSubagent 1: Backward-from-end planner. Imagine the outcome we want in 12 months. Work backwards. What must be true by month 9, month 6, month 3, next week? What's the first move on Monday?\n\nSubagent 2: Assumption experimenter. Roger Martin's test: for the most attractive option, what would have to be true for it to work? List the load-bearing assumptions. For each, name the cheapest test that could kill it within a week.\n\nSubagent 3: Counterintuitive reframer. What's the obvious answer here? Now, what's the reframe? Question the framing of the question itself. Steal an analogy from an unrelated field. Which bias is operating, and what happens if we invert it? (Be sharp, not glib.)\n\nWhen the three return, show me the stances side by side, unsummarised, so I read them as three voices. Tell me where memory had conflicts or gaps that weakened any stance.\n\nThen synthesize. Apply Rumelt's strategy kernel — diagnosis (what's really going on, in plain language), guiding policy (one coherent approach that addresses the diagnosis), coherent actions (3–5 concrete moves that follow). Append only a new `## Answer` section to ./crux.md with the three legs; do not modify existing sections. Name where the three stances disagreed and which one you sided with and why; don't smooth the disagreement. Show me before saving.",
+    "produces": [
+      {
+        "id": "m3-agent-work",
+        "location": "module-3/stances/",
+        "note": "per-stance agent output; the multi-agent work M3's debrief reads back"
+      }
+    ]
   },
   "three-minds-one-synthesis-2": {
     "key": "three-minds-one-synthesis-2",

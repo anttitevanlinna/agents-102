@@ -3,6 +3,10 @@ key: three-minds-one-synthesis-1
 dest: Claude Code
 runtime: any
 origin: exercises/three-minds-one-synthesis
+produces:
+  - id: m3-agent-work
+    location: module-3/stances/
+    note: per-stance agent output; the multi-agent work M3's debrief reads back
 ---
 Start dispatching immediately. No plan or preamble.
 

@@ -6,9 +6,9 @@ A walk through composition shapes surfaced from named practitioners' own publish
 
 Three reading rules for this supplementary:
 
-1. **One published framework lives in this set: Klaassen's Compound Engineering.** Plugin shipped, framework named, repo active. Other entries publish architectural stances, named methodologies, or scattered moves without putting a framework label on them. Each entry says directly which it is.
+1. **One published framework.** Klaassen's Compound Engineering is the only one in this set: plugin shipped, framework named, repo active. Other entries publish architectural stances, named methodologies, or scattered moves without putting a framework label on them. Each entry says directly which it is.
 
-2. **There are almost certainly other named frameworks the walk hasn't surfaced.** This supplementary is a starting map drawn from a small sample of practitioners the AE101 research surfaced in May 2026. New frameworks ship monthly. Treat the walk as a way to read the field, not as an exhaustive index of what exists.
+2. **The map is partial.** There are almost certainly other named frameworks this walk never reached. It is a starting map drawn from a small sample of practitioners the AE101 research surfaced in May 2026. New frameworks ship monthly. Treat the walk as a way to read the field, not as an exhaustive index of what exists.
 
 3. **Quote with care.** Synthetic framings ("phase pipeline", "rails not chains") that circulated on third-party write-ups have been removed where the original practitioner did not publish them. The cost: less aphoristic body prose. The benefit: a student or trainer who looks up a quote will actually find it where the supplementary says it lives.
 
@@ -53,13 +53,13 @@ Cognition does not put a framework label on the shape itself. The "single writer
 
 ## Feedback-loopable methodology and shipped primitives, Sourcegraph Amp
 
-Two artefacts in the Amp surface, with different bylines and different shapes.
+Two artefacts from Amp, with different bylines and different shapes.
 
 **Feedback Loopable**, by Lewis Metcalf at Sourcegraph (2026-02-05), is a named methodology Metcalf calls *"making it feedback loopable"*: building things for humans using methods built for agents. His three components, verbatim from the post: *"1. Built a playground. 2. Set up Experiments. 3. Made the inner loop fast."* The playground is a shared agent-human environment. Experiments use URL-driven query parameters for reproducibility. The inner loop is sped up by emitting CLI text output rather than screenshots so the agent can iterate faster. This is Metcalf's coined methodology, not an industry-standard framework.
 
 **Handoff**, anonymous team byline at Amp (2025-10-23), was a product feature Amp shipped, not a framework. The published description: *"Handoff lets you specify your goal for the new thread. Amp then analyzes the current thread and generates a prompt to start the new thread, along with a list of relevant files."* The argument for handoff over compaction: *"It's lossy, for one. Every time you compact a thread, what's in the context window gets replaced with a summary."* Amp reversed that argument in May 2026, retired Handoff, and now compacts automatically. It was a single composition seam Amp shipped and later withdrew; it never arrived as part of a broader framework Amp had named.
 
-What's distinctive about the Amp surface: composition seams ship inside Amp's runtime, maintained by Amp's product team. The Handoff reversal is the clearest demonstration. Amp changed its mind about the whole mechanism and users got the new behaviour without rewriting a single skill file, which is the upside and the exposure in one move. Klaassen and Pocock keep their composition primitives in their own Git repos; Amp keeps its primitives inside the product, and can retire one.
+What's distinctive about Amp: composition seams ship inside Amp's runtime, maintained by Amp's product team. The Handoff reversal is the clearest demonstration. Amp changed its mind about the whole mechanism and users got the new behaviour without rewriting a single skill file, which is the upside and the exposure in one move. Klaassen and Pocock keep their composition primitives in their own Git repos; Amp keeps its primitives inside the product, and can retire one.
 
 What's contested: most of Amp's specific primitives are platform-specific. Read the posts for the architectural shape and the methodology framing; do not expect the verbatim primitives to translate to Claude Code or Cursor.
 
@@ -136,9 +136,9 @@ The dispatcher pattern **scales cross-repo**. Dino runs a pure-routing meta-laye
 
 Three filters that work better than ranking:
 
-1. **What shape is your real work?** If you're shipping multi-file engineering changes with clear phases and want a published framework you can install today, Klaassen. If you're already shipping things one skill at a time and want a model for runtime composition, Pocock. If your team is wrestling with parallel-writer chaos, Yan/Cognition. If your team has standardised on Amp's runtime, Metcalf and the Amp surface by default.
+1. **What shape is your real work?** If you're shipping multi-file engineering changes with clear phases and want a published framework you can install today, Klaassen. If you're already shipping things one skill at a time and want a model for runtime composition, Pocock. If your team is wrestling with parallel-writer chaos, Yan/Cognition. If your team has standardised on Amp's runtime, Metcalf and Amp by default.
 
-2. **How much orchestration do you want to author?** Klaassen is heavy on orchestration (gates, schemas, composite skills). Pocock is light (human picks the chain). Cognition is somewhere in between. Cherny's published moves are the lightest published assembly, individual primitives the human composes mentally. Pick the load you will actually maintain.
+2. **How much orchestration do you want to author?** Klaassen is heavy on orchestration (gates, schemas, composite skills). Pocock is light (the human picks the chain, though a router has since shipped). Cognition is somewhere in between. Cherny's published moves are the lightest published assembly, individual primitives the human composes mentally. Pick the load you will actually maintain.
 
 3. **What review bandwidth do you have?** Read Ronacher first if the answer is *not much*. Composition without review is the failure mode he names.
 

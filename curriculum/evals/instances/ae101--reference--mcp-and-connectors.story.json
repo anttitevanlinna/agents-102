@@ -1,12 +1,12 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md",
-  "body_sha": "7590175b9d9a5589ba052897410e7a82b6d464442788df94bdc12223ec70997d",
+  "body_sha": "d740a94c4ac5079d4acc15be0d59dcb6946caff1e73e144b2253b86389ac2c97",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "flat-reference register (Quick-reference type per curriculum/CLAUDE.md's four-type taxonomy; no deliberate module mood) — SETUP/mechanical, mood-exempt per check_strategy_tie_in §1 carve-out",
   "trace_status": "regenerated",
-  "surface_note": "Reference page per curriculum/quality-format.md: 'Reference files (curriculum/trainings/<training>/reference/) exempt — flat lookup, no mood/sim surface.' Mood-arc and persona-read rules score N/A per dispatch instructions. This is a quick-reference lookup, not a lecture, module, or exercise, and carries no room-scale beats and no student-copied LLM prompts (its fenced blocks are terminal/CLI commands, not prompts a student pastes to Claude) — check_prompts.md and check_workshop.md (both storytelling-tagged) are therefore out of scope for this file and are not carried as rows; noted here rather than force-fit as N/A rows for compendiums storytelling does not own on this surface.",
+  "surface_note": "Reference page per curriculum/quality-format.md line 56: 'Reference files (curriculum/trainings/<training>/reference/) exempt — flat lookup, no mood / sim surface.' Mood-arc and persona-read rules score N/A per dispatch instructions. This is a quick-reference lookup, not a lecture, module, or exercise, and carries no room-scale beats and no student-copied LLM prompts (its fenced blocks are terminal/CLI commands, not prompts a student pastes to Claude) — check_prompts.md and check_workshop.md (both storytelling-tagged) are therefore out of scope for this file and are not carried as rows; noted here rather than force-fit as N/A rows for compendiums storytelling does not own on this surface.",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
@@ -31,7 +31,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Not a lecture body. `grep -nE '\\bM[0-9]' mcp-and-connectors.md` → exit 1 (zero hits, verified this pass): the file never names M1-M8 or a module by number.",
+      "evidence": "Not a lecture body. `grep -noE 'M[0-9]+' mcp-and-connectors.md` → exit 1 (zero hits, re-run this pass against the edited body): the file never names M1-M8 or a module by number, before or after the split-out 'Marketplace governance' heading.",
       "fix_hint": null,
       "blocking": false
     },
@@ -40,7 +40,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
-      "evidence": "Rule scopes lecture/slide headers scanned cold in a self-study handbook context; this is a quick-reference type (curriculum/CLAUDE.md's four-type taxonomy), exempt from the mood/sim surface per quality-format.md. Headers here (\"GitHub Issues\", \"Jira: Atlassian Rovo MCP (official)\", \"Linear: first-party MCP (official)\") are lookup-table section labels, not slide-arc headers making a teaching claim.",
+      "evidence": "Rule scopes lecture/slide headers scanned cold in a self-study handbook context; this is a quick-reference type (curriculum/CLAUDE.md's four-type taxonomy), exempt from the mood/sim surface per quality-format.md line 56. Headers here, including the new split-out \"Marketplace governance: official vs team, and when to reach for plugin distribution,\" are lookup-table section labels, not slide-arc headers making a teaching claim.",
       "fix_hint": null,
       "blocking": false
     },
@@ -49,7 +49,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "N/A",
-      "evidence": "Not a lecture/exercise slide; reference page exempt from the mood/sim slide-arc surface this rule targets (§4's sibling).",
+      "evidence": "Not a lecture/exercise slide; reference page exempt from the mood/sim slide-arc surface this rule targets (§4's sibling). Noted for completeness: the section split that created the new 'Marketplace governance' heading moved body prose from under 'Plugins and marketplaces' into its own heading, which if anything reduces per-heading body length rather than growing it — but this observation is a size-hygiene note, not a rule this class owns on this surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -67,7 +67,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "`grep -niE 'discuss with|share with|tell the room|take [0-9]+ seconds|compare with' mcp-and-connectors.md` → exit 1, zero hits this pass. The file is entirely install-mechanics prose (three paths, per-tracker commands, plugin distribution, current gaps); no cohort-management sentence anywhere. Line closest to the concern is the closing sentence of 'Plugins and marketplaces' (\"For a one-off solo install on one machine, plain Path 1 or Path 2 stays simpler\") — this is a WORK decision aid (which install path to pick), not a room-management cue, so it stays inside the rule.",
+      "evidence": "`grep -niE 'discuss with|share with|tell the room|take [0-9]+ seconds|compare with|pair up|neighbou?r' mcp-and-connectors.md` → exit 1, zero hits this pass, re-run against the edited body (Compass removed from the Jira product list, Marketplace governance split into its own heading, date line bumped 2026-05-14 → 2026-08-19 — none of those touches this concern). The file is entirely install-mechanics prose (three paths, per-tracker commands, plugin distribution, current gaps); no cohort-management sentence anywhere. Line closest to the concern is the closing sentence of 'When to reach for plugin distribution over plain `claude mcp add`' (\"For a one-off solo install on one machine, plain Path 1 or Path 2 stays simpler\") — this is a WORK decision aid (which install path to pick), not a room-management cue, so it stays inside the rule.",
       "fix_hint": null,
       "blocking": true
     },
@@ -76,7 +76,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "N/A",
-      "evidence": "Reference pages carry no deliberate module mood per quality-format.md's exemption and this class's dispatch instructions (\"Mood-arc and persona-read rules score N/A here\"). Trace's own module_mood_contract field and per-phase mood_score are correctly null, consistent with the §1 SETUP-beat carve-out this class's template itself cites.",
+      "evidence": "Reference pages carry no deliberate module mood per quality-format.md's exemption (line 56) and this class's dispatch instructions (\"Mood-arc and persona-read rules score N/A here\"). Trace's own module_mood_contract field and per-phase mood_score are correctly null, consistent with the §1 SETUP-beat carve-out this class's template itself cites.",
       "fix_hint": null,
       "blocking": true
     },
@@ -94,7 +94,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "N/A",
-      "evidence": "Rule targets Big Idea / title naming for a module; this file has no Big Idea (quick-reference type, not module/lecture). Checked anyway: every ## header (\"Three paths to a work-app action\", \"GitHub Issues\", \"Jira: Atlassian Rovo MCP (official)\", \"Linear: first-party MCP (official)\", \"Plugins and marketplaces...\", \"What Claude Code doesn't do yet\") names a topic or a named-tool handle, none is a failure word (fabrication/violation/hallucination) framed as the lead.",
+      "evidence": "Rule targets Big Idea / title naming for a module; this file has no Big Idea (quick-reference type, not module/lecture). Re-checked against the edited body: every ## header (\"Three paths to a work-app action\", \"GitHub Issues\", \"Jira: Atlassian Rovo MCP (official)\", \"Linear: first-party MCP (official)\", \"Plugins and marketplaces: MCP servers bundled for distribution\", \"Marketplace governance: official vs team, and when to reach for plugin distribution\", \"What Claude Code doesn't do yet (as of 2026-08-19)\") names a topic or a named-tool handle, none is a failure word (fabrication/violation/hallucination) framed as the lead.",
       "fix_hint": null,
       "blocking": false
     },
@@ -103,7 +103,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "N/A",
-      "evidence": "Consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early — all module-arc concerns. This reference page sits outside the module sequence (linked into from exercises like close-the-ticket.md, not itself a numbered module beat) and carries no arc position to front-run or resolve early. content-strategy-agentic-engineering-101.md names no per-module claim this page could contradict; it is infrastructure the arc reaches into (M1's close-the-ticket, per getting-going.md's Mood target/Opening-bid-install-mechanic lines), not a step in it.",
+      "evidence": "Consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early — all module-arc concerns. This reference page sits outside the module sequence (linked into from exercises like close-the-ticket.md, not itself a numbered module beat) and carries no arc position to front-run or resolve early. content-strategy-agentic-engineering-101.md names no per-module claim this page could contradict; it is infrastructure the arc reaches into (M1's close-the-ticket), not a step in it. The three edits this pass (Compass dropped from the Rovo product-coverage list, the marketplace-governance section split out, the 'as of' date bumped) are factual/organizational corrections to the reference layer, not arc or Big-Idea moves, so nothing here front-runs or dilutes a downstream module's teaching moment.",
       "fix_hint": null,
       "blocking": true
     }
@@ -114,7 +114,7 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "notes": "Teaching-moment-lands judgment (no rule_index, per template): N/A by construction — a flat lookup page has no single named teaching moment to reliably trigger; its job is findability of the right tracker's install line, which the trace's close (is_me_rating 8, artifact_state = live connector installed) confirms it delivers. check_prompts.md and check_workshop.md carry eval_classes: storytelling but are not rowed here — see surface_note. Trace regenerated this pass: content_sha moved (c7af5631... → 7590175b...) since the prior cache, driven by commit 5fb32ab1 (sweep fix: narrowed one bold-emphasis span in the Jira 3LO-consent sentence — 'individual engineers don't need per-install admin approval' moved from full-sentence bold to phrase-level bold). Not story-relevant: re-ran the conversation-cue, module-number, and Prompt-fence greps against the current body (all zero hits, quoted above) and confirmed the persona walk and close verdict carry forward unchanged from the prior pass.",
+  "notes": "Teaching-moment-lands judgment (no rule_index, per template): N/A by construction — a flat lookup page has no single named teaching moment to reliably trigger; its job is findability of the right tracker's install line, which the trace's close (is_me_rating 8, artifact_state = live connector installed) confirms it delivers. check_prompts.md and check_workshop.md carry eval_classes: storytelling but are not rowed here — see surface_note. Trace regenerated this pass: content_sha moved (7590175b... → 1ed09b3b...) since the prior cache, driven by commit fa43db7c (sweep batch A: Compass dropped from the Rovo product list in both the coverage sentence and the OAuth-scope sentence; a new 'Marketplace governance: official vs team, and when to reach for plugin distribution' heading split out of the tail of 'Plugins and marketplaces'; the 'What Claude Code doesn't do yet' date bumped 2026-05-14 → 2026-08-19). Re-ran the conversation-cue, module-number, and Prompt-fence greps against the current body (all zero hits, quoted above per row) and confirmed the persona walk and close verdict carry forward unchanged from the prior pass — none of the three edits touches a storytelling-owned rule; they are research-claims/technical-accuracy and slide-geometry concerns owned by other classes.",
   "blocking_findings_count": 0,
   "todos_count": 0
 }

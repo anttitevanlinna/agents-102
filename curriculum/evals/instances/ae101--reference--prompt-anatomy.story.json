@@ -1,0 +1,167 @@
+{
+  "class": "storytelling",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md",
+  "body_sha": "190fc9b69c8564962d95cbe8f5ce79320d5ded51ab13baebe1aa80d1da346f6e",
+  "verdict": "PASS",
+  "training": "ae101",
+  "module_mood_contract": "N/A — cross-module reference/lookup page, not sequenced against a module's Mood (deliberate); see trace.module_mood_contract for the reasoning.",
+  "trace_status": "regenerated",
+  "rules_evaluated": [
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 1,
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
+      "verdict": "N/A",
+      "evidence": "Rule fires on placement of a LECTURE file relative to exercises (opener vs closer). This file's surface-type is `reference` (curriculum/CLAUDE.md's four student-facing types: Lectures / Exercises / Supplementaries / Quick reference), consulted as a standalone lookup, never placed as a module opener/closer in the arc. Harm the rule prevents (an abstract claim told before the felt exercise, stealing the recognition beat) cannot occur on a page a student opens on their own initiative outside module sequencing. Unaffected by the re-chunk.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 2,
+      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+      "verdict": "N/A",
+      "evidence": "Same reasoning as §1 — this rule governs pre-exercise lecture dosage ahead of a specific contrast-mood module opener (M5-style). This page is not positioned before any specific exercise; it is a reference a student can open at any point. Unaffected by the re-chunk.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 3,
+      "rule_lead": "No cross-module sequencing in lecture bodies.",
+      "verdict": "N/A",
+      "evidence": "Re-ran the grep for module numbers against the current (re-chunked) body: `grep -nE 'M[0-9]' curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md` above the maintainer fence returns nothing. Rule doesn't apply twice over: this isn't a lecture file, and even judged as if it were, the body carries no cross-module sequencing claims.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 4,
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "verdict": "PASS",
+      "evidence": "Re-verified against the re-chunked body: `grep -n '^## '` returns 24 headers (up from 8 pre-rechunk), all unique (`sort | uniq -d` on the header list returns empty — no duplicates). Each names the ONE concrete sub-move family it covers ('Shape the input: naming the file, naming the window', 'Shape the output: format and anti-pattern', 'Three-move patterns: compound and audit', etc.) — finer-grained than before but the squint test still holds at the new grain: cover the sub-entries, each header still names its organizing concept, and none is an empty-container label ('The move', 'Notes'). Truth clause doesn't meaningfully bite on category labels. This file is slide-rendered (`site/layouts/slides.js` opens one slide per `##`; `curriculum/CLAUDE.md` confirms one `##` = one slide for every student-facing file, reference included), so §4 binds regardless of surface-type, same as before.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 5,
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
+      "verdict": "PASS",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md` from repo root (bare relative path without `--file` exits 2 with a usage error — confirmed: `node scripts/check-slide-size.js curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md` → 'Unexpected argument... To measure one file, pass it as --file <path>', exit 2 — so `--file` is required, not optional). With `--file`, real output: 'files: 1   slides: 24   limits: 210 words / 6 bullets / oversized: 0 / ✓ every slide is within limits', exit 0. This supersedes the prior run's finding (all 8 pre-rechunk slides over 210w): the file was re-chunked from 8 wide family-level `##` sections into 24 sub-family sections, exactly the fix this judge's prior pass suggested as one of two maintainer options ('re-chunk this file's `##` grain to sub-family grain so each Slides-deck card stays under ~210w') — landed, verified mechanically, not inferred. No content was cut to hit the bar; the density the page is built for is intact, just chunked finer for projection.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "N/A",
+      "evidence": "This rule governs exercises with a fenced student-run prompt whose forcing function must sit in the fence. `grep -c '```'` on the current body → 0: zero fenced code blocks (only italicised inline quotes of prompts FROM other files, cited as examples). No forcing function to locate in this file — it's exposition about prompts, not an exercise a student runs. Unaffected by the re-chunk.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "Grepped current body for cohort-management cues ('discuss with', 'share with', 'neighbo(u)r', 'tell the room', 'pair up', 'take N minutes and'): only hit is 'near-neighbour' (line 21, inside the input-binding-by-path entry, describing a stale FILE not a person — false positive, unchanged from before). No authored conversation/pause cue anywhere in the body. Every sentence is about the WORK, not cohort-pacing prose.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named.",
+      "verdict": "N/A",
+      "evidence": "No per-module 'Mood (deliberate)' paragraph names this cross-module reference page in `bosser-strategy:content-strategy-agentic-engineering-101.md` — it is not sequenced against a single module's mood arc (surface-type = reference, consulted independently; see trace.module_mood_contract).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "PASS",
+      "evidence": "Register throughout is diagnostic/curious ('ask which clauses would have to be different for the output to come back wrong'), never shaming about prompts the reader may have written badly. Closest-to-violating line, checked and cleared: line 5 ('the difference between a prompt that returns a wall of mediocrity and one that returns a precise diff') names a failure OUTCOME to motivate the lookup, not a judgement of the reader — stays inside epistemic register. Unchanged by the re-chunk (this text sits in the pre-family intro, not moved).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "N/A",
+      "evidence": "Rule fires on a module's Big Idea / title framing. This page has no Big Idea slot — it's a technique catalogue where individual ENTRY names (e.g. 'Anti-pattern guard', 'Fail loud, not fabricate') are the searchable handles for named prompt-design moves, the exact carve-out this rule already states. Judged at the file's own framing level (H1 + intro's 'load-bearing' vs 'decoration' framing), the lead is disciplinary, not failure-named. Unaffected by the re-chunk.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "N/A",
+      "evidence": "Rule fires on cross-module sequencing claims (front-running a downstream module's teaching moment). Confirmed via check_lectures.md §3's grep above: body carries no module-numbered or cross-module sequencing prose. The maintainer footer documents its own sweep coverage against real AE101 prompts as an audit ledger, not a sequencing claim inside student-facing body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": "`grep -n \"Key Concepts\"` on the current file returns no match — this is a reference page, not a module file; it has no `## Key Concepts` section to check.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": "Same as §5 — no Key Concepts section exists on this reference page (module-only section per this template's own completeness-contract note: '§5/§6/§7 govern module-only sections... N/A on a lecture' — same logic extends to a reference page).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": "`grep -n \"What You'll Learn\"` returns no match — no such section on this reference page.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope call.",
+      "verdict": "N/A",
+      "evidence": "check_workshop.md's own Trigger section: fires only when 'a module/exercise body has ≥1 beat where the output belongs to the group, not to a participant.' This file is solo reference reading with no group beat, no attributed contribution, no shared artefact — the compendium's trigger condition is not met anywhere in the file, so no individual rule inside it (1–17) is scored.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope call.",
+      "verdict": "N/A",
+      "evidence": "check_prompts.md's own scope line: 'Applies to anything inside a fenced code block with copy-this affordance.' `grep -c '```'` on the current file → 0. The file's italicised example quotes are NOT fenced blocks a student pastes — they're inline citations of prompts that live, fenced, in the exercises/prompts that actually teach them. Nothing in this file falls inside the compendium's own scope, so no numbered rule is scored.",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "mood_summary": {
+    "phase_scores": [9],
+    "close_score": 9,
+    "any_below_8": false,
+    "stealing_the_mood": []
+  },
+  "teaching_moment_note": "The page's implicit teaching moment — give the reader a name for a prompt clause so they can diagnose their own prompts — lands reliably per the trace: the persona anchors abstract move-names to prompts they already ran (STRIDE, test-strategy), which is exactly the mechanism the page is betting on. The re-chunk also resolves the trace's prior complaint (landing on one dense 8-entry 'Shape the output' block); the persona now lands on a sub-family-sized card whichever entry point they use. No rule_index; recorded here per the story template's instruction, not as a rules_evaluated row.",
+  "blocking_findings_count": 0,
+  "todos_count": 0,
+  "notes": "Prior run's single blocking finding (check_lectures.md §5, all 8 pre-rechunk slides over the 210-word ceiling) is resolved: the file was re-chunked from 8 family-level `##` sections into 24 sub-family sections, and `node scripts/check-slide-size.js --file <path>` (run this session, real output quoted in the §5 row) now reports 0/24 oversized, exit 0. Also confirmed the bare-path invocation `node scripts/check-slide-size.js <path>` (no `--file`) exits 2 with a usage error, per the dispatch instruction to verify that behavior directly rather than assume it. Trace regenerated (`ae101--reference--prompt-anatomy.persona.json`) — content_sha changed from the pre-rechunk file to the current one (190fc9b6...), single file-level phase retained per simulation.md's protocol (the file's `##` headers are family sub-headers, not literal `## Phase` headers, so the phase-boundary rule still treats the whole body as one phase). Mood scores rose 8→9 at the one phase and at close, reflecting the resolved 'wall of entries' friction the prior trace flagged under the old 'Shape the output' single-block chunking. No other rule's verdict changed — the re-chunk only touched header count/grain, not body content, claims, or structure elsewhere. Verdict overall: PASS, 0 blocking findings."
+}

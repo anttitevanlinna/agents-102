@@ -1,0 +1,76 @@
+{
+  "class": "strategy",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md",
+  "body_sha": "190fc9b69c8564962d95cbe8f5ce79320d5ded51ab13baebe1aa80d1da346f6e",
+  "verdict": "PASS",
+  "training": "ae101",
+  "strategy_doc_section_loaded": "bosser-strategy:content-strategy-agentic-engineering-101.md — Recurring themes, Load-bearing assumptions, Woven design rules (§2 Specs over chats, §3 The reading contract), M2 in detail (re-checked for the Pocock/grill-me attribution-timing constraint, since the restructured file's `### The grill-before-save` three-move pattern sits closest to that constraint) — re-fired against the RESTRUCTURED body (8 `##` sections → 24: each of the 7 families now nests one `##` per family plus one `##` per move-name, vs. the prior flat 7-family/33-move layout)",
+  "rules_evaluated": [
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named.",
+      "verdict": "N/A",
+      "evidence": "Restructure changed heading depth (33 `###` moves now sit under 24 `##`s instead of 7) but did not add a `## Big Idea` or `Mood (deliberate)` section — `grep -n '^## Big Idea\\|Mood (deliberate)'` → no match. This is a flat-lookup reference page per `curriculum/CLAUDE.md`'s four student-facing types, not a module body; rule targets module mood-arc framing and stays N/A regardless of `##` count.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "N/A",
+      "evidence": "No mood contract on this surface (rule 1). Re-read across all 24 `##` sections post-restructure for unease/shame framing regardless: still neutral-to-warm throughout (e.g. line 5, 'Most clauses in a well-shaped prompt are decoration'; line 199's 'Fail loud, not fabricate' entry frames the discipline, not a student failure).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "N/A",
+      "evidence": "Rule scope is Big Idea / Key Concepts / What-You'll-Learn titles, none present (rule 1). Observationally the restructure's new per-family `##` headers ('Shape the input: naming the file, naming the window' … 'Shape the continuity: the concreteness forcing function') and per-move `###` headers are still discipline-named, not failure-named, including 'Fail loud, not fabricate' (line 197) and 'Don't smooth disagreement' (line 131) — practice-named, per the compendium's own carve-out logic for named moves.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "PASS",
+      "evidence": "Harm this rule prevents: a page front-runs a downstream module's teaching moment (reveal, attribution, or assumed-experience) before the student has earned it via M1-M6. Two live risks re-checked against the RESTRUCTURED body: (1) practitioner name-drop ahead of earned placement — the strategy doc's M2-in-detail section states the grill pattern is 'Matt Pocock's Socratic-elicitation pattern... inlined as a plain prompt so M2 doesn't front-run M3's first-Skill-use moment' and 'Body ships un-attributed by deliberate choice — at M2 the cohort hasn't met the practitioners yet, so name-dropping reads as authority-borrowing.' Re-ran `grep -inE 'pocock|klaassen|ronacher|cherny|willison|shostack|kohnfelder' prompt-anatomy.md` against the current (restructured, new SHA 190fc9b6…) file → 0 matches, exit 1. The restructure moved this pattern into its own `##` header (line 333 family header, line 342 `### The grill-before-save`) but did not add the Pocock attribution — citations at lines 347 stay corpus-location pointers (`push-back-on-the-plan-2`, `diagnose-and-resend-6`), never a practitioner name. (2) assumed-experience framing — spot-checked the restructured `### Chain back-reference` (line 295) and `### Concreteness forcing function` (line 305) entries, the two most narrative-shaped moves in the new layout; both use hypothetical/generic phrasing ('a typo in a filename creates a silent second file', 'Rules abstracted from their origin become advice') rather than naming a specific scrollback beat the reader hasn't lived, consistent with the prior audit fix documented at `autumn-gaps.md:758-790` for this same file's line-29 example.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": "No `## Key Concepts` heading — `grep -n '^## Key Concepts'` → no match, even after restructure added 16 new `##` headers. Reference pages don't carry this section per `curriculum/CLAUDE.md`'s type taxonomy.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": "Depends on rule 5's Key Concepts section, which still does not exist post-restructure.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": "No `## What You'll Learn` heading — `grep -n \"What You\"` → no match post-restructure. Reference pages don't carry this section.",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 0,
+  "notes": "Re-fire against restructured body (8 `##` → 24, per-family headers now sit alongside per-move `###`s that were previously the only sub-level). Structural change is real but orthogonal to strategy's surface: 5 of 7 check_strategy_tie_in rules gate on sections (Big Idea/Mood/Key Concepts/WYL) this reference-page type never carries regardless of heading depth, so they stay N/A. Rule 4 (strategy-fidelity/front-running) is the rule that actually bites on any restructure and it was re-verified fresh against the new SHA (190fc9b6…, was 2d09356a…) rather than carried over — Pocock/grill-me attribution still absent, assumed-experience framing still absent. Verdict unchanged from prior instance (PASS) but evidence is freshly re-run, not copied. Out of lane, noted only: heading-depth/hierarchy consistency across the new 24-section structure belongs to slides/writing, not strategy."
+}

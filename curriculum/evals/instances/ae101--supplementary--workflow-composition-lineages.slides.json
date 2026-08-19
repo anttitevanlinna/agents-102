@@ -1,20 +1,20 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md",
-  "body_sha": "9f268d3b587cc01f61ebcc0630839830a9785b4fc5a59ee19c8fa45959443d13",
+  "body_sha": "ea0ca4140b4d0274318bab603e22ed1d8ff8c0e01b3b47e307c9eb3d05c47852",
   "verdict": "REVISE",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "Workflow composition lineages (H1 + lede)", "lines": "1-3"},
-    {"index": 1, "heading": "What this walk covers (and doesn't)", "lines": "5-13"},
-    {"index": 2, "heading": "Compound Engineering, Kieran Klaassen", "lines": "15-24"},
-    {"index": 3, "heading": "Composition by invocation, Matt Pocock", "lines": "26-36"},
-    {"index": 4, "heading": "Single writer with advisor agents, Walden Yan and Cognition", "lines": "38-50"},
-    {"index": 5, "heading": "Feedback-loopable methodology and shipped primitives, Sourcegraph Amp", "lines": "52-67"},
-    {"index": 6, "heading": "Practitioner moves without a published framework, Boris Cherny", "lines": "69-87"},
-    {"index": 7, "heading": "Counter-position, Armin Ronacher", "lines": "89-100"},
-    {"index": 8, "heading": "Skill stacking system, Dino: the worked example", "lines": "102-131"},
-    {"index": 9, "heading": "How to pick what to study", "lines": "133-143"}
+    {"index": 0, "heading": "Workflow composition lineages (H1 + lede)", "lines": "1-4"},
+    {"index": 1, "heading": "What this walk covers (and doesn't)", "lines": "5-14"},
+    {"index": 2, "heading": "Compound Engineering, Kieran Klaassen", "lines": "15-25"},
+    {"index": 3, "heading": "Composition by invocation, Matt Pocock", "lines": "26-39"},
+    {"index": 4, "heading": "Single writer with advisor agents, Walden Yan and Cognition", "lines": "40-53"},
+    {"index": 5, "heading": "Feedback-loopable methodology and shipped primitives, Sourcegraph Amp", "lines": "54-70"},
+    {"index": 6, "heading": "Practitioner moves without a published framework, Boris Cherny", "lines": "71-90"},
+    {"index": 7, "heading": "Counter-position, Armin Ronacher", "lines": "91-103"},
+    {"index": 8, "heading": "Skill stacking system, Dino: the worked example", "lines": "104-134"},
+    {"index": 9, "heading": "How to pick what to study", "lines": "135-146"}
   ],
   "rules_evaluated": [
     {
@@ -23,7 +23,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every pronoun/demonstrative traced to an in-chunk or earlier-chunk named antecedent. Closest-to-violating: chunk 5 line 60 \"Amp changed its mind about the whole mechanism\" — 'the whole mechanism' resolves to Handoff/compaction named two sentences earlier in the same chunk (line 58). No forward or never-named referent found.",
+      "evidence": "Every pronoun/demonstrative traces to an in-chunk or earlier-chunk named antecedent. Closest-to-violating: chunk 5 line 62 \"Amp changed its mind about the whole mechanism\" — 'the whole mechanism' resolves to Handoff, named earlier in the same sentence group (line 62 'The Handoff reversal is the clearest demonstration'). Chunk 8 line 128 \"The dispatcher pattern scales cross-repo\" — 'the dispatcher pattern' resolves to the 'CLAUDE.md routing' bullet three lines earlier in the same chunk. No forward-pointing or never-named referent found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -33,7 +33,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No chunk points at another file by position. External links are named by title/claim (e.g. chunk 2's plugin link, chunk 8's 'Dino's skill stacking system' link at line 131). The only cross-file pointer ('Pairs with lectures/composing-the-workflow.md') is in the maintainer meta at line 149, below the maintainer cut and exempt from body scope.",
+      "evidence": "No chunk points at another file by position. Chunk 6 line 88 \"the moves listed above\" is a within-file sequential callback (rule 1/rule 2 both permit this) to the same chunk's own bullet list, and already carries a maintainer accept-note for the related §12 concern at line 149. External docs are named by title (chunk 2 line 24 plugin link; chunk 8 line 133 \"Dino's skill stacking system\"), never located by position.",
       "fix_hint": null,
       "blocking": true
     },
@@ -43,7 +43,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "grep -niE \"you (did|saw|caught|ran|wrote|built|opened|used)\" over body (lines 1-144) → 0 matches. This is a progressive reading page with no session-tied 'the X you did' construction anywhere in the body.",
+      "evidence": "grep -niE \"you (did|saw|caught|ran|wrote|built|opened|used)\" over the body (lines 1-146) → 0 matches. This is a progressive-reading supplementary, not an exercise; no 'the X you did/saw' construction exists anywhere in the file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -53,7 +53,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "grep -niE \"guess|predict\" over body (lines 1-144) → 0 matches. No guess-before-reveal beat exists in this file; it is a reading walk, not a demo.",
+      "evidence": "grep -niE \"guess|predict\" over the body (lines 1-146) → 0 matches. No guess-before-reveal structure exists in this file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -63,7 +63,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every chunk (1-9) carries a self-sufficient claim or paragraph on its own topic; none is a bare wait-state or single context-dependent bullet. Closest-to-thin: chunk 1 (lines 5-13) is only 3 short numbered rules, but each is a complete, self-carrying statement, not a fragment.",
+      "evidence": "Every chunk (1-9) carries a self-sufficient claim. Closest-to-thin: chunk 1 (lines 5-14) is only three short numbered rules, but each states a complete, self-carrying point, not a bare wait-state or context-dependent fragment.",
       "fix_hint": null,
       "blocking": false
     },
@@ -73,7 +73,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every header names exactly what its chunk delivers, e.g. chunk 5 header 'Feedback-loopable methodology and shipped primitives, Sourcegraph Amp' (line 52) accurately previews the two named artefacts (Feedback Loopable, Handoff) the chunk covers; chunk 9 'How to pick what to study' (line 133) previews the three filters that follow. No header contradicted by its own content.",
+      "evidence": "Every header names what its chunk delivers, e.g. chunk 5 header (line 54) \"Feedback-loopable methodology and shipped primitives, Sourcegraph Amp\" previews the two artefacts (Feedback Loopable, Handoff) the chunk covers; chunk 9 (line 135) \"How to pick what to study\" previews the three filters that follow. No header contradicted by its own chunk content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -83,7 +83,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No 'Not X. Not Y. Z.' construction found. Enumerations like chunk 3 line 30 'There is no compose skill, no orchestrator, no master entry point' and chunk 7 line 93 'No marketplace, no Git-checked-in kit, no orchestrator' are single-sentence factual lists, not the banned two-sentence-then-declarative tic. No anaphora/epistrophe triples found. Line 79 'The single tip Cherny names as most important' attributes the superlative to Cherny's own words, not a self-grading claim about this training's content — grep -niE 'one of the (most|best)|most (important|useful|valuable)' over body → only this one hit, and it is attributive, not value-prop leak. No number+retraction pattern, no abstraction-noun stacks, no empty-leg verb triplets found.",
+      "evidence": "grep -n \"Not .*\\. Not .*\\.\" over the body → 0 matches. No anaphora/epistrophe triples found. grep -niE 'one of the (most|best)|most (important|useful|valuable)' → one hit at line 81, 'The single tip Cherny names as most important' — attributes the superlative to Cherny's own naming of his own tip, not a self-grading claim about this training's content, so it is not the value-prop leak this sub-item bans. No number+own-retraction pattern, no abstraction-noun stacks (e.g. 'bounded-window reality'-style constructions), no empty-leg verb triplets found anywhere in the body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -93,8 +93,8 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "REVISE",
       "chunks_flagged": [5, 9],
-      "evidence": "chunk 5 \"Feedback-loopable methodology and shipped primitives, Sourcegraph Amp\": line 54: \"Two artefacts in the Amp surface, with different bylines and different shapes.\" and line 60: \"What's distinctive about the Amp surface: composition seams ship inside Amp's runtime...\" — chunk 9 \"How to pick what to study\": line 137: \"If your team has standardised on Amp's runtime, Metcalf and the Amp surface by default.\" Harm check: 'surface' as a noun compound ('the Amp surface') is the exact specimen the rule bans ('surface as noun (\"writing surface\")'), distinct from the cleared verb usage ('surface the issue', also present at line 77 'existing tool surface' — that one is a defensible ordinary compound, not flagged). 'The Amp surface' does not read as plain engineering English the way 'API surface' or 'attack surface' do; it echoes this repo's own internal habit of naming things 'X surface' (writing surface, buyer-facing surface) that recurs pervasively in the maintainer-facing compendiums. An AE101 engineer reading 'the Amp surface' on a projected slide has to guess whether it means Amp's product, its docs, or something else — the ambiguity is the harm §8 exists to prevent.",
-      "fix_hint": "Swap 'the Amp surface' for 'Amp' or 'the Amp product' in both chunk 5 occurrences and the chunk 9 occurrence.",
+      "evidence": "Re-derived fresh, not inherited from the prior run's stale line numbers (54/60/137, now shifted to 56/62/139 after the Pocock-paragraph-added / Willison-sentence-cut edit). Chunk 5 line 56: \"Two artefacts in the Amp surface, with different bylines and different shapes.\" and line 62: \"What's distinctive about the Amp surface: composition seams ship inside Amp's runtime...\" Chunk 9 line 139: \"If your team has standardised on Amp's runtime, Metcalf and the Amp surface by default.\" Harm check: §8 bans 'surface as noun (\"writing surface\")' as maintainer dialect, distinct from cleared verb usage. 'The Amp surface' is noun usage and is NOT the same shape as an established engineering compound like 'API surface' or 'attack surface' — those pair 'surface' with a technical boundary noun; 'Amp surface' pairs it with a company name to mean 'the things Amp ships/publishes,' which is exactly this repo's own coinage pattern ('writing surface', 'buyer-facing surface') applied to a new referent. By contrast, line 77 'the human's existing tool surface' is left unflagged: 'tool surface' tracks the established attack-surface-style idiom (the footprint of available tools) and an engineer parses it without repo context. The harm — dialect a room projects and cannot parse cleanly — is present for 'the Amp surface' specifically.",
+      "fix_hint": "Swap 'the Amp surface' for 'Amp' or 'the Amp surface area of publications' only where the plainer noun loses no meaning — likely just 'Amp' reads clean in all three spots.",
       "blocking": true
     },
     {
@@ -103,8 +103,8 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "REVISE",
       "chunks_flagged": [1, 8],
-      "evidence": "chunk 1 \"What this walk covers (and doesn't)\": lines 9, 11, 13 each open a numbered bullet with a FULL SENTENCE bolded (e.g. line 9: \"**One published framework lives in this set: Klaassen's Compound Engineering.**\" — 10 words, far past the ≲5-word handle cap), all three bullets on one slide — the exact 'every bullet opens with a bolded sentence' monoculture the rule names as the violation shape, not a menu/reading-list (this is a list of reading RULES to internalize, not a scan-for-your-entry-point menu, so the lookup-surface waiver does not apply). chunk 8 \"Skill stacking system, Dino: the worked example\": lines 115, 116, 117, 121, 122, 123, 124 each bold a bullet lead (**A single orchestrator**, **Phase-organised skill catalogue.**, **Seven design principles**, **Front-loaded read-only analysis.**, **Mandatory gates fire positionally**, **Re-invocation as control flow.**, **CLAUDE.md as half the system.**) plus line 126 **scales cross-repo** — 8 bolded elements on one slide, none of them a §34 task-sizing callout or a What-You'll-Learn LO bullet (the two named exceptions), so the ≤1-per-slide budget is not waived here.",
-      "fix_hint": "Chunk 1: unbold the sentences, keep at most the practitioner name/term as the bolded handle. Chunk 8: flatten most bullet leads to plain prose; keep bold only for the 1-2 handles the slide most needs (e.g. the single orchestrator name).",
+      "evidence": "chunk 1 lines 9, 11, 13 each open a numbered rule with a FULL SENTENCE bolded (line 9: \"**One published framework lives in this set: Klaassen's Compound Engineering.**\" — 10 words, past the ≲5-word handle cap), all three bullets on one slide — the pre-2026-07-09 monoculture shape the rule names, not a scannable menu (this is a list of reading rules to internalize, read in order, not entry points to pick between, so the lookup/menu waiver in the rule's own text does not apply). chunk 8 lines 117-126 bold seven consecutive bullet leads (**A single orchestrator**, **Phase-organised skill catalogue.**, **Seven design principles**, **Front-loaded read-only analysis.**, **Mandatory gates fire positionally**, **Re-invocation as control flow.**, **CLAUDE.md as half the system.**) — none is a §34 task-sizing callout or a module-template LO bullet (the rule's two named exceptions), so the ≤1-per-slide budget is not waived; each individual span is within the ≲5-word handle cap, but the per-slide count is not.",
+      "fix_hint": "Chunk 1: unbold the sentences, keep only the practitioner/framework name as a short handle if anything. Chunk 8: keep bold on the 1-2 handles the slide most needs (e.g. 'A single orchestrator') and flatten the rest to plain prose leads.",
       "blocking": false
     },
     {
@@ -113,7 +113,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Read site/layouts/slides.js buildDeckModel (lines 220-290): when no `.phase--lecture/.phase--exercise` nodes are found, the renderer falls back to walking `:scope > section.module` and slide-ifies phase-less content (prework, supplementary, reference) in place under a kind-labelled divider (line 237-258, kind code 'S' for supplementary per line 205 `id.indexOf('supplementary-') === 0`). This file is a supplementary page and reaches the composed deck via that fallback path, not dropped as the 2026-07-09 incident the rule cites.",
+      "evidence": "Ran: node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md → \"slides: 9\" measured (matches chunks 1-9; chunk 0 is the pre-## title lede, not a separate rendered slide). Confirms this supplementary page's sections reach the composed deck; none silently dropped.",
       "fix_hint": null,
       "blocking": true
     },
@@ -123,7 +123,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran: node scripts/check-slide-numbering.js 2>&1 | grep -i -B2 -A2 \"workflow-composition-lineages\" → no output (no violations for this file). Headers are never hand-numbered (topic/name labels only, e.g. '## Compound Engineering, Kieran Klaassen'). Body numbered lists (chunk 1's 1/2/3, chunk 9's 1/2/3) are content ordinals inside a paragraph list, not `## Phase N:` / `## N.` step headers, so they are not the class of ordinal this rule governs, and both lists are self-contained 1-2-3 sequences with no cross-reference to renumber.",
+      "evidence": "Ran: node scripts/check-slide-numbering.js curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md → \"OK — 61 files, Phase/Step numbering consistent.\" No `## Phase N:` / `## N.` step headers exist in this file at all (headers are practitioner-name/topic labels, never hand-numbered). The body's numbered lists (chunk 1's 1/2/3 reading rules, chunk 9's 1/2/3 filters) are self-contained content lists with no cross-reference to another ordinal, not the class of step-header ordinal this rule governs.",
       "fix_hint": null,
       "blocking": false
     },
@@ -133,7 +133,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran: node scripts/check-slide-deixis.js --report 2>&1 | grep -A3 \"workflow-composition-lineages\" → \"ok curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md:86 [moves listed above] — maintainer-attested\", matching the maintainer block's accept-note at line 147 (\"the Cherny moves sit in the same ## chunk as the Read: list that points back at them, ten lines up on one slide\"). Checker reports zero unresolved deixis for this file.",
+      "evidence": "Ran: node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md --report → \"ok curriculum/trainings/.../workflow-composition-lineages.md:88 [moves listed above] — maintainer-attested\". Matches the maintainer block's accept-note at line 149. Checker reports zero unresolved geometry pointers for this file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -143,7 +143,7 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Review-surface only, never a gate per the rule's own text. All body links name the document in the link text (e.g. chunk 2 line 24 '[Compound Engineering plugin (EveryInc/compound-engineering-plugin)]', chunk 8 line 131 '[Dino's skill stacking system]') and none is located by page position — consistent with §2/§12.",
+      "evidence": "Review surface, explicitly never a gate per the rule's own text. All body links name the document in the link text (chunk 2 line 24 '[Compound Engineering plugin...]', chunk 8 line 133 '[Dino's skill stacking system]') and none is located by page position, consistent with §2/§12.",
       "fix_hint": null,
       "blocking": false
     },
@@ -151,10 +151,10 @@
       "compendium": "check_slides.md",
       "rule_index": 14,
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
-      "verdict": "REVISE",
-      "chunks_flagged": [2, 3, 5, 6, 8, 9],
-      "evidence": "Ran: node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md → 'oversized: 7' of 9 measured slides: line 102 chunk 8 Dino [609w, 12 bullets]; line 52 chunk 5 Amp [366w]; line 69 chunk 6 Cherny [336w, 9 bullets]; line 89 chunk 7 Ronacher [277w]; line 15 chunk 2 Klaassen [275w]; line 26 chunk 3 Pocock [216w]; line 133 chunk 9 How-to-pick [212w]. No '**Slide size accepted:** <heading> — <reason>' line for any of these headings exists in the maintainer block (only a Slide deixis accept-note is present, line 147). All 7 are over the 210-word ceiling with no accept-path invoked.",
-      "fix_hint": "Either trim each oversized chunk toward the 210-word / 6-bullet ceiling (the Dino chunk at 609w/12 bullets is the extreme outlier and the best trim candidate), or add a per-heading 'Slide size accepted' maintainer note for the sections that are deliberately dense reference material.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran: node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md → \"oversized: 0\" / \"every slide is within limits\". Ran with --report: 7 slides carry the '~' accepted-oversized marker (Dino 609w, Amp 366w, Cherny 336w, Pocock 284w, Ronacher 261w, Klaassen 251w, How-to-pick 212w) and each has a matching `**Slide size accepted:** <exact heading> — <reason>` line in the maintainer block (lines 151-157), one-for-one against the script's flagged set: Skill stacking system/Dino, Feedback-loopable/Amp, Practitioner moves/Cherny, Counter-position/Ronacher, Compound Engineering/Klaassen, Composition by invocation/Pocock, How to pick what to study. Prior run's REVISE (7 chunks, no accept-notes existing then) is superseded: the declarations now satisfy the rule as designed, mechanically verified, not merely asserted.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -163,12 +163,12 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Rule 15's text names exercise headings (imperative/phase-label) and lecture headings (claims) explicitly and only those two file types ('Exercise ## headings = ...; Lecture headings = ...'). This file is a supplementary progressive-reading page (per curriculum/CLAUDE.md's four student-facing types), not an exercise or lecture, and its headers follow a third convention (practitioner-name/topic labels, e.g. 'Compound Engineering, Kieran Klaassen'). The rule does not extend to that type.",
+      "evidence": "Rule 15's text names only exercise headings (imperative/phase-label) and lecture headings (claims). This file is a supplementary progressive-reading page (per curriculum/CLAUDE.md's four student-facing types), not an exercise or lecture; its headers follow a third convention (practitioner-name/topic labels, e.g. line 15 'Compound Engineering, Kieran Klaassen'). The rule does not extend to this file type.",
       "fix_hint": null,
       "blocking": true
     }
   ],
   "blocking_findings_count": 1,
   "todos_count": 2,
-  "notes": "Rule 7 emitted as one aggregate entry (rule_index 7) per the template's completeness contract; all sub-item checks (Not-X-Not-Y-Z, anaphora triples, self-grading superlatives, number+retraction, abstraction-noun stacks, empty-leg verb triplets) are folded into that single row's evidence. body_sha taken at read start via shasum -a 256."
+  "notes": "Rule 7 emitted as one aggregate entry per the template's completeness contract; all sub-item checks folded into that row's evidence. Rule 14 flipped PASS this run: `node scripts/check-slide-size.js --file <path>` now reports 0 oversized because all 7 previously-oversized sections carry a matching maintainer 'Slide size accepted' declaration — verified one-for-one against the script's largest-first report, not merely trusted. Rule 8's prior finding (surface at lines 54/60/137) was re-derived fresh against the current text (surface now at lines 56/62/139 after the Pocock-paragraph-added/Willison-cut edit shifted lines): the two 'Amp surface' instances still trip the rule's harm test (noun-form repo-style coinage, not an established engineering compound), while 'tool surface' (line 79) is newly distinguished as PASS — an established attack-surface-style idiom, not the same harm. body_sha taken at read start via shasum -a 256."
 }

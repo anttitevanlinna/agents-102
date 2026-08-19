@@ -2,8 +2,6 @@
 
 **Execution mode: LLM-as-judge via Claude subagents.** Five themes covering CTO prompting, editorial quality, epistemic integrity, curriculum quality, and research retrieval quality.
 
-> Note: Scorable API integration (Themes A-D) expired. All evals now run as Claude subagent judges. Scorable judge IDs retained below for reference only.
-
 | Theme | Focus | Evaluators | Judge file |
 |-------|-------|------------|------------|
 | A: CTO Prompt Quality | Do CTO questions get useful answers? | Relevance, Specificity, Actionability, Evidence Grounding | `judges/cto-prompt-judges.md` |
@@ -22,15 +20,6 @@ Launch a Claude subagent with the judge prompt from the relevant `judges/*.md` f
 2. Record: which files it read, the answer text
 3. Launch judge agent with judges/retrieval-quality-judges.md → scores the response
 ```
-
-### Legacy Scorable judge IDs (expired, retained for reference)
-
-| Theme | Judge ID |
-|-------|----------|
-| A | `6d829329-df54-4bf4-b2d7-6b16eec9753e` |
-| B | `b1d1b71a-97ae-49c9-aa8f-8ab410085934` |
-| C | `087dc020-fb3e-478f-9bac-f7d250fed506` |
-| D | `1481fb79-6d72-4a71-8f51-1903ad0c6cd4` |
 
 ## Themes
 

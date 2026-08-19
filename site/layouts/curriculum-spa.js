@@ -26,6 +26,16 @@
         .then(function (json) { PROMPT_REGISTRY = json; })
         .catch(function () { PROMPT_REGISTRY = {}; });
 
+    // Figure registry — same lifecycle as prompts. Compiled into
+    // site/figures.json by scripts/compile-figures.js (build-workbook.js also
+    // writes it on every build). Empty registry is a safe no-op: expandFigures
+    // leaves `{{figure:key}}` markers unchanged.
+    var FIGURE_REGISTRY = {};
+    var figureRegistryReady = fetch('figures.json')
+        .then(function (res) { return res.ok ? res.json() : {}; })
+        .then(function (json) { FIGURE_REGISTRY = json; })
+        .catch(function () { FIGURE_REGISTRY = {}; });
+
     // Anatomy data — prompt-anatomy.md entries compiled to JSON by
     // scripts/compile-anatomy.js. Populates window.__ANATOMY so the runtime's
     // click-popup on .prompt-anchor can surface entries by slug. Built workbook
@@ -193,7 +203,7 @@
         // resolve against the page, not the doc. Re-root each relative target
         // onto the doc's own directory.
         var docDir = path.replace(/[^/]*$/, '');
-        Promise.all([fetch(path), promptRegistryReady])
+        Promise.all([fetch(path), promptRegistryReady, figureRegistryReady])
             .then(function (results) {
                 var res = results[0];
                 if (!res.ok) throw new Error('Not found: ' + path);
@@ -203,6 +213,7 @@
             .then(stripMaintainerTail)
             .then(expandIncludes)
             .then(function (md) { return CurriculumRuntime.expandPrompts(md, PROMPT_REGISTRY); })
+            .then(function (md) { return CurriculumRuntime.expandFigures(md, FIGURE_REGISTRY); })
             .then(rewriteCrossDocLinks)
             .then(function (md) {
                 return CurriculumRuntime.rewriteImageTargets(md, function (target) { return docDir + target; });

@@ -22,6 +22,7 @@ const { marked } = require('marked');
 
 const {
   expandPrompts,
+  expandFigures,
   moduleOrdinal,
   moduleNumber,
   applyContentFlags,
@@ -84,6 +85,22 @@ test('expandPrompts: {{prompt:foo}} is unchanged — no CUT sentinel', () => {
   assert.match(out, /\*\*Prompt\*\* \*\(Claude Code\)\*/);
   assert.match(out, /```\nx\n```/);
   assert.doesNotMatch(out, /⟦CUT/);
+});
+
+test('expandFigures: {{figure:foo}} expands to the registry block', () => {
+  const block = '<figure class="diagram"><svg></svg></figure>';
+  const out = expandFigures('before\n\n{{figure:foo}}\n\nafter', { foo: block });
+  assert.match(out, /<figure class="diagram"><svg><\/svg><\/figure>/);
+  assert.doesNotMatch(out, /\{\{figure:/);
+});
+
+test('expandFigures: unknown key passes through permissively, throws in strict mode', () => {
+  const out = expandFigures('{{figure:missing}}', { foo: 'x' });
+  assert.equal(out, '{{figure:missing}}');
+  assert.throws(
+    () => expandFigures('{{figure:missing}}', { foo: 'x' }, { strict: true }),
+    /unresolved .*missing/
+  );
 });
 
 test('expandPrompts: strict mode throws on an unknown {{cut:}} key', () => {

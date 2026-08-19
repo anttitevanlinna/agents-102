@@ -16,6 +16,7 @@ const fs = require('fs');
 const path = require('path');
 const CR = require(path.join(__dirname, '..', 'site/layouts/curriculum.js'));
 const { loadRegistry } = require('./compile-prompts.js');
+const { loadFigures } = require('./compile-figures.js');
 
 const arg = process.argv[2];
 if (!arg) {
@@ -24,4 +25,4 @@ if (!arg) {
 }
 
 const raw = arg === '-' ? fs.readFileSync(0, 'utf8') : fs.readFileSync(arg, 'utf8');
-process.stdout.write(CR.expandPrompts(raw, loadRegistry()));
+process.stdout.write(CR.expandFigures(CR.expandPrompts(raw, loadRegistry()), loadFigures()));

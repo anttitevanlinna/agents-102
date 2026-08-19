@@ -261,6 +261,17 @@
     // `{{cut:}}` as an equivalent reference (a cut candidate is still "used").
     var PROMPT_CUT_RE = /^\{\{cut:([a-z0-9-]+)(?:\|([a-z0-9-]+))?\}\}[ \t]*$/gm;
 
+    // Figure-include marker: `{{figure:<key>}}` on its own line, expanded by
+    // expandFigures() at the start of the markdown pipeline (before marked).
+    // Source of truth lives in curriculum/figures/<key>.md — a blank-line-free
+    // `<figure class="diagram">…</figure>` raw-HTML block; the SPA reads the
+    // compiled site/figures.json registry, the build script reads source files
+    // directly (scripts/compile-figures.js). One drawing, many slides: a
+    // figure two lectures re-show (the map, the frontier 2x2) is authored
+    // once and referenced from each. Marker MUST be alone on a line so the
+    // expansion lands as a block-level raw-HTML run.
+    var FIGURE_INCLUDE_RE = /^\{\{figure:([a-z0-9-]+)\}\}[ \t]*$/gm;
+
     // Runtime-map marker: `{{runtime-map:<module-slug>}}` on its own line,
     // expanded by expandTimings(). Sibling of `{{prompt:}}` — same alone-on-a-line
     // rule, same strict-mode throw on an unresolved key — but the block it emits
@@ -704,6 +715,31 @@
             throw new Error(
                 'expandPrompts: unbalanced {{covered:}} region(s): ' +
                 opens + ' open vs ' + closes + ' close'
+            );
+        }
+        return out;
+    }
+
+    // Replace every `{{figure:<key>}}` line in `md` with the registry's
+    // figure block. Same contract as expandPrompts: permissive by default
+    // (unknown keys pass through as visible literal text), strict mode throws
+    // with every unresolved key so the build fails instead of shipping a
+    // missing drawing.
+    function expandFigures(md, registry, opts) {
+        if (!md || !registry) return md;
+        var unresolved = [];
+        var out = md.replace(FIGURE_INCLUDE_RE, function (match, key) {
+            var block = registry[key];
+            if (!block) {
+                unresolved.push(key);
+                return match;
+            }
+            return block;
+        });
+        if (opts && opts.strict && unresolved.length) {
+            throw new Error(
+                'expandFigures: unresolved {{figure:<key>}} marker(s): ' +
+                unresolved.map(function (k) { return '{{figure:' + k + '}}'; }).join(', ')
             );
         }
         return out;
@@ -1393,7 +1429,9 @@
         applyContentFlags: applyContentFlags,
         renderPromptBlock: renderPromptBlock,
         expandPrompts: expandPrompts,
+        expandFigures: expandFigures,
         PROMPT_INCLUDE_RE: PROMPT_INCLUDE_RE,
+        FIGURE_INCLUDE_RE: FIGURE_INCLUDE_RE,
         RUNTIME_MAP_RE: RUNTIME_MAP_RE,
         expandTimings: expandTimings,
         extractParent: extractParent,

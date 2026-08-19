@@ -41,6 +41,7 @@ const ROOT = path.resolve(__dirname, '..');
 const CR = require(path.join(ROOT, 'site/layouts/curriculum.js'));
 const CT = require(path.join(ROOT, 'scripts/calculate-time.js'));
 const { loadRegistry, writeRegistry, OUT_FILE: PROMPTS_JSON } = require('./compile-prompts.js');
+const { loadFigures, writeFigures, OUT_FILE: FIGURES_JSON } = require('./compile-figures.js');
 
 // Wire heading-id generation into marked so cross-doc anchor links
 // (`target.md#section-anchor`) resolve in workbook output.
@@ -62,6 +63,20 @@ try {
 }
 writeRegistry(PROMPT_REGISTRY, PROMPTS_JSON);
 console.log(`Loaded ${Object.keys(PROMPT_REGISTRY).length} prompts from curriculum/prompts/`);
+
+// Figure registry: curriculum/figures/<key>.md → {{figure:key}} expansion.
+// Same lifecycle as prompts — loaded once, strict at expand time, compiled to
+// site/figures.json for the SPA.
+let FIGURE_REGISTRY;
+try {
+  FIGURE_REGISTRY = loadFigures();
+} catch (e) {
+  console.error('Build aborted: figure registry failed to load.');
+  console.error('  ' + e.message);
+  process.exit(1);
+}
+writeFigures(FIGURE_REGISTRY, FIGURES_JSON);
+console.log(`Loaded ${Object.keys(FIGURE_REGISTRY).length} figures from curriculum/figures/`);
 
 // Soft sanity check on registry frontmatter values. Strict expansion already
 // fails on unresolved keys; these checks catch typos in dest/runtime that
@@ -178,7 +193,8 @@ function readMd(absPath) {
   // Strict mode: any unresolved {{prompt:<key>}} marker fails the build,
   // pointing at the offending file via the path included in the error.
   try {
-    return CR.expandPrompts(stripped, PROMPT_REGISTRY, { strict: true });
+    const expanded = CR.expandPrompts(stripped, PROMPT_REGISTRY, { strict: true });
+    return CR.expandFigures(expanded, FIGURE_REGISTRY, { strict: true });
   } catch (e) {
     throw new Error(`${path.relative(ROOT, absPath)}: ${e.message}`);
   }

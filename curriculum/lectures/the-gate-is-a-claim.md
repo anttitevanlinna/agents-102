@@ -1,6 +1,6 @@
 # The gate is a claim too
 
-Say the re-send comes back green. The verifier you built reads the work and passes it. A passing result is only as trustworthy as the check that produced it. The check itself needs verification. On the map it sits in the far half, the last check before the work ships. The check can lie in five ways.
+Say the re-send comes back green. The verifier you built reads the work and passes it. A passing result is only as trustworthy as the check that produced it. The check itself needs verification.
 
 ## Passing is not proof
 
@@ -12,12 +12,12 @@ Say the re-send comes back green. The verifier you built reads the work and pass
 ## The judge needs calibrating against your labels
 
 - An LLM judge is another untested component. Until you compare its verdicts with your own review, you do not know its false-pass rate, how often it approves work you would reject.
-- The move is hand-label a sample, measure agreement, sharpen, repeat. A few dozen outputs is enough to start; you are looking for disagreement patterns, not a significance test. Grade them yourself, compare against the judge's verdicts, sharpen the judge prompt until the two converge, and re-check when the model or the task shifts. Hamel Husain reports better than 90% agreement after three iterations of exactly this loop.
+- The move: compare a handful of your own judgements with the judge's verdicts, and teach the judge until you converge. You are looking for disagreement patterns, not a significance test. Re-check when the model or the task shifts. Hamel Husain reports better than 90% agreement after three iterations of exactly this loop.
 - A good gate starts from real traces, not imagined failures. Read sessions that actually happened, sort the real failures into buckets, and write the first check for the biggest bucket. A gate built from the armchair catches the failures you pictured and misses the ones you have.
 
 ## Gates decay
 
-- A measure that becomes a target stops measuring. **Goodhart's law.** The LLM is an optimizer aimed straight at your gate: it may special-case tests, keyword-stuff work for the judge, or edit assertions until they pass. No malice needed: optimization pressure finds the cheapest path to green.
+- **Goodhart's law:** when a measure becomes a target, it ceases to be a good measure. The LLM is an optimizer aimed straight at your gate: it may special-case tests, keyword-stuff work for the judge, or edit assertions until they pass. No malice needed: optimization pressure finds the cheapest path to green.
 - Passing while missing the intent is a signature, not bad luck. When work clears the gate and still is not what you meant, the gate has decayed into a target. That is a reason to refresh the gate, not to shrug.
 - The countermoves are a hold-out and an integrity check. Keep a check the agent never sees, so nothing can optimize against it. After a suspicious pass, inspect the gate itself (the test file, the judge prompt, the asserts), not only its verdict.
 
@@ -36,49 +36,10 @@ A gate is one more claim in the system. Build it, then hold it to the same bar i
 
 ## The delegation frontier
 
-<figure class="diagram">
-<svg viewBox="0 0 1200 560" role="img" aria-label="A two-by-two map of delegated work. Horizontal axis: reach, how much you hand off. Vertical axis: calibration, whether trust was earned by a measured gate. Four states: chat-shaped work bottom-left, controlled assistance top-left, reckless autonomy bottom-right, calibrated agency top-right. A dashed ochre curve labelled the frontier rises from low reach at low calibration to high reach at high calibration, and moves outward as fast as the gates behind it." style="display:block;width:100%;height:auto;background:#efe6d2;border:1px solid #c5b68d;border-radius:7px;">
-<rect x="0.5" y="0.5" width="1199" height="559" rx="7" fill="#efe6d2"/>
-<rect x="12" y="12" width="1176" height="536" fill="none" stroke="#d6c8a3" stroke-width="1" opacity="0.9"/>
-<rect x="650" y="270" width="500" height="200" fill="rgba(138,58,42,0.05)"/>
-<g stroke="#d6c8a3" stroke-width="1" stroke-dasharray="2 8" opacity="0.8">
-<line x1="650" y1="70" x2="650" y2="470"/>
-<line x1="150" y1="270" x2="1150" y2="270"/>
-</g>
-<g stroke="#786c56" stroke-width="1.6" stroke-linecap="round">
-<line x1="150" y1="470" x2="1140" y2="470"/>
-<line x1="150" y1="470" x2="150" y2="80"/>
-</g>
-<g fill="#786c56">
-<polygon points="1150,470 1138,464 1138,476"/>
-<polygon points="150,70 144,82 156,82"/>
-</g>
-<text x="650" y="505" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2.5" fill="#786c56">REACH · HOW MUCH YOU HAND OFF →</text>
-<text x="125" y="270" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2.5" fill="#786c56" transform="rotate(-90 125 270)">CALIBRATION · TRUST, MEASURED ↑</text>
-<g text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12.5" letter-spacing="2">
-<text x="400" y="150" fill="#2f6b6b">CONTROLLED ASSISTANCE</text>
-<text x="400" y="400" fill="#2f6b6b">CHAT-SHAPED WORK</text>
-<text x="800" y="150" fill="#2f6b6b">CALIBRATED AGENCY</text>
-<text x="960" y="400" fill="#8a3a2a">RECKLESS AUTONOMY</text>
-</g>
-<g text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234">
-<text x="400" y="168">small handoffs, tight review</text>
-<text x="400" y="418">you read everything</text>
-<text x="800" y="168">big handoffs, gates and checks you trust</text>
-<text x="960" y="418">big handoffs, green you took on faith</text>
-</g>
-<path d="M 480,470 C 640,420 760,330 850,240 S 980,120 1020,70" fill="none" stroke="#a05a2c" stroke-width="2.4" stroke-dasharray="7 7" opacity="0.85"/>
-<text x="935" y="205" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="2.5" fill="#a05a2c" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE FRONTIER</text>
-<text x="935" y="221" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">moves as fast as the gates behind it</text>
-<line x1="880" y1="250" x2="945" y2="250" stroke="#a05a2c" stroke-width="1.8" stroke-linecap="round"/>
-<polygon points="955,250 943,244 943,256" fill="#a05a2c"/>
-<text x="650" y="533" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="15.5" fill="#4a4234">The frontier: the largest task you can hand off, well designed, enough unclarity removed.</text>
-<text x="1176" y="36" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" letter-spacing="2" fill="#8a3a2a">TWO AXES · FOUR STATES</text>
-</svg>
-</figure>
+{{figure:delegation-frontier}}
 
 - Every task you hand off sits on two axes. Reach is how much you delegated: the size of the task, the distance between checks. Calibration is whether your trust in what came back was earned by a check you have verified.
-- Four states fall out. Low reach is chat-shaped work or controlled assistance: you read everything, so trust is not the question yet. High reach splits on calibration alone. Calibrated agency when the gates behind the green are ones you have measured, reckless autonomy when they are not. From outside, the two look identical. The five ways a gate lies are the whole difference.
+- Four states fall out. Low reach is chat-shaped work or controlled assistance: you read everything, so trust is not the question yet. High reach splits on calibration alone. Calibrated agency when the gates behind the green are ones you have measured, reckless autonomy when they are not. From outside, the two look identical.
 - The model limits the difficulty of the challenge you can delegate; the gates limit whether you can trust the result. Useful delegation stops at whichever limit comes first. A stronger model behind an unverified gate still leaves you with work you cannot safely accept.
 - The frontier moves outward only as fast as the gates behind it. Push reach past your calibration and you are not delegating more. You are checking less.
 
@@ -96,7 +57,7 @@ A gate is one more claim in the system. Build it, then hold it to the same bar i
 
 **Antti decisions (2026-07-27):** six slides confirmed as THE M5 closer; all five laws kept (no error-analysis trim, no don't-tamper cut; combined close packaging ~12–15 + gate 7–9 accepted against the 1h45 runtime); the slide-5 kicker ("A gate is one more claim…") stays as the laws' summary line so the deck ends on the frontier warning; 2×2 figure added to the frontier slide in the house SVG style (blank-line-free figure block per the engine-SVG rule; the frontier-definition sentence is carried once, in the figure caption, and dropped from bullet 3).
 
-**Independence bullet (2026-08-09, Antti-directed; buried-gold item):** fourth bullet on *Passing is not proof* — the unifier of the three countermoves plus the law (*a second call is a second opinion only when something changed*). Slide at 209w/4b, at the blessed cap. Guards: (a) NOT a sixth law — the lede's "five ways" and the `five-ways-a-gate-lies` claim stand; this unifies law 1's countermoves. (b) *"has none of it"* is scoped to independence — a same-window re-read still catches typos; do not strengthen to "catches nothing," do not soften into a mitigation list. (c) **The mechanism is priming, not politeness.** The generator's framing produced the errors and still governs any judge sharing its state — framing-borne errors are invisible from inside the frame (perception). RLHF charity is the separate, smaller half: it tilts what gets said about flaws the model can already see (reporting). A harsher ask lowers the reporting threshold; it does not move the blind spot. Question-variation (over-flag, role-mask) is therefore deliberately absent from the countermove list — do not "improve" the bullet into ask-harder advice, and do not add over-flag as a fourth anchor; the three anchors are all state-external on purpose. (d) Zero bold on this slide upheld (2026-07-09 emphasis pass); the header carries the law. (e) `check_pedagogy §9b` second encounter: the felt first is M3's *same-window self-charity* (`author-test-strategy-skill.md`); this is the varied naming — modules un-named per `check_lectures §3`. Downstream joins stay un-cited on purpose: the verifier graded in its authoring window (diagnose-and-resend Phase 3), the fresh re-send session's cache rationale (learn-from-the-test), the background-agent shape's separateness, Ralph re-feed as the least independent shape on the menu. Trainer line: *"asking harder changes what gets reported, not what gets seen."*
+**Independence bullet (2026-08-09, Antti-directed; buried-gold item):** fourth bullet on *Passing is not proof* — the unifier of the three countermoves plus the law (*a second call is a second opinion only when something changed*). Slide at 209w/4b, at the blessed cap. Guards: (a) NOT a sixth law — it unifies law 1's countermoves; the deck's enumerable content is slide 1's three failure modes, and no lede count re-promises them. (b) *"has none of it"* is scoped to independence — a same-window re-read still catches typos; do not strengthen to "catches nothing," do not soften into a mitigation list. (c) **The mechanism is priming, not politeness.** The generator's framing produced the errors and still governs any judge sharing its state — framing-borne errors are invisible from inside the frame (perception). RLHF charity is the separate, smaller half: it tilts what gets said about flaws the model can already see (reporting). A harsher ask lowers the reporting threshold; it does not move the blind spot. Question-variation (over-flag, role-mask) is therefore deliberately absent from the countermove list — do not "improve" the bullet into ask-harder advice, and do not add over-flag as a fourth anchor; the three anchors are all state-external on purpose. (d) Zero bold on this slide upheld (2026-07-09 emphasis pass); the header carries the law. (e) `check_pedagogy §9b` second encounter: the felt first is M3's *same-window self-charity* (`author-test-strategy-skill.md`); this is the varied naming — modules un-named per `check_lectures §3`. Downstream joins stay un-cited on purpose: the verifier graded in its authoring window (diagnose-and-resend Phase 3), the fresh re-send session's cache rationale (learn-from-the-test), the background-agent shape's separateness, Ralph re-feed as the least independent shape on the menu. Trainer line: *"asking harder changes what gets reported, not what gets seen."*
 
 **Laws carried (5 + closing frame):** green-is-a-claim (passing is not proof) · calibrate-the-judge · Goodhart/gate-decay · one-run-is-a-sample · don't-tamper (change on recurrence). Slide 1 additionally carries the independence unifier (second-call law) — a property of law 1's countermoves, not a sixth law. Trimmed from the reference-dose supplementary: hold-out and integrity-check folded into the gate-decay slide; the error-analysis-first bullet kept tight on the calibrate slide (cut candidate — see eyeball). The demo-is-pass-once bullet was cut as a restatement; the regression-to-the-mean trap remains.
 
@@ -110,18 +71,16 @@ A gate is one more claim in the system. Build it, then hold it to the same bar i
 
 Claims
 - `gate-is-a-claim-too` · vision · "A passing result is only as trustworthy as the check that produced it. The check itself needs verification." ← none-owed
-- `five-ways-a-gate-lies` · vision · "The check can lie in five ways." ← none-owed
 - `green-is-a-claim-not-proof` · vision · "Green is a claim about the check, not a fact about the work." ← none-owed
 - `three-reasons-a-pass-looks-identical` · vision · "the judge is miscalibrated, the gate got gamed, or the session was a lucky sample" ← none-owed
 - `three-failures-have-different-countermoves` · vision · "compare the judge with your own labels, keep a separate check the agent never sees, or repeat the task across several sessions" ← none-owed
 - `countermoves-share-independence` · vision · "The three countermoves share one property: independence." ← none-owed
 - `second-call-not-second-opinion` · vision · "A second call is a second opinion only when something changed." ← none-owed
 - `judge-has-unknown-false-pass-rate` · vision · "Until you compare its verdicts with your own review, you do not know its false-pass rate" ← none-owed
-- `hand-label-measure-sharpen-repeat` · vision · "hand-label a sample, measure agreement, sharpen, repeat" ← none-owed
-- `a-few-dozen-to-start` · vision · "A few dozen outputs is enough to start; you are looking for disagreement patterns, not a significance test." ← none-owed
+- `handful-teach-until-convergence` · vision · "compare a handful of your own judgements with the judge's verdicts, and teach the judge until you converge" ← none-owed
 - `husain-ninety-percent-three-iterations` · detail · "Hamel Husain reports better than 90% agreement after three iterations of exactly this loop." ← husain-llm-judge
 - `error-analysis-before-armchair` · detail · "A good gate starts from real traces, not imagined failures." ← husain-field-guide, husain-evals
-- `goodhart-gates-decay` · borrowed · "A measure that becomes a target stops measuring. **Goodhart's law.** The LLM is an optimizer aimed straight at your gate" ← cultural-vocab
+- `goodhart-gates-decay` · borrowed · "**Goodhart's law:** when a measure becomes a target, it ceases to be a good measure. The LLM is an optimizer aimed straight at your gate" ← cultural-vocab
 - `passing-while-missing-intent-is-a-signature` · vision · "When work clears the gate and still is not what you meant, the gate has decayed into a target." ← none-owed
 - `holdout-and-integrity-check` · vision · "Keep a check the agent never sees, so nothing can optimize against it." ← none-owed
 - `behaviour-is-a-distribution` · vision · "The agent's behavior is a distribution, not a property." ← none-owed
@@ -149,7 +108,7 @@ Frameworks
 Stance `[stance:2026-08-01 level:L2]`
 - holds: that a judge must be measured against human labels before it is trusted. Husain is the clearest published practitioner statement of the loop and carries the only number in the lecture. The failure modes themselves — miscalibration, gaming, sampling — are textbook rather than contested, which is why four of the five laws sit on borrowed frames rather than on practitioner counts.
 - contested: nothing material in the five laws. What is unsettled is dosage: whether a room this early can act on judge-calibration at all, or only recognise it. That is a pedagogy question, not an evidence one.
-- decided: **the starting sample size is a range with its reasoning attached, 2026-08-01.** The bullet read *"Thirty outputs is enough to start"* — a bare number with nothing behind it, in the shape of a statistical threshold a reader might defend in review. Husain backs the loop and the >90%-after-three-iterations figure; he backs no starting sample size. Precision you cannot source is worse than a range you can stand behind, because precision is what gets quoted back at you.
+- decided: **no starting sample size is claimed, 2026-08-19 (Antti; supersedes the 2026-08-01 few-dozen range).** The bullet names the move — a handful of your own judgements, teach the judge until convergence — and a handful is a floor, not a threshold. Husain backs the loop and the >90%-after-three-iterations figure; he backs no starting sample size, and neither do we. Do not restore a number or a range in this slot.
 - would-move-it: a published agreement-rate loop that lands somewhere other than Husain's ">90% after three iterations" — a materially different convergence rate, or a practitioner reporting that judge calibration failed to transfer. One more independent number would take this to L3 and let the body say "practitioners report" instead of naming one person.
 
 OODA

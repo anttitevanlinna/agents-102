@@ -60,6 +60,8 @@ Gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a wor
 <!--flag:no-module:spot-gaps-build-the-loop-->
 ## Back to the map, one last time
 
+{{figure:map-engine-m4-open}}
+
 The map at sitting 2 had an edge nobody explained. A dashed line down the right side, `THE TEAM` beyond it, and along the bottom, in italics: *cross personal → team*.
 
 **The wall** is the line between what works for you and what works for someone else. A rule in your own `CLAUDE.local.md` sits on your side of it. The same rule in a repo's `CLAUDE.md`, loading into a teammate's session whether they asked for it or not, has crossed.

@@ -377,7 +377,9 @@ commission a consolidation beat at the end of sitting 4. The wall explanation is
 **Closed 2026-07-28 with the second option, authored fresh.** *Back to the map, one last time* now sits
 at the end of sitting 4, behind `no-module:spot-gaps-build-the-loop`, so it appears only in cuts that
 lack the module whose closer would otherwise fill the map in. AE101 is untouched and keeps
-`the-map-filled-in`.
+`the-map-filled-in`. The beat also projects the map itself (`{{figure:map-engine-m4-open}}`, the state
+the room last saw), so the closing read points at a drawing on screen rather than a memory of one —
+figures are single-sourced in `curriculum/figures/` and expanded at build.
 
 It does both halves of this gap at once. The map gets closed rather than left half-drawn, and the right
 edge finally gets its sentence: **the wall** is the line between what works for you and what works for

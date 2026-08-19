@@ -197,9 +197,21 @@ if [ -d "$PROMPTS_SRC" ]; then
   done
 fi
 
+# ---- Figure registry -----------------------------------------------------
+# Consuming files keep `{{figure:<key>}}` markers the same way they keep
+# prompt markers; resolve against this directory at runtime.
+FIGURES_SRC="curriculum/figures"
+if [ -d "$FIGURES_SRC" ]; then
+  mkdir -p "$ROOT/figures"
+  for f in "$FIGURES_SRC"/*.md; do
+    [ -f "$f" ] || continue
+    cp "$f" "$ROOT/figures/$(basename "$f")"
+  done
+fi
+
 # ---- Pack ----------------------------------------------------------------
 # Run tar from inside ROOT so the archive has lectures/, exercises/, reference/,
-# supplementary/, content/, prompts/ at the top level.
+# supplementary/, content/, prompts/, figures/ at the top level.
 # Extraction: `tar xzf ae101-content.tar.gz -C ~/Documents/ae101-content`
 rm -f "$OUT"
 (cd "$ROOT" && tar czf "$OLDPWD/$OUT" .)

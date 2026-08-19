@@ -29,9 +29,11 @@ const HERE = __dirname;
 const ROOT = path.resolve(HERE, '../../..');
 const CR = require(path.join(ROOT, 'site/layouts/curriculum.js'));
 const { loadRegistry } = require(path.join(ROOT, 'scripts/compile-prompts.js'));
+const { loadFigures } = require(path.join(ROOT, 'scripts/compile-figures.js'));
 
 CR.configureMarked(marked);
 const REGISTRY = loadRegistry();
+const FIGURES = loadFigures();
 
 function flag(name) {
   const i = process.argv.indexOf('--' + name);
@@ -59,6 +61,7 @@ function renderDoc(kindSlug) {
   let md = fs.readFileSync(abs, 'utf8');
   md = CR.stripMaintainerTail(md);
   md = CR.expandPrompts(md, REGISTRY, { strict: true });
+  md = CR.expandFigures(md, FIGURES, { strict: true });
   md = CR.escapeTildes(md);
   let html = marked.parse(md);
   html = CR.wrapImageFigures(html);

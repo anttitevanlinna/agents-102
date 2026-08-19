@@ -29,9 +29,11 @@ const fs = require('fs');
 const path = require('path');
 const CR = require(path.join(__dirname, '..', 'site/layouts/curriculum.js'));
 const { loadRegistry } = require(path.join(__dirname, 'compile-prompts.js'));
+const { loadFigures } = require(path.join(__dirname, 'compile-figures.js'));
 
 const ROOT = path.join(__dirname, '..');
 const REGISTRY = loadRegistry();
+const FIGURES = loadFigures();
 
 // INCLUDE_LINK_RE is /gm with one match per standalone-paragraph line.
 // Captures: [1] = link title, [2] = `exercises/<slug>` or `lectures/<slug>`.
@@ -49,7 +51,7 @@ function inlineIncludes(md, seen) {
     next.add(key);
     const raw = fs.readFileSync(incPath, 'utf8');
     const stripped = CR.stripMaintainerTail(raw);
-    const expanded = CR.expandPrompts(stripped, REGISTRY);
+    const expanded = CR.expandFigures(CR.expandPrompts(stripped, REGISTRY), FIGURES);
     const inlined = inlineIncludes(expanded, next);
     return '\n\n<!--INC:' + kind + ':' + slug + ':' + CR.esc(title) + '-->\n\n'
       + inlined
@@ -113,6 +115,6 @@ if (idx >= 0) {
 }
 
 const inlined = inlineIncludes(body);
-const expanded = CR.expandPrompts(inlined, REGISTRY);
+const expanded = CR.expandFigures(CR.expandPrompts(inlined, REGISTRY), FIGURES);
 
 process.stdout.write(expanded + tail);

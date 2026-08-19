@@ -54,6 +54,10 @@ Module files: flat, slug-only filenames, sequence from renderer's MODULES array.
 
 Template + module include + bare-path cross-doc rules → `curriculum/module-shape.md`.
 
+## Figures
+
+Inline SVG diagrams are single-sourced in `curriculum/figures/<key>.md` (one blank-line-free `<figure class="diagram">…</figure>` per file) and referenced from body prose as `{{figure:<key>}}` on its own line — same registry pattern as prompts (`scripts/compile-figures.js` → `site/figures.json`; build expands strict). One drawing, many slides; never paste an SVG inline.
+
 ## Widgets
 
 Author-typed widget palette (Session / HOX / Note / Prompt / runtime-fork) + when-to-use + add-a-widget procedure → `curriculum/widgets.md`. Generation-time check → `check_pedagogy.md` §52b.

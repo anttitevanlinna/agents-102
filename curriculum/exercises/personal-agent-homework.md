@@ -32,15 +32,7 @@ Remember Module 1's `module-1/site.html`, and the prework `prework/snake.html` b
 
 Ask Claude to extract the visual pattern from your company website and write it as a plain-language style file the agent reuses forever.
 
-**Prompt** *(Claude Code)*
-
-```
-Look at my company's website. I'll give you a URL or paste a key page when you ask. Extract the visual pattern — primary and accent colours (with hex codes), font families, header shape, spacing, overall tone of voice. Write it to ./style.md at the training-directory root, in plain language (not a CSS file). Short and practical: a designer reading ./style.md should be able to produce something that looks like our site without visiting it.
-
-Then append one line to my root CLAUDE.md under a new "Styling" heading: "When producing HTML output, follow style.md."
-
-Show me both files before saving.
-```
+{{prompt:personal-agent-homework-1}}
 
 Give Claude the URL or paste a key page. It extracts, writes `./style.md`, appends the `./CLAUDE.md` rule. Read both. Edit `./style.md` where Claude missed something, if your brand has a hard rule ("never pure black," "always serif headings"), put it in. The rule you just added to `./CLAUDE.md` means every agent you build from here on will use this style when it produces HTML.
 
@@ -50,17 +42,7 @@ Give Claude the URL or paste a key page. It extracts, writes `./style.md`, appen
 
 In your training directory, create `module-2/morning-agent/`. Ask Claude to interview you on the job, the output shape, and the hard boundary, then write the agent's instruction file.
 
-**Prompt** *(Claude Code)*
-
-```
-I'm setting up a daily agent that reads my challenge memory every morning and reports back as a stylised HTML page. Ask me, one at a time:
-
-1. Which job — morning plan, daily risk scan, or next-move draft?
-2. What should the output look like — how long, what sections, what voice?
-3. What must this agent never do? Name at least one hard boundary.
-
-When I've answered all three, write the file at module-2/morning-agent/morning.md. The output instructions say: write the result as a single self-contained HTML file to module-2/morning-agent/latest.html, following the styling rules in style.md at the training-directory root. One file, overwritten each day. Show me morning.md before saving.
-```
+{{prompt:personal-agent-homework-2}}
 
 Claude asks, you answer, the file lands. Read it. Edit anything that doesn't sound like you.
 
@@ -76,11 +58,7 @@ In the desktop app, open the **Schedule** sidebar. Click **New task → New loca
 
 Ask Claude to read the morning brief, follow the rules, and write the daily output to `latest.html`.
 
-**Prompt** *(Claude Desktop)*
-
-```
-Read module-2/morning-agent/morning.md and run the job. Read the current state of memory/ as context. Follow the rules in that file and in the root CLAUDE.md. Write the output to module-2/morning-agent/latest.html.
-```
+{{prompt:personal-agent-homework-3}}
 
 Save. Click **Run now** once. Double-click `module-2/morning-agent/latest.html` in your file browser, it opens in your browser and should look like it came off your company site. Fix anything off by editing `module-2/morning-agent/morning.md` or `./style.md`, the scheduled task reads both every session, so tomorrow picks up the change.
 

@@ -74,8 +74,6 @@ Each item: `[ ] [S/M/L] <gap> → <fix>`. Done items are deleted, not annotated 
 **Prompt graph**
 
 - [ ] [M] Systemic: most A101 exercise prompts still carry no graph fields at all. The graph validates clean, but it validates a sparse graph — only the artefacts a debrief happens to require are declared. AE101 declares roughly half its prompts. Backfilling the rest is what makes PREMATURE catchable, not just DANGLING.
-- [ ] [S] `curriculum/exercises/personal-agent-homework.md` is the last un-migrated file — 3 inline `**Prompt**` blocks, 0 registry markers.
-- [ ] [S] `lint-prompt-bodies` Sev-2 on `name-your-crux-2` (§9 markdown italic).
 
 **Quality state — PARKED by Antti 2026-08-19 ("machinery first, judges later")**
 

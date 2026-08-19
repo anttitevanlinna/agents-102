@@ -2053,7 +2053,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/name-your-crux",
-    "text": "Open ./crux.md and read the crux you just saved. What's the sharpest decision this crux blocks? One sentence. Not a topic, not a summary. A real call you'd stay late to make. Something like *\"what's the right next move to unblock the crux, over the next 90 days?\"* is a decent default. *\"Should we kill option A?\"* is better if that's where you are.\n\nAppend a `## Question` section to ./crux.md with the decision question. Don't overwrite the crux above. Show me before saving."
+    "text": "Open ./crux.md and read the crux you just saved. What's the sharpest decision this crux blocks? One sentence. Not a topic, not a summary. A real call you'd stay late to make. Something like \"what's the right next move to unblock the crux, over the next 90 days?\" is a decent default. \"Should we kill option A?\" is better if that's where you are.\n\nAppend a `## Question` section to ./crux.md with the decision question. Don't overwrite the crux above. Show me before saving."
   },
   "new-human-role-in-the-loop-1": {
     "key": "new-human-role-in-the-loop-1",
@@ -2120,6 +2120,60 @@
           "prompt:compound-and-close-1"
         ],
         "note": "pedagogical delta against read-self-report reveals the unread slice"
+      }
+    ]
+  },
+  "personal-agent-homework-1": {
+    "key": "personal-agent-homework-1",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/personal-agent-homework",
+    "text": "Look at my company's website. I'll give you a URL or paste a key page when you ask. Extract the visual pattern — primary and accent colours (with hex codes), font families, header shape, spacing, overall tone of voice. Write it to ./style.md at the training-directory root, in plain language (not a CSS file). Short and practical: a designer reading ./style.md should be able to produce something that looks like our site without visiting it.\n\nThen append one line to my root CLAUDE.md under a new \"Styling\" heading: \"When producing HTML output, follow style.md.\"\n\nShow me both files before saving.",
+    "produces": [
+      {
+        "id": "m2-style-md",
+        "path": "./style.md"
+      }
+    ]
+  },
+  "personal-agent-homework-2": {
+    "key": "personal-agent-homework-2",
+    "dest": "Claude Code",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/personal-agent-homework",
+    "text": "I'm setting up a daily agent that reads my challenge memory every morning and reports back as a stylised HTML page. Ask me, one at a time:\n\n1. Which job — morning plan, daily risk scan, or next-move draft?\n2. What should the output look like — how long, what sections, what voice?\n3. What must this agent never do? Name at least one hard boundary.\n\nWhen I've answered all three, write the file at module-2/morning-agent/morning.md. The output instructions say: write the result as a single self-contained HTML file to module-2/morning-agent/latest.html, following the styling rules in style.md at the training-directory root. One file, overwritten each day. Show me morning.md before saving.",
+    "requires": [
+      {
+        "id": "m2-style-md",
+        "source": "prompt:personal-agent-homework-1"
+      }
+    ],
+    "produces": [
+      {
+        "id": "morning-agent-brief",
+        "path": "module-2/morning-agent/morning.md"
+      }
+    ]
+  },
+  "personal-agent-homework-3": {
+    "key": "personal-agent-homework-3",
+    "dest": "Claude Desktop",
+    "context": "",
+    "runtime": "any",
+    "origin": "exercises/personal-agent-homework",
+    "text": "Read module-2/morning-agent/morning.md and run the job. Read the current state of memory/ as context. Follow the rules in that file and in the root CLAUDE.md. Write the output to module-2/morning-agent/latest.html.",
+    "requires": [
+      {
+        "id": "morning-agent-brief",
+        "source": "prompt:personal-agent-homework-2"
+      }
+    ],
+    "produces": [
+      {
+        "id": "morning-agent-output",
+        "path": "module-2/morning-agent/latest.html"
       }
     ]
   },

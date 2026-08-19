@@ -18,7 +18,7 @@ As Empire (the game he's building with this two-window setup) grows, the AI's ra
 
 This is the mercury problem: the code feels compliant, but the system is not yet trustworthy. Push it in one place, and behavior slips out somewhere else.
 
-The core agentic failure mode is local success, global drift.
+A core agentic failure mode is local success, global drift.
 
 And this is where Clean Code changes meaning. In the older frame, Clean Code meant code another human could read, reason about, and safely change. That still matters. But in agentic development, the audience has expanded. Now the code must also be shaped so an AI can change it without quietly destroying what already worked.
 
@@ -56,7 +56,7 @@ Steering here means executable constraint, not a better prompt. The strange thin
 
 ## Metrics are the dashboard, not the wheel
 
-**CRAP And Complexity Metrics.** They expose code that is hard to trust under change. Agents can produce plausible-looking complexity very quickly. Metrics do not replace judgment, but they give the engineer a dashboard for where the codebase is becoming risky. In Uncle Bob's frame, this is the gauge that tells you when steering is becoming harder.
+**CRAP and complexity metrics.** CRAP scores a unit's change risk against its test coverage. Both expose code that is hard to trust under change. Agents can produce plausible-looking complexity very quickly. Metrics do not replace judgment, but they give the engineer a dashboard for where the codebase is becoming risky. In Uncle Bob's frame, this is the gauge that tells you when steering is becoming harder.
 
 ## Small units leave fewer places to hide
 
@@ -90,7 +90,9 @@ The code generator gets faster; the human job moves toward the work of deciding 
 >
 > Deal with it. There's still plenty left for you to do.", Uncle Bob, [X](https://x.com/unclebobmartin/status/2046222100164153548)
 
-Natural language is not enough. A prompt can bias the agent, but it does not bind the agent. Human language needs formal support: tests, tools, structure, metrics, and feedback loops.
+## A prompt biases the agent, it does not bind it
+
+Natural language is not enough. Human language needs formal support: tests, tools, structure, metrics, and feedback loops.
 
 > "I completely agree with Dijkstra. Human language is the worst possible language to program a computer in. Some kind of formalism is absolutely necessary. But the formalism does not have to be in the syntax of a particular computer language.", Uncle Bob, [X](https://x.com/unclebobmartin/status/2049453605237715058)
 
@@ -116,7 +118,7 @@ Claims
 - `old-discipline-more-valuable-when-less-exciting` · vision · "The old discipline looks less exciting at exactly the moment it becomes more valuable." ← none-owed
 - `martin-experiments-in-public` · vision · "He is experimenting in public, letting the tool surprise him, and then rediscovering which parts of software engineering become more important when code gets cheap." ← none-owed
 - `two-window-split` · detail · "I'm keeping two Claude windows open. One making changes to the source code. The other helping me to plan future changes." ← martin-two-windows
-- `six-fundamentals` · detail · "**CRAP And Complexity Metrics.** They expose code that is hard to trust under change." ← martin-six-fundamentals
+- `six-fundamentals` · detail · "**CRAP and complexity metrics.** CRAP scores a unit's change risk against its test coverage." ← martin-six-fundamentals
 - `acceptance-tests-preserve-visible-behaviour` · vision · "They define the externally visible behavior the system must preserve." ← none-owed
 - `unit-tests-shrink-the-search-space` · vision · "They also make the agent's search space smaller." ← none-owed
 - `tdd-states-behaviour-before-implementation` · vision · "The red test forces the desired behavior to be stated before implementation." ← none-owed

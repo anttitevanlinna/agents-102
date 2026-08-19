@@ -69,11 +69,10 @@ Each item: `[ ] [S/M/L] <gap> → <fix>`. Done items are deleted, not annotated 
 
 **Machinery — gates that do not guard A101**
 
-- [ ] [L] `check-doc-paths.js` roots pre-filter exempts ~40% of relative curriculum links in EVERY training from ever being checked. Line 110's AE101 hardcode is the red herring; the pre-filter is the hole. Fails open → `npm test` reports 447 docs OK while never looking. → close the pre-filter, then fix what it surfaces.
 - [ ] [M] `compile-prompts.js:124` runs `validate-prompt-graph` for AE101 only → A101's 15 graph errors never fail the build. Add the A101 invocation.
 - [ ] [M] `audit-eval-coverage.js` has no `--training` flag; `SURFACES` 100% AE101-hardcoded → the coverage gate silently ignores A101. **BLOCKED 2026-08-19: a concurrent session is live in this file (and `.test.js`). Do not touch. Re-check `git status` before starting.**
-- [ ] [M] `npm run time` / `audit:timings` pass no `--training` → A101 has zero timing coverage though `calculate-time.js` already works for it. A101 also has no `timings.md`.
-- [ ] [S] Wire the A101 invocations of check-slide-size / deixis / numbering into `package.json` `test` + `test:gates`. They already accept the flag; nothing runs them.
+- [ ] [L] Timings. `calculate-time.js --training agents-101 --check` already runs and returns ~40 findings: 30 leaf files with no phase markers and no atomic declaration, 16 modules with no `- **Transitions:**` line, 32 durations written as a range where the contract is a single ceiling. A101 also has no `timings.md`, so caps and rhythm are unpriced. Fix the leaves, add `timings.md`, then pass `--training` in the `time` / `audit:timings` scripts.
+- [ ] [M] `check-slide-size --training agents-101` fails: 12 oversized slides across 7 files. AE101's precedent is to SPLIT at a conceptual seam with zero wording changes and a command-verb header (`learn-from-the-test.md:115`), not to declare the overflow; the per-slide `**Slide size accepted:**` escape exists but AE101 barely uses it. Split, then wire the A101 invocation into `test` + `test:gates` beside the other two.
 - [ ] [S] `build-workbook.js` `THEORY_HANDBOOK_MANIFEST` has no `agents-101` entry → `--theory` hard-aborts for A101.
 
 **Prompt graph**

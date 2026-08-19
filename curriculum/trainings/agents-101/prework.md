@@ -2,7 +2,7 @@
 
 Land at Module 1 with <span class="rt-code">Claude Code</span><span class="rt-cowork">Cowork</span> working, your work calendar connected or ready as a screenshot, a snake game, a meetings summary, and a 2-page read. About 50 minutes.
 
-## 0. Set up <span class="rt-code">Claude Code</span><span class="rt-cowork">Cowork</span> (5 min)
+## 1. Set up <span class="rt-code">Claude Code</span><span class="rt-cowork">Cowork</span> (5 min)
 
 You need a Claude account at claude.ai. Then create an empty folder at `~/Documents/agents-101/` (right-click in Finder or File Explorer → *New Folder*). This is your training directory; everything you produce over the eight modules lands here.
 
@@ -14,7 +14,7 @@ You need a Claude account at claude.ai. Then create an empty folder at `~/Docume
 /rename agents-101-prework
 ```
 
-## 1. Connect your work apps (5 min)
+## 2. Connect your work apps (5 min)
 
 Connect either Microsoft 365 or Google Workspace before the first module if your company allows it. Calendar access is enough for the prework. Email, Google Drive, and OneDrive access are useful too, but not required.
 
@@ -24,7 +24,7 @@ Other connectors are optional. If your company uses a wiki, Confluence, Jira, Li
 
 If your IT admin has not approved the connector yet, keep going. The calendar screenshot path in Task 4 gives you the same teaching moment with less automation. For click-paths and troubleshooting, see [Claude quick reference](../../trainings/agents-101/reference/claude-quick-reference.md).
 
-## 2. Install the training folder (3 min)
+## 3. Install the training folder (3 min)
 
 Get the starter file set into your training directory. The starter file set ships the folders and reference material used later in the training: `memory/`, `sources/`, `agents/`, the Module 4 policy files, a library of the prompts the training uses, the personal-to-team patterns for a later module, and a self-study companion you can use while doing self-study of the modules.
 
@@ -34,7 +34,7 @@ Get the starter file set into your training directory. The starter file set ship
 
 *Proof: you placed the file; Claude unpacked it. Two visible steps, no magic.*
 
-## 3. Build a snake game (10 min)
+## 4. Build a snake game (10 min)
 
 Why a snake game? Because you can tell if it works. No ambiguity (either the snake moves or it doesn't). Also: a working snake game is a small, permanent, perfectly useless thing to own, which makes it more interesting than most of what you produce at work.
 
@@ -46,7 +46,7 @@ Keep the file. It's yours.
 
 *Proof: Claude can create a working file and save it on your machine.*
 
-## 4. Summarize your week in meetings (10 min)
+## 5. Summarize your week in meetings (10 min)
 
 Quick concept first. **A *connector* is a way for Claude to talk directly to one of your work apps (your calendar, your email, your files).** When a connector is on, Claude can fetch your real data ("list my meetings this week") instead of you having to copy-paste it.
 
@@ -80,7 +80,7 @@ Take a screenshot of your calendar week view, then:
 
 Stuck on the connector or want specific click-paths? See [Claude quick reference](../../trainings/agents-101/reference/claude-quick-reference.md).
 
-## 5. Read the mental frame (10 min)
+## 6. Read the mental frame (10 min)
 
 If you only do one thing from this prework, do this. The rest builds on it.
 

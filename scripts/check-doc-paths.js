@@ -91,13 +91,38 @@ const REPO_ROOTS = [
 ];
 const isRepoPointer = (ref) => REPO_ROOTS.some((r) => ref.startsWith(r));
 
+const TRAINING_ROOTS = (() => {
+  const base = path.join(ROOT, 'curriculum/trainings');
+  try {
+    return fs.readdirSync(base)
+      .filter((d) => fs.statSync(path.join(base, d)).isDirectory())
+      .map((d) => path.join(base, d));
+  } catch { return []; }
+})();
+
+// A module include is the RENDERER's contract, not the student's working tree:
+// `rewriteCrossDocLinks` in site/layouts/curriculum.js fetches exactly these
+// shapes, so exactly these must resolve. They carry no repo-root prefix, so the
+// roots pre-filter in collect() skipped every one — the checker reported 447
+// docs OK while never looking at the pointers that decide whether a module
+// renders its own exercises at all. Shape mirrors module-shape.md § Cross-doc
+// links; a single flat slug, no nesting, which is what keeps `outputs/x.md` and
+// `agents/researcher.md` out.
+const CURRICULUM_REF = new RegExp(
+  String.raw`^(?:\.\./)*(?:(?:exercises|lectures)/[a-z0-9-]+\.md` +
+  String.raw`|trainings/[a-z0-9-]+/(?:reference|supplementary)/[a-z0-9-]+\.md)$`,
+);
+const isCurriculumInclude = (ref) => CURRICULUM_REF.test(ref);
+
 // Strip fenced code blocks: they show commands and shapes, not live pointers.
 function stripFences(text) {
   return text.replace(/^```[\s\S]*?^```/gm, '');
 }
 
-function resolves(ref, fromDir) {
+function resolves(ref, fromDir, fromFile) {
+  const ownTraining = fromFile && fromFile.match(/^curriculum\/trainings\/[^/]+\//);
   const candidates = [
+    ownTraining && path.join(ROOT, ownTraining[0], ref),
     path.join(ROOT, ref),
     path.join(ROOT, fromDir, ref),
     path.join(ROOT, 'curriculum', ref),
@@ -107,7 +132,11 @@ function resolves(ref, fromDir) {
     path.join(ROOT, '.claude/skills', ref),
     path.join(ROOT, 'continuous-research', ref),
     path.join(ROOT, 'continuous-research/findings', ref),
-    path.join(ROOT, 'curriculum/trainings/agentic-engineering-101', ref),
+    // A shared lecture or exercise may name a training-specific page by the
+    // bare `reference/<slug>.md` form. Which training it means is ambiguous
+    // from a shared file, so try each — the alternative was one hardcoded
+    // training, which quietly made every other training's pointers unresolvable.
+    ...TRAINING_ROOTS.map((t) => path.join(t, ref)),
     // The memory store lives outside the repo; docs address it as `memory/...`.
     MEMORY && path.join(MEMORY, ref.replace(/^memory\//, '')),
     MEMORY && path.join(MEMORY, ref),
@@ -136,10 +165,11 @@ function collect(files) {
           ? REPO_ROOTS.filter((r) => r !== 'docs/')   // in a foreign tree, docs/ is theirs
           : REPO_ROOTS;
         if ((STUDENT_SURFACE.test(f) || FOREIGN_TREE.test(f)) &&
-            !roots.some((r) => ref.startsWith(r))) continue;
+            !roots.some((r) => ref.startsWith(r)) &&
+            !isCurriculumInclude(ref)) continue;
         if (isDestination(text, m.index)) continue;
         if (ALLOW.has(`${f} -> ${ref}`)) continue;
-        if (!resolves(ref, fromDir)) dangling.push({ file: f, ref });
+        if (!resolves(ref, fromDir, f)) dangling.push({ file: f, ref });
       }
     }
   }
@@ -165,4 +195,4 @@ if (require.main === module) {
   process.exit(1);
 }
 
-module.exports = { collect, isPlaceholder, stripFences, resolves };
+module.exports = { collect, isPlaceholder, stripFences, resolves, isCurriculumInclude };

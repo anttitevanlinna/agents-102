@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 
-const { isPlaceholder, stripFences, resolves } = require('./check-doc-paths.js');
+const { isPlaceholder, stripFences, resolves, isCurriculumInclude } = require('./check-doc-paths.js');
 const { namesIt } = require('./find-session-docs.js');
 
 test('isPlaceholder: illustrative shapes are not pointers', () => {
@@ -53,4 +53,61 @@ test('namesIt: basename matches whole path segments, not substrings', () => {
 
 test('namesIt: a bare basename in prose still counts', () => {
   assert.equal(namesIt('as recorded in vocabulary.md today', 'curriculum/vocabulary.md'), true);
+});
+
+// A module include is the renderer's contract: site/layouts/curriculum.js
+// rewriteCrossDocLinks fetches exactly these shapes, so exactly these must
+// resolve. They carry no repo-root prefix, so the student-surface roots filter
+// used to skip every one of them — the checker read 447 docs and never looked
+// at the pointers that decide whether a module renders its own exercises.
+test('isCurriculumInclude: the shapes the renderer fetches', () => {
+  for (const ref of [
+    'exercises/push-back-on-the-plan.md',
+    'lectures/the-whole-map.md',
+    '../../trainings/agents-101/supplementary/what-is-an-agent.md',
+    'trainings/agentic-engineering-101/reference/prompt-anatomy.md',
+  ]) {
+    assert.equal(isCurriculumInclude(ref), true, ref);
+  }
+});
+
+test('isCurriculumInclude: the student working tree is not an include', () => {
+  for (const ref of [
+    'outputs/policy-report.md', 'module-1/site.html', './challenge.md',
+    'agents/researcher.md', 'memory/health.md', 'judges/groundedness.md',
+    'exercises/nested/deep.md',
+  ]) {
+    assert.equal(isCurriculumInclude(ref), false, ref);
+  }
+});
+
+test('every module include in every training actually resolves', () => {
+  const { execSync } = require('node:child_process');
+  const root = path.join(__dirname, '..');
+  const files = execSync('git ls-files "curriculum/trainings/*/*.md"', { cwd: root })
+    .toString().trim().split('\n').filter(Boolean);
+  let checked = 0;
+  const dead = [];
+  for (const f of files) {
+    const text = stripFences(fs.readFileSync(path.join(root, f), 'utf8'));
+    const re = /\]\(([A-Za-z0-9_.@/-]+\.md)(?:#[^)]*)?\)/g;
+    let m;
+    while ((m = re.exec(text)) !== null) {
+      if (!isCurriculumInclude(m[1])) continue;
+      checked++;
+      if (!resolves(m[1], path.dirname(f), f)) dead.push(`${f} -> ${m[1]}`);
+    }
+  }
+  // Guard the guard: a pattern that matches nothing passes vacuously.
+  assert.ok(checked > 50, `expected to check many includes, checked ${checked}`);
+  assert.deepEqual(dead, [], `dead module includes:\n${dead.join('\n')}`);
+});
+
+// Fail-closed: the pattern admitting a ref and the resolver rejecting it are
+// the two halves that must compose, or widening the filter bought nothing.
+test('a dead module include is admitted by the filter and rejected by the resolver', () => {
+  const dead = 'exercises/no-such-exercise-exists.md';
+  assert.equal(isCurriculumInclude(dead), true, 'must reach the resolver');
+  assert.equal(resolves(dead, 'curriculum/trainings/agents-101', 'curriculum/trainings/agents-101/security.md'), false,
+    'must not resolve');
 });

@@ -56,11 +56,59 @@ Parity inventory produced by four read-only scouts, 2026-08-19:
 
 (Scratchpad reports; findings promoted into § *Punch list* below as they are confirmed.)
 
+## Confirmed non-gaps
+
+Verified present for A101 — do not re-investigate, do not "fix":
+
+- **Hook layer is already training-agnostic.** `eval-class-router.sh:90` matches `curriculum/(trainings/[^/]+|exercises|lectures|supplementary)/*.md` — A101 module edits route eval classes exactly as AE101's do. `prompt-edit-gate.sh:43` matches all of `curriculum/prompts/**`, so `a101-*` prompt bodies carry the same approval gate. `surface-detector.sh:36` names `agents-101` in its keyword regex.
+- **`check-slide-deixis --training agents-101`** — clean, 46 files, no page-geometry pointers.
+
 ## Punch list
 
-Filled from the scout reports. Each item: `[ ] [S/M/L] <gap> → <fix>`. Done items are deleted, not annotated (punch list, not changelog).
+Each item: `[ ] [S/M/L] <gap> → <fix>`. Done items are deleted, not annotated (punch list, not changelog).
 
-_pending scout reports_
+**Machinery — gates that do not guard A101**
+
+- [ ] [L] `check-doc-paths.js` roots pre-filter exempts ~40% of relative curriculum links in EVERY training from ever being checked. Line 110's AE101 hardcode is the red herring; the pre-filter is the hole. Fails open → `npm test` reports 447 docs OK while never looking. → close the pre-filter, then fix what it surfaces.
+- [ ] [M] `compile-prompts.js:124` runs `validate-prompt-graph` for AE101 only → A101's 15 graph errors never fail the build. Add the A101 invocation.
+- [ ] [M] `audit-eval-coverage.js` has no `--training` flag; `SURFACES` 100% AE101-hardcoded → the coverage gate silently ignores A101. **BLOCKED 2026-08-19: a concurrent session is live in this file (and `.test.js`). Do not touch. Re-check `git status` before starting.**
+- [ ] [M] `npm run time` / `audit:timings` pass no `--training` → A101 has zero timing coverage though `calculate-time.js` already works for it. A101 also has no `timings.md`.
+- [ ] [S] Wire the A101 invocations of check-slide-size / deixis / numbering into `package.json` `test` + `test:gates`. They already accept the flag; nothing runs them.
+- [ ] [S] `build-workbook.js` `THEORY_HANDBOOK_MANIFEST` has no `agents-101` entry → `--theory` hard-aborts for A101.
+
+**Prompt graph**
+
+- [ ] [M] 13 of 15 A101 graph errors trace to ONE root cause: upstream exercise prompts create artefacts but declare no `produces:` frontmatter (verified on `m1-site` / `m1-brand-rules` via `personal-site-with-guardrails-1..6`). Backfill `produces:`; the DANGLING errors collapse.
+- [ ] [M] Systemic: only 11/82 A101 prompts carry `requires:`, 16/82 `produces:` — vs 63/132 and 65/132 on AE101. Most A101 exercise prompts never got graph fields.
+- [ ] [S] 2 stale `BODY_PRIMITIVES` config entries (`observations-folder`, `claude-local-md`) match nothing in A101 → validator config rot, fix in the validator.
+- [ ] [S] `curriculum/exercises/personal-agent-homework.md` is the last un-migrated file — 3 inline `**Prompt**` blocks, 0 registry markers.
+- [ ] [S] `lint-prompt-bodies` Sev-2 on `name-your-crux-2` (§9 markdown italic).
+
+**Quality state**
+
+- [ ] [L] No pedagogy / strategy / slides / cross_module judge has EVER run against A101. Stamps carry the retired 4-class set, dated 2026-05-02..04, and never reached `sim-passed`. Re-audit + re-stamp on the 7-class set.
+- [ ] [M] Maintainer-block shape drift: Quality line positioned first instead of last, no `cross_module` row anywhere.
+- [ ] [S] 159 legacy-unprefixed instance JSONs sit outside the documented `instances/legacy/` archive; `evals/README.md` still documents the old unprefixed convention while the tooling uses `<training>--<type>--<slug>.<class>.json`.
+
+**Content patterns**
+
+- [ ] [L] 7 of 9 A101 modules put a trailing `## Homework after Module N` AFTER `## Next`, violating module-shape's Next-last rule (AE101 got this fix 2026-08-13; A101 never did). `prework` and `agents-building-agents` already end correctly. **Needs one maintainer call — see § Open decisions.**
+- [ ] [L] Zero `Source verification` blocks / `checked:` stamps across all 9 module files despite live claims: Mollick citations, an 82%/24% stat, Mata v. Avianca, a Deloitte/DEWR report, an 85%×10 reliability stat.
+- [ ] [L] Zero `<!-- backing -->` blocks in A101 (AE101 has 9). Priority: `output-quality.md`'s reliability math, the shared 82%/24% stat.
+- [ ] [M] A101 supplementaries + the reference page carry no `<!-- maintainer -->` fence at all — so Pass-1 maintainer notes ("Pass 1 skeleton", "Module touchpoints", "Voice check", "Named-company examples to seed Pass 2") sit UNFENCED in student-facing body. This is the real defect behind the two `substrate` banned-word hits; fence the notes rather than swapping the word.
+- [ ] [M] Noun-run for the agent sitting in `supplementary/cookbook-for-agent-system-design.md`: `### The Run` heading + 3 body uses → session / task per `vocabulary.md` § The work.
+- [ ] [M] Em-dash ban unenforced: `reference/claude-quick-reference.md` (35 body hits) + `learning-and-compounding-systems.md` (4). These files never passed through the auto-rewrite hook.
+- [ ] [S] 3 supplementaries on disk (`agent-ready-data`, `personal-to-company-gap`, `agent-trigger-list`) are unregistered in `curriculum.js` yet carry 3 / 3 / 6 inbound body links. Settle whether an unregistered slug 404s on click before deciding register-vs-delete.
+- [ ] [S] One malformed backtick link + two stale self-study-signal paths (build report §6/§7).
+
+**Deliberate non-goals** (recorded so they are not re-proposed)
+
+- `## Optional challenges` is in all 7 AE101 modules and 0 of 9 A101 modules — but it is NOT in `module-shape.md`. Authoring nine of them is curriculum expansion, not parity. Maintainer call, not sweep work.
+- A101's `trainer-guide.md` vs AE101's per-module `trainer-modules.md` run-sheets: a deliberate decide, not a build.
+
+## Open decisions (Antti)
+
+- **Next-last fix, 7 modules:** the trailing sections mix a build-ask and a reading list. Canon names two sections (`## Bring to Module N`, `## Pre-reads before Module N`). Split into the canonical pair, or move the existing single section up under one canonical name? Splitting touches prose; moving does not. Separately: A101's `## Next` paragraphs currently carry build-asks of their own, so after the move they duplicate — worth a closer-read pass either way.
 
 ## Log
 

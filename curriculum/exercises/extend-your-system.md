@@ -22,7 +22,9 @@ Three shapes to choose from (pick one):
 - **New output.** An agent that produces a shape you don't have yet: a one-page brief, a weekly digest, a pre-meeting prep note, a Slack-ready summary of something you usually write long-form.
 - **New perspective.** An agent that reads the same memory but argues with it: a skeptic, a devil's advocate, a persona-agent that holds the view your own voice suppresses.
 
-**Phase 1. Describe (5 min).**
+## Phase 1: Describe
+
+*5 min*
 
 Open `module-8/extension-brief.md`. Write four lines, no more:
 
@@ -33,12 +35,16 @@ Open `module-8/extension-brief.md`. Write four lines, no more:
 
 If the brief takes more than five minutes, your gap is too big. Narrow it.
 
-**Phase 2. Generate (15 min).**
+## Phase 2: Generate
+
+*15 min*
 
 {{prompt:extend-your-system-1}}
 
 
-**Phase 3. Run and judge (5 min).**
+## Phase 3: Run and judge
+
+*5 min*
 
 Claude ran your new agent. Look at the output. Don't read it to admire it. Read it to find the weakness.
 

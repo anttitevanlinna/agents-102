@@ -14,7 +14,9 @@
 
 The site is the canvas. The real move is iterate and learn: change the context, watch the agent's output shift, then package what you learned so the next session starts smarter.
 
-**Phase 1. The boring baseline.**
+## Phase 1: The boring baseline
+
+*5 min*
 
 The baseline is boring on purpose. You need it boring so you can feel how much the later phases change. Don't skip it, even if your instinct is "I know what's coming."
 
@@ -30,7 +32,9 @@ The mess is the point. Claude sorts the signal from the page chrome. If you over
 
 Watch the result. It works. It looks okay. It's also generic. The site a competent LLM produces from a résumé when it doesn't know what matters. Every later phase overwrites `module-1/site.html`, so the latest version always lives at that path.
 
-**Phase 2. Apply a framework you know.**
+## Phase 2: Apply a framework you know
+
+*8 min*
 
 The goal of this site isn't to sell anything. It's the opposite: when a colleague (yours, or a peer outside the company you'd happily work with) lands on it, they should think *"this is the person I want to work with more, on the things they're great at."* Not *"I should book a discovery call."* A colleague relationship, not a sales funnel.
 
@@ -48,7 +52,9 @@ Ask Claude to apply tuned StoryBrand to the help section, one beat at a time.
 
 Claude walks you through the five tuned beats. Answer each in your own words; don't polish. After the last answer, Claude regenerates. Read the new version. Same framework half of LinkedIn uses, retuned for *"let's work more together,"* with you still the subject of the page.
 
-**Phase 3. Strengths.**
+## Phase 3: Strengths
+
+*8 min*
 
 Your strengths shape how the whole site sounds. List 3-5 in one line each, Claude takes the rest from there.
 
@@ -59,7 +65,9 @@ Tell Claude your strengths and have it regenerate the site.
 
 Read the regenerated site. Same StoryBrand spine, sharper because the site now sounds like someone with your specific strengths.
 
-**Phase 4. Anti-branding (the mirror).**
+## Phase 4: Anti-branding, the mirror
+
+*8 min*
 
 Complaining is easier than praising. Most people can list what drives them mad at work in thirty seconds; the same people will stall for five minutes if asked what they're great at. The fix isn't to try harder on the praise; it's to **invert the easy thing**. **Anti-branding.** Adam Grant calls a version of this the *energy audit*; Patagonia famously did *"Don't Buy This Jacket"*; Taleb calls it *via negativa*. Same move: define what you're for by inverting what you're against. Then make the inverted version the spine.
 
@@ -74,7 +82,9 @@ Ask Claude to apply anti-branding using your hate list.
 
 Read the new version. The site gets sharper. Two frameworks now layered: StoryBrand for the help relationship, anti-branding for the voice. Plus your strengths shaping how the whole site sounds. That's the move.
 
-**Phase 5. Look back.**
+## Phase 5: Look back
+
+*6 min*
 
 Reading the old version yourself would take ten minutes and probably reveal nothing. You wrote it, so you'll skim past what's missing.
 
@@ -87,7 +97,9 @@ Read Claude's three answers. Those are the LLM filling in gaps with statistical 
 
 No regeneration in this phase. Just observation.
 
-**Phase 6. Free iteration.**
+## Phase 6: Free iteration
+
+*6 min*
 
 Now make it yours. Color, layout, tone, a quote at the top, a section that shouldn't exist on most sites but does on yours because the rest of you doesn't fit a template either. Iterate until looking at the screen makes you say *"yes, this is me."*
 
@@ -95,7 +107,9 @@ Open prompts. You drive.
 
 **Tip: steal a look and feel by naming the site.** Claude knows the design DNA of famous sites by name. *"Make it look like Stripe's design language"* / *"use Linear's typography and spacing"* / *"make it feel like Anthropic.com"* / *"go full Patagonia (earthy, no-nonsense, lots of white space)"* / *"channel Craigslist if Craigslist had taste"*. All valid one-line moves. You don't need to know CSS; you need to know the site whose feel you'd happily borrow. Same agentic move as the frameworks: name the reference, ask Claude to apply it. *"Hey Claude, restyle `module-1/site.html` to feel like X."* Try two or three, keep the one that lands.
 
-**Close. Package what you learned.**
+## Phase 7: Close, package what you learned
+
+*4 min*
 
 The site is done. The agent behavior is not. What's left is to *capture the move* so you can do it again on someone else's bio next week, without re-explaining everything to a fresh Claude. You'll write the first version of a generation rules file from what you just did. The retro (in the Debrief that follows) will sharpen it. Two passes; the second is where the file starts compounding.
 

@@ -10,7 +10,9 @@ You've just pinned your challenge in `./challenge.md` (the opener). Now you buil
 
 The empty `sources/`, `memory/`, and `agents/` folders are already in place from prework. Keep the same <span class="rt-code">session (the chat window you opened in the opener)</span><span class="rt-cowork">task (the workspace you opened in the opener)</span> running. Claude already has your challenge in scrollback, and `./challenge.md` is on disk. Four phases: curate, put to work, compound, self-maintain.
 
-**Phase 1. Curate, ingest, build.**
+## Phase 1: Curate, ingest, build
+
+*20 min*
 
 A memory is only as good as what goes into it. Most people sabotage this step by shovelling in whatever's nearest. Don't. Three beats: Claude helps you curate a plan, then Claude pulls in (or points at) the content for `sources/`, then Claude builds `memory/` from what's on disk.
 
@@ -67,7 +69,9 @@ That list is your first quality check. You'll sharpen those pages in Phase 3.
 
 <span class="rt-code">**What plan mode just did for you.** The memory build wrote 5–8 files in one shot. That's the kind of multi-file, multi-step work where catching a wrong topic split in a bullet list is ten times cheaper than catching it in seven written files. That's plan mode's job: make Claude think before it makes extensive output, give you one review point instead of many. Plan mode exits automatically after an approved plan runs, so the footer is already back to *default*. Rule of thumb going forward: plan mode for anything that touches many files or compounds over steps; skip it when a single focused prompt will do.</span><span class="rt-cowork">**What asking for a plan just did for you.** The memory build wrote 5–8 files in one shot. That's the kind of multi-file, multi-step work where catching a wrong topic split in a bullet list is ten times cheaper than catching it in seven written files. That's the job of asking Claude to plan first: make Claude think before it makes extensive output, give you one review point instead of many. Rule of thumb going forward: ask for a plan first on anything that touches many files or compounds over steps; skip it when a single focused prompt will do.</span>
 
-**Phase 2. Your first custom agent.**
+## Phase 2: Your first custom agent
+
+*10 min*
 
 A library without a librarian is a cost. Give it one.
 
@@ -85,7 +89,9 @@ Now use it. Fresh message.
 
 Answer with a real task from your challenge. Claude reads the agent file, reads the memory, cites sources, stays inside its rules. The citations tell you whether the memory earned its keep or whether Claude filled in from training data. Quietly, you just made a reusable capability. Same agent, next week's task.
 
-**Phase 3. Compound.**
+## Phase 3: Compound
+
+*7 min*
 
 A dumb knowledge base grows. A good one *sharpens*, pages get tighter as new sources land, not longer. Phase 3 proves it: drop one new source in and watch the existing pages get sharper. You pick the source; Claude integrates.
 
@@ -96,14 +102,18 @@ Pick one source that fills a gap (a practitioner article, a skipped doc, an emai
 
 Read Claude's report. Push back if a claim "got sharper" but the top didn't actually change. Second batch made the first batch better. Chat literally cannot do this.
 
-**Phase 4. Let it maintain itself.**
+## Phase 4: Let it maintain itself
+
+*4 min*
 
 {{prompt:build-your-challenge-memory-8}}
 
 
 Go through Claude's proposals. Some will be right. Some will miss. Reject those. The ones you approve, Claude applies. The memory's now the version you steered, not the version Claude landed alone.
 
-**Close. Put it to work.**
+## Phase 5: Close, put it to work
+
+*4 min*
 
 Ask your memory the hardest open question on your challenge right now. Not *"summarize the sources."* A real working question, the kind you'd stay late at the office to answer. *"What's the strongest argument for option A over option B?"* *"Where does our current plan break if the market shifts?"* *"Which of these three risks is actually load-bearing and which are decoration?"*
 

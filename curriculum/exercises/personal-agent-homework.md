@@ -14,13 +14,17 @@ You built a memory today. One live challenge, curated sources, a compiled set of
 
 Pick one. Not all three. Something you'd actually read tomorrow morning.
 
-**Step 1, connect any data the job needs.**
+## Phase 1: Connect any data the job needs
+
+*8 min*
 
 For the morning-plan job, you'll want your calendar connected. Open Claude Code desktop. Click the **+** next to the prompt box (or go to **Settings → Connectors**). Enable Google Calendar or Microsoft Outlook Calendar. Sign in with your work account.
 
 For the risk-scan and next-move jobs, no connector needed, the agent reads your memory and that's enough.
 
-**Step 2, capture the look.**
+## Phase 2: Capture the look
+
+*7 min*
 
 Your daily output shouldn't read like a terminal dump. Steal the look and feel from your company's website (colours, typography, headers, the voice) and store it as a pattern the agent reuses forever. Same lesson as the memory: text on disk, referenced by name.
 
@@ -40,7 +44,9 @@ Show me both files before saving.
 
 Give Claude the URL or paste a key page. It extracts, writes `./style.md`, appends the `./CLAUDE.md` rule. Read both. Edit `./style.md` where Claude missed something, if your brand has a hard rule ("never pure black," "always serif headings"), put it in. The rule you just added to `./CLAUDE.md` means every agent you build from here on will use this style when it produces HTML.
 
-**Step 3, write the agent's instructions.**
+## Phase 3: Write the agent's instructions
+
+*10 min*
 
 In your training directory, create `module-2/morning-agent/`. Ask Claude to interview you on the job, the output shape, and the hard boundary, then write the agent's instruction file.
 
@@ -58,13 +64,15 @@ When I've answered all three, write the file at module-2/morning-agent/morning.m
 
 Claude asks, you answer, the file lands. Read it. Edit anything that doesn't sound like you.
 
-**Step 4, schedule it.**
+## Phase 4: Schedule it
+
+*6 min*
 
 In the desktop app, open the **Schedule** sidebar. Click **New task → New local task**. Fill in:
 
 - **Name:** `Morning memory` (or whatever you want to see)
 - **Frequency:** Daily at the time you actually want it to fire, 7:00 AM for most people
-- **Prompt:** the line below.
+- **Prompt:** the scheduling prompt on this slide.
 
 Ask Claude to read the morning brief, follow the rules, and write the daily output to `latest.html`.
 
@@ -76,7 +84,9 @@ Read module-2/morning-agent/morning.md and run the job. Read the current state o
 
 Save. Click **Run now** once. Double-click `module-2/morning-agent/latest.html` in your file browser, it opens in your browser and should look like it came off your company site. Fix anything off by editing `module-2/morning-agent/morning.md` or `./style.md`, the scheduled task reads both every session, so tomorrow picks up the change.
 
-**Step 5, let it run for a week.**
+## Phase 5: Let it run for a week
+
+*4 min*
 
 Don't retune for the first three days. Watch what it produces as-is. Every morning, open `module-2/morning-agent/latest.html`. Watch for:
 - Days when the output is genuinely useful, what made it work?
@@ -101,7 +111,7 @@ A memory that sits there is a document. A memory that gets read by an agent on a
 - Drucker-adjacent knowledge-work routines — attaches a file-based system to the morning routine participants already have.
 - Design-system-as-text-file — `style.md` is a brand-pattern file the way the memory is a knowledge-pattern file. Same move.
 
-**Cross-module ripple from Step 2 (style.md + CLAUDE.md rule):**
+**Cross-module ripple from Phase 2 (style.md + CLAUDE.md rule):**
 - `style.md` lives at the training-directory root, so every subsequent module's agents inherit the house style the moment they produce HTML output. Module 3's synthesizer answer, Module 7's team report, Module 8's strategic deliverable — all can render stylised without a second styling exercise. The rule line in `CLAUDE.md` is the mechanism.
 - This is the first cross-cutting rule the student writes into the root `CLAUDE.md` that isn't about the memory itself. Sets up the pattern Module 3's Close ("write one coordination rule to `CLAUDE.md`") builds on.
 
@@ -120,7 +130,7 @@ A memory that sits there is a document. A memory that gets read by an agent on a
 - Future variant note: when this training ships in a Cowork edition, the surface changes (Cowork's own scheduling flow replaces the desktop app's Schedule sidebar) but the shape — instructions in a file, style in a file, triggered on a clock, reading the memory, producing the same output shape — stays identical.
 
 **Capability check owed:**
-- Verify via `claude-code-guide` that a scheduled local task can reliably write HTML files to an arbitrary path inside the working directory (nothing sandboxed about `module-2/morning-agent/latest.html`). Also verify that `Run now` opens a session with full working-directory context including the root `CLAUDE.md`. Both assumed throughout Step 4; neither should be left to training-day discovery.
+- Verify via `claude-code-guide` that a scheduled local task can reliably write HTML files to an arbitrary path inside the working directory (nothing sandboxed about `module-2/morning-agent/latest.html`). Also verify that `Run now` opens a session with full working-directory context including the root `CLAUDE.md`. Both assumed throughout Phase 4; neither should be left to training-day discovery.
 
 **Quality:** compendium-audited 2026-05-09 (behavior@56f9332)
 - judges @56f9332: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS

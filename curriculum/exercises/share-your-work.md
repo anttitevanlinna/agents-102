@@ -22,7 +22,9 @@ You'll interview for that job (the agent reads your memory and does most of the 
 
 **What you do:**
 
-**Phase 1. Interview for the job (12 min).**
+## Phase 1: Interview for the job
+
+*12 min*
 
 The context has been building since the first module. Your memory knows who your teammate is, what the work looks like, where the friction lives. The agent does the heavy lifting. It reads what's already there, drafts a hypothesis about the job, and asks you only the questions that plug real holes.
 
@@ -40,7 +42,9 @@ The context has been building since the first module. Your memory knows who your
 
 Read what lands. The test for Phase 1: did the agent tell you something you hadn't quite put into words, or did it give you back what you already thought? A hypothesis that just confirms you is a shallow read. Push back in chat (*"try again; the struggle is something else"*) and let it try once more. The third outcome vector is where this phase earns its keep. Speed and quality are the obvious axes. If the agent only returned speed and quality, ask it explicitly: *"if speed and quality stayed exactly where they are, what else would my teammate want different?"*
 
-**Phase 2. Pick the candidate that moves the outcome (13 min).**
+## Phase 2: Pick the candidate that moves the outcome
+
+*13 min*
 
 You have an outcome statement. Now you pick what you'd offer the teammate. Two branches, both first-class.
 
@@ -71,7 +75,9 @@ The four strategies, as a reminder:
 
 "Share the whole agent" is not on the list. It sounds right in a deck. It doesn't work in the field.
 
-**Phase 2.5. Find the absorption bottleneck (5 min).**
+## Phase 3: Find the absorption bottleneck
+
+*5 min*
 
 Before you draft plans, find the load-bearing obstacle. The sharing problem always has one, and it's almost never the technical one your builder brain surfaced first. Name the one obstacle that, if removed, would make several others easier.
 
@@ -80,7 +86,9 @@ Before you draft plans, find the load-bearing obstacle. The sharing problem alwa
 
 Read what lands. If the bottleneck is technical ("we don't have a Slack bot"), push back. Technical obstacles are rarely the bottleneck at Week 1. If the bottleneck is social ("my teammate doesn't trust anything they didn't build themselves"), you've probably got it. Keep the file open; Phases 3 through 5 all aim at this obstacle.
 
-**Phase 3. Draft both plans (18 min).**
+## Phase 4: Draft both plans
+
+*18 min*
 
 You're drafting two documents side by side. Neither is optional.
 
@@ -89,7 +97,9 @@ You're drafting two documents side by side. Neither is optional.
 
 Answer plainly. The UNASSIGNED lines are the most valuable lines in this exercise. They are the questions you walk into your manager's office with on Monday.
 
-**Phase 4. Test the switch assumptions (10 min).**
+## Phase 5: Test the switch assumptions
+
+*10 min*
 
 Your plans rest on assumptions. Some are wrong. The question is not *"will my agent work?"* That's a builder question. The question is: *what would have to be true for this teammate, doing this job, to fire their current hire and use my candidate?*
 
@@ -98,7 +108,9 @@ Your plans rest on assumptions. Some are wrong. The question is not *"will my ag
 
 Mark the two or three you'd actually test this week. Those are what you ship first, not the full rollout.
 
-**Phase 5. Name the likely failure (7 min).**
+## Phase 6: Name the likely failure
+
+*7 min*
 
 The plan is on paper. Six months from now, they went back to Excel. Why?
 
@@ -107,7 +119,11 @@ The plan is on paper. Six months from now, they went back to Excel. Why?
 
 The third story is the one to read twice.
 
-**Closing (5 min).** Monday isn't a deployment decision. It's a conversation.
+## Phase 7: Closing
+
+*5 min*
+
+Monday isn't a deployment decision. It's a conversation.
 
 Write `module-7/monday.md` with three lines:
 - The teammate I'll talk to first. (Just them. Not a rollout.)

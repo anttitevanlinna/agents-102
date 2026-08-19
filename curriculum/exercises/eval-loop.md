@@ -1,6 +1,6 @@
 # Exercise: The eval loop runs itself
 
-**Time:** 45 min. Phase 0 manual run ~5 min, Phase 1 kickoff ~3 min, walk-away window ~25 min, Phase 2 return and read notes ~10 min.
+**Time:** 45 min. Phase 1 manual run ~5 min, Phase 2 kickoff plus the walk-away window ~30 min, Phase 3 return and read notes ~10 min.
 
 **Session** *(new, "Module 6 - Evaluations")*
 
@@ -24,7 +24,9 @@ First, write the generation tactic and run the judge once by hand on its first b
 
 You will come back to a short run note: *round 1 flagged 11 claims, round 2 flagged 6 after the generation tactic tightened numeric sourcing, round 3 flagged 3 after probability-plus-timeline claims got banned.* The generation tactic you left with is sharper than the one you started with, under the exact same judge you started with.
 
-**Phase 0: Run the judge once (~5 min).**
+## Phase 1: Run the judge once
+
+*5 min*
 
 One move before you automate. See what your judge does on a fresh output, end to end, with no loop in the middle.
 
@@ -36,7 +38,9 @@ That's the manual version. Your judge ran once. You saw what it catches and what
 
 Now make that happen three times without you feeding the output back by hand.
 
-**Phase 1: Start the loop (~3 min).**
+## Phase 2: Start the loop, then walk away
+
+*30 min*
 
 Ask Claude to run the loop. Generation and judging should happen in separate subagents; the main session reads the judgment and rewrites `./generation-tactic.md` between rounds.
 
@@ -54,7 +58,9 @@ Then ask for the model-training analogy in small pieces:
 
 {{prompt:eval-loop-4}}
 
-**Phase 2: Come back to the notes (~10 min).**
+## Phase 3: Come back to the notes
+
+*10 min*
 
 Ask Claude to show the loop result and the final generation tactic.
 
@@ -66,7 +72,7 @@ Read the answer. Push back where it is too neat. If round 3 still failed on numb
 
 **What happened:**
 
-Round 1 is the floor. Your generator runs with the tactic you wrote in Phase 0 and the judge catches whatever it catches. Round 2 is where the mechanism kicks in. The main session read round 1's per-claim feedback, absorbed it into `./generation-tactic.md`, and the next generator read the tighter tactic. Round 3 runs on the even tighter tactic.
+Round 1 is the floor. Your generator runs with the tactic you wrote in Phase 1 and the judge catches whatever it catches. Round 2 is where the mechanism kicks in. The main session read round 1's per-claim feedback, absorbed it into `./generation-tactic.md`, and the next generator read the tighter tactic. Round 3 runs on the even tighter tactic.
 
 The transcript is the proof. You can point at every tactic change and name the feedback that produced it. No black box. No "it got better." You watched, from the outside, a generator learn to pass a fixed test.
 

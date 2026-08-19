@@ -46,6 +46,8 @@ For the full reference, search *"<span class="rt-code">Claude Code subagents</sp
 
 <!-- maintainer -->
 
+- **Atomic — no phase markers.** Two readings and a takeaway note, read alone between sittings; line 3 already carries the 25 / 10 / 5 split and phase slides would chunk a reading list into a deck nobody projects. Line 3 is authored, not generated.
+
 **Frameworks riffed on:**
 - Practitioner-before-pattern — read five people doing the thing before hearing the name for the thing. Same move as Module 2's Karpathy-first sequencing.
 - Ceiling-before-addition — see what ONE agent does well before adding coordination, so the cost of coordination is visible.

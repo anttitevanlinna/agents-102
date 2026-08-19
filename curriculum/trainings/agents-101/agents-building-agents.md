@@ -75,7 +75,7 @@ The plan you just produced is a set of assumptions dressed as work. Label them. 
 - In-room only. The sponsor who sat alongside the room for all eight modules may name what happened in one sentence: *"You are now agent builders. You built agents that do real work on company data. You can do it again on the next problem."* Keep it spoken, not student-facing body copy. No certificate. No graduation.
 
 **Meta (trainer):**
-- **Transitions:** demo 5 @start "Agent generates agent demo" · debrief 5 @end "Debrief" · close 3 @end "Close"
+- **Transitions:** demo 5 @start "Agent generates agent demo" · debrief 5 @end "Debrief" · identity close 5 @end "Identity-naming close"
 - **Where these numbers come from:** demo from this block's own **Demo time:** line; debrief from the body ("Five minutes."). Every beat here has no file of its own, so nothing else prices it.
 - **Primary Bloom's level:** Create
 - **Demo time:** ~5 minutes.

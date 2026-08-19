@@ -18,7 +18,9 @@ Three phases. The raw run proves the policy files are runnable. The package make
 
 A **skill** packages an expertise (rules, checklists, the moves an agent runs) into something the agent can load and use. Until now you have shaped agents with prompts, files, and rules. This is the next layer up: a reusable "how" the agent loads when the work matches. Module 4 is the canonical place this authoring lands. Taught once, here.
 
-**Phase 1. Run the policies raw (10 min).**
+## Phase 1: Run the policies raw
+
+*10 min*
 
 Reference material lives in `module-4/policies/` (your company's distilled policies, or the Nordic-baseline reference for self-study). Start by proving those files are runnable. No skill yet. Just the policy files, pointed at the system.
 
@@ -26,7 +28,9 @@ Reference material lives in `module-4/policies/` (your company's distilled polic
 
 Read the first few rows. The raw run shows which rules can be checked from files and which ones need judgment, context, or a standing evidence check. That is what you package next: not the policy files themselves, but the repeatable way of applying them to this agent system.
 
-**Phase 2. Dictate what matters (8 min).**
+## Phase 2: Dictate what matters
+
+*8 min*
 
 Now add judgment. Do not go study the policy files before this step. The reusable check is supposed to carry what matters in your system, not generic GDPR. The way to make that true is to lead with what is in your head, then let Claude read the files and the raw report.
 
@@ -38,7 +42,9 @@ Claude asks. Type three to five lines. Specific. The kind of data your agent tou
 
 When you have typed your lines, Claude reads the raw report and `module-4/policies/`, then proposes the package shape. Read the proposal and push back on anything that sounds like a generic GDPR brochure rather than the agent system you actually built.
 
-**Phase 3. Author both lenses (22 min).**
+## Phase 3: Author both lenses
+
+*22 min*
 
 The reusable check carries two lenses inside one personal skill. One lens checks company policy. One checks agent risk: what the agent can reach, what it might leak, what it might do because a prompt or source misled it. The authored source lives as a `SKILL.md` plus any reference files it needs.
 

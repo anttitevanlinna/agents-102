@@ -16,11 +16,13 @@ Load the reusable security check you authored in the previous exercise, then run
 
 Four phases. Bring the policy raw report from the previous exercise; that is the baseline. Bring the reusable check you just authored; that is the expert. Bring your Module 3 system; that is the target.
 
-**Phase 1. Load the reusable check.**
+## Phase 1: Load the reusable check
+
+*3 min*
 
 Open this exercise in a fresh session at your training-directory root. The personal skill saved at the end of Exercise 1 autoloads at session start, so a session opened after the save is required.
 
-Type `/` in the prompt and look for `/security-audit` in the autocomplete list. That means the skill loaded. The two lenses live inside the same skill; the audit prompts below tell the skill which lens to apply.
+Type `/` in the prompt and look for `/security-audit` in the autocomplete list. That means the skill loaded. The two lenses live inside the same skill; the audit prompts in the phases that follow tell the skill which lens to apply.
 
 <div class="rt-cowork">
 
@@ -30,7 +32,9 @@ If `/security-audit` doesn't appear, you may have skipped pressing the Save butt
 
 Do not run a toy verification on one file. The first loaded use is the real audit.
 
-**Phase 2. Run the policy audit.**
+## Phase 2: Run the policy audit
+
+*12 min*
 
 Ask Claude to apply the packaged policy lens to your full module-3 system and produce one report. This is not the same as the raw run. The raw report came straight from `module-4/policies/`; this report comes through the reusable lens you shaped.
 
@@ -46,7 +50,9 @@ While the report runs, stay with it. The report is more useful when you read it 
 
 Read Claude's three lists. Then open `outputs/policy-report.md` and find the rows Claude flagged. You are reading with a hypothesis, not row-by-row from scratch. Notice which of Claude's surprises match yours and which do not. That mismatch is data.
 
-**Phase 3. Run the agent-risk audit.**
+## Phase 3: Run the agent-risk audit
+
+*10 min*
 
 In the same session, ask Claude to apply the agent-security lens and write the ranked risk report.
 
@@ -58,7 +64,9 @@ Feel free to glance at the reports and compare. Two different lenses; some risks
 
 You now have the assessment half of the loop. The uncomfortable feeling is the evidence.
 
-**Phase 4. Mitigate one risk. Reassess the residual.**
+## Phase 4: Mitigate one risk, reassess the residual
+
+*10 min*
 
 Look at the two reports. Pick one risk to mitigate. Not the easiest, not the scariest. The one that bugs you on the second skim. Your gut is data here. This is about running the loop once, not solving the worst problem on your list.
 

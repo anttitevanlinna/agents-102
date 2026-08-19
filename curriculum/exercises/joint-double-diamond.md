@@ -1,6 +1,6 @@
 # Exercise: Agent Proposal Forum, diagnose and guide
 
-**Time:** 60 minutes. Sponsor challenge five, grounding five, initial stance eight, cross-check eight, shared proposals twelve, synthesizer selection eight, critique and better ideas nine, final agent set + plan five.
+**Time:** 70 minutes, in nine room beats, each with its own budget.
 
 **What you do:**
 
@@ -21,11 +21,13 @@ The steps start in this sequence, but the room is not a clean queue. Agents cont
 5. Critique loop: agents write `critique.md` with better ideas; the synthesizer updates `selection-board.md`.
 6. Conclusion: the synthesizer writes `strategy-kernel.md`, `agent-set.md`, and `plan.md`.
 
-**Before you start. The grounding rule:**
+## Phase 1: Ground the room
+
+*10 min*
 
 Twenty agents are about to publish into the shared deliberation folder. They know different things. Depth varies. The ground truth: every agent **publishes what it has and what it doesn't have** before another agent weighs its proposal. No agent cites a claim without pointing at the file it came from. Before you publish your context-manifest, redact what shouldn't leave your boundary: customer names, partner-NDA material, M&A speculation, salary references. The manifest is read by other agents in the room; treat it like a published document.
 
-At the start of Module 8, the trainer posts the shared folder path or name in chat. Use that exact shared folder for every shared-folder instruction below. It is separate from your local training directory.
+At the start of Module 8, the trainer posts the shared folder path or name in chat. Use that exact shared folder for every shared-folder instruction that follows. It is separate from your local training directory.
 
 {{prompt:joint-double-diamond-1}}
 
@@ -34,43 +36,69 @@ At the start of Module 8, the trainer posts the shared folder path or name in ch
 
 The manifest is the ground. Every claim in every round after this one cites the file it came from. An agent that can't cite is improvising, and the room or central synthesizer calls that out.
 
-**Initial stance (8 min).**
+## Phase 2: Initial stance
+
+*8 min*
 
 Every agent in the room reads the sponsor challenge and takes its own opening stance. Do not read other participants' stances yet. The first round only works if the stances start from different memory, sources, agent systems, and human judgment. It is OK for the agent to ask its human one or two clarifying questions before writing.
 
 {{prompt:joint-double-diamond-3}}
 
 
-**Cross-check with others (8 min).** Once everyone's `stance.md` is published, each agent reads three to five neighbouring stances. The trainer assigns neighbours, or each participant picks the folders to their left and right. This is not yet the proposal round. The job is to discover what your stance missed before you publish a proposal to the shared surface.
+## Phase 3: Cross-check with others
+
+*8 min*
+
+Once everyone's `stance.md` is published, each agent reads three to five neighbouring stances. The trainer assigns neighbours, or each participant picks the folders to their left and right. This is not yet the proposal round. The job is to discover what your stance missed before you publish a proposal to the shared surface.
 
 {{prompt:joint-double-diamond-4}}
 
-**Shared proposals (12 min).** Every agent now publishes a proposal on the shared surface. This is where the Moltbook-like social mechanic matters: ideas move between agents, but the file history still shows who changed their mind and why.
+## Phase 4: Shared proposals
+
+*12 min*
+
+Every agent now publishes a proposal on the shared surface. This is where the Moltbook-like social mechanic matters: ideas move between agents, but the file history still shows who changed their mind and why.
 
 {{prompt:joint-double-diamond-5}}
 
-**Synthesizer starts choosing (8 min).** Now the central synthesizer reads the first shared proposal surface and starts choosing. One synthesizer is enough; two is better if the room is large or politically diverse. If using two, Synthesizer A picks strongest ideas; Synthesizer B names the best objections, evidence gaps, and unsafe assumptions. The sponsor reads both, pushes back, and the synthesizer rewrites.
+## Phase 5: Synthesizer starts choosing
+
+*8 min*
+
+Now the central synthesizer reads the first shared proposal surface and starts choosing. One synthesizer is enough; two is better if the room is large or politically diverse. If using two, Synthesizer A picks strongest ideas; Synthesizer B names the best objections, evidence gaps, and unsafe assumptions. The sponsor reads both, pushes back, and the synthesizer rewrites.
 
 Central synthesizer prompt: *"Read challenge.md and every participant subfolder in the shared folder the trainer posted in chat. Use each stance.md, cross-check.md, and proposal.md. Do not average the room. Write selection-board.md at the shared folder root with: best crux, best guiding policy move, best two-week experiment, best objection, most dangerous evidence gap, and strongest unresolved disagreement. For each selection, cite the participant file it came from and explain why it currently beats the alternatives. Mark the board as provisional."* The sponsor reads the output, pushes back, the agent re-synthesises.
 
-**Midway instruction injection (5 min).** The room now knows something it didn't know when the exercise began: which disagreements matter, which evidence gaps are dangerous, and what bad synthesis would smooth over. The central synthesizer now injects operating instructions onto the shared surface. Participants do not hand-prompt the cross-pollination behavior; their agents consume the synthesizer's instruction file in the next step.
+## Phase 6: Midway instruction injection
+
+*5 min*
+
+The room now knows something it didn't know when the exercise began: which disagreements matter, which evidence gaps are dangerous, and what bad synthesis would smooth over. The central synthesizer now injects operating instructions onto the shared surface. Participants do not hand-prompt the cross-pollination behavior; their agents consume the synthesizer's instruction file in the next step.
 
 {{prompt:joint-double-diamond-6}}
 
 From this point forward, every agent prompt begins by reading `midway-instructions.md`. The instruction injection lives on the shared surface; it is not a participant-authored `CLAUDE.md` update.
 
-**Criticize and propose better ideas (9 min).**
+## Phase 7: Criticize and propose better ideas
+
+*9 min*
 
 The selection board is now the candidate direction, but it is not final. Every agent criticizes the selection and proposes a better idea if it can. This is where the room keeps the synthesizer candid.
 
 {{prompt:joint-double-diamond-7}}
 
 
-**Final synthesis and human decision.** The central synthesizer reads every critique, updates the selection board, then writes the strategy kernel, the suggested agent set, and the plan. Same citation rule. Pushback is still live: any participant can say aloud or publish a correction as `pushback.md` in their named subfolder: *"the selected experiment assumes data access we do not have; see module-4/compliance.md line 8."* The synthesizer reads the pushbacks and rewrites the conclusion.
+## Phase 8: Final synthesis and the human decision
+
+*5 min*
+
+The central synthesizer reads every critique, updates the selection board, then writes the strategy kernel, the suggested agent set, and the plan. Same citation rule. Pushback is still live: any participant can say aloud or publish a correction as `pushback.md` in their named subfolder: *"the selected experiment assumes data access we do not have; see module-4/compliance.md line 8."* The synthesizer reads the pushbacks and rewrites the conclusion.
 
 The CTO, buyer, or sponsor picks which two or three assumptions the company actually commits to testing next. That's the real deliverable and it sits at a human layer. The agents produced the options. The human picks. If the sponsor isn't present, the room picks by show of hands and names the decision provisional.
 
-**Agent set, plan, and read-out (5 min).**
+## Phase 9: Agent set, plan, and read-out
+
+*5 min*
 
 Close the session with three files at the shared folder root:
 

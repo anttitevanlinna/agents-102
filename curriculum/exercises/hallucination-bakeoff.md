@@ -1,6 +1,6 @@
 # Exercise: Hallucination benchmark
 
-**Time:** 60 minutes. Phase 0 ~12, Phase 1 ~8 (set up + watch four detectors), Phase 2 ~20 (watch scoreboard + read it), Phase 3 ~10, Close ~5.
+**Time:** 55 minutes. Phase 1 ~12, Phase 2 ~8 (set up + watch four detectors), Phase 3 ~20 (watch scoreboard + read it), Phase 4 ~10, Phase 5 close ~5.
 
 **Session** *(new, "Module 5 - Hallucination benchmark")*
 
@@ -18,7 +18,9 @@ The move is empirical. You don't pick a detection method because somebody said s
 
 Four phases. The work is mostly done by the claim extractor, the four detectors, and the scorer. Your job is to set the benchmark up, start the run, and watch the scoreboard fill in.
 
-**Phase 0: The target and the benchmark.**
+## Phase 1: The target and the benchmark
+
+*12 min*
 
 Your target is the ungrounded briefing from Module 3. You'll reuse the Module 3 synthesized answer as the test corpus: your sources, your retrievals, your stances, your real question. The briefing already lives somewhere on the edge of ungroundedness; that's why it's the right test.
 
@@ -48,9 +50,11 @@ Now extract the claims. Claude scans the briefing and pulls out a varied claim p
 
 The claim pool is input material. You have not judged anything yet.
 
-**Phase 1: Run the four detectors.**
+## Phase 2: Run the four detectors
 
-Four detectors, four different methods, run in parallel on the same claim pool. Each is a <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> with a specific lens. Each writes to its own file. You don't read them yet. The scorer does that work in Phase 2.
+*8 min*
+
+Four detectors, four different methods, run in parallel on the same claim pool. Each is a <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> with a specific lens. Each writes to its own file. You don't read them yet. The scorer does that work in Phase 3.
 
 In your main session:
 
@@ -68,7 +72,9 @@ In your main session:
 
 Watch the four <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> lines scroll past. Same claim pool, four lenses. Four files in a minute or two. Now the scorer runs.
 
-**Phase 2: Scorer runs the benchmark.**
+## Phase 3: Scorer runs the benchmark
+
+*20 min*
 
 A fifth agent (the scorer) reads the claim pool and all four detector files, adjudicates the 30 claims against the evidence, and produces a scoreboard. You don't compare them by hand. The scorer measures precision (of what the detector flagged, how much was actually ungrounded?), recall (of what the scorer adjudicated as ungrounded, how much did the detector catch?), and coverage (did the detector look at the claim pool?).
 
@@ -84,14 +90,16 @@ The columns are labelled `Precision` and `Recall`. They're standard eval vocabul
 
 Four detectors read the same claim pool. One method caught more of what the scorer adjudicated as ungrounded. Another caught less but with higher precision. A third caught something the others missed. Maybe the citation-integrity detector caught a broken citation that source-triangulation couldn't, or the counter-evidence search surfaced a claim that looked fine to everyone else until the disconfirming source turned up. The scoreboard IS the explanation. You can point at a row and say *this is why I'm keeping this one*.
 
-Before Phase 3, ask Claude to contrast what you just did with the classic way. Then one sentence on what surprised you in the scoreboard.
+Before Phase 4, ask Claude to contrast what you just did with the classic way. Then one sentence on what surprised you in the scoreboard.
 
 {{prompt:hallucination-bakeoff-7}}
 
 
 Answer the surprise question in one sentence. The scoreboard is the mechanism; naming the surprise is how you own the mechanism rather than just consuming it.
 
-**Phase 3: Save the winner as a judge.**
+## Phase 4: Save the winner as a judge
+
+*10 min*
 
 The winner (or the two-method ensemble) is worth keeping. You'll save it as a judge file: a named, reusable prompt you can run against any future briefing, not just this one. Module 6 picks this file up and turns it into infrastructure.
 
@@ -100,7 +108,9 @@ The winner (or the two-method ensemble) is worth keeping. You'll save it as a ju
 
 Open `judges/groundedness-judge.md`. Read it. This is your first real judge. Named after what it does. Narrow on purpose. The "known limit" line matters. It names the thing you measured and decided not to chase. Plain about what it is and what it isn't.
 
-**Close: name the rescue.**
+## Phase 5: Close, name the rescue
+
+*5 min*
 
 Four methods ran on the same input. A scorer adjudicated 30 claims, measured the detectors against that reference set, and promoted the winner to a reusable judge file. No intuition. No "I heard this method is good." Measurement.
 
@@ -119,7 +129,7 @@ You just ran **Recipe 5** end-to-end: a 30-claim benchmark you wrote yourself, f
 <!-- maintainer -->
 
 **TODO (Cowork edition review 2026-04-29):**
-- Phase 0 prompt still says "Spawn one subagent" / "Instructions for the subagent" / "When the subagent finishes" in the Cowork edition. Later detector prompt is already runtime-forked correctly. Prompt-block change is gated: propose before/after before editing.
+- Phase 1 prompt still says "Spawn one subagent" / "Instructions for the subagent" / "When the subagent finishes" in the Cowork edition. Later detector prompt is already runtime-forked correctly. Prompt-block change is gated: propose before/after before editing.
 
 **Pattern: benchmarking.** One of the three designated magic beats in M3–M8 (alongside M3 multi-retriever + multi-stance and M8 agents-building-agents). The student operates as the scorer setup-and-observer, not as the classifier. Claude audits Claude; the student reads the scoreboard and saves the winner.
 
@@ -134,7 +144,7 @@ You just ran **Recipe 5** end-to-end: a 30-claim benchmark you wrote yourself, f
 **Frameworks riffed on:**
 - **Benchmarking** — from ML community work; Antti-run pattern. Empirical method selection beats authority ("this method is best").
 - **Precision / recall / coverage** — standard eval vocabulary introduced experientially, not lectured.
-- **Benchmark** — the word is earned in Phase 0; the claim pool becomes the reference set the scorer adjudicates.
+- **Benchmark** — the word is earned in Phase 1; the claim pool becomes the reference set the scorer adjudicates.
 - **Self-consistency** — Wang et al. 2022, "Self-Consistency Improves Chain of Thought Reasoning" (arXiv:2203.11171). In this module it is a lecture/demo after the benchmark, not a detector in the scoring panel. It asks a different question: what stays stable when the briefing is regenerated from the same evidence?
 
 **Philosophy callout (sparing):**
@@ -150,18 +160,18 @@ You just ran **Recipe 5** end-to-end: a 30-claim benchmark you wrote yourself, f
 - **Reading the briefing before claim extraction.** Biases the main session. Coach: *"Don't open it. Let the extractor turn it into claims first."*
 - **Claim pool bloats past 30.** Student over-delivers. Coach: *"Thirty is enough to see the pattern. More is processing, not learning."*
 - **Scorer hedges.** It picks "all four are useful" rather than naming a winner. Coach: *"Re-run and force a pick — the ensemble is a two-method stack, not a four-method hug."*
-- **The scoreboard looks clean and the student doesn't read it.** The scoreboard IS the explanation. If the student skips to Phase 3, the mood beat is stolen. Phase 2's "which row surprised you?" gate forces the read; if the student's one-sentence answer is generic ("the scoreboard was interesting"), push back: *"name the row, name the number, name why."*
+- **The scoreboard looks clean and the student doesn't read it.** The scoreboard IS the explanation. If the student skips to Phase 4, the mood beat is stolen. Phase 3's "which row surprised you?" gate forces the read; if the student's one-sentence answer is generic ("the scoreboard was interesting"), push back: *"name the row, name the number, name why."*
 - **The judge file sprawls.** Student lets Claude write a 60-line judge. Coach: *"Under 20 lines. A judge that tries to do everything does nothing well."*
 - **Self-consistency demo treated as the judge.** The demo can show drift, but it does not decide the winning groundedness judge. Coach: *"Self-consistency is a warning light, not the yardstick."*
 
 **Push-back moves (host varies — trainer by default; Teacher Claude in self-study):**
-- *Phase 0 — student opens the briefing before writing the benchmark.* "Close the file. Your gut verdicts are the measuring stick. Reading the briefing first contaminates them."
-- *Phase 0 — claim pool bloats past 30.* "Thirty. Enough to see the pattern, not so many that the run becomes processing work."
-- *Phase 1 — student wants to read each detector file as it lands.* "Don't. The scorer reads them. You'll see everything in the scoreboard — that's where the contrast lives."
+- *Phase 1 — student opens the briefing before writing the benchmark.* "Close the file. Your gut verdicts are the measuring stick. Reading the briefing first contaminates them."
+- *Phase 1 — claim pool bloats past 30.* "Thirty. Enough to see the pattern, not so many that the run becomes processing work."
+- *Phase 2 — student wants to read each detector file as it lands.* "Don't. The scorer reads them. You'll see everything in the scoreboard — that's where the contrast lives."
 - *Lecture/demo — student treats self-consistency as proof.* "It isn't proof. Drift is a warning signal. Stability is not truth."
-- *Phase 2 — scorer hedges, picks 'all four are useful.'* "Re-run and force a pick. The ensemble cap is two methods, not a four-method hug."
-- *Phase 2 — student skims past the scoreboard to Phase 3.* "Stay on the scoreboard. Name the row that surprised you. The scoreboard IS the rescue beat — skipping it steals the mood."
-- *Phase 3 — judge file sprawls past 20 lines.* "Cut it back. A judge that tries to do everything does nothing well. Narrow on purpose; the Known limit line names what it doesn't reach."
+- *Phase 3 — scorer hedges, picks 'all four are useful.'* "Re-run and force a pick. The ensemble cap is two methods, not a four-method hug."
+- *Phase 3 — student skims past the scoreboard to Phase 4.* "Stay on the scoreboard. Name the row that surprised you. The scoreboard IS the rescue beat — skipping it steals the mood."
+- *Phase 4 — judge file sprawls past 20 lines.* "Cut it back. A judge that tries to do everything does nothing well. Narrow on purpose; the Known limit line names what it doesn't reach."
 - *Judge "Known limit:" line is generic ('quality is hard').* "Name a specific claim-shape this judge won't catch. 'Hard' isn't a failure mode."
 
 **Decision points (trainer reads these in prep, not during):**

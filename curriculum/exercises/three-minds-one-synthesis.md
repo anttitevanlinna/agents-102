@@ -58,6 +58,8 @@ Hold the doubt. Name it to yourself. Don't fix it here.
 
 <!-- maintainer -->
 
+- **Atomic — no phase markers.** One synthesis run; the Close is a move inside it, not a beat beside it. Line 3 already states the 15 + 7 split. Line 3 is authored, not generated.
+
 **Quality:** compendium-audited 2026-05-03
 - judges @60b1b6c: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
 

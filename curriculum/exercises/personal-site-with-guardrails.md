@@ -38,9 +38,13 @@ Watch the result. It works. It looks okay. It's also generic. The site a compete
 
 The goal of this site isn't to sell anything. It's the opposite: when a colleague (yours, or a peer outside the company you'd happily work with) lands on it, they should think *"this is the person I want to work with more, on the things they're great at."* Not *"I should book a discovery call."* A colleague relationship, not a sales funnel.
 
+## Name the framework and tune it
+
 Donald Miller's **StoryBrand** is the obvious framework for *"what kind of help is this person to others."* Half of LinkedIn uses it, and it shows, badly, because most consultants run StoryBrand straight as a sales pitch. We'll invoke it explicitly AND **tune** it: the hero isn't you, it's the colleague. Skip the sales-funnel beats (Stakes, Call-to-Action). What's left is the part that actually says *"I'm the greatest colleague ever; let's work more together."*
 
 Notice the move you're about to make: **name the framework, tune it, ask Claude to run it.** The model already knows StoryBrand. You don't have to reproduce the questions. Same trick for Toyota Kata, SWOT, Roger Martin's strategic-choices, Jobs-to-be-Done. *"Hey Claude, apply X to Y, but tune for Z."* That's the move. Module 1 starts here; you'll use it everywhere.
+
+## Keep yourself the protagonist, then run the beats
 
 One trap to name first. StoryBrand puts the customer in the hero slot. If you let it take over the *whole site*, the colleague becomes the protagonist of the page, and you get a service site with your name in the footer. Wrong shape. **The site stays a personal site; you stay the protagonist of the page.** StoryBrand shapes the *colleague-help section*, not the architecture. Your name in the headline; your actual current work front and centre; the StoryBrand tune is the texture of how you describe the help, not the page's spine.
 
@@ -72,6 +76,8 @@ Read the regenerated site. Same StoryBrand spine, sharper because the site now s
 Complaining is easier than praising. Most people can list what drives them mad at work in thirty seconds; the same people will stall for five minutes if asked what they're great at. The fix isn't to try harder on the praise; it's to **invert the easy thing**. **Anti-branding.** Adam Grant calls a version of this the *energy audit*; Patagonia famously did *"Don't Buy This Jacket"*; Taleb calls it *via negativa*. Same move: define what you're for by inverting what you're against. Then make the inverted version the spine.
 
 Same agentic pattern again: **name the framework, tune it, ask Claude to run it.** Second time you're using it in this exercise; at this point it's a move you own.
+
+## List what you hate, then invert it
 
 Give Claude a few specific things you hate about work. Not categories ("bureaucracy," "vague strategy") but the actual things ("meetings where nobody disagrees," "decks where every page says 'iterating'"). Rough beats polished. The vaguer the input, the more the output drifts back to statistical-default you.
 
@@ -120,11 +126,15 @@ Ask Claude to write your first generation rules file.
 
 Claude writes the file and summarises in chat. Push back on anything that doesn't match what we actually did. That's your first packaged agent behavior: text the model can re-read at the start of any future personal-brand task. Different name from CLAUDE.md (you'll meet that in Module 2), same fundamental mechanism: instructions in a file.
 
+## See the mechanism repeat in every phase
+
 **What happened:**
 
 Phase 1 is fine. Phase 6 is yours. The mechanism is the same every phase. The agent's output is shaped by what you put in the context ahead of the task. Your LinkedIn was context. Your colleague-guide frame was context. Your strengths were context. Your mirror-list was context. The more specific the context, the more genuinely "you" the output.
 
 That's the whole of Module 1's big idea, proven with your own name on it.
+
+## Take the context move past this site
 
 **The point:**
 

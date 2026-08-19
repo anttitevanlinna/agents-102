@@ -70,6 +70,8 @@ Read the answer. Push back where it is too neat. If round 3 still failed on numb
 
 **Integrity check.** The score trajectory only means something if the yardstick stayed still. A SHA match in `module-6/eval-notes.md` is the run's proof claim. If the judge file moved, the exercise failed. If only `./generation-tactic.md` moved, the loop worked.
 
+## Trace what each round changed
+
 **What happened:**
 
 Round 1 is the floor. Your generator runs with the tactic you wrote in Phase 1 and the judge catches whatever it catches. Round 2 is where the mechanism kicks in. The main session read round 1's per-claim feedback, absorbed it into `./generation-tactic.md`, and the next generator read the tighter tactic. Round 3 runs on the even tighter tactic.
@@ -78,11 +80,15 @@ The transcript is the proof. You can point at every tactic change and name the f
 
 And you weren't there.
 
+## Take the judge from object to yardstick
+
 **The point:**
 
 In Module 5 you were the eval. In Module 6 the eval is fixed infrastructure, and the thing being evaluated learns to pass it. The judge has moved from object to yardstick. You do not inspect every output; you define the pressure that shapes the next output.
 
 This is what "we can automate the loop" actually means. Not a scheduled script. A PDCA loop at the eval layer: Plan (generation tactic), Do (generate), Check (judge), Act (rewrite tactic). Each round, the Plan gets sharper under Check pressure. The next run on a different topic starts from the tighter tactic; the learning stuck on disk.
+
+## Put another judge in the same loop
 
 **Take-home: put any judge in a loop that improves the thing it scores.**
 

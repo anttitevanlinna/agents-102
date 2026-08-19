@@ -106,6 +106,8 @@ Close the session with three files at the shared folder root:
 - `agent-set.md`
 - `plan.md`
 
+## Write the strategy kernel's four sections
+
 `strategy-kernel.md` has four sections:
 
 - **Diagnosis.** The selected crux and the strongest rejected alternative, each citing the file it came from.
@@ -116,11 +118,15 @@ Close the session with three files at the shared folder root:
 {{prompt:joint-double-diamond-8}}
 
 
+## Read out the kernel and name what the room built
+
 **In-room:** one participant reads the kernel aloud. Not the sponsor. A participant who wasn't the loudest voice in the diamonds. The read-out is three minutes.
 
 **Identity-naming close (5 min).**
 
 **In-room:** the sponsor (the one who sat alongside for all eight modules) names what just happened, in one sentence, out loud: *"You are now agent builders. You have built agents that do real work on your company's data. You can do it again tomorrow on a new problem. That's what you carry out of this room."* No certificate. No exercise. A name the graduate can say on Tuesday morning to colleagues who weren't there.
+
+## Take stock of what the forum produced
 
 **What happened:**
 

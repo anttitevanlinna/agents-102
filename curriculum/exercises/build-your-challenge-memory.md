@@ -20,9 +20,13 @@ A memory is only as good as what goes into it. Most people sabotage this step by
 
 **Ease yourself in.** Even inside what policy allows, bring only what you feel comfortable sharing with an LLM today. If an email thread, a deck, or a doc feels sensitive, skip it. Module 4 is the proper conversation about classification, data boundaries, and what an agent should never see. Right now, curate with the material you'd share with a smart assistant without a second thought.
 
+## Keep the heavy reads under control
+
 Heavy reads ahead. Several phases re-read all of `sources/` or `memory/` and rewrite multiple files at once. Plan mode (named in Beat 3) is your primary control. If a non-plan-mode prompt starts reading the world, stop it, steer narrower (what to skip, where to focus), then say *"continue"*. If you want something simple, give a hard cap: *"10 sources max, or even fewer"*.
 
 ---
+
+## Curate the source plan
 
 **Beat 1. Curate.** Claude surveys what's available and asks about your world.
 
@@ -30,6 +34,8 @@ Heavy reads ahead. Several phases re-read all of `sources/` or `memory/` and rew
 
 
 Push back, sharpen, add what's missing. The plan is the list. Nothing's in `sources/` yet.
+
+## Ingest the sources
 
 **Beat 2. Ingest.** Now Claude pulls in (or points at) the content for `sources/`. Agent does the heavy lifting; you don't copy-paste.
 
@@ -39,6 +45,8 @@ Push back, sharpen, add what's missing. The plan is the list. Nothing's in `sour
 
 
 Look at Claude's three lists. Anything in list (3), the NOT REACHABLE pile, stays a reference file unless you decide to include it. In that case share the file with Claude (your runtime knows how); Claude will save the content into `sources/`. Never type or paste content yourself; that's the agent's job. Aim for 8–10 items with real content or local-path links between lists (1) and (2); list (3) can be empty, and usually is.
+
+## Build the memory under a plan
 
 **Beat 3. Build memory.** Now the memory gets built from what's actually on disk. <span class="rt-code">Turn on plan mode first. Claude writes out what it's about to do before touching files, you approve, nothing commits until you say go. Tell Claude *"Enable plan mode."* (Alternatives: pick *Plan* from the mode dropdown at the bottom of the Claude Code desktop app, or press Shift+Tab to cycle.) The footer should read *plan mode*.</span><span class="rt-cowork">Before you do anything, ask Claude to write a plan first. It writes what it's about to do before touching files, so you can review and steer before files commit.</span>
 
@@ -55,6 +63,8 @@ Heads up: when Claude finishes the plan, read it before saying go. If the topic 
 
 {{prompt:build-your-challenge-memory-3}}
 
+
+## Review the plan, then have the memory audit itself
 
 Claude returns a plan. Read it. Does the topic split match how you actually think about the challenge? If two topics should be one, say so. If something's missing, add it.
 
@@ -125,6 +135,8 @@ Run it through the agent you built in Phase 2. That's the one that reads the mem
 Then the question.
 
 Read the answer. If it's specific and every claim has a citation, the memory earned its keep; you leave with the first piece of real work it's done. If it's generic, hand-wavy, or leans on uncited knowledge, you know exactly where the memory is still thin. Either way, it's the move you'll repeat at your desk on Monday, and every Monday after.
+
+## Take stock of the system you built
 
 **What happened:**
 

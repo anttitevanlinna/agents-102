@@ -54,7 +54,11 @@ You'll get a lot of questions. The grill is wide on purpose, Claude probes both 
 
 {{prompt:author-security-skill-3}}
 
+## Answer the grill, then sharpen the lenses
+
 Claude grills you first. Skim the questions. Answer what you can in one or two lines. When you've answered everything you have a view on, hand the rest back: *"You choose. Optimise for what I can't steer."* Then it saves the files. Before you leave the exercise, check the package-complete list Claude prints. Open the four named risk patterns: if any one is missing from the agent-security lens, ask for it. Sharpen the rule wording so it sounds like your company's policy, not a generic GDPR template. Push back until the report shape is narrow enough that you will actually read it on Monday. Iterate in place.
+
+## Save the authored source as a personal skill
 
 Before you leave this exercise, save the authored source as a personal skill. The save mechanic differs by runtime.
 
@@ -91,6 +95,8 @@ Press Save when skill-creator surfaces it.
 </div>
 
 The personal skill autoloads when you start the next session for Exercise 2.
+
+## Take stock of the packaged check
 
 **What happened:**
 

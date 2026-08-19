@@ -32,6 +32,8 @@ Why the evidence roster first? Because `memory/` is the curated layer. `sources/
 
 {{prompt:hallucination-bakeoff-1}}
 
+## Keep the main session blind
+
 Why the separate worker? So this session is not tainted by knowing what was fabricated. The main session stays blind for the benchmark setup.
 
 <div class="rt-cowork">
@@ -42,6 +44,8 @@ Heads up for Cowork: every file the agent reads shows up in your UI as if your m
 
 
 Save it. **Don't open it yet.** The claim pool is the measuring surface. Keep the main session blind until the extractor has turned the briefing into claims.
+
+## Extract the claim pool
 
 Now extract the claims. Claude scans the briefing and pulls out a varied claim pool for the detectors. Thirty claims is not statistical. It is enough to start seeing the pattern without creating much processing work.
 
@@ -88,6 +92,8 @@ The columns are labelled `Precision` and `Recall`. They're standard eval vocabul
 {{prompt:hallucination-bakeoff-6}}
 
 
+## Read the scoreboard and name the surprise
+
 Four detectors read the same claim pool. One method caught more of what the scorer adjudicated as ungrounded. Another caught less but with higher precision. A third caught something the others missed. Maybe the citation-integrity detector caught a broken citation that source-triangulation couldn't, or the counter-evidence search surfaced a claim that looked fine to everyone else until the disconfirming source turned up. The scoreboard IS the explanation. You can point at a row and say *this is why I'm keeping this one*.
 
 Before Phase 4, ask Claude to contrast what you just did with the classic way. Then one sentence on what surprised you in the scoreboard.
@@ -119,6 +125,8 @@ One thing the benchmark can't reach: yours was 30 claims. A real production judg
 **What happened:**
 
 You produced a fresh briefing, extracted a 30-claim pool, spawned four detectors in parallel on the same claims, let a scorer adjudicate the claims and measure the detectors, read a scoreboard that named the winner with measured reasoning, and saved the winner as a named judge file. Twenty minutes of that was watching agents work while you thought about what you were measuring. The file `judges/groundedness-judge.md` is the artifact Module 6 picks up.
+
+## Carry the benchmark pattern forward
 
 **The point:**
 

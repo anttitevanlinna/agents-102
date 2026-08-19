@@ -55,6 +55,8 @@ Push back in chat:
 
 One or two rounds of push-back. The artifact: a new agent in `agents/` that you trust enough to run again on Tuesday.
 
+## Take stock of the compound
+
 **What happened:**
 
 You described. The tool built. You judged. The cycle took 25 minutes. The second agent next week will take ten. Same tool, less describing, because your vocabulary for what you want is sharper. That's the compound.

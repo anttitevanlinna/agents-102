@@ -54,6 +54,8 @@ You have an outcome statement. Now you pick what you'd offer the teammate. Two b
 
 Pick based on what your company actually runs today. Not on what procurement might approve in Q3.
 
+## Pick patterns against the outcome test
+
 Have Builder Claude walk you through the pattern catalog at `patterns/personal-to-team-patterns.md` (shipped with this module's scaffold). It covers the four top-level strategies, then the patterns under each. Pick **one to three patterns.**
 
 The selection test is not *does this pattern fit my infrastructure?* Infrastructure is a constraint, not a guide. The selection test is:
@@ -65,6 +67,8 @@ If your outcome is *"minimize time to draft a customer briefing I'd stake my rep
 Write `module-7/branch.md`. For each pattern picked, one sentence: *this pattern moves the outcome because [concrete mechanism].* Not *because it fits our infra.* The infra line is a footnote.
 
 **About the catalog.** It's live. Some patterns have full practitioner examples; some have `[TODO]` fields. Where you hit a TODO, that's your prompt to invent the pattern for your situation. The scaffold (name, context, forces, solution, traps, people plan) is there. Fill it against your outcome statement and move on.
+
+## Review the four sharing strategies
 
 The four strategies, as a reminder:
 
@@ -132,6 +136,8 @@ Write `module-7/monday.md` with three lines:
 
 In self-study, ask Teacher Claude to read all your module-7 files and push back on one thing: *"Is the outcome statement really the teammate's outcome, or is it the builder's wish dressed in their language?"* One sharp pushback beats a compliant summary.
 
+## Expect these four surprises
+
 **What happened:**
 
 The interview will surprise you. Your memory already knew 80% of this teammate's job. The agent surfaces it in a shape you can use. The outcome vector you didn't expect (the third one: anxiety, dependency, scope, workload) is usually the one that actually matters.
@@ -141,6 +147,8 @@ Your pattern selection will look different under the outcome test than under the
 Your people plan will have more UNASSIGNED lines than you're comfortable with. Good. That's the absorption bottleneck in your own work, not an abstraction. The gap between a confident technical plan and a hedged people plan is the thing industry papers over.
 
 The failure stories will tell you things you half-knew. The third story (the failure you're not seeing) is usually some version of *"they never fired their current hire in the first place."*
+
+## Take the transferable move with you
 
 **The point:**
 

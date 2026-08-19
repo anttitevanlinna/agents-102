@@ -78,15 +78,21 @@ Claude applies the mitigation and walks you through what changed. If the shape d
 
 The risk did not go away. That is expected. A mitigation reduces, it does not eliminate. The residual section is part of the report. Name it, accept it on record, and stop there.
 
+## Escalate to a person when judgment runs out
+
 **Still not sure? Ask a person.**
 
 Sometimes the correct next step is not another prompt. If the policy report still has a serious "I can't tell", or the security report names a risk you do not know how to accept, show the evidence to someone who owns that area: legal, security, IT, compliance, or the business owner. Bring the report, the files it quotes, the mitigation you applied, and the residual that remains.
 
 The instinct here is to skip the expert and resolve it yourself, or to escalate the whole tangle and hand them the problem cold. Both miss what you just produced. You ran the lens, you have the rows, you applied a mitigation, you have the residual on record. The narrow question the expert can actually answer is sitting in the report. Walk in with that.
 
+## Separate prototype from production
+
 **Prototype vs production.**
 
 We did this for a single mitigation. Risk control is one of the things that separates a prototype from a real production agent. You must do the work.
+
+## Take stock of the loop you ran
 
 **What happened:**
 

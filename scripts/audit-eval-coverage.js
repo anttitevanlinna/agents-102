@@ -57,6 +57,16 @@ const KNOWN_COMPENDIA = new Set([...COMPENDIA, ...UNREPORTED_COMPENDIA]);
 // parent), and with or without the .md suffix on the compendium name. Normalise
 // both halves of the key at every lookup, or faithful citations credit nothing.
 const parentRule = (idx) => String(idx).replace(/^(\d+)[a-z]$/, '$1');
+// A third convention: the sub-letter lives in the LEAD, not the index —
+// `rule_index: 4` five times over with leads "(4a) …", "4b. …". Five honest
+// judgments on five real rules, so the cram detector keys on the announced
+// sub-letter whenever the index itself is a bare integer.
+const citedRule = (idx, lead) => {
+  const s = String(idx);
+  if (!/^\d+$/.test(s)) return s;
+  const m = /^\s*\(?(\d+[a-z])\)?[.)\s]/.exec(String(lead || ''));
+  return m && m[1].startsWith(s) ? m[1] : s;
+};
 const compendiumName = (name) => String(name).replace(/\.md$/, '');
 
 // Which compendiums must fire on each surface type (the "rule sets that must
@@ -309,9 +319,10 @@ function scanInstanceIntegrity(fname, suffix, inst, comp) {
       }
       if (r.compendium != null && r.rule_index != null) {
         const cname = compendiumName(r.compendium);
-        // The cram detector keys off the RAW index on purpose: §9 and §9b are two
-        // distinct judgments, and collapsing them here would invent a duplicate.
-        keyCounts.set(`${cname}::${String(r.rule_index)}`, (keyCounts.get(`${cname}::${String(r.rule_index)}`) || 0) + 1);
+        // The cram detector never collapses sub-rules: §9 and §9b are two distinct
+        // judgments, whether the sub-letter is written in the index or the lead.
+        const cited = citedRule(r.rule_index, r.rule_lead);
+        keyCounts.set(`${cname}::${cited}`, (keyCounts.get(`${cname}::${cited}`) || 0) + 1);
         if (!KNOWN_COMPENDIA.has(cname)) { unknownComps.add(cname); continue; } // can't resolve rule ids outside the namespace
         const C = comp[cname];
         if (C && Array.isArray(C.rules)) {
@@ -319,7 +330,12 @@ function scanInstanceIntegrity(fname, suffix, inst, comp) {
           const parent = parentRule(r.rule_index);
           if (!ids.has(parent)) {
             const movedTo = (C.moved || {})[parent];
-            if (movedTo) warnings.push({ kind: 'moved-rule-citation', file: fname, compendium: r.compendium, rule_index: r.rule_index, movedTo });
+            // N/A on a moved stub is the contract working: the judge read the
+            // tombstone and declined the rule that is no longer its to judge.
+            // Any other verdict claims a rule that lives elsewhere — the row
+            // credits nothing here, and the new home's rule reads as a hole.
+            if (movedTo && String(r.verdict).trim() === 'N/A') { /* compliant */ }
+            else if (movedTo) warnings.push({ kind: 'moved-rule-citation', file: fname, compendium: r.compendium, rule_index: r.rule_index, movedTo, verdict: r.verdict });
             else warnings.push({ kind: 'unresolvable-rule-index', file: fname, compendium: r.compendium, rule_index: r.rule_index });
           }
         }
@@ -461,7 +477,7 @@ function printHuman(report, comp) {
     out.push(`⚠ data-hygiene warnings (${W.length}, non-gating): ${Object.entries(byKind).map(([k, n]) => `${k}×${n}`).join(', ')}`);
     const SHOWN = 15;
     for (const w of W.slice(0, SHOWN)) {
-      if (w.kind === 'moved-rule-citation') out.push(`  • moved-rule-citation  ${w.file}  ${w.compendium}::${w.rule_index} → now ${w.movedTo}`);
+      if (w.kind === 'moved-rule-citation') out.push(`  • moved-rule-citation  ${w.file}  ${w.compendium}::${w.rule_index} = "${w.verdict}" → rule now lives at ${w.movedTo}`);
       else if (w.kind === 'unresolvable-rule-index') out.push(`  • unresolvable-rule-index  ${w.file}  ${w.compendium}::${w.rule_index}`);
       else if (w.kind === 'non-enum-verdict') out.push(`  • non-enum-verdict  ${w.file}  ${w.compendium}::${w.rule_index} = "${w.verdict}"`);
       else if (w.kind === 'duplicate-rule-index') out.push(`  • duplicate-rule-index  ${w.file}  ${w.compendium}::${w.rule_index} ×${w.count} (judgments crammed onto one index)`);

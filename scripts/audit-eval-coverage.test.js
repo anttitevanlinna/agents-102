@@ -105,14 +105,34 @@ test('reported-but-unaudited compendium (check_prompts) → known namespace, not
   assert.equal(warnings.filter(w => w.kind === 'unknown-compendium').length, 0);
 });
 
-test('a rule that moved house → moved-rule-citation naming the new home, not unresolvable', () => {
-  const comp = { check_pedagogy: { evalClasses: [], rules: [{ id: '9', lead: 'x' }], moved: { '5': 'check_cross_module.md §1' } } };
-  const inst = { class: 'pedagogy', rules_evaluated: [{ compendium: 'check_pedagogy.md', rule_index: 5, verdict: 'PASS' }] };
-  const { bugs, warnings } = scanInstanceIntegrity('ae101--x.pedagogy.json', 'pedagogy', inst, comp);
+// A moved stub is the ONE place where N/A and PASS mean opposite things. The
+// judge templates tell judges to count rules "minus moved-stubs"; 189 rows in
+// the corpus say `N/A — moved stub; owned by check_cross_module.md`, which is
+// the contract working, not rot. The 12 that say PASS/REVISE are the rot: a
+// verdict stamped on a rule that lives in another compendium credits nothing
+// here, and the cross_module rule it should have carried reads as a hole.
+const MOVED_COMP = { check_pedagogy: { evalClasses: [], rules: [{ id: '9', lead: 'x' }], moved: { '5': 'check_cross_module.md §1' } } };
+
+test('moved rule declined as N/A → no warning (the judge looked and correctly declined)', () => {
+  const inst = { class: 'pedagogy', rules_evaluated: [{ compendium: 'check_pedagogy.md', rule_index: 5, verdict: 'N/A' }] };
+  const { bugs, warnings } = scanInstanceIntegrity('ae101--x.pedagogy.json', 'pedagogy', inst, MOVED_COMP);
   assert.deepEqual(bugs, []);
-  assert.equal(warnings.length, 1);
-  assert.equal(warnings[0].kind, 'moved-rule-citation');
-  assert.equal(warnings[0].movedTo, 'check_cross_module.md §1');
+  assert.deepEqual(warnings, []);
+});
+
+test('moved rule stamped PASS → moved-rule-citation naming the new home', () => {
+  const inst = { class: 'pedagogy', rules_evaluated: [{ compendium: 'check_pedagogy.md', rule_index: 5, verdict: 'PASS' }] };
+  const { bugs, warnings } = scanInstanceIntegrity('ae101--x.pedagogy.json', 'pedagogy', inst, MOVED_COMP);
+  assert.deepEqual(bugs, []);
+  const moved = warnings.filter(w => w.kind === 'moved-rule-citation');
+  assert.equal(moved.length, 1);
+  assert.equal(moved[0].movedTo, 'check_cross_module.md §1');
+});
+
+test('moved rule stamped REVISE → moved-rule-citation too (any verdict but N/A)', () => {
+  const inst = { class: 'pedagogy', rules_evaluated: [{ compendium: 'check_pedagogy.md', rule_index: 5, verdict: 'REVISE' }] };
+  const { warnings } = scanInstanceIntegrity('ae101--x.pedagogy.json', 'pedagogy', inst, MOVED_COMP);
+  assert.equal(warnings.filter(w => w.kind === 'moved-rule-citation').length, 1);
 });
 
 test('parseRules: "Moved to" tombstones are not rules, and are recorded as redirects', () => {
@@ -213,6 +233,29 @@ test('duplicate (compendium, rule_index) → duplicate-rule-index warning with c
   assert.equal(dup.length, 1);
   assert.equal(dup[0].count, 2);
   assert.equal(dup[0].compendium, 'check_pedagogy');
+});
+
+// A third citation convention: the sub-letter lives in the LEAD, not the index —
+// `rule_index: 4` five times over, with leads "(4a) …", "(4b) …". Those are five
+// honest judgments on five real rules, not one rule judged five times. The cram
+// detector reads the announced sub-letter when the index is a bare integer.
+test('sub-letter announced in rule_lead → distinct keys, no cram warning', () => {
+  const inst = { class: 'pedagogy', rules_evaluated: [
+    { compendium: 'check_pedagogy.md', rule_index: 9, rule_lead: 'Pattern-recognition LOs.', verdict: 'PASS' },
+    { compendium: 'check_pedagogy.md', rule_index: 9, rule_lead: '9b. Progression-with-variations is the spine', verdict: 'N/A' },
+    { compendium: 'check_pedagogy.md', rule_index: 9, rule_lead: '(9c) Something else.', verdict: 'N/A' },
+  ] };
+  const { warnings } = scanInstanceIntegrity('ae101--x.pedagogy.json', 'pedagogy', inst, COMP);
+  assert.equal(warnings.filter(w => w.kind === 'duplicate-rule-index').length, 0);
+});
+
+test('same rule judged twice with no sub-letter → still a cram warning', () => {
+  const inst = { class: 'pedagogy', rules_evaluated: [
+    { compendium: 'check_pedagogy.md', rule_index: 9, rule_lead: 'Pattern-recognition LOs.', verdict: 'PASS' },
+    { compendium: 'check_pedagogy.md', rule_index: 9, rule_lead: 'Pattern-recognition LOs.', verdict: 'REVISE' },
+  ] };
+  const { warnings } = scanInstanceIntegrity('ae101--x.pedagogy.json', 'pedagogy', inst, COMP);
+  assert.equal(warnings.filter(w => w.kind === 'duplicate-rule-index').length, 1);
 });
 
 test('distinct rule_indexes → no duplicate-rule-index warning', () => {

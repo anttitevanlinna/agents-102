@@ -25,7 +25,7 @@ Fires one eval class against one or more curriculum files. The class determines 
 
 | Class | Default model | Judge prompt | Trace cache | Primary inputs |
 |---|---|---|---|---|
-| `writing` | `haiku` | `curriculum/evals/judges/writing.md` | none | every `memory/check_*.md` with `eval_classes:` containing `writing` |
+| `writing` | `sonnet` | `curriculum/evals/judges/writing.md` | none | every `memory/check_*.md` with `eval_classes:` containing `writing` |
 | `story` | `sonnet` | `curriculum/evals/judges/story.md` | `sim-cache/<training>--<surface-type>--<slug>.persona.json` (Class A persona-reader, per-phase SHA) | every `memory/check_*.md` with `eval_classes:` containing `storytelling`; strategy doc per training |
 | `technical` | `sonnet` | `curriculum/evals/judges/technical.md` | none | every `memory/check_*.md` with `eval_classes:` containing `technical` |
 | `behavior` | `sonnet` | `curriculum/evals/judges/prompt-behavior.md` | `sim-cache/<training>--<surface-type>--<slug>.behavior.json` (Class B prompt-behavior, per-prompt SHA) | `curriculum/evals/simulation-behavior.md` catalog; `check_prompts.md` + `check_pedagogy.md` |
@@ -80,7 +80,7 @@ Trace path resolution:
 
 Use the `Agent` tool with:
 - `subagent_type: "general-purpose"`
-- `model:` matching the class (haiku for writing; sonnet for story / technical / behavior)
+- `model:` matching the class — **sonnet for every judge class.** Writing ran on haiku until 2026-08-19; it passed the schema gate and failed on judgement (out-of-lane rules, cross-file false positives), which no JSON validation catches. Haiku belongs on the mechanical batteries (`check_platform_and_boundaries.md` §16/§17), where a wrong answer shows in the output's shape. → `check_platform_and_boundaries.md` §21a
 - `description:` `"<class>-class judge: <basename>"` per file
 - `prompt:` the substituted judge template, with `.claude/rules/content-rules.md` prepended verbatim (per the subagent rule-injection convention in project CLAUDE.md). For `story --personas N > 1`, append a single line `personas: N` to the substituted prompt — the judge interprets it.
 - **Append this clause verbatim to every dispatched judge prompt, every class:**
@@ -131,7 +131,7 @@ Do NOT inline the entire JSON — extract REVISE rules and quote evidence. The f
 
 ### Step 6.5 — Record verdict to Quality block (PASS AND REVISE)
 
-After Step 6 (Present), the orchestrator MUST shell out to `update-quality.sh` for EVERY verdict — both PASS and REVISE. The Quality block is the canonical state surface; if REVISE doesn't get stamped, a successor agent sees `grandfathered` and can't tell whether the class is "pre-refactor PASS still valid", "run-and-REVISE", or "never run". Stamping REVISE with a JSON pointer disambiguates.
+After Step 6 (Present), the orchestrator MUST shell out to `update-quality.sh` for EVERY verdict — both PASS and REVISE. **Wait until every class dispatched against a file has returned, then stamp that file once, carrying all its axes.** The script writes into the file it hashes, so a stamp landing while another judge still has the file open strands that judge's verdict behind the guard and costs a re-fire (2026-08-19). Batching is also one write instead of seven. → `check_platform_and_boundaries.md` §35 The Quality block is the canonical state surface; if REVISE doesn't get stamped, a successor agent sees `grandfathered` and can't tell whether the class is "pre-refactor PASS still valid", "run-and-REVISE", or "never run". Stamping REVISE with a JSON pointer disambiguates.
 
 ```
 # PASS:
@@ -147,7 +147,7 @@ REVISE-stamped files still route through Step 7 for the actual fixes. The cycle-
 
 **A REVISE row is a claim about the CURRENT body — re-fire in the same pass as the fix.** Fixing the finding and moving on leaves the row asserting a defect that no longer exists, and a successor cannot tell stale-REVISE from live-REVISE without re-deriving the finding by hand. One judge now beats a stamp that lies for months. Corpus survey 2026-08-02: 15 files carried REVISE; 9 were already fixed.
 
-**Inheriting a REVISE of unknown age — cheap triage, do this before dispatching anything.** Each instance JSON stores the finding's own quoted evidence. Pull the longest quoted span from `rules_evaluated[].evidence` and grep the current body for it: GONE → fix landed, re-fire the class; STILL-PRESENT → finding is live, route to an authoring turn. Brief every such re-fire with **"do not pass because the old string vanished — re-derive every rule"**; on the 2026-08-02 sweep that instruction is what caught a violation of the same rule three lines above the repaired sentence, a second over-budget bold a prior run missed, and one re-fire premise that was itself wrong (flagged sentence still present, no longer a violation because the rule had gained a carve-out).
+**Inheriting a REVISE of unknown age — cheap triage, do this before dispatching anything.** Each instance JSON stores the finding's own quoted evidence. Pull the longest quoted span from `rules_evaluated[].evidence` and grep the current body for it: GONE → fix landed, re-fire the class; STILL-PRESENT → the string survived, which says NOTHING about whether the finding was ever true. **A surviving string is evidence about history, not about the claim** — run the harm-vs-shape test before it becomes an authoring task, and treat any verdict predating the dispatch preamble as unaudited, because nothing forced its author to ask. Only a finding that survives re-derivation is work. On the 2026-08-19 sweep 3 of 11 inherited REVISEs dissolved with no fix ever applied, and each would have produced a defensible-looking edit degrading student-facing prose to satisfy a rule that was never violated. → `memory/compounded/2026-08-19-content_creation-an-inherited-revise-is-a-hypothesis-not-a-work-item.md` Brief every such re-fire with **"do not pass because the old string vanished — re-derive every rule"**; on the 2026-08-02 sweep that instruction is what caught a violation of the same rule three lines above the repaired sentence, a second over-budget bold a prior run missed, and one re-fire premise that was itself wrong (flagged sentence still present, no longer a violation because the rule had gained a carve-out).
 
 **Scope a lint-driven re-read to the unit the check reads, never to the sentence you edited.** Slides = the `##` chunk; writing = the section. `how-this-training-was-built.md` chunk 1 took three cycles for one rule (`surface`, then `fired`, then `forcing function` three lines up) because each cycle re-read only its own repair. Canonical source: `memory/compounded/2026-05-03-platform-todos-route-to-training-tracking-surface-not-maintainer-blocks.md` (related — the Quality block is the per-class state surface; `pre-cohort-todos.md` is the cross-file TODO surface; the two are not redundant).
 

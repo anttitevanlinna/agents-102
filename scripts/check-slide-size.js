@@ -137,12 +137,41 @@ function wordCount(s) {
 // entirely from double-counting. So resolve flags through the RENDERER's own
 // `applyContentFlags` before measuring: the cap is a claim about the projected
 // page, and reusing the shipping resolver is what keeps it one.
-function measureFile(absPath, moduleSlugs) {
-  const raw = fs.readFileSync(absPath, 'utf8');
-  const stripped = CR.stripMaintainerTail(raw);
-  // Capability flags default to present (absent-or-true keeps the passage), which
-  // is the widest reading of the page — the variant that carries the most text.
-  const body = CR.applyContentFlags(stripped, {}, moduleSlugs || []);
+// Runtime forks are the same defect one construct over, and it is the one AE101
+// never exposed: Agents 101 ships three runtimes and hides the inactive ones in
+// CSS (`curriculum.css` — `.rt-cli` / `.rt-desktop` / `.rt-cowork`, plus the broad
+// `.rt-code` visible on cli OR desktop). Both inline <span> and block <div>
+// wrappers carry the classes. A reader is shown exactly one branch, so measuring
+// the source glues in prose nobody projects — and, because the line-level markup
+// skip drops any line STARTING with a tag, a slide that forks inline was being
+// counted at zero from the other direction. Measure once per runtime and keep the
+// largest: the cap is the claim that no projected page is over, so the widest
+// branch is the one that has to fit.
+const RUNTIMES = ['cli', 'desktop', 'cowork'];
+const RUNTIME_VISIBLE = {
+  cli: new Set(['rt-cli', 'rt-code']),
+  desktop: new Set(['rt-desktop', 'rt-code']),
+  cowork: new Set(['rt-cowork']),
+};
+function applyRuntimeForks(body, runtime) {
+  const visible = RUNTIME_VISIBLE[runtime];
+  // Inline: unwrap the visible branch, drop the hidden one. Spans never nest.
+  const unwrapped = body.replace(/<span class="(rt-[a-z]+)">([\s\S]*?)<\/span>/g,
+    (_m, cls, inner) => (visible.has(cls) ? inner : ''));
+  // Block: paired tags, each on its own line, never nested (curriculum.css contract).
+  const out = [];
+  let inFork = false;
+  let hide = false;
+  for (const line of unwrapped.split('\n')) {
+    const open = line.trim().match(/^<div class="(rt-[a-z]+)">$/);
+    if (open) { inFork = true; hide = !visible.has(open[1]); continue; }
+    if (inFork && line.trim() === '</div>') { inFork = false; hide = false; continue; }
+    if (!hide) out.push(line);
+  }
+  return out.join('\n');
+}
+
+function measureOneRuntime(body) {
   const lines = body.split('\n');
 
   const slides = [];
@@ -191,6 +220,23 @@ function measureFile(absPath, moduleSlugs) {
   flush();
 
   return { preamble, slides };
+}
+
+function measureFile(absPath, moduleSlugs) {
+  const stripped = CR.stripMaintainerTail(fs.readFileSync(absPath, 'utf8'));
+  // Capability flags default to present (absent-or-true keeps the passage), which
+  // is the widest reading of the page — the variant that carries the most text.
+  const flagged = CR.applyContentFlags(stripped, {}, moduleSlugs || []);
+  const runs = RUNTIMES.map((rt) => measureOneRuntime(applyRuntimeForks(flagged, rt)));
+  // Headings never sit inside a fork wrapper, so every run yields the same slide
+  // list in the same order; merge by index and keep each slide's widest reading.
+  const base = runs.reduce((a, b) => (b.slides.length > a.slides.length ? b : a));
+  const slides = base.slides.map((s, i) => ({
+    ...s,
+    words: Math.max(...runs.map((r) => r.slides[i]?.words ?? 0)),
+    bullets: Math.max(...runs.map((r) => r.slides[i]?.bullets ?? 0)),
+  }));
+  return { preamble: base.preamble, slides };
 }
 
 // ── run ───────────────────────────────────────────────────────────────────────

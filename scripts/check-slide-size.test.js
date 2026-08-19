@@ -154,6 +154,55 @@ test('a runtime-fork slide is measured as one branch, not both glued together', 
     'Only one renders, so the measured slide must be roughly one branch (~80), not their sum (~160).');
 });
 
+// The SAME defect one construct over. Agents 101 renders three runtimes and hides
+// the inactive ones in CSS (`curriculum.css`: `.rt-cli` / `.rt-desktop` / `.rt-cowork`,
+// plus `.rt-code` visible on cli OR desktop). A reader is shown exactly one branch,
+// so gluing them together measures a page nobody projects. AE101 is Code-only and
+// carries none of these wrappers, which is why the flag fix above never reached
+// them: the checker had simply never met the construct. Found 2026-08-19 during
+// the agents-101 parity pass — `lectures/module-2-prework.md` `## Learn plan mode`
+// scored 248 words against a 210 cap, and roughly 100 of those were the branch a
+// given reader never sees plus the markup of the wrappers themselves.
+test('a runtime-fork slide is measured one runtime at a time', (t) => {
+  const FIX = path.join(ROOT, 'tmp', 'slide-size-fixture');
+  t.after(() => fs.rmSync(FIX, { recursive: true, force: true }));
+
+  const long = (tag) => Array.from({ length: 40 }, (_, i) => `${tag}word${i}`).join(' ');
+  const measure = (rel) => {
+    const out = run(['--file', rel, '--report', '--max-words', '1000']).out;
+    const row = out.split('\n').map(l => l.match(/^.?\s*(\d+)\s+\d+\s{2}A forked slide/)).find(Boolean);
+    assert.ok(row, `expected a measured row for the forked slide:\n${out}`);
+    return Number(row[1]);
+  };
+
+  const inline = measure(writeFixture('rt-inline.md', [
+    '# Fixture', '', '## A forked slide', '',
+    `<span class="rt-code">${long('A')}</span><span class="rt-cowork">${long('B')}</span>`, ''
+  ].join('\n')));
+  assert.ok(inline > 30 && inline < 60,
+    `the inline runtime fork measured ${inline} words; expected roughly one 40-word branch. ` +
+    'Too high means both branches (and the wrapper markup) were counted. Too low means the ' +
+    'whole line was dropped as markup, which under-reports every slide that forks inline.');
+
+  const block = measure(writeFixture('rt-block.md', [
+    '# Fixture', '', '## A forked slide', '',
+    '<div class="rt-code">', '', long('A'), '', '</div>',
+    '<div class="rt-cowork">', '', long('B'), '', '</div>', ''
+  ].join('\n')));
+  assert.ok(block > 30 && block < 60,
+    `the block runtime fork measured ${block} words; expected roughly one 40-word branch.`);
+
+  // Widest branch wins: the cap is a claim that NO projected page is over, so a
+  // cowork-only overflow must still fail even when the Code branch is short.
+  const rel = writeFixture('rt-widest.md', [
+    '# Fixture', '', '## A forked slide', '',
+    `<span class="rt-code">short</span><span class="rt-cowork">${long('B')}</span>`, ''
+  ].join('\n'));
+  assert.strictEqual(run(['--file', rel, '--max-words', '20']).code, 1,
+    'a slide that is oversized only in the cowork runtime must still fail — the gate ' +
+    'measures the widest branch, not the first one.');
+});
+
 test('every oversized slide is either declared or fails the check', () => {
   const { code, out } = run();
   assert.strictEqual(code, 0,

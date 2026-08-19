@@ -626,6 +626,13 @@ if [[ "$plan_post_pc_mtime" -le "$plan_final_mtime" ]]; then
 fi
 echo "[assert] PASS PC post: plan.md has Run coordinates block"
 
+# RUN-NOTES.md at the worktree root (added 2026-08-17). The prompt names it
+# twice; the judge skills grep it by name. Ungated, a run that files its notes
+# elsewhere hands every downstream judge an empty read and a free pass.
+if ! assert_run_notes_present "PC post" "$worktree_cwd"; then
+  exit 1
+fi
+
 # Identify PC session UUID.
 post_pc_transcripts="$(ls "$worktree_transcripts_dir" 2>/dev/null | sort | tr '\n' ' ')"
 pc_uuid=""

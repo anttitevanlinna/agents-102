@@ -23,6 +23,38 @@ assert_file_exists() {
   return 1
 }
 
+assert_run_notes_present() {
+  # $1=label, $2=worktree root.
+  # ae101-m5-rerun-packaged names RUN-NOTES.md at the worktree root twice,
+  # and six judge skills (verify-by-hand-judge, scope-creep-judge,
+  # context-rot-judge-lemmings, disclosure-lock-judge, session-shaper-*)
+  # grep that filename BY NAME. A run that files its notes elsewhere leaves
+  # every one of them reading nothing and passing free, so this fails closed:
+  # absent, empty, or whitespace-only are all FAIL. Caught 2026-08-17, when
+  # the northwind run filed observations/<date>-<slug>-run.md instead and the
+  # chain went green anyway.
+  local label="$1" wt="$2" path="$2/RUN-NOTES.md"
+  if [[ -f "$path" ]] && grep -qE '[^[:space:]]' "$path" 2>/dev/null; then
+    echo "[assert] PASS $label: RUN-NOTES.md present and non-empty ($path)"
+    return 0
+  fi
+  if [[ -f "$path" ]]; then
+    echo "[assert] FAIL $label: RUN-NOTES.md is empty ($path) — judges grep this file by name and would pass on an empty read" >&2
+    return 1
+  fi
+  # Name the near-miss: run notes filed under another name are the common
+  # shape, and quoting the candidate makes the fix one move.
+  local candidate
+  candidate="$(find "$wt" -maxdepth 2 -type f -name '*.md' 2>/dev/null \
+    | grep -E -i 'run-?notes|-run\.md|observations/' | head -1 || true)"
+  if [[ -n "$candidate" ]]; then
+    echo "[assert] FAIL $label: no RUN-NOTES.md at worktree root ($path); run notes appear to have landed at ${candidate#$wt/} instead — the prompt names the root file, and judges grep it by name" >&2
+  else
+    echo "[assert] FAIL $label: no RUN-NOTES.md at worktree root ($path); the packaged re-send prompt requires it and judges grep it by name" >&2
+  fi
+  return 1
+}
+
 assert_file_mtime_advanced() {
   # $1=label, $2=path, $3=baseline-mtime (epoch seconds).
   # Passes if file exists AND its mtime is strictly greater than baseline.

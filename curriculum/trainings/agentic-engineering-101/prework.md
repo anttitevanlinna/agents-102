@@ -6,7 +6,7 @@
 
 Come to Module 1 with the repo picked,<!--flag:payload--> the curated skills installed,<!--/flag:payload--> and one trivial bug.
 
-## What to bring
+## Bring real work
 
 The training runs on YOUR real work. You'll work at different task sizes across the training, bring something at each size from your backlog. You don't need them all picked now; you need to know they're there.
 
@@ -17,7 +17,7 @@ Roughly in the order you'll reach for them:
 - **A small feature**: external or user-facing surface, shippable in a few hours.<!--/flag:module:earn-the-trust-->
 - **A bigger piece**: a refactor, or a feature with unknowns. Size this one by the agent rather than by yourself. Roughly 30 to 120 minutes of the agent working, not counting the time you spend writing prompts.
 
-**Separate tasks off your backlog.**
+Separate tasks off your backlog.
 
 Plus the repo itself (picked next) and your team's tracker if you've got one (Linear / Jira / GitHub Issues). Make sure your Claude Code can operate the GitHub CLI. Ask it to install `gh` if it isn't there.<!--flag:payload--> The curated security skills install when you extract the bundle.<!--/flag:payload-->
 
@@ -29,7 +29,7 @@ One decision, and you probably have a strong candidate already: which repo are y
 - Real code, real tests, real history, somewhere with enough surface area for rules and memory to land on
 - Real work ahead at two sizes. You open with a small fix, a few lines here and there. Later the training runs experiments on bigger things: an epic you're about to start, a refactor that's been sitting, a feature with unknowns. The repo should have both.
 
-Pick one. Every module of this training starts from a Claude Code session in this repo. Every rule and every memory you build during the training lands here.
+Pick one. Every rule and every memory you build during the training lands here.
 
 *Really stuck for a repo that fits? Ask your trainer for the fallback repo, or [build one from zero](trainings/agentic-engineering-101/supplementary/build-a-project-from-zero.md), and grow that across the training.*
 
@@ -73,7 +73,7 @@ If Claude's screening feels like everything-at-once, ask Claude to use the AskUs
 
 Optional. One read, any time before the first session.
 
-**Read: Simon Willison, [Vibe engineering](https://simonwillison.net/2025/Oct/7/vibe-engineering/)** (October 2025). Willison draws the line between vibe coding and working with coding agents as an accountable engineer. Module 1's first bug fix starts on the accountable side of that line.
+**Read: Simon Willison, [Vibe engineering](https://simonwillison.net/2025/Oct/7/vibe-engineering/)** (October 2025). Willison draws the line between vibe coding and working with coding agents as an accountable engineer. You start Module 1's first bug fix on the accountable side of that line.
 
 ## Bring to Module 1
 

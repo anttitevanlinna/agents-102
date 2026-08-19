@@ -8,6 +8,8 @@ Module 3 runs in two windows. Security is the main quest in your chosen repo. Qu
 
 **What you build:** two Claude Code sessions running side by side on one git history.
 
+**The point:** a long-running prompt is dead time only if you have one window.
+
 ## Fork the side worktree from your security lane
 
 - Security is the main quest. Start it in your repo. This is your main lane for Module 3. Access mapping, STRIDE, and the ADR all live here.
@@ -40,7 +42,7 @@ Ask Claude to fork a sibling worktree and copy your personal rules across. The p
 /rename m3-quality
 ```
 
-- Authoring and invoking the test-strategy skill both happen in this window, on this codebase. It installs to user scope, so it crosses back to the main lane on its own, and you never carry it by hand. The main lane reads it later, at a step that revisits this window's scrollback rather than invoking anything here again, and the evidence-based sharpen runs there too, where the compound step lives.
+- Authoring and invoking the test-strategy skill both happen in this window, on this codebase. It installs to user scope, so it crosses back to the main lane on its own, and you never carry it by hand.
 - Ask Claude to confirm the worktree state, then wait.
 
 {{prompt:ae101-m3-quality-side-orient}}
@@ -48,9 +50,7 @@ Ask Claude to fork a sibling worktree and copy your personal rules across. The p
 ## Set the two windows side by side
 
 - Two windows, side by side, both visible at once. Each holds its own scrollback. Arrange them so neither disappears behind the other.
-- The move this module installs: when one window kicks off a long-running prompt, the other is where you work. Module 3's exercises name which window the work runs in, and where the switch points are.
-
-**What happened:** You forked a sibling worktree for the quality side, opened two Claude Code sessions (one in your repo, one in the sibling), and confirmed each reads the same codebase from a different working directory. Security picks up in the main window at the next exercise. The quality side waits.
+- The move this module installs: when one window kicks off a long-running prompt, the other is where you work. You run security in the main window from here; the quality side waits until you author the test-strategy skill there.
 
 <!-- maintainer -->
 

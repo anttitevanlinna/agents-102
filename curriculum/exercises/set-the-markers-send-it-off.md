@@ -50,7 +50,7 @@ Ask Claude to run the scoped task end-to-end in this same session.
 
 {{prompt:ae101-m4-take-task-end-to-end}}
 
-## While it runs
+## Nudge sparingly while it runs
 
 - Keep the laptop awake and plugged in (power settings → prevent sleep on power).
 - Nudge by hand: answer a question, correct a path, push back on visible drift. Past ten or so interventions, you have become the agent; call it and read what is there.

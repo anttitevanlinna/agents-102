@@ -86,7 +86,7 @@ Ask Claude to name the checking primitives the field already runs and rank the o
 
 Expect the list to look familiar: test-writing, browser-testing, PR-building, lint and typecheck gates, compile and build, smoke-test on a real path, code-review, git-diff inspection, schema validation, eval suites for agent outputs. Your list won't be exact. The recognition is the point. The primitives Claude names are the ones your codebase already runs.
 
-**What happened:** A one-screen gap map across memory / verifier / skill, one stale rule cut in place, and a diagrammed map of the work that recurs across your stack. The shapes carry into the close.
+**What happened:** A one-screen gap map across memory / verifier / skill, one stale rule cut in place, and a diagrammed map of the work that recurs across your stack. The shapes feed the handoff prompt you write in the close.
 
 ## Decide what crosses back to your main repo
 

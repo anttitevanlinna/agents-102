@@ -41,19 +41,13 @@ Ask Claude to sweep the session for anything earned since the first compound and
 
 > **The escape hatch is deliberate.** The closing `or "nothing new" if nothing did` allows Claude to report an empty sweep. Ask only what it added, and the agent finds something to have added. If a line it wrote reads generic, ask which session moment earned it; with no moment to point at, have Claude take the line back out of the file.
 
-## What you built
-
-**What happened:** One rules file, written from how you actually worked rather than from a template.
-
-Whether it earns its keep shows up the next time a session reads it.
-
 <!-- maintainer -->
 
 **View summary:** The agent reads the finished session as evidence and drafts `./CLAUDE.local.md` from how the work actually went. You push back where it misreads. The result is a personal rules file that improves the next session on this repository.
 
 **Slide deixis accepted:** "the line back" — idiom ("have Claude take the line back out of the file" = retract it), not page geometry.
 
-**Scope is the rules file only.** The ticket beat is its own exercise (`close-the-ticket`) and runs immediately before this one, so its tracker read is already in scrollback when the sweep fires — do not add a connector or close-out step back into this file. **Emphasis budget (`check_slides.md §9`):** widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) stays bold; body bullet leads de-bolded; no named-term handles remain in this file.
+**Scope is the rules file only.** The ticket beat is its own exercise (`close-the-ticket`) and runs immediately before this one, so its tracker read is already in scrollback when the sweep fires — do not add a connector or close-out step back into this file. **Emphasis budget (`check_slides.md §9`):** widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`) stays bold; body bullet leads de-bolded; no named-term handles remain in this file.
 
 **Quality:** compendium-audited 2026-08-19 (story@ba5ccf5 technical@1480362 behavior@1480362 pedagogy@1480362 strategy@1480362 slides@ba5ccf5)
 - judges @ba5ccf5: writing REVISE (see-instances/ae101--exercise--compound-and-close.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

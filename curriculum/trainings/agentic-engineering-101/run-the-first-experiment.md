@@ -13,7 +13,7 @@ Optional forward-look: [The agentic engineering progression](trainings/agentic-e
 
 If Simon Willison's [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/) is still on your list from <!--flag:module:earn-the-trust-->Module 3<!--/flag:module:earn-the-trust--><!--flag:no-module:earn-the-trust-->Module 2<!--/flag:no-module:earn-the-trust-->, read it before the send-off: it names the thinking you do before stepping away from a session, and today you step away.
 
-If you read [Why Software Factories Fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md) in the gap after Module 1, this module's un-watched session may look like exactly what that essay warns against.
+If you read Horthy's [Why Software Factories Fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md) in the gap after Module 1, this module's un-watched session may look like exactly what that essay warns against.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -67,7 +67,7 @@ Come to Module 5 without a session that got some way into the task and you'll be
 
 ## Pre-reads before Module 5
 
-Optional. All four point at the same surprise: the effort in agent work sits in the framing and the checking.
+Optional. They all point at the same surprise: the effort in agent work sits in the framing and the checking.
 
 **Read,** [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md). Uncle Bob's public learning journey with AI coding: early speed, mercury-like unpredictability, then tests, architecture visibility, and formal constraints as steering. It moves the question from "the agent ran" to "what would have constrained the drift?", the question you'll put to your own session next.
 

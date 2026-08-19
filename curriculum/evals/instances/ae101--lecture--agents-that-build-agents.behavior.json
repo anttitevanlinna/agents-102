@@ -1,6 +1,7 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/agents-that-build-agents.md",
+  "body_sha": "1f14f5c7bff075138972736fabf3f3adc7e2c5f28b0de03b9b47a5616b503fab",
   "verdict": "PASS",
   "training": "ae101",
   "trace_status": "full_regen",
@@ -8,14 +9,14 @@
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_lead": "This session we drew the recurring shapes in my work and listed the checking pr",
+      "prompt_lead": "This session we drew the recurring shapes in my work. The shapes are in your con",
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "No 'No preamble' suppressor in-fence; but this is a single-artifact 'write me a handoff prompt' ask (not a 4+ named-substep directive Claude walks this turn, not a plan-mode invocation), so check_prompts.md #17's structural trigger doesn't obligate a suppressor here -- the several content requirements ('carry the shapes,' 'bake in what a cold session won't have,' 'name the shapes inside it,' 'put it in a code block') describe what the OUTPUT prompt should contain, not sub-steps Claude executes in sequence this turn.",
+          "evidence": "No 'No preamble' suppressor in-fence; but this is a single-artifact 'write me a handoff prompt' ask (not a 4+ named-substep directive Claude walks THIS turn, not a plan-mode invocation), so check_prompts.md #17's structural trigger doesn't obligate a suppressor here -- the five-step list ('study the work, pick the check that fits, author through conversation, push back, invoke to verify') describes what the OUTPUT prompt should instruct a future cold session to do, not sub-steps Claude executes in sequence this turn.",
           "fix_hint": "Optional: append 'No preamble -- open directly with the prompt.' as the fence's last line if a terse hand-off becomes load-bearing later; not warranted at current confidence."
         },
         {
@@ -34,7 +35,7 @@
     {"pattern_id": "reading-burden", "status": "not_fired", "why": "The post-generation review ('judgement, push-back, taste') is editorial/judgment review of a draft prompt, the module's designed pedagogical bet (human judgment as final gate) -- not manual proofreading of Claude's output for mechanical correctness."},
     {"pattern_id": "niceness-tax", "status": "not_fired", "why": "No line in the prompt invites RLHF-softened output; no evidence to quote."},
     {"pattern_id": "question-dump", "status": "not_fired", "why": "Prompt does not ask Claude to interview the student with a question sequence."},
-    {"pattern_id": "overwrite-anxiety", "status": "not_fired", "why": "No file-write destination is named in this prompt; output is chat/code-block, saved by the student in a separate step."},
+    {"pattern_id": "overwrite-anxiety", "status": "not_fired", "why": "No file-write destination is named in this prompt; output is chat/code-block, saved by the student in a separate step (body text after the fence: 'Save it where you will find it')."},
     {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "low"},
     {"pattern_id": "append-vs-integrate", "status": "not_fired", "why": "No existing section/file is being added to."},
     {"pattern_id": "plan-mode-preamble-bloat", "status": "not_fired", "why": "Plan mode is not invoked (no permission-mode: plan in frontmatter, no plan-mode language in the prompt)."},
@@ -46,6 +47,6 @@
     {"pattern_id": "citation-cargo-cult", "status": "not_fired", "why": "No citations requested."},
     {"pattern_id": "self-audit-charity", "status": "not_fired", "why": "Claude is not asked to critique its own work; it is asked to synthesize a new artifact from session context."}
   ],
-  "note": "Full regen: the prior cached trace's prompt_lead ('...shipped one skill from') and prompt_sha no longer match the current registry body ('...listed the checking primitives the field runs') at curriculum/prompts/agents-that-build-agents-handoff.md -- the prompt was reworded since the last cache write (frontmatter now requires recurring-shape-diagrams + primitive-menu, produces workflow-skills-handoff-prompt). Re-walked the file fresh against the current single **Prompt** block (registry key agents-that-build-agents-handoff, expanded via scripts/expand-md.js; expanded content matches the registry file verbatim). File identity for this instance is the lecture path per the judge template. Scope note: this class grades the 15-pattern behavioral-risk catalog only (simulation-behavior.md) -- placeholder-freedom, cold-session self-containment, capability-claim accuracy, and artifact-vs-STOP tail ordering are technical-class and check_prompts.md-mechanics territory, not re-litigated here.",
+  "note": "Full regen 2026-08-19: prior instance/trace both carried a stale prompt_lead/sha from an earlier wording of the registry prompt (curriculum/prompts/agents-that-build-agents-handoff.md). Verified current expanded body against the registry file verbatim -- they match. body_sha taken via shasum -a 256 on the raw source at read time. Re-walked the single **Prompt** block (registry key agents-that-build-agents-handoff) fresh; verdict and both low-confidence findings are substantively unchanged from the prior pass, only the recorded hashes/lead were stale. Scope note: this class grades the 15-pattern behavioral-risk catalog only (simulation-behavior.md) -- placeholder-freedom, cold-session self-containment, capability-claim accuracy, and artifact-vs-STOP tail ordering are technical-class and check_prompts.md-mechanics territory, not re-litigated here.",
   "summary": "PASS -- the single prompt block (agents-that-build-agents-handoff) fires no high or med-confidence risk against the 15-pattern catalog. Two low-confidence risks noted for the record: preamble-before-action (no in-fence suppressor, but the structural trigger for one doesn't fire on a single-artifact authoring ask) and default-acceptance (already mitigated by an explicit push-back callout earlier in the same lecture). Per-prompt verdict is TODO (any low-confidence risk routes to TODO under the verdict rules); top-level verdict is PASS. No blocking findings."
 }

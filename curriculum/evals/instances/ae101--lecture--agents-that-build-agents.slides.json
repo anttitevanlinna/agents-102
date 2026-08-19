@@ -1,15 +1,17 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/agents-that-build-agents.md",
+  "body_sha": "1f14f5c7bff075138972736fabf3f3adc7e2c5f28b0de03b9b47a5616b503fab",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    { "index": 0, "heading": "H1/lede — Agents that build agents", "lines": "1-4" },
-    { "index": 1, "heading": "The move widens to everything you do", "lines": "5-12" },
-    { "index": 2, "heading": "The agent stops where your judgement begins", "lines": "13-20" },
-    { "index": 3, "heading": "The handoff prompt that builds your kit", "lines": "21-36" },
-    { "index": 4, "heading": "Ralph", "lines": "37-49" },
-    { "index": 5, "heading": "There is no last turn", "lines": "50-56" }
+    {"index": 0, "heading": "Agents that build agents (H1 + lede)", "lines": "1-3"},
+    {"index": 1, "heading": "The move widens to everything you do", "lines": "5-11"},
+    {"index": 2, "heading": "The agent stops where your judgement begins", "lines": "13-19"},
+    {"index": 3, "heading": "The handoff prompt that builds your kit", "lines": "21-35"},
+    {"index": 4, "heading": "You make agentic happen", "lines": "37-43"},
+    {"index": 5, "heading": "Ralph", "lines": "45-56"},
+    {"index": 6, "heading": "There is no last turn", "lines": "58-63"}
   ],
   "rules_evaluated": [
     {
@@ -18,7 +20,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 0 line 3 now reads \"This is the move that draws it. ... This lecture unfolds it.\" — the prior REVISE target (\"this is that line, unfolded\", a bare positional pointer) is gone; \"it\" resolves in-sentence to \"a dashed loop\" and the file's own opening move. \"The map you just drew\" and \"the flywheel\" resolve as arc-earned spine vocabulary (module-arc opener carve-out — this lecture is placed directly after the map-filled-in beat). Chunks 1-5 checked term-by-term against prior chunks of this file only; all resolve (e.g. \"the skill\"/\"the map\" at M3/M6 in chunk 1 under the same carve-out; \"it\"/\"He\" in chunk 4 resolve within-sentence to \"the fix\"/\"Huntley\").",
+      "evidence": "chunk 0 line 3: \"The map you just drew\" resolves via module-arc-beats carve-out (this lecture is dead-last, placed directly after `the-map-filled-in.md` per module file `spot-gaps-build-the-loop.md` lines 49-53). chunk 2 line 17: \"the loop\" resolves via arc-earned spine vocabulary (named in `the-loop-has-a-name.md`, two beats earlier in the same module). chunk 3 line 23: \"the shapes you drew\" resolves via the same module-arc carve-out. Closest-to-violating: chunk 4 line 43 \"there since M2\" — arc-earned M-ref, not a violation. No unresolved pronoun/demonstrative found across all 7 chunks.",
       "fix_hint": null,
       "blocking": true
     },
@@ -28,7 +30,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 0's prior positional pointer to the preceding lecture's kicker (\"this is that line, unfolded\") has been rewritten; the current sentence names the claim inline (\"a dashed loop, yours to draw solid... This is the move that draws it\") rather than pointing at another file by position. No other chunk points at a sibling file positionally.",
+      "evidence": "chunk 0 line 3 names the referenced lecture's content (\"a dashed loop, yours to draw solid\"), not its position; no file is located by position anywhere in body. grep for positional phrasing (\"opening lecture said\", \"earlier module said\") = 0 hits in body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -38,7 +40,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "\"The M6 exercise mapped recurring work as diagrams and ranked the checks that pair with each shape\" (chunk 3) checked against the current M6 module file curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md — its Phase 2 (mermaid-diagram shapes + ranked checking-primitives menu) and artefact-contract row match.",
+      "evidence": "Verified against `curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` lines 49-53: module 6 lecture order is `the-loop-has-a-name.md` → `the-map-filled-in.md` → `agents-that-build-agents.md`, matching this file's maintainer Placement block exactly. \"The map you just drew\" (chunk 0) and \"the shapes you drew\" (chunk 3) both resolve to the immediately-preceding lecture, which exists and is sequenced immediately before this file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -48,7 +50,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-before-reveal structure anywhere in the file.",
+      "evidence": "No guess-before-reveal demo beat anywhere in the body; this is a closer lecture, not a live-run exercise.",
       "fix_hint": null,
       "blocking": true
     },
@@ -58,7 +60,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every chunk carries a self-standing claim (including chunk 4's Ralph beat and chunk 5's closer); none is a bare wait-state bullet.",
+      "evidence": "All 7 chunks carry a self-standing claim or worked beat (e.g. chunk 6 line 58 \"There is no last turn. Each session surfaces the next gap.\" stands alone). None is a bare wait-state or single context-dependent bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -68,7 +70,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Each header's content matches its claim under the sequential read (e.g. \"The move widens to everything you do\" chunk actually generalizes the M3/M6 move; \"There is no last turn\" chunk's first bullet restates the header verbatim).",
+      "evidence": "Each header is confirmed by its chunk's content: chunk 1 \"The move widens to everything you do\" is borne out by lines 7-9 (skill → map, same move); chunk 5 \"Ralph\" is borne out by the bash block + bullets naming Ralph. No header contradicted by its chunk.",
       "fix_hint": null,
       "blocking": false
     },
@@ -77,10 +79,10 @@
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "chunks_flagged": [5],
-      "evidence": "chunk 5 \"There is no last turn\": line 52: \"Each session surfaces the next gap. Each gap proposes the next move. Each move makes the next session cheaper.\" — anaphoric triple (\"Each ___\"), but the subject chains forward each leg (session→gap→move→session, closing the loop) and the third leg adds new concrete content (the cost payoff) rather than restating the same claim with an abstraction noun, unlike the compendium's banned example. Judged PASS as a deliberate flywheel-chain device; flagged here as the closest call in the file, not as a defect. No \"Not X. Not Y. Z.\" construction anywhere; no self-grading superlatives; no number-with-retraction; no abstraction-noun-stack; no verb triplet with an empty leg (chunk 5's second bullet \"grows, sharpen, accumulate\" each carry distinct concrete content).",
-      "fix_hint": "If a future pass wants a tighter margin, cut the middle clause to a pair rather than trim the payoff leg.",
-      "blocking": false
+      "chunks_flagged": [],
+      "evidence": "\"Not X. Not Y. Z.\" — 0 hits (line 13 is a single \"Not X\" negation, not the triple construction). Anaphora triple — chunk 6 line 60 \"Each session surfaces the next gap. Each gap proposes the next move. Each move makes the next session cheaper.\" is anaphoric in form but each leg introduces new concrete content (gap → move → cost), not padding restatement; closest-to-violating line, kept as PASS. Self-grading superlatives — grep for \"one of the most/best\" = 0 hits. Number + retraction — 0 numeric claims with a hedge-and-retract pattern. Abstraction-noun stacks — no \"X reality\"/\"reached for Y\" style phrase found. Verb triplets with an empty leg — line 61 \"grows, sharpen, accumulate\" each survives \"what does this concretely mean\" (kit grows, rules sharpen, skills accumulate) — none empty.",
+      "fix_hint": null,
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -88,7 +90,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Grepped body (above the maintainer cut) for compendium/surface-as-noun/forcing function/beat/mood/Connections/firing — zero hits; all matches for those terms sit inside the maintainer/backing blocks, which are exempt. \"Kit\" is controlled curriculum vocabulary (team-kit/workflow-skills-kit), not repo-internal dialect.",
+      "evidence": "grep for surface(-as-noun)/firing/compendium/forcing function/beat/mood/Connections in body = 0 hits. \"the practitioner shape\" (line 19) is ordinary engineer-register prose, not repo dialect.",
       "fix_hint": null,
       "blocking": true
     },
@@ -98,7 +100,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Grepped the raw source body (lines 1-48) for \"**\" — zero hits, matching the 2026-07-09 emphasis-pass maintainer note. The expanded/composed view's chunk 3 carries one \"**Prompt**\" label from the prompt-registry chrome (≤1 word, a handle, single bolded element on that chunk) — within budget.",
+      "evidence": "chunk 4 (\"You make agentic happen\") carries 3 bolded handles (lines 31-33), over the ≤1-per-slide default budget, but the file's own maintainer block (line 81, \"Soil slide\" note) states \"(a) one bold handle per order = the law-slide pattern\" as a deliberate, Antti-directed accept-note for exactly this slide. §9's own text permits \"a law/consolidation slide may carry one handle per law.\" Accept-note present in file; no edit owed. Rest of body carries zero bold (confirmed by grep, matches the 2026-07-09 Emphasis-pass maintainer note).",
       "fix_hint": null,
       "blocking": false
     },
@@ -108,17 +110,57 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Standard lecture body under the normal lecture-phase wrapper; the {{prompt:agents-that-build-agents-handoff}} marker resolves via expand-md.js into chunk 3, confirmed present in the expanded view used for this judgment.",
+      "evidence": "Entire body (lines 1-63) sits inside one continuous lecture body above the maintainer cut, included via `[Agents that build agents](lectures/agents-that-build-agents.md)` in `spot-gaps-build-the-loop.md` line 53, which reaches the composed deck through the module's `.phase--lecture` wrapper. No phase-less stray prose section exists outside the H1-to-cut span.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-numbering.js --file curriculum/lectures/agents-that-build-agents.md` → \"OK — 1 files, Phase/Step numbering consistent.\" exit 0. No hand-numbered `## Phase N:`/`## N.` headers in this file (M-refs are prose, not headers).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/agents-that-build-agents.md` → \"OK — 1 files, no page-geometry pointers across the slide cut.\" exit 0.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No \"## Phase N:\" / \"## N.\" step headers in this file.",
+      "evidence": "No in-body markdown links present in the body (grep for `](` in lines 1-63 = 0 hits). Nothing to inventory.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/agents-that-build-agents.md` → \"files: 1  slides: 6  limits: 210 words / 6 bullets / oversized: 0 / every slide is within limits.\" exit 0.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "5 of 6 body headers read as claims (\"The move widens to everything you do\", \"The agent stops where your judgement begins\", \"You make agentic happen\", \"There is no last turn\", and the noun-phrase-as-claim \"The handoff prompt that builds your kit\"). Chunk 5's \"Ralph\" is a bare proper-noun label, not a claim sentence — closest-to-violating header. Checked against corpus precedent: `grep -rn \"^## \" curriculum/lectures/*.md` shows other short topic-label lecture headers already in house convention (\"Bridge\", \"Eval\", \"Compounding\", \"Optional\"), so a single-word named-concept header alongside claim headers is established practice, not a drift from rule 15's split (whose measured scope and worked examples are the exercise-imperative-vs-lecture-claim split, not a mandate that every lecture header individually be a full claim sentence). No reader-confusion harm present; forcing \"Ralph\" into a claim-shaped header would flatten a deliberate closer beat that echoes the bash block below it. Accepted as house convention, not filed as REVISE.",
       "fix_hint": null,
       "blocking": false
     }

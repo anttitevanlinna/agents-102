@@ -40,8 +40,8 @@
 
 - Family B judged 2026-07-03: B-star durability PASS — container reads whole voice-absent; spine-anchoring exemplary (every far-half phase names its map slot + governor-verb) and worldview-fit textbook recognition-before-naming ("you feel where it bites first"; backpressure is named in the post-launch M4 closer, then built and calibrated in M5 and composed in M6).
 
-**Quality:** compendium-audited 2026-08-04 (writing@8949c38 story@8949c38 technical@1c765f2 behavior@1c765f2 pedagogy@8949c38 strategy@1c765f2 slides@8949c38)
-- judges @8949c38: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-19 (writing@4f8270e8 story@4f8270e8 technical@1c765f2 behavior@1c765f2 pedagogy@4f8270e8 strategy@1c765f2 slides@4f8270e8)
+- judges @4f8270e8: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 <!-- backing -->
 

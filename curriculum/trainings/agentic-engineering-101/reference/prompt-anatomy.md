@@ -6,13 +6,13 @@ A prompt is closer to a piece of advertising copy than to a function definition.
 
 The right way to read a prompt, your own or somebody else's, is to ask which clauses *would have to be different* for the output to come back wrong. Those are the moves. This page names thirty-three of them, grouped into seven families, plus six recurring three-move combinations at the end.
 
-Use this page as a lookup while reading prompts. Skim labels first. Come back for the entries that catch.
+Use this page as a lookup while reading prompts. Skim labels first. The entries that catch are the ones worth reading twice.
 
 Per-entry shape: bold lead-in carrying both definition and the first beat of the why. Plain continuation. Italicised quote from a real Agents 101 or AE101 prompt at the end.
 
 ---
 
-## Shape the input
+## Shape the input: naming the file, naming the window
 
 The agent already has the whole internet in its head. Your job is to tell it which thirty words of it to weight. The four moves in this family are different shapes of *here, not there.*
 
@@ -28,11 +28,19 @@ The agent already has the whole internet in its head. Your job is to tell it whi
 
 *"Read this scrollback: the plan walk-down, the push-back that changed the plan, what came back from the send-off, the critique exchange."*
 
+---
+
+## Shape the input: the paste hook
+
 ### Open hook
 
 **The prompt ends with a colon. You paste your input after, all inside one fenced block.** You have the value more concretely than Claude does: a bug you live with, a feature you own, a delta only you noticed. The hook lets you supply it without a *paste this into chat, then describe your bug* dance. Pasting and typing in one go is the kind of small ergonomic that adds up over a training week.
 
 *"The surface the skill called out harder than I would have:"*
+
+---
+
+## Shape the input: sealing the context
 
 ### Sealed context
 
@@ -44,7 +52,7 @@ The agent already has the whole internet in its head. Your job is to tell it whi
 
 ---
 
-## Shape the target
+## Shape the target: one thing, one criterion
 
 If a request can be satisfied by ten different outputs, the agent picks the easiest. Constrain the target to one thing, of one shape, above a threshold, and the agent has to argue with itself before answering. Most of the useful work happens in that argument.
 
@@ -60,6 +68,10 @@ If a request can be satisfied by ten different outputs, the agent picks the easi
 
 *"(a convention the skill claims that the invocation didn't enforce, a codebase-specific failure mode the skill missed, an assumption the invocation had to correct)"*
 
+---
+
+## Shape the target: threshold and count
+
 ### Earnable threshold
 
 **Names a condition under which the work happens, and names refusal as a valid outcome.** Most sessions don't produce a durable rule, a ship-worthy artifact, or a team-PR candidate. Without a threshold word, the prompt reads as a request and the agent fulfils it whether or not the work is there to do. *If one earned itself* invites *no* as a first-class answer. Pair with **null-case escape** to give *no* somewhere to go.
@@ -74,7 +86,7 @@ If a request can be satisfied by ten different outputs, the agent picks the easi
 
 ---
 
-## Shape the output
+## Shape the output: format and anti-pattern
 
 The agent's defaults are well-rehearsed: append rather than rewrite, wall of text rather than diff, pre-confirm rather than report, summarise everything after writing. Each move in this family overrides one default by naming the wrong shape out loud.
 
@@ -90,6 +102,10 @@ The agent's defaults are well-rehearsed: append rather than rewrite, wall of tex
 
 *"Do not append a critique addendum."*
 
+---
+
+## Shape the output: integration and sequence
+
 ### Integration mode
 
 **Names whether the new input rewrites *through* the existing artifact or *adds a new section* to it.** Without specification, the agent appends, and you end up with a *Brand voice* section instead of a voice-shaped homepage. *Integrate, not append* tells it the new input reshapes the whole. *Add as a new section titled X* tells it the opposite. No middle ground. The unspoken default is always *append*.
@@ -101,6 +117,10 @@ The agent's defaults are well-rehearsed: append rather than rewrite, wall of tex
 **Words like *first / then / before / after / separately* break the prompt into ordered moves.** Without the sequence, the agent merges adjacent moves into one wall of output and the boundary between two judgments dissolves. *Then, separately* does surprising labor. It tells the agent *two artifacts, two before/afters, two places to push back.* Punctuation marks a thinking pause. Sequencing words mark a working pause.
 
 *"First: find the one section… Then, separately: if one rule about how I worked with security skills… earned itself…"*
+
+---
+
+## Shape the output: reporting and disagreement
 
 ### Post-action report
 
@@ -114,6 +134,10 @@ The agent's defaults are well-rehearsed: append rather than rewrite, wall of tex
 
 *"Name where the three stances disagreed and which one you sided with and why; don't smooth the disagreement."*
 
+---
+
+## Shape the output: collaboration and completion
+
 ### Append-only collaboration
 
 **When multiple processes share state via files, write append-only. Never overwrite earlier findings.** Streaming append unlocks parallel work: another session can read the file while this one writes to it, finding-by-finding. Overwrites in shared state are how concurrent agents step on each other's outputs and produce nothing usable. The discipline matters most when work is split across sessions.
@@ -122,15 +146,15 @@ The agent's defaults are well-rehearsed: append rather than rewrite, wall of tex
 
 ### No-summarize completion
 
-**When the eval has to be honest, tell the agent not to summarize the artifact in chat after writing it.** A summary spoils the read. If you (or the next agent) are about to evaluate the briefing without bias, the briefing's content must not leak into context. *Only confirm that the file exists.* The agent's instinct to recap is the default. The discipline of suppressing it is the move.
+**When the eval has to be candid, tell the agent not to summarize the artifact in chat after writing it.** A summary spoils the read. If you (or the next agent) are about to evaluate the briefing without bias, the briefing's content must not leak into context. *Only confirm that the file exists.* The agent's instinct to recap is the default. The discipline of suppressing it is the move.
 
 *"When the subagent finishes, do not summarize the briefing in chat. Only confirm that `module-5/briefing.md` exists."*
 
 ---
 
-## Shape the execution
+## Shape the execution: naming the skill, isolating the work
 
-Six operational moves about *where* the work runs and *how* it gets done. Which session, which skill, which subagent, how many at once. One (preamble suppressor) is psychology dressed as mechanics, which is why it sits here rather than under interaction.
+Six operational moves about *where* the work runs and *how* it gets done. Which session, which skill, which subagent, how many at once. One of them is psychology dressed as mechanics, which is why it sits here rather than under interaction.
 
 ### Skill by name
 
@@ -144,6 +168,10 @@ Six operational moves about *where* the work runs and *how* it gets done. Which 
 
 *"Run it in a subagent so the six-category output doesn't flood this thread."*
 
+---
+
+## Shape the execution: dispatch and narration
+
 ### Parallel-stance dispatch
 
 **Spawn N subagents in parallel, each with a *different* named stance or framing.** The independence is what makes the method work. Three agents given the same prompt produce three indistinguishable answers, and you've burned three times the tokens for nothing. Three agents told *plan backward, test assumptions, find the reframe* produce divergent reads that you can then triangulate. The variance is the signal. The named stances are what create the variance.
@@ -155,6 +183,10 @@ Six operational moves about *where* the work runs and *how* it gets done. Which 
 **Tells the agent to skip its *I'll now read X and propose…* narration and lead with the artifact.** Claude defaults to two-to-four sentences of preamble before producing anything. Plan mode is the worst case: the highest-attention slot at the top of the response, the only lines a skimmer reads, gets eaten by narration. *No preamble. Lead with the diff* doesn't kill the habit but bites it down to something you can skim past. Pair with a body primer naming where to look on the page.
 
 *"No preamble. Start with the SHA."*
+
+---
+
+## Shape the execution: research and failure
 
 ### Research before ask
 
@@ -170,7 +202,7 @@ Six operational moves about *where* the work runs and *how* it gets done. Which 
 
 ---
 
-## Shape the interaction
+## Shape the interaction: locking in the write
 
 Conversation has a rhythm. The default rhythm between human and agent is form-filling: agent dumps the list, you fill it in. The moves in this family install a different rhythm. One turn at a time, with explicit triggers for when the file gets touched.
 
@@ -179,6 +211,10 @@ Conversation has a rhythm. The default rhythm between human and agent is form-fi
 **Separates the conversation about the artifact from the writing of the artifact.** *Don't touch the file until I say 'lock it in.'* Without the lock-in, the agent rewrites the file after every turn of dialog. Each rewrite costs 30+ seconds, tokens you didn't budget, and the conversation crawls. With the lock-in, dialog is cheap and the write happens once on your trigger. The phrase *lock it in* is the line between iteration and persistence.
 
 *"Don't touch the plan file until I say 'lock it in.' When you do edit the plan, use Edit on the changed section, not Write on the whole file."*
+
+---
+
+## Shape the interaction: pacing the questions
 
 ### Batched, not dumped
 
@@ -192,6 +228,10 @@ Conversation has a rhythm. The default rhythm between human and agent is form-fi
 
 *"Push back when my answer is generic. A judge that says 'check if the output is good' is useless."*
 
+---
+
+## Shape the interaction: the critique register
+
 ### Self-critique register
 
 **Uses self-critique verbs (*re-read, audit, find what's still surface*). Never defense verbs (*defend, justify, prove*) when asking the agent to interrogate its own work.** *Defend* primes Claude's helpful-advocate mode and produces rationalisations. *Find what's still surface* gives it explicit permission to find fault. Same content, opposite framings, opposite outputs. Defense surfaces excuses. Self-critique surfaces gaps.
@@ -200,7 +240,7 @@ Conversation has a rhythm. The default rhythm between human and agent is form-fi
 
 ---
 
-## Shape the boundary
+## Shape the boundary: the scope guard
 
 Every prompt makes implicit choices about where the agent is allowed to act and where it has to hand back. Naming those choices is the difference between an agent that quietly edits your team's `CLAUDE.md` and one that flags the rule for a separate PR. Boundaries that aren't named are boundaries that get crossed.
 
@@ -209,6 +249,10 @@ Every prompt makes implicit choices about where the agent is allowed to act and 
 **Names which file the work writes to, with the opposite case named out loud.** Agents don't intuitively distinguish personal-gitignored from team-PR-reviewed. *Personal file, not team `./CLAUDE.md`* puts the boundary in front of the agent rather than expecting it to infer. The opposite-case clause is what makes the boundary work. It's the *not that* against the *this*. One without the other is half a guard.
 
 *"…integrate it into `./CLAUDE.local.md` (integrate, don't append; personal file, not team `./CLAUDE.md`)."*
+
+---
+
+## Shape the boundary: escalation and refusal
 
 ### Escalation lane
 
@@ -222,11 +266,19 @@ Every prompt makes implicit choices about where the agent is allowed to act and 
 
 *"If nothing earned itself, say so and skip the rules-file write."*
 
+---
+
+## Shape the boundary: source-or-flag
+
 ### Source-or-flag
 
-**Every claim cites the file or page it came from. If you can't cite, mark `[NOT FOUND]` and don't fill from prior knowledge.** Distinct from null-case escape, which is about whole-prompt refusal. This is about claim-level honesty inside a longer output. The agent's default is to fill gaps with plausible content from training data. The flag turns gaps into evidence the human can act on rather than hidden fabrication. *"I can't tell" is a better answer than a confident guess* is the same move from a different angle.
+**Every claim cites the file or page it came from. If you can't cite, mark `[NOT FOUND]` and don't fill from prior knowledge.** Distinct from null-case escape, which is about whole-prompt refusal. This is about claim-level candour inside a longer output. The agent's default is to fill gaps with plausible content from training data. The flag turns gaps into evidence the human can act on rather than hidden fabrication. *"I can't tell" is a better answer than a confident guess* is the same move from a different angle.
 
 *"Every finding cites the specific page title and URL you actually opened. If you can't find a source for a claim, write '[NOT FOUND]', do not fill from prior knowledge."*
+
+---
+
+## Shape the boundary: the multi-result fallback
 
 ### Multi-result fallback
 
@@ -236,7 +288,7 @@ Every prompt makes implicit choices about where the agent is allowed to act and 
 
 ---
 
-## Shape the continuity
+## Shape the continuity: the chain back-reference
 
 Two small moves that connect a prompt to what came before and what comes after. The artifacts that survive past the current session are the ones named with paths and quoted with evidence.
 
@@ -246,6 +298,10 @@ Two small moves that connect a prompt to what came before and what comes after. 
 
 *"Invoke the test-strategy skill we just wrote on the feature I'm shipping: the same feature from the previous two exercises, now including the hardening decision from the ADR."*
 
+---
+
+## Shape the continuity: the concreteness forcing function
+
 ### Concreteness forcing function
 
 **Names the moment, quotes the beat. Rules with evidence beat rules without.** Rules abstracted from their origin become advice (*"always run STRIDE before access-mapping"*). Rules tied to a moment (*"STRIDE returned six categories and I picked the wrong one because I hadn't read the access surface first"*) carry their evidence with them. The quote is the proof the rule earned itself. Without it, anything can be smuggled in under the label *learned*.
@@ -254,9 +310,9 @@ Two small moves that connect a prompt to what came before and what comes after. 
 
 ---
 
-## Three-move patterns
+## Three-move patterns: compound and audit
 
-Recognising single moves is the floor. Recognising the combinations is the ceiling. Six patterns recur often enough across the curriculum that naming them is worth the page space. A reader who internalises these six has most of the training in muscle.
+Recognising single moves is the floor. Recognising the combinations is the ceiling. These patterns recur often enough across the curriculum that naming them is worth the page space. A reader who internalises these six has most of the training in muscle.
 
 ### The Compound prompt
 *Singular target + scope guard + null-case escape.*
@@ -271,6 +327,10 @@ Example: `ae101-m2-integrate-branch`, `compound-and-close-1`<!--flag:module:earn
 Fires whenever a prompt asks the agent to read a lot and return a little. *Read these inputs and no others, in a fresh subagent, return a ranked top five.* The seal blocks fabrication. The subagent keeps the main thread scannable. The cap drives prioritisation. Together they convert a wide read into a narrow report.
 
 Example: `walk-and-send-off-2`, the `diagnose-and-resend` family, the introspection moves in `orient-and-introspect`.
+
+---
+
+## Three-move patterns: walk-away, grill, and skill-author
 
 ### The walk-away prompt
 *Sealed context + fail-loud-not-fabricate + post-action report.*
@@ -293,6 +353,10 @@ Fires when authoring a Claude Code skill from session evidence rather than from 
 
 Example: `author-test-strategy-skill-1`.
 
+---
+
+## Three-move patterns: the multi-perspective synthesis
+
 ### The multi-perspective synthesis
 *Parallel-stance dispatch + don't smooth disagreement + source-or-flag.*
 
@@ -302,11 +366,9 @@ Example: `three-minds-one-synthesis-1`, `three-retrievers-one-curator-1`, `self-
 
 ---
 
-A well-shaped prompt has three moves doing the heavy lifting and a handful of others quietly. The pattern names above are the load-bearing trios. The decoration around them changes per prompt, but the trio is what makes the prompt work. Recognise the trio and the rest reads itself.
+A well-shaped prompt has three moves doing the heavy lifting and a handful of others quietly. The six pattern names just walked through are the load-bearing trios. The decoration around them changes per prompt, but the trio is what makes the prompt work. Recognise the trio and the rest reads itself.
 
 <!-- maintainer -->
-
-**Slide deixis accepted:** "names above" (check_slides.md §12) — the six pattern names are `###` subheads inside the same `## Three-move patterns` chunk; the closing line reads them off its own slide.
 
 **Authoring contract:** prompt frontmatter may carry `anchors` metadata later, but the current renderer does not surface hover highlights. If highlight mode ships, add the frontmatter anchors and renderer support in the same change. Until then, this page is the lookup surface and the examples are the binding.
 

@@ -84,7 +84,7 @@ Stuck on the connector or want specific click-paths? See [Claude quick reference
 
 If you only do one thing from this prework, do this. The rest builds on it.
 
-Open [What is an Agent, LLM vs chat](supplementary/what-is-an-agent.md#llm-vs-chat). Two pages on LLM vs chat (what changes when you start building systems instead of having conversations). You'll meet the rest of that document section by section as the training goes.
+Open [What is an Agent, LLM vs chat](trainings/agents-101/supplementary/what-is-an-agent.md#llm-vs-chat). Two pages on LLM vs chat (what changes when you start building systems instead of having conversations). You'll meet the rest of that document section by section as the training goes.
 
 *Proof: you arrive with a rough mental frame, not a blank one.*
 

@@ -719,3 +719,41 @@ test('trainer handbook: the Northwind cut drops the six-module schedule', () => 
   assert.match(full, /Two-day cohort schedule/, 'the six-module arc keeps its schedule');
   assert.doesNotMatch(full, /\*\*Sittings\.\*\*/, 'and does not take the cut-only line');
 });
+
+// ── Cross-doc link FORM ─────────────────────────────────────────────────────
+// A link to a training-specific page must carry its `trainings/<training>/`
+// prefix. rewriteCrossDocLinks matches two shapes and only two — shared
+// `(exercises|lectures)/<slug>.md`, and `trainings/<t>/(reference|supplementary)/
+// <slug>.md` — so a bare `supplementary/<slug>.md` is rewritten by neither and
+// survives into the SPA as a raw relative href that resolves nowhere. The file
+// it names exists, which is why an existence checker reports it clean; the
+// defect is the form, not the target. Found in five Agents 101 module links,
+// 2026-08-19.
+test('no student-facing file links a training page without its trainings/ prefix', () => {
+  const { execSync } = require('node:child_process');
+  const fs = require('node:fs');
+  const root = require('node:path').join(__dirname, '..');
+  const files = execSync(
+    'git ls-files "curriculum/trainings/*/*.md" "curriculum/exercises/*.md" "curriculum/lectures/*.md"',
+    { cwd: root, maxBuffer: 1 << 24 },
+  ).toString().trim().split('\n').filter(Boolean);
+
+  const ANY = /\]\(([^)\s]*(?:supplementary|reference)\/[a-z0-9-]+\.md[^)]*)\)/g;
+  const OK = /^(?:\.\.\/)*trainings\/[a-z0-9-]+\/(?:reference|supplementary)\/[a-z0-9-]+\.md(?:#[^)]*)?$/;
+
+  let seen = 0;
+  const bad = [];
+  for (const f of files) {
+    const text = fs.readFileSync(require('node:path').join(root, f), 'utf8');
+    ANY.lastIndex = 0;
+    let m;
+    while ((m = ANY.exec(text)) !== null) {
+      seen++;
+      if (!OK.test(m[1])) bad.push(`${f} -> ${m[1]}`);
+    }
+  }
+  // Guard the guard: a pattern matching nothing would pass vacuously.
+  assert.ok(seen > 10, `expected to inspect many training-page links, inspected ${seen}`);
+  assert.deepEqual(bad, [],
+    `links the renderer cannot rewrite (add the trainings/<training>/ prefix):\n${bad.join('\n')}`);
+});

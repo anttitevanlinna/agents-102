@@ -66,7 +66,7 @@ Watching where it bends is continuous improvement, done by hand. Every miss turn
 
 ## Pre-reads before Module 3
 
-[Agent Trigger List, After Module 2](supplementary/agent-trigger-list.md#after-module-2-start-noticing-trigger-moments), for noticing when real work should call the agent. Then selected sections from [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) on tools, memory, and context.
+[Agent Trigger List, After Module 2](trainings/agents-101/supplementary/agent-trigger-list.md#after-module-2-start-noticing-trigger-moments), for noticing when real work should call the agent. Then selected sections from [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) on tools, memory, and context.
 
 [Before Module 3](exercises/module-3-prework.md)
 

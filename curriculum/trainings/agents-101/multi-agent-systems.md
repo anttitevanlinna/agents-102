@@ -63,7 +63,7 @@ Memory is a working artefact, sharpened by what it bumps into.
 
 ## Pre-reads before Module 4
 
-[Agent Trigger List, After Module 3](supplementary/agent-trigger-list.md#after-module-3-notice-when-one-agent-is-not-enough), then selected sections from [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) on multi-agent coordination.
+[Agent Trigger List, After Module 3](trainings/agents-101/supplementary/agent-trigger-list.md#after-module-3-notice-when-one-agent-is-not-enough), then selected sections from [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) on multi-agent coordination.
 
 [Before Module 4](lectures/module-4-prework.md)
 

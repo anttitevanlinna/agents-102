@@ -5,7 +5,7 @@ With the right guardrails, you create output that's genuinely yours, not generic
 
 ## Prework
 
-Set up Claude Code or Cowork. Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read [What is an Agent, LLM vs chat](supplementary/what-is-an-agent.md#llm-vs-chat).
+Set up Claude Code or Cowork. Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read [What is an Agent, LLM vs chat](trainings/agents-101/supplementary/what-is-an-agent.md#llm-vs-chat).
 
 ## What You'll Learn
 After this module, you will be able to:

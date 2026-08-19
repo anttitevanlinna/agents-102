@@ -70,7 +70,7 @@ Recurring leak = a **skill's own step text** re-imposing the gate (`/research-re
 
 ## Rule tiers
 
-Compendiums serve two consumers: judges (need every carve-out) and generators (need the lead). Leads are 5% of the bytes, so they ship as a generated index — T0 `_index/diamond.md` always-on, T1 `_index/<surface>.leads.md` per surface, T2 `rule.js <surface> <N>` per rule body, T3 the compendium itself for judges and rule edits. Rules still live in `memory/check_*.md`; tier membership is one frontmatter line. **Edit a rule → `node curriculum/evals/scripts/build-rule-index.js`** (hooks fail closed to T3 while the index is stale) **→ `compendium-drift.js --repin`**. Full contract: `.claude/rules/content-rules.md`.
+Four tiers T0–T3; leads ship as a generated index so a generator pays ~5% of the judge's bytes. Rules live in `memory/check_*.md`; tier membership is one frontmatter line. **Edit a rule → `node curriculum/evals/scripts/build-rule-index.js` → `compendium-drift.js --repin`** (hooks fail closed to T3 while the index is stale). Contract: `.claude/rules/content-rules.md`.
 
 ## Memory / compendium authoring
 

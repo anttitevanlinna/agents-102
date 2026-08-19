@@ -42,6 +42,8 @@ It would need boundaries. What can it read? What should it never say? Which risk
 
 It would need a groundedness judge. Are the names, numbers, claims, and recommendations attached to evidence? That was Module 5.
 
+## Two evals, two different jobs
+
 And if the mail is not merely supposed to be true, but actually useful, it needs one more thing: a steering eval.
 
 Groundedness protects the floor. Steering raises the ceiling.

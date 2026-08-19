@@ -44,9 +44,13 @@ Ask Claude to retro your rules file.
 
 Claude runs the retro and updates the file, then summarises what changed in chat. You may be surprised by how much still changes in the generation rules. First pass is pretty much never exactly right.
 
+## Push back on what the retro missed
+
 Two patterns to watch. The LLM is generous to a rules file it just helped write. *"Mostly worked, small sharpens"* is the agent grading its own work charitably. The prose summary rounds corners.
 
 Push back on anything that doesn't match your sense of the work. That's the pattern: every time you do work like this and reflect, the rules file gets sharper. **Compound interest on a rule file.** This is the move you'll use on every agent file you write from here on: do the work → capture the rules → reflect → sharpen the rules. Module 2 systematises it; Module 1 lands the muscle.
+
+## Get a cold read
 
 **Then, Claude as cold critic.** Now that you've reflected on your own experience, get an unbiased verdict.
 

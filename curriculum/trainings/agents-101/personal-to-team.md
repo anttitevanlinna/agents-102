@@ -27,7 +27,11 @@ Hold that feeling. It's not a governance question yet. It's a generous one. At M
 
 Two questions to warm up: who's the one person who came to mind just now? And what makes you hesitate about actually handing this to them?
 
+## Interview for the job
+
 Start with the move that matters most: **interview for the job.** Your teammate doesn't want your agent. They want a job done. Your agent, your skill, your output, your interface: any of those is a candidate for hire against whatever they're using now. That reframe moves the starting question from *"what should I share?"* (yours) to *"what job is my teammate trying to get done, and which sharing shape does it?"* (theirs). Phase 1 is that interview, and the agent does the heavy lifting. It reads your memory, drafts the hypothesis, asks you the five to eight questions that plug real holes.
+
+## Pick the sharing shape
 
 Then the candidates: **four sharing shapes that work in practice.** Share the context, share a skill, share the output (push), share an interface (pull). The fifth shape, "share the whole agent," is the one that sounds right and doesn't hold up. You'll see why in the next hour.
 
@@ -58,6 +62,8 @@ Five minutes. Claude reviews the sharing deliverable and sharpens whichever shar
 > **Watch for slowness.** When you push back on the rewrite, Claude should Edit the section you flagged, not rewrite the whole file. The prompt above tells it to. If Claude reaches for Write on the whole artifact anyway, push back: *"Edit just the section I named."*
 
 Notice what this prompt insists on: name the path, overwrite in place, quote the before-and-after for every claim. When you're sharpening something for another person to use, "what got sharpened" without the actual lines is a draft pretending to be a finished thing. The before-and-after quote is how you know the sharpening reached the file, not just the summary.
+
+## Push back on the summary
 
 Read Claude's summary. Push back where it's wrong. *"The teammate's job wasn't vague, you just didn't see it"* / *"you pulled too much out of the skill, put the edge cases back."* The artifact: the sharpened sharing file itself, plus one line in your Module 7 next-step file naming the first move. Save the conversation. It's the bridge to when work resumes.
 

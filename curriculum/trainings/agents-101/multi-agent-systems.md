@@ -51,6 +51,8 @@ Five minutes. Claude reviews the session and sharpens the rules that govern how 
 
 Notice what this prompt insists on: harsh audit, two seams minimum, specific evidence (file, pass, what was lost). That last clause is the work. Without it, Claude's review settles into the diplomatic shape it likes: three things went well, one mild wobble, here's the cleaner version. Diplomatic is the failure mode at a handoff seam. The place where things actually go wrong is exactly where the model rounds the corner. The harder ask forces a real audit. You'll get fewer comfortable summaries and more uncomfortable specifics, which is what you want when the rules file has to govern next session's agents.
 
+## Push back on the summary
+
 Read Claude's summary. Push back where it's wrong. *"No, the planner and the reframer really did need to be separate."* *"You missed where the Confluence retriever kept normalising before writing."* The unease you feel about the synthesized briefing is not something to close today. It stays. Hold it as a question, not a fix.
 
 ## Bring to Module 4

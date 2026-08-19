@@ -50,7 +50,11 @@ Ask Claude to review the session and update `./CLAUDE.md` with groundedness oper
 {{prompt:a101-m5-debrief-groundedness-rules}}
 
 
+## Notice what the prompt insists on
+
 Notice what this prompt insists on: touch only the Groundedness checks section, preserve every other section verbatim, then read back what you wrote and confirm each rule landed. Both moves do work the model wouldn't volunteer. Left to itself, Claude treats `./CLAUDE.md` as a clean canvas. A small edit becomes a full rewrite, your earlier rules quietly drift, the diff is uglier than it needed to be. Reading back the section against the file is a separate problem: the report Claude writes describes what it intended, not what landed. The verify-at-artifact step closes the gap. Two different patterns from the same family. Name the boundary, then check the work. Once you have them, you'll start seeing where to apply them in every prompt that asks Claude to edit a file you care about.
+
+## Push back on the summary
 
 Read Claude's summary. Push back where it's wrong: *"run the check only for external-facing claims, not every note"* / *"that rule is too vague; name the evidence roster"* / *"this should say when to stop and ask for sources."* Two things now travel: the reusable judge file exists, and `./CLAUDE.md` tells future sessions when groundedness checking is required.
 

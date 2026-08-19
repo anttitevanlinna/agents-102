@@ -24,6 +24,8 @@ The question that shows up without being asked: *where is this all going?*
 
 Hold that. Module 8 doesn't answer it. It shows you the shape of an answer you'll keep sharpening.
 
+## Watch an agent build an agent
+
 **Agent generates agent.** The meta-tool in action. Sets up the Extend exercise. You watch one agent build another, end-to-end, on real input. That's the whole lecture.
 
 [Exercise: Extend your system](exercises/extend-your-system.md)
@@ -50,6 +52,8 @@ Five minutes. Claude reviews the session and sharpens whichever file carried the
 > **Watch for slowness.** When you push back on the rewrite, Claude should Edit the section you flagged, not rewrite the whole file. Kernel and agent-set files run large; full-file rewrites per pushback turn drag. If Claude reaches for Write on the whole file anyway, push back: *"Edit just the section I named."*
 
 Notice what this prompt insists on: name the file before rewriting, quote the before-and-after for every claim, surface stalls even if the round felt smooth. The flywheel amplifies specificity the same way it amplifies everything else. Precision compounds. So does blur.
+
+## Push back on the summary
 
 This is a self-audit of a live agent round. Convenient, not neutral. If the summary sounds too clean, ask the harsher read: *"Name one critique raised in the session that did not change the rewritten file. Quote the critique and the unchanged line."*
 

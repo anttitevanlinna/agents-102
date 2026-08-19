@@ -22,6 +22,8 @@ His question is the right opener for Module 6: will the bitter lesson apply insi
 
 Module 5 ended with a winner out of four detectors: the judge that now sits in the judges folder. What gets fed to that judge is the thing that changes at Module 6.
 
+## Run the loop without you in it
+
 The question shifts at Module 6. What if the work kept getting sharper, not because you edited it, but because the same judge kept catching what slipped past and the system kept absorbing the catches? What if *you weren't in the room* while that happened?
 
 [Lecture: Evals as steering](lectures/evals-as-steering.md)
@@ -51,6 +53,8 @@ Ask Claude to read the round trail and sharpen the generator's tactic beyond wha
 
 {{prompt:a101-m6-debrief-tactic-sharpen}}
 
+
+## Push back on the summary
 
 Read Claude's summary. Push back where it's wrong. *"That rule is too vague, make it observable"* / *"you added a rule the tactic already had after round 2."* The artifact: the sharpened `./generation-tactic.md` plus one line added to the Module 6 eval-notes file naming the first always-on eval you'll run when work resumes. This is the module's thesis made literal. The work got sharper across rounds because the same judge kept catching the same kinds of misses and the tactic kept absorbing them.
 

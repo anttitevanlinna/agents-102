@@ -22,6 +22,8 @@ Module 1 was the rehearsal. A site, a voice sharpened, fabrication caught by the
 
 You saw Karpathy's LLM Wiki post in the prework. What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you? We'll build one shortly.
 
+## Name the challenge you're carrying
+
 Then the real one: what's the challenge you're carrying right now that isn't solved yet? The thing that's been open in your head for weeks, maybe longer. Not a task. A challenge. Hold it. We're going to build a memory around it.
 
 And one more: if everything you've read, drafted, and half-figured-out on that challenge moved into a memory an agent could read and sharpen, what changes back at work?
@@ -50,9 +52,13 @@ Five minutes. A retro, **and the first `./CLAUDE.md` at this directory.** Module
 {{prompt:a101-m2-debrief-claude-md}}
 
 
+## Push back on the summary
+
 Read Claude's summary. Push back on anything that doesn't match your sense of the work. *"No, that rule's too strict."* *"You missed the bit where we had to regenerate three times because of X."* Same move Module 1 landed on your guardrails file: do the work, let the agent capture the rules, push back where the agent got it wrong. Module 2 lands your first wider rules file at the training-dir root (`./CLAUDE.md`), the one every subsequent module extends.
 
 What Claude leaves out is often the signal. A clean summary that names three rules and skips the messy fourth, the one where the work bent and you re-prompted twice, is the tell. Compounding rules files are not tidy.
+
+## Sharpen where it bends
 
 > Your agent is "right" when it works. Every miss is context you haven't written yet. Sharpen the memory, tighten a rule, rewrite the prompt. You won't spot the next mistakes by re-reading the files you already have. You spot them by running the system and watching where it bends.
 

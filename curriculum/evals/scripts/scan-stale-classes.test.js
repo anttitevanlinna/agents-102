@@ -472,4 +472,39 @@ test('voice_panel: reference pages are out of panel scope', () => {
   assert.strictEqual(scanFile(p, setIo(files, {})).extra.voice_panel, undefined)
 })
 
+
+// --- rule-drift: the file held still, the RULE moved ------------------------
+//
+// Pins are commit shas and the compendiums are untracked, so this axis was
+// invisible: a rule could be rewritten and every file kept a green pin taken
+// against text that no longer existed. io.ruleDrift supplies the classes owed;
+// it is optional, so every io stub above still describes a repo with no ledger.
+const DRIFT_DOC = '# T\n**Quality:** compendium-audited 2026-01-01 (writing@abc1234 story@abc1234 technical@abc1234 behavior@abc1234 pedagogy@abc1234 strategy@abc1234 slides@abc1234)\n\nbody\n'
+function driftIo(classes) {
+  return { readFile: () => DRIFT_DOC, gitDiff: () => '', validSha: () => true, ruleDrift: () => new Set(classes) }
+}
+
+test('scanFile: a pin whose compendium rule moved is stale even with an untouched file', () => {
+  const r = scanFile('curriculum/lectures/x.md', driftIo(['writing']))
+  assert.deepStrictEqual(r.classes, ['writing'])
+  assert.equal(r.detail.writing, 'rule-drift')
+})
+
+test('scanFile: no ledger (io without ruleDrift) claims nothing', () => {
+  assert.deepStrictEqual(scanFile('curriculum/lectures/x.md', driftIo([])).classes, [])
+  const noAxis = { readFile: () => DRIFT_DOC, gitDiff: () => '', validSha: () => true }
+  assert.deepStrictEqual(scanFile('curriculum/lectures/x.md', noAxis).classes, [])
+})
+
+test('scanFile: a file that BOTH moved and drifted still reports diff-region', () => {
+  const io = { ...driftIo(['writing']), gitDiff: () => '@@ -4 +4 @@\n+rewritten body line\n' }
+  assert.equal(scanFile('curriculum/lectures/x.md', io).detail.writing, 'diff-region')
+})
+
+test('filterItems: rule-drift keeps a class the diff would have pruned', () => {
+  const io = { readFile: () => DRIFT_DOC, gitDiff: () => '', validSha: () => true, ruleDrift: () => new Set(['pedagogy']) }
+  const { items, report } = filterItems([{ file: 'curriculum/lectures/x.md', classes: ['writing', 'pedagogy'] }], io)
+  assert.deepStrictEqual(items[0].classes, ['pedagogy'])
+  assert.deepStrictEqual(report[0].kept.map(k => k.reason), ['rule-drift'])
+})
 console.log(`\n${n} tests passed`)

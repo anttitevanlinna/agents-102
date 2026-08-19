@@ -92,6 +92,8 @@ If `proposed_compendium_amendment` is non-empty, **apply it.** Add the one-liner
 
 A compendium is not a student-facing surface, so it is not card-shaped (`check_prompts.md §26`). Do not ask *"apply now? (y/n)"* — that was the old shape and it defeated the skill's purpose: a rule held in a proposal queue is a rule that does not fire at the next generation, which is exactly the failure this skill exists to close. The correction that prompted the amendment has already been made by Antti; re-asking for permission to write it down spends his attention on a decision he just took.
 
+**Then repin the compendium ledger.** `node curriculum/evals/scripts/compendium-drift.js --repin` — the amendment you just landed changes what a judge would say, and every pinned verdict older than the amendment was taken against the previous wording. The repin dates the moved rule so `scan-stale-classes.js` can bill the re-judge as `rule-drift`. Skip it and the amendment is invisible to the eval machinery: the rule fires at generation time and nothing re-checks the corpus already shipped against it.
+
 **Apply is not silent.** Show the landed diff in the report — the amended rule, quoted, and which section it went into — so the amendment is visible and revertable. If it is wrong, one word reverts it, and that costs far less than a rule sitting unapplied for a month.
 
 **Where the stop still is:** if the correction implies an edit to student-facing body text or a prompt body, that edit is a card (BEFORE / AFTER / WHY / RISK, one at a time). The compendium amendment lands now; the curriculum edit waits.

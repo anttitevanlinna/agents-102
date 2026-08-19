@@ -10,9 +10,7 @@ Moved out of `pre-cohort-todos.md` on 2026-08-15, unchanged in substance: they w
 
 - **Judge re-fire sweep.** ~50 stale (file,class) pairs from the 2026-08-09 voice-panel session's edits across 14 files; `scan-stale-classes.js --files <edited>` regenerates the exact bill. Deferred by maintainer call ("evals later"). Batch pattern: `eval-fire` per class, Sonnet, schema-forced ledgers; expect PASSes (edits were panel-driven and compendium-aligned) but expecting is not stamping. The same batch owes the soil-line wave (2026-08-15): 14 stale pairs across the four map lectures plus `learn-from-the-test`. Judge briefs need the mechanical fresh-read check (`grep -c "cross personal → team" <file>`) returned as a number, so a cached verdict cannot pass as a fresh one.
 
-- **Eval-regularity builds.** Four, independent of each other:
-  - (a) flinch-grep lint under `curriculum/evals/lints/` — audience-contract greps: `just a simple`, `trust the agent`, act-verbs near quoted prompts, `check_writing.md` §8 room-form.
-  - (b) compendium-SHA staleness in `scan-stale-classes.js`. A compendium edit should stale its class corpus-wide; today it stales nothing, so a rule can change and every file keeps a green pin taken against the old rule.
+- **Flinch-grep lint** under `curriculum/evals/lints/` — audience-contract greps: `just a simple`, `trust the agent`, act-verbs near quoted prompts, `check_writing.md` §8 room-form.
 
 - **Judge the three rules nobody could cite.** `check_writing.md`'s last three rules shipped unnumbered — bolded leads with no `N.`, so `parseRules` never saw them, no judge could cite them, and the coverage ledger did not know they existed. Numbered 24/25/26 on 2026-08-19; the audit's hole count went 310 → 445, which is 3 rules × 45 files that have genuinely never been judged. Needs a writing-class pass over the AE101 surface set. Diagnostic for the next compendium: `grep -cE '^[0-9]+[a-z]?\. \*\*' <file>` against the eye's count of bolded leads — a gap means rules that are in force for a reader and invisible to the ledger.
 
@@ -23,6 +21,8 @@ Moved out of `pre-cohort-todos.md` on 2026-08-15, unchanged in substance: they w
 - **12 verdicts against rules that no longer exist.** `check_student_facing` §15/16/19 were removed or rewritten without tombstones, and the leads on the citing rows match nothing in the current compendium, so the drift resolver cannot recover them. Either re-judge the six files or delete the rows; keeping them means six files carry writing verdicts that describe a rule set nobody can read.
 
 - **Panel coverage beyond module files.** Seven files paneled to date: two M1 lectures, the M2 and M4 lectures, and the M3/M5/M6 module files. Unpaneled: the remaining lectures, every exercise, supplementaries, reference pages. Fire per the spec's own when-to-fire in `judges/voice-panel.md` — new or reshaped files after the writing-judge pass, and pre-cohort one panel per module's heaviest-prose file.
+
+- **Keep the compendium ledger pinned.** `curriculum/evals/compendium-pins.json` dates each rule's last observed edit, and `scan-stale-classes.js` reads it as the `rule-drift` axis: a pin whose commit date predates a rule edit was taken against text that has since changed. The ledger only works if someone repins after amending a compendium — `node curriculum/evals/scripts/compendium-drift.js` reports drift and exits 1, `--repin` stamps it. Baseline pinned 2026-08-19, so the axis is silent until the first amendment lands. An unrepinned ledger does not raise false alarms; it goes quiet, which is the failure mode worth watching for.
 
 ## Session artifacts worth not re-deriving
 

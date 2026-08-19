@@ -16,6 +16,8 @@
 //   **Time line              → + pedagogy
 //   >15 changed body lines   → + story, pedagogy (bulk rewrite shifts arc + architecture)
 //   behavior extra: any consumed curriculum/prompts/<key>.md changed since pin → behavior
+//   rule-drift: a compendium rule edited after the pin's commit date → that
+//               compendium's eval_classes (see compendium-drift.js)
 // Known under-detection: prose-only platform-capability claim edits won't re-fire
 // technical. Backstop = periodic full-corpus pass.
 //
@@ -29,6 +31,7 @@
 const { execFileSync } = require('node:child_process')
 const fs = require('node:fs')
 const path = require('node:path')
+const { driftedClasses, loadLedger } = require('./compendium-drift.js')
 
 const CLASSES = ['writing', 'story', 'technical', 'behavior', 'pedagogy', 'strategy', 'slides']
 const BULK_BODY_LINES = 15
@@ -287,6 +290,7 @@ function filterItems(items, io) {
       if (!io.validSha(sha)) { kept.push({ cls, reason: 'bad-sha' }); continue }
       if (!(sha in cache)) cache[sha] = changeTags(meta, parseHunks(io.gitDiff(sha, item.file))).tags
       if (cache[sha].has(cls)) { kept.push({ cls, reason: 'diff-region' }); continue }
+      if (io.ruleDrift && io.ruleDrift(sha).has(cls)) { kept.push({ cls, reason: 'rule-drift' }); continue }
       if (cls === 'behavior' && keys.some(k => io.gitDiff(sha, `curriculum/prompts/${k}.md`).trim() !== '')) {
         kept.push({ cls, reason: 'registry-prompt' }); continue
       }
@@ -306,6 +310,7 @@ function scanFile(relpath, io) {
   const row = judgesRow(text)
   const meta = buildLineMeta(text)
   const cache = {}
+  const driftCache = {}
   const classes = []
   const detail = {}
   for (const cls of CLASSES) {
@@ -313,9 +318,14 @@ function scanFile(relpath, io) {
     if (sha) {
       if (!io.validSha(sha)) { classes.push(cls); detail[cls] = 'bad-sha'; continue }
       if (!(sha in cache)) cache[sha] = changeTags(meta, parseHunks(io.gitDiff(sha, relpath))).tags
+      if (!(sha in driftCache)) driftCache[sha] = io.ruleDrift ? io.ruleDrift(sha) : new Set()
       let stale = cache[sha].has(cls)
+      let reason = 'diff-region'
       if (!stale && cls === 'behavior') stale = promptKeys(text).some(k => io.gitDiff(sha, `curriculum/prompts/${k}.md`).trim() !== '')
-      if (stale) { classes.push(cls); detail[cls] = 'diff-region' }
+      // The other axis of staleness: the FILE held still but the RULE moved.
+      // Reported second so a file that also drifted still reads as diff-region.
+      if (!stale && driftCache[sha].has(cls)) { stale = true; reason = 'rule-drift' }
+      if (stale) { classes.push(cls); detail[cls] = reason }
     } else if (new RegExp(`${VERDICT_LEAD}${cls} REVISE`).test(row)) {
       classes.push(cls); detail[cls] = 'revise'
     } else if (!new RegExp(`${VERDICT_LEAD}${cls} (PASS|grandfathered|N/A)`).test(row)) {
@@ -332,11 +342,24 @@ function scanFile(relpath, io) {
   return { classes, detail, extra, extraDetail }
 }
 
+// The compendiums are untracked, so no git diff can see a rule move. The ledger
+// at curriculum/evals/compendium-pins.json dates each rule's last observed edit;
+// a pin whose COMMIT DATE predates that edit was taken against text that has
+// since changed. Absent or unpinned ledger -> empty set, so this axis is silent
+// until someone runs `compendium-drift.js --repin`, never noisy by default.
 function gitIo(repo) {
+  const ledger = loadLedger(path.join(repo, 'curriculum/evals/compendium-pins.json'))
+  const driftMemo = {}
   return {
     readFile: p => { try { return fs.readFileSync(path.join(repo, p), 'utf8') } catch { return null } },
     gitDiff: (sha, p) => { try { return execFileSync('git', ['diff', sha, '--', p], { cwd: repo, encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 }) } catch { return '' } },
     validSha: sha => { try { execFileSync('git', ['rev-parse', '--verify', '-q', `${sha}^{commit}`], { cwd: repo, stdio: 'ignore' }); return true } catch { return false } },
+    ruleDrift: sha => {
+      if (sha in driftMemo) return driftMemo[sha]
+      let when = null
+      try { when = execFileSync('git', ['show', '-s', '--format=%cs', sha], { cwd: repo, encoding: 'utf8' }).trim() } catch { when = null }
+      return (driftMemo[sha] = driftedClasses(ledger, when))
+    },
   }
 }
 

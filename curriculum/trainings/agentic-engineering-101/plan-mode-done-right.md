@@ -53,8 +53,6 @@ Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble i
 
 [Lecture: How instructions grow](lectures/how-instructions-grow.md)
 
-Optional, before your rules files grow: [The context ceiling and token efficiency](trainings/agentic-engineering-101/supplementary/the-context-ceiling.md) on what an overloaded rules file does to quality, and where the rules go instead.
-
 ## Key Concepts
 - Structure is persuasive. A 7-item plan with headers looks like a decision even when it's a draft. Assume about 10% of it is wrong and go find which part.
 - A human read and an agent's walk-down catch different misses. The gap between them is where the plan-reading skill lives.

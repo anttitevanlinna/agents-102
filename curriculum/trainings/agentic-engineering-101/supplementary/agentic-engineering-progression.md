@@ -12,31 +12,31 @@ Fredrik Wollsén and Jesse McCrosky describe a similar team-scale movement in [T
 
 AI helps with work already on your desk. It completes a function, explains a file, drafts a test. You stay beside it, supplying context and correcting each move, and you read everything before you use it.
 
-**Moves you up:** the agent can act, not just answer. The first time you let it edit a file and run the tests while you watch, the work has a second pair of hands in it.
+**Moves you up:** the agent can act, not just answer, and carrying each suggestion into the code by hand is the slow part. The door is trust at one edit's scope, held by your own eyes and a test run. The way up is letting it edit a file and run the tests while you watch.
 
 ## Interactive work
 
 One conversation, one task. The agent reads the code, proposes a change, and acts; you steer each step and watch the result land. Working side by side is where trust starts: you see what it gets right without you, and what it should never be left alone with. It is also where you return on an unfamiliar codebase.
 
-**Moves you up:** trust enables delegation. Once observed competence covers a whole task shape, standing beside every step is the expensive part.
+**Moves you up:** once observed competence covers a whole task shape, standing beside every step is the expensive part. The door is trust across that whole shape, held by the task's conditions and its done-evidence instead of by your presence. The way up is handing one outcome over and judging what comes back.
 
 ## Delegating bounded outcomes
 
-You hand over an outcome, not a step: the agent reads the repository, makes the change, runs the checks, and returns a diff. You have not left engineering. You have widened what you engineer: the task, the conditions around it, and the evidence that says it is done.
+You hand over an outcome, not a step: the agent reads the repository, makes the change, runs the checks, and returns a diff. You have not left engineering. You have widened what you engineer: the task, the conditions around it, and the evidence that says it is done. Durable context lets a handoff stretch longer, and verification lets it stretch farther without losing control.
 
-**Moves you up:** durable context lets a handoff stretch longer, and verification lets it stretch farther without losing control. A delegated task also leaves you waiting, and waiting is capacity.
+**Moves you up:** a delegated task leaves you waiting, and waiting is capacity. The door is trust that survives your absence, held by durable files an agent can read cold and checks that run without you. The way up is shaping a second task and starting it beside the first.
 
 ## Directing parallel sessions
 
-Once one task runs without your constant attention, another runs beside it, if you have a second task shaped well enough to hand over. Worktrees separate the changes, durable files carry the context, and checks establish what deserves to survive. You direct several sessions rather than one conversation.
+Once one task runs without your constant attention, another runs beside it. Worktrees separate the changes, durable files carry the context, and checks establish what deserves to survive. You direct several sessions rather than one conversation.
 
-**Moves you up:** parallelism demands coordination: handoffs, checks, merge discipline. The work of running the sessions starts to repeat, and repetition reveals what belongs in a loop.
+**Moves you up:** parallelism demands coordination, and the coordination repeats: the same handoffs, the same checks, the same merge discipline. The door is trust in the recurring task itself, held by a check you wrote into it. The way up is writing one loop down and letting a session run it.
 
 ## Encoding checked loops
 
 Recurring work becomes a loop with its own checks: the task shape is written down, the gate that judges the result is part of it, and a session can run it end to end. You review outcomes instead of keystrokes.
 
-**Moves you up:** a working loop shifts the question. It no longer improves when you prompt harder; it improves when its surroundings do.
+**Moves you up:** a working loop no longer improves when you prompt harder; it improves when its surroundings do. The door is trust in the gates' own verdicts, held by calibration, the checking of the checks. The way up is working on the surroundings: the rules, the memory, the checks every session starts from.
 
 ## Improving the system
 
@@ -98,7 +98,7 @@ Leverage is not reach alone. It is reach that trust can keep up with.
 
 ## One model, not two
 
-The progression and the leverage model describe the same thing. Every **Moves you up:** is a check getting cheap enough to license more reach, so the levels are calibration states, not ranks. That is why an unfamiliar codebase sends you down a level, and why moving down is the model working.
+The progression and the leverage model describe the same thing. Every **Moves you up:** is a check getting cheap enough to license more reach, so the levels are calibration states, not ranks. Read the doors again: the same trust every time, at a larger scope, held by a check that needs less of you. That is why an unfamiliar codebase sends you down a level, and why moving down is the model working.
 
 <!-- maintainer -->
 
@@ -129,6 +129,7 @@ Claims
 - `wollsen-value-estimate` · detail · "three to four times the value of an average team, far below the multiple suggested by its pull-request count" ← fred-throughput-account
 - `leverage-reach-and-trust` · vision · "Leverage is not reach alone. It is reach that trust can keep up with." ← none-owed
 - `one-model-not-two` · vision · "Every **Moves you up:** is a check getting cheap enough to license more reach, so the levels are calibration states, not ranks." ← none-owed
+- `doors-are-trust-at-scope` · vision · "the same trust every time, at a larger scope, held by a check that needs less of you" ← none-owed
 
 Sources
 - fred-ai-native-playbook `[checked:2026-08-08 result:OK due:2026-09-04]` https://positivelyfred.substack.com/p/the-ai-native-engineering-playbook — [practitioner direct, commercial interest] Wollsén and McCrosky's March 2026 account supplies the Crawl/Walk/Run/Fly sequence and the moves summarized in body: agent in repo, agent-readable context and routines, then parallel orchestration. fallback: remove the stage labels and retain the engineer-active synthesis.
@@ -151,7 +152,7 @@ OODA
 
 <!-- /backing -->
 **Watch-fors (delivery):**
-- Part 1 is one slide per level (Antti-directed 2026-08-14). Each slide carries the level's substance and ends with a `**Moves you up:**` line naming the constraint that opens the next level; the constraint chain lives in those closing lines, not in a separate paragraph. Keep the levels describing work, and keep each `**Moves you up:**` naming a limit met in real work, never a rank or a score.
+- Part 1 is one slide per level (Antti-directed 2026-08-14). Each slide carries the level's substance and ends with a `**Moves you up:**` seam in three beats (Antti-directed 2026-08-19): the limit met in real work, then a `The door is trust …, held by <holder>` sentence, then a `The way up is …` sentence naming the concrete move. The door is always the level of control, calibration and trust earned — never the artifact; the artifact (eyes and a test run, the packaged done-evidence, durable files, a written check, calibrated gates) is the HOLDER of that control, named after `held by`. The closing slide's "Read the doors again" sentence depends on every door staying trust-shaped. Keep the levels describing work, and keep each seam naming a limit and a trust state, never a rank or a score.
 - Part 2 owns the leverage model. Do not add a module-by-module explanation around it.
 - The closing slide names the Part 1 ↔ Part 2 identity: each `**Moves you up:**` is calibration licensing reach, and levels can be lost. It stays short, stays LAST, and the level slides carry only quiet clues toward it (the "you read everything" echo of the diagram's low-reach label, the return-on-unfamiliar-codebase line, the second-task-shaped-well-enough clause). Do not spell the connection out inside Part 1; the reveal is the smart reader's to make first.
 - The diagram is a deliberate duplicate of `curriculum/lectures/the-gate-is-a-claim.md`; keep the model and labels synchronized.

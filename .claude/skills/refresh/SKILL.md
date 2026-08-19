@@ -16,7 +16,8 @@ Memory root: `/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Pro
 
 Every `/refresh` invocation, regardless of scope, runs `./scripts/backup-claude-state.sh` first. This writes a dated zip to `bosser/claude-memory-backups/` in Google Drive containing:
 
-- The agents-102 auto-memory (`memory/` — all compendiums + compounded entries).
+- The agents-102 auto-memory (`memory/` — all compendiums, compounded entries, and the generated `_index/`).
+- Diamond-tier drift is a `/refresh compendiums` question: a rule that has caught nothing in a year of evals and states no hard-grep list is a candidate to leave T0, and a correction that recurs is a candidate to enter it. `node curriculum/evals/scripts/build-rule-index.js` reports numbering lint (dupes, gaps, diamond ghosts) on every run — read it here.
 - The user-level `~/.claude/` generation/eval surface (CLAUDE.md, settings.json, skills/, agents/, hooks/).
 - The project-level gitignored `agents-102/.claude/` surface (hooks/, rules/, agents/, lints/, agent-memory/).
 

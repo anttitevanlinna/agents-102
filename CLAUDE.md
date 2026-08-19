@@ -42,7 +42,7 @@ Proprietary (`curriculum/`, `content/`, `site/`, `memory/`, `docs/`, `scripts/`,
 
 Subagents DO inherit the full CLAUDE.md hierarchy and `.claude/rules/` — user, project, `CLAUDE.local.md`, managed policy. Built-in Explore and Plan are the only exceptions. Prepend only what sits outside an auto-load surface:
 - Research → `continuous-research/research-rules.md` — **prepend verbatim.** This path does not auto-load; a subagent never sees it otherwise.
-- Content → `.claude/rules/content-rules.md` already arrives on its own. Do not prepend it. Name the matching `memory/check_*.md` instead — those are not on an auto-load surface either.
+- Content → `.claude/rules/content-rules.md` already arrives on its own. Do not prepend it. Name the matching `memory/_index/<surface>.leads.md` instead — indices are not on an auto-load surface either. A subagent that will WRITE prose gets the index (T1); a subagent that will JUDGE gets the full `memory/check_*.md` (T3), because judges cite rule numbers and need the carve-outs.
 
 ## Orchestrator pattern
 
@@ -67,6 +67,10 @@ Recurring leak = a **skill's own step text** re-imposing the gate (`/research-re
 
 - **Session start:** read `memory/self-review-protocol.md` § *Core heuristics*.
 - **End of significant sessions:** run self-review per `memory/self-review-protocol.md`. Recurrence 3+ → hard rule or `check_*.md`.
+
+## Rule tiers
+
+Compendiums serve two consumers: judges (need every carve-out) and generators (need the lead). Leads are 5% of the bytes, so they ship as a generated index — T0 `_index/diamond.md` always-on, T1 `_index/<surface>.leads.md` per surface, T2 `rule.js <surface> <N>` per rule body, T3 the compendium itself for judges and rule edits. Rules still live in `memory/check_*.md`; tier membership is one frontmatter line. **Edit a rule → `node curriculum/evals/scripts/build-rule-index.js`** (hooks fail closed to T3 while the index is stale) **→ `compendium-drift.js --repin`**. Full contract: `.claude/rules/content-rules.md`.
 
 ## Memory / compendium authoring
 

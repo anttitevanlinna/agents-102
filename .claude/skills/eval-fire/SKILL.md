@@ -57,6 +57,8 @@ Optional `--personas N` (only valid for `story`): N is 1, 2, or 3. Default 1. If
 
 Glob `~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory/check_*.md`. For each, read the frontmatter and check whether `eval_classes:` contains the requested class. Collect the matching paths.
 
+**Full compendiums (T3), never `memory/_index/`.** The index is the generator's tier — leads without carve-outs. Judges cite rule numbers and adjudicate boundary cases, so they need the file. `metadata.tiers.diamond` in the frontmatter is index bookkeeping and has no bearing on which rules a judge evaluates: every rule is in scope, diamond or not.
+
 For the storytelling class, the class name in compendium frontmatter is `storytelling` (full word). For the args, accept `story` as shorthand and translate.
 
 For the behavior class, the compendium set is fixed: `check_prompts.md` + `check_pedagogy.md`. The catalog at `curriculum/evals/simulation-behavior.md` is the primary input — pass its path as `{{catalog_path}}`.

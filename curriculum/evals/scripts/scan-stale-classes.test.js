@@ -338,7 +338,7 @@ test('EXTRA_CLASSES are scope classes, kept out of the seven pin classes', () =>
 })
 
 test('crossRow: parses sha, verdict and set membership', () => {
-  assert.deepStrictEqual(crossRow(M6), { sha: 'ccc3333', verdict: 'PASS', set: ['m4', 'm5', 'm6'] })
+  assert.deepStrictEqual(crossRow(M6), { sha: 'ccc3333', verdict: 'PASS', instances: [], set: ['m4', 'm5', 'm6'] })
 })
 test('crossRow: absent row → null', () => {
   assert.strictEqual(crossRow('# T\n**Quality:** x\n- judges @a: writing PASS\n'), null)
@@ -507,4 +507,28 @@ test('filterItems: rule-drift keeps a class the diff would have pruned', () => {
   assert.deepStrictEqual(items[0].classes, ['pedagogy'])
   assert.deepStrictEqual(report[0].kept.map(k => k.reason), ['rule-drift'])
 })
+
+// A module's cross_module row names every seam that module sits on, which can
+// span more than one judged set: `earn-the-trust` participates in prework-m3 AND
+// m3-m4, so its row lists five module names and points at two instances. The set
+// name is therefore not a fireable unit; the instance names are. Reporting must
+// carry them, or a reader fires against a set that has no instance behind it.
+test('a cross_module row exposes every instance it points at', () => {
+  const row = [
+    '**Quality:** compendium-audited 2026-08-19 (writing@abc1234)',
+    '- cross_module @abc1234: PASS \u2014 set=[a,b,c,d,e]; 4 pairs, 0 blocking; see instances/ae101--module-set--prework-m3 + ae101--m3-m4.cross_module.json',
+    '',
+  ].join('\n')
+  assert.deepStrictEqual(crossRow(row).instances, ['ae101--module-set--prework-m3', 'ae101--m3-m4'])
+})
+
+test('a single-instance cross_module row reports that one instance', () => {
+  const row = [
+    '**Quality:** compendium-audited 2026-08-19 (writing@abc1234)',
+    '- cross_module @abc1234: PASS \u2014 set=[a,b]; 1 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json',
+    '',
+  ].join('\n')
+  assert.deepStrictEqual(crossRow(row).instances, ['ae101--module-set--prework-m3'])
+})
+
 console.log(`\n${n} tests passed`)

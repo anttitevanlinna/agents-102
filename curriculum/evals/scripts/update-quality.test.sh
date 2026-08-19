@@ -369,6 +369,17 @@ printf '{"class":"writing","verdict":"PASS"}\n' > "$INST/ae101--lecture--t20.wri
 rc=$(run "$TMP/curriculum/lectures/t20.md" --writing PASS --sha new1111 --date 2026-06-01)
 assert_rc "$rc" "0" 'T20 absent body_sha still stamps (pre-guard instance)'
 
+# T21 — an unrecognised class state must refuse. `N/A` reads like a verdict but
+#       the accepted spelling is `na`; the case fell through and rendered an
+#       empty slot, producing `technical PASS, , pedagogy PASS` on a real file.
+mkfix curriculum/lectures/t21.md '# Lesson
+body text
+<!-- maintainer -->
+**Quality:** compendium-audited 2026-05-15 (writing@old1234)
+- judges @old1234: writing PASS'
+rc=$(run "$TMP/curriculum/lectures/t21.md" --behavior "N/A:no prompt blocks" --sha new1111 --date 2026-06-01)
+assert_rc "$rc" "1" 'T21 unrecognised class state refuses instead of rendering an empty slot'
+
 unset QUALITY_INSTANCES_DIR
 
 echo "──────────────────────────────"

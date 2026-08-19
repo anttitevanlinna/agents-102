@@ -235,3 +235,6 @@ OODA
 **Vision vs. detail:**
 - Vision layer: the field is mid-evolution; one published framework + several shapes + one counter-position; honest scope.
 - Detail layer: every URL, every named file path, every quote (each verified against the practitioner's own publication 2026-05-21).
+
+**Quality:** compendium-audited 2026-08-19 (writing@1071b36b story@1071b36b technical@1071b36b pedagogy@1071b36b strategy@1071b36b slides@1071b36b)
+- judges @1071b36b: writing PASS, story PASS, technical PASS, behavior N/A (no prompt blocks on this page), pedagogy PASS, strategy PASS, slides PASS

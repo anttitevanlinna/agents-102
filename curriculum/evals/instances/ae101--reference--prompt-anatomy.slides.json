@@ -1,8 +1,8 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md",
-  "body_sha": "190fc9b69c8564962d95cbe8f5ce79320d5ded51ab13baebe1aa80d1da346f6e",
-  "verdict": "REVISE",
+  "body_sha": "029e08a857b6176659bba5a964a34fe9e22c253fb11c7aee2d21c413f4071b69",
+  "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
     {"index": 0, "heading": "H1 + lede: Prompt anatomy: the named moves", "lines": "1-14"},
@@ -36,10 +36,10 @@
       "compendium": "check_slides.md",
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
-      "verdict": "REVISE",
-      "chunks_flagged": [5],
-      "evidence": "chunk 5 \"Shape the target: threshold and count\": line 77: 'Pair with **null-case escape** to give *no* somewhere to go.' 'Null-case escape' is not named anywhere in the file up to this point — it is first defined at line 263 (chunk 17, \"Shape the boundary: escalation and refusal\"), 12 chunks later. This is the rule's own canonical shape of violation: a forward reference, name-dropped before the deck has introduced it. Harm: a reader hitting chunk 5 in a sequential deck read has no idea what 'null-case escape' is; the cross-reference reads as an unresolved pointer, not a payoff, until they reach chunk 17 eleven slides on. Cross-checked every other bolded cross-reference in the file (lines 183 'a body primer' — generic phrase, not a named entry; line 275 'null-case escape' — backward, chunk 18 after chunk 17; all three-move-pattern citations in chunks 22-24 — backward only). This is the sole forward reference found.",
-      "fix_hint": "Either drop the forward name-drop at line 77 and just say 'pair with the refusal move below' (reading-order pointer, not a named jump), or move the two entries so Earnable threshold follows Null-case escape.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Re-verified the specific fix: chunk 5 \"Shape the target: threshold and count\", line 77: '*If one earned itself* invites *no* as a first-class answer. Pair it with a null-case escape, an explicit instruction for what to say when the answer is nothing, so *no* has somewhere to go.' The formal named entry ('Null-case escape', bold lead) still sits later at line 263 (chunk 17), but the forward mention at line 77 is now self-glossing inline ('an explicit instruction for what to say when the answer is nothing') — a reader hitting chunk 5 gets the concept in the same clause, not a bare unexplained term-drop. This clears rule 1's 'never named / vague with full history' test: the referent is effectively defined at first use, which is what earlier chunks establishing a term for later reuse looks like, just run in the other temporal direction with the gloss doing the work a prior mention would. Swept the rest of the file for the same shape (any bold term used before its own defining entry): none found — all other cross-references are either backward (chunks 17-21 citing earlier moves) or generic (line 183 'a body primer', not a named entry).",
+      "fix_hint": null,
       "blocking": true
     },
     {
@@ -48,7 +48,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every example citation names a real prompt by id (line 23 'test-strategy skill file at ~/.claude/skills/test-strategy/SKILL.md'; chunk 24 examples 'three-minds-one-synthesis-1', 'three-retrievers-one-curator-1', 'self-consistency-after-scoreboard-1', all verified to exist in curriculum/prompts/). No cross-file callback locates content by position ('the opening lecture said').",
+      "evidence": "Every example citation names a real prompt by id (line 23 'test-strategy skill file at ~/.claude/skills/test-strategy/SKILL.md'; chunk 24 examples 'three-minds-one-synthesis-1', 'three-retrievers-one-curator-1', 'self-consistency-after-scoreboard-1', re-confirmed present via `find curriculum/prompts -iname` this session). No cross-file callback locates content by position ('the opening lecture said').",
       "fix_hint": null,
       "blocking": true
     },
@@ -58,7 +58,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Re-verified this session: `find curriculum/prompts -iname` for ae101-m2-integrate-branch, compound-and-close-1, ae101-m3-sharpen-skill, walk-and-send-off-2, ae101-m4-take-task-end-to-end, ae101-m5-rerun-packaged, push-back-on-the-plan-2 (resolves to push-back-on-the-plan-2-askuserquestion.md), diagnose-and-resend-6, author-test-strategy-skill-1, three-minds-one-synthesis-1, three-retrievers-one-curator-1, self-consistency-after-scoreboard-1 — all 12 hit a real file in curriculum/prompts/.",
+      "evidence": "Spot-re-verified this session: `find curriculum/prompts -iname` for ae101-m2-integrate-branch, compound-and-close-1, three-minds-one-synthesis-1 all resolve to real files. Full 12-id set verified in the prior instance and unchanged by this re-chunk's edits (none of the three edited passages touch example-id citations).",
       "fix_hint": null,
       "blocking": true
     },
@@ -78,7 +78,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked the thinnest new chunks specifically (post-rechunk risk): chunk 15 'the critique register' (233-242, one entry, self-carrying claim about self-critique verbs vs defense verbs), chunk 19 'the multi-result fallback' (281-290, one entry), chunk 21 'the concreteness forcing function' (303-312, one entry) — each still carries a full bold-lead + continuation + quote, none is a bare wait-state or single context-dependent bullet.",
+      "evidence": "Checked the thinnest chunks again: chunk 15 'the critique register' (233-242, one entry, self-carrying), chunk 19 'the multi-result fallback' (281-290, one entry), chunk 21 'the concreteness forcing function' (303-312, one entry, now reading 'quotes the line' instead of 'quotes the beat') — each still carries a full bold-lead + continuation + quote, none is a bare wait-state.",
       "fix_hint": null,
       "blocking": false
     },
@@ -88,7 +88,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Spot-checked new single-entry chunks: chunk 15 header 'the critique register' → its one entry 'Self-critique register' matches; chunk 20 header 'the chain back-reference' → entry 'Chain back-reference' matches; chunk 21 header 'the concreteness forcing function' → entry 'Concreteness forcing function' matches. No header contradicted by its own chunk content.",
+      "evidence": "Re-checked the two edited chunks: chunk 5 header 'Shape the target: threshold and count' still matches its content (Earnable threshold + Bounded count, unchanged in shape by the inline gloss added at line 77); chunk 21 header 'Shape the continuity: the concreteness forcing function' still matches its one entry 'Concreteness forcing function' after the 'quotes the line' wording swap. No header contradicted by its own chunk content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -98,7 +98,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `grep -n 'Not [A-Z][a-z]*\\. Not'` → 0 hits. Superlative sub-item: `grep -niE 'most (useful|important|powerful|valuable)|one of the (best|most)'` → 2 hits: line 47 'the seal is most valuable on long-running prompts' (a technical qualifier about when a technique pays off, not curriculum self-praise) and line 265 'Probably the most important clause in any prompt' (hedged with 'Probably', grading a prompt-craft technique's general importance, not this training's own usefulness). Harm test: check_writing.md §13's target is unearned CURRICULUM self-praise ('one of the most useful moves in the training'); neither hit grades this exercise/module. Judged PASS on the harm test.",
+      "evidence": "Ran `grep -n 'Not [A-Z][a-z]*\\. Not'` → 0 hits. Superlative sub-item: `grep -niE 'most (useful|important|powerful|valuable)|one of the (best|most)'` → 2 hits: line 47 'the seal is most valuable on long-running prompts' (technical qualifier, not curriculum self-praise) and line 265 'Probably the most important clause in any prompt' (hedged, grades a prompt-craft technique generally, not this training's own usefulness). Neither trips the harm test (check_writing.md §13 targets unearned curriculum self-praise). PASS.",
       "fix_hint": null,
       "blocking": true
     },
@@ -106,10 +106,10 @@
       "compendium": "check_slides.md",
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
-      "verdict": "REVISE",
-      "chunks_flagged": [0, 21],
-      "evidence": "chunk 0 \"Prompt anatomy: the named moves\": line 11: 'Per-entry shape: bold lead-in carrying both definition and the first beat of the why.' chunk 21 \"Shape the continuity: the concreteness forcing function\": line 307: '**Names the moment, quotes the beat.**' Both use 'beat' — a rule-8-named maintainer-dialect term — as the file's own authorial voice explaining itself directly to the student reader, not as a quoted specimen displaying a rule verbatim and not the 'forcing function' carve-out (which the compendium clears as ordinary AE101 shop vocabulary, distinct from 'beat'). Checked the other 'beat' hits and found them exempt: line 27's *'Read these four beats'* and line 309's *'Quote the specific session beat.'* are both italicised, quotation-marked citations of real prompt text (the file's own stated convention: 'italicised quote from a real Agents 101 or AE101 prompt') — they display what an actual prompt says, they do not use 'beat' as the file's own narration to the reader, so they read as specimens rather than communicated dialect and are not flagged. Harm at lines 11 and 307: an engineer reader with no narrative-jargon background hits 'beat' used as plain description and has to guess what it means.",
-      "fix_hint": "Line 11: 'first line of the why' or similar. Line 307: 'quotes the moment' (the sentence already uses 'moment' one word earlier) instead of 'quotes the beat.'",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Both previously-flagged instances are fixed: chunk 0 line 11 now reads 'bold lead-in carrying both definition and the start of the why' (was 'the first beat of the why') — 'beat' as maintainer-dialect noun is gone. Chunk 21 line 307 now reads '**Names the moment, quotes the line. Rules with evidence beat rules without.**' — the definitional use ('quotes the line') no longer uses 'beat'; the surviving 'beat' in that same sentence is the ordinary verb 'to beat' (defeat), not the dialect noun. `grep -n -i beat` over the full body finds five remaining hits, all clear: line 21 'beats wandering later' (ordinary verb), line 27 '*Read these four beats*' (italicised quote of real prompt text — session-artifact/specimen carve-out), line 221 'Either beats the form-filling default' (ordinary verb), line 307 as above, line 309 '*Quote the specific session beat.*' (italicised quote, same specimen carve-out). The one remaining dialect-noun use of 'beat' ('first beat of the why') survives only in the maintainer block at line 377, below `<!-- maintainer -->` and out of rule-8 scope. PASS.",
+      "fix_hint": null,
       "blocking": true
     },
     {
@@ -118,8 +118,8 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "REVISE",
       "chunks_flagged": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
-      "evidence": "Re-measured against the current 24-chunk file: every move-entry across chunks 1-21 bolds the full lead sentence (10-17 words), not a short handle, e.g. chunk 5 line 77 bolds 'Names a condition under which the work happens, and names refusal as a valid outcome.' (13 words); chunk 21 line 307 bolds 'Names the moment, quotes the beat. Rules with evidence beat rules without.' (12 words). This file is explicitly a reference/lookup page (`curriculum/trainings/.../reference/`), which the rule's lookup-surface waiver (2026-08-13) exempts from the per-slide ≤1-bold cap — but the waiver text still requires 'bold the label, not the sentence after it,' and this file's own stated contract (line 11, restated in the maintainer block) is to bold the full definition sentence, which the waiver does not cover. Chunks 22-24 (three-move patterns) use italics for the trio-name line, not bold sentences, so they are not flagged. Harm: on a genuinely dense lookup page this dilutes bold from 'here's the handle to scan for' to 'here's a highlighted paragraph,' which is the exact failure the budget exists to prevent — but the shape is uniform and deliberate across all 30 entries, which is evidence of authorial intent rather than an unnoticed default.",
-      "fix_hint": "Get a maintainer accept-note recording that this reference page's full-sentence-bold shape is a deliberate house style distinct from the waiver's 'bold the label' baseline; otherwise trim each lead to a short handle and unbold the definition clause.",
+      "evidence": "Unchanged from prior instance and NOT actioned per instruction: every move-entry across chunks 1-21 still bolds the full lead sentence (10-17 words) rather than a short handle, e.g. chunk 5 line 77 bolds 'Names a condition under which the work happens, and names refusal as a valid outcome.' (13 words). This is a house-style question for the maintainer (uniform, deliberate shape across all 30 entries, not an unnoticed default) — filed as a note per the maintainer's explicit instruction not to action it this re-fire, not as a fresh finding.",
+      "fix_hint": "Maintainer call: get an accept-note recording the full-sentence-bold shape as deliberate house style for this reference page, or trim to short handles.",
       "blocking": false
     },
     {
@@ -128,7 +128,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`site/layouts/slides.js` slide-ifies phase-less prose sections including reference pages (comment at ~line 237: 'prework, supplementary, reference — is slide-ified'; reference sections get id prefix 'reference-' and section-kind code 'Reference' per ~line 206). Confirmed by `node scripts/check-slide-size.js --file <path>` itself reporting 24 slides measured for this file — the size checker only measures what the deck actually composes, so a non-zero slide count is independent confirmation of presence.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md` reports 'slides: 24' measured for this file this session — a non-zero slide count from the deck-composing checker confirms the reference page's sections reach the composed deck.",
       "fix_hint": null,
       "blocking": true
     },
@@ -148,7 +148,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md` → 'OK — 1 files, no page-geometry pointers across the slide cut.' Re-run fresh this session against the current re-chunked file; no leftover 'above/below' pointers from the old 8-chunk structure.",
+      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md` → 'OK — 1 files, no page-geometry pointers across the slide cut.' Specifically re-checked the edited closer at line 369: 'Each pattern named on the preceding slides is one of those load-bearing trios.' — 'preceding' is a reading-order pointer (same family as the rule's own allowed 'earlier in this module'), not page-geometry ('above'/'at the top of this page'); it also resolves under rule 1 since the referenced patterns sit in chunks 22-24, immediately prior to this closing paragraph in chunk 24. Replaces the old closer's count-of-six, which the re-chunk had scattered across three slides.",
       "fix_hint": null,
       "blocking": true
     },
@@ -168,7 +168,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md` → 'files: 1  slides: 24  limits: 210 words / 6 bullets  oversized: 0 ... every slide is within limits.' Confirmed a bare-path invocation (no --file) exits 2 with 'Unexpected argument' rather than measuring the file, and the flagless corpus-wide run does not include this reference page in its 45-file / 266-slide count — this is the mismeasurement the re-fire was called for. --report confirms the largest slide is 'Three-move patterns: walk-away, grill, and skill-author' at 209 words, 0 bullets, under the 210-word cap by 1 word.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md` → 'files: 1  slides: 24  limits: 210 words / 6 bullets  oversized: 0 ... every slide is within limits.' Bare-path invocation (no --file) exits 2 as expected, per the task's reminder.",
       "fix_hint": null,
       "blocking": false
     },
@@ -178,12 +178,12 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Rule 15 scopes exercise headings (imperative/phase label) vs lecture headings (claims). Cold-read all 24 new `##` headings: every one is a noun-phrase family/move label ('Shape the input: naming the file, naming the window', 'Three-move patterns: compound and audit', 'Shape the continuity: the concreteness forcing function') — this is a reference/lookup page, neither exercise nor lecture grammar class applies to any of the 24.",
+      "evidence": "Rule 15 scopes exercise headings (imperative/phase label) vs lecture headings (claims). All 24 `##` headings are noun-phrase family/move labels ('Shape the input: naming the file, naming the window', 'Three-move patterns: compound and audit') — this is a reference/lookup page, neither exercise nor lecture grammar class applies.",
       "fix_hint": null,
       "blocking": false
     }
   ],
-  "blocking_findings_count": 2,
+  "blocking_findings_count": 0,
   "todos_count": 1,
-  "notes": "Re-fire superseding the prior instance (old body_sha malformed/65-char and stale against the pre-rechunk 8-section file; new body_sha 190fc9b6...346f6e against the current 24-section file). Two changes from the prior verdict: (1) rule 1 now files REVISE — the null-case-escape forward reference at chunk 5/line 77 exists in both the old and new body but was not caught in the prior 8-chunk-granularity read; (2) rule 8 gets a second 'beat' instance at chunk 21/line 307 in addition to the previously-found line 11, both re-derived fresh rather than inherited. Rule 9's TODO is reconfirmed at the new chunk numbering, same maintainer-adjudication recommendation as before. Rule 14 is now correctly measured with `--file`, confirming 0 oversized (not the old 'wrong file set' 0-oversized reading, but a real one)."
+  "notes": "RE-FIRE: both prior blocking findings (rule 1 forward null-case-escape reference, rule 8 two 'beat' dialect instances) are confirmed fixed against the current body (body_sha 029e08a8...4071b69, superseding prior 190fc9b6...346f6e). Rule 1: line 77's null-case-escape mention now self-glosses inline. Rule 8: line 11 'start of the why' and line 307 'quotes the line' both clear; remaining 'beat' hits in body are either ordinary-verb usage or italicised specimen quotes exempt under the carve-out; the one surviving dialect-noun use sits in the maintainer block, out of scope. Rule 12 re-confirmed clean: the new closer's 'preceding slides' is a reading-order pointer, not page geometry, and resolves within-file. Rule 9's emphasis-budget TODO is unchanged and was deliberately not actioned per instruction — reported here as a standing note for the maintainer, not a new finding. Verdict flips REVISE → PASS."
 }

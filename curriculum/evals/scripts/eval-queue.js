@@ -122,13 +122,22 @@ function renderScope(scope) {
     for (const s of cross) {
       if (!s.detail || !s.detail.set) { rowless.push(s); continue }
       const key = `${s.training}|${s.detail.sha}|${s.detail.set.join(',')}`
-      if (!sets.has(key)) sets.set(key, { ...s, drifted: new Set(s.detail.drifted || []) })
-      else for (const d of s.detail.drifted || []) sets.get(key).drifted.add(d)
+      if (!sets.has(key)) sets.set(key, { ...s, drifted: new Set(s.detail.drifted || []), instances: [...(s.detail.instances || [])] })
+      else {
+        for (const d of s.detail.drifted || []) sets.get(key).drifted.add(d)
+        sets.get(key).instances.push(...(s.detail.instances || []))
+      }
     }
     for (const s of sets.values()) {
       const drift = [...s.drifted].map(f => path.basename(f, '.md')).join(', ')
       out.push(`  [${s.training}] set=[${s.detail.set.join(',')}] @${s.detail.sha}`)
       out.push(`      ${s.reason}${drift ? ` — moved since the pin: ${drift}` : ''}`)
+      // The set name can be a union across seams and name no instance of its own.
+      // Fire against the instances; they are the unit that exists on disk.
+      const inst = [...new Set(s.instances || [])]
+      out.push(inst.length
+        ? `      re-fire: ${inst.join(', ')}`
+        : `      re-fire: no instance named on the row — find it before firing`)
     }
     if (rowless.length) {
       const by = {}

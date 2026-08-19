@@ -212,7 +212,14 @@ function crossRow(text) {
   const m = /^-\s*cross_module\s*(?:@([A-Za-z0-9]+))?\s*:\s*([A-Za-z/]+)/.exec(row)
   if (!m) return null
   const s = /set=\[([^\]]*)\]/.exec(row)
-  return { sha: m[1] || null, verdict: m[2], set: s ? s[1].split(',').map(x => x.trim()).filter(Boolean) : null }
+  // A module sits on every seam its neighbours make, so one row can span several
+  // judged sets. The set name is a union and names no single instance; the
+  // instance list is what a re-fire actually targets.
+  const seen = /see instances\/(\S[^;]*?)\.cross_module\.json/.exec(row)
+  const instances = seen
+    ? seen[1].split('+').map(x => x.trim()).filter(Boolean)
+    : []
+  return { sha: m[1] || null, verdict: m[2], instances, set: s ? s[1].split(',').map(x => x.trim()).filter(Boolean) : null }
 }
 
 // `- voice_panel @<sha>: PLEASED — 6/6 signatures; see instances/<x>.json`
@@ -248,8 +255,8 @@ function crossState(relpath, text, io) {
   const members = row.set.map(s => `${dir}/${s.replace(/\.md$/, '')}.md`)
   const drifted = members.filter(p => bodyMoved(io, row.sha, p))
   return drifted.length
-    ? { reason: 'set-drift', sha: row.sha, set: row.set, drifted }
-    : { sha: row.sha, set: row.set }
+    ? { reason: 'set-drift', sha: row.sha, set: row.set, instances: row.instances, drifted }
+    : { sha: row.sha, set: row.set, instances: row.instances }
 }
 
 function panelState(relpath, text, io, meta) {

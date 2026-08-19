@@ -265,6 +265,18 @@ if [[ -z "$prior_pin_writing$prior_pin_story$prior_pin_technical$prior_pin_behav
   fi
 fi
 
+# A state nobody recognises is not an empty verdict. Validate before rendering:
+# inside the command substitution below, a refusal cannot stop the run.
+for _pair in "writing:$state_writing" "story:$state_story" "technical:$state_technical" \
+             "behavior:$state_behavior" "pedagogy:$state_pedagogy" "strategy:$state_strategy" \
+             "slides:$state_slides" "cross_module:$state_cross_module" "voice_panel:$state_voice_panel"; do
+  _cls="${_pair%%:*}"; _raw="${_pair#*:}"
+  case "$_raw" in
+    PASS|PASS:*|REVISE:*|grandfathered|grandfathered:*|na|na:*|keep) ;;
+    *) echo "error: --$_cls: unrecognised state '$_raw' (want PASS, PASS:<note>, REVISE:<note>, grandfathered[:<note>], na[:<note>])" >&2; exit 1 ;;
+  esac
+done
+
 # ---- Render the judges row (rolls up four per-class states) ------------------
 render_class_inline() {
   local cls="$1" raw="$2"

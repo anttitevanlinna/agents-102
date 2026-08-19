@@ -8,7 +8,7 @@ The right way to read a prompt, your own or somebody else's, is to ask which cla
 
 Use this page as a lookup while reading prompts. Skim labels first. The entries that catch are the ones worth reading twice.
 
-Per-entry shape: bold lead-in carrying both definition and the first beat of the why. Plain continuation. Italicised quote from a real Agents 101 or AE101 prompt at the end.
+Per-entry shape: bold lead-in carrying both definition and the start of the why. Plain continuation. Italicised quote from a real Agents 101 or AE101 prompt at the end.
 
 ---
 
@@ -74,7 +74,7 @@ If a request can be satisfied by ten different outputs, the agent picks the easi
 
 ### Earnable threshold
 
-**Names a condition under which the work happens, and names refusal as a valid outcome.** Most sessions don't produce a durable rule, a ship-worthy artifact, or a team-PR candidate. Without a threshold word, the prompt reads as a request and the agent fulfils it whether or not the work is there to do. *If one earned itself* invites *no* as a first-class answer. Pair with **null-case escape** to give *no* somewhere to go.
+**Names a condition under which the work happens, and names refusal as a valid outcome.** Most sessions don't produce a durable rule, a ship-worthy artifact, or a team-PR candidate. Without a threshold word, the prompt reads as a request and the agent fulfils it whether or not the work is there to do. *If one earned itself* invites *no* as a first-class answer. Pair it with a null-case escape, an explicit instruction for what to say when the answer is nothing, so *no* has somewhere to go.
 
 *"If one branch from this session sharpened how plans get made in this codebase, write the rule into `./CLAUDE.local.md`."*
 
@@ -304,7 +304,7 @@ Two small moves that connect a prompt to what came before and what comes after. 
 
 ### Concreteness forcing function
 
-**Names the moment, quotes the beat. Rules with evidence beat rules without.** Rules abstracted from their origin become advice (*"always run STRIDE before access-mapping"*). Rules tied to a moment (*"STRIDE returned six categories and I picked the wrong one because I hadn't read the access surface first"*) carry their evidence with them. The quote is the proof the rule earned itself. Without it, anything can be smuggled in under the label *learned*.
+**Names the moment, quotes the line. Rules with evidence beat rules without.** Rules abstracted from their origin become advice (*"always run STRIDE before access-mapping"*). Rules tied to a moment (*"STRIDE returned six categories and I picked the wrong one because I hadn't read the access surface first"*) carry their evidence with them. The quote is the proof the rule earned itself. Without it, anything can be smuggled in under the label *learned*.
 
 *"Name the moment, not the rule. Quote the specific session beat."*
 
@@ -366,7 +366,7 @@ Example: `three-minds-one-synthesis-1`, `three-retrievers-one-curator-1`, `self-
 
 ---
 
-A well-shaped prompt has three moves doing the heavy lifting and a handful of others quietly. The six pattern names just walked through are the load-bearing trios. The decoration around them changes per prompt, but the trio is what makes the prompt work. Recognise the trio and the rest reads itself.
+A well-shaped prompt has three moves doing the heavy lifting and a handful of others quietly. Each pattern named on the preceding slides is one of those load-bearing trios. The decoration around them changes per prompt, but the trio is what makes the prompt work. Recognise the trio and the rest reads itself.
 
 <!-- maintainer -->
 

@@ -1,7 +1,7 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md",
-  "body_sha": "ea0ca4140b4d0274318bab603e22ed1d8ff8c0e01b3b47e307c9eb3d05c47852",
+  "body_sha": "f77ef0718be312af1dda1feb4a83939b3e8db854b26bb2424803f8c5be9f9038",
   "verdict": "N/A",
   "training": "ae101",
   "trace_status": "full_regen",
@@ -9,7 +9,23 @@
   "prompts_findings": [],
   "blocking_findings_count": 0,
   "todos_count": 0,
-  "rules_evaluated": [],
-  "notes": "Re-fired 2026-08-19 against the current body (body_sha differs from the prior stamp, confirming the file changed since the last behavior pass). Confirmed zero scoreable prompt content two ways: (1) `node scripts/expand-md.js <file>` produced an expanded view identical in line count to the raw source (237 lines both) with no `{{prompt:<key>}}` markers resolved; (2) `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' <file>` on both the raw source and the expanded view returned empty, as did a plain `grep -n 'Prompt' <file>` and a fence-count check (zero ``` blocks in the file at all). File is a seven-practitioner reading walk with Read links, prose commentary, and a maintainer/backing block after the `<!-- maintainer -->` cut at line 147 — no student-copied prompt content anywhere in the body, above or below the cut. Nothing for the behavior class to score against the 15-pattern catalog in `simulation-behavior.md`; N/A per dispatch instructions rather than an invented prompt or a vacuous PASS. check_prompts.md and check_pedagogy.md were both read in full per the dispatch preamble; neither compendium's rules resolve to a scoreable unit here since the scan unit (per pedagogy and prompts' own scope statements) is the fenced prompt block, and none exists in this file.",
-  "rules_evaluated_note": "N/A verdict, no scoreable prompt blocks; check_prompts.md and check_pedagogy.md read in full but produced no applicable per-rule verdicts (judge_owned scope call, not a coverage gap)."
+  "rules_evaluated": [
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "N/A scope call — no scoreable unit in this file",
+      "verdict": "N/A",
+      "evidence": "check_prompts.md scopes to the fenced `**Prompt**` block (registry entry or inline `**Prompt**` fenced block). Read in full per dispatch preamble step 3; no rule resolves to a unit present in this file."
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "N/A scope call — no scoreable unit in this file",
+      "verdict": "N/A",
+      "evidence": "check_pedagogy.md's behavior-adjacent rules (self-report inflation, default-acceptance, plan-mode approval inflation, source-type blindness, self-audit charity) are all prompt-block-anchored per the template's own compendium_paths note. Read in full; no rule resolves to a unit present in this file."
+    }
+  ],
+  "notes": "RE-FIRE 2026-08-19, prior verdict N/A, body moved again (recorded body_sha ea0ca4140b4d0274318bab603e22ed1d8ff8c0e01b3b47e307c9eb3d05c47852 vs current 20c79de9345890a3deda1a2f9b709cc15d00ed4042a1b6b96f56bd15c8f13164 — confirms the file changed since the last pass rather than trusting the prior N/A to still hold). Re-confirmed the zero-prompt-blocks finding against the CURRENT body, not assumed: (1) `node scripts/expand-md.js <file>` — exit 0, expanded output is 237 lines, same as the raw source's 237 lines, meaning the expander found zero `{{prompt:<key>}}` markers to resolve (a resolved marker would grow the line count by the fenced block it inlines). (2) `grep -n '\\*\\*Prompt\\*\\*'` and `grep -n '{{prompt:'` on both the raw source and the expanded view: all four greps returned empty. (3) `grep -c '```'` over the expanded file: 0 — there is not a single fenced code block anywhere in the document, prompt-shaped or otherwise. File is a seven-section practitioner reading walk (Klaassen, Pocock, Yan/Cognition, Metcalf/Amp, Cherny, Ronacher, Dino) with inline Read: links, prose commentary, and a maintainer + backing block after the `<!-- maintainer -->` cut at raw line 147 — no student-copied prompt content anywhere in the body, above or below the cut, in either the raw or the expanded view. Nothing for the behavior class to score against the 15-pattern catalog in `simulation-behavior.md` (curriculum/evals/simulation-behavior.md, read per template step). N/A per dispatch instructions rather than an invented prompt or a vacuous PASS. check_prompts.md and check_pedagogy.md (both under /Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory/) were read in full per the dispatch preamble and the template's compendium_paths note; neither compendium's rules resolve to a scoreable unit here since the scan unit for both, per their own scope statements, is the fenced prompt block, and none exists in this file. Top-level verdict recorded as N/A rather than PASS to avoid the 2026-08-15 vacuous-PASS failure mode named in the dispatch preamble — a PASS would imply prompt content was scanned and cleared, when in fact there is no prompt content to scan."
 }

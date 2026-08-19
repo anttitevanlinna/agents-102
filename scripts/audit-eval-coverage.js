@@ -69,6 +69,24 @@ const citedRule = (idx, lead) => {
 };
 const compendiumName = (name) => String(name).replace(/\.md$/, '');
 
+// The lead is the reliable key; the index is not. Judges quote a rule's bolded
+// lead VERBATIM (their templates require it) and then attach a number that has
+// drifted from the renumbered compendium -- by a different offset per judge, so
+// only the lead can recover the rule. No compendium lead is a prefix of another,
+// so a prefix match is unambiguous, and it tolerates the parenthetical some
+// judges append. Returns the rule id, or null when the lead names no rule.
+const normLead = (s) => String(s == null ? '' : s).replace(/\W+/g, '').toLowerCase();
+function ruleIdByLead(C, lead) {
+  const L = normLead(lead);
+  if (!L || !C || !Array.isArray(C.rules)) return null;
+  const hits = new Set();
+  for (const r of [...C.rules, ...(C.subLeads || [])]) {
+    const RL = normLead(r.lead);
+    if (RL && L.startsWith(RL)) hits.add(r.id);
+  }
+  return hits.size === 1 ? [...hits][0] : null;
+}
+
 // Which compendiums must fire on each surface type (the "rule sets that must
 // fire" column of the phasing table). Coverage is reported for these.
 const SURFACE_COMPENDIA = {
@@ -249,6 +267,17 @@ function parseRules(md) {
 // Rules that moved house leave a tombstone: `N. *Moved to <file> §M.*`. Judges
 // working from an older map still cite the old address; the citation is a
 // redirect to follow, not an unresolvable index.
+// parseRules drops sub-lettered rules (9b, 21b) because the coverage model
+// credits their integer parent. Their LEADS are still needed: a drifted row can
+// quote 21b's lead, and the only honest resolution is the parent 21.
+function parseSubRuleLeads(md) {
+  const re = /^(\d+)([a-z])\.\s+\*\*(.+?)\*\*/gm;
+  const out = [];
+  let m;
+  while ((m = re.exec(md)) !== null) out.push({ id: m[1], lead: m[3].replace(/\s+/g, ' ').trim() });
+  return out;
+}
+
 function parseMovedRules(md) {
   const re = /^(\d+)[a-z]?\.\s+\*Moved to (\S+\.md\s+§[\w.]+)/gm;
   const out = {};
@@ -261,9 +290,9 @@ function loadCompendia() {
   const out = {};
   for (const name of [...COMPENDIA, ...UNREPORTED_COMPENDIA]) {
     const p = path.join(MEM, `${name}.md`);
-    if (!fs.existsSync(p)) { out[name] = { evalClasses: [], rules: [], moved: {} }; continue; }
+    if (!fs.existsSync(p)) { out[name] = { evalClasses: [], rules: [], subLeads: [], moved: {} }; continue; }
     const md = fs.readFileSync(p, 'utf8');
-    out[name] = { evalClasses: parseFrontmatterEvalClasses(md), rules: parseRules(md), moved: parseMovedRules(md) };
+    out[name] = { evalClasses: parseFrontmatterEvalClasses(md), rules: parseRules(md), subLeads: parseSubRuleLeads(md), moved: parseMovedRules(md) };
   }
   return out;
 }
@@ -276,13 +305,21 @@ function loadInstance(instanceSlug, suffix) {
 }
 
 // Set of "<compendium>.md::<rule_index>" verdicted across the given instances.
-function verdictedKeys(instances) {
+function verdictedKeys(instances, comp) {
   const set = new Set();
   for (const inst of instances) {
     if (!inst || inst.__parseError || !Array.isArray(inst.rules_evaluated)) continue;
     for (const r of inst.rules_evaluated) {
       if (r && r.compendium != null && r.rule_index != null) {
-        set.add(`${compendiumName(r.compendium)}.md::${parentRule(r.rule_index)}`);
+        const cname = compendiumName(r.compendium);
+        let id = parentRule(r.rule_index);
+        // A drifted index credits the rule its LEAD names, not the number typed --
+        // otherwise a real verdict credits nothing and its rule reads as a hole.
+        // The lead names the rule; the index is what the judge typed. A paraphrased
+        // lead resolves to nothing and leaves the typed index standing.
+        const C = comp && comp[cname];
+        if (C) id = ruleIdByLead(C, r.rule_lead) || id;
+        set.add(`${cname}.md::${id}`);
       }
     }
   }
@@ -328,14 +365,24 @@ function scanInstanceIntegrity(fname, suffix, inst, comp) {
         if (C && Array.isArray(C.rules)) {
           const ids = new Set(C.rules.map(x => x.id));
           const parent = parentRule(r.rule_index);
-          if (!ids.has(parent)) {
+          // The dangerous half of drift: the wrong number is itself a valid rule,
+          // so the row resolves and nothing warns. The lead is the rule's
+          // identity — when the two disagree, report the disagreement.
+          if (ids.has(parent)) {
+            const named = ruleIdByLead(C, r.rule_lead);
+            if (named && named !== parent) {
+              warnings.push({ kind: 'rule-index-drift', file: fname, compendium: r.compendium, rule_index: r.rule_index, should_be: named, rule_lead: r.rule_lead });
+            }
+          } else {
             const movedTo = (C.moved || {})[parent];
             // N/A on a moved stub is the contract working: the judge read the
             // tombstone and declined the rule that is no longer its to judge.
             // Any other verdict claims a rule that lives elsewhere — the row
             // credits nothing here, and the new home's rule reads as a hole.
+            const drifted = ruleIdByLead(C, r.rule_lead);
             if (movedTo && String(r.verdict).trim() === 'N/A') { /* compliant */ }
             else if (movedTo) warnings.push({ kind: 'moved-rule-citation', file: fname, compendium: r.compendium, rule_index: r.rule_index, movedTo, verdict: r.verdict });
+            else if (drifted) warnings.push({ kind: 'rule-index-drift', file: fname, compendium: r.compendium, rule_index: r.rule_index, should_be: drifted, rule_lead: r.rule_lead });
             else warnings.push({ kind: 'unresolvable-rule-index', file: fname, compendium: r.compendium, rule_index: r.rule_index });
           }
         }
@@ -418,7 +465,7 @@ function main() {
           totalNaBySurface += na.length;
           continue;
         }
-        const keys = verdictedKeys(instances);
+        const keys = verdictedKeys(instances, comp);
         const allMissing = C.rules.filter(r => !keys.has(`${cname}.md::${r.id}`)).map(r => r.id);
         const { real, na } = splitMissing(allMissing, naSet);
         fileReport.compendia[cname] = { total: C.rules.length, covered: C.rules.length - allMissing.length, missing: real, na };
@@ -477,7 +524,8 @@ function printHuman(report, comp) {
     out.push(`⚠ data-hygiene warnings (${W.length}, non-gating): ${Object.entries(byKind).map(([k, n]) => `${k}×${n}`).join(', ')}`);
     const SHOWN = 15;
     for (const w of W.slice(0, SHOWN)) {
-      if (w.kind === 'moved-rule-citation') out.push(`  • moved-rule-citation  ${w.file}  ${w.compendium}::${w.rule_index} = "${w.verdict}" → rule now lives at ${w.movedTo}`);
+      if (w.kind === 'rule-index-drift') out.push(`  • rule-index-drift  ${w.file}  ${w.compendium}::${w.rule_index} → the lead names §${w.should_be} ("${String(w.rule_lead).slice(0, 48)}")`);
+      else if (w.kind === 'moved-rule-citation') out.push(`  • moved-rule-citation  ${w.file}  ${w.compendium}::${w.rule_index} = "${w.verdict}" → rule now lives at ${w.movedTo}`);
       else if (w.kind === 'unresolvable-rule-index') out.push(`  • unresolvable-rule-index  ${w.file}  ${w.compendium}::${w.rule_index}`);
       else if (w.kind === 'non-enum-verdict') out.push(`  • non-enum-verdict  ${w.file}  ${w.compendium}::${w.rule_index} = "${w.verdict}"`);
       else if (w.kind === 'duplicate-rule-index') out.push(`  • duplicate-rule-index  ${w.file}  ${w.compendium}::${w.rule_index} ×${w.count} (judgments crammed onto one index)`);
@@ -518,9 +566,11 @@ module.exports = {
   SURFACES,
   parseRules,
   parseMovedRules,
+  parseSubRuleLeads,
   parseFrontmatterEvalClasses,
   extractManifestLectureSlugs,
   verdictedKeys,
+  ruleIdByLead,
   loadCompendia,
   scanInstanceIntegrity,
   naRuleSet,

@@ -21,6 +21,7 @@ const path = require('node:path');
 const {
   parseRules,
   parseMovedRules,
+  parseSubRuleLeads,
   verdictedKeys,
   scanInstanceIntegrity,
   naRuleSet,
@@ -151,6 +152,117 @@ test('verdictedKeys: sub-letter and missing .md suffix both credit the parent ru
   ]);
   assert.ok(keys.has('check_pedagogy.md::10'), 'missing .md suffix must still credit rule 10');
   assert.ok(keys.has('check_pedagogy.md::9'), 'sub-lettered 9b must credit parent rule 9');
+});
+
+// ── Index drift: the lead is the reliable key, the index is not ──
+// Judges quote the rule's bolded lead VERBATIM (writing.md tells them to) and
+// then attach a number that has drifted from the renumbered compendium. Every
+// such row is a real verdict credited to nothing, while the rule it actually
+// judged reads as an uncovered hole. And the offsets are per-judge, not global
+// — one instance maps 16→17, another maps 16→12 — so nothing but the lead can
+// recover them. No compendium lead is a prefix of another, so the match is
+// unambiguous; the parenthetical some judges append is tolerated.
+const DRIFT_COMP = { check_writing: { evalClasses: [], rules: [
+  { id: '9', lead: 'x' },
+  { id: '17', lead: 'No combative verbs about the agent in body prose.' },
+] } };
+
+test('drifted index whose lead matches a real rule → rule-index-drift naming the right rule', () => {
+  const inst = { class: 'writing', rules_evaluated: [
+    { compendium: 'check_writing.md', rule_index: 54, rule_lead: 'No combative verbs about the agent in body prose', verdict: 'PASS' },
+  ] };
+  const { bugs, warnings } = scanInstanceIntegrity('x.writing.json', 'writing', inst, DRIFT_COMP);
+  assert.deepEqual(bugs, []);
+  assert.equal(warnings.length, 1);
+  assert.equal(warnings[0].kind, 'rule-index-drift');
+  assert.equal(warnings[0].should_be, '17');
+});
+
+test('drift tolerates a parenthetical the judge appended to the lead', () => {
+  const inst = { class: 'writing', rules_evaluated: [
+    { compendium: 'check_writing.md', rule_index: 16, rule_lead: 'No combative verbs about the agent in body prose (applies to exercises).', verdict: 'PASS' },
+  ] };
+  const { warnings } = scanInstanceIntegrity('x.writing.json', 'writing', inst, DRIFT_COMP);
+  assert.equal(warnings.filter(w => w.kind === 'rule-index-drift').length, 1);
+});
+
+// The dangerous half of drift: the wrong number is itself a VALID rule, so the
+// row resolves and nothing warns. 71 rows in the corpus, in runs of consecutive
+// off-by-one -- a whole instance's table shifted, every verdict attributed to
+// its neighbour. The lead is the rule's identity; when the two disagree, the
+// lead wins and the disagreement is reported.
+test('index resolves but the lead names a DIFFERENT rule → rule-index-drift', () => {
+  const comp = { check_writing: { evalClasses: [], rules: [
+    { id: '13', lead: 'Something entirely different.' },
+    { id: '17', lead: 'No combative verbs about the agent in body prose.' },
+  ] } };
+  const inst = { class: 'writing', rules_evaluated: [
+    { compendium: 'check_writing.md', rule_index: 13, rule_lead: 'No combative verbs about the agent in body prose.', verdict: 'PASS' },
+  ] };
+  const { warnings } = scanInstanceIntegrity('x.writing.json', 'writing', inst, comp);
+  const d = warnings.filter(w => w.kind === 'rule-index-drift');
+  assert.equal(d.length, 1);
+  assert.equal(d[0].should_be, '17');
+});
+
+test('a PARAPHRASED lead is not drift — it matches no rule, so the index stands', () => {
+  const comp = { check_writing: { evalClasses: [], rules: [
+    { id: '13', lead: 'Banned words — grep zero-tolerance.' },
+    { id: '17', lead: 'No combative verbs about the agent in body prose.' },
+  ] } };
+  const inst = { class: 'writing', rules_evaluated: [
+    { compendium: 'check_writing.md', rule_index: 13, rule_lead: 'Banned word check (grep)', verdict: 'PASS' },
+  ] };
+  const { warnings } = scanInstanceIntegrity('x.writing.json', 'writing', inst, comp);
+  assert.deepEqual(warnings, []);
+  const keys = verdictedKeys([inst], comp);
+  assert.ok(keys.has('check_writing.md::13'), 'a paraphrase must not move the credit');
+});
+
+test('drift onto a SUB-lettered rule resolves to its integer parent', () => {
+  // parseRules collapses 21b onto 21 and keeps 21's lead, so a row quoting 21b's
+  // lead finds nothing in `rules`. parseSubRuleLeads keeps the dropped leads,
+  // mapped to the parent the coverage model actually credits.
+  const comp = { check_student_facing: { evalClasses: [], rules: [{ id: '21', lead: 'Something else entirely.' }],
+    subLeads: [{ id: '21', lead: 'Session / task / run split (all trainings).' }] } };
+  const inst = { class: 'writing', rules_evaluated: [
+    { compendium: 'check_student_facing.md', rule_index: 21.5, rule_lead: 'Session / task / run split (all trainings).', verdict: 'PASS' },
+  ] };
+  const { warnings } = scanInstanceIntegrity('x.writing.json', 'writing', inst, comp);
+  const d = warnings.filter(w => w.kind === 'rule-index-drift');
+  assert.equal(d.length, 1);
+  assert.equal(d[0].should_be, '21');
+});
+
+test('parseSubRuleLeads: sub-lettered leads recorded against their integer parent', () => {
+  const md = '21. **Parent rule.** body\n21b. **Session / task / run split.** body\n';
+  assert.deepEqual(parseSubRuleLeads(md), [{ id: '21', lead: 'Session / task / run split.' }]);
+});
+
+test('unresolvable index with a lead matching nothing → stays unresolvable-rule-index', () => {
+  const inst = { class: 'writing', rules_evaluated: [
+    { compendium: 'check_writing.md', rule_index: 54, rule_lead: 'Not em-dashes again — a different surface', verdict: 'PASS' },
+  ] };
+  const { warnings } = scanInstanceIntegrity('x.writing.json', 'writing', inst, DRIFT_COMP);
+  assert.equal(warnings.filter(w => w.kind === 'unresolvable-rule-index').length, 1);
+  assert.equal(warnings.filter(w => w.kind === 'rule-index-drift').length, 0);
+});
+
+test('verdictedKeys: a drifted row credits the rule its lead names, not the number it typed', () => {
+  const keys = verdictedKeys([
+    { class: 'writing', rules_evaluated: [
+      { compendium: 'check_writing.md', rule_index: 54, rule_lead: 'No combative verbs about the agent in body prose', verdict: 'PASS' },
+    ] },
+  ], DRIFT_COMP);
+  assert.ok(keys.has('check_writing.md::17'), 'the judged rule must be credited');
+  assert.ok(!keys.has('check_writing.md::54'), 'the typed number is not a rule');
+});
+
+test('verdictedKeys without a compendium set → unchanged behaviour, keys off the typed index', () => {
+  const keys = verdictedKeys([
+    { class: 'writing', rules_evaluated: [{ compendium: 'check_writing.md', rule_index: 9, verdict: 'PASS' }] },
+  ]);
+  assert.ok(keys.has('check_writing.md::9'));
 });
 
 test('float 9.1 rule_index → unresolvable-rule-index warning', () => {

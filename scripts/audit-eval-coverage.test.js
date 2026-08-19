@@ -20,6 +20,8 @@ const path = require('node:path');
 
 const {
   parseRules,
+  parseMovedRules,
+  verdictedKeys,
   scanInstanceIntegrity,
   naRuleSet,
   splitMissing,
@@ -60,12 +62,75 @@ test('resolvable rule_index → no warning', () => {
   assert.deepEqual(warnings, []);
 });
 
-test('sub-lettered "9b" string → unresolvable-rule-index warning (non-gating)', () => {
+// ── Citation-shape normalisation: the corpus cites rules the way the compendiums
+// write them, and the auditor used to call three faithful shapes malformed.
+// (a) sub-lettered "9b" IS a real compendium rule (check_pedagogy §9b); parseRules
+// collapses it onto integer parent 9, so the instance side must collapse too or
+// 1,558 accurate citations read as junk. (b) a compendium name without the .md
+// suffix (400 citations) is the same compendium. (c) check_prompts / check_slides
+// / check_workshop / check_sales_copy are real compendiums that this audit does
+// not REPORT on — not invented homes (2,826 citations). What survives is the
+// signal the detector was built for: invented homes, and rules that moved house.
+
+test('sub-lettered "9b" → collapses onto integer parent 9, no warning', () => {
   const inst = { class: 'pedagogy', rules_evaluated: [{ compendium: 'check_pedagogy.md', rule_index: '9b', verdict: 'PASS' }] };
   const { bugs, warnings } = scanInstanceIntegrity('ae101--x.pedagogy.json', 'pedagogy', inst, COMP);
-  assert.deepEqual(bugs, []); // a warning, not a gating bug
+  assert.deepEqual(bugs, []);
+  assert.deepEqual(warnings, []);
+});
+
+test('sub-lettered index whose integer parent does not exist → still unresolvable', () => {
+  const inst = { class: 'pedagogy', rules_evaluated: [{ compendium: 'check_pedagogy.md', rule_index: '77b', verdict: 'PASS' }] };
+  const { warnings } = scanInstanceIntegrity('ae101--x.pedagogy.json', 'pedagogy', inst, COMP);
+  assert.equal(warnings.filter(w => w.kind === 'unresolvable-rule-index').length, 1);
+});
+
+test('sub-letter collapse does NOT feed the cram detector (9 and 9b are distinct judgments)', () => {
+  const inst = { class: 'pedagogy', rules_evaluated: [
+    { compendium: 'check_pedagogy.md', rule_index: 9, verdict: 'PASS' },
+    { compendium: 'check_pedagogy.md', rule_index: '9b', verdict: 'PASS' },
+  ] };
+  const { warnings } = scanInstanceIntegrity('ae101--x.pedagogy.json', 'pedagogy', inst, COMP);
+  assert.equal(warnings.filter(w => w.kind === 'duplicate-rule-index').length, 0);
+});
+
+test('reported-but-unaudited compendium (check_prompts) → known namespace, not unknown-compendium', () => {
+  const inst = { class: 'pedagogy', rules_evaluated: [
+    { compendium: 'check_prompts.md', rule_index: 26, verdict: 'PASS' },
+    { compendium: 'check_slides.md', rule_index: 3, verdict: 'PASS' },
+    { compendium: 'check_workshop.md', rule_index: 2, verdict: 'PASS' },
+    { compendium: 'check_sales_copy.md', rule_index: 1, verdict: 'PASS' },
+  ] };
+  const { warnings } = scanInstanceIntegrity('ae101--x.pedagogy.json', 'pedagogy', inst, COMP);
+  assert.equal(warnings.filter(w => w.kind === 'unknown-compendium').length, 0);
+});
+
+test('a rule that moved house → moved-rule-citation naming the new home, not unresolvable', () => {
+  const comp = { check_pedagogy: { evalClasses: [], rules: [{ id: '9', lead: 'x' }], moved: { '5': 'check_cross_module.md §1' } } };
+  const inst = { class: 'pedagogy', rules_evaluated: [{ compendium: 'check_pedagogy.md', rule_index: 5, verdict: 'PASS' }] };
+  const { bugs, warnings } = scanInstanceIntegrity('ae101--x.pedagogy.json', 'pedagogy', inst, comp);
+  assert.deepEqual(bugs, []);
   assert.equal(warnings.length, 1);
-  assert.equal(warnings[0].kind, 'unresolvable-rule-index');
+  assert.equal(warnings[0].kind, 'moved-rule-citation');
+  assert.equal(warnings[0].movedTo, 'check_cross_module.md §1');
+});
+
+test('parseRules: "Moved to" tombstones are not rules, and are recorded as redirects', () => {
+  const md = '5. *Moved to check_cross_module.md §1.*\n9. **Real rule.** body\n';
+  const rules = parseRules(md);
+  assert.deepEqual(rules.map(r => r.id), ['9']);
+  assert.equal(parseMovedRules(md)['5'], 'check_cross_module.md §1');
+});
+
+test('verdictedKeys: sub-letter and missing .md suffix both credit the parent rule', () => {
+  const keys = verdictedKeys([
+    { class: 'pedagogy', rules_evaluated: [
+      { compendium: 'check_pedagogy', rule_index: 10, verdict: 'PASS' },
+      { compendium: 'check_pedagogy.md', rule_index: '9b', verdict: 'PASS' },
+    ] },
+  ]);
+  assert.ok(keys.has('check_pedagogy.md::10'), 'missing .md suffix must still credit rule 10');
+  assert.ok(keys.has('check_pedagogy.md::9'), 'sub-lettered 9b must credit parent rule 9');
 });
 
 test('float 9.1 rule_index → unresolvable-rule-index warning', () => {
@@ -236,4 +301,24 @@ test('instances: every stored eval instance parses as JSON', () => {
     }
   }
   assert.deepEqual(bad, [], 'unparseable instance files drop their verdicts out of the corpus');
+});
+
+// ── The `file` field must name a file that exists ──
+// 13 instances pointed at nothing: an a101 supplementary recorded under the
+// ae101 path, a bare basename with no directory, one instance naming ITSELF.
+// scan-stale-classes.js reads this field and, on an unreadable path, keeps every
+// class as stale forever with reason 'unreadable' — so a rotted pointer reads as
+// permanent staleness rather than as the broken pointer it is. Cheap to guard.
+test('instances: every stored `file` field resolves to a real file', () => {
+  const dir = path.join(__dirname, '..', 'curriculum/evals/instances');
+  const broken = [];
+  for (const f of fs.readdirSync(dir).filter(n => n.endsWith('.json'))) {
+    let inst;
+    try { inst = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')); } catch { continue; }
+    const p = inst && inst.file;
+    if (!p) continue;
+    const abs = path.isAbsolute(p) ? p : path.join(__dirname, '..', p);
+    if (!fs.existsSync(abs)) broken.push(`${f} → ${p}`);
+  }
+  assert.deepEqual(broken, [], `eval instances pointing at nothing:\n  ${broken.join('\n  ')}`);
 });

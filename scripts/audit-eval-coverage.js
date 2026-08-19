@@ -40,11 +40,24 @@ const COMPENDIA = [
   'check_lectures', 'check_strategy_tie_in', 'check_cross_module',
   'check_platform_and_boundaries', 'check_research_claims',
 ];
+// Compendiums that exist but this audit does not REPORT coverage for. They are
+// still part of the rule namespace: an instance citing check_prompts.md §26 is
+// citing a real rule, not inventing a home, and must not be flagged as junk.
+const UNREPORTED_COMPENDIA = [
+  'check_prompts', 'check_slides', 'check_workshop', 'check_sales_copy',
+];
 // The known compendium namespace, for the unknown-compendium detector. A
 // rules_evaluated entry MUST cite one of these — judges that invent a home
 // ("story.md owns", "judge-owned", "storytelling") for an intrinsic judgment
 // file it outside the rule namespace, so it credits no real rule's coverage.
-const KNOWN_COMPENDIA = new Set(COMPENDIA);
+const KNOWN_COMPENDIA = new Set([...COMPENDIA, ...UNREPORTED_COMPENDIA]);
+
+// Compendiums cite rules three ways the auditor must read as one: bare integer
+// (9), sub-lettered (9b — a REAL rule that parseRules collapses onto its integer
+// parent), and with or without the .md suffix on the compendium name. Normalise
+// both halves of the key at every lookup, or faithful citations credit nothing.
+const parentRule = (idx) => String(idx).replace(/^(\d+)[a-z]$/, '$1');
+const compendiumName = (name) => String(name).replace(/\.md$/, '');
 
 // Which compendiums must fire on each surface type (the "rule sets that must
 // fire" column of the phasing table). Coverage is reported for these.
@@ -223,13 +236,24 @@ function parseRules(md) {
   return rules;
 }
 
+// Rules that moved house leave a tombstone: `N. *Moved to <file> §M.*`. Judges
+// working from an older map still cite the old address; the citation is a
+// redirect to follow, not an unresolvable index.
+function parseMovedRules(md) {
+  const re = /^(\d+)[a-z]?\.\s+\*Moved to (\S+\.md\s+§[\w.]+)/gm;
+  const out = {};
+  let m;
+  while ((m = re.exec(md)) !== null) if (!(m[1] in out)) out[m[1]] = m[2].replace(/\s+/g, ' ').replace(/\.$/, '');
+  return out;
+}
+
 function loadCompendia() {
   const out = {};
-  for (const name of COMPENDIA) {
+  for (const name of [...COMPENDIA, ...UNREPORTED_COMPENDIA]) {
     const p = path.join(MEM, `${name}.md`);
-    if (!fs.existsSync(p)) { out[name] = { evalClasses: [], rules: [] }; continue; }
+    if (!fs.existsSync(p)) { out[name] = { evalClasses: [], rules: [], moved: {} }; continue; }
     const md = fs.readFileSync(p, 'utf8');
-    out[name] = { evalClasses: parseFrontmatterEvalClasses(md), rules: parseRules(md) };
+    out[name] = { evalClasses: parseFrontmatterEvalClasses(md), rules: parseRules(md), moved: parseMovedRules(md) };
   }
   return out;
 }
@@ -248,7 +272,7 @@ function verdictedKeys(instances) {
     if (!inst || inst.__parseError || !Array.isArray(inst.rules_evaluated)) continue;
     for (const r of inst.rules_evaluated) {
       if (r && r.compendium != null && r.rule_index != null) {
-        set.add(`${r.compendium}::${String(r.rule_index)}`);
+        set.add(`${compendiumName(r.compendium)}.md::${parentRule(r.rule_index)}`);
       }
     }
   }
@@ -284,14 +308,19 @@ function scanInstanceIntegrity(fname, suffix, inst, comp) {
         warnings.push({ kind: 'non-enum-verdict', file: fname, compendium: r.compendium, rule_index: r.rule_index, verdict: r.verdict });
       }
       if (r.compendium != null && r.rule_index != null) {
-        const cname = String(r.compendium).replace(/\.md$/, '');
+        const cname = compendiumName(r.compendium);
+        // The cram detector keys off the RAW index on purpose: §9 and §9b are two
+        // distinct judgments, and collapsing them here would invent a duplicate.
         keyCounts.set(`${cname}::${String(r.rule_index)}`, (keyCounts.get(`${cname}::${String(r.rule_index)}`) || 0) + 1);
         if (!KNOWN_COMPENDIA.has(cname)) { unknownComps.add(cname); continue; } // can't resolve rule ids outside the namespace
         const C = comp[cname];
         if (C && Array.isArray(C.rules)) {
           const ids = new Set(C.rules.map(x => x.id));
-          if (!ids.has(String(r.rule_index))) {
-            warnings.push({ kind: 'unresolvable-rule-index', file: fname, compendium: r.compendium, rule_index: r.rule_index });
+          const parent = parentRule(r.rule_index);
+          if (!ids.has(parent)) {
+            const movedTo = (C.moved || {})[parent];
+            if (movedTo) warnings.push({ kind: 'moved-rule-citation', file: fname, compendium: r.compendium, rule_index: r.rule_index, movedTo });
+            else warnings.push({ kind: 'unresolvable-rule-index', file: fname, compendium: r.compendium, rule_index: r.rule_index });
           }
         }
       }
@@ -432,7 +461,8 @@ function printHuman(report, comp) {
     out.push(`⚠ data-hygiene warnings (${W.length}, non-gating): ${Object.entries(byKind).map(([k, n]) => `${k}×${n}`).join(', ')}`);
     const SHOWN = 15;
     for (const w of W.slice(0, SHOWN)) {
-      if (w.kind === 'unresolvable-rule-index') out.push(`  • unresolvable-rule-index  ${w.file}  ${w.compendium}::${w.rule_index}`);
+      if (w.kind === 'moved-rule-citation') out.push(`  • moved-rule-citation  ${w.file}  ${w.compendium}::${w.rule_index} → now ${w.movedTo}`);
+      else if (w.kind === 'unresolvable-rule-index') out.push(`  • unresolvable-rule-index  ${w.file}  ${w.compendium}::${w.rule_index}`);
       else if (w.kind === 'non-enum-verdict') out.push(`  • non-enum-verdict  ${w.file}  ${w.compendium}::${w.rule_index} = "${w.verdict}"`);
       else if (w.kind === 'duplicate-rule-index') out.push(`  • duplicate-rule-index  ${w.file}  ${w.compendium}::${w.rule_index} ×${w.count} (judgments crammed onto one index)`);
       else if (w.kind === 'unknown-compendium') out.push(`  • unknown-compendium  ${w.file}  "${w.compendium}" (not in the rule namespace)`);
@@ -471,6 +501,7 @@ if (require.main === module) main();
 module.exports = {
   SURFACES,
   parseRules,
+  parseMovedRules,
   parseFrontmatterEvalClasses,
   extractManifestLectureSlugs,
   verdictedKeys,

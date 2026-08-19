@@ -108,7 +108,6 @@ After writing, check: did this correction's `severity` just go from `medium` →
 ## What this skill does NOT do
 
 - **Replace self-review-protocol.md.** Self-review runs end-of-session, mines the transcript, and produces the *raw* correction list. `/compound` takes one of those corrections and promotes it to structured form. Both exist.
-- **Replace the long-running strategy's own compound step.** `curriculum/module-design-long-running-strategy.md` rewrites its *own* "Rules the file has learned" section at the close of each long-running generation cycle — that's how it compounds on the long-running-generation-pattern itself. `/compound` handles the *cross-surface* corrections from the same session (banned-word leakage, mood violations, sales-copy register leaks) that apply beyond long-running generation. Both run on the same session; they don't overlap.
 - **Card internal edits.** Compendium amendments, `memory/compounded/` entries and `.claude/rules/` land directly and get reported, not proposed (`check_prompts.md §26`). Only an edit a student will read is card-shaped. Antti reverts what he doesn't want; that is cheaper for him than approving what he already asked for.
 - **Bulk-migrate legacy `feedback_*.md` memories.** That's a `/refresh` job. This skill only writes new compounded entries.
 

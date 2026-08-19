@@ -88,3 +88,17 @@ verdicts fold into `curriculum/trainings/agentic-engineering-101/pre-cohort-todo
 - `PROMPT.md` — completed research-track table; the tracks it lists live under
   `continuous-research/archive/`.
 - `quiz-spec.md` — spec for the shipped `site/readiness/` and `site/check/` quizzes.
+
+## curriculum/ — archived 2026-08-19
+
+`module-design-long-running-strategy.md`. The plan-walk-away-return method for
+long-running generation, with a Run history that stops at 2026-04-23 and a "Rules the
+file has learned" section it was supposed to rewrite at the close of every such cycle.
+Four months of AE101 generation happened without either. A doc that claims to be
+maintained and is not is worse than no doc: it invites a reader to treat a spring
+snapshot as current method. The method itself is preserved here; what the compendiums
+carry is what binds.
+
+Dropped with it: its `curriculum/CLAUDE.md` canon entry, its row in `MEMORY.md`'s
+canonical files and skill-trigger tables, and the bullet in `/compound`'s "what this
+skill does NOT do" that disambiguated against a compound step that no longer runs.

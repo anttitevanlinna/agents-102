@@ -11,8 +11,7 @@ Docs with authority over generation. Anything not listed is session material: re
 - **Vocabulary** (controlled terms: session/task/run, kit terms, register splits): `curriculum/vocabulary.md`. Term change = amend the registry first, then one sweep pass, never a local synonym.
 - **Module file shape**: `curriculum/module-shape.md`. **Widgets**: `curriculum/widgets.md`. **Quality line**: `curriculum/quality-format.md`.
 - **Backing blocks**: `curriculum/backing-format.md`. **Source stamps**: `curriculum/source-freshness-format.md`.
-- **Long-running generation** (plan → walk away → return): `curriculum/module-design-long-running-strategy.md`.
-- **Eval procedure**: `curriculum/evals/` top level (README = the pyramid; `simulation.md` Class A + `simulation-behavior.md` Class B; `exercise.md` / `lecture.md` manifests; `arc-pass.md`, `post-run-judge.md`, `pre-flight-checklist.md`, `manual-run-observation.md`, `slide-sweep.md` runbooks; `delivery-incidents.md` append-only; `IMPROVEMENTS.md` open machinery work). Rubrics: `curriculum/evals/judges/`. Lints: `curriculum/evals/lints/`.
+- **Eval procedure**: `curriculum/evals/` top level (`curriculum/evals/README.md` = the testing pyramid; `simulation.md` Class A + `simulation-behavior.md` Class B; `exercise.md` / `lecture.md` manifests; `arc-pass.md`, `post-run-judge.md`, `pre-flight-checklist.md`, `manual-run-observation.md`, `slide-sweep.md` runbooks; `delivery-incidents.md` append-only; `IMPROVEMENTS.md` open machinery work). Rubrics: `curriculum/evals/judges/`. Lints: `curriculum/evals/lints/`.
 
 **Agentic Engineering 101**
 

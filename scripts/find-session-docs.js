@@ -75,8 +75,8 @@ while (grew) {
   for (const [src, text] of corpus) {
     if (!anchored.has(src)) continue;
     if (src.startsWith('docs/archive/')) continue; // an archive confers no authority
-    for (const c of candidates) {
-      if (anchored.has(c) || c === src) continue;
+    for (const c of corpus.keys()) {
+      if (anchored.has(c) || c === src || c.startsWith('docs/archive/')) continue;
       if (namesIt(text, c)) { anchored.add(c); grew = true; }
     }
   }

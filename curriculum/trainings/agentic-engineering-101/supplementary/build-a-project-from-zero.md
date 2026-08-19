@@ -2,7 +2,7 @@
 
 The training runs on a repo you already ship to. No such repo you can use here? Build one. A repo you grow from zero is a clean instrument. Every decision is yours, every bug is legibly your own, and nothing inherited needs explaining away.
 
-You'll build a small Lemmings game in the browser (the 1991 classic: little creatures you guide across a level). By the end of the first session it runs, it has a test or two, and it has real commit history. That's a project. The training grows it.
+You'll build a small Lemmings game in the browser (the 1991 classic: little creatures you guide across a level). By the end of the first session it runs, it has a test or two, and it has real commit history. That's a project.
 
 ## Get to a running game
 
@@ -11,13 +11,16 @@ You'll build a small Lemmings game in the browser (the 1991 classic: little crea
 - Open a Claude Code session in that folder.
 - Ask Claude to build a first playable Lemmings game as a single browser page: a canvas, two levels, and three lemming actions you can trigger (walk plus two you pick, say dig and block). Enough code to have surface area, and an obvious backlog of more levels and more actions to grow into. Small enough to run when you open the `.html`.
 - Open the page and play. The first thing that looks wrong or feels missing is your Module 1 bug.
+
+## Leave it with tests and a data surface
+
 - Ask Claude to add a small test suite so the game has real tests to break and guard.
 - Ask Claude to commit at each working step, so the repo grows real history instead of one big drop.
 - Before you close the session, ask Claude to add one feature that touches data or other players: a shareable level via a URL, a score you submit, or saved progress. <!--flag:module:earn-the-trust-->That surface is what Module 3 reads when you map access control and run STRIDE against it. A toy game with no data has nothing to threat-model.<!--/flag:module:earn-the-trust--><!--flag:no-module:earn-the-trust-->A game that only draws to a canvas has one kind of surface; one that stores or shares something has several, and the later task sizes want somewhere real to land.<!--/flag:no-module:earn-the-trust-->
 
 ## Where the four task sizes come from
 
-Same four sizes as the [prework](../prework.md), now sourced from the game's own backlog:
+Same sizes as the [prework](../prework.md), now sourced from the game's own backlog:
 
 - **Trivial bug:** a rendering glitch, a lemming clipping through a wall, an off-by-one in the survivor count.
 - **Small multi-file task:** a new ability like a digger or a blocker that touches input, the game loop, and rendering.
@@ -26,7 +29,7 @@ Same four sizes as the [prework](../prework.md), now sourced from the game's own
 
 ## Bring to Module 1
 
-The running game, the test suite, the commit history, and the one bug you spotted while playing. Module 1 opens fresh in this repo.
+The running game, the test suite, the commit history, and the one bug you spotted while playing.
 
 <!-- maintainer -->
 

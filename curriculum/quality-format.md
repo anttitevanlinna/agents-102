@@ -15,6 +15,8 @@ The ladder tops at `sim-passed` — the last *recorded* LLM check. Two things ga
 
 **There is no `maintainer-reviewed` axis (removed 2026-08-15, Antti-directed).** It went stale the moment any body moved and nobody re-marked it. Maintainer direction is visible where it actually lands: dated decision notes in the maintainer block. The stamper strips any stray `- maintainer-reviewed` row it encounters on re-stamp.
 
+**Position: first in the maintainer block (ruled 2026-08-19).** The `**Quality:**` line opens the block, its `- ` rows run unbroken directly beneath it, and decision notes, accept-notes and source-verification blocks follow. The parser is the reason: `scan-stale-classes.js:blockRow` reads only the unbroken run of rows under the Quality line, so a note that lands between them takes `cross_module` and `voice_panel` out of the queue's sight without any error. Agents 101 has held this shape across all eight modules; AE101 accreted the other way and sits anywhere from 2 to 92 lines in, which is what a position nobody ruled on looks like. AE101 converges to this on next touch of each file.
+
 **Format** (top-state line + dimension log in maintainer block):
 ```
 **Quality:** <top-state> <YYYY-MM-DD> (writing@<sha> story@<sha> technical@<sha> behavior@<sha> pedagogy@<sha> strategy@<sha> slides@<sha>)

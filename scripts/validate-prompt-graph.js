@@ -76,9 +76,18 @@ const EXTERNAL_SOURCE_RE = /^(scrollback|student-input|external)\b/;
 // ONLY failure mode is referencing one BEFORE its producer runs (premature).
 // Explicitly-read artefacts (the observations folder) fail on both unbacked
 // and premature.
+//
+// `trainings`, when present, scopes the primitive to only the listed training
+// keys — the CONFIG-STALE self-check and the body-reference scan both skip a
+// primitive outside its trainings. Omit `trainings` for a primitive every
+// training's prompt graph is expected to carry. This exists because a
+// mechanic can be real in one training (AE101's `./observations/` /
+// `CLAUDE.local.md` working-notes convention) and simply not built yet in
+// another (A101) — that is a design gap per-training, not a config typo, and
+// should not fail a training that never uses the primitive.
 const BODY_PRIMITIVES = [
-  { id: 'observations-folder', label: '`./observations/` folder', regex: /(?:`|\b)\.?\/?observations\// },
-  { id: 'claude-local-md', label: '`CLAUDE.local.md`', regex: /CLAUDE\.local\.md/, autoLoaded: true },
+  { id: 'observations-folder', label: '`./observations/` folder', regex: /(?:`|\b)\.?\/?observations\//, trainings: ['agentic-engineering-101'] },
+  { id: 'claude-local-md', label: '`CLAUDE.local.md`', regex: /CLAUDE\.local\.md/, autoLoaded: true, trainings: ['agentic-engineering-101'] },
 ];
 
 function argValue(name, fallback) {
@@ -173,6 +182,9 @@ function findStalePrimitives(primitives, knownIds) {
 function validate(trainingKey) {
   const registry = loadRegistry();
   const ordered = orderedKeys(trainingKey);
+  const activePrimitives = BODY_PRIMITIVES.filter(
+    (p) => !p.trainings || p.trainings.includes(trainingKey)
+  );
 
   // First position of each key in the linear walk.
   const posByKey = new Map();
@@ -212,7 +224,7 @@ function validate(trainingKey) {
   // Validator config self-check (see findStalePrimitives): a hardcoded
   // body-primitive id that matches no frontmatter id means the config drifted
   // out from under a rename — the one reference the graph can't otherwise catch.
-  for (const prim of findStalePrimitives(BODY_PRIMITIVES, knownIds)) {
+  for (const prim of findStalePrimitives(activePrimitives, knownIds)) {
     add('error', 'CONFIG-STALE', '(config)',
       `BODY_PRIMITIVES id '${prim.id}' (${prim.label}) matches no produces/requires/opportunistic-copy id in ${trainingKey} — validator config is stale (renamed without updating BODY_PRIMITIVES, or vice-versa)`);
   }
@@ -271,7 +283,7 @@ function validate(trainingKey) {
     // --- opportunistic-copy: must signal optionality if read in body ---
     for (const o of asArray(prompt['opportunistic-copy'])) {
       if (!o || !o.id) continue;
-      const prim = BODY_PRIMITIVES.find((p) => p.id === o.id);
+      const prim = activePrimitives.find((p) => p.id === o.id);
       if (prim && prim.regex.test(body) && !optionalitySignalled(body)) {
         add('error', 'OPP-NOT-OPTIONAL', key,
           `opportunistic-copy '${o.id}' is read in the body but the body signals no optionality (if-present / no-op) — masquerades as a hard read`);
@@ -279,7 +291,7 @@ function validate(trainingKey) {
     }
 
     // --- body-reference checks ---
-    for (const prim of BODY_PRIMITIVES) {
+    for (const prim of activePrimitives) {
       if (!prim.regex.test(body)) continue;
       if (producedHere.has(prim.id)) continue;     // this prompt is the producer
       if (oppHere.has(prim.id)) continue;          // optional copy — handled above

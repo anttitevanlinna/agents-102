@@ -1,125 +1,126 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/test-and-learn.md",
+  "body_sha": "1869870f47ffa9e98a42144e45fba319dddc25c6ddf9a5c068fa02280ee89529",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "Curious readiness — \"I've built enough to try something; let's see what the agent does with it.\" Stakes back in the room, no compliance framing. M4 must NOT feel tidy — the un-packaged run's messiness stews into M5's rescue. (Per bosser-strategy:content-strategy-agentic-engineering-101.md M4 row + § M4 in detail.)",
+  "module_mood_contract": "Curious readiness — \"I've built enough to try something; let's see what the agent does with it.\" Stakes back in the room, no compliance framing. M4 must NOT feel tidy — the un-packaged run's messiness stews into M5's rescue. (Per bosser-strategy:content-strategy-agentic-engineering-101.md § M4 in detail.)",
   "trace_status": "regenerated",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
-      "rule_lead": "Meta-frame lectures are closers, not openers; placement diagnostic: naming a pattern (closer), showing a ceiling (opener), or teaching vocabulary (mid-module)?",
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Lecture meta line 40: 'Sets up M4's walk-and-send-off exercise. Names the spirit... and the one move the exercise opens with.' This is an arming opener (spirit + one operational primitive: gap analysis), not a closer naming a pattern the student already lived — matches the strategy doc's M4 placement before the send-off.",
+      "evidence": "Harm the rule guards: a lecture that narrates a pattern the student already lived, told before the exercise, reads as abstract claim instead of recognition. Not present here — the lecture meta line (maintainer block) states it 'sets up M4's walk-and-send-off exercise' and 'names the spirit ... and the one move the exercise opens with' — prospective arming, not retrospective naming. Strategy doc places this lecture before the exercise in the M4 sequence. PASS.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 2,
-      "rule_lead": "Minimal lecturing before contrast-mood exercises; max dosage: spirit + diagnostic lenses + one operational primitive + direct FAQ if load-bearing.",
+      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "PASS",
-      "evidence": "Four slides = spirit (slide 1) + arc framing (slide 2) + one operational primitive, gap analysis (slide 3) + cancel-permission FAQ (slide 4). Ronacher's three-pattern deliberately absent (maintainer block: 'Not named in this body since the 2026-07-02 pass... M5 owns the naming'), consistent with strategy doc line 396 ('the pieces earn their names from the M4 evidence, not a whiteboard').",
+      "evidence": "M4 is contrast-mood (learn through doing the un-packaged send-off; M5 does the naming). Dosage present: spirit (slide 1, 90 words), arc framing (slide 2, 76 words), one operational primitive — gap analysis (slide 3, 78 words) — plus cancel-permission operating rule (slide 4, 92 words). No named practitioner term is taught: grep for 'Ronacher'/'three-pattern' in the body returns only the deliberate absence enumeration ('no plan.md, no verifier, no reference artifact', line 13) naming what ISN'T here, never Ronacher's name. Matches maintainer block: 'Not named in this body ... M5 owns the naming.' Total body ~336 words across 4 slides — arms, does not teach.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 3,
-      "rule_lead": "No cross-module sequencing in lecture bodies — bridges, forward-references, module numbering belong to the module file.",
+      "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Grep of body (lines 1-27, above the maintainer fence) for `M[0-9]` or module-name refs: zero hits. Maintainer block records the 2026-07-02 sweep verifying the same and re-confirms it (line 35: 'verified zero M[0-9]/module-name hits above the fence'). The 2026-08-01 body edit (the 'stretch where the agent runs alone' clause) adds no sequencing reference.",
+      "evidence": "Ran: `awk '/<!-- maintainer -->/{exit} {print}' curriculum/lectures/test-and-learn.md | grep -nE 'M[0-9]|Module [0-9]'` → zero hits (empty output). No bridges, forward-references, or module numbering above the maintainer fence.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 4,
-      "rule_lead": "Slide/lecture headers pass the squint test (names the concept) AND the truth clause (asserts what the body supports).",
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Four headers: 'Every send-off is an experiment', 'The two-run arc', 'Gap analysis: walk your system against the task', 'Cancel is legitimate; traces are data'. Each names a claim or a named thing the body substantiates; none are empty containers ('The move', 'The spirit') or orphan mystery headers. No two slides share a header. No unsupported universals or category errors found; header text unchanged by the 2026-08-01 body edit.",
+      "evidence": "Four headers: 'Every send-off is an experiment' (claim), 'The two-session arc' (names a structure the body defines, not an empty container like 'The move'), 'Gap analysis: walk your system against the task' (names + one-clause definition, precedent-consistent with 'Gates decay'-style failure/claim headers), 'Cancel is legitimate; traces are data' (claim). No two slides share a header. No unsupported universals, no category errors, no dropped qualifiers checked against body content — each header's claim is exactly what its slide's body supports, nothing stronger.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
-      "rule_lead": "A slide's body is size-bounded: under ~210 readable words AND ≤6 bullets per `##` slide.",
+      "rule_lead": "A slide's BODY is size-bounded, not just its header.",
       "verdict": "PASS",
-      "evidence": "Measured per-slide word counts (maintainer/backing excluded): slide 1 = 119 words/0 bullets, slide 2 = 95 words/3 bullets, slide 3 = 94 words/3 bullets, slide 4 = 102 words/3 bullets. All well under the 210-word, 6-bullet ceiling, including the body edit that added ~14 words to slide 1's second sentence.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/test-and-learn.md --report`. Output: 4 slides, limits 210 words / 6 bullets; largest slide 'Cancel is legitimate; traces are data' = 92 words / 3 bullets; smallest 'The two-session arc' = 76 words / 3 bullets. `oversized: 0`, exit message '✓ every slide is within limits'.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
-      "rule_lead": "Forcing functions live in prompts, not body prose.",
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
-      "evidence": "This file is a lecture with no student-copied prompts or fenced blocks (grep for 'Prompt' / '{{prompt' returns zero hits) — the forcing-function/body-prose distinction applies to exercises. Nothing in this body explains a forcing function that a prompt should instead enact.",
+      "evidence": "This file carries no student-copied prompt fences (`{{prompt:` / `**Prompt**` both absent — this is prework/lecture, the exercise it arms lives in a separate file). There is no forcing function for the body to be explaining instead of enacting. The one number in body prose ('fifteen to thirty minutes is enough', line 27) is a pacing calibration in suggestion register ('is enough', not a bare imperative count), which the rule's own boundary clause allows to stay in body.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
-      "rule_lead": "Body teaches the work; trainer manages the room outside text — no authored conversations, pause cues, or 'discuss with...' sentences.",
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Grepped body for conversation-cue shapes ('discuss', 'share with', 'compare with', 'tell the room', 'take N seconds and'): zero hits across all four slides. Every sentence addresses the individual reader ('you') about the work — the experiment, the arc, gap analysis, cancel permission — never the room.",
+      "evidence": "Harm guarded: an authored conversation cue collapses trainer's room-reading judgement into a scripted beat. Grepped body for 'discuss', 'neighbor/neighbour', 'share with', 'talk to', 'take N seconds and', 'the room' (case-insensitive): zero hits. Every sentence addresses the individual reader about the work (the experiment stance, the two-session arc, gap analysis, cancel permission), never the room or a pairing instruction.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named — draft honours or flattens the module's deliberate mood; mood-floor 8+/10 applies to teaching beats.",
+      "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Trace (regenerated this run, content_sha 6fec7bb8...) phase 1 mood_score 8, close mood_score 8 — both at/above floor. The whole deck is a teaching beat (spirit-naming, arc-framing, permission-granting — none compresses to a parenthetical without losing the arc), so the floor correctly applies and is met.",
+      "evidence": "Trace regenerated this run (content_sha f847497a..., matching current body_sha — prior cached trace at content_sha 6fec7bb8... was stale against the file's Aug-15 edits and was regenerated). Phase 1 mood_score 8, close mood_score 8 — both at the teaching-beat floor. Classification: the whole deck is a TEACHING beat (spirit-naming, arc-framing, permission-granting), none of it compresses into a parenthetical without losing the arc, so the floor correctly applies and is met, not exempted.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
-      "rule_lead": "Epistemic mood ≠ punitive mood — student leaves uncertain about what's possible, not ashamed of what they did.",
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Trace mood_note (phase 1): 'none of this reads as compliance (\"make sure you do this right\") or performance-anxiety.' Slide 4 locates the failure signal in Claude's behavior ('hallucinating file paths', 'arguing with itself', 'missing a requirement'), not the student's, and frames stopping early as an operator's right to a readable result — matches the maintainer's 2026-08-01 rewrite (line 50: 'It's an operating rule, not a safety net').",
+      "evidence": "Trace mood_note (phase 1): 'none of this reads as compliance (\"make sure you do this right\") or performance-anxiety.' Slide 4 locates the three failure tells in Claude's behavior ('hallucinating file paths', 'contradicting its own earlier steps', 'missing a requirement') — never the student's — and frames stopping early as the operator's right to a readable result, matching the maintainer's 2026-08-01 correction (line 49: 'It's an operating rule, not a safety net').",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 3,
-      "rule_lead": "Lead with discipline, not failure mode — Big Ideas name positive disciplines, failure mode becomes the negative case the discipline addresses.",
+      "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Headers lead with the discipline ('Every send-off is an experiment', 'Gap analysis...', 'Cancel is legitimate; traces are data'); failure-mode language (hallucinating file paths, arguing with itself, missing a requirement) appears only inside slide 4's body as the diagnostic tells for when to exercise the discipline, never as the header/title.",
+      "evidence": "All four headers lead with discipline: 'Every send-off is an experiment', 'The two-session arc', 'Gap analysis...', 'Cancel is legitimate; traces are data'. Failure-mode language (hallucinating paths, arguing with itself, missing a requirement) appears only inside slide 4's body as the diagnostic tells for when to exercise the discipline — never as a header or title.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity — front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early all consolidated into one verdict.",
+      "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "Front-run check: Ronacher's three-pattern stays unnamed (deliberate absence per M4/M5 strategy split, strategy doc line 396) — no front-run of M5's teaching moment. Big Idea fidelity: body opens with 'testing and learning' / 'the agent is the apparatus... the result is data', matching strategy doc line 254's 'you are testing, and you are learning' verbatim framing. Module-to-module arc: close hands to the exercise with no pre-resolution — trace close.mood_note: 'doesn't pre-resolve the exercise's uncertainty or tip into M5's teaching moment.' Mood-doesn't-resolve-early: the lecture ends on the cancel-permission bullet (an operating rule for the send-off, not a summary of what the exercise will produce), so M4's un-tidy result and M5's rescue both stay open. The 2026-08-01 body edit (clarifying 'this country' as 'the stretch where the agent runs alone and you don't watch each step') is a clarity fix only — adds no claim, changes no arc beat, and does not pre-teach anything M5 or M6 owns.",
+      "evidence": "Front-run: Ronacher's three-pattern stays unnamed (confirmed by grep above) — M5 keeps its naming payoff per strategy doc's M4/M5 split ('the pedagogy is contrast, not prescription ... each piece earns its name ... after the M4 evidence is read'). Big Idea fidelity: body opens 'You are testing, and you are learning' — matches strategy doc's 'Spirit: testing and learning' verbatim. Module-to-module arc: trace close.mood_note — lecture 'ends on the cancel-permission bullet, not on a forward-reference to what happens after — doesn't pre-resolve the exercise's uncertainty or tip into M5's teaching moment.' Mood-doesn't-resolve-early: no summary of what the exercise will produce; the un-tidy result stays open for M5 to diagnose, consistent with the module contract ('M4 must NOT feel tidy').",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": 6,
-      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Governs module `## Key Concepts` sections; this is a lecture file with no Key Concepts heading — owned by the module file (run-the-first-experiment.md) at module grain.",
+      "evidence": "Governs a module file's `## Key Concepts` section (student-facing heading). This is a lecture file with no such section — owned by the module file (`run-the-first-experiment.md`) at module grain, not by this lecture.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 6,
-      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section (run §§3/4/5 first).",
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Same as §5 — no Key Concepts section exists in a lecture file.",
+      "evidence": "Same reason as §5 — no `## Key Concepts` heading exists in this lecture file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -128,7 +129,27 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "Governs module `## What You'll Learn` sections; not present in this lecture.",
+      "evidence": "Governs a module file's `## What You'll Learn` section. Not present in this lecture.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope call.",
+      "verdict": "N/A",
+      "evidence": "check_prompts.md's scope is 'anything inside a fenced code block with copy-this affordance for a student.' This lecture contains zero such fences — no `{{prompt:<key>}}` marker, no `**Prompt**` block. No rule in this compendium has a surface to bind here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope call.",
+      "verdict": "N/A",
+      "evidence": "check_workshop.md fires when a beat's output belongs to the group, not a participant (adjudication, attributed contribution, shared record). This lecture is individual comprehension-only prework read by a lone reader before the exercise — no beat's output belongs to a group.",
       "fix_hint": null,
       "blocking": false
     }
@@ -142,5 +163,6 @@
     "stealing_the_mood": []
   },
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 0,
+  "notes": "Teaching moment lands (no check_strategy_tie_in rule_index owns this per template — recorded here): trace shows zero confusion_flags and zero under_scaffolded_phases; the tourist/practitioner sentence and gap-analysis question both register as portable takeaways the persona would carry unprompted into the exercise. Sim trace regenerated this run — prior cache (content_sha 6fec7bb8...) predated the file's 2026-08-15 body edits and did not match current body_sha; new trace confirms the current body reads the same way (same 4 slides, same claims) at content_sha f847497a... Prior instance for this file (overwritten by this run) had a duplicate check_strategy_tie_in.md rule_index-6 row and a missing rule_index-5 row; fixed here — one row per rule, §5/§6/§7 each present once."
 }

@@ -76,8 +76,8 @@ Twenty-nine megajudge audit reports from the eval system that predates the per-c
   no open items; the lead-in audit declares itself stale on its AE101 half.
 - `tmux-runner/FIX-PLAN`, `RESUME-a101-runner`, `SPECS-m4-m6`, `a101-runner-findings` —
   compaction handoffs and worklists for the Agents 101 runner build.
-- `_punch-list-writing.md`, `scaffold-handoff.md`, `module-design/ae101-m6-plan.md` —
-  live-state files for runs that finished.
+- `_punch-list-writing.md`, `module-design/ae101-m6-plan.md` — live-state files for runs
+  that finished.
 
 `scratch/buried-gold-proposals-2026-08-15.md` was not archived: its twenty-one adjudicated
 verdicts fold into `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`

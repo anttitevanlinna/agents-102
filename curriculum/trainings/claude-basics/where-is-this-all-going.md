@@ -54,7 +54,7 @@ The next section turns that live pattern into a small system you run on your own
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Where is this all going?*
 
-**Eval instance:** `curriculum/evals/instances/claude-basics--find-the-crux.md`
+**Eval instance:** `docs/archive/eval-instances-legacy/claude-basics--find-the-crux.md`
 
 **Mood contract:** expanded horizon. Forward awe with a deliverable in hand. Edits that resolve into tidy completion register steal the forward hunger. Edits that resolve into *"now you know what to do"* are correct; edits into *"we're done here"* are wrong.
 

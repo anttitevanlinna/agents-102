@@ -103,3 +103,5 @@ for (const r of rows.filter((r) => r.anchored)) {
   console.log(`    ${r.last}  ${String(Math.round(r.size / 1024) + 'K').padStart(5)}  ${r.file}   ← ${r.namedBy.join(', ') || 'seed'}`);
 }
 console.log();
+
+module.exports = { namesIt };

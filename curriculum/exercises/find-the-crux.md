@@ -207,4 +207,4 @@ Whenever the group says stop, stop. The artifact is the synthesis file plus what
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Where is this all going?*
 
-**Eval instance:** `curriculum/evals/instances/claude-basics--find-the-crux.md`
+**Eval instance:** `docs/archive/eval-instances-legacy/claude-basics--find-the-crux.md`

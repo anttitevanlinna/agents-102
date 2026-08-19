@@ -63,37 +63,20 @@ Verified present for A101 — do not re-investigate, do not "fix":
 - **Hook layer is already training-agnostic.** `eval-class-router.sh:90` matches `curriculum/(trainings/[^/]+|exercises|lectures|supplementary)/*.md` — A101 module edits route eval classes exactly as AE101's do. `prompt-edit-gate.sh:43` matches all of `curriculum/prompts/**`, so `a101-*` prompt bodies carry the same approval gate. `surface-detector.sh:36` names `agents-101` in its keyword regex.
 - **`check-slide-deixis --training agents-101`** — clean, 46 files, no page-geometry pointers.
 
-## Punch list
+## Punch list — moved out 2026-08-19
 
-Each item: `[ ] [S/M/L] <gap> → <fix>`. Done items are deleted, not annotated (punch list, not changelog).
+**Open items live in `pre-cohort-todos.md`, not here.** That file declares itself the canonical home for A101 open work, and two punch lists for one training is how they drift apart. Everything this doc still owed was folded into its existing sections rather than bolted on as a parity annex, because the work is the same work whatever prompted it:
 
-**Machinery — gates that do not guard A101**
+| Was here | Now |
+|---|---|
+| Source-verification blocks / `checked:` stamps | § 3 Source verification |
+| `<!-- backing -->` blocks, `cross_module` row, Quality-line position | § 4 Maintainer contract normalization |
+| The two Pass-1 supplementaries; `agent-trigger-list` paths | § 7 Scaffold and reference disposition |
+| The 7-class re-judge bill, `audit-eval-coverage` wiring, 159 legacy instances | § 8 Eval instances to fill |
+| The sparse prompt graph | § 12 Prompt-registry catch-up audit |
+| Optional challenges, trainer run-sheets, Key Concepts placement, the theory handbook | § 6 Unclear / design-choice flags |
 
-- [ ] [M] `audit-eval-coverage --training agents-101` runs but is NOT wired into the gate, and that is on purpose: it reports 4034 holes and cannot go green until the parked 7-class judging happens. A permanently-red check is a check nobody reads. **Unwire-blocked on the judging decision, not on effort.** When judging unparks, wire it.
-
-**Prompt graph**
-
-- [ ] [M] Systemic: most A101 exercise prompts still carry no graph fields at all. The graph validates clean, but it validates a sparse graph — only the artefacts a debrief happens to require are declared. AE101 declares roughly half its prompts. Backfilling the rest is what makes PREMATURE catchable, not just DANGLING.
-
-**Quality state — PARKED by Antti 2026-08-19 ("machinery first, judges later")**
-
-- [ ] [L] Re-audit + re-stamp A101 on the 7-class set. Correct the earlier claim while you are here: A101 already has **41 prefixed instances** including `.slides`, `.pedagogy` and `.strategy` files, so some current-class judging HAS run. `claude-basics` has 61. The old "no pedagogy/strategy/slides judge has ever run against A101" was wrong.
-- [ ] [L] **Everything this session touched now owes a re-judge.** Every A101 module, all 15 exercises and 13 lectures moved. `node curriculum/evals/scripts/scan-stale-classes.js` is the tool for scoping it — do not re-run all seven classes per body edit.
-- [ ] [M] Maintainer-block shape drift: Quality line positioned first instead of last, no `cross_module` row anywhere.
-- [ ] [S] 159 legacy-unprefixed instance JSONs sit outside the documented `instances/legacy/` archive; `evals/README.md` still documents the old unprefixed convention while the tooling uses `<training>--<type>--<slug>.<class>.json`.
-
-**Content patterns**
-
-- [ ] [L] Zero `Source verification` blocks / `checked:` stamps across all 9 module files despite live claims: Mollick citations, an 82%/24% stat, Mata v. Avianca, a Deloitte/DEWR report, an 85%×10 reliability stat.
-- [ ] [L] Zero `<!-- backing -->` blocks in A101 **module files** (AE101 has 9). Note the shared library is better off than the modules: `lectures/when-to-split-an-agent.md` carries a full backing block with claims, stance level and OODA roster. Priority: `output-quality.md`'s reliability math, the shared 82%/24% stat.
-- [ ] [S] `agent-ready-data` and `personal-to-company-gap` are Pass-1 skeletons: five lines of student intro above a maintainer fence, everything below it planning notes. Their only inbound links are from each other and from maintainer notes. Register or delete is a maintainer call, not sweep work.
-
-**Deliberate non-goals** (recorded so they are not re-proposed)
-
-- `## Optional challenges` is in all 7 AE101 modules and 0 of 9 A101 modules — but it is NOT in `module-shape.md`. Authoring nine of them is curriculum expansion, not parity. Maintainer call, not sweep work.
-- A101's `trainer-guide.md` vs AE101's per-module `trainer-modules.md` run-sheets: a deliberate decide, not a build.
-- Reordering `## Key Concepts` to sit below `## Debrief` per `module-shape.md`. Consistent across all eight A101 modules and older than this pass; moving it changes the training's shape, not its machinery.
-- `build-workbook.js --theory` aborts for A101 because `THEORY_HANDBOOK_MANIFEST` has no A101 entry. Checked: the theory layer is AE101-only IP (`theory-plan.md` / `theory-audit.md` / `theory-evals.md` at repo root, all AE101). A101 has no theory spine to compile, so the abort is correct and its error message already says what to do. Building one is inventing a layer, not matching machinery.
+This doc keeps what `pre-cohort-todos.md` has no room for: the goal, the scope test, what parity was taken to mean, the gates table, and the log of what was found and why. Read it to understand the effort; read the punchlist to do the next piece of work.
 
 ## Decided
 

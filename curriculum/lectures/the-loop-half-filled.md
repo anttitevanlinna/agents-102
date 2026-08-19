@@ -74,8 +74,8 @@
 
 - Family B judged 2026-07-03: B-star durability PASS — every law recovers NAMED·PLACED·MECHANISM from the slide alone and the governor is executable/generative; spine holds (Intent filled by the governor, no empty phase) and the kept-5 dose reads as recognition, not a pile.
 
-**Quality:** compendium-audited 2026-08-19 (writing@4f9d6341 technical@1c765f2 behavior@1c765f2 pedagogy@4f9d6341 strategy@1c765f2 slides@4f9d6341)
-- judges @4f9d6341: writing PASS, story REVISE (merge-bullet beat flagged; maintainer accepted the beat as written, accept-note pending re-fire), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-19 (writing@4f9d6341 story@a98b7c73 technical@1c765f2 behavior@1c765f2 pedagogy@4f9d6341 strategy@1c765f2 slides@4f9d6341)
+- judges @a98b7c73: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 <!-- backing -->
 

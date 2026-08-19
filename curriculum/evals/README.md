@@ -57,7 +57,7 @@ Lints (deterministic, read-only):
 - `lints/callout-collisions.md` *(stub)* — philosophy callouts repeated across adjacent lectures
 - `lints/capability-freshness.md` *(stub)* — Claude Code UI claims dated, not older than 3 months
 
-Legacy megajudge instances (29 .md files from before 2026-05-02): archived at `instances/legacy/`. New audits write per-class JSON to `instances/<slug>.<class>.json`.
+Per-class audits write JSON to `instances/<training>--<surface-type>--<slug>.<class>.json`, the name `judges/_dispatch-preamble.md` derives and `check-instance-names.js` gates. The pre-2026-05-02 megajudge instances were archived at `instances/legacy/` and dropped from the tree in `6c20c3fe`; git holds them.
 
 ### Integration (seam judges)
 
@@ -160,7 +160,8 @@ curriculum/evals/
 ├── manual-run-observation.md          ACCEPTANCE: live observation sheet
 ├── post-run-judge.md                  ACCEPTANCE: transcript judge
 └── instances/
-    ├── <training>--<slug>.md          per-artifact unit evals (one file per module/exercise/lecture)
+    ├── <training>--<surface-type>--<slug>.<class>.json
+    │                                   per-artifact unit evals, one file per (artefact, judge class)
     ├── lints-full-<training>.md       latest full-arc lint sweep (overwrite)
     ├── arc-pass.md                    latest arc-pass (overwrite)
     └── manual-run--<scope>.md         latest acceptance run per scope (overwrite)

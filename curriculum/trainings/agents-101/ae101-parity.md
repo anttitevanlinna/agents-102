@@ -13,7 +13,7 @@ Parity is about **machinery and pattern**, not about content equivalence. The tw
 **In scope — the machinery must match:**
 1. Every gate that guards AE101 also runs against A101, wired into `npm test` / `test:gates`, not just theoretically `--training`-capable.
 2. Quality state: A101 stamped across the current 7-class set (writing / story / technical / behavior / pedagogy / strategy / slides), not the retired 4-class set.
-3. Eval instances follow the current `<training>--<surface>--<slug>.<class>.json` convention; legacy unprefixed instances migrated or retired.
+3. Eval instances follow the current `<training>--<surface>--<slug>.<class>.json` convention; legacy unprefixed instances migrated or retired. **Done 2026-08-19** — 203 renamed, 44 superseded duplicates dropped, and `check-instance-names.js` now gates the convention so it cannot drift back.
 4. Prompt layer: registry-migrated, `requires:` / `produces:` graph closes clean, lint clean, covered by the approval + rule-coverage harness.
 5. Authoring patterns AE101 has since adopted (backing blocks, source-verification stamps, maintainer-block shape, module shape) present where their own trigger rule fires on A101.
 6. Doc-path / cross-link integrity checked, not assumed.
@@ -45,6 +45,7 @@ Each must run green against `--training agents-101` AND be wired into `package.j
 | `validate-backing` | green; A101 has no backing blocks yet to validate |
 | `source-freshness.sh` | A101 carries no stamps — see punch list |
 | `calculate-time --check` | **green, wired** in `test` + `test:gates` + `audit:timings`; `timings.md` created |
+| `check-instance-names` | **green, wired** in `test` + `test:gates`; corpus-wide, no `--training` needed |
 
 ## Evidence
 

@@ -30,7 +30,7 @@ For the per-judge prompt templates, see `curriculum/evals/judges/{writing,story,
 
 ## Output location
 
-Per-class JSON output is written to `curriculum/evals/instances/<file-slug>.<class>.json` — overwrite-on-rerun per the no-dated-reports rule. Legacy megajudge .md instances (pre-2026-05-02) are archived at `curriculum/evals/instances/legacy/`.
+Per-class JSON output is written to `curriculum/evals/instances/<training>--<surface-type>--<slug>.<class>.json` — overwrite-on-rerun per the no-dated-reports rule. Surface type comes from the judged file's parent directory, never its basename; `check-instance-names.js` gates it.
 
 ## Maintenance
 

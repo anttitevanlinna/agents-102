@@ -43,7 +43,7 @@ Trailing slash is canonical. Requires a GitHub fine-grained Personal Access Toke
 
 ## Jira: Atlassian Rovo MCP (official)
 
-Atlassian's Rovo MCP Server hit GA on 2026-02-04, covering Jira, Confluence, Compass, Bitbucket, and Jira Service Management. Jira, Confluence, Compass, and Bitbucket tools use OAuth 2.1; JSM ships its own read/write scopes, API-token auth only. Docs: [support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server](https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/).
+Atlassian's Rovo MCP Server hit GA on 2026-02-04, covering Jira, Confluence, Bitbucket, and Jira Service Management. Jira, Confluence, and Bitbucket tools use OAuth 2.1; JSM ships its own read/write scopes, API-token auth only. Docs: [support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server](https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/).
 
 **Easiest path: Claude.ai inheritance.** Add Atlassian at [claude.ai/customize/connectors](https://claude.ai/customize/connectors), complete OAuth, then start a Claude Code session logged in to the same account. The connector appears in `/mcp`. No `claude mcp add` needed. On Team and Enterprise Claude.ai plans, only admins can add at this surface.
 
@@ -101,6 +101,8 @@ A Claude Code **plugin** is a packaged extension that can bundle skills, agents,
 
 The first argument to `marketplace add` accepts a GitHub `owner/repo`, a full git URL (`https://gitlab.com/company/plugins.git`), or a local path. Refresh a marketplace's catalog with `/plugin marketplace update`. Non-interactive equivalents exist as `claude plugin marketplace ...` for scripting.
 
+## Marketplace governance: official vs team, and when to reach for plugin distribution
+
 **Official vs team marketplaces.** Anthropic operates a set of official marketplaces (reserved names include `claude-plugins-official`, `anthropic-marketplace`, `agent-skills`). Teams and individuals host their own, public or private, by putting `marketplace.json` in a git repo. Private repositories work the same as any other git operation: Claude Code reuses your existing credentials (`gh auth login`, macOS Keychain, `ssh-agent`, `git-credential-store`).
 
 **Enterprise pre-registration.** The managed settings file (`managed-settings.json` on supported OSes) can pre-register approved marketplaces via `extraKnownMarketplaces` (so users don't need to run `/plugin marketplace add` at all) and restrict additions via `strictKnownMarketplaces`. Pairs with `managed-mcp.json` as the second half of tenant-side plugin policy.
@@ -109,7 +111,7 @@ The first argument to `marketplace add` accepts a GitHub `owner/repo`, a full gi
 
 **Sources:** [Claude Code plugins overview](https://code.claude.com/docs/en/plugins) · [Discover and install plugins](https://code.claude.com/docs/en/discover-plugins) · [Create and distribute a marketplace](https://code.claude.com/docs/en/plugin-marketplaces) · [Plugins reference (manifest + scope)](https://code.claude.com/docs/en/plugins-reference) · [Anthropic plugins on GitHub](https://github.com/anthropics/claude-plugins-official)
 
-## What Claude Code doesn't do yet (as of 2026-05-14)
+## What Claude Code doesn't do yet (as of 2026-08-19)
 
 Current gaps:
 

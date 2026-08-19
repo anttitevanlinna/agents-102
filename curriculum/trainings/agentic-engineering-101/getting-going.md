@@ -21,7 +21,7 @@ After this module, you will be able to:
 
 ## How we work in this room
 
-- **Make it work for you.** Start from the same moves, then find your optimal way of working in your system.
+- **Make it work for you.** Start from the moves this training teaches, then find your optimal way of working in your system.
 - **Exercises.** Do them. That is how you experience what the model actually does.
 - **Everybody should be answering.** The trainer keeps the room moving; they are not the debugger or necessarily the deepest Claude Code expert here. Ask Claude what is wrong, or ask out loud.
 

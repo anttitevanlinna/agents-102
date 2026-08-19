@@ -1,20 +1,18 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md",
-  "body_sha": "f9d4942b0b4e1b93fb89c53992a1196ae45d3bf0e84c369b6b794c6fd2afd16e",
+  "body_sha": "91ee49e421378f11a43f73bd5e34462d4349a681dcf4c77291483b0d32c27307",
   "verdict": "PASS",
   "training": "ae101",
-  "surface_type": "reference",
-  "module_mood_contract": "N/A — reference file, flat lookup, no mood/sim surface (curriculum/quality-format.md line 8: \"Reference files (curriculum/trainings/<training>/reference/) exempt — flat lookup, no mood / sim surface.\")",
-  "trace_status": "cached",
-  "notes": "Trace at curriculum/evals/sim-cache/ae101--reference--claude-code-for-engineers.persona.json has content_sha a3125a10...29621 (2026-08-07) vs current body_sha f9d4942b...fd16e — the file moved since the trace was generated (doc re-verify passes on 2026-08-15). Not regenerated: reference-file exemption means mood-arc/persona-read is N/A for this surface, so a stale trace does not change any rules_evaluated verdict here — the trace's per-phase mood_score (9/9) is descriptive cache, not load-bearing evidence. Orchestrator should still refresh the cache on a later story pass touching this file's prose, so the cache doesn't silently drift further. check_prompts.md and check_workshop.md carry storytelling in eval_classes but are not named in the story template's 'Specific judgments storytelling owns' list, and this file has no group/room-scale beat (check_workshop) and its one fenced block (§10, transcript-finding prompt) is a diagnostic utility, not exercise-graded prompt design (check_prompts) — both left unevaluated by this judge per the dispatch-preamble instruction to evaluate only compendiums the template puts in scope, rather than reach into a sibling class's rules.",
+  "module_mood_contract": "N/A — flat quick-reference surface, no per-module mood contract; register target is clean lookup, no ceremony, trusts the reader as competent",
+  "trace_status": "regenerated",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "N/A",
-      "evidence": "File is `curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md` — a reference lookup, not a lecture; no placement decision (opener/mid/closer) applies to it.",
+      "evidence": "Surface is a reference page (curriculum/trainings/agentic-engineering-101/reference/), not a lecture. check_lectures.md's own frontmatter scopes it to lecture writing/placement; there is no meta-frame narrative here to place before or after an exercise.",
       "fix_hint": null,
       "blocking": false
     },
@@ -23,7 +21,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "No contrast-mood exercise this file sits in front of; it is a standing lookup students land on via cross-ref, not a pre-exercise lecture beat.",
+      "evidence": "No exercise precedes or follows this file in a module flow; it is an on-demand lookup cross-referenced from multiple modules, not a pre-exercise opener.",
       "fix_hint": null,
       "blocking": false
     },
@@ -32,7 +30,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "The file has a dedicated 'Related AE101 modules (where these primitives land)' section (lines 600-608) listing M1-M6 refs — this is the intended cross-index function of a reference file, analogous to a module file's own Bridge section, not a lecture body smuggling sequencing prose. Rule 3 targets lecture bodies specifically.",
+      "evidence": "This rule binds lecture bodies specifically (\"lectures teach, module files sequence; lectures stay re-placeable shared library\"). The reference genre is the opposite by design: its own framing at line 3 is \"When a module says 'see the reference'... this is where\" and its closing section (lines 642-650) is literally titled 'Related AE101 modules (where these primitives land)', mapping §-ranges to M1-M6. A flat lookup that students arrive at via a module cross-ref is not the re-placeable-shared-library object this rule protects.",
       "fix_hint": null,
       "blocking": false
     },
@@ -41,16 +39,16 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
-      "evidence": "Not a lecture; the file's H2 headers are numbered technical section labels ('1. The memory hierarchy...', '16. Troubleshooting'), not slide-rendered lecture headers this rule governs.",
+      "evidence": "This rule is check_lectures-scoped to lecture/slide headers per the compendium's lecture-writing frontmatter; the file's own Quality line already carries an independently-PASSed `slides` class judgment (compendium-audited 2026-08-07, slides PASS) which is the primary owner of header/body slide-shape checks per content-rules.md's Slide-rendered-files routing to check_slides.md. Duplicating that lane here would be an unowned claim, not extra coverage.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded, not just its header.",
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "N/A",
-      "evidence": "Not a lecture; slide-size ceiling is check_slides.md's class scope, not storytelling's, and doesn't apply to a reference lookup regardless.",
+      "evidence": "Same reasoning as §4: slide-body sizing is check_slides.md's lane (already PASSed on this file's Quality line), not storytelling's.",
       "fix_hint": null,
       "blocking": false
     },
@@ -59,7 +57,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
-      "evidence": "This is a flat reference lookup, not a session exercise with phases/forcing-function mechanics. The file's sole fenced Prompt block (§10, 'Find the transcript for the previous Claude Code session...') is a diagnostic utility a reader may optionally paste, not a graded exercise forcing function the rule governs.",
+      "evidence": "This rule governs exercise pedagogy (session-carrying moves cut from body into a fence). This file has exactly one worked prompt (§27, lines 395-409, a copy-paste transcript-finding prompt), presented as illustrative reference material, not a graded exercise step with a pedagogical forcing function the body might be stealing. No count-scripts or scripted-reaction language appear anywhere in the body prose.",
       "fix_hint": null,
       "blocking": false
     },
@@ -68,7 +66,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "grep -niE 'discuss|compare with|share what|tell the room|pair up|talk to your|turn to' on the file → 0 matches. Body is entirely technical lookup content (tables, code fences, doc links); no authored conversation/pause cues anywhere.",
+      "evidence": "Grepped the body for authored conversation cues (\"discuss with\", \"share what you\", \"tell the room\", \"compare with the person next to you\", \"take N seconds and\"): zero matches. The whole file is WORK-shaped (tables, commands, decision matrices, a transcript-finding prompt) with no cohort-management language. Harm the rule prevents (trainer's room-reading judgment pre-empted by scripted body cues) is not present — there is no cue to pre-empt in a solo-read reference.",
       "fix_hint": null,
       "blocking": false
     },
@@ -77,7 +75,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "N/A",
-      "evidence": "Reference files are exempt from the mood/sim surface (quality-format.md line 8); this file carries no deliberate mood contract and none is expected.",
+      "evidence": "Trace's own module_mood_contract field states \"N/A — flat quick-reference surface, no per-module mood contract\" — there is no strategy-doc per-module mood paragraph for a shared reference page to honour or flatten.",
       "fix_hint": null,
       "blocking": false
     },
@@ -86,7 +84,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "N/A",
-      "evidence": "No mood surface on this file per the reference exemption; nothing to classify as epistemic vs. punitive.",
+      "evidence": "No mood arc runs across a flat lookup; §40 Troubleshooting is FAQ-shaped (\"Claude isn't following my CLAUDE.md\") but reads as a diagnostic list, not a punitive framing of the reader's failure — the file's own tone is peer-competent throughout (trace close: \"tone treats the reader as already competent\").",
       "fix_hint": null,
       "blocking": false
     },
@@ -95,7 +93,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "N/A",
-      "evidence": "No Big Idea / title-level framing on this file — section headers are neutral technical labels ('The memory hierarchy', 'Plan mode at depth', 'Troubleshooting'). '16. Troubleshooting' is a canonical FAQ shape (named canonical structure), not a Big-Idea failure-mode title this rule targets.",
+      "evidence": "This rule governs module Big Idea titling. The file has no Big Idea; its own H1 is a plain descriptive title (\"Claude Code for engineers: reference\") and its section headers are primitive names (\"Plan mode at depth\", \"Subagents: Agent tool, fresh context\"), not module-level claims that could be failure-lead vs. discipline-lead.",
       "fix_hint": null,
       "blocking": false
     },
@@ -104,16 +102,16 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "File's own stated scope (line 3): 'Flat look-up for the primitives AE101 leans on. No pedagogy, no hand-holding.' The 'Related AE101 modules' index (lines 600-608) maps sections to modules by bare § number only, without narrating or teaching the module's content ahead of its own arrival — no front-run of a downstream teaching moment found.",
-      "fix_hint": null,
-      "blocking": false
+      "evidence": "Harm check: does this page front-run a downstream module's teaching moment? Candidate: §11 (lines 224-227) states the full subagent-vs-main-thread decision table before line 234 names that exact discrimination \"a named learning goal in M3.\" Read in isolation this looks like a spoiler. But the file's closing 'Related AE101 modules' index (lines 642-650) explicitly assigns §§11-12 to M3 (\"M3 Earn the trust: §§ 11-12 (subagents)... first skill use + first authoring\") — this reference is the resource M3 sends students to, read alongside the module, not a pre-M3 spoiler a student stumbles into unprompted. The trace's own persona (arriving via a module cross-ref, not reading cover-to-cover pre-M1) confirms the access pattern this page is designed for. No module-to-module arc handoff or Big-Idea claim is misattributed anywhere else in the file.",
+      "fix_hint": "If a future cohort reports students reading this page start-to-finish as prework before M3 (defeating the discovery beat), the fix is a one-line note at the top of §11-12 gating it to \"read alongside M3\", not a content cut — flagging as a rule question for the maintainer rather than filing REVISE now.",
+      "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "File has no 'Key Concepts' section — reference lookups don't carry one.",
+      "evidence": "Module-only section (\"Every training has recurring themes... each module's Key Concepts section\"). This file has no Key Concepts section — it is a reference, not a module.",
       "fix_hint": null,
       "blocking": false
     },
@@ -122,7 +120,7 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "File has no 'Key Concepts' section.",
+      "evidence": "No Key Concepts section exists on this file to carry breadcrumbs.",
       "fix_hint": null,
       "blocking": false
     },
@@ -131,18 +129,33 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "File has no 'What You'll Learn' section — reference lookups don't carry one.",
+      "evidence": "No What You'll Learn section exists on this file — it is a reference, not a module.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope call",
+      "verdict": "N/A",
+      "evidence": "No beat's output belongs to a group here — this is a solo-read flat reference with no room-adjudication, group-round, or attributed-contribution beat for check_workshop.md to govern.",
       "fix_hint": null,
       "blocking": false
     }
   ],
   "mood_summary": {
-    "phase_scores": [],
-    "close_score": null,
+    "phase_scores": [9],
+    "close_score": 9,
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "teaching_moment_lands": "N/A — reference file has no named teaching moment or arc to trigger; it is a lookup students consult on cross-reference, not a beat the strategy doc names a moment for.",
+  "teaching_moment_lands": "N/A — no named teaching moment on this file; it is a reference, not the vehicle for a module's teaching beat. The 'teaching moment lands' judgment (no check_strategy_tie_in rule_index per template) does not apply to a flat lookup surface.",
+  "notes": [
+    "Cached trace at curriculum/evals/sim-cache/ae101--reference--claude-code-for-engineers.persona.json was stale (content_sha a3125a10... vs actual 91ee49e4...); the section numbers it cited (old §5, §7, §16) don't exist in the current file after the 2026-08-15 renumbering documented in the file's own maintainer block. Regenerated in full before judging; trace_status: regenerated.",
+    "Out of storytelling's lane, flagged here only: check_prompts.md rule 2 (\"Every prompt block: one-sentence action lead-in\") looks unmet at lines 393-397 — the §27 'Prompt' fenced block has no <20-word action lead-in sentence before the '**Prompt**' label, only the H2 header. This is a writing/technical-class mechanical-shape concern, not a storytelling one, and is not filed as a rules_evaluated row here per the dispatch preamble's lane discipline.",
+    "Confusion flag worth a maintainer look though not blocking: lines 187-190 (§9 Shift+Tab cycle description) makes the reader re-read twice to confirm the starting 'auto' and the trailing optional 'auto' are the same toggle position — a writing-class clarity note, surfaced here because it showed up in the persona trace."
+  ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 2
 }

@@ -1,7 +1,7 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md",
-  "body_sha": "c7af563126befd91749194d3317e63b90a9e6c1870efb7fc938fc16be2aed6f1",
+  "body_sha": "7590175b9d9a5589ba052897410e7a82b6d464442788df94bdc12223ec70997d",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "flat-reference register (Quick-reference type per curriculum/CLAUDE.md's four-type taxonomy; no deliberate module mood) — SETUP/mechanical, mood-exempt per check_strategy_tie_in §1 carve-out",
@@ -31,7 +31,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Not a lecture body. Checked anyway for the underlying concern (module-number leakage): grep of body for `M[0-9]` and module-name refs returns zero hits — the file never names M1-M8 or a module by number.",
+      "evidence": "Not a lecture body. `grep -nE '\\bM[0-9]' mcp-and-connectors.md` → exit 1 (zero hits, verified this pass): the file never names M1-M8 or a module by number.",
       "fix_hint": null,
       "blocking": false
     },
@@ -58,7 +58,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
-      "evidence": "This rule governs exercise/module forcing-function placement (student/Claude-performed moves fenced in a **Prompt** block vs. narrated in body). The file has no such structure — it is a lookup table of install commands per tracker, with no exercise phases and no student-copied LLM prompt to move a forcing function into or out of.",
+      "evidence": "This rule governs exercise/module forcing-function placement (student/Claude-performed moves fenced in a **Prompt** block vs. narrated in body). The file has no such structure — it is a lookup table of install commands per tracker, with no exercise phases and no student-copied LLM prompt to move a forcing function into or out of. Confirmed this pass: `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:'` → exit 1, zero hits.",
       "fix_hint": null,
       "blocking": true
     },
@@ -67,7 +67,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Grepped body (above maintainer fence) for conversation-authoring tells (\"discuss with\", \"share with your neighbor\", \"tell the room\", \"take N seconds and compare\") — zero hits. The file is entirely install-mechanics prose (three paths, per-tracker commands, plugin distribution, current gaps); no cohort-management sentence anywhere. Line closest to the concern is the closing sentence of 'Plugins and marketplaces' (\"For a one-off solo install on one machine, plain Path 1 or Path 2 stays simpler\") — this is a WORK decision aid (which install path to pick), not a room-management cue, so it stays inside the rule.",
+      "evidence": "`grep -niE 'discuss with|share with|tell the room|take [0-9]+ seconds|compare with' mcp-and-connectors.md` → exit 1, zero hits this pass. The file is entirely install-mechanics prose (three paths, per-tracker commands, plugin distribution, current gaps); no cohort-management sentence anywhere. Line closest to the concern is the closing sentence of 'Plugins and marketplaces' (\"For a one-off solo install on one machine, plain Path 1 or Path 2 stays simpler\") — this is a WORK decision aid (which install path to pick), not a room-management cue, so it stays inside the rule.",
       "fix_hint": null,
       "blocking": true
     },
@@ -103,7 +103,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "N/A",
-      "evidence": "Consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early — all module-arc concerns. This reference page sits outside the module sequence (linked into from exercises like close-the-ticket.md, not itself a numbered module beat) and carries no arc position to front-run or resolve early. content-strategy-agentic-engineering-101.md names no per-module claim this page could contradict; it is infrastructure the arc reaches into, not a step in it.",
+      "evidence": "Consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early — all module-arc concerns. This reference page sits outside the module sequence (linked into from exercises like close-the-ticket.md, not itself a numbered module beat) and carries no arc position to front-run or resolve early. content-strategy-agentic-engineering-101.md names no per-module claim this page could contradict; it is infrastructure the arc reaches into (M1's close-the-ticket, per getting-going.md's Mood target/Opening-bid-install-mechanic lines), not a step in it.",
       "fix_hint": null,
       "blocking": true
     }
@@ -114,7 +114,7 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "notes": "Teaching-moment-lands judgment (no rule_index, per template): N/A by construction — a flat lookup page has no single named teaching moment to reliably trigger; its job is findability of the right tracker's install line, which the regenerated trace's close (is_me_rating 8, artifact_state = live connector installed) confirms it delivers. check_prompts.md and check_workshop.md carry eval_classes: storytelling but are not rowed here — see surface_note. Trace regenerated this pass: content_sha moved (979936f4... → c7af5631...) since the 2026-08-07 cache, driven by commit 95fec132 (page-geometry fix: 'below' → 'come next' cross-doc-anchor fix, and a minor GitHub-CLI phrasing tweak); neither change is story-relevant, so the persona walk and close verdict carry forward unchanged from the prior trace.",
+  "notes": "Teaching-moment-lands judgment (no rule_index, per template): N/A by construction — a flat lookup page has no single named teaching moment to reliably trigger; its job is findability of the right tracker's install line, which the trace's close (is_me_rating 8, artifact_state = live connector installed) confirms it delivers. check_prompts.md and check_workshop.md carry eval_classes: storytelling but are not rowed here — see surface_note. Trace regenerated this pass: content_sha moved (c7af5631... → 7590175b...) since the prior cache, driven by commit 5fb32ab1 (sweep fix: narrowed one bold-emphasis span in the Jira 3LO-consent sentence — 'individual engineers don't need per-install admin approval' moved from full-sentence bold to phrase-level bold). Not story-relevant: re-ran the conversation-cue, module-number, and Prompt-fence greps against the current body (all zero hits, quoted above) and confirmed the persona walk and close verdict carry forward unchanged from the prior pass.",
   "blocking_findings_count": 0,
   "todos_count": 0
 }

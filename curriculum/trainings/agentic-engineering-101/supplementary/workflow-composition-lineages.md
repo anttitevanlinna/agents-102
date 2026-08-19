@@ -27,12 +27,14 @@ What's missing or contested: Klaassen's own byline is thin in the freshness wind
 
 Pocock ships a public kit of small named skills at `mattpocock/skills` (active, widely forked). Skill names visible at last read: `to-spec`, `to-tickets`, `implement`, `handoff`, `prototype`, `triage`, `tdd`, `improve-codebase-architecture`, `grill-me`, `grill-with-docs`, `wayfinder`, `wizard`, `teach`, more. Each skill is small (50 to 200 lines of plain English), standalone, and works copy-pasted into a different agent.
 
-The composition pattern is runtime, not authored. There is no `compose` skill, no orchestrator, no master entry point in the repo. The human invokes the skill the task calls for: `/prototype` when prototyping; `/to-prd` when shaping a product brief; `/handoff` when context needs to move to a new thread. Composition happens in the chat, by hand, one skill at a time.
+The composition pattern is runtime, not authored. For most of the kit's life there was no `compose` skill, no orchestrator, no master entry point in the repo. The human invokes the skill the task calls for: `/prototype` when prototyping; `/to-prd` when shaping a product brief; `/handoff` when context needs to move to a new thread. Composition happens in the chat, by hand, one skill at a time.
+
+A router has since arrived. `ask-matt` describes itself as *"a router over the user-invoked skills in this repo."* The stance that there should be no main entry point held for a long stretch and then moved. Read the kit for the invocation discipline; do not read the absence of an orchestrator as a permanent position.
 
 Pocock does not publish a named framework over the kit. The composability framing that has circulated on third-party write-ups ("rails not chains", "weakly coupled") is not in his README. The kit itself, and the discipline of invoking individual skills when the task calls for them, IS the practice. The README's opening sentence is the closest to a stance: *"My agent skills that I use every day to do real engineering, not vibe coding."*
 
 **Read:**
-- [mattpocock/skills](https://github.com/mattpocock/skills): read `to-prd`, `to-issues`, `handoff`, `prototype`, `write-a-skill`. Notice what is missing: no `compose` skill, no orchestrator, no main entry point.
+- [mattpocock/skills](https://github.com/mattpocock/skills): read `to-prd`, `to-issues`, `handoff`, `prototype`, `write-a-skill`. Notice how few seams there are between them, then read `ask-matt` and see what a router over the same kit looks like.
 - [setup-matt-pocock-skills](https://github.com/mattpocock/skills/blob/main/skills/engineering/setup-matt-pocock-skills/SKILL.md): the per-repo config scaffolder; other skills read what this writes.
 
 ## Single writer with advisor agents, Walden Yan and Cognition
@@ -92,7 +94,7 @@ Ronacher is not running a composition lineage. He's arguing against treating com
 
 Ronacher's posture on skills is disposable. From *Pi: The Minimal Agent Within OpenClaw*: *"My agent has quite a few skills and crucially I throw skills away if I don't need them."* No marketplace, no Git-checked-in kit, no orchestrator over the skills. The artefact of his work is the shipped code, not the rules that produced it. *Agent Psychosis: Are We Going Insane?* extends the argument to unstructured composition loops: dopamine-driven workflows with no critical thinking trade short-term satisfaction for long-term review debt.
 
-The reason Ronacher matters in this walk: any teaching of composition that does not carry his argument alongside teaches the move and silently teaches its decay. Composition fluency erodes the review discipline that originally justified composition. Willison has flagged the same pattern from a different angle, calling it *normalization of deviance*. If you are going to compose, the question Ronacher forces is *what is your review bandwidth?* If the answer is the same as last year, composition is not yet a multiplier.
+The reason Ronacher matters in this walk: any teaching of composition that does not carry his argument alongside teaches the move and silently teaches its decay. Composition fluency erodes the review discipline that originally justified composition. If you are going to compose, the question Ronacher forces is *what is your review bandwidth?* If the answer is the same as last year, composition is not yet a multiplier.
 
 **Read:**
 - [The Final Bottleneck](https://lucumr.pocoo.org/2026/2/13/the-final-bottleneck/): review bandwidth as the constraint composition cannot relax.
@@ -146,6 +148,14 @@ Two or three practitioners is enough to track. Watch what they ship in their own
 
 **Slide deixis accepted:** "moves listed above" (check_slides.md §12) — the Cherny moves sit in the same `##` chunk as the Read: list that points back at them, ten lines up on one slide.
 
+**Slide size accepted:** Skill stacking system, Dino: the worked example — reading walk, never projected; splitting a practitioner entry across two slides costs more than the overflow.
+**Slide size accepted:** Feedback-loopable methodology and shipped primitives, Sourcegraph Amp — same, one practitioner per section is the page's whole structure.
+**Slide size accepted:** Practitioner moves without a published framework, Boris Cherny — same.
+**Slide size accepted:** Counter-position, Armin Ronacher — same.
+**Slide size accepted:** Compound Engineering, Kieran Klaassen — same.
+**Slide size accepted:** Composition by invocation, Matt Pocock — same.
+**Slide size accepted:** How to pick what to study — the three filters are read together or not at all.
+
 **Supplementary meta:** *Reading material for AE101 M6 practitioner-mode beat. Pairs with `lectures/composing-the-workflow.md`. Seven sections: one named framework (Klaassen), four shapes (Pocock / Yan-Cognition / Metcalf-Amp / Cherny-moves), one counter-position (Ronacher), one worked-example case study (Dino, AE101 trainer). Closes with three filters for picking what to study first. Explicit scope note in intro: the walk is partial, the field has more named frameworks than this set surfaces, the curation reflects what AE101's OODA cycles caught.*
 
 **Time:** 15–25 min student read; not in-room.
@@ -156,22 +166,22 @@ Two or three practitioners is enough to track. Watch what they ship in their own
 
 Claims
 - `the-walk-is-partial-by-design` · vision · "What this walk covers (and doesn't)" ← none-owed
-- `klaassen-compound-engineering` · detail · "The plugin's slash commands include `/ce-plan`, `/ce-work`, `/ce-code-review`, `/ce-compound`" ← every-ce-plugin
-- `pocock-composition-by-invocation` · detail · "no `compose` skill, no orchestrator, no master entry point in the repo" ← pocock-skills
+- `klaassen-compound-engineering` · detail · "**brainstorm → plan → work → simplify → review → compound**, one slash command per stage (`/ce-brainstorm`, `/ce-plan`, `/ce-work`, `/ce-simplify-code`, `/ce-code-review`, `/ce-compound`)" ← every-ce-plugin
+- `pocock-composition-by-invocation` · detail · "For most of the kit's life there was no `compose` skill, no orchestrator, no master entry point in the repo" ← pocock-skills
+- `pocock-router-arrived` · detail · "`ask-matt` describes itself as *\"a router over the user-invoked skills in this repo.\"*" ← pocock-skills
 - `yan-single-writer-with-advisors` · detail · "Single writer with advisor agents, Walden Yan and Cognition" ← cognition-multi-agents-working, cognition-dont-build
 - `metcalf-feedback-loopable` · detail · "making it feedback loopable" ← amp-feedback-loopable
 - `handoff-was-a-feature-not-a-framework` · detail · "**Handoff**, anonymous team byline at Amp (2025-10-23), was a product feature Amp shipped, not a framework." ← amp-handoff, amp-neo, amp-context-guide
 - `cherny-moves-without-a-framework` · detail · "Practitioner moves without a published framework, Boris Cherny" ← cherny-thread, howborisusesclaudecode
 - `ronacher-counter-position` · detail · "Counter-position, Armin Ronacher" ← ronacher-bottleneck, ronacher-pi, ronacher-psychosis
-- `willison-normalization-of-deviance` · detail · "Composition fluency erodes the review discipline that originally justified composition." ← willison-deviance
 - `dino-single-orchestrator-by-design` · detail · "**A single orchestrator** by deliberate design. `/ship` is the only skill that composes others." ← dino-skill-stacking
 - `dino-seven-design-principles` · detail · "**Seven design principles** that the system enforces." ← dino-skill-stacking
 - `dino-gates-fire-positionally` · detail · "**Mandatory gates fire positionally**, mid-workflow, by predicate." ← dino-skill-stacking
 - `pick-what-resembles-your-day` · vision · "Three filters that work better than ranking" ← none-owed
 
 Sources
-- every-ce-plugin `[checked:2026-05-25 result:OK due:2026-11-25]` https://github.com/EveryInc/compound-engineering-plugin — [practitioner direct, vendor venue] `/ce-plan`, `/ce-work`, `/ce-code-review`, `/ce-compound` plus the 80/20 ratio, confirmed in the README. fallback: "Plan → Work → Assess → Compound" is a paraphrase; the README verbs are the primary.
-- pocock-skills `[checked:2026-05-25 result:OK due:2026-11-25]` https://github.com/mattpocock/skills — [practitioner direct] Skill files present, no orchestrator, README opener confirmed. Also covers the deep link the body follows, https://github.com/mattpocock/skills/blob/main/skills/engineering/setup-matt-pocock-skills/SKILL.md — a path inside a live repo can move while the repo stands, so the re-check walks the file, not just the root. **The framework label "composition by invocation" is the curriculum's, not Pocock's** — the practice is real and observable, the name is ours. fallback: README uses "engineering - not vibe coding" with a dash rather than a comma; trivial.
+- every-ce-plugin `[checked:2026-08-19 result:CORRECT due:2027-02-19]` https://github.com/EveryInc/compound-engineering-plugin — [practitioner direct, vendor venue] README states a six-step core loop, *"brainstorm the requirements, plan the implementation, work through the plan, simplify what you wrote, review the result, then compound the learning"*, with one `/ce-` command per stage, plus the 80/20 ratio. fallback: cite the README verbs, never a remembered stage list.
+- pocock-skills `[checked:2026-08-19 result:CORRECT due:2027-02-19]` https://github.com/mattpocock/skills — [practitioner direct] README opener confirmed verbatim. Skill roster has turned over since the 2026-05-25 read, and `ask-matt` now ships as "a router over the user-invoked skills in this repo": the no-orchestrator claim is dated in the body rather than asserted as current. Also covers the deep link the body follows, https://github.com/mattpocock/skills/blob/main/skills/engineering/setup-matt-pocock-skills/SKILL.md — a path inside a live repo can move while the repo stands, so the re-check walks the file, not just the root. **The framework label "composition by invocation" is the curriculum's, not Pocock's** — the practice is real and observable, the name is ours. fallback: README uses "engineering - not vibe coding" with a dash rather than a comma; trivial.
 - cognition-multi-agents-working `[checked:2026-05-25 result:OK due:2026-11-25]` https://cognition.ai/blog/multi-agents-working — [practitioner direct, vendor venue] Yan, 2026-04-22, both quotes verbatim. fallback: the 2-bugs / 58%-severe Devin Review figure is vendor-self-reported — keep it flagged.
 - cognition-dont-build `[checked:2026-05-25 result:OK due:none]` https://cognition.ai/blog/dont-build-multi-agents — [practitioner direct, vendor venue] Yan, 2025-06-12: the historical 2025 stance. **Durable account, `due:none`** — the body dates it correctly and cites it as the earlier position in a lineage that visibly moved, so it cannot go stale; it can only be superseded, and it already has been by the 2026 post above. Re-dated from `due:2026-11-25`, which would have re-opened a deliberately historical citation on a calendar. fallback: historical context only.
 - amp-feedback-loopable `[checked:2026-05-25 result:OK due:2026-11-25]` https://ampcode.com/notes/feedback-loopable — [practitioner direct, vendor venue] Metcalf, 2026-02-05: three components plus *"making it feedback loopable"* verbatim. fallback: vendor-venue methodology — treat as practitioner-coined, never as industry standard.
@@ -183,7 +193,6 @@ Sources
 - ronacher-bottleneck `[checked:2026-05-25 result:OK due:2026-11-25]` https://lucumr.pocoo.org/2026/2/13/the-final-bottleneck/ — [practitioner direct] Ronacher, 2026-02-13, quote verbatim. fallback: none needed.
 - ronacher-pi `[checked:2026-05-25 result:OK due:2026-11-25]` https://lucumr.pocoo.org/2026/1/31/pi/ — [practitioner direct] Ronacher, 2026-01-31: *"I throw skills away if I don't need them"*, re-verified. fallback: none needed.
 - ronacher-psychosis `[checked:2026-05-25 result:OK due:2026-11-25]` https://lucumr.pocoo.org/2026/1/18/agent-psychosis/ — [practitioner direct] Ronacher, 2026-01-18, paraphrase faithful. fallback: none needed.
-- willison-deviance `[checked:2026-05-25 result:OK due:2026-11-25]` (no body URL — OODA findings workflow-composition-1a/3-confirmation) — [practitioner direct] Willison on "normalization of deviance" as a supporting pointer. kb:platform-watch/coding-agents/runs fallback: convergent pointer grounded in the OODA findings; not a body-cited claim.
 - dino-skill-stacking `[checked:2026-05-25 result:ATTESTED due:none]` (internal — `supplementary/skill-stacking.md`) — [maintainer-attested] Dino's worked-example skill stack, shipped in-repo with the author's permission; file plus three diagrams confirmed on disk. The three-layer model, four composition mechanisms and seven design principles are Dino's own labels. In-repo artefact, does not expire. fallback: none — it is in the repo.
 
 Frameworks
@@ -191,7 +200,6 @@ Frameworks
 - Composition by invocation · [borrow:none] · law:none · ← pocock-skills — **the label is the curriculum's, not Pocock's**
 - Single writer with advisor agents · [borrow:none] · law:none · ← cognition-multi-agents-working — the architectural shape is Yan's, published verbatim; the shorthand is ours
 - Feedback-loopable methodology · [borrow:none] · law:none · ← amp-feedback-loopable — Metcalf's coinage
-- Normalization of deviance · [borrow:safety engineering] · law:none · ← willison-deviance — Vaughan's term, applied by Willison to composition fluency
 - Skill stacking · [borrow:none] · law:none · ← dino-skill-stacking — Dino's own framework label
 - Requisite variety · [borrow:cybernetics] · law:requisite-variety · ← cultural-vocab — the lineages differ because the jobs differ
 

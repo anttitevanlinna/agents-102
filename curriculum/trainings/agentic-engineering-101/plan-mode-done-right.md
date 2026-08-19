@@ -18,7 +18,6 @@ After this module, you will be able to:
 - **Run** plan mode on a real multi-file task and judge the plan against five criteria
 - **Push back** twice on the plan via *No, keep planning*, surfacing what the agent didn't see
 - **Walk down** unresolved branches, with a recommended answer per branch
-- **Pair** human read with agent walk-down: read → push-back → walk-down → approve
 - **Spot** approval inflation in a plan whose structure makes it look decided
 - **Extract** task-shaping rules from two sources, your plan session and one story ticket, into a `.md` file you place
 
@@ -53,6 +52,8 @@ Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble i
 [Lecture: Where the rule could live](lectures/where-the-rule-could-live.md)
 
 [Lecture: How instructions grow](lectures/how-instructions-grow.md)
+
+Optional, before your rules files grow: [The context ceiling and token efficiency](trainings/agentic-engineering-101/supplementary/the-context-ceiling.md) on what an overloaded rules file does to quality, and where the rules go instead.
 
 ## Key Concepts
 - Structure is persuasive. A 7-item plan with headers looks like a decision even when it's a draft. Assume about 10% of it is wrong and go find which part.

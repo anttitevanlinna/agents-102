@@ -47,9 +47,15 @@ This is one common route, not a promotion ladder. A useful skill can also emerge
 
 `./CLAUDE.local.md` and `./CLAUDE.md` shape every session in their scope. A skill joins context when the work calls for it. The right instructions grow from evidence, then shape future context.
 
+## Rules have a ceiling
+
+You can make rules now. The ceiling comes sooner than you'd guess: every always-loaded rule rides into every session, billed against the same attention that does the work. Past a point the context bloats, and quality degrades in ways that are hard to pin. The work starts passing your rules and missing your point.
+
+The cure is not better rules; it is where the rules live. Keep `./CLAUDE.md` and `./CLAUDE.local.md` lean: principles, with the why attached. Move the rest into skills, loaded only when the work calls for them.
+
 <!-- maintainer -->
 
-**Lecture meta:** *M2 closing lecture, after the save-if-earned rule integration and before Key Concepts. Two projected slides, 4–5 min. The first slide teaches one common evidence-to-rule-to-skill route while explicitly refusing a universal promotion ladder. The second names Argyris's double-loop distinction through the context mechanism the student has already used. Mood: grounded competence; the student leaves able to place the artifacts without being told every artifact must move.*
+**Lecture meta:** *M2 closing lecture, after the save-if-earned rule integration and before Key Concepts. Three projected slides, 5–6 min. The first slide teaches one common evidence-to-rule-to-skill route while explicitly refusing a universal promotion ladder. The second names Argyris's double-loop distinction through the context mechanism the student has already used. The third names the rules ceiling (Antti-directed 2026-08-19): you can make rules now, the ceiling comes soon, symptoms are context bloat and hard-to-pin quality degradation, cure is lean CLAUDE files plus on-demand skills. Deliberately number-free and vision-grade; the deep treatment lives in `supplementary/the-context-ceiling.md` (read-more link in the module file, per the supplements-link-from-modules convention). Mood: grounded competence; the student leaves able to place the artifacts without being told every artifact must move.*
 
 **Time:** 5 minutes.
 
@@ -67,6 +73,8 @@ This is one common route, not a promotion ladder. A useful skill can also emerge
 - `double-loop-distinction` · borrowed · "The first loop corrects the action. The second questions the governing rule or assumption that shaped the action." ← argyris-double-loop
 - `claude-files-shape-scope` · detail · "`./CLAUDE.local.md` and `./CLAUDE.md` shape every session in their scope" ← claude-memory
 - `skill-joins-context` · detail · "A skill joins context when the work calls for it" ← claude-skills
+- `rule-load-quality-ceiling` · vision · "Past a point the context bloats, and quality degrades in ways that are hard to pin." ← none-owed — rule-load ceiling, theory-plan.md §3 candidate; sourced mechanism (Wiegold, context rot) lives in `supplementary/the-context-ceiling.md`
+- `rules-pass-point-missed` · vision · "The work starts passing your rules and missing your point." ← none-owed
 
 **Sources**
 - claude-memory `[checked:2026-08-04 result:OK due:cohort]` https://code.claude.com/docs/en/memory — [capability] Project `CLAUDE.md` is shared team instruction; `CLAUDE.local.md` is personal project-specific instruction. Both load into session context within their scope. fallback: use the sponsor-stated instruction homes and remove the auto-load wording.

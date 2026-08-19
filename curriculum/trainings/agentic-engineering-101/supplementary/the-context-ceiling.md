@@ -1,4 +1,4 @@
-# Token efficiency: the craft and the folklore
+# The context ceiling and token efficiency: the craft and the folklore
 
 Token efficiency sounds like a cost problem. Use fewer words, pay a smaller bill. That framing is mostly wrong, and the wrong framing is what makes the topic confusing.
 
@@ -51,6 +51,12 @@ The rest are about what you do with the work once it's in front of you.
 **Route by complexity, not price.** A mechanical sub-task (rename across files, pull a list, format some output) does not need your strongest model. Send it to a smaller, faster one and keep the heavy model for the reasoning. A cheap model on a hard task is the expensive mistake.
 
 **Keep what you carry lean.** Everything in `./CLAUDE.md` is paid on every turn of every session, because that file (the team-level, PR-reviewed one) loads at the top of each window. Keep it short. Move the rules you only sometimes need into skills, so only their full instructions cost tokens once they fire.
+
+## More rules, worse edits
+
+A rules file has a quality ceiling of its own, and it arrives earlier than the token count suggests. Two things happen as the file grows. Every rule is a background check the model runs while it works, billed against the same attention that does the work. And rules are checkable where quality is not, so a big enough file quietly turns the goal into rule-passing: edits that would survive an audit and still miss the point.
+
+Neither is fixed by writing better rules. The fix is where the rules live. Keep the always-loaded file down to principles with the why attached (a rule that carries its reason gets absorbed as taste and stops costing attention; a bare prohibition never does). Move the sometimes-rules into skills that load when their work shows up. And put the long checklist where checklists work: in a review pass over the finished work, not in the window while it writes. Checking against fifty rules is what a review is for. Writing against fifty rules is how you get compliance prose.
 
 ## The folklore: numbers that don't survive a second look
 
@@ -116,7 +122,7 @@ Token efficiency is one lever with two payoffs: a cleaner window thinks better a
 
 **Meta:** *Supplementary for AE101. Audience: software-engineer ICs (L0 to L3); Claude Code is floor, so primitives (`/context`, `/clear`, subagents) are used without re-teaching. Answers a customer request for a practitioner treatment of token efficiency: (1) what it is, (2) how to define and measure it, (3) basic moves and shortcuts, (4) the other drivers beyond carried context. ~7 minutes. Reference register: declarative section headers, verb-led move lead-ins.*
 
-**Role:** reframes token efficiency from a cost-thrift topic to a context-quality one (the cost follows). Teaches the craft moves that have independent convergence, and teaches the engineer to distrust the round-number folklore. The compaction reversal is the load-bearing lesson: advice here has a shelf life, so re-check against live `/context`. The "Drivers of inefficient context" section adds a second axis the rest of the page lacks: durable drivers you engineer around (codebase legibility, memory in both directions) versus loud-but-mitigable ones whose fix already shipped (tool/MCP surface, cache invalidation, fan-out). Same craft-vs-folklore spine, one layer down.
+**Role:** reframes token efficiency from a cost-thrift topic to a context-quality one (the cost follows). Teaches the craft moves that have independent convergence, and teaches the engineer to distrust the round-number folklore. The "More rules, worse edits" section carries the rule-load ceiling (theory-plan.md §3, candidate law): rule-count degrades generation via attention tax + rule-passing-as-target, and the architectural cure is routing — principles always-on, sometimes-rules in skills, the long checklist in a review pass. Deliberately number-free and vision-grade; the external instruction-count research is unverified, so no figure ships until it passes `check_research_claims §11`. The compaction reversal is the load-bearing lesson: advice here has a shelf life, so re-check against live `/context`. The "Drivers of inefficient context" section adds a second axis the rest of the page lacks: durable drivers you engineer around (codebase legibility, memory in both directions) versus loud-but-mitigable ones whose fix already shipped (tool/MCP surface, cache invalidation, fan-out). Same craft-vs-folklore spine, one layer down.
 
 **Voice:** Boris-flat for the mechanism, one Rory reframe at the open (cost is a disguise for quality). No Risto over-lift at the close; this is reference, not a high-arc module.
 
@@ -124,7 +130,7 @@ Token efficiency is one lever with two payoffs: a cleaner window thinks better a
 
 **Placement:**
 - In the AE101 SPA supplementaries registry (`CR.TRAININGS[agentic-engineering-101].supplementaries` in `site/layouts/curriculum.js`), between "The agent loop" and "How the best do CI/CD." It renders on the index and is in audit scope.
-- Still owed before first cohort: a module-side entry point. No module links to it yet. Candidate home: an "if time allows" callout in an M2/M3 module where context discipline first bites.
+- Module-side entry points: M2 close (`plan-mode-done-right.md`, read-more link beside the rules-ceiling slide in `how-instructions-grow.md`), M3 module close (`earn-the-trust.md`), M4 prework (`run-the-first-experiment.md`).
 - Carries additive calc/exploration prompts (the "price the bloat" cost calc), not primitive demonstrations. `/context` is treated as already-known (it lands in M1 and recurs through the exercises); the page reads it as the instrument the engineer holds, not a move to teach. Do not reintroduce "run `/context`" demonstrations here. Prompts are inline `**Prompt**` blocks (draft form); migrate to registry prompts (`curriculum/prompts/<key>.md`) on wiring, the way `the-agent-loop.md` uses `{{prompt:...}}` includes. Approved-prompt key so far: `ae101-token-efficiency-bloat-cost`.
 
 **Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@9697944 technical@9697944 behavior@b3143a4 pedagogy@b3143a4 strategy@b3143a4 slides@b3143a4)
@@ -142,6 +148,8 @@ Claims
 - `subagent-as-a-firewall` · vision · "A noisy investigation … doesn't have to land in your own window at all." ← none-owed
 - `route-by-complexity-not-price` · vision · "A mechanical sub-task … does not need your strongest model." ← none-owed
 - `keep-what-you-carry-lean` · detail · "Everything in `./CLAUDE.md` is paid on every turn of every session" ← wiegold-claude-md, lulla-agents-md
+- `rules-become-the-target` · vision · "rules are checkable where quality is not, so a big enough file quietly turns the goal into rule-passing" ← none-owed
+- `rulebook-lives-in-review` · vision · "put the long checklist where checklists work: in a review pass over the finished work, not in the window while it writes" ← none-owed
 - `caching-savings-folklore` · detail · "**\"Caching saves you 90 percent.\"**" ← anthropic-pricing
 - `compaction-folklore-reversed` · detail · "**\"Compaction is always lossy, so always hand off.\"** This one was true in 2025." ← amp-handoff-neo
 - `messy-repo-costs-tokens` · detail · "a short map at the root (an `AGENTS.md`, or a lean `./CLAUDE.md`)" ← lulla-agents-md

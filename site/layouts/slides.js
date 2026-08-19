@@ -208,7 +208,7 @@
     return (k && textOf(k)) || 'Section';
   }
 
-  // An in-deck link (`#supplementary-token-efficiency`, `#5-plan-mode-at-depth`)
+  // An in-deck link (`#supplementary-the-context-ceiling`, `#5-plan-mode-at-depth`)
   // has to resolve to a SLIDE, because the deck is not a scroll: the browser's
   // own fragment navigation moves nothing here. First claim wins — a section
   // divider beats a heading of the same name deeper in.
@@ -255,7 +255,7 @@
         var innerPhases = moduleEl.querySelectorAll('.phase--lecture, .phase--exercise');
         var start = slides.length, code;
         // The section's own id is the target of every cross-doc link into it
-        // (`#prework`, `#supplementary-token-efficiency`, `#getting-going`).
+        // (`#prework`, `#supplementary-the-context-ceiling`, `#getting-going`).
         // It lives on the wrapper, which does NOT survive into the deck — only
         // its children do — so claim it for the divider slide about to open.
         claimAnchor(anchors, moduleEl.id, slides.length);

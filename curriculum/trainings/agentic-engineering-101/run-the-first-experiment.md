@@ -9,7 +9,7 @@ The scoped task you picked as homework.
 
 **A real slice you'd send off rather than nudge bit by bit. Bigger than a typo-fix, smaller than a big epic.**
 
-Optional forward-look: [The agentic engineering progression](trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md). And when your sessions start running heavy, [Token efficiency](trainings/agentic-engineering-101/supplementary/token-efficiency.md) on keeping the context window lean.
+Optional forward-look: [The agentic engineering progression](trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md). And when your sessions start running heavy, [The context ceiling and token efficiency](trainings/agentic-engineering-101/supplementary/the-context-ceiling.md) on keeping the context window lean.
 
 If Simon Willison's [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/) is still on your list from <!--flag:module:earn-the-trust-->Module 3<!--/flag:module:earn-the-trust--><!--flag:no-module:earn-the-trust-->Module 2<!--/flag:no-module:earn-the-trust-->, read it before the send-off: it names the thinking you do before stepping away from a session, and today you step away.
 

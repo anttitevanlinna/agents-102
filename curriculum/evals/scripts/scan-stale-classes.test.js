@@ -224,7 +224,7 @@ test('typeOf: reference is NOT module', () => {
   assert.strictEqual(typeOf('curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md'), 'reference')
 })
 test('typeOf: supplementary is NOT module', () => {
-  assert.strictEqual(typeOf('curriculum/trainings/agentic-engineering-101/supplementary/token-efficiency.md'), 'supplementary')
+  assert.strictEqual(typeOf('curriculum/trainings/agentic-engineering-101/supplementary/the-context-ceiling.md'), 'supplementary')
 })
 test('typeOf: supplementary wins over the training dir it sits under', () => {
   // both substrings are present in the path; the more specific one must win

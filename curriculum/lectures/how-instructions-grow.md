@@ -53,9 +53,15 @@ You can make rules now. The ceiling comes sooner than you'd guess: every always-
 
 The cure is not better rules; it is where the rules live. Keep `./CLAUDE.md` and `./CLAUDE.local.md` lean: principles, with the why attached. Move the rest into skills, loaded only when the work calls for them.
 
+## Say what good looks like
+
+A rules file that grows only from corrections turns into a list of don'ts. Prohibitions are weak instructions: each one stops a single behaviour and puts nothing in its place. Anyone who has told a child "don't do that" knows the result. Acting right is learned from what good looks like, and from hearing it when it happens.
+
+The positive form is also shorter. Saying what you want, with the reason, usually takes fewer words than the cage of no-statements built around everything you don't. And it generalizes: a taste statement steers in situations no prohibition anticipated. So when a session gets something exactly right, that is worth a rule too. Capture the good example beside the corrections.
+
 <!-- maintainer -->
 
-**Lecture meta:** *M2 closing lecture, after the save-if-earned rule integration and before Key Concepts. Three projected slides, 5–6 min. The first slide teaches one common evidence-to-rule-to-skill route while explicitly refusing a universal promotion ladder. The second names Argyris's double-loop distinction through the context mechanism the student has already used. The third names the rules ceiling (Antti-directed 2026-08-19): you can make rules now, the ceiling comes soon, symptoms are context bloat and hard-to-pin quality degradation, cure is lean CLAUDE files plus on-demand skills. Deliberately number-free and vision-grade; the deep treatment lives in `supplementary/the-context-ceiling.md` (read-more link in the module file, per the supplements-link-from-modules convention). Mood: grounded competence; the student leaves able to place the artifacts without being told every artifact must move.*
+**Lecture meta:** *M2 closing lecture, after the save-if-earned rule integration and before Key Concepts. Four projected slides, 6–7 min. The first slide teaches one common evidence-to-rule-to-skill route while explicitly refusing a universal promotion ladder. The second names Argyris's double-loop distinction through the context mechanism the student has already used. The third names the rules ceiling (Antti-directed 2026-08-19): you can make rules now, the ceiling comes soon, symptoms are context bloat and hard-to-pin quality degradation, cure is lean CLAUDE files plus on-demand skills. Deliberately number-free and vision-grade; the deep treatment lives in `supplementary/the-context-ceiling.md` (read-more link in the module file, per the supplements-link-from-modules convention). The fourth slide carries the positive-form half (Antti-directed 2026-08-19): prohibitions stop behaviour without teaching the replacement (the child analogy is Antti's, keep it); stating taste with the why is shorter than the no-statement cage and generalizes past it; good runs earn rules too, not only corrections. Mood: grounded competence; the student leaves able to place the artifacts without being told every artifact must move.*
 
 **Time:** 5 minutes.
 
@@ -75,6 +81,9 @@ The cure is not better rules; it is where the rules live. Keep `./CLAUDE.md` and
 - `skill-joins-context` · detail · "A skill joins context when the work calls for it" ← claude-skills
 - `rule-load-quality-ceiling` · vision · "Past a point the context bloats, and quality degrades in ways that are hard to pin." ← none-owed — rule-load ceiling, theory-plan.md §3 candidate; sourced mechanism (Wiegold, context rot) lives in `supplementary/the-context-ceiling.md`
 - `rules-pass-point-missed` · vision · "The work starts passing your rules and missing your point." ← none-owed
+- `prohibitions-dont-teach` · vision · "Prohibitions are weak instructions: each one stops a single behaviour and puts nothing in its place." ← none-owed
+- `positive-form-compresses` · vision · "Saying what you want, with the reason, usually takes fewer words than the cage of no-statements built around everything you don't." ← none-owed
+- `good-runs-earn-rules` · vision · "when a session gets something exactly right, that is worth a rule too" ← none-owed
 
 **Sources**
 - claude-memory `[checked:2026-08-04 result:OK due:cohort]` https://code.claude.com/docs/en/memory — [capability] Project `CLAUDE.md` is shared team instruction; `CLAUDE.local.md` is personal project-specific instruction. Both load into session context within their scope. fallback: use the sponsor-stated instruction homes and remove the auto-load wording.

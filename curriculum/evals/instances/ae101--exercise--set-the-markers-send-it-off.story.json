@@ -1,11 +1,11 @@
 {
-  "body_sha": "e7d903cd539aeb1120a9ed0763016c7f40376a058f41e29c378363e2a5c27c4e",
+  "body_sha": "720ec9ecbb21c0b843e9792d470bd6de0c6800bb018de92bb9982723110f0f3c",
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/set-the-markers-send-it-off.md",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "Curious readiness — \"I've built enough to try; let's see what the agent does.\" The result is meant to be 'not great' by design (strategy doc line 246) — that's the data M5 reads. M4 must not resolve early or feel tidy.",
-  "trace_status": "cached",
+  "trace_status": "regenerated",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
@@ -30,7 +30,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Rule scoped to lecture bodies. Checked anyway: student-facing body carries no 'M4'/'M5' forward-reference — module numbers appear only in the maintainer block (trainer-facing) and the session widget's rename slug `m4-walk-send`, which is a git-branch/session-naming convention, not curricular sequencing prose.",
+      "evidence": "Rule scoped to lecture bodies. Re-checked against current text: student-facing body still carries no 'M4'/'M5' forward-reference — module numbers appear only in the maintainer block (trainer-facing, itself now rewritten but not restoring one) and the session widget's rename slug `m4-walk-send`, a git-branch/session-naming convention, not curricular sequencing prose.",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,7 +39,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
-      "evidence": "Header squint/truth-clause verdicts on this slide-rendered file are carried by the slides class (Quality line: slides PASS @61e7fc9); check_lectures §4 names lecture/handbook headers as its scope.",
+      "evidence": "Header squint/truth-clause verdicts on this slide-rendered file are carried by the slides class (Quality line: slides PASS @19249df, headers unchanged by the 05a4ad1 diff); check_lectures §4 names lecture/handbook headers as its scope.",
       "fix_hint": null,
       "blocking": false
     },
@@ -48,7 +48,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header.",
       "verdict": "N/A",
-      "evidence": "Per-slide word/bullet ceiling is the slides class's mechanical check (`check-slide-size.js`), already PASS per Quality line.",
+      "evidence": "Per-slide word/bullet ceiling is the slides class's mechanical check (`check-slide-size.js`). The 05a4ad1 diff shortens one line (splits an em-dash sentence into two shorter ones, net word count roughly flat: 19 words → 17 words across the two sentences), which cannot push any slide over the ceiling that was already PASS.",
       "fix_hint": null,
       "blocking": false
     },
@@ -57,7 +57,7 @@
       "rule_index": 1,
       "rule_lead": "Walk-away test (M2+).",
       "verdict": "PASS",
-      "evidence": "Phase 2 has the student paste the end-to-end prompt and physically leave (\"Keep the laptop awake and plugged in\", trace phase 2 persona_action: \"genuinely walks away per the body's instruction\"). No reply-every-turn loop.",
+      "evidence": "Phase 2 has the student paste the end-to-end prompt and physically leave (\"Keep the laptop awake and plugged in\", trace phase 2 persona_action: \"genuinely walks away per the body's instruction\"). No reply-every-turn loop. Unaffected by the 05a4ad1 edit, which touched only the nudge lead-in's punctuation.",
       "fix_hint": null,
       "blocking": true
     },
@@ -66,7 +66,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "Re-derived against both changed lead-ins. Push: body frames it as fully optional via the section header (\"Push it only if you want it off this laptop\") and the bullet under it (\"The commit is local, and that is the default\"); the flatter lead-in \"Ask Claude to push the branch to the remote.\" sits inside that already-optional frame and does not read as a new mandate (trace phase 1). Nudge: \"If Claude stalls, ask it to keep going\" is conditional on its face and sits directly under \"Nudge by hand... Past ten or so interventions, you have become the agent\" — the persona reads it as a reactive move reached for only on a visible stall, not a per-check-in ritual (trace phase 2). The \"past ten or so\" line itself carries this file's standing §16 pacing-calibration accept-note (maintainer block, 2026-08-02 maintainer call) — suggestion register (\"or so\"), a felt signal (\"you've become the agent\"), not a bare imperative count; not flagged.",
+      "evidence": "Re-derived against the current nudge lead-in. \"If Claude stalls, ask it to keep going. The nudge reads as encouragement and lands as a taunt.\" is conditional on its face (\"If Claude stalls\") and sits directly under \"Nudge by hand... Past ten or so interventions, you have become the agent\" — the persona reads it as a reactive move reached for only on a visible stall, not a per-check-in ritual (trace phase 2). Splitting the sentence in two changed nothing about that reading. The \"past ten or so\" line itself still carries this file's standing §16 pacing-calibration accept-note (maintainer block, 2026-08-02 maintainer call) — suggestion register (\"or so\"), a felt signal (\"you've become the agent\"), not a bare imperative count; not flagged.",
       "fix_hint": null,
       "blocking": true
     },
@@ -75,7 +75,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "No authored conversation/pause/comparison cues anywhere in body (\"Ask Claude where...\", \"Ask Claude to commit...\", \"Ask Claude to push...\", \"Ask Claude to run...\") — every sentence is about the work (artifact, prompt, next agent move), none about cohort management.",
+      "evidence": "No authored conversation/pause/comparison cues anywhere in body (\"Ask Claude where...\", \"Ask Claude to commit...\", \"Ask Claude to push...\", \"Ask Claude to run...\"), including the two rewritten sentences (nudge lead-in, maintainer async-permission paragraph — the latter is trainer-facing anyway) — every sentence is about the work (artifact, prompt, next agent move), none about cohort management.",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,7 +84,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named / mood lands.",
       "verdict": "PASS",
-      "evidence": "Phase 1 is a setup/launch beat (mood-exempt, mood_score: null, judged on clarity — trace phase 1). Phase 2 (the actual send-off) scores 8/10: the prompt enacts stepping away in its own voice (\"I'm leaving the laptop awake and walking away\") and the taunting nudge (\"you can do it. Can't you?\") keeps curious-readiness playful rather than anxious. Close scores 8/10. No beat below 7.",
+      "evidence": "Phase 1 is a setup/launch beat (mood-exempt, mood_score: null, judged on clarity — trace phase 1, unchanged, reused from cache). Phase 2 (regenerated for the changed nudge sentence) still scores 8/10: the prompt enacts stepping away in its own voice (\"I'm leaving the laptop awake and walking away\") and the taunting nudge (\"you can do it. Can't you?\") keeps curious-readiness playful rather than anxious; the lead-in's punctuation split doesn't touch the tone it primes. Close scores 8/10. No beat below 7.",
       "fix_hint": null,
       "blocking": true
     },
@@ -93,7 +93,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "\"The point: send it off plainly and you find out what you can't steer yet\" and \"If the run goes completely off the rails, stop it. The trace is the result either way\" are not-knowing framings, not having-done-wrong framings. No shame register anywhere in body.",
+      "evidence": "\"The point: send it off plainly and you find out what you can't steer yet\" and \"If the run goes completely off the rails, stop it. The trace is the result either way\" are not-knowing framings, not having-done-wrong framings. No shame register anywhere in body, including the edited lines.",
       "fix_hint": null,
       "blocking": false
     },
@@ -102,7 +102,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "\"What you build: a branch, a starting commit, and a transcript path\" and \"send it off plainly\" name the discipline (pin coordinates, send off, watch), not a failure mode as the title.",
+      "evidence": "\"What you build: a branch, a starting commit, and a transcript path\" and \"send it off plainly\" name the discipline (pin coordinates, send off, watch), not a failure mode as the title. Untouched by this revision.",
       "fix_hint": null,
       "blocking": false
     },
@@ -111,7 +111,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "Front-run check: M5's reserved vocabulary ('reference artifact', 'plan.md', 'verifier') appears once, only inside the trainer-only maintainer block's failure-modes list as a redirect-diagnostic, never in student body — no leak of M5's three-pattern reveal. Not-great-by-design (strategy line 246) honored by omission: body never promises a clean result and the cancel-mid-run guidance (\"If the run goes completely off the rails, stop it. The trace is the result either way\") matches strategy line 392 verbatim in spirit. Big Idea fidelity: the file's Point ('send it off plainly and you find out what you can't steer yet') is the module's curious-readiness discipline, not a different framing. Mood doesn't resolve early: the close hands off an experiment in flight, not a verdict, matching M5's opening return. Commitment #11 (multisession-permission line, strategy doc line 897/445 table naming 'M4 send-off' as a carrier): already litigated — the cached strategy-class instance (pre-dating this lead-in edit) records a maintainer ruling that the async-permission line was deliberately cut from this file 2026-08-12 and the resulting ledger gap is the strategy doc's row to close, not this file's line to restore. Re-verified the ruling still holds: no file in the current M1/M2-lecture/M6 set carries a matching permission line either, consistent with an unresolved doc-side TODO rather than a fresh regression in this file. Not re-flagged here.",
+      "evidence": "Front-run check: M5's reserved vocabulary ('reference artifact', 'plan.md', 'verifier') still appears only inside the trainer-only maintainer block's failure-modes list, never in student body — no leak. Not-great-by-design (strategy line 246) honored by omission, unchanged. Big Idea fidelity and mood-doesn't-resolve-early: unaffected by the edit, which sits entirely in the nudge sentence and the maintainer-block async-permission paragraph. **Re-verified the maintainer-block paragraph itself** (rewritten in 05a4ad1): it now claims \"none belongs here: the send-off runs in the same session... and training-architecture.md:13 puts async cloud agents out of scope\" and that permission for row #11 \"is under open decision at pre-cohort-todos.md.\" Checked both citations — `training-architecture.md`'s async-scope line (\"Jules and other async cloud agents are out of scope\") is actually at line 7, not 13 (the file has since moved), and `pre-cohort-todos.md` currently carries no bullet naming row #11 or a multisession-permission decision for this file (grepped both terms, zero hits — only a #6 TODO about the nudge-count number, unrelated). Neither citation is student-facing, and the underlying storytelling call — no permission line belongs in the student body — still holds regardless of the stale line-number and the not-yet-written todo bullet. Flagged in `notes`, not filed as a rules_evaluated REVISE: citation accuracy inside a maintainer block is `check_platform_and_boundaries.md`/technical-class territory, not a storytelling rule, and this rule's own carve-out only requires the STUDENT body not to front-run — it does.",
       "fix_hint": null,
       "blocking": true
     },
@@ -147,7 +147,7 @@
       "rule_index": 38,
       "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
       "verdict": "PASS",
-      "evidence": "Re-derived for both changed lead-ins. Push: lead-in \"Ask Claude to push the branch to the remote.\" mirrors the fence's opening \"Push the current branch and set its upstream.\" — same verb (push), same object (the branch). Nudge: lead-in \"If Claude stalls, ask it to keep going — the nudge is phrased as encouragement and lands as a taunt.\" mirrors the fence's opening move \"Continue --- you can do it.\" — same keep-going action, and the lead-in additionally primes the fence's own taunting register so the tonal jump from body to fence reads as designed, not as drafting drift.",
+      "evidence": "Re-derived for the current nudge lead-in. \"If Claude stalls, ask it to keep going.\" still mirrors the fence's opening move \"Continue --- you can do it.\" — same keep-going action. The now-separate second sentence (\"The nudge reads as encouragement and lands as a taunt.\") still primes the fence's own taunting register, so the tonal jump from body to fence still reads as designed. The push lead-in (\"Ask Claude to push the branch to the remote.\") is untouched by this diff and still mirrors \"Push the current branch and set its upstream.\"",
       "fix_hint": null,
       "blocking": false
     },
@@ -156,7 +156,7 @@
       "rule_index": 2,
       "rule_lead": "Every prompt block: one-sentence action lead-in, <20 words.",
       "verdict": "PASS",
-      "evidence": "\"Ask Claude to push the branch to the remote.\" (8 words) and \"If Claude stalls, ask it to keep going — the nudge is phrased as encouragement and lands as a taunt.\" (19 words) both sit at or under the ceiling and match their short fences (one line each) — no §2a bloat (neither enumerates fence clauses back at the student).",
+      "evidence": "The nudge lead-in is now two sentences, 8 words (\"If Claude stalls, ask it to keep going.\") + 9 words (\"The nudge reads as encouragement and lands as a taunt.\") — each individually well under the 20-word ceiling, and the action-summarizing sentence (the first) is the one rule 2 governs; the second is register-priming prose the rule doesn't forbid appending. No §2a bloat — neither sentence enumerates the fence's clauses back at the student. Push lead-in (\"Ask Claude to push the branch to the remote.\", 8 words) unchanged.",
       "fix_hint": null,
       "blocking": false
     },
@@ -165,7 +165,7 @@
       "rule_index": 1,
       "rule_lead": "Group beat ≠ parallel solo work (trigger test).",
       "verdict": "N/A",
-      "evidence": "File is not workshop-shaped — no beat's output belongs to a group. This is one student pinning coordinates and sending off their own agent run; check_pedagogy governs the whole file, per check_workshop.md's own trigger definition (\"Not triggered by: students doing individual work in the same room at the same time\").",
+      "evidence": "File is not workshop-shaped — no beat's output belongs to a group. This is one student pinning coordinates and sending off their own agent run; check_pedagogy governs the whole file, per check_workshop.md's own trigger definition (\"Not triggered by: students doing individual work in the same room at the same time\"). Unaffected by this revision.",
       "fix_hint": null,
       "blocking": false
     }
@@ -180,5 +180,8 @@
     "stealing_the_mood": []
   },
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 0,
+  "notes": [
+    "Maintainer-block async-permission paragraph (rewritten 05a4ad1) cites `training-architecture.md:13` for the async-cloud-agents-out-of-scope claim; the matching line currently sits at line 7 of that file, not 13. Also claims row #11's permission question is \"under open decision at pre-cohort-todos.md\"; grepped that file for 'row #11' and 'multisession-permission' — no matching bullet currently exists there. Neither is student-facing and neither changes this file's storytelling verdict (the student body still carries no permission line, correctly), but both are citation-accuracy gaps a technical/platform-class pass or a maintainer-block tidy-up should close."
+  ]
 }

@@ -1,47 +1,18 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/extract-the-task-shaping-rule.md",
-  "body_sha": "fb5df24be73e0607bd1d84073511ea992e5c73d54850931dee4ea843f02c759e",
+  "body_sha": "3e10b46fe43b8e2a94c328b4e621b8fe9048dc781ba10e0e9b0b10929d64e15b",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "extension of grounded competence into capture-and-name (M2 second exercise) — student leaves feeling the rule sits in MY file at MY location, sees how this could automate, and isn't building it today, and that's the move",
   "trace_status": "regenerated",
-  "personas": [
-    {
-      "name": "mid-layer-competent",
-      "mood_score": 7.7,
-      "close_score": 8,
-      "confusions": [
-        "The @import decision is explained in body prose right after the prompt rather than being part of what the prompt itself asks for — a less attentive pass could paste the prompt, get the save confirmation, and never come back to read the Note."
-      ],
-      "verdict": "PASS — genuinely rewrites the generic rule when Claude's stop-and-ask fires; forcing function bites as designed."
-    },
-    {
-      "name": "opinionated-senior",
-      "mood_score": 7.7,
-      "close_score": 8,
-      "confusions": [
-        "Reads the @import decision as a gap in the mechanism, not just in attention — a prompt that saves the file and then trusts a body Note to be read afterward undersells how easy it is to skip. This is the file's own accepted, dated maintainer override (standing [watch], reaffirmed 2026-08-02, held open pending a cohort trigger) — this persona's friction confirms the override's own stated grounds, it does not surface a new finding."
-      ],
-      "verdict": "PASS — rewrites two rules, not one; pushes back harder than the mechanism requires. Disagrees with mid-layer-competent on Phase 2 (6 vs 7): the same @import beat reads as an unclaimed mechanism gap to this persona rather than 'solid, not electric.'"
-    },
-    {
-      "name": "fast-operator",
-      "mood_score": 7.3,
-      "close_score": 8,
-      "confusions": [
-        "Answers Claude's stop-and-ask with a blanket 'keep them all' — the beat's forcing function is a question the student can decline in one breath; the mechanism creates a decision point but does not structurally block a same-turn blanket acceptance. Mood stays high (7-8) precisely because nothing here registers as friction to this persona — the artifact ships with the original, unrewritten rule set including the generic one, and no @import line, while feeling fast and complete throughout."
-      ],
-      "verdict": "REVISE (persona-level only) — silent acceptance is the failure mode this beat exists to prevent, and this persona hits it. Not a new file-level finding: the exercise's own <!-- backing --> Stance block already names this exact risk as open ('contested: nothing evidential... would-move-it: rooms reporting that the surfaced rules come back generic anyway despite the rejection pass — a delivery signal, answerable from cohort notes'). This persona run is corroborating evidence for that standing question, not a fresh one."
-    }
-  ],
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "N/A",
-      "evidence": "File is an exercise (three phases, four student-copied prompts), not a lecture. Its meta-frame closer (lectures/where-the-rule-could-live.md) is correctly sequenced after this exercise per the file's own Arc block, but that placement decision belongs to the lecture file, not this one.",
+      "evidence": "Target surface is `curriculum/exercises/extract-the-task-shaping-rule.md`, an exercise, not a lecture. Rule governs lecture placement only; per story.md's own worked example this is the N/A case it names.",
       "fix_hint": null,
       "blocking": false
     },
@@ -50,7 +21,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "File is an exercise, not a pre-exercise lecture, and M2 is a grounded-competence module, not a contrast-mood module (that arc segment belongs to M4/M5).",
+      "evidence": "Governs lecture-opener dosage before a contrast-mood exercise. This file is the exercise, not a preceding lecture; no lecture body in this file to score.",
       "fix_hint": null,
       "blocking": false
     },
@@ -59,7 +30,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Rule targets lecture bodies. This exercise's body carries no M-numbering; the reference to the M1 exercise ('the same move you ran at M1 on a bug ticket') names a sibling exercise's move, not a forward/backward M-numbered bridge, and the maintainer block explicitly keeps that cross-reference out of body ('No module reference in body on purpose').",
+      "evidence": "Rule scopes to lecture bodies specifically (bridges/forward-refs belong in module ## Next/## Bridge, not lectures). This file is an exercise, not a lecture, so the rule's subject doesn't apply. (Checked anyway: body carries no module-number cross-refs — `grep -n 'M[0-9]'` over the body above the maintainer fence returns nothing.)",
       "fix_hint": null,
       "blocking": false
     },
@@ -68,7 +39,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
-      "evidence": "Rule scopes to lecture/handbook headers ('the handbook is scanned cold'). This file's slide-rendered `##` headers are governed by check_slides.md, not this lecture-specific rule.",
+      "evidence": "Rule targets lecture-handbook headers scanned cold without trainer voice. This file's headers (## Phase 1/2/3, ## Reject or rewrite..., ## Where rules can live...) are exercise slide headers, governed by check_slides.md/check_student_facing, not this lecture-specific rule.",
       "fix_hint": null,
       "blocking": false
     },
@@ -77,7 +48,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "N/A",
-      "evidence": "Rule is §4's sibling, scoped to lecture-body slide sizing (script-enforced there). Exercise slide-size is governed by check_slides.md, not re-scored here.",
+      "evidence": "Same scoping note as §4 — this is check_lectures' sibling rule for lecture slide bodies; exercise slide-size is check_slides.md's mandate, not this rule's.",
       "fix_hint": null,
       "blocking": false
     },
@@ -85,35 +56,35 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
-      "verdict": "REVISE",
-      "evidence": "Three of the file's four forcing functions sit correctly inside their fences, including the reject-or-rewrite forcing function itself ('stop and ask which one I want to rewrite and which one I want to reject. Wait for my answer' — in extract-the-task-shaping-rule-1's fence). The fourth is the @import wiring decision at 'Wire the file in, check the wording': 'If Claude picked a path outside the three, ask for that @import line before you move on.' — this ask lives only in body prose, not inside a prompt fence. Harm check: the maintainer block carries an explicit, dated accept-note for this exact passage ('standing [watch], reaffirmed 2026-08-02... Accepted as-is... a pedagogy REVISE here is the expected steady state, not a new finding... Do not fold it into the fence before the trigger fires'), naming the grounds (the wiring stays the student's choice; folding it in now would silently auto-wire, colliding with rule 37 and the module's no-prescription stance). Per the harm clause, an attested passage with a maintainer accept-note is not re-flagged as an open question; this row is retained (not dropped, to preserve the coverage ledger) but the harm is one the maintainer has already weighed and deliberately left open pending a named cohort trigger. The widened 3-persona trace corroborates the accept-note's own premise (opinionated-senior independently flags the same gap) without changing the disposition — still standing, not re-filed.",
-      "fix_hint": "No action recommended: maintainer accept-note names its own trigger (a cohort run showing a student picking a non-auto-load path and missing the wire) and its own fix location (fold into extract-the-task-shaping-rule-2.md's fence) when that trigger fires. Not yet fired.",
-      "blocking": false
+      "verdict": "PASS",
+      "evidence": "Read each phase prompt-only, ignoring body, per the rule's own diagnostic. Phase 1: `extract-the-task-shaping-rule-1` ends 'stop and ask which one I want to rewrite and which one I want to reject. Wait for my answer before continuing' — the reject/rewrite forcing function is IN the prompt, not a body instruction. Phase 2: the 2026-08-14 edit (commit 7f1b192) cut the body bullet 'Read the rules back. If any drifted from your wording, push back and have Claude rewrite.' — but `curriculum/prompts/extract-the-task-shaping-rule-2.md` (read directly) closes with 'After saving, show me the first three rules from the file so I can confirm the wording stuck,' so the verification forcing function still lives in the prompt fence; the body bullet cut removed a redundant restatement, not the mechanism. Mood/artifact still land prompt-only across all three phases.",
+      "fix_hint": null,
+      "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "No authored conversation, pause, or comparison cue anywhere in the body — no 'discuss with', 'tell the room', 'share with the person next to you'. Every sentence (rule-naming, story-ticket read, location choice, wiring, automation shapes) is about the artifact or the student's own move with the agent, never about cohort management.",
+      "evidence": "`grep -niE \"discuss with|share with|tell the room|compare with|turn to your neighbor|pair up|talk to the person\"` over the body → 0 matches (exit 1). No trainer-cue beats, no pause-cues, no 'discuss with...' sentences. Closest-to-violating line checked: 'The agent reads the scrollback; you react to what it proposes' (Phase 1) — this is about the student/agent dyad, not the cohort, so it stays inside the rule.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named; mood-floor (8+/10 per beat, <7 REVISE, 7 = facilitator-premium flag) applies to teaching beats only.",
+      "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Maintainer Meta block names the mood target verbatim ('the rule sits in MY file at MY location... I'm not building it today — and that's the move'). All three phases are teaching beats across all three personas — no setup/launch beat to exempt. Scoring against the primary (mid-layer-competent) persona: 8/7/8 across phases, 8 at close — no beat below 7. Opinionated-senior dips to 6 at Phase 2 specifically (below the 7 facilitator-premium floor for that persona), tied to the same @import friction the pedagogy §16 accept-note already covers — recorded as persona disagreement, not averaged away, per this run's brief. Fast-operator stays at or above 7 throughout because the risk that persona surfaces is silent acceptance, not low mood — the two are independent axes here.",
+      "evidence": "Strategy doc (`content-strategy-agentic-engineering-101.md` line 309) states M2's mood is grounded competence — 'I can feel when a plan is good before approving it, and I know the move is two reads, not one' — and the file's own maintainer Meta block states this exercise's target as 'extension of grounded competence into capture-and-name.' Trace mood_score is 8/10 at every beat and 8/10 at close (see mood_summary) — floor met, no premature resolution into unease or its opposite.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "No shame-framing in student-facing body. 'The generic rule is the tell... needs rewriting into your words, or rejecting' frames the generic rule as an expected artifact to sharpen, not a mistake the student made. The wiring Note frames an un-wired file as inert plumbing ('sits on disk unread'), not a student error. Holds across all three personas — none of the three reads the body as blaming them, including fast-operator, whose miss is invisible to the persona precisely because the body never signals fault.",
+      "evidence": "M2's mood is grounded competence, not unease, so the epistemic-vs-punitive distinction is a non-issue here by design — but checked anyway: the generic-rule catch in Phase 1 ('The rule that arrives generic... is the one to rewrite in your words, or reject') is framed as a discovery move, not a mistake the student made. No 'I messed up' framing anywhere in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -122,25 +93,25 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "'**The point:** find a place for your rules' leads with a positive discipline (capture, place, own it), not a failure word. The generic-rule failure mode is a named contrast case inside Phase 1, not the section's title or frame.",
+      "evidence": "Title (post commit 7f1b192): 'Codify the rules, place the file' — positive discipline verbs, no failure word. 'The point:' widget: 'find a place for your rules.' — same. No failure-mode framing anywhere in the lede.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict).",
+      "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "Front-run check: PASS — Phase 2 names a `.md` file, not a skill, and Phase 3 refuses to build ('Don't propose code today'), matching the strategy doc's own non-front-running boundary at M3; confirmed against all three personas (opinionated-senior explicitly approves the restraint, fast-operator doesn't push past it either). Module-to-module arc: PASS — the Arc block hands off to `lectures/where-the-rule-could-live.md`, matching the strategy doc's sequencing (M2's mini-lecture closes on the leverage horizon without resolving it). Big Idea fidelity: PASS — 'find a place for your rules' matches the strategy doc's framing of the second exercise as a capture-your-world beat with a student-picked location; the strategy doc's own line ('the loading-model choice is the capture-your-world beat made concrete') is exactly what Phase 2 enacts. Mood-doesn't-resolve-early: PASS — M2 is a grounded-competence module with no downstream unease to protect. Strategy-fidelity itself (previously the blocking finding on an earlier fire, since corrected): `content-strategy-agentic-engineering-101.md` § 'M2 in detail' states, in its own dated line, 'The ticket read is split by kind, not withheld (2026-08-12, maintainer-directed). M1 reads a bug ticket and writes bug rules; M2's `extract-the-task-shaping-rule` reads a story ticket at the freed `-4` key. Same move, different face, per `check_pedagogy.md` §9b.' This is exactly what the shipped exercise does (Phase 1's 'Read more rules off one story ticket' beat, `extract-the-task-shaping-rule-4`), and the exercise's own maintainer block independently records the same split. Doc and file agree; standing decision, not re-filed.",
+      "evidence": "Cross-checked against `content-strategy-agentic-engineering-101.md` §M2-in-detail (lines 307-331). Body matches the strategy doc's own description near-verbatim in spirit: 'propose 3-5 rules... force-engagement: rewrite or reject at least one... save to a .md file at a location the student picks deliberately... Phase 3 is one open prompt... nothing gets built... mirrors M2's approve-don't-execute one layer up: save, don't automate' — all present in the file as written. Front-run check: Phase 2 names a free-choice `.md` file, not a skill (strategy line 554: 'M3 owns first-Skill-use'); Phase 3 asks Claude to NAME automation shapes, not invoke any (strategy: M5/M6 own verifier-as-eval/eval-encoding) — matches the file's own 'Non-front-running checks' maintainer note and no violation found on independent read. Module-to-module arc: strategy line 323 confirms the mini-lecture 'where the rule could live' is the closer this file hands off to, 'closing on the leverage horizon without resolving it' — file's own Arc section states the same handoff, and Phase 3's close (no build, three named shapes) does not resolve that horizon early. Big Idea fidelity: title/lede lead with 'codify'/'find a place for your rules' matching the strategy doc's own vocabulary of capture-not-apply.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 5,
-      "rule_lead": "Key Concepts shape — theme breadcrumbs.",
+      "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Governs the module file's `## Key Concepts` section (student-facing heading), not an exercise file. This exercise carries no such section.",
+      "evidence": "This is an exercise file with no module-level Key Concepts section (that section lives in the module file, `plan-mode-done-right.md`, not this exercise). Storytelling class scopes §5-7 to module-only sections per the judge template.",
       "fix_hint": null,
       "blocking": false
     },
@@ -149,7 +120,7 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Same scope as §5 — module-file-only, governed there by the strategy judge, not applicable to this exercise file.",
+      "evidence": "Same as §5 — no Key Concepts section exists in an exercise file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -158,20 +129,26 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "Governs the module file's `## What You'll Learn` section, not an exercise file. This exercise carries no such section.",
+      "evidence": "No What You'll Learn section exists in an exercise file; that section lives at module scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 1,
+      "rule_lead": "(N/A carve-out for individual-learning surfaces)",
+      "verdict": "N/A",
+      "evidence": "check_workshop.md's own docstring: 'NOT individual exercises (check_pedagogy)... carries the N/A carve-out that stops individual-learning rules mis-firing on workshop files.' This exercise is solo laptop work (own session scrollback, own story ticket, own file location) with no group adjudication, attributed contribution, or shared artefact — not a room-scale beat. check_workshop's rules don't fire on this surface.",
       "fix_hint": null,
       "blocking": false
     }
   ],
   "mood_summary": {
-    "phase_scores": [8, 7, 8],
+    "phase_scores": [8, 8, 8],
     "close_score": 8,
-    "any_below_8": true,
-    "stealing_the_mood": [
-      "Phase 2 ('Wire the file in, check the wording') lands at 7/10 for the primary (mid-layer-competent) persona, 6/10 for opinionated-senior — a facilitator-premium-or-worse gap tied to the maintainer-accepted, deliberately-held-open @import forcing-function decision flagged under check_pedagogy.md §16 above; not a floor violation for mid-layer, a floor violation for opinionated-senior on that one persona-phase combination, and both trace back to the same standing, already-accepted design decision — not a new finding."
-    ]
+    "any_below_8": false,
+    "stealing_the_mood": []
   },
-  "teaching_moment_disagreement": "Personas disagree on whether the reject-or-rewrite forcing function (extract-the-task-shaping-rule-1's stop-and-ask) reliably lands. Mid-layer-competent and opinionated-senior both genuinely rewrite at least one rule; fast-operator answers the stop-and-ask with a blanket 'keep them all' and ships the artifact with the original, unrewritten rule set including the generic one. Per the story-judge template, a teaching moment a persona can skip makes the artefact fragile — but this specific fragility is not a new finding: the file's own <!-- backing --> Stance block already names it as the open question ('contested: nothing evidential... would-move-it: rooms reporting that the surfaced rules come back generic anyway despite the rejection pass — a delivery signal, answerable from cohort notes'). This run's fast-operator persona is corroborating evidence for that standing question, reported here rather than filed as a fresh REVISE.",
   "blocking_findings_count": 0,
-  "todos_count": 2
+  "todos_count": 0
 }

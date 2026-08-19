@@ -1,19 +1,20 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/threat-model-with-stride.md",
+  "body_sha": "889ad91c28884c39728a1dbdd3990a94fd30fc2b4c244c6d2d220de4d751a839",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "Pick one threat, record the decision (H1 + lede)", "lines": "1-14"},
-    {"index": 1, "heading": "Phase 1: Run the threat scan across your mapped surface", "lines": "15-30"},
-    {"index": 2, "heading": "Read the threat list, expect more than you'll use", "lines": "31-35"},
-    {"index": 3, "heading": "Phase 2: Pick the one threat worth hardening against", "lines": "36-49"},
-    {"index": 4, "heading": "Push back on the incident story, land the mitigation", "lines": "50-54"},
-    {"index": 5, "heading": "Phase 3: Write the decision as an ADR", "lines": "55-72"},
-    {"index": 6, "heading": "Read the ADR, check the voice and the lens", "lines": "73-77"},
-    {"index": 7, "heading": "Check where the ADR landed", "lines": "78-83"},
-    {"index": 8, "heading": "Ask whether the ADR loads into future sessions", "lines": "84-96"},
-    {"index": 9, "heading": "Save the map and the STRIDE walk before you clear", "lines": "97-106"}
+    {"index": 0, "heading": "Pick one threat, record the decision (H1/lede)", "lines": "1-13"},
+    {"index": 1, "heading": "Phase 1: Run the threat scan across your mapped surface", "lines": "15-25"},
+    {"index": 2, "heading": "Read the threat list, expect more than you'll use", "lines": "27-30"},
+    {"index": 3, "heading": "Phase 2: Pick the one threat worth hardening against", "lines": "32-42"},
+    {"index": 4, "heading": "Push back on the incident story, land the mitigation", "lines": "44-47"},
+    {"index": 5, "heading": "Phase 3: Write the decision as an ADR", "lines": "49-59"},
+    {"index": 6, "heading": "Read the ADR, check the voice and the lens", "lines": "61-64"},
+    {"index": 7, "heading": "Check where the ADR landed", "lines": "66-70"},
+    {"index": 8, "heading": "Ask whether the ADR loads into future sessions", "lines": "72-79"},
+    {"index": 9, "heading": "Save the map and the STRIDE walk before you clear", "lines": "81-89"}
   ],
   "rules_evaluated": [
     {
@@ -22,7 +23,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Harm: a slide leaning on a referent never named strands the reader mid-deck. Checked every pronoun/demonstrative/named-thing per chunk against prior-chunk history. Closest candidates: chunk 0 line 7 'the map you built' and chunk 1 line 22 'the access-surface map from Exercise 1' both resolve — 'Exercise 1' ('Map the access surface') is the immediately preceding exercise in earn-the-trust.md's Start here list, and the session-artifact carve-out covers a live map the student's own Ex1 session produced. Chunk 6 line 63 'The Decision section' and line 64 'the Alternatives considered section' resolve against chunk 5's fenced prompt (line 58: 'Context / Decision / Consequences / Alternatives considered') — fences are exempt from scoring but still render on the slide, so the naming is visible prior context. Chunk 7 line 68 'the M3 worktree' is self-explanatory within its own chunk (line 69 unpacks it in the same breath: 'M3 forked a worktree at turn 1...'), and 'worktree' is independently pre-established by the module's What You'll Learn (earn-the-trust.md line 22: 'Fork a sibling git worktree'), which per rule 1's module-include-order clause counts as prior context. No never-named or vague-with-full-history referent found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -32,7 +33,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Harm: pointing at another file by position only works if the deck starts where the writer assumed. Chunk 1 line 22 'the access-surface map from Exercise 1' names the source by title AND unpacks its claim ('access-surface map') in the same sentence, matching the passing pattern in the rule's own example. No file is pointed at as 'above'/'the previous file' without naming. Fenced-block phrase 'path is earlier in this scrollback' (in the {{prompt}} content) is exempt from scoring.",
       "fix_hint": null,
       "blocking": true
     },
@@ -42,7 +43,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Harm: a stranded callback sends the student hunting for a beat that was cut. Checked backward refs: 'the map you built' / 'Exercise 1' -> earn-the-trust.md line 37 '[Exercise: Map the access surface]' exists directly before this file in the module's Start here list. 'the side-quest' (chunk 7, line 68-70) -> earn-the-trust.md line 33 '[Exercise: Open the side quest]' exists as the module's first exercise. Both beats verified present in the current module file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -52,7 +53,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Harm: a guess/predict beat whose answer is narrated above it teaches nothing. Only ask-then-reveal shape in the file is chunk 8: the ask ('Ask Claude whether this ADR rides into future sessions automatically', line 74) precedes the reveal ('Claude's answer: no...', line 78) in reading order. No guess-before-outcome inversion found anywhere else in the file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -62,7 +63,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Harm: a slide that says nothing standalone. Closest candidate: chunk 4 ('Push back on the incident story, land the mitigation', lines 44-47) is short (2 bullets, no prompt fence) but carries two self-carrying claims (the incident story's role, and the save-as-ADR next step), not a bare wait-state. Every chunk carries at least one self-carrying claim or a prompt fence.",
       "fix_hint": null,
       "blocking": false
     },
@@ -72,7 +73,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Harm: a header the chunk's own content contradicts misleads a skimming reader. Checked each of the 9 `##` headers against its chunk body; each states what the chunk does (e.g. chunk 7 'Check where the ADR landed' -> body checks the ADR's save path against main repo vs. worktree). Closest to a stretch: chunk 6 'Read the ADR, check the voice and the lens' covers both a voice-check bullet and a STRIDE-fit bullet; both are legitimately 'the lens' the header promises. No contradiction found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -82,9 +83,9 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Harm: cadence tics read as machine-authored on a slide. Checked all five sub-items: (a) 'Not X. Not Y. Z.' banned triple construction -- not found; closest is chunk 3 line 36 'One threat, not five' which is a single contrast, not the banned three-part shape. (b) anaphora/epistrophe triples -- none found. (c) self-grading superlatives -- none found (no 'one of the most useful' phrasing anywhere in body). (d) number+retraction -- none found (no numeric claim followed by hedging). (e) abstraction-noun stacks -- none found; vocabulary stays concrete ('the access surface', 'the incident story', 'the ADR'). (f) verb triplets with an empty leg -- none found. All PASS, aggregated into this one rule-7 entry per the completeness contract.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -92,41 +93,81 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Harm: repo/authorial vocabulary a room can't parse. Closest candidate: 'access surface' / 'the mapped surface' recurs (chunk 0 line 7, chunk 1 heading and lines 19-20). This is standard security-engineering vocabulary (cf. 'attack surface'), not repo-internal dialect like 'compendium' or 'writing surface' -- the rule's own carve-out distinguishes domain-standard 'surface' usage from authorial jargon. No 'compendium', 'firing', 'forcing function', 'beat', or 'mood' found as internal-dialect nouns in body.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
-      "verdict": "REVISE",
-      "chunks_flagged": [9],
-      "evidence": "chunk 9 \"Save the map and the STRIDE walk before you clear\": line 101: \"> **Worth keeping?** Ask Claude to save the access-surface map and the STRIDE walk to your repo's `docs/` directory, next to the ADR, before you clear.\"",
-      "fix_hint": "Unbold \"Worth keeping?\" — it's a rhetorical kicker opening a callout, not a named law/governor/coined term/checklist-item handle, and it's not on the file's own 2026-07-09 emphasis-pass kept-bold list (which names only the widget/label chrome: Time/Window/What you do/What you build/The point/What happened/What this sets up).",
+      "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Harm: over-bolding trains readers to ignore bold as a signal. All bold in body is widget/label chrome exempted by the file's own maintainer note (line 95: 'widget/label chrome ... untouched, per check_slides.md §9'): chunk 0's **Time:**/**Window:**/**What you do:**/**What you build:**/**The point:**, chunk 9's **Worth keeping?**/**What happened:**/**What this sets up:**. No bolded whole-sentence leads found in any bullet.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Harm: content invisible in the deck gets rules 1-9 applied to a slide that never renders. This is a standard exercise file included via a plain [Exercise: ...](exercises/threat-model-with-stride.md) link in earn-the-trust.md's Start here section (line 39) -- the standard exercise-include pattern that reaches the composed deck via `.phase--exercise`/`section.module` wrapping (per `curriculum/CLAUDE.md` Directory + Classroom delivery). No phase-less bare prose section found. Mechanical checks below (rules 11/12/14) all ran successfully against this file, which would fail/error on an unreachable file, corroborating presence.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "rule_lead": "Numbering -- position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Ran `node scripts/check-slide-numbering.js curriculum/exercises/threat-model-with-stride.md` -> exit 0, output 'OK -- 61 files, Phase/Step numbering consistent.' Phase headers in body (Phase 1, Phase 2, Phase 3) are consecutive from 1 with no gaps.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran `node scripts/check-slide-deixis.js curriculum/exercises/threat-model-with-stride.md` -> exit 0, output 'OK -- 61 files, no page-geometry pointers across the slide cut.' Manually confirmed no 'below/above/further down/at the top of this page' phrasing in body; the fenced-prompt phrase 'earlier in this scrollback' (chunk 1) is exempt as fenced content.",
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "No in-body markdown links present in this file's body (only the structural include-link from the module file points at it, which is out of this file's scope). Rule is explicitly a review surface, never a gate, per the rule's own text.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size -- 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/threat-model-with-stride.md` -> output 'files: 1  slides: 9  limits: 210 words / 6 bullets... oversized: 0... every slide is within limits.' No maintainer accept-note needed.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Harm: a declarative heading inside an exercise where none is earned muddies the imperative/phase-label mood exercises need. Checked all 9 `##` headings: 3 are 'Phase N: <label>' (phase labels) and 6 are imperative verb phrases ('Read the threat list...', 'Push back on...', 'Read the ADR...', 'Check where...', 'Ask whether...', 'Save the map...'). None is a bare declarative claim (contrast with the compendium's own cited exceptions in close-the-ticket.md / fix-tests-first.md). Consistent exercise mood throughout.",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1
+  "todos_count": 0
 }

@@ -1,17 +1,18 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/map-the-access-surface.md",
+  "body_sha": "3010ebac33a2de87d4439a72c6b7d6b948f695e1c66da8716047c7ec555e3c6b",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "earned trust opening beat (M3 Ex1 of 3) — \"a curated skill did breadth I wouldn't have; I named what only I could name.\" Big Idea: the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big.",
+  "module_mood_contract": "earned trust opening beat (M3 Ex1 of 3) — \"a curated skill did breadth I wouldn't have; I named what only I could name.\" Big Idea (from bosser-strategy:content-strategy-agentic-engineering-101.md, M3 row): \"Earn the trust — quality + security\" / \"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big.\"",
   "trace_status": "regenerated",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
-      "rule_lead": "Meta-frame lectures are closers, not openers.",
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "N/A",
-      "evidence": "Surface is an exercise file, not a lecture; check_lectures fires on lecture writing/placement (frontmatter: \"Fire when writing or placing a lecture\"). No lecture body present here.",
+      "evidence": "Target file is curriculum/exercises/map-the-access-surface.md — an exercise, not a lecture. Rule scopes to lecture placement in a module's lecture sequence; this file has no lecture-slot placement to judge.",
       "fix_hint": null,
       "blocking": false
     },
@@ -20,7 +21,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "Rule governs pre-exercise LECTURE dosage. This file is the exercise itself, not a lecture preceding one.",
+      "evidence": "Rule governs pre-exercise LECTURE dosage. This file is the exercise itself, not a lecture preceding it — no lecture body here to dose.",
       "fix_hint": null,
       "blocking": false
     },
@@ -29,25 +30,25 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Rule scoped to lecture bodies. This exercise's forward hand-off (\"The STRIDE exercise invokes the curated STRIDE skill on the map you just built\") lives in its own '## What this sets up' bridge section, which is the exercise-file equivalent this rule doesn't govern.",
+      "evidence": "Rule's own text scopes to 'lectures teach, module files sequence' — this is an exercise, not a lecture. (Note: the file DOES carry cross-module references — line 45 area 'The plan path you noted at Module 2's close' and the maintainer block's M3/STRIDE forward pointer — but §3's prohibition is written for lecture bodies specifically, so this is a scope mismatch, not a violation, on this surface.)",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 4,
-      "rule_lead": "Slide/lecture headers pass the squint test and truth clause.",
-      "verdict": "PASS",
-      "evidence": "All 9 '##' slide headers name a concrete move or artifact truthfully, no empty containers or orphan-mystery headers: 'Take the ranked ten, leave the rest on disk' names the bounded-read discipline the body delivers; 'Phase 3: Add the surface the skill over-called, and the one it missed' squints to the two-sided delta and the body matches exactly; 'What this sets up' is a bridge header (position, not concept-claim) whose one claim — hands off to STRIDE — is true of the body underneath it.",
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "verdict": "N/A",
+      "evidence": "Rule targets lecture/handbook slide headers scanned cold self-study. This file's ## headers are exercise phase headers (Phase 1-4, opener, closer), not lecture headers; the rule's diagnostic (squint test on a lecture concept-header) doesn't have a lecture surface here to bind to.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
-      "rule_lead": "Slide body is size-bounded (~210 words / ≤6 bullets); exercise slides count too.",
-      "verdict": "PASS",
-      "evidence": "Largest slide is '## Phase 1: Run the curated skill...' (incl. its two unlabeled sub-sections through the next Phase header) at ~139 readable words / 3 bullets; '## Phase 3...' runs ~118 words / 4 bullets + 2 lead-in paragraphs. Every other slide is smaller (opener ~110w/4 bullets, Phase 2 ~58w/2 bullets, Phase 4 ~88w/2 bullets, closer ~42w/0 bullets). None approach the 210w/6-bullet ceiling; prompt fences and code fences excluded from the count per rule.",
+      "rule_lead": "A slide's BODY is size-bounded, not just its header.",
+      "verdict": "N/A",
+      "evidence": "This rule is stated under check_lectures.md and its example/exempt-list (`diagnose-and-resend`, story lectures) are all lecture surfaces; `scripts/check-slide-size.js` is the enforcing mechanism and applies corpus-wide including exercise slides per its own note ('Exercise slides count too'), but that mechanical gate belongs to the slides class, not storytelling's owned check_lectures judgment — storytelling's ownership of check_lectures is the placement/naming rules (§1-4), and §5 is sized-body mechanics that slides-class already owns via check_slides.md. Marking N/A here to avoid double-claiming a rule outside storytelling's lane per the dispatch preamble ('reaching into a sibling class's rules ... is an unowned claim').",
       "fix_hint": null,
       "blocking": false
     },
@@ -56,7 +57,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The bounded-read forcing function the opener describes is enacted in prompt map-the-access-surface-3's fence ('Ten lines, then stop... Expand a finding only when I ask'). The codebase-specificity forcing function the '## Push back until the reason names your codebase' section describes is enacted in prompts -4 and -5's fences ('explain in one line why this codebase's deployment model elevates it'; 'one sentence on why the skill missed it... likely codebase-specific'). Both body sections reinforce/illustrate (worked example: billing-webhook retry vs. 'webhooks need auth') rather than substitute for the in-fence mechanism — matches the rule's carve-out for optional sharpening prose living in body.",
+      "evidence": "The load-bearing decision this exercise teaches — naming the over-call and the miss on the delta — is enacted through the fenced prompts, not narrated in body prose. Body (lines 66-70) only frames the decision ('You decide which surface goes on each side of the delta', 'The over-call.', 'The miss.'); the actual forcing move is 'Ask Claude to integrate the surface the skill called out harder than you would have into the map.' (line 72) immediately followed by {{prompt:map-the-access-surface-4}} (line 74), then 'Then ask Claude to add the surface the skill missed but you know matters.' (line 76) followed by {{prompt:map-the-access-surface-5}} (line 78). Cutting the two prompts would collapse the pedagogy (the delta never gets integrated into the artifact) — removal test confirms these are forcing functions, correctly fenced.",
       "fix_hint": null,
       "blocking": true
     },
@@ -65,25 +66,25 @@
       "rule_index": 27,
       "rule_lead": "Body teaches the work; trainer manages the room outside text.",
       "verdict": "PASS",
-      "evidence": "No authored conversation/pause/compare-with-neighbor cues anywhere in the body (grepped for 'discuss', 'share with', 'tell the room', 'compare' — none found). Every body sentence addresses the work (temp-dir paths, prompt sequencing, the delta). Cohort push-back moves ('is that reason true for this codebase, or true for any codebase?') are correctly confined to the maintainer block, trainer-delivered.",
+      "evidence": "grep -n 'discuss\\|share what\\|tell the room\\|compare with\\|pair up\\|talk to your neighbor' curriculum/exercises/map-the-access-surface.md → 0 matches (command run this session). No authored conversation/pause/comparison cues anywhere in the file. Closest candidate line is 'Push back until the reason names your codebase' (line 79 header) — this reads as an instruction to interrogate the AGENT'S output, not a cue to talk to a person in the room, so it stays inside the rule (WORK register: sharpening the artifact, not COHORT MANAGEMENT). Room-management (P1-P4 push-back moves) lives entirely in the maintainer block under a 'Push-back moves' header naming the trainer as actor, per rule 25's format.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named; mood-floor 8+/10 on teaching beats.",
+      "rule_lead": "Mood contract named / mood lands per beat.",
       "verdict": "PASS",
-      "evidence": "Fresh trace (regenerated, see cache): opener=8, Phase 1 (skill invocation)=8, Phase 2 (read map)=8, Phase 3 (delta)=9, close=8 — all teaching beats clear the 8-floor, no beat below 7. Two beats correctly classified setup/optional and mood-exempt (null): 'Kick off the run, then work the other window' (folded into Phase 1's phase entry — compresses to a parenthetical without breaking the arc) and 'Phase 4: Add the context header' (explicitly optional, 'Your call').",
+      "evidence": "Trace (curriculum/evals/sim-cache/ae101--exercise--map-the-access-surface.persona.json, regenerated this session) phase mood_scores: [8, 8, 8, 9], close mood_score 8. All teaching beats ≥8/10, no beat below 7. Phase 5 (context header, phases[4]) is a mood-exempt setup/optional beat (mood_score: null) per the mood-floor carve-out — diagnostic 'could this compress into a parenthetical' passes ('your call', 3 min, optional), judged on clarity instead: clear and genuinely optional. `mood_summary.any_below_8` = false.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
-      "rule_lead": "Epistemic mood, not punitive.",
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Sharpening language throughout is inquiry-framed, not shame-framed: 'is that reason true for this codebase, or true for any codebase?' and 'Look again at the part of your feature you'd describe as the weird bit' (maintainer push-backs) read as curiosity, not correction of a mistake. Body's own 'Push back until the reason names your codebase' names a discipline to practice, not a failure to confess.",
+      "evidence": "Trace mood_notes across all phases read as competence/relief/payoff ('reads as competence, not caution'; 'the tool respects my attention'; 'earned trust, not busywork') — no phase mood_note carries shame, blame, or 'I messed up' framing. Body language matches: 'The delta is the teaching moment' (maintainer Mood target line), not a failure-correction frame.",
       "fix_hint": null,
       "blocking": false
     },
@@ -92,16 +93,16 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title 'Map the access surface, own the *delta*' and section headers ('Take the ranked ten, leave the rest on disk', 'Push back until the reason names your codebase') name positive disciplines. No failure-word framing (no 'avoid missing', 'don't get caught out') anywhere in body headers.",
+      "evidence": "File title (line 1): 'Map the access surface, own the *delta*' — discipline-named (mapping + owning a delta), not a failure word. Module Big Idea from strategy doc: 'Earn the trust — quality + security' — also discipline-led. The pub-quiz line ('STRIDE without an access-surface map is pub-quiz threat modeling', line 9, **The point:**) names a discipline's absence as the stakes, not a failure title for this file itself.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity — consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early.",
+      "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "Strategy doc (content-strategy-agentic-engineering-101.md, M3 detail, Ex1 line): 'Invoke the curated access-control analysis skill on the feature as a subagent. Read what it surfaces. Decide: which surface did it flag that you'd underweighted? What did it miss that you know matters? Name the delta — this is the access-mapping that STRIDE will consume.' File delivers exactly this shape (curated-breadth vs. codebase-specific-judgment split matches strategy's 'we curate; you build' claim verbatim in spirit). No front-run: STRIDE's threat-categorization and Ex3's test-strategy authoring are correctly deferred, only named as 'what this sets up' / a parallel window, never taught here. The new opener chunk ('Take the ranked ten, leave the rest on disk') matches the strategy doc's reading-contract rule #3 exactly ('M3 takes it into use where outputs first get big') without front-running the module's separate closer beat (control-is-interrogation / branch-is-the-permission), which the strategy doc places elsewhere in M3's arc, not in this Ex1 file. Close hands off with stakes intact ('if you rushed Phase 2, STRIDE threat-models a thin map') rather than declaring the earned-trust arc resolved — mood does not resolve early.",
+      "evidence": "Front-run check: file explicitly defers the threat-modeling work to the sibling exercise — '## What this sets up' (line 92): 'The STRIDE exercise invokes the curated STRIDE skill on the map you just built. The surface map IS the input. If you rushed Phase 2, STRIDE threat-models a thin map' — this exercise builds the map + delta only, does not pre-run STRIDE's analysis. Module-to-module arc: close hands off cleanly per trace (close.final_artifact: 'ready for the STRIDE exercise to consume'), no artifact left unresolved. Big Idea fidelity: strategy doc M3 row (content-strategy-agentic-engineering-101.md, table row M3 / § M3 in detail) names this file as Ex1 of 3 — 'invoke curated access-control analysis skill, name surface delta' — matches exactly; file's mood target line in maintainer block ('a curated skill did breadth I wouldn't have; I named what only I could name') is copied near-verbatim from the strategy doc's per-module row. Mood doesn't resolve early: close.mood_note states 'Hands off clean to STRIDE without resolving the earned-trust arc early ... keeps stakes alive rather than declaring victory' — earned-trust arc (this module's own, not the M3-unease-generic-arc-table shape; AE101's M3 mood is 'earned trust' per strategy doc, not the joy→unease→rescue arc that governs Agents 101) stays open for the STRIDE exercise's ADR decision to complete it.",
       "fix_hint": null,
       "blocking": true
     },
@@ -110,7 +111,7 @@
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Key Concepts is a module-file-only section; this is an exercise file with no '## Key Concepts' heading. Strategy judge owns this rule on the M3 module file.",
+      "evidence": "Key Concepts is a module-file-level section (student-facing heading `## Key Concepts`, per this rule's own scope note). This file is an exercise, not a module file, and carries no Key Concepts section. Strategy class owns this rule on the module file that includes this exercise.",
       "fix_hint": null,
       "blocking": false
     },
@@ -119,7 +120,7 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Same as §5 — no Key Concepts section exists in an exercise file; not applicable at this surface.",
+      "evidence": "Same as §5 — module-only section, absent from this exercise file by design.",
       "fix_hint": null,
       "blocking": false
     },
@@ -128,17 +129,22 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "What You'll Learn is a module-file-only section; no such heading in this exercise file.",
+      "evidence": "Module-only section (anticipatory, before-the-work). Absent from this exercise file by design; owned by the strategy judge on the M3 module file.",
       "fix_hint": null,
       "blocking": false
     }
   ],
   "mood_summary": {
-    "phase_scores": [8, 8, 8, 9],
+    "phase_scores": [8, 8, 8, 9, null],
     "close_score": 8,
     "any_below_8": false,
     "stealing_the_mood": []
   },
+  "teaching_moment_lands": "Named teaching moment (maintainer block Mood target: 'a curated skill did breadth I wouldn't have; I named what only I could name') fires reliably: trace phase 4 (Phase 3, the delta beat) scores mood 9 with note 'This is the exercise's real payoff — I said something the generic skill couldn't have.' The worked example on line 81 ('The billing webhook re-hits the queue on retry...' vs 'webhooks need auth') gives the persona enough shape to sharpen a generic-sounding first answer into a codebase-specific one without the exercise pre-answering it (§53 not violated — the example demonstrates the FORM of a good answer, not this student's actual answer). Fragility check: the maintainer block's P3 push-back moves (generic-delta push, zero-misses push) give a recoverable path if a weaker persona stalls, so the moment does not depend on unaided persona skill alone.",
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 0,
+  "notes": [
+    "check_prompts.md and check_workshop.md both carry eval_classes: storytelling and were read as in-scope compendiums, but the story.md template's 'Specific judgments storytelling owns' section names no check_prompts or check_workshop rule for this class to score — check_prompts's storytelling-relevant surface (prompt narrative/sequencing) is owned by the prompt-behavior (Class B) judge, and check_workshop explicitly does not trigger here: this file has no beat where output belongs to a group rather than a participant (solo exercise, per check_workshop.md's own trigger clause). No rules_evaluated rows filed for either compendium to avoid an unowned claim outside this judge's lane, per the dispatch preamble.",
+    "Trace cache was stale: cached content_sha (af442f9be518c039, dated 2026-08-01) did not match current file (475f0e3cc11140ab), traced to a 2026-08-15 maintainer-block edit (the §48-declined note) sitting below all five phase boundaries. Direct re-read confirmed all five phase bodies are textually unchanged; regenerated phase_sha values (own boundary/hash method) also didn't match the prior cache's phase_sha strings, so this was written as a full regeneration (trace_status: regenerated) rather than a partial per-phase merge, carrying forward the verified-unchanged qualitative judgments."
+  ]
 }

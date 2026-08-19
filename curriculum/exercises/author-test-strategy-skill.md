@@ -79,8 +79,8 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain across all slides; kept bold: none (no named-move or menu handles in body); widget/label chrome (**Time:**/**Window:**/**What you do:**/**What you build:**/**The point:**/**What happened:**/**Note**) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
-**Quality:** compendium-audited 2026-08-02 (writing@1c765f2 story@1c765f2 technical@1c765f2 behavior@1c765f2 pedagogy@1c765f2 strategy@1c765f2 slides@1c765f2)
-- judges @1c765f2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-19 (writing@ba5ccf5 story@ba5ccf5 technical@1c765f2 behavior@1c765f2 pedagogy@ba5ccf5 strategy@1c765f2 slides@ba5ccf5)
+- judges @ba5ccf5: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Create + Evaluate

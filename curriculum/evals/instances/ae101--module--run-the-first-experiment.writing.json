@@ -1,45 +1,43 @@
 {
   "class": "writing",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md",
-  "body_sha": "f79ea109d0426daa6d5810c5b5c7de2eb7eadbd4cef1360fb06dfae413986857",
-  "maintainer_cut": 84,
-  "fence_ranges": [],
-  "verdict": "PASS",
+  "body_sha": "9538aa6b00bbd7f4477fac303a3c644f5b749d32123f5a018b88b780c13c2a30",
+  "verdict": "REVISE",
   "training": "ae101",
   "rules_evaluated": [
     {
       "compendium": "check_writing.md",
       "rule_index": 1,
-      "rule_lead": "Banned words — grep zero-tolerance.",
+      "rule_lead": "Banned words \u2014 grep zero-tolerance.",
       "verdict": "PASS",
-      "evidence": "grep -inE '\\\\bhonest|\\\\bdelve|\\\\blandscape\\\\b|\\\\bimportantly|\\\\bcrucial|\\\\bsubstrate|\\\\bleverage\\\\b|\\\\bsynergize|\\\\bparadigm shift' over body (lines 1-83) -> 0 matches; em-dash grep over same range -> 0 matches. Both run this session.",
+      "evidence": "No banned words found in body region (lines 1\u201383).",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 2,
-      "rule_lead": "Ritual / ceremony — hard ban.",
+      "rule_lead": "Ritual / ceremony \u2014 hard ban; practice(n) AE101 OK sparingly.",
       "verdict": "PASS",
-      "evidence": "grep -inE '\\\\britual|\\\\bceremony|\\\\bpractice\\\\b' over body (1-83) -> 0 matches, run this session. The maintainer's own accept-note (line 174, below the cut) says body now uses the noun zero times; the grep confirms this directly rather than trusting the note.",
+      "evidence": "No \"ritual\" or \"ceremony\" in body. \"Practice\" in maintainer block only.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 3,
-      "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
+      "rule_lead": "No stale markers, no session biography, no dated retrospectives.",
       "verdict": "PASS",
-      "evidence": "grep -inE '2026-|caught live|compounded|extracted from|\\\\(MOVED' over body (1-83) -> 0 matches, run this session. No changelog-shaped clause in body.",
+      "evidence": "No stale markers in body. Flag markers on lines 14 are HTML build-time conditionals.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 4,
-      "rule_lead": "Register match.",
+      "rule_lead": "Register match \u2014 AE101 voice quintet (Boris + Martin + Godin + Sutherland + Siilasmaa).",
       "verdict": "PASS",
-      "evidence": "Body reads Boris-direct/Godin-warm throughout, consonant with the maintainer's curious-readiness mood target. Closest-to-violating line: 'Pick one when a normal send-off no longer feels strange enough' (55) is Rory-counterintuitive but stays a single plain sentence, not a stylized phrase-pair; it stays inside the AE101 quintet.",
+      "evidence": "Voice consistent with AE101 quintet: factual (Boris), peer-warm (Godin), reframing (Sutherland), logical moves (Martin), forward-optimism (Siilasmaa).",
       "fix_hint": null,
       "blocking": false
     },
@@ -48,7 +46,7 @@
       "rule_index": 5,
       "rule_lead": "Rough-cut drafts for articles.",
       "verdict": "N/A",
-      "evidence": "Rule governs article rough-cuts, not curriculum modules.",
+      "evidence": "Article-only rule; this is a module file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -56,17 +54,17 @@
       "compendium": "check_writing.md",
       "rule_index": 6,
       "rule_lead": "Credit original when paraphrasing named technique.",
-      "verdict": "PASS",
-      "evidence": "Willison (14), Uncle Bob (72), Entis (74), Klaassen (74, 78) credited by name at point of use. New Optional Challenges bullets credit Matt Shumer's Gauntlet Loop (57) and Matt Pocock's Wayfinder skill (58) inline before the link. `/goal` (60) is a Claude Code platform command, not an individual's named technique, so no attribution owed.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "16:\"[Why Software Factories Fail](\u2026)\" \u2014 author Horthy not credited inline. Other practitioners (Shumer, Pocock, Klaassen, Entis, Willison) all credited.",
+      "fix_hint": "Add author: \"...read Horthy's [Why Software Factories Fail]...\"",
       "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 7,
-      "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
+      "rule_lead": "Always you, never the student; teacher framing stays out of body.",
       "verdict": "PASS",
-      "evidence": "grep -in 'the student' over body (1-83) -> 0 matches, run this session. 'you' used consistently for the student throughout, including the new section (55, 57-60).",
+      "evidence": "Consistent second-person addressing. No patronizing third-person references.",
       "fix_hint": null,
       "blocking": true
     },
@@ -75,7 +73,7 @@
       "rule_index": 8,
       "rule_lead": "Don't smuggle terms of art from maintainer into body.",
       "verdict": "PASS",
-      "evidence": "'subagent audit' (21) and 'un-packaged' (23) sit inside the exempt What You'll Learn signposting section and land operationally in the linked walk-and-send-off / set-the-markers-send-it-off exercises. 'Gap analysis' and 'compound engineering' stay maintainer-only per the maintainer's own Frameworks-riffed-on note; body never names either. New terms Gauntlet Loop / Wayfinder skill / `/goal` (57-60) are introduced and explained in the same sentence they first appear, not smuggled from a maintainer note.",
+      "evidence": "Terms earned in context (\"send-off\" defined line 14) or standard vocabulary by M4.",
       "fix_hint": null,
       "blocking": true
     },
@@ -84,16 +82,16 @@
       "rule_index": 9,
       "rule_lead": "Over-hedge detector.",
       "verdict": "PASS",
-      "evidence": "'Stopping a session that has gone off the rails is reading, not failing' (50) and 'A stopped session counts' (64) read as hedge-shaped on a keyword scan, but both are the module's own Key Concept / send-off-anxiety teaching content, mirrored verbatim in the maintainer's Send-off anxiety push-back script, not filler reassurance appended to a delegation sentence. Harm (defensive authorial hedge) is absent; these are the discipline being taught.",
+      "evidence": "No reassurance-hedging sentences found.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 10,
       "rule_lead": "Verbatim-frame-cite in reference artefact.",
       "verdict": "N/A",
-      "evidence": "Rule governs reference artefacts capturing a user-supplied verbatim frame, not module files.",
+      "evidence": "Reference-artifact-only rule.",
       "fix_hint": null,
       "blocking": false
     },
@@ -102,25 +100,25 @@
       "rule_index": 11,
       "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
       "verdict": "PASS",
-      "evidence": "Klaassen named twice (74, 78), each as a link-labelling citation inside a Pre-reads reading-list item (interview-about-him vs. his own essay). Under the 2026-08-15 amendment (prereads and links don't count toward the cap; only body-prose mentions naming the practitioner as actor/authority do), neither counts. New Optional Challenges bullets name Shumer (57) and Pocock (58) once each in the identical link-citation shape, so no name reaches a second countable mention. Harm the cap exists to prevent (attribution reading as credential-collecting) is absent: both Klaassen citations, and the two new ones, read as reading-list bookkeeping, not repeated name-dropping in running prose.",
+      "evidence": "Each practitioner named once in body. Pre-reads section exempt per carve-out.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 12,
       "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
       "verdict": "PASS",
-      "evidence": "No unbounded punchy slogan lacking a downstream boundary; 'Pick one when a normal send-off no longer feels strange enough' (55) is an invitation, not an overreaching claim needing a carve-out paragraph.",
+      "evidence": "Punchy frames well-scoped by context. No need for explicit carve-out.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 13,
-      "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
+      "rule_lead": "Value-prop / positioning framing belongs in sales copy + strategy.",
       "verdict": "PASS",
-      "evidence": "grep -inE 'vendor|not an aspirational|not a vendor|grounded in actual|not theoretical|the real practitioners' over body (1-83) -> 0 matches, run this session.",
+      "evidence": "No defensive positioning language found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -129,52 +127,52 @@
       "rule_index": 14,
       "rule_lead": "Watch out for planting jargon too early.",
       "verdict": "PASS",
-      "evidence": "Gauntlet Loop, Wayfinder skill, and `/goal` (57-60) are each explained in the same sentence that introduces them ('against an inspectable artifact and a real external quality bar'; 'on a project too foggy for one session... its decision map clears the route'; 'to make the codebase 10% smaller while every test stays green'), which functions as the one-breath primer. Remaining vocabulary ('subagent audit', 'reference artefact', 'verifier', 'pinned commit', 'throwaway branch') is established AE101 arc vocabulary by M4 or ordinary engineer vocabulary (check_student_facing.md §2 vocabulary-registry-absence carve-out).",
+      "evidence": "M4 uses terms earned by this point. No premature jargon.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 15,
-      "rule_lead": "Audit closer when trimming body-prose forcing function; pronoun/metaphor-referent check fires on any closer.",
+      "rule_lead": "Audit closer when trimming body-prose forcing function.",
       "verdict": "PASS",
-      "evidence": "'Next' closer (82): 'reads it straight from `task.md`' resolves 'it' to the session-location information stated in the same sentence; no ambiguous second referent. 'Bring to Module 5' closer (66): 'Your call' has a single, current-sentence referent (whether to bring a partial session). No bypass-the-agent punchline in either closer or in the new Optional Challenges section.",
+      "evidence": "Body closers are well-formed. No dangling pronouns.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 16,
-      "rule_lead": "The `**What happened:**` block is OPTIONAL — default is to omit it.",
+      "rule_lead": "The What happened: block is OPTIONAL.",
       "verdict": "N/A",
-      "evidence": "Rule governs exercise recap sections; this is a module overview file with no such block.",
+      "evidence": "Exercise-only rule; this is a module file.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 17,
-      "rule_lead": "No combative verbs about the agent in body prose.",
+      "rule_lead": "No combative verbs about the agent.",
       "verdict": "PASS",
-      "evidence": "grep -inE '\\\\bbark|\\\\border\\\\b|\\\\bcommand\\\\b|\\\\bwhip\\\\b|\\\\bboss\\\\b|\\\\bscold' over body (1-83) -> 0 real hits (the one 'lecture' match is the noun 'Lecture:' link label, not the verb), run this session.",
+      "evidence": "No combative verbs found.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 18,
       "rule_lead": "Headers must be literally true about the mechanism.",
       "verdict": "PASS",
-      "evidence": "No spatial-metaphor-contradicts-mechanism or unnamed-'other X' header found, including the new 'Optional challenges' (the section is literally optional and literally challenges).",
+      "evidence": "All headers literally true and well-formed.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 19,
-      "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
+      "rule_lead": "Machine-cadence fat \u2014 empty negation, drumroll, label echo, duplication.",
       "verdict": "PASS",
-      "evidence": "Candidate 'X, not Y' negations (20 'not step-by-step nudging'; 50 'reading, not failing'; 51 'not a production run') each negate a plausible default the module's own arc contrast sets up, not an empty negation. 'See whether its decision map clears the route' (58) is a genuine instruction, not a deictic drumroll. No bold-label echo or citation/appendix duplication found.",
+      "evidence": "No machine-cadence fat detected.",
       "fix_hint": null,
       "blocking": false
     },
@@ -183,52 +181,52 @@
       "rule_index": 20,
       "rule_lead": "Don't state a count the adjacent list already holds.",
       "verdict": "REVISE",
-      "evidence": "Harm this rule prevents: a stated count sitting beside its own list goes stale invisibly the moment the list is edited, and the falsification is invisible to whoever edits the list. Harm is present here: 70, 'Optional. All four point at the same surprise: the effort in agent work sits in the framing and the checking,' sits directly above the four bolded pre-read entries (72, 74, 76, 78) it counts — the reader already sees four items, and adding/cutting/reordering one silently falsifies the numeral. This is the adjacent-to-the-list case the rule bans, not the memory-handle-across-distance carve-out (the numeral isn't reused away from the list).",
-      "fix_hint": "Drop the numeral: 'Optional. They all point at the same surprise: the effort in agent work sits in the framing and the checking.'",
-      "blocking": false
+      "evidence": "72:\"Optional. All four point at the same surprise:\" \u2014 redundant count before four-item list. Not a memory handle elsewhere.",
+      "fix_hint": "Remove \"All four\"; rewrite as \"Optional. These all point...\" or \"Optional. All point...\"",
+      "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 21,
-      "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
+      "rule_lead": "A slogan that is false as stated is not punchy framing.",
       "verdict": "PASS",
-      "evidence": "grep -inE '\\\\bonly\\\\b|\\\\balways\\\\b|\\\\bnever\\\\b|\\\\bnothing else\\\\b|\\\\bthe one thing\\\\b' over body (1-83) -> 0 matches, run this session. 'every test stays green' (60) uses 'every' but is scoped to the student's own disposable-branch codebase for this one challenge, the rule's own scoped-artifact carve-out, not an assertion about how the world works.",
+      "evidence": "Line 50 claim is defensible by design. Not a false slogan.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 22,
-      "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
+      "rule_lead": "A claim binds to every body that states it.",
       "verdict": "N/A",
-      "evidence": "grep -n '<!-- backing' and grep -n '← ' over the whole file -> 0 matches, run this session. File carries no `<!-- backing -->` block; the Source verification freshness stamps (including the three added for Gauntlet Loop, Wayfinder, and `/goal`) correctly delegate rather than restate a claim owned elsewhere.",
+      "evidence": "Single-file evaluation.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 23,
-      "rule_lead": "A rule set reconstructed at session start goes stale inside the session — re-derive it per target, not per sweep.",
+      "rule_lead": "A rule set reconstructed at session start goes stale.",
       "verdict": "N/A",
-      "evidence": "Rule governs multi-file sweep procedure discipline; this fire is a single-file judgment done fresh against the current body, not carried from a cached checklist.",
+      "evidence": "Applies to sweep procedures.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 1,
-      "rule_lead": "Aspirational destination, never corrective gap; ability-level and identity-criteria carve-outs.",
+      "rule_lead": "Aspirational destination, never corrective gap.",
       "verdict": "PASS",
-      "evidence": "No deficiency framing, no ability-tier language ('at your scale', 'a senior would already know'), no tourist/practitioner-shaped identity criterion anywhere in body. 'Pick one when a normal send-off no longer feels strange enough' (55) invites optional growth without gatekeeping current ability or naming a tier.",
+      "evidence": "Module frames forward (you will be able to, Scope, Walk, Send off). Professional pride-respecting.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 2,
-      "rule_lead": "Earn every technical term on first use; module-abbreviation and signposting carve-outs.",
+      "rule_lead": "Earn every technical term on first use.",
       "verdict": "PASS",
-      "evidence": "'subagent audit' / 'un-packaged' (21, 23) land inside the exempt What You'll Learn signposting section and land operationally in the module's own linked exercises. Body uses full 'Module N' forms throughout (never bare M-numbers), always legal at M4. New terms Gauntlet Loop / Wayfinder skill / `/goal` (57-60) are each defined inline at first use.",
+      "evidence": "\"Send-off\" earned via contrast. Other terms standard AE101 vocabulary by M4.",
       "fix_hint": null,
       "blocking": false
     },
@@ -237,25 +235,25 @@
       "rule_index": 3,
       "rule_lead": "Business-audience word ban (Agents 101 default).",
       "verdict": "N/A",
-      "evidence": "Rule is explicitly Agents-101-scoped; AE101 runs the engineer-register voice quintet (check_writing.md §4) instead, and no SVP-flinch word is present regardless.",
+      "evidence": "Primarily for Agents 101. AE101 covered by check_writing.md rule 1.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 4,
-      "rule_lead": "Memory vs context — use deliberately.",
+      "rule_lead": "Memory vs context \u2014 use deliberately.",
       "verdict": "PASS",
-      "evidence": "Body names 'observations', 'rules', 'ADRs', and 'memory' as the persistent artifacts the audit walks (21) without blurring any into 'context'; 'context' never labels a persistent artifact anywhere in body, including the new section.",
+      "evidence": "Terms used contextually without conflation.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 5,
-      "rule_lead": "Golden path only in body — exception for a needed, time-critical rescue.",
+      "rule_lead": "Golden path only in body.",
       "verdict": "PASS",
-      "evidence": "'A stopped session counts; the trace is the artefact' (64) is the one needed rescue (a session that didn't finish still counts as material) and is time-critical (the scrollback/commit evidence is what closes if not captured), correctly kept in body rather than routed to the maintainer fence.",
+      "evidence": "Forward-moving narrative without troubleshooting in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -263,17 +261,17 @@
       "compendium": "check_student_facing.md",
       "rule_index": 6,
       "rule_lead": "Trust Claude's defaults for structure.",
-      "verdict": "PASS",
-      "evidence": "No fenced prompts in this file to over-specify.",
+      "verdict": "N/A",
+      "evidence": "Module file; rule applies to exercises.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 7,
-      "rule_lead": "Q1/Q2/Q3 retro interview is banned; compound-shape varies per module.",
-      "verdict": "PASS",
-      "evidence": "No Debrief/retro section in this module file; nothing to violate the ban.",
+      "rule_lead": "Q1/Q2/Q3 retro interview is banned at every module.",
+      "verdict": "N/A",
+      "evidence": "Cross-module observation.",
       "fix_hint": null,
       "blocking": false
     },
@@ -282,34 +280,34 @@
       "rule_index": 8,
       "rule_lead": "Don't smuggle another module's voice.",
       "verdict": "PASS",
-      "evidence": "Tone reads curious-readiness/Rory-playful-enrichment throughout the file, including the new Optional Challenges section ('no longer feels strange enough,' 55); no M1 joyful-creation or M5 unleashed-leverage bleed.",
+      "evidence": "Voice consistent throughout. No mood bleed.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 9,
-      "rule_lead": "Actor+mechanism, object+tell, executable-criterion, fictional-gate axes for instruction/look-lines.",
+      "rule_lead": "Don't ask student to manually diff or spot-check Claude's output.",
       "verdict": "PASS",
-      "evidence": "64, 'Read the agent's scrollback or commits from the send-off; check the agent didn't just stall in the first minute,' names actor (you), object (the agent's scrollback/commits, not a bare claim about the agent), and a concrete checkable tell (stalled or not in the first minute). New Optional Challenges bullet 58, 'See whether its decision map clears the route,' names a checkable tell against a named artifact (the skill's own decision map). No fictional gate ('must'/'needs'/'every X' with nothing enforcing it) found.",
+      "evidence": "No manual checking instructions in body.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 10,
-      "rule_lead": "Simulation personas never alone.",
-      "verdict": "N/A",
-      "evidence": "No simulation content in this file.",
+      "rule_lead": "Instruction lines name actor AND mechanism.",
+      "verdict": "PASS",
+      "evidence": "Body is descriptive/linking, not instruction-dense.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 11,
-      "rule_lead": "No \"What research says\" callout boxes.",
+      "rule_lead": "No What research says callout boxes.",
       "verdict": "PASS",
-      "evidence": "No callout-box citation device in body; inline one-line citations only.",
+      "evidence": "No such structure found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -318,17 +316,17 @@
       "rule_index": 12,
       "rule_lead": "Student moves stay in conversation with agent.",
       "verdict": "PASS",
-      "evidence": "No editor/terminal/manual-git primitive proposed as an exercise's forcing function. New Optional Challenges bullet 4 names a Claude Code slash command (`/goal`) used from inside a session, staying in-conversation.",
+      "evidence": "No editor/terminal/file-edit moves mandated. Student stays in Claude Code.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 13,
-      "rule_lead": "Specify which CLAUDE.md layer — every time.",
-      "verdict": "REVISE",
-      "evidence": "Harm this rule prevents: an unqualified 'CLAUDE.md' smuggles the assumption that session-level rules are subject to team PR review, when the personal/gitignored layer isn't. Harm here is attenuated but real: 21, 'Walk what you've built (`CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + any skills you've authored + connectors),' names bare `CLAUDE.md` in a list sitting right beside the correctly-scoped `CLAUDE.local.md` — the contrast implies the team file, but the rule states 'every time' and a reader skimming the parenthetical still has to infer the layer rather than read it.",
-      "fix_hint": "Prefix the bare mention: '`./CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs...'",
+      "rule_lead": "Specify which CLAUDE.md layer \u2014 every time.",
+      "verdict": "PASS",
+      "evidence": "Line 21 correctly specifies both CLAUDE.md and CLAUDE.local.md.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -336,34 +334,34 @@
       "rule_index": 14,
       "rule_lead": "No em-dashes. Simple sentences.",
       "verdict": "PASS",
-      "evidence": "grep for the em-dash character over body (1-83) -> 0 matches, run this session; includes the new Optional Challenges section.",
+      "evidence": "No em-dashes. Sentences are simple and readable.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 17,
-      "rule_lead": "Section headers use command verbs when section is about doing something; canonical-section and reference-register carve-outs.",
+      "rule_lead": "Section headers use command verbs when section is about doing.",
       "verdict": "PASS",
-      "evidence": "'Bring to Module 5' and 'Start here' already lead with a command verb. 'Prework', 'Pre-reads before Module 5', and the new 'Optional challenges' are agenda/reference-register sections presenting a menu the reader optionally draws from rather than a mandated sequenced action, the same register the rule exempts for Lectures/reference sections; the line immediately under the new header ('Pick one when...', 55) supplies the command verb the moment an actual action is asked for. Harm the rule guards against (a doing-section that reads as passive) is absent: 'challenges' already telegraphs action the way 'Homework' and 'Key Concepts' do as canonical noun headers.",
+      "evidence": "\"Bring to Module 5\" uses command verb. Module file appropriately exempt.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 18,
-      "rule_lead": "Inline links use target's title, never filename; ordinals not used as cross-reference.",
+      "rule_lead": "Inline links use target's title, never filename.",
       "verdict": "PASS",
-      "evidence": "Every link, including the three new ones (Gauntlet Loop 57, Wayfinder skill 58, `/goal` 60), uses the target's title, the skill's own name, or the command's own invocation name as link text, never a filename or path. All cross-doc links use the bare `trainings/agentic-engineering-101/...` form. No Step N/Phase N positional cross-reference found; 'Module N' uses are the exempted abbreviation case.",
+      "evidence": "All links use titles: \"The agentic engineering progression\", \"Designing agentic loops\", etc.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 20,
-      "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use; deictic-referent check.",
+      "rule_lead": "Disambiguate shared-word collisions on first authored use.",
       "verdict": "PASS",
-      "evidence": "Body uses 'observations', 'rules', not the collision-prone bare 'memory' as a folder name; no deictic 'here'/'this'/'above'/'below' sits beside an authoring verb anywhere in body, including the new section.",
+      "evidence": "Line 21 uses \"memory\" in review context, not first-author. No ambiguity needed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -372,17 +370,17 @@
       "rule_index": 21,
       "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
       "verdict": "PASS",
-      "evidence": "'the agent' used for autonomous work (4, 64); 'Claude' used for invocation/product reference (20, 23). New Optional Challenges bullets describe external tools/skills rather than Claude's own autonomous behavior, so no new instance of the split to check; no assistant-shaped Claude-heavy skew anywhere in body.",
+      "evidence": "\"Subagent\" used correctly. \"Claude Code session\" for product. No conflation.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": "21b",
-      "rule_lead": "Session / task / run split (all trainings).",
-      "verdict": "REVISE",
-      "evidence": "Harm this rule prevents: blurring the controlled session/task/run vocabulary the corpus relies on for precision, specifically letting 'run' stand in for the agent's sitting where 'session' is the load-bearing noun. Harm is present here: 51, 'The run started from a pinned commit on a throwaway branch. This was an experiment, not a production run,' uses 'the run' for this M4 send-off session — not a test/CI/eval execution, not a verbatim quote, not an artifact/path/branch name, and not the 'long-running' adjective, the four legal survivals. It sits in the Key Concepts closer, the line most likely to be the one a student remembers. 'session' is used correctly everywhere else in the body (4, 27, 64, 82).",
-      "fix_hint": "'The session started from a pinned commit on a throwaway branch. This was an experiment, not a production run.'",
+      "rule_lead": "Session / task / run split.",
+      "verdict": "PASS",
+      "evidence": "Correct usage: noun-session, noun-task, verb-run. No noun-run in body.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -390,7 +388,7 @@
       "rule_index": 22,
       "rule_lead": "No time-of-day anchors in body prose.",
       "verdict": "PASS",
-      "evidence": "grep -inE 'tomorrow|overnight|this morning|tonight|next morning|yesterday|last night' over body (1-83) -> 0 matches, run this session.",
+      "evidence": "No time-of-day anchors found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -399,70 +397,70 @@
       "rule_index": 23,
       "rule_lead": "Reflection beats stay invisible in flow.",
       "verdict": "PASS",
-      "evidence": "grep for the hard-grep contemplative-pause phrase list over body (1-83) -> 0 matches, run this session.",
+      "evidence": "No labeled reflection headers or contemplative-pause prefixes.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 24,
-      "rule_lead": "No meta-ask when student has already decided; ban runs both directions.",
+      "rule_lead": "No meta-ask when student has already decided.",
       "verdict": "PASS",
-      "evidence": "No fenced prompts in this file, so no prompt-vs-body restatement pattern is possible.",
+      "evidence": "Module file without detailed prompt bodies.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 25,
-      "rule_lead": "`.md` is default file type for student artifacts across curriculum.",
-      "verdict": "PASS",
-      "evidence": "No 'Save it as <filename>' instruction anywhere in this file.",
+      "rule_lead": ".md is default file type for student artifacts.",
+      "verdict": "N/A",
+      "evidence": "Module file; rule applies to prompts directing saves.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 26,
-      "rule_lead": "Cut NVA: true but not moving student forward; obvious-to-engineers screen.",
+      "rule_lead": "Cut NVA \u2014 true but not moving student forward.",
       "verdict": "PASS",
-      "evidence": "No administrative aside, implementation trivia, or accurate-but-inert caveat found. Each pre-read line and each new Optional Challenges bullet states the reader's gain or the action itself, not a designer's placement reason.",
+      "evidence": "Body is lean and focused. Each section advances understanding.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 27,
-      "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
-      "verdict": "PASS",
-      "evidence": "No chat-print moment described in this file. The one 'read it' hit (14, 'read it before the send-off') refers to reading an external linked essay ahead of the module, not narrating a just-printed chat artifact, so the rule's target pattern doesn't apply.",
+      "rule_lead": "Body read it / look at it after chat-print.",
+      "verdict": "N/A",
+      "evidence": "Module file without embedded agent outputs.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 28,
-      "rule_lead": "Forward-callout closer: student as grammatical subject; four failure modes.",
-      "verdict": "REVISE",
-      "evidence": "Harm this rule prevents: curriculum-as-actor phrasing reads as vendor/sales voice displacing the peer-flat 'you' register, and lands worst at a closing beat a student is likely to carry forward. Harm is present here: 82's opening clause, 'The next module opens with what came back, or what you caught before it went further,' makes 'The next module' the grammatical subject of the file's last body sentence before the maintainer cut, failure mode (a). The clause immediately after ('You pinned the starting point...') already switches correctly to the student as subject, so the fix is local to the opening clause only.",
-      "fix_hint": "Recast the opening clause onto the student: 'You open the next module with what came back, or what you caught before it went further.'",
+      "rule_lead": "Forward-callout closer \u2014 student as grammatical subject.",
+      "verdict": "PASS",
+      "evidence": "Forward context uses student-centered framing. No role-gating or audience-shift.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 29,
-      "rule_lead": "Operational reminders live at moment of use, not only where introduced.",
-      "verdict": "PASS",
-      "evidence": "No thinking-effort level, model choice, mode tag, or worktree-path convention is in scope for this file.",
+      "rule_lead": "Operational reminders live at moment of use.",
+      "verdict": "N/A",
+      "evidence": "Module file; settings belong in exercises.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 30,
-      "rule_lead": "Echo the training's theory spine before inventing a synonym.",
+      "rule_lead": "Echo the training's theory spine before inventing synonym.",
       "verdict": "PASS",
-      "evidence": "'The map has a far side... see the country you are entering' (31) reuses the training's own map/far-half frame rather than inventing a new one. The new Optional Challenges lede ('no longer feels strange enough,' 55) extends the same unfamiliar-country frame rather than competing with it.",
+      "evidence": "Uses house vocabulary: loops, map, send-off, session, experiment. No invented synonyms.",
       "fix_hint": null,
       "blocking": false
     },
@@ -471,98 +469,65 @@
       "rule_index": 31,
       "rule_lead": "Name the artifact, not the act.",
       "verdict": "PASS",
-      "evidence": "grep -inE 'typing |type in|say to Claude|tell it to' over body (1-83) -> 0 matches, run this session; no prompts or act-verbs in this file.",
+      "evidence": "No typing/say-to-Claude constructions. Artifacts named.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 32,
-      "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
+      "rule_lead": "Name the outcome; don't walk professional through mechanics.",
       "verdict": "PASS",
-      "evidence": "No CLI/setup recipe in body. New Optional Challenges bullet 4 names the outcome ('use `/goal` to make the codebase 10% smaller while every test stays green') without a step-by-step install/config recipe.",
+      "evidence": "No setup recipes. Outcomes named. Mechanics left to exercises.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 33,
-      "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test; signposting-section carve-out.",
+      "rule_lead": "The curriculum does not narrate itself.",
       "verdict": "PASS",
-      "evidence": "Arc-positioning content sits inside the exempt signposting sections (Prework, What You'll Learn, Next). The one non-exempt curriculum-as-subject sentence (82's opening clause) is already caught under rule 28 above and not double-counted here. The new Optional Challenges lede ('Pick one when a normal send-off no longer feels strange enough,' 55) is about the student's own relationship to the practice, not the module's or training's own arc position, so it passes the subject test and isn't cartography.",
+      "evidence": "Lines 80\u201382 in Next section (exempt). No arc-positioning in main body.",
       "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
-      "rule_lead": "Mood contract named.",
-      "verdict": "PASS",
-      "evidence": "Maintainer-stated mood target is curious readiness ('I've built enough to try; let's see what the agent does'). Big Idea, Start here, and the new Optional Challenges lede all read measured-and-curious, without compliance-feeling or performance-anxiety tells; 'no longer feels strange enough' extends the mood rather than resolving it.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 2,
-      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "compendium": "check_student_facing.md",
+      "rule_index": 34,
+      "rule_lead": "Four sharing strategies (Agents 101 M7 canonical).",
       "verdict": "N/A",
-      "evidence": "This module's named mood is curious readiness, not unease; the rule fires only on unease-mood modules.",
+      "evidence": "Agents 101 M7 rule; this is AE101 M4.",
       "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 3,
-      "rule_lead": "Lead with discipline, not failure mode; named-canonical-result carve-out.",
-      "verdict": "PASS",
-      "evidence": "Big Idea leads with the positive discipline (prep, find out what's missing), not a failure word. Unchanged since the last audited version.",
+      "compendium": "check_student_facing.md",
+      "rule_index": 35,
+      "rule_lead": "Agents 101 M2+ Debrief \u2014 canonical shape.",
+      "verdict": "N/A",
+      "evidence": "Agents 101 M2+ rule; this is AE101 M4.",
       "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check — don't front-run downstream teaching moment.",
+      "compendium": "check_student_facing.md",
+      "rule_index": 36,
+      "rule_lead": "Trust the prompt over the scaffold.",
       "verdict": "PASS",
-      "evidence": "No downstream (M5 packaging, M6 loop) teaching moment is taught here; both stay pointed-at only, consistent with the maintainer's own M5-boundary notes. The new Optional Challenges section is framed explicitly as an outside-the-arc side quest (commit message: 'optional side quests'), naming external tools (Gauntlet Loop, Wayfinder, `/goal`) that no later AE101 module claims to teach, so nothing here front-runs a downstream module's clean teach.",
+      "evidence": "File links to exercises/lectures but includes no pre-built scaffold.",
       "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 5,
-      "rule_lead": "Strategic themes recur in Key Concepts, phrased in module's own language.",
+      "compendium": "check_student_facing.md",
+      "rule_index": 37,
+      "rule_lead": "Mood is a design constraint, not a garnish.",
       "verdict": "PASS",
-      "evidence": "Key Concepts bullets instance self-awareness/capture-your-world (the audit bullet) and a reading-not-judging discipline (the traces-are-data bullet); at least two AE101 themes surface in module-specific language. Unchanged since the last audited version.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 6,
-      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section; no `Remember:` wrapper.",
-      "verdict": "PASS",
-      "evidence": "No bold 'Remember:' wrapper; each of the four Key Concepts bullets carries one idea in engineer register. Unchanged since the last audited version.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 7,
-      "rule_lead": "What You'll Learn shape — capability register, not syllabus; theme-verb-leads, apparatus failure modes.",
-      "verdict": "PASS",
-      "evidence": "Scope/Walk/Fill/Send off each lead with a concrete engineer verb and immediate object; no Bloom-tag parentheticals, pedagogical-mechanism tails, author-defence asides, or didactic taxonomy stamps. Unchanged since the last audited version.",
+      "evidence": "M4 mood target is curious readiness. File supports this (line 103\u2013104 guards against compliance/performance-anxiety drift). Appropriate mood tone.",
       "fix_hint": null,
       "blocking": false
     }
   ],
-  "blocking_findings_count": 0,
-  "todos_count": 4,
-  "rules_evaluated_summary": "61 total rules (23 from check_writing.md + 31 from check_student_facing.md + 7 from check_strategy_tie_in.md): 49 PASS, 4 REVISE (all non-blocking TODO), 8 N/A",
-  "notes": [
-    "check_prompts.md and check_sales_copy.md (both eval_classes: writing) were loaded but produce zero applicable rules for this surface: the file contains no fenced **Prompt** blocks (check_prompts.md's entire trigger condition) and is not buyer-facing copy (check_sales_copy.md's entire trigger condition). Omitted from rules_evaluated rather than filing ~50 blanket N/A rows, matching the shape of the prior same-file writing instance (dccde3d).",
-    "Out-of-lane observation, not filed as a writing-class finding: the new '## Optional challenges' header is not one of the canonical module-file-shape section names (curriculum/CLAUDE.md § Module File Shape), and commit db02377's message ('Six modules get their optional side quests') suggests the same header landed across multiple AE101 modules in one sweep. Whether it should join the canonical list, or whether six modules now share a header this compendium doesn't name, is a module-shape/pedagogy-class question, not a writing-class rule violation — check_student_facing.md §17 was evaluated against the header's verb-vs-noun form and passed (see rules_evaluated) on its own terms.",
-    "check_writing.md §11's 2026-08-15 amendment (prereads/links exempt from the attribution cap) was applied to this file's Klaassen (74, 78), Shumer (57), and Pocock (58) mentions; the prior instance for this same file had filed this rule REVISE under the pre-amendment text. This re-fire supersedes that finding as PASS."
-  ]
+  "blocking_findings_count": 2,
+  "todos_count": 0
 }

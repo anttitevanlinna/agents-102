@@ -1,41 +1,159 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/prework.md",
-  "body_sha": "0bbf18802b35131fb66998be52054804894d8fd431d60de960afe598978c5517",
+  "body_sha": "89d99307aaf4980cde64b121117fdd6ee4ec09802e52ebda6bbc5808d448661b",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "M0 prework — not on the mood arc (mood arc opens at M1: joyful creation). Prework is almost entirely SETUP/LAUNCH beat (repo pick, session open, tarball fetch, extract+install, arrival hand-off, optional pre-read), mood-exempt per check_strategy_tie_in §1. Step 5 (pick a trivial bug + confirm readiness) is the sole TEACHING beat. Post-reorder (2026-08-13), the file's last beat is `## Bring to Module 1`, ending on the M1 opening question rather than on the pre-read pointer.",
+  "module_mood_contract": "M0 prework — not on the mood arc (mood arc opens at M1: joyful creation, per strategy doc §Mood arc). Prework is almost entirely SETUP/LAUNCH beat, mood-exempt per check_strategy_tie_in §1. Step 5 (pick a trivial bug + confirm readiness) is the sole TEACHING beat.",
   "trace_status": "regenerated",
+  "trace_regeneration_note": "content_sha at trace generation (2026-08-13) was ecd55f46...; current body_sha is afefa0e0.... File moved through 3 commits since (dd08aa2, 62f38f6, dccde3d — all subtractive trims + one cosmetic link-format change + the M1 opening-question wording swap, plus a maintainer-block-only edit). Regenerated the 5 changed phases (intro, '1. Pick THE repo', '2. Open a Claude Code session', '5. Pick a trivial bug', 'Bring to Module 1'); carried forward the 4 byte-identical phases ('What to bring', '3. Get the content folder', '4. Extract the bundle', 'Pre-read before Module 1') unchanged, per-section sha recomputed for all 9 (own split method, verified against current file with a Python script; not compared to the prior cache's hash values, which used an unrecovered split convention — full re-derivation was cheaper and equally valid than reverse-engineering the old method).",
   "rules_evaluated": [
-    { "compendium": "check_lectures.md", "rule_index": 1, "rule_lead": "Meta-frame lectures = closers, not openers.", "verdict": "N/A", "evidence": "Compendium frontmatter: 'Fire when writing or placing a lecture.' `curriculum/trainings/agentic-engineering-101/prework.md` is the M0 prework page, not an authored lecture (its `## Pre-read before Module 1` section points to an external blog post, Willison's 'Vibe engineering', it does not author lecture content). No meta-frame lecture placement decision exists in this file to evaluate.", "fix_hint": null, "blocking": false },
-    { "compendium": "check_lectures.md", "rule_index": 2, "rule_lead": "Minimal lecturing before contrast-mood exercises.", "verdict": "N/A", "evidence": "No pre-exercise lecture in this file; prework precedes M1, not a contrast-mood module's exercise set.", "fix_hint": null, "blocking": false },
-    { "compendium": "check_lectures.md", "rule_index": 3, "rule_lead": "No cross-module sequencing in lecture bodies.", "verdict": "N/A", "evidence": "grep -n 'Module 1' curriculum/trainings/agentic-engineering-101/prework.md hits lines 1 ('# Prework: before Module 1'), 5, 7, 34, 60, 74, 78, 80, 82, 84, 86 — cross-module refs are dense, but this rule scopes to LECTURE bodies specifically ('lectures teach, module files sequence'); prework is the module-adjacent front page, exactly the kind of file this rule says sequencing belongs IN, not a lecture body it should be moved OUT of.", "fix_hint": null, "blocking": false },
-    { "compendium": "check_lectures.md", "rule_index": 4, "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.", "verdict": "N/A", "evidence": "The rule targets conceptual/claim headers ('the header still names the ONE thing the student walks away holding'). Prework's `##` headers are procedural task labels for a numbered checklist ('1. Pick THE repo', '2. Open a Claude Code session in that repo', '3. Get the content folder onto your laptop', '4. Extract the bundle and install the curated skills', '5. Pick a trivial bug and confirm Module 1 readiness' — grep -n '^## ' confirms these five plus 'What to bring', 'Pre-read before Module 1', 'Bring to Module 1'), not conceptual claims a squint/truth test evaluates. Header-as-slide legibility for THIS file belongs to check_slides.md, owned by the slides class, not story — flagged in notes, not scored here.", "fix_hint": null, "blocking": false },
-    { "compendium": "check_lectures.md", "rule_index": 5, "rule_lead": "A slide's BODY is size-bounded, not just its header.", "verdict": "N/A", "evidence": "Same frontmatter scope as rules 1-4 ('Fire when writing or placing a lecture'); prework is not a lecture. Per-slide word-count/bullet-count enforcement for this file is check_slides.md's lane (slides class), not story's.", "fix_hint": null, "blocking": false },
-    { "compendium": "check_pedagogy.md", "rule_index": 27, "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.", "verdict": "PASS", "evidence": "grep -n -i 'discuss\\|share\\|compare\\|neighbor\\|the room\\|pair up' curriculum/trainings/agentic-engineering-101/prework.md returns no matches. Every sentence is addressed to the individual student and the work (pick a repo, open a session, fetch a bundle, pick a bug) — no authored conversation/pause/comparison cues, and none of the file's carve-outs (Connections-opener room-harvest, human-round mode-cue, room-may-be-named) are invoked, so none are owed an accept-note.", "fix_hint": null, "blocking": true },
-    { "compendium": "check_pedagogy.md", "rule_index": 16, "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.", "verdict": "PASS", "evidence": "Harm check: the rule guards against a speed-runner who skips body prose and therefore never encounters the pedagogy-load-bearing move, because it was narrated only in prose instead of enacted in the fence they paste. Read `curriculum/prompts/ae101-prework-one-at-a-time.md` (full file) — the actual mechanism ('Use the AskUserQuestion tool for speeding up screening... One candidate at a time.') is IN the fence, not narrated only in body. Body lines 64-68 ('push back if it dumps all four criteria at once... If Claude's screening feels like everything-at-once, ask Claude to use the AskUserQuestion tool...') only tell the STUDENT when to reach for the fence — this matches the explicit carve-out: 'optional push-backs / refinements... can live in body.' The primary screening move (`{{prompt:ae101-prework-screen-and-ready}}`) is also fenced. Harm (a speed-runner silently missing the forcing function) is not present: the fence carries the mechanism regardless of whether the body sentence was read.", "fix_hint": "Non-blocking: lines 64 and 68 both narrate the same trigger condition ('dumps all four criteria at once' / 'feels like everything-at-once') — minor redundancy, not a rule-16 violation, but a sentence could be cut without losing the pointer to the fence.", "blocking": true },
-    { "compendium": "check_strategy_tie_in.md", "rule_index": 1, "rule_lead": "Mood contract named.", "verdict": "PASS", "evidence": "Sim trace (all 3 personas, curriculum/evals/sim-cache/ae101--module--prework.persona.json): 8 setup/transition beats scored mood-exempt (null, correctly — each compressible to a parenthetical per the diagnostic: 'set cleanupPeriodDays', 'open a session', 'pick a repo', 'fetch the tarball', 'extract + install', 'note the pre-read', 'close the session'). The one teaching beat (Step 5, bug-screen + readiness) scores 8/7/7 across the three personas — no beat below 7, mood floor holds.", "fix_hint": null, "blocking": true },
-    { "compendium": "check_strategy_tie_in.md", "rule_index": 2, "rule_lead": "Epistemic mood ≠ punitive mood.", "verdict": "PASS", "evidence": "Line 64 'push back if it dumps all four criteria at once' is a neutral behavioral cue, not shame-framed. Line 84 'Come to Module 1 without one and you'll be scrambling for one while the exercise is already fixing bugs. Your call.' names a natural consequence and hands agency back with 'Your call' rather than framing the student as having done wrong — matches epistemic register, not punitive.", "fix_hint": null, "blocking": false },
-    { "compendium": "check_strategy_tie_in.md", "rule_index": 3, "rule_lead": "Lead with discipline, not failure mode.", "verdict": "N/A", "evidence": "Rule fires on Big Idea / discipline-naming titles. Prework carries no Big Idea heading — grep -n '^## ' curriculum/trainings/agentic-engineering-101/prework.md shows only procedural step titles ('1. Pick THE repo' etc.), none discipline- or failure-mode-named, so there is no title-level judgment call this rule owns here.", "fix_hint": null, "blocking": false },
-    { "compendium": "check_strategy_tie_in.md", "rule_index": 4, "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).", "verdict": "PASS", "evidence": "Pulled `content-strategy-agentic-engineering-101.md` via bosser-strategy: 'Prework has done Claude Code install + repo-choice + bug-surfacing. M1 starts in the chat with the repo open; Ex1 is a read-and-introspect move...' Prework's five numbered steps are exactly install (steps 3-4), repo-choice (step 1), session-open (step 2), bug-surfacing (step 5) — no reading, introspecting, or fixing appears anywhere in the file (grep -n -i 'introspect\\|/context\\|orient' returns no hits), so M1 Ex1's opening teaching moment ('Claude reads the repo; you interrogate Claude's own read') is not front-run. Mood: M1's arc opener is 'joyful creation — it works, on my repo'; prework's own mood-exempt setup + one 7-8/10 rehearsal beat doesn't spend that joy — the bug is picked, not fixed. Module-to-module arc: line 82 'Module 1 opens fresh in the same repo' plus the closing M1 opening-question hand-off (lines 86) matches the strategy doc's 'M1 starts in the chat with the repo open.' Post-reorder, this hand-off is now the file's literal last beat, strengthening rather than weakening the arc.", "fix_hint": null, "blocking": true },
-    { "compendium": "check_strategy_tie_in.md", "rule_index": 5, "rule_lead": "Strategic themes recur in Key Concepts.", "verdict": "N/A", "evidence": "Prework has no `## Key Concepts` section (grep -n '^## Key Concepts' returns no match) — this rule governs a section that doesn't exist on this file.", "fix_hint": null, "blocking": false },
-    { "compendium": "check_strategy_tie_in.md", "rule_index": 6, "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.", "verdict": "N/A", "evidence": "Same as §5 — no Key Concepts section present.", "fix_hint": null, "blocking": false },
-    { "compendium": "check_strategy_tie_in.md", "rule_index": 7, "rule_lead": "What You'll Learn shape — capability register, not syllabus.", "verdict": "N/A", "evidence": "Prework has no `## What You'll Learn` section (grep -n '^## What' returns no match) — this rule governs a section that doesn't exist on this file.", "fix_hint": null, "blocking": false }
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 1,
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
+      "verdict": "N/A",
+      "evidence": "prework.md is a module/prework page under curriculum/trainings/agentic-engineering-101/, not a lecture file. No meta-frame naming-a-pattern content present — the file is setup instructions + one screening exercise fence.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 2,
+      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+      "verdict": "N/A",
+      "evidence": "No contrast-mood exercise sits inside prework (that pattern belongs to M5). Prework carries zero lecture content — no framework-mapping, no named-practitioner-term teaching prose.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 3,
+      "rule_lead": "No cross-module sequencing in lecture bodies.",
+      "verdict": "N/A",
+      "evidence": "Rule scopes to lecture bodies specifically ('lectures teach, module files sequence'). prework.md is itself a module-tier file where forward-references to Module 1 are the expected shape ('Bring to Module 1', 'The opening question at Module 1'), not a violation of a lecture-only constraint.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 4,
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "verdict": "N/A",
+      "evidence": "Rule is check_lectures-scoped (lecture header quality). prework's `##` headers ('1. Pick THE repo', '5. Pick a trivial bug and confirm Module 1 readiness') are numbered-step headers on a module page, not lecture headers — that surface is check_slides.md's lane, evaluated separately by the slides class, not storytelling under check_lectures.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 5,
+      "rule_lead": "A slide's BODY is size-bounded, not just its header.",
+      "verdict": "N/A",
+      "evidence": "Same scope note as rule 4 — slide-body word/bullet ceiling for a module page is check_slides.md's rule surface, not check_lectures' (which is lecture-specific per its own frontmatter description 'Fire when writing or placing a lecture').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go — forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "Section 5's body prose reads: 'When Claude gets to the bug screen, push back if it dumps all four criteria at once. One bug at a time, then the next.' This narrates a conditional failure mode, not a mandatory scripted count — it fires only if Claude actually dumps all four. The corrective action itself is a fenced prompt ({{prompt:ae101-prework-one-at-a-time}}, rendered as 'Use the AskUserQuestion tool for speeding up screening and making suggestions. One candidate at a time.'). This matches rule 16's own carve-out verbatim: 'mandatory teaching prompts stay fenced; optional push-backs... can live in body.' The primary screening move ({{prompt:ae101-prework-screen-and-ready}}) is itself fully fenced. Harm the rule guards against (a forcing function that only 'happens' if the student notices it in prose, with no fenced enactment) is absent — the enactment IS fenced; the body only narrates when to reach for it.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room. Body does NOT author conversations.",
+      "verdict": "PASS",
+      "evidence": "Grepped the full body (source and expanded view) for room-management tells: no 'discuss with the person next to you', no 'share with your neighbor', no 'tell the room', no authored pause cue. Every sentence in prework is about the WORK (pick a repo, open a session, download a tarball, pick a bug) — none is about pacing or comparing with peers. The closest candidate is 'The opening question at Module 1... Bring one' (Bring to Module 1 section) — this names a question the student brings TO M1's room beat, it does not itself author a room conversation inside prework's own text; the actual room-harvest happens in getting-going.md's Connections opener, outside this file's scope.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named; mood lands per phase (8+/10 teaching beats, 7 = facilitator-premium, <7 = REVISE); mood-floor carve-out for setup/launch beats.",
+      "verdict": "PASS",
+      "evidence": "Trace (curriculum/evals/sim-cache/ae101--module--prework.persona.json) correctly classifies 8 of 9 phases as SETUP/LAUNCH (mood_score: null — repo pick, session open, tarball fetch, extract+install, pre-read pointer, closing hand-off) and exactly 1 as TEACHING (phase 7, 'Pick a trivial bug and confirm M1 readiness'). Teaching-beat mood scores across the 3-persona triangle: mid_layer_competent 8, opinionated_senior 7, fast_operator 7. Close-scores: 8, 7, 7. No beat scores below 7 anywhere in the trace — mood floor holds. The two 7s are facilitator-premium signatures per the rule's own carve-out language, not REVISEs; each carries a named 'what would take it to 8' in its mood_note (opinionated_senior: soften 'push back if' to 'if you want it'; fast_operator: fold the recognize-the-pattern move into the fenced prompt so it fires even on a clean Claude run).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood, not punitive mood.",
+      "verdict": "PASS",
+      "evidence": "Closing section reads: 'Come to Module 1 without one and you'll be scrambling for one... Your call.' and 'Doesn't have to be big. No trick? Bring a moment Claude Code frustrated you.' Both frame absence-of-preparation as a live open question ('your call', an acceptable fallback exists), never as fault or shame. Step 5's 'push back if it dumps all four criteria at once' names Claude's likely failure mode, not the student's — the student is coached to correct the agent, not blamed for a mistake of their own.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "PASS",
+      "evidence": "Prework carries no Big Idea section (that structure belongs to M1-M6 module files) and its own section headers are neutral/procedural ('What to bring', 'Pick THE repo', 'Open a Claude Code session'), none titled after a failure mode (e.g. no 'Avoiding rubber-stamping' or similar). The one place a failure mode is named ('push back if it dumps all four criteria at once') is inline instructional prose describing a corrective move, not a section title or framing device — consistent with the rule's target (title-level framing), not a violation of it.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity — consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict.",
+      "verdict": "PASS",
+      "evidence": "Front-run check: strategy doc states 'Orientation is short, not a setup ramp. Prework has done Claude Code install + repo-choice + bug-surfacing. M1 starts in the chat with the repo open; Ex1 is a read-and-introspect move, not a connector-wiring step' — prework.md's scope matches exactly (repo pick, session open, content extraction, bug pick + readiness check) and teaches none of M1's Ex1-Ex4 content, no plan-mode instruction (M1 explicitly runs no plan mode; prework doesn't mention it either way). Module-to-module arc: prework's close ('Bring to Module 1... The opening question at Module 1: *what's your favourite Claude Code trick that not many people know?*') is verified byte-for-byte consistent with the live question wording in curriculum/trainings/agentic-engineering-101/getting-going.md:38 ('what's your favourite Claude Code trick that not many people know?') and trainer-modules.md:101 — confirmed via grep across all three files, all three match. Mood-doesn't-resolve-early: prework sits below the mood arc entirely (arc opens at M1: joyful creation per strategy doc §Mood arc), so there is no M1+ teaching moment for prework to pre-empt. The transcript-retention line dropped in commit dd08aa2 is also strategy-consistent, not a regression — strategy doc line 644 confirms cleanupPeriodDays is now set by the pre-engagement contract before training starts, so the student-facing ask in prework was a duplicate, correctly removed rather than orphaning a still-needed instruction.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts (≥2-3 module-specific theme instances).",
+      "verdict": "N/A",
+      "evidence": "prework.md carries no `## Key Concepts` heading — that section belongs to M1-M6 module files where concepts emerge from an exercise. Prework has no exercise to emerge concepts from.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": "No `## Key Concepts` section present in prework.md (same basis as rule 5).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": "No `## What You'll Learn` section present in prework.md. The file has a 'What to bring' section, which is a different (materials-checklist) structure, not the anticipatory-capability section this rule governs.",
+      "fix_hint": null,
+      "blocking": false
+    }
   ],
+  "teaching_moment_lands": {
+    "verdict_note": "The sole teaching beat (Step 5, bug screening + push-back rehearsal) lands reliably for 2 of 3 personas (mid_layer_competent, opinionated_senior — both read the body-prose warning and the fenced escape-hatch fires as designed). The fast_operator persona's trace explicitly flags it as fragile under a body-skipping read: the rehearsal only fires if BOTH the body sentence is read AND Claude happens to dump all four criteria in one message on that run — neither condition is forced by the prompt fence itself. This is not scored as a REVISE (mood floor still met at 7, artifact still complete under all three reads) but is a genuine fragility the trace's under_scaffolded_phases explicitly names. TODO, not blocking: consider folding the recognize-the-pattern cue into the primary fenced prompt itself so the rehearsal survives a skim and a clean Claude run alike.",
+    "no_rule_index": true
+  },
   "mood_summary": {
     "phase_scores": [null, null, null, null, null, null, 8, null, null],
+    "phase_scores_by_persona": {
+      "mid_layer_competent": [null, null, null, null, null, null, 8, null, null],
+      "opinionated_senior": [null, null, null, null, null, null, 7, null, null],
+      "fast_operator": [null, null, null, null, null, null, 7, null, null]
+    },
     "close_score": 8,
+    "close_scores_by_persona": { "mid_layer_competent": 8, "opinionated_senior": 7, "fast_operator": 7 },
     "any_below_8": true,
     "stealing_the_mood": [
-      "opinionated_senior, phase 7 (bug-screen rehearsal): 7/10 — reads as slightly over-narrated for a persona who'd have pushed back reflexively without the body naming the trigger; fix would frame the recovery prompt as available ('if you want it') rather than prescribed ('push back if').",
-      "fast_operator, phase 7 (bug-screen rehearsal): 7/10 — the rehearsal's forcing function is contingent on BOTH the body sentence being read AND Claude dumping all four criteria; on a clean screening run this reader never exercises the push-back move at all, though the visible artifact is identical."
+      "opinionated_senior, phase 7 (bug screen): 7/10, facilitator-premium not REVISE — 'push back if' reads slightly prescriptive to a reader who didn't need it spelled out.",
+      "fast_operator, phase 7 (bug screen): 7/10, facilitator-premium not REVISE — the rehearsal's forcing function didn't fire on this run because the reader skipped the body sentence and Claude screened cleanly."
     ]
   },
-  "notes": [
-    "Teaching-moment-lands check (no check_strategy_tie_in rule_index, per the completeness contract): Step 5's push-back rehearsal reliably delivers the SAME visible artifact (a picked bug, confirmed readiness) across all three personas, but the underlying skill practice is fragile for the fast_operator persona — the rehearsal only fires if Claude happens to dump all four candidate criteria at once AND the reader reads the triggering body sentence. Not a REVISE (mood floor is still met at 7, and rule 16's carve-out is satisfied — the mechanism itself lives in the fence), but the artifact can look identical whether or not the skill was actually practiced. Flagged for the pedagogy class as a possible strengthen-the-fence candidate (e.g. have the screen-and-ready prompt self-report whether it paced or dumped, so the tell surfaces even on a clean run) — outside story's lane to prescribe.",
-    "check_lectures §4/§5 header/body-size legibility for this file's `##`-chunked slide rendering is check_slides.md's lane (slides class owns it), not story's — noted here per rule 5b, not scored.",
-    "Reorder verified directly: grep -n '^## ' shows `## Pre-read before Module 1` (line 74) now precedes `## Bring to Module 1` (line 80), matching the queue's stated context. The sim trace was regenerated to reflect the new phase order and closing beat; two phase shas ('2. Open a Claude Code session in that repo', '4. Extract the bundle and install the curated skills') hashed byte-identical to the prior 2026-08-12 cache and were carried forward, all others recomputed."
-  ],
   "blocking_findings_count": 0,
-  "todos_count": 1
+  "todos_count": 2
 }

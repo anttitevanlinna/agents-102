@@ -1,11 +1,12 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md",
-  "body_sha": "d04b9e499b1369d1591161f4d2c7b90404153b16293a68b6d1b76a49ccb64969",
+  "body_sha": "837e7a1a2a51c469c66b56ad5386cafe0cb09802ba6d6e1ddc4b1c1b7715300f",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "grounded competence — \"I can feel when a plan is good before approving it, and I know the move is two reads, not one.\"",
   "trace_status": "regenerated",
+  "regeneration_reason": "content_sha in the cached trace (7692c2df...) did not match the file's current sha (85cf47db...); 20 commits landed on this file since the prior story audit's diff base (022c684), including a Key Concepts rewrite, a lecture-order swap in 'Save the rule if it earned itself', a new '## Optional challenges' section, a new '## Pre-reads before Module 4' variant, and a tightened '## Next' handoff sentence. Whole file is single-phase (no ## Phase headers). Diffed against 022c684 (`git diff 022c684 -- <file>`, run this session) to scope the re-walk to what actually changed.",
   "personas": [
     {
       "name": "mid_layer_competent",
@@ -19,7 +20,7 @@
       "mood_score": 7,
       "close_score": 7,
       "confusions": [
-        "Key Concepts line 65 ('You don't have to execute a plan to know it's good.') is read as the module's stated answer to 'why not execute', arriving mid-module as assertion rather than earned proof; the persona's actual resolution comes later, from the retro's own evidence question ('what did grill surface that push-back didn't? would it have mattered?'), not from the bolded line. Unchanged from the prior pass — the rewritten ## Next paragraph does not touch this beat."
+        "Key Concepts' rewritten line ('You don't have to execute a plan to know it's good. The skill is old; only the surface is new.') is still read as the module's stated answer to 'why not execute', arriving mid-module as assertion rather than earned proof; the persona's actual resolution comes later, from the retro's own evidence question, not from this line. Same shape as the prior audited pass under the old wording ('...Making it good IS the work.') — the Key Concepts rewrite changed the sentence, not the sequencing gap it sits in."
       ],
       "verdict": "PASS (facilitator-premium, 7/10 — see check_pedagogy.md rule 16/27 note below)"
     },
@@ -28,20 +29,20 @@
       "mood_score": 8,
       "close_score": 8,
       "confusions": [
-        "First-read friction between the core loop's own discipline ('approve, stop, no execution') and the module's own length past that point (extract-the-task-shaping-rule, the optional CLAUDE.local.md integration, 'how instructions grow') — resolved once the optional/conditional framing on both closers registers. Unchanged from the prior pass."
+        "First-read friction between the core loop's own discipline ('approve, stop, no execution') and the module's own length past that point (extract-the-task-shaping-rule, the optional CLAUDE.local.md integration, 'How instructions grow', plus the new optional-challenges/pre-reads tail) — resolved once the optional/conditional framing on all of them registers."
       ],
       "verdict": "PASS"
     }
   ],
   "personas_disagree": true,
-  "disagreement_note": "Same disagreement shape as the prior audited pass, re-verified against the rewritten close. The opinionated senior still scores 7 against the other two personas' 9/8 — the gap is about WHERE 'approve, stop, no execution' gets earned (Key Concepts line 65, mid-module) versus proven (the retro's evidence question, end of the core exercise), not about the rewritten ## Next paragraph, which sits after both beats and does not touch the objection. This instance's diff-region is line 69 only (the M2->M3 handoff sentence); all three personas were re-walked against the new sentence specifically and none flagged it as a new confusion or mood cost — see each persona's phase-1 persona_action for the direct read.",
+  "disagreement_note": "Same disagreement shape as the last two audited passes: the opinionated senior scores 7 against the other two personas' 9/8, over WHERE the 'approve, stop, no execution' claim gets earned (Key Concepts, mid-module) versus proven (the retro's own evidence question, end of the core exercise). This pass's diff (Key Concepts rewrite, lecture reorder, new Optional-challenges/Pre-reads-M4 sections, tightened Next handoff) does not touch that sequencing gap — the assertion moved words but not position, and none of the newly added prose (optional challenges, M4 pre-read) sits between the assertion and the retro. Not treated as a new finding; not blocking (7, not <7).",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Lines 31–39 (verified via grep -n '^## \\|^\\[Lecture' on the file) place the arc-orientation lecture (\"The whole map\") first, the plan-quality vocabulary lecture mid-module before the push-back exercise, then the two meta-frame closers (\"Where the rule could live\", \"How instructions grow\") after the exercises that earned them. This pass's diff (`git diff HEAD~5..HEAD -- <file>`, run this session) touches only line 69 (## Next's first sentence) — lecture placement is untouched.",
+      "evidence": "Current body order (verified by reading the raw file this session, lines 24-54): 'The whole map' (arc orientation) and 'When a plan is good' (vocabulary) lead, both exercises follow, then BOTH meta-frame closers — 'Where the rule could live' and 'How instructions grow' — now sit together after the exercises AND after the Save-the-rule prompts. This is a placement IMPROVEMENT over the prior audited version: `git diff 022c684` shows 'Where the rule could live' moved from between the two exercises (opener-adjacent) to after the Save-the-rule section's prompts (true closer position), matching 'How instructions grow' which was already there.",
       "fix_hint": null,
       "blocking": false
     },
@@ -50,7 +51,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "M2's contract is grounded competence, not an M5-style learn-through-contrast mood this rule gates.",
+      "evidence": "M2's contract is grounded competence (strategy doc line 309, read this session), not an M5-style contrast-mood this rule gates.",
       "fix_hint": null,
       "blocking": false
     },
@@ -59,7 +60,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Target is a module file, not a lecture body. The changed sentence (line 69, 'At M3 you point the same move at a feature you're shipping...') correctly lives in ## Next, the home this rule permits; it does not appear inside a linked lecture file.",
+      "evidence": "Target is a module file, not a lecture body. The module's own cross-module sequencing ('At M3 you point the same move...', line 87) lives in `## Next`, exactly the home this rule reserves for such sequencing — it is not inside a linked lecture file's body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -68,7 +69,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
-      "evidence": "The target's `##` headers (Big Idea, Prework, What You'll Learn, Start here, Save the rule if it earned itself, Key Concepts, Next) are module sequencing structure, not authored slide/lecture headers this rule governs. The `## Next` header itself is unchanged by this pass's diff.",
+      "evidence": "The target's `##` headers (Big Idea, Prework, What You'll Learn, Start here, Save the rule if it earned itself, Key Concepts, Optional challenges, Pre-reads before Module 3/4, Next) are module sequencing structure rendered by the module template, not authored slide/lecture headers this rule governs — that surface belongs to the slides class (check_slides.md), staying in my lane per the dispatch preamble.",
       "fix_hint": null,
       "blocking": false
     },
@@ -77,7 +78,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "N/A",
-      "evidence": "The target contains no authored slide bodies of its own; it links to separate lecture and exercise files. The `## Next` slide's rewritten paragraph (line 69, one sentence, ~40 words) is well under the 210-word/6-bullet ceiling even if scored, and the whole slide (lines 67–87, flag-gated) is comparable in length to the version it replaced.",
+      "evidence": "Same reasoning as §4 — module-level `##` sections are not authored slide bodies this rule governs; the file links to separate lecture/exercise files that carry their own slide sizing. The new '## Optional challenges' section (4 bullets, ~90 words) and '## Pre-reads before Module 4' (2 short paragraphs) would both sit comfortably under the 210-word/6-bullet ceiling even if scored, but sizing verdicts belong to the slides class.",
       "fix_hint": null,
       "blocking": false
     },
@@ -86,7 +87,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The branch-walk machinery for the plan-mode read stays fenced in `push-back-on-the-plan`'s prompts; the story-ticket read keeps its forcing function in `extract-the-task-shaping-rule`'s fence. The changed sentence (line 69) is pure forward-framing prose ('you point the same move at a feature you're shipping...') — it names what M3 will ask the student to do without performing any part of the move itself (no walk-down, no push-back, no ADR-writing happens in this sentence). Harm this rule guards against — body prose performing the move so a speed-runner can skip the fenced prompt and still get credit — is absent: the sentence previews, it doesn't enact.",
+      "evidence": "The two new body sections since the last audit — '## Optional challenges' (bully-the-architecture, DDD-in-plan-mode, cloud-session-plus-mobile, internet-research-system) and the M3/M4 pre-reads — are explicitly optional reading/challenge prose, the carve-out this rule states ('optional push-backs / refinements / if you want to take this further can live in body'). Neither performs any part of the core push-back/branch-walk forcing function, which stays fenced in `push-back-on-the-plan` and `extract-the-task-shaping-rule`'s prompts, unchanged by this diff. Harm the rule guards against — a speed-runner skipping the fence and still getting credit because body prose already did the move — is absent: none of the new prose enacts a push-back or a branch-walk, it only offers extra optional work.",
       "fix_hint": null,
       "blocking": false
     },
@@ -95,7 +96,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "The rewritten sentence (line 69) is about WORK ('curated reads that walk the branches you can't see, and the call they surface written down in your repo') — artifact and next action — with no pause/pair/share cue, no 'discuss with...' construction, no room-management language. Grep `git diff HEAD~5..HEAD -- <file>` confirms the diff is scoped to this one sentence; no other body text changed.",
+      "evidence": "Read every sentence added or changed since 022c684 (`git diff 022c684 -- <file>`, run this session): the Key Concepts rewrite, the Optional-challenges bullets, the M3/M4 pre-read paragraphs, and the tightened Next handoff are all about WORK (a plan artifact, a rule file, an optional challenge, a reading assignment) — none contains a pause cue, a pair/share instruction, or a 'discuss with...' construction. No new room-management language introduced.",
       "fix_hint": null,
       "blocking": false
     },
@@ -104,7 +105,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Strategy doc (`content-strategy-agentic-engineering-101.md` line 309, read this session) states the M2 mood as \"grounded competence — I can feel when a plan is good before approving it, and I know the move is two reads, not one,\" matching the maintainer block's mood-target line verbatim. All three re-walked personas land at or above the 7-facilitator-premium floor (9, 7, 8) with no beat below 7; the rewritten close sentence does not move any persona's mood_score from the prior audited pass.",
+      "evidence": "Strategy doc (`content-strategy-agentic-engineering-101.md` line 309, read this session) states M2's mood as \"grounded competence — I can feel when a plan is good before approving it, and I know the move is two reads, not one,\" matching the maintainer block's Mood target line verbatim. All three re-walked personas land at or above the 7-facilitator-premium floor (9, 7, 8), no beat below 7.",
       "fix_hint": null,
       "blocking": false
     },
@@ -122,7 +123,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Line 6's Big Idea (\"The first plan is plausible. Plausible isn't good enough, and you are the one who can tell the difference.\") leads with the discipline, not a failure word. Unaffected by this pass's diff, which touches only line 69.",
+      "evidence": "Big Idea (line 6, unchanged by this diff) leads with discipline: \"The first plan is plausible. Plausible isn't good enough, and you are the one who can tell the difference.\" The rewritten Key Concepts bullets also lead with discipline/positive framing (\"Structure is persuasive\", \"A human read and an agent's walk-down catch different misses\", \"The skill is old; only the surface is new\") — none opens on a failure word.",
       "fix_hint": null,
       "blocking": false
     },
@@ -131,7 +132,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "The rewritten ## Next sentence (line 69, maintainer-directed 2026-08-12) is a strict fidelity improvement over the retired text, verified against `content-strategy-agentic-engineering-101.md` lines 245 and 555 (read this session): 'curated reads that walk the branches you can't see' matches the strategy doc's 'invoke curated access-control analysis skill... invoke curated STRIDE skill' (line 245), and 'the call they surface written down in your repo' matches 'pick one hardening decision → ADR' (line 245). The RETIRED sentence's phrase 'the judges and gates you ship to your team kit' is what the strategy doc and M3's own maintainer block (`earn-the-trust.md`, Watch-fors: 'Team-kit home unresolved... Promotion to a team home... is a later human conversation, not an M3 forcing function') both disclaim as NOT something M2's push-back/branch-walk pattern feeds directly at M3 — the old sentence over-promised infrastructure delivery; the new one promises only a repo-local written decision, which is what actually happens. Front-run check: the new sentence names no STRIDE/access-control/ADR jargon and does not spoil M3's security-tools rick-roll easter egg (`earn-the-trust.md` maintainer block) — it previews shape ('curated reads', 'written down') without naming mechanism. Module-to-module arc: hands off cleanly to M3's opener without resolving M3's teaching moment early; all three re-walked personas confirm this reading. Notably, the new sentence's phrase 'walk the branches you can't see' echoes this same file's own maintainer block (line 89, quoting the retired Big Idea text: 'the agent starts walking the branches you may not see') — a deliberate internal callback that ties M2's own vocabulary to the M3 pointer, strengthening rather than diluting fidelity.",
+      "evidence": "The tightened `## Next` sentence (line 87: \"At M3 you point the same move at a feature you're shipping, and the call it surfaces gets written down where a teammate finds it. Note the plan file path on your way out: M3 reads it, against a task with an external or user-facing surface.\") is a consolidation of what the prior audited pass already verified as fidelity-correct (matches strategy doc line 245's 'M3 starts with a feature you're shipping, not a bot you're building' and the M2->M3 handoff contract) — this pass's edit (commit 'the closing arc stops saying the same thing four ways') removes duplicated phrasing across the flag variants without changing the claim. No STRIDE/ADR/access-control jargon is named, so M3's teaching moment is not front-run. The new '## Optional challenges' and '## Pre-reads before Module 4' sections were checked against the strategy doc's named forward teaching moments (M6 worktrees callout, line 491; M3 security frame, line 309ff): the cloud-session-plus-mobile challenge is a fresh side quest with its own source-freshness stamp (maintainer block, checked 2026-08-15), not the worktrees moment reserved for M6, and the M4 pre-read (Willison's *Designing agentic loops*) matches the delegated-stamp pattern already used for the M3 pre-read — neither front-runs a named downstream reveal. The Key Concepts closing bullet naming double-loop learning (Argyris) sits AFTER the 'How instructions grow' lecture in reading order (verified: Key Concepts follows the Save-the-rule section, which contains that lecture), so it recaps rather than pre-empts the lecture's own naming of the concept.",
       "fix_hint": null,
       "blocking": false
     }
@@ -141,9 +142,14 @@
     "close_score": 9,
     "any_below_8": true,
     "stealing_the_mood": [
-      "opinionated_senior close (7/10): the 'approve, stop, no execution' claim is read as asserted (Key Concepts line 65) before it is proven (retro's evidence question, Phase 6) — a sequencing gap, not a missing answer, and unrelated to this pass's ## Next rewrite. See disagreement_note."
+      "opinionated_senior close (7/10): the 'approve, stop, no execution' claim is still read as asserted (Key Concepts) before it is proven (retro's evidence question, later in the exercise) — a sequencing gap unchanged by this pass's Key Concepts rewrite. Unaffected by this diff; not a new finding."
     ]
   },
+  "notes": [
+    "check_workshop.md: not fired. This file has no beat where the output belongs to a group rather than a participant (push-back, branch-walk, and rule-extraction are all individual artifacts); the file is not workshop-shaped, so no rows filed against that compendium, per the template's owned-rule list.",
+    "check_prompts.md: not fired as story-owned rows. Storytelling's 'owns' list (per the judge template) does not name any check_prompts rule; prompt-shape concerns for {{prompt:push-back-on-the-plan-4}} and {{prompt:ae101-m2-integrate-branch}} belong to the writing/technical classes.",
+    "check_pedagogy.md rules 45 (leap test) and 47 (per-phase failure mode + escape hatch) are present and satisfied in the maintainer block (three falsifiable leap-test items; a 9-row failure-mode/escape-hatch table) but are not filed as rules_evaluated rows here — the story judge template's explicit 'Specific judgments storytelling owns' list does not name them, matching the prior audited instance's practice. Flagging here rather than silently, per the dispatch preamble's guidance to keep out-of-lane observations in notes."
+  ],
   "blocking_findings_count": 0,
   "todos_count": 1
 }

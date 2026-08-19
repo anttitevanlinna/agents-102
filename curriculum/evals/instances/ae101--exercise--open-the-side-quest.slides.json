@@ -1,10 +1,11 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/open-the-side-quest.md",
-  "verdict": "PASS",
+  "body_sha": "4284348e4ccf90a4415e58d84a0ac33655df155345fbf11031370551c36d8396",
+  "verdict": "REVISE",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "H1/lede: Two windows on one codebase", "lines": "1-9"},
+    {"index": 0, "heading": "H1/lede — Two windows on one codebase", "lines": "1-9"},
     {"index": 1, "heading": "Fork the side worktree from your security lane", "lines": "11-40"},
     {"index": 2, "heading": "Read back the worktree path", "lines": "42-44"},
     {"index": 3, "heading": "Open the quality lane in the new worktree", "lines": "46-70"},
@@ -15,10 +16,10 @@
       "compendium": "check_slides.md",
       "rule_index": 1,
       "rule_lead": "Referent resolution under a sequential deck read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "'a sibling worktree' (chunk 1 line 21) defines itself in-sentence, reused unproblematically at chunks 2-4. 'the second session' (chunk 2 line 44) resolves against chunk 0 line 7 ('open a second session there'). 'the sibling worktree directory Claude just named' (chunk 3 line 48) resolves against chunk 2's claim one chunk prior. 'this window'/'here' (chunk 3 line 56) resolve against chunk 3's own header. The one term with no in-file antecedent, 'the compound step' (chunk 3 line 56, 'back in the main lane where the compound step lives'), is arc-earned spine vocabulary, not a fresh forward-pointing referent: 'compound' is named and taught as a concrete move at M1 (getting-going.md 'the loop is orient -> fix -> compound -> close'; exercises/compound-and-close.md 'the compound step (plan -> work -> review -> compound, Kieran Klaassen's loop)'), reused at M2 (plan-mode-done-right.md), and reused again inside this same module at earn-the-trust.md's 'Sharpen the skill from evidence' section ('the compound runs here'). Per the carve-out, training-named artifacts earned in a prior module don't re-earn per file/slide. No other pronoun or demonstrative in any chunk lacks an in-chunk or prior-chunk antecedent.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "chunks_flagged": [3],
+      "evidence": "chunk 3 \"Open the quality lane in the new worktree\": line 56: \"the evidence-based sharpen runs there too, where the compound step lives.\" Neither \"the evidence-based sharpen\" nor \"the compound step\" is named anywhere earlier in this file or in the enclosing module's (earn-the-trust.md) signposting before this exercise's include point (the exercise sits under `## Start here`, first item; \"## Sharpen the skill from evidence\", the section that would earn both terms, appears LATER in the module body, after `Author your test-strategy skill`). Harm check: a reader hits two unresolved named things mid-sentence on the quality-lane orientation slide — this is the canonical \"before the three things get named\" forward-reference failure, not a proxy false-positive; the sentence cannot be parsed to a referent at this point in the deck.",
+      "fix_hint": "Either drop the forward mention (the mechanism is already stated plainly by \"the main lane reads it later\") or name what it's pointing at generically (\"a later step in this module\") instead of coining terms this slide hasn't earned.",
       "blocking": true
     },
     {
@@ -27,7 +28,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 3 line 56 ('the evidence-based sharpen runs later still, back in the main lane where the compound step lives') names no file by position; it locates a later beat by window and by claim (main lane, the compound step), not by 'the next exercise said' phrasing. Verified against earn-the-trust.md's actual sequencing: this exercise (module opener) precedes Map the access surface, Threat-model with STRIDE, Author your test-strategy skill, and the module-level 'Sharpen the skill from evidence' section runs after all four, back in m3-security. The one file-title link (chunk 1 line 21, Multi-session and Git survival guide) points at a real document location by title -- navigational-pointer carve-out. Chunk 4 line 75 ('Module 3's exercises name which window the work runs in') is a generic forward-looking claim, verified true against map-the-access-surface.md, threat-model-with-stride.md, and author-test-strategy-skill.md, each of which opens with its own Window: callout.",
+      "evidence": "Only cross-file pointer in body is chunk 1, line 21: \"The [Multi-session and Git survival guide](../trainings/agentic-engineering-101/reference/multi-session-git.md) carries the longer read.\" — named by title, not located by position (\"the longer read\" is a role description, not a page position). Matches the §2 navigational-pointer carve-out. No other file named by position anywhere in the body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -35,9 +36,9 @@
       "compendium": "check_slides.md",
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Chunk 3 line 48's backward pointer resolves against chunk 2, one chunk prior -- exists, in order. The two forward claims in chunk 3 line 56 were checked against the beats they promise: 'a separate step that revisits this window's scrollback' matches earn-the-trust.md's m3-quality scrollback-grab instruction inside 'Sharpen the skill from evidence'; 'the evidence-based sharpen ... where the compound step lives' matches that same section's prompt fence and its own 'the compound runs here' text. Both referenced beats exist in the module's current file set.",
+      "evidence": "No \"the X you did/saw/caught\" backward-beat construction appears anywhere in the body — this exercise opens Module 3 (\"## Start here\", first item) so it has nothing earlier in-module to backward-reference; \"What happened\" recap (chunk 4) only restates this same file's own prior chunks, which is rule 1's session-artifact/in-file territory, not a dead-beat callback.",
       "fix_hint": null,
       "blocking": true
     },
@@ -47,7 +48,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess/predict-before-reveal instruction anywhere in the body.",
+      "evidence": "No guess-before-reveal construction in the file — this exercise is procedural setup (fork worktree, open second session, arrange windows), no \"take a guess\" beat anywhere in the body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -57,7 +58,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 2 is the thinnest slide (one bullet) but carries a self-standing claim -- 'Claude reports the sibling worktree path. That path is where the second session opens.' -- not a bare wait-state bullet.",
+      "evidence": "Closest candidate is chunk 2 (\"Read back the worktree path\", lines 42-44), the file's shortest chunk: \"- Claude reports the sibling worktree path. That path is where the second session opens.\" It stays inside PASS because the bullet carries one self-standing claim (where the second session opens), not a bare wait-state fragment — it survives being read with no other chunk in view.",
       "fix_hint": null,
       "blocking": false
     },
@@ -67,7 +68,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "All four `##` headers are literally true of their chunk content: \"Fork the side worktree...\" (chunk 1) forks via the prompt; \"Read back the worktree path\" (chunk 2) is exactly that beat; \"Open the quality lane...\" (chunk 3) opens the second session; \"Set the two windows side by side\" (chunk 4) is the arrangement instruction plus its own recap. None contradicted by chunk body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -77,9 +78,9 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all sub-items across all 5 chunks: no 'Not X. Not Y. Z.' construction; no anaphora/epistrophe triples; no self-grading superlatives; no number-with-own-retraction; no abstraction-noun stacks; no verb triplets with an empty leg.",
+      "evidence": "Checked all five sub-items against every chunk: no \"Not X. Not Y. Z.\" construction; no anaphora/epistrophe triples; no self-grading superlatives (closest is chunk 0 line 9 \"two Claude Code sessions running side by side on one git history\" — a plain description, not a value-prop claim about usefulness, so it stays inside); no number-with-retraction pattern anywhere (no numeric claims in the file at all); no abstraction-noun stacks (vocabulary throughout is concrete: worktree, branch, window, session); no verb-triplet construction present to test.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -87,7 +88,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No surface-as-noun, firing, compendium, forcing function, beat, mood, or Connections-as-proper-noun in the body (grepped clean). 'The compound step' (chunk 3 line 56) reads as maintainer shorthand at first glance but is the training's own taught vocabulary, not repo-authoring dialect: students perform 'the compound step' themselves starting at M1 (compound-and-close.md); it is never used here as an authoring/process term about the curriculum itself. 'Main quest'/'side-quest'/'lane' are this exercise's own defined narrative device (established in its own chunk 0), meant for the student to use, not maintainer jargon.",
+      "evidence": "Scanned all chunks for repo/authorial vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections). None present — \"lane\" (main lane / side-quest lane) is this exercise's own defined game vocabulary, not repo-internal maintainer dialect, and it self-defines in chunk 1 line 13 (\"This is your main lane for Module 3\").",
       "fix_hint": null,
       "blocking": true
     },
@@ -97,7 +98,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "All bold spans in the body are architecture-mandated chrome (Time:/What you do:/What you build:/What happened:/Session/Prompt widget labels), matching the file's own 2026-07-09 emphasis-pass note ('kept bold: none').",
+      "evidence": "Every bolded span in the body is a Session-widget label (\"**Session**\", chunk 1 line 15 and chunk 3 line 50) or the file's own declared chrome (\"**Time:**\", \"**What you do:**\", \"**What you build:**\" in chunk 0; \"**What happened:**\" in chunk 4) — the file's own maintainer block (raw source, below cut) states these are chrome not emphasis, consistent with the widget-label exemption this rule implies. Zero non-chrome bold anywhere in body; budget of ≤1/slide is not approached.",
       "fix_hint": null,
       "blocking": false
     },
@@ -107,7 +108,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "File is included via a standard exercise link ('[Exercise: Open the side quest](exercises/open-the-side-quest.md)') inside earn-the-trust.md's '## Start here' section, wrapped in .phase--exercise like every other exercise reached by buildDeckModel -- not one of the phase-less prose section types rule 10 warns can be dropped from the default deck.",
+      "evidence": "Checked earn-the-trust.md (the enclosing module): the exercise is included via a plain standalone-paragraph link \"[Exercise: Open the side quest](exercises/open-the-side-quest.md)\" under \"## Start here\" (module line 33) — the ordinary include shape that reaches `.phase--exercise` wrapping and the composed deck, not a phase-less prose section or a supplementary/reference page (the categories rule 10 names as droppable). No reason to expect this file is absent from the deck.",
       "fix_hint": null,
       "blocking": true
     },
@@ -117,11 +118,51 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No '## Phase N:' / '## N.' step headers or in-body 'Phase K'/'Step K' references anywhere in this file.",
+      "evidence": "Ran `node scripts/check-slide-numbering.js` and filtered for this file's slug — no output for open-the-side-quest.md, i.e. the linter raised nothing for it. The file's headers are imperative labels (\"Fork...\", \"Read back...\", \"Open...\", \"Set...\"), not `## Phase N:` / `## N.` step headers, so this rule's numbered-step scheme does not apply.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/exercises/open-the-side-quest.md` → output: \"OK — 1 files, no page-geometry pointers across the slide cut.\" A manual grep for below/above/further down/at the top/see below across the expanded body confirmed the only hits are in the maintainer section (below the `<!-- maintainer -->` cut, out of body scope).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Single in-body link (chunk 1 line 21, the multi-session-git reference) is named by title (\"Multi-session and Git survival guide\") not located by page position — satisfies the surviving §13 requirement (name the document, don't locate it) independent of the settled mechanism question, which this rule states is a review surface, never a gate.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/open-the-side-quest.md` → output: \"files: 1  slides: 4  limits: 210 words / 6 bullets\" / \"oversized: 0\" / \"✓ every slide is within limits\". No accept-note needed.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "All four body headers are imperative (\"Fork the side worktree from your security lane\", \"Read back the worktree path\", \"Open the quality lane in the new worktree\", \"Set the two windows side by side\") — correct mood for an exercise file per this rule's split; no declarative-claim heading present or expected here.",
       "fix_hint": null,
       "blocking": false
     }
   ],
-  "blocking_findings_count": 0,
+  "blocking_findings_count": 1,
   "todos_count": 0
 }

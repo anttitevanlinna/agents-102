@@ -1,19 +1,19 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/walk-and-send-off.md",
-  "body_sha": "f002aaadce0381f0bb5cf18e13cb7d85cc6043973dc59a1c418aa033cc4578c4",
   "verdict": "PASS",
   "training": "ae101",
+  "body_sha": "8765e845994471759e22107aa06ddeb3b41505e37d10b9335e3bf500808c396f",
   "chunk_map": [
-    {"index": 0, "heading": "H1/lede: Prep the run, fill the gaps", "lines": "1-20"},
-    {"index": 1, "heading": "Phase 1: Pick the task you'll send off", "lines": "21-45"},
-    {"index": 2, "heading": "Push back until the task is one end-to-end slice", "lines": "46-50"},
-    {"index": 3, "heading": "Phase 2: Build the ranked list of what will hurt the agent", "lines": "51-71"},
-    {"index": 4, "heading": "Correct the list and reprioritise it", "lines": "72-76"},
-    {"index": 5, "heading": "Fill the worst two or three gaps", "lines": "77-94"},
-    {"index": 6, "heading": "Match each fill to its shape and home", "lines": "95-103"},
-    {"index": 7, "heading": "Push back when Claude drifts from the codebase", "lines": "104-107"},
-    {"index": 8, "heading": "Compare notes, then tidy the folder", "lines": "108-113"}
+    {"index": 0, "heading": "# Prep the run, *fill the gaps* (H1 + lede)", "lines": "1-19"},
+    {"index": 1, "heading": "Phase 1: Pick the task you'll send off", "lines": "21-43"},
+    {"index": 2, "heading": "Push back until the task is one end-to-end slice", "lines": "45-48"},
+    {"index": 3, "heading": "Phase 2: Build the ranked list of what will hurt the agent", "lines": "50-69"},
+    {"index": 4, "heading": "Correct the list and reprioritise it", "lines": "71-73"},
+    {"index": 5, "heading": "Fill the worst two or three gaps", "lines": "75-91"},
+    {"index": 6, "heading": "Match each fill to its shape and home", "lines": "93-100"},
+    {"index": 7, "heading": "Push back when Claude drifts from the codebase", "lines": "102-104"},
+    {"index": 8, "heading": "Compare notes, then tidy the folder", "lines": "106-111"}
   ],
   "rules_evaluated": [
     {
@@ -22,7 +22,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Closest candidate: chunk 5 line 79 'the same way it reads your ADRs' — 'ADRs' is only named inside the FENCED Phase-2 prompt (chunk 3, line 62-63, exempt region). Harm rule 1 guards against: a reader stuck on an unresolvable term. Here the fenced prompt is still rendered and read by the student two slides earlier, so the term was in fact seen even though it sits inside an exempt block — exemption from tic-scoring is not exemption from being legible prior context. Stays inside; no edit needed. All other referents (that state / the winner / the screening / the ranking / the audit / the folder) resolve to same-file antecedents named on the current or an earlier chunk, all within the session-artifact and reused-term carve-outs.",
       "fix_hint": null,
       "blocking": true
     },
@@ -32,7 +32,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Harm: a pointer that only resolves if you know where another file's deck starts. No 'the opening lecture said' / 'as we saw earlier' shaped callback anywhere in the body. 'You'll use this task again next module' (chunk 2, line 48) is a forward-pointer naming the next module by relation, not a positional callback into another file's slide — nothing to resolve, nothing located.",
       "fix_hint": null,
       "blocking": true
     },
@@ -42,7 +42,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Harm: a 'the X you did' phrase whose beat was cut in a later rewrite. Only backward-shaped reference is chunk 6 line 95 'the audit tags each gap with one', pointing at the Phase 2 audit (chunk 3), which is present in this same file and unchanged. No dangling beat references.",
       "fix_hint": null,
       "blocking": true
     },
@@ -52,7 +52,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No guess-before-reveal / predict-then-watch beat anywhere in the file; this exercise is a screen-audit-fill flow with no live-demo reveal structure.",
       "fix_hint": null,
       "blocking": true
     },
@@ -62,7 +62,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Closest candidate: chunk 4 (lines 71-73), the shortest chunk at one bullet — but the bullet carries a real standalone instruction ('Tell it what's wrong, what's missing, and what you'd move up'), not a wait-state or context-only fragment. Same for chunk 7 (one bullet, concrete push-back instruction). Neither is a wait-state.",
       "fix_hint": null,
       "blocking": false
     },
@@ -72,7 +72,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Checked each header against its own chunk body: 'Correct the list and reprioritise it' (chunk 4) is answered by 'Tell it what's wrong, what's missing, and what you'd move up' — reprioritising is exactly what the bullet does. 'Match each fill to its shape and home' (chunk 6) is answered point-for-point by the four shape-to-destination bullets. No header is contradicted by its chunk's content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -82,9 +82,9 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Checked all sub-items per chunk: no 'Not X. Not Y. Z.' construction; no anaphora/epistrophe triples; no self-grading superlative (closest is chunk 0 line 11 'The task here is bigger than anything so far' — describes the task's scope, not the exercise's own value, so it doesn't trip the value-prop-leak harm); no number-with-retraction pattern (numbers used: 'one or two', 'top-5', 'two or three' — all plain counts, none walked back); no abstraction-noun stacks (language stays concrete: 'observations/', 'CLAUDE.local.md', 'a connector'); no verb triplet with an empty leg.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -92,7 +92,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Scanned body for surface(noun)/firing/compendium/forcing function/beat/mood/Connections — none appear in body text (all instances of 'beat', 'shape' terminology are confined to the maintainer block below the cut, out of scope). 'Session' (chunk 0, line 5) is the canonical widget label, not smuggled dialect.",
       "fix_hint": null,
       "blocking": true
     },
@@ -102,9 +102,9 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
-      "fix_hint": "chunk 6 carries four bold handles (fill-shape menu names) — over the ≤1-per-slide default, but this is the maintainer-attested named-handle menu from the 2026-07-09 emphasis pass, not the pre-pass bolded-lead-sentence monoculture the rule targets; harm (visual noise drowning the real handle) is absent since each bold span is a coined checklist-item name, not a whole sentence.",
-      "blocking": true
+      "evidence": "Chunk 1 line 25 bold 'Bigger than a typo-fix, smaller than a big epic.' is the §34 task-sizing exception (whole-sentence bold explicitly mandated, outranks §9) — confirmed against the file's own maintainer note at line 115 documenting this as the restored §34 ceiling. Chunk 6 bolds ('Observation or rule:' / 'Sharpen an existing rule:' / 'Wire a connector:' / 'Bring the material in:') are a menu/reading-list slide (each fill-shape scanned by its handle) — per-slide budget waived there, and each handle is ≤4 words, inside the handle cap. No other chunk exceeds one bolded element; several have none.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -112,9 +112,9 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/walk-and-send-off.md` → 'files: 1  slides: 8  ... oversized: 0' — the size checker counts slides via the same composed-deck resolution this rule requires, and it found all 8 `##` sections present and measured. No prework/supplementary/reference sections in this exercise file that could be dropped by the phase-wrapper requirement.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -122,7 +122,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Ran `node scripts/check-slide-numbering.js` and grepped for this file — no output, i.e. no flagged numbering issue. Manual check: 'Phase 1' (line 21) and 'Phase 2' (line 50) are the only Phase headers, consecutive from 1, and neither body text nor the maintainer block references a 'Phase N' ordinal cross-file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -132,9 +132,9 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/exercises/walk-and-send-off.md` → 'OK — 1 files, no page-geometry pointers across the slide cut.' Closest candidate by eye: chunk 1 line 27 'add them after the colon', pointing at the prompt fence that follows in the SAME chunk (lines 31-44) — same-chunk paste-pointer carve-out applies, spatially true as shown.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -142,7 +142,7 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Grepped body for markdown link syntax `[...]( ... )` — none present in this file's body. No in-deck links to inventory.",
       "fix_hint": null,
       "blocking": false
     },
@@ -152,8 +152,18 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/walk-and-send-off.md --report: heaviest slide 'Match each fill to its shape and home' 189 words / 4 bullets vs 210-word cap; oversized: 0 across all 8 slides. Confirms the previously-recorded figures, no drift since the last PASS.",
-      "fix_hint": "No fix needed; flagging that 189/210 is the tightest margin in the file and the slide most likely to break on any future addition to the four fill-shape bullets.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/walk-and-send-off.md` → 'oversized: 0' across all 8 slides, limits 210 words / 6 bullets. No accept-note needed.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "All 8 `##` headings are imperative or phase-label form, consistent with the exercise-file convention (Phase 1:/Phase 2: labels; 'Push back...', 'Correct the list...', 'Fill the worst...', 'Match each fill...', 'Push back when Claude drifts...', 'Compare notes, then tidy the folder'). None reads as a declarative law-statement; this file is not one of the two declaratives the compendium's 2026-08-15 corpus measurement names (close-the-ticket.md, fix-tests-first.md).",
+      "fix_hint": null,
       "blocking": false
     }
   ],

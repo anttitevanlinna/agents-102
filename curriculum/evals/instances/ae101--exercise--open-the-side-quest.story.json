@@ -1,17 +1,18 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/open-the-side-quest.md",
+  "body_sha": "4284348e4ccf90a4415e58d84a0ac33655df155345fbf11031370551c36d8396",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "earned trust — 'before the agent runs bigger work alone, earn your staff engineer's and CISO's trust on a small piece you're shipping this week' (earn-the-trust.md § Big Idea); this exercise is multi-session-as-packaging infrastructure (check_pedagogy.md §16/§27), not a teaching beat itself.",
+  "module_mood_contract": "Earned trust — 'the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big' (content-strategy-agentic-engineering-101.md, M3 row + § M3 in detail). This exercise is multi-session-as-packaging infrastructure (check_pedagogy.md §57), not itself a teaching beat.",
   "trace_status": "regenerated",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
-      "rule_lead": "Meta-frame lectures are closers, not openers.",
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "N/A",
-      "evidence": "No lecture content in this file — it is the Module 3 opener exercise (fork worktree + orient side session), not a lecture.",
+      "evidence": "File is `curriculum/exercises/open-the-side-quest.md`, an exercise, not a lecture — compendium header states 'Fire when writing or placing a lecture.' Rule governs lecture-placement diagnostics (naming a pattern vs showing a ceiling vs teaching vocabulary), which do not apply to a two-window setup exercise.",
       "fix_hint": null,
       "blocking": false
     },
@@ -20,7 +21,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "No lecture content, and M3 is not the contrast-mood module (that is M5, learning-through-contrast).",
+      "evidence": "Governs pre-exercise lecture dosage ahead of a contrast-mood module (M5-style). This file is itself an exercise with no lecture attached to it, and M3's mood is earned trust, not contrast-mood.",
       "fix_hint": null,
       "blocking": false
     },
@@ -29,7 +30,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Rule scoped to lecture bodies; this is an exercise file. Body does name 'Module 3' (L5) but the rule's mechanism (grep on lecture bodies above the maintainer fence) doesn't reach non-lecture files.",
+      "evidence": "Rule binds lecture bodies specifically ('lectures teach, module files sequence'). This is an exercise file, whose own-module self-reference is the expected form. Body's only module mention is self-referential ('Module 3 runs in two windows', L5; 'Module 3's exercises name which window', L51) — no forward/backward reference to M2 or M4, so even read loosely the rule finds nothing to flag.",
       "fix_hint": null,
       "blocking": false
     },
@@ -38,43 +39,43 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
-      "evidence": "Not a lecture. This file's slide-chunked ## headers are check_slides.md's territory, not storytelling's.",
+      "evidence": "Header-quality rule scoped to lecture/handbook headers scanned cold in self-study. This file's `##` headers ('Fork the side worktree from your security lane', 'Read back the worktree path', 'Open the quality lane in the new worktree', 'Set the two windows side by side') are exercise slide headers — check_slides.md is the primary owner of exercise slide-header quality, not check_lectures.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded, not just its header (exercise slides count too).",
-      "verdict": "PASS",
-      "evidence": "Re-ran `node scripts/check-slide-size.js --file curriculum/exercises/open-the-side-quest.md` against the current on-disk file: 4 slides, limits 210 words / 6 bullets, 0 oversized, 'every slide is within limits'.",
+      "rule_lead": "A slide's BODY is size-bounded, not just its header.",
+      "verdict": "N/A",
+      "evidence": "Size-ceiling rule is scoped by its own text to lecture/exercise slides under check_lectures's lecture-writing remit, enforced mechanically by `scripts/check-slide-size.js`; check_slides.md is this exercise's primary owner for slide-body sizing, not check_lectures — storytelling doesn't own the metric here.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
-      "rule_lead": "Forcing functions stay, scripted reactions go — forcing functions live in prompts, not body prose.",
-      "verdict": "PASS",
-      "evidence": "Both forcing functions are enacted entirely inside the fenced prompts: fork-and-report ({{prompt:ae101-m3-fork-quality-side}}, L27; registry close line 'Tell me the absolute path to the new worktree directory and which files copied across.') and confirm-and-wait ({{prompt:ae101-m3-quality-side-orient}}, L46; registry close line 'Report the four lines back. Then wait.'). Surrounding body (L13-25, L33-44, L48-51) is setup/context/window-arrangement prose that names what the student does next, never narrating what the prompt itself will produce.",
+      "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.",
+      "verdict": "N/A",
+      "evidence": "This exercise carries no pedagogical forcing function to place — per check_pedagogy.md §57 (multi-session ships as packaging, not new primitive) this file is infrastructure: it forks a worktree and opens a second window. The two prompts it fires (`ae101-m3-fork-quality-side`, `ae101-m3-quality-side-orient`, L27/L46) are session-management actions, not a pedagogical move like 'ask the skill its weakest part' that could leak into body prose. Nothing in the body explains a forcing function that should instead live in a fence — read prompt-only (skill's own diagnostic), the two prompts alone reproduce the artifact state (two named sessions, worktree path, confirmed state) without needing body explanation.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
-      "rule_lead": "Body teaches the work; trainer manages the room outside text — no authored conversations or pause cues.",
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Grepped the file for cohort-management language (discuss|compare|neighbo|pair up|tell the room|share what|turn to) — zero hits. L50 ('Set the two windows side by side... Arrange them so neither disappears behind the other') concerns the student's own two app windows, not a pair/group instruction — passes the WORK-vs-COHORT-MANAGEMENT diagnostic.",
+      "evidence": "Scanned full body for authored conversation/pause cues — none present. Closest candidate: 'Set the two windows side by side. Two windows, side by side, both visible at once... Arrange them so neither disappears behind the other' (L48-50) — this is a WORK instruction (physical/window arrangement enabling the task) not a COHORT-MANAGEMENT cue (no 'compare with your neighbor', no 'discuss', no pause-cue). Diagnostic from the rule itself: sentence about WORK → body (correct); about pacing/comparing/sharing → out (none found). No accept-note needed since no carve-out is invoked.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named; mood-floor (8+/10) applies to TEACHING beats only.",
+      "rule_lead": "Mood contract named — mood lands per beat, mood-floor applies to teaching beats only.",
       "verdict": "PASS",
-      "evidence": "Single phase (no ## Phase headers; whole body is phase 1) is a setup/launch/sequencing-transition beat — open two sessions, fork a worktree, confirm state — no teaching content delivered, matching the file's own maintainer note (L68: 'Introduces no new primitive'). Diagnostic met: cutting this exercise compresses to a parenthetical in the M3 arc ('M3 runs two windows: security main lane, quality side lane') without breaking it. mood_score recorded null in the persona trace per the carve-out; judged on clarity + brevity — body is four short, sequentially-headed sections of plain instruction.",
+      "evidence": "trace.phases[0].mood_score = null, trace.close.mood_score = null. Diagnostic applied: student's job here is to GET INTO POSITION for M3's exercises (fork worktree, open second window), not to LEARN a taught primitive — correctly classified as setup, not teaching, per check_pedagogy.md §57 (multi-session ships as packaging) and this rule's own carve-out. Compression test: the whole beat compresses to 'fork a worktree, open a second window' without breaking the M3 arc — passes the parenthetical diagnostic for setup. Register is clear + brief (trace.phases[0].mood_note), which is what the rule asks of an exempt beat instead of a mood-floor number. Re-engagement with the actual M3 mood (earned trust) is correctly deferred to Exercise 1, not claimed here.",
       "fix_hint": null,
       "blocking": true
     },
@@ -83,7 +84,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "N/A",
-      "evidence": "No mood register present — mood-exempt setup beat per §1. Body is mechanical/neutral throughout; neither epistemic-unease nor punitive/shame language appears in student-facing text.",
+      "evidence": "The single beat is mood-exempt (§1 above) — no mood, epistemic or punitive, is being carried by this setup exercise, so there is no flavour to score against 'not-knowing' vs 'having-done-wrong'. Scanned body for punitive framing regardless (e.g. language implying the student did something wrong): none present — prose is procedural throughout ('Fork the side worktree', 'Read back the worktree path').",
       "fix_hint": null,
       "blocking": false
     },
@@ -91,18 +92,18 @@
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
-      "verdict": "N/A",
-      "evidence": "Exercise file, not a Big-Idea-naming surface (that lives on the module file, earn-the-trust.md § Big Idea). No discipline-vs-failure-mode framing is attempted in the student-facing body; failure-mode language (wrong-directory, forgotten copy) is confined to the maintainer-only Push-back moves block (L74-77), exempt from the surface this rule governs.",
+      "verdict": "PASS",
+      "evidence": "Title 'Two windows on one codebase' (L1) and lede (L5) name the discipline (two-lane working structure) directly — no failure word ('collision', 'clobber', 'race') appears in the body. The one place a failure mode COULD have leaked in — the same-folder-clobber trap — is explicitly kept out of body and pushed to the maintainer block's push-back notes (L74, L76-79), which is itself the discipline-not-failure-mode call working correctly.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity — consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early.",
+      "rule_lead": "Strategy-fidelity check — consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict.",
       "verdict": "PASS",
-      "evidence": "Front-run: no access-mapping, STRIDE, ADR, or skill-authoring content appears — pure container setup, matching the strategy doc's sequencing for the three teaching exercises that follow (content-strategy-agentic-engineering-101.md line 239: two curated-skill invocations then one authored skill); L13's 'Access mapping, STRIDE, and the ADR all live here' names topics without teaching or previewing their content. Module-to-module arc: this file is M3's opener (earn-the-trust.md § Start here L31, first link before the lecture and three exercises), correctly silent on the M4 hand-off, which lives in the module file's own downstream sections — this file's own maintainer 'Phase' line (L66) confirms placement: 'Module 3 opener, before Map the access surface.' Big Idea fidelity: body stays neutral/mechanical ('Security is the main quest... Quality is a side-quest'), doesn't claim or front-run the module's Big Idea (earn-the-trust.md L6: earning staff-engineer/CISO trust) before the three exercises that actually earn it. Mood-doesn't-resolve-early: nothing to resolve early — per §1 the M3 mood hasn't started building yet by design at this beat. NOTE (non-blocking, informational): the private strategy doc's 2026-07-26 improvement-slate item 4 ('Remove forced multitasking from M3... or retain M3 concurrency as an optional fast lane') flags this exact worktree-concurrency-at-M3 shape as a ranked candidate to reconsider, but explicitly offers 'retain M3 concurrency' as one of its own two sanctioned outcomes and is listed only for a future pilot ('pilot 4... across one full arc'), not an adopted change — current file matches the still-live design, so this is not a fidelity violation, only a forward-looking maintainer awareness item.",
-      "fix_hint": "If/when the strategy doc's improvement-slate item 4 is piloted (concurrent windows moved to M4), this file and its M3 placement become the first thing to revisit.",
+      "evidence": "Front-run: file forks the worktree and confirms state only — it does not touch access-mapping, STRIDE, or test-strategy authoring content, which stay owned by Ex1-3 (content-strategy-agentic-engineering-101.md § M3 in detail). Big Idea fidelity: M3's Big Idea is 'earn the trust' (strategy doc M3 row); this opener doesn't claim trust is earned yet — 'What happened' (L52-53) reports only that the two lanes are positioned, security 'picks up... at the next exercise', explicitly deferring the teaching payoff. Module-to-module arc: strategy doc's M2 close names 'M3 starts with a feature you're shipping, not a bot you're building' (content-strategy doc, M2-in-detail mini-lecture close) — this exercise's opening move (bring your chosen repo, start security here, L13) is faithful to that handoff; file doesn't itself restate the M2 hook (correctly — that's the module file's job, not the exercise's, per curriculum/CLAUDE.md 'lectures teach, module files sequence'; exercises compose into a module file that carries the arc). Mood-doesn't-resolve-early: because the beat is mood-exempt (§1), M3's earned-trust mood cannot be prematurely resolved here — nothing is claimed to be trusted or verified yet, so M3's own mood arc stays intact for Ex1 onward to build.",
+      "fix_hint": null,
       "blocking": true
     },
     {
@@ -110,7 +111,7 @@
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Exercise file — no '## Key Concepts' section (student-facing heading lives module-level only, earn-the-trust.md L41-47).",
+      "evidence": "Module-only section — this is an exercise file with no `## Key Concepts` heading (confirmed: grep of the expanded body shows no such heading). check_strategy_tie_in.md is primary owner of this rule at module-file scope; per the storytelling judge template, §5/§6/§7 are N/A on non-module surfaces.",
       "fix_hint": null,
       "blocking": false
     },
@@ -119,7 +120,7 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Exercise file — no Key Concepts section to shape. Module-only, per §5's finding.",
+      "evidence": "Same as §5 — no `## Key Concepts` section exists in this exercise file to carry breadcrumbs.",
       "fix_hint": null,
       "blocking": false
     },
@@ -128,7 +129,7 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "Exercise file — no '## What You'll Learn' section; lives on the module file (earn-the-trust.md L18-25), whose first bullet ('Fork a sibling git worktree and run two Claude Code sessions on the same history side by side, one window per lane, working the idle window while the other runs a long prompt') is this exercise's anticipatory capability claim, already in engineer register.",
+      "evidence": "No `## What You'll Learn` heading in this exercise file (confirmed by grep of the expanded body) — that section lives in the module file (`earn-the-trust.md`), not the exercise.",
       "fix_hint": null,
       "blocking": false
     }
@@ -137,9 +138,13 @@
     "phase_scores": [null],
     "close_score": null,
     "any_below_8": false,
-    "stealing_the_mood": [],
-    "teaching_moment_lands": "PASS — file carries no independent named teaching moment of its own (its own maintainer block, L68: 'Introduces no new primitive. Packages M3's existing Q+S split into two windows'); the only thing it delivers is felt positioning — two live sessions, side-quest visibly waiting. M3's actual teaching moments (access-map delta, STRIDE hardening call, disclose-weakest-part self-critique, authored-skill shipping) live in the three exercises this file hands off to, not here — so there is nothing fragile to skip."
+    "stealing_the_mood": []
   },
+  "notes": [
+    "check_workshop.md and check_prompts.md are in the storytelling-class compendium set (eval_classes includes storytelling) but the template's completeness contract names no storytelling-owned rule_index for either on this file. check_workshop's own trigger clause requires a beat whose output belongs to the group, not a participant — this exercise is solo setup (fork a worktree, open a window), so the whole compendium is untriggered; deferred to check_pedagogy.md's primary ownership, not carried as rules_evaluated rows here to avoid an unowned claim per the dispatch preamble. check_prompts.md's numbered rules (prompt-block design, sequencing, forcing-function encoding inside fences) are prompts-class primary territory; storytelling's only overlapping judgment (forcing-function-in-prompts) is already carried under check_pedagogy.md rule_index 16 above, so no separate check_prompts row is filed to avoid double-crediting the same judgment under two compendiums.",
+    "Teaching-moment-lands check (no check_strategy_tie_in rule_index, per template): this exercise names no teaching moment of its own — check_pedagogy.md §57 and the strategy doc both frame it as packaging that installs a container (two worktrees, parallel sessions) so downstream exercises can carry a one-line lane callout. The actual M3 teaching moment (access-map delta) lands at Exercise 1, outside this file's scope, so there is nothing fragile to test against persona-skill variation here.",
+    "The 2026-08-14 diff against the prior compendium-audited@2026-08-02 pass (`c578d06`, `7057500`, `959384a`) is wording-only: trimmed 'What you do'/'What you build' lines, a reworded L43 bullet with the same information content, and maintainer-block prose trims (emphasis note, same-folder-trap note, observations note, contested-note). No mechanic, prompt, claim, or sequencing changed, so this PASS carries forward the prior story@1c765f2 PASS rather than reopening settled ground."
+  ],
   "blocking_findings_count": 0,
-  "todos_count": 1
+  "todos_count": 0
 }

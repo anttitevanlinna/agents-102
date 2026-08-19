@@ -58,18 +58,22 @@ What Claude leaves out is often the signal. A clean summary that names three rul
 
 Watching where it bends is continuous improvement, done by hand. Every miss turns into a line of context that stops the next miss. Later in the training you'll learn the move that bends the curve: the agent spots its own misses and proposes its own fixes. You stop being the only pair of eyes.
 
+## Bring to Module 3
+
+**A daily agent, scheduled, with a week of observation behind it.** It reads your challenge memory. A week of watching it run is the evidence Module 3 splits work against; without it the split is guesswork.
+
+[Schedule your personal agent](exercises/personal-agent-homework.md)
+
+## Pre-reads before Module 3
+
+[Agent Trigger List, After Module 2](supplementary/agent-trigger-list.md#after-module-2-start-noticing-trigger-moments), for noticing when real work should call the agent. Then selected sections from [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) on tools, memory, and context.
+
+[Before Module 3](exercises/module-3-prework.md)
+
 ## Next
 You have an agent doing real work on your challenge. But the job is getting too big for one agent. What do you split?
 
 Before the next module, try making a few more agents you actually need. Pick by pain, not ambition: the task you keep doing manually that would feel lighter if someone else did it. Meeting prep, calendar triage, competitive watching, and draft-reply triage are all fine starters. Keep the first version proposal-only: the agent drafts, ranks, or prepares; you decide what leaves the system. You only learn by doing. Go build.
-
-## Homework after Module 2, between-module reading
-
-[Schedule your personal agent](exercises/personal-agent-homework.md). Schedule a daily agent that reads your challenge memory for one week of observation. Read [Agent Trigger List, After Module 2](supplementary/agent-trigger-list.md#after-module-2-start-noticing-trigger-moments) and start noticing when real work should call the agent. Read selected sections from [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) on tools, memory, and context. Then do [Before Module 3](exercises/module-3-prework.md): pick three practitioner pieces, and read the plain-language primer on helper agents.
-
-[Schedule your personal agent](exercises/personal-agent-homework.md)
-
-[Before Module 3](exercises/module-3-prework.md)
 
 <!-- maintainer -->
 

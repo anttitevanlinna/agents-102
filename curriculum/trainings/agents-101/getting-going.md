@@ -59,14 +59,20 @@ One pattern to watch. Asked the most-uniquely-you line first, the LLM warms into
 
 Compare Claude's picks to what you expected. Where cold-Claude sees generic, your context is still thin; add one more sharp detail there. Then ask Claude to regenerate the site. Where Claude's pick of *"uniquely you"* matches your own gut: solid ground.
 
-## Next
-You just made great output AND packaged what you learned into a file the agent can re-read next time. That's the move that compounds. Module 2 takes the same idea and systematises it (the memory, the agents, the room rules) so every future module's work builds on every previous one.
+## Bring to Module 2
 
-## Homework after Module 1, before Module 2
+**A live challenge on your mind**, and Confluence and OneDrive connectors you have verified. Module 2 systematises the work around a real problem; an invented one costs you the session's whole point.
 
-[Module 2 prework](lectures/module-2-prework.md). Bring a live challenge on your mind, verify your Confluence and OneDrive connectors, run the <span class="rt-code">plan-mode primer</span><span class="rt-cowork">plan-first primer</span>, read Karpathy's LLM Wiki post, and scan the candidate Lindenberg memory-architecture piece if you have room.
+Run the <span class="rt-code">plan-mode primer</span><span class="rt-cowork">plan-first primer</span> before you come.
+
+## Pre-reads before Module 2
+
+Karpathy's LLM Wiki post, and the candidate Lindenberg memory-architecture piece if you have room.
 
 [Module 2 prework](lectures/module-2-prework.md)
+
+## Next
+You just made great output AND packaged what you learned into a file the agent can re-read next time. That's the move that compounds. Module 2 takes the same idea and systematises it (the memory, the agents, the room rules) so every future module's work builds on every previous one.
 
 <!-- maintainer -->
 

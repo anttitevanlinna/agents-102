@@ -64,12 +64,12 @@ Read [What is an Agent, The autonomy ladder](supplementary/what-is-an-agent.md#t
 
 Having added the checking step before acting, this is also the suitable place to introduce a human-in-the-loop check. You have both the agent-created action proposal at hand and the report on output quality. That means the expert is not reviewing a blank page or a vague concern; they are reviewing the proposed action, the evidence behind it, and the known limit of the check that passed it.
 
+## Pre-reads before Module 6
+
+Ethan Mollick, "Garbage Can and Bitter Lesson."
+
 ## Next
 The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine the benchmark has three hundred claims, the judge runs on every build, and its own corrections feed back into the next round. That's evals.
-
-## Homework after Module 5: between-module reading
-
-Read Ethan Mollick, "Garbage Can and Bitter Lesson."
 
 <!-- maintainer -->
 

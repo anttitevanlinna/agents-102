@@ -53,22 +53,24 @@ Notice what this prompt insists on: harsh audit, two seams minimum, specific evi
 
 Read Claude's summary. Push back where it's wrong. *"No, the planner and the reframer really did need to be separate."* *"You missed where the Confluence retriever kept normalising before writing."* The unease you feel about the synthesized briefing is not something to close today. It stays. Hold it as a question, not a fix.
 
-## Next
-You just built something that works across three systems. Which means it just gained access to three systems. What's the worst thing it could do with that?
-
-Between now and Module 4, keep working on your real problem. You're close to an agent system that can actually crack your crux. Add an agent to solve a critical dependency? Add a visualisation of the plan? Prompt for what you need. Build.
-
-## Homework after Module 3
-
-**Reading.** Read [Agent Trigger List, After Module 3](supplementary/agent-trigger-list.md#after-module-3-notice-when-one-agent-is-not-enough), then selected sections from [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) on multi-agent coordination. Then read [Before Module 4](lectures/module-4-prework.md): personal skills as the package format that carries expertise into your agent, and agent risk layered on top of normal security work.
-
-[Before Module 4](lectures/module-4-prework.md)
+## Bring to Module 4
 
 **Optional move: pressure-test the memory.** If you've added much to `sources/` this module, run this between modules to let the new evidence pressure-test the memory's shape. Skip if memory's still serving you.
 
 {{prompt:a101-m3-homework-memory-health}}
 
 Memory is a working artefact, sharpened by what it bumps into.
+
+## Pre-reads before Module 4
+
+[Agent Trigger List, After Module 3](supplementary/agent-trigger-list.md#after-module-3-notice-when-one-agent-is-not-enough), then selected sections from [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) on multi-agent coordination.
+
+[Before Module 4](lectures/module-4-prework.md)
+
+## Next
+You just built something that works across three systems. Which means it just gained access to three systems. What's the worst thing it could do with that?
+
+Between now and Module 4, keep working on your real problem. You're close to an agent system that can actually crack your crux. Add an agent to solve a critical dependency? Add a visualisation of the plan? Prompt for what you need. Build.
 
 <!-- maintainer -->
 

@@ -69,7 +69,6 @@ Each item: `[ ] [S/M/L] <gap> → <fix>`. Done items are deleted, not annotated 
 
 **Machinery — gates that do not guard A101**
 
-- [ ] [M] `compile-prompts.js:124` runs `validate-prompt-graph` for AE101 only → A101's 15 graph errors never fail the build. Add the A101 invocation.
 - [ ] [M] `audit-eval-coverage.js` has no `--training` flag; `SURFACES` 100% AE101-hardcoded → the coverage gate silently ignores A101. **BLOCKED 2026-08-19: a concurrent session is live in this file (and `.test.js`). Do not touch. Re-check `git status` before starting.**
 - [ ] [L] Timings. `calculate-time.js --training agents-101 --check` already runs and returns ~40 findings: 30 leaf files with no phase markers and no atomic declaration, 16 modules with no `- **Transitions:**` line, 32 durations written as a range where the contract is a single ceiling. A101 also has no `timings.md`, so caps and rhythm are unpriced. Fix the leaves, add `timings.md`, then pass `--training` in the `time` / `audit:timings` scripts.
 - [ ] [M] `check-slide-size --training agents-101` fails: 12 oversized slides across 7 files. AE101's precedent is to SPLIT at a conceptual seam with zero wording changes and a command-verb header (`learn-from-the-test.md:115`), not to declare the overflow; the per-slide `**Slide size accepted:**` escape exists but AE101 barely uses it. Split, then wire the A101 invocation into `test` + `test:gates` beside the other two.
@@ -77,9 +76,7 @@ Each item: `[ ] [S/M/L] <gap> → <fix>`. Done items are deleted, not annotated 
 
 **Prompt graph**
 
-- [ ] [M] 13 of 15 A101 graph errors trace to ONE root cause: upstream exercise prompts create artefacts but declare no `produces:` frontmatter (verified on `m1-site` / `m1-brand-rules` via `personal-site-with-guardrails-1..6`). Backfill `produces:`; the DANGLING errors collapse.
-- [ ] [M] Systemic: only 11/82 A101 prompts carry `requires:`, 16/82 `produces:` — vs 63/132 and 65/132 on AE101. Most A101 exercise prompts never got graph fields.
-- [ ] [S] 2 stale `BODY_PRIMITIVES` config entries (`observations-folder`, `claude-local-md`) match nothing in A101 → validator config rot, fix in the validator.
+- [ ] [M] Systemic: most A101 exercise prompts still carry no graph fields at all. The graph now validates clean, but it validates a sparse graph — only the artefacts a debrief happens to require are declared. AE101 declares roughly half its prompts. Backfilling the rest is what makes PREMATURE catchable, not just DANGLING.
 - [ ] [S] `curriculum/exercises/personal-agent-homework.md` is the last un-migrated file — 3 inline `**Prompt**` blocks, 0 registry markers.
 - [ ] [S] `lint-prompt-bodies` Sev-2 on `name-your-crux-2` (§9 markdown italic).
 
@@ -91,7 +88,6 @@ Each item: `[ ] [S/M/L] <gap> → <fix>`. Done items are deleted, not annotated 
 
 **Content patterns**
 
-- [ ] [L] 7 of 9 A101 modules put a trailing `## Homework after Module N` AFTER `## Next`, violating module-shape's Next-last rule (AE101 got this fix 2026-08-13; A101 never did). `prework` and `agents-building-agents` already end correctly. **Needs one maintainer call — see § Open decisions.**
 - [ ] [L] Zero `Source verification` blocks / `checked:` stamps across all 9 module files despite live claims: Mollick citations, an 82%/24% stat, Mata v. Avianca, a Deloitte/DEWR report, an 85%×10 reliability stat.
 - [ ] [L] Zero `<!-- backing -->` blocks in A101 (AE101 has 9). Priority: `output-quality.md`'s reliability math, the shared 82%/24% stat.
 - [ ] [M] A101 supplementaries + the reference page carry no `<!-- maintainer -->` fence at all — so Pass-1 maintainer notes ("Pass 1 skeleton", "Module touchpoints", "Voice check", "Named-company examples to seed Pass 2") sit UNFENCED in student-facing body. This is the real defect behind the two `substrate` banned-word hits; fence the notes rather than swapping the word.
@@ -105,9 +101,10 @@ Each item: `[ ] [S/M/L] <gap> → <fix>`. Done items are deleted, not annotated 
 - `## Optional challenges` is in all 7 AE101 modules and 0 of 9 A101 modules — but it is NOT in `module-shape.md`. Authoring nine of them is curriculum expansion, not parity. Maintainer call, not sweep work.
 - A101's `trainer-guide.md` vs AE101's per-module `trainer-modules.md` run-sheets: a deliberate decide, not a build.
 
-## Open decisions (Antti)
+## Decided
 
-- **Next-last fix, 7 modules:** the trailing sections mix a build-ask and a reading list. Canon names two sections (`## Bring to Module N`, `## Pre-reads before Module N`). Split into the canonical pair, or move the existing single section up under one canonical name? Splitting touches prose; moving does not. Separately: A101's `## Next` paragraphs currently carry build-asks of their own, so after the move they duplicate — worth a closer-read pass either way.
+- **Next-last, 2026-08-19 (Antti):** split into the canonical pair. Done across all 7 modules. Residual, worth a read before a cohort: several `## Next` paragraphs still carry a build-ask of their own that now sits below the `## Bring to` section making the same ask — M2's *"try making a few more agents you actually need"* and M3's *"keep working on your real problem"* are the two clearest. AE101's own note on this move applies: those paragraphs were written as bridges and now have to carry the close.
+- **Judging, 2026-08-19 (Antti):** machinery first, judges later. Do NOT fire the 7-class re-audit in a machinery session. Every body edit landed here degrades pins by touch; `scan-stale-classes.js` derives what is owed, so nothing needs hand-marking in the meantime.
 
 ## Log
 

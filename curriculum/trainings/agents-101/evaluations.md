@@ -56,16 +56,18 @@ Read Claude's summary. Push back where it's wrong. *"That rule is too vague, mak
 
 This is Claude auditing a tactic it helped sharpen. That is acceptable here because the round files and judge notes are the evidence. If the summary sounds too kind, ask the sharper follow-up: *"Which rule did you claim to remove but actually kept under another name? Quote both lines."*
 
-## Next
-You just built an eval that improves itself. The system can now keep pressure on its own output when you are not watching every step. The close is not "trust the agent." The close is "trust the loop you can inspect."
+## Bring to Module 7
 
-## Homework after Module 6
+**Monday's first five agent calls, written down**, using [Agent Trigger List](../../trainings/agents-101/supplementary/agent-trigger-list.md). Pick one call that should run through the eval loop before anyone relies on it, and write the trigger into your working notes. Module 7 is about handing work to other people, and it needs real calls to hand over.
+
+## Pre-reads before Module 7
 
 The [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) is your practitioner reference for everything after this module. Eight recipes mapped one-to-one to the modules you just ran. Three canonical dishes (a program manager agent, a shared-inbox triage agent, the continuous research system that lives inside this very repo) showing recipe composition in production. Twelve named components, eighteen data sources, twenty named dishes in the index. When the next Monday-shaped problem lands, this is where the moves live without the training scaffolding around them.
 
 Glance through [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) end to end. The words should now point at things you have actually built: context, memory, tools, other agents, boundaries, judges, loops, and autonomy rungs.
 
-Use [Agent Trigger List](../../trainings/agents-101/supplementary/agent-trigger-list.md) to make Monday's first five agent calls explicit. Pick one call that should run through the eval loop before anyone relies on it, and write the trigger into your working notes.
+## Next
+You just built an eval that improves itself. The system can now keep pressure on its own output when you are not watching every step. The close is not "trust the agent." The close is "trust the loop you can inspect."
 
 <!-- maintainer -->
 

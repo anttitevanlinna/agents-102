@@ -61,13 +61,13 @@ Notice what this prompt insists on: name the path, overwrite in place, quote the
 
 Read Claude's summary. Push back where it's wrong. *"The teammate's job wasn't vague, you just didn't see it"* / *"you pulled too much out of the skill, put the edge cases back."* The artifact: the sharpened sharing file itself, plus one line in your Module 7 next-step file naming the first move. Save the conversation. It's the bridge to when work resumes.
 
+## Bring to Module 8
+
+**Run the next-step artifact.** Test one assumption. Ask for one name. Talk to one person. Module 8 works from what happened when the sharing plan touched the real organisation, so it needs a plan that has touched one.
+
 ## Next
 
-Run the next-step artifact before Module 8: test one assumption, ask for one name, and talk to one person. Module 8 uses what happened when the sharing plan touched the real organisation.
-
-## Follow-up after Module 7
-
-Run the next-step artifact. Test one assumption. Ask for one name. Talk to one person.
+The sharing plan leaves the room and meets the organisation. What comes back from that contact is Module 8's raw material.
 
 <!-- maintainer -->
 

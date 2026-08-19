@@ -56,16 +56,20 @@ A skill is close to the *how* of doing something. You can think of it as a proce
 
 That is why skills travel. A good skill is not tied to one chat, one project, or one agent. It packages the repeatable method so you can apply it across projects and agents, then sharpen it when reality shows where the method was thin.
 
+## Bring to Module 5
+
+**One sentence per case: "the missing organisational check was X."** Both cases are named in the pre-reads that follow. Module 5 opens on what a check would have caught, and the sentence is what you check it against.
+
+## Pre-reads before Module 5
+
+Agent-sprawl reading: shadow agents, and the 82%-think-protected / 24%-have-visibility pattern. Then Mata v. Avianca (S.D.N.Y. 2023) and the Deloitte Australia / DEWR welfare-compliance report (2025), both in the lecture that follows.
+
+[The Missing Check](lectures/module-5-prework.md)
+
 ## Next
 The agent is scoped, the residual risk is named. But the output *inside* the scope. Can you trust what it actually says?
 
 Remember also: agent actions start as text. A tool call, an email draft, a CRM update, a database change, a ticket comment, before any of those touch another system, they are words the agent produced and another system obeys. If the output is wrong, the action built from it will be wrong too. Module 5 starts there.
-
-## Homework after Module 4: between-module reading
-
-Agent-sprawl reading: shadow agents, and the 82%-think-protected / 24%-have-visibility pattern. Then read [The Missing Check](lectures/module-5-prework.md): Mata v. Avianca (S.D.N.Y. 2023) and Deloitte Australia / DEWR welfare-compliance report (2025). Bring one sentence per case: "the missing organisational check was X."
-
-[The Missing Check](lectures/module-5-prework.md)
 
 <!-- maintainer -->
 

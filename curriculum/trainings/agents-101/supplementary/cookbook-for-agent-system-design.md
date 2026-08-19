@@ -182,7 +182,7 @@ The agent-risk lens named the ways email can poison an agent: prompt injection i
 
 Each triage row had three possible verdicts: route, do not route, "I can't tell." The third row was the useful one. A binary classifier would have forced ambiguous messages into false confidence. The team wanted ambiguity surfaced, not hidden.
 
-### The Run
+### The Cycle
 
 Every 15 minutes the agent did the same work.
 
@@ -192,7 +192,7 @@ Every 15 minutes the agent did the same work.
 4. Route critical messages to Slack with sender, thread link, one-line reason, and source quote.
 5. Leave non-critical messages untouched.
 6. Put "I can't tell" rows into a review section for a human read.
-7. Save the run log for later scoring.
+7. Save the log for later scoring.
 
 The Slack message was intentionally small. No essay. No auto-reply. No customer-facing action. Just enough for the right human to open the thread fast.
 
@@ -410,11 +410,11 @@ Twenty named compositions a practitioner would recognise on sight. Each entry: t
 
 These are composition prompts, not full recipes. Each names which recipes carry the move and what new wrinkle the area introduces. The Use when / Build / Test / Why shape arrives only when the move is reliable enough that a practitioner would recommend it without caveats.
 
-- **Cloud deployment.** Start with R2, add R4 before anything writes outward, then R6 once the run repeats. The question is what changes when the folder becomes a runtime.
+- **Cloud deployment.** Start with R2, add R4 before anything writes outward, then R6 once the work repeats. The question is what changes when the folder becomes a runtime.
 - **Team sharing.** Use R7 as the dish, with the four sharing strategies as the mirepoix. Context, skill, output, interface; never start by sharing the whole pot.
 - **Cross-org reuse.** Combine R1's voice discipline, R4's trust boundary, and R5's measured judge. Reuse fails when taste, policy, or evidence stops travelling.
 - **Enterprise integration.** Start with the data source, then choose the narrowest action. CRM, ERP, warehouse, iPaaS: each one needs cite-back, plan-mode review, and residual risk named.
-- **Observability and cost control.** Treat logs as sources, not plumbing. R2 keeps the run memory; R5 tells you what to measure; R6 tightens the system under the same yardstick.
+- **Observability and cost control.** Treat logs as sources, not plumbing. R2 keeps the memory; R5 tells you what to measure; R6 tightens the system under the same yardstick.
 - **Handoffs to non-agent systems.** Cook the seam. The agent produces text; another system obeys. Plan-mode review, gate, and "I can't tell" are the base preparation.
 
 Add a recipe when the move is reliable enough that a working practitioner would recommend it to another without caveats. Not before.

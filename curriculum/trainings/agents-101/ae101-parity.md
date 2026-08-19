@@ -88,7 +88,6 @@ Each item: `[ ] [S/M/L] <gap> → <fix>`. Done items are deleted, not annotated 
 
 - [ ] [L] Zero `Source verification` blocks / `checked:` stamps across all 9 module files despite live claims: Mollick citations, an 82%/24% stat, Mata v. Avianca, a Deloitte/DEWR report, an 85%×10 reliability stat.
 - [ ] [L] Zero `<!-- backing -->` blocks in A101 **module files** (AE101 has 9). Note the shared library is better off than the modules: `lectures/when-to-split-an-agent.md` carries a full backing block with claims, stance level and OODA roster. Priority: `output-quality.md`'s reliability math, the shared 82%/24% stat.
-- [ ] [M] Noun-run for the agent sitting in `supplementary/cookbook-for-agent-system-design.md`: `### The Run` heading + 3 body uses → session / task per `vocabulary.md` § The work.
 - [ ] [S] `agent-ready-data` and `personal-to-company-gap` are Pass-1 skeletons: five lines of student intro above a maintainer fence, everything below it planning notes. Their only inbound links are from each other and from maintainer notes. Register or delete is a maintainer call, not sweep work.
 
 **Deliberate non-goals** (recorded so they are not re-proposed)

@@ -74,6 +74,14 @@ test('repin: a rule that moved gets dated; its neighbours keep their old date', 
   assert.equal(next.compendia.check_x.rules['2'].changed_at, '2026-01-01')
 })
 
+test('repin: a rule ADDED after baseline does not stale — that is a coverage hole, not drift', () => {
+  const ledger = { compendia: { check_x: { classes: ['writing'], rules: { 1: { h: 'aaa', changed_at: null } } } } }
+  const cur = { check_x: { classes: ['writing'], rules: [{ id: '1', h: 'aaa' }, { id: '2', h: 'new' }] } }
+  const next = D.repin(ledger, cur, '2026-08-19')
+  assert.equal(next.compendia.check_x.rules['2'].changed_at, null)
+  assert.equal(D.driftedClasses(next, '2026-01-01').size, 0, 'a new rule must not bill the whole class')
+})
+
 test('repin: a removed rule leaves the ledger', () => {
   const ledger = { compendia: { check_x: { classes: ['writing'], rules: { 1: { h: 'aaa', changed_at: null }, 9: { h: 'zzz', changed_at: null } } } } }
   const cur = { check_x: { classes: ['writing'], rules: [{ id: '1', h: 'aaa' }] } }

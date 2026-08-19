@@ -103,10 +103,14 @@ function diffLedger(ledger, current) {
   return report
 }
 
-// Date-stamp what moved; carry forward changed_at for what did not. A rule that
-// is new to the ledger while the compendium is already pinned really did change
-// (it was written); a rule arriving with the compendium's FIRST pin did not —
-// that is the baseline, and baselines stale nothing.
+// Date-stamp what moved; carry forward changed_at for what did not.
+//
+// Only a CHANGED rule dates itself. An ADDED rule is not staleness's business:
+// nothing was judged against it, which is a coverage hole, and
+// audit-eval-coverage.js reports those at rule×file resolution. Billing a whole
+// class corpus-wide for one new rule is the over-broad v2 behaviour this
+// scanner exists to replace — route at the resolution the finer instrument
+// already has. Baselines (a compendium's first pin) stale nothing either.
 function repin(ledger, current, date) {
   const next = { compendia: {} }
   for (const [name, cur] of Object.entries(current)) {
@@ -114,7 +118,7 @@ function repin(ledger, current, date) {
     const rules = {}
     for (const r of cur.rules) {
       const p = prev && prev.rules[r.id]
-      const moved = prev ? (!p || p.h !== r.h) : false
+      const moved = !!(p && p.h !== r.h)
       rules[r.id] = { h: r.h, changed_at: moved ? date : (p ? p.changed_at : null) }
     }
     next.compendia[name] = { classes: cur.classes, rules }

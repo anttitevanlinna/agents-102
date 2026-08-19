@@ -15,7 +15,7 @@ Bring the feature you planned at M2, that's the default. The plan file Claude Co
 
 Optional pre-reads before this module: Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/); [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) for a deeper scan.
 
-If you want the primitives this module uses at a glance, [subagents in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#6-subagents-agent-tool-fresh-context) and [skills in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#7-skills) cover what each is and when to reach for it. Optional.
+If you want the primitives this module uses at a glance, [subagents in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#11-subagents-agent-tool-fresh-context) and [skills in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#13-skills) cover what each is and when to reach for it. Optional.
 
 ## What You'll Learn
 After this module, you will be able to:

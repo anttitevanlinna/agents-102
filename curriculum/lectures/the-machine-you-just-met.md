@@ -113,5 +113,5 @@ Format → `curriculum/backing-format.md`.
 
 - Family B judged 2026-07-03: B-star durability PASS — every slide self-carries NAME/MECHANISM/GOVERNOR without the voice; spine-anchoring rides the M1 protected-ground carve-out (no map slot by doctrine, laws anchored to the lived mirror + failing-test-first instead); worldview a clean recognition closer.
 
-**Quality:** compendium-audited 2026-08-08 (writing@cc2296b story@cc2296b technical@1c765f2 behavior@1c765f2 pedagogy@cc2296b strategy@1c765f2 slides@cc2296b)
-- judges @cc2296b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-15 (writing@1480362 story@1480362 technical@1480362 behavior@1480362 pedagogy@1480362 strategy@1480362 slides@1480362)
+- judges @1480362: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

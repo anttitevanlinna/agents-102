@@ -32,7 +32,7 @@ The PR shipped and the ticket is closed. Now compound the session, the closing s
 
 ## Sweep the session into your rules file one more time
 
-- One more pass before close. Anything earned since the first compound pass at the top of this exercise (the push-backs, the rules you rewrote) that didn't land yet?
+- One more pass before close. Anything earned since the first compound pass (the push-backs, the rules you rewrote) that didn't land yet?
 - A heads-up that you are about to compact or end the session flushes out work in progress. Claude writes down what it was still holding.
 
 Ask Claude to sweep the session for anything earned since the first compound and integrate.
@@ -55,8 +55,8 @@ Whether it earns its keep shows up the next time a session reads it.
 
 **Scope is the rules file only.** The ticket beat is its own exercise (`close-the-ticket`) and runs immediately before this one, so its tracker read is already in scrollback when the sweep fires — do not add a connector or close-out step back into this file. **Emphasis budget (`check_slides.md §9`):** widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) stays bold; body bullet leads de-bolded; no named-term handles remain in this file.
 
-**Quality:** compendium-audited 2026-08-12 (writing@96b3554 story@96b3554 technical@1c765f2 behavior@96b3554 pedagogy@96b3554 strategy@1c765f2 slides@96b3554)
-- judges @96b3554: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-17 (writing@1e4ae21 story@1480362 technical@1480362 behavior@1480362 pedagogy@1480362 strategy@1480362 slides@1e4ae21)
+- judges @1e4ae21: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read the retro summary against session moments) + Apply (integrate the rules file from evidence).
 - **Atomic — no phase markers.** One retro pass into one rules file; the push-back and the second sweep are moves inside it, not beats beside it. Line 3 is authored, not generated.

@@ -1,7 +1,7 @@
 ---
 name: eval-fire
-description: Run a single eval class (writing | story | technical | behavior | pedagogy | strategy | cross_module | slides) against one or more curriculum files. Dispatches a class-judge subagent with the relevant compendiums (filtered by `eval_classes:` frontmatter) and the matching judge prompt template. Returns a structured per-rule verdict. Mirrors `/research-review`'s parallel-launch pattern but scoped to one class per invocation. The full per-file audit lives in `/curriculum-pre-ship-audit` (seven per-file classes + cross_module at module-set scope); this skill is the single-class on-demand fire.
-argument-hint: <class:writing|story|technical|behavior|pedagogy|strategy|cross_module> [--personas N] <file-path> [<file-path> ...]
+description: Run a single eval class (writing | story | technical | behavior | pedagogy | strategy | cross_module | slides | voice_panel) against one or more curriculum files. Dispatches a class-judge subagent with the relevant compendiums (filtered by `eval_classes:` frontmatter) and the matching judge prompt template. Returns a structured per-rule verdict. Mirrors `/research-review`'s parallel-launch pattern but scoped to one class per invocation. The full per-file audit lives in `/curriculum-pre-ship-audit` (seven per-file classes + cross_module at module-set scope); this skill is the single-class on-demand fire.
+argument-hint: <class:writing|story|technical|behavior|pedagogy|strategy|cross_module|voice_panel> [--personas N] <file-path> [<file-path> ...]
 ---
 
 # /eval-fire — single-class judge dispatch
@@ -33,6 +33,7 @@ Fires one eval class against one or more curriculum files. The class determines 
 | `strategy` | `sonnet` | `curriculum/evals/judges/strategy.md` | none | every `memory/check_*.md` with `eval_classes:` containing `strategy` (primarily `check_strategy_tie_in.md`); strategy doc per training |
 | `cross_module` | `sonnet` | `curriculum/evals/judges/cross-module.md` | none | `check_cross_module.md`; supplied module-set paths (≥2) |
 | `slides` | `sonnet` | `curriculum/evals/judges/slides.md` | none | every `memory/check_*.md` with `eval_classes:` containing `slides` (primarily `check_slides.md`) |
+| `voice_panel` | `sonnet` | `curriculum/evals/judges/voice-panel.md` | none | the persona cards in the template; `check_writing.md` §4; `compounded/2026-04-25-writing-ae101-voice-quartet.md`; the module's `Mood target` line |
 
 The orchestrator (you) does NOT inline compendium content into the prompt — the judge subagent reads them on demand. This keeps the orchestrator's context clean and lets the subagent quote line numbers accurately.
 
@@ -40,11 +41,13 @@ The orchestrator (you) does NOT inline compendium content into the prompt — th
 
 ### Step 1 — Parse arguments
 
-`$ARGUMENTS[0]` is the class. Validate it's one of `writing`, `story`, `technical`, `behavior`, `pedagogy`, `strategy`, `cross_module`, `slides`. If invalid or missing, stop and ask.
+`$ARGUMENTS[0]` is the class. Validate it's one of `writing`, `story`, `technical`, `behavior`, `pedagogy`, `strategy`, `cross_module`, `slides`, `voice_panel`. If invalid or missing, stop and ask.
 
 **Slides class fires per-chunk.** The judge splits the body at `##` headings (one slide per chunk, matching `site/layouts/slides.js`) and evaluates every rule against every chunk in isolation. Any slide-rendered file is a valid target: lectures, exercises, module files.
 
 **Cross_module class is module-set-scoped.** It requires ≥2 file paths and ALL must be module files (`curriculum/trainings/<training>/<slug>.md` shape) from the SAME training. Passing 1 file or files from different trainings: stop and ask.
+
+**Voice_panel is a panel, not a judge, and it is not a gate.** It fires six subagents per file — five author personas plus Sami, the cautious reader whose flinch vetoes a unanimous author panel. Scope is AE101 student-facing surfaces (modules, exercises, lectures, prework); reference lookup pages are out. Fire it AFTER the writing class passes: compliance first, taste second, since panel-reading a file with banned words in it wastes six agents. Its findings are taste — they route to `pre-cohort-todos.md` or a card, never auto-applied, and nothing else waits on them. Full when-to-fire, synthesis rule and the maintainer-guard check live in the template.
 
 Optional `--personas N` (only valid for `story`): N is 1, 2, or 3. Default 1. If N > 1, the storytelling judge will run the audience triangle.
 
@@ -63,6 +66,8 @@ For the **pedagogy** class, the primary compendium is `check_pedagogy.md` (front
 For the **strategy** class, the primary compendium is `check_strategy_tie_in.md` (frontmatter `eval_classes:` contains `strategy`). Pass `{{strategy_doc_paths}}` per the file's training (`bosser-strategy:content-strategy.md` for Agents 101 and shared; `bosser-strategy:content-strategy-agentic-engineering-101.md` for AE101; `bosser-strategy:content-strategy-claude-basics.md` for Claude Basics). For shared exercise/lecture files (`curriculum/exercises/<slug>.md`, `curriculum/lectures/<slug>.md`), determine training by slug-matching against the per-training module lists in `site/layouts/curriculum.js` TRAININGS registry. No sim trace.
 
 For the **cross_module** class, the compendium is fixed: `check_cross_module.md`. Substitute `{{module_set_paths}}` with the list of file paths passed as args (joined by newline). No sim trace.
+
+For the **voice_panel** class, there is no `eval_classes:` glob — the calibration set is fixed by the template: `check_writing.md` §4, `compounded/2026-04-25-writing-ae101-voice-quartet.md`, and the `Mood target` line from the maintainer block of the module the file belongs to. A persona cannot judge a beat without knowing which mood it was engineered for, so resolve the mood target before dispatch and pass it in the prompt. No sim trace.
 
 ### Step 3 — Read the judge prompt template
 
@@ -105,6 +110,8 @@ Use the `Agent` tool with:
 
 If multiple file paths were passed, dispatch one subagent per file, all in a single message (parallel).
 
+**Voice_panel dispatches six per file, not one.** Each gets one persona card from the template plus the calibration set, and each returns its own JSON object (`persona`, `pleased`, `delight`, `misses`, `weakest_passage`, `would_sign`). Give each subagent ONLY its own card: a panel where every seat has read every other seat's brief is one judge with six voices, which is the failure the panel exists to avoid. The four appended clauses above still apply, except that a persona's job IS to name the weakest passage — a persona reporting nothing amiss and no weakest passage has not read the file, and that is a broken run, not a clean one. Synthesize after all six return, per the template's synthesis section (all six sign → PLEASED; Sami's misses rank first; run the maintainer-guard grep before listing anything).
+
 ### Step 5 — Aggregate
 
 Each subagent returns structured JSON (see `curriculum/evals/judges/<class>.md` for the exact schema). Collect all returns. Don't dedupe across files — each file gets its own verdict.
@@ -139,7 +146,13 @@ curriculum/evals/scripts/update-quality.sh <file_path> --<class> PASS
 
 # REVISE (note is mandatory, point to the instance JSON for the per-rule findings):
 curriculum/evals/scripts/update-quality.sh <file_path> --<class> REVISE:<NB>/<NT>-see-instances/ae101--<surface-type>--<slug>.<class>.json
+
+# Scope axes take their own flags, and cross_module stamps EVERY module in the set:
+curriculum/evals/scripts/update-quality.sh <module> --cross-module PASS:set=[<m1>,<m2>,...]
+curriculum/evals/scripts/update-quality.sh <file_path> --voice-panel PASS:6/6-signatures
 ```
+
+Both scope rows carry `@<sha>` and are read back by `scan-stale-classes.js`, so the `set=[...]` note is load-bearing, not decoration: it is the list the scanner diffs to decide the row has gone stale. A cross_module row stamped without it reports `no-set` — unverifiable, which the queue treats as owing rather than clean. Slugs in the set are basenames without `.md`, resolved against the stamped module's own directory.
 
 The script is deterministic, touches ONLY the maintainer-block Quality state, and is the only sanctioned writer of that block. Free-form Quality edits drift; the script keeps the format consistent. This is the **script-ratchet endpoint** for the judge classes — a verdict in, a consistent Quality row out.
 

@@ -1,92 +1,99 @@
 {
   "class": "cross_module",
   "module_set": [
-    "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/earn-the-trust.md",
-    "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md"
+    "curriculum/trainings/agentic-engineering-101/earn-the-trust.md",
+    "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md"
   ],
+  "body_sha": {
+    "curriculum/trainings/agentic-engineering-101/earn-the-trust.md": "3dfd9df256228df42f9d7182e7c5bf52180ffb98e6fd6dd27d3789d51a74d0d4",
+    "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md": "cdd3aaa08b5b9b6693ad11169aa6406fdc25af3681976bedeb073116b2871e26"
+  },
   "training": "ae101",
   "verdict": "PASS",
   "module_pairs_evaluated": [
     {
-      "from": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/earn-the-trust.md",
-      "to": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md",
+      "from": "curriculum/trainings/agentic-engineering-101/earn-the-trust.md",
+      "to": "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md",
       "rules_evaluated": [
         {
           "compendium": "check_cross_module.md",
           "rule_index": 1,
           "rule_lead": "Peek at the next module before adding a second exercise",
-          "verdict": "PASS",
-          "evidence": null,
+          "verdict": "N/A",
+          "evidence": "Authorship-process rule about how a maintainer edits, not a property observable in the shipped bodies of the two files. No second-exercise addition is visible in this diff-free judging pass to check against.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 2,
-          "rule_lead": "Between-module reading appears in two places",
-          "verdict": "N/A",
-          "evidence": null,
-          "fix_hint": "No M4-bound between-module readings exist for the M3→M4 gap. M3's optional pre-reads (Willison lethal-trifecta, OWASP) sit in the M2→M3 gap and appear in M3 Prework only (M2 is out of this audit scope). M4's only Prework item is the scoped task (an artefact, not a reading). M4's `## Pre-reads before Module 5` are M5-bound. Rule does not fire on this pair.",
-          "blocking": false
+          "rule_lead": "Between-module reading appears in two places, symmetric framing",
+          "verdict": "PASS",
+          "evidence": "earn-the-trust.md L106-110 '## Bring to Module 4' names the scoped-task homework ('One scoped task you'd send off rather than nudge bit by bit: a real slice.'); run-the-first-experiment.md L6-10 '## Prework' echoes it near-verbatim ('The scoped task you picked as homework. A real slice you'd send off rather than nudge bit by bit.'). Separately, earn-the-trust.md L112-116 '## Pre-read before Module 4' names the Willison 'Designing agentic loops' link; run-the-first-experiment.md L14 Prework references the same URL conditionally via the flag pair naming Module 3 as its source ('If Simon Willison's Designing agentic loops is still on your list from Module 3 ... read it before the send-off'). Both readings are duplicated at both ends with matching framing.",
+          "fix_hint": null,
+          "blocking": true
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 3,
-          "rule_lead": "Cross-module artefact contracts must be explicit at both ends",
+          "rule_lead": "Cross-module artefact contracts explicit at both ends",
           "verdict": "PASS",
-          "evidence": null,
+          "evidence": "Producing side: earn-the-trust.md maintainer-block Artefact contracts table (L189-193) names ADR ('sponsor-stated ADR home; default docs/adr/NNNN-slug.md'), test-strategy skill ('~/.claude/skills/test-strategy/SKILL.md'), and personal rules update ('./CLAUDE.local.md') with M4 named as consumer for all three. Consuming side: exercises/walk-and-send-off.md Phase 2 (read via the linked exercise, since the M4 module file only links it) explicitly instructs 'The agent reads CLAUDE.md, CLAUDE.local.md, memory, ADRs, and any skills you've authored, then ranks the five thin spots' -- the exact three M3 artefacts are named by the same stable identifiers on the consuming side.",
           "fix_hint": null,
-          "blocking": false
+          "blocking": true
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 4,
-          "rule_lead": "Session boundaries and working directories are designed, not implicit",
+          "rule_lead": "Session boundaries and working directories named at both ends",
           "verdict": "PASS",
-          "evidence": "JUDGE-OVER-FIRE corrected 2026-05-15: The first M4 exercise `walk-and-send-off.md` literally opens with `**Session** *(new, \"Module 4 - Run the first experiment\")*` followed by `Start a new Claude Code session at your repo root.` — both session-shape AND working-directory are explicit at the first-exercise layer (the canonical session-open syntax for AE101). The module file's `## Start here` framing-and-question is the trainer-cohort cue layer; the session widget at exercise-top is the cwd/session layer. Rule 4 fully satisfied; judge missed the link-walked exercise content.",
+          "evidence": "Close: earn-the-trust.md L69-87 '## Clear the session' names an explicit convergence prompt then '/clear' as the close mechanism. Open: run-the-first-experiment.md's module body doesn't restate a working directory (no repo/worktree change between M3 and M4, so no rationale is owed), and the linked exercises/walk-and-send-off.md opens with 'Session (new, \"Module 4 - Run the first experiment\")' + '/rename m4-walk-send' + 'Start clean at your repo root' -- explicit, unambiguous, same-repo. No contested 'same repo' phrasing anywhere.",
           "fix_hint": null,
-          "blocking": false,
-          "maintainer_acceptance": {"original_verdict": "REVISE (auto-downgraded to TODO)", "accepted_decision": "(b) hold; no module-file edit", "reason": "Cwd is literal at walk-and-send-off.md exercise-top: 'Start a new Claude Code session at your repo root.' Adding the same line to the module file is belt-and-suspenders for an ambiguity that doesn't exist. Antti 2026-05-15.", "date": "2026-05-15"}
+          "blocking": true
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 5,
-          "rule_lead": "Artefact-contract maintainer-block rows",
+          "rule_lead": "Artefact-contract maintainer-block rows on the producing side",
           "verdict": "PASS",
-          "evidence": null,
+          "evidence": "earn-the-trust.md L187-193 carries the full three-row Artefact contracts table (ADR / test-strategy skill / personal rules update), each with stable identifier, producing prompt/exercise, and consuming module(s) including M4. No ambiguous identifier.",
           "fix_hint": null,
-          "blocking": false
+          "blocking": true
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 6,
-          "rule_lead": "Cross-module structural-failure rescue callouts",
+          "rule_lead": "Cross-module structural-failure rescue callout when M(N+1) load-bears on a plausibly-thin autonomous run",
           "verdict": "N/A",
-          "evidence": null,
-          "fix_hint": "M3 does not end with an autonomous send-off / unattended run that M4 load-bears on. M3 closes with student-authored artefacts (skill, ADR, CLAUDE.local.md) all produced interactively. M4's load-bearing inputs are the scoped task (student picks at home) plus the M3 artefacts — none of which can plausibly be thin/missing in the way an autonomous run can. Rule's trigger condition (prior module's send-off / autonomous run that can plausibly be thin) does not apply.",
+          "evidence": "M3 produces no autonomous/unsupervised send-off run whose output M4 depends on -- the ADR, skill, and CLAUDE.local.md rule are all produced through interactive, student-present exercises, not a send-off that can silently fail thin. The rescue-callout pattern applies to M4->M5 (packaged re-run from M4's un-packaged send-off) and M5->M6, not this pair.",
+          "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 7,
-          "rule_lead": "Audit-discipline — walk M(N-1) close before flagging M(N)",
+          "rule_lead": "Audit-discipline meta-rule (walk M(N-1) close before flagging M(N) as spec drift)",
           "verdict": "N/A",
-          "evidence": null,
-          "fix_hint": "Meta-rule for the auditor, not a per-file finding. No architecture-line spec-drift claim under evaluation in this pair.",
+          "evidence": "Per the compendium's own text: 'judges don't fire this directly' -- it's a meta-rule for the auditor's process, surfaced as an informational note only if obviously violated. No obvious violation observed in this pass.",
+          "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 8,
-          "rule_lead": "Bring-or-scramble plain-stakes-line shape",
+          "rule_lead": "Bring-or-scramble plain-stakes-line shape at module homework boundaries",
           "verdict": "PASS",
-          "evidence": null,
+          "evidence": "earn-the-trust.md L110: 'Come to Module 4 without having picked the task and you'll be scrambling for one while the exercise is already running. Your call.' Matches the canonical form exactly -- clock/exercise-derived stakes ('the exercise is already running'), not peer-comparison ('the room'), student-as-subject, choice preserved. No head-start prompts, no next-module mechanics spoiled, no unearned M4 vocabulary.",
           "fix_hint": null,
-          "blocking": false
+          "blocking": true
         }
       ]
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 0,
+  "notes": [
+    "Non-blocking observation: run-the-first-experiment.md's own maintainer-block Artefact contracts table (L142-148) lists only M4-produced artefacts; it carries no explicit 'consumes from M3' pointer row mirroring earn-the-trust.md's producing-side table. The compendium's rule 5 text only mandates the row on the producing side, and the consuming exercise text (walk-and-send-off.md Phase 2) does name the three M3 artefacts explicitly by stable path, so this is not scored as a REVISE -- flagging only because the compendium's 'Canonical homes' section separately names 'a consumption pointer per §3' as belonging in the consuming module's maintainer block, and this file doesn't have one. Same pattern (producing-side-only table) appears to be accepted practice in the already-PASSed M4-M5-M6 instance, so treating consistently.",
+    "Non-blocking observation: earn-the-trust.md's '## Next' section (L118-122) previews M4's content in fairly concrete terms ('a real task walked against everything you have built so far, the test-strategy conventions and the access-surface facts and the hardening decision included'). This sits in the Bridge/Next section, not a 'Bring to Module N' stakes line, so §8's failure-mode (a) (over-explaining next module's mechanics in the bring section) doesn't technically fire here -- but it's adjacent enough in spirit that a future tightening pass on Bridge sections might want to look at it."
+  ]
 }

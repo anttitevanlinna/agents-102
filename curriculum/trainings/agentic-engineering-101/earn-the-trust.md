@@ -123,7 +123,7 @@ Optional, when your sessions start running heavy: [The context ceiling and token
 
 **Quality:** compendium-audited 2026-08-19 (writing@a7f3966 story@ba5ccf5 technical@ba5ccf5 behavior@1c765f2 pedagogy@ba5ccf5 strategy@7992fd0 slides@ba5ccf5)
 - judges @a7f3966: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @022c684: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust] 3 pairs, 9/9 rules each; M3->M4 out of scope, M4+M5 under concurrent edit; see instances/ae101--module-set--prework-m3.cross_module.json
+- cross_module @1cef93d: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment]; 4 pairs, 0 blocking; see instances/ae101--module-set--prework-m3 + ae101--m3-m4.cross_module.json
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate + Create

@@ -169,14 +169,99 @@ function extractPins(text) {
 // every unpinned file and a judged-clean class re-entered the queue forever.
 const VERDICT_LEAD = '(^|[:,]\\s*)'
 
-function judgesRow(text) {
+// One `- <name> ...` row out of the Quality block (the unbroken run of rows
+// directly under `**Quality:**`).
+function blockRow(text, name) {
   const lines = text.split('\n')
   const qi = lines.findIndex(l => /^\*\*Quality:\*\*/.test(l))
   if (qi === -1) return ''
+  const re = new RegExp(`^-\\s*${name}\\b`)
   for (let k = qi + 1; k < lines.length && lines[k].trim() !== ''; k++) {
-    if (/^-\s*judges/.test(lines[k])) return lines[k]
+    if (re.test(lines[k])) return lines[k]
   }
   return ''
+}
+
+function judgesRow(text) { return blockRow(text, 'judges') }
+
+/* --- scope classes: cross_module + voice_panel -------------------------------
+ *
+ * CLASSES above are the seven PIN classes — `<class>@<sha>` tokens on the
+ * `**Quality:**` line, one judge per file. Two more judges record as their own
+ * rows under that line and fire at a different scope:
+ *
+ *   cross_module — module-set scope. Any member of the pinned `set=[...]` moving
+ *                  in its body degrades the row for every module in the set.
+ *   voice_panel  — per file, whole-file taste (`judges/voice-panel.md`). Taste is
+ *                  not routable to a diff region: any body line changes what the
+ *                  panel would sign, so the test is simply "body moved."
+ *
+ * They stay OUT of `classes` / `detail`. Those arrays feed per-file judge
+ * dispatch, and a cross_module fired against one file is not the judge.
+ */
+const EXTRA_CLASSES = ['cross_module', 'voice_panel']
+
+// `- cross_module @<sha>: PASS — set=[a,b,c]; see instances/<x>.json`
+// The sha is optional because the stamper omits it on the states that cannot be
+// pinned to a passing judge run: `N/A` and `grandfathered`.
+function crossRow(text) {
+  const row = blockRow(text, 'cross_module')
+  const m = /^-\s*cross_module\s*(?:@([A-Za-z0-9]+))?\s*:\s*([A-Za-z/]+)/.exec(row)
+  if (!m) return null
+  const s = /set=\[([^\]]*)\]/.exec(row)
+  return { sha: m[1] || null, verdict: m[2], set: s ? s[1].split(',').map(x => x.trim()).filter(Boolean) : null }
+}
+
+// `- voice_panel @<sha>: PLEASED — 6/6 signatures; see instances/<x>.json`
+function panelRow(text) {
+  const row = blockRow(text, 'voice_panel')
+  const m = /^-\s*voice_panel\s*(?:@([A-Za-z0-9]+))?\s*:\s*([A-Za-z/]+)/.exec(row)
+  return m ? { sha: m[1] || null, verdict: m[2] } : null
+}
+
+// States that settle an axis without pinning it to a judge run. `N/A` = the axis
+// does not apply to this surface; `grandfathered` = pre-dates the axis, valid
+// until the next touch. Neither carries a sha, so neither is diffable.
+const SETTLED = new Set(['N/A', 'grandfathered'])
+
+// Body region only — the same maintainer/frontmatter/fence exemption the pin
+// classes get, so bookkeeping never degrades a judge.
+function bodyMoved(io, sha, rel, meta) {
+  const m = meta || (() => { const t = io.readFile(rel); return t === null ? null : buildLineMeta(t) })()
+  if (m === null) return true                       // member gone: drift, never silence
+  return changeTags(m, parseHunks(io.gitDiff(sha, rel))).changedBody > 0
+}
+
+function crossState(relpath, text, io) {
+  if (typeOf(relpath) !== 'module') return {}       // module-set scope only
+  const row = crossRow(text)
+  if (!row) return { reason: 'never' }
+  if (SETTLED.has(row.verdict)) return {}
+  if (row.verdict !== 'PASS') return { reason: 'revise' }
+  if (!row.sha) return { reason: 'unpinned' }
+  if (!io.validSha(row.sha)) return { reason: 'bad-sha' }
+  if (!row.set || row.set.length === 0) return { reason: 'no-set' }
+  const dir = path.dirname(relpath)
+  const members = row.set.map(s => `${dir}/${s.replace(/\.md$/, '')}.md`)
+  const drifted = members.filter(p => bodyMoved(io, row.sha, p))
+  return drifted.length
+    ? { reason: 'set-drift', sha: row.sha, set: row.set, drifted }
+    : { sha: row.sha, set: row.set }
+}
+
+function panelState(relpath, text, io, meta) {
+  if (typeOf(relpath) === 'reference') return {}    // flat lookup has no voice
+  const row = panelRow(text)
+  if (!row) return { reason: 'never' }
+  if (SETTLED.has(row.verdict)) return {}
+  // The stamper writes axis rows in PASS/REVISE; the panel spec speaks PLEASED/
+  // FINDING. Both vocabularies mean the same thing here — accept either rather
+  // than force one of them to lie.
+  if (row.verdict !== 'PLEASED' && row.verdict !== 'PASS') return { reason: 'finding' }
+  if (!row.sha) return { reason: 'unpinned' }
+  if (!io.validSha(row.sha)) return { reason: 'bad-sha' }
+  if (bodyMoved(io, row.sha, relpath, meta)) return { reason: 'diff-region', sha: row.sha }
+  return { sha: row.sha }
 }
 
 function promptKeys(text) {
@@ -237,7 +322,14 @@ function scanFile(relpath, io) {
       classes.push(cls); detail[cls] = 'never'
     }
   }
-  return { classes, detail }
+  const extra = {}
+  const extraDetail = {}
+  for (const [cls, st] of [['cross_module', crossState(relpath, text, io)],
+    ['voice_panel', panelState(relpath, text, io, meta)]]) {
+    if (st.reason) extra[cls] = st.reason
+    if (st.sha || st.set) extraDetail[cls] = st
+  }
+  return { classes, detail, extra, extraDetail }
 }
 
 function gitIo(repo) {
@@ -361,6 +453,6 @@ function main(argv) {
   process.exit(2)
 }
 
-module.exports = { parseHunks, buildLineMeta, changeTags, extractPins, judgesRow, promptKeys, filterItems, scanFile, typeOf, trainingOf, linkFinder, CLASSES }
+module.exports = { parseHunks, buildLineMeta, changeTags, extractPins, judgesRow, blockRow, promptKeys, filterItems, scanFile, typeOf, trainingOf, linkFinder, CLASSES, EXTRA_CLASSES, crossRow, panelRow, crossState, panelState }
 
 if (require.main === module) main(process.argv.slice(2))

@@ -23,6 +23,9 @@
 //                                               [--json] [--repo <path>]
 // stdout = table, or items JSON with --json (same shape scan-stale-classes
 // --files emits, so it feeds a sweep or `--filter` straight through).
+// Scope axes (cross_module, voice_panel) print in their own sections below the
+// pair tally. They fire at module-set and whole-file scope, so --reason and
+// --json — which feed per-file judge dispatch — do not filter them.
 // Exit 0 always — report tool, not a gate.
 'use strict'
 const fs = require('node:fs')
@@ -75,6 +78,7 @@ function buildUniverse(repo) {
 function collect(repo, io, want) {
   const findLinkers = linkFinder(repo)
   const items = []
+  const scope = []
   const unowned = []
   const unreadable = []
   for (const rel of buildUniverse(repo)) {
@@ -83,21 +87,79 @@ function collect(repo, io, want) {
     if (want !== 'all' && training !== want) continue
     const r = scanFile(rel, io)
     if (!r) { unreadable.push(rel); continue }
-    if (r.classes.length === 0) continue
     const type = typeOf(rel)
     const slug = path.basename(rel, '.md')
+    // Scope classes are collected BEFORE the empty-classes skip: a file whose
+    // seven pins are all clean is exactly the file whose cross_module row can
+    // be stale, and skipping it here would hide that.
+    if (r.extra.cross_module) {
+      scope.push({ cls: 'cross_module', training, slug, file: rel, reason: r.extra.cross_module, detail: r.extraDetail.cross_module || null })
+    }
+    if (r.extra.voice_panel && training === 'ae101') {   // panel scope: AE101 only
+      scope.push({ cls: 'voice_panel', training, slug, file: rel, reason: r.extra.voice_panel, detail: r.extraDetail.voice_panel || null })
+    }
+    if (r.classes.length === 0) continue
     items.push({
       file: rel, type, slug, training,
       instanceSlug: `${training}--${type}--${slug}`,
       classes: r.classes, detail: r.detail,
     })
   }
-  return { items, unowned, unreadable }
+  return { items, scope, unowned, unreadable }
+}
+
+// Cross_module stamps every module in the set, so N modules owing one re-run
+// print as N identical lines unless they are folded back into the set they
+// name. Fold on (training, sha, set).
+function renderScope(scope) {
+  const out = []
+  const cross = scope.filter(s => s.cls === 'cross_module')
+  if (cross.length) {
+    out.push('')
+    out.push('CROSS-MODULE — module-set scope; fire once per SET, not per file:')
+    const sets = new Map()
+    const rowless = []
+    for (const s of cross) {
+      if (!s.detail || !s.detail.set) { rowless.push(s); continue }
+      const key = `${s.training}|${s.detail.sha}|${s.detail.set.join(',')}`
+      if (!sets.has(key)) sets.set(key, { ...s, drifted: new Set(s.detail.drifted || []) })
+      else for (const d of s.detail.drifted || []) sets.get(key).drifted.add(d)
+    }
+    for (const s of sets.values()) {
+      const drift = [...s.drifted].map(f => path.basename(f, '.md')).join(', ')
+      out.push(`  [${s.training}] set=[${s.detail.set.join(',')}] @${s.detail.sha}`)
+      out.push(`      ${s.reason}${drift ? ` — moved since the pin: ${drift}` : ''}`)
+    }
+    if (rowless.length) {
+      const by = {}
+      for (const s of rowless) (by[`${s.training}|${s.reason}`] ||= []).push(s.slug)
+      for (const [k, slugs] of Object.entries(by)) {
+        const [t, reason] = k.split('|')
+        out.push(`  [${t}] ${reason} — no usable row on: ${slugs.join(', ')}`)
+      }
+    }
+  }
+  const panel = scope.filter(s => s.cls === 'voice_panel')
+  if (panel.length) {
+    const by = {}
+    for (const s of panel) (by[s.reason] ||= []).push(s.slug)
+    out.push('')
+    out.push('VOICE PANEL — AE101 taste read (judges/voice-panel.md); findings never block:')
+    for (const reason of ['finding', 'diff-region', 'bad-sha', 'unpinned', 'never']) {
+      const slugs = by[reason]
+      if (!slugs) continue
+      // `never` is the whole unpaneled corpus — a count, not a wall of slugs.
+      out.push(reason === 'never'
+        ? `  never: ${slugs.length} files never paneled (fire per the spec's when-to-fire, not as a sweep)`
+        : `  ${reason}: ${slugs.join(', ')}`)
+    }
+  }
+  return out
 }
 
 const DISPLAY = { module: 'mod', exercise: 'exr', lecture: 'lec', supplementary: 'sup', reference: 'ref' }
 
-function render(items, unowned, unreadable, want, scanned) {
+function render(items, scope, unowned, unreadable, want, scanned) {
   const out = []
   out.push(`=== EVAL QUEUE — training: ${want} ===`)
   out.push('')
@@ -125,6 +187,8 @@ function render(items, unowned, unreadable, want, scanned) {
   out.push(`  by reason: ${tally(byReason)}`)
   out.push(`  by class:  ${tally(byClass)}`)
   out.push(`  reasons: never = no PASS on the judges row · diff-region = body edit routed to this class since its pin · revise = last verdict REVISE · bad-sha = pin points at no commit`)
+  out.push(`  scope reasons: set-drift = a member of the pinned set moved in its body · no-set = row names no set to diff · unpinned = state carries no sha · finding = a persona withheld its signature`)
+  out.push(...renderScope(scope))
   if (unowned.length) {
     out.push('')
     out.push(`UNOWNED — shared file linked from 0 or 2+ trainings, training not guessable (${unowned.length}):`)
@@ -145,7 +209,7 @@ function main(argv) {
   const types = (arg('--type', null) || '').split(',').filter(Boolean)
   const io = makeIo(repo)
 
-  let { items, unowned, unreadable } = collect(repo, io, want)
+  let { items, scope, unowned, unreadable } = collect(repo, io, want)
   const scanned = buildUniverse(repo).length
   if (types.length) items = items.filter(it => types.includes(it.type))
   if (reason) {
@@ -155,10 +219,10 @@ function main(argv) {
   }
   if (argv.includes('--json')) {
     process.stdout.write(JSON.stringify(items.map(({ detail, ...i }) => i), null, 1) + '\n')
-    process.stderr.write(render(items, unowned, unreadable, want, scanned) + '\n')
+    process.stderr.write(render(items, scope, unowned, unreadable, want, scanned) + '\n')
     return
   }
-  process.stdout.write(render(items, unowned, unreadable, want, scanned) + '\n')
+  process.stdout.write(render(items, scope, unowned, unreadable, want, scanned) + '\n')
 }
 
 // scan-stale-classes keeps gitIo private; mirror it rather than fork the file.

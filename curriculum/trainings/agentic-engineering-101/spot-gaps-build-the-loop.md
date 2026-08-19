@@ -102,7 +102,7 @@ Antti
 
 **Quality:** compendium-audited 2026-08-19 (writing@ba5ccf5 story@a7f3966 technical@9c75ce2 behavior@1c765f2 pedagogy@ba5ccf5 strategy@9c75ce2 slides@ba5ccf5)
 - judges @a7f3966: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @93bb807: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; see instances/ae101--m4-m5-m6.cross_module.json
+- cross_module @1cef93d: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--m4-m5-m6.cross_module.json
 
 **Leap test** (per `check_pedagogy.md` rule 45; M6 is an arc-mood exercise so the test names artefact + use, not activity):
 - The student has read their own Claude Code history back across the stack and holds a set of mermaid diagrams of the work they repeat. The dominant gap now sits inside a recognised work-shape, not floating alone.

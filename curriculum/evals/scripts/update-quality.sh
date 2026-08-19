@@ -7,6 +7,9 @@
 # FOUR axes (each renders as ≤1 row):
 #   judges               — six-class verdict (writing/story/technical/behavior/pedagogy/strategy)
 #   cross_module         — module-set verdict (fires at module-set scope only)
+#   voice_panel          — six-persona taste read (judges/voice-panel.md); PASS = all
+#                          six signed. Taste, never blocking — a FINDING is a
+#                          punch list, not a gate.
 #   cohorts              — delivery state
 #
 # (mechanical axis removed 2026-06-01 — the tmux-runner battery is a pre-ship
@@ -24,6 +27,7 @@
 #
 # Other axis flags:
 #   --cross-module        <state>[:<note>]   # module-set scope; note typically `set=[...]`
+#   --voice-panel         <state>[:<note>]   # per file; note typically `6/6 signatures`
 #   --cohorts             <state>[:<note>]
 #
 # State values:
@@ -67,6 +71,7 @@ state_slides=keep
 
 # Axis state
 state_cross_module=keep
+state_voice_panel=keep
 state_maintainer_reviewed=keep
 state_cohorts=keep
 
@@ -80,6 +85,7 @@ while [[ $# -gt 0 ]]; do
     --strategy)            state_strategy="$2"; shift 2 ;;
     --slides)              state_slides="$2"; shift 2 ;;
     --cross-module)        state_cross_module="$2"; shift 2 ;;
+    --voice-panel)         state_voice_panel="$2"; shift 2 ;;
     --maintainer-reviewed) echo "error: the maintainer-reviewed axis was removed 2026-08-15" >&2; exit 1 ;;
     --cohorts)             state_cohorts="$2"; shift 2 ;;
     --sha)                 SHA="$2"; shift 2 ;;
@@ -93,6 +99,7 @@ done
 # REVISE without note is a hard error
 for v in "$state_writing" "$state_story" "$state_technical" "$state_behavior" \
          "$state_pedagogy" "$state_strategy" "$state_slides" "$state_cross_module" \
+         "$state_voice_panel" \
          "$state_cohorts"; do
   if [[ "$v" == "REVISE" ]]; then
     echo "error: REVISE state requires :<note> (cause or accept-reason)" >&2
@@ -173,6 +180,7 @@ check_instance_sha slides    "$state_slides"
 # ---- Read existing Quality block to support --keep ---------------------------
 keep_judges=""
 keep_cross_module=""
+keep_voice_panel=""
 keep_maintainer=""
 keep_cohorts=""
 prior_top=""
@@ -196,6 +204,7 @@ while IFS= read -r line; do
     case "$line" in
       "- judges:"*|"- judges "*)                     keep_judges="$line" ;;
       "- cross_module:"*|"- cross_module "*)         keep_cross_module="$line" ;;
+      "- voice_panel:"*|"- voice_panel "*)           keep_voice_panel="$line" ;;
       "- maintainer-reviewed:"*|"- maintainer-reviewed "*) : ;; # axis removed 2026-08-15 — stray rows dropped on re-stamp
       "- cohorts:"*|"- cohorts "*) keep_cohorts="$line" ;;
       ""|"**"*)                                       in_block=0 ;;
@@ -368,6 +377,7 @@ render_axis_row() {
 }
 
 cross_module_row=$(render_axis_row cross_module "$state_cross_module" "$keep_cross_module")
+voice_panel_row=$(render_axis_row voice_panel "$state_voice_panel" "$keep_voice_panel")
 maintainer_row="" # maintainer-reviewed axis removed 2026-08-15
 cohorts_row=$(render_axis_row cohorts "$state_cohorts" "$keep_cohorts")
 
@@ -461,6 +471,7 @@ TMP="$(mktemp)"
 awk -v top="$NEW_TOP" \
     -v rj="$judges_row" \
     -v rxm="$cross_module_row" \
+    -v rvp="$voice_panel_row" \
     -v rmr="$maintainer_row" \
     -v rc="$cohorts_row" '
   BEGIN { in_block = 0; written = 0 }
@@ -468,6 +479,7 @@ awk -v top="$NEW_TOP" \
     print top
     if (rj  != "") print rj
     if (rxm != "") print rxm
+    if (rvp != "") print rvp
     if (rmr != "") print rmr
     if (rc  != "") print rc
     in_block = 1; written = 1
@@ -483,6 +495,7 @@ awk -v top="$NEW_TOP" \
       # so this purges any stray legacy row on re-stamp (GC, not round-trip).
       if ($0 ~ /^- judges[ :]/) next
       if ($0 ~ /^- cross_module[ :]/) next
+      if ($0 ~ /^- voice_panel[ :]/) next
       if ($0 ~ /^- mechanical(-tested)?[ :]/) next
       if ($0 ~ /^- maintainer-reviewed[ :]/) next
       if ($0 ~ /^- cohorts?[ :]/) next

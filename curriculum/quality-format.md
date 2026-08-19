@@ -20,6 +20,7 @@ The ladder tops at `sim-passed` — the last *recorded* LLM check. Two things ga
 **Quality:** <top-state> <YYYY-MM-DD> (writing@<sha> story@<sha> technical@<sha> behavior@<sha> pedagogy@<sha> strategy@<sha> slides@<sha>)
 - judges @<sha>: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @<set-sha>: PASS — set=[<M(N)>, <M(N+1)>, ...]    # module-set scope; only when ≥2 modules audited together
+- voice_panel @<sha>: PASS — 6/6 signatures                       # six-persona taste read; AE101 student-facing surfaces
 - sim-passed <YYYY-MM-DD> (<persona names + scores>)  # carry forward when storytelling or behavior judge regen + PASS
 - cohorts: <none yet | cohort-name + date + post-cohort changes>
 ```
@@ -39,6 +40,10 @@ The ladder tops at `sim-passed` — the last *recorded* LLM check. Two things ga
 Each class's SHA = file's git short-SHA when that judge passed.
 
 **Cross_module** = separate axis (own row), not per-file pin. Fires at module-set scope (`/curriculum-pre-ship-audit` when ≥2 modules audited together). Stamps each module in set; touching any member degrades the row for all; restored when set re-audits clean.
+
+**Voice_panel** = separate axis (own row), per file. Six personas, five authors plus the reader who vetoes (`curriculum/evals/judges/voice-panel.md`). PASS = all six signed; a withheld signature is a punch list, never a release gate — panel findings route to `pre-cohort-todos.md` or a card, and no other axis waits on them. Taste is whole-file, so there is no diff-region routing: any body line moved since the pin re-owes the read. Scope is AE101 student-facing surfaces; reference lookup pages are out (flat tables have no voice to be pleased by).
+
+Both scope axes degrade executably: `scan-stale-classes.js` reads the rows (`crossState` / `panelState`), `eval-queue.js` prints them in their own sections. Cross_module prints folded back into the SET it names — it fires once per set, never per file.
 
 ## Key rules
 

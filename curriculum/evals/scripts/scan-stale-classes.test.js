@@ -313,4 +313,163 @@ test('scanFile: a class absent from the judges row reads as never', () => {
   assert.deepStrictEqual(scanFile('curriculum/lectures/x.md', rowIo(CLEAN_ROW.replace(', slides PASS', ''))).classes, ['slides'])
 })
 
+// --- scope classes: cross_module + voice_panel ------------------------------
+//
+// CLASSES holds the seven PIN classes (a `<class>@<sha>` token on the Quality
+// line). cross_module and voice_panel record as their own rows and fire at
+// different scope, so they land in `r.extra`, never in `classes`/`detail` —
+// those feed per-file judge dispatch, and cross_module is not a per-file judge.
+// The trap these pin: a file whose seven pins are clean is exactly the file
+// whose scope rows can be stale with nothing reporting it.
+
+const { crossRow, panelRow, EXTRA_CLASSES, CLASSES } = require('./scan-stale-classes.js')
+
+const M6 = [
+  '# M6', 'body line', '', '<!-- maintainer -->',
+  '**Quality:** compendium-audited 2026-08-19 (writing@aaa1111)',
+  '- judges @aaa1111: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS',
+  '- cross_module @ccc3333: PASS — set=[m4,m5,m6]; see instances/x.json',
+  '- voice_panel @ccc3333: PLEASED — 6/6 signatures; see instances/x.voice_panel.json',
+].join('\n')
+
+test('EXTRA_CLASSES are scope classes, kept out of the seven pin classes', () => {
+  assert.deepStrictEqual(EXTRA_CLASSES, ['cross_module', 'voice_panel'])
+  for (const c of EXTRA_CLASSES) assert(!CLASSES.includes(c), `${c} must not be a pin class`)
+})
+
+test('crossRow: parses sha, verdict and set membership', () => {
+  assert.deepStrictEqual(crossRow(M6), { sha: 'ccc3333', verdict: 'PASS', set: ['m4', 'm5', 'm6'] })
+})
+test('crossRow: absent row → null', () => {
+  assert.strictEqual(crossRow('# T\n**Quality:** x\n- judges @a: writing PASS\n'), null)
+})
+test('panelRow: parses sha and verdict', () => {
+  assert.deepStrictEqual(panelRow(M6), { sha: 'ccc3333', verdict: 'PLEASED' })
+})
+
+// io that serves the module and its set siblings out of one map.
+function setIo(files, diffs) {
+  return {
+    readFile: p => (p in files ? files[p] : null),
+    gitDiff: (sha, p) => (diffs[`${sha}:${p}`] || ''),
+    validSha: sha => sha !== 'deadbee',
+  }
+}
+const DIR = 'curriculum/trainings/agentic-engineering-101'
+const SIBLING = '# M\nsome body\n\n<!-- maintainer -->\n**Quality:** x\n'
+const BASE_FILES = { [`${DIR}/m6.md`]: M6, [`${DIR}/m4.md`]: SIBLING, [`${DIR}/m5.md`]: SIBLING }
+const BODY_EDIT = '@@ -2 +2 @@\n-some body\n+some other body\n'
+const MAINTAINER_EDIT = '@@ -5 +5 @@\n-**Quality:** x\n+**Quality:** y\n'
+
+test('cross_module: clean set owes nothing', () => {
+  const r = scanFile(`${DIR}/m6.md`, setIo(BASE_FILES, {}))
+  assert.strictEqual(r.extra.cross_module, undefined)
+})
+
+test('cross_module: a body edit in ANY set member drifts the row', () => {
+  const r = scanFile(`${DIR}/m6.md`, setIo(BASE_FILES, { [`ccc3333:${DIR}/m5.md`]: BODY_EDIT }))
+  assert.strictEqual(r.extra.cross_module, 'set-drift')
+  assert.deepStrictEqual(r.extraDetail.cross_module.drifted, [`${DIR}/m5.md`])
+})
+
+test('cross_module: a maintainer-block edit in a member does NOT drift it', () => {
+  // same exemption the seven pin classes get — bookkeeping must not stale a judge
+  const r = scanFile(`${DIR}/m6.md`, setIo(BASE_FILES, { [`ccc3333:${DIR}/m5.md`]: MAINTAINER_EDIT }))
+  assert.strictEqual(r.extra.cross_module, undefined)
+})
+
+test('cross_module: the file itself counts as a set member', () => {
+  const r = scanFile(`${DIR}/m6.md`, setIo(BASE_FILES, { [`ccc3333:${DIR}/m6.md`]: '@@ -2 +2 @@\n-body line\n+other line\n' }))
+  assert.strictEqual(r.extra.cross_module, 'set-drift')
+})
+
+test('cross_module: a set member that no longer exists is drift, never silence', () => {
+  const files = { ...BASE_FILES }
+  delete files[`${DIR}/m4.md`]
+  assert.strictEqual(scanFile(`${DIR}/m6.md`, setIo(files, {})).extra.cross_module, 'set-drift')
+})
+
+test('cross_module: REVISE on the row outranks a clean set', () => {
+  const files = { ...BASE_FILES, [`${DIR}/m6.md`]: M6.replace('cross_module @ccc3333: PASS', 'cross_module @ccc3333: REVISE') }
+  assert.strictEqual(scanFile(`${DIR}/m6.md`, setIo(files, {})).extra.cross_module, 'revise')
+})
+
+test('cross_module: a pin pointing at no commit is bad-sha', () => {
+  const files = { ...BASE_FILES, [`${DIR}/m6.md`]: M6.replace(/@ccc3333: PASS/, '@deadbee: PASS') }
+  assert.strictEqual(scanFile(`${DIR}/m6.md`, setIo(files, {})).extra.cross_module, 'bad-sha')
+})
+
+test('cross_module: a row with no set= is unverifiable, not clean', () => {
+  const files = { ...BASE_FILES, [`${DIR}/m6.md`]: M6.replace(/ — set=\[m4,m5,m6\]/, '') }
+  assert.strictEqual(scanFile(`${DIR}/m6.md`, setIo(files, {})).extra.cross_module, 'no-set')
+})
+
+// The stamper writes unpinnable states without a sha: `- cross_module: N/A — …`
+// and `- cross_module: grandfathered`. Requiring `@sha` on every row read those
+// as "no row", so a settled axis kept reporting `never` and no stamp could ever
+// silence it.
+test('cross_module: N/A settles the axis, with or without a sha', () => {
+  const files = { ...BASE_FILES, [`${DIR}/m6.md`]: M6.replace(/- cross_module @ccc3333: PASS — set=\[m4,m5,m6\]/, '- cross_module: N/A — an email, not a module in the sequence') }
+  assert.strictEqual(scanFile(`${DIR}/m6.md`, setIo(files, {})).extra.cross_module, undefined)
+})
+
+test('cross_module: grandfathered settles the axis too', () => {
+  const files = { ...BASE_FILES, [`${DIR}/m6.md`]: M6.replace(/- cross_module @ccc3333: PASS — set=\[m4,m5,m6\]/, '- cross_module: grandfathered') }
+  assert.strictEqual(scanFile(`${DIR}/m6.md`, setIo(files, {})).extra.cross_module, undefined)
+})
+
+test('cross_module: a PASS with no sha cannot be diffed, so it is unpinned', () => {
+  const files = { ...BASE_FILES, [`${DIR}/m6.md`]: M6.replace(/- cross_module @ccc3333: PASS/, '- cross_module: PASS') }
+  assert.strictEqual(scanFile(`${DIR}/m6.md`, setIo(files, {})).extra.cross_module, 'unpinned')
+})
+
+test('voice_panel: N/A settles the axis', () => {
+  const files = { ...BASE_FILES, [`${DIR}/m6.md`]: M6.replace(/- voice_panel @ccc3333: PLEASED.*/, '- voice_panel: N/A — trainer page, never projected') }
+  assert.strictEqual(scanFile(`${DIR}/m6.md`, setIo(files, {})).extra.voice_panel, undefined)
+})
+
+test('cross_module: a module with no row at all reads as never', () => {
+  const files = { [`${DIR}/m1.md`]: M6.replace(/^- cross_module.*\n/m, '') }
+  assert.strictEqual(scanFile(`${DIR}/m1.md`, setIo(files, {})).extra.cross_module, 'never')
+})
+
+test('cross_module: module scope only — an exercise never owes it', () => {
+  const files = { 'curriculum/exercises/x.md': M6.replace(/^- cross_module.*\n/m, '') }
+  assert.strictEqual(scanFile('curriculum/exercises/x.md', setIo(files, {})).extra.cross_module, undefined)
+})
+
+test('voice_panel: any body edit since the pin re-owes the panel (taste is whole-file)', () => {
+  const r = scanFile(`${DIR}/m6.md`, setIo(BASE_FILES, { [`ccc3333:${DIR}/m6.md`]: '@@ -2 +2 @@\n-body line\n+other line\n' }))
+  assert.strictEqual(r.extra.voice_panel, 'diff-region')
+})
+
+test('voice_panel: a maintainer-block edit does not re-owe the panel', () => {
+  const r = scanFile(`${DIR}/m6.md`, setIo(BASE_FILES, { [`ccc3333:${DIR}/m6.md`]: '@@ -5 +5 @@\n-**Quality:** compendium-audited 2026-08-19 (writing@aaa1111)\n+**Quality:** y\n' }))
+  assert.strictEqual(r.extra.voice_panel, undefined)
+})
+
+test('voice_panel: a withheld signature stays owing', () => {
+  const files = { ...BASE_FILES, [`${DIR}/m6.md`]: M6.replace('voice_panel @ccc3333: PLEASED', 'voice_panel @ccc3333: FINDING') }
+  assert.strictEqual(scanFile(`${DIR}/m6.md`, setIo(files, {})).extra.voice_panel, 'finding')
+})
+
+test('voice_panel: the stamper\'s PASS reads as pleased, same as the spec\'s PLEASED', () => {
+  const files = { ...BASE_FILES, [`${DIR}/m6.md`]: M6.replace('voice_panel @ccc3333: PLEASED', 'voice_panel @ccc3333: PASS') }
+  assert.strictEqual(scanFile(`${DIR}/m6.md`, setIo(files, {})).extra.voice_panel, undefined)
+})
+
+test('voice_panel: no row → never', () => {
+  const files = { [`${DIR}/m1.md`]: M6.replace(/\n- voice_panel.*$/m, '') }
+  assert.strictEqual(scanFile(`${DIR}/m1.md`, setIo(files, {})).extra.voice_panel, 'never')
+})
+
+// The panel spec (judges/voice-panel.md § Scope) excludes reference lookup
+// tables — flat tables have no voice to be pleased by. Reporting them owing
+// would be 100% noise on a class whose findings are taste, never blocking.
+test('voice_panel: reference pages are out of panel scope', () => {
+  const p = `${DIR}/reference/lookup.md`
+  const files = { [p]: M6.replace(/\n- voice_panel.*$/m, '') }
+  assert.strictEqual(scanFile(p, setIo(files, {})).extra.voice_panel, undefined)
+})
+
 console.log(`\n${n} tests passed`)

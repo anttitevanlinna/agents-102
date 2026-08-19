@@ -31,6 +31,7 @@ Full strategic context → `bosser-strategy` skill.
 - **During:** commit + push signal files every 30–60 min.
 - **Session end:** commit + push uncommitted signals.
 - **Branching:** `main` = shared KB. OODA cycle can push directly (quality gates enforced). Users + experimental → branches; Antti merges.
+- **Never bare `git commit`.** Always `git commit -m msg --only -- <explicit paths>` (message flags BEFORE `--`). The index is shared state between sessions, so `git add` discipline cannot protect a commit: a neighbour can stage into it between your add and your commit, and a plain commit takes the whole index regardless of what you added. `--only` ignores the index and commits exactly the paths you name. Third recurrence 2026-08-19 (`e716f7a`, nine of a neighbour's staged deletions) → `memory/compounded/2026-08-19-platform-the-index-is-shared-state-so-git-add-cannot-protect-a-commit.md`. Read column 1 of `git status --short`, not only column 2.
 - **Never `git stash` unless Antti asks.** Trunk-based, multi-session. WIP is deliberate. `git pull` complains → `git fetch` or commit; don't manufacture clean state. No rebasing.
 
 ## Copyright

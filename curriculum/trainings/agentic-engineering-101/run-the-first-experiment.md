@@ -1,7 +1,7 @@
 # Run the first experiment
 
 ## Big Idea
-Prep your first long session. Whatever you've built so far is what the agent gets, and the session is how you find out what's missing.
+Prep your first long session. The session is how you find out what's missing.
 
 ## Prework
 

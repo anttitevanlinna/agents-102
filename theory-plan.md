@@ -232,9 +232,9 @@ compaction, conversations don't; fuller window = worse answer; write it down or 
 KC four-liner; full naming still an open call.
 
 **Delivery ledger (SHIPPED 2026-08-14/15):** three theory slides mid-M5 deck (`what-packaging-is`: *The
-model has read the field* · *The evidence did not exist yet* · *Two bearings make a candidate, not an
-optimum*) — placed to project while the packaged re-send is out, so *"the second bearing is being taken
-now"* is literally true in the room; hands to *Passing is not proof*, never resolves it; "best practice"
+model has read the field* · *The missing evidence is local* · *The optimum is local, and it moves*) —
+placed to project while the packaged re-send is out, so *"the packaged experiment testing the kit is
+running right now"* is literally true in the room; hands to *Passing is not proof*, never resolves it; "best practice"
 fate stays an open question by design. KC = the four-line frame summary verbatim (`learn-from-the-test`).
 Supporting cuts executed (window menu → M4 closer; lenses re-teach, 80/20, Intercom tiers out — Intercom
 lives at M6). Dense-slides note in two registers; consumption guidance ends on student authority

@@ -213,29 +213,28 @@ A standing check pushes back before the next wrong step builds on the last one. 
 
 ## The verifier completes the three-pattern
 
-- **External verifier**, against plausible-but-wrong. An automated check that decides whether a piece of agent-produced work meets a quality bar. You don't have to be the one to spot it.
+- **External verifier**, against plausible-but-wrong. An automated check that decides whether a piece of agent-produced work meets a quality bar. Your job is to spot when quality is passable and nudge the agent along to done-done.
 - The menu you picked from is practitioner-lived. Kim's writeup of Boris Cherny has him reaching for all three shapes in his long-running practice; the menu form is Kim's synthesis. You built one against your dominant failure. The other two sit alongside the three-pattern for next time.
-
-Three failures you named, three pieces, one each.
 
 ## The model has read the field
 
 - The weights hold the written record: the setup posts, the plan-file templates, the verifier write-ups, the reversals that followed them. More of the field than you will read in a career.
 - Ask for best practice and that is what answers: a well-read average of what other people published about other repos, frozen at a cutoff while the consensus keeps moving. Steer it as hard as you like: what it holds about your next run is a forecast.
-- Whether this field ever settles into a real best practice is an open question. What is not open: today's playbooks are **candidates**.
+- Whether this field ever settles into a real best practice is an open question. Either way, today's playbooks are **candidates**.
 
-## The evidence did not exist yet
+## The missing evidence is local
 
 - Much of what shapes your setup is on the record, and the agent can survey it: the test suite's shape, the merge rules in CI, the age of everything in git.
 - What no survey returns: how this task, this model, this repository and this setup behave together in a run. No document holds it because, until the run, there is nothing to document. Asked ahead, the model predicts. **A prediction is not a measurement.**
-- So a playbook stays a candidate until something tests it here, and nothing published can run that test for you.
+- So a playbook stays a candidate until something tests it here, and nothing published can run that local test for you.
 
-## Two bearings make a candidate, not an optimum
+## The optimum is local, and it moves
 
-- The contrast is two bearings on the same water: the task without the kit, then with it. Where the sessions disagree, you have something local to test: which failure recurs, and whether the check catches it again.
-- A two-bearing fix is a start, wide by design. It narrows as more runs cross it; the optimum stays ahead, moving when your stack moves.
+- An A/B on your own repo: the same task without the kit, then with it. The un-packaged send-off is the baseline; the packaged experiment testing the kit is running right now.
+- Where the two sessions disagree, you'll know something no write-up could have told you: which failure the kit catches here, and which still recurs.
+- The experiment promotes a candidate to tested-here: a wide first fix that narrows as more experiments land. The local optimum stays ahead, moving when your stack moves.
 - The agent makes the evidence cheap: it runs the task, reads its own transcript, diffs the returns. **The engineer decides**: what counts, what the evidence means, what earns promotion into durable practice.
-- A grounded candidate holds in review: *"measured here, this catches it, watch."*
+- What's tested holds in review: *"measured here, this catches it, watch."*
 
 ## Hooks always fire
 
@@ -261,7 +260,7 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 
 **`## Every re-feed pass starts a fresh session` exists to close a depth asymmetry across the verifier menu, and its scope is mechanism only.** The menu lives in `diagnose-and-resend.md`'s Phase 3, where the student picks from it; it names three shapes as peers and tells them *"match the failure, not your familiarity."* Shape 1 is expanded by a whole lecture (`the-gate-is-a-claim.md`); shape 2 by the two hook slides directly above; shape 3 has no expansion here. Runtime primitives (`/goal`, `/loop`, `/schedule`) belong to M6's `the-loop-has-a-name.md` and `agents-that-build-agents.md` and stay out of this slide by design, so the M6 elaboration has something to land. **M6's `## Ralph` slide is a graduation beat, not this slide's twin** — a lever sat in plain shell, Huntley reached for it, the next Ralph is yours — and mechanism bolted onto it would convert the training's closing beat into an explainer. A judge reading *re-anchoring* in the exercise's Ralph re-feed bullet as a dangling referent should resolve it here rather than propose a clause upstream.
 
-**Current shape (2026-08-14/15, Antti-directed):** nine slides. The three-pattern lands first; the theory passage (*The model has read the field* · *The evidence did not exist yet* · *Two bearings make a candidate, not an optimum*, wording Antti-blessed) fills the middle; hooks and re-feed retain the implication end. Cut redistribution, all three documented: the Intercom tier case has its home in M6's `the-loop-has-a-name.md`, so M5 carries no duplicate; context-window management and the subagent-isolation callout live in M4's durable-state slide; **the 80/20 ratio slide is cut with its personal axis absorbed into the theory passage's engineer-decides bullet — the numeric ratio deliberately has no M5 slide, and its only stamped home is `the-map-filled-in.md` (M6).**
+**Current shape (2026-08-14/15, Antti-directed):** nine slides. The three-pattern lands first; the theory passage (*The model has read the field* · *The missing evidence is local* · *The optimum is local, and it moves*, wording Antti-blessed) fills the middle; hooks and re-feed retain the implication end. Cut redistribution, all three documented: the Intercom tier case has its home in M6's `the-loop-has-a-name.md`, so M5 carries no duplicate; context-window management and the subagent-isolation callout live in M4's durable-state slide; **the 80/20 ratio slide is cut with its personal axis absorbed into the theory passage's engineer-decides bullet — the numeric ratio deliberately has no M5 slide, and its only stamped home is `the-map-filled-in.md` (M6).**
 
 - Family B judged 2026-07-03: B-star durability PASS — keystone three-pattern (slides 2–3) recovers NAMED·PLACED·MECHANISM·GOVERNOR cold, placed at Verification; closer honors recognition-before-naming ("what you assembled… has names").
 
@@ -280,10 +279,10 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 **Word count:** ~900 words body, excluding the SVG.
 
 **Theory passage (three slides after the three-pattern slide; wording Antti-blessed 2026-08-14/15):**
-projects while the packaged re-send is out — *"the second bearing is being taken now"* is literally true in
-the room; do not move the passage after the return lands or the tense breaks. It must not resolve the gate
-lecture: *"a bearing, not a verdict"* hands to *Passing is not proof*, and the phrase "one session is a
-sample" is deliberately not used here (it is that lecture's header). The fate of "best practice" stays an
+projects while the packaged re-send is out — *"the packaged experiment testing the kit is running right
+now"* is literally true in the room; do not move the passage after the return lands or the tense breaks. It
+must not resolve the gate lecture: tested-here is not a verdict — that hand-off belongs to *Passing is not
+proof*, and the phrase "one session is a sample" is deliberately not used here (it is that lecture's header). The fate of "best practice" stays an
 open question by design — do not resolve it in either direction. Two lines flagged for the technical judge:
 *"a well-read average"* (sampling characterization, roughly-true by design) and *"more of the field than
 you will read in a career"* (volume claim, deliberately not a currency claim — the cutoff clause beside it
@@ -312,7 +311,6 @@ Claims
 - `plan-md-against-context-rot` · vision · "**plan.md** the agent owns and mutates, against context rot." ← none-owed
 - `ralph-bootstraps-greenfield` · detail · "Ralph leans on exactly this primitive to bootstrap entire greenfield projects" ← huntley-ralph
 - `external-verifier-against-plausible-but-wrong` · vision · "**External verifier**, against plausible-but-wrong." ← none-owed
-- `three-failures-three-pieces` · vision · "Three failures you named, three pieces, one each." ← none-owed
 - `cherny-reaches-for-all-three` · detail · "Kim's writeup of Boris Cherny has him reaching for all three shapes in his long-running practice; the menu form is Kim's synthesis" ← kim-on-cherny
 - `hook-fires-on-named-events` · detail · "Session start, prompt submit, before each tool call, after each tool call, on stop, plus a few more." ← cc-hooks-docs
 - `agent-has-no-say-whether-hook-runs` · detail · "the agent has no say in whether it runs" ← cc-hooks-docs
@@ -327,7 +325,7 @@ Claims
 - `best-practice-fate-open` · vision · "Whether this field ever settles into a real best practice is an open question." ← none-owed
 - `interaction-evidence-nonexistent` · vision · "No document holds it because, until the run, there is nothing to document." ← none-owed
 - `prediction-not-measurement` · vision · "Asked ahead, the model predicts. **A prediction is not a measurement.**" ← none-owed
-- `two-bearing-fix-wide-by-design` · vision · "A two-bearing fix is a start, wide by design." ← none-owed
+- `first-fix-wide-by-design` · vision · "a wide first fix that narrows as more experiments land" ← none-owed
 - `engineer-decides-what-counts` · vision · "**The engineer decides**: what counts, what the evidence means, what earns promotion into durable practice." ← none-owed
 
 Sources
@@ -342,7 +340,6 @@ Sources
 
 Frameworks
 - Dead reckoning and the position fix · [borrow:navigation] · law:is-a-closed-loop-controller · ← cultural-vocab
-- Triangulation and the two-bearing fix · [borrow:navigation] · law:is-a-closed-loop-controller · ← cultural-vocab — same borrow as dead reckoning; the theory slides ride the chart figure's frame
 - Three failure modes · [borrow:none] · law:three-failure-modes · ← none — house vocabulary; the M5 opener carries the stamp and the naming caveat
 - Blast radius · [borrow:safety engineering] · law:blast-radius-error-budget · ← cultural-vocab
 - Local success / global drift · [borrow:none] · law:local-success-global-drift · ← none — the wrong-harbor beat is this law in chart form

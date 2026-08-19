@@ -15,7 +15,7 @@
 ## Take the ranked ten, leave the rest on disk
 
 - From here on, outputs get big. The access map runs pages, the STRIDE walk after it runs longer, and soon two windows produce at once.
-- The countermove from M1 goes to work: never let the agent say everything. The prompts here route the heavy output to disk and keep the chat read short, the saved map first, then a walk-through of what stood out.
+- The countermove from M1 goes to work: tell the agent what output you want. The prompts here route the heavy output to disk and keep the chat read short, the saved map first, then a walk-through of what stood out.
 - Your read is the short list, plus the two or three entries your own knowledge of the codebase flags. The file holds the rest until a decision needs it.
 - When an answer balloons into an essay anyway, say so: ranked list first, ten lines. One sentence buys the time back.
 
@@ -100,7 +100,7 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 
 **View summary:** You invoke a curated security skill on a real feature, then compare its access-surface map with what you know about the codebase. The saved artifact combines broad automated coverage with the codebase-specific delta only you can supply.
 
-**The selective-reading opener chunk.** *Take the ranked ten, leave the rest on disk* sits between the header block and Phase 1 — M3 is where the M1 countermove (never let the agent say everything) becomes load-bearing: first heavy curated-skill output, two windows. Its claim "prompts route heavy output to disk, chat read short" holds against `map-the-access-surface-2` (saves to temp, reports path) and `-3` ("Concise"); if those prompt bodies change shape, re-check it. A companion prompt-sharpen card (ranked bound on `-3`) is open for maintainer approval.
+**The selective-reading opener chunk.** *Take the ranked ten, leave the rest on disk* sits between the header block and Phase 1 — M3 is where the M1 countermove (tell the agent what output you want) becomes load-bearing: first heavy curated-skill output, two windows. Its claim "prompts route heavy output to disk, chat read short" holds against `map-the-access-surface-2` (saves to temp, reports path) and `-3` ("Concise"); if those prompt bodies change shape, re-check it. A companion prompt-sharpen card (ranked bound on `-3`) is open for maintainer approval.
 
 **Emphasis:** handles only — the delta menu pair **The over-call.** / **The miss.** (one handle per item on the Phase 3 menu slide) and the on-screen **User** skills-list label. Widget chrome (`**Time:**`, `**Window:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) is not emphasis. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 
@@ -142,7 +142,7 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 Claims
 - `stride-without-a-map-is-pub-quiz-threat-modeling` · vision · "STRIDE without an access-surface map is pub-quiz threat modeling." ← none-owed
 - `outputs-get-big-from-here` · vision · "From here on, outputs get big." ← none-owed
-- `never-let-the-agent-say-everything` · vision · "never let the agent say everything" ← none-owed
+- `tell-the-agent-what-output-you-want` · vision · "tell the agent what output you want" ← none-owed
 - `route-heavy-output-to-disk` · vision · "The prompts here route the heavy output to disk and keep the chat read short" ← none-owed
 - `your-read-is-the-short-list-plus-your-delta` · vision · "Your read is the short list, plus the two or three entries your own knowledge of the codebase flags." ← none-owed
 

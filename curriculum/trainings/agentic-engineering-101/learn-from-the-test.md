@@ -1,13 +1,13 @@
 # Learn from the test, re-send packaged
 
 ## Big Idea
-Steer your long session. You can't stand over it hour by hour, so the steering goes in before the task leaves, and the return you already have tells you what to put there.
+Steer your long session. You can't stand over it hour by hour, so the steering goes in before the send-off, and the session you already ran is the evidence for what the next one needs.
 
 ## Prework
 
-Walk in with the un-packaged send-off artefact. Stopped, finished, ran out of credit, doesn't matter.
+Walk in with your un-packaged session. Stopped, finished, ran out of credit, doesn't matter.
 
-Optional prep while the un-packaged session is still going: read [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md); watch Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich); read [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md); read [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).
+Optional prep while it's still running: read [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md); watch Laura Entis on Kieran Klaassen, [You're the Bread in the AI Sandwich](https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich); read [Verification asymmetry](trainings/agentic-engineering-101/supplementary/verification-asymmetry.md); read [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -21,19 +21,19 @@ After this module, you will be able to:
 
 You sent off an un-packaged session. You walk in with the artefact in front of you; the lecture below hands you the lenses to read it with.
 
-> **Long sessions, short reads.** The M1 countermove rides along: never let the agent say everything. Ranked findings first, detail on request, the full record on disk. Chat is for what changed and what needs you.
+> **Long sessions, short reads.** The M1 countermove rides along: tell the agent what output you want. Ranked findings first, detail on request, the full record on disk.
 
 [Lecture: Reading the return](lectures/reading-the-return.md)
 
 [Lecture: Learning through contrast](lectures/learning-through-contrast.md)
 
-## Hold the worry beside the artefact
+## Your mid-run worries hint at missing checks
 
 Somewhere during the un-packaged send-off a worry surfaced: did it touch the migration, did the tests really cover the edge. There was no way to check mid-session, and it nagged.
 
-Hold that worry beside the artefact. Where the return bears it out, it names your first check. Where it doesn't, the artefact wins: it saw the session and you didn't.
+Test that worry against the return. Where the return bears it out, the worry names your first check. Where it doesn't, the artefact wins: it is first-hand data from the real run, and the worry is not.
 
-Acting without full control is the job from here on. Build the check, send again. That control pays twice: a session your checks steer is a session you don't babysit, and a session you don't babysit can run beside another.
+Acting without full control is the job from here on. Build the check, send again. The checks pay twice: a session they steer is a session you don't babysit, and a session you don't babysit can run beside another.
 
 ## Set up the worktree
 
@@ -45,7 +45,7 @@ Gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a wor
 
 [Exercise: Diagnose and re-send](exercises/diagnose-and-resend.md)
 
-> **Dense slides.** In the two closing lectures, the headings carry the claims; the bullets are the evidence. Follow the headings; pick the detail that interests you most.
+> **Dense slides.** In the two closing lectures, the headings carry the claims; the bullets back them up. Follow the headings; pick the detail that interests you most.
 
 [Lecture: What packaging is](lectures/what-packaging-is.md)
 
@@ -54,7 +54,7 @@ Gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a wor
 ## Key Concepts
 - The model already knows the public field.
 - The missing evidence is the interaction of this task, model, repository, and setup.
-- The experiment produces a candidate, not an optimum.
+- The experiment promotes a candidate to tested-here; the local optimum stays ahead.
 - The agent makes evidence cheap; the engineer decides what it means and what becomes durable practice.
 
 <!--flag:no-module:spot-gaps-build-the-loop-->
@@ -104,9 +104,9 @@ Module 6 reads the packaged session: subtler misses, subtler drift. The question
 
 **Slide-size splits (2026-07-10, hand slides-audit):** two pre-existing oversized chunks split at conceptual seams, zero wording changes — `## Re-send the same task, packaged` + `## Send it off and read the report cold` carve the re-send narrative out of `## Key Concepts` (was 430w); `## Run the fork from the original repo` carves execution out of the worktree rationale (was 309w). Headers are command-verb, build-squint checked. Key Concepts now ends at its sixth bullet as the section name promises.
 
-**Nag beat + reading reminder added (2026-07-10, Antti-directed cognitive-load arc):** (1) *Long sessions, short reads* blockquote in Start here — the M5 reminder leg of the selective-reading arc (M1 teach → M2 exception → M3 take-into-use → M5 remind), per `check_student_facing.md` §29 operational-reminder-at-moment-of-use. (2) New section *Hold the worry beside the artefact* after Start here — reframes the M4 mid-run worry as a candidate the artefact adjudicates. Opener-dosage check: arming beat (spirit + one move), does not name Ronacher's three-pattern or the failure-mode↔packaging pairing — closer's beats intact. First para names a plausible mid-run worry: resonant-copy carve-out, don't flatten at re-audit.
+**Nag beat + reading reminder added (2026-07-10, Antti-directed cognitive-load arc):** (1) *Long sessions, short reads* blockquote in Start here — the M5 reminder leg of the selective-reading arc (M1 teach → M2 exception → M3 take-into-use → M5 remind), per `check_student_facing.md` §29 operational-reminder-at-moment-of-use. (2) New section *Your mid-run worries hint at missing checks* after Start here — reframes the M4 mid-run worry as a candidate the artefact adjudicates. Opener-dosage check: arming beat (spirit + one move), does not name Ronacher's three-pattern or the failure-mode↔packaging pairing — closer's beats intact. First para names a plausible mid-run worry: resonant-copy carve-out, don't flatten at re-audit.
 
-**Two corrections to that beat, 2026-08-14 (Antti: "may be misplaced, and it now contradicts a bit with the agent encodes from evidence").** (a) **The nag no longer writes the spec on its own.** It read *"Your nag is a spec, arriving one worry at a time. Each one names a check the session should have carried with it."* — which contradicts the module's own method, where `diagnose-and-resend` Phase 1 reads the artefact through three lenses and Phase 2 asks *what validation would have caught this* per **named failure**. The nag is a remembered feeling about a run the student was not watching, the exact source Phase 1 teaches them to distrust (*"assume about 10% of the account misrepresents the run"*). Body now says hold the worry beside the artefact, and **the artefact adjudicates**. Do not restore a wording where the feeling is the spec. (b) **The trio pre-announcement is cut** — *"the reference pins the goal, plan.md carries the state, the verifier runs the checks"* handed out all three roles before the student had diagnosed anything, and `what-packaging-is` exists to earn those names from felt evidence at the closer. The beat is now spirit plus one move, which is what the opener-dosage line above always claimed it was.
+**Two corrections to that beat, 2026-08-14 (Antti: "may be misplaced, and it now contradicts a bit with the agent encodes from evidence").** (a) **The nag no longer writes the spec on its own.** It read *"Your nag is a spec, arriving one worry at a time. Each one names a check the session should have carried with it."* — which contradicts the module's own method, where `diagnose-and-resend` Phase 1 reads the artefact through three lenses and Phase 2 asks *what validation would have caught this* per **named failure**. The nag is a remembered feeling about a run the student was not watching, the exact source Phase 1 teaches them to distrust (*"assume about 10% of the account misrepresents the run"*). Body now tests the worry against the return, and **the artefact adjudicates**. Do not restore a wording where the feeling is the spec. (b) **The trio pre-announcement is cut** — *"the reference pins the goal, plan.md carries the state, the verifier runs the checks"* handed out all three roles before the student had diagnosed anything, and `what-packaging-is` exists to earn those names from felt evidence at the closer. The beat is now spirit plus one move, which is what the opener-dosage line above always claimed it was.
 
 **Key Concepts (Antti-decided 2026-08-15): the four lines ARE the block, verbatim.** Each maps to a beat
 the module teaches — the three theory slides mid-deck in `lectures/what-packaging-is.md`, after the
@@ -115,16 +115,18 @@ the fourth line is deliberate; keep it. Do not re-expand with mechanics bullets:
 and evidence-in-artefact reminders live in the exercise body and the closer lectures, and a KC bullet
 restating them is a duplicate, not a recap.
 
-**Multisession permission carrier (Antti 2026-08-15): M5 alone, one line** at the close of *Hold the worry
-beside the artefact* — control → no babysitting → a second session beside this one. M4 declined (its
+**Multisession permission carrier (Antti 2026-08-15): M5 alone, one line** at the close of *Your mid-run
+worries hint at missing checks* — control → no babysitting → a second session beside this one. M4 declined (its
 stamps stay current). Ledger corrections that travel with this: `training-architecture.md` row 7 (parallel
 sessions date to M3+, where `open-the-side-quest` first runs two), and the commitment-table row #11 in
 `bosser-strategy:content-strategy-agentic-engineering-101.md` — row #11 correction still owed.
 
+**Slide deixis accepted:** "the bullets back" — verb phrase ("back them up"), not a spatial pointer.
+
 **Dense-slides note (Antti-directed 2026-08-15, closing clause Antti-worded):** body blockquote before the
-closer includes — *headings carry the claims; bullets are the evidence; follow the headings, pick the
+closer includes — *headings carry the claims; bullets back them up; follow the headings, pick the
 detail that interests you most*. Engineer register, no house dialect ("handles") on a student surface. The
-claims/evidence split is load-bearing for the SOLO reader: with no trainer speaking the connective tissue
+heading/bullet split is load-bearing for the SOLO reader: with no trainer speaking the connective tissue
 the bullets ARE the lecture. The closing clause is authority-grammar on purpose (equals-not-pupils): it
 describes the artifact and hands the attention decision to the student — do not rewrite it into curriculum
 scheduling ("come back later", "read them after"). Trainer sibling in `trainer-modules.md` M5 says land the

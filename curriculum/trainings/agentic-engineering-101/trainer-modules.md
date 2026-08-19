@@ -401,7 +401,7 @@ Never cut: the send-off itself, and never rescue the un-packaged run. A weak fir
 **Flow.**
 
 1. Lectures — [Reading the return](./#lectures-reading-the-return) (in-room opener, full read — not a pre-read) + [Learning through contrast](./#lectures-learning-through-contrast)
-2. Hold the worry beside the artefact — short module-body beat: the mid-run worry from M4 is tested against the return before it earns a check
+2. Your mid-run worries hint at missing checks — short module-body beat: the mid-run worry from M4 is tested against the return before it earns a check
 3. Exercise — [Fork the worktree, carry the evidence](./#exercises-fork-the-worktree) (15 min): runs from the ORIGINAL repo, the worktree doesn't exist yet. Claude reads the `Run coordinates` block in `task.md` and forks `../<repo>-m5` from the `m4/<slug>` starting-point commit, copying `CLAUDE.local.md` and `observations/` across
 4. Exercise — [Diagnose and re-send](./#exercises-diagnose-and-resend) (68 min, Phases 1–5, in a new session in the worktree). Phase 5 is the re-send and now sits inside the exercise: a new session in the worktree by default (fresh context; the exercise scrollback is heavy), or clear the exercise session in place; then the packaged re-send prompt, and the walk-away report gets read cold
 6. Lecture — [What packaging is](./#lectures-what-packaging-is) (closer; the three-pattern earned from felt evidence — don't squeeze it)

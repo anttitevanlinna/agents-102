@@ -56,7 +56,7 @@ Steering here means executable constraint, not a better prompt. The strange thin
 
 ## Metrics are the dashboard, not the wheel
 
-**CRAP and complexity metrics.** CRAP scores a unit's change risk against its test coverage. Both expose code that is hard to trust under change. Agents can produce plausible-looking complexity very quickly. Metrics do not replace judgment, but they give the engineer a dashboard for where the codebase is becoming risky. In Uncle Bob's frame, this is the gauge that tells you when steering is becoming harder.
+**CRAP and complexity metrics.** One weighs a unit's change risk against its test coverage. Both expose code that is hard to trust under change. Agents can produce plausible-looking complexity very quickly. Metrics do not replace judgment, but they give the engineer a dashboard for where the codebase is becoming risky. In Uncle Bob's frame, this is the gauge that tells you when steering is becoming harder.
 
 ## Small units leave fewer places to hide
 
@@ -118,7 +118,7 @@ Claims
 - `old-discipline-more-valuable-when-less-exciting` · vision · "The old discipline looks less exciting at exactly the moment it becomes more valuable." ← none-owed
 - `martin-experiments-in-public` · vision · "He is experimenting in public, letting the tool surprise him, and then rediscovering which parts of software engineering become more important when code gets cheap." ← none-owed
 - `two-window-split` · detail · "I'm keeping two Claude windows open. One making changes to the source code. The other helping me to plan future changes." ← martin-two-windows
-- `six-fundamentals` · detail · "**CRAP and complexity metrics.** CRAP scores a unit's change risk against its test coverage." ← martin-six-fundamentals
+- `six-fundamentals` · detail · "**CRAP and complexity metrics.** One weighs a unit's change risk against its test coverage." ← martin-six-fundamentals
 - `acceptance-tests-preserve-visible-behaviour` · vision · "They define the externally visible behavior the system must preserve." ← none-owed
 - `unit-tests-shrink-the-search-space` · vision · "They also make the agent's search space smaller." ← none-owed
 - `tdd-states-behaviour-before-implementation` · vision · "The red test forces the desired behavior to be stated before implementation." ← none-owed
@@ -149,7 +149,7 @@ Frameworks
 
 Stance `[stance:2026-08-01 level:L1]`
 - holds: that classic Clean Code practices become steering instruments under agentic development. One named practitioner, working through it in public, with seven verified posts behind him. The body is careful about this — it frames his arc as a learning journey rather than as a verdict the field reached.
-- contested: **the mapping between his seven posts and this page's eight sections, which is looser than the section headings imply.** The six-fundamentals post carries most of the load; acceptance tests, TDD and mutation testing are the discipline he has taught for decades rather than things he said about agents in these posts. That is legitimate synthesis of a body of work and it is not the same as quotation. The title carried the risk and was changed 2026-08-02: *Insights from Uncle Bob* promised eight recent claims, *Reading Uncle Bob's Agent Experiments* promises what the page does. Do not restore the old title; the looseness it papered over is real and stays named here.
+- contested: **the mapping between his seven posts and this page's nine sections, which is looser than the section headings imply.** The six-fundamentals post carries most of the load; acceptance tests, TDD and mutation testing are the discipline he has taught for decades rather than things he said about agents in these posts. That is legitimate synthesis of a body of work and it is not the same as quotation. The title carried the risk and was changed 2026-08-02: *Insights from Uncle Bob* promised eight recent claims, *Reading Uncle Bob's Agent Experiments* promises what the page does. Do not restore the old title; the looseness it papered over is real and stays named here.
 - would-move-it: Martin publishing a position that contradicts the steering framing, or a second practitioner of his standing arriving at the same reframe independently, which would take it to L2 and let the page stop leaning on one figure.
 
 OODA

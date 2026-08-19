@@ -56,7 +56,7 @@ Steering here means executable constraint, not a better prompt. The strange thin
 
 ## Metrics are the dashboard, not the wheel
 
-**CRAP and complexity metrics.** One weighs a unit's change risk against its test coverage. Both expose code that is hard to trust under change. Agents can produce plausible-looking complexity very quickly. Metrics do not replace judgment, but they give the engineer a dashboard for where the codebase is becoming risky. In Uncle Bob's frame, this is the gauge that tells you when steering is becoming harder.
+**CRAP and complexity metrics.** CRAP pairs a unit's complexity with its test coverage, so a tangled unit with thin tests scores worst. Both expose code that is hard to trust under change. Agents can produce plausible-looking complexity very quickly. Metrics do not replace judgment, but they give the engineer a dashboard for where the codebase is becoming risky. In Uncle Bob's frame, this is the gauge that tells you when steering is becoming harder.
 
 ## Small units leave fewer places to hide
 
@@ -106,6 +106,8 @@ The more powerful the coding agent, the more important the steering system.
 
 <!-- maintainer -->
 
+**The CRAP gloss sits where `check_writing.md` §19 and `check_slides.md` §1 pull opposite ways, and it took three passes to see that.** §19 reads a sentence opening with the bold label's own noun as a label echo. §1 requires the chunk to name its referent, and with two nouns in the label a bare *"One"* or *"It"* is ambiguous cold. Naming CRAP is the resolution: the sentence defines the metric rather than restating the label, which is the thing §19 exists to prevent. Judges should score §19 PASS here on that reading rather than proposing a pronoun, and a pronoun proposal should be read as the ping-pong it is.
+
 **Source-access note:** original X pages may require login or be intermittently inaccessible; the X messages are linked in context in the body. Research pass also used public mirrors, a Security Now transcript, Uncle Bob's `arch-view` repository, and adjacent practitioner writing from Simon Willison and Armin Ronacher.
 
 **Quality:** compendium-audited 2026-07-26 (writing@b3143a4 story@b3143a4 technical@b3143a4 behavior@b3143a4 pedagogy@b3143a4 strategy@9697944 slides@9697944)
@@ -118,7 +120,7 @@ Claims
 - `old-discipline-more-valuable-when-less-exciting` · vision · "The old discipline looks less exciting at exactly the moment it becomes more valuable." ← none-owed
 - `martin-experiments-in-public` · vision · "He is experimenting in public, letting the tool surprise him, and then rediscovering which parts of software engineering become more important when code gets cheap." ← none-owed
 - `two-window-split` · detail · "I'm keeping two Claude windows open. One making changes to the source code. The other helping me to plan future changes." ← martin-two-windows
-- `six-fundamentals` · detail · "**CRAP and complexity metrics.** One weighs a unit's change risk against its test coverage." ← martin-six-fundamentals
+- `six-fundamentals` · detail · "**CRAP and complexity metrics.** CRAP pairs a unit's complexity with its test coverage, so a tangled unit with thin tests scores worst." ← martin-six-fundamentals
 - `acceptance-tests-preserve-visible-behaviour` · vision · "They define the externally visible behavior the system must preserve." ← none-owed
 - `unit-tests-shrink-the-search-space` · vision · "They also make the agent's search space smaller." ← none-owed
 - `tdd-states-behaviour-before-implementation` · vision · "The red test forces the desired behavior to be stated before implementation." ← none-owed

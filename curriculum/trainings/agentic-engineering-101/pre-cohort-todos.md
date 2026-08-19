@@ -49,6 +49,22 @@ Sim sweeps and platform-capability checks are not tracked here. The `curriculum-
 - **`spot-gaps-build-the-loop` (exercise) has two Phase 2 gaps.** A trainer plug-point references an LLM-judge that Phase 2 does not contain, and there is no branch for a student who skipped M5 entirely — which is a self-study path, not a hypothetical.
 - **`author-test-strategy-skill` restates the SKILL.md install mechanic four times.** One statement plus a pointer at `training-architecture.md` §Skills is the shape.
 
+## Never-judged supplementaries and reference pages — non-blocking findings (2026-08-19 sweep)
+
+Banked from the first full judge pass over the six AE101 surfaces that had never been judged in any class. Blocking findings were fixed and re-fired in the same pass; these are the ones that survived as non-blocking and are worth one deliberate decision each.
+
+- **`clean-code-is-steering` — LLM / agent / model vocabulary drift, 5 instances** (lines 17, 23, 47, 55, 63): *"the AI's raw power"* and *"an AI can change it"* sit beside *"the agent"*, plus four uses of *"the model"* where `vocabulary.md` wants *the agent* (acting) or *the LLM* (reasoning). One register pass over the file, not five local swaps.
+- **`build-a-project-from-zero` — a rule question, not a defect.** The writing judge reads `## Where the four task sizes come from` as a count adjacent to its own list (`check_writing.md` §20). It was kept deliberately: §20's carve-out keeps a numeral the reader carries away from the enumeration, the header appears in the nav rail and TOC where the items are not visible, and `prework.md` names the same four sizes, so it is a shared handle across two files. Either the carve-out covers headers or it does not; worth settling in the compendium rather than per-file.
+- **`mcp-and-connectors`** — `## Plugins and marketplaces` runs 395w against the 210 cap, and chunks 2/3/4/6 bold whole sentences rather than ≲5-word handles (worst: 20 bolded words at line 60).
+- **`workflow-composition-lineages`** — numerals adjacent to their own lists at lines 7, 54, 106, 117, 119; a coach-register closer with the student as grammatical object (~line 143); and two source-type labels outside the approved taxonomy, `[vendor, anonymous team byline]` and `[vendor docs]` at lines 178/180, both wanting `[vendor press release]`.
+- **`skill-stacking`** — the corpus's only `attested:` token reads `attested:maintainer` (line 184) where `check_research_claims.md` §11a specifies `attested:<who> <date> <context>`; numerals adjacent to their lists at 40, 102, 131.
+- **`claude-code-for-engineers`** — *"overnight"* at line 331 (time-of-day token); Claude:agent noun ratio 244:3, mostly legitimate product naming on a reference page but matching the compendium's own audit signal.
+- **`the-context-ceiling`** — *"later in the training"* forward-references the subagent treatment without giving the reader a calibration window.
+
+**A tooling finding from the same sweep, higher leverage than any of the above.** `update-quality.sh`'s `body_sha` guard hashes the whole file, while `scan-stale-classes.js` routes staleness per region. So a two-word repair re-owes every class, including the ones whose routing says they were never touched: one reworded sentence in `clean-code-is-steering` cost four judge runs, two of which had nothing to re-read. The scanner already computes exactly the information the stamper needs — let a class stamp when the recorded hash differs only in regions that do not route to it. This is the single biggest cost driver in a fix-and-re-fire sweep.
+
+**Strategy doc drift:** `content-strategy-agentic-engineering-101.md` lines 436 and 781 still cite `clean-code-is-steering.md` under its retired working title *Insights from Uncle Bob*. The file's own stance block records the 2026-08-02 rename and says not to reverse it.
+
 ## Hunt for buried gold
 
 Moves are declared well across AE101. **Priors, mechanisms and why-it-works claims are not.** Those are a different species from a move, and a sweep shaped around *"which beat fails to name its move"* structurally cannot see them: a move is *do X*, a prior is *assume Y*, a mechanism is *it works because Z*. The recurring shape is not a missing sentence. The sentence exists, is correct, is well written, and sits somewhere with no weight: a fourth bullet, an item in an enumeration whose point is something else, link anchor text, or a supplementary that never reaches the deck.

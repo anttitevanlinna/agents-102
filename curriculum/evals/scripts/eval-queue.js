@@ -19,6 +19,7 @@
 // Usage:
 //   node curriculum/evals/scripts/eval-queue.js [--training ae101|agents-101|claude-basics|all]
 //                                               [--reason never|diff-region|revise|bad-sha]
+//                                               [--type module,exercise,lecture,supplementary,reference]
 //                                               [--json] [--repo <path>]
 // stdout = table, or items JSON with --json (same shape scan-stale-classes
 // --files emits, so it feeds a sweep or `--filter` straight through).
@@ -141,10 +142,12 @@ function main(argv) {
   const repo = path.resolve(arg('--repo', process.cwd()))
   const want = arg('--training', 'all')
   const reason = arg('--reason', null)
+  const types = (arg('--type', null) || '').split(',').filter(Boolean)
   const io = makeIo(repo)
 
   let { items, unowned, unreadable } = collect(repo, io, want)
   const scanned = buildUniverse(repo).length
+  if (types.length) items = items.filter(it => types.includes(it.type))
   if (reason) {
     items = items
       .map(it => ({ ...it, classes: it.classes.filter(c => it.detail[c] === reason) }))

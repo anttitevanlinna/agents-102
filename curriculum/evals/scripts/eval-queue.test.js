@@ -115,4 +115,19 @@ test('collect: --training filter keeps only the wanted training', () => {
   assert.ok(collect(root, io, 't-one').items.length > 0)
 })
 
+// --type is what turns the queue into a dispatchable batch: a sweep is scoped
+// by surface kind far more often than by reason.
+test('collect + type filter: keeps only the named surface kinds', () => {
+  const root = fixture()
+  const io = {
+    readFile: p => { try { return fs.readFileSync(path.join(root, p), 'utf8') } catch { return null } },
+    gitDiff: () => '',
+    validSha: () => true,
+  }
+  const { items } = collect(root, io, 'all')
+  const kept = items.filter(i => ['module', 'exercise'].includes(i.type))
+  assert.ok(kept.every(i => i.type !== 'supplementary' && i.type !== 'reference'))
+  assert.ok(kept.some(i => i.type === 'exercise'))
+})
+
 console.log(`\n1..${n}`)

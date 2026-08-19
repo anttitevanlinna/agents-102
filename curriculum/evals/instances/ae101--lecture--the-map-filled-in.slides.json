@@ -1,7 +1,7 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-map-filled-in.md",
-  "body_sha": "66be0080c49ce4b973eacd68c981b1cfbf4ff5453b995b6fb20ed4adfd55fdfd",
+  "body_sha": "f25ce4d6561bfc5a2b66824a14d49dce2108782960e8e445495f194865ccb297",
   "verdict": "REVISE",
   "training": "ae101",
   "chunk_map": [
@@ -81,7 +81,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all five sub-items per chunk: no \"Not X. Not Y. Z.\" construction found (grep for 'Not ' pattern in body: none); no anaphora/epistrophe triples; no self-grading superlatives (grep for 'most useful'/'one of the' style: none); the one number claim (chunk 4 line 32, \"Roughly 80 percent... 20 percent\") is a stated, sourced ratio, not a number-then-retraction pair; no abstraction-noun stacks or empty-leg verb triplets. All four-part lists (e.g. chunk 2 line 17 \"Shape... watch... correct, encode\") are concrete and unretracted.",
+      "evidence": "Checked all five sub-items per chunk: no \"Not X. Not Y. Z.\" construction found (grep -inE 'compendium|forcing function|\\bbeat\\b|\\bmood\\b|firing|surface\\b|Connections' over body lines 1-54 → 0 matches, and no such construction found by read); no anaphora/epistrophe triples; no self-grading superlatives; the one number claim (chunk 4 line 32, \"Roughly 80 percent... 20 percent\") is a stated, sourced ratio, not a number-then-retraction pair; no abstraction-noun stacks or empty-leg verb triplets. All four-part lists (e.g. chunk 2 line 17 \"Shape... watch... correct, encode\") are concrete and unretracted.",
       "fix_hint": null,
       "blocking": true
     },
@@ -91,7 +91,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran grep -inE 'compendium|forcing function|\\bbeat\\b|\\bmood\\b|firing|surface\\b|Connections' over lines 1-54 (body only) → 0 matches. No repo/maintainer dialect on the slide surface.",
+      "evidence": "Ran `sed -n '1,54p' curriculum/lectures/the-map-filled-in.md | grep -inE 'compendium|forcing function|\\bbeat\\b|\\bmood\\b|firing|surface\\b|Connections'` → exit 1, 0 matches. No repo/maintainer dialect on the slide surface.",
       "fix_hint": null,
       "blocking": true
     },
@@ -161,7 +161,7 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "REVISE",
       "chunks_flagged": [3, 4, 5, 6],
-      "evidence": "This is a lecture (not an exercise), so headings should read as claims per the rule's split. Line 22 \"Verification, named\", line 28 \"Absorption, named\", line 34 \"Outcome, named\" are elliptical label-headline pairs (noun + past participle) rather than full declarative claims like the rule's own examples (\"Passing is not proof\"); line 40 \"The question you carry forward\" is a bare noun phrase, not a claim at all. Line 5 \"The checking loop, drawn solid\" and line 46 \"The map, filled in\" are borderline — they read as compressed claims (subject + past-participle predicate) and plausibly clear the bar. Harm test: none of these breaks comprehension (the slide's own bullets carry the claim); this is the corpus-wide pattern flagged in dispatch instructions as firing consistently since 2026-08-15 across many files, not a defect unique to this one. Per this file's own compendium note, treat as a note for one corpus-wide decision rather than a per-file fix.",
+      "evidence": "This is a lecture (not an exercise), so headings should read as claims per the rule's split. Line 22 \"Verification, named\", line 28 \"Absorption, named\", line 34 \"Outcome, named\" are elliptical label-headline pairs (noun + past participle) rather than full declarative claims like the rule's own examples (\"Passing is not proof\"); line 40 \"The question you carry forward\" is a bare noun phrase, not a claim at all. Line 5 \"The checking loop, drawn solid\" and line 46 \"The map, filled in\" are borderline — they read as compressed claims (subject + past-participle predicate) and plausibly clear the bar. Harm test: none of these breaks comprehension (the slide's own bullets carry the claim); this is the corpus-wide pattern flagged in dispatch instructions as firing consistently since 2026-08-15 across many files, not a defect unique to this one. Per this file's own dispatch instructions, held as one corpus-wide maintainer decision rather than actioned per-file this pass.",
       "fix_hint": "Corpus-wide: decide whether the elliptical \"X, named\" / noun-phrase pattern counts as a lecture-claim heading, or whether the rule intends full declarative sentences — do not hand-fix this file ahead of that call.",
       "blocking": false
     }
@@ -169,7 +169,7 @@
   "blocking_findings_count": 0,
   "todos_count": 1,
   "notes": [
-    "Known-lead check (soil line): maintainer block line 154 says the soil-line strip 'is on both the M2 and M6 figures.' Verified: the strip text ('the soil it grows in: act under uncertainty · competence sets the ceiling · cross personal → team') actually appears identically in all four map-engine figure variants (map-engine.md, map-engine-m3-close.md, map-engine-m4-open.md, map-engine-filled.md), not only the two named. The claim is not false (both named figures do carry it) but understates the full set. This is a maintainer-block factual-completeness question, not a slides-class referent-resolution defect (no student-facing text is affected), so it is not filed as a rules_evaluated row here — flagging for the maintainer/technical-class attention.",
-    "Known-lead check (migrated figure labels vs body bullets): compared every SVG text label in chunk 1's map-engine-filled figure against chunk 1's three bullets. The bullets deliberately narrate only the checking-loop label change (old caption 'by hand for now' vs the figure's current 'by your evals now'), consistent with the maintainer's 'Nothing else moved' framing (line 154) and the dose verdict's zero-new-content constraint. No diagram label that the prose used to name has gone unnamed; found no instance of the 'prose stopped naming what the diagram names' pattern flagged elsewhere in this sweep."
+    "Re-fire after the maintainer note was corrected: line 154 now says the soil-line strip 'is on all four `map-engine*` figures' (was 'both the M2 and M6 figures' at the prior verdict). Verified: the strip text appears identically in all four map-engine figure variants (map-engine.md, map-engine-m3-close.md, map-engine-m4-open.md, map-engine-filled.md) — `grep -c` on each returns 1. The claim is now fully accurate; the prior instance's completeness note is resolved and not re-filed.",
+    "Body prose unchanged from the prior verdict (only the maintainer-block line moved); rule 15's finding is unchanged and, per this dispatch's instructions, is deliberately not actioned this pass — it is being collected as one corpus-wide maintainer decision about the 'X, named' elliptical heading pattern across lecture files."
   ]
 }

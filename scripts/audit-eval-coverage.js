@@ -25,6 +25,7 @@
  *
  * Usage:
  *   node scripts/audit-eval-coverage.js [--surface exercises|lectures|modules|all]
+ *   node scripts/audit-eval-coverage.js --training agents-101
  *                                       [--json] [--out <path>]
  * Exit 0 always (report tool, not a gate) unless --strict (exit 1 on any hole).
  */
@@ -32,6 +33,7 @@ const fs = require('fs');
 const path = require('path');
 
 const REPO = path.resolve(__dirname, '..');
+const CR = require(path.join(REPO, 'site/layouts/curriculum.js'));
 const MEM = '/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory';
 const INSTANCES = path.join(REPO, 'curriculum/evals/instances');
 
@@ -189,6 +191,62 @@ function theoryManifestLectures() {
 // `ae101--<slug>` basename collided; the old workaround was a one-off
 // `-module` suffix on just this entry. Regression test:
 // audit-eval-coverage.test.js "SURFACES: every instanceSlug …".
+// Instance filenames carry a per-training prefix, and it is NOT the registry key:
+// AE101's instances are `ae101--…` while agents-101 and claude-basics use their
+// own key verbatim. There is no rule to derive here, only a fact to record.
+const INSTANCE_PREFIX = {
+  'agentic-engineering-101': 'ae101',
+  'agents-101': 'agents-101',
+  'claude-basics': 'claude-basics',
+};
+
+// AE101's surface set is hand-curated and stays that way: its twelve exercises
+// are a deliberate subset, and its lecture list comes from the theory handbook
+// manifest, which is AE101-only IP. Every other training derives its set the way
+// check-slide-size does — walk the modules, follow the include-links. That is the
+// same source of truth build-workbook.js uses, so a file a student can reach is a
+// file this audit can see.
+//
+// Why this exists at all: SURFACES named AE101 files literally and the report
+// stamped `generated_for: 'ae101'`, so the gate whose whole job is proving no
+// rule goes unjudged was blind to every other training in the registry — clean
+// over content it had never opened. Same defect check-slide-size carried until
+// its file set stopped being derived from include-links alone.
+function surfacesFor(trainingKey) {
+  if (trainingKey === 'agentic-engineering-101') return SURFACES;
+  const t = CR.TRAININGS[trainingKey];
+  if (!t) throw new Error(`Unknown training: ${trainingKey}. Known: ${Object.keys(CR.TRAININGS).join(', ')}`);
+  const prefix = INSTANCE_PREFIX[trainingKey] || trainingKey;
+
+  const modules = [];
+  const seen = new Set();
+  const exercises = [];
+  const lectures = [];
+  const modEntries = [];
+  if (t.prework) modEntries.push(t.prework.slug);
+  for (const m of t.modules) modEntries.push(m.slug);
+
+  for (const slug of modEntries) {
+    const rel = path.posix.join('curriculum/trainings', trainingKey, slug + '.md');
+    const abs = path.join(REPO, rel);
+    if (!fs.existsSync(abs)) continue;
+    modules.push({ slug, file: rel, instanceSlug: `${prefix}--module--${slug}` });
+    const body = CR.stripMaintainerTail(fs.readFileSync(abs, 'utf8'));
+    const re = new RegExp(CR.INCLUDE_LINK_RE.source, 'gm');
+    let m;
+    while ((m = re.exec(body)) !== null) {
+      const kindSlug = m[2];                       // e.g. "exercises/name-your-crux"
+      if (seen.has(kindSlug)) continue;
+      seen.add(kindSlug);
+      const [kind, leafSlug] = kindSlug.split('/');
+      const bucket = kind === 'exercises' ? exercises : lectures;
+      const type = kind === 'exercises' ? 'exercise' : 'lecture';
+      bucket.push({ slug: leafSlug, file: `curriculum/${kindSlug}.md`, instanceSlug: `${prefix}--${type}--${leafSlug}` });
+    }
+  }
+  return { exercises, lectures, modules };
+}
+
 const SURFACES = {
   exercises: [
     'orient-and-introspect', 'fix-tests-first', 'compound-and-close',
@@ -424,6 +482,7 @@ function scanInstanceIntegrity(fname, suffix, inst, comp) {
 function main() {
   const args = process.argv.slice(2);
   const wantSurface = (args.includes('--surface') ? args[args.indexOf('--surface') + 1] : 'all');
+  const training = (args.includes('--training') ? args[args.indexOf('--training') + 1] : 'agentic-engineering-101');
   const asJson = args.includes('--json');
   const strict = args.includes('--strict');
   const gate = args.includes('--gate');
@@ -431,9 +490,12 @@ function main() {
   const outPath = outIdx >= 0 ? args[outIdx + 1] : null;
 
   const comp = loadCompendia();
-  const surfaceKeys = wantSurface === 'all' ? Object.keys(SURFACES) : [wantSurface];
+  let surfaces;
+  try { surfaces = surfacesFor(training); }
+  catch (e) { console.error(e.message); process.exit(2); }
+  const surfaceKeys = wantSurface === 'all' ? Object.keys(surfaces) : [wantSurface];
 
-  const report = { generated_for: 'ae101', surfaces: {}, bugs: [], warnings: [], gate_failures: [] };
+  const report = { generated_for: training, surfaces: {}, bugs: [], warnings: [], gate_failures: [] };
   let totalHoles = 0;
   let totalNaBySurface = 0;
 
@@ -453,7 +515,7 @@ function main() {
   }
 
   for (const sk of surfaceKeys) {
-    const surfaceFiles = SURFACES[sk] || [];
+    const surfaceFiles = surfaces[sk] || [];
     const comps = SURFACE_COMPENDIA[sk] || [];
     const surfaceReport = { files: [] };
     for (const sf of surfaceFiles) {
@@ -584,6 +646,8 @@ if (require.main === module) main();
 
 module.exports = {
   SURFACES,
+  surfacesFor,
+  INSTANCE_PREFIX,
   COMPENDIA_NAMESPACE: [...COMPENDIA, ...UNREPORTED_COMPENDIA],
   parseRules,
   parseMovedRules,

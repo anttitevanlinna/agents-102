@@ -27,7 +27,10 @@ const {
   naRuleSet,
   splitMissing,
   SURFACES,
+  surfacesFor,
 } = require('./audit-eval-coverage.js');
+
+const ROOT = path.resolve(__dirname, '..');
 
 // A tiny fake compendium set: check_pedagogy has integer rules 9 and 10 only.
 const COMP = { check_pedagogy: { evalClasses: [], rules: [{ id: '9', lead: 'x' }, { id: '10', lead: 'y' }] } };
@@ -491,6 +494,41 @@ test('known compendium absent from loaded set → NOT flagged unknown (keys off 
 // slug collision fails loudly instead of silently aliasing two files together
 // (this is the one that fails pre-fix: the spot-gaps module carried a
 // `-module` suffix workaround, not a `--module--` segment).
+// The coverage audit was written for AE101 and hardcoded to it: SURFACES named
+// AE101 files literally, and `generated_for` was the string 'ae101'. Every other
+// training in the registry was therefore invisible to the gate that exists to
+// prove no rule goes unjudged — the gate reported clean over trainings it had
+// never opened, which is the same defect check-slide-size carried until
+// 2026-08-12. Found 2026-08-19 during the agents-101 parity pass.
+test('surfacesFor derives a surface set for a training that is not AE101', () => {
+  const a101 = surfacesFor('agents-101');
+  assert.ok(a101.modules.length >= 8,
+    `expected agents-101 to contribute its module files, got ${a101.modules.length}`);
+  assert.ok(a101.exercises.length > 5 && a101.lectures.length > 5,
+    'expected the exercise and lecture surfaces to be derived from module include-links, ' +
+    `got ${a101.exercises.length} exercises and ${a101.lectures.length} lectures`);
+
+  for (const [group, files] of Object.entries(a101)) {
+    for (const f of files) {
+      assert.ok(fs.existsSync(path.join(ROOT, f.file)),
+        `${group}: ${f.file} does not exist — a derived surface must name a real file`);
+      assert.match(f.instanceSlug, /^agents-101--(exercise|lecture|module)--/,
+        `${group}: instanceSlug "${f.instanceSlug}" must carry the training prefix and its ` +
+        'surface-type segment, matching the instances already on disk');
+    }
+  }
+});
+
+test('surfacesFor("agentic-engineering-101") is exactly the SURFACES it always was', () => {
+  assert.deepStrictEqual(surfacesFor('agentic-engineering-101'), SURFACES,
+    'the AE101 surface set is hand-curated (12 named exercises, theory-manifest lectures) ' +
+    'and must not change shape when the function is generalised');
+});
+
+test('surfacesFor rejects a training the registry does not know', () => {
+  assert.throws(() => surfacesFor('no-such-training'), /Unknown training/);
+});
+
 test('SURFACES: every instanceSlug is unique across all surface groups (no basename collision)', () => {
   const seen = new Map(); // instanceSlug -> "group/slug" of first owner
   const dupes = [];

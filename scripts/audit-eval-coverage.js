@@ -52,11 +52,12 @@ const UNREPORTED_COMPENDIA = [
 // file it outside the rule namespace, so it credits no real rule's coverage.
 const KNOWN_COMPENDIA = new Set([...COMPENDIA, ...UNREPORTED_COMPENDIA]);
 
-// Compendiums cite rules three ways the auditor must read as one: bare integer
+// Compendiums cite rules four ways the auditor must read as one: bare integer
 // (9), sub-lettered (9b — a REAL rule that parseRules collapses onto its integer
-// parent), and with or without the .md suffix on the compendium name. Normalise
+// parent), sub-pointed (6.2 — same idea, decimal instead of letter), and with or
+// without the .md suffix on the compendium name. Normalise
 // both halves of the key at every lookup, or faithful citations credit nothing.
-const parentRule = (idx) => String(idx).replace(/^(\d+)[a-z]$/, '$1');
+const parentRule = (idx) => String(idx).replace(/^(\d+)(?:[a-z]|\.\d+)$/, '$1');
 // A third convention: the sub-letter lives in the LEAD, not the index —
 // `rule_index: 4` five times over with leads "(4a) …", "4b. …". Five honest
 // judgments on five real rules, so the cram detector keys on the announced
@@ -351,9 +352,27 @@ function scanInstanceIntegrity(fname, suffix, inst, comp) {
     const unknownComps = new Set(); // pseudo-compendia, deduped per name
     for (const r of inst.rules_evaluated) {
       if (!r) continue;
+      // A string row is the documented Haiku schema degradation (§21): the judge
+      // returned "check_writing.md § 1" instead of an object. Every field the
+      // coverage model reads is absent, so the instance credits NOTHING — and it
+      // did so in silence, because a string is truthy and every lookup on it is
+      // undefined. Three instances in the corpus are entirely this shape.
+      if (typeof r !== 'object') { warnings.push({ kind: 'non-object-row', file: fname, detail: String(r).slice(0, 60) }); continue; }
       if (r.verdict != null && !VERDICT_ENUM.has(String(r.verdict).trim())) {
         warnings.push({ kind: 'non-enum-verdict', file: fname, compendium: r.compendium, rule_index: r.rule_index, verdict: r.verdict });
       }
+      // A judgement with no numbered rule home declares itself: `rule_index: null`
+      // + `judge_owned: true`. It credits no rule and warns about none. A null
+      // index WITHOUT the flag is a judge that never said which rule it judged —
+      // silently skipped until now, which is how the corpus grew them.
+      if (r.rule_index == null) {
+        // A row that never claimed to cite a compendium rule is not a row that
+        // forgot to: the slides class carries its own schema ({rule, name, …}).
+        // Only a row naming a compendium owes a rule index.
+        if (r.compendium != null && r.judge_owned !== true) warnings.push({ kind: 'missing-rule-index', file: fname, compendium: r.compendium, rule_lead: r.rule_lead });
+        continue;
+      }
+      if (r.judge_owned === true) continue; // declared home-less; the index, if any, is decoration
       if (r.compendium != null && r.rule_index != null) {
         const cname = compendiumName(r.compendium);
         // The cram detector never collapses sub-rules: §9 and §9b are two distinct
@@ -529,6 +548,7 @@ function printHuman(report, comp) {
       else if (w.kind === 'unresolvable-rule-index') out.push(`  • unresolvable-rule-index  ${w.file}  ${w.compendium}::${w.rule_index}`);
       else if (w.kind === 'non-enum-verdict') out.push(`  • non-enum-verdict  ${w.file}  ${w.compendium}::${w.rule_index} = "${w.verdict}"`);
       else if (w.kind === 'duplicate-rule-index') out.push(`  • duplicate-rule-index  ${w.file}  ${w.compendium}::${w.rule_index} ×${w.count} (judgments crammed onto one index)`);
+      else if (w.kind === 'non-object-row') out.push(`  • non-object-row  ${w.file}  "${w.detail}" (schema degradation — the instance credits no rule at all)`);
       else if (w.kind === 'unknown-compendium') out.push(`  • unknown-compendium  ${w.file}  "${w.compendium}" (not in the rule namespace)`);
       else out.push(`  • ${w.kind}  ${w.file}`);
     }
@@ -564,6 +584,7 @@ if (require.main === module) main();
 
 module.exports = {
   SURFACES,
+  COMPENDIA_NAMESPACE: [...COMPENDIA, ...UNREPORTED_COMPENDIA],
   parseRules,
   parseMovedRules,
   parseSubRuleLeads,

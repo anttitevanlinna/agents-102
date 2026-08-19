@@ -225,11 +225,19 @@ test('drift onto a SUB-lettered rule resolves to its integer parent', () => {
   // mapped to the parent the coverage model actually credits.
   const comp = { check_student_facing: { evalClasses: [], rules: [{ id: '21', lead: 'Something else entirely.' }],
     subLeads: [{ id: '21', lead: 'Session / task / run split (all trainings).' }] } };
-  const inst = { class: 'writing', rules_evaluated: [
+  // 21.5 and 21b are the same rule said two ways, and both land on parent 21 —
+  // so this is a citation that resolves, not a drift. The drift path is exercised
+  // by an index that names no rule at all.
+  const ok = { class: 'writing', rules_evaluated: [
     { compendium: 'check_student_facing.md', rule_index: 21.5, rule_lead: 'Session / task / run split (all trainings).', verdict: 'PASS' },
   ] };
-  const { warnings } = scanInstanceIntegrity('x.writing.json', 'writing', inst, comp);
-  const d = warnings.filter(w => w.kind === 'rule-index-drift');
+  assert.deepEqual(scanInstanceIntegrity('x.writing.json', 'writing', ok, comp).warnings, []);
+  assert.ok(verdictedKeys([ok], comp).has('check_student_facing.md::21'));
+
+  const drifted = { class: 'writing', rules_evaluated: [
+    { compendium: 'check_student_facing.md', rule_index: 'pre-3', rule_lead: 'Session / task / run split (all trainings).', verdict: 'PASS' },
+  ] };
+  const d = scanInstanceIntegrity('x.writing.json', 'writing', drifted, comp).warnings.filter(w => w.kind === 'rule-index-drift');
   assert.equal(d.length, 1);
   assert.equal(d[0].should_be, '21');
 });
@@ -265,10 +273,82 @@ test('verdictedKeys without a compendium set → unchanged behaviour, keys off t
   assert.ok(keys.has('check_writing.md::9'));
 });
 
-test('float 9.1 rule_index → unresolvable-rule-index warning', () => {
+test('float 9.1 rule_index → the fourth sub-rule convention, collapses onto parent 9', () => {
+  // check_writing rows carry 6.2/6.3/6.4/6.5 the way others carry 9b: a sub-point
+  // of rule 6. Same collapse, same reason — the coverage model credits the parent.
   const inst = { class: 'pedagogy', rules_evaluated: [{ compendium: 'check_pedagogy.md', rule_index: 9.1, verdict: 'PASS' }] };
   const { warnings } = scanInstanceIntegrity('ae101--x.pedagogy.json', 'pedagogy', inst, COMP);
+  assert.deepEqual(warnings, []);
+  assert.ok(verdictedKeys([inst], COMP).has('check_pedagogy.md::9'));
+});
+
+test('a float whose integer parent does not exist is still unresolvable', () => {
+  const inst = { class: 'pedagogy', rules_evaluated: [{ compendium: 'check_pedagogy.md', rule_index: 88.2, verdict: 'PASS' }] };
+  const { warnings } = scanInstanceIntegrity('ae101--x.pedagogy.json', 'pedagogy', inst, COMP);
   assert.equal(warnings.filter(w => w.kind === 'unresolvable-rule-index').length, 1);
+});
+
+// ── Judgments with no numbered rule home ──
+// Judges keep emitting them: "Big Idea match", "Trigger — is this file
+// workshop-shaped?", a scope call that a whole compendium does not apply. The
+// templates say route these to `notes`, and the judges keep not doing it,
+// because the judgement is real and `notes` is prose. The home is a row that
+// declares itself: `rule_index: null` + `judge_owned: true`. It credits no rule
+// (the coverage model already skips a null index), it survives as a record, and
+// it is greppable. A null index WITHOUT the flag is a judge that forgot to say
+// which rule it judged — which the auditor used to skip in silence.
+test('judge-owned row (null index + flag) → no warning', () => {
+  const inst = { class: 'pedagogy', rules_evaluated: [
+    { compendium: 'check_workshop.md', rule_index: null, judge_owned: true, rule_lead: 'Trigger — is this file workshop-shaped?', verdict: 'N/A' },
+  ] };
+  const { bugs, warnings } = scanInstanceIntegrity('x.pedagogy.json', 'pedagogy', inst, COMP);
+  assert.deepEqual(bugs, []);
+  assert.deepEqual(warnings, []);
+});
+
+test('judge-owned flag also excuses a pseudo-compendium (the judgment has no home by definition)', () => {
+  const inst = { class: 'story', rules_evaluated: [
+    { compendium: 'judge-owned', rule_index: null, judge_owned: true, rule_lead: 'Big Idea match', verdict: 'PASS' },
+  ] };
+  const { warnings } = scanInstanceIntegrity('x.story.json', 'story', inst, COMP);
+  assert.deepEqual(warnings, []);
+});
+
+test('the slides class uses its own row schema → not judged as a rule row', () => {
+  // {rule, name, verdict, blocking, evidence} — no `compendium`, no `rule_index`.
+  // A row that never claimed to cite a compendium rule is not a row that forgot to.
+  const inst = { class: 'slides', rules_evaluated: [
+    { rule: 1, name: 'Referent resolution under sequential deck read', verdict: 'PASS', blocking: true },
+  ] };
+  const { bugs, warnings } = scanInstanceIntegrity('x.slides.json', 'slides', inst, COMP);
+  assert.deepEqual(bugs, []);
+  assert.deepEqual(warnings, []);
+});
+
+test('null rule_index WITHOUT the flag → missing-rule-index warning (was silently skipped)', () => {
+  const inst = { class: 'pedagogy', rules_evaluated: [
+    { compendium: 'check_pedagogy.md', rule_index: null, rule_lead: 'Something.', verdict: 'PASS' },
+  ] };
+  const { warnings } = scanInstanceIntegrity('x.pedagogy.json', 'pedagogy', inst, COMP);
+  assert.equal(warnings.filter(w => w.kind === 'missing-rule-index').length, 1);
+});
+
+test('judge-owned rows credit no rule', () => {
+  const keys = verdictedKeys([
+    { class: 'pedagogy', rules_evaluated: [
+      { compendium: 'check_pedagogy.md', rule_index: null, judge_owned: true, rule_lead: 'x', verdict: 'PASS' },
+    ] },
+  ], COMP);
+  assert.equal(keys.size, 0);
+});
+
+test('a string row (Haiku schema degradation) → non-object-row warning', () => {
+  // "check_writing.md § 1" instead of {compendium, rule_index, verdict}. Every
+  // field the coverage model reads is undefined, so the instance credits nothing
+  // — silently, because a string is truthy and every lookup on it is undefined.
+  const inst = { class: 'writing', rules_evaluated: ['check_writing.md § 1', '1. Banned words — grep zero-tolerance.'] };
+  const { warnings } = scanInstanceIntegrity('x.writing.json', 'writing', inst, COMP);
+  assert.equal(warnings.filter(w => w.kind === 'non-object-row').length, 2);
 });
 
 test('non-enum verdict → non-enum-verdict warning', () => {

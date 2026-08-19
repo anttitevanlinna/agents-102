@@ -206,7 +206,7 @@ done < "$FILE"
 # Extract prior per-class pins from `(<cls>@<sha> ...)` group on the top-line.
 # Pattern: writing@abc1234 story@def5678 technical@ghi9012 behavior@jkl3456
 #          pedagogy@mno7890 strategy@pqr1234.
-# Tolerates extra spaces and any subset of the six classes.
+# Tolerates extra spaces and any subset of the seven classes.
 if [[ -n "$prior_top" ]]; then
   for cls in writing story technical behavior pedagogy strategy slides; do
     pin=$(printf '%s\n' "$prior_top" | sed -nE "s/.*[^a-z]($cls@[a-zA-Z0-9_-]+).*/\1/p")

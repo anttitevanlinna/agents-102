@@ -1,6 +1,6 @@
 ---
 name: eval-fire
-description: Run a single eval class (writing | story | technical | behavior | pedagogy | strategy | cross_module | slides) against one or more curriculum files. Dispatches a class-judge subagent with the relevant compendiums (filtered by `eval_classes:` frontmatter) and the matching judge prompt template. Returns a structured per-rule verdict. Mirrors `/research-review`'s parallel-launch pattern but scoped to one class per invocation. The full per-file audit lives in `/curriculum-pre-ship-audit` (six per-file classes + cross_module at module-set scope); this skill is the single-class on-demand fire.
+description: Run a single eval class (writing | story | technical | behavior | pedagogy | strategy | cross_module | slides) against one or more curriculum files. Dispatches a class-judge subagent with the relevant compendiums (filtered by `eval_classes:` frontmatter) and the matching judge prompt template. Returns a structured per-rule verdict. Mirrors `/research-review`'s parallel-launch pattern but scoped to one class per invocation. The full per-file audit lives in `/curriculum-pre-ship-audit` (seven per-file classes + cross_module at module-set scope); this skill is the single-class on-demand fire.
 argument-hint: <class:writing|story|technical|behavior|pedagogy|strategy|cross_module> [--personas N] <file-path> [<file-path> ...]
 ---
 

@@ -17,14 +17,14 @@ The ladder tops at `sim-passed` — the last *recorded* LLM check. Two things ga
 
 **Format** (top-state line + dimension log in maintainer block):
 ```
-**Quality:** <top-state> <YYYY-MM-DD> (writing@<sha> story@<sha> technical@<sha> behavior@<sha> pedagogy@<sha> strategy@<sha>)
-- judges @<sha>: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** <top-state> <YYYY-MM-DD> (writing@<sha> story@<sha> technical@<sha> behavior@<sha> pedagogy@<sha> strategy@<sha> slides@<sha>)
+- judges @<sha>: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @<set-sha>: PASS — set=[<M(N)>, <M(N+1)>, ...]    # module-set scope; only when ≥2 modules audited together
 - sim-passed <YYYY-MM-DD> (<persona names + scores>)  # carry forward when storytelling or behavior judge regen + PASS
 - cohorts: <none yet | cohort-name + date + post-cohort changes>
 ```
 
-`compendium-audited` carries six per-class git short-SHA pins. Per-file classes mirror the compendium split:
+`compendium-audited` carries seven per-class git short-SHA pins. Per-file classes mirror the compendium split:
 
 | Class | Surface | Compendium |
 |---|---|---|
@@ -34,6 +34,7 @@ The ladder tops at `sim-passed` — the last *recorded* LLM check. Two things ga
 | `behavior` | per-prompt distribution vs 15-pattern catalog (Class B sim trace) | `check_prompts.md` + behavior-class |
 | `pedagogy` | module architecture + dynamics (static) | `check_pedagogy.md` |
 | `strategy` | file × strategy-doc alignment (static) | `check_strategy_tie_in.md` |
+| `slides` | per-`##`-chunk cold read; each slide resolves its own referents | `check_slides.md` |
 
 Each class's SHA = file's git short-SHA when that judge passed.
 
@@ -42,9 +43,9 @@ Each class's SHA = file's git short-SHA when that judge passed.
 ## Key rules
 
 - **Auto-degrade is touch-based, not time-based.** File touched after audit date → that tier and higher degrade. Cosmetic edits below `<!-- maintainer -->` don't degrade.
-- **Per-class auto-degrade.** Touching a writing-only line invalidates only `writing@<sha>`; others carry forward. Mappings: prompt block → `behavior@` (+ usually `technical@`); `## Phase` / `## Plug Points` / `## Bridge` → `pedagogy@`; `## Big Idea` / `## Key Concepts` / `## What You'll Learn` → `strategy@`. `curriculum/evals/scripts/eval-queue.js` (`npm run evals:queue`) derives these owings from the pins themselves — it walks the universe, so it catches edits made by any tool, session, or person.
+- **Per-class auto-degrade.** Touching a writing-only line invalidates only `writing@<sha>`; others carry forward. Mappings: prompt block → `behavior@` (+ usually `technical@`); `## Phase` / `## Plug Points` / `## Bridge` → `pedagogy@`; `## Big Idea` / `## Key Concepts` / `## What You'll Learn` → `strategy@`; any body line → `writing@` + `slides@` (both exempt fence interiors and the maintainer block, so bookkeeping does not stale them). `curriculum/evals/scripts/eval-queue.js` (`npm run evals:queue`) derives these owings from the pins themselves — it walks the universe, so it catches edits made by any tool, session, or person.
 - **Never delete a Quality block to avoid a stale marker.** A body edit degrades named classes; it does not void the record. The stamp must survive to go stale, because `scan-stale-classes.js` routes diff-regions to classes by diffing against the pinned SHAs — remove them and the routing has nothing to compare, so a recoverable to-do becomes an unrecoverable one. Deleting also takes the `cross_module:` row with it, which costs a judge run across the whole set to regenerate (up to seven files). Editing body and dropping the block reads as tidiness and is data loss. Restore from `git show <sha>:<path>` if it already happened. (2026-08-09: `f45db08` did this to M3 + M4; an orphaned axis bullet under no parent is the tell.)
-- **Grandfather rule** for files audited pre-2026-05-14: existing `compendium-audited @ <sha>` satisfies the four old classes (writing / story / technical / behavior) IF mtime unchanged. The two new classes (`pedagogy@`, `strategy@`) = `grandfathered` until next touch.
+- **Grandfather rule** for files audited pre-2026-05-14: existing `compendium-audited @ <sha>` satisfies the four old classes (writing / story / technical / behavior) IF mtime unchanged. The three later classes (`pedagogy@`, `strategy@`, `slides@`) = `grandfathered` until next touch.
 - **Reference files** (`curriculum/trainings/<training>/reference/`) **exempt** — flat lookup, no mood / sim surface.
 
 Full rationale → `memory/compounded/2026-04-25-content_creation-quality-state-tagging.md`.

@@ -71,7 +71,6 @@ A judge run over these files that does NOT flag these is under-sensitive; fix th
 
 ## Open decisions (Antti)
 
-- **Add `slides` to `/curriculum-pre-ship-audit`'s per-file class set?** Today it dispatches six classes; slides would be the seventh. Recommended: yes — slides are the default classroom render, and without it new re-chunks ship unaudited. Cost: +1 haiku/sonnet judge per file per audit.
 - **Backward-reference fixes that need new prose** (e.g. compound-and-close's dead "missing PR" reference — cut, or re-anchor to a real beat?) are per-file maintainer calls at fix time, not sweep defaults.
 
 ## Done-when

@@ -61,7 +61,7 @@ Optional, before your rules files grow: [The context ceiling and token efficienc
 **Sources**
 - claude-memory `[checked:2026-08-04 result:OK due:cohort]` https://code.claude.com/docs/en/memory — [capability] Project `CLAUDE.md` is shared team instruction; `CLAUDE.local.md` is personal project-specific instruction. Both load into session context within their scope. fallback: use the sponsor-stated instruction homes and remove the auto-load wording.
 - claude-skills `[checked:2026-08-04 result:OK due:cohort]` https://code.claude.com/docs/en/skills — [capability] Skills package reusable instructions and supporting files; their full content loads when Claude invokes them rather than occupying every session's context. Project and personal skill locations both exist. fallback: say "reusable instruction package" and remove the loading claim.
-- argyris-double-loop `[checked:2026-08-04 result:OK due:none]` https://hbr.org/1977/09/double-loop-learning-in-organizations — [foundational literature] Argyris presents the distinction between correction within existing objectives and learning that challenges underlying policies and objectives. fallback: keep the two feedback paths and remove the name.
+- argyris-double-loop `[checked:2026-08-04 result:OK due:none]` https://hbr.org/1977/09/double-loop-learning-in-organizations — [academic/research] Argyris presents the distinction between correction within existing objectives and learning that challenges underlying policies and objectives. fallback: keep the two feedback paths and remove the name.
 
 **Frameworks**
 - Double-loop learning · [borrow:organisational learning] · law:double-loop-learning · ← argyris-double-loop
@@ -80,5 +80,5 @@ OODA
 
 <!-- /backing -->
 
-**Quality:** compendium-audited 2026-08-05 (writing@d0e6cf0 story@d0e6cf0 technical@d0e6cf0 behavior@d0e6cf0 pedagogy@d0e6cf0 strategy@d0e6cf0 slides@d0e6cf0)
-- judges @d0e6cf0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-19 (writing@8a0ecc18 story@8a0ecc18 technical@8a0ecc18 pedagogy@8a0ecc18 strategy@8a0ecc18 slides@8a0ecc18)
+- judges @8a0ecc18: writing PASS, story PASS, technical PASS, behavior N/A (no prompt blocks on this page), pedagogy PASS, strategy PASS, slides PASS

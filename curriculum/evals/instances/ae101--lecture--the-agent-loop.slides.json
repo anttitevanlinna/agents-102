@@ -1,12 +1,13 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-agent-loop.md",
+  "body_sha": "2292f3a1f97743446ac6cce80714adb3c357dc1bca82779b0badb5eea29064f8",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "The agent loop (H1/lede)", "lines": "1-2"},
-    {"index": 1, "heading": "The agent, the harness, the loop", "lines": "3-9"},
-    {"index": 2, "heading": "See the loop in your live session", "lines": "10-43"}
+    {"index": 0, "heading": "The agent loop (H1)", "lines": "1-1"},
+    {"index": 1, "heading": "The agent, the harness, the loop", "lines": "3-8"},
+    {"index": 2, "heading": "See the loop in your live session", "lines": "10-40"}
   ],
   "rules_evaluated": [
     {
@@ -15,7 +16,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Chunk 1 line 5 defines **agent** in place; line 6 defines **agent harness** in place; line 7 defines **agent loop** in place — each term named at its own point of use, no forward or unnamed reference. Chunk 2 line 30 'Ask where that list comes from' — 'that list' resolves to the tools list requested two prompts earlier at line 22, same chunk, same file, deck-plausible retention. Closest-to-violating candidate: chunk 2 line 34 'Explain how you know what tools you can call in this session' — 'this session' is the student's own live Claude Code session (present, not a file referent), stays inside the exempt category of live/session deixis rather than a broken antecedent.",
       "fix_hint": null,
       "blocking": true
     },
@@ -23,9 +24,9 @@
       "compendium": "check_slides.md",
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No sentence in the body (lines 1-40) points at another file by position; the only file-adjacent references live in the maintainer/backing blocks (out of scope, below the `<!-- maintainer -->` cut at line 42).",
       "fix_hint": null,
       "blocking": true
     },
@@ -35,7 +36,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No 'the X you did/saw/caught' construction anywhere in the body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -45,7 +46,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No guess-then-reveal structure; the three prompts (lines 14-40) are open exploration ('Dig into whatever catches you'), not a predict-then-check beat.",
       "fix_hint": null,
       "blocking": true
     },
@@ -55,7 +56,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Chunk 1 carries a full four-part definition standalone. Chunk 2 carries three complete prompt widgets plus framing sentences ('Three prompts. Dig into whatever catches you.') — self-carrying, not a wait-state bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -65,7 +66,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Chunk 1 header 'The agent, the harness, the loop' truthfully summarizes its three definitional bullets. Chunk 2 header 'See the loop in your live session' truthfully summarizes the three live-introspection prompts that follow.",
       "fix_hint": null,
       "blocking": false
     },
@@ -75,7 +76,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Checked each sub-item across both chunks: no 'Not X. Not Y. Z.' construction; no anaphora/epistrophe triple; no self-grading superlative in body (the only superlative-adjacent language, 'one of the most useful moves', does not appear anywhere in this file); no number-with-retraction; no abstraction-noun stack; line 8's 'context and tool results' is not an empty-leg verb triplet. Closest candidate: line 7 'Prompt → reason → tool calls → results → reason again' is a repeated-verb chain but each stage names a distinct concrete step, not a rhetorical triple.",
       "fix_hint": null,
       "blocking": true
     },
@@ -85,7 +86,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Scanned lines 1-40 for surface(-as-noun), firing, compendium, forcing function, beat, mood, Connections-as-proper-noun: none present. 'Agent harness' is the taught vocabulary term itself (the lesson), not repo/authorial dialect leaking onto a slide.",
       "fix_hint": null,
       "blocking": true
     },
@@ -95,7 +96,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Chunk 1 carries 3 bolded handles (**agent** line 5, **agent harness** line 6, **agent loop** line 7), each a single-word/two-word sub-span naming the term being defined, on a slide that defines exactly 3 terms; the 4th bullet (line 8) is deliberately un-bolded. Maintainer block (line 44 of expanded view) records this as an Antti-directed emphasis pass done specifically 'per check_slides.md §9' to bring the slide under the very-light-bold directive — an existing accept-note per the dispatch preamble's instruction to check the maintainer block before flagging. Reading this as a >1-bold violation would be scoring the corpus for obeying the rule the note cites, the same trap §9's own text warns against for its two listed exceptions.",
       "fix_hint": null,
       "blocking": false
     },
@@ -105,21 +106,62 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "This is a standard lecture body inlined into a module's `.phase--lecture` wrapper per the shared-library pattern (`curriculum/lectures/`); no phase-less prose section present. `node scripts/check-slide-size.js --file curriculum/lectures/the-agent-loop.md` ran and reported 2 slides measured for this file (exit 0), confirming both `##` chunks are visible to the slide tooling that reads the same deck-model contract.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-numbering.js --file curriculum/lectures/the-agent-loop.md` → 'OK — 1 files, Phase/Step numbering consistent.' (exit 0). No hand-numbered headers or Phase/Step refs in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/the-agent-loop.md` → 'OK — 1 files, no page-geometry pointers across the slide cut.' (exit 0). No 'above/below/at the top of this page' constructions in body.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No in-body links in this file's body (lines 1-40); only the three fenced `{{prompt:...}}` widgets, which are not links.",
       "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/the-agent-loop.md` → 'files: 1  slides: 2  limits: 210 words / 6 bullets' / 'oversized: 0' / '✓ every slide is within limits' (exit 0).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "REVISE",
+      "chunks_flagged": [1, 2],
+      "evidence": "Chunk 1 'The agent, the harness, the loop' (line 3) is a noun-phrase label, not a lecture-class claim (contrast the rule's own examples 'Passing is not proof', 'Gates decay'). Chunk 2 'See the loop in your live session' (line 10) reads as imperative ('See...'), the exercise-heading grammar, not a lecture claim. Per dispatch task instructions: this rule has fired consistently corpus-wide since it landed 2026-08-15 and is reported here as a note for one corpus-wide decision, not a per-file finding — flagged for completeness, not as a file-specific defect.",
+      "fix_hint": "Hold for the corpus-wide rule-15 decision rather than a local rewrite.",
       "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 1,
+  "notes": "Rule 15 fired (both chunk headers are labels/imperative, not lecture-class claims) — per dispatch instructions this is a known corpus-wide pattern since 2026-08-15 and is surfaced here as a note for one house-wide decision, not filed as blocking. All mechanical checks (check-slide-size.js, check-slide-numbering.js, check-slide-deixis.js) ran clean, exit 0, on this file."
 }

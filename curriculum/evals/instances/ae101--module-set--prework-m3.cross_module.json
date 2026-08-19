@@ -1,19 +1,20 @@
 {
   "class": "cross_module",
-  "body_sha": {
-    "curriculum/trainings/agentic-engineering-101/prework.md": "cdf88c71834cd634161914c53bbaed2f0cd83170f7ed2c02982ea15a02166b69",
-    "curriculum/trainings/agentic-engineering-101/getting-going.md": "c8f4f3b563932b13d80fe8d52f448ecb01c0c91d7e4067fa5d39833d74972cd6",
-    "curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md": "837e7a1a2a51c469c66b56ad5386cafe0cb09802ba6d6e1ddc4b1c1b7715300f",
-    "curriculum/trainings/agentic-engineering-101/earn-the-trust.md": "3dfd9df256228df42f9d7182e7c5bf52180ffb98e6fd6dd27d3789d51a74d0d4"
-  },
   "module_set": [
     "curriculum/trainings/agentic-engineering-101/prework.md",
     "curriculum/trainings/agentic-engineering-101/getting-going.md",
     "curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md",
     "curriculum/trainings/agentic-engineering-101/earn-the-trust.md"
   ],
+  "body_sha": {
+    "curriculum/trainings/agentic-engineering-101/prework.md": "a048d398abaa596db3e5cb161daaa1d4fe663a549ffd39fcf84af98dd9b501c",
+    "curriculum/trainings/agentic-engineering-101/getting-going.md": "8459c37dd70aaa721272cb8e6049827c6adb6630c42db29c518b44de7f77a3",
+    "curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md": "15d614985bf1062396649089446fb18c98d9732d4ea6658711cb36bb436cfe",
+    "curriculum/trainings/agentic-engineering-101/earn-the-trust.md": "54338e5a670a386ef2fefc26bf18c31d587a19051b4fc90e4c4d1c67424e0b"
+  },
   "training": "ae101",
   "verdict": "PASS",
+  "re_fire_scope_note": "Re-fired 2026-08-19 after plan-mode-done-right.md and earn-the-trust.md changed. git diff 1cef93d confirms both diffs are anchor-only retargets (#5->#9, #6->#11, #7->#13 into reference/claude-code-for-engineers.md, which grew from 16 to 40 sections) plus their own Quality-line SHA stamps. No seam prose (Bridge/Next/Homework/Pre-reads/Connections/Prework/maintainer artefact-contract rows) changed in either file. Confirmed the three retargeted anchors (#9 Plan mode at depth, #11 Subagents, #13 Skills) resolve to the correct sections in the current reference file via grep. Full 3-pair walk re-run on the merits below rather than carried forward.",
   "module_pairs_evaluated": [
     {
       "from": "curriculum/trainings/agentic-engineering-101/prework.md",
@@ -22,63 +23,73 @@
         {
           "compendium": "check_cross_module.md",
           "rule_index": 1,
-          "rule_lead": "Peek at the next module",
+          "rule_lead": "Peek at the next module before adding a second exercise.",
           "verdict": "N/A",
-          "evidence": "M1 adds no second exercise mid-flight and no silent contract break to detect; four exercises named once at getting-going.md L44-50.",
+          "evidence": "No second exercise was added to either file in this diff; nothing to check.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 2,
-          "rule_lead": "Between-module reading in two places",
+          "rule_lead": "Between-module reading appears in two places.",
           "verdict": "PASS",
-          "evidence": "prework.md L72-76 '## Pre-read before Module 1' assigns Willison Vibe engineering; getting-going.md L10-12 '## Prework' echoes the same read and framing ('The prework also carries one optional read for the gap before this module: Simon Willison, Vibe engineering... The first bug fix here starts on the accountable side of that line.').",
+          "evidence": "prework.md L72-76 '## Pre-read before Module 1' assigns Willison, Vibe engineering. getting-going.md L8-12 '## Prework' echoes the same title, link, and one-line framing ('He draws the line between vibe coding and working with coding agents as an accountable engineer'), and the maintainer block (getting-going.md L94) confirms the mirror is deliberate: 'The Willison pre-read is mirrored here on purpose.'",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 3,
-          "rule_lead": "Cross-module artefact contracts explicit at both ends",
+          "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
           "verdict": "PASS",
-          "evidence": "prework.md L114 'Chosen trivial bug ... Consumed by: M1 fix-tests-first prompt consumes the selected bug'; getting-going.md L155 mirrors the same artefact 'Chosen trivial bug (incoming) ... M1 Ex2 fix-tests-first prompt consumes the selected bug as the failing-test target'. Named at both producing and consuming ends, no implicit-contract phrasing found.",
+          "evidence": "prework.md L114 'Chosen trivial bug | Prework session scrollback... | Prework bug-screen conversation | M1 fix-tests-first prompt consumes the selected bug'; getting-going.md L155 mirrors the same row verbatim from the consuming side, both naming the artefact (the chosen bug) and the consuming prompt (fix-tests-first). Not touched by this diff.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 4,
-          "rule_lead": "Session boundaries + working directory named",
+          "rule_lead": "Session boundaries and working directories are designed, not implicit.",
           "verdict": "PASS",
-          "evidence": "prework.md L36-40 names Session (new, \"prework\") and the repo just picked; getting-going.md L10 'You'll open the first session in the repo you picked. You'll stay in this one repo for the whole training.' explicitly names the working directory by reference to the prework decision. No worktree change, no contested repo.",
+          "evidence": "prework.md L36-40 '## 2. Open a Claude Code session in that repo', 'Session (new, \"prework\")', 'Open a new Claude Code session at the repo you just picked.' getting-going.md L10 'You'll open the first session in the repo you picked. You'll stay in this one repo for the whole training.' Working directory named explicitly at both the prework close and M1 open; no ambiguity.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 5,
-          "rule_lead": "Artefact-contract maintainer-block rows",
+          "rule_lead": "Cross-module artefact contracts — every produced file is a contract row in the maintainer block.",
           "verdict": "PASS",
-          "evidence": "prework.md L108-116 carries a 4-row Artefact contracts table (content bundle, curated skills, chosen bug, repo readiness read) each with stable identifier, producing prompt, consuming module(s).",
+          "evidence": "prework.md maintainer block L108-116 carries an 'Artefact contracts' table with stable identifier / produced-by / consumed-by columns for the content bundle, curated skills, chosen bug, and readiness read. getting-going.md maintainer block L151-158 carries the same for the chosen bug and the personal rules file. Neither table's rows changed in this diff.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 6,
-          "rule_lead": "Cross-module structural-failure rescue callouts",
+          "rule_lead": "Cross-module structural-failure rescue — body-prose callouts when the prior module's send-off can fail.",
           "verdict": "N/A",
-          "evidence": "Prework has no autonomous/send-off run that M1 load-bears on; prework's steps are mechanical (download, extract) or interactive (bug screen). No rescue callout present or owed.",
+          "evidence": "Neither prework nor M1 load-bears on an autonomous send-off run from the other; the artefacts crossing this boundary (chosen bug, readiness read) are picked interactively in the same or immediately preceding session, not produced by an unattended run that can go thin. No rescue callout present in either file, and none is owed.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
+          "rule_index": 7,
+          "rule_lead": "Audit-discipline — walk M(N-1) close before flagging M(N).",
+          "verdict": "N/A",
+          "evidence": "Meta-rule for the auditor's own conduct, not a file-level check; judge-owned informational note. No 'Module N+' capability claim was flagged as spec drift in this pair, so the walk-first discipline was not tested.",
+          "fix_hint": null,
+          "blocking": false,
+          "judge_owned": true
+        },
+        {
+          "compendium": "check_cross_module.md",
           "rule_index": 8,
-          "rule_lead": "Bring-or-scramble plain-stakes-line shape",
+          "rule_lead": "Bring-or-scramble plain-stakes-line shape at module homework boundaries.",
           "verdict": "PASS",
-          "evidence": "prework.md L78-80 '## Bring to Module 1': 'The bug you picked. Come to Module 1 without one and you'll be scrambling for one while the exercise is already fixing bugs. Your call.' Matches canonical form, stakes from the exercise's clock, not the room.",
+          "evidence": "prework.md L78-80 '## Bring to Module 1': 'The bug you picked. Come to Module 1 without one and you'll be scrambling for one while the exercise is already fixing bugs. Your call.' Canonical form, student-as-subject, clock-and-exercise stakes, not room-comparison. Unchanged by this diff.",
           "fix_hint": null,
           "blocking": false
         }
@@ -91,63 +102,73 @@
         {
           "compendium": "check_cross_module.md",
           "rule_index": 1,
-          "rule_lead": "Peek at the next module",
+          "rule_lead": "Peek at the next module before adding a second exercise.",
           "verdict": "N/A",
-          "evidence": "No second-exercise addition in M1 that M2 must silently absorb.",
+          "evidence": "No second exercise was added to either file in this diff.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 2,
-          "rule_lead": "Between-module reading in two places",
+          "rule_lead": "Between-module reading appears in two places.",
           "verdict": "PASS",
-          "evidence": "getting-going.md L73-83 '## Pre-reads before Module 2' lists progression page, Horthy WSFF, Cherny video, multi-session reference; plan-mode-done-right.md L10-14 '## Prework' names all four with matching framing ('Optional reading before this module: The agentic engineering progression..., Boris Cherny..., Multi-session and Git: survival guide...; And if Dex Horthy's Why Software Factories Fail is still on your list from Module 1, this is the module it pays off in').",
+          "evidence": "getting-going.md L73-83 '## Pre-reads before Module 2' lists the agentic-engineering progression, Horthy's Why Software Factories Fail, Cherny's video, and the Multi-session-git reference. plan-mode-done-right.md L14 '## Prework' echoes all four with matching links and one-line framing ('sets up reach and calibrated trust', 'the cure he lands on is human review made affordable by upfront planning', 'if you like a lookup page nearby'). Untouched prose in this diff — only the trailing reference-anchor number inside that same sentence (#5->#9) changed.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 3,
-          "rule_lead": "Cross-module artefact contracts explicit at both ends",
+          "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
           "verdict": "PASS",
-          "evidence": "getting-going.md L86 '## Next': 'Your rules file gets read at the top of that session' names the producing/consuming link for ./CLAUDE.local.md (auto-load mechanism, not an implicit-phrase contract); getting-going.md L156 contract row names the same consumer explicitly ('M2 plan-reading session opens with these rules already in context'). No 'the file should be there' phrasing found.",
+          "evidence": "getting-going.md L156 'Personal rules file | ./CLAUDE.local.md ... | Exercise 4 compound prompt | Every future session... M2 plan-reading session opens with these rules already in context'. plan-mode-done-right.md's own artefact table (L175-177) does not re-list CLAUDE.local.md as an incoming row, but the consuming side is named explicitly in the producing module's row per the delegated-artefact convention this compendium uses elsewhere (see earn-the-trust.md's identical pattern for the plan file at L177 of plan-mode-done-right.md, verified verbatim against earn-the-trust.md L12). No ambiguity: the auto-load mechanism (session-cold-start) is a platform-level contract stated once at the producing side, consistent with how session-context artefacts are handled throughout this module set.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 4,
-          "rule_lead": "Session boundaries + working directory named",
+          "rule_lead": "Session boundaries and working directories are designed, not implicit.",
           "verdict": "PASS",
-          "evidence": "getting-going.md L86 implies a fresh session at M2 ('read at the top of that session'); plan-mode-done-right.md L10 'Surface one multi-file backlog task in the repo you used for Module 1' names the same repo by reference. Same repo throughout, no worktree, no contested identity -- matches the compendium's own canonical example, which only requires explicit /clear starting at the M3-to-M4 boundary (out of this audit's scope).",
+          "evidence": "getting-going.md L86 'Next: Module 2 is where plan mode earns its keep... Your rules file gets read at the top of that session.' plan-mode-done-right.md L10 '## Prework': 'Surface one multi-file backlog task in the repo you used for Module 1.' Working directory (same repo) named explicitly at M2's open. Not touched by this diff.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 5,
-          "rule_lead": "Artefact-contract maintainer-block rows",
+          "rule_lead": "Cross-module artefact contracts — every produced file is a contract row in the maintainer block.",
           "verdict": "PASS",
-          "evidence": "getting-going.md L151-158 'Artefact contracts' table lists Personal rules file (./CLAUDE.local.md) with stable identifier, producing prompt (Exercise 4 compound prompt), and consuming modules including 'M2 plan-reading session opens with these rules already in context'.",
+          "evidence": "getting-going.md maintainer block L151-158 and plan-mode-done-right.md maintainer block L171-177 both carry 'Artefact contracts' tables with stable identifier / produced-by / consumed-by columns, keyed explicitly to check_cross_module.md §5. Row content unchanged by this diff.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 6,
-          "rule_lead": "Cross-module structural-failure rescue callouts",
+          "rule_lead": "Cross-module structural-failure rescue.",
           "verdict": "N/A",
-          "evidence": "M1's four exercises are interactive/in-class, not an unattended send-off run M2 depends on; no rescue callout present or owed.",
+          "evidence": "M2's prework artefact (the backlog task) is picked interactively at module open, not produced by an unattended send-off run from M1 that could plausibly be thin or missing. No rescue callout present or owed.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
-          "rule_index": 8,
-          "rule_lead": "Bring-or-scramble plain-stakes-line shape",
+          "rule_index": 7,
+          "rule_lead": "Audit-discipline — walk M(N-1) close before flagging M(N).",
           "verdict": "N/A",
-          "evidence": "getting-going.md maintainer block states explicitly 'M1 runs four in-class exercises and issues no homework' (L110) and plan-mode-done-right.md maintainer block states 'M2 issues no homework' (L103). Rule 8 fires at homework boundaries; neither module assigns homework at this boundary, so the stakes-line requirement does not apply. M2's own Prework carries a bolded task-size ceiling ('A task that spans a few files. Not an epic.') but this is M2-initiated prework, not an M1 homework hand-off.",
+          "evidence": "Judge-owned meta-rule for the auditor's own conduct. No 'Module N+' capability claim was flagged as spec drift in this pair.",
+          "fix_hint": null,
+          "blocking": false,
+          "judge_owned": true
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 8,
+          "rule_lead": "Bring-or-scramble plain-stakes-line shape at module homework boundaries.",
+          "verdict": "N/A",
+          "evidence": "getting-going.md L110 maintainer note: 'M1 runs four in-class exercises and issues no homework.' The pre-reads before Module 2 are explicitly optional ('Optional. Do them and Module 2's moves land as things you've already seen.', L75), not a mandatory bring-item, so no bring-or-scramble stakes line is owed at this boundary and none is present. Consistent with the design stated in the maintainer block.",
           "fix_hint": null,
           "blocking": false
         }
@@ -160,63 +181,73 @@
         {
           "compendium": "check_cross_module.md",
           "rule_index": 1,
-          "rule_lead": "Peek at the next module",
+          "rule_lead": "Peek at the next module before adding a second exercise.",
           "verdict": "N/A",
-          "evidence": "No second-exercise addition in M2 that M3 must silently absorb.",
+          "evidence": "No second exercise was added to either file in this diff.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 2,
-          "rule_lead": "Between-module reading in two places",
+          "rule_lead": "Between-module reading appears in two places.",
           "verdict": "PASS",
-          "evidence": "plan-mode-done-right.md L73-78 (flag:module:earn-the-trust) '## Pre-reads before Module 3' assigns Willison lethal-trifecta + OWASP scan; earn-the-trust.md L16 '## Prework' echoes both: 'Optional pre-reads before this module: Simon Willison, The lethal trifecta for AI agents; OWASP Top 10 for LLM Applications for a deeper scan.'",
+          "evidence": "plan-mode-done-right.md L73-78 (flag:module:earn-the-trust branch) '## Pre-reads before Module 3' assigns Willison's The lethal trifecta for AI agents and the OWASP Top 10 optional deeper scan. earn-the-trust.md L16 '## Prework' echoes both: 'Simon Willison, The lethal trifecta for AI agents; OWASP Top 10 for LLM Applications for a deeper scan.' Prose in both blocks is untouched by this diff — only the two subagents/skills reference anchors two lines below (#6->#11, #7->#13) changed in earn-the-trust.md.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 3,
-          "rule_lead": "Cross-module artefact contracts explicit at both ends",
+          "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
           "verdict": "PASS",
-          "evidence": "plan-mode-done-right.md L87 (flag:module:earn-the-trust) 'Note the plan file path on your way out: M3 reads it, against a task with an external or user-facing surface'; earn-the-trust.md L11-12 'Bring the feature you planned at M2, that's the default. The plan file Claude Code wrote during plan mode is what M3 reads (you noted the path at M2 close).' Both ends explicit, stable identifier is the student-noted plan-mode file path.",
+          "evidence": "plan-mode-done-right.md L177 artefact table: 'Plan file (from plan mode) | Student-noted path... | Exercise Phase 3 (push-back-on-the-plan) | M3 prework / Ex1 input (earn-the-trust.md L12: \"The plan file Claude Code wrote during plan mode is what M3 reads — you noted the path at M2 close.\")'. earn-the-trust.md L12 quotes verbatim: 'Bring the feature you planned at M2, that's the default. The plan file Claude Code wrote during plan mode is what M3 reads (you noted the path at M2 close).' Both ends match exactly; identifier (student-noted path, displayed inline by plan mode) is explicit on both sides.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 4,
-          "rule_lead": "Session boundaries + working directory named",
+          "rule_lead": "Session boundaries and working directories are designed, not implicit.",
           "verdict": "PASS",
-          "evidence": "earn-the-trust.md L10 'M3 continues in the same repo as M1 and M2. The session opens at the first exercise.' -- the most explicit of the three boundaries in this set; no worktree, no ambiguity about which repo.",
+          "evidence": "earn-the-trust.md L10 '## Prework': 'M3 continues in the same repo as M1 and M2. The session opens at the first exercise.' Working directory named explicitly (same repo) and the open point named (first exercise). Not touched by this diff.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 5,
-          "rule_lead": "Artefact-contract maintainer-block rows",
+          "rule_lead": "Cross-module artefact contracts — every produced file is a contract row in the maintainer block.",
           "verdict": "PASS",
-          "evidence": "plan-mode-done-right.md L171-177 'Artefact contracts' table includes the Plan file row with stable identifier ('Student-noted path... plan mode displays the file path inline when it writes'), producing prompt (Exercise Phase 3 push-back-on-the-plan), and consuming module named explicitly ('M3 prework / Ex1 input (earn-the-trust.md L12: ...)').",
+          "evidence": "plan-mode-done-right.md maintainer block L171-177 and earn-the-trust.md maintainer block L171-177 both carry 'Artefact contracts' tables citing check_cross_module.md §5 verbatim, with stable-identifier / produced-by / consumed-by columns for the task-shaping rule file, plan file, ADR, test-strategy skill, and personal rules update. Rows unchanged by this diff.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 6,
-          "rule_lead": "Cross-module structural-failure rescue callouts",
+          "rule_lead": "Cross-module structural-failure rescue.",
           "verdict": "N/A",
-          "evidence": "M2's exercises (push-back-on-the-plan, extract-the-task-shaping-rule) are interactive planning sessions, not an unattended send-off run that M3 depends on; no rescue callout present or owed.",
+          "evidence": "The plan file M3 reads is produced synchronously during M2's guided push-back exercise (an in-session, human-supervised artefact, not an unattended send-off run), so it cannot plausibly go thin/missing the way an M4/M5-style autonomous run could. No rescue callout present or owed.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
-          "rule_index": 8,
-          "rule_lead": "Bring-or-scramble plain-stakes-line shape",
+          "rule_index": 7,
+          "rule_lead": "Audit-discipline — walk M(N-1) close before flagging M(N).",
           "verdict": "N/A",
-          "evidence": "plan-mode-done-right.md maintainer block: 'M2 issues no homework.' Rule 8 fires at homework boundaries; M2 assigns none at this boundary, so the requirement does not apply. earn-the-trust.md's own '## Bring to Module 4' (L90-94) does carry the canonical stakes sentence, but that boundary is out of this audit's scope.",
+          "evidence": "Judge-owned meta-rule for the auditor's own conduct. No 'Module N+' capability claim was flagged as spec drift in this pair; the M3 subagents/skills capability claims are backed by their own reference-page pointers (now correctly retargeted to #11 and #13), not by a homework-recognition arc from M2.",
+          "fix_hint": null,
+          "blocking": false,
+          "judge_owned": true
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 8,
+          "rule_lead": "Bring-or-scramble plain-stakes-line shape at module homework boundaries.",
+          "verdict": "N/A",
+          "evidence": "plan-mode-done-right.md maintainer block L103: 'M2 issues no homework.' The flag:module:earn-the-trust branch of '## Next' (L87) is a forward pointer ('At M3 you point the same move at a feature you're shipping... Note the plan file path on your way out') rather than a bring-or-scramble stakes line, consistent with the no-homework design; the canonical stakes-line form appears only in the sibling flag:no-module:earn-the-trust branch (L89-91), which is inactive when M3 is present in the build. No stakes line owed or missing at this boundary.",
           "fix_hint": null,
           "blocking": false
         }
@@ -225,8 +256,5 @@
   ],
   "blocking_findings_count": 0,
   "todos_count": 0,
-  "notes": [
-    "None of the three boundaries names an explicit /clear (or 'wrap'/'kill') instruction at the closing module; each relies on an implicit new-session convention signalled at the opening module (e.g. 'read at the top of that session', 'the session opens at the first exercise'). This matches the compendium's own canonical AE101 case, which only requires explicit /clear starting at the M3-to-M4 boundary -- out of this audit's module set. Not filed as a rule 4 finding because no ambiguity or contested repo identity is present at any of the three boundaries; surfaced here only so a maintainer can confirm the convention is intentional rather than an oversight.",
-      "Quoting note: plan-mode-done-right.md's artefact-contract row for the plan file paraphrases earn-the-trust.md L12 with an em dash ('you noted the path at M2 close') where the module body uses a parenthetical ('(you noted the path at M2 close)'). Cosmetic only, meaning unchanged, not filed as a finding."
-  ]
+  "notes": "Reference-doc anchor retargeting (#5->#9, #6->#11, #7->#13 in reference/claude-code-for-engineers.md, split 16->40 sections) is a link-integrity concern, not a cross-module artefact/session/reading-boundary concern owned by this compendium; verified separately via grep that all three anchors resolve to the correct section headers in the current reference file, but that check sits outside check_cross_module.md's rule set and is reported here as an informational note, not a rules_evaluated row."
 }

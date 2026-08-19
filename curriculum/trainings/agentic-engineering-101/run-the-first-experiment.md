@@ -93,7 +93,7 @@ The next module opens with what came back, or what you caught before it went fur
 
 **Quality:** compendium-audited 2026-08-19 (writing@a7f3966 story@a7f3966 technical@a7f3966 behavior@93bb807 pedagogy@a7f3966 strategy@a7f3966 slides@a7f3966)
 - judges @a7f3966: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @1cef93d: PASS — set=[earn-the-trust,run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 3 pairs, 0 blocking; see instances/ae101--m3-m4 + ae101--m4-m5-m6.cross_module.json
+- cross_module @0dea491e: PASS — set=[earn-the-trust,run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 3 pairs, 0 blocking; see instances/ae101--m3-m4 + ae101--m4-m5-m6.cross_module.json
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create

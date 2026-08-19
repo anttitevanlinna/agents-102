@@ -123,7 +123,7 @@ Optional, when your sessions start running heavy: [The context ceiling and token
 
 **Quality:** compendium-audited 2026-08-19 (writing@c7e8f1e4 story@c7e8f1e4 technical@ba5ccf5 behavior@1c765f2 pedagogy@c7e8f1e4 strategy@7992fd0 slides@c7e8f1e4)
 - judges @c7e8f1e4: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @1cef93d: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment]; 4 pairs, 0 blocking; see instances/ae101--module-set--prework-m3 + ae101--m3-m4.cross_module.json
+- cross_module @0dea491e: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust,run-the-first-experiment]; 4 pairs, 0 blocking; see instances/ae101--module-set--prework-m3 + ae101--m3-m4.cross_module.json
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate + Create
@@ -194,6 +194,6 @@ Optional, when your sessions start running heavy: [The context ceiling and token
 - **Test strategy as discipline** — Kent Beck + James Bach's exploratory-testing lineage + Google Testing Blog's test-pyramid framing. Named at lecture; the student's authored skill is theirs, not a framework import.
 - **Compound engineering** — Kieran Klaassen. M3's Compound step is *ship to team kit*; the fourth step of the loop is visible here, as in M1.
 - **Skills as first-class Claude Code primitive** — the authoring move uses conversation, not manual markdown — matches M1's `CLAUDE.local.md` pattern (Claude writes from session evidence; student pushes back).
-- **Hooks as deterministic-fire primitive** — sibling to skills (which Claude invokes on judgment). Hooks fire on named runtime events regardless of agent judgment. Not authored at M3, but the partition (skill = recommended invocation, hook = always-fires) lands at the M5 closer lecture. Hook system reference: `claude-code-for-engineers.md` § 13.
+- **Hooks as deterministic-fire primitive** — sibling to skills (which Claude invokes on judgment). Hooks fire on named runtime events regardless of agent judgment. Not authored at M3, but the partition (skill = recommended invocation, hook = always-fires) lands at the M5 closer lecture. Hook system reference: `claude-code-for-engineers.md` § 34.
 
 **Trifecta pre-leash beat: added to `## Next` 2026-07-02, removed 2026-08-12 (Antti).** The three-question check + prompt-injection naming + supplementary pointer sat in M3's close aimed at M4's autonomy, and M4 carried a second firing of the same beat before its send-off. Both are gone: the trifecta belongs to M3's own body and to `supplementary/the-lethal-trifecta.md`, which the pre-read already points at. Do not re-add a forward-pointing copy; a threat class taught once in the module that teaches it does not owe a reminder in the module that uses it.

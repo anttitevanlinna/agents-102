@@ -4,12 +4,13 @@
     "curriculum/trainings/agentic-engineering-101/earn-the-trust.md",
     "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md"
   ],
-  "body_sha": {
-    "curriculum/trainings/agentic-engineering-101/earn-the-trust.md": "3dfd9df256228df42f9d7182e7c5bf52180ffb98e6fd6dd27d3789d51a74d0d4",
-    "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md": "cdd3aaa08b5b9b6693ad11169aa6406fdc25af3681976bedeb073116b2871e26"
-  },
   "training": "ae101",
+  "body_sha": {
+    "curriculum/trainings/agentic-engineering-101/earn-the-trust.md": "54338e5a670a386ef2fefc26bf18c31d587a19051b4fc90e4c4d1c67424e0b52",
+    "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md": "803a0dacb5a5289632e3eebc9f048efd959ab1dd76e2ee9d50272207869b604b"
+  },
   "verdict": "PASS",
+  "re_fire_context": "Re-fire per orchestrator instruction. Prior clean pass (cross_module@1cef93d) covered this pair inside a 4-pair set. Since then earn-the-trust.md had two cross-doc link anchors retargeted (subagents #6->#11, skills #7->#13) after reference/claude-code-for-engineers.md was split 16->40 sections. Confirmed via `git diff 1cef93d -- earn-the-trust.md`: the ONLY diff is those two anchor fragments plus the Quality-block SHA/verdict-line re-stamp itself. No seam prose (Bridge/Next/Homework/Pre-reads/Prework/Connections/artefact-contract rows) changed. Full three-surface walk run regardless per instruction.",
   "module_pairs_evaluated": [
     {
       "from": "curriculum/trainings/agentic-engineering-101/earn-the-trust.md",
@@ -18,82 +19,70 @@
         {
           "compendium": "check_cross_module.md",
           "rule_index": 1,
-          "rule_lead": "Peek at the next module before adding a second exercise",
+          "rule_lead": "Peek at the next module before adding a second exercise.",
           "verdict": "N/A",
-          "evidence": "Authorship-process rule about how a maintainer edits, not a property observable in the shipped bodies of the two files. No second-exercise addition is visible in this diff-free judging pass to check against.",
+          "evidence": "No exercise was added or changed in either file by the diff under audit (anchor-only edit); M4's exercise set (walk-and-send-off, set-the-markers-send-it-off) is unchanged from the prior clean pass.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 2,
-          "rule_lead": "Between-module reading appears in two places, symmetric framing",
+          "rule_lead": "Between-module reading appears in two places.",
           "verdict": "PASS",
-          "evidence": "earn-the-trust.md L106-110 '## Bring to Module 4' names the scoped-task homework ('One scoped task you'd send off rather than nudge bit by bit: a real slice.'); run-the-first-experiment.md L6-10 '## Prework' echoes it near-verbatim ('The scoped task you picked as homework. A real slice you'd send off rather than nudge bit by bit.'). Separately, earn-the-trust.md L112-116 '## Pre-read before Module 4' names the Willison 'Designing agentic loops' link; run-the-first-experiment.md L14 Prework references the same URL conditionally via the flag pair naming Module 3 as its source ('If Simon Willison's Designing agentic loops is still on your list from Module 3 ... read it before the send-off'). Both readings are duplicated at both ends with matching framing.",
-          "fix_hint": null,
-          "blocking": true
-        },
-        {
-          "compendium": "check_cross_module.md",
-          "rule_index": 3,
-          "rule_lead": "Cross-module artefact contracts explicit at both ends",
-          "verdict": "PASS",
-          "evidence": "Producing side: earn-the-trust.md maintainer-block Artefact contracts table (L189-193) names ADR ('sponsor-stated ADR home; default docs/adr/NNNN-slug.md'), test-strategy skill ('~/.claude/skills/test-strategy/SKILL.md'), and personal rules update ('./CLAUDE.local.md') with M4 named as consumer for all three. Consuming side: exercises/walk-and-send-off.md Phase 2 (read via the linked exercise, since the M4 module file only links it) explicitly instructs 'The agent reads CLAUDE.md, CLAUDE.local.md, memory, ADRs, and any skills you've authored, then ranks the five thin spots' -- the exact three M3 artefacts are named by the same stable identifiers on the consuming side.",
-          "fix_hint": null,
-          "blocking": true
-        },
-        {
-          "compendium": "check_cross_module.md",
-          "rule_index": 4,
-          "rule_lead": "Session boundaries and working directories named at both ends",
-          "verdict": "PASS",
-          "evidence": "Close: earn-the-trust.md L69-87 '## Clear the session' names an explicit convergence prompt then '/clear' as the close mechanism. Open: run-the-first-experiment.md's module body doesn't restate a working directory (no repo/worktree change between M3 and M4, so no rationale is owed), and the linked exercises/walk-and-send-off.md opens with 'Session (new, \"Module 4 - Run the first experiment\")' + '/rename m4-walk-send' + 'Start clean at your repo root' -- explicit, unambiguous, same-repo. No contested 'same repo' phrasing anywhere.",
-          "fix_hint": null,
-          "blocking": true
-        },
-        {
-          "compendium": "check_cross_module.md",
-          "rule_index": 5,
-          "rule_lead": "Artefact-contract maintainer-block rows on the producing side",
-          "verdict": "PASS",
-          "evidence": "earn-the-trust.md L187-193 carries the full three-row Artefact contracts table (ADR / test-strategy skill / personal rules update), each with stable identifier, producing prompt/exercise, and consuming module(s) including M4. No ambiguous identifier.",
-          "fix_hint": null,
-          "blocking": true
-        },
-        {
-          "compendium": "check_cross_module.md",
-          "rule_index": 6,
-          "rule_lead": "Cross-module structural-failure rescue callout when M(N+1) load-bears on a plausibly-thin autonomous run",
-          "verdict": "N/A",
-          "evidence": "M3 produces no autonomous/unsupervised send-off run whose output M4 depends on -- the ADR, skill, and CLAUDE.local.md rule are all produced through interactive, student-present exercises, not a send-off that can silently fail thin. The rescue-callout pattern applies to M4->M5 (packaged re-run from M4's un-packaged send-off) and M5->M6, not this pair.",
+          "evidence": "earn-the-trust.md L112-116 '## Pre-read before Module 4' names Willison, Designing agentic loops. run-the-first-experiment.md L14 Prework: 'If Simon Willison's Designing agentic loops is still on your list from <!--flag:module:earn-the-trust-->Module 3<!--/flag--><!--flag:no-module:earn-the-trust-->Module 2<!--/flag-->, read it before the send-off.' Same link, framing matches, flag logic correctly attributes the assigning module to whichever of M2/M3 currently carries the pre-read. Unaffected by the anchor diff.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
-          "rule_index": 7,
-          "rule_lead": "Audit-discipline meta-rule (walk M(N-1) close before flagging M(N) as spec drift)",
+          "rule_index": 3,
+          "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
+          "verdict": "PASS",
+          "evidence": "Producing side (earn-the-trust.md maintainer block L187-193): ADR at sponsor-stated/default docs/adr/NNNN-slug.md, test-strategy skill at ~/.claude/skills/test-strategy/SKILL.md, CLAUDE.local.md rule updates -- each with explicit producing prompt. Consuming side (run-the-first-experiment.md L21 'What You'll Learn'): 'Walk what you've built (CLAUDE.md + CLAUDE.local.md + memory + ADRs + any skills you've authored + connectors) against the task as a subagent audit.' Explicit on both ends; not touched by the diff.",
+          "fix_hint": null,
+          "blocking": false
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 4,
+          "rule_lead": "Session boundaries and working directories are designed, not implicit.",
+          "verdict": "PASS",
+          "evidence": "earn-the-trust.md '## Clear the session' (L69-87) names the close explicitly: converge-before-clear prompt then literal `/clear`. run-the-first-experiment.md Prework (L6-16) and 'Meta (trainer): Delivery architecture' (L108) state the send-off happens IN the same session used for walk+fill+frame+retro, no new session -- so M4's open is 'continue in the same repo/session', consistent with M3's explicit close. Neither surface touched by the diff.",
+          "fix_hint": null,
+          "blocking": false
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 5,
+          "rule_lead": "Cross-module artefact contracts -- every produced file is a contract row in the maintainer block.",
+          "verdict": "PASS",
+          "evidence": "earn-the-trust.md maintainer block L187-193 'Artefact contracts' table lists ADR / test-strategy skill / CLAUDE.local.md rules, each with stable identifier, producing prompt, and 'Consumed by' column naming M4 Phase 2 walk-and-fill for all three. Table unchanged by the diff (only the Quality-block SHAs 3 lines above it changed).",
+          "fix_hint": null,
+          "blocking": false
+        },
+        {
+          "compendium": "check_cross_module.md",
+          "rule_index": 6,
+          "rule_lead": "Cross-module structural-failure rescue -- body-prose callouts when a module load-bears on the prior module's send-off artifact.",
           "verdict": "N/A",
-          "evidence": "Per the compendium's own text: 'judges don't fire this directly' -- it's a meta-rule for the auditor's process, surfaced as an informational note only if obviously violated. No obvious violation observed in this pass.",
+          "evidence": "M3 has no autonomous/un-watched send-off run for M4 to load-bear on -- M4 is the training's first send-off module, so this rule's trigger condition (prior module's send-off artifact can plausibly be thin/missing) doesn't obtain for this pair.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 8,
-          "rule_lead": "Bring-or-scramble plain-stakes-line shape at module homework boundaries",
+          "rule_lead": "Bring-or-scramble plain-stakes-line shape at module homework boundaries.",
           "verdict": "PASS",
-          "evidence": "earn-the-trust.md L110: 'Come to Module 4 without having picked the task and you'll be scrambling for one while the exercise is already running. Your call.' Matches the canonical form exactly -- clock/exercise-derived stakes ('the exercise is already running'), not peer-comparison ('the room'), student-as-subject, choice preserved. No head-start prompts, no next-module mechanics spoiled, no unearned M4 vocabulary.",
+          "evidence": "earn-the-trust.md L106-110 'Bring to Module 4': 'Come to Module 4 without having picked the task and you'll be scrambling for one while the exercise is already running. Your call.' Canonical form, cost sourced from the exercise's own clock ('the exercise is already running'), not peer comparison ('the room'). Untouched by the diff.",
           "fix_hint": null,
-          "blocking": true
+          "blocking": false
         }
       ]
     }
   ],
   "blocking_findings_count": 0,
   "todos_count": 0,
-  "notes": [
-    "Non-blocking observation: run-the-first-experiment.md's own maintainer-block Artefact contracts table (L142-148) lists only M4-produced artefacts; it carries no explicit 'consumes from M3' pointer row mirroring earn-the-trust.md's producing-side table. The compendium's rule 5 text only mandates the row on the producing side, and the consuming exercise text (walk-and-send-off.md Phase 2) does name the three M3 artefacts explicitly by stable path, so this is not scored as a REVISE -- flagging only because the compendium's 'Canonical homes' section separately names 'a consumption pointer per §3' as belonging in the consuming module's maintainer block, and this file doesn't have one. Same pattern (producing-side-only table) appears to be accepted practice in the already-PASSed M4-M5-M6 instance, so treating consistently.",
-    "Non-blocking observation: earn-the-trust.md's '## Next' section (L118-122) previews M4's content in fairly concrete terms ('a real task walked against everything you have built so far, the test-strategy conventions and the access-surface facts and the hardening decision included'). This sits in the Bridge/Next section, not a 'Bring to Module N' stakes line, so §8's failure-mode (a) (over-explaining next module's mechanics in the bring section) doesn't technically fire here -- but it's adjacent enough in spirit that a future tightening pass on Bridge sections might want to look at it."
-  ]
+  "notes": "Confirmed scope of re-fire via `git diff 1cef93d -- earn-the-trust.md`: only the two anchor fragments (subagents #6-subagents-agent-tool-fresh-context -> #11-subagents-agent-tool-fresh-context; skills #7-skills -> #13-skills) plus the Quality-block SHA/verdict re-stamp changed. Verified both new anchors resolve against the current reference/claude-code-for-engineers.md ('## 11. Subagents: Agent tool, fresh context' L215; '## 13. Skills' L240) -- retarget is correct. // Out-of-lane advisory, not scored here: earn-the-trust.md L197 maintainer note 'Hook system reference: claude-code-for-engineers.md § 13' is stale -- section 13 is now 'Skills', not hooks (hooks moved to §§34-38 in the 16->40 split). Confirmed via `git show 1cef93d:...earn-the-trust.md` that this line predates the anchor-fix commit entirely, so it is not new drift from the diff under audit, and it is a trainer-only maintainer-block cross-reference to reference-doc section numbers, not a Bridge/Next/Prework/artefact-identifier/session-boundary surface -- none of the 9 cross_module rules key on stale internal section-number citations in maintainer prose. Flagging for the maintainer / a technical-accuracy pass, not filing as a cross_module REVISE."
 }

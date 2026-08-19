@@ -53,7 +53,7 @@ You can make rules now. The ceiling comes sooner than you'd guess: every always-
 
 The cure is not better rules; it is where the rules live. Keep `./CLAUDE.md` and `./CLAUDE.local.md` lean: principles, with the why attached. Move the rest into skills, loaded only when the work calls for them.
 
-## Say what good looks like
+## Prohibitions stop; taste steers
 
 A rules file that grows only from corrections turns into a list of don'ts. Prohibitions are weak instructions: each one stops a single behaviour and puts nothing in its place. Anyone who has told a child "don't do that" knows the result. Acting right is learned from what good looks like, and from hearing it when it happens.
 

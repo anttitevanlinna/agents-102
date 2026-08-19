@@ -121,5 +121,5 @@ OODA
 - The progression describes how work is organized, not a score assigned to the person. Session count and autonomy are inputs, not levels.
 - Keep shortcut framing out of the student-facing body.
 
-**Quality:** compendium-audited 2026-08-15 (writing@dccde3d story@dccde3d technical@dccde3d behavior@670460b pedagogy@dccde3d strategy@670460b slides@dccde3d)
-- judges @dccde3d: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-19 (writing@00cf8da7 story@00cf8da7 technical@dccde3d behavior@670460b pedagogy@00cf8da7 strategy@670460b slides@00cf8da7)
+- judges @00cf8da7: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

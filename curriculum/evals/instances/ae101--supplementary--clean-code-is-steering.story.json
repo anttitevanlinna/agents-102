@@ -1,17 +1,18 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md",
+  "body_sha": "98f1d0f3a51334e576f9cf57548d7b60be318c04d4aec17fa82771898073f8b6",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "Optional pre-read sitting in the Module 4 to Module 5 gap (linked from run-the-first-experiment.md § Pre-reads before Module 5); read while or just after the un-packaged M4 send-off is running. M4's mood is curious readiness; M5's mood is learning through contrast. The supplement primes the general discipline-as-steering frame using a third-party practitioner's parallel journey, without naming M5's own reference-artefact/plan.md/verifier mechanism, which is reserved for M5's closing lecture. Should land as recognition energy without resolving M5's diagnostic work early.",
+  "module_mood_contract": "Optional pre-read in the M4->M5 gap (linked from run-the-first-experiment.md). Primes discipline-as-steering via a third-party practitioner's parallel journey; must not name M5's reference-artefact/plan.md/verifier three-pattern. Should land as recognition energy, not resolution.",
   "trace_status": "regenerated",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
-      "rule_lead": "Meta-frame lectures are closers, not openers.",
-      "verdict": "N/A",
-      "evidence": "Surface is a supplementary reading (curriculum/CLAUDE.md's fourth student-facing type), not a lecture; the rule's opener/closer placement diagnostic targets lectures that name a pattern the student already lived through. This file explicitly withholds the pattern name (Ronacher's three-pattern) reserved for M5's own closer, so it does not commit the failure mode the rule guards against even though the rule itself doesn't bind this file type.",
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
+      "verdict": "PASS",
+      "evidence": "File sits BEFORE the M4 send-off/M5 exercise (content-strategy-agentic-engineering-101.md § M5 pre-reads item #1), not a meta-frame naming a pattern the student already lived. `grep -niE 'reference artifact|plan\\.md|verifier|three-pattern|Ronacher'` (run 2026-08-19 on current file, sha f6a4cccf...) returns two hits, both below the maintainer fence (line 111 source-access note, line 142 source stamp) — zero in student-facing body. Functions as an opener-role vocabulary primer, unaffected by the CRAP-gloss/backing-count edits.",
       "fix_hint": null,
       "blocking": false
     },
@@ -20,16 +21,16 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "PASS",
-      "evidence": "M5 is the contrast-mood module (mood_contract: 'learning through contrast'). The essay stays at spirit + named-tool taxonomy + one operational primitive per tool (Acceptance Tests, Unit Tests, TDD, Mutation Testing, CRAP/complexity metrics, Small Decoupled Units, Architecture Visibility) and never names or explains M5's specific reference-artefact/plan.md/verifier mechanism — trace confirms the persona leaves without that mechanism, unease unresolved.",
+      "evidence": "M5 is the contrast-mood module this pre-read sits ahead of. Body names ONE practitioner (Uncle Bob) in his own voice; the six-tool taxonomy (acceptance tests, unit tests, TDD, mutation testing, metrics, small units) is his vocabulary, not the curriculum's M5 three-pattern vocabulary — confirmed by the zero-hit grep above. Unaffected by either edit in this pass.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Body (lines 1-105) carries no 'M3'/'M4'/'M5'/module-name cross-references; module placement lives only in run-the-first-experiment.md's Pre-reads link and the file's own maintainer/backing block below the fence, not in student-facing prose.",
+      "evidence": "`grep -niE 'M[0-9]|Module [0-9]' curriculum/trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md` (run 2026-08-19 on current file): zero hits anywhere in the file, above or below the maintainer fence.",
       "fix_hint": null,
       "blocking": false
     },
@@ -37,8 +38,8 @@
       "compendium": "check_lectures.md",
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
-      "verdict": "N/A",
-      "evidence": "Supplementaries are explicitly 'not inlined' per curriculum/CLAUDE.md's student-facing-types list and are not chunked by the Slides layout (only Lectures and Exercises are), so this file is never slide-rendered and the squint/truth-clause header test has no rendering surface to bind.",
+      "verdict": "PASS",
+      "evidence": "`grep -c '^## '` = 9 (run 2026-08-19, current file). All 9 headers re-checked against the paragraph beneath: neither of this session's two edits (line 59 CRAP gloss; backing-block Stance section-count fix) touches a header. 'Metrics are the dashboard, not the wheel' still argues its claim beneath it, now with CRAP explicitly earned inline ('CRAP pairs a unit's complexity with its test coverage, so a tangled unit with thin tests scores worst') rather than left to a bare 'One' — strengthens the header's fit to its body, does not weaken it.",
       "fix_hint": null,
       "blocking": false
     },
@@ -46,44 +47,44 @@
       "compendium": "check_lectures.md",
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header.",
-      "verdict": "N/A",
-      "evidence": "Same reason as rule 4 — not a slide-rendered surface.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 16,
-      "rule_lead": "Forcing functions live in prompts, not body prose.",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced prompt blocks and no exercise structure — pure narrative supplementary essay. There is no forcing function anywhere in the file (body or fence) for this rule to check the placement of.",
+      "verdict": "PASS",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md` (run 2026-08-19, current file): '9 slides, 0 oversized, limits 210 words/6 bullets' — 'every slide is within limits'. The one-sentence CRAP-gloss expansion stays well inside the metrics slide's budget.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
-      "rule_lead": "Body teaches the work; trainer manages the room outside text.",
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "No 'discuss with...', 'share with your neighbor', 'take N minutes and...' or any authored conversation/pause cue anywhere in the body. Every sentence is about the practitioner's arc and the steering-tool taxonomy, not cohort management (this is a solo pre-read, not a room beat).",
+      "evidence": "`grep -niE 'discuss|compare with|share what|tell the room|pair up|turn to|take [0-9]+ (minutes|seconds)'` (run 2026-08-19, current file): zero hits. No authored conversation/pause cues; this is a solo prework reading, no trainer-managed beats to author.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.",
+      "verdict": "N/A",
+      "evidence": "Supplementary reading with no phases, no exercise, no student-executed prompt fence anywhere in the file. Rule governs exercise/module prompt-vs-body placement of a forcing function; this surface has no prompt to place one into.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named; mood lands (8+/10 per beat).",
+      "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "trace.phases[0].mood_score=8, trace.close.mood_score=8. Beat classified TEACHING (essay's core move is teaching the steering reframe), mood-floor applies and is met. Trace: 'this already has a name and I haven't even opened my diff yet' — recognition energy matching the contract.",
+      "evidence": "Regenerated trace (content_sha f6a4cccf..., matching current file post-repair): phase_1 mood_score=8, close mood_score=8, both at the 8+ floor. File classified as a TEACHING beat (a named failure mode + a taxonomy the persona carries forward — not mechanical setup), so the floor applies. The CRAP-gloss fix removes the last unglossed acronym without changing mood shape; trace: 'stays at 8... a structural ceiling this sentence-level fix doesn't touch.'",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
-      "rule_lead": "Epistemic mood, not punitive.",
+      "rule_lead": "Epistemic mood != punitive mood.",
       "verdict": "PASS",
-      "evidence": "The mercury-problem framing ('local success, global drift') names a systemic property to investigate, not a personal failing — trace mood_note: 'this is fixable and I now have language for why' rather than shame at the M4 run's possible drift.",
+      "evidence": "Unaffected by the two edits. The named failure mode ('local success, global drift', line 21) is diagnosed in a third party's own work, not framed as the student's error. No 'I messed up' framing anywhere in the body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -92,25 +93,25 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title 'Clean Code Is Steering' and opener 'AI coding does not make Clean Code irrelevant. It changes what Clean Code is for' lead with the positive discipline (steering); 'mercury problem'/local-global-drift appears as the negative case the discipline addresses, not as the frame's name.",
+      "evidence": "Title 'Clean Code Is Steering' leads with the discipline. All 9 headers (unchanged by this session's edits) name positive disciplines/tools ('Acceptance tests catch...', 'Metrics are the dashboard, not the wheel', etc.); none is titled after a failure mode.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
+      "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Front-run check: essay never names the reference-artefact/plan.md/verifier mechanism that is M5's own reveal (confirmed by maintainer's own note on the M5 lecture: 'The three-pattern earns its name HERE, not in the pre-read'). Module-to-module arc: essay's close ('the more powerful the coding agent, the more important the steering system') hands off cleanly to M5 without pre-empting it. Big Idea fidelity: consistent with the training's steering-as-executable-constraint framing (backing block's 'Steering is executable constraint' framework, law:steering-is-executable-constraint-your-stance-is-the-ceiling). Mood doesn't resolve early: trace close confirms unease is named, not resolved — 'M5's closing lecture still has its full reveal to make.'",
+      "evidence": "Cross-checked against content-strategy-agentic-engineering-101.md § M5 pre-reads item #1. Body's arc unaffected by this session's two edits: still ends on 'The more powerful the coding agent, the more important the steering system' — a question posture, not a resolution. Front-run grep (three-pattern vocabulary) re-run above: 0 hits in body. The backing-block Stance line now correctly reads 'nine sections' (line 152), matching the actual `## ` header count (9) confirmed above — a below-the-fence bookkeeping correction, not a body-teaching claim, but it removes a self-audit inaccuracy a maintainer would otherwise hit.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Supplementary file carries no `## Key Concepts` section — module-only per rule scope.",
+      "evidence": "Supplementary file; no `## Key Concepts` section exists in this surface type.",
       "fix_hint": null,
       "blocking": false
     },
@@ -119,7 +120,7 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "No Key Concepts section exists in this supplementary file.",
+      "evidence": "No `## Key Concepts` section on this surface type (supplementary, not module).",
       "fix_hint": null,
       "blocking": false
     },
@@ -128,7 +129,7 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "No What You'll Learn section exists in this supplementary file.",
+      "evidence": "No `## What You'll Learn` section on this surface type (supplementary, not module).",
       "fix_hint": null,
       "blocking": false
     }
@@ -140,5 +141,6 @@
     "stealing_the_mood": []
   },
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 0,
+  "notes": "Re-fire after the one-sentence CRAP-gloss repair (line 59) plus the backing-block Stance section-count correction (line 152, 'eight' -> 'nine sections', now matching the true `## ` header count of 9). Re-derived rather than carried forward: header count re-grepped (9), check-slide-size.js re-run, cross-module/conversation/front-run/three-pattern greps re-run against the current sha, trace regenerated against the current content_sha (f6a4cccf...). The pre-existing story instance and persona trace on disk before this pass carried a stale sha (ed6a527e...) matching neither the full file nor the body-only text — overwritten here with the correct current-file sha. Teaching-moment-lands (judge-owned, no check_strategy_tie_in rule_index): PASS — the reframing 'the agent ran' -> 'what would have constrained the drift' still lands independent of prior familiarity with Clean Code discipline, unaffected by either edit. No REVISE findings; nothing blocking."
 }

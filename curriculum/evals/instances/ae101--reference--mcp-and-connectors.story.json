@@ -1,17 +1,19 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md",
+  "body_sha": "c7af563126befd91749194d3317e63b90a9e6c1870efb7fc938fc16be2aed6f1",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "flat-reference register (Quick-reference type per curriculum/CLAUDE.md's four-type taxonomy; no deliberate module mood) — SETUP/mechanical beat per check_strategy_tie_in §1 carve-out, judged on clarity + brevity, not mood",
-  "trace_status": "generated_first_time",
+  "module_mood_contract": "flat-reference register (Quick-reference type per curriculum/CLAUDE.md's four-type taxonomy; no deliberate module mood) — SETUP/mechanical, mood-exempt per check_strategy_tie_in §1 carve-out",
+  "trace_status": "regenerated",
+  "surface_note": "Reference page per curriculum/quality-format.md: 'Reference files (curriculum/trainings/<training>/reference/) exempt — flat lookup, no mood/sim surface.' Mood-arc and persona-read rules score N/A per dispatch instructions. This is a quick-reference lookup, not a lecture, module, or exercise, and carries no room-scale beats and no student-copied LLM prompts (its fenced blocks are terminal/CLI commands, not prompts a student pastes to Claude) — check_prompts.md and check_workshop.md (both storytelling-tagged) are therefore out of scope for this file and are not carried as rows; noted here rather than force-fit as N/A rows for compendiums storytelling does not own on this surface.",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "N/A",
-      "evidence": "File is a flat lookup reference (curriculum/CLAUDE.md four-type taxonomy), not a lecture. No opener/closer placement question applies — it is linked from inside an exercise as an on-demand install lookup, not sequenced into a module arc.",
+      "evidence": "File is a reference page (curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md), not a lecture. Rule scopes lecture placement (opener/closer) relative to exercises; no such placement question exists for a flat lookup page a student clicks into mid-exercise.",
       "fix_hint": null,
       "blocking": false
     },
@@ -20,7 +22,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "No exercise dosage question here — the file isn't pre-exercise lecturing, it's a reference the exercise links to when the student needs an install command.",
+      "evidence": "Not a lecture; no pre-exercise lecture dosage question applies to a reference page.",
       "fix_hint": null,
       "blocking": false
     },
@@ -29,7 +31,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Body carries no module numbering or forward/backward module references (grep for `M[0-9]` + module-name refs above the maintainer fence: none). Consistent with the file's own stated design ('the exercise body stays stable', line 3) — it is deliberately module-agnostic, not merely absent by coincidence.",
+      "evidence": "Not a lecture body. Checked anyway for the underlying concern (module-number leakage): grep of body for `M[0-9]` and module-name refs returns zero hits — the file never names M1-M8 or a module by number.",
       "fix_hint": null,
       "blocking": false
     },
@@ -38,52 +40,52 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
-      "evidence": "Reference file, not a lecture — check_slides.md (not in scope here) governs slide-chunked headers where applicable; check_lectures §4 targets lecture/handbook headers specifically.",
+      "evidence": "Rule scopes lecture/slide headers scanned cold in a self-study handbook context; this is a quick-reference type (curriculum/CLAUDE.md's four-type taxonomy), exempt from the mood/sim surface per quality-format.md. Headers here (\"GitHub Issues\", \"Jira: Atlassian Rovo MCP (official)\", \"Linear: first-party MCP (official)\") are lookup-table section labels, not slide-arc headers making a teaching claim.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded, not just its header.",
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "N/A",
-      "evidence": "Reference file, not a lecture/module/exercise slide deck — the 210-word/6-bullet ceiling targets projected `##` slides in those surfaces, not a flat lookup page a student reads on demand mid-exercise.",
+      "evidence": "Not a lecture/exercise slide; reference page exempt from the mood/sim slide-arc surface this rule targets (§4's sibling).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
-      "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.",
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
-      "evidence": "File has no exercise phases, no forcing-function/scripted-reaction distinction to make. The code fences are per-tracker CLI install commands (`claude mcp add ...`, `gh auth login`), not student-copied task prompts with a pedagogical move embedded — this rule targets exercise fencing, which this surface doesn't have.",
+      "evidence": "This rule governs exercise/module forcing-function placement (student/Claude-performed moves fenced in a **Prompt** block vs. narrated in body). The file has no such structure — it is a lookup table of install commands per tracker, with no exercise phases and no student-copied LLM prompt to move a forcing function into or out of.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "No authored conversation/pause/comparison cues anywhere in the body (lines 1-122): no 'discuss with', 'share with your neighbor', 'take N seconds', 'tell the room'. Every sentence is about the work — which path, which command, which endpoint, when a gap will be filled.",
+      "evidence": "Grepped body (above maintainer fence) for conversation-authoring tells (\"discuss with\", \"share with your neighbor\", \"tell the room\", \"take N seconds and compare\") — zero hits. The file is entirely install-mechanics prose (three paths, per-tracker commands, plugin distribution, current gaps); no cohort-management sentence anywhere. Line closest to the concern is the closing sentence of 'Plugins and marketplaces' (\"For a one-off solo install on one machine, plain Path 1 or Path 2 stays simpler\") — this is a WORK decision aid (which install path to pick), not a room-management cue, so it stays inside the rule.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named; mood-floor applies to TEACHING beats only.",
-      "verdict": "PASS",
-      "evidence": "trace.phases[0].mood_score: null — correctly mood-exempt under the SETUP-beat carve-out (this is a mechanical install lookup, not a teaching beat). Judged instead on clarity + brevity per the carve-out: trace.phases[0].mood_note confirms the persona found their tracker's section and the one needed command in under a minute.",
+      "rule_lead": "Mood contract named.",
+      "verdict": "N/A",
+      "evidence": "Reference pages carry no deliberate module mood per quality-format.md's exemption and this class's dispatch instructions (\"Mood-arc and persona-read rules score N/A here\"). Trace's own module_mood_contract field and per-phase mood_score are correctly null, consistent with the §1 SETUP-beat carve-out this class's template itself cites.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "N/A",
-      "evidence": "No deliberate module mood is in play on a flat-reference surface (mood-exempt per §1's carve-out) — there is no epistemic-vs-punitive flavour question to adjudicate here.",
+      "evidence": "No mood is carried on this surface (see §1); nothing to classify as epistemic vs. punitive.",
       "fix_hint": null,
       "blocking": false
     },
@@ -92,26 +94,27 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "N/A",
-      "evidence": "No Big Idea or named discipline is authored on this surface. Section headers ('GitHub Issues', 'Jira — Atlassian Rovo MCP', 'Linear — first-party MCP', 'What Claude Code doesn't do yet') are tracker/capability labels, not discipline-vs-failure-mode framings this rule governs.",
+      "evidence": "Rule targets Big Idea / title naming for a module; this file has no Big Idea (quick-reference type, not module/lecture). Checked anyway: every ## header (\"Three paths to a work-app action\", \"GitHub Issues\", \"Jira: Atlassian Rovo MCP (official)\", \"Linear: first-party MCP (official)\", \"Plugins and marketplaces...\", \"What Claude Code doesn't do yet\") names a topic or a named-tool handle, none is a failure word (fabrication/violation/hallucination) framed as the lead.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
+      "rule_lead": "Strategy-fidelity check.",
       "verdict": "N/A",
-      "evidence": "Reference files sit outside the module mood arc by design (curriculum/CLAUDE.md: 'Quick reference — flat lookup. No progression.'). No module-to-module handoff, no downstream teaching moment to front-run — the file is linked into exercises on demand and updated independently of the arc (lines 130-137, update-cadence note).",
+      "evidence": "Consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early — all module-arc concerns. This reference page sits outside the module sequence (linked into from exercises like close-the-ticket.md, not itself a numbered module beat) and carries no arc position to front-run or resolve early. content-strategy-agentic-engineering-101.md names no per-module claim this page could contradict; it is infrastructure the arc reaches into, not a step in it.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     }
   ],
   "mood_summary": {
-    "phase_scores": [null],
+    "phase_scores": [],
     "close_score": null,
     "any_below_8": false,
     "stealing_the_mood": []
   },
+  "notes": "Teaching-moment-lands judgment (no rule_index, per template): N/A by construction — a flat lookup page has no single named teaching moment to reliably trigger; its job is findability of the right tracker's install line, which the regenerated trace's close (is_me_rating 8, artifact_state = live connector installed) confirms it delivers. check_prompts.md and check_workshop.md carry eval_classes: storytelling but are not rowed here — see surface_note. Trace regenerated this pass: content_sha moved (979936f4... → c7af5631...) since the 2026-08-07 cache, driven by commit 95fec132 (page-geometry fix: 'below' → 'come next' cross-doc-anchor fix, and a minor GitHub-CLI phrasing tweak); neither change is story-relevant, so the persona walk and close verdict carry forward unchanged from the prior trace.",
   "blocking_findings_count": 0,
   "todos_count": 0
 }

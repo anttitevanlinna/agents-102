@@ -1,0 +1,169 @@
+{
+  "class": "slides",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/build-a-project-from-zero.md",
+  "body_sha": "d6246702e79a476b9cbb1fa15d61fd3c19bb2cc88de2d1f8bc592d9d292b5223",
+  "verdict": "PASS",
+  "training": "ae101",
+  "chunk_map": [
+    {"index": 0, "heading": "No repo to bring? Build one. (H1 + lede)", "lines": "1-5"},
+    {"index": 1, "heading": "Get to a running game", "lines": "7-13"},
+    {"index": 2, "heading": "Leave it with tests and a data surface", "lines": "15-19"},
+    {"index": 3, "heading": "Where the four task sizes come from", "lines": "21-28"},
+    {"index": 4, "heading": "Bring to Module 1", "lines": "30-32"}
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Every referent resolves against a same-file antecedent under sequential read. Chunk 2 line 17 'the game has real tests' → 'game' named chunk 1 line 12; chunk 2 line 19 'Before you close the session' → 'session' named chunk 1 line 11. Chunk 3 line 27 'the data feature you seeded at the end of the first session' → resolves to chunk 2 line 19's newly-relocated data-feature bullet (the split moved this bullet from the old combined slide into its own chunk 2, and the forward-pointing reference in chunk 3 still lands cleanly because chunk 2 precedes chunk 3). Chunk 4 line 32 'The running game, the test suite, the commit history, and the one bug' all resolve to chunks 1-2 antecedents ('running' game ch1 l12, 'test suite' ch2 l17, 'real history' ch2 l18, 'the first thing that looks wrong...is your Module 1 bug' ch1 l13).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "One cross-file pointer, chunk 3 line 23: 'Same sizes as the [prework](../prework.md)' — named by title via link text, not located by position. No other file is referenced.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "No 'the X you did/saw' backward-reference-to-a-beat construction appears anywhere in the body. Chunk 2 line 19's 'Module 3 reads' is a forward reference to a real module, not a backward beat claim.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "No guess-before-reveal or live-demo construction anywhere in the body.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Every chunk carries a self-standing claim: chunk 1 = build steps to a running game, chunk 2 (new split) = add tests, commit discipline, seed a data feature, chunk 3 = the four task sizes, chunk 4 = what to bring. Neither new chunk is a wait-state fragment.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Chunk 2 header 'Leave it with tests and a data surface' truthfully summarizes its 3 bullets (test suite, commit history, data-touching feature) — the two nouns in the header (tests, data surface) both land, and 'commit history' generalizes under the header's implicit 'leave it in good shape' framing without contradicting it. Chunk 1 'Get to a running game' matches its build-to-playable-game bullets. Chunk 3 and chunk 4 headers likewise match their content.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Checked all sub-items per chunk: no 'Not X. Not Y. Z.' construction; no anaphora/epistrophe triples; no self-grading superlative (grep for 'one of the most', 'best', 'incredibly' → none); no number-with-retraction pattern; no abstraction-noun stacks; no verb triplets with an empty leg. Body is plain instructional prose throughout.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran `grep -n -iE 'surface|beat|mood|compendium|forcing function|firing'` over the body: 4 hits, all 'surface' — line 12 'surface area' (ordinary eng. usage), line 15/19/27 'data surface' / 'user-facing surface' tied directly to access-control/STRIDE vocabulary in the same sentence, i.e. attack-surface-style security usage, not the repo-internal 'writing surface' noun. No other dialect terms (beat, mood, compendium, forcing function, firing) appear.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Only bold in the body is chunk 3's 4-item list (lines 25-28: 'Trivial bug:', 'Small multi-file task:', 'Small feature:', 'A real send-off:'). This is functionally the check_pedagogy.md §34 task-sizing callout (floor-to-ceiling task-size enumeration) that §9's own exception clause names as outranking the ≤1-bold budget: 'a bolded line that names a task-size floor and ceiling.' Each handle is ≤5 words, within the handle cap. No other bold anywhere in the body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-size.js --file <path> --report` (run this session) enumerated exactly 4 slides matching the 4 `##` headings in the raw source (Get to a running game / Leave it with tests and a data surface / Where the four task sizes come from / Bring to Module 1) — confirms all 4 chunks reach the composed deck, including the new post-split heading.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-numbering.js --file <path>` (run this session) → 'OK — 1 files, Phase/Step numbering consistent.' No hand-numbered Phase/Step headers in this file to begin with (headings are plain topical labels).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`grep -n -iE '\\bbelow\\b|\\babove\\b|further down|top of this|see below'` over the body → no hits. `node scripts/check-slide-deixis.js --file <path> --report` (run this session) → empty output, no flagged deixis.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "Single in-body link, chunk 3 line 23 '[prework](../prework.md)' — link text names the document, no page-position language. Review surface only per the rule, not a gate.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/build-a-project-from-zero.md --report` (run this session): 'Get to a running game' 147 words/5 bullets, 'Where the four task sizes come from' 101 words/4 bullets, 'Leave it with tests and a data surface' 97 words/3 bullets (the new post-split slide, well under cap), 'Bring to Module 1' 17 words/0 bullets. Summary: 'files: 1  slides: 4  limits: 210 words / 6 bullets  oversized: 0 — ✓ every slide is within limits.' The split that created the new heading resolved the size concern that motivated it; both post-split chunks pass independently.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "Rule text scopes the imperative/claim split to 'Exercise' vs 'Lecture' `##` headings specifically; this file is a supplementary bootstrapping page, neither. All four headings are imperative/procedural labels ('Get to a running game', 'Leave it with tests and a data surface', 'Bring to Module 1') or a topical label ('Where the four task sizes come from') consistent with the exercise-style convention this page follows — no declarative law-naming heading is present either way, so no conflict arises under either reading.",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 0,
+  "notes": "Re-fire after two landed fixes: (1) '## Get to a running game' split, moving its last three bullets (tests, commit discipline, seed-a-data-feature) into a new '## Leave it with tests and a data surface' chunk — both post-split chunks resolve their own referents under sequential read and both pass the machine slide-size check independently (97 and 147 words, both well under the 210-word/6-bullet cap that motivated the split). (2) The housekeeping sentence 'Module 1 opens fresh in this repo.' was cut from '## Bring to Module 1', confirmed absent from current body (chunk 4 is now the single sentence at line 32, no other content) — this also clears the 'Bring to Module N' bans (no housekeeping, no mechanism aside, no front-run coined terms) restated in the compendium's closer-rules addendum. No new violations introduced by either fix."
+}

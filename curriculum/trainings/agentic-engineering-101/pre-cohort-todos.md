@@ -173,9 +173,11 @@ records.
   cannot be aged, only regenerated.
 - **47 body-moved.** Student-facing prose changed under the trace. Worst drift:
   `the-map-filled-in` (177 body lines), `the-far-half` (111), `the-loop-half-filled` (105).
-- **25 orphaned.** Traces naming files that no longer exist, including `backpressure`,
-  `the-2-frontiers`, `steering-the-wiring`, `read-the-ticket-rules`. Deleting these is the one
-  obviously-safe move on this list.
+- **Orphans: done, and the count was wrong.** Six of them named files that are very much alive.
+  `isSurface` read a fixed 12-line head for the `<!-- maintainer -->` fence, so a one-slide
+  lecture whose fence sits on line 9 was classified maintainer-facing and never entered the
+  universe at all — `the-2-frontiers` (M6 opener) and `learning-through-contrast` (M5 opener)
+  among them. Fixed 2026-08-20 with a test; the fifteen genuinely-gone traces are deleted.
 - **11 persona traces carry no mood score at all.** Three are exercises, where
   `simulation.md` §When makes the persona run required: `fork-the-worktree`,
   `open-the-side-quest`, `orient-and-introspect`. The rest are lectures and modules, where it is
@@ -196,8 +198,12 @@ outside the AE101 count in both directions: never counted clean, never counted o
 - `curriculum/lectures/the-data-question.md`
 - `curriculum/lectures/why-mostly-right-fails.md`
 
-Each is linked from zero trainings or from two or more. Assign ownership before a cohort if any of
-them projects; until then they are provably unjudged and silently so.
+Each is linked from zero trainings or from two or more. Checked 2026-08-20: `personal-site-with-guardrails`
+is claude-basics + agents-101, and the three lectures are linked from nothing at all, so no AE101 beat
+projects any of the four. The AE101 count is therefore honest; the exposure is that three lectures sit
+in the shared pool provably unjudged and silently so, which is an Agents 101 question, not a pre-cohort one.
+The same run recovered `first-scheduled-agent`, `agent-ready-data` and `personal-to-company-gap`, which were
+invisible for a different reason (see the sim-cache section) and now show real owing on the Agents 101 queue.
 
 ## A second tab that lands on the right slide
 

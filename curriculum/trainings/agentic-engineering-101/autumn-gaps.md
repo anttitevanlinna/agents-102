@@ -1006,6 +1006,21 @@ H as gap 25, which lists six of its seven unmet contracts (the seventh, a team-l
 — so someone reading only § *Gaps* to price the work does not miss what this
 section found.
 
+**Seam H's six unmet contracts are NOT a gap in the sittings (Antti 2026-08-20).** The
+customer-authored workshop generates its own inputs; a Bosser sitting is not the producing side
+for them, and the four-sitting cut is not underspecified for failing to hand them over. A persona
+run on `learn-from-the-test.md` re-raised this on 2026-08-20 — the close hands off zero concrete
+deliverables against gap 25's six — and scored the close 6/10 under a team lens while the same
+body scored 8/10 under an individual one. The individual reading is the one the close is written
+for. Record, do not re-raise: the count mismatch is the design, not a defect.
+
+**One shape the workshop can take, offered not prescribed (Antti 2026-08-20):** participants run
+long sessions on the same feature and compare real run traces against each other. It needs no
+artefact from a sitting to exist — which is the concrete reason seam H does not need a producing
+side — and it puts the comparison the training keeps teaching (two returns, one question) into a
+room where the traces are everyone's. A candidate, not a requirement; a customer who wants a
+different workshop is not missing a prerequisite.
+
 ---
 
 ## Seam A — sitting 1 → the workshop that follows it

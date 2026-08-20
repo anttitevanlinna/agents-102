@@ -56,7 +56,7 @@ A standing check pushes back before the next wrong step builds on the last one. 
 ## Hooks for must-happen, prompts for taste
 
 - **Must happen goes in a hook**; recommended stays in a prompt or rule. Anything that breaks the work if it skips belongs in a hook: the verifier you just wrote, a pre-commit guard, a session-start context loader. Anything taste-shaped or context-dependent stays in a prompt where the LLM weighs it. Hooks are the runtime's "I will not forget," bought at the cost of flexibility.
-- Your repo has demands that don't show up in someone else's article. The verifier you built was one hook against one failure; the same primitive maps to more. Ask Claude to propose five hooks tied to this repo, beyond formatting and linting.
+- Your repo has demands that don't show up in someone else's article. The verifier you built was one hook against one failure; the same primitive maps to more. This one runs on the screen — watch the list come back rather than typing along.
 
 {{prompt:what-packaging-is-1}}
 
@@ -72,6 +72,16 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 <!-- maintainer -->
 
 **`## Every re-feed pass starts a fresh session` exists to close a depth asymmetry across the verifier menu, and its scope is mechanism only.** The menu lives in `diagnose-and-resend.md`'s Phase 3, where the student picks from it; it names three shapes as peers and tells them *"match the failure, not your familiarity."* Shape 1 is expanded by a whole lecture (`the-gate-is-a-claim.md`); shape 2 by the two hook slides directly above; shape 3 has no expansion here. Runtime primitives (`/goal`, `/loop`, `/schedule`) belong to M6's `the-loop-has-a-name.md` and `agents-that-build-agents.md` and stay out of this slide by design, so the M6 elaboration has something to land. **M6's `## Ralph` slide is a graduation beat, not this slide's twin** — a lever sat in plain shell, Huntley reached for it, the next Ralph is yours — and mechanism bolted onto it would convert the training's closing beat into an explainer. A judge reading *re-anchoring* in the exercise's Ralph re-feed bullet as a dangling referent should resolve it here rather than propose a clause upstream.
+
+**Slide 8's prompt is a trainer-run beat, not a follow-along (Antti 2026-08-20).** A 2026-08-20
+persona run scored this slide 5/10: a live generative task landing right after the deck's emotional
+peak, with nothing telling the room whether to run it. The material stays — the fix is the cue.
+Body now reads *"This one runs on the screen — watch the list come back rather than typing along,"*
+which is `check_slides.md` §4's own remedy for a demo beat that a text read breaks: keep the setup
+on the slide, move the doing to trainer delivery. Trainer runs `{{prompt:what-packaging-is-1}}` on
+the projected repo and reads the returned list against the closing line's test (tied to a specific
+file, convention or failure mode here — not a generic team-could-want-this). Do not restore an
+imperative that asks the room to run it.
 
 **Current shape (2026-08-14/15, Antti-directed):** nine slides. The three-pattern lands first; the theory passage (*The model has read the field* · *The missing evidence is local* · *The optimum is local, and it moves*, wording Antti-blessed) fills the middle; hooks and re-feed retain the implication end. Cut redistribution, all three documented: the Intercom tier case has its home in M6's `the-loop-has-a-name.md`, so M5 carries no duplicate; context-window management and the subagent-isolation callout live in M4's durable-state slide; **the 80/20 ratio slide is cut with its personal axis absorbed into the theory passage's engineer-decides bullet — the numeric ratio deliberately has no M5 slide, and its only stamped home is `the-map-filled-in.md` (M6).**
 

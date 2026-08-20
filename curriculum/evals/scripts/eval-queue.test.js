@@ -29,6 +29,11 @@ function fixture() {
   w('curriculum/trainings/t-one/reference/lookup.md', `# Lookup\n${clean}\n`)
   w('curriculum/exercises/do-a-thing.md', '# Do a thing\n')
   w('curriculum/lectures/orphan-lecture.md', '# Orphan\n')
+  // A short lecture: real student body, then its maintainer fence high up the
+  // file. The fence is where the maintainer block STARTS, not what the file IS.
+  w('curriculum/lectures/short-lecture.md', `# Short lecture\n\n## One slide\n\n- A student reads this.\n\n<!-- maintainer -->\n\nNotes for the maintainer.\n`)
+  // Same shape with no '##' at all — prose lecture, fence at line 7.
+  w('curriculum/lectures/prose-lecture.md', `# Prose lecture\n\nA paragraph the student reads.\n\nA second one.\n\n<!-- maintainer -->\n\nNotes.\n`)
   return root
 }
 
@@ -38,6 +43,8 @@ test('buildUniverse: collects modules, supplementary, reference, shared pool', (
   assert.deepStrictEqual(u.sort(), [
     'curriculum/exercises/do-a-thing.md',
     'curriculum/lectures/orphan-lecture.md',
+    'curriculum/lectures/prose-lecture.md',
+    'curriculum/lectures/short-lecture.md',
     'curriculum/trainings/t-one/getting-going.md',
     'curriculum/trainings/t-one/reference/lookup.md',
     'curriculum/trainings/t-one/supplementary/deep-dive.md',
@@ -53,6 +60,18 @@ test('isSurface: named non-surfaces excluded', () => {
 test('isSurface: <!-- maintainer --> marker excludes whatever the name is', () => {
   const root = fixture()
   assert.strictEqual(isSurface(root, 'curriculum/trainings/t-one/autumn-gaps.md'), false)
+})
+
+// The bug this guards: the marker test used to read a fixed 12-line head, so
+// a SHORT student file whose maintainer fence landed inside that window was
+// read as maintainer-facing and dropped out of the universe entirely — never
+// queued, never judged, and its sim traces reported as orphaned, which reads
+// as 'the file is gone' rather than 'the scanner cannot see it'. File length
+// is not a property of audience.
+test('isSurface: a maintainer fence below real student body does not exclude', () => {
+  const root = fixture()
+  assert.strictEqual(isSurface(root, 'curriculum/lectures/short-lecture.md'), true)
+  assert.strictEqual(isSurface(root, 'curriculum/lectures/prose-lecture.md'), true)
 })
 
 test('isSurface: a real module stays in', () => {

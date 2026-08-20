@@ -42,15 +42,26 @@ const NON_SURFACE = new Set([
 ])
 
 // Second, content-derived guard: a file that declares itself maintainer-facing
-// in its first lines is not a judge surface, whatever it is named.
+// BEFORE saying anything to a student is not a judge surface, whatever it is
+// named. The discriminator is what sits above the fence, not how far down the
+// fence sits: every student surface carries a maintainer block eventually, and
+// on a one-slide lecture that block starts on line 9. Reading a fixed-size head
+// made file length stand in for audience and silently dropped short lectures
+// out of the universe — unqueued, unjudged, and reported by sim-freshness as
+// orphaned traces, which reads as "the file is gone".
 const MAINTAINER_MARK = /^<!--\s*maintainer\s*-->/m
 
 function isSurface(repo, rel) {
   if (NON_SURFACE.has(path.basename(rel))) return false
-  let head
-  try { head = fs.readFileSync(path.join(repo, rel), 'utf8').split('\n').slice(0, 12).join('\n') }
-  catch { return false }
-  return !MAINTAINER_MARK.test(head)
+  let text
+  try { text = fs.readFileSync(path.join(repo, rel), 'utf8') } catch { return false }
+  const m = MAINTAINER_MARK.exec(text)
+  if (!m) return true
+  // Student body above the fence = a student surface. A lone `# Title` is not
+  // body; a planning artefact opens on its title and goes straight to notes.
+  const above = text.slice(0, m.index).split('\n')
+    .filter(l => l.trim() && !/^#\s/.test(l))
+  return above.length > 0
 }
 
 function mdFiles(repo, rel) {

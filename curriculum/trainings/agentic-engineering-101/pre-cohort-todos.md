@@ -178,6 +178,48 @@ Not on this list, and deliberately: `the-agent-loop.md` and `when-a-plan-is-good
 carve-out, not violations. Their prompts inspect the student's OWN session, and a trainer demo
 would return the wrong machine's answer.
 
+## Simulation caches that no longer describe their file (2026-08-20)
+
+`node curriculum/evals/scripts/sim-freshness.js --training ae101` is the reader; add `--mood` for
+the score half, `--gate` to make either exit 1. Nothing here blocks a cohort: every pin is honestly
+earned, because a judge really did read the body at the time. The exposure is forward. A judge
+re-fired tomorrow reads the cache before the file, so a trace describing prose that has since
+changed becomes invented evidence rather than missing evidence, which is the failure
+`memory/compounded/2026-08-19-platform-a-stale-cache-fabricates-evidence-not-just-staleness.md`
+records.
+
+- **58 unanchored.** The trace's `content_sha` matches no committed version of its file, raw or
+  `expand-md`-expanded. Either it hashed a working-tree state that was never committed on its own,
+  or the hash was not computed at all: 18 of them carry 16-hex strings where sha256 is 64. These
+  cannot be aged, only regenerated.
+- **47 body-moved.** Student-facing prose changed under the trace. Worst drift:
+  `the-map-filled-in` (177 body lines), `the-far-half` (111), `the-loop-half-filled` (105).
+- **25 orphaned.** Traces naming files that no longer exist, including `backpressure`,
+  `the-2-frontiers`, `steering-the-wiring`, `read-the-ticket-rules`. Deleting these is the one
+  obviously-safe move on this list.
+- **11 persona traces carry no mood score at all.** Three are exercises, where
+  `simulation.md` §When makes the persona run required: `fork-the-worktree`,
+  `open-the-side-quest`, `orient-and-introspect`. The rest are lectures and modules, where it is
+  optional. Triage, not a failure list.
+
+Sequencing note: a trace regenerated before a stamp goes stale again the moment
+`update-quality.sh` writes the Quality line, so regenerate as part of a judged pass, not as a
+standalone sweep.
+
+## Four shared files no training owns, so nothing will ever nag you (2026-08-20)
+
+`eval-queue.js` reports these as UNOWNED and refuses to guess a training, because the instance
+prefix would be a coin flip. The refusal is right, and the consequence is that these four sit
+outside the AE101 count in both directions: never counted clean, never counted owing.
+
+- `curriculum/exercises/personal-site-with-guardrails.md`
+- `curriculum/lectures/how-do-you-make-your-system-learn.md`
+- `curriculum/lectures/the-data-question.md`
+- `curriculum/lectures/why-mostly-right-fails.md`
+
+Each is linked from zero trainings or from two or more. Assign ownership before a cohort if any of
+them projects; until then they are provably unjudged and silently so.
+
 ## A second tab that lands on the right slide
 
 The want: a student working an exercise opens another exercise's instructions in a second browser tab and keeps it open beside their Claude session. Maintainer's framing: *"new tab is essential to allow for jumping between claude sessions and instructions. Browser back does not help in that."*

@@ -120,7 +120,7 @@ function renderDiamond(all) {
     ``,
     `**How the tiers work.** Writing on a surface → read that surface's \`_index/<surface>.leads.md\` (T1, every lead, ~1KB). A lead marked \`⚠\` carries an exception or a hard-grep list → read that rule's body (T2) before you ship. Full compendiums (T3) are for eval judges and for editing rules — not for writing prose.`,
     ``,
-    `**Adding or changing a rule** still happens in \`memory/check_*.md\`. Re-run \`node curriculum/evals/scripts/build-rule-index.js\` after, or this index goes stale and the hooks fail closed to T3.`,
+    `**Adding or changing a rule** still happens in \`memory/check_*.md\`; tier membership is one frontmatter line. After any rule edit: \`node curriculum/evals/scripts/build-rule-index.js\` **then** \`node curriculum/evals/scripts/compendium-drift.js --repin\`. Skip the rebuild and this index goes stale and the hooks fail closed to T3; skip the repin and every pinned verdict was taken against the old wording.`,
     ...rows,
     ``,
   ].join('\n') + '\n'

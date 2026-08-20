@@ -68,10 +68,6 @@ Everything else applies **directly**, then reported as landed: maintainer blocks
 
 Recurring leak = a **skill's own step text** re-imposing the gate. §26 outranks any skill procedure. Grep blast radius before assuming a fix reaches students — usually one line or none.
 
-## Rule tiers
-
-T0–T3; leads ship as a generated index, so a generator pays ~5% of the judge's bytes. Rules live in `memory/check_*.md`; tier membership = one frontmatter line. **Edit a rule → `node curriculum/evals/scripts/build-rule-index.js` → `compendium-drift.js --repin`** (hooks fail closed to T3 while stale). Contract: `.claude/rules/content-rules.md`.
-
 ## Memory / compendium authoring
 
 **Sacrifice human readability for agent efficiency.** Applies to non-student-facing internal files: `memory/`, `memory/check_*.md`, `memory/compounded/`, `.claude/rules/`, SKILL.md bodies, internal CLAUDE.md tiers. Telegraphic shorthand, structural punctuation (→ = ≥); drop cross-references (all rules in context at generation time), origin anecdotes (live in compounded files), "canonical source" trailers (date-slug in filename suffices). Every byte here is paid every session — earn it.

@@ -17,7 +17,7 @@ Say the re-send comes back green. The verifier you built reads the work and pass
 
 ## Gates decay
 
-- **Goodhart's law:** when a measure becomes a target, it ceases to be a good measure. The LLM is an optimizer aimed straight at your gate: it may special-case tests, keyword-stuff work for the judge, or edit assertions until they pass. No malice needed: optimization pressure finds the cheapest path to green.
+- **Goodhart's law:** when a measure becomes a target, it ceases to be a good measure. The agent is an optimizer aimed straight at your gate: it may special-case tests, keyword-stuff work for the judge, or edit assertions until they pass. No malice needed: optimization pressure finds the cheapest path to green.
 - Passing while missing the intent is a signature, not bad luck. When work clears the gate and still is not what you meant, the gate has decayed into a target. That is a reason to refresh the gate, not to shrug.
 - The countermoves are a hold-out and an integrity check. Keep a check the agent never sees, so nothing can optimize against it. After a suspicious pass, inspect the gate itself (the test file, the judge prompt, the asserts), not only its verdict.
 

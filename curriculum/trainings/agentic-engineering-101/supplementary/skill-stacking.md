@@ -37,7 +37,7 @@ That uniformity is what makes stacking possible.
 
 ### Layer 3: Composition mechanisms
 
-Four mechanisms, in order of visibility:
+The mechanisms, in order of visibility:
 
 **1. Explicit load.** One skill names another as a precondition.
 - `/qa` requires `/chrome-fast` before any Chrome MCP call.
@@ -99,7 +99,7 @@ CLAUDE.md is the dispatch table; skills are the handlers.
 
 ## Workflow shapes
 
-Six workflow archetypes. Five funnel into `/ship`; one is standalone.
+The workflow archetypes: all but one funnel into `/ship`.
 
 | Workflow | Path | Notes |
 |---|---|---|
@@ -128,9 +128,9 @@ These are the non-obvious rules the system enforces:
 
 ## Diagrams
 
-Three companion diagrams ship with this doc.
+Companion diagrams ship with this doc.
 
-**Marker legend** (used across all three):
+**Marker legend** (used across all of them):
 
 - **`[R]`**: routed (CLAUDE.md predicate dispatches to this skill on a matching condition).
 - **`[C]`**: chains (this skill names another as a precondition or explicit load).
@@ -190,7 +190,7 @@ Claims
 - `four-composition-mechanisms-are-the-transferable-part` · vision · "The four composition mechanisms this page names are the move." ← none-owed
 
 Sources
-- dino-stack `[checked:2026-07-05 result:ATTESTED due:none]` attested:maintainer — [maintainer-attested] One engineer's in-repo skill stack, read directly: the skill files, their cross-references, and the `/ship` orchestrator. **`/ship` is Dino's own skill, NOT a Claude Code built-in** — the lecture that points here keeps its orchestrator generic for exactly this reason, and any edit that reads `/ship` as a product feature is wrong. First-hand reading of a real kit, so no URL is owed and no date will stale it. **The page's own framing is its best guard:** it tells the reader this is one stack on one codebase, which is the correct evidence claim for a sample of one. fallback: none; the worked example is the evidence and its scope is stated in the first line.
+- dino-stack `[checked:2026-07-05 result:ATTESTED due:none]` attested:maintainer 2026-07-05 read the in-repo skill files and the `/ship` orchestrator directly — [maintainer-attested] One engineer's in-repo skill stack, read directly: the skill files, their cross-references, and the `/ship` orchestrator. **`/ship` is Dino's own skill, NOT a Claude Code built-in** — the lecture that points here keeps its orchestrator generic for exactly this reason, and any edit that reads `/ship` as a product feature is wrong. First-hand reading of a real kit, so no URL is owed and no date will stale it. **The page's own framing is its best guard:** it tells the reader this is one stack on one codebase, which is the correct evidence claim for a sample of one. fallback: none; the worked example is the evidence and its scope is stated in the first line.
 
 Frameworks
 - Composition mechanisms — explicit load, orchestrator, routing, hand-off · [borrow:none] · law:none · ← dino-stack — the four names the lecture teaches; this page is where they are grounded in a real kit

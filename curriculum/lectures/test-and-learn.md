@@ -23,8 +23,8 @@ You're new to this country: the stretch where the agent runs alone and you don't
 ## Cancel is legitimate; traces are data
 
 - Cancel is legitimate; traces are data. If twenty minutes in you can see Claude hallucinating file paths, contradicting its own earlier steps, or missing a requirement that wasn't in the prompt, stop it. You have the data you came for.
-- A result you can read is enough; you do not need a completed artifact. A short run with useful observations beats hours of trace you can't read.
-- For this first run, fifteen to thirty minutes is enough. Run length follows the task and how well your checks guide it.
+- A result you can read is enough; you do not need a completed artifact. A short session with useful observations beats hours of trace you can't read.
+- For this first session, fifteen to thirty minutes is enough. Session length follows the task and how well your checks guide it.
 
 <!-- maintainer -->
 

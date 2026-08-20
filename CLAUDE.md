@@ -36,10 +36,6 @@ Shared tree, multiple live sessions. Assume a neighbour is inside your files.
 - **Same-file collision** (neighbour typing inside your file): `git diff -- <f>` to read hunks, `git apply --cached` your `@@` blocks only, then plain `git commit`. `--stat` is blind to this.
 - **Before deleting/overwriting:** delete only the leaf you created. An unexplained edit in a shared tree is a colleague, not a bug — check `ps` + mtimes before "restoring".
 
-## Copyright
-
-Proprietary (`curriculum/`, `content/`, `site/`, `memory/`, `docs/`, `scripts/`, `.claude/`, root docs) → © 2026 Bosser Oy, all rights reserved. Each proprietary top-level folder carries `COPYRIGHT.md`. Public: `continuous-research/` under `continuous-research/LICENSE.md`. In doubt → root [`COPYRIGHT.md`](COPYRIGHT.md).
-
 ## Subagent rule injection
 
 Subagents DO inherit the full CLAUDE.md hierarchy and `.claude/rules/` — user, project, `CLAUDE.local.md`, managed policy. Built-in Explore and Plan are the only exceptions. Prepend only what sits outside an auto-load surface:
@@ -64,11 +60,6 @@ Card ONLY **student-facing body text + prompt bodies students copy** (`check_pro
 Everything else applies **directly**, then gets reported as landed work: maintainer blocks, backing blocks, `check_*.md`, `.claude/rules/`, CLAUDE.md tiers, `memory/compounded/`, `continuous-research/` (incl. evidence-level downgrades), scripts, trainer notes. Test = *"will a student read this string?"* — NOT *"does this need judgement?"* A rule surfaced as a card is a rule not in force.
 
 Recurring leak = a **skill's own step text** re-imposing the gate (`/research-review` Step 6, `/compound` Step 6, both fixed 2026-07-31). §26 outranks any skill procedure. Grep blast radius before assuming a fix reaches students — usually one line or none.
-
-## Self-review
-
-- **Session start:** read `memory/self-review-protocol.md` § *Core heuristics*.
-- **End of significant sessions:** run self-review per `memory/self-review-protocol.md`. Recurrence 3+ → hard rule or `check_*.md`.
 
 ## Rule tiers
 

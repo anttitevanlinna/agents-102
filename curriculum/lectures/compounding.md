@@ -41,13 +41,16 @@ Every module after this leans on the memory you just built. Multi-agent systems 
 
 Back in Phase 1 you asked Claude to flag pages a competitor could write about themselves. Phase 3 sharpened them. That's the discipline: if the answer to *"could a competitor claim this?"* is ever yes, the memory is growing but not compounding.
 
-Ask Claude to spot the still-generic pages and propose what would sharpen each.
+Ask Claude to spot the still-generic pages in the memory you built and propose what would sharpen each.
 
 {{prompt:compounding-1}}
 
 Claude comes back with three pointed requests. Answer one. Let it update the page. The memory just got a fourth round of compounding. You steer; the system maintains; the loop runs.
 
 <!-- maintainer -->
+
+**§6 carve-out, the answer must be theirs (checked 2026-08-20).** Logged in `pre-cohort-todos.md` as a lecture prompt owing the trainer-demo sweep. It is not: the prompt reads *"Look at the memory I just built"* and *"pull the missing insight out of my head"* — the student's own memory pages and the student's own head. A trainer demo returns the wrong machine's answer. The body now names the student's own memory beside the prompt, which is §6's tell. Leave it student-run.
+
 
 **Quality:** maintainer-reviewed 2026-04-29
 

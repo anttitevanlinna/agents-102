@@ -4,7 +4,7 @@ Before the security loop, look at the agent loop without polish.
 
 The raw loop takes three plain questions. No special setup. No hidden vocabulary. Just the model explaining how it sees its own working surface.
 
-Ask these one at a time:
+Three plain questions, one at a time, on the screen. Watch the tool list come back rather than typing along.
 
 {{prompt:agent-loop-raw-1}}
 
@@ -21,5 +21,7 @@ You can try the same three prompts in your own session. The goal is not to memor
 <!-- maintainer -->
 
 **Time:** 6 minutes.
+
+**Trainer:** run the three prompts one at a time on the projected session and read each return out loud; the room watches. The self-run invitation lands later in the body, deliberately after the mechanism has been named (`check_lectures.md` §6).
 
 **Role in Module 4:** Short Claude Code demo before the risk lecture. Shows raw agent mechanics: tools available, tool selection via descriptions and schemas, text becoming action through runtime mediation. Keep it live when possible. If runtime answers vary, treat the variance as the lesson: tools are environment-specific, the loop shape is stable.

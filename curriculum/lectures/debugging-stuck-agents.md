@@ -4,7 +4,7 @@ Agents get stuck. They use the wrong source. They average three views into mush.
 
 Do not start by tracing everything by hand.
 
-Start by prompting the system to find the root cause.
+Start by prompting your own stuck system to find the root cause.
 
 {{prompt:debugging-stuck-agents-1}}
 
@@ -27,6 +27,9 @@ Start with diagnosis before repair. That's the habit.
 The agent is part of the debugging loop too.
 
 <!-- maintainer -->
+
+**§6 carve-out, the answer must be theirs (checked 2026-08-20).** Logged in `pre-cohort-todos.md` as a lecture prompt owing the trainer-demo sweep. It is not: it is the recovery move for the multi-agent system the student just watched fail, and the beat ends by having them write the lesson into their own `./CLAUDE.md`. A trainer demo returns the wrong machine's answer. The body now names the student's own stuck system beside the prompt, which is §6's tell. Leave it student-run.
+
 
 **Time:** 5 minutes.
 

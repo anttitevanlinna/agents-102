@@ -80,7 +80,7 @@ The question is: have you designed the loop that would make sending it responsib
 
 Before you close Module 6, create one steering eval for the kind of internal mail you might actually want an agent to help with.
 
-Ask Claude to build it with you:
+This one is yours to run. Ask Claude to build it with you:
 
 {{prompt:new-human-role-in-the-loop-1}}
 
@@ -99,6 +99,9 @@ Not trusting the machine blindly.
 Designing the conditions under which the system earns more autonomy, one loop at a time.
 
 <!-- maintainer -->
+
+**§6 carve-out, the answer must be theirs (checked 2026-08-20).** Logged in `pre-cohort-todos.md` as a lecture prompt owing the trainer-demo sweep. It is not: the prompt interviews the student one question at a time about the mail *they* would let an agent send, and the beat closes on *"two kinds of judgment on disk"* — the student's disk. A trainer demo returns the wrong machine's answer. The body now names the student's own run beside the prompt, which is §6's tell. Leave it student-run.
+
 
 **Time:** 10 minutes.
 

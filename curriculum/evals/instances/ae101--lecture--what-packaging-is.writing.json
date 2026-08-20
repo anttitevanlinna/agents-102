@@ -1,7 +1,7 @@
 {
   "class": "writing",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/what-packaging-is.md",
-  "body_sha": "b58afd063127a59fee0121750a2eaf20f61efa4cab8ac9ee9149dfcc61a686d1",
+  "body_sha": "2e1bf27a176c2b2a62a49438b8c420a0f3078883349aa5a5e92a11f0760367da",
   "verdict": "PASS",
   "training": "ae101",
   "rules_evaluated": [
@@ -10,7 +10,7 @@
       "rule_index": 1,
       "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS",
-      "evidence": "grep -inE '\\bhonest|\\bdelve|\\blandscape\\b|\\bimportantly\\b|\\bcrucial|\\bsubstrate|\\bleverage\\b|\\bsynergize|\\bparadigm shift' over lines 1-71 (body, MAINTAINER_CUT=72) → 0 hits. grep -c '—' over lines 1-71 → 0 (all em-dashes in file sit at lines 74,76,78,82,84,95-101,145-152,156-159,162,164,177,181, all ≥72, inside the maintainer/backing block).",
+      "evidence": "Mechanical re-check run this pass: `awk '/^<!-- maintainer -->/{exit} /—/{print NR\": \"$0}' curriculum/lectures/what-packaging-is.md` → empty output (no matches in body). `grep -c '—' curriculum/lectures/what-packaging-is.md` (whole file) → 27, all of them below the maintainer cut (line 72) in the dated maintainer/backing prose, which is exempt by this class's own scope rule and by rule 3's maintainer-provenance carve-out. Line 59, the previously-flagged sentence, now reads 'This one runs on the screen. Watch the list come back rather than typing along.' — two sentences, no em-dash, verified by direct read of line 59. Banned-word grep over body (lines 1-71) also 0 hits, unchanged from prior pass.",
       "fix_hint": null,
       "blocking": true
     },
@@ -172,7 +172,7 @@
       "rule_index": 19,
       "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
       "verdict": "PASS",
-      "evidence": "Deictic checks: line18 'That is the difference between a final review and feedback inside the passage' resolves a real antecedent (the standing-check sentence just before it) — legitimate per the rule's own carve-out. line11 'On the chart that is the wedge' likewise names a concept. Bold-label checks: 'Reference artefact', 'plan.md', 'External verifier', 'Re-feed', 'hook' are all definition-then-elaboration, not label-echoed-as-subject. No empty negation or citation/appendix duplication found in body.",
+      "evidence": "Deictic checks: line18 'That is the difference between a final review and feedback inside the passage' resolves a real antecedent (the standing-check sentence just before it) — legitimate per the rule's own carve-out. line11 'On the chart that is the wedge' likewise names a concept. Bold-label checks: 'Reference artefact', 'plan.md', 'External verifier', 'Re-feed', 'hook' are all definition-then-elaboration, not label-echoed-as-subject. No empty negation or citation/appendix duplication found in body. Re-checked the two-sentence rewrite at line 59 specifically ('This one runs on the screen. Watch the list come back rather than typing along.'): 'This one' is not a deictic drumroll (it does not announce a claim the same clause restates — it names the referent, the just-mentioned hook, before handing off to an instruction); the second sentence is a genuine trainer-delivery imperative (per the maintainer's dated note, this line replaces a body forcing-function with a trainer cue), not empty negation or bold-label echo. Reads as intended emphasis (short beat after the longer setup sentence), not clipped fragmentation — no machine-cadence fat introduced by the fix.",
       "fix_hint": null,
       "blocking": false
     },

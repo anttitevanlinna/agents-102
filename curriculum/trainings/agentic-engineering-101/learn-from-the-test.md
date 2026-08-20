@@ -33,7 +33,7 @@ Somewhere during the un-packaged send-off a worry surfaced: did it touch the mig
 
 Test that worry against the return. Where the return bears it out, the worry names your first check. Where it doesn't, the artefact wins: it is first-hand data from the real run, and the worry is not.
 
-Acting without full control is the job from here on. Build the check, send again. The checks pay twice: a session they steer is a session you don't babysit, and a session you don't babysit can run beside another.
+Acting without full control is the job from here on. Build the check, send again. The checks pay twice: a session they steer is a session you don't babysit, and a session you don't babysit can run beside another. Beside, not on top of: independent reads, investigations and reviews parallelise, while coupled writes and shared decisions do not.
 
 ## Set up the worktree
 
@@ -56,6 +56,7 @@ Gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a wor
 - The missing evidence is the interaction of this task, model, repository, and setup.
 - The experiment promotes a candidate to tested-here; the local optimum stays ahead.
 - The agent makes evidence cheap; the engineer decides what it means and what becomes durable practice.
+- The diff says what shipped; the transcript says how it got there. Read one without the other and you miss either the mechanism or the result.
 
 <!--flag:no-module:spot-gaps-build-the-loop-->
 ## Inspect your results
@@ -111,6 +112,8 @@ Module 6 reads the packaged session: subtler misses, subtler drift. The question
 <!--/flag:module:spot-gaps-build-the-loop-->
 
 <!-- maintainer -->
+
+**`## Inspect your results` stays prose, no fence (accepted 2026-08-20).** Flagged as M5's only loop-closing diagnostic sitting outside a prompt block. It is deliberate. The section renders only for the no-M6 variant (`<!--flag:no-module:spot-gaps-build-the-loop-->`), and it fires after the sitting ends, on a return whose artefact paths do not exist at authoring time, so a fence would have to invent them. The module's prompts belong to `diagnose-and-resend`; this is the close that hands a no-M6 student the loop in their own words. Do not add a fence, and do not cut it.
 
 **Slide-size splits (2026-07-10, hand slides-audit):** two pre-existing oversized chunks split at conceptual seams, zero wording changes — `## Re-send the same task, packaged` + `## Send it off and read the report cold` carve the re-send narrative out of `## Key Concepts` (was 430w); `## Run the fork from the original repo` carves execution out of the worktree rationale (was 309w). Headers are command-verb, build-squint checked. Key Concepts now ends at its sixth bullet as the section name promises.
 

@@ -36,7 +36,7 @@ Ask Claude to author the skill, asking one question at a time.
 *6 min*
 
 - Authoring without invocation is theatre. The skill proves itself only when it runs on real code.
-- The skill is auto-discovered right here. It sits at `~/.claude/skills/test-strategy/SKILL.md`, and this worktree holds the full codebase. Invoke it on the code as it stands in front of you.
+- The skill is auto-discovered right here, and this worktree holds the full codebase. Invoke it on the code as it stands in front of you.
 - The agent reads the codebase; you read the strategy it produced and the grade it gave itself, and whether either one reads generic.
 
 Ask Claude to invoke the skill on this codebase and grade what it produced in the same turn.
@@ -55,7 +55,7 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 
 *2 min*
 
-- The skill is already shipped. It sits at `~/.claude/skills/test-strategy/SKILL.md`. The agent wrote it there in Phase 1, sharpened by your push-back during Phase 2's invoke-and-critique. Auto-discovered in every session you run. That's the ship.
+- The skill is already shipped. The agent wrote it in Phase 1 and your push-back sharpened it during Phase 2's invoke-and-critique. There is no separate install step. That's the ship.
 
 ## Decide if it graduates to the team
 
@@ -74,6 +74,8 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 **Note** The side-quest worktree may still hold changes the agent made here: code, tests, scratch files. Its copy of `CLAUDE.local.md` came over at the fork and may have drifted from the one in your main repo. The skill crossed back on its own (it lives at user scope); everything else stays in the worktree. Those changes are yours to handle later: keep them, carry the useful parts to your main repo, or delete the worktree.
 
 <!-- maintainer -->
+
+**Install mechanic stated once, 2026-08-20.** The skill's home and auto-discovery were restated four times in body (`**What you build:**`, the ship-destination bullet, the Phase 2 invoke bullet, the ship beat). The canonical statement is the ship-destination bullet, which the backing block also cites as `personal-skills-folder-auto-discovered` and must stay verbatim; the other two body copies are cut. Install paths and the team-kit route are canonical in `training-architecture.md` § Skills, which is a planning artefact and not a student page, so the pointer lives here and not in body.
 
 **View summary:** You author a test-strategy skill through conversation, challenge its weakest assumption, and invoke it against the real codebase before keeping it. The artifact is a reusable skill shaped by the way this repository actually tests, not by a generic pyramid.
 

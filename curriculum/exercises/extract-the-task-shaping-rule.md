@@ -6,7 +6,7 @@
 
 **What you build:** one rules file from two sources: how you shaped this task, and how your team writes stories.
 
-**The point:** find a place for your rules.
+**The point:** a rule you saved is worth more than a pipeline you didn't build.
 
 ---
 

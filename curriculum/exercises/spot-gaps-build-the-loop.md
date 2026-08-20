@@ -22,6 +22,8 @@ Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no 
 - Read from the recorded coordinates, not a branch or transcript search. Both sessions recorded their transcript paths: M4 in `task.md`, M5 in the protected `Run coordinates` block at the top of `plan.md`.
 - You hold the contrast; the agent reads both sessions off disk. You are not tracing git refs by hand. Point it at the coordinates and let it pull both sessions side by side.
 
+> **Only one session?** Skipping M5 leaves you the un-packaged run with nothing to set beside it. Read that one session on its own: where the agent lost the goal, where it went past its evidence, where it called the work done too early. Rank what you find and cut the stale rule the read kills. The contrast is what you lose; the ranked gap map is not.
+
 Ask Claude to read both sessions side by side and name where packaging caught, where it missed, and what new shapes of drift it introduced.
 
 {{prompt:spot-gaps-build-the-loop-1}}
@@ -162,7 +164,7 @@ OODA
 **Plug points:**
 - Student's M4 un-packaged artefact + M5 packaged re-run artefact (Phase 1 source material; both already in the repo + session transcripts).
 - Repo's skill home convention if any (install paths + team-kit route → `training-architecture.md` § Skills).
-- Sponsor-stated or team-stated code-review conventions (feeds Phase 2 judge's quality bar, if the shape picked is LLM-judge).
+- Sponsor-stated or team-stated code-review conventions (feeds the sidestep's primitives ranking, where code-review is one of the named primitives, and the handoff prompt that follows). Retargeted 2026-08-20: this line named a Phase 2 judge build, which left with the 2026-08-01 authoring-sequence cut. Phase 2 is study plus shapes plus the optional sidestep; nothing in it builds a judge.
 
 **Decision points (pacing):**
 - **Phase 1 >20 min** — over-diffing. The diff is data for the rule cut, not an essay. Force a rank and move on.

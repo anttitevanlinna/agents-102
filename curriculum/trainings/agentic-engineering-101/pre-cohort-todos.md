@@ -129,33 +129,23 @@ These are not inconsistencies to smooth away. Each pair identifies a boundary th
 
 **When a new item surfaces mid-session:** add it here, not in the module file.
 
-## Lecture prompts that still tell the room to type (2026-08-20)
+## Lecture prompts: swept, and four of six were never violations (2026-08-20)
 
-`check_lectures.md` §6 landed today: a prompt inside a lecture is a trainer show-and-tell, never
-a room follow-along. The rule is in force; the corpus has not been swept. Antti's call was log
-now, sweep later, because each edit reopens that file's `writing` and `slides` pins and AE101 had
-just reached all-PASS. Six files carry a second-person imperative at a prompt block, with the
-audit's proposed replacement beside each:
+`check_lectures.md` §6 landed and the corpus is swept. Two files were the real thing and are fixed:
+`agent-loop-raw` and `self-consistency-after-scoreboard`, both titled demos, both carrying the
+trainer stance below the fence where no student reads it. It is above the fence now.
 
-- `lectures/agent-loop-raw.md:7` (3 prompts, Agents 101) — *"Ask these one at a time:"* → trainer
-  asks them on the projected session; the room watches the tool list come back.
-- `lectures/compounding.md:44` (Agents 101) — *"Ask Claude to spot the still-generic pages and
-  propose what would sharpen each."* → runs on the projected memory.
-- `lectures/debugging-stuck-agents.md:6` (Agents 101) — *"Start by prompting the system to find the
-  root cause."* → trainer runs it on the stuck agent from M3.
-- `lectures/new-human-role-in-the-loop.md:83` (Agents 101) — *"Ask Claude to build it with you:"* →
-  trainer builds it live; the room watches the steering eval take shape.
-- `lectures/self-consistency-after-scoreboard.md:15/19/25` (3 prompts, Agents 101) — three *"Ask
-  Claude to…"* leads. **The interesting one:** its maintainer block has carried the right stance
-  for months (*"trainer runs the demo on screen and students keep the concept"*) but states it
-  below the fence, where no student reads it. Pull the sense of that line into the body.
-- `lectures/agents-that-build-agents.md:23` (AE101, M6) — *"Ask the agent to turn them into a
-  prompt that builds the kit."* Weakest of the six: the line after the prompt already leans
-  self-owned, so this one may be a cue rather than a rewrite.
+The other four are §6's own *the answer must be theirs* carve-out, checked against the rule's test
+of whose machine holds the answer: `compounding` (*"the memory I just built"*, *"out of my head"*),
+`new-human-role-in-the-loop` (interviews the student, closes on judgment on their disk),
+`debugging-stuck-agents` (recovery move for the system they just watched fail), and AE101's
+`agents-that-build-agents` (*"the shapes you drew are still in the session"*). Each now carries the
+tell in the body and a maintainer note; do not re-flag them.
 
-Not on this list, and deliberately: `the-agent-loop.md` and `when-a-plan-is-good.md` are §6's
-carve-out, not violations. Their prompts inspect the student's OWN session, and a trainer demo
-would return the wrong machine's answer.
+**The deferral was cheaper than it looked.** The stated cost was reopening each file's `writing` and
+`slides` pins. Five of the six are shared-pool lectures that `scan-stale-classes` reports as UNOWNED,
+so they had no pins to reopen. The AE101 file took a maintainer-block note only and did not move
+either — it already owed `writing` and `story` on rule-drift, from §6 landing, before this pass.
 
 ## Simulation caches that no longer describe their file (2026-08-20)
 

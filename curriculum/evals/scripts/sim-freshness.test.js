@@ -105,3 +105,34 @@ test('the history memo is keyed by repo, not by path alone', () => {
   assert.ok(historyShas(b.repo, b.rel).some(h => h.sha === onlyInB),
     'repo B was answered from repo A\'s cache')
 })
+
+test('a customer-variant trace resolves to the surface it walked', () => {
+  // Traces are named `<training>--[<variant>-]<slug>`: `autumn-learn-from-the-test`
+  // and `northwind-learn-from-the-test` are two personas walking ONE file. Taking
+  // the last `--` segment whole leaves both orphaned — and an orphan carries no
+  // mood, so the two lowest scores in the corpus went unread precisely because
+  // they were the customer-specific runs.
+  const { slugIndex, resolveSlug } = require('./sim-freshness.js')
+  const idx = new Map([['learn-from-the-test', 'curriculum/trainings/ae101/learn-from-the-test.md']])
+  assert.strictEqual(resolveSlug(idx, 'ae101--autumn-learn-from-the-test'),
+    'curriculum/trainings/ae101/learn-from-the-test.md')
+  assert.strictEqual(resolveSlug(idx, 'ae101--exercise--learn-from-the-test'),
+    'curriculum/trainings/ae101/learn-from-the-test.md')
+  assert.strictEqual(resolveSlug(idx, 'ae101--nothing-of-the-kind'), null)
+  assert.ok(typeof slugIndex === 'function')
+})
+
+test('moodBeats reads every phase score and the close, and stays silent otherwise', () => {
+  const { moodBeats } = require('./sim-freshness.js')
+  const beats = moodBeats({
+    phases: [
+      { phase_index: 1, phase_name: 'One', mood_score: 8, mood_note: 'fine' },
+      { phase_index: 2, phase_name: 'Two' },
+      { phase_index: 3, phase_name: 'Three', mood_score: 6, mood_note: 'flat' },
+    ],
+    close: { mood_score: 5, mood_note: 'lost it' },
+  })
+  assert.deepStrictEqual(beats.map(b => b.score), [8, 6, 5], 'an unscored phase must not become a zero')
+  assert.strictEqual(beats.at(-1).at, 'close')
+  assert.deepStrictEqual(moodBeats({ phases: [] }), [], 'no scores means no beats, never an implied pass')
+})

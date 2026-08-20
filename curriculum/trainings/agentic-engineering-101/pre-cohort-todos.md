@@ -49,29 +49,13 @@ Sim sweeps and platform-capability checks are not tracked here. The `curriculum-
 - **`spot-gaps-build-the-loop` (exercise) has two Phase 2 gaps.** A trainer plug-point references an LLM-judge that Phase 2 does not contain, and there is no branch for a student who skipped M5 entirely — which is a self-study path, not a hypothetical.
 - **`author-test-strategy-skill` restates the SKILL.md install mechanic four times.** One statement plus a pointer at `training-architecture.md` §Skills is the shape.
 
-## Strategy doc lags the shipped curriculum (2026-08-19 sweep)
-
-Seven independent judges found `bosser-strategy:content-strategy-agentic-engineering-101.md` describing curriculum that no longer exists. Every one resolved as the doc lagging, never the file drifting, so nothing was changed in the curriculum. Sync when you next work the doc:
-
-- **M2 close** is described as a "two-slide close"; `how-instructions-grow.md` carries four slides (the rules-ceiling and prohibitions/taste slides you directed 2026-08-19).
-- **M5 in detail** still lists three beats `what-packaging-is.md` no longer carries: the Intercom tier-case anchor, the five-camp context-window divergence, and the 80/20 ratio. Their new homes are recorded in that file's maintainer block.
-- **M6 opener order**: the doc has *Story of Module 6* opening M6; `spot-gaps-build-the-loop.md` line 183 records your 2026-08-12 correction that *The 2 frontiers* opens and the story follows.
-- **Line 323** quotes `where-the-rule-could-live.md`'s closer from before the 2026-07-02 slides rework. The doc's intent still holds; only the illustrative quote is stale.
-- **Supplementary material — Shipped** never learned about `workflow-composition-lineages.md`.
-- `prompt-anatomy.md`'s M2 constraint (grill pattern ships un-attributed until M3) was verified live and still holds — no action, recorded so the next judge does not re-derive it.
-
 ## Non-blocking findings banked from the all-PASS sweep (2026-08-19)
 
 Every AE101 surface is stamped all-PASS; these are the TODOs judges logged alongside a passing verdict. None blocks a cohort.
 
-- `test-and-learn.md` lines 26–27 use noun-*run* for the agent's sitting three times (`check_student_facing.md §21b` reserves that word). Recast to *session*.
-- `the-gate-is-a-claim.md` line 20 gives acting behaviour (special-casing tests, editing assertions) to "the LLM" where §21 assigns acting to "the agent". The file gets it right in four other places.
 - `mcp-and-connectors.md`: `3LO` is never glossed; `Path 1/2/3` recur as bare ordinals far from the list that names them; lines 3 and 122 narrate the file's own update cadence (§33).
-- `what-packaging-is.md` maintainer block: `**Word count:** ~900 words body, excluding the SVG` is stale twice over — the SVG is gone and the body measures ~1261 words.
-- `§20` count-adjacent-to-list fires unactioned on `composing-the-workflow.md` (line 17), `the-far-half.md` (line 10), `the-whole-map.md` (line 5), `where-the-rule-could-live.md` (line 5), and `when-a-plan-is-good.md` (lines 27, 35 — where the maintainer block already records the count drifting 3→4→5).
 - `the-far-half.md`: the migrated figure's loop-strand labels are no longer picked up by any body bullet since the Verification bullet dropped its "ghost checking loop" clause. A cold-read stall no per-file rule can see, because neither the figure nor the bullet is wrong alone.
 - `the-whole-map.md`: the nine loop-strand labels sit unearned; both beats score mood 7 because no body line defuses them. Independently confirms your own open EYEBALL item #3.
-- `the-loop-half-filled.md` line 55: the STATUS block narrates a completed correction rather than stating current state (`check_writing.md §3`).
 - `agents-that-build-agents.md`: no trainer/self recovery move is named for the handoff-prompt forcing function (§47). Low harm — terminal beat, nothing downstream depends on it.
 
 
@@ -79,17 +63,12 @@ Every AE101 surface is stamped all-PASS; these are the TODOs judges logged along
 
 Banked from the first full judge pass over the six AE101 surfaces that had never been judged in any class. Blocking findings were fixed and re-fired in the same pass; these are the ones that survived as non-blocking and are worth one deliberate decision each.
 
-- **`clean-code-is-steering` — LLM / agent / model vocabulary drift, 5 instances** (lines 17, 23, 47, 55, 63): *"the AI's raw power"* and *"an AI can change it"* sit beside *"the agent"*, plus four uses of *"the model"* where `vocabulary.md` wants *the agent* (acting) or *the LLM* (reasoning). One register pass over the file, not five local swaps.
 - **`build-a-project-from-zero` — a rule question, not a defect.** The writing judge reads `## Where the four task sizes come from` as a count adjacent to its own list (`check_writing.md` §20). It was kept deliberately: §20's carve-out keeps a numeral the reader carries away from the enumeration, the header appears in the nav rail and TOC where the items are not visible, and `prework.md` names the same four sizes, so it is a shared handle across two files. Either the carve-out covers headers or it does not; worth settling in the compendium rather than per-file.
 - **`mcp-and-connectors`** — the 395w `## Plugins and marketplaces` overflow is resolved (split at the governance boundary, 2026-08-19). Still open: chunks 2/3/4/6 bold whole sentences rather than ≲5-word handles, and the reference-page waiver lifts the per-slide count budget but not the handle cap.
-- **`workflow-composition-lineages`** — numerals adjacent to their own lists at lines 7, 54, 106, 117, 119; a coach-register closer with the student as grammatical object (~line 143); and two source-type labels outside the approved taxonomy, `[vendor, anonymous team byline]` and `[vendor docs]` at lines 178/180, both wanting `[vendor press release]`.
-- **`skill-stacking`** — the corpus's only `attested:` token reads `attested:maintainer` (line 184) where `check_research_claims.md` §11a specifies `attested:<who> <date> <context>`; numerals adjacent to their lists at 40, 102, 131.
+- **`workflow-composition-lineages`** — a coach-register closer with the student as grammatical object (~line 143). The numerals and the two out-of-taxonomy source-type labels are done.
 - **`claude-code-for-engineers`** — *"overnight"* at line 331 (time-of-day token); Claude:agent noun ratio 244:3, mostly legitimate product naming on a reference page but matching the compendium's own audit signal.
-- **`the-context-ceiling`** — *"later in the training"* forward-references the subagent treatment without giving the reader a calibration window.
 
 **A tooling finding from the same sweep, higher leverage than any of the above.** `update-quality.sh`'s `body_sha` guard hashes the whole file, while `scan-stale-classes.js` routes staleness per region. So a two-word repair re-owes every class, including the ones whose routing says they were never touched: one reworded sentence in `clean-code-is-steering` cost four judge runs, two of which had nothing to re-read. The scanner already computes exactly the information the stamper needs — let a class stamp when the recorded hash differs only in regions that do not route to it. This is the single biggest cost driver in a fix-and-re-fire sweep.
-
-**Strategy doc drift:** `content-strategy-agentic-engineering-101.md` lines 436 and 781 still cite `clean-code-is-steering.md` under its retired working title *Insights from Uncle Bob*. The file's own stance block records the 2026-08-02 rename and says not to reverse it.
 
 ## Hunt for buried gold
 

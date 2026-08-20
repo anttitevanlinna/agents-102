@@ -4,7 +4,7 @@ A walk through composition shapes surfaced from named practitioners' own publish
 
 ## What this walk covers (and doesn't)
 
-Three reading rules for this supplementary:
+Reading rules for this supplementary:
 
 1. **One published framework.** Klaassen's Compound Engineering is the only one in this set: plugin shipped, framework named, repo active. Other entries publish architectural stances, named methodologies, or scattered moves without putting a framework label on them. Each entry says directly which it is.
 
@@ -53,7 +53,7 @@ Cognition does not put a framework label on the shape itself. The "single writer
 
 ## Feedback-loopable methodology and shipped primitives, Sourcegraph Amp
 
-Two artefacts from Amp, with different bylines and different shapes.
+Amp published twice here, with different bylines and different shapes.
 
 **Feedback Loopable**, by Lewis Metcalf at Sourcegraph (2026-02-05), is a named methodology Metcalf calls *"making it feedback loopable"*: building things for humans using methods built for agents. His three components, verbatim from the post: *"1. Built a playground. 2. Set up Experiments. 3. Made the inner loop fast."* The playground is a shared agent-human environment. Experiments use URL-driven query parameters for reproducibility. The inner loop is sped up by emitting CLI text output rather than screenshots so the agent can iterate faster. This is Metcalf's coined methodology, not an industry-standard framework.
 
@@ -105,7 +105,7 @@ The reason Ronacher matters in this walk: any teaching of composition that does 
 
 Dino is an AE101 trainer and a working engineer who, after the May 2026 cohort, shipped a complete composed skill stack and documented its architecture: a three-layer model (skill shape → classification axes → composition mechanisms), a phase-organised skill catalogue, six workflow archetypes (five funnelling into one orchestrator, one standalone), seven design principles. The primary doc and three diagrams ship as the canonical case study at `supplementary/skill-stacking/`.
 
-The stack carries four composition mechanisms that wire skills into workflows:
+The stack wires skills into workflows through composition mechanisms:
 
 - *Explicit load.* One skill names another as a precondition.
 - *Orchestrator composition.* `/ship` sequences the ship-half of every workflow with stop-conditions and a re-invocation loop. The chain runs `/testing` → optional `/qa` → `/release-notes` → `/cp` → open PR → `/multi-agent-review` (fresh sub-agent) → `/ci` (background) → hand-off.
@@ -116,9 +116,9 @@ Around those mechanisms:
 
 - **A single orchestrator** by deliberate design. `/ship` is the only skill that composes others. Every other skill is a leaf. The orchestrator-vs-leaf distinction is named explicitly in the classification axes as its own posture pole, alongside read-only and mutating.
 - **Phase-organised skill catalogue.** Five PLAN-phase read-only analysis skills (including AE101's curated `/access-control-analysis` and `/stride`); BUILD-phase mutating skills with mandatory gates that fire positionally (`/tdd` on behavior change; `/ui` on dashboard files; `/multi-tenant-security` on shared-credentials touch); VERIFY (`/testing`, `/qa`, `/chrome-fast`); SHIP (the orchestrator + its sequenced leaves); OPS (`/bug-triage` loops back to BUILD).
-- **Seven design principles** that the system enforces. A skill never duplicates another's logic; orchestrators sequence and gate, never reimplement; mandatory gates have tight predicates (*never "always run this," always "run this when file X is touched"*); composition over inheritance; the loop is re-invocation, not internal recursion; fresh sub-agents replace `/clear`; CLAUDE.md is half the system.
+- **Design principles** the system enforces. A skill never duplicates another's logic; orchestrators sequence and gate, never reimplement; mandatory gates have tight predicates (*never "always run this," always "run this when file X is touched"*); composition over inheritance; the loop is re-invocation, not internal recursion; fresh sub-agents replace `/clear`; CLAUDE.md is half the system.
 
-Four distinctive moves stand out:
+Distinctive moves stand out:
 
 - **Front-loaded read-only analysis.** Five PLAN-phase skills whose only job is to inspect before mutating, an unusually high analysis-to-action ratio.
 - **Mandatory gates fire positionally**, mid-workflow, by predicate. `/ui` doesn't fire at session start; it fires when the engineer opens a dashboard file.

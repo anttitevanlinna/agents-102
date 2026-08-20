@@ -53,6 +53,8 @@ The phases are places, not a pipeline. A real task sits in several at once.
 5. Outcome-cap wordings: *A task worth running · A grounded picture · A candidate change · A verdict you trust · A win taken up*. Do they read as what each phase's loops hand over? Alternates weighed for Verification: *A green you can believe* / *A trustworthy verdict*.
 6. Inner-loop label: `THE AGENT'S OWN LOOP` / `act · read the result · correct`. Does it show the nesting descriptively without pre-naming the M3 close?
 
+**`six phases` in the slide-3 header is the §20 memory-handle carve-out, not drift (settled 2026-08-20).** The numeral is carried away from this list and reused where the phases are not visible: `the-map-filled-in.md` (M6) closes on *Same six phases* and *Six modules, six phases, one loop*, and both map figures name it in their alt text. Keep it, and keep it accurate. Do not re-flag.
+
 **Family B (durability without voice) — PASS, judged 2026-07-03.** The map is re-readable with the trainer's voice gone: six phases named and placed, near/far legible. The spine holds — the map *is* the spine. The worldview container holds at phase level, and the nine loop labels ride as furniture, with no governor or principle stated, so no derivation is spent. That is the density / unearned-names / ghost-dose question in the queue above, not a block.
 
 <!-- backing -->

@@ -18,7 +18,7 @@ Today AE101 ships only on Claude Code (CLI + Desktop). Gemini CLI is the planned
 
 Two artefacts per student:
 
-1. **Content folder.** `ae101-content.tar.gz` (this file owns the tarball filename, build scripts, prework, and audit regex point back here). Shipped at training start. Contains `lectures/`, `exercises/`, `prework/`, `reference/`, `supplementary/`, and `content/skills/` (source files for the curated skills M3 uses). All markdown. Read in place at the agent's direction; skim when you want to. Same files render via the cohort site for projection and human browsing, the file-on-disk is the source of truth for agentic reading.
+1. **Content folder.** `ae101-content.tar.gz` (this file owns the tarball filename, build scripts, prework, and audit regex point back here). Shipped at training start. Contains `lectures/`, `exercises/`, `prework/`, `reference/`, `supplementary/`, and `content/skills/` (source files for the curated skills M3 uses). All markdown. Read in place at the agent's direction; skim when you want to. Same files render via the cohort site for projection and human browsing, the file-on-disk is the source of truth for agentic reading. **Ships only in cuts that run M3.** The two M3 security exercises are the tarball's only consumers; reference and supplementary material renders in the workbook regardless. A cut that drops M3 sets `flags: { payload: false }` on its registry entry, which strips prework's download, extract and install steps with it.
 
 2. **The student's real repo.** Where compounding actually happens. Picked in prework against four criteria: owned or co-owned, still active in six months, dense enough that compounding has somewhere to land, real work ahead at both sizes (a one-line bug for M1, an epic or refactor for M4 onward).
 
@@ -73,7 +73,7 @@ The in-repo knowledge home is repo-root `observations/` for a separate mechanica
 
 **Name choice.** `observations/` over the previously-parked `context/`: "context" is itself a reserved platform word (context window, `/context`), so it would re-introduce the same reserved-term collision the rename exists to kill. Side benefit: a plain repo dir is runtime-agnostic, so the Gemini per-runtime path table below collapses that row to a single path.
 
-**Gitignore stays.** Deliberate: students are not forced to commit work-in-progress during training. The cross-module hand-off never depended on git, gitignored knowledge crosses the M3/M5 worktree fork by explicit `cp -r` at fork time (`check_platform_and_boundaries.md §7b`), not by riding the M4 commit. Gitignore is therefore compatible with the fix; lifting it is possible but unnecessary, since `cp -r` ignores ignore-status.
+**Gitignore stays.** Deliberate: students are not forced to commit work-in-progress during training. The cross-module hand-off never depended on git, gitignored knowledge crosses each worktree fork by explicit `cp -r` at fork time (`check_platform_and_boundaries.md §7b`), not by riding the M4 commit. Two forks in the six-module arc — M3's quality lane and M5's fork from M4 — and only M5's in a cut without M3. Gitignore is therefore compatible with the fix; lifting it is possible but unnecessary, since `cp -r` ignores ignore-status.
 
 **Why not the platform's auto-memory.** Routing is unpredictable (above), and the feature is user-scoped and per-machine, the wrong scope for codebase knowledge that must travel with the repo and the worktree fork. Some engineers also disable it. The in-repo file model is the deliberate teaching model; the rename only stops it colliding with the platform feature.
 
@@ -81,13 +81,13 @@ The in-repo knowledge home is repo-root `observations/` for a separate mechanica
 
 ## Skills
 
-AE101 ships three curated skills in the content tarball (build whitelist `SKILLS=()` in `scripts/build-ae101-content-tarball.sh`):
+AE101 ships three curated skills in the content tarball (build whitelist `SKILLS=()` in `scripts/build-ae101-content-tarball.sh`). **All three are M3-only, so a cut without M3 installs none of them** — see §Material distribution for what goes with the tarball:
 
 - `access-control-analysis`, used at M3 to analyze the engineer's own codebase access surface.
 - `stride`, used at M3 for STRIDE threat-modelling on the same codebase.
 - `security-tools`, the M3 supply-chain surprise. Framed to students as a generic security-utility pre-flight; its first STRIDE-exercise invocation runs a bundled rick-roll that lands the "external skills are a supply-chain vector" lesson. Mechanics and the don't-spoil-it rule live in the trainer handbook (trainer-modules.md, M3 tab, "The security-tools surprise").
 
-All three install to `~/.claude/skills/<name>/SKILL.md` during prework. M3 invokes them by name. M3's third exercise authors a new skill from session evidence; M6 authors a verifier-shaped skill.
+All three install to `~/.claude/skills/<name>/SKILL.md` during prework. M3 invokes them by name. M3's third exercise authors a new skill from session evidence; M6 authors a verifier-shaped skill. Both authoring beats belong to their module: a cut without M3 or M6 ships no authored skill from that beat, and downstream prompts that look for one are written to stand down rather than error.
 
 The `agentic-nerd` skill at `content/skills/agentic-nerd/` is an optional self-study facilitator the engaged self-study student can install. Cohort delivery does not install or depend on it; it is not part of the curated three above.
 
@@ -95,7 +95,7 @@ The `agentic-nerd` skill at `content/skills/agentic-nerd/` is an optional self-s
 
 First-cohort overload response (root diagnosis: big outputs + unfamiliar ground + pressure to proceed; root feeling = lost control → `theory-plan.md` § Why this exists; strategic rule + test-on-draft → `bosser-strategy:content-strategy-agentic-engineering-101.md` § Woven design rules #3). Doctrine: the student never reads agent output whole. Control = interrogation (ranked read, probe the known, forced self-critique) + the merge gate, not coverage.
 
-Arc, five beats, each anchored in a shipped surface:
+Arc, five beats in the six-module arc, each anchored in a shipped surface. Beat 3 is M3's: a cut without M3 runs the arc in four beats, and the take-into-use step does not fire.
 
 1. **M1 teach**, `lectures/the-machine-you-just-met.md`, output-shape slide *The LLM answers in essays*; move: tell the LLM what output you want because changing the shape costs virtually nothing.
 2. **M2 pressure + stop gate**, `exercises/push-back-on-the-plan.md` § *Read the right stuff first*; the copied prompts deliberately offer a full plan and an exhaustive branch walk, while the body tells the student to consume only the sharpenings worth making before generation.
@@ -127,26 +127,15 @@ No persistent training-dir state. Everything you need after M1 lives in either y
 same module files as everything above, four sittings instead of six, getting-going,
 plan-mode-done-right, run-the-first-experiment, learn-from-the-test (stock M1/M2/M4/M5). M3
 (`earn-the-trust`) and M6 (`spot-gaps-build-the-loop`) are absent; a customer-authored workshop
-stands in for both. The full seam-by-seam diff against a six-module delivery lives in
-`curriculum/trainings/agentic-engineering-101/autumn-gaps.md`, this section states only what
-changes mechanically for a Northwind cohort, not the content-level seams already catalogued there.
+stands in for both.
 
-**Everything above this section describes the full six-module delivery.** Before running or
-writing for a Northwind cohort:
-
-- **No content tarball.** `flags: { payload: false }` strips prework's download/extract/install
- steps for this cut. §Material distribution's "Content folder" (the tarball, `content/skills/`)
- does not exist for a Northwind student, its only consumers were the two M3 security exercises,
- and M3 is the module this cut drops.
-- **No skills.** §Skills' three curated skills (`access-control-analysis`, `stride`,
- `security-tools`) are M3-only and never install for this cut. M6's verifier-shaped skill authoring
- also never happens.
-- **One worktree fork, not two.** The gitignore passage above describes gitignored knowledge
- crossing "the M3/M5 worktree fork", that's two separate forks across the full arc (M3's
- quality-lane fork, M5's fork from M4). Northwind keeps only the M4→M5 fork; M3's never happens.
-- **The reading contract loses its middle beat.** §Reading contract's five-beat arc (M1 teach → M2
- exception → M3 take-into-use → M4 silent model → M5 remind+convert) runs four beats here; the M3
- take-into-use step doesn't fire. Not silently patched, recorded as a seam in `autumn-gaps.md`.
+**Everything this cut changes is stated where the thing itself is defined**, not restated here:
+the tarball and the curated skills in §Material distribution and §Skills, the single worktree fork
+in §Rule files, the four-beat reading arc in §Reading contract, the sitting shape in
+§Delivery-shape variants. Read those sections as written; each names what a cut without M3 or M6
+does instead. The content-level seams a customer-authored workshop has to be written against are
+catalogued in `curriculum/trainings/agentic-engineering-101/autumn-gaps.md`, which this section
+does not duplicate either.
 
 **Mechanically validated, not just read off source.**
 `curriculum/evals/mechanical/tmux-runner/chain-lemmings-northwind.sh` drives M1→M2→M4→M5 on the
@@ -157,12 +146,9 @@ on M3's ADR or the `test-strategy-lemmings` skill; M5's `verify-by-hand-judge` c
 runtime what `autumn-gaps.md`'s source-level read had only predicted. Full account:
 `curriculum/evals/mechanical/tmux-runner/lemmings-chain-runbook.md` § *Northwind variant*.
 
-**Not yet swept.** The rest of this document (worktree-fork mechanics, skills distribution, the
-reading-contract arc) still reads as six-module prose throughout. `autumn-gaps.md` § *Still
-unexamined* names this file as part of the owed trainer-facing sweep; this section is the
-disambiguation a trainer needs today, not that sweep.
+## Delivery-shape variants (six-module, 2-day)
 
-## Delivery-shape variants (2-day)
+Both shapes below are six-module. A four-sitting cut runs one module per weekly sitting in registry order; `timings.md` holds the caps per shape.
 
 The default 2-day shape is M1–M3 / M4–M6 (the trainer handbook's Start here tab carries the day tables): broadest fit, no overnight gap, M3's Q+S discipline installed before any long-running send-off.
 

@@ -10,9 +10,13 @@ becomes a customer-authored workshop. Workshops slot between the sittings and ar
 design.
 
 Going back to originals authored for six modules and a 1h45 envelope cannot be lossless. This document
-is the inventory of everywhere it pinches. **Nothing here is fixed.** Each entry is left visibly open,
-because a run that quietly repairs a gap produces material that looks finished, is not, and hides the
-cost from whoever prices the next phase.
+is the inventory of everywhere it pinches. **It opened with nothing fixed** — a run that quietly repairs
+a gap produces material that looks finished, is not, and hides the cost from whoever prices the next
+phase. Entries were therefore left visibly open and closed only on the record, in place, with the
+reasoning. **As of 2026-08-21, nineteen of the twenty-six carry a resolution under their own heading**, and gap 1
+is accepted rather than fixed. Six stay open, and only one of those is authorable by Bosser: commercial
+scope (17), customer workshop material (18, 23, 24, 25), and a standing audit debt that a script now
+measures rather than a list (26).
 
 Two things to read it against:
 
@@ -134,6 +138,17 @@ to trust, which is the authority that page exists to establish.
 `prework.md` § *What to bring* module-count-neutral. The second is a cross-training change — three
 registry entries carry `contentKey: 'agentic-engineering-101'`, so an in-place edit reaches canonical
 AE101 and the preview cut too.
+
+**Closed with the second option, and it cost less than the first would have.** `prework.md` § *Bring real
+work* now reads *"You'll work at different task sizes across the training"* and orders the sizes by
+*"roughly in the order you'll reach for them"* rather than by module number; the small-feature bullet,
+the one assigned to the dropped module, sits inside `<!--flag:module:earn-the-trust-->`. No surviving
+surface says *six modules*: `getting-going.md`'s *"across all six modules"* is gone too. The numbering
+half resolved itself — the workbook numbers nav and cards from the parent training, so a Northwind row
+reads M1 M2 M4 M5 and the skip is visible rather than papered over; `scripts/curriculum.test.js` pins
+that (`moduleOrdinal('agentic-engineering-101-northwind', 'run-the-first-experiment') === 4`). One
+override avoided, one fork avoided, and the fix reaches all three variants because it was true in all
+three.
 
 ---
 
@@ -413,6 +428,14 @@ that instruction goes with the file, so the next trainer meets the slide cold.
 labels, which by the deleted file's own note has to reach AE101 and this track in one edit. Until then a
 trainer-guide line is the cheap mitigation.
 
+**Closed, and no variant was needed — the labels were wrong in AE101 too.** The caption now reads
+`THE FAR HALF · AHEAD` in the figure source (`figures/map-engine-m4-open.md`, and its sibling
+`map-engine-m3-close.md`), and both module-labelled bullets are gone from the body: no *"M4 to M6 go
+there"*, no *"named at M5 and M6"*. A slide whose job is to make the student count where they are on
+the map should not do the counting in module numbers at all — it dates the deck to one arrangement of
+one cut. One edit, all three variants, no fork, and the cheap mitigation is not needed because there is
+nothing left to mitigate.
+
 ---
 
 ## 11. The pre-send safety gate is written as recall of a module this track never ran
@@ -675,6 +698,15 @@ deliberation then argues over thinner candidates.
 
 **Who could close it.** Customer workshop author (budget a first rep, not a second), or a maintainer who
 re-homes the authoring rep into a surviving sitting and fixes sitting 2's forward promise.
+
+**Half closed: the forward promise is gone.** No surviving surface promises the student a first skill
+they will author later — *"the move itself turns out to be packageable as a skill; you author your first
+one there"* returns nothing across the module, lecture and exercise bodies. So a cut without M3 no
+longer advertises a rep it does not run. **The half that stays open is the workshop's budget**, which is
+the customer's to set: a room authoring its first-ever skill inside a beat sized for a second rep still
+produces a thinner skill, and Bosser cannot fix that from its own four sittings without re-homing the
+rep into one of them. That re-homing is a curriculum change to canonical AE101, not a variant fix, and
+nobody has asked for it.
 
 ---
 
@@ -944,26 +976,31 @@ is a file's newest judge-verdict file older than its last above-the-fence edit?
 **In the room.** Nothing visible then, and nothing owed on paper now for the 2026-07-09 pass. Do not
 read that as *the cut is fully audited* — read the next paragraph, which is the part that survives.
 
-**Enlarged by this session, 2026-07-28, and stated rather than left to be discovered.** Closing gaps 2,
-5, 6, 7, 9, 11, 12, 14, 15, 16, 19, 20 and 21 touched **18 student-facing files** whose Quality lines
-carry per-class SHAs from before those edits. Nothing was re-stamped, because re-stamping without
-re-running the judges is the one move that turns this ledger into fiction:
+**Enlarged by the gap-closing itself, and this entry used to name the files.** Closing gaps 2, 5, 6, 7,
+9, 11, 12, 14, 15, 16, 19, 20 and 21 touched eighteen student-facing files whose Quality lines carried
+per-class SHAs from before those edits. Nothing was re-stamped, because re-stamping without re-running
+the judges is the one move that turns this ledger into fiction.
+
+**The list of eighteen is deleted rather than updated, and that is the fix.** A hand-typed list of stale
+files is a second copy of something a script computes from the pins and the git dates, and the copy goes
+wrong the moment anyone edits a body — which is continuously. It went wrong here: the debt has been part
+paid and part re-incurred several times since it was typed, and by 2026-08-21 the list was a fossil of
+one afternoon. The live answer:
 
 ```
-exercises/            diagnose-and-resend · share-your-work · walk-and-send-off
-lectures/             the-far-half · the-loop-half-filled · the-whole-map
-prompts/              ae101-prework-extract-and-install
-trainings/…/          getting-going · learn-from-the-test · plan-mode-done-right · prework
-                      run-the-first-experiment
-  reference/          prompt-anatomy
-  supplementary/      build-a-project-from-zero · how-the-best-do-ci-cd · skill-stacking
-                      the-lethal-trifecta · workflow-composition-lineages
+node curriculum/evals/scripts/eval-queue.js --training ae101
 ```
 
-Most edits are subtractions or single clauses, which is the cheap end of a re-audit. Two are not, and
-should lead the run: *Back to the map, one last time* is newly authored prose (gap 9), and
-`learn-from-the-test`'s worktree beat gained a paragraph (gap 14). The `slides` class is the one to watch
-— several edits changed what a projected chunk says, and one added a chunk.
+It prints what owes, per file, per class, with the reason (`diff-region` = a body edit routed to that
+class since its pin · `never` = no PASS on the judges row · `revise` · `bad-sha`), and it carries the
+cross-module sets, which a per-file list cannot represent at all. `scan-stale-classes.js --files <f...>`
+answers the same question for a named set before a sweep. **A green queue is the close condition for
+this entry.** It was not green on 2026-08-21.
+
+Two properties of the debt survive the list and are worth keeping, because the tool reports what is
+stale and not what it will cost: subtractions and single-clause edits are the cheap end of a re-audit,
+and the `slides` class is the one to watch, because an edit that changes what a projected chunk says —
+or adds a chunk — is a re-chunk, not a re-read.
 
 **A second thing the battery should now check, which it could not before.** Judges read source files, and
 source files now carry flag markers, so a judge reading `plan-mode-done-right.md` sees *both* branches of
@@ -1447,13 +1484,17 @@ was speculative and is struck; gap 3 stands on dead weight and false expectation
 
 Named so the next phase can price the audit as well as the gaps.
 
-- **Trainer-facing surfaces were not swept.** `trainer-guide.md`, `trainer-modules.md`,
-  `pre-cohort-todos.md`, `training-architecture.md` and `M6-WINDDOWN-STATUS.md` all sit in the training
-  directory and all carry double-digit counts of dropped-module references. None reaches a student:
-  `--no-trainer-docs` skips `trainer-guide` and `trainer-modules`, and the other three are never rendered
-  into a student workbook by any path, flag or no flag. But the trainer reads them, and they describe a
-  six-module training with a security module and a closing module this cut does not run. This inventory
-  covers what the student receives. The trainer's half is owed.
+- **Trainer-facing surfaces are swept, 2026-08-21.** Two of the five named here no longer exist:
+  AE101 has no `trainer-guide.md` (the handbook absorbed it) and no `M6-WINDDOWN-STATUS.md`.
+  `trainer-modules.md` trims itself to the cut — a tab exists exactly when the cut runs that module, the
+  six-module day tables resolve out, and `scripts/curriculum.test.js` pins both — so it is safe to build
+  with trainer docs rather than suppressed with `--no-trainer-docs`. `training-architecture.md` now
+  states each cut-dependent fact where the thing itself is defined (the tarball and the curated skills,
+  the worktree-fork count, the reading arc's middle beat, the sitting shape), so its Northwind section
+  points instead of restating and the six-module prose is gone from the base document.
+  `pre-cohort-todos.md` is left alone on purpose: it is a maintainer punch list tracking the whole
+  training, not a surface a trainer delivers from, and its dropped-module lines are about work owed on
+  those modules rather than instructions to a room.
 - **The registry lede was rewritten and the reasoning lives outside this document.** The old lede
   claimed *"Five sessions, ten and a half hours"*, false under this cut on any arrangement. The
   replacement makes no session-count or duration claim. It is the run's only edit to a buyer-facing

@@ -53,22 +53,14 @@ Sim sweeps and platform-capability checks are not tracked here. The `curriculum-
 
 Every AE101 surface is stamped all-PASS; these are the TODOs judges logged alongside a passing verdict. None blocks a cohort.
 
-- `mcp-and-connectors.md`: `3LO` is never glossed; `Path 1/2/3` recur as bare ordinals far from the list that names them; lines 3 and 122 narrate the file's own update cadence (§33).
-- `the-far-half.md`: the migrated figure's loop-strand labels are no longer picked up by any body bullet since the Verification bullet dropped its "ghost checking loop" clause. A cold-read stall no per-file rule can see, because neither the figure nor the bullet is wrong alone.
-- `the-whole-map.md`: the nine loop-strand labels sit unearned; both beats score mood 7 because no body line defuses them. Independently confirms your own open EYEBALL item #3.
-- `agents-that-build-agents.md`: no trainer/self recovery move is named for the handoff-prompt forcing function (§47). Low harm — terminal beat, nothing downstream depends on it.
 
 
 ## Never-judged supplementaries and reference pages — non-blocking findings (2026-08-19 sweep)
 
 Banked from the first full judge pass over the six AE101 surfaces that had never been judged in any class. Blocking findings were fixed and re-fired in the same pass; these are the ones that survived as non-blocking and are worth one deliberate decision each.
 
-- **`build-a-project-from-zero` — a rule question, not a defect.** The writing judge reads `## Where the four task sizes come from` as a count adjacent to its own list (`check_writing.md` §20). It was kept deliberately: §20's carve-out keeps a numeral the reader carries away from the enumeration, the header appears in the nav rail and TOC where the items are not visible, and `prework.md` names the same four sizes, so it is a shared handle across two files. Either the carve-out covers headers or it does not; worth settling in the compendium rather than per-file.
-- **`mcp-and-connectors`** — the 395w `## Plugins and marketplaces` overflow is resolved (split at the governance boundary, 2026-08-19). Still open: chunks 2/3/4/6 bold whole sentences rather than ≲5-word handles, and the reference-page waiver lifts the per-slide count budget but not the handle cap.
-- **`workflow-composition-lineages`** — a coach-register closer with the student as grammatical object (~line 143). The numerals and the two out-of-taxonomy source-type labels are done.
-- **`claude-code-for-engineers`** — *"overnight"* at line 331 (time-of-day token); Claude:agent noun ratio 244:3, mostly legitimate product naming on a reference page but matching the compendium's own audit signal.
 
-**A tooling finding from the same sweep, higher leverage than any of the above.** `update-quality.sh`'s `body_sha` guard hashes the whole file, while `scan-stale-classes.js` routes staleness per region. So a two-word repair re-owes every class, including the ones whose routing says they were never touched: one reworded sentence in `clean-code-is-steering` cost four judge runs, two of which had nothing to re-read. The scanner already computes exactly the information the stamper needs — let a class stamp when the recorded hash differs only in regions that do not route to it. This is the single biggest cost driver in a fix-and-re-fire sweep.
+**The tooling finding from this sweep shipped 2026-08-20.** `update-quality.sh`'s stale-verdict guard hashed the whole file while `scan-stale-classes` routes staleness per region, so a two-word repair re-owed every class. The guard now asks `stamp-safe.js` whether the diff since the recorded `body_sha` actually reaches the class being stamped, and stamps when it does not. It fails closed at every uncertain fork: a sha matching no committed version answers UNKNOWN and still hard-fails, because an unanchored hash is the case that fabricates evidence rather than merely losing it. Six tests in `stamp-safe.test.js`.
 
 ## Hunt for buried gold
 

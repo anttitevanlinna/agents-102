@@ -6,6 +6,7 @@
 
 - The near half is behind you. Intent, Context, Work: how to aim the work, what the agent needs to know, how a loop runs and compounds. Every move so far lived there.
 - The map lights its other side now. Verification, Absorption, Outcome. The rest of the training goes there, starting with the session you send off in this module.
+- The labelled strands are the same ones from M2, unchanged. The build loop, the context loop, the security loop, the agent's own loop: you have run all four by now. What changes in this half is how long they run without you watching.
 
 ## Long-running work adds new concerns
 

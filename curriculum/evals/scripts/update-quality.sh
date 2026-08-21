@@ -162,8 +162,21 @@ check_instance_sha() { # class state
     exit 1
   fi
   if [[ "$recorded" != "$file_sha" ]]; then
+    # A whole-file hash cannot tell a body rewrite from a maintainer-block typo.
+    # scan-stale-classes already routes a diff to the classes it reaches, so ask
+    # it whether THIS class's verdict actually went stale. SAFE only when the
+    # recorded body is a committed version and the diff misses this class;
+    # UNKNOWN (unanchored or unreadable) falls through to the same hard failure,
+    # because an unanchored hash is the case that fabricates evidence.
+    rel_to_repo="$(git -C "$(dirname "$FILE")" rev-parse --show-prefix 2>/dev/null)$(basename "$FILE")"
+    safe="$(node "$SCRIPT_DIR/stamp-safe.js" "$rel_to_repo" "$recorded" "$cls" 2>/dev/null)"
+    if [[ "$safe" == SAFE ]]; then
+      echo "note: $cls verdict predates the current body, but the change routes elsewhere — stamping" >&2
+      return 0
+    fi
     echo "error: the $cls verdict in $(basename "${matches[0]}") was judged against a different body" >&2
     echo "       recorded: ${recorded:0:12}…   current: ${file_sha:0:12}…" >&2
+    [[ "$safe" == UNKNOWN ]] && echo "       recorded sha matches no committed version — regenerate, do not reuse" >&2
     echo "       the file changed after the judge read it — re-fire $cls, then stamp" >&2
     exit 1
   fi

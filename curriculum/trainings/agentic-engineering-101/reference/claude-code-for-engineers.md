@@ -350,7 +350,7 @@ The scheduler or condition invokes the skill. The skill is the thing that catche
 
 Apply to any long-running session, scheduled or not. An un-packaged same-session send-off depends on these as much as a `/loop` or a `/goal` session does. Verified 2026-04-23.
 
-1. **Laptop sleep freezes the session.** The Claude Code process pauses when the OS sleeps and does NOT resume on wake. You reopen Claude Code manually. For overnight sessions, prevent sleep (`caffeinate -dims` on macOS; power-plan change on Linux/Windows). Don't close the lid.
+1. **Laptop sleep freezes the session.** The Claude Code process pauses when the OS sleeps and does NOT resume on wake. You reopen Claude Code manually. For a session you walk away from, prevent sleep (`caffeinate -dims` on macOS; power-plan change on Linux/Windows). Don't close the lid.
 2. **Ctrl+C during a tool call can corrupt the session.** Interrupting cleanly between tool calls is fine; interrupting mid-tool can leave the session's `.jsonl` in a state that fails to resume. If the session genuinely needs stopping, wait for a tool call to finish, or accept that `/resume` may not work on that session.
 3. **No per-session budget cap.** Auto-compaction keeps context from ballooning, but there's no built-in token budget or time cap. A multi-hour agentic session can burn more than you expect. Watch the scrollback for drift; `stop when you've seen enough` is a real discipline.
 
@@ -654,6 +654,8 @@ Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/
 **This document grows.** If you hit something during the training that belongs here and isn't, flag it. For feature-specific detail, the [official docs](https://code.claude.com/docs/en/memory.md) are the source of truth. When docs disagree with anything on this page, trust the docs.
 
 <!-- maintainer -->
+
+**Two 2026-08-19 sweep findings, both settled 2026-08-20.** (1) *overnight* at the laptop-sleep item is gone, recast to *a session you walk away from* per `check_student_facing.md` §22. The remaining hit, `/schedule tomorrow at 9am`, is the product's own command syntax being quoted and is a false positive of the same species as the rule's power-settings carve-out. Do not re-flag it. (2) The Claude:agent noun ratio, measured 244:3, is not vocabulary drift here. This is a reference page about a named product, so *Claude Code* and *Claude* are the correct nouns for the thing being documented; §21 assigns *agent* to acting behaviour, and the acting sentences on this page already use it. The ratio is what a product reference looks like, not a defect. Do not sweep it.
 
 **Doc re-verify 2026-08-15, §§ 9–40 (old §§5–16).** Fetched live: memory.md, hooks, permission-modes, commands, ultraplan, scheduled-tasks, routines, desktop-scheduled-tasks, sub-agents. Corrections landed where the docs contradicted the page (this file's own contract is *docs win*, so those needed no maintainer call): §10 Ultraplan row cut and the approval table went five rows → three, §9 toggle list re-derived from the current cycle description, §§34–35 "nine canonical events" → the docs define 31 and the table is now a curated ten, §19 Routines' "GitHub triggers are web-only" corrected, §31/§40 `/compact` survival list gained `paths:`-scoped rules, §20 `/goal` gained *or judged impossible*, §12 gained the auto-memory-does-not-cross-over fact.
 

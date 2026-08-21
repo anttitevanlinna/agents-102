@@ -2,7 +2,7 @@
 
 ## Every task maps onto the same six phases
 
-Every piece of agentic work maps onto the same cycle. Six phases. The loops drawn across them all run the same shape, each wearing different work:
+Every piece of agentic work maps onto the same cycle. Six phases. The loops drawn across them all run the same shape, each wearing different work. The strands are labelled so you can recognise them when you meet one; you are not learning them here:
 
 {{figure:map-engine}}
 

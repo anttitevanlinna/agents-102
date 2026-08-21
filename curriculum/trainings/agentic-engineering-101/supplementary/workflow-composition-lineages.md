@@ -142,7 +142,7 @@ Three filters that work better than ranking:
 
 3. **What review bandwidth do you have?** Read Ronacher first if the answer is *not much*. Composition without review is the failure mode he names.
 
-Two or three practitioners is enough to track. Watch what they ship in their own venues, not what third-party write-ups distill from them. The composition conversation will keep moving. The shape of work each practitioner handles is the slower-moving signal. And keep an eye out for named frameworks this walk does not yet cover; the curation is partial by design.
+Track two or three practitioners and you stay current. Watch what they ship in their own venues, not what third-party write-ups distill from them. You will see the composition conversation keep moving, so read each practitioner for the shape of work they handle: that moves slower and tells you more. Keep an eye out for named frameworks this walk does not yet cover, because the curation is partial by design.
 
 <!-- maintainer -->
 

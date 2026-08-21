@@ -56,6 +56,8 @@ The training closes. The flywheel does not.
 
 <!-- maintainer -->
 
+**Handoff-prompt forcing function, failure mode + escape hatch (`check_pedagogy.md` §47, added 2026-08-20).** Dominant failure is **plan-instead-of-prompt**: asked to turn the session's shapes into something that builds the kit, the agent returns an implementation plan, and the student saves it believing they have the artefact. The body says *"What comes back is a prompt, not a plan"* precisely because this is the common return, but that line diagnoses without recovering. Escape hatch, trainer or self: ask for the prompt itself, in the words you would paste into a fresh session, and check the return opens with an instruction rather than a numbered plan. Second failure is **thin shapes**, where M6 Phase 2's diagrams never got drawn and the handoff has nothing to package; recover by pointing at the ranked recurring work from the study prompt and building from the top two. Terminal beat, so nothing downstream breaks, but the student leaves without the one artefact the module exists to produce.
+
 **§6 carve-out, the answer must be theirs (checked 2026-08-20).** Logged in `pre-cohort-todos.md` as the weakest of six lecture prompts owing the trainer-demo sweep. It is not a violation at all: *"The shapes you drew are still in the session"* and *"The kit you grow on your own is the one that counts"* both name the student's own session and kit, which is §6's tell, so the tell was already present and no body edit is owed. A trainer demo would hand the room the trainer's kit. Leave it student-run; do not re-flag.
 
 

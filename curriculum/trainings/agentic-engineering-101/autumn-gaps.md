@@ -14,9 +14,11 @@ is the inventory of everywhere it pinches. **It opened with nothing fixed** — 
 a gap produces material that looks finished, is not, and hides the cost from whoever prices the next
 phase. Entries were therefore left visibly open and closed only on the record, in place, with the
 reasoning. **As of 2026-08-21, nineteen of the twenty-six carry a resolution under their own heading**, and gap 1
-is accepted rather than fixed. Six stay open, and only one of those is authorable by Bosser: commercial
-scope (17), customer workshop material (18, 23, 24, 25), and a standing audit debt that a script now
-measures rather than a list (26).
+is accepted rather than fixed. Two of the twenty-six are authorable by Bosser and open: gap 11, which
+closed in July and was reopened by an unrelated August cut that took the send-off's trifecta gate out of
+both arcs, and gap 26, a standing audit debt that a script now measures rather than a list. The rest of
+what is open is not ours to write: commercial scope (17), and customer workshop material (18, 23, 24,
+25 — the last ruled not a gap in the sittings on 2026-08-20).
 
 Two things to read it against:
 
@@ -201,9 +203,10 @@ the *extract-and-install* one, which lives inside the step this track no longer 
 the payload. Worth noting because it is the one gap that closed without anyone aiming at it: the six-
 module frame was never in the prework's own prose, it was in a prompt the prose included. Verified by
 rebuilding and reading the composed page: no registry prompt block in this variant now states a module
-count. **Gap 2 is not closed by this** and the distinction matters — the *prose* still says *"Across six
-modules"*, and the page's copy-block carries that prose, so a student who copies the page still hands
-their agent the wrong count. What changed is that they no longer paste it as an instruction.
+count. **Gap 2 was not closed by this** and the distinction mattered at the time — the *prose* still said
+*"Across six modules"*, and the page's copy-block carried that prose, so a student who copied the page
+still handed their agent the wrong count. What changed here is only that they no longer pasted it as an
+instruction. Gap 2 has since closed on its own terms; see its entry.
 
 ---
 
@@ -469,11 +472,32 @@ the record here: three questions (private data, untrusted content, channel out),
 a gate on this run rather than as security teaching. A trainer cannot close it live without unbudgeted
 improvisation.
 
-**Closed 2026-07-28, by the cheaper of the two options.** The recall cue is gone: *"the same three
-questions from Module 3's close, now pointed at this run"* is now *"three questions pointed at this
+**Closed 2026-07-28, by the cheaper of the two options.** The recall cue was cut: *"the same three
+questions from Module 3's close, now pointed at this run"* became *"three questions pointed at this
 run"*. No fenced prompt, no budgeted phase — the three questions and their three mitigations were
 already spelled out in full at that line, so what the gap actually described was **a recall cue with
-nothing to recall**, and deleting the cue leaves a gate that stands on its own.
+nothing to recall**, and deleting the cue left a gate that stood on its own.
+
+**Superseded 2026-08-12, and the gate went with it.** `119236f3` ("*the trifecta callback leaves M4,
+where it was answering a question M4 never asked*") cut the whole paragraph, in both cuts, as part of an
+unrelated M4/M5 extraction pass. The rewritten sentence this entry recorded no longer exists anywhere;
+neither does the gate.
+
+**Reopened 2026-08-21, narrower and for this cut only.** Verified across the surviving surfaces: in a
+cut without M3, **nothing student-facing names the trifecta before the send-off.** M2's *Pre-reads
+before Module 3* — which carried Willison's *The lethal trifecta for AI agents* — sits inside
+`<!--flag:module:earn-the-trust-->` and resolves out; `ironies-of-automation.md` mentions the threat
+class only below its maintainer fence; `supplementary/the-lethal-trifecta.md` is on disk but linked from
+no surface this cut renders. What the Northwind student does get is the `no-module:earn-the-trust`
+pre-read, Willison's *Designing agentic loops* (what the agent can reach, what it must not touch, how
+you will know afterwards) — adjacent framing, not the threat class.
+
+So the student sends an agent off unsupervised for hours having met no private-data / untrusted-content
+/ external-communication frame at all. **This is a cut-only gap:** the six-module arc teaches it at M3
+and the pre-read fires there, which is exactly why deleting the M4 callback was correct for AE101 and
+costly here. Two ways to close it, neither taken: link the supplementary from the
+`no-module:earn-the-trust` pre-read block at M2, or restore one sentence of gate at the send-off behind
+the same inverse flag. **Who could close it.** Maintainer, one flagged block, no AE101 impact.
 
 Which is what `walk-and-send-off.md:86` had been doing all along, standalone and module-free. That
 sibling is the argument this needed no authoring: a gate the student can apply cold is better than one
@@ -674,6 +698,15 @@ workshop, and nobody has heard what anyone else's dominant failure was.
 
 **Who could close it.** Maintainer plus the account owner. This is a scope decision — is the team
 artefact still promised? — not an editing one.
+
+**The curriculum half was answered 2026-08-20 (Antti); the scope half was not.** A persona run on
+`learn-from-the-test.md` re-raised this from the other end — the close hands off zero concrete
+deliverables — and scored the same body 6/10 under a team lens against 8/10 under an individual one.
+The call: **the individual reading is the one the close is written for.** So the sitting is not
+underspecified for ending on personal artefacts, and no edit is owed to the four sittings. What stays
+open is the commercial question this entry opened with, which no file can answer: managers in this
+cohort were sold team-level compounding, and four sittings of personal artefacts is what they get. See
+§ *Seams*, seam H, for the same ruling stated against the workshop contracts.
 
 ---
 
@@ -948,6 +981,13 @@ than curriculum: 1 and 2 with whoever assembles the team folder, 3 by placing th
 in the track for real history to exist, 4 in the plug-point conversation before the day, 5 by buying the
 cross-repo sweep or accepting a single-repo scan, 6 with a two-minute live demonstration. What Bosser
 owes is the list itself, which is this entry and seam H.
+
+**Ruled not a gap in the sittings, 2026-08-20 (Antti).** These six are prerequisites of *deleted*
+workshops. A customer-authored workshop generates its own inputs, so a Bosser sitting is not the
+producing side for them and the four-sitting cut is not underspecified for failing to hand them over.
+The entry stays because a customer re-authoring those particular workshops still needs the list — but
+read it as an interface description, not as work owed. The full ruling, and one workshop shape that
+needs no prerequisite at all, are at § *Seams*, seam H.
 
 ---
 

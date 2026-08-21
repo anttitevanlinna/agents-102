@@ -130,8 +130,8 @@ The next module opens with what came back, or what you caught before it went fur
 
 **Decision points:**
 - **Phase 1 runs long (>15 min):** task is too big. Force a slice. Better a smaller task that runs the full arc than a large one the student can't scope in 15 min.
-- **Phase 2 runs long (>40 min):** audit surfaced genuinely useful gaps. Let it run; compress the Phase 3 settle beat if needed.
-- **Phase 3 runs short:** fine; the settle beat is quick. Confirm the tidy-up diff landed before the send-off.
+- **Phase 2 runs long (>40 min):** audit surfaced genuinely useful gaps. Let it run; the optional tidy-up at Phase 2's tail is the first thing to drop.
+- **Phase 2 finishes early:** the optional tidy-up is where the slack goes. It is quick, and a student who runs it should land the diff before the send-off.
 - **Whole-room mood below 7:** curious readiness isn't landing. Check: did the pick conversation produce real tasks (curiosity) or compliance ones (performance)? If compliance, Phase 1 trainer push-back wasn't sharp enough. Task-selection is where this mood starts or dies.
 
 **Plug points (trainer):**
@@ -160,7 +160,7 @@ The next module opens with what came back, or what you caught before it went fur
 | Connections — *"come with one or two real candidates"* | Connections blocker — student can't name a task, or names a typo-fix / quarter-long epic | Trainer runs three-candidate conversation. Criteria: requirement-weaving, multi-file reasoning. Push against too-small AND too-large. |
 | Phase 2 — *"pick the worst three gaps from the audit, fill those"* | Phase 2 over-fill — student tries to close all five gaps | Trainer push: *"Three is the budget. Skip the other two — you'll see next module why."* |
 | Phase 2 — *"if the audit calls it context, fill it"* | Phase 2 gap deferred as *"architectural, not contextual"* — student skips a contextual gap that looks architectural; the un-packaged run fails in a boring way M5 can't rescue | Trainer hard push: *"if the audit calls it context — even if the fill is 'add a rule saying we use X, not Y' — it's still context. M5 needs an interesting failure to diagnose, not a boring one. Fill it."* |
-| Phase 3 — *"settle the `observations/` tree on disk before the send-off"* | student plans the tidy-up in chat but never lands the diff | Trainer: *"show me the diff landed before you paste the send-off."* |
+| Phase 2 tail — the optional tidy-up (*"propose 5 to 10 ways to make `./observations/` load better"*) | student plans the tidy-up in chat but never lands the diff | Trainer, only for a student who chose to run it: *"land the diff before you paste the send-off, or drop it."* The beat is Optional on the student's page; do not turn it into a gate. |
 | Send-off — *"pin the SHA on the named branch before sending off"* | Student notes the SHA but not the branch name, OR closes the session before the commit completes; M5's worktree instruction lands with an ambiguous starting point | Trainer push: *"read me back the branch name and SHA Claude confirmed. Have you noted both somewhere you'll find at M5 start?"* |
 | Send-off — *"send un-packaged"* | Send-off pre-empt — student tries to package (add plan.md, build a verifier) before sending off | Trainer push: *"un-packaged is by design. M5 teaches you packaging by diagnosing what breaks here. Don't pre-empt the learning."* |
 | Send-off — *"stop the session when you've seen enough; the trace is the result"* | Send-off anxiety — student hesitates at the final prompt or feels they need a completed artifact | Trainer push: *"stop it when you've seen enough. Traces are data. A result you can read is enough; you do not need a completed artifact."* |

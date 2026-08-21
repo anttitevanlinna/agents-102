@@ -50,6 +50,11 @@ Sim sweeps and platform-capability checks are not tracked here. The `curriculum-
 
 Every AE101 surface is stamped all-PASS; these are the TODOs judges logged alongside a passing verdict. None blocks a cohort.
 
+- **The M4→M5 reading list is priced for the wrong side of the gap.** `run-the-first-experiment.md § Pre-reads before Module 5` ships five entries at ~64–69 min, second instance of the shape `getting-going.md` set at 60 min across four. The frame that justifies the load, *"Optional prep while it's still running"*, lives in `learn-from-the-test.md § Prework` where the student reads it after the gap has passed: the reading is designed for the dead time inside the un-watched send-off, which is the right use of a walk-away wait, and the assigning side never says so. *"Start with the first"* names a real 10-minute compliant path, but *"The rest point at the same surprise"* presents four as a set, so a student who stops after Mollick cannot tell whether they are done or behind. **Fix when it fires:** one sentence in the assigner's lede carrying both the walk-away framing and an explicit floor. **Fires if** a cohort's M5 opens with students who read nothing.
+- **Prep-timing ledger prices four entries for a five-entry block.** `run-the-first-experiment.md` Meta *Prep / bridge timing* omits `verification-asymmetry` (~2 min).
+- **`spot-gaps-build-the-loop.md` § Next bolds a ten-word lead clause** (*"Going deeper, when this loop has to scale past you:"*) against `check_slides.md` §9's ≲5-word handle cap. Trim to *"Going deeper:"*.
+- **M2's six-module branch names M3's task with no bring-or-scramble stakes line** (`plan-mode-done-right.md`), while its own no-M3 branch and every other homework gap in the arc carry one.
+
 
 
 ## Never-judged supplementaries and reference pages — non-blocking findings (2026-08-19 sweep)

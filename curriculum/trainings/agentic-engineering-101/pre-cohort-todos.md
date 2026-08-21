@@ -44,10 +44,6 @@ Sim sweeps and platform-capability checks are not tracked here. The `curriculum-
 - **`[watch]` what Claude actually builds for a Ralph re-feed may be an in-session loop, which is the one shape the M5 slide rules out.** [what-packaging-is.md](../../lectures/what-packaging-is.md) § *Every re-feed pass starts a fresh session* teaches that each pass is a new session and that the conversation is what the loop throws away. Claude Code also ships `/loop <interval> <prompt>`, which is explicitly session-scoped (`check_platform_and_boundaries.md` §6, re-verified 2026-07-31), and `diagnose-and-resend-4` asks Claude to build whichever verifier shape the student names. Ask an agent inside a session for a re-feed and the nearest primitive it holds is the in-session one. If it reaches for that, the student's artefact contradicts the slide and quietly becomes the retry loop the slide exists to rule out. **Accepted as-is for first cohort.** **Fires if** any cohort or harness run picks Ralph re-feed at `diagnose-and-resend-4` and Claude builds an in-session loop rather than repeated fresh invocations. **Fix when it fires:** name the distinction in the slide's third bullet, or have the prompt ask for a fresh-invocation loop by name. **Cheap probe before that:** run the prompt once with `Ralph re-feed` chosen and read what lands.
 
 - **`[watch]` M4's Big Idea reads prep-register against a curious-readiness mood.** The `strategy` judge files `check_strategy_tie_in.md` §1 on *"Prep your first long session"* leading [run-the-first-experiment.md](run-the-first-experiment.md); the `story` judge scores the same file PASS on persona traces. **Accepted as-is for first cohort** — the second sentence (*"The session is how you find out what's missing"*) carries the experiment framing, and the maintainer block's mood target already ships the trainer reframe for the compliance drift. **Fires if** a cohort's Phase 2 mood reads below 7 and the room's *"is this enough?"* pattern traces back to the opening slide rather than to task selection. **Fix when it fires:** lead the Big Idea on the experiment and demote the prep clause.
-- **`## Inspect your results` puts M5's only loop-closing diagnostic in prose with no fence.** [learn-from-the-test.md](learn-from-the-test.md) — the section is load-bearing for the no-module variant, so it cannot be cut. Needs either a real fence or a maintainer accept-note saying why prose is right here.
-- **`extract-the-task-shaping-rule`'s point line restates the activity.** The maintainer block already holds the sharper claim (*save, don't automate*); the `**The point:**` line does not use it.
-- **`spot-gaps-build-the-loop` (exercise) has two Phase 2 gaps.** A trainer plug-point references an LLM-judge that Phase 2 does not contain, and there is no branch for a student who skipped M5 entirely — which is a self-study path, not a hypothetical.
-- **`author-test-strategy-skill` restates the SKILL.md install mechanic four times.** One statement plus a pointer at `training-architecture.md` §Skills is the shape.
 
 ## Non-blocking findings banked from the all-PASS sweep (2026-08-19)
 
@@ -155,11 +151,6 @@ records.
   cannot be aged, only regenerated.
 - **47 body-moved.** Student-facing prose changed under the trace. Worst drift:
   `the-map-filled-in` (177 body lines), `the-far-half` (111), `the-loop-half-filled` (105).
-- **Orphans: done, and the count was wrong.** Six of them named files that are very much alive.
-  `isSurface` read a fixed 12-line head for the `<!-- maintainer -->` fence, so a one-slide
-  lecture whose fence sits on line 9 was classified maintainer-facing and never entered the
-  universe at all — `the-2-frontiers` (M6 opener) and `learning-through-contrast` (M5 opener)
-  among them. Fixed 2026-08-20 with a test; the fifteen genuinely-gone traces are deleted.
 - **11 persona traces carry no mood score at all.** Three are exercises, where
   `simulation.md` §When makes the persona run required: `fork-the-worktree`,
   `open-the-side-quest`, `orient-and-introspect`. The rest are lectures and modules, where it is

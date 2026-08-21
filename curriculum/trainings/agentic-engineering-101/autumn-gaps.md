@@ -14,7 +14,7 @@ is the inventory of everywhere it pinches. A gap is repaired in place or it is a
 its own heading, with the reasoning: material that quietly looks finished hides the cost from whoever
 prices the next phase.
 
-**Two gaps are open and ours to write: 11 and 26.** Every other entry states its own resolution.
+**Every entry states its own resolution.** Nothing here is owed by this repo.
 
 **Where the boundary runs.** This repo produces Bosser's four sittings. It does not produce customer
 workshop material, and an entry describing what a workshop needs is an interface description for
@@ -44,11 +44,13 @@ missing link and warned about on every build. Gap 22 records the underlying beha
 
 # § Gaps
 
-Twenty-six entries. Entries 1 to 22 are ordered by what someone pricing the next phase should read
-first: the delivery shape, then the student's first surface, then the arc, then the take-home material.
-Entries 23 to 25 are the unmet seams, logged here as well because a contract with no producing side is
-also a gap, and a reader pricing from this section alone should not have to find them in § *Seams*.
-Entry 26 is the one an adversarial judge found in this document rather than in the curriculum.
+Ordered by what someone pricing the next phase should read first: the delivery shape, then the student's
+first surface, then the arc, then the take-home material. The last three are the unmet seams, logged
+here as well because a contract with no producing side is also a gap, and a reader pricing from this
+section alone should not have to find them in § *Seams*.
+
+**Audit state is not tracked here.** Which files owe a judge re-fire is computed, not typed:
+`node curriculum/evals/scripts/eval-queue.js --training ae101`.
 
 ---
 
@@ -471,24 +473,20 @@ the record here: three questions (private data, untrusted content, channel out),
 a gate on this run rather than as security teaching. A trainer cannot close it live without unbudgeted
 improvisation.
 
-**OPEN. In a cut without M3, nothing student-facing names the trifecta before the send-off.** Verified
-across every surviving surface: M2's *Pre-reads before Module 3*, which carries Willison's *The lethal
-trifecta for AI agents*, sits inside `<!--flag:module:earn-the-trust-->` and resolves out;
-`ironies-of-automation.md` names the threat class only below its maintainer fence;
-`supplementary/the-lethal-trifecta.md` is on disk and linked from no surface this cut renders. What the
-student does get is the `no-module:earn-the-trust` pre-read, Willison's *Designing agentic loops* — what
-the agent can reach, what it must not touch, how you will know afterwards. Adjacent framing, not the
-threat class. So the student sends an agent off unsupervised for hours having met no private-data /
-untrusted-content / external-communication frame at all.
+**Accepted (Antti 2026-08-21): the cut ships no trifecta framing, and that is the shipped shape.** In a
+cut without M3, nothing student-facing names the threat class before the send-off — M2's *Pre-reads
+before Module 3* carries Willison's *The lethal trifecta for AI agents* inside
+`<!--flag:module:earn-the-trust-->` and resolves out, `ironies-of-automation.md` names it only below its
+maintainer fence, and `supplementary/the-lethal-trifecta.md` is on disk but linked from no surface this
+cut renders. What the student does get at the same beat is the `no-module:earn-the-trust` pre-read,
+Willison's *Designing agentic loops*: what the agent can reach, what it must not touch, how you will
+know afterwards. Adjacent framing rather than the threat class, on an experienced engineer's own repo.
 
-**Do not answer this by restoring M4's send-off gate.** That paragraph was cut from both arcs on purpose
-(Antti 2026-08-12, *"answering a question M4 never asked"*) and it is correct for the six-module arc,
-which teaches the threat class at M3 and fires the pre-read there. This is a cut-only hole and wants a
-cut-only fix.
-
-**Who could close it.** Maintainer, one flagged block, no AE101 impact: link the supplementary from the
-`no-module:earn-the-trust` pre-read at M2, or put one sentence of gate at the send-off behind the same
-inverse flag.
+**Do not answer this by restoring M4's send-off gate.** That paragraph is cut from both arcs on purpose
+(Antti 2026-08-12, *"answering a question M4 never asked"*), and it is correct for the six-module arc,
+which teaches the threat class at M3 and fires the pre-read there. If a future cohort wants the framing
+back, it goes behind `no-module:earn-the-trust` at M2 as a link to the supplementary — one flagged
+block, no AE101 impact.
 
 Which is what `walk-and-send-off.md:86` had been doing all along, standalone and module-free. That
 sibling is the argument this needed no authoring: a gate the student can apply cold is better than one
@@ -978,76 +976,6 @@ needs no prerequisite at all, are at § *Seams*, seam H.
 
 ---
 
-## 26. The slide-rework re-audit debt was already paid; what is still owed is narrower and later
-
-**The track needs.** The lectures a trainer projects to a paying room to have been audited against the
-form they are currently in.
-
-**Plain AE101 does — and an earlier draft of this entry said otherwise.** The 2026-07-09 slide rework
-did leave every projected lecture carrying a *"re-audit before ship"* marker, and this entry recorded
-that faithfully. What it never did was check whether the marker was still true. It was not. The full
-re-eval of 2026-07-26 (`fe18297` — 51 files audited, 47 GO / 4 BLOCK) re-ran the judges against the
-reworked bodies and re-stamped every Quality line, but it moved only the date and the per-class SHAs
-and carried the qualifying clause through untouched. So each file went on declaring a debt it had just
-paid, and this entry counted the declarations. Measured against the evidence rather than the annotation
-— the git dates on the `curriculum/evals/instances/*.json` verdict files themselves — **all 25 AE101
-lectures and all 11 marked exercises were judged on 2026-07-26**, seventeen days after the rework. The
-stale clause was swept from 30 files on 2026-08-01.
-
-**Why it sat wrong.** The instrument was the files' own prose. This entry read sixteen maintainer
-blocks, found the same sentence in fifteen, and reported the count — which measures how many files
-*say* they need a re-audit, not how many do (`check_research_claims.md §14(c)`: a check that confirms
-an annotation exists is not a check that it is true). The mechanical question is one git can answer:
-is a file's newest judge-verdict file older than its last above-the-fence edit?
-
-**In the room.** Nothing visible then, and nothing owed on paper now for the 2026-07-09 pass. Do not
-read that as *the cut is fully audited* — read the next paragraph, which is the part that survives.
-
-**Enlarged by the gap-closing itself, and this entry used to name the files.** Closing gaps 2, 5, 6, 7,
-9, 11, 12, 14, 15, 16, 19, 20 and 21 touched eighteen student-facing files whose Quality lines carried
-per-class SHAs from before those edits. Nothing was re-stamped, because re-stamping without re-running
-the judges is the one move that turns this ledger into fiction.
-
-**The list of eighteen is deleted rather than updated, and that is the fix.** A hand-typed list of stale
-files is a second copy of something a script computes from the pins and the git dates, and the copy goes
-wrong the moment anyone edits a body — which is continuously. It went wrong here: the debt has been part
-paid and part re-incurred several times since it was typed, and by 2026-08-21 the list was a fossil of
-one afternoon. The live answer:
-
-```
-node curriculum/evals/scripts/eval-queue.js --training ae101
-```
-
-It prints what owes, per file, per class, with the reason (`diff-region` = a body edit routed to that
-class since its pin · `never` = no PASS on the judges row · `revise` · `bad-sha`), and it carries the
-cross-module sets, which a per-file list cannot represent at all. `scan-stale-classes.js --files <f...>`
-answers the same question for a named set before a sweep. **A green queue is the close condition for
-this entry.** It was not green on 2026-08-21.
-
-Two properties of the debt survive the list and are worth keeping, because the tool reports what is
-stale and not what it will cost: subtractions and single-clause edits are the cheap end of a re-audit,
-and the `slides` class is the one to watch, because an edit that changes what a projected chunk says —
-or adds a chunk — is a re-chunk, not a re-read.
-
-**A second thing the battery should now check, which it could not before.** Judges read source files, and
-source files now carry flag markers, so a judge reading `plan-mode-done-right.md` sees *both* branches of
-every flagged passage at once. That is not what either cohort is shown. Fire the battery against the
-**built** variant page where the class allows it, or the judge will keep flagging contradictions that no
-student can see.
-
-**Who could close it.** Maintainer, and it is a battery run rather than an authoring job: re-fire the
-seven-class judges on the sixteen and re-stamp. It is not created by this cut and it is not made worse
-by it — canonical AE101 carries the same debt on the same files. It reaches this track because the track
-returns to them, and this document exists to say what the track actually ships.
-
-**A correction to this document's own earlier draft, kept rather than quietly removed.** § *What got
-better* previously claimed the deleted files carried re-audit markers that leave with them, and that the
-track returns to audited artefacts. Both halves were wrong and both flattered the run: zero of the
-thirteen deleted files carried the marker, and the material returned to carries it. Found by the Row 4b
-judge, not by the run.
-
----
-
 # § Seams
 
 The interface a customer-authored workshop is written against. Eight contracts, at the boundaries where
@@ -1428,12 +1356,12 @@ capability claims stamped `[checked:never result:NEEDED due:asap]` go with them,
 of that leaves the repo with the deletions.
 
 **What does not follow, and an earlier draft of this bullet claimed it did: that the track therefore
-returns to fully audited artefacts.** It does not. See gap 26. The deleted files carried no
+returns to fully audited artefacts.** It does not. The deleted files carried no
 *re-audit before ship* markers at all — zero across all thirteen — because they carried no stamps
 either; unmarked is not the same as clean. The win here is the removal of unaudited material, not the
 arrival of audited material. *(Amended 2026-08-01: this bullet used to close on "while the lectures
 this cut returns to carry them live." That was true of the 2026-07-09 markers, which turned out to be
-stale and were swept — see gap 26. Two lectures still carry a marker, both correctly: `when-a-plan-is-good`
+stale and were swept. Two lectures still carry a marker, both correctly: `when-a-plan-is-good`
 and `how-this-training-was-built`, each edited after its last judge run.)*
 
 **The prompt registry becomes whole again.** The deleted files carried inline prompt blocks in the

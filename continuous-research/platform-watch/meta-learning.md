@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 191 — 2026-08-21
+
+When multiple carry-forward items all converge on the same date (as cycles 187-189 all flagged August 21), the highest research value is verifying ALL of them in one cycle rather than splitting across cycles — one run that closes three open threads beats three runs that each close one. The pre-agreed trigger date also makes the reclassification defensible: by naming "August 21 = last realistic window" across three prior cycles, the "tier retired" conclusion carries more weight than if decided ad hoc. Lesson: flag explicit trigger dates for reclassifications, not just "check again next cycle."
+
+The Gemini 3.7 Flash "most intelligent workhorse" framing (a traditional Pro-class positioning applied to a Flash-class model) was the key signal that the 3.5 Pro tier was being absorbed rather than delayed. Learning: watch for framing language that repurposes tier-specific positioning vocabulary — it's a stronger signal of product strategy shift than a missed date alone.
+
 ### Cycle 189 — 2026-08-18
 
 Absence of visible enterprise panic for the Assistants API T-8 window doesn't mean smooth migration — three distinct reasons explained the silence (forum content behind auth, Zoho thread unreadable, real-time panic in private channels). Learning: explicitly encoding the structural reasons for absence is as important as the absence itself, so downstream cycles don't repeat the same "why isn't this visible?" cycle. The Zoho 100+ page thread as an enterprise panic proxy (page count as signal even when content is inaccessible) is a new discovery method worth reusing — when a vendor's support forum thread has dozens of pages, that IS the signal, even before you read a word of it.

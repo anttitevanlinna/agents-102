@@ -14,8 +14,14 @@ answers:
 
 # Google Workspace / Gemini Enterprise — Platform State
 
-Last updated: 2026-08-18 (cycle 189)
-OODA cycles: 37
+Last updated: 2026-08-21 (cycle 191)
+OODA cycles: 38
+
+**Cycle 191 updates (August 21, 2026) — GEMINI 3.5 PRO MISS #20 — RECLASSIFICATION TRIGGERED: "3.5 PRO TIER RETIRED"; GOOGLE AI LEADERSHIP RESTRUCTURING (Brin returns; Dean departs after 27 years; Gemini 4 in pre-training):**
+
+Miss #20 confirmed August 21. The August 21 window was flagged across cycles 187–189 as the "last realistic checkpoint" — trigger condition for reclassification met. Google API changelog: no `gemini-3.5-pro` entry in any 2026 record. **FORMAL RECLASSIFICATION: the "delayed release" framing is retired. Gemini 3.5 Pro capability has been absorbed into the Gemini 3.7 Flash line.** Miss-counter tracking discontinued. Three root causes compound: (1) coding performance shortfalls (Bloomberg July 16, 10 current/former Google employees); (2) training data refresh in late June 2026 "made results worse"; (3) Gemini 4 already in pre-training — "it is a fair question whether 3.5 Pro arrives in a form that still matters" (theairankings.com). New this cycle: Google AI leadership restructured — Sergey Brin returned from retirement to lead AI; Jeff Dean departed after 27 years. Three missed targets publicly documented (late June, July 17, early August). **CTO planning — UPDATED:** Gemini 3.7 Flash GA (August 13, "most intelligent workhorse") is the current operationally recommended Google tier. There is no 3.5 Pro to wait for. Do not plan roadmaps around Gemini 3.5 Pro availability in 2026. ([ai.google.dev/gemini-api/docs/changelog Aug 21 2026](https://ai.google.dev/gemini-api/docs/changelog) — [vendor documentation, absence confirmed]; [theairankings.com/google/gemini-3-5-pro/ Aug 2026](https://theairankings.com/google/gemini-3-5-pro/) — [domain trade publication]; [forbes.com/sites/johnwerner/2026/08/13/gemini-35-pro-delay-continues/ Aug 13 2026](https://www.forbes.com/sites/johnwerner/2026/08/13/gemini-35-pro-delay-continues/) — [general press])
+
+**Watch Cycle 192:** Gemini 3.7 Flash practitioner uptake (now the confirmed Google option — any production reports?); Antigravity Agent enterprise tier announcement; Gemini 4 pre-training timeline signals.
 
 **Cycle 189 updates (August 18, 2026) — GEMINI 3.5 PRO MISS #19 — PATTERN SHIFT SIGNAL: POSSIBLE TIER RETIREMENT (Gemini 3.7 Flash GA August 13 with "most intelligent workhorse" framing = Pro-tier positioning without Pro name; 3.5 Flash → 3.7 Flash, no 3.5 Pro; 6+ months without Pro-tier model; if August 21 also miss → reclassify from "delayed release" to "3.5 Pro tier quietly retired"):**
 

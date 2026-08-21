@@ -10,15 +10,17 @@ becomes a customer-authored workshop. Workshops slot between the sittings and ar
 design.
 
 Going back to originals authored for six modules and a 1h45 envelope cannot be lossless. This document
-is the inventory of everywhere it pinches. **It opened with nothing fixed** — a run that quietly repairs
-a gap produces material that looks finished, is not, and hides the cost from whoever prices the next
-phase. Entries were therefore left visibly open and closed only on the record, in place, with the
-reasoning. **As of 2026-08-21, nineteen of the twenty-six carry a resolution under their own heading**, and gap 1
-is accepted rather than fixed. Two of the twenty-six are authorable by Bosser and open: gap 11, which
-closed in July and was reopened by an unrelated August cut that took the send-off's trifecta gate out of
-both arcs, and gap 26, a standing audit debt that a script now measures rather than a list. The rest of
-what is open is not ours to write: commercial scope (17), and customer workshop material (18, 23, 24,
-25 — the last ruled not a gap in the sittings on 2026-08-20).
+is the inventory of everywhere it pinches. A gap is repaired in place or it is accepted in place, under
+its own heading, with the reasoning: material that quietly looks finished hides the cost from whoever
+prices the next phase.
+
+**Two gaps are open and ours to write: 11 and 26.** Every other entry states its own resolution.
+
+**Where the boundary runs.** This repo produces Bosser's four sittings. It does not produce customer
+workshop material, and an entry describing what a workshop needs is an interface description for
+whoever authors it, not work owed here (18, 23, 24, 25). Commercial scope — what was sold, at what
+runtime, to which audience — is the account owner's, not a file's (1, 17). Those entries stay because
+a customer authoring against this cut needs them; read them as the interface, not the backlog.
 
 Two things to read it against:
 
@@ -106,12 +108,11 @@ spare minutes as slack.
 take-home and no instruction on what to stretch, and improvises the fit live. The deleted file named
 which beat was the cut and which three were spine.
 
-**Who could close it.** Maintainer with the customer's calendar owner. This is a scheduling and
-commercial re-negotiation (six slots, 13h), not an authoring fix. The four AE101 files are correct as
-authored; they are authored to a different slot shape than this customer books.
-
-> Accepted by the maintainer 2026-07-28 as the expected runtime. Recorded, not argued. The 13h assumes
-> two workshops; a domain-brain workshop, if a domain elects one, is additional.
+**The contract.** Six slots, 13h, of which Bosser delivers 7h across four sittings and the customer
+delivers 6h across two workshops. A domain-brain workshop, if a domain elects one, is additional. The
+four AE101 files are correct as authored; they are authored to a 1h45 envelope, and this is what that
+envelope costs at four sittings. Accepted as the expected runtime (Antti 2026-07-28) — scope, not an
+authoring fix, and nothing in the curriculum can move it.
 
 ---
 
@@ -203,10 +204,8 @@ the *extract-and-install* one, which lives inside the step this track no longer 
 the payload. Worth noting because it is the one gap that closed without anyone aiming at it: the six-
 module frame was never in the prework's own prose, it was in a prompt the prose included. Verified by
 rebuilding and reading the composed page: no registry prompt block in this variant now states a module
-count. **Gap 2 was not closed by this** and the distinction mattered at the time — the *prose* still said
-*"Across six modules"*, and the page's copy-block carried that prose, so a student who copied the page
-still handed their agent the wrong count. What changed here is only that they no longer pasted it as an
-instruction. Gap 2 has since closed on its own terms; see its entry.
+count. What this did **not** touch is the prose around the prompt, which is gap 2's territory and closes
+there.
 
 ---
 
@@ -472,32 +471,24 @@ the record here: three questions (private data, untrusted content, channel out),
 a gate on this run rather than as security teaching. A trainer cannot close it live without unbudgeted
 improvisation.
 
-**Closed 2026-07-28, by the cheaper of the two options.** The recall cue was cut: *"the same three
-questions from Module 3's close, now pointed at this run"* became *"three questions pointed at this
-run"*. No fenced prompt, no budgeted phase — the three questions and their three mitigations were
-already spelled out in full at that line, so what the gap actually described was **a recall cue with
-nothing to recall**, and deleting the cue left a gate that stood on its own.
+**OPEN. In a cut without M3, nothing student-facing names the trifecta before the send-off.** Verified
+across every surviving surface: M2's *Pre-reads before Module 3*, which carries Willison's *The lethal
+trifecta for AI agents*, sits inside `<!--flag:module:earn-the-trust-->` and resolves out;
+`ironies-of-automation.md` names the threat class only below its maintainer fence;
+`supplementary/the-lethal-trifecta.md` is on disk and linked from no surface this cut renders. What the
+student does get is the `no-module:earn-the-trust` pre-read, Willison's *Designing agentic loops* — what
+the agent can reach, what it must not touch, how you will know afterwards. Adjacent framing, not the
+threat class. So the student sends an agent off unsupervised for hours having met no private-data /
+untrusted-content / external-communication frame at all.
 
-**Superseded 2026-08-12, and the gate went with it.** `119236f3` ("*the trifecta callback leaves M4,
-where it was answering a question M4 never asked*") cut the whole paragraph, in both cuts, as part of an
-unrelated M4/M5 extraction pass. The rewritten sentence this entry recorded no longer exists anywhere;
-neither does the gate.
+**Do not answer this by restoring M4's send-off gate.** That paragraph was cut from both arcs on purpose
+(Antti 2026-08-12, *"answering a question M4 never asked"*) and it is correct for the six-module arc,
+which teaches the threat class at M3 and fires the pre-read there. This is a cut-only hole and wants a
+cut-only fix.
 
-**Reopened 2026-08-21, narrower and for this cut only.** Verified across the surviving surfaces: in a
-cut without M3, **nothing student-facing names the trifecta before the send-off.** M2's *Pre-reads
-before Module 3* — which carried Willison's *The lethal trifecta for AI agents* — sits inside
-`<!--flag:module:earn-the-trust-->` and resolves out; `ironies-of-automation.md` mentions the threat
-class only below its maintainer fence; `supplementary/the-lethal-trifecta.md` is on disk but linked from
-no surface this cut renders. What the Northwind student does get is the `no-module:earn-the-trust`
-pre-read, Willison's *Designing agentic loops* (what the agent can reach, what it must not touch, how
-you will know afterwards) — adjacent framing, not the threat class.
-
-So the student sends an agent off unsupervised for hours having met no private-data / untrusted-content
-/ external-communication frame at all. **This is a cut-only gap:** the six-module arc teaches it at M3
-and the pre-read fires there, which is exactly why deleting the M4 callback was correct for AE101 and
-costly here. Two ways to close it, neither taken: link the supplementary from the
-`no-module:earn-the-trust` pre-read block at M2, or restore one sentence of gate at the send-off behind
-the same inverse flag. **Who could close it.** Maintainer, one flagged block, no AE101 impact.
+**Who could close it.** Maintainer, one flagged block, no AE101 impact: link the supplementary from the
+`no-module:earn-the-trust` pre-read at M2, or put one sentence of gate at the send-off behind the same
+inverse flag.
 
 Which is what `walk-and-send-off.md:86` had been doing all along, standalone and module-free. That
 sibling is the argument this needed no authoring: a gate the student can apply cold is better than one
@@ -696,17 +687,13 @@ first thing they can show a colleague from sitting 1 is a chat scrollback in a s
 them to close. Four sittings in, the room still has no shared vocabulary artefact to carry into the team
 workshop, and nobody has heard what anyone else's dominant failure was.
 
-**Who could close it.** Maintainer plus the account owner. This is a scope decision — is the team
-artefact still promised? — not an editing one.
-
-**The curriculum half was answered 2026-08-20 (Antti); the scope half was not.** A persona run on
-`learn-from-the-test.md` re-raised this from the other end — the close hands off zero concrete
-deliverables — and scored the same body 6/10 under a team lens against 8/10 under an individual one.
-The call: **the individual reading is the one the close is written for.** So the sitting is not
-underspecified for ending on personal artefacts, and no edit is owed to the four sittings. What stays
-open is the commercial question this entry opened with, which no file can answer: managers in this
-cohort were sold team-level compounding, and four sittings of personal artefacts is what they get. See
-§ *Seams*, seam H, for the same ruling stated against the workshop contracts.
+**The four sittings end on personal artefacts, by design.** M5's close is written for the individual
+reading (Antti 2026-08-20): a persona run scored that body 8/10 under an individual lens against 6/10
+under a team one, and the individual lens is the intended one. So no edit is owed here — the sitting is
+not underspecified for handing back a diagnosis, a verifier and a rules file rather than a room record.
+Team-level compounding, if it is promised commercially, is carried by the customer's workshops and by
+the account conversation, not by a Bosser sitting. Seam H states the same boundary against the workshop
+contracts.
 
 ---
 
@@ -729,17 +716,14 @@ inside a cap that drops from 40 minutes to 30, with at most five minutes coming 
 floor. A first rep compressed into a beat sized for a second rep produces a thinner skill, and the
 deliberation then argues over thinner candidates.
 
-**Who could close it.** Customer workshop author (budget a first rep, not a second), or a maintainer who
-re-homes the authoring rep into a surviving sitting and fixes sitting 2's forward promise.
+**No surviving surface promises a rep this cut does not run.** The sitting-2 forward promise —
+*"the move itself turns out to be packageable as a skill; you author your first one there"* — returns
+nothing across the module, lecture and exercise bodies.
 
-**Half closed: the forward promise is gone.** No surviving surface promises the student a first skill
-they will author later — *"the move itself turns out to be packageable as a skill; you author your first
-one there"* returns nothing across the module, lecture and exercise bodies. So a cut without M3 no
-longer advertises a rep it does not run. **The half that stays open is the workshop's budget**, which is
-the customer's to set: a room authoring its first-ever skill inside a beat sized for a second rep still
-produces a thinner skill, and Bosser cannot fix that from its own four sittings without re-homing the
-rep into one of them. That re-homing is a curriculum change to canonical AE101, not a variant fix, and
-nobody has asked for it.
+**The workshop budget is the customer's** (§ *Where the boundary runs*). A room authoring its first-ever
+skill inside a beat sized for a second rep produces a thinner skill; whoever writes that workshop should
+budget a first rep. Bosser's alternative would be re-homing the authoring rep into a surviving sitting,
+which is a change to canonical AE101 rather than a variant fix.
 
 ---
 
@@ -911,10 +895,12 @@ roughly fifteen minutes of a 180-minute session spent pinning folders. A partici
 settles files locally for the whole session and moves their claims in afterwards, which loses the
 attributed-in-the-moment property the beat is built on.
 
-**Who could close it.** Not the workshop's own page, and that is the part worth stating. The check needs
-enough lead time for sync to settle, so a page nobody opens until the workshop morning cannot issue it.
-It has to come from the sitting before, or from a separate pre-read the customer sends. Bosser's half is
-one line in sitting 1's close, which does not exist today. Recorded as the unmet half of seam A.
+**Whoever needs the folder issues the check, and it cannot be the workshop's own page** — sync needs
+lead time to settle, so a page nobody opens until the workshop morning is too late. It comes from a
+pre-read the customer sends, or from a line in the preceding sitting's close, which is a customer ask
+against Bosser material rather than something the four sittings owe on their own (§ *Where the boundary
+runs*). A workshop that needs no shared folder — the run-trace comparison offered at seam H is one —
+does not need the check at all.
 
 ---
 
@@ -939,11 +925,12 @@ five ranked thin spots exactly as designed. They are simply the five thin spots 
 largest piece, and neither the trainer nor the participant has any signal that the biggest context layer
 the team owns was never opened. It surfaces months later, if at all.
 
-**Who could close it.** The customer, in workshop material they own: either the workshop that builds the
-store closes by telling participants to name it to the audit at the next sitting, or the store is placed
-where the audit's existing list already reaches — a repo ADR, an authored skill, or a wired connector —
-which turns a curriculum edit into a placement decision. Recorded as seam E, the one contract on the
-list that cannot be closed from either end.
+**A domain store reaches the audit by placement, not by a curriculum edit.** Two routes, both the
+customer's: the workshop that builds the store closes by telling participants to name it to the audit at
+the next sitting, or the store is placed where the audit's list already reaches — a repo ADR, an
+authored skill, or a wired connector. A conditional inside the shared exercise is not available, because
+that exercise serves canonical AE101 through one `contentKey`. Seam E states the same contract, and is
+the one on the list that cannot be closed from the Bosser end (§ *Where the boundary runs*).
 
 ---
 

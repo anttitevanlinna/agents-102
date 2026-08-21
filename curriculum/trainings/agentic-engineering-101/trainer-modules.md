@@ -108,14 +108,6 @@ Don't split M4 across the days: its flow is one sequential beat and the send-off
 9. Lecture — [The machine you just met](./#lectures-the-machine-you-just-met) (recognition closer, ~5 min; connects the mirror, error chain, and output shape to how the session is steered)
 10. Lecture — [How this training was built](./#lectures-how-this-training-was-built) (arc closer; names compound engineering)
 
-**Learning goals.** Student can:
-
-- Run an orient → fix → close → compound loop end-to-end on a trivial bug in their own repo.
-- Distinguish the agent's account of the repo from its actual state, digging until they find what the LLM confabulated.
-- Fix the bug tests-first, root-cause-driven, no plan mode, ship the PR.
-- Close the bug's ticket from what their own tracker's field conventions show.
-- Compound the session into a personal rules file at `./CLAUDE.local.md`.
-
 **Exercise goals.**
 
 - *Orient and introspect* — Claude reads the repo deliberately; student interrogates the self-report against `/context`. Output: a map of what loaded, what got skipped, and how much window is left.
@@ -123,7 +115,9 @@ Don't split M4 across the days: its flow is one sequential beat and the send-off
 - *Close the ticket* — one real ticket read twice: the agent reverse-engineers the team's field conventions off it, then writes the close-out in that register. Five proposed bug rules, at least one rejected. The note lands via `gh`, an inherited connector, or a paste.
 - *Compound and close* — `./CLAUDE.local.md` written from session evidence (not a template, and the tracker read counts), a push-back pass where the summary misreads, and a second sweep before close.
 
-**Trainer cues.** Give the two room-agreement slides two minutes inside the opening ten. Don't turn either into a policy lecture, and don't let the fastest participant set the room's speed. The arc closer (How this training was built) is Antti's first-hand story — read it as a document, in narrator voice; you are not claiming the experience, and the opening line says so. The Connections trick-share calibrates the room; a quiet first beat is a Nordic norm, not no-signal. Bug pick is the single variable that breaks M1: too small (Claude crunches in 30s, no read worth dragging through introspection) or too large (no close inside the slot). The diff-line push-back IS the pedagogy of Fix tests-first; if students skip it the loop's third beat reads as theatre. Close the ticket's payoff is the register: the conventions read is what stops the close-out sounding like a language model. If a student skips straight to the close-out prompt, the beat still produces a note but loses the point. Nothing is handed off as homework; the loop finishes in the room.
+**Mood.** Joyful creation — *"it works, on my repo."* Check: the student narrates the fix as a generic TDD move they'd have done anyway — technical warm-up has taken the slot. Fix: name what was agentic — orient → fix → close → compound on their repo, a close-out in their team's own register, a rules file born from how they just worked.
+
+**Trainer cues.** Give the two room-agreement slides two minutes inside the opening ten. Don't turn either into a policy lecture, and don't let the fastest participant set the room's speed. The first slide hands the debugging back: you keep the room moving, you are not its debugger and not necessarily its deepest Claude Code expert, and everybody answers. Say it once and mean it — it is what stops every stuck laptop routing to you. The arc closer (How this training was built) is Antti's first-hand story — read it as a document, in narrator voice; you are not claiming the experience, and the opening line says so. The Connections trick-share calibrates the room; a quiet first beat is a Nordic norm, not no-signal. Bug pick is the single variable that breaks M1: too small (Claude crunches in 30s, no read worth dragging through introspection) or too large (no close inside the slot). The diff-line push-back IS the pedagogy of Fix tests-first; if students skip it the loop's third beat reads as theatre. Close the ticket's payoff is the register: the conventions read is what stops the close-out sounding like a language model. If a student skips straight to the close-out prompt, the beat still produces a note but loses the point. Nothing is handed off as homework; the loop finishes in the room.
 
 **Runtime map.**
 
@@ -194,19 +188,12 @@ Never cut: the failing test before the fix, the diff-line push-back, and the con
 7. Lecture — [Where the rule could live](./#lectures-where-the-rule-could-live) (names Slack triage / issue webhook / scheduled read)
 8. Lecture — [How instructions grow](./#lectures-how-instructions-grow) (two-slide close: one common route from real work to rules and skills; Argyris's second loop returns durable learning to future context)
 
-**Learning goals.** Student can:
-
-- Run plan mode on a real multi-file task and judge the plan against five criteria, naming the one it fails.
-- Push back twice on the plan via "No, keep planning," surfacing what the agent didn't see.
-- Start a full second-pass walk-down, take the unresolved branches that materially sharpen the plan, and stop when the remaining questions are not worth their working-memory cost.
-- Pair human read with agent walk-down: read → push-back → walk-down → approve. Spot approval inflation in past plans.
-- Extract task-shaping rules from the session into a `.md` file, sharpening at least one before saving.
-- Name three shapes for turning a rules file into automation.
-
 **Exercise goals.**
 
 - *Push back on the plan* — student takes a real multi-file task, runs plan mode, sends two push-backs, then a second-pass walk-down with Claude asking three questions at a time. Approve the plan. Don't execute. Compare what the read caught vs. what the walk-down caught; that gap is the skill the module builds.
 - *Extract the task-shaping rule* — three to five rules surfaced from the scrollback, at least one rewritten or rejected, saved as a `.md` file at a student-chosen path. Automation shapes named, not built.
+
+**Mood.** Grounded competence — *"I can feel when a plan is good before approving it, and the move is two reads, not one."* Check: at Phase 5 the student reports the second-pass read caught everything interesting. Fix: point at the contrast — their push-back caught the soft item the second read re-softened.
 
 **Trainer cues.** Carry the push-backs in cohort delivery; the room won't always push hard the first time. The non-execution is the bet of the module ("Making the plan good IS the work"); if a student wants to run it, name the move and park it. In the 2-day format, lunch lands at 12:00 inside the exercise by design and the pause IS Phase 5's "stop"; post-lunch returns to name the design pattern.
 
@@ -271,21 +258,14 @@ Never cut: Phase 5's stop. Approve, don't execute, and name the pattern; the non
 6. Exercise — [Author your test-strategy skill](./#exercises-author-test-strategy-skill) (20 min; authored through conversation, self-critique, invoke on real feature)
 7. Lecture — [The loop half, filled in](./#lectures-the-loop-half-filled) (consolidation closer, 10 min; names the near half of the map whole after three modules of loop work; fires after the skill-sharpen, before the session clear)
 
-**Learning goals.** Student can:
-
-- Invoke a curated access-control skill on a shipping feature (subagent, fresh context) and name what their first read missed.
-- Apply curated STRIDE to the mapped surface, pick one threat worth hardening, write an ADR in the repo's convention.
-- Split jobs subagent vs. main thread: breadth-first curated reads to subagent; one-question-at-a-time authoring stays main-thread.
-- Author a test-strategy skill through conversation (one question at a time), tuned to the codebase's actual conventions.
-- Test the skill by asking it to disclose its weakest part, push back on the critique, invoke on the security-tested feature.
-- Ship one authored skill personal-first, and know when it's a team PR.
-
 **Exercise goals.**
 
 - *Open the side quest* — worktree opened; both Claude Code sessions running on the same git history with isolated scrollback.
 - *Map the access surface* — short delta-note in the repo: surfaces the skill called out harder than the student would have, plus surfaces the student knew mattered that the skill missed. The delta IS the artifact, not the raw skill output.
 - *Threat-model with STRIDE* — one ADR in repo convention, one threat chosen for hardening, rest of STRIDE output stays as evidence (not a hardening backlog).
 - *Author your test-strategy skill* — one `SKILL.md` tuned to the codebase's actual testing conventions (framework, mocking policy, integration boundary, flakiness, regression scope) shipping to the student's personal skills folder. Strong team-PR candidate, but the PR starts with a human conversation.
+
+**Mood.** Earned trust — *"the way I work with agents is something my staff engineer and my CISO can sign off on."* Check: the student frames STRIDE at Ex2 as a checkbox. Fix: point at the ADR — a real architectural call under named pressure is design, not compliance.
 
 **Trainer cues.** Authoring without invocation is theatre — catch students hand-crafting `SKILL.md` in a file tab and steer them back to conversation. M3 closes with the M4 task-pick homework instruction; don't drop it.
 
@@ -325,16 +305,11 @@ Never cut: Phase 5's stop. Approve, don't execute, and name the pattern; the non
 7. Lecture — [What keeps a long-running session going?](./#lectures-what-keeps-a-long-running-session-going) (fires while the agent runs; three-condition observation; leaves the run untouched)
 8. Close — nothing to hand out: [Reading the return](./#lectures-reading-the-return) is an in-room M5 opener (charged there since 2026-08-12), not a pre-read
 
-**Learning goals.** Student can:
-
-- Scope a real send-off task in conversation with Claude — multi-file reasoning, not step-by-step nudging.
-- Walk what they've built (`CLAUDE.md` + `CLAUDE.local.md` + `observations/` + ADRs + any authored skills + connectors) against the task as a subagent audit; push back on the audit.
-- Fill the worst gaps in conversation: observations written, rules sharpened, business-rules pointer wired (or the gap named explicitly).
-- Send the task off un-packaged in the same Claude Code session and let it run.
-
 **Exercise goals.**
 
 - *Prep the run, fill the gaps* — system walked against the task; worst two or three gaps filled; `observations/` tree settled on disk. The exercise ends there; the module's send-off section takes over and the un-packaged run fires at close.
+
+**Mood.** Curious readiness — *"I've built enough to try; let's see what the agent does."* Check: the student keeps asking *"is this enough?"* through Phase 2. Fix: *"enough is a question for M5. The experiment is the point."* If that pattern traces to the Big Idea slide rather than to task selection, say so in your after-delivery note — the slide leads on prep by design and is under watch.
 
 **Trainer cues.** M4 is deliberately incomplete. Start the closing lecture only after the un-packaged session is active. Keep it to three conditions: durable state keeps the place, feedback keeps the direction, and a boundary decides whether to continue. Ask the room to observe what is already present; do not repair or package the run while it is the specimen. Do not name Module 5's artifacts. No compound pass at the close: the send-off is the close of the work, and whatever needs sharpening surfaces on the return. **Memory-word allergy:** some engineers react against the word; acknowledge the criticism is legitimate against Claude Code's auto-memory, then point at the distinction — `observations/` is files the student wrote, gitignored, read when a prompt names the path. **Steering the opener:** the three lectures are where the module lands at its low end — hold *The far half of the map* to its floor and the rest of the arc keeps its room.
 
@@ -403,24 +378,19 @@ Never cut: the send-off itself, and never rescue the un-packaged run. A weak fir
 1. Lectures — [Reading the return](./#lectures-reading-the-return) (in-room opener, full read — not a pre-read) + [Learning through contrast](./#lectures-learning-through-contrast)
 2. Your mid-run worries hint at missing checks — short module-body beat: the mid-run worry from M4 is tested against the return before it earns a check
 3. Exercise — [Fork the worktree, carry the evidence](./#exercises-fork-the-worktree) (15 min): runs from the ORIGINAL repo, the worktree doesn't exist yet. Claude reads the `Run coordinates` block in `task.md` and forks `../<repo>-m5` from the `m4/<slug>` starting-point commit, copying `CLAUDE.local.md` and `observations/` across
-4. Exercise — [Diagnose and re-send](./#exercises-diagnose-and-resend) (68 min, Phases 1–5, in a new session in the worktree). Phase 5 is the re-send and now sits inside the exercise: a new session in the worktree by default (fresh context; the exercise scrollback is heavy), or clear the exercise session in place; then the packaged re-send prompt, and the walk-away report gets read cold
+4. Exercise — [Diagnose and re-send](./#exercises-diagnose-and-resend) (68 min, Phases 1–5, in a new session in the worktree). Phase 5 is the re-send and now sits inside the exercise: a new session in the worktree by default (fresh context; the exercise scrollback is heavy), or clear the exercise session in place; then the packaged re-send prompt, and the walk-away report gets read cold. **Four-sitting cut:** the exercise's own last section, *Bring the worktree's work home*, fires here — `CLAUDE.local.md` and `observations/` copied back to the original repo at the end of the exercise, not at the module's close
+5. Debrief (12 min)
 6. Lecture — [What packaging is](./#lectures-what-packaging-is) (closer; the three-pattern earned from felt evidence — don't squeeze it)
 7. Lecture — [The gate is a claim too](./#lectures-the-gate-is-a-claim) (final closer, 9 min; the verifier the student just built is a claim, not proof; closes on the delegation-frontier zoom-out)
-8. Four-sitting close only: bring the worktree's `CLAUDE.local.md` and `observations/` home to the original repo, then the map's last read (the wall; what crosses to the team, and how)
-
-**Learning goals.** Student can:
-
-- Diagnose the un-packaged M4 send-off through three named lenses — goal drift, context rot, plausible-but-wrong — grounded in quoted moments from the run.
-- Pair each failure mode with the packaging that catches it: drift ↔ reference artefact, rot ↔ `plan.md`, plausible-but-wrong ↔ external verifier.
-- Build a verifier shaped against the dominant failure (background-agent / shell-hook / Ralph re-feed).
-- Assemble reference + `plan.md` in conversation, scoped to the same M4 task.
-- Re-send the packaged version of the same task.
+8. Four-sitting close only: *Inspect your results* (module body — how to read the packaged return once it lands after the sitting: same three lenses, worries tested against the artefact, what recurs names the next check), then *Back to the map, one last time* (opens on the `map-engine-m4-open` figure; the wall, what crosses to the team, and how)
 
 **Exercise goals.**
 
 - *Diagnose and re-send* — student ends with: a diagnosis (named failures + quoted moments from their own artefact), a working verifier targeting one specific failure mode, and reference + `plan.md` scoped to the same M4 task. Each piece earns its place against a real failure, not a slide.
 
-**Trainer cues.** In the 2-day format the slot's headroom goes to the worktree fork (real engineering, students fumble) and the two closing lectures; the closer pair IS the lesson, don't compress it. When the sitting runs long, trim the front of the module, not the closers. Don't name the three-pattern before the closing lecture; it earns the name from felt evidence, and if the term leaks in Phases 1–4 the closer has nothing to add. In the six-module arc, the re-send runs through lunch and M6 reads both runs after; in the four-sitting cut this sitting is the finale and closes on bringing the worktree's work home plus the map's last read — that close sits inside the closing block rather than taking a beat of its own.
+**Mood.** Learning through contrast — *"I can feel what packaging adds now; I couldn't have read it as a lecture."* Check: at Phase 3 the student picks the safest verifier shape regardless of their dominant failure. Fix: *"the verifier matches the failure, not the comfort. Which one was yours?"*
+
+**Trainer cues.** In the 2-day format the slot's headroom goes to the worktree fork (real engineering, students fumble) and the two closing lectures; the closer pair IS the lesson, don't compress it. When the sitting runs long, trim the front of the module, not the closers. Don't name the three-pattern before the closing lecture; it earns the name from felt evidence, and if the term leaks in Phases 1–4 the closer has nothing to add. In the six-module arc, the re-send runs through lunch and M6 reads both runs after; in the four-sitting cut this sitting is the finale — the bring-home lands at the end of the exercise, and the module closes on *Inspect your results* plus the map's last read, inside the closing block rather than as a beat of its own.
 
 **Runtime map.**
 
@@ -461,7 +431,7 @@ Never compress the two closing lectures. What packaging is → The gate is a cla
 - `CLAUDE.local.md` and `observations/` in the original repo, ready to copy at fork time.
 - Regenerate: rerun M4's send-off section (the transcript-locate and commit-starting-point prompts rewrite `task.md`'s coordinates), then let the send-off run 15–30 minutes; that is enough for the clues the M5 read needs.
 
-**Northwind topology (four-sitting cut).** No M3 ran, so: the worktree-copy note about Module 3 artefacts riding forward drops out (only M1's rules and M4's observations cross); the re-send prompt's conditional requirements on the test-strategy skill and STRIDE ADRs resolve to absent, and the packaged run leans on the reference, plan.md, and verifier alone; post-run judging that looks for the authored skill correctly stands down ("nothing to judge") rather than erroring. This sitting is the finale: the close is bringing the worktree's work home plus the map's last read, and the six-module "Module 6 reads both runs" framing never fires. Mechanically validated 2026-07-28, full-chain test PASS.
+**Northwind topology (four-sitting cut).** No M3 ran, so: the worktree-copy note about Module 3 artefacts riding forward drops out (only M1's rules and M4's observations cross); the re-send prompt's conditional requirements on the test-strategy skill and STRIDE ADRs resolve to absent, and the packaged run leans on the reference, plan.md, and verifier alone; post-run judging that looks for the authored skill correctly stands down ("nothing to judge") rather than erroring. This sitting is the finale: the bring-home closes the exercise, the module closes on *Inspect your results* plus the map's last read, and the six-module "Module 6 reads both runs" framing never fires. Mechanically validated 2026-07-28, full-chain test PASS.
 
 </section>
 <!--/flag:module:learn-from-the-test-->
@@ -487,18 +457,11 @@ Never compress the two closing lectures. What packaging is → The gate is a cla
 8. Lecture — [The map, filled in](./#lectures-the-map-filled-in) (final theory closer, 10 min; the whole map drawn solid across M1–M6)
 9. Lecture — [Agents that build agents](./#lectures-agents-that-build-agents) (forward closer; the training's closing beat, dead-last per the 2026-07-03 re-sequence; on *You make agentic happen*, read the three orders off the slide, then say the connection the body leaves unsaid — Ralph is all three at full size)
 
-**Learning goals.** Student can:
-
-- Diagnose the gaps two runs of the same task surface.
-- Read where each gap belongs: memory (rules that would have prevented the mistake), sharper verifier, or new skill.
-- Cut one rule from `./CLAUDE.local.md` the diagnosis killed.
-- Surface the kinds of work they repeat across the stack and draw the recurring shapes.
-- Map evals across verifier (deterministic), judge (LLM-based), gate (in CI).
-- Encode the lesson so the next loop inherits it (the handoff prompt from the close is the take-home).
-
 **Exercise goals.**
 
 - *Spot gaps, build the loop* — one-screen gap map across memory / verifier / skill with the dominant gap named, one stale rule cut from `./CLAUDE.local.md`, and a diagrammed map of recurring work-shapes that feeds the closing handoff prompt.
+
+**Mood.** Practitioner fluency — *"I know how to test, how to learn, how to encode."* Competence-as-posture, not confidence-as-performance. Check: a beat reads as compliance (*"build the eval, pass the gate"*), paperwork, credibility-performance, or trainer monologue. Fix: hand the read back to the room — which lineage resembles their day, what the quality arc felt like across the moves.
 
 **Trainer cues.** Practitioner-fluency register, not lecture-hall — by M6 the student is a practitioner, and the close runs lecture-after-lecture by design: a room of engineers reading the field together, with you as one voice among several. Invite reflection between lectures with open prompts, not Q&A: which lineage resembles their day? What did the quality arc feel like across the five moves? After Dino's worked example, the transfer question — is the skill they just shipped a route, a leaf, an orchestrator, or a hand-off? Two beats of silence is fine; Nordic engineers think before speaking. The composition lecture has no separate drill; Phase 2 of *Spot gaps, build the loop* (the work-shape scan) is the lived entry to composing — point students there first, then at the [workflow-composition-lineages supplementary](./#supplementary-workflow-composition-lineages) for the field survey. Dino's [skill-stacking system](./#supplementary-skill-stacking) is the worked example. Pacing: if energy is high, give the lineage conversation room; if low, keep the composition lecture to the chart and the four mechanisms, point at the supplementary, and move to the closer pair faster.
 

@@ -75,7 +75,7 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 
 <!-- maintainer -->
 
-**Install mechanic stated once, 2026-08-20.** The skill's home and auto-discovery were restated four times in body (`**What you build:**`, the ship-destination bullet, the Phase 2 invoke bullet, the ship beat). The canonical statement is the ship-destination bullet, which the backing block also cites as `personal-skills-folder-auto-discovered` and must stay verbatim; the other two body copies are cut. Install paths and the team-kit route are canonical in `training-architecture.md` § Skills, which is a planning artefact and not a student page, so the pointer lives here and not in body.
+**Install mechanic is stated once.** The ship-destination bullet is the canonical statement of the skill's home and auto-discovery; the backing block cites it as `personal-skills-folder-auto-discovered`, so it must stay verbatim. Do not restate the install path anywhere else in body. Install paths and the team-kit route are canonical in `training-architecture.md` § Skills, which is a planning artefact and not a student page, so the pointer lives here and not in body.
 
 **View summary:** You author a test-strategy skill through conversation, challenge its weakest assumption, and invoke it against the real codebase before keeping it. The artifact is a reusable skill shaped by the way this repository actually tests, not by a generic pyramid.
 

@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 192 — 2026-08-22
+
+Live-fetching the primary source (AI Now Institute PoC publication) resolved a three-cycle ambiguity in one query: prior cycles noted "no CVE acknowledgment" without knowing whether this meant "in progress" or "out of scope." The source document itself contained both the fix framing ("not a version bump — architectural change required") and the disclosure scope statement ("not within scope of security disclosure policies"). Learning: when repeated absence of CVE acknowledgment is the finding, fetching the primary PoC document directly is more productive than searching for Anthropic's response — it often contains the vendor's own framing of the gap.
+
+Splitting two migration ecosystems (OpenAI.com → Responses API vs. Azure OpenAI → Foundry Agents) was only discovered by fetching the Azure-specific documentation, not the OpenAI ecosystem search results. General searches for "Assistants API shutdown" surface the OpenAI path; the Azure path requires a platform-specific query. Learning: for platform shutdowns with multi-cloud reach, run one search per cloud environment (AWS, Azure, Google Cloud) in addition to the primary vendor search — enterprise teams often run the cloud flavor, not the direct API.
+
 ### Cycle 191 — 2026-08-21
 
 When multiple carry-forward items all converge on the same date (as cycles 187-189 all flagged August 21), the highest research value is verifying ALL of them in one cycle rather than splitting across cycles — one run that closes three open threads beats three runs that each close one. The pre-agreed trigger date also makes the reclassification defensible: by naming "August 21 = last realistic window" across three prior cycles, the "tier retired" conclusion carries more weight than if decided ad hoc. Lesson: flag explicit trigger dates for reclassifications, not just "check again next cycle."

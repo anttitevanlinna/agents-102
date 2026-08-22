@@ -75,7 +75,7 @@ The next task you start, package it and send it off, then read what comes back t
 
 The training opened on a trick. The loop is how the next one gets found on purpose.
 
-**Going deeper, when this loop has to scale past you:** [How the best do CI/CD at agent scale](trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md).
+**Going deeper:** [How the best do CI/CD at agent scale](trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md), for when this loop has to scale past you.
 
 Keep on learning and sharing.
 

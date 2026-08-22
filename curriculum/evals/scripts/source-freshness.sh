@@ -25,6 +25,9 @@ set -eu
 usage() { sed -n '2,24p' "$0"; exit 2; }
 
 TARGET="$(date +%Y-%m-%d)"
+# TODAY is always now; TARGET may be pushed forward to a cohort date. A stamp
+# past its due date TODAY is already overdue and does not depend on the target.
+TODAY="$(date +%Y-%m-%d)"
 PATHS=()
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -85,10 +88,19 @@ while IFS= read -r m; do
   # `checked:` date on an attested source is the date witnessed, never 'never').
   if [[ "$checked" == "never" && "$result" != "ATTESTED" ]]; then sev=block; reason="never checked"; fi
 
-  # due-based escalation applies ONLY to OK-result stamps. CAVEAT and BLOCKED
-  # are INFO by result (a paywalled source is deferred, not a content defect) and
-  # must not be escalated by their due field; CORRECT/GONE/STALE/NEEDED/never are
-  # already block by result.
+  # due-based escalation applies ONLY to OK-result stamps. BLOCKED stays INFO
+  # whatever its due field says (a paywalled source is deferred, not a content
+  # defect); CORRECT/GONE/STALE/NEEDED/never are already block by result.
+  #
+  # ONE exception, and it is narrow: a CAVEAT whose author wrote a real calendar
+  # date is an author scheduling a re-check, not deferring one, and that date
+  # went unread — 33 CAVEAT stamps carried a date and 4 were already past due,
+  # invisible in INFO on a green run. Such a stamp warns once its date passes.
+  # A CAVEAT on due:none / due:cohort / due:asap keeps the exemption in full.
+  if [[ "$result" == "CAVEAT" && "$due" == [0-9]* && "$due" < "$TODAY" ]]; then
+    sev=warn; reason="CAVEAT past its own due:$due — re-verify or re-stamp"
+  fi
+
   if [[ "$sev" == "ok" ]]; then
     case "$due" in
       asap)   sev=block; reason="re-verify flagged asap" ;;

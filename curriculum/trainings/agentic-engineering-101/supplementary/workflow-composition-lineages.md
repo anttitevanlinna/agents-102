@@ -103,7 +103,7 @@ The reason Ronacher matters in this walk: any teaching of composition that does 
 
 ## Skill stacking system, Dino: the worked example
 
-Dino is an AE101 trainer and a working engineer who, after the May 2026 cohort, shipped a complete composed skill stack and documented its architecture: a three-layer model (skill shape → classification axes → composition mechanisms), a phase-organised skill catalogue, six workflow archetypes (five funnelling into one orchestrator, one standalone), seven design principles. The primary doc and three diagrams ship as the canonical case study at `supplementary/skill-stacking/`.
+Dino is an AE101 trainer and a working engineer who, after the May 2026 cohort, shipped a complete composed skill stack and documented its architecture: a three-layer model (skill shape → classification axes → composition mechanisms), a phase-organised skill catalogue, six workflow archetypes (five funnelling into one orchestrator, one standalone), and the design principles that hold it together. The primary doc and three diagrams ship as the canonical case study at `supplementary/skill-stacking/`.
 
 The stack wires skills into workflows through composition mechanisms:
 

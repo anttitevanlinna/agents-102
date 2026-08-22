@@ -14,7 +14,7 @@ You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map o
 
 - A session passes through phases: context, plan, build, verify, ship. A skill sits where its job sits. Its footprint is set by the job, not by the phase line.
 - The field wires kits more ways than one; no way has won. Pocock ships a public kit with no orchestrator: you call each skill by hand. Klaassen chains steps through files on disk, a gate at every seam. Some workflows have a pilot; many do not.
-- One documented kit wires skills several ways. One skill names another as a precondition: **an explicit load**. One sequences and gates a chain: **an orchestrator**, the pilot. A rule in `./CLAUDE.md` matches a file or phrase: **routing**. One hands its output to the next: **a hand-off**. A skill that does one job and calls nothing is a **leaf**.
+- One documented kit wires skills. One skill names another as a precondition: **an explicit load**. One sequences and gates a chain: **an orchestrator**, the pilot. A rule in `./CLAUDE.md` matches a file or phrase: **routing**. One hands its output to the next: **a hand-off**. A skill that does one job and calls nothing is a **leaf**.
 - A workflow is not only steps in order. At a seam, a check or stop condition decides whether the next step may begin.
 - Chaining generation without checks only moves work into the review queue faster.
 - Your job moves from reading every intermediate output to designing the checks, routes, and exceptions that deserve your judgment.
@@ -65,7 +65,7 @@ Claims
 - `never-size-a-skill-in-advance` · vision · "You never size a skill in advance. The job sizes it." ← none-owed
 - `nothing-new-except-the-placing` · vision · "Nothing here is new except the placing." ← none-owed
 - `moves-are-not-phase-bound` · vision · "Its footprint is set by the job, not by the phase line." ← none-owed
-- `four-wiring-mechanisms` · detail · "One documented kit wires skills several ways. … **an explicit load** … **an orchestrator** … **routing** … **a hand-off**" ← skill-stacking-supp
+- `four-wiring-mechanisms` · detail · "One documented kit wires skills. … **an explicit load** … **an orchestrator** … **routing** … **a hand-off**" ← skill-stacking-supp
 - `field-wires-more-ways-than-one` · detail · "The field wires kits more ways than one; no way has won." ← lineages-supp
 - `pocock-by-hand` · detail · "Pocock ships a public kit with no orchestrator: you call each skill by hand." ← lineages-supp
 - `klaassen-file-chained` · detail · "Klaassen chains steps through files on disk, a gate at every seam." ← lineages-supp
